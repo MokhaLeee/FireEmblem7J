@@ -37,7 +37,7 @@ AgbMain: @ 0x08000A20
 	ldr r2, _08000ADC @ =0x000045B4
 	adds r0, r2, #0
 	strh r0, [r1]
-	bl StoreIRQToIRAM
+	bl IrqInit
 	movs r0, #0
 	bl SetInterrupt_LCDVBlank
 	ldr r1, _08000AE0 @ =0x04000004
@@ -57,9 +57,9 @@ AgbMain: @ 0x08000A20
 	bl AP_ClearAll
 	bl MU_Init
 	ldr r0, _08000AEC @ =0x42D690E9
-	bl SetLCGRNValue
-	bl AdvanceGetLCGRNValue
-	bl InitRN
+	bl RandInitB
+	bl RandNextB
+	bl RandInit
 	bl LoadAndVerifySramSaveData
 	bl m4aSoundInit
 	bl sub_08003E48

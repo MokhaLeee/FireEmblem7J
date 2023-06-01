@@ -43,8 +43,8 @@ export CPP := $(PREFIX)cpp
 export LD := $(PREFIX)ld
 export STRIP := $(PREFIX)strip
 
-CC1_OLD := $(AGBCC_HOME)/bin/old_agbcc$(EXE)
-CC1     := $(AGBCC_HOME)/bin/agbcc$(EXE)
+CC1     := $(AGBCC_HOME)/bin/old_agbcc$(EXE)
+CC1_NEW := $(AGBCC_HOME)/bin/agbcc$(EXE)
 
 SHASUM ?= sha1sum
 
@@ -109,9 +109,8 @@ $(BUILD_DIR)/%.d: %.c
 $(BUILD_DIR)/%.o: %.c
 	@echo "[ CC]	$<"
 	@$(CPP) $(CPPFLAGS) $< | iconv -f UTF-8 -t CP932 | $(CC1) $(CFLAGS) -o $(BUILD_DIR)/$*.s
-	@echo ".text\n\t.align\t2, 0\n" >> $(BUILD_DIR)/$*.s
+	@echo ".ALIGN 2, 0" >> $(BUILD_DIR)/$*.s
 	@$(AS) $(ASFLAGS) $(BUILD_DIR)/$*.s -o $@
-	@$(STRIP) -N .gcc2_compiled. $@
 
 # ASM dependency file (dummy, generated with the object)
 $(BUILD_DIR)/%.d: $(BUILD_DIR)/%.o
@@ -126,3 +125,13 @@ ifneq (clean,$(MAKECMDGOALS))
   -include $(ALL_DEPS)
   .PRECIOUS: $(BUILD_DIR)/%.d
 endif
+
+# ======================
+# = CFLAGS overrides =
+# ======================
+
+# not yet supported by agbcc :/
+# %/main.o:            CFLAGS += -mtpcs-frame
+
+%/irq.o:            CFLAGS += -O0
+%/random.o:         CFLAGS += -O0

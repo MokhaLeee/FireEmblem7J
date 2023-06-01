@@ -1235,7 +1235,7 @@ SetInterrupt_LCDVBlank: @ 0x0800183C
 	strb r2, [r0, #4]
 	movs r0, #0
 	ldr r1, [r7]
-	bl SetIRQHandler
+	bl SetIrqFunc
 	ldr r0, _08001874 @ =0x04000200
 	ldr r1, _08001874 @ =0x04000200
 	ldrh r2, [r1]
@@ -1290,7 +1290,7 @@ sub_080018A8: @ 0x080018A8
 	strb r2, [r0, #4]
 	movs r0, #2
 	ldr r1, [r7]
-	bl SetIRQHandler
+	bl SetIrqFunc
 	ldr r0, _080018E0 @ =0x04000200
 	ldr r1, _080018E0 @ =0x04000200
 	ldrh r2, [r1]
@@ -4052,7 +4052,7 @@ _08002D4C:
 	ldr r0, _08002D78 @ =0x03002844
 	ldr r1, [r0]
 	movs r0, #1
-	bl SetIRQHandler
+	bl SetIrqFunc
 	ldr r0, _08002D7C @ =0x04000200
 	ldr r1, _08002D7C @ =0x04000200
 	ldrh r2, [r1]
@@ -4076,7 +4076,7 @@ _08002D80:
 	ldr r0, _08002DAC @ =0x03002E58
 	ldr r1, [r0]
 	movs r0, #1
-	bl SetIRQHandler
+	bl SetIrqFunc
 	ldr r0, _08002DB0 @ =0x04000200
 	ldr r1, _08002DB0 @ =0x04000200
 	ldrh r2, [r1]
@@ -4099,7 +4099,7 @@ _08002DB4:
 	strb r2, [r0, #4]
 	ldr r1, _08002DE0 @ =sub_08002CA4
 	movs r0, #1
-	bl SetIRQHandler
+	bl SetIrqFunc
 	ldr r0, _08002DE4 @ =0x04000200
 	ldr r1, _08002DE4 @ =0x04000200
 	ldrh r2, [r1]
@@ -13741,7 +13741,7 @@ _080074F0:
 	bne _0800750E
 	movs r5, #0x18
 _0800750E:
-	bl AdvanceGetLCGRNValue
+	bl RandNextB
 	lsrs r0, r0, #0x10
 	movs r1, #7
 	ands r0, r1
@@ -14269,7 +14269,7 @@ _08007908: .4byte 0x030040E0
 sub_0800790C: @ 0x0800790C
 	push {r4, lr}
 	adds r4, r0, #0
-	bl AdvanceGetLCGRNValue
+	bl RandNextB
 	lsrs r2, r0, #0x10
 	ldrh r0, [r4, #0x30]
 	subs r0, #1
@@ -21862,7 +21862,7 @@ sub_0800B578: @ 0x0800B578
 	ands r0, r1
 	cmp r0, #0
 	bne _0800B5A4
-	bl AdvanceGetLCGRNValue
+	bl RandNextB
 	movs r1, #0x5b
 	bl __umodsi3
 	adds r4, r0, #0

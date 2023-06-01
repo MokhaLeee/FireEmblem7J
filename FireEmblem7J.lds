@@ -17,7 +17,10 @@ SECTIONS
 	IWRAM (NOLOAD) :
 	ALIGN(4)
 	{
-	
+		/* .bss */
+		. = ALIGN(4); src/random.o(.bss);
+		. = 0x002800; gIrqFuncs = .;
+		. = 0x003870; IntrMainRam = .;
 	}
 
 	. = 0x08000000;
@@ -30,13 +33,16 @@ SECTIONS
 		src/arm.o(.text);
 
 		asm/main.o(.text);
-		asm/irq.o(.text);
-		asm/random.o(.text);
+		src/irq.o(.text);
+		src/random.o(.text);
 		asm/code.o(.text);
 		asm/unit.o(.text);
 		asm/fe7.o(.text);
 
 		/* .data & .rodata */
-		. = ALIGN(4); data/fe7.o(.data)
+		. = ALIGN(4); data/const_data.o(.rodata)
+		. = 0x0C0C78; src/irq.o(.rodata)
+		. = ALIGN(4); src/random.o(.rodata);
+		. = ALIGN(4); data/data.o(.data)
 	}
 }
