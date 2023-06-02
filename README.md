@@ -1,5 +1,9 @@
 # Fire Emblem - Rekka no Ken (Japan)
 
+[![PRs Welcome](https://img.shields.io/badge/PRs-welcome-brightgreen.svg?style=flat-square)](https://makeapullrequest.com)
+
+[FE Decomp Portal](https://laqieer.github.io/fe-decomp-portal/)
+
 This is a decompilation of **Fire Emblem - Rekka no Ken (Japan)** (FE7J)
 
 It builds the following ROM:
@@ -8,10 +12,12 @@ It builds the following ROM:
 
 ## Quick setup
 
-- get a `arm-none-eabi` binutils toolchain (devkitARM works).
-- get a copy of the original rom (still required for every build for now), put it in this folder and name it `FireEmblem7J.base.gba`.
-- run [tools/install-agbcc.sh](tools/install-agbcc.sh) or get an agbcc another way.
-- `make -j12`
+```sh
+# on Debian/Ubuntu variants (such as default WSL2)
+sudo apt install build-essential gcc-arm-none-eabi
+tools/install-agbcc.sh
+make -j12
+```
 
 ## Contributing
 
