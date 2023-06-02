@@ -41,3 +41,9 @@ jobs:
         with:
           name: symbol-file
           path: ./*.sym
+
+      - name: Calculate decomp progress
+        run: .github/calcrom/calcrom.sh $REPO | tee progress.txt
+
+      - name: Upload decomp progress
+        run: python .github/calcrom/upload-progress.py -b "https://progress.deco.mp" -a ${{secrets.PROGRESS_API_KEY}} -p fireemblem7j -v jp -t .github/calcrom/progress.template.txt progress.txt
