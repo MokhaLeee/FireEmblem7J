@@ -1,0 +1,51 @@
+name: CI
+
+on:
+  push:
+    branches: [ main ]
+  pull_request:
+
+jobs:
+  build:
+    runs-on: ubuntu-latest
+    env:
+      REPO: ${{ github.event.repository.name }}
+    steps:
+      - name: Checkout
+        uses: actions/checkout@master
+
+      - name: Checkout agbcc
+        uses: actions/checkout@master
+        with:
+          path: agbcc
+          repository: pret/agbcc
+
+      - name: Install binutils
+        run: sudo apt install gcc-arm-none-eabi binutils-arm-none-eabi
+        # build-essential, git, and libpng-dev are already installed
+        # gcc-arm-none-eabi is only needed for arm-none-eabi-cpp
+
+      - name: Install agbcc
+        run: |
+          ./build.sh
+          ./install.sh ../
+        working-directory: agbcc
+
+      - name: Mock base ROM
+        run: head -c 16M /dev/urandom > $REPO.base.gba
+
+      - name: Build
+        run: make -j${nproc} syms
+
+      - uses: actions/upload-artifact@v3
+        with:
+          name: symbol-file
+          path: ./*.sym
+
+      - name: Calculate decomp progress
+        run: .github/calcrom/calcrom.sh $REPO | tee progress.txt
+
+      - name: Upload decomp progress
+        run: |
+          python -m pip install ttp
+          python .github/calcrom/upload-progress.py -b "https://progress.deco.mp" -a ${{secrets.PROGRESS_API_KEY}} -p fireemblem7j -v jp -t .github/calcrom/progress.template.txt progress.txt

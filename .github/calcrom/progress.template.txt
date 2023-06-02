@@ -1,0 +1,8 @@
+{{ code/total }} total bytes of code
+{{ code }} bytes of code in src ({{ ignore }}%)
+{{ ignore }} bytes of code in asm ({{ ignore }}%)
+
+{{ symbols/total }} total symbols
+{{ symbols }} symbols documented ({{ ignore }}%)
+{{ symbols/wip }} symbols partially documented ({{ ignore }}%)
+{{ ignore }} symbols undocumented ({{ ignore }}%)

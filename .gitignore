@@ -929,3 +929,15 @@ MigrationBackup/
 *.rep
 
 .vscode
+
+###################
+### Symbol file ###
+###################
+
+*.sym
+
+###################
+### Progress file ###
+###################
+
+progress.txt
