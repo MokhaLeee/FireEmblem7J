@@ -91,8 +91,8 @@ compare: $(ROM)
 .PHONY: compare
 
 clean:
-	@echo "RM $(ROM) $(ELF) $(MAP) $(BUILD_DIR)/"
-	@rm -f $(ROM) $(ELF) $(MAP)
+	@echo "RM $(ROM) $(ELF) $(MAP) $(SYM) $(BUILD_DIR)/"
+	@rm -f $(ROM) $(ELF) $(MAP) $(SYM)
 	@rm -fr $(BUILD_DIR)/
 
 .PHONY: clean
