@@ -1,0 +1,42 @@
+name: CI
+
+on:
+  push:
+    branches: [ main ]
+  pull_request:
+
+jobs:
+  build:
+    runs-on: ubuntu-latest
+    env:
+      REPO: ${{ github.event.repository.name }}
+    steps:
+      - name: Checkout
+        uses: actions/checkout@master
+
+      - name: Checkout agbcc
+        uses: actions/checkout@master
+        with:
+          path: agbcc
+          repository: pret/agbcc
+
+      - name: Install binutils
+        run: sudo apt install binutils-arm-none-eabi
+        # build-essential, git, and libpng-dev are already installed
+
+      - name: Install agbcc
+        run: |
+          ./build.sh
+          ./install.sh ../
+        working-directory: agbcc
+
+      - name: Mock base ROM
+        run: head -c 16M /dev/urandom > $REPO.base.gba
+
+      - name: Build
+        run: make -j${nproc} syms
+
+      - uses: actions/upload-artifact@v3
+        with:
+          name: symbol-file
+          path: $REPO.sym
