@@ -935,3 +935,9 @@ MigrationBackup/
 ###################
 
 *.sym
+
+###################
+### Progress file ###
+###################
+
+progress.txt
