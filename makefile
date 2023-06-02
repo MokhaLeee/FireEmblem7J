@@ -90,6 +90,8 @@ compare: $(ROM)
 
 .PHONY: compare
 
+all: $(ROM) $(ELF) $(MAP) $(SYM)
+
 clean:
 	@echo "[ RM]	$(ROM) $(ELF) $(MAP) $(BUILD_DIR)/"
 	@rm -f $(ROM) $(ELF) $(MAP) $(SYM)
@@ -100,7 +102,7 @@ clean:
 syms: $(SYM)
 
 %.gba: %.elf
-	@echo "[GEN]	$<"
+	@echo "[GEN]	$@"
 	@$(OBJCOPY) --strip-debug -O binary $< $@
 
 $(ELF): $(ALL_OBJS) $(LDS)
@@ -132,9 +134,9 @@ ifneq (clean,$(MAKECMDGOALS))
   .PRECIOUS: $(BUILD_DIR)/%.d
 endif
 
-# ======================
+# =====================
 # = CFLAGS overrides =
-# ======================
+# =====================
 
 # not yet supported by agbcc :/
 # %/main.o:            CFLAGS += -mtpcs-frame
@@ -142,9 +144,10 @@ endif
 %/irq.o:            CFLAGS += -O0
 %/random.o:         CFLAGS += -O0
 
-###################
-### Symbol file ###
-###################
+# ===============
+# = Symbol file =
+# ===============
 
 $(SYM): $(ELF)
-	$(OBJDUMP) -t $< | sort -u | grep -E "^0[2389]" | $(PERL) -p -e 's/^(\w{8}) (\w).{6} \S+\t(\w{8}) (\S+)$$/\1 \2 \3 \4/g' > $@
+	@echo "[GEN]	$@"
+	@$(OBJDUMP) -t $< | sort -u | grep -E "^0[2389]" | $(PERL) -p -e 's/^(\w{8}) (\w).{6} \S+\t(\w{8}) (\S+)$$/\1 \2 \3 \4/g' > $@

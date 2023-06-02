@@ -16,7 +16,7 @@ It builds the following ROM:
 # on Debian/Ubuntu variants (such as default WSL2)
 sudo apt install build-essential gcc-arm-none-eabi
 tools/install-agbcc.sh
-make -j12
+make compare -j12
 ```
 
 ## Contributing
