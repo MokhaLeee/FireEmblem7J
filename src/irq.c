@@ -1,4 +1,4 @@
-#include "common.h"
+#include "global.h"
 #include "irq.h"
 
 extern IrqFunc gIrqFuncs[INT_COUNT];

@@ -1,9 +1,8 @@
 #pragma once
 
-#include "gba/gba.h"
+#include "global.h"
 
-enum
-{
+enum intr_index {
     // TODO: INT constants
 
     INT_VBLANK = 0,
@@ -16,6 +15,5 @@ enum
 typedef void (* IrqFunc)(void);
 
 void IrqMain(void);
-
 void IrqInit(void);
 void SetIrqFunc(int num, IrqFunc func);

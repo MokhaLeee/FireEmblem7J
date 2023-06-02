@@ -10,7 +10,7 @@ SECTIONS
 	EWRAM (NOLOAD) :
 	ALIGN(4)
 	{
-
+		. = 0x02BBF4; gPlaySt = .;
 	}
 
 	. = 0x03000000;
@@ -36,6 +36,13 @@ SECTIONS
 		src/irq.o(.text);
 		src/random.o(.text);
 		asm/code.o(.text);
+		asm/evt-utils.o(.text);
+		asm/sprite-anim.o(.text);
+		asm/game-ctrl.o(.text);
+		asm/utils.o(.text);
+		asm/bm.o(.text);
+		asm/item.o(.text);
+		src/unit.o(.text);
 		asm/unit.o(.text);
 		asm/fe7.o(.text);
 

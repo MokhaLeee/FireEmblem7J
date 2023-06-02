@@ -1,11 +1,7 @@
 #pragma once
 
-enum
-{
+enum {
     // Terrain identifiers
-
-    // I'm going by the FE8 in-game names + some old FE7 nmm for this
-    // TODO: figure out in better details
 
     TERRAIN_TILE_00    = 0x00,
     TERRAIN_PLAINS     = 0x01,

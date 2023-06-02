@@ -3,539 +3,6 @@
 	.include "macro.inc"
 	.syntax unified
 
-	thumb_func_start InitUnits
-InitUnits: @ 0x080178C8
-	push {r4, r5, r6, r7, lr}
-	movs r5, #0
-	ldr r7, _080178F4 @ =0x08C0216C
-	movs r6, #0xff
-_080178D0:
-	adds r0, r5, #0
-	ands r0, r6
-	lsls r0, r0, #2
-	adds r0, r0, r7
-	ldr r4, [r0]
-	cmp r4, #0
-	beq _080178E6
-	adds r0, r4, #0
-	bl ClearUnit
-	strb r5, [r4, #0xb]
-_080178E6:
-	adds r5, #1
-	cmp r5, #0xff
-	ble _080178D0
-	pop {r4, r5, r6, r7}
-	pop {r0}
-	bx r0
-	.align 2, 0
-_080178F4: .4byte 0x08C0216C
-
-	thumb_func_start ClearUnit
-ClearUnit: @ 0x080178F8
-	push {r4, r5, lr}
-	sub sp, #4
-	adds r4, r0, #0
-	ldrb r5, [r4, #0xb]
-	mov r1, sp
-	movs r0, #0
-	strh r0, [r1]
-	ldr r2, _0801791C @ =0x01000024
-	mov r0, sp
-	adds r1, r4, #0
-	bl CpuSet
-	strb r5, [r4, #0xb]
-	add sp, #4
-	pop {r4, r5}
-	pop {r0}
-	bx r0
-	.align 2, 0
-_0801791C: .4byte 0x01000024
-
-	thumb_func_start CopyUnit
-CopyUnit: @ 0x08017920
-	push {r4, r5, lr}
-	adds r2, r0, #0
-	adds r4, r1, #0
-	ldrb r5, [r4, #0xb]
-	adds r0, r4, #0
-	adds r1, r2, #0
-	movs r2, #0x48
-	bl memcpy
-	strb r5, [r4, #0xb]
-	pop {r4, r5}
-	pop {r0}
-	bx r0
-	.align 2, 0
-
-	thumb_func_start GetFreeUnit
-GetFreeUnit: @ 0x0801793C
-	push {r4, r5, lr}
-	adds r3, r0, #0
-	adds r3, #0x40
-	adds r2, r0, #1
-	cmp r2, r3
-	bge _0801796A
-	ldr r5, _08017960 @ =0x08C0216C
-	movs r4, #0xff
-_0801794C:
-	adds r0, r2, #0
-	ands r0, r4
-	lsls r0, r0, #2
-	adds r0, r0, r5
-	ldr r1, [r0]
-	ldr r0, [r1]
-	cmp r0, #0
-	bne _08017964
-	adds r0, r1, #0
-	b _0801796C
-	.align 2, 0
-_08017960: .4byte 0x08C0216C
-_08017964:
-	adds r2, #1
-	cmp r2, r3
-	blt _0801794C
-_0801796A:
-	movs r0, #0
-_0801796C:
-	pop {r4, r5}
-	pop {r1}
-	bx r1
-	.align 2, 0
-
-	thumb_func_start GetFreeBlueUnit
-GetFreeBlueUnit: @ 0x08017974
-	push {r4, r5, lr}
-	movs r5, #0x40
-	ldrb r4, [r0]
-	bl sub_080307E4
-	movs r2, #1
-	ldr r4, _08017998 @ =0x08C0216C
-	movs r3, #0xff
-_08017984:
-	adds r0, r2, #0
-	ands r0, r3
-	lsls r0, r0, #2
-	adds r0, r0, r4
-	ldr r1, [r0]
-	ldr r0, [r1]
-	cmp r0, #0
-	bne _0801799C
-	adds r0, r1, #0
-	b _080179A4
-	.align 2, 0
-_08017998: .4byte 0x08C0216C
-_0801799C:
-	adds r2, #1
-	cmp r2, r5
-	blt _08017984
-	movs r0, #0
-_080179A4:
-	pop {r4, r5}
-	pop {r1}
-	bx r1
-	.align 2, 0
-
-	thumb_func_start GetUnitFogViewRange
-GetUnitFogViewRange: @ 0x080179AC
-	adds r2, r0, #0
-	ldr r0, _080179D4 @ =0x0202BBF4
-	ldrb r3, [r0, #0xd]
-	ldr r0, [r2]
-	ldr r1, [r2, #4]
-	ldr r0, [r0, #0x28]
-	ldr r1, [r1, #0x28]
-	orrs r0, r1
-	movs r1, #8
-	ands r0, r1
-	cmp r0, #0
-	beq _080179C6
-	adds r3, #5
-_080179C6:
-	adds r0, r2, #0
-	adds r0, #0x31
-	ldrb r0, [r0]
-	lsls r0, r0, #0x1c
-	lsrs r0, r0, #0x1c
-	adds r0, r3, r0
-	bx lr
-	.align 2, 0
-_080179D4: .4byte 0x0202BBF4
-
-	thumb_func_start SetUnitStatus
-SetUnitStatus: @ 0x080179D8
-	adds r2, r1, #0
-	cmp r2, #0
-	bne _080179E2
-	adds r0, #0x30
-	b _080179EC
-_080179E2:
-	adds r0, #0x30
-	movs r1, #0xf
-	ands r2, r1
-	movs r1, #0x50
-	orrs r2, r1
-_080179EC:
-	strb r2, [r0]
-	bx lr
-
-	thumb_func_start GetUnitStatusName
-GetUnitStatusName: @ 0x080179F0
-	adds r0, #0x30
-	movs r3, #0xf
-	lsls r2, r2, #4
-	ands r1, r3
-	orrs r2, r1
-	strb r2, [r0]
-	bx lr
-	.align 2, 0
-
-	thumb_func_start GetUnitSMSId
-GetUnitSMSId: @ 0x08017A00
-	push {lr}
-	adds r2, r0, #0
-	ldr r0, [r2, #0xc]
-	movs r1, #0x80
-	lsls r1, r1, #4
-	ands r0, r1
-	cmp r0, #0
-	bne _08017A16
-	ldr r0, [r2, #4]
-	ldrb r0, [r0, #6]
-	b _08017A40
-_08017A16:
-	ldrb r0, [r2, #0x1c]
-	bl sub_0802C7D8
-	ldrb r0, [r0, #3]
-	cmp r0, #0x35
-	beq _08017A36
-	cmp r0, #0x35
-	bgt _08017A2C
-	cmp r0, #0x34
-	beq _08017A32
-	b _08017A3E
-_08017A2C:
-	cmp r0, #0x36
-	beq _08017A3A
-	b _08017A3E
-_08017A32:
-	movs r0, #0x4f
-	b _08017A40
-_08017A36:
-	movs r0, #0x50
-	b _08017A40
-_08017A3A:
-	movs r0, #0x51
-	b _08017A40
-_08017A3E:
-	movs r0, #0
-_08017A40:
-	pop {r1}
-	bx r1
-
-	thumb_func_start UnitAddItem
-UnitAddItem: @ 0x08017A44
-	movs r3, #0
-	adds r2, r0, #0
-	adds r2, #0x1e
-_08017A4A:
-	ldrh r0, [r2]
-	cmp r0, #0
-	bne _08017A56
-	strh r1, [r2]
-	movs r0, #1
-	b _08017A60
-_08017A56:
-	adds r2, #2
-	adds r3, #1
-	cmp r3, #4
-	ble _08017A4A
-	movs r0, #0
-_08017A60:
-	bx lr
-	.align 2, 0
-
-	thumb_func_start UnitClearInventory
-UnitClearInventory: @ 0x08017A64
-	movs r2, #0
-	movs r1, #4
-	adds r0, #0x26
-_08017A6A:
-	strh r2, [r0]
-	subs r0, #2
-	subs r1, #1
-	cmp r1, #0
-	bge _08017A6A
-	bx lr
-	.align 2, 0
-
-	thumb_func_start UnitRemoveInvalidItems
-UnitRemoveInvalidItems: @ 0x08017A78
-	push {r4, r5, r6, lr}
-	sub sp, #0xc
-	mov r2, sp
-	movs r3, #0
-	adds r5, r0, #0
-	adds r5, #0x1e
-	adds r4, r5, #0
-	movs r6, #0
-_08017A88:
-	lsls r0, r3, #1
-	adds r1, r4, r0
-	ldrh r0, [r1]
-	cmp r0, #0
-	beq _08017A96
-	strh r0, [r2]
-	adds r2, #2
-_08017A96:
-	strh r6, [r1]
-	adds r0, r3, #1
-	lsls r0, r0, #0x10
-	lsrs r3, r0, #0x10
-	cmp r3, #4
-	bls _08017A88
-	movs r0, #0
-	strh r0, [r2]
-	movs r3, #0
-	adds r4, r5, #0
-_08017AAA:
-	lsls r2, r3, #1
-	mov r1, sp
-	adds r0, r1, r2
-	ldrh r1, [r0]
-	cmp r1, #0
-	beq _08017AC4
-	adds r0, r4, r2
-	strh r1, [r0]
-	adds r0, r3, #1
-	lsls r0, r0, #0x10
-	lsrs r3, r0, #0x10
-	cmp r3, #4
-	bls _08017AAA
-_08017AC4:
-	add sp, #0xc
-	pop {r4, r5, r6}
-	pop {r0}
-	bx r0
-
-	thumb_func_start GetUnitItemCount
-GetUnitItemCount: @ 0x08017ACC
-	movs r2, #4
-	adds r1, r0, #0
-	adds r1, #0x26
-_08017AD2:
-	ldrh r0, [r1]
-	cmp r0, #0
-	beq _08017ADC
-	adds r0, r2, #1
-	b _08017AE6
-_08017ADC:
-	subs r1, #2
-	subs r2, #1
-	cmp r2, #0
-	bge _08017AD2
-	movs r0, #0
-_08017AE6:
-	bx lr
-
-	thumb_func_start UnitHasItem
-UnitHasItem: @ 0x08017AE8
-	push {r4, r5, r6, lr}
-	adds r4, r0, #0
-	adds r5, r1, #0
-	adds r0, r5, #0
-	bl GetItemIndex
-	adds r5, r0, #0
-	movs r6, #0
-	ldrh r0, [r4, #0x1e]
-	cmp r0, #0
-	beq _08017B1C
-	adds r4, #0x1e
-_08017B00:
-	ldrh r0, [r4]
-	bl GetItemIndex
-	cmp r0, r5
-	bne _08017B0E
-	movs r0, #1
-	b _08017B1E
-_08017B0E:
-	adds r4, #2
-	adds r6, #1
-	cmp r6, #4
-	bgt _08017B1C
-	ldrh r0, [r4]
-	cmp r0, #0
-	bne _08017B00
-_08017B1C:
-	movs r0, #0
-_08017B1E:
-	pop {r4, r5, r6}
-	pop {r1}
-	bx r1
-
-	thumb_func_start sub_08017B24
-sub_08017B24: @ 0x08017B24
-	push {r4, r5, lr}
-	adds r4, r0, #0
-	movs r5, #0
-	b _08017B36
-_08017B2C:
-	adds r0, r4, #0
-	bl LoadUnit
-	adds r4, #0x10
-	adds r5, #1
-_08017B36:
-	ldrb r0, [r4]
-	cmp r0, #0
-	bne _08017B2C
-	adds r0, r5, #0
-	pop {r4, r5}
-	pop {r1}
-	bx r1
-
-	thumb_func_start sub_08017B44
-sub_08017B44: @ 0x08017B44
-	adds r2, r0, #0
-	movs r0, #0x14
-	ldrsb r0, [r2, r0]
-	cmp r0, #3
-	ble _08017B56
-	lsrs r1, r0, #0x1f
-	adds r0, r0, r1
-	asrs r0, r0, #1
-	strb r0, [r2, #0x14]
-_08017B56:
-	movs r0, #0x17
-	ldrsb r0, [r2, r0]
-	cmp r0, #3
-	ble _08017B66
-	lsrs r1, r0, #0x1f
-	adds r0, r0, r1
-	asrs r0, r0, #1
-	strb r0, [r2, #0x17]
-_08017B66:
-	movs r0, #0x18
-	ldrsb r0, [r2, r0]
-	cmp r0, #3
-	ble _08017B76
-	lsrs r1, r0, #0x1f
-	adds r0, r0, r1
-	asrs r0, r0, #1
-	strb r0, [r2, #0x18]
-_08017B76:
-	bx lr
-
-	thumb_func_start LoadUnit
-LoadUnit: @ 0x08017B78
-	push {r4, r5, lr}
-	adds r5, r0, #0
-	movs r4, #0
-	ldrb r1, [r5, #3]
-	lsls r0, r1, #0x1d
-	lsrs r0, r0, #0x1e
-	cmp r0, #1
-	beq _08017BA4
-	cmp r0, #1
-	bgt _08017B92
-	cmp r0, #0
-	beq _08017B98
-	b _08017BAC
-_08017B92:
-	cmp r0, #2
-	beq _08017BA0
-	b _08017BAC
-_08017B98:
-	adds r0, r5, #0
-	bl GetFreeBlueUnit
-	b _08017BAA
-_08017BA0:
-	movs r0, #0x80
-	b _08017BA6
-_08017BA4:
-	movs r0, #0x40
-_08017BA6:
-	bl GetFreeUnit
-_08017BAA:
-	adds r4, r0, #0
-_08017BAC:
-	cmp r4, #0
-	bne _08017BB4
-	movs r0, #0
-	b _08017C52
-_08017BB4:
-	adds r0, r4, #0
-	bl ClearUnit
-	adds r0, r4, #0
-	adds r1, r5, #0
-	bl UnitInitFromDefinition
-	ldr r1, [r4]
-	adds r0, r4, #0
-	bl UnitLoadStatsFromChracter
-	adds r0, r4, #0
-	bl sub_0802C2D4
-	movs r0, #1
-	ldrb r1, [r5, #3]
-	ands r0, r1
-	cmp r0, #0
-	beq _08017C0A
-	movs r0, #0xc0
-	ldrb r1, [r4, #0xb]
-	ands r0, r1
-	cmp r0, #0
-	bne _08017BF4
-	adds r0, r4, #0
-	bl UnitAutolevelRealistic
-	adds r0, r4, #0
-	adds r1, r5, #0
-	bl UnitAutolevelWExp
-	b _08017C0A
-_08017BF4:
-	adds r0, r4, #0
-	bl UnitAutolevel
-	adds r0, r4, #0
-	adds r1, r5, #0
-	bl UnitAutolevelWExp
-	ldrb r1, [r5, #2]
-	adds r0, r4, #0
-	adds r0, #0x38
-	strb r1, [r0]
-_08017C0A:
-	adds r0, r4, #0
-	bl FixROMUnitStructPtr
-	adds r0, r4, #0
-	bl UnitLoadSupports
-	ldr r0, [r4]
-	ldr r1, [r4, #4]
-	ldr r0, [r0, #0x28]
-	ldr r1, [r1, #0x28]
-	orrs r0, r1
-	movs r1, #0x80
-	lsls r1, r1, #0x14
-	ands r0, r1
-	cmp r0, #0
-	beq _08017C34
-	ldr r0, [r4, #0xc]
-	movs r1, #0x80
-	lsls r1, r1, #5
-	orrs r0, r1
-	str r0, [r4, #0xc]
-_08017C34:
-	adds r0, r4, #0
-	bl UnitCheckStatCaps
-	adds r0, r4, #0
-	bl sub_08016BC4
-	lsls r0, r0, #0x10
-	lsrs r0, r0, #0x10
-	bl sub_080164BC
-	movs r1, #0x12
-	ldrsb r1, [r4, r1]
-	adds r1, r1, r0
-	strb r1, [r4, #0x13]
-	adds r0, r4, #0
-_08017C52:
-	pop {r4, r5}
-	pop {r1}
-	bx r1
-
 	thumb_func_start UnitInitFromDefinition
 UnitInitFromDefinition: @ 0x08017C58
 	push {r4, r5, r6, r7, lr}
@@ -592,7 +59,7 @@ _08017C96:
 	adds r7, r4, #0
 _08017CB4:
 	ldrb r0, [r4]
-	bl sub_080165F0
+	bl MakeNewItem
 	adds r1, r0, #0
 	adds r0, r5, #0
 	bl UnitAddItem
@@ -606,7 +73,7 @@ _08017CB4:
 _08017CD0:
 	adds r0, r5, #0
 	adds r1, r6, #0
-	bl sub_08037804
+	bl CharStoreAI
 	pop {r4, r5, r6, r7}
 	pop {r0}
 	bx r0
@@ -628,7 +95,7 @@ UnitLoadItemsFromDefinition: @ 0x08017CE4
 	adds r6, r4, #0
 _08017CFC:
 	ldrb r0, [r4]
-	bl sub_080165F0
+	bl MakeNewItem
 	adds r1, r0, #0
 	adds r0, r5, #0
 	bl UnitAddItem
@@ -940,10 +407,10 @@ UnitApplyBonusLevels: @ 0x08017F3C
 	adds r0, r4, #0
 	bl UnitCheckStatCaps
 	adds r0, r4, #0
-	bl sub_08016BC4
+	bl GetUnitEquippedWeapon
 	lsls r0, r0, #0x10
 	lsrs r0, r0, #0x10
-	bl sub_080164BC
+	bl GetItemHpBonus
 	movs r1, #0x12
 	ldrsb r1, [r4, r1]
 	adds r1, r1, r0
@@ -1192,7 +659,7 @@ GetUnitFromCharId: @ 0x08018124
 	push {r4, r5, lr}
 	adds r3, r0, #0
 	movs r2, #1
-	ldr r5, _0801814C @ =0x08C0216C
+	ldr r5, _0801814C @ =gUnitLut
 	movs r4, #0xff
 _0801812E:
 	adds r0, r2, #0
@@ -1211,7 +678,7 @@ _0801812E:
 	adds r0, r1, #0
 	b _08018158
 	.align 2, 0
-_0801814C: .4byte 0x08C0216C
+_0801814C: .4byte gUnitLut
 _08018150:
 	adds r2, #1
 	cmp r2, #0xff
@@ -1232,7 +699,7 @@ GetUnitFromCharIdAndFaction: @ 0x08018160
 	adds r1, #1
 	cmp r1, r3
 	bge _0801819A
-	ldr r6, _08018190 @ =0x08C0216C
+	ldr r6, _08018190 @ =gUnitLut
 	movs r5, #0xff
 _08018172:
 	adds r0, r1, #0
@@ -1251,7 +718,7 @@ _08018172:
 	adds r0, r2, #0
 	b _0801819C
 	.align 2, 0
-_08018190: .4byte 0x08C0216C
+_08018190: .4byte gUnitLut
 _08018194:
 	adds r1, #1
 	cmp r1, r3
@@ -1318,7 +785,7 @@ UnitDrop: @ 0x080181F8
 	adds r5, r0, #0
 	adds r6, r1, #0
 	adds r7, r2, #0
-	ldr r1, _08018244 @ =0x08C0216C
+	ldr r1, _08018244 @ =gUnitLut
 	ldrb r2, [r5, #0x1b]
 	lsls r0, r2, #2
 	adds r0, r0, r1
@@ -1337,7 +804,7 @@ UnitDrop: @ 0x080181F8
 	movs r0, #0xc0
 	ldrb r1, [r2, #0xb]
 	ands r0, r1
-	ldr r1, _08018248 @ =0x0202BBF4
+	ldr r1, _08018248 @ =gPlaySt
 	ldrb r1, [r1, #0xf]
 	cmp r0, r1
 	bne _08018234
@@ -1354,15 +821,15 @@ _08018234:
 	pop {r0}
 	bx r0
 	.align 2, 0
-_08018244: .4byte 0x08C0216C
-_08018248: .4byte 0x0202BBF4
+_08018244: .4byte gUnitLut
+_08018248: .4byte gPlaySt
 
 	thumb_func_start UnitGive
 UnitGive: @ 0x0801824C
 	push {r4, r5, r6, lr}
 	adds r4, r0, #0
 	adds r6, r1, #0
-	ldr r1, _0801827C @ =0x08C0216C
+	ldr r1, _0801827C @ =gUnitLut
 	ldrb r2, [r4, #0x1b]
 	lsls r0, r2, #2
 	adds r0, r0, r1
@@ -1381,7 +848,7 @@ UnitGive: @ 0x0801824C
 	pop {r1}
 	bx r1
 	.align 2, 0
-_0801827C: .4byte 0x08C0216C
+_0801827C: .4byte gUnitLut
 
 	thumb_func_start UnitKill
 UnitKill: @ 0x08018280
@@ -1449,7 +916,7 @@ _080182EC:
 	ldrb r0, [r4, #0x1b]
 	cmp r0, #0
 	beq _08018308
-	ldr r1, _08018314 @ =0x08C0216C
+	ldr r1, _08018314 @ =gUnitLut
 	ldrb r2, [r4, #0x1b]
 	lsls r0, r2, #2
 	adds r0, r0, r1
@@ -1462,7 +929,7 @@ _08018308:
 	bx r0
 	.align 2, 0
 _08018310: .4byte 0xFFFFEFFF
-_08018314: .4byte 0x08C0216C
+_08018314: .4byte gUnitLut
 
 	thumb_func_start UnitFinalizeMovement
 UnitFinalizeMovement: @ 0x08018318
@@ -1473,7 +940,7 @@ UnitFinalizeMovement: @ 0x08018318
 	ands r0, r1
 	cmp r0, #0
 	beq _08018338
-	ldr r1, _08018358 @ =0x08C0216C
+	ldr r1, _08018358 @ =gUnitLut
 	ldrb r2, [r4, #0x1b]
 	lsls r0, r2, #2
 	adds r0, r0, r1
@@ -1490,7 +957,7 @@ _08018338:
 	cmp r0, #0
 	beq _08018352
 	ldrb r0, [r4, #0x1c]
-	bl sub_0802C7D8
+	bl GetTrap
 	ldrb r1, [r4, #0x10]
 	strb r1, [r0]
 	ldrb r1, [r4, #0x11]
@@ -1500,7 +967,7 @@ _08018352:
 	pop {r0}
 	bx r0
 	.align 2, 0
-_08018358: .4byte 0x08C0216C
+_08018358: .4byte gUnitLut
 
 	thumb_func_start UnitGetDeathDropLocation
 UnitGetDeathDropLocation: @ 0x0801835C
@@ -1515,7 +982,7 @@ UnitGetDeathDropLocation: @ 0x0801835C
 	str r2, [sp, #4]
 	ldr r0, _08018460 @ =0x0000270F
 	str r0, [sp, #8]
-	ldr r1, _08018464 @ =0x08C0216C
+	ldr r1, _08018464 @ =gUnitLut
 	movs r4, #0xff
 	mov r2, r8
 	ldrb r2, [r2, #0x1b]
@@ -1637,7 +1104,7 @@ _0801844E:
 	b _08018488
 	.align 2, 0
 _08018460: .4byte 0x0000270F
-_08018464: .4byte 0x08C0216C
+_08018464: .4byte gUnitLut
 _08018468: .4byte 0x08C52F22
 _0801846C: .4byte 0x030045B0
 _08018470: .4byte 0x0202E3D8
@@ -1836,20 +1303,20 @@ _080185EA:
 	movs r4, #0x13
 	ldrsb r4, [r5, r4]
 	adds r0, r5, #0
-	bl sub_08016BC4
+	bl GetUnitEquippedWeapon
 	lsls r0, r0, #0x10
 	lsrs r0, r0, #0x10
-	bl sub_080164BC
+	bl GetItemHpBonus
 	movs r1, #0x12
 	ldrsb r1, [r5, r1]
 	adds r1, r1, r0
 	cmp r4, r1
 	ble _08018630
 	adds r0, r5, #0
-	bl sub_08016BC4
+	bl GetUnitEquippedWeapon
 	lsls r0, r0, #0x10
 	lsrs r0, r0, #0x10
-	bl sub_080164BC
+	bl GetItemHpBonus
 	movs r1, #0x12
 	ldrsb r1, [r5, r1]
 	adds r1, r1, r0
@@ -1878,12 +1345,12 @@ _08018654: .4byte 0x0203A858
 	thumb_func_start ClearActiveFactionGrayedStates
 ClearActiveFactionGrayedStates: @ 0x08018658
 	push {r4, r5, r6, lr}
-	ldr r0, _080186E0 @ =0x0202BBF4
+	ldr r0, _080186E0 @ =gPlaySt
 	ldrb r0, [r0, #0xf]
 	cmp r0, #0
 	bne _080186A2
 	movs r4, #1
-	ldr r5, _080186E4 @ =0x08C0216C
+	ldr r5, _080186E4 @ =gUnitLut
 _08018666:
 	movs r0, #0xff
 	ands r0, r4
@@ -1916,13 +1383,13 @@ _0801869C:
 	cmp r4, #0x3f
 	ble _08018666
 _080186A2:
-	ldr r1, _080186E0 @ =0x0202BBF4
+	ldr r1, _080186E0 @ =gPlaySt
 	ldrb r0, [r1, #0xf]
 	adds r2, r0, #1
 	adds r0, #0x40
 	cmp r2, r0
 	bge _080186DA
-	ldr r6, _080186E4 @ =0x08C0216C
+	ldr r6, _080186E4 @ =gUnitLut
 	movs r5, #0xff
 	ldr r4, _080186EC @ =0xFFFFFBBD
 	adds r3, r1, #0
@@ -1951,8 +1418,8 @@ _080186DA:
 	pop {r0}
 	bx r0
 	.align 2, 0
-_080186E0: .4byte 0x0202BBF4
-_080186E4: .4byte 0x08C0216C
+_080186E0: .4byte gPlaySt
+_080186E4: .4byte gUnitLut
 _080186E8: .4byte 0x0001000E
 _080186EC: .4byte 0xFFFFFBBD
 
@@ -1965,14 +1432,14 @@ TickActiveFactionTurn: @ 0x080186F0
 	mov r8, r0
 	movs r1, #0
 	bl sub_0804B4C0
-	ldr r0, _08018708 @ =0x0202BBF4
+	ldr r0, _08018708 @ =gPlaySt
 	ldrb r0, [r0, #0xf]
 	adds r5, r0, #1
 	b _080187AC
 	.align 2, 0
-_08018708: .4byte 0x0202BBF4
+_08018708: .4byte gPlaySt
 _0801870C:
-	ldr r1, _080187D8 @ =0x08C0216C
+	ldr r1, _080187D8 @ =gUnitLut
 	movs r0, #0xff
 	ands r0, r5
 	lsls r0, r0, #2
@@ -2052,7 +1519,7 @@ _08018772:
 	bl sub_0804B4D8
 _080187A6:
 	adds r5, #1
-	ldr r0, _080187E0 @ =0x0202BBF4
+	ldr r0, _080187E0 @ =gPlaySt
 	ldrb r0, [r0, #0xf]
 _080187AC:
 	adds r0, #0x40
@@ -2074,15 +1541,15 @@ _080187CE:
 	pop {r0}
 	bx r0
 	.align 2, 0
-_080187D8: .4byte 0x08C0216C
+_080187D8: .4byte gUnitLut
 _080187DC: .4byte 0x0001002C
-_080187E0: .4byte 0x0202BBF4
+_080187E0: .4byte gPlaySt
 
 	thumb_func_start SetAllUnitNotBackSprite
 SetAllUnitNotBackSprite: @ 0x080187E4
 	push {r4, r5, lr}
 	movs r2, #1
-	ldr r5, _08018814 @ =0x08C0216C
+	ldr r5, _08018814 @ =gUnitLut
 	movs r4, #0xff
 	ldr r3, _08018818 @ =0xFFFFFEFF
 _080187EE:
@@ -2107,7 +1574,7 @@ _08018808:
 	pop {r0}
 	bx r0
 	.align 2, 0
-_08018814: .4byte 0x08C0216C
+_08018814: .4byte gUnitLut
 _08018818: .4byte 0xFFFFFEFF
 
 	thumb_func_start UnitUpdateUsedItem
@@ -2191,7 +1658,7 @@ _0801889C:
 GetUnitMagBy2Range: @ 0x080188A4
 	push {r4, lr}
 	adds r4, r0, #0
-	bl sub_08016BC4
+	bl GetUnitEquippedWeapon
 	lsls r0, r0, #0x10
 	lsrs r0, r0, #0x10
 	bl sub_080164E8
@@ -2398,7 +1865,7 @@ GetCombinedEnemyWeaponUsabilityBits: @ 0x08018A14
 	push {r4, r5, r6, lr}
 	movs r5, #0
 	movs r4, #0x81
-	ldr r6, _08018A48 @ =0x08C0216C
+	ldr r6, _08018A48 @ =gUnitLut
 _08018A1C:
 	movs r0, #0xff
 	ands r0, r4
@@ -2422,7 +1889,7 @@ _08018A38:
 	pop {r1}
 	bx r1
 	.align 2, 0
-_08018A48: .4byte 0x08C0216C
+_08018A48: .4byte gUnitLut
 
 	thumb_func_start CanUnitMove
 CanUnitMove: @ 0x08018A4C
@@ -2525,7 +1992,7 @@ IsPositionMagicSealed: @ 0x08018B0C
 	adds r5, r0, #0
 	adds r4, r1, #0
 	movs r3, #0x81
-	ldr r6, _08018B5C @ =0x08C0216C
+	ldr r6, _08018B5C @ =gUnitLut
 _08018B16:
 	movs r0, #0xff
 	ands r0, r3
@@ -2564,7 +2031,7 @@ _08018B48:
 	ble _08018B68
 	b _08018B6C
 	.align 2, 0
-_08018B5C: .4byte 0x08C0216C
+_08018B5C: .4byte gUnitLut
 _08018B60:
 	subs r0, r4, r2
 	adds r0, r1, r0
@@ -2640,7 +2107,7 @@ GetUnitMovementCost: @ 0x08018BC4
 	.align 2, 0
 _08018BD8: .4byte 0x08C52FA4
 _08018BDC:
-	ldr r0, _08018BF4 @ =0x0202BBF4
+	ldr r0, _08018BF4 @ =gPlaySt
 	ldrb r0, [r0, #0x15]
 	cmp r0, #1
 	blt _08018BFE
@@ -2652,7 +2119,7 @@ _08018BDC:
 	ldr r0, [r0, #0x3c]
 	b _08018C02
 	.align 2, 0
-_08018BF4: .4byte 0x0202BBF4
+_08018BF4: .4byte gPlaySt
 _08018BF8:
 	ldr r0, [r2, #4]
 	ldr r0, [r0, #0x40]
@@ -2685,7 +2152,7 @@ _08018C1C: .4byte 0x08C4F468
 UpdatePrevDeployStates: @ 0x08018C20
 	push {r4, r5, lr}
 	movs r4, #1
-	ldr r5, _08018C58 @ =0x08C0216C
+	ldr r5, _08018C58 @ =gUnitLut
 _08018C26:
 	movs r0, #0xff
 	ands r0, r4
@@ -2712,7 +2179,7 @@ _08018C26:
 	str r1, [r2, #0xc]
 	b _08018C62
 	.align 2, 0
-_08018C58: .4byte 0x08C0216C
+_08018C58: .4byte gUnitLut
 _08018C5C:
 	ldr r0, _08018C74 @ =0xFFEFFFFF
 	ands r1, r0
@@ -2732,7 +2199,7 @@ _08018C74: .4byte 0xFFEFFFFF
 LoadUnitPrepScreenPositions: @ 0x08018C78
 	push {r4, r5, r6, lr}
 	movs r4, #1
-	ldr r6, _08018CAC @ =0x08C0216C
+	ldr r6, _08018CAC @ =gUnitLut
 	ldr r5, _08018CB0 @ =0xFFEFFFFF
 _08018C80:
 	movs r0, #0xff
@@ -2758,7 +2225,7 @@ _08018C80:
 	str r1, [r2, #0xc]
 	b _08018CB8
 	.align 2, 0
-_08018CAC: .4byte 0x08C0216C
+_08018CAC: .4byte gUnitLut
 _08018CB0: .4byte 0xFFEFFFFF
 _08018CB4:
 	ands r1, r5
@@ -2775,8 +2242,8 @@ _08018CB8:
 ClearTemporaryUnits: @ 0x08018CC4
 	push {r4, r5, lr}
 	movs r3, #1
-	ldr r5, _08018CF4 @ =0x0202BBF4
-	ldr r4, _08018CF8 @ =0x08C0216C
+	ldr r5, _08018CF4 @ =gPlaySt
+	ldr r4, _08018CF8 @ =gUnitLut
 _08018CCC:
 	movs r0, #0xff
 	ands r0, r3
@@ -2798,8 +2265,8 @@ _08018CCC:
 	orrs r1, r0
 	b _08018D00
 	.align 2, 0
-_08018CF4: .4byte 0x0202BBF4
-_08018CF8: .4byte 0x08C0216C
+_08018CF4: .4byte gPlaySt
+_08018CF8: .4byte gUnitLut
 _08018CFC:
 	ldr r0, _08018D18 @ =0xFFDFFFFF
 	ands r1, r0
@@ -2832,7 +2299,7 @@ _08018D22:
 	cmp r0, #0
 	beq _08018D5E
 	movs r3, #1
-	ldr r5, _08018D6C @ =0x08C0216C
+	ldr r5, _08018D6C @ =gUnitLut
 	movs r4, #0xff
 _08018D38:
 	adds r0, r3, #0
@@ -2862,14 +2329,14 @@ _08018D5E:
 	bx r0
 	.align 2, 0
 _08018D68: .4byte 0xFBFFFFFF
-_08018D6C: .4byte 0x08C0216C
+_08018D6C: .4byte gUnitLut
 
 	thumb_func_start IsUnitSlotAvailable
 IsUnitSlotAvailable: @ 0x08018D70
 	push {r4, r5, r6, lr}
 	bl sub_0807B32C
 	movs r4, #1
-	ldr r5, _08018DA4 @ =0x08C0216C
+	ldr r5, _08018DA4 @ =gUnitLut
 _08018D7A:
 	movs r0, #0xff
 	ands r0, r4
@@ -2891,7 +2358,7 @@ _08018D7A:
 	bl ClearUnit
 	b _08018DE2
 	.align 2, 0
-_08018DA4: .4byte 0x08C0216C
+_08018DA4: .4byte gUnitLut
 _08018DA8:
 	movs r0, #0x80
 	lsls r0, r0, #0xe
@@ -2930,14 +2397,14 @@ _08018DE2:
 	adds r4, #1
 	cmp r4, #0x3f
 	ble _08018D7A
-	ldr r1, _08018E58 @ =0x0202BBF4
+	ldr r1, _08018E58 @ =gPlaySt
 	movs r0, #0x10
 	ldrb r1, [r1, #0x14]
 	ands r0, r1
 	cmp r0, #0
 	beq _08018E24
 	movs r3, #1
-	ldr r6, _08018E5C @ =0x08C0216C
+	ldr r6, _08018E5C @ =gUnitLut
 	movs r5, #0xff
 	movs r4, #0
 _08018DFC:
@@ -2964,7 +2431,7 @@ _08018E1E:
 	ble _08018DFC
 _08018E24:
 	movs r4, #0x41
-	ldr r5, _08018E5C @ =0x08C0216C
+	ldr r5, _08018E5C @ =gUnitLut
 _08018E28:
 	movs r0, #0xff
 	ands r0, r4
@@ -2988,8 +2455,8 @@ _08018E42:
 	bx r0
 	.align 2, 0
 _08018E54: .4byte 0xFFFEFFFF
-_08018E58: .4byte 0x0202BBF4
-_08018E5C: .4byte 0x08C0216C
+_08018E58: .4byte gPlaySt
+_08018E5C: .4byte gUnitLut
 
 	thumb_func_start sub_08018E60
 sub_08018E60: @ 0x08018E60
@@ -2997,20 +2464,20 @@ sub_08018E60: @ 0x08018E60
 	adds r5, r0, #0
 	movs r4, #0x13
 	ldrsb r4, [r5, r4]
-	bl sub_08016BC4
+	bl GetUnitEquippedWeapon
 	lsls r0, r0, #0x10
 	lsrs r0, r0, #0x10
-	bl sub_080164BC
+	bl GetItemHpBonus
 	movs r1, #0x12
 	ldrsb r1, [r5, r1]
 	adds r1, r1, r0
 	cmp r4, r1
 	ble _08018E94
 	adds r0, r5, #0
-	bl sub_08016BC4
+	bl GetUnitEquippedWeapon
 	lsls r0, r0, #0x10
 	lsrs r0, r0, #0x10
-	bl sub_080164BC
+	bl GetItemHpBonus
 	movs r1, #0x12
 	ldrsb r1, [r5, r1]
 	adds r1, r1, r0
@@ -3027,10 +2494,10 @@ _08018E94:
 sub_08018EA0: @ 0x08018EA0
 	push {r4, lr}
 	adds r4, r0, #0
-	bl sub_08016BC4
+	bl GetUnitEquippedWeapon
 	lsls r0, r0, #0x10
 	lsrs r0, r0, #0x10
-	bl sub_080164BC
+	bl GetItemHpBonus
 	adds r1, r0, #0
 	movs r0, #0x12
 	ldrsb r0, [r4, r0]
@@ -3044,7 +2511,7 @@ sub_08018EA0: @ 0x08018EA0
 sub_08018EC0: @ 0x08018EC0
 	push {r4, lr}
 	adds r4, r0, #0
-	bl sub_08016BC4
+	bl GetUnitEquippedWeapon
 	lsls r0, r0, #0x10
 	lsrs r0, r0, #0x10
 	bl sub_080164E8
@@ -3061,7 +2528,7 @@ sub_08018EC0: @ 0x08018EC0
 sub_08018EE0: @ 0x08018EE0
 	push {r4, lr}
 	adds r4, r0, #0
-	bl sub_08016BC4
+	bl GetUnitEquippedWeapon
 	lsls r0, r0, #0x10
 	lsrs r2, r0, #0x10
 	ldr r0, [r4, #0xc]
@@ -3095,7 +2562,7 @@ _08018F16:
 sub_08018F20: @ 0x08018F20
 	push {r4, lr}
 	adds r4, r0, #0
-	bl sub_08016BC4
+	bl GetUnitEquippedWeapon
 	lsls r0, r0, #0x10
 	lsrs r2, r0, #0x10
 	ldr r0, [r4, #0xc]
@@ -3129,7 +2596,7 @@ _08018F56:
 sub_08018F60: @ 0x08018F60
 	push {r4, lr}
 	adds r4, r0, #0
-	bl sub_08016BC4
+	bl GetUnitEquippedWeapon
 	lsls r0, r0, #0x10
 	lsrs r0, r0, #0x10
 	bl sub_0801656C
@@ -3146,7 +2613,7 @@ sub_08018F60: @ 0x08018F60
 sub_08018F80: @ 0x08018F80
 	push {r4, lr}
 	adds r4, r0, #0
-	bl sub_08016BC4
+	bl GetUnitEquippedWeapon
 	lsls r0, r0, #0x10
 	lsrs r0, r0, #0x10
 	bl sub_08016598
@@ -3167,7 +2634,7 @@ sub_08018F80: @ 0x08018F80
 sub_08018FA8: @ 0x08018FA8
 	push {r4, lr}
 	adds r4, r0, #0
-	bl sub_08016BC4
+	bl GetUnitEquippedWeapon
 	lsls r0, r0, #0x10
 	lsrs r0, r0, #0x10
 	bl sub_080165C4
@@ -3259,20 +2726,20 @@ sub_08019030: @ 0x08019030
 	strb r1, [r5, #0x13]
 	movs r4, #0x13
 	ldrsb r4, [r5, r4]
-	bl sub_08016BC4
+	bl GetUnitEquippedWeapon
 	lsls r0, r0, #0x10
 	lsrs r0, r0, #0x10
-	bl sub_080164BC
+	bl GetItemHpBonus
 	movs r1, #0x12
 	ldrsb r1, [r5, r1]
 	adds r1, r1, r0
 	cmp r4, r1
 	ble _08019066
 	adds r0, r5, #0
-	bl sub_08016BC4
+	bl GetUnitEquippedWeapon
 	lsls r0, r0, #0x10
 	lsrs r0, r0, #0x10
-	bl sub_080164BC
+	bl GetItemHpBonus
 	movs r1, #0x12
 	ldrsb r1, [r5, r1]
 	adds r1, r1, r0
@@ -3289,20 +2756,20 @@ sub_0801906C: @ 0x0801906C
 	movs r4, #0x13
 	ldrsb r4, [r5, r4]
 	adds r4, r4, r1
-	bl sub_08016BC4
+	bl GetUnitEquippedWeapon
 	lsls r0, r0, #0x10
 	lsrs r0, r0, #0x10
-	bl sub_080164BC
+	bl GetItemHpBonus
 	movs r1, #0x12
 	ldrsb r1, [r5, r1]
 	adds r1, r1, r0
 	cmp r4, r1
 	ble _080190A0
 	adds r0, r5, #0
-	bl sub_08016BC4
+	bl GetUnitEquippedWeapon
 	lsls r0, r0, #0x10
 	lsrs r0, r0, #0x10
-	bl sub_080164BC
+	bl GetItemHpBonus
 	movs r1, #0x12
 	ldrsb r1, [r5, r1]
 	adds r4, r1, r0
@@ -3324,7 +2791,7 @@ sub_080190B0: @ 0x080190B0
 	ldrb r0, [r2, #0x1b]
 	cmp r0, #0
 	beq _080190D4
-	ldr r1, _080190D0 @ =0x08C0216C
+	ldr r1, _080190D0 @ =gUnitLut
 	ldrb r2, [r2, #0x1b]
 	lsls r0, r2, #2
 	adds r0, r0, r1
@@ -3334,7 +2801,7 @@ sub_080190B0: @ 0x080190B0
 	bl sub_08013318
 	b _080190D8
 	.align 2, 0
-_080190D0: .4byte 0x08C0216C
+_080190D0: .4byte gUnitLut
 _080190D4:
 	ldr r0, _080190DC @ =0x08C02144
 	ldr r0, [r0]
@@ -3359,7 +2826,7 @@ _080190F0: .4byte 0x08C02144
 
 	thumb_func_start sub_080190F4
 sub_080190F4: @ 0x080190F4
-	ldr r2, _08019104 @ =0x08C0216C
+	ldr r2, _08019104 @ =gUnitLut
 	movs r1, #0xff
 	ands r1, r0
 	lsls r1, r1, #2
@@ -3367,4 +2834,4 @@ sub_080190F4: @ 0x080190F4
 	ldr r0, [r1]
 	bx lr
 	.align 2, 0
-_08019104: .4byte 0x08C0216C
+_08019104: .4byte gUnitLut

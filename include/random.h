@@ -1,6 +1,6 @@
 #pragma once
 
-#include "common.h"
+#include "global.h"
 
 void RandInit(int seed);
 

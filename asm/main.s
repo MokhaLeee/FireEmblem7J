@@ -46,7 +46,7 @@ AgbMain: @ 0x08000A20
 	ldr r1, _08000AE4 @ =0x04000208
 	movs r0, #1
 	strh r0, [r1]
-	ldr r4, _08000AE8 @ =0x08BBFC7C
+	ldr r4, _08000AE8 @ =gpKeySt
 	ldr r0, [r4]
 	bl sub_08001C28
 	ldr r0, [r4]
@@ -54,7 +54,7 @@ AgbMain: @ 0x08000A20
 	bl sub_08004158
 	bl SramInit
 	bl Proc_Init
-	bl AP_ClearAll
+	bl InitSpriteAnims
 	bl MU_Init
 	ldr r0, _08000AEC @ =0x42D690E9
 	bl RandInitB
@@ -78,7 +78,7 @@ _08000AD8: .4byte 0x04000204
 _08000ADC: .4byte 0x000045B4
 _08000AE0: .4byte 0x04000004
 _08000AE4: .4byte 0x04000208
-_08000AE8: .4byte 0x08BBFC7C
+_08000AE8: .4byte gpKeySt
 _08000AEC: .4byte 0x42D690E9
 _08000AF0: .4byte OnVBlank
 

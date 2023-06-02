@@ -1,6 +1,5 @@
-
+#include "global.h"
 #include "random.h"
-#include "common.h"
 
 static u16 sRandStA[3];
 static int sRandStB;
@@ -34,7 +33,7 @@ void RandInit(int seed)
     // This table is a collection of 8 possible initial rn state
     // 3 entries will be picked based of which "seed" was given
 
-    SHOULD_BE_STATIC u16 SHOULD_BE_CONST initTable[] =
+    u16 initTable[] =
     {
         0xA36E, 0x924E,
         0xB784, 0x4F67,

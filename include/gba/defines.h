@@ -3,6 +3,14 @@
 
 #include <stddef.h>
 
+#define TRUE  1
+#define FALSE 0
+
+#define IWRAM_DATA __attribute__((section("iwram_data")))
+#define EWRAM_DATA __attribute__((section("ewram_data")))
+
+#define ALIGNED(n) __attribute__((aligned(n)))
+
 #define SOUND_INFO_PTR (*(struct SoundInfo **)0x3007FF0)
 #define INTR_CHECK     (*(u16 *)0x3007FF8)
 #define INTR_VECTOR    (*(void **)0x3007FFC)
@@ -47,7 +55,7 @@
 
 #define TOTAL_OBJ_TILE_COUNT 1024
 
-#define RGB(r, g, b) (((b) << 10) + ((g) << 5) + (r))
+#define RGB(r, g, b) ((r) | ((g) << 5) | ((b) << 10))
 
 #define RGB_BLACK RGB(0, 0, 0)
 #define RGB_WHITE RGB(31, 31, 31)
