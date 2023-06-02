@@ -38,6 +38,7 @@ ifeq ($(UNAME_S),Darwin)
 endif
 
 export OBJCOPY := $(PREFIX)objcopy
+export OBJDUMP := $(PREFIX)objdump
 export AS := $(PREFIX)as
 export CPP := $(PREFIX)cpp
 export LD := $(PREFIX)ld
@@ -47,6 +48,8 @@ CC1     := $(AGBCC_HOME)/bin/old_agbcc$(EXE)
 CC1_NEW := $(AGBCC_HOME)/bin/agbcc$(EXE)
 
 SHASUM ?= sha1sum
+
+PERL := perl
 
 # ================
 # = BUILD CONFIG =
@@ -60,6 +63,7 @@ LDS := $(BUILD_NAME).lds
 ROM := $(BUILD_NAME).gba
 ELF := $(ROM:%.gba=%.elf)
 MAP := $(ROM:%.gba=%.map)
+SYM := $(ROM:%.gba=%.sym)
 
 C_SRCS := $(wildcard $(SRC_DIR)/*.c)
 C_OBJS := $(C_SRCS:%.c=$(BUILD_DIR)/%.o)
@@ -92,6 +96,8 @@ clean:
 	@rm -fr $(BUILD_DIR)/
 
 .PHONY: clean
+
+syms: $(SYM)
 
 %.gba: %.elf
 	@echo "[GEN]	$<"
@@ -135,3 +141,10 @@ endif
 
 %/irq.o:            CFLAGS += -O0
 %/random.o:         CFLAGS += -O0
+
+###################
+### Symbol file ###
+###################
+
+$(SYM): $(ELF)
+	$(OBJDUMP) -t $< | sort -u | grep -E "^0[2389]" | $(PERL) -p -e 's/^(\w{8}) (\w).{6} \S+\t(\w{8}) (\S+)$$/\1 \2 \3 \4/g' > $@

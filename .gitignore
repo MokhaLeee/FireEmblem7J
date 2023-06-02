@@ -929,3 +929,9 @@ MigrationBackup/
 *.rep
 
 .vscode
+
+###################
+### Symbol file ###
+###################
+
+*.sym
