@@ -8,12 +8,12 @@ OnVBlank: @ 0x080156C8
 	ldr r1, _0801570C @ =0x03007FF8
 	movs r0, #1
 	strh r0, [r1]
-	bl sub_08000F20
+	bl IncGameTime
 	bl SoundVSync_rev01
 	ldr r0, _08015710 @ =0x02026A28
 	ldr r0, [r0]
-	bl sub_0800456C
-	bl sub_08003214
+	bl Proc_Run
+	bl SyncLoOam
 	ldr r1, _08015714 @ =0x0202BBB4
 	movs r0, #0
 	ldrsb r0, [r1, r0]
@@ -21,10 +21,10 @@ OnVBlank: @ 0x080156C8
 	beq _08015702
 	movs r0, #0
 	strb r0, [r1]
-	bl sub_08001188
+	bl SyncDispIo
 	bl sub_080016C4
-	bl sub_08003054
-	bl sub_080031BC
+	bl ApplyDataMoves
+	bl SyncHiOam
 _08015702:
 	bl m4aSoundMain
 	pop {r0}
@@ -40,25 +40,25 @@ OnGameLoopMain: @ 0x08015718
 	ldr r0, _08015774 @ =gpKeySt
 	ldr r0, [r0]
 	bl sub_08001BA0
-	bl sub_08006840
+	bl ClearSprites
 	ldr r4, _08015778 @ =0x02026A28
 	ldr r0, [r4, #4]
-	bl sub_0800456C
+	bl Proc_Run
 	bl sub_080157A4
 	lsls r0, r0, #0x18
 	cmp r0, #0
 	bne _0801573E
 	ldr r0, [r4, #8]
-	bl sub_0800456C
+	bl Proc_Run
 _0801573E:
 	ldr r0, [r4, #0xc]
-	bl sub_0800456C
+	bl Proc_Run
 	ldr r0, [r4, #0x14]
-	bl sub_0800456C
+	bl Proc_Run
 	movs r0, #0
 	bl sub_080068F4
 	ldr r0, [r4, #0x10]
-	bl sub_0800456C
+	bl Proc_Run
 	movs r0, #0xd
 	bl sub_080068F4
 	ldr r1, _0801577C @ =0x0202BBB4
@@ -229,17 +229,17 @@ _08015888:
 	ldr r0, _08015894 @ =0x08C06154
 _0801588A:
 	adds r1, r4, #0
-	bl sub_080043D4
+	bl Proc_StartBlocking
 	b _080158A0
 	.align 2, 0
 _08015894: .4byte 0x08C06154
 _08015898:
 	ldr r0, _080158AC @ =0x08C06154
 	adds r1, r4, #0
-	bl sub_080043D4
+	bl Proc_StartBlocking
 _080158A0:
 	adds r0, r4, #0
-	bl sub_0800457C
+	bl Proc_Break
 	pop {r4}
 	pop {r0}
 	bx r0
@@ -252,11 +252,11 @@ sub_080158B0: @ 0x080158B0
 	adds r4, r0, #0
 	ldr r0, _080158D0 @ =0x08C02630
 	adds r1, r4, #0
-	bl sub_080043D4
+	bl Proc_StartBlocking
 	movs r1, #7
 	bl sub_080045FC
 	adds r0, r4, #0
-	bl sub_0800457C
+	bl Proc_Break
 	pop {r4}
 	pop {r0}
 	bx r0
@@ -272,7 +272,7 @@ sub_080158D4: @ 0x080158D4
 	cmp r0, #0x40
 	bne _080158F8
 	ldr r0, _080158F4 @ =0x08C03834
-	bl sub_080043D4
+	bl Proc_StartBlocking
 	bl sub_0802C70C
 	movs r0, #0
 	b _080158FA
@@ -352,7 +352,7 @@ _08015970: .4byte gPlaySt
 _08015974: .4byte 0x03002790
 _08015978:
 	ldr r0, _08015984 @ =0x08C02BF0
-	bl sub_080043D4
+	bl Proc_StartBlocking
 _0801597E:
 	pop {r0}
 	bx r0
@@ -445,7 +445,7 @@ sub_08015A0C: @ 0x08015A0C
 	movs r1, #0x80
 	lsls r1, r1, #2
 	movs r2, #0x40
-	bl sub_0800105C
+	bl ApplyPaletteExt
 	pop {r4}
 	pop {r0}
 	bx r0
@@ -458,12 +458,12 @@ _08015A44: .4byte 0x0818FE70
 	thumb_func_start sub_08015A48
 sub_08015A48: @ 0x08015A48
 	push {lr}
-	bl sub_08005280
+	bl ResetText
 	bl sub_0804A9F8
 	bl sub_080069C4
-	bl sub_08004BC4
+	bl InitIcons
 	movs r0, #4
-	bl sub_08004C08
+	bl ApplyIconPalettes
 	bl sub_08015A0C
 	pop {r0}
 	bx r0
@@ -971,7 +971,7 @@ sub_08015DE8: @ 0x08015DE8
 	movs r0, #0
 	mov sb, r0
 	mov r8, r0
-	bl sub_08000EEC
+	bl GetGameTime
 	lsrs r4, r0, #1
 	movs r0, #0xf
 	ands r4, r0
@@ -1000,7 +1000,7 @@ _08015E30:
 	.align 2, 0
 _08015E3C: .4byte 0x08C0206C
 _08015E40:
-	bl sub_08000EEC
+	bl GetGameTime
 	subs r0, #1
 	ldr r5, _08015E7C @ =0x0202BC40
 	ldr r1, [r5]
@@ -1026,7 +1026,7 @@ _08015E60:
 	ldr r0, _08015E80 @ =0x0202BC3C
 	strh r6, [r0]
 	strh r7, [r0, #2]
-	bl sub_08000EEC
+	bl GetGameTime
 	str r0, [r5]
 	b _08015EA2
 	.align 2, 0
@@ -1080,7 +1080,7 @@ sub_08015ED8: @ 0x08015ED8
 	sub sp, #4
 	adds r4, r0, #0
 	adds r5, r1, #0
-	bl sub_08000EEC
+	bl GetGameTime
 	lsrs r0, r0, #1
 	movs r1, #0xf
 	ands r0, r1
@@ -1124,7 +1124,7 @@ sub_08015F24: @ 0x08015F24
 	adds r6, r1, #0
 	lsls r4, r2, #0x18
 	lsrs r4, r4, #0x18
-	bl sub_08000EEC
+	bl GetGameTime
 	lsrs r0, r0, #3
 	movs r1, #3
 	bl __umodsi3
@@ -1250,7 +1250,7 @@ sub_08016000: @ 0x08016000
 	ldrh r0, [r0, #0xe]
 	strh r0, [r5, #0x2e]
 	adds r0, r5, #0
-	bl sub_08004460
+	bl Proc_End
 	b _08016072
 	.align 2, 0
 _0801601C: .4byte 0x0202BBB4
@@ -1380,7 +1380,7 @@ sub_080160D4: @ 0x080160D4
 _08016108:
 	ldr r4, _0801611C @ =0x08C020F4
 	adds r0, r4, #0
-	bl sub_08004584
+	bl Proc_Find
 	cmp r0, #0
 	beq _08016120
 _08016114:
@@ -1394,7 +1394,7 @@ _08016120:
 	beq _0801612E
 	adds r0, r4, #0
 	adds r1, r5, #0
-	bl sub_080043D4
+	bl Proc_StartBlocking
 	b _08016136
 _0801612E:
 	adds r0, r4, #0
@@ -1452,7 +1452,7 @@ sub_0801615C: @ 0x0801615C
 _08016192:
 	ldr r4, _080161A8 @ =0x08C020F4
 	adds r0, r4, #0
-	bl sub_08004584
+	bl Proc_Find
 	cmp r0, #0
 	beq _080161AC
 _0801619E:
@@ -1466,7 +1466,7 @@ _080161AC:
 	beq _080161BA
 	adds r0, r4, #0
 	adds r1, r5, #0
-	bl sub_080043D4
+	bl Proc_StartBlocking
 	b _080161C2
 _080161BA:
 	adds r0, r4, #0
@@ -1543,7 +1543,7 @@ sub_0801622C: @ 0x0801622C
 	ble _0801624A
 	ldr r4, _08016254 @ =0x08C020F4
 	adds r0, r4, #0
-	bl sub_08004584
+	bl Proc_Find
 	cmp r0, #0
 	beq _08016258
 _0801624A:
@@ -1557,7 +1557,7 @@ _08016258:
 	beq _08016266
 	adds r0, r4, #0
 	adds r1, r5, #0
-	bl sub_080043D4
+	bl Proc_StartBlocking
 	b _0801626E
 _08016266:
 	adds r0, r4, #0
@@ -1615,7 +1615,7 @@ sub_08016290: @ 0x08016290
 	cmp r0, #0
 	bge _080162D8
 	adds r0, r7, #0
-	bl sub_0800457C
+	bl Proc_Break
 _080162D8:
 	pop {r4, r5, r6, r7}
 	pop {r0}
@@ -1792,7 +1792,7 @@ sub_08016410: @ 0x08016410
 	ldrsh r0, [r5, r6]
 	str r0, [sp]
 	movs r0, #0
-	bl sub_08013508
+	bl Interpolate
 	adds r4, r0, #0
 	movs r0, #0x32
 	ldrsh r1, [r5, r0]
@@ -1803,7 +1803,7 @@ sub_08016410: @ 0x08016410
 	ldrsh r0, [r5, r6]
 	str r0, [sp]
 	movs r0, #0
-	bl sub_08013508
+	bl Interpolate
 	ldr r1, _08016468 @ =0x0202BBB4
 	strh r4, [r1, #0xc]
 	strh r0, [r1, #0xe]
@@ -1815,7 +1815,7 @@ sub_08016410: @ 0x08016410
 	cmp r0, r1
 	blt _0801645E
 	adds r0, r5, #0
-	bl sub_08004460
+	bl Proc_End
 _0801645E:
 	add sp, #4
 	pop {r4, r5, r6}

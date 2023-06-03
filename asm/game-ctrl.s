@@ -176,7 +176,7 @@ sub_08012CE0: @ 0x08012CE0
 	cmp r0, #0
 	bne _08012D00
 	adds r0, r4, #0
-	bl sub_0800457C
+	bl Proc_Break
 	b _08012D44
 	.align 2, 0
 _08012CFC: .4byte gpKeySt
@@ -206,7 +206,7 @@ _08012D28:
 	movs r1, #0xc0
 	movs r2, #0x3c
 	movs r3, #0
-	bl sub_08003B4C
+	bl StartBgmVolumeChange
 	adds r0, r4, #0
 	movs r1, #4
 	bl sub_080045FC
@@ -224,7 +224,7 @@ sub_08012D4C: @ 0x08012D4C
 	ldrb r1, [r1]
 	cmp r1, #0xb
 	beq _08012D5C
-	bl sub_08004460
+	bl Proc_End
 _08012D5C:
 	pop {r0}
 	bx r0
@@ -239,7 +239,7 @@ sub_08012D60: @ 0x08012D60
 	ldr r2, _08012D8C @ =0x01000100
 	mov r0, sp
 	bl CpuFastSet
-	bl sub_08001034
+	bl EnablePalSync
 	ldr r0, _08012D90 @ =sub_08012D4C
 	bl sub_08004648
 	ldr r0, _08012D94 @ =OnGameLoopMain
@@ -263,7 +263,7 @@ sub_08012D98: @ 0x08012D98
 	movs r1, #0xc0
 	movs r2, #0x3c
 	movs r3, #0
-	bl sub_08003B4C
+	bl StartBgmVolumeChange
 	pop {r0}
 	bx r0
 	.align 2, 0
@@ -276,7 +276,7 @@ sub_08012DB4: @ 0x08012DB4
 	movs r1, #0xc0
 	movs r2, #0x20
 	movs r3, #0
-	bl sub_08003B4C
+	bl StartBgmVolumeChange
 	pop {r0}
 	bx r0
 
@@ -840,7 +840,7 @@ _080131EC: .4byte 0x08C01744
 sub_080131F0: @ 0x080131F0
 	push {lr}
 	ldr r0, _080131FC @ =0x08C01744
-	bl sub_08004584
+	bl Proc_Find
 	pop {r1}
 	bx r1
 	.align 2, 0
@@ -1007,7 +1007,7 @@ sub_08013318: @ 0x08013318
 	ldr r0, [r0]
 	ldr r4, _08013344 @ =0x0202A5B0
 	adds r1, r4, #0
-	bl sub_08004240
+	bl DecodeStringRam
 	str r5, [r6]
 	adds r0, r4, #0
 	b _0801334A
@@ -1033,7 +1033,7 @@ sub_08013354: @ 0x08013354
 	adds r0, r0, r1
 	ldr r0, [r0]
 	adds r1, r4, #0
-	bl sub_08004240
+	bl DecodeStringRam
 	adds r0, r4, #0
 	pop {r4}
 	pop {r1}

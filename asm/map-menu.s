@@ -58,7 +58,7 @@ _08021A08: .4byte 0x08C02630
 sub_08021A0C: @ 0x08021A0C
 	push {lr}
 	ldr r0, _08021A24 @ =0x08C02630
-	bl sub_08004584
+	bl Proc_Find
 	movs r1, #0xa
 	bl sub_080045FC
 	bl sub_0808B450
@@ -100,7 +100,7 @@ sub_08021A4C: @ 0x08021A4C
 	adds r0, #0x3e
 	strb r1, [r0]
 	ldr r0, _08021A74 @ =0x08C02630
-	bl sub_08004584
+	bl Proc_Find
 	movs r1, #0xc
 	bl sub_080045FC
 	movs r0, #0x17
@@ -171,7 +171,7 @@ sub_08021ACC: @ 0x08021ACC
 	movs r1, #0
 	bl sub_080017E8
 	movs r0, #4
-	bl sub_08000FD4
+	bl EnableBgSync
 	bl sub_08005308
 	bl sub_0801D6D8
 	ldr r0, _08021B1C @ =0x08C04D68
@@ -277,7 +277,7 @@ sub_08021BB0: @ 0x08021BB0
 	movs r1, #0
 	bl sub_080017E8
 	movs r0, #4
-	bl sub_08000FD4
+	bl EnableBgSync
 	bl sub_0801D6D8
 	bl sub_08005308
 	ldr r0, _08021BE0 @ =0x08C03098
@@ -297,7 +297,7 @@ sub_08021BE4: @ 0x08021BE4
 	movs r1, #0
 	bl sub_080017E8
 	movs r0, #4
-	bl sub_08000FD4
+	bl EnableBgSync
 	bl sub_08005308
 	ldr r0, _08021C1C @ =0x08C04D68
 	ldr r2, _08021C20 @ =0x0202BBB4
@@ -662,9 +662,9 @@ sub_08021EB4: @ 0x08021EB4
 	.align 2, 0
 _08021ED0: .4byte 0x0000070C
 _08021ED4:
-	bl sub_08004BD0
+	bl ClearIcons
 	movs r0, #4
-	bl sub_08004C08
+	bl ApplyIconPalettes
 	ldr r0, _08021EF8 @ =0x030045B0
 	ldr r0, [r0]
 	ldr r0, [r0, #0xc]
@@ -1112,7 +1112,7 @@ sub_08022264: @ 0x08022264
 	movs r1, #0
 	bl sub_080017E8
 	movs r0, #4
-	bl sub_08000FD4
+	bl EnableBgSync
 	bl sub_0801D6D8
 	bl sub_08034664
 	movs r0, #0
@@ -1550,9 +1550,9 @@ _08022588:
 	movs r2, #0xf
 	movs r3, #0xb
 	bl sub_0801E2A0
-	bl sub_08004BD0
+	bl ClearIcons
 	movs r0, #4
-	bl sub_08004C08
+	bl ApplyIconPalettes
 	movs r0, #0x17
 _080225C8:
 	add sp, #4
@@ -1608,9 +1608,9 @@ sub_08022614: @ 0x08022614
 	ldrb r1, [r1]
 	cmp r1, #1
 	bne _08022670
-	bl sub_08004BD0
+	bl ClearIcons
 	movs r0, #4
-	bl sub_08004C08
+	bl ApplyIconPalettes
 	bl sub_08005308
 	ldr r0, _08022668 @ =0x08C04CFC
 	bl sub_0804AA58
@@ -1706,7 +1706,7 @@ _080226D2:
 	adds r1, r5, #0
 	bl sub_080168EC
 	movs r0, #1
-	bl sub_08000FD4
+	bl EnableBgSync
 _080226F8:
 	pop {r4, r5, r6, r7}
 	pop {r1}
@@ -1831,7 +1831,7 @@ sub_080227D8: @ 0x080227D8
 	movs r2, #0x80
 	lsls r2, r2, #2
 	movs r3, #0
-	bl sub_080052A4
+	bl InitTextFont
 	ldr r0, _0802280C @ =0x02022CB6
 	ldr r1, _08022810 @ =0x0200323C
 	movs r2, #9
@@ -1876,7 +1876,7 @@ sub_08022828: @ 0x08022828
 	movs r3, #0x13
 	bl TmCopyRect_thm
 	movs r0, #3
-	bl sub_08000FD4
+	bl EnableBgSync
 	movs r0, #0xb
 	pop {r1}
 	bx r1
@@ -1971,7 +1971,7 @@ sub_080228D4: @ 0x080228D4
 	movs r3, #0
 	bl TmFillRect_thm
 	movs r0, #3
-	bl sub_08000FD4
+	bl EnableBgSync
 	ldr r0, _08022970 @ =0x08C04CFC
 	bl sub_0804AA58
 	adds r4, r0, #0
@@ -2581,9 +2581,9 @@ sub_08022DFC: @ 0x08022DFC
 	ldrb r1, [r1]
 	cmp r1, #2
 	beq _08022E54
-	bl sub_08004BD0
+	bl ClearIcons
 	movs r0, #4
-	bl sub_08004C08
+	bl ApplyIconPalettes
 	ldr r0, _08022E4C @ =0x08C04CD8
 	bl sub_0804AA58
 	adds r5, r0, #0
@@ -3512,9 +3512,9 @@ sub_080234D0: @ 0x080234D0
 	ldr r6, _08023560 @ =0x0203A858
 	ldrb r0, [r1, #2]
 	strb r0, [r6, #0xd]
-	bl sub_08004BD0
+	bl ClearIcons
 	movs r0, #4
-	bl sub_08004C08
+	bl ApplyIconPalettes
 	ldr r0, _08023564 @ =0x08C04BDC
 	bl sub_0804AA58
 	adds r0, r4, #0
@@ -3952,7 +3952,7 @@ sub_08023844: @ 0x08023844
 	movs r1, #1
 	ldrsb r1, [r4, r1]
 	bl sub_0801EF94
-	bl sub_08004BD0
+	bl ClearIcons
 	movs r0, #2
 	ldrsb r0, [r4, r0]
 	bl GetUnit

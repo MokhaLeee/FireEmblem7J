@@ -18,7 +18,7 @@ ApplyUnitSpritePalettes: @ 0x08025124
 	movs r1, #0xe0
 	lsls r1, r1, #2
 	movs r2, #0x80
-	bl sub_0800105C
+	bl ApplyPaletteExt
 	ldr r1, _08025150 @ =0x0202BBB4
 	movs r0, #0x40
 	ldrb r1, [r1, #4]
@@ -29,7 +29,7 @@ ApplyUnitSpritePalettes: @ 0x08025124
 	movs r1, #0xd8
 	lsls r1, r1, #2
 	movs r2, #0x20
-	bl sub_0800105C
+	bl ApplyPaletteExt
 	b _08025164
 	.align 2, 0
 _0802514C: .4byte 0x081900E8
@@ -40,7 +40,7 @@ _08025158:
 	movs r1, #0xd8
 	lsls r1, r1, #2
 	movs r2, #0x20
-	bl sub_0800105C
+	bl ApplyPaletteExt
 _08025164:
 	pop {r0}
 	bx r0
@@ -54,7 +54,7 @@ sub_0802516C: @ 0x0802516C
 	movs r1, #0xf0
 	lsls r1, r1, #2
 	movs r2, #0x20
-	bl sub_0800105C
+	bl ApplyPaletteExt
 	pop {r0}
 	bx r0
 	.align 2, 0
@@ -726,7 +726,7 @@ sub_08025698: @ 0x08025698
 	adds r0, r0, r1
 	ldrh r5, [r0]
 	movs r4, #0
-	bl sub_08000EEC
+	bl GetGameTime
 	movs r1, #0x48
 	bl __umodsi3
 	adds r1, r0, #0
@@ -1094,7 +1094,7 @@ _080259A0: .4byte 0x02033E40
 	thumb_func_start sub_080259A4
 sub_080259A4: @ 0x080259A4
 	push {r4, r5, lr}
-	bl sub_08000EEC
+	bl GetGameTime
 	movs r1, #0x48
 	bl __umodsi3
 	adds r4, r0, #0
@@ -1146,7 +1146,7 @@ sub_08025A0C: @ 0x08025A0C
 	ldr r0, _08025A2C @ =0x0203A3CC
 	movs r1, #0
 	str r1, [r0]
-	bl sub_08000EEC
+	bl GetGameTime
 	movs r1, #0x48
 	bl __umodsi3
 	adds r1, r0, #0
@@ -1168,7 +1168,7 @@ _08025A3A:
 	ldr r1, _08025A4C @ =0x06011000
 	movs r2, #0x80
 	lsls r2, r2, #6
-	bl sub_08002F54
+	bl RegisterDataMove
 	b _08025A60
 	.align 2, 0
 _08025A48: .4byte 0x02035F10
@@ -1180,7 +1180,7 @@ _08025A50:
 	ldr r1, _08025A68 @ =0x06011000
 	movs r2, #0x80
 	lsls r2, r2, #6
-	bl sub_08002F54
+	bl RegisterDataMove
 _08025A60:
 	pop {r0}
 	bx r0
@@ -1193,7 +1193,7 @@ sub_08025A6C: @ 0x08025A6C
 	push {r4, r5, r6, lr}
 	adds r4, r0, #0
 	adds r5, r1, #0
-	bl sub_08000EEC
+	bl GetGameTime
 	movs r1, #0x48
 	bl __umodsi3
 	adds r1, r0, #0
@@ -1253,7 +1253,7 @@ sub_08025AE0: @ 0x08025AE0
 	push {r4, r5, r6, lr}
 	adds r4, r0, #0
 	adds r5, r1, #0
-	bl sub_08000EEC
+	bl GetGameTime
 	movs r1, #0x48
 	bl __umodsi3
 	adds r1, r0, #0
@@ -1295,7 +1295,7 @@ _08025B2E:
 	adds r0, r4, #0
 	adds r1, r5, #0
 	movs r2, #0x40
-	bl sub_08002F54
+	bl RegisterDataMove
 	movs r0, #0x80
 	lsls r0, r0, #3
 	adds r5, r5, r0
@@ -1665,7 +1665,7 @@ _08025DE8:
 	ands r0, r1
 	cmp r0, #0
 	beq _08025DFA
-	bl sub_08000EEC
+	bl GetGameTime
 	adds r3, r0, #0
 	movs r0, #2
 	ands r3, r0
@@ -1785,7 +1785,7 @@ _08025EDE:
 	lsls r5, r5, #4
 _08025EE4:
 	adds r3, r4, r5
-	bl sub_08004264
+	bl PutOamHiRam
 	b _08025F16
 	.align 2, 0
 _08025EEC: .4byte 0x08BFF788
@@ -1807,7 +1807,7 @@ _08025EF0:
 	movs r5, #0xc0
 	lsls r5, r5, #4
 	adds r3, r4, r5
-	bl sub_08004264
+	bl PutOamHiRam
 _08025F16:
 	ldr r6, [r6]
 	cmp r6, #0
@@ -1834,7 +1834,7 @@ sub_08025F28: @ 0x08025F28
 	bl sub_08031A5C
 	adds r0, #0x90
 	ldrb r4, [r0]
-	bl sub_08000EEC
+	bl GetGameTime
 	movs r2, #0
 	movs r1, #0x1f
 	ands r1, r0
@@ -1893,7 +1893,7 @@ _08025F54:
 	ands r1, r2
 	ldr r2, _08025FD8 @ =0x08BFF760
 	ldr r3, _08025FDC @ =0x00000C51
-	bl sub_08004264
+	bl PutOamHiRam
 _08025FBE:
 	pop {r4, r5}
 	pop {r0}
@@ -1927,7 +1927,7 @@ sub_08025FE0: @ 0x08025FE0
 	adds r0, #0x8e
 	ldrb r0, [r0]
 	str r0, [sp, #8]
-	bl sub_08000EEC
+	bl GetGameTime
 	movs r2, #0
 	movs r1, #0x1f
 	ands r1, r0
@@ -1936,22 +1936,22 @@ sub_08025FE0: @ 0x08025FE0
 	movs r2, #1
 _08026018:
 	adds r7, r2, #0
-	bl sub_08000EEC
+	bl GetGameTime
 	lsrs r0, r0, #3
 	movs r1, #0xc
 	bl __umodsi3
 	str r0, [sp, #0xc]
-	bl sub_08000EEC
+	bl GetGameTime
 	lsrs r0, r0, #4
 	movs r1, #7
 	bl __umodsi3
 	str r0, [sp, #0x10]
-	bl sub_08000EEC
+	bl GetGameTime
 	lsrs r0, r0, #3
 	movs r1, #9
 	bl __umodsi3
 	mov sl, r0
-	bl sub_08000EEC
+	bl GetGameTime
 	lsrs r0, r0, #2
 	movs r1, #0x12
 	bl __umodsi3
@@ -2189,7 +2189,7 @@ _08026220:
 	adds r2, r2, r3
 	ldr r2, [r2]
 	movs r3, #0
-	bl sub_08004264
+	bl PutOamHiRam
 	b _0802628A
 	.align 2, 0
 _08026230: .4byte 0x0202BBB4
@@ -2234,7 +2234,7 @@ _08026246:
 	ands r1, r2
 	ldr r2, _08026304 @ =0x08C03400
 	movs r3, #0
-	bl sub_08004264
+	bl PutOamHiRam
 _0802628A:
 	cmp r6, #0
 	bne _08026290
@@ -2292,7 +2292,7 @@ _080262CC:
 	lsls r3, r3, #0xc
 	ldr r4, _08026314 @ =0x00000803
 	adds r3, r3, r4
-	bl sub_08004264
+	bl PutOamHiRam
 	b _080263E2
 	.align 2, 0
 _080262FC: .4byte 0x0202BBB4
@@ -2352,7 +2352,7 @@ _08026318:
 	ldr r2, _08026390 @ =0x08BFF760
 	movs r3, #0x81
 	lsls r3, r3, #4
-	bl sub_08004264
+	bl PutOamHiRam
 	b _080263E2
 	.align 2, 0
 _08026380: .4byte 0x0202BBB4
@@ -2398,7 +2398,7 @@ _08026394:
 	ands r1, r2
 	ldr r2, _08026410 @ =0x08BFF760
 	ldr r3, _08026414 @ =0x00000811
-	bl sub_08004264
+	bl PutOamHiRam
 _080263E2:
 	movs r4, #1
 	add r8, r4

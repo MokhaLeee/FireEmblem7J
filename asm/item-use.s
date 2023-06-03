@@ -1053,7 +1053,7 @@ sub_08027AD8: @ 0x08027AD8
 	movs r1, #0
 	bl sub_080017E8
 	movs r0, #4
-	bl sub_08000FD4
+	bl EnableBgSync
 	ldr r1, _08027AFC @ =0x0203A858
 	movs r0, #3
 	strb r0, [r1, #0x11]
@@ -1247,7 +1247,7 @@ sub_08027C58: @ 0x08027C58
 	cmp r6, #0
 	beq _08027CF0
 	adds r0, r5, #0
-	bl sub_0800457C
+	bl Proc_Break
 	ldr r1, _08027CDC @ =0x0203A858
 	ldrh r0, [r4, #0x14]
 	strb r0, [r1, #0x13]
@@ -1260,7 +1260,7 @@ sub_08027C58: @ 0x08027C58
 	movs r1, #0
 	bl sub_080017E8
 	movs r0, #4
-	bl sub_08000FD4
+	bl EnableBgSync
 	ldr r0, _08027CE8 @ =gPlaySt
 	adds r0, #0x41
 	ldrb r0, [r0]
@@ -1304,7 +1304,7 @@ _08027D04:
 	movs r1, #0
 	bl sub_080017E8
 	movs r0, #4
-	bl sub_08000FD4
+	bl EnableBgSync
 	ldr r0, _08027D84 @ =gPlaySt
 	adds r0, #0x41
 	ldrb r0, [r0]
@@ -1716,7 +1716,7 @@ sub_08028044: @ 0x08028044
 	adds r1, r4, #0
 	bl sub_08016984
 	movs r0, #1
-	bl sub_08000FD4
+	bl EnableBgSync
 	movs r0, #0
 	pop {r4, r5, r6}
 	pop {r1}
@@ -2136,7 +2136,7 @@ sub_080283AC: @ 0x080283AC
 	bl m4aSongNumStart
 _080283F0:
 	adds r0, r6, #0
-	bl sub_0800457C
+	bl Proc_Break
 	ldr r1, _08028420 @ =0x0203A858
 	ldrh r0, [r5, #0x14]
 	strb r0, [r1, #0x13]
@@ -2176,7 +2176,7 @@ _0802843C:
 	movs r1, #0
 	bl sub_080017E8
 	movs r0, #4
-	bl sub_08000FD4
+	bl EnableBgSync
 	adds r0, r6, #0
 	movs r1, #0x63
 	bl sub_080045FC
