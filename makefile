@@ -143,6 +143,7 @@ endif
 
 %/irq.o:            CFLAGS += -O0
 %/random.o:         CFLAGS += -O0
+%/agb-sram.o:        CFLAGS += -O1
 
 # ===============
 # = Symbol file =

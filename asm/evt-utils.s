@@ -1022,7 +1022,7 @@ sub_08010E14: @ 0x08010E14
 	ldr r1, [r1]
 	movs r2, #0x80
 	lsls r2, r2, #8
-	bl sub_080C0C28
+	bl TmApplyTsa_thm
 	ldr r1, [r5, #0x2c]
 	lsls r0, r1, #1
 	adds r0, r0, r1
@@ -1292,7 +1292,7 @@ sub_08011038: @ 0x08011038
 	adds r1, r1, r2
 	ldr r1, [r1]
 	movs r2, #0x80
-	bl sub_080C0C28
+	bl TmApplyTsa_thm
 	ldr r1, [r5, #0x2c]
 	lsls r0, r1, #1
 	adds r0, r0, r1
@@ -1753,7 +1753,7 @@ sub_0801140C: @ 0x0801140C
 	bl sub_0802D8E4
 	bl sub_080198EC
 	bl sub_08025BB0
-	bl sub_08025124
+	bl ApplyUnitSpritePalettes
 	ldr r0, [r5, #0x34]
 	movs r1, #0x80
 	lsls r1, r1, #2
@@ -1962,7 +1962,7 @@ sub_08011568: @ 0x08011568
 	ldr r0, _0801161C @ =0x02023C60
 	ldr r1, _08011620 @ =0x08199290
 	ldr r2, _08011624 @ =0x0000F080
-	bl sub_080C0C28
+	bl TmApplyTsa_thm
 	movs r0, #4
 	bl sub_08000FD4
 	adds r1, r4, #0
