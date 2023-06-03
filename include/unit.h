@@ -55,6 +55,8 @@ struct CharacterData {
     /* 31 */ u8 _pad_[0x34 - 0x31];
 };
 
+extern CONST_DATA struct CharacterData gCharacterData[];
+
 struct ClassData {
     /* 00 */ u16 nameTextId;
     /* 02 */ u16 descTextId;
@@ -114,6 +116,8 @@ struct ClassData {
 
     /* 50 */ const void* _pU50;
 };
+
+extern CONST_DATA struct ClassData gClassData[];
 
 struct Unit {
     /* 00 */ const struct CharacterData* pCharacterData;
@@ -439,4 +443,4 @@ void UnitCheckStatCaps(struct Unit *unit);
 // sub_0801906C
 // sub_080190B0
 // sub_080190E0
-// sub_080190F4
+// GetUnit

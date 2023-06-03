@@ -1141,7 +1141,7 @@ _08013440:
 	adds r0, #0x1c
 	adds r0, r1, r0
 	ldrb r0, [r0]
-	bl sub_08019120
+	bl GetCharacterData
 	ldrh r0, [r0]
 	bl sub_08013318
 	adds r1, r0, #0

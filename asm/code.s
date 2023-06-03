@@ -23261,7 +23261,7 @@ _0800BFE0:
 _0800BFFC: .4byte 0x0202E3D8
 _0800C000:
 	ldrb r0, [r1]
-	bl sub_080190F4
+	bl GetUnit
 	adds r6, r0, #0
 	adds r1, r5, #0
 	adds r1, #0x5e
@@ -23395,7 +23395,7 @@ _0800C0DC:
 _0800C0F8: .4byte 0x0202E3D8
 _0800C0FC:
 	ldrb r0, [r1]
-	bl sub_080190F4
+	bl GetUnit
 	adds r5, r0, #0
 	adds r1, r4, #0
 	adds r1, #0x5e
@@ -23844,7 +23844,7 @@ _0800C43A:
 	ldr r1, [sp]
 	adds r0, r0, r1
 	ldrb r0, [r0]
-	bl sub_080190F4
+	bl GetUnit
 	adds r5, r0, #0
 	adds r1, r4, #0
 	adds r1, #0x5e
@@ -24344,7 +24344,7 @@ _0800C814:
 	subs r0, r1, #1
 _0800C816:
 	ldrb r0, [r0]
-	bl sub_080190F4
+	bl GetUnit
 	adds r5, r0, #0
 	cmp r5, #0
 	beq _0800C860
@@ -25227,7 +25227,7 @@ sub_0800CEBC: @ 0x0800CEBC
 	bgt _0800CEEA
 _0800CEC4:
 	adds r0, r4, #0
-	bl sub_080190F4
+	bl GetUnit
 	adds r1, r0, #0
 	cmp r1, #0
 	beq _0800CEE4
@@ -25444,7 +25444,7 @@ sub_0800D044: @ 0x0800D044
 	movs r4, #1
 _0800D04C:
 	adds r0, r4, #0
-	bl sub_080190F4
+	bl GetUnit
 	adds r1, r0, #0
 	cmp r1, #0
 	beq _0800D06A
@@ -25483,7 +25483,7 @@ _0800D086:
 	movs r4, #1
 _0800D09A:
 	adds r0, r4, #0
-	bl sub_080190F4
+	bl GetUnit
 	adds r2, r0, #0
 	cmp r2, #0
 	beq _0800D0BC
@@ -25510,7 +25510,7 @@ _0800D0CC:
 	movs r4, #1
 _0800D0CE:
 	adds r0, r4, #0
-	bl sub_080190F4
+	bl GetUnit
 	adds r2, r0, #0
 	cmp r2, #0
 	beq _0800D0F4
@@ -25538,7 +25538,7 @@ _0800D0FA:
 _0800D100: .4byte 0x00010004
 _0800D104:
 	adds r0, r4, #0
-	bl sub_080190F4
+	bl GetUnit
 	adds r1, r0, #0
 	adds r4, #1
 	adds r0, r6, #0
@@ -25557,7 +25557,7 @@ _0800D128:
 	movs r4, #1
 _0800D12A:
 	adds r0, r4, #0
-	bl sub_080190F4
+	bl GetUnit
 	adds r2, r0, #0
 	cmp r2, #0
 	beq _0800D154
@@ -25965,7 +25965,7 @@ sub_0800D3F0: @ 0x0800D3F0
 	movs r4, #1
 _0800D3FA:
 	adds r0, r4, #0
-	bl sub_080190F4
+	bl GetUnit
 	cmp r0, #0
 	beq _0800D41E
 	ldr r2, [r0]
@@ -26003,7 +26003,7 @@ sub_0800D434: @ 0x0800D434
 	movs r4, #1
 _0800D43E:
 	adds r0, r4, #0
-	bl sub_080190F4
+	bl GetUnit
 	cmp r0, #0
 	beq _0800D462
 	ldr r2, [r0]
@@ -26485,7 +26485,7 @@ sub_0800D774: @ 0x0800D774
 	movs r4, #1
 _0800D780:
 	adds r0, r4, #0
-	bl sub_080190F4
+	bl GetUnit
 	cmp r0, #0
 	beq _0800D7B6
 	ldr r2, [r0]
@@ -27021,7 +27021,7 @@ sub_0800DB8C: @ 0x0800DB8C
 	movs r4, #1
 _0800DB96:
 	adds r0, r4, #0
-	bl sub_080190F4
+	bl GetUnit
 	adds r2, r0, #0
 	cmp r2, #0
 	beq _0800DBC0
@@ -27313,7 +27313,7 @@ sub_0800DDA4: @ 0x0800DDA4
 	movs r4, #1
 _0800DDAC:
 	adds r0, r4, #0
-	bl sub_080190F4
+	bl GetUnit
 	cmp r0, #0
 	beq _0800DDC6
 	ldr r0, [r0]
@@ -27376,7 +27376,7 @@ _0800DE0A:
 	ldr r0, [r2]
 	adds r0, r0, r1
 	ldrb r0, [r0]
-	bl sub_080190F4
+	bl GetUnit
 	adds r4, r0, #0
 	ldr r0, [r4]
 	ldrb r0, [r0, #4]
@@ -27476,7 +27476,7 @@ _0800DECE:
 	ldr r0, [r2]
 	adds r0, r0, r1
 	ldrb r0, [r0]
-	bl sub_080190F4
+	bl GetUnit
 	adds r4, r0, #0
 	adds r1, r5, #0
 	adds r1, #0x5e
@@ -27656,7 +27656,7 @@ _0800E042:
 	ldr r0, [r2]
 	adds r0, r0, r1
 	ldrb r0, [r0]
-	bl sub_080190F4
+	bl GetUnit
 	ldr r1, [r0, #0xc]
 	movs r2, #9
 	orrs r1, r2
@@ -27816,7 +27816,7 @@ sub_0800E160: @ 0x0800E160
 	movs r4, #1
 _0800E182:
 	adds r0, r4, #0
-	bl sub_080190F4
+	bl GetUnit
 	adds r2, r0, #0
 	cmp r2, #0
 	beq _0800E1B0
@@ -27874,7 +27874,7 @@ sub_0800E1C4: @ 0x0800E1C4
 	ldrsb r5, [r2, r5]
 _0800E1F0:
 	adds r0, r4, #0
-	bl sub_080190F4
+	bl GetUnit
 	adds r2, r0, #0
 	cmp r2, #0
 	beq _0800E228
@@ -29816,7 +29816,7 @@ sub_0800EFD4: @ 0x0800EFD4
 	movs r7, #1
 _0800EFDE:
 	adds r0, r7, #0
-	bl sub_080190F4
+	bl GetUnit
 	adds r4, r0, #0
 	cmp r4, #0
 	beq _0800F062
@@ -29898,7 +29898,7 @@ sub_0800F070: @ 0x0800F070
 	rsbs r5, r5, #0
 _0800F078:
 	adds r0, r4, #0
-	bl sub_080190F4
+	bl GetUnit
 	adds r2, r0, #0
 	cmp r2, #0
 	beq _0800F0BE
@@ -30002,7 +30002,7 @@ _0800F13A:
 	cmp r5, #0x3f
 	bgt _0800F170
 	adds r0, r5, #0
-	bl sub_080190F4
+	bl GetUnit
 	adds r2, r0, #0
 	cmp r2, #0
 	beq _0800F138
@@ -30050,7 +30050,7 @@ sub_0800F188: @ 0x0800F188
 	movs r6, #1
 _0800F18C:
 	adds r0, r6, #0
-	bl sub_080190F4
+	bl GetUnit
 	adds r4, r0, #0
 	cmp r4, #0
 	beq _0800F1F0
