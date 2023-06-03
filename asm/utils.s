@@ -2809,7 +2809,7 @@ _08014892:
 	subs r0, #0x10
 	str r0, [r4, #0x58]
 _08014898:
-	bl sub_080C0C38
+	bl ColorFadeTick_thm
 	ldr r1, _080148B8 @ =0x02022860
 	movs r0, #0
 	strh r0, [r1]

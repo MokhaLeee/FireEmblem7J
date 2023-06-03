@@ -1737,7 +1737,7 @@ _080163A4:
 	beq _080163E0
 	ldr r1, _080163DC @ =0x0001000C
 	movs r0, #0x80
-	bl sub_08023D00
+	bl CountFactionUnitsWithoutFlags
 	adds r4, r0, #0
 	movs r0, #0xe
 	ldrsb r0, [r5, r0]

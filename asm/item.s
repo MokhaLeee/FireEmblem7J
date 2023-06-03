@@ -1578,7 +1578,7 @@ sub_08016F80: @ 0x08016F80
 	bne _08016FAC
 	adds r0, r3, #0
 	adds r1, r2, #0
-	bl sub_08027158
+	bl CanUnitUseItem
 	b _08016FB4
 	.align 2, 0
 _08016FA8: .4byte 0x08C51538
@@ -1990,7 +1990,7 @@ sub_08017364: @ 0x08017364
 	ldrh r4, [r1]
 	adds r0, r5, #0
 	adds r1, r4, #0
-	bl sub_08027158
+	bl CanUnitUseItem
 	lsls r0, r0, #0x18
 	cmp r0, #0
 	beq _08017416
@@ -2018,7 +2018,7 @@ _080173A8:
 _080173B0:
 	adds r0, r5, #0
 	adds r1, r4, #0
-	bl sub_08027158
+	bl CanUnitUseItem
 	lsls r0, r0, #0x18
 	cmp r0, #0
 	beq _080173DE
@@ -2280,7 +2280,7 @@ sub_08017574: @ 0x08017574
 	adds r4, r0, #0
 	bl sub_080174F4
 	adds r4, r4, r0
-	bl sub_08023D90
+	bl GetGold
 	adds r4, r4, r0
 	ldr r0, _08017598 @ =0x0098967F
 	cmp r4, r0
