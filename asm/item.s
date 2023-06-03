@@ -2210,7 +2210,7 @@ sub_080174F4: @ 0x080174F4
 	movs r4, #1
 _080174FA:
 	adds r0, r4, #0
-	bl sub_080190F4
+	bl GetUnit
 	mov ip, r0
 	adds r6, r4, #1
 	cmp r0, #0

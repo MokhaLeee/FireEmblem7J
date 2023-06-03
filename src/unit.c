@@ -4,9 +4,23 @@
 #include "terrain.h"
 #include "constants/items.h"
 
-static inline struct Unit *GetUnit(int id)
+static inline struct Unit *_GetUnit(int id)
 {
     return gUnitLut[id & 0xFF];
+}
+
+static inline const struct ClassData* _GetClassData(int classId) {
+    if (classId < 1)
+        return NULL;
+
+    return gClassData + (classId - 1);
+}
+
+static inline const struct CharacterData* _GetCharacterData(int charId) {
+    if (charId < 1)
+        return NULL;
+
+    return gCharacterData + (charId - 1);
 }
 
 void InitUnits(void)
@@ -14,7 +28,7 @@ void InitUnits(void)
     int i;
 
     for (i = 0; i < 0x100; ++i) {
-        struct Unit *unit = GetUnit(i);
+        struct Unit *unit = _GetUnit(i);
 
         if (unit) {
             ClearUnit(unit);
@@ -42,7 +56,7 @@ struct Unit *GetFreeUnit(int faction)
     int i, last = (faction + 0x40);
 
     for (i = faction + 1; i < last; ++i) {
-        struct Unit *unit = GetUnit(i);
+        struct Unit *unit = _GetUnit(i);
 
         if (unit->pCharacterData == NULL)
             return unit;
@@ -51,15 +65,15 @@ struct Unit *GetFreeUnit(int faction)
     return NULL;
 }
 
-struct Unit *GetFreeBlueUnit(const struct UnitDefinition *uDef)
+struct Unit *GetFreeBlueUnit(const struct UnitDefinition *info)
 {
     int i, last = 0x40;
 
-    if (uDef->pid == GetPlayerLeaderUnitId())
+    if (info->pid == GetPlayerLeaderUnitId())
         ++i;
 
     for (i = 1; i < last; ++i) {
-        struct Unit *unit = GetUnit(i);
+        struct Unit *unit = _GetUnit(i);
 
         if (unit->pCharacterData == NULL)
             return unit;
@@ -185,14 +199,14 @@ bool UnitHasItem(struct Unit *unit, int item)
     return false;
 }
 
-int LoadUnits(const struct UnitDefinition *uDef)
+int LoadUnits(const struct UnitDefinition *info)
 {
     int count = 0;
 
-    while (uDef->pid) {
-        LoadUnit(uDef);
+    while (info->pid) {
+        LoadUnit(info);
 
-        uDef++;
+        info++;
         count++;
     }
 
@@ -261,4 +275,76 @@ struct Unit *LoadUnit(struct UnitDefinition const *info)
     hp = unit->maxHP + GetItemHpBonus(GetUnitEquippedWeapon(unit));
     unit->curHP = hp;
     return unit;
+}
+
+void UnitInitFromDefinition(struct Unit *unit, const struct UnitDefinition *info)
+{
+    int i;
+
+    unit->pCharacterData = _GetCharacterData(info->pid);
+
+    if (info->jid != 0)
+        unit->pClassData = _GetClassData(info->jid);
+    else
+        unit->pClassData = _GetClassData(unit->pCharacterData->defaultClass);
+
+    unit->level = info->level;
+
+    unit->xPos = info->x_move;
+    unit->yPos = info->y_move;
+
+    for (i = 0; (i < (int) ARRAY_COUNT(info->items)) && info->items[i]; ++i)
+        UnitAddItem(unit, MakeNewItem(info->items[i]));
+
+    CharStoreAI(unit, info);
+}
+
+void UnitLoadItemsFromDefinition(struct Unit *unit, const struct UnitDefinition *info) {
+    int i;
+
+    UnitClearInventory(unit);
+
+    for (i = 0; (i < UNIT_DEFINITION_ITEM_COUNT) && (info->items[i]); ++i)
+        UnitAddItem(unit, MakeNewItem(info->items[i]));
+}
+
+void UnitLoadStatsFromChracter(struct Unit *unit, const struct CharacterData *character)
+{
+    int i;
+
+    unit->maxHP = character->baseHP + unit->pClassData->baseHP;
+    unit->pow   = character->basePow + unit->pClassData->basePow;
+    unit->skl   = character->baseSkl + unit->pClassData->baseSkl;
+    unit->spd   = character->baseSpd + unit->pClassData->baseSpd;
+    unit->def   = character->baseDef + unit->pClassData->baseDef;
+    unit->res   = character->baseRes + unit->pClassData->baseRes;
+    unit->lck   = character->baseLck;
+
+    unit->conBonus = 0;
+
+    for (i = 0; i < 8; ++i) {
+        unit->ranks[i] = unit->pClassData->baseRanks[i];
+
+        if (unit->pCharacterData->baseRanks[i])
+            unit->ranks[i] = unit->pCharacterData->baseRanks[i];
+    }
+
+    if (UNIT_FACTION(unit) == FACTION_BLUE && (unit->level != UNIT_LEVEL_MAX) && (unit->pCharacterData->number != 0x28)) // todo
+        unit->exp = 0;
+    else
+        unit->exp = UNIT_EXP_DISABLED;
+}
+
+void FixROMUnitStructPtr(struct Unit *unit) {
+    // TODO: investigate why
+
+    if (UNIT_CATTRIBUTES(unit) & CA_BIT_23)
+        unit->pCharacterData = _GetCharacterData(unit->pCharacterData->number - 1);
+}
+
+void UnitLoadSupports(struct Unit *unit) {
+    int i, count = GetUnitSupporterCount(unit);
+
+    for (i = 0; i < count; ++i)
+        unit->supports[i] = GetUnitSupporterInitialExp(unit, i);
 }

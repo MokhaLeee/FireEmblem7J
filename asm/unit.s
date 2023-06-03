@@ -3,248 +3,6 @@
 	.include "macro.inc"
 	.syntax unified
 
-	thumb_func_start UnitInitFromDefinition
-UnitInitFromDefinition: @ 0x08017C58
-	push {r4, r5, r6, r7, lr}
-	adds r5, r0, #0
-	adds r6, r1, #0
-	ldrb r1, [r6]
-	cmp r1, #0
-	bgt _08017C68
-	movs r1, #0
-	b _08017C70
-_08017C68:
-	movs r0, #0x34
-	muls r1, r0, r1
-	ldr r0, _08017C80 @ =0x08C4C124
-	adds r1, r1, r0
-_08017C70:
-	str r1, [r5]
-	ldrb r0, [r6, #1]
-	cmp r0, #0
-	beq _08017C84
-	adds r1, r0, #0
-	cmp r1, #0
-	ble _08017C8A
-	b _08017C8E
-	.align 2, 0
-_08017C80: .4byte 0x08C4C124
-_08017C84:
-	ldrb r1, [r1, #5]
-	cmp r1, #0
-	bgt _08017C8E
-_08017C8A:
-	movs r1, #0
-	b _08017C96
-_08017C8E:
-	movs r0, #0x54
-	muls r1, r0, r1
-	ldr r0, _08017CE0 @ =0x08C4F468
-	adds r1, r1, r0
-_08017C96:
-	str r1, [r5, #4]
-	ldrb r1, [r6, #3]
-	lsrs r0, r1, #3
-	strb r0, [r5, #8]
-	ldrb r0, [r6, #6]
-	strb r0, [r5, #0x10]
-	ldrb r0, [r6, #7]
-	strb r0, [r5, #0x11]
-	adds r1, r6, #0
-	adds r1, #8
-	ldrb r0, [r6, #8]
-	cmp r0, #0
-	beq _08017CD0
-	adds r4, r1, #0
-	adds r7, r4, #0
-_08017CB4:
-	ldrb r0, [r4]
-	bl MakeNewItem
-	adds r1, r0, #0
-	adds r0, r5, #0
-	bl UnitAddItem
-	adds r4, #1
-	adds r0, r7, #3
-	cmp r4, r0
-	bgt _08017CD0
-	ldrb r0, [r4]
-	cmp r0, #0
-	bne _08017CB4
-_08017CD0:
-	adds r0, r5, #0
-	adds r1, r6, #0
-	bl CharStoreAI
-	pop {r4, r5, r6, r7}
-	pop {r0}
-	bx r0
-	.align 2, 0
-_08017CE0: .4byte 0x08C4F468
-
-	thumb_func_start UnitLoadItemsFromDefinition
-UnitLoadItemsFromDefinition: @ 0x08017CE4
-	push {r4, r5, r6, lr}
-	adds r5, r0, #0
-	adds r4, r1, #0
-	bl UnitClearInventory
-	adds r1, r4, #0
-	adds r1, #8
-	ldrb r0, [r4, #8]
-	cmp r0, #0
-	beq _08017D18
-	adds r4, r1, #0
-	adds r6, r4, #0
-_08017CFC:
-	ldrb r0, [r4]
-	bl MakeNewItem
-	adds r1, r0, #0
-	adds r0, r5, #0
-	bl UnitAddItem
-	adds r4, #1
-	adds r0, r6, #3
-	cmp r4, r0
-	bgt _08017D18
-	ldrb r0, [r4]
-	cmp r0, #0
-	bne _08017CFC
-_08017D18:
-	pop {r4, r5, r6}
-	pop {r0}
-	bx r0
-	.align 2, 0
-
-	thumb_func_start UnitLoadStatsFromChracter
-UnitLoadStatsFromChracter: @ 0x08017D20
-	push {r4, r5, r6, lr}
-	adds r4, r0, #0
-	ldr r2, [r4, #4]
-	ldrb r3, [r1, #0xc]
-	ldrb r5, [r2, #0xb]
-	adds r0, r3, r5
-	movs r3, #0
-	strb r0, [r4, #0x12]
-	ldrb r6, [r1, #0xd]
-	ldrb r5, [r2, #0xc]
-	adds r0, r6, r5
-	strb r0, [r4, #0x14]
-	ldrb r6, [r1, #0xe]
-	ldrb r5, [r2, #0xd]
-	adds r0, r6, r5
-	strb r0, [r4, #0x15]
-	ldrb r6, [r1, #0xf]
-	ldrb r5, [r2, #0xe]
-	adds r0, r6, r5
-	strb r0, [r4, #0x16]
-	ldrb r6, [r1, #0x10]
-	ldrb r5, [r2, #0xf]
-	adds r0, r6, r5
-	strb r0, [r4, #0x17]
-	ldrb r6, [r1, #0x11]
-	ldrb r2, [r2, #0x10]
-	adds r0, r6, r2
-	strb r0, [r4, #0x18]
-	ldrb r0, [r1, #0x12]
-	strb r0, [r4, #0x19]
-	strb r3, [r4, #0x1a]
-	movs r1, #0
-	adds r3, r4, #0
-	adds r3, #0x28
-_08017D64:
-	adds r2, r3, r1
-	ldr r0, [r4, #4]
-	adds r0, #0x2c
-	adds r0, r0, r1
-	ldrb r0, [r0]
-	strb r0, [r2]
-	ldr r0, [r4]
-	adds r0, #0x14
-	adds r0, r0, r1
-	ldrb r0, [r0]
-	cmp r0, #0
-	beq _08017D7E
-	strb r0, [r2]
-_08017D7E:
-	adds r1, #1
-	cmp r1, #7
-	ble _08017D64
-	movs r1, #0xc0
-	ldrb r0, [r4, #0xb]
-	ands r1, r0
-	cmp r1, #0
-	bne _08017DA0
-	ldrb r3, [r4, #8]
-	cmp r3, #0x14
-	beq _08017DA0
-	ldr r0, [r4]
-	ldrb r0, [r0, #4]
-	cmp r0, #0x28
-	beq _08017DA0
-	strb r1, [r4, #9]
-	b _08017DA4
-_08017DA0:
-	movs r0, #0xff
-	strb r0, [r4, #9]
-_08017DA4:
-	pop {r4, r5, r6}
-	pop {r0}
-	bx r0
-	.align 2, 0
-
-	thumb_func_start FixROMUnitStructPtr
-FixROMUnitStructPtr: @ 0x08017DAC
-	adds r2, r0, #0
-	ldr r3, [r2]
-	ldr r1, [r2, #4]
-	ldr r0, [r3, #0x28]
-	ldr r1, [r1, #0x28]
-	orrs r0, r1
-	movs r1, #0x80
-	lsls r1, r1, #0x10
-	ands r0, r1
-	cmp r0, #0
-	beq _08017DD8
-	ldrb r1, [r3, #4]
-	subs r1, #1
-	cmp r1, #0
-	bgt _08017DCE
-	movs r1, #0
-	b _08017DD6
-_08017DCE:
-	movs r0, #0x34
-	muls r1, r0, r1
-	ldr r0, _08017DDC @ =0x08C4C124
-	adds r1, r1, r0
-_08017DD6:
-	str r1, [r2]
-_08017DD8:
-	bx lr
-	.align 2, 0
-_08017DDC: .4byte 0x08C4C124
-
-	thumb_func_start UnitLoadSupports
-UnitLoadSupports: @ 0x08017DE0
-	push {r4, r5, r6, r7, lr}
-	adds r5, r0, #0
-	bl sub_08026AB4
-	adds r6, r0, #0
-	movs r4, #0
-	cmp r4, r6
-	bge _08017E06
-	adds r7, r5, #0
-	adds r7, #0x32
-_08017DF4:
-	adds r0, r5, #0
-	adds r1, r4, #0
-	bl sub_08026C80
-	adds r1, r7, r4
-	strb r0, [r1]
-	adds r4, #1
-	cmp r4, r6
-	blt _08017DF4
-_08017E06:
-	pop {r4, r5, r6, r7}
-	pop {r0}
-	bx r0
-
 	thumb_func_start UnitAutolevelWExp
 UnitAutolevelWExp: @ 0x08017E0C
 	push {r4, r5, r6, r7, lr}
@@ -2824,8 +2582,8 @@ sub_080190E0: @ 0x080190E0
 	.align 2, 0
 _080190F0: .4byte 0x08C02144
 
-	thumb_func_start sub_080190F4
-sub_080190F4: @ 0x080190F4
+	thumb_func_start GetUnit
+GetUnit: @ 0x080190F4
 	ldr r2, _08019104 @ =gUnitLut
 	movs r1, #0xff
 	ands r1, r0
@@ -2835,3 +2593,70 @@ sub_080190F4: @ 0x080190F4
 	bx lr
 	.align 2, 0
 _08019104: .4byte gUnitLut
+
+	thumb_func_start GetClassData
+GetClassData: @ 0x08019108
+	adds r1, r0, #0
+	cmp r1, #0
+	ble _0801911C
+	movs r0, #0x54
+	muls r0, r1, r0
+	ldr r1, _08019118 @ =0x08C4F468
+	adds r0, r0, r1
+	b _0801911E
+	.align 2, 0
+_08019118: .4byte 0x08C4F468
+_0801911C:
+	movs r0, #0
+_0801911E:
+	bx lr
+
+	thumb_func_start GetCharacterData
+GetCharacterData: @ 0x08019120
+	adds r1, r0, #0
+	cmp r1, #0
+	ble _08019134
+	movs r0, #0x34
+	muls r0, r1, r0
+	ldr r1, _08019130 @ =0x08C4C124
+	adds r0, r0, r1
+	b _08019136
+	.align 2, 0
+_08019130: .4byte 0x08C4C124
+_08019134:
+	movs r0, #0
+_08019136:
+	bx lr
+
+	thumb_func_start UnitRemoveItem
+UnitRemoveItem: @ 0x08019138
+	push {lr}
+	lsls r1, r1, #1
+	adds r2, r0, #0
+	adds r2, #0x1e
+	adds r2, r2, r1
+	movs r1, #0
+	strh r1, [r2]
+	bl UnitRemoveInvalidItems
+	pop {r0}
+	bx r0
+	.align 2, 0
+
+	thumb_func_start CanUnitCrossTerrain
+CanUnitCrossTerrain: @ 0x08019150
+	push {r4, lr}
+	adds r4, r1, #0
+	bl GetUnitMovementCost
+	movs r1, #0
+	adds r0, r0, r4
+	ldrb r0, [r0]
+	lsls r0, r0, #0x18
+	asrs r0, r0, #0x18
+	cmp r0, #0
+	ble _08019168
+	movs r1, #1
+_08019168:
+	adds r0, r1, #0
+	pop {r4}
+	pop {r1}
+	bx r1
