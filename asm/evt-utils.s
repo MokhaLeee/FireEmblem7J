@@ -403,7 +403,7 @@ sub_080108F0: @ 0x080108F0
 	orrs r0, r2
 	strb r0, [r1]
 	ldr r0, _08010968 @ =0x08C01124
-	bl sub_08004584
+	bl Proc_Find
 	movs r1, #1
 	bl sub_080108C8
 	pop {r0}
@@ -455,7 +455,7 @@ sub_0801096C: @ 0x0801096C
 	cmp r4, #0x10
 	bne _080109DC
 	adds r0, r3, #0
-	bl sub_0800457C
+	bl Proc_Break
 	mov r0, sl
 	ldrb r1, [r5]
 	ands r0, r1
@@ -466,7 +466,7 @@ sub_0801096C: @ 0x0801096C
 	strb r6, [r1]
 	strb r6, [r7]
 	ldr r0, _080109F0 @ =0x08C01124
-	bl sub_08004584
+	bl Proc_Find
 	movs r1, #0
 	bl sub_080108C8
 _080109DC:
@@ -529,7 +529,7 @@ sub_080109F4: @ 0x080109F4
 	orrs r0, r2
 	strb r0, [r1]
 	ldr r0, _08010A6C @ =0x08C01124
-	bl sub_08004584
+	bl Proc_Find
 	movs r1, #1
 	bl sub_080108C8
 	pop {r0}
@@ -574,10 +574,10 @@ sub_08010A70: @ 0x08010A70
 	cmp r3, #0x10
 	bne _08010ABE
 	ldr r0, _08010AC8 @ =0x08C01124
-	bl sub_08004584
-	bl sub_08004460
+	bl Proc_Find
+	bl Proc_End
 	adds r0, r5, #0
-	bl sub_0800457C
+	bl Proc_Break
 _08010ABE:
 	pop {r4, r5}
 	pop {r0}
@@ -641,19 +641,19 @@ sub_08010AF4: @ 0x08010AF4
 	strh r6, [r0]
 	ldr r0, _08010BDC @ =0x08C01144
 	ldr r1, [sp, #0x48]
-	bl sub_080043D4
+	bl Proc_StartBlocking
 	ldr r0, _08010BE0 @ =0x08452C74
 	ldr r1, [r7, #0x3c]
 	adds r1, #0x10
 	lsls r1, r1, #5
 	movs r2, #0x20
-	bl sub_0800105C
+	bl ApplyPaletteExt
 	ldr r0, _08010BE4 @ =0x081901C8
 	ldr r1, [r7, #0x3c]
 	adds r1, #0x11
 	lsls r1, r1, #5
 	movs r2, #0x20
-	bl sub_0800105C
+	bl ApplyPaletteExt
 	ldr r0, _08010BE8 @ =0x08452AD4
 	ldr r1, [r7, #0x38]
 	ldr r2, _08010BEC @ =0x06010000
@@ -789,8 +789,8 @@ sub_08010C5C: @ 0x08010C5C
 	cmp r0, #0
 	beq _08010C80
 	ldr r0, _08010C7C @ =0x08C01124
-	bl sub_08004584
-	bl sub_08004460
+	bl Proc_Find
+	bl Proc_End
 	movs r0, #0
 	b _08010CA8
 	.align 2, 0
@@ -804,14 +804,14 @@ _08010C80:
 	cmp r0, #0
 	beq _08010CA0
 	ldr r0, _08010C9C @ =0x08C01124
-	bl sub_08004584
-	bl sub_08004460
+	bl Proc_Find
+	bl Proc_End
 	b _08010CA6
 	.align 2, 0
 _08010C9C: .4byte 0x08C01124
 _08010CA0:
 	ldr r0, _08010CAC @ =0x08C0115C
-	bl sub_080043D4
+	bl Proc_StartBlocking
 _08010CA6:
 	movs r0, #2
 _08010CA8:
@@ -880,7 +880,7 @@ sub_08010CB0: @ 0x08010CB0
 	movs r0, #2
 	movs r1, #0
 	movs r2, #0
-	bl sub_08001D64
+	bl SetBgOffset
 	ldr r0, [r5, #0x34]
 	movs r1, #0x80
 	lsls r1, r1, #1
@@ -919,7 +919,7 @@ _08010D6E:
 	movs r0, #0
 	str r0, [r5, #0x30]
 	ldr r0, _08010D84 @ =0x08BFFF78
-	bl sub_08004584
+	bl Proc_Find
 	str r0, [r5, #0x40]
 	pop {r4, r5, r6, r7}
 	pop {r0}
@@ -963,8 +963,8 @@ _08010DB6:
 sub_08010DC4: @ 0x08010DC4
 	bne _08010DB6
 	movs r0, #4
-	bl sub_08000FD4
-	bl sub_08001034
+	bl EnableBgSync
+	bl EnablePalSync
 	ldr r2, _08010E10 @ =0x03002790
 	movs r0, #1
 	ldrb r1, [r2, #1]
@@ -1034,7 +1034,7 @@ sub_08010E14: @ 0x08010E14
 	lsls r1, r1, #1
 	ldr r2, [r5, #0x44]
 	lsls r2, r2, #5
-	bl sub_0800105C
+	bl ApplyPaletteExt
 	b _08010E8E
 	.align 2, 0
 _08010E70: .4byte 0x08C00798
@@ -1051,7 +1051,7 @@ _08010E7C:
 	bl sub_080B7980
 _08010E8E:
 	movs r0, #8
-	bl sub_08000FD4
+	bl EnableBgSync
 	add sp, #4
 	pop {r4, r5}
 	pop {r0}
@@ -1092,7 +1092,7 @@ sub_08010EA0: @ 0x08010EA0
 	cmp r2, #0x10
 	bne _08010EE2
 	adds r0, r4, #0
-	bl sub_0800457C
+	bl Proc_Break
 _08010EE2:
 	pop {r4}
 	pop {r0}
@@ -1107,12 +1107,12 @@ sub_08010EEC: @ 0x08010EEC
 	movs r0, #3
 	movs r1, #0
 	movs r2, #0
-	bl sub_08001D64
+	bl SetBgOffset
 	ldr r0, _08010F40 @ =0x02023C60
 	movs r1, #0
 	bl sub_080017E8
 	movs r0, #4
-	bl sub_08000FD4
+	bl EnableBgSync
 	ldr r3, _08010F44 @ =0x03002790
 	adds r1, r3, #0
 	adds r1, #0x3c
@@ -1154,7 +1154,7 @@ sub_08010F48: @ 0x08010F48
 	lsls r4, r4, #0x18
 	lsrs r4, r4, #0x18
 	ldr r0, _08010F70 @ =0x08C0117C
-	bl sub_080043D4
+	bl Proc_StartBlocking
 	str r5, [r0, #0x2c]
 	str r6, [r0, #0x34]
 	movs r1, #0xff
@@ -1229,7 +1229,7 @@ sub_08010F74: @ 0x08010F74
 	movs r0, #2
 	movs r1, #0
 	movs r2, #0
-	bl sub_08001D64
+	bl SetBgOffset
 	movs r1, #4
 	rsbs r1, r1, #0
 	adds r0, r1, #0
@@ -1252,7 +1252,7 @@ sub_08010F74: @ 0x08010F74
 	str r0, [r5, #0x44]
 	str r4, [r5, #0x30]
 	ldr r0, _08011034 @ =0x08BFFF78
-	bl sub_08004584
+	bl Proc_Find
 	str r0, [r5, #0x40]
 	pop {r4, r5, r6, r7}
 	pop {r0}
@@ -1303,7 +1303,7 @@ sub_08011038: @ 0x08011038
 	ldr r2, [r5, #0x44]
 	lsls r2, r2, #5
 	movs r1, #0
-	bl sub_0800105C
+	bl ApplyPaletteExt
 	b _080110AE
 	.align 2, 0
 _08011090: .4byte 0x08C00798
@@ -1320,8 +1320,8 @@ _0801109C:
 	bl sub_080B7980
 _080110AE:
 	movs r0, #4
-	bl sub_08000FD4
-	bl sub_08001034
+	bl EnableBgSync
+	bl EnablePalSync
 	ldr r2, _080110E0 @ =0x03002790
 	movs r0, #1
 	ldrb r1, [r2, #1]
@@ -1376,7 +1376,7 @@ sub_080110E4: @ 0x080110E4
 	cmp r2, #0x10
 	bne _08011126
 	adds r0, r4, #0
-	bl sub_0800457C
+	bl Proc_Break
 _08011126:
 	pop {r4}
 	pop {r0}
@@ -1393,7 +1393,7 @@ sub_08011130: @ 0x08011130
 	movs r0, #3
 	movs r1, #0
 	movs r2, #0
-	bl sub_08001D64
+	bl SetBgOffset
 	ldr r0, _08011190 @ =0x06001000
 	ldr r1, _08011194 @ =0x06008000
 	movs r2, #0xa0
@@ -1425,7 +1425,7 @@ _08011174:
 	cmp r1, #0
 	bne _08011174
 	movs r0, #8
-	bl sub_08000FD4
+	bl EnableBgSync
 	pop {r4, r5}
 	pop {r0}
 	bx r0
@@ -1444,7 +1444,7 @@ sub_080111A8: @ 0x080111A8
 	movs r1, #0
 	bl sub_080017E8
 	movs r0, #4
-	bl sub_08000FD4
+	bl EnableBgSync
 	ldr r3, _080111E4 @ =0x03002790
 	adds r1, r3, #0
 	adds r1, #0x3c
@@ -1478,7 +1478,7 @@ sub_080111E8: @ 0x080111E8
 	lsls r4, r4, #0x18
 	lsrs r4, r4, #0x18
 	ldr r0, _08011210 @ =0x08C011CC
-	bl sub_080043D4
+	bl Proc_StartBlocking
 	str r5, [r0, #0x2c]
 	str r6, [r0, #0x34]
 	movs r1, #0xff
@@ -1628,7 +1628,7 @@ sub_08011298: @ 0x08011298
 	movs r0, #2
 	movs r1, #0
 	movs r2, #0
-	bl sub_08001D64
+	bl SetBgOffset
 	movs r1, #4
 	rsbs r1, r1, #0
 	adds r0, r1, #0
@@ -1651,7 +1651,7 @@ sub_08011298: @ 0x08011298
 	str r0, [r5, #0x44]
 	str r4, [r5, #0x30]
 	ldr r0, _08011358 @ =0x08BFFF78
-	bl sub_08004584
+	bl Proc_Find
 	str r0, [r5, #0x40]
 	pop {r4, r5, r6, r7}
 	pop {r0}
@@ -1695,8 +1695,8 @@ _0801138A:
 	cmp r4, #0
 	bne _0801138A
 	movs r0, #4
-	bl sub_08000FD4
-	bl sub_08001034
+	bl EnableBgSync
+	bl EnablePalSync
 	ldr r3, _08011408 @ =0x03002790
 	movs r0, #1
 	ldrb r1, [r3, #1]
@@ -1766,7 +1766,7 @@ _0801143C:
 	bl sub_0802D8A8
 	bl sub_0806D52C
 	movs r0, #8
-	bl sub_08000FD4
+	bl EnableBgSync
 	pop {r4, r5}
 	pop {r0}
 	bx r0
@@ -1806,7 +1806,7 @@ sub_08011458: @ 0x08011458
 	cmp r2, #0x10
 	bne _0801149A
 	adds r0, r4, #0
-	bl sub_0800457C
+	bl Proc_Break
 _0801149A:
 	pop {r4}
 	pop {r0}
@@ -1821,7 +1821,7 @@ sub_080114A4: @ 0x080114A4
 	movs r1, #0
 	bl sub_080017E8
 	movs r0, #4
-	bl sub_08000FD4
+	bl EnableBgSync
 	ldr r3, _080114E8 @ =0x03002790
 	adds r1, r3, #0
 	adds r1, #0x3c
@@ -1852,7 +1852,7 @@ sub_080114EC: @ 0x080114EC
 	push {r4, lr}
 	adds r4, r0, #0
 	ldr r0, _08011504 @ =0x08C01224
-	bl sub_080043D4
+	bl Proc_StartBlocking
 	str r4, [r0, #0x34]
 	movs r1, #0xff
 	ands r1, r4
@@ -1958,13 +1958,13 @@ sub_08011568: @ 0x08011568
 	lsls r1, r1, #1
 	adds r0, r4, #0
 	movs r2, #0x20
-	bl sub_0800105C
+	bl ApplyPaletteExt
 	ldr r0, _0801161C @ =0x02023C60
 	ldr r1, _08011620 @ =0x08199290
 	ldr r2, _08011624 @ =0x0000F080
 	bl TmApplyTsa_thm
 	movs r0, #4
-	bl sub_08000FD4
+	bl EnableBgSync
 	adds r1, r4, #0
 	adds r1, #0x20
 	movs r0, #1
@@ -1982,7 +1982,7 @@ sub_08011568: @ 0x08011568
 	movs r0, #2
 	movs r1, #0
 	movs r2, #0
-	bl sub_08001D64
+	bl SetBgOffset
 	add sp, #8
 	pop {r4, r5, r6}
 	pop {r0}
@@ -2035,7 +2035,7 @@ _08011658:
 	bne _08011670
 	str r2, [r4, #0x30]
 	adds r0, r4, #0
-	bl sub_0800457C
+	bl Proc_Break
 _08011670:
 	ldr r3, [r4, #0x34]
 	adds r3, #1
@@ -2057,7 +2057,7 @@ _08011670:
 	lsls r2, r2, #0x10
 	lsrs r2, r2, #0x10
 	movs r0, #2
-	bl sub_08001D64
+	bl SetBgOffset
 	pop {r4, r5}
 	pop {r0}
 	bx r0
@@ -2077,7 +2077,7 @@ sub_080116A8: @ 0x080116A8
 	movs r0, #0
 	str r0, [r4, #0x30]
 	adds r0, r4, #0
-	bl sub_0800457C
+	bl Proc_Break
 _080116C2:
 	ldr r3, [r4, #0x34]
 	lsls r0, r3, #1
@@ -2097,7 +2097,7 @@ _080116C2:
 	lsls r2, r2, #0x10
 	lsrs r2, r2, #0x10
 	movs r0, #2
-	bl sub_08001D64
+	bl SetBgOffset
 	pop {r4}
 	pop {r0}
 	bx r0
@@ -2154,11 +2154,11 @@ _08011722:
 	lsls r2, r2, #0x10
 	lsrs r2, r2, #0x10
 	movs r0, #2
-	bl sub_08001D64
+	bl SetBgOffset
 	cmp r5, #0x10
 	bne _08011760
 	adds r0, r4, #0
-	bl sub_0800457C
+	bl Proc_Break
 _08011760:
 	pop {r4, r5}
 	pop {r0}
@@ -2173,7 +2173,7 @@ sub_0801176C: @ 0x0801176C
 	movs r1, #0
 	bl sub_080017E8
 	movs r0, #4
-	bl sub_08000FD4
+	bl EnableBgSync
 	ldr r2, _080117A8 @ =0x03002790
 	adds r1, r2, #0
 	adds r1, #0x3c
@@ -2212,7 +2212,7 @@ sub_080117AC: @ 0x080117AC
 	cmp r0, #0
 	bne _080117D4
 	ldr r0, _080117D0 @ =0x08C0127C
-	bl sub_080043D4
+	bl Proc_StartBlocking
 	str r4, [r0, #0x2c]
 	movs r0, #2
 	b _080117D6
@@ -2267,9 +2267,9 @@ sub_080117DC: @ 0x080117DC
 	movs r1, #0
 	bl sub_080780E0
 	movs r0, #0
-	bl sub_08002DF0
+	bl SetOnHBlankA
 	ldr r0, _080118A0 @ =sub_08078098
-	bl sub_08002DF0
+	bl SetOnHBlankA
 	movs r1, #4
 	rsbs r1, r1, #0
 	adds r0, r1, #0
@@ -2291,7 +2291,7 @@ sub_080117DC: @ 0x080117DC
 	orrs r0, r1
 	strb r0, [r6, #0x18]
 	movs r0, #7
-	bl sub_08000FD4
+	bl EnableBgSync
 	str r4, [r5, #0x30]
 	ldr r0, _080118A4 @ =0x08DBA258
 	movs r1, #0x80
@@ -2361,7 +2361,7 @@ _080118DE:
 	bne _080118F8
 	str r3, [r5, #0x30]
 	adds r0, r5, #0
-	bl sub_0800457C
+	bl Proc_Break
 _080118F8:
 	pop {r4, r5}
 	pop {r0}
@@ -2405,7 +2405,7 @@ _08011932:
 	cmp r4, #0x10
 	bne _08011948
 	adds r0, r5, #0
-	bl sub_0800457C
+	bl Proc_Break
 _08011948:
 	pop {r4, r5}
 	pop {r0}
@@ -2420,9 +2420,9 @@ sub_08011954: @ 0x08011954
 	movs r1, #0
 	bl sub_080017E8
 	movs r0, #4
-	bl sub_08000FD4
+	bl EnableBgSync
 	movs r0, #0
-	bl sub_08002DF0
+	bl SetOnHBlankA
 	ldr r3, _080119C0 @ =0x03002790
 	adds r1, r3, #0
 	adds r1, #0x3c
@@ -2479,7 +2479,7 @@ sub_080119C4: @ 0x080119C4
 	cmp r0, #0
 	bne _080119E4
 	ldr r0, _080119E0 @ =0x08C012BC
-	bl sub_080043D4
+	bl Proc_StartBlocking
 	movs r0, #2
 	b _080119E6
 	.align 2, 0
@@ -2501,7 +2501,7 @@ sub_080119EC: @ 0x080119EC
 	cmp r1, #0
 	bne _08011A10
 	ldr r0, _08011A0C @ =0x08C012BC
-	bl sub_08004584
+	bl Proc_Find
 	movs r1, #0
 	bl sub_080045FC
 	movs r0, #2
@@ -2510,8 +2510,8 @@ sub_080119EC: @ 0x080119EC
 _08011A0C: .4byte 0x08C012BC
 _08011A10:
 	ldr r0, _08011A20 @ =0x08C012BC
-	bl sub_08004584
-	bl sub_08004460
+	bl Proc_Find
+	bl Proc_End
 	movs r0, #0
 _08011A1C:
 	pop {r1}
@@ -2626,8 +2626,8 @@ sub_08011AC8: @ 0x08011AC8
 	.align 2, 0
 _08011AF8: .4byte 0x03002790
 
-	thumb_func_start sub_08011AFC
-sub_08011AFC: @ 0x08011AFC
+	thumb_func_start StartEvt_LymstellaThunderAtk
+StartEvt_LymstellaThunderAtk: @ 0x08011AFC
 	push {r4, r5, lr}
 	adds r1, r0, #0
 	ldr r0, [r1, #0x30]
@@ -2641,7 +2641,7 @@ sub_08011AFC: @ 0x08011AFC
 	cmp r0, #0
 	bne _08011B28
 	ldr r0, _08011B24 @ =0x08C013C8
-	bl sub_080043D4
+	bl Proc_StartBlocking
 	str r4, [r0, #0x3c]
 	str r5, [r0, #0x40]
 	movs r0, #2
@@ -2659,7 +2659,7 @@ _08011B2A:
 sub_08011B30: @ 0x08011B30
 	push {lr}
 	ldr r0, _08011B40 @ =0x08C013C8
-	bl sub_08004584
+	bl Proc_Find
 	cmp r0, #0
 	bne _08011B44
 	movs r0, #0
@@ -2761,7 +2761,7 @@ sub_08011BD4: @ 0x08011BD4
 	movs r0, #0
 	str r0, [r4, #0x30]
 	adds r0, r4, #0
-	bl sub_0800457C
+	bl Proc_Break
 _08011BFE:
 	pop {r4}
 	pop {r0}
@@ -2787,7 +2787,7 @@ sub_08011C08: @ 0x08011C08
 	movs r0, #0
 	str r0, [r4, #0x30]
 	adds r0, r4, #0
-	bl sub_0800457C
+	bl Proc_Break
 _08011C2E:
 	pop {r4}
 	pop {r0}
@@ -2809,7 +2809,7 @@ sub_08011C38: @ 0x08011C38
 	movs r0, #0
 	bl sub_080AB634
 	adds r0, r4, #0
-	bl sub_0800457C
+	bl Proc_Break
 _08011C56:
 	pop {r4}
 	pop {r0}
@@ -2827,7 +2827,7 @@ sub_08011C5C: @ 0x08011C5C
 	movs r1, #0xa8
 	lsls r1, r1, #2
 	movs r2, #0x20
-	bl sub_0800105C
+	bl ApplyPaletteExt
 	movs r4, #0
 _08011C78:
 	movs r5, #0
@@ -2981,7 +2981,7 @@ _08011DA8:
 	cmp r0, #0xa0
 	bne _08011DB4
 	adds r0, r6, #0
-	bl sub_0800457C
+	bl Proc_Break
 _08011DB4:
 	add sp, #0xc
 	pop {r3, r4, r5}
@@ -3086,7 +3086,7 @@ _08011E70:
 	movs r0, #0
 	bl sub_080AB634
 	adds r0, r4, #0
-	bl sub_0800457C
+	bl Proc_Break
 _08011E84:
 	add sp, #0x10
 	pop {r4, r5}
@@ -3136,7 +3136,7 @@ sub_08011EC0: @ 0x08011EC0
 	cmp r0, #0
 	bne _08011EEC
 	ldr r0, _08011EE8 @ =0x08C015DC
-	bl sub_080043D4
+	bl Proc_StartBlocking
 	str r4, [r0, #0x3c]
 	str r5, [r0, #0x40]
 	movs r0, #2
@@ -3256,7 +3256,7 @@ _08011F92:
 	movs r0, #0
 	str r0, [r4, #0x3c]
 	adds r0, r4, #0
-	bl sub_0800457C
+	bl Proc_Break
 	b _08011FCC
 	.align 2, 0
 _08011FBC: .4byte 0xFFFFFF00
@@ -3317,7 +3317,7 @@ _08012010:
 	cmp r0, r7
 	bne _08012028
 	adds r0, r4, #0
-	bl sub_0800457C
+	bl Proc_Break
 _08012028:
 	pop {r4, r5, r6, r7}
 	pop {r0}
@@ -3336,7 +3336,7 @@ sub_08012030: @ 0x08012030
 	ldr r7, [sp, #0x18]
 	ldr r1, [sp, #0x24]
 	ldr r0, _08012068 @ =0x08C0162C
-	bl sub_080043D4
+	bl Proc_StartBlocking
 	str r4, [r0, #0x2c]
 	mov r1, r8
 	str r1, [r0, #0x30]
@@ -3430,7 +3430,7 @@ sub_080120E0: @ 0x080120E0
 	cmp r0, #0xff
 	ble _080120FC
 	adds r0, r4, #0
-	bl sub_0800457C
+	bl Proc_Break
 	movs r0, #0x80
 	lsls r0, r0, #1
 	str r0, [r4, #0x38]
@@ -3491,7 +3491,7 @@ sub_08012150: @ 0x08012150
 	adds r7, r3, #0
 	ldr r1, [sp, #0x1c]
 	ldr r0, _080121A0 @ =0x08C01654
-	bl sub_080043D4
+	bl Proc_StartBlocking
 	adds r5, r0, #0
 	movs r0, #0xff
 	ands r0, r4
@@ -3671,7 +3671,7 @@ _080122B4: .4byte 0x0202BBB4
 _080122B8: .4byte 0x000001FF
 _080122BC:
 	adds r0, r4, #0
-	bl sub_0800457C
+	bl Proc_Break
 	str r5, [r4, #0x34]
 _080122C4:
 	pop {r4, r5, r6}
@@ -3748,8 +3748,8 @@ _08012338: .4byte 0x08C01674
 sub_0801233C: @ 0x0801233C
 	push {lr}
 	ldr r0, _0801234C @ =0x08C01674
-	bl sub_08004584
-	bl sub_08004460
+	bl Proc_Find
+	bl Proc_End
 	pop {r1}
 	bx r1
 	.align 2, 0
@@ -3759,7 +3759,7 @@ _0801234C: .4byte 0x08C01674
 sub_08012350: @ 0x08012350
 	push {lr}
 	ldr r0, _0801236C @ =0x08C01674
-	bl sub_08004584
+	bl Proc_Find
 	cmp r0, #0
 	beq _08012370
 	ldr r0, [r0, #0x34]
@@ -3962,7 +3962,7 @@ sub_080124BC: @ 0x080124BC
 	cmp r0, #0
 	bne _080124DA
 	adds r0, r7, #0
-	bl sub_08004460
+	bl Proc_End
 	b _08012582
 _080124DA:
 	ldrb r4, [r1, #6]
@@ -4115,7 +4115,7 @@ sub_080125EC: @ 0x080125EC
 	bl BmMapFillg
 	ldr r0, _0801263C @ =0x08C0169C
 	adds r1, r4, #0
-	bl sub_080043D4
+	bl Proc_StartBlocking
 	adds r2, r0, #0
 	ldr r0, [r4, #0x30]
 	ldr r0, [r0, #4]

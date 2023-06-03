@@ -2,8 +2,8 @@
 
 	.syntax unified
 
-	thumb_func_start sub_08013508
-sub_08013508: @ 0x08013508
+	thumb_func_start Interpolate
+Interpolate: @ 0x08013508
 	push {r4, r5, r6, lr}
 	adds r6, r1, #0
 	ldr r5, [sp, #0x10]
@@ -328,7 +328,7 @@ _0801373A:
 	adds r0, r6, #0
 	adds r1, r5, #0
 	adds r2, r7, #0
-	bl sub_08002F54
+	bl RegisterDataMove
 	adds r6, r6, r7
 	movs r0, #0x80
 	lsls r0, r0, #3
@@ -882,13 +882,13 @@ _08013AF0:
 	ldr r0, _08013B1C @ =0x000001FF
 	cmp r6, r0
 	ble _08013AA4
-	bl sub_08001048
+	bl DisablePalSync
 	movs r1, #0xa0
 	lsls r1, r1, #0x13
 	movs r2, #0x80
 	lsls r2, r2, #3
 	adds r0, r7, #0
-	bl sub_08002F54
+	bl RegisterDataMove
 	pop {r4, r5, r6, r7}
 	pop {r0}
 	bx r0
@@ -1357,7 +1357,7 @@ _08013E64:
 	cmp r5, #0x1f
 	ble _08013E22
 _08013E6A:
-	bl sub_08001034
+	bl EnablePalSync
 	add sp, #4
 	pop {r3, r4, r5}
 	mov r8, r3
@@ -1428,7 +1428,7 @@ _08013ED8:
 	cmp r0, r7
 	bne _08013EF0
 	adds r0, r4, #0
-	bl sub_0800457C
+	bl Proc_Break
 _08013EF0:
 	pop {r4, r5, r6, r7}
 	pop {r0}
@@ -1475,7 +1475,7 @@ _08013F38: .4byte 0x08C01BA4
 sub_08013F3C: @ 0x08013F3C
 	push {lr}
 	ldr r0, _08013F4C @ =0x08C01BA4
-	bl sub_08004584
+	bl Proc_Find
 	cmp r0, #0
 	bne _08013F50
 	movs r0, #0
@@ -1693,7 +1693,7 @@ sub_08014094: @ 0x08014094
 	bls _080140C6
 _080140BE:
 	adds r0, r7, #0
-	bl sub_08004460
+	bl Proc_End
 	b _0801416C
 _080140C6:
 	movs r0, #0
@@ -1733,7 +1733,7 @@ _080140CC:
 	ldrh r0, [r0, #0x2a]
 	str r0, [sp]
 	movs r0, #0
-	bl sub_08013508
+	bl Interpolate
 	adds r5, r0, #0
 	ldr r0, [r7, #0x2c]
 	ldrh r3, [r0, #0x28]
@@ -1742,7 +1742,7 @@ _080140CC:
 	movs r0, #0
 	adds r1, r6, #0
 	adds r2, r4, #0
-	bl sub_08013508
+	bl Interpolate
 	adds r4, r0, #0
 	ldr r0, [r7, #0x2c]
 	ldrh r3, [r0, #0x28]
@@ -1751,7 +1751,7 @@ _080140CC:
 	movs r0, #0
 	mov r1, sb
 	mov r2, r8
-	bl sub_08013508
+	bl Interpolate
 	movs r1, #0xf8
 	lsls r1, r1, #7
 	ands r0, r1
@@ -1771,7 +1771,7 @@ _080140CC:
 	str r2, [sp, #4]
 	cmp r2, #0xf
 	ble _080140CC
-	bl sub_08001034
+	bl EnablePalSync
 	ldr r1, [r7, #0x2c]
 	ldrh r0, [r1, #0x28]
 	adds r0, #1
@@ -1920,7 +1920,7 @@ sub_08014264: @ 0x08014264
 	cmp r0, #0x10
 	bne _08014280
 	adds r0, r2, #0
-	bl sub_08004460
+	bl Proc_End
 	b _080142A4
 	.align 2, 0
 _0801427C: .4byte 0x03002790
@@ -2029,7 +2029,7 @@ sub_08014334: @ 0x08014334
 	cmp r0, #0
 	bne _08014350
 	adds r0, r2, #0
-	bl sub_08004460
+	bl Proc_End
 	b _08014370
 	.align 2, 0
 _0801434C: .4byte 0x03002790
@@ -2113,19 +2113,19 @@ _080143D4: .4byte 0x03002790
 sub_080143D8: @ 0x080143D8
 	push {lr}
 	ldr r0, _08014408 @ =0x08C01C14
-	bl sub_08004584
+	bl Proc_Find
 	cmp r0, #0
 	bne _08014418
 	ldr r0, _0801440C @ =0x08C01BF4
-	bl sub_08004584
+	bl Proc_Find
 	cmp r0, #0
 	bne _08014418
 	ldr r0, _08014410 @ =0x08C01C54
-	bl sub_08004584
+	bl Proc_Find
 	cmp r0, #0
 	bne _08014418
 	ldr r0, _08014414 @ =0x08C01C34
-	bl sub_08004584
+	bl Proc_Find
 	cmp r0, #0
 	bne _08014418
 	movs r0, #0
@@ -2177,7 +2177,7 @@ sub_08014458: @ 0x08014458
 	push {r4, lr}
 	adds r4, r0, #0
 	ldr r0, _0801446C @ =0x08C01BF4
-	bl sub_080043D4
+	bl Proc_StartBlocking
 	adds r0, #0x64
 	strh r4, [r0]
 	pop {r4}
@@ -2191,7 +2191,7 @@ sub_08014470: @ 0x08014470
 	push {r4, lr}
 	adds r4, r0, #0
 	ldr r0, _08014484 @ =0x08C01C14
-	bl sub_080043D4
+	bl Proc_StartBlocking
 	adds r0, #0x64
 	strh r4, [r0]
 	pop {r4}
@@ -2205,7 +2205,7 @@ sub_08014488: @ 0x08014488
 	push {r4, lr}
 	adds r4, r0, #0
 	ldr r0, _0801449C @ =0x08C01C34
-	bl sub_080043D4
+	bl Proc_StartBlocking
 	adds r0, #0x64
 	strh r4, [r0]
 	pop {r4}
@@ -2219,7 +2219,7 @@ sub_080144A0: @ 0x080144A0
 	push {r4, lr}
 	adds r4, r0, #0
 	ldr r0, _080144B4 @ =0x08C01C54
-	bl sub_080043D4
+	bl Proc_StartBlocking
 	adds r0, #0x64
 	strh r4, [r0]
 	pop {r4}
@@ -2689,7 +2689,7 @@ sub_080147B8: @ 0x080147B8
 	cmp r0, #0
 	bne _080147CC
 	adds r0, r4, #0
-	bl sub_0800457C
+	bl Proc_Break
 _080147CC:
 	pop {r4}
 	pop {r0}
@@ -2780,7 +2780,7 @@ sub_08014850: @ 0x08014850
 	bl _call_via_r0
 _08014868:
 	adds r0, r4, #0
-	bl sub_0800457C
+	bl Proc_Break
 _0801486E:
 	pop {r4}
 	pop {r0}
@@ -2813,7 +2813,7 @@ _08014898:
 	ldr r1, _080148B8 @ =0x02022860
 	movs r0, #0
 	strh r0, [r1]
-	bl sub_08001034
+	bl EnablePalSync
 	ldr r1, [r4, #0x5c]
 	ldr r0, _080148BC @ =0x000001FF
 	cmp r1, r0
@@ -2851,7 +2851,7 @@ sub_080148D4: @ 0x080148D4
 sub_080148E4: @ 0x080148E4
 	push {lr}
 	ldr r0, _080148FC @ =0x08C01C74
-	bl sub_08004584
+	bl Proc_Find
 	adds r1, r0, #0
 	cmp r1, #0
 	beq _080148F6
@@ -2895,7 +2895,7 @@ sub_08014900: @ 0x08014900
 	strb r0, [r2]
 	ldr r0, _0801496C @ =0x02022860
 	strh r3, [r0]
-	bl sub_08001034
+	bl EnablePalSync
 	movs r0, #2
 	rsbs r0, r0, #0
 	ldrb r1, [r4, #1]
@@ -2961,7 +2961,7 @@ sub_080149B4: @ 0x080149B4
 	adds r4, r1, #0
 	ldr r0, _080149CC @ =0x08C01CA4
 	adds r1, r2, #0
-	bl sub_080043D4
+	bl Proc_StartBlocking
 	str r4, [r0, #0x58]
 	pop {r4}
 	pop {r0}
@@ -2977,7 +2977,7 @@ sub_080149D0: @ 0x080149D0
 	cmp r0, #0
 	bne _080149E2
 	adds r0, r1, #0
-	bl sub_0800457C
+	bl Proc_Break
 	b _080149E6
 _080149E2:
 	subs r0, #1
@@ -3126,7 +3126,7 @@ sub_08014AB0: @ 0x08014AB0
 	mov r1, sb
 	bl sub_08005460
 	movs r0, #1
-	bl sub_08000FD4
+	bl EnableBgSync
 	adds r0, r5, #0
 	pop {r3, r4}
 	mov r8, r3
@@ -3272,7 +3272,7 @@ _08014C02:
 	ldrh r3, [r4, #0x32]
 	subs r2, r3, r5
 	lsls r2, r2, #1
-	bl sub_0800105C
+	bl ApplyPaletteExt
 	cmp r5, #0
 	ble _08014C2A
 	ldr r0, [r4, #0x2c]
@@ -3282,7 +3282,7 @@ _08014C02:
 	adds r1, r3, r1
 	subs r1, r1, r6
 	adds r2, r6, #0
-	bl sub_0800105C
+	bl ApplyPaletteExt
 _08014C2A:
 	ldrh r0, [r4, #0x38]
 	adds r0, #1
@@ -3752,7 +3752,7 @@ sub_08014F64: @ 0x08014F64
 	ldr r0, [r4, #0x2c]
 	bl _call_via_r0
 	adds r0, r4, #0
-	bl sub_0800457C
+	bl Proc_Break
 _08014F82:
 	pop {r4}
 	pop {r0}
@@ -3773,7 +3773,7 @@ sub_08014F88: @ 0x08014F88
 	ldr r0, [r4, #0x30]
 	bl _call_via_r1
 	adds r0, r4, #0
-	bl sub_0800457C
+	bl Proc_Break
 _08014FA8:
 	pop {r4}
 	pop {r0}
@@ -3860,7 +3860,7 @@ sub_08015020: @ 0x08015020
 	push {r4, lr}
 	adds r1, r0, #0
 	ldr r0, _08015040 @ =0x08C01DAC
-	bl sub_080043D4
+	bl Proc_StartBlocking
 	adds r4, r0, #0
 	bl sub_080157A4
 	lsls r0, r0, #0x18
@@ -3887,7 +3887,7 @@ sub_08015044: @ 0x08015044
 	cmp r0, r1
 	bne _08015062
 	adds r0, r4, #0
-	bl sub_0800457C
+	bl Proc_Break
 _08015062:
 	pop {r4}
 	pop {r0}
@@ -4041,7 +4041,7 @@ sub_0801514C: @ 0x0801514C
 	cmp r0, #0
 	bne _08015170
 	movs r0, #0
-	bl sub_08001370
+	bl GetBgChrOffset
 	movs r1, #0xc0
 	lsls r1, r1, #0x13
 	adds r0, r0, r1
@@ -4055,7 +4055,7 @@ _08015170:
 	cmp r0, #0
 	bne _0801518E
 	movs r0, #1
-	bl sub_08001370
+	bl GetBgChrOffset
 	movs r1, #0xc0
 	lsls r1, r1, #0x13
 	adds r0, r0, r1
@@ -4069,7 +4069,7 @@ _0801518E:
 	cmp r0, #0
 	bne _080151AC
 	movs r0, #2
-	bl sub_08001370
+	bl GetBgChrOffset
 	movs r1, #0xc0
 	lsls r1, r1, #0x13
 	adds r0, r0, r1
@@ -4083,7 +4083,7 @@ _080151AC:
 	cmp r0, #0
 	bne _080151CA
 	movs r0, #3
-	bl sub_08001370
+	bl GetBgChrOffset
 	movs r1, #0xc0
 	lsls r1, r1, #0x13
 	adds r0, r0, r1

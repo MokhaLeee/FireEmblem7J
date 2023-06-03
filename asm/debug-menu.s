@@ -5,13 +5,13 @@
 sub_0801B5C4: @ 0x0801B5C4
 	push {r4, lr}
 	sub sp, #8
-	bl sub_08000EEC
+	bl GetGameTime
 	mov r2, sp
 	adds r2, #2
 	add r4, sp, #4
 	mov r1, sp
 	adds r3, r4, #0
-	bl sub_08000F58
+	bl FormatTime
 	movs r0, #1
 	ldrh r4, [r4]
 	ands r0, r4
@@ -31,13 +31,13 @@ _0801B5E8:
 sub_0801B5F4: @ 0x0801B5F4
 	push {r4, lr}
 	sub sp, #8
-	bl sub_08000EEC
+	bl GetGameTime
 	mov r2, sp
 	adds r2, #2
 	add r4, sp, #4
 	mov r1, sp
 	adds r3, r4, #0
-	bl sub_08000F58
+	bl FormatTime
 	movs r0, #1
 	ldrh r4, [r4]
 	ands r0, r4
@@ -80,7 +80,7 @@ sub_0801B630: @ 0x0801B630
 	cmp r0, #0
 	beq _0801B648
 	adds r0, r2, #0
-	bl sub_0800457C
+	bl Proc_Break
 _0801B648:
 	pop {r0}
 	bx r0
@@ -138,7 +138,7 @@ sub_0801B660: @ 0x0801B660
 	adds r1, r4, #0
 	bl sub_08005460
 	movs r0, #3
-	bl sub_08000FD4
+	bl EnableBgSync
 	add sp, #0xc
 	pop {r3}
 	mov r8, r3
@@ -183,7 +183,7 @@ sub_0801B6F4: @ 0x0801B6F4
 	bl sub_0804AA58
 	movs r0, #2
 	movs r1, #0
-	bl sub_08004DD4
+	bl DebugInitBg
 	movs r0, #1
 	pop {r1}
 	bx r1
@@ -251,7 +251,7 @@ _0801B764:
 	adds r0, r4, #0
 	bl sub_08004E4C
 	movs r0, #1
-	bl sub_08000FD4
+	bl EnableBgSync
 _0801B790:
 	movs r0, #0
 	pop {r4, r5}
@@ -290,7 +290,7 @@ sub_0801B7C8: @ 0x0801B7C8
 	adds r6, #0x3c
 	movs r0, #0
 	strb r0, [r6]
-	bl sub_080033B8
+	bl GetCurrentBgmSong
 	movs r1, #0
 	cmp r1, r4
 	bge _0801B7FC
@@ -503,7 +503,7 @@ sub_0801B96C: @ 0x0801B96C
 	str r0, [sp]
 	str r1, [sp, #4]
 	ldr r0, _0801B9D8 @ =0x08C025F8
-	bl sub_08004584
+	bl Proc_Find
 	adds r4, r0, #0
 	adds r5, r6, #0
 	adds r5, #0x34
@@ -552,7 +552,7 @@ sub_0801B9E4: @ 0x0801B9E4
 	adds r4, r0, #0
 	adds r5, r1, #0
 	ldr r0, _0801BA28 @ =0x08C025F8
-	bl sub_08004584
+	bl Proc_Find
 	adds r2, r0, #0
 	ldr r0, _0801BA2C @ =gpKeySt
 	ldr r1, [r0]
@@ -602,7 +602,7 @@ sub_0801BA34: @ 0x0801BA34
 	ldr r0, [r0]
 	str r0, [r1]
 	ldr r0, _0801BAA8 @ =0x08C025F8
-	bl sub_08004584
+	bl Proc_Find
 	adds r6, r0, #0
 	adds r4, r5, #0
 	adds r4, #0x34
@@ -658,7 +658,7 @@ sub_0801BAB4: @ 0x0801BAB4
 	cmp r0, #0
 	beq _0801BB52
 	ldr r0, _0801BAF8 @ =0x08C025F8
-	bl sub_08004584
+	bl Proc_Find
 	adds r4, r0, #0
 	ldr r0, [r4, #0x58]
 	adds r0, #1
@@ -906,7 +906,7 @@ sub_0801BCB0: @ 0x0801BCB0
 	adds r0, r4, #0
 	bl sub_08004E4C
 	movs r0, #1
-	bl sub_08000FD4
+	bl EnableBgSync
 	pop {r4}
 	pop {r1}
 	bx r1
@@ -923,7 +923,7 @@ sub_0801BCD4: @ 0x0801BCD4
 	bl sub_0802E834
 	movs r0, #2
 	movs r1, #0
-	bl sub_08004DD4
+	bl DebugInitBg
 	ldr r0, _0801BD2C @ =0x081C92C8
 	bl sub_08009E84
 	ldr r0, _0801BD30 @ =0x08C04B4C
@@ -964,7 +964,7 @@ sub_0801BD40: @ 0x0801BD40
 	movs r1, #0
 	strb r1, [r0]
 	movs r0, #1
-	bl sub_08000FD4
+	bl EnableBgSync
 	add r0, sp, #4
 	movs r1, #3
 	bl ReadSaveBlockInfo
@@ -1044,7 +1044,7 @@ sub_0801BDC0: @ 0x0801BDC0
 	ldr r1, _0801BE00 @ =0x02022860
 	movs r0, #0
 	strh r0, [r1]
-	bl sub_08001034
+	bl EnablePalSync
 	pop {r1}
 	bx r1
 	.align 2, 0
@@ -1145,7 +1145,7 @@ _0801BE88:
 	adds r0, r4, #0
 	bl sub_08004E4C
 	movs r0, #1
-	bl sub_08000FD4
+	bl EnableBgSync
 _0801BEBC:
 	ldr r1, [r6]
 	movs r0, #0x80
@@ -1161,7 +1161,7 @@ _0801BEBC:
 	movs r1, #0xe0
 	lsls r1, r1, #1
 	movs r2, #0x40
-	bl sub_0800105C
+	bl ApplyPaletteExt
 	b _0801BF02
 	.align 2, 0
 _0801BEE0: .4byte 0x02022C60
@@ -1176,7 +1176,7 @@ _0801BEF0:
 	movs r1, #0xe0
 	lsls r1, r1, #1
 	movs r2, #0x40
-	bl sub_0800105C
+	bl ApplyPaletteExt
 _0801BF02:
 	movs r0, #0
 	ldrsb r0, [r5, r0]
@@ -1186,7 +1186,7 @@ _0801BF02:
 	movs r0, #1
 	strb r0, [r1, #0x1b]
 _0801BF10:
-	bl sub_08001034
+	bl EnablePalSync
 	movs r0, #0
 	pop {r4, r5, r6, r7}
 	pop {r1}
@@ -1199,7 +1199,7 @@ _0801BF20: .4byte 0x081CDA18
 sub_0801BF24: @ 0x0801BF24
 	push {r4, lr}
 	adds r4, r1, #0
-	bl sub_08000EEC
+	bl GetGameTime
 	bl RandInit
 	bl InitUnits
 	ldr r0, _0801BF50 @ =gpKeySt
@@ -1324,7 +1324,7 @@ sub_0801C000: @ 0x0801C000
 	b _0801C028
 _0801C00E:
 	ldr r0, _0801C02C @ =0x08C01DBC
-	bl sub_08004584
+	bl Proc_Find
 	cmp r0, #0
 	beq _0801C01C
 	bl sub_0802E87C
@@ -1350,7 +1350,7 @@ sub_0801C030: @ 0x0801C030
 	b _0801C052
 _0801C03E:
 	ldr r0, _0801C058 @ =0x08C01DBC
-	bl sub_08004584
+	bl Proc_Find
 	cmp r0, #0
 	beq _0801C04C
 	bl sub_0802E87C
@@ -1699,7 +1699,7 @@ sub_0801C2D8: @ 0x0801C2D8
 	push {lr}
 	bl sub_08013240
 	ldr r0, _0801C2F0 @ =0x08C01744
-	bl sub_08004584
+	bl Proc_Find
 	movs r1, #0xf
 	bl sub_080045FC
 	pop {r1}
@@ -1742,9 +1742,9 @@ sub_0801C2F4: @ 0x0801C2F4
 	ands r0, r4
 	cmp r0, #0
 	beq _0801C3F8
-	bl sub_08004BC4
+	bl InitIcons
 	movs r0, #4
-	bl sub_08004C08
+	bl ApplyIconPalettes
 	adds r4, r5, #0
 	adds r4, #0x34
 	adds r0, r4, #0
@@ -1848,7 +1848,7 @@ _0801C3F8:
 	bl sub_08005460
 _0801C424:
 	movs r0, #1
-	bl sub_08000FD4
+	bl EnableBgSync
 	add sp, #0x10
 	pop {r3}
 	mov r8, r3

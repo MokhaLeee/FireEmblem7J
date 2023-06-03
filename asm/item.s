@@ -13,7 +13,7 @@ sub_08016470: @ 0x08016470
 	beq _0801648C
 	ldr r0, _08016488 @ =0x08C0212C
 	adds r1, r4, #0
-	bl sub_080043D4
+	bl Proc_StartBlocking
 	b _08016494
 	.align 2, 0
 _08016488: .4byte 0x08C0212C

@@ -31,11 +31,21 @@ SECTIONS
 		src/crt0.o(.text);
 		src/armfunc.o(.text);
 		src/arm.o(.text);
-
 		asm/main.o(.text);
 		src/irq.o(.text);
 		src/random.o(.text);
-		asm/code_.o(.text);
+		asm/hardware.o(.text);
+		asm/sound.o(.text);
+		asm/ram-funcs.o(.text);
+		asm/proc.o(.text);
+		asm/icon.o(.text);
+		asm/debug-text.o(.text);
+		asm/text.o(.text);
+		asm/anim-drv.o(.text);
+		asm/sprite.o(.text);
+		asm/face.o(.text);
+		asm/talk.o(.text);
+		asm/event.o(.text);
 		asm/evt-utils.o(.text);
 		asm/sprite-anim.o(.text);
 		asm/game-ctrl.o(.text);
@@ -57,7 +67,9 @@ SECTIONS
 		asm/support.o(.text);
 		asm/item-use.o(.text);
 		asm/battle.o(.text);
+
 		asm/code.o(.text);
+
 		asm/m4a_1.o(.text);
 		asm/m4a.o(.text);
 		asm/gba-syscall.o(.text);

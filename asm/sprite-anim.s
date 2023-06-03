@@ -352,7 +352,7 @@ _08012842:
 	adds r1, r6, #0
 	adds r2, r5, #0
 	adds r3, r4, #0
-	bl sub_08003264
+	bl SetObjAffine
 	adds r7, #6
 	movs r2, #1
 	add r8, r2
@@ -701,7 +701,7 @@ sub_08012B38: @ 0x08012B38
 	bne _08012B5E
 _08012B58:
 	adds r0, r4, #0
-	bl sub_08004460
+	bl Proc_End
 _08012B5E:
 	pop {r4}
 	pop {r0}
@@ -736,7 +736,7 @@ _08012B84:
 	thumb_func_start EndSpriteAnimProc
 EndSpriteAnimProc: @ 0x08012B8C
 	push {lr}
-	bl sub_08004460
+	bl Proc_End
 	pop {r0}
 	bx r0
 	.align 2, 0
@@ -755,7 +755,7 @@ _08012BA4: .4byte 0x08C016FC
 SpriteAnimProcExists: @ 0x08012BA8
 	push {lr}
 	ldr r0, _08012BBC @ =0x08C016FC
-	bl sub_08004584
+	bl Proc_Find
 	cmp r0, #0
 	beq _08012BB6
 	movs r0, #1

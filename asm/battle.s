@@ -4545,11 +4545,11 @@ sub_0802A860: @ 0x0802A860
 	movs r1, #0
 	bl sub_080017E8
 	movs r0, #4
-	bl sub_08000FD4
+	bl EnableBgSync
 	ldr r1, _0802A898 @ =0x02022860
 	movs r0, #0
 	strh r0, [r1]
-	bl sub_08001034
+	bl EnablePalSync
 	bl sub_080198EC
 	bl sub_08051170
 	lsls r0, r0, #0x18
@@ -4818,7 +4818,7 @@ sub_0802AA80: @ 0x0802AA80
 	bl sub_0802A50C
 	ldr r0, _0802AA98 @ =0x08C0355C
 	adds r1, r4, #0
-	bl sub_080043D4
+	bl Proc_StartBlocking
 	pop {r4}
 	pop {r0}
 	bx r0
@@ -4878,7 +4878,7 @@ _0802AADA:
 _0802AB00:
 	ldr r0, _0802AB18 @ =0x08C0355C
 	adds r1, r6, #0
-	bl sub_080043D4
+	bl Proc_StartBlocking
 	pop {r4, r5, r6}
 	pop {r0}
 	bx r0

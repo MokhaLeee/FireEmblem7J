@@ -202,7 +202,7 @@ _0801A112:
 	str r0, [r6, #4]
 	movs r1, #4
 	strb r1, [r0, #2]
-	bl sub_080042E4
+	bl MapFloodCoreRam
 	pop {r3}
 	mov r8, r3
 	pop {r4, r5, r6, r7}

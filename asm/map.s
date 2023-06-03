@@ -577,7 +577,7 @@ _080195FA:
 	movs r2, #0xa0
 	lsls r2, r2, #1
 	movs r1, #0xc0
-	bl sub_0800105C
+	bl ApplyPaletteExt
 	pop {r4, r5}
 	pop {r0}
 	bx r0
@@ -602,7 +602,7 @@ sub_08019624: @ 0x08019624
 	movs r2, #0xa0
 	lsls r2, r2, #1
 	movs r1, #0xc0
-	bl sub_0800105C
+	bl ApplyPaletteExt
 	pop {r4}
 	pop {r0}
 	bx r0
@@ -998,11 +998,11 @@ _0801990A:
 	cmp r5, #0
 	bge _08019906
 	movs r0, #8
-	bl sub_08000FD4
+	bl EnableBgSync
 	movs r0, #3
 	movs r1, #0
 	movs r2, #0
-	bl sub_08001D64
+	bl SetBgOffset
 	ldr r2, _08019968 @ =0x03002790
 	movs r0, #1
 	ldrb r1, [r2, #1]
@@ -1066,11 +1066,11 @@ _08019994:
 	cmp r5, #0
 	bge _08019990
 	movs r0, #4
-	bl sub_08000FD4
+	bl EnableBgSync
 	movs r0, #2
 	movs r1, #0
 	movs r2, #0
-	bl sub_08001D64
+	bl SetBgOffset
 	add sp, #4
 	pop {r4, r5, r6, r7}
 	pop {r0}
@@ -1164,7 +1164,7 @@ _08019A60:
 	lsls r2, r2, #0x10
 	lsrs r2, r2, #0x10
 	movs r0, #3
-	bl sub_08001D64
+	bl SetBgOffset
 	movs r0, #1
 	ldrb r1, [r4, #4]
 	ands r0, r1
@@ -1183,7 +1183,7 @@ _08019A60:
 	lsls r2, r2, #0x10
 	lsrs r2, r2, #0x10
 	movs r0, #2
-	bl sub_08001D64
+	bl SetBgOffset
 _08019AAC:
 	pop {r4, r5}
 	pop {r0}
@@ -1247,7 +1247,7 @@ _08019B06:
 	cmp r6, #0
 	bge _08019B06
 	movs r0, #8
-	bl sub_08000FD4
+	bl EnableBgSync
 	b _08019B6A
 	.align 2, 0
 _08019B2C: .4byte 0x0202BBB4
@@ -1277,7 +1277,7 @@ _08019B36:
 	cmp r6, #0
 	bge _08019B36
 	movs r0, #0xc
-	bl sub_08000FD4
+	bl EnableBgSync
 _08019B6A:
 	add sp, #4
 	pop {r3, r4, r5}
@@ -1347,7 +1347,7 @@ _08019BD2:
 	cmp r6, #0
 	bge _08019BD2
 	movs r0, #8
-	bl sub_08000FD4
+	bl EnableBgSync
 	b _08019C38
 	.align 2, 0
 _08019BF8: .4byte 0x0202BBB4
@@ -1378,7 +1378,7 @@ _08019C02:
 	cmp r6, #0
 	bge _08019C02
 	movs r0, #0xc
-	bl sub_08000FD4
+	bl EnableBgSync
 _08019C38:
 	add sp, #4
 	pop {r3, r4, r5}
@@ -1798,7 +1798,7 @@ sub_08019F20: @ 0x08019F20
 	movs r0, #0x86
 	lsls r0, r0, #7
 	strh r0, [r1]
-	bl sub_08001034
+	bl EnablePalSync
 	pop {r4, r5, r6}
 	pop {r0}
 	bx r0
