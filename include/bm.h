@@ -3,46 +3,38 @@
 #include "global.h"
 
 struct BmSt {
-    /* 00 */ s8  mainLoopEndedFlag;
-
-    /* 01 */ s8  gameLogicSemaphore;
-    /* 02 */ s8  gameGfxSemaphore;
-
-    /* 03 */ u8  _unk04;
-
-    /* 04 */ u8  gameStateBits;
-
-    /* 05 */ u8  _unk05;
-
-    /* 06 */ u16 prevVCount;
-
-    /* 08 */ u32 _unk08;
-
+    /* 00 */ bool main_loop_ended;
+    /* 01 */ s8 lock;
+    /* 02 */ s8 lock_display;
+    /* 03 */ u8 pad_03;
+    /* 04 */ u8 flags;
+    /* 05 */ // pad
+    /* 06 */ u16 main_loop_end_scanline;
+    /* 08 */ int pad_08;
     /* 0C */ struct Vec2 camera;
-    /* 10 */ struct Vec2 cameraPrevious;
-    /* 14 */ struct Vec2 playerCursor;
-    /* 18 */ struct Vec2 cursorPrevious;
-    /* 1C */ struct Vec2 cursorTarget;
-    /* 20 */ struct Vec2 playerCursorDisplay;
-    /* 24 */ struct Vec2u mapRenderOrigin;
-    /* 28 */ struct Vec2 cameraMax;
-
-    /* 2C */ u16 itemUnk2C;
-    /* 2E */ u16 itemUnk2E;
-
-    /* 30 */ u16 unk30;
-    /* 32 */ s16 unk32;
-    /* 34 */ s16 unk34;
-    /* 36 */ s8 unk36;
-    /* 37 */ s8 unk37;
-    /* 38 */ u8 altBlendACa;
-    /* 39 */ u8 altBlendACb;
-    /* 3A */ u8 altBlendBCa;
-    /* 3B */ u8 altBlendBCb;
+    /* 10 */ struct Vec2 camera_previous;
+    /* 14 */ struct Vec2 cursor;
+    /* 18 */ struct Vec2 cursor_previous;
+    /* 1C */ struct Vec2 cursor_sprite_target;
+    /* 20 */ struct Vec2 cursor_sprite;
+    /* 24 */ struct Vec2 map_render_anchor;
+    /* 28 */ struct Vec2 camera_max;
+    /* 2C */ u16 inventory_item_overflow;
+    /* 2E */ u16 convoy_item_overflow;
+    /* 30 */ bool8 unk_30;
+    /* 31 */ bool8 unk_31;
+    /* 32 */ short unk_32;
+    /* 34 */ short unk_34;
+    /* 36 */ s8 unk_36;
+    /* 37 */ s8 unk_37;
+    /* 38 */ u8 alt_blend_a_ca;
+    /* 39 */ u8 alt_blend_a_cb;
+    /* 3A */ u8 alt_blend_b_ca;
+    /* 3B */ u8 alt_blend_b_cb;
     /* 3C */ u8 just_resumed;
-    /* 3D */ u8 unk3D;
-    /* 3E */ u8 unk3E;
-    /* 3F */ s8 unk3F;
+    /* 3D */ u8 partial_actions_taken;
+    /* 3E */ u8 swap_action_range_count;
+    /* 3F */ s8 unk_3F;
 };
 
 extern struct BmSt gBmSt;
@@ -153,10 +145,6 @@ struct PlaySt {
 };
 
 extern struct PlaySt gPlaySt;
-
-/**
- * Use with PlaySt field chapterStateBits
- */
 
 enum PlaySt_chapterStateBits {
     PLAY_FLAG_STATSCREENPAGE0 = (1 << 0),

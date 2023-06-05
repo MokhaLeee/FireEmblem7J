@@ -1,3 +1,5 @@
+#pragma once
+
 #include "global.h"
 
 struct SupportData;
@@ -174,7 +176,8 @@ struct Unit {
     /* 47 */ u8 _u47;
 };
 
-extern struct Unit * CONST_DATA gUnitLut[0x100];
+extern struct Unit *gUnitLut[0x100];
+extern struct Unit *gActiveUnit;
 
 struct UnitDefinition {
     /* 00 */ u8 pid;
@@ -205,8 +208,8 @@ enum {
     US_HAS_MOVED    = (1 << 6), // Bad name?
     US_CANTOING     = US_HAS_MOVED, // Alias
     US_UNDER_A_ROOF = (1 << 7),
-    US_BIT8 = (1 << 8), // has been seen?
-    US_BIT9 = (1 << 9), // hidden by fog?
+    US_SEEN         = (1 << 8), // has been seen?
+    US_CONCEALED    = (1 << 9), // hidden by fog?
     US_HAS_MOVED_AI = (1 << 10),
     US_IN_BALLISTA  = (1 << 11),
     US_DROP_ITEM    = (1 << 12),
@@ -364,6 +367,9 @@ enum unit_affinity_index {
 // NOTE: if this ends up being only used in [Get|Set]UnitLeaderCharId, having this as a macro may end up being unnecessary
 #define UNIT_LEADER_CHARACTER(aUnit) ((aUnit)->supports[UNIT_SUPPORT_MAX_COUNT-1])
 
+extern u8 gActiveUnitId;
+extern struct Vec2 gActiveUnitMoveOrigin;
+
 void InitUnits(void);
 void ClearUnit(struct Unit *unit);
 // CopyUnit
@@ -376,7 +382,7 @@ void ClearUnit(struct Unit *unit);
 // UnitAddItem
 // UnitClearInventory
 void UnitRemoveInvalidItems(struct Unit *unit);
-// GetUnitItemCount
+int GetUnitItemCount(struct Unit *unit);
 // UnitHasItem
 // LoadUnits
 // sub_08017B44
@@ -390,7 +396,7 @@ void UnitAutolevelWExp(struct Unit *unit, const struct UnitDefinition *uDef);
 void UnitAutolevelCore(struct Unit *unit, u8 classId, int levelCount);
 void UnitApplyBonusLevels(struct Unit *unit, int levelCount);
 void UnitAutolevel(struct Unit *unit);
-void UnitAutolevelRealistic(struct Unit *unit);
+void UnitAutolevelPlayer(struct Unit *unit);
 void UnitCheckStatCaps(struct Unit *unit);
 // GetUnitFromCharId
 // GetUnitFromCharIdAndFaction
@@ -400,7 +406,7 @@ void UnitCheckStatCaps(struct Unit *unit);
 // UnitGive
 // UnitKill
 // UnitChangeFaction
-// UnitFinalizeMovement
+// UnitSyncMovement
 // UnitGetDeathDropLocation
 // UnitBeginAction
 // UnitBeginCantoAction
@@ -409,8 +415,8 @@ void UnitCheckStatCaps(struct Unit *unit);
 // TickActiveFactionTurn
 // SetAllUnitNotBackSprite
 // UnitUpdateUsedItem
-// GetUnitAid
-// GetUnitMagBy2Range
+int GetUnitAid(struct Unit* unit);
+// GetUnitMagRange
 // UnitHasMagicRank
 // sub_080188F4
 // GetUnitKeyItemSlotForTerrain
@@ -421,7 +427,7 @@ void UnitCheckStatCaps(struct Unit *unit);
 // IsPositionMagicSealed
 // IsUnitMagicSealed
 // GetUnitLastItem
-// GetUnitMovementCost
+const s8* GetUnitMovementCost(struct Unit* unit);
 // GetClassSMSId
 // UpdatePrevDeployStates
 // LoadUnitPrepScreenPositions
@@ -444,3 +450,7 @@ void UnitCheckStatCaps(struct Unit *unit);
 // sub_080190B0
 // sub_080190E0
 // GetUnit
+// GetClassData
+// GetCharacterData
+// UnitRemoveItem
+s8 CanUnitCrossTerrain(struct Unit *unit, int terrain);

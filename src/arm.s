@@ -308,8 +308,8 @@ _08000768:
 _08000770: .4byte 0x03004310
 _08000774: .4byte 0x030045C0
 _08000778: .4byte 0x03004100
-_0800077C: .4byte 0x0202E3DC
-_08000780: .4byte 0x0202E3D8
+_0800077C: .4byte gBmMapTerrain
+_08000780: .4byte gBmMapUnit
 
 	arm_func_start MapFloodCoreStep
 MapFloodCoreStep: @ 0x08000784
@@ -320,7 +320,7 @@ MapFloodCoreStep: @ 0x08000784
 	add r1, r1, r5
 	ldrb r6, [r4, #1]
 	add r2, r2, r6
-	ldr r7, _0800077C @ =0x0202E3DC
+	ldr r7, _0800077C @ =gBmMapTerrain
 	ldr r7, [r7]
 	ldr r7, [r7, r2, lsl #2]
 	ldrb r7, [r7, r1]
@@ -338,7 +338,7 @@ MapFloodCoreStep: @ 0x08000784
 	ldrb r4, [r3, #8]
 	tst r4, r4
 	beq _08000810
-	ldr r7, _08000780 @ =0x0202E3D8
+	ldr r7, _08000780 @ =gBmMapUnit
 	ldr r7, [r7]
 	ldr r7, [r7, r2, lsl #2]
 	ldrb r7, [r7, r1]

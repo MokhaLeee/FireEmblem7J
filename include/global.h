@@ -4,8 +4,9 @@
 #include "gba/gba.h"
 
 #include "types.h"
-#include "unk-functions.h"
 #include "unk-types.h"
+#include "unk-functions.h"
+#include "unk-data.h"
 
 #define CONST_DATA __attribute__((section(".data")))
 

@@ -106,7 +106,7 @@ syms: $(SYM)
 	@$(OBJCOPY) --strip-debug -O binary $< $@
 
 $(ELF): $(ALL_OBJS) $(LDS)
-	@echo "[ LD]	$<"
+	@echo "[ LD]	$@"
 	@cd $(BUILD_DIR) && $(LD) -T ../$(LDS) -Map ../$(MAP) -L../tools/agbcc/lib $(ALL_OBJS:$(BUILD_DIR)/%=%) -lc -lgcc -o ../$@
 
 # C dependency file
@@ -141,8 +141,8 @@ endif
 # not yet supported by agbcc :/
 # %/main.o:            CFLAGS += -mtpcs-frame
 
-%/irq.o:            CFLAGS += -O0
-%/random.o:         CFLAGS += -O0
+%/irq.o:             CFLAGS += -O0
+%/random.o:          CFLAGS += -O0
 %/agb-sram.o:        CFLAGS += -O1
 
 # ===============

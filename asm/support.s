@@ -309,8 +309,8 @@ _08026CCA:
 	pop {r1}
 	bx r1
 
-	thumb_func_start sub_08026CD0
-sub_08026CD0: @ 0x08026CD0
+	thumb_func_start ClearUnitSupports
+ClearUnitSupports: @ 0x08026CD0
 	push {r4, r5, r6, r7, lr}
 	mov r7, r8
 	push {r7}
@@ -596,7 +596,7 @@ _08026ED2:
 	adds r5, r0, #0
 	cmp r5, #0
 	beq _08026F68
-	ldr r1, _08026FA8 @ =0x0202BBB4
+	ldr r1, _08026FA8 @ =gBmSt
 	movs r0, #0x40
 	ldrb r1, [r1, #4]
 	ands r0, r1
@@ -693,7 +693,7 @@ _08026F70:
 	pop {r1}
 	bx r1
 	.align 2, 0
-_08026FA8: .4byte 0x0202BBB4
+_08026FA8: .4byte gBmSt
 _08026FAC: .4byte 0x0001002C
 
 	thumb_func_start sub_08026FB0

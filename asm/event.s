@@ -269,7 +269,7 @@ _0800A6EE:
 	adds r2, r7, #0
 	movs r3, #1
 	bl sub_0800A720
-	bl sub_08019EA4
+	bl RefreshEntityMaps
 _0800A6FE:
 	pop {r4, r5, r6, r7}
 	pop {r0}
@@ -284,7 +284,7 @@ sub_0800A70C: @ 0x0800A70C
 	movs r2, #0
 	movs r3, #0
 	bl sub_0800A720
-	bl sub_08019EA4
+	bl RefreshEntityMaps
 	pop {r0}
 	bx r0
 	.align 2, 0
@@ -314,7 +314,7 @@ sub_0800A720: @ 0x0800A720
 	adds r0, r6, #0
 	movs r3, #0
 	bl sub_0800C9F8
-	bl sub_08025BB0
+	bl RefreshUnitSprites
 	ldr r0, _0800A774 @ =0x0000FFFF
 	adds r1, r0, #0
 	ldrh r2, [r4, #4]
@@ -338,7 +338,7 @@ _0800A778:
 	adds r0, r6, #0
 	movs r3, #1
 	bl sub_0800C9F8
-	bl sub_08025BB0
+	bl RefreshUnitSprites
 	b _0800A79A
 _0800A78A:
 	ldrb r1, [r4, #6]
@@ -346,7 +346,7 @@ _0800A78A:
 	adds r0, r6, #0
 	movs r3, #1
 	bl sub_0800C9F8
-	bl sub_08025BB0
+	bl RefreshUnitSprites
 _0800A79A:
 	add sp, #4
 	pop {r4, r5, r6, r7}
@@ -2873,7 +2873,7 @@ sub_0800BA8C: @ 0x0800BA8C
 	ands r0, r1
 	cmp r0, #0
 	bne _0800BACC
-	ldr r0, _0800BAC8 @ =0x030045B0
+	ldr r0, _0800BAC8 @ =gActiveUnit
 	ldr r0, [r0]
 	ldr r0, [r0]
 	adds r0, #0x30
@@ -2888,7 +2888,7 @@ sub_0800BA8C: @ 0x0800BA8C
 	b _0800BACE
 	.align 2, 0
 _0800BAC4: .4byte 0x0000FFFD
-_0800BAC8: .4byte 0x030045B0
+_0800BAC8: .4byte gActiveUnit
 _0800BACC:
 	movs r0, #0
 _0800BACE:
@@ -3299,7 +3299,7 @@ _0800BDB2:
 	adds r1, r5, #0
 	mov r2, sp
 	bl sub_08016080
-	ldr r1, _0800BDDC @ =0x0202BBB4
+	ldr r1, _0800BDDC @ =gBmSt
 	ldr r0, [sp]
 	lsls r0, r0, #4
 	strh r0, [r1, #0xc]
@@ -3309,11 +3309,11 @@ _0800BDB2:
 	adds r0, r4, #0
 	adds r1, r5, #0
 	bl sub_08015F0C
-	bl sub_080198EC
+	bl RenderMap
 	movs r0, #0
 	b _0800BDF4
 	.align 2, 0
-_0800BDDC: .4byte 0x0202BBB4
+_0800BDDC: .4byte gBmSt
 _0800BDE0:
 	adds r0, r2, #0
 	adds r1, r4, #0
@@ -3357,7 +3357,7 @@ _0800BE28:
 	adds r6, r4, #0
 	lsls r0, r6, #4
 	bl sub_08015D10
-	ldr r4, _0800BE4C @ =0x0202BBB4
+	ldr r4, _0800BE4C @ =gBmSt
 	strh r0, [r4, #0xc]
 	lsls r0, r5, #4
 	bl sub_08015D54
@@ -3365,11 +3365,11 @@ _0800BE28:
 	adds r0, r6, #0
 	adds r1, r5, #0
 	bl sub_08015F0C
-	bl sub_080198EC
+	bl RenderMap
 	movs r0, #0
 	b _0800BE64
 	.align 2, 0
-_0800BE4C: .4byte 0x0202BBB4
+_0800BE4C: .4byte gBmSt
 _0800BE50:
 	adds r0, r2, #0
 	adds r1, r4, #0
@@ -3412,7 +3412,7 @@ _0800BE96:
 	ldrsb r0, [r5, r0]
 	lsls r0, r0, #4
 	bl sub_08015D10
-	ldr r4, _0800BEE8 @ =0x0202BBB4
+	ldr r4, _0800BEE8 @ =gBmSt
 	strh r0, [r4, #0xc]
 	movs r0, #0x11
 	ldrsb r0, [r5, r0]
@@ -3424,8 +3424,8 @@ _0800BE96:
 	movs r1, #0x11
 	ldrsb r1, [r5, r1]
 	bl sub_08015F0C
-	bl sub_080198EC
-	bl sub_080198EC
+	bl RenderMap
+	bl RenderMap
 _0800BEC4:
 	movs r1, #0x10
 	ldrsb r1, [r5, r1]
@@ -3443,7 +3443,7 @@ _0800BEC4:
 	pop {r1}
 	bx r1
 	.align 2, 0
-_0800BEE8: .4byte 0x0202BBB4
+_0800BEE8: .4byte gBmSt
 
 	thumb_func_start sub_0800BEEC
 sub_0800BEEC: @ 0x0800BEEC
@@ -3575,7 +3575,7 @@ _0800BFCC:
 	bne _0800BFE0
 	mov sb, r1
 _0800BFE0:
-	ldr r0, _0800BFFC @ =0x0202E3D8
+	ldr r0, _0800BFFC @ =gBmMapUnit
 	ldr r1, [r0]
 	mov r4, sl
 	lsls r0, r4, #2
@@ -3589,7 +3589,7 @@ _0800BFE0:
 	movs r0, #0
 	b _0800C05A
 	.align 2, 0
-_0800BFFC: .4byte 0x0202E3D8
+_0800BFFC: .4byte gBmMapUnit
 _0800C000:
 	ldrb r0, [r1]
 	bl GetUnit
@@ -3613,7 +3613,7 @@ _0800C022:
 	mov r2, sb
 	movs r3, #1
 	bl sub_0800C9F8
-	bl sub_08025BB0
+	bl RefreshUnitSprites
 	movs r0, #0
 	b _0800C05A
 _0800C036:
@@ -3710,7 +3710,7 @@ _0800C0C8:
 _0800C0DC:
 	ldrh r1, [r1, #0xc]
 	mov sl, r1
-	ldr r0, _0800C0F8 @ =0x0202E3D8
+	ldr r0, _0800C0F8 @ =gBmMapUnit
 	ldr r1, [r0]
 	mov r5, sb
 	lsls r0, r5, #2
@@ -3723,7 +3723,7 @@ _0800C0DC:
 	movs r0, #0
 	b _0800C15A
 	.align 2, 0
-_0800C0F8: .4byte 0x0202E3D8
+_0800C0F8: .4byte gBmMapUnit
 _0800C0FC:
 	ldrb r0, [r1]
 	bl GetUnit
@@ -3748,7 +3748,7 @@ _0800C120:
 	mov r2, r8
 	movs r3, #1
 	bl sub_0800C9F8
-	bl sub_08025BB0
+	bl RefreshUnitSprites
 	movs r0, #0
 	b _0800C15A
 _0800C134:
@@ -3839,7 +3839,7 @@ _0800C1CC:
 	mov r2, r8
 	movs r3, #1
 	bl sub_0800C9F8
-	bl sub_08025BB0
+	bl RefreshUnitSprites
 	movs r0, #0
 	b _0800C208
 _0800C1E0:
@@ -3930,7 +3930,7 @@ _0800C278:
 	adds r2, r7, #0
 	movs r3, #1
 	bl sub_0800C9F8
-	bl sub_08025BB0
+	bl RefreshUnitSprites
 	movs r0, #0
 	b _0800C2B6
 _0800C28C:
@@ -4027,7 +4027,7 @@ _0800C32A:
 	adds r2, r5, #0
 	movs r3, #1
 	bl sub_0800C9F8
-	bl sub_08025BB0
+	bl RefreshUnitSprites
 	movs r0, #0
 	b _0800C368
 _0800C33E:
@@ -4100,7 +4100,7 @@ _0800C3A4:
 	adds r0, r5, #0
 	movs r3, #0
 	bl sub_0800C9F8
-	bl sub_08025BB0
+	bl RefreshUnitSprites
 	movs r0, #0
 	b _0800C3F4
 _0800C3CE:
@@ -4166,7 +4166,7 @@ _0800C434:
 	str r0, [sp, #4]
 _0800C43A:
 	ldr r6, [r1, #8]
-	ldr r0, _0800C490 @ =0x0202E3D8
+	ldr r0, _0800C490 @ =gBmMapUnit
 	ldr r1, [r0]
 	ldr r0, [sp, #4]
 	lsls r0, r0, #2
@@ -4201,11 +4201,11 @@ _0800C470:
 	adds r0, r5, #0
 	movs r3, #0
 	bl sub_0800C9F8
-	bl sub_08025BB0
+	bl RefreshUnitSprites
 	movs r0, #0
 	b _0800C4B6
 	.align 2, 0
-_0800C490: .4byte 0x0202E3D8
+_0800C490: .4byte gBmMapUnit
 _0800C494:
 	ldr r1, [sp]
 	ldr r2, [sp, #4]
@@ -4270,7 +4270,7 @@ _0800C504:
 	mov r2, r8
 	movs r3, #1
 	bl sub_0800C9F8
-	bl sub_08025BB0
+	bl RefreshUnitSprites
 	movs r0, #0
 	b _0800C540
 _0800C518:
@@ -4358,7 +4358,7 @@ _0800C5AC:
 	mov r2, r8
 	movs r3, #1
 	bl sub_0800C9F8
-	bl sub_08025BB0
+	bl RefreshUnitSprites
 	movs r0, #0
 	b _0800C5E8
 _0800C5C0:
@@ -4493,7 +4493,7 @@ _0800C6B0:
 	adds r0, r5, #0
 	movs r3, #0
 	bl sub_0800C9F8
-	bl sub_08025BB0
+	bl RefreshUnitSprites
 	b _0800C6FC
 _0800C6C2:
 	movs r1, #0x10
@@ -4594,7 +4594,7 @@ _0800C776:
 	adds r0, r5, #0
 	movs r3, #0
 	bl sub_0800C9F8
-	bl sub_08025BB0
+	bl RefreshUnitSprites
 	b _0800C7BE
 _0800C788:
 	movs r1, #0x10
@@ -4644,15 +4644,15 @@ sub_0800C7CC: @ 0x0800C7CC
 	ands r0, r1
 	cmp r0, #0
 	bne _0800C7EC
-	ldr r0, _0800C7E8 @ =0x0202E3D8
+	ldr r0, _0800C7E8 @ =gBmMapUnit
 	lsls r1, r1, #2
 	ldr r0, [r0]
 	adds r0, r0, r1
 	b _0800C7F2
 	.align 2, 0
-_0800C7E8: .4byte 0x0202E3D8
+_0800C7E8: .4byte gBmMapUnit
 _0800C7EC:
-	ldr r0, _0800C80C @ =0x0202E3D8
+	ldr r0, _0800C80C @ =gBmMapUnit
 	ldr r0, [r0]
 	subs r0, #4
 _0800C7F2:
@@ -4669,7 +4669,7 @@ _0800C7F2:
 	adds r0, r1, r2
 	b _0800C816
 	.align 2, 0
-_0800C80C: .4byte 0x0202E3D8
+_0800C80C: .4byte gBmMapUnit
 _0800C810: .4byte 0x0000FFFF
 _0800C814:
 	subs r0, r1, #1
@@ -4709,7 +4709,7 @@ _0800C852:
 	adds r1, r3, #0
 	movs r3, #1
 	bl sub_0800C9F8
-	bl sub_08025BB0
+	bl RefreshUnitSprites
 _0800C860:
 	movs r0, #0
 	pop {r4, r5}
@@ -4754,7 +4754,7 @@ _0800C8A8:
 	adds r0, r5, #0
 	movs r3, #1
 	bl sub_0800C9F8
-	bl sub_08025BB0
+	bl RefreshUnitSprites
 	movs r0, #0
 	pop {r4, r5}
 	pop {r1}
@@ -4880,7 +4880,7 @@ _0800C9A8:
 	adds r2, r7, #0
 	movs r3, #1
 	bl sub_0800C9F8
-	bl sub_08025BB0
+	bl RefreshUnitSprites
 _0800C9B8:
 	movs r0, #0
 	b _0800C9EA
@@ -4938,7 +4938,7 @@ _0800CA14:
 	lsrs r0, r6, #0x10
 	orrs r0, r3
 	str r0, [sp]
-	ldr r0, _0800CA80 @ =0x0202E3DC
+	ldr r0, _0800CA80 @ =gBmMapTerrain
 	ldr r1, [r0]
 	lsls r0, r2, #2
 	adds r0, r0, r1
@@ -4971,7 +4971,7 @@ _0800CA50:
 	ldrh r0, [r0, #2]
 	strb r0, [r4, #0x11]
 	adds r0, r4, #0
-	bl UnitFinalizeMovement
+	bl UnitSyncMovement
 	ldr r1, [r4, #0xc]
 	movs r0, #0x80
 	ands r0, r1
@@ -4981,14 +4981,14 @@ _0800CA50:
 	rsbs r0, r0, #0
 	ands r1, r0
 	str r1, [r4, #0xc]
-	bl sub_08019EA4
+	bl RefreshEntityMaps
 _0800CA78:
 	add sp, #4
 	pop {r4, r5, r6, r7}
 	pop {r0}
 	bx r0
 	.align 2, 0
-_0800CA80: .4byte 0x0202E3DC
+_0800CA80: .4byte gBmMapTerrain
 
 	thumb_func_start sub_0800CA84
 sub_0800CA84: @ 0x0800CA84
@@ -5024,7 +5024,7 @@ _0800CAB4:
 	lsrs r0, r7, #0x10
 	orrs r0, r2
 	str r0, [sp]
-	ldr r0, _0800CAE0 @ =0x0202E3DC
+	ldr r0, _0800CAE0 @ =gBmMapTerrain
 	ldr r0, [r0]
 	lsls r1, r4, #2
 	adds r0, r1, r0
@@ -5040,7 +5040,7 @@ _0800CAB4:
 	strb r2, [r3]
 	b _0800CAF0
 	.align 2, 0
-_0800CAE0: .4byte 0x0202E3DC
+_0800CAE0: .4byte gBmMapTerrain
 _0800CAE4:
 	asrs r1, r7, #0x10
 	asrs r2, r2, #0x10
@@ -5067,7 +5067,7 @@ _0800CAF0:
 	mov r0, sb
 	cmp r0, #0
 	beq _0800CB28
-	ldr r0, _0800CB68 @ =0x0202E3DC
+	ldr r0, _0800CB68 @ =gBmMapTerrain
 	ldr r0, [r0]
 	adds r0, r4, r0
 	ldr r0, [r0]
@@ -5106,7 +5106,7 @@ _0800CB40:
 	bx r1
 	.align 2, 0
 _0800CB64: .4byte 0x02033DFC
-_0800CB68: .4byte 0x0202E3DC
+_0800CB68: .4byte gBmMapTerrain
 
 	thumb_func_start sub_0800CB6C
 sub_0800CB6C: @ 0x0800CB6C
@@ -5220,7 +5220,7 @@ sub_0800CC28: @ 0x0800CC28
 	ldr r0, [r5, #0x30]
 	strb r0, [r4, #0x11]
 	adds r0, r4, #0
-	bl UnitFinalizeMovement
+	bl UnitSyncMovement
 	adds r0, r4, #0
 	bl sub_08026A24
 	ldr r0, [r4, #0xc]
@@ -5228,8 +5228,8 @@ sub_0800CC28: @ 0x0800CC28
 	rsbs r1, r1, #0
 	ands r0, r1
 	str r0, [r4, #0xc]
-	bl sub_08019EA4
-	bl sub_08025BB0
+	bl RefreshEntityMaps
+	bl RefreshUnitSprites
 	adds r0, r5, #0
 	bl Proc_Break
 _0800CC6E:
@@ -5595,7 +5595,7 @@ sub_0800CEF4: @ 0x0800CEF4
 	ands r0, r3
 	cmp r1, r0
 	bne _0800CF28
-	ldr r0, _0800CF24 @ =0x0202E3D8
+	ldr r0, _0800CF24 @ =gBmMapUnit
 	ldr r1, [r0]
 	ldrb r3, [r2, #5]
 	lsls r0, r3, #2
@@ -5610,7 +5610,7 @@ sub_0800CEF4: @ 0x0800CEF4
 	b _0800CF2A
 	.align 2, 0
 _0800CF20: .4byte 0x0000FFFF
-_0800CF24: .4byte 0x0202E3D8
+_0800CF24: .4byte gBmMapUnit
 _0800CF28:
 	movs r0, #0
 _0800CF2A:
@@ -5911,8 +5911,8 @@ _0800D154:
 	adds r4, #1
 	cmp r4, #0x3f
 	ble _0800D12A
-	bl sub_08019EA4
-	bl sub_08025BB0
+	bl RefreshEntityMaps
+	bl RefreshUnitSprites
 _0800D162:
 	pop {r4, r5, r6}
 	pop {r0}
@@ -6589,7 +6589,7 @@ sub_0800D5E8: @ 0x0800D5E8
 	ldrh r0, [r1, #2]
 	cmp r0, #0
 	beq _0800D610
-	ldr r0, _0800D60C @ =0x030045B0
+	ldr r0, _0800D60C @ =gActiveUnit
 	ldr r0, [r0]
 	ldr r0, [r0]
 	ldrb r0, [r0, #4]
@@ -6599,9 +6599,9 @@ sub_0800D5E8: @ 0x0800D5E8
 	movs r0, #0
 	b _0800D66A
 	.align 2, 0
-_0800D60C: .4byte 0x030045B0
+_0800D60C: .4byte gActiveUnit
 _0800D610:
-	ldr r0, _0800D624 @ =0x030045B0
+	ldr r0, _0800D624 @ =gActiveUnit
 	ldr r0, [r0]
 	ldr r0, [r0]
 	ldrb r0, [r0, #4]
@@ -6611,7 +6611,7 @@ _0800D610:
 	movs r0, #0
 	b _0800D66A
 	.align 2, 0
-_0800D624: .4byte 0x030045B0
+_0800D624: .4byte gActiveUnit
 _0800D628:
 	ldr r0, _0800D63C @ =0x08C00038
 	movs r1, #0x85
@@ -6970,13 +6970,13 @@ sub_0800D87C: @ 0x0800D87C
 	adds r2, r0, #0
 	ldr r0, [r2, #0x30]
 	ldrh r1, [r0, #4]
-	ldr r0, _0800D890 @ =0x030045B0
+	ldr r0, _0800D890 @ =gActiveUnit
 	ldr r0, [r0]
 	bl sub_0800D8DC
 	pop {r1}
 	bx r1
 	.align 2, 0
-_0800D890: .4byte 0x030045B0
+_0800D890: .4byte gActiveUnit
 
 	thumb_func_start sub_0800D894
 sub_0800D894: @ 0x0800D894
@@ -7069,7 +7069,7 @@ _0800D92C:
 	asrs r0, r0, #0x18
 	cmp r0, #0
 	bne _0800D96C
-	bl sub_0801996C
+	bl RenderMapForFade
 	adds r0, r4, #0
 	bl sub_0802C228
 	cmp r5, #0
@@ -7081,9 +7081,9 @@ _0800D94E:
 	bl sub_0802C294
 	bl sub_08019714
 	bl sub_0802C300
-	bl sub_080198EC
+	bl RenderMap
 	movs r0, #1
-	bl sub_0801DA0C
+	bl StartMapFade
 	b _0800D98A
 	.align 2, 0
 _0800D968: .4byte 0x00007FFF
@@ -7140,7 +7140,7 @@ _0800D9C4:
 	asrs r0, r0, #0x18
 	cmp r0, #0
 	bne _0800DA38
-	bl sub_0801996C
+	bl RenderMapForFade
 	adds r0, r4, #0
 	bl sub_0802C228
 	cmp r5, #0
@@ -7174,9 +7174,9 @@ _0800DA16:
 	bl sub_08019714
 	bl sub_0802C300
 	bl sub_08019428
-	bl sub_080198EC
+	bl RenderMap
 	movs r0, #1
-	bl sub_0801DA0C
+	bl StartMapFade
 	b _0800DA5A
 	.align 2, 0
 _0800DA34: .4byte gPlaySt
@@ -7219,7 +7219,7 @@ _0800DA78:
 	bl sub_0802C294
 	bl sub_08019714
 	bl sub_0802C300
-	bl sub_080198EC
+	bl RenderMap
 	movs r0, #0
 	pop {r4}
 	pop {r1}
@@ -7285,7 +7285,7 @@ sub_0800DAF4: @ 0x0800DAF4
 	beq _0800DB0C
 	bl sub_08019428
 _0800DB0C:
-	bl sub_080198EC
+	bl RenderMap
 	movs r0, #2
 	pop {r4}
 	pop {r1}
@@ -7318,16 +7318,16 @@ _0800DB3C:
 	asrs r0, r0, #0x18
 	cmp r0, #0
 	bne _0800DB6E
-	bl sub_0801996C
+	bl RenderMapForFade
 	adds r0, r4, #0
 	bl sub_0802C228
 	adds r0, r4, #0
 	bl sub_0802C294
 	bl sub_08019714
 	bl sub_0802C300
-	bl sub_080198EC
+	bl RenderMap
 	movs r0, #1
-	bl sub_0801DA0C
+	bl StartMapFade
 	b _0800DB82
 _0800DB6E:
 	adds r0, r4, #0
@@ -7374,7 +7374,7 @@ _0800DBC0:
 	adds r4, #1
 	cmp r4, #0xbf
 	ble _0800DB96
-	bl sub_08025BB0
+	bl RefreshUnitSprites
 	movs r0, #2
 	pop {r4, r5, r6}
 	pop {r1}
@@ -7698,7 +7698,7 @@ _0800DE08:
 	ldr r0, _0800DE3C @ =0x0000FFFF
 _0800DE0A:
 	lsls r2, r0, #0x10
-	ldr r0, _0800DE40 @ =0x0202E3D8
+	ldr r0, _0800DE40 @ =gBmMapUnit
 	ldr r0, [r0]
 	asrs r2, r2, #0xe
 	adds r2, r2, r0
@@ -7722,13 +7722,13 @@ _0800DE0A:
 	b _0800DE4A
 	.align 2, 0
 _0800DE3C: .4byte 0x0000FFFF
-_0800DE40: .4byte 0x0202E3D8
+_0800DE40: .4byte gBmMapUnit
 _0800DE44:
 	adds r0, r4, #0
 	bl ClearUnit
 _0800DE4A:
-	bl sub_08019EA4
-	bl sub_08025BB0
+	bl RefreshEntityMaps
+	bl RefreshUnitSprites
 	movs r0, #2
 	pop {r4}
 	pop {r1}
@@ -7758,8 +7758,8 @@ _0800DE82:
 	adds r0, r5, #0
 	bl ClearUnit
 _0800DE88:
-	bl sub_08019EA4
-	bl sub_08025BB0
+	bl RefreshEntityMaps
+	bl RefreshUnitSprites
 	movs r0, #2
 	pop {r4, r5}
 	pop {r1}
@@ -7798,7 +7798,7 @@ _0800DECC:
 	ldr r0, _0800DF10 @ =0x0000FFFF
 _0800DECE:
 	lsls r2, r0, #0x10
-	ldr r0, _0800DF14 @ =0x0202E3D8
+	ldr r0, _0800DF14 @ =gBmMapUnit
 	ldr r0, [r0]
 	asrs r2, r2, #0xe
 	adds r2, r2, r0
@@ -7829,13 +7829,13 @@ _0800DECE:
 	b _0800DF1E
 	.align 2, 0
 _0800DF10: .4byte 0x0000FFFF
-_0800DF14: .4byte 0x0202E3D8
+_0800DF14: .4byte gBmMapUnit
 _0800DF18:
 	adds r0, r4, #0
 	bl ClearUnit
 _0800DF1E:
-	bl sub_08019EA4
-	bl sub_08025BB0
+	bl RefreshEntityMaps
+	bl RefreshUnitSprites
 	b _0800DF56
 _0800DF28:
 	ldr r0, [r4]
@@ -7899,8 +7899,8 @@ _0800DFA0:
 	adds r0, r4, #0
 	bl ClearUnit
 _0800DFA6:
-	bl sub_08019EA4
-	bl sub_08025BB0
+	bl RefreshEntityMaps
+	bl RefreshUnitSprites
 	b _0800DFD4
 _0800DFB0:
 	adds r0, r4, #0
@@ -7936,8 +7936,8 @@ sub_0800DFE0: @ 0x0800DFE0
 	bl sub_0806D4A4
 	adds r0, r4, #0
 	bl ClearUnit
-	bl sub_08019EA4
-	bl sub_08025BB0
+	bl RefreshEntityMaps
+	bl RefreshUnitSprites
 	movs r0, #0
 	str r0, [r5, #0x40]
 	pop {r4, r5}
@@ -7978,7 +7978,7 @@ _0800E040:
 	ldr r0, _0800E070 @ =0x0000FFFF
 _0800E042:
 	lsls r2, r0, #0x10
-	ldr r0, _0800E074 @ =0x0202E3D8
+	ldr r0, _0800E074 @ =gBmMapUnit
 	ldr r0, [r0]
 	asrs r2, r2, #0xe
 	adds r2, r2, r0
@@ -7992,14 +7992,14 @@ _0800E042:
 	movs r2, #9
 	orrs r1, r2
 	str r1, [r0, #0xc]
-	bl sub_08019EA4
-	bl sub_08025BB0
+	bl RefreshEntityMaps
+	bl RefreshUnitSprites
 	movs r0, #2
 	pop {r1}
 	bx r1
 	.align 2, 0
 _0800E070: .4byte 0x0000FFFF
-_0800E074: .4byte 0x0202E3D8
+_0800E074: .4byte gBmMapUnit
 
 	thumb_func_start sub_0800E078
 sub_0800E078: @ 0x0800E078
@@ -8011,8 +8011,8 @@ sub_0800E078: @ 0x0800E078
 	movs r2, #9
 	orrs r1, r2
 	str r1, [r0, #0xc]
-	bl sub_08019EA4
-	bl sub_08025BB0
+	bl RefreshEntityMaps
+	bl RefreshUnitSprites
 	movs r0, #2
 	pop {r1}
 	bx r1
@@ -8061,8 +8061,8 @@ sub_0800E0D0: @ 0x0800E0D0
 	ldr r1, [r0, #0xc]
 	orrs r1, r2
 	str r1, [r0, #0xc]
-	bl sub_08019EA4
-	bl sub_08025BB0
+	bl RefreshEntityMaps
+	bl RefreshUnitSprites
 	movs r0, #2
 	pop {r4}
 	pop {r1}
@@ -8081,8 +8081,8 @@ sub_0800E0F8: @ 0x0800E0F8
 	ldr r1, [r0, #0xc]
 	bics r1, r2
 	str r1, [r0, #0xc]
-	bl sub_08019EA4
-	bl sub_08025BB0
+	bl RefreshEntityMaps
+	bl RefreshUnitSprites
 	movs r0, #2
 	pop {r4}
 	pop {r1}
@@ -8623,23 +8623,23 @@ sub_0800E4C0: @ 0x0800E4C0
 	ldr r0, [r0, #8]
 	lsls r0, r0, #4
 	bl sub_08015D98
-	ldr r5, _0800E50C @ =0x0202BBB4
+	ldr r5, _0800E50C @ =gBmSt
 	strh r0, [r5, #0xc]
 	ldr r0, [r4, #0x30]
 	ldr r0, [r0, #0xc]
 	lsls r0, r0, #4
 	bl sub_08015DC0
 	strh r0, [r5, #0xe]
-	bl sub_08019EA4
-	bl sub_080198EC
-	bl sub_08025BB0
+	bl RefreshEntityMaps
+	bl RenderMap
+	bl RefreshUnitSprites
 	movs r0, #0
 	pop {r4, r5}
 	pop {r1}
 	bx r1
 	.align 2, 0
 _0800E508: .4byte gPlaySt
-_0800E50C: .4byte 0x0202BBB4
+_0800E50C: .4byte gBmSt
 
 	thumb_func_start sub_0800E510
 sub_0800E510: @ 0x0800E510
@@ -9102,7 +9102,7 @@ _0800E80E:
 	bl sub_0800ED9C
 	b _0800E848
 _0800E828:
-	ldr r0, _0800E850 @ =0x030045B0
+	ldr r0, _0800E850 @ =gActiveUnit
 	ldr r1, [r0]
 	movs r0, #0xc0
 	ldrb r1, [r1, #0xb]
@@ -9122,7 +9122,7 @@ _0800E848:
 	pop {r1}
 	bx r1
 	.align 2, 0
-_0800E850: .4byte 0x030045B0
+_0800E850: .4byte gActiveUnit
 
 	thumb_func_start sub_0800E854
 sub_0800E854: @ 0x0800E854
@@ -9155,20 +9155,20 @@ sub_0800E854: @ 0x0800E854
 	ands r2, r1
 	str r2, [sp]
 	ldrh r7, [r0, #0x10]
-	ldr r1, _0800E8A0 @ =0x0203A858
+	ldr r1, _0800E8A0 @ =gActionSt
 	cmp r2, #0
 	bne _0800E8A4
 	str r6, [r1, #0x18]
 	b _0800E8A8
 	.align 2, 0
-_0800E8A0: .4byte 0x0203A858
+_0800E8A0: .4byte gActionSt
 _0800E8A4:
 	movs r0, #0
 	str r0, [r1, #0x18]
 _0800E8A8:
 	mov r1, sb
 	ldrh r0, [r1, #0x1e]
-	bl sub_08017664
+	bl GetItemType
 	cmp r0, #4
 	beq _0800E8B8
 	cmp r7, #0
@@ -9277,7 +9277,7 @@ _0800E96C:
 _0800E984:
 	bl sub_08029F20
 	bl sub_08053C1C
-	ldr r1, _0800E9A8 @ =0x0203A858
+	ldr r1, _0800E9A8 @ =gActionSt
 	movs r0, #0
 	str r0, [r1, #0x18]
 	b _0800E9F2
@@ -9287,7 +9287,7 @@ _0800E998: .4byte 0x0203A46C
 _0800E99C: .4byte 0x0203A434
 _0800E9A0: .4byte 0x0203A3D4
 _0800E9A4: .4byte 0x0203A508
-_0800E9A8: .4byte 0x0203A858
+_0800E9A8: .4byte gActionSt
 _0800E9AC:
 	bl sub_080157A4
 	lsls r0, r0, #0x18
@@ -9300,7 +9300,7 @@ _0800E9AC:
 	str r0, [r1, #0x40]
 	mov r0, sb
 	bl UnitBeginAction
-	ldr r4, _0800EA08 @ =0x030045B0
+	ldr r4, _0800EA08 @ =gActiveUnit
 	ldr r0, [r4]
 	bl sub_08026A00
 	ldr r0, [r4]
@@ -9328,7 +9328,7 @@ _0800E9F2:
 	bx r1
 	.align 2, 0
 _0800EA04: .4byte sub_0800EA10
-_0800EA08: .4byte 0x030045B0
+_0800EA08: .4byte gActiveUnit
 _0800EA0C: .4byte 0x0203A978
 
 	thumb_func_start sub_0800EA10
@@ -9346,7 +9346,7 @@ sub_0800EA10: @ 0x0800EA10
 	ldr r0, _0800EA3C @ =sub_0800EA44
 	str r0, [r5, #0x40]
 	bl sub_08029F20
-	ldr r1, _0800EA40 @ =0x0203A858
+	ldr r1, _0800EA40 @ =gActionSt
 	movs r0, #0
 	str r0, [r1, #0x18]
 _0800EA34:
@@ -9355,7 +9355,7 @@ _0800EA34:
 	bx r0
 	.align 2, 0
 _0800EA3C: .4byte sub_0800EA44
-_0800EA40: .4byte 0x0203A858
+_0800EA40: .4byte gActionSt
 
 	thumb_func_start sub_0800EA44
 sub_0800EA44: @ 0x0800EA44
@@ -9803,7 +9803,7 @@ sub_0800ED58: @ 0x0800ED58
 	push {r4, lr}
 	adds r4, r1, #0
 	bl sub_0800ACDC
-	ldr r0, _0800ED7C @ =0x030045B0
+	ldr r0, _0800ED7C @ =gActiveUnit
 	ldr r1, [r0]
 	movs r0, #0xc0
 	ldrb r1, [r1, #0xb]
@@ -9817,7 +9817,7 @@ sub_0800ED58: @ 0x0800ED58
 	bl sub_0800ACE8
 	b _0800ED90
 	.align 2, 0
-_0800ED7C: .4byte 0x030045B0
+_0800ED7C: .4byte gActiveUnit
 _0800ED80: .4byte 0x08C00DEC
 _0800ED84:
 	ldr r0, _0800ED98 @ =0x08C00E24
@@ -9890,7 +9890,7 @@ sub_0800EE00: @ 0x0800EE00
 	lsls r0, r0, #0x10
 	lsrs r0, r0, #0x10
 	bl sub_0800ACD0
-	ldr r0, _0800EE28 @ =0x030045B0
+	ldr r0, _0800EE28 @ =gActiveUnit
 	ldr r1, [r0]
 	movs r0, #0xc0
 	ldrb r1, [r1, #0xb]
@@ -9904,7 +9904,7 @@ sub_0800EE00: @ 0x0800EE00
 	bl sub_0800ACE8
 	b _0800EE3C
 	.align 2, 0
-_0800EE28: .4byte 0x030045B0
+_0800EE28: .4byte gActiveUnit
 _0800EE2C: .4byte 0x08C00EDC
 _0800EE30:
 	ldr r0, _0800EE44 @ =0x08C00F1C
@@ -12136,7 +12136,7 @@ sub_0800FD78: @ 0x0800FD78
 	orrs r1, r5
 	str r1, [r0, #0xc]
 _0800FDB2:
-	bl sub_08025BB0
+	bl RefreshUnitSprites
 _0800FDB6:
 	movs r0, #0
 	pop {r4, r5}
@@ -12520,7 +12520,7 @@ sub_0801006C: @ 0x0801006C
 	ldr r0, _08010094 @ =0x08C010BC
 	bl Proc_Start
 	lsls r4, r4, #4
-	ldr r1, _08010098 @ =0x0202BBB4
+	ldr r1, _08010098 @ =gBmSt
 	ldrh r2, [r1, #0xc]
 	subs r4, r4, r2
 	adds r4, #8
@@ -12534,7 +12534,7 @@ sub_0801006C: @ 0x0801006C
 	bx r0
 	.align 2, 0
 _08010094: .4byte 0x08C010BC
-_08010098: .4byte 0x0202BBB4
+_08010098: .4byte gBmSt
 
 	thumb_func_start sub_0801009C
 sub_0801009C: @ 0x0801009C
@@ -12847,7 +12847,7 @@ sub_080102DC: @ 0x080102DC
 	ldr r0, _08010308 @ =0x08C010EC
 	bl Proc_Start
 	lsls r4, r4, #4
-	ldr r1, _0801030C @ =0x0202BBB4
+	ldr r1, _0801030C @ =gBmSt
 	ldrh r2, [r1, #0xc]
 	subs r4, r4, r2
 	adds r4, #0x10
@@ -12862,7 +12862,7 @@ sub_080102DC: @ 0x080102DC
 	bx r0
 	.align 2, 0
 _08010308: .4byte 0x08C010EC
-_0801030C: .4byte 0x0202BBB4
+_0801030C: .4byte gBmSt
 
 	thumb_func_start sub_08010310
 sub_08010310: @ 0x08010310
