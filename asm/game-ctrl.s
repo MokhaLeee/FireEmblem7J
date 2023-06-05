@@ -1115,7 +1115,7 @@ _08013414:
 	bl sub_0802EBB0
 	b _08013422
 _0801341A:
-	ldr r0, _0801342C @ =0x0203A858
+	ldr r0, _0801342C @ =gActionSt
 	ldrh r0, [r0, #6]
 	bl sub_08017610
 _08013422:
@@ -1124,7 +1124,7 @@ _08013422:
 	bl CopyString
 	b _0801345A
 	.align 2, 0
-_0801342C: .4byte 0x0203A858
+_0801342C: .4byte gActionSt
 _08013430:
 	movs r0, #0x80
 	strb r0, [r4]

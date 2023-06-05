@@ -928,7 +928,7 @@ sub_0801BCD4: @ 0x0801BCD4
 	bl sub_08009E84
 	ldr r0, _0801BD30 @ =0x08C04B4C
 	bl sub_0804AA58
-	ldr r4, _0801BD34 @ =0x0202BBB4
+	ldr r4, _0801BD34 @ =gBmSt
 	movs r1, #0x40
 	ldrb r2, [r4, #4]
 	orrs r1, r2
@@ -951,7 +951,7 @@ _0801BD24: .4byte OnGameLoopMain
 _0801BD28: .4byte OnVBlank
 _0801BD2C: .4byte 0x081C92C8
 _0801BD30: .4byte 0x08C04B4C
-_0801BD34: .4byte 0x0202BBB4
+_0801BD34: .4byte gBmSt
 _0801BD38: .4byte 0x0600B000
 _0801BD3C: .4byte 0x02023CA0
 

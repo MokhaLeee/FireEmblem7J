@@ -1954,7 +1954,7 @@ _08008D04:
 	ldr r0, _08008D28 @ =0x0000FFFF
 	cmp r4, r0
 	bne _08008D30
-	ldr r0, _08008D2C @ =0x030045B0
+	ldr r0, _08008D2C @ =gActiveUnit
 	ldr r0, [r0]
 	bl sub_08018FC8
 	adds r4, r0, #0
@@ -1962,7 +1962,7 @@ _08008D04:
 	.align 2, 0
 _08008D24: .4byte 0x08BFFB68
 _08008D28: .4byte 0x0000FFFF
-_08008D2C: .4byte 0x030045B0
+_08008D2C: .4byte gActiveUnit
 _08008D30:
 	ldr r2, _08008D50 @ =0xFFFFFF00
 	adds r4, r4, r2

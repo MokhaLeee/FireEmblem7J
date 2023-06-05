@@ -10,7 +10,19 @@ SECTIONS
 	EWRAM (NOLOAD) :
 	ALIGN(4)
 	{
+		. = 0x02BBB4; gBmSt = .;
 		. = 0x02BBF4; gPlaySt = .;
+		. = 0x02BD44; gActiveUnitId = .;
+		. = 0x02BD48; gActiveUnitMoveOrigin = .;
+		. = 0x02E3D4; gBmMapSize = .;
+		. = 0x02E3D8; gBmMapUnit = .;
+		. = 0x02E3DC; gBmMapTerrain = .;
+		. = 0x02E3E0; gBmMapMovement = .;
+		. = 0x02E3E4; gBmMapRange = .;
+		. = 0x02E3E8; gBmMapFog = .;
+		. = 0x02E3EC; gBmMapHidden = .;
+		. = 0x02E3F0; gBmMapOther = .;
+		. = 0x03A858; gActionSt = .;
 	}
 
 	. = 0x03000000;
@@ -21,6 +33,7 @@ SECTIONS
 		. = ALIGN(4); src/random.o(.bss);
 		. = 0x002800; gIrqFuncs = .;
 		. = 0x003870; IntrMainRam = .;
+		. = 0x0045B0; gActiveUnit = .;
 	}
 
 	. = 0x08000000;
@@ -90,7 +103,9 @@ SECTIONS
 
 		/* .data & .rodata */
 		. = ALIGN(4); data/const_data.o(.rodata)
-		. = 0x0C0C78; src/irq.o(.rodata)
+
+		/* . = 0x0C0C78; */
+		. = ALIGN(4); src/irq.o(.rodata)
 		. = ALIGN(4); src/random.o(.rodata);
 		. = ALIGN(4); data/data.o(.data)
 	}

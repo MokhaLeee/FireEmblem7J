@@ -311,7 +311,7 @@ _080288E0:
 	ands r0, r1
 	cmp r0, #0
 	beq _0802890C
-	ldr r0, _08028908 @ =0x0203A858
+	ldr r0, _08028908 @ =gActionSt
 	ldr r0, [r0, #0x18]
 	cmp r0, #0
 	beq _0802890C
@@ -321,7 +321,7 @@ _080288E0:
 _080288FC: .4byte 0x0203A3EC
 _08028900: .4byte 0x0203A46C
 _08028904: .4byte 0x0203A3D4
-_08028908: .4byte 0x0203A858
+_08028908: .4byte gActionSt
 _0802890C:
 	bl sub_08029460
 _08028910:
@@ -673,7 +673,7 @@ sub_08028BB4: @ 0x08028BB4
 	adds r2, r0, #0
 	movs r0, #0x11
 	ldrsb r0, [r2, r0]
-	ldr r1, _08028C04 @ =0x0202E3DC
+	ldr r1, _08028C04 @ =gBmMapTerrain
 	ldr r1, [r1]
 	lsls r0, r0, #2
 	adds r0, r0, r1
@@ -711,7 +711,7 @@ sub_08028BB4: @ 0x08028BB4
 	strb r1, [r0]
 	bx lr
 	.align 2, 0
-_08028C04: .4byte 0x0202E3DC
+_08028C04: .4byte gBmMapTerrain
 
 	thumb_func_start sub_08028C08
 sub_08028C08: @ 0x08028C08
@@ -780,7 +780,7 @@ _08028C8E:
 	adds r2, #0x51
 	movs r0, #0xff
 	strb r0, [r2]
-	ldr r0, _08028CA8 @ =0x0202BBB4
+	ldr r0, _08028CA8 @ =gBmSt
 	ldrh r0, [r0, #0x2c]
 	adds r1, r5, #0
 	adds r1, #0x48
@@ -789,7 +789,7 @@ _08028C8E:
 	adds r4, r1, #0
 	b _08028D2A
 	.align 2, 0
-_08028CA8: .4byte 0x0202BBB4
+_08028CA8: .4byte gBmSt
 _08028CAC:
 	adds r3, r5, #0
 	adds r3, #0x51
@@ -862,10 +862,10 @@ _08028D2A:
 	adds r1, #0x4a
 	strh r0, [r1]
 	ldrh r0, [r4]
-	bl sub_08017684
+	bl GetItemAttributes
 	str r0, [r5, #0x4c]
 	ldrh r0, [r4]
-	bl sub_08017664
+	bl GetItemType
 	adds r6, r5, #0
 	adds r6, #0x50
 	strb r0, [r6]
@@ -974,10 +974,10 @@ sub_08028DE8: @ 0x08028DE8
 	adds r1, #0x4a
 	strh r0, [r1]
 	ldrh r0, [r4]
-	bl sub_08017684
+	bl GetItemAttributes
 	str r0, [r6, #0x4c]
 	ldrh r0, [r4]
-	bl sub_08017664
+	bl GetItemType
 	adds r1, r6, #0
 	adds r1, #0x50
 	strb r0, [r1]
@@ -1111,7 +1111,7 @@ sub_08028F14: @ 0x08028F14
 	adds r5, r1, #0
 	adds r5, #0x48
 	ldrh r0, [r5]
-	bl sub_08017684
+	bl GetItemAttributes
 	movs r1, #0x40
 	ands r1, r0
 	cmp r1, #0
@@ -1126,7 +1126,7 @@ sub_08028F14: @ 0x08028F14
 	b _08028F66
 _08028F3A:
 	ldrh r0, [r5]
-	bl sub_08017684
+	bl GetItemAttributes
 	movs r1, #2
 	ands r1, r0
 	cmp r1, #0
@@ -1306,7 +1306,7 @@ sub_08029040: @ 0x08029040
 	ldrb r0, [r5, #0x1b]
 	cmp r0, #1
 	beq _080290E4
-	ldr r1, _080290F0 @ =0x0202BBB4
+	ldr r1, _080290F0 @ =gBmSt
 	movs r0, #0x40
 	ldrb r1, [r1, #4]
 	ands r0, r1
@@ -1358,7 +1358,7 @@ _080290E4:
 	bx r0
 	.align 2, 0
 _080290EC: .4byte gPlaySt
-_080290F0: .4byte 0x0202BBB4
+_080290F0: .4byte gBmSt
 _080290F4: .4byte 0x081C8FCC
 
 	thumb_func_start sub_080290F8
@@ -1391,7 +1391,7 @@ sub_080290F8: @ 0x080290F8
 	ldrb r0, [r5, #0x1b]
 	cmp r0, #1
 	beq _0802918C
-	ldr r1, _080291A8 @ =0x0202BBB4
+	ldr r1, _080291A8 @ =gBmSt
 	movs r0, #0x40
 	ldrb r1, [r1, #4]
 	ands r0, r1
@@ -1452,7 +1452,7 @@ _0802919C:
 	bx r0
 	.align 2, 0
 _080291A4: .4byte gPlaySt
-_080291A8: .4byte 0x0202BBB4
+_080291A8: .4byte gBmSt
 _080291AC: .4byte 0x081C8FCC
 
 	thumb_func_start sub_080291B0
@@ -1550,7 +1550,7 @@ sub_08029224: @ 0x08029224
 	ldrb r0, [r2, #0x1b]
 	cmp r0, #1
 	beq _08029280
-	ldr r1, _0802929C @ =0x0202BBB4
+	ldr r1, _0802929C @ =gBmSt
 	movs r0, #0x40
 	ldrb r1, [r1, #4]
 	ands r0, r1
@@ -1587,7 +1587,7 @@ _08029292:
 	b _080292A2
 	.align 2, 0
 _08029298: .4byte gPlaySt
-_0802929C: .4byte 0x0202BBB4
+_0802929C: .4byte gBmSt
 _080292A0:
 	adds r4, #1
 _080292A2:
@@ -1600,7 +1600,7 @@ _080292A2:
 	ldrh r0, [r0]
 	cmp r0, #0
 	beq _080292C6
-	bl sub_08017684
+	bl GetItemAttributes
 	movs r1, #0x80
 	lsls r1, r1, #8
 	ands r1, r0
@@ -1674,7 +1674,7 @@ sub_08029328: @ 0x08029328
 	ldrh r0, [r1]
 	cmp r0, #0
 	beq _0802935E
-	bl sub_08017664
+	bl GetItemType
 	adds r1, r0, #0
 	cmp r1, #7
 	bgt _0802935E
@@ -2109,7 +2109,7 @@ _08029648:
 	movs r0, #1
 	ldrsb r0, [r5, r0]
 	add r0, sb
-	ldr r1, _080296B0 @ =0x0202E3D8
+	ldr r1, _080296B0 @ =gBmMapUnit
 	ldr r1, [r1]
 	lsls r0, r0, #2
 	adds r0, r0, r1
@@ -2155,7 +2155,7 @@ _08029648:
 	.align 2, 0
 _080296A8: .4byte 0x081C94C0
 _080296AC: .4byte 0x0203A3D4
-_080296B0: .4byte 0x0202E3D8
+_080296B0: .4byte gBmMapUnit
 _080296B4:
 	ldr r0, [r1, #0x14]
 	cmp r0, #0
@@ -2516,7 +2516,7 @@ _0802995E:
 	adds r4, r5, #0
 	adds r4, #0x48
 	ldrh r0, [r4]
-	bl sub_08016B90
+	bl GetItemAfterUse
 	strh r0, [r4]
 	lsls r0, r0, #0x10
 	cmp r0, #0
@@ -2667,8 +2667,8 @@ _08029A84: .4byte 0x0203A3EC
 _08029A88: .4byte 0x0203A46C
 _08029A8C: .4byte gPlaySt
 
-	thumb_func_start sub_08029A90
-sub_08029A90: @ 0x08029A90
+	thumb_func_start GetStatIncrease
+GetStatIncrease: @ 0x08029A90
 	push {r4, lr}
 	movs r4, #0
 	cmp r0, #0x64
@@ -2690,8 +2690,8 @@ _08029AAC:
 	pop {r1}
 	bx r1
 
-	thumb_func_start sub_08029AB4
-sub_08029AB4: @ 0x08029AB4
+	thumb_func_start GetAutoleveledStatIncrease
+GetAutoleveledStatIncrease: @ 0x08029AB4
 	push {r4, lr}
 	adds r4, r0, #0
 	muls r4, r1, r4
@@ -2711,7 +2711,7 @@ _08029AD2:
 	asrs r0, r0, #3
 	subs r0, r1, r0
 	adds r0, r4, r0
-	bl sub_08029A90
+	bl GetStatIncrease
 	pop {r4}
 	pop {r1}
 	bx r1
@@ -2720,7 +2720,7 @@ _08029AD2:
 	thumb_func_start sub_08029AE4
 sub_08029AE4: @ 0x08029AE4
 	adds r2, r0, #0
-	ldr r1, _08029B08 @ =0x0202BBB4
+	ldr r1, _08029B08 @ =gBmSt
 	movs r0, #0x40
 	ldrb r1, [r1, #4]
 	ands r0, r1
@@ -2738,7 +2738,7 @@ _08029B02:
 	movs r0, #1
 	b _08029B0E
 	.align 2, 0
-_08029B08: .4byte 0x0202BBB4
+_08029B08: .4byte gBmSt
 _08029B0C:
 	movs r0, #0
 _08029B0E:
@@ -2796,7 +2796,7 @@ _08029B68:
 	ldr r0, [r7]
 	ldrb r0, [r0, #0x1c]
 	add r0, sl
-	bl sub_08029A90
+	bl GetStatIncrease
 	adds r1, r7, #0
 	adds r1, #0x73
 	str r1, [sp]
@@ -2806,7 +2806,7 @@ _08029B68:
 	ldr r0, [r7]
 	ldrb r0, [r0, #0x1d]
 	add r0, sl
-	bl sub_08029A90
+	bl GetStatIncrease
 	adds r3, r7, #0
 	adds r3, #0x74
 	str r3, [sp, #4]
@@ -2817,7 +2817,7 @@ _08029B68:
 	ldr r0, [r7]
 	ldrb r0, [r0, #0x1e]
 	add r0, sl
-	bl sub_08029A90
+	bl GetStatIncrease
 	movs r1, #0x75
 	adds r1, r1, r7
 	mov r8, r1
@@ -2828,7 +2828,7 @@ _08029B68:
 	ldr r0, [r7]
 	ldrb r0, [r0, #0x1f]
 	add r0, sl
-	bl sub_08029A90
+	bl GetStatIncrease
 	movs r3, #0x76
 	adds r3, r3, r7
 	mov sb, r3
@@ -2840,7 +2840,7 @@ _08029B68:
 	adds r0, #0x20
 	ldrb r0, [r0]
 	add r0, sl
-	bl sub_08029A90
+	bl GetStatIncrease
 	adds r5, r7, #0
 	adds r5, #0x77
 	strb r0, [r5]
@@ -2851,7 +2851,7 @@ _08029B68:
 	adds r0, #0x21
 	ldrb r0, [r0]
 	add r0, sl
-	bl sub_08029A90
+	bl GetStatIncrease
 	adds r4, r7, #0
 	adds r4, #0x78
 	strb r0, [r4]
@@ -2862,7 +2862,7 @@ _08029B68:
 	adds r0, #0x22
 	ldrb r0, [r0]
 	add r0, sl
-	bl sub_08029A90
+	bl GetStatIncrease
 	adds r1, r7, #0
 	adds r1, #0x79
 	strb r0, [r1]
@@ -2883,7 +2883,7 @@ _08029B68:
 _08029C24:
 	ldr r0, [r7]
 	ldrb r0, [r0, #0x1d]
-	bl sub_08029A90
+	bl GetStatIncrease
 	ldr r1, [sp, #8]
 	strb r0, [r1]
 	lsls r0, r0, #0x18
@@ -2891,7 +2891,7 @@ _08029C24:
 	bne _08029CAA
 	ldr r0, [r7]
 	ldrb r0, [r0, #0x1e]
-	bl sub_08029A90
+	bl GetStatIncrease
 	mov r3, sl
 	strb r0, [r3]
 	lsls r0, r0, #0x18
@@ -2899,7 +2899,7 @@ _08029C24:
 	bne _08029CAA
 	ldr r0, [r7]
 	ldrb r0, [r0, #0x1f]
-	bl sub_08029A90
+	bl GetStatIncrease
 	mov r1, sb
 	strb r0, [r1]
 	lsls r0, r0, #0x18
@@ -2908,7 +2908,7 @@ _08029C24:
 	ldr r0, [r7]
 	adds r0, #0x20
 	ldrb r0, [r0]
-	bl sub_08029A90
+	bl GetStatIncrease
 	mov r3, r8
 	strb r0, [r3]
 	lsls r0, r0, #0x18
@@ -2917,7 +2917,7 @@ _08029C24:
 	ldr r0, [r7]
 	adds r0, #0x21
 	ldrb r0, [r0]
-	bl sub_08029A90
+	bl GetStatIncrease
 	strb r0, [r5]
 	lsls r0, r0, #0x18
 	cmp r0, #0
@@ -2925,7 +2925,7 @@ _08029C24:
 	ldr r0, [r7]
 	adds r0, #0x22
 	ldrb r0, [r0]
-	bl sub_08029A90
+	bl GetStatIncrease
 	strb r0, [r4]
 	lsls r0, r0, #0x18
 	cmp r0, #0
@@ -2936,7 +2936,7 @@ _08029C94:
 	bgt _08029CAA
 	ldr r0, [r7]
 	ldrb r0, [r0, #0x1c]
-	bl sub_08029A90
+	bl GetStatIncrease
 	ldr r1, [sp, #0xc]
 	strb r0, [r1]
 	lsls r0, r0, #0x18
@@ -3379,7 +3379,7 @@ sub_08029FAC: @ 0x08029FAC
 	ands r0, r1
 	cmp r0, #0
 	bne _0802A008
-	ldr r1, _0802A014 @ =0x0202BBB4
+	ldr r1, _0802A014 @ =gBmSt
 	movs r0, #0x40
 	ldrb r1, [r1, #4]
 	ands r0, r1
@@ -3414,7 +3414,7 @@ _0802A008:
 	b _0802A090
 	.align 2, 0
 _0802A010: .4byte gPlaySt
-_0802A014: .4byte 0x0202BBB4
+_0802A014: .4byte gBmSt
 _0802A018: .4byte 0x0203A3D4
 _0802A01C:
 	adds r4, r7, #0
@@ -4159,7 +4159,7 @@ sub_0802A554: @ 0x0802A554
 _0802A580:
 	ldrh r1, [r4]
 	adds r0, r5, #0
-	bl sub_08016850
+	bl CanUnitUseStaff
 	lsls r0, r0, #0x18
 	asrs r0, r0, #0x18
 	cmp r0, #1
@@ -4391,7 +4391,7 @@ sub_0802A704: @ 0x0802A704
 	adds r0, #0x2c
 	ldrb r0, [r0]
 	strb r0, [r4, #0x12]
-	ldr r1, _0802A764 @ =0x0203A858
+	ldr r1, _0802A764 @ =gActionSt
 	ldrb r0, [r1, #0x15]
 	strb r0, [r4, #0x13]
 	ldrb r0, [r1, #0x13]
@@ -4400,7 +4400,7 @@ sub_0802A704: @ 0x0802A704
 	strb r0, [r4, #0x11]
 	movs r0, #0x11
 	ldrsb r0, [r4, r0]
-	ldr r1, _0802A768 @ =0x0202E3DC
+	ldr r1, _0802A768 @ =gBmMapTerrain
 	ldr r1, [r1]
 	lsls r0, r0, #2
 	adds r0, r0, r1
@@ -4417,8 +4417,8 @@ sub_0802A704: @ 0x0802A704
 	.align 2, 0
 _0802A75C: .4byte 0x0203A46C
 _0802A760: .4byte gPlaySt
-_0802A764: .4byte 0x0203A858
-_0802A768: .4byte 0x0202E3DC
+_0802A764: .4byte gActionSt
+_0802A768: .4byte gBmMapTerrain
 _0802A76C:
 	movs r0, #0xfc
 	bl GetCharacterData
@@ -4498,7 +4498,7 @@ _0802A7EA:
 	adds r6, r0, #0
 	movs r0, #0x11
 	ldrsb r0, [r4, r0]
-	ldr r1, _0802A854 @ =0x0202E3DC
+	ldr r1, _0802A854 @ =gBmMapTerrain
 	ldr r1, [r1]
 	lsls r0, r0, #2
 	adds r0, r0, r1
@@ -4518,7 +4518,7 @@ _0802A7EA:
 	ldr r0, _0802A85C @ =0x000002D7
 	bl m4aSongNumStart
 _0802A82A:
-	bl sub_0801996C
+	bl RenderMapForFade
 	adds r0, r6, #0
 	bl sub_0802C228
 	movs r0, #0
@@ -4526,15 +4526,15 @@ _0802A82A:
 	adds r0, r6, #0
 	bl sub_0802C294
 	bl sub_08019714
-	bl sub_080198EC
+	bl RenderMap
 	movs r0, #0
-	bl sub_0801DA0C
+	bl StartMapFade
 _0802A84C:
 	pop {r4, r5, r6}
 	pop {r0}
 	bx r0
 	.align 2, 0
-_0802A854: .4byte 0x0202E3DC
+_0802A854: .4byte gBmMapTerrain
 _0802A858: .4byte gPlaySt
 _0802A85C: .4byte 0x000002D7
 
@@ -4550,7 +4550,7 @@ sub_0802A860: @ 0x0802A860
 	movs r0, #0
 	strh r0, [r1]
 	bl EnablePalSync
-	bl sub_080198EC
+	bl RenderMap
 	bl sub_08051170
 	lsls r0, r0, #0x18
 	cmp r0, #0
@@ -4564,7 +4564,7 @@ _0802A894: .4byte 0x02023C60
 _0802A898: .4byte 0x02022860
 _0802A89C:
 	bl sub_0806D4A4
-	bl sub_080198EC
+	bl RenderMap
 	bl sub_0806FA28
 	ldr r1, _0802A8B8 @ =0x0203A3D4
 	movs r0, #0x80
@@ -4724,12 +4724,12 @@ _0802A978:
 	adds r0, #7
 	strb r7, [r0]
 	adds r0, r6, #0
-	bl sub_08017664
+	bl GetItemType
 	adds r1, r5, #0
 	adds r1, #0x50
 	strb r0, [r1]
 	adds r0, r6, #0
-	bl sub_08017684
+	bl GetItemAttributes
 	str r0, [r5, #0x4c]
 	adds r1, r5, #0
 	adds r1, #0x52
@@ -4847,7 +4847,7 @@ sub_0802AA9C: @ 0x0802AA9C
 	adds r5, r4, #0
 	adds r5, #0x48
 	ldrh r0, [r5]
-	bl sub_08017684
+	bl GetItemAttributes
 	movs r1, #4
 	ands r1, r0
 	cmp r1, #0
@@ -4858,7 +4858,7 @@ sub_0802AA9C: @ 0x0802AA9C
 	strb r0, [r1]
 _0802AADA:
 	ldrh r0, [r5]
-	bl sub_08016B90
+	bl GetItemAfterUse
 	strh r0, [r5]
 	adds r1, r4, #0
 	adds r1, #0x51
@@ -4966,7 +4966,7 @@ sub_0802AB90: @ 0x0802AB90
 	mov sb, r0
 	ldr r1, [r0, #4]
 	mov r8, r1
-	ldr r0, _0802AC64 @ =0x0202BBB4
+	ldr r0, _0802AC64 @ =gBmSt
 	adds r0, #0x3c
 	ldrb r0, [r0]
 	str r0, [sp]
@@ -4981,7 +4981,7 @@ sub_0802AB90: @ 0x0802AB90
 	adds r0, r4, #0
 	mov r1, r8
 	bl sub_08028A60
-	ldr r0, _0802AC74 @ =0x0203A858
+	ldr r0, _0802AC74 @ =gActionSt
 	mov sl, r0
 	ldrb r0, [r0, #0x15]
 	cmp r0, #0
@@ -5052,11 +5052,11 @@ _0802AC46:
 	b _0802AC80
 	.align 2, 0
 _0802AC60: .4byte 0x0203A7F0
-_0802AC64: .4byte 0x0202BBB4
+_0802AC64: .4byte gBmSt
 _0802AC68: .4byte 0x0203A3D4
 _0802AC6C: .4byte 0x0203A3EC
 _0802AC70: .4byte 0x0203A46C
-_0802AC74: .4byte 0x0203A858
+_0802AC74: .4byte gActionSt
 _0802AC78: .4byte 0xFFF1FFFF
 _0802AC7C:
 	movs r0, #0xe0
@@ -5118,11 +5118,11 @@ _0802ACDC:
 
 	thumb_func_start sub_0802ACE0
 sub_0802ACE0: @ 0x0802ACE0
-	ldr r1, _0802ACE8 @ =0x0203A858
+	ldr r1, _0802ACE8 @ =gActionSt
 	str r0, [r1, #0x18]
 	bx lr
 	.align 2, 0
-_0802ACE8: .4byte 0x0203A858
+_0802ACE8: .4byte gActionSt
 
 	thumb_func_start sub_0802ACEC
 sub_0802ACEC: @ 0x0802ACEC
@@ -5187,7 +5187,7 @@ _0802AD54: .4byte 0x0203A508
 	thumb_func_start sub_0802AD58
 sub_0802AD58: @ 0x0802AD58
 	push {r4, r5, r6, lr}
-	ldr r0, _0802ADA4 @ =0x0203A858
+	ldr r0, _0802ADA4 @ =gActionSt
 	ldr r2, [r0, #0x18]
 	ldr r3, _0802ADA8 @ =0x0203A4EC
 	movs r0, #0x80
@@ -5227,7 +5227,7 @@ _0802AD90:
 	ldr r4, _0802ADB4 @ =0x0203A3EC
 	b _0802ADBC
 	.align 2, 0
-_0802ADA4: .4byte 0x0203A858
+_0802ADA4: .4byte gActionSt
 _0802ADA8: .4byte 0x0203A4EC
 _0802ADAC: .4byte 0x0203A508
 _0802ADB0: .4byte 0x0203A46C
@@ -5295,14 +5295,14 @@ _0802AE24:
 	cmp r0, #0
 	beq _0802AD90
 _0802AE34:
-	ldr r1, _0802AE40 @ =0x0203A858
+	ldr r1, _0802AE40 @ =gActionSt
 	movs r0, #0
 	str r0, [r1, #0x18]
 	pop {r4, r5, r6}
 	pop {r0}
 	bx r0
 	.align 2, 0
-_0802AE40: .4byte 0x0203A858
+_0802AE40: .4byte gActionSt
 
 	thumb_func_start sub_0802AE44
 sub_0802AE44: @ 0x0802AE44
@@ -5345,46 +5345,46 @@ _0802AE76:
 _0802AE86:
 	ldrb r2, [r2, #0x1c]
 	adds r0, r2, r6
-	bl sub_08029A90
+	bl GetStatIncrease
 	mov r8, r0
 	ldr r0, [r4]
 	ldrb r0, [r0, #0x1d]
 	adds r0, r0, r6
-	bl sub_08029A90
+	bl GetStatIncrease
 	str r0, [sp]
 	adds r5, r0, #0
 	add r5, r8
 	ldr r0, [r4]
 	ldrb r0, [r0, #0x1e]
 	adds r0, r0, r6
-	bl sub_08029A90
+	bl GetStatIncrease
 	str r0, [sp, #4]
 	adds r5, r5, r0
 	ldr r0, [r4]
 	ldrb r0, [r0, #0x1f]
 	adds r0, r0, r6
-	bl sub_08029A90
+	bl GetStatIncrease
 	mov sl, r0
 	add r5, sl
 	ldr r0, [r4]
 	adds r0, #0x20
 	ldrb r0, [r0]
 	adds r0, r0, r6
-	bl sub_08029A90
+	bl GetStatIncrease
 	mov sb, r0
 	add r5, sb
 	ldr r0, [r4]
 	adds r0, #0x21
 	ldrb r0, [r0]
 	adds r0, r0, r6
-	bl sub_08029A90
+	bl GetStatIncrease
 	adds r7, r0, #0
 	adds r5, r5, r7
 	ldr r0, [r4]
 	adds r0, #0x22
 	ldrb r0, [r0]
 	adds r0, r0, r6
-	bl sub_08029A90
+	bl GetStatIncrease
 	adds r6, r0, #0
 	adds r5, r5, r6
 	cmp r5, #0
@@ -5393,28 +5393,28 @@ _0802AE86:
 _0802AEF2:
 	ldr r0, [r4]
 	ldrb r0, [r0, #0x1f]
-	bl sub_08029A90
+	bl GetStatIncrease
 	mov sl, r0
 	cmp r0, #0
 	bne _0802AF60
 	ldr r0, [r4]
 	adds r0, #0x20
 	ldrb r0, [r0]
-	bl sub_08029A90
+	bl GetStatIncrease
 	mov sb, r0
 	cmp r0, #0
 	bne _0802AF60
 	ldr r0, [r4]
 	adds r0, #0x21
 	ldrb r0, [r0]
-	bl sub_08029A90
+	bl GetStatIncrease
 	adds r7, r0, #0
 	cmp r7, #0
 	bne _0802AF60
 	ldr r0, [r4]
 	adds r0, #0x22
 	ldrb r0, [r0]
-	bl sub_08029A90
+	bl GetStatIncrease
 	adds r6, r0, #0
 	cmp r6, #0
 	bne _0802AF60
@@ -5424,19 +5424,19 @@ _0802AF32:
 	bgt _0802AF60
 	ldr r0, [r4]
 	ldrb r0, [r0, #0x1c]
-	bl sub_08029A90
+	bl GetStatIncrease
 	mov r8, r0
 	cmp r0, #0
 	bne _0802AF60
 	ldr r0, [r4]
 	ldrb r0, [r0, #0x1d]
-	bl sub_08029A90
+	bl GetStatIncrease
 	str r0, [sp]
 	cmp r0, #0
 	bne _0802AF60
 	ldr r0, [r4]
 	ldrb r0, [r0, #0x1e]
-	bl sub_08029A90
+	bl GetStatIncrease
 	str r0, [sp, #4]
 	cmp r0, #0
 	beq _0802AEF2

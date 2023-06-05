@@ -7,14 +7,14 @@ CanUnitUseItem: @ 0x08027158
 	adds r4, r0, #0
 	adds r5, r1, #0
 	adds r0, r5, #0
-	bl sub_08017684
+	bl GetItemAttributes
 	movs r1, #4
 	ands r1, r0
 	cmp r1, #0
 	beq _0802717C
 	adds r0, r4, #0
 	adds r1, r5, #0
-	bl sub_08016850
+	bl CanUnitUseStaff
 	lsls r0, r0, #0x18
 	cmp r0, #0
 	bne _0802717C
@@ -364,7 +364,7 @@ _0802751C:
 	lsls r0, r0, #3
 	b _0802757A
 _08027522:
-	ldr r0, _0802753C @ =0x030045B0
+	ldr r0, _0802753C @ =gActiveUnit
 	ldr r0, [r0]
 	ldr r1, [r0]
 	ldr r2, [r0, #4]
@@ -378,7 +378,7 @@ _08027522:
 	ldr r0, _08027540 @ =0x00000714
 	b _0802757A
 	.align 2, 0
-_0802753C: .4byte 0x030045B0
+_0802753C: .4byte gActiveUnit
 _08027540: .4byte 0x00000714
 _08027544:
 	ldr r0, _08027548 @ =0x00000712
@@ -386,7 +386,7 @@ _08027544:
 	.align 2, 0
 _08027548: .4byte 0x00000712
 _0802754C:
-	ldr r4, _08027570 @ =0x030045B0
+	ldr r4, _08027570 @ =gActiveUnit
 	ldr r1, [r4]
 	movs r5, #8
 	ldrsb r5, [r1, r5]
@@ -403,7 +403,7 @@ _0802754C:
 	ldr r0, _08027574 @ =0x0000070F
 	b _0802757A
 	.align 2, 0
-_08027570: .4byte 0x030045B0
+_08027570: .4byte gActiveUnit
 _08027574: .4byte 0x0000070F
 _08027578:
 	ldr r0, _08027580 @ =0x0000070E
@@ -690,7 +690,7 @@ sub_080277E0: @ 0x080277E0
 	push {lr}
 	movs r3, #0x11
 	ldrsb r3, [r0, r3]
-	ldr r1, _08027810 @ =0x0202E3DC
+	ldr r1, _08027810 @ =gBmMapTerrain
 	ldr r2, [r1]
 	lsls r1, r3, #2
 	adds r1, r1, r2
@@ -710,7 +710,7 @@ sub_080277E0: @ 0x080277E0
 	movs r0, #1
 	b _08027816
 	.align 2, 0
-_08027810: .4byte 0x0202E3DC
+_08027810: .4byte gBmMapTerrain
 _08027814:
 	movs r0, #0
 _08027816:
@@ -1054,28 +1054,28 @@ sub_08027AD8: @ 0x08027AD8
 	bl sub_080017E8
 	movs r0, #4
 	bl EnableBgSync
-	ldr r1, _08027AFC @ =0x0203A858
+	ldr r1, _08027AFC @ =gActionSt
 	movs r0, #3
 	strb r0, [r1, #0x11]
 	pop {r0}
 	bx r0
 	.align 2, 0
 _08027AF8: .4byte 0x02023C60
-_08027AFC: .4byte 0x0203A858
+_08027AFC: .4byte gActionSt
 
 	thumb_func_start sub_08027B00
 sub_08027B00: @ 0x08027B00
-	ldr r1, _08027B08 @ =0x0203A858
+	ldr r1, _08027B08 @ =gActionSt
 	movs r0, #0x17
 	strb r0, [r1, #0x11]
 	bx lr
 	.align 2, 0
-_08027B08: .4byte 0x0203A858
+_08027B08: .4byte gActionSt
 
 	thumb_func_start sub_08027B0C
 sub_08027B0C: @ 0x08027B0C
 	push {lr}
-	ldr r2, _08027B20 @ =0x0203A858
+	ldr r2, _08027B20 @ =gActionSt
 	ldrb r0, [r1, #2]
 	strb r0, [r2, #0xd]
 	movs r0, #0
@@ -1084,13 +1084,13 @@ sub_08027B0C: @ 0x08027B0C
 	pop {r1}
 	bx r1
 	.align 2, 0
-_08027B20: .4byte 0x0203A858
+_08027B20: .4byte gActionSt
 
 	thumb_func_start sub_08027B24
 sub_08027B24: @ 0x08027B24
 	push {r4, lr}
 	bl _call_via_r1
-	ldr r0, _08027B54 @ =0x0202E3E0
+	ldr r0, _08027B54 @ =gBmMapMovement
 	ldr r0, [r0]
 	movs r1, #1
 	rsbs r1, r1, #0
@@ -1108,7 +1108,7 @@ sub_08027B24: @ 0x08027B24
 	pop {r0}
 	bx r0
 	.align 2, 0
-_08027B54: .4byte 0x0202E3E0
+_08027B54: .4byte gBmMapMovement
 _08027B58: .4byte 0x08C04E94
 _08027B5C: .4byte sub_08027B0C
 _08027B60: .4byte 0x000006FA
@@ -1118,7 +1118,7 @@ sub_08027B64: @ 0x08027B64
 	push {r4, r5, lr}
 	adds r5, r2, #0
 	bl _call_via_r1
-	ldr r0, _08027B98 @ =0x0202E3E0
+	ldr r0, _08027B98 @ =gBmMapMovement
 	ldr r0, [r0]
 	movs r1, #1
 	rsbs r1, r1, #0
@@ -1136,7 +1136,7 @@ sub_08027B64: @ 0x08027B64
 	pop {r0}
 	bx r0
 	.align 2, 0
-_08027B98: .4byte 0x0202E3E0
+_08027B98: .4byte gBmMapMovement
 _08027B9C: .4byte 0x08C04E94
 _08027BA0: .4byte sub_08027B0C
 
@@ -1151,7 +1151,7 @@ sub_08027BA4: @ 0x08027BA4
 	adds r1, r0, #0
 	adds r0, r6, #0
 	bl sub_08032A90
-	ldr r5, _08027C48 @ =0x0203A858
+	ldr r5, _08027C48 @ =gActionSt
 	ldrb r0, [r5, #0xd]
 	bl GetUnit
 	movs r4, #0x10
@@ -1164,14 +1164,14 @@ sub_08027BA4: @ 0x08027BA4
 	adds r1, r4, #0
 	bl sub_0801615C
 	bl sub_0801D6D8
-	ldr r0, _08027C4C @ =0x030045B0
+	ldr r0, _08027C4C @ =gActiveUnit
 	ldr r4, [r0]
 	ldrb r0, [r5, #0xd]
 	bl GetUnit
 	adds r1, r0, #0
 	adds r0, r4, #0
 	bl sub_0801DF68
-	ldr r1, _08027C50 @ =0x0202BBB4
+	ldr r1, _08027C50 @ =gBmSt
 	movs r0, #0xfd
 	ldrb r2, [r1, #4]
 	ands r0, r2
@@ -1210,19 +1210,19 @@ sub_08027BA4: @ 0x08027BA4
 	bx r0
 	.align 2, 0
 _08027C44: .4byte 0x000006F3
-_08027C48: .4byte 0x0203A858
-_08027C4C: .4byte 0x030045B0
-_08027C50: .4byte 0x0202BBB4
+_08027C48: .4byte gActionSt
+_08027C4C: .4byte gActiveUnit
+_08027C50: .4byte gBmSt
 _08027C54: .4byte 0x08191D7C
 
 	thumb_func_start sub_08027C58
 sub_08027C58: @ 0x08027C58
 	push {r4, r5, r6, lr}
 	adds r5, r0, #0
-	ldr r4, _08027CD0 @ =0x0202BBB4
+	ldr r4, _08027CD0 @ =gBmSt
 	movs r1, #0x16
 	ldrsh r0, [r4, r1]
-	ldr r1, _08027CD4 @ =0x0202E3E0
+	ldr r1, _08027CD4 @ =gBmMapMovement
 	ldr r1, [r1]
 	lsls r0, r0, #2
 	adds r0, r0, r1
@@ -1248,12 +1248,12 @@ sub_08027C58: @ 0x08027C58
 	beq _08027CF0
 	adds r0, r5, #0
 	bl Proc_Break
-	ldr r1, _08027CDC @ =0x0203A858
+	ldr r1, _08027CDC @ =gActionSt
 	ldrh r0, [r4, #0x14]
 	strb r0, [r1, #0x13]
 	ldrh r0, [r4, #0x16]
 	strb r0, [r1, #0x14]
-	ldr r0, _08027CE0 @ =0x030045B0
+	ldr r0, _08027CE0 @ =gActiveUnit
 	ldr r0, [r0]
 	bl sub_08027AD8
 	ldr r0, _08027CE4 @ =0x02023C60
@@ -1271,11 +1271,11 @@ sub_08027C58: @ 0x08027C58
 	bl m4aSongNumStart
 	b _08027D7C
 	.align 2, 0
-_08027CD0: .4byte 0x0202BBB4
-_08027CD4: .4byte 0x0202E3E0
+_08027CD0: .4byte gBmSt
+_08027CD4: .4byte gBmMapMovement
 _08027CD8: .4byte gpKeySt
-_08027CDC: .4byte 0x0203A858
-_08027CE0: .4byte 0x030045B0
+_08027CDC: .4byte gActionSt
+_08027CE0: .4byte gActiveUnit
 _08027CE4: .4byte 0x02023C60
 _08027CE8: .4byte gPlaySt
 _08027CEC: .4byte 0x0000038A
@@ -1333,7 +1333,7 @@ _08027D58:
 	bl sub_080128F0
 _08027D5C:
 	ldr r0, [r5, #0x54]
-	ldr r3, _08027D94 @ =0x0202BBB4
+	ldr r3, _08027D94 @ =gBmSt
 	movs r5, #0x20
 	ldrsh r1, [r3, r5]
 	movs r5, #0xc
@@ -1356,7 +1356,7 @@ _08027D84: .4byte gPlaySt
 _08027D88: .4byte gpKeySt
 _08027D8C: .4byte 0x02023C60
 _08027D90: .4byte 0x0000038B
-_08027D94: .4byte 0x0202BBB4
+_08027D94: .4byte gBmSt
 
 	thumb_func_start sub_08027D98
 sub_08027D98: @ 0x08027D98
@@ -1365,7 +1365,7 @@ sub_08027D98: @ 0x08027D98
 	bl sub_08005308
 	bl sub_0801D6D8
 	bl sub_08032CCC
-	ldr r4, _08027DD0 @ =0x030045B0
+	ldr r4, _08027DD0 @ =gActiveUnit
 	ldr r1, [r4]
 	movs r0, #0x10
 	ldrsb r0, [r1, r0]
@@ -1384,7 +1384,7 @@ sub_08027D98: @ 0x08027D98
 	pop {r0}
 	bx r0
 	.align 2, 0
-_08027DD0: .4byte 0x030045B0
+_08027DD0: .4byte gActiveUnit
 
 	thumb_func_start sub_08027DD4
 sub_08027DD4: @ 0x08027DD4
@@ -1392,7 +1392,7 @@ sub_08027DD4: @ 0x08027DD4
 	bl sub_08005308
 	bl sub_0801D6D8
 	bl sub_08032CCC
-	ldr r0, _08027E00 @ =0x030045B0
+	ldr r0, _08027E00 @ =gActiveUnit
 	ldr r1, [r0]
 	movs r0, #0x10
 	ldrsb r0, [r1, r0]
@@ -1406,7 +1406,7 @@ sub_08027DD4: @ 0x08027DD4
 	pop {r0}
 	bx r0
 	.align 2, 0
-_08027E00: .4byte 0x030045B0
+_08027E00: .4byte gActiveUnit
 _08027E04: .4byte 0x08C03098
 
 	thumb_func_start sub_08027E08
@@ -1425,7 +1425,7 @@ sub_08027E1C: @ 0x08027E1C
 	push {r4, lr}
 	adds r4, r1, #0
 	bl sub_0804B6DC
-	ldr r1, _08027E3C @ =0x0203A858
+	ldr r1, _08027E3C @ =gActionSt
 	ldrb r0, [r4, #2]
 	strb r0, [r1, #0xd]
 	ldr r0, _08027E40 @ =0x08C03450
@@ -1436,14 +1436,14 @@ sub_08027E1C: @ 0x08027E1C
 	pop {r1}
 	bx r1
 	.align 2, 0
-_08027E3C: .4byte 0x0203A858
+_08027E3C: .4byte gActionSt
 _08027E40: .4byte 0x08C03450
 
 	thumb_func_start sub_08027E44
 sub_08027E44: @ 0x08027E44
 	push {r4, lr}
 	bl sub_08024D94
-	ldr r0, _08027E88 @ =0x0202E3E0
+	ldr r0, _08027E88 @ =gBmMapMovement
 	ldr r0, [r0]
 	movs r1, #1
 	rsbs r1, r1, #0
@@ -1470,7 +1470,7 @@ _08027E80:
 	pop {r0}
 	bx r0
 	.align 2, 0
-_08027E88: .4byte 0x0202E3E0
+_08027E88: .4byte gBmMapMovement
 _08027E8C: .4byte 0x08C04E94
 _08027E90: .4byte sub_08027E1C
 _08027E94: .4byte 0x000006F9
@@ -1480,7 +1480,7 @@ _08027E9C: .4byte 0x0000038A
 	thumb_func_start sub_08027EA0
 sub_08027EA0: @ 0x08027EA0
 	push {lr}
-	ldr r2, _08027EB8 @ =0x0203A858
+	ldr r2, _08027EB8 @ =gActionSt
 	ldrb r0, [r1]
 	strb r0, [r2, #0x13]
 	ldrb r0, [r1, #1]
@@ -1491,14 +1491,14 @@ sub_08027EA0: @ 0x08027EA0
 	pop {r1}
 	bx r1
 	.align 2, 0
-_08027EB8: .4byte 0x0203A858
+_08027EB8: .4byte gActionSt
 
 	thumb_func_start sub_08027EBC
 sub_08027EBC: @ 0x08027EBC
 	push {r4, r5, lr}
 	adds r5, r2, #0
 	bl _call_via_r1
-	ldr r0, _08027F00 @ =0x0202E3E0
+	ldr r0, _08027F00 @ =gBmMapMovement
 	ldr r0, [r0]
 	movs r1, #1
 	rsbs r1, r1, #0
@@ -1525,7 +1525,7 @@ _08027EFA:
 	pop {r0}
 	bx r0
 	.align 2, 0
-_08027F00: .4byte 0x0202E3E0
+_08027F00: .4byte gBmMapMovement
 _08027F04: .4byte 0x08C04E74
 _08027F08: .4byte sub_08027EA0
 _08027F0C: .4byte gPlaySt
@@ -1537,7 +1537,7 @@ sub_08027F14: @ 0x08027F14
 	sub sp, #4
 	adds r4, r1, #0
 	bl sub_08005308
-	ldr r5, _08027F6C @ =0x0203A858
+	ldr r5, _08027F6C @ =gActionSt
 	ldrb r0, [r4, #2]
 	strb r0, [r5, #0xd]
 	ldr r0, _08027F70 @ =0x08C04BB8
@@ -1569,14 +1569,14 @@ sub_08027F14: @ 0x08027F14
 	pop {r1}
 	bx r1
 	.align 2, 0
-_08027F6C: .4byte 0x0203A858
+_08027F6C: .4byte gActionSt
 _08027F70: .4byte 0x08C04BB8
 
 	thumb_func_start sub_08027F74
 sub_08027F74: @ 0x08027F74
 	push {r4, lr}
 	bl sub_08024E54
-	ldr r0, _08027FB4 @ =0x0202E3E0
+	ldr r0, _08027FB4 @ =gBmMapMovement
 	ldr r0, [r0]
 	movs r1, #1
 	rsbs r1, r1, #0
@@ -1602,7 +1602,7 @@ _08027FAE:
 	pop {r0}
 	bx r0
 	.align 2, 0
-_08027FB4: .4byte 0x0202E3E0
+_08027FB4: .4byte gBmMapMovement
 _08027FB8: .4byte 0x08C04F14
 _08027FBC: .4byte 0x000006FC
 _08027FC0: .4byte gPlaySt
@@ -1653,7 +1653,7 @@ nullsub_17: @ 0x08028008
 sub_0802800C: @ 0x0802800C
 	push {r4, lr}
 	adds r4, r1, #0
-	ldr r0, _08028028 @ =0x0203A858
+	ldr r0, _08028028 @ =gActionSt
 	ldrb r0, [r0, #0xd]
 	bl GetUnit
 	lsls r4, r4, #1
@@ -1665,7 +1665,7 @@ sub_0802800C: @ 0x0802800C
 	movs r0, #3
 	b _0802803C
 	.align 2, 0
-_08028028: .4byte 0x0203A858
+_08028028: .4byte gActionSt
 _0802802C:
 	bl sub_080171B4
 	lsls r0, r0, #0x18
@@ -1685,7 +1685,7 @@ _0802803C:
 sub_08028044: @ 0x08028044
 	push {r4, r5, r6, lr}
 	adds r5, r1, #0
-	ldr r0, _08028098 @ =0x0203A858
+	ldr r0, _08028098 @ =gActionSt
 	ldrb r0, [r0, #0xd]
 	bl GetUnit
 	adds r1, r5, #0
@@ -1722,7 +1722,7 @@ sub_08028044: @ 0x08028044
 	pop {r1}
 	bx r1
 	.align 2, 0
-_08028098: .4byte 0x0203A858
+_08028098: .4byte gActionSt
 _0802809C: .4byte 0x02022C60
 
 	thumb_func_start sub_080280A0
@@ -1736,7 +1736,7 @@ sub_080280A0: @ 0x080280A0
 	cmp r0, #2
 	bne _08028128
 	movs r6, #0
-	ldr r0, _080280E0 @ =0x0203A858
+	ldr r0, _080280E0 @ =gActionSt
 	ldrb r0, [r0, #0xd]
 	bl GetUnit
 	adds r1, r4, #0
@@ -1749,7 +1749,7 @@ sub_080280A0: @ 0x080280A0
 	adds r0, r0, r1
 	ldrh r5, [r0]
 	adds r0, r5, #0
-	bl sub_08017684
+	bl GetItemAttributes
 	movs r1, #0xc1
 	lsls r1, r1, #3
 	ands r1, r0
@@ -1758,11 +1758,11 @@ sub_080280A0: @ 0x080280A0
 	ldr r6, _080280E4 @ =0x00000716
 	b _08028118
 	.align 2, 0
-_080280E0: .4byte 0x0203A858
+_080280E0: .4byte gActionSt
 _080280E4: .4byte 0x00000716
 _080280E8:
 	adds r0, r5, #0
-	bl sub_08017684
+	bl GetItemAttributes
 	movs r1, #5
 	ands r1, r0
 	cmp r1, #0
@@ -1793,12 +1793,12 @@ _08028120:
 	.align 2, 0
 _08028124: .4byte 0x0000070A
 _08028128:
-	ldr r1, _08028144 @ =0x0203A858
+	ldr r1, _08028144 @ =gActionSt
 	adds r0, r4, #0
 	adds r0, #0x3c
 	ldrb r0, [r0]
 	strb r0, [r1, #0x15]
-	ldr r0, _08028148 @ =0x030045B0
+	ldr r0, _08028148 @ =gActiveUnit
 	ldr r0, [r0]
 	bl sub_08027AD8
 	movs r0, #0x37
@@ -1807,14 +1807,14 @@ _0802813C:
 	pop {r1}
 	bx r1
 	.align 2, 0
-_08028144: .4byte 0x0203A858
-_08028148: .4byte 0x030045B0
+_08028144: .4byte gActionSt
+_08028148: .4byte gActiveUnit
 
 	thumb_func_start sub_0802814C
 sub_0802814C: @ 0x0802814C
 	push {r4, lr}
 	bl _call_via_r1
-	ldr r0, _0802817C @ =0x0202E3E0
+	ldr r0, _0802817C @ =gBmMapMovement
 	ldr r0, [r0]
 	movs r1, #1
 	rsbs r1, r1, #0
@@ -1832,14 +1832,14 @@ sub_0802814C: @ 0x0802814C
 	pop {r0}
 	bx r0
 	.align 2, 0
-_0802817C: .4byte 0x0202E3E0
+_0802817C: .4byte gBmMapMovement
 _08028180: .4byte 0x08C04E34
 
 	thumb_func_start sub_08028184
 sub_08028184: @ 0x08028184
 	push {r4, lr}
 	bl _call_via_r1
-	ldr r0, _080281B4 @ =0x0202E3E0
+	ldr r0, _080281B4 @ =gBmMapMovement
 	ldr r0, [r0]
 	movs r1, #1
 	rsbs r1, r1, #0
@@ -1856,7 +1856,7 @@ sub_08028184: @ 0x08028184
 	pop {r0}
 	bx r0
 	.align 2, 0
-_080281B4: .4byte 0x0202E3E0
+_080281B4: .4byte gBmMapMovement
 _080281B8: .4byte 0x08C04E14
 _080281BC: .4byte 0x000006FB
 
@@ -1890,7 +1890,7 @@ sub_080281CC: @ 0x080281CC
 sub_080281F0: @ 0x080281F0
 	push {r4, lr}
 	bl sub_08024B6C
-	ldr r0, _08028220 @ =0x0202E3E0
+	ldr r0, _08028220 @ =gBmMapMovement
 	ldr r0, [r0]
 	movs r1, #1
 	rsbs r1, r1, #0
@@ -1907,7 +1907,7 @@ sub_080281F0: @ 0x080281F0
 	pop {r0}
 	bx r0
 	.align 2, 0
-_08028220: .4byte 0x0202E3E0
+_08028220: .4byte gBmMapMovement
 _08028224: .4byte 0x08C04DF4
 _08028228: .4byte 0x000006FD
 
@@ -1941,7 +1941,7 @@ sub_08028238: @ 0x08028238
 sub_0802825C: @ 0x0802825C
 	push {r4, lr}
 	bl _call_via_r1
-	ldr r0, _0802828C @ =0x0202E3E0
+	ldr r0, _0802828C @ =gBmMapMovement
 	ldr r0, [r0]
 	movs r1, #1
 	rsbs r1, r1, #0
@@ -1958,7 +1958,7 @@ sub_0802825C: @ 0x0802825C
 	pop {r0}
 	bx r0
 	.align 2, 0
-_0802828C: .4byte 0x0202E3E0
+_0802828C: .4byte gBmMapMovement
 _08028290: .4byte 0x08C04DD4
 _08028294: .4byte 0x000006FF
 
@@ -1983,7 +1983,7 @@ sub_080282A4: @ 0x080282A4
 	ldrsb r0, [r4, r0]
 	bl GetUnit
 	adds r6, r0, #0
-	ldr r0, _080282E0 @ =0x030045B0
+	ldr r0, _080282E0 @ =gActiveUnit
 	ldr r5, [r0]
 	movs r0, #2
 	ldrsb r0, [r4, r0]
@@ -1998,7 +1998,7 @@ sub_080282A4: @ 0x080282A4
 	pop {r1}
 	bx r1
 	.align 2, 0
-_080282E0: .4byte 0x030045B0
+_080282E0: .4byte gActiveUnit
 
 	thumb_func_start sub_080282E4
 sub_080282E4: @ 0x080282E4
@@ -2063,7 +2063,7 @@ _08028350: .4byte 0x000006FA
 sub_08028354: @ 0x08028354
 	push {r4, r5, lr}
 	adds r5, r0, #0
-	ldr r1, _080283A0 @ =0x0202BBB4
+	ldr r1, _080283A0 @ =gBmSt
 	movs r0, #1
 	ldrb r2, [r1, #4]
 	orrs r0, r2
@@ -2073,7 +2073,7 @@ sub_08028354: @ 0x08028354
 	adds r1, r0, #0
 	adds r0, r5, #0
 	bl sub_08032A90
-	ldr r4, _080283A8 @ =0x030045B0
+	ldr r4, _080283A8 @ =gActiveUnit
 	ldr r1, [r4]
 	movs r0, #0x10
 	ldrsb r0, [r1, r0]
@@ -2096,15 +2096,15 @@ _08028398:
 	pop {r0}
 	bx r0
 	.align 2, 0
-_080283A0: .4byte 0x0202BBB4
+_080283A0: .4byte gBmSt
 _080283A4: .4byte 0x0000072E
-_080283A8: .4byte 0x030045B0
+_080283A8: .4byte gActiveUnit
 
 	thumb_func_start sub_080283AC
 sub_080283AC: @ 0x080283AC
 	push {r4, r5, r6, lr}
 	adds r6, r0, #0
-	ldr r5, _0802840C @ =0x0202BBB4
+	ldr r5, _0802840C @ =gBmSt
 	movs r0, #0x14
 	ldrsh r2, [r5, r0]
 	movs r1, #0x16
@@ -2137,23 +2137,23 @@ sub_080283AC: @ 0x080283AC
 _080283F0:
 	adds r0, r6, #0
 	bl Proc_Break
-	ldr r1, _08028420 @ =0x0203A858
+	ldr r1, _08028420 @ =gActionSt
 	ldrh r0, [r5, #0x14]
 	strb r0, [r1, #0x13]
 	ldrh r0, [r5, #0x16]
 	strb r0, [r1, #0x14]
-	ldr r0, _08028424 @ =0x030045B0
+	ldr r0, _08028424 @ =gActiveUnit
 	ldr r0, [r0]
 	bl sub_08027AD8
 	b _08028482
 	.align 2, 0
-_0802840C: .4byte 0x0202BBB4
+_0802840C: .4byte gBmSt
 _08028410: .4byte 0x0202E3E4
 _08028414: .4byte gpKeySt
 _08028418: .4byte gPlaySt
 _0802841C: .4byte 0x0000038A
-_08028420: .4byte 0x0203A858
-_08028424: .4byte 0x030045B0
+_08028420: .4byte gActionSt
+_08028424: .4byte gActiveUnit
 _08028428:
 	ldr r0, _08028488 @ =gPlaySt
 	adds r0, #0x41
@@ -2189,7 +2189,7 @@ _0802843C:
 	ldr r0, _08028494 @ =0x0000038B
 	bl m4aSongNumStart
 _08028472:
-	ldr r1, _08028498 @ =0x0202BBB4
+	ldr r1, _08028498 @ =gBmSt
 	movs r2, #0x20
 	ldrsh r0, [r1, r2]
 	movs r2, #0x22
@@ -2205,7 +2205,7 @@ _08028488: .4byte gPlaySt
 _0802848C: .4byte gpKeySt
 _08028490: .4byte 0x02023C60
 _08028494: .4byte 0x0000038B
-_08028498: .4byte 0x0202BBB4
+_08028498: .4byte gBmSt
 
 	thumb_func_start sub_0802849C
 sub_0802849C: @ 0x0802849C
@@ -2235,7 +2235,7 @@ sub_080284C8: @ 0x080284C8
 	adds r5, r0, #0
 	adds r4, r1, #0
 	adds r0, r4, #0
-	bl sub_08017684
+	bl GetItemAttributes
 	movs r1, #4
 	ands r1, r0
 	cmp r1, #0
