@@ -1299,7 +1299,7 @@ _08027D04:
 	beq _08027D3A
 	adds r0, r5, #0
 	movs r1, #0x63
-	bl sub_080045FC
+	bl Proc_Goto
 	ldr r0, _08027D8C @ =0x02023C60
 	movs r1, #0
 	bl sub_080017E8
@@ -2179,7 +2179,7 @@ _0802843C:
 	bl EnableBgSync
 	adds r0, r6, #0
 	movs r1, #0x63
-	bl sub_080045FC
+	bl Proc_Goto
 	ldr r0, _08028488 @ =gPlaySt
 	adds r0, #0x41
 	ldrb r0, [r0]

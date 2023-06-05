@@ -125,7 +125,7 @@ sub_08012C80: @ 0x08012C80
 	bne _08012C9A
 	adds r0, r2, #0
 	movs r1, #0xf
-	bl sub_080045FC
+	bl Proc_Goto
 _08012C9A:
 	pop {r0}
 	bx r0
@@ -196,7 +196,7 @@ _08012D00:
 	bl ReadSuspendSave
 	adds r0, r4, #0
 	movs r1, #6
-	bl sub_080045FC
+	bl Proc_Goto
 	b _08012D44
 _08012D28:
 	movs r0, #0x5a
@@ -209,7 +209,7 @@ _08012D28:
 	bl StartBgmVolumeChange
 	adds r0, r4, #0
 	movs r1, #4
-	bl sub_080045FC
+	bl Proc_Goto
 _08012D44:
 	pop {r4}
 	pop {r0}
@@ -302,12 +302,12 @@ _08012DDE:
 _08012DE8:
 	adds r0, r4, #0
 	movs r1, #3
-	bl sub_080045FC
+	bl Proc_Goto
 	b _08012E38
 _08012DF2:
 	adds r0, r4, #0
 	movs r1, #4
-	bl sub_080045FC
+	bl Proc_Goto
 	adds r0, r4, #0
 	bl sub_08012DB4
 	b _08012E38
@@ -325,12 +325,12 @@ _08012E02:
 _08012E16:
 	adds r0, r4, #0
 	movs r1, #1
-	bl sub_080045FC
+	bl Proc_Goto
 	b _08012E28
 _08012E20:
 	adds r0, r4, #0
 	movs r1, #0
-	bl sub_080045FC
+	bl Proc_Goto
 _08012E28:
 	ldrb r0, [r5]
 	adds r0, #1
@@ -339,7 +339,7 @@ _08012E28:
 _08012E30:
 	adds r0, r4, #0
 	movs r1, #0x15
-	bl sub_080045FC
+	bl Proc_Goto
 _08012E38:
 	pop {r4, r5}
 	pop {r0}
@@ -359,11 +359,11 @@ sub_08012E40: @ 0x08012E40
 	b _08012E60
 _08012E52:
 	movs r1, #3
-	bl sub_080045FC
+	bl Proc_Goto
 	b _08012E60
 _08012E5A:
 	movs r1, #0
-	bl sub_080045FC
+	bl Proc_Goto
 _08012E60:
 	pop {r0}
 	bx r0
@@ -399,7 +399,7 @@ _08012EA4:
 	bne _08012EB6
 	adds r0, r4, #0
 	movs r1, #0x14
-	bl sub_080045FC
+	bl Proc_Goto
 	b _08012F24
 _08012EB6:
 	bl sub_0802EBB0
@@ -415,7 +415,7 @@ _08012EB6:
 	beq _08012EDC
 	adds r0, r4, #0
 	movs r1, #0x12
-	bl sub_080045FC
+	bl Proc_Goto
 	b _08012F24
 	.align 2, 0
 _08012ED8: .4byte gPlaySt
@@ -426,34 +426,34 @@ _08012EDC:
 _08012EE6:
 	adds r0, r4, #0
 	movs r1, #5
-	bl sub_080045FC
+	bl Proc_Goto
 	b _08012F24
 	.align 2, 0
 _08012EF0: .4byte 0x00000569
 _08012EF4:
 	adds r0, r4, #0
 	movs r1, #6
-	bl sub_080045FC
+	bl Proc_Goto
 	b _08012F24
 _08012EFE:
 	adds r0, r4, #0
 	movs r1, #0x16
-	bl sub_080045FC
+	bl Proc_Goto
 	b _08012F24
 _08012F08:
 	adds r0, r4, #0
 	movs r1, #0xa
-	bl sub_080045FC
+	bl Proc_Goto
 	b _08012F24
 _08012F12:
 	adds r0, r4, #0
 	movs r1, #0xb
-	bl sub_080045FC
+	bl Proc_Goto
 	b _08012F24
 _08012F1C:
 	adds r0, r4, #0
 	movs r1, #0xc
-	bl sub_080045FC
+	bl Proc_Goto
 _08012F24:
 	pop {r4}
 	pop {r0}
@@ -469,7 +469,7 @@ sub_08012F2C: @ 0x08012F2C
 	cmp r1, #5
 	bne _08012F3E
 	movs r1, #3
-	bl sub_080045FC
+	bl Proc_Goto
 _08012F3E:
 	pop {r0}
 	bx r0
@@ -479,7 +479,7 @@ _08012F3E:
 sub_08012F44: @ 0x08012F44
 	push {lr}
 	movs r1, #3
-	bl sub_080045FC
+	bl Proc_Goto
 	pop {r0}
 	bx r0
 
@@ -494,7 +494,7 @@ sub_08012F50: @ 0x08012F50
 	cmp r1, #1
 	bne _08012F66
 	movs r1, #0x10
-	bl sub_080045FC
+	bl Proc_Goto
 _08012F66:
 	pop {r0}
 	bx r0
@@ -510,7 +510,7 @@ sub_08012F6C: @ 0x08012F6C
 	bne _08012F82
 	adds r0, r5, #0
 	movs r1, #4
-	bl sub_080045FC
+	bl Proc_Goto
 	b _08012FA6
 _08012F82:
 	movs r0, #0
@@ -592,22 +592,22 @@ _0801300C: @ jump table
 _08013024:
 	adds r0, r4, #0
 	movs r1, #3
-	bl sub_080045FC
+	bl Proc_Goto
 	b _0801304A
 _0801302E:
 	adds r0, r4, #0
 	movs r1, #0xd
-	bl sub_080045FC
+	bl Proc_Goto
 	b _0801304A
 _08013038:
 	adds r0, r4, #0
 	movs r1, #0x13
-	bl sub_080045FC
+	bl Proc_Goto
 	b _0801304A
 _08013042:
 	adds r0, r4, #0
 	movs r1, #0xd
-	bl sub_080045FC
+	bl Proc_Goto
 _0801304A:
 	pop {r4}
 	pop {r0}
@@ -625,7 +625,7 @@ sub_08013050: @ 0x08013050
 	beq _08013068
 	adds r0, r2, #0
 	movs r1, #0xe
-	bl sub_080045FC
+	bl Proc_Goto
 _08013068:
 	pop {r0}
 	bx r0
@@ -644,14 +644,14 @@ sub_08013070: @ 0x08013070
 	beq _08013090
 	adds r0, r2, #0
 	movs r1, #8
-	bl sub_080045FC
+	bl Proc_Goto
 	b _08013098
 	.align 2, 0
 _0801308C: .4byte gPlaySt
 _08013090:
 	adds r0, r2, #0
 	movs r1, #7
-	bl sub_080045FC
+	bl Proc_Goto
 _08013098:
 	pop {r0}
 	bx r0
@@ -894,7 +894,7 @@ sub_08013240: @ 0x08013240
 	movs r1, #3
 	bl Proc_Start
 	movs r1, #5
-	bl sub_080045FC
+	bl Proc_Goto
 	pop {r4}
 	pop {r0}
 	bx r0
@@ -911,7 +911,7 @@ sub_08013264: @ 0x08013264
 	movs r1, #3
 	bl Proc_Start
 	movs r1, #6
-	bl sub_080045FC
+	bl Proc_Goto
 	pop {r4}
 	pop {r0}
 	bx r0
@@ -928,7 +928,7 @@ sub_08013288: @ 0x08013288
 	movs r1, #3
 	bl Proc_Start
 	movs r1, #0xf
-	bl sub_080045FC
+	bl Proc_Goto
 	pop {r4}
 	pop {r0}
 	bx r0

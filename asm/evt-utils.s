@@ -2503,7 +2503,7 @@ sub_080119EC: @ 0x080119EC
 	ldr r0, _08011A0C @ =0x08C012BC
 	bl Proc_Find
 	movs r1, #0
-	bl sub_080045FC
+	bl Proc_Goto
 	movs r0, #2
 	b _08011A1C
 	.align 2, 0

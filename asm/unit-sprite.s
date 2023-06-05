@@ -1419,7 +1419,7 @@ _08025BD0:
 	cmp r0, #0
 	beq _08025C7A
 	lsls r0, r2, #4
-	bl sub_08025D64
+	bl AddUnitSprite
 	adds r5, r0, #0
 	movs r0, #0x11
 	ldrsb r0, [r6, r0]
@@ -1531,7 +1531,7 @@ _08025CE4:
 _08025CF0:
 	ldrb r1, [r4, #1]
 	lsls r0, r1, #4
-	bl sub_08025D64
+	bl AddUnitSprite
 	adds r5, r0, #0
 	ldrb r2, [r4, #1]
 	lsls r0, r2, #4
@@ -1549,7 +1549,7 @@ _08025D0E:
 	bne _08025D3C
 	ldrb r1, [r4, #1]
 	lsls r0, r1, #4
-	bl sub_08025D64
+	bl AddUnitSprite
 	adds r5, r0, #0
 	ldrb r2, [r4, #1]
 	lsls r0, r2, #4
@@ -1587,8 +1587,8 @@ _08025D50:
 _08025D5C: .4byte 0xFFFFB080
 _08025D60: .4byte 0x0203A3CC
 
-	thumb_func_start sub_08025D64
-sub_08025D64: @ 0x08025D64
+	thumb_func_start AddUnitSprite
+AddUnitSprite: @ 0x08025D64
 	push {r4, r5, lr}
 	adds r4, r0, #0
 	ldr r2, _08025D80 @ =0x02039F18
@@ -1618,8 +1618,8 @@ _08025D88:
 	bx r1
 	.align 2, 0
 
-	thumb_func_start sub_08025D9C
-sub_08025D9C: @ 0x08025D9C
+	thumb_func_start PutUnitSpritesOam
+PutUnitSpritesOam: @ 0x08025D9C
 	push {r4, r5, r6, lr}
 	ldr r0, _08025E10 @ =0x02039F18
 	ldr r6, [r0]
@@ -1987,7 +1987,7 @@ _0802607E:
 	b _080263E2
 _0802608A:
 	adds r0, r4, #0
-	bl sub_08026A34
+	bl GetUnitSpriteHideFlag
 	lsls r0, r0, #0x18
 	cmp r0, #0
 	beq _08026098
@@ -2489,7 +2489,7 @@ sub_08026434: @ 0x08026434
 	adds r0, r4, #0
 	bl sub_0806C2DC
 	adds r0, r4, #0
-	bl sub_08026A00
+	bl HideUnitSprite
 	b _080264DE
 	.align 2, 0
 _08026498: .4byte gBmSt
@@ -2521,7 +2521,7 @@ _080264A4:
 	beq _080264DE
 	bl sub_0806D4A4
 	adds r0, r4, #0
-	bl sub_08026A24
+	bl ShowUnitSprite
 _080264DE:
 	pop {r4}
 	pop {r0}
@@ -3184,8 +3184,8 @@ sub_080269F4: @ 0x080269F4
 	.align 2, 0
 _080269FC: .4byte 0x02039F18
 
-	thumb_func_start sub_08026A00
-sub_08026A00: @ 0x08026A00
+	thumb_func_start HideUnitSprite
+HideUnitSprite: @ 0x08026A00
 	push {r4, lr}
 	adds r4, r0, #0
 	cmp r4, #0
@@ -3206,8 +3206,8 @@ _08026A1E:
 	pop {r0}
 	bx r0
 
-	thumb_func_start sub_08026A24
-sub_08026A24: @ 0x08026A24
+	thumb_func_start ShowUnitSprite
+ShowUnitSprite: @ 0x08026A24
 	ldr r1, [r0, #0x3c]
 	cmp r1, #0
 	beq _08026A32
@@ -3218,8 +3218,8 @@ sub_08026A24: @ 0x08026A24
 _08026A32:
 	bx lr
 
-	thumb_func_start sub_08026A34
-sub_08026A34: @ 0x08026A34
+	thumb_func_start GetUnitSpriteHideFlag
+GetUnitSpriteHideFlag: @ 0x08026A34
 	ldr r1, [r0, #0x3c]
 	cmp r1, #0
 	beq _08026A48

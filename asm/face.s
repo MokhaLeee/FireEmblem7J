@@ -1742,7 +1742,7 @@ sub_080076F8: @ 0x080076F8
 	strh r1, [r5, #0x34]
 	adds r0, r5, #0
 	movs r1, #0x61
-	bl sub_080045FC
+	bl Proc_Goto
 _08007730:
 	pop {r4, r5}
 	pop {r0}
@@ -1763,7 +1763,7 @@ sub_0800773C: @ 0x0800773C
 	beq _08007758
 	adds r1, r5, #0
 	adds r0, r4, #0
-	bl sub_080045FC
+	bl Proc_Goto
 	b _0800776E
 _08007758:
 	cmp r0, #0
@@ -1774,7 +1774,7 @@ _08007758:
 	strh r5, [r4, #0x34]
 	adds r0, r4, #0
 	movs r1, #1
-	bl sub_080045FC
+	bl Proc_Goto
 _0800776E:
 	pop {r4, r5}
 	pop {r0}
@@ -1817,7 +1817,7 @@ _080077C0:
 _080077C4:
 	adds r0, r4, #0
 	movs r1, #0
-	bl sub_080045FC
+	bl Proc_Goto
 _080077CC:
 	adds r0, r4, #0
 	adds r1, r5, #0
@@ -1857,7 +1857,7 @@ _080077FC:
 	bne _08007814
 	adds r0, r4, #0
 	movs r1, #1
-	bl sub_080045FC
+	bl Proc_Goto
 _08007814:
 	pop {r4}
 	pop {r0}
@@ -1892,7 +1892,7 @@ _08007838:
 	bne _08007850
 	adds r0, r4, #0
 	movs r1, #1
-	bl sub_080045FC
+	bl Proc_Goto
 _08007850:
 	pop {r4}
 	pop {r0}
@@ -1943,7 +1943,7 @@ _080078AC:
 _080078B0:
 	adds r0, r4, #0
 	movs r1, #0
-	bl sub_080045FC
+	bl Proc_Goto
 	movs r0, #0
 	strh r0, [r4, #0x32]
 _080078BC:
@@ -2403,7 +2403,7 @@ sub_08007C10: @ 0x08007C10
 	ldr r0, [r4, #0x2c]
 	ldr r0, [r0, #0x48]
 	movs r1, #0
-	bl sub_080045FC
+	bl Proc_Goto
 	ldr r0, [r4, #0x2c]
 	ldr r0, [r0, #0x48]
 	bl sub_08091628

@@ -1701,7 +1701,7 @@ sub_0801C2D8: @ 0x0801C2D8
 	ldr r0, _0801C2F0 @ =0x08C01744
 	bl Proc_Find
 	movs r1, #0xf
-	bl sub_080045FC
+	bl Proc_Goto
 	pop {r1}
 	bx r1
 	.align 2, 0

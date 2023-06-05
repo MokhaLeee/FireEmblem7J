@@ -195,7 +195,7 @@ sub_08007E08: @ 0x08007E08
 	strb r5, [r0]
 	ldr r0, [r4]
 	strb r5, [r0, #0xb]
-	bl sub_0802E380
+	bl GetTextPrintDelay
 	ldr r1, [r4]
 	strb r0, [r1, #0x13]
 	ldr r0, [r4]
@@ -652,7 +652,7 @@ _080081AC: .4byte 0x08BFFB68
 _080081B0: .4byte 0x030000C8
 _080081B4: .4byte 0x0000039A
 _080081B8:
-	bl sub_0802E380
+	bl GetTextPrintDelay
 	adds r4, r0, #0
 	cmp r4, #1
 	bne _080081CC
