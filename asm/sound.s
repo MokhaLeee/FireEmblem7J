@@ -1537,7 +1537,7 @@ sub_08003F94: @ 0x08003F94
 _08003FC2:
 	ldr r0, [r7]
 	movs r1, #0
-	bl sub_080045FC
+	bl Proc_Goto
 _08003FCA:
 	add sp, #4
 	pop {r7}

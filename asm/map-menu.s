@@ -60,7 +60,7 @@ sub_08021A0C: @ 0x08021A0C
 	ldr r0, _08021A24 @ =0x08C02630
 	bl Proc_Find
 	movs r1, #0xa
-	bl sub_080045FC
+	bl Proc_Goto
 	bl sub_0808B450
 	movs r0, #0x17
 	pop {r1}
@@ -102,7 +102,7 @@ sub_08021A4C: @ 0x08021A4C
 	ldr r0, _08021A74 @ =0x08C02630
 	bl Proc_Find
 	movs r1, #0xc
-	bl sub_080045FC
+	bl Proc_Goto
 	movs r0, #0x17
 	pop {r1}
 	bx r1

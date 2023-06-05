@@ -14,6 +14,10 @@ SECTIONS
 		. = 0x02BBF4; gPlaySt = .;
 		. = 0x02BD44; gActiveUnitId = .;
 		. = 0x02BD48; gActiveUnitMoveOrigin = .;
+		. = 0x02BD4C; gUnitArrayBlue = .;
+		. = 0x02CEBC; gUnitArrayRed = .;
+		. = 0x02DCCC; gUnitArrayGreen = .;
+		. = 0x02E26C; gUnitArrayPurple = .;
 		. = 0x02E3D4; gBmMapSize = .;
 		. = 0x02E3D8; gBmMapUnit = .;
 		. = 0x02E3DC; gBmMapTerrain = .;
@@ -80,7 +84,14 @@ SECTIONS
 		asm/support.o(.text);
 		asm/item-use.o(.text);
 		asm/battle.o(.text);
+		asm/trade-menu.o(.text);
+		asm/trap.o(.text);
+		asm/item-action.o(.text);
+		asm/bmio.o(.text);
 
+		asm/code1.o(.text);
+		asm/code-ai.o(.text);
+		asm/code-sio.o(.text);
 		asm/code.o(.text);
 
 		asm/m4a_1.o(.text);

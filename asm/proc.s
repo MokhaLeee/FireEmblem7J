@@ -443,8 +443,8 @@ _080045F0:
 _080045FA:
 	bx lr
 
-	thumb_func_start sub_080045FC
-sub_080045FC: @ 0x080045FC
+	thumb_func_start Proc_Goto
+Proc_Goto: @ 0x080045FC
 	push {r4, r5, r6, lr}
 	adds r4, r1, #0
 	adds r1, r0, #0
@@ -963,7 +963,7 @@ sub_0800494C: @ 0x0800494C
 	ldr r1, [r0, #4]
 	movs r2, #2
 	ldrsh r1, [r1, r2]
-	bl sub_080045FC
+	bl Proc_Goto
 	movs r0, #1
 	pop {r1}
 	bx r1

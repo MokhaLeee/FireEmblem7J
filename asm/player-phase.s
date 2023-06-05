@@ -186,7 +186,7 @@ _0801C696:
 	bl sub_080821F8
 	adds r0, r6, #0
 	movs r1, #5
-	bl sub_080045FC
+	bl Proc_Goto
 	b _0801C8C8
 	.align 2, 0
 _0801C6F8: .4byte gBmSt
@@ -242,7 +242,7 @@ _0801C74C:
 	beq _0801C776
 	bl sub_0806D4A4
 	adds r0, r4, #0
-	bl sub_08026A24
+	bl ShowUnitSprite
 _0801C776:
 	ldr r0, _0801C794 @ =0x08C04DB0
 	movs r3, #0x1c
@@ -280,7 +280,7 @@ _0801C7B8:
 	strb r0, [r1]
 	adds r0, r6, #0
 	movs r1, #0xb
-	bl sub_080045FC
+	bl Proc_Goto
 	b _0801C89C
 _0801C7D0:
 	ldr r1, _0801C830 @ =gpKeySt
@@ -320,7 +320,7 @@ _0801C7D0:
 	beq _0801C822
 	bl sub_0806D4A4
 	adds r0, r4, #0
-	bl sub_08026A24
+	bl ShowUnitSprite
 _0801C822:
 	bl sub_0808667C
 	adds r0, r6, #0
@@ -361,14 +361,14 @@ _0801C840:
 	beq _0801C882
 	bl sub_0806D4A4
 	adds r0, r4, #0
-	bl sub_08026A24
+	bl ShowUnitSprite
 _0801C882:
 	bl sub_0808667C
 	bl sub_080A3EF8
 _0801C88A:
 	adds r0, r6, #0
 	movs r1, #9
-	bl sub_080045FC
+	bl Proc_Goto
 	b _0801C8C8
 	.align 2, 0
 _0801C894: .4byte gBmSt
@@ -509,7 +509,7 @@ sub_0801C980: @ 0x0801C980
 	adds r0, r2, #0
 	bl sub_0806C2DC
 	ldr r0, [r4]
-	bl sub_08026A00
+	bl HideUnitSprite
 _0801C9BC:
 	bl sub_0806C7CC
 	bl sub_08079798
@@ -833,7 +833,7 @@ _0801CC3E:
 _0801CC66:
 	adds r0, r5, #0
 	movs r1, #9
-	bl sub_080045FC
+	bl Proc_Goto
 	b _0801CD98
 	.align 2, 0
 _0801CC70: .4byte gActiveUnit
@@ -884,7 +884,7 @@ _0801CCB6:
 	bl sub_080821F8
 	adds r0, r5, #0
 	movs r1, #6
-	bl sub_080045FC
+	bl Proc_Goto
 	b _0801CD98
 	.align 2, 0
 _0801CCEC: .4byte 0x08BFFF78
@@ -938,14 +938,14 @@ _0801CD48:
 	beq _0801CD70
 	adds r0, r5, #0
 	movs r1, #0xc
-	bl sub_080045FC
+	bl Proc_Goto
 	b _0801CD78
 	.align 2, 0
 _0801CD6C: .4byte gBmSt
 _0801CD70:
 	adds r0, r5, #0
 	movs r1, #0xb
-	bl sub_080045FC
+	bl Proc_Goto
 _0801CD78:
 	ldr r0, _0801CDA0 @ =gActiveUnit
 	ldr r0, [r0]
@@ -976,7 +976,7 @@ sub_0801CDA8: @ 0x0801CDA8
 	movs r1, #0
 	strb r1, [r2, #0x11]
 	movs r1, #2
-	bl sub_080045FC
+	bl Proc_Goto
 	pop {r0}
 	bx r0
 	.align 2, 0
@@ -1023,13 +1023,13 @@ _0801CE10:
 _0801CE16:
 	ldr r4, _0801CE38 @ =gActiveUnit
 	ldr r0, [r4]
-	bl sub_08026A00
+	bl HideUnitSprite
 	bl sub_0806D4A4
 	ldr r0, [r4]
 	bl sub_0806C2DC
 	adds r0, r5, #0
 	movs r1, #1
-	bl sub_080045FC
+	bl Proc_Goto
 	pop {r4, r5}
 	pop {r0}
 	bx r0
@@ -1252,7 +1252,7 @@ _0801CFF8:
 	beq _0801D040
 	adds r0, r6, #0
 	movs r1, #4
-	bl sub_080045FC
+	bl Proc_Goto
 	b _0801D048
 	.align 2, 0
 _0801D038: .4byte 0x0202E3E4
@@ -1260,7 +1260,7 @@ _0801D03C: .4byte gPlaySt
 _0801D040:
 	adds r0, r6, #0
 	movs r1, #1
-	bl sub_080045FC
+	bl Proc_Goto
 _0801D048:
 	movs r0, #1
 _0801D04A:
@@ -1358,7 +1358,7 @@ _0801D0DE:
 	cmp r0, #0
 	beq _0801D120
 	ldr r0, [r4]
-	bl sub_08026A00
+	bl HideUnitSprite
 	b _0801D14C
 	.align 2, 0
 _0801D110: .4byte gActionSt
@@ -1377,7 +1377,7 @@ _0801D120:
 	bl sub_0807978C
 	adds r0, r5, #0
 	movs r1, #8
-	bl sub_080045FC
+	bl Proc_Goto
 	b _0801D14C
 _0801D148:
 	bl sub_0806D4A4
@@ -1706,7 +1706,7 @@ sub_0801D3B8: @ 0x0801D3B8
 	bl sub_0802E834
 	adds r0, r6, #0
 	movs r1, #0xc
-	bl sub_080045FC
+	bl Proc_Goto
 	b _0801D444
 	.align 2, 0
 _0801D3D4: .4byte gActiveUnit
@@ -1757,12 +1757,12 @@ _0801D3D8:
 _0801D430: .4byte gBmMapUnit
 _0801D434:
 	ldr r0, [r5]
-	bl sub_08026A00
+	bl HideUnitSprite
 	b _0801D444
 _0801D43C:
 	adds r0, r6, #0
 	movs r1, #0xb
-	bl sub_080045FC
+	bl Proc_Goto
 _0801D444:
 	pop {r4, r5, r6}
 	pop {r0}
@@ -2221,7 +2221,7 @@ sub_0801D7B0: @ 0x0801D7B0
 	bne _0801D7D4
 	adds r0, r4, #0
 	movs r1, #3
-	bl sub_080045FC
+	bl Proc_Goto
 _0801D7D4:
 	pop {r4}
 	pop {r0}

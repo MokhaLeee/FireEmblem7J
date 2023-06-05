@@ -254,7 +254,7 @@ sub_080158B0: @ 0x080158B0
 	adds r1, r4, #0
 	bl Proc_StartBlocking
 	movs r1, #7
-	bl sub_080045FC
+	bl Proc_Goto
 	adds r0, r4, #0
 	bl Proc_Break
 	pop {r4}
@@ -313,7 +313,7 @@ sub_08015918: @ 0x08015918
 	bne _08015936
 	adds r0, r4, #0
 	movs r1, #9
-	bl sub_080045FC
+	bl Proc_Goto
 _08015936:
 	pop {r4}
 	pop {r0}

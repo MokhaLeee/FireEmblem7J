@@ -1526,7 +1526,7 @@ sub_0800B06C: @ 0x0800B06C
 	str r0, [r2, #0x30]
 	adds r0, r2, #0
 	movs r1, #0
-	bl sub_080045FC
+	bl Proc_Goto
 _0800B0AA:
 	pop {r4}
 	pop {r0}
@@ -5140,7 +5140,7 @@ _0800CB9E:
 	adds r4, r0, #0
 	str r6, [r4, #0x54]
 	adds r0, r5, #0
-	bl sub_08026A00
+	bl HideUnitSprite
 	ldr r0, [r5, #0xc]
 	orrs r0, r7
 	str r0, [r5, #0xc]
@@ -5222,7 +5222,7 @@ sub_0800CC28: @ 0x0800CC28
 	adds r0, r4, #0
 	bl UnitSyncMovement
 	adds r0, r4, #0
-	bl sub_08026A24
+	bl ShowUnitSprite
 	ldr r0, [r4, #0xc]
 	movs r1, #2
 	rsbs r1, r1, #0
@@ -7844,7 +7844,7 @@ _0800DF28:
 	adds r1, #0x55
 	strb r0, [r1]
 	adds r0, r4, #0
-	bl sub_08026A00
+	bl HideUnitSprite
 	adds r0, r4, #0
 	bl sub_0806C2DC
 	adds r4, r0, #0
@@ -7904,7 +7904,7 @@ _0800DFA6:
 	b _0800DFD4
 _0800DFB0:
 	adds r0, r4, #0
-	bl sub_08026A00
+	bl HideUnitSprite
 	adds r0, r4, #0
 	bl sub_0806C2DC
 	adds r4, r0, #0
@@ -9302,7 +9302,7 @@ _0800E9AC:
 	bl UnitBeginAction
 	ldr r4, _0800EA08 @ =gActiveUnit
 	ldr r0, [r4]
-	bl sub_08026A00
+	bl HideUnitSprite
 	ldr r0, [r4]
 	bl sub_0806C2DC
 	bl sub_0806C7CC

@@ -563,7 +563,7 @@ _0801DC10: .4byte gBmSt
 _0801DC14:
 	adds r0, r4, #0
 	movs r1, #0x63
-	bl sub_080045FC
+	bl Proc_Goto
 	movs r0, #1
 _0801DC1E:
 	pop {r4}
@@ -2065,7 +2065,7 @@ sub_0801E804: @ 0x0801E804
 	lsls r5, r5, #4
 	strh r5, [r0, #0x36]
 	mov r0, r8
-	bl sub_08026A00
+	bl HideUnitSprite
 	pop {r3}
 	mov r8, r3
 	pop {r4, r5, r6}
@@ -3272,7 +3272,7 @@ sub_0801F174: @ 0x0801F174
 	bgt _0801F1BE
 	adds r0, r5, #0
 	movs r1, #0x64
-	bl sub_080045FC
+	bl Proc_Goto
 _0801F1BE:
 	ldr r0, [r5, #0x58]
 	cmp r0, #1
@@ -4005,7 +4005,7 @@ _0801F77E:
 	beq _0801F7A6
 	adds r1, r0, #0
 	adds r0, r2, #0
-	bl sub_080045FC
+	bl Proc_Goto
 	adds r0, r4, #0
 	bl Proc_End
 _0801F7A6:
@@ -6061,7 +6061,7 @@ sub_080207FC: @ 0x080207FC
 	bge _08020818
 	adds r0, r4, #0
 	movs r1, #0x63
-	bl sub_080045FC
+	bl Proc_Goto
 _08020818:
 	ldr r0, _08020834 @ =gpKeySt
 	ldr r1, [r0]
@@ -6072,7 +6072,7 @@ _08020818:
 	beq _0802082E
 	adds r0, r4, #0
 	movs r1, #0x63
-	bl sub_080045FC
+	bl Proc_Goto
 _0802082E:
 	pop {r4}
 	pop {r0}
@@ -8089,7 +8089,7 @@ sub_08021820: @ 0x08021820
 	bne _0802183C
 	adds r0, r6, #0
 	movs r1, #0x63
-	bl sub_080045FC
+	bl Proc_Goto
 	b _080218D8
 _0802183C:
 	bl ClearBg0Bg1
