@@ -1217,7 +1217,7 @@ sub_0801CF9C: @ 0x0801CF9C
 	ldrb r4, [r4, #0x10]
 	cmp r0, r4
 	ble _0801CFE8
-	bl CanUnitMove
+	bl CanActiveUnitStillMove
 	lsls r0, r0, #0x18
 	cmp r0, #0
 	bne _0801CFF8

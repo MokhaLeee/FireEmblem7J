@@ -118,6 +118,8 @@ SECTIONS
 		/* . = 0x0C0C78; */
 		. = ALIGN(4); src/irq.o(.rodata)
 		. = ALIGN(4); src/random.o(.rodata);
+		. = ALIGN(4); data/data1.o(.data)
+		. = ALIGN(4); src/unit.o(.rodata)
 		. = ALIGN(4); data/data.o(.data)
 	}
 }

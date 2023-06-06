@@ -421,7 +421,7 @@ _08012EB6:
 _08012ED8: .4byte gPlaySt
 _08012EDC:
 	ldr r0, _08012EF0 @ =0x00000569
-	bl sub_08013318
+	bl DecodeMsg
 	bl sub_0802EBB8
 _08012EE6:
 	adds r0, r4, #0
@@ -993,8 +993,8 @@ sub_080132C8: @ 0x080132C8
 	.align 2, 0
 _08013314: .4byte gPlaySt
 
-	thumb_func_start sub_08013318
-sub_08013318: @ 0x08013318
+	thumb_func_start DecodeMsg
+DecodeMsg: @ 0x08013318
 	push {r4, r5, r6, lr}
 	adds r5, r0, #0
 	ldr r6, _0801333C @ =0x0202B5B0
@@ -1143,7 +1143,7 @@ _08013440:
 	ldrb r0, [r0]
 	bl GetCharacterData
 	ldrh r0, [r0]
-	bl sub_08013318
+	bl DecodeMsg
 	adds r1, r0, #0
 	adds r0, r4, #0
 	bl CopyString

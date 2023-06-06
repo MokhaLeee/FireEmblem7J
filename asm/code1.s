@@ -615,10 +615,10 @@ _0802E8CC:
 	cmp r0, #0
 	beq _0802E930
 	adds r0, r4, #0
-	bl sub_08018EA0
+	bl GetUnitMaxHp
 	adds r1, r0, #0
 	adds r0, r4, #0
-	bl sub_08019030
+	bl SetUnitHp
 	adds r0, r4, #0
 	movs r1, #0
 	bl SetUnitStatus
@@ -678,10 +678,10 @@ _0802E942:
 	movs r7, #1
 	strb r7, [r4, #0x11]
 	adds r0, r4, #0
-	bl sub_08018EA0
+	bl GetUnitMaxHp
 	adds r1, r0, #0
 	adds r0, r4, #0
-	bl sub_08019030
+	bl SetUnitHp
 	adds r0, r4, #0
 	movs r1, #0
 	bl SetUnitStatus
@@ -1703,11 +1703,11 @@ sub_0802F0E4: @ 0x0802F0E4
 	cmp r1, #0
 	beq _0802F128
 	adds r0, r4, #0
-	bl sub_08018F80
+	bl GetUnitResistance
 	b _0802F12E
 _0802F128:
 	adds r0, r4, #0
-	bl sub_08018F60
+	bl GetUnitDefense
 _0802F12E:
 	lsls r0, r0, #1
 	adds r5, r5, r0
@@ -1721,7 +1721,7 @@ _0802F12E:
 	cmp r0, #0
 	beq _0802F14C
 	adds r0, r4, #0
-	bl sub_08018EC0
+	bl GetUnitPower
 	adds r5, r5, r0
 _0802F14C:
 	adds r0, r5, #0
@@ -1836,10 +1836,10 @@ _0802F222:
 	adds r0, r6, #0
 	bl UnitCheckStatCaps
 	adds r0, r6, #0
-	bl sub_08018EA0
+	bl GetUnitMaxHp
 	adds r1, r0, #0
 	adds r0, r6, #0
-	bl sub_08019030
+	bl SetUnitHp
 	add sp, #0x10
 	pop {r4, r5, r6}
 	pop {r0}
@@ -1937,7 +1937,7 @@ sub_0802F2E0: @ 0x0802F2E0
 	movs r6, #0
 	ldr r4, _0802F308 @ =0x0203A7F0
 	ldr r0, [r4]
-	bl sub_08018EC0
+	bl GetUnitPower
 	ldr r5, _0802F30C @ =0x0203A3EC
 	adds r0, #5
 	adds r1, r5, #0
@@ -1948,21 +1948,21 @@ sub_0802F2E0: @ 0x0802F2E0
 	cmp r0, #0
 	beq _0802F310
 	ldr r0, [r4]
-	bl sub_08018F80
+	bl GetUnitResistance
 	b _0802F316
 	.align 2, 0
 _0802F308: .4byte 0x0203A7F0
 _0802F30C: .4byte 0x0203A3EC
 _0802F310:
 	ldr r0, [r4]
-	bl sub_08018F60
+	bl GetUnitDefense
 _0802F316:
 	adds r1, r5, #0
 	adds r1, #0x5c
 	strh r0, [r1]
 	ldr r4, _0802F340 @ =0x0203A7F0
 	ldr r0, [r4, #4]
-	bl sub_08018EC0
+	bl GetUnitPower
 	ldr r5, _0802F344 @ =0x0203A46C
 	adds r0, #5
 	adds r1, r5, #0
@@ -1973,14 +1973,14 @@ _0802F316:
 	cmp r0, #0
 	beq _0802F348
 	ldr r0, [r4, #4]
-	bl sub_08018F80
+	bl GetUnitResistance
 	b _0802F34E
 	.align 2, 0
 _0802F340: .4byte 0x0203A7F0
 _0802F344: .4byte 0x0203A46C
 _0802F348:
 	ldr r0, [r4, #4]
-	bl sub_08018F60
+	bl GetUnitDefense
 _0802F34E:
 	adds r1, r5, #0
 	adds r1, #0x5c
@@ -1996,7 +1996,7 @@ _0802F34E:
 	subs r4, r4, r0
 	ldr r5, _0802F3A4 @ =0x0203A7F0
 	ldr r0, [r5, #4]
-	bl sub_08018EA0
+	bl GetUnitMaxHp
 	movs r1, #6
 	bl __divsi3
 	cmp r4, r0
@@ -2055,7 +2055,7 @@ _0802F3CE:
 	subs r4, r4, r0
 	ldr r5, _0802F41C @ =0x0203A7F0
 	ldr r0, [r5]
-	bl sub_08018EA0
+	bl GetUnitMaxHp
 	movs r1, #6
 	bl __divsi3
 	cmp r4, r0
@@ -3091,7 +3091,7 @@ sub_0802FC20: @ 0x0802FC20
 	adds r4, r0, #0
 	adds r5, r1, #0
 	adds r0, r5, #0
-	bl sub_08018E60
+	bl GetUnitCurrentHp
 	adds r6, r0, #0
 	cmp r6, #0
 	bne _0802FCC2
@@ -3173,7 +3173,7 @@ sub_0802FCD4: @ 0x0802FCD4
 	push {r4, r5, lr}
 	adds r4, r0, #0
 	adds r5, r1, #0
-	bl sub_08018E60
+	bl GetUnitCurrentHp
 	cmp r0, #0
 	bne _0802FCFC
 	ldr r0, [r4]
@@ -3197,7 +3197,7 @@ _0802FCFC:
 sub_0802FD04: @ 0x0802FD04
 	push {r4, lr}
 	adds r4, r0, #0
-	bl sub_08018E60
+	bl GetUnitCurrentHp
 	cmp r0, #0
 	bne _0802FD22
 	adds r0, r4, #0
@@ -3250,7 +3250,7 @@ _0802FD64: .4byte 0x0203A46C
 sub_0802FD68: @ 0x0802FD68
 	push {r4, lr}
 	adds r4, r0, #0
-	bl sub_08018E60
+	bl GetUnitCurrentHp
 	cmp r0, #0
 	bne _0802FD80
 	ldr r0, [r4]
@@ -5348,7 +5348,7 @@ sub_08030D88: @ 0x08030D88
 	.align 2, 0
 _08030DA4: .4byte gPlaySt
 _08030DA8:
-	bl IsUnitSlotAvailable
+	bl sub_08018D70
 	movs r6, #0x10
 	movs r0, #0x10
 	ldrb r1, [r5, #0x14]
@@ -5782,7 +5782,7 @@ sub_08031114: @ 0x08031114
 	ldrsh r0, [r1, r2]
 	str r0, [r5, #0x40]
 	ldr r0, _08031188 @ =0x000006F4
-	bl sub_08013318
+	bl DecodeMsg
 	adds r1, r0, #0
 	adds r0, r5, #0
 	bl sub_08032A90
@@ -7045,7 +7045,7 @@ _08031B2C: .4byte 0x08DAD298
 _08031B30:
 	bl sub_08031A5C
 	adds r0, #0x70
-	bl sub_08013318
+	bl DecodeMsg
 _08031B3A:
 	pop {r1}
 	bx r1
@@ -7176,7 +7176,7 @@ sub_08031C24: @ 0x08031C24
 	ldr r0, [r4, #0x2c]
 	ldr r0, [r0]
 	ldrh r0, [r0]
-	bl sub_08013318
+	bl DecodeMsg
 	bl sub_080054CC
 	cmp r0, #0x27
 	bgt _08031C4A
@@ -7317,7 +7317,7 @@ _08031D2C:
 	ldr r1, [sp, #4]
 	ldr r0, [r1]
 	ldrh r0, [r0]
-	bl sub_08013318
+	bl DecodeMsg
 	adds r1, r0, #0
 	adds r0, r4, #0
 	bl sub_080055DC
@@ -7391,14 +7391,14 @@ sub_08031DC4: @ 0x08031DC4
 	movs r2, #3
 	bl sub_080059DC
 	adds r0, r5, #0
-	bl sub_08018E60
+	bl GetUnitCurrentHp
 	adds r3, r0, #0
 	adds r0, r4, #0
 	movs r1, #0x20
 	movs r2, #2
 	bl sub_08005A00
 	adds r0, r5, #0
-	bl sub_08018EA0
+	bl GetUnitMaxHp
 	adds r3, r0, #0
 	adds r0, r4, #0
 	movs r1, #0x38
@@ -7505,7 +7505,7 @@ sub_08031EC0: @ 0x08031EC0
 	movs r2, #3
 	bl sub_080059DC
 	adds r0, r5, #0
-	bl sub_080190E0
+	bl GetUnitStatusName
 	adds r3, r0, #0
 	adds r0, r4, #0
 	movs r1, #0x20
@@ -7535,7 +7535,7 @@ sub_08031EF4: @ 0x08031EF4
 	movs r2, #3
 	bl sub_080059DC
 	adds r0, r5, #0
-	bl sub_08018F80
+	bl GetUnitResistance
 	adds r3, r0, #0
 	adds r3, r3, r6
 	adds r0, r4, #0
@@ -7543,7 +7543,7 @@ sub_08031EF4: @ 0x08031EF4
 	movs r2, #2
 	bl sub_08005A00
 	adds r0, r5, #0
-	bl sub_08018F80
+	bl GetUnitResistance
 	adds r3, r0, #0
 	adds r0, r4, #0
 	movs r1, #0x20
@@ -7568,7 +7568,7 @@ sub_08031F4C: @ 0x08031F4C
 	movs r2, #3
 	bl sub_080059DC
 	adds r0, r5, #0
-	bl sub_08018F80
+	bl GetUnitResistance
 	adds r3, r0, #0
 	adds r0, r4, #0
 	movs r1, #0x38
@@ -9263,9 +9263,9 @@ sub_08032D2C: @ 0x08032D2C
 _08032D40:
 	adds r0, r4, #0
 	adds r1, r5, #0
-	bl sub_0801906C
+	bl AddUnitHp
 	adds r0, r4, #0
-	bl sub_08018E60
+	bl GetUnitCurrentHp
 	cmp r0, #0
 	bgt _08032D58
 	adds r0, r4, #0
@@ -9282,7 +9282,7 @@ _08032D58:
 	thumb_func_start sub_08032D68
 sub_08032D68: @ 0x08032D68
 	push {lr}
-	bl sub_08018E60
+	bl GetUnitCurrentHp
 	cmp r0, #0
 	bne _08032D7E
 	ldr r0, _08032D84 @ =gPlaySt
@@ -9312,7 +9312,7 @@ BeginUnitHealAnim: @ 0x08032D88
 	strh r1, [r0]
 	adds r0, r5, #0
 	adds r1, r4, #0
-	bl sub_0801906C
+	bl AddUnitHp
 	ldr r0, _08032DCC @ =0x0203A508
 	ldr r1, [r0]
 	adds r0, r5, #0
@@ -9342,7 +9342,7 @@ sub_08032DD0: @ 0x08032DD0
 	rsbs r4, r4, #0
 	adds r0, r5, #0
 	adds r1, r4, #0
-	bl sub_0801906C
+	bl AddUnitHp
 	movs r0, #0x13
 	ldrsb r0, [r5, r0]
 	cmp r0, #0
@@ -9391,7 +9391,7 @@ sub_08032E34: @ 0x08032E34
 	rsbs r4, r4, #0
 	adds r0, r5, #0
 	adds r1, r4, #0
-	bl sub_0801906C
+	bl AddUnitHp
 	movs r0, #0x13
 	ldrsb r0, [r5, r0]
 	cmp r0, #0
@@ -10119,7 +10119,7 @@ _080333E0: .4byte gPlaySt
 _080333E4: .4byte 0x0202E3E8
 _080333E8:
 	adds r0, r6, #0
-	bl sub_08018E60
+	bl GetUnitCurrentHp
 	cmp r0, #0
 	bne _080333FA
 	adds r0, r7, #0
@@ -10319,7 +10319,7 @@ sub_08033544: @ 0x08033544
 	ldr r0, _080335B0 @ =gActionSt
 	ldrb r0, [r0, #0xc]
 	bl GetUnit
-	bl sub_08018E60
+	bl GetUnitCurrentHp
 	cmp r0, #0
 	bne _08033594
 	bl sub_08079910
@@ -10331,7 +10331,7 @@ _08033594:
 	ldr r0, _080335B0 @ =gActionSt
 	ldrb r0, [r0, #0xc]
 	bl GetUnit
-	bl sub_08018E60
+	bl GetUnitCurrentHp
 	cmp r0, #0
 	bgt _080335A8
 	bl RefreshUnitSprites
@@ -10483,7 +10483,7 @@ _080336C0: .4byte gPlaySt
 _080336C4: .4byte 0x0202E3E8
 _080336C8:
 	adds r0, r6, #0
-	bl sub_08018E60
+	bl GetUnitCurrentHp
 	cmp r0, #0
 	bne _080336DA
 	adds r0, r7, #0
@@ -10691,7 +10691,7 @@ _08033852:
 	bl sub_08032D2C
 _08033864:
 	adds r0, r5, #0
-	bl sub_08018E60
+	bl GetUnitCurrentHp
 	cmp r0, #0
 	bgt _08033872
 	bl RefreshUnitSprites
@@ -10849,7 +10849,7 @@ sub_0803397C: @ 0x0803397C
 	adds r6, r1, #0
 	ldr r0, [r2]
 	ldrh r0, [r0]
-	bl sub_08013318
+	bl DecodeMsg
 	adds r4, r0, #0
 	movs r0, #0x30
 	adds r1, r4, #0
@@ -12593,7 +12593,7 @@ sub_080347A0: @ 0x080347A0
 	push {r4, lr}
 	ldr r4, [r0, #0x54]
 	adds r0, r4, #0
-	bl sub_08018E60
+	bl GetUnitCurrentHp
 	cmp r0, #0xa
 	bgt _080347B6
 	ldr r0, [r4]
@@ -12690,7 +12690,7 @@ sub_0803484C: @ 0x0803484C
 	adds r1, r4, #0
 	bl sub_08032D2C
 	adds r0, r4, #0
-	bl sub_08018E60
+	bl GetUnitCurrentHp
 	cmp r0, #0
 	bne _0803488A
 	ldr r5, _08034890 @ =gActiveUnit
@@ -12848,7 +12848,7 @@ _08034986:
 	rsbs r4, r4, #0
 	movs r0, #0xdd
 	lsls r0, r0, #3
-	bl sub_08013318
+	bl DecodeMsg
 	adds r2, r0, #0
 	adds r0, r6, #0
 	adds r1, r4, #0
@@ -12875,7 +12875,7 @@ _080349C6:
 	movs r4, #1
 	rsbs r4, r4, #0
 	ldr r0, _080349F4 @ =0x000006E9
-	bl sub_08013318
+	bl DecodeMsg
 	adds r2, r0, #0
 	adds r0, r6, #0
 	adds r1, r4, #0
@@ -12900,7 +12900,7 @@ sub_080349F8: @ 0x080349F8
 	adds r5, r0, #0
 	ldr r4, _08034A18 @ =gActiveUnit
 	ldr r0, [r4]
-	bl sub_08018E60
+	bl GetUnitCurrentHp
 	cmp r0, #0
 	ble _08034A12
 	ldr r0, [r4]

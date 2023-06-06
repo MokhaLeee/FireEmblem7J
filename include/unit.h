@@ -415,7 +415,7 @@ void UnitCheckStatCaps(struct Unit *unit);
 // TickActiveFactionTurn
 // SetAllUnitNotBackSprite
 // UnitUpdateUsedItem
-int GetUnitAid(struct Unit* unit);
+int GetUnitAid(struct Unit *unit);
 // GetUnitMagRange
 // UnitHasMagicRank
 // sub_080188F4
@@ -423,32 +423,32 @@ int GetUnitAid(struct Unit* unit);
 // GetUnitAidIconId
 // GetUnitWeaponUsabilityBits
 // GetCombinedEnemyWeaponUsabilityBits
-// CanUnitMove
+// CanActiveUnitStillMove
 // IsPositionMagicSealed
 // IsUnitMagicSealed
 // GetUnitLastItem
-const s8* GetUnitMovementCost(struct Unit* unit);
+const s8* GetUnitMovementCost(struct Unit *unit);
 // GetClassSMSId
 // UpdatePrevDeployStates
-// LoadUnitPrepScreenPositions
-// ClearTemporaryUnits
-// IsUnitSlotAvailable
-// sub_08018E60
-// sub_08018EA0
-// sub_08018EC0
-// sub_08018EE0
-// sub_08018F20
-// sub_08018F60
-// sub_08018F80
-// sub_08018FA8
-// sub_08018FC8
-// sub_08018FE4
-// sub_08019010
-// sub_08019028
-// sub_08019030
-// sub_0801906C
-// sub_080190B0
-// sub_080190E0
+// sub_08018C78
+// sub_08018CC4
+// sub_08018D70
+int GetUnitCurrentHp(struct Unit *unit);
+int GetUnitMaxHp(struct Unit *unit);
+int GetUnitPower(struct Unit *unit);
+int GetUnitSkill(struct Unit *unit);
+int GetUnitSpeed(struct Unit *unit);
+int GetUnitDefense(struct Unit *unit);
+int GetUnitResistance(struct Unit *unit);
+int GetUnitLuck(struct Unit *unit);
+// GetUnitPortraitId
+// GetUnitMiniPortraitId
+// GetUnitLeaderCharId
+// SetUnitLeaderCharId
+// SetUnitHp
+// AddUnitHp
+// GetUnitRescueName
+// GetUnitStatusName
 // GetUnit
 // GetClassData
 // GetCharacterData

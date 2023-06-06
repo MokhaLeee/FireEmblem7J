@@ -4,7 +4,6 @@
 
 [Progress for FireEmblemGBAs' decomp](https://laqieer.github.io/fe-decomp-portal/)
 
-
 This is a decompilation of **Fire Emblem - Rekka no Ken (Japan)** (FE7J)
 
 It builds the following ROM:

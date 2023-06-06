@@ -3611,7 +3611,7 @@ _0803E168: .4byte 0x0203DBF0
 _0803E16C: .4byte 0x02023C62
 _0803E170:
 	adds r0, r6, #0
-	bl sub_08013318
+	bl DecodeMsg
 	adds r1, r0, #0
 	adds r0, r5, #0
 	bl sub_080055DC
@@ -8921,7 +8921,7 @@ _08040BF2:
 	cmp r7, #0
 	bne _08040C00
 	adds r0, r5, #0
-	bl sub_08018FE4
+	bl GetUnitMiniPortraitId
 	mov r2, r8
 	strh r0, [r2]
 _08040C00:
@@ -10047,7 +10047,7 @@ _0804153E:
 	cmp r6, #0
 	bne _0804157C
 	adds r0, r5, #0
-	bl sub_08018FE4
+	bl GetUnitMiniPortraitId
 	ldr r1, _080415C0 @ =0x08C07DAC
 	ldr r1, [r1]
 	ldrb r1, [r1, #6]
@@ -10211,7 +10211,7 @@ _0804165A:
 	cmp r0, #0
 	bne _080416CC
 	adds r0, r5, #0
-	bl sub_08018FE4
+	bl GetUnitMiniPortraitId
 	ldr r1, _08041750 @ =0x0203DC74
 	ldrb r3, [r6]
 	lsls r2, r3, #1
@@ -14538,7 +14538,7 @@ _08043A88:
 	adds r0, r4, #0
 	bl sub_080053B0
 	ldr r0, _08043BA4 @ =0x00001184
-	bl sub_08013318
+	bl DecodeMsg
 	adds r3, r0, #0
 	adds r0, r4, #0
 	movs r1, #0
@@ -15194,7 +15194,7 @@ _08044024:
 	bne _08044058
 	ldr r7, _08044054 @ =0x0000117D
 	adds r0, r7, #0
-	bl sub_08013318
+	bl DecodeMsg
 	bl sub_080054CC
 	adds r5, r0, #0
 	cmp r4, #0
@@ -15204,7 +15204,7 @@ _08044024:
 	asrs r6, r0, #1
 _08044040:
 	adds r0, r7, #0
-	bl sub_08013318
+	bl DecodeMsg
 	adds r3, r0, #0
 	mov r0, sb
 	adds r1, r6, #0
@@ -15215,7 +15215,7 @@ _08044040:
 _08044054: .4byte 0x0000117D
 _08044058:
 	ldr r0, _0804416C @ =0x0000117A
-	bl sub_08013318
+	bl DecodeMsg
 	bl sub_080054CC
 	str r0, [sp]
 	adds r5, r0, #0
@@ -15235,7 +15235,7 @@ _08044058:
 	lsls r0, r0, #1
 	adds r0, r0, r1
 	ldrh r0, [r0]
-	bl sub_08013318
+	bl DecodeMsg
 	bl sub_080054CC
 	subs r0, #1
 	str r0, [sp, #4]
@@ -15246,13 +15246,13 @@ _08044098:
 	adds r0, r0, r1
 	str r0, [sp, #0x14]
 	ldrh r0, [r0]
-	bl sub_08013318
+	bl DecodeMsg
 	bl sub_080054CC
 	subs r0, #1
 	str r0, [sp, #8]
 	adds r5, r5, r0
 	ldr r0, _08044174 @ =0x0000117B
-	bl sub_08013318
+	bl DecodeMsg
 	bl sub_080054CC
 	str r0, [sp, #0xc]
 	adds r5, r5, r0
@@ -15261,7 +15261,7 @@ _08044098:
 	cmp r4, #0
 	beq _080440D2
 	ldr r0, _08044178 @ =0x0000117C
-	bl sub_08013318
+	bl DecodeMsg
 	bl sub_080054CC
 	adds r5, r5, r0
 _080440D2:
@@ -15273,7 +15273,7 @@ _080440D2:
 	asrs r6, r0, #1
 _080440DE:
 	ldr r0, _0804416C @ =0x0000117A
-	bl sub_08013318
+	bl DecodeMsg
 	adds r3, r0, #0
 	mov r0, sb
 	adds r1, r6, #0
@@ -15288,7 +15288,7 @@ _080440DE:
 	ldr r1, _08044170 @ =0x08C08BDC
 	adds r0, r0, r1
 	ldrh r0, [r0]
-	bl sub_08013318
+	bl DecodeMsg
 	adds r3, r0, #0
 	mov r0, sb
 	adds r1, r6, #0
@@ -15299,7 +15299,7 @@ _080440DE:
 _08044116:
 	ldr r2, [sp, #0x14]
 	ldrh r0, [r2]
-	bl sub_08013318
+	bl DecodeMsg
 	adds r3, r0, #0
 	mov r0, sb
 	adds r1, r6, #0
@@ -15308,7 +15308,7 @@ _08044116:
 	ldr r0, [sp, #8]
 	adds r6, r6, r0
 	ldr r0, _08044174 @ =0x0000117B
-	bl sub_08013318
+	bl DecodeMsg
 	adds r3, r0, #0
 	mov r0, sb
 	adds r1, r6, #0
@@ -15319,7 +15319,7 @@ _08044116:
 	cmp r4, #0
 	beq _0804415A
 	ldr r0, _08044178 @ =0x0000117C
-	bl sub_08013318
+	bl DecodeMsg
 	adds r3, r0, #0
 	mov r0, sb
 	adds r1, r6, #0
@@ -15355,7 +15355,7 @@ sub_0804417C: @ 0x0804417C
 	adds r3, r7, #0
 	bl sub_08044004
 	ldrh r0, [r5]
-	bl sub_08013318
+	bl DecodeMsg
 	bl sub_080054CC
 	movs r1, #0x46
 	subs r1, r1, r0
@@ -15369,7 +15369,7 @@ _080441B0:
 	adds r4, r1, #0
 	adds r4, #0x28
 	ldrh r0, [r5]
-	bl sub_08013318
+	bl DecodeMsg
 	adds r3, r0, #0
 	adds r0, r6, #0
 	adds r1, r4, #0
@@ -15386,21 +15386,21 @@ sub_080441D0: @ 0x080441D0
 	push {r4, lr}
 	adds r4, r0, #0
 	ldr r0, _08044210 @ =0x00001188
-	bl sub_08013318
+	bl DecodeMsg
 	adds r3, r0, #0
 	adds r0, r4, #0
 	movs r1, #0
 	movs r2, #0
 	bl sub_080059DC
 	movs r0, #1
-	bl sub_08013318
+	bl DecodeMsg
 	adds r3, r0, #0
 	adds r0, r4, #0
 	movs r1, #0x80
 	movs r2, #0
 	bl sub_080059DC
 	movs r0, #2
-	bl sub_08013318
+	bl DecodeMsg
 	adds r3, r0, #0
 	adds r0, r4, #0
 	movs r1, #0xb0
@@ -19985,7 +19985,7 @@ sub_08046694: @ 0x08046694
 	bl SetUnitStatus
 	bl sub_0806D4A4
 	adds r0, r6, #0
-	bl sub_08018E60
+	bl GetUnitCurrentHp
 	cmp r0, #0
 	beq _08046740
 	adds r0, r6, #0
@@ -20002,7 +20002,7 @@ _08046740:
 	movs r2, #0
 	bl SetBgOffset
 	adds r0, r6, #0
-	bl sub_08018E60
+	bl GetUnitCurrentHp
 	mov r1, sb
 	adds r1, #0x72
 	ldrb r1, [r1]
@@ -20011,7 +20011,7 @@ _08046740:
 	cmp r0, r1
 	bne _08046790
 	adds r0, r7, #0
-	bl sub_08018E60
+	bl GetUnitCurrentHp
 	adds r1, r4, #0
 	adds r1, #0x72
 	ldrb r1, [r1]
@@ -20825,7 +20825,7 @@ _08046DCC:
 	cmp r7, #0
 	beq _08046DDA
 	adds r0, r6, #0
-	bl sub_08018EC0
+	bl GetUnitPower
 	add r0, r8
 	b _08046DDC
 _08046DDA:
@@ -20869,7 +20869,7 @@ _08046DFE:
 	bl sub_08046D80
 	adds r6, r6, r0
 	adds r0, r4, #0
-	bl sub_08018E60
+	bl GetUnitCurrentHp
 	adds r6, r6, r0
 _08046E2A:
 	adds r5, #1
@@ -22193,7 +22193,7 @@ sub_08047854: @ 0x08047854
 	bl GetUnit
 	adds r5, r0, #0
 	adds r0, r4, #0
-	bl sub_08018E60
+	bl GetUnitCurrentHp
 	cmp r0, #0
 	bne _08047884
 	ldr r0, [r4, #0xc]
@@ -22202,7 +22202,7 @@ sub_08047854: @ 0x08047854
 	str r0, [r4, #0xc]
 _08047884:
 	adds r0, r5, #0
-	bl sub_08018E60
+	bl GetUnitCurrentHp
 	cmp r0, #0
 	bne _08047896
 	ldr r0, [r5, #0xc]

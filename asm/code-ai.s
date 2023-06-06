@@ -342,7 +342,7 @@ sub_08035044: @ 0x08035044
 	asrs r0, r0, #0x18
 	adds r4, r1, r0
 	adds r0, r5, #0
-	bl sub_08019010
+	bl GetUnitLeaderCharId
 	lsls r0, r0, #0x10
 	lsrs r2, r0, #0x10
 	adds r6, r2, #0
@@ -3925,11 +3925,11 @@ _08036BC4: .4byte gBmMapMovement
 sub_08036BC8: @ 0x08036BC8
 	push {r4, r5, r6, r7, lr}
 	adds r4, r0, #0
-	bl sub_08018EC0
+	bl GetUnitPower
 	cmp r0, #0x14
 	bgt _08036BDE
 	adds r0, r4, #0
-	bl sub_08018EC0
+	bl GetUnitPower
 	adds r7, r0, #0
 	b _08036BE0
 _08036BDE:
@@ -9893,7 +9893,7 @@ _0803995E:
 	cmp r0, #0
 	beq _0803998C
 	adds r0, r6, #0
-	bl sub_08018EC0
+	bl GetUnitPower
 	ldr r1, _080399C0 @ =0x0202E3F0
 	ldr r1, [r1]
 	adds r1, r5, r1
@@ -10235,12 +10235,12 @@ _08039C0C: .4byte 0x081D93FC
 sub_08039C10: @ 0x08039C10
 	push {r4, r5, lr}
 	adds r5, r0, #0
-	bl sub_08018E60
+	bl GetUnitCurrentHp
 	movs r1, #0x64
 	adds r4, r0, #0
 	muls r4, r1, r4
 	adds r0, r5, #0
-	bl sub_08018EA0
+	bl GetUnitMaxHp
 	adds r1, r0, #0
 	adds r0, r4, #0
 	bl Div
@@ -11038,7 +11038,7 @@ sub_0803A1FC: @ 0x0803A1FC
 	lsrs r4, r4, #0x10
 	strh r4, [r6]
 	adds r0, r5, #0
-	bl sub_08018EC0
+	bl GetUnitPower
 	adds r5, r0, #0
 	adds r0, r4, #0
 	bl sub_080176E8
@@ -12139,7 +12139,7 @@ sub_0803AA70: @ 0x0803AA70
 	ldr r4, _0803AAAC @ =gActiveUnit
 	ldr r6, [r4]
 	adds r0, r6, #0
-	bl sub_08019010
+	bl GetUnitLeaderCharId
 	lsls r0, r0, #0x10
 	lsrs r0, r0, #0x10
 	cmp r0, #0
@@ -13083,12 +13083,12 @@ _0803B1B6:
 	beq _0803B21A
 _0803B1C8:
 	adds r0, r5, #0
-	bl sub_08018E60
+	bl GetUnitCurrentHp
 	movs r1, #0x64
 	adds r4, r0, #0
 	muls r4, r1, r4
 	adds r0, r5, #0
-	bl sub_08018EA0
+	bl GetUnitMaxHp
 	adds r1, r0, #0
 	adds r0, r4, #0
 	bl Div
@@ -13311,12 +13311,12 @@ _0803B33E:
 	cmp r0, #0
 	beq _0803B3EC
 	adds r0, r6, #0
-	bl sub_08018E60
+	bl GetUnitCurrentHp
 	movs r1, #0x64
 	adds r4, r0, #0
 	muls r4, r1, r4
 	adds r0, r6, #0
-	bl sub_08018EA0
+	bl GetUnitMaxHp
 	adds r1, r0, #0
 	adds r0, r4, #0
 	bl Div
@@ -13915,7 +13915,7 @@ sub_0803B84C: @ 0x0803B84C
 _0803B868: .4byte gActiveUnit
 _0803B86C:
 	adds r0, r5, #0
-	bl sub_08018EC0
+	bl GetUnitPower
 	adds r0, r4, r0
 	lsls r0, r0, #0x18
 	lsrs r4, r0, #0x18
@@ -14402,7 +14402,7 @@ _0803BC12:
 	beq _0803BC9E
 _0803BC5A:
 	adds r0, r5, #0
-	bl sub_08018F80
+	bl GetUnitResistance
 	cmp r0, sl
 	bgt _0803BC9E
 	add r6, sp, #0xc
@@ -14414,7 +14414,7 @@ _0803BC5A:
 	cmp r0, #0
 	beq _0803BC9E
 	adds r0, r5, #0
-	bl sub_08018F80
+	bl GetUnitResistance
 	lsls r0, r0, #0x18
 	lsrs r0, r0, #0x18
 	mov sl, r0

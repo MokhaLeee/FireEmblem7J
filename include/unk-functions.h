@@ -22,3 +22,6 @@ void RenderMapForFade(void);
 void RefreshEntityMaps(void);
 void StartMapFade(bool locksGame);
 void RefreshUnitSprites(void);
+void sub_0807B32C(void);
+void sub_080799E4(void);
+char *DecodeMsg(int id);
