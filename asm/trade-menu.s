@@ -67,7 +67,7 @@ sub_0802B064: @ 0x0802B064
 	ldr r0, [r1, #0x2c]
 	ldr r0, [r0]
 	ldrh r0, [r0]
-	bl sub_08013318
+	bl DecodeMsg
 	adds r7, r0, #0
 	bl sub_080054CC
 	movs r4, #0x30
@@ -86,7 +86,7 @@ sub_0802B064: @ 0x0802B064
 	ldr r0, [r2, #0x30]
 	ldr r0, [r0]
 	ldrh r0, [r0]
-	bl sub_08013318
+	bl DecodeMsg
 	adds r7, r0, #0
 	bl sub_080054CC
 	subs r4, r4, r0
@@ -651,7 +651,7 @@ sub_0802B544: @ 0x0802B544
 	adds r0, r5, #0
 	bl sub_0802B250
 	ldr r0, [r5, #0x2c]
-	bl sub_08018FC8
+	bl GetUnitPortraitId
 	adds r1, r0, #0
 	subs r4, #4
 	movs r0, #3
@@ -661,7 +661,7 @@ sub_0802B544: @ 0x0802B544
 	adds r3, r4, #0
 	bl sub_08006AC4
 	ldr r0, [r5, #0x30]
-	bl sub_08018FC8
+	bl GetUnitPortraitId
 	adds r1, r0, #0
 	movs r0, #2
 	str r0, [sp]

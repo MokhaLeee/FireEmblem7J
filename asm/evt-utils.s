@@ -626,7 +626,7 @@ sub_08010AF4: @ 0x08010AF4
 	bl Proc_Start
 	adds r7, r0, #0
 	adds r0, r4, #0
-	bl sub_08013318
+	bl DecodeMsg
 	mov sl, r0
 	mov r0, r8
 	str r0, [r7, #0x30]

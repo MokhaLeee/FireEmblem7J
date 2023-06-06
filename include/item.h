@@ -53,11 +53,11 @@ enum ItemData_attributes {
 // sub_08016470
 int GetItemHpBonus(int item);
 int GetItemPowBonus(int item);
-// sub_08016514
-// sub_08016540
-// sub_0801656C
-// sub_08016598
-// sub_080165C4
+int GetItemSklBonus(int item);
+int GetItemSpdBonus(int item);
+int GetItemDefBonus(int item);
+int GetItemResBonus(int item);
+int GetItemLckBonus(int item);
 int MakeNewItem(int item);
 bool CanUnitUseWeapon(struct Unit *unit, int item);
 bool CanUnitUseWeaponNow(struct Unit *unit, int item);
@@ -82,7 +82,7 @@ u16 GetUnitEquippedWeapon(struct Unit *unit);
 // sub_08016F04
 // sub_08016F80
 // sub_08016FBC
-// sub_08017160
+int GetUnitItemSlot(struct Unit *unit, int itemIndex);
 // sub_0801718C
 // sub_080171B4
 // sub_08017208

@@ -1224,7 +1224,7 @@ _0801BF54:
 	bl sub_080A1050
 _0801BF5E:
 	ldr r0, _0801BF88 @ =0x00000569
-	bl sub_08013318
+	bl DecodeMsg
 	bl sub_0802EBB8
 	ldr r1, _0801BF8C @ =gPlaySt
 	adds r0, r4, #0

@@ -701,7 +701,7 @@ sub_08021F10: @ 0x08021F10
 	adds r5, r0, #0
 	ldr r4, _08021F58 @ =gActiveUnit
 	ldr r0, [r4]
-	bl sub_08018FC8
+	bl GetUnitPortraitId
 	adds r1, r0, #0
 	movs r0, #2
 	str r0, [sp]
@@ -735,7 +735,7 @@ sub_08021F5C: @ 0x08021F5C
 	adds r5, r0, #0
 	ldr r4, _08021FA8 @ =gActiveUnit
 	ldr r0, [r4]
-	bl sub_08018FC8
+	bl GetUnitPortraitId
 	adds r1, r0, #0
 	movs r0, #2
 	str r0, [sp]
@@ -1534,7 +1534,7 @@ _08022588:
 	adds r5, r0, #0
 	ldr r4, _080225DC @ =gActiveUnit
 	ldr r0, [r4]
-	bl sub_08018FC8
+	bl GetUnitPortraitId
 	adds r1, r0, #0
 	movs r0, #2
 	str r0, [sp]
@@ -1617,7 +1617,7 @@ sub_08022614: @ 0x08022614
 	adds r5, r0, #0
 	ldr r4, _0802266C @ =gActiveUnit
 	ldr r0, [r4]
-	bl sub_08018FC8
+	bl GetUnitPortraitId
 	adds r1, r0, #0
 	movs r0, #2
 	str r0, [sp]
@@ -1911,7 +1911,7 @@ sub_0802287C: @ 0x0802287C
 	adds r5, r0, #0
 	ldr r4, _080228D0 @ =gActiveUnit
 	ldr r0, [r4]
-	bl sub_08018FC8
+	bl GetUnitPortraitId
 	adds r1, r0, #0
 	movs r0, #2
 	str r0, [sp]
@@ -1976,7 +1976,7 @@ sub_080228D4: @ 0x080228D4
 	bl sub_0804AA58
 	adds r4, r0, #0
 	ldr r0, [r6]
-	bl sub_08018FC8
+	bl GetUnitPortraitId
 	adds r1, r0, #0
 	movs r0, #2
 	str r0, [sp]
@@ -2589,7 +2589,7 @@ sub_08022DFC: @ 0x08022DFC
 	adds r5, r0, #0
 	ldr r4, _08022E50 @ =gActiveUnit
 	ldr r0, [r4]
-	bl sub_08018FC8
+	bl GetUnitPortraitId
 	adds r1, r0, #0
 	movs r0, #2
 	str r0, [sp]
@@ -3476,7 +3476,7 @@ sub_0802348C: @ 0x0802348C
 	adds r4, r0, #0
 	bl sub_08031FAC
 	ldr r0, _080234A8 @ =0x000006EF
-	bl sub_08013318
+	bl DecodeMsg
 	adds r1, r0, #0
 	adds r0, r4, #0
 	bl sub_08032A90
@@ -3528,7 +3528,7 @@ sub_080234D0: @ 0x080234D0
 	bl GetUnit
 	ldr r0, [r0]
 	ldrh r0, [r0]
-	bl sub_08013318
+	bl DecodeMsg
 	bl sub_080054CC
 	movs r4, #0x38
 	subs r4, r4, r0
@@ -3539,7 +3539,7 @@ sub_080234D0: @ 0x080234D0
 	bl GetUnit
 	ldr r0, [r0]
 	ldrh r0, [r0]
-	bl sub_08013318
+	bl DecodeMsg
 	ldr r5, _08023570 @ =0x02022D26
 	movs r1, #7
 	str r1, [sp]
@@ -3552,7 +3552,7 @@ sub_080234D0: @ 0x080234D0
 	adds r5, #0x80
 	ldrb r0, [r6, #0xd]
 	bl GetUnit
-	bl sub_08018FC8
+	bl GetUnitPortraitId
 	adds r1, r0, #0
 	movs r2, #0x80
 	lsls r2, r2, #2
@@ -3811,7 +3811,7 @@ sub_08023738: @ 0x08023738
 	adds r4, r0, #0
 	bl sub_0803255C
 	ldr r0, _08023754 @ =0x000006EA
-	bl sub_08013318
+	bl DecodeMsg
 	adds r1, r0, #0
 	adds r0, r4, #0
 	bl sub_08032A90
@@ -3844,7 +3844,7 @@ sub_0802377C: @ 0x0802377C
 	push {r4, lr}
 	adds r4, r0, #0
 	ldr r0, _08023794 @ =0x000006EB
-	bl sub_08013318
+	bl DecodeMsg
 	adds r1, r0, #0
 	adds r0, r4, #0
 	bl sub_08032A90
@@ -3865,7 +3865,7 @@ sub_0802379C: @ 0x0802379C
 	adds r4, r0, #0
 	bl sub_08032710
 	ldr r0, _080237B8 @ =0x000006ED
-	bl sub_08013318
+	bl DecodeMsg
 	adds r1, r0, #0
 	adds r0, r4, #0
 	bl sub_08032A90
@@ -3899,7 +3899,7 @@ sub_080237E0: @ 0x080237E0
 	adds r4, r0, #0
 	bl sub_0803255C
 	ldr r0, _080237FC @ =0x000006EC
-	bl sub_08013318
+	bl DecodeMsg
 	adds r1, r0, #0
 	adds r0, r4, #0
 	bl sub_08032A90
@@ -3933,7 +3933,7 @@ sub_08023824: @ 0x08023824
 	adds r4, r0, #0
 	bl sub_08031FAC
 	ldr r0, _08023840 @ =0x000006EE
-	bl sub_08013318
+	bl DecodeMsg
 	adds r1, r0, #0
 	adds r0, r4, #0
 	bl sub_08032A90
@@ -3968,7 +3968,7 @@ sub_0802386C: @ 0x0802386C
 	adds r4, r0, #0
 	bl sub_0803232C
 	ldr r0, _08023888 @ =0x000006F1
-	bl sub_08013318
+	bl DecodeMsg
 	adds r1, r0, #0
 	adds r0, r4, #0
 	bl sub_08032A90
@@ -4002,7 +4002,7 @@ sub_080238B0: @ 0x080238B0
 	adds r4, r0, #0
 	bl sub_0803232C
 	ldr r0, _080238CC @ =0x000006F2
-	bl sub_08013318
+	bl DecodeMsg
 	adds r1, r0, #0
 	adds r0, r4, #0
 	bl sub_08032A90

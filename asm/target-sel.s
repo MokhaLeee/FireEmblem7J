@@ -1273,17 +1273,17 @@ _08024788:
 	cmp r0, #0
 	beq _080247FE
 	adds r0, r5, #0
-	bl sub_08018E60
+	bl GetUnitCurrentHp
 	adds r4, r0, #0
 	adds r0, r5, #0
-	bl sub_08018EA0
+	bl GetUnitMaxHp
 	cmp r4, r0
 	beq _080247FE
 	adds r0, r6, #0
 	bl GetTerrainHealAmount
 	adds r4, r0, #0
 	adds r0, r5, #0
-	bl sub_08018EA0
+	bl GetUnitMaxHp
 	muls r0, r4, r0
 	movs r1, #0x64
 	bl __divsi3
@@ -1546,10 +1546,10 @@ sub_080249C4: @ 0x080249C4
 	cmp r0, #0
 	bne _08024A0E
 	adds r0, r5, #0
-	bl sub_08018E60
+	bl GetUnitCurrentHp
 	adds r4, r0, #0
 	adds r0, r5, #0
-	bl sub_08018EA0
+	bl GetUnitMaxHp
 	cmp r4, r0
 	beq _08024A0E
 	movs r0, #0x10
@@ -2164,10 +2164,10 @@ _08024EAA:
 	cmp r0, #0
 	bne _08024EFC
 	adds r0, r5, #0
-	bl sub_08018E60
+	bl GetUnitCurrentHp
 	adds r4, r0, #0
 	adds r0, r5, #0
-	bl sub_08018EA0
+	bl GetUnitMaxHp
 	cmp r4, r0
 	bne _08024EE6
 	adds r1, r5, #0
@@ -2222,7 +2222,7 @@ _08024F28:
 	ldrsb r0, [r4, r0]
 	bl GetUnit
 	adds r5, r0, #0
-	bl sub_08018E60
+	bl GetUnitCurrentHp
 	movs r1, #3
 	ldrsb r1, [r4, r1]
 	cmp r0, r1

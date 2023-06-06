@@ -613,10 +613,10 @@ _0802776C:
 sub_08027770: @ 0x08027770
 	push {r4, r5, lr}
 	adds r4, r0, #0
-	bl sub_08018E60
+	bl GetUnitCurrentHp
 	adds r5, r0, #0
 	adds r0, r4, #0
-	bl sub_08018EA0
+	bl GetUnitMaxHp
 	cmp r5, r0
 	beq _08027788
 	movs r0, #1
@@ -1100,7 +1100,7 @@ sub_08027B24: @ 0x08027B24
 	bl sub_0804B6CC
 	adds r4, r0, #0
 	ldr r0, _08027B60 @ =0x000006FA
-	bl sub_08013318
+	bl DecodeMsg
 	adds r1, r0, #0
 	adds r0, r4, #0
 	bl sub_08032A90
@@ -1128,7 +1128,7 @@ sub_08027B64: @ 0x08027B64
 	bl sub_0804B6CC
 	adds r4, r0, #0
 	adds r0, r5, #0
-	bl sub_08013318
+	bl DecodeMsg
 	adds r1, r0, #0
 	adds r0, r4, #0
 	bl sub_08032A90
@@ -1147,7 +1147,7 @@ sub_08027BA4: @ 0x08027BA4
 	push {r6}
 	adds r6, r0, #0
 	ldr r0, _08027C44 @ =0x000006F3
-	bl sub_08013318
+	bl DecodeMsg
 	adds r1, r0, #0
 	adds r0, r6, #0
 	bl sub_08032A90
@@ -1453,7 +1453,7 @@ sub_08027E44: @ 0x08027E44
 	bl sub_0804B6CC
 	adds r4, r0, #0
 	ldr r0, _08027E94 @ =0x000006F9
-	bl sub_08013318
+	bl DecodeMsg
 	adds r1, r0, #0
 	adds r0, r4, #0
 	bl sub_08032A90
@@ -1508,7 +1508,7 @@ sub_08027EBC: @ 0x08027EBC
 	bl sub_0804B6CC
 	adds r4, r0, #0
 	adds r0, r5, #0
-	bl sub_08013318
+	bl DecodeMsg
 	adds r1, r0, #0
 	adds r0, r4, #0
 	bl sub_08032A90
@@ -1552,7 +1552,7 @@ sub_08027F14: @ 0x08027F14
 	bl sub_0801E2A0
 	ldrb r0, [r5, #0xd]
 	bl GetUnit
-	bl sub_08018FC8
+	bl GetUnitPortraitId
 	adds r1, r0, #0
 	movs r0, #2
 	str r0, [sp]
@@ -1585,7 +1585,7 @@ sub_08027F74: @ 0x08027F74
 	bl sub_0804B664
 	adds r4, r0, #0
 	ldr r0, _08027FBC @ =0x000006FC
-	bl sub_08013318
+	bl DecodeMsg
 	adds r1, r0, #0
 	adds r0, r4, #0
 	bl sub_08032A90
@@ -1824,7 +1824,7 @@ sub_0802814C: @ 0x0802814C
 	adds r4, r0, #0
 	movs r0, #0xdf
 	lsls r0, r0, #3
-	bl sub_08013318
+	bl DecodeMsg
 	adds r1, r0, #0
 	adds r0, r4, #0
 	bl sub_08032A90
@@ -1848,7 +1848,7 @@ sub_08028184: @ 0x08028184
 	bl sub_0804B664
 	adds r4, r0, #0
 	ldr r0, _080281BC @ =0x000006FB
-	bl sub_08013318
+	bl DecodeMsg
 	adds r1, r0, #0
 	adds r0, r4, #0
 	bl sub_08032A90
@@ -1899,7 +1899,7 @@ sub_080281F0: @ 0x080281F0
 	bl sub_0804B664
 	adds r4, r0, #0
 	ldr r0, _08028228 @ =0x000006FD
-	bl sub_08013318
+	bl DecodeMsg
 	adds r1, r0, #0
 	adds r0, r4, #0
 	bl sub_08032A90
@@ -1950,7 +1950,7 @@ sub_0802825C: @ 0x0802825C
 	bl sub_0804B664
 	adds r4, r0, #0
 	ldr r0, _08028294 @ =0x000006FF
-	bl sub_08013318
+	bl DecodeMsg
 	adds r1, r0, #0
 	adds r0, r4, #0
 	bl sub_08032A90
@@ -2047,7 +2047,7 @@ sub_08028328: @ 0x08028328
 	bl sub_0804B6CC
 	adds r4, r0, #0
 	ldr r0, _08028350 @ =0x000006FA
-	bl sub_08013318
+	bl DecodeMsg
 	adds r1, r0, #0
 	adds r0, r4, #0
 	bl sub_08032A90
@@ -2069,7 +2069,7 @@ sub_08028354: @ 0x08028354
 	orrs r0, r2
 	strb r0, [r1, #4]
 	ldr r0, _080283A4 @ =0x0000072E
-	bl sub_08013318
+	bl DecodeMsg
 	adds r1, r0, #0
 	adds r0, r5, #0
 	bl sub_08032A90

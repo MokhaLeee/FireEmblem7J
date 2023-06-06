@@ -7,6 +7,8 @@
 #include "bm.h"
 #include "terrain.h"
 #include "constants/items.h"
+#include "constants/terrains.h"
+#include "constants/icons.h"
 
 static inline struct Unit *_GetUnit(int id)
 {
@@ -86,25 +88,114 @@ struct Unit *GetFreeBlueUnit(const struct UnitDefinition *info)
     return NULL;
 }
 
-static inline int _GetUnitMaxHp(struct Unit *unit)
+inline int GetUnitMaxHp(struct Unit *unit)
 {
     return unit->maxHP + GetItemHpBonus((u16) GetUnitEquippedWeapon(unit));
 }
 
-static inline int _GetUnitCurrentHp(struct Unit *unit)
+inline int GetUnitCurrentHp(struct Unit *unit)
 {
-    if (unit->curHP > _GetUnitMaxHp(unit))
-        unit->curHP = _GetUnitMaxHp(unit);
+    if (unit->curHP > GetUnitMaxHp(unit))
+        unit->curHP = GetUnitMaxHp(unit);
 
     return unit->curHP;
 }
 
-static inline int _GetUnitPower(struct Unit* unit)
-{
+inline int GetUnitPower(struct Unit *unit) {
     return unit->pow + GetItemPowBonus((u16) GetUnitEquippedWeapon(unit));
 }
 
-int GetUnitFogViewRange(struct Unit *unit) {
+inline int GetUnitSkill(struct Unit *unit) {
+    u16 item = GetUnitEquippedWeapon(unit);
+
+    if (unit->state & US_RESCUING)
+        return unit->skl / 2 + GetItemSklBonus(item);
+
+    return unit->skl + GetItemSklBonus(item);
+}
+
+inline int GetUnitSpeed(struct Unit *unit)
+{
+    u16 item = GetUnitEquippedWeapon(unit);
+
+    if (unit->state & US_RESCUING)
+        return unit->spd / 2 + GetItemSpdBonus(item);
+
+    return unit->spd + GetItemSpdBonus(item);
+}
+
+inline int GetUnitDefense(struct Unit *unit)
+{
+    return unit->def + GetItemDefBonus((u16) GetUnitEquippedWeapon(unit));
+}
+
+inline int GetUnitResistance(struct Unit *unit)
+{
+    return unit->res + GetItemResBonus((u16) GetUnitEquippedWeapon(unit)) + unit->barrierDuration;
+}
+
+inline int GetUnitLuck(struct Unit *unit)
+{
+    return unit->lck + GetItemLckBonus((u16) GetUnitEquippedWeapon(unit));
+}
+
+inline int GetUnitPortraitId(struct Unit *unit)
+{
+    if (unit->pCharacterData->portraitId)
+        return unit->pCharacterData->portraitId;
+
+    if (unit->pClassData->defaultPortraitId)
+        return unit->pClassData->defaultPortraitId;
+
+    return 0;
+}
+
+inline int GetUnitMiniPortraitId(struct Unit *unit)
+{
+    if (unit->pCharacterData->miniPortrait)
+        return 0x7F00 + unit->pCharacterData->miniPortrait;
+
+    return GetUnitPortraitId(unit);
+}
+
+inline int GetUnitLeaderCharId(struct Unit *unit)
+{
+    if (!(unit->index & 0xC0))
+        return 0;
+
+    return UNIT_LEADER_CHARACTER(unit);
+}
+
+inline void SetUnitLeaderCharId(struct Unit *unit, int charId)
+{
+    UNIT_LEADER_CHARACTER(unit) = charId;
+}
+
+inline void SetUnitHp(struct Unit *unit, int value)
+{
+    unit->curHP = value;
+
+    if (unit->curHP > GetUnitMaxHp(unit))
+        unit->curHP = GetUnitMaxHp(unit);
+}
+
+inline void AddUnitHp(struct Unit *unit, int amount)
+{
+    int hp = unit->curHP;
+
+    hp += amount;
+
+    if (hp > GetUnitMaxHp(unit))
+        hp = GetUnitMaxHp(unit);
+
+    if (hp < 0)
+        hp = 0;
+
+    unit->curHP = hp;
+}
+
+int GetUnitFogViewRange(struct Unit *unit)
+{
     int result = gPlaySt.chapterVisionRange;
 
     if (UNIT_CATTRIBUTES(unit) & CA_THIEF)
@@ -162,6 +253,12 @@ bool UnitAddItem(struct Unit *unit, int item)
     }
 
     return false;
+}
+
+static inline void UnitRemoveItem(struct Unit *unit, int slot)
+{
+    unit->items[slot] = 0;
+    UnitRemoveInvalidItems(unit);
 }
 
 void UnitClearInventory(struct Unit *unit)
@@ -421,7 +518,7 @@ void UnitAutolevelCore(struct Unit *unit, u8 classId, int levelCount)
 void UnitApplyBonusLevels(struct Unit *unit, int levelCount) {
     UnitAutolevelCore(unit, unit->pClassData->number, levelCount);
     UnitCheckStatCaps(unit);
-    unit->curHP = _GetUnitMaxHp(unit);
+    unit->curHP = GetUnitMaxHp(unit);
 }
 
 void UnitAutolevel(struct Unit *unit)
@@ -559,6 +656,18 @@ bool UnitGive(struct Unit *actor, struct Unit *target) {
     UnitRescue(target, rescuee);
 
     // return couldGive; // devs probably forgot to add this
+}
+
+inline const char *GetUnitRescueName(struct Unit* unit) {
+    if (unit->rescue == 0)
+        return StatusNameStringLut[UNIT_STATUS_NONE];
+
+    return DecodeMsg(_GetUnit(unit->rescue)->pCharacterData->nameTextId);
+}
+
+inline const char *GetUnitStatusName(struct Unit* unit)
+{
+    return StatusNameStringLut[unit->statusIndex];
 }
 
 void UnitKill(struct Unit *unit)
@@ -711,7 +820,7 @@ void MoveActiveUnit(int x, int y)
 
     PidStatsAddMove(gActiveUnit->pCharacterData->number, gActionSt.move_count);
 
-    if (_GetUnitCurrentHp(gActiveUnit) != 0)
+    if (GetUnitCurrentHp(gActiveUnit) != 0)
         gActiveUnit->state &= ~US_HIDDEN;
 
     UnitSyncMovement(gActiveUnit);
@@ -725,7 +834,7 @@ void ClearActiveFactionGrayedStates(void)
         int i;
 
         for (i = 1; i < 0x40; ++i) {
-            struct Unit* unit = _GetUnit(i);
+            struct Unit *unit = _GetUnit(i);
 
             if (!UNIT_IS_VALID(unit))
                 continue;
@@ -741,7 +850,7 @@ void ClearActiveFactionGrayedStates(void)
     }
 
     for (i = gPlaySt.faction + 1; i < gPlaySt.faction + 0x40; ++i) {
-        struct Unit* unit = _GetUnit(i);
+        struct Unit *unit = _GetUnit(i);
 
         if (UNIT_IS_VALID(unit))
             unit->state = unit->state &~ (US_UNSELECTABLE | US_HAS_MOVED | US_HAS_MOVED_AI);
@@ -755,7 +864,7 @@ void TickActiveFactionTurn(void)
     BeginTargetList(0, 0);
 
     for (i = gPlaySt.faction + 1; i < gPlaySt.faction + 0x40; ++i) {
-        struct Unit* unit = _GetUnit(i);
+        struct Unit *unit = _GetUnit(i);
 
         if (!UNIT_IS_VALID(unit))
             continue;
@@ -792,7 +901,7 @@ void SetAllUnitNotBackSprite(void) {
     int i;
 
     for (i = 1; i < 0xC0; i++) {
-        struct Unit* unit = _GetUnit(i);
+        struct Unit *unit = _GetUnit(i);
 
         if (UNIT_IS_VALID(unit))
             unit->state &= ~US_SEEN;
@@ -807,7 +916,7 @@ void UnitUpdateUsedItem(struct Unit *unit, int itemSlot)
     }
 }
 
-int GetUnitAid(struct Unit* unit) {
+int GetUnitAid(struct Unit *unit) {
     if (!(UNIT_CATTRIBUTES(unit) & CA_MOUNTEDAID))
         return UNIT_CON(unit) - 1;
 
@@ -821,7 +930,7 @@ int GetUnitMagRange(struct Unit *unit)
 {
     int ret;
 
-    ret = _GetUnitPower(unit) / 2;
+    ret = GetUnitPower(unit) / 2;
     if (ret < 5)
         ret = 5;
     
@@ -848,4 +957,306 @@ void sub_080188F4(struct Unit *unit, int x, int y)
         unit->xPos = x;
         unit->yPos = y;
     }
+}
+
+int GetUnitKeyItemSlotForTerrain(struct Unit *unit, int terrain) {
+    int slot, item = 0;
+
+    if (UNIT_CATTRIBUTES(unit) & CA_THIEF) {
+        int slot = GetUnitItemSlot(unit, ITEM_LOCKPICK);
+
+        if (slot >= 0)
+            return slot;
+    }
+
+    switch (terrain) {
+
+    case TERRAIN_CHEST:
+        slot = GetUnitItemSlot(unit, ITEM_CHESTKEY);
+
+        if (slot < 0)
+            slot = GetUnitItemSlot(unit, ITEM_CHESTKEY_BUNDLE);
+
+        return slot;
+
+    case TERRAIN_DOOR:
+        item = ITEM_DOORKEY;
+        break;
+
+    } // switch (terrain)
+
+    return GetUnitItemSlot(unit, item);
+}
+
+int GetUnitAidIconId(u32 attributes) {
+    // TODO: use icon id constants
+
+    if (attributes & CA_MOUNTED)
+        return ICON_AID_MOUNT;
+
+    if (attributes & CA_PEGASUS)
+        return ICON_AID_PEGASUS;
+
+    if (attributes & CA_WYVERN)
+        return ICON_AID_WYVERN;
+
+    return ICON_NONE;
+}
+
+int GetUnitWeaponUsabilityBits(struct Unit *unit) {
+    int i, item, result = 0;
+
+    for (i = 0; (i < UNIT_ITEM_COUNT) && (item = unit->items[i]); ++i) {
+        if ((GetItemAttributes(item) & IA_WEAPON) && CanUnitUseWeapon(unit, item))
+            result |= UNIT_USEBIT_WEAPON;
+
+        if ((GetItemAttributes(item) & IA_STAFF) && CanUnitUseStaff(unit, item))
+            result |= UNIT_USEBIT_STAFF;
+    }
+
+    return result;
+}
+
+int GetCombinedEnemyWeaponUsabilityBits(void) {
+    int i, ret = 0;
+
+    for (i = FACTION_RED + 1; i < FACTION_RED + 0x40; ++i) {
+        struct Unit *unit = _GetUnit(i);
+
+        if (UNIT_IS_VALID(unit))
+            ret |= GetUnitWeaponUsabilityBits(unit);
+    }
+
+    return ret;
+}
+
+const char Unk_8AC9228[] = "ーーー";
+
+bool CanActiveUnitStillMove(void)
+{
+    s8 adjLookup[4 * 2] = {
+        -1, 0,
+        0, -1,
+        +1, 0,
+        0, +1,
+    };
+
+    int move = UNIT_MOV(gActiveUnit) - gActionSt.move_count;
+
+    int xUnit = gActiveUnit->xPos;
+    int yUnit = gActiveUnit->yPos;
+
+    int i;
+
+    for (i = 0; i < 4; i++) {
+        int xLocal = xUnit + adjLookup[i * 2 + 0];
+        int yLocal = yUnit + adjLookup[i * 2 + 1];
+
+        int cost;
+
+        if (gBmMapUnit[yLocal][xLocal] & FACTION_RED)
+            continue;
+
+        cost = GetUnitMovementCost(gActiveUnit)[gBmMapTerrain[yLocal][xLocal]];
+
+        if ((cost < 0) || (cost > move))
+            continue;
+
+        return true;
+    }
+
+    return false;
+}
+
+bool IsPositionMagicSealed(int x, int y)
+{
+    int i;
+
+    for (i = 0x81; i < 0xC0; ++i) {
+        struct Unit *unit = _GetUnit(i);
+
+        if (!UNIT_IS_VALID(unit))
+            continue;
+
+        if (!(UNIT_CATTRIBUTES(unit) & CA_MAGICSEAL))
+            continue;
+
+        if (RECT_DISTANCE(unit->xPos, unit->yPos, x, y) <= 10)
+            return true;
+    }
+
+    return false;
+}
+
+bool IsUnitMagicSealed(struct Unit *unit)
+{
+    if (unit->statusIndex == UNIT_STATUS_SILENCED)
+        return true;
+
+    if (IsPositionMagicSealed(unit->xPos, unit->yPos))
+        return true;
+
+    return false;
+}
+
+int GetUnitLastItem(struct Unit *unit)
+{
+    return unit->items[GetUnitItemCount(unit) - 1];
+}
+
+const s8 *GetUnitMovementCost(struct Unit *unit)
+{
+    if (unit->state & US_IN_BALLISTA)
+        return MoveTable_Ballista;
+
+    switch (gPlaySt.chapterWeatherId) {
+
+    case WEATHER_RAIN:
+        return unit->pClassData->pMovCostTable[1];
+
+    case WEATHER_SNOW:
+    case WEATHER_SNOWSTORM:
+        return unit->pClassData->pMovCostTable[2];
+
+    default:
+        return unit->pClassData->pMovCostTable[0];
+
+    } // switch (gPlaySt.chapterWeatherId)
+}
+
+int GetClassSMSId(int jid)
+{
+    return _GetClassData(jid)->SMSId;
+}
+
+void UpdatePrevDeployStates(void)
+{
+    int i;
+
+    for (i = 1; i < 0x40; ++i) {
+        struct Unit *unit = _GetUnit(i);
+
+        if (!UNIT_IS_VALID(unit))
+            continue;
+
+        if (unit->state & US_DEAD) {
+            unit->state |= US_BIT20;
+            unit->state &= ~US_DEAD;
+        } else
+            unit->state &= ~US_BIT20;
+    }
+
+    sub_0807B32C();
+}
+
+void sub_08018C78(void)
+{
+    int i;
+    for (i = 1; i < 0x40; ++i) {
+        struct Unit *unit = _GetUnit(i);
+
+        if (!UNIT_IS_VALID(unit))
+            continue;
+
+        if (unit->state & US_BIT20) {
+            unit->state |= US_DEAD;
+            unit->state &= ~US_BIT20;
+        } else
+            unit->state &= ~US_BIT20;
+    }
+}
+
+void sub_08018CC4(void)
+{
+    int i;
+
+    for (i = 1; i < 0x40; ++i) {
+        struct Unit *unit = _GetUnit(i);
+
+        if (!UNIT_IS_VALID(unit))
+            continue;
+
+        if (unit->state & US_NOT_DEPLOYED)
+            unit->state |= US_BIT21;
+        else
+            unit->state &= ~US_BIT21;
+        
+        if (unit->state & US_BIT16)
+            unit->state |= US_BIT26;
+        else
+            unit->state &= ~US_BIT26;
+    }
+
+    if (gPlaySt.chapterStateBits & PLAY_FLAG_PREPSCREEN) {
+        for (i = 1; i < 0x40; i++) {
+            u8 *buf;
+            struct Unit *unit = _GetUnit(i);
+
+            if (!UNIT_IS_VALID(unit))
+                continue;
+            
+            buf = (void *)&unit->ai3And4;
+            buf[0] = unit->xPos;
+            buf[1] = unit->yPos;
+        }
+    }
+
+    sub_0807B32C();
+}
+
+void sub_08018D70(void)
+{
+    int i, j;
+
+    sub_0807B32C();
+
+    for (i = 1; i < 0x40; ++i) {
+        struct Unit *unit = _GetUnit(i);
+
+        if (!UNIT_IS_VALID(unit))
+            continue;
+        
+        if (unit->state & US_BIT22) {
+            ClearUnit(unit);
+            continue;
+        }
+
+        if (unit->state & US_BIT21)
+            unit->state |= US_NOT_DEPLOYED;
+        else
+            unit->state &= ~US_NOT_DEPLOYED;
+        
+        if (unit->state & 0x4000000)
+            unit->state |= US_BIT16;
+        else
+            unit->state &= ~US_BIT16;
+
+        unit->state |= 0x1;
+    }
+
+    if (gPlaySt.chapterStateBits & PLAY_FLAG_PREPSCREEN) {
+        for (j = 1; j < 0x40; j++) {
+            u8 *buf;
+            struct Unit *unit = _GetUnit(j);
+
+            if (!UNIT_IS_VALID(unit))
+                continue;
+            
+            buf = (void *)&unit->ai3And4;
+            unit->xPos = buf[0];
+            unit->yPos = buf[1];
+            unit->ai3And4 = 0;
+        }
+    }
+
+    for (i = 0x41; i < 0xC0; i++) {
+        struct Unit *unit = _GetUnit(i);
+
+        if (!UNIT_IS_VALID(unit))
+            continue;
+
+        ClearUnit(unit);
+    }
+
+    sub_080799E4();
 }

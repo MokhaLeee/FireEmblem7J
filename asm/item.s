@@ -96,8 +96,8 @@ _0801650C:
 _08016512:
 	bx lr
 
-	thumb_func_start sub_08016514
-sub_08016514: @ 0x08016514
+	thumb_func_start GetItemSklBonus
+GetItemSklBonus: @ 0x08016514
 	adds r1, r0, #0
 	cmp r1, #0
 	beq _0801652E
@@ -123,8 +123,8 @@ _08016538:
 _0801653E:
 	bx lr
 
-	thumb_func_start sub_08016540
-sub_08016540: @ 0x08016540
+	thumb_func_start GetItemSpdBonus
+GetItemSpdBonus: @ 0x08016540
 	adds r1, r0, #0
 	cmp r1, #0
 	beq _0801655A
@@ -150,8 +150,8 @@ _08016564:
 _0801656A:
 	bx lr
 
-	thumb_func_start sub_0801656C
-sub_0801656C: @ 0x0801656C
+	thumb_func_start GetItemDefBonus
+GetItemDefBonus: @ 0x0801656C
 	adds r1, r0, #0
 	cmp r1, #0
 	beq _08016586
@@ -177,8 +177,8 @@ _08016590:
 _08016596:
 	bx lr
 
-	thumb_func_start sub_08016598
-sub_08016598: @ 0x08016598
+	thumb_func_start GetItemResBonus
+GetItemResBonus: @ 0x08016598
 	adds r1, r0, #0
 	cmp r1, #0
 	beq _080165B2
@@ -204,8 +204,8 @@ _080165BC:
 _080165C2:
 	bx lr
 
-	thumb_func_start sub_080165C4
-sub_080165C4: @ 0x080165C4
+	thumb_func_start GetItemLckBonus
+GetItemLckBonus: @ 0x080165C4
 	adds r1, r0, #0
 	cmp r1, #0
 	beq _080165DE
@@ -673,7 +673,7 @@ _08016906:
 	ldr r0, _08016968 @ =0x08C51538
 	adds r4, r1, r0
 	ldrh r0, [r4]
-	bl sub_08013318
+	bl DecodeMsg
 	bl sub_08013488
 	adds r1, r0, #0
 	adds r0, r5, #0
@@ -749,7 +749,7 @@ _0801699C:
 	ldr r0, _08016A30 @ =0x08C51538
 	adds r5, r1, r0
 	ldrh r0, [r5]
-	bl sub_08013318
+	bl DecodeMsg
 	bl sub_08013488
 	adds r1, r0, #0
 	adds r0, r4, #0
@@ -841,7 +841,7 @@ sub_08016A4C: @ 0x08016A4C
 	ldr r0, _08016AB4 @ =0x08C51538
 	adds r5, r1, r0
 	ldrh r0, [r5]
-	bl sub_08013318
+	bl DecodeMsg
 	bl sub_08013488
 	adds r1, r0, #0
 	adds r0, r4, #0
@@ -911,7 +911,7 @@ sub_08016AD0: @ 0x08016AD0
 	ldr r0, _08016B74 @ =0x08C51538
 	adds r6, r1, r0
 	ldrh r0, [r6]
-	bl sub_08013318
+	bl DecodeMsg
 	bl sub_08013488
 	adds r1, r0, #0
 	mov r0, r8
@@ -1716,7 +1716,7 @@ _0801712E:
 	cmp r0, #0
 	beq _08017154
 	adds r0, r3, #0
-	bl sub_08018EC0
+	bl GetUnitPower
 	adds r4, r4, r0
 	cmp r4, #0x50
 	ble _08017154
@@ -1729,8 +1729,8 @@ _08017154:
 	.align 2, 0
 _0801715C: .4byte 0x08C51538
 
-	thumb_func_start sub_08017160
-sub_08017160: @ 0x08017160
+	thumb_func_start GetUnitItemSlot
+GetUnitItemSlot: @ 0x08017160
 	push {r4, r5, lr}
 	movs r3, #0
 	movs r4, #0xff
@@ -2374,7 +2374,7 @@ sub_08017610: @ 0x08017610
 	ldr r0, _08017630 @ =0x08C51538
 	adds r1, r1, r0
 	ldrh r0, [r1]
-	bl sub_08013318
+	bl DecodeMsg
 	bl sub_08013488
 	pop {r1}
 	bx r1

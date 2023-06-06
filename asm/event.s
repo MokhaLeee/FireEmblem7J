@@ -478,7 +478,7 @@ _0800A886:
 _0800A890: .4byte 0x03000108
 _0800A894:
 	ldr r0, [r5, #4]
-	bl sub_08013318
+	bl DecodeMsg
 	bl sub_080054CC
 	b _0800A8D6
 _0800A8A0:
@@ -490,7 +490,7 @@ _0800A8A8:
 	ldr r0, [r0]
 	ldr r0, [r0]
 	ldrh r0, [r0]
-	bl sub_08013318
+	bl DecodeMsg
 	bl sub_080054CC
 	b _0800A8D6
 	.align 2, 0
@@ -574,7 +574,7 @@ _0800A956:
 _0800A960:
 	add r4, sp, #0x10
 	ldr r0, [r5, #4]
-	bl sub_08013318
+	bl DecodeMsg
 	b _0800A992
 _0800A96A:
 	add r0, sp, #0x10
@@ -587,7 +587,7 @@ _0800A974:
 	ldr r0, [r0]
 	ldr r0, [r0]
 	ldrh r0, [r0]
-	bl sub_08013318
+	bl DecodeMsg
 	b _0800A992
 	.align 2, 0
 _0800A984: .4byte 0x03000104

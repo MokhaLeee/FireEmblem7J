@@ -29,10 +29,10 @@ DoItemHealStaffAction: @ 0x0802C7E4
 	ldrb r0, [r4, #0xd]
 	bl GetUnit
 	adds r1, r5, #0
-	bl sub_0801906C
+	bl AddUnitHp
 	ldrb r0, [r4, #0xd]
 	bl GetUnit
-	bl sub_08018E60
+	bl GetUnitCurrentHp
 	ldr r1, _0802C864 @ =0x0203A508
 	ldr r1, [r1]
 	ldr r5, _0802C868 @ =0x0203A46C
@@ -41,7 +41,7 @@ DoItemHealStaffAction: @ 0x0802C7E4
 	strb r0, [r1, #3]
 	ldrb r0, [r4, #0xd]
 	bl GetUnit
-	bl sub_08018E60
+	bl GetUnitCurrentHp
 	strb r0, [r5, #0x13]
 	adds r0, r6, #0
 	bl sub_0802AA9C
@@ -629,7 +629,7 @@ _0802CD24:
 	asrs r0, r0, #0x18
 	bl GetUnit
 	adds r1, r6, #0
-	bl sub_0801906C
+	bl AddUnitHp
 	adds r4, #1
 	cmp r4, r5
 	blt _0802CD24
@@ -734,10 +734,10 @@ _0802CE14:
 	asrs r0, r0, #0x18
 	bl GetUnit
 	adds r4, r0, #0
-	bl sub_08018EA0
+	bl GetUnitMaxHp
 	adds r1, r0, #0
 	adds r0, r4, #0
-	bl sub_08019030
+	bl SetUnitHp
 	adds r0, r4, #0
 	movs r1, #0
 	bl SetUnitStatus
@@ -767,10 +767,10 @@ sub_0802CE54: @ 0x0802CE54
 	ldrb r0, [r5, #0xc]
 	bl GetUnit
 	adds r1, r4, #0
-	bl sub_0801906C
+	bl AddUnitHp
 	ldrb r0, [r5, #0xc]
 	bl GetUnit
-	bl sub_08018E60
+	bl GetUnitCurrentHp
 	ldr r1, _0802CEB0 @ =0x0203A508
 	ldr r1, [r1]
 	ldr r4, _0802CEB4 @ =0x0203A3EC
@@ -779,7 +779,7 @@ sub_0802CE54: @ 0x0802CE54
 	strb r0, [r1, #3]
 	ldrb r0, [r5, #0xc]
 	bl GetUnit
-	bl sub_08018E60
+	bl GetUnitCurrentHp
 	strb r0, [r4, #0x13]
 	adds r4, #0x4a
 	movs r0, #0x6b
@@ -809,13 +809,13 @@ sub_0802CEB8: @ 0x0802CEB8
 	adds r5, r0, #0
 	ldrb r0, [r4, #0xc]
 	bl GetUnit
-	bl sub_08018EA0
+	bl GetUnitMaxHp
 	adds r1, r0, #0
 	adds r0, r5, #0
-	bl sub_08019030
+	bl SetUnitHp
 	ldrb r0, [r4, #0xc]
 	bl GetUnit
-	bl sub_08018E60
+	bl GetUnitCurrentHp
 	ldr r1, _0802CF1C @ =0x0203A508
 	ldr r1, [r1]
 	ldr r5, _0802CF20 @ =0x0203A3EC
@@ -824,7 +824,7 @@ sub_0802CEB8: @ 0x0802CEB8
 	strb r0, [r1, #3]
 	ldrb r0, [r4, #0xc]
 	bl GetUnit
-	bl sub_08018E60
+	bl GetUnitCurrentHp
 	strb r0, [r5, #0x13]
 	adds r0, r6, #0
 	bl sub_0802AA9C
@@ -1345,7 +1345,7 @@ _0802D35A:
 	bl sub_08017808
 	adds r4, r0, #0
 	adds r0, r5, #0
-	bl sub_08013318
+	bl DecodeMsg
 	adds r2, r0, #0
 	adds r0, r7, #0
 	adds r1, r4, #0

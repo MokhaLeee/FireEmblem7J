@@ -257,7 +257,7 @@ sub_08007EAC: @ 0x08007EAC
 	adds r4, r0, #0
 	adds r5, r1, #0
 	adds r0, r2, #0
-	bl sub_08013318
+	bl DecodeMsg
 	adds r2, r0, #0
 	adds r0, r4, #0
 	adds r1, r5, #0
@@ -275,7 +275,7 @@ sub_08007ECC: @ 0x08007ECC
 	adds r5, r1, #0
 	adds r0, r2, #0
 	adds r6, r3, #0
-	bl sub_08013318
+	bl DecodeMsg
 	adds r2, r0, #0
 	adds r0, r4, #0
 	adds r1, r5, #0
@@ -1956,7 +1956,7 @@ _08008D04:
 	bne _08008D30
 	ldr r0, _08008D2C @ =gActiveUnit
 	ldr r0, [r0]
-	bl sub_08018FC8
+	bl GetUnitPortraitId
 	adds r4, r0, #0
 	b _08008D34
 	.align 2, 0
@@ -2683,7 +2683,7 @@ sub_0800925C: @ 0x0800925C
 	adds r0, r0, r4
 	mov r8, r0
 	ldrh r0, [r7]
-	bl sub_08013318
+	bl DecodeMsg
 	adds r3, r0, #0
 	adds r0, r6, #0
 	mov r1, r8
@@ -2691,7 +2691,7 @@ sub_0800925C: @ 0x0800925C
 	bl sub_080059DC
 	adds r4, #0x38
 	ldrh r0, [r7, #8]
-	bl sub_08013318
+	bl DecodeMsg
 	adds r3, r0, #0
 	adds r0, r6, #0
 	adds r1, r4, #0

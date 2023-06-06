@@ -508,26 +508,26 @@ sub_08028A60: @ 0x08028A60
 	movs r2, #0x48
 	bl memcpy
 	adds r0, r6, #0
-	bl sub_08018EA0
+	bl GetUnitMaxHp
 	movs r4, #0
 	strb r0, [r5, #0x12]
 	adds r0, r6, #0
-	bl sub_08018EC0
+	bl GetUnitPower
 	strb r0, [r5, #0x14]
 	adds r0, r6, #0
-	bl sub_08018EE0
+	bl GetUnitSkill
 	strb r0, [r5, #0x15]
 	adds r0, r6, #0
-	bl sub_08018F20
+	bl GetUnitSpeed
 	strb r0, [r5, #0x16]
 	adds r0, r6, #0
-	bl sub_08018F60
+	bl GetUnitDefense
 	strb r0, [r5, #0x17]
 	adds r0, r6, #0
-	bl sub_08018FA8
+	bl GetUnitLuck
 	strb r0, [r5, #0x19]
 	adds r0, r6, #0
-	bl sub_08018F80
+	bl GetUnitResistance
 	strb r0, [r5, #0x18]
 	ldr r1, [r6, #4]
 	ldr r0, [r6]
@@ -4892,15 +4892,15 @@ sub_0802AB1C: @ 0x0802AB1C
 	push {r4, r5, r6, r7, lr}
 	adds r5, r0, #0
 	adds r6, r1, #0
-	bl sub_08018EC0
+	bl GetUnitPower
 	adds r4, r0, #0
 	adds r0, r6, #0
-	bl sub_08018F80
+	bl GetUnitResistance
 	subs r4, r4, r0
 	lsls r0, r4, #2
 	adds r7, r0, r4
 	adds r0, r5, #0
-	bl sub_08018EE0
+	bl GetUnitSkill
 	adds r4, r0, #0
 	movs r2, #0x10
 	ldrsb r2, [r5, r2]

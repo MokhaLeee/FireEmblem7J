@@ -661,7 +661,7 @@ sub_0801DCB4: @ 0x0801DCB4
 	ldr r0, _0801DD20 @ =gBmSt
 	strh r5, [r0, #0x2c]
 	adds r0, r4, #0
-	bl sub_08018FC8
+	bl GetUnitPortraitId
 	adds r1, r0, #0
 	movs r0, #2
 	str r0, [sp]
@@ -685,7 +685,7 @@ sub_0801DCB4: @ 0x0801DCB4
 	cmp r0, #0x63
 	bgt _0801DD28
 	ldr r0, _0801DD24 @ =0x000006F5
-	bl sub_08013318
+	bl DecodeMsg
 	adds r1, r0, #0
 	adds r0, r6, #0
 	bl sub_08032A90
@@ -696,7 +696,7 @@ _0801DD20: .4byte gBmSt
 _0801DD24: .4byte 0x000006F5
 _0801DD28:
 	ldr r0, _0801DD4C @ =0x000006F6
-	bl sub_08013318
+	bl DecodeMsg
 	adds r1, r0, #0
 	adds r0, r6, #0
 	bl sub_08032A90
@@ -1570,7 +1570,7 @@ _0801E414:
 _0801E41C:
 	adds r0, r4, #0
 	bl sub_0801764C
-	bl sub_08013318
+	bl DecodeMsg
 	adds r4, r0, #0
 	movs r5, #0
 	ldr r7, [sp, #4]
@@ -3752,12 +3752,12 @@ sub_0801F514: @ 0x0801F514
 	movs r1, #0
 	bl sub_08005450
 	ldr r0, _0801F640 @ =0x00000726
-	bl sub_08013318
+	bl DecodeMsg
 	adds r1, r0, #0
 	add r0, sp, #4
 	bl sub_080055DC
 	ldr r0, _0801F644 @ =0x00000727
-	bl sub_08013318
+	bl DecodeMsg
 	adds r1, r0, #0
 	adds r0, r7, #0
 	bl sub_080055DC
@@ -3866,7 +3866,7 @@ sub_0801F650: @ 0x0801F650
 	movs r1, #0
 	bl sub_08005450
 	adds r0, r4, #0
-	bl sub_08013318
+	bl DecodeMsg
 	adds r1, r0, #0
 	add r0, sp, #4
 	bl sub_080055DC
