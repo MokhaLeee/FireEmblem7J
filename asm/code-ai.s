@@ -1295,7 +1295,7 @@ _080357AA:
 	beq _080357D4
 	ldr r0, [r6]
 	ldrb r1, [r4, #7]
-	bl sub_08016C54
+	bl EquipUnitItemSlot
 	movs r0, #0
 	b _080357D6
 	.align 2, 0
@@ -7400,7 +7400,7 @@ _080385FE:
 	bne _08038660
 _0803863A:
 	mov r0, r8
-	bl sub_080176E8
+	bl GetItemMight
 	adds r4, r0, #0
 	adds r0, r5, #0
 	adds r1, r6, #0
@@ -8581,7 +8581,7 @@ _08038F70:
 	adds r0, r4, #0
 	adds r1, r7, #0
 	str r2, [sp, #0x14]
-	bl sub_08034BA0
+	bl GetBallistaItemAt
 	lsls r0, r0, #0x10
 	lsrs r5, r0, #0x10
 	ldr r2, [sp, #0x14]
@@ -9227,7 +9227,7 @@ sub_08039458: @ 0x08039458
 	ldrb r3, [r5, #1]
 	ldrh r4, [r5, #4]
 	str r4, [sp]
-	bl sub_08028830
+	bl BattleGenerateSimulation
 	b _0803949E
 	.align 2, 0
 _08039480: .4byte 0x0000FFFF
@@ -9241,7 +9241,7 @@ _08039488:
 	ldrb r2, [r5]
 	ldrb r3, [r5, #1]
 	adds r0, r4, #0
-	bl sub_0802887C
+	bl BattleGenerateBallistaSimulation
 _0803949E:
 	adds r0, r5, #0
 	bl sub_08039454
@@ -9265,7 +9265,7 @@ _080394BC:
 	thumb_func_start sub_080394C4
 sub_080394C4: @ 0x080394C4
 	push {r4, lr}
-	ldr r3, _080394D4 @ =0x0203A46C
+	ldr r3, _080394D4 @ =gBattleTarget
 	movs r0, #0x13
 	ldrsb r0, [r3, r0]
 	cmp r0, #0
@@ -9273,9 +9273,9 @@ sub_080394C4: @ 0x080394C4
 	movs r0, #0x32
 	b _08039516
 	.align 2, 0
-_080394D4: .4byte 0x0203A46C
+_080394D4: .4byte gBattleTarget
 _080394D8:
-	ldr r1, _0803951C @ =0x0203A3EC
+	ldr r1, _0803951C @ =gBattleActor
 	adds r0, r1, #0
 	adds r0, #0x5a
 	movs r4, #0
@@ -9312,12 +9312,12 @@ _08039516:
 	pop {r1}
 	bx r1
 	.align 2, 0
-_0803951C: .4byte 0x0203A3EC
+_0803951C: .4byte gBattleActor
 _08039520: .4byte 0x030013C0
 
 	thumb_func_start sub_08039524
 sub_08039524: @ 0x08039524
-	ldr r0, _08039540 @ =0x0203A46C
+	ldr r0, _08039540 @ =gBattleTarget
 	movs r1, #0x13
 	ldrsb r1, [r0, r1]
 	movs r0, #0x14
@@ -9333,7 +9333,7 @@ _0803953C:
 	adds r0, r1, #0
 	bx lr
 	.align 2, 0
-_08039540: .4byte 0x0203A46C
+_08039540: .4byte gBattleTarget
 _08039544: .4byte 0x030013C0
 
 	thumb_func_start sub_08039548
@@ -9347,7 +9347,7 @@ sub_08039548: @ 0x08039548
 	ldrb r2, [r4]
 	cmp r2, #0x7f
 	beq _080395BC
-	ldr r0, _080395DC @ =0x0203A3EC
+	ldr r0, _080395DC @ =gBattleActor
 	mov sb, r0
 	ldr r1, _080395E0 @ =gBmMapSize
 	mov r8, r1
@@ -9415,7 +9415,7 @@ _080395CA:
 	bx r1
 	.align 2, 0
 _080395D8: .4byte 0x08C07CBC
-_080395DC: .4byte 0x0203A3EC
+_080395DC: .4byte gBattleActor
 _080395E0: .4byte gBmMapSize
 _080395E4: .4byte gBmMapUnit
 _080395E8: .4byte 0x030013C0
@@ -9423,7 +9423,7 @@ _080395E8: .4byte 0x030013C0
 	thumb_func_start sub_080395EC
 sub_080395EC: @ 0x080395EC
 	push {lr}
-	ldr r0, _08039618 @ =0x0203A46C
+	ldr r0, _08039618 @ =gBattleTarget
 	ldr r0, [r0, #4]
 	ldrb r0, [r0, #4]
 	bl sub_080374F8
@@ -9445,7 +9445,7 @@ _08039614:
 	pop {r1}
 	bx r1
 	.align 2, 0
-_08039618: .4byte 0x0203A46C
+_08039618: .4byte gBattleTarget
 _0803961C: .4byte 0x030013C0
 
 	thumb_func_start sub_08039620
@@ -9464,7 +9464,7 @@ _08039634: .4byte 0x030013C0
 	thumb_func_start sub_08039638
 sub_08039638: @ 0x08039638
 	push {lr}
-	ldr r2, _0803964C @ =0x0203A46C
+	ldr r2, _0803964C @ =gBattleTarget
 	adds r0, r2, #0
 	adds r0, #0x48
 	ldrh r0, [r0]
@@ -9474,13 +9474,13 @@ sub_08039638: @ 0x08039638
 	rsbs r0, r0, #0
 	b _0803968C
 	.align 2, 0
-_0803964C: .4byte 0x0203A46C
+_0803964C: .4byte gBattleTarget
 _08039650:
 	adds r0, r2, #0
 	adds r0, #0x5a
 	movs r3, #0
 	ldrsh r1, [r0, r3]
-	ldr r0, _08039690 @ =0x0203A3EC
+	ldr r0, _08039690 @ =gBattleActor
 	adds r0, #0x5c
 	movs r3, #0
 	ldrsh r0, [r0, r3]
@@ -9511,12 +9511,12 @@ _0803968C:
 	pop {r1}
 	bx r1
 	.align 2, 0
-_08039690: .4byte 0x0203A3EC
+_08039690: .4byte gBattleActor
 _08039694: .4byte 0x030013C0
 
 	thumb_func_start sub_08039698
 sub_08039698: @ 0x08039698
-	ldr r2, _080396C4 @ =0x0203A3EC
+	ldr r2, _080396C4 @ =gBattleActor
 	movs r0, #0x11
 	ldrsb r0, [r2, r0]
 	ldr r1, _080396C8 @ =0x0202E3F0
@@ -9540,13 +9540,13 @@ _080396C0:
 	adds r0, r1, #0
 	bx lr
 	.align 2, 0
-_080396C4: .4byte 0x0203A3EC
+_080396C4: .4byte gBattleActor
 _080396C8: .4byte 0x0202E3F0
 _080396CC: .4byte 0x030013C0
 
 	thumb_func_start sub_080396D0
 sub_080396D0: @ 0x080396D0
-	ldr r0, _080396EC @ =0x0203A3EC
+	ldr r0, _080396EC @ =gBattleActor
 	movs r1, #0x13
 	ldrsb r1, [r0, r1]
 	movs r0, #0x14
@@ -9562,7 +9562,7 @@ _080396E8:
 	adds r0, r1, #0
 	bx lr
 	.align 2, 0
-_080396EC: .4byte 0x0203A3EC
+_080396EC: .4byte gBattleActor
 _080396F0: .4byte 0x030013C0
 
 	thumb_func_start sub_080396F4
@@ -9831,12 +9831,12 @@ _080398E8:
 	cmp r0, #0
 	beq _0803990E
 	adds r0, r4, #0
-	bl sub_080176E8
+	bl GetItemMight
 	cmp r0, sb
 	ble _0803990E
 	mov r8, r4
 	mov r0, r8
-	bl sub_080176E8
+	bl GetItemMight
 	lsls r0, r0, #0x18
 	lsrs r0, r0, #0x18
 	mov sb, r0
@@ -10686,7 +10686,7 @@ _08039F78:
 	strh r0, [r6]
 _08039F7E:
 	adds r0, r5, #0
-	bl sub_080176E8
+	bl GetItemMight
 	lsls r0, r0, #8
 	ldrh r1, [r6]
 	orrs r0, r1
@@ -10920,7 +10920,7 @@ _0803A136:
 	ldr r0, _0803A154 @ =gActiveUnit
 	ldr r0, [r0]
 	adds r1, r5, #0
-	bl sub_08016C54
+	bl EquipUnitItemSlot
 _0803A14C:
 	pop {r4, r5, r6, r7}
 	pop {r0}
@@ -11041,7 +11041,7 @@ sub_0803A1FC: @ 0x0803A1FC
 	bl GetUnitPower
 	adds r5, r0, #0
 	adds r0, r4, #0
-	bl sub_080176E8
+	bl GetItemMight
 	adds r5, r5, r0
 	adds r0, r5, #0
 	pop {r4, r5, r6}

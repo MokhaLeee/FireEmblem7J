@@ -50,7 +50,7 @@ AgbMain: @ 0x08000A20
 	ldr r0, [r4]
 	bl sub_08001C28
 	ldr r0, [r4]
-	bl sub_08001BA0
+	bl UpdateKeyStatus
 	bl InitRamFuncs
 	bl SramInit
 	bl Proc_Init

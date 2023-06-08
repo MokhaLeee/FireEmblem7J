@@ -114,8 +114,6 @@ struct ClassData {
     /* 48 */ const s8* pTerrainDefenseLookup;
     /* 4C */ const s8* pTerrainResistanceLookup;
 
-    //* 44 */ const s8* pTerrainBonusTables[3]; // def, avo, res
-
     /* 50 */ const void* _pU50;
 };
 
@@ -254,10 +252,6 @@ enum {
 
     UNIT_STATUS_SICK = 9,
     UNIT_STATUS_RECOVER = 10,
-
-    UNIT_STATUS_PETRIFY = 11,
-    UNIT_STATUS_12 = 12,
-    UNIT_STATUS_13 = 13,
 };
 
 enum {

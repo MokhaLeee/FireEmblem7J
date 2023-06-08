@@ -697,7 +697,7 @@ sub_08021F10: @ 0x08021F10
 	push {r4, r5, lr}
 	sub sp, #4
 	ldr r0, _08021F54 @ =0x08C04D20
-	bl sub_0804AA58
+	bl StartMenu
 	adds r5, r0, #0
 	ldr r4, _08021F58 @ =gActiveUnit
 	ldr r0, [r4]
@@ -731,7 +731,7 @@ sub_08021F5C: @ 0x08021F5C
 	push {r4, r5, lr}
 	sub sp, #4
 	ldr r0, _08021FA4 @ =0x08C04D44
-	bl sub_0804AA58
+	bl StartMenu
 	adds r5, r0, #0
 	ldr r4, _08021FA8 @ =gActiveUnit
 	ldr r0, [r4]
@@ -865,7 +865,7 @@ sub_0802206C: @ 0x0802206C
 	ldrb r1, [r1]
 	lsls r1, r1, #0x18
 	asrs r1, r1, #0x18
-	bl sub_08016C54
+	bl EquipUnitItemSlot
 	ldr r1, _080220A8 @ =gActionSt
 	movs r0, #0
 	strb r0, [r1, #0x12]
@@ -1080,7 +1080,7 @@ _08022216:
 	movs r3, #0x11
 	ldrsb r3, [r0, r3]
 	adds r1, r5, #0
-	bl sub_0802887C
+	bl BattleGenerateBallistaSimulation
 	b _08022250
 	.align 2, 0
 _08022234: .4byte gActionSt
@@ -1094,7 +1094,7 @@ _0802223C:
 	str r1, [sp]
 	adds r1, r5, #0
 	adds r2, r3, #0
-	bl sub_08028830
+	bl BattleGenerateSimulation
 _08022250:
 	bl sub_0803463C
 	movs r0, #0
@@ -1530,7 +1530,7 @@ _0802256A:
 _08022584: .4byte gActiveUnit
 _08022588:
 	ldr r0, _080225D8 @ =0x08C04CB4
-	bl sub_0804AA58
+	bl StartMenu
 	adds r5, r0, #0
 	ldr r4, _080225DC @ =gActiveUnit
 	ldr r0, [r4]
@@ -1613,7 +1613,7 @@ sub_08022614: @ 0x08022614
 	bl ApplyIconPalettes
 	bl sub_08005308
 	ldr r0, _08022668 @ =0x08C04CFC
-	bl sub_0804AA58
+	bl StartMenu
 	adds r5, r0, #0
 	ldr r4, _0802266C @ =gActiveUnit
 	ldr r0, [r4]
@@ -1795,7 +1795,7 @@ sub_08022754: @ 0x08022754
 	ldr r0, _080227C0 @ =0x08C04C90
 	adds r1, r5, #0
 	adds r2, r4, #0
-	bl sub_0804AA68
+	bl StartLockingMenuExt
 	movs r0, #4
 	pop {r4, r5}
 	pop {r1}
@@ -1907,7 +1907,7 @@ sub_0802287C: @ 0x0802287C
 	adds r0, r4, #0
 	bl sub_08022828
 	ldr r0, _080228CC @ =0x08C04CFC
-	bl sub_0804AA58
+	bl StartMenu
 	adds r5, r0, #0
 	ldr r4, _080228D0 @ =gActiveUnit
 	ldr r0, [r4]
@@ -1973,7 +1973,7 @@ sub_080228D4: @ 0x080228D4
 	movs r0, #3
 	bl EnableBgSync
 	ldr r0, _08022970 @ =0x08C04CFC
-	bl sub_0804AA58
+	bl StartMenu
 	adds r4, r0, #0
 	ldr r0, [r6]
 	bl GetUnitPortraitId
@@ -2226,7 +2226,7 @@ sub_08022B28: @ 0x08022B28
 	ldr r0, [r0]
 	ldr r1, _08022B50 @ =gActionSt
 	ldrb r1, [r1, #0x12]
-	bl sub_08016C54
+	bl EquipUnitItemSlot
 	adds r0, r4, #0
 	bl sub_0802287C
 	lsls r0, r0, #0x18
@@ -2305,7 +2305,7 @@ sub_08022B9C: @ 0x08022B9C
 	ldr r0, _08022BF8 @ =0x08C04C6C
 	adds r1, r3, #0
 	adds r2, r4, #0
-	bl sub_0804AA68
+	bl StartLockingMenuExt
 	adds r0, #0x61
 	movs r1, #1
 	strb r1, [r0]
@@ -2375,7 +2375,7 @@ _08022C60:
 	ldrsb r0, [r2, r0]
 	movs r1, #0x11
 	ldrsb r1, [r2, r1]
-	bl sub_08034BA0
+	bl GetBallistaItemAt
 	movs r1, #0xff
 	lsls r1, r1, #8
 	ands r1, r0
@@ -2408,7 +2408,7 @@ _08022C92:
 	ldrb r1, [r1, #0x11]
 	lsls r1, r1, #0x18
 	asrs r1, r1, #0x18
-	bl sub_08034BA0
+	bl GetBallistaItemAt
 	adds r1, r0, #0
 	adds r0, r4, #0
 	adds r0, #0x34
@@ -2473,7 +2473,7 @@ sub_08022CFC: @ 0x08022CFC
 	ldrb r1, [r1, #0x11]
 	lsls r1, r1, #0x18
 	asrs r1, r1, #0x18
-	bl sub_08034BA0
+	bl GetBallistaItemAt
 	adds r5, r0, #0
 	bl sub_0801E364
 	ldr r0, [r4]
@@ -2585,7 +2585,7 @@ sub_08022DFC: @ 0x08022DFC
 	movs r0, #4
 	bl ApplyIconPalettes
 	ldr r0, _08022E4C @ =0x08C04CD8
-	bl sub_0804AA58
+	bl StartMenu
 	adds r5, r0, #0
 	ldr r4, _08022E50 @ =gActiveUnit
 	ldr r0, [r4]
@@ -2701,7 +2701,7 @@ sub_08022EF4: @ 0x08022EF4
 	ldrb r1, [r1]
 	lsls r1, r1, #0x18
 	asrs r1, r1, #0x18
-	bl sub_08016C54
+	bl EquipUnitItemSlot
 	ldr r4, _08022F30 @ =gActionSt
 	movs r0, #0
 	strb r0, [r4, #0x12]
@@ -3516,7 +3516,7 @@ sub_080234D0: @ 0x080234D0
 	movs r0, #4
 	bl ApplyIconPalettes
 	ldr r0, _08023564 @ =0x08C04BDC
-	bl sub_0804AA58
+	bl StartMenu
 	adds r0, r4, #0
 	bl sub_0804B6DC
 	ldr r0, _08023568 @ =0x020234E4
@@ -3768,7 +3768,7 @@ sub_080236D4: @ 0x080236D4
 	ldrb r1, [r1, #0x11]
 	lsls r1, r1, #0x18
 	asrs r1, r1, #0x18
-	bl sub_08034BA0
+	bl GetBallistaItemAt
 	adds r2, r0, #0
 	adds r0, r5, #0
 	adds r1, r4, #0

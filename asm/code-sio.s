@@ -19311,7 +19311,7 @@ sub_0804614C: @ 0x0804614C
 	movs r0, #4
 	bl ApplyIconPalettes
 	ldr r0, _08046198 @ =0x08C09B0C
-	bl sub_0804AA58
+	bl StartMenu
 	pop {r4}
 	pop {r0}
 	bx r0
@@ -19524,7 +19524,7 @@ _0804633C:
 	ldr r0, [r7]
 	mov r2, r8
 	ldrb r1, [r2, #7]
-	bl sub_08016C54
+	bl EquipUnitItemSlot
 	ldr r4, [r5, #0xc]
 	movs r0, #0x80
 	lsls r0, r0, #2
@@ -19550,7 +19550,7 @@ _08046366:
 	str r4, [sp]
 	mov r0, sb
 	adds r1, r5, #0
-	bl sub_08028830
+	bl BattleGenerateSimulation
 	bl sub_0803463C
 	ldr r0, [r7]
 	bl sub_080452F8
@@ -19889,10 +19889,10 @@ sub_08046604: @ 0x08046604
 	ldr r0, _08046688 @ =0x0300141C
 	ldrb r1, [r0, #3]
 	adds r0, r6, #0
-	bl sub_08016C54
+	bl EquipUnitItemSlot
 	adds r0, r6, #0
 	mov r1, r8
-	bl sub_08028868
+	bl BattleGenerateReal
 	ldr r1, _0804668C @ =gBmSt
 	movs r0, #0x40
 	ldrb r2, [r1, #4]
@@ -19947,7 +19947,7 @@ sub_08046694: @ 0x08046694
 	mov r2, r8
 	adds r2, #0x30
 	adds r3, r0, r2
-	ldr r1, _08046788 @ =0x0203A3EC
+	ldr r1, _08046788 @ =gBattleActor
 	mov sb, r1
 	adds r1, #0x6e
 	ldrb r1, [r1]
@@ -19962,7 +19962,7 @@ sub_08046694: @ 0x08046694
 	lsrs r0, r5, #6
 	lsls r0, r0, #3
 	adds r2, r0, r2
-	ldr r4, _0804678C @ =0x0203A46C
+	ldr r4, _0804678C @ =gBattleTarget
 	adds r1, r4, #0
 	adds r1, #0x6e
 	ldrb r1, [r1]
@@ -20027,8 +20027,8 @@ _08046740:
 	.align 2, 0
 _08046780: .4byte 0x03001400
 _08046784: .4byte 0x0203DC74
-_08046788: .4byte 0x0203A3EC
-_0804678C: .4byte 0x0203A46C
+_08046788: .4byte gBattleActor
+_0804678C: .4byte gBattleTarget
 _08046790:
 	ldr r1, _080467AC @ =0x0203DC74
 	movs r0, #0
@@ -20803,12 +20803,12 @@ _08046D96:
 	cmp r0, #0
 	beq _08046DB8
 	adds r0, r4, #0
-	bl sub_080176E8
+	bl GetItemMight
 	cmp r0, r8
 	bls _08046DB8
 	adds r7, r4, #0
 	adds r0, r7, #0
-	bl sub_080176E8
+	bl GetItemMight
 	mov r8, r0
 _08046DB8:
 	adds r5, #1
@@ -22101,8 +22101,8 @@ sub_08047784: @ 0x08047784
 	cmp r0, #0
 	beq _080477B4
 	movs r0, #1
-	bl sub_0804B970
-	bl sub_08051180
+	bl SetBanimLinkArenaFlag
+	bl BeginAnimsOnBattleAnimations
 	b _080477CA
 	.align 2, 0
 _080477B0: .4byte 0x02023C60
@@ -22110,7 +22110,7 @@ _080477B4:
 	bl sub_0806D4A4
 	bl RenderMap
 	bl sub_0806FA28
-	ldr r0, _080477D0 @ =0x0203A3D4
+	ldr r0, _080477D0 @ =gBattleStats
 	movs r1, #0x80
 	ldrh r2, [r0]
 	orrs r1, r2
@@ -22119,13 +22119,13 @@ _080477CA:
 	pop {r0}
 	bx r0
 	.align 2, 0
-_080477D0: .4byte 0x0203A3D4
+_080477D0: .4byte gBattleStats
 
 	thumb_func_start sub_080477D4
 sub_080477D4: @ 0x080477D4
 	push {r4, r5, r6, r7, lr}
 	adds r7, r0, #0
-	ldr r6, _08047844 @ =0x0203A3EC
+	ldr r6, _08047844 @ =gBattleActor
 	movs r0, #0x13
 	ldrsb r0, [r6, r0]
 	cmp r0, #0
@@ -22136,7 +22136,7 @@ sub_080477D4: @ 0x080477D4
 	bl sub_08047ED0
 	str r4, [r7, #0x54]
 _080477F0:
-	ldr r5, _0804784C @ =0x0203A46C
+	ldr r5, _0804784C @ =gBattleTarget
 	movs r0, #0x13
 	ldrsb r0, [r5, r0]
 	cmp r0, #0
@@ -22172,21 +22172,21 @@ _0804783C:
 	pop {r0}
 	bx r0
 	.align 2, 0
-_08047844: .4byte 0x0203A3EC
+_08047844: .4byte gBattleActor
 _08047848: .4byte 0x08D64F4C
-_0804784C: .4byte 0x0203A46C
+_0804784C: .4byte gBattleTarget
 _08047850: .4byte 0x02033DFC
 
 	thumb_func_start sub_08047854
 sub_08047854: @ 0x08047854
 	push {r4, r5, lr}
-	ldr r0, _0804789C @ =0x0203A3EC
+	ldr r0, _0804789C @ =gBattleActor
 	ldrb r0, [r0, #0xb]
 	lsls r0, r0, #0x18
 	asrs r0, r0, #0x18
 	bl GetUnit
 	adds r4, r0, #0
-	ldr r0, _080478A0 @ =0x0203A46C
+	ldr r0, _080478A0 @ =gBattleTarget
 	ldrb r0, [r0, #0xb]
 	lsls r0, r0, #0x18
 	asrs r0, r0, #0x18
@@ -22214,8 +22214,8 @@ _08047896:
 	pop {r0}
 	bx r0
 	.align 2, 0
-_0804789C: .4byte 0x0203A3EC
-_080478A0: .4byte 0x0203A46C
+_0804789C: .4byte gBattleActor
+_080478A0: .4byte gBattleTarget
 
 	thumb_func_start sub_080478A4
 sub_080478A4: @ 0x080478A4

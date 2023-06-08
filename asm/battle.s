@@ -1,1368 +1,8 @@
 	.include "macro.inc"
 	.syntax unified
 
-	thumb_func_start BattleGenerateSimulationInternal
-BattleGenerateSimulationInternal: @ 0x08028654
-	push {r4, r5, r6, r7, lr}
-	mov r7, sb
-	mov r6, r8
-	push {r6, r7}
-	mov r8, r0
-	mov sb, r1
-	adds r4, r2, #0
-	adds r5, r3, #0
-	ldr r6, _080286A0 @ =0x0203A3EC
-	adds r0, r6, #0
-	mov r1, r8
-	bl sub_08028A60
-	ldr r7, _080286A4 @ =0x0203A46C
-	adds r0, r7, #0
-	mov r1, sb
-	bl sub_08028A60
-	strb r4, [r6, #0x10]
-	strb r5, [r6, #0x11]
-	ldr r4, _080286A8 @ =0x0203A3D4
-	movs r2, #0x10
-	ldrsb r2, [r6, r2]
-	movs r0, #0x10
-	ldrsb r0, [r7, r0]
-	subs r1, r2, r0
-	cmp r1, #0
-	bge _0802868E
-	subs r1, r0, r2
-_0802868E:
-	movs r3, #0x11
-	ldrsb r3, [r6, r3]
-	movs r0, #0x11
-	ldrsb r0, [r7, r0]
-	subs r2, r3, r0
-	cmp r2, #0
-	blt _080286AC
-	adds r0, r1, r2
-	b _080286B0
-	.align 2, 0
-_080286A0: .4byte 0x0203A3EC
-_080286A4: .4byte 0x0203A46C
-_080286A8: .4byte 0x0203A3D4
-_080286AC:
-	subs r0, r0, r3
-	adds r0, r1, r0
-_080286B0:
-	strb r0, [r4, #2]
-	ldr r1, _080286C8 @ =0x0203A3D4
-	movs r0, #8
-	ldrh r1, [r1]
-	ands r0, r1
-	cmp r0, #0
-	beq _080286D0
-	ldr r0, _080286CC @ =0x0203A3EC
-	bl sub_08028DE8
-	b _080286D8
-	.align 2, 0
-_080286C8: .4byte 0x0203A3D4
-_080286CC: .4byte 0x0203A3EC
-_080286D0:
-	ldr r0, _0802871C @ =0x0203A3EC
-	ldr r1, [sp, #0x1c]
-	bl sub_08028C08
-_080286D8:
-	ldr r4, _08028720 @ =0x0203A46C
-	movs r1, #1
-	rsbs r1, r1, #0
-	adds r0, r4, #0
-	bl sub_08028C08
-	bl sub_0802A6A4
-	ldr r5, _0802871C @ =0x0203A3EC
-	adds r0, r5, #0
-	adds r1, r4, #0
-	bl sub_0802A620
-	bl sub_0802C75C
-	adds r0, r5, #0
-	bl sub_08028BB4
-	adds r0, r4, #0
-	bl sub_08028BB4
-	mov r0, r8
-	mov r1, sb
-	bl sub_080288B0
-	bl sub_0802C79C
-	pop {r3, r4}
-	mov r8, r3
-	mov sb, r4
-	pop {r4, r5, r6, r7}
-	pop {r0}
-	bx r0
-	.align 2, 0
-_0802871C: .4byte 0x0203A3EC
-_08028720: .4byte 0x0203A46C
-
-	thumb_func_start sub_08028724
-sub_08028724: @ 0x08028724
-	push {r4, r5, r6, r7, lr}
-	adds r6, r0, #0
-	adds r7, r1, #0
-	ldr r5, _08028764 @ =0x0203A3EC
-	adds r0, r5, #0
-	adds r1, r6, #0
-	bl sub_08028A60
-	ldr r4, _08028768 @ =0x0203A46C
-	adds r0, r4, #0
-	adds r1, r7, #0
-	bl sub_08028A60
-	ldr r0, _0802876C @ =0x0203A3D4
-	mov ip, r0
-	movs r2, #0x10
-	ldrsb r2, [r5, r2]
-	movs r0, #0x10
-	ldrsb r0, [r4, r0]
-	subs r1, r2, r0
-	cmp r1, #0
-	bge _08028752
-	subs r1, r0, r2
-_08028752:
-	movs r3, #0x11
-	ldrsb r3, [r5, r3]
-	movs r0, #0x11
-	ldrsb r0, [r4, r0]
-	subs r2, r3, r0
-	cmp r2, #0
-	blt _08028770
-	adds r0, r1, r2
-	b _08028774
-	.align 2, 0
-_08028764: .4byte 0x0203A3EC
-_08028768: .4byte 0x0203A46C
-_0802876C: .4byte 0x0203A3D4
-_08028770:
-	subs r0, r0, r3
-	adds r0, r1, r0
-_08028774:
-	mov r1, ip
-	strb r0, [r1, #2]
-	ldr r1, _0802878C @ =0x0203A3D4
-	movs r0, #8
-	ldrh r1, [r1]
-	ands r0, r1
-	cmp r0, #0
-	beq _08028794
-	ldr r0, _08028790 @ =0x0203A3EC
-	bl sub_08028DE8
-	b _0802879E
-	.align 2, 0
-_0802878C: .4byte 0x0203A3D4
-_08028790: .4byte 0x0203A3EC
-_08028794:
-	ldr r0, _08028804 @ =0x0203A3EC
-	movs r1, #1
-	rsbs r1, r1, #0
-	bl sub_08028C08
-_0802879E:
-	ldr r4, _08028808 @ =0x0203A46C
-	movs r1, #1
-	rsbs r1, r1, #0
-	adds r0, r4, #0
-	bl sub_08028C08
-	bl sub_0802A6A4
-	ldr r5, _08028804 @ =0x0203A3EC
-	adds r0, r5, #0
-	adds r1, r4, #0
-	bl sub_0802A620
-	bl sub_0802C75C
-	adds r0, r5, #0
-	bl sub_08028BB4
-	adds r0, r4, #0
-	bl sub_08028BB4
-	adds r0, r6, #0
-	adds r1, r7, #0
-	bl sub_080288B0
-	bl sub_0802C79C
-	adds r0, r4, #0
-	bl sub_0802A5A8
-	adds r0, r4, #0
-	bl sub_0802A554
-	movs r0, #0xb
-	ldrsb r0, [r4, r0]
-	cmp r0, #0
-	beq _080287FC
-	bl sub_08029A1C
-	bl sub_080A0C84
-	adds r0, r6, #0
-	bl sub_080A06FC
-	adds r0, r7, #0
-	bl sub_080A06FC
-_080287FC:
-	pop {r4, r5, r6, r7}
-	pop {r0}
-	bx r0
-	.align 2, 0
-_08028804: .4byte 0x0203A3EC
-_08028808: .4byte 0x0203A46C
-
-	thumb_func_start sub_0802880C
-sub_0802880C: @ 0x0802880C
-	push {lr}
-	bl sub_08029F20
-	bl sub_0802A1E8
-	ldr r0, _08028828 @ =0x0203A3EC
-	ldr r1, _0802882C @ =0x0203A46C
-	bl nullsub_08
-	bl sub_0802A944
-	pop {r0}
-	bx r0
-	.align 2, 0
-_08028828: .4byte 0x0203A3EC
-_0802882C: .4byte 0x0203A46C
-
-	thumb_func_start sub_08028830
-sub_08028830: @ 0x08028830
-	push {r4, r5, lr}
-	sub sp, #4
-	adds r4, r0, #0
-	adds r5, r1, #0
-	cmp r2, #0
-	bge _08028848
-	cmp r3, #0
-	bge _08028848
-	movs r2, #0x10
-	ldrsb r2, [r4, r2]
-	movs r3, #0x11
-	ldrsb r3, [r4, r3]
-_08028848:
-	ldr r0, _08028864 @ =0x0203A3D4
-	movs r1, #2
-	strh r1, [r0]
-	ldr r0, [sp, #0x10]
-	str r0, [sp]
-	adds r0, r4, #0
-	adds r1, r5, #0
-	bl BattleGenerateSimulationInternal
-	add sp, #4
-	pop {r4, r5}
-	pop {r0}
-	bx r0
-	.align 2, 0
-_08028864: .4byte 0x0203A3D4
-
-	thumb_func_start sub_08028868
-sub_08028868: @ 0x08028868
-	push {lr}
-	ldr r3, _08028878 @ =0x0203A3D4
-	movs r2, #1
-	strh r2, [r3]
-	bl sub_08028724
-	pop {r0}
-	bx r0
-	.align 2, 0
-_08028878: .4byte 0x0203A3D4
-
-	thumb_func_start sub_0802887C
-sub_0802887C: @ 0x0802887C
-	push {r4, r5, r6, lr}
-	sub sp, #4
-	ldr r5, _08028898 @ =0x0203A3D4
-	movs r6, #0
-	movs r4, #0xa
-	strh r4, [r5]
-	str r6, [sp]
-	bl BattleGenerateSimulationInternal
-	add sp, #4
-	pop {r4, r5, r6}
-	pop {r0}
-	bx r0
-	.align 2, 0
-_08028898: .4byte 0x0203A3D4
-
-	thumb_func_start sub_0802889C
-sub_0802889C: @ 0x0802889C
-	push {lr}
-	ldr r3, _080288AC @ =0x0203A3D4
-	movs r2, #9
-	strh r2, [r3]
-	bl sub_08028724
-	pop {r0}
-	bx r0
-	.align 2, 0
-_080288AC: .4byte 0x0203A3D4
-
-	thumb_func_start sub_080288B0
-sub_080288B0: @ 0x080288B0
-	push {r4, r5, r6, lr}
-	adds r6, r1, #0
-	ldr r5, _080288FC @ =0x0203A3EC
-	ldr r4, _08028900 @ =0x0203A46C
-	adds r0, r5, #0
-	adds r1, r4, #0
-	bl sub_08028E2C
-	adds r0, r4, #0
-	adds r1, r5, #0
-	bl sub_08028E2C
-	adds r0, r5, #0
-	adds r1, r4, #0
-	bl sub_08028E78
-	adds r0, r4, #0
-	adds r1, r5, #0
-	bl sub_08028E78
-	cmp r6, #0
-	bne _080288E0
-	bl sub_0802A788
-_080288E0:
-	ldr r1, _08028904 @ =0x0203A3D4
-	movs r0, #1
-	ldrh r1, [r1]
-	ands r0, r1
-	cmp r0, #0
-	beq _0802890C
-	ldr r0, _08028908 @ =gActionSt
-	ldr r0, [r0, #0x18]
-	cmp r0, #0
-	beq _0802890C
-	bl sub_0802AD58
-	b _08028910
-	.align 2, 0
-_080288FC: .4byte 0x0203A3EC
-_08028900: .4byte 0x0203A46C
-_08028904: .4byte 0x0203A3D4
-_08028908: .4byte gActionSt
-_0802890C:
-	bl sub_08029460
-_08028910:
-	pop {r4, r5, r6}
-	pop {r0}
-	bx r0
-	.align 2, 0
-
-	thumb_func_start sub_08028918
-sub_08028918: @ 0x08028918
-	push {r4, r5, r6, r7, lr}
-	sub sp, #0x48
-	adds r7, r0, #0
-	lsls r1, r1, #0x18
-	lsrs r6, r1, #0x18
-	ldr r1, _08028974 @ =0x0203A3D4
-	movs r3, #0
-	movs r2, #0
-	movs r0, #4
-	strh r0, [r1]
-	ldr r0, _08028978 @ =0x0203A46C
-	mov ip, r0
-	adds r0, #0x48
-	strh r2, [r0]
-	mov r1, ip
-	str r2, [r1, #0x4c]
-	adds r1, #0x50
-	movs r0, #0xff
-	strb r0, [r1]
-	mov r0, ip
-	str r2, [r0, #4]
-	ldr r5, _0802897C @ =0x0203A3EC
-	adds r0, r5, #0
-	adds r0, #0x53
-	strb r3, [r0]
-	adds r0, #1
-	strb r3, [r0]
-	lsls r4, r6, #0x18
-	lsrs r0, r4, #0x18
-	cmp r0, #4
-	bhi _08028980
-	mov r0, sp
-	adds r1, r7, #0
-	movs r2, #0x48
-	bl memcpy
-	asrs r1, r4, #0x18
-	mov r0, sp
-	bl sub_08016C54
-	movs r6, #0
-	adds r0, r5, #0
-	mov r1, sp
-	bl sub_08028A60
-	b _08028988
-	.align 2, 0
-_08028974: .4byte 0x0203A3D4
-_08028978: .4byte 0x0203A46C
-_0802897C: .4byte 0x0203A3EC
-_08028980:
-	adds r0, r5, #0
-	adds r1, r7, #0
-	bl sub_08028A60
-_08028988:
-	ldr r4, _08028A00 @ =0x0203A3EC
-	adds r0, r4, #0
-	bl sub_08028BB4
-	lsls r1, r6, #0x18
-	asrs r1, r1, #0x18
-	adds r0, r4, #0
-	bl sub_08028C08
-	ldr r1, _08028A04 @ =0x0203A46C
-	adds r0, r4, #0
-	bl sub_08028E2C
-	adds r5, r4, #0
-	adds r5, #0x48
-	ldrh r0, [r5]
-	bl GetItemIndex
-	cmp r0, #0x11
-	bne _080289D0
-	adds r2, r4, #0
-	adds r2, #0x5a
-	movs r0, #0x14
-	ldrsb r0, [r4, r0]
-	lsrs r1, r0, #0x1f
-	adds r0, r0, r1
-	asrs r0, r0, #1
-	ldrh r1, [r2]
-	subs r0, r1, r0
-	movs r1, #0
-	strh r0, [r2]
-	adds r0, r4, #0
-	adds r0, #0x66
-	strh r1, [r0]
-	adds r0, #4
-	strh r1, [r0]
-_080289D0:
-	ldrh r0, [r5]
-	cmp r0, #0
-	bne _080289E6
-	adds r0, r4, #0
-	adds r0, #0x5a
-	movs r1, #0xff
-	strh r1, [r0]
-	adds r0, #6
-	strh r1, [r0]
-	adds r0, #6
-	strh r1, [r0]
-_080289E6:
-	ldrh r0, [r5]
-	bl sub_0801782C
-	cmp r0, #3
-	bne _080289F8
-	adds r1, r4, #0
-	adds r1, #0x5a
-	movs r0, #0xff
-	strh r0, [r1]
-_080289F8:
-	add sp, #0x48
-	pop {r4, r5, r6, r7}
-	pop {r0}
-	bx r0
-	.align 2, 0
-_08028A00: .4byte 0x0203A3EC
-_08028A04: .4byte 0x0203A46C
-
-	thumb_func_start sub_08028A08
-sub_08028A08: @ 0x08028A08
-	push {lr}
-	lsls r0, r0, #0x10
-	lsrs r3, r0, #0x10
-	lsls r1, r1, #0x18
-	lsrs r2, r1, #0x18
-	ldr r1, _08028A28 @ =0x0203A3D4
-	movs r0, #2
-	ldrh r1, [r1]
-	ands r0, r1
-	cmp r0, #0
-	bne _08028A2C
-	adds r0, r3, #0
-	bl RandRoll
-	lsls r0, r0, #0x18
-	b _08028A2E
-	.align 2, 0
-_08028A28: .4byte 0x0203A3D4
-_08028A2C:
-	lsls r0, r2, #0x18
-_08028A2E:
-	asrs r0, r0, #0x18
-	pop {r1}
-	bx r1
-
-	thumb_func_start sub_08028A34
-sub_08028A34: @ 0x08028A34
-	push {lr}
-	lsls r0, r0, #0x10
-	lsrs r3, r0, #0x10
-	lsls r1, r1, #0x18
-	lsrs r2, r1, #0x18
-	ldr r1, _08028A54 @ =0x0203A3D4
-	movs r0, #2
-	ldrh r1, [r1]
-	ands r0, r1
-	cmp r0, #0
-	bne _08028A58
-	adds r0, r3, #0
-	bl RandRoll2Rn
-	lsls r0, r0, #0x18
-	b _08028A5A
-	.align 2, 0
-_08028A54: .4byte 0x0203A3D4
-_08028A58:
-	lsls r0, r2, #0x18
-_08028A5A:
-	asrs r0, r0, #0x18
-	pop {r1}
-	bx r1
-
-	thumb_func_start sub_08028A60
-sub_08028A60: @ 0x08028A60
-	push {r4, r5, r6, lr}
-	adds r5, r0, #0
-	adds r6, r1, #0
-	cmp r6, #0
-	beq _08028B36
-	movs r2, #0x48
-	bl memcpy
-	adds r0, r6, #0
-	bl GetUnitMaxHp
-	movs r4, #0
-	strb r0, [r5, #0x12]
-	adds r0, r6, #0
-	bl GetUnitPower
-	strb r0, [r5, #0x14]
-	adds r0, r6, #0
-	bl GetUnitSkill
-	strb r0, [r5, #0x15]
-	adds r0, r6, #0
-	bl GetUnitSpeed
-	strb r0, [r5, #0x16]
-	adds r0, r6, #0
-	bl GetUnitDefense
-	strb r0, [r5, #0x17]
-	adds r0, r6, #0
-	bl GetUnitLuck
-	strb r0, [r5, #0x19]
-	adds r0, r6, #0
-	bl GetUnitResistance
-	strb r0, [r5, #0x18]
-	ldr r1, [r6, #4]
-	ldr r0, [r6]
-	ldrb r2, [r1, #0x11]
-	ldrb r0, [r0, #0x13]
-	adds r0, r2, r0
-	ldrb r2, [r6, #0x1a]
-	adds r0, r2, r0
-	strb r0, [r5, #0x1a]
-	ldrb r6, [r6, #0x1d]
-	ldrb r1, [r1, #0x12]
-	adds r0, r6, r1
-	strb r0, [r5, #0x1d]
-	ldrb r1, [r5, #8]
-	adds r0, r5, #0
-	adds r0, #0x70
-	strb r1, [r0]
-	ldrb r0, [r5, #9]
-	adds r1, r5, #0
-	adds r1, #0x71
-	strb r0, [r1]
-	ldrb r0, [r5, #0x13]
-	adds r1, #1
-	strb r0, [r1]
-	subs r1, #3
-	movs r0, #0xff
-	strb r0, [r1]
-	adds r0, r5, #0
-	adds r0, #0x73
-	strb r4, [r0]
-	adds r0, #1
-	strb r4, [r0]
-	adds r0, #1
-	strb r4, [r0]
-	adds r0, #1
-	strb r4, [r0]
-	adds r0, #1
-	strb r4, [r0]
-	adds r0, #1
-	strb r4, [r0]
-	adds r0, #1
-	strb r4, [r0]
-	adds r0, #1
-	strb r4, [r0]
-	ldr r2, _08028B3C @ =0x0203A3EC
-	adds r0, r2, #0
-	adds r0, #0x7b
-	strb r4, [r0]
-	ldr r1, _08028B40 @ =0x0203A46C
-	adds r0, r1, #0
-	adds r0, #0x7b
-	strb r4, [r0]
-	adds r0, r5, #0
-	adds r0, #0x53
-	strb r4, [r0]
-	adds r0, #1
-	strb r4, [r0]
-	adds r0, #0x28
-	strb r4, [r0]
-	adds r0, r2, #0
-	adds r0, #0x7d
-	strb r4, [r0]
-	adds r0, r1, #0
-	adds r0, #0x7d
-	strb r4, [r0]
-	adds r0, r2, #0
-	adds r0, #0x6e
-	strb r4, [r0]
-	adds r0, r1, #0
-	adds r0, #0x6e
-	strb r4, [r0]
-_08028B36:
-	pop {r4, r5, r6}
-	pop {r0}
-	bx r0
-	.align 2, 0
-_08028B3C: .4byte 0x0203A3EC
-_08028B40: .4byte 0x0203A46C
-
-	thumb_func_start sub_08028B44
-sub_08028B44: @ 0x08028B44
-	push {r4, r5, lr}
-	adds r5, r0, #0
-	adds r4, r1, #0
-	bl sub_08028A60
-	ldrb r0, [r4, #0x12]
-	strb r0, [r5, #0x12]
-	ldrb r0, [r4, #0x14]
-	strb r0, [r5, #0x14]
-	ldrb r0, [r4, #0x15]
-	strb r0, [r5, #0x15]
-	ldrb r0, [r4, #0x16]
-	strb r0, [r5, #0x16]
-	ldrb r0, [r4, #0x17]
-	strb r0, [r5, #0x17]
-	ldrb r0, [r4, #0x19]
-	strb r0, [r5, #0x19]
-	ldrb r0, [r4, #0x18]
-	strb r0, [r5, #0x18]
-	ldr r1, [r4, #4]
-	ldr r0, [r4]
-	ldrb r1, [r1, #0x11]
-	ldrb r0, [r0, #0x13]
-	adds r0, r1, r0
-	strb r0, [r5, #0x1a]
-	pop {r4, r5}
-	pop {r0}
-	bx r0
-
-	thumb_func_start sub_08028B7C
-sub_08028B7C: @ 0x08028B7C
-	adds r2, r0, #0
-	adds r3, r2, #0
-	adds r3, #0x55
-	strb r1, [r3]
-	ldr r0, [r2, #4]
-	ldr r0, [r0, #0x44]
-	adds r0, r1, r0
-	ldrb r0, [r0]
-	adds r1, r2, #0
-	adds r1, #0x57
-	strb r0, [r1]
-	ldr r0, [r2, #4]
-	ldr r0, [r0, #0x48]
-	ldrb r1, [r3]
-	adds r0, r1, r0
-	ldrb r0, [r0]
-	adds r1, r2, #0
-	adds r1, #0x56
-	strb r0, [r1]
-	ldr r0, [r2, #4]
-	ldr r0, [r0, #0x4c]
-	ldrb r3, [r3]
-	adds r0, r3, r0
-	ldrb r1, [r0]
-	adds r0, r2, #0
-	adds r0, #0x58
-	strb r1, [r0]
-	bx lr
-
-	thumb_func_start sub_08028BB4
-sub_08028BB4: @ 0x08028BB4
-	adds r2, r0, #0
-	movs r0, #0x11
-	ldrsb r0, [r2, r0]
-	ldr r1, _08028C04 @ =gBmMapTerrain
-	ldr r1, [r1]
-	lsls r0, r0, #2
-	adds r0, r0, r1
-	movs r1, #0x10
-	ldrsb r1, [r2, r1]
-	ldr r0, [r0]
-	adds r0, r0, r1
-	ldrb r0, [r0]
-	adds r3, r2, #0
-	adds r3, #0x55
-	strb r0, [r3]
-	ldr r0, [r2, #4]
-	ldr r0, [r0, #0x44]
-	ldrb r1, [r3]
-	adds r0, r1, r0
-	ldrb r0, [r0]
-	adds r1, r2, #0
-	adds r1, #0x57
-	strb r0, [r1]
-	ldr r0, [r2, #4]
-	ldr r0, [r0, #0x48]
-	ldrb r1, [r3]
-	adds r0, r1, r0
-	ldrb r0, [r0]
-	adds r1, r2, #0
-	adds r1, #0x56
-	strb r0, [r1]
-	ldr r0, [r2, #4]
-	ldr r0, [r0, #0x4c]
-	ldrb r3, [r3]
-	adds r0, r3, r0
-	ldrb r1, [r0]
-	adds r0, r2, #0
-	adds r0, #0x58
-	strb r1, [r0]
-	bx lr
-	.align 2, 0
-_08028C04: .4byte gBmMapTerrain
-
-	thumb_func_start sub_08028C08
-sub_08028C08: @ 0x08028C08
-	push {r4, r5, r6, r7, lr}
-	mov r7, sb
-	mov r6, r8
-	push {r6, r7}
-	adds r5, r0, #0
-	adds r2, r1, #0
-	movs r0, #1
-	rsbs r0, r0, #0
-	cmp r2, r0
-	bne _08028C24
-	adds r0, r5, #0
-	bl GetUnitEquippedWeaponSlot
-	adds r2, r0, #0
-_08028C24:
-	ldr r0, [r5, #0xc]
-	movs r1, #0x80
-	lsls r1, r1, #4
-	ands r0, r1
-	cmp r0, #0
-	beq _08028C32
-	movs r2, #8
-_08028C32:
-	adds r1, r5, #0
-	adds r1, #0x52
-	movs r0, #1
-	strb r0, [r1]
-	mov sb, r1
-	cmp r2, #8
-	bhi _08028D10
-	lsls r0, r2, #2
-	ldr r1, _08028C4C @ =_08028C50
-	adds r0, r0, r1
-	ldr r0, [r0]
-	mov pc, r0
-	.align 2, 0
-_08028C4C: .4byte _08028C50
-_08028C50: @ jump table
-	.4byte _08028C74 @ case 0
-	.4byte _08028C74 @ case 1
-	.4byte _08028C74 @ case 2
-	.4byte _08028C74 @ case 3
-	.4byte _08028C74 @ case 4
-	.4byte _08028C8E @ case 5
-	.4byte _08028CAC @ case 6
-	.4byte _08028CCC @ case 7
-	.4byte _08028CEC @ case 8
-_08028C74:
-	adds r1, r5, #0
-	adds r1, #0x51
-	strb r2, [r1]
-	lsls r2, r2, #1
-	adds r0, r5, #0
-	adds r0, #0x1e
-	adds r0, r0, r2
-	ldrh r0, [r0]
-	adds r2, r5, #0
-	adds r2, #0x48
-	strh r0, [r2]
-	mov r8, r1
-	b _08028D28
-_08028C8E:
-	adds r2, r5, #0
-	adds r2, #0x51
-	movs r0, #0xff
-	strb r0, [r2]
-	ldr r0, _08028CA8 @ =gBmSt
-	ldrh r0, [r0, #0x2c]
-	adds r1, r5, #0
-	adds r1, #0x48
-	strh r0, [r1]
-	mov r8, r2
-	adds r4, r1, #0
-	b _08028D2A
-	.align 2, 0
-_08028CA8: .4byte gBmSt
-_08028CAC:
-	adds r3, r5, #0
-	adds r3, #0x51
-	movs r0, #0
-	strb r0, [r3]
-	ldr r0, _08028CC8 @ =0x0203A7F0
-	ldrh r1, [r0, #0x1a]
-	adds r2, r5, #0
-	adds r2, #0x48
-	movs r0, #0
-	strh r1, [r2]
-	mov r1, sb
-	strb r0, [r1]
-	b _08028D26
-	.align 2, 0
-_08028CC8: .4byte 0x0203A7F0
-_08028CCC:
-	adds r3, r5, #0
-	adds r3, #0x51
-	movs r0, #0
-	strb r0, [r3]
-	ldr r0, _08028CE8 @ =0x0203A7F0
-	ldrh r1, [r0, #0x1c]
-	adds r2, r5, #0
-	adds r2, #0x48
-	movs r0, #0
-	strh r1, [r2]
-	mov r1, sb
-	strb r0, [r1]
-	b _08028D26
-	.align 2, 0
-_08028CE8: .4byte 0x0203A7F0
-_08028CEC:
-	adds r4, r5, #0
-	adds r4, #0x51
-	movs r0, #0xff
-	strb r0, [r4]
-	movs r0, #0x10
-	ldrsb r0, [r5, r0]
-	movs r1, #0x11
-	ldrsb r1, [r5, r1]
-	bl sub_08034BA0
-	adds r2, r5, #0
-	adds r2, #0x48
-	movs r1, #0
-	strh r0, [r2]
-	mov r0, sb
-	strb r1, [r0]
-	mov r8, r4
-	b _08028D28
-_08028D10:
-	adds r3, r5, #0
-	adds r3, #0x51
-	movs r0, #0xff
-	strb r0, [r3]
-	adds r2, r5, #0
-	adds r2, #0x48
-	movs r1, #0
-	movs r0, #0
-	strh r0, [r2]
-	mov r0, sb
-	strb r1, [r0]
-_08028D26:
-	mov r8, r3
-_08028D28:
-	adds r4, r2, #0
-_08028D2A:
-	ldrh r0, [r4]
-	adds r1, r5, #0
-	adds r1, #0x4a
-	strh r0, [r1]
-	ldrh r0, [r4]
-	bl GetItemAttributes
-	str r0, [r5, #0x4c]
-	ldrh r0, [r4]
-	bl GetItemType
-	adds r6, r5, #0
-	adds r6, #0x50
-	strb r0, [r6]
-	ldr r7, _08028D70 @ =0x0203A3D4
-	movs r0, #4
-	ldrh r1, [r7]
-	ands r0, r1
-	cmp r0, #0
-	bne _08028DD6
-	ldr r0, [r5, #0x4c]
-	movs r1, #0x40
-	ands r0, r1
-	cmp r0, #0
-	beq _08028D9C
-	ldrh r0, [r4]
-	bl GetItemIndex
-	cmp r0, #0x11
-	beq _08028D98
-	cmp r0, #0x11
-	bgt _08028D74
-	cmp r0, #0x10
-	beq _08028D82
-	b _08028D9C
-	.align 2, 0
-_08028D70: .4byte 0x0203A3D4
-_08028D74:
-	cmp r0, #0x99
-	bne _08028D9C
-	ldrb r7, [r7, #2]
-	cmp r7, #2
-	bne _08028D8C
-	movs r0, #5
-	b _08028D9A
-_08028D82:
-	ldrb r7, [r7, #2]
-	cmp r7, #2
-	bne _08028D8C
-	movs r0, #6
-	b _08028D9A
-_08028D8C:
-	ldr r0, [r5, #0x4c]
-	movs r1, #0x41
-	rsbs r1, r1, #0
-	ands r0, r1
-	str r0, [r5, #0x4c]
-	b _08028D9C
-_08028D98:
-	movs r0, #7
-_08028D9A:
-	strb r0, [r6]
-_08028D9C:
-	ldrh r0, [r4]
-	ldr r1, _08028DE4 @ =0x0203A3D4
-	ldrb r1, [r1, #2]
-	bl sub_08016C28
-	lsls r0, r0, #0x18
-	cmp r0, #0
-	beq _08028DB4
-	mov r1, r8
-	ldrb r0, [r1]
-	cmp r0, #0xff
-	bne _08028DBE
-_08028DB4:
-	movs r1, #0
-	movs r0, #0
-	strh r0, [r4]
-	mov r0, sb
-	strb r1, [r0]
-_08028DBE:
-	adds r1, r5, #0
-	adds r1, #0x30
-	movs r0, #0xf
-	ldrb r1, [r1]
-	ands r0, r1
-	cmp r0, #2
-	bne _08028DD6
-	movs r1, #0
-	movs r0, #0
-	strh r0, [r4]
-	mov r0, sb
-	strb r1, [r0]
-_08028DD6:
-	pop {r3, r4}
-	mov r8, r3
-	mov sb, r4
-	pop {r4, r5, r6, r7}
-	pop {r0}
-	bx r0
-	.align 2, 0
-_08028DE4: .4byte 0x0203A3D4
-
-	thumb_func_start sub_08028DE8
-sub_08028DE8: @ 0x08028DE8
-	push {r4, r5, r6, lr}
-	adds r6, r0, #0
-	movs r0, #0x10
-	ldrsb r0, [r6, r0]
-	movs r1, #0x11
-	ldrsb r1, [r6, r1]
-	bl sub_08034BA0
-	adds r4, r6, #0
-	adds r4, #0x48
-	movs r5, #0
-	strh r0, [r4]
-	adds r1, r6, #0
-	adds r1, #0x4a
-	strh r0, [r1]
-	ldrh r0, [r4]
-	bl GetItemAttributes
-	str r0, [r6, #0x4c]
-	ldrh r0, [r4]
-	bl GetItemType
-	adds r1, r6, #0
-	adds r1, #0x50
-	strb r0, [r1]
-	adds r0, r6, #0
-	adds r0, #0x52
-	strb r5, [r0]
-	pop {r4, r5, r6}
-	pop {r0}
-	bx r0
-	.align 2, 0
-
-	thumb_func_start nullsub_42
-nullsub_42: @ 0x08028E28
-	bx lr
-	.align 2, 0
-
-	thumb_func_start sub_08028E2C
-sub_08028E2C: @ 0x08028E2C
-	push {r4, r5, lr}
-	adds r4, r0, #0
-	adds r5, r1, #0
-	bl sub_08028F14
-	adds r0, r4, #0
-	adds r1, r5, #0
-	bl sub_08028F8C
-	adds r0, r4, #0
-	bl sub_08029008
-	adds r0, r4, #0
-	bl sub_08029040
-	adds r0, r4, #0
-	bl sub_080290F8
-	adds r0, r4, #0
-	bl sub_080291B0
-	adds r0, r4, #0
-	bl sub_080291EC
-	adds r0, r4, #0
-	adds r1, r5, #0
-	bl sub_08028EA0
-	adds r0, r4, #0
-	bl sub_08029328
-	adds r0, r4, #0
-	bl sub_08029364
-	pop {r4, r5}
-	pop {r0}
-	bx r0
-	.align 2, 0
-
-	thumb_func_start sub_08028E78
-sub_08028E78: @ 0x08028E78
-	push {r4, r5, lr}
-	adds r4, r0, #0
-	adds r5, r1, #0
-	bl sub_080291F8
-	adds r0, r4, #0
-	adds r1, r5, #0
-	bl sub_08029224
-	adds r0, r4, #0
-	adds r1, r5, #0
-	bl sub_080292CC
-	adds r0, r4, #0
-	adds r1, r5, #0
-	bl sub_0802939C
-	pop {r4, r5}
-	pop {r0}
-	bx r0
-
-	thumb_func_start sub_08028EA0
-sub_08028EA0: @ 0x08028EA0
-	push {r4, r5, lr}
-	sub sp, #8
-	adds r5, r0, #0
-	ldr r1, _08028F0C @ =0x0203A3D4
-	movs r0, #0x20
-	ldrh r1, [r1]
-	ands r0, r1
-	cmp r0, #0
-	beq _08028EBA
-	ldr r0, _08028F10 @ =gPlaySt
-	ldrb r0, [r0, #0x15]
-	cmp r0, #0
-	beq _08028F02
-_08028EBA:
-	mov r4, sp
-	adds r0, r5, #0
-	mov r1, sp
-	bl sub_08026EA4
-	adds r1, r5, #0
-	adds r1, #0x5a
-	ldrb r0, [r4, #1]
-	ldrh r2, [r1]
-	adds r0, r2, r0
-	strh r0, [r1]
-	adds r1, #2
-	ldrb r0, [r4, #2]
-	ldrh r3, [r1]
-	adds r0, r3, r0
-	strh r0, [r1]
-	adds r1, #4
-	ldrb r0, [r4, #3]
-	ldrh r2, [r1]
-	adds r0, r2, r0
-	strh r0, [r1]
-	adds r1, #2
-	ldrh r3, [r1]
-	ldrb r2, [r4, #4]
-	adds r0, r3, r2
-	strh r0, [r1]
-	adds r1, #4
-	ldrh r3, [r1]
-	ldrb r2, [r4, #5]
-	adds r0, r3, r2
-	strh r0, [r1]
-	adds r1, #2
-	ldrh r3, [r1]
-	ldrb r4, [r4, #6]
-	adds r0, r3, r4
-	strh r0, [r1]
-_08028F02:
-	add sp, #8
-	pop {r4, r5}
-	pop {r0}
-	bx r0
-	.align 2, 0
-_08028F0C: .4byte 0x0203A3D4
-_08028F10: .4byte gPlaySt
-
-	thumb_func_start sub_08028F14
-sub_08028F14: @ 0x08028F14
-	push {r4, r5, lr}
-	adds r4, r0, #0
-	adds r5, r1, #0
-	adds r5, #0x48
-	ldrh r0, [r5]
-	bl GetItemAttributes
-	movs r1, #0x40
-	ands r1, r0
-	cmp r1, #0
-	beq _08028F3A
-	adds r0, r4, #0
-	adds r0, #0x58
-	ldrb r0, [r0]
-	lsls r0, r0, #0x18
-	asrs r0, r0, #0x18
-	movs r1, #0x18
-	ldrsb r1, [r4, r1]
-	b _08028F66
-_08028F3A:
-	ldrh r0, [r5]
-	bl GetItemAttributes
-	movs r1, #2
-	ands r1, r0
-	cmp r1, #0
-	beq _08028F58
-	adds r0, r4, #0
-	adds r0, #0x58
-	ldrb r0, [r0]
-	lsls r0, r0, #0x18
-	asrs r0, r0, #0x18
-	movs r1, #0x18
-	ldrsb r1, [r4, r1]
-	b _08028F66
-_08028F58:
-	adds r0, r4, #0
-	adds r0, #0x56
-	ldrb r0, [r0]
-	lsls r0, r0, #0x18
-	asrs r0, r0, #0x18
-	movs r1, #0x17
-	ldrsb r1, [r4, r1]
-_08028F66:
-	adds r0, r0, r1
-	adds r1, r4, #0
-	adds r1, #0x5c
-	strh r0, [r1]
-	pop {r4, r5}
-	pop {r0}
-	bx r0
-
-	thumb_func_start sub_08028F74
-sub_08028F74: @ 0x08028F74
-	adds r1, r0, #0
-	adds r1, #0x56
-	ldrb r1, [r1]
-	lsls r1, r1, #0x18
-	asrs r1, r1, #0x18
-	movs r2, #0x17
-	ldrsb r2, [r0, r2]
-	adds r1, r1, r2
-	adds r0, #0x5c
-	strh r1, [r0]
-	bx lr
-	.align 2, 0
-
-	thumb_func_start sub_08028F8C
-sub_08028F8C: @ 0x08028F8C
-	push {r4, r5, r6, lr}
-	adds r5, r0, #0
-	adds r4, r1, #0
-	adds r6, r5, #0
-	adds r6, #0x48
-	ldrh r0, [r6]
-	bl sub_080176E8
-	adds r1, r5, #0
-	adds r1, #0x54
-	ldrb r1, [r1]
-	lsls r1, r1, #0x18
-	asrs r1, r1, #0x18
-	adds r1, r1, r0
-	adds r0, r5, #0
-	adds r0, #0x5a
-	strh r1, [r0]
-	ldrh r0, [r6]
-	adds r1, r4, #0
-	bl sub_08016C80
-	lsls r0, r0, #0x18
-	asrs r0, r0, #0x18
-	cmp r0, #1
-	bne _08028FF4
-	ldrh r0, [r6]
-	bl GetItemIndex
-	cmp r0, #0x85
-	bgt _08028FD6
-	cmp r0, #0x84
-	bge _08028FDA
-	cmp r0, #0xf
-	beq _08028FDA
-	cmp r0, #0x3c
-	beq _08028FDA
-	b _08028FE6
-_08028FD6:
-	cmp r0, #0x8c
-	bne _08028FE6
-_08028FDA:
-	adds r1, r5, #0
-	adds r1, #0x5a
-	ldrh r2, [r1]
-	lsls r0, r2, #1
-	strh r0, [r1]
-	b _08028FF4
-_08028FE6:
-	adds r2, r5, #0
-	adds r2, #0x5a
-	movs r0, #0
-	ldrsh r1, [r2, r0]
-	lsls r0, r1, #1
-	adds r0, r0, r1
-	strh r0, [r2]
-_08028FF4:
-	adds r1, r5, #0
-	adds r1, #0x5a
-	movs r0, #0x14
-	ldrsb r0, [r5, r0]
-	ldrh r2, [r1]
-	adds r0, r2, r0
-	strh r0, [r1]
-	pop {r4, r5, r6}
-	pop {r0}
-	bx r0
-
-	thumb_func_start sub_08029008
-sub_08029008: @ 0x08029008
-	push {r4, lr}
-	adds r4, r0, #0
-	adds r0, #0x4a
-	ldrh r0, [r0]
-	bl sub_08017718
-	adds r1, r0, #0
-	movs r0, #0x1a
-	ldrsb r0, [r4, r0]
-	subs r1, r1, r0
-	cmp r1, #0
-	bge _08029022
-	movs r1, #0
-_08029022:
-	movs r0, #0x16
-	ldrsb r0, [r4, r0]
-	subs r0, r0, r1
-	adds r1, r4, #0
-	adds r1, #0x5e
-	strh r0, [r1]
-	lsls r0, r0, #0x10
-	cmp r0, #0
-	bge _08029038
-	movs r0, #0
-	strh r0, [r1]
-_08029038:
-	pop {r4}
-	pop {r0}
-	bx r0
-	.align 2, 0
-
-	thumb_func_start sub_08029040
-sub_08029040: @ 0x08029040
-	push {r4, r5, r6, r7, lr}
-	adds r4, r0, #0
-	adds r0, #0x48
-	ldrh r0, [r0]
-	bl sub_08017700
-	movs r2, #0x15
-	ldrsb r2, [r4, r2]
-	lsls r2, r2, #1
-	adds r2, r2, r0
-	movs r0, #0x19
-	ldrsb r0, [r4, r0]
-	lsrs r1, r0, #0x1f
-	adds r0, r0, r1
-	asrs r0, r0, #1
-	adds r0, r0, r2
-	adds r1, r4, #0
-	adds r1, #0x53
-	ldrb r1, [r1]
-	lsls r1, r1, #0x18
-	asrs r1, r1, #0x18
-	adds r6, r1, r0
-	adds r7, r4, #0
-	adds r7, #0x60
-	strh r6, [r7]
-	ldr r5, _080290EC @ =gPlaySt
-	adds r0, r5, #0
-	adds r0, #0x2b
-	ldrb r3, [r0]
-	movs r0, #1
-	ands r0, r3
-	cmp r0, #0
-	beq _080290E4
-	ldrb r0, [r5, #0x1b]
-	cmp r0, #1
-	beq _080290E4
-	ldr r1, _080290F0 @ =gBmSt
-	movs r0, #0x40
-	ldrb r1, [r1, #4]
-	ands r0, r1
-	cmp r0, #0
-	bne _080290E4
-	movs r0, #0xc0
-	ldrb r1, [r4, #0xb]
-	ands r0, r1
-	cmp r0, #0
-	bne _080290E4
-	ldr r2, _080290F4 @ =0x081C8FCC
-	lsls r1, r3, #0x1c
-	lsrs r1, r1, #0x1d
-	lsls r1, r1, #2
-	lsrs r0, r3, #4
-	lsls r0, r0, #4
-	adds r1, r1, r0
-	adds r1, r1, r2
-	ldr r2, [r4]
-	ldr r0, [r1]
-	ldrb r2, [r2, #9]
-	cmp r0, r2
-	bne _080290CE
-	ldrh r5, [r5, #0x2c]
-	lsls r0, r5, #0x13
-	lsrs r0, r0, #0x17
-	movs r1, #0xc
-	bl __divsi3
-	cmp r0, #0xa
-	ble _080290CA
-	movs r0, #0xa
-_080290CA:
-	adds r0, r6, r0
-	strh r0, [r7]
-_080290CE:
-	adds r0, r4, #0
-	bl sub_08028620
-	lsls r0, r0, #0x18
-	cmp r0, #0
-	beq _080290E4
-	adds r1, r4, #0
-	adds r1, #0x60
-	ldrh r0, [r1]
-	adds r0, #0xa
-	strh r0, [r1]
-_080290E4:
-	pop {r4, r5, r6, r7}
-	pop {r0}
-	bx r0
-	.align 2, 0
-_080290EC: .4byte gPlaySt
-_080290F0: .4byte gBmSt
-_080290F4: .4byte 0x081C8FCC
-
-	thumb_func_start sub_080290F8
-sub_080290F8: @ 0x080290F8
+	thumb_func_start ComputeBattleUnitAvoidRate
+ComputeBattleUnitAvoidRate: @ 0x080290F8
 	push {r4, r5, r6, r7, lr}
 	adds r4, r0, #0
 	adds r0, #0x5e
@@ -1402,7 +42,7 @@ sub_080290F8: @ 0x080290F8
 	ands r0, r1
 	cmp r0, #0
 	bne _0802918C
-	ldr r2, _080291AC @ =0x081C8FCC
+	ldr r2, _080291AC @ =Unk_081C8FCC
 	lsls r1, r3, #0x1c
 	lsrs r1, r1, #0x1d
 	lsls r1, r1, #2
@@ -1453,10 +93,10 @@ _0802919C:
 	.align 2, 0
 _080291A4: .4byte gPlaySt
 _080291A8: .4byte gBmSt
-_080291AC: .4byte 0x081C8FCC
+_080291AC: .4byte Unk_081C8FCC
 
-	thumb_func_start sub_080291B0
-sub_080291B0: @ 0x080291B0
+	thumb_func_start ComputeBattleUnitCritRate
+ComputeBattleUnitCritRate: @ 0x080291B0
 	push {r4, lr}
 	adds r4, r0, #0
 	adds r0, #0x48
@@ -1488,8 +128,8 @@ _080291E6:
 	pop {r0}
 	bx r0
 
-	thumb_func_start sub_080291EC
-sub_080291EC: @ 0x080291EC
+	thumb_func_start ComputeBattleUnitDodgeRate
+ComputeBattleUnitDodgeRate: @ 0x080291EC
 	movs r1, #0x19
 	ldrsb r1, [r0, r1]
 	adds r0, #0x68
@@ -1497,8 +137,8 @@ sub_080291EC: @ 0x080291EC
 	bx lr
 	.align 2, 0
 
-	thumb_func_start sub_080291F8
-sub_080291F8: @ 0x080291F8
+	thumb_func_start ComputeBattleUnitEffectiveHitRate
+ComputeBattleUnitEffectiveHitRate: @ 0x080291F8
 	adds r2, r0, #0
 	adds r2, #0x60
 	adds r1, #0x62
@@ -1524,8 +164,8 @@ _08029216:
 _08029222:
 	bx lr
 
-	thumb_func_start sub_08029224
-sub_08029224: @ 0x08029224
+	thumb_func_start ComputeBattleUnitEffectiveCritRate
+ComputeBattleUnitEffectiveCritRate: @ 0x08029224
 	push {r4, r5, r6, r7, lr}
 	adds r4, r0, #0
 	adds r6, r1, #0
@@ -1613,8 +253,8 @@ _080292C6:
 	pop {r0}
 	bx r0
 
-	thumb_func_start sub_080292CC
-sub_080292CC: @ 0x080292CC
+	thumb_func_start ComputeBattleUnitSilencerRate
+ComputeBattleUnitSilencerRate: @ 0x080292CC
 	push {r4, lr}
 	adds r3, r0, #0
 	adds r4, r1, #0
@@ -1665,8 +305,8 @@ _08029322:
 	pop {r0}
 	bx r0
 
-	thumb_func_start sub_08029328
-sub_08029328: @ 0x08029328
+	thumb_func_start ComputeBattleUnitWeaponRankBonuses
+ComputeBattleUnitWeaponRankBonuses: @ 0x08029328
 	push {r4, lr}
 	adds r4, r0, #0
 	adds r1, r4, #0
@@ -1698,8 +338,8 @@ _0802935E:
 	pop {r0}
 	bx r0
 
-	thumb_func_start sub_08029364
-sub_08029364: @ 0x08029364
+	thumb_func_start ComputeBattleUnitStatusBonuses
+ComputeBattleUnitStatusBonuses: @ 0x08029364
 	adds r1, r0, #0
 	adds r0, #0x30
 	ldrb r0, [r0]
@@ -1736,8 +376,8 @@ _08029394:
 _0802939A:
 	bx lr
 
-	thumb_func_start sub_0802939C
-sub_0802939C: @ 0x0802939C
+	thumb_func_start ComputeBattleUnitSpecialWeaponStats
+ComputeBattleUnitSpecialWeaponStats: @ 0x0802939C
 	push {r4, r5, r6, lr}
 	adds r4, r0, #0
 	adds r6, r1, #0
@@ -1778,7 +418,7 @@ _080293E4:
 	adds r0, r4, #0
 	adds r0, #0x4a
 	ldrh r0, [r0]
-	bl sub_0801782C
+	bl GetItemWeaponEffect
 	cmp r0, #3
 	bne _08029418
 	movs r0, #0x13
@@ -1843,8 +483,8 @@ _08029442:
 _08029458: .4byte 0x0203A4EC
 _0802945C: .4byte 0x0203A508
 
-	thumb_func_start sub_08029460
-sub_08029460: @ 0x08029460
+	thumb_func_start BattleUnwind
+BattleUnwind: @ 0x08029460
 	push {r4, r5, lr}
 	sub sp, #8
 	bl sub_08029434
@@ -1903,21 +543,21 @@ _080294D4: .4byte 0x0203A508
 
 	thumb_func_start sub_080294D8
 sub_080294D8: @ 0x080294D8
-	ldr r2, _080294E4 @ =0x0203A3EC
+	ldr r2, _080294E4 @ =gBattleActor
 	str r2, [r0]
-	ldr r0, _080294E8 @ =0x0203A46C
+	ldr r0, _080294E8 @ =gBattleTarget
 	str r0, [r1]
 	bx lr
 	.align 2, 0
-_080294E4: .4byte 0x0203A3EC
-_080294E8: .4byte 0x0203A46C
+_080294E4: .4byte gBattleActor
+_080294E8: .4byte gBattleTarget
 
 	thumb_func_start sub_080294EC
 sub_080294EC: @ 0x080294EC
 	push {r4, r5, r6, r7, lr}
 	adds r4, r0, #0
 	adds r7, r1, #0
-	ldr r0, _08029520 @ =0x0203A46C
+	ldr r0, _08029520 @ =gBattleTarget
 	adds r2, r0, #0
 	adds r2, #0x5e
 	movs r3, #0
@@ -1925,7 +565,7 @@ sub_080294EC: @ 0x080294EC
 	adds r6, r0, #0
 	cmp r1, #0xfa
 	bgt _0802955E
-	ldr r0, _08029524 @ =0x0203A3EC
+	ldr r0, _08029524 @ =gBattleActor
 	adds r1, r0, #0
 	adds r1, #0x5e
 	movs r5, #0
@@ -1940,8 +580,8 @@ sub_080294EC: @ 0x080294EC
 	ble _0802955E
 	b _0802952E
 	.align 2, 0
-_08029520: .4byte 0x0203A46C
-_08029524: .4byte 0x0203A3EC
+_08029520: .4byte gBattleTarget
+_08029524: .4byte gBattleActor
 _08029528:
 	subs r0, r2, r3
 	cmp r0, #3
@@ -1967,7 +607,7 @@ _0802954C:
 	ldr r0, [r4]
 	adds r0, #0x4a
 	ldrh r0, [r0]
-	bl sub_0801782C
+	bl GetItemWeaponEffect
 	cmp r0, #3
 	beq _0802955E
 	movs r0, #1
@@ -2099,7 +739,7 @@ sub_080295FC: @ 0x080295FC
 	movs r7, #0xc0
 	ldrb r4, [r4, #0xb]
 	ands r7, r4
-	ldr r0, _080296AC @ =0x0203A3D4
+	ldr r0, _080296AC @ =gBattleStats
 	str r3, [r0, #0x10]
 	str r3, [r0, #0x14]
 	mov r5, sp
@@ -2146,7 +786,7 @@ _08029648:
 	cmp r0, #0
 	beq _080296BC
 	adds r3, #1
-	ldr r1, _080296AC @ =0x0203A3D4
+	ldr r1, _080296AC @ =gBattleStats
 	ldr r0, [r1, #0x10]
 	cmp r0, #0
 	bne _080296B4
@@ -2154,7 +794,7 @@ _08029648:
 	b _080296BC
 	.align 2, 0
 _080296A8: .4byte 0x081C94C0
-_080296AC: .4byte 0x0203A3D4
+_080296AC: .4byte gBattleStats
 _080296B0: .4byte gBmMapUnit
 _080296B4:
 	ldr r0, [r1, #0x14]
@@ -2187,7 +827,7 @@ _080296D2:
 	thumb_func_start sub_080296E4
 sub_080296E4: @ 0x080296E4
 	adds r3, r0, #0
-	ldr r2, _08029710 @ =0x0203A3D4
+	ldr r2, _08029710 @ =gBattleStats
 	adds r0, #0x5a
 	ldrh r0, [r0]
 	strh r0, [r2, #6]
@@ -2208,19 +848,19 @@ sub_080296E4: @ 0x080296E4
 	strh r0, [r2, #0xe]
 	bx lr
 	.align 2, 0
-_08029710: .4byte 0x0203A3D4
+_08029710: .4byte gBattleStats
 
 	thumb_func_start sub_08029714
 sub_08029714: @ 0x08029714
 	push {r4, r5, r6, lr}
 	adds r6, r0, #0
-	ldr r4, _0802973C @ =0x0203A3D4
+	ldr r4, _0802973C @ =gBattleStats
 	movs r5, #0
 	movs r0, #0
 	strh r0, [r4, #4]
 	ldrh r0, [r4, #0xa]
 	movs r1, #1
-	bl sub_08028A34
+	bl BattleRoll2RN
 	lsls r0, r0, #0x18
 	cmp r0, #0
 	bne _08029744
@@ -2232,7 +872,7 @@ sub_08029714: @ 0x08029714
 	strh r0, [r1]
 	b _080297C4
 	.align 2, 0
-_0802973C: .4byte 0x0203A3D4
+_0802973C: .4byte gBattleStats
 _08029740: .4byte 0x0203A508
 _08029744:
 	ldrh r1, [r4, #6]
@@ -2241,14 +881,14 @@ _08029744:
 	strh r0, [r4, #4]
 	ldrh r0, [r4, #0xc]
 	movs r1, #0
-	bl sub_08028A08
+	bl BattleRoll1RN
 	lsls r0, r0, #0x18
 	asrs r0, r0, #0x18
 	cmp r0, #1
 	bne _0802979A
 	ldrh r0, [r4, #0xe]
 	movs r1, #0
-	bl sub_08028A08
+	bl BattleRoll1RN
 	lsls r0, r0, #0x18
 	asrs r0, r0, #0x18
 	cmp r0, #1
@@ -2279,7 +919,7 @@ _08029784:
 _08029798:
 	strh r0, [r4, #4]
 _0802979A:
-	ldr r1, _080297D0 @ =0x0203A3D4
+	ldr r1, _080297D0 @ =gBattleStats
 	movs r2, #4
 	ldrsh r0, [r1, r2]
 	cmp r0, #0x7f
@@ -2308,7 +948,7 @@ _080297C4:
 	bx r0
 	.align 2, 0
 _080297CC: .4byte 0x0203A508
-_080297D0: .4byte 0x0203A3D4
+_080297D0: .4byte gBattleStats
 
 	thumb_func_start sub_080297D4
 sub_080297D4: @ 0x080297D4
@@ -2325,7 +965,7 @@ sub_080297D4: @ 0x080297D4
 	ands r0, r1
 	cmp r0, #0
 	beq _0802983C
-	ldr r4, _08029844 @ =0x0203A3D4
+	ldr r4, _08029844 @ =gBattleStats
 	ldrb r1, [r4, #2]
 	cmp r1, #1
 	bne _0802983C
@@ -2368,7 +1008,7 @@ _0802983C:
 	pop {r0}
 	bx r0
 	.align 2, 0
-_08029844: .4byte 0x0203A3D4
+_08029844: .4byte gBattleStats
 _08029848: .4byte 0x0203A508
 
 	thumb_func_start sub_0802984C
@@ -2391,7 +1031,7 @@ sub_0802984C: @ 0x0802984C
 	adds r4, r5, #0
 	adds r4, #0x48
 	ldrh r0, [r4]
-	bl sub_0801782C
+	bl GetItemWeaponEffect
 	cmp r0, #1
 	beq _08029884
 	cmp r0, #3
@@ -2417,7 +1057,7 @@ _08029898:
 	strh r1, [r0]
 _0802989E:
 	ldrh r0, [r4]
-	bl sub_0801782C
+	bl GetItemWeaponEffect
 	cmp r0, #4
 	bne _080298EC
 	movs r1, #0x19
@@ -2427,7 +1067,7 @@ _0802989E:
 	lsls r0, r0, #0x10
 	lsrs r0, r0, #0x10
 	movs r1, #0
-	bl sub_08028A08
+	bl BattleRoll1RN
 	lsls r0, r0, #0x18
 	cmp r0, #0
 	beq _080298EC
@@ -2438,7 +1078,7 @@ _0802989E:
 	ldrh r3, [r1]
 	orrs r0, r3
 	strh r0, [r1]
-	ldr r0, _080298E8 @ =0x0203A3D4
+	ldr r0, _080298E8 @ =gBattleStats
 	ldrb r1, [r5, #0x13]
 	ldrb r0, [r0, #4]
 	subs r0, r1, r0
@@ -2450,9 +1090,9 @@ _0802989E:
 	b _0802990E
 	.align 2, 0
 _080298E4: .4byte 0x0203A508
-_080298E8: .4byte 0x0203A3D4
+_080298E8: .4byte gBattleStats
 _080298EC:
-	ldr r1, _08029980 @ =0x0203A3D4
+	ldr r1, _08029980 @ =gBattleStats
 	movs r2, #0x13
 	ldrsb r2, [r7, r2]
 	movs r3, #4
@@ -2472,10 +1112,10 @@ _080298FC:
 	strb r0, [r7, #0x13]
 _0802990E:
 	ldrh r0, [r4]
-	bl sub_0801782C
+	bl GetItemWeaponEffect
 	cmp r0, #2
 	bne _0802993E
-	ldr r0, _08029980 @ =0x0203A3D4
+	ldr r0, _08029980 @ =gBattleStats
 	ldrb r3, [r5, #0x13]
 	ldrb r0, [r0, #4]
 	adds r0, r3, r0
@@ -2498,7 +1138,7 @@ _0802992E:
 _0802993E:
 	ldr r2, _08029984 @ =0x0203A508
 	ldr r1, [r2]
-	ldr r0, _08029980 @ =0x0203A3D4
+	ldr r0, _08029980 @ =gBattleStats
 	ldrh r0, [r0, #4]
 	strb r0, [r1, #3]
 	ldr r1, [r2]
@@ -2530,7 +1170,7 @@ _08029978:
 	pop {r0}
 	bx r0
 	.align 2, 0
-_08029980: .4byte 0x0203A3D4
+_08029980: .4byte gBattleStats
 _08029984: .4byte 0x0203A508
 
 	thumb_func_start sub_08029988
@@ -2538,7 +1178,7 @@ sub_08029988: @ 0x08029988
 	push {r4, r5, r6, lr}
 	adds r4, r0, #0
 	adds r5, r1, #0
-	ldr r6, _08029A00 @ =0x0203A46C
+	ldr r6, _08029A00 @ =gBattleTarget
 	cmp r4, r6
 	bne _080299A0
 	ldr r0, _08029A04 @ =0x0203A508
@@ -2595,7 +1235,7 @@ _080299F6:
 	movs r0, #1
 	b _08029A12
 	.align 2, 0
-_08029A00: .4byte 0x0203A46C
+_08029A00: .4byte gBattleTarget
 _08029A04: .4byte 0x0203A508
 _08029A08:
 	ldr r1, _08029A18 @ =0x0203A508
@@ -2610,17 +1250,17 @@ _08029A12:
 	.align 2, 0
 _08029A18: .4byte 0x0203A508
 
-	thumb_func_start sub_08029A1C
-sub_08029A1C: @ 0x08029A1C
+	thumb_func_start BattleApplyExpGains
+BattleApplyExpGains: @ 0x08029A1C
 	push {r4, r5, r6, lr}
-	ldr r5, _08029A84 @ =0x0203A3EC
+	ldr r5, _08029A84 @ =gBattleActor
 	movs r0, #0xb
 	ldrsb r0, [r5, r0]
 	movs r1, #0xc0
 	ands r0, r1
 	cmp r0, #0
 	bne _08029A3A
-	ldr r0, _08029A88 @ =0x0203A46C
+	ldr r0, _08029A88 @ =gBattleTarget
 	ldrb r0, [r0, #0xb]
 	lsls r0, r0, #0x18
 	asrs r0, r0, #0x18
@@ -2634,7 +1274,7 @@ _08029A3A:
 	ands r0, r1
 	cmp r0, #0
 	bne _08029A7E
-	ldr r4, _08029A88 @ =0x0203A46C
+	ldr r4, _08029A88 @ =gBattleTarget
 	adds r0, r5, #0
 	adds r1, r4, #0
 	bl sub_0802A3C0
@@ -2663,8 +1303,8 @@ _08029A7E:
 	pop {r0}
 	bx r0
 	.align 2, 0
-_08029A84: .4byte 0x0203A3EC
-_08029A88: .4byte 0x0203A46C
+_08029A84: .4byte gBattleActor
+_08029A88: .4byte gBattleTarget
 _08029A8C: .4byte gPlaySt
 
 	thumb_func_start GetStatIncrease
@@ -3286,15 +1926,15 @@ _08029F1A:
 	pop {r0}
 	bx r0
 
-	thumb_func_start sub_08029F20
-sub_08029F20: @ 0x08029F20
+	thumb_func_start BattleApplyUnitUpdates
+BattleApplyUnitUpdates: @ 0x08029F20
 	push {r4, r5, r6, r7, lr}
-	ldr r5, _08029F94 @ =0x0203A3EC
+	ldr r5, _08029F94 @ =gBattleActor
 	movs r0, #0xb
 	ldrsb r0, [r5, r0]
 	bl GetUnit
 	adds r7, r0, #0
-	ldr r4, _08029F98 @ =0x0203A46C
+	ldr r4, _08029F98 @ =gBattleTarget
 	movs r0, #0xb
 	ldrsb r0, [r4, r0]
 	bl GetUnit
@@ -3345,8 +1985,8 @@ _08029F7E:
 	bl sub_0802A0D4
 	b _08029FA2
 	.align 2, 0
-_08029F94: .4byte 0x0203A3EC
-_08029F98: .4byte 0x0203A46C
+_08029F94: .4byte gBattleActor
+_08029F98: .4byte gBattleTarget
 _08029F9C:
 	adds r0, r4, #0
 	bl sub_0802A7C4
@@ -3385,7 +2025,7 @@ sub_08029FAC: @ 0x08029FAC
 	ands r0, r1
 	cmp r0, #0
 	bne _0802A008
-	ldr r1, _0802A018 @ =0x0203A3D4
+	ldr r1, _0802A018 @ =gBattleStats
 	movs r0, #0x20
 	ldrh r1, [r1]
 	ands r0, r1
@@ -3415,7 +2055,7 @@ _0802A008:
 	.align 2, 0
 _0802A010: .4byte gPlaySt
 _0802A014: .4byte gBmSt
-_0802A018: .4byte 0x0203A3D4
+_0802A018: .4byte gBattleStats
 _0802A01C:
 	adds r4, r7, #0
 	adds r4, #0x50
@@ -3660,16 +2300,16 @@ _0802A1E0:
 	bx r0
 	.align 2, 0
 
-	thumb_func_start sub_0802A1E8
-sub_0802A1E8: @ 0x0802A1E8
+	thumb_func_start BattleApplyBallistaUpdates
+BattleApplyBallistaUpdates: @ 0x0802A1E8
 	push {r4, r5, lr}
-	ldr r1, _0802A214 @ =0x0203A3D4
+	ldr r1, _0802A214 @ =gBattleStats
 	movs r0, #8
 	ldrh r1, [r1]
 	ands r0, r1
 	cmp r0, #0
 	beq _0802A20C
-	ldr r4, _0802A218 @ =0x0203A3EC
+	ldr r4, _0802A218 @ =gBattleActor
 	adds r0, r4, #0
 	adds r0, #0x48
 	ldrh r0, [r0]
@@ -3683,8 +2323,8 @@ _0802A20C:
 	pop {r0}
 	bx r0
 	.align 2, 0
-_0802A214: .4byte 0x0203A3D4
-_0802A218: .4byte 0x0203A3EC
+_0802A214: .4byte gBattleStats
+_0802A218: .4byte gBattleActor
 
 	thumb_func_start sub_0802A21C
 sub_0802A21C: @ 0x0802A21C
@@ -3988,7 +2628,7 @@ sub_0802A42C: @ 0x0802A42C
 	ands r0, r1
 	cmp r0, #0
 	bne _0802A4A2
-	ldr r4, _0802A478 @ =0x0203A3EC
+	ldr r4, _0802A478 @ =gBattleActor
 	ldr r0, [r4, #0x4c]
 	movs r1, #4
 	ands r0, r1
@@ -4018,7 +2658,7 @@ _0802A45A:
 	b _0802A4A2
 	.align 2, 0
 _0802A474: .4byte gPlaySt
-_0802A478: .4byte 0x0203A3EC
+_0802A478: .4byte gBattleActor
 _0802A47C:
 	adds r0, r4, #0
 	adds r0, #0x50
@@ -4100,7 +2740,7 @@ _0802A506:
 	thumb_func_start sub_0802A50C
 sub_0802A50C: @ 0x0802A50C
 	push {r4, lr}
-	ldr r4, _0802A54C @ =0x0203A3EC
+	ldr r4, _0802A54C @ =gBattleActor
 	movs r0, #0xc0
 	ldrb r1, [r4, #0xb]
 	ands r0, r1
@@ -4131,11 +2771,11 @@ _0802A546:
 	pop {r0}
 	bx r0
 	.align 2, 0
-_0802A54C: .4byte 0x0203A3EC
+_0802A54C: .4byte gBattleActor
 _0802A550: .4byte gPlaySt
 
-	thumb_func_start sub_0802A554
-sub_0802A554: @ 0x0802A554
+	thumb_func_start BattleUnitTargetSetEquippedWeapon
+BattleUnitTargetSetEquippedWeapon: @ 0x0802A554
 	push {r4, r5, r6, lr}
 	adds r5, r0, #0
 	adds r4, r5, #0
@@ -4179,8 +2819,8 @@ _0802A5A2:
 	pop {r0}
 	bx r0
 
-	thumb_func_start sub_0802A5A8
-sub_0802A5A8: @ 0x0802A5A8
+	thumb_func_start BattleUnitTargetCheckCanCounter
+BattleUnitTargetCheckCanCounter: @ 0x0802A5A8
 	adds r2, r0, #0
 	adds r0, #0x52
 	ldrb r0, [r0]
@@ -4248,8 +2888,8 @@ _0802A61C:
 	bx lr
 	.align 2, 0
 
-	thumb_func_start sub_0802A620
-sub_0802A620: @ 0x0802A620
+	thumb_func_start BattleApplyWeaponTriangleEffect
+BattleApplyWeaponTriangleEffect: @ 0x0802A620
 	push {r4, r5, r6, lr}
 	adds r4, r0, #0
 	adds r5, r1, #0
@@ -4320,11 +2960,11 @@ _0802A69C:
 	bx r0
 	.align 2, 0
 
-	thumb_func_start sub_0802A6A4
-sub_0802A6A4: @ 0x0802A6A4
+	thumb_func_start BattleInitTargetCanCounter
+BattleInitTargetCanCounter: @ 0x0802A6A4
 	push {r4, lr}
-	ldr r4, _0802A6FC @ =0x0203A3EC
-	ldr r3, _0802A700 @ =0x0203A46C
+	ldr r4, _0802A6FC @ =gBattleActor
+	ldr r3, _0802A700 @ =gBattleTarget
 	ldr r0, [r4, #0x4c]
 	ldr r1, [r3, #0x4c]
 	orrs r0, r1
@@ -4369,13 +3009,13 @@ _0802A6F6:
 	pop {r0}
 	bx r0
 	.align 2, 0
-_0802A6FC: .4byte 0x0203A3EC
-_0802A700: .4byte 0x0203A46C
+_0802A6FC: .4byte gBattleActor
+_0802A700: .4byte gBattleTarget
 
 	thumb_func_start sub_0802A704
 sub_0802A704: @ 0x0802A704
 	push {r4, lr}
-	ldr r4, _0802A75C @ =0x0203A46C
+	ldr r4, _0802A75C @ =gBattleTarget
 	adds r0, r4, #0
 	bl ClearUnit
 	movs r0, #0
@@ -4415,7 +3055,7 @@ sub_0802A704: @ 0x0802A704
 	beq _0802A776
 	b _0802A782
 	.align 2, 0
-_0802A75C: .4byte 0x0203A46C
+_0802A75C: .4byte gBattleTarget
 _0802A760: .4byte gPlaySt
 _0802A764: .4byte gActionSt
 _0802A768: .4byte gBmMapTerrain
@@ -4435,10 +3075,10 @@ _0802A782:
 	pop {r0}
 	bx r0
 
-	thumb_func_start sub_0802A788
-sub_0802A788: @ 0x0802A788
+	thumb_func_start ComputeBattleObstacleStats
+ComputeBattleObstacleStats: @ 0x0802A788
 	push {r4, lr}
-	ldr r1, _0802A7BC @ =0x0203A3EC
+	ldr r1, _0802A7BC @ =gBattleActor
 	adds r2, r1, #0
 	adds r2, #0x64
 	movs r4, #0
@@ -4447,7 +3087,7 @@ sub_0802A788: @ 0x0802A788
 	strh r0, [r2]
 	adds r1, #0x6a
 	strh r3, [r1]
-	ldr r1, _0802A7C0 @ =0x0203A46C
+	ldr r1, _0802A7C0 @ =gBattleTarget
 	adds r2, r1, #0
 	adds r2, #0x5e
 	movs r0, #0xff
@@ -4464,8 +3104,8 @@ sub_0802A788: @ 0x0802A788
 	pop {r0}
 	bx r0
 	.align 2, 0
-_0802A7BC: .4byte 0x0203A3EC
-_0802A7C0: .4byte 0x0203A46C
+_0802A7BC: .4byte gBattleActor
+_0802A7C0: .4byte gBattleTarget
 
 	thumb_func_start sub_0802A7C4
 sub_0802A7C4: @ 0x0802A7C4
@@ -4556,8 +3196,8 @@ sub_0802A860: @ 0x0802A860
 	cmp r0, #0
 	beq _0802A89C
 	movs r0, #0
-	bl sub_0804B970
-	bl sub_08051180
+	bl SetBanimLinkArenaFlag
+	bl BeginAnimsOnBattleAnimations
 	b _0802A8B2
 	.align 2, 0
 _0802A894: .4byte 0x02023C60
@@ -4566,7 +3206,7 @@ _0802A89C:
 	bl sub_0806D4A4
 	bl RenderMap
 	bl sub_0806FA28
-	ldr r1, _0802A8B8 @ =0x0203A3D4
+	ldr r1, _0802A8B8 @ =gBattleStats
 	movs r0, #0x80
 	ldrh r2, [r1]
 	orrs r0, r2
@@ -4575,7 +3215,7 @@ _0802A8B2:
 	pop {r0}
 	bx r0
 	.align 2, 0
-_0802A8B8: .4byte 0x0203A3D4
+_0802A8B8: .4byte gBattleStats
 
 	thumb_func_start sub_0802A8BC
 sub_0802A8BC: @ 0x0802A8BC
@@ -4611,7 +3251,7 @@ sub_0802A8E0: @ 0x0802A8E0
 	lsrs r0, r0, #0x1e
 	cmp r0, #2
 	bne _0802A93A
-	ldr r2, _0802A918 @ =0x0203A3EC
+	ldr r2, _0802A918 @ =gBattleActor
 	movs r0, #0xb
 	ldrsb r0, [r2, r0]
 	movs r1, #0xc0
@@ -4619,7 +3259,7 @@ sub_0802A8E0: @ 0x0802A8E0
 	adds r3, r2, #0
 	cmp r0, #0
 	bne _0802A920
-	ldr r0, _0802A91C @ =0x0203A46C
+	ldr r0, _0802A91C @ =gBattleTarget
 	ldrb r0, [r0, #0xb]
 	lsls r0, r0, #0x18
 	asrs r0, r0, #0x18
@@ -4630,10 +3270,10 @@ sub_0802A8E0: @ 0x0802A8E0
 	b _0802A936
 	.align 2, 0
 _0802A914: .4byte gPlaySt
-_0802A918: .4byte 0x0203A3EC
-_0802A91C: .4byte 0x0203A46C
+_0802A918: .4byte gBattleActor
+_0802A91C: .4byte gBattleTarget
 _0802A920:
-	ldr r2, _0802A930 @ =0x0203A46C
+	ldr r2, _0802A930 @ =gBattleTarget
 	movs r0, #0xb
 	ldrsb r0, [r2, r0]
 	ands r0, r1
@@ -4642,7 +3282,7 @@ _0802A920:
 	movs r0, #1
 	b _0802A93A
 	.align 2, 0
-_0802A930: .4byte 0x0203A46C
+_0802A930: .4byte gBattleTarget
 _0802A934:
 	adds r0, r2, #0
 _0802A936:
@@ -4652,13 +3292,13 @@ _0802A93A:
 	bx r1
 	.align 2, 0
 
-	thumb_func_start nullsub_08
-nullsub_08: @ 0x0802A940
+	thumb_func_start BattlePrintDebugUnitInfo
+BattlePrintDebugUnitInfo: @ 0x0802A940
 	bx lr
 	.align 2, 0
 
-	thumb_func_start sub_0802A944
-sub_0802A944: @ 0x0802A944
+	thumb_func_start BattlePrintDebugHitInfo
+BattlePrintDebugHitInfo: @ 0x0802A944
 	ldr r1, _0802A960 @ =0x0203A4EC
 	movs r0, #0x80
 	ldrb r2, [r1, #2]
@@ -4691,21 +3331,21 @@ sub_0802A964: @ 0x0802A964
 	bge _0802A978
 	movs r6, #0
 _0802A978:
-	ldr r1, _0802AA04 @ =0x0203A3D4
+	ldr r1, _0802AA04 @ =gBattleStats
 	movs r4, #0
 	movs r0, #0
 	strh r0, [r1]
-	ldr r5, _0802AA08 @ =0x0203A3EC
+	ldr r5, _0802AA08 @ =gBattleActor
 	adds r0, r5, #0
 	adds r1, r2, #0
-	bl sub_08028A60
+	bl InitBattleUnit
 	adds r0, r5, #0
-	bl sub_08028BB4
+	bl SetBattleUnitTerrainBonusesAuto
 	adds r0, r5, #0
-	bl sub_08028F74
+	bl ComputeBattleUnitBaseDefense
 	adds r0, r5, #0
 	movs r1, #0
-	bl sub_08028EA0
+	bl ComputeBattleUnitSupportBonuses
 	adds r0, r5, #0
 	adds r0, #0x5a
 	movs r2, #0xff
@@ -4744,7 +3384,7 @@ _0802A978:
 	ldrb r0, [r2]
 	orrs r0, r1
 	strb r0, [r2]
-	ldr r0, _0802AA0C @ =0x0203A46C
+	ldr r0, _0802AA0C @ =gBattleTarget
 	adds r0, #0x6f
 	ldrb r2, [r0]
 	orrs r1, r2
@@ -4754,24 +3394,24 @@ _0802A978:
 	pop {r0}
 	bx r0
 	.align 2, 0
-_0802AA04: .4byte 0x0203A3D4
-_0802AA08: .4byte 0x0203A3EC
-_0802AA0C: .4byte 0x0203A46C
+_0802AA04: .4byte gBattleStats
+_0802AA08: .4byte gBattleActor
+_0802AA0C: .4byte gBattleTarget
 
 	thumb_func_start sub_0802AA10
 sub_0802AA10: @ 0x0802AA10
 	push {r4, lr}
 	adds r1, r0, #0
-	ldr r4, _0802AA5C @ =0x0203A46C
+	ldr r4, _0802AA5C @ =gBattleTarget
 	adds r0, r4, #0
-	bl sub_08028A60
+	bl InitBattleUnit
 	adds r0, r4, #0
-	bl sub_08028BB4
+	bl SetBattleUnitTerrainBonusesAuto
 	adds r0, r4, #0
-	bl sub_08028F74
+	bl ComputeBattleUnitBaseDefense
 	adds r0, r4, #0
 	movs r1, #0
-	bl sub_08028EA0
+	bl ComputeBattleUnitSupportBonuses
 	adds r0, r4, #0
 	adds r0, #0x5a
 	movs r2, #0
@@ -4784,8 +3424,8 @@ sub_0802AA10: @ 0x0802AA10
 	subs r0, #0x20
 	strh r2, [r0]
 	adds r0, r4, #0
-	bl sub_0802A554
-	ldr r0, _0802AA60 @ =0x0203A3EC
+	bl BattleUnitTargetSetEquippedWeapon
+	ldr r0, _0802AA60 @ =gBattleActor
 	adds r0, #0x7e
 	movs r1, #1
 	strb r1, [r0]
@@ -4793,13 +3433,13 @@ sub_0802AA10: @ 0x0802AA10
 	pop {r0}
 	bx r0
 	.align 2, 0
-_0802AA5C: .4byte 0x0203A46C
-_0802AA60: .4byte 0x0203A3EC
+_0802AA5C: .4byte gBattleTarget
+_0802AA60: .4byte gBattleActor
 
 	thumb_func_start sub_0802AA64
 sub_0802AA64: @ 0x0802AA64
 	push {r4, lr}
-	ldr r4, _0802AA7C @ =0x0203A3EC
+	ldr r4, _0802AA7C @ =gBattleActor
 	movs r0, #0xb
 	ldrsb r0, [r4, r0]
 	bl GetUnit
@@ -4809,7 +3449,7 @@ sub_0802AA64: @ 0x0802AA64
 	pop {r0}
 	bx r0
 	.align 2, 0
-_0802AA7C: .4byte 0x0203A3EC
+_0802AA7C: .4byte gBattleActor
 
 	thumb_func_start sub_0802AA80
 sub_0802AA80: @ 0x0802AA80
@@ -4836,7 +3476,7 @@ sub_0802AA9C: @ 0x0802AA9C
 	movs r1, #0x80
 	strb r1, [r0, #2]
 	bl sub_0802A42C
-	ldr r4, _0802AB14 @ =0x0203A3EC
+	ldr r4, _0802AB14 @ =gBattleActor
 	adds r0, r4, #0
 	adds r0, #0x52
 	ldrb r0, [r0]
@@ -4884,7 +3524,7 @@ _0802AB00:
 	bx r0
 	.align 2, 0
 _0802AB10: .4byte 0x0203A508
-_0802AB14: .4byte 0x0203A3EC
+_0802AB14: .4byte gBattleActor
 _0802AB18: .4byte 0x08C0355C
 
 	thumb_func_start sub_0802AB1C
@@ -4962,7 +3602,7 @@ sub_0802AB90: @ 0x0802AB90
 	push {r5, r6, r7}
 	sub sp, #4
 	adds r6, r0, #0
-	ldr r0, _0802AC60 @ =0x0203A7F0
+	ldr r0, _0802AC60 @ =gArenaSt
 	mov sb, r0
 	ldr r1, [r0, #4]
 	mov r8, r1
@@ -4970,17 +3610,17 @@ sub_0802AB90: @ 0x0802AB90
 	adds r0, #0x3c
 	ldrb r0, [r0]
 	str r0, [sp]
-	ldr r7, _0802AC68 @ =0x0203A3D4
+	ldr r7, _0802AC68 @ =gBattleStats
 	movs r0, #0x21
 	strh r0, [r7]
-	ldr r5, _0802AC6C @ =0x0203A3EC
+	ldr r5, _0802AC6C @ =gBattleActor
 	adds r0, r5, #0
 	adds r1, r6, #0
-	bl sub_08028A60
-	ldr r4, _0802AC70 @ =0x0203A46C
+	bl InitBattleUnit
+	ldr r4, _0802AC70 @ =gBattleTarget
 	adds r0, r4, #0
 	mov r1, r8
-	bl sub_08028A60
+	bl InitBattleUnit
 	ldr r0, _0802AC74 @ =gActionSt
 	mov sl, r0
 	ldrb r0, [r0, #0x15]
@@ -5001,31 +3641,31 @@ _0802ABDA:
 	strb r0, [r4, #0x11]
 	adds r0, r5, #0
 	movs r1, #6
-	bl sub_08028C08
+	bl SetBattleUnitWeapon
 	adds r0, r4, #0
 	movs r1, #7
-	bl sub_08028C08
+	bl SetBattleUnitWeapon
 	adds r0, r5, #0
 	adds r1, r4, #0
-	bl sub_0802A620
+	bl BattleApplyWeaponTriangleEffect
 	movs r0, #4
 	mov r1, sl
 	strb r0, [r1, #0x16]
 	movs r0, #3
 	bl WriteSuspendSave
 	adds r0, r5, #0
-	bl sub_08028BB4
+	bl SetBattleUnitTerrainBonusesAuto
 	adds r0, r4, #0
 	movs r1, #8
-	bl sub_08028B7C
+	bl SetBattleUnitTerrainBonuses
 	adds r0, r6, #0
 	mov r1, r8
-	bl sub_080288B0
+	bl BattleGenerate
 	movs r0, #0x13
 	ldrsb r0, [r4, r0]
 	cmp r0, #0
 	bne _0802AC30
-	bl sub_08029A1C
+	bl BattleApplyExpGains
 _0802AC30:
 	adds r0, r6, #0
 	adds r1, r5, #0
@@ -5038,7 +3678,7 @@ _0802AC30:
 	cmp r0, #0
 	bne _0802AC8E
 _0802AC46:
-	bl sub_080A0C84
+	bl PidStatsRecordBattleResult
 	ldr r0, [r6, #0xc]
 	ldr r2, _0802AC78 @ =0xFFF1FFFF
 	ands r2, r0
@@ -5051,11 +3691,11 @@ _0802AC46:
 	lsls r0, r0, #0x11
 	b _0802AC80
 	.align 2, 0
-_0802AC60: .4byte 0x0203A7F0
+_0802AC60: .4byte gArenaSt
 _0802AC64: .4byte gBmSt
-_0802AC68: .4byte 0x0203A3D4
-_0802AC6C: .4byte 0x0203A3EC
-_0802AC70: .4byte 0x0203A46C
+_0802AC68: .4byte gBattleStats
+_0802AC6C: .4byte gBattleActor
+_0802AC70: .4byte gBattleTarget
 _0802AC74: .4byte gActionSt
 _0802AC78: .4byte 0xFFF1FFFF
 _0802AC7C:
@@ -5070,9 +3710,9 @@ _0802AC80:
 	ands r1, r2
 	strb r1, [r0]
 _0802AC8E:
-	ldr r0, _0802ACAC @ =0x0203A3EC
-	ldr r1, _0802ACB0 @ =0x0203A46C
-	bl nullsub_08
+	ldr r0, _0802ACAC @ =gBattleActor
+	ldr r1, _0802ACB0 @ =gBattleTarget
+	bl BattlePrintDebugUnitInfo
 	add sp, #4
 	pop {r3, r4, r5}
 	mov r8, r3
@@ -5083,8 +3723,8 @@ _0802AC8E:
 	bx r0
 	.align 2, 0
 _0802ACA8: .4byte 0x03002778
-_0802ACAC: .4byte 0x0203A3EC
-_0802ACB0: .4byte 0x0203A46C
+_0802ACAC: .4byte gBattleActor
+_0802ACB0: .4byte gBattleTarget
 
 	thumb_func_start sub_0802ACB4
 sub_0802ACB4: @ 0x0802ACB4
@@ -5128,7 +3768,7 @@ _0802ACE8: .4byte gActionSt
 sub_0802ACEC: @ 0x0802ACEC
 	push {r4, r5, r6, lr}
 	adds r4, r0, #0
-	ldr r2, _0802AD50 @ =0x0203A3D4
+	ldr r2, _0802AD50 @ =gBattleStats
 	movs r0, #0
 	strh r0, [r2, #4]
 	ldr r0, _0802AD54 @ =0x0203A508
@@ -5181,11 +3821,11 @@ _0802AD4A:
 	pop {r0}
 	bx r0
 	.align 2, 0
-_0802AD50: .4byte 0x0203A3D4
+_0802AD50: .4byte gBattleStats
 _0802AD54: .4byte 0x0203A508
 
-	thumb_func_start sub_0802AD58
-sub_0802AD58: @ 0x0802AD58
+	thumb_func_start BattleUnwindScripted
+BattleUnwindScripted: @ 0x0802AD58
 	push {r4, r5, r6, lr}
 	ldr r0, _0802ADA4 @ =gActionSt
 	ldr r2, [r0, #0x18]
@@ -5223,18 +3863,18 @@ _0802AD90:
 	ands r0, r1
 	cmp r0, #0
 	beq _0802ADB8
-	ldr r5, _0802ADB0 @ =0x0203A46C
-	ldr r4, _0802ADB4 @ =0x0203A3EC
+	ldr r5, _0802ADB0 @ =gBattleTarget
+	ldr r4, _0802ADB4 @ =gBattleActor
 	b _0802ADBC
 	.align 2, 0
 _0802ADA4: .4byte gActionSt
 _0802ADA8: .4byte 0x0203A4EC
 _0802ADAC: .4byte 0x0203A508
-_0802ADB0: .4byte 0x0203A46C
-_0802ADB4: .4byte 0x0203A3EC
+_0802ADB0: .4byte gBattleTarget
+_0802ADB4: .4byte gBattleActor
 _0802ADB8:
-	ldr r5, _0802AE18 @ =0x0203A3EC
-	ldr r4, _0802AE1C @ =0x0203A46C
+	ldr r5, _0802AE18 @ =gBattleActor
+	ldr r4, _0802AE1C @ =gBattleTarget
 _0802ADBC:
 	adds r0, r5, #0
 	adds r1, r4, #0
@@ -5265,7 +3905,7 @@ _0802ADE2:
 	ldrb r4, [r1, #2]
 	orrs r0, r4
 	strb r0, [r1, #2]
-	ldr r0, _0802AE1C @ =0x0203A46C
+	ldr r0, _0802AE1C @ =gBattleTarget
 	ldrb r0, [r0, #0x13]
 	lsls r0, r0, #0x18
 	asrs r0, r0, #0x18
@@ -5282,8 +3922,8 @@ _0802AE10:
 	strb r0, [r1, #6]
 	b _0802AE34
 	.align 2, 0
-_0802AE18: .4byte 0x0203A3EC
-_0802AE1C: .4byte 0x0203A46C
+_0802AE18: .4byte gBattleActor
+_0802AE1C: .4byte gBattleTarget
 _0802AE20: .4byte 0x0203A508
 _0802AE24:
 	ldr r1, [r6]

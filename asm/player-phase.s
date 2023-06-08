@@ -252,7 +252,7 @@ _0801C776:
 	subs r1, r1, r2
 	movs r2, #1
 	movs r3, #0x17
-	bl sub_0804AA0C
+	bl StartAdjustedMenu
 	bl sub_08079890
 	b _0801C88A
 	.align 2, 0

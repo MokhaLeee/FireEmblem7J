@@ -1541,7 +1541,7 @@ sub_08027F14: @ 0x08027F14
 	ldrb r0, [r4, #2]
 	strb r0, [r5, #0xd]
 	ldr r0, _08027F70 @ =0x08C04BB8
-	bl sub_0804AA58
+	bl StartMenu
 	adds r4, r0, #0
 	ldrb r0, [r5, #0xd]
 	bl GetUnit

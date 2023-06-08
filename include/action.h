@@ -56,6 +56,7 @@ struct Action {
     /* 13 */ u8 x_target, y_target;
     /* 15 */ u8 extra;
     /* 16 */ u8 suspend_point;
+    /* 18 */ struct BattleHit *battle_scr;
 };
 
 extern struct Action gActionSt;

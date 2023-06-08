@@ -161,7 +161,7 @@ enum {
     ITEM_EMBLEM_LANCE      = 0x81,
     ITEM_EMBLEM_AXE        = 0x82,
     ITEM_EMBLEM_BOW        = 0x83,
-    ITEM_SWORD_DURANDAL    = 0x83,
+    ITEM_SWORD_DURANDAL    = 0x84,
     ITEM_AXE_ARMADS        = 0x85,
     ITEM_LIGHT_AUREOLA     = 0x86,
     ITEM_EARTH_SEAL        = 0x87,
