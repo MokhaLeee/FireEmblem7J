@@ -52,27 +52,19 @@ enum BmSt_gameStateBits {
 struct PlaySt {
     /* 00 */ u32 time_saved;
     /* 04 */ u32 time_chapter_started;
-
     /* 08 */ u32 partyGoldAmount;
     /* 0C */ u8  gameSaveSlot;
-
     /* 0D */ u8  chapterVisionRange; // 0 means no fog
     /* 0E */ s8  chapterIndex;
-
     /* 0F */ u8  faction; // 0x00 = Player phase, 0x40 = NPC phase, 0x80 = Enemy phase (0xC0 = link arena 4th team?)
-
     /* 10 */ u16 chapterTurnNumber;
-
     /* 12 */ u8  xCursor, yCursor; // map cursor position
-
     /* 14 */ u8  chapterStateBits; // +0x04 = postgame, +0x10 = in prep screen, +0x40 = difficult mode, +0x80 = link arena?
     /* 15 */ u8  chapterWeatherId;
     /* 16 */ u16 chapterTotalSupportGain;
-
     /* 18 */ u8 playthroughIdentifier;
     /* 19 */ u8 unk19;
     /* 1A */ u8 lastUnitSortType;
-
     /* 1B */ u8  chapterModeIndex; // 1 for tutorial (ch0-8), 2 for Eirika route, 3 for Ephraim route
 
     // character identifiers indexed by weapon type.
@@ -81,20 +73,16 @@ struct PlaySt {
     /* 1E */ u8 unk1E;
     /* 1F */ u8 unk1F;
 
-    /* 20 */ char playerName[0x2B - 0x20]; // unused outside of link arena (was tactician name in FE7); Size unknown
-
+    /* 20 */ char playerName[0x2B - 0x20];
     /* 2B */ u8 unk_2B_00 : 0x01;
-             u8 unk_2B_01 : 0x07;
+             u8 unk_2B_01 : 0x03;
+             u8 unk_2B_04 : 0x04;
 
-    u32 unk_2C_1:1;
-    u32 unk_2C_01 : 0x03;
-    u32 unk_2C_04 : 0x09;
-    u32 unk_2C_0D : 0x0A;
-    u32 unk_2C_2:5;
-    u32 unk_2C_3:4;
+    u32 unk2C_00 : 0x04;
+    u32 unk2C_11 : 0x09;
+    u32 unk2C_0D : 0x13;
 
     /* 30 */ int total_gold;
-
     /* 34 */ u32 unk_34_00 : 0x14;
              u32 unk_34_14 : 0x0C;
 
@@ -133,11 +121,8 @@ struct PlaySt {
     u32 debugControlRed:2; // 2 (!)
     u32 debugControlGreen:2; // 2
     u32 unk43_4:5; // unk
-
     u8  unk44[0x48 - 0x44];
-
     u16 unk48;
-
     u8 unk4A_1 : 1;
     u8 unk4A_2 : 3;
     u8 unk4A_5 : 4;

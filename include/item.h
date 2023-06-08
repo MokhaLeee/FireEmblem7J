@@ -19,6 +19,14 @@ enum item_kind {
     ITYPE_12    = 12,
 };
 
+enum weapon_effect {
+    WPN_EFFECT_NONE    = 0,
+    WPN_EFFECT_POISON  = 1,
+    WPN_EFFECT_HPDRAIN = 2,
+    WPN_EFFECT_HPHALVE = 3,
+    WPN_EFFECT_DEVIL   = 4,
+};
+
 enum ItemData_attributes {
     IA_NONE           = 0,
 
@@ -69,10 +77,10 @@ bool CanUnitUseStaff(struct Unit *unit, int item);
 // sub_08016AD0
 u16 GetItemAfterUse(int item);
 u16 GetUnitEquippedWeapon(struct Unit *unit);
-// GetUnitEquippedWeaponSlot
-// sub_08016C28
-// sub_08016C54
-// sub_08016C80
+int GetUnitEquippedWeaponSlot(struct Unit *unit);
+bool IsItemCoveringRange(int item, int range);
+void EquipUnitItemSlot(struct Unit *unit, int itemSlot);
+bool IsItemEffectiveAgainst(u16 item, struct Unit *unit);
 // sub_08016D0C
 // sub_08016DA4
 // sub_08016DD8
@@ -102,9 +110,9 @@ int GetItemType(int item);
 int GetItemAttributes(int item);
 // sub_0801769C
 // sub_080176C4
-// sub_080176E8
-// sub_08017700
-// sub_08017718
+int GetItemMight(int item);
+int GetItemHit(int item);
+int GetItemWeight(int item);
 // sub_08017730
 // sub_08017748
 // sub_08017774
@@ -114,7 +122,7 @@ int GetItemRequiredExp(int item);
 // sub_080177D8
 // sub_080177F0
 // sub_08017808
-// sub_0801782C
+int GetItemWeaponEffect(int item);
 // sub_08017844
 // sub_0801785C
 // sub_08017874

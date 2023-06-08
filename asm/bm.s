@@ -39,7 +39,7 @@ OnGameLoopMain: @ 0x08015718
 	push {r4, lr}
 	ldr r0, _08015774 @ =gpKeySt
 	ldr r0, [r0]
-	bl sub_08001BA0
+	bl UpdateKeyStatus
 	bl ClearSprites
 	ldr r4, _08015778 @ =0x02026A28
 	ldr r0, [r4, #4]
@@ -56,11 +56,11 @@ _0801573E:
 	ldr r0, [r4, #0x14]
 	bl Proc_Run
 	movs r0, #0
-	bl sub_080068F4
+	bl PushSpriteLayerObjects
 	ldr r0, [r4, #0x10]
 	bl Proc_Run
 	movs r0, #0xd
-	bl sub_080068F4
+	bl PushSpriteLayerObjects
 	ldr r1, _0801577C @ =gBmSt
 	movs r0, #1
 	strb r0, [r1]

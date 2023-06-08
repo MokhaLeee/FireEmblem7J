@@ -1925,7 +1925,7 @@ sub_08008CC4: @ 0x08008CC4
 	movs r0, #1
 	bl sub_08008CB8
 _08008CDA:
-	bl sub_0804B9C8
+	bl IsBattleDeamonActive
 	lsls r0, r0, #0x18
 	cmp r0, #0
 	beq _08008CF0
@@ -3248,7 +3248,7 @@ sub_080096E0: @ 0x080096E0
 	bgt _0800970A
 	movs r7, #0
 _0800970A:
-	bl sub_0804B9C8
+	bl IsBattleDeamonActive
 	lsls r0, r0, #0x18
 	cmp r0, #0
 	beq _08009716
@@ -4100,7 +4100,7 @@ _08009D92:
 sub_08009D94: @ 0x08009D94
 	push {r4, lr}
 	adds r4, r0, #0
-	bl sub_0804B9C8
+	bl IsBattleDeamonActive
 	lsls r0, r0, #0x18
 	cmp r0, #0
 	beq _08009DAE

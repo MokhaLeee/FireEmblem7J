@@ -1672,8 +1672,8 @@ _08001B94:
 	.align 2, 0
 _08001B9C: .4byte 0x0000FFFE
 
-	thumb_func_start sub_08001BA0
-sub_08001BA0: @ 0x08001BA0
+	thumb_func_start UpdateKeyStatus
+UpdateKeyStatus: @ 0x08001BA0
 	push {r7, lr}
 	sub sp, #8
 	mov r7, sp

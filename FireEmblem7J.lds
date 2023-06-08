@@ -26,6 +26,10 @@ SECTIONS
 		. = 0x02E3E8; gBmMapFog = .;
 		. = 0x02E3EC; gBmMapHidden = .;
 		. = 0x02E3F0; gBmMapOther = .;
+		. = 0x03A3D4; gBattleStats = .;
+		. = 0x03A3EC; gBattleActor = .;
+		. = 0x03A46C; gBattleTarget = .;
+		. = 0x03A7F0; gArenaSt = .;
 		. = 0x03A858; gActionSt = .;
 	}
 
@@ -83,6 +87,7 @@ SECTIONS
 		asm/unit-sprite.o(.text);
 		asm/support.o(.text);
 		asm/item-use.o(.text);
+		src/battle.o(.text);
 		asm/battle.o(.text);
 		asm/trade-menu.o(.text);
 		asm/trap.o(.text);
@@ -92,6 +97,11 @@ SECTIONS
 		asm/code1.o(.text);
 		asm/code-ai.o(.text);
 		asm/code-sio.o(.text);
+		asm/uiutils.o(.text);
+		asm/ui-menu.o(.text);
+		asm/map-sel.o(.text);
+		asm/banim-ekrbattle.o(.text);
+		asm/banim-efxbattle.o(.text);
 		asm/code.o(.text);
 
 		asm/m4a_1.o(.text);
@@ -99,15 +109,15 @@ SECTIONS
 		asm/gba-syscall.o(.text);
 		asm/agb-sram.o(.text);
 		*libgcc.a:_ashldi3.o(.text);
-        *libgcc.a:_call_via_rX.o(.text);
+		*libgcc.a:_call_via_rX.o(.text);
 		*libgcc.a:_divsi3.o(.text);
-        *libgcc.a:_dvmd_tls.o(.text);
-        *libgcc.a:_modsi3.o(.text);
-        *libgcc.a:_muldi3.o(.text);
-        *libgcc.a:_udivsi3.o(.text);
-        *libgcc.a:_umodsi3.o(.text);
+		*libgcc.a:_dvmd_tls.o(.text);
+		*libgcc.a:_modsi3.o(.text);
+		*libgcc.a:_muldi3.o(.text);
+		*libgcc.a:_udivsi3.o(.text);
+		*libgcc.a:_umodsi3.o(.text);
 		*libc.a:memcpy.o(.text);
-        *libc.a:memset.o(.text);
+		*libc.a:memset.o(.text);
 		*libc.a:strcpy.o(.text);
 		*libc.a:strlen.o(.text);
 		src/arm-call.o(.text);

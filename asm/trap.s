@@ -1219,8 +1219,8 @@ _0802C74E:
 	bx r0
 	.align 2, 0
 
-	thumb_func_start sub_0802C75C
-sub_0802C75C: @ 0x0802C75C
+	thumb_func_start DisableAllLightRunes
+DisableAllLightRunes: @ 0x0802C75C
 	push {r4, lr}
 	ldr r4, _0802C764 @ =0x0203A514
 	b _0802C78A
@@ -1254,8 +1254,8 @@ _0802C78A:
 	.align 2, 0
 _0802C798: .4byte gBmMapTerrain
 
-	thumb_func_start sub_0802C79C
-sub_0802C79C: @ 0x0802C79C
+	thumb_func_start EnableAllLightRunes
+EnableAllLightRunes: @ 0x0802C79C
 	push {r4, r5, lr}
 	ldr r2, _0802C7D0 @ =0x0203A514
 	ldrb r0, [r2, #2]

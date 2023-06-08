@@ -1073,8 +1073,8 @@ _08016C20:
 	bx r1
 	.align 2, 0
 
-	thumb_func_start sub_08016C28
-sub_08016C28: @ 0x08016C28
+	thumb_func_start IsItemCoveringRange
+IsItemCoveringRange: @ 0x08016C28
 	adds r3, r1, #0
 	movs r1, #0xff
 	ands r0, r1
@@ -1100,8 +1100,8 @@ _08016C50:
 _08016C52:
 	bx lr
 
-	thumb_func_start sub_08016C54
-sub_08016C54: @ 0x08016C54
+	thumb_func_start EquipUnitItemSlot
+EquipUnitItemSlot: @ 0x08016C54
 	push {r4, r5, lr}
 	adds r3, r0, #0
 	lsls r4, r1, #1
@@ -1127,8 +1127,8 @@ _08016C78:
 	pop {r0}
 	bx r0
 
-	thumb_func_start sub_08016C80
-sub_08016C80: @ 0x08016C80
+	thumb_func_start IsItemEffectiveAgainst
+IsItemEffectiveAgainst: @ 0x08016C80
 	push {r4, r5, r6, r7, lr}
 	adds r7, r1, #0
 	lsls r0, r0, #0x10
@@ -2490,8 +2490,8 @@ _080176E4:
 _080176E6:
 	bx lr
 
-	thumb_func_start sub_080176E8
-sub_080176E8: @ 0x080176E8
+	thumb_func_start GetItemMight
+GetItemMight: @ 0x080176E8
 	movs r1, #0xff
 	ands r0, r1
 	lsls r1, r0, #3
@@ -2504,8 +2504,8 @@ sub_080176E8: @ 0x080176E8
 	.align 2, 0
 _080176FC: .4byte 0x08C51538
 
-	thumb_func_start sub_08017700
-sub_08017700: @ 0x08017700
+	thumb_func_start GetItemHit
+GetItemHit: @ 0x08017700
 	movs r1, #0xff
 	ands r0, r1
 	lsls r1, r0, #3
@@ -2518,8 +2518,8 @@ sub_08017700: @ 0x08017700
 	.align 2, 0
 _08017714: .4byte 0x08C51538
 
-	thumb_func_start sub_08017718
-sub_08017718: @ 0x08017718
+	thumb_func_start GetItemWeight
+GetItemWeight: @ 0x08017718
 	movs r1, #0xff
 	ands r0, r1
 	lsls r1, r0, #3
@@ -2681,8 +2681,8 @@ _08017828:
 	bx lr
 	.align 2, 0
 
-	thumb_func_start sub_0801782C
-sub_0801782C: @ 0x0801782C
+	thumb_func_start GetItemWeaponEffect
+GetItemWeaponEffect: @ 0x0801782C
 	movs r1, #0xff
 	ands r0, r1
 	lsls r1, r0, #3

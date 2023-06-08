@@ -22,3 +22,5 @@ struct Vec2u {
 struct SMSHandle;
 struct Unit;
 struct UnitDefinition;
+struct BattleHit;
+struct SupportBonuses;

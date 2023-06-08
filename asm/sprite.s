@@ -124,8 +124,8 @@ sub_080068C4: @ 0x080068C4
 _080068EC: .4byte 0x030040B0
 _080068F0: .4byte 0x0202A480
 
-	thumb_func_start sub_080068F4
-sub_080068F4: @ 0x080068F4
+	thumb_func_start PushSpriteLayerObjects
+PushSpriteLayerObjects: @ 0x080068F4
 	push {r4, lr}
 	lsls r0, r0, #4
 	ldr r1, _08006920 @ =0x0202A480

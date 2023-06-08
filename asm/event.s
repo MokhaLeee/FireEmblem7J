@@ -1586,7 +1586,7 @@ sub_0800B100: @ 0x0800B100
 	ands r0, r1
 	cmp r0, #0
 	bne _0800B124
-	bl sub_0804B9C8
+	bl IsBattleDeamonActive
 	lsls r0, r0, #0x18
 	cmp r0, #0
 	bne _0800B124
@@ -5018,7 +5018,7 @@ _0800CAAC:
 	movs r4, #1
 	rsbs r4, r4, #0
 _0800CAB4:
-	bl sub_0802C75C
+	bl DisableAllLightRunes
 	lsls r7, r5, #0x10
 	lsls r2, r4, #0x10
 	lsrs r0, r7, #0x10
@@ -5088,7 +5088,7 @@ _0800CB28:
 	orrs r1, r0
 	mov r8, r1
 _0800CB40:
-	bl sub_0802C79C
+	bl EnableAllLightRunes
 	mov r0, sl
 	adds r1, r6, #0
 	adds r2, r7, #0
@@ -9185,19 +9185,19 @@ _0800E8C8:
 	bne _0800E8D6
 	mov r0, sb
 	mov r1, sl
-	bl sub_08028868
+	bl BattleGenerateReal
 	b _0800E8DE
 _0800E8D6:
 	mov r0, sb
 	mov r1, sl
-	bl sub_0802889C
+	bl BattleGenerateBallistaReal
 _0800E8DE:
-	ldr r4, _0800E994 @ =0x0203A3EC
+	ldr r4, _0800E994 @ =gBattleActor
 	adds r1, r4, #0
 	adds r1, #0x6e
 	movs r0, #0
 	strb r0, [r1]
-	ldr r5, _0800E998 @ =0x0203A46C
+	ldr r5, _0800E998 @ =gBattleTarget
 	adds r1, r5, #0
 	adds r1, #0x6e
 	strb r0, [r1]
@@ -9226,7 +9226,7 @@ _0800E8DE:
 	bgt _0800E92E
 	cmp r7, #0x7c
 	blt _0800E92E
-	ldr r1, _0800E9A0 @ =0x0203A3D4
+	ldr r1, _0800E9A0 @ =gBattleStats
 	movs r0, #0x80
 	lsls r0, r0, #2
 	strh r0, [r1]
@@ -9275,17 +9275,17 @@ _0800E96C:
 	cmp r0, #0
 	beq _0800E9AC
 _0800E984:
-	bl sub_08029F20
+	bl BattleApplyUnitUpdates
 	bl sub_08053C1C
 	ldr r1, _0800E9A8 @ =gActionSt
 	movs r0, #0
 	str r0, [r1, #0x18]
 	b _0800E9F2
 	.align 2, 0
-_0800E994: .4byte 0x0203A3EC
-_0800E998: .4byte 0x0203A46C
+_0800E994: .4byte gBattleActor
+_0800E998: .4byte gBattleTarget
 _0800E99C: .4byte 0x0203A434
-_0800E9A0: .4byte 0x0203A3D4
+_0800E9A0: .4byte gBattleStats
 _0800E9A4: .4byte 0x0203A508
 _0800E9A8: .4byte gActionSt
 _0800E9AC:
@@ -9345,7 +9345,7 @@ sub_0800EA10: @ 0x0800EA10
 	bne _0800EA34
 	ldr r0, _0800EA3C @ =sub_0800EA44
 	str r0, [r5, #0x40]
-	bl sub_08029F20
+	bl BattleApplyUnitUpdates
 	ldr r1, _0800EA40 @ =gActionSt
 	movs r0, #0
 	str r0, [r1, #0x18]

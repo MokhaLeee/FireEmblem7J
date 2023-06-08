@@ -2122,7 +2122,7 @@ _0801AF8E:
 	bne _0801B002
 	mov r0, r8
 	adds r1, r6, #0
-	bl sub_08034BA0
+	bl GetBallistaItemAt
 	adds r7, r0, #0
 	cmp r7, #0
 	beq _0801B002

@@ -563,8 +563,8 @@ sub_08026E94: @ 0x08026E94
 	strb r1, [r0, #6]
 	bx lr
 
-	thumb_func_start sub_08026EA4
-sub_08026EA4: @ 0x08026EA4
+	thumb_func_start GetUnitSupportBonuses
+GetUnitSupportBonuses: @ 0x08026EA4
 	push {r4, r5, r6, r7, lr}
 	mov r7, sl
 	mov r6, sb

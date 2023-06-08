@@ -180,7 +180,7 @@ sub_0801B6F4: @ 0x0801B6F4
 	bl sub_0804AC0C
 	bl ClearBg0Bg1
 	ldr r0, _0801B714 @ =0x08C04B94
-	bl sub_0804AA58
+	bl StartMenu
 	movs r0, #2
 	movs r1, #0
 	bl DebugInitBg
@@ -870,7 +870,7 @@ sub_0801BC6C: @ 0x0801BC6C
 	push {lr}
 	bl ClearBg0Bg1
 	ldr r0, _0801BC80 @ =0x08C04B04
-	bl sub_0804AA58
+	bl StartMenu
 	movs r0, #7
 	pop {r1}
 	bx r1
@@ -927,7 +927,7 @@ sub_0801BCD4: @ 0x0801BCD4
 	ldr r0, _0801BD2C @ =0x081C92C8
 	bl sub_08009E84
 	ldr r0, _0801BD30 @ =0x08C04B4C
-	bl sub_0804AA58
+	bl StartMenu
 	ldr r4, _0801BD34 @ =gBmSt
 	movs r1, #0x40
 	ldrb r2, [r4, #4]
@@ -1247,7 +1247,7 @@ _0801BF8C: .4byte gPlaySt
 sub_0801BF90: @ 0x0801BF90
 	push {lr}
 	ldr r0, _0801BFA0 @ =0x08C04B70
-	bl sub_0804AA58
+	bl StartMenu
 	movs r0, #0x17
 	pop {r1}
 	bx r1
@@ -1258,7 +1258,7 @@ _0801BFA0: .4byte 0x08C04B70
 sub_0801BFA4: @ 0x0801BFA4
 	push {lr}
 	ldr r0, _0801BFB4 @ =0x08C04B28
-	bl sub_0804AA58
+	bl StartMenu
 	movs r0, #0x17
 	pop {r1}
 	bx r1
@@ -1806,7 +1806,7 @@ _0801C396:
 	adds r0, r0, r1
 	lsls r0, r0, #1
 	add r0, r8
-	ldr r3, _0801C3F4 @ =0x081C8FCC
+	ldr r3, _0801C3F4 @ =Unk_081C8FCC
 	ldrb r2, [r7]
 	lsls r1, r2, #0x1c
 	lsrs r1, r1, #0x1d
@@ -1825,7 +1825,7 @@ _0801C396:
 _0801C3E8: .4byte 0x081C9334
 _0801C3EC: .4byte 0x02022C60
 _0801C3F0: .4byte gPlaySt
-_0801C3F4: .4byte 0x081C8FCC
+_0801C3F4: .4byte Unk_081C8FCC
 _0801C3F8:
 	adds r4, r5, #0
 	adds r4, #0x34
