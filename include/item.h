@@ -58,6 +58,26 @@ enum ItemData_attributes {
     IA_LOCK_ANY = (IA_LOCK_0 | IA_LOCK_1 | IA_LOCK_2 | IA_LOCK_3 | IA_LOCK_4 | IA_LOCK_5 | IA_LOCK_6 | IA_LOCK_7 | IA_UNUSABLE)
 };
 
+enum weapon_lv_id {
+    WPN_LEVEL_0 = 0,
+    WPN_LEVEL_E = 1,
+    WPN_LEVEL_D = 2,
+    WPN_LEVEL_C = 3,
+    WPN_LEVEL_B = 4,
+    WPN_LEVEL_A = 5,
+    WPN_LEVEL_S = 6,
+};
+
+enum weapon_lv_exp {
+    WPN_EXP_0 = 0,
+    WPN_EXP_E = 1,
+    WPN_EXP_D = 31,
+    WPN_EXP_C = 71,
+    WPN_EXP_B = 121,
+    WPN_EXP_A = 181,
+    WPN_EXP_S = 251,
+};
+
 // sub_08016470
 int GetItemHpBonus(int item);
 int GetItemPowBonus(int item);
@@ -113,7 +133,7 @@ int GetItemAttributes(int item);
 int GetItemMight(int item);
 int GetItemHit(int item);
 int GetItemWeight(int item);
-// sub_08017730
+int GetItemCrit(int item);
 // sub_08017748
 // sub_08017774
 // sub_0801778C

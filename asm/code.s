@@ -4410,7 +4410,7 @@ sub_08053484: @ 0x08053484
 	mov r5, r8
 	push {r5, r6, r7}
 	sub sp, #0x20
-	ldr r0, _080534DC @ =0x0203A4EC
+	ldr r0, _080534DC @ =gBattleHitArray
 	mov sb, r0
 	movs r2, #0
 	ldr r4, _080534E0 @ =0x0203E00E
@@ -4451,7 +4451,7 @@ _080534BA:
 	strh r0, [r4, #2]
 	b _080539E6
 	.align 2, 0
-_080534DC: .4byte 0x0203A4EC
+_080534DC: .4byte gBattleHitArray
 _080534E0: .4byte 0x0203E00E
 _080534E4: .4byte 0x0203E078
 _080534E8: .4byte 0x0203E004
@@ -5109,7 +5109,7 @@ _080539F8: .4byte 0x0203E03A
 
 	thumb_func_start sub_080539FC
 sub_080539FC: @ 0x080539FC
-	ldr r1, _08053A0C @ =0x0203A4EC
+	ldr r1, _08053A0C @ =gBattleHitArray
 	movs r0, #2
 	ldrb r1, [r1, #2]
 	ands r0, r1
@@ -5118,7 +5118,7 @@ sub_080539FC: @ 0x080539FC
 	movs r0, #0
 	b _08053A12
 	.align 2, 0
-_08053A0C: .4byte 0x0203A4EC
+_08053A0C: .4byte gBattleHitArray
 _08053A10:
 	movs r0, #1
 _08053A12:
@@ -45979,7 +45979,7 @@ _080685A0:
 
 	thumb_func_start sub_080685A8
 sub_080685A8: @ 0x080685A8
-	ldr r2, _080685C0 @ =0x0203A4EC
+	ldr r2, _080685C0 @ =gBattleHitArray
 	movs r1, #8
 	ldrb r2, [r2, #2]
 	ands r1, r2
@@ -45992,7 +45992,7 @@ sub_080685A8: @ 0x080685A8
 	movs r0, #0
 	b _080685C6
 	.align 2, 0
-_080685C0: .4byte 0x0203A4EC
+_080685C0: .4byte gBattleHitArray
 _080685C4:
 	movs r0, #1
 _080685C6:
@@ -60357,7 +60357,7 @@ sub_0806F514: @ 0x0806F514
 	.align 2, 0
 _0806F548: .4byte 0x0203E0D4
 _0806F54C:
-	ldr r0, _0806F58C @ =0x0203A4EC
+	ldr r0, _0806F58C @ =gBattleHitArray
 	ldrh r1, [r0]
 	movs r2, #0x80
 	lsls r2, r2, #3
@@ -60388,7 +60388,7 @@ _0806F580:
 	bl sub_0806F404
 	b _0806F590
 	.align 2, 0
-_0806F58C: .4byte 0x0203A4EC
+_0806F58C: .4byte gBattleHitArray
 _0806F590:
 	add sp, #4
 	pop {r7}
@@ -60417,7 +60417,7 @@ sub_0806F598: @ 0x0806F598
 	.align 2, 0
 _0806F5BC: .4byte 0x0203E0D4
 _0806F5C0:
-	ldr r0, _0806F5E0 @ =0x0203A4EC
+	ldr r0, _0806F5E0 @ =gBattleHitArray
 	ldrh r1, [r0]
 	movs r2, #0x80
 	lsls r2, r2, #3
@@ -60434,7 +60434,7 @@ _0806F5C0:
 _0806F5DC:
 	b _0806F5E6
 	.align 2, 0
-_0806F5E0: .4byte 0x0203A4EC
+_0806F5E0: .4byte gBattleHitArray
 _0806F5E4:
 	b _0806F5E6
 _0806F5E6:
@@ -60727,12 +60727,12 @@ sub_0806F7B0: @ 0x0806F7B0
 	adds r2, r1, #0
 	strb r2, [r0]
 	ldr r0, _0806F82C @ =0x0203E0D4
-	ldr r1, _0806F830 @ =0x0203A4EC
+	ldr r1, _0806F830 @ =gBattleHitArray
 	str r1, [r0, #0x50]
 	bl sub_0806EC98
 	ldr r0, _0806F828 @ =gBattleActor
 	ldr r1, _0806F834 @ =gBattleTarget
-	ldr r2, _0806F830 @ =0x0203A4EC
+	ldr r2, _0806F830 @ =gBattleHitArray
 	bl sub_0806FAF8
 	ldr r1, _0806F838 @ =0x08D653CC
 	adds r0, r1, #0
@@ -60744,7 +60744,7 @@ sub_0806F7B0: @ 0x0806F7B0
 	.align 2, 0
 _0806F828: .4byte gBattleActor
 _0806F82C: .4byte 0x0203E0D4
-_0806F830: .4byte 0x0203A4EC
+_0806F830: .4byte gBattleHitArray
 _0806F834: .4byte gBattleTarget
 _0806F838: .4byte 0x08D653CC
 
@@ -60793,12 +60793,12 @@ sub_0806F83C: @ 0x0806F83C
 	adds r2, r1, #0
 	strb r2, [r0]
 	ldr r0, _0806F8B8 @ =0x0203E0D4
-	ldr r1, _0806F8BC @ =0x0203A4EC
+	ldr r1, _0806F8BC @ =gBattleHitArray
 	str r1, [r0, #0x50]
 	bl sub_0806EC98
 	ldr r0, _0806F8B4 @ =gBattleActor
 	ldr r1, _0806F8C0 @ =gBattleTarget
-	ldr r2, _0806F8BC @ =0x0203A4EC
+	ldr r2, _0806F8BC @ =gBattleHitArray
 	bl sub_0806FAF8
 	ldr r1, _0806F8C4 @ =0x08D6540C
 	adds r0, r1, #0
@@ -60810,7 +60810,7 @@ sub_0806F83C: @ 0x0806F83C
 	.align 2, 0
 _0806F8B4: .4byte gBattleActor
 _0806F8B8: .4byte 0x0203E0D4
-_0806F8BC: .4byte 0x0203A4EC
+_0806F8BC: .4byte gBattleHitArray
 _0806F8C0: .4byte gBattleTarget
 _0806F8C4: .4byte 0x08D6540C
 
@@ -60884,7 +60884,7 @@ sub_0806F8C8: @ 0x0806F8C8
 	strb r2, [r0]
 	ldr r0, _0806F968 @ =gBattleActor
 	ldr r1, _0806F970 @ =gBattleTarget
-	ldr r2, _0806F974 @ =0x0203A4EC
+	ldr r2, _0806F974 @ =gBattleHitArray
 	bl sub_0806FAF8
 	ldr r1, _0806F978 @ =0x08D6544C
 	adds r0, r1, #0
@@ -60897,7 +60897,7 @@ sub_0806F8C8: @ 0x0806F8C8
 _0806F968: .4byte gBattleActor
 _0806F96C: .4byte 0x0203E0D4
 _0806F970: .4byte gBattleTarget
-_0806F974: .4byte 0x0203A4EC
+_0806F974: .4byte gBattleHitArray
 _0806F978: .4byte 0x08D6544C
 
 	thumb_func_start sub_0806F97C
@@ -60966,7 +60966,7 @@ sub_0806F97C: @ 0x0806F97C
 	strb r2, [r0]
 	ldr r0, _0806FA14 @ =gBattleActor
 	ldr r1, _0806FA1C @ =gBattleTarget
-	ldr r2, _0806FA20 @ =0x0203A4EC
+	ldr r2, _0806FA20 @ =gBattleHitArray
 	bl sub_0806FAF8
 	ldr r1, _0806FA24 @ =0x08D6551C
 	adds r0, r1, #0
@@ -60979,7 +60979,7 @@ sub_0806F97C: @ 0x0806F97C
 _0806FA14: .4byte gBattleActor
 _0806FA18: .4byte 0x0203E0D4
 _0806FA1C: .4byte gBattleTarget
-_0806FA20: .4byte 0x0203A4EC
+_0806FA20: .4byte gBattleHitArray
 _0806FA24: .4byte 0x08D6551C
 
 	thumb_func_start sub_0806FA28
@@ -61020,11 +61020,11 @@ _0806FA4C:
 	strb r2, [r0]
 	ldr r0, _0806FA94 @ =gBattleActor
 	ldr r1, _0806FA98 @ =gBattleTarget
-	ldr r2, _0806FA9C @ =0x0203A4EC
+	ldr r2, _0806FA9C @ =gBattleHitArray
 	bl sub_0806FAA4
 	ldr r0, _0806FA94 @ =gBattleActor
 	ldr r1, _0806FA98 @ =gBattleTarget
-	ldr r2, _0806FA9C @ =0x0203A4EC
+	ldr r2, _0806FA9C @ =gBattleHitArray
 	bl sub_0806FAF8
 	ldr r1, _0806FAA0 @ =0x08D65574
 	adds r0, r1, #0
@@ -61038,7 +61038,7 @@ _0806FA8A:
 _0806FA90: .4byte 0x0203E0D4
 _0806FA94: .4byte gBattleActor
 _0806FA98: .4byte gBattleTarget
-_0806FA9C: .4byte 0x0203A4EC
+_0806FA9C: .4byte gBattleHitArray
 _0806FAA0: .4byte 0x08D65574
 
 	thumb_func_start sub_0806FAA4
@@ -61109,7 +61109,7 @@ sub_0806FAF8: @ 0x0806FAF8
 	movs r0, #1
 	bl sub_0806F330
 _0806FB2C:
-	ldr r0, _0806FB90 @ =0x0203A4EC
+	ldr r0, _0806FB90 @ =gBattleHitArray
 	ldrh r1, [r0]
 	movs r2, #0x80
 	lsls r2, r2, #3
@@ -61154,7 +61154,7 @@ _0806FB76:
 	.align 2, 0
 _0806FB88: .4byte 0x0203E0D4
 _0806FB8C: .4byte gBattleTarget
-_0806FB90: .4byte 0x0203A4EC
+_0806FB90: .4byte gBattleHitArray
 _0806FB94: .4byte gBattleStats
 _0806FB98:
 	ldr r0, _0806FC0C @ =0x0203E0D4
@@ -64979,7 +64979,7 @@ sub_08071960: @ 0x08071960
 	push {r7, lr}
 	sub sp, #0x14
 	mov r7, sp
-	ldr r0, _08071994 @ =0x0203A4EC
+	ldr r0, _08071994 @ =gBattleHitArray
 	str r0, [r7, #0xc]
 	ldr r1, _08071998 @ =gBattleActor
 	adds r0, r1, #0
@@ -64989,7 +64989,7 @@ sub_08071960: @ 0x08071960
 	adds r0, r1, #0
 	movs r1, #1
 	bl sub_08071874
-	bl sub_08029434
+	bl ClearBattleHits
 	movs r0, #0
 	str r0, [r7, #0x10]
 	movs r0, #0
@@ -65000,7 +65000,7 @@ _0807198A:
 	ble _080719A0
 	b _080719F0
 	.align 2, 0
-_08071994: .4byte 0x0203A4EC
+_08071994: .4byte gBattleHitArray
 _08071998: .4byte gBattleActor
 _0807199C: .4byte gBattleTarget
 _080719A0:
@@ -101739,7 +101739,7 @@ sub_080832E0: @ 0x080832E0
 	movs r2, #7
 	bl sub_08005A00
 	adds r0, r5, #0
-	bl sub_08017730
+	bl GetItemCrit
 	adds r3, r0, #0
 	adds r0, r4, #0
 	movs r1, #0x80
@@ -164923,7 +164923,7 @@ sub_080A2B50: @ 0x080A2B50
 	str r0, [r1, #0x28]
 	ldr r0, _080A2BD8 @ =gBattleTarget
 	str r0, [r1, #0x2c]
-	ldr r0, _080A2BDC @ =0x0203A4EC
+	ldr r0, _080A2BDC @ =gBattleHitArray
 	str r0, [r1, #0x30]
 	movs r0, #0
 	bl GetTrap
@@ -164948,7 +164948,7 @@ _080A2BCC: .4byte gActiveUnit
 _080A2BD0: .4byte gUnitLut
 _080A2BD4: .4byte gBattleActor
 _080A2BD8: .4byte gBattleTarget
-_080A2BDC: .4byte 0x0203A4EC
+_080A2BDC: .4byte gBattleHitArray
 
 	thumb_func_start sub_080A2BE0
 sub_080A2BE0: @ 0x080A2BE0

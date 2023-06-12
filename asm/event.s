@@ -9236,8 +9236,8 @@ _0800E92E:
 	ldr r0, [sp]
 	cmp r0, #0
 	bne _0800E96C
-	bl sub_08029434
-	ldr r2, _0800E9A4 @ =0x0203A508
+	bl ClearBattleHits
+	ldr r2, _0800E9A4 @ =gBattleHitIterator
 	ldr r1, [r2]
 	ldr r0, [r6]
 	str r0, [r1]
@@ -9286,7 +9286,7 @@ _0800E994: .4byte gBattleActor
 _0800E998: .4byte gBattleTarget
 _0800E99C: .4byte 0x0203A434
 _0800E9A0: .4byte gBattleStats
-_0800E9A4: .4byte 0x0203A508
+_0800E9A4: .4byte gBattleHitIterator
 _0800E9A8: .4byte gActionSt
 _0800E9AC:
 	bl sub_080157A4

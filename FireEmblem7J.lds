@@ -29,6 +29,8 @@ SECTIONS
 		. = 0x03A3D4; gBattleStats = .;
 		. = 0x03A3EC; gBattleActor = .;
 		. = 0x03A46C; gBattleTarget = .;
+		. = 0x03A4EC; gBattleHitArray = .;
+		. = 0x03A508; gBattleHitIterator = .;
 		. = 0x03A7F0; gArenaSt = .;
 		. = 0x03A858; gActionSt = .;
 	}
@@ -124,12 +126,12 @@ SECTIONS
 
 		/* .data & .rodata */
 		. = ALIGN(4); data/const_data.o(.rodata)
-
-		/* . = 0x0C0C78; */
 		. = ALIGN(4); src/irq.o(.rodata)
 		. = ALIGN(4); src/random.o(.rodata);
-		. = ALIGN(4); data/data1.o(.data)
+		. = ALIGN(4); data/const_data1.o(.rodata)
 		. = ALIGN(4); src/unit.o(.rodata)
+		. = ALIGN(4); data/const_data2.o(.rodata)
+		. = ALIGN(4); src/battle.o(.rodata)
 		. = ALIGN(4); data/data.o(.data)
 	}
 }

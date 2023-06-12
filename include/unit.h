@@ -443,8 +443,8 @@ int GetUnitLuck(struct Unit *unit);
 // AddUnitHp
 // GetUnitRescueName
 // GetUnitStatusName
-// GetUnit
+struct Unit *GetUnit(int uid);
 // GetClassData
 // GetCharacterData
 // UnitRemoveItem
-s8 CanUnitCrossTerrain(struct Unit *unit, int terrain);
+bool CanUnitCrossTerrain(struct Unit *unit, int terrain);
