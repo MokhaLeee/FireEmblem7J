@@ -146,5 +146,5 @@ int GetItemWeaponEffect(int item);
 // sub_08017844
 // sub_0801785C
 // sub_08017874
-// GetItemAwardedExp
+int GetItemAwardedExp(int item);
 // GetItemData

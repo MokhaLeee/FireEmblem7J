@@ -154,8 +154,8 @@ enum {
 // BattleGenerateBallistaReal
 void BattleGenerate(struct Unit *actor, struct Unit *target);
 // BattleGenerateUiStats
-// BattleRoll1RN
-// BattleRoll2RN
+bool BattleRoll1RN(u16 threshold, bool simulationResult);
+bool BattleRoll2RN(u16 threshold, bool simulationResult);
 void InitBattleUnit(struct BattleUnit *bu, struct Unit *unit);
 // InitBattleUnitWithoutBonuses
 // SetBattleUnitTerrainBonuses
@@ -192,23 +192,23 @@ int GetBattleUnitHitCount(struct BattleUnit *attacker);
 int BattleCheckBraveEffect(struct BattleUnit *attacker);
 // BattleCheckTriangleAttack
 // BattleUpdateBattleStats
-// BattleGenerateHitAttributes
+void BattleGenerateHitAttributes(struct BattleUnit *attacker);
 // BattleGenerateHitTriangleAttack
 // BattleGenerateHitEffects
 bool BattleGenerateHit(struct BattleUnit *attacker, struct BattleUnit *defender);
 void BattleApplyExpGains(void);
 // GetStatIncrease
 // GetAutoleveledStatIncrease
-// sub_08029AE4
-// sub_08029B10
-// sub_08029CC8
-// sub_08029DB4
-// sub_08029E20
+// CanBattleUnitGainLevels
+void CheckBattleUnitLevelUp(struct BattleUnit *bu);
+// UnitPromote
+// GenerateBattleUnitStatGainsComparatively
+void CheckBattleUnitStatCaps(struct Unit *unit, struct BattleUnit *bu);
 void BattleApplyUnitUpdates(void);
 // sub_08029FA8
-// sub_08029FAC
+// GetBattleUnitUpdatedWeaponExp
 // sub_0802A098
-// sub_0802A0D4
+void UpdateUnitFromBattle(struct Unit *unit, struct BattleUnit *bu);
 // sub_0802A1BC
 void BattleApplyBallistaUpdates(void);
 // sub_0802A21C
@@ -218,7 +218,7 @@ void BattleApplyBallistaUpdates(void);
 // sub_0802A2B8
 // sub_0802A2E0
 // sub_0802A324
-// sub_0802A3C0
+int GetBattleUnitExpGain(struct BattleUnit *actor, struct BattleUnit *target);
 // sub_0802A42C
 // sub_0802A4A8
 // sub_0802A50C
@@ -229,7 +229,7 @@ void BattleApplyWeaponTriangleEffect(struct BattleUnit *actor, struct BattleUnit
 void BattleInitTargetCanCounter(void);
 // sub_0802A704
 void ComputeBattleObstacleStats(void);
-// sub_0802A7C4
+void UpdateObstacleFromBattle(struct BattleUnit *bu);
 // sub_0802A860
 // sub_0802A8BC
 // sub_0802A8E0

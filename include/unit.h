@@ -444,7 +444,7 @@ int GetUnitLuck(struct Unit *unit);
 // GetUnitRescueName
 // GetUnitStatusName
 struct Unit *GetUnit(int uid);
-// GetClassData
+const struct ClassData *GetClassData(int classId);
 // GetCharacterData
 // UnitRemoveItem
 bool CanUnitCrossTerrain(struct Unit *unit, int terrain);

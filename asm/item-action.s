@@ -1024,13 +1024,13 @@ _0802D09E:
 	adds r1, r6, #0
 	bl InitBattleUnitWithoutBonuses
 	adds r0, r6, #0
-	bl sub_08029CC8
+	bl UnitPromote
 	adds r0, r4, #0
 	adds r1, r6, #0
 	bl InitBattleUnitWithoutBonuses
 	adds r0, r4, #0
 	adds r1, r5, #0
-	bl sub_08029DB4
+	bl GenerateBattleUnitStatGainsComparatively
 	adds r0, r4, #0
 	bl SetBattleUnitTerrainBonusesAuto
 	adds r0, r5, #0
@@ -1120,13 +1120,13 @@ sub_0802D148: @ 0x0802D148
 	adds r1, r6, #0
 	bl InitBattleUnit
 	adds r0, r6, #0
-	bl sub_08029CC8
+	bl UnitPromote
 	adds r0, r4, #0
 	adds r1, r6, #0
 	bl InitBattleUnit
 	adds r0, r4, #0
 	adds r1, r5, #0
-	bl sub_08029DB4
+	bl GenerateBattleUnitStatGainsComparatively
 	adds r0, r4, #0
 	bl SetBattleUnitTerrainBonusesAuto
 	adds r0, r5, #0
