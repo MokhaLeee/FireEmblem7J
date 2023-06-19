@@ -2532,8 +2532,8 @@ GetItemWeight: @ 0x08017718
 	.align 2, 0
 _0801772C: .4byte 0x08C51538
 
-	thumb_func_start sub_08017730
-sub_08017730: @ 0x08017730
+	thumb_func_start GetItemCrit
+GetItemCrit: @ 0x08017730
 	movs r1, #0xff
 	ands r0, r1
 	lsls r1, r0, #3

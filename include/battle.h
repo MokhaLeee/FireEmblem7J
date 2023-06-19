@@ -3,6 +3,8 @@
 #include "global.h"
 #include "unit.h"
 
+#define BATTLE_MAX_DAMAGE 127
+
 struct BattleUnit {
     /* 00 */ struct Unit unit;
 
@@ -120,13 +122,13 @@ enum {
     BATTLE_HIT_INFO_FINISHES     = (1 << 1),
     BATTLE_HIT_INFO_KILLS_TARGET = (1 << 2),
     BATTLE_HIT_INFO_RETALIATION  = (1 << 3),
-    BATTLE_HIT_INFO_END          = (1 << 4),
+    BATTLE_HIT_INFO_END          = (1 << 7),
 };
 
 struct BattleHit {
-    /* 00:18 */ unsigned attributes : 19;
-    /* 19:23 */ unsigned info       : 5;
-    /* 24:31 */ signed   hpChange   : 8;
+    u16 attributes;
+    u8 info;
+    u8 hpChange;
 };
 
 #define BATTLE_HIT_MAX 7
@@ -152,8 +154,8 @@ enum {
 // BattleGenerateBallistaReal
 void BattleGenerate(struct Unit *actor, struct Unit *target);
 // BattleGenerateUiStats
-// BattleRoll1RN
-// BattleRoll2RN
+bool BattleRoll1RN(u16 threshold, bool simulationResult);
+bool BattleRoll2RN(u16 threshold, bool simulationResult);
 void InitBattleUnit(struct BattleUnit *bu, struct Unit *unit);
 // InitBattleUnitWithoutBonuses
 // SetBattleUnitTerrainBonuses
@@ -181,32 +183,32 @@ void ComputeBattleUnitSilencerRate(struct BattleUnit *attacker, struct BattleUni
 void ComputeBattleUnitWeaponRankBonuses(struct BattleUnit *bu);
 void ComputeBattleUnitStatusBonuses(struct BattleUnit *bu);
 // ComputeBattleUnitSpecialWeaponStats
-// sub_08029434
+// ClearBattleHits
 void BattleUnwind(void);
-// sub_080294D8
-// sub_080294EC
-// sub_08029568
-// sub_080295C4
-// sub_080295D8
-// sub_080295FC
-// sub_080296E4
-// sub_08029714
-// sub_080297D4
-// sub_0802984C
-// sub_08029988
+void BattleGetBattleUnitOrder(struct BattleUnit **attacker, struct BattleUnit **defender);
+bool BattleGetFollowUpOrder(struct BattleUnit **attacker, struct BattleUnit **defender);
+bool BattleGenerateRoundHits(struct BattleUnit *attacker, struct BattleUnit *defender);
+int GetBattleUnitHitCount(struct BattleUnit *attacker);
+int BattleCheckBraveEffect(struct BattleUnit *attacker);
+// BattleCheckTriangleAttack
+// BattleUpdateBattleStats
+void BattleGenerateHitAttributes(struct BattleUnit *attacker);
+// BattleGenerateHitTriangleAttack
+// BattleGenerateHitEffects
+bool BattleGenerateHit(struct BattleUnit *attacker, struct BattleUnit *defender);
 void BattleApplyExpGains(void);
 // GetStatIncrease
 // GetAutoleveledStatIncrease
-// sub_08029AE4
-// sub_08029B10
-// sub_08029CC8
-// sub_08029DB4
-// sub_08029E20
+// CanBattleUnitGainLevels
+void CheckBattleUnitLevelUp(struct BattleUnit *bu);
+// UnitPromote
+// GenerateBattleUnitStatGainsComparatively
+void CheckBattleUnitStatCaps(struct Unit *unit, struct BattleUnit *bu);
 void BattleApplyUnitUpdates(void);
 // sub_08029FA8
-// sub_08029FAC
+// GetBattleUnitUpdatedWeaponExp
 // sub_0802A098
-// sub_0802A0D4
+void UpdateUnitFromBattle(struct Unit *unit, struct BattleUnit *bu);
 // sub_0802A1BC
 void BattleApplyBallistaUpdates(void);
 // sub_0802A21C
@@ -216,7 +218,7 @@ void BattleApplyBallistaUpdates(void);
 // sub_0802A2B8
 // sub_0802A2E0
 // sub_0802A324
-// sub_0802A3C0
+int GetBattleUnitExpGain(struct BattleUnit *actor, struct BattleUnit *target);
 // sub_0802A42C
 // sub_0802A4A8
 // sub_0802A50C
@@ -227,7 +229,7 @@ void BattleApplyWeaponTriangleEffect(struct BattleUnit *actor, struct BattleUnit
 void BattleInitTargetCanCounter(void);
 // sub_0802A704
 void ComputeBattleObstacleStats(void);
-// sub_0802A7C4
+void UpdateObstacleFromBattle(struct BattleUnit *bu);
 // sub_0802A860
 // sub_0802A8BC
 // sub_0802A8E0

@@ -9313,7 +9313,7 @@ BeginUnitHealAnim: @ 0x08032D88
 	adds r0, r5, #0
 	adds r1, r4, #0
 	bl AddUnitHp
-	ldr r0, _08032DCC @ =0x0203A508
+	ldr r0, _08032DCC @ =gBattleHitIterator
 	ldr r1, [r0]
 	adds r0, r5, #0
 	adds r0, #0x72
@@ -9328,7 +9328,7 @@ BeginUnitHealAnim: @ 0x08032D88
 	bx r0
 	.align 2, 0
 _08032DC8: .4byte gBattleActor
-_08032DCC: .4byte 0x0203A508
+_08032DCC: .4byte gBattleHitIterator
 
 	thumb_func_start sub_08032DD0
 sub_08032DD0: @ 0x08032DD0
@@ -9350,7 +9350,7 @@ sub_08032DD0: @ 0x08032DD0
 	movs r0, #0
 	strb r0, [r5, #0x13]
 _08032DF6:
-	ldr r2, _08032E30 @ =0x0203A508
+	ldr r2, _08032E30 @ =gBattleHitIterator
 	ldr r0, [r2]
 	adds r1, r5, #0
 	adds r1, #0x72
@@ -9377,7 +9377,7 @@ _08032E18:
 	bx r0
 	.align 2, 0
 _08032E2C: .4byte gBattleActor
-_08032E30: .4byte 0x0203A508
+_08032E30: .4byte gBattleHitIterator
 
 	thumb_func_start sub_08032E34
 sub_08032E34: @ 0x08032E34
@@ -9399,7 +9399,7 @@ sub_08032E34: @ 0x08032E34
 	movs r0, #0
 	strb r0, [r5, #0x13]
 _08032E5A:
-	ldr r2, _08032E9C @ =0x0203A508
+	ldr r2, _08032E9C @ =gBattleHitIterator
 	ldr r0, [r2]
 	adds r1, r5, #0
 	adds r1, #0x72
@@ -9430,7 +9430,7 @@ _08032E84:
 	bx r0
 	.align 2, 0
 _08032E98: .4byte gBattleActor
-_08032E9C: .4byte 0x0203A508
+_08032E9C: .4byte gBattleHitIterator
 
 	thumb_func_start sub_08032EA0
 sub_08032EA0: @ 0x08032EA0
@@ -10955,7 +10955,7 @@ sub_08033A38: @ 0x08033A38
 	str r0, [sp, #0xc]
 	add r1, sp, #4
 	mov r0, sp
-	bl sub_080294EC
+	bl BattleGetFollowUpOrder
 	lsls r0, r0, #0x18
 	lsrs r0, r0, #0x18
 	mov r8, r0

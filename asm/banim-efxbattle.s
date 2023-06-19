@@ -28,7 +28,7 @@ sub_0804DD80: @ 0x0804DD80
 	adds r6, r0, #0
 	str r4, [r6, #0x64]
 	adds r0, r4, #0
-	bl sub_08054E60
+	bl GetAISSubjectId
 	cmp r0, #0
 	bne _0804DDBC
 	ldr r0, _0804DDB8 @ =0x02000000
@@ -49,7 +49,7 @@ _0804DDC4:
 	str r0, [r6, #0x60]
 	ldr r4, _0804DE1C @ =0x0203E036
 	ldr r0, [r6, #0x60]
-	bl sub_08054E60
+	bl GetAISSubjectId
 	lsls r0, r0, #1
 	adds r0, r0, r4
 	movs r1, #0
@@ -58,21 +58,21 @@ _0804DDC4:
 	lsls r4, r4, #0x10
 	lsrs r4, r4, #0x10
 	ldr r0, [r6, #0x60]
-	bl sub_08054E60
+	bl GetAISSubjectId
 	lsls r5, r5, #1
 	adds r5, r5, r0
 	adds r0, r5, #0
-	bl sub_08053B28
+	bl GetEfxHp
 	lsls r0, r0, #0x10
 	asrs r0, r0, #0x10
 	str r0, [r6, #0x4c]
 	ldr r0, [r6, #0x60]
-	bl sub_08054E60
+	bl GetAISSubjectId
 	lsls r4, r4, #0x10
 	asrs r4, r4, #0xf
 	adds r4, r4, r0
 	adds r0, r4, #0
-	bl sub_08053B28
+	bl GetEfxHp
 	lsls r0, r0, #0x10
 	asrs r0, r0, #0x10
 	str r0, [r6, #0x50]
@@ -96,7 +96,7 @@ _0804DE22:
 	str r1, [r6, #0x54]
 	str r1, [r6, #0x58]
 	ldr r0, [r6, #0x60]
-	bl sub_08054E60
+	bl GetAISSubjectId
 	ldr r1, _0804DE48 @ =0x02017780
 	lsls r0, r0, #1
 	adds r0, r0, r1
@@ -115,12 +115,12 @@ sub_0804DE4C: @ 0x0804DE4C
 	adds r5, r0, #0
 	ldr r4, _0804DEF0 @ =0x02000000
 	ldr r0, [r5, #0x60]
-	bl sub_08054E60
+	bl GetAISSubjectId
 	lsls r0, r0, #3
 	adds r0, r0, r4
 	ldr r6, [r0]
 	ldr r0, [r5, #0x60]
-	bl sub_08054E60
+	bl GetAISSubjectId
 	lsls r0, r0, #1
 	adds r0, #1
 	lsls r0, r0, #2
@@ -142,7 +142,7 @@ sub_0804DE4C: @ 0x0804DE4C
 	adds r0, r1, r0
 	strh r0, [r5, #0x2e]
 	ldr r0, [r5, #0x60]
-	bl sub_08054E60
+	bl GetAISSubjectId
 	ldr r1, _0804DEF4 @ =0x0203E090
 	lsls r0, r0, #1
 	adds r0, r0, r1
@@ -166,7 +166,7 @@ _0804DEAE:
 	bne _0804DF50
 	ldr r4, _0804DEF8 @ =0x0203E036
 	ldr r0, [r5, #0x60]
-	bl sub_08054E60
+	bl GetAISSubjectId
 	lsls r0, r0, #1
 	adds r0, r0, r4
 	ldrh r1, [r0]
@@ -174,7 +174,7 @@ _0804DEAE:
 	movs r4, #0
 	strh r1, [r0]
 	ldr r0, [r5, #0x60]
-	bl sub_08054E60
+	bl GetAISSubjectId
 	ldr r1, _0804DEFC @ =0x02017780
 	lsls r0, r0, #1
 	adds r0, r0, r1
@@ -195,7 +195,7 @@ _0804DEFC: .4byte 0x02017780
 _0804DF00:
 	ldr r4, _0804DF24 @ =0x0203E074
 	adds r0, r6, #0
-	bl sub_08054E60
+	bl GetAISSubjectId
 	adds r0, r0, r4
 	ldrb r0, [r0]
 	bl sub_08079CE4
@@ -216,7 +216,7 @@ _0804DF28:
 	adds r1, r7, #0
 	bl sub_0804E9D0
 	ldr r0, [r5, #0x60]
-	bl sub_08054E60
+	bl GetAISSubjectId
 	ldr r1, _0804DF4C @ =0x0203DFE8
 	lsls r0, r0, #1
 	adds r0, r0, r1
@@ -366,7 +366,7 @@ sub_0804E048: @ 0x0804E048
 	bl GetCoreAIStruct
 	str r0, [r6, #0x64]
 	adds r0, r4, #0
-	bl sub_08054E60
+	bl GetAISSubjectId
 	cmp r0, #0
 	bne _0804E08C
 	ldr r0, _0804E088 @ =0x02000000
@@ -387,7 +387,7 @@ _0804E094:
 	str r0, [r6, #0x60]
 	ldr r4, _0804E0EC @ =0x0203E036
 	ldr r0, [r6, #0x60]
-	bl sub_08054E60
+	bl GetAISSubjectId
 	lsls r0, r0, #1
 	adds r0, r0, r4
 	movs r1, #0
@@ -396,21 +396,21 @@ _0804E094:
 	lsls r4, r4, #0x10
 	lsrs r4, r4, #0x10
 	ldr r0, [r6, #0x60]
-	bl sub_08054E60
+	bl GetAISSubjectId
 	lsls r5, r5, #1
 	adds r5, r5, r0
 	adds r0, r5, #0
-	bl sub_08053B28
+	bl GetEfxHp
 	lsls r0, r0, #0x10
 	asrs r0, r0, #0x10
 	str r0, [r6, #0x4c]
 	ldr r0, [r6, #0x60]
-	bl sub_08054E60
+	bl GetAISSubjectId
 	lsls r4, r4, #0x10
 	asrs r4, r4, #0xf
 	adds r4, r4, r0
 	adds r0, r4, #0
-	bl sub_08053B28
+	bl GetEfxHp
 	lsls r0, r0, #0x10
 	asrs r0, r0, #0x10
 	str r0, [r6, #0x50]
@@ -439,7 +439,7 @@ _0804E0F2:
 	ldr r0, _0804E120 @ =0x02017750
 	str r1, [r0]
 	ldr r0, [r6, #0x60]
-	bl sub_08054E60
+	bl GetAISSubjectId
 	ldr r1, _0804E124 @ =0x02017780
 	lsls r0, r0, #1
 	adds r0, r0, r1
@@ -458,9 +458,9 @@ sub_0804E128: @ 0x0804E128
 	push {r4, r5, r6, lr}
 	adds r5, r0, #0
 	ldr r0, [r5, #0x60]
-	bl sub_08054E60
+	bl GetAISSubjectId
 	ldr r0, [r5, #0x60]
-	bl sub_08054E60
+	bl GetAISSubjectId
 	ldr r1, [r5, #0x58]
 	cmp r1, #0
 	bne _0804E178
@@ -477,7 +477,7 @@ sub_0804E128: @ 0x0804E128
 	adds r0, r1, r0
 	strh r0, [r5, #0x2e]
 	ldr r0, [r5, #0x60]
-	bl sub_08054E60
+	bl GetAISSubjectId
 	ldr r1, _0804E1C4 @ =0x0203E090
 	lsls r0, r0, #1
 	adds r0, r0, r1
@@ -501,7 +501,7 @@ _0804E178:
 	bne _0804E1D4
 	ldr r4, _0804E1C8 @ =0x0203E036
 	ldr r0, [r5, #0x60]
-	bl sub_08054E60
+	bl GetAISSubjectId
 	lsls r0, r0, #1
 	adds r0, r0, r4
 	ldrh r1, [r0]
@@ -509,7 +509,7 @@ _0804E178:
 	movs r4, #0
 	strh r1, [r0]
 	ldr r0, [r5, #0x60]
-	bl sub_08054E60
+	bl GetAISSubjectId
 	ldr r1, _0804E1CC @ =0x02017780
 	lsls r0, r0, #1
 	adds r0, r0, r1
@@ -562,7 +562,7 @@ sub_0804E1E8: @ 0x0804E1E8
 	ble _0804E282
 	ldr r4, _0804E264 @ =0x0203E036
 	ldr r0, [r6, #0x5c]
-	bl sub_08054E60
+	bl GetAISSubjectId
 	lsls r0, r0, #1
 	adds r0, r0, r4
 	movs r1, #0
@@ -571,21 +571,21 @@ sub_0804E1E8: @ 0x0804E1E8
 	lsls r4, r4, #0x10
 	lsrs r4, r4, #0x10
 	ldr r0, [r6, #0x5c]
-	bl sub_08054E60
+	bl GetAISSubjectId
 	lsls r5, r5, #1
 	adds r5, r5, r0
 	adds r0, r5, #0
-	bl sub_08053B28
+	bl GetEfxHp
 	lsls r0, r0, #0x10
 	asrs r0, r0, #0x10
 	str r0, [r6, #0x4c]
 	ldr r0, [r6, #0x5c]
-	bl sub_08054E60
+	bl GetAISSubjectId
 	lsls r4, r4, #0x10
 	asrs r4, r4, #0xf
 	adds r4, r4, r0
 	adds r0, r4, #0
-	bl sub_08053B28
+	bl GetEfxHp
 	lsls r0, r0, #0x10
 	asrs r0, r0, #0x10
 	str r0, [r6, #0x50]
@@ -615,7 +615,7 @@ _0804E26A:
 	adds r0, r6, #0
 	bl Proc_Break
 	ldr r0, [r6, #0x5c]
-	bl sub_08054E60
+	bl GetAISSubjectId
 	ldr r1, _0804E288 @ =0x02017780
 	lsls r0, r0, #1
 	adds r0, r0, r1
@@ -636,19 +636,19 @@ sub_0804E28C: @ 0x0804E28C
 	adds r5, r0, #0
 	ldr r4, _0804E364 @ =0x02000000
 	ldr r0, [r5, #0x5c]
-	bl sub_08054E60
+	bl GetAISSubjectId
 	lsls r0, r0, #3
 	adds r0, r0, r4
 	ldr r7, [r0]
 	ldr r0, [r5, #0x5c]
-	bl sub_08054E60
+	bl GetAISSubjectId
 	ldr r0, [r5, #0x60]
-	bl sub_08054E60
+	bl GetAISSubjectId
 	lsls r0, r0, #3
 	adds r0, r0, r4
 	ldr r6, [r0]
 	ldr r0, [r5, #0x60]
-	bl sub_08054E60
+	bl GetAISSubjectId
 	lsls r0, r0, #1
 	adds r0, #1
 	lsls r0, r0, #2
@@ -671,7 +671,7 @@ sub_0804E28C: @ 0x0804E28C
 	adds r0, r1, r0
 	strh r0, [r5, #0x2e]
 	ldr r0, [r5, #0x5c]
-	bl sub_08054E60
+	bl GetAISSubjectId
 	ldr r1, _0804E368 @ =0x0203E090
 	lsls r0, r0, #1
 	adds r0, r0, r1
@@ -705,7 +705,7 @@ _0804E31E:
 	bne _0804E3C8
 	ldr r4, _0804E370 @ =0x0203E036
 	ldr r0, [r5, #0x5c]
-	bl sub_08054E60
+	bl GetAISSubjectId
 	lsls r0, r0, #1
 	adds r0, r0, r4
 	ldrh r1, [r0]
@@ -713,7 +713,7 @@ _0804E31E:
 	movs r4, #0
 	strh r1, [r0]
 	ldr r0, [r5, #0x5c]
-	bl sub_08054E60
+	bl GetAISSubjectId
 	ldr r1, _0804E374 @ =0x02017780
 	lsls r0, r0, #1
 	adds r0, r0, r1
@@ -737,7 +737,7 @@ _0804E374: .4byte 0x02017780
 _0804E378:
 	ldr r4, _0804E39C @ =0x0203E074
 	adds r0, r6, #0
-	bl sub_08054E60
+	bl GetAISSubjectId
 	adds r0, r0, r4
 	ldrb r0, [r0]
 	bl sub_08079CE4
@@ -758,7 +758,7 @@ _0804E3A0:
 	mov r1, r8
 	bl sub_0804E9D0
 	ldr r0, [r5, #0x60]
-	bl sub_08054E60
+	bl GetAISSubjectId
 	ldr r1, _0804E3C4 @ =0x0203DFE8
 	lsls r0, r0, #1
 	adds r0, r0, r1
@@ -801,7 +801,7 @@ sub_0804E3E0: @ 0x0804E3E0
 	adds r4, r0, #0
 	strh r5, [r4, #0x2c]
 	adds r0, r6, #0
-	bl sub_08054E60
+	bl GetAISSubjectId
 	cmp r0, #0
 	bne _0804E41C
 	ldr r0, _0804E418 @ =0x02000000
@@ -876,7 +876,7 @@ sub_0804E474: @ 0x0804E474
 	bl Proc_Start
 	adds r6, r0, #0
 	adds r0, r7, #0
-	bl sub_08054E60
+	bl GetAISSubjectId
 	cmp r0, #0
 	bne _0804E4B0
 	ldr r0, _0804E4AC @ =0x02000000
@@ -897,7 +897,7 @@ _0804E4B8:
 	str r0, [r6, #0x60]
 	ldr r4, _0804E514 @ =0x0203E036
 	ldr r0, [r6, #0x60]
-	bl sub_08054E60
+	bl GetAISSubjectId
 	lsls r0, r0, #1
 	adds r0, r0, r4
 	movs r1, #0
@@ -906,21 +906,21 @@ _0804E4B8:
 	lsls r4, r4, #0x10
 	lsrs r4, r4, #0x10
 	ldr r0, [r6, #0x60]
-	bl sub_08054E60
+	bl GetAISSubjectId
 	lsls r5, r5, #1
 	adds r5, r5, r0
 	adds r0, r5, #0
-	bl sub_08053B28
+	bl GetEfxHp
 	lsls r0, r0, #0x10
 	asrs r0, r0, #0x10
 	str r0, [r6, #0x4c]
 	ldr r0, [r6, #0x60]
-	bl sub_08054E60
+	bl GetAISSubjectId
 	lsls r4, r4, #0x10
 	asrs r4, r4, #0xf
 	adds r4, r4, r0
 	adds r0, r4, #0
-	bl sub_08053B28
+	bl GetEfxHp
 	lsls r0, r0, #0x10
 	asrs r1, r0, #0x10
 	str r1, [r6, #0x50]
@@ -953,7 +953,7 @@ _0804E526:
 	strh r0, [r6, #0x2e]
 	str r7, [r6, #0x64]
 	ldr r0, [r6, #0x5c]
-	bl sub_08054E60
+	bl GetAISSubjectId
 	ldr r1, _0804E548 @ =0x02017780
 	lsls r0, r0, #1
 	adds r0, r0, r1
@@ -987,7 +987,7 @@ sub_0804E54C: @ 0x0804E54C
 	adds r0, r1, r0
 	strh r0, [r5, #0x2e]
 	adds r0, r6, #0
-	bl sub_08054E60
+	bl GetAISSubjectId
 	ldr r1, _0804E5E0 @ =0x0203E090
 	lsls r0, r0, #1
 	adds r0, r0, r1
@@ -1021,7 +1021,7 @@ _0804E5AA:
 	bne _0804E5F0
 	ldr r4, _0804E5E8 @ =0x0203E036
 	adds r0, r6, #0
-	bl sub_08054E60
+	bl GetAISSubjectId
 	lsls r0, r0, #1
 	adds r0, r0, r4
 	ldrh r1, [r0]
@@ -1029,7 +1029,7 @@ _0804E5AA:
 	movs r4, #0
 	strh r1, [r0]
 	adds r0, r6, #0
-	bl sub_08054E60
+	bl GetAISSubjectId
 	ldr r1, _0804E5EC @ =0x02017780
 	lsls r0, r0, #1
 	adds r0, r0, r1
@@ -1109,7 +1109,7 @@ sub_0804E658: @ 0x0804E658
 	bne _0804E6A0
 	ldr r6, _0804E6A8 @ =0x0203E036
 	ldr r0, [r4, #0x5c]
-	bl sub_08054E60
+	bl GetAISSubjectId
 	lsls r0, r0, #1
 	adds r0, r0, r6
 	ldrh r1, [r0]
@@ -1121,7 +1121,7 @@ sub_0804E658: @ 0x0804E658
 	cmp r0, #1
 	bne _0804E69A
 	adds r0, r5, #0
-	bl sub_08054E60
+	bl GetAISSubjectId
 	lsls r0, r0, #1
 	adds r0, r0, r6
 	ldrh r1, [r0]
@@ -1179,7 +1179,7 @@ sub_0804E6D0: @ 0x0804E6D0
 	cmp r1, r0
 	bne _0804E738
 	mov r0, r8
-	bl sub_08054E60
+	bl GetAISSubjectId
 	ldr r5, _0804E730 @ =0x02000028
 	lsls r0, r0, #1
 	adds r0, r0, r5
@@ -1190,7 +1190,7 @@ sub_0804E6D0: @ 0x0804E6D0
 	mov r2, r8
 	strh r0, [r2, #2]
 	ldr r0, [r7, #0x60]
-	bl sub_08054E60
+	bl GetAISSubjectId
 	lsls r0, r0, #1
 	adds r0, r0, r5
 	ldrh r0, [r0]
@@ -1207,7 +1207,7 @@ _0804E730: .4byte 0x02000028
 _0804E734: .4byte 0x0201FB00
 _0804E738:
 	mov r0, r8
-	bl sub_08054E60
+	bl GetAISSubjectId
 	cmp r0, #1
 	bne _0804E754
 	movs r2, #0x2c
@@ -1227,7 +1227,7 @@ _0804E754:
 	ldrh r4, [r0]
 _0804E75E:
 	ldr r0, [r7, #0x5c]
-	bl sub_08054E60
+	bl GetAISSubjectId
 	ldr r6, _0804E7A4 @ =0x02000028
 	lsls r0, r0, #1
 	adds r0, r0, r6
@@ -1241,7 +1241,7 @@ _0804E75E:
 	mov r2, r8
 	strh r1, [r2, #2]
 	ldr r0, [r7, #0x60]
-	bl sub_08054E60
+	bl GetAISSubjectId
 	lsls r0, r0, #1
 	adds r0, r0, r6
 	ldr r1, [r5]
@@ -1342,7 +1342,7 @@ sub_0804E81C: @ 0x0804E81C
 	bne _0804E84E
 	ldr r4, _0804E890 @ =0x0201FAF8
 	adds r0, r7, #0
-	bl sub_08054E60
+	bl GetAISSubjectId
 	lsls r0, r0, #2
 	adds r0, r0, r4
 	ldr r0, [r0]
@@ -1360,7 +1360,7 @@ _0804E84E:
 	cmp r0, #0
 	beq _0804E87C
 	ldr r0, [r5, #0x5c]
-	bl sub_08054E60
+	bl GetAISSubjectId
 	ldr r1, _0804E898 @ =0x02017744
 	ldr r1, [r1]
 	cmp r0, r1
@@ -1442,7 +1442,7 @@ sub_0804E8CC: @ 0x0804E8CC
 	bl sub_0804CC38
 	ldr r4, _0804E940 @ =0x0203E074
 	ldr r0, [r5, #0x5c]
-	bl sub_08054E60
+	bl GetAISSubjectId
 	adds r0, r0, r4
 	ldrb r0, [r0]
 	bl sub_08079DF4
@@ -1474,7 +1474,7 @@ sub_0804E944: @ 0x0804E944
 	bl sub_0804E9D0
 	bl sub_0804D9B0
 	ldr r0, [r4, #0x5c]
-	bl sub_08054E60
+	bl GetAISSubjectId
 	ldr r1, _0804E9A4 @ =0x0203DFE8
 	lsls r0, r0, #1
 	adds r0, r0, r1
@@ -1892,7 +1892,7 @@ _0804ECAC:
 	bl Proc_Start
 	adds r4, r0, #0
 	adds r0, r5, #0
-	bl sub_08054E60
+	bl GetAISSubjectId
 	adds r2, r4, #0
 	adds r2, #0x29
 	movs r1, #0
@@ -2600,7 +2600,7 @@ _0804F248:
 	cmp r0, #2
 	bgt _0804F27A
 	ldr r0, [r6, #0x5c]
-	bl sub_08054E60
+	bl GetAISSubjectId
 	cmp r0, #0
 	bne _0804F26C
 	lsls r1, r7, #0x10
@@ -2725,7 +2725,7 @@ _0804F32C:
 _0804F33C: .4byte 0x0203E004
 _0804F340:
 	ldr r0, [r5, #0x5c]
-	bl sub_08054E60
+	bl GetAISSubjectId
 	ldr r1, _0804F370 @ =0x0201FB00
 	ldr r1, [r1]
 	ldr r2, _0804F374 @ =0x02000030
@@ -2736,7 +2736,7 @@ _0804F340:
 	lsls r1, r1, #0x10
 	lsrs r4, r1, #0x10
 	mov r0, r8
-	bl sub_08054E60
+	bl GetAISSubjectId
 	cmp r0, #0
 	bne _0804F37C
 	movs r0, #0x40
@@ -2784,7 +2784,7 @@ _0804F3B8:
 	str r1, [r5, #0x64]
 	ldr r4, _0804F444 @ =0x0200003C
 	mov r0, r8
-	bl sub_08054E60
+	bl GetAISSubjectId
 	lsls r0, r0, #2
 	adds r0, r0, r4
 	ldr r0, [r0]
@@ -2794,7 +2794,7 @@ _0804F3B8:
 	bl RegisterDataMove
 	ldr r4, _0804F44C @ =0x0203DFFC
 	mov r0, sb
-	bl sub_08054E60
+	bl GetAISSubjectId
 	lsls r0, r0, #1
 	adds r0, r0, r4
 	ldrh r0, [r0]
@@ -2802,7 +2802,7 @@ _0804F3B8:
 	bne _0804F3FC
 	ldr r4, _0804F450 @ =0x0200004C
 	mov r0, sb
-	bl sub_08054E60
+	bl GetAISSubjectId
 	lsls r0, r0, #2
 	adds r0, r0, r4
 	ldr r0, [r0]
@@ -2812,7 +2812,7 @@ _0804F3B8:
 _0804F3FC:
 	ldr r4, _0804F450 @ =0x0200004C
 	mov r0, r8
-	bl sub_08054E60
+	bl GetAISSubjectId
 	lsls r0, r0, #2
 	adds r0, r0, r4
 	ldr r0, [r0]
@@ -2824,7 +2824,7 @@ _0804F3FC:
 	movs r1, #0
 	ldrsh r4, [r0, r1]
 	mov r0, r8
-	bl sub_08054E60
+	bl GetAISSubjectId
 	adds r1, r0, #0
 	lsls r1, r1, #0x10
 	asrs r1, r1, #0x10
@@ -2994,7 +2994,7 @@ _0804F590:
 	cmp r0, #0
 	beq _0804F5BC
 	ldr r0, [r7, #0x5c]
-	bl sub_08054E60
+	bl GetAISSubjectId
 	adds r1, r0, #0
 	lsls r0, r1, #4
 	subs r0, r0, r1
@@ -3030,7 +3030,7 @@ _0804F5BC:
 	cmp r0, #0
 	beq _0804F628
 	ldr r0, [r7, #0x5c]
-	bl sub_08054E60
+	bl GetAISSubjectId
 	ldr r1, _0804F620 @ =0x0201FB00
 	ldr r1, [r1]
 	ldr r2, _0804F624 @ =0x02000030
@@ -3217,7 +3217,7 @@ _0804F778:
 	cmp r0, #2
 	bgt _0804F7AA
 	ldr r0, [r7, #0x5c]
-	bl sub_08054E60
+	bl GetAISSubjectId
 	cmp r0, #0
 	bne _0804F79C
 	lsls r1, r6, #0x10
@@ -3565,7 +3565,7 @@ sub_0804FA30: @ 0x0804FA30
 	push {r4, lr}
 	adds r4, r0, #0
 	ldr r0, [r4, #0x5c]
-	bl sub_08054E60
+	bl GetAISSubjectId
 	cmp r0, #0
 	bne _0804FA6C
 	ldr r0, _0804FA50 @ =0x0203E090
@@ -3633,7 +3633,7 @@ sub_0804FAC4: @ 0x0804FAC4
 	push {r4, lr}
 	adds r4, r0, #0
 	ldr r0, [r4, #0x5c]
-	bl sub_08054E60
+	bl GetAISSubjectId
 	cmp r0, #0
 	bne _0804FB04
 	ldr r0, _0804FAEC @ =0x0203E090
@@ -3995,7 +3995,7 @@ sub_0804FDB0: @ 0x0804FDB0
 	cmp r0, r1
 	blt _0804FE0E
 	ldr r0, [r4, #0x5c]
-	bl sub_08054E60
+	bl GetAISSubjectId
 	cmp r0, #0
 	bne _0804FDE8
 	ldr r0, _0804FDE0 @ =0x081DF444
@@ -4038,7 +4038,7 @@ sub_0804FE1C: @ 0x0804FE1C
 	push {r4, lr}
 	adds r4, r0, #0
 	ldr r0, [r4, #0x5c]
-	bl sub_08054E60
+	bl GetAISSubjectId
 	cmp r0, #0
 	bne _0804FE48
 	ldr r0, _0804FE40 @ =0x02000054
@@ -4076,7 +4076,7 @@ sub_0804FE74: @ 0x0804FE74
 	push {r4, r5, r6, lr}
 	sub sp, #4
 	adds r5, r0, #0
-	bl sub_08054E60
+	bl GetAISSubjectId
 	cmp r0, #0
 	bne _0804FE8C
 	ldr r0, _0804FE88 @ =0x0203E06C
@@ -4116,13 +4116,13 @@ _0804FEC0:
 	strh r1, [r4, #0x34]
 	strh r1, [r4, #0x32]
 	adds r0, r5, #0
-	bl sub_08054E60
+	bl GetAISSubjectId
 	ldr r1, _0804FF24 @ =0x0201776C
 	lsls r0, r0, #2
 	adds r0, r0, r1
 	str r4, [r0]
 	adds r0, r5, #0
-	bl sub_08054E60
+	bl GetAISSubjectId
 	cmp r0, #0
 	bne _0804FF30
 	ldr r5, _0804FF28 @ =0x02000054
@@ -4191,20 +4191,20 @@ sub_0804FF70: @ 0x0804FF70
 	push {r4, r5, lr}
 	adds r4, r0, #0
 	ldr r5, _0804FFA8 @ =0x0201776C
-	bl sub_08054E60
+	bl GetAISSubjectId
 	lsls r0, r0, #2
 	adds r0, r0, r5
 	ldr r0, [r0]
 	cmp r0, #0
 	beq _0804FFA2
 	adds r0, r4, #0
-	bl sub_08054E60
+	bl GetAISSubjectId
 	lsls r0, r0, #2
 	adds r0, r0, r5
 	ldr r0, [r0]
 	bl Proc_End
 	adds r0, r4, #0
-	bl sub_08054E60
+	bl GetAISSubjectId
 	lsls r0, r0, #2
 	adds r0, r0, r5
 	movs r1, #0
@@ -4220,7 +4220,7 @@ _0804FFA8: .4byte 0x0201776C
 sub_0804FFAC: @ 0x0804FFAC
 	push {r4, lr}
 	ldr r4, _0804FFC8 @ =0x0201776C
-	bl sub_08054E60
+	bl GetAISSubjectId
 	lsls r0, r0, #2
 	adds r0, r0, r4
 	ldr r0, [r0]
@@ -4237,7 +4237,7 @@ _0804FFC8: .4byte 0x0201776C
 sub_0804FFCC: @ 0x0804FFCC
 	push {r4, lr}
 	ldr r4, _0804FFE8 @ =0x0201776C
-	bl sub_08054E60
+	bl GetAISSubjectId
 	lsls r0, r0, #2
 	adds r0, r0, r4
 	ldr r0, [r0]
@@ -4256,7 +4256,7 @@ sub_0804FFEC: @ 0x0804FFEC
 	adds r6, r0, #0
 	adds r5, r1, #0
 	ldr r4, _08050018 @ =0x0201776C
-	bl sub_08054E60
+	bl GetAISSubjectId
 	lsls r0, r0, #2
 	adds r0, r0, r4
 	ldr r0, [r0]
@@ -4279,7 +4279,7 @@ _08050018: .4byte 0x0201776C
 sub_0805001C: @ 0x0805001C
 	push {r4, lr}
 	ldr r4, _08050034 @ =0x0201776C
-	bl sub_08054E60
+	bl GetAISSubjectId
 	lsls r0, r0, #2
 	adds r0, r0, r4
 	ldr r0, [r0]
@@ -4300,7 +4300,7 @@ sub_08050038: @ 0x08050038
 	adds r7, r1, #0
 	adds r5, r2, #0
 	adds r6, r3, #0
-	bl sub_08054E60
+	bl GetAISSubjectId
 	cmp r0, #0
 	bne _080500A0
 	ldr r0, _08050094 @ =0x02000054
@@ -4455,7 +4455,7 @@ _0805016A:
 	b _080501CE
 _0805017E:
 	ldr r0, [r4, #0x5c]
-	bl sub_08054E60
+	bl GetAISSubjectId
 	cmp r0, #0
 	bne _080501B0
 	ldr r0, _080501A8 @ =0x02022B40
@@ -4507,7 +4507,7 @@ sub_080501E4: @ 0x080501E4
 	push {r4, lr}
 	adds r4, r0, #0
 	ldr r0, [r4, #0x5c]
-	bl sub_08054E60
+	bl GetAISSubjectId
 	cmp r0, #0
 	bne _08050208
 	ldr r0, _08050200 @ =0x02000054
@@ -5455,7 +5455,7 @@ sub_0805093C: @ 0x0805093C
 	adds r4, r1, #0
 	str r2, [sp]
 	mov sl, r3
-	bl sub_08054E60
+	bl GetAISSubjectId
 	cmp r0, #0
 	bne _08050968
 	ldr r0, _08050964 @ =0x02000000
@@ -5487,7 +5487,7 @@ _08050980:
 _08050984: .4byte 0x02000000
 _08050988:
 	adds r0, r7, #0
-	bl sub_08054E60
+	bl GetAISSubjectId
 	adds r1, r0, #0
 	ldrh r0, [r7, #0xe]
 	subs r0, #1
@@ -5497,7 +5497,7 @@ _08050988:
 	lsls r0, r0, #0x10
 	lsrs r6, r0, #0x10
 	adds r0, r5, #0
-	bl sub_08054E60
+	bl GetAISSubjectId
 	adds r1, r0, #0
 	ldrh r0, [r5, #0xe]
 	subs r0, #1
@@ -5556,32 +5556,32 @@ _08050A10:
 _08050A18:
 	ldr r4, _08050A80 @ =0x0203E036
 	adds r0, r5, #0
-	bl sub_08054E60
+	bl GetAISSubjectId
 	lsls r0, r0, #1
 	adds r0, r0, r4
 	movs r1, #0
 	ldrsh r6, [r0, r1]
 	adds r0, r5, #0
-	bl sub_08054E60
+	bl GetAISSubjectId
 	lsls r0, r0, #1
 	adds r0, r0, r4
 	movs r1, #0
 	ldrsh r4, [r0, r1]
 	adds r4, #1
 	adds r0, r5, #0
-	bl sub_08054E60
+	bl GetAISSubjectId
 	adds r1, r0, #0
 	lsls r0, r6, #1
 	adds r0, r0, r1
-	bl sub_08053B28
+	bl GetEfxHp
 	lsls r0, r0, #0x10
 	asrs r6, r0, #0x10
 	adds r0, r5, #0
-	bl sub_08054E60
+	bl GetAISSubjectId
 	adds r1, r0, #0
 	lsls r0, r4, #1
 	adds r0, r0, r1
-	bl sub_08053B28
+	bl GetEfxHp
 	lsls r0, r0, #0x10
 	asrs r4, r0, #0x10
 	cmp r6, r4
@@ -5641,7 +5641,7 @@ sub_08050AC8: @ 0x08050AC8
 	mov r6, r8
 	push {r6, r7}
 	mov sb, r1
-	bl sub_08054E60
+	bl GetAISSubjectId
 	cmp r0, #0
 	bne _08050AE8
 	ldr r0, _08050AE4 @ =0x02000000
@@ -5660,32 +5660,32 @@ _08050AF0:
 	mov r8, r0
 	ldr r4, _08050B4C @ =0x0203E036
 	adds r0, r5, #0
-	bl sub_08054E60
+	bl GetAISSubjectId
 	lsls r0, r0, #1
 	adds r0, r0, r4
 	movs r1, #0
 	ldrsh r6, [r0, r1]
 	adds r0, r5, #0
-	bl sub_08054E60
+	bl GetAISSubjectId
 	lsls r0, r0, #1
 	adds r0, r0, r4
 	movs r1, #0
 	ldrsh r4, [r0, r1]
 	adds r4, #1
 	adds r0, r5, #0
-	bl sub_08054E60
+	bl GetAISSubjectId
 	adds r1, r0, #0
 	lsls r0, r6, #1
 	adds r0, r0, r1
-	bl sub_08053B28
+	bl GetEfxHp
 	lsls r0, r0, #0x10
 	asrs r6, r0, #0x10
 	adds r0, r5, #0
-	bl sub_08054E60
+	bl GetAISSubjectId
 	adds r1, r0, #0
 	lsls r0, r4, #1
 	adds r0, r0, r1
-	bl sub_08053B28
+	bl GetEfxHp
 	lsls r0, r0, #0x10
 	asrs r4, r0, #0x10
 	mov r0, sb
@@ -5754,7 +5754,7 @@ _08050BAE:
 sub_08050BBC: @ 0x08050BBC
 	push {r4, lr}
 	adds r4, r1, #0
-	bl sub_08054E60
+	bl GetAISSubjectId
 	cmp r0, #0
 	bne _08050BD4
 	ldr r0, _08050BD0 @ =0x02000000
@@ -5796,7 +5796,7 @@ sub_08050BF8: @ 0x08050BF8
 	cmp r0, #0
 	bne _08050C24
 	adds r0, r4, #0
-	bl sub_08054E60
+	bl GetAISSubjectId
 	cmp r0, #0
 	bne _08050C20
 	adds r0, r7, #0
@@ -5808,7 +5808,7 @@ _08050C20:
 	b _08050C34
 _08050C24:
 	adds r0, r4, #0
-	bl sub_08054E60
+	bl GetAISSubjectId
 	cmp r0, #0
 	bne _08050C32
 	adds r0, r5, #0
@@ -5846,7 +5846,7 @@ sub_08050C54: @ 0x08050C54
 	adds r4, r1, #0
 _08050C68:
 	adds r0, r3, #0
-	bl sub_08054E60
+	bl GetAISSubjectId
 	cmp r0, #0
 	bne _08050C90
 	ldr r1, _08050C8C @ =0x02023460
@@ -5907,7 +5907,7 @@ _08050CDC:
 _08050CE4:
 	ldr r5, _08050D08 @ =0x02019784
 	adds r0, r4, #0
-	bl sub_08054E60
+	bl GetAISSubjectId
 	cmp r0, #0
 	bne _08050D10
 	ldr r1, _08050D0C @ =0x02023460
@@ -5955,7 +5955,7 @@ sub_08050D38: @ 0x08050D38
 	adds r1, r7, #0
 	bl LZ77UnCompWram
 	adds r0, r4, #0
-	bl sub_08054E60
+	bl GetAISSubjectId
 	cmp r0, #0
 	bne _08050D78
 	ldr r1, _08050D74 @ =0x02023460

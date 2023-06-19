@@ -65,10 +65,10 @@ ELF := $(ROM:%.gba=%.elf)
 MAP := $(ROM:%.gba=%.map)
 SYM := $(ROM:%.gba=%.sym)
 
-C_SRCS := $(wildcard $(SRC_DIR)/*.c)
+C_SRCS := $(shell find $(SRC_DIR) -name *.c)
 C_OBJS := $(C_SRCS:%.c=$(BUILD_DIR)/%.o)
 
-ASM_SRCS := $(wildcard $(SRC_DIR)/*.s) $(wildcard $(ASM_DIR)/*.s)
+ASM_SRCS := $(shell find $(SRC_DIR) -name *.s) $(shell find $(ASM_DIR) -name *.s)
 ASM_OBJS := $(ASM_SRCS:%.s=$(BUILD_DIR)/%.o)
 
 DATA_SRCS := $(wildcard data/*.s)
@@ -107,14 +107,14 @@ syms: $(SYM)
 
 $(ELF): $(ALL_OBJS) $(LDS)
 	@echo "[ LD]	$@"
-	@cd $(BUILD_DIR) && $(LD) -T ../$(LDS) -Map ../$(MAP) -L../tools/agbcc/lib $(ALL_OBJS:$(BUILD_DIR)/%=%) -lc -lgcc -o ../$@
+	@cd $(BUILD_DIR) && $(LD) -T ../$(LDS) -Map ../$(MAP) -L../tools/agbcc/lib $(ALL_OBJS:$(BUILD_DIR)/%=%) -lc -lgcc -o ../$@ --no-warn-rwx-segments
 
 # C dependency file
 $(BUILD_DIR)/%.d: %.c
 	@$(CPP) $(CPPFLAGS) $< -o $@ -MM -MG -MT $@ -MT $(BUILD_DIR)/$*.o
 
 # C object
-$(BUILD_DIR)/%.o: %.c
+$(BUILD_DIR)/%.o: %.c $(BUILD_DIR)/%.d
 	@echo "[ CC]	$<"
 	@$(CPP) $(CPPFLAGS) $< | iconv -f UTF-8 -t CP932 | $(CC1) $(CFLAGS) -o $(BUILD_DIR)/$*.s
 	@echo ".ALIGN 2, 0" >> $(BUILD_DIR)/$*.s
