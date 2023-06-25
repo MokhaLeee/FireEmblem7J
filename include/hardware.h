@@ -265,6 +265,23 @@ extern short CONST_DATA gSinLut[];
 #define SetBlendNone() \
     SetBlendConfig(BLEND_EFFECT_NONE, 0x10, 0, 0)
 
+
+void RegisterDataMove(void const * src, void * dst, int size);
+void RegisterDataFill(u32 value, void * dst, int size);
+void ApplyDataMoves(void);
+
+#define RegisterVramMove(src, offset, size) \
+    RegisterDataMove( \
+        (src), \
+        (void *) VRAM + (0x1FFFF & (offset)), \
+        (size))
+
+#define RegisterVramFill(value, offset, size) \
+    RegisterDataFill( \
+        (value), \
+        (void *) VRAM + (0x1FFFF & (offset)), \
+        (size))
+
 unsigned GetGameTime(void);
 void SetGameTime(unsigned time);
 void IncGameTime(void);

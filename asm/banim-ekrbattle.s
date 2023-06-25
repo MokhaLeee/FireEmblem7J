@@ -2273,10 +2273,10 @@ _0804CB1E:
 	bl InitIcons
 	movs r0, #0
 	movs r1, #0x1d
-	bl sub_08004C20
+	bl ApplyIconPalette
 	movs r0, #0
 	movs r1, #0x1e
-	bl sub_08004C20
+	bl ApplyIconPalette
 	ldr r0, _0804CC08 @ =0x0203E06C
 	ldr r0, [r0]
 	adds r0, #0x4a
@@ -2284,7 +2284,7 @@ _0804CB1E:
 	bl sub_08017808
 	movs r1, #0xee
 	lsls r1, r1, #1
-	bl sub_08004D74
+	bl PutIconObjImg
 	ldr r0, _0804CC0C @ =0x0203E070
 	ldr r0, [r0]
 	adds r0, #0x4a
@@ -2292,7 +2292,7 @@ _0804CB1E:
 	bl sub_08017808
 	movs r1, #0xef
 	lsls r1, r1, #1
-	bl sub_08004D74
+	bl PutIconObjImg
 	ldr r0, _0804CC10 @ =0x0818FE70
 	movs r1, #0x80
 	lsls r1, r1, #2

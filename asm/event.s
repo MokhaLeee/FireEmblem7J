@@ -471,7 +471,7 @@ _0800A870:
 	ldrb r1, [r0]
 	movs r0, #1
 _0800A886:
-	bl sub_08004C20
+	bl ApplyIconPalette
 	adds r4, #0x10
 	b _0800A8D8
 	.align 2, 0
@@ -884,7 +884,7 @@ _0800AB46:
 	adds r1, r5, #0
 	adds r1, #0x40
 	ldrh r1, [r1]
-	bl sub_08004D74
+	bl PutIconObjImg
 _0800ABBE:
 	mov r1, r8
 	adds r1, #1

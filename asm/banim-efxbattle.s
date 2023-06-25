@@ -4633,7 +4633,7 @@ _080502D6:
 	beq _080502F0
 	movs r0, #0
 	movs r1, #0x1d
-	bl sub_08004C20
+	bl ApplyIconPalette
 	ldr r0, _08050314 @ =gPal
 	ldr r3, [r4, #0x4c]
 	movs r1, #0x1d
@@ -4645,7 +4645,7 @@ _080502F0:
 	beq _0805030A
 	movs r0, #0
 	movs r1, #0x1e
-	bl sub_08004C20
+	bl ApplyIconPalette
 	ldr r0, _08050314 @ =gPal
 	ldr r3, [r4, #0x4c]
 	movs r1, #0x1e
@@ -4670,14 +4670,14 @@ sub_08050318: @ 0x08050318
 	beq _0805032E
 	movs r0, #0
 	movs r1, #0x1d
-	bl sub_08004C20
+	bl ApplyIconPalette
 _0805032E:
 	ldr r0, [r4, #0x58]
 	cmp r0, #0
 	beq _0805033C
 	movs r0, #0
 	movs r1, #0x1e
-	bl sub_08004C20
+	bl ApplyIconPalette
 _0805033C:
 	bl EnablePalSync
 	pop {r4}

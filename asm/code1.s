@@ -7486,7 +7486,7 @@ sub_08031E8C: @ 0x08031E8C
 	movs r2, #0xa0
 	lsls r2, r2, #7
 	adds r0, r4, #0
-	bl sub_08004D04
+	bl PutIcon
 	pop {r4}
 	pop {r0}
 	bx r0
@@ -7724,7 +7724,7 @@ _08032068:
 	adds r0, r6, #0
 	movs r2, #0x80
 	lsls r2, r2, #7
-	bl sub_08004D04
+	bl PutIcon
 	adds r6, #0x80
 	adds r7, #0x80
 	movs r0, #0x80
@@ -7849,7 +7849,7 @@ _0803218A:
 	adds r0, r4, #0
 	movs r2, #0x80
 	lsls r2, r2, #7
-	bl sub_08004D04
+	bl PutIcon
 	ldr r0, [sp, #0x14]
 	adds r0, #0x40
 	str r0, [sp, #0x14]
@@ -7995,7 +7995,7 @@ _080322A2:
 	adds r0, r4, #0
 	movs r2, #0x80
 	lsls r2, r2, #7
-	bl sub_08004D04
+	bl PutIcon
 	ldr r2, [sp, #0x14]
 	adds r2, #0x40
 	str r2, [sp, #0x14]
@@ -10744,7 +10744,7 @@ sub_080338B8: @ 0x080338B8
 	push {r6, r7}
 	movs r0, #0
 	movs r1, #3
-	bl sub_08004C20
+	bl ApplyIconPalette
 	movs r1, #1
 	ldr r0, _08033938 @ =gPal
 	mov sb, r0
@@ -11286,7 +11286,7 @@ _08033CAA:
 	movs r2, #0x80
 	lsls r2, r2, #7
 	adds r0, r4, #0
-	bl sub_08004D04
+	bl PutIcon
 	ldr r1, _08033D5C @ =0xFFFFFEF2
 	adds r4, r5, r1
 	adds r0, r6, #0
@@ -11297,7 +11297,7 @@ _08033CAA:
 	movs r2, #0xc0
 	lsls r2, r2, #6
 	adds r0, r4, #0
-	bl sub_08004D04
+	bl PutIcon
 	pop {r4, r5, r6, r7}
 	pop {r0}
 	bx r0
@@ -11543,7 +11543,7 @@ _08033EAA:
 	movs r2, #0x80
 	lsls r2, r2, #7
 	adds r0, r4, #0
-	bl sub_08004D04
+	bl PutIcon
 	ldr r1, _08033FA8 @ =0xFFFFFEF2
 	adds r4, r5, r1
 	adds r0, r6, #0
@@ -11554,7 +11554,7 @@ _08033EAA:
 	movs r2, #0xc0
 	lsls r2, r2, #6
 	adds r0, r4, #0
-	bl sub_08004D04
+	bl PutIcon
 	pop {r4, r5, r6, r7}
 	pop {r0}
 	bx r0

@@ -1819,7 +1819,7 @@ _0801C396:
 	adds r1, #0x79
 	movs r2, #0xa0
 	lsls r2, r2, #7
-	bl sub_08004D04
+	bl PutIcon
 	b _0801C424
 	.align 2, 0
 _0801C3E8: .4byte 0x081C9334

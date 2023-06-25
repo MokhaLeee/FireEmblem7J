@@ -52613,7 +52613,7 @@ _0806BB1C:
 	bne _0806BB5C
 	movs r0, #1
 	movs r1, #0x12
-	bl sub_08004C20
+	bl ApplyIconPalette
 	mov r0, r8
 	bl GetItemType
 	adds r0, #0x70
@@ -52626,21 +52626,21 @@ _0806BB5C:
 	bne _0806BB76
 	movs r0, #0
 	movs r1, #0x12
-	bl sub_08004C20
+	bl ApplyIconPalette
 	mov r0, r8
 	bl sub_08017808
 _0806BB6E:
 	movs r1, #0x40
-	bl sub_08004D74
+	bl PutIconObjImg
 	b _0806BB88
 _0806BB76:
 	movs r0, #1
 	movs r1, #0x12
-	bl sub_08004C20
+	bl ApplyIconPalette
 	mov r0, r8
 	adds r0, #0x70
 	movs r1, #0x40
-	bl sub_08004D74
+	bl PutIconObjImg
 _0806BB88:
 	ldr r0, _0806BBF0 @ =0x08C4C058
 	movs r1, #0x96
@@ -96995,7 +96995,7 @@ _08080C82:
 	mov r8, r0
 	adds r0, r4, #0
 	mov r2, r8
-	bl sub_08004D04
+	bl PutIcon
 	adds r4, r6, #0
 	adds r4, #0x78
 	ldr r0, [r6, #0xc]
@@ -97033,7 +97033,7 @@ _08080DB6:
 	adds r1, r0, #0
 	adds r0, r4, #0
 	mov r2, r8
-	bl sub_08004D04
+	bl PutIcon
 	adds r4, r6, #0
 	adds r4, #0x80
 	ldr r0, [r6, #0xc]
@@ -97309,7 +97309,7 @@ _08080FF8:
 	adds r0, r5, #0
 	movs r2, #0xa0
 	lsls r2, r2, #7
-	bl sub_08004D04
+	bl PutIcon
 	adds r0, r4, #0
 	bl GetCharacterData
 	ldrh r0, [r0]
@@ -97393,7 +97393,7 @@ sub_080810A8: @ 0x080810A8
 	adds r1, #0x70
 	movs r2, #0xa0
 	lsls r2, r2, #7
-	bl sub_08004D04
+	bl PutIcon
 	movs r7, #2
 	cmp r5, #0xfa
 	ble _080810E4
@@ -99049,7 +99049,7 @@ sub_08081DE4: @ 0x08081DE4
 	bl sub_0804A2DC
 	movs r0, #1
 	movs r1, #0x13
-	bl sub_08004C20
+	bl ApplyIconPalette
 	ldr r0, _08081EC4 @ =0x0840349C
 	ldr r4, _08081EC8 @ =0x02020140
 	adds r1, r4, #0
@@ -99074,7 +99074,7 @@ sub_08081DE4: @ 0x08081DE4
 	bl CpuFastSet
 	movs r0, #1
 	movs r1, #0x14
-	bl sub_08004C20
+	bl ApplyIconPalette
 	ldr r0, _08081EE0 @ =0x0840417C
 	ldr r1, _08081EE4 @ =0x06004E00
 	bl sub_08013688
@@ -108004,7 +108004,7 @@ sub_080864DC: @ 0x080864DC
 	bl ApplyPaletteExt
 	movs r0, #1
 	movs r1, #2
-	bl sub_08004C20
+	bl ApplyIconPalette
 	bl sub_08005308
 	ldr r4, _08086604 @ =gPlaySt
 	adds r0, r4, #0
@@ -113946,7 +113946,7 @@ _08089674:
 	ldr r0, _08089694 @ =0x02023CC8
 	movs r2, #0xa0
 	lsls r2, r2, #7
-	bl sub_08004D04
+	bl PutIcon
 	b _080896D2
 	.align 2, 0
 _08089694: .4byte 0x02023CC8
@@ -114105,7 +114105,7 @@ _080897AC:
 	bne _080897C4
 	adds r4, r4, r7
 	ldr r0, [r4]
-	bl sub_08004D54
+	bl ClearIcon
 	movs r0, #0xff
 	str r0, [r4]
 _080897C4:
@@ -117850,7 +117850,7 @@ _0808B54E:
 	adds r0, r4, #0
 	movs r2, #0xa0
 	lsls r2, r2, #7
-	bl sub_08004D04
+	bl PutIcon
 	adds r4, #4
 	adds r5, #1
 	cmp r5, #7
@@ -118204,7 +118204,7 @@ _0808B81C:
 	movs r2, #0x80
 	lsls r2, r2, #7
 	adds r0, r4, #0
-	bl sub_08004D04
+	bl PutIcon
 	mov r2, r8
 	ldr r0, [r2]
 	ldr r0, [r0]
@@ -118514,7 +118514,7 @@ _0808BAE4:
 	adds r0, #0x34
 	movs r2, #0xa0
 	lsls r2, r2, #7
-	bl sub_08004D04
+	bl PutIcon
 	b _0808BEF4
 _0808BAF2:
 	ldr r0, _0808BB2C @ =0x0200CBF0
@@ -118582,7 +118582,7 @@ _0808BB38:
 	movs r2, #0x80
 	lsls r2, r2, #7
 	adds r0, r4, #0
-	bl sub_08004D04
+	bl PutIcon
 	ldr r0, [r7]
 	ldr r0, [r0]
 	bl GetUnitEquippedWeapon
@@ -133930,7 +133930,7 @@ _08093390:
 	mov r0, sl
 	movs r2, #0x80
 	lsls r2, r2, #7
-	bl sub_08004D04
+	bl PutIcon
 	adds r0, r6, #0
 	ldr r1, [sp, #0xc]
 	bl sub_08005460
@@ -135124,7 +135124,7 @@ _08093D10:
 	mov r0, sb
 	movs r2, #0x80
 	lsls r2, r2, #7
-	bl sub_08004D04
+	bl PutIcon
 	mov r2, r8
 	lsls r1, r2, #3
 	ldr r0, _08093DC0 @ =0x02012B10
@@ -136943,7 +136943,7 @@ _08094B58:
 	mov r0, r8
 	movs r2, #0x80
 	lsls r2, r2, #7
-	bl sub_08004D04
+	bl PutIcon
 	movs r0, #8
 	add sb, r0
 	ldr r1, [sp, #0x14]
@@ -136989,7 +136989,7 @@ _08094BB8:
 	adds r0, r4, #0
 	movs r2, #0x80
 	lsls r2, r2, #7
-	bl sub_08004D04
+	bl PutIcon
 	adds r4, #0x80
 	adds r5, #1
 	cmp r5, r6
@@ -139503,7 +139503,7 @@ sub_080960F8: @ 0x080960F8
 	movs r2, #0x80
 	lsls r2, r2, #7
 	adds r0, r4, #0
-	bl sub_08004D04
+	bl PutIcon
 _08096144:
 	ldr r4, _080961B4 @ =0x02012A80
 	adds r0, r4, #0
@@ -139997,7 +139997,7 @@ _08096528:
 	adds r0, r4, #0
 	movs r2, #0x80
 	lsls r2, r2, #7
-	bl sub_08004D04
+	bl PutIcon
 	adds r1, r5, #6
 	add r1, sl
 	mov r0, r8
@@ -140070,7 +140070,7 @@ _080965D4:
 	adds r0, r4, #0
 	movs r2, #0x80
 	lsls r2, r2, #7
-	bl sub_08004D04
+	bl PutIcon
 	adds r6, #4
 	adds r5, #1
 	adds r0, r7, #7
@@ -140147,7 +140147,7 @@ _08096658:
 	movs r2, #0x80
 	lsls r2, r2, #7
 	adds r0, r5, #0
-	bl sub_08004D04
+	bl PutIcon
 	adds r1, r4, #6
 	adds r0, r7, #0
 	bl sub_08005460
@@ -152488,7 +152488,7 @@ sub_0809C9F8: @ 0x0809C9F8
 	adds r1, #0x79
 	movs r2, #0xa0
 	lsls r2, r2, #7
-	bl sub_08004D04
+	bl PutIcon
 	mov r2, r8
 	ldrb r2, [r2]
 	lsls r0, r2, #0x1c
@@ -153254,7 +153254,7 @@ _0809D094:
 	movs r2, #0xe0
 	lsls r2, r2, #8
 	adds r0, r4, #0
-	bl sub_08004D04
+	bl PutIcon
 	ldr r0, [sp, #0x14]
 	ldr r1, [sp, #0x18]
 	bl sub_0809F5FC
@@ -174348,7 +174348,7 @@ _080A7442:
 	adds r1, #0x79
 	movs r2, #0xa0
 	lsls r2, r2, #7
-	bl sub_08004D04
+	bl PutIcon
 	movs r0, #0
 	bl sub_08005320
 	pop {r4, r5, r6}
@@ -175242,7 +175242,7 @@ _080A7C02:
 	adds r1, #0x79
 	movs r2, #0xa0
 	lsls r2, r2, #7
-	bl sub_08004D04
+	bl PutIcon
 	ldr r4, _080A7C94 @ =0x0200006C
 	adds r0, r4, #0
 	bl sub_08005320
@@ -175548,7 +175548,7 @@ _080A7E9E:
 	adds r1, #0x79
 	movs r2, #0xa0
 	lsls r2, r2, #7
-	bl sub_08004D04
+	bl PutIcon
 	ldr r4, _080A7F28 @ =0x0200006C
 	adds r0, r4, #0
 	bl sub_08005320
@@ -187750,7 +187750,7 @@ _080ADCAA:
 	movs r2, #0x80
 	lsls r2, r2, #7
 	mov r0, sl
-	bl sub_08004D04
+	bl PutIcon
 	b _080ADD02
 	.align 2, 0
 _080ADCD0: .4byte gBg2Tm
@@ -187773,7 +187773,7 @@ _080ADCD4:
 	movs r2, #0x80
 	lsls r2, r2, #7
 	mov r0, sl
-	bl sub_08004D04
+	bl PutIcon
 _080ADD02:
 	adds r6, #8
 	adds r0, r6, #0
@@ -189152,7 +189152,7 @@ _080AE81C:
 	movs r2, #0x80
 	lsls r2, r2, #7
 	adds r0, r4, #0
-	bl sub_08004D04
+	bl PutIcon
 	ldr r1, _080AE884 @ =0x08DAEF60
 	ldr r0, [r1]
 	ldr r2, [sp, #0x30]
@@ -189803,7 +189803,7 @@ sub_080AEDA8: @ 0x080AEDA8
 	push {lr}
 	movs r0, #1
 	movs r1, #0x12
-	bl sub_08004C20
+	bl ApplyIconPalette
 	movs r0, #0x80
 	movs r1, #3
 	bl sub_080B2D90

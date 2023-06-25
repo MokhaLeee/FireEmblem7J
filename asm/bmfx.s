@@ -1435,7 +1435,7 @@ sub_0801E2A0: @ 0x0801E2A0
 	bl sub_0800536C
 	ldrb r1, [r5]
 	movs r0, #1
-	bl sub_08004C20
+	bl ApplyIconPalette
 	ldr r0, [r4, #0x2c]
 	movs r1, #1
 	rsbs r1, r1, #0
@@ -1802,7 +1802,7 @@ _0801E522:
 	ldr r0, [sp, #8]
 	lsls r2, r0, #0xc
 	adds r0, r4, #0
-	bl sub_08004D04
+	bl PutIcon
 _0801E61A:
 	movs r0, #1
 	bl EnableBgSync
@@ -3679,7 +3679,7 @@ _0801F4B2:
 	movs r2, #0x80
 	lsls r2, r2, #7
 	adds r1, r5, #0
-	bl sub_08004D04
+	bl PutIcon
 	adds r4, #2
 _0801F4E2:
 	bl sub_08005308
@@ -3802,7 +3802,7 @@ _0801F5D0:
 	mov r8, r0
 	adds r0, r4, #0
 	mov r2, r8
-	bl sub_08004D04
+	bl PutIcon
 	adds r4, r5, #0
 	adds r4, #0x80
 	adds r4, r6, r4
@@ -3811,7 +3811,7 @@ _0801F5D0:
 	adds r1, r0, #0
 	adds r0, r4, #0
 	mov r2, r8
-	bl sub_08004D04
+	bl PutIcon
 	adds r1, r5, #4
 	adds r1, r6, r1
 	add r0, sp, #4
@@ -3902,7 +3902,7 @@ _0801F6BC:
 	movs r2, #0x80
 	lsls r2, r2, #7
 	adds r0, r6, #0
-	bl sub_08004D04
+	bl PutIcon
 	adds r4, #4
 	adds r5, r5, r4
 	add r0, sp, #4

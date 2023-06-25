@@ -713,7 +713,7 @@ _0801696E:
 	movs r2, #0x80
 	lsls r2, r2, #7
 	adds r0, r7, #0
-	bl sub_08004D04
+	bl PutIcon
 	pop {r3}
 	mov r8, r3
 	pop {r4, r5, r6, r7}
@@ -815,7 +815,7 @@ _08016A36:
 	movs r2, #0x80
 	lsls r2, r2, #7
 	adds r0, r7, #0
-	bl sub_08004D04
+	bl PutIcon
 	pop {r3}
 	mov r8, r3
 	pop {r4, r5, r6, r7}
@@ -879,7 +879,7 @@ _08016ABA:
 	movs r2, #0x80
 	lsls r2, r2, #7
 	adds r0, r7, #0
-	bl sub_08004D04
+	bl PutIcon
 	pop {r3}
 	mov r8, r3
 	pop {r4, r5, r6, r7}
@@ -974,7 +974,7 @@ _08016B7A:
 	movs r2, #0x80
 	lsls r2, r2, #7
 	adds r0, r7, #0
-	bl sub_08004D04
+	bl PutIcon
 	pop {r3, r4}
 	mov r8, r3
 	mov sb, r4
