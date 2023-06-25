@@ -1826,12 +1826,12 @@ sub_08025F28: @ 0x08025F28
 	ldr r4, _08025FC4 @ =gPlaySt
 	movs r0, #0xe
 	ldrsb r0, [r4, r0]
-	bl sub_08031A5C
+	bl GetROMChapterStruct
 	adds r0, #0x8f
 	ldrb r5, [r0]
 	movs r0, #0xe
 	ldrsb r0, [r4, r0]
-	bl sub_08031A5C
+	bl GetROMChapterStruct
 	adds r0, #0x90
 	ldrb r4, [r0]
 	bl GetGameTime
@@ -1923,7 +1923,7 @@ sub_08025FE0: @ 0x08025FE0
 	ldrb r0, [r0, #0xe]
 	lsls r0, r0, #0x18
 	asrs r0, r0, #0x18
-	bl sub_08031A5C
+	bl GetROMChapterStruct
 	adds r0, #0x8e
 	ldrb r0, [r0]
 	str r0, [sp, #8]
@@ -2519,7 +2519,7 @@ _080264A4:
 	adds r4, r0, #0
 	cmp r4, #0
 	beq _080264DE
-	bl sub_0806D4A4
+	bl MU_EndAll
 	adds r0, r4, #0
 	bl ShowUnitSprite
 _080264DE:

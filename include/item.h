@@ -101,8 +101,8 @@ int GetUnitEquippedWeaponSlot(struct Unit *unit);
 bool IsItemCoveringRange(int item, int range);
 void EquipUnitItemSlot(struct Unit *unit, int itemSlot);
 bool IsItemEffectiveAgainst(u16 item, struct Unit *unit);
-// sub_08016D0C
-// sub_08016DA4
+char *GetItemDisplayRangeString(int item);
+int GetWeaponLevelFromExp(int wexp);
 // sub_08016DD8
 // sub_08016E38
 // sub_08016E60
@@ -122,14 +122,14 @@ int GetUnitItemSlot(struct Unit *unit, int itemIndex);
 // sub_08017574
 // sub_0801759C
 // sub_080175CC
-// GetItemIndex
-// sub_08017610
-// sub_08017634
-// sub_0801764C
+int GetItemIndex(int item);
+char *GetItemName(int item);
+int GetItemDescId(int item);
+int GetItemUseDescId(int item);
 int GetItemType(int item);
 int GetItemAttributes(int item);
-// sub_0801769C
-// sub_080176C4
+int GetItemUses(int item);
+int GetItemMaxUses(int item);
 int GetItemMight(int item);
 int GetItemHit(int item);
 int GetItemWeight(int item);
@@ -144,7 +144,7 @@ int GetItemRequiredExp(int item);
 // sub_08017808
 int GetItemWeaponEffect(int item);
 // sub_08017844
-// sub_0801785C
+int GetItemCostPerUse(int item);
 // sub_08017874
 int GetItemAwardedExp(int item);
 // GetItemData

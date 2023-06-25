@@ -754,10 +754,10 @@ ClearBg0Bg1: @ 0x0804A828
 	push {lr}
 	ldr r0, _0804A844 @ =0x02022C60
 	movs r1, #0
-	bl sub_080017E8
+	bl BG_Fill
 	ldr r0, _0804A848 @ =0x02023460
 	movs r1, #0
-	bl sub_080017E8
+	bl BG_Fill
 	movs r0, #3
 	bl EnableBgSync
 	pop {r0}

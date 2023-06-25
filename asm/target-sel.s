@@ -2288,7 +2288,7 @@ _08024F9C:
 	beq _08024FD4
 	adds r0, r4, #0
 	adds r1, r5, #0
-	bl sub_0802BF30
+	bl GetTrapAt
 	cmp r0, #0
 	beq _08024FC8
 	ldrb r0, [r0, #2]
@@ -2351,7 +2351,7 @@ sub_08025024: @ 0x08025024
 	cmp r0, #0
 	bne _0802506A
 	adds r0, r4, #0
-	bl sub_0802BF30
+	bl GetTrapAt
 	cmp r0, #0
 	bne _0802506A
 	ldr r1, _08025074 @ =MoveTable_Flying

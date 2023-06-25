@@ -70,7 +70,7 @@ InitChapterMap: @ 0x08019170
 	bl BmMapFillg
 	bl sub_08019654
 	bl sub_0802C100
-	bl sub_08019714
+	bl RefreshTerrainMap
 	ldr r0, _08019268 @ =gPlaySt
 	ldrb r0, [r0, #0xe]
 	cmp r0, #0x26
@@ -129,7 +129,7 @@ InitChapterPreviewMap: @ 0x0801926C
 	movs r1, #0
 	bl BmMapFillg
 	bl sub_08019654
-	bl sub_08019714
+	bl RefreshTerrainMap
 	pop {r4, r5, r6}
 	pop {r0}
 	bx r0
@@ -344,7 +344,7 @@ sub_08019428: @ 0x08019428
 	bl sub_0801955C
 	bl sub_08019654
 	bl sub_0802C100
-	bl sub_08019714
+	bl RefreshTerrainMap
 	bl sub_080192D4
 	pop {r0}
 	bx r0
@@ -512,7 +512,7 @@ sub_0801955C: @ 0x0801955C
 	strh r0, [r5, #2]
 	ldr r4, _080195B0 @ =0x08D648F4
 	adds r0, r6, #0
-	bl sub_08031A5C
+	bl GetROMChapterStruct
 	ldrb r0, [r0, #7]
 	lsls r0, r0, #2
 	adds r0, r0, r4
@@ -544,7 +544,7 @@ sub_080195BC: @ 0x080195BC
 	push {r4, r5, lr}
 	adds r4, r0, #0
 	ldr r5, _08019618 @ =0x08D648F4
-	bl sub_08031A5C
+	bl GetROMChapterStruct
 	ldrb r0, [r0, #4]
 	lsls r0, r0, #2
 	adds r0, r0, r5
@@ -552,7 +552,7 @@ sub_080195BC: @ 0x080195BC
 	ldr r1, _0801961C @ =0x06008000
 	bl sub_08013688
 	adds r0, r4, #0
-	bl sub_08031A5C
+	bl GetROMChapterStruct
 	ldrb r0, [r0, #5]
 	lsls r0, r0, #2
 	adds r0, r0, r5
@@ -560,7 +560,7 @@ sub_080195BC: @ 0x080195BC
 	cmp r0, #0
 	beq _080195FA
 	adds r0, r4, #0
-	bl sub_08031A5C
+	bl GetROMChapterStruct
 	ldrb r0, [r0, #5]
 	lsls r0, r0, #2
 	adds r0, r0, r5
@@ -569,7 +569,7 @@ sub_080195BC: @ 0x080195BC
 	bl sub_08013688
 _080195FA:
 	adds r0, r4, #0
-	bl sub_08031A5C
+	bl GetROMChapterStruct
 	ldrb r0, [r0, #6]
 	lsls r0, r0, #2
 	adds r0, r0, r5
@@ -594,7 +594,7 @@ sub_08019624: @ 0x08019624
 	ldrb r0, [r0, #0xe]
 	lsls r0, r0, #0x18
 	asrs r0, r0, #0x18
-	bl sub_08031A5C
+	bl GetROMChapterStruct
 	ldrb r0, [r0, #6]
 	lsls r0, r0, #2
 	adds r0, r0, r4
@@ -713,8 +713,8 @@ _08019708: .4byte 0x08C02570
 _0801970C: .4byte 0x02001000
 _08019710: .4byte gBmMapSize
 
-	thumb_func_start sub_08019714
-sub_08019714: @ 0x08019714
+	thumb_func_start RefreshTerrainMap
+RefreshTerrainMap: @ 0x08019714
 	push {r4, r5, r6, r7, lr}
 	mov r7, sl
 	mov r6, sb
@@ -1055,7 +1055,7 @@ _08019994:
 	ldrsh r0, [r7, r1]
 	adds r0, r0, r5
 	str r0, [sp]
-	ldr r0, _080199D4 @ =0x02023C60
+	ldr r0, _080199D4 @ =gBG2TilemapBuffer
 	adds r1, r4, #0
 	adds r2, r5, #0
 	bl sub_080197C8
@@ -1077,7 +1077,7 @@ _08019994:
 	bx r0
 	.align 2, 0
 _080199D0: .4byte gBmSt
-_080199D4: .4byte 0x02023C60
+_080199D4: .4byte gBG2TilemapBuffer
 
 	thumb_func_start sub_080199D8
 sub_080199D8: @ 0x080199D8
@@ -1268,7 +1268,7 @@ _08019B36:
 	mov r3, r8
 	bl sub_080197C8
 	str r4, [sp]
-	ldr r0, _08019B80 @ =0x02023C60
+	ldr r0, _08019B80 @ =gBG2TilemapBuffer
 	mov r1, r8
 	adds r2, r5, #0
 	adds r3, r7, #0
@@ -1289,7 +1289,7 @@ _08019B6A:
 	bx r0
 	.align 2, 0
 _08019B7C: .4byte 0x02024460
-_08019B80: .4byte 0x02023C60
+_08019B80: .4byte gBG2TilemapBuffer
 
 	thumb_func_start sub_08019B84
 sub_08019B84: @ 0x08019B84
@@ -1369,7 +1369,7 @@ _08019C02:
 	adds r3, r5, #0
 	bl sub_080197C8
 	str r7, [sp]
-	ldr r0, _08019C4C @ =0x02023C60
+	ldr r0, _08019C4C @ =gBG2TilemapBuffer
 	adds r1, r5, #0
 	mov r2, r8
 	adds r3, r4, #0
@@ -1390,7 +1390,7 @@ _08019C38:
 	bx r0
 	.align 2, 0
 _08019C48: .4byte 0x02024460
-_08019C4C: .4byte 0x02023C60
+_08019C4C: .4byte gBG2TilemapBuffer
 
 	thumb_func_start sub_08019C50
 sub_08019C50: @ 0x08019C50
@@ -1794,7 +1794,7 @@ sub_08019F20: @ 0x08019F20
 	adds r5, r5, r6
 	adds r0, r5, #0
 	bl sub_08001818
-	ldr r1, _08019F7C @ =0x02022860
+	ldr r1, _08019F7C @ =gPaletteBuffer
 	movs r0, #0x86
 	lsls r0, r0, #7
 	strh r0, [r1]
@@ -1805,7 +1805,7 @@ sub_08019F20: @ 0x08019F20
 	.align 2, 0
 _08019F74: .4byte 0x02030A8C
 _08019F78: .4byte 0x000003FF
-_08019F7C: .4byte 0x02022860
+_08019F7C: .4byte gPaletteBuffer
 
 	thumb_func_start RevertMapChange
 RevertMapChange: @ 0x08019F80

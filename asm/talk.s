@@ -93,7 +93,7 @@ InitSpriteTalk: @ 0x08007D28
 	lsls r1, r4, #5
 	movs r2, #0x20
 	bl ApplyPaletteExt
-	ldr r2, _08007DC8 @ =0x02022860
+	ldr r2, _08007DC8 @ =gPaletteBuffer
 	lsls r4, r4, #4
 	adds r0, r4, #4
 	lsls r0, r0, #1
@@ -143,7 +143,7 @@ _08007DB8: .4byte 0x030000E8
 _08007DBC: .4byte 0x000003FF
 _08007DC0: .4byte 0x06010000
 _08007DC4: .4byte 0x081901E8
-_08007DC8: .4byte 0x02022860
+_08007DC8: .4byte gPaletteBuffer
 _08007DCC: .4byte 0x00007247
 _08007DD0: .4byte 0x000031AE
 _08007DD4: .4byte 0x00007FFF
@@ -450,10 +450,10 @@ sub_08007FC0: @ 0x08007FC0
 	bl sub_08007EF8
 	ldr r0, _08008030 @ =0x02022C60
 	movs r1, #0
-	bl sub_080017E8
+	bl BG_Fill
 	ldr r0, _08008034 @ =0x02023460
 	movs r1, #0
-	bl sub_080017E8
+	bl BG_Fill
 	movs r0, #3
 	bl EnableBgSync
 	b _08008062
@@ -3111,7 +3111,7 @@ sub_080095E4: @ 0x080095E4
 	strb r0, [r1, #0xf]
 	ldr r0, _08009620 @ =0x02023460
 	movs r1, #0
-	bl sub_080017E8
+	bl BG_Fill
 	movs r0, #2
 	bl TalkBgSync
 	bl sub_08009628
@@ -3138,7 +3138,7 @@ sub_08009628: @ 0x08009628
 	push {r4, r5, r6, lr}
 	ldr r0, _08009680 @ =0x02022C60
 	movs r1, #0
-	bl sub_080017E8
+	bl BG_Fill
 	movs r0, #1
 	bl TalkBgSync
 	ldr r2, _08009684 @ =0x08BFFB68
@@ -3242,7 +3242,7 @@ sub_080096E0: @ 0x080096E0
 	movs r6, #0
 	ldr r0, _08009730 @ =0x02023460
 	movs r1, #0
-	bl sub_080017E8
+	bl BG_Fill
 	movs r7, #1
 	cmp r5, #0xf
 	bgt _0800970A

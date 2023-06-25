@@ -259,7 +259,7 @@ _0800A6BA:
 	bne _0800A6EE
 	movs r0, #0xe
 	ldrsb r0, [r1, r0]
-	bl sub_08031A5C
+	bl GetROMChapterStruct
 	ldrb r1, [r0, #0x14]
 	adds r0, r4, #0
 	bl UnitApplyBonusLevels
@@ -498,7 +498,7 @@ _0800A8BC: .4byte 0x03000104
 _0800A8C0:
 	ldr r0, _0800A8D0 @ =0x03000108
 	ldrh r0, [r0]
-	bl sub_08017610
+	bl GetItemName
 	bl sub_080054CC
 	b _0800A8D6
 	.align 2, 0
@@ -595,7 +595,7 @@ _0800A988:
 	add r4, sp, #0x10
 	ldr r0, _0800A99C @ =0x03000108
 	ldrh r0, [r0]
-	bl sub_08017610
+	bl GetItemName
 _0800A992:
 	adds r1, r0, #0
 	adds r0, r4, #0
@@ -1200,10 +1200,10 @@ sub_0800ADF8: @ 0x0800ADF8
 	bl sub_0806D52C
 	ldr r0, _0800AE2C @ =0x02022C60
 	movs r1, #0
-	bl sub_080017E8
+	bl BG_Fill
 	ldr r0, _0800AE30 @ =0x02023460
 	movs r1, #0
-	bl sub_080017E8
+	bl BG_Fill
 	movs r0, #1
 	bl EnableBgSync
 	movs r0, #2
@@ -1222,10 +1222,10 @@ sub_0800AE34: @ 0x0800AE34
 	ldr r5, [r4, #0x14]
 	ldr r0, _0800AE84 @ =0x02022C60
 	movs r1, #0
-	bl sub_080017E8
+	bl BG_Fill
 	ldr r0, _0800AE88 @ =0x02023460
 	movs r1, #0
-	bl sub_080017E8
+	bl BG_Fill
 	movs r0, #1
 	bl EnableBgSync
 	movs r0, #2
@@ -2125,7 +2125,7 @@ sub_0800B4F4: @ 0x0800B4F4
 	ldrb r0, [r0, #0xe]
 	lsls r0, r0, #0x18
 	asrs r0, r0, #0x18
-	bl sub_08031A5C
+	bl GetROMChapterStruct
 	adds r0, #0x91
 	ldrb r5, [r0]
 	adds r1, r4, #0
@@ -2350,7 +2350,7 @@ _0800B694:
 	ldrb r0, [r0, #0xe]
 	lsls r0, r0, #0x18
 	asrs r0, r0, #0x18
-	bl sub_08031A5C
+	bl GetROMChapterStruct
 	ldrb r0, [r0, #0xd]
 	cmp r0, #0
 	bne _0800B700
@@ -2368,7 +2368,7 @@ _0800B6C0:
 	ldrb r0, [r0, #0xe]
 	lsls r0, r0, #0x18
 	asrs r0, r0, #0x18
-	bl sub_08031A5C
+	bl GetROMChapterStruct
 	ldrb r0, [r0, #0xd]
 	cmp r0, #0
 	beq _0800B700
@@ -2382,7 +2382,7 @@ _0800B6E8:
 	ldrb r0, [r0, #0xe]
 	lsls r0, r0, #0x18
 	asrs r0, r0, #0x18
-	bl sub_08031A5C
+	bl GetROMChapterStruct
 	ldrb r0, [r0, #0xd]
 	cmp r0, #0
 	bne _0800B700
@@ -2463,7 +2463,7 @@ sub_0800B72C: @ 0x0800B72C
 	bl ApplyPaletteExt
 	movs r0, #8
 	bl EnableBgSync
-	ldr r1, _0800B7B8 @ =0x02022860
+	ldr r1, _0800B7B8 @ =gPaletteBuffer
 	movs r0, #0
 	strh r0, [r1]
 	pop {r4, r5, r6}
@@ -2472,7 +2472,7 @@ sub_0800B72C: @ 0x0800B72C
 	.align 2, 0
 _0800B7B0: .4byte 0x08C00798
 _0800B7B4: .4byte 0x02024460
-_0800B7B8: .4byte 0x02022860
+_0800B7B8: .4byte gPaletteBuffer
 
 	thumb_func_start sub_0800B7BC
 sub_0800B7BC: @ 0x0800B7BC
@@ -2524,7 +2524,7 @@ sub_0800B7BC: @ 0x0800B7BC
 	bl ApplyPaletteExt
 	movs r0, #8
 	bl EnableBgSync
-	ldr r1, _0800B844 @ =0x02022860
+	ldr r1, _0800B844 @ =gPaletteBuffer
 	movs r0, #0
 	strh r0, [r1]
 	pop {r4, r5, r6}
@@ -2533,7 +2533,7 @@ sub_0800B7BC: @ 0x0800B7BC
 	.align 2, 0
 _0800B83C: .4byte 0x08C00798
 _0800B840: .4byte 0x02024460
-_0800B844: .4byte 0x02022860
+_0800B844: .4byte gPaletteBuffer
 
 	thumb_func_start sub_0800B848
 sub_0800B848: @ 0x0800B848
@@ -5798,7 +5798,7 @@ _0800D06A:
 	ldrb r0, [r0, #0xe]
 	lsls r0, r0, #0x18
 	asrs r0, r0, #0x18
-	bl sub_08031A5C
+	bl GetROMChapterStruct
 	ldrb r0, [r0, #0xd]
 	cmp r0, #0
 	bne _0800D162
@@ -5807,7 +5807,7 @@ _0800D086:
 	ldrb r0, [r0, #0xe]
 	lsls r0, r0, #0x18
 	asrs r0, r0, #0x18
-	bl sub_08031A5C
+	bl GetROMChapterStruct
 	ldrb r0, [r0, #0xd]
 	cmp r0, #0
 	beq _0800D0CC
@@ -7071,15 +7071,15 @@ _0800D92C:
 	bne _0800D96C
 	bl RenderMapForFade
 	adds r0, r4, #0
-	bl sub_0802C228
+	bl ApplyMapChange
 	cmp r5, #0
 	beq _0800D94E
 	subs r0, r4, #1
 	bl sub_0802C2A8
 _0800D94E:
 	adds r0, r4, #0
-	bl sub_0802C294
-	bl sub_08019714
+	bl AddMapChangeTrap
+	bl RefreshTerrainMap
 	bl sub_0802C300
 	bl RenderMap
 	movs r0, #1
@@ -7089,15 +7089,15 @@ _0800D94E:
 _0800D968: .4byte 0x00007FFF
 _0800D96C:
 	adds r0, r4, #0
-	bl sub_0802C228
+	bl ApplyMapChange
 	cmp r5, #0
 	beq _0800D97C
 	subs r0, r4, #1
 	bl sub_0802C2A8
 _0800D97C:
 	adds r0, r4, #0
-	bl sub_0802C294
-	bl sub_08019714
+	bl AddMapChangeTrap
+	bl RefreshTerrainMap
 	bl sub_0802C300
 _0800D98A:
 	movs r0, #2
@@ -7142,7 +7142,7 @@ _0800D9C4:
 	bne _0800DA38
 	bl RenderMapForFade
 	adds r0, r4, #0
-	bl sub_0802C228
+	bl ApplyMapChange
 	cmp r5, #0
 	beq _0800DA04
 	subs r0, r4, #1
@@ -7170,8 +7170,8 @@ _0800DA04:
 	bl m4aSongNumStart
 _0800DA16:
 	adds r0, r4, #0
-	bl sub_0802C294
-	bl sub_08019714
+	bl AddMapChangeTrap
+	bl RefreshTerrainMap
 	bl sub_0802C300
 	bl sub_08019428
 	bl RenderMap
@@ -7182,15 +7182,15 @@ _0800DA16:
 _0800DA34: .4byte gPlaySt
 _0800DA38:
 	adds r0, r4, #0
-	bl sub_0802C228
+	bl ApplyMapChange
 	cmp r5, #0
 	beq _0800DA48
 	subs r0, r4, #1
 	bl sub_0802C2A8
 _0800DA48:
 	adds r0, r4, #0
-	bl sub_0802C294
-	bl sub_08019714
+	bl AddMapChangeTrap
+	bl RefreshTerrainMap
 	bl sub_0802C300
 	bl sub_08019428
 _0800DA5A:
@@ -7214,10 +7214,10 @@ sub_0800DA64: @ 0x0800DA64
 	ldrb r4, [r0]
 _0800DA78:
 	adds r0, r4, #0
-	bl sub_0802C228
+	bl ApplyMapChange
 	adds r0, r4, #0
-	bl sub_0802C294
-	bl sub_08019714
+	bl AddMapChangeTrap
+	bl RefreshTerrainMap
 	bl sub_0802C300
 	bl RenderMap
 	movs r0, #0
@@ -7255,7 +7255,7 @@ _0800DABC:
 	lsrs r5, r0, #0x10
 _0800DACC:
 	adds r0, r4, #0
-	bl sub_0802C228
+	bl ApplyMapChange
 	cmp r5, #0
 	beq _0800DAE4
 	subs r0, r4, #1
@@ -7265,7 +7265,7 @@ _0800DACC:
 _0800DAE0: .4byte 0x00007FFF
 _0800DAE4:
 	adds r0, r4, #0
-	bl sub_0802C294
+	bl AddMapChangeTrap
 _0800DAEA:
 	movs r0, #0
 	pop {r4, r5}
@@ -7277,7 +7277,7 @@ _0800DAEA:
 sub_0800DAF4: @ 0x0800DAF4
 	push {r4, lr}
 	adds r4, r0, #0
-	bl sub_08019714
+	bl RefreshTerrainMap
 	bl sub_0802C300
 	ldr r0, [r4, #0x30]
 	ldrh r0, [r0, #2]
@@ -7301,7 +7301,7 @@ sub_0800DB18: @ 0x0800DB18
 	lsls r0, r0, #0x18
 	lsrs r0, r0, #0x18
 	lsrs r1, r1, #0x18
-	bl sub_0802C1CC
+	bl GetMapChangeIdAt
 	adds r4, r0, #0
 	movs r0, #1
 	rsbs r0, r0, #0
@@ -7320,10 +7320,10 @@ _0800DB3C:
 	bne _0800DB6E
 	bl RenderMapForFade
 	adds r0, r4, #0
-	bl sub_0802C228
+	bl ApplyMapChange
 	adds r0, r4, #0
-	bl sub_0802C294
-	bl sub_08019714
+	bl AddMapChangeTrap
+	bl RefreshTerrainMap
 	bl sub_0802C300
 	bl RenderMap
 	movs r0, #1
@@ -7331,10 +7331,10 @@ _0800DB3C:
 	b _0800DB82
 _0800DB6E:
 	adds r0, r4, #0
-	bl sub_0802C228
+	bl ApplyMapChange
 	adds r0, r4, #0
-	bl sub_0802C294
-	bl sub_08019714
+	bl AddMapChangeTrap
+	bl RefreshTerrainMap
 	bl sub_0802C300
 _0800DB82:
 	movs r0, #2
@@ -7933,7 +7933,7 @@ sub_0800DFE0: @ 0x0800DFE0
 	ldrb r0, [r0]
 	bl GetUnitFromCharId
 	adds r4, r0, #0
-	bl sub_0806D4A4
+	bl MU_EndAll
 	adds r0, r4, #0
 	bl ClearUnit
 	bl RefreshEntityMaps
@@ -8552,7 +8552,7 @@ sub_0800E44C: @ 0x0800E44C
 	adds r4, r0, #0
 	ldr r0, [r4, #0x30]
 	ldrh r5, [r0, #2]
-	bl sub_0806D4A4
+	bl MU_EndAll
 	adds r0, r5, #0
 	bl sub_08013214
 	movs r0, #1
@@ -9176,9 +9176,9 @@ _0800E8A8:
 _0800E8B8:
 	mov r0, sb
 	movs r1, #0
-	bl sub_0802A964
+	bl BattleInitItemEffect
 	mov r0, sl
-	bl sub_0802AA10
+	bl BattleInitItemEffectTarget
 	b _0800E8DE
 _0800E8C8:
 	cmp r4, #0
@@ -9306,7 +9306,7 @@ _0800E9AC:
 	ldr r0, [r4]
 	bl sub_0806C2DC
 	bl sub_0806C7CC
-	bl sub_0802A860
+	bl BeginBattleAnimations
 	mov r0, r8
 	movs r1, #7
 	bl sub_0800463C
@@ -9672,7 +9672,7 @@ sub_0800EC58: @ 0x0800EC58
 	bl sub_08004710
 	movs r0, #5
 	bl sub_08004710
-	bl sub_0806D4A4
+	bl MU_EndAll
 	pop {r0}
 	bx r0
 
@@ -10178,7 +10178,7 @@ _0800EFFC:
 	ldr r5, _0800F054 @ =gPlaySt
 	movs r0, #0xe
 	ldrsb r0, [r5, r0]
-	bl sub_08031A5C
+	bl GetROMChapterStruct
 	movs r1, #0
 	ldrb r2, [r5, #0x1b]
 	cmp r2, #3
@@ -10191,7 +10191,7 @@ _0800F02C:
 	strb r0, [r4, #0x10]
 	movs r0, #0xe
 	ldrsb r0, [r5, r0]
-	bl sub_08031A5C
+	bl GetROMChapterStruct
 	movs r1, #0
 	ldrb r5, [r5, #0x1b]
 	cmp r5, #3
@@ -10290,7 +10290,7 @@ sub_0800F0CC: @ 0x0800F0CC
 	ldr r4, _0800F124 @ =gPlaySt
 	movs r0, #0xe
 	ldrsb r0, [r4, r0]
-	bl sub_08031A5C
+	bl GetROMChapterStruct
 	movs r1, #0
 	ldrb r2, [r4, #0x1b]
 	cmp r2, #3
@@ -10303,7 +10303,7 @@ _0800F0FE:
 	strb r0, [r7, #0x10]
 	movs r0, #0xe
 	ldrsb r0, [r4, r0]
-	bl sub_08031A5C
+	bl GetROMChapterStruct
 	movs r1, #0
 	ldrb r4, [r4, #0x1b]
 	cmp r4, #3
@@ -10400,7 +10400,7 @@ _0800F18C:
 	ldr r5, _0800F1FC @ =gPlaySt
 	movs r0, #0xe
 	ldrsb r0, [r5, r0]
-	bl sub_08031A5C
+	bl GetROMChapterStruct
 	movs r1, #0
 	ldrb r2, [r5, #0x1b]
 	cmp r2, #3
@@ -10413,7 +10413,7 @@ _0800F1C4:
 	strb r0, [r4, #0x10]
 	movs r0, #0xe
 	ldrsb r0, [r5, r0]
-	bl sub_08031A5C
+	bl GetROMChapterStruct
 	movs r1, #0
 	ldrb r5, [r5, #0x1b]
 	cmp r5, #3
@@ -11702,7 +11702,7 @@ sub_0800FA84: @ 0x0800FA84
 	push {lr}
 	ldr r0, [r0, #0x30]
 	ldr r0, [r0, #4]
-	bl sub_0802ACE0
+	bl SetScriptedBattle
 	movs r0, #0
 	pop {r1}
 	bx r1

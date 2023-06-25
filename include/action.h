@@ -1,5 +1,7 @@
 #pragma once
 
+#include "types.h"
+
 enum action_type {
     ACTION_NONE,
     ACTION_WAIT = 0x01,

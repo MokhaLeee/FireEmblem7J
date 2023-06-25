@@ -1241,7 +1241,7 @@ sub_08035714: @ 0x08035714
 	bl RenderMap
 	movs r0, #1
 	bl StartMapFade
-	bl sub_0806D4A4
+	bl MU_EndAll
 	bl RefreshEntityMaps
 	ldr r0, [r5]
 	bl ShowUnitSprite
@@ -1279,7 +1279,7 @@ sub_0803576C: @ 0x0803576C
 	bne _080357AA
 	ldrb r0, [r4, #8]
 	ldrb r1, [r4, #9]
-	bl sub_0802BF30
+	bl GetTrapAt
 	ldrb r1, [r0]
 	strb r1, [r5, #0x13]
 	ldrb r1, [r0, #1]
@@ -1650,7 +1650,7 @@ _08035A82:
 	ands r0, r1
 	cmp r0, #0
 	bne _08035AEA
-	bl sub_0806D4A4
+	bl MU_EndAll
 	ldr r1, [r4]
 	ldrb r0, [r7, #2]
 	strb r0, [r1, #0x10]
@@ -1912,10 +1912,10 @@ sub_08035C90: @ 0x08035C90
 _08035C9E:
 	ldr r0, _08035CBC @ =0x02022C60
 	movs r1, #0
-	bl sub_080017E8
+	bl BG_Fill
 	ldr r0, _08035CC0 @ =0x02023460
 	movs r1, #0
-	bl sub_080017E8
+	bl BG_Fill
 	movs r0, #3
 	bl EnableBgSync
 	movs r0, #1
@@ -7639,7 +7639,7 @@ sub_080387D0: @ 0x080387D0
 	ldrsh r0, [r4, r1]
 	movs r2, #2
 	ldrsh r1, [r4, r2]
-	bl sub_0802BF30
+	bl GetTrapAt
 	cmp r0, #0
 	bne _0803882E
 	movs r1, #0
@@ -7647,7 +7647,7 @@ sub_080387D0: @ 0x080387D0
 	movs r2, #2
 	ldrsh r1, [r4, r2]
 	adds r1, #1
-	bl sub_0802BF30
+	bl GetTrapAt
 	cmp r0, #0
 	beq _08038884
 _0803882E:
@@ -10660,12 +10660,12 @@ _08039F36:
 	strh r0, [r6]
 _08039F48:
 	adds r0, r5, #0
-	bl sub_0801769C
+	bl GetItemUses
 	movs r1, #0x64
 	adds r4, r0, #0
 	muls r4, r1, r4
 	adds r0, r5, #0
-	bl sub_080176C4
+	bl GetItemMaxUses
 	adds r1, r0, #0
 	adds r0, r4, #0
 	bl Div
@@ -13904,7 +13904,7 @@ sub_0803B84C: @ 0x0803B84C
 	ldr r0, _0803B868 @ =gActiveUnit
 	ldr r0, [r0]
 	adds r1, r5, #0
-	bl sub_0802AB1C
+	bl GetOffensiveStaffAccuracy
 	lsls r0, r0, #0x18
 	lsrs r4, r0, #0x18
 	cmp r4, #4
@@ -14232,7 +14232,7 @@ _0803BAAC:
 	beq _0803BB5E
 	ldr r0, [r7]
 	adds r1, r6, #0
-	bl sub_0802AB1C
+	bl GetOffensiveStaffAccuracy
 	lsls r0, r0, #0x18
 	lsrs r1, r0, #0x18
 	cmp r1, #4

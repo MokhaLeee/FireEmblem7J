@@ -3,12 +3,55 @@
 #include "battle.h"
 #include "item.h"
 #include "constants/items.h"
+#include "constants/terrains.h"
+#include "constants/classes.h"
+#include "constants/characters.h"
 #include "action.h"
 #include "random.h"
 #include "map.h"
 #include "bm.h"
 #include "arena.h"
 #include "support.h"
+#include "terrain.h"
+#include "soundwrapper.h"
+#include "chapterdata.h"
+#include "hardware.h"
+#include "proc.h"
+
+EWRAM_DATA struct BattleStats gBattleStats = {};
+EWRAM_DATA struct BattleUnit gBattleActor = {};
+EWRAM_DATA struct BattleUnit gBattleTarget = {};
+EWRAM_DATA struct BattleHit gBattleHitArray[BATTLE_HIT_MAX] = {};
+EWRAM_DATA struct BattleHit *gBattleHitIterator = 0;
+EWRAM_DATA struct unk_type_0203A50C gUnk_0203A50C = {};
+
+CONST_DATA struct WeaponTriangleRule WeaponTriangleRules[] = {
+    { ITYPE_SWORD, ITYPE_LANCE, -15, -1 },
+    { ITYPE_SWORD, ITYPE_AXE,   +15, +1 },
+
+    { ITYPE_LANCE, ITYPE_AXE,   -15, -1 },
+    { ITYPE_LANCE, ITYPE_SWORD, +15, +1 },
+
+    { ITYPE_AXE,   ITYPE_SWORD, -15, -1 },
+    { ITYPE_AXE,   ITYPE_LANCE, +15, +1 },
+
+    { ITYPE_ANIMA, ITYPE_DARK,  -15, -1 },
+    { ITYPE_ANIMA, ITYPE_LIGHT, +15, +1 },
+
+    { ITYPE_LIGHT, ITYPE_ANIMA, -15, -1 },
+    { ITYPE_LIGHT, ITYPE_DARK,  +15, +1 },
+
+    { ITYPE_DARK,  ITYPE_LIGHT, -15, -1 },
+    { ITYPE_DARK,  ITYPE_ANIMA, +15, +1 },
+
+    { -1 },
+};
+
+CONST_DATA struct ProcCmd ProcScr_BattleAnimSimpleLock[] = {
+    PROC_SLEEP(1),
+    PROC_CALL(UpdateActorFromBattle),
+    PROC_END
+};
 
 void BattleGenerateSimulationInternal(struct Unit *actor, struct Unit *target, int x, int y, int actorWpnSlot)
 {
@@ -1214,4 +1257,896 @@ void BattleApplyUnitUpdates(void)
 bool sub_08029FA8(void)
 {
     return true;
+}
+
+int GetBattleUnitUpdatedWeaponExp(struct BattleUnit* bu) 
+{
+    int i, result;
+
+    if (UNIT_FACTION(&bu->unit) != FACTION_BLUE)
+        return -1;
+
+    if (bu->unit.curHP == 0)
+        return -1;
+    
+    if (gPlaySt.chapterStateBits & PLAY_FLAG_7)
+        return -1;
+    
+    if (gBmSt.flags & BM_FLAG_LINKARENA)
+        return -1;
+    
+    if (!(gBattleStats.config & BATTLE_CONFIG_ARENA)) {
+        if (!bu->canCounter)
+            return -1;
+
+        if (!(bu->weaponAttributes & IA_REQUIRES_WEXP))
+            return -1;
+
+        if (bu->weaponAttributes & (IA_MAGICDAMAGE | IA_LOCK_3))
+            return -1;
+    }
+
+    result = bu->unit.ranks[bu->weaponType];
+    result += GetItemAwardedExp(bu->weapon) * bu->wexpMultiplier;
+
+    for (i = 0; i < 8; ++i) {
+        if (i == bu->weaponType)
+            continue;
+
+        if (bu->unit.pClassData->baseRanks[i] == WPN_EXP_S)
+            continue;
+
+        if (bu->unit.ranks[i] < WPN_EXP_S)
+            continue;
+
+        if (result >= WPN_EXP_S)
+            result = (WPN_EXP_S - 1);
+
+        break;
+    }
+
+    if (UNIT_CATTRIBUTES(&bu->unit) & CA_PROMOTED) {
+        if (result > WPN_EXP_S)
+            result = WPN_EXP_S;
+    } else {
+        if (result > WPN_EXP_A)
+            result = WPN_EXP_A;
+    }
+
+    return result;
+}
+
+bool HasBattleUnitGainedWeaponLevel(struct BattleUnit *bu)
+{
+    int oldWexp = bu->unit.ranks[bu->weaponType];
+    int newWexp = GetBattleUnitUpdatedWeaponExp(bu);
+
+    if (newWexp < 0)
+        return false;
+
+    return GetWeaponLevelFromExp(oldWexp) != GetWeaponLevelFromExp(newWexp);
+}
+
+void UpdateUnitFromBattle(struct Unit *unit, struct BattleUnit *bu)
+{
+    int tmp;
+
+    unit->level = bu->unit.level;
+    unit->exp   = bu->unit.exp;
+    unit->curHP = bu->unit.curHP;
+    unit->state = bu->unit.state;
+
+    gArenaLevelBackup = UNIT_ARENA_LEVEL(unit);
+
+    if (bu->statusOut >= 0)
+        SetUnitStatus(unit, bu->statusOut);
+
+    unit->maxHP += bu->changeHP;
+    unit->pow   += bu->changePow;
+    unit->skl   += bu->changeSkl;
+    unit->spd   += bu->changeSpd;
+    unit->def   += bu->changeDef;
+    unit->res   += bu->changeRes;
+    unit->lck   += bu->changeLck;
+
+    UnitCheckStatCaps(unit);
+
+    tmp = GetBattleUnitUpdatedWeaponExp(bu);
+
+    if (tmp > 0)
+        unit->ranks[bu->weaponType] = tmp;
+
+    for (tmp = 0; tmp < UNIT_ITEM_COUNT; ++tmp)
+        unit->items[tmp] = bu->unit.items[tmp];
+
+    UnitRemoveInvalidItems(unit);
+
+    if (bu->expGain)
+        PidStatsAddExpGained(unit->pCharacterData->number, bu->expGain);
+}
+
+void UpdateUnitDuringBattle(struct Unit *unit, struct BattleUnit *bu)
+{
+    int wexp;
+
+    unit->curHP = bu->unit.curHP;
+
+    wexp = GetBattleUnitUpdatedWeaponExp(bu);
+
+    if (wexp > 0)
+        unit->ranks[bu->weaponType] = wexp;
+}
+
+void BattleApplyBallistaUpdates(void)
+{
+    if (gBattleStats.config & BATTLE_CONFIG_BALLISTA) {
+        int uses = GetItemUses(gBattleActor.weapon);
+        GetTrap(gBattleActor.unit.ballistaIndex)->data[2] = uses;
+    }
+}
+
+void sub_0802A21C(void)
+{
+    gUnk_0203A50C.unk00 = 0;
+    gUnk_0203A50C.unk01 = 0;
+    gUnk_0203A50C.unk02 = 0;
+}
+
+int GetUnitExpLevel(struct Unit *unit)
+{
+    int result = unit->level;
+
+    if (UNIT_CATTRIBUTES(unit) & CA_PROMOTED)
+        result += 20;
+
+    return result;
+}
+
+int GetUnitRoundExp(struct Unit *actor, struct Unit *target)
+{
+    int expLevel;
+
+    expLevel = GetUnitExpLevel(actor);
+    expLevel = expLevel - GetUnitExpLevel(target);
+    expLevel = 31 - expLevel;
+
+    if (expLevel < 0)
+        expLevel = 0;
+
+    return expLevel / actor->pClassData->classRelativePower;
+}
+
+int GetUnitPowerLevel(struct Unit *unit)
+{
+    int result = unit->level * unit->pClassData->classRelativePower;
+
+    if (UNIT_CATTRIBUTES(unit) & CA_PROMOTED)
+        result = result + 20 * GetClassData(unit->pClassData->promotion)->classRelativePower;
+
+    return result;
+}
+
+int GetUnitClassKillExpBonus(struct Unit* actor, struct Unit* target) {
+    int result = 0;
+
+    if (UNIT_CATTRIBUTES(target) & CA_THIEF)
+        result += 20;
+
+    if (UNIT_CATTRIBUTES(target) & CA_BOSS)
+        result += 40;
+
+    return result;
+}
+
+int GetUnitExpMultiplier(struct Unit* actor, struct Unit* target) {
+    int i;
+
+    if (!(UNIT_CATTRIBUTES(actor) & CA_ASSASSIN))
+        return 1;
+
+    for (i = 0; i < BATTLE_HIT_MAX; ++i)
+        if (gBattleHitArray[i].attributes & BATTLE_HIT_ATTR_SILENCER)
+            return 2;
+
+    return 1;
+}
+
+int GetUnitKillExpBonus(struct Unit* actor, struct Unit* target) {
+    int result;
+
+    if (target->curHP != 0)
+        return 0;
+
+    result = 20;
+
+    // TODO: All the definitions
+    if ((gPlaySt.chapterModeIndex == 1) || (gPlaySt.chapterStateBits & PLAY_FLAG_HARD)) {
+        result = GetUnitPowerLevel(target);
+
+        result += 20;
+        result -= GetUnitPowerLevel(actor);
+    } else {
+        int local = GetUnitPowerLevel(target);
+
+        if (local <= GetUnitPowerLevel(actor))
+            local = GetUnitPowerLevel(target) - GetUnitPowerLevel(actor) / 2;
+        else
+            local = GetUnitPowerLevel(target) - GetUnitPowerLevel(actor);
+
+        result += local;
+    }
+
+    result += GetUnitClassKillExpBonus(actor, target);
+    result *= GetUnitExpMultiplier(actor, target);
+
+    if (result < 0)
+        result = 0;
+
+    return result;
+}
+
+int GetBattleUnitExpGain(struct BattleUnit *actor, struct BattleUnit *target)
+{
+    int result;
+
+    if (!CanBattleUnitGainLevels(actor) || (actor->unit.curHP == 0) || UNIT_CATTRIBUTES(&target->unit) & CA_NEGATE_LETHALITY)
+        return 0;
+
+    if (!actor->nonZeroDamage)
+        return 1;
+
+    result = GetUnitRoundExp(&actor->unit, &target->unit);
+    result += GetUnitKillExpBonus(&actor->unit, &target->unit);
+
+    if (result > 100)
+        result = 100;
+
+    if (result < 0)
+        result = 0;
+
+    return result;
+}
+
+void BattleApplyItemExpGains(void)
+{
+    if (!(gPlaySt.chapterStateBits & PLAY_FLAG_7)) {
+        if (gBattleActor.weaponAttributes & IA_STAFF) {
+            if (UNIT_FACTION(&gBattleActor.unit) == FACTION_BLUE)
+                gBattleActor.wexpMultiplier++;
+
+            gBattleActor.expGain = GetBattleUnitStaffExp(&gBattleActor);
+            gBattleActor.unit.exp += gBattleActor.expGain;
+
+            CheckBattleUnitLevelUp(&gBattleActor);
+        } else if ((gBattleActor.weaponType == ITYPE_12) && (gBattleActor.unit.exp != UNIT_EXP_DISABLED)) {
+            gBattleActor.expGain = 20;
+            gBattleActor.unit.exp += 20;
+
+            CheckBattleUnitLevelUp(&gBattleActor);
+        }
+    }
+}
+
+int GetBattleUnitStaffExp(struct BattleUnit *bu)
+{
+    int result;
+
+    if (!CanBattleUnitGainLevels(bu))
+        return 0;
+
+    if (gBattleHitArray->attributes & BATTLE_HIT_ATTR_MISS)
+        return 1;
+
+    result = 10 + GetItemCostPerUse(bu->weapon) / 20;
+
+    if (UNIT_CATTRIBUTES(&bu->unit) & CA_PROMOTED)
+        result = result / 2;
+
+    if (result > 100)
+        result = 100;
+
+    return result;
+}
+
+void BattleApplyMiscActionExpGains(void)
+{
+    if (UNIT_FACTION(&gBattleActor.unit) != FACTION_BLUE)
+        return;
+
+    if (!CanBattleUnitGainLevels(&gBattleActor))
+        return;
+
+    if (gPlaySt.chapterStateBits & PLAY_FLAG_7)
+        return;
+
+    gBattleActor.expGain = 10;
+    gBattleActor.unit.exp += 10;
+
+    CheckBattleUnitLevelUp(&gBattleActor);
+}
+
+void BattleUnitTargetSetEquippedWeapon(struct BattleUnit *bu)
+{
+    int i;
+
+    if (bu->weaponBefore)
+        return;
+
+    bu->weaponBefore = GetUnitEquippedWeapon(&bu->unit);
+
+    if (bu->weaponBefore)
+        return;
+
+    if (!UnitHasMagicRank(&bu->unit))
+        return;
+
+    for (i = 0; i < UNIT_ITEM_COUNT; ++i) {
+        if (CanUnitUseStaff(&bu->unit, bu->unit.items[i]) == TRUE) {
+            bu->weaponBefore = bu->unit.items[i];
+            break;
+        }
+    }
+}
+
+void BattleUnitTargetCheckCanCounter(struct BattleUnit *bu)
+{
+    if (!bu->canCounter) {
+        bu->battleAttack = 0xFF;
+        bu->battleHitRate = 0xFF;
+        bu->battleEffectiveHitRate = 0xFF;
+        bu->battleCritRate = 0xFF;
+        bu->battleEffectiveCritRate = 0xFF;
+    }
+}
+
+void BattleApplyReaverEffect(struct BattleUnit *attacker, struct BattleUnit *defender)
+{
+    if (!(attacker->weaponAttributes & IA_REVERTTRIANGLE) || !(defender->weaponAttributes & IA_REVERTTRIANGLE)) {
+        attacker->wTriangleHitBonus = -(attacker->wTriangleHitBonus * 2);
+        attacker->wTriangleDmgBonus = -(attacker->wTriangleDmgBonus * 2);
+        defender->wTriangleHitBonus = -(defender->wTriangleHitBonus * 2);
+        defender->wTriangleDmgBonus = -(defender->wTriangleDmgBonus * 2);
+    }
+}
+
+void BattleApplyWeaponTriangleEffect(struct BattleUnit* attacker, struct BattleUnit* defender)
+{
+    const struct WeaponTriangleRule* it;
+
+    for (it = WeaponTriangleRules; it->attackerWeaponType >= 0; ++it) {
+        if ((attacker->weaponType == it->attackerWeaponType) && (defender->weaponType == it->defenderWeaponType)) {
+            attacker->wTriangleHitBonus = it->hitBonus;
+            attacker->wTriangleDmgBonus = it->atkBonus;
+
+            defender->wTriangleHitBonus = -it->hitBonus;
+            defender->wTriangleDmgBonus = -it->atkBonus;
+
+            break;
+        }
+    }
+
+    if (attacker->weaponAttributes & IA_REVERTTRIANGLE)
+        BattleApplyReaverEffect(attacker, defender);
+
+    if (defender->weaponAttributes & IA_REVERTTRIANGLE)
+        BattleApplyReaverEffect(attacker, defender);
+}
+
+void BattleInitTargetCanCounter(void)
+{
+    // Target cannot counter if either units are using "uncounterable" weapons
+
+    if ((gBattleActor.weaponAttributes | gBattleTarget.weaponAttributes) & IA_UNCOUNTERABLE) {
+        gBattleTarget.weapon = 0;
+        gBattleTarget.canCounter = FALSE;
+    }
+
+    // Target cannot counter if a berserked player unit is attacking another player unit
+
+    if (gBattleActor.unit.statusIndex == UNIT_STATUS_BERSERK) {
+        if ((UNIT_FACTION(&gBattleActor.unit) == FACTION_BLUE) && (UNIT_FACTION(&gBattleTarget.unit) == FACTION_BLUE)) {
+            gBattleTarget.weapon = 0;
+            gBattleTarget.canCounter = FALSE;
+        }
+    }
+}
+
+void InitObstacleBattleUnit(void) {
+    ClearUnit(&gBattleTarget.unit);
+
+    gBattleTarget.unit.index = 0;
+
+    gBattleTarget.unit.pClassData = GetClassData(CLASS_OBSTACLE);
+
+    gBattleTarget.unit.maxHP = GetROMChapterStruct(gPlaySt.chapterIndex)->mapCrackedWallHeath;
+    gBattleTarget.unit.curHP = gActionSt.extra; // TODO: better
+
+    gBattleTarget.unit.xPos  = gActionSt.x_target;
+    gBattleTarget.unit.yPos  = gActionSt.y_target;
+
+    switch (gBmMapTerrain[gBattleTarget.unit.yPos][gBattleTarget.unit.xPos]) {
+
+    case TERRAIN_WALL_BREAKABLE:
+        gBattleTarget.unit.pCharacterData = GetCharacterData(CHARACTER_WALL);
+
+        break;
+
+    case TERRAIN_SNAG:
+        gBattleTarget.unit.pCharacterData = GetCharacterData(CHARACTER_SNAG);
+        gBattleTarget.unit.maxHP = 20;
+
+        break;
+
+    } // switch
+}
+
+void ComputeBattleObstacleStats(void)
+{
+    gBattleActor.battleEffectiveHitRate = 100;
+    gBattleActor.battleEffectiveCritRate = 0;
+
+    gBattleTarget.battleSpeed = 0xFF;
+    gBattleTarget.hpInitial = gBattleTarget.unit.curHP;
+
+    gBattleTarget.wTriangleHitBonus = 0;
+    gBattleTarget.wTriangleDmgBonus = 0;
+}
+
+void UpdateObstacleFromBattle(struct BattleUnit *bu)
+{
+    struct Trap *trap = GetTrapAt(bu->unit.xPos, bu->unit.yPos);
+
+    if (!trap)
+        trap = GetTrapAt(bu->unit.xPos, bu->unit.yPos - 1);
+
+    trap->extra = bu->unit.curHP;
+
+    if (trap->extra == 0) {
+        int mapChangeId = GetMapChangeIdAt(trap->xPos, trap->yPos);
+
+        if (gBmMapTerrain[bu->unit.yPos][bu->unit.xPos] == TERRAIN_SNAG)
+            PlaySoundEffect(0x2D7);
+
+        RenderMapForFade();
+        ApplyMapChange(mapChangeId);
+        trap->type = TRAP_NONE;
+        AddMapChangeTrap(mapChangeId);
+        RefreshTerrainMap();
+        RenderMap();
+        StartMapFade(false);
+    }
+}
+
+void BeginBattleAnimations(void)
+{
+    BG_Fill(gBG2TilemapBuffer, 0);
+    EnableBgSync(1 << 2);
+
+    gPaletteBuffer[0] = 0;
+    EnablePalSync();
+
+    RenderMap();
+
+    if (SetupBanim()) {
+        SetBanimLinkArenaFlag(0);
+        BeginAnimsOnBattleAnimations();
+    } else {
+        MU_EndAll();
+        RenderMap();
+        BeginBattleMapAnims();
+
+        gBattleStats.config |= BATTLE_CONFIG_MAPANIMS;
+    }
+}
+
+int GetUnitSoloBattleAnimType(struct Unit *unit)
+{
+    // TODO: battle anim type constants
+
+    if (unit->state & US_SOLOANIM_1)
+        return 0;
+
+    if (unit->state & US_SOLOANIM_2)
+        return 3;
+
+    return 1;
+}
+
+int GetBattleAnimType(void)
+{
+    // TODO: battle anim type constants
+
+    // If not solo anim, return global type
+    if (gPlaySt.cfgAnimationType != 2)
+        return gPlaySt.cfgAnimationType;
+
+    // If both units are players, use actor solo anim type
+    if (UNIT_FACTION(&gBattleActor.unit) == FACTION_BLUE)
+        if (UNIT_FACTION(&gBattleTarget.unit) == FACTION_BLUE)
+            return GetUnitSoloBattleAnimType(&gBattleActor.unit);
+
+    // If neither are players, return 1
+    if (UNIT_FACTION(&gBattleActor.unit) != FACTION_BLUE)
+        if (UNIT_FACTION(&gBattleTarget.unit) != FACTION_BLUE)
+            return 1;
+
+    // Return solo anim type for the one that is a player unit
+    if (UNIT_FACTION(&gBattleActor.unit) == FACTION_BLUE)
+        return GetUnitSoloBattleAnimType(&gBattleActor.unit);
+    else
+        return GetUnitSoloBattleAnimType(&gBattleTarget.unit);
+}
+
+void BattlePrintDebugUnitInfo(struct BattleUnit *actor, struct BattleUnit *target)
+{
+    // prints battle unit information to debug output
+    return;
+}
+
+void BattlePrintDebugHitInfo(void)
+{
+    struct BattleHit* it;
+
+    for (it = gBattleHitArray; !(it->info & BATTLE_HIT_INFO_END); ++it) {
+        // prints battle rounds information to debug output
+    }
+}
+
+void BattleInitItemEffect(struct Unit *actor, int itemSlot)
+{
+    int item = actor->items[itemSlot];
+
+    if (itemSlot < 0)
+        item = 0;
+
+    gBattleStats.config = 0;
+
+    InitBattleUnit(&gBattleActor, actor);
+
+    SetBattleUnitTerrainBonusesAuto(&gBattleActor);
+    ComputeBattleUnitBaseDefense(&gBattleActor);
+    ComputeBattleUnitSupportBonuses(&gBattleActor, NULL);
+
+    gBattleActor.battleAttack = 0xFF;
+    gBattleActor.battleEffectiveHitRate = 100;
+    gBattleActor.battleEffectiveCritRate = 0xFF;
+
+    gBattleActor.weapon = item;
+    gBattleActor.weaponBefore = item;
+    gBattleActor.weaponSlotIndex = itemSlot;
+    gBattleActor.weaponType = GetItemType(item);
+    gBattleActor.weaponAttributes = GetItemAttributes(item);
+
+    gBattleActor.canCounter = TRUE;
+    gBattleActor.hasItemEffectTarget = FALSE;
+
+    gBattleActor.statusOut = -1;
+    gBattleTarget.statusOut = -1;
+
+    ClearBattleHits();
+}
+
+void BattleInitItemEffectTarget(struct Unit *unit)
+{
+    InitBattleUnit(&gBattleTarget, unit);
+
+    SetBattleUnitTerrainBonusesAuto(&gBattleTarget);
+    ComputeBattleUnitBaseDefense(&gBattleTarget);
+    ComputeBattleUnitSupportBonuses(&gBattleTarget, NULL);
+
+    gBattleTarget.battleAttack = 0xFF;
+    gBattleTarget.battleEffectiveHitRate = 0xFF;
+    gBattleTarget.battleEffectiveCritRate = 0xFF;
+
+    gBattleTarget.weaponBefore = 0;
+
+    BattleUnitTargetSetEquippedWeapon(&gBattleTarget);
+
+    gBattleActor.hasItemEffectTarget = TRUE;
+}
+
+void UpdateActorFromBattle(void)
+{
+    UpdateUnitFromBattle(GetUnit(gBattleActor.unit.index), &gBattleActor);
+}
+
+void BattleApplyMiscAction(ProcPtr proc)
+{
+    BattleApplyMiscActionExpGains();
+    Proc_StartBlocking(ProcScr_BattleAnimSimpleLock, proc);
+}
+
+void BattleApplyItemEffect(ProcPtr proc)
+{
+    (++gBattleHitIterator)->info = BATTLE_HIT_INFO_END;
+
+    BattleApplyItemExpGains();
+
+    if (gBattleActor.canCounter) {
+        if (GetItemAttributes(gBattleActor.weapon) & IA_STAFF)
+            gBattleActor.weaponBroke = TRUE;
+
+        gBattleActor.weapon = GetItemAfterUse(gBattleActor.weapon);
+        gBattleActor.unit.items[gBattleActor.weaponSlotIndex] = gBattleActor.weapon;
+
+        if (gBattleActor.weapon)
+            gBattleActor.weaponBroke = FALSE;
+    }
+
+    Proc_StartBlocking(ProcScr_BattleAnimSimpleLock, proc);
+}
+
+int GetOffensiveStaffAccuracy(struct Unit *actor, struct Unit *target)
+{
+    int baseAccuracy = (GetUnitPower(actor) - GetUnitResistance(target)) * 5;
+    int unitSkill = GetUnitSkill(actor);
+    int distance = RECT_DISTANCE(actor->xPos, actor->yPos, target->xPos, target->yPos);
+
+    int result = baseAccuracy + 30 + unitSkill - distance * 2;
+
+    if (target->pClassData->number == 0x46)
+        return 0;
+    
+    if (target->pClassData->number == 0x45)
+        return 0;
+
+    if (result < 0)
+        result = 0;
+
+    if (result > 100)
+        result = 100;
+
+    return result;
+}
+
+void BattleGenerateArena(struct Unit* actor)
+{
+    struct Unit* target = gArenaSt.opponent;
+    int something = gBmSt.just_resumed;
+
+    gBattleStats.config = BATTLE_CONFIG_REAL | BATTLE_CONFIG_ARENA;
+
+    InitBattleUnit(&gBattleActor, actor);
+    InitBattleUnit(&gBattleTarget, target);
+
+    if (gActionSt.extra) {
+        gBattleTarget.unit.curHP = gActionSt.extra;
+        gBattleTarget.hpInitial = gActionSt.extra;
+    }
+
+    gBattleStats.range = gArenaSt.range;
+
+    gBattleTarget.unit.xPos = gBattleActor.unit.xPos + gArenaSt.range;
+    gBattleTarget.unit.yPos = gBattleActor.unit.yPos;
+
+    SetBattleUnitWeapon(&gBattleActor, BU_ISLOT_ARENA_PLAYER);
+    SetBattleUnitWeapon(&gBattleTarget, BU_ISLOT_ARENA_OPPONENT);
+
+    BattleApplyWeaponTriangleEffect(&gBattleActor, &gBattleTarget);
+
+    gActionSt.suspend_point = SUSPEND_POINT_DURING_ARENA;
+    WriteSuspendSave(0x3);
+
+    SetBattleUnitTerrainBonusesAuto(&gBattleActor);
+    SetBattleUnitTerrainBonuses(&gBattleTarget, 8); // TODO: terrain id constants
+
+    BattleGenerate(actor, target);
+
+    if (gBattleTarget.unit.curHP == 0)
+        BattleApplyExpGains();
+
+    UpdateUnitDuringBattle(actor, &gBattleActor);
+
+    if (!something || (gBattleTarget.unit.curHP == 0)) {
+        PidStatsRecordBattleResult();
+
+        actor->state = (actor->state &~ (US_BIT17 | US_BIT18 | US_BIT19))
+            + ((((UNIT_ARENA_LEVEL(actor) + 1) <= 7) ? (UNIT_ARENA_LEVEL(actor) + 1) << 17 : 7 << 17));
+
+        gArenaLevelBackup = UNIT_ARENA_LEVEL(actor);
+    }
+
+    BattlePrintDebugUnitInfo(&gBattleActor, &gBattleTarget);
+}
+
+bool BattleIsTriangleAttack(void)
+{
+    return (gBattleHitArray->attributes & BATTLE_HIT_ATTR_TATTACK) != 0;
+}
+
+bool DidBattleUnitBreakWeapon(struct BattleUnit *bu)
+{
+    if (bu->unit.curHP == 0)
+        return FALSE;
+
+    return bu->weaponBroke;
+}
+
+void SetScriptedBattle(struct BattleHit *hits)
+{
+    gActionSt.battle_scr = hits;
+}
+
+void BattleGenerateHitScriptedDamage(struct BattleUnit *bu)
+{
+    gBattleStats.damage = 0;
+
+    if (!(gBattleHitIterator->attributes & BATTLE_HIT_ATTR_MISS)) {
+        gBattleStats.damage = gBattleStats.attack - gBattleStats.defense;
+        if (gBattleHitIterator->attributes & BATTLE_HIT_ATTR_CRIT)
+            gBattleStats.damage = 3 * gBattleStats.damage;
+
+        if (gBattleStats.damage > BATTLE_MAX_DAMAGE)
+            gBattleStats.damage = BATTLE_MAX_DAMAGE;
+
+        if (gBattleStats.damage < 0)
+            gBattleStats.damage = 0;
+
+        if (gBattleStats.damage != 0)
+            bu->nonZeroDamage = TRUE;
+    }
+}
+
+void BattleUnwindScripted(void)
+{
+    struct BattleUnit *attacker;
+    struct BattleUnit *defender;
+
+    struct BattleHit *itIn;
+    struct BattleHit *itOut;
+
+    itIn = gActionSt.battle_scr;
+    itOut = gBattleHitArray;
+
+    while (!(itIn->info & BATTLE_HIT_INFO_END))
+        *itOut++ = *itIn++;
+
+    *itOut = *itIn;
+
+    for (gBattleHitIterator = gBattleHitArray; !(gBattleHitIterator->info & BATTLE_HIT_INFO_END); ++gBattleHitIterator) {
+        if (gBattleHitIterator->info & BATTLE_HIT_INFO_RETALIATION) {
+            attacker = &gBattleTarget;
+            defender = &gBattleActor;
+        } else {
+            attacker = &gBattleActor;
+            defender = &gBattleTarget;
+        }
+
+        BattleUpdateBattleStats(attacker, defender);
+        BattleGenerateHitScriptedDamage(attacker);
+        BattleGenerateHitEffects(attacker, defender);
+
+        if ((attacker->unit.curHP == 0) || (defender->unit.curHP == 0)) {
+            attacker->wexpMultiplier++;
+
+            gBattleHitIterator->info |= BATTLE_HIT_INFO_FINISHES;
+
+            if (gBattleTarget.unit.curHP == 0)
+                gBattleHitIterator->info |= BATTLE_HIT_INFO_KILLS_TARGET;
+
+            (gBattleHitIterator + 1)->info = BATTLE_HIT_INFO_END;
+
+            break;
+        }
+    }
+
+    gActionSt.battle_scr = NULL;
+}
+
+void UnitLevelUp(struct Unit *unit)
+{
+    if (unit->level != 20) {
+        int hpGain, powGain, sklGain, spdGain, defGain, resGain, lckGain;
+        int growthBonus;
+        int totalGain;
+
+        unit->exp = 0;
+        unit->level++;
+
+        if (unit->level == 20 || unit->pCharacterData->number == CHARACTER_28)
+            unit->exp = UNIT_EXP_DISABLED;
+
+        growthBonus = (unit->state & US_GROWTH_BOOST) ? 5: 0;
+        totalGain = 0;
+
+        hpGain  = GetStatIncrease(growthBonus + unit->pCharacterData->growthHP);
+        totalGain += hpGain;
+
+        powGain = GetStatIncrease(growthBonus + unit->pCharacterData->growthPow);
+        totalGain += powGain;
+
+        sklGain = GetStatIncrease(growthBonus + unit->pCharacterData->growthSkl);
+        totalGain += sklGain;
+
+        spdGain = GetStatIncrease(growthBonus + unit->pCharacterData->growthSpd);
+        totalGain += spdGain;
+
+        defGain = GetStatIncrease(growthBonus + unit->pCharacterData->growthDef);
+        totalGain += defGain;
+
+        resGain = GetStatIncrease(growthBonus + unit->pCharacterData->growthRes);
+        totalGain += resGain;
+
+        lckGain = GetStatIncrease(growthBonus + unit->pCharacterData->growthLck);
+        totalGain += lckGain;
+
+        if (totalGain == 0) {
+            for (totalGain = 0; totalGain < 2; ++totalGain) {
+                hpGain = GetStatIncrease(unit->pCharacterData->growthHP);
+
+                if (hpGain)
+                    break;
+
+                powGain = GetStatIncrease(unit->pCharacterData->growthPow);
+
+                if (powGain)
+                    break;
+
+                sklGain = GetStatIncrease(unit->pCharacterData->growthSkl);
+
+                if (sklGain)
+                    break;
+
+                spdGain = GetStatIncrease(unit->pCharacterData->growthSpd);
+
+                if (spdGain)
+                    break;
+
+                defGain = GetStatIncrease(unit->pCharacterData->growthDef);
+
+                if (defGain)
+                    break;
+
+                resGain = GetStatIncrease(unit->pCharacterData->growthRes);
+
+                if (resGain)
+                    break;
+
+                lckGain = GetStatIncrease(unit->pCharacterData->growthLck);
+
+                if (lckGain)
+                    break;
+            }
+        }
+
+        if ((unit->maxHP + hpGain) > UNIT_MHP_MAX(unit))
+            hpGain = UNIT_MHP_MAX(unit) - unit->maxHP;
+
+        if ((unit->pow + powGain) > UNIT_POW_MAX(unit))
+            powGain = UNIT_POW_MAX(unit) - unit->pow;
+
+        if ((unit->skl + sklGain) > UNIT_SKL_MAX(unit))
+            sklGain = UNIT_SKL_MAX(unit) - unit->skl;
+
+        if ((unit->spd + spdGain) > UNIT_SPD_MAX(unit))
+            spdGain = UNIT_SPD_MAX(unit) - unit->spd;
+
+        if ((unit->def + defGain) > UNIT_DEF_MAX(unit))
+            defGain = UNIT_DEF_MAX(unit) - unit->def;
+
+        if ((unit->res + resGain) > UNIT_RES_MAX(unit))
+            resGain = UNIT_RES_MAX(unit) - unit->res;
+
+        if ((unit->lck + lckGain) > UNIT_LCK_MAX(unit))
+            lckGain = UNIT_LCK_MAX(unit) - unit->lck;
+
+        unit->maxHP += hpGain;
+        unit->pow += powGain;
+        unit->skl += sklGain;
+        unit->spd += spdGain;
+        unit->def += defGain;
+        unit->res += resGain;
+        unit->lck += lckGain;
+    }
+}
+
+void BattleHitAdvance(void)
+{
+    gBattleHitIterator++;
+}
+
+void BattleHitTerminate(void)
+{
+    gBattleHitIterator++;
+    gBattleHitIterator->info = BATTLE_HIT_INFO_END;
 }

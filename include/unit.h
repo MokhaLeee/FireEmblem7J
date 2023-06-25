@@ -370,8 +370,8 @@ void ClearUnit(struct Unit *unit);
 // GetFreeUnit
 // GetFreeBlueUnit
 // GetUnitFogViewRange
-// SetUnitStatus
-// SetUnitStatusExt
+void SetUnitStatus(struct Unit *unit, int statusId);
+void SetUnitStatusExt(struct Unit *unit, int status, int duration);
 // GetUnitSMSId
 // UnitAddItem
 // UnitClearInventory
@@ -411,7 +411,7 @@ void UnitCheckStatCaps(struct Unit *unit);
 // UnitUpdateUsedItem
 int GetUnitAid(struct Unit *unit);
 // GetUnitMagRange
-// UnitHasMagicRank
+bool UnitHasMagicRank(struct Unit *unit);
 // sub_080188F4
 // GetUnitKeyItemSlotForTerrain
 // GetUnitAidIconId
@@ -444,7 +444,7 @@ int GetUnitLuck(struct Unit *unit);
 // GetUnitRescueName
 // GetUnitStatusName
 struct Unit *GetUnit(int uid);
-const struct ClassData *GetClassData(int classId);
-// GetCharacterData
+const struct ClassData *GetClassData(int jid);
+const struct CharacterData *GetCharacterData(int pid);
 // UnitRemoveItem
 bool CanUnitCrossTerrain(struct Unit *unit, int terrain);

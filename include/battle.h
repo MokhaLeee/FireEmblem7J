@@ -145,6 +145,15 @@ enum {
     BU_ISLOT_BALLISTA       = UNIT_ITEM_COUNT + 3,
 };
 
+struct WeaponTriangleRule {
+    s8 attackerWeaponType;
+    s8 defenderWeaponType;
+    s8 hitBonus;
+    s8 atkBonus;
+};
+
+extern struct WeaponTriangleRule WeaponTriangleRules[];
+
 // BattleGenerateSimulationInternal
 // BattleGenerateRealInternal
 // BattleApplyGameStateUpdates
@@ -199,7 +208,7 @@ bool BattleGenerateHit(struct BattleUnit *attacker, struct BattleUnit *defender)
 void BattleApplyExpGains(void);
 // GetStatIncrease
 // GetAutoleveledStatIncrease
-// CanBattleUnitGainLevels
+bool CanBattleUnitGainLevels(struct BattleUnit *bu);
 void CheckBattleUnitLevelUp(struct BattleUnit *bu);
 // UnitPromote
 // GenerateBattleUnitStatGainsComparatively
@@ -207,46 +216,46 @@ void CheckBattleUnitStatCaps(struct Unit *unit, struct BattleUnit *bu);
 void BattleApplyUnitUpdates(void);
 // sub_08029FA8
 // GetBattleUnitUpdatedWeaponExp
-// sub_0802A098
+// HasBattleUnitGainedWeaponLevel
 void UpdateUnitFromBattle(struct Unit *unit, struct BattleUnit *bu);
-// sub_0802A1BC
+// UpdateUnitDuringBattle
 void BattleApplyBallistaUpdates(void);
 // sub_0802A21C
-// sub_0802A22C
-// sub_0802A24C
-// sub_0802A27C
-// sub_0802A2B8
-// sub_0802A2E0
-// sub_0802A324
+// GetUnitExpLevel
+// GetUnitRoundExp
+// GetUnitPowerLevel
+// GetUnitClassKillExpBonus
+// GetUnitExpMultiplier
+// GetUnitKillExpBonus
 int GetBattleUnitExpGain(struct BattleUnit *actor, struct BattleUnit *target);
-// sub_0802A42C
-// sub_0802A4A8
-// sub_0802A50C
+void BattleApplyItemExpGains(void);
+int GetBattleUnitStaffExp(struct BattleUnit *bu);
+void BattleApplyMiscActionExpGains(void);
 void BattleUnitTargetSetEquippedWeapon(struct BattleUnit *bu);
 void BattleUnitTargetCheckCanCounter(struct BattleUnit *bu);
-// sub_0802A5D0
+// BattleApplyReaverEffect
 void BattleApplyWeaponTriangleEffect(struct BattleUnit *actor, struct BattleUnit *target);
 void BattleInitTargetCanCounter(void);
-// sub_0802A704
+// InitObstacleBattleUnit
 void ComputeBattleObstacleStats(void);
 void UpdateObstacleFromBattle(struct BattleUnit *bu);
-// sub_0802A860
-// sub_0802A8BC
-// sub_0802A8E0
+// BeginBattleAnimations
+// GetUnitSoloBattleAnimType
+// GetBattleAnimType
 void BattlePrintDebugUnitInfo(struct BattleUnit *actor, struct BattleUnit *target);
 void BattlePrintDebugHitInfo(void);
-// sub_0802A964
-// sub_0802AA10
-// sub_0802AA64
-// sub_0802AA80
-// sub_0802AA9C
-// sub_0802AB1C
-// sub_0802AB90
-// sub_0802ACB4
-// sub_0802ACC4
-// sub_0802ACE0
-// sub_0802ACEC
+// BattleInitItemEffect
+// BattleInitItemEffectTarget
+void UpdateActorFromBattle(void);
+// BattleApplyMiscAction
+// BattleApplyItemEffect
+// GetOffensiveStaffAccuracy
+// BattleGenerateArena
+// BattleIsTriangleAttack
+// DidBattleUnitBreakWeapon
+// SetScriptedBattle
+// BattleGenerateHitScriptedDamage
 void BattleUnwindScripted(void);
-// sub_0802AE44
+// UnitLevelUp
 void BattleHitAdvance(void);
 void BattleHitTerminate(void);

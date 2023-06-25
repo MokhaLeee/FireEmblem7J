@@ -246,7 +246,7 @@ _0801B764:
 	bl sub_08004E4C
 	movs r0, #0
 	ldrsb r0, [r5, r0]
-	bl sub_08031A5C
+	bl GetROMChapterStruct
 	ldr r1, [r0]
 	adds r0, r4, #0
 	bl sub_08004E4C
@@ -901,7 +901,7 @@ sub_0801BCB0: @ 0x0801BCB0
 	push {r4, lr}
 	ldr r4, _0801BCD0 @ =0x02022D2E
 	movs r0, #0
-	bl sub_08031A5C
+	bl GetROMChapterStruct
 	ldr r1, [r0]
 	adds r0, r4, #0
 	bl sub_08004E4C
@@ -1041,7 +1041,7 @@ sub_0801BDC0: @ 0x0801BDC0
 	subs r1, #8
 	ands r0, r1
 	strb r0, [r2, #1]
-	ldr r1, _0801BE00 @ =0x02022860
+	ldr r1, _0801BE00 @ =gPaletteBuffer
 	movs r0, #0
 	strh r0, [r1]
 	bl EnablePalSync
@@ -1049,7 +1049,7 @@ sub_0801BDC0: @ 0x0801BDC0
 	bx r1
 	.align 2, 0
 _0801BDFC: .4byte 0x03002790
-_0801BE00: .4byte 0x02022860
+_0801BE00: .4byte gPaletteBuffer
 
 	thumb_func_start sub_0801BE04
 sub_0801BE04: @ 0x0801BE04
@@ -1140,7 +1140,7 @@ _0801BE88:
 	bl sub_08004E4C
 	movs r0, #0
 	ldrsb r0, [r5, r0]
-	bl sub_08031A5C
+	bl GetROMChapterStruct
 	ldr r1, [r0]
 	adds r0, r4, #0
 	bl sub_08004E4C
@@ -1473,7 +1473,7 @@ sub_0801C108: @ 0x0801C108
 	bne _0801C148
 	movs r0, #0xe
 	ldrsb r0, [r1, r0]
-	bl sub_08031A5C
+	bl GetROMChapterStruct
 	ldrb r0, [r0, #0xc]
 	bl sub_0801DEFC
 	b _0801C14E

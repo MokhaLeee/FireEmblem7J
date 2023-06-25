@@ -93,7 +93,7 @@ BmVSync_AnimInit: @ 0x0802D7E4
 	ldr r5, _0802D820 @ =gPlaySt
 	movs r0, #0xe
 	ldrsb r0, [r5, r0]
-	bl sub_08031A5C
+	bl GetROMChapterStruct
 	ldr r6, _0802D824 @ =0x08D648F4
 	ldrb r0, [r0, #9]
 	lsls r0, r0, #2
@@ -103,7 +103,7 @@ BmVSync_AnimInit: @ 0x0802D7E4
 	str r0, [r4, #0x2c]
 	movs r0, #0xe
 	ldrsb r0, [r5, r0]
-	bl sub_08031A5C
+	bl GetROMChapterStruct
 	ldrb r0, [r0, #0xa]
 	lsls r0, r0, #2
 	adds r0, r0, r6
@@ -173,7 +173,7 @@ sub_0802D874: @ 0x0802D874
 	bgt _0802D89C
 	movs r0, #0
 	bl SetOnHBlankB
-	ldr r1, _0802D8A4 @ =0x02022860
+	ldr r1, _0802D8A4 @ =gPaletteBuffer
 	movs r0, #0
 	strh r0, [r1]
 	bl EnablePalSync
@@ -184,7 +184,7 @@ _0802D89C:
 	bx r0
 	.align 2, 0
 _0802D8A0: .4byte gBmSt
-_0802D8A4: .4byte 0x02022860
+_0802D8A4: .4byte gPaletteBuffer
 
 	thumb_func_start sub_0802D8A8
 sub_0802D8A8: @ 0x0802D8A8
@@ -892,7 +892,7 @@ sub_0802DE44: @ 0x0802DE44
 	mov r5, r8
 	push {r5, r6, r7}
 	movs r1, #0
-	ldr r0, _0802DEBC @ =0x02022860
+	ldr r0, _0802DEBC @ =gPaletteBuffer
 	mov sl, r0
 	movs r6, #0x1f
 	ldr r3, _0802DEC0 @ =0x02002ADC
@@ -951,7 +951,7 @@ _0802DE96:
 	pop {r0}
 	bx r0
 	.align 2, 0
-_0802DEBC: .4byte 0x02022860
+_0802DEBC: .4byte gPaletteBuffer
 _0802DEC0: .4byte 0x02002ADC
 
 	thumb_func_start sub_0802DEC4
@@ -963,7 +963,7 @@ sub_0802DEC4: @ 0x0802DEC4
 	push {r5, r6, r7}
 	bl sub_08019624
 	movs r1, #0
-	ldr r0, _0802DF48 @ =0x02022860
+	ldr r0, _0802DF48 @ =gPaletteBuffer
 	mov sl, r0
 	movs r6, #0x1f
 	ldr r3, _0802DF4C @ =0x02002ADC
@@ -1024,7 +1024,7 @@ _0802DF1A:
 	pop {r0}
 	bx r0
 	.align 2, 0
-_0802DF48: .4byte 0x02022860
+_0802DF48: .4byte gPaletteBuffer
 _0802DF4C: .4byte 0x02002ADC
 _0802DF50: .4byte sub_0802DE00
 
@@ -1532,7 +1532,7 @@ sub_0802E32C: @ 0x0802E32C
 	ldrb r0, [r0, #0xe]
 	lsls r0, r0, #0x18
 	asrs r0, r0, #0x18
-	bl sub_08031A5C
+	bl GetROMChapterStruct
 	ldr r1, _0802E364 @ =0x08D648F4
 	ldrb r0, [r0, #0xa]
 	lsls r0, r0, #2
