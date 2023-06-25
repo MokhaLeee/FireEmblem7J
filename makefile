@@ -58,6 +58,7 @@ PERL := perl
 CPPFLAGS := -I $(AGBCC_HOME)/include -iquote include -iquote . -nostdinc -undef
 CFLAGS := -g -mthumb-interwork -Wimplicit -Wparentheses -Werror -fhex-asm -ffix-debug-line -O2
 ASFLAGS := -mcpu=arm7tdmi -I asm/include -I include
+LDFLAGS := # --no-warn-rwx-segments
 
 LDS := $(BUILD_NAME).lds
 ROM := $(BUILD_NAME).gba
@@ -107,7 +108,7 @@ syms: $(SYM)
 
 $(ELF): $(ALL_OBJS) $(LDS)
 	@echo "[ LD]	$@"
-	@cd $(BUILD_DIR) && $(LD) -T ../$(LDS) -Map ../$(MAP) -L../tools/agbcc/lib $(ALL_OBJS:$(BUILD_DIR)/%=%) -lc -lgcc -o ../$@ --no-warn-rwx-segments
+	@cd $(BUILD_DIR) && $(LD) -T ../$(LDS) -Map ../$(MAP) -L../tools/agbcc/lib $(ALL_OBJS:$(BUILD_DIR)/%=%) -lc -lgcc -o ../$@ $(LDFLAGS)
 
 # C dependency file
 $(BUILD_DIR)/%.d: %.c
@@ -144,6 +145,7 @@ endif
 %/irq.o:             CFLAGS += -O0
 %/random.o:          CFLAGS += -O0
 %/agb-sram.o:        CFLAGS += -O1
+%/hardware.o:        CFLAGS += -O0
 
 # ===============
 # = Symbol file =

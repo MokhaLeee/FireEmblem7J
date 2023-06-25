@@ -937,7 +937,7 @@ sub_08005904: @ 0x08005904
 	lsls r1, r1, #5
 	movs r2, #0x20
 	bl ApplyPaletteExt
-	ldr r1, _0800593C @ =gPaletteBuffer
+	ldr r1, _0800593C @ =gPal
 	ldr r2, [r4]
 	ldrh r3, [r2, #0x14]
 	lsls r0, r3, #5
@@ -954,7 +954,7 @@ sub_08005904: @ 0x08005904
 	.align 2, 0
 _08005934: .4byte 0x081901C8
 _08005938: .4byte 0x02028D68
-_0800593C: .4byte gPaletteBuffer
+_0800593C: .4byte gPal
 _08005940: .4byte sub_08005774
 
 	thumb_func_start sub_08005944
@@ -967,7 +967,7 @@ sub_08005944: @ 0x08005944
 	lsls r1, r1, #5
 	movs r2, #0x20
 	bl ApplyPaletteExt
-	ldr r1, _0800597C @ =gPaletteBuffer
+	ldr r1, _0800597C @ =gPal
 	ldr r2, [r4]
 	ldrh r3, [r2, #0x14]
 	lsls r0, r3, #5
@@ -984,7 +984,7 @@ sub_08005944: @ 0x08005944
 	.align 2, 0
 _08005974: .4byte 0x081901E8
 _08005978: .4byte 0x02028D68
-_0800597C: .4byte gPaletteBuffer
+_0800597C: .4byte gPal
 _08005980: .4byte sub_08005774
 
 	thumb_func_start sub_08005984
@@ -1643,7 +1643,7 @@ sub_08005E60: @ 0x08005E60
 	lsrs r0, r0, #2
 	movs r1, #0xf
 	ands r0, r1
-	ldr r2, _08005E80 @ =gPaletteBuffer
+	ldr r2, _08005E80 @ =gPal
 	lsls r0, r0, #1
 	ldr r1, _08005E84 @ =0x08190288
 	adds r0, r0, r1
@@ -1653,7 +1653,7 @@ sub_08005E60: @ 0x08005E60
 	pop {r0}
 	bx r0
 	.align 2, 0
-_08005E80: .4byte gPaletteBuffer
+_08005E80: .4byte gPal
 _08005E84: .4byte 0x08190288
 
 	thumb_func_start sub_08005E88

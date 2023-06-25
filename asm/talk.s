@@ -93,7 +93,7 @@ InitSpriteTalk: @ 0x08007D28
 	lsls r1, r4, #5
 	movs r2, #0x20
 	bl ApplyPaletteExt
-	ldr r2, _08007DC8 @ =gPaletteBuffer
+	ldr r2, _08007DC8 @ =gPal
 	lsls r4, r4, #4
 	adds r0, r4, #4
 	lsls r0, r0, #1
@@ -143,7 +143,7 @@ _08007DB8: .4byte 0x030000E8
 _08007DBC: .4byte 0x000003FF
 _08007DC0: .4byte 0x06010000
 _08007DC4: .4byte 0x081901E8
-_08007DC8: .4byte gPaletteBuffer
+_08007DC8: .4byte gPal
 _08007DCC: .4byte 0x00007247
 _08007DD0: .4byte 0x000031AE
 _08007DD4: .4byte 0x00007FFF

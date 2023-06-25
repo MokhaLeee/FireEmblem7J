@@ -10,8 +10,10 @@ SECTIONS
 	EWRAM (NOLOAD) :
 	ALIGN(4)
 	{
-		. = 0x022860; gPaletteBuffer = .;
-		. = 0x023C60; gBG2TilemapBuffer = .;
+		. = 0x022860; gPal = .;
+		. = 0x023C60; gBg2Tm = .;
+		. = 0x026A48;
+		. = ALIGN(4); src/icon.o(ewram_data);
 		. = 0x02BBB4; gBmSt = .;
 		. = 0x02BBF4; gPlaySt = .;
 		. = 0x02BD44; gActiveUnitId = .;
@@ -42,6 +44,7 @@ SECTIONS
 	{
 		/* .bss */
 		. = ALIGN(4); src/random.o(.bss);
+		. = ALIGN(4); src/hardware.o(.bss);
 		. = 0x002778; gArenaLevelBackup = .;
 		. = 0x002800; gIrqFuncs = .;
 		. = 0x003870; IntrMainRam = .;
@@ -59,11 +62,12 @@ SECTIONS
 		asm/main.o(.text);
 		src/irq.o(.text);
 		src/random.o(.text);
+		src/hardware.o(.text);
 		asm/hardware.o(.text);
 		asm/sound.o(.text);
 		asm/ram-funcs.o(.text);
 		asm/proc.o(.text);
-		asm/icon.o(.text);
+		src/icon.o(.text);
 		asm/debug-text.o(.text);
 		asm/text.o(.text);
 		asm/anim-drv.o(.text);
@@ -128,7 +132,10 @@ SECTIONS
 		/* .data & .rodata */
 		. = ALIGN(4); data/const_data.o(.rodata)
 		. = ALIGN(4); src/irq.o(.rodata)
-		. = ALIGN(4); src/random.o(.rodata);
+		. = ALIGN(4); src/random.o(.rodata)
+		. = ALIGN(4); src/hardware.o(.rodata)
+		. = ALIGN(4); data/const_data3.o(.rodata)
+		. = ALIGN(4); data/const_data_icon.o(.rodata)
 		. = ALIGN(4); data/const_data1.o(.rodata)
 		. = ALIGN(4); src/unit.o(.rodata)
 		. = ALIGN(4); data/const_data2.o(.rodata)

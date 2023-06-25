@@ -9,7 +9,7 @@ ArmCodeStart:
 	.syntax unified
 	.arm
 
-.LPal: .4byte gPaletteBuffer
+.LPal: .4byte gPal
 .LFadeComponents: .4byte 0x02022260
 .LFadeComponentStep: .4byte 0x02022240
 
@@ -67,7 +67,7 @@ ColorFadeTick:
 1:
 	add r0, r0, r1, lsl #5
 	add r0, r0, r2, lsl #10
-	ldr r1, .LPal @ =gPaletteBuffer
+	ldr r1, .LPal @ =gPal
 	add r1, r1, r6
 	strh r0, [r1, r7]
 	subs r6, r6, #2

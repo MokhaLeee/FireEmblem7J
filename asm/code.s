@@ -168,7 +168,7 @@ sub_0805129C: @ 0x0805129C
 	strh r0, [r5, #0x3c]
 	strh r0, [r5, #0x3a]
 	str r3, [sp]
-	ldr r1, _080513A0 @ =gBG2TilemapBuffer
+	ldr r1, _080513A0 @ =gBg2Tm
 	ldr r2, _080513A4 @ =0x01000200
 	mov r0, sp
 	bl CpuFastSet
@@ -263,7 +263,7 @@ sub_0805129C: @ 0x0805129C
 	bx r0
 	.align 2, 0
 _0805139C: .4byte 0x0203E006
-_080513A0: .4byte gBG2TilemapBuffer
+_080513A0: .4byte gBg2Tm
 _080513A4: .4byte 0x01000200
 _080513A8: .4byte 0x03002790
 _080513AC: .4byte 0x0000FFE0
@@ -372,7 +372,7 @@ _080513C8:
 	strb r0, [r5]
 	movs r0, #0xa0
 	strb r0, [r4]
-	ldr r0, _080514B4 @ =gPaletteBuffer
+	ldr r0, _080514B4 @ =gPal
 	movs r1, #6
 	movs r2, #0xa
 	movs r3, #4
@@ -391,7 +391,7 @@ _080514A0:
 	bx r0
 	.align 2, 0
 _080514B0: .4byte 0x03002790
-_080514B4: .4byte gPaletteBuffer
+_080514B4: .4byte gPal
 
 	thumb_func_start sub_080514B8
 sub_080514B8: @ 0x080514B8
@@ -556,7 +556,7 @@ _080515FC:
 	ldrsh r0, [r0, r1]
 	subs r0, #1
 	bl sub_0806B800
-	ldr r0, _0805162C @ =gPaletteBuffer
+	ldr r0, _0805162C @ =gPal
 	movs r1, #6
 	movs r2, #0xa
 	movs r3, #0x10
@@ -569,7 +569,7 @@ _080515FC:
 	.align 2, 0
 _08051624: .4byte 0x0201FACC
 _08051628: .4byte 0x0203DFE2
-_0805162C: .4byte gPaletteBuffer
+_0805162C: .4byte gPal
 
 	thumb_func_start sub_08051630
 sub_08051630: @ 0x08051630
@@ -590,7 +590,7 @@ sub_08051630: @ 0x08051630
 	ldrsh r0, [r0, r1]
 	subs r0, #1
 	bl sub_0806B7DC
-	ldr r0, _0805168C @ =gPaletteBuffer
+	ldr r0, _0805168C @ =gPal
 	movs r1, #6
 	movs r2, #0xa
 	adds r3, r4, #0
@@ -614,7 +614,7 @@ _0805167E:
 	bx r0
 	.align 2, 0
 _08051688: .4byte 0x0203DFE2
-_0805168C: .4byte gPaletteBuffer
+_0805168C: .4byte gPal
 
 	thumb_func_start sub_08051690
 sub_08051690: @ 0x08051690
@@ -663,7 +663,7 @@ _080516D0:
 	ldrsh r0, [r7, r1]
 	subs r0, #1
 	bl sub_0806B7DC
-	ldr r0, _0805171C @ =gPaletteBuffer
+	ldr r0, _0805171C @ =gPal
 	movs r1, #6
 	movs r2, #0xa
 	adds r3, r4, #0
@@ -685,7 +685,7 @@ _08051714:
 	pop {r0}
 	bx r0
 	.align 2, 0
-_0805171C: .4byte gPaletteBuffer
+_0805171C: .4byte gPal
 
 	thumb_func_start sub_08051720
 sub_08051720: @ 0x08051720
@@ -1030,7 +1030,7 @@ _08051964:
 	strb r0, [r4]
 	mov r0, r8
 	str r0, [sp, #4]
-	ldr r1, _08051A30 @ =gBG2TilemapBuffer
+	ldr r1, _08051A30 @ =gBg2Tm
 	ldr r2, _08051A34 @ =0x01000200
 	add r0, sp, #4
 	bl CpuFastSet
@@ -1063,7 +1063,7 @@ _08051A1E:
 	bx r0
 	.align 2, 0
 _08051A2C: .4byte 0x03002790
-_08051A30: .4byte gBG2TilemapBuffer
+_08051A30: .4byte gBg2Tm
 _08051A34: .4byte 0x01000200
 
 	thumb_func_start sub_08051A38
@@ -1722,7 +1722,7 @@ sub_08051F38: @ 0x08051F38
 	ands r0, r1
 	cmp r0, #0
 	beq _08051F70
-	ldr r0, _08052058 @ =gPaletteBuffer
+	ldr r0, _08052058 @ =gPal
 	movs r1, #0x17
 	movs r2, #1
 	bl sub_0806788C
@@ -1838,7 +1838,7 @@ _08052048: .4byte 0x081DE208
 _0805204C: .4byte 0x0203E004
 _08052050: .4byte 0x081DE1E0
 _08052054: .4byte gBattleStats
-_08052058: .4byte gPaletteBuffer
+_08052058: .4byte gPal
 _0805205C: .4byte 0x0203DFE8
 _08052060: .4byte 0x0200005C
 _08052064: .4byte 0x0200F1C8
@@ -8816,7 +8816,7 @@ _080557A0:
 	movs r2, #2
 	ldrsh r1, [r6, r2]
 	lsls r1, r1, #5
-	ldr r4, _08055820 @ =gPaletteBuffer
+	ldr r4, _08055820 @ =gPal
 	adds r1, r1, r4
 	mov r0, r8
 	movs r2, #8
@@ -8833,7 +8833,7 @@ _080557A0:
 	bl sub_08055B08
 	b _08055884
 	.align 2, 0
-_08055820: .4byte gPaletteBuffer
+_08055820: .4byte gPal
 _08055824:
 	movs r1, #0
 	ldrsh r0, [r6, r1]
@@ -9337,7 +9337,7 @@ _08055BBE:
 	adds r4, r4, r0
 	ldr r2, _08055C48 @ =0xFFFFFA96
 	adds r4, r4, r2
-	ldr r2, _08055C4C @ =gBG2TilemapBuffer
+	ldr r2, _08055C4C @ =gBg2Tm
 	movs r0, #0x20
 	str r0, [sp]
 	movs r0, #0x14
@@ -9362,7 +9362,7 @@ _08055BBE:
 	.align 2, 0
 _08055C44: .4byte 0x0201CF78
 _08055C48: .4byte 0xFFFFFA96
-_08055C4C: .4byte gBG2TilemapBuffer
+_08055C4C: .4byte gBg2Tm
 
 	thumb_func_start sub_08055C50
 sub_08055C50: @ 0x08055C50
@@ -9663,7 +9663,7 @@ sub_08055EA4: @ 0x08055EA4
 	bl Interpolate
 	adds r5, r0, #0
 	ldr r0, _08055F00 @ =0x020165C8
-	ldr r4, _08055F04 @ =gPaletteBuffer
+	ldr r4, _08055F04 @ =gPal
 	movs r2, #0x80
 	lsls r2, r2, #1
 	adds r1, r4, #0
@@ -9693,7 +9693,7 @@ _08055EF8:
 	bx r0
 	.align 2, 0
 _08055F00: .4byte 0x020165C8
-_08055F04: .4byte gPaletteBuffer
+_08055F04: .4byte gPal
 
 	thumb_func_start sub_08055F08
 sub_08055F08: @ 0x08055F08
@@ -9722,7 +9722,7 @@ _08055F30: .4byte 0x08C0A688
 sub_08055F34: @ 0x08055F34
 	push {r4, lr}
 	adds r4, r0, #0
-	ldr r0, _08055F58 @ =gPaletteBuffer
+	ldr r0, _08055F58 @ =gPal
 	ldr r1, _08055F5C @ =0x020165C8
 	movs r2, #0x80
 	lsls r2, r2, #1
@@ -9737,7 +9737,7 @@ sub_08055F34: @ 0x08055F34
 	pop {r0}
 	bx r0
 	.align 2, 0
-_08055F58: .4byte gPaletteBuffer
+_08055F58: .4byte gPal
 _08055F5C: .4byte 0x020165C8
 
 	thumb_func_start sub_08055F60
@@ -9756,7 +9756,7 @@ sub_08055F60: @ 0x08055F60
 	bl Interpolate
 	adds r5, r0, #0
 	ldr r0, _08055FBC @ =0x020165C8
-	ldr r4, _08055FC0 @ =gPaletteBuffer
+	ldr r4, _08055FC0 @ =gPal
 	movs r2, #0x80
 	lsls r2, r2, #1
 	adds r1, r4, #0
@@ -9786,7 +9786,7 @@ _08055FB4:
 	bx r0
 	.align 2, 0
 _08055FBC: .4byte 0x020165C8
-_08055FC0: .4byte gPaletteBuffer
+_08055FC0: .4byte gPal
 
 	thumb_func_start sub_08055FC4
 sub_08055FC4: @ 0x08055FC4
@@ -16912,7 +16912,7 @@ sub_08059A2C: @ 0x08059A2C
 	movs r2, #0
 	bl Interpolate
 	adds r5, r0, #0
-	ldr r0, _08059A88 @ =gPaletteBuffer
+	ldr r0, _08059A88 @ =gPal
 	ldr r4, _08059A8C @ =0x020165C8
 	movs r2, #0x80
 	lsls r2, r2, #1
@@ -16943,7 +16943,7 @@ _08059A80:
 	pop {r0}
 	bx r0
 	.align 2, 0
-_08059A88: .4byte gPaletteBuffer
+_08059A88: .4byte gPal
 _08059A8C: .4byte 0x020165C8
 
 	thumb_func_start sub_08059A90
@@ -17015,7 +17015,7 @@ sub_08059B08: @ 0x08059B08
 	ldr r0, [r1]
 	adds r0, #1
 	str r0, [r1]
-	ldr r0, _08059B40 @ =gPaletteBuffer
+	ldr r0, _08059B40 @ =gPal
 	ldr r1, _08059B44 @ =0x020165C8
 	movs r2, #0x80
 	lsls r2, r2, #1
@@ -17033,7 +17033,7 @@ sub_08059B08: @ 0x08059B08
 	bx r0
 	.align 2, 0
 _08059B3C: .4byte 0x0201774C
-_08059B40: .4byte gPaletteBuffer
+_08059B40: .4byte gPal
 _08059B44: .4byte 0x020165C8
 _08059B48: .4byte 0x08C11160
 
@@ -20316,7 +20316,7 @@ sub_0805B610: @ 0x0805B610
 	movs r2, #0x10
 	bl Interpolate
 	adds r5, r0, #0
-	ldr r0, _0805B66C @ =gPaletteBuffer
+	ldr r0, _0805B66C @ =gPal
 	ldr r4, _0805B670 @ =0x020165C8
 	movs r2, #0x80
 	lsls r2, r2, #1
@@ -20347,7 +20347,7 @@ _0805B664:
 	pop {r0}
 	bx r0
 	.align 2, 0
-_0805B66C: .4byte gPaletteBuffer
+_0805B66C: .4byte gPal
 _0805B670: .4byte 0x020165C8
 _0805B674: .4byte 0x0201774C
 
@@ -33292,7 +33292,7 @@ sub_08062094: @ 0x08062094
 	movs r2, #0x10
 	bl Interpolate
 	adds r5, r0, #0
-	ldr r0, _080620F0 @ =gPaletteBuffer
+	ldr r0, _080620F0 @ =gPal
 	ldr r4, _080620F4 @ =0x020165C8
 	movs r2, #0x80
 	lsls r2, r2, #1
@@ -33323,7 +33323,7 @@ _080620E8:
 	pop {r0}
 	bx r0
 	.align 2, 0
-_080620F0: .4byte gPaletteBuffer
+_080620F0: .4byte gPal
 _080620F4: .4byte 0x020165C8
 _080620F8: .4byte 0x0201774C
 
@@ -34312,7 +34312,7 @@ sub_080628F0: @ 0x080628F0
 	str r5, [r4, #0x5c]
 	movs r0, #0
 	strh r0, [r4, #0x2c]
-	ldr r0, _08062938 @ =gPaletteBuffer
+	ldr r0, _08062938 @ =gPal
 	ldr r1, _0806293C @ =0x020165C8
 	movs r2, #0x80
 	lsls r2, r2, #1
@@ -34328,7 +34328,7 @@ sub_080628F0: @ 0x080628F0
 	.align 2, 0
 _08062930: .4byte 0x0201774C
 _08062934: .4byte 0x08C134B0
-_08062938: .4byte gPaletteBuffer
+_08062938: .4byte gPal
 _0806293C: .4byte 0x020165C8
 
 	thumb_func_start sub_08062940
@@ -34358,7 +34358,7 @@ _0806295C:
 	bl Interpolate
 	adds r4, r0, #0
 	ldr r7, _080629C0 @ =0x020165C8
-	ldr r6, _080629C4 @ =gPaletteBuffer
+	ldr r6, _080629C4 @ =gPal
 	movs r2, #0x80
 	lsls r2, r2, #1
 	mov r8, r2
@@ -34397,7 +34397,7 @@ _080629B4:
 	bx r0
 	.align 2, 0
 _080629C0: .4byte 0x020165C8
-_080629C4: .4byte gPaletteBuffer
+_080629C4: .4byte gPal
 _080629C8: .4byte 0x0201774C
 
 	thumb_func_start sub_080629CC
@@ -38356,7 +38356,7 @@ sub_080649AC: @ 0x080649AC
 	bl sub_0806482C
 	ldrh r0, [r0, #0xc]
 	lsls r1, r0, #5
-	ldr r0, _080649D0 @ =gPaletteBuffer
+	ldr r0, _080649D0 @ =gPal
 	adds r1, r1, r0
 	adds r0, r4, #0
 	movs r2, #8
@@ -38366,7 +38366,7 @@ sub_080649AC: @ 0x080649AC
 	pop {r0}
 	bx r0
 	.align 2, 0
-_080649D0: .4byte gPaletteBuffer
+_080649D0: .4byte gPal
 
 	thumb_func_start sub_080649D4
 sub_080649D4: @ 0x080649D4
@@ -40860,7 +40860,7 @@ sub_08065DD0: @ 0x08065DD0
 	movs r1, #0
 	strb r1, [r0]
 	strh r1, [r5, #0x2c]
-	ldr r0, _08065E28 @ =gBG2TilemapBuffer
+	ldr r0, _08065E28 @ =gBg2Tm
 	str r1, [sp]
 	movs r1, #0x20
 	movs r2, #0x20
@@ -40886,7 +40886,7 @@ sub_08065DD0: @ 0x08065DD0
 	bx r1
 	.align 2, 0
 _08065E24: .4byte 0x08C4870C
-_08065E28: .4byte gBG2TilemapBuffer
+_08065E28: .4byte gBg2Tm
 _08065E2C: .4byte 0x0201FAD0
 _08065E30: .4byte 0x020228E0
 _08065E34: .4byte 0x02020060
@@ -41536,7 +41536,7 @@ sub_080662F4: @ 0x080662F4
 	ldr r1, _08066370 @ =0x020228E0
 	movs r2, #8
 	bl CpuFastSet
-	ldr r4, _08066374 @ =gBG2TilemapBuffer
+	ldr r4, _08066374 @ =gBg2Tm
 	adds r0, r4, #0
 	movs r1, #0x1f
 	bl BG_Fill
@@ -41565,7 +41565,7 @@ _08066364: .4byte 0x082EB530
 _08066368: .4byte 0x02019784
 _0806636C: .4byte 0x082EB510
 _08066370: .4byte 0x020228E0
-_08066374: .4byte gBG2TilemapBuffer
+_08066374: .4byte gBg2Tm
 
 	thumb_func_start nullsub_53
 nullsub_53: @ 0x08066378
@@ -43108,7 +43108,7 @@ sub_08066FC0: @ 0x08066FC0
 	movs r2, #0x10
 	bl Interpolate
 	adds r6, r0, #0
-	ldr r0, _08067028 @ =gPaletteBuffer
+	ldr r0, _08067028 @ =gPal
 	ldr r4, _0806702C @ =0x020165C8
 	movs r5, #0x80
 	lsls r5, r5, #1
@@ -43144,14 +43144,14 @@ _08067020:
 	pop {r0}
 	bx r0
 	.align 2, 0
-_08067028: .4byte gPaletteBuffer
+_08067028: .4byte gPal
 _0806702C: .4byte 0x020165C8
 
 	thumb_func_start sub_08067030
 sub_08067030: @ 0x08067030
 	push {r4, r5, r6, lr}
 	adds r6, r0, #0
-	ldr r0, _08067080 @ =gPaletteBuffer
+	ldr r0, _08067080 @ =gPal
 	ldr r4, _08067084 @ =0x020165C8
 	movs r5, #0x80
 	lsls r5, r5, #1
@@ -43186,7 +43186,7 @@ _0806707A:
 	pop {r0}
 	bx r0
 	.align 2, 0
-_08067080: .4byte gPaletteBuffer
+_08067080: .4byte gPal
 _08067084: .4byte 0x020165C8
 
 	thumb_func_start sub_08067088
@@ -43203,7 +43203,7 @@ sub_08067088: @ 0x08067088
 	movs r2, #0
 	bl Interpolate
 	adds r6, r0, #0
-	ldr r0, _080670F0 @ =gPaletteBuffer
+	ldr r0, _080670F0 @ =gPal
 	ldr r4, _080670F4 @ =0x020165C8
 	movs r5, #0x80
 	lsls r5, r5, #1
@@ -43239,7 +43239,7 @@ _080670E8:
 	pop {r0}
 	bx r0
 	.align 2, 0
-_080670F0: .4byte gPaletteBuffer
+_080670F0: .4byte gPal
 _080670F4: .4byte 0x020165C8
 
 	thumb_func_start sub_080670F8
@@ -44619,7 +44619,7 @@ sub_08067AB0: @ 0x08067AB0
 	push {r4, lr}
 	adds r4, r0, #0
 	bl sub_08019624
-	ldr r0, _08067AD0 @ =gPaletteBuffer
+	ldr r0, _08067AD0 @ =gPal
 	movs r1, #6
 	movs r2, #0xa
 	adds r3, r4, #0
@@ -44629,7 +44629,7 @@ sub_08067AB0: @ 0x08067AB0
 	pop {r0}
 	bx r0
 	.align 2, 0
-_08067AD0: .4byte gPaletteBuffer
+_08067AD0: .4byte gPal
 
 	thumb_func_start sub_08067AD4
 sub_08067AD4: @ 0x08067AD4
@@ -47995,7 +47995,7 @@ _08069570:
 	adds r0, r0, r1
 	ldrh r0, [r0]
 	lsls r1, r0, #1
-	ldr r0, _08069684 @ =gBG2TilemapBuffer
+	ldr r0, _08069684 @ =gBg2Tm
 	adds r1, r1, r0
 	adds r0, r4, #0
 	bl sub_08005460
@@ -48097,7 +48097,7 @@ _080695A6:
 _08069678: .4byte 0x082EB88C
 _0806967C: .4byte 0x02017660
 _08069680: .4byte 0x082EB8B4
-_08069684: .4byte gBG2TilemapBuffer
+_08069684: .4byte gBg2Tm
 _08069688: .4byte 0x020176A0
 _0806968C: .4byte 0x0202010C
 _08069690: .4byte 0x02023C66
@@ -48313,7 +48313,7 @@ sub_08069830: @ 0x08069830
 	bl CpuFastSet
 	str r4, [sp, #4]
 	add r0, sp, #4
-	ldr r6, _080698EC @ =gBG2TilemapBuffer
+	ldr r6, _080698EC @ =gBg2Tm
 	adds r1, r6, #0
 	mov r2, r8
 	bl CpuFastSet
@@ -48380,7 +48380,7 @@ sub_08069830: @ 0x08069830
 _080698E0: .4byte 0x020200D8
 _080698E4: .4byte 0x02023460
 _080698E8: .4byte 0x01000200
-_080698EC: .4byte gBG2TilemapBuffer
+_080698EC: .4byte gBg2Tm
 _080698F0: .4byte 0x06006800
 _080698F4: .4byte 0x06007000
 _080698F8: .4byte 0x06005000
@@ -48655,7 +48655,7 @@ _08069B56:
 	movs r0, #0xa0
 	strh r0, [r1, #0x36]
 	str r2, [sp, #8]
-	ldr r1, _08069BAC @ =gBG2TilemapBuffer
+	ldr r1, _08069BAC @ =gBg2Tm
 	ldr r2, _08069BB0 @ =0x01000200
 	add r0, sp, #8
 	bl CpuFastSet
@@ -48674,7 +48674,7 @@ _08069B56:
 _08069BA0: .4byte 0x08C4A8E8
 _08069BA4: .4byte 0x00001042
 _08069BA8: .4byte 0x030040E0
-_08069BAC: .4byte gBG2TilemapBuffer
+_08069BAC: .4byte gBg2Tm
 _08069BB0: .4byte 0x01000200
 
 	thumb_func_start sub_08069BB4
@@ -48718,7 +48718,7 @@ sub_08069BE4: @ 0x08069BE4
 	str r0, [r4, #0x4c]
 	subs r0, #2
 	str r0, [r4, #0x50]
-	ldr r0, _08069C20 @ =gPaletteBuffer
+	ldr r0, _08069C20 @ =gPal
 	ldr r1, _08069C24 @ =0x020165C8
 	movs r2, #0x80
 	lsls r2, r2, #1
@@ -48730,7 +48730,7 @@ _08069C1A:
 	pop {r0}
 	bx r0
 	.align 2, 0
-_08069C20: .4byte gPaletteBuffer
+_08069C20: .4byte gPal
 _08069C24: .4byte 0x020165C8
 
 	thumb_func_start sub_08069C28
@@ -48837,7 +48837,7 @@ _08069C7E:
 	subs r0, r0, r2
 	strh r0, [r1, #0x36]
 	ldr r0, _08069D48 @ =0x020165C8
-	ldr r4, _08069D4C @ =gPaletteBuffer
+	ldr r4, _08069D4C @ =gPal
 	movs r2, #0x80
 	lsls r2, r2, #1
 	adds r1, r4, #0
@@ -48878,7 +48878,7 @@ _08069D3C: .4byte 0x0202012C
 _08069D40: .4byte 0x0202012E
 _08069D44: .4byte 0x030040E0
 _08069D48: .4byte 0x020165C8
-_08069D4C: .4byte gPaletteBuffer
+_08069D4C: .4byte gPal
 
 	thumb_func_start sub_08069D50
 sub_08069D50: @ 0x08069D50
@@ -49338,7 +49338,7 @@ sub_0806A098: @ 0x0806A098
 	subs r0, r0, r5
 	strh r0, [r1, #0x36]
 	ldr r0, _0806A158 @ =0x020165C8
-	ldr r4, _0806A15C @ =gPaletteBuffer
+	ldr r4, _0806A15C @ =gPal
 	movs r2, #0x80
 	lsls r2, r2, #1
 	adds r1, r4, #0
@@ -49380,7 +49380,7 @@ _0806A14C: .4byte 0x0202012C
 _0806A150: .4byte 0x0202012E
 _0806A154: .4byte 0x030040E0
 _0806A158: .4byte 0x020165C8
-_0806A15C: .4byte gPaletteBuffer
+_0806A15C: .4byte gPal
 
 	thumb_func_start sub_0806A160
 sub_0806A160: @ 0x0806A160
@@ -52241,7 +52241,7 @@ sub_0806B800: @ 0x0806B800
 	bl sub_0806B798
 	adds r0, r4, #0
 	bl sub_0806B7DC
-	ldr r0, _0806B844 @ =gPaletteBuffer
+	ldr r0, _0806B844 @ =gPal
 	strh r5, [r0]
 	movs r0, #8
 	bl EnableBgSync
@@ -52253,7 +52253,7 @@ sub_0806B800: @ 0x0806B800
 	.align 2, 0
 _0806B83C: .4byte 0x0600FFE0
 _0806B840: .4byte 0x01000008
-_0806B844: .4byte gPaletteBuffer
+_0806B844: .4byte gPal
 
 	thumb_func_start sub_0806B848
 sub_0806B848: @ 0x0806B848
@@ -52613,7 +52613,7 @@ _0806BB1C:
 	bne _0806BB5C
 	movs r0, #1
 	movs r1, #0x12
-	bl sub_08004C20
+	bl ApplyIconPalette
 	mov r0, r8
 	bl GetItemType
 	adds r0, #0x70
@@ -52626,21 +52626,21 @@ _0806BB5C:
 	bne _0806BB76
 	movs r0, #0
 	movs r1, #0x12
-	bl sub_08004C20
+	bl ApplyIconPalette
 	mov r0, r8
 	bl sub_08017808
 _0806BB6E:
 	movs r1, #0x40
-	bl sub_08004D74
+	bl PutIconObjImg
 	b _0806BB88
 _0806BB76:
 	movs r0, #1
 	movs r1, #0x12
-	bl sub_08004C20
+	bl ApplyIconPalette
 	mov r0, r8
 	adds r0, #0x70
 	movs r1, #0x40
-	bl sub_08004D74
+	bl PutIconObjImg
 _0806BB88:
 	ldr r0, _0806BBF0 @ =0x08C4C058
 	movs r1, #0x96
@@ -53227,7 +53227,7 @@ sub_0806BFE4: @ 0x0806BFE4
 	ldrsh r0, [r0, r1]
 	subs r0, #1
 	bl sub_0806B800
-	ldr r4, _0806C03C @ =gPaletteBuffer
+	ldr r4, _0806C03C @ =gPal
 	ldr r1, _0806C040 @ =0x020165C8
 	movs r2, #0x80
 	lsls r2, r2, #1
@@ -53246,7 +53246,7 @@ sub_0806BFE4: @ 0x0806BFE4
 	bx r0
 	.align 2, 0
 _0806C038: .4byte 0x0203DFE2
-_0806C03C: .4byte gPaletteBuffer
+_0806C03C: .4byte gPal
 _0806C040: .4byte 0x020165C8
 
 	thumb_func_start sub_0806C044
@@ -53281,7 +53281,7 @@ sub_0806C064: @ 0x0806C064
 	bl Interpolate
 	adds r5, r0, #0
 	ldr r0, _0806C0C0 @ =0x020165C8
-	ldr r4, _0806C0C4 @ =gPaletteBuffer
+	ldr r4, _0806C0C4 @ =gPal
 	movs r2, #0x80
 	lsls r2, r2, #1
 	adds r1, r4, #0
@@ -53311,7 +53311,7 @@ _0806C0B8:
 	bx r0
 	.align 2, 0
 _0806C0C0: .4byte 0x020165C8
-_0806C0C4: .4byte gPaletteBuffer
+_0806C0C4: .4byte gPal
 
 	thumb_func_start sub_0806C0C8
 sub_0806C0C8: @ 0x0806C0C8
@@ -53336,7 +53336,7 @@ _0806C0E4: .4byte 0x08C4C130
 sub_0806C0E8: @ 0x0806C0E8
 	push {r4, lr}
 	adds r4, r0, #0
-	ldr r0, _0806C10C @ =gPaletteBuffer
+	ldr r0, _0806C10C @ =gPal
 	ldr r1, _0806C110 @ =0x020165C8
 	movs r2, #0x80
 	lsls r2, r2, #1
@@ -53351,7 +53351,7 @@ sub_0806C0E8: @ 0x0806C0E8
 	pop {r0}
 	bx r0
 	.align 2, 0
-_0806C10C: .4byte gPaletteBuffer
+_0806C10C: .4byte gPal
 _0806C110: .4byte 0x020165C8
 
 	thumb_func_start sub_0806C114
@@ -53370,7 +53370,7 @@ sub_0806C114: @ 0x0806C114
 	bl Interpolate
 	adds r5, r0, #0
 	ldr r0, _0806C170 @ =0x020165C8
-	ldr r4, _0806C174 @ =gPaletteBuffer
+	ldr r4, _0806C174 @ =gPal
 	movs r2, #0x80
 	lsls r2, r2, #1
 	adds r1, r4, #0
@@ -53400,7 +53400,7 @@ _0806C168:
 	bx r0
 	.align 2, 0
 _0806C170: .4byte 0x020165C8
-_0806C174: .4byte gPaletteBuffer
+_0806C174: .4byte gPal
 
 	thumb_func_start sub_0806C178
 sub_0806C178: @ 0x0806C178
@@ -58014,7 +58014,7 @@ sub_0806E380: @ 0x0806E380
 	asrs r0, r1, #1
 	adds r1, r0, #0
 	lsls r0, r1, #1
-	ldr r1, _0806E3F8 @ =gPaletteBuffer
+	ldr r1, _0806E3F8 @ =gPal
 	adds r0, r0, r1
 	movs r1, #0xa8
 	lsls r1, r1, #2
@@ -58036,7 +58036,7 @@ sub_0806E380: @ 0x0806E380
 	pop {r0}
 	bx r0
 	.align 2, 0
-_0806E3F8: .4byte gPaletteBuffer
+_0806E3F8: .4byte gPal
 _0806E3FC: .4byte 0x08D64D98
 
 	thumb_func_start sub_0806E400
@@ -58055,7 +58055,7 @@ sub_0806E400: @ 0x0806E400
 	asrs r0, r1, #1
 	adds r1, r0, #0
 	lsls r0, r1, #1
-	ldr r2, _0806E448 @ =gPaletteBuffer
+	ldr r2, _0806E448 @ =gPal
 	adds r1, r0, r2
 	adds r0, r1, #0
 	movs r1, #0x15
@@ -58075,7 +58075,7 @@ sub_0806E400: @ 0x0806E400
 	pop {r0}
 	bx r0
 	.align 2, 0
-_0806E448: .4byte gPaletteBuffer
+_0806E448: .4byte gPal
 _0806E44C: .4byte 0x08D64FFC
 
 	thumb_func_start sub_0806E450
@@ -58485,7 +58485,7 @@ sub_0806E730: @ 0x0806E730
 	asrs r1, r0, #1
 	adds r0, r1, #0
 	lsls r1, r0, #1
-	ldr r0, _0806E768 @ =gPaletteBuffer
+	ldr r0, _0806E768 @ =gPal
 	adds r1, r1, r0
 	adds r0, r1, #0
 	movs r1, #0x15
@@ -58497,7 +58497,7 @@ sub_0806E730: @ 0x0806E730
 	pop {r0}
 	bx r0
 	.align 2, 0
-_0806E768: .4byte gPaletteBuffer
+_0806E768: .4byte gPal
 
 	thumb_func_start sub_0806E76C
 sub_0806E76C: @ 0x0806E76C
@@ -58662,7 +58662,7 @@ sub_0806E840: @ 0x0806E840
 	asrs r0, r1, #1
 	adds r1, r0, #0
 	lsls r0, r1, #1
-	ldr r2, _0806E8D4 @ =gPaletteBuffer
+	ldr r2, _0806E8D4 @ =gPal
 	adds r1, r0, r2
 	adds r0, r1, #0
 	movs r1, #0x15
@@ -58683,7 +58683,7 @@ sub_0806E840: @ 0x0806E840
 	bx r0
 	.align 2, 0
 _0806E8D0: .4byte 0x08D64D98
-_0806E8D4: .4byte gPaletteBuffer
+_0806E8D4: .4byte gPal
 _0806E8D8: .4byte 0x08D6509C
 
 	thumb_func_start sub_0806E8DC
@@ -61867,9 +61867,9 @@ _080700B4:
 	adds r1, r2, #0
 	lsls r2, r1, #0x10
 	lsrs r1, r2, #0x10
-	ldr r3, _080700F8 @ =gPaletteBuffer
+	ldr r3, _080700F8 @ =gPal
 	ldrh r2, [r3, #0x22]
-	ldr r4, _080700F8 @ =gPaletteBuffer
+	ldr r4, _080700F8 @ =gPal
 	adds r3, r4, #0
 	adds r4, #0x42
 	ldrh r3, [r4]
@@ -61880,7 +61880,7 @@ _080700B4:
 	bx r0
 	.align 2, 0
 _080700F4: .4byte 0x0203E0D4
-_080700F8: .4byte gPaletteBuffer
+_080700F8: .4byte gPal
 
 	thumb_func_start sub_080700FC
 sub_080700FC: @ 0x080700FC
@@ -66015,7 +66015,7 @@ sub_080721A4: @ 0x080721A4
 	sub sp, #4
 	mov r7, sp
 	str r0, [r7]
-	ldr r1, _080721C4 @ =gBG2TilemapBuffer
+	ldr r1, _080721C4 @ =gBg2Tm
 	adds r0, r1, #0
 	movs r1, #0
 	bl BG_Fill
@@ -66026,7 +66026,7 @@ sub_080721A4: @ 0x080721A4
 	pop {r0}
 	bx r0
 	.align 2, 0
-_080721C4: .4byte gBG2TilemapBuffer
+_080721C4: .4byte gBg2Tm
 
 	thumb_func_start sub_080721C8
 sub_080721C8: @ 0x080721C8
@@ -66035,7 +66035,7 @@ sub_080721C8: @ 0x080721C8
 	mov r7, sp
 	str r0, [r7]
 	bl sub_08014B58
-	ldr r1, _0807223C @ =gBG2TilemapBuffer
+	ldr r1, _0807223C @ =gBg2Tm
 	adds r0, r1, #0
 	movs r1, #0
 	bl BG_Fill
@@ -66084,7 +66084,7 @@ sub_080721C8: @ 0x080721C8
 	pop {r0}
 	bx r0
 	.align 2, 0
-_0807223C: .4byte gBG2TilemapBuffer
+_0807223C: .4byte gBg2Tm
 _08072240: .4byte 0x030027CC
 _08072244: .4byte 0x0000FFE0
 _08072248: .4byte 0x03002790
@@ -66247,7 +66247,7 @@ sub_08072374: @ 0x08072374
 	sub sp, #4
 	mov r7, sp
 	str r0, [r7]
-	ldr r1, _08072394 @ =gBG2TilemapBuffer
+	ldr r1, _08072394 @ =gBg2Tm
 	adds r0, r1, #0
 	movs r1, #0
 	bl BG_Fill
@@ -66258,7 +66258,7 @@ sub_08072374: @ 0x08072374
 	pop {r0}
 	bx r0
 	.align 2, 0
-_08072394: .4byte gBG2TilemapBuffer
+_08072394: .4byte gBg2Tm
 
 	thumb_func_start sub_08072398
 sub_08072398: @ 0x08072398
@@ -66266,7 +66266,7 @@ sub_08072398: @ 0x08072398
 	sub sp, #4
 	mov r7, sp
 	str r0, [r7]
-	ldr r1, _080723B8 @ =gBG2TilemapBuffer
+	ldr r1, _080723B8 @ =gBg2Tm
 	adds r0, r1, #0
 	movs r1, #0
 	bl BG_Fill
@@ -66277,7 +66277,7 @@ sub_08072398: @ 0x08072398
 	pop {r0}
 	bx r0
 	.align 2, 0
-_080723B8: .4byte gBG2TilemapBuffer
+_080723B8: .4byte gBg2Tm
 
 	thumb_func_start sub_080723BC
 sub_080723BC: @ 0x080723BC
@@ -66285,7 +66285,7 @@ sub_080723BC: @ 0x080723BC
 	sub sp, #0xc
 	add r7, sp, #8
 	str r0, [r7]
-	ldr r0, _08072450 @ =gBG2TilemapBuffer
+	ldr r0, _08072450 @ =gBg2Tm
 	ldr r2, [r7]
 	ldr r1, [r2, #0x2c]
 	ldr r3, [r7]
@@ -66353,7 +66353,7 @@ sub_080723BC: @ 0x080723BC
 	pop {r0}
 	bx r0
 	.align 2, 0
-_08072450: .4byte gBG2TilemapBuffer
+_08072450: .4byte gBg2Tm
 _08072454: .4byte 0x00004140
 _08072458: .4byte 0x03002790
 
@@ -66582,7 +66582,7 @@ _08072574:
 	ands r1, r2
 	adds r2, r1, #0
 	strh r2, [r0]
-	ldr r1, _08072634 @ =gBG2TilemapBuffer
+	ldr r1, _08072634 @ =gBg2Tm
 	adds r0, r1, #0
 	movs r1, #0
 	bl BG_Fill
@@ -66597,7 +66597,7 @@ _08072628:
 	bx r0
 	.align 2, 0
 _08072630: .4byte 0x03002790
-_08072634: .4byte gBG2TilemapBuffer
+_08072634: .4byte gBg2Tm
 
 	thumb_func_start sub_08072638
 sub_08072638: @ 0x08072638
@@ -66796,7 +66796,7 @@ sub_080727BC: @ 0x080727BC
 	sub sp, #0x14
 	add r7, sp, #0x10
 	str r0, [r7]
-	ldr r0, _08072874 @ =gBG2TilemapBuffer
+	ldr r0, _08072874 @ =gBg2Tm
 	ldr r1, [r7]
 	ldr r2, [r1, #0x30]
 	adds r1, r2, #0
@@ -66882,7 +66882,7 @@ _08072866:
 	pop {r0}
 	bx r0
 	.align 2, 0
-_08072874: .4byte gBG2TilemapBuffer
+_08072874: .4byte gBg2Tm
 _08072878: .4byte 0x00004140
 _0807287C: .4byte 0x083FC770
 _08072880: .4byte 0x08D659EC
@@ -67061,7 +67061,7 @@ sub_0807296C: @ 0x0807296C
 	adds r1, r0, r2
 	adds r0, r4, #0
 	bl sub_08013688
-	ldr r0, _08072AA0 @ =gBG2TilemapBuffer
+	ldr r0, _08072AA0 @ =gBg2Tm
 	ldr r1, [r7]
 	ldr r2, [r1, #0x2c]
 	movs r1, #0x10
@@ -67154,7 +67154,7 @@ sub_0807296C: @ 0x0807296C
 	.align 2, 0
 _08072A98: .4byte 0x03002790
 _08072A9C: .4byte 0x06002800
-_08072AA0: .4byte gBG2TilemapBuffer
+_08072AA0: .4byte gBg2Tm
 _08072AA4: .4byte gBmSt
 _08072AA8: .4byte 0x00004140
 
@@ -67523,7 +67523,7 @@ sub_08072D74: @ 0x08072D74
 	mov r7, sp
 	str r0, [r7]
 	bl sub_08014B58
-	ldr r1, _08072E04 @ =gBG2TilemapBuffer
+	ldr r1, _08072E04 @ =gBg2Tm
 	adds r0, r1, #0
 	movs r1, #0
 	bl BG_Fill
@@ -67588,7 +67588,7 @@ sub_08072D74: @ 0x08072D74
 	pop {r0}
 	bx r0
 	.align 2, 0
-_08072E04: .4byte gBG2TilemapBuffer
+_08072E04: .4byte gBg2Tm
 _08072E08: .4byte 0x03002790
 
 	thumb_func_start sub_08072E0C
@@ -67600,7 +67600,7 @@ sub_08072E0C: @ 0x08072E0C
 	movs r0, #0
 	bl SetOnHBlankA
 	bl sub_08014B58
-	ldr r1, _08072EA4 @ =gBG2TilemapBuffer
+	ldr r1, _08072EA4 @ =gBg2Tm
 	adds r0, r1, #0
 	movs r1, #0
 	bl BG_Fill
@@ -67665,7 +67665,7 @@ sub_08072E0C: @ 0x08072E0C
 	pop {r0}
 	bx r0
 	.align 2, 0
-_08072EA4: .4byte gBG2TilemapBuffer
+_08072EA4: .4byte gBg2Tm
 _08072EA8: .4byte 0x03002790
 
 	thumb_func_start sub_08072EAC
@@ -67770,7 +67770,7 @@ sub_08072F70: @ 0x08072F70
 	sub sp, #0x14
 	add r7, sp, #0x10
 	str r0, [r7]
-	ldr r0, _08073070 @ =gBG2TilemapBuffer
+	ldr r0, _08073070 @ =gBg2Tm
 	ldr r1, [r7]
 	ldr r2, [r1, #0x30]
 	subs r1, r2, #1
@@ -67889,7 +67889,7 @@ _08073006:
 	pop {r0}
 	bx r0
 	.align 2, 0
-_08073070: .4byte gBG2TilemapBuffer
+_08073070: .4byte gBg2Tm
 _08073074: .4byte 0x00004140
 _08073078: .4byte 0x083FB904
 _0807307C: .4byte 0x08D65A8C
@@ -67973,7 +67973,7 @@ _080730FA:
 	adds r0, r1, #0
 	movs r1, #0x10
 	bl sub_08015010
-	ldr r0, _080731F0 @ =gBG2TilemapBuffer
+	ldr r0, _080731F0 @ =gBg2Tm
 	movs r1, #0x80
 	lsls r1, r1, #3
 	ldr r2, _080731F4 @ =0x00004140
@@ -68062,7 +68062,7 @@ _080731E0: .4byte 0x06013800
 _080731E4: .4byte 0x083FDAAC
 _080731E8: .4byte 0x06002800
 _080731EC: .4byte 0x0000FFFF
-_080731F0: .4byte gBG2TilemapBuffer
+_080731F0: .4byte gBg2Tm
 _080731F4: .4byte 0x00004140
 _080731F8: .4byte 0x083F371C
 _080731FC: .4byte 0x000041C0
@@ -68615,7 +68615,7 @@ sub_08073648: @ 0x08073648
 	sub sp, #0x18
 	add r7, sp, #0x10
 	str r0, [r7]
-	ldr r0, _080736DC @ =gBG2TilemapBuffer
+	ldr r0, _080736DC @ =gBg2Tm
 	ldr r1, [r7]
 	ldr r2, [r1, #0x30]
 	adds r1, r2, #0
@@ -68683,7 +68683,7 @@ _080736CE:
 	pop {r0}
 	bx r0
 	.align 2, 0
-_080736DC: .4byte gBG2TilemapBuffer
+_080736DC: .4byte gBg2Tm
 _080736E0: .4byte 0x00004140
 _080736E4: .4byte 0x083FEBC4
 _080736E8: .4byte 0x08402F68
@@ -68950,7 +68950,7 @@ sub_080738E0: @ 0x080738E0
 	sub sp, #0x18
 	add r7, sp, #0x10
 	str r0, [r7]
-	ldr r0, _08073974 @ =gBG2TilemapBuffer
+	ldr r0, _08073974 @ =gBg2Tm
 	ldr r1, [r7]
 	ldr r2, [r1, #0x30]
 	adds r1, r2, #0
@@ -69018,7 +69018,7 @@ _08073966:
 	pop {r0}
 	bx r0
 	.align 2, 0
-_08073974: .4byte gBG2TilemapBuffer
+_08073974: .4byte gBg2Tm
 _08073978: .4byte 0x00004140
 _0807397C: .4byte 0x083FDC84
 _08073980: .4byte 0x08402FB0
@@ -69297,7 +69297,7 @@ sub_08073B40: @ 0x08073B40
 	ands r1, r2
 	adds r2, r1, #0
 	strb r2, [r0]
-	ldr r0, _08073C14 @ =gBG2TilemapBuffer
+	ldr r0, _08073C14 @ =gBg2Tm
 	ldr r1, _08073C18 @ =0x02020140
 	ldr r2, _08073C1C @ =0x00004140
 	bl TmApplyTsa_thm
@@ -69335,7 +69335,7 @@ sub_08073B40: @ 0x08073B40
 	.align 2, 0
 _08073C0C: .4byte sub_08077248
 _08073C10: .4byte 0x03002790
-_08073C14: .4byte gBG2TilemapBuffer
+_08073C14: .4byte gBg2Tm
 _08073C18: .4byte 0x02020140
 _08073C1C: .4byte 0x00004140
 _08073C20: .4byte 0x08D668CC
@@ -69685,7 +69685,7 @@ sub_08073ED8: @ 0x08073ED8
 	ldr r1, [r0, #0x30]
 	movs r0, #0x84
 	bl sub_080151FC
-	ldr r0, _08073FB0 @ =gBG2TilemapBuffer
+	ldr r0, _08073FB0 @ =gBg2Tm
 	ldr r1, [r7]
 	ldr r2, [r1, #0x30]
 	adds r1, r2, #0
@@ -69785,7 +69785,7 @@ _08073F08:
 	pop {r0}
 	bx r0
 	.align 2, 0
-_08073FB0: .4byte gBG2TilemapBuffer
+_08073FB0: .4byte gBg2Tm
 _08073FB4: .4byte 0x00004140
 _08073FB8: .4byte 0x030027CC
 _08073FBC: .4byte 0x0000FFE0
@@ -70031,7 +70031,7 @@ sub_0807419C: @ 0x0807419C
 	sub sp, #0x18
 	add r7, sp, #0x10
 	str r0, [r7]
-	ldr r0, _08074230 @ =gBG2TilemapBuffer
+	ldr r0, _08074230 @ =gBg2Tm
 	ldr r1, [r7]
 	ldr r2, [r1, #0x30]
 	adds r1, r2, #0
@@ -70099,7 +70099,7 @@ _08074222:
 	pop {r0}
 	bx r0
 	.align 2, 0
-_08074230: .4byte gBG2TilemapBuffer
+_08074230: .4byte gBg2Tm
 _08074234: .4byte 0x00004140
 _08074238: .4byte 0x0840085C
 _0807423C: .4byte 0x08403050
@@ -70223,7 +70223,7 @@ sub_08074300: @ 0x08074300
 	adds r1, r0, r2
 	adds r0, r4, #0
 	bl sub_08013688
-	ldr r0, _0807441C @ =gBG2TilemapBuffer
+	ldr r0, _0807441C @ =gBg2Tm
 	ldr r1, [r7]
 	ldr r2, [r1, #0x30]
 	adds r1, r2, #0
@@ -70335,7 +70335,7 @@ _0807434C:
 	.align 2, 0
 _08074414: .4byte 0x083FDB40
 _08074418: .4byte 0x06002800
-_0807441C: .4byte gBG2TilemapBuffer
+_0807441C: .4byte gBg2Tm
 _08074420: .4byte 0x00004140
 _08074424: .4byte 0x083FDC60
 _08074428: .4byte 0x083FDACC
@@ -86272,7 +86272,7 @@ sub_0807B94C: @ 0x0807B94C
 	ldr r0, _0807B9F4 @ =0x081BF61C
 	ldr r1, _0807B9F8 @ =0x06004000
 	bl sub_08013688
-	ldr r0, _0807B9FC @ =gBG2TilemapBuffer
+	ldr r0, _0807B9FC @ =gBg2Tm
 	ldr r1, _0807BA00 @ =0x081C0A90
 	movs r2, #0xc4
 	lsls r2, r2, #7
@@ -86309,7 +86309,7 @@ sub_0807B94C: @ 0x0807B94C
 _0807B9F0: .4byte 0x03002790
 _0807B9F4: .4byte 0x081BF61C
 _0807B9F8: .4byte 0x06004000
-_0807B9FC: .4byte gBG2TilemapBuffer
+_0807B9FC: .4byte gBg2Tm
 _0807BA00: .4byte 0x081C0A90
 _0807BA04: .4byte 0x081C0A50
 _0807BA08: .4byte 0x081C0A70
@@ -86444,7 +86444,7 @@ sub_0807BAE4: @ 0x0807BAE4
 	bne _0807BB38
 	adds r0, r5, #0
 	bl Proc_Break
-	ldr r0, _0807BB44 @ =gBG2TilemapBuffer
+	ldr r0, _0807BB44 @ =gBg2Tm
 	movs r1, #0
 	bl BG_Fill
 	movs r0, #4
@@ -86455,7 +86455,7 @@ _0807BB38:
 	bx r0
 	.align 2, 0
 _0807BB40: .4byte 0x03002790
-_0807BB44: .4byte gBG2TilemapBuffer
+_0807BB44: .4byte gBg2Tm
 
 	thumb_func_start sub_0807BB48
 sub_0807BB48: @ 0x0807BB48
@@ -86482,7 +86482,7 @@ sub_0807BB48: @ 0x0807BB48
 	movs r2, #0x80
 	lsls r2, r2, #3
 	bl CpuFastSet
-	ldr r0, _0807BBE0 @ =gBG2TilemapBuffer
+	ldr r0, _0807BBE0 @ =gBg2Tm
 	ldr r1, _0807BBE4 @ =0x081C1EA4
 	movs r2, #0xe4
 	lsls r2, r2, #7
@@ -86527,7 +86527,7 @@ sub_0807BB48: @ 0x0807BB48
 _0807BBD4: .4byte 0x03002790
 _0807BBD8: .4byte 0x06003000
 _0807BBDC: .4byte 0x06004000
-_0807BBE0: .4byte gBG2TilemapBuffer
+_0807BBE0: .4byte gBg2Tm
 _0807BBE4: .4byte 0x081C1EA4
 _0807BBE8: .4byte 0x02023460
 
@@ -87231,7 +87231,7 @@ sub_0807C170: @ 0x0807C170
 	push {lr}
 	movs r0, #0
 	bl SetOnHBlankA
-	ldr r0, _0807C1DC @ =gBG2TilemapBuffer
+	ldr r0, _0807C1DC @ =gBg2Tm
 	movs r1, #0
 	bl BG_Fill
 	ldr r0, _0807C1E0 @ =0x02022C60
@@ -87278,7 +87278,7 @@ sub_0807C170: @ 0x0807C170
 	pop {r0}
 	bx r0
 	.align 2, 0
-_0807C1DC: .4byte gBG2TilemapBuffer
+_0807C1DC: .4byte gBg2Tm
 _0807C1E0: .4byte 0x02022C60
 _0807C1E4: .4byte 0x03002790
 
@@ -87634,7 +87634,7 @@ sub_0807C490: @ 0x0807C490
 	push {r5, r6, r7}
 	sub sp, #0x14
 	mov sb, r0
-	ldr r0, _0807C574 @ =gBG2TilemapBuffer
+	ldr r0, _0807C574 @ =gBg2Tm
 	movs r1, #0
 	bl BG_Fill
 	movs r0, #4
@@ -87734,7 +87734,7 @@ sub_0807C490: @ 0x0807C490
 	pop {r0}
 	bx r0
 	.align 2, 0
-_0807C574: .4byte gBG2TilemapBuffer
+_0807C574: .4byte gBg2Tm
 _0807C578: .4byte 0x03002790
 _0807C57C: .4byte 0x030027D6
 _0807C580: .4byte 0x0000FFE0
@@ -88078,7 +88078,7 @@ sub_0807C7E8: @ 0x0807C7E8
 	ldr r0, _0807C8B0 @ =0x00008080
 	adds r3, r0, #0
 	ldr r2, _0807C8B4 @ =0x02024460
-	ldr r1, _0807C8B8 @ =gBG2TilemapBuffer
+	ldr r1, _0807C8B8 @ =gBg2Tm
 	movs r4, #0x80
 	lsls r4, r4, #3
 _0807C86C:
@@ -88109,7 +88109,7 @@ _0807C8A8: .4byte 0x02022960
 _0807C8AC: .4byte 0xFFFFFF00
 _0807C8B0: .4byte 0x00008080
 _0807C8B4: .4byte 0x02024460
-_0807C8B8: .4byte gBG2TilemapBuffer
+_0807C8B8: .4byte gBg2Tm
 
 	thumb_func_start sub_0807C8BC
 sub_0807C8BC: @ 0x0807C8BC
@@ -88235,7 +88235,7 @@ sub_0807C9A4: @ 0x0807C9A4
 	ldr r0, _0807CA10 @ =0x02023460
 	movs r1, #0
 	bl BG_Fill
-	ldr r0, _0807CA14 @ =gBG2TilemapBuffer
+	ldr r0, _0807CA14 @ =gBg2Tm
 	movs r1, #0
 	bl BG_Fill
 	movs r0, #6
@@ -88282,7 +88282,7 @@ sub_0807C9A4: @ 0x0807C9A4
 	bx r0
 	.align 2, 0
 _0807CA10: .4byte 0x02023460
-_0807CA14: .4byte gBG2TilemapBuffer
+_0807CA14: .4byte gBg2Tm
 _0807CA18: .4byte 0x03002790
 
 	thumb_func_start sub_0807CA1C
@@ -88410,7 +88410,7 @@ sub_0807CAB8: @ 0x0807CAB8
 	ldr r0, _0807CB64 @ =0x08406218
 	ldr r1, _0807CB68 @ =0x06004000
 	bl sub_08013688
-	ldr r0, _0807CB6C @ =gBG2TilemapBuffer
+	ldr r0, _0807CB6C @ =gBg2Tm
 	ldr r1, _0807CB70 @ =0x081BD6E4
 	movs r2, #0xa4
 	lsls r2, r2, #7
@@ -88444,7 +88444,7 @@ _0807CB5C: .4byte 0x0000E0FF
 _0807CB60: .4byte 0x081BD6C4
 _0807CB64: .4byte 0x08406218
 _0807CB68: .4byte 0x06004000
-_0807CB6C: .4byte gBG2TilemapBuffer
+_0807CB6C: .4byte gBg2Tm
 _0807CB70: .4byte 0x081BD6E4
 _0807CB74: .4byte sub_0807850C
 _0807CB78: .4byte sub_0807CA30
@@ -88638,7 +88638,7 @@ sub_0807CCCC: @ 0x0807CCCC
 	movs r1, #0
 	movs r2, #0
 	bl SetBgOffset
-	ldr r0, _0807CD2C @ =gBG2TilemapBuffer
+	ldr r0, _0807CD2C @ =gBg2Tm
 	movs r1, #0
 	bl BG_Fill
 	movs r0, #4
@@ -88669,7 +88669,7 @@ sub_0807CCCC: @ 0x0807CCCC
 	bx r0
 	.align 2, 0
 _0807CD28: .4byte 0x08D6FA14
-_0807CD2C: .4byte gBG2TilemapBuffer
+_0807CD2C: .4byte gBg2Tm
 _0807CD30: .4byte 0x03002790
 
 	thumb_func_start sub_0807CD34
@@ -89385,7 +89385,7 @@ sub_0807D284: @ 0x0807D284
 	strb r4, [r0]
 	cmp r2, #0x10
 	bne _0807D306
-	ldr r0, _0807D310 @ =gBG2TilemapBuffer
+	ldr r0, _0807D310 @ =gBg2Tm
 	movs r1, #0
 	bl BG_Fill
 	movs r0, #4
@@ -89421,7 +89421,7 @@ _0807D306:
 	bx r0
 	.align 2, 0
 _0807D30C: .4byte 0x03002790
-_0807D310: .4byte gBG2TilemapBuffer
+_0807D310: .4byte gBg2Tm
 
 	thumb_func_start sub_0807D314
 sub_0807D314: @ 0x0807D314
@@ -94247,7 +94247,7 @@ sub_0807F7EC: @ 0x0807F7EC
 	movs r1, #0x80
 	movs r2, #0x20
 	bl ApplyPaletteExt
-	ldr r0, _0807F890 @ =gBG2TilemapBuffer
+	ldr r0, _0807F890 @ =gBg2Tm
 	ldr r1, _0807F894 @ =0x081C6E34
 	movs r2, #0x85
 	lsls r2, r2, #7
@@ -94306,7 +94306,7 @@ sub_0807F7EC: @ 0x0807F7EC
 _0807F884: .4byte 0x081C6BAC
 _0807F888: .4byte 0x06005000
 _0807F88C: .4byte 0x081C6C34
-_0807F890: .4byte gBG2TilemapBuffer
+_0807F890: .4byte gBg2Tm
 _0807F894: .4byte 0x081C6E34
 _0807F898: .4byte 0x03002790
 
@@ -94345,7 +94345,7 @@ _0807F8D8: .4byte gBmSt
 	thumb_func_start sub_0807F8DC
 sub_0807F8DC: @ 0x0807F8DC
 	push {lr}
-	ldr r0, _0807F8F0 @ =gBG2TilemapBuffer
+	ldr r0, _0807F8F0 @ =gBg2Tm
 	movs r1, #0
 	bl BG_Fill
 	movs r0, #4
@@ -94353,7 +94353,7 @@ sub_0807F8DC: @ 0x0807F8DC
 	pop {r0}
 	bx r0
 	.align 2, 0
-_0807F8F0: .4byte gBG2TilemapBuffer
+_0807F8F0: .4byte gBg2Tm
 
 	thumb_func_start sub_0807F8F4
 sub_0807F8F4: @ 0x0807F8F4
@@ -95538,7 +95538,7 @@ sub_0808014C: @ 0x0808014C
 	ldr r0, _080801C8 @ =0x02023460
 	movs r1, #0
 	bl BG_Fill
-	ldr r0, _080801CC @ =gBG2TilemapBuffer
+	ldr r0, _080801CC @ =gBg2Tm
 	movs r1, #0
 	bl BG_Fill
 	movs r0, #6
@@ -95549,7 +95549,7 @@ sub_0808014C: @ 0x0808014C
 	.align 2, 0
 _080801C4: .4byte 0x03002790
 _080801C8: .4byte 0x02023460
-_080801CC: .4byte gBG2TilemapBuffer
+_080801CC: .4byte gBg2Tm
 
 	thumb_func_start sub_080801D0
 sub_080801D0: @ 0x080801D0
@@ -95683,7 +95683,7 @@ sub_080802C4: @ 0x080802C4
 	ldr r0, _08080328 @ =0x0818B408
 	ldr r1, _0808032C @ =0x06005800
 	bl sub_08013688
-	ldr r0, _08080330 @ =gBG2TilemapBuffer
+	ldr r0, _08080330 @ =gBg2Tm
 	ldr r1, _08080334 @ =0x0818B760
 	ldr r2, _08080338 @ =0x000072C0
 	bl TmApplyTsa_thm
@@ -95718,7 +95718,7 @@ sub_080802C4: @ 0x080802C4
 _08080324: .4byte 0x0818BC3C
 _08080328: .4byte 0x0818B408
 _0808032C: .4byte 0x06005800
-_08080330: .4byte gBG2TilemapBuffer
+_08080330: .4byte gBg2Tm
 _08080334: .4byte 0x0818B760
 _08080338: .4byte 0x000072C0
 _0808033C: .4byte 0x08187B5C
@@ -96995,7 +96995,7 @@ _08080C82:
 	mov r8, r0
 	adds r0, r4, #0
 	mov r2, r8
-	bl sub_08004D04
+	bl PutIcon
 	adds r4, r6, #0
 	adds r4, #0x78
 	ldr r0, [r6, #0xc]
@@ -97033,7 +97033,7 @@ _08080DB6:
 	adds r1, r0, #0
 	adds r0, r4, #0
 	mov r2, r8
-	bl sub_08004D04
+	bl PutIcon
 	adds r4, r6, #0
 	adds r4, #0x80
 	ldr r0, [r6, #0xc]
@@ -97309,7 +97309,7 @@ _08080FF8:
 	adds r0, r5, #0
 	movs r2, #0xa0
 	lsls r2, r2, #7
-	bl sub_08004D04
+	bl PutIcon
 	adds r0, r4, #0
 	bl GetCharacterData
 	ldrh r0, [r0]
@@ -97393,7 +97393,7 @@ sub_080810A8: @ 0x080810A8
 	adds r1, #0x70
 	movs r2, #0xa0
 	lsls r2, r2, #7
-	bl sub_08004D04
+	bl PutIcon
 	movs r7, #2
 	cmp r5, #0xfa
 	ble _080810E4
@@ -99003,7 +99003,7 @@ sub_08081D7C: @ 0x08081D7C
 	ldrb r3, [r1]
 	orrs r0, r3
 	strb r0, [r1]
-	ldr r0, _08081DE0 @ =gPaletteBuffer
+	ldr r0, _08081DE0 @ =gPal
 	strh r2, [r0]
 	bl EnablePalSync
 	pop {r4}
@@ -99012,7 +99012,7 @@ sub_08081D7C: @ 0x08081D7C
 	.align 2, 0
 _08081DD8: .4byte 0x03002790
 _08081DDC: .4byte 0x0000FFE0
-_08081DE0: .4byte gPaletteBuffer
+_08081DE0: .4byte gPal
 
 	thumb_func_start sub_08081DE4
 sub_08081DE4: @ 0x08081DE4
@@ -99028,7 +99028,7 @@ sub_08081DE4: @ 0x08081DE4
 	movs r0, #0x80
 	lsls r0, r0, #3
 	bl sub_08001818
-	ldr r0, _08081EB4 @ =gBG2TilemapBuffer
+	ldr r0, _08081EB4 @ =gBg2Tm
 	movs r1, #0
 	bl BG_Fill
 	movs r0, #4
@@ -99049,7 +99049,7 @@ sub_08081DE4: @ 0x08081DE4
 	bl sub_0804A2DC
 	movs r0, #1
 	movs r1, #0x13
-	bl sub_08004C20
+	bl ApplyIconPalette
 	ldr r0, _08081EC4 @ =0x0840349C
 	ldr r4, _08081EC8 @ =0x02020140
 	adds r1, r4, #0
@@ -99074,7 +99074,7 @@ sub_08081DE4: @ 0x08081DE4
 	bl CpuFastSet
 	movs r0, #1
 	movs r1, #0x14
-	bl sub_08004C20
+	bl ApplyIconPalette
 	ldr r0, _08081EE0 @ =0x0840417C
 	ldr r1, _08081EE4 @ =0x06004E00
 	bl sub_08013688
@@ -99097,7 +99097,7 @@ sub_08081DE4: @ 0x08081DE4
 	bx r0
 	.align 2, 0
 _08081EB0: .4byte 0x0841CDA6
-_08081EB4: .4byte gBG2TilemapBuffer
+_08081EB4: .4byte gBg2Tm
 _08081EB8: .4byte 0x0600B000
 _08081EBC: .4byte 0x0840392C
 _08081EC0: .4byte 0x06014800
@@ -99258,7 +99258,7 @@ sub_08081FD8: @ 0x08081FD8
 	ldrb r3, [r1]
 	orrs r0, r3
 	strb r0, [r1]
-	ldr r0, _0808206C @ =gPaletteBuffer
+	ldr r0, _0808206C @ =gPal
 	strh r2, [r0]
 	bl EnablePalSync
 	adds r0, r5, #0
@@ -99278,7 +99278,7 @@ _08082056:
 _08082060: .4byte gpKeySt
 _08082064: .4byte 0x03002790
 _08082068: .4byte 0x0000FFE0
-_0808206C: .4byte gPaletteBuffer
+_0808206C: .4byte gPal
 _08082070: .4byte gPlaySt
 _08082074: .4byte 0x0000038B
 _08082078:
@@ -107997,14 +107997,14 @@ sub_080864DC: @ 0x080864DC
 	ldr r1, _080865FC @ =0x06015D40
 	movs r2, #8
 	bl CpuFastSet
-	ldr r0, _08086600 @ =gPaletteBuffer
+	ldr r0, _08086600 @ =gPal
 	movs r1, #0xc0
 	lsls r1, r1, #2
 	movs r2, #0x20
 	bl ApplyPaletteExt
 	movs r0, #1
 	movs r1, #2
-	bl sub_08004C20
+	bl ApplyIconPalette
 	bl sub_08005308
 	ldr r4, _08086604 @ =gPlaySt
 	adds r0, r4, #0
@@ -108037,7 +108037,7 @@ _080865F0: .4byte 0x06002500
 _080865F4: .4byte 0x06015C00
 _080865F8: .4byte 0x06002EA0
 _080865FC: .4byte 0x06015D40
-_08086600: .4byte gPaletteBuffer
+_08086600: .4byte gPal
 _08086604: .4byte gPlaySt
 _08086608: .4byte 0x08D8B1A0
 _0808660C: .4byte gBmSt
@@ -109818,7 +109818,7 @@ sub_080873B4: @ 0x080873B4
 	ldr r0, _080874E0 @ =0x0841ADDC
 	ldr r1, _080874E4 @ =0x06005800
 	bl sub_08013688
-	ldr r0, _080874E8 @ =gBG2TilemapBuffer
+	ldr r0, _080874E8 @ =gBg2Tm
 	ldr r1, _080874EC @ =0x0841B0E0
 	movs r2, #0x96
 	lsls r2, r2, #5
@@ -109879,7 +109879,7 @@ _080874D8: .4byte 0x0000FFEC
 _080874DC: .4byte 0x0841B080
 _080874E0: .4byte 0x0841ADDC
 _080874E4: .4byte 0x06005800
-_080874E8: .4byte gBG2TilemapBuffer
+_080874E8: .4byte gBg2Tm
 _080874EC: .4byte 0x0841B0E0
 _080874F0:
 	mov r0, r8
@@ -113946,7 +113946,7 @@ _08089674:
 	ldr r0, _08089694 @ =0x02023CC8
 	movs r2, #0xa0
 	lsls r2, r2, #7
-	bl sub_08004D04
+	bl PutIcon
 	b _080896D2
 	.align 2, 0
 _08089694: .4byte 0x02023CC8
@@ -114105,7 +114105,7 @@ _080897AC:
 	bne _080897C4
 	adds r4, r4, r7
 	ldr r0, [r4]
-	bl sub_08004D54
+	bl ClearIcon
 	movs r0, #0xff
 	str r0, [r4]
 _080897C4:
@@ -114143,7 +114143,7 @@ sub_080897E0: @ 0x080897E0
 	asrs r2, r0, #0x18
 	cmp r2, #0
 	beq _08089830
-	ldr r2, _08089824 @ =gBG2TilemapBuffer
+	ldr r2, _08089824 @ =gBg2Tm
 	ldr r0, _08089828 @ =0xFFFFF368
 	adds r1, r3, r0
 	movs r4, #0x80
@@ -114158,11 +114158,11 @@ sub_080897E0: @ 0x080897E0
 	strh r1, [r0]
 	b _0808988A
 	.align 2, 0
-_08089824: .4byte gBG2TilemapBuffer
+_08089824: .4byte gBg2Tm
 _08089828: .4byte 0xFFFFF368
 _0808982C: .4byte 0xFFFFF36E
 _08089830:
-	ldr r1, _08089844 @ =gBG2TilemapBuffer
+	ldr r1, _08089844 @ =gBg2Tm
 	movs r4, #0x80
 	lsls r4, r4, #1
 	adds r0, r1, r4
@@ -114173,13 +114173,13 @@ _08089830:
 	strh r2, [r0]
 	b _0808988A
 	.align 2, 0
-_08089844: .4byte gBG2TilemapBuffer
+_08089844: .4byte gBg2Tm
 _08089848:
 	lsls r0, r5, #0x18
 	asrs r0, r0, #0x18
 	cmp r0, #0
 	beq _08089878
-	ldr r2, _0808986C @ =gBG2TilemapBuffer
+	ldr r2, _0808986C @ =gBg2Tm
 	ldr r4, _08089870 @ =0xFFFFF768
 	adds r0, r3, r4
 	movs r4, #0x9d
@@ -114193,11 +114193,11 @@ _08089848:
 	adds r1, r2, r3
 	b _08089888
 	.align 2, 0
-_0808986C: .4byte gBG2TilemapBuffer
+_0808986C: .4byte gBg2Tm
 _08089870: .4byte 0xFFFFF768
 _08089874: .4byte 0xFFFFF76E
 _08089878:
-	ldr r1, _08089898 @ =gBG2TilemapBuffer
+	ldr r1, _08089898 @ =gBg2Tm
 	movs r4, #0x9d
 	lsls r4, r4, #1
 	adds r2, r1, r4
@@ -114214,7 +114214,7 @@ _0808988A:
 	pop {r0}
 	bx r0
 	.align 2, 0
-_08089898: .4byte gBG2TilemapBuffer
+_08089898: .4byte gBg2Tm
 
 	thumb_func_start sub_0808989C
 sub_0808989C: @ 0x0808989C
@@ -114791,7 +114791,7 @@ _08089CFA:
 	cmp r0, #0
 	beq _08089D54
 _08089D0C:
-	ldr r0, _08089D4C @ =gPaletteBuffer
+	ldr r0, _08089D4C @ =gPal
 	ldr r1, _08089D50 @ =0x02012970
 	ldrh r1, [r1, #0x10]
 	movs r3, #0xcf
@@ -114821,10 +114821,10 @@ _08089D0C:
 	b _08089D90
 	.align 2, 0
 _08089D48: .4byte 0x08D8BA20
-_08089D4C: .4byte gPaletteBuffer
+_08089D4C: .4byte gPal
 _08089D50: .4byte 0x02012970
 _08089D54:
-	ldr r2, _08089E38 @ =gPaletteBuffer
+	ldr r2, _08089E38 @ =gPal
 	ldr r3, _08089E3C @ =0x02012970
 	adds r4, r6, #0
 	adds r4, #0x3c
@@ -114936,7 +114936,7 @@ _08089E0E:
 	bl sub_080897E0
 	b _08089E54
 	.align 2, 0
-_08089E38: .4byte gPaletteBuffer
+_08089E38: .4byte gPal
 _08089E3C: .4byte 0x02012970
 _08089E40: .4byte 0x0200E668
 _08089E44: .4byte 0x0200CBF0
@@ -115427,7 +115427,7 @@ _0808A200:
 	adds r0, r4, #0
 	movs r1, #0
 	bl BG_Fill
-	ldr r0, _0808A2E4 @ =gBG2TilemapBuffer
+	ldr r0, _0808A2E4 @ =gBg2Tm
 	movs r1, #0
 	bl BG_Fill
 	bl InitIcons
@@ -115514,7 +115514,7 @@ _0808A26C:
 	.align 2, 0
 _0808A2DC: .4byte 0x02022C60
 _0808A2E0: .4byte 0x02023460
-_0808A2E4: .4byte gBG2TilemapBuffer
+_0808A2E4: .4byte gBg2Tm
 _0808A2E8: .4byte 0x08428114
 _0808A2EC: .4byte 0x06014800
 _0808A2F0: .4byte 0x08428A40
@@ -117153,7 +117153,7 @@ _0808AFDA:
 	ldr r0, _0808B02C @ =0x02023460
 	movs r1, #0
 	bl BG_Fill
-	ldr r0, _0808B030 @ =gBG2TilemapBuffer
+	ldr r0, _0808B030 @ =gBg2Tm
 	movs r1, #0
 	bl BG_Fill
 	movs r0, #0xf
@@ -117179,7 +117179,7 @@ _0808B020: .4byte 0x0200CBF0
 _0808B024: .4byte gPlaySt
 _0808B028: .4byte 0x02022C60
 _0808B02C: .4byte 0x02023460
-_0808B030: .4byte gBG2TilemapBuffer
+_0808B030: .4byte gBg2Tm
 _0808B034: .4byte 0x03002790
 
 	thumb_func_start sub_0808B038
@@ -117359,7 +117359,7 @@ _0808B162:
 	cmp r4, r0
 	blt _0808B162
 _0808B188:
-	ldr r0, _0808B20C @ =gBG2TilemapBuffer
+	ldr r0, _0808B20C @ =gBg2Tm
 	ldr r1, _0808B210 @ =0x0200D4F0
 	adds r2, r6, r1
 	adds r1, r3, #0
@@ -117421,7 +117421,7 @@ _0808B1EA:
 	.align 2, 0
 _0808B204: .4byte 0x02022C60
 _0808B208: .4byte 0x0200CCF0
-_0808B20C: .4byte gBG2TilemapBuffer
+_0808B20C: .4byte gBg2Tm
 _0808B210: .4byte 0x0200D4F0
 _0808B214: .4byte 0x02023DB0
 _0808B218: .4byte 0x02022C70
@@ -117571,7 +117571,7 @@ _0808B302:
 	cmp r4, r0
 	blt _0808B302
 _0808B336:
-	ldr r7, _0808B37C @ =gBG2TilemapBuffer
+	ldr r7, _0808B37C @ =gBg2Tm
 	mov sb, r7
 	adds r5, r6, #0
 	mov r1, ip
@@ -117604,7 +117604,7 @@ _0808B348:
 _0808B370: .4byte 0x08D8B9BA
 _0808B374: .4byte 0x02022C60
 _0808B378: .4byte 0x0200CCF0
-_0808B37C: .4byte gBG2TilemapBuffer
+_0808B37C: .4byte gBg2Tm
 _0808B380: .4byte 0x0200D4F0
 _0808B384:
 	movs r5, #0
@@ -117666,7 +117666,7 @@ _0808B3E6:
 	adds r0, r5, #0
 	adds r0, #0xa8
 	lsls r0, r0, #1
-	ldr r1, _0808B44C @ =gBG2TilemapBuffer
+	ldr r1, _0808B44C @ =gBg2Tm
 	adds r2, r0, r1
 _0808B3F8:
 	ldr r5, [sp, #8]
@@ -117709,7 +117709,7 @@ _0808B430:
 _0808B440: .4byte 0x02022C60
 _0808B444: .4byte 0x0200CCF0
 _0808B448: .4byte 0x0200D4F0
-_0808B44C: .4byte gBG2TilemapBuffer
+_0808B44C: .4byte gBg2Tm
 
 	thumb_func_start sub_0808B450
 sub_0808B450: @ 0x0808B450
@@ -117850,7 +117850,7 @@ _0808B54E:
 	adds r0, r4, #0
 	movs r2, #0xa0
 	lsls r2, r2, #7
-	bl sub_08004D04
+	bl PutIcon
 	adds r4, #4
 	adds r5, #1
 	cmp r5, #7
@@ -118204,7 +118204,7 @@ _0808B81C:
 	movs r2, #0x80
 	lsls r2, r2, #7
 	adds r0, r4, #0
-	bl sub_08004D04
+	bl PutIcon
 	mov r2, r8
 	ldr r0, [r2]
 	ldr r0, [r0]
@@ -118514,7 +118514,7 @@ _0808BAE4:
 	adds r0, #0x34
 	movs r2, #0xa0
 	lsls r2, r2, #7
-	bl sub_08004D04
+	bl PutIcon
 	b _0808BEF4
 _0808BAF2:
 	ldr r0, _0808BB2C @ =0x0200CBF0
@@ -118582,7 +118582,7 @@ _0808BB38:
 	movs r2, #0x80
 	lsls r2, r2, #7
 	adds r0, r4, #0
-	bl sub_08004D04
+	bl PutIcon
 	ldr r0, [r7]
 	ldr r0, [r0]
 	bl GetUnitEquippedWeapon
@@ -125531,7 +125531,7 @@ sub_0808F010: @ 0x0808F010
 	ldr r0, _0808F204 @ =0x02023460
 	movs r1, #0
 	bl BG_Fill
-	ldr r0, _0808F208 @ =gBG2TilemapBuffer
+	ldr r0, _0808F208 @ =gBg2Tm
 	movs r1, #0
 	bl BG_Fill
 	ldr r5, _0808F20C @ =0x020106B4
@@ -125706,7 +125706,7 @@ _0808F1F8: .4byte 0x08D8C0A0
 _0808F1FC: .4byte 0x03002790
 _0808F200: .4byte 0x02022C60
 _0808F204: .4byte 0x02023460
-_0808F208: .4byte gBG2TilemapBuffer
+_0808F208: .4byte gBg2Tm
 _0808F20C: .4byte 0x020106B4
 _0808F210: .4byte 0x02010694
 _0808F214: .4byte 0x0201068C
@@ -131412,7 +131412,7 @@ sub_08091D38: @ 0x08091D38
 	bl sub_08002BC0
 	movs r1, #0
 	bl BG_Fill
-	ldr r0, _08092100 @ =gPaletteBuffer
+	ldr r0, _08092100 @ =gPal
 	strh r4, [r0]
 	bl EnablePalSync
 	mov r2, sp
@@ -131735,7 +131735,7 @@ _080920F0: .4byte 0x08D8C0A0
 _080920F4: .4byte 0x03002790
 _080920F8: .4byte 0x06017800
 _080920FC: .4byte sub_08093550
-_08092100: .4byte gPaletteBuffer
+_08092100: .4byte gPal
 _08092104: .4byte 0x020129A8
 _08092108: .4byte 0x02012A20
 _0809210C: .4byte 0x02012A70
@@ -132702,7 +132702,7 @@ _0809294A:
 	ands r0, r1
 	adds r0, #4
 	lsls r0, r0, #6
-	ldr r1, _08092A10 @ =gBG2TilemapBuffer
+	ldr r1, _08092A10 @ =gBg2Tm
 	adds r0, r0, r1
 	movs r1, #9
 	movs r2, #0
@@ -132779,7 +132779,7 @@ _0809294A:
 	.align 2, 0
 _08092A08: .4byte 0x02023460
 _08092A0C: .4byte 0x08420810
-_08092A10: .4byte gBG2TilemapBuffer
+_08092A10: .4byte gBg2Tm
 _08092A14: .4byte 0x02022D66
 _08092A18: .4byte 0x02012A98
 
@@ -133930,7 +133930,7 @@ _08093390:
 	mov r0, sl
 	movs r2, #0x80
 	lsls r2, r2, #7
-	bl sub_08004D04
+	bl PutIcon
 	adds r0, r6, #0
 	ldr r1, [sp, #0xc]
 	bl sub_08005460
@@ -134107,7 +134107,7 @@ _08093504:
 	lsls r1, r5, #5
 	adds r1, r1, r7
 	lsls r1, r1, #1
-	ldr r0, _0809353C @ =gBG2TilemapBuffer
+	ldr r0, _0809353C @ =gBg2Tm
 	adds r1, r1, r0
 	adds r0, r6, #0
 	bl sub_08005460
@@ -134130,7 +134130,7 @@ _08093514:
 	bx r0
 	.align 2, 0
 _08093538: .4byte 0x020129A8
-_0809353C: .4byte gBG2TilemapBuffer
+_0809353C: .4byte gBg2Tm
 
 	thumb_func_start sub_08093540
 sub_08093540: @ 0x08093540
@@ -134609,7 +134609,7 @@ _080938BA:
 	adds r1, #0x10
 	add r1, sb
 	lsls r1, r1, #1
-	ldr r2, _0809391C @ =gBG2TilemapBuffer
+	ldr r2, _0809391C @ =gBg2Tm
 	adds r1, r1, r2
 	movs r2, #0
 	str r2, [sp]
@@ -134636,7 +134636,7 @@ _080938F6:
 	bx r0
 	.align 2, 0
 _08093918: .4byte 0x02012AA0
-_0809391C: .4byte gBG2TilemapBuffer
+_0809391C: .4byte gBg2Tm
 
 	thumb_func_start sub_08093920
 sub_08093920: @ 0x08093920
@@ -135124,7 +135124,7 @@ _08093D10:
 	mov r0, sb
 	movs r2, #0x80
 	lsls r2, r2, #7
-	bl sub_08004D04
+	bl PutIcon
 	mov r2, r8
 	lsls r1, r2, #3
 	ldr r0, _08093DC0 @ =0x02012B10
@@ -135703,7 +135703,7 @@ sub_08094178: @ 0x08094178
 	ldr r0, _0809435C @ =0x02023460
 	movs r1, #0
 	bl BG_Fill
-	ldr r0, _08094360 @ =gBG2TilemapBuffer
+	ldr r0, _08094360 @ =gBg2Tm
 	movs r1, #0
 	bl BG_Fill
 	movs r1, #4
@@ -135883,7 +135883,7 @@ _08094350: .4byte 0x08D8C0A0
 _08094354: .4byte 0x03002790
 _08094358: .4byte 0x02022C60
 _0809435C: .4byte 0x02023460
-_08094360: .4byte gBG2TilemapBuffer
+_08094360: .4byte gBg2Tm
 _08094364: .4byte 0x0000FFE0
 _08094368: .4byte 0x0000E0FF
 _0809436C: .4byte sub_08093948
@@ -136943,7 +136943,7 @@ _08094B58:
 	mov r0, r8
 	movs r2, #0x80
 	lsls r2, r2, #7
-	bl sub_08004D04
+	bl PutIcon
 	movs r0, #8
 	add sb, r0
 	ldr r1, [sp, #0x14]
@@ -136989,7 +136989,7 @@ _08094BB8:
 	adds r0, r4, #0
 	movs r2, #0x80
 	lsls r2, r2, #7
-	bl sub_08004D04
+	bl PutIcon
 	adds r4, #0x80
 	adds r5, #1
 	cmp r5, r6
@@ -139495,7 +139495,7 @@ sub_080960F8: @ 0x080960F8
 	lsls r4, r7, #5
 	adds r4, r4, r5
 	lsls r4, r4, #1
-	ldr r0, _080961B0 @ =gBG2TilemapBuffer
+	ldr r0, _080961B0 @ =gBg2Tm
 	adds r4, r4, r0
 	ldr r0, [sp, #0x28]
 	bl sub_08017808
@@ -139503,7 +139503,7 @@ sub_080960F8: @ 0x080960F8
 	movs r2, #0x80
 	lsls r2, r2, #7
 	adds r0, r4, #0
-	bl sub_08004D04
+	bl PutIcon
 _08096144:
 	ldr r4, _080961B4 @ =0x02012A80
 	adds r0, r4, #0
@@ -139516,7 +139516,7 @@ _08096144:
 _08096156:
 	adds r0, r0, r5
 	lsls r0, r0, #1
-	ldr r1, _080961B0 @ =gBG2TilemapBuffer
+	ldr r1, _080961B0 @ =gBg2Tm
 	adds r1, r0, r1
 	movs r0, #0
 	str r0, [sp]
@@ -139559,7 +139559,7 @@ _0809619A:
 	pop {r0}
 	bx r0
 	.align 2, 0
-_080961B0: .4byte gBG2TilemapBuffer
+_080961B0: .4byte gBg2Tm
 _080961B4: .4byte 0x02012A80
 
 	thumb_func_start sub_080961B8
@@ -139997,7 +139997,7 @@ _08096528:
 	adds r0, r4, #0
 	movs r2, #0x80
 	lsls r2, r2, #7
-	bl sub_08004D04
+	bl PutIcon
 	adds r1, r5, #6
 	add r1, sl
 	mov r0, r8
@@ -140070,7 +140070,7 @@ _080965D4:
 	adds r0, r4, #0
 	movs r2, #0x80
 	lsls r2, r2, #7
-	bl sub_08004D04
+	bl PutIcon
 	adds r6, #4
 	adds r5, #1
 	adds r0, r7, #7
@@ -140147,7 +140147,7 @@ _08096658:
 	movs r2, #0x80
 	lsls r2, r2, #7
 	adds r0, r5, #0
-	bl sub_08004D04
+	bl PutIcon
 	adds r1, r4, #6
 	adds r0, r7, #0
 	bl sub_08005460
@@ -140538,7 +140538,7 @@ sub_080969A8: @ 0x080969A8
 	lsls r4, r4, #2
 	adds r4, #0x7c
 	bl GetGameTime
-	ldr r2, _08096A20 @ =gPaletteBuffer
+	ldr r2, _08096A20 @ =gPal
 	lsrs r0, r0, #2
 	movs r1, #0xf
 	ands r0, r1
@@ -140583,7 +140583,7 @@ sub_080969A8: @ 0x080969A8
 	pop {r0}
 	bx r0
 	.align 2, 0
-_08096A20: .4byte gPaletteBuffer
+_08096A20: .4byte gPal
 _08096A24: .4byte 0x08421C24
 _08096A28: .4byte 0x000002DA
 _08096A2C: .4byte 0x08D8D4F8
@@ -143008,7 +143008,7 @@ sub_08097DD4: @ 0x08097DD4
 	lsls r4, r4, #2
 	adds r4, #0x7c
 	bl GetGameTime
-	ldr r2, _08097E4C @ =gPaletteBuffer
+	ldr r2, _08097E4C @ =gPal
 	lsrs r0, r0, #2
 	movs r1, #0xf
 	ands r0, r1
@@ -143053,7 +143053,7 @@ sub_08097DD4: @ 0x08097DD4
 	pop {r0}
 	bx r0
 	.align 2, 0
-_08097E4C: .4byte gPaletteBuffer
+_08097E4C: .4byte gPal
 _08097E50: .4byte 0x08421C24
 _08097E54: .4byte 0x0000029A
 _08097E58: .4byte 0x08D8D4F8
@@ -147861,7 +147861,7 @@ sub_0809A528: @ 0x0809A528
 	ble _0809A554
 	lsls r0, r1, #5
 	adds r0, r4, r0
-	ldr r1, _0809A55C @ =gBG2TilemapBuffer
+	ldr r1, _0809A55C @ =gBg2Tm
 	adds r5, r2, #0
 	lsls r0, r0, #1
 	adds r4, r0, r1
@@ -147879,7 +147879,7 @@ _0809A554:
 	pop {r0}
 	bx r0
 	.align 2, 0
-_0809A55C: .4byte gBG2TilemapBuffer
+_0809A55C: .4byte gBg2Tm
 
 	thumb_func_start sub_0809A560
 sub_0809A560: @ 0x0809A560
@@ -147891,7 +147891,7 @@ sub_0809A560: @ 0x0809A560
 	sub sp, #0x1c
 	adds r7, r0, #0
 	bl ResetText
-	ldr r4, _0809A6EC @ =gBG2TilemapBuffer
+	ldr r4, _0809A6EC @ =gBg2Tm
 	adds r0, r4, #0
 	movs r1, #0
 	bl BG_Fill
@@ -148065,7 +148065,7 @@ _0809A5E8:
 	bl sub_08005998
 	b _0809A730
 	.align 2, 0
-_0809A6EC: .4byte gBG2TilemapBuffer
+_0809A6EC: .4byte gBg2Tm
 _0809A6F0: .4byte 0x08D8D738
 _0809A6F4: .4byte 0x08D8D634
 _0809A6F8: .4byte 0x02023C64
@@ -152314,7 +152314,7 @@ _0809C8C4:
 	lsls r1, r4, #5
 	add r1, r8
 	lsls r1, r1, #1
-	ldr r0, _0809C928 @ =gBG2TilemapBuffer
+	ldr r0, _0809C928 @ =gBg2Tm
 	adds r1, r1, r0
 	adds r0, r5, #0
 	bl sub_08005460
@@ -152336,7 +152336,7 @@ _0809C902:
 	bx r0
 	.align 2, 0
 _0809C924: .4byte 0x08C4C158
-_0809C928: .4byte gBG2TilemapBuffer
+_0809C928: .4byte gBg2Tm
 
 	thumb_func_start sub_0809C92C
 sub_0809C92C: @ 0x0809C92C
@@ -152488,7 +152488,7 @@ sub_0809C9F8: @ 0x0809C9F8
 	adds r1, #0x79
 	movs r2, #0xa0
 	lsls r2, r2, #7
-	bl sub_08004D04
+	bl PutIcon
 	mov r2, r8
 	ldrb r2, [r2]
 	lsls r0, r2, #0x1c
@@ -152913,7 +152913,7 @@ sub_0809CE20: @ 0x0809CE20
 	movs r0, #0
 	ldr r1, _0809CE94 @ =0x02023460
 	mov sl, r1
-	ldr r6, _0809CE98 @ =gBG2TilemapBuffer
+	ldr r6, _0809CE98 @ =gBg2Tm
 	mov sb, r6
 	ldr r7, _0809CE9C @ =0x02012BFC
 	ldr r1, _0809CEA0 @ =0x02022C60
@@ -152965,7 +152965,7 @@ _0809CE54:
 	bx r0
 	.align 2, 0
 _0809CE94: .4byte 0x02023460
-_0809CE98: .4byte gBG2TilemapBuffer
+_0809CE98: .4byte gBg2Tm
 _0809CE9C: .4byte 0x02012BFC
 _0809CEA0: .4byte 0x02022C60
 _0809CEA4: .4byte 0x02013BFC
@@ -153145,7 +153145,7 @@ sub_0809CFD8: @ 0x0809CFD8
 	adds r0, #3
 	lsls r0, r0, #5
 	adds r0, #0x10
-	ldr r1, _0809D070 @ =gBG2TilemapBuffer
+	ldr r1, _0809D070 @ =gBg2Tm
 	lsls r0, r0, #1
 	adds r4, r0, r1
 _0809D012:
@@ -153162,7 +153162,7 @@ _0809D012:
 	adds r0, #3
 	lsls r0, r0, #5
 	adds r0, #0x16
-	ldr r1, _0809D070 @ =gBG2TilemapBuffer
+	ldr r1, _0809D070 @ =gBg2Tm
 	lsls r0, r0, #1
 	adds r4, r0, r1
 _0809D034:
@@ -153179,7 +153179,7 @@ _0809D034:
 	adds r0, #3
 	lsls r0, r0, #5
 	adds r0, #0x19
-	ldr r1, _0809D070 @ =gBG2TilemapBuffer
+	ldr r1, _0809D070 @ =gBg2Tm
 	lsls r0, r0, #1
 	adds r4, r0, r1
 _0809D056:
@@ -153194,7 +153194,7 @@ _0809D056:
 	b _0809D1B4
 	.align 2, 0
 _0809D06C: .4byte 0x0842D208
-_0809D070: .4byte gBG2TilemapBuffer
+_0809D070: .4byte gBg2Tm
 _0809D074:
 	movs r7, #0
 	mov r2, sb
@@ -153254,7 +153254,7 @@ _0809D094:
 	movs r2, #0xe0
 	lsls r2, r2, #8
 	adds r0, r4, #0
-	bl sub_08004D04
+	bl PutIcon
 	ldr r0, [sp, #0x14]
 	ldr r1, [sp, #0x18]
 	bl sub_0809F5FC
@@ -153286,7 +153286,7 @@ _0809D12C:
 	ble _0809D134
 	movs r7, #0
 _0809D134:
-	ldr r3, _0809D16C @ =gBG2TilemapBuffer
+	ldr r3, _0809D16C @ =gBg2Tm
 	adds r0, r4, r3
 	mov r1, sb
 	adds r1, #4
@@ -153312,7 +153312,7 @@ _0809D134:
 	bl sub_08005FEC
 	b _0809D1B4
 	.align 2, 0
-_0809D16C: .4byte gBG2TilemapBuffer
+_0809D16C: .4byte gBg2Tm
 _0809D170:
 	movs r5, #0
 	mov r0, sb
@@ -153337,7 +153337,7 @@ _0809D190:
 	ble _0809D198
 	movs r7, #0
 _0809D198:
-	ldr r0, _0809D1C4 @ =gBG2TilemapBuffer
+	ldr r0, _0809D1C4 @ =gBg2Tm
 	adds r0, r4, r0
 	mov r3, r8
 	adds r3, #4
@@ -153360,7 +153360,7 @@ _0809D1B4:
 	pop {r0}
 	bx r0
 	.align 2, 0
-_0809D1C4: .4byte gBG2TilemapBuffer
+_0809D1C4: .4byte gBg2Tm
 
 	thumb_func_start sub_0809D1C8
 sub_0809D1C8: @ 0x0809D1C8
@@ -154557,7 +154557,7 @@ sub_0809DB74: @ 0x0809DB74
 	sub sp, #4
 	str r0, [sp]
 	movs r4, #0
-	ldr r0, _0809DBE4 @ =gBG2TilemapBuffer
+	ldr r0, _0809DBE4 @ =gBg2Tm
 	mov sl, r0
 _0809DB88:
 	ldr r2, [sp]
@@ -154607,7 +154607,7 @@ _0809DBB4:
 	bge _0809DBB4
 	b _0809DC20
 	.align 2, 0
-_0809DBE4: .4byte gBG2TilemapBuffer
+_0809DBE4: .4byte gBg2Tm
 _0809DBE8: .4byte 0x02012BFC
 _0809DBEC: .4byte 0x02022C60
 _0809DBF0: .4byte 0x02023460
@@ -154996,7 +154996,7 @@ sub_0809DEEC: @ 0x0809DEEC
 	adds r0, r4, #0
 	movs r1, #0
 	bl BG_Fill
-	ldr r0, _0809DFA4 @ =gBG2TilemapBuffer
+	ldr r0, _0809DFA4 @ =gBg2Tm
 	movs r1, #0
 	bl BG_Fill
 	adds r2, r5, #0
@@ -155057,7 +155057,7 @@ sub_0809DEEC: @ 0x0809DEEC
 	.align 2, 0
 _0809DF9C: .4byte 0x02022C60
 _0809DFA0: .4byte 0x02023460
-_0809DFA4: .4byte gBG2TilemapBuffer
+_0809DFA4: .4byte gBg2Tm
 _0809DFA8: .4byte 0x0842C3C0
 _0809DFAC: .4byte 0x08C4C158
 _0809DFB0:
@@ -156716,7 +156716,7 @@ sub_0809EC74: @ 0x0809EC74
 	ldr r0, _0809ED74 @ =0x02023460
 	movs r1, #0
 	bl BG_Fill
-	ldr r0, _0809ED78 @ =gBG2TilemapBuffer
+	ldr r0, _0809ED78 @ =gBg2Tm
 	movs r1, #0
 	bl BG_Fill
 	ldr r0, _0809ED7C @ =0x02024460
@@ -156780,7 +156780,7 @@ _0809ED44:
 _0809ED6C: .4byte 0x03002790
 _0809ED70: .4byte 0x02022C60
 _0809ED74: .4byte 0x02023460
-_0809ED78: .4byte gBG2TilemapBuffer
+_0809ED78: .4byte gBg2Tm
 _0809ED7C: .4byte 0x02024460
 _0809ED80: .4byte 0x0201440C
 _0809ED84:
@@ -166950,7 +166950,7 @@ sub_080A3B20: @ 0x080A3B20
 	ldr r0, _080A3BA4 @ =0x02020140
 	str r0, [r1]
 	movs r2, #1
-	ldr r0, _080A3BA8 @ =gPaletteBuffer
+	ldr r0, _080A3BA8 @ =gPal
 	mov sl, r0
 	movs r0, #0x1f
 	mov r8, r0
@@ -167013,7 +167013,7 @@ _080A3B84:
 	.align 2, 0
 _080A3BA0: .4byte 0x0200050C
 _080A3BA4: .4byte 0x02020140
-_080A3BA8: .4byte gPaletteBuffer
+_080A3BA8: .4byte gPal
 
 	thumb_func_start sub_080A3BAC
 sub_080A3BAC: @ 0x080A3BAC
@@ -167058,7 +167058,7 @@ sub_080A3BE8: @ 0x080A3BE8
 	adds r0, r2, r1
 	ldrb r3, [r0]
 	adds r3, #0x10
-	ldr r2, _080A3C28 @ =gPaletteBuffer
+	ldr r2, _080A3C28 @ =gPal
 	lsls r0, r3, #0xa
 	lsls r1, r3, #5
 	adds r0, r0, r1
@@ -167073,7 +167073,7 @@ sub_080A3BE8: @ 0x080A3BE8
 	bx r0
 	.align 2, 0
 _080A3C24: .4byte 0x0842D7C3
-_080A3C28: .4byte gPaletteBuffer
+_080A3C28: .4byte gPal
 
 	thumb_func_start sub_080A3C2C
 sub_080A3C2C: @ 0x080A3C2C
@@ -168192,7 +168192,7 @@ _080A4492:
 	movs r1, #0x7f
 	ands r0, r1
 	strb r0, [r2, #1]
-	ldr r1, _080A4548 @ =gPaletteBuffer
+	ldr r1, _080A4548 @ =gPal
 	movs r0, #0
 	strh r0, [r1]
 	bl EnablePalSync
@@ -168234,7 +168234,7 @@ _080A4538: .4byte sub_080A3F48
 _080A453C: .4byte 0x0842DD14
 _080A4540: .4byte 0x02024460
 _080A4544: .4byte 0x0842FD94
-_080A4548: .4byte gPaletteBuffer
+_080A4548: .4byte gPal
 
 	thumb_func_start sub_080A454C
 sub_080A454C: @ 0x080A454C
@@ -171442,7 +171442,7 @@ _080A5E6A:
 	lsls r0, r0, #1
 	add r0, ip
 	lsls r0, r0, #1
-	ldr r1, _080A5EF8 @ =gPaletteBuffer
+	ldr r1, _080A5EF8 @ =gPal
 	adds r0, r0, r1
 	ldrh r1, [r0]
 	mov r2, r8
@@ -171482,7 +171482,7 @@ _080A5E6A:
 	lsls r0, r0, #1
 	add r0, ip
 	lsls r0, r0, #1
-	ldr r4, _080A5EF8 @ =gPaletteBuffer
+	ldr r4, _080A5EF8 @ =gPal
 	adds r0, r0, r4
 	orrs r3, r2
 	orrs r1, r3
@@ -171505,7 +171505,7 @@ _080A5ED4:
 	bx r0
 	.align 2, 0
 _080A5EF4: .4byte 0x02000004
-_080A5EF8: .4byte gPaletteBuffer
+_080A5EF8: .4byte gPal
 
 	thumb_func_start sub_080A5EFC
 sub_080A5EFC: @ 0x080A5EFC
@@ -171841,7 +171841,7 @@ sub_080A61B0: @ 0x080A61B0
 	lsls r0, r0, #0x18
 	cmp r0, #0
 	beq _080A61DC
-	ldr r2, _080A61D8 @ =gPaletteBuffer
+	ldr r2, _080A61D8 @ =gPal
 	lsrs r0, r1, #0x12
 	movs r1, #0xf
 	ands r0, r1
@@ -171857,9 +171857,9 @@ sub_080A61B0: @ 0x080A61B0
 	strh r0, [r2]
 	b _080A61EA
 	.align 2, 0
-_080A61D8: .4byte gPaletteBuffer
+_080A61D8: .4byte gPal
 _080A61DC:
-	ldr r0, _080A61F4 @ =gPaletteBuffer
+	ldr r0, _080A61F4 @ =gPal
 	ldr r2, _080A61F8 @ =0x0000033A
 	adds r1, r0, r2
 	ldrh r1, [r1]
@@ -171871,7 +171871,7 @@ _080A61EA:
 	pop {r0}
 	bx r0
 	.align 2, 0
-_080A61F4: .4byte gPaletteBuffer
+_080A61F4: .4byte gPal
 _080A61F8: .4byte 0x0000033A
 
 	thumb_func_start sub_080A61FC
@@ -172022,7 +172022,7 @@ _080A631E:
 	ldrh r0, [r7, #0x2a]
 	ldrb r1, [r4]
 	bl sub_080A71EC
-	ldr r2, _080A636C @ =gPaletteBuffer
+	ldr r2, _080A636C @ =gPal
 	ldr r3, _080A6370 @ =0x02000004
 	ldrh r1, [r7, #0x2a]
 	lsrs r0, r1, #2
@@ -172057,7 +172057,7 @@ _080A631E:
 	strb r0, [r4]
 	b _080A6408
 	.align 2, 0
-_080A636C: .4byte gPaletteBuffer
+_080A636C: .4byte gPal
 _080A6370: .4byte 0x02000004
 _080A6374:
 	ldr r0, _080A642C @ =0x080C0E98
@@ -173738,7 +173738,7 @@ _080A7024: .4byte 0x08DADAC8
 	thumb_func_start sub_080A7028
 sub_080A7028: @ 0x080A7028
 	push {lr}
-	ldr r0, _080A703C @ =gBG2TilemapBuffer
+	ldr r0, _080A703C @ =gBg2Tm
 	ldr r1, _080A7040 @ =0x06007000
 	movs r2, #0x80
 	lsls r2, r2, #4
@@ -173746,7 +173746,7 @@ sub_080A7028: @ 0x080A7028
 	pop {r0}
 	bx r0
 	.align 2, 0
-_080A703C: .4byte gBG2TilemapBuffer
+_080A703C: .4byte gBg2Tm
 _080A7040: .4byte 0x06007000
 
 	thumb_func_start sub_080A7044
@@ -174348,7 +174348,7 @@ _080A7442:
 	adds r1, #0x79
 	movs r2, #0xa0
 	lsls r2, r2, #7
-	bl sub_08004D04
+	bl PutIcon
 	movs r0, #0
 	bl sub_08005320
 	pop {r4, r5, r6}
@@ -174519,7 +174519,7 @@ sub_080A75C4: @ 0x080A75C4
 	lsls r1, r1, #1
 	movs r2, #0x20
 	bl ApplyPaletteExt
-	ldr r0, _080A76B4 @ =gBG2TilemapBuffer
+	ldr r0, _080A76B4 @ =gBg2Tm
 	ldr r1, _080A76B8 @ =0x08438954
 	ldr r2, _080A76BC @ =0x0000F080
 	bl TmApplyTsa_thm
@@ -174551,7 +174551,7 @@ _080A76A4: .4byte 0x030027D4
 _080A76A8: .4byte 0x084364A0
 _080A76AC: .4byte 0x06001000
 _080A76B0: .4byte 0x08436480
-_080A76B4: .4byte gBG2TilemapBuffer
+_080A76B4: .4byte gBg2Tm
 _080A76B8: .4byte 0x08438954
 _080A76BC: .4byte 0x0000F080
 _080A76C0: .4byte 0x06008000
@@ -175242,7 +175242,7 @@ _080A7C02:
 	adds r1, #0x79
 	movs r2, #0xa0
 	lsls r2, r2, #7
-	bl sub_08004D04
+	bl PutIcon
 	ldr r4, _080A7C94 @ =0x0200006C
 	adds r0, r4, #0
 	bl sub_08005320
@@ -175548,7 +175548,7 @@ _080A7E9E:
 	adds r1, #0x79
 	movs r2, #0xa0
 	lsls r2, r2, #7
-	bl sub_08004D04
+	bl PutIcon
 	ldr r4, _080A7F28 @ =0x0200006C
 	adds r0, r4, #0
 	bl sub_08005320
@@ -180133,7 +180133,7 @@ sub_080AA278: @ 0x080AA278
 	sub sp, #4
 	adds r5, r0, #0
 	bl GetGameTime
-	ldr r1, _080AA338 @ =gPaletteBuffer
+	ldr r1, _080AA338 @ =gPal
 	ldrh r3, [r5, #0x3a]
 	lsls r2, r3, #5
 	movs r4, #0x87
@@ -180222,7 +180222,7 @@ _080AA306:
 	pop {r0}
 	bx r0
 	.align 2, 0
-_080AA338: .4byte gPaletteBuffer
+_080AA338: .4byte gPal
 _080AA33C: .4byte gPlaySt
 _080AA340: .4byte 0x08428A80
 _080AA344: .4byte 0x08BFF760
@@ -181941,7 +181941,7 @@ sub_080AB01C: @ 0x080AB01C
 	movs r3, #0x1f
 	ands r1, r3
 	ands r2, r3
-	ldr r4, _080AB03C @ =gPaletteBuffer
+	ldr r4, _080AB03C @ =gPal
 	lsls r2, r2, #0xa
 	lsls r1, r1, #5
 	adds r2, r2, r1
@@ -181953,7 +181953,7 @@ sub_080AB01C: @ 0x080AB01C
 	pop {r0}
 	bx r0
 	.align 2, 0
-_080AB03C: .4byte gPaletteBuffer
+_080AB03C: .4byte gPal
 
 	thumb_func_start sub_080AB040
 sub_080AB040: @ 0x080AB040
@@ -182364,7 +182364,7 @@ sub_080AB324: @ 0x080AB324
 	sub sp, #4
 	movs r0, #0
 	str r0, [sp]
-	ldr r1, _080AB340 @ =gPaletteBuffer
+	ldr r1, _080AB340 @ =gPal
 	ldr r2, _080AB344 @ =0x01000100
 	mov r0, sp
 	bl CpuFastSet
@@ -182373,7 +182373,7 @@ sub_080AB324: @ 0x080AB324
 	pop {r0}
 	bx r0
 	.align 2, 0
-_080AB340: .4byte gPaletteBuffer
+_080AB340: .4byte gPal
 _080AB344: .4byte 0x01000100
 
 	thumb_func_start sub_080AB348
@@ -182895,7 +182895,7 @@ sub_080AB6FC: @ 0x080AB6FC
 	adds r6, r1, #0
 	ldr r1, [r0, #0x30]
 	lsls r1, r1, #5
-	ldr r2, _080AB7BC @ =gPaletteBuffer
+	ldr r2, _080AB7BC @ =gPal
 	adds r1, r1, r2
 	mov r8, r1
 	ldr r1, [r0, #0x3c]
@@ -182985,7 +182985,7 @@ _080AB7A8:
 	pop {r0}
 	bx r0
 	.align 2, 0
-_080AB7BC: .4byte gPaletteBuffer
+_080AB7BC: .4byte gPal
 
 	thumb_func_start sub_080AB7C0
 sub_080AB7C0: @ 0x080AB7C0
@@ -184857,14 +184857,14 @@ sub_080AC538: @ 0x080AC538
 	lsrs r0, r1, #4
 	subs r0, #1
 	lsls r7, r0, #2
-	ldr r0, _080AC554 @ =gBG2TilemapBuffer
+	ldr r0, _080AC554 @ =gBg2Tm
 	movs r1, #0
 	bl BG_Fill
 	adds r4, r7, #0
 	adds r0, r4, #0
 	b _080AC618
 	.align 2, 0
-_080AC554: .4byte gBG2TilemapBuffer
+_080AC554: .4byte gBg2Tm
 _080AC558:
 	adds r0, r6, #0
 	adds r1, r4, #0
@@ -184899,7 +184899,7 @@ _080AC580:
 	lsls r2, r2, #2
 	adds r0, r0, r2
 	lsls r0, r0, #1
-	ldr r1, _080AC5AC @ =gBG2TilemapBuffer
+	ldr r1, _080AC5AC @ =gBg2Tm
 	adds r0, r0, r1
 	movs r1, #1
 	movs r2, #0x14
@@ -184908,7 +184908,7 @@ _080AC580:
 	b _080AC614
 	.align 2, 0
 _080AC5A8: .4byte 0x08DAE514
-_080AC5AC: .4byte gBG2TilemapBuffer
+_080AC5AC: .4byte gBg2Tm
 _080AC5B0:
 	cmp r4, #0x62
 	ble _080AC5E8
@@ -184929,14 +184929,14 @@ _080AC5BC:
 	lsls r2, r2, #2
 	adds r0, r0, r2
 	lsls r0, r0, #1
-	ldr r1, _080AC5E4 @ =gBG2TilemapBuffer
+	ldr r1, _080AC5E4 @ =gBg2Tm
 	adds r0, r0, r1
 	adds r2, r4, #1
 	adds r1, r5, #0
 	bl sub_08006068
 	b _080AC614
 	.align 2, 0
-_080AC5E4: .4byte gBG2TilemapBuffer
+_080AC5E4: .4byte gBg2Tm
 _080AC5E8:
 	adds r2, r4, #0
 	cmp r4, #0
@@ -184955,7 +184955,7 @@ _080AC5F0:
 	lsls r2, r2, #2
 	adds r0, r0, r2
 	lsls r0, r0, #1
-	ldr r1, _080AC63C @ =gBG2TilemapBuffer
+	ldr r1, _080AC63C @ =gBg2Tm
 	adds r0, r0, r1
 	adds r2, r4, #1
 	adds r1, r5, #0
@@ -184982,7 +184982,7 @@ _080AC62E:
 	pop {r0}
 	bx r0
 	.align 2, 0
-_080AC63C: .4byte gBG2TilemapBuffer
+_080AC63C: .4byte gBg2Tm
 
 	thumb_func_start sub_080AC640
 sub_080AC640: @ 0x080AC640
@@ -185086,7 +185086,7 @@ sub_080AC680: @ 0x080AC680
 	mov r0, sl
 	movs r1, #0
 	bl BG_Fill
-	ldr r0, _080AC954 @ =gBG2TilemapBuffer
+	ldr r0, _080AC954 @ =gBg2Tm
 	movs r1, #0
 	bl BG_Fill
 	ldr r0, _080AC958 @ =0x02024460
@@ -185337,7 +185337,7 @@ sub_080AC680: @ 0x080AC680
 _080AC948: .4byte 0x03002790
 _080AC94C: .4byte 0x02022C60
 _080AC950: .4byte 0x02023460
-_080AC954: .4byte gBG2TilemapBuffer
+_080AC954: .4byte gBg2Tm
 _080AC958: .4byte 0x02024460
 _080AC95C: .4byte 0x08432E44
 _080AC960: .4byte 0x06004000
@@ -185766,7 +185766,7 @@ sub_080ACC74: @ 0x080ACC74
 	ldr r0, _080ACDC8 @ =0x02023460
 	movs r1, #0
 	bl BG_Fill
-	ldr r0, _080ACDCC @ =gBG2TilemapBuffer
+	ldr r0, _080ACDCC @ =gBg2Tm
 	movs r1, #0
 	bl BG_Fill
 	ldr r4, _080ACDD0 @ =0x08DAEC6C
@@ -185889,7 +185889,7 @@ sub_080ACC74: @ 0x080ACC74
 	.align 2, 0
 _080ACDC4: .4byte 0x02022C60
 _080ACDC8: .4byte 0x02023460
-_080ACDCC: .4byte gBG2TilemapBuffer
+_080ACDCC: .4byte gBg2Tm
 _080ACDD0: .4byte 0x08DAEC6C
 _080ACDD4: .4byte 0x08DAEC70
 
@@ -185947,7 +185947,7 @@ sub_080ACDD8: @ 0x080ACDD8
 	ldr r1, _080ACE9C @ =0x08433CA0
 	mov r2, r8
 	bl TmApplyTsa_thm
-	ldr r0, _080ACEA0 @ =gBG2TilemapBuffer
+	ldr r0, _080ACEA0 @ =gBg2Tm
 	ldr r4, _080ACEA4 @ =0x08DAEC70
 	ldr r1, [r4]
 	movs r2, #0x80
@@ -185982,7 +185982,7 @@ _080ACE90: .4byte 0x08DAEC6C
 _080ACE94: .4byte 0x08433C0C
 _080ACE98: .4byte 0x000004D4
 _080ACE9C: .4byte 0x08433CA0
-_080ACEA0: .4byte gBG2TilemapBuffer
+_080ACEA0: .4byte gBg2Tm
 _080ACEA4: .4byte 0x08DAEC70
 _080ACEA8: .4byte 0x08432E88
 
@@ -186389,7 +186389,7 @@ sub_080AD1A4: @ 0x080AD1A4
 	adds r1, r5, #0
 	movs r2, #0x40
 	bl ApplyPaletteExt
-	ldr r0, _080AD250 @ =gPaletteBuffer
+	ldr r0, _080AD250 @ =gPal
 	adds r0, r0, r5
 	movs r1, #0
 	strh r1, [r0]
@@ -186447,7 +186447,7 @@ _080AD1E8:
 _080AD244: .4byte 0x06014000
 _080AD248: .4byte 0x0201EA50
 _080AD24C: .4byte 0x081901C8
-_080AD250: .4byte gPaletteBuffer
+_080AD250: .4byte gPal
 _080AD254: .4byte 0x0001FFFF
 _080AD258: .4byte 0x000003FF
 _080AD25C: .4byte 0x08439BE4
@@ -187672,7 +187672,7 @@ sub_080ADBCC: @ 0x080ADBCC
 	mov sb, r3
 	ldr r0, [sp, #8]
 	lsls r4, r0, #6
-	ldr r1, _080ADC7C @ =gBG2TilemapBuffer
+	ldr r1, _080ADC7C @ =gBg2Tm
 	adds r1, r1, r4
 	mov sl, r1
 	mov r0, sl
@@ -187716,11 +187716,11 @@ _080ADC60:
 _080ADC70: .4byte 0x08DAEF70
 _080ADC74: .4byte 0x08DAEF68
 _080ADC78: .4byte 0x08DAEF60
-_080ADC7C: .4byte gBG2TilemapBuffer
+_080ADC7C: .4byte gBg2Tm
 _080ADC80:
 	mov r0, r8
 	bl GetItemName
-	ldr r1, _080ADCD0 @ =gBG2TilemapBuffer
+	ldr r1, _080ADCD0 @ =gBg2Tm
 	adds r1, #4
 	adds r1, r4, r1
 	movs r2, #0
@@ -187730,7 +187730,7 @@ _080ADC80:
 	mov r2, sb
 	movs r3, #0
 	bl sub_08005998
-	ldr r0, _080ADCD0 @ =gBG2TilemapBuffer
+	ldr r0, _080ADCD0 @ =gBg2Tm
 	adds r0, #0x14
 	adds r5, r4, r0
 	mov r4, sb
@@ -187750,14 +187750,14 @@ _080ADCAA:
 	movs r2, #0x80
 	lsls r2, r2, #7
 	mov r0, sl
-	bl sub_08004D04
+	bl PutIcon
 	b _080ADD02
 	.align 2, 0
-_080ADCD0: .4byte gBG2TilemapBuffer
+_080ADCD0: .4byte gBg2Tm
 _080ADCD4:
 	mov r0, r8
 	bl GetItemName
-	ldr r1, _080ADD50 @ =gBG2TilemapBuffer
+	ldr r1, _080ADD50 @ =gBg2Tm
 	adds r1, #4
 	adds r1, r4, r1
 	movs r2, #0
@@ -187773,7 +187773,7 @@ _080ADCD4:
 	movs r2, #0x80
 	lsls r2, r2, #7
 	mov r0, sl
-	bl sub_08004D04
+	bl PutIcon
 _080ADD02:
 	adds r6, #8
 	adds r0, r6, #0
@@ -187814,7 +187814,7 @@ _080ADD40:
 	pop {r0}
 	bx r0
 	.align 2, 0
-_080ADD50: .4byte gBG2TilemapBuffer
+_080ADD50: .4byte gBg2Tm
 _080ADD54: .4byte 0x02023C78
 _080ADD58: .4byte 0x08DAEF60
 
@@ -189152,7 +189152,7 @@ _080AE81C:
 	movs r2, #0x80
 	lsls r2, r2, #7
 	adds r0, r4, #0
-	bl sub_08004D04
+	bl PutIcon
 	ldr r1, _080AE884 @ =0x08DAEF60
 	ldr r0, [r1]
 	ldr r2, [sp, #0x30]
@@ -189544,7 +189544,7 @@ sub_080AEB3C: @ 0x080AEB3C
 	movs r0, #0x80
 	lsls r0, r0, #7
 	adds r1, r2, r0
-	ldr r3, _080AEBD0 @ =gBG2TilemapBuffer
+	ldr r3, _080AEBD0 @ =gBg2Tm
 	adds r0, r4, #2
 	lsls r0, r0, #1
 	adds r0, r0, r3
@@ -189577,7 +189577,7 @@ sub_080AEB3C: @ 0x080AEB3C
 _080AEBC4: .4byte 0x08DAF0C4
 _080AEBC8: .4byte 0x08DAF054
 _080AEBCC: .4byte 0x0000FFC0
-_080AEBD0: .4byte gBG2TilemapBuffer
+_080AEBD0: .4byte gBg2Tm
 _080AEBD4: .4byte 0x00004001
 _080AEBD8: .4byte 0x00004021
 
@@ -189781,7 +189781,7 @@ _080AED6A:
 	ldr r2, [sp, #8]
 	adds r1, r1, r2
 	lsls r1, r1, #1
-	ldr r2, _080AEDA4 @ =gBG2TilemapBuffer
+	ldr r2, _080AEDA4 @ =gBg2Tm
 	adds r1, r1, r2
 	bl sub_08005460
 	add sp, #0xc
@@ -189796,14 +189796,14 @@ _080AED6A:
 _080AED98: .4byte 0x08DAF054
 _080AED9C: .4byte 0x08DAF0C4
 _080AEDA0: .4byte 0x08DAF028
-_080AEDA4: .4byte gBG2TilemapBuffer
+_080AEDA4: .4byte gBg2Tm
 
 	thumb_func_start sub_080AEDA8
 sub_080AEDA8: @ 0x080AEDA8
 	push {lr}
 	movs r0, #1
 	movs r1, #0x12
-	bl sub_08004C20
+	bl ApplyIconPalette
 	movs r0, #0x80
 	movs r1, #3
 	bl sub_080B2D90
@@ -190052,7 +190052,7 @@ _080AEED6:
 	adds r0, r5, #0
 	movs r1, #0
 	bl BG_Fill
-	ldr r0, _080AF0E0 @ =gBG2TilemapBuffer
+	ldr r0, _080AF0E0 @ =gBg2Tm
 	movs r1, #0
 	bl BG_Fill
 	ldr r0, _080AF0E4 @ =0x02024460
@@ -190169,7 +190169,7 @@ _080AF0D0: .4byte 0x08DAF054
 _080AF0D4: .4byte 0x03002790
 _080AF0D8: .4byte 0x02022C60
 _080AF0DC: .4byte 0x02023460
-_080AF0E0: .4byte gBG2TilemapBuffer
+_080AF0E0: .4byte gBg2Tm
 _080AF0E4: .4byte 0x02024460
 _080AF0E8: .4byte 0x0843F0E4
 _080AF0EC: .4byte 0x0843E7EC
@@ -190824,7 +190824,7 @@ sub_080AF608: @ 0x080AF608
 	movs r0, #0x1f
 	ands r5, r0
 	lsls r0, r5, #5
-	ldr r2, _080AF684 @ =gBG2TilemapBuffer
+	ldr r2, _080AF684 @ =gBg2Tm
 	movs r4, #0
 	adds r1, r0, #0
 	adds r1, #0x22
@@ -190876,7 +190876,7 @@ _080AF66E:
 	pop {r0}
 	bx r0
 	.align 2, 0
-_080AF684: .4byte gBG2TilemapBuffer
+_080AF684: .4byte gBg2Tm
 _080AF688: .4byte 0x02022C60
 
 	thumb_func_start sub_080AF68C
@@ -191225,7 +191225,7 @@ sub_080AF944: @ 0x080AF944
 	cmp r3, r0
 	bge _080AF970
 	ldr r2, _080AF978 @ =0x020144F8
-	ldr r1, _080AF97C @ =gPaletteBuffer
+	ldr r1, _080AF97C @ =gPal
 	lsls r0, r3, #1
 	adds r4, r0, r1
 	adds r2, r0, r2
@@ -191246,7 +191246,7 @@ _080AF970:
 	bx r0
 	.align 2, 0
 _080AF978: .4byte 0x020144F8
-_080AF97C: .4byte gPaletteBuffer
+_080AF97C: .4byte gPal
 
 	thumb_func_start nullsub_088
 nullsub_088: @ 0x080AF980
@@ -191338,7 +191338,7 @@ _080AFA1C:
 	asrs r0, r0, #8
 	adds r0, r0, r4
 	ands r0, r5
-	ldr r1, _080AFA6C @ =gPaletteBuffer
+	ldr r1, _080AFA6C @ =gPal
 	add r1, ip
 	orrs r2, r3
 	orrs r2, r0
@@ -191375,7 +191375,7 @@ _080AFA5A:
 	bx r0
 	.align 2, 0
 _080AFA68: .4byte 0x020144F8
-_080AFA6C: .4byte gPaletteBuffer
+_080AFA6C: .4byte gPal
 
 	thumb_func_start sub_080AFA70
 sub_080AFA70: @ 0x080AFA70
@@ -191464,7 +191464,7 @@ _080AFB0C:
 	asrs r0, r0, #8
 	adds r0, r0, r4
 	ands r0, r1
-	ldr r1, _080AFB90 @ =gPaletteBuffer
+	ldr r1, _080AFB90 @ =gPal
 	add r1, ip
 	orrs r2, r3
 	orrs r2, r0
@@ -191495,7 +191495,7 @@ _080AFB2A:
 	adds r0, r6, r0
 	cmp r6, r0
 	bge _080AFB78
-	ldr r0, _080AFB90 @ =gPaletteBuffer
+	ldr r0, _080AFB90 @ =gPal
 	ldr r2, _080AFB8C @ =0x020144F8
 	lsls r1, r6, #1
 	adds r3, r1, r0
@@ -191529,7 +191529,7 @@ _080AFB7E:
 	bx r0
 	.align 2, 0
 _080AFB8C: .4byte 0x020144F8
-_080AFB90: .4byte gPaletteBuffer
+_080AFB90: .4byte gPal
 
 	thumb_func_start sub_080AFB94
 sub_080AFB94: @ 0x080AFB94
@@ -191910,7 +191910,7 @@ sub_080AFE38: @ 0x080AFE38
 	lsls r4, r4, #0x18
 	lsrs r4, r4, #0x18
 	movs r5, #1
-	ldr r2, _080AFE94 @ =gPaletteBuffer
+	ldr r2, _080AFE94 @ =gPal
 	movs r0, #0x80
 	lsls r0, r0, #1
 	ldr r1, _080AFE98 @ =0x0000021E
@@ -191933,7 +191933,7 @@ _080AFE84:
 	mov sb, r2
 	b _080AFEA8
 	.align 2, 0
-_080AFE94: .4byte gPaletteBuffer
+_080AFE94: .4byte gPal
 _080AFE98: .4byte 0x0000021E
 _080AFE9C: .4byte 0x00000222
 _080AFEA0:
@@ -192620,7 +192620,7 @@ sub_080B03E0: @ 0x080B03E0
 	adds r3, r0, #0
 	movs r0, #0
 	strh r0, [r3, #0x2a]
-	ldr r0, _080B0444 @ =gPaletteBuffer
+	ldr r0, _080B0444 @ =gPal
 	movs r1, #0
 	movs r4, #0xf
 	ldr r2, _080B0448 @ =0x000003FE
@@ -192668,7 +192668,7 @@ _080B0434:
 	pop {r0}
 	bx r0
 	.align 2, 0
-_080B0444: .4byte gPaletteBuffer
+_080B0444: .4byte gPal
 _080B0448: .4byte 0x000003FE
 
 	thumb_func_start sub_080B044C
@@ -192779,7 +192779,7 @@ sub_080B04EC: @ 0x080B04EC
 	mov sl, r1
 _080B0518:
 	movs r4, #0
-	ldr r6, _080B05A8 @ =gPaletteBuffer
+	ldr r6, _080B05A8 @ =gPal
 	movs r7, #0xf8
 	lsls r7, r7, #2
 	adds r3, r6, r7
@@ -192852,7 +192852,7 @@ _080B0580:
 	pop {r0}
 	bx r0
 	.align 2, 0
-_080B05A8: .4byte gPaletteBuffer
+_080B05A8: .4byte gPal
 _080B05AC: .4byte 0x08DAF8C4
 _080B05B0: .4byte 0x000001FF
 _080B05B4: .4byte 0x08DAF8E4
@@ -193203,7 +193203,7 @@ _080B083A:
 	ldr r0, _080B0A1C @ =0x02023460
 	movs r1, #0
 	bl BG_Fill
-	ldr r2, _080B0A20 @ =gBG2TilemapBuffer
+	ldr r2, _080B0A20 @ =gBg2Tm
 	mov r8, r2
 	mov r0, r8
 	movs r1, #0
@@ -193400,7 +193400,7 @@ _080B09E2:
 	.align 2, 0
 _080B0A18: .4byte 0x02022C60
 _080B0A1C: .4byte 0x02023460
-_080B0A20: .4byte gBG2TilemapBuffer
+_080B0A20: .4byte gBg2Tm
 _080B0A24: .4byte 0x03002790
 _080B0A28: .4byte 0x08421C64
 _080B0A2C: .4byte 0x08440300
@@ -197825,7 +197825,7 @@ sub_080B2C4C: @ 0x080B2C4C
 	adds r0, r1, #0
 	movs r1, #0
 	bl BG_Fill
-	ldr r1, _080B2D34 @ =gBG2TilemapBuffer
+	ldr r1, _080B2D34 @ =gBg2Tm
 	adds r0, r1, #0
 	movs r1, #0
 	bl BG_Fill
@@ -197851,7 +197851,7 @@ sub_080B2C4C: @ 0x080B2C4C
 _080B2D28: .4byte 0x03002790
 _080B2D2C: .4byte 0x02022C60
 _080B2D30: .4byte 0x02023460
-_080B2D34: .4byte gBG2TilemapBuffer
+_080B2D34: .4byte gBg2Tm
 _080B2D38: .4byte 0x02024460
 
 	thumb_func_start sub_080B2D3C
@@ -200052,7 +200052,7 @@ sub_080B3DF0: @ 0x080B3DF0
 	ldr r1, _080B3E50 @ =0x06001000
 	ldr r2, _080B3E54 @ =0x01001400
 	bl CpuFastSet
-	ldr r0, _080B3E58 @ =gBG2TilemapBuffer
+	ldr r0, _080B3E58 @ =gBg2Tm
 	movs r1, #0
 	bl BG_Fill
 	movs r1, #0x80
@@ -200080,7 +200080,7 @@ _080B3E48: .4byte 0x0200000C
 _080B3E4C: .4byte 0x01000200
 _080B3E50: .4byte 0x06001000
 _080B3E54: .4byte 0x01001400
-_080B3E58: .4byte gBG2TilemapBuffer
+_080B3E58: .4byte gBg2Tm
 _080B3E5C: .4byte 0x00000804
 
 	thumb_func_start sub_080B3E60
@@ -200151,7 +200151,7 @@ sub_080B3E94: @ 0x080B3E94
 	adds r2, r2, r3
 	ldrh r1, [r2]
 	strh r1, [r6]
-	ldr r3, _080B3F3C @ =gBG2TilemapBuffer
+	ldr r3, _080B3F3C @ =gBg2Tm
 	lsls r0, r4, #5
 	adds r0, r0, r5
 	lsls r0, r0, #1
@@ -200194,7 +200194,7 @@ _080B3F24:
 _080B3F30: .4byte 0x0200000C
 _080B3F34: .4byte 0x00000802
 _080B3F38: .4byte 0x0000FFFF
-_080B3F3C: .4byte gBG2TilemapBuffer
+_080B3F3C: .4byte gBg2Tm
 _080B3F40: .4byte 0x0000A080
 _080B3F44: .4byte 0x06001000
 
@@ -205355,7 +205355,7 @@ sub_080B6664: @ 0x080B6664
 	lsls r1, r1, #2
 	movs r2, #0x80
 	bl ApplyPaletteExt
-	ldr r0, _080B66BC @ =gPaletteBuffer
+	ldr r0, _080B66BC @ =gPal
 	lsls r4, r4, #5
 	adds r4, r4, r0
 	adds r4, #2
@@ -205376,7 +205376,7 @@ _080B669A:
 _080B66B0: .4byte 0x08DB0F44
 _080B66B4: .4byte 0x08DB101C
 _080B66B8: .4byte 0x081900E8
-_080B66BC: .4byte gPaletteBuffer
+_080B66BC: .4byte gPal
 
 	thumb_func_start sub_080B66C0
 sub_080B66C0: @ 0x080B66C0
@@ -205475,7 +205475,7 @@ sub_080B6754: @ 0x080B6754
 	lsls r1, r1, #2
 	movs r2, #0x80
 	bl ApplyPaletteExt
-	ldr r0, _080B67AC @ =gPaletteBuffer
+	ldr r0, _080B67AC @ =gPal
 	lsls r4, r4, #5
 	adds r4, r4, r0
 	adds r4, #2
@@ -205496,7 +205496,7 @@ _080B678A:
 _080B67A0: .4byte 0x08DB0F44
 _080B67A4: .4byte 0x08DB1034
 _080B67A8: .4byte 0x081900E8
-_080B67AC: .4byte gPaletteBuffer
+_080B67AC: .4byte gPal
 
 	thumb_func_start sub_080B67B0
 sub_080B67B0: @ 0x080B67B0
@@ -206134,7 +206134,7 @@ sub_080B6C8C: @ 0x080B6C8C
 	adds r4, r0, #0
 	mov sb, r1
 	mov sl, r2
-	ldr r0, _080B6D4C @ =gPaletteBuffer
+	ldr r0, _080B6D4C @ =gPal
 	movs r2, #0x80
 	lsls r2, r2, #1
 	adds r1, r0, r2
@@ -206193,7 +206193,7 @@ _080B6CFE:
 	mov ip, r1
 	lsls r6, r0, #5
 	lsls r0, r7, #6
-	ldr r2, _080B6D58 @ =gBG2TilemapBuffer
+	ldr r2, _080B6D58 @ =gBg2Tm
 	adds r3, r0, r2
 _080B6D16:
 	mov r7, sb
@@ -206224,10 +206224,10 @@ _080B6D16:
 	ble _080B6CFE
 	b _080B6D9E
 	.align 2, 0
-_080B6D4C: .4byte gPaletteBuffer
+_080B6D4C: .4byte gPal
 _080B6D50: .4byte 0x06001000
 _080B6D54: .4byte 0x06008000
-_080B6D58: .4byte gBG2TilemapBuffer
+_080B6D58: .4byte gBg2Tm
 _080B6D5C: .4byte 0x02024460
 _080B6D60: .4byte 0xFFFF8000
 _080B6D64:
@@ -206237,7 +206237,7 @@ _080B6D64:
 	lsls r2, r2, #5
 	bl CpuFastSet
 	movs r7, #0
-	ldr r0, _080B6DC0 @ =gBG2TilemapBuffer
+	ldr r0, _080B6DC0 @ =gBg2Tm
 	mov r8, r0
 	ldr r6, _080B6DC4 @ =0x02024460
 	ldr r1, _080B6DC8 @ =0x00008080
@@ -206276,7 +206276,7 @@ _080B6D9E:
 	.align 2, 0
 _080B6DB8: .4byte 0x06008000
 _080B6DBC: .4byte 0x06001000
-_080B6DC0: .4byte gBG2TilemapBuffer
+_080B6DC0: .4byte gBg2Tm
 _080B6DC4: .4byte 0x02024460
 _080B6DC8: .4byte 0x00008080
 
@@ -208567,7 +208567,7 @@ _080B7F42:
 	thumb_func_start sub_080B7F54
 sub_080B7F54: @ 0x080B7F54
 	push {r4, r5, r6, r7, lr}
-	ldr r3, _080B7F9C @ =gPaletteBuffer
+	ldr r3, _080B7F9C @ =gPal
 	movs r0, #0x1f
 	mov ip, r0
 	movs r6, #0xf8
@@ -208603,13 +208603,13 @@ _080B7F68:
 	pop {r0}
 	bx r0
 	.align 2, 0
-_080B7F9C: .4byte gPaletteBuffer
+_080B7F9C: .4byte gPal
 
 	thumb_func_start sub_080B7FA0
 sub_080B7FA0: @ 0x080B7FA0
 	push {lr}
 	adds r2, r0, #0
-	ldr r3, _080B7FC4 @ =gPaletteBuffer
+	ldr r3, _080B7FC4 @ =gPal
 	lsls r1, r1, #4
 	cmp r1, #0
 	ble _080B7FBA
@@ -208626,7 +208626,7 @@ _080B7FBA:
 	pop {r0}
 	bx r0
 	.align 2, 0
-_080B7FC4: .4byte gPaletteBuffer
+_080B7FC4: .4byte gPal
 
 	thumb_func_start sub_080B7FC8
 sub_080B7FC8: @ 0x080B7FC8
@@ -209349,7 +209349,7 @@ sub_080B84C0: @ 0x080B84C0
 	strb r0, [r6, #1]
 	str r4, [sp, #4]
 	add r0, sp, #4
-	ldr r1, _080B8580 @ =gPaletteBuffer
+	ldr r1, _080B8580 @ =gPal
 	ldr r2, _080B8584 @ =0x01000100
 	bl CpuFastSet
 	bl sub_080B7BCC
@@ -209368,7 +209368,7 @@ sub_080B84C0: @ 0x080B84C0
 	.align 2, 0
 _080B8578: .4byte 0x01000008
 _080B857C: .4byte 0x03002790
-_080B8580: .4byte gPaletteBuffer
+_080B8580: .4byte gPal
 _080B8584: .4byte 0x01000100
 
 	thumb_func_start sub_080B8588
@@ -210407,7 +210407,7 @@ sub_080B8D8C: @ 0x080B8D8C
 	movs r2, #0xe0
 	lsls r2, r2, #8
 	bl TmApplyTsa_thm
-	ldr r4, _080B8DEC @ =gBG2TilemapBuffer
+	ldr r4, _080B8DEC @ =gBg2Tm
 	ldr r1, _080B8DF0 @ =0x086167D0
 	ldr r5, _080B8DF4 @ =0x0000C280
 	adds r0, r4, #0
@@ -210430,7 +210430,7 @@ _080B8DDC: .4byte 0x08615F40
 _080B8DE0: .4byte 0x08615F00
 _080B8DE4: .4byte 0x02024460
 _080B8DE8: .4byte 0x08615A4C
-_080B8DEC: .4byte gBG2TilemapBuffer
+_080B8DEC: .4byte gBg2Tm
 _080B8DF0: .4byte 0x086167D0
 _080B8DF4: .4byte 0x0000C280
 _080B8DF8: .4byte 0x0861684C
@@ -210604,7 +210604,7 @@ sub_080B8F48: @ 0x080B8F48
 	ldr r0, _080B8F7C @ =0x02023460
 	movs r1, #0
 	bl BG_Fill
-	ldr r0, _080B8F80 @ =gBG2TilemapBuffer
+	ldr r0, _080B8F80 @ =gBg2Tm
 	movs r1, #0
 	bl BG_Fill
 	bl sub_0800EC08
@@ -210617,7 +210617,7 @@ sub_080B8F48: @ 0x080B8F48
 	.align 2, 0
 _080B8F78: .4byte 0x02022C60
 _080B8F7C: .4byte 0x02023460
-_080B8F80: .4byte gBG2TilemapBuffer
+_080B8F80: .4byte gBg2Tm
 
 	thumb_func_start sub_080B8F84
 sub_080B8F84: @ 0x080B8F84
@@ -211963,7 +211963,7 @@ sub_080B9A08: @ 0x080B9A08
 	ldr r0, _080B9A38 @ =0x08618430
 	ldr r1, _080B9A3C @ =0x06001000
 	bl sub_08013688
-	ldr r0, _080B9A40 @ =gBG2TilemapBuffer
+	ldr r0, _080B9A40 @ =gBg2Tm
 	ldr r1, _080B9A44 @ =0x0861882C
 	ldr r2, _080B9A48 @ =0x0000E080
 	bl TmApplyTsa_thm
@@ -211975,7 +211975,7 @@ sub_080B9A08: @ 0x080B9A08
 _080B9A34: .4byte 0x08618410
 _080B9A38: .4byte 0x08618430
 _080B9A3C: .4byte 0x06001000
-_080B9A40: .4byte gBG2TilemapBuffer
+_080B9A40: .4byte gBg2Tm
 _080B9A44: .4byte 0x0861882C
 _080B9A48: .4byte 0x0000E080
 
@@ -212244,7 +212244,7 @@ sub_080B9C20: @ 0x080B9C20
 	ldr r0, _080B9C78 @ =0x08406218
 	ldr r1, _080B9C7C @ =0x06004000
 	bl sub_08013688
-	ldr r0, _080B9C80 @ =gBG2TilemapBuffer
+	ldr r0, _080B9C80 @ =gBg2Tm
 	ldr r1, _080B9C84 @ =0x081BD6E4
 	movs r2, #0xa4
 	lsls r2, r2, #7
@@ -212262,7 +212262,7 @@ _080B9C70: .4byte 0x03002790
 _080B9C74: .4byte 0x08407E9C
 _080B9C78: .4byte 0x08406218
 _080B9C7C: .4byte 0x06004000
-_080B9C80: .4byte gBG2TilemapBuffer
+_080B9C80: .4byte gBg2Tm
 _080B9C84: .4byte 0x081BD6E4
 
 	thumb_func_start sub_080B9C88
@@ -214797,7 +214797,7 @@ sub_080BB0A8: @ 0x080BB0A8
 	ldr r0, _080BB1E0 @ =0x02023460
 	movs r1, #0
 	bl BG_Fill
-	ldr r0, _080BB1E4 @ =gBG2TilemapBuffer
+	ldr r0, _080BB1E4 @ =gBg2Tm
 	movs r1, #0
 	bl BG_Fill
 	ldr r0, _080BB1E8 @ =0x02024460
@@ -214852,7 +214852,7 @@ _080BB1D4: .4byte 0x0000FFF8
 _080BB1D8: .4byte 0x0000FFD0
 _080BB1DC: .4byte 0x02022C60
 _080BB1E0: .4byte 0x02023460
-_080BB1E4: .4byte gBG2TilemapBuffer
+_080BB1E4: .4byte gBg2Tm
 _080BB1E8: .4byte 0x02024460
 
 	thumb_func_start sub_080BB1EC
@@ -216937,7 +216937,7 @@ sub_080BC240: @ 0x080BC240
 	ldr r1, _080BC358 @ =0x06010000
 	adds r2, r5, #0
 	bl CpuFastSet
-	ldr r5, _080BC35C @ =gPaletteBuffer
+	ldr r5, _080BC35C @ =gPal
 	movs r4, #0x1f
 _080BC28A:
 	ldr r0, _080BC360 @ =0x0864AD14
@@ -217028,7 +217028,7 @@ _080BC34C: .4byte 0x086C450C
 _080BC350: .4byte 0x01000008
 _080BC354: .4byte 0x06008000
 _080BC358: .4byte 0x06010000
-_080BC35C: .4byte gPaletteBuffer
+_080BC35C: .4byte gPal
 _080BC360: .4byte 0x0864AD14
 _080BC364: .4byte 0x03002790
 _080BC368: .4byte 0x08630288
@@ -217973,7 +217973,7 @@ sub_080BCB0C: @ 0x080BCB0C
 	bl sub_080AB348
 	movs r0, #0
 	str r0, [sp]
-	ldr r1, _080BCB60 @ =gPaletteBuffer
+	ldr r1, _080BCB60 @ =gPal
 	ldr r2, _080BCB64 @ =0x01000008
 	mov r0, sp
 	bl CpuFastSet
@@ -218000,7 +218000,7 @@ sub_080BCB0C: @ 0x080BCB0C
 	pop {r0}
 	bx r0
 	.align 2, 0
-_080BCB60: .4byte gPaletteBuffer
+_080BCB60: .4byte gPal
 _080BCB64: .4byte 0x01000008
 _080BCB68: .4byte 0x03002790
 
@@ -218261,7 +218261,7 @@ sub_080BCD34: @ 0x080BCD34
 	adds r0, r6, #0
 	movs r1, #0
 	bl BG_Fill
-	ldr r0, _080BCE68 @ =gBG2TilemapBuffer
+	ldr r0, _080BCE68 @ =gBg2Tm
 	movs r1, #0
 	bl BG_Fill
 	ldr r0, _080BCE6C @ =0x02024460
@@ -218373,7 +218373,7 @@ sub_080BCD34: @ 0x080BCD34
 _080BCE5C: .4byte 0x03002790
 _080BCE60: .4byte 0x02022C60
 _080BCE64: .4byte 0x02023460
-_080BCE68: .4byte gBG2TilemapBuffer
+_080BCE68: .4byte gBg2Tm
 _080BCE6C: .4byte 0x02024460
 _080BCE70: .4byte 0x08DBA048
 _080BCE74: .4byte sub_080BCD00
@@ -218492,7 +218492,7 @@ _080BCF32:
 	bl sub_080AB634
 	adds r0, r5, #0
 	bl Proc_Break
-	ldr r0, _080BCF94 @ =gPaletteBuffer
+	ldr r0, _080BCF94 @ =gPal
 	strh r4, [r0]
 	bl EnablePalSync
 _080BCF78:
@@ -218507,7 +218507,7 @@ _080BCF78:
 _080BCF88: .4byte 0x086C4524
 _080BCF8C: .4byte 0x03002790
 _080BCF90: .4byte 0x02023460
-_080BCF94: .4byte gPaletteBuffer
+_080BCF94: .4byte gPal
 
 	thumb_func_start sub_080BCF98
 sub_080BCF98: @ 0x080BCF98
@@ -220060,7 +220060,7 @@ sub_080BDB40: @ 0x080BDB40
 	mov ip, r1
 	adds r5, r3, #0
 	lsls r2, r2, #5
-	ldr r0, _080BDBE0 @ =gPaletteBuffer
+	ldr r0, _080BDBE0 @ =gPal
 	adds r7, r2, r0
 	movs r0, #0x80
 	lsls r0, r0, #1
@@ -220132,7 +220132,7 @@ _080BDB66:
 	pop {r0}
 	bx r0
 	.align 2, 0
-_080BDBE0: .4byte gPaletteBuffer
+_080BDBE0: .4byte gPal
 
 	thumb_func_start sub_080BDBE4
 sub_080BDBE4: @ 0x080BDBE4
@@ -220194,7 +220194,7 @@ sub_080BDC2C: @ 0x080BDC2C
 	cmp r4, r0
 	bne _080BDC6C
 	lsls r0, r6, #5
-	ldr r1, _080BDC64 @ =gPaletteBuffer
+	ldr r1, _080BDC64 @ =gPal
 	adds r0, r0, r1
 	ldr r1, _080BDC68 @ =0x020072BC
 	movs r2, #8
@@ -220202,7 +220202,7 @@ sub_080BDC2C: @ 0x080BDC2C
 	b _080BDC92
 	.align 2, 0
 _080BDC60: .4byte 0x08DB9398
-_080BDC64: .4byte gPaletteBuffer
+_080BDC64: .4byte gPal
 _080BDC68: .4byte 0x020072BC
 _080BDC6C:
 	cmp r4, #0
@@ -220336,7 +220336,7 @@ sub_080BDD34: @ 0x080BDD34
 	cmp r6, r0
 	bne _080BDD8C
 	lsls r0, r5, #5
-	ldr r1, _080BDD84 @ =gPaletteBuffer
+	ldr r1, _080BDD84 @ =gPal
 	adds r0, r0, r1
 	ldr r1, _080BDD88 @ =0x020072BC
 	movs r2, #8
@@ -220344,7 +220344,7 @@ sub_080BDD34: @ 0x080BDD34
 	b _080BDD96
 	.align 2, 0
 _080BDD80: .4byte 0x08DB93B0
-_080BDD84: .4byte gPaletteBuffer
+_080BDD84: .4byte gPal
 _080BDD88: .4byte 0x020072BC
 _080BDD8C:
 	ldr r1, _080BDE18 @ =0x020072BC
@@ -220442,7 +220442,7 @@ _080BDE32:
 	movs r2, #8
 	bl CpuFastSet
 	lsls r1, r5, #5
-	ldr r0, _080BDE64 @ =gPaletteBuffer
+	ldr r0, _080BDE64 @ =gPal
 	adds r1, r1, r0
 	adds r0, r4, #0
 	movs r2, #8
@@ -220459,7 +220459,7 @@ _080BDE50:
 	bx r0
 	.align 2, 0
 _080BDE60: .4byte 0x020072DC
-_080BDE64: .4byte gPaletteBuffer
+_080BDE64: .4byte gPal
 
 	thumb_func_start sub_080BDE68
 sub_080BDE68: @ 0x080BDE68

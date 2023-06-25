@@ -471,7 +471,7 @@ _0800A870:
 	ldrb r1, [r0]
 	movs r0, #1
 _0800A886:
-	bl sub_08004C20
+	bl ApplyIconPalette
 	adds r4, #0x10
 	b _0800A8D8
 	.align 2, 0
@@ -884,7 +884,7 @@ _0800AB46:
 	adds r1, r5, #0
 	adds r1, #0x40
 	ldrh r1, [r1]
-	bl sub_08004D74
+	bl PutIconObjImg
 _0800ABBE:
 	mov r1, r8
 	adds r1, #1
@@ -2463,7 +2463,7 @@ sub_0800B72C: @ 0x0800B72C
 	bl ApplyPaletteExt
 	movs r0, #8
 	bl EnableBgSync
-	ldr r1, _0800B7B8 @ =gPaletteBuffer
+	ldr r1, _0800B7B8 @ =gPal
 	movs r0, #0
 	strh r0, [r1]
 	pop {r4, r5, r6}
@@ -2472,7 +2472,7 @@ sub_0800B72C: @ 0x0800B72C
 	.align 2, 0
 _0800B7B0: .4byte 0x08C00798
 _0800B7B4: .4byte 0x02024460
-_0800B7B8: .4byte gPaletteBuffer
+_0800B7B8: .4byte gPal
 
 	thumb_func_start sub_0800B7BC
 sub_0800B7BC: @ 0x0800B7BC
@@ -2524,7 +2524,7 @@ sub_0800B7BC: @ 0x0800B7BC
 	bl ApplyPaletteExt
 	movs r0, #8
 	bl EnableBgSync
-	ldr r1, _0800B844 @ =gPaletteBuffer
+	ldr r1, _0800B844 @ =gPal
 	movs r0, #0
 	strh r0, [r1]
 	pop {r4, r5, r6}
@@ -2533,7 +2533,7 @@ sub_0800B7BC: @ 0x0800B7BC
 	.align 2, 0
 _0800B83C: .4byte 0x08C00798
 _0800B840: .4byte 0x02024460
-_0800B844: .4byte gPaletteBuffer
+_0800B844: .4byte gPal
 
 	thumb_func_start sub_0800B848
 sub_0800B848: @ 0x0800B848

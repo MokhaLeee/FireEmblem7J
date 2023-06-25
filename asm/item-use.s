@@ -1049,7 +1049,7 @@ _08027AD4: .4byte 0x03004360
 sub_08027AD8: @ 0x08027AD8
 	push {lr}
 	bl sub_0801D6D8
-	ldr r0, _08027AF8 @ =gBG2TilemapBuffer
+	ldr r0, _08027AF8 @ =gBg2Tm
 	movs r1, #0
 	bl BG_Fill
 	movs r0, #4
@@ -1060,7 +1060,7 @@ sub_08027AD8: @ 0x08027AD8
 	pop {r0}
 	bx r0
 	.align 2, 0
-_08027AF8: .4byte gBG2TilemapBuffer
+_08027AF8: .4byte gBg2Tm
 _08027AFC: .4byte gActionSt
 
 	thumb_func_start sub_08027B00
@@ -1256,7 +1256,7 @@ sub_08027C58: @ 0x08027C58
 	ldr r0, _08027CE0 @ =gActiveUnit
 	ldr r0, [r0]
 	bl sub_08027AD8
-	ldr r0, _08027CE4 @ =gBG2TilemapBuffer
+	ldr r0, _08027CE4 @ =gBg2Tm
 	movs r1, #0
 	bl BG_Fill
 	movs r0, #4
@@ -1276,7 +1276,7 @@ _08027CD4: .4byte gBmMapMovement
 _08027CD8: .4byte gpKeySt
 _08027CDC: .4byte gActionSt
 _08027CE0: .4byte gActiveUnit
-_08027CE4: .4byte gBG2TilemapBuffer
+_08027CE4: .4byte gBg2Tm
 _08027CE8: .4byte gPlaySt
 _08027CEC: .4byte 0x0000038A
 _08027CF0:
@@ -1300,7 +1300,7 @@ _08027D04:
 	adds r0, r5, #0
 	movs r1, #0x63
 	bl Proc_Goto
-	ldr r0, _08027D8C @ =gBG2TilemapBuffer
+	ldr r0, _08027D8C @ =gBg2Tm
 	movs r1, #0
 	bl BG_Fill
 	movs r0, #4
@@ -1354,7 +1354,7 @@ _08027D7C:
 	.align 2, 0
 _08027D84: .4byte gPlaySt
 _08027D88: .4byte gpKeySt
-_08027D8C: .4byte gBG2TilemapBuffer
+_08027D8C: .4byte gBg2Tm
 _08027D90: .4byte 0x0000038B
 _08027D94: .4byte gBmSt
 
@@ -2172,7 +2172,7 @@ _0802843C:
 	ands r0, r1
 	cmp r0, #0
 	beq _08028472
-	ldr r0, _08028490 @ =gBG2TilemapBuffer
+	ldr r0, _08028490 @ =gBg2Tm
 	movs r1, #0
 	bl BG_Fill
 	movs r0, #4
@@ -2203,7 +2203,7 @@ _08028482:
 	.align 2, 0
 _08028488: .4byte gPlaySt
 _0802848C: .4byte gpKeySt
-_08028490: .4byte gBG2TilemapBuffer
+_08028490: .4byte gBg2Tm
 _08028494: .4byte 0x0000038B
 _08028498: .4byte gBmSt
 

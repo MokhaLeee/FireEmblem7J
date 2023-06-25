@@ -11,6 +11,8 @@ enum { false, true };
 #define __bool_true_false_are_defined	1
 #endif /* bool */
 
+typedef void (* Func)(void);
+
 struct Vec2 {
     s16 x, y;
 };

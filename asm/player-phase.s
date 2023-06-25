@@ -1898,7 +1898,7 @@ _0801D53C:
 	ldrsh r2, [r7, r0]
 	adds r2, r2, r5
 	str r5, [sp]
-	ldr r0, _0801D5DC @ =gBG2TilemapBuffer
+	ldr r0, _0801D5DC @ =gBg2Tm
 	adds r3, r4, #0
 	bl sub_0801983C
 	subs r4, #1
@@ -1966,7 +1966,7 @@ _0801D53C:
 	.align 2, 0
 _0801D5D4: .4byte 0x03002790
 _0801D5D8: .4byte gBmSt
-_0801D5DC: .4byte gBG2TilemapBuffer
+_0801D5DC: .4byte gBg2Tm
 _0801D5E0: .4byte 0x0000FFE0
 _0801D5E4: .4byte 0x0000E0FF
 
@@ -2044,7 +2044,7 @@ sub_0801D66C: @ 0x0801D66C
 	ands r1, r0
 	cmp r1, #0
 	beq _0801D688
-	ldr r0, _0801D69C @ =gBG2TilemapBuffer
+	ldr r0, _0801D69C @ =gBg2Tm
 	movs r1, #0
 	bl BG_Fill
 	movs r0, #4
@@ -2059,7 +2059,7 @@ _0801D688:
 	pop {r0}
 	bx r0
 	.align 2, 0
-_0801D69C: .4byte gBG2TilemapBuffer
+_0801D69C: .4byte gBg2Tm
 _0801D6A0: .4byte gBmSt
 
 	thumb_func_start sub_0801D6A4
