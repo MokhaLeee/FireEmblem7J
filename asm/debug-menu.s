@@ -1041,7 +1041,7 @@ sub_0801BDC0: @ 0x0801BDC0
 	subs r1, #8
 	ands r0, r1
 	strb r0, [r2, #1]
-	ldr r1, _0801BE00 @ =gPaletteBuffer
+	ldr r1, _0801BE00 @ =gPal
 	movs r0, #0
 	strh r0, [r1]
 	bl EnablePalSync
@@ -1049,7 +1049,7 @@ sub_0801BDC0: @ 0x0801BDC0
 	bx r1
 	.align 2, 0
 _0801BDFC: .4byte 0x03002790
-_0801BE00: .4byte gPaletteBuffer
+_0801BE00: .4byte gPal
 
 	thumb_func_start sub_0801BE04
 sub_0801BE04: @ 0x0801BE04

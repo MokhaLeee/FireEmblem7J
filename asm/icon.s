@@ -2,58 +2,24 @@
 
 	.syntax unified
 
-	thumb_func_start InitIcons
-InitIcons: @ 0x08004BC4
-	push {lr}
-	bl ClearIcons
-	pop {r0}
-	bx r0
-	.align 2, 0
-
-	thumb_func_start ClearIcons
-ClearIcons: @ 0x08004BD0
-	push {r4, lr}
-	sub sp, #4
-	mov r0, sp
-	movs r4, #0
-	strh r4, [r0]
-	ldr r1, _08004BF8 @ =0x02026A48
-	ldr r2, _08004BFC @ =0x01000160
-	bl CpuSet
-	mov r0, sp
-	adds r0, #2
-	strh r4, [r0]
-	ldr r1, _08004C00 @ =0x02026D08
-	ldr r2, _08004C04 @ =0x01000010
-	bl CpuSet
-	add sp, #4
-	pop {r4}
-	pop {r0}
-	bx r0
-	.align 2, 0
-_08004BF8: .4byte 0x02026A48
-_08004BFC: .4byte 0x01000160
-_08004C00: .4byte 0x02026D08
-_08004C04: .4byte 0x01000010
-
 	thumb_func_start ApplyIconPalettes
 ApplyIconPalettes: @ 0x08004C08
 	push {lr}
 	adds r1, r0, #0
-	ldr r0, _08004C1C @ =0x080C72F4
+	ldr r0, _08004C1C @ =Pal_Icons
 	lsls r1, r1, #5
 	movs r2, #0x40
 	bl ApplyPaletteExt
 	pop {r0}
 	bx r0
 	.align 2, 0
-_08004C1C: .4byte 0x080C72F4
+_08004C1C: .4byte Pal_Icons
 
 	thumb_func_start sub_08004C20
 sub_08004C20: @ 0x08004C20
 	push {lr}
 	lsls r0, r0, #5
-	ldr r2, _08004C34 @ =0x080C72F4
+	ldr r2, _08004C34 @ =Pal_Icons
 	adds r0, r0, r2
 	lsls r1, r1, #5
 	movs r2, #0x20
@@ -61,7 +27,7 @@ sub_08004C20: @ 0x08004C20
 	pop {r0}
 	bx r0
 	.align 2, 0
-_08004C34: .4byte 0x080C72F4
+_08004C34: .4byte Pal_Icons
 
 	thumb_func_start sub_08004C38
 sub_08004C38: @ 0x08004C38
@@ -150,7 +116,7 @@ _08004CB8:
 	adds r0, #1
 	strb r0, [r5, #1]
 	lsls r4, r4, #7
-	ldr r0, _08004CFC @ =0x080C12F4
+	ldr r0, _08004CFC @ =Img_Icons
 	adds r4, r4, r0
 	ldrb r0, [r5, #1]
 	bl sub_08004C58
@@ -174,7 +140,7 @@ _08004CEC:
 	pop {r1}
 	bx r1
 	.align 2, 0
-_08004CFC: .4byte 0x080C12F4
+_08004CFC: .4byte Img_Icons
 _08004D00: .4byte 0x0001FFE0
 
 	thumb_func_start sub_08004D04
@@ -264,7 +230,7 @@ sub_08004D74: @ 0x08004D74
 _08004DA0: .4byte 0x06010000
 _08004DA4: .4byte 0x000003FF
 _08004DA8:
-	ldr r4, _08004DD0 @ =0x080C12F4
+	ldr r4, _08004DD0 @ =Img_Icons
 	lsls r0, r2, #7
 	adds r4, r0, r4
 	adds r0, r4, #0
@@ -283,4 +249,4 @@ _08004DC8:
 	pop {r0}
 	bx r0
 	.align 2, 0
-_08004DD0: .4byte 0x080C12F4
+_08004DD0: .4byte Img_Icons

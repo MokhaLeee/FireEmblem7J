@@ -233,7 +233,7 @@ sub_0802E4E8: @ 0x0802E4E8
 	bl sub_08034AC4
 	mov r0, r8
 	bl sub_0802E848
-	ldr r0, _0802E5A8 @ =gPaletteBuffer
+	ldr r0, _0802E5A8 @ =gPal
 	strh r5, [r0]
 	bl EnablePalSync
 	ldr r2, _0802E5AC @ =0x030027CC
@@ -262,7 +262,7 @@ sub_0802E4E8: @ 0x0802E4E8
 _0802E59C: .4byte OnGameLoopMain
 _0802E5A0: .4byte OnVBlank
 _0802E5A4: .4byte gPlaySt
-_0802E5A8: .4byte gPaletteBuffer
+_0802E5A8: .4byte gPal
 _0802E5AC: .4byte 0x030027CC
 _0802E5B0: .4byte 0x0000FFE0
 
@@ -297,7 +297,7 @@ sub_0802E5B4: @ 0x0802E5B4
 	ldr r0, _0802E644 @ =0x08C05464
 	movs r1, #4
 	bl Proc_Start
-	ldr r0, _0802E648 @ =gPaletteBuffer
+	ldr r0, _0802E648 @ =gPal
 	strh r5, [r0]
 	bl EnablePalSync
 	ldr r2, _0802E64C @ =0x03002790
@@ -322,7 +322,7 @@ _0802E638: .4byte OnGameLoopMain
 _0802E63C: .4byte OnVBlank
 _0802E640: .4byte gPlaySt
 _0802E644: .4byte 0x08C05464
-_0802E648: .4byte gPaletteBuffer
+_0802E648: .4byte gPal
 _0802E64C: .4byte 0x03002790
 
 	thumb_func_start sub_0802E650
@@ -479,7 +479,7 @@ sub_0802E768: @ 0x0802E768
 	strb r2, [r0]
 	movs r0, #0
 	bl sub_08001818
-	ldr r0, _0802E7DC @ =gBG2TilemapBuffer
+	ldr r0, _0802E7DC @ =gBg2Tm
 	movs r1, #0
 	bl BG_Fill
 	movs r0, #4
@@ -490,7 +490,7 @@ sub_0802E768: @ 0x0802E768
 _0802E7D0: .4byte OnGameLoopMain
 _0802E7D4: .4byte OnVBlank
 _0802E7D8: .4byte 0x03002790
-_0802E7DC: .4byte gBG2TilemapBuffer
+_0802E7DC: .4byte gBg2Tm
 
 	thumb_func_start sub_0802E7E0
 sub_0802E7E0: @ 0x0802E7E0
@@ -9896,7 +9896,7 @@ _0803322E:
 	bge _08033234
 	movs r3, #0
 _08033234:
-	ldr r0, _0803324C @ =gPaletteBuffer
+	ldr r0, _0803324C @ =gPal
 	lsls r1, r3, #0xa
 	lsls r2, r3, #5
 	adds r1, r1, r2
@@ -9908,7 +9908,7 @@ _08033234:
 	pop {r0}
 	bx r0
 	.align 2, 0
-_0803324C: .4byte gPaletteBuffer
+_0803324C: .4byte gPal
 _08033250: .4byte 0x0000025E
 
 	thumb_func_start sub_08033254
@@ -10746,7 +10746,7 @@ sub_080338B8: @ 0x080338B8
 	movs r1, #3
 	bl sub_08004C20
 	movs r1, #1
-	ldr r0, _08033938 @ =gPaletteBuffer
+	ldr r0, _08033938 @ =gPal
 	mov sb, r0
 	movs r2, #0x1f
 	mov ip, r2
@@ -10806,7 +10806,7 @@ _0803391C:
 	pop {r0}
 	bx r0
 	.align 2, 0
-_08033938: .4byte gPaletteBuffer
+_08033938: .4byte gPal
 _0803393C: .4byte 0x0200300C
 
 	thumb_func_start sub_08033940

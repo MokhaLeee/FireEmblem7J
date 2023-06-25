@@ -1055,7 +1055,7 @@ _08019994:
 	ldrsh r0, [r7, r1]
 	adds r0, r0, r5
 	str r0, [sp]
-	ldr r0, _080199D4 @ =gBG2TilemapBuffer
+	ldr r0, _080199D4 @ =gBg2Tm
 	adds r1, r4, #0
 	adds r2, r5, #0
 	bl sub_080197C8
@@ -1077,7 +1077,7 @@ _08019994:
 	bx r0
 	.align 2, 0
 _080199D0: .4byte gBmSt
-_080199D4: .4byte gBG2TilemapBuffer
+_080199D4: .4byte gBg2Tm
 
 	thumb_func_start sub_080199D8
 sub_080199D8: @ 0x080199D8
@@ -1268,7 +1268,7 @@ _08019B36:
 	mov r3, r8
 	bl sub_080197C8
 	str r4, [sp]
-	ldr r0, _08019B80 @ =gBG2TilemapBuffer
+	ldr r0, _08019B80 @ =gBg2Tm
 	mov r1, r8
 	adds r2, r5, #0
 	adds r3, r7, #0
@@ -1289,7 +1289,7 @@ _08019B6A:
 	bx r0
 	.align 2, 0
 _08019B7C: .4byte 0x02024460
-_08019B80: .4byte gBG2TilemapBuffer
+_08019B80: .4byte gBg2Tm
 
 	thumb_func_start sub_08019B84
 sub_08019B84: @ 0x08019B84
@@ -1369,7 +1369,7 @@ _08019C02:
 	adds r3, r5, #0
 	bl sub_080197C8
 	str r7, [sp]
-	ldr r0, _08019C4C @ =gBG2TilemapBuffer
+	ldr r0, _08019C4C @ =gBg2Tm
 	adds r1, r5, #0
 	mov r2, r8
 	adds r3, r4, #0
@@ -1390,7 +1390,7 @@ _08019C38:
 	bx r0
 	.align 2, 0
 _08019C48: .4byte 0x02024460
-_08019C4C: .4byte gBG2TilemapBuffer
+_08019C4C: .4byte gBg2Tm
 
 	thumb_func_start sub_08019C50
 sub_08019C50: @ 0x08019C50
@@ -1794,7 +1794,7 @@ sub_08019F20: @ 0x08019F20
 	adds r5, r5, r6
 	adds r0, r5, #0
 	bl sub_08001818
-	ldr r1, _08019F7C @ =gPaletteBuffer
+	ldr r1, _08019F7C @ =gPal
 	movs r0, #0x86
 	lsls r0, r0, #7
 	strh r0, [r1]
@@ -1805,7 +1805,7 @@ sub_08019F20: @ 0x08019F20
 	.align 2, 0
 _08019F74: .4byte 0x02030A8C
 _08019F78: .4byte 0x000003FF
-_08019F7C: .4byte gPaletteBuffer
+_08019F7C: .4byte gPal
 
 	thumb_func_start RevertMapChange
 RevertMapChange: @ 0x08019F80

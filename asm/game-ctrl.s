@@ -235,7 +235,7 @@ sub_08012D60: @ 0x08012D60
 	sub sp, #4
 	movs r0, #0
 	str r0, [sp]
-	ldr r1, _08012D88 @ =gPaletteBuffer
+	ldr r1, _08012D88 @ =gPal
 	ldr r2, _08012D8C @ =0x01000100
 	mov r0, sp
 	bl CpuFastSet
@@ -248,7 +248,7 @@ sub_08012D60: @ 0x08012D60
 	pop {r0}
 	bx r0
 	.align 2, 0
-_08012D88: .4byte gPaletteBuffer
+_08012D88: .4byte gPal
 _08012D8C: .4byte 0x01000100
 _08012D90: .4byte sub_08012D4C
 _08012D94: .4byte OnGameLoopMain
