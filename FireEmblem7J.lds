@@ -10,6 +10,8 @@ SECTIONS
 	EWRAM (NOLOAD) :
 	ALIGN(4)
 	{
+		. = 0x022860; gPaletteBuffer = .;
+		. = 0x023C60; gBG2TilemapBuffer = .;
 		. = 0x02BBB4; gBmSt = .;
 		. = 0x02BBF4; gPlaySt = .;
 		. = 0x02BD44; gActiveUnitId = .;
@@ -26,11 +28,10 @@ SECTIONS
 		. = 0x02E3E8; gBmMapFog = .;
 		. = 0x02E3EC; gBmMapHidden = .;
 		. = 0x02E3F0; gBmMapOther = .;
-		. = 0x03A3D4; gBattleStats = .;
-		. = 0x03A3EC; gBattleActor = .;
-		. = 0x03A46C; gBattleTarget = .;
-		. = 0x03A4EC; gBattleHitArray = .;
-		. = 0x03A508; gBattleHitIterator = .;
+		
+		. = 0x03A3D4;
+		. = ALIGN(4); src/battle.o(ewram_data);
+
 		. = 0x03A7F0; gArenaSt = .;
 		. = 0x03A858; gActionSt = .;
 	}
@@ -41,6 +42,7 @@ SECTIONS
 	{
 		/* .bss */
 		. = ALIGN(4); src/random.o(.bss);
+		. = 0x002778; gArenaLevelBackup = .;
 		. = 0x002800; gIrqFuncs = .;
 		. = 0x003870; IntrMainRam = .;
 		. = 0x0045B0; gActiveUnit = .;
@@ -90,7 +92,6 @@ SECTIONS
 		asm/support.o(.text);
 		asm/item-use.o(.text);
 		src/battle.o(.text);
-		asm/battle.o(.text);
 		asm/trade-menu.o(.text);
 		asm/trap.o(.text);
 		asm/item-action.o(.text);
@@ -133,5 +134,7 @@ SECTIONS
 		. = ALIGN(4); data/const_data2.o(.rodata)
 		. = ALIGN(4); src/battle.o(.rodata)
 		. = ALIGN(4); data/data.o(.data)
+		. = ALIGN(4); src/battle.o(.data)
+		. = ALIGN(4); data/data2.o(.data)
 	}
 }

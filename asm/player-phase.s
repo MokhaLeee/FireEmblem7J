@@ -167,7 +167,7 @@ _0801C696:
 	lsls r0, r0, #0x18
 	cmp r0, #0
 	beq _0801C700
-	bl sub_0806D4A4
+	bl MU_EndAll
 	bl sub_0808667C
 	movs r0, #0x1f
 	bl sub_080807E4
@@ -240,7 +240,7 @@ _0801C74C:
 	strb r1, [r0, #0x13]
 	cmp r4, #0
 	beq _0801C776
-	bl sub_0806D4A4
+	bl MU_EndAll
 	adds r0, r4, #0
 	bl ShowUnitSprite
 _0801C776:
@@ -318,7 +318,7 @@ _0801C7D0:
 	adds r4, r0, #0
 	cmp r4, #0
 	beq _0801C822
-	bl sub_0806D4A4
+	bl MU_EndAll
 	adds r0, r4, #0
 	bl ShowUnitSprite
 _0801C822:
@@ -359,7 +359,7 @@ _0801C840:
 	adds r4, r0, #0
 	cmp r4, #0
 	beq _0801C882
-	bl sub_0806D4A4
+	bl MU_EndAll
 	adds r0, r4, #0
 	bl ShowUnitSprite
 _0801C882:
@@ -789,7 +789,7 @@ _0801CC00:
 	ldr r0, [r4]
 	cmp r0, #0
 	beq _0801CC3E
-	bl sub_0806D4A4
+	bl MU_EndAll
 	ldr r2, [r4]
 	ldr r0, [r2, #0xc]
 	movs r1, #2
@@ -875,7 +875,7 @@ _0801CCB6:
 	lsls r0, r0, #0x18
 	cmp r0, #0
 	beq _0801CD78
-	bl sub_0806D4A4
+	bl MU_EndAll
 	movs r0, #0x1f
 	bl sub_080807E4
 	adds r0, r4, #0
@@ -1024,7 +1024,7 @@ _0801CE16:
 	ldr r4, _0801CE38 @ =gActiveUnit
 	ldr r0, [r4]
 	bl HideUnitSprite
-	bl sub_0806D4A4
+	bl MU_EndAll
 	ldr r0, [r4]
 	bl sub_0806C2DC
 	adds r0, r5, #0
@@ -1242,7 +1242,7 @@ _0801CFF8:
 	subs r1, #0x43
 	ands r0, r1
 	str r0, [r2, #0xc]
-	bl sub_0806D4A4
+	bl MU_EndAll
 	ldr r0, [r5]
 	bl sub_0806C2DC
 	bl sub_0806C7CC
@@ -1370,7 +1370,7 @@ _0801D120:
 	lsls r0, r0, #0x18
 	cmp r0, #0
 	beq _0801D148
-	bl sub_0806D4A4
+	bl MU_EndAll
 	bl RefreshEntityMaps
 	bl RenderMap
 	bl RefreshUnitSprites
@@ -1380,7 +1380,7 @@ _0801D120:
 	bl Proc_Goto
 	b _0801D14C
 _0801D148:
-	bl sub_0806D4A4
+	bl MU_EndAll
 _0801D14C:
 	pop {r4, r5}
 	pop {r0}
@@ -1401,7 +1401,7 @@ sub_0801D154: @ 0x0801D154
 	bl RefreshEntityMaps
 	bl RenderMap
 	bl RefreshUnitSprites
-	bl sub_0806D4A4
+	bl MU_EndAll
 _0801D178:
 	pop {r0}
 	bx r0
@@ -1628,7 +1628,7 @@ sub_0801D2F8: @ 0x0801D2F8
 	beq _0801D36C
 	adds r0, r4, #0
 	adds r1, r5, #0
-	bl sub_0802BF30
+	bl GetTrapAt
 	adds r2, r0, #0
 	ldr r1, _0801D368 @ =gActiveUnitMoveOrigin
 	movs r3, #0
@@ -1898,7 +1898,7 @@ _0801D53C:
 	ldrsh r2, [r7, r0]
 	adds r2, r2, r5
 	str r5, [sp]
-	ldr r0, _0801D5DC @ =0x02023C60
+	ldr r0, _0801D5DC @ =gBG2TilemapBuffer
 	adds r3, r4, #0
 	bl sub_0801983C
 	subs r4, #1
@@ -1966,7 +1966,7 @@ _0801D53C:
 	.align 2, 0
 _0801D5D4: .4byte 0x03002790
 _0801D5D8: .4byte gBmSt
-_0801D5DC: .4byte 0x02023C60
+_0801D5DC: .4byte gBG2TilemapBuffer
 _0801D5E0: .4byte 0x0000FFE0
 _0801D5E4: .4byte 0x0000E0FF
 
@@ -2044,9 +2044,9 @@ sub_0801D66C: @ 0x0801D66C
 	ands r1, r0
 	cmp r1, #0
 	beq _0801D688
-	ldr r0, _0801D69C @ =0x02023C60
+	ldr r0, _0801D69C @ =gBG2TilemapBuffer
 	movs r1, #0
-	bl sub_080017E8
+	bl BG_Fill
 	movs r0, #4
 	bl EnableBgSync
 _0801D688:
@@ -2059,7 +2059,7 @@ _0801D688:
 	pop {r0}
 	bx r0
 	.align 2, 0
-_0801D69C: .4byte 0x02023C60
+_0801D69C: .4byte gBG2TilemapBuffer
 _0801D6A0: .4byte gBmSt
 
 	thumb_func_start sub_0801D6A4

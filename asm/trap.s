@@ -24,8 +24,8 @@ _0802BF16:
 _0802BF28: .4byte 0x0203A714
 _0802BF2C: .4byte 0x0203A514
 
-	thumb_func_start sub_0802BF30
-sub_0802BF30: @ 0x0802BF30
+	thumb_func_start GetTrapAt
+GetTrapAt: @ 0x0802BF30
 	adds r3, r0, #0
 	ldr r2, _0802BF38 @ =0x0203A514
 	b _0802BF4E
@@ -268,7 +268,7 @@ _0802C0B4:
 	ldrb r0, [r0, #0xe]
 	lsls r0, r0, #0x18
 	asrs r0, r0, #0x18
-	bl sub_08031A5C
+	bl GetROMChapterStruct
 	adds r0, #0x2c
 	ldrb r3, [r0]
 	adds r0, r4, #0
@@ -314,7 +314,7 @@ _0802C10C:
 	b _0802C130
 _0802C118:
 	ldrb r0, [r4, #3]
-	bl sub_0802C228
+	bl ApplyMapChange
 	b _0802C130
 _0802C120:
 	ldrb r0, [r4, #3]
@@ -325,7 +325,7 @@ _0802C120:
 _0802C12A:
 	ldrb r0, [r4]
 _0802C12C:
-	bl sub_0802C228
+	bl ApplyMapChange
 _0802C130:
 	adds r4, #8
 _0802C132:
@@ -374,7 +374,7 @@ _0802C178: .4byte gBmMapTerrain
 	thumb_func_start sub_0802C17C
 sub_0802C17C: @ 0x0802C17C
 	push {lr}
-	bl sub_0802BF30
+	bl GetTrapAt
 	cmp r0, #0
 	beq _0802C18A
 	ldrb r0, [r0, #3]
@@ -422,8 +422,8 @@ _0802C1C4:
 	bx r1
 	.align 2, 0
 
-	thumb_func_start sub_0802C1CC
-sub_0802C1CC: @ 0x0802C1CC
+	thumb_func_start GetMapChangeIdAt
+GetMapChangeIdAt: @ 0x0802C1CC
 	push {r4, r5, r6, lr}
 	adds r5, r0, #0
 	adds r4, r1, #0
@@ -473,8 +473,8 @@ _0802C21E:
 	bx r1
 	.align 2, 0
 
-	thumb_func_start sub_0802C228
-sub_0802C228: @ 0x0802C228
+	thumb_func_start ApplyMapChange
+ApplyMapChange: @ 0x0802C228
 	push {r4, r5, r6, r7, lr}
 	mov r7, sb
 	mov r6, r8
@@ -533,8 +533,8 @@ _0802C282:
 	.align 2, 0
 _0802C290: .4byte 0x08C02570
 
-	thumb_func_start sub_0802C294
-sub_0802C294: @ 0x0802C294
+	thumb_func_start AddMapChangeTrap
+AddMapChangeTrap: @ 0x0802C294
 	push {lr}
 	adds r3, r0, #0
 	movs r0, #0

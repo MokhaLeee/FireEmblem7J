@@ -212,12 +212,12 @@ sub_0802E4E8: @ 0x0802E4E8
 	strh r5, [r4, #0x10]
 	movs r0, #0xe
 	ldrsb r0, [r4, r0]
-	bl sub_08031A5C
+	bl GetROMChapterStruct
 	ldrb r0, [r0, #0xc]
 	strb r0, [r4, #0xd]
 	movs r0, #0xe
 	ldrsb r0, [r4, r0]
-	bl sub_08031A5C
+	bl GetROMChapterStruct
 	ldrb r0, [r0, #0x12]
 	strb r0, [r4, #0x15]
 	bl sub_08015998
@@ -233,7 +233,7 @@ sub_0802E4E8: @ 0x0802E4E8
 	bl sub_08034AC4
 	mov r0, r8
 	bl sub_0802E848
-	ldr r0, _0802E5A8 @ =0x02022860
+	ldr r0, _0802E5A8 @ =gPaletteBuffer
 	strh r5, [r0]
 	bl EnablePalSync
 	ldr r2, _0802E5AC @ =0x030027CC
@@ -262,7 +262,7 @@ sub_0802E4E8: @ 0x0802E4E8
 _0802E59C: .4byte OnGameLoopMain
 _0802E5A0: .4byte OnVBlank
 _0802E5A4: .4byte gPlaySt
-_0802E5A8: .4byte 0x02022860
+_0802E5A8: .4byte gPaletteBuffer
 _0802E5AC: .4byte 0x030027CC
 _0802E5B0: .4byte 0x0000FFE0
 
@@ -282,7 +282,7 @@ sub_0802E5B4: @ 0x0802E5B4
 	ldr r4, _0802E640 @ =gPlaySt
 	movs r0, #0xe
 	ldrsb r0, [r4, r0]
-	bl sub_08031A5C
+	bl GetROMChapterStruct
 	ldrb r0, [r0, #0x12]
 	movs r5, #0
 	strb r0, [r4, #0x15]
@@ -297,7 +297,7 @@ sub_0802E5B4: @ 0x0802E5B4
 	ldr r0, _0802E644 @ =0x08C05464
 	movs r1, #4
 	bl Proc_Start
-	ldr r0, _0802E648 @ =0x02022860
+	ldr r0, _0802E648 @ =gPaletteBuffer
 	strh r5, [r0]
 	bl EnablePalSync
 	ldr r2, _0802E64C @ =0x03002790
@@ -322,7 +322,7 @@ _0802E638: .4byte OnGameLoopMain
 _0802E63C: .4byte OnVBlank
 _0802E640: .4byte gPlaySt
 _0802E644: .4byte 0x08C05464
-_0802E648: .4byte 0x02022860
+_0802E648: .4byte gPaletteBuffer
 _0802E64C: .4byte 0x03002790
 
 	thumb_func_start sub_0802E650
@@ -479,9 +479,9 @@ sub_0802E768: @ 0x0802E768
 	strb r2, [r0]
 	movs r0, #0
 	bl sub_08001818
-	ldr r0, _0802E7DC @ =0x02023C60
+	ldr r0, _0802E7DC @ =gBG2TilemapBuffer
 	movs r1, #0
-	bl sub_080017E8
+	bl BG_Fill
 	movs r0, #4
 	bl EnableBgSync
 	pop {r0}
@@ -490,7 +490,7 @@ sub_0802E768: @ 0x0802E768
 _0802E7D0: .4byte OnGameLoopMain
 _0802E7D4: .4byte OnVBlank
 _0802E7D8: .4byte 0x03002790
-_0802E7DC: .4byte 0x02023C60
+_0802E7DC: .4byte gBG2TilemapBuffer
 
 	thumb_func_start sub_0802E7E0
 sub_0802E7E0: @ 0x0802E7E0
@@ -858,8 +858,8 @@ sub_0802EAC4: @ 0x0802EAC4
 	str r0, [r4]
 	bl sub_0802EF68
 	ldr r0, [r4]
-	bl sub_0802AB90
-	bl sub_0802A860
+	bl BattleGenerateArena
+	bl BeginBattleAnimations
 	ldr r2, _0802EB38 @ =0x03002790
 	movs r0, #2
 	rsbs r0, r0, #0
@@ -1181,7 +1181,7 @@ sub_0802ED30: @ 0x0802ED30
 	ldr r4, _0802ED54 @ =gPlaySt
 	movs r0, #0xe
 	ldrsb r0, [r4, r0]
-	bl sub_08031A5C
+	bl GetROMChapterStruct
 	movs r1, #0
 	ldrb r4, [r4, #0x1b]
 	cmp r4, #3
@@ -1351,7 +1351,7 @@ sub_0802EE6C: @ 0x0802EE6C
 	str r4, [r5]
 	ldr r0, _0802EED4 @ =0x0203A810
 	str r0, [r5, #4]
-	ldr r2, _0802EED8 @ =0x03002778
+	ldr r2, _0802EED8 @ =gArenaLevelBackup
 	ldr r0, [r4, #0xc]
 	lsrs r0, r0, #0x11
 	movs r1, #7
@@ -1390,7 +1390,7 @@ sub_0802EE6C: @ 0x0802EE6C
 	.align 2, 0
 _0802EED0: .4byte gArenaSt
 _0802EED4: .4byte 0x0203A810
-_0802EED8: .4byte 0x03002778
+_0802EED8: .4byte gArenaLevelBackup
 _0802EEDC:
 	ldrb r0, [r5, #0x11]
 	bl sub_0802F0C8
@@ -2346,7 +2346,7 @@ _0802F5EE:
 	ldr r0, _0802F61C @ =gArenaSt
 	ldr r0, [r0]
 	ldr r1, _0802F620 @ =gBattleActor
-	bl sub_0802A1BC
+	bl UpdateUnitDuringBattle
 	cmp r5, #0
 	beq _0802F604
 	movs r0, #0x13
@@ -2739,7 +2739,7 @@ sub_0802F92C: @ 0x0802F92C
 	adds r4, r0, #0
 	cmp r4, #0
 	bne _0802F942
-	bl sub_0802A704
+	bl InitObstacleBattleUnit
 _0802F942:
 	ldrb r0, [r5, #0x12]
 	cmp r0, #8
@@ -2794,16 +2794,16 @@ sub_0802F990: @ 0x0802F990
 	bl GetUnit
 	movs r1, #1
 	rsbs r1, r1, #0
-	bl sub_0802A964
+	bl BattleInitItemEffect
 	ldrb r0, [r4, #0xd]
 	bl GetUnit
-	bl sub_0802AA10
+	bl BattleInitItemEffectTarget
 	ldr r1, _0802F9DC @ =gBattleStats
 	movs r0, #0x40
 	strh r0, [r1]
 	adds r0, r5, #0
-	bl sub_0802AA80
-	bl sub_0802A860
+	bl BattleApplyMiscAction
+	bl BeginBattleAnimations
 	movs r0, #0
 	pop {r4, r5}
 	pop {r1}
@@ -2958,7 +2958,7 @@ _0802FAE4:
 	bl GetUnit
 	movs r1, #1
 	rsbs r1, r1, #0
-	bl sub_0802A964
+	bl BattleInitItemEffect
 	ldr r4, _0802FB58 @ =gBattleTarget
 	adds r1, r4, #0
 	adds r1, #0x55
@@ -2972,8 +2972,8 @@ _0802FAE4:
 	adds r4, #0x48
 	strh r6, [r4]
 	adds r0, r7, #0
-	bl sub_0802AA80
-	bl sub_0806D4A4
+	bl BattleApplyMiscAction
+	bl MU_EndAll
 	bl sub_0806F8C8
 	movs r0, #0
 	pop {r4, r5, r6, r7}
@@ -4764,7 +4764,7 @@ sub_080308E8: @ 0x080308E8
 	ldr r5, _08030944 @ =gPlaySt
 	movs r0, #0xe
 	ldrsb r0, [r5, r0]
-	bl sub_08031A5C
+	bl GetROMChapterStruct
 	movs r1, #0
 	ldrb r2, [r5, #0x1b]
 	cmp r2, #3
@@ -4777,7 +4777,7 @@ _08030912:
 	strb r0, [r4, #0x10]
 	movs r0, #0xe
 	ldrsb r0, [r5, r0]
-	bl sub_08031A5C
+	bl GetROMChapterStruct
 	movs r1, #0
 	ldrb r5, [r5, #0x1b]
 	cmp r5, #3
@@ -4867,7 +4867,7 @@ sub_080309BC: @ 0x080309BC
 	ldr r4, _08030A00 @ =gPlaySt
 	movs r0, #0xe
 	ldrsb r0, [r4, r0]
-	bl sub_08031A5C
+	bl GetROMChapterStruct
 	movs r1, #0
 	ldrb r2, [r4, #0x1b]
 	cmp r2, #3
@@ -4879,7 +4879,7 @@ _080309D4:
 	ldrb r5, [r0]
 	movs r0, #0xe
 	ldrsb r0, [r4, r0]
-	bl sub_08031A5C
+	bl GetROMChapterStruct
 	movs r1, #0
 	ldrb r4, [r4, #0x1b]
 	cmp r4, #3
@@ -5338,7 +5338,7 @@ sub_08030D88: @ 0x08030D88
 	ldr r5, _08030DA4 @ =gPlaySt
 	movs r0, #0xe
 	ldrsb r0, [r5, r0]
-	bl sub_08031A5C
+	bl GetROMChapterStruct
 	ldrb r0, [r0, #0xd]
 	cmp r0, #0
 	bne _08030DA8
@@ -5373,7 +5373,7 @@ _08030DC6:
 	strb r0, [r4, #4]
 	movs r0, #0xe
 	ldrsb r0, [r5, r0]
-	bl sub_08031A5C
+	bl GetROMChapterStruct
 	ldrb r0, [r0, #0xc]
 	strb r0, [r5, #0xd]
 	bl RefreshEntityMaps
@@ -5513,7 +5513,7 @@ _08030EDC:
 	ldrb r0, [r0]
 	cmp r0, #0
 	beq _08030F40
-	bl sub_0806D4A4
+	bl MU_EndAll
 	bl sub_0808667C
 	movs r0, #0x1f
 	bl sub_080807E4
@@ -6159,7 +6159,7 @@ sub_08031440: @ 0x08031440
 	ands r0, r1
 	cmp r0, #0
 	beq _080314B0
-	bl sub_0806D4A4
+	bl MU_EndAll
 	ldr r0, _080314A0 @ =gActiveUnit
 	ldr r2, [r0]
 	ldr r0, [r2, #0xc]
@@ -6223,7 +6223,7 @@ _080314B0:
 _080314E2:
 	cmp r4, #0
 	beq _08031504
-	bl sub_0806D4A4
+	bl MU_EndAll
 	movs r0, #0x1f
 	bl sub_080807E4
 	adds r0, r4, #0
@@ -6925,8 +6925,8 @@ _08031A50: .4byte gBmMapSize
 _08031A54: .4byte gBmMapMovement
 _08031A58: .4byte gBmMapUnit
 
-	thumb_func_start sub_08031A5C
-sub_08031A5C: @ 0x08031A5C
+	thumb_func_start GetROMChapterStruct
+GetROMChapterStruct: @ 0x08031A5C
 	adds r1, r0, #0
 	cmp r1, #0x30
 	beq _08031A70
@@ -6968,7 +6968,7 @@ _08031AA0: .4byte 0x03005D90
 _08031AA4: .4byte 0x02020140
 _08031AA8:
 	ldr r4, _08031ABC @ =0x08D648F4
-	bl sub_08031A5C
+	bl GetROMChapterStruct
 	ldrb r0, [r0, #8]
 	lsls r0, r0, #2
 	adds r0, r0, r4
@@ -6993,7 +6993,7 @@ sub_08031AC0: @ 0x08031AC0
 _08031AD0: .4byte 0x08DAD298
 _08031AD4:
 	ldr r4, _08031AE8 @ =0x08D648F4
-	bl sub_08031A5C
+	bl GetROMChapterStruct
 	ldrb r0, [r0, #0xb]
 	lsls r0, r0, #2
 	adds r0, r0, r4
@@ -7018,7 +7018,7 @@ sub_08031AEC: @ 0x08031AEC
 _08031AFC: .4byte 0x08DAD298
 _08031B00:
 	ldr r4, _08031B18 @ =0x08D648F4
-	bl sub_08031A5C
+	bl GetROMChapterStruct
 	adds r0, #0x74
 	ldrb r0, [r0]
 	lsls r0, r0, #2
@@ -7043,7 +7043,7 @@ sub_08031B1C: @ 0x08031B1C
 	.align 2, 0
 _08031B2C: .4byte 0x08DAD298
 _08031B30:
-	bl sub_08031A5C
+	bl GetROMChapterStruct
 	adds r0, #0x70
 	bl DecodeMsg
 _08031B3A:
@@ -7705,7 +7705,7 @@ _08032068:
 	adds r0, r5, #0
 	bl sub_080053B0
 	adds r0, r4, #0
-	bl sub_08017610
+	bl GetItemName
 	adds r1, r0, #0
 	adds r0, r5, #0
 	bl sub_080055DC
@@ -7713,7 +7713,7 @@ _08032068:
 	mov r1, r8
 	bl sub_08005460
 	adds r0, r4, #0
-	bl sub_0801769C
+	bl GetItemUses
 	adds r2, r0, #0
 	adds r0, r7, #0
 	movs r1, #2
@@ -7810,7 +7810,7 @@ _08032154:
 	adds r0, r7, #0
 	bl sub_08005450
 	adds r0, r6, #0
-	bl sub_08017610
+	bl GetItemName
 	adds r1, r0, #0
 	adds r0, r7, #0
 	bl sub_080055DC
@@ -7832,7 +7832,7 @@ _08032154:
 	movs r5, #2
 _0803218A:
 	adds r0, r6, #0
-	bl sub_0801769C
+	bl GetItemUses
 	adds r2, r0, #0
 	adds r0, r4, #0
 	adds r1, r5, #0
@@ -7937,7 +7937,7 @@ _08032258:
 	adds r1, r5, #0
 	bl sub_08005450
 	adds r0, r6, #0
-	bl sub_08017610
+	bl GetItemName
 	adds r1, r0, #0
 	adds r0, r7, #0
 	bl sub_080055DC
@@ -7968,7 +7968,7 @@ _080322A2:
 	lsls r4, r4, #1
 	add r4, r8
 	adds r0, r6, #0
-	bl sub_0801769C
+	bl GetItemUses
 	adds r2, r0, #0
 	adds r0, r4, #0
 	adds r1, r5, #0
@@ -7979,7 +7979,7 @@ _080322A2:
 	lsls r4, r4, #1
 	add r4, r8
 	adds r0, r6, #0
-	bl sub_080176C4
+	bl GetItemMaxUses
 	adds r2, r0, #0
 	adds r0, r4, #0
 	adds r1, r5, #0
@@ -9302,7 +9302,7 @@ BeginUnitHealAnim: @ 0x08032D88
 	adds r4, r1, #0
 	movs r1, #1
 	rsbs r1, r1, #0
-	bl sub_0802A964
+	bl BattleInitItemEffect
 	ldr r5, _08032DC8 @ =gBattleActor
 	adds r0, r5, #0
 	adds r0, #0x48
@@ -9322,7 +9322,7 @@ BeginUnitHealAnim: @ 0x08032D88
 	subs r0, r0, r5
 	strb r0, [r1, #3]
 	bl BattleHitTerminate
-	bl sub_0802A860
+	bl BeginBattleAnimations
 	pop {r4, r5}
 	pop {r0}
 	bx r0
@@ -9337,7 +9337,7 @@ sub_08032DD0: @ 0x08032DD0
 	adds r4, r1, #0
 	movs r1, #1
 	rsbs r1, r1, #0
-	bl sub_0802A964
+	bl BattleInitItemEffect
 	ldr r5, _08032E2C @ =gBattleActor
 	rsbs r4, r4, #0
 	adds r0, r5, #0
@@ -9386,7 +9386,7 @@ sub_08032E34: @ 0x08032E34
 	adds r4, r1, #0
 	movs r1, #1
 	rsbs r1, r1, #0
-	bl sub_0802A964
+	bl BattleInitItemEffect
 	ldr r5, _08032E98 @ =gBattleActor
 	rsbs r4, r4, #0
 	adds r0, r5, #0
@@ -9896,7 +9896,7 @@ _0803322E:
 	bge _08033234
 	movs r3, #0
 _08033234:
-	ldr r0, _0803324C @ =0x02022860
+	ldr r0, _0803324C @ =gPaletteBuffer
 	lsls r1, r3, #0xa
 	lsls r2, r3, #5
 	adds r1, r1, r2
@@ -9908,7 +9908,7 @@ _08033234:
 	pop {r0}
 	bx r0
 	.align 2, 0
-_0803324C: .4byte 0x02022860
+_0803324C: .4byte gPaletteBuffer
 _08033250: .4byte 0x0000025E
 
 	thumb_func_start sub_08033254
@@ -10186,7 +10186,7 @@ _08033460:
 	thumb_func_start FinishDamageDisplay
 FinishDamageDisplay: @ 0x08033468
 	push {lr}
-	bl sub_0806D4A4
+	bl MU_EndAll
 	ldr r0, _0803348C @ =gBattleActor
 	ldrb r0, [r0, #0x13]
 	lsls r0, r0, #0x18
@@ -10746,7 +10746,7 @@ sub_080338B8: @ 0x080338B8
 	movs r1, #3
 	bl sub_08004C20
 	movs r1, #1
-	ldr r0, _08033938 @ =0x02022860
+	ldr r0, _08033938 @ =gPaletteBuffer
 	mov sb, r0
 	movs r2, #0x1f
 	mov ip, r2
@@ -10806,7 +10806,7 @@ _0803391C:
 	pop {r0}
 	bx r0
 	.align 2, 0
-_08033938: .4byte 0x02022860
+_08033938: .4byte gPaletteBuffer
 _0803393C: .4byte 0x0200300C
 
 	thumb_func_start sub_08033940
@@ -10881,7 +10881,7 @@ sub_080339C0: @ 0x080339C0
 	mov r8, r0
 	adds r6, r1, #0
 	adds r0, r2, #0
-	bl sub_08017610
+	bl GetItemName
 	adds r4, r0, #0
 	movs r0, #0x38
 	adds r1, r4, #0
@@ -10946,12 +10946,12 @@ sub_08033A38: @ 0x08033A38
 	adds r0, r7, #0
 	adds r0, #0x4a
 	ldrh r0, [r0]
-	bl sub_0801769C
+	bl GetItemUses
 	str r0, [sp, #8]
 	ldr r0, _08033B3C @ =gBattleTarget
 	adds r0, #0x4a
 	ldrh r0, [r0]
-	bl sub_0801769C
+	bl GetItemUses
 	str r0, [sp, #0xc]
 	add r1, sp, #4
 	mov r0, sp
@@ -12132,12 +12132,12 @@ _0803440C:
 	ldr r0, _08034470 @ =0x02022C60
 	mov r8, r0
 	movs r1, #0
-	bl sub_080017E8
+	bl BG_Fill
 	ldr r1, _08034474 @ =0x02023460
 	mov sl, r1
 	mov r0, sl
 	movs r1, #0
-	bl sub_080017E8
+	bl BG_Fill
 	movs r0, #3
 	bl EnableBgSync
 	ldr r1, _08034478 @ =0x08C06028
@@ -12239,12 +12239,12 @@ _080344F0:
 	ldr r0, _08034554 @ =0x02022C60
 	mov r8, r0
 	movs r1, #0
-	bl sub_080017E8
+	bl BG_Fill
 	ldr r1, _08034558 @ =0x02023460
 	mov sl, r1
 	mov r0, sl
 	movs r1, #0
-	bl sub_080017E8
+	bl BG_Fill
 	movs r0, #3
 	bl EnableBgSync
 	ldr r1, _0803455C @ =0x08C0602C
@@ -12651,10 +12651,10 @@ _08034804:
 	beq _08034828
 	b _08034832
 _0803480A:
-	bl sub_0806D4A4
+	bl MU_EndAll
 	b _08034832
 _08034810:
-	bl sub_0806D4A4
+	bl MU_EndAll
 	ldr r0, _08034824 @ =gActiveUnit
 	ldr r0, [r0]
 	bl sub_0806C2DC
@@ -12723,7 +12723,7 @@ sub_08034894: @ 0x08034894
 	ldrsb r0, [r4, r0]
 	movs r1, #0x11
 	ldrsb r1, [r4, r1]
-	bl sub_0802BF30
+	bl GetTrapAt
 	cmp r0, #0
 	beq _080348FE
 	ldrb r3, [r0, #2]
@@ -12833,7 +12833,7 @@ _08034964:
 	ldrsb r0, [r5, r0]
 	movs r1, #0x11
 	ldrsb r1, [r5, r1]
-	bl sub_0802BF30
+	bl GetTrapAt
 	bl sub_0802BFD0
 	ldr r0, _080349A0 @ =gPlaySt
 	adds r0, #0x41
@@ -12861,7 +12861,7 @@ _080349A4:
 	ldrsb r0, [r5, r0]
 	movs r1, #0x11
 	ldrsb r1, [r5, r1]
-	bl sub_0802BF30
+	bl GetTrapAt
 	bl sub_0802BFD0
 	ldr r0, _080349F0 @ =gPlaySt
 	adds r0, #0x41
@@ -12919,7 +12919,7 @@ _08034A1C:
 	strb r0, [r1, #0x11]
 	movs r0, #3
 	bl WriteSuspendSave
-	bl sub_0802A8E0
+	bl GetBattleAnimType
 	cmp r0, #1
 	bne _08034A36
 	bl RefreshUnitSprites
@@ -13080,7 +13080,7 @@ _08034B62:
 	thumb_func_start sub_08034B70
 sub_08034B70: @ 0x08034B70
 	push {lr}
-	bl sub_0802BF30
+	bl GetTrapAt
 	adds r1, r0, #0
 	cmp r1, #0
 	beq _08034B82
@@ -13112,7 +13112,7 @@ _08034B9A:
 	thumb_func_start GetBallistaItemAt
 GetBallistaItemAt: @ 0x08034BA0
 	push {lr}
-	bl sub_0802BF30
+	bl GetTrapAt
 	adds r2, r0, #0
 	cmp r2, #0
 	beq _08034BB2
@@ -13159,7 +13159,7 @@ _08034BE2:
 	thumb_func_start sub_08034BE8
 sub_08034BE8: @ 0x08034BE8
 	push {lr}
-	bl sub_0802BF30
+	bl GetTrapAt
 	cmp r0, #0
 	beq _08034BF8
 	ldrb r1, [r0, #2]
@@ -13202,7 +13202,7 @@ sub_08034C18: @ 0x08034C18
 	strb r0, [r4, #3]
 	adds r0, r5, #0
 	bl MakeNewItem
-	bl sub_0801769C
+	bl GetItemUses
 	strb r0, [r4, #6]
 	strb r6, [r4, #5]
 	adds r0, r4, #0
@@ -13219,7 +13219,7 @@ sub_08034C48: @ 0x08034C48
 	ldrsb r0, [r5, r0]
 	movs r1, #0x11
 	ldrsb r1, [r5, r1]
-	bl sub_0802BF30
+	bl GetTrapAt
 	adds r4, r0, #0
 	movs r0, #1
 	strb r0, [r4, #5]

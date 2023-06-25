@@ -3909,7 +3909,7 @@ sub_0804D738: @ 0x0804D738
 	bl CpuFastSet
 	str r4, [sp, #8]
 	add r0, sp, #8
-	ldr r6, _0804D83C @ =0x02023C60
+	ldr r6, _0804D83C @ =gBG2TilemapBuffer
 	adds r1, r6, #0
 	adds r2, r5, #0
 	bl CpuFastSet
@@ -3923,7 +3923,7 @@ _0804D82C: .4byte 0x03002790
 _0804D830: .4byte 0x02022C60
 _0804D834: .4byte 0x01000200
 _0804D838: .4byte 0x02023460
-_0804D83C: .4byte 0x02023C60
+_0804D83C: .4byte gBG2TilemapBuffer
 _0804D840:
 	str r4, [sp, #0xc]
 	add r0, sp, #0xc
@@ -4177,7 +4177,7 @@ _0804DA6C:
 	ldr r0, [r0]
 	adds r0, #0x4a
 	ldrh r0, [r0]
-	bl sub_08017610
+	bl GetItemName
 	adds r5, r0, #0
 _0804DA7A:
 	ldr r4, _0804DAB8 @ =0x02017670
@@ -4253,7 +4253,7 @@ _0804DB2C:
 	ldr r0, [r0]
 	adds r0, #0x4a
 	ldrh r0, [r0]
-	bl sub_08017610
+	bl GetItemName
 	adds r5, r0, #0
 _0804DB3A:
 	ldr r4, _0804DBF4 @ =0x02017668
@@ -4275,7 +4275,7 @@ _0804DB3A:
 	ldr r4, _0804DC00 @ =0x02022C60
 	adds r0, r4, #0
 	movs r1, #0x9f
-	bl sub_080017E8
+	bl BG_Fill
 	ldr r0, _0804DC04 @ =0x081DEBC4
 	adds r6, r4, #0
 	adds r6, #0x3c

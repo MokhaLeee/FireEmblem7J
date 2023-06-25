@@ -235,7 +235,7 @@ sub_08012D60: @ 0x08012D60
 	sub sp, #4
 	movs r0, #0
 	str r0, [sp]
-	ldr r1, _08012D88 @ =0x02022860
+	ldr r1, _08012D88 @ =gPaletteBuffer
 	ldr r2, _08012D8C @ =0x01000100
 	mov r0, sp
 	bl CpuFastSet
@@ -248,7 +248,7 @@ sub_08012D60: @ 0x08012D60
 	pop {r0}
 	bx r0
 	.align 2, 0
-_08012D88: .4byte 0x02022860
+_08012D88: .4byte gPaletteBuffer
 _08012D8C: .4byte 0x01000100
 _08012D90: .4byte sub_08012D4C
 _08012D94: .4byte OnGameLoopMain
@@ -569,7 +569,7 @@ _08012FE8: .4byte gPlaySt
 sub_08012FEC: @ 0x08012FEC
 	push {r4, lr}
 	adds r4, r0, #0
-	bl sub_0806D4A4
+	bl MU_EndAll
 	adds r0, r4, #0
 	adds r0, #0x29
 	ldrb r0, [r0]
@@ -1117,7 +1117,7 @@ _08013414:
 _0801341A:
 	ldr r0, _0801342C @ =gActionSt
 	ldrh r0, [r0, #6]
-	bl sub_08017610
+	bl GetItemName
 _08013422:
 	adds r1, r0, #0
 	adds r0, r4, #0

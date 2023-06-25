@@ -22,3 +22,18 @@ enum bg_sync_bitfile {
     BG2_SYNC_BIT = (1 << 2),
     BG3_SYNC_BIT = (1 << 3),
 };
+
+extern u16 gPaletteBuffer[];
+extern u16 gBG2TilemapBuffer[];
+
+unsigned GetGameTime(void);
+void SetGameTime(unsigned time);
+void IncGameTime(void);
+bool FormatTime(unsigned time, u16 * hours, u16 * minutes, u16 * seconds);
+void EnableBgSync(int bits);
+void EnableBgSyncById(int bgid);
+void DisableBgSync(int bits);
+void EnablePalSync(void);
+void DisablePalSync(void);
+void ApplyPaletteExt(void const * data, int startOffset, int size);
+void SyncDispIo(void);

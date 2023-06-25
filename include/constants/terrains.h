@@ -54,8 +54,8 @@ enum {
     TERRAIN_ARENA_30   = 0x30,
     TERRAIN_VALLEY     = 0x31,
     TERRAIN_FENCE_32   = 0x32,
+    TERRAIN_SNAG       = 0x33,
 
-    // TERRAIN_SNAG       = 0x33,
     // TERRAIN_BRIDGE_34  = 0x34,
     // TERRAIN_SKY        = 0x35,
     // TERRAIN_DEEPS      = 0x36,

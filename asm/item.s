@@ -1206,8 +1206,8 @@ _08016D06:
 	pop {r1}
 	bx r1
 
-	thumb_func_start sub_08016D0C
-sub_08016D0C: @ 0x08016D0C
+	thumb_func_start GetItemDisplayRangeString
+GetItemDisplayRangeString: @ 0x08016D0C
 	push {r4, r5, lr}
 	sub sp, #0x28
 	mov r2, sp
@@ -1298,8 +1298,8 @@ _08016D9C:
 	pop {r1}
 	bx r1
 
-	thumb_func_start sub_08016DA4
-sub_08016DA4: @ 0x08016DA4
+	thumb_func_start GetWeaponLevelFromExp
+GetWeaponLevelFromExp: @ 0x08016DA4
 	cmp r0, #0
 	bgt _08016DAC
 	movs r0, #0
@@ -1360,7 +1360,7 @@ sub_08016DD8: @ 0x08016DD8
 	cmp r0, #0
 	beq _08016E20
 	adds r0, r4, #0
-	bl sub_08016DA4
+	bl GetWeaponLevelFromExp
 	cmp r0, #0
 	bne _08016E20
 	movs r4, #7
@@ -1371,7 +1371,7 @@ _08016E18: .4byte 0x08C51538
 _08016E1C: .4byte 0x003D3C00
 _08016E20:
 	adds r0, r4, #0
-	bl sub_08016DA4
+	bl GetWeaponLevelFromExp
 	adds r4, r0, #0
 _08016E28:
 	lsls r0, r4, #2
@@ -1393,7 +1393,7 @@ sub_08016E38: @ 0x08016E38
 	movs r2, #7
 	bl memcpy
 	adds r0, r4, #0
-	bl sub_08016DA4
+	bl GetWeaponLevelFromExp
 	add r0, sp
 	ldrb r0, [r0]
 	add sp, #8
@@ -1433,7 +1433,7 @@ sub_08016E8C: @ 0x08016E8C
 	adds r5, r0, #0
 	adds r4, r1, #0
 	adds r6, r2, #0
-	bl sub_08016DA4
+	bl GetWeaponLevelFromExp
 	cmp r0, #6
 	bhi _08016EFE
 	lsls r0, r0, #2
@@ -2363,8 +2363,8 @@ GetItemIndex: @ 0x08017608
 	ands r0, r1
 	bx lr
 
-	thumb_func_start sub_08017610
-sub_08017610: @ 0x08017610
+	thumb_func_start GetItemName
+GetItemName: @ 0x08017610
 	push {lr}
 	movs r1, #0xff
 	ands r0, r1
@@ -2381,8 +2381,8 @@ sub_08017610: @ 0x08017610
 	.align 2, 0
 _08017630: .4byte 0x08C51538
 
-	thumb_func_start sub_08017634
-sub_08017634: @ 0x08017634
+	thumb_func_start GetItemDescId
+GetItemDescId: @ 0x08017634
 	movs r1, #0xff
 	ands r0, r1
 	lsls r1, r0, #3
@@ -2395,8 +2395,8 @@ sub_08017634: @ 0x08017634
 	.align 2, 0
 _08017648: .4byte 0x08C51538
 
-	thumb_func_start sub_0801764C
-sub_0801764C: @ 0x0801764C
+	thumb_func_start GetItemUseDescId
+GetItemUseDescId: @ 0x0801764C
 	movs r1, #0xff
 	ands r0, r1
 	lsls r1, r0, #3
@@ -2443,8 +2443,8 @@ GetItemAttributes: @ 0x08017684
 	.align 2, 0
 _08017698: .4byte 0x08C51538
 
-	thumb_func_start sub_0801769C
-sub_0801769C: @ 0x0801769C
+	thumb_func_start GetItemUses
+GetItemUses: @ 0x0801769C
 	adds r2, r0, #0
 	movs r1, #0xff
 	ands r1, r2
@@ -2467,8 +2467,8 @@ _080176C0:
 _080176C2:
 	bx lr
 
-	thumb_func_start sub_080176C4
-sub_080176C4: @ 0x080176C4
+	thumb_func_start GetItemMaxUses
+GetItemMaxUses: @ 0x080176C4
 	movs r1, #0xff
 	ands r0, r1
 	lsls r1, r0, #3
@@ -2709,8 +2709,8 @@ sub_08017844: @ 0x08017844
 	.align 2, 0
 _08017858: .4byte 0x08C51538
 
-	thumb_func_start sub_0801785C
-sub_0801785C: @ 0x0801785C
+	thumb_func_start GetItemCostPerUse
+GetItemCostPerUse: @ 0x0801785C
 	movs r1, #0xff
 	ands r0, r1
 	lsls r1, r0, #3

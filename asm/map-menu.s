@@ -167,9 +167,9 @@ _08021AC8: .4byte gActionSt
 sub_08021ACC: @ 0x08021ACC
 	push {lr}
 	bl sub_0804B6DC
-	ldr r0, _08021B18 @ =0x02023C60
+	ldr r0, _08021B18 @ =gBG2TilemapBuffer
 	movs r1, #0
-	bl sub_080017E8
+	bl BG_Fill
 	movs r0, #4
 	bl EnableBgSync
 	bl sub_08005308
@@ -196,7 +196,7 @@ sub_08021ACC: @ 0x08021ACC
 	pop {r1}
 	bx r1
 	.align 2, 0
-_08021B18: .4byte 0x02023C60
+_08021B18: .4byte gBG2TilemapBuffer
 _08021B1C: .4byte 0x08C04D68
 _08021B20: .4byte gBmSt
 _08021B24: .4byte gActiveUnit
@@ -273,9 +273,9 @@ _08021BAC: .4byte gBmSt
 sub_08021BB0: @ 0x08021BB0
 	push {lr}
 	bl sub_0804B6DC
-	ldr r0, _08021BDC @ =0x02023C60
+	ldr r0, _08021BDC @ =gBG2TilemapBuffer
 	movs r1, #0
-	bl sub_080017E8
+	bl BG_Fill
 	movs r0, #4
 	bl EnableBgSync
 	bl sub_0801D6D8
@@ -287,15 +287,15 @@ sub_08021BB0: @ 0x08021BB0
 	pop {r1}
 	bx r1
 	.align 2, 0
-_08021BDC: .4byte 0x02023C60
+_08021BDC: .4byte gBG2TilemapBuffer
 _08021BE0: .4byte 0x08C03098
 
 	thumb_func_start sub_08021BE4
 sub_08021BE4: @ 0x08021BE4
 	push {lr}
-	ldr r0, _08021C18 @ =0x02023C60
+	ldr r0, _08021C18 @ =gBG2TilemapBuffer
 	movs r1, #0
-	bl sub_080017E8
+	bl BG_Fill
 	movs r0, #4
 	bl EnableBgSync
 	bl sub_08005308
@@ -314,7 +314,7 @@ sub_08021BE4: @ 0x08021BE4
 	pop {r1}
 	bx r1
 	.align 2, 0
-_08021C18: .4byte 0x02023C60
+_08021C18: .4byte gBG2TilemapBuffer
 _08021C1C: .4byte 0x08C04D68
 _08021C20: .4byte gBmSt
 
@@ -1067,7 +1067,7 @@ sub_080221E0: @ 0x080221E0
 	strb r0, [r1, #0x14]
 	ldrb r0, [r4, #3]
 	strb r0, [r1, #0x15]
-	bl sub_0802A704
+	bl InitObstacleBattleUnit
 _08022216:
 	ldr r1, _08022234 @ =gActionSt
 	ldrb r0, [r1, #0x12]
@@ -1108,9 +1108,9 @@ _08022260: .4byte gActiveUnit
 	thumb_func_start sub_08022264
 sub_08022264: @ 0x08022264
 	push {lr}
-	ldr r0, _08022284 @ =0x02023C60
+	ldr r0, _08022284 @ =gBG2TilemapBuffer
 	movs r1, #0
-	bl sub_080017E8
+	bl BG_Fill
 	movs r0, #4
 	bl EnableBgSync
 	bl sub_0801D6D8
@@ -1119,7 +1119,7 @@ sub_08022264: @ 0x08022264
 	pop {r1}
 	bx r1
 	.align 2, 0
-_08022284: .4byte 0x02023C60
+_08022284: .4byte gBG2TilemapBuffer
 
 	thumb_func_start sub_08022288
 sub_08022288: @ 0x08022288
@@ -2343,7 +2343,7 @@ sub_08022C10: @ 0x08022C10
 	beq _08022C2E
 	ldr r0, _08022C44 @ =0x02022C60
 	movs r1, #0
-	bl sub_080017E8
+	bl BG_Fill
 _08022C2E:
 	adds r0, r5, #0
 	bl sub_080228D4
@@ -4087,7 +4087,7 @@ sub_08023924: @ 0x08023924
 	ldrsb r0, [r2, r0]
 	movs r1, #0x11
 	ldrsb r1, [r2, r1]
-	bl sub_0802BF30
+	bl GetTrapAt
 	cmp r0, #0
 	beq _08023978
 	ldrb r0, [r0, #2]
@@ -4114,7 +4114,7 @@ sub_08023980: @ 0x08023980
 	ldr r4, _080239A8 @ =gActiveUnit
 	ldr r0, [r4]
 	bl sub_08034C48
-	bl sub_0806D4A4
+	bl MU_EndAll
 	ldr r0, [r4]
 	bl sub_0806C2DC
 	movs r0, #0x17
@@ -4161,7 +4161,7 @@ sub_080239DC: @ 0x080239DC
 	ldr r4, _08023A04 @ =gActiveUnit
 	ldr r0, [r4]
 	bl sub_08034C80
-	bl sub_0806D4A4
+	bl MU_EndAll
 	ldr r0, [r4]
 	bl sub_0806C2DC
 	movs r0, #0x17
@@ -4254,7 +4254,7 @@ sub_08023A84: @ 0x08023A84
 	ldrsb r0, [r2, r0]
 	movs r1, #0x11
 	ldrsb r1, [r2, r1]
-	bl sub_0802BF30
+	bl GetTrapAt
 	adds r4, r0, #0
 	bl sub_08034CBC
 	cmp r0, #0
@@ -4316,7 +4316,7 @@ sub_08023B08: @ 0x08023B08
 	adds r5, #0x34
 	ldr r0, _08023B44 @ =gBmSt
 	ldrh r0, [r0, #0x2c]
-	bl sub_08017610
+	bl GetItemName
 	adds r3, r0, #0
 	adds r0, r5, #0
 	movs r1, #0x10
