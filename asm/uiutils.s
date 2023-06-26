@@ -334,7 +334,7 @@ sub_0804A4CC: @ 0x0804A4CC
 	adds r4, #1
 	cmp r4, r3
 	bge _0804A576
-	ldr r1, _0804A738 @ =0x02023460
+	ldr r1, _0804A738 @ =gBg1Tm
 	mov sl, r1
 _0804A500:
 	ldr r7, [sp]
@@ -344,7 +344,7 @@ _0804A500:
 	ldr r0, [sp, #4]
 	cmp r7, r0
 	bge _0804A56E
-	ldr r1, _0804A73C @ =0x02022C60
+	ldr r1, _0804A73C @ =gBg0Tm
 	mov ip, r1
 	movs r5, #0
 	mov r3, sl
@@ -420,21 +420,21 @@ _0804A576:
 	lsls r2, r7, #1
 	ldr r4, [sp, #8]
 	lsls r0, r4, #6
-	ldr r4, _0804A738 @ =0x02023460
+	ldr r4, _0804A738 @ =gBg1Tm
 	adds r1, r0, r4
 	adds r1, r2, r1
 	str r1, [sp, #0x1c]
-	ldr r1, _0804A73C @ =0x02022C60
+	ldr r1, _0804A73C @ =gBg0Tm
 	adds r0, r0, r1
 	adds r0, r0, r2
 	mov sl, r0
 	mov r4, sb
 	lsls r0, r4, #6
-	ldr r4, _0804A738 @ =0x02023460
+	ldr r4, _0804A738 @ =gBg1Tm
 	adds r1, r0, r4
 	adds r1, r1, r2
 	mov sb, r1
-	ldr r1, _0804A73C @ =0x02022C60
+	ldr r1, _0804A73C @ =gBg0Tm
 	adds r0, r0, r1
 	adds r0, r0, r2
 	mov r8, r0
@@ -448,7 +448,7 @@ _0804A576:
 	adds r4, r5, r4
 	str r4, [sp, #0x24]
 	adds r3, r2, r4
-	ldr r0, _0804A73C @ =0x02022C60
+	ldr r0, _0804A73C @ =gBg0Tm
 	adds r5, r5, r0
 	adds r2, r2, r5
 _0804A5DE:
@@ -495,7 +495,7 @@ _0804A626:
 	bge _0804A6BC
 	movs r2, #0
 	mov sl, r2
-	ldr r5, _0804A738 @ =0x02023460
+	ldr r5, _0804A738 @ =gBg1Tm
 	lsls r2, r4, #5
 	adds r2, #0x20
 	ldr r7, [sp, #4]
@@ -509,7 +509,7 @@ _0804A626:
 	adds r1, r0, r5
 	adds r1, r1, r3
 	mov sb, r1
-	ldr r7, _0804A73C @ =0x02022C60
+	ldr r7, _0804A73C @ =gBg0Tm
 	adds r0, r0, r7
 	adds r0, r0, r3
 	mov r8, r0
@@ -523,7 +523,7 @@ _0804A626:
 	lsls r2, r2, #1
 	adds r7, r2, r5
 	str r7, [sp, #0x2c]
-	ldr r0, _0804A73C @ =0x02022C60
+	ldr r0, _0804A73C @ =gBg0Tm
 	adds r2, r2, r0
 	ldr r1, [sp, #0x18]
 	lsls r1, r1, #1
@@ -570,7 +570,7 @@ _0804A6BC:
 	ldr r1, [sp]
 	adds r5, r0, r1
 	lsls r5, r5, #1
-	ldr r2, _0804A73C @ =0x02022C60
+	ldr r2, _0804A73C @ =gBg0Tm
 	adds r0, r5, r2
 	movs r7, #0
 	strh r7, [r0]
@@ -583,16 +583,16 @@ _0804A6BC:
 	ldr r4, [sp, #0x14]
 	adds r2, r4, r1
 	lsls r2, r2, #1
-	ldr r1, _0804A73C @ =0x02022C60
+	ldr r1, _0804A73C @ =gBg0Tm
 	adds r0, r2, r1
 	strh r7, [r0]
 	ldr r0, [sp, #4]
 	adds r1, r4, r0
 	lsls r1, r1, #1
-	ldr r4, _0804A73C @ =0x02022C60
+	ldr r4, _0804A73C @ =gBg0Tm
 	adds r0, r1, r4
 	strh r7, [r0]
-	ldr r7, _0804A738 @ =0x02023460
+	ldr r7, _0804A738 @ =gBg1Tm
 	adds r5, r5, r7
 	ldrh r0, [r6]
 	strh r0, [r5]
@@ -625,8 +625,8 @@ _0804A6BC:
 	bx r0
 	.align 2, 0
 _0804A734: .4byte 0x08C09B78
-_0804A738: .4byte 0x02023460
-_0804A73C: .4byte 0x02022C60
+_0804A738: .4byte gBg1Tm
+_0804A73C: .4byte gBg0Tm
 
 	thumb_func_start sub_0804A740
 sub_0804A740: @ 0x0804A740
@@ -752,19 +752,19 @@ _0804A824: .4byte 0x0203DCC4
 	thumb_func_start ClearBg0Bg1
 ClearBg0Bg1: @ 0x0804A828
 	push {lr}
-	ldr r0, _0804A844 @ =0x02022C60
+	ldr r0, _0804A844 @ =gBg0Tm
 	movs r1, #0
-	bl BG_Fill
-	ldr r0, _0804A848 @ =0x02023460
+	bl TmFill
+	ldr r0, _0804A848 @ =gBg1Tm
 	movs r1, #0
-	bl BG_Fill
+	bl TmFill
 	movs r0, #3
 	bl EnableBgSync
 	pop {r0}
 	bx r0
 	.align 2, 0
-_0804A844: .4byte 0x02022C60
-_0804A848: .4byte 0x02023460
+_0804A844: .4byte gBg0Tm
+_0804A848: .4byte gBg1Tm
 
 	thumb_func_start sub_0804A84C
 sub_0804A84C: @ 0x0804A84C
@@ -774,7 +774,7 @@ sub_0804A84C: @ 0x0804A84C
 	adds r2, r3, r2
 	subs r5, r2, #1
 	adds r4, #1
-	ldr r2, _0804A8A0 @ =0x02023460
+	ldr r2, _0804A8A0 @ =gBg1Tm
 	lsls r0, r4, #5
 	adds r0, r0, r3
 	lsls r0, r0, #1
@@ -811,7 +811,7 @@ _0804A886:
 	pop {r0}
 	bx r0
 	.align 2, 0
-_0804A8A0: .4byte 0x02023460
+_0804A8A0: .4byte gBg1Tm
 _0804A8A4: .4byte 0x0000106A
 _0804A8A8: .4byte 0x00001076
 _0804A8AC: .4byte 0x0000106B
@@ -828,7 +828,7 @@ sub_0804A8B0: @ 0x0804A8B0
 	adds r0, r3, r2
 	subs r5, r0, #1
 	adds r4, #1
-	ldr r0, _0804A910 @ =0x02023460
+	ldr r0, _0804A910 @ =gBg1Tm
 	mov r8, r0
 	ldr r1, _0804A914 @ =0x081DB490
 	mov ip, r1
@@ -868,7 +868,7 @@ _0804A8F4:
 	ldrh r0, [r2, #0xc]
 	b _0804A91C
 	.align 2, 0
-_0804A910: .4byte 0x02023460
+_0804A910: .4byte gBg1Tm
 _0804A914: .4byte 0x081DB490
 _0804A918:
 	mov r2, ip

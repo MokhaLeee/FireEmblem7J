@@ -456,7 +456,7 @@ _0804AD6A:
 	ldrsh r0, [r4, r2]
 	adds r1, r1, r0
 	lsls r1, r1, #1
-	ldr r0, _0804ADB8 @ =0x02022C60
+	ldr r0, _0804ADB8 @ =gBg0Tm
 	adds r1, r1, r0
 	adds r0, r5, #0
 	bl sub_08005460
@@ -483,7 +483,7 @@ _0804ADA8:
 	pop {r0}
 	bx r0
 	.align 2, 0
-_0804ADB8: .4byte 0x02022C60
+_0804ADB8: .4byte gBg0Tm
 
 	thumb_func_start sub_0804ADBC
 sub_0804ADBC: @ 0x0804ADBC

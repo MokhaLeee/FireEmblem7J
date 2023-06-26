@@ -166,7 +166,8 @@ extern u16 EWRAM_DATA gBg0Tm[0x400];
 extern u16 EWRAM_DATA gBg1Tm[0x400];
 extern u16 EWRAM_DATA gBg2Tm[0x400];
 extern u16 EWRAM_DATA gBg3Tm[0x400];
-
+extern void *EWRAM_DATA gBgMapVramTable[4];
+extern Func EWRAM_DATA MainFunc;
 extern struct KeySt * CONST_DATA gKeySt;
 
 extern struct DispIo gDispIo;

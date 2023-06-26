@@ -2015,7 +2015,7 @@ sub_080060FC: @ 0x080060FC
 	bl GetGameTime
 	adds r5, r0, #0
 	movs r0, #0
-	ldr r1, _08006144 @ =0x02022C60
+	ldr r1, _08006144 @ =gBg0Tm
 	mov r8, r1
 _0800610E:
 	adds r7, r0, #1
@@ -2044,7 +2044,7 @@ _08006114:
 	pop {r0}
 	bx r0
 	.align 2, 0
-_08006144: .4byte 0x02022C60
+_08006144: .4byte gBg0Tm
 
 	thumb_func_start PutTime
 PutTime: @ 0x08006148

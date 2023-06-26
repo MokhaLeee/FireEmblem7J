@@ -1910,12 +1910,12 @@ sub_08035C90: @ 0x08035C90
 	movs r0, #0
 	b _08035CB6
 _08035C9E:
-	ldr r0, _08035CBC @ =0x02022C60
+	ldr r0, _08035CBC @ =gBg0Tm
 	movs r1, #0
-	bl BG_Fill
-	ldr r0, _08035CC0 @ =0x02023460
+	bl TmFill
+	ldr r0, _08035CC0 @ =gBg1Tm
 	movs r1, #0
-	bl BG_Fill
+	bl TmFill
 	movs r0, #3
 	bl EnableBgSync
 	movs r0, #1
@@ -1923,8 +1923,8 @@ _08035CB6:
 	pop {r1}
 	bx r1
 	.align 2, 0
-_08035CBC: .4byte 0x02022C60
-_08035CC0: .4byte 0x02023460
+_08035CBC: .4byte gBg0Tm
+_08035CC0: .4byte gBg1Tm
 
 	thumb_func_start sub_08035CC4
 sub_08035CC4: @ 0x08035CC4

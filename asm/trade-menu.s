@@ -33,7 +33,7 @@ sub_0802B064: @ 0x0802B064
 	adds r2, r4, #0
 	movs r3, #0
 	bl sub_080AAAD0
-	ldr r3, _0802B14C @ =0x03002790
+	ldr r3, _0802B14C @ =gDispIo
 	adds r2, r3, #0
 	adds r2, #0x3c
 	movs r0, #0x3f
@@ -75,7 +75,7 @@ sub_0802B064: @ 0x0802B064
 	lsrs r1, r0, #0x1f
 	adds r0, r0, r1
 	asrs r3, r0, #1
-	ldr r5, _0802B158 @ =0x02022C60
+	ldr r5, _0802B158 @ =gBg0Tm
 	str r6, [sp]
 	str r7, [sp, #4]
 	movs r0, #0
@@ -109,10 +109,10 @@ sub_0802B064: @ 0x0802B064
 	pop {r0}
 	bx r0
 	.align 2, 0
-_0802B14C: .4byte 0x03002790
+_0802B14C: .4byte gDispIo
 _0802B150: .4byte 0x0000FFE0
 _0802B154: .4byte 0x0000E0FF
-_0802B158: .4byte 0x02022C60
+_0802B158: .4byte gBg0Tm
 
 	thumb_func_start sub_0802B15C
 sub_0802B15C: @ 0x0802B15C
@@ -324,7 +324,7 @@ _0802B2A0:
 	ldrb r0, [r0]
 	adds r3, r0, r3
 	lsls r3, r3, #1
-	ldr r0, _0802B330 @ =0x02022C60
+	ldr r0, _0802B330 @ =gBg0Tm
 	adds r3, r3, r0
 	adds r0, r6, #0
 	adds r1, r5, #0
@@ -353,7 +353,7 @@ _0802B320: .4byte 0x081C94CA
 _0802B324: .4byte 0x02022EA0
 _0802B328: .4byte 0x010000B0
 _0802B32C: .4byte 0x0200278C
-_0802B330: .4byte 0x02022C60
+_0802B330: .4byte gBg0Tm
 
 	thumb_func_start sub_0802B334
 sub_0802B334: @ 0x0802B334

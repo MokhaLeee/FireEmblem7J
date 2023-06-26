@@ -770,7 +770,7 @@ sub_08006F5C: @ 0x08006F5C
 	sub sp, #4
 	movs r2, #0x34
 	ldrsh r1, [r0, r2]
-	ldr r3, _08006F88 @ =0x03002790
+	ldr r3, _08006F88 @ =gDispIo
 	ldrh r4, [r3, #0x1c]
 	subs r1, r1, r4
 	movs r4, #0x36
@@ -787,7 +787,7 @@ sub_08006F5C: @ 0x08006F5C
 	pop {r0}
 	bx r0
 	.align 2, 0
-_08006F88: .4byte 0x03002790
+_08006F88: .4byte gDispIo
 
 	thumb_func_start sub_08006F8C
 sub_08006F8C: @ 0x08006F8C

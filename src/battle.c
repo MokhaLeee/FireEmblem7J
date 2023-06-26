@@ -1719,7 +1719,7 @@ void UpdateObstacleFromBattle(struct BattleUnit *bu)
 
 void BeginBattleAnimations(void)
 {
-    BG_Fill(gBg2Tm, 0);
+    TmFill(gBg2Tm, 0);
     EnableBgSync(1 << 2);
 
     gPal[0] = 0;

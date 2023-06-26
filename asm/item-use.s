@@ -1051,7 +1051,7 @@ sub_08027AD8: @ 0x08027AD8
 	bl sub_0801D6D8
 	ldr r0, _08027AF8 @ =gBg2Tm
 	movs r1, #0
-	bl BG_Fill
+	bl TmFill
 	movs r0, #4
 	bl EnableBgSync
 	ldr r1, _08027AFC @ =gActionSt
@@ -1258,7 +1258,7 @@ sub_08027C58: @ 0x08027C58
 	bl sub_08027AD8
 	ldr r0, _08027CE4 @ =gBg2Tm
 	movs r1, #0
-	bl BG_Fill
+	bl TmFill
 	movs r0, #4
 	bl EnableBgSync
 	ldr r0, _08027CE8 @ =gPlaySt
@@ -1302,7 +1302,7 @@ _08027D04:
 	bl Proc_Goto
 	ldr r0, _08027D8C @ =gBg2Tm
 	movs r1, #0
-	bl BG_Fill
+	bl TmFill
 	movs r0, #4
 	bl EnableBgSync
 	ldr r0, _08027D84 @ =gPlaySt
@@ -1711,7 +1711,7 @@ sub_08028044: @ 0x08028044
 	ldrsh r1, [r5, r6]
 	adds r3, r3, r1
 	lsls r3, r3, #1
-	ldr r1, _0802809C @ =0x02022C60
+	ldr r1, _0802809C @ =gBg0Tm
 	adds r3, r3, r1
 	adds r1, r4, #0
 	bl sub_08016984
@@ -1723,7 +1723,7 @@ sub_08028044: @ 0x08028044
 	bx r1
 	.align 2, 0
 _08028098: .4byte gActionSt
-_0802809C: .4byte 0x02022C60
+_0802809C: .4byte gBg0Tm
 
 	thumb_func_start sub_080280A0
 sub_080280A0: @ 0x080280A0
@@ -2174,7 +2174,7 @@ _0802843C:
 	beq _08028472
 	ldr r0, _08028490 @ =gBg2Tm
 	movs r1, #0
-	bl BG_Fill
+	bl TmFill
 	movs r0, #4
 	bl EnableBgSync
 	adds r0, r6, #0

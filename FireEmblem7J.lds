@@ -11,7 +11,12 @@ SECTIONS
 	ALIGN(4)
 	{
 		. = 0x022860; gPal = .;
+		. = 0x022C60; gBg0Tm = .;
+		. = 0x023460; gBg1Tm = .;
 		. = 0x023C60; gBg2Tm = .;
+		. = 0x024460; gBg3Tm = .;
+		. = 0x024C60; gBgMapVramTable = .;
+		. = 0x024C70; MainFunc = .;
 		. = 0x026A48;
 		. = ALIGN(4); src/icon.o(ewram_data);
 		. = 0x02BBB4; gBmSt = .;
@@ -46,6 +51,7 @@ SECTIONS
 		. = ALIGN(4); src/random.o(.bss);
 		. = ALIGN(4); src/hardware.o(.bss);
 		. = 0x002778; gArenaLevelBackup = .;
+		. = 0x002790; gDispIo = .;
 		. = 0x002800; gIrqFuncs = .;
 		. = 0x003870; IntrMainRam = .;
 		. = 0x0045B0; gActiveUnit = .;

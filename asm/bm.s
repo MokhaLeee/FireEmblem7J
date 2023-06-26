@@ -22,7 +22,7 @@ OnVBlank: @ 0x080156C8
 	movs r0, #0
 	strb r0, [r1]
 	bl SyncDispIo
-	bl sub_080016C4
+	bl SyncBgsAndPal
 	bl ApplyDataMoves
 	bl SyncHiOam
 _08015702:
@@ -39,7 +39,7 @@ OnGameLoopMain: @ 0x08015718
 	push {r4, lr}
 	ldr r0, _08015774 @ =gpKeySt
 	ldr r0, [r0]
-	bl UpdateKeyStatus
+	bl RefreshKeySt
 	bl ClearSprites
 	ldr r4, _08015778 @ =0x02026A28
 	ldr r0, [r4, #4]
@@ -329,7 +329,7 @@ sub_08015940: @ 0x08015940
 	ldrb r0, [r0, #0xe]
 	cmp r0, #0x2f
 	bne _08015978
-	ldr r2, _08015974 @ =0x03002790
+	ldr r2, _08015974 @ =gDispIo
 	adds r1, r2, #0
 	adds r1, #0x3c
 	movs r0, #0xc0
@@ -349,7 +349,7 @@ sub_08015940: @ 0x08015940
 	b _0801597E
 	.align 2, 0
 _08015970: .4byte gPlaySt
-_08015974: .4byte 0x03002790
+_08015974: .4byte gDispIo
 _08015978:
 	ldr r0, _08015984 @ =0x08C02BF0
 	bl Proc_StartBlocking
@@ -374,7 +374,7 @@ sub_08015998: @ 0x08015998
 	ldrb r0, [r0, #0x15]
 	cmp r0, #7
 	bne _080159D8
-	ldr r3, _080159D4 @ =0x03002790
+	ldr r3, _080159D4 @ =gDispIo
 	movs r2, #4
 	rsbs r2, r2, #0
 	adds r0, r2, #0
@@ -400,9 +400,9 @@ sub_08015998: @ 0x08015998
 	b _08015A04
 	.align 2, 0
 _080159D0: .4byte gPlaySt
-_080159D4: .4byte 0x03002790
+_080159D4: .4byte gDispIo
 _080159D8:
-	ldr r3, _08015A08 @ =0x03002790
+	ldr r3, _08015A08 @ =gDispIo
 	movs r1, #4
 	rsbs r1, r1, #0
 	adds r0, r1, #0
@@ -427,7 +427,7 @@ _080159D8:
 _08015A04:
 	bx lr
 	.align 2, 0
-_08015A08: .4byte 0x03002790
+_08015A08: .4byte gDispIo
 
 	thumb_func_start sub_08015A0C
 sub_08015A0C: @ 0x08015A0C

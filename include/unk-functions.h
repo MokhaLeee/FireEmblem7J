@@ -34,7 +34,6 @@ int GetUnitSupportBonuses(struct Unit *unit, struct SupportBonuses *bonuses);
 bool sub_08028620(struct Unit *unit);
 void PidStatsAddExpGained(u8 pid, int expGain);
 int GetMapChangeIdAt(int x, int y);
-void BG_Fill(void *dest, int b);
 bool SetupBanim(void);
 void SetBanimLinkArenaFlag(int unk);
 void BeginAnimsOnBattleAnimations(void);

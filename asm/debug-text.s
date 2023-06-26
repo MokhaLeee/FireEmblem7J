@@ -14,10 +14,10 @@ DebugInitBg: @ 0x08004DD4
 _08004DE2:
 	adds r0, r5, #0
 	movs r1, #0
-	bl sub_0800140C
+	bl SetBgChrOffset
 	adds r0, r5, #0
 	movs r1, #0
-	bl sub_080014B4
+	bl SetBgScreenSize
 	ldr r0, _08004E38 @ =0x08BBFD90
 	ldr r1, _08004E3C @ =0x0001FFFF
 	ands r1, r6
@@ -36,7 +36,7 @@ _08004DE2:
 	adds r0, r5, #0
 	bl sub_08002BC0
 	movs r1, #0
-	bl BG_Fill
+	bl TmFill
 	ldr r4, _08004E48 @ =0x02026D28
 	strh r5, [r4, #4]
 	str r6, [r4]
@@ -134,7 +134,7 @@ _08004EC0:
 	str r0, [r2, #0xc]
 	adds r0, r6, #0
 	movs r1, #0
-	bl BG_Fill
+	bl TmFill
 	movs r0, #4
 	bl EnableBgSync
 	pop {r4, r5, r6}
@@ -366,7 +366,7 @@ sub_0800507C: @ 0x0800507C
 	push {r4, r5, r6, r7, lr}
 	ldr r0, _080050C4 @ =gBg2Tm
 	movs r1, #0
-	bl BG_Fill
+	bl TmFill
 	movs r3, #0
 	ldr r7, _080050C8 @ =0x02026D28
 	movs r0, #0x14

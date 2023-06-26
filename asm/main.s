@@ -39,7 +39,7 @@ AgbMain: @ 0x08000A20
 	strh r0, [r1]
 	bl IrqInit
 	movs r0, #0
-	bl SetInterrupt_LCDVBlank
+	bl SetOnVBlank
 	ldr r1, _08000AE0 @ =0x04000004
 	movs r0, #8
 	strh r0, [r1]
@@ -48,9 +48,9 @@ AgbMain: @ 0x08000A20
 	strh r0, [r1]
 	ldr r4, _08000AE8 @ =gpKeySt
 	ldr r0, [r4]
-	bl sub_08001C28
+	bl InitKeySt
 	ldr r0, [r4]
-	bl UpdateKeyStatus
+	bl RefreshKeySt
 	bl InitRamFuncs
 	bl SramInit
 	bl Proc_Init
@@ -64,10 +64,10 @@ AgbMain: @ 0x08000A20
 	bl m4aSoundInit
 	bl sub_08003E48
 	ldr r0, _08000AF0 @ =OnVBlank
-	bl SetInterrupt_LCDVBlank
+	bl SetOnVBlank
 	bl StartGame
 _08000AC2:
-	bl sub_080019AC
+	bl RunMainFunc
 	bl sub_08002BE4
 	b _08000AC2
 	.align 2, 0

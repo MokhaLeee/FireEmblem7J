@@ -489,7 +489,7 @@ _08012988:
 	add r3, sb
 	ldrb r3, [r3]
 	bl sub_0801372C
-	ldr r1, _08012A00 @ =0x03002790
+	ldr r1, _08012A00 @ =gDispIo
 	movs r0, #0x40
 	ldrb r1, [r1]
 	ands r0, r1
@@ -512,7 +512,7 @@ _08012988:
 _080129F4: .4byte 0x08C01714
 _080129F8: .4byte 0x000003FF
 _080129FC: .4byte 0x06010000
-_08012A00: .4byte 0x03002790
+_08012A00: .4byte gDispIo
 _08012A04:
 	adds r0, r7, #0
 	ldrh r3, [r4]

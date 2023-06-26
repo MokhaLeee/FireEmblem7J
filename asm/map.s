@@ -987,7 +987,7 @@ _0801990A:
 	ldrsh r0, [r7, r1]
 	adds r0, r0, r5
 	str r0, [sp]
-	ldr r0, _08019964 @ =0x02024460
+	ldr r0, _08019964 @ =gBg3Tm
 	adds r1, r4, #0
 	adds r2, r5, #0
 	bl sub_080197C8
@@ -1003,7 +1003,7 @@ _0801990A:
 	movs r1, #0
 	movs r2, #0
 	bl SetBgOffset
-	ldr r2, _08019968 @ =0x03002790
+	ldr r2, _08019968 @ =gDispIo
 	movs r0, #1
 	ldrb r1, [r2, #1]
 	orrs r0, r1
@@ -1022,8 +1022,8 @@ _0801990A:
 	bx r0
 	.align 2, 0
 _08019960: .4byte gBmSt
-_08019964: .4byte 0x02024460
-_08019968: .4byte 0x03002790
+_08019964: .4byte gBg3Tm
+_08019968: .4byte gDispIo
 
 	thumb_func_start RenderMapForFade
 RenderMapForFade: @ 0x0801996C
@@ -1032,7 +1032,7 @@ RenderMapForFade: @ 0x0801996C
 	movs r1, #0x80
 	lsls r1, r1, #8
 	movs r0, #2
-	bl sub_0800140C
+	bl SetBgChrOffset
 	ldr r1, _080199D0 @ =gBmSt
 	ldrh r2, [r1, #0xc]
 	lsls r0, r2, #0x10
@@ -1239,7 +1239,7 @@ _08019B06:
 	mov r1, sl
 	adds r0, r1, r6
 	str r0, [sp]
-	ldr r0, _08019B30 @ =0x02024460
+	ldr r0, _08019B30 @ =gBg3Tm
 	adds r1, r7, #0
 	mov r3, r8
 	bl sub_080197C8
@@ -1251,7 +1251,7 @@ _08019B06:
 	b _08019B6A
 	.align 2, 0
 _08019B2C: .4byte gBmSt
-_08019B30: .4byte 0x02024460
+_08019B30: .4byte gBg3Tm
 _08019B34:
 	movs r6, #0xa
 _08019B36:
@@ -1262,7 +1262,7 @@ _08019B36:
 	mov r0, sl
 	adds r5, r0, r6
 	str r5, [sp]
-	ldr r0, _08019B7C @ =0x02024460
+	ldr r0, _08019B7C @ =gBg3Tm
 	adds r1, r7, #0
 	adds r2, r4, #0
 	mov r3, r8
@@ -1288,7 +1288,7 @@ _08019B6A:
 	pop {r0}
 	bx r0
 	.align 2, 0
-_08019B7C: .4byte 0x02024460
+_08019B7C: .4byte gBg3Tm
 _08019B80: .4byte gBg2Tm
 
 	thumb_func_start sub_08019B84
@@ -1340,7 +1340,7 @@ _08019BD2:
 	adds r3, r0, r6
 	mov r0, r8
 	str r0, [sp]
-	ldr r0, _08019BFC @ =0x02024460
+	ldr r0, _08019BFC @ =gBg3Tm
 	adds r2, r7, #0
 	bl sub_080197C8
 	subs r6, #1
@@ -1351,7 +1351,7 @@ _08019BD2:
 	b _08019C38
 	.align 2, 0
 _08019BF8: .4byte gBmSt
-_08019BFC: .4byte 0x02024460
+_08019BFC: .4byte gBg3Tm
 _08019C00:
 	movs r6, #0xf
 _08019C02:
@@ -1363,7 +1363,7 @@ _08019C02:
 	adds r5, r0, r6
 	mov r1, r8
 	str r1, [sp]
-	ldr r0, _08019C48 @ =0x02024460
+	ldr r0, _08019C48 @ =gBg3Tm
 	adds r1, r4, #0
 	adds r2, r7, #0
 	adds r3, r5, #0
@@ -1389,7 +1389,7 @@ _08019C38:
 	pop {r0}
 	bx r0
 	.align 2, 0
-_08019C48: .4byte 0x02024460
+_08019C48: .4byte gBg3Tm
 _08019C4C: .4byte gBg2Tm
 
 	thumb_func_start sub_08019C50
@@ -1776,24 +1776,24 @@ sub_08019F20: @ 0x08019F20
 	lsls r6, r6, #3
 	adds r0, r0, r6
 	adds r4, #2
-	bl sub_08001818
+	bl SetBlankChr
 	adds r0, r5, #0
 	ldrh r1, [r4]
 	ands r0, r1
 	adds r0, r0, r6
 	adds r4, #2
-	bl sub_08001818
+	bl SetBlankChr
 	adds r0, r5, #0
 	ldrh r1, [r4]
 	ands r0, r1
 	adds r0, r0, r6
 	adds r4, #2
-	bl sub_08001818
+	bl SetBlankChr
 	ldrh r4, [r4]
 	ands r5, r4
 	adds r5, r5, r6
 	adds r0, r5, #0
-	bl sub_08001818
+	bl SetBlankChr
 	ldr r1, _08019F7C @ =gPal
 	movs r0, #0x86
 	lsls r0, r0, #7

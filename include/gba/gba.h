@@ -9,4 +9,9 @@
 #include "gba/macro.h"
 #include "gba/isagbprint.h"
 
+enum {
+    BG_COLORDEPTH_4BPP = 0,
+    BG_COLORDEPTH_8BPP = 1,
+};
+
 #endif // GUARD_GBA_GBA_H

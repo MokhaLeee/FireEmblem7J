@@ -1773,7 +1773,7 @@ _0801D444:
 sub_0801D44C: @ 0x0801D44C
 	push {lr}
 	bl sub_0802E834
-	ldr r3, _0801D478 @ =0x03002790
+	ldr r3, _0801D478 @ =gDispIo
 	adds r1, r3, #0
 	adds r1, #0x3c
 	movs r0, #0x3f
@@ -1792,7 +1792,7 @@ sub_0801D44C: @ 0x0801D44C
 	pop {r0}
 	bx r0
 	.align 2, 0
-_0801D478: .4byte 0x03002790
+_0801D478: .4byte gDispIo
 
 	thumb_func_start sub_0801D47C
 sub_0801D47C: @ 0x0801D47C
@@ -1868,7 +1868,7 @@ _0801D508: .4byte 0x06005000
 sub_0801D50C: @ 0x0801D50C
 	push {r4, r5, r6, r7, lr}
 	sub sp, #4
-	ldr r2, _0801D5D4 @ =0x03002790
+	ldr r2, _0801D5D4 @ =gDispIo
 	movs r0, #0x21
 	rsbs r0, r0, #0
 	ldrb r1, [r2, #1]
@@ -1913,7 +1913,7 @@ _0801D53C:
 	movs r1, #0
 	movs r2, #0
 	bl SetBgOffset
-	ldr r4, _0801D5D4 @ =0x03002790
+	ldr r4, _0801D5D4 @ =gDispIo
 	adds r2, r4, #0
 	adds r2, #0x3c
 	movs r0, #0x3f
@@ -1964,7 +1964,7 @@ _0801D53C:
 	pop {r0}
 	bx r0
 	.align 2, 0
-_0801D5D4: .4byte 0x03002790
+_0801D5D4: .4byte gDispIo
 _0801D5D8: .4byte gBmSt
 _0801D5DC: .4byte gBg2Tm
 _0801D5E0: .4byte 0x0000FFE0
@@ -2046,7 +2046,7 @@ sub_0801D66C: @ 0x0801D66C
 	beq _0801D688
 	ldr r0, _0801D69C @ =gBg2Tm
 	movs r1, #0
-	bl BG_Fill
+	bl TmFill
 	movs r0, #4
 	bl EnableBgSync
 _0801D688:

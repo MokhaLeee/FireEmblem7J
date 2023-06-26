@@ -243,7 +243,7 @@ sub_08012D60: @ 0x08012D60
 	ldr r0, _08012D90 @ =sub_08012D4C
 	bl sub_08004648
 	ldr r0, _08012D94 @ =OnGameLoopMain
-	bl SetMainUpdateRoutine
+	bl SetMainFunc
 	add sp, #4
 	pop {r0}
 	bx r0
@@ -701,7 +701,7 @@ _080130E4: .4byte gPlaySt
 
 	thumb_func_start sub_080130E8
 sub_080130E8: @ 0x080130E8
-	ldr r3, _08013120 @ =0x03002790
+	ldr r3, _08013120 @ =gDispIo
 	adds r2, r3, #0
 	adds r2, #0x3c
 	movs r0, #0xc0
@@ -730,7 +730,7 @@ sub_080130E8: @ 0x080130E8
 	strb r0, [r2]
 	bx lr
 	.align 2, 0
-_08013120: .4byte 0x03002790
+_08013120: .4byte gDispIo
 _08013124: .4byte 0x0000FFE0
 
 	thumb_func_start sub_08013128
@@ -815,9 +815,9 @@ _080131B4: .4byte gPlaySt
 StartGame: @ 0x080131B8
 	push {lr}
 	ldr r0, _080131E4 @ =OnGameLoopMain
-	bl SetMainUpdateRoutine
+	bl SetMainFunc
 	ldr r0, _080131E8 @ =OnVBlank
-	bl SetInterrupt_LCDVBlank
+	bl SetOnVBlank
 	ldr r0, _080131EC @ =0x08C01744
 	movs r1, #3
 	bl Proc_Start
