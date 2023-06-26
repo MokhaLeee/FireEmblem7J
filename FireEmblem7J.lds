@@ -10,6 +10,7 @@ SECTIONS
 	EWRAM (NOLOAD) :
 	ALIGN(4)
 	{
+		. = 0x000000; gAnims = .;
 		. = 0x022860; gPal = .;
 		. = 0x022C60; gBg0Tm = .;
 		. = 0x023460; gBg1Tm = .;
