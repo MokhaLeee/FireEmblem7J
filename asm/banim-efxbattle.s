@@ -3849,7 +3849,7 @@ sub_0804FC7C: @ 0x0804FC7C
 	adds r1, r4, #0
 	adds r1, #0x44
 	ldr r2, [r4, #0x48]
-	bl sub_08050EC0
+	bl SpellFx_InterpretBgAnimScript
 	lsls r0, r0, #0x10
 	asrs r0, r0, #0x10
 	cmp r0, #0
@@ -3861,7 +3861,7 @@ _0804FCA2:
 	adds r1, r4, #0
 	adds r1, #0x4c
 	ldr r2, [r4, #0x50]
-	bl sub_08050EC0
+	bl SpellFx_InterpretBgAnimScript
 	lsls r0, r0, #0x10
 	asrs r0, r0, #0x10
 	cmp r0, #0
@@ -4391,7 +4391,7 @@ _08050106:
 	adds r1, r4, #0
 	adds r1, #0x44
 	ldr r2, [r4, #0x48]
-	bl sub_08050EC0
+	bl SpellFx_InterpretBgAnimScript
 	lsls r0, r0, #0x10
 	asrs r1, r0, #0x10
 	cmp r1, #0
@@ -4621,7 +4621,7 @@ sub_080502B0: @ 0x080502B0
 	adds r1, r4, #0
 	adds r1, #0x44
 	ldr r2, [r4, #0x48]
-	bl sub_08050EC0
+	bl SpellFx_InterpretBgAnimScript
 	lsls r0, r0, #0x10
 	asrs r0, r0, #0x10
 	cmp r0, #0
@@ -5082,7 +5082,7 @@ sub_08050654: @ 0x08050654
 	adds r1, r4, #0
 	adds r1, #0x44
 	ldr r2, [r4, #0x48]
-	bl sub_08050EC0
+	bl SpellFx_InterpretBgAnimScript
 	lsls r0, r0, #0x10
 	asrs r0, r0, #0x10
 	cmp r0, #0
@@ -5247,8 +5247,8 @@ _080507BC:
 _080507C4: .4byte gPal
 _080507C8: .4byte 0x02017778
 
-	thumb_func_start sub_080507CC
-sub_080507CC: @ 0x080507CC
+	thumb_func_start SpellFx_Begin
+SpellFx_Begin: @ 0x080507CC
 	ldr r1, _080507D4 @ =0x0201772C
 	movs r0, #1
 	str r0, [r1]
@@ -5256,8 +5256,8 @@ sub_080507CC: @ 0x080507CC
 	.align 2, 0
 _080507D4: .4byte 0x0201772C
 
-	thumb_func_start sub_080507D8
-sub_080507D8: @ 0x080507D8
+	thumb_func_start SpellFx_Finish
+SpellFx_Finish: @ 0x080507D8
 	ldr r1, _080507E0 @ =0x0201772C
 	movs r0, #0
 	str r0, [r1]
@@ -5265,8 +5265,8 @@ sub_080507D8: @ 0x080507D8
 	.align 2, 0
 _080507E0: .4byte 0x0201772C
 
-	thumb_func_start sub_080507E4
-sub_080507E4: @ 0x080507E4
+	thumb_func_start SpellFx_ClearBG1Position
+SpellFx_ClearBG1Position: @ 0x080507E4
 	push {lr}
 	movs r0, #1
 	movs r1, #0
@@ -5275,8 +5275,8 @@ sub_080507E4: @ 0x080507E4
 	pop {r0}
 	bx r0
 
-	thumb_func_start sub_080507F4
-sub_080507F4: @ 0x080507F4
+	thumb_func_start SpellFx_ClearBG1
+SpellFx_ClearBG1: @ 0x080507F4
 	push {lr}
 	sub sp, #4
 	movs r0, #0
@@ -5294,8 +5294,8 @@ sub_080507F4: @ 0x080507F4
 _08050814: .4byte gBg1Tm
 _08050818: .4byte 0x01000200
 
-	thumb_func_start sub_0805081C
-sub_0805081C: @ 0x0805081C
+	thumb_func_start SpellFx_SetSomeColorEffect
+SpellFx_SetSomeColorEffect: @ 0x0805081C
 	push {r4, r5, r6, r7, lr}
 	mov r7, r8
 	push {r7}
@@ -5424,12 +5424,12 @@ sub_080508F4: @ 0x080508F4
 	.align 2, 0
 _08050918: .4byte gDispIo
 
-	thumb_func_start DoEkrOffensiveAtkHit
-DoEkrOffensiveAtkHit: @ 0x0805091C
+	thumb_func_start StartBattleAnimHitEffectsDefault
+StartBattleAnimHitEffectsDefault: @ 0x0805091C
 	push {lr}
 	movs r2, #3
 	movs r3, #4
-	bl sub_0805093C
+	bl StartBattleAnimHitEffects
 	pop {r0}
 	bx r0
 	.align 2, 0
@@ -5439,13 +5439,13 @@ sub_0805092C: @ 0x0805092C
 	push {lr}
 	movs r2, #5
 	movs r3, #5
-	bl sub_0805093C
+	bl StartBattleAnimHitEffects
 	pop {r0}
 	bx r0
 	.align 2, 0
 
-	thumb_func_start sub_0805093C
-sub_0805093C: @ 0x0805093C
+	thumb_func_start StartBattleAnimHitEffects
+StartBattleAnimHitEffects: @ 0x0805093C
 	push {r4, r5, r6, r7, lr}
 	mov r7, sl
 	mov r6, sb
@@ -5493,7 +5493,7 @@ _08050988:
 	subs r0, #1
 	lsls r0, r0, #1
 	adds r0, r0, r1
-	bl sub_08053AFC
+	bl GetBattleAnimRoundTypeFlags
 	lsls r0, r0, #0x10
 	lsrs r6, r0, #0x10
 	adds r0, r5, #0
@@ -5503,7 +5503,7 @@ _08050988:
 	subs r0, #1
 	lsls r0, r0, #1
 	adds r0, r0, r1
-	bl sub_08053AFC
+	bl GetBattleAnimRoundTypeFlags
 	lsls r0, r0, #0x10
 	lsrs r4, r0, #0x10
 	lsls r0, r6, #0x10
@@ -5634,8 +5634,8 @@ _08050AB8:
 	pop {r0}
 	bx r0
 
-	thumb_func_start sub_08050AC8
-sub_08050AC8: @ 0x08050AC8
+	thumb_func_start StartBattleAnimResireHitEffects
+StartBattleAnimResireHitEffects: @ 0x08050AC8
 	push {r4, r5, r6, r7, lr}
 	mov r7, sb
 	mov r6, r8
@@ -5882,8 +5882,8 @@ _08050CA4:
 	.align 2, 0
 _08050CB4: .4byte gBg1Tm
 
-	thumb_func_start sub_08050CB8
-sub_08050CB8: @ 0x08050CB8
+	thumb_func_start SpellFx_WriteBgMap
+SpellFx_WriteBgMap: @ 0x08050CB8
 	push {r4, r5, lr}
 	sub sp, #8
 	adds r4, r0, #0
@@ -5995,8 +5995,8 @@ _08050D90:
 	.align 2, 0
 _08050DA0: .4byte gBg1Tm
 
-	thumb_func_start sub_08050DA4
-sub_08050DA4: @ 0x08050DA4
+	thumb_func_start SpellFx_RegisterObjGfx
+SpellFx_RegisterObjGfx: @ 0x08050DA4
 	push {r4, r5, r6, lr}
 	adds r6, r1, #0
 	ldr r5, _08050DC4 @ =0x06010800
@@ -6014,8 +6014,8 @@ sub_08050DA4: @ 0x08050DA4
 _08050DC4: .4byte 0x06010800
 _08050DC8: .4byte 0x0201A784
 
-	thumb_func_start sub_08050DCC
-sub_08050DCC: @ 0x08050DCC
+	thumb_func_start SpellFx_RegisterObjPal
+SpellFx_RegisterObjPal: @ 0x08050DCC
 	push {lr}
 	adds r2, r1, #0
 	ldr r1, _08050DE4 @ =0x02022AA0
@@ -6028,8 +6028,8 @@ sub_08050DCC: @ 0x08050DCC
 	.align 2, 0
 _08050DE4: .4byte 0x02022AA0
 
-	thumb_func_start sub_08050DE8
-sub_08050DE8: @ 0x08050DE8
+	thumb_func_start SpellFx_RegisterBgGfx
+SpellFx_RegisterBgGfx: @ 0x08050DE8
 	push {r4, r5, r6, lr}
 	adds r6, r1, #0
 	ldr r5, _08050E08 @ =0x06002000
@@ -6047,8 +6047,8 @@ sub_08050DE8: @ 0x08050DE8
 _08050E08: .4byte 0x06002000
 _08050E0C: .4byte 0x02017784
 
-	thumb_func_start sub_08050E10
-sub_08050E10: @ 0x08050E10
+	thumb_func_start SpellFx_RegisterBgPal
+SpellFx_RegisterBgPal: @ 0x08050E10
 	push {lr}
 	adds r2, r1, #0
 	ldr r1, _08050E28 @ =0x02022880
@@ -6151,8 +6151,8 @@ _08050EB4:
 	bx r0
 	.align 2, 0
 
-	thumb_func_start sub_08050EC0
-sub_08050EC0: @ 0x08050EC0
+	thumb_func_start SpellFx_InterpretBgAnimScript
+SpellFx_InterpretBgAnimScript: @ 0x08050EC0
 	push {r4, r5, r6, r7, lr}
 	adds r5, r0, #0
 	adds r3, r1, #0
@@ -6237,8 +6237,8 @@ sub_08050F48: @ 0x08050F48
 	.align 2, 0
 _08050F50: .4byte 0x0201775C
 
-	thumb_func_start sub_08050F54
-sub_08050F54: @ 0x08050F54
+	thumb_func_start GetSpellAnimationStartFrame
+GetSpellAnimationStartFrame: @ 0x08050F54
 	ldr r0, _08050F64 @ =0x0203E004
 	movs r1, #0
 	ldrsh r0, [r0, r1]

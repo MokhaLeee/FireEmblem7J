@@ -286,7 +286,7 @@ _0804BBB0:
 _0804BBB4:
 	str r0, [r1]
 _0804BBB6:
-	bl sub_08054A30
+	bl InitBothAIS
 	bl sub_0806546C
 	ldr r0, _0804BBD0 @ =0x02000024
 	movs r1, #1
@@ -956,7 +956,7 @@ _0804C0EC:
 	bl sub_08053484
 	bl AnimClearAll
 	bl sub_0805480C
-	bl sub_08054A30
+	bl InitBothAIS
 	strh r4, [r6, #0x2c]
 	ldr r0, _0804C108 @ =sub_0804BF34
 	str r0, [r6, #0xc]
@@ -1635,7 +1635,7 @@ _0804C64C:
 	ldrsh r0, [r4, r1]
 	cmp r0, #0x28
 	ble _0804C6E4
-	bl sub_080507F4
+	bl SpellFx_ClearBG1
 	movs r0, #0
 	bl sub_0804CC68
 	ldr r3, _0804C6BC @ =gDispIo
