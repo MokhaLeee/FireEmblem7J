@@ -955,7 +955,7 @@ _0804C0EC:
 	bl sub_0802F5C4
 	bl sub_08053484
 	bl AnimClearAll
-	bl sub_0805480C
+	bl UpdateBanimFrame
 	bl InitBothAIS
 	strh r4, [r6, #0x2c]
 	ldr r0, _0804C108 @ =sub_0804BF34

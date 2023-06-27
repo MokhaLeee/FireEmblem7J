@@ -1712,7 +1712,7 @@ UnitKakudai1: @ 0x08051F38
 	lsls r0, r0, #2
 	adds r0, r0, r1
 	ldrb r6, [r0]
-	bl sub_0805480C
+	bl UpdateBanimFrame
 	ldr r0, [r4, #0x44]
 	cmp r0, #0
 	bne _08051F70
@@ -5227,7 +5227,7 @@ sub_08053AA8: @ 0x08053AA8
 	lsls r0, r0, #1
 	adds r0, r0, r1
 	strh r4, [r0]
-	bl sub_0805480C
+	bl UpdateBanimFrame
 	adds r0, r5, #0
 	movs r1, #6
 	bl SwitchAISFrameDataFromBARoundType
@@ -6028,7 +6028,7 @@ _08054126:
 	cmp r1, r0
 	beq _080541DA
 	adds r0, r2, #0
-	bl sub_08054734
+	bl NewEkrChienCHR
 	ldr r2, [sp]
 	adds r0, r2, #0
 	bl GetAISSubjectId
@@ -6496,7 +6496,7 @@ _0805450A:
 	cmp r1, r0
 	beq _08054566
 	adds r0, r7, #0
-	bl sub_08054764
+	bl RegisterAISSheetGraphics
 	adds r0, r7, #0
 	bl GetAISSubjectId
 	lsls r0, r0, #2
@@ -6725,8 +6725,8 @@ _0805472C:
 	bx r0
 	.align 2, 0
 
-	thumb_func_start sub_08054734
-sub_08054734: @ 0x08054734
+	thumb_func_start NewEkrChienCHR
+NewEkrChienCHR: @ 0x08054734
 	push {r4, lr}
 	adds r4, r0, #0
 	ldr r0, _08054748 @ =0x08C0A610
@@ -6739,12 +6739,12 @@ sub_08054734: @ 0x08054734
 	.align 2, 0
 _08054748: .4byte 0x08C0A610
 
-	thumb_func_start sub_0805474C
-sub_0805474C: @ 0x0805474C
+	thumb_func_start EkrChienCHRMain
+EkrChienCHRMain: @ 0x0805474C
 	push {r4, lr}
 	adds r4, r0, #0
 	ldr r0, [r4, #0x5c]
-	bl sub_08054764
+	bl RegisterAISSheetGraphics
 	adds r0, r4, #0
 	bl Proc_Break
 	pop {r4}
@@ -6752,8 +6752,8 @@ sub_0805474C: @ 0x0805474C
 	bx r0
 	.align 2, 0
 
-	thumb_func_start sub_08054764
-sub_08054764: @ 0x08054764
+	thumb_func_start RegisterAISSheetGraphics
+RegisterAISSheetGraphics: @ 0x08054764
 	push {r4, r5, lr}
 	adds r5, r0, #0
 	ldr r4, _08054790 @ =0x000003FF
@@ -6801,8 +6801,8 @@ _080547B8:
 	.align 2, 0
 _080547BC: .4byte 0x0203E0C0
 
-	thumb_func_start sub_080547C0
-sub_080547C0: @ 0x080547C0
+	thumb_func_start GetBanimPalette
+GetBanimPalette: @ 0x080547C0
 	adds r2, r0, #0
 	cmp r1, #0
 	bne _080547D0
@@ -6849,8 +6849,8 @@ _08054808:
 	bx lr
 	.align 2, 0
 
-	thumb_func_start sub_0805480C
-sub_0805480C: @ 0x0805480C
+	thumb_func_start UpdateBanimFrame
+UpdateBanimFrame: @ 0x0805480C
 	push {r4, r5, r6, r7, lr}
 	mov r7, sl
 	mov r6, sb
@@ -6891,7 +6891,7 @@ sub_0805480C: @ 0x0805480C
 	str r0, [r1]
 	adds r0, r5, #0
 	movs r1, #0
-	bl sub_080547C0
+	bl GetBanimPalette
 	lsls r0, r0, #5
 	ldr r2, _080549DC @ =0x08E00008
 	adds r0, r0, r2
@@ -6962,7 +6962,7 @@ _080548C4:
 	str r0, [r1]
 	adds r0, r5, #0
 	movs r1, #1
-	bl sub_080547C0
+	bl GetBanimPalette
 	lsls r0, r0, #5
 	add r0, sb
 	ldr r0, [r0, #0x1c]
@@ -8054,7 +8054,7 @@ _08055208:
 	cmp r1, r0
 	beq _0805522E
 	adds r0, r4, #0
-	bl sub_08054764
+	bl RegisterAISSheetGraphics
 	ldr r0, [r4, #0x28]
 	str r0, [r6, #0x2c]
 _0805522E:
@@ -8137,7 +8137,7 @@ sub_08055274: @ 0x08055274
 	cmp r1, r0
 	beq _080552C6
 	adds r0, r7, #0
-	bl sub_08054734
+	bl NewEkrChienCHR
 	ldr r0, [r7, #0x28]
 	str r0, [r6, #0x2c]
 _080552C6:
@@ -9556,7 +9556,7 @@ sub_08055DA8: @ 0x08055DA8
 	ldrsh r0, [r0, r2]
 	str r0, [r1]
 	bl sub_0804D738
-	bl sub_0805480C
+	bl UpdateBanimFrame
 	bl sub_0804C9AC
 	bl sub_0804D540
 	bl NewEkrBattle
@@ -53218,7 +53218,7 @@ sub_0806BFE4: @ 0x0806BFE4
 	movs r0, #0
 	bl InitOam
 	bl sub_0804D738
-	bl sub_0805480C
+	bl UpdateBanimFrame
 	bl sub_0804C9AC
 	bl sub_0804D540
 	bl NewEkrBattle
