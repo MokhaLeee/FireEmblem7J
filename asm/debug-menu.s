@@ -91,7 +91,7 @@ _0801B64C: .4byte gpKeySt
 sub_0801B650: @ 0x0801B650
 	push {lr}
 	movs r0, #0x10
-	bl sub_08001D2C
+	bl NewKeyStSetter
 	pop {r0}
 	bx r0
 
@@ -890,7 +890,7 @@ sub_0801BC84: @ 0x0801BC84
 	bl sub_080A0F80
 	bl WriteGameSave
 	movs r0, #0xff
-	bl sub_080C0584
+	bl SoftReset
 	pop {r1}
 	bx r1
 	.align 2, 0

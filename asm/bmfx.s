@@ -177,7 +177,7 @@ sub_0801D920: @ 0x0801D920
 	adds r0, #0x4c
 	movs r1, #0x10
 	strh r1, [r0]
-	bl sub_08015998
+	bl InitBmBgLayers
 	ldr r2, _0801D94C @ =0x030027CC
 	ldr r0, _0801D950 @ =0x0000FFE0
 	ldrh r1, [r2]
@@ -1490,7 +1490,7 @@ sub_0801E364: @ 0x0801E364
 	bl Proc_Find
 	adds r7, r0, #0
 	movs r0, #0
-	bl sub_08002BC0
+	bl GetBgTilemap
 	adds r4, r7, #0
 	adds r4, #0x30
 	ldrb r2, [r4]
@@ -1935,7 +1935,7 @@ sub_0801E6E4: @ 0x0801E6E4
 	mov r0, r8
 	subs r0, r0, r1
 	mov r8, r0
-	ldr r2, _0801E7D4 @ =0x080C0E98
+	ldr r2, _0801E7D4 @ =gSinLut
 	ldr r1, [sp, #4]
 	asrs r0, r1, #9
 	movs r1, #0xff
@@ -2019,7 +2019,7 @@ _0801E7C4:
 	pop {r0}
 	bx r0
 	.align 2, 0
-_0801E7D4: .4byte 0x080C0E98
+_0801E7D4: .4byte gSinLut
 _0801E7D8: .4byte gBmSt
 _0801E7DC: .4byte 0x08BFF768
 
@@ -4306,7 +4306,7 @@ sub_0801F9D8: @ 0x0801F9D8
 	push {r5, r6, r7}
 	sub sp, #4
 	str r0, [sp]
-	bl sub_08015998
+	bl InitBmBgLayers
 	movs r0, #0
 	movs r1, #0
 	movs r2, #0
@@ -4420,7 +4420,7 @@ sub_0801F9D8: @ 0x0801F9D8
 	mov r0, sl
 	movs r1, #1
 	bl sub_08082ECC
-	bl sub_08002094
+	bl ColorFadeInit
 	movs r3, #1
 	rsbs r3, r3, #0
 	movs r0, #0
@@ -4956,7 +4956,7 @@ sub_0801FF18: @ 0x0801FF18
 	adds r0, #0x4c
 	movs r1, #0xd
 	strh r1, [r0]
-	bl sub_08002094
+	bl ColorFadeInit
 	ldr r0, _0801FF38 @ =0x020228E0
 	movs r3, #1
 	rsbs r3, r3, #0
@@ -5022,7 +5022,7 @@ _0801FFA4: .4byte gPal
 sub_0801FFA8: @ 0x0801FFA8
 	push {lr}
 	movs r0, #0
-	bl sub_08002A44
+	bl InitBgs
 	bl sub_08015A48
 	ldr r0, _0801FFCC @ =gPlaySt
 	ldrb r0, [r0, #0x15]
@@ -5153,7 +5153,7 @@ _080200C8: .4byte gBmSt
 sub_080200CC: @ 0x080200CC
 	push {r4, r5, lr}
 	adds r4, r0, #0
-	bl sub_08002094
+	bl ColorFadeInit
 	ldr r5, _0802013C @ =0x02022920
 	adds r0, r5, #0
 	movs r1, #6
@@ -5474,7 +5474,7 @@ _0802034C: .4byte gDispIo
 sub_08020350: @ 0x08020350
 	push {r4, lr}
 	adds r4, r0, #0
-	bl sub_08002094
+	bl ColorFadeInit
 	ldr r0, _08020378 @ =gPal
 	movs r3, #2
 	rsbs r3, r3, #0
@@ -5538,7 +5538,7 @@ sub_080203D0: @ 0x080203D0
 	push {r4, r5, lr}
 	adds r4, r0, #0
 	bl ClearBg0Bg1
-	bl sub_08002094
+	bl ColorFadeInit
 	ldr r5, _0802046C @ =0x02022920
 	adds r0, r5, #0
 	movs r1, #6
@@ -5971,7 +5971,7 @@ sub_08020674: @ 0x08020674
 	adds r1, r2, #0
 	orrs r0, r1
 	strh r0, [r4, #0x3c]
-	bl sub_08002094
+	bl ColorFadeInit
 	ldr r4, _080207B8 @ =gPal
 	adds r0, r4, #0
 	movs r1, #0
@@ -6083,7 +6083,7 @@ _08020834: .4byte gpKeySt
 	thumb_func_start sub_08020838
 sub_08020838: @ 0x08020838
 	push {r4, r5, lr}
-	bl sub_08002094
+	bl ColorFadeInit
 	ldr r4, _0802086C @ =gPal
 	movs r5, #1
 	rsbs r5, r5, #0
@@ -7909,7 +7909,7 @@ sub_080216A0: @ 0x080216A0
 	movs r2, #0x20
 	bl ApplyPaletteExt
 	ldr r0, _08021734 @ =0x081BF4E0
-	ldr r4, _08021738 @ =0x02020140
+	ldr r4, _08021738 @ =gBuf
 	adds r1, r4, #0
 	bl sub_08013688
 	ldr r0, _0802173C @ =0x02022C64
@@ -7966,7 +7966,7 @@ _08021728: .4byte 0x081BEF28
 _0802172C: .4byte 0x06005000
 _08021730: .4byte 0x081BF2E0
 _08021734: .4byte 0x081BF4E0
-_08021738: .4byte 0x02020140
+_08021738: .4byte gBuf
 _0802173C: .4byte 0x02022C64
 _08021740: .4byte gDispIo
 _08021744: .4byte 0x0000FFE0

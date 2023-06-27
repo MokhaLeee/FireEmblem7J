@@ -1135,7 +1135,7 @@ sub_08010EEC: @ 0x08010EEC
 	ands r0, r1
 	cmp r0, #0
 	bne _08010F38
-	bl sub_08015998
+	bl InitBmBgLayers
 _08010F38:
 	pop {r4}
 	pop {r0}
@@ -1461,7 +1461,7 @@ sub_080111A8: @ 0x080111A8
 	strb r2, [r0]
 	adds r0, #1
 	strb r2, [r0]
-	bl sub_08015998
+	bl InitBmBgLayers
 	pop {r0}
 	bx r0
 	.align 2, 0
@@ -1838,7 +1838,7 @@ sub_080114A4: @ 0x080114A4
 	strb r2, [r0]
 	adds r0, #1
 	strb r2, [r0]
-	bl sub_08015998
+	bl InitBmBgLayers
 	bl sub_08015A48
 	bl sub_08005904
 	pop {r0}
@@ -2620,7 +2620,7 @@ sub_08011AC8: @ 0x08011AC8
 	adds r0, r2, #0
 	adds r0, #0x46
 	strb r1, [r0]
-	bl sub_08015998
+	bl InitBmBgLayers
 	pop {r0}
 	bx r0
 	.align 2, 0
@@ -2913,7 +2913,7 @@ sub_08011CBC: @ 0x08011CBC
 	movs r1, #0x88
 	lsls r1, r1, #1
 	movs r5, #0
-	ldr r3, _08011DCC @ =0x080C0E98
+	ldr r3, _08011DCC @ =gSinLut
 	mov sb, r3
 	movs r2, #0xff
 	mov r8, r2
@@ -2994,7 +2994,7 @@ _08011DB4:
 	.align 2, 0
 _08011DC4: .4byte gBmSt
 _08011DC8: .4byte 0x000001FF
-_08011DCC: .4byte 0x080C0E98
+_08011DCC: .4byte gSinLut
 _08011DD0: .4byte 0x081ACA40
 _08011DD4: .4byte 0x00005040
 
@@ -3114,7 +3114,7 @@ sub_08011E8C: @ 0x08011E8C
 	adds r0, r2, #0
 	adds r0, #0x46
 	strb r1, [r0]
-	bl sub_08015998
+	bl InitBmBgLayers
 	pop {r0}
 	bx r0
 	.align 2, 0

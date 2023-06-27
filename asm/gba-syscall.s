@@ -71,8 +71,8 @@ RLUnCompWram: @ 0x080C0580
 	svc #0x14
 	bx lr
 
-	thumb_func_start sub_080C0584
-sub_080C0584: @ 0x080C0584
+	thumb_func_start SoftReset
+SoftReset: @ 0x080C0584
 	ldr r3, _080C0594 @ =0x04000208
 	movs r2, #0
 	strb r2, [r3]

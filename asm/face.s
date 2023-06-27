@@ -1186,7 +1186,7 @@ _080072C4:
 	adds r2, r5, #0
 	bl sub_08007000
 	ldr r0, [r4, #0x3c]
-	bl sub_08002E30
+	bl GetBgFromPtr
 	bl EnableBgSyncById
 	adds r0, r4, #0
 	bl Proc_Break
@@ -1229,7 +1229,7 @@ _080072F8:
 	adds r1, #0x44
 	adds r2, #0x23
 	strh r2, [r1]
-	bl sub_08002E30
+	bl GetBgFromPtr
 	bl EnableBgSyncById
 _08007348:
 	ldrh r0, [r4, #0x34]

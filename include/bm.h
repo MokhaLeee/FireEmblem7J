@@ -1,6 +1,7 @@
 #pragma once
 
 #include "global.h"
+#include "proc.h"
 
 struct BmSt {
     /* 00 */ bool main_loop_ended;
@@ -155,3 +156,29 @@ enum PlaySt_Weather {
     WEATHER_SANDSTORM = 6,
     WEATHER_CLOUDS = 7
 };
+
+void OnVBlank(void);
+void OnMain(void);
+void LockGame(void);
+void UnlockGame(void);
+u8 GetGameLock(void);
+void InitBmBgLayers(void);
+void ApplySystemObjectsGraphics(void);
+void ApplySystemGraphics(void);
+void HandleMapCursorInput(u16 keys);
+void HandleMoveMapCursor(int step);
+void HandleMoveCameraWithMapCursor(int step);
+u16 GetCameraAdjustedX(int x);
+u16 GetCameraAdjustedY(int y);
+u16 GetCameraCenteredX(int x);
+u16 GetCameraCenteredY(int y);
+void PutMapCursor(int x, int y, int kind);
+void SetMapCursorPosition(int x, int y);
+void PutSysArrow(int x, int y, u8 isDown);
+void PutSysAButton(int x, int y, int palid);
+bool CameraMoveWatchPosition(ProcPtr proc, int x, int y);
+bool IsCameraNotWatchingPosition(int x, int y);
+bool CameraMove_08016290(ProcPtr proc);
+void Unused_08016344(int x, int y, int duration);
+int GetActiveMapSong(void);
+void StartMapSongBgm(void);

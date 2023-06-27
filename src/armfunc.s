@@ -10,8 +10,8 @@ ArmCodeStart:
 	.arm
 
 .LPal: .4byte gPal
-.LFadeComponents: .4byte 0x02022260
-.LFadeComponentStep: .4byte 0x02022240
+.LFadeComponents: .4byte gFadeComponents
+.LFadeComponentStep: .4byte gFadeComponentStep
 
 	function ColorFadeTick
 ColorFadeTick:
@@ -19,12 +19,12 @@ ColorFadeTick:
 	mov r7, #0x3e0
 
 .Lpal_loop:
-	ldr r0, .LFadeComponentStep @ =0x02022240
+	ldr r0, .LFadeComponentStep @ =gFadeComponentStep
 	add r0, r0, r7, lsr #5
 	ldrsb r5, [r0]
 	tst r5, r5
 	beq .Lpal_loop_continue
-	ldr r4, .LFadeComponents @ =0x02022260
+	ldr r4, .LFadeComponents @ =gFadeComponents
 	lsr r0, r7, #1
 	add r0, r0, r0, lsl #1
 	add r0, r0, #0x30

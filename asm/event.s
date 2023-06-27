@@ -11692,7 +11692,7 @@ sub_0800FA74: @ 0x0800FA74
 	push {lr}
 	ldr r0, [r0, #0x30]
 	ldr r0, [r0, #4]
-	bl sub_08001CA8
+	bl SetkeyStIgnoredMask
 	movs r0, #0
 	pop {r1}
 	bx r1
@@ -12387,7 +12387,7 @@ sub_0800FF74: @ 0x0800FF74
 	mov r7, r8
 	push {r7}
 	adds r6, r0, #0
-	ldr r2, _08010014 @ =0x080C0E98
+	ldr r2, _08010014 @ =gSinLut
 	movs r0, #0x48
 	adds r0, r0, r6
 	mov r8, r0
@@ -12465,7 +12465,7 @@ _0801000A:
 	pop {r0}
 	bx r0
 	.align 2, 0
-_08010014: .4byte 0x080C0E98
+_08010014: .4byte gSinLut
 _08010018: .4byte 0x000001FF
 
 	thumb_func_start sub_0801001C
@@ -12634,7 +12634,7 @@ sub_0801012C: @ 0x0801012C
 	muls r0, r1, r0
 	adds r0, #1
 	str r0, [r5, #0x38]
-	ldr r2, _080101C0 @ =0x080C0E98
+	ldr r2, _080101C0 @ =gSinLut
 	movs r1, #0xff
 	ands r1, r0
 	adds r0, r1, #0
@@ -12695,7 +12695,7 @@ _080101B8:
 	pop {r0}
 	bx r0
 	.align 2, 0
-_080101C0: .4byte 0x080C0E98
+_080101C0: .4byte gSinLut
 
 	thumb_func_start nullsub_30
 nullsub_30: @ 0x080101C4

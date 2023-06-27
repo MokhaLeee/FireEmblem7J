@@ -368,8 +368,8 @@ sub_08015988: @ 0x08015988
 	pop {r0}
 	bx r0
 
-	thumb_func_start sub_08015998
-sub_08015998: @ 0x08015998
+	thumb_func_start InitBmBgLayers
+InitBmBgLayers: @ 0x08015998
 	ldr r0, _080159D0 @ =gPlaySt
 	ldrb r0, [r0, #0x15]
 	cmp r0, #7
@@ -433,7 +433,7 @@ _08015A08: .4byte gDispIo
 sub_08015A0C: @ 0x08015A0C
 	push {r4, lr}
 	ldr r0, _08015A38 @ =0x0818F9F0
-	ldr r4, _08015A3C @ =0x02020140
+	ldr r4, _08015A3C @ =gBuf
 	adds r1, r4, #0
 	bl sub_08013688
 	ldr r1, _08015A40 @ =0x06010000
@@ -451,7 +451,7 @@ sub_08015A0C: @ 0x08015A0C
 	bx r0
 	.align 2, 0
 _08015A38: .4byte 0x0818F9F0
-_08015A3C: .4byte 0x02020140
+_08015A3C: .4byte gBuf
 _08015A40: .4byte 0x06010000
 _08015A44: .4byte 0x0818FE70
 

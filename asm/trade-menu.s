@@ -1395,7 +1395,7 @@ sub_0802BB28: @ 0x0802BB28
 	cmp r0, #0
 	beq _0802BB6C
 	movs r0, #0xc9
-	bl sub_08001CA8
+	bl SetkeyStIgnoredMask
 	movs r0, #1
 	strb r0, [r4]
 _0802BB6C:
@@ -1739,7 +1739,7 @@ _0802BDC8:
 	cmp r0, #0
 	beq _0802BDE8
 	movs r0, #0xc8
-	bl sub_08001CA8
+	bl SetkeyStIgnoredMask
 	adds r0, r4, #0
 	bl sub_0802BD30
 	b _0802BF00
@@ -1795,7 +1795,7 @@ _0802BE0C:
 	cmp r0, #0x6b
 	bne _0802BE5C
 	movs r0, #0xc8
-	bl sub_08001CA8
+	bl SetkeyStIgnoredMask
 	adds r0, r4, #0
 	bl sub_0802BBA8
 	b _0802BF00
@@ -1857,7 +1857,7 @@ _0802BEC0:
 	cmp r0, #0
 	beq _0802BEDC
 	movs r0, #0
-	bl sub_08001CA8
+	bl SetkeyStIgnoredMask
 	b _0802BF00
 	.align 2, 0
 _0802BED8: .4byte gpKeySt

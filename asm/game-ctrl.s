@@ -136,7 +136,7 @@ _08012CA0: .4byte gpKeySt
 sub_08012CA4: @ 0x08012CA4
 	push {lr}
 	movs r0, #0
-	bl sub_08002A44
+	bl InitBgs
 	bl sub_08015A48
 	ldr r2, _08012CD4 @ =gPlaySt
 	adds r2, #0x40
@@ -737,7 +737,7 @@ _08013124: .4byte 0x0000FFE0
 sub_08013128: @ 0x08013128
 	push {lr}
 	movs r0, #0
-	bl sub_08002A44
+	bl InitBgs
 	ldr r0, _08013140 @ =gPlaySt
 	ldrb r0, [r0, #0x1b]
 	cmp r0, #2
@@ -766,7 +766,7 @@ _0801315C: .4byte 0x08D8A114
 sub_08013160: @ 0x08013160
 	push {lr}
 	movs r0, #0
-	bl sub_08002A44
+	bl InitBgs
 	ldr r0, _08013178 @ =gPlaySt
 	ldrb r0, [r0, #0x1b]
 	cmp r0, #2

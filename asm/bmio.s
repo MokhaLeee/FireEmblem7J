@@ -537,7 +537,7 @@ sub_0802DB64: @ 0x0802DB64
 	ldrb r0, [r0, #0x15]
 	bl sub_0802D8E4
 	ldr r0, _0802DBC4 @ =0x08194FAC
-	ldr r4, _0802DBC8 @ =0x02020140
+	ldr r4, _0802DBC8 @ =gBuf
 	adds r1, r4, #0
 	bl sub_08013688
 	ldr r1, _0802DBCC @ =0x06010380
@@ -574,7 +574,7 @@ _0802DB8A:
 	.align 2, 0
 _0802DBC0: .4byte gPlaySt
 _0802DBC4: .4byte 0x08194FAC
-_0802DBC8: .4byte 0x02020140
+_0802DBC8: .4byte gBuf
 _0802DBCC: .4byte 0x06010380
 _0802DBD0: .4byte 0x020027DC
 
@@ -638,7 +638,7 @@ sub_0802DC30: @ 0x0802DC30
 	ldrb r0, [r0, #0x15]
 	bl sub_0802D8E4
 	ldr r0, _0802DCA0 @ =0x08195034
-	ldr r4, _0802DCA4 @ =0x02020140
+	ldr r4, _0802DCA4 @ =gBuf
 	adds r1, r4, #0
 	bl sub_08013688
 	ldr r1, _0802DCA8 @ =0x06010300
@@ -675,7 +675,7 @@ _0802DC6C:
 	.align 2, 0
 _0802DC9C: .4byte gPlaySt
 _0802DCA0: .4byte 0x08195034
-_0802DCA4: .4byte 0x02020140
+_0802DCA4: .4byte gBuf
 _0802DCA8: .4byte 0x06010300
 _0802DCAC: .4byte 0x020027DC
 _0802DCB0: .4byte 0x000001FF

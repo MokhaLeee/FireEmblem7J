@@ -548,7 +548,7 @@ sub_080066E0: @ 0x080066E0
 	push {r5, r6, r7}
 	sub sp, #4
 	adds r7, r0, #0
-	ldr r4, _080067EC @ =0x0300283C
+	ldr r4, _080067EC @ =gOamAffinePutId
 	ldrh r0, [r4]
 	str r0, [sp]
 	ldr r2, [r7, #0x3c]
@@ -564,7 +564,7 @@ sub_080066E0: @ 0x080066E0
 	ands r6, r3
 	cmp r6, #0
 	beq _08006740
-	ldr r3, _080067F8 @ =0x03003868
+	ldr r3, _080067F8 @ =gOamAffinePutIt
 _08006710:
 	ldr r0, [r3]
 	ldrh r1, [r2, #4]
@@ -595,7 +595,7 @@ _08006740:
 	ldr r0, [r5]
 	cmp r0, #1
 	beq _080067DC
-	ldr r2, _080067FC @ =0x03002E54
+	ldr r2, _080067FC @ =gOamHiPutIt
 	ldr r0, [r2]
 	ldr r1, _08006800 @ =0x03002C50
 	mov sl, r1
@@ -685,11 +685,11 @@ _080067DC:
 	pop {r0}
 	bx r0
 	.align 2, 0
-_080067EC: .4byte 0x0300283C
+_080067EC: .4byte gOamAffinePutId
 _080067F0: .4byte 0xFFFF0000
 _080067F4: .4byte 0x0000FFFF
-_080067F8: .4byte 0x03003868
-_080067FC: .4byte 0x03002E54
+_080067F8: .4byte gOamAffinePutIt
+_080067FC: .4byte gOamHiPutIt
 _08006800: .4byte 0x03002C50
 _08006804: .4byte 0x000001FF
 _08006808: .4byte 0x0000F3FF

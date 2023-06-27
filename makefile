@@ -118,8 +118,9 @@ $(BUILD_DIR)/%.d: %.c
 $(BUILD_DIR)/%.o: %.c $(BUILD_DIR)/%.d
 	@echo "[ CC]	$<"
 	@$(CPP) $(CPPFLAGS) $< | iconv -f UTF-8 -t CP932 | $(CC1) $(CFLAGS) -o $(BUILD_DIR)/$*.s
-	@echo ".ALIGN 2, 0" >> $(BUILD_DIR)/$*.s
+	@echo ".text\n\t.align\t2, 0\n" >> $(BUILD_DIR)/$*.s
 	@$(AS) $(ASFLAGS) $(BUILD_DIR)/$*.s -o $@
+	@$(STRIP) -N .gcc2_compiled. $@
 
 # ASM dependency file (dummy, generated with the object)
 $(BUILD_DIR)/%.d: $(BUILD_DIR)/%.o
@@ -146,6 +147,8 @@ endif
 %/random.o:          CFLAGS += -O0
 %/agb-sram.o:        CFLAGS += -O1
 %/hardware.o:        CFLAGS += -O0
+%/move-data.o:       CFLAGS += -O0
+%/oam.o:             CFLAGS += -O0
 
 # ===============
 # = Symbol file =

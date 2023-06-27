@@ -284,7 +284,7 @@ sub_08012808: @ 0x08012808
 	mov r8, r2
 	cmp r8, r1
 	bge _080128D8
-	ldr r0, _080128EC @ =0x080C0E98
+	ldr r0, _080128EC @ =gSinLut
 	mov sb, r0
 	movs r1, #0xff
 	mov sl, r1
@@ -370,7 +370,7 @@ _080128D8:
 	bx r0
 	.align 2, 0
 _080128E8: .4byte 0x00007FFF
-_080128EC: .4byte 0x080C0E98
+_080128EC: .4byte gSinLut
 
 	thumb_func_start sub_080128F0
 sub_080128F0: @ 0x080128F0

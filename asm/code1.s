@@ -193,7 +193,7 @@ sub_0802E4E8: @ 0x0802E4E8
 	push {r6}
 	mov r8, r0
 	movs r0, #0
-	bl sub_08002A44
+	bl InitBgs
 	ldr r0, _0802E59C @ =OnGameLoopMain
 	bl SetMainFunc
 	ldr r0, _0802E5A0 @ =OnVBlank
@@ -220,7 +220,7 @@ sub_0802E4E8: @ 0x0802E4E8
 	bl GetROMChapterStruct
 	ldrb r0, [r0, #0x12]
 	strb r0, [r4, #0x15]
-	bl sub_08015998
+	bl InitBmBgLayers
 	movs r0, #0xe
 	ldrsb r0, [r4, r0]
 	bl InitChapterMap
@@ -270,7 +270,7 @@ _0802E5B0: .4byte 0x0000FFE0
 sub_0802E5B4: @ 0x0802E5B4
 	push {r4, r5, lr}
 	movs r0, #0
-	bl sub_08002A44
+	bl InitBgs
 	ldr r0, _0802E638 @ =OnGameLoopMain
 	bl SetMainFunc
 	ldr r0, _0802E63C @ =OnVBlank
@@ -286,7 +286,7 @@ sub_0802E5B4: @ 0x0802E5B4
 	ldrb r0, [r0, #0x12]
 	movs r5, #0
 	strb r0, [r4, #0x15]
-	bl sub_08015998
+	bl InitBmBgLayers
 	movs r0, #0xe
 	ldrsb r0, [r4, r0]
 	bl InitChapterMap
@@ -336,7 +336,7 @@ sub_0802E650: @ 0x0802E650
 	bl sub_080A2B50
 _0802E660:
 	movs r0, #0
-	bl sub_08002A44
+	bl InitBgs
 	ldr r0, _0802E6D4 @ =OnGameLoopMain
 	bl SetMainFunc
 	ldr r0, _0802E6D8 @ =OnVBlank
@@ -532,7 +532,7 @@ _0802E830: .4byte gPlaySt
 sub_0802E834: @ 0x0802E834
 	push {lr}
 	movs r0, #0
-	bl sub_08002A44
+	bl InitBgs
 	bl sub_08015A48
 	bl sub_0802E804
 	pop {r0}
@@ -1003,7 +1003,7 @@ _0802EBF4: .4byte 0x01000064
 	thumb_func_start sub_0802EBF8
 sub_0802EBF8: @ 0x0802EBF8
 	push {r4, r5, r6, lr}
-	ldr r6, _0802EC38 @ =0x02020140
+	ldr r6, _0802EC38 @ =gBuf
 	adds r4, r6, #0
 	bl sub_0802EBCC
 	adds r1, r0, #0
@@ -1033,7 +1033,7 @@ _0802EC10:
 	pop {r0}
 	bx r0
 	.align 2, 0
-_0802EC38: .4byte 0x02020140
+_0802EC38: .4byte gBuf
 
 	thumb_func_start sub_0802EC3C
 sub_0802EC3C: @ 0x0802EC3C
@@ -6292,7 +6292,7 @@ sub_0803157C: @ 0x0803157C
 	push {r4, lr}
 	adds r4, r0, #0
 	movs r0, #0
-	bl sub_08002A44
+	bl InitBgs
 	adds r0, r4, #0
 	bl sub_080AAC88
 	pop {r4}
@@ -6423,7 +6423,7 @@ sub_08031664: @ 0x08031664
 	ands r0, r1
 	cmp r0, #0
 	bne _080316B2
-	ldr r0, _080316C0 @ =0x02020140
+	ldr r0, _080316C0 @ =gBuf
 	bl InitUnitStack
 	movs r4, #1
 _08031686:
@@ -6454,7 +6454,7 @@ _080316B2:
 	.align 2, 0
 _080316B8: .4byte gPlaySt
 _080316BC: .4byte gBmSt
-_080316C0: .4byte 0x02020140
+_080316C0: .4byte gBuf
 _080316C4: .4byte 0x0001000C
 
 	thumb_func_start sub_080316C8
@@ -6954,7 +6954,7 @@ sub_08031A7C: @ 0x08031A7C
 	ldr r6, _08031AA0 @ =0x03005D90
 	bl sub_080A2A50
 	adds r4, r0, #0
-	ldr r5, _08031AA4 @ =0x02020140
+	ldr r5, _08031AA4 @ =gBuf
 	bl sub_080A2A6C
 	adds r2, r0, #0
 	ldr r3, [r6]
@@ -6965,7 +6965,7 @@ sub_08031A7C: @ 0x08031A7C
 	b _08031AB6
 	.align 2, 0
 _08031AA0: .4byte 0x03005D90
-_08031AA4: .4byte 0x02020140
+_08031AA4: .4byte gBuf
 _08031AA8:
 	ldr r4, _08031ABC @ =0x08D648F4
 	bl GetROMChapterStruct
@@ -11681,7 +11681,7 @@ sub_08034070: @ 0x08034070
 	ldr r1, _080340E8 @ =0x06004000
 	bl sub_08013688
 	ldr r0, _080340EC @ =0x08191A58
-	ldr r4, _080340F0 @ =0x02020140
+	ldr r4, _080340F0 @ =gBuf
 	adds r1, r4, #0
 	bl sub_08013688
 	ldr r1, _080340F4 @ =0x06015D00
@@ -11725,7 +11725,7 @@ sub_08034070: @ 0x08034070
 _080340E4: .4byte 0x08191410
 _080340E8: .4byte 0x06004000
 _080340EC: .4byte 0x08191A58
-_080340F0: .4byte 0x02020140
+_080340F0: .4byte gBuf
 _080340F4: .4byte 0x06015D00
 _080340F8: .4byte 0x08191B04
 _080340FC: .4byte 0x0000FFFF
@@ -11893,7 +11893,7 @@ sub_08034230: @ 0x08034230
 	ldr r1, [r7, #0x2c]
 	lsls r1, r1, #2
 	movs r0, #0xff
-	ldr r2, _080342C0 @ =0x080C0E98
+	ldr r2, _080342C0 @ =gSinLut
 	ands r1, r0
 	lsls r0, r1, #1
 	adds r0, r0, r2
@@ -11960,7 +11960,7 @@ _080342B8:
 	pop {r0}
 	bx r0
 	.align 2, 0
-_080342C0: .4byte 0x080C0E98
+_080342C0: .4byte gSinLut
 _080342C4: .4byte 0x08BFF768
 _080342C8: .4byte 0x000022E6
 

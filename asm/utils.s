@@ -201,7 +201,7 @@ sub_08013658: @ 0x08013658
 	push {r4, r5, r6, lr}
 	adds r4, r0, #0
 	adds r5, r1, #0
-	ldr r6, _08013684 @ =0x02020140
+	ldr r6, _08013684 @ =gBuf
 	adds r1, r6, #0
 	bl LZ77UnCompWram
 	adds r0, r4, #0
@@ -219,7 +219,7 @@ _08013672:
 	pop {r0}
 	bx r0
 	.align 2, 0
-_08013684: .4byte 0x02020140
+_08013684: .4byte gBuf
 
 	thumb_func_start sub_08013688
 sub_08013688: @ 0x08013688
@@ -686,7 +686,7 @@ _08013988:
 	str r3, [sp, #4]
 	ldr r4, [sp]
 	lsls r0, r4, #2
-	ldr r7, _08013A94 @ =0x02020140
+	ldr r7, _08013A94 @ =gBuf
 	adds r0, r0, r7
 	mov sl, r0
 	str r0, [sp, #8]
@@ -754,7 +754,7 @@ _08013A0E:
 	bhi _08013A20
 	mov r4, r8
 	lsls r0, r4, #2
-	ldr r7, _08013A94 @ =0x02020140
+	ldr r7, _08013A94 @ =gBuf
 	adds r0, r0, r7
 	mov r4, sp
 	ldrh r4, [r4, #0xc]
@@ -764,7 +764,7 @@ _08013A20:
 	bhi _08013A32
 	mov r7, ip
 	lsls r0, r7, #2
-	ldr r3, _08013A94 @ =0x02020140
+	ldr r3, _08013A94 @ =gBuf
 	adds r0, r0, r3
 	mov r4, sp
 	ldrh r4, [r4, #4]
@@ -773,7 +773,7 @@ _08013A32:
 	cmp r1, #0x9f
 	bhi _08013A42
 	lsls r0, r5, #2
-	ldr r7, _08013A94 @ =0x02020140
+	ldr r7, _08013A94 @ =gBuf
 	adds r0, r0, r7
 	mov r1, sp
 	ldrh r1, [r1, #4]
@@ -812,7 +812,7 @@ _08013A68:
 	cmp r2, sb
 	bge _080139B4
 _08013A80:
-	ldr r0, _08013A94 @ =0x02020140
+	ldr r0, _08013A94 @ =gBuf
 	add sp, #0x1c
 	pop {r3, r4, r5}
 	mov r8, r3
@@ -822,13 +822,13 @@ _08013A80:
 	pop {r1}
 	bx r1
 	.align 2, 0
-_08013A94: .4byte 0x02020140
+_08013A94: .4byte gBuf
 
 	thumb_func_start sub_08013A98
 sub_08013A98: @ 0x08013A98
 	push {r4, r5, r6, r7, lr}
 	adds r3, r0, #0
-	ldr r7, _08013AB4 @ =0x02020140
+	ldr r7, _08013AB4 @ =gBuf
 	movs r6, #0
 	adds r5, r7, #0
 	ldr r4, _08013AB8 @ =gPal
@@ -841,7 +841,7 @@ _08013AA4:
 	subs r1, r1, r3
 	b _08013AC0
 	.align 2, 0
-_08013AB4: .4byte 0x02020140
+_08013AB4: .4byte gBuf
 _08013AB8: .4byte gPal
 _08013ABC:
 	ldr r0, _08013AD0 @ =0x0000FFE0
@@ -4604,7 +4604,7 @@ sub_08015550: @ 0x08015550
 	thumb_func_start sub_08015584
 sub_08015584: @ 0x08015584
 	push {r4, lr}
-	ldr r3, _080155CC @ =0x080C0E98
+	ldr r3, _080155CC @ =gSinLut
 	lsls r1, r1, #0x10
 	movs r2, #0xff
 	lsls r2, r2, #0x10
@@ -4639,12 +4639,12 @@ sub_08015584: @ 0x08015584
 	pop {r0}
 	bx r0
 	.align 2, 0
-_080155CC: .4byte 0x080C0E98
+_080155CC: .4byte gSinLut
 
 	thumb_func_start sub_080155D0
 sub_080155D0: @ 0x080155D0
 	push {r4, lr}
-	ldr r3, _08015614 @ =0x080C0E98
+	ldr r3, _08015614 @ =gSinLut
 	lsls r1, r1, #0x10
 	movs r2, #0xff
 	lsls r2, r2, #0x10
@@ -4678,12 +4678,12 @@ sub_080155D0: @ 0x080155D0
 	pop {r0}
 	bx r0
 	.align 2, 0
-_08015614: .4byte 0x080C0E98
+_08015614: .4byte gSinLut
 
 	thumb_func_start sub_08015618
 sub_08015618: @ 0x08015618
 	push {r4, lr}
-	ldr r3, _0801565C @ =0x080C0E98
+	ldr r3, _0801565C @ =gSinLut
 	lsls r1, r1, #0x10
 	movs r2, #0xff
 	lsls r2, r2, #0x10
@@ -4717,7 +4717,7 @@ sub_08015618: @ 0x08015618
 	pop {r0}
 	bx r0
 	.align 2, 0
-_0801565C: .4byte 0x080C0E98
+_0801565C: .4byte gSinLut
 
 	thumb_func_start nullsub_36
 nullsub_36: @ 0x08015660

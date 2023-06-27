@@ -68,7 +68,7 @@ AgbMain: @ 0x08000A20
 	bl StartGame
 _08000AC2:
 	bl RunMainFunc
-	bl sub_08002BE4
+	bl SoftResetIfKeyCombo
 	b _08000AC2
 	.align 2, 0
 _08000ACC: .4byte 0x040000D4

@@ -1958,7 +1958,7 @@ _0801D53C:
 	ldrb r2, [r1]
 	orrs r0, r2
 	strb r0, [r1]
-	bl sub_08015998
+	bl InitBmBgLayers
 	add sp, #4
 	pop {r4, r5, r6, r7}
 	pop {r0}
@@ -2055,7 +2055,7 @@ _0801D688:
 	ldrb r2, [r1, #4]
 	ands r0, r2
 	strb r0, [r1, #4]
-	bl sub_08015998
+	bl InitBmBgLayers
 	pop {r0}
 	bx r0
 	.align 2, 0

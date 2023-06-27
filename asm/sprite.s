@@ -6,7 +6,7 @@
 PutObjectAffine: @ 0x0800680C
 	push {r4, r5, r6, lr}
 	ldr r6, [sp, #0x10]
-	ldr r5, _0800683C @ =0x03002850
+	ldr r5, _0800683C @ =gOam
 	lsls r0, r0, #4
 	adds r4, r0, #3
 	lsls r4, r4, #1
@@ -29,7 +29,7 @@ PutObjectAffine: @ 0x0800680C
 	pop {r0}
 	bx r0
 	.align 2, 0
-_0800683C: .4byte 0x03002850
+_0800683C: .4byte gOam
 
 	thumb_func_start ClearSprites
 ClearSprites: @ 0x08006840

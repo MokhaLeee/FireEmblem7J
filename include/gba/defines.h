@@ -15,7 +15,7 @@
 #define INTR_CHECK     (*(u16 *)0x3007FF8)
 #define INTR_VECTOR    (*(void **)0x3007FFC)
 
-#define EWRAM_START 0x02000000
+#define EWRAM_START gAnims
 #define IWRAM_START 0x03000000
 
 #define PLTT      0x5000000

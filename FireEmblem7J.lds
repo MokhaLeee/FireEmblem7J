@@ -11,13 +11,9 @@ SECTIONS
 	ALIGN(4)
 	{
 		. = 0x000000; gAnims = .;
-		. = 0x022860; gPal = .;
-		. = 0x022C60; gBg0Tm = .;
-		. = 0x023460; gBg1Tm = .;
-		. = 0x023C60; gBg2Tm = .;
-		. = 0x024460; gBg3Tm = .;
-		. = 0x024C60; gBgMapVramTable = .;
-		. = 0x024C70; MainFunc = .;
+		. = 0x020140;
+		. = ALIGN(4); src/hardware.o(ewram_data);
+		. = ALIGN(4); src/move-data.o(ewram_data);
 		. = 0x026A48;
 		. = ALIGN(4); src/icon.o(ewram_data);
 		. = 0x02BBB4; gBmSt = .;
@@ -51,11 +47,20 @@ SECTIONS
 		/* .bss */
 		. = ALIGN(4); src/random.o(.bss);
 		. = ALIGN(4); src/hardware.o(.bss);
+		. = ALIGN(4); src/oam.o(.bss);
 		. = 0x002778; gArenaLevelBackup = .;
+		. = 0x002780; gOamLoPutIt = .;
 		. = 0x002790; gDispIo = .;
 		. = 0x002800; gIrqFuncs = .;
+		. = 0x00283C; gOamAffinePutId = .;
+		. = 0x002844; gOnHBlankA = .;
+		. = 0x002850; gOam = .;
+		. = 0x002E54; gOamHiPutIt = .;
+		. = 0x002E58; gOnHBlankB = .;
+		. = 0x003868; gOamAffinePutIt = .;
 		. = 0x003870; IntrMainRam = .;
 		. = 0x0045B0; gActiveUnit = .;
+		. = 0x004750; Unk_03004750 = .;
 	}
 
 	. = 0x08000000;
@@ -70,7 +75,8 @@ SECTIONS
 		src/irq.o(.text);
 		src/random.o(.text);
 		src/hardware.o(.text);
-		asm/hardware.o(.text);
+		src/move-data.o(.text);
+		src/oam.o(.text);
 		asm/sound.o(.text);
 		asm/ram-funcs.o(.text);
 		asm/proc.o(.text);
@@ -141,12 +147,16 @@ SECTIONS
 		. = ALIGN(4); src/irq.o(.rodata)
 		. = ALIGN(4); src/random.o(.rodata)
 		. = ALIGN(4); src/hardware.o(.rodata)
+		. = ALIGN(4); src/move-data.o(.rodata)
+		. = ALIGN(4); src/oam.o(.rodata)
 		. = ALIGN(4); data/const_data3.o(.rodata)
 		. = ALIGN(4); data/const_data_icon.o(.rodata)
 		. = ALIGN(4); data/const_data1.o(.rodata)
 		. = ALIGN(4); src/unit.o(.rodata)
 		. = ALIGN(4); data/const_data2.o(.rodata)
 		. = ALIGN(4); src/battle.o(.rodata)
+		. = ALIGN(4); data/data1.o(.data)
+		. = ALIGN(4); src/hardware.o(.data)
 		. = ALIGN(4); data/data.o(.data)
 		. = ALIGN(4); src/battle.o(.data)
 		. = ALIGN(4); data/data2.o(.data)

@@ -34,7 +34,7 @@ _08004DE2:
 	strh r0, [r1, #4]
 	bl EnablePalSync
 	adds r0, r5, #0
-	bl sub_08002BC0
+	bl GetBgTilemap
 	movs r1, #0
 	bl TmFill
 	ldr r4, _08004E48 @ =0x02026D28

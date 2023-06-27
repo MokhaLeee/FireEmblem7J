@@ -3529,7 +3529,7 @@ sub_08009920: @ 0x08009920
 	adds r5, r1, #0
 	adds r4, r2, #0
 	adds r6, r3, #0
-	bl sub_08002BC0
+	bl GetBgTilemap
 	adds r3, r0, #0
 	cmp r6, #5
 	bls _08009934
@@ -3721,7 +3721,7 @@ sub_08009AA8: @ 0x08009AA8
 	str r2, [sp]
 	adds r5, r3, #0
 	ldr r4, [sp, #0x28]
-	bl sub_08002BC0
+	bl GetBgTilemap
 	adds r7, r0, #0
 	subs r5, #1
 	subs r4, #1

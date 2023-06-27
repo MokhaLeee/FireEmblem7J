@@ -158,21 +158,73 @@ enum bg_sync_bitfile {
     BG3_SYNC_BIT = (1 << 3),
 };
 
-extern u8 EWRAM_DATA gBuf[0x2000];
+enum bg_index {
+    BG_0 = 0,
+    BG_1,
+    BG_2,
+    BG_3,
 
+    BG_INVALID = -1,
+};
+
+extern struct KeySt CONST_DATA *gpKeySt;
+extern struct KeySt EWRAM_DATA gKeyStObj;
+
+struct MoveStats {
+    /* 00 */ int count;
+    /* 04 */ int totalSize;
+};
+
+struct MoveEntry {
+    /* 00 */ void const *src;
+    /* 04 */ void *dest;
+    /* 08 */ u16 size;
+    /* 0A */ u16 mode;
+};
+
+#define DATA_MOV_LIST_MAX 0x20
+
+extern struct MoveStats EWRAM_DATA gMoveStats;
+extern struct MoveEntry EWRAM_DATA gMoveList[DATA_MOV_LIST_MAX];
+
+enum data_move_mode {
+    MOVE_MODE_COPY,
+    MOVE_MODE_COPY_FAST,
+    MOVE_MODE_FILL_FAST,
+};
+
+enum {
+    BG_SIZE_256x256 = 0,
+    BG_SIZE_512x256 = 1,
+    BG_SIZE_256x512 = 2,
+    BG_SIZE_512x512 = 3,
+};
+
+enum softreset_arg {
+    GBA_RESET_EWRAM    = 1 << 0,
+    GBA_RESET_IWRAM    = 1 << 1,
+    GBA_RESET_PALETTE  = 1 << 2,
+    GBA_RESET_VRAM     = 1 << 3,
+    GBA_RESET_OAM      = 1 << 4,
+    GBA_RESET_SIO_IO   = 1 << 5,
+    GBA_RESET_SOUND_IO = 1 << 6,
+    GBA_RESET_IO       = 1 << 7,
+    GBA_RESET_ALL      = (1 << 8) - 1,
+};
+
+extern u8 EWRAM_DATA gBuf[0x2100];
 extern u16 EWRAM_DATA gPal[0x200];
-
 extern u16 EWRAM_DATA gBg0Tm[0x400];
 extern u16 EWRAM_DATA gBg1Tm[0x400];
 extern u16 EWRAM_DATA gBg2Tm[0x400];
 extern u16 EWRAM_DATA gBg3Tm[0x400];
 extern void *EWRAM_DATA gBgMapVramTable[4];
 extern Func EWRAM_DATA MainFunc;
-extern struct KeySt * CONST_DATA gKeySt;
-
 extern struct DispIo gDispIo;
+extern const s16 gSinLut[0x40];
 
-extern short CONST_DATA gSinLut[];
+extern Func gOnHBlankA;
+extern Func gOnHBlankB;
 
 #define RGB_GET_RED(color) ((color) & 0x1F)
 #define RGB_GET_GREEN(color) (((color) >> 5) & 0x1F)
@@ -266,11 +318,6 @@ extern short CONST_DATA gSinLut[];
 #define SetBlendNone() \
     SetBlendConfig(BLEND_EFFECT_NONE, 0x10, 0, 0)
 
-
-void RegisterDataMove(void const * src, void * dst, int size);
-void RegisterDataFill(u32 value, void * dst, int size);
-void ApplyDataMoves(void);
-
 #define RegisterVramMove(src, offset, size) \
     RegisterDataMove( \
         (src), \
@@ -334,3 +381,7 @@ void SoftResetIfKeyCombo(void);
 void func_fe6_0800285C(int unk);
 void SetOnHBlankA(Func func);
 void SetOnHBlankB(Func func);
+int GetBgFromPtr(u16 *ptr);
+void RegisterDataMove(void const * src, void * dst, int size);
+void RegisterDataFill(u32 value, void * dst, int size);
+void ApplyDataMoves(void);

@@ -94,7 +94,7 @@ _0804A31E:
 	ldr r0, [r5]
 	bl sub_080136C8
 	adds r6, r0, #0
-	ldr r4, _0804A35C @ =0x02022240
+	ldr r4, _0804A35C @ =gFadeComponentStep
 	subs r4, r4, r6
 	ldr r0, [r5]
 	adds r1, r4, #0
@@ -113,7 +113,7 @@ _0804A31E:
 	.align 2, 0
 _0804A354: .4byte gPlaySt
 _0804A358: .4byte 0x08C09B94
-_0804A35C: .4byte 0x02022240
+_0804A35C: .4byte gFadeComponentStep
 
 	thumb_func_start sub_0804A360
 sub_0804A360: @ 0x0804A360
