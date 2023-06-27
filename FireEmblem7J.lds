@@ -11,6 +11,12 @@ SECTIONS
 	ALIGN(4)
 	{
 		. = 0x000000; gAnims = .;
+		. = 0x000024; gEkrDebugUnk3 = .;
+		. = 0x00005C; gpBanimModesLeft = .;
+		. = 0x000060; gpBanimModesRight = .;
+		. = 0x00F1C8; gBanimScrLeft = .;
+		. = 0x01FAF8; gBanimDoneFlag = .;
+		. = 0x01FB10; gpImgSheet = .;
 		. = 0x020140;
 		. = ALIGN(4); src/hardware.o(ewram_data);
 		. = ALIGN(4); src/move-data.o(ewram_data);
@@ -32,12 +38,14 @@ SECTIONS
 		. = 0x02E3E8; gBmMapFog = .;
 		. = 0x02E3EC; gBmMapHidden = .;
 		. = 0x02E3F0; gBmMapOther = .;
-		
+
 		. = 0x03A3D4;
 		. = ALIGN(4); src/battle.o(ewram_data);
 
 		. = 0x03A7F0; gArenaSt = .;
 		. = 0x03A858; gActionSt = .;
+		. = 0x03E004; gEkrDistanceType = .;
+		. = 0x03E088; Unk_0203E088 = .;
 	}
 
 	. = 0x03000000;

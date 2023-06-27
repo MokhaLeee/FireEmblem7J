@@ -101,7 +101,7 @@ NewEkrBattle: @ 0x0804B9F4
 	str r1, [r0]
 	ldr r0, _0804BA54 @ =0x02000020
 	str r1, [r0]
-	ldr r0, _0804BA58 @ =0x02000024
+	ldr r0, _0804BA58 @ =gEkrDebugUnk3
 	str r1, [r0]
 	ldr r0, _0804BA5C @ =0x0203DFE0
 	movs r1, #0
@@ -121,7 +121,7 @@ _0804BA48: .4byte 0x02017724
 _0804BA4C: .4byte 0x02000018
 _0804BA50: .4byte 0x0200001C
 _0804BA54: .4byte 0x02000020
-_0804BA58: .4byte 0x02000024
+_0804BA58: .4byte gEkrDebugUnk3
 _0804BA5C: .4byte 0x0203DFE0
 
 	thumb_func_start InBattleMainRoutine
@@ -231,7 +231,7 @@ _0804BB20:
 	ldr r1, _0804BB74 @ =0x02000020
 	movs r0, #0
 	str r0, [r1]
-	ldr r1, _0804BB78 @ =0x0201FAF8
+	ldr r1, _0804BB78 @ =gBanimDoneFlag
 	ldr r0, [r1]
 	ldr r1, [r1, #4]
 	adds r0, r0, r1
@@ -250,7 +250,7 @@ _0804BB62:
 	.align 2, 0
 _0804BB70: .4byte 0x02026A28
 _0804BB74: .4byte 0x02000020
-_0804BB78: .4byte 0x0201FAF8
+_0804BB78: .4byte gBanimDoneFlag
 _0804BB7C: .4byte 0x02000018
 
 	thumb_func_start nullsub_46
@@ -269,7 +269,7 @@ sub_0804BB84: @ 0x0804BB84
 	ldr r0, [r0]
 	cmp r0, #0
 	bne _0804BBB6
-	ldr r0, _0804BBAC @ =0x0203E004
+	ldr r0, _0804BBAC @ =gEkrDistanceType
 	ldrh r0, [r0]
 	cmp r0, #1
 	bne _0804BBB0
@@ -279,7 +279,7 @@ sub_0804BB84: @ 0x0804BB84
 	.align 2, 0
 _0804BBA4: .4byte 0x0201FB00
 _0804BBA8: .4byte 0x02017744
-_0804BBAC: .4byte 0x0203E004
+_0804BBAC: .4byte gEkrDistanceType
 _0804BBB0:
 	movs r0, #0xf0
 	rsbs r0, r0, #0
@@ -288,7 +288,7 @@ _0804BBB4:
 _0804BBB6:
 	bl InitBothAIS
 	bl sub_0806546C
-	ldr r0, _0804BBD0 @ =0x02000024
+	ldr r0, _0804BBD0 @ =gEkrDebugUnk3
 	movs r1, #1
 	str r1, [r0]
 	bl sub_08055CD8
@@ -297,7 +297,7 @@ _0804BBB6:
 	movs r0, #0
 	b _0804BBD6
 	.align 2, 0
-_0804BBD0: .4byte 0x02000024
+_0804BBD0: .4byte gEkrDebugUnk3
 _0804BBD4:
 	movs r0, #0x1e
 _0804BBD6:
@@ -781,7 +781,7 @@ _0804BF70:
 	orrs r1, r0
 	strh r1, [r4, #0xc]
 _0804BF96:
-	ldr r0, _0804BFB0 @ =0x0201FAF8
+	ldr r0, _0804BFB0 @ =gBanimDoneFlag
 	str r7, [r0]
 	str r7, [r0, #4]
 	ldr r0, _0804BFB4 @ =sub_0804BFB8
@@ -793,26 +793,26 @@ _0804BFA0:
 	.align 2, 0
 _0804BFA8: .4byte 0x0203DFE8
 _0804BFAC: .4byte gAnims
-_0804BFB0: .4byte 0x0201FAF8
+_0804BFB0: .4byte gBanimDoneFlag
 _0804BFB4: .4byte sub_0804BFB8
 
 	thumb_func_start sub_0804BFB8
 sub_0804BFB8: @ 0x0804BFB8
-	ldr r2, _0804BFC4 @ =0x02000024
+	ldr r2, _0804BFC4 @ =gEkrDebugUnk3
 	movs r1, #0
 	str r1, [r2]
 	ldr r1, _0804BFC8 @ =sub_0804BFCC
 	str r1, [r0, #0xc]
 	bx lr
 	.align 2, 0
-_0804BFC4: .4byte 0x02000024
+_0804BFC4: .4byte gEkrDebugUnk3
 _0804BFC8: .4byte sub_0804BFCC
 
 	thumb_func_start sub_0804BFCC
 sub_0804BFCC: @ 0x0804BFCC
 	push {r4, lr}
 	adds r4, r0, #0
-	ldr r0, _0804BFE4 @ =0x0203E004
+	ldr r0, _0804BFE4 @ =gEkrDistanceType
 	ldrh r0, [r0]
 	cmp r0, #4
 	bne _0804BFF0
@@ -822,7 +822,7 @@ sub_0804BFCC: @ 0x0804BFCC
 	ldr r0, _0804BFEC @ =sub_0804C008
 	b _0804BFFA
 	.align 2, 0
-_0804BFE4: .4byte 0x0203E004
+_0804BFE4: .4byte gEkrDistanceType
 _0804BFE8: .4byte gAnims
 _0804BFEC: .4byte sub_0804C008
 _0804BFF0:
@@ -878,7 +878,7 @@ sub_0804C034: @ 0x0804C034
 	movs r0, #1
 	strb r0, [r1]
 _0804C050:
-	ldr r0, _0804C068 @ =0x0203E004
+	ldr r0, _0804C068 @ =gEkrDistanceType
 	movs r1, #0
 	ldrsh r0, [r0, r1]
 	cmp r0, #3
@@ -890,11 +890,11 @@ _0804C050:
 	b _0804C11A
 	.align 2, 0
 _0804C064: .4byte gpKeySt
-_0804C068: .4byte 0x0203E004
+_0804C068: .4byte gEkrDistanceType
 _0804C06C:
 	cmp r0, #0
 	blt _0804C11A
-	ldr r0, _0804C0B4 @ =0x0201FAF8
+	ldr r0, _0804C0B4 @ =gBanimDoneFlag
 	ldr r1, [r0]
 	ldr r0, [r0, #4]
 	adds r1, r1, r0
@@ -927,7 +927,7 @@ _0804C06C:
 	bl sub_0802F5B8
 	b _0804C118
 	.align 2, 0
-_0804C0B4: .4byte 0x0201FAF8
+_0804C0B4: .4byte gBanimDoneFlag
 _0804C0B8: .4byte 0x0203E0AC
 _0804C0BC: .4byte 0x0203E06C
 _0804C0C0: .4byte 0x0203E070
@@ -964,7 +964,7 @@ _0804C0EC:
 	.align 2, 0
 _0804C108: .4byte sub_0804BF34
 _0804C10C:
-	ldr r0, _0804C128 @ =0x0201FAF8
+	ldr r0, _0804C128 @ =gBanimDoneFlag
 	ldr r1, [r0]
 	ldr r0, [r0, #4]
 	adds r1, r1, r0
@@ -982,7 +982,7 @@ _0804C122:
 	pop {r0}
 	bx r0
 	.align 2, 0
-_0804C128: .4byte 0x0201FAF8
+_0804C128: .4byte gBanimDoneFlag
 _0804C12C: .4byte sub_0804C130
 
 	thumb_func_start sub_0804C130
@@ -2561,7 +2561,7 @@ _0804CD82:
 	subs r1, r1, r0
 	lsls r1, r1, #1
 	mov sl, r1
-	ldr r0, _0804CDA4 @ =0x0203E004
+	ldr r0, _0804CDA4 @ =gEkrDistanceType
 	movs r3, #0
 	ldrsh r0, [r0, r3]
 	cmp r0, #0
@@ -2573,7 +2573,7 @@ _0804CD82:
 	str r0, [sp, #0xdc]
 	b _0804CDAE
 	.align 2, 0
-_0804CDA4: .4byte 0x0203E004
+_0804CDA4: .4byte gEkrDistanceType
 _0804CDA8:
 	movs r1, #8
 	str r1, [sp, #0xdc]
@@ -2679,7 +2679,7 @@ _0804CE66:
 	mov r8, r1
 	ldrh r0, [r0, #2]
 	str r0, [sp, #0xd4]
-	ldr r0, _0804CEB0 @ =0x0203E004
+	ldr r0, _0804CEB0 @ =gEkrDistanceType
 	movs r2, #0
 	ldrsh r0, [r0, r2]
 	cmp r0, #3
@@ -2701,7 +2701,7 @@ _0804CEA0: .4byte 0x081DEAE4
 _0804CEA4: .4byte 0x0203E098
 _0804CEA8: .4byte 0x0203E090
 _0804CEAC: .4byte 0x0203E094
-_0804CEB0: .4byte 0x0203E004
+_0804CEB0: .4byte gEkrDistanceType
 _0804CEB4:
 	ldr r0, _0804CEC8 @ =0x0203DFE8
 	ldrh r0, [r0]
@@ -3713,7 +3713,7 @@ _0804D666:
 	subs r1, r1, r0
 	lsls r1, r1, #1
 	mov sl, r1
-	ldr r0, _0804D684 @ =0x0203E004
+	ldr r0, _0804D684 @ =gEkrDistanceType
 	movs r2, #0
 	ldrsh r0, [r0, r2]
 	cmp r0, #0
@@ -3723,7 +3723,7 @@ _0804D666:
 	movs r4, #0
 	b _0804D68A
 	.align 2, 0
-_0804D684: .4byte 0x0203E004
+_0804D684: .4byte gEkrDistanceType
 _0804D688:
 	movs r4, #0xf
 _0804D68A:
@@ -3982,7 +3982,7 @@ sub_0804D894: @ 0x0804D894
 	adds r0, r0, r1
 	lsls r0, r0, #3
 	adds r3, r0, r3
-	ldr r0, _0804D8E0 @ =0x0203E004
+	ldr r0, _0804D8E0 @ =gEkrDistanceType
 	movs r7, #0
 	ldrsh r1, [r0, r7]
 	mov r8, r2
@@ -3999,7 +3999,7 @@ sub_0804D894: @ 0x0804D894
 _0804D8D4: .4byte 0x0201FAD0
 _0804D8D8: .4byte 0x0203E000
 _0804D8DC: .4byte 0x08FC0008
-_0804D8E0: .4byte 0x0203E004
+_0804D8E0: .4byte gEkrDistanceType
 _0804D8E4: .4byte 0x020145C8
 _0804D8E8:
 	ldr r7, _0804D904 @ =0x020145C8
@@ -4348,7 +4348,7 @@ _0804DC14: .4byte 0x02000038
 	thumb_func_start sub_0804DC18
 sub_0804DC18: @ 0x0804DC18
 	push {r4, r5, lr}
-	ldr r0, _0804DC30 @ =0x0203E004
+	ldr r0, _0804DC30 @ =gEkrDistanceType
 	movs r1, #0
 	ldrsh r0, [r0, r1]
 	cmp r0, #4
@@ -4359,7 +4359,7 @@ sub_0804DC18: @ 0x0804DC18
 	ldr r0, [r0]
 	mov pc, r0
 	.align 2, 0
-_0804DC30: .4byte 0x0203E004
+_0804DC30: .4byte gEkrDistanceType
 _0804DC34: .4byte _0804DC38
 _0804DC38: @ jump table
 	.4byte _0804DCA0 @ case 0
