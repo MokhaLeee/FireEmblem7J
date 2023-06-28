@@ -46,6 +46,8 @@ SECTIONS
 		. = 0x03A7F0; gArenaSt = .;
 		. = 0x03A858; gActionSt = .;
 		. = 0x03E004; gEkrDistanceType = .;
+		. = 0x03E06C; gpEkrBattleUnitLeft = .;
+		. = 0x03E070; gpEkrBattleUnitRight = .;
 		. = 0x03E088; Unk_0203E088 = .;
 	}
 

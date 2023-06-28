@@ -121,12 +121,12 @@ GetBanimPalette: @ 0x080547C0
 	adds r2, r0, #0
 	cmp r1, #0
 	bne _080547D0
-	ldr r0, _080547CC @ =0x0203E06C
+	ldr r0, _080547CC @ =gpEkrBattleUnitLeft
 	b _080547D2
 	.align 2, 0
-_080547CC: .4byte 0x0203E06C
+_080547CC: .4byte gpEkrBattleUnitLeft
 _080547D0:
-	ldr r0, _080547E8 @ =0x0203E070
+	ldr r0, _080547E8 @ =gpEkrBattleUnitRight
 _080547D2:
 	ldr r0, [r0]
 	ldr r0, [r0, #4]
@@ -139,7 +139,7 @@ _080547D2:
 	beq _080547F6
 	b _08054806
 	.align 2, 0
-_080547E8: .4byte 0x0203E070
+_080547E8: .4byte gpEkrBattleUnitRight
 _080547EC:
 	cmp r0, #0x1a
 	beq _080547FE
@@ -29890,13 +29890,13 @@ NewEfxSpecalEffect: @ 0x08063B64
 	bl GetAISSubjectId
 	cmp r0, #0
 	bne _08063BA0
-	ldr r0, _08063B9C @ =0x0203E06C
+	ldr r0, _08063B9C @ =gpEkrBattleUnitLeft
 	b _08063BA2
 	.align 2, 0
 _08063B98: .4byte 0x02017768
-_08063B9C: .4byte 0x0203E06C
+_08063B9C: .4byte gpEkrBattleUnitLeft
 _08063BA0:
-	ldr r0, _08063BE0 @ =0x0203E070
+	ldr r0, _08063BE0 @ =gpEkrBattleUnitRight
 _08063BA2:
 	ldr r0, [r0]
 	adds r0, #0x4a
@@ -29928,7 +29928,7 @@ _08063BB2:
 	strh r0, [r2, #0x10]
 	b _08063C0A
 	.align 2, 0
-_08063BE0: .4byte 0x0203E070
+_08063BE0: .4byte gpEkrBattleUnitRight
 _08063BE4: .4byte gAnims
 _08063BE8:
 	ldr r0, _08063C10 @ =0x08C13810
@@ -39363,8 +39363,8 @@ sub_08068634: @ 0x08068634
 	push {r4, r5, r6, r7, lr}
 	mov r7, r8
 	push {r7}
-	ldr r0, _08068680 @ =0x0203E06C
-	ldr r1, _08068684 @ =0x0203E070
+	ldr r0, _08068680 @ =gpEkrBattleUnitLeft
+	ldr r1, _08068684 @ =gpEkrBattleUnitRight
 	ldr r5, [r0]
 	ldr r6, [r1]
 	ldr r1, _08068688 @ =gBmSt
@@ -39398,8 +39398,8 @@ _08068670:
 	bl sub_08003E48
 	b _080686A0
 	.align 2, 0
-_08068680: .4byte 0x0203E06C
-_08068684: .4byte 0x0203E070
+_08068680: .4byte gpEkrBattleUnitLeft
+_08068684: .4byte gpEkrBattleUnitRight
 _08068688: .4byte gBmSt
 _0806868C: .4byte 0x020200A0
 _08068690: .4byte 0x0203DFF8
@@ -41015,24 +41015,24 @@ sub_08069314: @ 0x08069314
 	ldr r0, [r2, #0x5c]
 	cmp r0, #0
 	bne _0806933C
-	ldr r0, _08069330 @ =0x0203E06C
+	ldr r0, _08069330 @ =gpEkrBattleUnitLeft
 	ldr r4, [r0]
 	ldr r0, _08069334 @ =0x02020100
 	adds r6, r4, #0
 	str r6, [r0]
-	ldr r0, _08069338 @ =0x0203E070
+	ldr r0, _08069338 @ =gpEkrBattleUnitRight
 	b _08069348
 	.align 2, 0
-_08069330: .4byte 0x0203E06C
+_08069330: .4byte gpEkrBattleUnitLeft
 _08069334: .4byte 0x02020100
-_08069338: .4byte 0x0203E070
+_08069338: .4byte gpEkrBattleUnitRight
 _0806933C:
-	ldr r0, _08069458 @ =0x0203E070
+	ldr r0, _08069458 @ =gpEkrBattleUnitRight
 	ldr r4, [r0]
 	ldr r0, _0806945C @ =0x02020100
 	adds r6, r4, #0
 	str r6, [r0]
-	ldr r0, _08069460 @ =0x0203E06C
+	ldr r0, _08069460 @ =gpEkrBattleUnitLeft
 _08069348:
 	ldr r1, _08069464 @ =0x02020104
 	ldr r3, [r0]
@@ -41170,9 +41170,9 @@ _0806935A:
 	asrs r0, r0, #0x18
 	b _08069502
 	.align 2, 0
-_08069458: .4byte 0x0203E070
+_08069458: .4byte gpEkrBattleUnitRight
 _0806945C: .4byte 0x02020100
-_08069460: .4byte 0x0203E06C
+_08069460: .4byte gpEkrBattleUnitLeft
 _08069464: .4byte 0x02020104
 _08069468: .4byte 0x02020108
 _0806946C: .4byte 0x0202010C
@@ -41876,10 +41876,10 @@ sub_08069A84: @ 0x08069A84
 	push {r6, r7}
 	sub sp, #0xc
 	adds r7, r0, #0
-	ldr r0, _08069B1C @ =0x0203E06C
+	ldr r0, _08069B1C @ =gpEkrBattleUnitLeft
 	ldr r0, [r0]
 	mov sb, r0
-	ldr r0, _08069B20 @ =0x0203E070
+	ldr r0, _08069B20 @ =gpEkrBattleUnitRight
 	ldr r0, [r0]
 	mov r8, r0
 	ldr r6, [r7, #0x5c]
@@ -41936,8 +41936,8 @@ sub_08069A84: @ 0x08069A84
 	mov r1, sb
 	b _08069B56
 	.align 2, 0
-_08069B1C: .4byte 0x0203E06C
-_08069B20: .4byte 0x0203E070
+_08069B1C: .4byte gpEkrBattleUnitLeft
+_08069B20: .4byte gpEkrBattleUnitRight
 _08069B24: .4byte 0x081E0C60
 _08069B28: .4byte 0x02017784
 _08069B2C: .4byte 0x081E0EAC
@@ -44155,12 +44155,12 @@ sub_0806ACC0: @ 0x0806ACC0
 	bl GetAISSubjectId
 	cmp r0, #0
 	bne _0806ACEC
-	ldr r0, _0806ACE8 @ =0x0203E06C
+	ldr r0, _0806ACE8 @ =gpEkrBattleUnitLeft
 	b _0806ACEE
 	.align 2, 0
-_0806ACE8: .4byte 0x0203E06C
+_0806ACE8: .4byte gpEkrBattleUnitLeft
 _0806ACEC:
-	ldr r0, _0806AD3C @ =0x0203E070
+	ldr r0, _0806AD3C @ =gpEkrBattleUnitRight
 _0806ACEE:
 	ldr r0, [r0]
 	ldr r0, [r0, #4]
@@ -44206,7 +44206,7 @@ _0806AD28:
 	movs r0, #1
 	b _0806AD4A
 	.align 2, 0
-_0806AD3C: .4byte 0x0203E070
+_0806AD3C: .4byte gpEkrBattleUnitRight
 _0806AD40: .4byte 0x0203E078
 _0806AD44:
 	adds r0, r4, #0
@@ -44291,7 +44291,7 @@ _0806ADCE:
 	mov r2, sl
 	mov r3, r8
 	bl sub_0806B15C
-	ldr r0, _0806ADF4 @ =0x0203E070
+	ldr r0, _0806ADF4 @ =gpEkrBattleUnitRight
 	ldr r0, [r0]
 	adds r0, #0x4a
 	ldrh r0, [r0]
@@ -44302,7 +44302,7 @@ _0806ADCE:
 	movs r0, #0
 	b _0806AEA8
 	.align 2, 0
-_0806ADF4: .4byte 0x0203E070
+_0806ADF4: .4byte gpEkrBattleUnitRight
 _0806ADF8: .4byte 0x02020134
 _0806ADFC:
 	ldr r0, _0806AE28 @ =0x0203E078
@@ -46030,8 +46030,8 @@ sub_0806BBF8: @ 0x0806BBF8
 	subs r0, #1
 	str r0, [r5, #0x44]
 	movs r1, #0
-	ldr r3, _0806BC64 @ =0x0203E070
-	ldr r2, _0806BC68 @ =0x0203E06C
+	ldr r3, _0806BC64 @ =gpEkrBattleUnitRight
+	ldr r2, _0806BC68 @ =gpEkrBattleUnitLeft
 _0806BC20:
 	ldr r0, [r3]
 	adds r0, #0x28
@@ -46063,8 +46063,8 @@ _0806BC54: .4byte gEkrDistanceType
 _0806BC58: .4byte 0x02020138
 _0806BC5C: .4byte 0x08C4C0C8
 _0806BC60: .4byte 0x0202013C
-_0806BC64: .4byte 0x0203E070
-_0806BC68: .4byte 0x0203E06C
+_0806BC64: .4byte gpEkrBattleUnitRight
+_0806BC68: .4byte gpEkrBattleUnitLeft
 _0806BC6C:
 	ldr r4, _0806BD18 @ =0x02020138
 	ldr r0, _0806BD1C @ =0x08C4C060
@@ -46085,7 +46085,7 @@ _0806BC6C:
 	ldrsh r0, [r0, r1]
 	cmp r0, #0
 	bne _0806BCC2
-	ldr r4, _0806BD28 @ =0x0203E06C
+	ldr r4, _0806BD28 @ =gpEkrBattleUnitLeft
 	ldr r0, [r4]
 	bl HasBattleUnitGainedWeaponLevel
 	lsls r0, r0, #0x18
@@ -46113,7 +46113,7 @@ _0806BCC2:
 	ldrsh r0, [r0, r1]
 	cmp r0, #0
 	bne _0806BCFA
-	ldr r4, _0806BD2C @ =0x0203E070
+	ldr r4, _0806BD2C @ =gpEkrBattleUnitRight
 	ldr r0, [r4]
 	bl HasBattleUnitGainedWeaponLevel
 	lsls r0, r0, #0x18
@@ -46155,8 +46155,8 @@ _0806BD18: .4byte 0x02020138
 _0806BD1C: .4byte 0x08C4C060
 _0806BD20: .4byte 0x0202013C
 _0806BD24: .4byte 0x0203DFF8
-_0806BD28: .4byte 0x0203E06C
-_0806BD2C: .4byte 0x0203E070
+_0806BD28: .4byte gpEkrBattleUnitLeft
+_0806BD2C: .4byte gpEkrBattleUnitRight
 _0806BD30:
 	movs r0, #0x80
 	bl SetBgmVolume

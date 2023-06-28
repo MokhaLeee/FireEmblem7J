@@ -904,14 +904,14 @@ _0804C06C:
 	cmp r0, #0
 	beq _0804C118
 	ldr r5, _0804C0B8 @ =0x0203E0AC
-	ldr r0, _0804C0BC @ =0x0203E06C
+	ldr r0, _0804C0BC @ =gpEkrBattleUnitLeft
 	ldr r0, [r0]
 	adds r0, #0x6e
 	ldrb r0, [r0]
 	lsls r0, r0, #0x18
 	asrs r0, r0, #0x18
 	strh r0, [r5]
-	ldr r0, _0804C0C0 @ =0x0203E070
+	ldr r0, _0804C0C0 @ =gpEkrBattleUnitRight
 	ldr r0, [r0]
 	adds r0, #0x6e
 	ldrb r0, [r0]
@@ -929,8 +929,8 @@ _0804C06C:
 	.align 2, 0
 _0804C0B4: .4byte gBanimDoneFlag
 _0804C0B8: .4byte 0x0203E0AC
-_0804C0BC: .4byte 0x0203E06C
-_0804C0C0: .4byte 0x0203E070
+_0804C0BC: .4byte gpEkrBattleUnitLeft
+_0804C0C0: .4byte gpEkrBattleUnitRight
 _0804C0C4: .4byte 0x0203E090
 _0804C0C8:
 	movs r2, #2
@@ -2277,7 +2277,7 @@ _0804CB1E:
 	movs r0, #0
 	movs r1, #0x1e
 	bl ApplyIconPalette
-	ldr r0, _0804CC08 @ =0x0203E06C
+	ldr r0, _0804CC08 @ =gpEkrBattleUnitLeft
 	ldr r0, [r0]
 	adds r0, #0x4a
 	ldrh r0, [r0]
@@ -2285,7 +2285,7 @@ _0804CB1E:
 	movs r1, #0xee
 	lsls r1, r1, #1
 	bl PutIconObjImg
-	ldr r0, _0804CC0C @ =0x0203E070
+	ldr r0, _0804CC0C @ =gpEkrBattleUnitRight
 	ldr r0, [r0]
 	adds r0, #0x4a
 	ldrh r0, [r0]
@@ -2326,8 +2326,8 @@ _0804CBF8: .4byte 0x01000100
 _0804CBFC: .4byte 0x081DEDE4
 _0804CC00: .4byte 0x06013A00
 _0804CC04: .4byte 0x06013E00
-_0804CC08: .4byte 0x0203E06C
-_0804CC0C: .4byte 0x0203E070
+_0804CC08: .4byte gpEkrBattleUnitLeft
+_0804CC0C: .4byte gpEkrBattleUnitRight
 _0804CC10: .4byte 0x0818FE70
 
 	thumb_func_start EndEkrGauge
@@ -4135,7 +4135,7 @@ _0804DA00: .4byte 0x06001000
 _0804DA04: .4byte 0x0203DFE8
 _0804DA08: .4byte 0x08C09CE4
 _0804DA0C:
-	ldr r0, _0804DA54 @ =0x0203E06C
+	ldr r0, _0804DA54 @ =gpEkrBattleUnitLeft
 	ldr r0, [r0]
 	ldr r0, [r0]
 	ldrh r0, [r0]
@@ -4166,14 +4166,14 @@ _0804DA1A:
 	ldr r5, _0804DA68 @ =0x08C09CE4
 	b _0804DA7A
 	.align 2, 0
-_0804DA54: .4byte 0x0203E06C
+_0804DA54: .4byte gpEkrBattleUnitLeft
 _0804DA58: .4byte 0x02017660
 _0804DA5C: .4byte 0x081DE730
 _0804DA60: .4byte 0x06001400
 _0804DA64: .4byte 0x0203DFE8
 _0804DA68: .4byte 0x08C09CE4
 _0804DA6C:
-	ldr r0, _0804DAB4 @ =0x0203E06C
+	ldr r0, _0804DAB4 @ =gpEkrBattleUnitLeft
 	ldr r0, [r0]
 	adds r0, #0x4a
 	ldrh r0, [r0]
@@ -4204,14 +4204,14 @@ _0804DA7A:
 	ldr r5, _0804DAC8 @ =0x08C09CE4
 	b _0804DADA
 	.align 2, 0
-_0804DAB4: .4byte 0x0203E06C
+_0804DAB4: .4byte gpEkrBattleUnitLeft
 _0804DAB8: .4byte 0x02017670
 _0804DABC: .4byte 0x081DE780
 _0804DAC0: .4byte 0x06001580
 _0804DAC4: .4byte 0x0203DFE8
 _0804DAC8: .4byte 0x08C09CE4
 _0804DACC:
-	ldr r0, _0804DB14 @ =0x0203E070
+	ldr r0, _0804DB14 @ =gpEkrBattleUnitRight
 	ldr r0, [r0]
 	ldr r0, [r0]
 	ldrh r0, [r0]
@@ -4242,14 +4242,14 @@ _0804DADA:
 	ldr r5, _0804DB28 @ =0x08C09CE4
 	b _0804DB3A
 	.align 2, 0
-_0804DB14: .4byte 0x0203E070
+_0804DB14: .4byte gpEkrBattleUnitRight
 _0804DB18: .4byte 0x02017678
 _0804DB1C: .4byte 0x081DE7EC
 _0804DB20: .4byte 0x06001740
 _0804DB24: .4byte 0x0203DFE8
 _0804DB28: .4byte 0x08C09CE4
 _0804DB2C:
-	ldr r0, _0804DBF0 @ =0x0203E070
+	ldr r0, _0804DBF0 @ =gpEkrBattleUnitRight
 	ldr r0, [r0]
 	adds r0, #0x4a
 	ldrh r0, [r0]
@@ -4334,7 +4334,7 @@ _0804DB3A:
 	pop {r0}
 	bx r0
 	.align 2, 0
-_0804DBF0: .4byte 0x0203E070
+_0804DBF0: .4byte gpEkrBattleUnitRight
 _0804DBF4: .4byte 0x02017668
 _0804DBF8: .4byte 0x081DE83C
 _0804DBFC: .4byte 0x060018C0

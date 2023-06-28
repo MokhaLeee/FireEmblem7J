@@ -2529,11 +2529,11 @@ _080525A4:
 	ldrh r0, [r0]
 	cmp r0, #4
 	bne _080525EC
-	ldr r1, _080525D4 @ =0x0203E06C
+	ldr r1, _080525D4 @ =gpEkrBattleUnitLeft
 	ldr r0, _080525D8 @ =gBattleActor
 	str r0, [r1]
 	str r0, [sp, #8]
-	ldr r1, _080525DC @ =0x0203E070
+	ldr r1, _080525DC @ =gpEkrBattleUnitRight
 	ldr r0, _080525E0 @ =gBattleTarget
 	str r0, [r1]
 	str r0, [sp, #0xc]
@@ -2550,9 +2550,9 @@ _080525A4:
 	b _080526E6
 	.align 2, 0
 _080525D0: .4byte gEkrDistanceType
-_080525D4: .4byte 0x0203E06C
+_080525D4: .4byte gpEkrBattleUnitLeft
 _080525D8: .4byte gBattleActor
-_080525DC: .4byte 0x0203E070
+_080525DC: .4byte gpEkrBattleUnitRight
 _080525E0: .4byte gBattleTarget
 _080525E4: .4byte 0x0203DFEC
 _080525E8: .4byte 0x0203DFE8
@@ -2629,11 +2629,11 @@ _0805267C:
 	adds r2, r4, #0
 	cmp r2, #1
 	bne _080526C0
-	ldr r1, _080526AC @ =0x0203E06C
+	ldr r1, _080526AC @ =gpEkrBattleUnitLeft
 	ldr r0, _080526B0 @ =gBattleTarget
 	str r0, [r1]
 	str r0, [sp, #8]
-	ldr r1, _080526B4 @ =0x0203E070
+	ldr r1, _080526B4 @ =gpEkrBattleUnitRight
 	ldr r0, _080526B8 @ =gBattleActor
 	str r0, [r1]
 	str r0, [sp, #0xc]
@@ -2650,17 +2650,17 @@ _0805267C:
 	b _080526E6
 	.align 2, 0
 _080526A8: .4byte 0x0203DFE8
-_080526AC: .4byte 0x0203E06C
+_080526AC: .4byte gpEkrBattleUnitLeft
 _080526B0: .4byte gBattleTarget
-_080526B4: .4byte 0x0203E070
+_080526B4: .4byte gpEkrBattleUnitRight
 _080526B8: .4byte gBattleActor
 _080526BC: .4byte 0x0203DFEC
 _080526C0:
-	ldr r1, _0805279C @ =0x0203E06C
+	ldr r1, _0805279C @ =gpEkrBattleUnitLeft
 	ldr r0, _080527A0 @ =gBattleActor
 	str r0, [r1]
 	str r0, [sp, #8]
-	ldr r1, _080527A4 @ =0x0203E070
+	ldr r1, _080527A4 @ =gpEkrBattleUnitRight
 	ldr r0, _080527A8 @ =gBattleTarget
 	str r0, [r1]
 	str r0, [sp, #0xc]
@@ -2771,9 +2771,9 @@ _0805277C:
 	strh r0, [r4]
 	b _08052842
 	.align 2, 0
-_0805279C: .4byte 0x0203E06C
+_0805279C: .4byte gpEkrBattleUnitLeft
 _080527A0: .4byte gBattleActor
-_080527A4: .4byte 0x0203E070
+_080527A4: .4byte gpEkrBattleUnitRight
 _080527A8: .4byte gBattleTarget
 _080527AC: .4byte 0x0203DFEC
 _080527B0: .4byte 0x0203DFE8
@@ -4474,10 +4474,10 @@ _0805350C:
 	ldrh r6, [r6]
 	str r6, [sp, #0x14]
 	str r6, [sp, #0x18]
-	ldr r0, _080535BC @ =0x0203E06C
+	ldr r0, _080535BC @ =gpEkrBattleUnitLeft
 	ldr r0, [r0]
 	str r0, [sp, #4]
-	ldr r0, _080535C0 @ =0x0203E070
+	ldr r0, _080535C0 @ =gpEkrBattleUnitRight
 	ldr r0, [r0]
 	str r0, [sp, #8]
 	ldr r0, [sp, #4]
@@ -4560,8 +4560,8 @@ _080535A2:
 	ldrb r1, [r5, #2]
 	b _080539DC
 	.align 2, 0
-_080535BC: .4byte 0x0203E06C
-_080535C0: .4byte 0x0203E070
+_080535BC: .4byte gpEkrBattleUnitLeft
+_080535C0: .4byte gpEkrBattleUnitRight
 _080535C4: .4byte 0x0203E03A
 _080535C8: .4byte 0x0203E090
 _080535CC:

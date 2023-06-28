@@ -4079,12 +4079,12 @@ sub_0804FE74: @ 0x0804FE74
 	bl GetAISSubjectId
 	cmp r0, #0
 	bne _0804FE8C
-	ldr r0, _0804FE88 @ =0x0203E06C
+	ldr r0, _0804FE88 @ =gpEkrBattleUnitLeft
 	b _0804FE8E
 	.align 2, 0
-_0804FE88: .4byte 0x0203E06C
+_0804FE88: .4byte gpEkrBattleUnitLeft
 _0804FE8C:
-	ldr r0, _0804FF14 @ =0x0203E070
+	ldr r0, _0804FF14 @ =gpEkrBattleUnitRight
 _0804FE8E:
 	ldr r6, [r0]
 	ldr r0, _0804FF18 @ =0x08C0A260
@@ -4148,7 +4148,7 @@ _0804FEC0:
 	bl sub_08067998
 	b _0804FF60
 	.align 2, 0
-_0804FF14: .4byte 0x0203E070
+_0804FF14: .4byte gpEkrBattleUnitRight
 _0804FF18: .4byte 0x08C0A260
 _0804FF1C: .4byte 0x081DE058
 _0804FF20: .4byte 0x0203DFE0
