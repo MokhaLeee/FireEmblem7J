@@ -33,3 +33,11 @@ struct Anim {
     /* 40 */ const void *pUnk40;
     /* 44 */ const void *pUnk44;
 };
+
+void AnimUpdateAll(void);
+void AnimClearAll(void);
+struct Anim* AnimCreate_unused(const void* script);
+struct Anim* AnimCreate(const void* script, u16 displayPriority);
+void AnimSort(void);
+void AnimDelete(struct Anim* anim);
+void AnimDisplay(struct Anim* anim);

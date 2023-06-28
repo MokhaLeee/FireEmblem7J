@@ -15,6 +15,7 @@ SECTIONS
 		. = 0x00005C; gpBanimModesLeft = .;
 		. = 0x000060; gpBanimModesRight = .;
 		. = 0x00F1C8; gBanimScrLeft = .;
+		. = 0x017758; Unk_02017758 = .;
 		. = 0x01FAF8; gBanimDoneFlag = .;
 		. = 0x01FB10; gpImgSheet = .;
 		. = 0x020140;
@@ -130,6 +131,8 @@ SECTIONS
 		asm/map-sel.o(.text);
 		asm/banim-ekrbattle.o(.text);
 		asm/banim-efxbattle.o(.text);
+		asm/code-banim1.o(.text);
+		src/banim-main.o(.text);
 		asm/code.o(.text);
 
 		asm/m4a_1.o(.text);

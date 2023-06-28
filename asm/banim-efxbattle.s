@@ -1729,7 +1729,7 @@ sub_0804EB48: @ 0x0804EB48
 	movs r0, #0xa
 	strh r0, [r4, #0xa]
 	strh r0, [r5, #0xa]
-	bl sub_08006488
+	bl AnimSort
 	ldr r2, _0804EBB4 @ =gDispIo
 	adds r1, r2, #0
 	adds r1, #0x3c
@@ -2299,8 +2299,8 @@ nullsub_48: @ 0x0804EFDC
 	bx lr
 	.align 2, 0
 
-	thumb_func_start sub_0804EFE0
-sub_0804EFE0: @ 0x0804EFE0
+	thumb_func_start NewEfxQuake
+NewEfxQuake: @ 0x0804EFE0
 	push {r4, lr}
 	adds r4, r0, #0
 	ldr r0, _0804EFF0 @ =0x02017748
@@ -6335,8 +6335,8 @@ sub_08050FF0: @ 0x08050FF0
 	.align 2, 0
 _08050FF8: .4byte 0x0201FABC
 
-	thumb_func_start sub_08050FFC
-sub_08050FFC: @ 0x08050FFC
+	thumb_func_start NewEfxspdquake
+NewEfxspdquake: @ 0x08050FFC
 	push {r4, lr}
 	adds r4, r0, #0
 	ldr r0, _08051018 @ =0x08C0A330

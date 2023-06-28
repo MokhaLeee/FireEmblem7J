@@ -64,7 +64,7 @@ _08006384:
 	bne _08006334
 	cmp r5, #1
 	bne _08006392
-	bl sub_08006488
+	bl AnimSort
 _08006392:
 	pop {r4, r5}
 	pop {r0}
@@ -205,8 +205,8 @@ _08006482:
 	pop {r1}
 	bx r1
 
-	thumb_func_start sub_08006488
-sub_08006488: @ 0x08006488
+	thumb_func_start AnimSort
+AnimSort: @ 0x08006488
 	push {r4, r5, lr}
 	ldr r4, _080064D8 @ =0x02028E6C
 	movs r1, #0xe1
