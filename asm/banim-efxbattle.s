@@ -5402,8 +5402,8 @@ _080508E8: .4byte gDispIo
 _080508EC: .4byte 0x0000FFE0
 _080508F0: .4byte 0x0000E0FF
 
-	thumb_func_start sub_080508F4
-sub_080508F4: @ 0x080508F4
+	thumb_func_start SpellFx_ClearColorEffects
+SpellFx_ClearColorEffects: @ 0x080508F4
 	ldr r3, _08050918 @ =gDispIo
 	adds r1, r3, #0
 	adds r1, #0x3c

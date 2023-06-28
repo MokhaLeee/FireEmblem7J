@@ -6130,7 +6130,7 @@ _0805785C:
 	ldr r0, [r1]
 	subs r0, #1
 	str r0, [r1]
-	bl sub_080508F4
+	bl SpellFx_ClearColorEffects
 	adds r0, r4, #0
 	bl Proc_Break
 _0805787A:
@@ -6782,7 +6782,7 @@ sub_08057DBC: @ 0x08057DBC
 	ldr r0, [r1]
 	subs r0, #1
 	str r0, [r1]
-	bl sub_080508F4
+	bl SpellFx_ClearColorEffects
 	adds r0, r4, #0
 	bl Proc_Break
 _08057DE6:
@@ -6975,7 +6975,7 @@ _08057F5E:
 	rsbs r0, r0, #0
 	cmp r1, r0
 	bne _08057F78
-	bl sub_080508F4
+	bl SpellFx_ClearColorEffects
 	ldr r1, _08057F80 @ =0x0201774C
 	ldr r0, [r1]
 	subs r0, #1
@@ -7471,7 +7471,7 @@ sub_0805836C: @ 0x0805836C
 	cmp r0, r1
 	bne _08058396
 	bl SpellFx_ClearBG1
-	bl sub_080508F4
+	bl SpellFx_ClearColorEffects
 	ldr r1, _0805839C @ =0x0201774C
 	ldr r0, [r1]
 	subs r0, #1
@@ -7875,7 +7875,7 @@ _080586C6:
 	ldr r0, [r1]
 	subs r0, #1
 	str r0, [r1]
-	bl sub_080508F4
+	bl SpellFx_ClearColorEffects
 	adds r0, r4, #0
 	bl Proc_Break
 _080586E4:
@@ -7937,7 +7937,7 @@ _08058752:
 	rsbs r0, r0, #0
 	cmp r1, r0
 	bne _0805876C
-	bl sub_080508F4
+	bl SpellFx_ClearColorEffects
 	ldr r1, _08058774 @ =0x0201774C
 	ldr r0, [r1]
 	subs r0, #1
@@ -8252,7 +8252,7 @@ _080589E4:
 	ldr r0, [r1]
 	subs r0, #1
 	str r0, [r1]
-	bl sub_080508F4
+	bl SpellFx_ClearColorEffects
 	adds r0, r4, #0
 	bl Proc_Break
 _08058A02:
@@ -8315,7 +8315,7 @@ _08058A72:
 	rsbs r0, r0, #0
 	cmp r1, r0
 	bne _08058A8C
-	bl sub_080508F4
+	bl SpellFx_ClearColorEffects
 	ldr r1, _08058A94 @ =0x0201774C
 	ldr r0, [r1]
 	subs r0, #1
@@ -8659,7 +8659,7 @@ _08058D46:
 	ldr r0, [r1]
 	subs r0, #1
 	str r0, [r1]
-	bl sub_080508F4
+	bl SpellFx_ClearColorEffects
 	adds r0, r4, #0
 	bl Proc_Break
 _08058D64:
@@ -8867,7 +8867,7 @@ _08058F04:
 	ldr r0, [r1]
 	subs r0, #1
 	str r0, [r1]
-	bl sub_080508F4
+	bl SpellFx_ClearColorEffects
 	adds r0, r7, #0
 	bl Proc_End
 _08058F22:
@@ -8957,7 +8957,7 @@ sub_08058FC4: @ 0x08058FC4
 	cmp r0, #0x28
 	bne _08058FEC
 	bl SpellFx_ClearBG1
-	bl sub_080508F4
+	bl SpellFx_ClearColorEffects
 	ldr r1, _08058FF4 @ =0x0201774C
 	ldr r0, [r1]
 	subs r0, #1
@@ -9398,7 +9398,7 @@ _0805936C:
 	ldr r0, [r1]
 	subs r0, #1
 	str r0, [r1]
-	bl sub_080508F4
+	bl SpellFx_ClearColorEffects
 	adds r0, r4, #0
 	bl Proc_Break
 _0805938A:
@@ -9506,7 +9506,7 @@ _08059454:
 	ldr r0, [r1]
 	subs r0, #1
 	str r0, [r1]
-	bl sub_080508F4
+	bl SpellFx_ClearColorEffects
 	adds r0, r4, #0
 	bl Proc_Break
 _08059472:
@@ -10304,7 +10304,7 @@ sub_08059A90: @ 0x08059A90
 	cmp r0, r1
 	ble _08059AF8
 	bl SpellFx_ClearBG1
-	bl sub_080508F4
+	bl SpellFx_ClearColorEffects
 	ldr r1, _08059B04 @ =0x0201774C
 	ldr r0, [r1]
 	subs r0, #1
@@ -10778,7 +10778,7 @@ _08059EBC:
 	ldr r0, [r1]
 	subs r0, #1
 	str r0, [r1]
-	bl sub_080508F4
+	bl SpellFx_ClearColorEffects
 	adds r0, r7, #0
 	bl Proc_End
 _08059EDA:
@@ -11357,7 +11357,7 @@ _0805A378:
 	ldr r0, [r1]
 	subs r0, #1
 	str r0, [r1]
-	bl sub_080508F4
+	bl SpellFx_ClearColorEffects
 	bl sub_080503A0
 	adds r0, r7, #0
 	bl Proc_End
@@ -11388,7 +11388,7 @@ sub_0805A3C0: @ 0x0805A3C0
 	ldr r0, [r1]
 	subs r0, #1
 	str r0, [r1]
-	bl sub_080508F4
+	bl SpellFx_ClearColorEffects
 	bl sub_080503A0
 	adds r0, r4, #0
 	bl Proc_End
@@ -11544,7 +11544,7 @@ _0805A504:
 	ldr r0, [r1]
 	subs r0, #1
 	str r0, [r1]
-	bl sub_080508F4
+	bl SpellFx_ClearColorEffects
 	bl sub_080503A0
 	adds r0, r7, #0
 	bl Proc_Break
@@ -11594,7 +11594,7 @@ _0805A56C:
 	ldr r0, [r1]
 	subs r0, #1
 	str r0, [r1]
-	bl sub_080508F4
+	bl SpellFx_ClearColorEffects
 	adds r0, r7, #0
 	bl Proc_Break
 _0805A58A:
@@ -11912,7 +11912,7 @@ _0805A808:
 	ldr r0, [r1]
 	subs r0, #1
 	str r0, [r1]
-	bl sub_080508F4
+	bl SpellFx_ClearColorEffects
 	adds r0, r7, #0
 	bl Proc_End
 _0805A826:
@@ -12214,7 +12214,7 @@ _0805AA86:
 	ldr r0, [r1]
 	subs r0, #1
 	str r0, [r1]
-	bl sub_080508F4
+	bl SpellFx_ClearColorEffects
 	adds r0, r7, #0
 	bl Proc_End
 _0805AAA4:
@@ -12718,7 +12718,7 @@ _0805AEA6:
 	ldr r0, [r1]
 	subs r0, #1
 	str r0, [r1]
-	bl sub_080508F4
+	bl SpellFx_ClearColorEffects
 	adds r0, r4, #0
 	bl Proc_Break
 _0805AECC:
@@ -12892,7 +12892,7 @@ _0805B020:
 	ldr r0, [r1]
 	subs r0, #1
 	str r0, [r1]
-	bl sub_080508F4
+	bl SpellFx_ClearColorEffects
 	adds r0, r7, #0
 	bl Proc_Break
 _0805B03E:
@@ -13247,7 +13247,7 @@ _0805B2FA:
 	ldr r0, [r1]
 	subs r0, #1
 	str r0, [r1]
-	bl sub_080508F4
+	bl SpellFx_ClearColorEffects
 	adds r0, r6, #0
 	bl Proc_Break
 _0805B320:
@@ -14052,7 +14052,7 @@ _0805B9A8:
 	ldr r0, [r1]
 	subs r0, #1
 	str r0, [r1]
-	bl sub_080508F4
+	bl SpellFx_ClearColorEffects
 	adds r0, r7, #0
 	bl Proc_Break
 _0805B9C6:
@@ -14447,7 +14447,7 @@ _0805BCF2:
 	ldr r0, [r1]
 	subs r0, #1
 	str r0, [r1]
-	bl sub_080508F4
+	bl SpellFx_ClearColorEffects
 	adds r0, r6, #0
 	bl Proc_Break
 _0805BD10:
@@ -14571,7 +14571,7 @@ _0805BE06:
 	cmp r0, r1
 	bne _0805BE2C
 	bl SpellFx_ClearBG1
-	bl sub_080508F4
+	bl SpellFx_ClearColorEffects
 	ldr r1, _0805BE44 @ =0x0201774C
 	ldr r0, [r1]
 	subs r0, #1
@@ -15714,7 +15714,7 @@ _0805C750:
 	ldr r0, [r1]
 	subs r0, #1
 	str r0, [r1]
-	bl sub_080508F4
+	bl SpellFx_ClearColorEffects
 	adds r0, r4, #0
 	bl Proc_Break
 _0805C76E:
@@ -16400,7 +16400,7 @@ sub_0805CCE8: @ 0x0805CCE8
 	ldr r0, [r1]
 	subs r0, #1
 	str r0, [r1]
-	bl sub_080508F4
+	bl SpellFx_ClearColorEffects
 	pop {r0}
 	bx r0
 	.align 2, 0
@@ -16789,7 +16789,7 @@ _0805D014:
 	ldr r0, [r1]
 	subs r0, #1
 	str r0, [r1]
-	bl sub_080508F4
+	bl SpellFx_ClearColorEffects
 	adds r0, r4, #0
 	bl Proc_Break
 _0805D032:
@@ -17975,7 +17975,7 @@ _0805D9C6:
 	cmp r0, #0
 	bne _0805D9E0
 	bl SpellFx_ClearBG1
-	bl sub_080508F4
+	bl SpellFx_ClearColorEffects
 _0805D9E0:
 	movs r0, #1
 	movs r1, #0
@@ -18842,7 +18842,7 @@ _0805E09C:
 	ldr r0, [r1]
 	subs r0, #1
 	str r0, [r1]
-	bl sub_080508F4
+	bl SpellFx_ClearColorEffects
 	adds r0, r4, #0
 	bl Proc_Break
 _0805E0BA:
@@ -19127,7 +19127,7 @@ _0805E2A0:
 	orrs r0, r1
 	strh r0, [r4, #8]
 _0805E300:
-	bl sub_080508F4
+	bl SpellFx_ClearColorEffects
 	adds r0, r5, #0
 	bl Proc_Break
 _0805E30A:
@@ -19455,7 +19455,7 @@ _0805E5A0:
 	ldr r0, [r1]
 	subs r0, #1
 	str r0, [r1]
-	bl sub_080508F4
+	bl SpellFx_ClearColorEffects
 	adds r0, r4, #0
 	bl Proc_Break
 _0805E5BE:
@@ -19775,7 +19775,7 @@ _0805E84E:
 	ldr r0, [r1]
 	subs r0, #1
 	str r0, [r1]
-	bl sub_080508F4
+	bl SpellFx_ClearColorEffects
 	adds r0, r4, #0
 	bl Proc_Break
 _0805E86C:
@@ -20078,7 +20078,7 @@ _0805EADE:
 	ldr r0, [r1]
 	subs r0, #1
 	str r0, [r1]
-	bl sub_080508F4
+	bl SpellFx_ClearColorEffects
 	adds r0, r4, #0
 	bl Proc_Break
 _0805EAFC:
@@ -20457,7 +20457,7 @@ _0805EDF4:
 	ldr r0, [r1]
 	subs r0, #1
 	str r0, [r1]
-	bl sub_080508F4
+	bl SpellFx_ClearColorEffects
 	adds r0, r4, #0
 	bl Proc_Break
 _0805EE12:
@@ -20796,7 +20796,7 @@ sub_0805F0C0: @ 0x0805F0C0
 	cmp r0, r1
 	bne _0805F10C
 	bl SpellFx_ClearBG1
-	bl sub_080508F4
+	bl SpellFx_ClearColorEffects
 	ldr r0, [r5, #0x1c]
 	ldr r1, _0805F118 @ =0xFFFFF7FF
 	ands r0, r1
@@ -21431,7 +21431,7 @@ _0805F61E:
 	ldr r0, [r1]
 	subs r0, #1
 	str r0, [r1]
-	bl sub_080508F4
+	bl SpellFx_ClearColorEffects
 	adds r0, r4, #0
 	bl Proc_Break
 _0805F63C:
@@ -21730,7 +21730,7 @@ _0805F89C:
 	ldr r0, [r1]
 	subs r0, #1
 	str r0, [r1]
-	bl sub_080508F4
+	bl SpellFx_ClearColorEffects
 	adds r0, r7, #0
 	bl Proc_Break
 _0805F8BA:
@@ -21861,7 +21861,7 @@ _0805F9B8:
 	ldr r0, [r1]
 	subs r0, #1
 	str r0, [r1]
-	bl sub_080508F4
+	bl SpellFx_ClearColorEffects
 	adds r0, r4, #0
 	bl Proc_Break
 _0805F9D6:
@@ -22462,7 +22462,7 @@ _0805FEAA:
 	ldr r0, [r1]
 	subs r0, #1
 	str r0, [r1]
-	bl sub_080508F4
+	bl SpellFx_ClearColorEffects
 	adds r0, r4, #0
 	bl Proc_Break
 _0805FEC8:
@@ -22753,7 +22753,7 @@ sub_08060108: @ 0x08060108
 	ldr r0, [r1]
 	subs r0, #1
 	str r0, [r1]
-	bl sub_080508F4
+	bl SpellFx_ClearColorEffects
 	pop {r0}
 	bx r0
 	.align 2, 0
@@ -22959,7 +22959,7 @@ _080602A8:
 	ldr r0, [r1]
 	subs r0, #1
 	str r0, [r1]
-	bl sub_080508F4
+	bl SpellFx_ClearColorEffects
 	adds r0, r4, #0
 	bl Proc_Break
 _080602C6:
@@ -23573,7 +23573,7 @@ sub_0806079C: @ 0x0806079C
 	ldr r0, [r1]
 	subs r0, #1
 	str r0, [r1]
-	bl sub_080508F4
+	bl SpellFx_ClearColorEffects
 	pop {r0}
 	bx r0
 	.align 2, 0
@@ -24055,7 +24055,7 @@ sub_08060B64: @ 0x08060B64
 	ldr r0, [r1]
 	subs r0, #1
 	str r0, [r1]
-	bl sub_080508F4
+	bl SpellFx_ClearColorEffects
 	pop {r0}
 	bx r0
 	.align 2, 0
@@ -24257,7 +24257,7 @@ sub_08060D10: @ 0x08060D10
 	ldr r0, [r1]
 	subs r0, #1
 	str r0, [r1]
-	bl sub_080508F4
+	bl SpellFx_ClearColorEffects
 	pop {r0}
 	bx r0
 	.align 2, 0
@@ -24816,7 +24816,7 @@ _080611A0:
 	ldr r0, [r1]
 	subs r0, #1
 	str r0, [r1]
-	bl sub_080508F4
+	bl SpellFx_ClearColorEffects
 	adds r0, r4, #0
 	bl Proc_Break
 _080611BE:
@@ -24905,7 +24905,7 @@ sub_08061274: @ 0x08061274
 	ldr r0, [r1]
 	subs r0, #1
 	str r0, [r1]
-	bl sub_080508F4
+	bl SpellFx_ClearColorEffects
 	pop {r0}
 	bx r0
 	.align 2, 0
@@ -25026,7 +25026,7 @@ sub_0806137C: @ 0x0806137C
 	ldr r0, [r1]
 	subs r0, #1
 	str r0, [r1]
-	bl sub_080508F4
+	bl SpellFx_ClearColorEffects
 	pop {r0}
 	bx r0
 	.align 2, 0
@@ -25725,7 +25725,7 @@ _08061942:
 	ldr r0, [r1]
 	subs r0, #1
 	str r0, [r1]
-	bl sub_080508F4
+	bl SpellFx_ClearColorEffects
 	adds r0, r4, #0
 	bl Proc_Break
 _08061960:
@@ -25843,7 +25843,7 @@ sub_08061A50: @ 0x08061A50
 	ldr r0, [r1]
 	subs r0, #1
 	str r0, [r1]
-	bl sub_080508F4
+	bl SpellFx_ClearColorEffects
 	pop {r0}
 	bx r0
 	.align 2, 0
@@ -26018,7 +26018,7 @@ _08061BB8:
 	ldr r0, [r1]
 	subs r0, #1
 	str r0, [r1]
-	bl sub_080508F4
+	bl SpellFx_ClearColorEffects
 	adds r0, r7, #0
 	bl Proc_Break
 _08061BD6:
@@ -26304,7 +26304,7 @@ _08061E16:
 	ldr r0, [r1]
 	subs r0, #1
 	str r0, [r1]
-	bl sub_080508F4
+	bl SpellFx_ClearColorEffects
 	adds r0, r4, #0
 	bl Proc_Break
 _08061E34:
@@ -26392,7 +26392,7 @@ sub_08061EE8: @ 0x08061EE8
 	ldr r0, [r1]
 	subs r0, #1
 	str r0, [r1]
-	bl sub_080508F4
+	bl SpellFx_ClearColorEffects
 	pop {r0}
 	bx r0
 	.align 2, 0
@@ -27457,7 +27457,7 @@ _08062798:
 	ldr r0, [r1]
 	subs r0, #1
 	str r0, [r1]
-	bl sub_080508F4
+	bl SpellFx_ClearColorEffects
 	adds r0, r4, #0
 	bl Proc_Break
 _080627B6:
@@ -27595,7 +27595,7 @@ _080628C0:
 	ldr r0, [r1]
 	subs r0, #1
 	str r0, [r1]
-	bl sub_080508F4
+	bl SpellFx_ClearColorEffects
 	adds r0, r4, #0
 	bl Proc_Break
 _080628DE:
@@ -28250,7 +28250,7 @@ sub_08062E08: @ 0x08062E08
 	cmp r0, #0x11
 	bne _08062E28
 	bl SpellFx_ClearBG1
-	bl sub_080508F4
+	bl SpellFx_ClearColorEffects
 	adds r0, r4, #0
 	bl Proc_Break
 _08062E28:
@@ -28459,7 +28459,7 @@ _08062FB6:
 	ldr r0, [r1]
 	subs r0, #1
 	str r0, [r1]
-	bl sub_080508F4
+	bl SpellFx_ClearColorEffects
 	adds r0, r4, #0
 	bl Proc_Break
 _08062FD4:
@@ -29204,7 +29204,7 @@ _0806358A:
 	ldr r0, [r1]
 	subs r0, #1
 	str r0, [r1]
-	bl sub_080508F4
+	bl SpellFx_ClearColorEffects
 	adds r0, r4, #0
 	bl Proc_End
 _080635A8:
@@ -30076,7 +30076,7 @@ sub_08063CFC: @ 0x08063CFC
 	cmp r0, #0x3c
 	bne _08063D1C
 	bl SpellFx_ClearBG1
-	bl sub_080508F4
+	bl SpellFx_ClearColorEffects
 	adds r0, r4, #0
 	bl Proc_Break
 _08063D1C:
@@ -30406,7 +30406,7 @@ _08063F5C:
 	ldr r0, [r1]
 	subs r0, #1
 	str r0, [r1]
-	bl sub_080508F4
+	bl SpellFx_ClearColorEffects
 	adds r0, r4, #0
 	bl Proc_Break
 _08063FAE:
@@ -30756,7 +30756,7 @@ _0806429A:
 	ldr r0, [r1]
 	subs r0, #1
 	str r0, [r1]
-	bl sub_080508F4
+	bl SpellFx_ClearColorEffects
 	adds r0, r4, #0
 	bl Proc_Break
 _080642B8:
@@ -31186,7 +31186,7 @@ _08064624:
 	cmp r1, r0
 	bne _0806463A
 	bl SpellFx_ClearBG1
-	bl sub_080508F4
+	bl SpellFx_ClearColorEffects
 	adds r0, r4, #0
 	bl Proc_Break
 _0806463A:
@@ -31853,7 +31853,7 @@ _08064B20:
 	bne _08064B38
 	ldr r0, [r4, #0x5c]
 	bl sub_0806488C
-	bl sub_080508F4
+	bl SpellFx_ClearColorEffects
 	adds r0, r4, #0
 	bl Proc_Break
 _08064B38:
@@ -32072,7 +32072,7 @@ _08064CEA:
 	bne _08064D02
 	ldr r0, [r4, #0x5c]
 	bl sub_0806488C
-	bl sub_080508F4
+	bl SpellFx_ClearColorEffects
 	adds r0, r4, #0
 	bl Proc_Break
 _08064D02:
@@ -32352,7 +32352,7 @@ _08064F30:
 	bne _08064F48
 	ldr r0, [r4, #0x5c]
 	bl sub_0806488C
-	bl sub_080508F4
+	bl SpellFx_ClearColorEffects
 	adds r0, r4, #0
 	bl Proc_Break
 _08064F48:
@@ -32706,7 +32706,7 @@ _080651F4:
 	bne _0806520C
 	ldr r0, [r7, #0x5c]
 	bl sub_0806488C
-	bl sub_080508F4
+	bl SpellFx_ClearColorEffects
 	adds r0, r7, #0
 	bl Proc_Break
 _0806520C:
@@ -36095,7 +36095,7 @@ _08066D2C: .4byte gBg1Tm
 sub_08066D30: @ 0x08066D30
 	push {lr}
 	bl SpellFx_ClearBG1
-	bl sub_080508F4
+	bl SpellFx_ClearColorEffects
 	pop {r0}
 	bx r0
 	.align 2, 0
@@ -40358,7 +40358,7 @@ _08068E02:
 	cmp r5, r0
 	bne _08068E18
 	bl SpellFx_ClearBG1
-	bl sub_080508F4
+	bl SpellFx_ClearColorEffects
 	adds r0, r7, #0
 	bl Proc_End
 _08068E18:
@@ -40703,7 +40703,7 @@ sub_080690A0: @ 0x080690A0
 	cmp r0, r1
 	bne _080690E4
 	bl SpellFx_ClearBG1
-	bl sub_080508F4
+	bl SpellFx_ClearColorEffects
 	ldr r0, [r5, #0x1c]
 	ldr r1, _080690F0 @ =0xFFFFF7FF
 	ands r0, r1
@@ -43356,7 +43356,7 @@ _0806A694:
 	cmp r3, r0
 	bne _0806A6AA
 	bl SpellFx_ClearBG1
-	bl sub_080508F4
+	bl SpellFx_ClearColorEffects
 	adds r0, r4, #0
 	bl Proc_Break
 _0806A6AA:
