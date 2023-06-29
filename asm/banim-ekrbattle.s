@@ -684,7 +684,7 @@ _0804BED4: .4byte sub_0804BED8
 sub_0804BED8: @ 0x0804BED8
 	push {r4, lr}
 	adds r4, r0, #0
-	ldr r0, _0804BEF0 @ =0x0203E078
+	ldr r0, _0804BEF0 @ =gpEkrTriangleUnits
 	ldr r0, [r0]
 	cmp r0, #0
 	beq _0804BEFC
@@ -694,7 +694,7 @@ sub_0804BED8: @ 0x0804BED8
 	ldr r0, _0804BEF8 @ =sub_0804BF0C
 	b _0804BEFE
 	.align 2, 0
-_0804BEF0: .4byte 0x0203E078
+_0804BEF0: .4byte gpEkrTriangleUnits
 _0804BEF4: .4byte gAnims
 _0804BEF8: .4byte sub_0804BF0C
 _0804BEFC:
@@ -918,7 +918,7 @@ _0804C06C:
 	lsls r0, r0, #0x18
 	asrs r0, r0, #0x18
 	strh r0, [r5, #2]
-	ldr r1, _0804C0C4 @ =0x0203E090
+	ldr r1, _0804C0C4 @ =gEkrPairHpInitial
 	movs r2, #0
 	ldrsh r0, [r1, r2]
 	cmp r0, #0
@@ -931,7 +931,7 @@ _0804C0B4: .4byte gBanimDoneFlag
 _0804C0B8: .4byte 0x0203E0AC
 _0804C0BC: .4byte gpEkrBattleUnitLeft
 _0804C0C0: .4byte gpEkrBattleUnitRight
-_0804C0C4: .4byte 0x0203E090
+_0804C0C4: .4byte gEkrPairHpInitial
 _0804C0C8:
 	movs r2, #2
 	ldrsh r0, [r1, r2]
@@ -953,7 +953,7 @@ _0804C0DA:
 	b _0804C0D2
 _0804C0EC:
 	bl sub_0802F5C4
-	bl sub_08053484
+	bl ParseBattleHitToBanimCmd
 	bl AnimClearAll
 	bl UpdateBanimFrame
 	bl InitBothAIS
@@ -2102,7 +2102,7 @@ sub_0804C9AC: @ 0x0804C9AC
 	movs r2, #2
 	ldrsh r1, [r1, r2]
 	bl sub_0804CC78
-	ldr r0, _0804CA04 @ =0x0203E090
+	ldr r0, _0804CA04 @ =gEkrPairHpInitial
 	movs r1, #0
 	ldrsh r0, [r0, r1]
 	cmp r0, #0x50
@@ -2116,7 +2116,7 @@ sub_0804C9AC: @ 0x0804C9AC
 _0804C9F8: .4byte 0x02000068
 _0804C9FC: .4byte 0x08C09D48
 _0804CA00: .4byte 0x02000038
-_0804CA04: .4byte 0x0203E090
+_0804CA04: .4byte gEkrPairHpInitial
 _0804CA08: .4byte 0x081DF3A4
 _0804CA0C: .4byte 0x02022BC0
 _0804CA10:
@@ -2130,7 +2130,7 @@ _0804CA10:
 	movs r2, #0x10
 	bl CpuSet
 _0804CA24:
-	ldr r0, _0804CA48 @ =0x0203E090
+	ldr r0, _0804CA48 @ =gEkrPairHpInitial
 	movs r1, #2
 	ldrsh r0, [r0, r1]
 	cmp r0, #0x50
@@ -2144,7 +2144,7 @@ _0804CA24:
 _0804CA3C: .4byte 0x0203DFF8
 _0804CA40: .4byte 0x081DF224
 _0804CA44: .4byte 0x02022BC0
-_0804CA48: .4byte 0x0203E090
+_0804CA48: .4byte gEkrPairHpInitial
 _0804CA4C: .4byte 0x081DF3A4
 _0804CA50: .4byte 0x02022BE0
 _0804CA54:
@@ -2653,7 +2653,7 @@ _0804CE40:
 	bl EnableBgSync
 _0804CE46:
 	ldr r1, _0804CEA4 @ =0x0203E098
-	ldr r0, _0804CEA8 @ =0x0203E090
+	ldr r0, _0804CEA8 @ =gEkrPairHpInitial
 	ldrh r2, [r0]
 	adds r5, r0, #0
 	ldrh r3, [r1]
@@ -2699,7 +2699,7 @@ _0804CE98: .4byte 0x081DEA10
 _0804CE9C: .4byte 0xFFFFFCC0
 _0804CEA0: .4byte 0x081DEAE4
 _0804CEA4: .4byte 0x0203E098
-_0804CEA8: .4byte 0x0203E090
+_0804CEA8: .4byte gEkrPairHpInitial
 _0804CEAC: .4byte 0x0203E094
 _0804CEB0: .4byte gEkrDistanceType
 _0804CEB4:

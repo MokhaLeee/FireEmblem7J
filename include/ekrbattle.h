@@ -4,6 +4,13 @@
 
 extern struct Anim *gAnims[4];
 
+enum ekr_battle_unit_position {
+    EKR_POS_L,
+    EKR_POS_R
+};
+
+int GetAISSubjectId(struct Anim *anim);
+
 enum gEkrDistanceType_index {
     EKR_DISTANCE_CLOSE,
     EKR_DISTANCE_FAR,
@@ -27,8 +34,8 @@ extern u8 gBanimScrRight[];
 extern int Unk_02017758;
 extern int Unk_03004750;
 extern int Unk_0203E088[2];
+extern s16 Unk_0203DFEC;
 
-int GetAISSubjectId(struct Anim *anim);
 int GetAISLayerId(struct Anim *anim);
 void RegisterAISSheetGraphics(struct Anim *anim);
 s16 GetSomeAnimIndex(struct Anim *anim);

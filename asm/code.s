@@ -321,7 +321,7 @@ _08054928:
 	mov r0, r8
 	str r0, [r4]
 _0805495E:
-	ldr r6, _08054A2C @ =0x0203E078
+	ldr r6, _08054A2C @ =gpEkrTriangleUnits
 	ldr r2, [r6]
 	cmp r2, #0
 	beq _080549CC
@@ -403,7 +403,7 @@ _08054A1C: .4byte gpBanimModesRight
 _08054A20: .4byte 0x02004128
 _08054A24: .4byte 0x02022B80
 _08054A28: .4byte 0x020099C8
-_08054A2C: .4byte 0x0203E078
+_08054A2C: .4byte gpEkrTriangleUnits
 
 	thumb_func_start InitBothAIS
 InitBothAIS: @ 0x08054A30
@@ -44173,7 +44173,7 @@ _0806ACFA:
 	ble _0806AD00
 	b _0806ADFC
 _0806AD00:
-	ldr r0, _0806AD40 @ =0x0203E078
+	ldr r0, _0806AD40 @ =gpEkrTriangleUnits
 	ldr r1, [r0]
 	ldr r0, [r1, #4]
 	ldrb r0, [r0, #4]
@@ -44207,7 +44207,7 @@ _0806AD28:
 	b _0806AD4A
 	.align 2, 0
 _0806AD3C: .4byte gpEkrBattleUnitRight
-_0806AD40: .4byte 0x0203E078
+_0806AD40: .4byte gpEkrTriangleUnits
 _0806AD44:
 	adds r0, r4, #0
 	bl GetItemType
@@ -44231,7 +44231,7 @@ _0806AD5A:
 	movs r0, #2
 	mov r8, r0
 _0806AD6C:
-	ldr r0, _0806ADA8 @ =0x0203E078
+	ldr r0, _0806ADA8 @ =gpEkrTriangleUnits
 	ldr r1, [r0, #4]
 	ldr r0, [r1, #4]
 	ldrb r0, [r0, #4]
@@ -44264,7 +44264,7 @@ _0806AD94:
 	movs r0, #1
 	b _0806ADB2
 	.align 2, 0
-_0806ADA8: .4byte 0x0203E078
+_0806ADA8: .4byte gpEkrTriangleUnits
 _0806ADAC:
 	adds r0, r4, #0
 	bl GetItemType
@@ -44305,7 +44305,7 @@ _0806ADCE:
 _0806ADF4: .4byte gpEkrBattleUnitRight
 _0806ADF8: .4byte 0x02020134
 _0806ADFC:
-	ldr r0, _0806AE28 @ =0x0203E078
+	ldr r0, _0806AE28 @ =gpEkrTriangleUnits
 	ldr r1, [r0]
 	ldr r0, [r1, #4]
 	ldrb r0, [r0, #4]
@@ -44328,7 +44328,7 @@ _0806AE14:
 	movs r0, #1
 	b _0806AE36
 	.align 2, 0
-_0806AE28: .4byte 0x0203E078
+_0806AE28: .4byte gpEkrTriangleUnits
 _0806AE2C:
 	adds r0, r4, #0
 	bl GetItemType
@@ -44344,7 +44344,7 @@ _0806AE40:
 	movs r2, #1
 	mov r8, r2
 _0806AE44:
-	ldr r0, _0806AE70 @ =0x0203E078
+	ldr r0, _0806AE70 @ =gpEkrTriangleUnits
 	ldr r1, [r0, #4]
 	ldr r0, [r1, #4]
 	ldrb r0, [r0, #4]
@@ -44367,7 +44367,7 @@ _0806AE5C:
 	movs r0, #1
 	b _0806AE7E
 	.align 2, 0
-_0806AE70: .4byte 0x0203E078
+_0806AE70: .4byte gpEkrTriangleUnits
 _0806AE74:
 	adds r0, r4, #0
 	bl GetItemType

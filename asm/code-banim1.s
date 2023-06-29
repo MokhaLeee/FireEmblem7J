@@ -2537,7 +2537,7 @@ _080525A4:
 	ldr r0, _080525E0 @ =gBattleTarget
 	str r0, [r1]
 	str r0, [sp, #0xc]
-	ldr r1, _080525E4 @ =0x0203DFEC
+	ldr r1, _080525E4 @ =Unk_0203DFEC
 	movs r0, #0
 	strh r0, [r1, #2]
 	strh r0, [r1]
@@ -2554,7 +2554,7 @@ _080525D4: .4byte gpEkrBattleUnitLeft
 _080525D8: .4byte gBattleActor
 _080525DC: .4byte gpEkrBattleUnitRight
 _080525E0: .4byte gBattleTarget
-_080525E4: .4byte 0x0203DFEC
+_080525E4: .4byte Unk_0203DFEC
 _080525E8: .4byte 0x0203DFE8
 _080525EC:
 	ldr r5, _08052624 @ =gBattleActor
@@ -2637,7 +2637,7 @@ _0805267C:
 	ldr r0, _080526B8 @ =gBattleActor
 	str r0, [r1]
 	str r0, [sp, #0xc]
-	ldr r0, _080526BC @ =0x0203DFEC
+	ldr r0, _080526BC @ =Unk_0203DFEC
 	movs r1, #0
 	strh r2, [r0]
 	strh r1, [r0, #2]
@@ -2654,7 +2654,7 @@ _080526AC: .4byte gpEkrBattleUnitLeft
 _080526B0: .4byte gBattleTarget
 _080526B4: .4byte gpEkrBattleUnitRight
 _080526B8: .4byte gBattleActor
-_080526BC: .4byte 0x0203DFEC
+_080526BC: .4byte Unk_0203DFEC
 _080526C0:
 	ldr r1, _0805279C @ =gpEkrBattleUnitLeft
 	ldr r0, _080527A0 @ =gBattleActor
@@ -2664,7 +2664,7 @@ _080526C0:
 	ldr r0, _080527A8 @ =gBattleTarget
 	str r0, [r1]
 	str r0, [sp, #0xc]
-	ldr r1, _080527AC @ =0x0203DFEC
+	ldr r1, _080527AC @ =Unk_0203DFEC
 	movs r2, #0
 	strh r2, [r1]
 	movs r0, #1
@@ -2775,7 +2775,7 @@ _0805279C: .4byte gpEkrBattleUnitLeft
 _080527A0: .4byte gBattleActor
 _080527A4: .4byte gpEkrBattleUnitRight
 _080527A8: .4byte gBattleTarget
-_080527AC: .4byte 0x0203DFEC
+_080527AC: .4byte Unk_0203DFEC
 _080527B0: .4byte 0x0203DFE8
 _080527B4: .4byte 0x0203E006
 _080527B8: .4byte gBmSt
@@ -3124,7 +3124,7 @@ _08052A60:
 _08052A76:
 	cmp r4, #0
 	beq _08052A92
-	ldr r1, _08052ACC @ =0x0203E090
+	ldr r1, _08052ACC @ =gEkrPairHpInitial
 	ldr r0, [sp, #8]
 	adds r0, #0x72
 	ldrb r0, [r0]
@@ -3139,7 +3139,7 @@ _08052A76:
 _08052A92:
 	cmp r5, #0
 	beq _08052AAE
-	ldr r1, _08052ACC @ =0x0203E090
+	ldr r1, _08052ACC @ =gEkrPairHpInitial
 	ldr r0, [sp, #0xc]
 	adds r0, #0x72
 	ldrb r0, [r0]
@@ -3152,7 +3152,7 @@ _08052A92:
 	ldrsb r0, [r2, r0]
 	strh r0, [r1, #2]
 _08052AAE:
-	bl sub_08053484
+	bl ParseBattleHitToBanimCmd
 	ldr r0, _08052AD4 @ =gEkrDistanceType
 	ldrh r0, [r0]
 	cmp r0, #4
@@ -3165,7 +3165,7 @@ _08052AAE:
 	.align 2, 0
 _08052AC4: .4byte 0x0203DFE6
 _08052AC8: .4byte 0x0203E0B4
-_08052ACC: .4byte 0x0203E090
+_08052ACC: .4byte gEkrPairHpInitial
 _08052AD0: .4byte 0x0203E094
 _08052AD4: .4byte gEkrDistanceType
 _08052AD8: .4byte 0x0203DFFC
@@ -4402,8 +4402,8 @@ _08053478:
 	.align 2, 0
 _08053480: .4byte 0x0203DFE4
 
-	thumb_func_start sub_08053484
-sub_08053484: @ 0x08053484
+	thumb_func_start ParseBattleHitToBanimCmd
+ParseBattleHitToBanimCmd: @ 0x08053484
 	push {r4, r5, r6, r7, lr}
 	mov r7, sl
 	mov r6, sb
@@ -4413,8 +4413,8 @@ sub_08053484: @ 0x08053484
 	ldr r0, _080534DC @ =gBattleHitArray
 	mov sb, r0
 	movs r2, #0
-	ldr r4, _080534E0 @ =0x0203E00E
-	ldr r5, _080534E4 @ =0x0203E078
+	ldr r4, _080534E0 @ =gAnimRoundData
+	ldr r5, _080534E4 @ =gpEkrTriangleUnits
 	ldr r6, _080534E8 @ =gEkrDistanceType
 	ldr r1, _080534EC @ =0x0000FFFF
 	adds r3, r1, #0
@@ -4428,7 +4428,7 @@ _080534A2:
 	cmp r2, #0x13
 	bls _080534A2
 	movs r2, #0
-	ldr r0, _080534F0 @ =0x0203E03A
+	ldr r0, _080534F0 @ =gEfxHpLut
 	ldr r1, _080534EC @ =0x0000FFFF
 	adds r3, r1, #0
 	adds r1, r0, #4
@@ -4452,11 +4452,11 @@ _080534BA:
 	b _080539E6
 	.align 2, 0
 _080534DC: .4byte gBattleHitArray
-_080534E0: .4byte 0x0203E00E
-_080534E4: .4byte 0x0203E078
+_080534E0: .4byte gAnimRoundData
+_080534E4: .4byte gpEkrTriangleUnits
 _080534E8: .4byte gEkrDistanceType
 _080534EC: .4byte 0x0000FFFF
-_080534F0: .4byte 0x0203E03A
+_080534F0: .4byte gEfxHpLut
 _080534F4:
 	ldr r1, _08053508 @ =gBattleStats
 	movs r0, #0x40
@@ -4546,8 +4546,8 @@ _0805358E:
 	movs r0, #1
 	str r0, [sp, #0x18]
 _080535A2:
-	ldr r2, _080535C4 @ =0x0203E03A
-	ldr r1, _080535C8 @ =0x0203E090
+	ldr r2, _080535C4 @ =gEfxHpLut
+	ldr r1, _080535C8 @ =gEkrPairHpInitial
 	ldrh r0, [r1]
 	strh r0, [r2]
 	ldrh r0, [r1, #2]
@@ -4562,8 +4562,8 @@ _080535A2:
 	.align 2, 0
 _080535BC: .4byte gpEkrBattleUnitLeft
 _080535C0: .4byte gpEkrBattleUnitRight
-_080535C4: .4byte 0x0203E03A
-_080535C8: .4byte 0x0203E090
+_080535C4: .4byte gEfxHpLut
+_080535C8: .4byte gEkrPairHpInitial
 _080535CC:
 	movs r0, #8
 	ands r0, r1
@@ -4572,7 +4572,7 @@ _080535CC:
 	rsbs r0, r0, #0
 	lsrs r0, r0, #0x1f
 	str r0, [sp, #0x10]
-	ldr r0, _08053604 @ =0x0203DFEC
+	ldr r0, _08053604 @ =Unk_0203DFEC
 	movs r1, #0
 	ldrsh r0, [r0, r1]
 	ldr r2, [sp, #0x10]
@@ -4594,7 +4594,7 @@ _080535CC:
 	strh r2, [r0]
 	b _08053628
 	.align 2, 0
-_08053604: .4byte 0x0203DFEC
+_08053604: .4byte Unk_0203DFEC
 _08053608: .4byte 0x0203DFE4
 _0805360C:
 	mov r5, sp
@@ -4620,7 +4620,7 @@ _08053628:
 	ands r0, r1
 	cmp r0, #0
 	beq _08053644
-	ldr r2, _08053664 @ =0x0203E078
+	ldr r2, _08053664 @ =gpEkrTriangleUnits
 	ldr r1, _08053668 @ =gBattleStats
 	ldr r0, [r1, #0x10]
 	str r0, [r2]
@@ -4642,7 +4642,7 @@ _08053644:
 	b _080536F2
 	.align 2, 0
 _08053660: .4byte 0x0203DFE4
-_08053664: .4byte 0x0203E078
+_08053664: .4byte gpEkrTriangleUnits
 _08053668: .4byte gBattleStats
 _0805366C: .4byte 0x081DE190
 _08053670:
@@ -4761,7 +4761,7 @@ _0805373A:
 	ldrh r0, [r1]
 	mov r5, sl
 	strh r0, [r5]
-	ldr r1, _080537C0 @ =0x0203E00E
+	ldr r1, _080537C0 @ =gAnimRoundData
 	ldr r2, [sp, #0xc]
 	lsls r0, r2, #2
 	adds r5, r0, r1
@@ -4788,7 +4788,7 @@ _08053774:
 	ands r0, r1
 	cmp r0, #0
 	beq _08053810
-	ldr r0, _080537C4 @ =0x0203DFEC
+	ldr r0, _080537C4 @ =Unk_0203DFEC
 	movs r1, #0
 	ldrsh r0, [r0, r1]
 	ldr r2, [sp, #0x10]
@@ -4810,7 +4810,7 @@ _080537A0:
 	lsls r0, r0, #0x10
 	lsrs r7, r0, #0x10
 	lsls r0, r7, #2
-	ldr r1, _080537C8 @ =0x0203E03A
+	ldr r1, _080537C8 @ =gEfxHpLut
 	adds r0, r0, r1
 	strh r2, [r0]
 	ldr r2, _080537CC @ =0xFFFF8000
@@ -4821,9 +4821,9 @@ _080537A0:
 	b _080539CE
 	.align 2, 0
 _080537BC: .4byte 0x081DE1A4
-_080537C0: .4byte 0x0203E00E
-_080537C4: .4byte 0x0203DFEC
-_080537C8: .4byte 0x0203E03A
+_080537C0: .4byte gAnimRoundData
+_080537C4: .4byte Unk_0203DFEC
+_080537C8: .4byte gEfxHpLut
 _080537CC: .4byte 0xFFFF8000
 _080537D0:
 	mov r2, r8
@@ -4848,13 +4848,13 @@ _080537EC:
 	lsls r0, r0, #1
 	adds r0, #1
 	lsls r0, r0, #1
-	ldr r1, _08053808 @ =0x0203E03A
+	ldr r1, _08053808 @ =gEfxHpLut
 	adds r0, r0, r1
 	strh r2, [r0]
 	ldr r2, _0805380C @ =0xFFFF8000
 	b _080539C6
 	.align 2, 0
-_08053808: .4byte 0x0203E03A
+_08053808: .4byte gEfxHpLut
 _0805380C: .4byte 0xFFFF8000
 _08053810:
 	movs r2, #0x80
@@ -4863,7 +4863,7 @@ _08053810:
 	ands r0, r1
 	cmp r0, #0
 	beq _080538F8
-	ldr r0, _08053884 @ =0x0203DFEC
+	ldr r0, _08053884 @ =Unk_0203DFEC
 	movs r5, #0
 	ldrsh r0, [r0, r5]
 	ldr r1, [sp, #0x10]
@@ -4888,7 +4888,7 @@ _08053844:
 	lsls r0, r0, #0x10
 	lsrs r0, r0, #0x10
 	mov r8, r0
-	ldr r4, _08053888 @ =0x0203E03A
+	ldr r4, _08053888 @ =gEfxHpLut
 	lsls r0, r0, #1
 	adds r0, #1
 	lsls r0, r0, #1
@@ -4915,8 +4915,8 @@ _08053878:
 	lsls r0, r7, #2
 	b _080538E8
 	.align 2, 0
-_08053884: .4byte 0x0203DFEC
-_08053888: .4byte 0x0203E03A
+_08053884: .4byte Unk_0203DFEC
+_08053888: .4byte gEfxHpLut
 _0805388C: .4byte 0x0203E094
 _08053890:
 	lsls r0, r7, #1
@@ -4934,7 +4934,7 @@ _080538A8:
 	adds r0, r7, #1
 	lsls r0, r0, #0x10
 	lsrs r7, r0, #0x10
-	ldr r4, _080538F0 @ =0x0203E03A
+	ldr r4, _080538F0 @ =gEfxHpLut
 	lsls r0, r7, #2
 	adds r0, r0, r4
 	strh r2, [r0]
@@ -4968,10 +4968,10 @@ _080538E8:
 	strh r2, [r0]
 	b _080539CE
 	.align 2, 0
-_080538F0: .4byte 0x0203E03A
+_080538F0: .4byte gEfxHpLut
 _080538F4: .4byte 0x0203E094
 _080538F8:
-	ldr r0, _0805396C @ =0x0203DFEC
+	ldr r0, _0805396C @ =Unk_0203DFEC
 	movs r1, #0
 	ldrsh r0, [r0, r1]
 	ldr r2, [sp, #0x10]
@@ -4999,7 +4999,7 @@ _08053920:
 	lsls r0, r0, #1
 	adds r0, #1
 	lsls r0, r0, #1
-	ldr r1, _08053970 @ =0x0203E03A
+	ldr r1, _08053970 @ =gEfxHpLut
 	adds r0, r0, r1
 	strh r2, [r0]
 	movs r0, #0x40
@@ -5031,8 +5031,8 @@ _0805394E:
 	strh r0, [r5]
 	b _080539CE
 	.align 2, 0
-_0805396C: .4byte 0x0203DFEC
-_08053970: .4byte 0x0203E03A
+_0805396C: .4byte Unk_0203DFEC
+_08053970: .4byte gEfxHpLut
 _08053974:
 	lsls r0, r7, #1
 	bl GetEfxHp
@@ -5050,7 +5050,7 @@ _0805398C:
 	lsls r0, r0, #0x10
 	lsrs r7, r0, #0x10
 	lsls r0, r7, #2
-	ldr r1, _080539F8 @ =0x0203E03A
+	ldr r1, _080539F8 @ =gEfxHpLut
 	adds r0, r0, r1
 	strh r2, [r0]
 	movs r0, #0x40
@@ -5105,7 +5105,7 @@ _080539E6:
 	pop {r0}
 	bx r0
 	.align 2, 0
-_080539F8: .4byte 0x0203E03A
+_080539F8: .4byte gEfxHpLut
 
 	thumb_func_start sub_080539FC
 sub_080539FC: @ 0x080539FC
@@ -5239,7 +5239,7 @@ _08053AD0: .4byte 0x0203E066
 
 	thumb_func_start GetBattleAnimRoundType
 GetBattleAnimRoundType: @ 0x08053AD4
-	ldr r1, _08053AF0 @ =0x0203E00E
+	ldr r1, _08053AF0 @ =gAnimRoundData
 	lsls r0, r0, #1
 	adds r0, r0, r1
 	ldrh r2, [r0]
@@ -5253,7 +5253,7 @@ GetBattleAnimRoundType: @ 0x08053AD4
 	ands r0, r2
 	b _08053AFA
 	.align 2, 0
-_08053AF0: .4byte 0x0203E00E
+_08053AF0: .4byte gAnimRoundData
 _08053AF4: .4byte 0x00000FFF
 _08053AF8:
 	adds r0, r1, #0
@@ -5262,7 +5262,7 @@ _08053AFA:
 
 	thumb_func_start GetBattleAnimRoundTypeFlags
 GetBattleAnimRoundTypeFlags: @ 0x08053AFC
-	ldr r1, _08053B1C @ =0x0203E00E
+	ldr r1, _08053B1C @ =gAnimRoundData
 	lsls r0, r0, #1
 	adds r0, r0, r1
 	ldrh r2, [r0]
@@ -5278,7 +5278,7 @@ GetBattleAnimRoundTypeFlags: @ 0x08053AFC
 	asrs r0, r0, #0x10
 	b _08053B26
 	.align 2, 0
-_08053B1C: .4byte 0x0203E00E
+_08053B1C: .4byte gAnimRoundData
 _08053B20: .4byte 0xFFFFF000
 _08053B24:
 	movs r0, #0
@@ -5287,7 +5287,7 @@ _08053B26:
 
 	thumb_func_start GetEfxHp
 GetEfxHp: @ 0x08053B28
-	ldr r1, _08053B38 @ =0x0203E03A
+	ldr r1, _08053B38 @ =gEfxHpLut
 	lsls r0, r0, #1
 	adds r0, r0, r1
 	ldr r1, _08053B3C @ =0x00000FFF
@@ -5296,12 +5296,12 @@ GetEfxHp: @ 0x08053B28
 	adds r0, r1, #0
 	bx lr
 	.align 2, 0
-_08053B38: .4byte 0x0203E03A
+_08053B38: .4byte gEfxHpLut
 _08053B3C: .4byte 0x00000FFF
 
 	thumb_func_start sub_08053B40
 sub_08053B40: @ 0x08053B40
-	ldr r1, _08053B54 @ =0x0203E03A
+	ldr r1, _08053B54 @ =gEfxHpLut
 	lsls r0, r0, #1
 	adds r0, r0, r1
 	ldr r1, _08053B58 @ =0xFFFFF000
@@ -5312,7 +5312,7 @@ sub_08053B40: @ 0x08053B40
 	adds r0, r1, #0
 	bx lr
 	.align 2, 0
-_08053B54: .4byte 0x0203E03A
+_08053B54: .4byte gEfxHpLut
 _08053B58: .4byte 0xFFFFF000
 
 	thumb_func_start IsItemDisplayedInBattle
@@ -5383,7 +5383,7 @@ sub_08053BD4: @ 0x08053BD4
 	lsrs r2, r0, #0x10
 	cmp r2, #0x13
 	bgt _08053C0C
-	ldr r1, _08053C00 @ =0x0203E00E
+	ldr r1, _08053C00 @ =gAnimRoundData
 	lsls r0, r2, #1
 	adds r0, r0, r1
 _08053BE2:
@@ -5403,7 +5403,7 @@ _08053BFA:
 	movs r0, #1
 	b _08053C0E
 	.align 2, 0
-_08053C00: .4byte 0x0203E00E
+_08053C00: .4byte gAnimRoundData
 _08053C04:
 	adds r0, #4
 	adds r2, #2

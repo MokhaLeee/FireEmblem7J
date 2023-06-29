@@ -143,7 +143,7 @@ sub_0804DE4C: @ 0x0804DE4C
 	strh r0, [r5, #0x2e]
 	ldr r0, [r5, #0x60]
 	bl GetAISSubjectId
-	ldr r1, _0804DEF4 @ =0x0203E090
+	ldr r1, _0804DEF4 @ =gEkrPairHpInitial
 	lsls r0, r0, #1
 	adds r0, r0, r1
 	ldr r1, [r5, #0x48]
@@ -189,7 +189,7 @@ _0804DEAE:
 	b _0804DF14
 	.align 2, 0
 _0804DEF0: .4byte gAnims
-_0804DEF4: .4byte 0x0203E090
+_0804DEF4: .4byte gEkrPairHpInitial
 _0804DEF8: .4byte 0x0203E036
 _0804DEFC: .4byte 0x02017780
 _0804DF00:
@@ -478,7 +478,7 @@ sub_0804E128: @ 0x0804E128
 	strh r0, [r5, #0x2e]
 	ldr r0, [r5, #0x60]
 	bl GetAISSubjectId
-	ldr r1, _0804E1C4 @ =0x0203E090
+	ldr r1, _0804E1C4 @ =gEkrPairHpInitial
 	lsls r0, r0, #1
 	adds r0, r0, r1
 	ldr r1, [r5, #0x48]
@@ -530,7 +530,7 @@ _0804E1B2:
 	bl Proc_Break
 	b _0804E1E0
 	.align 2, 0
-_0804E1C4: .4byte 0x0203E090
+_0804E1C4: .4byte gEkrPairHpInitial
 _0804E1C8: .4byte 0x0203E036
 _0804E1CC: .4byte 0x02017780
 _0804E1D0: .4byte 0x02017750
@@ -672,7 +672,7 @@ sub_0804E28C: @ 0x0804E28C
 	strh r0, [r5, #0x2e]
 	ldr r0, [r5, #0x5c]
 	bl GetAISSubjectId
-	ldr r1, _0804E368 @ =0x0203E090
+	ldr r1, _0804E368 @ =gEkrPairHpInitial
 	lsls r0, r0, #1
 	adds r0, r0, r1
 	ldr r1, [r5, #0x48]
@@ -730,7 +730,7 @@ _0804E31E:
 	b _0804E38C
 	.align 2, 0
 _0804E364: .4byte gAnims
-_0804E368: .4byte 0x0203E090
+_0804E368: .4byte gEkrPairHpInitial
 _0804E36C: .4byte 0x00000395
 _0804E370: .4byte 0x0203E036
 _0804E374: .4byte 0x02017780
@@ -988,7 +988,7 @@ sub_0804E54C: @ 0x0804E54C
 	strh r0, [r5, #0x2e]
 	adds r0, r6, #0
 	bl GetAISSubjectId
-	ldr r1, _0804E5E0 @ =0x0203E090
+	ldr r1, _0804E5E0 @ =gEkrPairHpInitial
 	lsls r0, r0, #1
 	adds r0, r0, r1
 	ldr r1, [r5, #0x48]
@@ -1038,7 +1038,7 @@ _0804E5AA:
 	bl Proc_Break
 	b _0804E5FC
 	.align 2, 0
-_0804E5E0: .4byte 0x0203E090
+_0804E5E0: .4byte gEkrPairHpInitial
 _0804E5E4: .4byte 0x00000395
 _0804E5E8: .4byte 0x0203E036
 _0804E5EC: .4byte 0x02017780
@@ -3568,7 +3568,7 @@ sub_0804FA30: @ 0x0804FA30
 	bl GetAISSubjectId
 	cmp r0, #0
 	bne _0804FA6C
-	ldr r0, _0804FA50 @ =0x0203E090
+	ldr r0, _0804FA50 @ =gEkrPairHpInitial
 	movs r1, #0
 	ldrsh r0, [r0, r1]
 	cmp r0, #0x50
@@ -3577,7 +3577,7 @@ sub_0804FA30: @ 0x0804FA30
 	ldr r1, _0804FA58 @ =0x02022BC0
 	b _0804FA7A
 	.align 2, 0
-_0804FA50: .4byte 0x0203E090
+_0804FA50: .4byte gEkrPairHpInitial
 _0804FA54: .4byte 0x081DF2A4
 _0804FA58: .4byte 0x02022BC0
 _0804FA5C:
@@ -3588,7 +3588,7 @@ _0804FA5C:
 _0804FA64: .4byte 0x081DF3A4
 _0804FA68: .4byte 0x02022BC0
 _0804FA6C:
-	ldr r0, _0804FA84 @ =0x0203E090
+	ldr r0, _0804FA84 @ =gEkrPairHpInitial
 	movs r2, #2
 	ldrsh r0, [r0, r2]
 	cmp r0, #0x50
@@ -3600,7 +3600,7 @@ _0804FA7A:
 	bl CpuSet
 	b _0804FA9A
 	.align 2, 0
-_0804FA84: .4byte 0x0203E090
+_0804FA84: .4byte gEkrPairHpInitial
 _0804FA88: .4byte 0x081DF2A4
 _0804FA8C: .4byte 0x02022BE0
 _0804FA90:
@@ -3636,7 +3636,7 @@ sub_0804FAC4: @ 0x0804FAC4
 	bl GetAISSubjectId
 	cmp r0, #0
 	bne _0804FB04
-	ldr r0, _0804FAEC @ =0x0203E090
+	ldr r0, _0804FAEC @ =gEkrPairHpInitial
 	movs r1, #0
 	ldrsh r0, [r0, r1]
 	cmp r0, #0x50
@@ -3650,7 +3650,7 @@ sub_0804FAC4: @ 0x0804FAC4
 	ldr r1, _0804FAF8 @ =0x02022BC0
 	b _0804FB1C
 	.align 2, 0
-_0804FAEC: .4byte 0x0203E090
+_0804FAEC: .4byte gEkrPairHpInitial
 _0804FAF0: .4byte 0x0203DFF8
 _0804FAF4: .4byte 0x081DF224
 _0804FAF8: .4byte 0x02022BC0
@@ -3660,7 +3660,7 @@ _0804FAFC:
 	.align 2, 0
 _0804FB00: .4byte 0x081DF3A4
 _0804FB04:
-	ldr r0, _0804FB24 @ =0x0203E090
+	ldr r0, _0804FB24 @ =gEkrPairHpInitial
 	movs r1, #2
 	ldrsh r0, [r0, r1]
 	cmp r0, #0x50
@@ -3678,7 +3678,7 @@ _0804FB1C:
 	bl CpuSet
 	b _0804FB3E
 	.align 2, 0
-_0804FB24: .4byte 0x0203E090
+_0804FB24: .4byte gEkrPairHpInitial
 _0804FB28: .4byte 0x0203DFF8
 _0804FB2C: .4byte 0x081DF224
 _0804FB30: .4byte 0x02022BE0
@@ -3868,7 +3868,7 @@ _0804FCA2:
 	blt _0804FCBA
 	str r0, [r4, #0x58]
 _0804FCBA:
-	ldr r0, _0804FCE4 @ =0x0203E090
+	ldr r0, _0804FCE4 @ =gEkrPairHpInitial
 	movs r1, #0
 	ldrsh r0, [r0, r1]
 	cmp r0, #0x50
@@ -3889,7 +3889,7 @@ _0804FCBA:
 	bl sub_08067A18
 	b _0804FD08
 	.align 2, 0
-_0804FCE4: .4byte 0x0203E090
+_0804FCE4: .4byte gEkrPairHpInitial
 _0804FCE8: .4byte 0x0201F93C
 _0804FCEC: .4byte 0x0201F96C
 _0804FCF0: .4byte 0x0201F99C
@@ -3903,7 +3903,7 @@ _0804FCF8:
 	movs r2, #8
 	bl CpuFastSet
 _0804FD08:
-	ldr r0, _0804FD3C @ =0x0203E090
+	ldr r0, _0804FD3C @ =gEkrPairHpInitial
 	movs r1, #2
 	ldrsh r0, [r0, r1]
 	cmp r0, #0x50
@@ -3926,7 +3926,7 @@ _0804FD08:
 	.align 2, 0
 _0804FD34: .4byte 0x081DF3A4
 _0804FD38: .4byte 0x02022BC0
-_0804FD3C: .4byte 0x0203E090
+_0804FD3C: .4byte gEkrPairHpInitial
 _0804FD40: .4byte 0x0201F9FC
 _0804FD44: .4byte 0x0201FA2C
 _0804FD48: .4byte 0x0201FA5C
