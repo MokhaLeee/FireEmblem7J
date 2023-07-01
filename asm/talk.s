@@ -34,10 +34,10 @@ InitTalk: @ 0x08007C88
 _08007CC6:
 	adds r0, r4, #0
 	movs r1, #0x1e
-	bl sub_08005344
+	bl InitText
 	adds r0, r4, #0
 	movs r1, #1
-	bl sub_08005450
+	bl Text_SetColor
 	adds r4, #8
 	subs r5, #1
 	cmp r5, #0
@@ -83,11 +83,11 @@ InitSpriteTalk: @ 0x08007D28
 	ldr r0, _08007DC0 @ =0x06010000
 	adds r1, r1, r0
 	adds r0, r5, #0
-	bl sub_08005ACC
+	bl InitSpriteTextFont
 	adds r0, r5, #0
-	bl sub_08005320
+	bl SetTextFont
 	movs r0, #1
-	bl sub_080052E0
+	bl SetTextFontGlyphs
 	ldr r0, _08007DC4 @ =0x081901E8
 	adds r4, #0x10
 	lsls r1, r4, #5
@@ -122,15 +122,15 @@ _08007D88:
 	ldr r0, _08007DDC @ =0x030000C8
 	adds r4, r4, r0
 	adds r0, r4, #0
-	bl sub_08005B08
+	bl InitSpriteText
 	adds r0, r4, #0
-	bl sub_08005B2C
+	bl SpriteText_DrawBackground
 	adds r0, r4, #0
 	movs r1, #6
-	bl sub_08005450
+	bl Text_SetColor
 	adds r0, r4, #0
 	movs r1, #4
-	bl sub_08005444
+	bl Text_SetCursor
 	adds r5, #1
 	cmp r5, r6
 	blt _08007D88
@@ -166,8 +166,8 @@ _08007DF0: .4byte 0x081901C8
 sub_08007DF4: @ 0x08007DF4
 	push {lr}
 	ldr r0, _08007E04 @ =0x030000E8
-	bl sub_08005320
-	bl sub_08005944
+	bl SetTextFont
+	bl InitTalkTextFont
 	pop {r0}
 	bx r0
 	.align 2, 0
@@ -402,7 +402,7 @@ _08007F9A:
 	ldr r0, [r6]
 	ldrb r1, [r0, #8]
 	adds r0, r5, #0
-	bl sub_08005450
+	bl Text_SetColor
 	adds r5, #8
 	adds r4, #1
 	ldr r0, [r6]
@@ -628,7 +628,7 @@ _0800815C:
 	ldr r1, _080081B0 @ =0x030000C8
 	adds r0, r0, r1
 	ldr r1, [r4]
-	bl sub_080056D8
+	bl Text_DrawCharacter
 	ldr r1, [r5]
 	str r0, [r1]
 	movs r0, #0x40
@@ -792,7 +792,7 @@ _080082AC:
 	ldr r1, _08008304 @ =gBg0Tm
 	adds r4, r4, r1
 	adds r1, r4, #0
-	bl sub_08005460
+	bl PutText
 	movs r0, #1
 	bl TalkBgSync
 	ldr r1, [r6]
@@ -904,7 +904,7 @@ _08008392:
 	ldr r1, _080083C0 @ =0x030000C8
 	adds r0, r0, r1
 	movs r1, #4
-	bl sub_08005450
+	bl Text_SetColor
 	adds r4, #1
 	ldr r0, [r5]
 	ldrb r0, [r0, #0xa]
@@ -934,7 +934,7 @@ _080083CE:
 	ldr r1, _08008400 @ =0x030000C8
 	adds r0, r0, r1
 	movs r1, #1
-	bl sub_08005450
+	bl Text_SetColor
 	adds r4, #1
 	ldr r0, [r5]
 	ldrb r0, [r0, #0xa]
@@ -1186,7 +1186,7 @@ _080086C0:
 	ldr r1, _0800870C @ =0x030000C8
 	adds r0, r0, r1
 	movs r1, #6
-	bl sub_08005448
+	bl Text_Skip
 	ldr r1, [r7]
 	movs r0, #0x12
 	ldrsb r0, [r1, r0]
@@ -1676,7 +1676,7 @@ _08008B08:
 	ldr r0, [r6]
 	ldrb r1, [r0, #8]
 	adds r0, r5, #0
-	bl sub_08005450
+	bl Text_SetColor
 	adds r5, #8
 	adds r4, #1
 	ldr r0, [r6]
@@ -2688,7 +2688,7 @@ sub_0800925C: @ 0x0800925C
 	adds r0, r6, #0
 	mov r1, r8
 	ldr r2, [sp, #0x1c]
-	bl sub_080059DC
+	bl Text_InsertDrawString
 	adds r4, #0x38
 	ldrh r0, [r7, #8]
 	bl DecodeMsg
@@ -2696,10 +2696,10 @@ sub_0800925C: @ 0x0800925C
 	adds r0, r6, #0
 	adds r1, r4, #0
 	ldr r2, [sp, #0x1c]
-	bl sub_080059DC
+	bl Text_InsertDrawString
 	adds r0, r6, #0
 	adds r1, r5, #0
-	bl sub_08005460
+	bl PutText
 	movs r0, #1
 	bl TalkBgSync
 	ldr r0, _08009304 @ =0x08BFFCBC
@@ -2964,7 +2964,7 @@ _080094A2:
 	lsls r1, r1, #1
 	ldr r2, _08009548 @ =gBg0Tm
 	adds r1, r1, r2
-	bl sub_08005460
+	bl PutText
 	adds r5, #1
 	ldr r0, [r6]
 	ldrb r0, [r0, #0xa]
@@ -2999,7 +2999,7 @@ _080094D6:
 	lsls r0, r0, #3
 	ldr r5, _08009544 @ =0x030000C8
 	adds r0, r0, r5
-	bl sub_080053B0
+	bl ClearText
 	ldr r4, [r4]
 	ldrb r1, [r4, #0xa]
 	ldrb r0, [r4, #0xb]
@@ -3009,7 +3009,7 @@ _080094D6:
 	lsls r0, r0, #3
 	adds r0, r0, r5
 	ldrb r1, [r4, #8]
-	bl sub_08005450
+	bl Text_SetColor
 	movs r0, #1
 	bl TalkBgSync
 	adds r0, r7, #0
@@ -3047,13 +3047,13 @@ sub_08009564: @ 0x08009564
 	strb r0, [r1, #9]
 	ldr r4, _08009594 @ =0x030000D0
 	adds r0, r4, #0
-	bl sub_08005B2C
+	bl SpriteText_DrawBackground
 	adds r0, r4, #0
 	movs r1, #6
-	bl sub_08005450
+	bl Text_SetColor
 	adds r0, r4, #0
 	movs r1, #4
-	bl sub_08005444
+	bl Text_SetCursor
 	pop {r4}
 	pop {r0}
 	bx r0
@@ -3074,13 +3074,13 @@ _080095A4:
 	ldr r0, _080095D0 @ =0x030000C8
 	adds r4, r4, r0
 	adds r0, r4, #0
-	bl sub_08005B2C
+	bl SpriteText_DrawBackground
 	adds r0, r4, #0
 	movs r1, #6
-	bl sub_08005450
+	bl Text_SetColor
 	adds r0, r4, #0
 	movs r1, #4
-	bl sub_08005444
+	bl Text_SetCursor
 	adds r5, #1
 	cmp r5, #1
 	ble _080095A4
@@ -3163,11 +3163,11 @@ _0800965A:
 	ldr r0, _08009688 @ =0x030000C8
 	adds r4, r4, r0
 	adds r0, r4, #0
-	bl sub_080053B0
+	bl ClearText
 	ldr r0, [r6]
 	ldrb r1, [r0, #8]
 	adds r0, r4, #0
-	bl sub_08005450
+	bl Text_SetColor
 	adds r5, #1
 	ldr r0, [r6]
 	ldrb r0, [r0, #0xa]
@@ -3207,11 +3207,11 @@ _080096B0:
 	ldr r0, _080096DC @ =0x030000C8
 	adds r4, r4, r0
 	adds r0, r4, #0
-	bl sub_080053B0
+	bl ClearText
 	ldr r0, [r6]
 	ldrb r1, [r0, #8]
 	adds r0, r4, #0
-	bl sub_08005450
+	bl Text_SetColor
 	adds r5, #1
 	ldr r0, [r6]
 	ldrb r0, [r0, #0xa]
@@ -4268,7 +4268,7 @@ sub_08009E9C: @ 0x08009E9C
 _08009EB8:
 	ldr r0, [r7]
 	adds r1, r4, #0
-	bl sub_080056D8
+	bl Text_DrawCharacter
 	adds r4, r0, #0
 _08009EC2:
 	movs r0, #0
@@ -4280,7 +4280,7 @@ _08009EC2:
 	bne _08009EE2
 	ldm r7!, {r0}
 	adds r1, r5, #0
-	bl sub_08005460
+	bl PutText
 	adds r5, #0x80
 	adds r6, #1
 	adds r4, #1
@@ -4297,7 +4297,7 @@ _08009EE8:
 	lsls r1, r6, #7
 	ldr r2, [sp]
 	adds r1, r2, r1
-	bl sub_08005460
+	bl PutText
 _08009EF8:
 	add sp, #4
 	pop {r3, r4, r5}
@@ -4676,7 +4676,7 @@ _0800A2F0:
 _0800A308: .4byte 0x08BFFB68
 _0800A30C:
 	bl sub_0802EBB0
-	bl sub_080054CC
+	bl GetStringTextLen
 	b _0800A326
 _0800A316:
 	ldr r0, _0800A32C @ =0x08BFFB68
@@ -4719,7 +4719,7 @@ _0800A352:
 _0800A358:
 	add r1, sp, #0x20
 	adds r0, r4, #0
-	bl sub_08005528
+	bl GetCharTextLen
 	adds r4, r0, #0
 	ldr r0, [sp, #0x20]
 	adds r6, r6, r0

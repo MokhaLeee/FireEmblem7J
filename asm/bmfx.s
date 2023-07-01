@@ -733,7 +733,7 @@ sub_0801DD60: @ 0x0801DD60
 	adds r5, #0x34
 	adds r0, r5, #0
 	movs r1, #2
-	bl sub_08005450
+	bl Text_SetColor
 	movs r0, #0x2c
 	ldrsh r2, [r4, r0]
 	lsls r2, r2, #5
@@ -1512,13 +1512,13 @@ sub_0801E364: @ 0x0801E364
 	ldrb r0, [r0]
 	str r0, [sp, #8]
 	adds r0, r6, #0
-	bl sub_080053B0
+	bl ClearText
 	adds r0, r7, #0
 	adds r0, #0x3c
-	bl sub_080053B0
+	bl ClearText
 	adds r0, r7, #0
 	adds r0, #0x44
-	bl sub_080053B0
+	bl ClearText
 	ldrb r0, [r4]
 	mov r2, r8
 	ldrb r1, [r2]
@@ -1594,9 +1594,9 @@ _0801E446:
 	movs r1, #0
 	movs r2, #0
 	adds r3, r4, #0
-	bl sub_080059DC
+	bl Text_InsertDrawString
 	adds r0, r4, #0
-	bl sub_080055C8
+	bl GetStringLineEnd
 	adds r4, r0, #0
 	ldrb r0, [r4]
 	cmp r0, #0
@@ -1629,16 +1629,16 @@ _0801E446:
 	strh r1, [r0]
 	adds r0, r6, #0
 	adds r1, r7, #0
-	bl sub_08005460
+	bl PutText
 	mov r0, r8
 	mov r1, sb
-	bl sub_08005460
+	bl PutText
 	ldr r2, [sp, #4]
 	movs r3, #0xa1
 	lsls r3, r3, #1
 	adds r1, r2, r3
 	mov r0, sl
-	bl sub_08005460
+	bl PutText
 	b _0801E61A
 	.align 2, 0
 _0801E4B8: .4byte gBattleActor
@@ -1697,31 +1697,31 @@ _0801E522:
 	adds r0, r6, #0
 	movs r1, #0x20
 	movs r2, #0
-	bl sub_080059DC
+	bl Text_InsertDrawString
 	adds r4, r6, #0
 	adds r4, #8
 	ldr r3, _0801E63C @ =0x081C9358
 	adds r0, r4, #0
 	movs r1, #2
 	movs r2, #0
-	bl sub_080059DC
+	bl Text_InsertDrawString
 	adds r5, r6, #0
 	adds r5, #0x10
 	ldr r3, _0801E640 @ =0x081C9360
 	adds r0, r5, #0
 	movs r1, #2
 	movs r2, #0
-	bl sub_080059DC
+	bl Text_InsertDrawString
 	ldr r3, _0801E644 @ =0x081C9368
 	adds r0, r4, #0
 	movs r1, #0x32
 	movs r2, #0
-	bl sub_080059DC
+	bl Text_InsertDrawString
 	ldr r3, _0801E648 @ =0x081C9370
 	adds r0, r5, #0
 	movs r1, #0x32
 	movs r2, #0
-	bl sub_080059DC
+	bl Text_InsertDrawString
 	mov r0, r8
 	adds r0, #0x5a
 	movs r1, #0
@@ -1729,7 +1729,7 @@ _0801E522:
 	adds r0, r4, #0
 	movs r1, #0x24
 	mov r2, sb
-	bl sub_08005A00
+	bl Text_InsertDrawNumberOrBlank
 	mov r0, r8
 	adds r0, #0x60
 	movs r2, #0
@@ -1737,7 +1737,7 @@ _0801E522:
 	adds r0, r5, #0
 	movs r1, #0x24
 	mov r2, sb
-	bl sub_08005A00
+	bl Text_InsertDrawNumberOrBlank
 	mov r0, r8
 	adds r0, #0x66
 	movs r1, #0
@@ -1745,7 +1745,7 @@ _0801E522:
 	adds r0, r4, #0
 	movs r1, #0x54
 	mov r2, sb
-	bl sub_08005A00
+	bl Text_InsertDrawNumberOrBlank
 	mov r0, r8
 	adds r0, #0x62
 	movs r2, #0
@@ -1753,7 +1753,7 @@ _0801E522:
 	adds r0, r5, #0
 	movs r1, #0x54
 	mov r2, sb
-	bl sub_08005A00
+	bl Text_InsertDrawNumberOrBlank
 	adds r0, r7, #0
 	adds r0, #0x34
 	adds r6, r7, #0
@@ -1769,7 +1769,7 @@ _0801E522:
 	lsls r1, r1, #1
 	ldr r4, _0801E64C @ =gBg0Tm
 	adds r1, r1, r4
-	bl sub_08005460
+	bl PutText
 	adds r0, r7, #0
 	adds r0, #0x3c
 	ldrb r1, [r6]
@@ -1780,7 +1780,7 @@ _0801E522:
 	adds r1, r2, r1
 	lsls r1, r1, #1
 	adds r1, r1, r4
-	bl sub_08005460
+	bl PutText
 	adds r0, r7, #0
 	adds r0, #0x44
 	ldrb r1, [r6]
@@ -1791,7 +1791,7 @@ _0801E522:
 	adds r1, r5, r1
 	lsls r1, r1, #1
 	adds r1, r1, r4
-	bl sub_08005460
+	bl PutText
 	ldr r4, [sp, #4]
 	adds r4, #0x4e
 	mov r3, sl
@@ -3642,7 +3642,7 @@ sub_0801F484: @ 0x0801F484
 	adds r5, r1, #0
 	adds r6, r2, #0
 	adds r0, r6, #0
-	bl sub_080054CC
+	bl GetStringTextLen
 	adds r2, r0, #0
 	cmp r5, #0
 	blt _0801F49C
@@ -3692,7 +3692,7 @@ _0801F4E2:
 	movs r0, #0
 	movs r2, #0
 	movs r3, #0
-	bl sub_08005998
+	bl PutDrawText
 	ldr r0, _0801F510 @ =0x08C02BA8
 	adds r1, r7, #0
 	bl Proc_StartBlocking
@@ -3718,49 +3718,49 @@ sub_0801F514: @ 0x0801F514
 	bl sub_08005308
 	add r0, sp, #4
 	movs r1, #0x14
-	bl sub_08005344
+	bl InitText
 	add r7, sp, #0xc
 	adds r0, r7, #0
 	movs r1, #0x14
-	bl sub_08005344
+	bl InitText
 	add r0, sp, #4
 	movs r1, #2
-	bl sub_08005450
+	bl Text_SetColor
 	adds r0, r7, #0
 	movs r1, #2
-	bl sub_08005450
+	bl Text_SetColor
 	mov r0, r8
 	bl GetItemName
 	adds r1, r0, #0
 	add r0, sp, #4
-	bl sub_080055DC
+	bl Text_DrawString
 	mov r0, sb
 	bl GetItemName
 	adds r1, r0, #0
 	adds r0, r7, #0
-	bl sub_080055DC
+	bl Text_DrawString
 	add r0, sp, #4
 	movs r1, #2
-	bl sub_08005448
+	bl Text_Skip
 	adds r0, r7, #0
 	movs r1, #2
-	bl sub_08005448
+	bl Text_Skip
 	add r0, sp, #4
 	movs r1, #0
-	bl sub_08005450
+	bl Text_SetColor
 	adds r0, r7, #0
 	movs r1, #0
-	bl sub_08005450
+	bl Text_SetColor
 	ldr r0, _0801F640 @ =0x00000726
 	bl DecodeMsg
 	adds r1, r0, #0
 	add r0, sp, #4
-	bl sub_080055DC
+	bl Text_DrawString
 	ldr r0, _0801F644 @ =0x00000727
 	bl DecodeMsg
 	adds r1, r0, #0
 	adds r0, r7, #0
-	bl sub_080055DC
+	bl Text_DrawString
 	add r0, sp, #4
 	bl sub_08005440
 	adds r4, r0, #0
@@ -3815,12 +3815,12 @@ _0801F5D0:
 	adds r1, r5, #4
 	adds r1, r6, r1
 	add r0, sp, #4
-	bl sub_08005460
+	bl PutText
 	adds r5, #0x84
 	adds r6, r6, r5
 	adds r0, r7, #0
 	adds r1, r6, #0
-	bl sub_08005460
+	bl PutText
 	ldr r0, _0801F64C @ =0x08C02BA8
 	mov r1, sl
 	bl Proc_StartBlocking
@@ -3850,26 +3850,26 @@ sub_0801F650: @ 0x0801F650
 	bl sub_08005308
 	add r0, sp, #4
 	movs r1, #0x14
-	bl sub_08005344
+	bl InitText
 	add r0, sp, #4
 	movs r1, #2
-	bl sub_08005450
+	bl Text_SetColor
 	adds r0, r7, #0
 	bl GetItemName
 	adds r1, r0, #0
 	add r0, sp, #4
-	bl sub_080055DC
+	bl Text_DrawString
 	add r0, sp, #4
 	movs r1, #2
-	bl sub_08005448
+	bl Text_Skip
 	add r0, sp, #4
 	movs r1, #0
-	bl sub_08005450
+	bl Text_SetColor
 	adds r0, r4, #0
 	bl DecodeMsg
 	adds r1, r0, #0
 	add r0, sp, #4
-	bl sub_080055DC
+	bl Text_DrawString
 	add r0, sp, #4
 	bl sub_08005440
 	adds r2, r0, #0
@@ -3907,7 +3907,7 @@ _0801F6BC:
 	adds r5, r5, r4
 	add r0, sp, #4
 	adds r1, r5, #0
-	bl sub_08005460
+	bl PutText
 	ldr r0, _0801F708 @ =0x08C02BA8
 	mov r1, r8
 	bl Proc_StartBlocking
@@ -5029,7 +5029,7 @@ sub_0801FFA8: @ 0x0801FFA8
 	bl sub_0802D8E4
 	bl RefreshUnitSprites
 	bl sub_08025A0C
-	bl sub_08005904
+	bl InitSystemTextFont
 	pop {r0}
 	bx r0
 	.align 2, 0
@@ -6194,7 +6194,7 @@ sub_08020904: @ 0x08020904
 	movs r2, #0x20
 	bl ApplyPaletteExt
 	ldr r0, _080209B4 @ =0x08196DCC
-	ldr r4, _080209B8 @ =0x0200323C
+	ldr r4, _080209B8 @ =gBmFrameTmap0
 	adds r1, r4, #0
 	bl sub_08013688
 	movs r0, #0x84
@@ -6266,7 +6266,7 @@ _080209A8: .4byte 0x08195688
 _080209AC: .4byte 0x06002000
 _080209B0: .4byte 0x08196DAC
 _080209B4: .4byte 0x08196DCC
-_080209B8: .4byte 0x0200323C
+_080209B8: .4byte gBmFrameTmap0
 _080209BC: .4byte gBg0Tm
 _080209C0: .4byte gPlaySt
 _080209C4: .4byte gDispIo
@@ -6313,7 +6313,7 @@ _08020A1C:
 	lsls r0, r5, #5
 	adds r0, r0, r4
 	lsls r0, r0, #1
-	ldr r1, _08020A40 @ =0x0200323C
+	ldr r1, _08020A40 @ =gBmFrameTmap0
 	adds r0, r0, r1
 	ldr r1, _08020A44 @ =gBg0Tm
 	movs r2, #8
@@ -6327,7 +6327,7 @@ _08020A36:
 	pop {r0}
 	bx r0
 	.align 2, 0
-_08020A40: .4byte 0x0200323C
+_08020A40: .4byte gBmFrameTmap0
 _08020A44: .4byte gBg0Tm
 
 	thumb_func_start sub_08020A48
@@ -6409,7 +6409,7 @@ sub_08020AD0: @ 0x08020AD0
 	movs r2, #0x20
 	bl ApplyPaletteExt
 	ldr r0, _08020B6C @ =0x081BECCC
-	ldr r4, _08020B70 @ =0x0200323C
+	ldr r4, _08020B70 @ =gBmFrameTmap0
 	adds r1, r4, #0
 	bl sub_08013688
 	movs r0, #0x84
@@ -6471,7 +6471,7 @@ _08020B60: .4byte 0x081BDEE8
 _08020B64: .4byte 0x06002000
 _08020B68: .4byte 0x081BEF08
 _08020B6C: .4byte 0x081BECCC
-_08020B70: .4byte 0x0200323C
+_08020B70: .4byte gBmFrameTmap0
 _08020B74: .4byte gBg0Tm
 _08020B78: .4byte gDispIo
 _08020B7C: .4byte 0x0000FFE0
@@ -6511,7 +6511,7 @@ _08020BC0:
 	lsls r0, r0, #5
 	adds r0, r0, r1
 	lsls r0, r0, #1
-	ldr r1, _08020BE4 @ =0x0200323C
+	ldr r1, _08020BE4 @ =gBmFrameTmap0
 	adds r0, r0, r1
 	ldr r1, _08020BE8 @ =gBg0Tm
 	movs r2, #6
@@ -6525,7 +6525,7 @@ _08020BDA:
 	pop {r0}
 	bx r0
 	.align 2, 0
-_08020BE4: .4byte 0x0200323C
+_08020BE4: .4byte gBmFrameTmap0
 _08020BE8: .4byte gBg0Tm
 
 	thumb_func_start sub_08020BEC
@@ -6641,7 +6641,7 @@ sub_08020CB0: @ 0x08020CB0
 	movs r2, #0x20
 	bl ApplyPaletteExt
 	ldr r0, _08020D74 @ =0x08198B04
-	ldr r4, _08020D78 @ =0x0200323C
+	ldr r4, _08020D78 @ =gBmFrameTmap0
 	adds r1, r4, #0
 	bl sub_08013688
 	movs r0, #0xa2
@@ -6724,7 +6724,7 @@ _08020D68: .4byte 0x0819839C
 _08020D6C: .4byte 0x06002000
 _08020D70: .4byte 0x08198AE4
 _08020D74: .4byte 0x08198B04
-_08020D78: .4byte 0x0200323C
+_08020D78: .4byte gBmFrameTmap0
 _08020D7C: .4byte gBg0Tm
 _08020D80: .4byte gPlaySt
 _08020D84: .4byte gDispIo
@@ -6793,7 +6793,7 @@ _08020E04:
 	lsls r0, r5, #5
 	adds r0, r0, r4
 	lsls r0, r0, #1
-	ldr r1, _08020E24 @ =0x0200323C
+	ldr r1, _08020E24 @ =gBmFrameTmap0
 	adds r0, r0, r1
 	ldr r1, _08020E28 @ =gBg0Tm
 	movs r2, #4
@@ -6806,7 +6806,7 @@ _08020E1E:
 	pop {r0}
 	bx r0
 	.align 2, 0
-_08020E24: .4byte 0x0200323C
+_08020E24: .4byte gBmFrameTmap0
 _08020E28: .4byte gBg0Tm
 
 	thumb_func_start sub_08020E2C
@@ -6957,7 +6957,7 @@ sub_08020F38: @ 0x08020F38
 	movs r2, #0x20
 	bl ApplyPaletteExt
 	ldr r0, _08020FD4 @ =0x081980E0
-	ldr r4, _08020FD8 @ =0x0200323C
+	ldr r4, _08020FD8 @ =gBmFrameTmap0
 	adds r1, r4, #0
 	bl sub_08013688
 	movs r0, #0x84
@@ -7019,7 +7019,7 @@ _08020FC8: .4byte 0x081970AC
 _08020FCC: .4byte 0x06002000
 _08020FD0: .4byte 0x081980C0
 _08020FD4: .4byte 0x081980E0
-_08020FD8: .4byte 0x0200323C
+_08020FD8: .4byte gBmFrameTmap0
 _08020FDC: .4byte gBg0Tm
 _08020FE0: .4byte gDispIo
 _08020FE4: .4byte 0x0000FFE0
@@ -7065,7 +7065,7 @@ _08021038:
 	lsls r0, r5, #5
 	adds r0, r0, r4
 	lsls r0, r0, #1
-	ldr r1, _0802105C @ =0x0200323C
+	ldr r1, _0802105C @ =gBmFrameTmap0
 	adds r0, r0, r1
 	ldr r1, _08021060 @ =gBg0Tm
 	movs r2, #6
@@ -7079,7 +7079,7 @@ _08021052:
 	pop {r0}
 	bx r0
 	.align 2, 0
-_0802105C: .4byte 0x0200323C
+_0802105C: .4byte gBmFrameTmap0
 _08021060: .4byte gBg0Tm
 
 	thumb_func_start sub_08021064

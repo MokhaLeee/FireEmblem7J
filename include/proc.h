@@ -137,3 +137,5 @@ void Proc_SetRepeatCb(ProcPtr proc, ProcFunc func);
 // ??? sub_80034FC(???);
 void Proc_FindBegin(struct ProcFindIterator* it, const struct ProcCmd* script);
 ProcPtr Proc_FindNext(struct ProcFindIterator* it);
+
+#define Proc_Exists(script) (Proc_Find((script)) ? TRUE : FALSE)

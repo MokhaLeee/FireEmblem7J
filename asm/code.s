@@ -1989,9 +1989,9 @@ sub_080556D8: @ 0x080556D8
 	push {r4, lr}
 	adds r4, r0, #0
 	ldr r0, [r4, #0x14]
-	bl sub_080064E0
+	bl AnimDelete
 	ldr r0, [r4, #0x18]
-	bl sub_080064E0
+	bl AnimDelete
 	movs r0, #0
 	str r0, [r4, #0x14]
 	str r0, [r4, #0x18]
@@ -2921,7 +2921,7 @@ sub_08055E30: @ 0x08055E30
 	ldr r1, _08055E94 @ =0x06008000
 	bl LZ77UnCompVram
 	ldr r0, _08055E98 @ =0x081E3A70
-	ldr r6, _08055E9C @ =0x02019784
+	ldr r6, _08055E9C @ =gEkrTsaBuffer
 	adds r1, r6, #0
 	bl LZ77UnCompWram
 	movs r1, #1
@@ -2959,7 +2959,7 @@ sub_08055E30: @ 0x08055E30
 _08055E90: .4byte 0x081E1404
 _08055E94: .4byte 0x06008000
 _08055E98: .4byte 0x081E3A70
-_08055E9C: .4byte 0x02019784
+_08055E9C: .4byte gEkrTsaBuffer
 _08055EA0: .4byte 0x0201D41C
 
 	thumb_func_start sub_08055EA4
@@ -4903,7 +4903,7 @@ sub_08056DB8: @ 0x08056DB8
 	subs r0, #1
 	str r0, [r1]
 	ldr r0, [r4, #0x60]
-	bl sub_080064E0
+	bl AnimDelete
 	ldr r0, _08056DFC @ =gEkrDistanceType
 	movs r1, #0
 	ldrsh r0, [r0, r1]
@@ -5029,7 +5029,7 @@ sub_08056EBC: @ 0x08056EBC
 	ldr r0, [r4, #0x64]
 	bl Proc_End
 	ldr r0, [r4, #0x60]
-	bl sub_080064E0
+	bl AnimDelete
 	adds r0, r4, #0
 	bl Proc_Break
 _08056EEE:
@@ -5065,7 +5065,7 @@ sub_08056EFC: @ 0x08056EFC
 	ldrsh r2, [r6, r0]
 	movs r0, #0xcd
 	movs r3, #1
-	bl sub_080689D0
+	bl PlaySFX
 	adds r0, r4, #0
 	pop {r4, r5, r6}
 	pop {r1}
@@ -5107,7 +5107,7 @@ sub_08056F50: @ 0x08056F50
 	asrs r2, r2, #0x10
 	movs r0, #0xcd
 	movs r3, #1
-	bl sub_080689D0
+	bl PlaySFX
 	movs r0, #0
 	strh r0, [r4, #0x2c]
 	ldrh r1, [r4, #0x2e]
@@ -5177,7 +5177,7 @@ sub_08056FD0: @ 0x08056FD0
 	ldrsh r2, [r0, r3]
 	movs r0, #0xcc
 	movs r3, #1
-	bl sub_080689D0
+	bl PlaySFX
 	ldrh r0, [r5, #0x2c]
 	cmp r0, #1
 	bne _08057066
@@ -5294,7 +5294,7 @@ sub_080570F0: @ 0x080570F0
 	subs r1, #1
 	str r1, [r0]
 	ldr r0, [r4, #0x60]
-	bl sub_080064E0
+	bl AnimDelete
 	adds r0, r4, #0
 	bl Proc_Break
 _08057116:
@@ -5744,7 +5744,7 @@ sub_08057514: @ 0x08057514
 	ldrsh r2, [r0, r3]
 	movs r0, #0xca
 	movs r3, #1
-	bl sub_080689D0
+	bl PlaySFX
 	ldrh r0, [r5, #0x2c]
 	cmp r0, #1
 	bne _0805759E
@@ -5876,7 +5876,7 @@ sub_08057634: @ 0x08057634
 	subs r1, #1
 	str r1, [r0]
 	ldr r0, [r4, #0x60]
-	bl sub_080064E0
+	bl AnimDelete
 	adds r0, r4, #0
 	bl Proc_Break
 _0805765A:
@@ -5979,7 +5979,7 @@ sub_0805769C: @ 0x0805769C
 	ldrsh r2, [r4, r0]
 	movs r0, #0xef
 	movs r3, #1
-	bl sub_080689D0
+	bl PlaySFX
 _08057730:
 	movs r1, #0x2c
 	ldrsh r0, [r5, r1]
@@ -6202,7 +6202,7 @@ sub_080578F0: @ 0x080578F0
 	cmp r0, r1
 	ble _08057918
 	ldr r0, [r4, #0x60]
-	bl sub_080064E0
+	bl AnimDelete
 	ldr r1, _08057920 @ =0x0201774C
 	ldr r0, [r1]
 	subs r0, #1
@@ -6309,7 +6309,7 @@ sub_0805795C: @ 0x0805795C
 	ldrsh r2, [r4, r0]
 	movs r0, #0xef
 	movs r3, #1
-	bl sub_080689D0
+	bl PlaySFX
 _080579F0:
 	movs r1, #0x2c
 	ldrsh r0, [r5, r1]
@@ -6397,7 +6397,7 @@ sub_08057A6C: @ 0x08057A6C
 	movs r3, #2
 	ldrsh r2, [r2, r3]
 	movs r3, #1
-	bl sub_080689D0
+	bl PlaySFX
 	pop {r4, r5}
 	pop {r0}
 	bx r0
@@ -6435,7 +6435,7 @@ _08057AE2:
 	movs r3, #2
 	ldrsh r2, [r2, r3]
 	movs r3, #1
-	bl sub_080689D0
+	bl PlaySFX
 	b _08057B74
 	.align 2, 0
 _08057B00: .4byte 0x00000137
@@ -6567,7 +6567,7 @@ sub_08057BF4: @ 0x08057BF4
 	cmp r0, #0xa
 	ble _08057C1A
 	ldr r0, [r4, #0x60]
-	bl sub_080064E0
+	bl AnimDelete
 	ldr r1, _08057C20 @ =0x0201774C
 	ldr r0, [r1]
 	subs r0, #1
@@ -6648,7 +6648,7 @@ _08057C84:
 	movs r3, #2
 	ldrsh r2, [r5, r3]
 	movs r3, #1
-	bl sub_080689D0
+	bl PlaySFX
 	b _08057CF6
 _08057CBC:
 	cmp r0, #0xa
@@ -6707,7 +6707,7 @@ sub_08057CFC: @ 0x08057CFC
 	lsls r1, r1, #6
 	bl SpellFx_RegisterBgGfx
 	ldr r0, _08057D6C @ =0x081F3DC8
-	ldr r5, _08057D70 @ =0x02019784
+	ldr r5, _08057D70 @ =gEkrTsaBuffer
 	adds r1, r5, #0
 	bl LZ77UnCompWram
 	ldr r0, [r4, #0x5c]
@@ -6730,7 +6730,7 @@ _08057D60: .4byte 0x08C10B70
 _08057D64: .4byte 0x081F3CC8
 _08057D68: .4byte 0x081F2E08
 _08057D6C: .4byte 0x081F3DC8
-_08057D70: .4byte 0x02019784
+_08057D70: .4byte gEkrTsaBuffer
 _08057D74: .4byte gBg1Tm
 _08057D78:
 	ldr r1, _08057DB4 @ =gBg1Tm
@@ -7050,7 +7050,7 @@ _08057FEE:
 	movs r3, #2
 	ldrsh r2, [r5, r3]
 	movs r3, #1
-	bl sub_080689D0
+	bl PlaySFX
 	adds r0, r5, #0
 	bl sub_0805807C
 	ldr r0, [r4, #0x5c]
@@ -7167,7 +7167,7 @@ sub_080580EC: @ 0x080580EC
 	cmp r0, r1
 	ble _08058114
 	ldr r0, [r4, #0x60]
-	bl sub_080064E0
+	bl AnimDelete
 	ldr r1, _0805811C @ =0x0201774C
 	ldr r0, [r1]
 	subs r0, #1
@@ -7255,7 +7255,7 @@ _08058180:
 	movs r3, #2
 	ldrsh r2, [r5, r3]
 	movs r3, #1
-	bl sub_080689D0
+	bl PlaySFX
 	b _080581FE
 	.align 2, 0
 _080581C8: .4byte 0x0000011D
@@ -7408,7 +7408,7 @@ _080582EA:
 	cmp r0, r1
 	ble _0805830E
 	ldr r0, [r4, #0x60]
-	bl sub_080064E0
+	bl AnimDelete
 	ldr r1, _08058314 @ =0x0201774C
 	ldr r0, [r1]
 	subs r0, #1
@@ -7614,7 +7614,7 @@ sub_08058478: @ 0x08058478
 	movs r3, #2
 	ldrsh r2, [r5, r3]
 	movs r3, #1
-	bl sub_080689D0
+	bl PlaySFX
 _080584B4:
 	movs r1, #0x2c
 	ldrsh r0, [r4, r1]
@@ -7710,7 +7710,7 @@ sub_0805856C: @ 0x0805856C
 	subs r1, #1
 	str r1, [r2]
 	ldr r0, [r0, #0x60]
-	bl sub_080064E0
+	bl AnimDelete
 	pop {r0}
 	bx r0
 	.align 2, 0
@@ -7772,7 +7772,7 @@ sub_080585BC: @ 0x080585BC
 	movs r3, #2
 	ldrsh r2, [r5, r3]
 	movs r3, #1
-	bl sub_080689D0
+	bl PlaySFX
 _08058602:
 	movs r1, #0x2c
 	ldrsh r0, [r4, r1]
@@ -8028,7 +8028,7 @@ sub_080587F8: @ 0x080587F8
 	subs r1, #1
 	str r1, [r0]
 	ldr r0, [r4, #0x60]
-	bl sub_080064E0
+	bl AnimDelete
 	adds r0, r4, #0
 	bl Proc_Break
 _08058820:
@@ -8116,7 +8116,7 @@ _080588B0:
 	ldrsh r2, [r5, r0]
 	movs r0, #0xf5
 	movs r3, #1
-	bl sub_080689D0
+	bl PlaySFX
 	ldrb r0, [r4]
 	cmp r0, #0
 	bne _08058902
@@ -8383,7 +8383,7 @@ sub_08058AF8: @ 0x08058AF8
 	cmp r0, #0x32
 	ble _08058B1E
 	ldr r0, [r4, #0x60]
-	bl sub_080064E0
+	bl AnimDelete
 	ldr r1, _08058B24 @ =0x0201774C
 	ldr r0, [r1]
 	subs r0, #1
@@ -8509,7 +8509,7 @@ _08058BEC:
 	ldrsh r2, [r0, r3]
 	movs r0, #0xf1
 	movs r3, #1
-	bl sub_080689D0
+	bl PlaySFX
 _08058C18:
 	movs r1, #0x2c
 	ldrsh r0, [r4, r1]
@@ -8546,7 +8546,7 @@ _08058C2C:
 	ldrsh r2, [r6, r0]
 	movs r0, #0xf7
 	movs r3, #1
-	bl sub_080689D0
+	bl PlaySFX
 	adds r0, r6, #0
 	bl sub_08058E44
 	b _08058C8E
@@ -8557,7 +8557,7 @@ _08058C6C:
 	ldrsh r2, [r6, r3]
 	movs r0, #0xf8
 	movs r3, #1
-	bl sub_080689D0
+	bl PlaySFX
 	adds r0, r6, #0
 	bl sub_08058F2C
 	adds r0, r6, #0
@@ -8749,13 +8749,13 @@ sub_08058DFC: @ 0x08058DFC
 	ldrsh r2, [r0, r3]
 	movs r0, #0xf2
 	movs r3, #1
-	bl sub_080689D0
+	bl PlaySFX
 	b _08058E3A
 _08058E22:
 	cmp r0, #0x32
 	ble _08058E3A
 	ldr r0, [r4, #0x60]
-	bl sub_080064E0
+	bl AnimDelete
 	ldr r1, _08058E40 @ =0x0201774C
 	ldr r0, [r1]
 	subs r0, #1
@@ -9112,7 +9112,7 @@ sub_08059108: @ 0x08059108
 	cmp r0, #0x28
 	ble _0805912E
 	ldr r0, [r4, #0x60]
-	bl sub_080064E0
+	bl AnimDelete
 	ldr r1, _08059134 @ =0x0201774C
 	ldr r0, [r1]
 	subs r0, #1
@@ -9221,7 +9221,7 @@ _080591AA:
 	movs r3, #2
 	ldrsh r2, [r5, r3]
 	movs r3, #1
-	bl sub_080689D0
+	bl PlaySFX
 _08059206:
 	movs r0, #0x2c
 	ldrsh r1, [r4, r0]
@@ -9257,7 +9257,7 @@ _08059220:
 	movs r3, #2
 	ldrsh r2, [r5, r3]
 	movs r3, #1
-	bl sub_080689D0
+	bl PlaySFX
 	b _080592A0
 	.align 2, 0
 _08059258: .4byte 0x00000123
@@ -9572,7 +9572,7 @@ sub_080594E0: @ 0x080594E0
 	cmp r0, #0x33
 	ble _08059506
 	ldr r0, [r4, #0x60]
-	bl sub_080064E0
+	bl AnimDelete
 	ldr r1, _0805950C @ =0x0201774C
 	ldr r0, [r1]
 	subs r0, #1
@@ -9816,7 +9816,7 @@ sub_080596E0: @ 0x080596E0
 	subs r0, #1
 	str r0, [r1]
 	adds r0, r3, #0
-	bl sub_080064E0
+	bl AnimDelete
 	adds r0, r4, #0
 	bl Proc_Break
 	b _08059790
@@ -9957,7 +9957,7 @@ _08059802:
 	movs r3, #2
 	ldrsh r2, [r5, r3]
 	movs r3, #1
-	bl sub_080689D0
+	bl PlaySFX
 	adds r0, r5, #0
 	bl sub_08059898
 	adds r0, r5, #0
@@ -10154,7 +10154,7 @@ sub_080599B0: @ 0x080599B0
 	push {r4, lr}
 	adds r4, r0, #0
 	ldr r0, [r4, #0x60]
-	bl sub_080064E0
+	bl AnimDelete
 	ldr r1, _080599D0 @ =0x0201774C
 	ldr r0, [r1]
 	subs r0, #1
@@ -10198,7 +10198,7 @@ sub_080599F8: @ 0x080599F8
 	movs r3, #2
 	ldrsh r2, [r2, r3]
 	movs r3, #1
-	bl sub_080689D0
+	bl PlaySFX
 	ldr r0, [r4, #0x5c]
 	movs r1, #0x26
 	bl sub_0804F7B8
@@ -10488,7 +10488,7 @@ sub_08059C30: @ 0x08059C30
 	movs r3, #2
 	ldrsh r2, [r2, r3]
 	movs r3, #1
-	bl sub_080689D0
+	bl PlaySFX
 	adds r0, r5, #0
 	bl sub_08059D20
 	b _08059D1A
@@ -10528,7 +10528,7 @@ _08059C9E:
 	movs r3, #2
 	ldrsh r2, [r5, r3]
 	movs r3, #1
-	bl sub_080689D0
+	bl PlaySFX
 	ldr r0, [r4, #0x5c]
 	bl sub_08059DD0
 	b _08059D1A
@@ -10864,7 +10864,7 @@ sub_08059F74: @ 0x08059F74
 	subs r1, #1
 	str r1, [r2]
 	ldr r0, [r0, #0x60]
-	bl sub_080064E0
+	bl AnimDelete
 	pop {r0}
 	bx r0
 	.align 2, 0
@@ -11137,7 +11137,7 @@ _0805A1AE:
 	movs r3, #2
 	ldrsh r2, [r6, r3]
 	movs r3, #1
-	bl sub_080689D0
+	bl PlaySFX
 	b _0805A204
 	.align 2, 0
 _0805A1C0: .4byte 0x00000125
@@ -11497,7 +11497,7 @@ _0805A4A6:
 	movs r3, #2
 	ldrsh r2, [r5, r3]
 	movs r3, #1
-	bl sub_080689D0
+	bl PlaySFX
 	adds r0, r4, #0
 	bl Proc_Break
 _0805A4C2:
@@ -11727,7 +11727,7 @@ _0805A672:
 	movs r3, #2
 	ldrsh r2, [r5, r3]
 	movs r3, #1
-	bl sub_080689D0
+	bl PlaySFX
 	adds r0, r5, #0
 	bl sub_0805A700
 	b _0805A6F8
@@ -11742,7 +11742,7 @@ _0805A696:
 	movs r3, #2
 	ldrsh r2, [r5, r3]
 	movs r3, #1
-	bl sub_080689D0
+	bl PlaySFX
 	ldr r0, [r4, #0x5c]
 	movs r1, #4
 	bl sub_0804F7B8
@@ -11968,7 +11968,7 @@ sub_0805A87C: @ 0x0805A87C
 	beq _0805A89C
 	adds r1, #0xff
 	movs r0, #0xfe
-	bl sub_080689D0
+	bl PlaySFX
 	b _0805A8A6
 	.align 2, 0
 _0805A898: .4byte 0x02020038
@@ -11976,7 +11976,7 @@ _0805A89C:
 	movs r1, #0x80
 	lsls r1, r1, #1
 	movs r0, #0xff
-	bl sub_080689D0
+	bl PlaySFX
 _0805A8A6:
 	ldr r1, _0805A8B4 @ =0x02020038
 	ldr r0, [r1]
@@ -12069,7 +12069,7 @@ _0805A936:
 	ldrsh r2, [r5, r3]
 	adds r0, r1, #0
 	movs r3, #1
-	bl sub_080689D0
+	bl PlaySFX
 	b _0805A9E0
 _0805A96A:
 	adds r0, r4, #0
@@ -12094,7 +12094,7 @@ _0805A96A:
 	movs r3, #2
 	ldrsh r2, [r5, r3]
 	movs r3, #1
-	bl sub_080689D0
+	bl PlaySFX
 	ldrb r0, [r4]
 	cmp r0, #0
 	bne _0805A9E0
@@ -12357,7 +12357,7 @@ _0805ABBC: .4byte 0x0826F688
 sub_0805ABC0: @ 0x0805ABC0
 	push {lr}
 	ldr r0, [r0, #0x60]
-	bl sub_080064E0
+	bl AnimDelete
 	ldr r1, _0805ABD4 @ =0x0201774C
 	ldr r0, [r1]
 	subs r0, #1
@@ -12433,7 +12433,7 @@ _0805AC46:
 	lsls r1, r1, #1
 	movs r2, #0x78
 	movs r3, #0
-	bl sub_080689D0
+	bl PlaySFX
 _0805AC68:
 	movs r2, #0x2c
 	ldrsh r1, [r6, r2]
@@ -12584,7 +12584,7 @@ _0805AD18:
 	lsls r1, r1, #1
 	movs r2, #0x78
 	movs r3, #0
-	bl sub_080689D0
+	bl PlaySFX
 _0805ADA8:
 	movs r2, #0x2c
 	ldrsh r1, [r6, r2]
@@ -13139,7 +13139,7 @@ sub_0805B210: @ 0x0805B210
 	subs r0, #1
 	str r0, [r1]
 	adds r0, r5, #0
-	bl sub_080064E0
+	bl AnimDelete
 	adds r0, r4, #0
 	bl Proc_Break
 	b _0805B25C
@@ -13524,7 +13524,7 @@ _0805B548:
 	subs r0, #1
 	str r0, [r1]
 	adds r0, r6, #0
-	bl sub_080064E0
+	bl AnimDelete
 	adds r0, r5, #0
 	bl Proc_Break
 	b _0805B5CC
@@ -13716,7 +13716,7 @@ sub_0805B6B4: @ 0x0805B6B4
 	movs r3, #2
 	ldrsh r2, [r2, r3]
 	movs r3, #1
-	bl sub_080689D0
+	bl PlaySFX
 	adds r0, r5, #0
 	bl sub_0805B7A4
 	ldr r0, [r4, #0x5c]
@@ -13759,7 +13759,7 @@ _0805B71C:
 	ldrsh r2, [r5, r3]
 _0805B738:
 	movs r3, #1
-	bl sub_080689D0
+	bl PlaySFX
 	b _0805B79E
 	.align 2, 0
 _0805B740: .4byte 0x00000129
@@ -14130,7 +14130,7 @@ sub_0805BA48: @ 0x0805BA48
 	cmp r0, #0x2c
 	bne _0805BA6E
 	ldr r0, [r4, #0x60]
-	bl sub_080064E0
+	bl AnimDelete
 	ldr r1, _0805BA74 @ =0x0201774C
 	ldr r0, [r1]
 	subs r0, #1
@@ -14249,7 +14249,7 @@ _0805BB4A:
 	movs r3, #2
 	ldrsh r2, [r5, r3]
 	movs r3, #1
-	bl sub_080689D0
+	bl PlaySFX
 	b _0805BC14
 	.align 2, 0
 _0805BB5C: .4byte 0x0000011B
@@ -14300,7 +14300,7 @@ _0805BBAE:
 	lsls r1, r1, #1
 	movs r2, #0x78
 	movs r3, #0
-	bl sub_080689D0
+	bl PlaySFX
 	adds r0, r5, #0
 	movs r1, #0x64
 	movs r2, #0xa
@@ -14516,7 +14516,7 @@ sub_0805BD74: @ 0x0805BD74
 	strh r2, [r0, #0x20]
 	strh r1, [r0, #0x22]
 	ldr r0, _0805BDC4 @ =0x0827FDA0
-	ldr r4, _0805BDC8 @ =0x02019784
+	ldr r4, _0805BDC8 @ =gEkrTsaBuffer
 	adds r1, r4, #0
 	bl LZ77UnCompWram
 	ldr r1, _0805BDCC @ =gBg1Tm
@@ -14534,7 +14534,7 @@ sub_0805BD74: @ 0x0805BD74
 	.align 2, 0
 _0805BDC0: .4byte gDispIo
 _0805BDC4: .4byte 0x0827FDA0
-_0805BDC8: .4byte 0x02019784
+_0805BDC8: .4byte gEkrTsaBuffer
 _0805BDCC: .4byte gBg1Tm
 _0805BDD0:
 	ldrh r2, [r5, #0x34]
@@ -14547,7 +14547,7 @@ _0805BDD0:
 	strh r2, [r0, #0x20]
 	strh r1, [r0, #0x22]
 	ldr r0, _0805BE38 @ =0x0827FDA0
-	ldr r4, _0805BE3C @ =0x02019784
+	ldr r4, _0805BE3C @ =gEkrTsaBuffer
 	adds r1, r4, #0
 	bl LZ77UnCompWram
 	ldr r1, _0805BE40 @ =gBg1Tm
@@ -14586,7 +14586,7 @@ _0805BE2C:
 	.align 2, 0
 _0805BE34: .4byte gDispIo
 _0805BE38: .4byte 0x0827FDA0
-_0805BE3C: .4byte 0x02019784
+_0805BE3C: .4byte gEkrTsaBuffer
 _0805BE40: .4byte gBg1Tm
 _0805BE44: .4byte 0x0201774C
 
@@ -14872,7 +14872,7 @@ sub_0805C064: @ 0x0805C064
 	subs r0, #1
 	str r0, [r1]
 	adds r0, r6, #0
-	bl sub_080064E0
+	bl AnimDelete
 	adds r0, r5, #0
 	bl Proc_Break
 	b _0805C0D4
@@ -15059,9 +15059,9 @@ _0805C1F2:
 	cmp r0, r1
 	ble _0805C21C
 	adds r0, r6, #0
-	bl sub_080064E0
+	bl AnimDelete
 	adds r0, r5, #0
-	bl sub_080064E0
+	bl AnimDelete
 	ldr r1, _0805C22C @ =0x0201774C
 	ldr r0, [r1]
 	subs r0, #1
@@ -15247,7 +15247,7 @@ sub_0805C35C: @ 0x0805C35C
 	subs r0, #1
 	str r0, [r1]
 	adds r0, r6, #0
-	bl sub_080064E0
+	bl AnimDelete
 	adds r0, r5, #0
 	bl Proc_Break
 	b _0805C3CC
@@ -15396,7 +15396,7 @@ _0805C44A:
 	lsls r1, r1, #1
 	movs r2, #0x78
 	movs r3, #0
-	bl sub_080689D0
+	bl PlaySFX
 	b _0805C5A8
 	.align 2, 0
 _0805C4B8: .4byte gDispIo
@@ -15440,7 +15440,7 @@ _0805C4FA:
 	movs r3, #2
 	ldrsh r2, [r5, r3]
 	movs r3, #1
-	bl sub_080689D0
+	bl PlaySFX
 	b _0805C5A8
 	.align 2, 0
 _0805C514: .4byte 0x00000139
@@ -15463,7 +15463,7 @@ _0805C528:
 	movs r3, #2
 	ldrsh r2, [r5, r3]
 	movs r3, #1
-	bl sub_080689D0
+	bl PlaySFX
 	adds r0, r5, #0
 	movs r1, #0xa
 	bl sub_0804F7B8
@@ -15794,7 +15794,7 @@ sub_0805C7F8: @ 0x0805C7F8
 	subs r1, #1
 	str r1, [r2]
 	ldr r0, [r0, #0x60]
-	bl sub_080064E0
+	bl AnimDelete
 	pop {r0}
 	bx r0
 	.align 2, 0
@@ -16066,7 +16066,7 @@ sub_0805CA20: @ 0x0805CA20
 	subs r1, #1
 	str r1, [r2]
 	ldr r0, [r0, #0x60]
-	bl sub_080064E0
+	bl AnimDelete
 	pop {r0}
 	bx r0
 	.align 2, 0
@@ -16187,7 +16187,7 @@ _0805CAAA:
 	adds r1, r4, #0
 	movs r2, #0x78
 	movs r3, #0
-	bl sub_080689D0
+	bl PlaySFX
 	b _0805CC4C
 	.align 2, 0
 _0805CB38: .4byte gDispIo
@@ -16255,7 +16255,7 @@ _0805CBAC:
 	movs r3, #2
 	ldrsh r2, [r5, r3]
 	movs r3, #1
-	bl sub_080689D0
+	bl PlaySFX
 	b _0805CC4C
 _0805CBBC:
 	adds r0, r4, #0
@@ -16282,7 +16282,7 @@ _0805CBBC:
 	movs r3, #2
 	ldrsh r2, [r5, r3]
 	movs r3, #1
-	bl sub_080689D0
+	bl PlaySFX
 	ldrb r0, [r4]
 	cmp r0, #0
 	bne _0805CC4C
@@ -16353,7 +16353,7 @@ sub_0805CC58: @ 0x0805CC58
 	bl SpellFx_RegisterBgGfx
 	bl SpellFx_ClearBG1
 	ldr r0, _0805CCD8 @ =0x08253B94
-	ldr r4, _0805CCDC @ =0x02019784
+	ldr r4, _0805CCDC @ =gEkrTsaBuffer
 	adds r1, r4, #0
 	bl LZ77UnCompWram
 	ldr r1, _0805CCE0 @ =gBg1Tm
@@ -16388,7 +16388,7 @@ _0805CCCC: .4byte 0x0201774C
 _0805CCD0: .4byte 0x08C1215C
 _0805CCD4: .4byte 0x08253254
 _0805CCD8: .4byte 0x08253B94
-_0805CCDC: .4byte 0x02019784
+_0805CCDC: .4byte gEkrTsaBuffer
 _0805CCE0: .4byte gBg1Tm
 _0805CCE4: .4byte gDispIo
 
@@ -16571,7 +16571,7 @@ sub_0805CE2C: @ 0x0805CE2C
 	subs r1, #1
 	str r1, [r0]
 	ldr r0, [r4, #0x60]
-	bl sub_080064E0
+	bl AnimDelete
 	adds r0, r4, #0
 	bl Proc_Break
 _0805CE54:
@@ -16991,7 +16991,7 @@ sub_0805D158: @ 0x0805D158
 	subs r1, #1
 	str r1, [r0]
 	ldr r0, [r6, #0x60]
-	bl sub_080064E0
+	bl AnimDelete
 	adds r0, r6, #0
 	bl Proc_Break
 _0805D1C6:
@@ -17129,7 +17129,7 @@ _0805D2A6:
 	ldrsh r2, [r5, r3]
 _0805D2DC:
 	movs r3, #1
-	bl sub_080689D0
+	bl PlaySFX
 	b _0805D320
 	.align 2, 0
 _0805D2E4: .4byte 0x0000010F
@@ -17324,7 +17324,7 @@ _0805D40E:
 	ldrsh r2, [r5, r3]
 _0805D472:
 	movs r3, #1
-	bl sub_080689D0
+	bl PlaySFX
 	b _0805D4C4
 	.align 2, 0
 _0805D47C: .4byte gDispIo
@@ -17524,7 +17524,7 @@ _0805D5B2:
 	ldrsh r2, [r5, r3]
 _0805D616:
 	movs r3, #1
-	bl sub_080689D0
+	bl PlaySFX
 	b _0805D668
 	.align 2, 0
 _0805D620: .4byte gDispIo
@@ -17730,7 +17730,7 @@ _0805D766:
 	ldrsh r2, [r5, r3]
 _0805D7CA:
 	movs r3, #1
-	bl sub_080689D0
+	bl PlaySFX
 	b _0805D81C
 	.align 2, 0
 _0805D7D4: .4byte gDispIo
@@ -18381,7 +18381,7 @@ sub_0805DCDC: @ 0x0805DCDC
 	subs r1, #1
 	str r1, [r0]
 	ldr r0, [r4, #0x60]
-	bl sub_080064E0
+	bl AnimDelete
 	adds r0, r4, #0
 	bl Proc_Break
 _0805DD04:
@@ -18436,7 +18436,7 @@ sub_0805DD44: @ 0x0805DD44
 	subs r1, #1
 	str r1, [r0]
 	ldr r0, [r4, #0x60]
-	bl sub_080064E0
+	bl AnimDelete
 	adds r0, r4, #0
 	bl Proc_Break
 _0805DD6C:
@@ -18603,7 +18603,7 @@ sub_0805DE8C: @ 0x0805DE8C
 	subs r1, #1
 	str r1, [r0]
 	ldr r0, [r4, #0x60]
-	bl sub_080064E0
+	bl AnimDelete
 	adds r0, r4, #0
 	bl Proc_Break
 _0805DEB4:
@@ -18679,7 +18679,7 @@ sub_0805DF20: @ 0x0805DF20
 	movs r3, #2
 	ldrsh r2, [r2, r3]
 	movs r3, #1
-	bl sub_080689D0
+	bl PlaySFX
 	b _0805DFE8
 _0805DF50:
 	cmp r1, #0x34
@@ -18701,7 +18701,7 @@ _0805DF68:
 	lsls r1, r1, #1
 	movs r2, #0x78
 	movs r3, #0
-	bl sub_080689D0
+	bl PlaySFX
 	ldr r0, [r4, #0x5c]
 	bl sub_0805E158
 	ldr r0, [r4, #0x5c]
@@ -18827,7 +18827,7 @@ sub_0805E044: @ 0x0805E044
 	movs r1, #0x80
 	lsls r1, r1, #1
 	movs r3, #0
-	bl sub_080689D0
+	bl PlaySFX
 	b _0805E0BA
 	.align 2, 0
 _0805E094: .4byte 0x081EEA46
@@ -19318,7 +19318,7 @@ _0805E422:
 	ldrsh r2, [r6, r0]
 	movs r0, #0xfd
 	movs r3, #1
-	bl sub_080689D0
+	bl PlaySFX
 	b _0805E504
 _0805E498:
 	adds r0, r5, #0
@@ -19589,7 +19589,7 @@ sub_0805E68C: @ 0x0805E68C
 	ldrsh r2, [r0, r3]
 	movs r0, #0xfa
 	movs r3, #1
-	bl sub_080689D0
+	bl PlaySFX
 _0805E6D0:
 	ldrh r0, [r4, #0x2c]
 	cmp r0, #0x29
@@ -19614,7 +19614,7 @@ _0805E6E2:
 	ldrsh r2, [r5, r0]
 	movs r0, #0xfb
 	movs r3, #1
-	bl sub_080689D0
+	bl PlaySFX
 	ldr r0, [r4, #0x5c]
 	str r7, [sp]
 	str r7, [sp, #4]
@@ -19634,7 +19634,7 @@ _0805E716:
 	ldrsh r2, [r5, r3]
 	movs r0, #0xfc
 	movs r3, #1
-	bl sub_080689D0
+	bl PlaySFX
 	bl sub_08067EA0
 	movs r0, #9
 	ldrh r1, [r5, #0x10]
@@ -19828,7 +19828,7 @@ _0805E8CC: .4byte 0x082784F0
 sub_0805E8D0: @ 0x0805E8D0
 	push {lr}
 	ldr r0, [r0, #0x60]
-	bl sub_080064E0
+	bl AnimDelete
 	ldr r1, _0805E8E4 @ =0x0201774C
 	ldr r0, [r1]
 	subs r0, #1
@@ -19896,7 +19896,7 @@ sub_0805E924: @ 0x0805E924
 	movs r3, #2
 	ldrsh r2, [r2, r3]
 	movs r3, #1
-	bl sub_080689D0
+	bl PlaySFX
 _0805E968:
 	ldrh r0, [r4, #0x2c]
 	cmp r0, #0x64
@@ -20201,7 +20201,7 @@ sub_0805EBD8: @ 0x0805EBD8
 	ldrsh r2, [r0, r4]
 	adds r0, r3, #0
 	movs r3, #1
-	bl sub_080689D0
+	bl PlaySFX
 	pop {r4}
 	pop {r0}
 	bx r0
@@ -20321,7 +20321,7 @@ _0805EC7A:
 	movs r3, #2
 	ldrsh r2, [r6, r3]
 	movs r3, #1
-	bl sub_080689D0
+	bl PlaySFX
 	b _0805ED58
 	.align 2, 0
 _0805ECF0: .4byte 0x00000103
@@ -20597,7 +20597,7 @@ _0805EEEE:
 	movs r0, #0xf9
 	adds r1, r4, #0
 	movs r3, #1
-	bl sub_080689D0
+	bl PlaySFX
 	b _0805EF96
 _0805EF3C:
 	adds r0, r6, #0
@@ -20878,7 +20878,7 @@ sub_0805F150: @ 0x0805F150
 	orrs r0, r1
 	strh r0, [r2, #8]
 	mov r0, sp
-	bl sub_0800650C
+	bl AnimDisplay
 	ldrh r0, [r4, #0x2c]
 	adds r0, #1
 	strh r0, [r4, #0x2c]
@@ -20957,7 +20957,7 @@ sub_0805F21C: @ 0x0805F21C
 	subs r1, #1
 	str r1, [r2]
 	ldr r0, [r0, #0x60]
-	bl sub_080064E0
+	bl AnimDelete
 	pop {r0}
 	bx r0
 	.align 2, 0
@@ -21300,7 +21300,7 @@ _0805F4F4:
 	movs r3, #2
 	ldrsh r2, [r4, r3]
 	movs r3, #1
-	bl sub_080689D0
+	bl PlaySFX
 	b _0805F58E
 _0805F524:
 	adds r0, r6, #0
@@ -21514,7 +21514,7 @@ _0805F6DC: .4byte 0x08C400E4
 sub_0805F6E0: @ 0x0805F6E0
 	push {lr}
 	ldr r0, [r0, #0x60]
-	bl sub_080064E0
+	bl AnimDelete
 	ldr r1, _0805F6F4 @ =0x0201774C
 	ldr r0, [r1]
 	subs r0, #1
@@ -21595,7 +21595,7 @@ _0805F772:
 	movs r3, #2
 	ldrsh r2, [r5, r3]
 	movs r3, #1
-	bl sub_080689D0
+	bl PlaySFX
 	b _0805F800
 _0805F794:
 	adds r0, r6, #0
@@ -22246,7 +22246,7 @@ _0805FC58:
 	adds r1, r4, #0
 	movs r2, #0x78
 	movs r3, #1
-	bl sub_080689D0
+	bl PlaySFX
 	b _0805FE12
 	.align 2, 0
 _0805FCEC: .4byte gDispIo
@@ -22283,7 +22283,7 @@ _0805FD24:
 	movs r3, #2
 	ldrsh r2, [r5, r3]
 	movs r3, #0
-	bl sub_080689D0
+	bl PlaySFX
 	b _0805FE12
 	.align 2, 0
 _0805FD40: .4byte 0x000002BE
@@ -22665,7 +22665,7 @@ sub_08060014: @ 0x08060014
 	bl SpellFx_RegisterBgPal
 	bl SpellFx_ClearBG1
 	ldr r0, _08060088 @ =0x08298820
-	ldr r4, _0806008C @ =0x02019784
+	ldr r4, _0806008C @ =gEkrTsaBuffer
 	adds r1, r4, #0
 	bl LZ77UnCompWram
 	ldr r0, [r6, #0x5c]
@@ -22688,7 +22688,7 @@ _0806007C: .4byte 0x08C12BF0
 _08060080: .4byte 0x08297EE0
 _08060084: .4byte 0x08298640
 _08060088: .4byte 0x08298820
-_0806008C: .4byte 0x02019784
+_0806008C: .4byte gEkrTsaBuffer
 _08060090: .4byte gBg1Tm
 _08060094:
 	ldr r1, _080600D4 @ =gBg1Tm
@@ -23260,7 +23260,7 @@ _080604FA:
 	subs r1, #1
 	str r1, [r0]
 	ldr r0, [r5, #0x60]
-	bl sub_080064E0
+	bl AnimDelete
 	adds r0, r5, #0
 	bl Proc_Break
 _0806051C:
@@ -23409,7 +23409,7 @@ _08060626:
 	movs r3, #2
 	ldrsh r2, [r4, r3]
 	movs r3, #1
-	bl sub_080689D0
+	bl PlaySFX
 	b _0806066C
 	.align 2, 0
 _0806064C: .4byte 0x000002BF
@@ -23426,7 +23426,7 @@ _08060650:
 	movs r3, #2
 	ldrsh r2, [r2, r3]
 	movs r3, #1
-	bl sub_080689D0
+	bl PlaySFX
 _0806066C:
 	adds r7, r5, #0
 	adds r7, #0x29
@@ -23540,7 +23540,7 @@ sub_08060730: @ 0x08060730
 	bl SpellFx_RegisterBgGfx
 	bl SpellFx_ClearBG1
 	ldr r0, _08060790 @ =0x0829CA18
-	ldr r1, _08060794 @ =0x02019784
+	ldr r1, _08060794 @ =gEkrTsaBuffer
 	bl LZ77UnCompWram
 	bl SpellFx_SetSomeColorEffect
 	ldr r2, _08060798 @ =gDispIo
@@ -23562,7 +23562,7 @@ _08060784: .4byte 0x0201774C
 _08060788: .4byte 0x08C12D10
 _0806078C: .4byte 0x0829C488
 _08060790: .4byte 0x0829CA18
-_08060794: .4byte 0x02019784
+_08060794: .4byte gEkrTsaBuffer
 _08060798: .4byte gDispIo
 
 	thumb_func_start sub_0806079C
@@ -23588,7 +23588,7 @@ sub_080607B8: @ 0x080607B8
 	bl GetAISSubjectId
 	cmp r0, #0
 	bne _080607E8
-	ldr r0, _080607E0 @ =0x02019784
+	ldr r0, _080607E0 @ =gEkrTsaBuffer
 	ldr r1, _080607E4 @ =gBg1Tm
 	movs r2, #1
 	str r2, [sp]
@@ -23599,10 +23599,10 @@ sub_080607B8: @ 0x080607B8
 	bl sub_080672E8
 	b _080607FC
 	.align 2, 0
-_080607E0: .4byte 0x02019784
+_080607E0: .4byte gEkrTsaBuffer
 _080607E4: .4byte gBg1Tm
 _080607E8:
-	ldr r0, _0806082C @ =0x02019784
+	ldr r0, _0806082C @ =gEkrTsaBuffer
 	ldr r1, _08060830 @ =gBg1Tm
 	movs r2, #1
 	str r2, [sp]
@@ -23634,7 +23634,7 @@ _080607FC:
 	movs r0, #0x80
 	b _08060836
 	.align 2, 0
-_0806082C: .4byte 0x02019784
+_0806082C: .4byte gEkrTsaBuffer
 _08060830: .4byte gBg1Tm
 _08060834:
 	ldr r0, _08060848 @ =0x0000FF80
@@ -23976,7 +23976,7 @@ sub_08060A80: @ 0x08060A80
 	cmp r0, #0
 	bne _08060ADC
 	ldr r0, _08060AD4 @ =0x0829DCB0
-	ldr r1, _08060AD8 @ =0x02019784
+	ldr r1, _08060AD8 @ =gEkrTsaBuffer
 	bl LZ77UnCompWram
 	b _08060AE4
 	.align 2, 0
@@ -23985,17 +23985,17 @@ _08060AC8: .4byte 0x08C12E98
 _08060ACC: .4byte 0x0829CBC4
 _08060AD0: .4byte gEkrDistanceType
 _08060AD4: .4byte 0x0829DCB0
-_08060AD8: .4byte 0x02019784
+_08060AD8: .4byte gEkrTsaBuffer
 _08060ADC:
 	ldr r0, _08060B04 @ =0x0829E0E4
-	ldr r1, _08060B08 @ =0x02019784
+	ldr r1, _08060B08 @ =gEkrTsaBuffer
 	bl LZ77UnCompWram
 _08060AE4:
 	ldr r0, [r5, #0x5c]
 	bl GetAISSubjectId
 	cmp r0, #0
 	bne _08060B10
-	ldr r0, _08060B08 @ =0x02019784
+	ldr r0, _08060B08 @ =gEkrTsaBuffer
 	ldr r1, _08060B0C @ =gBg1Tm
 	movs r2, #1
 	str r2, [sp]
@@ -24007,10 +24007,10 @@ _08060AE4:
 	b _08060B24
 	.align 2, 0
 _08060B04: .4byte 0x0829E0E4
-_08060B08: .4byte 0x02019784
+_08060B08: .4byte gEkrTsaBuffer
 _08060B0C: .4byte gBg1Tm
 _08060B10:
-	ldr r0, _08060B58 @ =0x02019784
+	ldr r0, _08060B58 @ =gEkrTsaBuffer
 	ldr r1, _08060B5C @ =gBg1Tm
 	movs r2, #1
 	str r2, [sp]
@@ -24043,7 +24043,7 @@ _08060B24:
 	pop {r0}
 	bx r0
 	.align 2, 0
-_08060B58: .4byte 0x02019784
+_08060B58: .4byte gEkrTsaBuffer
 _08060B5C: .4byte gBg1Tm
 _08060B60: .4byte gDispIo
 
@@ -24178,7 +24178,7 @@ sub_08060C2C: @ 0x08060C2C
 	cmp r0, #0
 	bne _08060C88
 	ldr r0, _08060C80 @ =0x08295A34
-	ldr r1, _08060C84 @ =0x02019784
+	ldr r1, _08060C84 @ =gEkrTsaBuffer
 	bl LZ77UnCompWram
 	b _08060C90
 	.align 2, 0
@@ -24187,17 +24187,17 @@ _08060C74: .4byte 0x08C12ED8
 _08060C78: .4byte 0x0829474C
 _08060C7C: .4byte gEkrDistanceType
 _08060C80: .4byte 0x08295A34
-_08060C84: .4byte 0x02019784
+_08060C84: .4byte gEkrTsaBuffer
 _08060C88:
 	ldr r0, _08060CB0 @ =0x08295E90
-	ldr r1, _08060CB4 @ =0x02019784
+	ldr r1, _08060CB4 @ =gEkrTsaBuffer
 	bl LZ77UnCompWram
 _08060C90:
 	ldr r0, [r5, #0x5c]
 	bl GetAISSubjectId
 	cmp r0, #0
 	bne _08060CBC
-	ldr r0, _08060CB4 @ =0x02019784
+	ldr r0, _08060CB4 @ =gEkrTsaBuffer
 	ldr r1, _08060CB8 @ =gBg1Tm
 	movs r2, #1
 	str r2, [sp]
@@ -24209,10 +24209,10 @@ _08060C90:
 	b _08060CD0
 	.align 2, 0
 _08060CB0: .4byte 0x08295E90
-_08060CB4: .4byte 0x02019784
+_08060CB4: .4byte gEkrTsaBuffer
 _08060CB8: .4byte gBg1Tm
 _08060CBC:
-	ldr r0, _08060D04 @ =0x02019784
+	ldr r0, _08060D04 @ =gEkrTsaBuffer
 	ldr r1, _08060D08 @ =gBg1Tm
 	movs r2, #1
 	str r2, [sp]
@@ -24245,7 +24245,7 @@ _08060CD0:
 	pop {r0}
 	bx r0
 	.align 2, 0
-_08060D04: .4byte 0x02019784
+_08060D04: .4byte gEkrTsaBuffer
 _08060D08: .4byte gBg1Tm
 _08060D0C: .4byte gDispIo
 
@@ -24652,7 +24652,7 @@ _0806104A:
 	movs r2, #0x78
 _08061050:
 	movs r3, #1
-	bl sub_080689D0
+	bl PlaySFX
 	b _08061086
 	.align 2, 0
 _08061058: .4byte 0x000002C9
@@ -24853,7 +24853,7 @@ sub_080611CC: @ 0x080611CC
 	bl SpellFx_RegisterBgPal
 	bl SpellFx_ClearBG1
 	ldr r0, _08061264 @ =0x082A2C9C
-	ldr r4, _08061268 @ =0x02019784
+	ldr r4, _08061268 @ =gEkrTsaBuffer
 	adds r1, r4, #0
 	bl LZ77UnCompWram
 	ldr r1, _0806126C @ =gBg1Tm
@@ -24893,7 +24893,7 @@ _08061258: .4byte 0x08C12F90
 _0806125C: .4byte 0x082A222C
 _08061260: .4byte 0x082A2C1C
 _08061264: .4byte 0x082A2C9C
-_08061268: .4byte 0x02019784
+_08061268: .4byte gEkrTsaBuffer
 _0806126C: .4byte gBg1Tm
 _08061270: .4byte gDispIo
 
@@ -24974,7 +24974,7 @@ sub_080612D4: @ 0x080612D4
 	bl SpellFx_RegisterBgPal
 	bl SpellFx_ClearBG1
 	ldr r0, _0806136C @ =0x082A1DD0
-	ldr r4, _08061370 @ =0x02019784
+	ldr r4, _08061370 @ =gEkrTsaBuffer
 	adds r1, r4, #0
 	bl LZ77UnCompWram
 	ldr r1, _08061374 @ =gBg1Tm
@@ -25014,7 +25014,7 @@ _08061360: .4byte 0x08C12FB0
 _08061364: .4byte 0x082A0E30
 _08061368: .4byte 0x082A1C90
 _0806136C: .4byte 0x082A1DD0
-_08061370: .4byte 0x02019784
+_08061370: .4byte gEkrTsaBuffer
 _08061374: .4byte gBg1Tm
 _08061378: .4byte gDispIo
 
@@ -25185,7 +25185,7 @@ sub_080614B0: @ 0x080614B0
 	subs r1, #1
 	str r1, [r0]
 	ldr r0, [r4, #0x60]
-	bl sub_080064E0
+	bl AnimDelete
 	adds r0, r4, #0
 	bl Proc_Break
 _080614D8:
@@ -25253,7 +25253,7 @@ sub_08061558: @ 0x08061558
 	subs r1, #1
 	str r1, [r2]
 	ldr r0, [r0, #0x60]
-	bl sub_080064E0
+	bl AnimDelete
 	pop {r0}
 	bx r0
 	.align 2, 0
@@ -25411,7 +25411,7 @@ _0806168C:
 	ldrsh r2, [r5, r3]
 _0806169E:
 	movs r3, #1
-	bl sub_080689D0
+	bl PlaySFX
 	b _0806174E
 	.align 2, 0
 _080616A8: .4byte 0x000002C3
@@ -25764,7 +25764,7 @@ sub_0806196C: @ 0x0806196C
 	cmp r0, #0
 	bne _080619C8
 	ldr r0, _080619C0 @ =0x08295A34
-	ldr r1, _080619C4 @ =0x02019784
+	ldr r1, _080619C4 @ =gEkrTsaBuffer
 	bl LZ77UnCompWram
 	b _080619D0
 	.align 2, 0
@@ -25773,17 +25773,17 @@ _080619B4: .4byte 0x08C130F0
 _080619B8: .4byte 0x0829474C
 _080619BC: .4byte gEkrDistanceType
 _080619C0: .4byte 0x08295A34
-_080619C4: .4byte 0x02019784
+_080619C4: .4byte gEkrTsaBuffer
 _080619C8:
 	ldr r0, _080619F0 @ =0x08295E90
-	ldr r1, _080619F4 @ =0x02019784
+	ldr r1, _080619F4 @ =gEkrTsaBuffer
 	bl LZ77UnCompWram
 _080619D0:
 	ldr r0, [r5, #0x5c]
 	bl GetAISSubjectId
 	cmp r0, #0
 	bne _080619FC
-	ldr r0, _080619F4 @ =0x02019784
+	ldr r0, _080619F4 @ =gEkrTsaBuffer
 	ldr r1, _080619F8 @ =gBg1Tm
 	movs r2, #1
 	str r2, [sp]
@@ -25795,10 +25795,10 @@ _080619D0:
 	b _08061A10
 	.align 2, 0
 _080619F0: .4byte 0x08295E90
-_080619F4: .4byte 0x02019784
+_080619F4: .4byte gEkrTsaBuffer
 _080619F8: .4byte gBg1Tm
 _080619FC:
-	ldr r0, _08061A44 @ =0x02019784
+	ldr r0, _08061A44 @ =gEkrTsaBuffer
 	ldr r1, _08061A48 @ =gBg1Tm
 	movs r2, #1
 	str r2, [sp]
@@ -25831,7 +25831,7 @@ _08061A10:
 	pop {r0}
 	bx r0
 	.align 2, 0
-_08061A44: .4byte 0x02019784
+_08061A44: .4byte gEkrTsaBuffer
 _08061A48: .4byte gBg1Tm
 _08061A4C: .4byte gDispIo
 
@@ -26206,7 +26206,7 @@ _08061D4E:
 	lsls r1, r1, #1
 	movs r2, #0x78
 	movs r3, #0
-	bl sub_080689D0
+	bl PlaySFX
 	b _08061D76
 	.align 2, 0
 _08061D5C: .4byte 0x000002C6
@@ -26340,7 +26340,7 @@ sub_08061E40: @ 0x08061E40
 	bl SpellFx_RegisterBgPal
 	bl SpellFx_ClearBG1
 	ldr r0, _08061ED8 @ =0x082B6EF0
-	ldr r4, _08061EDC @ =0x02019784
+	ldr r4, _08061EDC @ =gEkrTsaBuffer
 	adds r1, r4, #0
 	bl LZ77UnCompWram
 	ldr r1, _08061EE0 @ =gBg1Tm
@@ -26380,7 +26380,7 @@ _08061ECC: .4byte 0x08C13208
 _08061ED0: .4byte 0x082B6970
 _08061ED4: .4byte 0x082B6ED0
 _08061ED8: .4byte 0x082B6EF0
-_08061EDC: .4byte 0x02019784
+_08061EDC: .4byte gEkrTsaBuffer
 _08061EE0: .4byte gBg1Tm
 _08061EE4: .4byte gDispIo
 
@@ -26555,7 +26555,7 @@ sub_08062028: @ 0x08062028
 	subs r1, #1
 	str r1, [r0]
 	ldr r0, [r4, #0x60]
-	bl sub_080064E0
+	bl AnimDelete
 	adds r0, r4, #0
 	bl Proc_Break
 _08062050:
@@ -27064,7 +27064,7 @@ _08062474:
 	lsls r1, r1, #1
 	movs r2, #0x78
 	movs r3, #0
-	bl sub_080689D0
+	bl PlaySFX
 	b _08062500
 	.align 2, 0
 _08062484: .4byte 0x000002FE
@@ -27284,7 +27284,7 @@ _0806263C: .4byte 0x0000F3FF
 sub_08062640: @ 0x08062640
 	push {lr}
 	ldr r0, [r0, #0x60]
-	bl sub_080064E0
+	bl AnimDelete
 	ldr r1, _08062654 @ =0x0201774C
 	ldr r0, [r1]
 	subs r0, #1
@@ -27344,7 +27344,7 @@ _080626B8: .4byte 0x0000F3FF
 sub_080626BC: @ 0x080626BC
 	push {lr}
 	ldr r0, [r0, #0x60]
-	bl sub_080064E0
+	bl AnimDelete
 	ldr r1, _080626D0 @ =0x0201774C
 	ldr r0, [r1]
 	subs r0, #1
@@ -28000,7 +28000,7 @@ sub_08062B9C: @ 0x08062B9C
 	ldrsh r2, [r4, r0]
 	movs r0, #0xef
 	movs r3, #1
-	bl sub_080689D0
+	bl PlaySFX
 _08062C30:
 	movs r1, #0x2c
 	ldrsh r0, [r5, r1]
@@ -28706,7 +28706,7 @@ sub_08063188: @ 0x08063188
 	movs r0, #0
 	strh r0, [r4, #0x2c]
 	ldr r0, [r4, #0x60]
-	bl sub_080064E0
+	bl AnimDelete
 	adds r0, r4, #0
 	bl Proc_Break
 _080631AA:
@@ -28870,7 +28870,7 @@ sub_080632DC: @ 0x080632DC
 	subs r0, #1
 	str r0, [r1]
 	ldr r0, [r4, #0x60]
-	bl sub_080064E0
+	bl AnimDelete
 	adds r0, r4, #0
 	bl Proc_Break
 	pop {r4}
@@ -28994,7 +28994,7 @@ sub_080633DC: @ 0x080633DC
 	subs r0, #1
 	str r0, [r1]
 	ldr r0, [r4, #0x60]
-	bl sub_080064E0
+	bl AnimDelete
 	adds r0, r4, #0
 	bl Proc_Break
 	pop {r4}
@@ -29433,7 +29433,7 @@ sub_080637D4: @ 0x080637D4
 	subs r1, #1
 	str r1, [r0]
 	ldr r0, [r4, #0x60]
-	bl sub_080064E0
+	bl AnimDelete
 	adds r0, r4, #0
 	bl Proc_Break
 _080637FA:
@@ -29551,7 +29551,7 @@ sub_080638C0: @ 0x080638C0
 	subs r1, #1
 	str r1, [r0]
 	ldr r0, [r4, #0x60]
-	bl sub_080064E0
+	bl AnimDelete
 	adds r0, r4, #0
 	bl Proc_Break
 _080638E6:
@@ -29737,7 +29737,7 @@ sub_080639F8: @ 0x080639F8
 	ldrsh r2, [r0, r3]
 	movs r0, #0xee
 	movs r3, #1
-	bl sub_080689D0
+	bl PlaySFX
 	add sp, #4
 	pop {r4, r5}
 	pop {r0}
@@ -29767,7 +29767,7 @@ sub_08063A6C: @ 0x08063A6C
 	ldrsh r2, [r0, r3]
 	movs r0, #0xee
 	movs r3, #1
-	bl sub_080689D0
+	bl PlaySFX
 _08063A90:
 	movs r0, #0x2c
 	ldrsh r1, [r4, r0]
@@ -29776,7 +29776,7 @@ _08063A90:
 	cmp r1, r0
 	ble _08063AB0
 	ldr r0, [r4, #0x60]
-	bl sub_080064E0
+	bl AnimDelete
 	ldr r1, _08063AB8 @ =0x0201774C
 	ldr r0, [r1]
 	subs r0, #1
@@ -29829,7 +29829,7 @@ sub_08063ABC: @ 0x08063ABC
 	ldrsh r2, [r0, r3]
 	movs r0, #0xe1
 	movs r3, #1
-	bl sub_080689D0
+	bl PlaySFX
 	add sp, #4
 	pop {r4, r5}
 	pop {r0}
@@ -29854,7 +29854,7 @@ sub_08063B30: @ 0x08063B30
 	cmp r0, r1
 	ble _08063B58
 	ldr r0, [r4, #0x60]
-	bl sub_080064E0
+	bl AnimDelete
 	ldr r1, _08063B60 @ =0x0201774C
 	ldr r0, [r1]
 	subs r0, #1
@@ -29942,7 +29942,7 @@ _08063BE8:
 	movs r0, #0xf0
 	movs r2, #0x78
 	movs r3, #0
-	bl sub_080689D0
+	bl PlaySFX
 	adds r0, r5, #0
 	bl sub_08063C20
 _08063C0A:
@@ -30613,7 +30613,7 @@ sub_0806416C: @ 0x0806416C
 	bl GetAISSubjectId
 	bl sub_0805506C
 	ldr r0, [r4, #0x60]
-	bl sub_080064E0
+	bl AnimDelete
 	ldr r0, [r4, #0x5c]
 	bl GetAISSubjectId
 	ldr r1, _080641AC @ =0x02000010
@@ -30922,7 +30922,7 @@ sub_080643DC: @ 0x080643DC
 	bl GetAISSubjectId
 	bl sub_0805506C
 	ldr r0, [r6, #0x60]
-	bl sub_080064E0
+	bl AnimDelete
 	ldr r0, [r6, #0x5c]
 	bl GetAISSubjectId
 	ldr r1, _08064450 @ =0x02000010
@@ -31010,7 +31010,7 @@ _080644AC:
 	movs r3, #2
 	ldrsh r2, [r2, r3]
 	movs r3, #1
-	bl sub_080689D0
+	bl PlaySFX
 	b _08064520
 	.align 2, 0
 _080644C0: .4byte 0x000002E3
@@ -31934,7 +31934,7 @@ sub_08064BC0: @ 0x08064BC0
 	cmp r0, #0x32
 	ble _08064BDE
 	ldr r0, [r4, #0x60]
-	bl sub_080064E0
+	bl AnimDelete
 	adds r0, r4, #0
 	bl Proc_Break
 _08064BDE:
@@ -32209,7 +32209,7 @@ sub_08064DFC: @ 0x08064DFC
 	cmp r0, #0x32
 	ble _08064E1A
 	ldr r0, [r4, #0x60]
-	bl sub_080064E0
+	bl AnimDelete
 	adds r0, r4, #0
 	bl Proc_Break
 _08064E1A:
@@ -32590,7 +32590,7 @@ sub_080650F8: @ 0x080650F8
 	cmp r0, r1
 	bne _08065118
 	ldr r0, [r4, #0x60]
-	bl sub_080064E0
+	bl AnimDelete
 	adds r0, r4, #0
 	bl Proc_Break
 _08065118:
@@ -32841,7 +32841,7 @@ sub_080652DC: @ 0x080652DC
 	beq _08065318
 	asrs r2, r4, #3
 	asrs r4, r5, #3
-	ldr r0, _08065320 @ =0x02019784
+	ldr r0, _08065320 @ =gEkrTsaBuffer
 	movs r1, #1
 	rsbs r1, r1, #0
 	lsls r2, r2, #1
@@ -32866,7 +32866,7 @@ _08065318:
 	pop {r0}
 	bx r0
 	.align 2, 0
-_08065320: .4byte 0x02019784
+_08065320: .4byte gEkrTsaBuffer
 _08065324: .4byte 0x0201D41C
 
 	thumb_func_start sub_08065328
@@ -33234,7 +33234,7 @@ sub_080655A0: @ 0x080655A0
 	ldr r1, _08065644 @ =0x06008000
 	bl LZ77UnCompVram
 	ldr r0, _08065648 @ =0x082E6D40
-	ldr r1, _0806564C @ =0x02019784
+	ldr r1, _0806564C @ =gEkrTsaBuffer
 	bl LZ77UnCompWram
 	ldr r0, _08065650 @ =0x082E6C60
 	ldr r1, _08065654 @ =0x02022920
@@ -33277,7 +33277,7 @@ _0806563C: .4byte gDispIo
 _08065640: .4byte 0x082E445C
 _08065644: .4byte 0x06008000
 _08065648: .4byte 0x082E6D40
-_0806564C: .4byte 0x02019784
+_0806564C: .4byte gEkrTsaBuffer
 _08065650: .4byte 0x082E6C60
 _08065654: .4byte 0x02022920
 _08065658: .4byte 0x001F001F
@@ -33336,7 +33336,7 @@ _080656BC:
 	movs r0, #0xe6
 	movs r2, #0x78
 	movs r3, #0
-	bl sub_080689D0
+	bl PlaySFX
 _080656D0:
 	add sp, #4
 	pop {r4, r5}
@@ -33535,7 +33535,7 @@ _08065814:
 	lsls r1, r1, #1
 	bl sub_08066CAC
 	ldr r0, _080658E0 @ =0x082E6E8C
-	ldr r4, _080658E4 @ =0x02019784
+	ldr r4, _080658E4 @ =gEkrTsaBuffer
 	adds r1, r4, #0
 	bl LZ77UnCompWram
 	ldr r5, _080658E8 @ =0x001F001F
@@ -33578,7 +33578,7 @@ _08065814:
 	lsls r1, r1, #1
 	movs r2, #0x78
 	movs r3, #0
-	bl sub_080689D0
+	bl PlaySFX
 	adds r0, r6, #0
 	bl Proc_Break
 _080658D6:
@@ -33588,7 +33588,7 @@ _080658D6:
 	bx r0
 	.align 2, 0
 _080658E0: .4byte 0x082E6E8C
-_080658E4: .4byte 0x02019784
+_080658E4: .4byte gEkrTsaBuffer
 _080658E8: .4byte 0x001F001F
 _080658EC: .4byte 0x05000020
 _080658F0: .4byte gBg3Tm
@@ -33810,7 +33810,7 @@ sub_08065AB0: @ 0x08065AB0
 	bl GetAISSubjectId
 	bl sub_0805506C
 	ldr r0, _08065AF8 @ =0x082E6E8C
-	ldr r1, _08065AFC @ =0x02019784
+	ldr r1, _08065AFC @ =gEkrTsaBuffer
 	bl LZ77UnCompWram
 	ldr r0, _08065B00 @ =0x001F001F
 	bl sub_08050F94
@@ -33828,7 +33828,7 @@ sub_08065AB0: @ 0x08065AB0
 	.align 2, 0
 _08065AF4: .4byte gEkrDistanceType
 _08065AF8: .4byte 0x082E6E8C
-_08065AFC: .4byte 0x02019784
+_08065AFC: .4byte gEkrTsaBuffer
 _08065B00: .4byte 0x001F001F
 _08065B04: .4byte gBg3Tm
 _08065B08: .4byte 0x0201FB00
@@ -33849,7 +33849,7 @@ _08065B0C:
 	lsls r1, r1, #1
 	movs r2, #0x78
 	movs r3, #0
-	bl sub_080689D0
+	bl PlaySFX
 _08065B32:
 	ldr r0, _08065B88 @ =0x00000195
 	ldrh r1, [r4, #0x2c]
@@ -33863,7 +33863,7 @@ _08065B32:
 	bl GetAISSubjectId
 	bl sub_0805506C
 	ldr r0, _08065B8C @ =0x082E6E8C
-	ldr r1, _08065B90 @ =0x02019784
+	ldr r1, _08065B90 @ =gEkrTsaBuffer
 	bl LZ77UnCompWram
 	ldr r0, _08065B94 @ =0x001F001F
 	bl sub_08050F94
@@ -33886,7 +33886,7 @@ _08065B80: .4byte 0x010D0000
 _08065B84: .4byte 0x000002F1
 _08065B88: .4byte 0x00000195
 _08065B8C: .4byte 0x082E6E8C
-_08065B90: .4byte 0x02019784
+_08065B90: .4byte gEkrTsaBuffer
 _08065B94: .4byte 0x001F001F
 _08065B98: .4byte gBg3Tm
 _08065B9C: .4byte 0x0201FB00
@@ -34322,7 +34322,7 @@ sub_08065F0C: @ 0x08065F0C
 	cmp r0, #1
 	bne _08065F30
 	ldr r0, [r4, #0x60]
-	bl sub_080064E0
+	bl AnimDelete
 	adds r0, r4, #0
 	bl Proc_Break
 _08065F30:
@@ -34373,7 +34373,7 @@ _08065F88: .4byte 0x082E76A4
 sub_08065F8C: @ 0x08065F8C
 	push {lr}
 	ldr r0, [r0, #0x60]
-	bl sub_080064E0
+	bl AnimDelete
 	pop {r0}
 	bx r0
 
@@ -34502,7 +34502,7 @@ _0806608C: .4byte 0x082E9240
 sub_08066090: @ 0x08066090
 	push {lr}
 	ldr r0, [r0, #0x60]
-	bl sub_080064E0
+	bl AnimDelete
 	pop {r0}
 	bx r0
 
@@ -34844,7 +34844,7 @@ sub_080662F4: @ 0x080662F4
 	ldr r1, _08066360 @ =0x06005000
 	bl LZ77UnCompVram
 	ldr r0, _08066364 @ =0x082EB530
-	ldr r6, _08066368 @ =0x02019784
+	ldr r6, _08066368 @ =gEkrTsaBuffer
 	adds r1, r6, #0
 	bl LZ77UnCompWram
 	ldr r0, _0806636C @ =0x082EB510
@@ -34877,7 +34877,7 @@ _08066358: .4byte 0x08C487CC
 _0806635C: .4byte 0x082EA9A4
 _08066360: .4byte 0x06005000
 _08066364: .4byte 0x082EB530
-_08066368: .4byte 0x02019784
+_08066368: .4byte gEkrTsaBuffer
 _0806636C: .4byte 0x082EB510
 _08066370: .4byte 0x020228E0
 _08066374: .4byte gBg2Tm
@@ -35391,7 +35391,7 @@ _08066744:
 	lsls r0, r2, #2
 	adds r0, r0, r1
 	ldr r0, [r0]
-	ldr r1, _0806677C @ =0x02019784
+	ldr r1, _0806677C @ =gEkrTsaBuffer
 	bl LZ77UnCompWram
 	bl sub_08065388
 	ldr r0, _08066780 @ =0x0201FB00
@@ -35401,7 +35401,7 @@ _08066744:
 	b _080667F8
 	.align 2, 0
 _08066778: .4byte 0x082E4418
-_0806677C: .4byte 0x02019784
+_0806677C: .4byte gEkrTsaBuffer
 _08066780: .4byte 0x0201FB00
 _08066784:
 	movs r0, #6
@@ -35457,7 +35457,7 @@ _080667D6:
 	lsls r1, r1, #1
 	movs r2, #0x78
 	movs r3, #0
-	bl sub_080689D0
+	bl PlaySFX
 _080667EC:
 	movs r0, #0
 	strh r0, [r4, #0x2c]
@@ -35573,7 +35573,7 @@ sub_080668B8: @ 0x080668B8
 	asrs r5, r5, #3
 	asrs r4, r4, #3
 	ldr r0, _08066944 @ =0x082E7418
-	ldr r6, _08066948 @ =0x02019784
+	ldr r6, _08066948 @ =gEkrTsaBuffer
 	adds r1, r6, #0
 	bl LZ77UnCompWram
 	movs r1, #0xf0
@@ -35630,7 +35630,7 @@ sub_080668B8: @ 0x080668B8
 	bx r0
 	.align 2, 0
 _08066944: .4byte 0x082E7418
-_08066948: .4byte 0x02019784
+_08066948: .4byte gEkrTsaBuffer
 _0806694C: .4byte 0x0201D41C
 
 	thumb_func_start sub_08066950
@@ -35728,7 +35728,7 @@ sub_080669E8: @ 0x080669E8
 	lsls r1, r1, #1
 	movs r2, #0x78
 	movs r3, #0
-	bl sub_080689D0
+	bl PlaySFX
 _08066A14:
 	ldrh r0, [r5, #0x2c]
 	cmp r0, #0x23
@@ -35742,7 +35742,7 @@ _08066A14:
 	lsls r1, r1, #1
 	movs r2, #0x78
 	movs r3, #0
-	bl sub_080689D0
+	bl PlaySFX
 _08066A32:
 	ldrh r1, [r5, #0x2c]
 	cmp r1, #0x32
@@ -35756,7 +35756,7 @@ _08066A32:
 	lsls r1, r1, #1
 	movs r2, #0x78
 	movs r3, #0
-	bl sub_080689D0
+	bl PlaySFX
 _08066A50:
 	ldrh r2, [r5, #0x2c]
 	cmp r2, #0x36
@@ -35783,7 +35783,7 @@ _08066A50:
 	adds r0, #0xd8
 	strh r0, [r1, #0x3a]
 	ldr r0, _08066AD0 @ =0x082E6E8C
-	ldr r1, _08066AD4 @ =0x02019784
+	ldr r1, _08066AD4 @ =gEkrTsaBuffer
 	bl LZ77UnCompWram
 	ldr r0, _08066AD8 @ =0x001F001F
 	bl sub_08050F94
@@ -35815,7 +35815,7 @@ _08066AC4:
 	.align 2, 0
 _08066ACC: .4byte 0x00000147
 _08066AD0: .4byte 0x082E6E8C
-_08066AD4: .4byte 0x02019784
+_08066AD4: .4byte gEkrTsaBuffer
 _08066AD8: .4byte 0x001F001F
 _08066ADC: .4byte gBg3Tm
 
@@ -35937,7 +35937,7 @@ _08066BB2:
 	lsls r1, r1, #1
 	movs r2, #0x78
 	movs r3, #0
-	bl sub_080689D0
+	bl PlaySFX
 _08066BD8:
 	ldrh r3, [r4, #0x30]
 	cmp r3, #0x3c
@@ -36060,7 +36060,7 @@ sub_08066CAC: @ 0x08066CAC
 	bl SpellFx_RegisterBgPal
 	bl SpellFx_ClearBG1
 	ldr r0, _08066D24 @ =0x082EA7E8
-	ldr r4, _08066D28 @ =0x02019784
+	ldr r4, _08066D28 @ =gEkrTsaBuffer
 	adds r1, r4, #0
 	bl LZ77UnCompWram
 	ldr r1, _08066D2C @ =gBg1Tm
@@ -36088,7 +36088,7 @@ _08066D18: .4byte 0x08C488C4
 _08066D1C: .4byte 0x082E9DD8
 _08066D20: .4byte 0x082EA7C8
 _08066D24: .4byte 0x082EA7E8
-_08066D28: .4byte 0x02019784
+_08066D28: .4byte gEkrTsaBuffer
 _08066D2C: .4byte gBg1Tm
 
 	thumb_func_start sub_08066D30
@@ -38096,7 +38096,7 @@ _08067BB0:
 	strh r0, [r1, #4]
 	mov r0, sp
 	strh r3, [r0, #0xc]
-	bl sub_0800650C
+	bl AnimDisplay
 _08067BEA:
 	add sp, #0x48
 	pop {r4, r5}
@@ -39837,8 +39837,8 @@ _080689C0:
 	bx r1
 	.align 2, 0
 
-	thumb_func_start sub_080689D0
-sub_080689D0: @ 0x080689D0
+	thumb_func_start PlaySFX
+PlaySFX: @ 0x080689D0
 	push {r4, r5, r6, lr}
 	adds r4, r0, #0
 	adds r5, r2, #0
@@ -39974,7 +39974,7 @@ _08068AC4:
 	movs r3, #2
 	ldrsh r2, [r2, r3]
 	movs r3, #1
-	bl sub_080689D0
+	bl PlaySFX
 	movs r0, #1
 	movs r1, #0
 	movs r2, #8
@@ -40226,7 +40226,7 @@ _08068CA8:
 	adds r1, r4, #0
 _08068CFA:
 	movs r3, #1
-	bl sub_080689D0
+	bl PlaySFX
 	b _08068D16
 	.align 2, 0
 _08068D04: .4byte 0x0000013D
@@ -40429,7 +40429,7 @@ _08068E82:
 	movs r3, #2
 	ldrsh r2, [r2, r3]
 	movs r3, #1
-	bl sub_080689D0
+	bl PlaySFX
 	b _08068EA2
 _08068E98:
 	cmp r0, #0x50
@@ -40499,7 +40499,7 @@ _08068F02:
 	movs r3, #2
 	ldrsh r2, [r2, r3]
 	movs r3, #1
-	bl sub_080689D0
+	bl PlaySFX
 	b _08068F22
 _08068F18:
 	cmp r0, #0x6e
@@ -40550,7 +40550,7 @@ sub_08068F74: @ 0x08068F74
 	push {r4, lr}
 	adds r4, r0, #0
 	ldr r0, [r4, #0x60]
-	bl sub_080064E0
+	bl AnimDelete
 	adds r0, r4, #0
 	bl Proc_Break
 	pop {r4}
@@ -40775,7 +40775,7 @@ sub_08069118: @ 0x08069118
 	orrs r0, r1
 	strh r0, [r2, #8]
 	mov r0, sp
-	bl sub_0800650C
+	bl AnimDisplay
 	ldrh r0, [r4, #0x2c]
 	adds r0, #1
 	strh r0, [r4, #0x2c]
@@ -41286,9 +41286,9 @@ _0806954A:
 	adds r4, r1, r0
 	adds r0, r4, #0
 	movs r1, #3
-	bl sub_08005344
+	bl InitText
 	adds r0, r5, #0
-	bl sub_080054CC
+	bl GetStringTextLen
 	adds r1, r0, #0
 	movs r0, #0x10
 	subs r0, r0, r1
@@ -41298,13 +41298,13 @@ _0806954A:
 	movs r1, #0
 _08069570:
 	adds r0, r4, #0
-	bl sub_08005444
+	bl Text_SetCursor
 	adds r0, r4, #0
 	movs r1, #3
-	bl sub_08005450
+	bl Text_SetColor
 	adds r0, r4, #0
 	adds r1, r5, #0
-	bl sub_080055DC
+	bl Text_DrawString
 	ldr r1, _08069680 @ =0x082EB8B4
 	lsls r0, r7, #1
 	adds r0, r0, r1
@@ -41313,7 +41313,7 @@ _08069570:
 	ldr r0, _08069684 @ =gBg2Tm
 	adds r1, r1, r0
 	adds r0, r4, #0
-	bl sub_08005460
+	bl PutText
 	movs r0, #5
 	add r8, r0
 	adds r7, #1
@@ -41327,19 +41327,19 @@ _080695A6:
 	add r5, r8
 	adds r0, r5, #0
 	movs r1, #2
-	bl sub_08005344
+	bl InitText
 	adds r0, r5, #0
 	movs r1, #8
-	bl sub_08005444
+	bl Text_SetCursor
 	adds r0, r5, #0
 	movs r1, #2
-	bl sub_08005450
+	bl Text_SetColor
 	ldr r0, _0806968C @ =0x0202010C
 	lsls r4, r7, #1
 	adds r0, r4, r0
 	ldrh r1, [r0]
 	adds r0, r5, #0
-	bl sub_08005650
+	bl Text_DrawNumber
 	ldr r0, _08069680 @ =0x082EB8B4
 	adds r4, r4, r0
 	ldrh r4, [r4]
@@ -41347,7 +41347,7 @@ _080695A6:
 	ldr r6, _08069690 @ =0x02023C66
 	adds r1, r1, r6
 	adds r0, r5, #0
-	bl sub_08005460
+	bl PutText
 	adds r7, #1
 	cmp r7, #7
 	ble _080695A6
@@ -41355,7 +41355,7 @@ _080695A6:
 	adds r4, #0x40
 	adds r0, r4, #0
 	movs r1, #8
-	bl sub_08005344
+	bl InitText
 	ldr r0, _08069694 @ =0x02020100
 	ldr r0, [r0]
 	ldr r0, [r0, #4]
@@ -41363,46 +41363,46 @@ _080695A6:
 	bl DecodeMsg
 	adds r1, r0, #0
 	adds r0, r4, #0
-	bl sub_080055DC
+	bl Text_DrawString
 	movs r0, #0xdf
 	lsls r0, r0, #1
 	adds r1, r6, r0
 	adds r0, r4, #0
-	bl sub_08005460
+	bl PutText
 	adds r4, #8
 	adds r0, r4, #0
 	movs r1, #3
-	bl sub_08005344
+	bl InitText
 	adds r0, r4, #0
 	movs r1, #3
-	bl sub_08005450
+	bl Text_SetColor
 	ldr r1, _08069698 @ =0x082EB8C4
 	adds r0, r4, #0
-	bl sub_080055DC
+	bl Text_DrawString
 	movs r0, #0xe7
 	lsls r0, r0, #1
 	adds r1, r6, r0
 	adds r0, r4, #0
-	bl sub_08005460
+	bl PutText
 	adds r4, #8
 	adds r0, r4, #0
 	movs r1, #2
-	bl sub_08005344
+	bl InitText
 	adds r0, r4, #0
 	movs r1, #8
-	bl sub_08005444
+	bl Text_SetCursor
 	adds r0, r4, #0
 	movs r1, #2
-	bl sub_08005450
+	bl Text_SetColor
 	ldr r0, _0806969C @ =0x02020108
 	ldrh r1, [r0]
 	adds r0, r4, #0
-	bl sub_08005650
+	bl Text_DrawNumber
 	movs r0, #0xea
 	lsls r0, r0, #1
 	adds r1, r6, r0
 	adds r0, r4, #0
-	bl sub_08005460
+	bl PutText
 	pop {r3}
 	mov r8, r3
 	pop {r4, r5, r6, r7}
@@ -41428,19 +41428,19 @@ sub_080696A0: @ 0x080696A0
 	ldr r0, _080696E8 @ =0x020176A0
 	adds r5, r5, r0
 	adds r0, r5, #0
-	bl sub_080053B0
+	bl ClearText
 	adds r0, r5, #0
 	movs r1, #8
-	bl sub_08005444
+	bl Text_SetCursor
 	adds r0, r5, #0
 	movs r1, #2
-	bl sub_08005450
+	bl Text_SetColor
 	ldr r0, _080696EC @ =0x0202010C
 	lsls r4, r4, #1
 	adds r0, r4, r0
 	ldrh r1, [r0]
 	adds r0, r5, #0
-	bl sub_08005650
+	bl Text_DrawNumber
 	ldr r0, _080696F0 @ =0x082EB8B4
 	adds r4, r4, r0
 	ldrh r4, [r4]
@@ -41448,7 +41448,7 @@ sub_080696A0: @ 0x080696A0
 	ldr r0, _080696F4 @ =0x02023C66
 	adds r1, r1, r0
 	adds r0, r5, #0
-	bl sub_08005460
+	bl PutText
 	pop {r4, r5}
 	pop {r0}
 	bx r0
@@ -41463,7 +41463,7 @@ sub_080696F8: @ 0x080696F8
 	push {r4, lr}
 	ldr r4, _08069724 @ =0x020176E0
 	adds r0, r4, #0
-	bl sub_080053B0
+	bl ClearText
 	ldr r0, _08069728 @ =0x02020100
 	ldr r0, [r0]
 	ldr r0, [r0, #4]
@@ -41471,10 +41471,10 @@ sub_080696F8: @ 0x080696F8
 	bl DecodeMsg
 	adds r1, r0, #0
 	adds r0, r4, #0
-	bl sub_080055DC
+	bl Text_DrawString
 	ldr r1, _0806972C @ =0x02023E24
 	adds r0, r4, #0
-	bl sub_08005460
+	bl PutText
 	pop {r4}
 	pop {r0}
 	bx r0
@@ -41488,20 +41488,20 @@ sub_08069730: @ 0x08069730
 	push {r4, lr}
 	ldr r4, _08069764 @ =0x020176F0
 	adds r0, r4, #0
-	bl sub_080053B0
+	bl ClearText
 	adds r0, r4, #0
 	movs r1, #8
-	bl sub_08005444
+	bl Text_SetCursor
 	adds r0, r4, #0
 	movs r1, #2
-	bl sub_08005450
+	bl Text_SetColor
 	ldr r0, _08069768 @ =0x02020108
 	ldrh r1, [r0]
 	adds r0, r4, #0
-	bl sub_08005650
+	bl Text_DrawNumber
 	ldr r1, _0806976C @ =0x02023E3A
 	adds r0, r4, #0
-	bl sub_08005460
+	bl PutText
 	pop {r4}
 	pop {r0}
 	bx r0
@@ -41888,7 +41888,7 @@ sub_08069A84: @ 0x08069A84
 	adds r1, r5, #0
 	bl LZ77UnCompWram
 	ldr r0, _08069B2C @ =0x081E0EAC
-	ldr r4, _08069B30 @ =0x02019784
+	ldr r4, _08069B30 @ =gEkrTsaBuffer
 	adds r1, r4, #0
 	bl LZ77UnCompWram
 	ldr r1, _08069B34 @ =0x020235E0
@@ -41941,7 +41941,7 @@ _08069B20: .4byte gpEkrBattleUnitRight
 _08069B24: .4byte 0x081E0C60
 _08069B28: .4byte 0x02017784
 _08069B2C: .4byte 0x081E0EAC
-_08069B30: .4byte 0x02019784
+_08069B30: .4byte gEkrTsaBuffer
 _08069B34: .4byte 0x020235E0
 _08069B38: .4byte 0x06002000
 _08069B3C: .4byte 0x081E0FA8
@@ -43480,7 +43480,7 @@ _0806A79C: .4byte 0x081EB2D0
 sub_0806A7A0: @ 0x0806A7A0
 	push {lr}
 	ldr r0, [r0, #0x64]
-	bl sub_080064E0
+	bl AnimDelete
 	pop {r0}
 	bx r0
 
@@ -44489,7 +44489,7 @@ _0806AF30:
 	movs r3, #2
 	ldrsh r2, [r2, r3]
 	movs r3, #1
-	bl sub_080689D0
+	bl PlaySFX
 _0806AF62:
 	ldrh r0, [r4, #0x2c]
 	cmp r0, #0x33
@@ -44514,7 +44514,7 @@ _0806AF70:
 	movs r3, #2
 	ldrsh r2, [r2, r3]
 	movs r3, #1
-	bl sub_080689D0
+	bl PlaySFX
 _0806AF96:
 	ldrh r0, [r4, #0x2c]
 	cmp r0, #0x43
@@ -44723,7 +44723,7 @@ sub_0806B134: @ 0x0806B134
 	cmp r0, r1
 	ble _0806B154
 	ldr r0, [r4, #0x60]
-	bl sub_080064E0
+	bl AnimDelete
 	adds r0, r4, #0
 	bl Proc_Break
 _0806B154:
@@ -44787,7 +44787,7 @@ sub_0806B194: @ 0x0806B194
 	ldrsh r2, [r0, r3]
 	movs r0, #0xe2
 	movs r3, #1
-	bl sub_080689D0
+	bl PlaySFX
 _0806B1CA:
 	ldrh r0, [r5, #0x2c]
 	cmp r0, #0x30
@@ -44804,7 +44804,7 @@ _0806B1CA:
 	ldrsh r2, [r0, r3]
 	movs r0, #0xe2
 	movs r3, #1
-	bl sub_080689D0
+	bl PlaySFX
 _0806B1EE:
 	ldrh r0, [r5, #0x2c]
 	cmp r0, #0x3c
@@ -44831,7 +44831,7 @@ _0806B204:
 	ldrsh r2, [r0, r3]
 	movs r0, #0xe2
 	movs r3, #1
-	bl sub_080689D0
+	bl PlaySFX
 _0806B228:
 	ldrh r0, [r5, #0x2c]
 	cmp r0, #0x5b
@@ -45065,9 +45065,9 @@ sub_0806B3E8: @ 0x0806B3E8
 	cmp r0, r1
 	ble _0806B438
 	ldr r0, [r4, #0x60]
-	bl sub_080064E0
+	bl AnimDelete
 	ldr r0, [r4, #0x64]
-	bl sub_080064E0
+	bl AnimDelete
 	adds r0, r4, #0
 	bl Proc_Break
 _0806B438:
@@ -45259,7 +45259,7 @@ sub_0806B598: @ 0x0806B598
 	cmp r0, r1
 	ble _0806B5B8
 	ldr r0, [r4, #0x60]
-	bl sub_080064E0
+	bl AnimDelete
 	adds r0, r4, #0
 	bl Proc_Break
 _0806B5B8:
@@ -45501,7 +45501,7 @@ sub_0806B798: @ 0x0806B798
 	lsls r1, r1, #2
 	adds r1, r1, r0
 	ldr r0, [r1]
-	ldr r4, _0806B7D4 @ =0x02019784
+	ldr r4, _0806B7D4 @ =gEkrTsaBuffer
 	adds r1, r4, #0
 	bl LZ77UnCompWram
 	ldr r1, _0806B7D8 @ =gBg3Tm
@@ -45519,7 +45519,7 @@ sub_0806B798: @ 0x0806B798
 	bx r0
 	.align 2, 0
 _0806B7D0: .4byte 0x08C4BD70
-_0806B7D4: .4byte 0x02019784
+_0806B7D4: .4byte gEkrTsaBuffer
 _0806B7D8: .4byte gBg3Tm
 
 	thumb_func_start sub_0806B7DC
@@ -45626,8 +45626,8 @@ sub_0806B88C: @ 0x0806B88C
 	bx r0
 	.align 2, 0
 
-	thumb_func_start sub_0806B8A0
-sub_0806B8A0: @ 0x0806B8A0
+	thumb_func_start MakeBattlePopupTileMapFromTSA
+MakeBattlePopupTileMapFromTSA: @ 0x0806B8A0
 	push {r4, r5, r6, r7, lr}
 	mov r7, sl
 	mov r6, sb
@@ -45638,7 +45638,7 @@ sub_0806B8A0: @ 0x0806B8A0
 	lsls r1, r1, #0x10
 	lsrs r1, r1, #0x10
 	mov sb, r1
-	ldr r6, _0806B980 @ =0x02019784
+	ldr r6, _0806B980 @ =gEkrTsaBuffer
 	ldrh r1, [r6]
 	movs r2, #0x88
 	lsls r2, r2, #5
@@ -45742,10 +45742,10 @@ _0806B934:
 	pop {r0}
 	bx r0
 	.align 2, 0
-_0806B980: .4byte 0x02019784
+_0806B980: .4byte gEkrTsaBuffer
 
-	thumb_func_start sub_0806B984
-sub_0806B984: @ 0x0806B984
+	thumb_func_start DrawBattlePopup
+DrawBattlePopup: @ 0x0806B984
 	push {r4, r5, r6, r7, lr}
 	mov r7, sl
 	mov r6, sb
@@ -45759,7 +45759,7 @@ sub_0806B984: @ 0x0806B984
 	ldr r1, _0806B9E0 @ =0x06002000
 	bl LZ77UnCompVram
 	ldr r0, _0806B9E4 @ =0x081E1378
-	ldr r1, _0806B9E8 @ =0x02019784
+	ldr r1, _0806B9E8 @ =gEkrTsaBuffer
 	bl LZ77UnCompWram
 	ldr r0, _0806B9EC @ =0x02017648
 	ldr r1, _0806B9F0 @ =0x060020C0
@@ -45767,7 +45767,7 @@ sub_0806B984: @ 0x0806B984
 	lsls r2, r2, #1
 	movs r3, #1
 	bl InitTextFont
-	bl sub_08005984
+	bl SetTextDrawNoClear
 	ldr r0, _0806B9F4 @ =0x081E1358
 	ldr r1, _0806B9F8 @ =0x02022880
 	movs r2, #8
@@ -45777,7 +45777,7 @@ sub_0806B984: @ 0x0806B984
 	ldr r0, _0806B9FC @ =0x0000071A
 	bl DecodeMsg
 	adds r4, r0, #0
-	bl sub_080054CC
+	bl GetStringTextLen
 	mov sb, r0
 	mov r5, sb
 	adds r5, #0x10
@@ -45787,7 +45787,7 @@ sub_0806B984: @ 0x0806B984
 _0806B9DC: .4byte 0x081E11FC
 _0806B9E0: .4byte 0x06002000
 _0806B9E4: .4byte 0x081E1378
-_0806B9E8: .4byte 0x02019784
+_0806B9E8: .4byte gEkrTsaBuffer
 _0806B9EC: .4byte 0x02017648
 _0806B9F0: .4byte 0x060020C0
 _0806B9F4: .4byte 0x081E1358
@@ -45802,14 +45802,14 @@ _0806BA04:
 	mov r0, r8
 	bl GetItemName
 	adds r4, r0, #0
-	bl sub_080054CC
+	bl GetStringTextLen
 	adds r5, r0, #0
 	adds r5, #0x10
 	ldr r0, _0806BA2C @ =0x0000071C
 _0806BA1E:
 	bl DecodeMsg
 	adds r4, r0, #0
-	bl sub_080054CC
+	bl GetStringTextLen
 	adds r4, r0, r5
 	b _0806BA44
 	.align 2, 0
@@ -45820,7 +45820,7 @@ _0806BA30:
 	ldr r0, _0806BA9C @ =0x00000725
 	bl DecodeMsg
 	adds r4, r0, #0
-	bl sub_080054CC
+	bl GetStringTextLen
 	adds r4, r0, #0
 	adds r4, #0x10
 _0806BA44:
@@ -45829,18 +45829,18 @@ _0806BA44:
 	ldr r0, _0806BAA0 @ =gBg1Tm
 	lsls r1, r6, #0x10
 	lsrs r1, r1, #0x10
-	bl sub_0806B8A0
+	bl MakeBattlePopupTileMapFromTSA
 	ldr r5, _0806BAA4 @ =0x02017660
 	adds r0, r5, #0
 	adds r1, r6, #0
-	bl sub_08005344
+	bl InitText
 	lsls r0, r6, #3
 	subs r0, r0, r4
 	asrs r0, r0, #1
 	mov sl, r0
 	adds r0, r5, #0
 	mov r1, sl
-	bl sub_08005444
+	bl Text_SetCursor
 	ldr r0, _0806BAA8 @ =0x081E1258
 	ldr r1, _0806BAAC @ =0x060020C0
 	bl LZ77UnCompVram
@@ -45851,13 +45851,13 @@ _0806BA44:
 	adds r4, r0, #0
 	adds r0, r5, #0
 	movs r1, #0
-	bl sub_08005450
+	bl Text_SetColor
 	adds r0, r5, #0
 	adds r1, r4, #0
-	bl sub_080055DC
+	bl Text_DrawString
 	adds r0, r5, #0
 	movs r1, #0x10
-	bl sub_08005448
+	bl Text_Skip
 	ldr r0, _0806BAB4 @ =0x0000071B
 	b _0806BADE
 	.align 2, 0
@@ -45873,42 +45873,42 @@ _0806BAB8:
 	bne _0806BAFC
 	adds r0, r5, #0
 	movs r1, #0x10
-	bl sub_08005448
+	bl Text_Skip
 	mov r0, r8
 	bl GetItemName
 	adds r4, r0, #0
 	adds r0, r5, #0
 	movs r1, #1
-	bl sub_08005450
+	bl Text_SetColor
 	adds r0, r5, #0
 	adds r1, r4, #0
-	bl sub_080055DC
+	bl Text_DrawString
 	ldr r0, _0806BAF8 @ =0x0000071C
 _0806BADE:
 	bl DecodeMsg
 	adds r4, r0, #0
 	adds r0, r5, #0
 	movs r1, #0
-	bl sub_08005450
+	bl Text_SetColor
 	adds r0, r5, #0
 	adds r1, r4, #0
-	bl sub_080055DC
+	bl Text_DrawString
 	b _0806BB1C
 	.align 2, 0
 _0806BAF8: .4byte 0x0000071C
 _0806BAFC:
 	adds r0, r5, #0
 	movs r1, #0x10
-	bl sub_08005448
+	bl Text_Skip
 	ldr r0, _0806BB54 @ =0x00000725
 	bl DecodeMsg
 	adds r4, r0, #0
 	adds r0, r5, #0
 	movs r1, #0
-	bl sub_08005450
+	bl Text_SetColor
 	adds r0, r5, #0
 	adds r1, r4, #0
-	bl sub_080055DC
+	bl Text_DrawString
 _0806BB1C:
 	adds r1, r6, #2
 	lsls r1, r1, #3
@@ -46190,7 +46190,7 @@ sub_0806BD58: @ 0x0806BD58
 	cmp r2, #0
 	beq _0806BD74
 	movs r1, #0
-	bl sub_0806B984
+	bl DrawBattlePopup
 	bl sub_0806B878
 	movs r0, #0
 	strh r0, [r4, #0x2c]
@@ -46223,7 +46223,7 @@ _0806BD92:
 	cmp r0, r1
 	ble _0806BDB2
 	ldr r0, [r4, #0x60]
-	bl sub_080064E0
+	bl AnimDelete
 	bl SpellFx_ClearBG1
 	adds r0, r4, #0
 	bl Proc_Break
@@ -46240,7 +46240,7 @@ sub_0806BDB8: @ 0x0806BDB8
 	cmp r2, #0
 	beq _0806BDD4
 	movs r1, #0
-	bl sub_0806B984
+	bl DrawBattlePopup
 	bl sub_0806B878
 	movs r0, #0
 	strh r0, [r4, #0x2c]
@@ -46273,7 +46273,7 @@ _0806BDF2:
 	cmp r0, r1
 	ble _0806BE12
 	ldr r0, [r4, #0x60]
-	bl sub_080064E0
+	bl AnimDelete
 	bl SpellFx_ClearBG1
 	adds r0, r4, #0
 	bl Proc_Break
@@ -46290,7 +46290,7 @@ sub_0806BE18: @ 0x0806BE18
 	cmp r2, #0
 	beq _0806BE34
 	movs r1, #1
-	bl sub_0806B984
+	bl DrawBattlePopup
 	bl sub_0806B88C
 	movs r0, #0
 	strh r0, [r4, #0x2c]
@@ -46323,7 +46323,7 @@ _0806BE52:
 	cmp r0, r1
 	ble _0806BE72
 	ldr r0, [r4, #0x60]
-	bl sub_080064E0
+	bl AnimDelete
 	bl SpellFx_ClearBG1
 	adds r0, r4, #0
 	bl Proc_Break
@@ -46340,7 +46340,7 @@ sub_0806BE78: @ 0x0806BE78
 	cmp r2, #0
 	beq _0806BE94
 	movs r1, #1
-	bl sub_0806B984
+	bl DrawBattlePopup
 	bl sub_0806B88C
 	movs r0, #0
 	strh r0, [r4, #0x2c]
@@ -46375,7 +46375,7 @@ _0806BEB2:
 	movs r0, #0
 	strh r0, [r4, #0x2c]
 	ldr r0, [r4, #0x60]
-	bl sub_080064E0
+	bl AnimDelete
 	bl SpellFx_ClearBG1
 	adds r0, r4, #0
 	bl Proc_Break
@@ -46425,7 +46425,7 @@ sub_0806BF10: @ 0x0806BF10
 	ldr r2, [r4, #0x44]
 	adds r0, r4, #0
 	movs r1, #2
-	bl sub_0806B984
+	bl DrawBattlePopup
 	bl sub_0806B878
 	movs r0, #0
 	strh r0, [r4, #0x2c]
@@ -46460,7 +46460,7 @@ _0806BF4E:
 	movs r0, #0
 	strh r0, [r4, #0x2c]
 	ldr r0, [r4, #0x60]
-	bl sub_080064E0
+	bl AnimDelete
 	bl SpellFx_ClearBG1
 	adds r0, r4, #0
 	bl Proc_Break
@@ -50325,7 +50325,7 @@ _0806DC38:
 	adds r0, r1, #0
 	b _0806DCAE
 _0806DC44:
-	bl sub_0802E3AC
+	bl IsFirstPlaythrough
 	cmp r0, #0
 	bne _0806DC6C
 	ldr r1, _0806DC68 @ =gpKeySt
@@ -56582,7 +56582,7 @@ _08070BCC:
 	adds r1, r0, #0
 	adds r1, #0x14
 	adds r0, r1, #0
-	bl sub_080053B0
+	bl ClearText
 	ldr r0, _08070C4C @ =0x08D65878
 	ldr r1, [r7]
 	movs r2, #0x64
@@ -56596,7 +56596,7 @@ _08070BCC:
 	ldr r2, [r7, #8]
 	ldr r3, [r7, #0x14]
 	movs r1, #0x10
-	bl sub_08005A00
+	bl Text_InsertDrawNumberOrBlank
 	ldr r0, [r7, #0xc]
 	ldrh r1, [r0]
 	adds r0, r1, #0
@@ -56626,7 +56626,7 @@ _08070BCC:
 	adds r1, r2, #0
 	adds r2, r3, #0
 	movs r3, #0x18
-	bl sub_08005998
+	bl PutDrawText
 	movs r0, #1
 	bl EnableBgSync
 	b _08070F64
@@ -56645,7 +56645,7 @@ _08070C54:
 	adds r1, r0, #0
 	adds r1, #0x1c
 	adds r0, r1, #0
-	bl sub_080053B0
+	bl ClearText
 	ldr r0, _08070CC8 @ =0x08D65878
 	ldr r1, [r7]
 	movs r2, #0x64
@@ -56666,7 +56666,7 @@ _08070C54:
 	movs r4, #0xa
 	ldrsh r3, [r1, r4]
 	movs r1, #8
-	bl sub_08005A00
+	bl Text_InsertDrawNumberOrBlank
 	ldr r0, _08070CC8 @ =0x08D65878
 	ldr r1, [r7]
 	movs r2, #0x64
@@ -56684,7 +56684,7 @@ _08070C54:
 	lsls r1, r2, #3
 	ldr r2, _08070CCC @ =0x02022CEE
 	adds r1, r1, r2
-	bl sub_08005460
+	bl PutText
 	movs r0, #1
 	bl EnableBgSync
 	b _08070F64
@@ -56703,7 +56703,7 @@ _08070CD0:
 	adds r1, r0, #0
 	adds r1, #0x24
 	adds r0, r1, #0
-	bl sub_080053B0
+	bl ClearText
 	ldr r0, _08070D44 @ =0x08D65878
 	ldr r1, [r7]
 	movs r2, #0x64
@@ -56724,7 +56724,7 @@ _08070CD0:
 	movs r5, #0xc
 	ldrsh r3, [r1, r5]
 	movs r1, #8
-	bl sub_08005A00
+	bl Text_InsertDrawNumberOrBlank
 	ldr r0, _08070D44 @ =0x08D65878
 	ldr r1, [r7]
 	movs r2, #0x64
@@ -56742,7 +56742,7 @@ _08070CD0:
 	lsls r1, r2, #3
 	ldr r2, _08070D48 @ =0x02022CF4
 	adds r1, r1, r2
-	bl sub_08005460
+	bl PutText
 	movs r0, #1
 	bl EnableBgSync
 	b _08070F64
@@ -56761,7 +56761,7 @@ _08070D4C:
 	adds r1, r0, #0
 	adds r1, #0x2c
 	adds r0, r1, #0
-	bl sub_080053B0
+	bl ClearText
 	ldr r0, _08070DCC @ =0x08D65878
 	ldr r1, [r7]
 	movs r2, #0x64
@@ -56775,7 +56775,7 @@ _08070D4C:
 	ldr r2, [r7, #8]
 	ldr r3, [r7, #0x18]
 	movs r1, #0x10
-	bl sub_08005A00
+	bl Text_InsertDrawNumberOrBlank
 	ldr r0, [r7, #0x10]
 	ldrh r1, [r0]
 	adds r0, r1, #0
@@ -56805,7 +56805,7 @@ _08070D4C:
 	adds r1, r2, #0
 	adds r2, r3, #0
 	movs r3, #0x18
-	bl sub_08005998
+	bl PutDrawText
 	movs r0, #1
 	bl EnableBgSync
 	b _08070F64
@@ -56824,7 +56824,7 @@ _08070DD4:
 	adds r1, r0, #0
 	adds r1, #0x34
 	adds r0, r1, #0
-	bl sub_080053B0
+	bl ClearText
 	ldr r0, _08070E60 @ =0x08D65878
 	ldr r1, [r7]
 	movs r2, #0x64
@@ -56838,7 +56838,7 @@ _08070DD4:
 	ldr r2, [r7, #8]
 	ldr r3, [r7, #0x1c]
 	movs r1, #0x10
-	bl sub_08005A00
+	bl Text_InsertDrawNumberOrBlank
 	ldr r1, _08070E60 @ =0x08D65878
 	ldr r0, [r1]
 	ldr r1, [r7]
@@ -56874,7 +56874,7 @@ _08070DD4:
 	adds r1, r2, #0
 	adds r2, r3, #0
 	movs r3, #0x18
-	bl sub_08005998
+	bl PutDrawText
 	movs r0, #1
 	bl EnableBgSync
 	b _08070F64
@@ -56897,7 +56897,7 @@ _08070E68:
 	adds r2, #0x14
 	adds r1, r0, r2
 	adds r0, r1, #0
-	bl sub_080053B0
+	bl ClearText
 	ldr r0, _08070F58 @ =0x08D65878
 	ldr r1, [r7]
 	movs r2, #0x64
@@ -56927,7 +56927,7 @@ _08070E68:
 	movs r1, #0
 	ldrsh r3, [r4, r1]
 	movs r1, #8
-	bl sub_08005A00
+	bl Text_InsertDrawNumberOrBlank
 	ldr r0, _08070F58 @ =0x08D65878
 	ldr r1, [r7]
 	movs r2, #0x64
@@ -56993,7 +56993,7 @@ _08070E68:
 	ldr r4, [r3]
 	str r4, [sp, #4]
 	movs r3, #0x10
-	bl sub_08005998
+	bl PutDrawText
 	movs r0, #1
 	bl EnableBgSync
 	b _08070F64
@@ -81182,7 +81182,7 @@ sub_0807C66C: @ 0x0807C66C
 	movs r3, #0
 	bl InitTextFont
 	mov r0, sp
-	bl sub_08005320
+	bl SetTextFont
 	movs r4, #0
 	str r4, [sp, #0x18]
 	add r0, sp, #0x18
@@ -81199,20 +81199,20 @@ sub_0807C66C: @ 0x0807C66C
 	add r4, sp, #0x20
 	adds r0, r4, #0
 	movs r1, #0x14
-	bl sub_08005344
+	bl InitText
 	ldr r1, _0807C6EC @ =0x020246AA
 	adds r0, r4, #0
-	bl sub_08005460
+	bl PutText
 	movs r0, #0xa0
 	adds r1, r6, #0
-	bl sub_08005564
+	bl GetStringTextCenteredPos
 	adds r1, r0, #0
 	adds r0, r4, #0
 	movs r2, #0
 	adds r3, r6, #0
-	bl sub_080059DC
+	bl Text_InsertDrawString
 	movs r0, #0
-	bl sub_08005320
+	bl SetTextFont
 	add sp, #0x28
 	pop {r4, r5, r6}
 	pop {r0}
@@ -83104,7 +83104,7 @@ _0807D5E8:
 	movs r0, #0
 	movs r2, #0
 	movs r3, #0
-	bl sub_08005998
+	bl PutDrawText
 	adds r1, r5, #0
 	adds r1, #0x18
 	movs r0, #2
@@ -83114,7 +83114,7 @@ _0807D5E8:
 	movs r0, #0
 	movs r2, #3
 	movs r3, #0
-	bl sub_08005998
+	bl PutDrawText
 	adds r0, r5, #0
 	adds r0, #0x1e
 	movs r2, #8
@@ -83129,7 +83129,7 @@ _0807D5E8:
 	movs r0, #0
 	movs r2, #0
 	movs r3, #0
-	bl sub_08005998
+	bl PutDrawText
 	adds r1, r7, #0
 	adds r1, #0x4c
 	movs r0, #0x78
@@ -89698,12 +89698,12 @@ _08080808:
 	ldr r0, [r0]
 	str r0, [sp, #4]
 	adds r0, r5, #0
-	bl sub_08005998
+	bl PutDrawText
 	b _08080838
 _08080830:
 	ldr r0, [r6]
 	ldr r1, [r6, #4]
-	bl sub_08005460
+	bl PutText
 _08080838:
 	adds r6, #0x10
 _0808083A:
@@ -89721,7 +89721,7 @@ sub_08080848: @ 0x08080848
 	mov r7, r8
 	push {r7}
 	sub sp, #8
-	ldr r7, _0808092C @ =0x0200310C
+	ldr r7, _0808092C @ =gStatScreenSt
 	ldr r0, [r7, #0xc]
 	ldr r0, [r0]
 	ldrh r0, [r0]
@@ -89729,7 +89729,7 @@ sub_08080848: @ 0x08080848
 	adds r5, r0, #0
 	movs r0, #0x38
 	adds r1, r5, #0
-	bl sub_08005564
+	bl GetStringTextCenteredPos
 	adds r6, r0, #0
 	ldr r0, _08080930 @ =gBg0Tm
 	mov r8, r0
@@ -89753,7 +89753,7 @@ sub_08080848: @ 0x08080848
 	str r5, [sp, #4]
 	movs r2, #0
 	adds r3, r6, #0
-	bl sub_08005998
+	bl PutDrawText
 	ldr r0, [r7, #0xc]
 	ldr r0, [r0, #4]
 	ldrh r0, [r0]
@@ -89767,7 +89767,7 @@ sub_08080848: @ 0x08080848
 	adds r0, r2, #0
 	movs r2, #0
 	movs r3, #0
-	bl sub_08005998
+	bl PutDrawText
 	ldr r0, _08080938 @ =0x000003C2
 	add r0, r8
 	movs r1, #3
@@ -89816,7 +89816,7 @@ sub_08080848: @ 0x08080848
 	bl PutTwoSpecialChar
 	b _08080966
 	.align 2, 0
-_0808092C: .4byte 0x0200310C
+_0808092C: .4byte gStatScreenSt
 _08080930: .4byte gBg0Tm
 _08080934: .4byte 0x00000342
 _08080938: .4byte 0x000003C2
@@ -89836,7 +89836,7 @@ _08080950:
 	movs r1, #2
 	bl sub_08006074
 _08080966:
-	ldr r5, _08080980 @ =0x0200310C
+	ldr r5, _08080980 @ =gStatScreenSt
 	ldr r0, [r5, #0xc]
 	bl GetUnitMaxHp
 	cmp r0, #0x63
@@ -89848,7 +89848,7 @@ _08080966:
 	bl PutTwoSpecialChar
 	b _0808099A
 	.align 2, 0
-_08080980: .4byte 0x0200310C
+_08080980: .4byte gStatScreenSt
 _08080984: .4byte 0x020230AC
 _08080988:
 	ldr r4, _080809A8 @ =0x020230AE
@@ -89868,14 +89868,14 @@ _0808099A:
 	.align 2, 0
 _080809A8: .4byte 0x020230AE
 
-	thumb_func_start sub_080809AC
-sub_080809AC: @ 0x080809AC
+	thumb_func_start DisplayBwl
+DisplayBwl: @ 0x080809AC
 	push {r4, r5, r6, lr}
-	ldr r5, _08080A70 @ =0x0200310C
+	ldr r5, _08080A70 @ =gStatScreenSt
 	ldr r0, [r5, #0xc]
 	ldr r0, [r0]
 	ldrb r0, [r0, #4]
-	bl sub_080A0EDC
+	bl GetPidStats
 	adds r6, r0, #0
 	cmp r6, #0
 	beq _08080A6A
@@ -89895,7 +89895,7 @@ sub_080809AC: @ 0x080809AC
 	ands r0, r1
 	cmp r0, #0
 	bne _08080A6A
-	bl sub_0802E3AC
+	bl IsFirstPlaythrough
 	cmp r0, #1
 	beq _08080A6A
 	ldr r1, [r5, #0xc]
@@ -89908,26 +89908,26 @@ sub_080809AC: @ 0x080809AC
 	lsls r0, r0, #1
 	adds r5, r5, r0
 	adds r0, r5, #0
-	bl sub_080053B0
+	bl ClearText
 	ldr r3, _08080A7C @ =0x0841CD78
 	adds r0, r5, #0
 	movs r1, #0x18
 	movs r2, #3
-	bl sub_080059DC
+	bl Text_InsertDrawString
 	ldr r3, _08080A80 @ =0x0841CD7C
 	adds r0, r5, #0
 	movs r1, #0x38
 	movs r2, #3
-	bl sub_080059DC
+	bl Text_InsertDrawString
 	ldr r3, _08080A84 @ =0x0841CD80
 	adds r0, r5, #0
 	movs r1, #0x58
 	movs r2, #3
-	bl sub_080059DC
+	bl Text_InsertDrawString
 	ldr r4, _08080A88 @ =0x020035C2
 	adds r0, r5, #0
 	adds r1, r4, #0
-	bl sub_08005460
+	bl PutText
 	adds r0, r4, #4
 	ldrh r1, [r6, #0xc]
 	lsls r2, r1, #0x12
@@ -89959,7 +89959,7 @@ _08080A6A:
 	pop {r0}
 	bx r0
 	.align 2, 0
-_08080A70: .4byte 0x0200310C
+_08080A70: .4byte gStatScreenSt
 _08080A74: .4byte gBmSt
 _08080A78: .4byte gPlaySt
 _08080A7C: .4byte 0x0841CD78
@@ -89987,7 +89987,7 @@ sub_08080A94: @ 0x08080A94
 	lsls r6, r2, #5
 	adds r0, r6, r1
 	lsls r0, r0, #1
-	ldr r4, _08080B50 @ =0x0200323C
+	ldr r4, _08080B50 @ =gBmFrameTmap0
 	adds r0, r0, r4
 	movs r1, #2
 	ldr r2, [sp, #0x34]
@@ -90062,7 +90062,7 @@ _08080AE0:
 	pop {r0}
 	bx r0
 	.align 2, 0
-_08080B50: .4byte 0x0200323C
+_08080B50: .4byte gBmFrameTmap0
 _08080B54: .4byte 0x00000401
 _08080B58: .4byte 0x02003C3C
 
@@ -90083,7 +90083,7 @@ sub_08080B5C: @ 0x08080B5C
 	bl TmApplyTsa_thm
 	ldr r0, _08080BB4 @ =0x0841CBB8
 	bl sub_08080800
-	ldr r4, _08080BB8 @ =0x0200310C
+	ldr r4, _08080BB8 @ =gStatScreenSt
 	ldr r0, [r4, #0xc]
 	bl UnitHasMagicRank
 	lsls r0, r0, #0x18
@@ -90099,14 +90099,14 @@ sub_08080B5C: @ 0x08080B5C
 	str r2, [sp, #4]
 	movs r2, #3
 	movs r3, #0
-	bl sub_08005998
+	bl PutDrawText
 	b _08080BD8
 	.align 2, 0
 _08080BA8: .4byte 0x084034EC
 _08080BAC: .4byte gBuf
 _08080BB0: .4byte 0x0200373C
 _08080BB4: .4byte 0x0841CBB8
-_08080BB8: .4byte 0x0200310C
+_08080BB8: .4byte gStatScreenSt
 _08080BBC: .4byte 0x0200327E
 _08080BC0: .4byte 0x0841CD84
 _08080BC4:
@@ -90118,9 +90118,9 @@ _08080BC4:
 	str r2, [sp, #4]
 	movs r2, #3
 	movs r3, #4
-	bl sub_08005998
+	bl PutDrawText
 _08080BD8:
-	ldr r6, _08080DFC @ =0x0200310C
+	ldr r6, _08080DFC @ =gStatScreenSt
 	ldr r0, [r6, #0xc]
 	bl GetUnitPower
 	ldr r1, [r6, #0xc]
@@ -90319,7 +90319,7 @@ _08080C82:
 	adds r0, r4, #0
 	movs r1, #0x18
 	movs r2, #2
-	bl sub_080059DC
+	bl Text_InsertDrawString
 	adds r4, #0x10
 	ldr r0, [r6, #0xc]
 	bl GetUnitStatusName
@@ -90327,7 +90327,7 @@ _08080C82:
 	adds r0, r4, #0
 	movs r1, #0x18
 	movs r2, #2
-	bl sub_080059DC
+	bl Text_InsertDrawString
 	ldr r0, [r6, #0xc]
 	adds r0, #0x30
 	ldrb r2, [r0]
@@ -90359,8 +90359,8 @@ _08080DB6:
 	adds r0, r4, #0
 	movs r1, #0x28
 	movs r2, #2
-	bl sub_080059DC
-	bl sub_080809AC
+	bl Text_InsertDrawString
+	bl DisplayBwl
 	add sp, #8
 	pop {r3}
 	mov r8, r3
@@ -90370,7 +90370,7 @@ _08080DB6:
 	.align 2, 0
 _08080DF4: .4byte 0x0200327E
 _08080DF8: .4byte 0x0841CD8C
-_08080DFC: .4byte 0x0200310C
+_08080DFC: .4byte gStatScreenSt
 _08080E00: .4byte 0x02003396
 
 	thumb_func_start sub_08080E04
@@ -90397,7 +90397,7 @@ sub_08080E04: @ 0x08080E04
 	ldr r0, _08080E80 @ =0x0841CC78
 	bl sub_08080800
 	movs r4, #0
-	ldr r1, _08080E84 @ =0x0200310C
+	ldr r1, _08080E84 @ =gStatScreenSt
 	ldr r0, [r1, #0xc]
 	ldrh r5, [r0, #0x1e]
 	cmp r5, #0
@@ -90428,7 +90428,7 @@ _08080E74: .4byte 0x084038CC
 _08080E78: .4byte 0x02003EFE
 _08080E7C: .4byte 0x00007060
 _08080E80: .4byte 0x0841CC78
-_08080E84: .4byte 0x0200310C
+_08080E84: .4byte gStatScreenSt
 _08080E88:
 	ldr r0, [r7, #0xc]
 	adds r1, r5, #0
@@ -90459,7 +90459,7 @@ _08080E9A:
 	cmp r5, #0
 	bne _08080E4A
 _08080EC2:
-	ldr r7, _08080F94 @ =0x0200310C
+	ldr r7, _08080F94 @ =gStatScreenSt
 	ldr r0, [r7, #0xc]
 	bl GetUnitEquippedWeaponSlot
 	adds r4, r0, #0
@@ -90527,7 +90527,7 @@ _08080EFC:
 	adds r0, r4, #0
 	movs r1, #0x10
 	movs r2, #2
-	bl sub_080059DC
+	bl Text_InsertDrawString
 	movs r4, #0
 	ldr r0, _08080FB0 @ =0x00005278
 	adds r5, r0, #0
@@ -90555,7 +90555,7 @@ _08080F6E:
 	.align 2, 0
 _08080F8C: .4byte 0x0200319C
 _08080F90: .4byte 0x0200323E
-_08080F94: .4byte 0x0200310C
+_08080F94: .4byte gStatScreenSt
 _08080F98: .4byte 0x0200325C
 _08080F9C: .4byte 0x02003C3E
 _08080FA0: .4byte 0x08403908
@@ -90575,7 +90575,7 @@ sub_08080FB8: @ 0x08080FB8
 	sub sp, #0x14
 	movs r0, #6
 	str r0, [sp, #8]
-	ldr r4, _080810A0 @ =0x0200310C
+	ldr r4, _080810A0 @ =gStatScreenSt
 	ldr r0, [r4, #0xc]
 	bl sub_08026B44
 	movs r1, #0
@@ -90595,18 +90595,18 @@ _08080FDC:
 	bge _08081090
 	movs r1, #0x80
 	lsls r1, r1, #1
-	ldr r0, _080810A0 @ =0x0200310C
+	ldr r0, _080810A0 @ =gStatScreenSt
 	adds r1, r0, r1
 	str r1, [sp, #0x10]
 _08080FF8:
-	ldr r1, _080810A0 @ =0x0200310C
+	ldr r1, _080810A0 @ =gStatScreenSt
 	ldr r0, [r1, #0xc]
 	mov r1, sb
 	bl sub_08026B20
 	adds r7, r0, #0
 	cmp r7, #0
 	beq _08081088
-	ldr r1, _080810A0 @ =0x0200310C
+	ldr r1, _080810A0 @ =gStatScreenSt
 	ldr r0, [r1, #0xc]
 	mov r1, sb
 	bl sub_08026AC4
@@ -90638,7 +90638,7 @@ _08080FF8:
 	ldr r0, [sp, #0x10]
 	ldr r2, [sp, #0xc]
 	movs r3, #0
-	bl sub_08005998
+	bl PutDrawText
 	movs r5, #2
 	cmp r7, #3
 	bne _0808105E
@@ -90679,7 +90679,7 @@ _08081090:
 	pop {r0}
 	bx r0
 	.align 2, 0
-_080810A0: .4byte 0x0200310C
+_080810A0: .4byte gStatScreenSt
 _080810A4: .4byte 0x02003244
 
 	thumb_func_start sub_080810A8
@@ -90694,7 +90694,7 @@ sub_080810A8: @ 0x080810A8
 	adds r6, r1, #0
 	mov sl, r2
 	adds r1, r3, #0
-	ldr r0, _0808115C @ =0x0200310C
+	ldr r0, _0808115C @ =gStatScreenSt
 	ldr r0, [r0, #0xc]
 	adds r0, #0x28
 	adds r0, r0, r1
@@ -90702,7 +90702,7 @@ sub_080810A8: @ 0x080810A8
 	lsls r4, r2, #5
 	adds r0, r4, r6
 	lsls r0, r0, #1
-	ldr r2, _08081160 @ =0x0200323C
+	ldr r2, _08081160 @ =gBmFrameTmap0
 	mov r8, r2
 	add r0, r8
 	adds r1, #0x70
@@ -90770,8 +90770,8 @@ _080810E4:
 	pop {r0}
 	bx r0
 	.align 2, 0
-_0808115C: .4byte 0x0200310C
-_08081160: .4byte 0x0200323C
+_0808115C: .4byte gStatScreenSt
+_08081160: .4byte gBmFrameTmap0
 _08081164: .4byte 0x00000401
 _08081168: .4byte 0x02003C3C
 
@@ -90787,7 +90787,7 @@ sub_0808116C: @ 0x0808116C
 	lsls r2, r2, #5
 	adds r1, r4, #0
 	bl TmApplyTsa_thm
-	ldr r0, _080811D8 @ =0x0200310C
+	ldr r0, _080811D8 @ =gStatScreenSt
 	ldr r0, [r0, #0xc]
 	bl UnitHasMagicRank
 	lsls r0, r0, #0x18
@@ -90820,7 +90820,7 @@ sub_0808116C: @ 0x0808116C
 _080811CC: .4byte 0x084035D0
 _080811D0: .4byte gBuf
 _080811D4: .4byte 0x0200373C
-_080811D8: .4byte 0x0200310C
+_080811D8: .4byte gStatScreenSt
 _080811DC: .4byte 0x0841CD28
 _080811E0:
 	ldr r0, _08081220 @ =0x0841CCD8
@@ -90867,7 +90867,7 @@ sub_08081224: @ 0x08081224
 	movs r5, #0
 	str r5, [sp, #0x10]
 	add r0, sp, #0x10
-	ldr r1, _08081268 @ =0x0200323C
+	ldr r1, _08081268 @ =gBmFrameTmap0
 	ldr r2, _0808126C @ =0x01000140
 	bl CpuFastSet
 	str r5, [sp, #0x14]
@@ -90889,7 +90889,7 @@ sub_0808125C: @ 0x0808125C
 	bx r0
 	.align 2, 0
 _08081264: .4byte 0x0841CD90
-_08081268: .4byte 0x0200323C
+_08081268: .4byte gBmFrameTmap0
 _0808126C: .4byte 0x01000140
 _08081270: .4byte 0x02003C3C
 _08081274: .4byte 0x01000120
@@ -91071,7 +91071,7 @@ _080813C4:
 	movs r5, #0
 _080813C8:
 	lsls r5, r5, #1
-	ldr r0, _08081430 @ =0x0200323C
+	ldr r0, _08081430 @ =gBmFrameTmap0
 	adds r0, r5, r0
 	lsls r4, r4, #1
 	ldr r1, _08081434 @ =0x02022CF8
@@ -91119,7 +91119,7 @@ _0808142A:
 	pop {r0}
 	bx r0
 	.align 2, 0
-_08081430: .4byte 0x0200323C
+_08081430: .4byte gBmFrameTmap0
 _08081434: .4byte 0x02022CF8
 _08081438: .4byte 0x0200373C
 _0808143C: .4byte 0x020234F8
@@ -91129,12 +91129,12 @@ _08081448: .4byte 0x08D8A358
 
 	thumb_func_start sub_0808144C
 sub_0808144C: @ 0x0808144C
-	ldr r1, _08081454 @ =0x0200310C
+	ldr r1, _08081454 @ =gStatScreenSt
 	movs r0, #0
 	strb r0, [r1, #8]
 	bx lr
 	.align 2, 0
-_08081454: .4byte 0x0200310C
+_08081454: .4byte gStatScreenSt
 
 	thumb_func_start sub_08081458
 sub_08081458: @ 0x08081458
@@ -91171,7 +91171,7 @@ _08081486:
 	strh r2, [r0]
 	adds r0, #8
 	strh r5, [r0]
-	ldr r0, _080814C0 @ =0x0200310C
+	ldr r0, _080814C0 @ =gStatScreenSt
 	strh r5, [r0, #2]
 	str r4, [r0, #0x14]
 	movs r1, #1
@@ -91186,13 +91186,13 @@ _080814A8:
 _080814B4: .4byte 0x08D8A368
 _080814B8: .4byte gPlaySt
 _080814BC: .4byte 0x0000038F
-_080814C0: .4byte 0x0200310C
+_080814C0: .4byte gStatScreenSt
 
 	thumb_func_start sub_080814C4
 sub_080814C4: @ 0x080814C4
 	push {r4, r5, r6, lr}
 	adds r5, r0, #0
-	ldr r1, _08081538 @ =0x0200310C
+	ldr r1, _08081538 @ =gStatScreenSt
 	movs r6, #0
 	movs r4, #1
 	movs r0, #1
@@ -91248,7 +91248,7 @@ sub_080814C4: @ 0x080814C4
 	rsbs r0, r0, #0
 	b _0808154C
 	.align 2, 0
-_08081538: .4byte 0x0200310C
+_08081538: .4byte gStatScreenSt
 _0808153C: .4byte gDispIo
 _08081540: .4byte 0x0000FFE0
 _08081544: .4byte 0x0000E0FF
@@ -91290,7 +91290,7 @@ sub_08081554: @ 0x08081554
 	adds r0, r3, #0
 	adds r0, #0x46
 	strb r2, [r0]
-	ldr r4, _080815D0 @ =0x0200310C
+	ldr r4, _080815D0 @ =gStatScreenSt
 	ldr r0, [r4, #0x10]
 	movs r1, #6
 	ldrsh r2, [r4, r1]
@@ -91322,7 +91322,7 @@ _080815C2:
 	bx r0
 	.align 2, 0
 _080815CC: .4byte gDispIo
-_080815D0: .4byte 0x0200310C
+_080815D0: .4byte gStatScreenSt
 
 	thumb_func_start sub_080815D4
 sub_080815D4: @ 0x080815D4
@@ -91415,7 +91415,7 @@ sub_0808164C: @ 0x0808164C
 	strb r2, [r0]
 	adds r0, #1
 	strb r3, [r0]
-	ldr r4, _080816C4 @ =0x0200310C
+	ldr r4, _080816C4 @ =gStatScreenSt
 	ldr r0, [r4, #0x10]
 	movs r1, #6
 	ldrsh r2, [r4, r1]
@@ -91447,7 +91447,7 @@ _080816B8:
 	bx r0
 	.align 2, 0
 _080816C0: .4byte gDispIo
-_080816C4: .4byte 0x0200310C
+_080816C4: .4byte gStatScreenSt
 
 	thumb_func_start sub_080816C8
 sub_080816C8: @ 0x080816C8
@@ -91457,7 +91457,7 @@ sub_080816C8: @ 0x080816C8
 	movs r1, #0
 	ldrsh r0, [r0, r1]
 	bl GetUnit
-	ldr r1, _080816F0 @ =0x0200310C
+	ldr r1, _080816F0 @ =gStatScreenSt
 	str r0, [r1, #0xc]
 	ldr r0, _080816F4 @ =0x08D8A530
 	bl Proc_Find
@@ -91468,13 +91468,13 @@ sub_080816C8: @ 0x080816C8
 	pop {r0}
 	bx r0
 	.align 2, 0
-_080816F0: .4byte 0x0200310C
+_080816F0: .4byte gStatScreenSt
 _080816F4: .4byte 0x08D8A530
 
 	thumb_func_start sub_080816F8
 sub_080816F8: @ 0x080816F8
 	push {r4, r5, lr}
-	ldr r4, _0808177C @ =0x0200310C
+	ldr r4, _0808177C @ =gStatScreenSt
 	ldr r0, [r4, #0x10]
 	cmp r0, #0
 	beq _0808170A
@@ -91539,7 +91539,7 @@ _0808170A:
 	pop {r0}
 	bx r0
 	.align 2, 0
-_0808177C: .4byte 0x0200310C
+_0808177C: .4byte gStatScreenSt
 _08081780: .4byte gDispIo
 _08081784: .4byte 0x0000FFE0
 _08081788: .4byte 0x0000E0FF
@@ -91579,7 +91579,7 @@ sub_080817C8: @ 0x080817C8
 	push {r4, r5, lr}
 	sub sp, #4
 	adds r5, r0, #0
-	ldr r0, _08081820 @ =0x0200310C
+	ldr r0, _08081820 @ =gStatScreenSt
 	movs r2, #4
 	ldrsh r1, [r0, r2]
 	adds r1, #0x6d
@@ -91616,7 +91616,7 @@ sub_080817C8: @ 0x080817C8
 	pop {r0}
 	bx r0
 	.align 2, 0
-_08081820: .4byte 0x0200310C
+_08081820: .4byte gStatScreenSt
 _08081824: .4byte 0x08D8A3C0
 _08081828: .4byte 0x08D8A3D4
 _0808182C: .4byte 0x08404024
@@ -91677,7 +91677,7 @@ sub_08081834: @ 0x08081834
 	adds r2, r5, #0
 	adds r3, r4, #0
 	bl SetObjAffine
-	ldr r0, _080818C8 @ =0x0200310C
+	ldr r0, _080818C8 @ =gStatScreenSt
 	ldrb r0, [r0]
 	movs r1, #0x36
 	add sb, r1
@@ -91693,7 +91693,7 @@ sub_08081834: @ 0x08081834
 	bx r0
 	.align 2, 0
 _080818C4: .4byte gSinLut
-_080818C8: .4byte 0x0200310C
+_080818C8: .4byte gStatScreenSt
 
 	thumb_func_start sub_080818CC
 sub_080818CC: @ 0x080818CC
@@ -91703,7 +91703,7 @@ sub_080818CC: @ 0x080818CC
 	adds r5, #0x36
 	ldrb r0, [r5]
 	bl sub_080817C8
-	ldr r1, _080818F0 @ =0x0200310C
+	ldr r1, _080818F0 @ =gStatScreenSt
 	ldrh r0, [r1, #2]
 	cmp r0, #0
 	beq _080818F4
@@ -91713,7 +91713,7 @@ sub_080818CC: @ 0x080818CC
 	bl Proc_Break
 	b _080818F8
 	.align 2, 0
-_080818F0: .4byte 0x0200310C
+_080818F0: .4byte gStatScreenSt
 _080818F4:
 	ldrb r0, [r1]
 	strb r0, [r5]
@@ -91885,7 +91885,7 @@ sub_080819C8: @ 0x080819C8
 	adds r2, r6, #0
 	adds r3, r5, #0
 	bl SetObjAffine
-	ldr r4, _08081A94 @ =0x0200310C
+	ldr r4, _08081A94 @ =gStatScreenSt
 	ldrb r0, [r4]
 	bl sub_080817C8
 	ldrh r0, [r7, #0x38]
@@ -91912,7 +91912,7 @@ _08081A7E:
 	bx r0
 	.align 2, 0
 _08081A90: .4byte gSinLut
-_08081A94: .4byte 0x0200310C
+_08081A94: .4byte gStatScreenSt
 
 	thumb_func_start sub_08081A98
 sub_08081A98: @ 0x08081A98
@@ -91932,7 +91932,7 @@ sub_08081A98: @ 0x08081A98
 	thumb_func_start sub_08081AB0
 sub_08081AB0: @ 0x08081AB0
 	adds r1, r0, #0
-	ldr r2, _08081AE0 @ =0x0200310C
+	ldr r2, _08081AE0 @ =gStatScreenSt
 	movs r0, #0x20
 	ldrh r3, [r2, #2]
 	ands r0, r3
@@ -91957,7 +91957,7 @@ _08081AD8:
 	strh r0, [r2, #2]
 	bx lr
 	.align 2, 0
-_08081AE0: .4byte 0x0200310C
+_08081AE0: .4byte gStatScreenSt
 
 	thumb_func_start sub_08081AE4
 sub_08081AE4: @ 0x08081AE4
@@ -92013,7 +92013,7 @@ _08081B38:
 	subs r0, r1, #1
 	strh r0, [r7, #0x2c]
 _08081B46:
-	ldr r6, _08081BC0 @ =0x0200310C
+	ldr r6, _08081BC0 @ =gStatScreenSt
 	movs r0, #4
 	ldrsh r5, [r6, r0]
 	movs r1, #0x2a
@@ -92070,7 +92070,7 @@ _08081B46:
 	bx r0
 	.align 2, 0
 _08081BBC: .4byte 0x00004640
-_08081BC0: .4byte 0x0200310C
+_08081BC0: .4byte gStatScreenSt
 _08081BC4: .4byte 0x08BFF780
 _08081BC8: .4byte 0x08BFF7D0
 
@@ -92078,7 +92078,7 @@ _08081BC8: .4byte 0x08BFF7D0
 sub_08081BCC: @ 0x08081BCC
 	push {r4, r5, r6, lr}
 	sub sp, #4
-	ldr r4, _08081C2C @ =0x0200310C
+	ldr r4, _08081C2C @ =gStatScreenSt
 	movs r0, #4
 	ldrsh r1, [r4, r0]
 	adds r1, #0xe3
@@ -92122,7 +92122,7 @@ sub_08081BCC: @ 0x08081BCC
 	pop {r0}
 	bx r0
 	.align 2, 0
-_08081C2C: .4byte 0x0200310C
+_08081C2C: .4byte gStatScreenSt
 _08081C30: .4byte 0x08BFF760
 _08081C34: .4byte 0x00004EA4
 _08081C38: .4byte 0x00004E45
@@ -92132,7 +92132,7 @@ _08081C3C: .4byte 0x00004EA5
 sub_08081C40: @ 0x08081C40
 	push {r4, lr}
 	sub sp, #4
-	ldr r4, _08081C94 @ =0x0200310C
+	ldr r4, _08081C94 @ =gStatScreenSt
 	movs r0, #4
 	ldrsh r1, [r4, r0]
 	movs r0, #6
@@ -92170,7 +92170,7 @@ sub_08081C40: @ 0x08081C40
 	pop {r0}
 	bx r0
 	.align 2, 0
-_08081C94: .4byte 0x0200310C
+_08081C94: .4byte gStatScreenSt
 _08081C98: .4byte 0x08D8A41C
 _08081C9C: .4byte 0x08BFF7A8
 _08081CA0: .4byte 0x00004E90
@@ -92195,7 +92195,7 @@ _08081CC4:
 	add r0, sp, #4
 	movs r2, #6
 	bl memcpy
-	ldr r4, _08081D70 @ =0x0200310C
+	ldr r4, _08081D70 @ =gStatScreenSt
 	movs r0, #8
 	ldrsb r0, [r4, r0]
 	cmp r0, #0
@@ -92239,7 +92239,7 @@ _08081CC4:
 	movs r2, #0x4e
 	bl sub_08006884
 _08081D2C:
-	ldr r0, _08081D70 @ =0x0200310C
+	ldr r0, _08081D70 @ =gStatScreenSt
 	ldr r2, [r0, #0xc]
 	ldr r0, [r2, #0xc]
 	movs r1, #0x20
@@ -92273,7 +92273,7 @@ _08081D64:
 	bx r0
 	.align 2, 0
 _08081D6C: .4byte 0x0841CDA0
-_08081D70: .4byte 0x0200310C
+_08081D70: .4byte gStatScreenSt
 _08081D74: .4byte 0x08BFF760
 _08081D78: .4byte 0x00000803
 
@@ -92401,7 +92401,7 @@ sub_08081DE4: @ 0x08081DE4
 	lsls r1, r1, #2
 	movs r2, #0x20
 	bl ApplyPaletteExt
-	ldr r1, _08081EF4 @ =0x0200310C
+	ldr r1, _08081EF4 @ =gStatScreenSt
 	movs r0, #0
 	str r0, [r1, #0x10]
 	adds r0, r5, #0
@@ -92428,14 +92428,14 @@ _08081EE4: .4byte 0x06004E00
 _08081EE8: .4byte 0x0840368C
 _08081EEC: .4byte 0x06010C00
 _08081EF0: .4byte 0x081DBD64
-_08081EF4: .4byte 0x0200310C
+_08081EF4: .4byte gStatScreenSt
 
 	thumb_func_start sub_08081EF8
 sub_08081EF8: @ 0x08081EF8
 	push {r4, r5, r6, lr}
 	sub sp, #4
 	adds r6, r0, #0
-	ldr r5, _08081F54 @ =0x0200310C
+	ldr r5, _08081F54 @ =gStatScreenSt
 	ldr r0, [r5, #0xc]
 	bl GetUnitPortraitId
 	adds r4, r0, #0
@@ -92472,7 +92472,7 @@ _08081F18:
 	bl ApplyPaletteExt
 	b _08081F6A
 	.align 2, 0
-_08081F54: .4byte 0x0200310C
+_08081F54: .4byte gStatScreenSt
 _08081F58: .4byte 0x02023CA4
 _08081F5C: .4byte 0x0840364C
 _08081F60:
@@ -92482,7 +92482,7 @@ _08081F60:
 	bl ApplyPaletteExt
 _08081F6A:
 	bl MU_EndAll
-	ldr r4, _08081FBC @ =0x0200310C
+	ldr r4, _08081FBC @ =gStatScreenSt
 	ldr r0, [r4, #0xc]
 	movs r1, #0x50
 	movs r2, #0x8a
@@ -92491,7 +92491,7 @@ _08081F6A:
 	bl sub_08080848
 	ldrb r0, [r4]
 	bl sub_08081224
-	ldr r0, _08081FC0 @ =0x0200323C
+	ldr r0, _08081FC0 @ =gBmFrameTmap0
 	ldr r1, _08081FC4 @ =0x02022CF8
 	movs r2, #0x12
 	movs r3, #0x12
@@ -92514,8 +92514,8 @@ _08081F6A:
 	bx r0
 	.align 2, 0
 _08081FB8: .4byte 0x0840366C
-_08081FBC: .4byte 0x0200310C
-_08081FC0: .4byte 0x0200323C
+_08081FBC: .4byte gStatScreenSt
+_08081FC0: .4byte gBmFrameTmap0
 _08081FC4: .4byte 0x02022CF8
 _08081FC8: .4byte 0x0200373C
 _08081FCC: .4byte 0x020234F8
@@ -92602,7 +92602,7 @@ _08082078:
 	ands r0, r1
 	cmp r0, #0
 	beq _0808209C
-	ldr r4, _08082098 @ =0x0200310C
+	ldr r4, _08082098 @ =gStatScreenSt
 	ldrb r1, [r4, #1]
 	ldrb r2, [r4]
 	adds r0, r2, r1
@@ -92613,14 +92613,14 @@ _08082078:
 	movs r0, #0x20
 	b _080820BA
 	.align 2, 0
-_08082098: .4byte 0x0200310C
+_08082098: .4byte gStatScreenSt
 _0808209C:
 	movs r6, #0x10
 	adds r0, r6, #0
 	ands r0, r1
 	cmp r0, #0
 	beq _080820C8
-	ldr r4, _080820C4 @ =0x0200310C
+	ldr r4, _080820C4 @ =gStatScreenSt
 	ldrb r1, [r4, #1]
 	ldrb r3, [r4]
 	adds r0, r3, r1
@@ -92634,13 +92634,13 @@ _080820BA:
 	bl sub_08081458
 	b _0808215C
 	.align 2, 0
-_080820C4: .4byte 0x0200310C
+_080820C4: .4byte gStatScreenSt
 _080820C8:
 	movs r0, #0x40
 	ands r0, r1
 	cmp r0, #0
 	beq _080820E8
-	ldr r0, _080820E4 @ =0x0200310C
+	ldr r0, _080820E4 @ =gStatScreenSt
 	ldr r0, [r0, #0xc]
 	movs r4, #1
 	rsbs r4, r4, #0
@@ -92650,13 +92650,13 @@ _080820C8:
 	adds r1, r4, #0
 	b _0808212E
 	.align 2, 0
-_080820E4: .4byte 0x0200310C
+_080820E4: .4byte gStatScreenSt
 _080820E8:
 	movs r0, #0x80
 	ands r0, r1
 	cmp r0, #0
 	beq _08082104
-	ldr r0, _08082100 @ =0x0200310C
+	ldr r0, _08082100 @ =gStatScreenSt
 	ldr r0, [r0, #0xc]
 	movs r1, #1
 	bl sub_08081278
@@ -92664,13 +92664,13 @@ _080820E8:
 	movs r1, #1
 	b _0808212E
 	.align 2, 0
-_08082100: .4byte 0x0200310C
+_08082100: .4byte gStatScreenSt
 _08082104:
 	movs r0, #1
 	ands r0, r1
 	cmp r0, #0
 	beq _0808213C
-	ldr r4, _08082138 @ =0x0200310C
+	ldr r4, _08082138 @ =gStatScreenSt
 	ldr r2, [r4, #0xc]
 	ldrb r0, [r2, #0x1b]
 	cmp r0, #0
@@ -92692,7 +92692,7 @@ _0808212E:
 	bl sub_0808178C
 	b _0808215C
 	.align 2, 0
-_08082138: .4byte 0x0200310C
+_08082138: .4byte gStatScreenSt
 _0808213C:
 	ldr r1, [r3]
 	movs r0, #0x80
@@ -92704,16 +92704,16 @@ _0808213C:
 	adds r0, r5, #0
 	movs r1, #0
 	bl Proc_Goto
-	ldr r0, _08082164 @ =0x0200310C
+	ldr r0, _08082164 @ =gStatScreenSt
 	ldrb r0, [r0]
 	adds r1, r5, #0
-	bl sub_08082250
+	bl StartStatScreenHelp
 _0808215C:
 	pop {r4, r5, r6}
 	pop {r0}
 	bx r0
 	.align 2, 0
-_08082164: .4byte 0x0200310C
+_08082164: .4byte gStatScreenSt
 
 	thumb_func_start sub_08082168
 sub_08082168: @ 0x08082168
@@ -92722,7 +92722,7 @@ sub_08082168: @ 0x08082168
 	movs r1, #0xfc
 	ldrb r0, [r3, #0x14]
 	ands r1, r0
-	ldr r2, _08082198 @ =0x0200310C
+	ldr r2, _08082198 @ =gStatScreenSt
 	movs r0, #3
 	ldrb r4, [r2]
 	ands r0, r4
@@ -92739,24 +92739,24 @@ sub_08082168: @ 0x08082168
 	bx r0
 	.align 2, 0
 _08082194: .4byte gPlaySt
-_08082198: .4byte 0x0200310C
+_08082198: .4byte gStatScreenSt
 _0808219C: .4byte 0x0203E648
 
 	thumb_func_start sub_080821A0
 sub_080821A0: @ 0x080821A0
 	push {lr}
 	bl sub_08082DAC
-	ldr r1, _080821B0 @ =0x0200310C
+	ldr r1, _080821B0 @ =gStatScreenSt
 	str r0, [r1, #0x14]
 	pop {r0}
 	bx r0
 	.align 2, 0
-_080821B0: .4byte 0x0200310C
+_080821B0: .4byte gStatScreenSt
 
 	thumb_func_start sub_080821B4
 sub_080821B4: @ 0x080821B4
 	push {r4, lr}
-	ldr r0, _080821E8 @ =0x0200310C
+	ldr r0, _080821E8 @ =gStatScreenSt
 	movs r1, #6
 	ldrsh r4, [r0, r1]
 	rsbs r4, r4, #0
@@ -92778,7 +92778,7 @@ sub_080821B4: @ 0x080821B4
 	pop {r0}
 	bx r0
 	.align 2, 0
-_080821E8: .4byte 0x0200310C
+_080821E8: .4byte gStatScreenSt
 
 	thumb_func_start sub_080821EC
 sub_080821EC: @ 0x080821EC
@@ -92792,7 +92792,7 @@ sub_080821EC: @ 0x080821EC
 sub_080821F8: @ 0x080821F8
 	push {r4, r5, r6, r7, lr}
 	adds r6, r1, #0
-	ldr r2, _08082240 @ =0x0200310C
+	ldr r2, _08082240 @ =gStatScreenSt
 	movs r5, #0
 	movs r3, #0
 	strh r3, [r2, #4]
@@ -92824,13 +92824,13 @@ _08082230:
 	pop {r0}
 	bx r0
 	.align 2, 0
-_08082240: .4byte 0x0200310C
+_08082240: .4byte gStatScreenSt
 _08082244: .4byte gPlaySt
 _08082248: .4byte 0x0000038A
 _0808224C: .4byte 0x08D8A530
 
-	thumb_func_start sub_08082250
-sub_08082250: @ 0x08082250
+	thumb_func_start StartStatScreenHelp
+StartStatScreenHelp: @ 0x08082250
 	push {r4, r5, lr}
 	adds r4, r0, #0
 	adds r5, r1, #0
@@ -92838,7 +92838,7 @@ sub_08082250: @ 0x08082250
 	rsbs r1, r1, #0
 	movs r0, #0
 	bl sub_08082F74
-	ldr r1, _08082278 @ =0x0200310C
+	ldr r1, _08082278 @ =gStatScreenSt
 	ldr r0, [r1, #0x14]
 	cmp r0, #0
 	bne _08082298
@@ -92850,7 +92850,7 @@ sub_08082250: @ 0x08082250
 	beq _08082282
 	b _08082298
 	.align 2, 0
-_08082278: .4byte 0x0200310C
+_08082278: .4byte gStatScreenSt
 _0808227C:
 	cmp r4, #2
 	beq _08082294
@@ -92870,7 +92870,7 @@ _08082294:
 _08082296:
 	str r0, [r1, #0x14]
 _08082298:
-	ldr r0, _080822AC @ =0x0200310C
+	ldr r0, _080822AC @ =gStatScreenSt
 	ldr r0, [r0, #0x14]
 	adds r1, r5, #0
 	bl sub_080829F4
@@ -92879,13 +92879,13 @@ _08082298:
 	bx r0
 	.align 2, 0
 _080822A8: .4byte 0x08D8AA84
-_080822AC: .4byte 0x0200310C
+_080822AC: .4byte gStatScreenSt
 
 	thumb_func_start sub_080822B0
 sub_080822B0: @ 0x080822B0
 	push {r4, lr}
 	adds r4, r0, #0
-	ldr r0, _080822D8 @ =0x0200310C
+	ldr r0, _080822D8 @ =gStatScreenSt
 	ldr r0, [r0, #0xc]
 	ldr r1, [r4, #0x2c]
 	ldrh r1, [r1, #0x12]
@@ -92903,12 +92903,12 @@ sub_080822B0: @ 0x080822B0
 	pop {r0}
 	bx r0
 	.align 2, 0
-_080822D8: .4byte 0x0200310C
+_080822D8: .4byte gStatScreenSt
 
 	thumb_func_start sub_080822DC
 sub_080822DC: @ 0x080822DC
 	adds r2, r0, #0
-	ldr r0, _080822F8 @ =0x0200310C
+	ldr r0, _080822F8 @ =gStatScreenSt
 	ldr r0, [r0, #0xc]
 	adds r0, #0x30
 	ldrb r0, [r0]
@@ -92922,7 +92922,7 @@ sub_080822DC: @ 0x080822DC
 	ldr r0, [r0]
 	mov pc, r0
 	.align 2, 0
-_080822F8: .4byte 0x0200310C
+_080822F8: .4byte gStatScreenSt
 _080822FC: .4byte _08082300
 _08082300: @ jump table
 	.4byte _08082324 @ case 0
@@ -93003,7 +93003,7 @@ _08082390: .4byte 0x0000027B
 sub_08082394: @ 0x08082394
 	push {r4, lr}
 	adds r4, r0, #0
-	ldr r0, _080823B0 @ =0x0200310C
+	ldr r0, _080823B0 @ =gStatScreenSt
 	ldr r0, [r0, #0xc]
 	bl UnitHasMagicRank
 	lsls r0, r0, #0x18
@@ -93015,7 +93015,7 @@ sub_08082394: @ 0x08082394
 	lsls r0, r0, #2
 	b _080823BA
 	.align 2, 0
-_080823B0: .4byte 0x0200310C
+_080823B0: .4byte gStatScreenSt
 _080823B4:
 	adds r1, r4, #0
 	adds r1, #0x4c
@@ -93032,13 +93032,13 @@ _080823C4: .4byte 0x00000267
 sub_080823C8: @ 0x080823C8
 	push {r4, r5, lr}
 	adds r4, r0, #0
-	ldr r5, _08082408 @ =0x0200310C
+	ldr r5, _08082408 @ =gStatScreenSt
 	ldr r0, [r5, #0xc]
 	ldrh r0, [r0, #0x1e]
 	cmp r0, #0
 	bne _080823DC
 	adds r0, r4, #0
-	bl sub_08082C44
+	bl HelpBoxTryRelocateLeft
 _080823DC:
 	ldr r0, [r5, #0xc]
 	ldr r1, [r4, #0x2c]
@@ -93060,15 +93060,15 @@ _080823DC:
 	bne _0808240C
 _08082400:
 	adds r0, r4, #0
-	bl sub_08082BE4
+	bl HelpBoxTryRelocateUp
 	b _08082416
 	.align 2, 0
-_08082408: .4byte 0x0200310C
+_08082408: .4byte gStatScreenSt
 _0808240C:
 	cmp r0, #0x80
 	bne _08082416
 	adds r0, r4, #0
-	bl sub_08082C14
+	bl HelpBoxTryRelocateDown
 _08082416:
 	pop {r4, r5}
 	pop {r0}
@@ -93085,7 +93085,7 @@ sub_0808241C: @ 0x0808241C
 	bl memcpy
 	ldr r0, [r5, #0x2c]
 	ldrh r4, [r0, #0x12]
-	ldr r0, _08082458 @ =0x0200310C
+	ldr r0, _08082458 @ =gStatScreenSt
 	ldr r0, [r0, #0xc]
 	bl UnitHasMagicRank
 	lsls r0, r0, #0x18
@@ -93105,12 +93105,12 @@ _08082440:
 	bx r0
 	.align 2, 0
 _08082454: .4byte 0x0841CDBE
-_08082458: .4byte 0x0200310C
+_08082458: .4byte gStatScreenSt
 
 	thumb_func_start sub_0808245C
 sub_0808245C: @ 0x0808245C
 	adds r1, r0, #0
-	ldr r0, _08082474 @ =0x0200310C
+	ldr r0, _08082474 @ =gStatScreenSt
 	ldr r0, [r0, #0xc]
 	ldr r0, [r0]
 	ldrh r2, [r0, #2]
@@ -93121,7 +93121,7 @@ sub_0808245C: @ 0x0808245C
 	strh r2, [r0]
 	b _0808247E
 	.align 2, 0
-_08082474: .4byte 0x0200310C
+_08082474: .4byte gStatScreenSt
 _08082478:
 	adds r1, #0x4c
 	ldr r0, _08082480 @ =0x0000039B
@@ -93133,7 +93133,7 @@ _08082480: .4byte 0x0000039B
 
 	thumb_func_start sub_08082484
 sub_08082484: @ 0x08082484
-	ldr r1, _08082494 @ =0x0200310C
+	ldr r1, _08082494 @ =gStatScreenSt
 	ldr r1, [r1, #0xc]
 	ldr r1, [r1, #4]
 	ldrh r1, [r1, #2]
@@ -93141,13 +93141,13 @@ sub_08082484: @ 0x08082484
 	strh r1, [r0]
 	bx lr
 	.align 2, 0
-_08082494: .4byte 0x0200310C
+_08082494: .4byte gStatScreenSt
 
 	thumb_func_start sub_08082498
 sub_08082498: @ 0x08082498
 	push {r4, lr}
 	adds r4, r0, #0
-	ldr r0, _080824BC @ =0x0200310C
+	ldr r0, _080824BC @ =gStatScreenSt
 	ldr r0, [r0, #0xc]
 	bl sub_08026B44
 	cmp r0, #0
@@ -93158,13 +93158,13 @@ sub_08082498: @ 0x08082498
 	cmp r0, #0x80
 	bne _080824C0
 	adds r0, r4, #0
-	bl sub_08082C14
+	bl HelpBoxTryRelocateDown
 	b _080824C6
 	.align 2, 0
-_080824BC: .4byte 0x0200310C
+_080824BC: .4byte gStatScreenSt
 _080824C0:
 	adds r0, r4, #0
-	bl sub_08082BE4
+	bl HelpBoxTryRelocateUp
 _080824C6:
 	pop {r4}
 	pop {r0}
@@ -93460,7 +93460,7 @@ sub_080826EC: @ 0x080826EC
 	strb r1, [r0, #0x11]
 	strh r2, [r0, #0x12]
 	str r3, [r0, #0x14]
-	ldr r1, _08082720 @ =sub_08082BB0
+	ldr r1, _08082720 @ =HelpBoxPopulateAutoItem
 	str r1, [r0, #0x18]
 	ldr r1, _08082724 @ =0x0203E66C
 	strh r3, [r1]
@@ -93472,7 +93472,7 @@ sub_080826EC: @ 0x080826EC
 	bx r0
 	.align 2, 0
 _0808271C: .4byte 0x0203E64C
-_08082720: .4byte sub_08082BB0
+_08082720: .4byte HelpBoxPopulateAutoItem
 _08082724: .4byte 0x0203E66C
 
 	thumb_func_start sub_08082728
@@ -93540,14 +93540,14 @@ _0808277C:
 	bl _call_via_r1
 _080827AA:
 	movs r0, #1
-	bl sub_080052E0
+	bl SetTextFontGlyphs
 	ldrh r0, [r6]
 	bl DecodeMsg
 	add r2, sp, #4
 	mov r1, sp
-	bl sub_08005580
+	bl GetStringTextBox
 	movs r0, #0
-	bl sub_080052E0
+	bl SetTextFontGlyphs
 	ldr r1, [sp]
 	ldr r2, [sp, #4]
 	adds r0, r4, #0
@@ -93613,14 +93613,14 @@ _0808282A:
 	mov r1, sb
 	strh r1, [r4]
 	movs r0, #1
-	bl sub_080052E0
+	bl SetTextFontGlyphs
 	ldrh r0, [r4]
 	bl DecodeMsg
 	add r2, sp, #4
 	mov r1, sp
-	bl sub_08005580
+	bl GetStringTextBox
 	movs r0, #0
-	bl sub_080052E0
+	bl SetTextFontGlyphs
 	adds r0, r5, #0
 	bl sub_08082B50
 	ldr r1, [sp]
@@ -93735,7 +93735,7 @@ sub_08082914: @ 0x08082914
 	cmp r0, #0
 	beq _0808294E
 	adds r0, r5, #0
-	bl sub_08082BE4
+	bl HelpBoxTryRelocateUp
 	lsls r0, r0, #0x18
 	lsrs r4, r0, #0x18
 _0808294E:
@@ -93746,7 +93746,7 @@ _0808294E:
 	cmp r0, #0
 	beq _08082966
 	adds r0, r5, #0
-	bl sub_08082C14
+	bl HelpBoxTryRelocateDown
 	orrs r4, r0
 	lsls r0, r4, #0x18
 	lsrs r4, r0, #0x18
@@ -93758,7 +93758,7 @@ _08082966:
 	cmp r0, #0
 	beq _0808297E
 	adds r0, r5, #0
-	bl sub_08082C44
+	bl HelpBoxTryRelocateLeft
 	orrs r4, r0
 	lsls r0, r4, #0x18
 	lsrs r4, r0, #0x18
@@ -93770,7 +93770,7 @@ _0808297E:
 	cmp r0, #0
 	beq _08082996
 	adds r0, r5, #0
-	bl sub_08082C74
+	bl HelpBoxTryRelocateRight
 	orrs r4, r0
 	lsls r0, r4, #0x18
 	lsrs r4, r0, #0x18
@@ -94066,8 +94066,8 @@ _08082BAA:
 	pop {r1}
 	bx r1
 
-	thumb_func_start sub_08082BB0
-sub_08082BB0: @ 0x08082BB0
+	thumb_func_start HelpBoxPopulateAutoItem
+HelpBoxPopulateAutoItem: @ 0x08082BB0
 	push {r4, r5, lr}
 	adds r4, r0, #0
 	ldr r0, [r4, #0x2c]
@@ -94095,8 +94095,8 @@ _08082BDA:
 	bx r0
 	.align 2, 0
 
-	thumb_func_start sub_08082BE4
-sub_08082BE4: @ 0x08082BE4
+	thumb_func_start HelpBoxTryRelocateUp
+HelpBoxTryRelocateUp: @ 0x08082BE4
 	push {lr}
 	adds r2, r0, #0
 	ldr r0, [r2, #0x2c]
@@ -94124,8 +94124,8 @@ _08082C0E:
 	bx r1
 	.align 2, 0
 
-	thumb_func_start sub_08082C14
-sub_08082C14: @ 0x08082C14
+	thumb_func_start HelpBoxTryRelocateDown
+HelpBoxTryRelocateDown: @ 0x08082C14
 	push {lr}
 	adds r2, r0, #0
 	ldr r0, [r2, #0x2c]
@@ -94153,8 +94153,8 @@ _08082C3E:
 	bx r1
 	.align 2, 0
 
-	thumb_func_start sub_08082C44
-sub_08082C44: @ 0x08082C44
+	thumb_func_start HelpBoxTryRelocateLeft
+HelpBoxTryRelocateLeft: @ 0x08082C44
 	push {lr}
 	adds r2, r0, #0
 	ldr r0, [r2, #0x2c]
@@ -94182,8 +94182,8 @@ _08082C6E:
 	bx r1
 	.align 2, 0
 
-	thumb_func_start sub_08082C74
-sub_08082C74: @ 0x08082C74
+	thumb_func_start HelpBoxTryRelocateRight
+HelpBoxTryRelocateRight: @ 0x08082C74
 	push {lr}
 	adds r2, r0, #0
 	ldr r0, [r2, #0x2c]
@@ -94629,18 +94629,18 @@ _08082F86:
 	adds r0, r6, #0
 	adds r1, r7, #0
 	adds r2, r5, #0
-	bl sub_08005ACC
+	bl InitSpriteTextFont
 	adds r0, r6, #0
 	adds r0, #0x18
-	bl sub_08005B08
+	bl InitSpriteText
 	adds r0, r6, #0
 	adds r0, #0x20
-	bl sub_08005B08
+	bl InitSpriteText
 	adds r0, r6, #0
 	adds r0, #0x28
-	bl sub_08005B08
+	bl InitSpriteText
 	movs r0, #0
-	bl sub_08005320
+	bl SetTextFont
 	ldr r0, _08082FFC @ =0x08190208
 	lsls r1, r5, #5
 	movs r2, #0x20
@@ -94691,18 +94691,18 @@ _08083012:
 	adds r0, r6, #0
 	adds r1, r7, #0
 	adds r2, r5, #0
-	bl sub_08005ACC
+	bl InitSpriteTextFont
 	adds r0, r6, #0
 	adds r0, #0x18
-	bl sub_08005B08
+	bl InitSpriteText
 	adds r0, r6, #0
 	adds r0, #0x20
-	bl sub_08005B08
+	bl InitSpriteText
 	adds r1, r6, #0
 	adds r1, #0x2c
 	movs r0, #0
 	strb r0, [r1]
-	bl sub_08005320
+	bl SetTextFont
 	ldr r0, _08083084 @ =0x08190208
 	lsls r1, r5, #5
 	movs r2, #0x20
@@ -94974,33 +94974,33 @@ sub_08083268: @ 0x08083268
 	adds r0, r4, #0
 	movs r1, #0
 	movs r2, #8
-	bl sub_080059DC
+	bl Text_InsertDrawString
 	ldr r3, _080832CC @ =0x0841D06C
 	adds r0, r4, #0
 	movs r1, #0x24
 	movs r2, #8
-	bl sub_080059DC
+	bl Text_InsertDrawString
 	ldr r3, _080832D0 @ =0x0841D074
 	adds r0, r4, #0
 	movs r1, #0x60
 	movs r2, #8
-	bl sub_080059DC
+	bl Text_InsertDrawString
 	adds r4, #8
 	ldr r3, _080832D4 @ =0x0841D07C
 	adds r0, r4, #0
 	movs r1, #0
 	movs r2, #8
-	bl sub_080059DC
+	bl Text_InsertDrawString
 	ldr r3, _080832D8 @ =0x0841D084
 	adds r0, r4, #0
 	movs r1, #0x30
 	movs r2, #8
-	bl sub_080059DC
+	bl Text_InsertDrawString
 	ldr r3, _080832DC @ =0x0841D08C
 	adds r0, r4, #0
 	movs r1, #0x60
 	movs r2, #8
-	bl sub_080059DC
+	bl Text_InsertDrawString
 	movs r0, #2
 	pop {r4}
 	pop {r1}
@@ -95023,21 +95023,21 @@ sub_080832E0: @ 0x080832E0
 	adds r0, r4, #0
 	movs r1, #0xc
 	movs r2, #7
-	bl sub_080059DC
+	bl Text_InsertDrawString
 	adds r0, r5, #0
 	bl GetItemDisplayRangeString
 	adds r3, r0, #0
 	adds r0, r4, #0
 	movs r1, #0x38
 	movs r2, #7
-	bl sub_080059DC
+	bl Text_InsertDrawString
 	adds r0, r5, #0
 	bl GetItemWeight
 	adds r3, r0, #0
 	adds r0, r4, #0
 	movs r1, #0x80
 	movs r2, #7
-	bl sub_08005A00
+	bl Text_InsertDrawNumberOrBlank
 	adds r4, #8
 	adds r0, r5, #0
 	bl GetItemMight
@@ -95045,21 +95045,21 @@ sub_080832E0: @ 0x080832E0
 	adds r0, r4, #0
 	movs r1, #0x20
 	movs r2, #7
-	bl sub_08005A00
+	bl Text_InsertDrawNumberOrBlank
 	adds r0, r5, #0
 	bl GetItemHit
 	adds r3, r0, #0
 	adds r0, r4, #0
 	movs r1, #0x50
 	movs r2, #7
-	bl sub_08005A00
+	bl Text_InsertDrawNumberOrBlank
 	adds r0, r5, #0
 	bl GetItemCrit
 	adds r3, r0, #0
 	adds r0, r4, #0
 	movs r1, #0x80
 	movs r2, #7
-	bl sub_08005A00
+	bl Text_InsertDrawNumberOrBlank
 	pop {r4, r5}
 	pop {r0}
 	bx r0
@@ -95075,26 +95075,26 @@ sub_0808335C: @ 0x0808335C
 	adds r0, r4, #0
 	movs r1, #0
 	movs r2, #8
-	bl sub_080059DC
+	bl Text_InsertDrawString
 	adds r0, r5, #0
 	bl sub_08016DD8
 	adds r3, r0, #0
 	adds r0, r4, #0
 	movs r1, #0xc
 	movs r2, #7
-	bl sub_080059DC
+	bl Text_InsertDrawString
 	ldr r3, _080833B0 @ =0x0841D06C
 	adds r0, r4, #0
 	movs r1, #0x24
 	movs r2, #8
-	bl sub_080059DC
+	bl Text_InsertDrawString
 	adds r0, r5, #0
 	bl GetItemDisplayRangeString
 	adds r3, r0, #0
 	adds r0, r4, #0
 	movs r1, #0x38
 	movs r2, #7
-	bl sub_080059DC
+	bl Text_InsertDrawString
 	movs r0, #1
 	pop {r4, r5}
 	pop {r1}
@@ -95119,17 +95119,17 @@ sub_080833B4: @ 0x080833B4
 	adds r0, r4, #0
 	movs r1, #0
 	movs r2, #8
-	bl sub_080059DC
+	bl Text_InsertDrawString
 	ldr r3, _080833F8 @ =0x0841D0A0
 	adds r0, r4, #0
 	movs r1, #0x28
 	movs r2, #8
-	bl sub_080059DC
+	bl Text_InsertDrawString
 	ldr r3, _080833FC @ =0x0841D0A8
 	adds r0, r4, #0
 	movs r1, #0x50
 	movs r2, #8
-	bl sub_080059DC
+	bl Text_InsertDrawString
 	b _0808340C
 	.align 2, 0
 _080833EC: .4byte gPlaySt
@@ -95142,7 +95142,7 @@ _08083400:
 	ldr r3, _08083418 @ =0x0841D0B0
 	movs r1, #0
 	movs r2, #7
-	bl sub_080059DC
+	bl Text_InsertDrawString
 _0808340C:
 	pop {r4}
 	pop {r0}
@@ -95173,17 +95173,17 @@ sub_0808341C: @ 0x0808341C
 	movs r1, #0x14
 	movs r2, #7
 	adds r3, r5, #0
-	bl sub_080059DC
+	bl Text_InsertDrawString
 	adds r0, r4, #0
 	movs r1, #0x3c
 	movs r2, #7
 	adds r3, r5, #0
-	bl sub_080059DC
+	bl Text_InsertDrawString
 	ldr r3, _08083470 @ =0x0841D0C0
 	adds r0, r4, #0
 	movs r1, #0x64
 	movs r2, #7
-	bl sub_080059DC
+	bl Text_InsertDrawString
 	b _080834C8
 	.align 2, 0
 _08083464: .4byte gPlaySt
@@ -95208,7 +95208,7 @@ _08083474:
 	adds r0, r4, #0
 	movs r1, #0x14
 	movs r2, #7
-	bl sub_080059DC
+	bl Text_InsertDrawString
 	adds r0, r7, #0
 	adds r0, #0x2c
 	ldrb r0, [r0]
@@ -95220,12 +95220,12 @@ _08083474:
 	adds r0, r4, #0
 	movs r1, #0x3c
 	movs r2, #7
-	bl sub_080059DC
+	bl Text_InsertDrawString
 	adds r0, r4, #0
 	movs r1, #0x64
 	movs r2, #7
 	adds r3, r6, #0
-	bl sub_080059DC
+	bl Text_InsertDrawString
 _080834C8:
 	pop {r4, r5, r6, r7}
 	pop {r0}
@@ -95251,7 +95251,7 @@ sub_080834D8: @ 0x080834D8
 	ldrh r0, [r0]
 	strh r0, [r1]
 	ldr r0, [r4, #0x30]
-	bl sub_08005320
+	bl SetTextFont
 	movs r6, #0
 	adds r0, r4, #0
 	adds r0, #0x62
@@ -95300,7 +95300,7 @@ _08083540:
 	adds r0, r0, r1
 	ldr r0, [r0]
 	adds r1, r3, #0
-	bl sub_080056D8
+	bl Text_DrawCharacter
 _08083554:
 	str r0, [r4, #0x2c]
 _08083556:
@@ -95311,7 +95311,7 @@ _08083556:
 	blt _0808350E
 _08083560:
 	movs r0, #0
-	bl sub_08005320
+	bl SetTextFont
 _08083566:
 	pop {r4, r5, r6, r7}
 	pop {r0}
@@ -95322,7 +95322,7 @@ sub_0808356C: @ 0x0808356C
 	push {r4, r5, r6, lr}
 	adds r4, r0, #0
 	ldr r0, [r4, #0x30]
-	bl sub_08005320
+	bl SetTextFont
 	movs r6, #0
 _08083578:
 	lsls r1, r6, #2
@@ -95333,10 +95333,10 @@ _08083578:
 	ldrb r1, [r5, #4]
 	lsls r0, r1, #3
 	ldr r1, [r4, #0x2c]
-	bl sub_08005564
+	bl GetStringTextCenteredPos
 	adds r1, r0, #0
 	adds r0, r5, #0
-	bl sub_08005444
+	bl Text_SetCursor
 _08083594:
 	ldr r0, [r4, #0x2c]
 	ldrb r1, [r0]
@@ -95365,12 +95365,12 @@ _080835B4:
 _080835C0:
 	ldr r1, [r4, #0x2c]
 	adds r0, r5, #0
-	bl sub_080056D8
+	bl Text_DrawCharacter
 	str r0, [r4, #0x2c]
 	b _08083594
 _080835CC:
 	ldr r0, [r4, #0x30]
-	bl sub_08005320
+	bl SetTextFont
 	pop {r4, r5, r6}
 	pop {r0}
 	bx r0
@@ -95381,9 +95381,9 @@ sub_080835D8: @ 0x080835D8
 	adds r5, r0, #0
 	ldr r4, [r5, #0x58]
 	ldr r0, _08083600 @ =0x0203E678
-	bl sub_08005320
+	bl SetTextFont
 	movs r0, #0
-	bl sub_080052E0
+	bl SetTextFontGlyphs
 	adds r0, r4, #0
 	bl sub_08082B60
 	adds r1, r0, #0
@@ -95428,7 +95428,7 @@ _08083636:
 	strh r0, [r1]
 _08083638:
 	movs r0, #0
-	bl sub_08005320
+	bl SetTextFont
 	adds r0, r5, #0
 	bl Proc_Break
 	pop {r4, r5}
@@ -95442,7 +95442,7 @@ sub_0808364C: @ 0x0808364C
 	adds r5, r0, #0
 	ldr r4, [r5, #0x58]
 	ldr r0, _08083668 @ =0x0203E678
-	bl sub_08005320
+	bl SetTextFont
 	adds r0, r4, #0
 	bl sub_08082B60
 	cmp r0, #1
@@ -95460,7 +95460,7 @@ _08083674:
 	bl sub_0808341C
 _08083678:
 	movs r0, #0
-	bl sub_08005320
+	bl SetTextFont
 	adds r0, r5, #0
 	bl Proc_Break
 	pop {r4, r5}
@@ -95478,27 +95478,27 @@ sub_0808368C: @ 0x0808368C
 	mov sl, r0
 	ldr r5, _08083734 @ =0x0203E678
 	adds r0, r5, #0
-	bl sub_08005320
+	bl SetTextFont
 	movs r0, #1
-	bl sub_080052E0
+	bl SetTextFontGlyphs
 	movs r0, #0x18
 	adds r0, r0, r5
 	mov sb, r0
 	movs r1, #6
-	bl sub_08005450
+	bl Text_SetColor
 	movs r1, #0x20
 	adds r1, r1, r5
 	mov r8, r1
 	mov r0, r8
 	movs r1, #6
-	bl sub_08005450
+	bl Text_SetColor
 	adds r6, r5, #0
 	adds r6, #0x28
 	adds r0, r6, #0
 	movs r1, #6
-	bl sub_08005450
+	bl Text_SetColor
 	movs r0, #0
-	bl sub_08005320
+	bl SetTextFont
 	ldr r4, _08083738 @ =0x08D8AF34
 	adds r0, r4, #0
 	bl sub_08004748
@@ -95606,22 +95606,22 @@ sub_08083798: @ 0x08083798
 	push {r4, lr}
 	ldr r4, _080837D4 @ =0x0203E678
 	adds r0, r4, #0
-	bl sub_08005320
+	bl SetTextFont
 	adds r0, r4, #0
 	adds r0, #0x18
-	bl sub_08005B2C
+	bl SpriteText_DrawBackground
 	adds r0, r4, #0
 	adds r0, #0x20
-	bl sub_08005B2C
+	bl SpriteText_DrawBackground
 	adds r4, #0x28
 	adds r0, r4, #0
-	bl sub_08005B2C
+	bl SpriteText_DrawBackground
 	ldr r0, _080837D8 @ =0x08D8AF34
 	bl sub_08004748
 	ldr r0, _080837DC @ =0x08D8AF5C
 	bl sub_08004748
 	movs r0, #0
-	bl sub_08005320
+	bl SetTextFont
 	pop {r4}
 	pop {r0}
 	bx r0
@@ -95781,14 +95781,14 @@ _080838E8:
 	adds r4, #0x4c
 	strh r0, [r4]
 	movs r0, #1
-	bl sub_080052E0
+	bl SetTextFontGlyphs
 	ldrh r0, [r4]
 	bl DecodeMsg
 	add r2, sp, #4
 	mov r1, sp
-	bl sub_08005580
+	bl GetStringTextBox
 	movs r0, #0
-	bl sub_080052E0
+	bl SetTextFontGlyphs
 	ldr r1, [sp]
 	ldr r2, [sp, #4]
 	adds r0, r5, #0
@@ -96289,16 +96289,16 @@ _08083C94:
 	adds r0, r4, #0
 	adds r1, r6, #0
 	adds r2, r5, #0
-	bl sub_08005ACC
+	bl InitSpriteTextFont
 	adds r0, r4, #0
 	adds r0, #0x18
-	bl sub_08005B08
+	bl InitSpriteText
 	adds r0, r4, #0
 	adds r0, #0x20
-	bl sub_08005B08
+	bl InitSpriteText
 	adds r0, r4, #0
 	adds r0, #0x28
-	bl sub_08005B08
+	bl InitSpriteText
 	bl sub_08083BA8
 	movs r1, #0x10
 	ands r1, r0
@@ -96311,13 +96311,13 @@ _08083C94:
 	bne _08083CF0
 	adds r0, r4, #0
 	adds r0, #0x30
-	bl sub_08005B08
+	bl InitSpriteText
 	adds r0, r4, #0
 	adds r0, #0x38
-	bl sub_08005B08
+	bl InitSpriteText
 _08083CF0:
 	movs r0, #0
-	bl sub_08005320
+	bl SetTextFont
 	bl sub_08083BA8
 	movs r1, #0x10
 	ands r1, r0
@@ -96342,7 +96342,7 @@ _08083D24:
 	ldr r0, _08083D34 @ =0x0203E6CC
 	adds r1, r6, #0
 	adds r2, r5, #0
-	bl sub_08005ACC
+	bl InitSpriteTextFont
 	movs r4, #0
 	lsls r7, r5, #5
 	b _08083D44
@@ -96352,7 +96352,7 @@ _08083D38:
 	lsls r0, r4, #3
 	ldr r1, _08083D98 @ =0x0203E6E4
 	adds r0, r0, r1
-	bl sub_08005B08
+	bl InitSpriteText
 	adds r4, #1
 _08083D44:
 	bl sub_08083BA8
@@ -96361,7 +96361,7 @@ _08083D44:
 	cmp r4, r0
 	blt _08083D38
 	movs r0, #0
-	bl sub_08005320
+	bl SetTextFont
 	ldr r0, _08083D9C @ =0x081901C8
 	adds r1, r7, #0
 	movs r2, #0x20
@@ -96557,7 +96557,7 @@ sub_08083EA8: @ 0x08083EA8
 	bl m4aSongNumStart
 _08083EC8:
 	movs r0, #0
-	bl sub_080052E0
+	bl SetTextFontGlyphs
 	bl sub_08083FEC
 	pop {r0}
 	bx r0
@@ -96922,7 +96922,7 @@ _08084172:
 _0808417C:
 	adds r0, r3, #0
 	mov r1, sp
-	bl sub_08005528
+	bl GetCharTextLen
 	adds r3, r0, #0
 	ldr r0, [sp]
 	adds r7, r7, r0
@@ -96942,7 +96942,7 @@ sub_08084194: @ 0x08084194
 	adds r4, r0, #0
 	strb r5, [r6]
 	movs r0, #1
-	bl sub_080052E0
+	bl SetTextFontGlyphs
 _080841A6:
 	ldrb r0, [r4]
 	cmp r0, #7
@@ -96988,7 +96988,7 @@ _080841E8:
 _080841EC:
 	adds r0, r4, #0
 	mov r1, sp
-	bl sub_08005528
+	bl GetCharTextLen
 	adds r4, r0, #0
 	ldr r0, [sp]
 	adds r5, r5, r0
@@ -97055,7 +97055,7 @@ _08084264:
 	mov r0, r8
 	strh r0, [r5]
 	movs r0, #1
-	bl sub_080052E0
+	bl SetTextFontGlyphs
 	ldrh r0, [r5]
 	bl DecodeMsg
 	bl sub_08013374
@@ -97063,7 +97063,7 @@ _08084264:
 	mov r1, sp
 	bl sub_080840D8
 	movs r0, #0
-	bl sub_080052E0
+	bl SetTextFontGlyphs
 	ldr r1, [sp]
 	ldr r2, [sp, #4]
 	adds r0, r4, #0
@@ -97585,13 +97585,13 @@ sub_08084688: @ 0x08084688
 	adds r5, r0, #0
 	ldr r4, _080846E0 @ =0x0203E6E4
 	adds r0, r4, #0
-	bl sub_08005B2C
+	bl SpriteText_DrawBackground
 	adds r0, r4, #0
 	adds r0, #8
-	bl sub_08005B2C
+	bl SpriteText_DrawBackground
 	adds r0, r4, #0
 	adds r0, #0x10
-	bl sub_08005B2C
+	bl SpriteText_DrawBackground
 	bl sub_08083BA8
 	movs r1, #0x10
 	ands r1, r0
@@ -97604,10 +97604,10 @@ sub_08084688: @ 0x08084688
 	bne _080846CC
 	adds r0, r4, #0
 	adds r0, #0x18
-	bl sub_08005B2C
+	bl SpriteText_DrawBackground
 	adds r0, r4, #0
 	adds r0, #0x20
-	bl sub_08005B2C
+	bl SpriteText_DrawBackground
 _080846CC:
 	adds r0, r5, #0
 	adds r0, #0x58
@@ -97699,7 +97699,7 @@ _08084778:
 _08084780:
 	bl sub_08084664
 	ldr r0, [r6, #0x30]
-	bl sub_08005320
+	bl SetTextFont
 	movs r7, #0
 	cmp r7, r8
 	blt _08084792
@@ -98155,7 +98155,7 @@ _08084C08:
 	adds r0, r4, r0
 	ldr r0, [r0]
 	movs r1, #1
-	bl sub_08005450
+	bl Text_SetColor
 	b _08084C6A
 _08084C2E:
 	adds r0, r6, #0
@@ -98173,7 +98173,7 @@ _08084C2E:
 	adds r0, r4, r0
 	ldr r0, [r0]
 	movs r1, #0xa
-	bl sub_08005450
+	bl Text_SetColor
 	b _08084C6A
 _08084C52:
 	adds r5, r6, #0
@@ -98186,7 +98186,7 @@ _08084C52:
 	adds r0, r4, r0
 	ldr r0, [r0]
 	movs r1, #6
-	bl sub_08005450
+	bl Text_SetColor
 _08084C6A:
 	movs r1, #0
 	ldrsh r0, [r5, r1]
@@ -98194,7 +98194,7 @@ _08084C6A:
 	adds r0, r4, r0
 	ldr r0, [r0]
 	ldr r1, [r6, #0x2c]
-	bl sub_080056D8
+	bl Text_DrawCharacter
 	str r0, [r6, #0x2c]
 	bl GetTextPrintDelay
 	adds r4, r0, #0
@@ -98238,7 +98238,7 @@ _08084CCA:
 	b _08084792
 _08084CD2:
 	movs r0, #0
-	bl sub_08005320
+	bl SetTextFont
 _08084CD8:
 	add sp, #0x14
 	pop {r3}
@@ -98301,7 +98301,7 @@ sub_08084D1C: @ 0x08084D1C
 	ldr r1, _08084D64 @ =0x0203E6E4
 	adds r0, r0, r1
 	movs r1, #0
-	bl sub_08005444
+	bl Text_SetCursor
 	adds r0, r4, #0
 	bl Proc_Break
 _08084D5C:
@@ -98358,9 +98358,9 @@ sub_08084DA8: @ 0x08084DA8
 	adds r0, r4, #0
 	bl Proc_Break
 	movs r0, #0
-	bl sub_08005320
+	bl SetTextFont
 	movs r0, #0
-	bl sub_080052E0
+	bl SetTextFontGlyphs
 	pop {r4}
 	pop {r0}
 	bx r0
@@ -98471,11 +98471,11 @@ sub_08084E8C: @ 0x08084E8C
 	adds r5, r0, #0
 	ldr r4, _08084EFC @ =0x0203E6CC
 	adds r0, r4, #0
-	bl sub_08005320
+	bl SetTextFont
 	movs r0, #0
-	bl sub_080052E0
+	bl SetTextFontGlyphs
 	movs r0, #1
-	bl sub_080052E0
+	bl SetTextFontGlyphs
 	bl sub_08083BA8
 	movs r1, #1
 	ands r1, r0
@@ -98484,15 +98484,15 @@ sub_08084E8C: @ 0x08084E8C
 	adds r0, r4, #0
 	adds r0, #0x18
 	movs r1, #6
-	bl sub_08005450
+	bl Text_SetColor
 	adds r0, r4, #0
 	adds r0, #0x20
 	movs r1, #6
-	bl sub_08005450
+	bl Text_SetColor
 	adds r0, r4, #0
 	adds r0, #0x28
 	movs r1, #6
-	bl sub_08005450
+	bl Text_SetColor
 	bl sub_08083BA8
 	movs r1, #0x10
 	ands r1, r0
@@ -98506,11 +98506,11 @@ sub_08084E8C: @ 0x08084E8C
 	adds r0, r4, #0
 	adds r0, #0x30
 	movs r1, #6
-	bl sub_08005450
+	bl Text_SetColor
 	adds r0, r4, #0
 	adds r0, #0x38
 	movs r1, #6
-	bl sub_08005450
+	bl Text_SetColor
 	b _08084F1E
 	.align 2, 0
 _08084EFC: .4byte 0x0203E6CC
@@ -98522,7 +98522,7 @@ _08084F04:
 	ldr r1, _08084F9C @ =0x0203E6E4
 	adds r0, r0, r1
 	movs r1, #0
-	bl sub_08005450
+	bl Text_SetColor
 	adds r4, #1
 _08084F12:
 	bl sub_08083BA8
@@ -98532,7 +98532,7 @@ _08084F12:
 	blt _08084F04
 _08084F1E:
 	movs r0, #0
-	bl sub_08005320
+	bl SetTextFont
 	ldr r4, _08084FA0 @ =0x08D8B06C
 	adds r0, r4, #0
 	bl sub_08004748
@@ -98654,7 +98654,7 @@ sub_08085008: @ 0x08085008
 	push {r4, lr}
 	ldr r4, _08085060 @ =0x0203E6CC
 	adds r0, r4, #0
-	bl sub_08005320
+	bl SetTextFont
 	bl sub_08083BA8
 	movs r1, #1
 	ands r1, r0
@@ -98662,13 +98662,13 @@ sub_08085008: @ 0x08085008
 	bne _08085064
 	adds r0, r4, #0
 	adds r0, #0x18
-	bl sub_08005B2C
+	bl SpriteText_DrawBackground
 	adds r0, r4, #0
 	adds r0, #0x20
-	bl sub_08005B2C
+	bl SpriteText_DrawBackground
 	adds r0, r4, #0
 	adds r0, #0x28
-	bl sub_08005B2C
+	bl SpriteText_DrawBackground
 	bl sub_08083BA8
 	movs r1, #0x10
 	ands r1, r0
@@ -98681,10 +98681,10 @@ sub_08085008: @ 0x08085008
 	bne _08085082
 	adds r0, r4, #0
 	adds r0, #0x30
-	bl sub_08005B2C
+	bl SpriteText_DrawBackground
 	adds r0, r4, #0
 	adds r0, #0x38
-	bl sub_08005B2C
+	bl SpriteText_DrawBackground
 	b _08085082
 	.align 2, 0
 _08085060: .4byte 0x0203E6CC
@@ -98696,7 +98696,7 @@ _08085068:
 	ldr r1, _0808509C @ =0x0203E6E4
 	adds r0, r0, r1
 	movs r1, #0
-	bl sub_08005B8C
+	bl SpriteText_DrawBackgroundExt
 	adds r4, #1
 _08085076:
 	bl sub_08083BA8
@@ -98710,7 +98710,7 @@ _08085082:
 	ldr r0, _080850A4 @ =0x08D8B10C
 	bl sub_08004748
 	movs r0, #0
-	bl sub_08005320
+	bl SetTextFont
 	pop {r4}
 	pop {r0}
 	bx r0
@@ -99043,7 +99043,7 @@ _080852CC:
 	movs r4, #0xc
 	subs r4, r4, r5
 	lsls r4, r4, #1
-	ldr r0, _08085334 @ =0x0200323C
+	ldr r0, _08085334 @ =gBmFrameTmap0
 	adds r0, r4, r0
 	ldr r1, _08085338 @ =gBg0Tm
 	adds r1, r6, r1
@@ -99064,12 +99064,12 @@ _08085324: .4byte 0x02022C84
 _08085328: .4byte 0x02023484
 _0808532C: .4byte 0x08D8B190
 _08085330: .4byte 0x08D8B134
-_08085334: .4byte 0x0200323C
+_08085334: .4byte gBmFrameTmap0
 _08085338: .4byte gBg0Tm
 _0808533C: .4byte 0x0200373C
 _08085340: .4byte gBg1Tm
 _08085344:
-	ldr r0, _080853B4 @ =0x0200323C
+	ldr r0, _080853B4 @ =gBmFrameTmap0
 	mov r4, r8
 	adds r4, #0x1e
 	subs r4, r4, r5
@@ -99122,7 +99122,7 @@ _080853A8:
 	pop {r0}
 	bx r0
 	.align 2, 0
-_080853B4: .4byte 0x0200323C
+_080853B4: .4byte gBmFrameTmap0
 _080853B8: .4byte gBg0Tm
 _080853BC: .4byte 0x0200373C
 _080853C0: .4byte gBg1Tm
@@ -99223,7 +99223,7 @@ _08085458:
 	movs r4, #0xc
 	subs r4, r4, r5
 	lsls r4, r4, #1
-	ldr r0, _080854C0 @ =0x0200323C
+	ldr r0, _080854C0 @ =gBmFrameTmap0
 	adds r0, r4, r0
 	ldr r1, _080854C4 @ =gBg0Tm
 	adds r1, r7, r1
@@ -99244,12 +99244,12 @@ _080854B0: .4byte 0x02022C84
 _080854B4: .4byte 0x02023484
 _080854B8: .4byte 0x08D8B194
 _080854BC: .4byte 0x08D8B134
-_080854C0: .4byte 0x0200323C
+_080854C0: .4byte gBmFrameTmap0
 _080854C4: .4byte gBg0Tm
 _080854C8: .4byte 0x0200373C
 _080854CC: .4byte gBg1Tm
 _080854D0:
-	ldr r0, _08085520 @ =0x0200323C
+	ldr r0, _08085520 @ =gBmFrameTmap0
 	mov r4, r8
 	adds r4, #0x1e
 	subs r4, r4, r5
@@ -99289,7 +99289,7 @@ _08085516:
 	pop {r0}
 	bx r0
 	.align 2, 0
-_08085520: .4byte 0x0200323C
+_08085520: .4byte gBmFrameTmap0
 _08085524: .4byte gBg0Tm
 _08085528: .4byte 0x0200373C
 _0808552C: .4byte gBg1Tm
@@ -99361,7 +99361,7 @@ _0808558C:
 	lsls r4, r4, #1
 	subs r4, r4, r5
 	lsls r4, r4, #1
-	ldr r0, _080855F0 @ =0x0200323C
+	ldr r0, _080855F0 @ =gBmFrameTmap0
 	adds r0, r4, r0
 	ldr r1, _080855F4 @ =0x02022FA0
 	adds r2, r5, #0
@@ -99380,7 +99380,7 @@ _080855E0: .4byte 0x02022FD0
 _080855E4: .4byte 0x020237D0
 _080855E8: .4byte 0x08D8B197
 _080855EC: .4byte 0x08D8B134
-_080855F0: .4byte 0x0200323C
+_080855F0: .4byte gBmFrameTmap0
 _080855F4: .4byte 0x02022FA0
 _080855F8: .4byte 0x0200373C
 _080855FC: .4byte 0x020237A0
@@ -99497,7 +99497,7 @@ _080856BC:
 	lsls r4, r4, #1
 	subs r4, r4, r5
 	lsls r4, r4, #1
-	ldr r0, _08085720 @ =0x0200323C
+	ldr r0, _08085720 @ =gBmFrameTmap0
 	adds r0, r4, r0
 	ldr r1, _08085724 @ =0x02022FA0
 	adds r2, r5, #0
@@ -99516,7 +99516,7 @@ _08085710: .4byte 0x02022FD0
 _08085714: .4byte 0x020237D0
 _08085718: .4byte 0x08D8B19A
 _0808571C: .4byte 0x08D8B134
-_08085720: .4byte 0x0200323C
+_08085720: .4byte gBmFrameTmap0
 _08085724: .4byte 0x02022FA0
 _08085728: .4byte 0x0200373C
 _0808572C: .4byte 0x020237A0
@@ -99587,7 +99587,7 @@ _080857A8:
 	bge _080857B4
 	movs r1, #0
 _080857B4:
-	ldr r0, _080857D8 @ =0x0200323C
+	ldr r0, _080857D8 @ =gBmFrameTmap0
 	lsls r1, r1, #5
 	adds r1, r1, r2
 	lsls r1, r1, #1
@@ -99602,7 +99602,7 @@ _080857B4:
 	bx r0
 	.align 2, 0
 _080857D4: .4byte 0x08D8B134
-_080857D8: .4byte 0x0200323C
+_080857D8: .4byte gBmFrameTmap0
 _080857DC: .4byte gBg0Tm
 
 	thumb_func_start sub_080857E0
@@ -100038,7 +100038,7 @@ sub_08085B0C: @ 0x08085B0C
 	movs r0, #0
 	mov sl, r0
 	str r0, [sp, #4]
-	ldr r1, _08085BC4 @ =0x0200323C
+	ldr r1, _08085BC4 @ =gBmFrameTmap0
 	mov sb, r1
 	ldr r2, _08085BC8 @ =0x01000060
 	add r0, sp, #4
@@ -100050,23 +100050,23 @@ sub_08085B0C: @ 0x08085B0C
 	adds r6, r0, #0
 	movs r0, #0x30
 	adds r1, r6, #0
-	bl sub_08005564
+	bl GetStringTextCenteredPos
 	adds r5, r0, #0
 	adds r4, r7, #0
 	adds r4, #0x2c
 	adds r0, r4, #0
-	bl sub_080053B0
+	bl ClearText
 	adds r0, r4, #0
 	adds r1, r5, #0
 	movs r2, #5
-	bl sub_08005458
+	bl Text_SetParams
 	adds r0, r4, #0
 	adds r1, r6, #0
-	bl sub_080055DC
+	bl Text_DrawString
 	mov r1, sb
 	adds r1, #0x4a
 	adds r0, r4, #0
-	bl sub_08005460
+	bl PutText
 	mov r0, r8
 	bl GetUnitMiniPortraitId
 	adds r2, r0, #0
@@ -100111,7 +100111,7 @@ _08085B82:
 	movs r0, #5
 	b _08085BD6
 	.align 2, 0
-_08085BC4: .4byte 0x0200323C
+_08085BC4: .4byte gBmFrameTmap0
 _08085BC8: .4byte 0x01000060
 _08085BCC: .4byte 0x08D8B134
 _08085BD0:
@@ -100282,19 +100282,19 @@ _08085CC8:
 	mov sb, r0
 	movs r0, #0x30
 	mov r1, sb
-	bl sub_08005564
+	bl GetStringTextCenteredPos
 	adds r6, r0, #0
 	adds r5, r7, #0
 	adds r5, #0x2c
 	adds r0, r5, #0
-	bl sub_080053B0
+	bl ClearText
 	adds r0, r5, #0
 	adds r1, r6, #0
 	movs r2, #5
-	bl sub_08005458
+	bl Text_SetParams
 	adds r0, r5, #0
 	mov r1, sb
-	bl sub_080055DC
+	bl Text_DrawString
 	ldr r0, _08085DE0 @ =0x08D8B15A
 	add r0, r8
 	movs r1, #0
@@ -100312,7 +100312,7 @@ _08085CC8:
 	ldr r6, _08085DE8 @ =gBg0Tm
 	adds r1, r1, r6
 	adds r0, r5, #0
-	bl sub_08005460
+	bl PutText
 	adds r1, r4, #3
 	lsls r0, r1, #5
 	adds r0, #1
@@ -100481,22 +100481,22 @@ _08085EA0:
 	adds r5, r0, #0
 	movs r0, #0x20
 	adds r1, r5, #0
-	bl sub_08005564
+	bl GetStringTextCenteredPos
 	adds r6, r0, #0
 	adds r4, #0x2c
 	adds r0, r4, #0
-	bl sub_080053B0
+	bl ClearText
 	adds r0, r4, #0
 	adds r1, r6, #0
 	movs r2, #0
-	bl sub_08005458
+	bl Text_SetParams
 	adds r0, r4, #0
 	adds r1, r5, #0
-	bl sub_080055DC
+	bl Text_DrawString
 	mov r1, r8
 	adds r1, #0x82
 	adds r0, r4, #0
-	bl sub_08005460
+	bl PutText
 	movs r6, #0x81
 	lsls r6, r6, #1
 	add r6, r8
@@ -101545,7 +101545,7 @@ sub_08086748: @ 0x08086748
 	adds r0, #0x2c
 	adds r1, r6, #0
 	adds r1, #0x42
-	bl sub_08005460
+	bl PutText
 _08086796:
 	ldrh r5, [r5]
 	cmp r5, #1
@@ -101559,12 +101559,12 @@ _08086796:
 	adds r0, #0x2c
 	adds r1, r6, #0
 	adds r1, #0x42
-	bl sub_08005460
+	bl PutText
 	adds r0, r4, #0
 	adds r0, #0x34
 	adds r1, r6, #0
 	adds r1, #0xc2
-	bl sub_08005460
+	bl PutText
 _080867C0:
 	pop {r4, r5, r6, r7}
 	pop {r0}
@@ -101593,18 +101593,18 @@ sub_080867D8: @ 0x080867D8
 	adds r5, #0x2c
 	adds r0, r5, #0
 	movs r1, #8
-	bl sub_08005344
+	bl InitText
 	adds r4, r7, #0
 	adds r4, #0x34
 	adds r0, r4, #0
 	movs r1, #8
-	bl sub_08005344
+	bl InitText
 	adds r0, r7, #0
 	bl sub_08005E88
 	adds r0, r5, #0
-	bl sub_080053B0
+	bl ClearText
 	adds r0, r4, #0
-	bl sub_080053B0
+	bl ClearText
 	ldr r6, _08086860 @ =gPlaySt
 	movs r0, #0xe
 	ldrsb r0, [r6, r0]
@@ -101615,12 +101615,12 @@ sub_080867D8: @ 0x080867D8
 	adds r4, r0, #0
 	movs r0, #0x40
 	adds r1, r4, #0
-	bl sub_08005564
+	bl GetStringTextCenteredPos
 	adds r1, r0, #0
 	adds r0, r5, #0
 	movs r2, #0
 	adds r3, r4, #0
-	bl sub_080059DC
+	bl Text_InsertDrawString
 	movs r0, #0xe
 	ldrsb r0, [r6, r0]
 	bl GetROMChapterStruct
@@ -101656,7 +101656,7 @@ _08086884:
 	adds r0, r4, #0
 	movs r1, #0x14
 	movs r2, #0
-	bl sub_080059DC
+	bl Text_InsertDrawString
 	ldr r0, _080868B0 @ =gPlaySt
 	ldrb r0, [r0, #0xd]
 	cmp r0, #0
@@ -101665,7 +101665,7 @@ _08086884:
 	adds r0, r4, #0
 	movs r1, #0x24
 	movs r2, #1
-	bl sub_080059DC
+	bl Text_InsertDrawString
 	b _08086948
 	.align 2, 0
 _080868AC: .4byte 0x0841D0CC
@@ -101678,7 +101678,7 @@ _080868B8:
 	adds r0, r4, #0
 	movs r1, #0x2c
 	movs r2, #2
-	bl sub_08005A00
+	bl Text_InsertDrawNumberOrBlank
 	b _08086948
 _080868CC:
 	ldr r5, _08086900 @ =gPlaySt
@@ -101696,12 +101696,12 @@ _080868CC:
 	adds r4, #0x34
 	movs r0, #0x40
 	adds r1, r5, #0
-	bl sub_08005564
+	bl GetStringTextCenteredPos
 	adds r1, r0, #0
 	adds r0, r4, #0
 	movs r2, #4
 	adds r3, r5, #0
-	bl sub_080059DC
+	bl Text_InsertDrawString
 	b _08086948
 	.align 2, 0
 _08086900: .4byte gPlaySt
@@ -101713,12 +101713,12 @@ _08086908:
 	adds r0, r4, #0
 	movs r1, #0xa
 	movs r2, #2
-	bl sub_08005A00
+	bl Text_InsertDrawNumberOrBlank
 	ldr r3, _08086958 @ =0x0841D0E8
 	adds r0, r4, #0
 	movs r1, #0x12
 	movs r2, #0
-	bl sub_080059DC
+	bl Text_InsertDrawString
 	movs r0, #0xe
 	ldrsb r0, [r5, r0]
 	bl GetROMChapterStruct
@@ -101728,12 +101728,12 @@ _08086908:
 	adds r0, r4, #0
 	movs r1, #0x22
 	movs r2, #2
-	bl sub_08005A00
+	bl Text_InsertDrawNumberOrBlank
 	ldr r3, _0808695C @ =0x0841D0EC
 	adds r0, r4, #0
 	movs r1, #0x2a
 	movs r2, #0
-	bl sub_080059DC
+	bl Text_InsertDrawString
 _08086948:
 	adds r1, r7, #0
 	adds r1, #0x44
@@ -102633,7 +102633,7 @@ sub_08087054: @ 0x08087054
 	sub sp, #0x7c
 	add r5, sp, #0x18
 	bl ResetText
-	bl sub_08005944
+	bl InitTalkTextFont
 	add r7, sp, #8
 	add r0, sp, #0x10
 	mov r8, r0
@@ -102642,10 +102642,10 @@ sub_08087054: @ 0x08087054
 _08087070:
 	adds r0, r4, #0
 	movs r1, #0x16
-	bl sub_08005344
+	bl InitText
 	adds r0, r4, #0
 	movs r1, #0
-	bl sub_08005450
+	bl Text_SetColor
 	adds r4, #8
 	subs r6, #1
 	cmp r6, #0
@@ -102668,17 +102668,17 @@ _08087070:
 	ldr r4, _080870E4 @ =0x02022DE8
 	mov r0, sp
 	adds r1, r4, #0
-	bl sub_08005460
+	bl PutText
 	adds r1, r4, #0
 	adds r1, #0xc0
 	adds r0, r7, #0
-	bl sub_08005460
+	bl PutText
 	movs r0, #0xa0
 	lsls r0, r0, #1
 	adds r4, r4, r0
 	mov r0, r8
 	adds r1, r4, #0
-	bl sub_08005460
+	bl PutText
 	movs r0, #1
 	bl EnableBgSync
 	add sp, #0x7c
@@ -103024,7 +103024,7 @@ _0808736A:
 _0808736E:
 	adds r0, r1, #0
 	mov r1, sp
-	bl sub_08005528
+	bl GetCharTextLen
 	adds r1, r0, #0
 	b _0808735C
 _0808737A:
@@ -103335,12 +103335,12 @@ sub_080875FC: @ 0x080875FC
 	bl TmFillRect_thm
 	adds r0, r5, #0
 	adds r0, #8
-	bl sub_08005320
+	bl SetTextFont
 	movs r0, #0
-	bl sub_080052E0
+	bl SetTextFontGlyphs
 	adds r0, r5, #0
 	movs r1, #0
-	bl sub_08005B8C
+	bl SpriteText_DrawBackgroundExt
 	cmp r4, #0
 	bne _0808762C
 	b _0808774C
@@ -103353,26 +103353,26 @@ _0808762C:
 	beq _08087688
 	adds r0, r5, #0
 	movs r1, #2
-	bl sub_08005450
+	bl Text_SetColor
 	adds r0, r5, #0
 	movs r1, #0x80
-	bl sub_08005444
+	bl Text_SetCursor
 	ldr r4, _08087684 @ =0x0841D0F4
 	adds r0, r5, #0
 	adds r1, r4, #0
-	bl sub_080055DC
+	bl Text_DrawString
 	adds r0, r5, #0
 	movs r1, #0xa0
-	bl sub_08005444
+	bl Text_SetCursor
 	adds r0, r5, #0
 	adds r1, r4, #0
-	bl sub_080055DC
+	bl Text_DrawString
 	adds r0, r5, #0
 	movs r1, #0xb8
-	bl sub_08005444
+	bl Text_SetCursor
 	adds r0, r5, #0
 	adds r1, r4, #0
-	bl sub_080055DC
+	bl Text_DrawString
 	movs r0, #1
 	bl sub_08087380
 	b _08087786
@@ -103383,45 +103383,45 @@ _08087684: .4byte 0x0841D0F4
 _08087688:
 	adds r0, r5, #0
 	movs r1, #0
-	bl sub_08005450
+	bl Text_SetColor
 	ldr r0, [r4]
 	ldrh r0, [r0]
 	bl DecodeMsg
 	adds r1, r0, #0
 	adds r0, r5, #0
-	bl sub_080055DC
+	bl Text_DrawString
 	adds r0, r5, #0
 	movs r1, #2
-	bl sub_08005450
+	bl Text_SetColor
 	adds r0, r5, #0
 	movs r1, #0x88
-	bl sub_08005444
+	bl Text_SetCursor
 	movs r1, #8
 	ldrsb r1, [r4, r1]
 	adds r0, r5, #0
-	bl sub_080056A4
+	bl Text_DrawNumberOrBlank
 	adds r0, r4, #0
 	bl GetUnitCurrentHp
 	cmp r0, #0x63
 	ble _080876DC
 	adds r0, r5, #0
 	movs r1, #0xa0
-	bl sub_08005444
+	bl Text_SetCursor
 	ldr r1, _080876D8 @ =0x0841D0F4
 	adds r0, r5, #0
-	bl sub_080055DC
+	bl Text_DrawString
 	b _080876F2
 	.align 2, 0
 _080876D8: .4byte 0x0841D0F4
 _080876DC:
 	adds r0, r5, #0
 	movs r1, #0xa8
-	bl sub_08005444
+	bl Text_SetCursor
 	adds r0, r4, #0
 	bl GetUnitCurrentHp
 	adds r1, r0, #0
 	adds r0, r5, #0
-	bl sub_080056A4
+	bl Text_DrawNumberOrBlank
 _080876F2:
 	adds r0, r4, #0
 	bl GetUnitMaxHp
@@ -103429,22 +103429,22 @@ _080876F2:
 	ble _08087714
 	adds r0, r5, #0
 	movs r1, #0xb8
-	bl sub_08005444
+	bl Text_SetCursor
 	ldr r1, _08087710 @ =0x0841D0F4
 	adds r0, r5, #0
-	bl sub_080055DC
+	bl Text_DrawString
 	b _0808772A
 	.align 2, 0
 _08087710: .4byte 0x0841D0F4
 _08087714:
 	adds r0, r5, #0
 	movs r1, #0xc0
-	bl sub_08005444
+	bl Text_SetCursor
 	adds r0, r4, #0
 	bl GetUnitMaxHp
 	adds r1, r0, #0
 	adds r0, r5, #0
-	bl sub_080056A4
+	bl Text_DrawNumberOrBlank
 _0808772A:
 	adds r0, r4, #0
 	bl GetUnitMiniPortraitId
@@ -103463,38 +103463,38 @@ _08087748: .4byte 0x02022F12
 _0808774C:
 	adds r0, r5, #0
 	movs r1, #2
-	bl sub_08005450
+	bl Text_SetColor
 	adds r0, r5, #0
 	movs r1, #0x80
-	bl sub_08005444
+	bl Text_SetCursor
 	ldr r4, _080877E8 @ =0x0841D0F4
 	adds r0, r5, #0
 	adds r1, r4, #0
-	bl sub_080055DC
+	bl Text_DrawString
 	adds r0, r5, #0
 	movs r1, #0xa0
-	bl sub_08005444
+	bl Text_SetCursor
 	adds r0, r5, #0
 	adds r1, r4, #0
-	bl sub_080055DC
+	bl Text_DrawString
 	adds r0, r5, #0
 	movs r1, #0xb8
-	bl sub_08005444
+	bl Text_SetCursor
 	adds r0, r5, #0
 	adds r1, r4, #0
-	bl sub_080055DC
+	bl Text_DrawString
 _08087786:
 	adds r0, r5, #0
 	movs r1, #0
-	bl sub_08005450
+	bl Text_SetColor
 	adds r0, r5, #0
 	movs r1, #0xaf
-	bl sub_08005444
+	bl Text_SetCursor
 	ldr r1, _080877EC @ =0x0841D0FC
 	adds r0, r5, #0
-	bl sub_080055DC
+	bl Text_DrawString
 	movs r0, #0
-	bl sub_08005320
+	bl SetTextFont
 	movs r0, #1
 	bl EnableBgSync
 	ldr r2, _080877F0 @ =0x030027CC
@@ -103566,16 +103566,16 @@ sub_0808781C: @ 0x0808781C
 	ldr r1, _08087860 @ =0x06017800
 	adds r0, r4, #0
 	movs r2, #0x1a
-	bl sub_08005ACC
+	bl InitSpriteTextFont
 	adds r0, r4, #0
-	bl sub_08005320
+	bl SetTextFont
 	movs r0, #0
-	bl sub_080052E0
+	bl SetTextFontGlyphs
 	subs r4, #8
 	adds r0, r4, #0
-	bl sub_08005B08
+	bl InitSpriteText
 	movs r0, #0
-	bl sub_08005320
+	bl SetTextFont
 	pop {r4}
 	pop {r0}
 	bx r0
@@ -103685,12 +103685,12 @@ _08087920:
 	mov r8, r0
 	movs r0, #0x60
 	adds r1, r5, #0
-	bl sub_08005564
+	bl GetStringTextCenteredPos
 	adds r1, r0, #0
 	mov r0, r8
 	movs r2, #0
 	adds r3, r5, #0
-	bl sub_080059DC
+	bl Text_InsertDrawString
 	adds r0, r5, #0
 	bl sub_0808734C
 	adds r5, r0, #0
@@ -103700,12 +103700,12 @@ _08087920:
 	adds r4, #8
 	movs r0, #0x60
 	adds r1, r5, #0
-	bl sub_08005564
+	bl GetStringTextCenteredPos
 	adds r1, r0, #0
 	adds r0, r4, #0
 	movs r2, #0
 	adds r3, r5, #0
-	bl sub_080059DC
+	bl Text_InsertDrawString
 	movs r0, #2
 	strb r0, [r7]
 _0808797E:
@@ -103715,12 +103715,12 @@ _0808797E:
 	ldr r4, _080879A4 @ =0x02022E64
 	mov r0, r8
 	adds r1, r4, #0
-	bl sub_08005460
+	bl PutText
 	mov r0, r8
 	adds r0, #8
 	adds r4, #0x80
 	adds r1, r4, #0
-	bl sub_08005460
+	bl PutText
 	b _080879B0
 	.align 2, 0
 _0808799C: .4byte gPlaySt
@@ -103729,7 +103729,7 @@ _080879A4: .4byte 0x02022E64
 _080879A8:
 	ldr r1, _080879DC @ =0x02022EA4
 	mov r0, r8
-	bl sub_08005460
+	bl PutText
 _080879B0:
 	adds r1, r6, #0
 	adds r1, #0x2b
@@ -104477,26 +104477,26 @@ _08087F90:
 	ldr r1, _08088010 @ =0x06017800
 	mov r0, sp
 	movs r2, #0x12
-	bl sub_08005ACC
+	bl InitSpriteTextFont
 	mov r0, sp
-	bl sub_08005320
+	bl SetTextFont
 	adds r0, r4, #0
-	bl sub_08005B08
+	bl InitSpriteText
 	adds r0, r4, #0
 	movs r1, #0
-	bl sub_08005B8C
+	bl SpriteText_DrawBackgroundExt
 	movs r0, #0
-	bl sub_080052E0
+	bl SetTextFontGlyphs
 	movs r0, #0x30
 	adds r1, r5, #0
-	bl sub_08005564
+	bl GetStringTextCenteredPos
 	adds r1, r0, #0
 	adds r0, r4, #0
 	movs r2, #0
 	adds r3, r5, #0
-	bl sub_080059DC
+	bl Text_InsertDrawString
 	movs r0, #0
-	bl sub_08005320
+	bl SetTextFont
 	ldr r0, _08088014 @ =0x081901C8
 	movs r1, #0x90
 	lsls r1, r1, #2
@@ -104591,13 +104591,13 @@ _08088074:
 	bge _080880DA
 _080880A8:
 	movs r0, #1
-	bl sub_080052E0
+	bl SetTextFontGlyphs
 	ldr r0, [r6, #0x2c]
 	add r2, sp, #8
 	add r1, sp, #4
 	bl sub_08088884
 	movs r0, #0
-	bl sub_080052E0
+	bl SetTextFontGlyphs
 	ldr r1, [sp, #4]
 	adds r0, r1, #7
 	cmp r0, #0
@@ -104782,9 +104782,9 @@ _08088234:
 	adds r1, r6, #0
 	bl sub_080AA20C
 	ldr r0, [r6, #0x30]
-	bl sub_08005320
+	bl SetTextFont
 	movs r0, #1
-	bl sub_080052E0
+	bl SetTextFontGlyphs
 	mov r3, sb
 	movs r0, #0
 	ldrsb r0, [r3, r0]
@@ -104799,10 +104799,10 @@ _0808825E:
 	adds r4, #0x34
 	adds r4, r4, r0
 	ldr r0, [r4]
-	bl sub_08005B08
+	bl InitSpriteText
 	ldr r0, [r4]
 	movs r1, #0xb
-	bl sub_08005450
+	bl Text_SetColor
 	adds r5, #1
 	mov r7, sb
 	movs r0, #0
@@ -104816,7 +104816,7 @@ _08088286:
 	adds r0, r6, #0
 	bl sub_08088718
 	movs r0, #0
-	bl sub_08005320
+	bl SetTextFont
 	bl sub_08087E90
 	movs r1, #1
 	ands r1, r0
@@ -105167,7 +105167,7 @@ sub_08088548: @ 0x08088548
 	movs r4, #0
 	strb r4, [r0]
 	movs r0, #1
-	bl sub_080052E0
+	bl SetTextFontGlyphs
 	adds r1, r5, #0
 	adds r1, #0x59
 	strb r4, [r1]
@@ -105177,7 +105177,7 @@ sub_08088548: @ 0x08088548
 	ldr r0, [r5, #0x2c]
 	bl sub_080887B4
 	movs r0, #0
-	bl sub_080052E0
+	bl SetTextFontGlyphs
 	adds r0, r5, #0
 	bl sub_080893BC
 	pop {r4, r5}
@@ -105305,9 +105305,9 @@ _08088670:
 	ldr r0, [r4, #0x30]
 	adds r1, r7, #0
 	adds r2, r5, #0
-	bl sub_08005ACC
+	bl InitSpriteTextFont
 	movs r0, #0
-	bl sub_08005320
+	bl SetTextFont
 	ldr r0, _080886C8 @ =0x08190228
 	lsls r1, r5, #5
 	movs r2, #0x20
@@ -105391,7 +105391,7 @@ sub_08088718: @ 0x08088718
 	push {r4, r5, lr}
 	adds r5, r0, #0
 	ldr r0, [r5, #0x30]
-	bl sub_08005320
+	bl SetTextFont
 	adds r0, r5, #0
 	adds r0, #0x5c
 	ldrb r0, [r0]
@@ -105409,7 +105409,7 @@ _08088736:
 	adds r0, r0, r1
 	ldr r0, [r0]
 	movs r1, #0
-	bl sub_08005B8C
+	bl SpriteText_DrawBackgroundExt
 	adds r4, #1
 	adds r0, r5, #0
 	adds r0, #0x5c
@@ -105423,7 +105423,7 @@ _08088736:
 	ble _08088736
 _0808875C:
 	movs r0, #0
-	bl sub_08005320
+	bl SetTextFont
 	pop {r4, r5}
 	pop {r0}
 	bx r0
@@ -105433,7 +105433,7 @@ sub_08088768: @ 0x08088768
 	push {r4, r5, lr}
 	adds r5, r0, #0
 	ldr r0, [r5, #0x30]
-	bl sub_08005320
+	bl SetTextFont
 	adds r0, r5, #0
 	adds r0, #0x5c
 	ldrb r0, [r0]
@@ -105451,7 +105451,7 @@ _08088786:
 	adds r0, r0, r1
 	ldr r0, [r0]
 	movs r1, #0
-	bl sub_08005444
+	bl Text_SetCursor
 	adds r4, #1
 	adds r0, r5, #0
 	adds r0, #0x5c
@@ -105481,7 +105481,7 @@ sub_080887B4: @ 0x080887B4
 	movs r6, #0
 	ldrb r5, [r7]
 	movs r0, #1
-	bl sub_080052E0
+	bl SetTextFontGlyphs
 _080887CC:
 	ldrb r0, [r4]
 	cmp r0, #7
@@ -105526,7 +105526,7 @@ _0808880C:
 _08088810:
 	adds r0, r4, #0
 	mov r1, sp
-	bl sub_08005528
+	bl GetCharTextLen
 	adds r4, r0, #0
 	ldr r0, [sp]
 	adds r6, r6, r0
@@ -105601,7 +105601,7 @@ sub_08088884: @ 0x08088884
 	str r5, [r1]
 	str r5, [r7]
 	movs r0, #1
-	bl sub_080052E0
+	bl SetTextFontGlyphs
 _080888A0:
 	ldrb r2, [r4]
 	cmp r2, #0x19
@@ -105725,7 +105725,7 @@ _080889DA:
 _080889DE:
 	adds r0, r4, #0
 	mov r1, sp
-	bl sub_08005528
+	bl GetCharTextLen
 	adds r4, r0, #0
 	ldr r0, [sp]
 	adds r5, r5, r0
@@ -106204,7 +106204,7 @@ _08088D6C:
 	strb r0, [r1]
 _08088D74:
 	ldr r0, [r6, #0x30]
-	bl sub_08005320
+	bl SetTextFont
 	movs r0, #0
 	bl sub_08006C30
 	movs r1, #0x10
@@ -106669,7 +106669,7 @@ _080891EA:
 	adds r0, r4, r0
 	ldr r0, [r0]
 	movs r1, #0xc
-	bl sub_08005450
+	bl Text_SetColor
 	b _08089226
 _0808920E:
 	adds r5, r6, #0
@@ -106682,7 +106682,7 @@ _0808920E:
 	adds r0, r4, r0
 	ldr r0, [r0]
 	movs r1, #0xb
-	bl sub_08005450
+	bl Text_SetColor
 _08089226:
 	movs r0, #0
 	ldrsb r0, [r5, r0]
@@ -106690,7 +106690,7 @@ _08089226:
 	adds r0, r4, r0
 	ldr r0, [r0]
 	ldr r1, [r6, #0x2c]
-	bl sub_080056D8
+	bl Text_DrawCharacter
 	str r0, [r6, #0x2c]
 	bl GetTextPrintDelay
 	adds r4, r0, #0
@@ -106722,7 +106722,7 @@ _0808926A:
 	b _08088D9A
 _08089274:
 	movs r0, #0
-	bl sub_08005320
+	bl SetTextFont
 	movs r0, #0
 	adds r1, r7, #0
 	bl sub_08006C14
@@ -107072,14 +107072,14 @@ sub_080894EC: @ 0x080894EC
 	mov r0, r8
 	movs r1, #0x10
 	adds r2, r6, #0
-	bl sub_080059DC
+	bl Text_InsertDrawString
 	ldr r0, [r5, #4]
 	bl DecodeMsg
 	adds r3, r0, #0
 	mov r0, r8
 	movs r1, #0x38
 	adds r2, r6, #0
-	bl sub_080059DC
+	bl Text_InsertDrawString
 	ldr r0, _08089548 @ =0x08D8B6FC
 	adds r1, r7, #0
 	bl Proc_StartBlocking
@@ -107232,7 +107232,7 @@ sub_08089638: @ 0x08089638
 	bl TmFillRect_thm
 	ldr r4, _08089698 @ =0x0200D660
 	adds r0, r4, #0
-	bl sub_080053B0
+	bl ClearText
 	movs r3, #0
 	ldr r0, _0808969C @ =0x08D8BB00
 	mov r8, r0
@@ -107270,16 +107270,16 @@ _0808969C: .4byte 0x08D8BB00
 _080896A0:
 	adds r0, r5, #0
 	movs r1, #0
-	bl sub_08005444
+	bl Text_SetCursor
 	adds r0, r5, #0
 	movs r1, #0
-	bl sub_08005450
+	bl Text_SetColor
 	ldr r1, [r4]
 	adds r0, r5, #0
-	bl sub_080055DC
+	bl Text_DrawString
 	adds r0, r5, #0
 	ldr r1, _080896C4 @ =0x02023CC8
-	bl sub_08005460
+	bl PutText
 	b _080896D2
 	.align 2, 0
 _080896C4: .4byte 0x02023CC8
@@ -108784,7 +108784,7 @@ _0808A26C:
 	ldr r1, _0808A2FC @ =0x0200D570
 	adds r0, r0, r1
 	movs r1, #5
-	bl sub_08005344
+	bl InitText
 	adds r0, r5, #0
 	movs r1, #7
 	bl sub_0800536C
@@ -108792,10 +108792,10 @@ _0808A26C:
 	adds r0, #8
 	adds r0, r7, r0
 	movs r1, #7
-	bl sub_08005344
+	bl InitText
 	mov r0, sb
 	movs r1, #5
-	bl sub_08005344
+	bl InitText
 	movs r0, #0x18
 	add sb, r0
 	adds r5, #0x18
@@ -108805,13 +108805,13 @@ _0808A26C:
 	ble _0808A26C
 	ldr r0, _0808A300 @ =0x0200D650
 	movs r1, #4
-	bl sub_08005344
+	bl InitText
 	ldr r0, _0808A304 @ =0x0200D658
 	movs r1, #0x14
-	bl sub_08005344
+	bl InitText
 	ldr r0, _0808A308 @ =0x0200D660
 	movs r1, #4
-	bl sub_08005344
+	bl InitText
 	ldr r1, [sp, #0x14]
 	ldrb r0, [r1]
 	bl sub_08089638
@@ -108856,19 +108856,19 @@ _0808A31C:
 	strb r1, [r6]
 	ldr r4, _0808A36C @ =0x0200D650
 	adds r0, r4, #0
-	bl sub_080053B0
+	bl ClearText
 	adds r0, r4, #0
 	movs r1, #0
-	bl sub_08005444
+	bl Text_SetCursor
 	adds r0, r4, #0
 	movs r1, #0
-	bl sub_08005450
+	bl Text_SetColor
 	ldr r1, _0808A370 @ =0x0842CE14
 	adds r0, r4, #0
-	bl sub_080055DC
+	bl Text_DrawString
 	ldr r1, _0808A374 @ =0x02023DA6
 	adds r0, r4, #0
-	bl sub_08005460
+	bl PutText
 	ldr r1, _0808A378 @ =0x0200E66C
 	movs r2, #0xff
 	adds r0, r1, #0
@@ -111154,7 +111154,7 @@ sub_0808B520: @ 0x0808B520
 	bl TmFillRect_thm
 	ldr r0, _0808B568 @ =0x0200D658
 	mov r8, r0
-	bl sub_080053B0
+	bl ClearText
 	cmp r4, #5
 	bne _0808B56C
 	movs r5, #0
@@ -111197,16 +111197,16 @@ _0808B592:
 	ldrb r1, [r4, #8]
 	subs r1, #0x40
 	adds r0, r7, #0
-	bl sub_08005444
+	bl Text_SetCursor
 	adds r0, r7, #0
 	movs r1, #0
-	bl sub_08005450
+	bl Text_SetColor
 	mov r0, r8
 	adds r0, #4
 	adds r0, r6, r0
 	ldr r1, [r0]
 	adds r0, r7, #0
-	bl sub_080055DC
+	bl Text_DrawString
 	adds r4, #0x10
 	adds r6, #0x10
 	adds r5, #1
@@ -111218,7 +111218,7 @@ _0808B592:
 _0808B5C2:
 	ldr r0, _0808B5E0 @ =0x0200D658
 	mov r1, sb
-	bl sub_08005460
+	bl PutText
 _0808B5CA:
 	movs r0, #4
 	bl EnableBgSync
@@ -111332,10 +111332,10 @@ sub_0808B654: @ 0x0808B654
 	ldr r0, _0808B6F4 @ =0x0200D570
 	adds r5, r4, r0
 	adds r0, r5, #0
-	bl sub_080053B0
+	bl ClearText
 	adds r0, r5, #0
 	movs r1, #0
-	bl sub_08005444
+	bl Text_SetCursor
 	bl sub_0803DEC4
 	lsls r0, r0, #0x18
 	mov r8, r4
@@ -111356,7 +111356,7 @@ sub_0808B654: @ 0x0808B654
 	beq _0808B6F8
 	adds r0, r5, #0
 	movs r1, #4
-	bl sub_08005450
+	bl Text_SetColor
 	b _0808B702
 	.align 2, 0
 _0808B6F0: .4byte 0x0200CBF0
@@ -111365,7 +111365,7 @@ _0808B6F8:
 	ldr r0, _0808B778 @ =0x0200D570
 	add r0, r8
 	mov r1, sb
-	bl sub_08005450
+	bl Text_SetColor
 _0808B702:
 	ldr r4, _0808B778 @ =0x0200D570
 	add r4, r8
@@ -111379,13 +111379,13 @@ _0808B702:
 	bl DecodeMsg
 	adds r1, r0, #0
 	adds r0, r4, #0
-	bl sub_080055DC
+	bl Text_DrawString
 	ldr r3, [sp, #0x30]
 	lsls r1, r3, #6
 	add r1, sl
 	adds r1, #6
 	adds r0, r4, #0
-	bl sub_08005460
+	bl PutText
 _0808B72E:
 	ldr r4, [sp, #0x2c]
 	lsls r5, r4, #1
@@ -111394,11 +111394,11 @@ _0808B72E:
 	mov r8, r0
 	ldr r6, _0808B780 @ =0x0200D5A8
 	adds r0, r0, r6
-	bl sub_080053B0
+	bl ClearText
 	adds r0, r6, #0
 	adds r0, #8
 	add r0, r8
-	bl sub_080053B0
+	bl ClearText
 	ldr r0, [sp, #0x30]
 	lsls r4, r0, #6
 	mov r1, sl
@@ -111459,13 +111459,13 @@ _0808B7A0:
 	str r3, [sp]
 	str r2, [sp, #4]
 	movs r2, #0
-	bl sub_08005998
+	bl PutDrawText
 	adds r4, #8
 	adds r5, r5, r4
 	mov r4, sb
 	adds r0, r5, #0
 	adds r1, r4, #0
-	bl sub_08005450
+	bl Text_SetColor
 	mov r1, r8
 	ldr r0, [r1]
 	ldr r0, [r0]
@@ -111483,7 +111483,7 @@ _0808B7A0:
 	adds r0, r5, #0
 	adds r2, r4, #0
 	movs r3, #0
-	bl sub_08005998
+	bl PutDrawText
 	b _0808B87A
 	.align 2, 0
 _0808B810: .4byte 0x0200CBF0
@@ -111505,7 +111505,7 @@ _0808B81C:
 	adds r0, r5, #0
 	adds r2, r4, #0
 	movs r3, #0
-	bl sub_08005998
+	bl PutDrawText
 	adds r4, r7, #0
 	adds r4, #0x1e
 	mov r1, r8
@@ -111536,7 +111536,7 @@ _0808B87A:
 	ldr r1, _0808B8B0 @ =0x0200D5B8
 	adds r5, r0, r1
 	adds r0, r5, #0
-	bl sub_080053B0
+	bl ClearText
 	ldr r0, _0808B8B4 @ =0x0200CBF0
 	ldr r6, [sp, #0x4c]
 	adds r0, r6, r0
@@ -111586,7 +111586,7 @@ _0808B8E0:
 	adds r0, r5, #0
 	movs r2, #4
 	movs r3, #8
-	bl sub_08005998
+	bl PutDrawText
 	b _0808BEF4
 	.align 2, 0
 _0808B8F0: .4byte 0x0842CE2C
@@ -111600,7 +111600,7 @@ _0808B8F4:
 	adds r0, r5, #0
 	movs r2, #1
 	movs r3, #4
-	bl sub_08005998
+	bl PutDrawText
 	b _0808BEF4
 	.align 2, 0
 _0808B90C: .4byte 0x0842CE30
@@ -111630,7 +111630,7 @@ _0808B910:
 	str r3, [sp, #4]
 	mov r2, r8
 	movs r3, #0
-	bl sub_08005998
+	bl PutDrawText
 	adds r3, r4, #0
 	adds r3, #0x22
 	movs r1, #2
@@ -111857,7 +111857,7 @@ _0808BAF2:
 	ldr r3, _0808BB34 @ =0x0842CE1C
 	str r3, [sp, #4]
 	movs r3, #0
-	bl sub_08005998
+	bl PutDrawText
 	b _0808BB9C
 	.align 2, 0
 _0808BB2C: .4byte 0x0200CBF0
@@ -111885,7 +111885,7 @@ _0808BB38:
 	movs r3, #0
 	str r3, [sp]
 	str r5, [sp, #4]
-	bl sub_08005998
+	bl PutDrawText
 	adds r4, #0x10
 	ldr r0, [r7]
 	ldr r0, [r0]
@@ -111984,7 +111984,7 @@ _0808BC00:
 	movs r3, #0
 	str r3, [sp]
 	str r5, [sp, #4]
-	bl sub_08005998
+	bl PutDrawText
 	b _0808BC6A
 	.align 2, 0
 _0808BC40: .4byte 0x0200CBF0
@@ -112005,7 +112005,7 @@ _0808BC48:
 	ldr r3, _0808BD20 @ =0x0842CE38
 	str r3, [sp, #4]
 	movs r3, #0
-	bl sub_08005998
+	bl PutDrawText
 _0808BC6A:
 	mov r8, r4
 	ldr r7, [sp, #0x54]
@@ -112090,7 +112090,7 @@ _0808BCDA:
 	movs r3, #0
 	str r3, [sp]
 	str r4, [sp, #4]
-	bl sub_08005998
+	bl PutDrawText
 	b _0808BEF4
 	.align 2, 0
 _0808BD1C: .4byte 0x0200D5B0
@@ -112164,7 +112164,7 @@ _0808BD8C:
 	adds r0, r6, #0
 	adds r0, #0x10
 	add r0, r8
-	bl sub_080053B0
+	bl ClearText
 	movs r6, #0
 	ldr r0, [sp, #0x40]
 	cmp r4, r0
@@ -112228,7 +112228,7 @@ _0808BDD4:
 	mov r3, r8
 	lsrs r2, r3, #0x1f
 	movs r3, #0
-	bl sub_08005998
+	bl PutDrawText
 	b _0808BE8A
 	.align 2, 0
 _0808BE44: .4byte 0x0200CBF0
@@ -112260,7 +112260,7 @@ _0808BE4C:
 	str r3, [sp, #4]
 	movs r2, #1
 	movs r3, #0
-	bl sub_08005998
+	bl PutDrawText
 _0808BE8A:
 	adds r0, r4, #1
 	lsls r0, r0, #0x18
@@ -112311,7 +112311,7 @@ _0808BEC8:
 	str r2, [sp, #4]
 	lsrs r2, r6, #0x1f
 	movs r3, #0
-	bl sub_08005998
+	bl PutDrawText
 	adds r0, r4, #1
 	lsls r0, r0, #0x18
 	lsrs r4, r0, #0x18
@@ -118534,7 +118534,7 @@ sub_0808EDD0: @ 0x0808EDD0
 	mov r0, sp
 	adds r1, r2, #0
 	adds r2, r4, #0
-	bl sub_08005ACC
+	bl InitSpriteTextFont
 	ldr r0, _0808EE4C @ =0x081901C8
 	adds r4, #0x10
 	lsls r4, r4, #5
@@ -118543,14 +118543,14 @@ sub_0808EDD0: @ 0x0808EDD0
 	bl ApplyPaletteExt
 	add r5, sp, #0x18
 	adds r0, r5, #0
-	bl sub_08005B08
+	bl InitSpriteText
 	mov r0, sp
-	bl sub_08005320
+	bl SetTextFont
 	movs r0, #0
-	bl sub_080052E0
+	bl SetTextFontGlyphs
 	adds r0, r5, #0
 	movs r1, #0
-	bl sub_08005B8C
+	bl SpriteText_DrawBackgroundExt
 	ldr r0, _0808EE50 @ =gPlaySt
 	ldrb r0, [r0, #0xe]
 	lsls r0, r0, #0x18
@@ -118562,14 +118562,14 @@ sub_0808EDD0: @ 0x0808EDD0
 	adds r4, r0, #0
 	movs r0, #0x60
 	adds r1, r4, #0
-	bl sub_08005564
+	bl GetStringTextCenteredPos
 	adds r1, r0, #0
 	adds r0, r5, #0
 	movs r2, #0
 	adds r3, r4, #0
-	bl sub_080059DC
+	bl Text_InsertDrawString
 	movs r0, #0
-	bl sub_08005320
+	bl SetTextFont
 	add sp, #0x20
 	pop {r4, r5}
 	pop {r0}
@@ -118632,7 +118632,7 @@ sub_0808EEAC: @ 0x0808EEAC
 	movs r4, #4
 _0808EEB2:
 	adds r0, r5, #0
-	bl sub_080053B0
+	bl ClearText
 	adds r5, #8
 	subs r4, #1
 	cmp r4, #0
@@ -118671,7 +118671,7 @@ _0808EEEA:
 _0808EEFC: .4byte 0x020106B4
 _0808EF00:
 	adds r0, r4, #0
-	bl sub_080056D8
+	bl Text_DrawCharacter
 	b _0808EEE8
 _0808EF08:
 	pop {r4}
@@ -118690,7 +118690,7 @@ _0808EF1A:
 	ldr r1, _0808EF40 @ =0x02023C7C
 	adds r1, r5, r1
 	adds r0, r4, #0
-	bl sub_08005460
+	bl PutText
 	adds r5, #0x80
 	adds r4, #8
 	adds r6, #1
@@ -118854,7 +118854,7 @@ sub_0808F010: @ 0x0808F010
 _0808F07C:
 	adds r0, r5, #0
 	movs r1, #0xe
-	bl sub_08005344
+	bl InitText
 	adds r5, #8
 	subs r4, #1
 	cmp r4, #0
@@ -118866,14 +118866,14 @@ _0808F07C:
 _0808F094:
 	adds r0, r5, #0
 	movs r1, #8
-	bl sub_08005344
+	bl InitText
 	adds r5, #8
 	subs r4, #1
 	cmp r4, #0
 	bge _0808F094
 	ldr r0, _0808F214 @ =0x0201068C
 	movs r1, #0xa
-	bl sub_08005344
+	bl InitText
 	ldr r0, _0808F218 @ =0x0841E814
 	ldr r1, _0808F21C @ =0x06014800
 	bl sub_08013688
@@ -119149,7 +119149,7 @@ _0808F30E:
 	cmp r0, #0
 	beq _0808F346
 	adds r0, r5, #0
-	bl sub_080053B0
+	bl ClearText
 	ldr r1, _0808F360 @ =0x08D8D5F8
 	lsls r0, r4, #2
 	adds r0, r0, r1
@@ -119162,7 +119162,7 @@ _0808F30E:
 	str r0, [sp, #4]
 	adds r0, r5, #0
 	movs r3, #0
-	bl sub_08005998
+	bl PutDrawText
 	adds r5, #8
 	adds r6, #0x80
 _0808F346:
@@ -120155,7 +120155,7 @@ _0808FADC:
 	adds r1, r5, #0
 	movs r2, #0
 	movs r3, #0
-	bl sub_08005998
+	bl PutDrawText
 	ldr r0, _0808FC40 @ =0x00001132
 	bl DecodeMsg
 	adds r1, r5, #0
@@ -120165,7 +120165,7 @@ _0808FADC:
 	movs r0, #0
 	movs r2, #0
 	movs r3, #0
-	bl sub_08005998
+	bl PutDrawText
 	ldr r0, _0808FC44 @ =0x0000113A
 	bl DecodeMsg
 	movs r2, #0x80
@@ -120176,7 +120176,7 @@ _0808FADC:
 	movs r0, #0
 	movs r2, #0
 	movs r3, #0
-	bl sub_08005998
+	bl PutDrawText
 	ldr r0, _0808FC48 @ =0x00001135
 	bl DecodeMsg
 	movs r2, #0xc0
@@ -120187,7 +120187,7 @@ _0808FADC:
 	movs r0, #0
 	movs r2, #0
 	movs r3, #0
-	bl sub_08005998
+	bl PutDrawText
 	ldr r0, _0808FC4C @ =0x00001134
 	bl DecodeMsg
 	movs r2, #0x80
@@ -120198,7 +120198,7 @@ _0808FADC:
 	movs r0, #0
 	movs r2, #0
 	movs r3, #0
-	bl sub_08005998
+	bl PutDrawText
 	ldr r0, _0808FC50 @ =0x0841D100
 	movs r1, #0xf0
 	lsls r1, r1, #1
@@ -120221,7 +120221,7 @@ _0808FADC:
 _0808FBA0:
 	adds r0, r5, #0
 	movs r1, #0xe
-	bl sub_08005344
+	bl InitText
 	adds r5, #8
 	subs r4, #1
 	cmp r4, #0
@@ -121856,7 +121856,7 @@ _08090854:
 	str r2, [r0, #0x30]
 	adds r0, #0x3c
 	movs r1, #7
-	bl sub_08005344
+	bl InitText
 	ldrb r0, [r5]
 	adds r0, #1
 	strb r0, [r5]
@@ -122001,7 +122001,7 @@ _08090980:
 	adds r5, r4, #0
 	adds r5, #0x3c
 	adds r0, r5, #0
-	bl sub_080053B0
+	bl ClearText
 	ldr r0, [r4, #0x34]
 	bl DecodeMsg
 	lsls r1, r6, #1
@@ -122015,7 +122015,7 @@ _08090980:
 	str r3, [sp]
 	str r0, [sp, #4]
 	adds r0, r5, #0
-	bl sub_08005998
+	bl PutDrawText
 	adds r6, #0x40
 	adds r7, #1
 	mov r0, r8
@@ -122662,19 +122662,19 @@ sub_08090E80: @ 0x08090E80
 	adds r5, r2, #0
 	adds r6, r3, #0
 	ldr r7, [sp, #0x18]
-	bl sub_080053B0
+	bl ClearText
 	adds r0, r4, #0
 	adds r1, r5, #0
-	bl sub_08005450
+	bl Text_SetColor
 	adds r0, r4, #0
 	adds r1, r6, #0
-	bl sub_08005444
+	bl Text_SetCursor
 	adds r0, r4, #0
 	adds r1, r7, #0
-	bl sub_080055DC
+	bl Text_DrawString
 	adds r0, r4, #0
 	mov r1, r8
-	bl sub_08005460
+	bl PutText
 	pop {r3}
 	mov r8, r3
 	pop {r4, r5, r6, r7}
@@ -124586,7 +124586,7 @@ sub_08091CC8: @ 0x08091CC8
 	ldr r0, _08091D0C @ =0x02012A90
 	ldr r4, _08091D10 @ =0x020230C6
 	adds r1, r4, #0
-	bl sub_08005460
+	bl PutText
 	adds r5, r4, #0
 	adds r5, #0x12
 	bl GetGold
@@ -124738,7 +124738,7 @@ sub_08091D38: @ 0x08091D38
 _08091E32:
 	adds r0, r5, #0
 	movs r1, #5
-	bl sub_08005344
+	bl InitText
 	adds r5, #8
 	subs r4, #1
 	cmp r4, #0
@@ -124757,10 +124757,10 @@ _08091E32:
 _08091E58:
 	adds r0, r5, #0
 	movs r1, #7
-	bl sub_08005344
+	bl InitText
 	adds r0, r6, #0
 	movs r1, #7
-	bl sub_08005344
+	bl InitText
 	adds r6, #8
 	adds r5, #8
 	subs r4, #1
@@ -124776,14 +124776,14 @@ _08091E58:
 	bl sub_0800536C
 	ldr r0, _08092110 @ =0x02012A80
 	movs r1, #8
-	bl sub_08005344
+	bl InitText
 	ldr r0, _08092114 @ =0x02012A90
 	movs r1, #7
-	bl sub_08005344
+	bl InitText
 	adds r0, r4, #0
 	adds r0, #0x28
 	movs r1, #5
-	bl sub_08005344
+	bl InitText
 	ldr r0, _08092118 @ =0x06014000
 	movs r1, #1
 	rsbs r1, r1, #0
@@ -125010,10 +125010,10 @@ _08091FF6:
 	bl sub_080AAB3C
 	ldr r0, _08092114 @ =0x02012A90
 	movs r1, #3
-	bl sub_08005450
+	bl Text_SetColor
 	ldr r1, _08092144 @ =0x0842CF5C
 	ldr r0, _08092114 @ =0x02012A90
-	bl sub_080055DC
+	bl Text_DrawString
 	movs r1, #0
 	ldr r3, [sp, #0x30]
 	movs r0, #0
@@ -125023,19 +125023,19 @@ _08091FF6:
 	movs r1, #1
 _080920B4:
 	ldr r0, _08092110 @ =0x02012A80
-	bl sub_08005450
+	bl Text_SetColor
 	ldr r0, _08092110 @ =0x02012A80
 	movs r1, #0
-	bl sub_08005444
+	bl Text_SetCursor
 	ldr r1, _08092148 @ =0x0842CF64
 	ldr r0, _08092110 @ =0x02012A80
-	bl sub_080055DC
+	bl Text_DrawString
 	ldr r0, _08092110 @ =0x02012A80
 	movs r1, #0x20
-	bl sub_08005444
+	bl Text_SetCursor
 	ldr r1, _0809214C @ =0x0842CF6C
 	ldr r0, _08092110 @ =0x02012A80
-	bl sub_080055DC
+	bl Text_DrawString
 	add sp, #0x34
 	pop {r3, r4, r5}
 	mov r8, r3
@@ -125109,11 +125109,11 @@ sub_08092194: @ 0x08092194
 	bl TmFillRect_thm
 	ldr r4, _080921F0 @ =0x02012A70
 	adds r0, r4, #0
-	bl sub_080053B0
+	bl ClearText
 	movs r0, #8
 	adds r0, r0, r4
 	mov r8, r0
-	bl sub_080053B0
+	bl ClearText
 	adds r1, r5, #0
 	adds r1, #0x42
 	movs r6, #0
@@ -125123,7 +125123,7 @@ sub_08092194: @ 0x08092194
 	adds r0, r4, #0
 	movs r2, #0
 	movs r3, #0
-	bl sub_08005998
+	bl PutDrawText
 	adds r5, #0xc2
 	str r6, [sp]
 	ldr r0, _080921F8 @ =0x0842CF84
@@ -125132,7 +125132,7 @@ sub_08092194: @ 0x08092194
 	adds r1, r5, #0
 	movs r2, #0
 	movs r3, #0
-	bl sub_08005998
+	bl PutDrawText
 	add sp, #8
 	pop {r3}
 	mov r8, r3
@@ -125900,11 +125900,11 @@ sub_08092838: @ 0x08092838
 	bl TmFillRect_thm
 	ldr r4, _08092908 @ =0x02012A70
 	adds r0, r4, #0
-	bl sub_080053B0
+	bl ClearText
 	adds r6, r4, #0
 	adds r6, #8
 	adds r0, r6, #0
-	bl sub_080053B0
+	bl ClearText
 	bl sub_0808E664
 	movs r2, #0
 	cmp r0, #1
@@ -125914,7 +125914,7 @@ _0809286E:
 	ldr r3, _0809290C @ =0x0842CFA4
 	adds r0, r4, #0
 	movs r1, #0
-	bl sub_080059DC
+	bl Text_InsertDrawString
 	bl sub_0808E664
 	movs r2, #0
 	cmp r0, #1
@@ -125924,11 +125924,11 @@ _08092884:
 	ldr r3, _08092910 @ =0x0842CFAC
 	adds r0, r4, #0
 	movs r1, #0x20
-	bl sub_080059DC
+	bl Text_InsertDrawString
 	adds r1, r5, #0
 	adds r1, #0x40
 	adds r0, r4, #0
-	bl sub_08005460
+	bl PutText
 	adds r0, r7, #0
 	bl sub_08091C28
 	movs r2, #0
@@ -125940,7 +125940,7 @@ _080928A8:
 	ldr r3, _08092914 @ =0x0842CFB4
 	adds r0, r6, #0
 	movs r1, #0
-	bl sub_080059DC
+	bl Text_InsertDrawString
 	movs r4, #0
 	mov r0, r8
 	adds r0, #0x2b
@@ -125963,18 +125963,18 @@ _080928D6:
 	adds r0, r6, #0
 	movs r1, #0x20
 	adds r2, r4, #0
-	bl sub_080059DC
+	bl Text_InsertDrawString
 	ldr r4, _0809291C @ =0x02012A78
 	adds r1, r5, #0
 	adds r1, #0xc0
 	adds r0, r4, #0
-	bl sub_08005460
+	bl PutText
 	adds r4, #8
 	movs r0, #0xa0
 	lsls r0, r0, #1
 	adds r1, r5, r0
 	adds r0, r4, #0
-	bl sub_08005460
+	bl PutText
 	pop {r3}
 	mov r8, r3
 	pop {r4, r5, r6, r7}
@@ -126038,7 +126038,7 @@ _0809294A:
 	bl sub_08006E10
 	ldr r5, _08092A18 @ =0x02012A98
 	adds r0, r5, #0
-	bl sub_080053B0
+	bl ClearText
 	mov r1, r8
 	ldr r0, [r1]
 	ldrh r0, [r0]
@@ -126046,7 +126046,7 @@ _0809294A:
 	adds r4, r0, #0
 	movs r0, #0x28
 	adds r1, r4, #0
-	bl sub_08005564
+	bl GetStringTextCenteredPos
 	adds r3, r0, #0
 	adds r1, r7, #0
 	adds r1, #0xa
@@ -126054,7 +126054,7 @@ _0809294A:
 	str r4, [sp, #4]
 	adds r0, r5, #0
 	movs r2, #0
-	bl sub_08005998
+	bl PutDrawText
 	adds r0, r7, #0
 	adds r0, #0x8a
 	movs r1, #3
@@ -127226,18 +127226,18 @@ _08093362:
 	cmp r0, #0
 	bne _08093390
 	adds r0, r6, #0
-	bl sub_080053B0
+	bl ClearText
 	adds r0, r6, #0
 	adds r1, r7, #0
-	bl sub_08005450
+	bl Text_SetColor
 	adds r0, r6, #0
 	movs r1, #0
-	bl sub_08005444
+	bl Text_SetCursor
 	adds r0, r5, #0
 	bl GetItemName
 	adds r1, r0, #0
 	adds r0, r6, #0
-	bl sub_080055DC
+	bl Text_DrawString
 _08093390:
 	adds r0, r5, #0
 	bl sub_08017808
@@ -127248,7 +127248,7 @@ _08093390:
 	bl PutIcon
 	adds r0, r6, #0
 	ldr r1, [sp, #0xc]
-	bl sub_08005460
+	bl PutText
 	movs r4, #1
 	cmp r7, #0
 	bne _080933B2
@@ -127385,7 +127385,7 @@ _080934AC:
 	cmp r1, #0
 	bne _080934B8
 	adds r0, r6, #0
-	bl sub_080053B0
+	bl ClearText
 _080934B8:
 	ldr r4, [sp]
 	add r4, r8
@@ -127408,16 +127408,16 @@ _080934B8:
 	adds r4, r0, #0
 	adds r0, r6, #0
 	movs r1, #0
-	bl sub_08005444
+	bl Text_SetCursor
 	adds r0, r6, #0
 	movs r1, #0
-	bl sub_08005450
+	bl Text_SetColor
 	ldr r0, [r4]
 	ldrh r0, [r0]
 	bl DecodeMsg
 	adds r1, r0, #0
 	adds r0, r6, #0
-	bl sub_080055DC
+	bl Text_DrawString
 _08093504:
 	lsls r1, r5, #5
 	adds r1, r1, r7
@@ -127425,7 +127425,7 @@ _08093504:
 	ldr r0, _0809353C @ =gBg2Tm
 	adds r1, r1, r0
 	adds r0, r6, #0
-	bl sub_08005460
+	bl PutText
 _08093514:
 	adds r6, #8
 	movs r0, #1
@@ -127913,7 +127913,7 @@ _080938BA:
 	ldr r0, _08093918 @ =0x02012AA0
 	adds r4, r4, r0
 	adds r0, r4, #0
-	bl sub_080053B0
+	bl ClearText
 	ldr r0, [r5]
 	ldrh r0, [r0]
 	bl DecodeMsg
@@ -127932,7 +127932,7 @@ _080938BA:
 	adds r0, r4, #0
 	adds r2, r6, #0
 	movs r3, #0
-	bl sub_08005998
+	bl PutDrawText
 _080938F6:
 	movs r0, #7
 	add sb, r0
@@ -128163,7 +128163,7 @@ sub_08093AB4: @ 0x08093AB4
 _08093ABE:
 	adds r0, r5, #0
 	movs r1, #5
-	bl sub_08005344
+	bl InitText
 	adds r5, #8
 	subs r4, #1
 	cmp r4, #0
@@ -128173,7 +128173,7 @@ _08093ABE:
 _08093AD2:
 	adds r0, r5, #0
 	movs r1, #7
-	bl sub_08005344
+	bl InitText
 	adds r5, #8
 	subs r4, #1
 	cmp r4, #0
@@ -128181,15 +128181,15 @@ _08093AD2:
 	ldr r4, _08093B10 @ =0x02012B38
 	adds r0, r4, #0
 	movs r1, #7
-	bl sub_08005344
+	bl InitText
 	adds r0, r4, #0
 	adds r0, #8
 	movs r1, #0xa
-	bl sub_08005344
+	bl InitText
 	adds r4, #0x10
 	adds r0, r4, #0
 	movs r1, #0xb
-	bl sub_08005344
+	bl InitText
 	pop {r4, r5}
 	pop {r0}
 	bx r0
@@ -128330,13 +128330,13 @@ sub_08093C00: @ 0x08093C00
 	bl sub_08006E10
 	ldr r0, _08093CBC @ =0x02012B38
 	mov r8, r0
-	bl sub_080053B0
+	bl ClearText
 	ldr r0, [r5]
 	ldrh r0, [r0]
 	bl DecodeMsg
 	adds r1, r0, #0
 	movs r0, #0x38
-	bl sub_08005564
+	bl GetStringTextCenteredPos
 	adds r6, r0, #0
 	ldr r0, [r5]
 	ldrh r0, [r0]
@@ -128349,7 +128349,7 @@ sub_08093C00: @ 0x08093C00
 	mov r0, r8
 	movs r2, #0
 	adds r3, r6, #0
-	bl sub_08005998
+	bl PutDrawText
 	adds r0, r4, #0
 	movs r1, #3
 	movs r2, #0x24
@@ -128445,7 +128445,7 @@ _08093D10:
 	ldr r0, _08093DC0 @ =0x02012B10
 	adds r5, r1, r0
 	adds r0, r5, #0
-	bl sub_080053B0
+	bl ClearText
 	adds r0, r7, #0
 	adds r1, r4, #0
 	bl sub_08016F04
@@ -128467,7 +128467,7 @@ _08093D4E:
 	adds r0, r5, #0
 	adds r2, r6, #0
 	movs r3, #0
-	bl sub_08005998
+	bl PutDrawText
 	adds r0, r7, #0
 	adds r1, r4, #0
 	bl sub_08016F04
@@ -128521,7 +128521,7 @@ sub_08093DC8: @ 0x08093DC8
 	bne _08093E04
 	ldr r4, _08093E88 @ =0x02012B48
 	adds r0, r4, #0
-	bl sub_080053B0
+	bl ClearText
 	ldr r5, _08093E8C @ =0x02022CBC
 	str r6, [sp]
 	ldr r0, _08093E90 @ =0x0842CFC4
@@ -128530,7 +128530,7 @@ sub_08093DC8: @ 0x08093DC8
 	adds r1, r5, #0
 	movs r2, #0
 	movs r3, #0
-	bl sub_08005998
+	bl PutDrawText
 	str r6, [sp]
 	ldr r0, _08093E94 @ =0x0842CFCC
 	str r0, [sp, #4]
@@ -128538,7 +128538,7 @@ sub_08093DC8: @ 0x08093DC8
 	adds r1, r5, #0
 	movs r2, #0
 	movs r3, #0x20
-	bl sub_08005998
+	bl PutDrawText
 _08093E04:
 	ldr r6, _08093E98 @ =0x02022CC0
 	adds r0, r6, #0
@@ -128832,17 +128832,17 @@ sub_0809402C: @ 0x0809402C
 	adds r4, r0, #0
 	ldr r5, _08094084 @ =0x02012B40
 	adds r0, r5, #0
-	bl sub_080053B0
+	bl ClearText
 	movs r0, #0x50
 	adds r1, r4, #0
-	bl sub_08005564
+	bl GetStringTextCenteredPos
 	adds r3, r0, #0
 	ldr r1, _08094088 @ =0x02023062
 	str r6, [sp]
 	str r4, [sp, #4]
 	adds r0, r5, #0
 	movs r2, #0
-	bl sub_08005998
+	bl PutDrawText
 	movs r0, #1
 	bl EnableBgSync
 _08094078:
@@ -130221,7 +130221,7 @@ _08094B1E:
 	lsls r0, r0, #0x18
 	lsrs r4, r0, #0x18
 	mov r0, sb
-	bl sub_080053B0
+	bl ClearText
 	adds r0, r6, #0
 	bl GetItemName
 	adds r1, r0, #0
@@ -130238,7 +130238,7 @@ _08094B3C:
 	mov r0, sb
 	ldr r1, [sp, #0x14]
 	movs r3, #0
-	bl sub_08005998
+	bl PutDrawText
 	mov r4, r8
 	adds r4, #0x16
 	movs r7, #1
@@ -130487,7 +130487,7 @@ _08094D06:
 	ldrh r0, [r0]
 	bl DecodeMsg
 	adds r7, r0, #0
-	bl sub_080054CC
+	bl GetStringTextLen
 	adds r3, r0, #0
 	movs r4, #0x30
 	subs r3, r4, r3
@@ -130502,14 +130502,14 @@ _08094D06:
 	movs r0, #0
 	mov r1, sb
 	movs r2, #0
-	bl sub_08005998
+	bl PutDrawText
 	mov r1, r8
 	ldr r0, [r1, #0x30]
 	ldr r0, [r0]
 	ldrh r0, [r0]
 	bl DecodeMsg
 	adds r7, r0, #0
-	bl sub_080054CC
+	bl GetStringTextLen
 	subs r4, r4, r0
 	lsrs r0, r4, #0x1f
 	adds r4, r4, r0
@@ -130521,7 +130521,7 @@ _08094D06:
 	movs r0, #0
 	movs r2, #0
 	adds r3, r4, #0
-	bl sub_08005998
+	bl PutDrawText
 	movs r0, #0x91
 	lsls r0, r0, #2
 	add r0, sb
@@ -131155,7 +131155,7 @@ sub_080952B0: @ 0x080952B0
 	movs r4, #7
 _080952C0:
 	adds r0, r5, #0
-	bl sub_080053B0
+	bl ClearText
 	adds r5, #8
 	subs r4, #1
 	cmp r4, #0
@@ -131170,7 +131170,7 @@ _080952C0:
 	adds r1, r4, #0
 	movs r2, #3
 	movs r3, #0
-	bl sub_08005998
+	bl PutDrawText
 	mov r0, r8
 	bl UnitHasMagicRank
 	lsls r0, r0, #0x18
@@ -131186,7 +131186,7 @@ _080952C0:
 	str r2, [sp, #4]
 	movs r2, #3
 	movs r3, #0
-	bl sub_08005998
+	bl PutDrawText
 	b _08095332
 	.align 2, 0
 _0809530C: .4byte 0x020129A8
@@ -131203,7 +131203,7 @@ _0809531C:
 	str r2, [sp, #4]
 	movs r2, #3
 	movs r3, #4
-	bl sub_08005998
+	bl PutDrawText
 _08095332:
 	adds r0, r6, #0
 	adds r6, #8
@@ -131215,7 +131215,7 @@ _08095332:
 	adds r1, r7, #0
 	movs r2, #3
 	movs r3, #4
-	bl sub_08005998
+	bl PutDrawText
 	adds r0, r6, #0
 	adds r6, #8
 	adds r1, r7, #0
@@ -131225,7 +131225,7 @@ _08095332:
 	str r2, [sp, #4]
 	movs r2, #3
 	movs r3, #0
-	bl sub_08005998
+	bl PutDrawText
 	adds r0, r6, #0
 	adds r6, #8
 	adds r1, r7, #0
@@ -131235,7 +131235,7 @@ _08095332:
 	str r2, [sp, #4]
 	movs r2, #3
 	movs r3, #0
-	bl sub_08005998
+	bl PutDrawText
 	adds r0, r6, #0
 	adds r6, #8
 	adds r1, r7, #0
@@ -131245,7 +131245,7 @@ _08095332:
 	str r2, [sp, #4]
 	movs r2, #3
 	movs r3, #0
-	bl sub_08005998
+	bl PutDrawText
 	adds r0, r6, #0
 	adds r6, #8
 	adds r1, r7, #0
@@ -131255,7 +131255,7 @@ _08095332:
 	str r2, [sp, #4]
 	movs r2, #3
 	movs r3, #0
-	bl sub_08005998
+	bl PutDrawText
 	adds r0, r6, #0
 	adds r6, #8
 	adds r1, r7, #0
@@ -131265,7 +131265,7 @@ _08095332:
 	str r2, [sp, #4]
 	movs r2, #3
 	movs r3, #0
-	bl sub_08005998
+	bl PutDrawText
 	mov r1, r8
 	ldr r0, [r1, #4]
 	ldrh r0, [r0]
@@ -131273,7 +131273,7 @@ _08095332:
 	adds r4, r0, #0
 	movs r0, #0x38
 	adds r1, r4, #0
-	bl sub_08005564
+	bl GetStringTextCenteredPos
 	adds r3, r0, #0
 	adds r0, r6, #0
 	ldr r2, _08095424 @ =0xFFFFFE0A
@@ -131281,7 +131281,7 @@ _08095332:
 	str r5, [sp]
 	str r4, [sp, #4]
 	movs r2, #0
-	bl sub_08005998
+	bl PutDrawText
 	ldr r1, _08095428 @ =0xFFFFFE02
 	adds r0, r7, r1
 	movs r1, #3
@@ -131697,10 +131697,10 @@ sub_08095750: @ 0x08095750
 	adds r5, r1, #0
 	ldr r4, _080957C0 @ =0x02012A70
 	adds r0, r4, #0
-	bl sub_080053B0
+	bl ClearText
 	adds r4, #8
 	adds r0, r4, #0
-	bl sub_080053B0
+	bl ClearText
 	movs r0, #1
 	rsbs r0, r0, #0
 	cmp r5, r0
@@ -131727,10 +131727,10 @@ sub_08095750: @ 0x08095750
 	beq _080957CC
 	ldr r0, [sp]
 	movs r1, #0
-	bl sub_08005450
+	bl Text_SetColor
 	ldr r0, [sp, #4]
 	movs r1, #0
-	bl sub_08005450
+	bl Text_SetColor
 	adds r0, r4, #0
 	bl DecodeMsg
 	adds r1, r0, #0
@@ -131746,10 +131746,10 @@ _080957C8: .4byte 0x02022FFE
 _080957CC:
 	ldr r0, [sp]
 	movs r1, #1
-	bl sub_08005450
+	bl Text_SetColor
 	ldr r0, [sp, #4]
 	movs r1, #1
-	bl sub_08005450
+	bl Text_SetColor
 	adds r0, r4, #0
 	bl DecodeMsg
 	adds r1, r0, #0
@@ -131901,7 +131901,7 @@ _08095904:
 _08095920:
 	adds r0, r4, #0
 	movs r1, #3
-	bl sub_08005344
+	bl InitText
 	adds r4, #8
 	movs r3, #1
 	rsbs r3, r3, #0
@@ -131915,23 +131915,23 @@ _08095920:
 	mov r8, r0
 	adds r0, #0x40
 	movs r1, #7
-	bl sub_08005344
+	bl InitText
 	mov r0, r8
 	adds r0, #0xc8
 	movs r1, #0xf
-	bl sub_08005344
+	bl InitText
 	mov r0, r8
 	adds r0, #0xd0
 	movs r1, #0xf
-	bl sub_08005344
+	bl InitText
 	mov r0, r8
 	adds r0, #0xd8
 	movs r1, #0xc
-	bl sub_08005344
+	bl InitText
 	mov r0, r8
 	adds r0, #0xe0
 	movs r1, #8
-	bl sub_08005344
+	bl InitText
 	ldr r0, [r7, #0x2c]
 	bl sub_080952B0
 	ldr r0, [r7, #0x2c]
@@ -131986,7 +131986,7 @@ _08095920:
 	ldrh r0, [r0]
 	bl DecodeMsg
 	adds r4, r0, #0
-	bl sub_080054CC
+	bl GetStringTextLen
 	movs r3, #0x30
 	subs r3, r3, r0
 	lsrs r0, r3, #0x1f
@@ -131998,7 +131998,7 @@ _08095920:
 	movs r0, #0
 	ldr r1, _08095B50 @ =gBg0Tm
 	movs r2, #0
-	bl sub_08005998
+	bl PutDrawText
 	adds r0, r7, #0
 	bl sub_080A98C8
 	adds r0, r7, #0
@@ -132307,7 +132307,7 @@ sub_08095CA8: @ 0x08095CA8
 	sub sp, #8
 	ldr r4, _08095D08 @ =0x02012A80
 	adds r0, r4, #0
-	bl sub_080053B0
+	bl ClearText
 	adds r0, r4, #0
 	adds r4, #8
 	ldr r5, _08095D0C @ =0x02023FC4
@@ -132318,9 +132318,9 @@ sub_08095CA8: @ 0x08095CA8
 	adds r1, r5, #0
 	movs r2, #0
 	movs r3, #0
-	bl sub_08005998
+	bl PutDrawText
 	adds r0, r4, #0
-	bl sub_080053B0
+	bl ClearText
 	adds r5, #0x82
 	str r6, [sp]
 	ldr r0, _08095D14 @ =0x0842D07C
@@ -132329,7 +132329,7 @@ sub_08095CA8: @ 0x08095CA8
 	adds r1, r5, #0
 	movs r2, #0
 	movs r3, #0
-	bl sub_08005998
+	bl PutDrawText
 	str r6, [sp]
 	ldr r0, _08095D18 @ =0x0842D084
 	str r0, [sp, #4]
@@ -132337,7 +132337,7 @@ sub_08095CA8: @ 0x08095CA8
 	adds r1, r5, #0
 	movs r2, #0
 	movs r3, #0x20
-	bl sub_08005998
+	bl PutDrawText
 	movs r0, #4
 	bl EnableBgSync
 	add sp, #8
@@ -132802,7 +132802,7 @@ sub_080960F8: @ 0x080960F8
 	bl sub_08017808
 	mov r8, r0
 	mov r0, sb
-	bl sub_080054CC
+	bl GetStringTextLen
 	mov sl, r0
 	mov r0, r8
 	cmp r0, #0
@@ -132822,7 +132822,7 @@ sub_080960F8: @ 0x080960F8
 _08096144:
 	ldr r4, _080961B4 @ =0x02012A80
 	adds r0, r4, #0
-	bl sub_080053B0
+	bl ClearText
 	lsls r0, r7, #5
 	mov r1, r8
 	cmp r1, #0
@@ -132840,7 +132840,7 @@ _08096156:
 	adds r0, r4, #0
 	movs r2, #0
 	movs r3, #0
-	bl sub_08005998
+	bl PutDrawText
 	movs r0, #4
 	bl EnableBgSync
 	lsls r0, r5, #3
@@ -133247,16 +133247,16 @@ sub_080964A0: @ 0x080964A0
 	cmp r0, #0
 	bne _080964F0
 	ldr r0, [sp]
-	bl sub_080053B0
+	bl ClearText
 	ldr r3, _080964EC @ =0x0842D0C4
 	ldr r0, [sp]
 	movs r1, #0
 	movs r2, #1
-	bl sub_080059DC
+	bl Text_InsertDrawString
 	mov r1, sl
 	adds r1, #6
 	ldr r0, [sp]
-	bl sub_08005460
+	bl PutText
 	b _0809659A
 	.align 2, 0
 _080964E8: .4byte 0x02012466
@@ -133292,14 +133292,14 @@ _080964FE:
 	mov sb, r0
 _08096528:
 	mov r0, r8
-	bl sub_080053B0
+	bl ClearText
 	adds r0, r7, #0
 	bl GetItemName
 	adds r3, r0, #0
 	mov r0, r8
 	movs r1, #0
 	mov r2, sb
-	bl sub_080059DC
+	bl Text_InsertDrawString
 	lsls r5, r6, #1
 	movs r0, #0x1f
 	ands r5, r0
@@ -133316,7 +133316,7 @@ _08096528:
 	adds r1, r5, #6
 	add r1, sl
 	mov r0, r8
-	bl sub_08005460
+	bl PutText
 	adds r5, #0x18
 	mov r1, sl
 	adds r4, r1, r5
@@ -133447,14 +133447,14 @@ _08096658:
 	movs r3, #0
 	bl TmFillRect_thm
 	adds r0, r7, #0
-	bl sub_080053B0
+	bl ClearText
 	adds r0, r6, #0
 	bl GetItemName
 	adds r3, r0, #0
 	adds r0, r7, #0
 	movs r1, #0
 	mov r2, r8
-	bl sub_080059DC
+	bl Text_InsertDrawString
 	adds r5, r4, #2
 	adds r0, r6, #0
 	bl sub_08017808
@@ -133465,7 +133465,7 @@ _08096658:
 	bl PutIcon
 	adds r1, r4, #6
 	adds r0, r7, #0
-	bl sub_08005460
+	bl PutText
 	adds r4, #0x18
 	movs r5, #1
 	mov r1, r8
@@ -133601,7 +133601,7 @@ sub_08096784: @ 0x08096784
 	ldr r1, _080967B8 @ =0x06011000
 	adds r0, r4, #0
 	movs r2, #0xb
-	bl sub_08005ACC
+	bl InitSpriteTextFont
 	ldr r0, _080967BC @ =0x081901C8
 	movs r1, #0xd8
 	lsls r1, r1, #2
@@ -133609,9 +133609,9 @@ sub_08096784: @ 0x08096784
 	bl ApplyPaletteExt
 	adds r4, #0x90
 	adds r0, r4, #0
-	bl sub_08005B08
+	bl InitSpriteText
 	movs r0, #0
-	bl sub_08005320
+	bl SetTextFont
 	pop {r4}
 	pop {r0}
 	bx r0
@@ -133633,13 +133633,13 @@ sub_080967C0: @ 0x080967C0
 	adds r6, r0, #0
 	ldr r4, _08096824 @ =0x02012B50
 	adds r0, r4, #0
-	bl sub_08005320
+	bl SetTextFont
 	movs r0, #0
-	bl sub_080052E0
+	bl SetTextFontGlyphs
 	adds r4, #0x90
 	adds r0, r4, #0
 	movs r1, #0
-	bl sub_08005B8C
+	bl SpriteText_DrawBackgroundExt
 	adds r0, r4, #0
 	movs r2, #0
 	cmp r5, #0x64
@@ -133651,7 +133651,7 @@ _080967FA:
 _080967FC:
 	ldr r3, _08096828 @ =0x0842D0D4
 	movs r1, #0
-	bl sub_080059DC
+	bl Text_InsertDrawString
 	ldr r0, _0809682C @ =0x02012BE0
 	movs r2, #0
 	cmp r6, #5
@@ -133660,9 +133660,9 @@ _080967FC:
 _0809680E:
 	ldr r3, _08096830 @ =0x0842D0E0
 	movs r1, #0x40
-	bl sub_080059DC
+	bl Text_InsertDrawString
 	movs r0, #0
-	bl sub_08005320
+	bl SetTextFont
 	pop {r4, r5, r6}
 	pop {r0}
 	bx r0
@@ -133677,7 +133677,7 @@ sub_08096834: @ 0x08096834
 	push {r4, r5, r6, lr}
 	sub sp, #8
 	movs r0, #0
-	bl sub_08005320
+	bl SetTextFont
 	ldr r6, _080968D8 @ =0x02022CC8
 	adds r0, r6, #0
 	movs r1, #0xc
@@ -133694,7 +133694,7 @@ sub_08096834: @ 0x08096834
 	adds r0, r4, #0
 	movs r2, #0
 	movs r3, #2
-	bl sub_08005998
+	bl PutDrawText
 	adds r1, r6, #0
 	subs r1, #0x26
 	movs r2, #0x9c
@@ -133712,7 +133712,7 @@ sub_08096834: @ 0x08096834
 	adds r1, r6, #0
 	movs r2, #0
 	movs r3, #0
-	bl sub_08005998
+	bl PutDrawText
 	adds r5, r6, #0
 	adds r5, #0xa
 	bl sub_0809158C
@@ -134146,18 +134146,18 @@ sub_08096A78: @ 0x08096A78
 	ldr r4, _08096D68 @ =0x02012B68
 	adds r0, r4, #0
 	movs r1, #4
-	bl sub_08005344
+	bl InitText
 	adds r0, r4, #0
 	adds r0, #8
 	movs r1, #3
-	bl sub_08005344
+	bl InitText
 	bl sub_08096784
 	adds r4, #0x10
 	movs r5, #4
 _08096C62:
 	adds r0, r4, #0
 	movs r1, #7
-	bl sub_08005344
+	bl InitText
 	adds r4, #8
 	subs r5, #1
 	cmp r5, #0
@@ -136211,7 +136211,7 @@ sub_08097CDC: @ 0x08097CDC
 	adds r1, r4, #0
 	movs r2, #0
 	movs r3, #0
-	bl sub_08005998
+	bl PutDrawText
 	movs r0, #1
 	bl EnableBgSync
 	add sp, #8
@@ -136245,7 +136245,7 @@ sub_08097D1C: @ 0x08097D1C
 	bl TmFillRect_thm
 	ldr r7, _08097D68 @ =0x02012B70
 	adds r0, r7, #0
-	bl sub_080053B0
+	bl ClearText
 	ldr r0, _08097D6C @ =0x02012466
 	ldrh r0, [r0]
 	cmp r0, r4
@@ -136282,7 +136282,7 @@ _08097D74:
 	movs r2, #3
 _08097D94:
 	movs r3, #0
-	bl sub_08005998
+	bl PutDrawText
 	b _08097DC2
 	.align 2, 0
 _08097D9C: .4byte 0x020117E4
@@ -136299,7 +136299,7 @@ _08097DA4:
 	mov r1, r8
 	movs r2, #0
 	movs r3, #0
-	bl sub_08005998
+	bl PutDrawText
 _08097DC2:
 	movs r0, #1
 	bl EnableBgSync
@@ -136543,21 +136543,21 @@ sub_08097E64: @ 0x08097E64
 	ldr r4, _080981B4 @ =0x02012B68
 	adds r0, r4, #0
 	movs r1, #6
-	bl sub_08005344
+	bl InitText
 	adds r0, r4, #0
 	adds r0, #8
 	movs r1, #5
-	bl sub_08005344
+	bl InitText
 	adds r0, r4, #0
 	adds r0, #0x78
 	movs r1, #4
-	bl sub_08005344
+	bl InitText
 	adds r4, #0x10
 	movs r5, #4
 _08098000:
 	adds r0, r4, #0
 	movs r1, #7
-	bl sub_08005344
+	bl InitText
 	adds r4, #8
 	subs r5, #1
 	cmp r5, #0
@@ -136717,7 +136717,7 @@ _0809801E:
 	strh r0, [r3, #0x3c]
 	movs r0, #0x30
 	mov r1, r8
-	bl sub_08005564
+	bl GetStringTextCenteredPos
 	adds r3, r0, #0
 	subs r5, #0x38
 	str r4, [sp]
@@ -136726,7 +136726,7 @@ _0809801E:
 	adds r0, r5, #0
 	ldr r1, _080981DC @ =gBg0Tm
 	movs r2, #0
-	bl sub_08005998
+	bl PutDrawText
 	adds r0, r7, #0
 	bl sub_08097D1C
 	add sp, #8
@@ -138457,7 +138457,7 @@ sub_08098F3C: @ 0x08098F3C
 	ldr r1, _08098FC0 @ =0x06011000
 	adds r0, r5, #0
 	movs r2, #0xb
-	bl sub_08005ACC
+	bl InitSpriteTextFont
 	ldr r0, _08098FC4 @ =0x081901C8
 	movs r1, #0xd8
 	lsls r1, r1, #2
@@ -138466,41 +138466,41 @@ sub_08098F3C: @ 0x08098F3C
 	adds r4, r5, #0
 	adds r4, #0x90
 	adds r0, r4, #0
-	bl sub_08005B08
+	bl InitSpriteText
 	adds r0, r5, #0
-	bl sub_08005320
+	bl SetTextFont
 	movs r0, #0
-	bl sub_080052E0
+	bl SetTextFontGlyphs
 	adds r0, r4, #0
 	movs r1, #0
-	bl sub_08005B8C
+	bl SpriteText_DrawBackgroundExt
 	ldr r3, _08098FC8 @ =0x0842D150
 	adds r0, r4, #0
 	movs r1, #0
 	movs r2, #0
-	bl sub_080059DC
+	bl Text_InsertDrawString
 	ldr r3, _08098FCC @ =0x0842D158
 	adds r0, r4, #0
 	movs r1, #0x20
 	movs r2, #0
-	bl sub_080059DC
+	bl Text_InsertDrawString
 	ldr r3, _08098FD0 @ =0x0842D160
 	adds r0, r4, #0
 	movs r1, #0x40
 	movs r2, #0
-	bl sub_080059DC
+	bl Text_InsertDrawString
 	ldr r3, _08098FD4 @ =0x0842D170
 	adds r0, r4, #0
 	movs r1, #0x80
 	movs r2, #3
-	bl sub_080059DC
+	bl Text_InsertDrawString
 	ldr r3, _08098FD8 @ =0x0842D17C
 	adds r0, r4, #0
 	movs r1, #0xc0
 	movs r2, #3
-	bl sub_080059DC
+	bl Text_InsertDrawString
 	movs r0, #0
-	bl sub_08005320
+	bl SetTextFont
 	pop {r4, r5}
 	pop {r0}
 	bx r0
@@ -138700,7 +138700,7 @@ sub_08099168: @ 0x08099168
 	push {r4, lr}
 	sub sp, #8
 	movs r0, #0
-	bl sub_08005320
+	bl SetTextFont
 	ldr r4, _080991B8 @ =0x02022CC8
 	adds r0, r4, #0
 	movs r1, #0xc
@@ -138716,7 +138716,7 @@ sub_08099168: @ 0x08099168
 	str r2, [sp, #4]
 	movs r2, #0
 	movs r3, #2
-	bl sub_08005998
+	bl PutDrawText
 	subs r4, #0x26
 	movs r2, #0x9c
 	lsls r2, r2, #2
@@ -138921,18 +138921,18 @@ sub_080991C4: @ 0x080991C4
 	ldr r4, _08099424 @ =0x02012B68
 	adds r0, r4, #0
 	movs r1, #4
-	bl sub_08005344
+	bl InitText
 	adds r0, r4, #0
 	adds r0, #8
 	movs r1, #2
-	bl sub_08005344
+	bl InitText
 	bl sub_08098F3C
 	adds r4, #0x10
 	movs r5, #4
 _08099380:
 	adds r0, r4, #0
 	movs r1, #7
-	bl sub_08005344
+	bl InitText
 	adds r4, #8
 	subs r5, #1
 	cmp r5, #0
@@ -139580,9 +139580,9 @@ sub_080998A8: @ 0x080998A8
 	mov sb, r0
 	ldr r6, _08099968 @ =0x020129A8
 	movs r0, #0
-	bl sub_080052E0
+	bl SetTextFontGlyphs
 	movs r0, #0
-	bl sub_08005320
+	bl SetTextFont
 	ldr r0, _0809996C @ =0x02022EE0
 	movs r1, #0x1f
 	movs r2, #0xa
@@ -139591,7 +139591,7 @@ sub_080998A8: @ 0x080998A8
 	movs r4, #0
 _080998D0:
 	adds r0, r6, #0
-	bl sub_080053B0
+	bl ClearText
 	ldr r1, _08099970 @ =0x08D8D60C
 	lsls r0, r4, #2
 	adds r0, r0, r1
@@ -139631,7 +139631,7 @@ _0809991A:
 	str r3, [sp, #4]
 	adds r0, r5, #0
 	movs r3, #0
-	bl sub_08005998
+	bl PutDrawText
 	adds r4, #1
 	cmp r4, #3
 	ble _080998D0
@@ -139639,7 +139639,7 @@ _0809991A:
 	adds r6, r0, #0
 	adds r6, #0xe8
 	adds r0, r6, #0
-	bl sub_080053B0
+	bl ClearText
 	ldr r0, _08099978 @ =0x08D8D5F8
 	ldr r0, [r0, #0x10]
 	bl DecodeMsg
@@ -139650,7 +139650,7 @@ _0809991A:
 	adds r0, r6, #0
 	movs r2, #0
 	movs r3, #0
-	bl sub_08005998
+	bl PutDrawText
 	movs r0, #1
 	bl EnableBgSync
 	add sp, #8
@@ -140523,15 +140523,15 @@ sub_08099FE8: @ 0x08099FE8
 	sub sp, #8
 	ldr r4, _0809A038 @ =0x020129A8
 	movs r0, #0
-	bl sub_080052E0
+	bl SetTextFontGlyphs
 	movs r0, #0
-	bl sub_08005320
+	bl SetTextFont
 	movs r6, #0
 	movs r5, #0x80
 	ldr r7, _0809A03C @ =0x08D8D634
 _0809A000:
 	adds r0, r4, #0
-	bl sub_080053B0
+	bl ClearText
 	ldm r7!, {r0}
 	bl DecodeMsg
 	adds r3, r4, #0
@@ -140543,7 +140543,7 @@ _0809A000:
 	str r0, [sp, #4]
 	adds r0, r3, #0
 	movs r3, #0
-	bl sub_08005998
+	bl PutDrawText
 	adds r5, #0x80
 	adds r6, #1
 	cmp r6, #4
@@ -140728,14 +140728,14 @@ sub_0809A0E8: @ 0x0809A0E8
 _0809A1AC:
 	adds r0, r5, #0
 	movs r1, #8
-	bl sub_08005344
+	bl InitText
 	adds r5, #8
 	subs r4, #1
 	cmp r4, #0
 	bge _0809A1AC
 	ldr r0, _0809A1F4 @ =0x02012A90
 	movs r1, #8
-	bl sub_08005344
+	bl InitText
 	bl sub_08099FE8
 	ldr r0, _0809A1F8 @ =gPlaySt
 	ldrb r0, [r0, #0x1b]
@@ -141211,9 +141211,9 @@ sub_0809A560: @ 0x0809A560
 	movs r1, #0
 	bl TmFill
 	movs r0, #0
-	bl sub_080052E0
+	bl SetTextFontGlyphs
 	movs r0, #0
-	bl sub_08005320
+	bl SetTextFont
 	adds r0, r7, #0
 	adds r0, #0x3b
 	ldrb r0, [r0]
@@ -141236,7 +141236,7 @@ _0809A594:
 	movs r0, #0
 	movs r2, #0
 	movs r3, #0
-	bl sub_08005998
+	bl PutDrawText
 	movs r0, #0x40
 	adds r0, r0, r7
 	mov sb, r0
@@ -141277,7 +141277,7 @@ _0809A5E8:
 	movs r0, #0
 	movs r2, #0
 	movs r3, #0
-	bl sub_08005998
+	bl PutDrawText
 	adds r6, #0x80
 	subs r5, #1
 	cmp r5, #0
@@ -141293,7 +141293,7 @@ _0809A5E8:
 	movs r0, #0
 	movs r2, #0
 	movs r3, #0
-	bl sub_08005998
+	bl PutDrawText
 	movs r1, #0xf9
 	lsls r1, r1, #1
 	adds r0, r4, r1
@@ -141314,7 +141314,7 @@ _0809A5E8:
 	movs r0, #0
 	movs r2, #0
 	movs r3, #0
-	bl sub_08005998
+	bl PutDrawText
 	ldr r1, _0809A708 @ =0x0000026A
 	adds r0, r4, r1
 	movs r1, #0
@@ -141354,7 +141354,7 @@ _0809A5E8:
 	movs r0, #0
 	movs r2, #3
 	movs r3, #0
-	bl sub_08005998
+	bl PutDrawText
 	adds r0, r4, #0
 	adds r0, #0x56
 	ldr r2, _0809A714 @ =0x08D8D720
@@ -141377,7 +141377,7 @@ _0809A5E8:
 	movs r0, #0
 	movs r2, #3
 	movs r3, #0
-	bl sub_08005998
+	bl PutDrawText
 	b _0809A730
 	.align 2, 0
 _0809A6EC: .4byte gBg2Tm
@@ -141401,7 +141401,7 @@ _0809A71C:
 	movs r0, #0
 	movs r2, #3
 	movs r3, #4
-	bl sub_08005998
+	bl PutDrawText
 _0809A730:
 	ldr r5, _0809A7B0 @ =0x02023CCC
 	movs r4, #2
@@ -141412,7 +141412,7 @@ _0809A730:
 	adds r1, r5, #0
 	movs r2, #3
 	movs r3, #0
-	bl sub_08005998
+	bl PutDrawText
 	adds r0, r5, #4
 	ldr r3, [sp, #0x18]
 	ldrb r2, [r3]
@@ -141425,7 +141425,7 @@ _0809A730:
 	movs r0, #0
 	movs r2, #3
 	movs r3, #0
-	bl sub_08005998
+	bl PutDrawText
 	ldr r1, [sp, #0xc]
 	ldrb r0, [r1]
 	cmp r0, #0
@@ -141439,7 +141439,7 @@ _0809A730:
 	movs r0, #0
 	movs r2, #3
 	movs r3, #0
-	bl sub_08005998
+	bl PutDrawText
 	adds r1, r5, #0
 	adds r1, #0xba
 	movs r0, #6
@@ -141450,7 +141450,7 @@ _0809A730:
 	movs r0, #0
 	movs r2, #0
 	movs r3, #0
-	bl sub_08005998
+	bl PutDrawText
 	adds r0, r5, #0
 	adds r0, #0xcc
 	adds r1, r7, #0
@@ -141475,7 +141475,7 @@ _0809A7C0:
 	movs r0, #0
 	movs r2, #1
 	movs r3, #0
-	bl sub_08005998
+	bl PutDrawText
 	movs r4, #3
 	str r4, [sp]
 	movs r0, #0x13
@@ -141508,7 +141508,7 @@ _0809A7FC:
 	movs r0, #0
 	movs r2, #0
 	movs r3, #0
-	bl sub_08005998
+	bl PutDrawText
 	movs r5, #0
 	adds r7, #0x3d
 	mov sl, r7
@@ -141530,7 +141530,7 @@ _0809A82A:
 	movs r0, #0
 	movs r2, #1
 	movs r3, #0
-	bl sub_08005998
+	bl PutDrawText
 	movs r3, #3
 	mov r8, r3
 	str r3, [sp]
@@ -141554,7 +141554,7 @@ _0809A82A:
 	movs r0, #0
 	movs r2, #1
 	movs r3, #0
-	bl sub_08005998
+	bl PutDrawText
 	mov r0, r8
 	str r0, [sp]
 	movs r0, #0x16
@@ -141570,7 +141570,7 @@ _0809A82A:
 	movs r0, #0
 	movs r2, #1
 	movs r3, #0
-	bl sub_08005998
+	bl PutDrawText
 	mov r3, r8
 	str r3, [sp]
 	movs r0, #0x16
@@ -141587,7 +141587,7 @@ _0809A82A:
 	movs r0, #0
 	movs r2, #1
 	movs r3, #0
-	bl sub_08005998
+	bl PutDrawText
 	movs r0, #1
 	str r0, [sp]
 	movs r0, #0xd
@@ -141607,7 +141607,7 @@ _0809A82A:
 	movs r0, #0
 	movs r2, #1
 	movs r3, #0
-	bl sub_08005998
+	bl PutDrawText
 	b _0809A92C
 	.align 2, 0
 _0809A8F8: .4byte 0x08D8D738
@@ -141627,7 +141627,7 @@ _0809A918:
 	movs r0, #0
 	movs r2, #1
 	movs r3, #4
-	bl sub_08005998
+	bl PutDrawText
 _0809A92C:
 	movs r0, #4
 	str r0, [sp]
@@ -142894,7 +142894,7 @@ sub_0809B2FC: @ 0x0809B2FC
 	mov r0, sp
 	adds r1, r5, #0
 	movs r2, #1
-	bl sub_08005ACC
+	bl InitSpriteTextFont
 	ldr r0, _0809B37C @ =0x081901C8
 	adds r4, #0x10
 	lsls r4, r4, #5
@@ -142903,24 +142903,24 @@ sub_0809B2FC: @ 0x0809B2FC
 	bl ApplyPaletteExt
 	add r4, sp, #0x18
 	adds r0, r4, #0
-	bl sub_08005B08
+	bl InitSpriteText
 	mov r0, sp
-	bl sub_08005320
+	bl SetTextFont
 	movs r0, #0
-	bl sub_080052E0
+	bl SetTextFontGlyphs
 	adds r0, r4, #0
 	movs r1, #0
-	bl sub_08005B8C
+	bl SpriteText_DrawBackgroundExt
 	movs r0, #0x60
 	adds r1, r6, #0
-	bl sub_08005564
+	bl GetStringTextCenteredPos
 	adds r1, r0, #0
 	adds r0, r4, #0
 	movs r2, #0
 	adds r3, r6, #0
-	bl sub_080059DC
+	bl Text_InsertDrawString
 	movs r0, #0
-	bl sub_08005320
+	bl SetTextFont
 	add sp, #0x20
 	pop {r4, r5, r6}
 	pop {r0}
@@ -143002,7 +143002,7 @@ sub_0809B380: @ 0x0809B380
 	bl sub_08005E88
 	ldr r0, _0809B4B8 @ =0x02012A90
 	movs r1, #8
-	bl sub_08005344
+	bl InitText
 	movs r1, #0xe0
 	lsls r1, r1, #4
 	movs r3, #0xc0
@@ -144453,7 +144453,7 @@ sub_0809BF40: @ 0x0809BF40
 	adds r5, r0, #0
 	adds r4, #8
 	adds r0, r4, #0
-	bl sub_080053B0
+	bl ClearText
 	movs r2, #0
 	cmp r5, #0x64
 	bne _0809BF5A
@@ -144462,20 +144462,20 @@ _0809BF5A:
 	ldr r3, _0809BFAC @ =0x0842D1FC
 	adds r0, r4, #0
 	movs r1, #0
-	bl sub_080059DC
+	bl Text_InsertDrawString
 	adds r0, r4, #0
 	movs r1, #0x30
-	bl sub_08005444
+	bl Text_SetCursor
 	movs r1, #2
 	cmp r5, #0x64
 	bne _0809BF74
 	movs r1, #4
 _0809BF74:
 	adds r0, r4, #0
-	bl sub_08005450
+	bl Text_SetColor
 	adds r0, r4, #0
 	adds r1, r5, #0
-	bl sub_080056A4
+	bl Text_DrawNumberOrBlank
 	movs r2, #0
 	cmp r5, #0x64
 	bne _0809BF8A
@@ -144484,10 +144484,10 @@ _0809BF8A:
 	ldr r3, _0809BFB0 @ =0x0842D204
 	adds r0, r4, #0
 	movs r1, #0x38
-	bl sub_080059DC
+	bl Text_InsertDrawString
 	ldr r1, _0809BFB4 @ =0x02023108
 	adds r0, r4, #0
-	bl sub_08005460
+	bl PutText
 	movs r0, #1
 	bl EnableBgSync
 	pop {r4, r5}
@@ -144854,7 +144854,7 @@ _0809C1EE:
 _0809C2A0:
 	adds r0, r5, #0
 	movs r1, #5
-	bl sub_08005344
+	bl InitText
 	adds r5, #8
 	subs r4, #1
 	cmp r4, #0
@@ -144862,11 +144862,11 @@ _0809C2A0:
 	ldr r4, _0809C310 @ =0x02012A90
 	adds r0, r4, #0
 	movs r1, #4
-	bl sub_08005344
+	bl InitText
 	adds r4, #8
 	adds r0, r4, #0
 	movs r1, #9
-	bl sub_08005344
+	bl InitText
 	bl sub_0809BF40
 	movs r3, #0xa
 	rsbs r3, r3, #0
@@ -145547,9 +145547,9 @@ sub_0809C838: @ 0x0809C838
 	str r0, [sp]
 	mov sl, r1
 	movs r0, #0
-	bl sub_080052E0
+	bl SetTextFontGlyphs
 	movs r0, #0
-	bl sub_08005320
+	bl SetTextFont
 	mov r0, sl
 	lsls r4, r0, #1
 	add r4, sl
@@ -145563,7 +145563,7 @@ sub_0809C838: @ 0x0809C838
 	adds r6, r4, #0
 _0809C86C:
 	adds r0, r5, #0
-	bl sub_080053B0
+	bl ClearText
 	bl sub_0809BA14
 	cmp r6, r0
 	bge _0809C902
@@ -145610,10 +145610,10 @@ _0809C8C2:
 _0809C8C4:
 	adds r0, r5, #0
 	movs r1, #0
-	bl sub_08005444
+	bl Text_SetCursor
 	adds r0, r5, #0
 	mov r1, sb
-	bl sub_08005450
+	bl Text_SetColor
 	adds r0, r6, #0
 	bl sub_0809BAB8
 	subs r0, #1
@@ -145625,14 +145625,14 @@ _0809C8C4:
 	bl DecodeMsg
 	adds r1, r0, #0
 	adds r0, r5, #0
-	bl sub_080055DC
+	bl Text_DrawString
 	lsls r1, r4, #5
 	add r1, r8
 	lsls r1, r1, #1
 	ldr r0, _0809C928 @ =gBg2Tm
 	adds r1, r1, r0
 	adds r0, r5, #0
-	bl sub_08005460
+	bl PutText
 _0809C902:
 	adds r5, #8
 	adds r6, #1
@@ -145770,9 +145770,9 @@ sub_0809C9F8: @ 0x0809C9F8
 	bl ApplyPaletteExt
 	adds r0, r4, #0
 	subs r0, #0x18
-	bl sub_08005320
+	bl SetTextFont
 	movs r0, #1
-	bl sub_080052E0
+	bl SetTextFontGlyphs
 	bl sub_0802EBB0
 	adds r1, r4, #0
 	adds r4, #8
@@ -145784,7 +145784,7 @@ sub_0809C9F8: @ 0x0809C9F8
 	adds r1, r7, #0
 	movs r2, #4
 	movs r3, #0
-	bl sub_08005998
+	bl PutDrawText
 	subs r0, r7, #4
 	ldr r3, _0809CAF4 @ =Unk_081C8FCC
 	ldr r5, _0809CAF8 @ =gPlaySt
@@ -145819,7 +145819,7 @@ sub_0809C9F8: @ 0x0809C9F8
 	adds r0, r2, #0
 	movs r2, #4
 	movs r3, #0
-	bl sub_08005998
+	bl PutDrawText
 	mov r3, r8
 	ldrb r3, [r3]
 	lsrs r0, r3, #4
@@ -145835,7 +145835,7 @@ sub_0809C9F8: @ 0x0809C9F8
 	adds r0, r2, #0
 	movs r2, #4
 	movs r3, #0
-	bl sub_08005998
+	bl PutDrawText
 	adds r5, #0x2c
 	ldrb r5, [r5]
 	lsls r0, r5, #0x1f
@@ -145850,9 +145850,9 @@ sub_0809C9F8: @ 0x0809C9F8
 	adds r0, r4, #0
 	movs r2, #4
 	movs r3, #0
-	bl sub_08005998
+	bl PutDrawText
 	movs r0, #0
-	bl sub_08005320
+	bl SetTextFont
 	movs r0, #4
 	bl EnableBgSync
 	add sp, #8
@@ -146042,22 +146042,22 @@ sub_0809CB24: @ 0x0809CB24
 	movs r3, #0
 	bl InitTextFont
 	adds r0, r4, #0
-	bl sub_08005320
+	bl SetTextFont
 	adds r4, #0x18
 	movs r5, #0xb
 _0809CC80:
 	adds r0, r4, #0
 	movs r1, #8
-	bl sub_08005344
+	bl InitText
 	adds r4, #8
 	subs r5, #1
 	cmp r5, #0
 	bge _0809CC80
 	ldr r0, _0809CD44 @ =0x02012A90
 	movs r1, #8
-	bl sub_08005344
+	bl InitText
 	movs r0, #0
-	bl sub_08005320
+	bl SetTextFont
 	bl sub_0809C9F8
 	movs r3, #0x81
 	lsls r3, r3, #1
@@ -146553,7 +146553,7 @@ _0809D094:
 	movs r0, #0
 	adds r2, r7, #0
 	movs r3, #0
-	bl sub_08005998
+	bl PutDrawText
 	adds r5, #0xc
 	adds r4, r4, r5
 	mov r1, sb
@@ -146685,7 +146685,7 @@ sub_0809D1C8: @ 0x0809D1C8
 	ldr r1, _0809D288 @ =0x06015000
 	mov r0, sp
 	movs r2, #0xe
-	bl sub_08005ACC
+	bl InitSpriteTextFont
 	ldr r0, _0809D28C @ =0x081901C8
 	movs r1, #0xf0
 	lsls r1, r1, #2
@@ -146693,14 +146693,14 @@ sub_0809D1C8: @ 0x0809D1C8
 	bl ApplyPaletteExt
 	add r5, sp, #0x18
 	adds r0, r5, #0
-	bl sub_08005B08
+	bl InitSpriteText
 	mov r0, sp
-	bl sub_08005320
+	bl SetTextFont
 	movs r0, #0
-	bl sub_080052E0
+	bl SetTextFontGlyphs
 	adds r0, r5, #0
 	movs r1, #0
-	bl sub_08005B8C
+	bl SpriteText_DrawBackgroundExt
 	ldr r4, _0809D290 @ =0x08C4C158
 	ldr r0, [r6, #0x2c]
 	bl sub_0809BAB8
@@ -146713,12 +146713,12 @@ sub_0809D1C8: @ 0x0809D1C8
 	adds r4, r0, #0
 	movs r0, #0x30
 	adds r1, r4, #0
-	bl sub_08005564
+	bl GetStringTextCenteredPos
 	adds r1, r0, #0
 	adds r0, r5, #0
 	movs r2, #0
 	adds r3, r4, #0
-	bl sub_080059DC
+	bl Text_InsertDrawString
 	adds r0, r6, #0
 	adds r0, #0x38
 	ldrb r0, [r0]
@@ -146737,10 +146737,10 @@ _0809D248:
 	ldr r3, _0809D294 @ =0x0842D214
 	adds r0, r5, #0
 	movs r1, #0x30
-	bl sub_080059DC
+	bl Text_InsertDrawString
 	adds r0, r5, #0
 	movs r1, #0x60
-	bl sub_08005444
+	bl Text_SetCursor
 	ldrb r0, [r4]
 	movs r1, #2
 	cmp r0, #0
@@ -146748,10 +146748,10 @@ _0809D248:
 	movs r1, #1
 _0809D264:
 	adds r0, r5, #0
-	bl sub_08005450
+	bl Text_SetColor
 	ldrb r1, [r4]
 	adds r0, r5, #0
-	bl sub_080056A4
+	bl Text_DrawNumberOrBlank
 	movs r2, #0
 	ldrb r0, [r4]
 	cmp r0, #0
@@ -146761,7 +146761,7 @@ _0809D27C:
 	ldr r3, _0809D298 @ =0x0842D220
 	adds r0, r5, #0
 	movs r1, #0x68
-	bl sub_080059DC
+	bl Text_InsertDrawString
 	b _0809D2E8
 	.align 2, 0
 _0809D288: .4byte 0x06015000
@@ -146781,10 +146781,10 @@ _0809D2AA:
 	ldr r3, _0809D328 @ =0x0842D214
 	adds r0, r5, #0
 	movs r1, #0x30
-	bl sub_080059DC
+	bl Text_InsertDrawString
 	adds r0, r5, #0
 	movs r1, #0x60
-	bl sub_08005444
+	bl Text_SetCursor
 	ldrb r0, [r4]
 	movs r1, #2
 	cmp r0, #0
@@ -146792,10 +146792,10 @@ _0809D2AA:
 	movs r1, #1
 _0809D2C6:
 	adds r0, r5, #0
-	bl sub_08005450
+	bl Text_SetColor
 	ldrb r1, [r4]
 	adds r0, r5, #0
-	bl sub_080056A4
+	bl Text_DrawNumberOrBlank
 	movs r2, #0
 	ldrb r0, [r4]
 	cmp r0, #0
@@ -146805,30 +146805,30 @@ _0809D2DE:
 	ldr r3, _0809D32C @ =0x0842D220
 	adds r0, r5, #0
 	movs r1, #0x68
-	bl sub_080059DC
+	bl Text_InsertDrawString
 _0809D2E8:
 	ldr r3, _0809D330 @ =0x0842D224
 	adds r0, r5, #0
 	movs r1, #0x80
 	movs r2, #0
-	bl sub_080059DC
+	bl Text_InsertDrawString
 	adds r0, r5, #0
-	bl sub_08005B08
+	bl InitSpriteText
 	adds r0, r5, #0
 	movs r1, #0
-	bl sub_08005B8C
+	bl SpriteText_DrawBackgroundExt
 	ldr r3, _0809D334 @ =0x0842D238
 	adds r0, r5, #0
 	movs r1, #0
 	movs r2, #0
-	bl sub_080059DC
+	bl Text_InsertDrawString
 	ldr r3, _0809D338 @ =0x0842D254
 	adds r0, r5, #0
 	movs r1, #0x80
 	movs r2, #0
-	bl sub_080059DC
+	bl Text_InsertDrawString
 	movs r0, #0
-	bl sub_08005320
+	bl SetTextFont
 	add sp, #0x20
 	pop {r4, r5, r6}
 	pop {r0}
@@ -149795,9 +149795,9 @@ sub_0809EAAC: @ 0x0809EAAC
 _0809EAD8:
 	ldr r2, [sp, #0xc]
 	adds r0, r2, r6
-	bl sub_080053B0
+	bl ClearText
 	movs r5, #2
-	bl sub_08005944
+	bl InitTalkTextFont
 	movs r4, #0
 _0809EAE8:
 	mov r0, sb
@@ -149831,7 +149831,7 @@ _0809EAE8:
 	add r1, sl
 	movs r2, #1
 	adds r3, r5, #0
-	bl sub_08005998
+	bl PutDrawText
 	adds r5, #0xb
 	adds r4, #1
 	adds r0, r4, #0
@@ -150076,7 +150076,7 @@ sub_0809EC74: @ 0x0809EC74
 _0809ED44:
 	adds r0, r5, #0
 	movs r1, #0x1b
-	bl sub_08005344
+	bl InitText
 	adds r5, #8
 	subs r4, #1
 	cmp r4, #0
@@ -154610,8 +154610,8 @@ _080A0ECE:
 	pop {r0}
 	bx r0
 
-	thumb_func_start sub_080A0EDC
-sub_080A0EDC: @ 0x080A0EDC
+	thumb_func_start GetPidStats
+GetPidStats: @ 0x080A0EDC
 	push {r4, lr}
 	lsls r0, r0, #0x18
 	lsrs r0, r0, #0x18
@@ -166456,7 +166456,7 @@ sub_080A6BB0: @ 0x080A6BB0
 	bl InitTextFont
 	ldr r0, _080A6BD4 @ =gpBanimModesLeft
 	movs r1, #0xa
-	bl sub_08005344
+	bl InitText
 	pop {r0}
 	bx r0
 	.align 2, 0
@@ -166472,22 +166472,22 @@ sub_080A6BD8: @ 0x080A6BD8
 	cmp r1, #0
 	beq _080A6C20
 	ldr r0, _080A6C14 @ =0x02000044
-	bl sub_08005320
+	bl SetTextFont
 	ldr r4, _080A6C18 @ =gpBanimModesLeft
 	adds r0, r4, #0
-	bl sub_080053B0
+	bl ClearText
 	adds r0, r4, #0
 	movs r1, #0
-	bl sub_08005444
+	bl Text_SetCursor
 	adds r0, r4, #0
 	movs r1, #0
-	bl sub_08005450
+	bl Text_SetColor
 	adds r0, r4, #0
 	adds r1, r5, #0
-	bl sub_080055DC
+	bl Text_DrawString
 	ldr r1, _080A6C1C @ =0x020238AE
 	adds r0, r4, #0
-	bl sub_08005460
+	bl PutText
 	b _080A6C2C
 	.align 2, 0
 _080A6C14: .4byte 0x02000044
@@ -167587,19 +167587,19 @@ sub_080A7424: @ 0x080A7424
 	ldr r1, _080A74FC @ =0x06011000
 	adds r0, r4, #0
 	movs r2, #0xf
-	bl sub_08005ACC
+	bl InitSpriteTextFont
 	adds r0, r4, #0
-	bl sub_08005320
+	bl SetTextFont
 	movs r0, #1
-	bl sub_080052E0
+	bl SetTextFontGlyphs
 	adds r4, #0x18
 	movs r5, #2
 _080A7442:
 	adds r0, r4, #0
-	bl sub_08005B08
+	bl InitSpriteText
 	adds r0, r4, #0
 	movs r1, #0
-	bl sub_08005B8C
+	bl SpriteText_DrawBackgroundExt
 	adds r4, #8
 	subs r5, #1
 	cmp r5, #0
@@ -167615,7 +167615,7 @@ _080A7442:
 	adds r0, r5, #0
 	movs r1, #0
 	movs r2, #4
-	bl sub_080059DC
+	bl Text_InsertDrawString
 	ldr r4, _080A7508 @ =gPlaySt
 	adds r6, r4, #0
 	adds r6, #0x2b
@@ -167628,7 +167628,7 @@ _080A7442:
 	adds r0, r5, #0
 	movs r1, #0x40
 	movs r2, #4
-	bl sub_080059DC
+	bl Text_InsertDrawString
 	ldrb r1, [r6]
 	lsrs r0, r1, #4
 	bl sub_080A7AB8
@@ -167637,7 +167637,7 @@ _080A7442:
 	adds r0, r5, #0
 	movs r1, #0x60
 	movs r2, #4
-	bl sub_080059DC
+	bl Text_InsertDrawString
 	adds r4, #0x2c
 	ldrb r4, [r4]
 	lsls r0, r4, #0x1f
@@ -167648,7 +167648,7 @@ _080A7442:
 	adds r0, r5, #0
 	movs r1, #0x80
 	movs r2, #4
-	bl sub_080059DC
+	bl Text_InsertDrawString
 	ldr r0, _080A750C @ =0x02022DBC
 	ldr r3, _080A7510 @ =Unk_081C8FCC
 	ldrb r2, [r6]
@@ -167665,7 +167665,7 @@ _080A7442:
 	lsls r2, r2, #7
 	bl PutIcon
 	movs r0, #0
-	bl sub_08005320
+	bl SetTextFont
 	pop {r4, r5, r6}
 	pop {r0}
 	bx r0
@@ -168463,9 +168463,9 @@ sub_080A7B2C: @ 0x080A7B2C
 	movs r2, #2
 	bl sub_080AA3F8
 	ldr r0, _080A7BAC @ =0x0200006C
-	bl sub_08005320
+	bl SetTextFont
 	movs r0, #0
-	bl sub_080052E0
+	bl SetTextFontGlyphs
 	movs r4, #0
 	movs r5, #0
 _080A7B7A:
@@ -168476,13 +168476,13 @@ _080A7B7A:
 	ldr r0, _080A7BB0 @ =0x0200008C
 	adds r1, r5, #0
 	movs r2, #0
-	bl sub_080059DC
+	bl Text_InsertDrawString
 	adds r5, #0x18
 	adds r4, #1
 	cmp r4, #3
 	ble _080A7B7A
 	movs r0, #0
-	bl sub_08005320
+	bl SetTextFont
 	add sp, #4
 	pop {r4, r5}
 	pop {r0}
@@ -168560,9 +168560,9 @@ _080A7C02:
 	bl PutIcon
 	ldr r4, _080A7C94 @ =0x0200006C
 	adds r0, r4, #0
-	bl sub_08005320
+	bl SetTextFont
 	movs r0, #1
-	bl sub_080052E0
+	bl SetTextFontGlyphs
 	ldr r0, _080A7C98 @ =0x06011000
 	movs r1, #8
 	movs r2, #4
@@ -168577,9 +168577,9 @@ _080A7C02:
 	adds r0, r4, #0
 	movs r1, #0x40
 	movs r2, #4
-	bl sub_080059DC
+	bl Text_InsertDrawString
 	movs r0, #0
-	bl sub_08005320
+	bl SetTextFont
 	movs r0, #1
 	bl EnableBgSync
 	b _080A7CB6
@@ -168695,13 +168695,13 @@ sub_080A7D50: @ 0x080A7D50
 	bl TmFill
 	ldr r4, _080A7D84 @ =0x0200006C
 	adds r0, r4, #0
-	bl sub_08005320
+	bl SetTextFont
 	adds r4, #0x20
 	adds r0, r4, #0
 	movs r1, #0
-	bl sub_08005B8C
+	bl SpriteText_DrawBackgroundExt
 	movs r0, #0
-	bl sub_08005320
+	bl SetTextFont
 	movs r0, #2
 	bl EnableBgSync
 	pop {r4}
@@ -168761,9 +168761,9 @@ sub_080A7D9C: @ 0x080A7D9C
 	bl sub_080AA3F8
 	ldr r4, _080A7E48 @ =0x0200006C
 	adds r0, r4, #0
-	bl sub_08005320
+	bl SetTextFont
 	movs r0, #0
-	bl sub_080052E0
+	bl SetTextFontGlyphs
 	movs r5, #0
 	adds r6, r4, #0
 	adds r6, #0x20
@@ -168776,7 +168776,7 @@ _080A7E00:
 	adds r0, r6, #0
 	adds r1, r4, #0
 	movs r2, #0
-	bl sub_080059DC
+	bl Text_InsertDrawString
 	adds r0, r5, #6
 	bl sub_080A7AB8
 	bl DecodeMsg
@@ -168785,12 +168785,12 @@ _080A7E00:
 	adds r0, #8
 	adds r1, r4, #0
 	movs r2, #0
-	bl sub_080059DC
+	bl Text_InsertDrawString
 	adds r5, #1
 	cmp r5, #5
 	ble _080A7E00
 	movs r0, #0
-	bl sub_08005320
+	bl SetTextFont
 	add sp, #4
 	pop {r4, r5, r6}
 	pop {r0}
@@ -168866,9 +168866,9 @@ _080A7E9E:
 	bl PutIcon
 	ldr r4, _080A7F28 @ =0x0200006C
 	adds r0, r4, #0
-	bl sub_08005320
+	bl SetTextFont
 	movs r0, #1
-	bl sub_080052E0
+	bl SetTextFontGlyphs
 	ldr r0, _080A7F2C @ =0x06011000
 	movs r1, #0xc
 	movs r2, #4
@@ -168882,9 +168882,9 @@ _080A7E9E:
 	adds r0, r4, #0
 	movs r1, #0x60
 	movs r2, #4
-	bl sub_080059DC
+	bl Text_InsertDrawString
 	movs r0, #0
-	bl sub_08005320
+	bl SetTextFont
 	movs r0, #1
 	bl EnableBgSync
 	b _080A7F4A
@@ -169067,13 +169067,13 @@ sub_080A806C: @ 0x080A806C
 	bl TmFill
 	ldr r4, _080A80A0 @ =0x0200006C
 	adds r0, r4, #0
-	bl sub_08005320
+	bl SetTextFont
 	adds r4, #0x20
 	adds r0, r4, #0
 	movs r1, #0
-	bl sub_08005B8C
+	bl SpriteText_DrawBackgroundExt
 	movs r0, #0
-	bl sub_08005320
+	bl SetTextFont
 	movs r0, #2
 	bl EnableBgSync
 	pop {r4}
@@ -169125,9 +169125,9 @@ sub_080A80B8: @ 0x080A80B8
 	movs r2, #1
 	bl sub_080AA3F8
 	ldr r0, _080A8138 @ =0x0200006C
-	bl sub_08005320
+	bl SetTextFont
 	movs r0, #0
-	bl sub_080052E0
+	bl SetTextFontGlyphs
 	movs r4, #0
 	movs r5, #0
 _080A8106:
@@ -169138,13 +169138,13 @@ _080A8106:
 	ldr r0, _080A813C @ =0x0200008C
 	adds r1, r5, #0
 	movs r2, #0
-	bl sub_080059DC
+	bl Text_InsertDrawString
 	adds r5, #0x18
 	adds r4, #1
 	cmp r4, #1
 	ble _080A8106
 	movs r0, #0
-	bl sub_08005320
+	bl SetTextFont
 	add sp, #4
 	pop {r4, r5}
 	pop {r0}
@@ -169208,9 +169208,9 @@ _080A8190:
 	strb r0, [r5]
 	ldr r4, _080A81FC @ =0x0200006C
 	adds r0, r4, #0
-	bl sub_08005320
+	bl SetTextFont
 	movs r0, #1
-	bl sub_080052E0
+	bl SetTextFontGlyphs
 	ldr r0, _080A8200 @ =0x06011000
 	movs r1, #0x10
 	movs r2, #4
@@ -169225,9 +169225,9 @@ _080A8190:
 	adds r0, r4, #0
 	movs r1, #0x80
 	movs r2, #4
-	bl sub_080059DC
+	bl Text_InsertDrawString
 	movs r0, #0
-	bl sub_08005320
+	bl SetTextFont
 	movs r0, #1
 	bl EnableBgSync
 	b _080A821E
@@ -169340,13 +169340,13 @@ sub_080A82B8: @ 0x080A82B8
 	bl TmFill
 	ldr r4, _080A82EC @ =0x0200006C
 	adds r0, r4, #0
-	bl sub_08005320
+	bl SetTextFont
 	adds r4, #0x20
 	adds r0, r4, #0
 	movs r1, #0
-	bl sub_08005B8C
+	bl SpriteText_DrawBackgroundExt
 	movs r0, #0
-	bl sub_08005320
+	bl SetTextFont
 	movs r0, #2
 	bl EnableBgSync
 	pop {r4}
@@ -169630,11 +169630,11 @@ sub_080A84FC: @ 0x080A84FC
 	sub sp, #8
 	ldr r4, _080A8560 @ =0x020000E4
 	adds r0, r4, #0
-	bl sub_080053B0
+	bl ClearText
 	movs r0, #8
 	adds r0, r0, r4
 	mov sb, r0
-	bl sub_080053B0
+	bl ClearText
 	ldr r5, _080A8564 @ =0x020236FC
 	movs r0, #0
 	mov r8, r0
@@ -169646,7 +169646,7 @@ sub_080A84FC: @ 0x080A84FC
 	adds r1, r5, #0
 	movs r2, #0
 	movs r3, #0
-	bl sub_08005998
+	bl PutDrawText
 	movs r0, #0x80
 	lsls r0, r0, #1
 	adds r5, r5, r0
@@ -169658,7 +169658,7 @@ sub_080A84FC: @ 0x080A84FC
 	adds r1, r5, #0
 	movs r2, #0
 	movs r3, #0
-	bl sub_08005998
+	bl PutDrawText
 	movs r0, #2
 	bl EnableBgSync
 	add sp, #8
@@ -169684,13 +169684,13 @@ sub_080A856C: @ 0x080A856C
 	mov sl, r0
 	ldr r5, _080A8608 @ =0x020000CC
 	adds r0, r5, #0
-	bl sub_080053B0
+	bl ClearText
 	adds r7, r5, #0
 	adds r7, #8
 	adds r0, r7, #0
-	bl sub_080053B0
+	bl ClearText
 	ldr r0, _080A860C @ =0x020000DC
-	bl sub_080053B0
+	bl ClearText
 	ldr r0, _080A8610 @ =0x02023704
 	mov r8, r0
 	movs r0, #0
@@ -169708,7 +169708,7 @@ sub_080A856C: @ 0x080A856C
 	mov r1, r8
 	movs r2, #2
 	movs r3, #0
-	bl sub_08005998
+	bl PutDrawText
 	mov r1, r8
 	adds r1, #0x78
 	mov r0, sb
@@ -169720,7 +169720,7 @@ sub_080A856C: @ 0x080A856C
 	adds r0, r7, #0
 	movs r2, #2
 	movs r3, #0
-	bl sub_08005998
+	bl PutDrawText
 	movs r0, #0x81
 	lsls r0, r0, #1
 	add r8, r0
@@ -169734,7 +169734,7 @@ sub_080A856C: @ 0x080A856C
 	mov r1, r8
 	movs r2, #2
 	movs r3, #0
-	bl sub_08005998
+	bl PutDrawText
 	movs r0, #2
 	bl EnableBgSync
 	add sp, #8
@@ -169764,10 +169764,10 @@ sub_080A8618: @ 0x080A8618
 	ldrb r7, [r0]
 	ldr r5, _080A8674 @ =0x020000BC
 	adds r0, r5, #0
-	bl sub_080053B0
+	bl ClearText
 	adds r0, r5, #0
 	adds r0, #8
-	bl sub_080053B0
+	bl ClearText
 	ldr r1, _080A8678 @ =0x020235FE
 	movs r2, #1
 	cmp r7, #0
@@ -169780,7 +169780,7 @@ _080A8644:
 	str r0, [sp, #4]
 	adds r0, r5, #0
 	movs r3, #0
-	bl sub_08005998
+	bl PutDrawText
 	movs r0, #2
 	bl EnableBgSync
 	adds r0, r4, #0
@@ -169836,7 +169836,7 @@ _080A86B0:
 	str r0, [sp, #4]
 	adds r0, r3, #0
 	movs r3, #0
-	bl sub_08005998
+	bl PutDrawText
 _080A86C0:
 	add sp, #8
 	pop {r4, r5, r6, r7}
@@ -170740,31 +170740,31 @@ _080A8D8C:
 	adds r0, r4, #0
 	adds r0, #0x18
 	movs r1, #5
-	bl sub_08005344
+	bl InitText
 	adds r0, r4, #0
 	adds r0, #0x20
 	movs r1, #9
-	bl sub_08005344
+	bl InitText
 	adds r0, r4, #0
 	adds r0, #0x28
 	movs r1, #5
-	bl sub_08005344
+	bl InitText
 	adds r0, r4, #0
 	adds r0, #0x30
 	movs r1, #8
-	bl sub_08005344
+	bl InitText
 	adds r0, r4, #0
 	adds r0, #0x38
 	movs r1, #2
-	bl sub_08005344
+	bl InitText
 	adds r0, r4, #0
 	adds r0, #0x40
 	movs r1, #4
-	bl sub_08005344
+	bl InitText
 	adds r0, r4, #0
 	adds r0, #0x48
 	movs r1, #5
-	bl sub_08005344
+	bl InitText
 	bl sub_080A8B60
 	mov r1, sl
 	ldrb r1, [r1]
@@ -174628,7 +174628,7 @@ sub_080AAB78: @ 0x080AAB78
 	push {r4, lr}
 	adds r4, r0, #0
 	adds r0, #0x2c
-	bl sub_08005320
+	bl SetTextFont
 	adds r1, r4, #0
 	adds r1, #0x5a
 	ldrh r0, [r1]
@@ -174652,7 +174652,7 @@ _080AAB90:
 	lsls r0, r0, #3
 	adds r0, #0x44
 	adds r0, r4, r0
-	bl sub_080056D8
+	bl Text_DrawCharacter
 	b _080AABCA
 _080AABB4:
 	adds r0, r4, #0
@@ -174675,7 +174675,7 @@ _080AABCC:
 	adds r0, #1
 	strh r0, [r1]
 	movs r0, #0
-	bl sub_08005320
+	bl SetTextFont
 	pop {r4}
 	pop {r0}
 	bx r0
@@ -174707,7 +174707,7 @@ _080AAC0C:
 	ldr r2, _080AAC80 @ =0x06010000
 	adds r1, r7, r2
 	mov r2, r8
-	bl sub_08005ACC
+	bl InitSpriteTextFont
 	mov r0, sb
 	str r0, [r6, #0x54]
 	adds r0, r6, #0
@@ -174726,10 +174726,10 @@ _080AAC0C:
 	adds r4, #0x44
 _080AAC3A:
 	adds r0, r4, #0
-	bl sub_08005B08
+	bl InitSpriteText
 	adds r0, r4, #0
 	movs r1, #0
-	bl sub_08005B8C
+	bl SpriteText_DrawBackgroundExt
 	adds r4, #8
 	subs r5, #1
 	cmp r5, #0
@@ -174740,9 +174740,9 @@ _080AAC50:
 	movs r2, #0x20
 	bl ApplyPaletteExt
 	movs r0, #0
-	bl sub_080052E0
+	bl SetTextFontGlyphs
 	movs r0, #0
-	bl sub_08005320
+	bl SetTextFont
 	adds r0, r6, #0
 	movs r1, #0
 	bl Proc_Goto
@@ -176694,7 +176694,7 @@ sub_080ABAAC: @ 0x080ABAAC
 	adds r6, r1, #0
 	ldr r0, [r5]
 	mov r1, sp
-	bl sub_08005528
+	bl GetCharTextLen
 	adds r4, r0, #0
 	ldr r1, [r5]
 	subs r4, r4, r1
@@ -178317,7 +178317,7 @@ _080AC652:
 	ldr r0, _080AC66C @ =0x0201EA90
 	adds r1, r4, #0
 	adds r1, #8
-	bl sub_08005460
+	bl PutText
 	pop {r4}
 	pop {r0}
 	bx r0
@@ -178351,7 +178351,7 @@ sub_080AC680: @ 0x080AC680
 	bl ResetText
 	bl sub_08015A0C
 	bl sub_0804A9F8
-	bl sub_08005904
+	bl InitSystemTextFont
 	ldr r7, _080AC948 @ =gDispIo
 	movs r6, #1
 	ldrb r2, [r7, #1]
@@ -179697,7 +179697,7 @@ sub_080AD1A4: @ 0x080AD1A4
 	adds r0, r4, #0
 	adds r1, r6, #0
 	movs r2, #5
-	bl sub_08005ACC
+	bl InitSpriteTextFont
 	ldr r0, _080AD24C @ =0x081901C8
 	movs r5, #0xd0
 	lsls r5, r5, #2
@@ -179710,24 +179710,24 @@ sub_080AD1A4: @ 0x080AD1A4
 	strh r1, [r0]
 	bl EnablePalSync
 	adds r0, r4, #0
-	bl sub_08005320
+	bl SetTextFont
 	adds r0, r4, #0
 	adds r0, #0x18
-	bl sub_08005B08
+	bl InitSpriteText
 	adds r0, r4, #0
 	adds r0, #0x20
-	bl sub_08005B08
+	bl InitSpriteText
 	adds r4, #0x28
 	movs r5, #2
 _080AD1E8:
 	adds r0, r4, #0
-	bl sub_08005B08
+	bl InitSpriteText
 	adds r4, #8
 	subs r5, #1
 	cmp r5, #0
 	bge _080AD1E8
 	movs r0, #0
-	bl sub_08005320
+	bl SetTextFont
 	ldr r4, _080AD248 @ =0x0201EA50
 	ldr r0, _080AD254 @ =0x0001FFFF
 	ands r0, r6
@@ -179743,18 +179743,18 @@ _080AD1E8:
 	adds r1, #0x48
 	strh r0, [r1]
 	movs r0, #0
-	bl sub_08005320
+	bl SetTextFont
 	movs r0, #0
-	bl sub_080052E0
+	bl SetTextFontGlyphs
 	adds r4, #0x40
 	adds r0, r4, #0
 	movs r1, #2
-	bl sub_08005344
+	bl InitText
 	adds r0, r4, #0
-	bl sub_080053B0
+	bl ClearText
 	ldr r1, _080AD25C @ =0x08439BE4
 	adds r0, r4, #0
-	bl sub_080055DC
+	bl Text_DrawString
 	pop {r4, r5, r6}
 	pop {r0}
 	bx r0
@@ -179789,27 +179789,27 @@ _080AD278:
 _080AD282:
 	ldr r4, _080AD2CC @ =0x0201EA50
 	adds r0, r4, #0
-	bl sub_08005320
+	bl SetTextFont
 	movs r0, #1
-	bl sub_080052E0
+	bl SetTextFontGlyphs
 	adds r4, #0x18
 	adds r0, r4, #0
 	movs r1, #0
-	bl sub_08005B8C
+	bl SpriteText_DrawBackgroundExt
 	movs r0, #0xb0
 	adds r1, r5, #0
-	bl sub_08005564
+	bl GetStringTextCenteredPos
 	adds r1, r0, #0
 	adds r0, r4, #0
-	bl sub_08005444
+	bl Text_SetCursor
 	adds r0, r4, #0
 	movs r1, #0
-	bl sub_08005450
+	bl Text_SetColor
 	adds r0, r4, #0
 	adds r1, r5, #0
-	bl sub_080055DC
+	bl Text_DrawString
 	movs r0, #0
-	bl sub_08005320
+	bl SetTextFont
 	pop {r4, r5}
 	pop {r0}
 	bx r0
@@ -180995,7 +180995,7 @@ sub_080ADBCC: @ 0x080ADBCC
 	movs r2, #1
 	bl TmFillRect_thm
 	adds r0, r6, #0
-	bl sub_080053B0
+	bl ClearText
 	cmp r5, #0x1f
 	ble _080ADC3E
 	b _080ADD40
@@ -181044,7 +181044,7 @@ _080ADC80:
 	adds r0, r6, #0
 	mov r2, sb
 	movs r3, #0
-	bl sub_08005998
+	bl PutDrawText
 	ldr r0, _080ADCD0 @ =gBg2Tm
 	adds r0, #0x14
 	adds r5, r4, r0
@@ -181081,7 +181081,7 @@ _080ADCD4:
 	adds r0, r6, #0
 	mov r2, sb
 	movs r3, #0
-	bl sub_08005998
+	bl PutDrawText
 	mov r0, r8
 	bl sub_08017808
 	adds r1, r0, #0
@@ -181092,7 +181092,7 @@ _080ADCD4:
 _080ADD02:
 	adds r6, #8
 	adds r0, r6, #0
-	bl sub_080053B0
+	bl ClearText
 	ldr r0, [sp, #8]
 	lsls r1, r0, #6
 	ldr r0, _080ADD54 @ =0x02023C78
@@ -181116,7 +181116,7 @@ _080ADD1A:
 	adds r0, r6, #0
 	adds r1, r5, #0
 	movs r3, #0
-	bl sub_08005998
+	bl PutDrawText
 	movs r0, #4
 	bl EnableBgSync
 _080ADD40:
@@ -181397,11 +181397,11 @@ _080ADF80:
 	adds r4, r4, r0
 	adds r0, r4, #0
 	movs r1, #7
-	bl sub_08005344
+	bl InitText
 	adds r4, #8
 	adds r0, r4, #0
 	movs r1, #0xa
-	bl sub_08005344
+	bl InitText
 	adds r0, r5, #0
 	bl sub_080ADBCC
 	adds r5, #1
@@ -181432,7 +181432,7 @@ _080ADFCC:
 	ldr r0, [r7]
 	adds r0, r0, r4
 	movs r1, #6
-	bl sub_08005344
+	bl InitText
 	adds r4, #8
 	subs r5, #1
 	cmp r5, #0
@@ -181442,7 +181442,7 @@ _080ADFCC:
 	ldr r0, [r0]
 	adds r0, #0x70
 	movs r1, #0xf
-	bl sub_08005344
+	bl InitText
 	ldr r0, _080AE0C4 @ =sub_080AD994
 	adds r1, r6, #0
 	bl sub_080AA20C
@@ -182020,10 +182020,10 @@ _080AE48E:
 	add r0, r8
 	ldr r4, [r0, #4]
 	adds r0, r6, #0
-	bl sub_080053B0
+	bl ClearText
 	adds r0, r6, #0
 	movs r1, #0
-	bl sub_08005444
+	bl Text_SetCursor
 	ldr r0, [r4]
 	ldrb r0, [r0, #4]
 	cmp r0, #0x28
@@ -182037,10 +182037,10 @@ _080AE4BA:
 	adds r0, r6, #0
 	movs r1, #0
 	adds r2, r7, #0
-	bl sub_08005458
+	bl Text_SetParams
 	adds r0, r6, #0
 	ldr r1, _080AE4E0 @ =0x08439BE8
-	bl sub_080055DC
+	bl Text_DrawString
 	b _080AE50C
 	.align 2, 0
 _080AE4D0: .4byte 0x08DAEF70
@@ -182059,13 +182059,13 @@ _080AE4F2:
 	adds r0, r6, #0
 	movs r1, #0
 	adds r2, r7, #0
-	bl sub_08005458
+	bl Text_SetParams
 	ldr r0, [r4]
 	ldrh r0, [r0]
 	bl DecodeMsg
 	adds r1, r0, #0
 	adds r0, r6, #0
-	bl sub_080055DC
+	bl Text_DrawString
 _080AE50C:
 	cmp r7, #0
 	bne _080AE520
@@ -182085,7 +182085,7 @@ _080AE528:
 	strb r1, [r0]
 	adds r0, r6, #0
 	mov r1, sl
-	bl sub_08005460
+	bl PutText
 	movs r1, #1
 	cmp r7, #0
 	bne _080AE53A
@@ -182410,14 +182410,14 @@ sub_080AE740: @ 0x080AE740
 	movs r2, #0x13
 	bl sub_080AA3F8
 	adds r0, r5, #0
-	bl sub_080053B0
+	bl ClearText
 	adds r0, r5, #0
 	movs r1, #0
 	movs r2, #0
-	bl sub_08005458
+	bl Text_SetParams
 	adds r0, r5, #0
 	movs r1, #0
-	bl sub_08005444
+	bl Text_SetCursor
 	ldr r0, [sp, #0x2c]
 	bl GetItemName
 	adds r7, r0, #0
@@ -182426,10 +182426,10 @@ sub_080AE740: @ 0x080AE740
 	bl sub_08013354
 	adds r6, r0, #0
 	adds r0, r7, #0
-	bl sub_080054CC
+	bl GetStringTextLen
 	adds r4, r0, #0
 	adds r0, r6, #0
-	bl sub_080054CC
+	bl GetStringTextLen
 	adds r4, r4, r0
 	adds r0, r4, #7
 	cmp r0, #0
@@ -182447,17 +182447,17 @@ _080AE81C:
 	mov r8, r1
 	adds r0, r5, #0
 	adds r1, r7, #0
-	bl sub_080055DC
+	bl Text_DrawString
 	adds r0, r5, #0
 	adds r1, r6, #0
-	bl sub_080055DC
+	bl Text_DrawString
 	mov r0, r8
 	lsls r4, r0, #1
 	ldr r1, _080AE89C @ =0x00000286
 	add r1, sl
 	adds r1, r4, r1
 	adds r0, r5, #0
-	bl sub_08005460
+	bl PutText
 	ldr r0, _080AE8A0 @ =0x00000282
 	add r0, sl
 	adds r4, r4, r0
@@ -182903,7 +182903,7 @@ sub_080AEBDC: @ 0x080AEBDC
 	ldr r5, _080AEC3C @ =0x08DAF028
 	ldr r0, [r5]
 	adds r0, #0xa8
-	bl sub_080053B0
+	bl ClearText
 	ldr r6, _080AEC40 @ =0x08DAF0C4
 	bl sub_080AEA60
 	adds r4, r0, #0
@@ -182936,7 +182936,7 @@ sub_080AEBDC: @ 0x080AEBDC
 	str r3, [sp, #4]
 	movs r2, #0
 	movs r3, #0
-	bl sub_08005998
+	bl PutDrawText
 	add sp, #8
 	pop {r4, r5, r6}
 	pop {r0}
@@ -182963,7 +182963,7 @@ sub_080AEC4C: @ 0x080AEC4C
 	adds r4, #0x38
 	ldr r0, [r0]
 	adds r0, r0, r4
-	bl sub_080053B0
+	bl ClearText
 	ldr r6, _080AECC0 @ =0x08DAF0C4
 	bl sub_080AEA24
 	ldr r1, _080AECC4 @ =0x08DAF054
@@ -182992,7 +182992,7 @@ sub_080AEC4C: @ 0x080AEC4C
 	adds r1, r5, #0
 	movs r2, #0
 	movs r3, #0
-	bl sub_08005998
+	bl PutDrawText
 	add sp, #8
 	pop {r3, r4}
 	mov r8, r3
@@ -183043,7 +183043,7 @@ sub_080AECCC: @ 0x080AECCC
 	adds r5, #0x70
 	ldr r0, [r1]
 	adds r0, r0, r5
-	bl sub_080053B0
+	bl ClearText
 	movs r0, #0
 	mov r8, r0
 	ldrh r0, [r4, #6]
@@ -183074,7 +183074,7 @@ _080AED46:
 	adds r0, r7, #0
 	adds r1, r6, #0
 	adds r2, r5, #0
-	bl sub_080059DC
+	bl Text_InsertDrawString
 	adds r4, #8
 	movs r0, #1
 	add r8, r0
@@ -183098,7 +183098,7 @@ _080AED6A:
 	lsls r1, r1, #1
 	ldr r2, _080AEDA4 @ =gBg2Tm
 	adds r1, r1, r2
-	bl sub_08005460
+	bl PutText
 	add sp, #0xc
 	pop {r3, r4, r5}
 	mov r8, r3
@@ -183414,18 +183414,18 @@ _080AEED6:
 	ldr r0, [r2]
 	adds r0, #0xa8
 	movs r1, #0x16
-	bl sub_08005344
+	bl InitText
 	bl sub_080AEBDC
 	ldr r1, _080AF0CC @ =0x08DAF028
 	ldr r0, [r1]
 	adds r0, #0x68
 	movs r1, #9
-	bl sub_08005344
+	bl InitText
 	ldr r2, _080AF0CC @ =0x08DAF028
 	ldr r0, [r2]
 	adds r0, #0xa0
 	movs r1, #0xe
-	bl sub_08005344
+	bl InitText
 	movs r5, #0
 	ldr r0, _080AF0CC @ =0x08DAF028
 	mov r8, r0
@@ -183440,12 +183440,12 @@ _080AF060:
 	ldr r0, [r1]
 	adds r0, r0, r6
 	movs r1, #9
-	bl sub_08005344
+	bl InitText
 	mov r2, r8
 	ldr r0, [r2]
 	adds r0, r0, r7
 	movs r1, #0xe
-	bl sub_08005344
+	bl InitText
 	adds r0, r5, #0
 	adds r1, r5, #0
 	adds r2, r4, #0
@@ -186693,15 +186693,15 @@ _080B083A:
 _080B09E2:
 	adds r0, r5, #0
 	movs r1, #3
-	bl sub_08005344
+	bl InitText
 	adds r0, r5, #0
-	bl sub_080053B0
+	bl ClearText
 	adds r0, r5, #0
 	movs r1, #3
-	bl sub_08005450
+	bl Text_SetColor
 	adds r0, r5, #0
 	movs r1, #0
-	bl sub_08005444
+	bl Text_SetCursor
 	ldr r0, [sp, #0x1c]
 	cmp r0, #0
 	beq _080B0A4C
@@ -186710,7 +186710,7 @@ _080B09E2:
 	mov r0, r8
 	adds r0, #8
 	ldr r1, _080B0A48 @ =0x0844BCD0
-	bl sub_080055DC
+	bl Text_DrawString
 	b _080B0A54
 	.align 2, 0
 _080B0A18: .4byte gBg0Tm
@@ -186729,11 +186729,11 @@ _080B0A48: .4byte 0x0844BCD0
 _080B0A4C:
 	ldr r1, [r4]
 	adds r0, r5, #0
-	bl sub_080055DC
+	bl Text_DrawString
 _080B0A54:
 	adds r0, r5, #0
 	adds r1, r6, #0
-	bl sub_08005460
+	bl PutText
 	ldr r1, [sp, #0x20]
 	adds r0, r1, r7
 	ldrb r2, [r0]
@@ -188096,8 +188096,8 @@ sub_080B14D0: @ 0x080B14D0
 	bl DivRem
 	str r0, [r7, #0xc]
 	movs r0, #0
-	bl sub_08005320
-	bl sub_08005904
+	bl SetTextFont
+	bl InitSystemTextFont
 	movs r0, #4
 	bl EnableBgSync
 	ldr r0, [r7, #0xc]
@@ -188106,7 +188106,7 @@ sub_080B14D0: @ 0x080B14D0
 	ldr r2, _080B1524 @ =0x0203EE48
 	adds r1, r0, r2
 	adds r0, r1, #0
-	bl sub_080053B0
+	bl ClearText
 	ldr r0, [r7, #8]
 	ldr r1, [r7, #4]
 	adds r2, r1, #0
@@ -188165,8 +188165,8 @@ sub_080B1560: @ 0x080B1560
 	bl DivRem
 	str r0, [r7, #0xc]
 	movs r0, #0
-	bl sub_08005320
-	bl sub_08005904
+	bl SetTextFont
+	bl InitSystemTextFont
 	movs r0, #4
 	bl EnableBgSync
 	ldr r0, [r7, #0xc]
@@ -188175,7 +188175,7 @@ sub_080B1560: @ 0x080B1560
 	ldr r2, _080B15B4 @ =0x0203EE48
 	adds r1, r0, r2
 	adds r0, r1, #0
-	bl sub_080053B0
+	bl ClearText
 	ldr r0, [r7, #8]
 	ldr r1, [r7, #4]
 	adds r2, r1, #0
@@ -189871,7 +189871,7 @@ _080B22CC:
 	adds r1, r0, r2
 	adds r0, r1, #0
 	movs r1, #0x14
-	bl sub_08005344
+	bl InitText
 	ldr r0, [r7, #4]
 	adds r1, r0, #1
 	str r1, [r7, #4]
@@ -190314,12 +190314,12 @@ sub_080B266C: @ 0x080B266C
 	mov r7, sp
 	str r0, [r7]
 	movs r0, #0
-	bl sub_08005320
-	bl sub_08005904
+	bl SetTextFont
+	bl InitSystemTextFont
 	ldr r1, _080B269C @ =0x03001618
 	adds r0, r1, #0
 	movs r1, #1
-	bl sub_08005344
+	bl InitText
 	ldr r2, _080B26A0 @ =0x0844BF6C
 	ldr r0, [r7]
 	movs r1, #3
@@ -190373,8 +190373,8 @@ sub_080B26DC: @ 0x080B26DC
 	mov r7, sp
 	str r0, [r7]
 	movs r0, #0
-	bl sub_08005320
-	bl sub_08005904
+	bl SetTextFont
+	bl InitSystemTextFont
 	ldr r0, [r7]
 	movs r1, #6
 	bl sub_080B26A4
@@ -190414,8 +190414,8 @@ sub_080B2714: @ 0x080B2714
 	ldr r1, [r7]
 	str r1, [r0, #0x54]
 	movs r0, #0
-	bl sub_08005320
-	bl sub_08005904
+	bl SetTextFont
+	bl InitSystemTextFont
 	ldr r1, [r7]
 	adds r0, r1, #0
 	adds r1, #0x5f
@@ -190454,7 +190454,7 @@ _080B2768:
 	lsls r2, r1, #1
 	ldr r3, _080B27A4 @ =0x02023C6E
 	adds r1, r2, r3
-	bl sub_080054B0
+	bl PutBlankText
 	ldr r0, [r7, #4]
 	adds r1, r0, #1
 	str r1, [r7, #4]
@@ -190493,8 +190493,8 @@ sub_080B27D8: @ 0x080B27D8
 	mov r7, sp
 	str r0, [r7]
 	movs r0, #0
-	bl sub_08005320
-	bl sub_08005904
+	bl SetTextFont
+	bl InitSystemTextFont
 	ldr r1, [r7]
 	adds r0, r1, #0
 	adds r1, #0x5f
@@ -190522,7 +190522,7 @@ _080B2806:
 	ldr r2, _080B282C @ =0x0203EE48
 	adds r1, r0, r2
 	adds r0, r1, #0
-	bl sub_080053B0
+	bl ClearText
 	ldr r0, [r7, #4]
 	adds r1, r0, #1
 	str r1, [r7, #4]
@@ -190663,8 +190663,8 @@ sub_080B2904: @ 0x080B2904
 	ldr r1, [r7]
 	str r1, [r0, #0x54]
 	movs r0, #0
-	bl sub_08005320
-	bl sub_08005904
+	bl SetTextFont
+	bl InitSystemTextFont
 	movs r0, #0
 	str r0, [r7, #4]
 _080B2944:
@@ -190695,7 +190695,7 @@ _080B2950:
 	lsls r2, r1, #1
 	ldr r3, _080B298C @ =0x02023C6E
 	adds r1, r2, r3
-	bl sub_080054B0
+	bl PutBlankText
 	ldr r0, [r7, #4]
 	adds r1, r0, #1
 	str r1, [r7, #4]
@@ -190724,8 +190724,8 @@ sub_080B29AC: @ 0x080B29AC
 	mov r7, sp
 	str r0, [r7]
 	movs r0, #0
-	bl sub_08005320
-	bl sub_08005904
+	bl SetTextFont
+	bl InitSystemTextFont
 	movs r0, #0
 	str r0, [r7, #4]
 _080B29C2:
@@ -190745,7 +190745,7 @@ _080B29CA:
 	ldr r2, _080B29F0 @ =0x0203EE48
 	adds r1, r0, r2
 	adds r0, r1, #0
-	bl sub_080053B0
+	bl ClearText
 	ldr r0, [r7, #4]
 	adds r1, r0, #1
 	str r1, [r7, #4]
@@ -190926,7 +190926,7 @@ _080B2B4A:
 	ldr r0, [r7]
 	movs r1, #0x5c
 	movs r2, #2
-	bl sub_080059DC
+	bl Text_InsertDrawString
 _080B2B56:
 	add sp, #0x10
 	pop {r4, r7}
@@ -193123,8 +193123,8 @@ sub_080B3C1C: @ 0x080B3C1C
 	movs r3, #6
 	bl sub_0804A4CC
 	movs r0, #0
-	bl sub_08005320
-	bl sub_08005904
+	bl SetTextFont
+	bl InitSystemTextFont
 	ldr r4, _080B3CB8 @ =0x02022EF0
 	ldr r5, _080B3CBC @ =0x08D8AC98
 	bl GetLang
@@ -200692,7 +200692,7 @@ _080B7602:
 	cmp r0, #4
 	bne _080B7636
 	ldrb r0, [r2, #4]
-	bl sub_080A0EDC
+	bl GetPidStats
 	ldrb r0, [r0, #5]
 	lsls r1, r0, #0x1a
 	lsrs r1, r1, #0x1a
@@ -201296,7 +201296,7 @@ _080B7AB8:
 	cmp r6, #0
 	beq _080B7B1E
 	ldrb r0, [r5]
-	bl sub_080A0EDC
+	bl GetPidStats
 	adds r2, r0, #0
 	str r5, [r4, #8]
 	movs r1, #3
@@ -201455,23 +201455,23 @@ sub_080B7BCC: @ 0x080B7BCC
 	ldr r1, _080B7C0C @ =0x06011000
 	adds r0, r4, #0
 	movs r2, #0xa
-	bl sub_08005ACC
+	bl InitSpriteTextFont
 	adds r0, r4, #0
-	bl sub_08005320
+	bl SetTextFont
 	adds r4, #0x18
 	movs r5, #9
 _080B7BE4:
 	adds r0, r4, #0
-	bl sub_08005B08
+	bl InitSpriteText
 	adds r0, r4, #0
 	movs r1, #0
-	bl sub_08005B8C
+	bl SpriteText_DrawBackgroundExt
 	adds r4, #8
 	subs r5, #1
 	cmp r5, #0
 	bge _080B7BE4
 	movs r0, #0
-	bl sub_08005320
+	bl SetTextFont
 	pop {r4, r5}
 	pop {r0}
 	bx r0
@@ -201484,20 +201484,20 @@ sub_080B7C10: @ 0x080B7C10
 	push {r4, r5, lr}
 	ldr r4, _080B7C3C @ =0x02000818
 	adds r0, r4, #0
-	bl sub_08005320
+	bl SetTextFont
 	adds r5, r4, #0
 	adds r5, #0x18
 	movs r4, #9
 _080B7C20:
 	adds r0, r5, #0
 	movs r1, #0
-	bl sub_08005B8C
+	bl SpriteText_DrawBackgroundExt
 	adds r5, #8
 	subs r4, #1
 	cmp r4, #0
 	bge _080B7C20
 	movs r0, #0
-	bl sub_08005320
+	bl SetTextFont
 	pop {r4, r5}
 	pop {r0}
 	bx r0
@@ -201510,15 +201510,15 @@ sub_080B7C40: @ 0x080B7C40
 	adds r5, r0, #0
 	ldr r4, _080B7C68 @ =0x02000818
 	adds r0, r4, #0
-	bl sub_08005320
+	bl SetTextFont
 	lsls r5, r5, #3
 	adds r4, #0x18
 	adds r5, r5, r4
 	adds r0, r5, #0
 	movs r1, #0
-	bl sub_08005B8C
+	bl SpriteText_DrawBackgroundExt
 	movs r0, #0
-	bl sub_08005320
+	bl SetTextFont
 	pop {r4, r5}
 	pop {r0}
 	bx r0
@@ -201545,7 +201545,7 @@ _080B7C76:
 _080B7C88:
 	adds r0, r1, #0
 	mov r1, sp
-	bl sub_08005528
+	bl GetCharTextLen
 	adds r1, r0, #0
 	ldr r0, [sp]
 	adds r4, r4, r0
@@ -201557,7 +201557,7 @@ _080B7C98:
 	adds r1, r1, r0
 	asrs r1, r1, #1
 	adds r0, r5, #0
-	bl sub_08005444
+	bl Text_SetCursor
 	add sp, #4
 	pop {r4, r5}
 	pop {r0}
@@ -201573,58 +201573,58 @@ sub_080B7CB0: @ 0x080B7CB0
 	adds r6, r2, #0
 	mov r8, r3
 	movs r1, #2
-	bl sub_08005450
+	bl Text_SetColor
 	adds r0, r4, #0
 	movs r1, #0x50
-	bl sub_08005444
+	bl Text_SetCursor
 	adds r0, r4, #0
 	adds r1, r5, #0
-	bl sub_080056A4
+	bl Text_DrawNumberOrBlank
 	adds r0, r4, #0
 	movs r1, #0x58
-	bl sub_08005444
+	bl Text_SetCursor
 	adds r0, r4, #0
 	movs r1, #3
-	bl sub_08005450
+	bl Text_SetColor
 	ldr r1, _080B7D58 @ =0x08622C50
 	adds r0, r4, #0
-	bl sub_080055DC
+	bl Text_DrawString
 	adds r0, r4, #0
 	movs r1, #2
-	bl sub_08005450
+	bl Text_SetColor
 	adds r0, r4, #0
 	movs r1, #0x70
-	bl sub_08005444
+	bl Text_SetCursor
 	adds r0, r4, #0
 	adds r1, r6, #0
-	bl sub_080056A4
+	bl Text_DrawNumberOrBlank
 	adds r0, r4, #0
 	movs r1, #0x78
-	bl sub_08005444
+	bl Text_SetCursor
 	adds r0, r4, #0
 	movs r1, #3
-	bl sub_08005450
+	bl Text_SetColor
 	ldr r1, _080B7D5C @ =0x08622C54
 	adds r0, r4, #0
-	bl sub_080055DC
+	bl Text_DrawString
 	adds r0, r4, #0
 	movs r1, #2
-	bl sub_08005450
+	bl Text_SetColor
 	adds r0, r4, #0
 	movs r1, #0x90
-	bl sub_08005444
+	bl Text_SetCursor
 	adds r0, r4, #0
 	mov r1, r8
-	bl sub_080056A4
+	bl Text_DrawNumberOrBlank
 	adds r0, r4, #0
 	movs r1, #0x98
-	bl sub_08005444
+	bl Text_SetCursor
 	adds r0, r4, #0
 	movs r1, #3
-	bl sub_08005450
+	bl Text_SetColor
 	ldr r1, _080B7D60 @ =0x08622C58
 	adds r0, r4, #0
-	bl sub_080055DC
+	bl Text_DrawString
 	pop {r3}
 	mov r8, r3
 	pop {r4, r5, r6}
@@ -201779,15 +201779,15 @@ sub_080B7E60: @ 0x080B7E60
 	ldr r0, _080B7EAC @ =0x02000830
 	adds r7, r1, r0
 	subs r0, #0x18
-	bl sub_08005320
+	bl SetTextFont
 	movs r0, #1
-	bl sub_080052E0
+	bl SetTextFontGlyphs
 	adds r0, r7, #0
 	movs r1, #0
-	bl sub_08005B8C
+	bl SpriteText_DrawBackgroundExt
 	adds r0, r7, #0
 	movs r1, #1
-	bl sub_08005450
+	bl Text_SetColor
 	mov r0, r8
 	cmp r0, #0
 	beq _080B7EB0
@@ -201842,14 +201842,14 @@ _080B7EF8:
 	cmp r0, #0
 	bge _080B7F1E
 	movs r0, #0
-	bl sub_080052E0
+	bl SetTextFontGlyphs
 	ldrb r1, [r4, #1]
 	ldrb r2, [r4, #2]
 	ldrb r3, [r4, #3]
 	adds r0, r7, #0
 	bl sub_080B7CB0
 	movs r0, #1
-	bl sub_080052E0
+	bl SetTextFontGlyphs
 _080B7F1E:
 	ldr r1, [r6]
 	adds r0, r7, #0
@@ -201863,7 +201863,7 @@ _080B7F26:
 	cmp r2, #1
 	beq _080B7F3E
 	adds r0, r7, #0
-	bl sub_080056D8
+	bl Text_DrawCharacter
 	str r0, [r6]
 	b _080B7F26
 _080B7F3E:
@@ -201871,7 +201871,7 @@ _080B7F3E:
 	str r0, [r6]
 _080B7F42:
 	movs r0, #0
-	bl sub_08005320
+	bl SetTextFont
 	pop {r3}
 	mov r8, r3
 	pop {r4, r5, r6, r7}
@@ -202374,7 +202374,7 @@ sub_080B82DC: @ 0x080B82DC
 	ldr r0, _080B8370 @ =0x02000830
 	str r0, [r4, #0x30]
 	movs r0, #1
-	bl sub_080052E0
+	bl SetTextFontGlyphs
 	ldr r0, [r4, #0x30]
 	ldr r1, [r4, #0x2c]
 	bl sub_080B7C6C
@@ -202433,9 +202433,9 @@ sub_080B8384: @ 0x080B8384
 	subs r0, #1
 	strh r0, [r4]
 	ldr r0, _080B83C0 @ =0x02000818
-	bl sub_08005320
+	bl SetTextFont
 	movs r0, #1
-	bl sub_080052E0
+	bl SetTextFontGlyphs
 	movs r1, #0
 	ldrsh r0, [r4, r1]
 	cmp r0, #0
@@ -202486,14 +202486,14 @@ _080B83EC:
 _080B83F8:
 	ldr r0, [r5, #0x30]
 	movs r1, #1
-	bl sub_08005450
+	bl Text_SetColor
 	ldr r0, [r5, #0x30]
 	ldr r1, [r5, #0x2c]
-	bl sub_080056D8
+	bl Text_DrawCharacter
 	str r0, [r5, #0x2c]
 _080B840A:
 	movs r0, #0
-	bl sub_08005320
+	bl SetTextFont
 	pop {r4, r5}
 	pop {r0}
 	bx r0
@@ -203580,7 +203580,7 @@ sub_080B8C5C: @ 0x080B8C5C
 _080B8C80:
 	lsls r0, r5, #0x18
 	lsrs r0, r0, #0x18
-	bl sub_080A0EDC
+	bl GetPidStats
 	ldrb r0, [r0, #5]
 	lsls r0, r0, #0x1a
 	lsrs r6, r0, #0x1a
@@ -203824,11 +203824,11 @@ _080B8E8E:
 	ldr r0, [r7]
 	adds r0, r0, r5
 	movs r1, #0xf
-	bl sub_08005344
+	bl InitText
 	ldr r0, [r7]
 	adds r0, r0, r6
 	movs r1, #0xa
-	bl sub_08005344
+	bl InitText
 	adds r6, #8
 	adds r5, #8
 	subs r4, #1
@@ -203841,7 +203841,7 @@ _080B8EB0:
 	ldr r0, [r5]
 	adds r0, r0, r1
 	movs r1, #0x19
-	bl sub_08005344
+	bl InitText
 	adds r4, #1
 	cmp r4, #4
 	ble _080B8EB0
@@ -204366,7 +204366,7 @@ _080B928A:
 	beq _080B92D8
 	ldr r0, [r0]
 	ldrb r0, [r0, #4]
-	bl sub_080A0EDC
+	bl GetPidStats
 	adds r2, r0, #0
 	lsls r3, r6, #1
 	adds r1, r4, #0
@@ -204468,7 +204468,7 @@ _080B9372:
 	adds r6, r0, #0
 	movs r0, #0x78
 	adds r1, r6, #0
-	bl sub_08005564
+	bl GetStringTextCenteredPos
 	adds r3, r0, #0
 	ldr r0, _080B93A0 @ =0x08DB8824
 	ldr r0, [r0]
@@ -204479,7 +204479,7 @@ _080B9372:
 	movs r2, #0
 	str r2, [sp]
 	str r6, [sp, #4]
-	bl sub_08005998
+	bl PutDrawText
 	b _080B945A
 	.align 2, 0
 _080B939C: .4byte 0x0000106D
@@ -204492,7 +204492,7 @@ _080B93A8:
 	adds r6, r0, #0
 	movs r0, #0x78
 	adds r1, r6, #0
-	bl sub_08005564
+	bl GetStringTextCenteredPos
 	adds r3, r0, #0
 	ldr r5, _080B948C @ =0x08DB8824
 	ldr r0, [r5]
@@ -204503,7 +204503,7 @@ _080B93A8:
 	str r4, [sp]
 	str r6, [sp, #4]
 	movs r2, #0
-	bl sub_08005998
+	bl PutDrawText
 	ldr r0, [r5]
 	adds r0, #0x40
 	ldr r1, [r7]
@@ -204513,7 +204513,7 @@ _080B93A8:
 	str r2, [sp, #4]
 	movs r2, #0
 	movs r3, #0
-	bl sub_08005998
+	bl PutDrawText
 	ldr r0, [r7]
 	adds r0, #0x66
 	mov r1, r8
@@ -204691,7 +204691,7 @@ sub_080B950C: @ 0x080B950C
 	adds r7, r0, #0
 	movs r0, #0x78
 	adds r1, r7, #0
-	bl sub_08005564
+	bl GetStringTextCenteredPos
 	adds r3, r0, #0
 	ldr r6, _080B96C4 @ =0x08DB8824
 	ldr r0, [r6]
@@ -204702,7 +204702,7 @@ sub_080B950C: @ 0x080B950C
 	str r5, [sp]
 	str r7, [sp, #4]
 	movs r2, #0
-	bl sub_08005998
+	bl PutDrawText
 	ldr r0, [r6]
 	adds r0, #0x38
 	ldr r1, [r4]
@@ -204714,7 +204714,7 @@ sub_080B950C: @ 0x080B950C
 	str r3, [sp, #4]
 	movs r2, #0
 	movs r3, #0
-	bl sub_08005998
+	bl PutDrawText
 	ldr r0, [r4]
 	ldr r1, _080B96D0 @ =0x00000444
 	adds r0, r0, r1
@@ -204746,7 +204746,7 @@ sub_080B950C: @ 0x080B950C
 	adds r7, r0, #0
 	movs r0, #0x78
 	adds r1, r7, #0
-	bl sub_08005564
+	bl GetStringTextCenteredPos
 	adds r3, r0, #0
 	ldr r0, [r6]
 	adds r0, #0x30
@@ -204756,7 +204756,7 @@ sub_080B950C: @ 0x080B950C
 	str r5, [sp]
 	str r7, [sp, #4]
 	movs r2, #0
-	bl sub_08005998
+	bl PutDrawText
 	ldr r0, [r6]
 	adds r0, #0x40
 	ldr r1, [r4]
@@ -204766,7 +204766,7 @@ sub_080B950C: @ 0x080B950C
 	str r3, [sp, #4]
 	movs r2, #0
 	movs r3, #0
-	bl sub_08005998
+	bl PutDrawText
 	ldr r0, [r4]
 	adds r0, #0x66
 	mov r1, sb
@@ -205017,10 +205017,10 @@ sub_080B980C: @ 0x080B980C
 	str r1, [r6, #0x40]
 	str r1, [r6, #0x3c]
 	movs r1, #0
-	bl sub_08005444
+	bl Text_SetCursor
 	ldr r0, [r6, #0x48]
 	movs r1, #0
-	bl sub_08005450
+	bl Text_SetColor
 	movs r5, #0
 	mov r8, r4
 	movs r7, #0xc0
@@ -205030,13 +205030,13 @@ _080B9836:
 	mov r1, r8
 	ldr r0, [r1]
 	adds r0, r0, r4
-	bl sub_080053B0
+	bl ClearText
 	mov r1, r8
 	ldr r0, [r1]
 	adds r0, r0, r4
 	ldr r1, _080B9874 @ =0x02022C64
 	adds r1, r7, r1
-	bl sub_08005460
+	bl PutText
 	adds r7, #0x80
 	adds r5, #1
 	cmp r5, #4
@@ -205158,7 +205158,7 @@ _080B9928:
 	b _080B99CE
 _080B9932:
 	movs r0, #0
-	bl sub_08005320
+	bl SetTextFont
 	ldr r0, [r4, #0x44]
 	ldrb r0, [r0]
 	cmp r0, #7
@@ -205194,10 +205194,10 @@ _080B9978:
 	adds r1, #0x10
 	str r1, [r4, #0x3c]
 	movs r1, #0
-	bl sub_08005444
+	bl Text_SetCursor
 	ldr r0, [r4, #0x48]
 	movs r1, #0
-	bl sub_08005450
+	bl Text_SetColor
 	b _080B99CC
 _080B999A:
 	movs r0, #8
@@ -205226,7 +205226,7 @@ _080B99B8:
 _080B99C2:
 	ldr r0, [r4, #0x48]
 	ldr r1, [r4, #0x44]
-	bl sub_080056D8
+	bl Text_DrawCharacter
 _080B99CA:
 	str r0, [r4, #0x44]
 _080B99CC:
@@ -205785,11 +205785,11 @@ _080B9E24:
 	ldr r0, [r6]
 	adds r0, r0, r1
 	movs r1, #3
-	bl sub_08005344
+	bl InitText
 	ldr r0, [r6]
 	adds r0, r0, r5
 	movs r1, #9
-	bl sub_08005344
+	bl InitText
 	adds r5, #8
 	adds r4, #1
 	cmp r4, #8
@@ -205798,29 +205798,29 @@ _080B9E24:
 	ldr r0, [r5]
 	adds r0, #0x90
 	movs r1, #3
-	bl sub_08005344
+	bl InitText
 	ldr r0, [r5]
 	adds r0, #0x98
 	movs r1, #2
-	bl sub_08005344
+	bl InitText
 	ldr r4, [r5]
 	adds r4, #0x90
 	ldr r0, _080B9E98 @ =0x00001181
 	bl DecodeMsg
 	adds r1, r0, #0
 	adds r0, r4, #0
-	bl sub_080055DC
+	bl Text_DrawString
 	ldr r0, [r5]
 	adds r0, #0x98
 	movs r1, #3
-	bl sub_08005450
+	bl Text_SetColor
 	ldr r4, [r5]
 	adds r4, #0x98
 	ldr r0, _080B9E9C @ =0x0000117A
 	bl DecodeMsg
 	adds r1, r0, #0
 	adds r0, r4, #0
-	bl sub_080055DC
+	bl Text_DrawString
 	pop {r4, r5, r6}
 	pop {r0}
 	bx r0
@@ -205867,13 +205867,13 @@ sub_080B9EA0: @ 0x080B9EA0
 	lsls r4, r3, #3
 	ldr r0, [r2]
 	adds r0, r0, r4
-	bl sub_080053B0
+	bl ClearText
 	adds r5, r4, #0
 	adds r5, #0x48
 	mov r1, sb
 	ldr r0, [r1]
 	adds r0, r0, r5
-	bl sub_080053B0
+	bl ClearText
 	movs r0, #1
 	rsbs r0, r0, #0
 	ldr r2, [sp, #8]
@@ -205894,7 +205894,7 @@ sub_080B9EA0: @ 0x080B9EA0
 	str r2, [sp, #4]
 	movs r2, #3
 	movs r3, #0
-	bl sub_08005998
+	bl PutDrawText
 	adds r0, r6, #0
 	adds r0, #0x15
 	lsls r0, r0, #1
@@ -205909,7 +205909,7 @@ sub_080B9EA0: @ 0x080B9EA0
 	adds r1, #0x16
 	lsls r1, r1, #1
 	add r1, sl
-	bl sub_08005460
+	bl PutText
 	movs r0, #0
 	b _080BA140
 	.align 2, 0
@@ -206052,7 +206052,7 @@ _080BA03A:
 _080BA068:
 	movs r2, #3
 	movs r3, #0
-	bl sub_08005998
+	bl PutDrawText
 	b _080BA0A8
 	.align 2, 0
 _080BA074: .4byte gBg1Tm
@@ -206075,7 +206075,7 @@ _080BA084:
 	str r2, [sp, #4]
 	movs r2, #3
 	movs r3, #0
-	bl sub_08005998
+	bl PutDrawText
 _080BA0A8:
 	mov r0, r8
 	cmp r0, #0x2f
@@ -206132,7 +206132,7 @@ _080BA0EC:
 	str r2, [sp]
 	str r3, [sp, #4]
 	movs r3, #0
-	bl sub_08005998
+	bl PutDrawText
 	adds r0, r6, #0
 	adds r0, #0xf
 	adds r0, #6
@@ -206148,7 +206148,7 @@ _080BA0EC:
 	adds r1, #6
 	lsls r1, r1, #1
 	adds r1, r1, r4
-	bl sub_08005460
+	bl PutText
 _080BA13E:
 	ldr r0, [sp, #0x10]
 _080BA140:

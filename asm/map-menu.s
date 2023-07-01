@@ -1833,7 +1833,7 @@ sub_080227D8: @ 0x080227D8
 	movs r3, #0
 	bl InitTextFont
 	ldr r0, _0802280C @ =0x02022CB6
-	ldr r1, _08022810 @ =0x0200323C
+	ldr r1, _08022810 @ =gBmFrameTmap0
 	movs r2, #9
 	movs r3, #0x13
 	bl TmCopyRect_thm
@@ -1848,7 +1848,7 @@ sub_080227D8: @ 0x080227D8
 _08022804: .4byte 0x02002774
 _08022808: .4byte 0x06004000
 _0802280C: .4byte 0x02022CB6
-_08022810: .4byte 0x0200323C
+_08022810: .4byte gBmFrameTmap0
 _08022814: .4byte 0x020234B6
 _08022818: .4byte 0x0200373C
 
@@ -1856,7 +1856,7 @@ _08022818: .4byte 0x0200373C
 sub_0802281C: @ 0x0802281C
 	push {lr}
 	movs r0, #0
-	bl sub_08005320
+	bl SetTextFont
 	pop {r0}
 	bx r0
 
@@ -1864,8 +1864,8 @@ sub_0802281C: @ 0x0802281C
 sub_08022828: @ 0x08022828
 	push {lr}
 	movs r0, #0
-	bl sub_08005320
-	ldr r0, _08022854 @ =0x0200323C
+	bl SetTextFont
+	ldr r0, _08022854 @ =gBmFrameTmap0
 	ldr r1, _08022858 @ =0x02022CB6
 	movs r2, #9
 	movs r3, #0x13
@@ -1881,7 +1881,7 @@ sub_08022828: @ 0x08022828
 	pop {r1}
 	bx r1
 	.align 2, 0
-_08022854: .4byte 0x0200323C
+_08022854: .4byte gBmFrameTmap0
 _08022858: .4byte 0x02022CB6
 _0802285C: .4byte 0x0200373C
 _08022860: .4byte 0x020234B6
@@ -1890,7 +1890,7 @@ _08022860: .4byte 0x020234B6
 sub_08022864: @ 0x08022864
 	push {lr}
 	movs r0, #0
-	bl sub_08005320
+	bl SetTextFont
 	bl sub_08005308
 	bl sub_0804AC78
 	movs r0, #0x31
@@ -1946,7 +1946,7 @@ sub_080228D4: @ 0x080228D4
 	bl GetUnitItemCount
 	cmp r0, #0
 	beq _08022974
-	ldr r0, _08022960 @ =0x0200323C
+	ldr r0, _08022960 @ =gBmFrameTmap0
 	ldr r5, _08022964 @ =0x02022CB6
 	adds r1, r5, #0
 	movs r2, #9
@@ -1996,7 +1996,7 @@ sub_080228D4: @ 0x080228D4
 	b _08022996
 	.align 2, 0
 _0802295C: .4byte gActiveUnit
-_08022960: .4byte 0x0200323C
+_08022960: .4byte gBmFrameTmap0
 _08022964: .4byte 0x02022CB6
 _08022968: .4byte 0x0200373C
 _0802296C: .4byte 0x020234B6
@@ -2200,7 +2200,7 @@ _08022AD4:
 	bl m4aSongNumStart
 _08022B00:
 	movs r0, #0
-	bl sub_08005320
+	bl SetTextFont
 	bl sub_08005308
 	bl sub_0804AC78
 	movs r0, #0x21
@@ -3529,7 +3529,7 @@ sub_080234D0: @ 0x080234D0
 	ldr r0, [r0]
 	ldrh r0, [r0]
 	bl DecodeMsg
-	bl sub_080054CC
+	bl GetStringTextLen
 	movs r4, #0x38
 	subs r4, r4, r0
 	lsrs r0, r4, #0x1f
@@ -3548,7 +3548,7 @@ sub_080234D0: @ 0x080234D0
 	adds r1, r5, #0
 	movs r2, #0
 	adds r3, r4, #0
-	bl sub_08005998
+	bl PutDrawText
 	adds r5, #0x80
 	ldrb r0, [r6, #0xd]
 	bl GetUnit
@@ -4321,7 +4321,7 @@ sub_08023B08: @ 0x08023B08
 	adds r0, r5, #0
 	movs r1, #0x10
 	movs r2, #0
-	bl sub_080059DC
+	bl Text_InsertDrawString
 	movs r0, #0x2c
 	ldrsh r1, [r4, r0]
 	lsls r1, r1, #5
@@ -4332,7 +4332,7 @@ sub_08023B08: @ 0x08023B08
 	ldr r0, _08023B48 @ =gBg0Tm
 	adds r1, r1, r0
 	adds r0, r5, #0
-	bl sub_08005460
+	bl PutText
 	movs r0, #0
 	pop {r4, r5}
 	pop {r1}

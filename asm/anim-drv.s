@@ -6,14 +6,14 @@
 AnimUpdateAll: @ 0x08006320
 	push {r4, r5, lr}
 	movs r5, #0
-	ldr r0, _08006330 @ =0x02029C7C
+	ldr r0, _08006330 @ =sFirstAnim
 	ldr r0, [r0]
 	cmp r0, #0
 	beq _08006392
 	adds r4, r0, #0
 	b _08006336
 	.align 2, 0
-_08006330: .4byte 0x02029C7C
+_08006330: .4byte sFirstAnim
 _08006334:
 	ldr r4, [r4, #0x38]
 _08006336:
@@ -37,7 +37,7 @@ _08006336:
 	bne _0800636E
 _0800635A:
 	adds r0, r4, #0
-	bl sub_08006518
+	bl AnimInterpret
 	cmp r0, #1
 	bne _08006366
 	movs r5, #1
@@ -57,7 +57,7 @@ _08006376:
 	cmp r0, #0
 	bne _08006384
 	adds r0, r4, #0
-	bl sub_080066E0
+	bl AnimDisplayPrivate
 _08006384:
 	ldr r0, [r4, #0x38]
 	cmp r0, #0
@@ -72,11 +72,11 @@ _08006392:
 
 	thumb_func_start AnimClearAll
 AnimClearAll: @ 0x08006398
-	ldr r0, _080063BC @ =0x02028E6C
+	ldr r0, _080063BC @ =sAnimPool
 	movs r1, #0xe1
 	lsls r1, r1, #4
 	adds r2, r0, r1
-	ldr r3, _080063C0 @ =0x02029C7C
+	ldr r3, _080063C0 @ =sFirstAnim
 	cmp r0, r2
 	bhs _080063B4
 	movs r1, #0
@@ -92,14 +92,14 @@ _080063B4:
 	str r0, [r3]
 	bx lr
 	.align 2, 0
-_080063BC: .4byte 0x02028E6C
-_080063C0: .4byte 0x02029C7C
+_080063BC: .4byte sAnimPool
+_080063C0: .4byte sFirstAnim
 
 	thumb_func_start AnimCreate_unused
 AnimCreate_unused: @ 0x080063C4
 	push {r4, lr}
 	adds r3, r0, #0
-	ldr r4, _08006418 @ =0x02028E6C
+	ldr r4, _08006418 @ =sAnimPool
 	movs r0, #0xe1
 	lsls r0, r0, #4
 	adds r2, r4, r0
@@ -137,11 +137,11 @@ _080063E8:
 	str r1, [r4, #0x40]
 	str r1, [r4, #0x44]
 	adds r0, r4, #0
-	bl sub_08006698
+	bl AnimInsert
 	adds r0, r4, #0
 	b _0800641E
 	.align 2, 0
-_08006418: .4byte 0x02028E6C
+_08006418: .4byte sAnimPool
 _0800641C:
 	movs r0, #0
 _0800641E:
@@ -155,7 +155,7 @@ AnimCreate: @ 0x08006424
 	adds r3, r0, #0
 	lsls r1, r1, #0x10
 	lsrs r5, r1, #0x10
-	ldr r4, _0800647C @ =0x02028E6C
+	ldr r4, _0800647C @ =sAnimPool
 	movs r0, #0xe1
 	lsls r0, r0, #4
 	adds r2, r4, r0
@@ -193,11 +193,11 @@ _0800644C:
 	str r1, [r4, #0x40]
 	str r1, [r4, #0x44]
 	adds r0, r4, #0
-	bl sub_08006698
+	bl AnimInsert
 	adds r0, r4, #0
 	b _08006482
 	.align 2, 0
-_0800647C: .4byte 0x02028E6C
+_0800647C: .4byte sAnimPool
 _08006480:
 	movs r0, #0
 _08006482:
@@ -208,12 +208,12 @@ _08006482:
 	thumb_func_start AnimSort
 AnimSort: @ 0x08006488
 	push {r4, r5, lr}
-	ldr r4, _080064D8 @ =0x02028E6C
+	ldr r4, _080064D8 @ =sAnimPool
 	movs r1, #0xe1
 	lsls r1, r1, #4
 	adds r0, r4, r1
 	adds r5, r4, #0
-	ldr r3, _080064DC @ =0x02029C7C
+	ldr r3, _080064DC @ =sFirstAnim
 	cmp r4, r0
 	bhs _080064AE
 	movs r1, #0
@@ -243,7 +243,7 @@ _080064C0:
 	cmp r0, #0
 	beq _080064CC
 	adds r0, r4, #0
-	bl sub_08006698
+	bl AnimInsert
 _080064CC:
 	adds r4, #0x48
 	cmp r4, r5
@@ -253,22 +253,22 @@ _080064D2:
 	pop {r0}
 	bx r0
 	.align 2, 0
-_080064D8: .4byte 0x02028E6C
-_080064DC: .4byte 0x02029C7C
+_080064D8: .4byte sAnimPool
+_080064DC: .4byte sFirstAnim
 
-	thumb_func_start sub_080064E0
-sub_080064E0: @ 0x080064E0
+	thumb_func_start AnimDelete
+AnimDelete: @ 0x080064E0
 	adds r2, r0, #0
 	ldr r3, [r2, #0x34]
 	cmp r3, #0
 	bne _080064F8
-	ldr r1, _080064F4 @ =0x02029C7C
+	ldr r1, _080064F4 @ =sFirstAnim
 	ldr r0, [r2, #0x38]
 	str r0, [r1]
 	str r3, [r0, #0x34]
 	b _08006502
 	.align 2, 0
-_080064F4: .4byte 0x02029C7C
+_080064F4: .4byte sFirstAnim
 _080064F8:
 	ldr r0, [r2, #0x38]
 	str r0, [r3, #0x38]
@@ -282,16 +282,16 @@ _08006502:
 	str r0, [r2, #0x38]
 	bx lr
 
-	thumb_func_start sub_0800650C
-sub_0800650C: @ 0x0800650C
+	thumb_func_start AnimDisplay
+AnimDisplay: @ 0x0800650C
 	push {lr}
-	bl sub_080066E0
+	bl AnimDisplayPrivate
 	pop {r0}
 	bx r0
 	.align 2, 0
 
-	thumb_func_start sub_08006518
-sub_08006518: @ 0x08006518
+	thumb_func_start AnimInterpret
+AnimInterpret: @ 0x08006518
 	push {r4, r5, lr}
 	adds r2, r0, #0
 	movs r4, #0
@@ -495,11 +495,11 @@ _0800668C:
 	.align 2, 0
 _08006694: .4byte 0x0FFFFFFC
 
-	thumb_func_start sub_08006698
-sub_08006698: @ 0x08006698
+	thumb_func_start AnimInsert
+AnimInsert: @ 0x08006698
 	push {r4, lr}
 	adds r2, r0, #0
-	ldr r0, _080066AC @ =0x02029C7C
+	ldr r0, _080066AC @ =sFirstAnim
 	ldr r1, [r0]
 	adds r4, r0, #0
 	cmp r1, #0
@@ -508,7 +508,7 @@ _080066A6:
 	str r2, [r4]
 	b _080066DA
 	.align 2, 0
-_080066AC: .4byte 0x02029C7C
+_080066AC: .4byte sFirstAnim
 _080066B0:
 	str r0, [r2, #0x38]
 	str r1, [r2, #0x34]
@@ -539,8 +539,8 @@ _080066DA:
 	pop {r0}
 	bx r0
 
-	thumb_func_start sub_080066E0
-sub_080066E0: @ 0x080066E0
+	thumb_func_start AnimDisplayPrivate
+AnimDisplayPrivate: @ 0x080066E0
 	push {r4, r5, r6, r7, lr}
 	mov r7, sl
 	mov r6, sb

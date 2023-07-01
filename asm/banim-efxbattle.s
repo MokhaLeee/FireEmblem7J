@@ -2908,7 +2908,7 @@ _0804F4D6:
 	ldr r0, [r7, #0x64]
 	cmp r0, #0
 	beq _0804F4E6
-	bl sub_080064E0
+	bl AnimDelete
 	ldr r0, _0804F57C @ =0x0201FAD0
 	bl sub_08055B08
 _0804F4E6:
@@ -5893,19 +5893,19 @@ SpellFx_WriteBgMap: @ 0x08050CB8
 	ldrsh r0, [r0, r1]
 	cmp r0, #0
 	bne _08050CDC
-	ldr r1, _08050CD8 @ =0x02019784
+	ldr r1, _08050CD8 @ =gEkrTsaBuffer
 	adds r0, r3, #0
 	bl LZ77UnCompWram
 	b _08050CE4
 	.align 2, 0
 _08050CD4: .4byte gEkrDistanceType
-_08050CD8: .4byte 0x02019784
+_08050CD8: .4byte gEkrTsaBuffer
 _08050CDC:
-	ldr r1, _08050D08 @ =0x02019784
+	ldr r1, _08050D08 @ =gEkrTsaBuffer
 	adds r0, r2, #0
 	bl LZ77UnCompWram
 _08050CE4:
-	ldr r5, _08050D08 @ =0x02019784
+	ldr r5, _08050D08 @ =gEkrTsaBuffer
 	adds r0, r4, #0
 	bl GetAISSubjectId
 	cmp r0, #0
@@ -5921,7 +5921,7 @@ _08050CE4:
 	bl sub_080672E8
 	b _08050D24
 	.align 2, 0
-_08050D08: .4byte 0x02019784
+_08050D08: .4byte gEkrTsaBuffer
 _08050D0C: .4byte gBg1Tm
 _08050D10:
 	ldr r1, _08050D34 @ =gBg1Tm
@@ -5951,7 +5951,7 @@ sub_08050D38: @ 0x08050D38
 	adds r0, r1, #0
 	adds r5, r2, #0
 	adds r6, r3, #0
-	ldr r7, _08050D70 @ =0x02019784
+	ldr r7, _08050D70 @ =gEkrTsaBuffer
 	adds r1, r7, #0
 	bl LZ77UnCompWram
 	adds r0, r4, #0
@@ -5971,7 +5971,7 @@ sub_08050D38: @ 0x08050D38
 	bl sub_080672E8
 	b _08050D90
 	.align 2, 0
-_08050D70: .4byte 0x02019784
+_08050D70: .4byte gEkrTsaBuffer
 _08050D74: .4byte gBg1Tm
 _08050D78:
 	ldr r1, _08050DA0 @ =gBg1Tm

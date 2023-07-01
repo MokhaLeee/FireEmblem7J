@@ -14,8 +14,11 @@ SECTIONS
 		. = 0x000024; gEkrDebugUnk3 = .;
 		. = 0x00005C; gpBanimModesLeft = .;
 		. = 0x000060; gpBanimModesRight = .;
+		. = 0x00310C; gStatScreenSt = .;
+		. = 0x00323C; gBmFrameTmap0 = .;
 		. = 0x00F1C8; gBanimScrLeft = .;
 		. = 0x017758; Unk_02017758 = .;
+		. = 0x019784; gEkrTsaBuffer = .;
 		. = 0x01FAF8; gBanimDoneFlag = .;
 		. = 0x01FB10; gpImgSheet = .;
 		. = 0x020140;
@@ -23,6 +26,9 @@ SECTIONS
 		. = ALIGN(4); src/move-data.o(ewram_data);
 		. = 0x026A48;
 		. = ALIGN(4); src/icon.o(ewram_data);
+		. = 0x028D68; gActiveFont = .;
+		. = 0x028E6C; sAnimPool = .;
+		. = 0x029C7C; sFirstAnim = .;
 		. = 0x02BBB4; gBmSt = .;
 		. = 0x02BBF4; gPlaySt = .;
 		. = 0x02BD44; gActiveUnitId = .;

@@ -69,7 +69,7 @@ sub_0802B064: @ 0x0802B064
 	ldrh r0, [r0]
 	bl DecodeMsg
 	adds r7, r0, #0
-	bl sub_080054CC
+	bl GetStringTextLen
 	movs r4, #0x30
 	subs r0, r4, r0
 	lsrs r1, r0, #0x1f
@@ -81,14 +81,14 @@ sub_0802B064: @ 0x0802B064
 	movs r0, #0
 	adds r1, r5, #0
 	movs r2, #0
-	bl sub_08005998
+	bl PutDrawText
 	mov r2, r8
 	ldr r0, [r2, #0x30]
 	ldr r0, [r0]
 	ldrh r0, [r0]
 	bl DecodeMsg
 	adds r7, r0, #0
-	bl sub_080054CC
+	bl GetStringTextLen
 	subs r4, r4, r0
 	lsrs r0, r4, #0x1f
 	adds r4, r4, r0
@@ -99,7 +99,7 @@ sub_0802B064: @ 0x0802B064
 	movs r0, #0
 	adds r1, r5, #0
 	movs r2, #0
-	bl sub_08005998
+	bl PutDrawText
 	movs r0, #1
 	bl EnableBgSync
 	add sp, #8
@@ -301,7 +301,7 @@ _0802B2A0:
 	mov r1, sl
 	adds r6, r1, r0
 	adds r0, r6, #0
-	bl sub_080053B0
+	bl ClearText
 	cmp r5, #0
 	beq _0802B2F6
 	mov r1, sb

@@ -664,7 +664,7 @@ _08016906:
 	adds r0, r5, #0
 	movs r1, #0
 	adds r2, r3, #0
-	bl sub_08005458
+	bl Text_SetParams
 	movs r0, #0xff
 	ands r0, r6
 	lsls r1, r0, #3
@@ -677,10 +677,10 @@ _08016906:
 	bl sub_08013488
 	adds r1, r0, #0
 	adds r0, r5, #0
-	bl sub_080055DC
+	bl Text_DrawString
 	adds r1, r7, #4
 	adds r0, r5, #0
-	bl sub_08005460
+	bl PutText
 	adds r3, r7, #0
 	adds r3, #0x16
 	movs r5, #1
@@ -739,7 +739,7 @@ _0801699C:
 	adds r0, r4, #0
 	movs r1, #0
 	adds r2, r3, #0
-	bl sub_08005458
+	bl Text_SetParams
 	movs r0, #0xff
 	mov r1, r8
 	ands r0, r1
@@ -753,10 +753,10 @@ _0801699C:
 	bl sub_08013488
 	adds r1, r0, #0
 	adds r0, r4, #0
-	bl sub_080055DC
+	bl Text_DrawString
 	adds r1, r7, #4
 	adds r0, r4, #0
-	bl sub_08005460
+	bl PutText
 	movs r3, #0x14
 	adds r3, r3, r7
 	mov ip, r3
@@ -832,7 +832,7 @@ sub_08016A4C: @ 0x08016A4C
 	adds r6, r1, #0
 	adds r7, r2, #0
 	movs r1, #0
-	bl sub_08005444
+	bl Text_SetCursor
 	movs r0, #0xff
 	ands r0, r6
 	lsls r1, r0, #3
@@ -845,15 +845,15 @@ sub_08016A4C: @ 0x08016A4C
 	bl sub_08013488
 	adds r1, r0, #0
 	adds r0, r4, #0
-	bl sub_080055DC
+	bl Text_DrawString
 	adds r1, r7, #4
 	adds r0, r4, #0
-	bl sub_08005460
+	bl PutText
 	movs r0, #0x16
 	adds r0, r0, r7
 	mov r8, r0
 	adds r0, r4, #0
-	bl sub_08005454
+	bl Text_GetColor
 	adds r3, r0, #0
 	ldr r0, [r5, #8]
 	movs r1, #8
@@ -897,11 +897,11 @@ sub_08016AD0: @ 0x08016AD0
 	mov sb, r1
 	adds r5, r2, #0
 	adds r7, r3, #0
-	bl sub_080053B0
+	bl ClearText
 	adds r4, r5, #0
 	mov r0, r8
 	adds r1, r4, #0
-	bl sub_08005450
+	bl Text_SetColor
 	movs r0, #0xff
 	mov r1, sb
 	ands r0, r1
@@ -915,7 +915,7 @@ sub_08016AD0: @ 0x08016AD0
 	bl sub_08013488
 	adds r1, r0, #0
 	mov r0, r8
-	bl sub_080055DC
+	bl Text_DrawString
 	movs r4, #0
 	cmp r5, #1
 	bne _08016B18
@@ -959,7 +959,7 @@ _08016B58:
 	bl sub_08006074
 	adds r1, r7, #4
 	mov r0, r8
-	bl sub_08005460
+	bl PutText
 	mov r0, sb
 	cmp r0, #0
 	bne _08016B78

@@ -2509,8 +2509,8 @@ _0804CD22:
 	.align 2, 0
 _0804CD28: .4byte 0x08C09EE0
 
-	thumb_func_start sub_0804CD2C
-sub_0804CD2C: @ 0x0804CD2C
+	thumb_func_start ekrGaugeMain
+ekrGaugeMain: @ 0x0804CD2C
 	push {r4, r5, r6, r7, lr}
 	mov r7, sl
 	mov r6, sb
@@ -2935,7 +2935,7 @@ _0804D07A:
 	cmp r0, #0
 	bne _0804D088
 	add r0, sp, #8
-	bl sub_0800650C
+	bl AnimDisplay
 _0804D088:
 	movs r4, #0
 	str r4, [sp, #0x24]
@@ -2995,7 +2995,7 @@ _0804D0F6:
 	cmp r0, #0
 	bne _0804D104
 	add r0, sp, #8
-	bl sub_0800650C
+	bl AnimDisplay
 _0804D104:
 	ldr r4, [sp, #0xf8]
 	ldr r0, _0804D1F4 @ =0xFFD80000
@@ -3098,7 +3098,7 @@ _0804D19E:
 	add r1, sp, #0xe8
 	ldrh r1, [r1]
 	strh r1, [r0, #0xc]
-	bl sub_0800650C
+	bl AnimDisplay
 _0804D1C2:
 	lsls r1, r7, #0x10
 	asrs r1, r1, #0x10
@@ -3145,7 +3145,7 @@ _0804D20C:
 	strh r0, [r2, #8]
 	adds r0, r2, #0
 	strh r3, [r0, #0xc]
-	bl sub_0800650C
+	bl AnimDisplay
 _0804D228:
 	ldr r2, [sp, #0x100]
 	ldr r3, _0804D320 @ =0xFFD80000
@@ -3251,7 +3251,7 @@ _0804D2CE:
 	add r1, sp, #0xf0
 	ldrh r1, [r1]
 	strh r1, [r0, #0xc]
-	bl sub_0800650C
+	bl AnimDisplay
 _0804D2F2:
 	lsls r1, r7, #0x10
 	asrs r1, r1, #0x10
@@ -3297,7 +3297,7 @@ _0804D338:
 	strh r0, [r2, #8]
 	adds r0, r2, #0
 	strh r3, [r0, #0xc]
-	bl sub_0800650C
+	bl AnimDisplay
 _0804D354:
 	ldr r2, [sp, #0xd8]
 	cmp r2, #1
@@ -3331,7 +3331,7 @@ _0804D366:
 	strh r0, [r1, #4]
 	adds r0, r1, #0
 	strh r4, [r0, #0xc]
-	bl sub_0800650C
+	bl AnimDisplay
 	str r4, [sp, #0x24]
 	ldr r0, _0804D51C @ =0x08C09DD8
 	str r0, [sp, #0x44]
@@ -3352,7 +3352,7 @@ _0804D366:
 	strh r0, [r1, #4]
 	adds r0, r1, #0
 	strh r4, [r0, #0xc]
-	bl sub_0800650C
+	bl AnimDisplay
 _0804D3C4:
 	mov r0, sb
 	ldr r4, [r0, #0x50]
@@ -3378,7 +3378,7 @@ _0804D3C4:
 	strh r0, [r1, #4]
 	adds r0, r1, #0
 	strh r4, [r0, #0xc]
-	bl sub_0800650C
+	bl AnimDisplay
 	str r4, [sp, #0x24]
 	ldr r0, _0804D528 @ =0x08C09E14
 	str r0, [sp, #0x44]
@@ -3399,7 +3399,7 @@ _0804D3C4:
 	strh r0, [r1, #4]
 	adds r0, r1, #0
 	strh r4, [r0, #0xc]
-	bl sub_0800650C
+	bl AnimDisplay
 _0804D424:
 	mov r0, sb
 	ldr r4, [r0, #0x4c]
@@ -3433,7 +3433,7 @@ _0804D424:
 	adds r0, r1, #0
 	strh r5, [r0, #4]
 	strh r4, [r0, #0xc]
-	bl sub_0800650C
+	bl AnimDisplay
 _0804D46A:
 	ldr r0, _0804D534 @ =0x08C09E50
 	str r0, [sp, #0x44]
@@ -3452,7 +3452,7 @@ _0804D46A:
 	adds r0, r1, #0
 	strh r5, [r0, #4]
 	strh r4, [r0, #0xc]
-	bl sub_0800650C
+	bl AnimDisplay
 _0804D490:
 	mov r0, sb
 	ldr r4, [r0, #0x50]
@@ -3486,7 +3486,7 @@ _0804D490:
 	adds r0, r1, #0
 	strh r5, [r0, #4]
 	strh r4, [r0, #0xc]
-	bl sub_0800650C
+	bl AnimDisplay
 _0804D4D6:
 	ldr r0, _0804D534 @ =0x08C09E50
 	str r0, [sp, #0x44]
@@ -3505,7 +3505,7 @@ _0804D4D6:
 	adds r0, r1, #0
 	strh r5, [r0, #4]
 	strh r4, [r0, #0xc]
-	bl sub_0800650C
+	bl AnimDisplay
 _0804D4FC:
 	add sp, #0x120
 	pop {r3, r4, r5}
@@ -4115,7 +4115,7 @@ sub_0804D9B0: @ 0x0804D9B0
 	movs r2, #0xa0
 	movs r3, #2
 	bl InitTextFont
-	bl sub_08005984
+	bl SetTextDrawNoClear
 	ldr r0, _0804D9FC @ =0x081DE528
 	ldr r1, _0804DA00 @ =0x06001000
 	bl LZ77UnCompVram
@@ -4145,19 +4145,19 @@ _0804DA1A:
 	ldr r4, _0804DA58 @ =0x02017660
 	adds r0, r4, #0
 	movs r1, #6
-	bl sub_08005344
+	bl InitText
 	movs r0, #0x30
 	adds r1, r5, #0
-	bl sub_08005564
+	bl GetStringTextCenteredPos
 	adds r1, r0, #0
 	adds r0, r4, #0
-	bl sub_08005444
+	bl Text_SetCursor
 	ldr r0, _0804DA5C @ =0x081DE730
 	ldr r1, _0804DA60 @ =0x06001400
 	bl LZ77UnCompVram
 	adds r0, r4, #0
 	adds r1, r5, #0
-	bl sub_080055DC
+	bl Text_DrawString
 	ldr r0, _0804DA64 @ =0x0203DFE8
 	movs r1, #0
 	ldrsh r0, [r0, r1]
@@ -4183,19 +4183,19 @@ _0804DA7A:
 	ldr r4, _0804DAB8 @ =0x02017670
 	adds r0, r4, #0
 	movs r1, #7
-	bl sub_08005344
+	bl InitText
 	movs r0, #0x38
 	adds r1, r5, #0
-	bl sub_08005564
+	bl GetStringTextCenteredPos
 	adds r1, r0, #0
 	adds r0, r4, #0
-	bl sub_08005444
+	bl Text_SetCursor
 	ldr r0, _0804DABC @ =0x081DE780
 	ldr r1, _0804DAC0 @ =0x06001580
 	bl LZ77UnCompVram
 	adds r0, r4, #0
 	adds r1, r5, #0
-	bl sub_080055DC
+	bl Text_DrawString
 	ldr r0, _0804DAC4 @ =0x0203DFE8
 	movs r1, #2
 	ldrsh r0, [r0, r1]
@@ -4221,19 +4221,19 @@ _0804DADA:
 	ldr r4, _0804DB18 @ =0x02017678
 	adds r0, r4, #0
 	movs r1, #6
-	bl sub_08005344
+	bl InitText
 	movs r0, #0x30
 	adds r1, r5, #0
-	bl sub_08005564
+	bl GetStringTextCenteredPos
 	adds r1, r0, #0
 	adds r0, r4, #0
-	bl sub_08005444
+	bl Text_SetCursor
 	ldr r0, _0804DB1C @ =0x081DE7EC
 	ldr r1, _0804DB20 @ =0x06001740
 	bl LZ77UnCompVram
 	adds r0, r4, #0
 	adds r1, r5, #0
-	bl sub_080055DC
+	bl Text_DrawString
 	ldr r0, _0804DB24 @ =0x0203DFE8
 	movs r1, #2
 	ldrsh r0, [r0, r1]
@@ -4259,19 +4259,19 @@ _0804DB3A:
 	ldr r4, _0804DBF4 @ =0x02017668
 	adds r0, r4, #0
 	movs r1, #7
-	bl sub_08005344
+	bl InitText
 	movs r0, #0x38
 	adds r1, r5, #0
-	bl sub_08005564
+	bl GetStringTextCenteredPos
 	adds r1, r0, #0
 	adds r0, r4, #0
-	bl sub_08005444
+	bl Text_SetCursor
 	ldr r0, _0804DBF8 @ =0x081DE83C
 	ldr r1, _0804DBFC @ =0x060018C0
 	bl LZ77UnCompVram
 	adds r0, r4, #0
 	adds r1, r5, #0
-	bl sub_080055DC
+	bl Text_DrawString
 	ldr r4, _0804DC00 @ =gBg0Tm
 	adds r0, r4, #0
 	movs r1, #0x9f

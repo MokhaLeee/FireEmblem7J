@@ -479,11 +479,11 @@ _0800A890: .4byte 0x03000108
 _0800A894:
 	ldr r0, [r5, #4]
 	bl DecodeMsg
-	bl sub_080054CC
+	bl GetStringTextLen
 	b _0800A8D6
 _0800A8A0:
 	ldr r0, [r5, #4]
-	bl sub_080054CC
+	bl GetStringTextLen
 	b _0800A8D6
 _0800A8A8:
 	ldr r0, _0800A8BC @ =0x03000104
@@ -491,7 +491,7 @@ _0800A8A8:
 	ldr r0, [r0]
 	ldrh r0, [r0]
 	bl DecodeMsg
-	bl sub_080054CC
+	bl GetStringTextLen
 	b _0800A8D6
 	.align 2, 0
 _0800A8BC: .4byte 0x03000104
@@ -499,7 +499,7 @@ _0800A8C0:
 	ldr r0, _0800A8D0 @ =0x03000108
 	ldrh r0, [r0]
 	bl GetItemName
-	bl sub_080054CC
+	bl GetStringTextLen
 	b _0800A8D6
 	.align 2, 0
 _0800A8D0: .4byte 0x03000108
@@ -557,19 +557,19 @@ _0800A934:
 	bl sub_080149EC
 	add r0, sp, #0x10
 	mov r1, sp
-	bl sub_080055DC
+	bl Text_DrawString
 	b _0800A9A8
 	.align 2, 0
 _0800A948: .4byte 0x0300010C
 _0800A94C:
 	add r0, sp, #0x10
 	movs r1, #0x10
-	bl sub_08005448
+	bl Text_Skip
 	b _0800A9A8
 _0800A956:
 	add r0, sp, #0x10
 	ldr r1, [r5, #4]
-	bl sub_08005450
+	bl Text_SetColor
 	b _0800A9A8
 _0800A960:
 	add r4, sp, #0x10
@@ -579,7 +579,7 @@ _0800A960:
 _0800A96A:
 	add r0, sp, #0x10
 	ldr r1, [r5, #4]
-	bl sub_080055DC
+	bl Text_DrawString
 	b _0800A9A8
 _0800A974:
 	add r4, sp, #0x10
@@ -599,14 +599,14 @@ _0800A988:
 _0800A992:
 	adds r1, r0, #0
 	adds r0, r4, #0
-	bl sub_080055DC
+	bl Text_DrawString
 	b _0800A9A8
 	.align 2, 0
 _0800A99C: .4byte 0x03000108
 _0800A9A0:
 	add r0, sp, #0x10
 	ldr r1, [r5, #4]
-	bl sub_08005448
+	bl Text_Skip
 _0800A9A8:
 	adds r5, #8
 _0800A9AA:
@@ -863,15 +863,15 @@ _0800AB46:
 	strb r0, [r4]
 	add r0, sp, #4
 	adds r1, r6, #0
-	bl sub_08005344
+	bl InitText
 	adds r0, r5, #0
 	adds r0, #0x3b
 	ldrb r1, [r0]
 	add r0, sp, #4
-	bl sub_08005450
+	bl Text_SetColor
 	add r0, sp, #4
 	mov r1, sb
-	bl sub_08005444
+	bl Text_SetCursor
 	ldr r0, [r5, #0x2c]
 	ldr r1, [sp, #4]
 	ldr r2, [sp, #8]
@@ -895,7 +895,7 @@ _0800ABBE:
 	ldr r0, _0800AC2C @ =gBg0Tm
 	adds r1, r1, r0
 	add r0, sp, #4
-	bl sub_08005460
+	bl PutText
 	bl ResetText
 	ldrh r0, [r5, #0x3e]
 	cmp r0, r6
@@ -1488,8 +1488,8 @@ sub_0800B04C: @ 0x0800B04C
 	cmp r1, #0
 	bne _0800B068
 	movs r0, #0
-	bl sub_08005320
-	bl sub_08005904
+	bl SetTextFont
+	bl InitSystemTextFont
 	bl sub_0804A9F8
 _0800B068:
 	pop {r0}

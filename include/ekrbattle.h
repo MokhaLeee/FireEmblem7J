@@ -80,3 +80,4 @@ void SpellFx_RegisterBgPal(const u16 *pal, u32 size);
 void SpellFx_SetSomeColorEffect(void);
 void SpellFx_ClearBG1(void);
 void SpellFx_ClearColorEffects(void);
+void PlaySFX(int, int, int, int);

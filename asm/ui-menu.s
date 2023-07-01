@@ -207,7 +207,7 @@ _0804AB46:
 	lsls r1, r2, #8
 	asrs r1, r1, #0x18
 	subs r1, #2
-	bl sub_08005344
+	bl InitText
 _0804AB9E:
 	movs r3, #2
 	add sb, r3
@@ -434,7 +434,7 @@ _0804AD46:
 	beq _0804AD58
 	adds r1, r0, #0
 	adds r0, r5, #0
-	bl sub_08005450
+	bl Text_SetColor
 _0804AD58:
 	adds r0, r4, #0
 	adds r0, #0x3d
@@ -443,12 +443,12 @@ _0804AD58:
 	bne _0804AD6A
 	adds r0, r5, #0
 	movs r1, #1
-	bl sub_08005450
+	bl Text_SetColor
 _0804AD6A:
 	ldr r0, [r4, #0x30]
 	ldr r1, [r0]
 	adds r0, r5, #0
-	bl sub_080055DC
+	bl Text_DrawString
 	movs r2, #0x2c
 	ldrsh r1, [r4, r2]
 	lsls r1, r1, #5
@@ -459,7 +459,7 @@ _0804AD6A:
 	ldr r0, _0804ADB8 @ =gBg0Tm
 	adds r1, r1, r0
 	adds r0, r5, #0
-	bl sub_08005460
+	bl PutText
 _0804AD8C:
 	adds r7, #1
 	mov r0, r8

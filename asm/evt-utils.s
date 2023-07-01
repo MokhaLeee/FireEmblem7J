@@ -660,7 +660,7 @@ sub_08010AF4: @ 0x08010AF4
 	adds r1, r1, r2
 	bl sub_08013688
 	mov r0, sl
-	bl sub_080054CC
+	bl GetStringTextLen
 	adds r6, r0, #0
 	adds r4, r6, #0
 	cmp r6, #0
@@ -676,31 +676,31 @@ _08010B72:
 	ldr r2, [r7, #0x3c]
 	adds r2, #0x12
 	mov r0, sp
-	bl sub_08005ACC
+	bl InitSpriteTextFont
 	mov r0, sp
-	bl sub_08005320
+	bl SetTextFont
 	mov r2, sp
 	adds r2, #0x18
 	str r2, [sp, #0x20]
 	adds r0, r2, #0
-	bl sub_08005B08
+	bl InitSpriteText
 	ldr r0, [sp, #0x20]
 	movs r1, #0
-	bl sub_08005B8C
+	bl SpriteText_DrawBackgroundExt
 	movs r0, #0
-	bl sub_080052E0
+	bl SetTextFontGlyphs
 	adds r4, #3
 	lsls r4, r4, #3
 	adds r0, r4, #0
 	mov r1, sl
-	bl sub_08005564
+	bl GetStringTextCenteredPos
 	adds r1, r0, #0
 	ldr r0, [sp, #0x20]
 	movs r2, #0
 	mov r3, sl
-	bl sub_080059DC
+	bl Text_InsertDrawString
 	movs r0, #0
-	bl sub_08005320
+	bl SetTextFont
 	add sp, #0x24
 	pop {r3, r4, r5}
 	mov r8, r3
@@ -1840,7 +1840,7 @@ sub_080114A4: @ 0x080114A4
 	strb r2, [r0]
 	bl InitBmBgLayers
 	bl sub_08015A48
-	bl sub_08005904
+	bl InitSystemTextFont
 	pop {r0}
 	bx r0
 	.align 2, 0

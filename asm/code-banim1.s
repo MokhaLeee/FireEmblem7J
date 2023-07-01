@@ -1570,7 +1570,7 @@ sub_08051E28: @ 0x08051E28
 	cmp r1, r0
 	blt _08051E4A
 	adds r0, r5, #0
-	bl sub_080064E0
+	bl AnimDelete
 	adds r0, r4, #0
 	bl Proc_Break
 	b _08051EBA
@@ -1999,7 +1999,7 @@ _08052198:
 	strh r1, [r5, #8]
 	str r0, [r5, #0x1c]
 	adds r0, r5, #0
-	bl sub_0800650C
+	bl AnimDisplay
 _080521BE:
 	ldr r1, [r4, #0x50]
 	cmp r1, #1
@@ -2077,7 +2077,7 @@ _08052238:
 	strh r1, [r5, #8]
 	str r0, [r5, #0x1c]
 	adds r0, r5, #0
-	bl sub_0800650C
+	bl AnimDisplay
 _0805225E:
 	movs r3, #0xd3
 	lsls r3, r3, #2

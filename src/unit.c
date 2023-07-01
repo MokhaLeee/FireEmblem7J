@@ -101,11 +101,13 @@ inline int GetUnitCurrentHp(struct Unit *unit)
     return unit->curHP;
 }
 
-inline int GetUnitPower(struct Unit *unit) {
+inline int GetUnitPower(struct Unit *unit)
+{
     return unit->pow + GetItemPowBonus((u16) GetUnitEquippedWeapon(unit));
 }
 
-inline int GetUnitSkill(struct Unit *unit) {
+inline int GetUnitSkill(struct Unit *unit)
+{
     u16 item = GetUnitEquippedWeapon(unit);
 
     if (unit->state & US_RESCUING)
