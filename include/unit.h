@@ -392,25 +392,25 @@ void UnitApplyBonusLevels(struct Unit *unit, int levelCount);
 void UnitAutolevel(struct Unit *unit);
 void UnitAutolevelPlayer(struct Unit *unit);
 void UnitCheckStatCaps(struct Unit *unit);
-// GetUnitFromCharId
-// GetUnitFromCharIdAndFaction
-// CanUnitRescue
-// UnitRescue
-// UnitDrop
-// UnitGive
-// UnitKill
-// UnitChangeFaction
-// UnitSyncMovement
+struct Unit *GetUnitFromCharId(int charId);
+struct Unit *GetUnitFromCharIdAndFaction(int charId, int faction);
+bool CanUnitRescue(struct Unit *actor, struct Unit *target);
+void UnitRescue(struct Unit *actor, struct Unit *target);
+void UnitDrop(struct Unit *actor, int xTarget, int yTarget);
+bool UnitGive(struct Unit *actor, struct Unit *target);
+void UnitKill(struct Unit *unit);
+void UnitChangeFaction(struct Unit *unit, int faction);
+void UnitSyncMovement(struct Unit *unit);
 // UnitGetDeathDropLocation
 // UnitBeginAction
 // UnitBeginCantoAction
-// MoveActiveUnit
-// ClearActiveFactionGrayedStates
-// TickActiveFactionTurn
-// SetAllUnitNotBackSprite
-// UnitUpdateUsedItem
+void MoveActiveUnit(int x, int y);
+void ClearActiveFactionGrayedStates(void);
+void TickActiveFactionTurn(void);
+void SetAllUnitNotBackSprite(void);
+void UnitUpdateUsedItem(struct Unit *unit, int itemSlot);
 int GetUnitAid(struct Unit *unit);
-// GetUnitMagRange
+int GetUnitMagRange(struct Unit *unit);
 bool UnitHasMagicRank(struct Unit *unit);
 // sub_080188F4
 // GetUnitKeyItemSlotForTerrain

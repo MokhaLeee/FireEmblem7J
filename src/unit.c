@@ -517,7 +517,8 @@ void UnitAutolevelCore(struct Unit *unit, u8 classId, int levelCount)
     }
 }
 
-void UnitApplyBonusLevels(struct Unit *unit, int levelCount) {
+void UnitApplyBonusLevels(struct Unit *unit, int levelCount)
+{
     UnitAutolevelCore(unit, unit->pClassData->number, levelCount);
     UnitCheckStatCaps(unit);
     unit->curHP = GetUnitMaxHp(unit);
@@ -648,7 +649,8 @@ void UnitDrop(struct Unit *actor, int xTarget, int yTarget)
     target->yPos = yTarget;
 }
 
-bool UnitGive(struct Unit *actor, struct Unit *target) {
+bool UnitGive(struct Unit *actor, struct Unit *target)
+{
     struct Unit *rescuee = _GetUnit(actor->rescue);
 
     // no used be needed to match etc
@@ -660,7 +662,8 @@ bool UnitGive(struct Unit *actor, struct Unit *target) {
     // return couldGive; // devs probably forgot to add this
 }
 
-inline const char *GetUnitRescueName(struct Unit* unit) {
+inline const char *GetUnitRescueName(struct Unit* unit)
+{
     if (unit->rescue == 0)
         return StatusNameStringLut[UNIT_STATUS_NONE];
 
@@ -681,7 +684,8 @@ void UnitKill(struct Unit *unit)
         unit->pCharacterData = NULL;
 }
 
-void UnitChangeFaction(struct Unit *unit, int faction) {
+void UnitChangeFaction(struct Unit *unit, int faction)
+{
     struct Unit *newUnit = GetFreeUnit(faction);
 
     if (gActiveUnit == unit)
@@ -899,7 +903,8 @@ void TickActiveFactionTurn(void)
     }
 }
 
-void SetAllUnitNotBackSprite(void) {
+void SetAllUnitNotBackSprite(void)
+{
     int i;
 
     for (i = 1; i < 0xC0; i++) {

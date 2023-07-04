@@ -199,11 +199,11 @@ bool BattleGetFollowUpOrder(struct BattleUnit **attacker, struct BattleUnit **de
 bool BattleGenerateRoundHits(struct BattleUnit *attacker, struct BattleUnit *defender);
 int GetBattleUnitHitCount(struct BattleUnit *attacker);
 int BattleCheckBraveEffect(struct BattleUnit *attacker);
-// BattleCheckTriangleAttack
-// BattleUpdateBattleStats
+bool BattleCheckTriangleAttack(struct BattleUnit *attacker, struct BattleUnit *defender);
+void BattleUpdateBattleStats(struct BattleUnit *attacker, struct BattleUnit *defender);
 void BattleGenerateHitAttributes(struct BattleUnit *attacker);
-// BattleGenerateHitTriangleAttack
-// BattleGenerateHitEffects
+void BattleGenerateHitTriangleAttack(struct BattleUnit *attacker, struct BattleUnit *defender);
+void BattleGenerateHitEffects(struct BattleUnit *attacker, struct BattleUnit *defender);
 bool BattleGenerateHit(struct BattleUnit *attacker, struct BattleUnit *defender);
 void BattleApplyExpGains(void);
 // GetStatIncrease
@@ -215,10 +215,10 @@ void CheckBattleUnitLevelUp(struct BattleUnit *bu);
 void CheckBattleUnitStatCaps(struct Unit *unit, struct BattleUnit *bu);
 void BattleApplyUnitUpdates(void);
 // sub_08029FA8
-// GetBattleUnitUpdatedWeaponExp
-// HasBattleUnitGainedWeaponLevel
+int GetBattleUnitUpdatedWeaponExp(struct BattleUnit* bu);
+bool HasBattleUnitGainedWeaponLevel(struct BattleUnit *bu);
 void UpdateUnitFromBattle(struct Unit *unit, struct BattleUnit *bu);
-// UpdateUnitDuringBattle
+void UpdateUnitDuringBattle(struct Unit *unit, struct BattleUnit *bu);
 void BattleApplyBallistaUpdates(void);
 // sub_0802A21C
 // GetUnitExpLevel

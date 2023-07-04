@@ -54,6 +54,7 @@ SECTIONS
 		. = 0x03DFEC; Unk_0203DFEC = .;
 		. = 0x03E004; gEkrDistanceType = .;
 		. = 0x03E00E; gAnimRoundData = .;
+		. = 0x03E036; gEfxPairHpBufOffset = .;
 		. = 0x03E03A; gEfxHpLut = .;
 		. = 0x03E06C; gpEkrBattleUnitLeft = .;
 		. = 0x03E070; gpEkrBattleUnitRight = .;

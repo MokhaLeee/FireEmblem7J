@@ -463,7 +463,7 @@ _08054A9C:
 _08054AA8:
 	strh r0, [r1, #2]
 _08054AAA:
-	ldr r1, _08054ABC @ =0x0203E036
+	ldr r1, _08054ABC @ =gEfxPairHpBufOffset
 	movs r0, #0
 	strh r0, [r1]
 	strh r0, [r1, #2]
@@ -471,7 +471,7 @@ _08054AAA:
 	bx r0
 	.align 2, 0
 _08054AB8: .4byte gAnims
-_08054ABC: .4byte 0x0203E036
+_08054ABC: .4byte gEfxPairHpBufOffset
 
 	thumb_func_start BattleAnimationAISInit
 BattleAnimationAISInit: @ 0x08054AC0
@@ -39168,7 +39168,7 @@ _080684AA:
 sub_080684B0: @ 0x080684B0
 	push {r4, r5, r6, lr}
 	adds r5, r0, #0
-	ldr r4, _080684F0 @ =0x0203E036
+	ldr r4, _080684F0 @ =gEfxPairHpBufOffset
 	bl GetAISSubjectId
 	lsls r0, r0, #1
 	adds r0, r0, r4
@@ -39194,7 +39194,7 @@ sub_080684B0: @ 0x080684B0
 	movs r0, #0
 	b _080684FA
 	.align 2, 0
-_080684F0: .4byte 0x0203E036
+_080684F0: .4byte gEfxPairHpBufOffset
 _080684F4:
 	movs r0, #1
 	b _080684FA

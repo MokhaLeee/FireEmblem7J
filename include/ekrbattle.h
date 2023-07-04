@@ -35,6 +35,8 @@ extern int Unk_02017758;
 extern int Unk_03004750;
 extern int Unk_0203E088[2];
 extern s16 Unk_0203DFEC;
+extern short gEkrPairHpInitial[2];
+extern short gEfxPairHpBufOffset[];
 
 int GetAISLayerId(struct Anim *anim);
 void RegisterAISSheetGraphics(struct Anim *anim);
@@ -81,3 +83,4 @@ void SpellFx_SetSomeColorEffect(void);
 void SpellFx_ClearBG1(void);
 void SpellFx_ClearColorEffects(void);
 void PlaySFX(int, int, int, int);
+s16 GetEfxHp(int index);

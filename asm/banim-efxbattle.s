@@ -47,7 +47,7 @@ _0804DDBC:
 	ldr r0, [r0, #8]
 _0804DDC4:
 	str r0, [r6, #0x60]
-	ldr r4, _0804DE1C @ =0x0203E036
+	ldr r4, _0804DE1C @ =gEfxPairHpBufOffset
 	ldr r0, [r6, #0x60]
 	bl GetAISSubjectId
 	lsls r0, r0, #1
@@ -84,7 +84,7 @@ _0804DDC4:
 	b _0804DE22
 	.align 2, 0
 _0804DE18: .4byte gAnims
-_0804DE1C: .4byte 0x0203E036
+_0804DE1C: .4byte gEfxPairHpBufOffset
 _0804DE20:
 	movs r0, #1
 _0804DE22:
@@ -164,7 +164,7 @@ _0804DEAE:
 	ldr r0, [r5, #0x58]
 	cmp r0, #1
 	bne _0804DF50
-	ldr r4, _0804DEF8 @ =0x0203E036
+	ldr r4, _0804DEF8 @ =gEfxPairHpBufOffset
 	ldr r0, [r5, #0x60]
 	bl GetAISSubjectId
 	lsls r0, r0, #1
@@ -190,7 +190,7 @@ _0804DEAE:
 	.align 2, 0
 _0804DEF0: .4byte gAnims
 _0804DEF4: .4byte gEkrPairHpInitial
-_0804DEF8: .4byte 0x0203E036
+_0804DEF8: .4byte gEfxPairHpBufOffset
 _0804DEFC: .4byte 0x02017780
 _0804DF00:
 	ldr r4, _0804DF24 @ =0x0203E074
@@ -385,7 +385,7 @@ _0804E08C:
 	ldr r0, [r0, #8]
 _0804E094:
 	str r0, [r6, #0x60]
-	ldr r4, _0804E0EC @ =0x0203E036
+	ldr r4, _0804E0EC @ =gEfxPairHpBufOffset
 	ldr r0, [r6, #0x60]
 	bl GetAISSubjectId
 	lsls r0, r0, #1
@@ -422,7 +422,7 @@ _0804E094:
 	b _0804E0F2
 	.align 2, 0
 _0804E0E8: .4byte gAnims
-_0804E0EC: .4byte 0x0203E036
+_0804E0EC: .4byte gEfxPairHpBufOffset
 _0804E0F0:
 	movs r0, #1
 _0804E0F2:
@@ -499,7 +499,7 @@ _0804E178:
 	ldr r6, [r5, #0x58]
 	cmp r6, #1
 	bne _0804E1D4
-	ldr r4, _0804E1C8 @ =0x0203E036
+	ldr r4, _0804E1C8 @ =gEfxPairHpBufOffset
 	ldr r0, [r5, #0x60]
 	bl GetAISSubjectId
 	lsls r0, r0, #1
@@ -531,7 +531,7 @@ _0804E1B2:
 	b _0804E1E0
 	.align 2, 0
 _0804E1C4: .4byte gEkrPairHpInitial
-_0804E1C8: .4byte 0x0203E036
+_0804E1C8: .4byte gEfxPairHpBufOffset
 _0804E1CC: .4byte 0x02017780
 _0804E1D0: .4byte 0x02017750
 _0804E1D4:
@@ -560,7 +560,7 @@ sub_0804E1E8: @ 0x0804E1E8
 	lsls r1, r2, #0x10
 	cmp r0, r1
 	ble _0804E282
-	ldr r4, _0804E264 @ =0x0203E036
+	ldr r4, _0804E264 @ =gEfxPairHpBufOffset
 	ldr r0, [r6, #0x5c]
 	bl GetAISSubjectId
 	lsls r0, r0, #1
@@ -607,7 +607,7 @@ _0804E254:
 	rsbs r0, r0, #0
 	b _0804E26A
 	.align 2, 0
-_0804E264: .4byte 0x0203E036
+_0804E264: .4byte gEfxPairHpBufOffset
 _0804E268:
 	movs r0, #1
 _0804E26A:
@@ -703,7 +703,7 @@ _0804E31E:
 	ldr r0, [r5, #0x58]
 	cmp r0, #1
 	bne _0804E3C8
-	ldr r4, _0804E370 @ =0x0203E036
+	ldr r4, _0804E370 @ =gEfxPairHpBufOffset
 	ldr r0, [r5, #0x5c]
 	bl GetAISSubjectId
 	lsls r0, r0, #1
@@ -732,7 +732,7 @@ _0804E31E:
 _0804E364: .4byte gAnims
 _0804E368: .4byte gEkrPairHpInitial
 _0804E36C: .4byte 0x00000395
-_0804E370: .4byte 0x0203E036
+_0804E370: .4byte gEfxPairHpBufOffset
 _0804E374: .4byte 0x02017780
 _0804E378:
 	ldr r4, _0804E39C @ =0x0203E074
@@ -895,7 +895,7 @@ _0804E4B0:
 	ldr r0, [r0, #8]
 _0804E4B8:
 	str r0, [r6, #0x60]
-	ldr r4, _0804E514 @ =0x0203E036
+	ldr r4, _0804E514 @ =gEfxPairHpBufOffset
 	ldr r0, [r6, #0x60]
 	bl GetAISSubjectId
 	lsls r0, r0, #1
@@ -935,7 +935,7 @@ _0804E4B8:
 	b _0804E526
 	.align 2, 0
 _0804E510: .4byte gAnims
-_0804E514: .4byte 0x0203E036
+_0804E514: .4byte gEfxPairHpBufOffset
 _0804E518:
 	cmp r0, r1
 	ble _0804E522
@@ -1019,7 +1019,7 @@ _0804E5AA:
 	ldr r0, [r5, #0x58]
 	cmp r0, #1
 	bne _0804E5F0
-	ldr r4, _0804E5E8 @ =0x0203E036
+	ldr r4, _0804E5E8 @ =gEfxPairHpBufOffset
 	adds r0, r6, #0
 	bl GetAISSubjectId
 	lsls r0, r0, #1
@@ -1040,7 +1040,7 @@ _0804E5AA:
 	.align 2, 0
 _0804E5E0: .4byte gEkrPairHpInitial
 _0804E5E4: .4byte 0x00000395
-_0804E5E8: .4byte 0x0203E036
+_0804E5E8: .4byte gEfxPairHpBufOffset
 _0804E5EC: .4byte 0x02017780
 _0804E5F0:
 	adds r0, r1, #1
@@ -1107,7 +1107,7 @@ sub_0804E658: @ 0x0804E658
 	strh r0, [r4, #0x2c]
 	cmp r0, #8
 	bne _0804E6A0
-	ldr r6, _0804E6A8 @ =0x0203E036
+	ldr r6, _0804E6A8 @ =gEfxPairHpBufOffset
 	ldr r0, [r4, #0x5c]
 	bl GetAISSubjectId
 	lsls r0, r0, #1
@@ -1135,7 +1135,7 @@ _0804E6A0:
 	pop {r0}
 	bx r0
 	.align 2, 0
-_0804E6A8: .4byte 0x0203E036
+_0804E6A8: .4byte gEfxPairHpBufOffset
 
 	thumb_func_start sub_0804E6AC
 sub_0804E6AC: @ 0x0804E6AC
@@ -5554,7 +5554,7 @@ _08050A10:
 	adds r7, r0, #0
 	mov r8, sb
 _08050A18:
-	ldr r4, _08050A80 @ =0x0203E036
+	ldr r4, _08050A80 @ =gEfxPairHpBufOffset
 	adds r0, r5, #0
 	bl GetAISSubjectId
 	lsls r0, r0, #1
@@ -5598,7 +5598,7 @@ _08050A18:
 	bl sub_0804F284
 	b _08050A8E
 	.align 2, 0
-_08050A80: .4byte 0x0203E036
+_08050A80: .4byte gEfxPairHpBufOffset
 _08050A84:
 	adds r0, r5, #0
 	adds r1, r7, #0
@@ -5658,7 +5658,7 @@ _08050AE8:
 	ldr r0, [r0, #0xc]
 _08050AF0:
 	mov r8, r0
-	ldr r4, _08050B4C @ =0x0203E036
+	ldr r4, _08050B4C @ =gEfxPairHpBufOffset
 	adds r0, r5, #0
 	bl GetAISSubjectId
 	lsls r0, r0, #1
@@ -5696,7 +5696,7 @@ _08050AF0:
 	b _08050BAE
 	.align 2, 0
 _08050B48: .4byte gAnims
-_08050B4C: .4byte 0x0203E036
+_08050B4C: .4byte gEfxPairHpBufOffset
 _08050B50:
 	cmp r6, r4
 	beq _08050B92

@@ -870,8 +870,6 @@ void BattleUpdateBattleStats(struct BattleUnit *attacker, struct BattleUnit *def
 
 void BattleGenerateHitAttributes(struct BattleUnit *attacker)
 {
-    short attack, defense;
-
     gBattleStats.damage = 0;
 
     if (BattleRoll2RN(gBattleStats.hitRate, TRUE) == false) {
@@ -1259,7 +1257,7 @@ bool sub_08029FA8(void)
     return true;
 }
 
-int GetBattleUnitUpdatedWeaponExp(struct BattleUnit* bu) 
+int GetBattleUnitUpdatedWeaponExp(struct BattleUnit* bu)
 {
     int i, result;
 
