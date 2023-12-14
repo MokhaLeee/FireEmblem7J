@@ -90,7 +90,7 @@ sub_08006A2C: @ 0x08006A2C
 	ldr r0, _08006A50 @ =0x06010000
 	adds r1, r1, r0
 	adds r0, r2, #0
-	bl sub_08013688
+	bl Decompress
 	pop {r0}
 	bx r0
 	.align 2, 0
@@ -602,7 +602,7 @@ _08006DE8:
 	movs r2, #0xc0
 	lsls r2, r2, #0x13
 	adds r1, r1, r2
-	bl sub_08013688
+	bl Decompress
 	ldr r0, [r4, #8]
 	lsls r1, r6, #5
 	movs r2, #0x20
@@ -720,7 +720,7 @@ _08006EF0:
 	adds r5, r0, #0
 	ldr r0, [r5, #4]
 	mov r1, sp
-	bl sub_08013688
+	bl Decompress
 	lsls r1, r7, #5
 	movs r4, #0xc0
 	lsls r4, r4, #0x13
@@ -1025,7 +1025,7 @@ sub_08007160: @ 0x08007160
 	movs r2, #0xc0
 	lsls r2, r2, #0x13
 	adds r1, r1, r2
-	bl sub_08013688
+	bl Decompress
 	ldr r0, [r4, #8]
 	mov r1, r8
 	movs r2, #0x20
@@ -1073,7 +1073,7 @@ _080071F0:
 	movs r2, #0xc0
 	lsls r2, r2, #0x13
 	adds r1, r1, r2
-	bl sub_08013688
+	bl Decompress
 	lsls r1, r7, #0xc
 	ldr r0, _0800721C @ =0x000003FF
 	ands r0, r6
@@ -2364,7 +2364,7 @@ sub_08007BB8: @ 0x08007BB8
 	ldr r1, [r1]
 	ldr r2, _08007C0C @ =0x06010000
 	adds r1, r1, r2
-	bl sub_08013688
+	bl Decompress
 	ldr r0, [r4, #0x30]
 	ldr r0, [r0, #8]
 	ldr r1, [r4, #0x2c]

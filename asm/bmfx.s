@@ -834,7 +834,7 @@ sub_0801DE18: @ 0x0801DE18
 	movs r1, #1
 	rsbs r1, r1, #0
 	movs r0, #0
-	bl sub_08082F74
+	bl LoadHelpBoxGfx
 	movs r1, #0
 	ldrsb r1, [r4, r1]
 	lsls r1, r1, #4
@@ -866,7 +866,7 @@ sub_0801DE6C: @ 0x0801DE6C
 	movs r1, #1
 	rsbs r1, r1, #0
 	movs r0, #0
-	bl sub_08082F74
+	bl LoadHelpBoxGfx
 	adds r4, #0x3c
 	movs r1, #0
 	ldrsb r1, [r4, r1]
@@ -2742,7 +2742,7 @@ sub_0801ED50: @ 0x0801ED50
 	push {lr}
 	ldr r0, _0801ED8C @ =0x08191074
 	ldr r1, _0801ED90 @ =0x06002000
-	bl sub_08013688
+	bl Decompress
 	movs r0, #0
 	movs r1, #0
 	movs r2, #0
@@ -2775,7 +2775,7 @@ _0801ED98:
 _0801ED9E:
 	ldr r0, _0801EDAC @ =0x081902E8
 	ldr r1, _0801EDB0 @ =0x06002800
-	bl sub_08013688
+	bl Decompress
 	ldr r0, _0801EDB4 @ =0x08190764
 	b _0801EDC2
 	.align 2, 0
@@ -2785,7 +2785,7 @@ _0801EDB4: .4byte 0x08190764
 _0801EDB8:
 	ldr r0, _0801EDCC @ =0x08190784
 	ldr r1, _0801EDD0 @ =0x06002800
-	bl sub_08013688
+	bl Decompress
 	ldr r0, _0801EDD4 @ =0x08190BDC
 _0801EDC2:
 	movs r1, #0xa0
@@ -2799,7 +2799,7 @@ _0801EDD4: .4byte 0x08190BDC
 _0801EDD8:
 	ldr r0, _0801EDF0 @ =0x08190BFC
 	ldr r1, _0801EDF4 @ =0x06002800
-	bl sub_08013688
+	bl Decompress
 	ldr r0, _0801EDF8 @ =0x08191054
 	movs r1, #0xa0
 	movs r2, #0x20
@@ -3080,7 +3080,7 @@ _0801F020:
 	ldr r6, _0801F078 @ =0x08192178
 _0801F024:
 	ldr r1, _0801F07C @ =0x06014800
-	bl sub_08013688
+	bl Decompress
 	ldr r0, _0801F080 @ =0x08192F48
 	movs r1, #0x90
 	lsls r1, r1, #2
@@ -3154,7 +3154,7 @@ sub_0801F0B8: @ 0x0801F0B8
 	adds r5, r0, #0
 	ldr r0, _0801F104 @ =0x0819381C
 	ldr r1, _0801F108 @ =0x06014800
-	bl sub_08013688
+	bl Decompress
 	ldr r4, [r5, #0x2c]
 	lsls r4, r4, #4
 	ldr r1, _0801F10C @ =gBmSt
@@ -3328,7 +3328,7 @@ sub_0801F208: @ 0x0801F208
 	ldr r6, [sp, #0x18]
 	ldr r0, _0801F250 @ =0x083FAEE0
 	ldr r1, _0801F254 @ =0x06014800
-	bl sub_08013688
+	bl Decompress
 	ldr r0, _0801F258 @ =0x083FB16C
 	movs r1, #0x90
 	lsls r1, r1, #2
@@ -3362,7 +3362,7 @@ sub_0801F260: @ 0x0801F260
 	adds r5, r0, #0
 	ldr r0, _0801F2B8 @ =0x08192F88
 	ldr r1, _0801F2BC @ =0x06014800
-	bl sub_08013688
+	bl Decompress
 	ldr r0, _0801F2C0 @ =0x08192F68
 	movs r1, #0x90
 	lsls r1, r1, #2
@@ -3508,7 +3508,7 @@ sub_0801F38C: @ 0x0801F38C
 	adds r5, r0, #0
 	ldr r0, _0801F3EC @ =0x08194AF8
 	ldr r1, _0801F3F0 @ =0x06014800
-	bl sub_08013688
+	bl Decompress
 	ldr r0, _0801F3F4 @ =0x08194F8C
 	movs r1, #0x90
 	lsls r1, r1, #2
@@ -3682,7 +3682,7 @@ _0801F4B2:
 	bl PutIcon
 	adds r4, #2
 _0801F4E2:
-	bl sub_08005308
+	bl ResetTextFont
 	lsls r1, r4, #1
 	ldr r0, _0801F50C @ =0x02022EA2
 	adds r1, r1, r0
@@ -3715,7 +3715,7 @@ sub_0801F514: @ 0x0801F514
 	mov sl, r0
 	mov r8, r1
 	mov sb, r2
-	bl sub_08005308
+	bl ResetTextFont
 	add r0, sp, #4
 	movs r1, #0x14
 	bl InitText
@@ -3847,7 +3847,7 @@ sub_0801F650: @ 0x0801F650
 	mov r8, r0
 	adds r7, r1, #0
 	adds r4, r2, #0
-	bl sub_08005308
+	bl ResetTextFont
 	add r0, sp, #4
 	movs r1, #0x14
 	bl InitText
@@ -4028,7 +4028,7 @@ sub_0801F7B0: @ 0x0801F7B0
 	ldr r0, _0801F810 @ =0x08405FD0
 	ldr r5, _0801F814 @ =0x02001F72
 	adds r1, r5, #0
-	bl sub_08013688
+	bl Decompress
 	movs r1, #0
 	mov ip, r4
 	mov r8, r5
@@ -4431,14 +4431,14 @@ sub_0801F9D8: @ 0x0801F9D8
 	bl EnablePalSync
 	ldr r0, _0801FB78 @ =0x08406218
 	ldr r1, _0801FB7C @ =0x0600A000
-	bl sub_08013688
+	bl Decompress
 	ldr r0, _0801FB80 @ =0x08407E9C
 	movs r1, #0x80
 	movs r2, #0x20
 	bl ApplyPaletteExt
 	ldr r0, _0801FB84 @ =0x08405010
 	ldr r1, _0801FB88 @ =0x06008020
-	bl sub_08013688
+	bl Decompress
 	ldr r0, _0801FB8C @ =0x084061F8
 	movs r1, #0xa0
 	movs r2, #0x20
@@ -5108,7 +5108,7 @@ sub_0801FFE0: @ 0x0801FFE0
 	ldrsb r0, [r4, r0]
 	bl sub_080195BC
 	bl ApplyUnitSpritePalettes
-	bl sub_08015A0C
+	bl LoadObjUIGfx
 	movs r0, #0xe
 	ldrsb r0, [r4, r0]
 	bl GetROMChapterStruct
@@ -5914,14 +5914,14 @@ sub_08020674: @ 0x08020674
 	bl SetBgChrOffset
 	ldr r0, _0802078C @ =0x08408CE8
 	ldr r1, _08020790 @ =0x06001000
-	bl sub_08013688
+	bl Decompress
 	ldr r0, _08020794 @ =0x08409040
 	movs r1, #0x80
 	movs r2, #0x20
 	bl ApplyPaletteExt
 	ldr r0, _08020798 @ =0x08406218
 	ldr r1, _0802079C @ =0x06002000
-	bl sub_08013688
+	bl Decompress
 	ldr r0, _080207A0 @ =0x08409020
 	movs r1, #0
 	movs r2, #0x20
@@ -6188,7 +6188,7 @@ sub_08020904: @ 0x08020904
 	adds r6, r0, #0
 	ldr r0, _080209A8 @ =0x08195688
 	ldr r1, _080209AC @ =0x06002000
-	bl sub_08013688
+	bl Decompress
 	ldr r0, _080209B0 @ =0x08196DAC
 	movs r1, #0x40
 	movs r2, #0x20
@@ -6196,7 +6196,7 @@ sub_08020904: @ 0x08020904
 	ldr r0, _080209B4 @ =0x08196DCC
 	ldr r4, _080209B8 @ =gBmFrameTmap0
 	adds r1, r4, #0
-	bl sub_08013688
+	bl Decompress
 	movs r0, #0x84
 	lsls r0, r0, #6
 	adds r1, r0, #0
@@ -6403,7 +6403,7 @@ sub_08020AD0: @ 0x08020AD0
 	adds r6, r0, #0
 	ldr r0, _08020B60 @ =0x081BDEE8
 	ldr r1, _08020B64 @ =0x06002000
-	bl sub_08013688
+	bl Decompress
 	ldr r0, _08020B68 @ =0x081BEF08
 	movs r1, #0x40
 	movs r2, #0x20
@@ -6411,7 +6411,7 @@ sub_08020AD0: @ 0x08020AD0
 	ldr r0, _08020B6C @ =0x081BECCC
 	ldr r4, _08020B70 @ =gBmFrameTmap0
 	adds r1, r4, #0
-	bl sub_08013688
+	bl Decompress
 	movs r0, #0x84
 	lsls r0, r0, #6
 	adds r1, r0, #0
@@ -6635,7 +6635,7 @@ sub_08020CB0: @ 0x08020CB0
 	adds r6, r0, #0
 	ldr r0, _08020D68 @ =0x0819839C
 	ldr r1, _08020D6C @ =0x06002000
-	bl sub_08013688
+	bl Decompress
 	ldr r0, _08020D70 @ =0x08198AE4
 	movs r1, #0xa0
 	movs r2, #0x20
@@ -6643,7 +6643,7 @@ sub_08020CB0: @ 0x08020CB0
 	ldr r0, _08020D74 @ =0x08198B04
 	ldr r4, _08020D78 @ =gBmFrameTmap0
 	adds r1, r4, #0
-	bl sub_08013688
+	bl Decompress
 	movs r0, #0xa2
 	lsls r0, r0, #7
 	adds r1, r0, #0
@@ -6951,7 +6951,7 @@ sub_08020F38: @ 0x08020F38
 	adds r6, r0, #0
 	ldr r0, _08020FC8 @ =0x081970AC
 	ldr r1, _08020FCC @ =0x06002000
-	bl sub_08013688
+	bl Decompress
 	ldr r0, _08020FD0 @ =0x081980C0
 	movs r1, #0x40
 	movs r2, #0x20
@@ -6959,7 +6959,7 @@ sub_08020F38: @ 0x08020F38
 	ldr r0, _08020FD4 @ =0x081980E0
 	ldr r4, _08020FD8 @ =gBmFrameTmap0
 	adds r1, r4, #0
-	bl sub_08013688
+	bl Decompress
 	movs r0, #0x84
 	lsls r0, r0, #6
 	adds r1, r0, #0
@@ -7903,7 +7903,7 @@ sub_080216A0: @ 0x080216A0
 	adds r5, r0, #0
 	ldr r0, _08021728 @ =0x081BEF28
 	ldr r1, _0802172C @ =0x06005000
-	bl sub_08013688
+	bl Decompress
 	ldr r0, _08021730 @ =0x081BF2E0
 	movs r1, #0x40
 	movs r2, #0x20
@@ -7911,7 +7911,7 @@ sub_080216A0: @ 0x080216A0
 	ldr r0, _08021734 @ =0x081BF4E0
 	ldr r4, _08021738 @ =gBuf
 	adds r1, r4, #0
-	bl sub_08013688
+	bl Decompress
 	ldr r0, _0802173C @ =0x02022C64
 	movs r2, #0x8a
 	lsls r2, r2, #6
@@ -8015,7 +8015,7 @@ sub_08021770: @ 0x08021770
 	bl sub_080149B4
 	ldr r0, _080217D8 @ =0x081C83E8
 	ldr r1, _080217DC @ =0x06013000
-	bl sub_08013688
+	bl Decompress
 	ldr r0, _080217E0 @ =0x081C85F0
 	movs r1, #0xa8
 	lsls r1, r1, #2
@@ -8248,7 +8248,7 @@ sub_0802196C: @ 0x0802196C
 	adds r5, r2, #0
 	ldr r0, _080219A8 @ =0x081C2358
 	ldr r1, _080219AC @ =0x06002000
-	bl sub_08013688
+	bl Decompress
 	ldr r0, _080219B0 @ =0x02022C20
 	movs r1, #0xa0
 	movs r2, #0x20

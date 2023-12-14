@@ -2446,7 +2446,7 @@ sub_0800B72C: @ 0x0800B72C
 	lsls r0, r0, #0x13
 	adds r1, r1, r0
 	adds r0, r6, #0
-	bl sub_08013688
+	bl Decompress
 	ldr r0, _0800B7B4 @ =gBg3Tm
 	adds r1, r5, #4
 	adds r1, r4, r1
@@ -2507,7 +2507,7 @@ sub_0800B7BC: @ 0x0800B7BC
 	lsls r0, r0, #0x13
 	adds r1, r1, r0
 	adds r0, r6, #0
-	bl sub_08013688
+	bl Decompress
 	ldr r0, _0800B840 @ =gBg3Tm
 	adds r1, r5, #4
 	adds r1, r4, r1
@@ -12591,7 +12591,7 @@ sub_080100F0: @ 0x080100F0
 	adds r4, r0, #0
 	ldr r0, _08010120 @ =0x080C8174
 	ldr r1, _08010124 @ =0x06014000
-	bl sub_08013688
+	bl Decompress
 	ldr r0, _08010128 @ =0x080C86D4
 	movs r1, #0xc0
 	lsls r1, r1, #2
@@ -12711,7 +12711,7 @@ sub_080101C8: @ 0x080101C8
 	adds r5, r0, #0
 	ldr r0, _08010220 @ =0x0819381C
 	ldr r1, _08010224 @ =0x06014000
-	bl sub_08013688
+	bl Decompress
 	ldr r0, _08010228 @ =0x08193CB8
 	movs r1, #0xc0
 	lsls r1, r1, #2
@@ -12921,7 +12921,7 @@ sub_08010364: @ 0x08010364
 	adds r4, r1, #0
 	adds r5, r2, #0
 	adds r7, r3, #0
-	bl sub_08015A0C
+	bl LoadObjUIGfx
 	movs r0, #0x80
 	movs r1, #0
 	movs r2, #1

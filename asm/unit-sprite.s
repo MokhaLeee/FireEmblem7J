@@ -137,7 +137,7 @@ sub_080251EC: @ 0x080251EC
 	ldr r0, [r0]
 	ldr r1, _08025230 @ =0x08C03100
 	ldr r1, [r1]
-	bl sub_08013688
+	bl Decompress
 	adds r4, r4, r5
 	ldrh r0, [r4, #2]
 	cmp r0, #1
@@ -207,7 +207,7 @@ sub_08025278: @ 0x08025278
 	ldr r0, [r0]
 	ldr r1, _080252B8 @ =0x08C03100
 	ldr r1, [r1]
-	bl sub_08013688
+	bl Decompress
 	adds r4, r4, r5
 	ldrh r0, [r4, #2]
 	cmp r0, #1

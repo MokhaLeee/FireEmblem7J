@@ -52,7 +52,7 @@ _08007CDE:
 	ldr r0, _08007D20 @ =0x06000200
 	adds r1, r1, r0
 	adds r0, r4, #0
-	bl sub_08013688
+	bl Decompress
 	ldr r0, _08007D24 @ =0x08402A4C
 	movs r1, #0x60
 	movs r2, #0x20
@@ -500,7 +500,7 @@ sub_08008074: @ 0x08008074
 	bl sub_08007F58
 	cmp r0, #0
 	bne _08008098
-	bl sub_08015A0C
+	bl LoadObjUIGfx
 	movs r0, #0
 	movs r1, #0
 	movs r2, #0
@@ -3435,7 +3435,7 @@ sub_08009834: @ 0x08009834
 	ldr r0, _0800989C @ =0x06000200
 	adds r1, r1, r0
 	adds r0, r4, #0
-	bl sub_08013688
+	bl Decompress
 	ldrh r5, [r5]
 	lsls r0, r5, #0x10
 	asrs r0, r0, #0x11

@@ -4618,7 +4618,7 @@ sub_0803E924: @ 0x0803E924
 	bl sub_08048320
 	ldr r0, _0803EB08 @ =0x081CB3E0
 	ldr r1, _0803EB0C @ =0x06014800
-	bl sub_08013688
+	bl Decompress
 	movs r0, #0
 	movs r1, #2
 	bl sub_080483C0
@@ -4634,7 +4634,7 @@ sub_0803E924: @ 0x0803E924
 	bl ApplyPaletteExt
 	ldr r0, _0803EB1C @ =0x081CBC70
 	ldr r1, _0803EB20 @ =0x06016000
-	bl sub_08013688
+	bl Decompress
 	ldr r0, _0803EB24 @ =0x0841EC70
 	movs r1, #0x88
 	lsls r1, r1, #2
@@ -4659,7 +4659,7 @@ _0803E982:
 	ldr r0, _0803EB2C @ =0x0203DA48
 	bl SetTextFont
 	bl InitSystemTextFont
-	bl sub_08005308
+	bl ResetTextFont
 	bl sub_0803E1A0
 	bl ApplyUnitSpritePalettes
 	bl sub_08025184
@@ -6404,7 +6404,7 @@ sub_0803F788: @ 0x0803F788
 	bl sub_08048320
 	ldr r0, _0803F804 @ =0x081CB3E0
 	ldr r1, _0803F808 @ =0x06014800
-	bl sub_08013688
+	bl Decompress
 	ldr r0, _0803F80C @ =0x081CD798
 	movs r1, #0x98
 	lsls r1, r1, #2
@@ -6426,7 +6426,7 @@ sub_0803F788: @ 0x0803F788
 	ldr r0, _0803F81C @ =0x0203DA48
 	bl SetTextFont
 	bl InitSystemTextFont
-	bl sub_08005308
+	bl ResetTextFont
 	bl sub_0803DEC4
 	lsls r0, r0, #0x18
 	asrs r1, r0, #0x18
@@ -8290,13 +8290,13 @@ sub_0804068C: @ 0x0804068C
 	bl sub_08048320
 	ldr r0, _080407F0 @ =0x081CB3E0
 	ldr r1, _080407F4 @ =0x06014800
-	bl sub_08013688
+	bl Decompress
 	ldr r0, _080407F8 @ =0x081CC680
 	ldr r1, _080407FC @ =0x06016000
-	bl sub_08013688
+	bl Decompress
 	ldr r0, _08040800 @ =0x081CC8AC
 	ldr r1, _08040804 @ =0x06016800
-	bl sub_08013688
+	bl Decompress
 	ldr r0, _08040808 @ =0x081CD798
 	movs r1, #0x98
 	lsls r1, r1, #2
@@ -8309,7 +8309,7 @@ sub_0804068C: @ 0x0804068C
 	bl ApplyPaletteExt
 	ldr r0, _08040810 @ =0x081CD028
 	ldr r1, _08040814 @ =0x06000C00
-	bl sub_08013688
+	bl Decompress
 	ldr r0, _08040818 @ =0x081CD978
 	movs r1, #0x40
 	movs r2, #0x20
@@ -8322,7 +8322,7 @@ sub_0804068C: @ 0x0804068C
 	lsls r0, r0, #0x13
 	adds r1, r1, r0
 	adds r0, r4, #0
-	bl sub_08013688
+	bl Decompress
 	ldr r0, _08040820 @ =0x081D0E50
 	movs r1, #0xa0
 	lsls r1, r1, #1
@@ -8343,7 +8343,7 @@ sub_0804068C: @ 0x0804068C
 	bl ApplyPaletteExt
 	movs r0, #0
 	bl SetTextFontGlyphs
-	bl sub_08005308
+	bl ResetTextFont
 	ldr r4, _08040838 @ =0x0203D9F8
 	movs r5, #1
 _0804072C:
@@ -9038,7 +9038,7 @@ sub_08040CC8: @ 0x08040CC8
 	adds r6, r3, #0
 	bl sub_08007DF4
 	bl sub_0800968C
-	bl sub_08005308
+	bl ResetTextFont
 	adds r0, r4, #0
 	adds r1, r5, #0
 	mov r2, r8
@@ -9195,13 +9195,13 @@ sub_08040E1C: @ 0x08040E1C
 	bl sub_08048320
 	ldr r0, _08040F38 @ =0x081CB3E0
 	ldr r1, _08040F3C @ =0x06014800
-	bl sub_08013688
+	bl Decompress
 	ldr r0, _08040F40 @ =0x081CC680
 	ldr r1, _08040F44 @ =0x06016000
-	bl sub_08013688
+	bl Decompress
 	ldr r0, _08040F48 @ =0x081CBC70
 	ldr r1, _08040F4C @ =0x06016800
-	bl sub_08013688
+	bl Decompress
 	movs r4, #0x98
 	lsls r4, r4, #2
 	movs r5, #3
@@ -9224,7 +9224,7 @@ _08040E48:
 	ldr r0, _08040F58 @ =0x0203DA48
 	bl SetTextFont
 	bl InitSystemTextFont
-	bl sub_08005308
+	bl ResetTextFont
 	bl sub_0803E1A0
 	movs r5, #0
 	adds r4, #0x9c
@@ -10423,14 +10423,14 @@ sub_08041864: @ 0x08041864
 	ldr r0, _08041984 @ =0x06000C00
 	adds r1, r1, r0
 	adds r0, r4, #0
-	bl sub_08013688
+	bl Decompress
 	ldr r0, _08041988 @ =0x081CD818
 	movs r1, #0xc0
 	movs r2, #0x20
 	bl ApplyPaletteExt
 	ldr r0, _0804198C @ =0x081CB3E0
 	ldr r1, _08041990 @ =0x06014800
-	bl sub_08013688
+	bl Decompress
 	ldr r0, _08041994 @ =0x081CD798
 	movs r1, #0x98
 	lsls r1, r1, #2
@@ -10440,7 +10440,7 @@ sub_08041864: @ 0x08041864
 	bl sub_08048424
 	ldr r0, _08041998 @ =0x0203DA48
 	bl SetTextFont
-	bl sub_08005308
+	bl ResetTextFont
 	bl sub_0803E1A0
 	add r0, sp, #8
 	bl sub_08042698
@@ -10579,14 +10579,14 @@ sub_080419D4: @ 0x080419D4
 	bl sub_08048320
 	ldr r0, _08041AB4 @ =0x081CB3E0
 	ldr r1, _08041AB8 @ =0x06014800
-	bl sub_08013688
+	bl Decompress
 	movs r0, #0
 	movs r1, #4
 	bl sub_080483C0
 	ldr r0, _08041ABC @ =0x0203DA48
 	bl SetTextFont
 	bl InitSystemTextFont
-	bl sub_08005308
+	bl ResetTextFont
 	movs r0, #0xc0
 	movs r1, #0x10
 	adds r2, r7, #0
@@ -11365,7 +11365,7 @@ sub_08042010: @ 0x08042010
 	ldr r0, _080421D4 @ =0x06000C00
 	adds r1, r1, r0
 	adds r0, r4, #0
-	bl sub_08013688
+	bl Decompress
 	ldr r0, _080421D8 @ =0x081CD858
 	movs r1, #0x80
 	movs r2, #0x40
@@ -11376,7 +11376,7 @@ sub_08042010: @ 0x08042010
 	bl ApplyPaletteExt
 	ldr r0, _080421E0 @ =0x081CB3E0
 	ldr r1, _080421E4 @ =0x06014800
-	bl sub_08013688
+	bl Decompress
 	ldr r0, _080421E8 @ =0x081CD798
 	movs r1, #0x98
 	lsls r1, r1, #2
@@ -11393,7 +11393,7 @@ sub_08042010: @ 0x08042010
 	ldr r0, _080421F4 @ =0x0203DA48
 	bl SetTextFont
 	bl InitSystemTextFont
-	bl sub_08005308
+	bl ResetTextFont
 	movs r1, #0
 	movs r0, #0xc8
 	strh r0, [r7, #0x36]
@@ -11728,7 +11728,7 @@ sub_08042338: @ 0x08042338
 	ldr r0, _08042548 @ =0x06000C00
 	adds r1, r1, r0
 	adds r0, r4, #0
-	bl sub_08013688
+	bl Decompress
 	ldr r0, _0804254C @ =0x081CD858
 	movs r1, #0x80
 	movs r2, #0x40
@@ -11739,10 +11739,10 @@ sub_08042338: @ 0x08042338
 	bl ApplyPaletteExt
 	ldr r0, _08042554 @ =0x081CB3E0
 	ldr r1, _08042558 @ =0x06014800
-	bl sub_08013688
+	bl Decompress
 	ldr r0, _0804255C @ =0x081CD3E0
 	ldr r1, _08042560 @ =0x06016000
-	bl sub_08013688
+	bl Decompress
 	ldr r0, _08042564 @ =0x081CD978
 	movs r1, #0x98
 	lsls r1, r1, #2
@@ -11759,7 +11759,7 @@ sub_08042338: @ 0x08042338
 	ldr r0, _08042570 @ =0x0203DA48
 	bl SetTextFont
 	bl InitSystemTextFont
-	bl sub_08005308
+	bl ResetTextFont
 	adds r1, r7, #0
 	adds r1, #0x34
 	movs r4, #0
@@ -12250,14 +12250,14 @@ sub_080427A4: @ 0x080427A4
 	ldr r0, _0804291C @ =0x06000C00
 	adds r1, r1, r0
 	adds r0, r4, #0
-	bl sub_08013688
+	bl Decompress
 	ldr r0, _08042920 @ =0x081CD818
 	movs r1, #0xc0
 	movs r2, #0x20
 	bl ApplyPaletteExt
 	ldr r0, _08042924 @ =0x081CB3E0
 	ldr r1, _08042928 @ =0x06014800
-	bl sub_08013688
+	bl Decompress
 	ldr r0, _0804292C @ =0x081CD798
 	movs r1, #0x98
 	lsls r1, r1, #2
@@ -12267,7 +12267,7 @@ sub_080427A4: @ 0x080427A4
 	bl sub_08048424
 	ldr r0, _08042930 @ =0x0203DA48
 	bl SetTextFont
-	bl sub_08005308
+	bl ResetTextFont
 	bl sub_0803E1A0
 	movs r0, #0
 	mov r1, r8
@@ -12686,7 +12686,7 @@ sub_08042B48: @ 0x08042B48
 	bl sub_08048320
 	ldr r0, _08042BE4 @ =0x081CA888
 	ldr r1, _08042BE8 @ =0x06014800
-	bl sub_08013688
+	bl Decompress
 	ldr r0, _08042BEC @ =0x081CD738
 	movs r1, #0x98
 	lsls r1, r1, #2
@@ -12698,7 +12698,7 @@ sub_08042B48: @ 0x08042B48
 	ldr r0, _08042BF0 @ =0x0203DA48
 	bl SetTextFont
 	bl InitSystemTextFont
-	bl sub_08005308
+	bl ResetTextFont
 	bl sub_0803E1A0
 	str r4, [r6, #0x4c]
 	bl sub_080A294C
@@ -12987,7 +12987,7 @@ sub_08042DCC: @ 0x08042DCC
 	bl sub_08048320
 	ldr r0, _08042E70 @ =0x081CA888
 	ldr r1, _08042E74 @ =0x06014800
-	bl sub_08013688
+	bl Decompress
 	ldr r0, _08042E78 @ =0x081CD738
 	movs r1, #0x98
 	lsls r1, r1, #2
@@ -12999,7 +12999,7 @@ sub_08042DCC: @ 0x08042DCC
 	ldr r0, _08042E7C @ =0x0203DA48
 	bl SetTextFont
 	bl InitSystemTextFont
-	bl sub_08005308
+	bl ResetTextFont
 	bl sub_0803E1A0
 	str r4, [r6, #0x4c]
 	bl sub_080A294C
@@ -14467,14 +14467,14 @@ sub_080439BC: @ 0x080439BC
 	ldr r2, _08043B64 @ =0x06000C00
 	adds r1, r1, r2
 	adds r0, r4, #0
-	bl sub_08013688
+	bl Decompress
 	ldr r0, _08043B68 @ =0x081D7F74
 	movs r1, #0x80
 	movs r2, #0x20
 	bl ApplyPaletteExt
 	ldr r0, _08043B6C @ =0x081D7F94
 	ldr r1, _08043B70 @ =0x06014000
-	bl sub_08013688
+	bl Decompress
 	ldr r0, _08043B74 @ =0x081D83B0
 	movs r1, #0x98
 	lsls r1, r1, #2
@@ -14501,11 +14501,11 @@ sub_080439BC: @ 0x080439BC
 	lsls r2, r2, #0x13
 	adds r1, r1, r2
 	adds r0, r4, #0
-	bl sub_08013688
+	bl Decompress
 	ldr r0, _08043B8C @ =0x081D768C
 	ldr r4, _08043B90 @ =gBg3Tm
 	adds r1, r4, #0
-	bl sub_08013688
+	bl Decompress
 	ldr r0, _08043B94 @ =0x081D7BF0
 	movs r2, #0x80
 	lsls r2, r2, #1
@@ -14530,7 +14530,7 @@ _08043A88:
 	ldr r0, _08043B9C @ =0x0203DA48
 	bl SetTextFont
 	bl InitSystemTextFont
-	bl sub_08005308
+	bl ResetTextFont
 	ldr r4, _08043BA0 @ =0x0203DBF0
 	adds r0, r4, #0
 	movs r1, #0x18
@@ -14884,7 +14884,7 @@ sub_08043DB0: @ 0x08043DB0
 	ldr r0, _08043DDC @ =0x08C07DF8
 	bl sub_08004748
 	bl sub_0803C9AC
-	bl sub_080828A4
+	bl CloseHelpBox
 	bl sub_0803C8C8
 	pop {r0}
 	bx r0
@@ -14949,11 +14949,11 @@ _08043E38:
 	bgt _08043E5A
 	ldr r0, _08043E64 @ =0x06015000
 	movs r1, #6
-	bl sub_08082F74
+	bl LoadHelpBoxGfx
 	ldr r2, _08043E68 @ =0x0000118A
 	movs r0, #0x38
 	movs r1, #0x38
-	bl sub_080827F4
+	bl StartHelpBoxExt_Unk
 	adds r0, r5, #0
 	movs r1, #0xa
 	bl Proc_Goto
@@ -14997,11 +14997,11 @@ sub_08043E7C: @ 0x08043E7C
 	bne _08043EC8
 	ldr r0, _08043EC0 @ =0x06015000
 	movs r1, #6
-	bl sub_08082F74
+	bl LoadHelpBoxGfx
 	ldr r2, _08043EC4 @ =0x0000118B
 	movs r0, #0x38
 	movs r1, #0x38
-	bl sub_080827F4
+	bl StartHelpBoxExt_Unk
 	adds r0, r4, #0
 	movs r1, #0xa
 	bl Proc_Goto
@@ -15118,16 +15118,16 @@ sub_08043F74: @ 0x08043F74
 	lsls r0, r0, #0x10
 	cmp r0, #0
 	beq _08043FFA
-	bl sub_080828A4
+	bl CloseHelpBox
 	movs r0, #0
 	bl sub_0803D9B0
 	ldr r0, _08043FDC @ =0x06016800
 	movs r1, #0xd
-	bl sub_08082F74
+	bl LoadHelpBoxGfx
 	ldr r2, _08043FE0 @ =0x0000118C
 	movs r0, #0x40
 	movs r1, #0x48
-	bl sub_080827F4
+	bl StartHelpBoxExt_Unk
 	mov r0, sp
 	bl sub_0809FA3C
 	adds r3, r4, #4
@@ -15421,7 +15421,7 @@ sub_08044214: @ 0x08044214
 	adds r6, r0, #0
 	ldr r0, _080442F8 @ =0x081D83D0
 	ldr r1, _080442FC @ =0x06012800
-	bl sub_08013688
+	bl Decompress
 	ldr r0, _08044300 @ =0x081D8E2C
 	movs r1, #0xa0
 	lsls r1, r1, #2
@@ -15438,7 +15438,7 @@ sub_08044214: @ 0x08044214
 	bl ApplyPaletteExt
 	movs r0, #0
 	bl SetTextFontGlyphs
-	bl sub_08005308
+	bl ResetTextFont
 	movs r5, #0
 	ldr r0, _08044310 @ =0x02000C04
 	mov r8, r0
@@ -16175,11 +16175,11 @@ _08044834:
 	bl EnableBgSync
 	ldr r0, _08044884 @ =0x06016800
 	movs r1, #0xd
-	bl sub_08082F74
+	bl LoadHelpBoxGfx
 	ldr r2, _08044888 @ =0x00001189
 	movs r0, #0x40
 	movs r1, #0x48
-	bl sub_080827F4
+	bl StartHelpBoxExt_Unk
 	adds r0, r5, #0
 	movs r1, #3
 	bl Proc_Goto
@@ -16396,14 +16396,14 @@ sub_080449EC: @ 0x080449EC
 	adds r4, r0, #0
 	ldr r0, _08044AAC @ =0x081CD248
 	ldr r1, _08044AB0 @ =0x06002800
-	bl sub_08013688
+	bl Decompress
 	ldr r0, _08044AB4 @ =0x081CD798
 	movs r1, #0x40
 	movs r2, #0x80
 	bl ApplyPaletteExt
 	movs r0, #0
 	bl SetTextFont
-	bl sub_08005308
+	bl ResetTextFont
 	movs r0, #0
 	mov sb, r0
 	ldr r0, _08044AB8 @ =0x081DB0D8
@@ -17304,7 +17304,7 @@ sub_0804513C: @ 0x0804513C
 	bl InitSpriteTextFont
 	movs r0, #0
 	bl SetTextFontGlyphs
-	bl sub_08005308
+	bl ResetTextFont
 	ldr r4, _08045220 @ =0x02000C78
 	adds r0, r4, #0
 	bl InitSpriteText
@@ -18119,7 +18119,7 @@ sub_080457A8: @ 0x080457A8
 	push {lr}
 	ldr r0, _080457B8 @ =0x081CD5EC
 	ldr r1, _080457BC @ =0x06014800
-	bl sub_08013688
+	bl Decompress
 	pop {r0}
 	bx r0
 	.align 2, 0
@@ -18437,7 +18437,7 @@ _08045A42:
 	strb r1, [r4, #2]
 	adds r0, r1, #1
 	strb r0, [r4, #3]
-	bl sub_08015A0C
+	bl LoadObjUIGfx
 	movs r0, #0
 	adds r4, #0x2c
 	movs r1, #3
@@ -19291,7 +19291,7 @@ _08046148: .4byte 0x00000385
 sub_0804614C: @ 0x0804614C
 	push {r4, lr}
 	adds r4, r0, #0
-	bl sub_08005308
+	bl ResetTextFont
 	ldr r1, _0804618C @ =0x0203DC74
 	movs r0, #0xff
 	strb r0, [r1, #6]
@@ -21973,11 +21973,11 @@ sub_080476A0: @ 0x080476A0
 	adds r5, r0, #0
 	ldr r0, _080476E4 @ =0x06015000
 	movs r1, #6
-	bl sub_08082F74
+	bl LoadHelpBoxGfx
 	ldr r2, _080476E8 @ =0x000003D9
 	movs r0, #0x40
 	movs r1, #0x38
-	bl sub_080827F4
+	bl StartHelpBoxExt_Unk
 	movs r4, #0
 	ldr r6, _080476EC @ =0x0203DC7E
 _080476BA:
@@ -22014,7 +22014,7 @@ _080476F4:
 	ldr r1, [r4, #0x5c]
 	cmp r1, #4
 	ble _08047706
-	bl sub_080828A4
+	bl CloseHelpBox
 	adds r0, r4, #0
 	bl Proc_Break
 	b _0804775E
@@ -23150,7 +23150,7 @@ sub_08047FD4: @ 0x08047FD4
 	adds r4, r0, #0
 	ldr r0, _08048014 @ =0x083FB684
 	ldr r1, _08048018 @ =0x06004400
-	bl sub_08013688
+	bl Decompress
 	ldr r0, _0804801C @ =0x083FB8E4
 	movs r1, #0x60
 	movs r2, #0x20
@@ -23624,10 +23624,10 @@ sub_08048320: @ 0x08048320
 	lsls r2, r2, #0x13
 	adds r1, r1, r2
 	adds r0, r4, #0
-	bl sub_08013688
+	bl Decompress
 	ldr r0, _080483B4 @ =0x081D3790
 	ldr r1, _080483B8 @ =gBg3Tm
-	bl sub_08013688
+	bl Decompress
 	ldr r0, _080483BC @ =0x081D3AB0
 	movs r1, #0xe0
 	lsls r1, r1, #1
@@ -23813,11 +23813,11 @@ _080484F2:
 	asrs r4, r0, #2
 	ldr r0, _08048530 @ =0x081D1384
 	ldr r1, _08048534 @ =0x06000800
-	bl sub_08013688
+	bl Decompress
 	ldr r0, _08048538 @ =0x081CA2A4
 	ldr r5, _0804853C @ =gBuf
 	adds r1, r5, #0
-	bl sub_08013688
+	bl Decompress
 	lsls r0, r6, #8
 	lsls r4, r4, #0xb
 	adds r0, r0, r4
@@ -24008,7 +24008,7 @@ sub_08048670: @ 0x08048670
 	mov sb, r3
 	ldr r0, _080486F4 @ =0x081CA0B4
 	ldr r1, _080486F8 @ =gBuf
-	bl sub_08013688
+	bl Decompress
 	movs r4, #0
 	cmp r4, r6
 	bge _080486B4
@@ -25806,7 +25806,7 @@ sub_08049490: @ 0x08049490
 	push {lr}
 	ldr r0, _080494AC @ =0x081CF61C
 	ldr r1, _080494B0 @ =0x06002000
-	bl sub_08013688
+	bl Decompress
 	ldr r0, _080494B4 @ =gPlaySt
 	ldrb r0, [r0, #0xf]
 	cmp r0, #1
@@ -25829,7 +25829,7 @@ _080494B8:
 _080494C2:
 	ldr r0, _080494D0 @ =0x081CE348
 	ldr r1, _080494D4 @ =0x06002800
-	bl sub_08013688
+	bl Decompress
 	ldr r0, _080494D8 @ =0x081CF77C
 	b _080494FE
 	.align 2, 0
@@ -25839,7 +25839,7 @@ _080494D8: .4byte 0x081CF77C
 _080494DC:
 	ldr r0, _080494E8 @ =0x081CE7F8
 	ldr r1, _080494EC @ =0x06002800
-	bl sub_08013688
+	bl Decompress
 	ldr r0, _080494F0 @ =0x081CF7BC
 	b _080494FE
 	.align 2, 0
@@ -25849,7 +25849,7 @@ _080494F0: .4byte 0x081CF7BC
 _080494F4:
 	ldr r0, _08049508 @ =0x081CECB8
 	ldr r1, _0804950C @ =0x06002800
-	bl sub_08013688
+	bl Decompress
 	ldr r0, _08049510 @ =0x081CF79C
 _080494FE:
 	movs r1, #0xa0
@@ -25863,7 +25863,7 @@ _08049510: .4byte 0x081CF79C
 _08049514:
 	ldr r0, _08049538 @ =0x081CF168
 	ldr r1, _0804953C @ =0x06002800
-	bl sub_08013688
+	bl Decompress
 	ldr r0, _08049540 @ =0x081CF7DC
 	movs r1, #0xa0
 	movs r2, #0x20
@@ -26502,7 +26502,7 @@ sub_08049A08: @ 0x08049A08
 	ldr r0, _08049A34 @ =0x0842FF00
 	ldr r4, _08049A38 @ =0x0200118C
 	adds r1, r4, #0
-	bl sub_08013688
+	bl Decompress
 	ldr r1, _08049A3C @ =0x06016800
 	adds r0, r4, #0
 	movs r2, #6

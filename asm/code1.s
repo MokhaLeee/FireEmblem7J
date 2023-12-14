@@ -495,7 +495,7 @@ _0802E7DC: .4byte gBg2Tm
 	thumb_func_start sub_0802E7E0
 sub_0802E7E0: @ 0x0802E7E0
 	push {lr}
-	bl sub_08015A0C
+	bl LoadObjUIGfx
 	ldr r0, _0802E7FC @ =gBattleActor
 	bl sub_0806C2DC
 	bl sub_0806C7CC
@@ -4082,7 +4082,7 @@ sub_080303BC: @ 0x080303BC
 	lsrs r4, r4, #0x18
 	ldr r0, _0803042C @ =0x084048D4
 	ldr r1, _08030430 @ =0x06015E00
-	bl sub_08013688
+	bl Decompress
 	ldr r0, _08030434 @ =0x08404B0C
 	movs r1, #0x98
 	lsls r1, r1, #2
@@ -4982,7 +4982,7 @@ sub_08030A90: @ 0x08030A90
 	bl sub_08082D1C
 	ldr r0, _08030AB0 @ =0x0841D838
 	ldr r1, _08030AB4 @ =0x06017000
-	bl sub_08013688
+	bl Decompress
 	movs r0, #0
 	str r0, [r4, #0x58]
 	pop {r4}
@@ -5093,7 +5093,7 @@ sub_08030B88: @ 0x08030B88
 	movs r1, #1
 	rsbs r1, r1, #0
 	movs r0, #0
-	bl sub_08082F74
+	bl LoadHelpBoxGfx
 	bl ResetText
 	bl sub_0808667C
 	bl sub_0801D6D8
@@ -8967,7 +8967,7 @@ sub_08032AD0: @ 0x08032AD0
 	strh r1, [r0]
 	ldr r0, _08032B34 @ =0x0841DBCC
 	ldr r1, _08032B38 @ =0x06015000
-	bl sub_08013688
+	bl Decompress
 	ldr r0, _08032B3C @ =0x0841DE88
 	movs r1, #0xa8
 	lsls r1, r1, #2
@@ -9555,7 +9555,7 @@ sub_08032F90: @ 0x08032F90
 	bl ClearBg0Bg1
 	ldr r0, _08032FE4 @ =0x08404B2C
 	ldr r1, _08032FE8 @ =0x06005000
-	bl sub_08013688
+	bl Decompress
 	ldr r0, _08032FEC @ =0x08404BB4
 	movs r1, #0x60
 	movs r2, #0x20
@@ -11679,11 +11679,11 @@ sub_08034070: @ 0x08034070
 	adds r5, r0, #0
 	ldr r0, _080340E4 @ =0x08191410
 	ldr r1, _080340E8 @ =0x06004000
-	bl sub_08013688
+	bl Decompress
 	ldr r0, _080340EC @ =0x08191A58
 	ldr r4, _080340F0 @ =gBuf
 	adds r1, r4, #0
-	bl sub_08013688
+	bl Decompress
 	ldr r1, _080340F4 @ =0x06015D00
 	adds r0, r4, #0
 	movs r2, #4
@@ -11694,7 +11694,7 @@ sub_08034070: @ 0x08034070
 	lsls r1, r1, #2
 	movs r2, #0x20
 	bl ApplyPaletteExt
-	bl sub_08005308
+	bl ResetTextFont
 	bl InitIcons
 	bl sub_080338B8
 	bl sub_08033940
@@ -12355,7 +12355,7 @@ sub_080345D4: @ 0x080345D4
 	lsrs r0, r0, #0x1e
 	cmp r0, #2
 	bne _080345F0
-	bl sub_08005308
+	bl ResetTextFont
 	b _08034630
 	.align 2, 0
 _080345EC: .4byte gPlaySt
@@ -12482,7 +12482,7 @@ _080346D0:
 	movs r1, #1
 	rsbs r1, r1, #0
 	movs r0, #0
-	bl sub_08082F74
+	bl LoadHelpBoxGfx
 	adds r0, r4, #0
 	adds r0, #0x32
 	ldrb r0, [r0]

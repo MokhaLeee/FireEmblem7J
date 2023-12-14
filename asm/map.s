@@ -504,7 +504,7 @@ sub_0801955C: @ 0x0801955C
 	adds r0, r6, #0
 	bl sub_08031A7C
 	adds r1, r4, #0
-	bl sub_08013688
+	bl Decompress
 	ldr r5, _080195AC @ =gBmMapSize
 	ldrb r0, [r4]
 	strh r0, [r5]
@@ -518,7 +518,7 @@ sub_0801955C: @ 0x0801955C
 	adds r0, r0, r4
 	ldr r0, [r0]
 	ldr r1, _080195B4 @ =0x02030A8C
-	bl sub_08013688
+	bl Decompress
 	ldr r1, _080195B8 @ =gBmSt
 	movs r2, #0
 	ldrsh r0, [r5, r2]
@@ -550,7 +550,7 @@ sub_080195BC: @ 0x080195BC
 	adds r0, r0, r5
 	ldr r0, [r0]
 	ldr r1, _0801961C @ =0x06008000
-	bl sub_08013688
+	bl Decompress
 	adds r0, r4, #0
 	bl GetROMChapterStruct
 	ldrb r0, [r0, #5]
@@ -566,7 +566,7 @@ sub_080195BC: @ 0x080195BC
 	adds r0, r0, r5
 	ldr r0, [r0]
 	ldr r1, _08019620 @ =0x0600C000
-	bl sub_08013688
+	bl Decompress
 _080195FA:
 	adds r0, r4, #0
 	bl GetROMChapterStruct

@@ -642,7 +642,7 @@ sub_0802B544: @ 0x0802B544
 	movs r2, #0xe
 	movs r3, #0xc
 	bl sub_0804A4CC
-	bl sub_08005308
+	bl ResetTextFont
 	bl ClearIcons
 	movs r0, #4
 	bl ApplyIconPalettes
@@ -1154,7 +1154,7 @@ _0802B97A:
 	movs r1, #1
 	rsbs r1, r1, #0
 	movs r0, #0
-	bl sub_08082F74
+	bl LoadHelpBoxGfx
 	ldr r0, _0802B9B8 @ =0x08C03574
 	ldrb r2, [r4]
 	lsls r1, r2, #2
@@ -1316,7 +1316,7 @@ sub_0802BA98: @ 0x0802BA98
 	movs r0, #1
 	strb r0, [r1]
 _0802BAC4:
-	bl sub_080828A4
+	bl CloseHelpBox
 	ldr r6, _0802BB24 @ =0x08C03574
 	adds r2, r4, #0
 	adds r2, #0x42

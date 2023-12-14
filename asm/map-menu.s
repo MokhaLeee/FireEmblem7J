@@ -172,7 +172,7 @@ sub_08021ACC: @ 0x08021ACC
 	bl TmFill
 	movs r0, #4
 	bl EnableBgSync
-	bl sub_08005308
+	bl ResetTextFont
 	bl sub_0801D6D8
 	ldr r0, _08021B1C @ =0x08C04D68
 	ldr r2, _08021B20 @ =gBmSt
@@ -279,7 +279,7 @@ sub_08021BB0: @ 0x08021BB0
 	movs r0, #4
 	bl EnableBgSync
 	bl sub_0801D6D8
-	bl sub_08005308
+	bl ResetTextFont
 	ldr r0, _08021BE0 @ =0x08C03098
 	movs r1, #3
 	bl Proc_Start
@@ -298,7 +298,7 @@ sub_08021BE4: @ 0x08021BE4
 	bl TmFill
 	movs r0, #4
 	bl EnableBgSync
-	bl sub_08005308
+	bl ResetTextFont
 	ldr r0, _08021C1C @ =0x08C04D68
 	ldr r2, _08021C20 @ =gBmSt
 	movs r3, #0x1c
@@ -1611,7 +1611,7 @@ sub_08022614: @ 0x08022614
 	bl ClearIcons
 	movs r0, #4
 	bl ApplyIconPalettes
-	bl sub_08005308
+	bl ResetTextFont
 	ldr r0, _08022668 @ =0x08C04CFC
 	bl StartMenu
 	adds r5, r0, #0
@@ -1891,7 +1891,7 @@ sub_08022864: @ 0x08022864
 	push {lr}
 	movs r0, #0
 	bl SetTextFont
-	bl sub_08005308
+	bl ResetTextFont
 	bl sub_0804AC78
 	movs r0, #0x31
 	pop {r1}
@@ -2201,7 +2201,7 @@ _08022AD4:
 _08022B00:
 	movs r0, #0
 	bl SetTextFont
-	bl sub_08005308
+	bl ResetTextFont
 	bl sub_0804AC78
 	movs r0, #0x21
 _08022B10:

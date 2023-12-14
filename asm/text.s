@@ -76,8 +76,8 @@ _080052FA:
 _08005300: .4byte gActiveFont
 _08005304: .4byte 0x08BDC1E0
 
-	thumb_func_start sub_08005308
-sub_08005308: @ 0x08005308
+	thumb_func_start ResetTextFont
+ResetTextFont: @ 0x08005308
 	ldr r0, _08005318 @ =gActiveFont
 	ldr r1, [r0]
 	movs r0, #0

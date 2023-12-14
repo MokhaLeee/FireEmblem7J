@@ -1362,7 +1362,7 @@ _08027D94: .4byte gBmSt
 sub_08027D98: @ 0x08027D98
 	push {r4, r5, lr}
 	adds r5, r0, #0
-	bl sub_08005308
+	bl ResetTextFont
 	bl sub_0801D6D8
 	bl sub_08032CCC
 	ldr r4, _08027DD0 @ =gActiveUnit
@@ -1389,7 +1389,7 @@ _08027DD0: .4byte gActiveUnit
 	thumb_func_start sub_08027DD4
 sub_08027DD4: @ 0x08027DD4
 	push {lr}
-	bl sub_08005308
+	bl ResetTextFont
 	bl sub_0801D6D8
 	bl sub_08032CCC
 	ldr r0, _08027E00 @ =gActiveUnit
@@ -1536,7 +1536,7 @@ sub_08027F14: @ 0x08027F14
 	push {r4, r5, lr}
 	sub sp, #4
 	adds r4, r1, #0
-	bl sub_08005308
+	bl ResetTextFont
 	ldr r5, _08027F6C @ =gActionSt
 	ldrb r0, [r4, #2]
 	strb r0, [r5, #0xd]

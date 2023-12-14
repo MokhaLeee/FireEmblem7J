@@ -887,7 +887,7 @@ sub_0801BC84: @ 0x0801BC84
 	ands r1, r2
 	strb r1, [r0, #0x14]
 	bl sub_0802E8A0
-	bl sub_080A0F80
+	bl ReadLastGameSaveId
 	bl WriteGameSave
 	movs r0, #0xff
 	bl SoftReset
@@ -1213,7 +1213,7 @@ sub_0801BF24: @ 0x0801BF24
 	movs r0, #0
 	movs r1, #1
 	movs r2, #0
-	bl sub_080A1050
+	bl WriteNewGameSave
 	b _0801BF5E
 	.align 2, 0
 _0801BF50: .4byte gpKeySt
@@ -1221,7 +1221,7 @@ _0801BF54:
 	movs r0, #0
 	movs r1, #0
 	movs r2, #0
-	bl sub_080A1050
+	bl WriteNewGameSave
 _0801BF5E:
 	ldr r0, _0801BF88 @ =0x00000569
 	bl DecodeMsg

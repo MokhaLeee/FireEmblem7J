@@ -6,7 +6,17 @@ gMaxLines = 0;
 
 SECTIONS
 {
-	. = 0x02000000;
+	__ewram_overlay_beg = 0x02000000;
+    __ewram_overlay_end = __ewram_overlay_beg;
+
+    . = __ewram_overlay_beg;
+    ewram_overlay_savemenu (NOLOAD) : ALIGN(4)
+    {
+        . = ALIGN(4); src/savemenu.o(ewram_overlay_savemenu);
+    }
+    /* __ewram_overlay_end = MAX(., __ewram_overlay_end); */
+
+	. = __ewram_overlay_end;
 	EWRAM (NOLOAD) :
 	ALIGN(4)
 	{
@@ -111,6 +121,7 @@ SECTIONS
 		asm/face.o(.text);
 		asm/talk.o(.text);
 		asm/event.o(.text);
+		asm/event-08010630.o(.text);
 		asm/evt-utils.o(.text);
 		asm/sprite-anim.o(.text);
 		asm/game-ctrl.o(.text);
@@ -148,6 +159,8 @@ SECTIONS
 		asm/code-banim1.o(.text);
 		src/banim-main.o(.text);
 		asm/code.o(.text);
+		src/savemenu.o(.text);
+		asm/code2.o(.text);
 
 		asm/m4a_1.o(.text);
 		asm/m4a.o(.text);

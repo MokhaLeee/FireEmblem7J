@@ -1477,7 +1477,7 @@ sub_0801D1C0: @ 0x0801D1C0
 	ldrb r0, [r0]
 	strb r0, [r5, #0x10]
 _0801D20A:
-	bl sub_08005308
+	bl ResetTextFont
 	bl sub_080797D4
 	lsls r0, r0, #0x18
 	asrs r0, r0, #0x18

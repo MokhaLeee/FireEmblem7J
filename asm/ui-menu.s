@@ -932,7 +932,7 @@ sub_0804B100: @ 0x0804B100
 	movs r1, #1
 	rsbs r1, r1, #0
 	movs r0, #0
-	bl sub_08082F74
+	bl LoadHelpBoxGfx
 	ldr r2, [r4, #0x30]
 	adds r0, r4, #0
 	adds r0, #0x61
@@ -976,7 +976,7 @@ sub_0804B130: @ 0x0804B130
 	ands r0, r1
 	cmp r0, #0
 	beq _0804B180
-	bl sub_080828A4
+	bl CloseHelpBox
 	ldr r1, _0804B17C @ =0x08C09BDC
 	adds r0, r5, #0
 	bl sub_08004634
@@ -1044,7 +1044,7 @@ sub_0804B1C0: @ 0x0804B1C0
 	ands r0, r1
 	cmp r0, #0
 	beq _0804B1FE
-	bl sub_080828A4
+	bl CloseHelpBox
 	ldr r1, _0804B20C @ =0x08C09BDC
 	adds r0, r5, #0
 	bl sub_08004634
@@ -1066,7 +1066,7 @@ sub_0804B210: @ 0x0804B210
 	movs r1, #1
 	rsbs r1, r1, #0
 	movs r0, #0
-	bl sub_08082F74
+	bl LoadHelpBoxGfx
 	bl sub_0804A810
 	adds r4, r0, #0
 	bl sub_0804A81C

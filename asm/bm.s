@@ -429,13 +429,13 @@ _08015A04:
 	.align 2, 0
 _08015A08: .4byte gDispIo
 
-	thumb_func_start sub_08015A0C
-sub_08015A0C: @ 0x08015A0C
+	thumb_func_start LoadObjUIGfx
+LoadObjUIGfx: @ 0x08015A0C
 	push {r4, lr}
 	ldr r0, _08015A38 @ =0x0818F9F0
 	ldr r4, _08015A3C @ =gBuf
 	adds r1, r4, #0
-	bl sub_08013688
+	bl Decompress
 	ldr r1, _08015A40 @ =0x06010000
 	adds r0, r4, #0
 	movs r2, #0x12
@@ -464,7 +464,7 @@ sub_08015A48: @ 0x08015A48
 	bl InitIcons
 	movs r0, #4
 	bl ApplyIconPalettes
-	bl sub_08015A0C
+	bl LoadObjUIGfx
 	pop {r0}
 	bx r0
 

@@ -4,13 +4,13 @@
 
 struct Proc;
 
-typedef void* ProcPtr;
-typedef void(*ProcFunc)(ProcPtr proc);
+// typedef void * ProcPtr;
+// typedef void( *ProcFunc)(ProcPtr proc);
 
 struct ProcCmd {
     short opcode;
     short dataImm;
-    const void* dataPtr;
+    const void * dataPtr;
 };
 
 #define PROC_END                                     { 0x00, 0x0000, 0 }
@@ -44,12 +44,12 @@ struct ProcCmd {
 // allows local Proc structs to invoke the general Proc
 // fields when creating local Proc definitions.
 #define PROC_HEADER                                                                        \
-    /* 00 */ const struct ProcCmd* proc_script; /* pointer to proc script */                        \
-    /* 04 */ const struct ProcCmd* proc_scrCur; /* pointer to currently executing script command */ \
+    /* 00 */ const struct ProcCmd * proc_script; /* pointer to proc script */                        \
+    /* 04 */ const struct ProcCmd * proc_scrCur; /* pointer to currently executing script command */ \
     /* 08 */ ProcFunc proc_endCb; /* callback to run upon delegint the process */                   \
     /* 0C */ ProcFunc proc_idleCb; /* callback to run once each frame. */                           \
                                    /* disables script execution when not null */                    \
-    /* 10 */ const char* proc_name;                                                                 \
+    /* 10 */ const char * proc_name;                                                                 \
     /* 14 */ ProcPtr proc_parent; /* pointer to parent proc. If this proc is a root proc, */        \
                                   /* this member is an integer which is the root index. */          \
     /* 18 */ ProcPtr proc_child; /* pointer to most recently added child */                         \
@@ -92,8 +92,8 @@ struct Proc {
 };
 
 struct ProcFindIterator {
-    /* 00 */ struct Proc* proc;
-    /* 04 */ const struct ProcCmd* script;
+    /* 00 */ struct Proc * proc;
+    /* 04 */ const struct ProcCmd * script;
     /* 08 */ int count;
 };
 
@@ -109,7 +109,7 @@ struct ProcFindIterator {
 
 #define ROOT_PROC(treenum) (*(gProcTreeRootArray + (treenum)))
 
-extern struct Proc* gProcTreeRootArray[8];
+extern struct Proc * gProcTreeRootArray[8];
 
 void Proc_Init(void);
 ProcPtr Proc_Start(const struct ProcCmd* script, ProcPtr parent);

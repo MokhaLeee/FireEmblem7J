@@ -1,6 +1,7 @@
 #pragma once
 
 #include <stdlib.h>
+#include <stddef.h>
 #include "gba/gba.h"
 
 #include "types.h"
@@ -8,7 +9,10 @@
 #include "unk-functions.h"
 #include "unk-data.h"
 
-#define CONST_DATA __attribute__((section(".data")))
+#define SECTION(name) __attribute__((section(name)))
+
+#define CONST_DATA        SECTION(".data")
+#define EWRAM_OVERLAY(id) SECTION("ewram_overlay_" # id)
 
 #define ARRAY_COUNT(array) (sizeof(array) / sizeof((array)[0]))
 

@@ -539,7 +539,7 @@ sub_0802DB64: @ 0x0802DB64
 	ldr r0, _0802DBC4 @ =0x08194FAC
 	ldr r4, _0802DBC8 @ =gBuf
 	adds r1, r4, #0
-	bl sub_08013688
+	bl Decompress
 	ldr r1, _0802DBCC @ =0x06010380
 	adds r0, r4, #0
 	movs r2, #4
@@ -640,7 +640,7 @@ sub_0802DC30: @ 0x0802DC30
 	ldr r0, _0802DCA0 @ =0x08195034
 	ldr r4, _0802DCA4 @ =gBuf
 	adds r1, r4, #0
-	bl sub_08013688
+	bl Decompress
 	ldr r1, _0802DCA8 @ =0x06010300
 	adds r0, r4, #0
 	movs r2, #8
@@ -1036,7 +1036,7 @@ sub_0802DF54: @ 0x0802DF54
 	bl sub_0802D8E4
 	ldr r0, _0802DFA4 @ =0x081950CC
 	ldr r1, _0802DFA8 @ =0x06010300
-	bl sub_08013688
+	bl Decompress
 	ldr r0, _0802DFAC @ =0x0819510C
 	movs r1, #0xd0
 	lsls r1, r1, #2
@@ -1293,7 +1293,7 @@ sub_0802E144: @ 0x0802E144
 	bl sub_0802D8E4
 	ldr r0, _0802E164 @ =0x0819514C
 	ldr r1, _0802E168 @ =0x020027DC
-	bl sub_08013688
+	bl Decompress
 	ldr r0, _0802E16C @ =0x08195668
 	movs r1, #0xd0
 	lsls r1, r1, #2

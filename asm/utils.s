@@ -221,8 +221,8 @@ _08013672:
 	.align 2, 0
 _08013684: .4byte gBuf
 
-	thumb_func_start sub_08013688
-sub_08013688: @ 0x08013688
+	thumb_func_start Decompress
+Decompress: @ 0x08013688
 	push {r4, r5, lr}
 	adds r3, r0, #0
 	adds r4, r1, #0
@@ -283,7 +283,7 @@ sub_080136E8: @ 0x080136E8
 	adds r4, r1, #0
 	ldr r1, [r5]
 	adds r0, r4, #0
-	bl sub_08013688
+	bl Decompress
 	adds r0, r4, #0
 	bl sub_080136C8
 	ldr r1, [r5]
@@ -4542,7 +4542,7 @@ _080153D8:
 	ldr r1, [r3, #0x2c]
 	adds r0, r0, r1
 	str r0, [r5, #0x2c]
-	cmp r5, sp
+	cmp r5, r13
 	bne _08015528
 	mov r0, sp
 	adds r1, r6, #0

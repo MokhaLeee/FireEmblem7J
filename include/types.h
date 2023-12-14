@@ -12,6 +12,8 @@ enum { false, true };
 #endif /* bool */
 
 typedef void (* Func)(void);
+typedef void * ProcPtr;
+typedef void(* ProcFunc)(ProcPtr proc);
 
 struct Vec2 {
     s16 x, y;

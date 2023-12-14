@@ -44,7 +44,7 @@ _0804A2B8:
 	adds r0, r0, r2
 	ldr r0, [r0]
 	adds r1, r3, #0
-	bl sub_08013688
+	bl Decompress
 	pop {r0}
 	bx r0
 	.align 2, 0
@@ -98,7 +98,7 @@ _0804A31E:
 	subs r4, r4, r6
 	ldr r0, [r5]
 	adds r1, r4, #0
-	bl sub_08013688
+	bl Decompress
 	movs r1, #0xc0
 	lsls r1, r1, #0x13
 	adds r0, r4, #0
@@ -892,7 +892,7 @@ sub_0804A930: @ 0x0804A930
 	adds r5, r2, #0
 	ldr r0, _0804A954 @ =0x081DD7F4
 	adds r1, r3, #0
-	bl sub_08013688
+	bl Decompress
 	ldr r0, _0804A958 @ =0x081DDA48
 	lsls r4, r4, #5
 	lsls r5, r5, #5
