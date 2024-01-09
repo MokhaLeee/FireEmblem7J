@@ -47000,8 +47000,8 @@ _080BB09C: .4byte gBg1Tm
 _080BB0A0: .4byte 0x086B7184
 _080BB0A4: .4byte 0x0000D2F0
 
-	thumb_func_start sub_080BB0A8
-sub_080BB0A8: @ 0x080BB0A8
+	thumb_func_start Title_Init
+Title_Init: @ 0x080BB0A8
 	push {r4, r5, r6, r7, lr}
 	sub sp, #0x18
 	adds r6, r0, #0
@@ -47145,8 +47145,8 @@ _080BB1E0: .4byte gBg1Tm
 _080BB1E4: .4byte gBg2Tm
 _080BB1E8: .4byte gBg3Tm
 
-	thumb_func_start sub_080BB1EC
-sub_080BB1EC: @ 0x080BB1EC
+	thumb_func_start Title_SetupMainGraphics
+Title_SetupMainGraphics: @ 0x080BB1EC
 	push {r4, lr}
 	adds r4, r0, #0
 	movs r1, #1
@@ -47554,8 +47554,8 @@ sub_080BB510: @ 0x080BB510
 	bx r0
 	.align 2, 0
 
-	thumb_func_start sub_080BB528
-sub_080BB528: @ 0x080BB528
+	thumb_func_start Title_IDLE
+Title_IDLE: @ 0x080BB528
 	push {r4, lr}
 	adds r4, r0, #0
 	ldr r0, [r4, #0x54]
@@ -47641,8 +47641,8 @@ _080BB5BE:
 	bx r0
 	.align 2, 0
 
-	thumb_func_start sub_080BB5DC
-sub_080BB5DC: @ 0x080BB5DC
+	thumb_func_start StartTitleScreen_WithMusic
+StartTitleScreen_WithMusic: @ 0x080BB5DC
 	push {lr}
 	adds r1, r0, #0
 	ldr r0, _080BB5F8 @ =0x08DB8ED8
@@ -47658,8 +47658,8 @@ sub_080BB5DC: @ 0x080BB5DC
 	.align 2, 0
 _080BB5F8: .4byte 0x08DB8ED8
 
-	thumb_func_start sub_080BB5FC
-sub_080BB5FC: @ 0x080BB5FC
+	thumb_func_start StartTitleScreen_FlagFalse
+StartTitleScreen_FlagFalse: @ 0x080BB5FC
 	push {lr}
 	adds r1, r0, #0
 	ldr r0, _080BB610 @ =0x08DB8ED8
@@ -47672,8 +47672,8 @@ sub_080BB5FC: @ 0x080BB5FC
 	.align 2, 0
 _080BB610: .4byte 0x08DB8ED8
 
-	thumb_func_start sub_080BB614
-sub_080BB614: @ 0x080BB614
+	thumb_func_start StartTitleScreen_FlagTrue
+StartTitleScreen_FlagTrue: @ 0x080BB614
 	push {lr}
 	adds r1, r0, #0
 	ldr r0, _080BB628 @ =0x08DB8ED8

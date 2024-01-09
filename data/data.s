@@ -1,6 +1,6 @@
 	.section .data
 
-	.incbin "FireEmblem7J.base.gba", 0xBBFCA8, 0xC02144 - 0xBBFCA8
+	.incbin "FireEmblem7J.base.gba", 0xC01B84, 0xC02144 - 0xC01B84
 
 	.global StatusNameStringLut
 StatusNameStringLut: @ 08C02144
