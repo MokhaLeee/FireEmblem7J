@@ -137,7 +137,6 @@ SECTIONS
 		asm/bmfx.o(.text);
 		asm/map-menu.o(.text);
 		src/faction.o(.text);
-		asm/faction.o(.text);
 		src/gold.o(.text);
 		asm/target-sel.o(.text);
 		asm/unit-sprite.o(.text);
