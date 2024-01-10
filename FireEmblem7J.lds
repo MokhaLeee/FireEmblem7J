@@ -195,6 +195,8 @@ SECTIONS
 		. = ALIGN(4); src/battle.o(.rodata)
 		. = ALIGN(4); data/data1.o(.data)
 		. = ALIGN(4); src/hardware.o(.data)
+		. = ALIGN(4); data/data3.o(.data)
+		. = ALIGN(4); data/gamecontrol.o(.data)
 		. = ALIGN(4); data/data.o(.data)
 		. = ALIGN(4); src/battle.o(.data)
 		. = ALIGN(4); data/data2.o(.data)

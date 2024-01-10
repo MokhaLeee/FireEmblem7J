@@ -260,7 +260,7 @@ def resolve_pointer(dataPtr):
     ptr_string = hex(dataPtr)[2:]
     symbols = (
         subprocess.check_output(
-            ["readelf", "-s", "--wide", "fireemblem8.elf"], stderr=subprocess.PIPE
+            ["readelf", "-s", "--wide", "FireEmblem7J.elf"], stderr=subprocess.PIPE
         )
         .decode()
         .splitlines()
@@ -314,7 +314,7 @@ def read_procs(f, start_off, end_off):
 
 
 def smoketest():
-    with open("baserom.gba", "rb") as f:
+    with open("FireEmblem7J.base.gba", "rb") as f:
         procs = read_procs(f, 0xB12C14, 0xB12C6C)
         assert_eq(
             procs,
@@ -376,7 +376,7 @@ if __name__ == "__main__":
         smoketest()
         print("Ok")
     else:
-        with open("baserom.gba", "rb") as f:
+        with open("FireEmblem7J.base.gba", "rb") as f:
             start_off = int(sys.argv[1], base=16)
             end_off = int(sys.argv[2], base=16)
             procs = read_procs(f, start_off, end_off)

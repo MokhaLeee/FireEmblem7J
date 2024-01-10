@@ -112,8 +112,8 @@ sub_08012C64: @ 0x08012C64
 	bx r1
 	.align 2, 0
 
-	thumb_func_start sub_08012C80
-sub_08012C80: @ 0x08012C80
+	thumb_func_start GC_CheckSramResetKeyCombo
+GC_CheckSramResetKeyCombo: @ 0x08012C80
 	push {lr}
 	adds r2, r0, #0
 	ldr r0, _08012CA0 @ =gpKeySt
@@ -157,15 +157,15 @@ sub_08012CA4: @ 0x08012CA4
 	.align 2, 0
 _08012CD4: .4byte gPlaySt
 
-	thumb_func_start sub_08012CD8
-sub_08012CD8: @ 0x08012CD8
+	thumb_func_start GC_InitFastStartCheck
+GC_InitFastStartCheck: @ 0x08012CD8
 	movs r1, #0x14
 	strh r1, [r0, #0x2e]
 	bx lr
 	.align 2, 0
 
-	thumb_func_start sub_08012CE0
-sub_08012CE0: @ 0x08012CE0
+	thumb_func_start GC_FastStartCheck
+GC_FastStartCheck: @ 0x08012CE0
 	push {r4, lr}
 	adds r4, r0, #0
 	ldr r0, _08012CFC @ =gpKeySt
@@ -280,8 +280,8 @@ sub_08012DB4: @ 0x08012DB4
 	pop {r0}
 	bx r0
 
-	thumb_func_start sub_08012DC8
-sub_08012DC8: @ 0x08012DC8
+	thumb_func_start GC_PostIntro
+GC_PostIntro: @ 0x08012DC8
 	push {r4, r5, lr}
 	adds r4, r0, #0
 	adds r0, #0x29
@@ -935,8 +935,8 @@ sub_08013288: @ 0x08013288
 	.align 2, 0
 _080132A8: .4byte 0x08C01744
 
-	thumb_func_start sub_080132AC
-sub_080132AC: @ 0x080132AC
+	thumb_func_start ForceEnableSounds
+ForceEnableSounds: @ 0x080132AC
 	ldr r0, _080132C4 @ =gPlaySt
 	adds r0, #0x41
 	movs r1, #2
