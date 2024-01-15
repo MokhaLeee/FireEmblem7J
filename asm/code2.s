@@ -1059,7 +1059,7 @@ _080A4994:
 	adds r1, r4, #0
 	adds r1, #0x2c
 	ldrb r1, [r1]
-	bl sub_080A0FE8
+	bl CopyGameSave
 	adds r0, r4, #0
 	movs r1, #6
 	bl Proc_Goto

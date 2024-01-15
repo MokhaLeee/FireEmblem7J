@@ -3907,8 +3907,8 @@ _080A0FD0:
 	bx r0
 	.align 2, 0
 
-	thumb_func_start sub_080A0FE8
-sub_080A0FE8: @ 0x080A0FE8
+	thumb_func_start CopyGameSave
+CopyGameSave: @ 0x080A0FE8
 	push {r4, r5, r6, lr}
 	mov r6, sb
 	mov r5, r8
