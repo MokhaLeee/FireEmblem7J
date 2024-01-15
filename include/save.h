@@ -210,7 +210,7 @@ void SaveBonusContentData(void * buf);
 // ??? sub_080A0F14
 // ??? sub_080A0F20
 // ??? sub_080A0F3C
-// ??? sub_080A0F60
+// ??? WriteLastGameSaveId
 // ??? ReadLastGameSaveId
 // ??? sub_080A0FA8
 // ??? CopyGameSave
@@ -237,7 +237,7 @@ void SaveBonusContentData(void * buf);
 // ??? sub_080A22AC
 // ??? sub_080A22CC
 // ??? sub_080A22DC
-// ??? sub_080A2304
+int SramChecksum32(void const * sram_src, int size);
 bool VerifySaveBlockChecksum(struct SaveBlockInfo * block_info);
 void PopulateSaveBlockChecksum(struct SaveBlockInfo * block_info);
 // ??? sub_080A236C

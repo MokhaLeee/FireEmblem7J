@@ -3834,8 +3834,8 @@ _080A0F54: .4byte ReadSramFast
 _080A0F58: .4byte 0x00000D88
 _080A0F5C: .4byte 0x0203EC98
 
-	thumb_func_start sub_080A0F60
-sub_080A0F60: @ 0x080A0F60
+	thumb_func_start WriteLastGameSaveId
+WriteLastGameSaveId: @ 0x080A0F60
 	push {r4, lr}
 	sub sp, #0x64
 	adds r4, r0, #0
@@ -4085,7 +4085,7 @@ _080A1132:
 	mov r1, r8
 	bl WriteSaveBlockInfo
 	mov r0, r8
-	bl sub_080A0F60
+	bl WriteLastGameSaveId
 	add sp, #0x38
 	pop {r3}
 	mov r8, r3
@@ -4184,7 +4184,7 @@ _080A11FC:
 	mov r1, sb
 	bl WriteSaveBlockInfo
 	mov r0, sb
-	bl sub_080A0F60
+	bl WriteLastGameSaveId
 	add sp, #0x74
 	pop {r3, r4, r5}
 	mov r8, r3
@@ -4263,7 +4263,7 @@ _080A12C4:
 	adds r0, r7, #0
 	bl sub_080A0F3C
 	mov r0, sb
-	bl sub_080A0F60
+	bl WriteLastGameSaveId
 	pop {r3, r4}
 	mov r8, r3
 	mov sb, r4
@@ -6293,8 +6293,8 @@ _080A22F4:
 	bx r0
 	.align 2, 0
 
-	thumb_func_start sub_080A2304
-sub_080A2304: @ 0x080A2304
+	thumb_func_start SramChecksum32
+SramChecksum32: @ 0x080A2304
 	push {r4, r5, lr}
 	adds r5, r1, #0
 	ldr r1, _080A2324 @ =ReadSramFast
@@ -6321,7 +6321,7 @@ VerifySaveBlockChecksum: @ 0x080A232C
 	ldrh r0, [r4, #8]
 	bl SramOffsetToAddr
 	adds r1, r5, #0
-	bl sub_080A2304
+	bl SramChecksum32
 	ldr r1, [r4, #0xc]
 	cmp r1, r0
 	bne _080A2348
@@ -6342,7 +6342,7 @@ PopulateSaveBlockChecksum: @ 0x080A2350
 	ldrh r0, [r4, #8]
 	bl SramOffsetToAddr
 	adds r1, r5, #0
-	bl sub_080A2304
+	bl SramChecksum32
 	str r0, [r4, #0xc]
 	pop {r4, r5}
 	pop {r0}
@@ -6363,7 +6363,7 @@ _080A2374:
 	str r0, [r4, #0x3c]
 	adds r0, r4, #0
 	movs r1, #0x24
-	bl sub_080A2304
+	bl SramChecksum32
 	adds r0, r6, r0
 	lsls r0, r0, #0x10
 	lsrs r6, r0, #0x10
@@ -6382,7 +6382,7 @@ _080A2398:
 	str r0, [r4, #0x3c]
 	adds r0, r4, #0
 	movs r1, #0x24
-	bl sub_080A2304
+	bl SramChecksum32
 	adds r0, r6, r0
 	lsls r0, r0, #0x10
 	lsrs r6, r0, #0x10
@@ -6401,7 +6401,7 @@ _080A23BC:
 	str r0, [r4, #0x3c]
 	adds r0, r4, #0
 	movs r1, #0x24
-	bl sub_080A2304
+	bl SramChecksum32
 	adds r0, r6, r0
 	lsls r0, r0, #0x10
 	lsrs r6, r0, #0x10
@@ -6418,7 +6418,7 @@ _080A23D4:
 	adds r1, r1, r0
 	asrs r1, r1, #1
 	adds r0, r4, #0
-	bl sub_080A2304
+	bl SramChecksum32
 	adds r0, r6, r0
 	lsls r0, r0, #0x10
 	lsrs r6, r0, #0x10
@@ -6430,7 +6430,7 @@ _080A23D4:
 	adds r1, r1, r0
 	asrs r1, r1, #1
 	adds r0, r4, #0
-	bl sub_080A2304
+	bl SramChecksum32
 	adds r0, r6, r0
 	lsls r0, r0, #0x10
 	lsrs r6, r0, #0x10
@@ -6438,7 +6438,7 @@ _080A23D4:
 	bl GetTrap
 	movs r1, #0x80
 	lsls r1, r1, #1
-	bl sub_080A2304
+	bl SramChecksum32
 	adds r0, r6, r0
 	lsls r0, r0, #0x10
 	lsrs r6, r0, #0x10
