@@ -265,22 +265,22 @@ void * GetSaveWriteAddr(int save_id)
     switch (save_id)
     {
         case SAVE_GAME0:
-            return (void *)gSramMain + 0x00003F2C;
+            return (void *)gSramMain + 0x3F2C;
 
         case SAVE_GAME1:
-            return (void *)gSramMain + 0x00004CB8;
+            return (void *)gSramMain + 0x4CB8;
 
         case SAVE_GAME2:
-            return (void *)gSramMain + 0x00005A44;
+            return (void *)gSramMain + 0x5A44;
 
         case SAVE_SUSPEND:
-            return (void *)gSramMain + 0x000000D4;
+            return (void *)gSramMain + 0x00D4;
 
         case SAVE_SUSPEND_ALT:
-            return (void *)gSramMain + 0x00002000;
+            return (void *)gSramMain + 0x2000;
 
         case SAVE_MULTIARENA:
-            return (void *)gSramMain + 0x000067D0;
+            return (void *)gSramMain + 0x67D0;
 
         case SAVE_XMAP:
             return SRAM_XMAP_ADDR;
