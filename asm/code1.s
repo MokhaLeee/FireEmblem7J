@@ -6951,7 +6951,7 @@ sub_08031A7C: @ 0x08031A7C
 	push {r4, r5, r6, lr}
 	cmp r0, #0x30
 	bne _08031AA8
-	ldr r6, _08031AA0 @ =0x03005D90
+	ldr r6, _08031AA0 @ =ReadSramFast
 	bl sub_080A2A50
 	adds r4, r0, #0
 	ldr r5, _08031AA4 @ =gBuf
@@ -6964,7 +6964,7 @@ sub_08031A7C: @ 0x08031A7C
 	adds r0, r5, #0
 	b _08031AB6
 	.align 2, 0
-_08031AA0: .4byte 0x03005D90
+_08031AA0: .4byte ReadSramFast
 _08031AA4: .4byte gBuf
 _08031AA8:
 	ldr r4, _08031ABC @ =0x08D648F4

@@ -1051,7 +1051,7 @@ sub_08013374: @ 0x08013374
 	ldr r0, _08013390 @ =0xFFFFFC00
 	adds r1, r5, r0
 	adds r0, r5, #0
-	bl CopyString
+	bl StringCopy
 	b _0801346C
 	.align 2, 0
 _0801338C: .4byte 0x0202A9B0
@@ -1121,7 +1121,7 @@ _0801341A:
 _08013422:
 	adds r1, r0, #0
 	adds r0, r4, #0
-	bl CopyString
+	bl StringCopy
 	b _0801345A
 	.align 2, 0
 _0801342C: .4byte gActionSt
@@ -1146,7 +1146,7 @@ _08013440:
 	bl DecodeMsg
 	adds r1, r0, #0
 	adds r0, r4, #0
-	bl CopyString
+	bl StringCopy
 _0801345A:
 	ldrb r0, [r4]
 	adds r1, r5, #1
@@ -1183,7 +1183,7 @@ sub_08013488: @ 0x08013488
 	ldr r0, _080134A4 @ =0xFFFFF200
 	adds r1, r5, r0
 	adds r0, r5, #0
-	bl CopyString
+	bl StringCopy
 	b _080134F0
 	.align 2, 0
 _080134A0: .4byte 0x0202B3B0
@@ -1218,7 +1218,7 @@ _080134D2:
 	bl sub_0802EBB0
 	adds r1, r0, #0
 	adds r0, r4, #0
-	bl CopyString
+	bl StringCopy
 	ldrb r0, [r4]
 	adds r1, r5, #1
 	cmp r0, #0

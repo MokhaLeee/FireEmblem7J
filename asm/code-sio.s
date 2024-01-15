@@ -14066,7 +14066,7 @@ sub_080436B0: @ 0x080436B0
 	asrs r0, r0, #0x18
 	cmp r0, #0
 	bne _0804370C
-	ldr r1, _080436FC @ =0x03005D90
+	ldr r1, _080436FC @ =ReadSramFast
 	ldr r0, _08043700 @ =0x0E007400
 	ldr r4, _08043704 @ =gAnims
 	movs r5, #0xc0
@@ -14085,7 +14085,7 @@ sub_080436B0: @ 0x080436B0
 	.align 2, 0
 _080436F4: .4byte 0x0203DA48
 _080436F8: .4byte 0x08C07DAC
-_080436FC: .4byte 0x03005D90
+_080436FC: .4byte ReadSramFast
 _08043700: .4byte 0x0E007400
 _08043704: .4byte gAnims
 _08043708: .4byte sub_080435D0
@@ -14351,8 +14351,8 @@ sub_08043918: @ 0x08043918
 	bl sub_08009E60
 	cmp r0, #1
 	bne _0804393A
-	bl InitGlobalSaveInfodata
-	bl EraseBonusContentData
+	bl InitGlobalSaveInfo
+	bl sub_0809F098
 	bl sub_0809FC30
 	bl sub_080A00A4
 	bl sub_080A01C8

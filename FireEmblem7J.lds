@@ -71,6 +71,7 @@ SECTIONS
 		. = 0x03E078; gpEkrTriangleUnits = .;
 		. = 0x03E088; Unk_0203E088 = .;
 		. = 0x03E090; gEkrPairHpInitial = .;
+		. = 0x03E772; gIsSramWorking = .;
 	}
 
 	. = 0x03000000;
@@ -94,6 +95,7 @@ SECTIONS
 		. = 0x003870; IntrMainRam = .;
 		. = 0x0045B0; gActiveUnit = .;
 		. = 0x004750; Unk_03004750 = .;
+		. = 0x005D90; ReadSramFast = .;
 	}
 
 	. = 0x08000000;
@@ -159,6 +161,8 @@ SECTIONS
 		asm/code-banim1.o(.text);
 		src/banim-main.o(.text);
 		asm/code.o(.text);
+		src/save_core.o(.text);
+		asm/save.o(.text);
 		src/savemenu.o(.text);
 		asm/code2.o(.text);
 
@@ -193,6 +197,8 @@ SECTIONS
 		. = ALIGN(4); src/unit.o(.rodata)
 		. = ALIGN(4); data/const_data2.o(.rodata)
 		. = ALIGN(4); src/battle.o(.rodata)
+		. = ALIGN(4); data/const_data4.o(.rodata)
+		. = ALIGN(4); src/save_core.o(.rodata)
 		. = ALIGN(4); data/data1.o(.data)
 		. = ALIGN(4); src/hardware.o(.data)
 		. = ALIGN(4); data/data3.o(.data)
@@ -200,5 +206,7 @@ SECTIONS
 		. = ALIGN(4); data/data.o(.data)
 		. = ALIGN(4); src/battle.o(.data)
 		. = ALIGN(4); data/data2.o(.data)
+		. = ALIGN(4); src/save_core.o(.data)
+		. = ALIGN(4); data/data4.o(.data)
 	}
 }

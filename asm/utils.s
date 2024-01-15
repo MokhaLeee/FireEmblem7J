@@ -116,8 +116,8 @@ nullsub_33: @ 0x080135D0
 	bx lr
 	.align 2, 0
 
-	thumb_func_start StringCompare
-StringCompare: @ 0x080135D4
+	thumb_func_start StringEquals
+StringEquals: @ 0x080135D4
 	push {r4, lr}
 	adds r4, r0, #0
 	b _080135E6
@@ -142,8 +142,8 @@ _080135F4:
 	bx r1
 	.align 2, 0
 
-	thumb_func_start CopyString
-CopyString: @ 0x080135FC
+	thumb_func_start StringCopy
+StringCopy: @ 0x080135FC
 	adds r3, r0, #0
 	b _08013606
 _08013600:

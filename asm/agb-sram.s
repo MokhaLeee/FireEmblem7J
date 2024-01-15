@@ -141,7 +141,7 @@ _080C06B0:
 	lsrs r1, r0, #0x10
 	cmp r1, #0
 	bne _080C06A4
-	ldr r1, _080C06D0 @ =0x03005D90
+	ldr r1, _080C06D0 @ =ReadSramFast
 	ldr r0, _080C06D4 @ =0x030022F9
 	str r0, [r1]
 	ldr r2, _080C06D8 @ =VerifySramFast_Core
@@ -154,7 +154,7 @@ _080C06B0:
 	lsls r0, r0, #0xf
 	b _080C06F0
 	.align 2, 0
-_080C06D0: .4byte 0x03005D90
+_080C06D0: .4byte ReadSramFast
 _080C06D4: .4byte 0x030022F9
 _080C06D8: .4byte VerifySramFast_Core
 _080C06DC: .4byte 0x03002258

@@ -3657,7 +3657,7 @@ sub_080A5DF0: @ 0x080A5DF0
 	push {lr}
 	ldr r0, _080A5E00 @ =0x08DAD844
 	ldr r0, [r0]
-	bl sub_0809FBCC
+	bl SaveBonusContentData
 	pop {r0}
 	bx r0
 	.align 2, 0
@@ -19896,7 +19896,7 @@ _080ADB8E:
 	str r1, [r0]
 	ldr r0, _080ADBB4 @ =0x08DAEF64
 	ldr r0, [r0]
-	bl sub_0809FBCC
+	bl SaveBonusContentData
 _080ADBA6:
 	mov r2, r8
 	cmp r2, #0
