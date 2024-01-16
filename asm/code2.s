@@ -11826,7 +11826,7 @@ _080A9DB0:
 	str r0, [sp]
 	movs r0, #0xd
 	mov r2, ip
-	ldr r3, _080A9EE8 @ =0x08BFF760
+	ldr r3, _080A9EE8 @ =Sprite_8x8
 	bl sub_080068C4
 	movs r0, #0
 	ldrsh r1, [r6, r0]
@@ -11847,7 +11847,7 @@ _080A9DB0:
 	str r0, [sp]
 	movs r0, #0xd
 	mov r2, ip
-	ldr r3, _080A9EE8 @ =0x08BFF760
+	ldr r3, _080A9EE8 @ =Sprite_8x8
 	bl sub_080068C4
 	movs r3, #0xc0
 	lsls r3, r3, #6
@@ -11873,7 +11873,7 @@ _080A9DB0:
 	str r0, [sp]
 	movs r0, #0xd
 	mov r2, ip
-	ldr r3, _080A9EE8 @ =0x08BFF760
+	ldr r3, _080A9EE8 @ =Sprite_8x8
 	bl sub_080068C4
 	movs r0, #0
 	ldrsh r1, [r6, r0]
@@ -11901,7 +11901,7 @@ _080A9DB0:
 	adds r0, #4
 	str r0, [sp]
 	movs r0, #0xd
-	ldr r3, _080A9EE8 @ =0x08BFF760
+	ldr r3, _080A9EE8 @ =Sprite_8x8
 	bl sub_080068C4
 	mov r7, sb
 	movs r0, #0
@@ -11943,7 +11943,7 @@ _080A9EC4:
 	bgt _080A9EC4
 	b _080A9F0E
 	.align 2, 0
-_080A9EE8: .4byte 0x08BFF760
+_080A9EE8: .4byte Sprite_8x8
 _080A9EEC: .4byte 0x08BFF7B8
 _080A9EF0:
 	mov r3, sl
@@ -11976,7 +11976,7 @@ _080A9F16:
 	movs r0, #0xd
 	adds r1, r5, #0
 	adds r2, r7, #0
-	ldr r3, _080A9F98 @ =0x08BFF760
+	ldr r3, _080A9F98 @ =Sprite_8x8
 	bl sub_080068C4
 	adds r5, #8
 	subs r4, #1
@@ -12031,7 +12031,7 @@ _080A9F70:
 	b _080A9FBE
 	.align 2, 0
 _080A9F94: .4byte 0x08BFF798
-_080A9F98: .4byte 0x08BFF760
+_080A9F98: .4byte Sprite_8x8
 _080A9F9C: .4byte 0x08BFF7B8
 _080A9FA0:
 	mov r1, sl
@@ -12064,7 +12064,7 @@ _080A9FC6:
 	movs r0, #0xd
 	adds r1, r5, #0
 	adds r2, r7, #0
-	ldr r3, _080AA04C @ =0x08BFF760
+	ldr r3, _080AA04C @ =Sprite_8x8
 	bl sub_080068C4
 	adds r5, #8
 	subs r4, #1
@@ -12122,7 +12122,7 @@ _080AA028:
 	b _080AA06E
 	.align 2, 0
 _080AA048: .4byte 0x08BFF798
-_080AA04C: .4byte 0x08BFF760
+_080AA04C: .4byte Sprite_8x8
 _080AA050: .4byte 0x08BFF7B8
 _080AA054:
 	ldrh r3, [r6]
@@ -12151,7 +12151,7 @@ _080AA076:
 	movs r0, #0xd
 	adds r1, r5, #0
 	adds r2, r7, #0
-	ldr r3, _080AA0BC @ =0x08BFF760
+	ldr r3, _080AA0BC @ =Sprite_8x8
 	bl sub_080068C4
 	adds r5, #8
 	subs r4, #1
@@ -12180,7 +12180,7 @@ _080AA0A8:
 	bx r0
 	.align 2, 0
 _080AA0B8: .4byte 0x08BFF798
-_080AA0BC: .4byte 0x08BFF760
+_080AA0BC: .4byte Sprite_8x8
 
 	thumb_func_start sub_080AA0C0
 sub_080AA0C0: @ 0x080AA0C0
@@ -12449,7 +12449,7 @@ sub_080AA278: @ 0x080AA278
 	ldr r1, [r5, #0x2c]
 	ldr r2, [r5, #0x30]
 	adds r2, #8
-	ldr r3, _080AA344 @ =0x08BFF760
+	ldr r3, _080AA344 @ =Sprite_8x8
 	ldrh r0, [r5, #0x3a]
 	ands r4, r0
 	lsls r4, r4, #0xc
@@ -12481,7 +12481,7 @@ _080AA2D8:
 	adds r0, #1
 	str r0, [sp]
 	movs r0, #4
-	ldr r3, _080AA344 @ =0x08BFF760
+	ldr r3, _080AA344 @ =Sprite_8x8
 	bl sub_080068C4
 	adds r4, #1
 	ldrh r0, [r5, #0x38]
@@ -12494,7 +12494,7 @@ _080AA306:
 	adds r1, r1, r0
 	ldr r2, [r5, #0x30]
 	adds r2, #8
-	ldr r3, _080AA344 @ =0x08BFF760
+	ldr r3, _080AA344 @ =Sprite_8x8
 	movs r0, #0xf
 	ldrh r4, [r5, #0x3a]
 	ands r0, r4
@@ -12515,7 +12515,7 @@ _080AA306:
 _080AA338: .4byte gPal
 _080AA33C: .4byte gPlaySt
 _080AA340: .4byte 0x08428A80
-_080AA344: .4byte 0x08BFF760
+_080AA344: .4byte Sprite_8x8
 
 	thumb_func_start sub_080AA348
 sub_080AA348: @ 0x080AA348
@@ -12790,7 +12790,7 @@ _080AA512:
 	ands r2, r3
 	mov r3, r8
 	str r3, [sp]
-	ldr r3, _080AA794 @ =0x08BFF760
+	ldr r3, _080AA794 @ =Sprite_8x8
 	bl sub_080068C4
 	ldrb r0, [r5, #1]
 	movs r2, #2
@@ -12809,7 +12809,7 @@ _080AA512:
 	ands r2, r3
 	mov r3, r8
 	str r3, [sp]
-	ldr r3, _080AA794 @ =0x08BFF760
+	ldr r3, _080AA794 @ =Sprite_8x8
 	bl sub_080068C4
 	ldrb r0, [r5, #1]
 	movs r2, #2
@@ -12833,7 +12833,7 @@ _080AA512:
 	ands r2, r3
 	mov r3, r8
 	str r3, [sp]
-	ldr r3, _080AA794 @ =0x08BFF760
+	ldr r3, _080AA794 @ =Sprite_8x8
 	bl sub_080068C4
 	ldrb r0, [r5, #1]
 	ldr r1, _080AA790 @ =0x000001FF
@@ -12852,7 +12852,7 @@ _080AA512:
 	ands r2, r3
 	mov r3, r8
 	str r3, [sp]
-	ldr r3, _080AA794 @ =0x08BFF760
+	ldr r3, _080AA794 @ =Sprite_8x8
 	bl sub_080068C4
 	movs r7, #1
 	ldrb r0, [r5, #6]
@@ -12961,7 +12961,7 @@ _080AA68C:
 	bge _080AA6F0
 	ldr r0, _080AA790 @ =0x000001FF
 	mov sl, r0
-	ldr r1, _080AA794 @ =0x08BFF760
+	ldr r1, _080AA794 @ =Sprite_8x8
 	mov sb, r1
 	mov r6, r8
 	adds r6, #1
@@ -13032,7 +13032,7 @@ _080AA70A:
 	ands r2, r3
 	ldr r3, [sp, #8]
 	str r3, [sp]
-	ldr r3, _080AA794 @ =0x08BFF760
+	ldr r3, _080AA794 @ =Sprite_8x8
 	bl sub_080068C4
 	ldrb r0, [r5, #1]
 	movs r2, #2
@@ -13053,7 +13053,7 @@ _080AA70A:
 	ands r2, r3
 	ldr r3, [sp, #8]
 	str r3, [sp]
-	ldr r3, _080AA794 @ =0x08BFF760
+	ldr r3, _080AA794 @ =Sprite_8x8
 	bl sub_080068C4
 	movs r6, #1
 	ldrb r0, [r5, #6]
@@ -13087,7 +13087,7 @@ _080AA760:
 	b _080AA7C6
 	.align 2, 0
 _080AA790: .4byte 0x000001FF
-_080AA794: .4byte 0x08BFF760
+_080AA794: .4byte Sprite_8x8
 _080AA798: .4byte 0x08BFF7B8
 _080AA79C: .4byte 0x08BFF798
 _080AA7A0:
@@ -13133,7 +13133,7 @@ _080AA7D4:
 	mov r3, r8
 	adds r3, #5
 	str r3, [sp]
-	ldr r3, _080AA824 @ =0x08BFF760
+	ldr r3, _080AA824 @ =Sprite_8x8
 	bl sub_080068C4
 	adds r6, #1
 _080AA7FA:
@@ -13161,7 +13161,7 @@ _080AA814:
 	pop {r0}
 	bx r0
 	.align 2, 0
-_080AA824: .4byte 0x08BFF760
+_080AA824: .4byte Sprite_8x8
 
 	thumb_func_start sub_080AA828
 sub_080AA828: @ 0x080AA828
@@ -18921,7 +18921,7 @@ _080AD3C0:
 	str r0, [sp]
 	movs r0, #0
 	mov r2, r8
-	ldr r3, _080AD420 @ =0x08BFF760
+	ldr r3, _080AD420 @ =Sprite_8x8
 	bl sub_080068C4
 	adds r5, #8
 	adds r6, #1
@@ -18940,7 +18940,7 @@ _080AD3EC:
 	add r1, sb
 	ldr r0, _080AD418 @ =0x000001FF
 	ands r1, r0
-	ldr r3, _080AD420 @ =0x08BFF760
+	ldr r3, _080AD420 @ =Sprite_8x8
 	lsls r0, r7, #0xc
 	adds r0, r4, r0
 	movs r2, #0x84
@@ -18961,7 +18961,7 @@ _080AD40A:
 	.align 2, 0
 _080AD418: .4byte 0x000001FF
 _080AD41C: .4byte 0x00000847
-_080AD420: .4byte 0x08BFF760
+_080AD420: .4byte Sprite_8x8
 
 	thumb_func_start sub_080AD424
 sub_080AD424: @ 0x080AD424
@@ -20149,7 +20149,7 @@ _080ADD9E:
 	bne _080ADDA4
 	movs r7, #2
 _080ADDA4:
-	bl sub_08025184
+	bl ResetUnitSprites
 	movs r5, #1
 	adds r6, #0x2b
 	mov r8, r6
@@ -22194,7 +22194,7 @@ _080AEE70:
 	lsrs r0, r0, #0x18
 	cmp r0, #3
 	bne _080AEE98
-	ldr r2, _080AEEB0 @ =0x08BFF768
+	ldr r2, _080AEEB0 @ =Sprite_16x16
 	ldr r3, _080AEEB4 @ =0x000020CC
 	cmp r7, #0
 	beq _080AEE90
@@ -22212,7 +22212,7 @@ _080AEEA0: .4byte 0x08DAF054
 _080AEEA4: .4byte 0x08DAF028
 _080AEEA8: .4byte 0x08DAF084
 _080AEEAC: .4byte 0x08DAF0C4
-_080AEEB0: .4byte 0x08BFF768
+_080AEEB0: .4byte Sprite_16x16
 _080AEEB4: .4byte 0x000020CC
 
 	thumb_func_start sub_080AEEB8
@@ -31633,7 +31633,7 @@ sub_080B3874: @ 0x080B3874
 	ldr r0, _080B38A8 @ =gActiveUnit
 	ldr r1, [r0]
 	adds r0, r1, #0
-	bl sub_0806C2DC
+	bl StartMu
 	bl sub_0806C7CC
 	add sp, #4
 	pop {r7}
@@ -33011,7 +33011,7 @@ _080B42EA:
 	bge _080B433E
 	movs r0, #0xff
 	mov r8, r0
-	ldr r7, _080B44C4 @ =0x08BFF760
+	ldr r7, _080B44C4 @ =Sprite_8x8
 	ldr r1, [sp, #0xc]
 	ldr r2, _080B44B8 @ =0x00000806
 	adds r6, r1, r2
@@ -33132,7 +33132,7 @@ _080B43DC:
 	bge _080B442A
 	ldr r0, _080B44BC @ =0x000001FF
 	mov sl, r0
-	ldr r1, _080B44C4 @ =0x08BFF760
+	ldr r1, _080B44C4 @ =Sprite_8x8
 	mov r8, r1
 	ldr r2, [sp, #0xc]
 	ldr r3, _080B44CC @ =0x00000804
@@ -33173,7 +33173,7 @@ _080B442A:
 	movs r4, #0xff
 	ldr r2, [sp, #8]
 	ands r4, r2
-	ldr r7, _080B44C4 @ =0x08BFF760
+	ldr r7, _080B44C4 @ =Sprite_8x8
 	ldr r3, [sp, #0xc]
 	ldr r0, _080B44D4 @ =0x00000805
 	adds r3, r3, r0
@@ -33235,7 +33235,7 @@ _080B44B4: .4byte 0x08BFF7B8
 _080B44B8: .4byte 0x00000806
 _080B44BC: .4byte 0x000001FF
 _080B44C0: .4byte 0x08BFF798
-_080B44C4: .4byte 0x08BFF760
+_080B44C4: .4byte Sprite_8x8
 _080B44C8: .4byte 0x08BFF7C0
 _080B44CC: .4byte 0x00000804
 _080B44D0: .4byte 0x08BFF780
@@ -36652,7 +36652,7 @@ sub_080B5E50: @ 0x080B5E50
 	bl sub_080069C4
 	mov r0, sp
 	bl sub_080069E0
-	bl sub_08025184
+	bl ResetUnitSprites
 	bl MU_Init
 	bl ApplyUnitSpritePalettes
 	ldr r1, _080B5EE0 @ =gBmSt
@@ -36890,7 +36890,7 @@ sub_080B60A0: @ 0x080B60A0
 	bl SetOnHBlankA
 	bl sub_08007EF8
 	bl sub_0800968C
-	bl sub_08025184
+	bl ResetUnitSprites
 	ldr r2, _080B60E8 @ =gDispIo
 	adds r1, r2, #0
 	adds r1, #0x3c
@@ -37640,7 +37640,7 @@ sub_080B6664: @ 0x080B6664
 	str r4, [r5, #0x30]
 	movs r0, #0
 	str r0, [r5, #0x2c]
-	ldr r0, _080B66B8 @ =0x081900E8
+	ldr r0, _080B66B8 @ =Pal_UnitSprites
 	movs r1, #0xe0
 	lsls r1, r1, #2
 	movs r2, #0x80
@@ -37665,7 +37665,7 @@ _080B669A:
 	.align 2, 0
 _080B66B0: .4byte 0x08DB0F44
 _080B66B4: .4byte 0x08DB101C
-_080B66B8: .4byte 0x081900E8
+_080B66B8: .4byte Pal_UnitSprites
 _080B66BC: .4byte gPal
 
 	thumb_func_start sub_080B66C0
@@ -37760,7 +37760,7 @@ sub_080B6754: @ 0x080B6754
 	str r4, [r5, #0x30]
 	movs r0, #0
 	str r0, [r5, #0x2c]
-	ldr r0, _080B67A8 @ =0x081900E8
+	ldr r0, _080B67A8 @ =Pal_UnitSprites
 	movs r1, #0xe0
 	lsls r1, r1, #2
 	movs r2, #0x80
@@ -37785,7 +37785,7 @@ _080B678A:
 	.align 2, 0
 _080B67A0: .4byte 0x08DB0F44
 _080B67A4: .4byte 0x08DB1034
-_080B67A8: .4byte 0x081900E8
+_080B67A8: .4byte Pal_UnitSprites
 _080B67AC: .4byte gPal
 
 	thumb_func_start sub_080B67B0
@@ -53019,7 +53019,7 @@ sub_080BE04C: @ 0x080BE04C
 	b _080BE08C
 _080BE072:
 	ldr r1, [r4, #0x2c]
-	ldr r3, _080BE09C @ =0x08BFF760
+	ldr r3, _080BE09C @ =Sprite_8x8
 	ldr r0, [r4, #0x34]
 	movs r2, #1
 	ands r0, r2
@@ -53039,7 +53039,7 @@ _080BE08C:
 	pop {r0}
 	bx r0
 	.align 2, 0
-_080BE09C: .4byte 0x08BFF760
+_080BE09C: .4byte Sprite_8x8
 
 	thumb_func_start sub_080BE0A0
 sub_080BE0A0: @ 0x080BE0A0

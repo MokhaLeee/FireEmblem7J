@@ -4116,7 +4116,7 @@ sub_08023980: @ 0x08023980
 	bl sub_08034C48
 	bl MU_EndAll
 	ldr r0, [r4]
-	bl sub_0806C2DC
+	bl StartMu
 	movs r0, #0x17
 	pop {r4}
 	pop {r1}
@@ -4163,7 +4163,7 @@ sub_080239DC: @ 0x080239DC
 	bl sub_08034C80
 	bl MU_EndAll
 	ldr r0, [r4]
-	bl sub_0806C2DC
+	bl StartMu
 	movs r0, #0x17
 	pop {r4}
 	pop {r1}

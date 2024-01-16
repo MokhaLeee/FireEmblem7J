@@ -374,7 +374,7 @@ _0801C88A:
 _0801C894: .4byte gBmSt
 _0801C898: .4byte gBmMapUnit
 _0801C89C:
-	bl sub_08026434
+	bl UnitSpriteHoverUpdate
 	ldr r1, _0801C8D0 @ =gBmSt
 	movs r0, #0x20
 	ldrsh r4, [r1, r0]
@@ -507,7 +507,7 @@ sub_0801C980: @ 0x0801C980
 	cmp r1, #4
 	beq _0801C9BC
 	adds r0, r2, #0
-	bl sub_0806C2DC
+	bl StartMu
 	ldr r0, [r4]
 	bl HideUnitSprite
 _0801C9BC:
@@ -1026,7 +1026,7 @@ _0801CE16:
 	bl HideUnitSprite
 	bl MU_EndAll
 	ldr r0, [r4]
-	bl sub_0806C2DC
+	bl StartMu
 	adds r0, r5, #0
 	movs r1, #1
 	bl Proc_Goto
@@ -1244,7 +1244,7 @@ _0801CFF8:
 	str r0, [r2, #0xc]
 	bl MU_EndAll
 	ldr r0, [r5]
-	bl sub_0806C2DC
+	bl StartMu
 	bl sub_0806C7CC
 	ldr r0, _0801D03C @ =gPlaySt
 	ldrb r0, [r0, #0xd]

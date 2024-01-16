@@ -46915,8 +46915,8 @@ _0806C2D2:
 	bx r1
 	.align 2, 0
 
-	thumb_func_start sub_0806C2DC
-sub_0806C2DC: @ 0x0806C2DC
+	thumb_func_start StartMu
+StartMu: @ 0x0806C2DC
 	push {r4, r7, lr}
 	sub sp, #0x10
 	add r7, sp, #4
@@ -47080,7 +47080,7 @@ sub_0806C3F8: @ 0x0806C3F8
 	str r1, [r7, #4]
 	str r2, [r7, #8]
 	ldr r0, [r7]
-	bl sub_0806C2DC
+	bl StartMu
 	str r0, [r7, #0xc]
 	ldr r0, [r7, #0xc]
 	cmp r0, #0
@@ -47153,7 +47153,7 @@ sub_0806C474: @ 0x0806C474
 	adds r1, r2, #0
 	adds r2, #0x3c
 	ldrb r1, [r2]
-	bl sub_080251EC
+	bl UseUnitSprite
 	add sp, #4
 	pop {r7}
 	pop {r0}
@@ -53433,7 +53433,7 @@ _0806F344:
 	str r0, [r1]
 	ldr r1, [r7, #8]
 	adds r0, r1, #0
-	bl sub_0806C2DC
+	bl StartMu
 	ldr r1, _0806F3DC @ =0x0203E0D4
 	ldr r2, [r7]
 	adds r4, r2, #0
@@ -66571,7 +66571,7 @@ _08075AF2:
 	subs r1, r2, #4
 	movs r2, #0xff
 	ands r1, r2
-	ldr r2, _08075B14 @ =0x08BFF760
+	ldr r2, _08075B14 @ =Sprite_8x8
 	ldr r3, _08075B18 @ =0x000041C0
 	bl PutOamHiRam
 _08075B0A:
@@ -66580,7 +66580,7 @@ _08075B0A:
 	pop {r0}
 	bx r0
 	.align 2, 0
-_08075B14: .4byte 0x08BFF760
+_08075B14: .4byte Sprite_8x8
 _08075B18: .4byte 0x000041C0
 
 	thumb_func_start sub_08075B1C
@@ -85096,7 +85096,7 @@ sub_0807E4E8: @ 0x0807E4E8
 	adds r4, r0, #0
 	bl HideUnitSprite
 	adds r0, r4, #0
-	bl sub_0806C2DC
+	bl StartMu
 	bl sub_0806DD98
 _0807E50C:
 	pop {r4}
@@ -92085,7 +92085,7 @@ sub_08081BCC: @ 0x08081BCC
 	movs r3, #6
 	ldrsh r2, [r4, r3]
 	adds r2, #0xc
-	ldr r5, _08081C30 @ =0x08BFF760
+	ldr r5, _08081C30 @ =Sprite_8x8
 	ldrb r6, [r4, #1]
 	ldr r3, _08081C34 @ =0x00004EA4
 	adds r0, r6, r3
@@ -92123,7 +92123,7 @@ sub_08081BCC: @ 0x08081BCC
 	bx r0
 	.align 2, 0
 _08081C2C: .4byte gStatScreenSt
-_08081C30: .4byte 0x08BFF760
+_08081C30: .4byte Sprite_8x8
 _08081C34: .4byte 0x00004EA4
 _08081C38: .4byte 0x00004E45
 _08081C3C: .4byte 0x00004EA5
@@ -92219,7 +92219,7 @@ _08081CC4:
 	bl sub_08015F24
 	cmp r5, #0
 	beq _08081D2C
-	ldr r3, _08081D74 @ =0x08BFF760
+	ldr r3, _08081D74 @ =Sprite_8x8
 	ldr r0, [r4, #0xc]
 	ldrb r0, [r0, #0x1b]
 	lsrs r0, r0, #6
@@ -92248,7 +92248,7 @@ _08081D2C:
 	beq _08081D64
 	cmp r5, #0
 	beq _08081D64
-	ldr r3, _08081D74 @ =0x08BFF760
+	ldr r3, _08081D74 @ =Sprite_8x8
 	ldrb r2, [r2, #0x1b]
 	lsrs r0, r2, #6
 	lsls r0, r0, #1
@@ -92274,7 +92274,7 @@ _08081D64:
 	.align 2, 0
 _08081D6C: .4byte 0x0841CDA0
 _08081D70: .4byte gStatScreenSt
-_08081D74: .4byte 0x08BFF760
+_08081D74: .4byte Sprite_8x8
 _08081D78: .4byte 0x00000803
 
 	thumb_func_start sub_08081D7C
@@ -94895,7 +94895,7 @@ _08083192:
 	cmp r5, #0
 	bge _08083188
 _080831C2:
-	ldr r3, _08083254 @ =0x08BFF760
+	ldr r3, _08083254 @ =Sprite_8x8
 	ldr r4, _0808323C @ =0x0203E678
 	ldrh r0, [r4, #0x30]
 	adds r0, #0x3e
@@ -94958,7 +94958,7 @@ _08083244: .4byte 0x08BFF7B8
 _08083248: .4byte 0x08BFF7C8
 _0808324C: .4byte 0x08BFF780
 _08083250: .4byte 0x08BFF7D0
-_08083254: .4byte 0x08BFF760
+_08083254: .4byte Sprite_8x8
 _08083258: .4byte 0x08BFF7D8
 _0808325C: .4byte 0x08BFF7E0
 _08083260: .4byte 0x08BFF7E8
@@ -97251,7 +97251,7 @@ _080843D8:
 	movs r0, #2
 	mov r3, sb
 	adds r1, r3, r7
-	ldr r3, _08084564 @ =0x08BFF768
+	ldr r3, _08084564 @ =Sprite_16x16
 	bl sub_08006884
 	subs r5, #1
 	cmp r5, #0
@@ -97346,7 +97346,7 @@ _08084496:
 	movs r0, #2
 	adds r1, r4, #0
 	ldr r2, [sp, #0x14]
-	ldr r3, _08084574 @ =0x08BFF760
+	ldr r3, _08084574 @ =Sprite_8x8
 	bl sub_08006884
 	ldrh r0, [r5]
 	adds r0, #0x1b
@@ -97398,7 +97398,7 @@ _080844D8:
 	cmp r5, #0
 	bge _080844CE
 _0808450A:
-	ldr r3, _08084574 @ =0x08BFF760
+	ldr r3, _08084574 @ =Sprite_8x8
 	ldr r4, _08084580 @ =0x0203E6CC
 	adds r4, #0x40
 	ldrh r0, [r4]
@@ -97438,11 +97438,11 @@ _0808450A:
 	.align 2, 0
 _0808455C: .4byte 0x0203E70C
 _08084560: .4byte 0x08BFF7A8
-_08084564: .4byte 0x08BFF768
+_08084564: .4byte Sprite_16x16
 _08084568: .4byte 0x08BFF780
 _0808456C: .4byte 0x08BFF798
 _08084570: .4byte 0x08BFF7A0
-_08084574: .4byte 0x08BFF760
+_08084574: .4byte Sprite_8x8
 _08084578: .4byte 0x08BFF7E0
 _0808457C: .4byte 0x08BFF7D0
 _08084580: .4byte 0x0203E6CC
@@ -99975,7 +99975,7 @@ _08085A7E:
 	ldrb r4, [r0]
 	cmp r4, #0xf0
 	beq _08085AB0
-	ldr r2, _08085B04 @ =0x08BFF760
+	ldr r2, _08085B04 @ =Sprite_8x8
 	adds r0, r4, #0
 	ldr r4, _08085B08 @ =0x000082E0
 	adds r3, r0, r4
@@ -99985,7 +99985,7 @@ _08085A7E:
 _08085AB0:
 	adds r0, r7, #0
 	adds r0, #0x17
-	ldr r1, _08085B04 @ =0x08BFF760
+	ldr r1, _08085B04 @ =Sprite_8x8
 	mov r8, r1
 	adds r1, r6, #0
 	adds r1, #0x52
@@ -100022,7 +100022,7 @@ _08085AF4:
 	bx r0
 	.align 2, 0
 _08085B00: .4byte 0x02028D3C
-_08085B04: .4byte 0x08BFF760
+_08085B04: .4byte Sprite_8x8
 _08085B08: .4byte 0x000082E0
 
 	thumb_func_start sub_08085B0C
@@ -118390,7 +118390,7 @@ _0808ECD6:
 	thumb_func_start sub_0808ECDC
 sub_0808ECDC: @ 0x0808ECDC
 	push {r4, lr}
-	bl sub_08025184
+	bl ResetUnitSprites
 	movs r4, #0
 	b _0808ED12
 _0808ECE6:
@@ -118835,7 +118835,7 @@ sub_0808F010: @ 0x0808F010
 	ands r0, r1
 	strb r0, [r2, #1]
 	bl LoadObjUIGfx
-	bl sub_08025184
+	bl ResetUnitSprites
 	bl sub_0808EC70
 	adds r0, r6, #0
 	bl sub_0808ED24
@@ -119576,7 +119576,7 @@ _0808F686:
 	bl sub_0803DED4
 _0808F694:
 	bl sub_0800F070
-	bl sub_08025184
+	bl ResetUnitSprites
 	bl RefreshEntityMaps
 	bl RefreshUnitSprites
 	pop {r4}
@@ -127538,7 +127538,7 @@ _080935DE:
 	bgt _080935E4
 	b _080937BE
 _080935E4:
-	ldr r5, _080937D0 @ =0x08BFF760
+	ldr r5, _080937D0 @ =Sprite_8x8
 	ldr r0, [sp, #0x3c]
 	str r0, [sp]
 	movs r0, #4
@@ -127627,7 +127627,7 @@ _08093698:
 	ldr r1, [sp, #8]
 	cmp r5, r1
 	bge _080936E0
-	ldr r2, _080937D0 @ =0x08BFF760
+	ldr r2, _080937D0 @ =Sprite_8x8
 	mov r8, r2
 	ldr r7, [sp, #0x3c]
 	adds r7, #1
@@ -127663,7 +127663,7 @@ _080936E0:
 	ldr r0, [sp, #0xc]
 	cmp r0, #1
 	ble _08093724
-	ldr r7, _080937D0 @ =0x08BFF760
+	ldr r7, _080937D0 @ =Sprite_8x8
 	ldr r5, [sp, #0x3c]
 	adds r5, #3
 	mov r4, sl
@@ -127764,7 +127764,7 @@ _0809379C:
 	adds r1, r4, #0
 	mov r3, sl
 	adds r2, r3, r6
-	ldr r3, _080937D0 @ =0x08BFF760
+	ldr r3, _080937D0 @ =Sprite_8x8
 	bl sub_080068C4
 	adds r4, #8
 	subs r5, #1
@@ -127785,7 +127785,7 @@ _080937BE:
 	pop {r0}
 	bx r0
 	.align 2, 0
-_080937D0: .4byte 0x08BFF760
+_080937D0: .4byte Sprite_8x8
 _080937D4: .4byte 0x08BFF798
 _080937D8: .4byte 0x00002008
 _080937DC: .4byte 0x08BFF7B8
@@ -136112,7 +136112,7 @@ sub_08097C30: @ 0x08097C30
 	beq _08097C48
 	bl HideUnitSprite
 	ldr r0, [r4]
-	bl sub_0806C2DC
+	bl StartMu
 	bl sub_0806C7CC
 _08097C48:
 	pop {r4}
@@ -144714,7 +144714,7 @@ sub_0809C0C8: @ 0x0809C0C8
 	bl SetBgOffset
 	bl sub_0808ED8C
 	bl ApplyUnitSpritePalettes
-	bl sub_08025184
+	bl ResetUnitSprites
 	adds r0, r7, #0
 	bl sub_0809BE18
 	movs r0, #0xa0
@@ -147060,7 +147060,7 @@ _0809D4C4:
 sub_0809D4D0: @ 0x0809D4D0
 	push {r4, r5, r6, lr}
 	adds r5, r0, #0
-	bl sub_08025184
+	bl ResetUnitSprites
 	movs r4, #0
 	b _0809D4F8
 _0809D4DC:

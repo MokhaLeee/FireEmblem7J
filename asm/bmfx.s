@@ -42,7 +42,7 @@ sub_0801D808: @ 0x0801D808
 	cmp r0, #0
 	bne _0801D826
 	adds r0, r3, #0
-	bl sub_0806C2DC
+	bl StartMu
 	b _0801D840
 _0801D826:
 	movs r0, #0x80
@@ -1987,7 +1987,7 @@ sub_0801E6E4: @ 0x0801E6E4
 	bhi _0801E7AE
 	adds r2, r4, #0
 	subs r2, #0xc
-	ldr r3, _0801E7DC @ =0x08BFF768
+	ldr r3, _0801E7DC @ =Sprite_16x16
 	movs r0, #6
 	str r0, [sp]
 	movs r0, #4
@@ -2021,7 +2021,7 @@ _0801E7C4:
 	.align 2, 0
 _0801E7D4: .4byte gSinLut
 _0801E7D8: .4byte gBmSt
-_0801E7DC: .4byte 0x08BFF768
+_0801E7DC: .4byte Sprite_16x16
 
 	thumb_func_start sub_0801E7E0
 sub_0801E7E0: @ 0x0801E7E0
@@ -7448,7 +7448,7 @@ _08021326:
 	movs r0, #0x2e
 	ldrsh r1, [r4, r0]
 	asrs r2, r2, #0x10
-	ldr r3, _08021344 @ =0x08BFF760
+	ldr r3, _08021344 @ =Sprite_8x8
 	movs r0, #0xa0
 	lsls r0, r0, #4
 	str r0, [sp]
@@ -7460,7 +7460,7 @@ _0802133A:
 	pop {r0}
 	bx r0
 	.align 2, 0
-_08021344: .4byte 0x08BFF760
+_08021344: .4byte Sprite_8x8
 
 	thumb_func_start sub_08021348
 sub_08021348: @ 0x08021348

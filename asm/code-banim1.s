@@ -896,7 +896,7 @@ sub_080518BC: @ 0x080518BC
 	strh r0, [r5, #0x2c]
 	movs r0, #0xf
 	strh r0, [r5, #0x2e]
-	bl sub_08025184
+	bl ResetUnitSprites
 	bl sub_0802E7E0
 	bl RefreshUnitSprites
 	bl sub_08025A0C

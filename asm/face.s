@@ -1681,7 +1681,7 @@ _080076AA:
 	adds r0, r1, #0
 	adds r0, #0x41
 	ldrb r0, [r0]
-	ldr r3, _080076CC @ =0x08BFF768
+	ldr r3, _080076CC @ =Sprite_16x16
 	ldrh r1, [r1, #0x3c]
 	adds r1, r1, r5
 	adds r1, #2
@@ -1692,7 +1692,7 @@ _080076AA:
 	b _080076E6
 	.align 2, 0
 _080076C8: .4byte 0x000001FF
-_080076CC: .4byte 0x08BFF768
+_080076CC: .4byte Sprite_16x16
 _080076D0:
 	adds r0, r2, #0
 	adds r0, #0x41

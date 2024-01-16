@@ -87,7 +87,7 @@ sub_08010630: @ 0x08010630
 	adds r0, #8
 	ldr r2, [r6, #0x34]
 	adds r2, r2, r0
-	ldr r5, _08010750 @ =0x08BFF760
+	ldr r5, _08010750 @ =Sprite_8x8
 	adds r0, r7, #6
 	str r0, [sp]
 	movs r0, #4
@@ -139,7 +139,7 @@ sub_08010630: @ 0x08010630
 	.align 2, 0
 _08010748: .4byte 0x0001FFFF
 _0801074C: .4byte 0x08BFF798
-_08010750: .4byte 0x08BFF760
+_08010750: .4byte Sprite_8x8
 _08010754:
 	lsls r0, r5, #3
 	ldr r1, [r6, #0x30]
@@ -178,7 +178,7 @@ _08010788:
 	adds r0, r7, #2
 	str r0, [sp]
 	movs r0, #4
-	ldr r3, _080107B4 @ =0x08BFF760
+	ldr r3, _080107B4 @ =Sprite_8x8
 	bl sub_080068C4
 	adds r5, #1
 	ldr r0, [r6, #0x44]
@@ -190,7 +190,7 @@ _080107AC:
 	b _080107D8
 	.align 2, 0
 _080107B0: .4byte 0x08BFF798
-_080107B4: .4byte 0x08BFF760
+_080107B4: .4byte Sprite_8x8
 _080107B8:
 	lsls r0, r5, #3
 	ldr r1, [r6, #0x30]
@@ -258,7 +258,7 @@ _08010832:
 	cmp r5, r0
 	bge _0801087E
 	mov r8, sl
-	ldr r0, _080108BC @ =0x08BFF760
+	ldr r0, _080108BC @ =Sprite_8x8
 	mov sb, r0
 	adds r7, #8
 _08010842:
@@ -321,7 +321,7 @@ _08010884:
 	bx r0
 	.align 2, 0
 _080108B8: .4byte 0x08BFF798
-_080108BC: .4byte 0x08BFF760
+_080108BC: .4byte Sprite_8x8
 _080108C0: .4byte 0x08BFF7A8
 
 	thumb_func_start nullsub_32

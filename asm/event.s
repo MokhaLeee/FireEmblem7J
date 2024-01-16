@@ -764,7 +764,7 @@ sub_0800AAC4: @ 0x0800AAC4
 	push {r4, lr}
 	ldr r4, [r0, #0x2c]
 	ldr r1, [r0, #0x30]
-	ldr r2, _0800AADC @ =0x08BFF768
+	ldr r2, _0800AADC @ =Sprite_16x16
 	adds r0, #0x4a
 	ldrh r3, [r0]
 	adds r0, r4, #0
@@ -773,7 +773,7 @@ sub_0800AAC4: @ 0x0800AAC4
 	pop {r0}
 	bx r0
 	.align 2, 0
-_0800AADC: .4byte 0x08BFF768
+_0800AADC: .4byte Sprite_16x16
 
 	thumb_func_start sub_0800AAE0
 sub_0800AAE0: @ 0x0800AAE0
@@ -5122,7 +5122,7 @@ sub_0800CB6C: @ 0x0800CB6C
 	lsrs r3, r3, #0x10
 	mov sb, r3
 	adds r0, r5, #0
-	bl sub_0806C2DC
+	bl StartMu
 	adds r6, r0, #0
 	adds r4, #0x5e
 	movs r7, #1
@@ -7846,7 +7846,7 @@ _0800DF28:
 	adds r0, r4, #0
 	bl HideUnitSprite
 	adds r0, r4, #0
-	bl sub_0806C2DC
+	bl StartMu
 	adds r4, r0, #0
 	bl sub_0806C7CC
 	adds r0, r4, #0
@@ -7906,7 +7906,7 @@ _0800DFB0:
 	adds r0, r4, #0
 	bl HideUnitSprite
 	adds r0, r4, #0
-	bl sub_0806C2DC
+	bl StartMu
 	adds r4, r0, #0
 	bl sub_0806C7CC
 	adds r0, r4, #0
@@ -9304,7 +9304,7 @@ _0800E9AC:
 	ldr r0, [r4]
 	bl HideUnitSprite
 	ldr r0, [r4]
-	bl sub_0806C2DC
+	bl StartMu
 	bl sub_0806C7CC
 	bl BeginBattleAnimations
 	mov r0, r8

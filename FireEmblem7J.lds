@@ -55,6 +55,11 @@ SECTIONS
 		. = 0x02E3E8; gBmMapFog = .;
 		. = 0x02E3EC; gBmMapHidden = .;
 		. = 0x02E3F0; gBmMapOther = .;
+		. = 0x033E40; gUnitSpriteSlots = .;
+		. = 0x039F10; gUnitSpriteSmallAllocCount = .;
+		. = 0x039F14; gUnitSpriteLargeAllocCount = .;
+		. = 0x039F18; gUnitSprites = .;
+		. = 0x03A3CC; gUnitSpriteSyncRequest = .;
 
 		. = 0x03A3D4;
 		. = ALIGN(4); src/battle.o(ewram_data);
@@ -191,22 +196,22 @@ SECTIONS
 		. = ALIGN(4); src/hardware.o(.rodata)
 		. = ALIGN(4); src/move-data.o(.rodata)
 		. = ALIGN(4); src/oam.o(.rodata)
-		. = ALIGN(4); data/const_data3.o(.rodata)
+		. = ALIGN(4); data/const_data_080C1170.o(.rodata)
 		. = ALIGN(4); data/const_data_icon.o(.rodata)
-		. = ALIGN(4); data/const_data1.o(.rodata)
+		. = ALIGN(4); data/const_data_080C7334.o(.rodata)
 		. = ALIGN(4); src/unit.o(.rodata)
-		. = ALIGN(4); data/const_data2.o(.rodata)
+		. = ALIGN(4); data/const_data_081C9238.o(.rodata)
 		. = ALIGN(4); src/battle.o(.rodata)
-		. = ALIGN(4); data/const_data4.o(.rodata)
+		. = ALIGN(4); data/const_data_081C94C8.o(.rodata)
 		. = ALIGN(4); src/save_core.o(.rodata)
-		. = ALIGN(4); data/data1.o(.data)
+		. = ALIGN(4); data/data_0842D270.o(.data)
 		. = ALIGN(4); src/hardware.o(.data)
-		. = ALIGN(4); data/data3.o(.data)
+		. = ALIGN(4); data/data_08BBFCA8.o(.data)
 		. = ALIGN(4); data/gamecontrol.o(.data)
 		. = ALIGN(4); data/data.o(.data)
 		. = ALIGN(4); src/battle.o(.data)
-		. = ALIGN(4); data/data2.o(.data)
+		. = ALIGN(4); data/data_08C03574.o(.data)
 		. = ALIGN(4); src/save_core.o(.data)
-		. = ALIGN(4); data/data4.o(.data)
+		. = ALIGN(4); data/data_08DAD284.o(.data)
 	}
 }

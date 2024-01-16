@@ -1206,7 +1206,7 @@ sub_0803569C: @ 0x0803569C
 	cmp r0, #0
 	beq _080356FA
 	ldr r0, [r6]
-	bl sub_0806C2DC
+	bl StartMu
 	bl sub_0806C7CC
 	adds r0, r7, #0
 	bl sub_0806C7F8
@@ -1660,7 +1660,7 @@ _08035A82:
 	ldr r0, [r4]
 	bl sub_08034C48
 	ldr r0, [r4]
-	bl sub_0806C2DC
+	bl StartMu
 	bl sub_0806C7CC
 	b _08035AEA
 	.align 2, 0

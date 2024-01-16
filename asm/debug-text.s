@@ -575,7 +575,7 @@ _080051FC:
 	adds r3, r3, r0
 	adds r0, r5, #0
 	adds r1, r6, #0
-	ldr r2, _08005230 @ =0x08BFF760
+	ldr r2, _08005230 @ =Sprite_8x8
 	bl PutOamHiRam
 	adds r5, #8
 	adds r4, #1
@@ -589,7 +589,7 @@ _0800521A:
 	.align 2, 0
 _08005228: .4byte 0x02028D48
 _0800522C: .4byte 0x02028D4C
-_08005230: .4byte 0x08BFF760
+_08005230: .4byte Sprite_8x8
 
 	thumb_func_start sub_08005234
 sub_08005234: @ 0x08005234

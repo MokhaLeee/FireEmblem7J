@@ -4662,7 +4662,7 @@ _0803E982:
 	bl ResetTextFont
 	bl sub_0803E1A0
 	bl ApplyUnitSpritePalettes
-	bl sub_08025184
+	bl ResetUnitSprites
 	bl sub_08025A0C
 	ldr r0, [r7, #0x3c]
 	ldr r1, _0803EB30 @ =0x0203D908
@@ -17115,7 +17115,7 @@ _08044F9A:
 	adds r0, r0, r2
 	ldr r1, [r7, #0x30]
 	adds r1, r1, r4
-	ldr r2, _0804501C @ =0x08BFF768
+	ldr r2, _0804501C @ =Sprite_16x16
 	ldr r3, _08045020 @ =0x00009358
 	bl PutOamHiRam
 	mov r1, sb
@@ -17145,7 +17145,7 @@ _0804500C: .4byte 0x080C0F18
 _08045010: .4byte 0x08BFF7A8
 _08045014: .4byte 0x00009350
 _08045018: .4byte 0x00009354
-_0804501C: .4byte 0x08BFF768
+_0804501C: .4byte Sprite_16x16
 _08045020: .4byte 0x00009358
 
 	thumb_func_start sub_08045024
@@ -17247,7 +17247,7 @@ _080450BA:
 	adds r0, r0, r2
 	ldr r1, [r7, #0x30]
 	adds r1, r1, r4
-	ldr r2, _08045134 @ =0x08BFF768
+	ldr r2, _08045134 @ =Sprite_16x16
 	ldr r3, _08045138 @ =0x00009358
 	bl PutOamHiRam
 	ldr r1, [sp, #4]
@@ -17274,7 +17274,7 @@ _08045124: .4byte gSinLut
 _08045128: .4byte 0x08BFF7A8
 _0804512C: .4byte 0x00009350
 _08045130: .4byte 0x00009354
-_08045134: .4byte 0x08BFF768
+_08045134: .4byte Sprite_16x16
 _08045138: .4byte 0x00009358
 
 	thumb_func_start sub_0804513C
@@ -17694,7 +17694,7 @@ sub_08045400: @ 0x08045400
 	cmp r0, #0
 	bne _0804547C
 	adds r0, r5, #0
-	bl sub_0806C2DC
+	bl StartMu
 	ldr r1, _08045500 @ =0x03001420
 	ldr r2, [sp, #0x10]
 	lsls r4, r2, #2
@@ -18247,7 +18247,7 @@ _08045880:
 	strh r4, [r0, #0xe]
 	bl sub_08015A48
 	bl ApplyUnitSpritePalettes
-	bl sub_08025184
+	bl ResetUnitSprites
 	bl RefreshUnitSprites
 	bl sub_080457A8
 	bl sub_08047330
@@ -18284,7 +18284,7 @@ sub_08045914: @ 0x08045914
 	ldrb r0, [r0]
 	bl GetUnit
 	adds r4, r0, #0
-	bl sub_0806C2DC
+	bl StartMu
 	ldr r5, _0804595C @ =0x03001420
 	str r0, [r5]
 	movs r1, #0x10
@@ -18735,7 +18735,7 @@ _08045C66:
 	cmp r1, r0
 	bne _08045C9A
 	adds r0, r4, #0
-	bl sub_0806C2DC
+	bl StartMu
 	bl sub_0806C3D8
 	adds r0, r4, #0
 	bl HideUnitSprite
@@ -18897,7 +18897,7 @@ sub_08045D44: @ 0x08045D44
 _08045DD0:
 	bl MU_EndAll
 	ldr r0, [r7]
-	bl sub_0806C2DC
+	bl StartMu
 	ldr r4, _08045E50 @ =0x03001420
 	str r0, [r4]
 	bl sub_0806C3D8
@@ -19716,7 +19716,7 @@ _080464CC:
 	cmp r0, #0
 	beq _080464F6
 	adds r0, r4, #0
-	bl sub_0806C2DC
+	bl StartMu
 	ldr r1, _08046508 @ =0x03001420
 	str r0, [r1, #4]
 	movs r0, #0x10
@@ -20106,7 +20106,7 @@ _08046824: .4byte 0x03001420
 _08046828: .4byte 0x00010004
 _0804682C:
 	adds r0, r4, #0
-	bl sub_0806C2DC
+	bl StartMu
 	str r0, [r6]
 	bl sub_0806C3D8
 	ldr r0, [r4, #0xc]
@@ -20157,7 +20157,7 @@ _08046890: .4byte 0x00010004
 _08046894: .4byte 0x0203DC74
 _08046898:
 	mov r0, r8
-	bl sub_0806C2DC
+	bl StartMu
 	ldr r4, _080468F8 @ =0x03001420
 	str r0, [r4, #4]
 	bl sub_0806C3D8
@@ -20637,7 +20637,7 @@ sub_08046C4C: @ 0x08046C4C
 	adds r4, r1, #0
 	adds r6, r2, #0
 	mov r8, r3
-	bl sub_0806C2DC
+	bl StartMu
 	ldr r1, _08046C88 @ =0x03001420
 	lsls r4, r4, #2
 	adds r4, r4, r1
@@ -21493,7 +21493,7 @@ _080472AC:
 	adds r3, r3, r1
 	adds r0, r5, #0
 	adds r1, r4, #0
-	ldr r2, _0804732C @ =0x08BFF768
+	ldr r2, _0804732C @ =Sprite_16x16
 	bl PutOamHiRam
 _08047300:
 	adds r6, #1
@@ -21515,7 +21515,7 @@ _0804731C: .4byte 0x08C08FF4
 _08047320: .4byte 0x08C07DAC
 _08047324: .4byte 0x081DB0D8
 _08047328: .4byte 0x03001400
-_0804732C: .4byte 0x08BFF768
+_0804732C: .4byte Sprite_16x16
 
 	thumb_func_start sub_08047330
 sub_08047330: @ 0x08047330
@@ -21898,7 +21898,7 @@ _0804760C:
 	adds r0, r6, #0
 	bl HideUnitSprite
 	adds r0, r6, #0
-	bl sub_0806C2DC
+	bl StartMu
 	adds r4, r0, #0
 	ldr r1, _08047650 @ =0x02033DFC
 	movs r0, #2
@@ -22147,7 +22147,7 @@ _080477F0:
 	bl GetUnit
 	bl HideUnitSprite
 	adds r0, r5, #0
-	bl sub_0806C2DC
+	bl StartMu
 	adds r4, r0, #0
 	movs r0, #0x10
 	ldrsb r0, [r6, r0]
