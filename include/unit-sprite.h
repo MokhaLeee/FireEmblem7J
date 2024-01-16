@@ -3,11 +3,11 @@
 #include "global.h"
 
 // extern ??? sub_08025114
-// extern ??? ApplyUnitSpritePalettes
+void ApplyUnitSpritePalettes(void);
 // extern ??? sub_0802516C
-// extern ??? ResetUnitSprites
-// extern ??? ResetUnitSpritesB
-// extern ??? UseUnitSprite
+void ResetUnitSprites(void);
+void ResetUnitSpritesB(void);
+int UseUnitSprite(u32 id);
 // extern ??? sub_08025278
 // extern ??? sub_08025344
 // extern ??? ApplyUnitSpriteImage16x16
@@ -20,14 +20,14 @@
 // extern ??? sub_08025AE0
 // extern ??? sub_08025B54
 // extern ??? sub_08025B80
-// extern ??? RefreshUnitSprites
+void RefreshUnitSprites(void);
 // extern ??? AddUnitSprite
-// extern ??? PutUnitSpritesOam
+void PutUnitSpritesOam(void);
 // extern ??? PutChapterMarkedTileIconOam
-// extern ??? PutUnitSpriteIconsOam
+void PutUnitSpriteIconsOam(void);
 // extern ??? sub_08026418
 // extern ??? sub_08026428
-// extern ??? UnitSpriteHoverUpdate
+void UnitSpriteHoverUpdate(void);
 // extern ??? sub_080264F0
 // extern ??? sub_08026540
 // extern ??? sub_08026628
@@ -36,7 +36,7 @@
 // extern ??? sub_0802682C
 // extern ??? sub_08026908
 // extern ??? sub_080269F4
-// extern ??? HideUnitSprite
-// extern ??? ShowUnitSprite
-// extern ??? GetUnitSpriteHideFlag
+void HideUnitSprite(struct Unit * unit);
+void ShowUnitSprite(struct Unit * unit);
+u8 GetUnitSpriteHiddenFlag(struct Unit * unit);
 // extern ??? sub_08026A4C
