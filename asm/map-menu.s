@@ -3479,7 +3479,7 @@ sub_0802348C: @ 0x0802348C
 	bl DecodeMsg
 	adds r1, r0, #0
 	adds r0, r4, #0
-	bl sub_08032A90
+	bl StartSubtitleHelp
 	pop {r4}
 	pop {r0}
 	bx r0
@@ -3814,7 +3814,7 @@ sub_08023738: @ 0x08023738
 	bl DecodeMsg
 	adds r1, r0, #0
 	adds r0, r4, #0
-	bl sub_08032A90
+	bl StartSubtitleHelp
 	pop {r4}
 	pop {r0}
 	bx r0
@@ -3847,7 +3847,7 @@ sub_0802377C: @ 0x0802377C
 	bl DecodeMsg
 	adds r1, r0, #0
 	adds r0, r4, #0
-	bl sub_08032A90
+	bl StartSubtitleHelp
 	pop {r4}
 	pop {r0}
 	bx r0
@@ -3868,7 +3868,7 @@ sub_0802379C: @ 0x0802379C
 	bl DecodeMsg
 	adds r1, r0, #0
 	adds r0, r4, #0
-	bl sub_08032A90
+	bl StartSubtitleHelp
 	pop {r4}
 	pop {r0}
 	bx r0
@@ -3902,7 +3902,7 @@ sub_080237E0: @ 0x080237E0
 	bl DecodeMsg
 	adds r1, r0, #0
 	adds r0, r4, #0
-	bl sub_08032A90
+	bl StartSubtitleHelp
 	pop {r4}
 	pop {r0}
 	bx r0
@@ -3936,7 +3936,7 @@ sub_08023824: @ 0x08023824
 	bl DecodeMsg
 	adds r1, r0, #0
 	adds r0, r4, #0
-	bl sub_08032A90
+	bl StartSubtitleHelp
 	pop {r4}
 	pop {r0}
 	bx r0
@@ -3971,7 +3971,7 @@ sub_0802386C: @ 0x0802386C
 	bl DecodeMsg
 	adds r1, r0, #0
 	adds r0, r4, #0
-	bl sub_08032A90
+	bl StartSubtitleHelp
 	pop {r4}
 	pop {r0}
 	bx r0
@@ -4005,7 +4005,7 @@ sub_080238B0: @ 0x080238B0
 	bl DecodeMsg
 	adds r1, r0, #0
 	adds r0, r4, #0
-	bl sub_08032A90
+	bl StartSubtitleHelp
 	pop {r4}
 	pop {r0}
 	bx r0

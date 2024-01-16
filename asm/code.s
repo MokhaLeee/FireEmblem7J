@@ -52494,8 +52494,8 @@ sub_0806EC60: @ 0x0806EC60
 	bl ResetTextFont
 	bl sub_0806FF58
 	bl InitBmBgLayers
-	bl sub_0804A9F8
-	bl LoadObjUIGfx
+	bl UnpackUiWindowFrameGraphics
+	bl ApplySystemObjectsGraphics
 	bl sub_0800EC2C
 	lsls r1, r0, #0x18
 	asrs r0, r1, #0x18
@@ -82977,7 +82977,7 @@ sub_0807D4B8: @ 0x0807D4B8
 	adds r1, #0x46
 	movs r0, #0x10
 	strb r0, [r1]
-	bl LoadObjUIGfx
+	bl ApplySystemObjectsGraphics
 	ldr r4, _0807D52C @ =0x06013000
 	adds r0, r4, #0
 	movs r1, #0xe
@@ -83030,7 +83030,7 @@ sub_0807D534: @ 0x0807D534
 	adds r1, #0x46
 	movs r0, #0x10
 	strb r0, [r1]
-	bl LoadObjUIGfx
+	bl ApplySystemObjectsGraphics
 	ldr r1, _0807D594 @ =gPlaySt
 	movs r0, #0x80
 	ldrb r1, [r1, #0x14]
@@ -83076,7 +83076,7 @@ sub_0807D5B0: @ 0x0807D5B0
 	movs r0, #0x28
 	bl GetUnitFromCharId
 	adds r6, r0, #0
-	bl sub_0804A9F8
+	bl UnpackUiWindowFrameGraphics
 	bl ResetText
 	movs r0, #0
 	str r0, [sp]
@@ -92348,7 +92348,7 @@ sub_08081DE4: @ 0x08081DE4
 	bl TmFill
 	movs r0, #4
 	bl EnableBgSync
-	bl sub_08015A48
+	bl ApplySystemGraphics
 	bl ApplyUnitSpritePalettes
 	ldr r1, _08081EB8 @ =0x0600B000
 	movs r2, #1
@@ -103985,7 +103985,7 @@ sub_08087B98: @ 0x08087B98
 	sub sp, #8
 	adds r4, r0, #0
 	ldr r5, [r4, #0x14]
-	bl LoadObjUIGfx
+	bl ApplySystemObjectsGraphics
 	ldr r0, _08087C4C @ =0x0841BB50
 	movs r1, #0xa0
 	lsls r1, r1, #2
@@ -108643,7 +108643,7 @@ sub_0808A0F4: @ 0x0808A0F4
 	ldr r2, _0808A1E0 @ =0x01000008
 	add r0, sp, #4
 	bl CpuFastSet
-	bl LoadObjUIGfx
+	bl ApplySystemObjectsGraphics
 	mov r0, r8
 	bl sub_08005E88
 	mov r0, r8
@@ -108748,7 +108748,7 @@ _0808A200:
 	bl InitIcons
 	movs r0, #4
 	bl ApplyIconPalettes
-	bl sub_0804A9F8
+	bl UnpackUiWindowFrameGraphics
 	ldr r0, _0808A2E8 @ =0x08428114
 	ldr r1, _0808A2EC @ =0x06014800
 	bl Decompress
@@ -118815,7 +118815,7 @@ sub_0808F010: @ 0x0808F010
 	ldr r0, _0808F1F8 @ =0x08D8C0A0
 	bl InitBgs
 	bl ResetText
-	bl sub_0804A9F8
+	bl UnpackUiWindowFrameGraphics
 	movs r0, #0
 	movs r1, #0xe
 	bl LoadHelpBoxGfx
@@ -118834,7 +118834,7 @@ sub_0808F010: @ 0x0808F010
 	subs r1, #8
 	ands r0, r1
 	strb r0, [r2, #1]
-	bl LoadObjUIGfx
+	bl ApplySystemObjectsGraphics
 	bl ResetUnitSprites
 	bl sub_0808EC70
 	adds r0, r6, #0
@@ -120098,10 +120098,10 @@ _0808FA76:
 _0808FA86:
 	movs r0, #0
 	bl InitBgs
-	bl sub_080069C4
+	bl InitFaces
 	bl ResetText
-	bl sub_0804A9F8
-	bl LoadObjUIGfx
+	bl UnpackUiWindowFrameGraphics
+	bl ApplySystemObjectsGraphics
 	ldr r3, _0808FC30 @ =gDispIo
 	movs r1, #4
 	rsbs r1, r1, #0
@@ -124697,8 +124697,8 @@ sub_08091D38: @ 0x08091D38
 	bl InitIcons
 	movs r0, #4
 	bl ApplyIconPalettes
-	bl sub_0804A9F8
-	bl LoadObjUIGfx
+	bl UnpackUiWindowFrameGraphics
+	bl ApplySystemObjectsGraphics
 	bl sub_0808EC70
 	bl sub_0808E684
 	bl sub_0808ECB0
@@ -128202,7 +128202,7 @@ _08093B10: .4byte 0x02012B38
 sub_08093B14: @ 0x08093B14
 	push {lr}
 	bl InitIcons
-	bl LoadObjUIGfx
+	bl ApplySystemObjectsGraphics
 	movs r0, #4
 	bl ApplyIconPalettes
 	movs r0, #0xc0
@@ -130371,8 +130371,8 @@ sub_08094BE0: @ 0x08094BE0
 	bl TmFill
 	bl ResetText
 	bl InitIcons
-	bl sub_0804A9F8
-	bl LoadObjUIGfx
+	bl UnpackUiWindowFrameGraphics
+	bl ApplySystemObjectsGraphics
 	movs r0, #0
 	movs r1, #0
 	movs r2, #0
@@ -131859,8 +131859,8 @@ sub_08095830: @ 0x08095830
 	strb r0, [r4, #0x18]
 	bl ResetText
 	bl InitIcons
-	bl sub_0804A9F8
-	bl LoadObjUIGfx
+	bl UnpackUiWindowFrameGraphics
+	bl ApplySystemObjectsGraphics
 	bl ApplyUnitSpritePalettes
 	movs r0, #0
 	movs r1, #0
@@ -132633,7 +132633,7 @@ sub_08095FAC: @ 0x08095FAC
 	lsls r0, r0, #0x18
 	lsrs r0, r0, #0x18
 	str r0, [r4, #0x40]
-	bl sub_080069C4
+	bl InitFaces
 	bl sub_08082D74
 	ldr r3, _08096050 @ =gDispIo
 	movs r0, #0x21
@@ -133992,11 +133992,11 @@ sub_08096A78: @ 0x08096A78
 	ldrb r1, [r7, #0x18]
 	orrs r0, r1
 	strb r0, [r7, #0x18]
-	bl sub_080069C4
+	bl InitFaces
 	bl ResetText
 	bl InitIcons
-	bl sub_0804A9F8
-	bl LoadObjUIGfx
+	bl UnpackUiWindowFrameGraphics
+	bl ApplySystemObjectsGraphics
 	movs r0, #0
 	movs r1, #0
 	movs r2, #0
@@ -136432,11 +136432,11 @@ sub_08097E64: @ 0x08097E64
 	ldrb r1, [r2, #0x18]
 	orrs r0, r1
 	strb r0, [r2, #0x18]
-	bl sub_080069C4
+	bl InitFaces
 	bl ResetText
 	bl InitIcons
-	bl sub_0804A9F8
-	bl LoadObjUIGfx
+	bl UnpackUiWindowFrameGraphics
+	bl ApplySystemObjectsGraphics
 	movs r0, #0
 	movs r1, #0
 	movs r2, #0
@@ -138787,11 +138787,11 @@ sub_080991C4: @ 0x080991C4
 	ldrb r6, [r7, #0x18]
 	orrs r0, r6
 	strb r0, [r7, #0x18]
-	bl sub_080069C4
+	bl InitFaces
 	bl ResetText
 	bl InitIcons
-	bl sub_0804A9F8
-	bl LoadObjUIGfx
+	bl UnpackUiWindowFrameGraphics
+	bl ApplySystemObjectsGraphics
 	movs r0, #0
 	movs r1, #0
 	movs r2, #0
@@ -140216,11 +140216,11 @@ sub_08099D18: @ 0x08099D18
 	ldrb r1, [r4, #0x18]
 	orrs r2, r1
 	strb r2, [r4, #0x18]
-	bl sub_080069C4
+	bl InitFaces
 	bl ResetText
 	bl InitIcons
-	bl sub_0804A9F8
-	bl LoadObjUIGfx
+	bl UnpackUiWindowFrameGraphics
+	bl ApplySystemObjectsGraphics
 	movs r0, #0
 	movs r1, #0
 	movs r2, #0
@@ -142976,11 +142976,11 @@ sub_0809B380: @ 0x0809B380
 	ldrb r1, [r4, #0x18]
 	orrs r0, r1
 	strb r0, [r4, #0x18]
-	bl sub_080069C4
+	bl InitFaces
 	bl ResetText
 	bl InitIcons
-	bl sub_0804A9F8
-	bl LoadObjUIGfx
+	bl UnpackUiWindowFrameGraphics
+	bl ApplySystemObjectsGraphics
 	ldr r2, _0809B4B4 @ =0x0000FFFC
 	movs r0, #0
 	movs r1, #4
@@ -144688,11 +144688,11 @@ sub_0809C0C8: @ 0x0809C0C8
 	ldrb r0, [r4, #0x18]
 	orrs r2, r0
 	strb r2, [r4, #0x18]
-	bl sub_080069C4
+	bl InitFaces
 	bl ResetText
 	bl InitIcons
-	bl sub_0804A9F8
-	bl LoadObjUIGfx
+	bl UnpackUiWindowFrameGraphics
+	bl ApplySystemObjectsGraphics
 	movs r0, #0xe
 	bl ApplyIconPalettes
 	adds r0, r7, #0
@@ -145935,10 +145935,10 @@ sub_0809CB24: @ 0x0809CB24
 	ldrb r6, [r7, #0x18]
 	orrs r2, r6
 	strb r2, [r7, #0x18]
-	bl sub_080069C4
+	bl InitFaces
 	bl ResetText
 	bl InitIcons
-	bl LoadObjUIGfx
+	bl ApplySystemObjectsGraphics
 	movs r0, #0
 	movs r1, #0
 	movs r2, #0
@@ -147283,8 +147283,8 @@ sub_0809D648: @ 0x0809D648
 	strb r2, [r4, #0x18]
 	bl ResetText
 	bl InitIcons
-	bl sub_0804A9F8
-	bl LoadObjUIGfx
+	bl UnpackUiWindowFrameGraphics
+	bl ApplySystemObjectsGraphics
 	bl ApplyUnitSpritePalettes
 	bl sub_0809D5F0
 	movs r0, #0xd
@@ -147751,11 +147751,11 @@ sub_0809DA10: @ 0x0809DA10
 	adds r1, r2, #0
 	orrs r0, r1
 	strh r0, [r3, #0x3c]
-	bl sub_080069C4
+	bl InitFaces
 	bl ResetText
 	bl InitIcons
-	bl sub_0804A9F8
-	bl LoadObjUIGfx
+	bl UnpackUiWindowFrameGraphics
+	bl ApplySystemObjectsGraphics
 	ldr r0, [r5, #0x2c]
 	bl sub_0809BAB8
 	adds r4, r0, #0
@@ -148301,7 +148301,7 @@ sub_0809DEEC: @ 0x0809DEEC
 	push {r4, r5, lr}
 	sub sp, #4
 	adds r5, r0, #0
-	bl sub_080069C4
+	bl InitFaces
 	bl ResetText
 	bl InitIcons
 	ldr r0, _0809DF9C @ =gBg0Tm
@@ -150023,7 +150023,7 @@ sub_0809EC74: @ 0x0809EC74
 	ldrb r1, [r4, #0x18]
 	orrs r0, r1
 	strb r0, [r4, #0x18]
-	bl sub_0804A9F8
+	bl UnpackUiWindowFrameGraphics
 	bl EnablePalSync
 	ldr r0, _0809ED70 @ =gBg0Tm
 	movs r1, #0

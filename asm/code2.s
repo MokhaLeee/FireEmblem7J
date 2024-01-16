@@ -302,7 +302,7 @@ ProcSaveMenu_InitScreen: @ 0x080A4320
 	sub sp, #4
 	mov r8, r0
 	bl ResetTextFont
-	bl LoadObjUIGfx
+	bl ApplySystemObjectsGraphics
 	ldr r0, _080A44FC @ =0x0842D800
 	movs r1, #0
 	movs r2, #0x60
@@ -3116,7 +3116,7 @@ sub_080A5980: @ 0x080A5980
 	movs r1, #0
 	bl TmFill
 	bl ResetTextFont
-	bl LoadObjUIGfx
+	bl ApplySystemObjectsGraphics
 	ldr r0, _080A5A1C @ =0x0843165C
 	ldr r1, _080A5A20 @ =0x06013800
 	bl Decompress
@@ -6747,7 +6747,7 @@ sub_080A75C4: @ 0x080A75C4
 	mov sb, r0
 	movs r0, #0
 	bl InitBgs
-	bl LoadObjUIGfx
+	bl ApplySystemObjectsGraphics
 	ldr r7, _080A76A0 @ =gDispIo
 	adds r6, r7, #0
 	adds r6, #0x3c
@@ -6769,7 +6769,7 @@ sub_080A75C4: @ 0x080A75C4
 	mov sl, r2
 	strb r5, [r2]
 	bl ResetText
-	bl sub_0804A9F8
+	bl UnpackUiWindowFrameGraphics
 	bl InitIcons
 	movs r0, #4
 	bl ApplyIconPalettes
@@ -7239,7 +7239,7 @@ _080A79E0: .4byte gPlaySt
 _080A79E4:
 	movs r0, #0
 	bl InitBgs
-	bl LoadObjUIGfx
+	bl ApplySystemObjectsGraphics
 	ldr r0, _080A7A54 @ =gDispIo
 	mov ip, r0
 	mov r1, ip
@@ -9468,7 +9468,7 @@ sub_080A8B98: @ 0x080A8B98
 	push {r5, r6, r7}
 	sub sp, #0x10
 	adds r6, r0, #0
-	bl LoadObjUIGfx
+	bl ApplySystemObjectsGraphics
 	ldr r2, _080A8CC8 @ =0x0000FFF8
 	movs r0, #1
 	movs r1, #8
@@ -17324,8 +17324,8 @@ sub_080AC680: @ 0x080AC680
 	bl InitBgs
 	bl ResetTextFont
 	bl ResetText
-	bl LoadObjUIGfx
-	bl sub_0804A9F8
+	bl ApplySystemObjectsGraphics
+	bl UnpackUiWindowFrameGraphics
 	bl InitSystemTextFont
 	ldr r7, _080AC948 @ =gDispIo
 	movs r6, #1
@@ -20277,12 +20277,12 @@ sub_080ADE84: @ 0x080ADE84
 	bl TmApplyTsa_thm
 	movs r0, #8
 	bl EnableBgSync
-	bl sub_0804A9F8
+	bl UnpackUiWindowFrameGraphics
 	bl ResetText
 	bl InitIcons
 	movs r0, #4
 	bl ApplyIconPalettes
-	bl LoadObjUIGfx
+	bl ApplySystemObjectsGraphics
 	bl sub_080AD9D0
 	bl sub_080ADE30
 	ldr r0, _080AE0B8 @ =gDispIo
@@ -22258,7 +22258,7 @@ _080AEED6:
 	strb r1, [r0]
 	adds r0, #1
 	strb r1, [r0]
-	bl sub_0804A9F8
+	bl UnpackUiWindowFrameGraphics
 	ldr r7, _080AF0D4 @ =gDispIo
 	movs r4, #1
 	ldrb r0, [r7, #1]
@@ -28743,7 +28743,7 @@ _080B21A2:
 	movs r1, #2
 	movs r2, #0
 	bl InitTalk
-	bl sub_080069C4
+	bl InitFaces
 	ldr r0, [r7]
 	adds r1, r0, #0
 	adds r0, #0x5c
@@ -30126,7 +30126,7 @@ sub_080B2C4C: @ 0x080B2C4C
 	movs r0, #0xf
 	bl EnableBgSync
 	bl ResetText
-	bl sub_0804A9F8
+	bl UnpackUiWindowFrameGraphics
 	bl InitIcons
 	movs r0, #4
 	bl ApplyIconPalettes
@@ -31234,7 +31234,7 @@ sub_080B34E8: @ 0x080B34E8
 	movs r1, #2
 	movs r2, #0
 	bl InitTalk
-	bl sub_080069C4
+	bl InitFaces
 	movs r0, #1
 	str r0, [sp]
 	movs r0, #0xe2
@@ -36647,9 +36647,9 @@ sub_080B5E50: @ 0x080B5E50
 	ldrb r1, [r4, #0x18]
 	orrs r0, r1
 	strb r0, [r4, #0x18]
-	bl sub_0804A9F8
+	bl UnpackUiWindowFrameGraphics
 	bl ResetText
-	bl sub_080069C4
+	bl InitFaces
 	mov r0, sp
 	bl sub_080069E0
 	bl ResetUnitSprites
@@ -42367,7 +42367,7 @@ sub_080B8AF0: @ 0x080B8AF0
 	strb r2, [r0]
 	adds r0, #1
 	strb r2, [r0]
-	bl LoadObjUIGfx
+	bl ApplySystemObjectsGraphics
 	movs r0, #1
 	ldrb r1, [r6, #1]
 	orrs r0, r1
@@ -42440,7 +42440,7 @@ sub_080B8B88: @ 0x080B8B88
 	strb r2, [r0]
 	adds r0, #1
 	strb r2, [r0]
-	bl LoadObjUIGfx
+	bl ApplySystemObjectsGraphics
 	movs r0, #1
 	ldrb r1, [r6, #1]
 	orrs r0, r1
@@ -42833,7 +42833,7 @@ sub_080B8ECC: @ 0x080B8ECC
 	adds r4, r0, #0
 	movs r0, #0
 	bl InitBgs
-	bl sub_080069C4
+	bl InitFaces
 	bl sub_080B8D64
 	ldr r3, _080B8F20 @ =gDispIo
 	adds r1, r3, #0
@@ -45732,7 +45732,7 @@ sub_080BA640: @ 0x080BA640
 	movs r0, #0
 	str r0, [r5, #0x30]
 	str r0, [r5, #0x2c]
-	bl sub_0804A9F8
+	bl UnpackUiWindowFrameGraphics
 	ldr r0, _080BA71C @ =gBg1Tm
 	ldr r1, _080BA720 @ =0x0861A914
 	movs r2, #0x80

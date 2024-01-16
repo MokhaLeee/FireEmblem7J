@@ -13537,7 +13537,7 @@ _08043288:
 sub_08043290: @ 0x08043290
 	push {r4, lr}
 	adds r4, r0, #0
-	bl sub_0804A9F8
+	bl UnpackUiWindowFrameGraphics
 	ldr r0, _080432F8 @ =0x0203DA48
 	ldr r1, _080432FC @ =0x06001800
 	movs r2, #0xc0
@@ -13608,7 +13608,7 @@ _0804332C: .4byte 0x08C080F8
 sub_08043330: @ 0x08043330
 	push {r4, lr}
 	adds r4, r0, #0
-	bl sub_0804A9F8
+	bl UnpackUiWindowFrameGraphics
 	bl sub_0803DEB4
 	ldr r0, _0804337C @ =0x0203DA48
 	ldr r1, _08043380 @ =0x06001800
@@ -15980,7 +15980,7 @@ sub_080446B4: @ 0x080446B4
 	push {r4, lr}
 	sub sp, #0xc
 	adds r4, r0, #0
-	bl sub_08015A48
+	bl ApplySystemGraphics
 	adds r0, r4, #0
 	bl sub_080AD968
 	ldr r0, _080446FC @ =0x08C08BCC
@@ -15988,7 +15988,7 @@ sub_080446B4: @ 0x080446B4
 	adds r0, r4, #0
 	bl sub_080446A0
 	str r0, [r4, #0x54]
-	bl sub_0804A9F8
+	bl UnpackUiWindowFrameGraphics
 	ldr r0, _08044700 @ =gBg1Tm
 	movs r1, #4
 	str r1, [sp]
@@ -16225,7 +16225,7 @@ sub_080448AC: @ 0x080448AC
 sub_080448B8: @ 0x080448B8
 	push {r4, lr}
 	adds r4, r0, #0
-	bl sub_0804A9F8
+	bl UnpackUiWindowFrameGraphics
 	ldr r0, _080448DC @ =0x0203DA48
 	ldr r1, _080448E0 @ =0x06001800
 	movs r2, #0xc0
@@ -18131,7 +18131,7 @@ sub_080457C0: @ 0x080457C0
 	push {lr}
 	movs r0, #0
 	bl InitBgs
-	bl sub_08015A48
+	bl ApplySystemGraphics
 	bl ApplyUnitSpritePalettes
 	bl sub_08025A0C
 	bl sub_080457A8
@@ -18245,7 +18245,7 @@ _08045880:
 	ldr r0, _08045908 @ =gBmSt
 	strh r4, [r0, #0xc]
 	strh r4, [r0, #0xe]
-	bl sub_08015A48
+	bl ApplySystemGraphics
 	bl ApplyUnitSpritePalettes
 	bl ResetUnitSprites
 	bl RefreshUnitSprites
@@ -18437,7 +18437,7 @@ _08045A42:
 	strb r1, [r4, #2]
 	adds r0, r1, #1
 	strb r0, [r4, #3]
-	bl LoadObjUIGfx
+	bl ApplySystemObjectsGraphics
 	movs r0, #0
 	adds r4, #0x2c
 	movs r1, #3
@@ -23610,7 +23610,7 @@ sub_08048320: @ 0x08048320
 	ldrb r1, [r3, #0x18]
 	orrs r0, r1
 	strb r0, [r3, #0x18]
-	bl sub_08015A48
+	bl ApplySystemGraphics
 	ldr r0, _080483AC @ =0x081CD818
 	movs r1, #0xc0
 	lsls r1, r1, #2

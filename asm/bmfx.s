@@ -688,7 +688,7 @@ sub_0801DCB4: @ 0x0801DCB4
 	bl DecodeMsg
 	adds r1, r0, #0
 	adds r0, r6, #0
-	bl sub_08032A90
+	bl StartSubtitleHelp
 	b _0801DD36
 	.align 2, 0
 _0801DD1C: .4byte gActiveUnit
@@ -699,7 +699,7 @@ _0801DD28:
 	bl DecodeMsg
 	adds r1, r0, #0
 	adds r0, r6, #0
-	bl sub_08032A90
+	bl StartSubtitleHelp
 _0801DD36:
 	movs r0, #2
 	bl sub_08009E6C
@@ -5023,7 +5023,7 @@ sub_0801FFA8: @ 0x0801FFA8
 	push {lr}
 	movs r0, #0
 	bl InitBgs
-	bl sub_08015A48
+	bl ApplySystemGraphics
 	ldr r0, _0801FFCC @ =gPlaySt
 	ldrb r0, [r0, #0x15]
 	bl sub_0802D8E4
@@ -5108,7 +5108,7 @@ sub_0801FFE0: @ 0x0801FFE0
 	ldrsb r0, [r4, r0]
 	bl sub_080195BC
 	bl ApplyUnitSpritePalettes
-	bl LoadObjUIGfx
+	bl ApplySystemObjectsGraphics
 	movs r0, #0xe
 	ldrsb r0, [r4, r0]
 	bl GetROMChapterStruct

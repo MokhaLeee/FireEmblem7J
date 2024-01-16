@@ -199,7 +199,7 @@ sub_0802E4E8: @ 0x0802E4E8
 	ldr r0, _0802E5A0 @ =OnVBlank
 	bl SetOnVBlank
 	bl sub_0802E4BC
-	bl sub_08015A48
+	bl ApplySystemGraphics
 	bl ApplyUnitSpritePalettes
 	bl sub_08079FDC
 	bl ResetUnitSprites
@@ -275,7 +275,7 @@ sub_0802E5B4: @ 0x0802E5B4
 	bl SetMainFunc
 	ldr r0, _0802E63C @ =OnVBlank
 	bl SetOnVBlank
-	bl sub_08015A48
+	bl ApplySystemGraphics
 	bl ApplyUnitSpritePalettes
 	bl ResetUnitSprites
 	bl InitTraps
@@ -345,7 +345,7 @@ _0802E660:
 	ldrb r0, [r4, #0x12]
 	ldrb r1, [r4, #0x13]
 	bl sub_08015F0C
-	bl sub_08015A48
+	bl ApplySystemGraphics
 	bl ApplyUnitSpritePalettes
 	bl ResetUnitSprites
 	movs r0, #0xe
@@ -448,7 +448,7 @@ sub_0802E768: @ 0x0802E768
 	bl SetMainFunc
 	ldr r0, _0802E7D4 @ =OnVBlank
 	bl SetOnVBlank
-	bl sub_08015A48
+	bl ApplySystemGraphics
 	bl ApplyUnitSpritePalettes
 	bl ClearBg0Bg1
 	ldr r3, _0802E7D8 @ =gDispIo
@@ -495,7 +495,7 @@ _0802E7DC: .4byte gBg2Tm
 	thumb_func_start sub_0802E7E0
 sub_0802E7E0: @ 0x0802E7E0
 	push {lr}
-	bl LoadObjUIGfx
+	bl ApplySystemObjectsGraphics
 	ldr r0, _0802E7FC @ =gBattleActor
 	bl StartMu
 	bl sub_0806C7CC
@@ -533,7 +533,7 @@ sub_0802E834: @ 0x0802E834
 	push {lr}
 	movs r0, #0
 	bl InitBgs
-	bl sub_08015A48
+	bl ApplySystemGraphics
 	bl sub_0802E804
 	pop {r0}
 	bx r0
@@ -5785,7 +5785,7 @@ sub_08031114: @ 0x08031114
 	bl DecodeMsg
 	adds r1, r0, #0
 	adds r0, r5, #0
-	bl sub_08032A90
+	bl StartSubtitleHelp
 	ldr r0, _0803118C @ =gActiveUnit
 	ldr r0, [r0]
 	movs r1, #0x10
@@ -8648,8 +8648,8 @@ _08032864: .4byte 0x08C05C64
 _08032868: .4byte 0x00004240
 _0803286C: .4byte 0x08BFF7A8
 
-	thumb_func_start sub_08032870
-sub_08032870: @ 0x08032870
+	thumb_func_start InitSubtitleHelpText
+InitSubtitleHelpText: @ 0x08032870
 	push {r4, r5, r6, r7, lr}
 	mov r7, r8
 	push {r7}
@@ -8925,8 +8925,8 @@ _08032A86:
 	.align 2, 0
 _08032A8C: .4byte 0x08C05CC8
 
-	thumb_func_start sub_08032A90
-sub_08032A90: @ 0x08032A90
+	thumb_func_start StartSubtitleHelp
+StartSubtitleHelp: @ 0x08032A90
 	push {r4, lr}
 	adds r2, r0, #0
 	adds r4, r1, #0
@@ -8940,7 +8940,7 @@ sub_08032A90: @ 0x08032A90
 	adds r1, r2, #0
 	bl Proc_Start
 	str r4, [r0, #0x2c]
-	bl sub_08032870
+	bl InitSubtitleHelpText
 	bl sub_08019F20
 	ldr r1, _08032ACC @ =gBmSt
 	ldrh r0, [r1, #0x2a]
@@ -9184,7 +9184,7 @@ sub_08032CA0: @ 0x08032CA0
 	bl Proc_StartBlocking
 	movs r1, #0
 	str r1, [r0, #0x2c]
-	bl sub_08032870
+	bl InitSubtitleHelpText
 	bl sub_08019F20
 	ldr r1, _08032CC8 @ =gBmSt
 	ldrh r0, [r1, #0x2a]
@@ -9238,7 +9238,7 @@ sub_08032CF4: @ 0x08032CF4
 _08032D12:
 	str r7, [r4, #0x2c]
 	adds r0, r4, #0
-	bl sub_08032870
+	bl InitSubtitleHelpText
 	adds r1, r4, #0
 	adds r1, #0x58
 	movs r0, #0x1f
@@ -11688,7 +11688,7 @@ sub_08034070: @ 0x08034070
 	adds r0, r4, #0
 	movs r2, #4
 	movs r3, #2
-	bl sub_08013758
+	bl Copy2dChr
 	ldr r0, _080340F8 @ =0x08191B04
 	movs r1, #0x90
 	lsls r1, r1, #2

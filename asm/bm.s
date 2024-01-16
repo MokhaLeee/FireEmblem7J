@@ -359,8 +359,8 @@ _0801597E:
 	.align 2, 0
 _08015984: .4byte 0x08C02BF0
 
-	thumb_func_start sub_08015988
-sub_08015988: @ 0x08015988
+	thumb_func_start BmMain_SuspendBeforePhase
+BmMain_SuspendBeforePhase: @ 0x08015988
 	push {lr}
 	bl sub_0807B2A8
 	movs r0, #0x91
@@ -429,8 +429,8 @@ _08015A04:
 	.align 2, 0
 _08015A08: .4byte gDispIo
 
-	thumb_func_start LoadObjUIGfx
-LoadObjUIGfx: @ 0x08015A0C
+	thumb_func_start ApplySystemObjectsGraphics
+ApplySystemObjectsGraphics: @ 0x08015A0C
 	push {r4, lr}
 	ldr r0, _08015A38 @ =0x0818F9F0
 	ldr r4, _08015A3C @ =gBuf
@@ -440,7 +440,7 @@ LoadObjUIGfx: @ 0x08015A0C
 	adds r0, r4, #0
 	movs r2, #0x12
 	movs r3, #4
-	bl sub_08013758
+	bl Copy2dChr
 	ldr r0, _08015A44 @ =0x0818FE70
 	movs r1, #0x80
 	lsls r1, r1, #2
@@ -455,21 +455,21 @@ _08015A3C: .4byte gBuf
 _08015A40: .4byte 0x06010000
 _08015A44: .4byte 0x0818FE70
 
-	thumb_func_start sub_08015A48
-sub_08015A48: @ 0x08015A48
+	thumb_func_start ApplySystemGraphics
+ApplySystemGraphics: @ 0x08015A48
 	push {lr}
 	bl ResetText
-	bl sub_0804A9F8
-	bl sub_080069C4
+	bl UnpackUiWindowFrameGraphics
+	bl InitFaces
 	bl InitIcons
 	movs r0, #4
 	bl ApplyIconPalettes
-	bl LoadObjUIGfx
+	bl ApplySystemObjectsGraphics
 	pop {r0}
 	bx r0
 
-	thumb_func_start sub_08015A68
-sub_08015A68: @ 0x08015A68
+	thumb_func_start HandleMapCursorInput
+HandleMapCursorInput: @ 0x08015A68
 	push {r4, r5, r6, r7, lr}
 	lsls r0, r0, #0x10
 	lsrs r1, r0, #0x10

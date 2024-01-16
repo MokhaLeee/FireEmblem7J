@@ -665,7 +665,7 @@ sub_0800A9F4: @ 0x0800A9F4
 	movs r3, #0
 	bl InitTextFont
 	bl ClearIcons
-	bl sub_0804A9F8
+	bl UnpackUiWindowFrameGraphics
 	ldr r3, _0800AA60 @ =gDispIo
 	adds r1, r3, #0
 	adds r1, #0x3c
@@ -1490,7 +1490,7 @@ sub_0800B04C: @ 0x0800B04C
 	movs r0, #0
 	bl SetTextFont
 	bl InitSystemTextFont
-	bl sub_0804A9F8
+	bl UnpackUiWindowFrameGraphics
 _0800B068:
 	pop {r0}
 	bx r0
@@ -8663,7 +8663,7 @@ sub_0800E520: @ 0x0800E520
 	ands r0, r2
 	movs r4, #0
 	strh r0, [r1]
-	bl sub_08015A48
+	bl ApplySystemGraphics
 	bl sub_08019624
 	bl ApplyUnitSpritePalettes
 	ldr r2, _0800E56C @ =gDispIo
@@ -9619,7 +9619,7 @@ sub_0800EC08: @ 0x0800EC08
 	bl sub_080095E4
 	ldr r0, _0800EC20 @ =0x08BFF970
 	bl sub_08004748
-	bl sub_080069C4
+	bl InitFaces
 	bl sub_08007C64
 	pop {r0}
 	bx r0
@@ -12921,7 +12921,7 @@ sub_08010364: @ 0x08010364
 	adds r4, r1, #0
 	adds r5, r2, #0
 	adds r7, r3, #0
-	bl LoadObjUIGfx
+	bl ApplySystemObjectsGraphics
 	movs r0, #0x80
 	movs r1, #0
 	movs r2, #1

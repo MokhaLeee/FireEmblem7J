@@ -544,7 +544,7 @@ sub_0802DB64: @ 0x0802DB64
 	adds r0, r4, #0
 	movs r2, #4
 	movs r3, #4
-	bl sub_08013758
+	bl Copy2dChr
 	movs r6, #0
 	ldr r4, _0802DBD0 @ =0x020027DC
 	movs r5, #0x3f
@@ -645,7 +645,7 @@ sub_0802DC30: @ 0x0802DC30
 	adds r0, r4, #0
 	movs r2, #8
 	movs r3, #4
-	bl sub_08013758
+	bl Copy2dChr
 	movs r6, #0
 	ldr r5, _0802DCAC @ =0x020027DC
 	ldr r0, _0802DCB0 @ =0x000001FF
@@ -1357,7 +1357,7 @@ _0802E1D4:
 	adds r0, r4, #0
 	movs r2, #0xe
 	movs r3, #4
-	bl sub_08013758
+	bl Copy2dChr
 _0802E1E0:
 	pop {r4}
 	pop {r0}

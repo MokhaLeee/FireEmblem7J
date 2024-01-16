@@ -1103,7 +1103,7 @@ sub_08027B24: @ 0x08027B24
 	bl DecodeMsg
 	adds r1, r0, #0
 	adds r0, r4, #0
-	bl sub_08032A90
+	bl StartSubtitleHelp
 	pop {r4}
 	pop {r0}
 	bx r0
@@ -1131,7 +1131,7 @@ sub_08027B64: @ 0x08027B64
 	bl DecodeMsg
 	adds r1, r0, #0
 	adds r0, r4, #0
-	bl sub_08032A90
+	bl StartSubtitleHelp
 	pop {r4, r5}
 	pop {r0}
 	bx r0
@@ -1150,7 +1150,7 @@ sub_08027BA4: @ 0x08027BA4
 	bl DecodeMsg
 	adds r1, r0, #0
 	adds r0, r6, #0
-	bl sub_08032A90
+	bl StartSubtitleHelp
 	ldr r5, _08027C48 @ =gActionSt
 	ldrb r0, [r5, #0xd]
 	bl GetUnit
@@ -1456,7 +1456,7 @@ sub_08027E44: @ 0x08027E44
 	bl DecodeMsg
 	adds r1, r0, #0
 	adds r0, r4, #0
-	bl sub_08032A90
+	bl StartSubtitleHelp
 	ldr r0, _08027E98 @ =gPlaySt
 	adds r0, #0x41
 	ldrb r0, [r0]
@@ -1511,7 +1511,7 @@ sub_08027EBC: @ 0x08027EBC
 	bl DecodeMsg
 	adds r1, r0, #0
 	adds r0, r4, #0
-	bl sub_08032A90
+	bl StartSubtitleHelp
 	ldr r0, _08027F0C @ =gPlaySt
 	adds r0, #0x41
 	ldrb r0, [r0]
@@ -1588,7 +1588,7 @@ sub_08027F74: @ 0x08027F74
 	bl DecodeMsg
 	adds r1, r0, #0
 	adds r0, r4, #0
-	bl sub_08032A90
+	bl StartSubtitleHelp
 	ldr r0, _08027FC0 @ =gPlaySt
 	adds r0, #0x41
 	ldrb r0, [r0]
@@ -1827,7 +1827,7 @@ sub_0802814C: @ 0x0802814C
 	bl DecodeMsg
 	adds r1, r0, #0
 	adds r0, r4, #0
-	bl sub_08032A90
+	bl StartSubtitleHelp
 	pop {r4}
 	pop {r0}
 	bx r0
@@ -1851,7 +1851,7 @@ sub_08028184: @ 0x08028184
 	bl DecodeMsg
 	adds r1, r0, #0
 	adds r0, r4, #0
-	bl sub_08032A90
+	bl StartSubtitleHelp
 	pop {r4}
 	pop {r0}
 	bx r0
@@ -1902,7 +1902,7 @@ sub_080281F0: @ 0x080281F0
 	bl DecodeMsg
 	adds r1, r0, #0
 	adds r0, r4, #0
-	bl sub_08032A90
+	bl StartSubtitleHelp
 	pop {r4}
 	pop {r0}
 	bx r0
@@ -1953,7 +1953,7 @@ sub_0802825C: @ 0x0802825C
 	bl DecodeMsg
 	adds r1, r0, #0
 	adds r0, r4, #0
-	bl sub_08032A90
+	bl StartSubtitleHelp
 	pop {r4}
 	pop {r0}
 	bx r0
@@ -2050,7 +2050,7 @@ sub_08028328: @ 0x08028328
 	bl DecodeMsg
 	adds r1, r0, #0
 	adds r0, r4, #0
-	bl sub_08032A90
+	bl StartSubtitleHelp
 	pop {r4}
 	pop {r0}
 	bx r0
@@ -2072,7 +2072,7 @@ sub_08028354: @ 0x08028354
 	bl DecodeMsg
 	adds r1, r0, #0
 	adds r0, r5, #0
-	bl sub_08032A90
+	bl StartSubtitleHelp
 	ldr r4, _080283A8 @ =gActiveUnit
 	ldr r1, [r4]
 	movs r0, #0x10

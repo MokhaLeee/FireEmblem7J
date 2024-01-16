@@ -13,8 +13,8 @@ GetPortraitData: @ 0x080069B0
 	.align 2, 0
 _080069C0: .4byte 0x08D5E23C
 
-	thumb_func_start sub_080069C4
-sub_080069C4: @ 0x080069C4
+	thumb_func_start InitFaces
+InitFaces: @ 0x080069C4
 	push {r4, lr}
 	movs r4, #0
 _080069C8:

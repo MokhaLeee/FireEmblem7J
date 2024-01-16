@@ -32,7 +32,7 @@ sub_0801C584: @ 0x0801C584
 	cmp r0, #0
 	bne _0801C5C4
 	ldrh r0, [r2, #0x10]
-	bl sub_08015A68
+	bl HandleMapCursorInput
 	movs r0, #8
 	bl sub_08015B90
 	movs r0, #8
@@ -45,7 +45,7 @@ _0801C5C0: .4byte 0x00070007
 _0801C5C4:
 	ldr r0, [r3]
 	ldrh r0, [r0, #6]
-	bl sub_08015A68
+	bl HandleMapCursorInput
 	movs r0, #4
 	bl sub_08015B90
 	movs r0, #4

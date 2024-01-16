@@ -1839,7 +1839,7 @@ sub_080114A4: @ 0x080114A4
 	adds r0, #1
 	strb r2, [r0]
 	bl InitBmBgLayers
-	bl sub_08015A48
+	bl ApplySystemGraphics
 	bl InitSystemTextFont
 	pop {r0}
 	bx r0

@@ -500,7 +500,7 @@ sub_08008074: @ 0x08008074
 	bl sub_08007F58
 	cmp r0, #0
 	bne _08008098
-	bl LoadObjUIGfx
+	bl ApplySystemObjectsGraphics
 	movs r0, #0
 	movs r1, #0
 	movs r2, #0

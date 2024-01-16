@@ -341,8 +341,8 @@ _08013752:
 	pop {r0}
 	bx r0
 
-	thumb_func_start sub_08013758
-sub_08013758: @ 0x08013758
+	thumb_func_start Copy2dChr
+Copy2dChr: @ 0x08013758
 	push {r4, r5, r6, r7, lr}
 	adds r7, r0, #0
 	adds r6, r1, #0

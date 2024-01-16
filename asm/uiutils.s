@@ -983,8 +983,8 @@ sub_0804A9D0: @ 0x0804A9D0
 	.align 2, 0
 _0804A9F4: .4byte 0x08C09BB4
 
-	thumb_func_start sub_0804A9F8
-sub_0804A9F8: @ 0x0804A9F8
+	thumb_func_start UnpackUiWindowFrameGraphics
+UnpackUiWindowFrameGraphics: @ 0x0804A9F8
 	push {lr}
 	movs r0, #0
 	bl sub_0804A2AC
