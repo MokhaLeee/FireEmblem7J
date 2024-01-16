@@ -1957,7 +1957,7 @@ _08026018:
 	bl __umodsi3
 	mov sb, r0
 	movs r0, #0x91
-	bl sub_0807A0C8
+	bl CheckFlag
 	lsls r0, r0, #0x18
 	cmp r0, #0
 	beq _08026060

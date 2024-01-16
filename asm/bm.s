@@ -105,8 +105,8 @@ sub_080157A4: @ 0x080157A4
 	.align 2, 0
 _080157AC: .4byte gBmSt
 
-	thumb_func_start sub_080157B0
-sub_080157B0: @ 0x080157B0
+	thumb_func_start HandleChangePhase
+HandleChangePhase: @ 0x080157B0
 	push {lr}
 	ldr r2, _080157C4 @ =gPlaySt
 	ldrb r0, [r2, #0xf]
@@ -148,14 +148,14 @@ _080157EE:
 	.align 2, 0
 _080157F4: .4byte 0x000003E6
 
-	thumb_func_start sub_080157F8
-sub_080157F8: @ 0x080157F8
+	thumb_func_start CallChapterStartEventMaybe
+CallChapterStartEventMaybe: @ 0x080157F8
 	push {lr}
 	ldr r0, _08015814 @ =gPlaySt
 	ldrb r0, [r0, #0xe]
 	lsls r0, r0, #0x18
 	asrs r0, r0, #0x18
-	bl sub_08031AEC
+	bl GetChapterEventInfo
 	ldr r0, [r0, #0x38]
 	bl sub_0800AE98
 	movs r0, #0
@@ -164,13 +164,13 @@ sub_080157F8: @ 0x080157F8
 	.align 2, 0
 _08015814: .4byte gPlaySt
 
-	thumb_func_start sub_08015818
-sub_08015818: @ 0x08015818
+	thumb_func_start BmMain_ChangePhase
+BmMain_ChangePhase: @ 0x08015818
 	push {lr}
 	bl ClearActiveFactionGrayedStates
 	bl RefreshUnitSprites
-	bl sub_080157B0
-	bl sub_08079158
+	bl HandleChangePhase
+	bl CheckAvailableTurnEvent
 	lsls r0, r0, #0x18
 	asrs r0, r0, #0x18
 	cmp r0, #1
@@ -178,7 +178,7 @@ sub_08015818: @ 0x08015818
 	movs r0, #1
 	b _0801583C
 _08015836:
-	bl sub_08079188
+	bl StartAvailableTurnEvents
 	movs r0, #0
 _0801583C:
 	pop {r1}
@@ -201,8 +201,8 @@ _08015858:
 	pop {r1}
 	bx r1
 
-	thumb_func_start sub_0801585C
-sub_0801585C: @ 0x0801585C
+	thumb_func_start BmMain_StartPhase
+BmMain_StartPhase: @ 0x0801585C
 	push {r4, lr}
 	adds r4, r0, #0
 	ldr r0, _08015874 @ =gPlaySt
@@ -321,8 +321,8 @@ _08015936:
 	.align 2, 0
 _0801593C: .4byte gPlaySt
 
-	thumb_func_start sub_08015940
-sub_08015940: @ 0x08015940
+	thumb_func_start BmMain_StartIntroFx
+BmMain_StartIntroFx: @ 0x08015940
 	push {lr}
 	adds r1, r0, #0
 	ldr r0, _08015970 @ =gPlaySt
@@ -364,7 +364,7 @@ BmMain_SuspendBeforePhase: @ 0x08015988
 	push {lr}
 	bl sub_0807B2A8
 	movs r0, #0x91
-	bl sub_0807A0E0
+	bl ClearFlag
 	pop {r0}
 	bx r0
 
@@ -1663,7 +1663,7 @@ sub_08016318: @ 0x08016318
 _08016326:
 	adds r4, r1, #0
 	movs r0, #4
-	bl sub_0807A0C8
+	bl CheckFlag
 	lsls r0, r0, #0x18
 	movs r1, #6
 	cmp r0, #0
@@ -1672,7 +1672,7 @@ _08016326:
 _08016338:
 	adds r7, r1, #0
 	movs r0, #4
-	bl sub_0807A0C8
+	bl CheckFlag
 	lsls r0, r0, #0x18
 	cmp r0, #0
 	bne _08016350
@@ -1685,7 +1685,7 @@ _08016350:
 _08016352:
 	adds r6, r1, #0
 	movs r0, #4
-	bl sub_0807A0C8
+	bl CheckFlag
 	lsls r0, r0, #0x18
 	cmp r0, #0
 	bne _08016364

@@ -21,7 +21,7 @@ sub_0809F344: @ 0x0809F344
 sub_0809F364: @ 0x0809F364
 	push {r4, r5, lr}
 	adds r4, r0, #0
-	bl sub_0807A0F4
+	bl GetPermanentFlagBits
 	adds r5, r0, #0
 	bl sub_0807A0FC
 	adds r2, r0, #0
@@ -57,7 +57,7 @@ sub_0809F3AC: @ 0x0809F3AC
 	push {r4, r5, r6, lr}
 	adds r6, r0, #0
 	ldr r4, _0809F3D0 @ =ReadSramFast
-	bl sub_0807A0F4
+	bl GetPermanentFlagBits
 	adds r5, r0, #0
 	bl sub_0807A0FC
 	adds r2, r0, #0
@@ -6410,7 +6410,7 @@ _080A23D4:
 	subs r5, #1
 	cmp r5, #0
 	bge _080A23BC
-	bl sub_0807A0F4
+	bl GetPermanentFlagBits
 	adds r4, r0, #0
 	bl sub_0807A0FC
 	adds r1, r0, #0
@@ -7394,7 +7394,7 @@ sub_080A2B50: @ 0x080A2B50
 	bl GetTrap
 	ldr r1, [r4]
 	str r0, [r1, #0x34]
-	bl sub_0807A0F4
+	bl GetPermanentFlagBits
 	ldr r1, [r4]
 	str r0, [r1, #0x38]
 	bl sub_0807A100

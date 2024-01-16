@@ -232,7 +232,7 @@ sub_0802E4E8: @ 0x0802E4E8
 	bl RefreshUnitSprites
 	bl sub_08034AC4
 	mov r0, r8
-	bl sub_0802E848
+	bl StartMapMain
 	ldr r0, _0802E5A8 @ =gPal
 	strh r5, [r0]
 	bl EnablePalSync
@@ -357,7 +357,7 @@ _0802E660:
 	movs r0, #1
 	strb r0, [r1]
 	adds r0, r5, #0
-	bl sub_0802E848
+	bl StartMapMain
 	adds r5, r0, #0
 	movs r1, #0x14
 	ldrsh r0, [r4, r1]
@@ -538,8 +538,8 @@ sub_0802E834: @ 0x0802E834
 	pop {r0}
 	bx r0
 
-	thumb_func_start sub_0802E848
-sub_0802E848: @ 0x0802E848
+	thumb_func_start StartMapMain
+StartMapMain: @ 0x0802E848
 	push {r4, r5, lr}
 	adds r4, r0, #0
 	ldr r0, _0802E874 @ =0x08C01DBC
@@ -563,8 +563,8 @@ sub_0802E848: @ 0x0802E848
 _0802E874: .4byte 0x08C01DBC
 _0802E878: .4byte 0x08C05464
 
-	thumb_func_start sub_0802E87C
-sub_0802E87C: @ 0x0802E87C
+	thumb_func_start EndMapMain
+EndMapMain: @ 0x0802E87C
 	push {lr}
 	movs r0, #1
 	bl sub_08004710
@@ -6111,7 +6111,7 @@ sub_080313E8: @ 0x080313E8
 	ldrb r0, [r0, #0xe]
 	lsls r0, r0, #0x18
 	asrs r0, r0, #0x18
-	bl sub_08031AEC
+	bl GetChapterEventInfo
 	ldr r0, [r0, #8]
 	str r0, [sp]
 	mov r1, sp
@@ -7005,8 +7005,8 @@ _08031AE2:
 	.align 2, 0
 _08031AE8: .4byte 0x08D648F4
 
-	thumb_func_start sub_08031AEC
-sub_08031AEC: @ 0x08031AEC
+	thumb_func_start GetChapterEventInfo
+GetChapterEventInfo: @ 0x08031AEC
 	push {r4, lr}
 	cmp r0, #0x30
 	bne _08031B00

@@ -1545,7 +1545,7 @@ sub_0800B0BC: @ 0x0800B0BC
 	ands r1, r0
 	cmp r1, #0
 	beq _0800B0CE
-	bl sub_0802E87C
+	bl EndMapMain
 _0800B0CE:
 	pop {r0}
 	bx r0
@@ -3073,7 +3073,7 @@ _0800BC14: .4byte 0x0000FFFD
 _0800BC18:
 	ldr r0, [r4, #0x30]
 	ldr r0, [r0, #4]
-	bl sub_0807A0C8
+	bl CheckFlag
 	lsls r0, r0, #0x18
 	cmp r0, #0
 	beq _0800BC34
@@ -6467,7 +6467,7 @@ sub_0800D510: @ 0x0800D510
 	ldr r0, [r5, #0x30]
 	ldr r6, [r0, #4]
 	ldr r0, [r0, #8]
-	bl sub_0807A0C8
+	bl CheckFlag
 	lsls r0, r0, #0x18
 	cmp r0, #0
 	bne _0800D544
@@ -6527,7 +6527,7 @@ sub_0800D57C: @ 0x0800D57C
 	ldr r0, [r5, #0x30]
 	ldr r6, [r0, #4]
 	ldr r0, [r0, #8]
-	bl sub_0807A0C8
+	bl CheckFlag
 	lsls r0, r0, #0x18
 	cmp r0, #0
 	beq _0800D5B0
@@ -6831,12 +6831,12 @@ _0800D780:
 	cmp r0, r7
 	bne _0800D7B6
 	adds r0, r5, #0
-	bl sub_0807A0C8
+	bl CheckFlag
 	lsls r0, r0, #0x18
 	cmp r0, #0
 	bne _0800D7BC
 	adds r0, r5, #0
-	bl sub_0807A0B4
+	bl SetFlag
 	movs r0, #0
 	b _0800D7C6
 _0800D7B6:
@@ -8247,7 +8247,7 @@ sub_0800E23C: @ 0x0800E23C
 	push {lr}
 	ldr r0, [r0, #0x30]
 	ldrh r0, [r0, #2]
-	bl sub_0807A0B4
+	bl SetFlag
 	movs r0, #0
 	pop {r1}
 	bx r1
@@ -8257,7 +8257,7 @@ sub_0800E24C: @ 0x0800E24C
 	push {lr}
 	ldr r0, [r0, #0x30]
 	ldrh r0, [r0, #2]
-	bl sub_0807A0E0
+	bl ClearFlag
 	movs r0, #0
 	pop {r1}
 	bx r1
@@ -9497,7 +9497,7 @@ sub_0800EB1C: @ 0x0800EB1C
 	bl sub_0801759C
 	ldr r0, [r4, #0x30]
 	ldr r0, [r0, #0xc]
-	bl sub_0807A0B4
+	bl SetFlag
 	movs r0, #0
 	pop {r4}
 	pop {r1}

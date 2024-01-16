@@ -1109,7 +1109,7 @@ sub_0802C680: @ 0x0802C680
 sub_0802C68C: @ 0x0802C68C
 	push {lr}
 	movs r0, #0x65
-	bl sub_0807A028
+	bl CheckChapterFlag
 	lsls r0, r0, #0x18
 	cmp r0, #0
 	beq _0802C6A0

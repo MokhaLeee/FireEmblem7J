@@ -266,7 +266,7 @@ _0801B7A0: .4byte 0x081C9238
 sub_0801B7A4: @ 0x0801B7A4
 	push {r4, lr}
 	adds r4, r1, #0
-	bl sub_0802E87C
+	bl EndMapMain
 	ldr r1, _0801B7C4 @ =gPlaySt
 	adds r4, #0x3c
 	ldrb r0, [r4]
@@ -1327,7 +1327,7 @@ _0801C00E:
 	bl Proc_Find
 	cmp r0, #0
 	beq _0801C01C
-	bl sub_0802E87C
+	bl EndMapMain
 _0801C01C:
 	movs r0, #4
 	bl ReadSuspendSave
@@ -1353,7 +1353,7 @@ _0801C03E:
 	bl Proc_Find
 	cmp r0, #0
 	beq _0801C04C
-	bl sub_0802E87C
+	bl EndMapMain
 _0801C04C:
 	bl sub_08013288
 	movs r0, #0x17

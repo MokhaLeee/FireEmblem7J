@@ -72620,7 +72620,7 @@ sub_080788D0: @ 0x080788D0
 	cmp r0, #0
 	beq _080788EA
 	ldr r0, [r4, #8]
-	bl sub_0807A0B4
+	bl SetFlag
 	ldr r0, [r4, #4]
 	cmp r0, #1
 	beq _080788EA
@@ -72634,7 +72634,7 @@ _080788EA:
 sub_080788F0: @ 0x080788F0
 	push {lr}
 	ldr r0, [r0, #8]
-	bl sub_0807A0B4
+	bl SetFlag
 	pop {r0}
 	bx r0
 
@@ -72662,7 +72662,7 @@ _0807891E:
 	ldr r0, [r4]
 	ldrh r5, [r0]
 	ldrh r0, [r0, #2]
-	bl sub_0807A0C8
+	bl CheckFlag
 	lsls r0, r0, #0x18
 	cmp r0, #0
 	bne _08078910
@@ -72724,7 +72724,7 @@ sub_08078984: @ 0x08078984
 	adds r4, r0, #0
 	ldr r0, [r4]
 	ldrh r0, [r0, #8]
-	bl sub_0807A0C8
+	bl CheckFlag
 	lsls r0, r0, #0x18
 	cmp r0, #0
 	bne _0807899A
@@ -72750,12 +72750,12 @@ sub_080789AC: @ 0x080789AC
 	ldrh r5, [r0, #0xc]
 	ldr r6, _080789E0 @ =0xFFFF0000
 	ldrh r0, [r0, #2]
-	bl sub_0807A0C8
+	bl CheckFlag
 	lsls r0, r0, #0x18
 	cmp r0, #0
 	bne _080789E4
 	adds r0, r5, #0
-	bl sub_0807A0C8
+	bl CheckFlag
 	lsls r0, r0, #0x18
 	cmp r0, #0
 	beq _080789E4
@@ -72875,12 +72875,12 @@ sub_08078A8C: @ 0x08078A8C
 	ldrh r5, [r0, #0xc]
 	ldr r6, _08078AC0 @ =0xFFFF0000
 	ldrh r0, [r0, #2]
-	bl sub_0807A0C8
+	bl CheckFlag
 	lsls r0, r0, #0x18
 	cmp r0, #0
 	bne _08078AC4
 	adds r0, r5, #0
-	bl sub_0807A0C8
+	bl CheckFlag
 	lsls r0, r0, #0x18
 	cmp r0, #0
 	beq _08078AC4
@@ -72991,7 +72991,7 @@ _08078B68:
 	beq _08078BBC
 _08078B74:
 	movs r0, #2
-	bl sub_0807A0C8
+	bl CheckFlag
 	lsls r0, r0, #0x18
 	cmp r0, #0
 	bne _08078BBC
@@ -73080,7 +73080,7 @@ _08078C04:
 _08078C10: .4byte gPlaySt
 _08078C14:
 	lsrs r0, r0, #0x10
-	bl sub_0807A0C8
+	bl CheckFlag
 	lsls r0, r0, #0x18
 	cmp r0, #0
 	beq _08078C3E
@@ -73441,7 +73441,7 @@ sub_08078E84: @ 0x08078E84
 	cmp r0, #2
 	bne _08078EA8
 	movs r0, #2
-	bl sub_0807A0C8
+	bl CheckFlag
 	lsls r0, r0, #0x18
 	cmp r0, #0
 	bne _08078EA8
@@ -73466,7 +73466,7 @@ sub_08078EB0: @ 0x08078EB0
 	cmp r0, #3
 	bne _08078ED4
 	movs r0, #2
-	bl sub_0807A0C8
+	bl CheckFlag
 	lsls r0, r0, #0x18
 	cmp r0, #0
 	bne _08078ED4
@@ -73848,15 +73848,15 @@ _0807914C:
 	bx r1
 	.align 2, 0
 
-	thumb_func_start sub_08079158
-sub_08079158: @ 0x08079158
+	thumb_func_start CheckAvailableTurnEvent
+CheckAvailableTurnEvent: @ 0x08079158
 	push {lr}
 	sub sp, #0x1c
 	ldr r0, _0807917C @ =gPlaySt
 	ldrb r0, [r0, #0xe]
 	lsls r0, r0, #0x18
 	asrs r0, r0, #0x18
-	bl sub_08031AEC
+	bl GetChapterEventInfo
 	ldr r0, [r0]
 	str r0, [sp]
 	mov r0, sp
@@ -73874,15 +73874,15 @@ _08079182:
 	pop {r1}
 	bx r1
 
-	thumb_func_start sub_08079188
-sub_08079188: @ 0x08079188
+	thumb_func_start StartAvailableTurnEvents
+StartAvailableTurnEvents: @ 0x08079188
 	push {lr}
 	sub sp, #0x1c
 	ldr r0, _080791B0 @ =gPlaySt
 	ldrb r0, [r0, #0xe]
 	lsls r0, r0, #0x18
 	asrs r0, r0, #0x18
-	bl sub_08031AEC
+	bl GetChapterEventInfo
 	ldr r0, [r0]
 	str r0, [sp]
 	mov r0, sp
@@ -73922,7 +73922,7 @@ sub_080791CC: @ 0x080791CC
 	ldrb r0, [r0, #0xe]
 	lsls r0, r0, #0x18
 	asrs r0, r0, #0x18
-	bl sub_08031AEC
+	bl GetChapterEventInfo
 	ldr r0, [r0, #4]
 	str r0, [sp]
 	mov r0, sp
@@ -73958,7 +73958,7 @@ sub_08079210: @ 0x08079210
 	ldrb r0, [r0, #0xe]
 	lsls r0, r0, #0x18
 	asrs r0, r0, #0x18
-	bl sub_08031AEC
+	bl GetChapterEventInfo
 	ldr r0, [r0, #4]
 	str r0, [sp]
 	mov r0, sp
@@ -74182,7 +74182,7 @@ sub_080793A0: @ 0x080793A0
 	ldrb r0, [r0, #0xe]
 	lsls r0, r0, #0x18
 	asrs r0, r0, #0x18
-	bl sub_08031AEC
+	bl GetChapterEventInfo
 	ldr r0, [r0, #8]
 	str r0, [sp]
 	mov r0, sp
@@ -74218,7 +74218,7 @@ sub_080793E4: @ 0x080793E4
 	ldrb r0, [r0, #0xe]
 	lsls r0, r0, #0x18
 	asrs r0, r0, #0x18
-	bl sub_08031AEC
+	bl GetChapterEventInfo
 	ldr r0, [r0, #8]
 	str r0, [sp]
 	mov r0, sp
@@ -74313,7 +74313,7 @@ _080794D8:
 	lsrs r0, r0, #0x18
 	bl sub_0800EF34
 	ldr r0, [sp, #8]
-	bl sub_0807A0B4
+	bl SetFlag
 	b _080794D2
 _08079502:
 	mov r0, sp
@@ -74377,7 +74377,7 @@ _0807955E:
 _08079580:
 	bl sub_0800AD60
 	ldr r0, [sp, #8]
-	bl sub_0807A0B4
+	bl SetFlag
 	b _080795C2
 _0807958C:
 	ldr r0, _08079598 @ =gActiveUnit
@@ -74891,7 +74891,7 @@ sub_08079910: @ 0x08079910
 	ldrb r0, [r0, #0xe]
 	lsls r0, r0, #0x18
 	asrs r0, r0, #0x18
-	bl sub_08031AEC
+	bl GetChapterEventInfo
 	ldr r0, [r0, #0xc]
 	str r0, [sp]
 	mov r1, sp
@@ -74925,7 +74925,7 @@ sub_08079950: @ 0x08079950
 	ldrb r0, [r0, #0xe]
 	lsls r0, r0, #0x18
 	asrs r0, r0, #0x18
-	bl sub_08031AEC
+	bl GetChapterEventInfo
 	ldr r0, [r0, #0xc]
 	str r0, [sp]
 	mov r1, sp
@@ -74953,7 +74953,7 @@ _0807998C: .4byte gActiveUnit
 sub_08079990: @ 0x08079990
 	push {lr}
 	movs r0, #3
-	bl sub_0807A0C8
+	bl CheckFlag
 	lsls r0, r0, #0x18
 	asrs r0, r0, #0x18
 	pop {r1}
@@ -74963,7 +74963,7 @@ sub_08079990: @ 0x08079990
 sub_080799A0: @ 0x080799A0
 	push {lr}
 	movs r0, #3
-	bl sub_0807A0C8
+	bl CheckFlag
 	lsls r0, r0, #0x18
 	cmp r0, #0
 	beq _080799BC
@@ -74982,7 +74982,7 @@ sub_080799C0: @ 0x080799C0
 	ldr r4, _080799D8 @ =gPlaySt
 	movs r0, #0xe
 	ldrsb r0, [r4, r0]
-	bl sub_08031AEC
+	bl GetChapterEventInfo
 	ldrb r4, [r4, #0x1b]
 	cmp r4, #3
 	beq _080799DC
@@ -75004,7 +75004,7 @@ sub_080799E4: @ 0x080799E4
 	ldr r5, _08079A18 @ =gPlaySt
 	movs r0, #0xe
 	ldrsb r0, [r5, r0]
-	bl sub_08031AEC
+	bl GetChapterEventInfo
 	adds r4, r0, #0
 	movs r0, #0
 	str r0, [sp, #8]
@@ -75058,7 +75058,7 @@ sub_08079A50: @ 0x08079A50
 	ldr r4, _08079A74 @ =gPlaySt
 	movs r0, #0xe
 	ldrsb r0, [r4, r0]
-	bl sub_08031AEC
+	bl GetChapterEventInfo
 	adds r1, r0, #0
 	ldrb r0, [r4, #0x1b]
 	cmp r0, #3
@@ -75155,7 +75155,7 @@ sub_08079AF0: @ 0x08079AF0
 	b _08079B2A
 _08079AFA:
 	ldr r0, [r4, #8]
-	bl sub_0807A0C8
+	bl CheckFlag
 	lsls r0, r0, #0x18
 	cmp r0, #0
 	bne _08079B28
@@ -75198,7 +75198,7 @@ sub_08079B38: @ 0x08079B38
 	b _08079B72
 _08079B42:
 	ldr r0, [r4, #0xc]
-	bl sub_0807A0C8
+	bl CheckFlag
 	lsls r0, r0, #0x18
 	cmp r0, #0
 	bne _08079B70
@@ -75241,7 +75241,7 @@ sub_08079B80: @ 0x08079B80
 	b _08079BBA
 _08079B8A:
 	ldr r0, [r4, #8]
-	bl sub_0807A0C8
+	bl CheckFlag
 	lsls r0, r0, #0x18
 	cmp r0, #0
 	bne _08079BB8
@@ -75289,7 +75289,7 @@ sub_08079BC8: @ 0x08079BC8
 	cmp r0, #0
 	beq _08079BEE
 	ldr r0, [r0, #0xc]
-	bl sub_0807A0C8
+	bl CheckFlag
 	lsls r0, r0, #0x18
 	cmp r0, #0
 	bne _08079C2C
@@ -75343,7 +75343,7 @@ sub_08079C34: @ 0x08079C34
 	cmp r5, #0
 	beq _08079C78
 	ldr r0, [r5, #0xc]
-	bl sub_0807A0C8
+	bl CheckFlag
 	lsls r0, r0, #0x18
 	cmp r0, #0
 	bne _08079CD8
@@ -75358,7 +75358,7 @@ _08079C66:
 _08079C6C:
 	bl sub_0800AD60
 	ldr r0, [r5, #0xc]
-	bl sub_0807A0B4
+	bl SetFlag
 	b _08079CD8
 _08079C78:
 	ldr r5, _08079CAC @ =0x08D66A34
@@ -75382,7 +75382,7 @@ _08079C96:
 	bl sub_0800AD60
 _08079CA4:
 	ldr r0, [r4, #8]
-	bl sub_0807A0B4
+	bl SetFlag
 	b _08079CD8
 	.align 2, 0
 _08079CAC: .4byte 0x08D66A34
@@ -75401,7 +75401,7 @@ _08079CB0:
 	bl sub_0800EC84
 	bl sub_0800AD60
 	ldr r0, [r4, #8]
-	bl sub_0807A0B4
+	bl SetFlag
 _08079CD8:
 	pop {r4, r5, r6, r7}
 	pop {r0}
@@ -75568,7 +75568,7 @@ _08079E06:
 _08079E1C:
 	bl sub_0800AD60
 	ldr r0, [r4, #8]
-	bl sub_0807A0B4
+	bl SetFlag
 	ldr r0, [r4, #8]
 	cmp r0, #0x65
 	bne _08079E50
@@ -75620,7 +75620,7 @@ _08079E88:
 _08079E92:
 	bl sub_0800AD60
 	ldr r0, [r4, #0xc]
-	bl sub_0807A0B4
+	bl SetFlag
 	adds r0, r5, #0
 	bl GetUnitFromCharId
 	movs r1, #0xc0
@@ -75654,7 +75654,7 @@ _08079ECC:
 sub_08079ED4: @ 0x08079ED4
 	push {lr}
 	movs r0, #0x65
-	bl sub_0807A0B4
+	bl SetFlag
 	movs r0, #0x2b
 	movs r1, #0
 	bl sub_0800376C
@@ -75732,8 +75732,8 @@ nullsub_68: @ 0x08079F30
 	bx lr
 	.align 2, 0
 
-	thumb_func_start sub_08079F34
-sub_08079F34: @ 0x08079F34
+	thumb_func_start SetChapterFlag
+SetChapterFlag: @ 0x08079F34
 	adds r3, r0, #0
 	cmp r3, #0
 	beq _08079F5C
@@ -75761,8 +75761,8 @@ _08079F5C:
 _08079F60: .4byte 0x030049F8
 _08079F64: .4byte 0x08D66A2C
 
-	thumb_func_start sub_08079F68
-sub_08079F68: @ 0x08079F68
+	thumb_func_start CheckPermanentFlag
+CheckPermanentFlag: @ 0x08079F68
 	adds r3, r0, #0
 	cmp r3, #0
 	beq _08079F92
@@ -75796,8 +75796,8 @@ _08079FA0:
 _08079FA2:
 	bx lr
 
-	thumb_func_start sub_08079FA4
-sub_08079FA4: @ 0x08079FA4
+	thumb_func_start ClearChapterFlag
+ClearChapterFlag: @ 0x08079FA4
 	adds r2, r0, #0
 	cmp r2, #0
 	beq _08079FD2
@@ -75842,8 +75842,8 @@ _08079FE2:
 	.align 2, 0
 _08079FEC: .4byte 0x030049F8
 
-	thumb_func_start sub_08079FF0
-sub_08079FF0: @ 0x08079FF0
+	thumb_func_start SetPermanentFlag
+SetPermanentFlag: @ 0x08079FF0
 	adds r3, r0, #0
 	cmp r3, #0x63
 	ble _0807A01C
@@ -75873,8 +75873,8 @@ _0807A01C:
 _0807A020: .4byte 0x030049F0
 _0807A024: .4byte 0x08D66A2C
 
-	thumb_func_start sub_0807A028
-sub_0807A028: @ 0x0807A028
+	thumb_func_start CheckChapterFlag
+CheckChapterFlag: @ 0x0807A028
 	adds r3, r0, #0
 	cmp r3, #0x64
 	ble _0807A052
@@ -75908,8 +75908,8 @@ _0807A060:
 _0807A062:
 	bx lr
 
-	thumb_func_start sub_0807A064
-sub_0807A064: @ 0x0807A064
+	thumb_func_start ClearPermanentFlag
+ClearPermanentFlag: @ 0x0807A064
 	adds r2, r0, #0
 	cmp r2, #0x63
 	ble _0807A096
@@ -75956,49 +75956,49 @@ _0807A0A6:
 	.align 2, 0
 _0807A0B0: .4byte 0x030049F0
 
-	thumb_func_start sub_0807A0B4
-sub_0807A0B4: @ 0x0807A0B4
+	thumb_func_start SetFlag
+SetFlag: @ 0x0807A0B4
 	push {lr}
 	cmp r0, #0x63
 	bgt _0807A0C0
-	bl sub_08079F34
+	bl SetChapterFlag
 	b _0807A0C4
 _0807A0C0:
-	bl sub_08079FF0
+	bl SetPermanentFlag
 _0807A0C4:
 	pop {r0}
 	bx r0
 
-	thumb_func_start sub_0807A0C8
-sub_0807A0C8: @ 0x0807A0C8
+	thumb_func_start CheckFlag
+CheckFlag: @ 0x0807A0C8
 	push {lr}
 	cmp r0, #0x63
 	ble _0807A0D4
-	bl sub_0807A028
+	bl CheckChapterFlag
 	b _0807A0D8
 _0807A0D4:
-	bl sub_08079F68
+	bl CheckPermanentFlag
 _0807A0D8:
 	lsls r0, r0, #0x18
 	asrs r0, r0, #0x18
 	pop {r1}
 	bx r1
 
-	thumb_func_start sub_0807A0E0
-sub_0807A0E0: @ 0x0807A0E0
+	thumb_func_start ClearFlag
+ClearFlag: @ 0x0807A0E0
 	push {lr}
 	cmp r0, #0x63
 	bgt _0807A0EC
-	bl sub_08079FA4
+	bl ClearChapterFlag
 	b _0807A0F0
 _0807A0EC:
-	bl sub_0807A064
+	bl ClearPermanentFlag
 _0807A0F0:
 	pop {r0}
 	bx r0
 
-	thumb_func_start sub_0807A0F4
-sub_0807A0F4: @ 0x0807A0F4
+	thumb_func_start GetPermanentFlagBits
+GetPermanentFlagBits: @ 0x0807A0F4
 	ldr r0, _0807A0F8 @ =0x030049F0
 	bx lr
 	.align 2, 0
@@ -76178,11 +76178,11 @@ sub_0807A208: @ 0x0807A208
 	ldrb r0, [r0, #0xe]
 	lsls r0, r0, #0x18
 	asrs r0, r0, #0x18
-	bl sub_08031AEC
+	bl GetChapterEventInfo
 	ldr r0, [r0, #0x3c]
 	bl sub_0800AE98
 	movs r0, #0x91
-	bl sub_0807A0B4
+	bl SetFlag
 	pop {r0}
 	bx r0
 	.align 2, 0
@@ -76202,7 +76202,7 @@ sub_0807A22C: @ 0x0807A22C
 	cmp r0, #0
 	bne _0807A254
 	movs r0, #0x9c
-	bl sub_0807A0C8
+	bl CheckFlag
 	lsls r0, r0, #0x18
 	asrs r0, r0, #0x18
 	rsbs r1, r0, #0
@@ -76220,7 +76220,7 @@ _0807A25C: .4byte gPlaySt
 sub_0807A260: @ 0x0807A260
 	push {lr}
 	movs r0, #0x8f
-	bl sub_0807A0B4
+	bl SetFlag
 	pop {r0}
 	bx r0
 
@@ -76228,7 +76228,7 @@ sub_0807A260: @ 0x0807A260
 sub_0807A26C: @ 0x0807A26C
 	push {lr}
 	movs r0, #0x8f
-	bl sub_0807A0C8
+	bl CheckFlag
 	lsls r0, r0, #0x18
 	cmp r0, #0
 	bne _0807A27E
@@ -76802,7 +76802,7 @@ _0807A5D8:
 	adds r0, r2, #0
 	bl UnitLevelUp
 	movs r0, #0x90
-	bl sub_0807A0B4
+	bl SetFlag
 	b _0807A61A
 	.align 2, 0
 _0807A610: .4byte 0x0001000C
@@ -78093,7 +78093,7 @@ _0807AE48: .4byte gPlaySt
 sub_0807AE4C: @ 0x0807AE4C
 	push {lr}
 	movs r0, #0x9b
-	bl sub_0807A0C8
+	bl CheckFlag
 	lsls r0, r0, #0x18
 	asrs r0, r0, #0x18
 	pop {r1}
@@ -79483,19 +79483,19 @@ _0807B8C0: .4byte gBmSt
 _0807B8C4: .4byte 0x0000FFFC
 _0807B8C8: .4byte 0x08D6F834
 
-	thumb_func_start sub_0807B8CC
-sub_0807B8CC: @ 0x0807B8CC
+	thumb_func_start SetFlag_145
+SetFlag_145: @ 0x0807B8CC
 	push {lr}
 	movs r0, #0x91
-	bl sub_0807A0B4
+	bl SetFlag
 	pop {r0}
 	bx r0
 
-	thumb_func_start sub_0807B8D8
-sub_0807B8D8: @ 0x0807B8D8
+	thumb_func_start ClearFlag_145
+ClearFlag_145: @ 0x0807B8D8
 	push {lr}
 	movs r0, #0x91
-	bl sub_0807A0E0
+	bl ClearFlag
 	pop {r0}
 	bx r0
 
@@ -82859,14 +82859,14 @@ sub_0807D3E0: @ 0x0807D3E0
 _0807D3F8: .4byte gPlaySt
 _0807D3FC:
 	movs r0, #0x6a
-	bl sub_0807A0C8
+	bl CheckFlag
 	lsls r0, r0, #0x18
 	cmp r0, #0
 	bne _0807D41E
 	b _0807D416
 _0807D40A:
 	movs r0, #0x6a
-	bl sub_0807A0C8
+	bl CheckFlag
 	lsls r0, r0, #0x18
 	cmp r0, #0
 	beq _0807D41E
@@ -83038,7 +83038,7 @@ sub_0807D534: @ 0x0807D534
 	cmp r0, #0
 	bne _0807D58A
 	movs r0, #0x90
-	bl sub_0807A0C8
+	bl CheckFlag
 	lsls r0, r0, #0x18
 	cmp r0, #0
 	beq _0807D58A
@@ -83046,7 +83046,7 @@ sub_0807D534: @ 0x0807D534
 	adds r1, r4, #0
 	bl Proc_StartBlocking
 	movs r0, #0x90
-	bl sub_0807A0E0
+	bl ClearFlag
 _0807D58A:
 	pop {r4}
 	pop {r0}
@@ -83661,7 +83661,7 @@ _0807DA36:
 sub_0807DA3C: @ 0x0807DA3C
 	push {lr}
 	movs r0, #0x17
-	bl sub_0807A0B4
+	bl SetFlag
 	pop {r0}
 	bx r0
 
@@ -83696,7 +83696,7 @@ _0807DA70: .4byte 0x00002710
 sub_0807DA74: @ 0x0807DA74
 	push {lr}
 	movs r0, #8
-	bl sub_0807A0C8
+	bl CheckFlag
 	bl sub_0807AA5C
 	pop {r0}
 	bx r0
@@ -83705,7 +83705,7 @@ sub_0807DA74: @ 0x0807DA74
 sub_0807DA84: @ 0x0807DA84
 	push {lr}
 	movs r0, #8
-	bl sub_0807A0C8
+	bl CheckFlag
 	bl sub_0807AA5C
 	pop {r0}
 	bx r0
@@ -83714,9 +83714,9 @@ sub_0807DA84: @ 0x0807DA84
 sub_0807DA94: @ 0x0807DA94
 	push {lr}
 	movs r0, #8
-	bl sub_0807A0C8
+	bl CheckFlag
 	movs r0, #7
-	bl sub_0807A0C8
+	bl CheckFlag
 	pop {r0}
 	bx r0
 	.align 2, 0
@@ -83725,11 +83725,11 @@ sub_0807DA94: @ 0x0807DA94
 sub_0807DAA8: @ 0x0807DAA8
 	push {lr}
 	movs r0, #8
-	bl sub_0807A0C8
+	bl CheckFlag
 	movs r0, #9
-	bl sub_0807A0C8
+	bl CheckFlag
 	movs r0, #7
-	bl sub_0807A0C8
+	bl CheckFlag
 	bl sub_0807AA5C
 	pop {r0}
 	bx r0
@@ -83738,7 +83738,7 @@ sub_0807DAA8: @ 0x0807DAA8
 sub_0807DAC4: @ 0x0807DAC4
 	push {lr}
 	movs r0, #8
-	bl sub_0807A0C8
+	bl CheckFlag
 	bl sub_0807AA5C
 	pop {r0}
 	bx r0
@@ -83747,13 +83747,13 @@ sub_0807DAC4: @ 0x0807DAC4
 sub_0807DAD4: @ 0x0807DAD4
 	push {lr}
 	movs r0, #9
-	bl sub_0807A0C8
+	bl CheckFlag
 	movs r0, #0xa
-	bl sub_0807A0C8
+	bl CheckFlag
 	movs r0, #7
-	bl sub_0807A0C8
+	bl CheckFlag
 	movs r0, #8
-	bl sub_0807A0C8
+	bl CheckFlag
 	pop {r0}
 	bx r0
 	.align 2, 0
@@ -83762,7 +83762,7 @@ sub_0807DAD4: @ 0x0807DAD4
 sub_0807DAF4: @ 0x0807DAF4
 	push {lr}
 	movs r0, #8
-	bl sub_0807A0C8
+	bl CheckFlag
 	lsls r0, r0, #0x18
 	cmp r0, #0
 	beq _0807DB06
@@ -83788,12 +83788,12 @@ _0807DB1C: .4byte gBmMapTerrain
 sub_0807DB20: @ 0x0807DB20
 	push {lr}
 	movs r0, #6
-	bl sub_0807A0C8
+	bl CheckFlag
 	movs r0, #7
-	bl sub_0807A0C8
+	bl CheckFlag
 	bl sub_0807AA5C
 	movs r0, #2
-	bl sub_0807A0C8
+	bl CheckFlag
 	pop {r0}
 	bx r0
 
@@ -83802,12 +83802,12 @@ sub_0807DB3C: @ 0x0807DB3C
 	push {r4, r5, lr}
 	movs r5, #0
 	movs r0, #0x85
-	bl sub_0807A0C8
+	bl CheckFlag
 	lsls r0, r0, #0x18
 	cmp r0, #0
 	beq _0807DB5E
 	movs r0, #0x84
-	bl sub_0807A0C8
+	bl CheckFlag
 	lsls r0, r0, #0x18
 	movs r5, #0x74
 	cmp r0, #0
@@ -83816,7 +83816,7 @@ sub_0807DB3C: @ 0x0807DB3C
 	b _0807DB70
 _0807DB5E:
 	movs r0, #0x84
-	bl sub_0807A0C8
+	bl CheckFlag
 	lsls r0, r0, #0x18
 	cmp r0, #0
 	beq _0807DB6C
@@ -83865,9 +83865,9 @@ _0807DBAE:
 sub_0807DBB0: @ 0x0807DBB0
 	push {lr}
 	movs r0, #0xb
-	bl sub_0807A0C8
+	bl CheckFlag
 	movs r0, #0xc
-	bl sub_0807A0C8
+	bl CheckFlag
 	bl sub_0807AA5C
 	pop {r0}
 	bx r0
@@ -83965,20 +83965,20 @@ _0807DC96:
 sub_0807DC9C: @ 0x0807DC9C
 	push {lr}
 	movs r0, #0xa
-	bl sub_0807A0C8
+	bl CheckFlag
 	movs r0, #0xb
-	bl sub_0807A0C8
+	bl CheckFlag
 	movs r0, #0xc
-	bl sub_0807A0C8
+	bl CheckFlag
 	movs r0, #0xd
-	bl sub_0807A0C8
+	bl CheckFlag
 	bl sub_0807AA5C
 	movs r0, #0xe
-	bl sub_0807A0C8
+	bl CheckFlag
 	movs r0, #0xf
-	bl sub_0807A0C8
+	bl CheckFlag
 	movs r0, #0x10
-	bl sub_0807A0C8
+	bl CheckFlag
 	pop {r0}
 	bx r0
 
@@ -83986,21 +83986,21 @@ sub_0807DC9C: @ 0x0807DC9C
 sub_0807DCD0: @ 0x0807DCD0
 	push {r4, lr}
 	movs r0, #0xe
-	bl sub_0807A0C8
+	bl CheckFlag
 	lsls r0, r0, #0x18
 	asrs r0, r0, #0x18
 	rsbs r1, r0, #0
 	orrs r1, r0
 	lsrs r4, r1, #0x1f
 	movs r0, #0xf
-	bl sub_0807A0C8
+	bl CheckFlag
 	lsls r0, r0, #0x18
 	cmp r0, #0
 	beq _0807DCF0
 	adds r4, #1
 _0807DCF0:
 	movs r0, #0x10
-	bl sub_0807A0C8
+	bl CheckFlag
 	lsls r0, r0, #0x18
 	cmp r0, #0
 	beq _0807DD02
@@ -84090,15 +84090,15 @@ _0807DD7E:
 sub_0807DD84: @ 0x0807DD84
 	push {lr}
 	movs r0, #8
-	bl sub_0807A0C8
+	bl CheckFlag
 	movs r0, #9
-	bl sub_0807A0C8
+	bl CheckFlag
 	movs r0, #0xa
-	bl sub_0807A0C8
+	bl CheckFlag
 	movs r0, #0xb
-	bl sub_0807A0C8
+	bl CheckFlag
 	movs r0, #0xc
-	bl sub_0807A0C8
+	bl CheckFlag
 	bl sub_0807AA5C
 	pop {r0}
 	bx r0
@@ -84108,7 +84108,7 @@ sub_0807DDAC: @ 0x0807DDAC
 	push {lr}
 	bl sub_0807AA5C
 	movs r0, #2
-	bl sub_0807A0C8
+	bl CheckFlag
 	pop {r0}
 	bx r0
 
@@ -84117,7 +84117,7 @@ sub_0807DDBC: @ 0x0807DDBC
 	push {lr}
 	bl sub_0807AA5C
 	movs r0, #7
-	bl sub_0807A0C8
+	bl CheckFlag
 	pop {r0}
 	bx r0
 
@@ -84125,7 +84125,7 @@ sub_0807DDBC: @ 0x0807DDBC
 sub_0807DDCC: @ 0x0807DDCC
 	push {lr}
 	movs r0, #8
-	bl sub_0807A0C8
+	bl CheckFlag
 	bl sub_0807AA5C
 	pop {r0}
 	bx r0
@@ -84143,7 +84143,7 @@ sub_0807DDDC: @ 0x0807DDDC
 	cmp r0, #6
 	ble _0807DE02
 	movs r0, #0xa
-	bl sub_0807A0C8
+	bl CheckFlag
 	lsls r0, r0, #0x18
 	cmp r0, #0
 	beq _0807DE02
@@ -84164,18 +84164,18 @@ nullsub_69: @ 0x0807DE08
 sub_0807DE0C: @ 0x0807DE0C
 	push {lr}
 	movs r0, #0xb
-	bl sub_0807A0C8
+	bl CheckFlag
 	movs r0, #0xc
-	bl sub_0807A0C8
+	bl CheckFlag
 	movs r0, #0xd
-	bl sub_0807A0C8
+	bl CheckFlag
 	movs r0, #0xe
-	bl sub_0807A0C8
+	bl CheckFlag
 	movs r0, #0xf
-	bl sub_0807A0C8
+	bl CheckFlag
 	bl sub_0807AA5C
 	movs r0, #7
-	bl sub_0807A0C8
+	bl CheckFlag
 	pop {r0}
 	bx r0
 	.align 2, 0
@@ -84222,13 +84222,13 @@ sub_0807DE6C: @ 0x0807DE6C
 sub_0807DE80: @ 0x0807DE80
 	push {lr}
 	movs r0, #9
-	bl sub_0807A0C8
+	bl CheckFlag
 	movs r0, #0xa
-	bl sub_0807A0C8
+	bl CheckFlag
 	movs r0, #0xb
-	bl sub_0807A0C8
+	bl CheckFlag
 	movs r0, #0xc
-	bl sub_0807A0C8
+	bl CheckFlag
 	bl sub_0807AA5C
 	pop {r0}
 	bx r0
@@ -84238,12 +84238,12 @@ sub_0807DE80: @ 0x0807DE80
 sub_0807DEA4: @ 0x0807DEA4
 	push {lr}
 	movs r0, #0xa
-	bl sub_0807A0C8
+	bl CheckFlag
 	movs r0, #0xb
-	bl sub_0807A0C8
+	bl CheckFlag
 	bl sub_0807AA5C
 	movs r0, #2
-	bl sub_0807A0C8
+	bl CheckFlag
 	pop {r0}
 	bx r0
 
@@ -84285,7 +84285,7 @@ sub_0807DEFC: @ 0x0807DEFC
 	push {lr}
 	bl sub_0807AA5C
 	movs r0, #2
-	bl sub_0807A0C8
+	bl CheckFlag
 	pop {r0}
 	bx r0
 
@@ -84446,13 +84446,13 @@ _0807E014:
 sub_0807E018: @ 0x0807E018
 	push {lr}
 	movs r0, #0xb
-	bl sub_0807A0C8
+	bl CheckFlag
 	movs r0, #0xc
-	bl sub_0807A0C8
+	bl CheckFlag
 	movs r0, #0xd
-	bl sub_0807A0C8
+	bl CheckFlag
 	movs r0, #2
-	bl sub_0807A0C8
+	bl CheckFlag
 	pop {r0}
 	bx r0
 	.align 2, 0
@@ -84461,11 +84461,11 @@ sub_0807E018: @ 0x0807E018
 sub_0807E038: @ 0x0807E038
 	push {lr}
 	movs r0, #8
-	bl sub_0807A0C8
+	bl CheckFlag
 	movs r0, #9
-	bl sub_0807A0C8
+	bl CheckFlag
 	movs r0, #7
-	bl sub_0807A0C8
+	bl CheckFlag
 	pop {r0}
 	bx r0
 
@@ -84473,13 +84473,13 @@ sub_0807E038: @ 0x0807E038
 sub_0807E050: @ 0x0807E050
 	push {lr}
 	movs r0, #8
-	bl sub_0807A0C8
+	bl CheckFlag
 	movs r0, #9
-	bl sub_0807A0C8
+	bl CheckFlag
 	movs r0, #0xa
-	bl sub_0807A0C8
+	bl CheckFlag
 	movs r0, #7
-	bl sub_0807A0C8
+	bl CheckFlag
 	bl sub_0807AA5C
 	pop {r0}
 	bx r0
@@ -84515,12 +84515,12 @@ _0807E09C: .4byte 0x00004E20
 sub_0807E0A0: @ 0x0807E0A0
 	push {lr}
 	movs r0, #7
-	bl sub_0807A0C8
+	bl CheckFlag
 	lsls r0, r0, #0x18
 	cmp r0, #0
 	beq _0807E0BE
 	movs r0, #0xd
-	bl sub_0807A0C8
+	bl CheckFlag
 	lsls r0, r0, #0x18
 	cmp r0, #0
 	bne _0807E0BE
@@ -84536,7 +84536,7 @@ _0807E0C0:
 sub_0807E0C4: @ 0x0807E0C4
 	push {lr}
 	movs r0, #0xe
-	bl sub_0807A0C8
+	bl CheckFlag
 	bl sub_0807AA5C
 	pop {r0}
 	bx r0
@@ -84635,7 +84635,7 @@ _0807E172:
 sub_0807E178: @ 0x0807E178
 	push {lr}
 	movs r0, #8
-	bl sub_0807A0C8
+	bl CheckFlag
 	bl sub_0807AA5C
 	pop {r0}
 	bx r0
@@ -84644,21 +84644,21 @@ sub_0807E178: @ 0x0807E178
 sub_0807E188: @ 0x0807E188
 	push {r4, lr}
 	movs r0, #9
-	bl sub_0807A0C8
+	bl CheckFlag
 	lsls r0, r0, #0x18
 	asrs r0, r0, #0x18
 	rsbs r1, r0, #0
 	orrs r1, r0
 	lsrs r4, r1, #0x1f
 	movs r0, #0xa
-	bl sub_0807A0C8
+	bl CheckFlag
 	lsls r0, r0, #0x18
 	cmp r0, #0
 	beq _0807E1A8
 	adds r4, #1
 _0807E1A8:
 	movs r0, #0xb
-	bl sub_0807A0C8
+	bl CheckFlag
 	lsls r0, r0, #0x18
 	cmp r0, #0
 	beq _0807E1B6
@@ -84677,14 +84677,14 @@ _0807E1BE:
 sub_0807E1C4: @ 0x0807E1C4
 	push {lr}
 	movs r0, #0xc
-	bl sub_0807A0C8
+	bl CheckFlag
 	movs r0, #0xd
-	bl sub_0807A0C8
+	bl CheckFlag
 	movs r0, #0xe
-	bl sub_0807A0C8
+	bl CheckFlag
 	bl sub_0807AA5C
 	movs r0, #7
-	bl sub_0807A0C8
+	bl CheckFlag
 	pop {r0}
 	bx r0
 	.align 2, 0
@@ -84693,63 +84693,63 @@ sub_0807E1C4: @ 0x0807E1C4
 sub_0807E1E8: @ 0x0807E1E8
 	push {r4, lr}
 	movs r0, #9
-	bl sub_0807A0C8
+	bl CheckFlag
 	lsls r0, r0, #0x18
 	asrs r0, r0, #0x18
 	rsbs r1, r0, #0
 	orrs r1, r0
 	lsrs r4, r1, #0x1f
 	movs r0, #0xa
-	bl sub_0807A0C8
+	bl CheckFlag
 	lsls r0, r0, #0x18
 	cmp r0, #0
 	beq _0807E208
 	adds r4, #1
 _0807E208:
 	movs r0, #0xb
-	bl sub_0807A0C8
+	bl CheckFlag
 	lsls r0, r0, #0x18
 	cmp r0, #0
 	beq _0807E216
 	adds r4, #1
 _0807E216:
 	movs r0, #0xc
-	bl sub_0807A0C8
+	bl CheckFlag
 	lsls r0, r0, #0x18
 	cmp r0, #0
 	beq _0807E224
 	adds r4, #1
 _0807E224:
 	movs r0, #0xd
-	bl sub_0807A0C8
+	bl CheckFlag
 	lsls r0, r0, #0x18
 	cmp r0, #0
 	beq _0807E232
 	adds r4, #1
 _0807E232:
 	movs r0, #0xe
-	bl sub_0807A0C8
+	bl CheckFlag
 	lsls r0, r0, #0x18
 	cmp r0, #0
 	beq _0807E240
 	adds r4, #1
 _0807E240:
 	movs r0, #0xf
-	bl sub_0807A0C8
+	bl CheckFlag
 	lsls r0, r0, #0x18
 	cmp r0, #0
 	beq _0807E24E
 	adds r4, #1
 _0807E24E:
 	movs r0, #0x10
-	bl sub_0807A0C8
+	bl CheckFlag
 	lsls r0, r0, #0x18
 	cmp r0, #0
 	beq _0807E25C
 	adds r4, #1
 _0807E25C:
 	movs r0, #0x11
-	bl sub_0807A0C8
+	bl CheckFlag
 	lsls r0, r0, #0x18
 	cmp r0, #0
 	beq _0807E26A
@@ -84771,15 +84771,15 @@ _0807E274:
 sub_0807E27C: @ 0x0807E27C
 	push {lr}
 	movs r0, #0x12
-	bl sub_0807A0C8
+	bl CheckFlag
 	movs r0, #0x13
-	bl sub_0807A0C8
+	bl CheckFlag
 	movs r0, #0x14
-	bl sub_0807A0C8
+	bl CheckFlag
 	movs r0, #0x15
-	bl sub_0807A0C8
+	bl CheckFlag
 	movs r0, #7
-	bl sub_0807A0C8
+	bl CheckFlag
 	pop {r0}
 	bx r0
 
@@ -84787,17 +84787,17 @@ sub_0807E27C: @ 0x0807E27C
 sub_0807E2A0: @ 0x0807E2A0
 	push {lr}
 	movs r0, #0xd
-	bl sub_0807A0C8
+	bl CheckFlag
 	movs r0, #0xe
-	bl sub_0807A0C8
+	bl CheckFlag
 	movs r0, #0xf
-	bl sub_0807A0C8
+	bl CheckFlag
 	movs r0, #0x10
-	bl sub_0807A0C8
+	bl CheckFlag
 	movs r0, #7
-	bl sub_0807A0C8
+	bl CheckFlag
 	movs r0, #8
-	bl sub_0807A0C8
+	bl CheckFlag
 	pop {r0}
 	bx r0
 	.align 2, 0
@@ -84806,13 +84806,13 @@ sub_0807E2A0: @ 0x0807E2A0
 sub_0807E2CC: @ 0x0807E2CC
 	push {lr}
 	movs r0, #0xa
-	bl sub_0807A0C8
+	bl CheckFlag
 	movs r0, #0xb
-	bl sub_0807A0C8
+	bl CheckFlag
 	movs r0, #0xc
-	bl sub_0807A0C8
+	bl CheckFlag
 	movs r0, #0xd
-	bl sub_0807A0C8
+	bl CheckFlag
 	bl sub_0807AA5C
 	pop {r0}
 	bx r0
@@ -85108,7 +85108,7 @@ _0807E50C:
 sub_0807E514: @ 0x0807E514
 	push {lr}
 	movs r0, #0x70
-	bl sub_0807A0C8
+	bl CheckFlag
 	lsls r0, r0, #0x18
 	cmp r0, #0
 	beq _0807E530
@@ -85157,7 +85157,7 @@ _0807E56E:
 sub_0807E574: @ 0x0807E574
 	push {lr}
 	movs r0, #0xa
-	bl sub_0807A0C8
+	bl CheckFlag
 	bl sub_0807AA5C
 	pop {r0}
 	bx r0
@@ -85388,11 +85388,11 @@ _0807E730:
 sub_0807E734: @ 0x0807E734
 	push {lr}
 	movs r0, #8
-	bl sub_0807A0C8
+	bl CheckFlag
 	movs r0, #9
-	bl sub_0807A0C8
+	bl CheckFlag
 	movs r0, #0xa
-	bl sub_0807A0C8
+	bl CheckFlag
 	bl sub_0807AA5C
 	pop {r0}
 	bx r0
@@ -85401,14 +85401,14 @@ sub_0807E734: @ 0x0807E734
 sub_0807E750: @ 0x0807E750
 	push {lr}
 	movs r0, #8
-	bl sub_0807A0C8
+	bl CheckFlag
 	movs r0, #9
-	bl sub_0807A0C8
+	bl CheckFlag
 	movs r0, #0xa
-	bl sub_0807A0C8
+	bl CheckFlag
 	bl sub_0807AA5C
 	movs r0, #2
-	bl sub_0807A0C8
+	bl CheckFlag
 	pop {r0}
 	bx r0
 	.align 2, 0
@@ -85661,11 +85661,11 @@ _0807E92E:
 sub_0807E934: @ 0x0807E934
 	push {lr}
 	movs r0, #8
-	bl sub_0807A0C8
+	bl CheckFlag
 	movs r0, #9
-	bl sub_0807A0C8
+	bl CheckFlag
 	movs r0, #0xa
-	bl sub_0807A0C8
+	bl CheckFlag
 	bl sub_0807AA5C
 	pop {r0}
 	bx r0
@@ -85981,7 +85981,7 @@ sub_0807EB9C: @ 0x0807EB9C
 	cmp r0, #0
 	beq _0807EBC4
 	movs r0, #7
-	bl sub_0807A0C8
+	bl CheckFlag
 	lsls r0, r0, #0x18
 	cmp r0, #0
 	beq _0807EBC4
@@ -87942,7 +87942,7 @@ sub_0807FAFC: @ 0x0807FAFC
 	bl GetUnitFromCharId
 	adds r4, r0, #0
 	movs r0, #0x91
-	bl sub_0807A0B4
+	bl SetFlag
 	adds r0, r4, #0
 	movs r1, #1
 	bl SetUnitHp
@@ -88089,7 +88089,7 @@ _0807FC02:
 sub_0807FC04: @ 0x0807FC04
 	push {lr}
 	movs r0, #0x9d
-	bl sub_0807A0C8
+	bl CheckFlag
 	lsls r0, r0, #0x18
 	asrs r0, r0, #0x18
 	pop {r1}
@@ -88099,7 +88099,7 @@ sub_0807FC04: @ 0x0807FC04
 sub_0807FC14: @ 0x0807FC14
 	push {lr}
 	movs r0, #0x9d
-	bl sub_0807A0B4
+	bl SetFlag
 	pop {r0}
 	bx r0
 
@@ -88309,12 +88309,12 @@ sub_0807FD58: @ 0x0807FD58
 	cmp r4, r0
 	ble _0807FD84
 	movs r0, #0x85
-	bl sub_0807A0B4
+	bl SetFlag
 	ldr r0, _0807FD80 @ =0x000080E7
 	cmp r4, r0
 	ble _0807FD90
 	movs r0, #0x84
-	bl sub_0807A0B4
+	bl SetFlag
 	b _0807FD90
 	.align 2, 0
 _0807FD7C: .4byte 0x0000752F
@@ -88324,7 +88324,7 @@ _0807FD84:
 	cmp r4, r0
 	ble _0807FD90
 	movs r0, #0x84
-	bl sub_0807A0B4
+	bl SetFlag
 _0807FD90:
 	pop {r4}
 	pop {r0}
@@ -88385,7 +88385,7 @@ _0807FDFA:
 	ldr r0, [r5, #4]
 	cmp r0, #0
 	beq _0807FE12
-	bl sub_0807A0E0
+	bl ClearFlag
 _0807FE12:
 	ldr r0, [r4, #0xc]
 	movs r1, #4
@@ -89206,12 +89206,12 @@ sub_08080480: @ 0x08080480
 	push {r4, lr}
 	adds r4, r0, #0
 	movs r0, #0x98
-	bl sub_0807A0C8
+	bl CheckFlag
 	lsls r0, r0, #0x18
 	cmp r0, #0
 	bne _0808049C
 	movs r0, #0x98
-	bl sub_0807A0B4
+	bl SetFlag
 	adds r0, r4, #0
 	bl sub_080A5AF8
 _0808049C:
@@ -119995,7 +119995,7 @@ _0808F9A8:
 	cmp r0, #0x44
 	bne _0808F9D8
 	movs r0, #0x90
-	bl sub_0807A0E0
+	bl ClearFlag
 	movs r0, #1
 	b _0808F9DA
 	.align 2, 0
@@ -120041,7 +120041,7 @@ _0808FA0E:
 	b _0808FA66
 _0808FA1C:
 	movs r0, #0x6a
-	bl sub_0807A0C8
+	bl CheckFlag
 	lsls r0, r0, #0x18
 	cmp r0, #0
 	beq _0808FA42
@@ -120070,7 +120070,7 @@ _0808FA42:
 	b _0808FA66
 _0808FA54:
 	movs r0, #0x6a
-	bl sub_0807A0C8
+	bl CheckFlag
 	lsls r0, r0, #0x18
 	cmp r0, #0
 	beq _0808FA64
@@ -143065,11 +143065,11 @@ _0809B4C4:
 	cmp r6, #0x4b
 	bne _0809B4D0
 	movs r0, #0x99
-	bl sub_0807A0B4
+	bl SetFlag
 	b _0809B4F4
 _0809B4D0:
 	movs r0, #0x99
-	bl sub_0807A0C8
+	bl CheckFlag
 	lsls r0, r0, #0x18
 	cmp r0, #0
 	beq _0809B4F4
@@ -143079,7 +143079,7 @@ _0809B4D0:
 	bgt _0809B4F4
 	movs r6, #0x4b
 	movs r0, #0x99
-	bl sub_0807A0E0
+	bl ClearFlag
 	adds r0, r5, #0
 	movs r1, #4
 	bl Proc_Goto

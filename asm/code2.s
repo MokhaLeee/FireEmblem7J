@@ -42546,7 +42546,7 @@ sub_080B8C5C: @ 0x080B8C5C
 	cmp r7, #4
 	bne _080B8C80
 	movs r0, #0x7d
-	bl sub_0807A028
+	bl CheckChapterFlag
 	lsls r0, r0, #0x18
 	movs r5, #0xf
 	cmp r0, #0
@@ -44281,7 +44281,7 @@ sub_080B9A4C: @ 0x080B9A4C
 	str r0, [r4, #0x58]
 	bl InitBgs
 	movs r0, #0x86
-	bl sub_0807A0C8
+	bl CheckFlag
 	lsls r0, r0, #0x18
 	cmp r0, #0
 	beq _080B9A94
