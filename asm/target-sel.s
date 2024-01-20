@@ -980,7 +980,7 @@ sub_08024554: @ 0x08024554
 _08024578:
 	ldr r0, [r7]
 	adds r1, r5, #0
-	bl sub_08026AD8
+	bl GetUnitSupportUnit
 	adds r4, r0, #0
 	cmp r4, #0
 	beq _080245EC

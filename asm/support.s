@@ -1,127 +1,10 @@
 	.include "macro.inc"
 	.syntax unified
 
-	thumb_func_start GetUnitSupporterCount
-GetUnitSupporterCount: @ 0x08026AB4
-	ldr r0, [r0]
-	ldr r0, [r0, #0x2c]
-	cmp r0, #0
-	beq _08026AC0
-	ldrb r0, [r0, #0x15]
-	b _08026AC2
-_08026AC0:
-	movs r0, #0
-_08026AC2:
-	bx lr
 
-	thumb_func_start sub_08026AC4
-sub_08026AC4: @ 0x08026AC4
-	ldr r0, [r0]
-	ldr r0, [r0, #0x2c]
-	cmp r0, #0
-	beq _08026AD2
-	adds r0, r0, r1
-	ldrb r0, [r0]
-	b _08026AD4
-_08026AD2:
-	movs r0, #0
-_08026AD4:
-	bx lr
-	.align 2, 0
 
-	thumb_func_start sub_08026AD8
-sub_08026AD8: @ 0x08026AD8
-	push {r4, r5, r6, r7, lr}
-	adds r4, r0, #0
-	bl sub_08026AC4
-	lsls r0, r0, #0x18
-	lsrs r7, r0, #0x18
-	movs r0, #0xc0
-	ldrb r4, [r4, #0xb]
-	ands r0, r4
-	adds r5, r0, #1
-	adds r6, r0, #0
-	adds r6, #0x40
-	cmp r5, r6
-	bge _08026B16
-_08026AF4:
-	adds r0, r5, #0
-	bl GetUnit
-	adds r4, r0, #0
-	cmp r4, #0
-	beq _08026B10
-	ldr r0, [r4]
-	cmp r0, #0
-	beq _08026B10
-	ldrb r0, [r0, #4]
-	cmp r0, r7
-	bne _08026B10
-	adds r0, r4, #0
-	b _08026B18
-_08026B10:
-	adds r5, #1
-	cmp r5, r6
-	blt _08026AF4
-_08026B16:
-	movs r0, #0
-_08026B18:
-	pop {r4, r5, r6, r7}
-	pop {r1}
-	bx r1
-	.align 2, 0
-
-	thumb_func_start sub_08026B20
-sub_08026B20: @ 0x08026B20
-	adds r0, #0x32
-	adds r0, r0, r1
-	ldrb r0, [r0]
-	cmp r0, #0xf0
-	ble _08026B2E
-	movs r0, #3
-	b _08026B40
-_08026B2E:
-	cmp r0, #0xa0
-	ble _08026B36
-	movs r0, #2
-	b _08026B40
-_08026B36:
-	cmp r0, #0x50
-	bgt _08026B3E
-	movs r0, #0
-	b _08026B40
-_08026B3E:
-	movs r0, #1
-_08026B40:
-	bx lr
-	.align 2, 0
-
-	thumb_func_start sub_08026B44
-sub_08026B44: @ 0x08026B44
-	push {r4, r5, r6, r7, lr}
-	adds r7, r0, #0
-	bl GetUnitSupporterCount
-	adds r5, r0, #0
-	movs r4, #0
-	movs r6, #0
-	cmp r6, r5
-	bge _08026B66
-_08026B56:
-	adds r0, r7, #0
-	adds r1, r4, #0
-	bl sub_08026B20
-	adds r6, r6, r0
-	adds r4, #1
-	cmp r4, r5
-	blt _08026B56
-_08026B66:
-	adds r0, r6, #0
-	pop {r4, r5, r6, r7}
-	pop {r1}
-	bx r1
-	.align 2, 0
-
-	thumb_func_start sub_08026B70
-sub_08026B70: @ 0x08026B70
+	thumb_func_start UnitGainSupportExp
+UnitGainSupportExp: @ 0x08026B70
 	push {r4, r5, r6, r7, lr}
 	mov r7, r8
 	push {r7}
@@ -131,7 +14,7 @@ sub_08026B70: @ 0x08026B70
 	ldrb r3, [r0, #0x1b]
 	cmp r3, #1
 	beq _08026BBC
-	ldr r0, [r2]
+	ldr r0, [r2] 
 	ldr r0, [r0, #0x2c]
 	cmp r0, #0
 	beq _08026BBC
@@ -144,7 +27,7 @@ sub_08026B70: @ 0x08026B70
 	ldrb r5, [r7]
 	ldr r4, _08026BCC @ =0x08C03440
 	adds r0, r2, #0
-	bl sub_08026B20
+	bl GetUnitSupportLevel
 	lsls r0, r0, #2
 	adds r0, r0, r4
 	ldr r1, [r0]
@@ -185,7 +68,7 @@ sub_08026BD0: @ 0x08026BD0
 	strh r2, [r3, #0x16]
 	ldr r2, [r0]
 	ldrb r4, [r2, #4]
-	bl sub_08026AC4
+	bl GetUnitSupportPid
 	adds r1, r0, #0
 	lsls r1, r1, #0x18
 	lsrs r1, r1, #0x18
@@ -219,13 +102,13 @@ sub_08026C04: @ 0x08026C04
 	cmp r0, #0
 	bne _08026C62
 	adds r0, r5, #0
-	bl sub_08026B44
+	bl GetUnitTotalSupportLevel
 	cmp r0, #4
 	bgt _08026C62
 	adds r0, r5, #0
 	adds r1, r6, #0
-	bl sub_08026AD8
-	bl sub_08026B44
+	bl GetUnitSupportUnit
+	bl GetUnitTotalSupportLevel
 	cmp r0, #4
 	bgt _08026C62
 	adds r0, r5, #0
@@ -235,7 +118,7 @@ sub_08026C04: @ 0x08026C04
 	ldr r4, _08026C6C @ =0x08C03440
 	adds r0, r5, #0
 	adds r1, r6, #0
-	bl sub_08026B20
+	bl GetUnitSupportLevel
 	lsls r0, r0, #2
 	adds r0, r0, r4
 	ldr r0, [r0]
@@ -290,7 +173,7 @@ sub_08026C98: @ 0x08026C98
 _08026CAC:
 	adds r0, r6, #0
 	adds r1, r4, #0
-	bl sub_08026AC4
+	bl GetUnitSupportPid
 	lsls r0, r0, #0x18
 	lsrs r0, r0, #0x18
 	cmp r0, r7
@@ -324,7 +207,7 @@ ClearUnitSupports: @ 0x08026CD0
 _08026CE6:
 	adds r0, r5, #0
 	adds r1, r6, #0
-	bl sub_08026AD8
+	bl GetUnitSupportUnit
 	adds r4, r0, #0
 	cmp r4, #0
 	beq _08026D12
@@ -387,7 +270,7 @@ _08026D40:
 	cmp r0, #0
 	bne _08026E0A
 	adds r0, r5, #0
-	bl sub_08026B44
+	bl GetUnitTotalSupportLevel
 	cmp r0, #4
 	bgt _08026E0A
 	adds r0, r5, #0
@@ -399,7 +282,7 @@ _08026D40:
 _08026D78:
 	adds r0, r5, #0
 	adds r1, r7, #0
-	bl sub_08026AD8
+	bl GetUnitSupportUnit
 	adds r4, r0, #0
 	cmp r4, #0
 	beq _08026E04
@@ -462,12 +345,12 @@ _08026DE2:
 	bne _08026E04
 _08026DF2:
 	adds r0, r4, #0
-	bl sub_08026B44
+	bl GetUnitTotalSupportLevel
 	cmp r0, #4
 	bgt _08026E04
 	adds r0, r5, #0
 	adds r1, r7, #0
-	bl sub_08026B70
+	bl UnitGainSupportExp
 _08026E04:
 	adds r7, #1
 	cmp r7, r8
@@ -592,7 +475,7 @@ _08026ED2:
 	mov sb, r1
 	adds r0, r7, #0
 	mov r1, r8
-	bl sub_08026AD8
+	bl GetUnitSupportUnit
 	adds r5, r0, #0
 	cmp r5, #0
 	beq _08026F68
@@ -635,7 +518,7 @@ _08026F18:
 	bl sub_08026C98
 	adds r1, r0, #0
 	adds r0, r5, #0
-	bl sub_08026B20
+	bl GetUnitSupportLevel
 	adds r4, r0, #0
 	ldr r0, [r5]
 	ldrb r1, [r0, #9]
@@ -644,7 +527,7 @@ _08026F18:
 	bl sub_08026E3C
 	adds r0, r7, #0
 	mov r1, r8
-	bl sub_08026B20
+	bl GetUnitSupportLevel
 	adds r5, r0, #0
 	ldr r0, [r7]
 	ldrb r1, [r0, #9]
@@ -836,7 +719,7 @@ sub_08027090: @ 0x08027090
 	bl sub_08026C98
 	adds r1, r0, #0
 	adds r0, r5, #0
-	bl sub_08026B20
+	bl GetUnitSupportLevel
 	cmp r0, #2
 	bgt _080270B8
 	movs r0, #0
