@@ -1,79 +1,6 @@
 	.include "macro.inc"
 	.syntax unified
 
-	thumb_func_start sub_08065510
-sub_08065510: @ 0x08065510
-	push {r4, r5, lr}
-	adds r5, r0, #0
-	ldr r0, _08065534 @ =Pal_EkrDragon_082EB510
-	ldr r4, _08065538 @ =0x020228E0
-	adds r1, r4, #0
-	movs r2, #8
-	bl CpuFastSet
-	subs r4, #0x80
-	adds r0, r4, #0
-	movs r1, #4
-	movs r2, #1
-	adds r3, r5, #0
-	bl EfxPalBlackInOut
-	pop {r4, r5}
-	pop {r0}
-	bx r0
-	.align 2, 0
-_08065534: .4byte Pal_EkrDragon_082EB510
-_08065538: .4byte 0x020228E0
-
-	thumb_func_start EkrDragon_0806553C
-EkrDragon_0806553C: @ 0x0806553C
-	push {r4, lr}
-	adds r4, r0, #0
-	ldr r0, [r4, #0x5c]
-	movs r1, #0x8a
-	bl sub_08053AA8
-	ldr r0, [r4, #0x5c]
-	bl sub_08065D38
-	ldr r1, _08065560 @ =0x0203DFFC
-	movs r0, #0x13
-	strh r0, [r1]
-	adds r0, r4, #0
-	bl Proc_Break
-	pop {r4}
-	pop {r0}
-	bx r0
-	.align 2, 0
-_08065560: .4byte 0x0203DFFC
-
-	thumb_func_start EkrDragon_08065564
-EkrDragon_08065564: @ 0x08065564
-	push {r4, lr}
-	sub sp, #4
-	adds r4, r0, #0
-	movs r0, #0x2c
-	ldrsh r3, [r4, r0]
-	movs r0, #8
-	str r0, [sp]
-	movs r0, #1
-	movs r1, #4
-	movs r2, #0x10
-	bl Interpolate
-	bl EfxChapterMapFadeOUT
-	ldrh r0, [r4, #0x2c]
-	adds r0, #1
-	strh r0, [r4, #0x2c]
-	lsls r0, r0, #0x10
-	asrs r0, r0, #0x10
-	cmp r0, #9
-	bne _08065598
-	movs r0, #0
-	strh r0, [r4, #0x2c]
-	adds r0, r4, #0
-	bl Proc_Break
-_08065598:
-	add sp, #4
-	pop {r4}
-	pop {r0}
-	bx r0
-
 	thumb_func_start EkrDragon_080655A0
 EkrDragon_080655A0: @ 0x080655A0
 	push {r4, lr}
@@ -2400,7 +2327,7 @@ sub_08066828: @ 0x08066828
 	adds r3, r5, #0
 	bl EfxPalBlackInOut
 	adds r0, r5, #0
-	bl sub_08065510
+	bl EkrDragonUpdatePal_08065510
 	bl EnablePalSync
 	ldrh r0, [r6, #0x2c]
 	adds r0, #1
@@ -2879,7 +2806,7 @@ _08066C14:
 	lsrs r1, r1, #0x10
 	bl sub_0804D5D8
 	movs r0, #0x10
-	bl sub_08065510
+	bl EkrDragonUpdatePal_08065510
 _08066C7A:
 	movs r0, #0xc8
 	lsls r0, r0, #1
@@ -6327,7 +6254,7 @@ _080686EE:
 	adds r0, r6, #0
 	adds r0, #0x4a
 	ldrh r0, [r0]
-	bl sub_08053B98
+	bl IsWeaponLegency
 	lsls r0, r0, #0x10
 	asrs r0, r0, #0x10
 	cmp r0, #1
@@ -6335,7 +6262,7 @@ _080686EE:
 	movs r4, #1
 _08068708:
 	movs r0, #1
-	bl sub_08053BD4
+	bl EkrCheckAttackRound
 	lsls r0, r0, #0x18
 	cmp r0, #0
 	bne _08068716

@@ -2563,14 +2563,14 @@ _080525EC:
 	adds r0, r4, #0
 	ldrb r1, [r5, #0xb]
 	ands r0, r1
-	bl sub_08053A80
+	bl GetAllegienceId
 	lsls r0, r0, #0x10
 	lsrs r7, r0, #0x10
 	ldr r0, _08052628 @ =gBattleTarget
 	ldrb r0, [r0, #0xb]
 	ands r4, r0
 	adds r0, r4, #0
-	bl sub_08053A80
+	bl GetAllegienceId
 	lsls r0, r0, #0x10
 	lsrs r6, r0, #0x10
 	ldr r1, _0805262C @ =gBattleStats
@@ -2947,7 +2947,7 @@ _080528F6:
 	ldr r1, [sp, #8]
 	adds r1, #0x4a
 	ldrh r1, [r1]
-	bl sub_08053A38
+	bl FilterBattleAnimCharacterPalette
 	ldr r1, _08052A24 @ =0x0203E080
 	str r0, [r1]
 _0805290E:
@@ -2960,7 +2960,7 @@ _0805290E:
 	ldr r1, [sp, #0xc]
 	adds r1, #0x4a
 	ldrh r1, [r1]
-	bl sub_08053A38
+	bl FilterBattleAnimCharacterPalette
 	ldr r1, _08052A24 @ =0x0203E080
 	str r0, [r1, #4]
 _08052928:
@@ -3157,7 +3157,7 @@ _08052AAE:
 	ldrh r0, [r0]
 	cmp r0, #4
 	bne _08052ADC
-	ldr r1, _08052AD8 @ =0x0203DFFC
+	ldr r1, _08052AD8 @ =gEkrSpellAnimIndex
 	movs r0, #1
 	strh r0, [r1, #2]
 	strh r0, [r1]
@@ -3168,7 +3168,7 @@ _08052AC8: .4byte 0x0203E0B4
 _08052ACC: .4byte gEkrPairHpInitial
 _08052AD0: .4byte 0x0203E094
 _08052AD4: .4byte gEkrDistanceType
-_08052AD8: .4byte 0x0203DFFC
+_08052AD8: .4byte gEkrSpellAnimIndex
 _08052ADC:
 	cmp r4, #0
 	beq _08052AF4
@@ -3179,7 +3179,7 @@ _08052ADC:
 	adds r1, #0x4a
 	ldrh r1, [r1]
 	bl sub_080532F0
-	ldr r1, _08052DA4 @ =0x0203DFFC
+	ldr r1, _08052DA4 @ =gEkrSpellAnimIndex
 	strh r0, [r1]
 _08052AF4:
 	cmp r5, #0
@@ -3191,7 +3191,7 @@ _08052AF4:
 	adds r1, #0x4a
 	ldrh r1, [r1]
 	bl sub_080532F0
-	ldr r1, _08052DA4 @ =0x0203DFFC
+	ldr r1, _08052DA4 @ =gEkrSpellAnimIndex
 	strh r0, [r1, #2]
 _08052B0C:
 	ldr r1, _08052DA8 @ =gBattleStats
@@ -3212,7 +3212,7 @@ _08052B0C:
 	ldrb r0, [r0, #4]
 	cmp r0, #0x41
 	bne _08052B38
-	ldr r1, _08052DA4 @ =0x0203DFFC
+	ldr r1, _08052DA4 @ =gEkrSpellAnimIndex
 	movs r0, #0xe
 	strh r0, [r1, #2]
 _08052B38:
@@ -3221,14 +3221,14 @@ _08052B38:
 	ldrb r0, [r0, #4]
 	cmp r0, #0x40
 	bne _08052B48
-	ldr r1, _08052DA4 @ =0x0203DFFC
+	ldr r1, _08052DA4 @ =gEkrSpellAnimIndex
 	movs r0, #0xf
 	strh r0, [r1, #2]
 _08052B48:
 	ldr r3, [sp, #0x24]
 	cmp r3, #0
 	beq _08052B5C
-	ldr r0, _08052DA4 @ =0x0203DFFC
+	ldr r0, _08052DA4 @ =gEkrSpellAnimIndex
 	ldr r1, [sp, #8]
 	adds r1, #0x4a
 	ldrh r2, [r1]
@@ -3271,7 +3271,7 @@ _08052B92:
 	mov r4, sl
 	ldrb r4, [r4, #0xb]
 	ands r0, r4
-	bl sub_08053A80
+	bl GetAllegienceId
 	ldr r1, _08052DB8 @ =0x0203DFF8
 	strh r0, [r1]
 _08052BAC:
@@ -3284,7 +3284,7 @@ _08052BAC:
 	ldr r1, [sp, #0x18]
 	ldrb r1, [r1, #0xb]
 	ands r0, r1
-	bl sub_08053A80
+	bl GetAllegienceId
 	ldr r1, _08052DB8 @ =0x0203DFF8
 	strh r0, [r1, #2]
 _08052BC6:
@@ -3547,7 +3547,7 @@ _08052D6E:
 	beq _08052DF4
 	b _08052DF8
 	.align 2, 0
-_08052DA4: .4byte 0x0203DFFC
+_08052DA4: .4byte gEkrSpellAnimIndex
 _08052DA8: .4byte gBattleStats
 _08052DAC: .4byte 0x0203DFFE
 _08052DB0: .4byte gEkrDistanceType
@@ -3719,14 +3719,14 @@ _08052F0E:
 	bne _08052F1A
 	movs r4, #1
 _08052F1A:
-	bl sub_08053C28
+	bl CheckBattleScriptted
 	lsls r0, r0, #0x18
 	asrs r0, r0, #0x18
 	cmp r0, #1
 	bne _08052F28
 	movs r4, #1
 _08052F28:
-	bl sub_08053C1C
+	bl SetBattleUnscriptted
 	ldr r0, _08053018 @ =gEkrDistanceType
 	ldrh r0, [r0]
 	cmp r0, #4
@@ -3784,7 +3784,7 @@ _08052F70:
 	rsbs r2, r2, #0
 	cmp r0, r2
 	beq _08053008
-	ldr r0, _08053024 @ =0x0203DFFC
+	ldr r0, _08053024 @ =gEkrSpellAnimIndex
 	movs r4, #0
 	ldrsh r1, [r0, r4]
 	movs r0, #2
@@ -3821,7 +3821,7 @@ _08052FC0:
 	rsbs r2, r2, #0
 	cmp r0, r2
 	beq _08053008
-	ldr r0, _08053024 @ =0x0203DFFC
+	ldr r0, _08053024 @ =gEkrSpellAnimIndex
 	movs r4, #2
 	ldrsh r1, [r0, r4]
 	movs r0, #2
@@ -3850,7 +3850,7 @@ _08053014: .4byte 0x0203DFE2
 _08053018: .4byte gEkrDistanceType
 _0805301C: .4byte 0x0203DFE8
 _08053020: .4byte 0x0203E066
-_08053024: .4byte 0x0203DFFC
+_08053024: .4byte gEkrSpellAnimIndex
 _08053028: .4byte 0x0203E000
 _0805302C:
 	movs r0, #1
@@ -5107,8 +5107,8 @@ _080539E6:
 	.align 2, 0
 _080539F8: .4byte gEfxHpLut
 
-	thumb_func_start sub_080539FC
-sub_080539FC: @ 0x080539FC
+	thumb_func_start CheckBattleHasHit
+CheckBattleHasHit: @ 0x080539FC
 	ldr r1, _08053A0C @ =gBattleHitArray
 	movs r0, #2
 	ldrb r1, [r1, #2]
@@ -5144,8 +5144,8 @@ sub_08053A14: @ 0x08053A14
 	.align 2, 0
 _08053A34: .4byte 0x030014D8
 
-	thumb_func_start sub_08053A38
-sub_08053A38: @ 0x08053A38
+	thumb_func_start FilterBattleAnimCharacterPalette
+FilterBattleAnimCharacterPalette: @ 0x08053A38
 	push {lr}
 	lsls r1, r1, #0x10
 	lsrs r1, r1, #0x10
@@ -5188,8 +5188,8 @@ _08053A7A:
 	bx r1
 	.align 2, 0
 
-	thumb_func_start sub_08053A80
-sub_08053A80: @ 0x08053A80
+	thumb_func_start GetAllegienceId
+GetAllegienceId: @ 0x08053A80
 	lsls r0, r0, #0x18
 	lsrs r0, r0, #0x18
 	adds r1, r0, #0
@@ -5216,8 +5216,8 @@ _08053AA4:
 _08053AA6:
 	bx lr
 
-	thumb_func_start sub_08053AA8
-sub_08053AA8: @ 0x08053AA8
+	thumb_func_start EkrPrepareBanimfx
+EkrPrepareBanimfx: @ 0x08053AA8
 	push {r4, r5, lr}
 	adds r5, r0, #0
 	lsls r4, r1, #0x10
@@ -5299,8 +5299,8 @@ GetEfxHp: @ 0x08053B28
 _08053B38: .4byte gEfxHpLut
 _08053B3C: .4byte 0x00000FFF
 
-	thumb_func_start sub_08053B40
-sub_08053B40: @ 0x08053B40
+	thumb_func_start GetEfxHpModMaybe
+GetEfxHpModMaybe: @ 0x08053B40
 	ldr r1, _08053B54 @ =gEfxHpLut
 	lsls r0, r0, #1
 	adds r0, r0, r1
@@ -5346,8 +5346,8 @@ _08053B92:
 	pop {r1}
 	bx r1
 
-	thumb_func_start sub_08053B98
-sub_08053B98: @ 0x08053B98
+	thumb_func_start IsWeaponLegency
+IsWeaponLegency: @ 0x08053B98
 	push {r4, r5, lr}
 	lsls r0, r0, #0x10
 	lsrs r4, r0, #0x10
@@ -5377,8 +5377,8 @@ _08053BCE:
 	pop {r1}
 	bx r1
 
-	thumb_func_start sub_08053BD4
-sub_08053BD4: @ 0x08053BD4
+	thumb_func_start EkrCheckAttackRound
+EkrCheckAttackRound: @ 0x08053BD4
 	lsls r0, r0, #0x10
 	lsrs r2, r0, #0x10
 	cmp r2, #0x13
@@ -5414,8 +5414,8 @@ _08053C0C:
 _08053C0E:
 	bx lr
 
-	thumb_func_start sub_08053C10
-sub_08053C10: @ 0x08053C10
+	thumb_func_start SetBattleScriptted
+SetBattleScriptted: @ 0x08053C10
 	ldr r1, _08053C18 @ =0x0203E0C4
 	movs r0, #1
 	str r0, [r1]
@@ -5423,8 +5423,8 @@ sub_08053C10: @ 0x08053C10
 	.align 2, 0
 _08053C18: .4byte 0x0203E0C4
 
-	thumb_func_start sub_08053C1C
-sub_08053C1C: @ 0x08053C1C
+	thumb_func_start SetBattleUnscriptted
+SetBattleUnscriptted: @ 0x08053C1C
 	ldr r1, _08053C24 @ =0x0203E0C4
 	movs r0, #0
 	str r0, [r1]
@@ -5432,8 +5432,8 @@ sub_08053C1C: @ 0x08053C1C
 	.align 2, 0
 _08053C24: .4byte 0x0203E0C4
 
-	thumb_func_start sub_08053C28
-sub_08053C28: @ 0x08053C28
+	thumb_func_start CheckBattleScriptted
+CheckBattleScriptted: @ 0x08053C28
 	ldr r0, _08053C34 @ =0x0203E0C4
 	ldr r0, [r0]
 	cmp r0, #0

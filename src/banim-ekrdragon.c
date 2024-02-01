@@ -1,6 +1,7 @@
 #include "global.h"
 #include "hardware.h"
 #include "proc.h"
+#include "util.h"
 #include "anime.h"
 #include "banim.h"
 #include "banim_ekrdragon.h"
@@ -157,8 +158,8 @@ bool CheckEkrDragonEndingDone(struct Anim * anim)
 
 struct ProcCmd CONST_DATA ProcScr_EkrDragon[] = {
     PROC_19,
-    PROC_REPEAT(EkrDragon_0806553C),
-    PROC_REPEAT(EkrDragon_08065564),
+    PROC_REPEAT(EkrDragon_Preparefx),
+    PROC_REPEAT(EkrDragon_CustomBgFadeIn),
     PROC_REPEAT(EkrDragon_080655A0),
     PROC_REPEAT(EkrDragon_08065660),
     PROC_REPEAT(EkrDragon_080656D8),
@@ -235,5 +236,30 @@ void EkrDragonUpdatePal_080654C8(struct Anim * anim)
             CpuFastCopy(Pal_EkrDragon_082E6C60, PAL_BG(0x7), 0x20);
 
         EnablePalSync();
+    }
+}
+
+void EkrDragonUpdatePal_08065510(int ref)
+{
+    CpuFastCopy(Pal_EkrDragon_082EB510, PAL_BG(0x4), 0x20);
+    EfxPalBlackInOut(gPal, 4, 1, ref);
+}
+
+void EkrDragon_Preparefx(struct ProcEkrDragon * proc)
+{
+    EkrPrepareBanimfx(proc->anim, 0x8A);    /* battle anim idx */
+    sub_08065D38(proc->anim);
+    gEkrSpellAnimIndex[POS_L] = 0x13;       /* spell anim idx */
+    Proc_Break(proc);
+}
+
+void EkrDragon_CustomBgFadeIn(struct ProcEkrDragon * proc)
+{
+    EfxChapterMapFadeOUT(Interpolate(INTERPOLATE_SQUARE, 4, 0x10, proc->timer, 8));
+
+    if (++proc->timer == 0x9)
+    {
+        proc->timer = 0;
+        Proc_Break(proc);
     }
 }

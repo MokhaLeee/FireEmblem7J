@@ -72,6 +72,7 @@ extern short gEkrPairHpInitial[2];
 extern short gEfxPairHpBufOffset[];
 extern u16 gEkrTsaBuffer[0x1000 / 2];
 extern u16 gEfxFrameTmap[0x2520 / 2];
+extern s16 gEkrSpellAnimIndex[2];
 
 void NewEkrLvlupFan(void);
 // ??? EkrLvupFanMain
@@ -287,21 +288,21 @@ void BeginAnimsOnBattleAnimations(void);
 // ??? sub_080532F0
 // ??? sub_08053438
 // ??? ParseBattleHitToBanimCmd
-// ??? sub_080539FC
+// ??? CheckBattleHasHit
 // ??? sub_08053A14
-// ??? sub_08053A38
-// ??? sub_08053A80
-// ??? sub_08053AA8
+u16 * FilterBattleAnimCharacterPalette(s16 index, u16 item);
+int GetAllegienceId(u32 arg);
+void EkrPrepareBanimfx(struct Anim * anim, u16 index);
 s16 GetBattleAnimRoundType(int index);
 s16 GetBattleAnimRoundTypeFlags(int);
 s16 GetEfxHp(int index);
-// ??? sub_08053B40
+// ??? GetEfxHpModMaybe
 // ??? IsItemDisplayedInBattle
-// ??? sub_08053B98
-// ??? sub_08053BD4
-// ??? sub_08053C10
-// ??? sub_08053C1C
-// ??? sub_08053C28
+// ??? IsWeaponLegency
+// ??? EkrCheckAttackRound
+// ??? SetBattleScriptted
+// ??? SetBattleUnscriptted
+// ??? CheckBattleScriptted
 void BattleAIS_ExecCommands(void);
 void AnimScrAdvance(struct Anim * anim);
 void NewEkrChienCHR(struct Anim * anim);
@@ -992,30 +993,6 @@ void sub_08064458(struct Anim * anim);
 
 /* banim_ekrdragon.h */
 
-// ??? sub_08065D38
-// ??? sub_08065D5C
-// ??? sub_08065DC4
-// ??? sub_08065DD0
-// ??? sub_08065E38
-// ??? sub_08065EA0
-// ??? sub_08065EAC
-// ??? sub_08065F0C
-// ??? sub_08065F38
-// ??? sub_08065F8C
-// ??? sub_08065F98
-// ??? sub_08065FEC
-// ??? sub_08066030
-// ??? sub_0806603C
-// ??? sub_08066090
-// ??? sub_0806609C
-// ??? sub_080660C8
-// ??? sub_080660F4
-// ??? sub_08066118
-// ??? sub_08066200
-// ??? sub_08066224
-// ??? sub_080662F4
-// ??? nullsub_53
-// ??? nullsub_54
 // ??? sub_08066380
 // ??? sub_08066398
 // ??? sub_080663EC

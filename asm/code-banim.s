@@ -3189,7 +3189,7 @@ _0805606C: .4byte 0x02022920
 StartSpellAnimation: @ 0x08056070
 	push {r4, r5, lr}
 	adds r5, r0, #0
-	ldr r4, _08056098 @ =0x0203DFFC
+	ldr r4, _08056098 @ =gEkrSpellAnimIndex
 	bl GetAnimPosition
 	lsls r0, r0, #1
 	adds r0, r0, r4
@@ -3205,7 +3205,7 @@ StartSpellAnimation: @ 0x08056070
 	pop {r0}
 	bx r0
 	.align 2, 0
-_08056098: .4byte 0x0203DFFC
+_08056098: .4byte gEkrSpellAnimIndex
 _0805609C: .4byte 0x08C1071C
 
 	thumb_func_start nullsub_49
@@ -29901,7 +29901,7 @@ _08063BA2:
 	ldr r0, [r0]
 	adds r0, #0x4a
 	ldrh r0, [r0]
-	bl sub_08053B98
+	bl IsWeaponLegency
 	lsls r0, r0, #0x10
 	cmp r0, #0
 	bne _08063BE8

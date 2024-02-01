@@ -2792,7 +2792,7 @@ _0804F3B8:
 	movs r2, #0x80
 	lsls r2, r2, #4
 	bl RegisterDataMove
-	ldr r4, _0804F44C @ =0x0203DFFC
+	ldr r4, _0804F44C @ =gEkrSpellAnimIndex
 	mov r0, sb
 	bl GetAnimPosition
 	lsls r0, r0, #1
@@ -2843,7 +2843,7 @@ _0804F436:
 	.align 2, 0
 _0804F444: .4byte 0x0200003C
 _0804F448: .4byte 0x06011800
-_0804F44C: .4byte 0x0203DFFC
+_0804F44C: .4byte gEkrSpellAnimIndex
 _0804F450: .4byte 0x0200004C
 _0804F454: .4byte 0x02016828
 _0804F458: .4byte 0x02022AC0

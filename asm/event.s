@@ -9133,7 +9133,7 @@ sub_0800E854: @ 0x0800E854
 	push {r5, r6, r7}
 	sub sp, #4
 	mov r8, r0
-	bl sub_08053C10
+	bl SetBattleScriptted
 	mov r1, r8
 	ldr r0, [r1, #0x30]
 	ldr r0, [r0, #4]
@@ -9276,7 +9276,7 @@ _0800E96C:
 	beq _0800E9AC
 _0800E984:
 	bl BattleApplyUnitUpdates
-	bl sub_08053C1C
+	bl SetBattleUnscriptted
 	ldr r1, _0800E9A8 @ =gActionSt
 	movs r0, #0
 	str r0, [r1, #0x18]
