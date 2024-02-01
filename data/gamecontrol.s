@@ -364,7 +364,7 @@ ProcScr_GameControl: @ 0xC01744
         .word 0x0
         @ PROC_WHILE
         .short 0x14, 0x0
-        .word sub_0800EC2C
+        .word IsEventRunning
         @ PROC_CALL
         .short 0x2, 0x0
         .word sub_0802EBA0

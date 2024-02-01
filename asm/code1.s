@@ -11074,7 +11074,7 @@ DrawBattleForecastContentsStandard: @ 0x08033B40
 	movs r2, #0x90
 	lsls r2, r2, #5
 	bl TmApplyTsa_thm
-	ldr r4, _08033BC4 @ =gBmFrameTmap0
+	ldr r4, _08033BC4 @ =gUiTmScratchA
 	adds r0, r4, #0
 	movs r1, #0xa
 	movs r2, #0xf
@@ -11127,7 +11127,7 @@ DrawBattleForecastContentsStandard: @ 0x08033B40
 	.align 2, 0
 _08033BBC: .4byte 0x0200373C
 _08033BC0: .4byte 0x08191780
-_08033BC4: .4byte gBmFrameTmap0
+_08033BC4: .4byte gUiTmScratchA
 _08033BC8: .4byte gBattleActor
 _08033BCC: .4byte 0x000002C2
 _08033BD0: .4byte gBattleTarget
@@ -11317,7 +11317,7 @@ sub_08033D60: @ 0x08033D60
 	movs r2, #0x90
 	lsls r2, r2, #5
 	bl TmApplyTsa_thm
-	ldr r7, _08033DEC @ =gBmFrameTmap0
+	ldr r7, _08033DEC @ =gUiTmScratchA
 	adds r0, r7, #0
 	movs r1, #0xa
 	movs r2, #0x13
@@ -11373,7 +11373,7 @@ _08033DC8:
 	.align 2, 0
 _08033DE4: .4byte 0x0200373C
 _08033DE8: .4byte 0x081918C4
-_08033DEC: .4byte gBmFrameTmap0
+_08033DEC: .4byte gUiTmScratchA
 _08033DF0: .4byte gBattleActor
 _08033DF4: .4byte 0x000003C2
 _08033DF8: .4byte gBattleTarget
@@ -11757,7 +11757,7 @@ _08034120:
 	asrs r0, r0, #0x18
 	cmp r0, #0
 	bge _08034158
-	ldr r0, _08034148 @ =gBmFrameTmap0
+	ldr r0, _08034148 @ =gUiTmScratchA
 	ldr r1, _0803414C @ =gBg0Tm
 	movs r2, #0xa
 	adds r3, r4, #0
@@ -11769,12 +11769,12 @@ _08034120:
 	bl TmCopyRect_thm
 	b _08034170
 	.align 2, 0
-_08034148: .4byte gBmFrameTmap0
+_08034148: .4byte gUiTmScratchA
 _0803414C: .4byte gBg0Tm
 _08034150: .4byte 0x0200373C
 _08034154: .4byte gBg1Tm
 _08034158:
-	ldr r0, _0803417C @ =gBmFrameTmap0
+	ldr r0, _0803417C @ =gUiTmScratchA
 	ldr r1, _08034180 @ =0x02022C88
 	movs r2, #0xa
 	adds r3, r4, #0
@@ -11791,7 +11791,7 @@ _08034170:
 	pop {r0}
 	bx r0
 	.align 2, 0
-_0803417C: .4byte gBmFrameTmap0
+_0803417C: .4byte gUiTmScratchA
 _08034180: .4byte 0x02022C88
 _08034184: .4byte 0x0200373C
 _08034188: .4byte 0x02023488
@@ -12159,7 +12159,7 @@ _0803440C:
 	movs r4, #0xa
 	subs r4, r4, r5
 	lsls r4, r4, #1
-	ldr r0, _0803447C @ =gBmFrameTmap0
+	ldr r0, _0803447C @ =gUiTmScratchA
 	adds r0, r4, r0
 	mov r1, r8
 	adds r2, r5, #0
@@ -12177,10 +12177,10 @@ _0803440C:
 _08034470: .4byte gBg0Tm
 _08034474: .4byte gBg1Tm
 _08034478: .4byte 0x08C06028
-_0803447C: .4byte gBmFrameTmap0
+_0803447C: .4byte gUiTmScratchA
 _08034480: .4byte 0x0200373C
 _08034484:
-	ldr r0, _080344CC @ =gBmFrameTmap0
+	ldr r0, _080344CC @ =gUiTmScratchA
 	movs r4, #0x1e
 	subs r4, r4, r5
 	lsls r4, r4, #1
@@ -12216,7 +12216,7 @@ _080344BE:
 	pop {r0}
 	bx r0
 	.align 2, 0
-_080344CC: .4byte gBmFrameTmap0
+_080344CC: .4byte gUiTmScratchA
 _080344D0: .4byte 0x0200373C
 
 	thumb_func_start sub_080344D4
@@ -12266,7 +12266,7 @@ _080344F0:
 	movs r4, #0xa
 	subs r4, r4, r5
 	lsls r4, r4, #1
-	ldr r0, _08034560 @ =gBmFrameTmap0
+	ldr r0, _08034560 @ =gUiTmScratchA
 	adds r0, r4, r0
 	mov r1, r8
 	adds r2, r5, #0
@@ -12284,10 +12284,10 @@ _080344F0:
 _08034554: .4byte gBg0Tm
 _08034558: .4byte gBg1Tm
 _0803455C: .4byte 0x08C0602C
-_08034560: .4byte gBmFrameTmap0
+_08034560: .4byte gUiTmScratchA
 _08034564: .4byte 0x0200373C
 _08034568:
-	ldr r0, _080345B0 @ =gBmFrameTmap0
+	ldr r0, _080345B0 @ =gUiTmScratchA
 	movs r4, #0x1e
 	subs r4, r4, r5
 	lsls r4, r4, #1
@@ -12323,7 +12323,7 @@ _080345A2:
 	pop {r0}
 	bx r0
 	.align 2, 0
-_080345B0: .4byte gBmFrameTmap0
+_080345B0: .4byte gUiTmScratchA
 _080345B4: .4byte 0x0200373C
 
 	thumb_func_start sub_080345B8

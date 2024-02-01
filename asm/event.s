@@ -9636,8 +9636,8 @@ nullsub_28: @ 0x0800EC28
 	bx lr
 	.align 2, 0
 
-	thumb_func_start sub_0800EC2C
-sub_0800EC2C: @ 0x0800EC2C
+	thumb_func_start IsEventRunning
+IsEventRunning: @ 0x0800EC2C
 	push {lr}
 	movs r0, #6
 	bl sub_080045D0

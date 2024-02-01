@@ -36,8 +36,8 @@ struct Anim {
 
 void AnimUpdateAll(void);
 void AnimClearAll(void);
-struct Anim* AnimCreate_unused(const void* script);
-struct Anim* AnimCreate(const void* script, u16 displayPriority);
+struct Anim * AnimCreate_unused(const void * script);
+struct Anim * AnimCreate(const void * script, u16 displayPriority);
 void AnimSort(void);
 void AnimDelete(struct Anim* anim);
 void AnimDisplay(struct Anim* anim);

@@ -1,6 +1,7 @@
 #include "global.h"
 #include "anime.h"
-#include "ekrbattle.h"
+#include "banim.h"
+#include "banim_ekrbattle.h"
 
 struct UnkStruct {
     const u32 *unk0;
@@ -42,7 +43,7 @@ void BattleAIS_ExecCommands(void)
                     break;
 
                 case 1:
-                    if (gEkrDebugUnk3 == 1)
+                    if (gAnimC01Blocking == 1)
                         anim->pScrCurrent = anim->pScrStart;
                     else if (!(anim->state3 & 0x4))
                         anim->pScrCurrent = anim->pScrCurrent + 1;
@@ -94,16 +95,16 @@ void BattleAIS_ExecCommands(void)
                         anim->state3 |= 0x9;
 
                         /* [SP] = animc */
-                        anim1 = GetCoreAIStruct(anim);
+                        anim1 = GetAnimAnotherSide(anim);
                     
                         /* R8 = type */
-                        state2 = GetSomeAISRelatedIndexMaybe(anim);
-                        if (EkrCheckHitOrMiss(state2) == 1) {
+                        state2 = GetAnimRoundTypeAnotherSide(anim);
+                        if (CheckRoundMiss(state2) == 1) {
                             if (anim1) {
                                 anim1->state3 |= 0x9;
 
                                 if (GetAISLayerId(anim) == 0) {
-                                    StartBattleAnimHitEffectsDefault(anim1, EkrCheckHitOrMiss(state2));
+                                    StartBattleAnimHitEffectsDefault(anim1, CheckRoundMiss(state2));
                                 }
                             }
                         }
@@ -133,9 +134,9 @@ void BattleAIS_ExecCommands(void)
                     break;
                 
                 case 6:
-                    anim1 = GetCoreAIStruct(anim);
+                    anim1 = GetAnimAnotherSide(anim);
                     if (anim1) {
-                        state2 = sub_08055010(anim1);
+                        state2 = GetAnimNextRoundTypeAnotherSide(anim1);
                         if (state2 != -1) {
                             anim1->state3 |= 0x2;
                         }
@@ -148,12 +149,12 @@ void BattleAIS_ExecCommands(void)
                 case 11:
                 case 12:
                     if (GetAISLayerId(anim) == 0) {
-                        anim1 = GetCoreAIStruct(anim);
-                        state2 = GetSomeAISRelatedIndexMaybe(anim);
-                        if (EkrCheckHitOrMiss(state2) == 0) {
+                        anim1 = GetAnimAnotherSide(anim);
+                        state2 = GetAnimRoundTypeAnotherSide(anim);
+                        if (CheckRoundMiss(state2) == 0) {
                             type = sub_080684B0(anim1);
                             if (type != 2) {
-                                if (0x1000 & GetBattleAnimRoundTypeFlags((anim->nextRoundId - 1) * 2 + GetAISSubjectId(anim)))
+                                if (0x1000 & GetBattleAnimRoundTypeFlags((anim->nextRoundId - 1) * 2 + GetAnimPosition(anim)))
                                     NewEfxChillEffect(anim1);
                                 else
                                     NewEfxPierceCritical(anim1);
@@ -162,21 +163,21 @@ void BattleAIS_ExecCommands(void)
 
                         if (anim1) {
                             anim1->state3 |= 0x9;
-                            state2 = GetSomeAISRelatedIndexMaybe(anim);
-                            StartBattleAnimHitEffectsDefault(anim1, EkrCheckHitOrMiss(state2));
+                            state2 = GetAnimRoundTypeAnotherSide(anim);
+                            StartBattleAnimHitEffectsDefault(anim1, CheckRoundMiss(state2));
                         }
                     }
                     break;
                 
                 case 13:
                     /* R8 = id1 */
-                    state2 = GetSomeAnimIndex(anim);
+                    state2 = GetAnimNextRoundType(anim);
 
                     /* [SP] = anim1 */
-                    anim1 = gAnims[GetAISSubjectId(anim) * 2];
+                    anim1 = gAnims[GetAnimPosition(anim) * 2];
                     
                     /* R6 = anim2 */
-                    anim2 = gAnims[GetAISSubjectId(anim) * 2 + 1];
+                    anim2 = gAnims[GetAnimPosition(anim) * 2 + 1];
 
                     // _08054078
                     switch (anim->currentRoundType) {
@@ -201,14 +202,14 @@ void BattleAIS_ExecCommands(void)
                             /* R4 = id2 */
                             id2 = gBanimRoundScripts[state2 * 4];
 
-                            if (GetAISSubjectId(anim) == 0)
+                            if (GetAnimPosition(anim) == 0)
                                 mode = gpBanimModesLeft[id2];
                             else
                                 mode = gpBanimModesRight[id2];
 
                             // _08054126
                             {
-                                struct UnkStruct *unk = (void *)(mode + gBanimScrLeft + GetAISSubjectId(anim) * 0x2A00);
+                                struct UnkStruct *unk = (void *)(mode + gBanimScrLeft + GetAnimPosition(anim) * 0x2A00);
                                 register const void *_ptr asm("r4");
                                 register u32 unk1 asm("r1");
                                 anim1->pImgSheet = unk->unk1;
@@ -223,15 +224,15 @@ void BattleAIS_ExecCommands(void)
                             mode += 0x57F0;
                             anim2->pSpriteData = (const void *)(mode);
 
-                            if (Unk_0203E088[GetAISSubjectId(anim)] == 0) {
-                                if (gpImgSheet[GetAISSubjectId(anim1)] != anim1->pImgSheet) {
+                            if (Unk_0203E088[GetAnimPosition(anim)] == 0) {
+                                if (gpImgSheet[GetAnimPosition(anim1)] != anim1->pImgSheet) {
                                     NewEkrChienCHR(anim1);
-                                    gpImgSheet[GetAISSubjectId(anim1)] = anim1->pImgSheet;
+                                    gpImgSheet[GetAnimPosition(anim1)] = anim1->pImgSheet;
                                 }
                             }
 
-                            sub_080546F0(anim1);
-                            sub_080546F0(anim2);
+                            AnimScrAdvance(anim1);
+                            AnimScrAdvance(anim2);
                             goto break_queue;
                         } /* if (id1 != -1) */
                     
@@ -245,8 +246,8 @@ void BattleAIS_ExecCommands(void)
                         SwitchAISFrameDataFromBARoundType(anim1, state2);
                         SwitchAISFrameDataFromBARoundType(anim2, state2);
 
-                        sub_080546F0(anim1);
-                        sub_080546F0(anim2);
+                        AnimScrAdvance(anim1);
+                        AnimScrAdvance(anim2);
                         goto break_queue;
                         break;
                     } /* switch (anim->currentRoundType) */
@@ -287,15 +288,15 @@ void BattleAIS_ExecCommands(void)
                 /* Maybe hit effect? */
                 case 26:
                     if (GetAISLayerId(anim) == 0) {
-                        anim1 = GetCoreAIStruct(anim);
+                        anim1 = GetAnimAnotherSide(anim);
                         if (anim1) {
                             anim1->state3 |= 0x9;
-                            state2 = GetSomeAISRelatedIndexMaybe(anim);
-                            StartBattleAnimHitEffectsDefault(anim1, EkrCheckHitOrMiss(state2));
+                            state2 = GetAnimRoundTypeAnotherSide(anim);
+                            StartBattleAnimHitEffectsDefault(anim1, CheckRoundMiss(state2));
                         }
 
                         if (sub_080684B0(anim1) != 2) {
-                            if (0x1000 & GetBattleAnimRoundTypeFlags((anim->nextRoundId - 1) * 2 + GetAISSubjectId(anim)))
+                            if (0x1000 & GetBattleAnimRoundTypeFlags((anim->nextRoundId - 1) * 2 + GetAnimPosition(anim)))
                                     NewEfxChillEffect(anim1);
                                 else
                                     NewEfxNormalEffect(anim);
@@ -319,7 +320,7 @@ void BattleAIS_ExecCommands(void)
                     break;
                 
                 case 45:
-                    if (0x1000 & GetBattleAnimRoundTypeFlags((anim->nextRoundId - 1) * 2 + GetAISSubjectId(anim))) {
+                    if (0x1000 & GetBattleAnimRoundTypeFlags((anim->nextRoundId - 1) * 2 + GetAnimPosition(anim))) {
                         if ((anim->state3 & 0x20) == 0) {
                             anim->state3 |= 0x20;
 
@@ -466,7 +467,7 @@ void BattleAIS_ExecCommands(void)
                     break;
 
                 case 82:
-                    if (0x1000 & GetBattleAnimRoundTypeFlags((anim->nextRoundId - 1) * 2 + GetAISSubjectId(anim))) {
+                    if (0x1000 & GetBattleAnimRoundTypeFlags((anim->nextRoundId - 1) * 2 + GetAnimPosition(anim))) {
                         if ((anim->state3 & 0x20) == 0) {
                             anim->state3 |= 0x20;
                             if (GetAISLayerId(anim) == 0)
@@ -500,11 +501,11 @@ break_queue:
         // _0805450A
         if (state2 & 0x2000) {
             if (GetAISLayerId(anim) == 0) {
-                if (Unk_0203E088[GetAISSubjectId(anim)] == 0)
+                if (Unk_0203E088[GetAnimPosition(anim)] == 0)
                     if (!(anim->state3 & 0x4000))
-                        if (gpImgSheet[GetAISSubjectId(anim)] != anim->pImgSheet) {
+                        if (gpImgSheet[GetAnimPosition(anim)] != anim->pImgSheet) {
                             RegisterAISSheetGraphics(anim);
-                            gpImgSheet[GetAISSubjectId(anim)] = anim->pImgSheet;
+                            gpImgSheet[GetAnimPosition(anim)] = anim->pImgSheet;
                         }
             }
 
@@ -512,21 +513,21 @@ break_queue:
         }
 
         // _08054570
-        if (!(state2 & 0x4000) && gEkrDebugUnk3 != 1)
+        if (!(state2 & 0x4000) && gAnimC01Blocking != 1)
             continue;
         
         if (anim->state3 & 0x2) {
             /* R8 = id1 */
-            state2 = GetSomeAnimIndex(anim);
+            state2 = GetAnimNextRoundType(anim);
             if (state2 != -1) {
                 /* [SP] = anim1 */
-                anim1 = gAnims[GetAISSubjectId(anim) * 2];
+                anim1 = gAnims[GetAnimPosition(anim) * 2];
                 SwitchAISFrameDataFromBARoundType(anim1, state2);
                 anim1->state3 &= ~0x2;
                 anim1->state3 |= 0x4;
 
                 /* R6 = anim2 */
-                anim2 = gAnims[GetAISSubjectId(anim) * 2 + 1];
+                anim2 = gAnims[GetAnimPosition(anim) * 2 + 1];
                 SwitchAISFrameDataFromBARoundType(anim2, state2);
                 anim2->state3 &= ~0x2;
                 anim2->state3 |= 0x4;
@@ -534,29 +535,29 @@ break_queue:
                 anim1->nextRoundId = anim1->nextRoundId + 1;
                 anim2->nextRoundId = anim2->nextRoundId + 1;
 
-                sub_080546F0(anim1);
-                sub_080546F0(anim2);
+                AnimScrAdvance(anim1);
+                AnimScrAdvance(anim2);
             } else {
                 // _080545D4
-                anim1 = gAnims[GetAISSubjectId(anim) * 2];
+                anim1 = gAnims[GetAnimPosition(anim) * 2];
                 anim1->state3 &= (~0x2);
 
-                anim2 = gAnims[GetAISSubjectId(anim) * 2 + 1];
+                anim2 = gAnims[GetAnimPosition(anim) * 2 + 1];
                 anim2->state3 &= (~0x2);
             } /* if (id1 != -1) */
         } else {
             // _0805460C
             if (anim->state3 & 0x8000) {
-                state2 = GetSomeAnimIndex(anim);
+                state2 = GetAnimNextRoundType(anim);
                 if (state2 != -1) {
                     /* [SP] = anim1 */
-                    anim1 = gAnims[GetAISSubjectId(anim) * 2];
+                    anim1 = gAnims[GetAnimPosition(anim) * 2];
                     SwitchAISFrameDataFromBARoundType(anim1, state2);
                     anim1->state3 &= ~0x8000;
                     anim1->state3 |= 0x4;
     
                     /* R6 = anim2 */
-                    anim2 = gAnims[GetAISSubjectId(anim) * 2 + 1];
+                    anim2 = gAnims[GetAnimPosition(anim) * 2 + 1];
                     SwitchAISFrameDataFromBARoundType(anim2, state2);
                     anim2->state3 &= ~0x8000;
                     anim2->state3 |= 0x4;
@@ -564,15 +565,15 @@ break_queue:
                     anim1->nextRoundId = anim1->nextRoundId + 1;
                     anim2->nextRoundId = anim2->nextRoundId + 1;
     
-                    sub_080546F0(anim1);
-                    sub_080546F0(anim2);
+                    AnimScrAdvance(anim1);
+                    AnimScrAdvance(anim2);
                 }
             } else {
                 // _08054698
                 if (GetAISLayerId(anim) == 0) {
-                    state2 = GetBattleAnimRoundType(anim->nextRoundId * 2 + GetAISSubjectId(anim));
+                    state2 = GetBattleAnimRoundType(anim->nextRoundId * 2 + GetAnimPosition(anim));
                     if (state2 == -1)
-                        gBanimDoneFlag[GetAISSubjectId(anim)] = 1;
+                        gBanimDoneFlag[GetAnimPosition(anim)] = 1;
                 }
             }
         } /* if (state3 & 0x2) */

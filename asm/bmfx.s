@@ -6194,7 +6194,7 @@ sub_08020904: @ 0x08020904
 	movs r2, #0x20
 	bl ApplyPaletteExt
 	ldr r0, _080209B4 @ =0x08196DCC
-	ldr r4, _080209B8 @ =gBmFrameTmap0
+	ldr r4, _080209B8 @ =gUiTmScratchA
 	adds r1, r4, #0
 	bl Decompress
 	movs r0, #0x84
@@ -6266,7 +6266,7 @@ _080209A8: .4byte 0x08195688
 _080209AC: .4byte 0x06002000
 _080209B0: .4byte 0x08196DAC
 _080209B4: .4byte 0x08196DCC
-_080209B8: .4byte gBmFrameTmap0
+_080209B8: .4byte gUiTmScratchA
 _080209BC: .4byte gBg0Tm
 _080209C0: .4byte gPlaySt
 _080209C4: .4byte gDispIo
@@ -6313,7 +6313,7 @@ _08020A1C:
 	lsls r0, r5, #5
 	adds r0, r0, r4
 	lsls r0, r0, #1
-	ldr r1, _08020A40 @ =gBmFrameTmap0
+	ldr r1, _08020A40 @ =gUiTmScratchA
 	adds r0, r0, r1
 	ldr r1, _08020A44 @ =gBg0Tm
 	movs r2, #8
@@ -6327,7 +6327,7 @@ _08020A36:
 	pop {r0}
 	bx r0
 	.align 2, 0
-_08020A40: .4byte gBmFrameTmap0
+_08020A40: .4byte gUiTmScratchA
 _08020A44: .4byte gBg0Tm
 
 	thumb_func_start sub_08020A48
@@ -6409,7 +6409,7 @@ sub_08020AD0: @ 0x08020AD0
 	movs r2, #0x20
 	bl ApplyPaletteExt
 	ldr r0, _08020B6C @ =0x081BECCC
-	ldr r4, _08020B70 @ =gBmFrameTmap0
+	ldr r4, _08020B70 @ =gUiTmScratchA
 	adds r1, r4, #0
 	bl Decompress
 	movs r0, #0x84
@@ -6471,7 +6471,7 @@ _08020B60: .4byte 0x081BDEE8
 _08020B64: .4byte 0x06002000
 _08020B68: .4byte 0x081BEF08
 _08020B6C: .4byte 0x081BECCC
-_08020B70: .4byte gBmFrameTmap0
+_08020B70: .4byte gUiTmScratchA
 _08020B74: .4byte gBg0Tm
 _08020B78: .4byte gDispIo
 _08020B7C: .4byte 0x0000FFE0
@@ -6511,7 +6511,7 @@ _08020BC0:
 	lsls r0, r0, #5
 	adds r0, r0, r1
 	lsls r0, r0, #1
-	ldr r1, _08020BE4 @ =gBmFrameTmap0
+	ldr r1, _08020BE4 @ =gUiTmScratchA
 	adds r0, r0, r1
 	ldr r1, _08020BE8 @ =gBg0Tm
 	movs r2, #6
@@ -6525,7 +6525,7 @@ _08020BDA:
 	pop {r0}
 	bx r0
 	.align 2, 0
-_08020BE4: .4byte gBmFrameTmap0
+_08020BE4: .4byte gUiTmScratchA
 _08020BE8: .4byte gBg0Tm
 
 	thumb_func_start sub_08020BEC
@@ -6641,7 +6641,7 @@ sub_08020CB0: @ 0x08020CB0
 	movs r2, #0x20
 	bl ApplyPaletteExt
 	ldr r0, _08020D74 @ =0x08198B04
-	ldr r4, _08020D78 @ =gBmFrameTmap0
+	ldr r4, _08020D78 @ =gUiTmScratchA
 	adds r1, r4, #0
 	bl Decompress
 	movs r0, #0xa2
@@ -6724,7 +6724,7 @@ _08020D68: .4byte 0x0819839C
 _08020D6C: .4byte 0x06002000
 _08020D70: .4byte 0x08198AE4
 _08020D74: .4byte 0x08198B04
-_08020D78: .4byte gBmFrameTmap0
+_08020D78: .4byte gUiTmScratchA
 _08020D7C: .4byte gBg0Tm
 _08020D80: .4byte gPlaySt
 _08020D84: .4byte gDispIo
@@ -6793,7 +6793,7 @@ _08020E04:
 	lsls r0, r5, #5
 	adds r0, r0, r4
 	lsls r0, r0, #1
-	ldr r1, _08020E24 @ =gBmFrameTmap0
+	ldr r1, _08020E24 @ =gUiTmScratchA
 	adds r0, r0, r1
 	ldr r1, _08020E28 @ =gBg0Tm
 	movs r2, #4
@@ -6806,7 +6806,7 @@ _08020E1E:
 	pop {r0}
 	bx r0
 	.align 2, 0
-_08020E24: .4byte gBmFrameTmap0
+_08020E24: .4byte gUiTmScratchA
 _08020E28: .4byte gBg0Tm
 
 	thumb_func_start sub_08020E2C
@@ -6957,7 +6957,7 @@ sub_08020F38: @ 0x08020F38
 	movs r2, #0x20
 	bl ApplyPaletteExt
 	ldr r0, _08020FD4 @ =0x081980E0
-	ldr r4, _08020FD8 @ =gBmFrameTmap0
+	ldr r4, _08020FD8 @ =gUiTmScratchA
 	adds r1, r4, #0
 	bl Decompress
 	movs r0, #0x84
@@ -7019,7 +7019,7 @@ _08020FC8: .4byte 0x081970AC
 _08020FCC: .4byte 0x06002000
 _08020FD0: .4byte 0x081980C0
 _08020FD4: .4byte 0x081980E0
-_08020FD8: .4byte gBmFrameTmap0
+_08020FD8: .4byte gUiTmScratchA
 _08020FDC: .4byte gBg0Tm
 _08020FE0: .4byte gDispIo
 _08020FE4: .4byte 0x0000FFE0
@@ -7065,7 +7065,7 @@ _08021038:
 	lsls r0, r5, #5
 	adds r0, r0, r4
 	lsls r0, r0, #1
-	ldr r1, _0802105C @ =gBmFrameTmap0
+	ldr r1, _0802105C @ =gUiTmScratchA
 	adds r0, r0, r1
 	ldr r1, _08021060 @ =gBg0Tm
 	movs r2, #6
@@ -7079,7 +7079,7 @@ _08021052:
 	pop {r0}
 	bx r0
 	.align 2, 0
-_0802105C: .4byte gBmFrameTmap0
+_0802105C: .4byte gUiTmScratchA
 _08021060: .4byte gBg0Tm
 
 	thumb_func_start sub_08021064

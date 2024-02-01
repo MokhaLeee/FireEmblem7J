@@ -17,6 +17,8 @@
 #include "chapterdata.h"
 #include "hardware.h"
 #include "proc.h"
+#include "banim.h"
+#include "banim_ekrbattle.h"
 
 EWRAM_DATA struct BattleStats gBattleStats = {};
 EWRAM_DATA struct BattleUnit gBattleActor = {};

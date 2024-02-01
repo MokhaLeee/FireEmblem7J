@@ -14,7 +14,7 @@ SetupBanim: @ 0x08051170
 	thumb_func_start BeginAnimsOnBattleAnimations
 BeginAnimsOnBattleAnimations: @ 0x08051180
 	push {lr}
-	bl sub_08055CD8
+	bl GetBattleAnimArenaFlag
 	cmp r0, #1
 	bne _08051190
 	bl sub_08055D58
@@ -29,7 +29,7 @@ _0805119E:
 	bl NewEkrBattleDeamon
 	bl AnimClearAll
 	bl sub_0804DC18
-	ldr r1, _080511D4 @ =0x02017744
+	ldr r1, _080511D4 @ =gEkrInitPosReal
 	str r0, [r1]
 	bl sub_08051288
 	ldr r0, _080511D8 @ =gAnims
@@ -49,7 +49,7 @@ _080511D0:
 	pop {r0}
 	bx r0
 	.align 2, 0
-_080511D4: .4byte 0x02017744
+_080511D4: .4byte gEkrInitPosReal
 _080511D8: .4byte gAnims
 _080511DC: .4byte 0x02000010
 _080511E0: .4byte sub_08051214
@@ -57,7 +57,7 @@ _080511E0: .4byte sub_08051214
 	thumb_func_start EkrBattleEndRountine
 EkrBattleEndRountine: @ 0x080511E4
 	push {lr}
-	bl sub_08055CD8
+	bl GetBattleAnimArenaFlag
 	cmp r0, #1
 	bne _080511F4
 	bl sub_08055D7C
@@ -397,12 +397,12 @@ _080514B4: .4byte gPal
 sub_080514B8: @ 0x080514B8
 	push {r4, r5, lr}
 	adds r5, r0, #0
-	ldr r0, _080514E4 @ =0x0203DFE0
+	ldr r0, _080514E4 @ =gEkrDebugModeMaybe
 	movs r1, #0
 	ldrsh r0, [r0, r1]
 	cmp r0, #0
 	bne _0805151C
-	bl sub_0804C9AC
+	bl NewEkrGauge
 	bl sub_0804D540
 	ldr r0, _080514E8 @ =gEkrDistanceType
 	movs r1, #0
@@ -415,7 +415,7 @@ sub_080514B8: @ 0x080514B8
 	beq _08051514
 	b _0805151C
 	.align 2, 0
-_080514E4: .4byte 0x0203DFE0
+_080514E4: .4byte gEkrDebugModeMaybe
 _080514E8: .4byte gEkrDistanceType
 _080514EC:
 	ldr r4, _08051510 @ =0x0203DFE8
@@ -446,11 +446,11 @@ _0805151C:
 	bl sub_08051A50
 	movs r0, #0
 	movs r1, #0xb
-	bl sub_08052278
+	bl NewEkrWindowAppear
 	movs r0, #0
 	movs r1, #0xb
 	movs r2, #0
-	bl sub_0805235C
+	bl NewEkrNamewinAppear
 	movs r0, #0
 	movs r1, #0xb
 	bl sub_0805245C
@@ -805,7 +805,7 @@ sub_080517D0: @ 0x080517D0
 	bl sub_08051A50
 	movs r0, #1
 	movs r1, #0xb
-	bl sub_08052278
+	bl NewEkrWindowAppear
 	movs r0, #1
 	movs r1, #0xb
 	bl sub_0805245C
@@ -934,7 +934,7 @@ sub_080518BC: @ 0x080518BC
 	ldrb r2, [r1]
 	orrs r0, r2
 	strb r0, [r1]
-	bl sub_08055CD8
+	bl GetBattleAnimArenaFlag
 	cmp r0, #1
 	beq _0805192C
 	bl sub_08019624
@@ -1328,7 +1328,7 @@ _08051C18:
 	strh r2, [r5, #0x34]
 	movs r0, #0x68
 	strh r0, [r5, #0x3c]
-	ldr r0, _08051C7C @ =0x02017744
+	ldr r0, _08051C7C @ =gEkrInitPosReal
 	ldr r0, [r0]
 	cmp r0, #1
 	bne _08051C6A
@@ -1350,7 +1350,7 @@ _08051C6A:
 	.align 2, 0
 _08051C74: .4byte 0x08C0A3E8
 _08051C78: .4byte 0x0203E006
-_08051C7C: .4byte 0x02017744
+_08051C7C: .4byte gEkrInitPosReal
 _08051C80: .4byte 0x081DE218
 _08051C84: .4byte gEkrDistanceType
 _08051C88: .4byte 0x08C0A460
@@ -1420,7 +1420,7 @@ _08051CC6:
 	strh r0, [r5, #0x34]
 	movs r0, #0x68
 	strh r0, [r5, #0x3c]
-	ldr r0, _08051D40 @ =0x02017744
+	ldr r0, _08051D40 @ =gEkrInitPosReal
 	ldr r0, [r0]
 	cmp r0, #0
 	bne _08051D28
@@ -1443,7 +1443,7 @@ _08051D28:
 _08051D34: .4byte 0x08C0A520
 _08051D38: .4byte 0x08C0A3E8
 _08051D3C: .4byte 0x0203E006
-_08051D40: .4byte 0x02017744
+_08051D40: .4byte gEkrInitPosReal
 _08051D44: .4byte 0x081DE218
 _08051D48: .4byte gEkrDistanceType
 _08051D4C: .4byte 0x08C0A480
@@ -1820,7 +1820,7 @@ _08051FD4:
 	adds r0, r0, r1
 	ldrb r3, [r0]
 	strh r3, [r4, #0x38]
-	ldr r0, _0805209C @ =0x02017744
+	ldr r0, _0805209C @ =gEkrInitPosReal
 	ldr r0, [r0]
 	cmp r0, #0
 	bne _080520A4
@@ -1855,7 +1855,7 @@ _0805208C: .4byte 0x06014000
 _08052090: .4byte 0x0203E006
 _08052094: .4byte 0x081DE20D
 _08052098: .4byte 0x081DE212
-_0805209C: .4byte 0x02017744
+_0805209C: .4byte gEkrInitPosReal
 _080520A0: .4byte 0x081DE218
 _080520A4:
 	ldr r0, _080520C0 @ =0x081DE218
@@ -2095,8 +2095,8 @@ sub_0805226C: @ 0x0805226C
 	bx r0
 	.align 2, 0
 
-	thumb_func_start sub_08052278
-sub_08052278: @ 0x08052278
+	thumb_func_start NewEkrWindowAppear
+NewEkrWindowAppear: @ 0x08052278
 	push {r4, r5, lr}
 	adds r5, r0, #0
 	adds r4, r1, #0
@@ -2134,8 +2134,8 @@ _080522BC: .4byte 0x08C0A588
 _080522C0: .4byte 0x02000038
 _080522C4: .4byte 0x0201FAC0
 
-	thumb_func_start sub_080522C8
-sub_080522C8: @ 0x080522C8
+	thumb_func_start CheckEkrWindowAppearUnexist
+CheckEkrWindowAppearUnexist: @ 0x080522C8
 	ldr r0, _080522D4 @ =0x0201FAC0
 	ldr r0, [r0]
 	cmp r0, #0
@@ -2215,8 +2215,8 @@ _08052350:
 	.align 2, 0
 _08052358: .4byte 0x02000038
 
-	thumb_func_start sub_0805235C
-sub_0805235C: @ 0x0805235C
+	thumb_func_start NewEkrNamewinAppear
+NewEkrNamewinAppear: @ 0x0805235C
 	push {r4, r5, r6, lr}
 	adds r4, r0, #0
 	adds r5, r1, #0
@@ -2475,7 +2475,7 @@ PrepareBattleGraphicsMaybe: @ 0x0805252C
 	sub sp, #0x2c
 	movs r0, #1
 	str r0, [sp, #0x20]
-	bl sub_08065214
+	bl ResetEkrDragonStatus
 	ldr r1, _08052554 @ =gBattleStats
 	movs r0, #0x20
 	ldrh r1, [r1]
@@ -3288,7 +3288,7 @@ _08052BAC:
 	ldr r1, _08052DB8 @ =0x0203DFF8
 	strh r0, [r1, #2]
 _08052BC6:
-	ldr r1, _08052DBC @ =0x0203E074
+	ldr r1, _08052DBC @ =gEkrPids
 	movs r3, #0
 	strb r3, [r1, #1]
 	strb r3, [r1]
@@ -3436,7 +3436,7 @@ _08052CAA:
 _08052CCC:
 	cmp r7, #0
 	beq _08052CDE
-	ldr r1, _08052DD0 @ =0x0203E0A8
+	ldr r1, _08052DD0 @ =gEkrPairExpPrevious
 	ldr r0, [sp, #8]
 	adds r0, #0x71
 	ldrb r0, [r0]
@@ -3446,7 +3446,7 @@ _08052CCC:
 _08052CDE:
 	cmp r6, #0
 	beq _08052CF0
-	ldr r1, _08052DD0 @ =0x0203E0A8
+	ldr r1, _08052DD0 @ =gEkrPairExpPrevious
 	ldr r0, [sp, #0xc]
 	adds r0, #0x71
 	ldrb r0, [r0]
@@ -3456,7 +3456,7 @@ _08052CDE:
 _08052CF0:
 	cmp r7, #0
 	beq _08052D02
-	ldr r1, _08052DD4 @ =0x0203E0AC
+	ldr r1, _08052DD4 @ =gEkrPairExpGain
 	ldr r0, [sp, #8]
 	adds r0, #0x6e
 	ldrb r0, [r0]
@@ -3466,7 +3466,7 @@ _08052CF0:
 _08052D02:
 	cmp r6, #0
 	beq _08052D14
-	ldr r1, _08052DD4 @ =0x0203E0AC
+	ldr r1, _08052DD4 @ =gEkrPairExpGain
 	ldr r0, [sp, #0xc]
 	adds r0, #0x6e
 	ldrb r0, [r0]
@@ -3553,13 +3553,13 @@ _08052DAC: .4byte 0x0203DFFE
 _08052DB0: .4byte gEkrDistanceType
 _08052DB4: .4byte gAnims
 _08052DB8: .4byte 0x0203DFF8
-_08052DBC: .4byte 0x0203E074
+_08052DBC: .4byte gEkrPids
 _08052DC0: .4byte 0x0203E09C
 _08052DC4: .4byte 0x0000FFFF
 _08052DC8: .4byte 0x0203E0A0
 _08052DCC: .4byte 0x0203E0A4
-_08052DD0: .4byte 0x0203E0A8
-_08052DD4: .4byte 0x0203E0AC
+_08052DD0: .4byte gEkrPairExpPrevious
+_08052DD4: .4byte gEkrPairExpGain
 _08052DD8: .4byte 0x0203E0B8
 _08052DDC: .4byte 0x0203E0BC
 _08052DE0: .4byte Unk_0203E088
@@ -3707,7 +3707,7 @@ _08052EF2:
 	bne _08052F04
 	movs r4, #1
 _08052F04:
-	bl sub_08055CD8
+	bl GetBattleAnimArenaFlag
 	cmp r0, #1
 	bne _08052F0E
 	movs r4, #1
@@ -4381,7 +4381,7 @@ sub_08053438: @ 0x08053438
 	movs r0, #0
 	strh r0, [r4]
 _0805345E:
-	ldr r0, _08053480 @ =0x0203DFE4
+	ldr r0, _08053480 @ =gEkrInitialHitSide
 	movs r1, #0
 	ldrsh r0, [r0, r1]
 	cmp r0, r5
@@ -4400,7 +4400,7 @@ _08053478:
 	pop {r0}
 	bx r0
 	.align 2, 0
-_08053480: .4byte 0x0203DFE4
+_08053480: .4byte gEkrInitialHitSide
 
 	thumb_func_start ParseBattleHitToBanimCmd
 ParseBattleHitToBanimCmd: @ 0x08053484
@@ -4590,12 +4590,12 @@ _080535CC:
 	ldr r2, [sp, #0xc]
 	cmp r2, #0
 	bne _08053628
-	ldr r0, _08053608 @ =0x0203DFE4
+	ldr r0, _08053608 @ =gEkrInitialHitSide
 	strh r2, [r0]
 	b _08053628
 	.align 2, 0
 _08053604: .4byte Unk_0203DFEC
-_08053608: .4byte 0x0203DFE4
+_08053608: .4byte gEkrInitialHitSide
 _0805360C:
 	mov r5, sp
 	adds r5, #2
@@ -4608,7 +4608,7 @@ _0805360C:
 	ldr r1, [sp, #0xc]
 	cmp r1, #0
 	bne _08053628
-	ldr r1, _08053660 @ =0x0203DFE4
+	ldr r1, _08053660 @ =gEkrInitialHitSide
 	movs r0, #1
 	strh r0, [r1]
 _08053628:
@@ -4641,7 +4641,7 @@ _08053644:
 	ldr r0, _0805366C @ =0x081DE190
 	b _080536F2
 	.align 2, 0
-_08053660: .4byte 0x0203DFE4
+_08053660: .4byte gEkrInitialHitSide
 _08053664: .4byte gpEkrTriangleUnits
 _08053668: .4byte gBattleStats
 _0805366C: .4byte 0x081DE190
@@ -5222,7 +5222,7 @@ sub_08053AA8: @ 0x08053AA8
 	adds r5, r0, #0
 	lsls r4, r1, #0x10
 	lsrs r4, r4, #0x10
-	bl GetAISSubjectId
+	bl GetAnimPosition
 	ldr r1, _08053AD0 @ =0x0203E066
 	lsls r0, r0, #1
 	adds r0, r0, r1

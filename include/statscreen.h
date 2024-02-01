@@ -102,7 +102,7 @@ struct StatScreenSt {
 };
 
 extern struct StatScreenSt gStatScreenSt;
-extern u16 gBmFrameTmap0[];
+extern u16 gUiTmScratchA[];
 
 void DisplayBwl(void);
 int HelpBoxTryRelocateUp(struct HelpBoxProc *proc);

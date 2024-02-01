@@ -4795,7 +4795,7 @@ sub_0800A3C8: @ 0x0800A3C8
 	beq _0800A3DC
 	bl sub_0800836C
 _0800A3DC:
-	bl sub_0800EC2C
+	bl IsEventRunning
 	lsls r0, r0, #0x18
 	cmp r0, #0
 	beq _0800A3E8
