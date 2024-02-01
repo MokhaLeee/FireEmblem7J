@@ -2348,7 +2348,7 @@ _08055998:
 _080559BC:
 	movs r1, #0x68
 	movs r3, #2
-	bl sub_08067AEC
+	bl NewEkrsubAnimeEmulator
 	str r0, [r6, #0x14]
 _080559C6:
 	movs r0, #6
@@ -2463,7 +2463,7 @@ _08055A84:
 _08055AA8:
 	movs r1, #0x68
 	movs r3, #2
-	bl sub_08067AEC
+	bl NewEkrsubAnimeEmulator
 	str r0, [r6, #0x18]
 _08055AB2:
 	add sp, #0xc
@@ -2631,7 +2631,7 @@ _08055BBE:
 	ldr r0, [sp, #0x10]
 	mov r1, sb
 	movs r3, #0x42
-	bl sub_08067318
+	bl EfxTmCpyExt
 	mov r0, sl
 	lsls r2, r0, #1
 	adds r2, r2, r4
@@ -2647,7 +2647,7 @@ _08055BBE:
 	ldr r0, [sp, #0x14]
 	mov r1, sb
 	movs r3, #0x42
-	bl sub_08067318
+	bl EfxTmCpyExt
 	lsls r0, r5, #1
 	adds r4, r4, r0
 	ldr r2, _08055C48 @ =0xFFFFFA96
@@ -2663,7 +2663,7 @@ _08055BBE:
 	adds r0, r4, #0
 	movs r1, #0x42
 	movs r3, #0x20
-	bl sub_08067318
+	bl EfxTmCpyExt
 	movs r0, #4
 	bl EnableBgSync
 	add sp, #0x18
@@ -2733,7 +2733,7 @@ _08055CA0:
 	str r1, [sp, #8]
 	str r1, [sp, #0xc]
 	movs r3, #0x42
-	bl sub_08067318
+	bl EfxTmCpyExt
 	add sp, #0x10
 	pop {r0}
 	bx r0
@@ -2781,7 +2781,7 @@ sub_08055CE4: @ 0x08055CE4
 	adds r0, r4, #0
 	movs r1, #0x42
 	movs r3, #0x20
-	bl sub_08067318
+	bl EfxTmCpyExt
 	movs r0, #8
 	bl EnableBgSync
 	add sp, #0x10
@@ -2813,7 +2813,7 @@ sub_08055D44: @ 0x08055D44
 	cmp r0, #0
 	beq _08055D54
 	movs r0, #0x8e
-	bl sub_08067E68
+	bl DoM4aSongNumStop
 _08055D54:
 	pop {r0}
 	bx r0
@@ -2896,7 +2896,7 @@ sub_08055DA8: @ 0x08055DA8
 	movs r1, #0
 	movs r2, #0x20
 	movs r3, #0x10
-	bl sub_080676D4
+	bl EfxPalBlackInOut
 	bl EnablePalSync
 	mov r0, r8
 	bl Proc_Break
@@ -2926,7 +2926,7 @@ sub_08055E30: @ 0x08055E30
 	bl LZ77UnCompWram
 	movs r1, #1
 	rsbs r1, r1, #0
-	ldr r2, _08055EA0 @ =0x0201D41C
+	ldr r2, _08055EA0 @ =gEfxFrameTmap
 	movs r0, #0x2e
 	str r0, [sp]
 	movs r0, #0x14
@@ -2937,7 +2937,7 @@ sub_08055E30: @ 0x08055E30
 	str r4, [sp, #0xc]
 	adds r0, r6, #0
 	movs r3, #0x42
-	bl sub_08067318
+	bl EfxTmCpyExt
 	movs r0, #0
 	bl sub_08055CE4
 	movs r0, #8
@@ -2960,7 +2960,7 @@ _08055E90: .4byte 0x081E1404
 _08055E94: .4byte 0x06008000
 _08055E98: .4byte 0x081E3A70
 _08055E9C: .4byte gEkrTsaBuffer
-_08055EA0: .4byte 0x0201D41C
+_08055EA0: .4byte gEfxFrameTmap
 
 	thumb_func_start sub_08055EA4
 sub_08055EA4: @ 0x08055EA4
@@ -2987,7 +2987,7 @@ sub_08055EA4: @ 0x08055EA4
 	movs r1, #0
 	movs r2, #0x20
 	adds r3, r5, #0
-	bl sub_080676D4
+	bl EfxPalBlackInOut
 	bl EnablePalSync
 	ldrh r1, [r6, #0x2c]
 	adds r1, #1
@@ -3080,7 +3080,7 @@ sub_08055F60: @ 0x08055F60
 	movs r1, #0
 	movs r2, #0x20
 	adds r3, r5, #0
-	bl sub_080676D4
+	bl EfxPalBlackInOut
 	bl EnablePalSync
 	ldrh r1, [r6, #0x2c]
 	adds r1, #1
@@ -3855,7 +3855,7 @@ _08056574: .4byte 0x0201FC6C
 _08056578: .4byte 0x0201FDB0
 _0805657C: .4byte 0x0201FDB4
 _08056580:
-	bl sub_080652AC
+	bl CheckInEkrDragon
 	cmp r0, #0
 	bne _08056594
 	ldr r0, _08056590 @ =sub_080563C8
@@ -3870,7 +3870,7 @@ _08056594:
 	.align 2, 0
 _0805659C: .4byte sub_08056418
 _080565A0:
-	bl sub_080652AC
+	bl CheckInEkrDragon
 	cmp r0, #0
 	bne _080565B4
 	ldr r0, _080565B0 @ =sub_080563F0
@@ -3885,7 +3885,7 @@ _080565B4:
 	.align 2, 0
 _080565BC: .4byte sub_08056454
 _080565C0:
-	bl sub_080652AC
+	bl CheckInEkrDragon
 	cmp r0, #0
 	bne _080565CE
 	ldr r0, _080565F4 @ =sub_080563F0
@@ -4008,7 +4008,7 @@ _08056690:
 	ldr r1, [r0]
 	subs r1, #1
 	str r1, [r0]
-	bl sub_080652AC
+	bl CheckInEkrDragon
 	cmp r0, #0
 	bne _080566D8
 	movs r0, #0
@@ -4488,7 +4488,7 @@ sub_080569FC: @ 0x080569FC
 	lsls r1, r1, #0x10
 	lsrs r1, r1, #0x10
 	bl sub_0804D5D8
-	bl sub_080652AC
+	bl CheckInEkrDragon
 	cmp r0, #0
 	beq _08056A7A
 	ldrh r1, [r5]
@@ -4496,7 +4496,7 @@ sub_080569FC: @ 0x080569FC
 	movs r0, #3
 	bl SetBgOffset
 _08056A7A:
-	bl sub_080652AC
+	bl CheckInEkrDragon
 	cmp r0, #0
 	beq _08056A98
 	ldr r3, _08056A94 @ =0x02000028
@@ -4595,7 +4595,7 @@ _08056AA0:
 	lsls r1, r1, #0x10
 	lsrs r1, r1, #0x10
 	bl sub_0804D5D8
-	bl sub_080652AC
+	bl CheckInEkrDragon
 	cmp r0, #0
 	beq _08056B60
 	movs r0, #3
@@ -4792,7 +4792,7 @@ _08056CE8:
 	cmp r0, #0
 	bne _08056D0C
 	adds r0, r6, #0
-	bl sub_08068500
+	bl EfxPlayHittedSFX
 	b _08056D0C
 _08056CF6:
 	movs r1, #0x2c
@@ -5096,7 +5096,7 @@ sub_08056F50: @ 0x08056F50
 	cmp r0, #8
 	bne _08056F92
 	ldr r0, [r4, #0x60]
-	bl sub_08068938
+	bl GetProperAnimSoundLocation
 	adds r2, r0, #0
 	ldr r0, [r4, #0x60]
 	ldrh r0, [r0, #2]
@@ -5214,7 +5214,7 @@ _08057058:
 	cmp r0, #0
 	bne _08057082
 	adds r0, r6, #0
-	bl sub_08068500
+	bl EfxPlayHittedSFX
 	b _08057082
 _08057066:
 	movs r3, #0x2c
@@ -5784,7 +5784,7 @@ _08057590:
 	cmp r0, #0
 	bne _080575B4
 	adds r0, r6, #0
-	bl sub_08068500
+	bl EfxPlayHittedSFX
 	b _080575B4
 _0805759E:
 	movs r3, #0x2c
@@ -6481,7 +6481,7 @@ _08057B54:
 	cmp r0, #0
 	bne _08057B74
 	adds r0, r6, #0
-	bl sub_08068500
+	bl EfxPlayHittedSFX
 	b _08057B74
 _08057B62:
 	cmp r0, #0x3e
@@ -6665,7 +6665,7 @@ _08057CBC:
 	cmp r0, #0
 	bne _08057CF6
 	adds r0, r5, #0
-	bl sub_08068500
+	bl EfxPlayHittedSFX
 	b _08057CF6
 _08057CE0:
 	cmp r0, #0x19
@@ -6722,7 +6722,7 @@ sub_08057CFC: @ 0x08057CFC
 	adds r0, r5, #0
 	movs r2, #0x20
 	movs r3, #0x14
-	bl sub_080672B8
+	bl EfxTmCpyBG
 	b _08057D8C
 	.align 2, 0
 _08057D5C: .4byte 0x0201774C
@@ -6741,7 +6741,7 @@ _08057D78:
 	adds r0, r5, #0
 	movs r2, #0x20
 	movs r3, #0x14
-	bl sub_080672E8
+	bl EfxTmCpyBgHFlip
 _08057D8C:
 	movs r0, #2
 	bl EnableBgSync
@@ -6874,7 +6874,7 @@ _08057E76:
 	movs r1, #1
 	movs r2, #0x14
 	movs r3, #1
-	bl sub_080671A0
+	bl FillBGRect
 	adds r0, r7, #1
 	mov r1, r8
 	ands r0, r1
@@ -6884,7 +6884,7 @@ _08057E76:
 	movs r1, #1
 	movs r2, #0x14
 	movs r3, #1
-	bl sub_080671A0
+	bl FillBGRect
 	adds r0, r7, #2
 	mov r2, r8
 	ands r0, r2
@@ -6894,7 +6894,7 @@ _08057E76:
 	movs r1, #1
 	movs r2, #0x14
 	movs r3, #1
-	bl sub_080671A0
+	bl FillBGRect
 	movs r0, #2
 	bl EnableBgSync
 	ldrh r0, [r6, #0x2c]
@@ -7068,7 +7068,7 @@ _08057FEE:
 	cmp r0, #0
 	bne _08058072
 	adds r0, r5, #0
-	bl sub_08068500
+	bl EfxPlayHittedSFX
 	b _08058072
 	.align 2, 0
 _08058038: .4byte 0x0000010D
@@ -7274,7 +7274,7 @@ _080581CC:
 	cmp r0, #0
 	bne _080581FE
 	adds r0, r5, #0
-	bl sub_08068500
+	bl EfxPlayHittedSFX
 	b _080581FE
 _080581F0:
 	cmp r0, #0x82
@@ -7535,7 +7535,7 @@ sub_080583DC: @ 0x080583DC
 	movs r1, #0
 	movs r2, #1
 	adds r3, r5, #0
-	bl sub_08067750
+	bl EfxPalWhiteInOut
 	adds r0, r4, #0
 	movs r1, #0x20
 	bl SpellFx_RegisterBgPal
@@ -7632,7 +7632,7 @@ _080584B4:
 	cmp r0, #0
 	bne _080584F2
 	adds r0, r5, #0
-	bl sub_08068500
+	bl EfxPlayHittedSFX
 	b _080584F2
 _080584DC:
 	cmp r0, #0x32
@@ -7790,7 +7790,7 @@ _08058602:
 	cmp r0, #0
 	bne _08058642
 	adds r0, r5, #0
-	bl sub_08068500
+	bl EfxPlayHittedSFX
 	b _08058642
 	.align 2, 0
 _0805862C: .4byte 0x0000011F
@@ -8121,7 +8121,7 @@ _080588B0:
 	cmp r0, #0
 	bne _08058902
 	adds r0, r5, #0
-	bl sub_08068500
+	bl EfxPlayHittedSFX
 	b _08058902
 _080588E6:
 	adds r0, r6, #0
@@ -8237,7 +8237,7 @@ _080589CA:
 	movs r1, #2
 	movs r2, #0x14
 	movs r3, #1
-	bl sub_080671A0
+	bl FillBGRect
 	b _08058A02
 	.align 2, 0
 _080589DC: .4byte 0x0000011F
@@ -8566,7 +8566,7 @@ _08058C6C:
 	bl sub_08059084
 _08058C8E:
 	adds r0, r6, #0
-	bl sub_08068500
+	bl EfxPlayHittedSFX
 	b _08058CAC
 _08058C96:
 	cmp r0, r8
@@ -9278,7 +9278,7 @@ _0805925C:
 	cmp r0, #0
 	bne _080592A0
 	adds r0, r5, #0
-	bl sub_08068500
+	bl EfxPlayHittedSFX
 	b _080592A0
 _08059284:
 	adds r0, r6, #0
@@ -9994,7 +9994,7 @@ _0805983E:
 	cmp r0, #0
 	bne _08059890
 	adds r0, r5, #0
-	bl sub_08068500
+	bl EfxPlayHittedSFX
 	b _08059890
 	.align 2, 0
 _08059870: .4byte 0x00000119
@@ -10237,7 +10237,7 @@ sub_08059A2C: @ 0x08059A2C
 	movs r1, #0
 	movs r2, #0x20
 	adds r3, r5, #0
-	bl sub_08067750
+	bl EfxPalWhiteInOut
 	ldrh r0, [r6, #0x2c]
 	adds r0, #1
 	strh r0, [r6, #0x2c]
@@ -10371,7 +10371,7 @@ sub_08059B4C: @ 0x08059B4C
 	adds r0, r4, #0
 	movs r1, #0
 	movs r2, #0x20
-	bl sub_080676D4
+	bl EfxPalBlackInOut
 	movs r1, #0xa0
 	lsls r1, r1, #0x13
 	movs r2, #0x80
@@ -10562,7 +10562,7 @@ _08059CD4:
 	cmp r0, #0
 	bne _08059D1A
 	adds r0, r5, #0
-	bl sub_08068500
+	bl EfxPlayHittedSFX
 	b _08059D1A
 _08059D04:
 	adds r0, r2, #0
@@ -11158,7 +11158,7 @@ _0805A1C4:
 	cmp r0, #0
 	bne _0805A204
 	adds r0, r6, #0
-	bl sub_08068500
+	bl EfxPlayHittedSFX
 	b _0805A204
 _0805A1EC:
 	adds r0, r5, #0
@@ -11758,7 +11758,7 @@ _0805A696:
 	cmp r0, #0
 	bne _0805A6F8
 	adds r0, r5, #0
-	bl sub_08068500
+	bl EfxPlayHittedSFX
 	b _0805A6F8
 	.align 2, 0
 _0805A6D8: .4byte 0x00000121
@@ -11898,7 +11898,7 @@ _0805A7F4:
 	movs r1, #3
 	movs r2, #0x14
 	movs r3, #0
-	bl sub_080671A0
+	bl FillBGRect
 	b _0805A826
 	.align 2, 0
 _0805A804: .4byte 0x0202349A
@@ -12099,7 +12099,7 @@ _0805A96A:
 	cmp r0, #0
 	bne _0805A9E0
 	adds r0, r5, #0
-	bl sub_08068500
+	bl EfxPlayHittedSFX
 	b _0805A9E0
 	.align 2, 0
 _0805A9AC: .4byte 0x00000101
@@ -12539,7 +12539,7 @@ _0805AD18:
 	adds r0, r5, #0
 	bl StartBattleAnimHitEffectsDefault
 	adds r0, r5, #0
-	bl sub_08068500
+	bl EfxPlayHittedSFX
 	adds r0, r5, #0
 	movs r1, #0x3c
 	bl sub_0805B04C
@@ -12703,7 +12703,7 @@ sub_0805AE68: @ 0x0805AE68
 	movs r1, #2
 	movs r2, #0x14
 	movs r3, #1
-	bl sub_080671A0
+	bl FillBGRect
 _0805AEA6:
 	ldrh r0, [r4, #0x2e]
 	adds r0, #1
@@ -12877,7 +12877,7 @@ sub_0805AFC8: @ 0x0805AFC8
 	movs r1, #2
 	movs r2, #0x14
 	movs r3, #1
-	bl sub_080671A0
+	bl FillBGRect
 	b _0805B03E
 	.align 2, 0
 _0805B018: .4byte 0x0202349C
@@ -13641,7 +13641,7 @@ sub_0805B610: @ 0x0805B610
 	movs r1, #0
 	movs r2, #0x20
 	adds r3, r5, #0
-	bl sub_08067750
+	bl EfxPalWhiteInOut
 	ldrh r0, [r6, #0x2c]
 	adds r0, #1
 	strh r0, [r6, #0x2c]
@@ -13791,7 +13791,7 @@ _0805B756:
 	cmp r0, #0
 	bne _0805B79E
 	adds r0, r5, #0
-	bl sub_08068500
+	bl EfxPlayHittedSFX
 	b _0805B79E
 _0805B784:
 	adds r0, r3, #0
@@ -14038,7 +14038,7 @@ _0805B994:
 	movs r1, #3
 	movs r2, #0x14
 	movs r3, #0
-	bl sub_080671A0
+	bl FillBGRect
 	b _0805B9C6
 	.align 2, 0
 _0805B9A4: .4byte 0x0202349A
@@ -14286,7 +14286,7 @@ _0805BB7C:
 	cmp r0, #0
 	bne _0805BC14
 	adds r0, r5, #0
-	bl sub_08068500
+	bl EfxPlayHittedSFX
 	b _0805BC14
 _0805BBAE:
 	movs r2, #0xad
@@ -14527,7 +14527,7 @@ sub_0805BD74: @ 0x0805BD74
 	adds r0, r4, #0
 	movs r2, #0x20
 	movs r3, #0x20
-	bl sub_080672B8
+	bl EfxTmCpyBG
 	movs r0, #2
 	bl EnableBgSync
 	b _0805BE06
@@ -14558,7 +14558,7 @@ _0805BDD0:
 	adds r0, r4, #0
 	movs r2, #0x20
 	movs r3, #0x20
-	bl sub_080672E8
+	bl EfxTmCpyBgHFlip
 	movs r0, #2
 	bl EnableBgSync
 _0805BE06:
@@ -15480,7 +15480,7 @@ _0805C528:
 	cmp r0, #0
 	bne _0805C5A8
 	adds r0, r5, #0
-	bl sub_08068500
+	bl EfxPlayHittedSFX
 	b _0805C5A8
 	.align 2, 0
 _0805C56C: .4byte 0x000002E2
@@ -16287,7 +16287,7 @@ _0805CBBC:
 	cmp r0, #0
 	bne _0805CC4C
 	adds r0, r5, #0
-	bl sub_08068500
+	bl EfxPlayHittedSFX
 	b _0805CC4C
 	.align 2, 0
 _0805CC04: .4byte 0x00000133
@@ -16364,7 +16364,7 @@ sub_0805CC58: @ 0x0805CC58
 	adds r0, r4, #0
 	movs r2, #0x20
 	movs r3, #0x20
-	bl sub_080672B8
+	bl EfxTmCpyBG
 	movs r0, #2
 	bl EnableBgSync
 	bl SpellFx_SetSomeColorEffect
@@ -16760,7 +16760,7 @@ _0805CFB4:
 	movs r1, #3
 	movs r2, #0x14
 	movs r3, #0
-	bl sub_080671A0
+	bl FillBGRect
 	b _0805D008
 	.align 2, 0
 _0805CFF0: .4byte gEkrDistanceType
@@ -16772,7 +16772,7 @@ _0805CFF8:
 	movs r1, #3
 	movs r2, #0x14
 	movs r3, #0
-	bl sub_080671A0
+	bl FillBGRect
 _0805D008:
 	movs r0, #2
 	bl EnableBgSync
@@ -19635,7 +19635,7 @@ _0805E716:
 	movs r0, #0xfc
 	movs r3, #1
 	bl PlaySFX
-	bl sub_08067EA0
+	bl StopBGM1
 	movs r0, #9
 	ldrh r1, [r5, #0x10]
 	orrs r0, r1
@@ -20679,7 +20679,7 @@ sub_0805EFA0: @ 0x0805EFA0
 	str r2, [sp, #4]
 	movs r2, #0x20
 	movs r3, #0x20
-	bl sub_080672B8
+	bl EfxTmCpyBG
 	movs r0, #2
 	bl EnableBgSync
 	bl SpellFx_SetSomeColorEffect
@@ -21635,7 +21635,7 @@ _0805F7C2:
 	cmp r0, #0
 	bne _0805F800
 	adds r0, r5, #0
-	bl sub_08068500
+	bl EfxPlayHittedSFX
 	b _0805F800
 _0805F7EA:
 	adds r0, r6, #0
@@ -21847,7 +21847,7 @@ _0805F9A4:
 	movs r1, #3
 	movs r2, #0x14
 	movs r3, #0
-	bl sub_080671A0
+	bl FillBGRect
 	b _0805F9D6
 	.align 2, 0
 _0805F9B4: .4byte 0x0202349A
@@ -22358,7 +22358,7 @@ _0805FDB0:
 	cmp r0, #0
 	bne _0805FE12
 	adds r0, r5, #0
-	bl sub_08068500
+	bl EfxPlayHittedSFX
 	b _0805FE12
 _0805FDE2:
 	adds r0, r4, #0
@@ -22680,7 +22680,7 @@ sub_08060014: @ 0x08060014
 	adds r0, r4, #0
 	movs r2, #0x1e
 	movs r3, #0x20
-	bl sub_080672E8
+	bl EfxTmCpyBgHFlip
 	b _080600A8
 	.align 2, 0
 _08060078: .4byte 0x0201774C
@@ -22699,7 +22699,7 @@ _08060094:
 	adds r0, r4, #0
 	movs r2, #0x1e
 	movs r3, #0x20
-	bl sub_080672B8
+	bl EfxTmCpyBG
 _080600A8:
 	movs r0, #2
 	bl EnableBgSync
@@ -23463,7 +23463,7 @@ _08060694:
 	adds r0, r4, #0
 	bl StartBattleAnimHitEffectsDefault
 	adds r0, r4, #0
-	bl sub_08068500
+	bl EfxPlayHittedSFX
 _080606BE:
 	movs r3, #0x2c
 	ldrsh r1, [r5, r3]
@@ -23596,7 +23596,7 @@ sub_080607B8: @ 0x080607B8
 	str r2, [sp, #4]
 	movs r2, #0x20
 	movs r3, #0x20
-	bl sub_080672E8
+	bl EfxTmCpyBgHFlip
 	b _080607FC
 	.align 2, 0
 _080607E0: .4byte gEkrTsaBuffer
@@ -23610,7 +23610,7 @@ _080607E8:
 	str r2, [sp, #4]
 	movs r2, #0x20
 	movs r3, #0x20
-	bl sub_080672B8
+	bl EfxTmCpyBG
 _080607FC:
 	movs r0, #2
 	bl EnableBgSync
@@ -24003,7 +24003,7 @@ _08060AE4:
 	str r2, [sp, #4]
 	movs r2, #0x1e
 	movs r3, #0x14
-	bl sub_080672E8
+	bl EfxTmCpyBgHFlip
 	b _08060B24
 	.align 2, 0
 _08060B04: .4byte 0x0829E0E4
@@ -24018,7 +24018,7 @@ _08060B10:
 	str r2, [sp, #4]
 	movs r2, #0x1e
 	movs r3, #0x14
-	bl sub_080672B8
+	bl EfxTmCpyBG
 _08060B24:
 	movs r0, #2
 	bl EnableBgSync
@@ -24205,7 +24205,7 @@ _08060C90:
 	str r2, [sp, #4]
 	movs r2, #0x1e
 	movs r3, #0x14
-	bl sub_080672E8
+	bl EfxTmCpyBgHFlip
 	b _08060CD0
 	.align 2, 0
 _08060CB0: .4byte 0x08295E90
@@ -24220,7 +24220,7 @@ _08060CBC:
 	str r2, [sp, #4]
 	movs r2, #0x1e
 	movs r3, #0x14
-	bl sub_080672B8
+	bl EfxTmCpyBG
 _08060CD0:
 	movs r0, #2
 	bl EnableBgSync
@@ -24614,7 +24614,7 @@ _08060FD4:
 	cmp r0, #0
 	bne _08061086
 	adds r0, r5, #0
-	bl sub_08068500
+	bl EfxPlayHittedSFX
 	b _08061086
 _08061006:
 	adds r0, r4, #0
@@ -24787,7 +24787,7 @@ sub_08061128: @ 0x08061128
 	movs r1, #3
 	movs r2, #0x14
 	movs r3, #0
-	bl sub_080671A0
+	bl FillBGRect
 	b _08061194
 	.align 2, 0
 _0806117C: .4byte gEkrDistanceType
@@ -24799,7 +24799,7 @@ _08061184:
 	movs r1, #3
 	movs r2, #0x14
 	movs r3, #0
-	bl sub_080671A0
+	bl FillBGRect
 _08061194:
 	movs r0, #2
 	bl EnableBgSync
@@ -24864,7 +24864,7 @@ sub_080611CC: @ 0x080611CC
 	adds r0, r4, #0
 	movs r2, #0x20
 	movs r3, #0x20
-	bl sub_080672E8
+	bl EfxTmCpyBgHFlip
 	movs r0, #2
 	bl EnableBgSync
 	bl SpellFx_SetSomeColorEffect
@@ -24985,7 +24985,7 @@ sub_080612D4: @ 0x080612D4
 	adds r0, r4, #0
 	movs r2, #0x1e
 	movs r3, #0x14
-	bl sub_080672E8
+	bl EfxTmCpyBgHFlip
 	movs r0, #2
 	bl EnableBgSync
 	bl SpellFx_SetSomeColorEffect
@@ -25456,7 +25456,7 @@ _080616D6:
 	cmp r0, #0
 	bne _0806174E
 	adds r0, r5, #0
-	bl sub_08068500
+	bl EfxPlayHittedSFX
 	b _0806174E
 _08061706:
 	adds r0, r2, #0
@@ -25791,7 +25791,7 @@ _080619D0:
 	str r2, [sp, #4]
 	movs r2, #0x1e
 	movs r3, #0x14
-	bl sub_080672E8
+	bl EfxTmCpyBgHFlip
 	b _08061A10
 	.align 2, 0
 _080619F0: .4byte 0x08295E90
@@ -25806,7 +25806,7 @@ _080619FC:
 	str r2, [sp, #4]
 	movs r2, #0x1e
 	movs r3, #0x14
-	bl sub_080672B8
+	bl EfxTmCpyBG
 _08061A10:
 	movs r0, #2
 	bl EnableBgSync
@@ -26178,7 +26178,7 @@ _08061CF6:
 	cmp r0, #0
 	bne _08061D76
 	adds r0, r5, #0
-	bl sub_08068500
+	bl EfxPlayHittedSFX
 	b _08061D76
 _08061D20:
 	adds r0, r4, #0
@@ -26351,7 +26351,7 @@ sub_08061E40: @ 0x08061E40
 	adds r0, r4, #0
 	movs r2, #0x20
 	movs r3, #0x20
-	bl sub_080672B8
+	bl EfxTmCpyBG
 	movs r0, #2
 	bl EnableBgSync
 	bl SpellFx_SetSomeColorEffect
@@ -26617,7 +26617,7 @@ sub_08062094: @ 0x08062094
 	movs r1, #0
 	movs r2, #0x20
 	adds r3, r5, #0
-	bl sub_08067750
+	bl EfxPalWhiteInOut
 	ldrh r0, [r6, #0x2c]
 	adds r0, #1
 	strh r0, [r6, #0x2c]
@@ -27027,7 +27027,7 @@ _08062408:
 	cmp r0, #0
 	bne _08062500
 	adds r0, r6, #0
-	bl sub_08068500
+	bl EfxPlayHittedSFX
 	b _08062500
 _08062430:
 	adds r0, r5, #0
@@ -27566,7 +27566,7 @@ _08062860:
 	movs r1, #3
 	movs r2, #0x14
 	movs r3, #0
-	bl sub_080671A0
+	bl FillBGRect
 	b _080628B4
 	.align 2, 0
 _0806289C: .4byte gEkrDistanceType
@@ -27578,7 +27578,7 @@ _080628A4:
 	movs r1, #3
 	movs r2, #0x14
 	movs r3, #0
-	bl sub_080671A0
+	bl FillBGRect
 _080628B4:
 	movs r0, #2
 	bl EnableBgSync
@@ -27684,7 +27684,7 @@ _0806295C:
 	movs r1, #0
 	movs r2, #0x20
 	adds r3, r4, #0
-	bl sub_08067750
+	bl EfxPalWhiteInOut
 	ldrh r0, [r5, #0x2c]
 	adds r0, #1
 	strh r0, [r5, #0x2c]
@@ -28127,7 +28127,7 @@ _08062D0C:
 	str r2, [sp, #8]
 	adds r2, r4, #0
 	movs r3, #2
-	bl sub_08067AEC
+	bl NewEkrsubAnimeEmulator
 	str r0, [r6, #0x60]
 	add sp, #0xc
 	pop {r4, r5, r6}
@@ -29385,7 +29385,7 @@ _08063784:
 _08063788: .4byte 0x082010C8
 _0806378C:
 	ldr r0, [r5, #0x5c]
-	bl sub_08068458
+	bl IsAnimSoundInPositionMaybe
 	cmp r0, #0
 	beq _080637A0
 	ldr r0, _0806379C @ =0x082010C8
@@ -31617,7 +31617,7 @@ _0806493A:
 	adds r0, r2, #0
 	movs r2, #0x1e
 	movs r3, #0x14
-	bl sub_080672E8
+	bl EfxTmCpyBgHFlip
 	b _08064968
 _08064954:
 	ldr r1, [r4, #0x14]
@@ -31628,7 +31628,7 @@ _08064954:
 	adds r0, r2, #0
 	movs r2, #0x1e
 	movs r3, #0x14
-	bl sub_080672B8
+	bl EfxTmCpyBG
 _08064968:
 	movs r0, #1
 	ldrh r4, [r4, #0x12]
@@ -32063,7 +32063,7 @@ _08064CD8:
 	str r7, [sp]
 	movs r1, #2
 	movs r2, #0x14
-	bl sub_080671A0
+	bl FillBGRect
 	b _08064D02
 _08064CEA:
 	movs r0, #1

@@ -38,7 +38,7 @@ sub_0806BFE4: @ 0x0806BFE4
 	movs r1, #0
 	movs r2, #0x20
 	movs r3, #0x10
-	bl sub_080676D4
+	bl EfxPalBlackInOut
 	bl EnablePalSync
 	adds r0, r5, #0
 	bl Proc_Break
@@ -91,7 +91,7 @@ sub_0806C064: @ 0x0806C064
 	movs r1, #0
 	movs r2, #0x20
 	adds r3, r5, #0
-	bl sub_080676D4
+	bl EfxPalBlackInOut
 	bl EnablePalSync
 	ldrh r1, [r6, #0x2c]
 	adds r1, #1
@@ -180,7 +180,7 @@ sub_0806C114: @ 0x0806C114
 	movs r1, #0
 	movs r2, #0x20
 	adds r3, r5, #0
-	bl sub_080676D4
+	bl EfxPalBlackInOut
 	bl EnablePalSync
 	ldrh r1, [r6, #0x2c]
 	adds r1, #1
@@ -31770,7 +31770,7 @@ sub_0807AF50: @ 0x0807AF50
 	movs r1, #0x12
 	movs r2, #1
 	adds r3, r5, #0
-	bl sub_08067750
+	bl EfxPalWhiteInOut
 	bl EnablePalSync
 	add sp, #4
 	pop {r4, r5}

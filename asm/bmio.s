@@ -961,7 +961,7 @@ sub_0802DEC4: @ 0x0802DEC4
 	mov r6, sb
 	mov r5, r8
 	push {r5, r6, r7}
-	bl sub_08019624
+	bl UnpackChapterMapPalette
 	movs r1, #0
 	ldr r0, _0802DF48 @ =gPal
 	mov sl, r0

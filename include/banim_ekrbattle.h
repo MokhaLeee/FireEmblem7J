@@ -17,7 +17,7 @@ struct ProcEkrBattle {
     /* 4C */ STRUCT_PAD(0x4C, 0x54);
     /* 54 */ int quote;
     /* 58 */ int unk58;
-    /* 5C */ struct BaSprite * anim;
+    /* 5C */ struct Anim * anim;
 };
 
 extern struct ProcEkrBattle * gpProcEkrBattle;

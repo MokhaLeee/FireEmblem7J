@@ -35,6 +35,7 @@ SECTIONS
 		. = 0x017744; gEkrInitPosReal = .;
 		. = 0x017758; Unk_02017758 = .;
 		. = 0x019784; gEkrTsaBuffer = .;
+		. = 0x01D41C; gEfxFrameTmap = .;
 		. = 0x01FAF8; gBanimDoneFlag = .;
 		. = 0x01FB00; gEkrBgPosition = .;
 		. = 0x01FB10; gpImgSheet = .;
@@ -188,6 +189,7 @@ SECTIONS
 		asm/code-banim1.o(.text);
 		src/banim-main.o(.text);
 		asm/code-banim.o(.text);
+		src/banim-ekrdragon.o(.text);
 		asm/code-banim2.o(.text);
 		asm/code.o(.text);
 		src/save_core.o(.text);
@@ -235,6 +237,8 @@ SECTIONS
 		. = ALIGN(4); data/data.o(.data)
 		. = ALIGN(4); src/battle.o(.data)
 		. = ALIGN(4); data/data_08C03574.o(.data)
+		. = ALIGN(4); src/banim-ekrdragon.o(.data)
+		. = ALIGN(4); data/data_08C486EC.o(.data)
 		. = ALIGN(4); src/save_core.o(.data)
 		. = ALIGN(4); data/data_08DAD284.o(.data)
 	}

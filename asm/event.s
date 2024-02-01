@@ -8664,7 +8664,7 @@ sub_0800E520: @ 0x0800E520
 	movs r4, #0
 	strh r0, [r1]
 	bl ApplySystemGraphics
-	bl sub_08019624
+	bl UnpackChapterMapPalette
 	bl ApplyUnitSpritePalettes
 	ldr r2, _0800E56C @ =gDispIo
 	movs r0, #1

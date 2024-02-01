@@ -376,7 +376,7 @@ _080513C8:
 	movs r1, #6
 	movs r2, #0xa
 	movs r3, #4
-	bl sub_080676D4
+	bl EfxPalBlackInOut
 	bl EnablePalSync
 	bl MU_EndAll
 	adds r0, r7, #0
@@ -479,7 +479,7 @@ sub_08051558: @ 0x08051558
 	ldrsh r0, [r0, r1]
 	cmp r0, #0
 	beq _0805157C
-	bl sub_080652AC
+	bl CheckInEkrDragon
 	cmp r0, #0
 	beq _0805158C
 _0805157C:
@@ -513,7 +513,7 @@ sub_080515A0: @ 0x080515A0
 	movs r1, #4
 	movs r2, #0x10
 	bl Interpolate
-	bl sub_08067AB0
+	bl EfxChapterMapFadeOUT
 	ldrh r0, [r4, #0x2c]
 	adds r0, #1
 	strh r0, [r4, #0x2c]
@@ -560,7 +560,7 @@ _080515FC:
 	movs r1, #6
 	movs r2, #0xa
 	movs r3, #0x10
-	bl sub_080676D4
+	bl EfxPalBlackInOut
 	adds r0, r4, #0
 	bl Proc_Break
 	pop {r4}
@@ -594,7 +594,7 @@ sub_08051630: @ 0x08051630
 	movs r1, #6
 	movs r2, #0xa
 	adds r3, r4, #0
-	bl sub_080676D4
+	bl EfxPalBlackInOut
 	bl EnablePalSync
 	ldrh r0, [r5, #0x2c]
 	adds r0, #1
@@ -639,7 +639,7 @@ sub_080516A8: @ 0x080516A8
 	ldrsh r0, [r7, r1]
 	cmp r0, #0
 	beq _080516C2
-	bl sub_080652AC
+	bl CheckInEkrDragon
 	adds r6, r0, #0
 	cmp r6, #0
 	beq _080516D0
@@ -667,7 +667,7 @@ _080516D0:
 	movs r1, #6
 	movs r2, #0xa
 	adds r3, r4, #0
-	bl sub_080676D4
+	bl EfxPalBlackInOut
 	bl EnablePalSync
 	ldrh r0, [r5, #0x2c]
 	adds r0, #1
@@ -696,7 +696,7 @@ sub_08051720: @ 0x08051720
 	ldrsh r0, [r0, r1]
 	cmp r0, #0
 	beq _08051736
-	bl sub_080652AC
+	bl CheckInEkrDragon
 	cmp r0, #0
 	beq _08051744
 _08051736:
@@ -712,7 +712,7 @@ _08051744:
 	asrs r0, r0, #0x18
 	bl sub_080195BC
 	movs r0, #0x10
-	bl sub_08067AB0
+	bl EfxChapterMapFadeOUT
 	bl RenderMap
 	movs r0, #3
 	movs r1, #0
@@ -737,7 +737,7 @@ sub_08051774: @ 0x08051774
 	ldrsh r0, [r0, r1]
 	cmp r0, #0
 	beq _0805178E
-	bl sub_080652AC
+	bl CheckInEkrDragon
 	adds r5, r0, #0
 	cmp r5, #0
 	beq _0805179C
@@ -756,7 +756,7 @@ _0805179C:
 	movs r1, #0x10
 	movs r2, #4
 	bl Interpolate
-	bl sub_08067AB0
+	bl EfxChapterMapFadeOUT
 	ldrh r0, [r4, #0x2c]
 	adds r0, #1
 	strh r0, [r4, #0x2c]
@@ -937,7 +937,7 @@ sub_080518BC: @ 0x080518BC
 	bl GetBattleAnimArenaFlag
 	cmp r0, #1
 	beq _0805192C
-	bl sub_08019624
+	bl UnpackChapterMapPalette
 _0805192C:
 	bl GetBanimLinkArenaFlag
 	cmp r0, #1
@@ -1668,7 +1668,7 @@ _08051EF8:
 	ldrsh r5, [r0, r1]
 	cmp r5, #1
 	bne _08051F0C
-	bl sub_080652AC
+	bl CheckInEkrDragon
 	cmp r0, #0
 	bne _08051F0C
 	str r5, [r4, #0x4c]
@@ -1725,7 +1725,7 @@ UnitKakudai1: @ 0x08051F38
 	ldr r0, _08052058 @ =gPal
 	movs r1, #0x17
 	movs r2, #1
-	bl sub_0806788C
+	bl EfxPalModifyPetrifyEffect
 _08051F70:
 	ldr r5, _0805205C @ =0x0203DFE8
 	ldrh r3, [r5]
@@ -1932,7 +1932,7 @@ _0805210C:
 	str r1, [sp]
 	add r1, sp, #4
 	adds r2, r3, #0
-	bl sub_08067C30
+	bl BanimUpdateSpriteRotScale
 	ldr r0, [r4, #0x44]
 	cmp r0, #0
 	bne _0805216A
@@ -2010,7 +2010,7 @@ _080521BE:
 	str r1, [sp]
 	add r1, sp, #4
 	adds r2, r3, #0
-	bl sub_08067C30
+	bl BanimUpdateSpriteRotScale
 	ldr r0, [r4, #0x44]
 	cmp r0, #0
 	bne _0805220A
@@ -3260,7 +3260,7 @@ _08052B70:
 	ldr r0, _08052DB4 @ =gAnims
 	ldr r0, [r0]
 	movs r1, #1
-	bl sub_08065294
+	bl AddEkrDragonStatusType
 _08052B92:
 	ldr r3, [sp, #0x24]
 	asrs r5, r3, #0x10

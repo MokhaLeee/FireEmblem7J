@@ -658,7 +658,7 @@ _0804CDAE:
 	movs r1, #0x1e
 	movs r2, #8
 	movs r3, #0
-	bl sub_080671A0
+	bl FillBGRect
 	mov r3, sb
 	ldr r0, [r3, #0x4c]
 	cmp r0, #0
@@ -680,7 +680,7 @@ _0804CDAE:
 	adds r1, r5, #0
 	movs r2, #0xf
 	adds r3, r4, #0
-	bl sub_080672B8
+	bl EfxTmCpyBG
 	movs r0, #0x80
 	str r0, [sp]
 	adds r0, r5, #0
@@ -711,7 +711,7 @@ _0804CE00:
 	adds r1, r5, #0
 	movs r2, #0x10
 	adds r3, r4, #0
-	bl sub_080672B8
+	bl EfxTmCpyBG
 	movs r0, #0x80
 	str r0, [sp]
 	adds r0, r5, #0
@@ -999,7 +999,7 @@ _0804D050:
 	lsls r2, r2, #1
 	str r3, [sp]
 	movs r3, #0x80
-	bl sub_08067C30
+	bl BanimUpdateSpriteRotScale
 _0804D07A:
 	mov r3, sb
 	ldr r0, [r3, #0x4c]
@@ -1059,7 +1059,7 @@ _0804D0CC:
 	lsls r2, r2, #1
 	str r3, [sp]
 	movs r3, #0x80
-	bl sub_08067C30
+	bl BanimUpdateSpriteRotScale
 _0804D0F6:
 	mov r3, sb
 	ldr r0, [r3, #0x50]
@@ -1806,7 +1806,7 @@ _0804D68A:
 	movs r1, #0x1e
 	movs r2, #7
 	movs r3, #0
-	bl sub_080671A0
+	bl FillBGRect
 	cmp r6, #0
 	ble _0804D716
 	ldr r0, [r7, #0x4c]
@@ -1828,7 +1828,7 @@ _0804D68A:
 	adds r1, r5, #0
 	movs r2, #0xf
 	adds r3, r4, #0
-	bl sub_080672B8
+	bl EfxTmCpyBG
 	movs r0, #0x80
 	str r0, [sp]
 	adds r0, r5, #0
@@ -1856,7 +1856,7 @@ _0804D6DC:
 	str r1, [sp, #4]
 	adds r1, r5, #0
 	adds r3, r4, #0
-	bl sub_080672B8
+	bl EfxTmCpyBG
 	movs r0, #0x80
 	str r0, [sp]
 	adds r0, r5, #0
@@ -2357,7 +2357,7 @@ _0804DB3A:
 	adds r1, r6, #0
 	movs r2, #2
 	movs r3, #0x14
-	bl sub_080672B8
+	bl EfxTmCpyBG
 	adds r4, #0x3e
 	movs r5, #0x80
 	str r5, [sp]

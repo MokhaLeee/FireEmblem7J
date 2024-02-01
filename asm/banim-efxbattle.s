@@ -1563,11 +1563,11 @@ sub_0804EA10: @ 0x0804EA10
 	ldr r0, [r0]
 	cmp r0, #0
 	bne _0804EA4E
-	bl sub_080652AC
+	bl CheckInEkrDragon
 	cmp r0, #0
 	beq _0804EA3C
 	ldr r0, [r4, #0x5c]
-	bl sub_0806543C
+	bl SetEkrDragonDead
 	b _0804EA44
 	.align 2, 0
 _0804EA34: .4byte 0x0201774C
@@ -1599,7 +1599,7 @@ sub_0804EA54: @ 0x0804EA54
 	cmp r1, #0x1e
 	bne _0804EA9A
 	adds r0, r5, #0
-	bl sub_0806544C
+	bl CheckEkrDragonDead
 	lsls r0, r0, #0x18
 	asrs r0, r0, #0x18
 	cmp r0, #1
@@ -2011,7 +2011,7 @@ sub_0804ED88: @ 0x0804ED88
 	movs r1, #0x32
 	ldrsh r0, [r4, r1]
 	movs r1, #0
-	bl sub_08065328
+	bl EkrDragonTmCpyExt
 	movs r1, #0x32
 	ldrsh r0, [r4, r1]
 	bl sub_0804EEB8
@@ -2046,7 +2046,7 @@ sub_0804EDB8: @ 0x0804EDB8
 	bl sub_0804ED50
 	ldr r0, [r5]
 	movs r1, #0
-	bl sub_08065328
+	bl EkrDragonTmCpyExt
 	ldr r0, [r5]
 	bl sub_0804EEB8
 	bl GetBattleAnimArenaFlag
@@ -2098,7 +2098,7 @@ sub_0804EE24: @ 0x0804EE24
 	bl sub_0804ED50
 	ldr r0, [r5]
 	movs r1, #0
-	bl sub_08065328
+	bl EkrDragonTmCpyExt
 	ldr r0, [r5]
 	bl sub_0804EEB8
 	bl GetBattleAnimArenaFlag
@@ -2150,7 +2150,7 @@ sub_0804EEB8: @ 0x0804EEB8
 	push {r4, r5, lr}
 	sub sp, #0x10
 	adds r5, r0, #0
-	bl sub_080652AC
+	bl CheckInEkrDragon
 	cmp r0, #0
 	bne _0804EF08
 	bl GetBattleAnimArenaFlag
@@ -2179,7 +2179,7 @@ sub_0804EEB8: @ 0x0804EEB8
 	adds r0, r4, #0
 	movs r1, #0x42
 	movs r3, #0x20
-	bl sub_08067318
+	bl EfxTmCpyExt
 	movs r0, #4
 	bl EnableBgSync
 _0804EF08:
@@ -2471,7 +2471,7 @@ sub_0804F0DC: @ 0x0804F0DC
 	movs r1, #0
 	movs r2, #0
 	bl SetBgOffset
-	bl sub_080652AC
+	bl CheckInEkrDragon
 	cmp r0, #0
 	beq _0804F146
 	ldrh r1, [r6, #0x34]
@@ -2506,7 +2506,7 @@ _0804F168:
 	ldrh r2, [r5, #2]
 	movs r0, #2
 	bl SetBgOffset
-	bl sub_080652AC
+	bl CheckInEkrDragon
 	cmp r0, #0
 	beq _0804F1A8
 	ldrh r2, [r6, #0x34]
@@ -2522,7 +2522,7 @@ _0804F168:
 	movs r0, #3
 	bl SetBgOffset
 _0804F1A8:
-	bl sub_080652AC
+	bl CheckInEkrDragon
 	cmp r0, #0
 	beq _0804F1C8
 	ldr r4, _0804F1C4 @ =0x02000028
@@ -2698,7 +2698,7 @@ _0804F306:
 	str r0, [r5, #0x44]
 	movs r0, #1
 	str r0, [r5, #0x48]
-	bl sub_080652AC
+	bl CheckInEkrDragon
 	adds r4, r0, #0
 	cmp r4, #0
 	beq _0804F320
@@ -2877,7 +2877,7 @@ _0804F482:
 	movs r1, #0
 	movs r2, #0
 	bl SetBgOffset
-	bl sub_080652AC
+	bl CheckInEkrDragon
 	cmp r0, #0
 	beq _0804F4D6
 	movs r0, #3
@@ -2893,7 +2893,7 @@ _0804F4B4:
 	blt _0804F4D6
 	cmp r0, #2
 	bgt _0804F4D6
-	bl sub_080652AC
+	bl CheckInEkrDragon
 	cmp r0, #0
 	beq _0804F4CE
 	movs r0, #3
@@ -2943,7 +2943,7 @@ _0804F4E6:
 	ldrb r0, [r0]
 	cmp r0, #1
 	bne _0804F56E
-	bl sub_080652AC
+	bl CheckInEkrDragon
 	cmp r0, #0
 	beq _0804F53A
 	movs r0, #3
@@ -3005,7 +3005,7 @@ _0804F590:
 	movs r1, #0xf
 	movs r2, #5
 	movs r3, #0
-	bl sub_080671A0
+	bl FillBGRect
 _0804F5BC:
 	ldr r4, _0804F61C @ =0x02017760
 	movs r3, #0x2c
@@ -3067,7 +3067,7 @@ _0804F632:
 	ldrb r0, [r0]
 	cmp r0, #1
 	bne _0804F6AC
-	bl sub_080652AC
+	bl CheckInEkrDragon
 	cmp r0, #0
 	beq _0804F656
 	mov r0, r8
@@ -3120,7 +3120,7 @@ _0804F656:
 	lsrs r1, r1, #0x10
 	bl sub_0804D5D8
 _0804F6AC:
-	bl sub_080652AC
+	bl CheckInEkrDragon
 	cmp r0, #0
 	beq _0804F6C0
 	ldr r0, _0804F6E8 @ =0x02017760
@@ -3129,7 +3129,7 @@ _0804F6AC:
 	movs r0, #3
 	bl SetBgOffset
 _0804F6C0:
-	bl sub_080652AC
+	bl CheckInEkrDragon
 	cmp r0, #0
 	beq _0804F6FC
 	ldr r3, _0804F6F0 @ =0x02000028
@@ -3421,7 +3421,7 @@ sub_0804F8FC: @ 0x0804F8FC
 	movs r1, #0
 	movs r2, #0x20
 	movs r3, #0x10
-	bl sub_08067750
+	bl EfxPalWhiteInOut
 	movs r1, #0xa0
 	lsls r1, r1, #0x13
 	adds r0, r4, #0
@@ -3474,7 +3474,7 @@ sub_0804F954: @ 0x0804F954
 	movs r1, #0
 	movs r2, #0x20
 	adds r3, r6, #0
-	bl sub_08067750
+	bl EfxPalWhiteInOut
 	movs r1, #0xa0
 	lsls r1, r1, #0x13
 	adds r0, r4, #0
@@ -3737,7 +3737,7 @@ sub_0804FB58: @ 0x0804FB58
 	ldr r6, _0804FC2C @ =0x0201F93C
 	adds r1, r6, #0
 	movs r2, #0x10
-	bl sub_08067900
+	bl EfxSplitColor
 	movs r1, #0
 	ldrsh r0, [r5, r1]
 	lsls r0, r0, #5
@@ -3747,7 +3747,7 @@ sub_0804FB58: @ 0x0804FB58
 	ldr r4, _0804FC34 @ =0x0201F96C
 	adds r1, r4, #0
 	movs r2, #0x10
-	bl sub_08067900
+	bl EfxSplitColor
 	ldr r2, _0804FC38 @ =0x0201F99C
 	movs r0, #5
 	mov r8, r0
@@ -3763,7 +3763,7 @@ sub_0804FB58: @ 0x0804FB58
 	ldr r6, _0804FC3C @ =0x0201F9FC
 	adds r1, r6, #0
 	movs r2, #0x10
-	bl sub_08067900
+	bl EfxSplitColor
 	movs r1, #2
 	ldrsh r0, [r5, r1]
 	lsls r0, r0, #5
@@ -3771,7 +3771,7 @@ sub_0804FB58: @ 0x0804FB58
 	ldr r4, _0804FC40 @ =0x0201FA2C
 	adds r1, r4, #0
 	movs r2, #0x10
-	bl sub_08067900
+	bl EfxSplitColor
 	ldr r2, _0804FC44 @ =0x0201FA5C
 	mov r0, r8
 	str r0, [sp]
@@ -3886,7 +3886,7 @@ _0804FCBA:
 	adds r1, r2, #0
 	adds r2, r3, #0
 	adds r3, r5, #0
-	bl sub_08067A18
+	bl EfxDecodeSplitedPalette
 	b _0804FD08
 	.align 2, 0
 _0804FCE4: .4byte gEkrPairHpInitial
@@ -3921,7 +3921,7 @@ _0804FD08:
 	adds r1, r2, #0
 	adds r2, r3, #0
 	adds r3, r5, #0
-	bl sub_08067A18
+	bl EfxDecodeSplitedPalette
 	b _0804FD60
 	.align 2, 0
 _0804FD34: .4byte 0x081DF3A4
@@ -3998,23 +3998,23 @@ sub_0804FDB0: @ 0x0804FDB0
 	bl GetAnimPosition
 	cmp r0, #0
 	bne _0804FDE8
-	ldr r0, _0804FDE0 @ =0x081DF444
+	ldr r0, _0804FDE0 @ =Pal_EkrDragon
 	ldr r1, _0804FDE4 @ =0x02022B40
 	movs r2, #8
 	bl CpuFastSet
 	ldr r0, [r4, #0x5c]
-	bl sub_08065480
+	bl EkrDragonUpdateFlashingUnit
 	b _0804FDF8
 	.align 2, 0
-_0804FDE0: .4byte 0x081DF444
+_0804FDE0: .4byte Pal_EkrDragon
 _0804FDE4: .4byte 0x02022B40
 _0804FDE8:
-	ldr r0, _0804FE14 @ =0x081DF444
+	ldr r0, _0804FE14 @ =Pal_EkrDragon
 	ldr r1, _0804FE18 @ =0x02022B80
 	movs r2, #8
 	bl CpuFastSet
 	ldr r0, [r4, #0x5c]
-	bl sub_08065480
+	bl EkrDragonUpdateFlashingUnit
 _0804FDF8:
 	bl EnablePalSync
 	movs r0, #0x2c
@@ -4030,7 +4030,7 @@ _0804FE0E:
 	pop {r0}
 	bx r0
 	.align 2, 0
-_0804FE14: .4byte 0x081DF444
+_0804FE14: .4byte Pal_EkrDragon
 _0804FE18: .4byte 0x02022B80
 
 	thumb_func_start sub_0804FE1C
@@ -4047,7 +4047,7 @@ sub_0804FE1C: @ 0x0804FE1C
 	movs r2, #8
 	bl CpuFastSet
 	ldr r0, [r4, #0x5c]
-	bl sub_080654C8
+	bl EkrDragonUpdatePal_080654C8
 	b _0804FE5A
 	.align 2, 0
 _0804FE40: .4byte 0x02000054
@@ -4059,7 +4059,7 @@ _0804FE48:
 	movs r2, #8
 	bl CpuFastSet
 	ldr r0, [r4, #0x5c]
-	bl sub_080654C8
+	bl EkrDragonUpdatePal_080654C8
 _0804FE5A:
 	bl EnablePalSync
 	adds r0, r4, #0
@@ -4130,13 +4130,13 @@ _0804FEC0:
 	ldr r4, _0804FF2C @ =gFadeComponents
 	adds r1, r4, #0
 	movs r2, #0x10
-	bl sub_08067900
+	bl EfxSplitColor
 	ldr r0, [r5]
 	adds r5, r4, #0
 	adds r5, #0x30
 	adds r1, r5, #0
 	movs r2, #0x10
-	bl sub_08067940
+	bl EfxSplitColorPetrify
 	movs r0, #0xc0
 	lsls r0, r0, #1
 	adds r2, r4, r0
@@ -4161,13 +4161,13 @@ _0804FF30:
 	ldr r4, _0804FF6C @ =0x020222C0
 	adds r1, r4, #0
 	movs r2, #0x10
-	bl sub_08067900
+	bl EfxSplitColor
 	ldr r0, [r5, #4]
 	adds r5, r4, #0
 	adds r5, #0x30
 	adds r1, r5, #0
 	movs r2, #0x10
-	bl sub_08067940
+	bl EfxSplitColorPetrify
 	movs r0, #0xa8
 	lsls r0, r0, #2
 	adds r2, r4, r0
@@ -4317,19 +4317,19 @@ sub_08050038: @ 0x08050038
 	movs r1, #0x17
 	movs r2, #1
 	adds r3, r7, #0
-	bl sub_080677D4
-	bl sub_080652AC
+	bl EfxPalGrayInOut
+	bl CheckInEkrDragon
 	cmp r0, #0
 	beq _080500C2
 	mov r0, r8
-	bl sub_080654C8
+	bl EkrDragonUpdatePal_080654C8
 	str r5, [sp]
 	str r6, [sp, #4]
 	adds r0, r4, #0
 	movs r1, #6
 	movs r2, #1
 	adds r3, r7, #0
-	bl sub_080677D4
+	bl EfxPalGrayInOut
 	b _080500C2
 	.align 2, 0
 _08050094: .4byte 0x02000054
@@ -4350,7 +4350,7 @@ _080500A0:
 	movs r1, #0x19
 	movs r2, #1
 	adds r3, r7, #0
-	bl sub_080677D4
+	bl EfxPalGrayInOut
 _080500C2:
 	add sp, #8
 	pop {r3}
@@ -4471,7 +4471,7 @@ _0805017E:
 	ldrsh r4, [r4, r6]
 	str r4, [sp, #4]
 	str r5, [sp, #8]
-	bl sub_08067A18
+	bl EfxDecodeSplitedPalette
 	b _080501CE
 	.align 2, 0
 _080501A8: .4byte 0x02022B40
@@ -4490,7 +4490,7 @@ _080501B0:
 	ldrsh r4, [r4, r6]
 	str r4, [sp, #4]
 	str r5, [sp, #8]
-	bl sub_08067A18
+	bl EfxDecodeSplitedPalette
 _080501CE:
 	bl EnablePalSync
 _080501D2:
@@ -4527,7 +4527,7 @@ _08050208:
 	bl CpuFastSet
 _08050214:
 	ldr r0, [r4, #0x5c]
-	bl sub_080654C8
+	bl EkrDragonUpdatePal_080654C8
 	bl EnablePalSync
 	pop {r4}
 	pop {r0}
@@ -4638,7 +4638,7 @@ _080502D6:
 	ldr r3, [r4, #0x4c]
 	movs r1, #0x1d
 	movs r2, #1
-	bl sub_08067750
+	bl EfxPalWhiteInOut
 _080502F0:
 	ldr r0, [r4, #0x58]
 	cmp r0, #0
@@ -4650,7 +4650,7 @@ _080502F0:
 	ldr r3, [r4, #0x4c]
 	movs r1, #0x1e
 	movs r2, #1
-	bl sub_08067750
+	bl EfxPalWhiteInOut
 _0805030A:
 	bl EnablePalSync
 _0805030E:
@@ -4688,7 +4688,7 @@ _0805033C:
 	thumb_func_start sub_08050348
 sub_08050348: @ 0x08050348
 	push {r4, r5, lr}
-	bl sub_080652AC
+	bl CheckInEkrDragon
 	adds r4, r0, #0
 	cmp r4, #0
 	bne _08050394
@@ -4783,7 +4783,7 @@ sub_080503D4: @ 0x080503D4
 	movs r1, #6
 	movs r2, #0xa
 	adds r3, r5, #0
-	bl sub_080676D4
+	bl EfxPalBlackInOut
 	bl EnablePalSync
 	ldrh r1, [r6, #0x2c]
 	adds r1, #1
@@ -4820,7 +4820,7 @@ sub_08050438: @ 0x08050438
 	movs r1, #6
 	movs r2, #0xa
 	movs r3, #8
-	bl sub_080676D4
+	bl EfxPalBlackInOut
 	adds r0, r5, #0
 	adds r0, #0x29
 	ldrb r0, [r0]
@@ -4864,7 +4864,7 @@ sub_08050478: @ 0x08050478
 	movs r1, #6
 	movs r2, #0xa
 	adds r3, r4, #0
-	bl sub_080676D4
+	bl EfxPalBlackInOut
 	bl EnablePalSync
 	ldrh r1, [r5, #0x2c]
 	adds r1, #1
@@ -4990,7 +4990,7 @@ sub_0805057C: @ 0x0805057C
 	movs r2, #0x10
 	bl Interpolate
 	adds r4, r0, #0
-	bl sub_08067AB0
+	bl EfxChapterMapFadeOUT
 	b _080505DC
 	.align 2, 0
 _080505A8: .4byte 0x0203DFE2
@@ -5013,7 +5013,7 @@ _080505AC:
 	movs r1, #6
 	movs r2, #0xa
 	adds r3, r4, #0
-	bl sub_080676D4
+	bl EfxPalBlackInOut
 	bl EnablePalSync
 _080505DC:
 	ldrh r1, [r5, #0x2c]
@@ -5101,7 +5101,7 @@ sub_08050654: @ 0x08050654
 	adds r0, r5, #0
 	movs r2, #0x1e
 	movs r3, #0x14
-	bl sub_080672B8
+	bl EfxTmCpyBG
 	movs r0, #8
 	bl EnableBgSync
 _08050698:
@@ -5119,7 +5119,7 @@ _08050698:
 	movs r1, #6
 	movs r2, #0xa
 	movs r3, #0x10
-	bl sub_080676D4
+	bl EfxPalBlackInOut
 	bl EnablePalSync
 	adds r0, r4, #0
 	bl Proc_Break
@@ -5163,7 +5163,7 @@ _08050712:
 	movs r1, #6
 	movs r2, #0xa
 	movs r3, #0x10
-	bl sub_080676D4
+	bl EfxPalBlackInOut
 	bl EnablePalSync
 	movs r0, #0
 	strh r0, [r4, #0x2c]
@@ -5197,7 +5197,7 @@ sub_0805073C: @ 0x0805073C
 	movs r2, #4
 	bl Interpolate
 	adds r4, r0, #0
-	bl sub_08067AB0
+	bl EfxChapterMapFadeOUT
 	b _0805079C
 	.align 2, 0
 _08050768: .4byte 0x0203DFE2
@@ -5220,7 +5220,7 @@ _0805076C:
 	movs r1, #6
 	movs r2, #0xa
 	adds r3, r4, #0
-	bl sub_080676D4
+	bl EfxPalBlackInOut
 	bl EnablePalSync
 _0805079C:
 	ldrh r1, [r5, #0x2c]
@@ -5857,7 +5857,7 @@ _08050C68:
 	adds r0, r4, #0
 	movs r2, #0x1e
 	movs r3, #0x14
-	bl sub_080672E8
+	bl EfxTmCpyBgHFlip
 	b _08050CA4
 	.align 2, 0
 _08050C88: .4byte gEkrDistanceType
@@ -5871,7 +5871,7 @@ _08050C90:
 	adds r0, r4, #0
 	movs r2, #0x1e
 	movs r3, #0x14
-	bl sub_080672B8
+	bl EfxTmCpyBG
 _08050CA4:
 	movs r0, #2
 	bl EnableBgSync
@@ -5918,7 +5918,7 @@ _08050CE4:
 	adds r0, r5, #0
 	movs r2, #0x1e
 	movs r3, #0x14
-	bl sub_080672E8
+	bl EfxTmCpyBgHFlip
 	b _08050D24
 	.align 2, 0
 _08050D08: .4byte gEkrTsaBuffer
@@ -5932,7 +5932,7 @@ _08050D10:
 	adds r0, r5, #0
 	movs r2, #0x1e
 	movs r3, #0x14
-	bl sub_080672B8
+	bl EfxTmCpyBG
 _08050D24:
 	movs r0, #2
 	bl EnableBgSync
@@ -5968,7 +5968,7 @@ sub_08050D38: @ 0x08050D38
 	adds r0, #0xff
 	str r0, [sp, #4]
 	adds r0, r7, #0
-	bl sub_080672E8
+	bl EfxTmCpyBgHFlip
 	b _08050D90
 	.align 2, 0
 _08050D70: .4byte gEkrTsaBuffer
@@ -5984,7 +5984,7 @@ _08050D78:
 	adds r0, #0xff
 	str r0, [sp, #4]
 	adds r0, r7, #0
-	bl sub_080672B8
+	bl EfxTmCpyBG
 _08050D90:
 	movs r0, #2
 	bl EnableBgSync
@@ -6278,7 +6278,7 @@ _08050F90: .4byte 0x050002D6
 sub_08050F94: @ 0x08050F94
 	push {lr}
 	sub sp, #4
-	ldr r1, _08050FAC @ =0x0201D41C
+	ldr r1, _08050FAC @ =gEfxFrameTmap
 	str r0, [sp]
 	ldr r2, _08050FB0 @ =0x05000948
 	mov r0, sp
@@ -6287,7 +6287,7 @@ sub_08050F94: @ 0x08050F94
 	pop {r0}
 	bx r0
 	.align 2, 0
-_08050FAC: .4byte 0x0201D41C
+_08050FAC: .4byte gEfxFrameTmap
 _08050FB0: .4byte 0x05000948
 
 	thumb_func_start sub_08050FB4

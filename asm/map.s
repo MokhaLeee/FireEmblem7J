@@ -586,8 +586,8 @@ _08019618: .4byte 0x08D648F4
 _0801961C: .4byte 0x06008000
 _08019620: .4byte 0x0600C000
 
-	thumb_func_start sub_08019624
-sub_08019624: @ 0x08019624
+	thumb_func_start UnpackChapterMapPalette
+UnpackChapterMapPalette: @ 0x08019624
 	push {r4, lr}
 	ldr r4, _0801964C @ =0x08D648F4
 	ldr r0, _08019650 @ =gPlaySt

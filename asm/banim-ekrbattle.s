@@ -108,7 +108,7 @@ NewEkrBattle: @ 0x0804B9F4
 	ldrsh r0, [r0, r1]
 	cmp r0, #0
 	bne _0804BA34
-	bl sub_08068634
+	bl EkrPlayMainBGM
 _0804BA34:
 	pop {r4}
 	pop {r0}
@@ -206,7 +206,7 @@ _0804BB00: .4byte 0x04000006
 MainUpdateEkrBattle: @ 0x0804BB04
 	push {r4, lr}
 	bl ClearSprites
-	bl sub_08067EB0
+	bl UnregisterEfxSoundSeExist
 	bl sub_080157A4
 	lsls r0, r0, #0x18
 	cmp r0, #0
@@ -1019,7 +1019,7 @@ sub_0804C144: @ 0x0804C144
 	str r0, [r5, #0xc]
 	ldr r4, _0804C1BC @ =gAnims
 	ldr r0, [r4]
-	bl sub_0806544C
+	bl CheckEkrDragonDead
 	lsls r0, r0, #0x18
 	cmp r0, #0
 	bne _0804C1AA
@@ -1185,7 +1185,7 @@ sub_0804C20C: @ 0x0804C20C
 	str r2, [sp, #4]
 	movs r2, #0x12
 	movs r3, #3
-	bl sub_080672B8
+	bl EfxTmCpyBG
 	ldr r0, _0804C330 @ =0x081DFC30
 	ldr r1, _0804C334 @ =0x02022880
 	movs r2, #8
@@ -1258,7 +1258,7 @@ _0804C346:
 _0804C364:
 	ldr r0, _0804C3E0 @ =0x02019484
 	adds r1, r6, #0
-	bl sub_08067564
+	bl EkrModifyBarfx
 	lsls r5, r5, #5
 	mov r8, r5
 	lsls r4, r4, #5
@@ -1451,7 +1451,7 @@ sub_0804C4AC: @ 0x0804C4AC
 _0804C4E8:
 	mov r0, r8
 	adds r1, r5, #0
-	bl sub_08067564
+	bl EkrModifyBarfx
 	lsls r4, r4, #5
 	mov sb, r4
 	lsls r6, r6, #5
@@ -1532,7 +1532,7 @@ sub_0804C588: @ 0x0804C588
 	bne _0804C59C
 	movs r0, #0xe5
 	lsls r0, r0, #2
-	bl sub_08067E68
+	bl DoM4aSongNumStop
 _0804C59C:
 	ldrh r0, [r4, #0x2c]
 	adds r0, #1
@@ -1843,7 +1843,7 @@ _0804C7D8:
 	cmp r0, #0
 	beq _0804C7F6
 	ldr r0, [r4, #0x5c]
-	bl TriggerEkrDragonEnding
+	bl SetEkrDragonExit
 	ldr r0, _0804C800 @ =EkrBattleWaitDragonEnding
 	str r0, [r4, #0xc]
 _0804C7F6:
@@ -1860,7 +1860,7 @@ _0804C804:
 	cmp r0, #0
 	beq _0804C81C
 	ldr r0, [r4, #0x5c]
-	bl TriggerEkrDragonEnding
+	bl SetEkrDragonExit
 	ldr r0, _0804C830 @ =EkrBattleWaitDragonEnding
 	str r0, [r4, #0xc]
 _0804C81C:

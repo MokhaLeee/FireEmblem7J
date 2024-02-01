@@ -5,7 +5,11 @@
  */
 
 #include "global.h"
+#include "proc.h"
 #include "anime.h"
+
+#define EFX_BG_WIDTH 66
+#define EFX_TILEMAP_LOC(aMap, aX, aY) (aMap + (aX) + EFX_BG_WIDTH * (aY))
 
 enum ekr_battle_unit_position {
     EKR_POS_L,
@@ -24,6 +28,32 @@ enum gEkrDistanceType_index {
 
 extern s16 gEkrDistanceType;
 
+struct ProcEkrSubAnimeEmulator {
+    PROC_HEADER;
+
+    /* 29 */ u8 type;
+    /* 2A */ u8 valid;
+    /* 2C */ s16 timer;
+    /* 2E */ s16 scr_cur;
+
+    STRUCT_PAD(0x30, 0x32);
+
+    /* 32 */ s16 x1;
+    /* 34 */ s16 x2;
+
+    STRUCT_PAD(0x36, 0x3A);
+
+    /* 3A */ s16 y1;
+    /* 3C */ s16 y2;
+
+    STRUCT_PAD(0x3E, 0x44);
+
+    /* 44 */ u32 * anim_scr;
+    /* 48 */ void * sprite;
+    /* 4C */ int oam2Base;
+    /* 50 */ int oamBase;
+};
+
 extern const void *gpImgSheet[2];
 extern int gEkrDebugUnk2;
 extern int gAnimC01Blocking;
@@ -40,7 +70,8 @@ extern int Unk_0203E088[2];
 extern s16 Unk_0203DFEC;
 extern short gEkrPairHpInitial[2];
 extern short gEfxPairHpBufOffset[];
-
+extern u16 gEkrTsaBuffer[0x1000 / 2];
+extern u16 gEfxFrameTmap[0x2520 / 2];
 
 void NewEkrLvlupFan(void);
 // ??? EkrLvupFanMain
@@ -958,42 +989,9 @@ void sub_08064458(struct Anim * anim);
 // ??? sub_08065140
 // ??? sub_08065158
 // ??? sub_080651B0
-// ??? ResetEkrDragonStatus
-// ??? GetEkrDragonStatus
-// ??? sub_08065258
-// ??? sub_08065264
-// ??? GetEkrDragonStatusType
-// ??? GetEkrDragonStatusType_
-// ??? sub_08065294
-// ??? sub_080652AC
-// ??? sub_080652DC
-// ??? sub_08065328
-// ??? sub_08065388
-// ??? EkrDragonIntroDone
-// ??? CheckEkrDragonEndingDone
-// ??? NewEkrDragon
-// ??? TriggerEkrDragonEnding
-// ??? sub_0806543C
-// ??? sub_0806544C
-// ??? InitEkrDragonStatus
-// ??? sub_08065480
-// ??? sub_080654C8
-// ??? sub_08065510
-// ??? sub_0806553C
-// ??? sub_08065564
-// ??? sub_080655A0
-// ??? sub_08065660
-// ??? sub_080656D8
-// ??? sub_0806574C
-// ??? sub_080657D4
-// ??? sub_080658F8
-// ??? sub_08065AB0
-// ??? sub_08065BA0
-// ??? sub_08065BC0
-// ??? sub_08065C14
-// ??? sub_08065C34
-// ??? sub_08065CC8
-// ??? sub_08065D20
+
+/* banim_ekrdragon.h */
+
 // ??? sub_08065D38
 // ??? sub_08065D5C
 // ??? sub_08065DC4
@@ -1051,56 +1049,75 @@ void sub_08064458(struct Anim * anim);
 // ??? sub_08067030
 // ??? sub_08067088
 // ??? sub_080670F8
-// ??? sub_08067128
-// ??? sub_080671A0
-// ??? sub_080671E0
-// ??? sub_08067248
-// ??? sub_080672B8
-// ??? sub_080672E8
-// ??? sub_08067318
-// ??? sub_080673C8
-// ??? sub_0806748C
-// ??? sub_08067564
-// ??? sub_080675E4
-// ??? sub_080676D4
-// ??? sub_08067750
-// ??? sub_080677D4
-// ??? sub_0806788C
-// ??? sub_08067900
-// ??? sub_08067940
-// ??? sub_08067998
-// ??? sub_08067A18
-// ??? sub_08067AB0
-// ??? sub_08067AD4
-// ??? sub_08067AEC
-// ??? sub_08067B38
-// ??? sub_08067BF8
-// ??? sub_08067C14
-// ??? sub_08067C30
-// ??? EfxPlaySE
-// ??? sub_08067E14
-// ??? sub_08067E68
-// ??? sub_08067E78
-// ??? sub_08067EA0
-// ??? sub_08067EB0
-// ??? sub_08067EBC
-// ??? sub_08067EC8
+
+/* efxutils */
+void sub_08067128(u16 * tm, u16 width, u16 height, int pal, int chr);
+void FillBGRect(u16 * tm, u16 width, u16 height, int pal, int chr);
+void sub_080671E0(u16 * tm, u16 width, u16 height, int pal, int chr);
+void EfxTmModifyPal(u16 * tm, u16 width, u16 height);
+void EfxTmCpyBG(const void * ptr1, void * ptr2, u16 width, u16 height, int pal, int chr);
+void EfxTmCpyBgHFlip(const u16 * tsa, u16 * tm, u16 width, u16 height, int pal, int chr);
+void EfxTmCpyExt(const u16 * src, s16 src_width, u16 * dst, s16 dst_width, u16 width, u16 hight, int pal, int chr);
+void EfxTmCpyExtHFlip(const u16 * src, s16 src_width, u16 * dst, s16 dst_width, u16 width, u16 hight, int pal, int chr);
+void sub_0806748C(u16 * tm, int arg1, int arg2);
+void EkrModifyBarfx(u16 * tm, int arg);
+bool EkrPalModifyUnused(u16 * pal_start, u16 * pal_end, u16 * dst, u16 amount, u16 start, u16 end);
+void EfxPalBlackInOut(u16 * pal_buf, int line, int length, int ref);
+void EfxPalWhiteInOut(u16 * pal_buf, int line, int length, int ref);
+void EfxPalGrayInOut(u16 * pal_buf, int line, int length, int r0, int g0, int b0);
+void EfxPalModifyPetrifyEffect(u16 * pal_buf, int line, int length);
+void EfxSplitColor(u16 * pal, u8 * dst, u32 length);
+void EfxSplitColorPetrify(u16 * src, u8 * dst, u32 length);
+void sub_08067998(s8 * src1, s8 * src2, u16 * pal, u32 length, int ref);
+void EfxDecodeSplitedPalette(u16 * dst, s8 * src1, s8 * src2, s16 * src3, u32 length, int ref, int unk);
+void EfxChapterMapFadeOUT(int speed);
+int sub_08067AD4(int a);
+struct ProcEkrSubAnimeEmulator * NewEkrsubAnimeEmulator(int x, int y, u32 * anim_scr, int type, int oam2Base, int oamBase, ProcPtr parent);
+void EkrsubAnimeEmulatorMain(struct ProcEkrSubAnimeEmulator * proc);
+int GetAnimSpriteRotScaleX(u32 header);
+int GetAnimSpriteRotScaleY(u32 header);
+void BanimUpdateSpriteRotScale(void * src, struct AnimSpriteData * out, s16 x, s16 y, int unused);
+
+/* efxsound */
+struct ProcEfxSoundSE {
+    PROC_HEADER;
+
+    STRUCT_PAD(0x29, 0x2C);
+
+    /* 2C */ s16 timer;
+
+    STRUCT_PAD(0x2E, 0x44);
+
+    /* 44 */ int volume;
+    /* 48 */ int index;
+};
+
+void EfxPlaySE(int songid, int volume);
+void Loop6C_efxSoundSE(struct ProcEfxSoundSE * proc);
+// ??? DoM4aSongNumStop
+// ??? EfxOverrideBgm
+// ??? StopBGM1
+// ??? UnregisterEfxSoundSeExist
+// ??? RegisterEfxSoundSeExist
+// ??? CheckEfxSoundSeExist
 // ??? M4aPlayWithPostionCtrl
 void EfxPlaySEwithCmdCtrl(struct Anim * anim, int);
-// ??? sub_0806830C
-// ??? sub_08068458
-// ??? sub_08068488
+// ??? GetEfxSoundType1FromTerrain
+// ??? IsAnimSoundInPositionMaybe
+// ??? GetEfxSoundType2FromBaseCon
 s16 sub_080684B0(struct Anim * anim);
-// ??? sub_08068500
-// ??? sub_08068564
-// ??? sub_080685A8
-// ??? sub_080685C8
-// ??? sub_08068634
+// ??? EfxPlayHittedSFX
+// ??? EfxPlayCriticalHittedSFX
+// ??? EfxCheckRetaliation
+// ??? GetEfxHpChangeType
+// ??? EkrPlayMainBGM
 // ??? EkrRestoreBGM
-// ??? sub_080688FC
-// ??? sub_08068938
+// ??? GetBanimBossBGM
+// ??? GetProperAnimSoundLocation
 void PlaySFX(int, int, int, int);
-// ??? sub_080689EC
+// ??? PlaySfxAutomatically
+
+/* ekrclasschg */
 // ??? sub_08068A0C
 // ??? sub_08068A24
 // ??? sub_08068A38
