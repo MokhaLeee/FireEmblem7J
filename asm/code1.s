@@ -9857,17 +9857,17 @@ _080331EC:
 	beq _080331FC
 	b _08033206
 _080331F2:
-	ldr r2, _080331F8 @ =0x02022BE0
+	ldr r2, _080331F8 @ =gPal + 0x380
 	b _08033206
 	.align 2, 0
-_080331F8: .4byte 0x02022BE0
+_080331F8: .4byte gPal + 0x380
 _080331FC:
-	ldr r2, _08033200 @ =0x02022C00
+	ldr r2, _08033200 @ =gPal + 0x3a0
 	b _08033206
 	.align 2, 0
-_08033200: .4byte 0x02022C00
+_08033200: .4byte gPal + 0x3a0
 _08033204:
-	ldr r2, _08033220 @ =0x02022C20
+	ldr r2, _08033220 @ =gPal + 0x3c0
 _08033206:
 	movs r1, #0x90
 	lsls r1, r1, #2
@@ -9882,7 +9882,7 @@ _08033206:
 	pop {r0}
 	bx r0
 	.align 2, 0
-_08033220: .4byte 0x02022C20
+_08033220: .4byte gPal + 0x3c0
 
 	thumb_func_start sub_08033224
 sub_08033224: @ 0x08033224
@@ -11775,12 +11775,12 @@ _08034150: .4byte 0x0200373C
 _08034154: .4byte gBg1Tm
 _08034158:
 	ldr r0, _0803417C @ =gUiTmScratchA
-	ldr r1, _08034180 @ =0x02022C88
+	ldr r1, _08034180 @ =gBg0Tm + 0x28
 	movs r2, #0xa
 	adds r3, r4, #0
 	bl TmCopyRect_thm
 	ldr r0, _08034184 @ =0x0200373C
-	ldr r1, _08034188 @ =0x02023488
+	ldr r1, _08034188 @ =gBg1Tm + 0x28
 	movs r2, #0xa
 	adds r3, r4, #0
 	bl TmCopyRect_thm
@@ -11792,9 +11792,9 @@ _08034170:
 	bx r0
 	.align 2, 0
 _0803417C: .4byte gUiTmScratchA
-_08034180: .4byte 0x02022C88
+_08034180: .4byte gBg0Tm + 0x28
 _08034184: .4byte 0x0200373C
-_08034188: .4byte 0x02023488
+_08034188: .4byte gBg1Tm + 0x28
 
 	thumb_func_start sub_0803418C
 sub_0803418C: @ 0x0803418C

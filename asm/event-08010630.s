@@ -936,7 +936,7 @@ sub_08010D88: @ 0x08010D88
 	movs r2, #0xa0
 	lsls r2, r2, #5
 	bl CpuFastSet
-	ldr r0, _08010DF8 @ =0x02022960
+	ldr r0, _08010DF8 @ =gPal + 0x100
 	ldr r2, _08010DFC @ =0xFFFFFF00
 	adds r1, r0, r2
 	ldr r2, [r4, #0x44]
@@ -984,7 +984,7 @@ sub_08010DC4: @ 0x08010DC4
 	.align 2, 0
 _08010DF0: .4byte 0x06008000
 _08010DF4: .4byte 0x06001000
-_08010DF8: .4byte 0x02022960
+_08010DF8: .4byte gPal + 0x100
 _08010DFC: .4byte 0xFFFFFF00
 _08010E00: .4byte 0x001FFFFF
 _08010E04: .4byte 0x00008080
@@ -1671,7 +1671,7 @@ sub_0801135C: @ 0x0801135C
 	movs r2, #0xa0
 	lsls r2, r2, #5
 	bl CpuFastSet
-	ldr r0, _080113F0 @ =0x02022960
+	ldr r0, _080113F0 @ =gPal + 0x100
 	ldr r2, _080113F4 @ =0xFFFFFF00
 	adds r1, r0, r2
 	ldr r2, [r4, #0x44]
@@ -1733,7 +1733,7 @@ _0801138A:
 	.align 2, 0
 _080113E8: .4byte 0x06008000
 _080113EC: .4byte 0x06001000
-_080113F0: .4byte 0x02022960
+_080113F0: .4byte gPal + 0x100
 _080113F4: .4byte 0xFFFFFF00
 _080113F8: .4byte 0x001FFFFF
 _080113FC: .4byte 0x00008080

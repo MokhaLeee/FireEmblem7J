@@ -231,7 +231,7 @@ _0805488E:
 	lsls r0, r7, #5
 	adds r0, r0, r5
 	str r0, [r1]
-	ldr r4, _08054A08 @ =0x02022B40
+	ldr r4, _08054A08 @ =gPal + 0x2e0
 	adds r1, r4, #0
 	movs r2, #8
 	bl CpuFastSet
@@ -301,7 +301,7 @@ _08054928:
 	lsls r0, r7, #5
 	adds r0, r0, r5
 	str r0, [r1, #4]
-	ldr r4, _08054A24 @ =0x02022B80
+	ldr r4, _08054A24 @ =gPal + 0x320
 	adds r1, r4, #0
 	movs r2, #8
 	bl CpuFastSet
@@ -394,14 +394,14 @@ _080549F8: .4byte gBanimScrLeft
 _080549FC: .4byte gpBanimModesLeft
 _08054A00: .4byte 0x02004088
 _08054A04: .4byte 0x02000054
-_08054A08: .4byte 0x02022B40
+_08054A08: .4byte gPal + 0x2e0
 _08054A0C: .4byte 0x0203E080
 _08054A10: .4byte 0x020041C8
 _08054A14: .4byte 0x000057F0
 _08054A18: .4byte 0x02011BC8
 _08054A1C: .4byte gpBanimModesRight
 _08054A20: .4byte 0x02004128
-_08054A24: .4byte 0x02022B80
+_08054A24: .4byte gPal + 0x320
 _08054A28: .4byte 0x020099C8
 _08054A2C: .4byte gpEkrTriangleUnits
 
@@ -1643,7 +1643,7 @@ _0805543A:
 	adds r0, r0, r1
 	ldrh r2, [r5, #0x10]
 	lsls r1, r2, #5
-	ldr r2, _08055470 @ =0x02022A60
+	ldr r2, _08055470 @ =gPal + 0x200
 	adds r1, r1, r2
 	movs r2, #8
 	bl CpuFastSet
@@ -1660,7 +1660,7 @@ _0805543A:
 	.align 2, 0
 _08055468: .4byte 0x000057F0
 _0805546C: .4byte gUnk_08FD8008
-_08055470: .4byte 0x02022A60
+_08055470: .4byte gPal + 0x200
 
 	thumb_func_start sub_08055474
 sub_08055474: @ 0x08055474
@@ -1826,7 +1826,7 @@ _080555B4:
 	adds r0, r0, r1
 	ldrh r6, [r6, #0x10]
 	lsls r1, r6, #5
-	ldr r2, _080555E4 @ =0x02022A60
+	ldr r2, _080555E4 @ =gPal + 0x200
 	adds r1, r1, r2
 	movs r2, #8
 	bl CpuFastSet
@@ -1840,7 +1840,7 @@ _080555B4:
 	.align 2, 0
 _080555DC: .4byte 0x000057F0
 _080555E0: .4byte gUnk_08FD8008
-_080555E4: .4byte 0x02022A60
+_080555E4: .4byte gPal + 0x200
 
 	thumb_func_start sub_080555E8
 sub_080555E8: @ 0x080555E8
@@ -2166,7 +2166,7 @@ _08055824:
 	movs r0, #2
 	ldrsh r1, [r6, r0]
 	lsls r1, r1, #5
-	ldr r0, _0805589C @ =0x02022A60
+	ldr r0, _0805589C @ =gPal + 0x200
 	adds r1, r1, r0
 	mov r0, r8
 	movs r2, #8
@@ -2188,7 +2188,7 @@ _08055852:
 	movs r0, #8
 	ldrsh r1, [r6, r0]
 	lsls r1, r1, #5
-	ldr r0, _0805589C @ =0x02022A60
+	ldr r0, _0805589C @ =gPal + 0x200
 	adds r1, r1, r0
 	mov r0, sb
 	movs r2, #8
@@ -2210,7 +2210,7 @@ _08055892:
 	ldr r0, [r0]
 	mov pc, r0
 	.align 2, 0
-_0805589C: .4byte 0x02022A60
+_0805589C: .4byte gPal + 0x200
 _080558A0: .4byte _080558A4
 _080558A4: @ jump table
 	.4byte _080558D8 @ case 0
@@ -2876,7 +2876,7 @@ sub_08055DA8: @ 0x08055DA8
 	bl sub_0804D540
 	bl NewEkrBattle
 	ldr r0, _08055E24 @ =gUnk_081E4210
-	ldr r4, _08055E28 @ =0x02022920
+	ldr r4, _08055E28 @ =gPal + 0xc0
 	adds r1, r4, #0
 	movs r2, #0x20
 	bl CpuFastSet
@@ -2909,7 +2909,7 @@ sub_08055DA8: @ 0x08055DA8
 _08055E1C: .4byte gEkrInitPosReal
 _08055E20: .4byte gEkrInitialHitSide
 _08055E24: .4byte gUnk_081E4210
-_08055E28: .4byte 0x02022920
+_08055E28: .4byte gPal + 0xc0
 _08055E2C: .4byte 0x020165C8
 
 	thumb_func_start sub_08055E30
@@ -3174,7 +3174,7 @@ sub_08056038: @ 0x08056038
 	lsls r0, r0, #2
 	adds r0, r0, r1
 	ldr r0, [r0]
-	ldr r1, _0805606C @ =0x02022920
+	ldr r1, _0805606C @ =gPal + 0xc0
 	movs r2, #0x20
 	bl CpuFastSet
 	bl EnablePalSync
@@ -3183,7 +3183,7 @@ _08056064:
 	pop {r0}
 	bx r0
 	.align 2, 0
-_0805606C: .4byte 0x02022920
+_0805606C: .4byte gPal + 0xc0
 
 	thumb_func_start StartSpellAnimation
 StartSpellAnimation: @ 0x08056070
@@ -6000,18 +6000,18 @@ _08057730:
 	bne _08057770
 	ldr r0, _08057768 @ =0x02000054
 	ldr r0, [r0]
-	ldr r1, _0805776C @ =0x02022B40
+	ldr r1, _0805776C @ =gPal + 0x2e0
 	movs r2, #8
 	bl CpuFastSet
 	b _0805777C
 	.align 2, 0
 _08057764: .4byte gDispIo
 _08057768: .4byte 0x02000054
-_0805776C: .4byte 0x02022B40
+_0805776C: .4byte gPal + 0x2e0
 _08057770:
 	ldr r0, _08057784 @ =0x02000054
 	ldr r0, [r0, #4]
-	ldr r1, _08057788 @ =0x02022B80
+	ldr r1, _08057788 @ =gPal + 0x320
 	movs r2, #8
 	bl CpuFastSet
 _0805777C:
@@ -6020,7 +6020,7 @@ _0805777C:
 	b _080577A2
 	.align 2, 0
 _08057784: .4byte 0x02000054
-_08057788: .4byte 0x02022B80
+_08057788: .4byte gPal + 0x320
 _0805778C:
 	cmp r0, #0xb3
 	bne _080577A2
@@ -6330,18 +6330,18 @@ _080579F0:
 	bne _08057A30
 	ldr r0, _08057A28 @ =0x02000054
 	ldr r0, [r0]
-	ldr r1, _08057A2C @ =0x02022B40
+	ldr r1, _08057A2C @ =gPal + 0x2e0
 	movs r2, #8
 	bl CpuFastSet
 	b _08057A3C
 	.align 2, 0
 _08057A24: .4byte gDispIo
 _08057A28: .4byte 0x02000054
-_08057A2C: .4byte 0x02022B40
+_08057A2C: .4byte gPal + 0x2e0
 _08057A30:
 	ldr r0, _08057A44 @ =0x02000054
 	ldr r0, [r0, #4]
-	ldr r1, _08057A48 @ =0x02022B80
+	ldr r1, _08057A48 @ =gPal + 0x320
 	movs r2, #8
 	bl CpuFastSet
 _08057A3C:
@@ -6350,7 +6350,7 @@ _08057A3C:
 	b _08057A62
 	.align 2, 0
 _08057A44: .4byte 0x02000054
-_08057A48: .4byte 0x02022B80
+_08057A48: .4byte gPal + 0x320
 _08057A4C:
 	cmp r0, #0xa5
 	bne _08057A62
@@ -8232,7 +8232,7 @@ _080589C2:
 	movs r6, #0xa8
 	lsls r6, r6, #1
 _080589CA:
-	ldr r0, _080589E0 @ =0x0202349C
+	ldr r0, _080589E0 @ =gBg1Tm + 0x3c
 	str r6, [sp]
 	movs r1, #2
 	movs r2, #0x14
@@ -8241,7 +8241,7 @@ _080589CA:
 	b _08058A02
 	.align 2, 0
 _080589DC: .4byte 0x0000011F
-_080589E0: .4byte 0x0202349C
+_080589E0: .4byte gBg1Tm + 0x3c
 _080589E4:
 	movs r0, #1
 	rsbs r0, r0, #0
@@ -8929,7 +8929,7 @@ _08058F9C:
 	movs r2, #0
 	bl SetBgOffset
 _08058FA6:
-	ldr r0, _08058FC0 @ =0x0202349C
+	ldr r0, _08058FC0 @ =gBg1Tm + 0x3c
 	movs r1, #0x80
 	lsls r1, r1, #1
 	str r1, [sp]
@@ -8943,7 +8943,7 @@ _08058FB8:
 	pop {r0}
 	bx r0
 	.align 2, 0
-_08058FC0: .4byte 0x0202349C
+_08058FC0: .4byte gBg1Tm + 0x3c
 
 	thumb_func_start sub_08058FC4
 sub_08058FC4: @ 0x08058FC4
@@ -11891,7 +11891,7 @@ sub_0805A780: @ 0x0805A780
 _0805A7E8: .4byte gEkrDistanceType
 _0805A7EC: .4byte gBg1Tm
 _0805A7F0:
-	ldr r0, _0805A804 @ =0x0202349A
+	ldr r0, _0805A804 @ =gBg1Tm + 0x3a
 	movs r1, #0
 _0805A7F4:
 	str r1, [sp]
@@ -11901,7 +11901,7 @@ _0805A7F4:
 	bl FillBGRect
 	b _0805A826
 	.align 2, 0
-_0805A804: .4byte 0x0202349A
+_0805A804: .4byte gBg1Tm + 0x3a
 _0805A808:
 	movs r0, #1
 	rsbs r0, r0, #0
@@ -12697,7 +12697,7 @@ sub_0805AE68: @ 0x0805AE68
 	adds r2, r2, r3
 	ldr r2, [r2]
 	bl SpellFx_WriteBgMap
-	ldr r0, _0805AED4 @ =0x0202349C
+	ldr r0, _0805AED4 @ =gBg1Tm + 0x3c
 	ldr r1, _0805AED8 @ =0x0000011F
 	str r1, [sp]
 	movs r1, #2
@@ -12727,7 +12727,7 @@ _0805AECC:
 	pop {r0}
 	bx r0
 	.align 2, 0
-_0805AED4: .4byte 0x0202349C
+_0805AED4: .4byte gBg1Tm + 0x3c
 _0805AED8: .4byte 0x0000011F
 _0805AEDC: .4byte 0x0201774C
 
@@ -12871,7 +12871,7 @@ sub_0805AFC8: @ 0x0805AFC8
 	adds r4, r4, r6
 	ldr r2, [r4]
 	bl SpellFx_WriteBgMap
-	ldr r0, _0805B018 @ =0x0202349C
+	ldr r0, _0805B018 @ =gBg1Tm + 0x3c
 	ldr r1, _0805B01C @ =0x0000011F
 	str r1, [sp]
 	movs r1, #2
@@ -12880,7 +12880,7 @@ sub_0805AFC8: @ 0x0805AFC8
 	bl FillBGRect
 	b _0805B03E
 	.align 2, 0
-_0805B018: .4byte 0x0202349C
+_0805B018: .4byte gBg1Tm + 0x3c
 _0805B01C: .4byte 0x0000011F
 _0805B020:
 	movs r0, #1
@@ -14031,7 +14031,7 @@ sub_0805B930: @ 0x0805B930
 _0805B988: .4byte gEkrDistanceType
 _0805B98C: .4byte gBg1Tm
 _0805B990:
-	ldr r0, _0805B9A4 @ =0x0202349A
+	ldr r0, _0805B9A4 @ =gBg1Tm + 0x3a
 	movs r1, #0
 _0805B994:
 	str r1, [sp]
@@ -14041,7 +14041,7 @@ _0805B994:
 	bl FillBGRect
 	b _0805B9C6
 	.align 2, 0
-_0805B9A4: .4byte 0x0202349A
+_0805B9A4: .4byte gBg1Tm + 0x3a
 _0805B9A8:
 	movs r0, #1
 	rsbs r0, r0, #0
@@ -16766,7 +16766,7 @@ _0805CFB4:
 _0805CFF0: .4byte gEkrDistanceType
 _0805CFF4: .4byte gBg1Tm
 _0805CFF8:
-	ldr r0, _0805D010 @ =0x0202349A
+	ldr r0, _0805D010 @ =gBg1Tm + 0x3a
 	movs r1, #0
 	str r1, [sp]
 	movs r1, #3
@@ -16778,7 +16778,7 @@ _0805D008:
 	bl EnableBgSync
 	b _0805D032
 	.align 2, 0
-_0805D010: .4byte 0x0202349A
+_0805D010: .4byte gBg1Tm + 0x3a
 _0805D014:
 	movs r0, #1
 	rsbs r0, r0, #0
@@ -21840,7 +21840,7 @@ sub_0805F950: @ 0x0805F950
 _0805F998: .4byte gEkrDistanceType
 _0805F99C: .4byte gBg1Tm
 _0805F9A0:
-	ldr r0, _0805F9B4 @ =0x0202349A
+	ldr r0, _0805F9B4 @ =gBg1Tm + 0x3a
 	movs r1, #0
 _0805F9A4:
 	str r1, [sp]
@@ -21850,7 +21850,7 @@ _0805F9A4:
 	bl FillBGRect
 	b _0805F9D6
 	.align 2, 0
-_0805F9B4: .4byte 0x0202349A
+_0805F9B4: .4byte gBg1Tm + 0x3a
 _0805F9B8:
 	movs r0, #1
 	rsbs r0, r0, #0
@@ -24793,7 +24793,7 @@ sub_08061128: @ 0x08061128
 _0806117C: .4byte gEkrDistanceType
 _08061180: .4byte gBg1Tm
 _08061184:
-	ldr r0, _0806119C @ =0x0202349A
+	ldr r0, _0806119C @ =gBg1Tm + 0x3a
 	movs r1, #0
 	str r1, [sp]
 	movs r1, #3
@@ -24805,7 +24805,7 @@ _08061194:
 	bl EnableBgSync
 	b _080611BE
 	.align 2, 0
-_0806119C: .4byte 0x0202349A
+_0806119C: .4byte gBg1Tm + 0x3a
 _080611A0:
 	movs r0, #1
 	rsbs r0, r0, #0
@@ -26810,7 +26810,7 @@ _0806224A:
 	cmp r3, #0
 	blt _08062270
 	ldr r0, [r5, #0x4c]
-	ldr r1, _080622CC @ =0x02022862
+	ldr r1, _080622CC @ =gPal + 0x2
 	movs r2, #0xf
 	str r2, [sp]
 	adds r2, r3, #0
@@ -26860,7 +26860,7 @@ _08062270:
 	.align 2, 0
 _080622C4: .4byte 0x02000010
 _080622C8: .4byte 0x0000F3FF
-_080622CC: .4byte 0x02022862
+_080622CC: .4byte gPal + 0x2
 _080622D0: .4byte 0x0201774C
 _080622D4: .4byte gAnims
 _080622D8: .4byte gDispIo
@@ -27572,7 +27572,7 @@ _08062860:
 _0806289C: .4byte gEkrDistanceType
 _080628A0: .4byte gBg1Tm
 _080628A4:
-	ldr r0, _080628BC @ =0x0202349A
+	ldr r0, _080628BC @ =gBg1Tm + 0x3a
 	movs r1, #0
 	str r1, [sp]
 	movs r1, #3
@@ -27584,7 +27584,7 @@ _080628B4:
 	bl EnableBgSync
 	b _080628DE
 	.align 2, 0
-_080628BC: .4byte 0x0202349A
+_080628BC: .4byte gBg1Tm + 0x3a
 _080628C0:
 	movs r0, #1
 	rsbs r0, r0, #0
@@ -31714,7 +31714,7 @@ sub_08064A04: @ 0x08064A04
 	bl sub_0806482C
 	ldrh r0, [r0, #0x10]
 	lsls r1, r0, #5
-	ldr r0, _08064A28 @ =0x02022A60
+	ldr r0, _08064A28 @ =gPal + 0x200
 	adds r1, r1, r0
 	adds r0, r4, #0
 	movs r2, #8
@@ -31724,7 +31724,7 @@ sub_08064A04: @ 0x08064A04
 	pop {r0}
 	bx r0
 	.align 2, 0
-_08064A28: .4byte 0x02022A60
+_08064A28: .4byte gPal + 0x200
 
 	thumb_func_start sub_08064A2C
 sub_08064A2C: @ 0x08064A2C

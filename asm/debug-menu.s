@@ -240,7 +240,7 @@ _0801B764:
 	ands r0, r1
 	cmp r0, #0
 	beq _0801B790
-	ldr r4, _0801B79C @ =0x02022D2E
+	ldr r4, _0801B79C @ =gBg0Tm + 0xce
 	ldr r1, _0801B7A0 @ =gUnk_081C9238
 	adds r0, r4, #0
 	bl sub_08004E4C
@@ -259,7 +259,7 @@ _0801B790:
 	bx r1
 	.align 2, 0
 _0801B798: .4byte gpKeySt
-_0801B79C: .4byte 0x02022D2E
+_0801B79C: .4byte gBg0Tm + 0xce
 _0801B7A0: .4byte gUnk_081C9238
 
 	thumb_func_start sub_0801B7A4
@@ -899,7 +899,7 @@ _0801BCAC: .4byte gPlaySt
 	thumb_func_start sub_0801BCB0
 sub_0801BCB0: @ 0x0801BCB0
 	push {r4, lr}
-	ldr r4, _0801BCD0 @ =0x02022D2E
+	ldr r4, _0801BCD0 @ =gBg0Tm + 0xce
 	movs r0, #0
 	bl GetROMChapterStruct
 	ldr r1, [r0]
@@ -911,7 +911,7 @@ sub_0801BCB0: @ 0x0801BCB0
 	pop {r1}
 	bx r1
 	.align 2, 0
-_0801BCD0: .4byte 0x02022D2E
+_0801BCD0: .4byte gBg0Tm + 0xce
 
 	thumb_func_start sub_0801BCD4
 sub_0801BCD4: @ 0x0801BCD4
@@ -941,7 +941,7 @@ sub_0801BCD4: @ 0x0801BCD4
 	ldrb r1, [r4, #4]
 	ands r0, r1
 	strb r0, [r4, #4]
-	ldr r0, _0801BD3C @ =0x02023CA0
+	ldr r0, _0801BD3C @ =gBg2Tm + 0x40
 	bl PutBuildInfo
 	pop {r4}
 	pop {r0}
@@ -953,7 +953,7 @@ _0801BD2C: .4byte gUnk_081C92C8
 _0801BD30: .4byte gUnk_08C04B4C
 _0801BD34: .4byte gBmSt
 _0801BD38: .4byte 0x0600B000
-_0801BD3C: .4byte 0x02023CA0
+_0801BD3C: .4byte gBg2Tm + 0x40
 
 	thumb_func_start sub_0801BD40
 sub_0801BD40: @ 0x0801BD40

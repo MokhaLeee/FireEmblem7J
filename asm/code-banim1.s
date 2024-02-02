@@ -1192,7 +1192,7 @@ _08051B1A:
 	ldr r1, _08051B50 @ =0x06010000
 	bl LZ77UnCompVram
 	ldr r0, _08051B54 @ =gUnk_081EDC6C
-	ldr r1, _08051B58 @ =0x02022AE0
+	ldr r1, _08051B58 @ =gPal + 0x280
 	movs r2, #1
 	bl CpuFastSet
 	bl EnablePalSync
@@ -1212,7 +1212,7 @@ _08051B42:
 _08051B4C: .4byte gUnk_08C0A420
 _08051B50: .4byte 0x06010000
 _08051B54: .4byte gUnk_081EDC6C
-_08051B58: .4byte 0x02022AE0
+_08051B58: .4byte gPal + 0x280
 _08051B5C: .4byte gEkrDistanceType
 _08051B60: .4byte _08051B64
 _08051B64: @ jump table

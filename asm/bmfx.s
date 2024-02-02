@@ -2185,7 +2185,7 @@ _0801E920: .4byte sub_0801E858
 	thumb_func_start sub_0801E924
 sub_0801E924: @ 0x0801E924
 	push {lr}
-	ldr r2, _0801E944 @ =0x02022EA0
+	ldr r2, _0801E944 @ =gBg0Tm + 0x240
 	movs r1, #0
 	ldr r0, _0801E948 @ =0x00005140
 	adds r3, r0, #0
@@ -2201,7 +2201,7 @@ _0801E92E:
 	pop {r0}
 	bx r0
 	.align 2, 0
-_0801E944: .4byte 0x02022EA0
+_0801E944: .4byte gBg0Tm + 0x240
 _0801E948: .4byte 0x00005140
 
 	thumb_func_start sub_0801E94C
@@ -3674,7 +3674,7 @@ _0801F4B2:
 	movs r0, #4
 	bl ApplyIconPalettes
 	lsls r0, r4, #1
-	ldr r1, _0801F50C @ =0x02022EA2
+	ldr r1, _0801F50C @ =gBg0Tm + 0x242
 	adds r0, r0, r1
 	movs r2, #0x80
 	lsls r2, r2, #7
@@ -3684,7 +3684,7 @@ _0801F4B2:
 _0801F4E2:
 	bl ResetTextFont
 	lsls r1, r4, #1
-	ldr r0, _0801F50C @ =0x02022EA2
+	ldr r0, _0801F50C @ =gBg0Tm + 0x242
 	adds r1, r1, r0
 	movs r0, #0x14
 	str r0, [sp]
@@ -3701,7 +3701,7 @@ _0801F4E2:
 	pop {r0}
 	bx r0
 	.align 2, 0
-_0801F50C: .4byte 0x02022EA2
+_0801F50C: .4byte gBg0Tm + 0x242
 _0801F510: .4byte gUnk_08C02BA8
 
 	thumb_func_start sub_0801F514
@@ -3792,7 +3792,7 @@ _0801F5D0:
 	movs r3, #6
 	bl sub_0804A4CC
 	lsls r6, r6, #1
-	ldr r5, _0801F648 @ =0x02022E62
+	ldr r5, _0801F648 @ =gBg0Tm + 0x202
 	adds r4, r6, r5
 	mov r0, r8
 	bl sub_08017808
@@ -3835,7 +3835,7 @@ _0801F5D0:
 	.align 2, 0
 _0801F640: .4byte 0x00000726
 _0801F644: .4byte 0x00000727
-_0801F648: .4byte 0x02022E62
+_0801F648: .4byte gBg0Tm + 0x202
 _0801F64C: .4byte gUnk_08C02BA8
 
 	thumb_func_start sub_0801F650
@@ -3894,7 +3894,7 @@ _0801F6BC:
 	movs r3, #4
 	bl sub_0804A4CC
 	lsls r5, r5, #1
-	ldr r4, _0801F704 @ =0x02022EA2
+	ldr r4, _0801F704 @ =gBg0Tm + 0x242
 	adds r6, r5, r4
 	adds r0, r7, #0
 	bl sub_08017808
@@ -3918,7 +3918,7 @@ _0801F6BC:
 	pop {r0}
 	bx r0
 	.align 2, 0
-_0801F704: .4byte 0x02022EA2
+_0801F704: .4byte gBg0Tm + 0x242
 _0801F708: .4byte gUnk_08C02BA8
 
 	thumb_func_start sub_0801F70C
@@ -4957,7 +4957,7 @@ sub_0801FF18: @ 0x0801FF18
 	movs r1, #0xd
 	strh r1, [r0]
 	bl ColorFadeInit
-	ldr r0, _0801FF38 @ =0x020228E0
+	ldr r0, _0801FF38 @ =gPal + 0x80
 	movs r3, #1
 	rsbs r3, r3, #0
 	movs r1, #4
@@ -4966,7 +4966,7 @@ sub_0801FF18: @ 0x0801FF18
 	pop {r0}
 	bx r0
 	.align 2, 0
-_0801FF38: .4byte 0x020228E0
+_0801FF38: .4byte gPal + 0x80
 
 	thumb_func_start sub_0801FF3C
 sub_0801FF3C: @ 0x0801FF3C
@@ -5154,7 +5154,7 @@ sub_080200CC: @ 0x080200CC
 	push {r4, r5, lr}
 	adds r4, r0, #0
 	bl ColorFadeInit
-	ldr r5, _0802013C @ =0x02022920
+	ldr r5, _0802013C @ =gPal + 0xc0
 	adds r0, r5, #0
 	movs r1, #6
 	movs r2, #0xa
@@ -5200,7 +5200,7 @@ _08020136:
 	pop {r0}
 	bx r0
 	.align 2, 0
-_0802013C: .4byte 0x02022920
+_0802013C: .4byte gPal + 0xc0
 _08020140: .4byte gPlaySt
 
 	thumb_func_start sub_08020144
@@ -5539,7 +5539,7 @@ sub_080203D0: @ 0x080203D0
 	adds r4, r0, #0
 	bl ClearBg0Bg1
 	bl ColorFadeInit
-	ldr r5, _0802046C @ =0x02022920
+	ldr r5, _0802046C @ =gPal + 0xc0
 	adds r0, r5, #0
 	movs r1, #6
 	movs r2, #0xa
@@ -5606,7 +5606,7 @@ _08020466:
 	pop {r0}
 	bx r0
 	.align 2, 0
-_0802046C: .4byte 0x02022920
+_0802046C: .4byte gPal + 0xc0
 _08020470: .4byte gPlaySt
 _08020474: .4byte 0x0000FFFF
 
@@ -5931,7 +5931,7 @@ sub_08020674: @ 0x08020674
 	movs r2, #0
 	bl SetBgOffset
 	bl ClearBg0Bg1
-	ldr r0, _080207A4 @ =0x02022EAE
+	ldr r0, _080207A4 @ =gBg0Tm + 0x24e
 	ldr r1, _080207A8 @ =gUnk_08409060
 	movs r2, #0x80
 	bl TmApplyTsa_thm
@@ -6005,7 +6005,7 @@ _08020794: .4byte gUnk_08409040
 _08020798: .4byte gUnk_08406218
 _0802079C: .4byte 0x06002000
 _080207A0: .4byte gUnk_08409020
-_080207A4: .4byte 0x02022EAE
+_080207A4: .4byte gBg0Tm + 0x24e
 _080207A8: .4byte gUnk_08409060
 _080207AC: .4byte sub_08020630
 _080207B0: .4byte 0x0000FFE0
@@ -7912,7 +7912,7 @@ sub_080216A0: @ 0x080216A0
 	ldr r4, _08021738 @ =gBuf
 	adds r1, r4, #0
 	bl Decompress
-	ldr r0, _0802173C @ =0x02022C64
+	ldr r0, _0802173C @ =gBg0Tm + 0x4
 	movs r2, #0x8a
 	lsls r2, r2, #6
 	adds r1, r4, #0
@@ -7967,7 +7967,7 @@ _0802172C: .4byte 0x06005000
 _08021730: .4byte gUnk_081BF2E0
 _08021734: .4byte gUnk_081BF4E0
 _08021738: .4byte gBuf
-_0802173C: .4byte 0x02022C64
+_0802173C: .4byte gBg0Tm + 0x4
 _08021740: .4byte gDispIo
 _08021744: .4byte 0x0000FFE0
 _08021748: .4byte 0x0000E0FF
@@ -8249,7 +8249,7 @@ sub_0802196C: @ 0x0802196C
 	ldr r0, _080219A8 @ =gUnk_081C2358
 	ldr r1, _080219AC @ =0x06002000
 	bl Decompress
-	ldr r0, _080219B0 @ =0x02022C20
+	ldr r0, _080219B0 @ =gPal + 0x3c0
 	movs r1, #0xa0
 	movs r2, #0x20
 	bl ApplyPaletteExt
@@ -8271,5 +8271,5 @@ sub_0802196C: @ 0x0802196C
 	.align 2, 0
 _080219A8: .4byte gUnk_081C2358
 _080219AC: .4byte 0x06002000
-_080219B0: .4byte 0x02022C20
+_080219B0: .4byte gPal + 0x3c0
 _080219B4: .4byte gUnk_08C03018

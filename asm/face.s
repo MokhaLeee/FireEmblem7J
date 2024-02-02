@@ -199,7 +199,7 @@ _08006AEC:
 	adds r0, r0, r1
 	ldrh r0, [r0, #4]
 	lsls r1, r0, #5
-	ldr r0, _08006B34 @ =0x02022A60
+	ldr r0, _08006B34 @ =gPal + 0x200
 	adds r1, r1, r0
 	ldr r2, _08006B38 @ =0x01000008
 	mov r0, sp
@@ -209,7 +209,7 @@ _08006AEC:
 	.align 2, 0
 _08006B2C: .4byte gUnk_08BFF970
 _08006B30: .4byte 0x0202A580
-_08006B34: .4byte 0x02022A60
+_08006B34: .4byte gPal + 0x200
 _08006B38: .4byte 0x01000008
 _08006B3C:
 	ldr r0, [r5, #8]
@@ -2208,7 +2208,7 @@ _08007A84:
 	adds r0, r4, r0
 	ldrh r0, [r0, #4]
 	lsls r1, r0, #5
-	ldr r0, _08007ACC @ =0x02022A60
+	ldr r0, _08007ACC @ =gPal + 0x200
 	adds r1, r1, r0
 	ldr r2, _08007AD0 @ =0x01000008
 	mov r0, sp
@@ -2218,7 +2218,7 @@ _08007A84:
 	.align 2, 0
 _08007AC4: .4byte gUnk_08BFF9A8
 _08007AC8: .4byte 0x0202A580
-_08007ACC: .4byte 0x02022A60
+_08007ACC: .4byte gPal + 0x200
 _08007AD0: .4byte 0x01000008
 _08007AD4:
 	mov r2, r8

@@ -1832,12 +1832,12 @@ sub_080227D8: @ 0x080227D8
 	lsls r2, r2, #2
 	movs r3, #0
 	bl InitTextFont
-	ldr r0, _0802280C @ =0x02022CB6
+	ldr r0, _0802280C @ =gBg0Tm + 0x56
 	ldr r1, _08022810 @ =gUiTmScratchA
 	movs r2, #9
 	movs r3, #0x13
 	bl TmCopyRect_thm
-	ldr r0, _08022814 @ =0x020234B6
+	ldr r0, _08022814 @ =gBg1Tm + 0x56
 	ldr r1, _08022818 @ =0x0200373C
 	movs r2, #9
 	movs r3, #0x13
@@ -1847,9 +1847,9 @@ sub_080227D8: @ 0x080227D8
 	.align 2, 0
 _08022804: .4byte 0x02002774
 _08022808: .4byte 0x06004000
-_0802280C: .4byte 0x02022CB6
+_0802280C: .4byte gBg0Tm + 0x56
 _08022810: .4byte gUiTmScratchA
-_08022814: .4byte 0x020234B6
+_08022814: .4byte gBg1Tm + 0x56
 _08022818: .4byte 0x0200373C
 
 	thumb_func_start sub_0802281C
@@ -1866,12 +1866,12 @@ sub_08022828: @ 0x08022828
 	movs r0, #0
 	bl SetTextFont
 	ldr r0, _08022854 @ =gUiTmScratchA
-	ldr r1, _08022858 @ =0x02022CB6
+	ldr r1, _08022858 @ =gBg0Tm + 0x56
 	movs r2, #9
 	movs r3, #0x13
 	bl TmCopyRect_thm
 	ldr r0, _0802285C @ =0x0200373C
-	ldr r1, _08022860 @ =0x020234B6
+	ldr r1, _08022860 @ =gBg1Tm + 0x56
 	movs r2, #9
 	movs r3, #0x13
 	bl TmCopyRect_thm
@@ -1882,9 +1882,9 @@ sub_08022828: @ 0x08022828
 	bx r1
 	.align 2, 0
 _08022854: .4byte gUiTmScratchA
-_08022858: .4byte 0x02022CB6
+_08022858: .4byte gBg0Tm + 0x56
 _0802285C: .4byte 0x0200373C
-_08022860: .4byte 0x020234B6
+_08022860: .4byte gBg1Tm + 0x56
 
 	thumb_func_start sub_08022864
 sub_08022864: @ 0x08022864
@@ -1947,13 +1947,13 @@ sub_080228D4: @ 0x080228D4
 	cmp r0, #0
 	beq _08022974
 	ldr r0, _08022960 @ =gUiTmScratchA
-	ldr r5, _08022964 @ =0x02022CB6
+	ldr r5, _08022964 @ =gBg0Tm + 0x56
 	adds r1, r5, #0
 	movs r2, #9
 	movs r3, #0x13
 	bl TmCopyRect_thm
 	ldr r0, _08022968 @ =0x0200373C
-	ldr r4, _0802296C @ =0x020234B6
+	ldr r4, _0802296C @ =gBg1Tm + 0x56
 	adds r1, r4, #0
 	movs r2, #9
 	movs r3, #0x13
@@ -1997,9 +1997,9 @@ sub_080228D4: @ 0x080228D4
 	.align 2, 0
 _0802295C: .4byte gActiveUnit
 _08022960: .4byte gUiTmScratchA
-_08022964: .4byte 0x02022CB6
+_08022964: .4byte gBg0Tm + 0x56
 _08022968: .4byte 0x0200373C
-_0802296C: .4byte 0x020234B6
+_0802296C: .4byte gBg1Tm + 0x56
 _08022970: .4byte gUnk_08C04CFC
 _08022974:
 	bl ClearBg0Bg1
@@ -3519,7 +3519,7 @@ sub_080234D0: @ 0x080234D0
 	bl StartMenu
 	adds r0, r4, #0
 	bl sub_0804B6DC
-	ldr r0, _08023568 @ =0x020234E4
+	ldr r0, _08023568 @ =gBg1Tm + 0x84
 	ldr r1, _0802356C @ =gUnk_08191C28
 	movs r2, #0x80
 	lsls r2, r2, #5
@@ -3540,7 +3540,7 @@ sub_080234D0: @ 0x080234D0
 	ldr r0, [r0]
 	ldrh r0, [r0]
 	bl DecodeMsg
-	ldr r5, _08023570 @ =0x02022D26
+	ldr r5, _08023570 @ =gBg0Tm + 0xc6
 	movs r1, #7
 	str r1, [sp]
 	str r0, [sp, #4]
@@ -3567,9 +3567,9 @@ sub_080234D0: @ 0x080234D0
 	.align 2, 0
 _08023560: .4byte gActionSt
 _08023564: .4byte gUnk_08C04BDC
-_08023568: .4byte 0x020234E4
+_08023568: .4byte gBg1Tm + 0x84
 _0802356C: .4byte gUnk_08191C28
-_08023570: .4byte 0x02022D26
+_08023570: .4byte gBg0Tm + 0xc6
 
 	thumb_func_start sub_08023574
 sub_08023574: @ 0x08023574

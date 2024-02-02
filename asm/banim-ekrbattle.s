@@ -1178,7 +1178,7 @@ sub_0804C20C: @ 0x0804C20C
 	lsls r2, r2, #2
 	bl RegisterDataMove
 	ldr r0, _0804C328 @ =gUnk_081DFBC4
-	ldr r1, _0804C32C @ =0x020238AC
+	ldr r1, _0804C32C @ =gBg1Tm + 0x44c
 	movs r2, #1
 	str r2, [sp]
 	adds r2, #0xff
@@ -1187,7 +1187,7 @@ sub_0804C20C: @ 0x0804C20C
 	movs r3, #3
 	bl EfxTmCpyBG
 	ldr r0, _0804C330 @ =gUnk_081DFC30
-	ldr r1, _0804C334 @ =0x02022880
+	ldr r1, _0804C334 @ =gPal + 0x20
 	movs r2, #8
 	bl CpuFastSet
 	movs r0, #2
@@ -1232,9 +1232,9 @@ _0804C31C: .4byte 0x030027C4
 _0804C320: .4byte gUnk_081DF464
 _0804C324: .4byte 0x06002000
 _0804C328: .4byte gUnk_081DFBC4
-_0804C32C: .4byte 0x020238AC
+_0804C32C: .4byte gBg1Tm + 0x44c
 _0804C330: .4byte gUnk_081DFC30
-_0804C334: .4byte 0x02022880
+_0804C334: .4byte gPal + 0x20
 _0804C338: .4byte gEkrPairExpGain
 _0804C33C: .4byte gEkrPairExpPrevious
 _0804C340:

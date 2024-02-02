@@ -34,7 +34,7 @@ EkrDragon_080655A0: @ 0x080655A0
 	ldr r1, _0806564C @ =gEkrTsaBuffer
 	bl LZ77UnCompWram
 	ldr r0, _08065650 @ =Pal_EkrDragon_082E6C60
-	ldr r1, _08065654 @ =0x02022920
+	ldr r1, _08065654 @ =gPal + 0xc0
 	movs r2, #8
 	bl CpuFastSet
 	ldr r0, _08065658 @ =0x001F001F
@@ -76,7 +76,7 @@ _08065644: .4byte 0x06008000
 _08065648: .4byte gUnk_082E6D40
 _0806564C: .4byte gEkrTsaBuffer
 _08065650: .4byte Pal_EkrDragon_082E6C60
-_08065654: .4byte 0x02022920
+_08065654: .4byte gPal + 0xc0
 _08065658: .4byte 0x001F001F
 _0806565C: .4byte gBg3Tm
 
@@ -915,7 +915,7 @@ sub_08065D5C: @ 0x08065D5C
 	bl Interpolate
 	adds r5, r0, #0
 	ldr r0, _08065DBC @ =0x02020060
-	ldr r4, _08065DC0 @ =0x020228E0
+	ldr r4, _08065DC0 @ =gPal + 0x80
 	adds r1, r4, #0
 	movs r2, #0x10
 	bl CpuFastSet
@@ -948,7 +948,7 @@ _08065DB4:
 	bx r0
 	.align 2, 0
 _08065DBC: .4byte 0x02020060
-_08065DC0: .4byte 0x020228E0
+_08065DC0: .4byte gPal + 0x80
 
 	thumb_func_start sub_08065DC4
 sub_08065DC4: @ 0x08065DC4
@@ -980,7 +980,7 @@ sub_08065DD0: @ 0x08065DD0
 	bl FillBGRect
 	ldr r0, _08065E2C @ =0x0201FAD0
 	bl sub_08055718
-	ldr r4, _08065E30 @ =0x020228E0
+	ldr r4, _08065E30 @ =gPal + 0x80
 	ldr r1, _08065E34 @ =0x02020060
 	adds r0, r4, #0
 	movs r2, #0x10
@@ -1000,7 +1000,7 @@ sub_08065DD0: @ 0x08065DD0
 _08065E24: .4byte gUnk_08C4870C
 _08065E28: .4byte gBg2Tm
 _08065E2C: .4byte 0x0201FAD0
-_08065E30: .4byte 0x020228E0
+_08065E30: .4byte gPal + 0x80
 _08065E34: .4byte 0x02020060
 
 	thumb_func_start sub_08065E38
@@ -1018,7 +1018,7 @@ sub_08065E38: @ 0x08065E38
 	bl Interpolate
 	adds r5, r0, #0
 	ldr r0, _08065E98 @ =0x02020060
-	ldr r4, _08065E9C @ =0x020228E0
+	ldr r4, _08065E9C @ =gPal + 0x80
 	adds r1, r4, #0
 	movs r2, #0x10
 	bl CpuFastSet
@@ -1051,7 +1051,7 @@ _08065E90:
 	bx r0
 	.align 2, 0
 _08065E98: .4byte 0x02020060
-_08065E9C: .4byte 0x020228E0
+_08065E9C: .4byte gPal + 0x80
 
 	thumb_func_start sub_08065EA0
 sub_08065EA0: @ 0x08065EA0
@@ -1439,7 +1439,7 @@ _0806617C:
 	ldr r0, [r4, #0x4c]
 	lsls r1, r1, #5
 	adds r0, r0, r1
-	ldr r1, _080661B0 @ =0x02022920
+	ldr r1, _080661B0 @ =gPal + 0xc0
 	movs r2, #8
 	bl CpuFastSet
 	bl EnablePalSync
@@ -1447,7 +1447,7 @@ _0806617C:
 	.align 2, 0
 _080661A8: .4byte gUnk_082E421E
 _080661AC: .4byte Pal_EkrDragon_082E6C60
-_080661B0: .4byte 0x02022920
+_080661B0: .4byte gPal + 0xc0
 _080661B4:
 	movs r0, #6
 	rsbs r0, r0, #0
@@ -1570,7 +1570,7 @@ _08066272:
 	ldr r0, [r4, #0x4c]
 	lsls r1, r1, #5
 	adds r0, r0, r1
-	ldr r1, _080662A4 @ =0x02022B40
+	ldr r1, _080662A4 @ =gPal + 0x2e0
 	movs r2, #8
 	bl CpuFastSet
 	bl EnablePalSync
@@ -1578,7 +1578,7 @@ _08066272:
 	.align 2, 0
 _0806629C: .4byte gUnk_082E431E
 _080662A0: .4byte gUnk_082E9CF8
-_080662A4: .4byte 0x02022B40
+_080662A4: .4byte gPal + 0x2e0
 _080662A8:
 	movs r0, #6
 	rsbs r0, r0, #0
@@ -1645,7 +1645,7 @@ sub_080662F4: @ 0x080662F4
 	adds r1, r6, #0
 	bl LZ77UnCompWram
 	ldr r0, _0806636C @ =Pal_EkrDragon_082EB510
-	ldr r1, _08066370 @ =0x020228E0
+	ldr r1, _08066370 @ =gPal + 0x80
 	movs r2, #8
 	bl CpuFastSet
 	ldr r4, _08066374 @ =gBg2Tm
@@ -1676,7 +1676,7 @@ _08066360: .4byte 0x06005000
 _08066364: .4byte gUnk_082EB530
 _08066368: .4byte gEkrTsaBuffer
 _0806636C: .4byte Pal_EkrDragon_082EB510
-_08066370: .4byte 0x020228E0
+_08066370: .4byte gPal + 0x80
 _08066374: .4byte gBg2Tm
 
 	thumb_func_start nullsub_53
@@ -2304,7 +2304,7 @@ sub_08066828: @ 0x08066828
 	bl Interpolate
 	adds r5, r0, #0
 	ldr r0, _080668A8 @ =Pal_EkrDragon_082E6C60
-	ldr r4, _080668AC @ =0x02022920
+	ldr r4, _080668AC @ =gPal + 0xc0
 	adds r1, r4, #0
 	movs r2, #8
 	bl CpuFastSet
@@ -2349,7 +2349,7 @@ _0806689E:
 	bx r0
 	.align 2, 0
 _080668A8: .4byte Pal_EkrDragon_082E6C60
-_080668AC: .4byte 0x02022920
+_080668AC: .4byte gPal + 0xc0
 _080668B0: .4byte 0x02000054
 
 	thumb_func_start nullsub_55
@@ -7651,7 +7651,7 @@ sub_080691B8: @ 0x080691B8
 	bne _08069210
 	ldr r0, _08069204 @ =0x02000054
 	ldr r0, [r0]
-	ldr r4, _08069208 @ =0x02022B40
+	ldr r4, _08069208 @ =gPal + 0x2e0
 	adds r1, r4, #0
 	movs r2, #8
 	bl CpuFastSet
@@ -7665,12 +7665,12 @@ sub_080691B8: @ 0x080691B8
 	b _0806922E
 	.align 2, 0
 _08069204: .4byte 0x02000054
-_08069208: .4byte 0x02022B40
+_08069208: .4byte gPal + 0x2e0
 _0806920C: .4byte 0xFFFFFD20
 _08069210:
 	ldr r0, _08069250 @ =0x02000054
 	ldr r0, [r0, #4]
-	ldr r4, _08069254 @ =0x02022B80
+	ldr r4, _08069254 @ =gPal + 0x320
 	adds r1, r4, #0
 	movs r2, #8
 	bl CpuFastSet
@@ -7700,7 +7700,7 @@ _08069248:
 	bx r0
 	.align 2, 0
 _08069250: .4byte 0x02000054
-_08069254: .4byte 0x02022B80
+_08069254: .4byte gPal + 0x320
 _08069258: .4byte 0xFFFFFCE0
 
 	thumb_func_start sub_0806925C
@@ -8141,7 +8141,7 @@ _080695A6:
 	adds r4, r4, r0
 	ldrh r4, [r4]
 	lsls r1, r4, #1
-	ldr r6, _08069690 @ =0x02023C66
+	ldr r6, _08069690 @ =gBg2Tm + 0x6
 	adds r1, r1, r6
 	adds r0, r5, #0
 	bl PutText
@@ -8212,7 +8212,7 @@ _08069680: .4byte gUnk_082EB8B4
 _08069684: .4byte gBg2Tm
 _08069688: .4byte 0x020176A0
 _0806968C: .4byte 0x0202010C
-_08069690: .4byte 0x02023C66
+_08069690: .4byte gBg2Tm + 0x6
 _08069694: .4byte 0x02020100
 _08069698: .4byte gUnk_082EB8C4
 _0806969C: .4byte 0x02020108
@@ -8242,7 +8242,7 @@ sub_080696A0: @ 0x080696A0
 	adds r4, r4, r0
 	ldrh r4, [r4]
 	lsls r1, r4, #1
-	ldr r0, _080696F4 @ =0x02023C66
+	ldr r0, _080696F4 @ =gBg2Tm + 0x6
 	adds r1, r1, r0
 	adds r0, r5, #0
 	bl PutText
@@ -8253,7 +8253,7 @@ sub_080696A0: @ 0x080696A0
 _080696E8: .4byte 0x020176A0
 _080696EC: .4byte 0x0202010C
 _080696F0: .4byte gUnk_082EB8B4
-_080696F4: .4byte 0x02023C66
+_080696F4: .4byte gBg2Tm + 0x6
 
 	thumb_func_start sub_080696F8
 sub_080696F8: @ 0x080696F8
@@ -8269,7 +8269,7 @@ sub_080696F8: @ 0x080696F8
 	adds r1, r0, #0
 	adds r0, r4, #0
 	bl Text_DrawString
-	ldr r1, _0806972C @ =0x02023E24
+	ldr r1, _0806972C @ =gBg2Tm + 0x1c4
 	adds r0, r4, #0
 	bl PutText
 	pop {r4}
@@ -8278,7 +8278,7 @@ sub_080696F8: @ 0x080696F8
 	.align 2, 0
 _08069724: .4byte 0x020176E0
 _08069728: .4byte 0x02020100
-_0806972C: .4byte 0x02023E24
+_0806972C: .4byte gBg2Tm + 0x1c4
 
 	thumb_func_start sub_08069730
 sub_08069730: @ 0x08069730
@@ -8296,7 +8296,7 @@ sub_08069730: @ 0x08069730
 	ldrh r1, [r0]
 	adds r0, r4, #0
 	bl Text_DrawNumber
-	ldr r1, _0806976C @ =0x02023E3A
+	ldr r1, _0806976C @ =gBg2Tm + 0x1da
 	adds r0, r4, #0
 	bl PutText
 	pop {r4}
@@ -8305,7 +8305,7 @@ sub_08069730: @ 0x08069730
 	.align 2, 0
 _08069764: .4byte 0x020176F0
 _08069768: .4byte 0x02020108
-_0806976C: .4byte 0x02023E3A
+_0806976C: .4byte gBg2Tm + 0x1da
 
 	thumb_func_start NewEkrLevelup
 NewEkrLevelup: @ 0x08069770
@@ -8688,7 +8688,7 @@ sub_08069A84: @ 0x08069A84
 	ldr r4, _08069B30 @ =gEkrTsaBuffer
 	adds r1, r4, #0
 	bl LZ77UnCompWram
-	ldr r1, _08069B34 @ =0x020235E0
+	ldr r1, _08069B34 @ =gBg1Tm + 0x180
 	movs r0, #1
 	str r0, [sp]
 	adds r0, #0xff
@@ -8703,7 +8703,7 @@ sub_08069A84: @ 0x08069A84
 	adds r0, r5, #0
 	bl RegisterDataMove
 	ldr r0, _08069B3C @ =gUnk_081E0FA8
-	ldr r4, _08069B40 @ =0x02022880
+	ldr r4, _08069B40 @ =gPal + 0x20
 	adds r1, r4, #0
 	movs r2, #8
 	bl CpuFastSet
@@ -8739,10 +8739,10 @@ _08069B24: .4byte gUnk_081E0C60
 _08069B28: .4byte 0x02017784
 _08069B2C: .4byte gUnk_081E0EAC
 _08069B30: .4byte gEkrTsaBuffer
-_08069B34: .4byte 0x020235E0
+_08069B34: .4byte gBg1Tm + 0x180
 _08069B38: .4byte 0x06002000
 _08069B3C: .4byte gUnk_081E0FA8
-_08069B40: .4byte 0x02022880
+_08069B40: .4byte gPal + 0x20
 _08069B44: .4byte gUnk_081E0FC8
 _08069B48: .4byte 0x0201A784
 _08069B4C: .4byte 0x06011400
@@ -10322,7 +10322,7 @@ sub_0806A7E0: @ 0x0806A7E0
 	cmp r3, #0
 	blt _0806A80A
 	ldr r0, [r4, #0x4c]
-	ldr r1, _0806A838 @ =0x02022862
+	ldr r1, _0806A838 @ =gPal + 0x2
 	movs r2, #8
 	str r2, [sp]
 	adds r2, r3, #0
@@ -10353,7 +10353,7 @@ _0806A830:
 	pop {r0}
 	bx r0
 	.align 2, 0
-_0806A838: .4byte 0x02022862
+_0806A838: .4byte gPal + 0x2
 _0806A83C: .4byte gUnk_082EB954
 _0806A840: .4byte gUnk_081EB2D0
 
@@ -11728,7 +11728,7 @@ _0806B2D8:
 	adds r0, r7, #0
 	adds r1, r4, #0
 	bl LZ77UnCompWram
-	ldr r1, _0806B328 @ =0x02022B60
+	ldr r1, _0806B328 @ =gPal + 0x300
 	adds r0, r4, #0
 	movs r2, #8
 	bl CpuFastSet
@@ -11748,7 +11748,7 @@ _0806B318: .4byte gUnk_08C4B688
 _0806B31C: .4byte gUnk_082F0590
 _0806B320: .4byte 0x00008840
 _0806B324: .4byte 0x0201A784
-_0806B328: .4byte 0x02022B60
+_0806B328: .4byte gPal + 0x300
 _0806B32C: .4byte 0x0203E080
 _0806B330: .4byte gUnk_08C4B4DC
 _0806B334: .4byte gUnk_082EFA68
@@ -11788,7 +11788,7 @@ _0806B364:
 	adds r0, r7, #0
 	adds r1, r4, #0
 	bl LZ77UnCompWram
-	ldr r1, _0806B3DC @ =0x02022BA0
+	ldr r1, _0806B3DC @ =gPal + 0x340
 	adds r0, r4, #0
 	movs r2, #8
 	bl CpuFastSet
@@ -11825,7 +11825,7 @@ _0806B3CC: .4byte gUnk_08C4B688
 _0806B3D0: .4byte gUnk_082F0590
 _0806B3D4: .4byte 0x0000A880
 _0806B3D8: .4byte 0x0201AF84
-_0806B3DC: .4byte 0x02022BA0
+_0806B3DC: .4byte gPal + 0x340
 _0806B3E0: .4byte 0x06010800
 _0806B3E4: .4byte 0xFFFFF800
 
@@ -12329,13 +12329,13 @@ sub_0806B7DC: @ 0x0806B7DC
 	lsls r1, r1, #2
 	adds r1, r1, r0
 	ldr r0, [r1]
-	ldr r1, _0806B7FC @ =0x02022920
+	ldr r1, _0806B7FC @ =gPal + 0xc0
 	bl LZ77UnCompWram
 	pop {r0}
 	bx r0
 	.align 2, 0
 _0806B7F8: .4byte gUnk_08C4BD70
-_0806B7FC: .4byte 0x02022920
+_0806B7FC: .4byte gPal + 0xc0
 
 	thumb_func_start sub_0806B800
 sub_0806B800: @ 0x0806B800
@@ -12566,7 +12566,7 @@ DrawBattlePopup: @ 0x0806B984
 	bl InitTextFont
 	bl SetTextDrawNoClear
 	ldr r0, _0806B9F4 @ =gUnk_081E1358
-	ldr r1, _0806B9F8 @ =0x02022880
+	ldr r1, _0806B9F8 @ =gPal + 0x20
 	movs r2, #8
 	bl CpuFastSet
 	cmp r7, #0
@@ -12588,7 +12588,7 @@ _0806B9E8: .4byte gEkrTsaBuffer
 _0806B9EC: .4byte 0x02017648
 _0806B9F0: .4byte 0x060020C0
 _0806B9F4: .4byte gUnk_081E1358
-_0806B9F8: .4byte 0x02022880
+_0806B9F8: .4byte gPal + 0x20
 _0806B9FC: .4byte 0x0000071A
 _0806BA00: .4byte 0x0000071B
 _0806BA04:

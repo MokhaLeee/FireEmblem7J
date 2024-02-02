@@ -14,19 +14,43 @@ def main(args):
                 for line in f.readlines():
 
                     ptr_str = None
-                    if ".4byte 0x08" in line:
+                    if ".4byte 0x0202" in line:
                         ptr_str = line[18:18+10]
-                    if "@ =0x08" in line:
+                    if "@ =0x0202" in line:
                         ptr_str = line[22:22+10]
 
                     if ptr_str != None:
                         ptr = eval(ptr_str)
 
-                        name = try_get_ptr_symbol(ptr)
-                        if name == None:
-                            name = f"0x{ptr:08X}"
+                        # gBuf
+                        if ptr > 0x02020140 and ptr < 0x02022240:
+                            name = f"gBuf + {hex(ptr - 0x02020140)}"
+                            line = line.replace(ptr_str, name)
 
-                        line = line.replace(ptr_str, name)
+                        # gPal
+                        if ptr > 0x02022860 and ptr < 0x02022c60:
+                            name = f"gPal + {hex(ptr - 0x02022860)}"
+                            line = line.replace(ptr_str, name)
+
+                        # gBg0Tm
+                        if ptr > 0x02022c60 and ptr < 0x02023460:
+                            name = f"gBg0Tm + {hex(ptr - 0x02022c60)}"
+                            line = line.replace(ptr_str, name)
+
+                        # gBg1Tm
+                        if ptr > 0x02023460 and ptr < 0x02023c60:
+                            name = f"gBg1Tm + {hex(ptr - 0x02023460)}"
+                            line = line.replace(ptr_str, name)
+
+                        # gBg2Tm
+                        if ptr > 0x02023c60 and ptr < 0x02024460:
+                            name = f"gBg2Tm + {hex(ptr - 0x02023c60)}"
+                            line = line.replace(ptr_str, name)
+
+                        # gBg3Tm
+                        if ptr > 0x02024460 and ptr < 0x02024c60:
+                            name = f"gBg3Tm + {hex(ptr - 0x02024460)}"
+                            line = line.replace(ptr_str, name)
 
                     fo.write(line)
 

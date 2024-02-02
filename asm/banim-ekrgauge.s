@@ -179,7 +179,7 @@ NewEkrGauge: @ 0x0804C9AC
 	cmp r0, #0x50
 	ble _0804CA10
 	ldr r0, _0804CA08 @ =gUnk_081DF3A4
-	ldr r1, _0804CA0C @ =0x02022BC0
+	ldr r1, _0804CA0C @ =gPal + 0x360
 	movs r2, #0x10
 	bl CpuSet
 	b _0804CA24
@@ -189,7 +189,7 @@ _0804C9FC: .4byte gUnk_08C09D48
 _0804CA00: .4byte 0x02000038
 _0804CA04: .4byte gEkrPairHpInitial
 _0804CA08: .4byte gUnk_081DF3A4
-_0804CA0C: .4byte 0x02022BC0
+_0804CA0C: .4byte gPal + 0x360
 _0804CA10:
 	ldr r0, _0804CA3C @ =0x0203DFF8
 	movs r2, #0
@@ -197,7 +197,7 @@ _0804CA10:
 	lsls r0, r0, #5
 	ldr r1, _0804CA40 @ =gUnk_081DF224
 	adds r0, r0, r1
-	ldr r1, _0804CA44 @ =0x02022BC0
+	ldr r1, _0804CA44 @ =gPal + 0x360
 	movs r2, #0x10
 	bl CpuSet
 _0804CA24:
@@ -207,17 +207,17 @@ _0804CA24:
 	cmp r0, #0x50
 	ble _0804CA54
 	ldr r0, _0804CA4C @ =gUnk_081DF3A4
-	ldr r1, _0804CA50 @ =0x02022BE0
+	ldr r1, _0804CA50 @ =gPal + 0x380
 	movs r2, #0x10
 	bl CpuSet
 	b _0804CA68
 	.align 2, 0
 _0804CA3C: .4byte 0x0203DFF8
 _0804CA40: .4byte gUnk_081DF224
-_0804CA44: .4byte 0x02022BC0
+_0804CA44: .4byte gPal + 0x360
 _0804CA48: .4byte gEkrPairHpInitial
 _0804CA4C: .4byte gUnk_081DF3A4
-_0804CA50: .4byte 0x02022BE0
+_0804CA50: .4byte gPal + 0x380
 _0804CA54:
 	ldr r0, _0804CBB8 @ =0x0203DFF8
 	movs r2, #2
@@ -225,7 +225,7 @@ _0804CA54:
 	lsls r0, r0, #5
 	ldr r1, _0804CBBC @ =gUnk_081DF224
 	adds r0, r0, r1
-	ldr r1, _0804CBC0 @ =0x02022BE0
+	ldr r1, _0804CBC0 @ =gPal + 0x380
 	movs r2, #0x10
 	bl CpuSet
 _0804CA68:
@@ -250,7 +250,7 @@ _0804CA68:
 	lsls r0, r0, #5
 	ldr r5, _0804CBDC @ =gUnk_081DEFA4
 	adds r0, r0, r5
-	ldr r4, _0804CBE0 @ =0x02022B00
+	ldr r4, _0804CBE0 @ =gPal + 0x2a0
 	adds r1, r4, #0
 	movs r2, #8
 	bl CpuFastSet
@@ -379,7 +379,7 @@ _0804CB1E:
 	.align 2, 0
 _0804CBB8: .4byte 0x0203DFF8
 _0804CBBC: .4byte gUnk_081DF224
-_0804CBC0: .4byte 0x02022BE0
+_0804CBC0: .4byte gPal + 0x380
 _0804CBC4: .4byte 0x0203E098
 _0804CBC8: .4byte 0x0000FFFF
 _0804CBCC: .4byte gUnk_081DEC94
@@ -387,7 +387,7 @@ _0804CBD0: .4byte 0x06013800
 _0804CBD4: .4byte gUnk_081DED34
 _0804CBD8: .4byte 0x06013C00
 _0804CBDC: .4byte gUnk_081DEFA4
-_0804CBE0: .4byte 0x02022B00
+_0804CBE0: .4byte gPal + 0x2a0
 _0804CBE4: .4byte 0x0203E09C
 _0804CBE8: .4byte 0x02017700
 _0804CBEC: .4byte 0x0203E0A0
@@ -650,7 +650,7 @@ _0804CDA8:
 	str r1, [sp, #0xdc]
 	movs r4, #8
 _0804CDAE:
-	ldr r2, _0804CE94 @ =0x02022FA0
+	ldr r2, _0804CE94 @ =gBg0Tm + 0x340
 	mov r8, r2
 	movs r0, #0x9f
 	str r0, [sp]
@@ -765,7 +765,7 @@ _0804CE66:
 	mov sl, r3
 	b _0804CEDE
 	.align 2, 0
-_0804CE94: .4byte 0x02022FA0
+_0804CE94: .4byte gBg0Tm + 0x340
 _0804CE98: .4byte gUnk_081DEA10
 _0804CE9C: .4byte 0xFFFFFCC0
 _0804CEA0: .4byte gUnk_081DEAE4
@@ -2380,7 +2380,7 @@ _0804DB3A:
 	lsls r0, r0, #5
 	ldr r5, _0804DC0C @ =gUnk_081DEC14
 	adds r0, r0, r5
-	ldr r4, _0804DC10 @ =0x020228A0
+	ldr r4, _0804DC10 @ =gPal + 0x40
 	adds r1, r4, #0
 	movs r2, #8
 	bl CpuFastSet
@@ -2413,7 +2413,7 @@ _0804DC00: .4byte gBg0Tm
 _0804DC04: .4byte gUnk_081DEBC4
 _0804DC08: .4byte 0x0203DFF8
 _0804DC0C: .4byte gUnk_081DEC14
-_0804DC10: .4byte 0x020228A0
+_0804DC10: .4byte gPal + 0x40
 _0804DC14: .4byte 0x02000038
 
 	thumb_func_start sub_0804DC18

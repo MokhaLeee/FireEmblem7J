@@ -63,7 +63,7 @@ _0802D7AE:
 	ldr r0, [r3]
 	ldrb r2, [r3, #6]
 	lsls r1, r2, #1
-	ldr r2, _0802D7E0 @ =0x02022920
+	ldr r2, _0802D7E0 @ =gPal + 0xc0
 	adds r1, r1, r2
 	ldrb r2, [r3, #5]
 	bl CpuSet
@@ -81,7 +81,7 @@ _0802D7D8:
 	pop {r0}
 	bx r0
 	.align 2, 0
-_0802D7E0: .4byte 0x02022920
+_0802D7E0: .4byte gPal + 0xc0
 
 	thumb_func_start BmVSync_AnimInit
 BmVSync_AnimInit: @ 0x0802D7E4
@@ -1084,7 +1084,7 @@ sub_0802DFB8: @ 0x0802DFB8
 	thumb_func_start sub_0802DFC8
 sub_0802DFC8: @ 0x0802DFC8
 	push {r4, r5, r6, r7, lr}
-	ldr r4, _0802E028 @ =0x02022940
+	ldr r4, _0802E028 @ =gPal + 0xe0
 	ldr r1, _0802E02C @ =0x050000E0
 	adds r0, r4, #0
 	movs r2, #0x20
@@ -1134,7 +1134,7 @@ _0802E010:
 	pop {r0}
 	bx r0
 	.align 2, 0
-_0802E028: .4byte 0x02022940
+_0802E028: .4byte gPal + 0xe0
 _0802E02C: .4byte 0x050000E0
 _0802E030: .4byte 0x02002ADC
 

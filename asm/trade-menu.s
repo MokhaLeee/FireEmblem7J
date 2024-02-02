@@ -269,7 +269,7 @@ sub_0802B250: @ 0x0802B250
 	movs r0, #0
 	str r0, [sp, #8]
 	add r0, sp, #8
-	ldr r1, _0802B324 @ =0x02022EA0
+	ldr r1, _0802B324 @ =gBg0Tm + 0x240
 	ldr r2, _0802B328 @ =0x010000B0
 	bl CpuFastSet
 	movs r0, #0
@@ -350,7 +350,7 @@ _0802B2F6:
 	.align 2, 0
 _0802B31C: .4byte gUnk_081C94C8
 _0802B320: .4byte gUnk_081C94CA
-_0802B324: .4byte 0x02022EA0
+_0802B324: .4byte gBg0Tm + 0x240
 _0802B328: .4byte 0x010000B0
 _0802B32C: .4byte 0x0200278C
 _0802B330: .4byte gBg0Tm
