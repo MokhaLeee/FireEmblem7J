@@ -263,3 +263,153 @@ void EkrDragon_CustomBgFadeIn(struct ProcEkrDragon * proc)
         Proc_Break(proc);
     }
 }
+
+void EkrDragon_080655A0(struct ProcEkrDragon * proc)
+{
+    gDispIo.bg0_ct.priority = 0;
+    gDispIo.bg1_ct.priority = 1;
+    gDispIo.bg3_ct.priority = 2;
+    gDispIo.bg2_ct.priority = 3;
+
+    LZ77UnCompVram(Img_EkrDragon_082E445C, (void *)0x06008000);
+    LZ77UnCompWram(Tsa_EkrDragon_082E445C, gEkrTsaBuffer);
+    CpuFastCopy(Pal_EkrDragon_082E6C60, PAL_BG(6), 0x20);
+
+    EfxTmFill(0x001F001F);
+    TmFill(gBg3Tm, 0x1F);
+    EkrDragonTmCpyHFlip(0, 0x78);
+    EkrDragonTmCpyExt(-0xF8, 0);
+    EnablePalSync();
+    proc->sproc2 = sub_080664CC(0x78, 0x400, 0x60, 2);
+    sub_080665B8(0x78, 0);
+
+    proc->timer = 0;
+    proc->tcounter = 60;
+    Proc_Break(proc);
+}
+
+void EkrDragon_08065660(struct ProcEkrDragon * proc)
+{
+    int x = Interpolate(INTERPOLATE_RSQUARE, -0xF8, -0x18, proc->timer, proc->tcounter);
+    int y = Interpolate(INTERPOLATE_RSQUARE,     0, 0x140, proc->timer, proc->tcounter);
+
+    EkrDragonTmCpyExt(x, y);
+
+    if (++proc->timer == (proc->tcounter + 1))
+    {
+        proc->timer = 0;
+        Proc_Break(proc);
+    }
+
+    if (proc->timer == 15)
+        PlaySFX(0xE6, 0x100, 0x78, 0);
+}
+
+void EkrDragon_080656D8(struct ProcEkrDragon * proc)
+{
+    if (++proc->timer != 0x3C)
+        return;
+
+    if (gEkrDistanceType == EKR_DISTANCE_FARFAR)
+    {
+        Proc_Break(proc);
+        return;
+    }
+
+    proc->timer = 0;
+    proc->sproc2 = sub_08065EAC(proc->anim);
+
+    switch (gEkrDistanceType) {
+    case EKR_DISTANCE_CLOSE:
+        proc->sproc2->y = 0x38 - (u16)gEkrBgPosition;
+        break;
+
+    case EKR_DISTANCE_FAR:
+        proc->sproc2->y = -(u16)gEkrBgPosition;
+        break;
+
+    default:
+        break;
+    }
+
+    proc->sproc2->unk3C = 0x4C;
+    Proc_Break(proc);
+}
+
+void EkrDragon_0806574C(struct ProcEkrDragon * proc)
+{
+    struct ProcEkrDragonSub2 * sproc2 = proc->sproc2;
+
+    if (gEkrDistanceType == EKR_DISTANCE_FARFAR)
+    {
+        proc->timer = 0;
+        NewEfxFlashBgWhite(proc->anim, 10);
+        Proc_Break(proc);
+        return;
+    }
+
+    sproc2->x = Interpolate(
+        INTERPOLATE_SQUARE,
+        sproc2->y - 0x30,
+        sproc2->y,
+        proc->timer,
+        16);
+
+    sproc2->unk3A = Interpolate(
+        INTERPOLATE_SQUARE,
+        sproc2->unk3C - 0x80,
+        sproc2->unk3C,
+        proc->timer,
+        16);
+
+    if (++proc->timer == 0x11)
+    {
+        proc->sproc2->unk29 = true;
+        proc->timer = 0;
+        NewEfxFlashBgWhite(proc->anim, 10);
+        Proc_Break(proc);
+    }
+}
+
+void EkrDragon_080657D4(struct ProcEkrDragon * proc)
+{
+    if (gEkrDistanceType == EKR_DISTANCE_FARFAR)
+    {
+        proc->sproc3 = sub_080660F4(proc->anim);
+        proc->proc44 = sub_08066200(proc->anim);
+        proc->proc4C = sub_08066414(proc->anim);
+        proc->proc58 = sub_08066380();
+        proc->proc48 = sub_080662F4(proc->anim);
+        Proc_Break(proc);
+        return;
+    }
+
+    if (++proc->timer == 10)
+    {
+        proc->timer = 0;
+        proc->tcounter = 0x80;
+        proc->y = 0x20;
+        proc->unk3C = 0;
+        proc->sproc2 = sub_08065F38(proc->anim);
+        proc->sproc2->x = proc->anim->xPosition;
+        proc->sproc2->unk3A = proc->anim->yPosition - proc->y;
+        proc->proc54 = NewEfxQuakePure(8, 0);
+        sub_08066CAC(proc->anim, 0x13A);
+        LZ77UnCompWram(Tsa_EkrDragon_082E6E8C, gEkrTsaBuffer);
+        CpuFill32(0x001F001F, gEkrTsaBuffer + 0x3C0, 0x80);
+        EfxTmFill(0x001F001F);
+        TmFill(gBg3Tm, 0x1F);
+
+        EkrDragonTmCpyWithDistance();
+        EkrDragonTmCpyExt(gEkrBgPosition, proc->y);
+
+        proc->sproc3 = sub_080660F4(proc->anim);
+        proc->proc44 = sub_08066200(proc->anim);
+        proc->proc4C = sub_08066414(proc->anim);
+        proc->proc58 = sub_08066380();
+        proc->proc48 = sub_080662F4(proc->anim);
+
+        PlaySFX(0x2F0, 0x100, 0x78, 0);
+        Proc_Break(proc);
+    }
+}

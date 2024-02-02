@@ -42,21 +42,49 @@ void SetEkrDragonExit(struct Anim * anim);
 void SetEkrDragonDead(struct Anim * anim);
 bool CheckEkrDragonDead(struct Anim * anim);
 
+struct ProcEkrDragonSub2 {
+    PROC_HEADER;
+
+    /* 29 */ bool unk29;
+    /* 2A */ u16 unk2A;
+    /* 2C */ u16 unk2C;
+
+    STRUCT_PAD(0x2E, 0x32);
+
+    /* 32 */ u16 x;
+    /* 34 */ s16 y;
+
+    STRUCT_PAD(0x36, 0x3A);
+
+    /* 3A */ s16 unk3A;
+    /* 3C */ s16 unk3C;
+};
+
 struct ProcEkrDragon {
     PROC_HEADER;
 
-    /* 29 */ u8 _pad_29[0x2C - 0x29];
+    STRUCT_PAD(0x29, 0x2C);
 
     /* 2C */ s16 timer;
     /* 2E */ s16 tcounter;
 
-    /* 30 */ u8 _pad_30[0x50 - 0x30];
+    STRUCT_PAD(0x30, 0x3A);
 
+    /* 3A */ s16 y;
+    /* 3C */ s16 unk3C;
+
+    STRUCT_PAD(0x3E, 0x44);
+
+    /* 44 */ ProcPtr proc44;
+    /* 48 */ ProcPtr proc48;
+    /* 4C */ ProcPtr proc4C;
     /* 50 */ ProcPtr fxproc;
-
-    /* 54 */ u8 _pad_54[0x5C - 0x54];
-
+    /* 54 */ ProcPtr proc54;
+    /* 58 */ ProcPtr proc58;
     /* 5C */ struct Anim * anim;
+    /* 60 */ ProcPtr sproc1;
+    /* 64 */ struct ProcEkrDragonSub2 * sproc2;
+    /* 68 */ ProcPtr sproc3;
 };
 
 extern struct ProcCmd CONST_DATA ProcScr_EkrDragon[];
@@ -87,9 +115,9 @@ void sub_08065D38(struct Anim * anim);
 // ??? sub_08065DD0
 // ??? sub_08065E38
 // ??? sub_08065EA0
-// ??? sub_08065EAC
+ProcPtr sub_08065EAC(struct Anim * anim);
 // ??? sub_08065F0C
-// ??? sub_08065F38
+ProcPtr sub_08065F38(struct Anim * anim);
 // ??? sub_08065F8C
 // ??? sub_08065F98
 // ??? sub_08065FEC
@@ -98,13 +126,46 @@ void sub_08065D38(struct Anim * anim);
 // ??? sub_08066090
 // ??? sub_0806609C
 // ??? sub_080660C8
-// ??? sub_080660F4
+ProcPtr sub_080660F4(struct Anim * anim);
 // ??? sub_08066118
-// ??? sub_08066200
+ProcPtr sub_08066200(struct Anim * anim);
 // ??? sub_08066224
-// ??? sub_080662F4
+ProcPtr sub_080662F4(struct Anim * anim);
 // ??? nullsub_53
 // ??? nullsub_54
+ProcPtr sub_08066380(void);
+// ??? sub_08066398
+// ??? sub_080663EC
+ProcPtr sub_08066414(struct Anim * anim);
+// ??? sub_08066480
+// ??? sub_0806648C
+ProcPtr sub_080664CC(int, int, int, int);
+// ??? sub_08066500
+// ??? sub_08066590
+void sub_080665B8(int, u16);
+// ??? sub_08066634
+// ??? sub_08066640
+// ??? sub_080666A4
+// ??? sub_080666D4
+// ??? sub_08066804
+// ??? sub_08066828
+// ??? nullsub_55
+// ??? sub_080668B8
+// ??? sub_08066950
+// ??? sub_080669A4
+// ??? sub_080669E8
+// ??? sub_08066AE0
+// ??? nullsub_56
+void sub_08066CAC(struct Anim * anim, int);
+// ??? sub_08066D30
+// ??? sub_08066D40
+// ??? sub_08066DA0
+// ??? sub_08066DD8
+// ??? sub_08066F80
+// ??? sub_08066FC0
+// ??? sub_08067030
+// ??? sub_08067088
+// ??? sub_080670F8
 
 extern u16 Pal_EkrDragon[0x10];
 extern u16 Pal_EkrDragon_082E6C60[0x10];

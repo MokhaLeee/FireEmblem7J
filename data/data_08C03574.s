@@ -1004,8 +1004,8 @@ gUnk_08C0A0A0:	@ 0x08C0A0A0
 gUnk_08C0A0B8:	@ 0x08C0A0B8
 	.incbin "FireEmblem7J.base.gba", 0xC0A0B8, 0xC0A0E0 - 0xC0A0B8
 
-	.global gUnk_08C0A0E0
-gUnk_08C0A0E0:	@ 0x08C0A0E0
+	.global ProcScr_EfxQuakePure
+ProcScr_EfxQuakePure:	@ 0x08C0A0E0
 	.incbin "FireEmblem7J.base.gba", 0xC0A0E0, 0xC0A0F8 - 0xC0A0E0
 
 	.global gUnk_08C0A0F8
@@ -1020,20 +1020,20 @@ gUnk_08C0A150:	@ 0x08C0A150
 gUnk_08C0A168:	@ 0x08C0A168
 	.incbin "FireEmblem7J.base.gba", 0xC0A168, 0xC0A180 - 0xC0A168
 
-	.global gUnk_08C0A180
-gUnk_08C0A180:	@ 0x08C0A180
+	.global ProcScr_EfxHitQuake
+ProcScr_EfxHitQuake:	@ 0x08C0A180
 	.incbin "FireEmblem7J.base.gba", 0xC0A180, 0xC0A198 - 0xC0A180
 
-	.global gUnk_08C0A198
-gUnk_08C0A198:	@ 0x08C0A198
+	.global ProcScr_efxFlashBG
+ProcScr_efxFlashBG:	@ 0x08C0A198
 	.incbin "FireEmblem7J.base.gba", 0xC0A198, 0xC0A1C0 - 0xC0A198
 
-	.global gUnk_08C0A1C0
-gUnk_08C0A1C0:	@ 0x08C0A1C0
+	.global ProcScr_efxWhiteOUT
+ProcScr_efxWhiteOUT:	@ 0x08C0A1C0
 	.incbin "FireEmblem7J.base.gba", 0xC0A1C0, 0xC0A1E8 - 0xC0A1C0
 
-	.global gUnk_08C0A1E8
-gUnk_08C0A1E8:	@ 0x08C0A1E8
+	.global ProcScr_efxWhiteIN
+ProcScr_efxWhiteIN:	@ 0x08C0A1E8
 	.incbin "FireEmblem7J.base.gba", 0xC0A1E8, 0xC0A218 - 0xC0A1E8
 
 	.global gUnk_08C0A218
@@ -1224,36 +1224,36 @@ gUnk_08C0D684:	@ 0x08C0D684
 gUnk_08C0D6C0:	@ 0x08C0D6C0
 	.incbin "FireEmblem7J.base.gba", 0xC0D6C0, 0xC1071C - 0xC0D6C0
 
-	.global gUnk_08C1071C
-gUnk_08C1071C:	@ 0x08C1071C
+	.global gEkrSpellAnimLut
+gEkrSpellAnimLut:	@ 0x08C1071C
 	.incbin "FireEmblem7J.base.gba", 0xC1071C, 0xC10828 - 0xC1071C
 
 	.global gUnk_08C10828
 gUnk_08C10828:	@ 0x08C10828
 	.incbin "FireEmblem7J.base.gba", 0xC10828, 0xC10830 - 0xC10828
 
-	.global gUnk_08C10830
-gUnk_08C10830:	@ 0x08C10830
+	.global ProcScr_efxRestRST
+ProcScr_efxRestRST:	@ 0x08C10830
 	.incbin "FireEmblem7J.base.gba", 0xC10830, 0xC10850 - 0xC10830
 
-	.global gUnk_08C10850
-gUnk_08C10850:	@ 0x08C10850
+	.global ProcScr_efxTwobaiRST
+ProcScr_efxTwobaiRST:	@ 0x08C10850
 	.incbin "FireEmblem7J.base.gba", 0xC10850, 0xC10868 - 0xC10850
 
-	.global gUnk_08C10868
-gUnk_08C10868:	@ 0x08C10868
+	.global ProcScr_DummvRST
+ProcScr_DummvRST:	@ 0x08C10868
 	.incbin "FireEmblem7J.base.gba", 0xC10868, 0xC10888 - 0xC10868
 
-	.global gUnk_08C10888
-gUnk_08C10888:	@ 0x08C10888
+	.global ProcScr_EfxRestWIN
+ProcScr_EfxRestWIN:	@ 0x08C10888
 	.incbin "FireEmblem7J.base.gba", 0xC10888, 0xC108A0 - 0xC10888
 
 	.global gUnk_08C108A0
 gUnk_08C108A0:	@ 0x08C108A0
 	.incbin "FireEmblem7J.base.gba", 0xC108A0, 0xC108C0 - 0xC108A0
 
-	.global gUnk_08C108C0
-gUnk_08C108C0:	@ 0x08C108C0
+	.global ProcScr_efxALPHA
+ProcScr_efxALPHA:	@ 0x08C108C0
 	.incbin "FireEmblem7J.base.gba", 0xC108C0, 0xC108D8 - 0xC108C0
 
 	.global gUnk_08C108D8

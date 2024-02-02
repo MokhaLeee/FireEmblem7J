@@ -664,8 +664,8 @@ gUnk_081DDB58:	@ 0x081DDB58
 gUnk_081DDB74:	@ 0x081DDB74
 	.incbin "FireEmblem7J.base.gba", 0x1DDB74, 0x1DDB96 - 0x1DDB74
 
-	.global gUnk_081DDB96
-gUnk_081DDB96:	@ 0x081DDB96
+	.global gEfxQuakeVecs
+gEfxQuakeVecs:	@ 0x081DDB96
 	.incbin "FireEmblem7J.base.gba", 0x1DDB96, 0x1DDBE0 - 0x1DDB96
 
 	.global gUnk_081DDBE0
@@ -2252,8 +2252,8 @@ gUnk_082E4430:	@ 0x082E4430
 gUnk_082E4442:	@ 0x082E4442
 	.incbin "FireEmblem7J.base.gba", 0x2E4442, 0x2E445C - 0x2E4442
 
-	.global gUnk_082E445C
-gUnk_082E445C:	@ 0x082E445C
+	.global Img_EkrDragon_082E445C
+Img_EkrDragon_082E445C:	@ 0x082E445C
 	.incbin "FireEmblem7J.base.gba", 0x2E445C, 0x2E6C60 - 0x2E445C
 
 .global Pal_EkrDragon_082E6C60
@@ -2262,12 +2262,12 @@ Pal_EkrDragon_082E6C60:
 
 	.incbin "FireEmblem7J.base.gba", 0x2E6C80, 0x2E6D40 - 0x2E6C80
 
-	.global gUnk_082E6D40
-gUnk_082E6D40:	@ 0x082E6D40
+	.global Tsa_EkrDragon_082E445C
+Tsa_EkrDragon_082E445C:	@ 0x082E6D40
 	.incbin "FireEmblem7J.base.gba", 0x2E6D40, 0x2E6E8C - 0x2E6D40
 
-	.global gUnk_082E6E8C
-gUnk_082E6E8C:	@ 0x082E6E8C
+	.global Tsa_EkrDragon_082E6E8C
+Tsa_EkrDragon_082E6E8C:	@ 0x082E6E8C
 	.incbin "FireEmblem7J.base.gba", 0x2E6E8C, 0x2E7418 - 0x2E6E8C
 
 	.global gUnk_082E7418

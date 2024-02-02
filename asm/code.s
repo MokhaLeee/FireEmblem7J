@@ -29,7 +29,7 @@ sub_0806BFE4: @ 0x0806BFE4
 	subs r0, #1
 	bl sub_0806B800
 	ldr r4, _0806C03C @ =gPal
-	ldr r1, _0806C040 @ =0x020165C8
+	ldr r1, _0806C040 @ =gEfxPal
 	movs r2, #0x80
 	lsls r2, r2, #1
 	adds r0, r4, #0
@@ -48,7 +48,7 @@ sub_0806BFE4: @ 0x0806BFE4
 	.align 2, 0
 _0806C038: .4byte 0x0203DFE2
 _0806C03C: .4byte gPal
-_0806C040: .4byte 0x020165C8
+_0806C040: .4byte gEfxPal
 
 	thumb_func_start sub_0806C044
 sub_0806C044: @ 0x0806C044
@@ -81,7 +81,7 @@ sub_0806C064: @ 0x0806C064
 	movs r2, #0
 	bl Interpolate
 	adds r5, r0, #0
-	ldr r0, _0806C0C0 @ =0x020165C8
+	ldr r0, _0806C0C0 @ =gEfxPal
 	ldr r4, _0806C0C4 @ =gPal
 	movs r2, #0x80
 	lsls r2, r2, #1
@@ -111,7 +111,7 @@ _0806C0B8:
 	pop {r0}
 	bx r0
 	.align 2, 0
-_0806C0C0: .4byte 0x020165C8
+_0806C0C0: .4byte gEfxPal
 _0806C0C4: .4byte gPal
 
 	thumb_func_start sub_0806C0C8
@@ -138,7 +138,7 @@ sub_0806C0E8: @ 0x0806C0E8
 	push {r4, lr}
 	adds r4, r0, #0
 	ldr r0, _0806C10C @ =gPal
-	ldr r1, _0806C110 @ =0x020165C8
+	ldr r1, _0806C110 @ =gEfxPal
 	movs r2, #0x80
 	lsls r2, r2, #1
 	bl CpuFastSet
@@ -153,7 +153,7 @@ sub_0806C0E8: @ 0x0806C0E8
 	bx r0
 	.align 2, 0
 _0806C10C: .4byte gPal
-_0806C110: .4byte 0x020165C8
+_0806C110: .4byte gEfxPal
 
 	thumb_func_start sub_0806C114
 sub_0806C114: @ 0x0806C114
@@ -170,7 +170,7 @@ sub_0806C114: @ 0x0806C114
 	movs r2, #0x10
 	bl Interpolate
 	adds r5, r0, #0
-	ldr r0, _0806C170 @ =0x020165C8
+	ldr r0, _0806C170 @ =gEfxPal
 	ldr r4, _0806C174 @ =gPal
 	movs r2, #0x80
 	lsls r2, r2, #1
@@ -200,7 +200,7 @@ _0806C168:
 	pop {r0}
 	bx r0
 	.align 2, 0
-_0806C170: .4byte 0x020165C8
+_0806C170: .4byte gEfxPal
 _0806C174: .4byte gPal
 
 	thumb_func_start sub_0806C178

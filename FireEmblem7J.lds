@@ -28,17 +28,33 @@ SECTIONS
     {
         . = 0x000000; gAnims = .;
 		. = 0x000024; gAnimC01Blocking = .;
+		. = 0x000028; gEkrXPosReal = .;
+		. = 0x00002C; gEkrYPosReal = .;
+		. = 0x000030; gEkrXPosBase = .;
+		. = 0x000034; gEkrYPosBase = .;
 		. = 0x00005C; gpBanimModesLeft = .;
 		. = 0x000060; gpBanimModesRight = .;
 		. = 0x00F1C8; gBanimScrLeft = .;
+		. = 0x0165C8; gEfxPal = .;
 		. = 0x017724; gEkrBattleEndFlag = .;
 		. = 0x017744; gEkrInitPosReal = .;
+		. = 0x01774C; gEfxBgSemaphore = .;
 		. = 0x017758; Unk_02017758 = .;
 		. = 0x019784; gEkrTsaBuffer = .;
 		. = 0x01D41C; gEfxFrameTmap = .;
 		. = 0x01FAF8; gBanimDoneFlag = .;
 		. = 0x01FB00; gEkrBgPosition = .;
 		. = 0x01FB10; gpImgSheet = .;
+		. = 0x01FB20; gEkrBg2ScrollFlip = .;
+		. = 0x01FB24; gpEkrLvupBg2ScrollOffsetStart = .;
+		. = 0x01FB28; gpEkrLvupBg2ScrollOffset = .;
+		. = 0x01FB2C; gpEkrLvupBg2ScrollOffsetTable2 = .;
+		. = 0x01FC6C; gpEkrLvupBg2ScrollOffsetTable1 = .;
+		. = 0x01FDAC; gEkrBg1ScrollFlip = .;
+		. = 0x01FDB0; gpEkrLvupBg1ScrollOffsetStart = .;
+		. = 0x01FDB4; gpEkrLvupBg1ScrollOffset = .;
+		. = 0x01FDB8; gpEkrLvupBg1ScrollOffsetList2 = .;
+		. = 0x01FEF8; gpEkrLvupBg1ScrollOffsetList1 = .;
 		. = 0x020040; gEkrDragonStatusLeft = .;
 		. = 0x020050; gEkrDragonStatusRight = .;
     }
@@ -191,6 +207,7 @@ SECTIONS
 		src/banim-main.o(.text);
 		asm/code-banim.o(.text);
 		src/banim-ekrdragon.o(.text);
+		asm/banim-ekrdragon.o(.text);
 		asm/code-banim2.o(.text);
 		asm/code.o(.text);
 		src/save_core.o(.text);

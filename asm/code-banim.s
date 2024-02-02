@@ -547,7 +547,7 @@ InitLeftAnim: @ 0x08054B18
 	ldrsh r1, [r1, r2]
 	adds r0, r1, r0
 	ldrb r4, [r0]
-	ldr r3, _08054C2C @ =0x02000030
+	ldr r3, _08054C2C @ =gEkrXPosBase
 	ldr r0, _08054C30 @ =gUnk_081DE218
 	lsls r1, r1, #1
 	adds r1, r1, r0
@@ -555,12 +555,12 @@ InitLeftAnim: @ 0x08054B18
 	rsbs r1, r1, #0
 	movs r2, #0
 	strh r1, [r3]
-	ldr r0, _08054C34 @ =0x02000034
+	ldr r0, _08054C34 @ =gEkrYPosBase
 	strh r2, [r0]
-	ldr r0, _08054C38 @ =0x02000028
+	ldr r0, _08054C38 @ =gEkrXPosReal
 	adds r1, r1, r4
 	strh r1, [r0]
-	ldr r1, _08054C3C @ =0x0200002C
+	ldr r1, _08054C3C @ =gEkrYPosReal
 	movs r0, #0x58
 	strh r0, [r1]
 	ldr r0, _08054C40 @ =gpBanimModesLeft
@@ -577,14 +577,14 @@ _08054B80:
 	adds r1, r6, #0
 	bl AnimCreate
 	adds r2, r0, #0
-	ldr r1, _08054C38 @ =0x02000028
+	ldr r1, _08054C38 @ =gEkrXPosReal
 	ldr r0, _08054C4C @ =gEkrBgPosition
 	ldrh r1, [r1]
 	ldrh r0, [r0]
 	subs r0, r1, r0
 	movs r1, #0
 	strh r0, [r2, #2]
-	ldr r0, _08054C3C @ =0x0200002C
+	ldr r0, _08054C3C @ =gEkrYPosReal
 	ldrh r0, [r0]
 	strh r0, [r2, #4]
 	movs r0, #0xf4
@@ -619,14 +619,14 @@ _08054BD4:
 	mov r1, sb
 	bl AnimCreate
 	adds r2, r0, #0
-	ldr r1, _08054C38 @ =0x02000028
+	ldr r1, _08054C38 @ =gEkrXPosReal
 	ldr r0, _08054C4C @ =gEkrBgPosition
 	ldrh r1, [r1]
 	ldrh r0, [r0]
 	subs r0, r1, r0
 	movs r1, #0
 	strh r0, [r2, #2]
-	ldr r0, _08054C3C @ =0x0200002C
+	ldr r0, _08054C3C @ =gEkrYPosReal
 	ldrh r0, [r0]
 	strh r0, [r2, #4]
 	movs r0, #0xf4
@@ -656,11 +656,11 @@ _08054BD4:
 _08054C20: .4byte gBanimRoundScripts
 _08054C24: .4byte gUnk_081DE20D
 _08054C28: .4byte gEkrDistanceType
-_08054C2C: .4byte 0x02000030
+_08054C2C: .4byte gEkrXPosBase
 _08054C30: .4byte gUnk_081DE218
-_08054C34: .4byte 0x02000034
-_08054C38: .4byte 0x02000028
-_08054C3C: .4byte 0x0200002C
+_08054C34: .4byte gEkrYPosBase
+_08054C38: .4byte gEkrXPosReal
+_08054C3C: .4byte gEkrYPosReal
 _08054C40: .4byte gpBanimModesLeft
 _08054C44: .4byte gBanimScrLeft
 _08054C48: .4byte gUnk_08C0A5D8
@@ -692,14 +692,14 @@ InitRightAnim: @ 0x08054C5C
 	ldrsh r0, [r0, r2]
 	adds r0, r0, r1
 	ldrb r2, [r0]
-	ldr r0, _08054D50 @ =0x02000030
+	ldr r0, _08054D50 @ =gEkrXPosBase
 	movs r1, #0
 	strh r1, [r0, #2]
-	ldr r0, _08054D54 @ =0x02000034
+	ldr r0, _08054D54 @ =gEkrYPosBase
 	strh r1, [r0, #2]
-	ldr r0, _08054D58 @ =0x02000028
+	ldr r0, _08054D58 @ =gEkrXPosReal
 	strh r2, [r0, #2]
-	ldr r1, _08054D5C @ =0x0200002C
+	ldr r1, _08054D5C @ =gEkrYPosReal
 	movs r0, #0x58
 	strh r0, [r1, #2]
 	ldr r0, _08054D60 @ =gpBanimModesRight
@@ -716,14 +716,14 @@ _08054CAE:
 	adds r1, r4, #0
 	bl AnimCreate
 	adds r2, r0, #0
-	ldr r1, _08054D58 @ =0x02000028
+	ldr r1, _08054D58 @ =gEkrXPosReal
 	ldr r0, _08054D6C @ =gEkrBgPosition
 	ldrh r1, [r1, #2]
 	ldrh r0, [r0]
 	subs r0, r1, r0
 	movs r1, #0
 	strh r0, [r2, #2]
-	ldr r0, _08054D5C @ =0x0200002C
+	ldr r0, _08054D5C @ =gEkrYPosReal
 	ldrh r0, [r0, #2]
 	strh r0, [r2, #4]
 	movs r0, #0x9b
@@ -757,14 +757,14 @@ _08054D00:
 	adds r1, r7, #0
 	bl AnimCreate
 	adds r2, r0, #0
-	ldr r1, _08054D58 @ =0x02000028
+	ldr r1, _08054D58 @ =gEkrXPosReal
 	ldr r0, _08054D6C @ =gEkrBgPosition
 	ldrh r1, [r1, #2]
 	ldrh r0, [r0]
 	subs r0, r1, r0
 	movs r1, #0
 	strh r0, [r2, #2]
-	ldr r0, _08054D5C @ =0x0200002C
+	ldr r0, _08054D5C @ =gEkrYPosReal
 	ldrh r0, [r0, #2]
 	strh r0, [r2, #4]
 	movs r0, #0x9b
@@ -791,10 +791,10 @@ _08054D00:
 _08054D44: .4byte gBanimRoundScripts
 _08054D48: .4byte gUnk_081DE212
 _08054D4C: .4byte gEkrDistanceType
-_08054D50: .4byte 0x02000030
-_08054D54: .4byte 0x02000034
-_08054D58: .4byte 0x02000028
-_08054D5C: .4byte 0x0200002C
+_08054D50: .4byte gEkrXPosBase
+_08054D54: .4byte gEkrYPosBase
+_08054D58: .4byte gEkrXPosReal
+_08054D5C: .4byte gEkrYPosReal
 _08054D60: .4byte gpBanimModesRight
 _08054D64: .4byte 0x02011BC8
 _08054D68: .4byte gUnk_08C0A5D8
@@ -2881,7 +2881,7 @@ sub_08055DA8: @ 0x08055DA8
 	movs r2, #0x20
 	bl CpuFastSet
 	subs r4, #0xc0
-	ldr r5, _08055E2C @ =0x020165C8
+	ldr r5, _08055E2C @ =gEfxPal
 	movs r6, #0x80
 	lsls r6, r6, #1
 	adds r0, r4, #0
@@ -2910,7 +2910,7 @@ _08055E1C: .4byte gEkrInitPosReal
 _08055E20: .4byte gEkrInitialHitSide
 _08055E24: .4byte gUnk_081E4210
 _08055E28: .4byte gPal + 0xc0
-_08055E2C: .4byte 0x020165C8
+_08055E2C: .4byte gEfxPal
 
 	thumb_func_start sub_08055E30
 sub_08055E30: @ 0x08055E30
@@ -2977,7 +2977,7 @@ sub_08055EA4: @ 0x08055EA4
 	movs r2, #0
 	bl Interpolate
 	adds r5, r0, #0
-	ldr r0, _08055F00 @ =0x020165C8
+	ldr r0, _08055F00 @ =gEfxPal
 	ldr r4, _08055F04 @ =gPal
 	movs r2, #0x80
 	lsls r2, r2, #1
@@ -3007,7 +3007,7 @@ _08055EF8:
 	pop {r0}
 	bx r0
 	.align 2, 0
-_08055F00: .4byte 0x020165C8
+_08055F00: .4byte gEfxPal
 _08055F04: .4byte gPal
 
 	thumb_func_start sub_08055F08
@@ -3038,7 +3038,7 @@ sub_08055F34: @ 0x08055F34
 	push {r4, lr}
 	adds r4, r0, #0
 	ldr r0, _08055F58 @ =gPal
-	ldr r1, _08055F5C @ =0x020165C8
+	ldr r1, _08055F5C @ =gEfxPal
 	movs r2, #0x80
 	lsls r2, r2, #1
 	bl CpuFastSet
@@ -3053,7 +3053,7 @@ sub_08055F34: @ 0x08055F34
 	bx r0
 	.align 2, 0
 _08055F58: .4byte gPal
-_08055F5C: .4byte 0x020165C8
+_08055F5C: .4byte gEfxPal
 
 	thumb_func_start sub_08055F60
 sub_08055F60: @ 0x08055F60
@@ -3070,7 +3070,7 @@ sub_08055F60: @ 0x08055F60
 	movs r2, #0x10
 	bl Interpolate
 	adds r5, r0, #0
-	ldr r0, _08055FBC @ =0x020165C8
+	ldr r0, _08055FBC @ =gEfxPal
 	ldr r4, _08055FC0 @ =gPal
 	movs r2, #0x80
 	lsls r2, r2, #1
@@ -3100,7 +3100,7 @@ _08055FB4:
 	pop {r0}
 	bx r0
 	.align 2, 0
-_08055FBC: .4byte 0x020165C8
+_08055FBC: .4byte gEfxPal
 _08055FC0: .4byte gPal
 
 	thumb_func_start sub_08055FC4
@@ -3193,7 +3193,7 @@ StartSpellAnimation: @ 0x08056070
 	bl GetAnimPosition
 	lsls r0, r0, #1
 	adds r0, r0, r4
-	ldr r1, _0805609C @ =gUnk_08C1071C
+	ldr r1, _0805609C @ =gEkrSpellAnimLut
 	movs r2, #0
 	ldrsh r0, [r0, r2]
 	lsls r0, r0, #2
@@ -3206,15 +3206,15 @@ StartSpellAnimation: @ 0x08056070
 	bx r0
 	.align 2, 0
 _08056098: .4byte gEkrSpellAnimIndex
-_0805609C: .4byte gUnk_08C1071C
+_0805609C: .4byte gEkrSpellAnimLut
 
 	thumb_func_start nullsub_49
 nullsub_49: @ 0x080560A0
 	bx lr
 	.align 2, 0
 
-	thumb_func_start sub_080560A4
-sub_080560A4: @ 0x080560A4
+	thumb_func_start NewefxRestRST
+NewefxRestRST: @ 0x080560A4
 	push {r4, r5, r6, r7, lr}
 	mov r7, r8
 	push {r7}
@@ -3223,11 +3223,11 @@ sub_080560A4: @ 0x080560A4
 	adds r6, r2, #0
 	mov r8, r3
 	ldr r7, [sp, #0x18]
-	ldr r1, _080560E0 @ =0x0201774C
+	ldr r1, _080560E0 @ =gEfxBgSemaphore
 	ldr r0, [r1]
 	adds r0, #1
 	str r0, [r1]
-	ldr r0, _080560E4 @ =gUnk_08C10830
+	ldr r0, _080560E4 @ =ProcScr_efxRestRST
 	movs r1, #3
 	bl Proc_Start
 	str r4, [r0, #0x5c]
@@ -3245,33 +3245,33 @@ sub_080560A4: @ 0x080560A4
 	pop {r1}
 	bx r1
 	.align 2, 0
-_080560E0: .4byte 0x0201774C
-_080560E4: .4byte gUnk_08C10830
+_080560E0: .4byte gEfxBgSemaphore
+_080560E4: .4byte ProcScr_efxRestRST
 
 	thumb_func_start sub_080560E8
 sub_080560E8: @ 0x080560E8
-	ldr r1, _080560F4 @ =0x0201774C
+	ldr r1, _080560F4 @ =gEfxBgSemaphore
 	ldr r0, [r1]
 	subs r0, #1
 	str r0, [r1]
 	bx lr
 	.align 2, 0
-_080560F4: .4byte 0x0201774C
+_080560F4: .4byte gEfxBgSemaphore
 
-	thumb_func_start sub_080560F8
-sub_080560F8: @ 0x080560F8
+	thumb_func_start efxRestRSTMain
+efxRestRSTMain: @ 0x080560F8
 	push {r4, r5, r6, r7, lr}
 	mov r7, sl
 	mov r6, sb
 	mov r5, r8
 	push {r5, r6, r7}
 	adds r2, r0, #0
-	ldr r0, _08056178 @ =0x0201FDAC
+	ldr r0, _08056178 @ =gEkrBg1ScrollFlip
 	ldr r0, [r0]
-	ldr r4, _0805617C @ =0x0201FDB8
+	ldr r4, _0805617C @ =gpEkrLvupBg1ScrollOffsetList2
 	cmp r0, #0
 	bne _08056110
-	ldr r4, _08056180 @ =0x0201FEF8
+	ldr r4, _08056180 @ =gpEkrLvupBg1ScrollOffsetList1
 _08056110:
 	ldrh r0, [r2, #0x2e]
 	lsls r1, r0, #0x18
@@ -3327,18 +3327,18 @@ _0805616A:
 	pop {r0}
 	bx r0
 	.align 2, 0
-_08056178: .4byte 0x0201FDAC
-_0805617C: .4byte 0x0201FDB8
-_08056180: .4byte 0x0201FEF8
+_08056178: .4byte gEkrBg1ScrollFlip
+_0805617C: .4byte gpEkrLvupBg1ScrollOffsetList2
+_08056180: .4byte gpEkrLvupBg1ScrollOffsetList1
 _08056184: .4byte gUnk_08C4A008
 _08056188: .4byte gDispIo
 
-	thumb_func_start sub_0805618C
-sub_0805618C: @ 0x0805618C
+	thumb_func_start NewEfxTwobaiRST
+NewEfxTwobaiRST: @ 0x0805618C
 	push {r4, r5, lr}
 	adds r4, r0, #0
 	adds r5, r1, #0
-	ldr r0, _080561CC @ =gUnk_08C10850
+	ldr r0, _080561CC @ =ProcScr_efxTwobaiRST
 	movs r1, #3
 	bl Proc_Start
 	str r4, [r0, #0x5c]
@@ -3346,7 +3346,7 @@ sub_0805618C: @ 0x0805618C
 	strh r1, [r0, #0x2c]
 	strh r1, [r0, #0x2e]
 	str r5, [r0, #0x44]
-	ldr r2, _080561D0 @ =0x0201FDB8
+	ldr r2, _080561D0 @ =gpEkrLvupBg1ScrollOffsetList2
 _080561A6:
 	lsrs r0, r1, #1
 	rsbs r0, r0, #0
@@ -3355,7 +3355,7 @@ _080561A6:
 	adds r1, #1
 	cmp r1, #0x77
 	bls _080561A6
-	ldr r2, _080561D4 @ =0x0201FEF8
+	ldr r2, _080561D4 @ =gpEkrLvupBg1ScrollOffsetList1
 	movs r1, #0
 _080561B8:
 	lsrs r0, r1, #1
@@ -3369,12 +3369,12 @@ _080561B8:
 	pop {r0}
 	bx r0
 	.align 2, 0
-_080561CC: .4byte gUnk_08C10850
-_080561D0: .4byte 0x0201FDB8
-_080561D4: .4byte 0x0201FEF8
+_080561CC: .4byte ProcScr_efxTwobaiRST
+_080561D0: .4byte gpEkrLvupBg1ScrollOffsetList2
+_080561D4: .4byte gpEkrLvupBg1ScrollOffsetList1
 
-	thumb_func_start sub_080561D8
-sub_080561D8: @ 0x080561D8
+	thumb_func_start EfxTwobaiRSTMain
+EfxTwobaiRSTMain: @ 0x080561D8
 	push {lr}
 	adds r2, r0, #0
 	ldrh r0, [r2, #0x2c]
@@ -3392,16 +3392,16 @@ _080561F2:
 	bx r0
 	.align 2, 0
 
-	thumb_func_start sub_080561F8
-sub_080561F8: @ 0x080561F8
+	thumb_func_start NewDummvRST
+NewDummvRST: @ 0x080561F8
 	push {r4, r5, lr}
 	adds r4, r0, #0
 	adds r5, r1, #0
-	ldr r1, _08056220 @ =0x0201774C
+	ldr r1, _08056220 @ =gEfxBgSemaphore
 	ldr r0, [r1]
 	adds r0, #1
 	str r0, [r1]
-	ldr r0, _08056224 @ =gUnk_08C10868
+	ldr r0, _08056224 @ =ProcScr_DummvRST
 	movs r1, #3
 	bl Proc_Start
 	str r4, [r0, #0x5c]
@@ -3413,29 +3413,29 @@ sub_080561F8: @ 0x080561F8
 	pop {r0}
 	bx r0
 	.align 2, 0
-_08056220: .4byte 0x0201774C
-_08056224: .4byte gUnk_08C10868
+_08056220: .4byte gEfxBgSemaphore
+_08056224: .4byte ProcScr_DummvRST
 
 	thumb_func_start sub_08056228
 sub_08056228: @ 0x08056228
-	ldr r1, _08056234 @ =0x0201774C
+	ldr r1, _08056234 @ =gEfxBgSemaphore
 	ldr r0, [r1]
 	subs r0, #1
 	str r0, [r1]
 	bx lr
 	.align 2, 0
-_08056234: .4byte 0x0201774C
+_08056234: .4byte gEfxBgSemaphore
 
-	thumb_func_start sub_08056238
-sub_08056238: @ 0x08056238
+	thumb_func_start DummvRSTMain
+DummvRSTMain: @ 0x08056238
 	push {r4, r5, lr}
 	adds r3, r0, #0
-	ldr r0, _08056274 @ =0x0201FDAC
+	ldr r0, _08056274 @ =gEkrBg1ScrollFlip
 	ldr r0, [r0]
-	ldr r1, _08056278 @ =0x0201FDB8
+	ldr r1, _08056278 @ =gpEkrLvupBg1ScrollOffsetList2
 	cmp r0, #0
 	bne _08056248
-	ldr r1, _0805627C @ =0x0201FEF8
+	ldr r1, _0805627C @ =gpEkrLvupBg1ScrollOffsetList1
 _08056248:
 	movs r2, #0
 	ldr r5, [r3, #0x44]
@@ -3461,13 +3461,13 @@ _0805626E:
 	pop {r0}
 	bx r0
 	.align 2, 0
-_08056274: .4byte 0x0201FDAC
-_08056278: .4byte 0x0201FDB8
-_0805627C: .4byte 0x0201FEF8
+_08056274: .4byte gEkrBg1ScrollFlip
+_08056278: .4byte gpEkrLvupBg1ScrollOffsetList2
+_0805627C: .4byte gpEkrLvupBg1ScrollOffsetList1
 _08056280: .4byte gDispIo
 
-	thumb_func_start sub_08056284
-sub_08056284: @ 0x08056284
+	thumb_func_start NewEfxRestWIN
+NewEfxRestWIN: @ 0x08056284
 	push {r4, r5, r6, r7, lr}
 	mov r7, sb
 	mov r6, r8
@@ -3476,11 +3476,11 @@ sub_08056284: @ 0x08056284
 	adds r4, r1, #0
 	adds r5, r2, #0
 	adds r6, r3, #0
-	ldr r1, _080562CC @ =0x0201774C
+	ldr r1, _080562CC @ =gEfxBgSemaphore
 	ldr r0, [r1]
 	adds r0, #1
 	str r0, [r1]
-	ldr r0, _080562D0 @ =gUnk_08C10888
+	ldr r0, _080562D0 @ =ProcScr_EfxRestWIN
 	movs r1, #3
 	bl Proc_Start
 	adds r7, r0, #0
@@ -3502,8 +3502,8 @@ sub_08056284: @ 0x08056284
 	ldr r0, _080562D4 @ =0x0000FFB8
 	b _080562DA
 	.align 2, 0
-_080562CC: .4byte 0x0201774C
-_080562D0: .4byte gUnk_08C10888
+_080562CC: .4byte gEfxBgSemaphore
+_080562D0: .4byte ProcScr_EfxRestWIN
 _080562D4: .4byte 0x0000FFB8
 _080562D8:
 	ldr r0, _080562F8 @ =0x0000FFF8
@@ -3538,16 +3538,16 @@ _08056306:
 	bx r0
 	.align 2, 0
 
-	thumb_func_start sub_08056314
-sub_08056314: @ 0x08056314
+	thumb_func_start EfxRestWINMain
+EfxRestWINMain: @ 0x08056314
 	push {r4, r5, r6, r7, lr}
 	adds r4, r0, #0
-	ldr r0, _0805635C @ =0x0201FB20
+	ldr r0, _0805635C @ =gEkrBg2ScrollFlip
 	ldr r0, [r0]
-	ldr r5, _08056360 @ =0x0201FB2C
+	ldr r5, _08056360 @ =gpEkrLvupBg2ScrollOffsetTable2
 	cmp r0, #0
 	bne _08056324
-	ldr r5, _08056364 @ =0x0201FC6C
+	ldr r5, _08056364 @ =gpEkrLvupBg2ScrollOffsetTable1
 _08056324:
 	ldr r1, [r4, #0x54]
 	movs r2, #0x2e
@@ -3578,9 +3578,9 @@ _0805634C:
 	movs r0, #0
 	b _08056382
 	.align 2, 0
-_0805635C: .4byte 0x0201FB20
-_08056360: .4byte 0x0201FB2C
-_08056364: .4byte 0x0201FC6C
+_0805635C: .4byte gEkrBg2ScrollFlip
+_08056360: .4byte gpEkrLvupBg2ScrollOffsetTable2
+_08056364: .4byte gpEkrLvupBg2ScrollOffsetTable1
 _08056368: .4byte 0x0000FFFF
 _0805636C: .4byte 0x00007FFF
 _08056370:
@@ -3619,7 +3619,7 @@ _080563A0:
 	ldrsh r0, [r4, r1]
 	cmp r0, r6
 	bne _080563BC
-	ldr r1, _080563C4 @ =0x0201774C
+	ldr r1, _080563C4 @ =gEfxBgSemaphore
 	ldr r0, [r1]
 	subs r0, #1
 	str r0, [r1]
@@ -3630,7 +3630,7 @@ _080563BC:
 	pop {r0}
 	bx r0
 	.align 2, 0
-_080563C4: .4byte 0x0201774C
+_080563C4: .4byte gEfxBgSemaphore
 
 	thumb_func_start sub_080563C8
 sub_080563C8: @ 0x080563C8
@@ -3641,7 +3641,7 @@ sub_080563C8: @ 0x080563C8
 	cmp r0, #0
 	bne _080563E2
 	ldr r3, _080563E8 @ =0x04000014
-	ldr r2, _080563EC @ =0x0201FDB4
+	ldr r2, _080563EC @ =gpEkrLvupBg1ScrollOffset
 	ldr r0, [r2]
 	ldrh r1, [r0]
 	strh r1, [r3]
@@ -3652,7 +3652,7 @@ _080563E2:
 	.align 2, 0
 _080563E4: .4byte 0x04000004
 _080563E8: .4byte 0x04000014
-_080563EC: .4byte 0x0201FDB4
+_080563EC: .4byte gpEkrLvupBg1ScrollOffset
 
 	thumb_func_start sub_080563F0
 sub_080563F0: @ 0x080563F0
@@ -3663,7 +3663,7 @@ sub_080563F0: @ 0x080563F0
 	cmp r0, #0
 	bne _0805640A
 	ldr r3, _08056410 @ =0x04000016
-	ldr r2, _08056414 @ =0x0201FDB4
+	ldr r2, _08056414 @ =gpEkrLvupBg1ScrollOffset
 	ldr r0, [r2]
 	ldrh r1, [r0]
 	strh r1, [r3]
@@ -3674,7 +3674,7 @@ _0805640A:
 	.align 2, 0
 _0805640C: .4byte 0x04000004
 _08056410: .4byte 0x04000016
-_08056414: .4byte 0x0201FDB4
+_08056414: .4byte gpEkrLvupBg1ScrollOffset
 
 	thumb_func_start sub_08056418
 sub_08056418: @ 0x08056418
@@ -3685,14 +3685,14 @@ sub_08056418: @ 0x08056418
 	cmp r0, #0
 	bne _08056440
 	ldr r3, _08056448 @ =0x0400001A
-	ldr r2, _0805644C @ =0x0201FB28
+	ldr r2, _0805644C @ =gpEkrLvupBg2ScrollOffset
 	ldr r0, [r2]
 	ldrh r1, [r0]
 	strh r1, [r3]
 	adds r0, #2
 	str r0, [r2]
 	subs r3, #6
-	ldr r2, _08056450 @ =0x0201FDB4
+	ldr r2, _08056450 @ =gpEkrLvupBg1ScrollOffset
 	ldr r0, [r2]
 	ldrh r1, [r0]
 	strh r1, [r3]
@@ -3703,8 +3703,8 @@ _08056440:
 	.align 2, 0
 _08056444: .4byte 0x04000004
 _08056448: .4byte 0x0400001A
-_0805644C: .4byte 0x0201FB28
-_08056450: .4byte 0x0201FDB4
+_0805644C: .4byte gpEkrLvupBg2ScrollOffset
+_08056450: .4byte gpEkrLvupBg1ScrollOffset
 
 	thumb_func_start sub_08056454
 sub_08056454: @ 0x08056454
@@ -3715,14 +3715,14 @@ sub_08056454: @ 0x08056454
 	cmp r0, #0
 	bne _0805647C
 	ldr r3, _08056484 @ =0x0400001A
-	ldr r2, _08056488 @ =0x0201FB28
+	ldr r2, _08056488 @ =gpEkrLvupBg2ScrollOffset
 	ldr r0, [r2]
 	ldrh r1, [r0]
 	strh r1, [r3]
 	adds r0, #2
 	str r0, [r2]
 	subs r3, #4
-	ldr r2, _0805648C @ =0x0201FDB4
+	ldr r2, _0805648C @ =gpEkrLvupBg1ScrollOffset
 	ldr r0, [r2]
 	ldrh r1, [r0]
 	strh r1, [r3]
@@ -3733,8 +3733,8 @@ _0805647C:
 	.align 2, 0
 _08056480: .4byte 0x04000004
 _08056484: .4byte 0x0400001A
-_08056488: .4byte 0x0201FB28
-_0805648C: .4byte 0x0201FDB4
+_08056488: .4byte gpEkrLvupBg2ScrollOffset
+_0805648C: .4byte gpEkrLvupBg1ScrollOffset
 
 	thumb_func_start sub_08056490
 sub_08056490: @ 0x08056490
@@ -3745,7 +3745,7 @@ sub_08056490: @ 0x08056490
 	cmp r0, #0
 	bne _080564AA
 	ldr r3, _080564B0 @ =0x0400001A
-	ldr r2, _080564B4 @ =0x0201FB28
+	ldr r2, _080564B4 @ =gpEkrLvupBg2ScrollOffset
 	ldr r0, [r2]
 	ldrh r1, [r0]
 	strh r1, [r3]
@@ -3756,7 +3756,7 @@ _080564AA:
 	.align 2, 0
 _080564AC: .4byte 0x04000004
 _080564B0: .4byte 0x0400001A
-_080564B4: .4byte 0x0201FB28
+_080564B4: .4byte gpEkrLvupBg2ScrollOffset
 
 	thumb_func_start sub_080564B8
 sub_080564B8: @ 0x080564B8
@@ -3771,24 +3771,24 @@ sub_080564B8: @ 0x080564B8
 	adds r4, r3, #0
 	lsls r2, r2, #0x10
 	lsrs r2, r2, #0x10
-	ldr r1, _08056554 @ =0x0201774C
+	ldr r1, _08056554 @ =gEfxBgSemaphore
 	ldr r0, [r1]
 	adds r0, #1
 	str r0, [r1]
-	ldr r6, _08056558 @ =0x0201FDB8
-	ldr r7, _0805655C @ =0x0201FEF8
-	ldr r0, _08056560 @ =0x0201FDAC
+	ldr r6, _08056558 @ =gpEkrLvupBg1ScrollOffsetList2
+	ldr r7, _0805655C @ =gpEkrLvupBg1ScrollOffsetList1
+	ldr r0, _08056560 @ =gEkrBg1ScrollFlip
 	mov sl, r0
 	cmp r4, #2
 	bne _0805651A
-	ldr r1, _08056564 @ =0x0201FB2C
+	ldr r1, _08056564 @ =gpEkrLvupBg2ScrollOffsetTable2
 	movs r0, #0
 	adds r5, r1, #0
-	ldr r3, _08056568 @ =0x0201FB20
+	ldr r3, _08056568 @ =gEkrBg2ScrollFlip
 	mov ip, r3
-	ldr r3, _0805656C @ =0x0201FB24
+	ldr r3, _0805656C @ =gpEkrLvupBg2ScrollOffsetStart
 	mov r8, r3
-	ldr r3, _08056570 @ =0x0201FB28
+	ldr r3, _08056570 @ =gpEkrLvupBg2ScrollOffset
 	mov sb, r3
 _080564F4:
 	strh r2, [r1]
@@ -3796,7 +3796,7 @@ _080564F4:
 	adds r0, #1
 	cmp r0, #0x9f
 	bls _080564F4
-	ldr r1, _08056574 @ =0x0201FC6C
+	ldr r1, _08056574 @ =gpEkrLvupBg2ScrollOffsetTable1
 	movs r0, #0
 _08056502:
 	strh r2, [r1]
@@ -3831,9 +3831,9 @@ _0805652C:
 	movs r0, #0
 	mov r1, sl
 	str r0, [r1]
-	ldr r3, _08056578 @ =0x0201FDB0
+	ldr r3, _08056578 @ =gpEkrLvupBg1ScrollOffsetStart
 	str r6, [r3]
-	ldr r0, _0805657C @ =0x0201FDB4
+	ldr r0, _0805657C @ =gpEkrLvupBg1ScrollOffset
 	str r6, [r0]
 	cmp r4, #1
 	beq _080565A0
@@ -3843,17 +3843,17 @@ _0805652C:
 	beq _080565C0
 	b _080565CE
 	.align 2, 0
-_08056554: .4byte 0x0201774C
-_08056558: .4byte 0x0201FDB8
-_0805655C: .4byte 0x0201FEF8
-_08056560: .4byte 0x0201FDAC
-_08056564: .4byte 0x0201FB2C
-_08056568: .4byte 0x0201FB20
-_0805656C: .4byte 0x0201FB24
-_08056570: .4byte 0x0201FB28
-_08056574: .4byte 0x0201FC6C
-_08056578: .4byte 0x0201FDB0
-_0805657C: .4byte 0x0201FDB4
+_08056554: .4byte gEfxBgSemaphore
+_08056558: .4byte gpEkrLvupBg1ScrollOffsetList2
+_0805655C: .4byte gpEkrLvupBg1ScrollOffsetList1
+_08056560: .4byte gEkrBg1ScrollFlip
+_08056564: .4byte gpEkrLvupBg2ScrollOffsetTable2
+_08056568: .4byte gEkrBg2ScrollFlip
+_0805656C: .4byte gpEkrLvupBg2ScrollOffsetStart
+_08056570: .4byte gpEkrLvupBg2ScrollOffset
+_08056574: .4byte gpEkrLvupBg2ScrollOffsetTable1
+_08056578: .4byte gpEkrLvupBg1ScrollOffsetStart
+_0805657C: .4byte gpEkrLvupBg1ScrollOffset
 _08056580:
 	bl CheckInEkrDragon
 	cmp r0, #0
@@ -3939,61 +3939,61 @@ sub_08056618: @ 0x08056618
 	ldrb r0, [r0]
 	lsls r0, r0, #0x18
 	asrs r0, r0, #0x18
-	ldr r3, _08056648 @ =0x0201FB24
-	ldr r2, _0805664C @ =0x0201FDB0
+	ldr r3, _08056648 @ =gpEkrLvupBg2ScrollOffsetStart
+	ldr r2, _0805664C @ =gpEkrLvupBg1ScrollOffsetStart
 	cmp r0, #0
 	beq _08056690
 	ldr r0, [r4, #0x48]
 	cmp r0, #2
 	bne _08056660
-	ldr r1, _08056650 @ =0x0201FB20
+	ldr r1, _08056650 @ =gEkrBg2ScrollFlip
 	ldr r0, [r1]
 	cmp r0, #1
 	bne _08056658
 	movs r0, #0
 	str r0, [r1]
-	ldr r0, _08056654 @ =0x0201FB2C
+	ldr r0, _08056654 @ =gpEkrLvupBg2ScrollOffsetTable2
 	b _0805665E
 	.align 2, 0
 _08056644: .4byte gBmSt
-_08056648: .4byte 0x0201FB24
-_0805664C: .4byte 0x0201FDB0
-_08056650: .4byte 0x0201FB20
-_08056654: .4byte 0x0201FB2C
+_08056648: .4byte gpEkrLvupBg2ScrollOffsetStart
+_0805664C: .4byte gpEkrLvupBg1ScrollOffsetStart
+_08056650: .4byte gEkrBg2ScrollFlip
+_08056654: .4byte gpEkrLvupBg2ScrollOffsetTable2
 _08056658:
 	movs r0, #1
 	str r0, [r1]
-	ldr r0, _08056674 @ =0x0201FC6C
+	ldr r0, _08056674 @ =gpEkrLvupBg2ScrollOffsetTable1
 _0805665E:
 	str r0, [r3]
 _08056660:
-	ldr r1, _08056678 @ =0x0201FDAC
+	ldr r1, _08056678 @ =gEkrBg1ScrollFlip
 	ldr r0, [r1]
 	cmp r0, #1
 	bne _08056684
 	movs r0, #0
 	str r0, [r1]
-	ldr r1, _0805667C @ =0x0201FDB0
-	ldr r0, _08056680 @ =0x0201FDB8
+	ldr r1, _0805667C @ =gpEkrLvupBg1ScrollOffsetStart
+	ldr r0, _08056680 @ =gpEkrLvupBg1ScrollOffsetList2
 	b _0805668C
 	.align 2, 0
-_08056674: .4byte 0x0201FC6C
-_08056678: .4byte 0x0201FDAC
-_0805667C: .4byte 0x0201FDB0
-_08056680: .4byte 0x0201FDB8
+_08056674: .4byte gpEkrLvupBg2ScrollOffsetTable1
+_08056678: .4byte gEkrBg1ScrollFlip
+_0805667C: .4byte gpEkrLvupBg1ScrollOffsetStart
+_08056680: .4byte gpEkrLvupBg1ScrollOffsetList2
 _08056684:
 	movs r0, #1
 	str r0, [r1]
-	ldr r1, _080566C4 @ =0x0201FDB0
-	ldr r0, _080566C8 @ =0x0201FEF8
+	ldr r1, _080566C4 @ =gpEkrLvupBg1ScrollOffsetStart
+	ldr r0, _080566C8 @ =gpEkrLvupBg1ScrollOffsetList1
 _0805668C:
 	str r0, [r1]
 	adds r2, r1, #0
 _08056690:
-	ldr r1, _080566CC @ =0x0201FB28
+	ldr r1, _080566CC @ =gpEkrLvupBg2ScrollOffset
 	ldr r0, [r3]
 	str r0, [r1]
-	ldr r1, _080566D0 @ =0x0201FDB4
+	ldr r1, _080566D0 @ =gpEkrLvupBg1ScrollOffset
 	ldr r0, [r2]
 	str r0, [r1]
 	ldrh r0, [r4, #0x2c]
@@ -4004,7 +4004,7 @@ _08056690:
 	ldr r1, [r4, #0x44]
 	cmp r0, r1
 	bne _080566E4
-	ldr r0, _080566D4 @ =0x0201774C
+	ldr r0, _080566D4 @ =gEfxBgSemaphore
 	ldr r1, [r0]
 	subs r1, #1
 	str r1, [r0]
@@ -4015,11 +4015,11 @@ _08056690:
 	bl SetOnHBlankA
 	b _080566DE
 	.align 2, 0
-_080566C4: .4byte 0x0201FDB0
-_080566C8: .4byte 0x0201FEF8
-_080566CC: .4byte 0x0201FB28
-_080566D0: .4byte 0x0201FDB4
-_080566D4: .4byte 0x0201774C
+_080566C4: .4byte gpEkrLvupBg1ScrollOffsetStart
+_080566C8: .4byte gpEkrLvupBg1ScrollOffsetList1
+_080566CC: .4byte gpEkrLvupBg2ScrollOffset
+_080566D0: .4byte gpEkrLvupBg1ScrollOffset
+_080566D4: .4byte gEfxBgSemaphore
 _080566D8:
 	ldr r0, _080566EC @ =sub_08056490
 	bl SetOnHBlankA
@@ -4033,8 +4033,8 @@ _080566E4:
 	.align 2, 0
 _080566EC: .4byte sub_08056490
 
-	thumb_func_start sub_080566F0
-sub_080566F0: @ 0x080566F0
+	thumb_func_start NewEfxALPHA
+NewEfxALPHA: @ 0x080566F0
 	push {r4, r5, r6, r7, lr}
 	mov r7, r8
 	push {r7}
@@ -4043,11 +4043,11 @@ sub_080566F0: @ 0x080566F0
 	adds r6, r2, #0
 	mov r8, r3
 	ldr r7, [sp, #0x18]
-	ldr r1, _08056730 @ =0x0201774C
+	ldr r1, _08056730 @ =gEfxBgSemaphore
 	ldr r0, [r1]
 	adds r0, #1
 	str r0, [r1]
-	ldr r0, _08056734 @ =gUnk_08C108C0
+	ldr r0, _08056734 @ =ProcScr_efxALPHA
 	movs r1, #3
 	bl Proc_Start
 	str r5, [r0, #0x5c]
@@ -4067,8 +4067,8 @@ sub_080566F0: @ 0x080566F0
 	pop {r0}
 	bx r0
 	.align 2, 0
-_08056730: .4byte 0x0201774C
-_08056734: .4byte gUnk_08C108C0
+_08056730: .4byte gEfxBgSemaphore
+_08056734: .4byte ProcScr_efxALPHA
 
 	thumb_func_start sub_08056738
 sub_08056738: @ 0x08056738
@@ -4190,7 +4190,7 @@ _08056812:
 	ldrsh r0, [r5, r2]
 	cmp r1, r0
 	blt _0805682C
-	ldr r1, _08056838 @ =0x0201774C
+	ldr r1, _08056838 @ =gEfxBgSemaphore
 	ldr r0, [r1]
 	subs r0, #1
 	str r0, [r1]
@@ -4203,7 +4203,7 @@ _0805682C:
 	bx r0
 	.align 2, 0
 _08056834: .4byte gDispIo
-_08056838: .4byte 0x0201774C
+_08056838: .4byte gEfxBgSemaphore
 
 	thumb_func_start sub_0805683C
 sub_0805683C: @ 0x0805683C
@@ -4221,7 +4221,7 @@ sub_0805683C: @ 0x0805683C
 	lsrs r5, r5, #0x10
 	lsls r6, r6, #0x10
 	lsrs r6, r6, #0x10
-	ldr r1, _08056894 @ =0x0201774C
+	ldr r1, _08056894 @ =gEfxBgSemaphore
 	ldr r0, [r1]
 	adds r0, #1
 	str r0, [r1]
@@ -4250,7 +4250,7 @@ sub_0805683C: @ 0x0805683C
 	pop {r0}
 	bx r0
 	.align 2, 0
-_08056894: .4byte 0x0201774C
+_08056894: .4byte gEfxBgSemaphore
 _08056898: .4byte gUnk_08C108D8
 
 	thumb_func_start sub_0805689C
@@ -4260,13 +4260,13 @@ sub_0805689C: @ 0x0805689C
 	mov r6, r8
 	push {r6, r7}
 	adds r5, r0, #0
-	ldr r0, _0805691C @ =0x0201FB20
+	ldr r0, _0805691C @ =gEkrBg2ScrollFlip
 	ldr r0, [r0]
-	ldr r1, _08056920 @ =0x0201FB2C
+	ldr r1, _08056920 @ =gpEkrLvupBg2ScrollOffsetTable2
 	mov r8, r1
 	cmp r0, #0
 	bne _080568B6
-	ldr r2, _08056924 @ =0x0201FC6C
+	ldr r2, _08056924 @ =gpEkrLvupBg2ScrollOffsetTable1
 	mov r8, r2
 _080568B6:
 	ldr r4, [r5, #0x54]
@@ -4325,9 +4325,9 @@ _08056914:
 	strh r0, [r7]
 	b _0805695C
 	.align 2, 0
-_0805691C: .4byte 0x0201FB20
-_08056920: .4byte 0x0201FB2C
-_08056924: .4byte 0x0201FC6C
+_0805691C: .4byte gEkrBg2ScrollFlip
+_08056920: .4byte gpEkrLvupBg2ScrollOffsetTable2
+_08056924: .4byte gpEkrLvupBg2ScrollOffsetTable1
 _08056928: .4byte 0x0000FFFF
 _0805692C:
 	ldrh r2, [r5, #0x32]
@@ -4370,7 +4370,7 @@ _0805695C:
 	ldrsh r0, [r5, r4]
 	cmp r0, ip
 	bne _080569A2
-	ldr r1, _080569B0 @ =0x0201774C
+	ldr r1, _080569B0 @ =gEfxBgSemaphore
 	ldr r0, [r1]
 	subs r0, #1
 	str r0, [r1]
@@ -4399,7 +4399,7 @@ _080569A2:
 	pop {r0}
 	bx r0
 	.align 2, 0
-_080569B0: .4byte 0x0201774C
+_080569B0: .4byte gEfxBgSemaphore
 _080569B4: .4byte gDispIo
 
 	thumb_func_start sub_080569B8
@@ -4410,7 +4410,7 @@ sub_080569B8: @ 0x080569B8
 	adds r6, r0, #0
 	mov r8, r1
 	adds r5, r2, #0
-	ldr r1, _080569F4 @ =0x0201774C
+	ldr r1, _080569F4 @ =gEfxBgSemaphore
 	ldr r0, [r1]
 	adds r0, #1
 	str r0, [r1]
@@ -4421,7 +4421,7 @@ sub_080569B8: @ 0x080569B8
 	str r6, [r4, #0x5c]
 	adds r0, r5, #0
 	movs r1, #0
-	bl sub_0804EF18
+	bl NewEfxQuakePure
 	str r0, [r4, #0x60]
 	movs r0, #0
 	strh r0, [r4, #0x2c]
@@ -4433,7 +4433,7 @@ sub_080569B8: @ 0x080569B8
 	pop {r0}
 	bx r0
 	.align 2, 0
-_080569F4: .4byte 0x0201774C
+_080569F4: .4byte gEfxBgSemaphore
 _080569F8: .4byte gUnk_08C108F0
 
 	thumb_func_start sub_080569FC
@@ -4499,7 +4499,7 @@ _08056A7A:
 	bl CheckInEkrDragon
 	cmp r0, #0
 	beq _08056A98
-	ldr r3, _08056A94 @ =0x02000028
+	ldr r3, _08056A94 @ =gEkrXPosReal
 	ldrh r4, [r3]
 	ldrh r1, [r5]
 	subs r0, r4, r1
@@ -4507,9 +4507,9 @@ _08056A7A:
 	.align 2, 0
 _08056A8C: .4byte 0x02017760
 _08056A90: .4byte 0x02000038
-_08056A94: .4byte 0x02000028
+_08056A94: .4byte gEkrXPosReal
 _08056A98:
-	ldr r3, _08056BB0 @ =0x02000028
+	ldr r3, _08056BB0 @ =gEkrXPosReal
 	ldrh r1, [r3]
 	ldrh r2, [r5]
 	adds r0, r1, r2
@@ -4519,7 +4519,7 @@ _08056AA0:
 	subs r0, r0, r1
 	lsls r0, r0, #0x10
 	lsrs r7, r0, #0x10
-	ldr r1, _08056BB8 @ =0x0200002C
+	ldr r1, _08056BB8 @ =gEkrYPosReal
 	ldrh r4, [r1]
 	ldrh r5, [r5, #2]
 	subs r0, r4, r5
@@ -4564,7 +4564,7 @@ _08056AA0:
 	lsls r1, r3, #0x10
 	cmp r0, r1
 	ble _08056BA2
-	ldr r1, _08056BC0 @ =0x0201774C
+	ldr r1, _08056BC0 @ =gEfxBgSemaphore
 	ldr r0, [r1]
 	subs r0, #1
 	str r0, [r1]
@@ -4641,11 +4641,11 @@ _08056BA2:
 	pop {r0}
 	bx r0
 	.align 2, 0
-_08056BB0: .4byte 0x02000028
+_08056BB0: .4byte gEkrXPosReal
 _08056BB4: .4byte gEkrBgPosition
-_08056BB8: .4byte 0x0200002C
+_08056BB8: .4byte gEkrYPosReal
 _08056BBC: .4byte 0x02017760
-_08056BC0: .4byte 0x0201774C
+_08056BC0: .4byte gEfxBgSemaphore
 _08056BC4: .4byte 0x02000038
 
 	thumb_func_start sub_08056BC8
@@ -4815,7 +4815,7 @@ sub_08056D14: @ 0x08056D14
 	push {r4, r5, r6, lr}
 	sub sp, #4
 	adds r4, r0, #0
-	ldr r1, _08056D58 @ =0x0201774C
+	ldr r1, _08056D58 @ =gEfxBgSemaphore
 	ldr r0, [r1]
 	adds r0, #1
 	str r0, [r1]
@@ -4843,7 +4843,7 @@ sub_08056D14: @ 0x08056D14
 	adds r0, #0x48
 	b _08056D74
 	.align 2, 0
-_08056D58: .4byte 0x0201774C
+_08056D58: .4byte gEfxBgSemaphore
 _08056D5C: .4byte gUnk_08C10938
 _08056D60: .4byte gUnk_08C14534
 _08056D64: .4byte gUnk_08C1419C
@@ -4898,7 +4898,7 @@ sub_08056DB8: @ 0x08056DB8
 	lsls r1, r2, #0x10
 	cmp r0, r1
 	bne _08056E0A
-	ldr r1, _08056DF8 @ =0x0201774C
+	ldr r1, _08056DF8 @ =gEfxBgSemaphore
 	ldr r0, [r1]
 	subs r0, #1
 	str r0, [r1]
@@ -4918,7 +4918,7 @@ sub_08056DB8: @ 0x08056DB8
 	bl Proc_End
 	b _08056E0A
 	.align 2, 0
-_08056DF8: .4byte 0x0201774C
+_08056DF8: .4byte gEfxBgSemaphore
 _08056DFC: .4byte gEkrDistanceType
 _08056E00: .4byte Unk_02017758
 _08056E04:
@@ -4953,7 +4953,7 @@ sub_08056E38: @ 0x08056E38
 	push {r4, r5, r6, lr}
 	sub sp, #4
 	adds r4, r0, #0
-	ldr r1, _08056E78 @ =0x0201774C
+	ldr r1, _08056E78 @ =gEfxBgSemaphore
 	ldr r0, [r1]
 	adds r0, #1
 	str r0, [r1]
@@ -4980,7 +4980,7 @@ sub_08056E38: @ 0x08056E38
 	adds r0, #0x48
 	b _08056E8C
 	.align 2, 0
-_08056E78: .4byte 0x0201774C
+_08056E78: .4byte gEfxBgSemaphore
 _08056E7C: .4byte gUnk_08C10958
 _08056E80: .4byte gUnk_08C145B0
 _08056E84: .4byte gUnk_08C14218
@@ -5019,7 +5019,7 @@ sub_08056EBC: @ 0x08056EBC
 	asrs r0, r0, #0x10
 	cmp r0, #0x11
 	bne _08056EEE
-	ldr r1, _08056EF4 @ =0x0201774C
+	ldr r1, _08056EF4 @ =gEfxBgSemaphore
 	ldr r0, [r1]
 	subs r0, #1
 	str r0, [r1]
@@ -5037,7 +5037,7 @@ _08056EEE:
 	pop {r0}
 	bx r0
 	.align 2, 0
-_08056EF4: .4byte 0x0201774C
+_08056EF4: .4byte gEfxBgSemaphore
 _08056EF8: .4byte Unk_02017758
 
 	thumb_func_start sub_08056EFC
@@ -5045,7 +5045,7 @@ sub_08056EFC: @ 0x08056EFC
 	push {r4, r5, r6, lr}
 	adds r6, r0, #0
 	adds r5, r1, #0
-	ldr r1, _08056F38 @ =0x0201774C
+	ldr r1, _08056F38 @ =gEfxBgSemaphore
 	ldr r0, [r1]
 	adds r0, #1
 	str r0, [r1]
@@ -5071,18 +5071,18 @@ sub_08056EFC: @ 0x08056EFC
 	pop {r1}
 	bx r1
 	.align 2, 0
-_08056F38: .4byte 0x0201774C
+_08056F38: .4byte gEfxBgSemaphore
 _08056F3C: .4byte gUnk_08C10970
 
 	thumb_func_start sub_08056F40
 sub_08056F40: @ 0x08056F40
-	ldr r1, _08056F4C @ =0x0201774C
+	ldr r1, _08056F4C @ =gEfxBgSemaphore
 	ldr r0, [r1]
 	subs r0, #1
 	str r0, [r1]
 	bx lr
 	.align 2, 0
-_08056F4C: .4byte 0x0201774C
+_08056F4C: .4byte gEfxBgSemaphore
 
 	thumb_func_start sub_08056F50
 sub_08056F50: @ 0x08056F50
@@ -5239,7 +5239,7 @@ sub_08057088: @ 0x08057088
 	push {r4, r5, lr}
 	sub sp, #4
 	adds r5, r0, #0
-	ldr r1, _080570D0 @ =0x0201774C
+	ldr r1, _080570D0 @ =gEfxBgSemaphore
 	ldr r0, [r1]
 	adds r0, #1
 	str r0, [r1]
@@ -5269,7 +5269,7 @@ sub_08057088: @ 0x08057088
 	pop {r0}
 	bx r0
 	.align 2, 0
-_080570D0: .4byte 0x0201774C
+_080570D0: .4byte gEfxBgSemaphore
 _080570D4: .4byte gUnk_08C109A8
 _080570D8: .4byte gUnk_08C146DC
 _080570DC: .4byte gUnk_08C14650
@@ -5289,7 +5289,7 @@ sub_080570F0: @ 0x080570F0
 	asrs r0, r0, #0x10
 	cmp r0, #4
 	bne _08057116
-	ldr r0, _0805711C @ =0x0201774C
+	ldr r0, _0805711C @ =gEfxBgSemaphore
 	ldr r1, [r0]
 	subs r1, #1
 	str r1, [r0]
@@ -5302,7 +5302,7 @@ _08057116:
 	pop {r0}
 	bx r0
 	.align 2, 0
-_0805711C: .4byte 0x0201774C
+_0805711C: .4byte gEfxBgSemaphore
 
 	thumb_func_start sub_08057120
 sub_08057120: @ 0x08057120
@@ -5808,7 +5808,7 @@ sub_080575BC: @ 0x080575BC
 	sub sp, #4
 	adds r6, r0, #0
 	adds r4, r1, #0
-	ldr r1, _080575E8 @ =0x0201774C
+	ldr r1, _080575E8 @ =gEfxBgSemaphore
 	ldr r0, [r1]
 	adds r0, #1
 	str r0, [r1]
@@ -5825,7 +5825,7 @@ sub_080575BC: @ 0x080575BC
 	ldr r3, _080575F4 @ =gUnk_08C14B24
 	b _080575FC
 	.align 2, 0
-_080575E8: .4byte 0x0201774C
+_080575E8: .4byte gEfxBgSemaphore
 _080575EC: .4byte gUnk_08C109D8
 _080575F0: .4byte gUnk_08C148D0
 _080575F4: .4byte gUnk_08C14B24
@@ -5871,7 +5871,7 @@ sub_08057634: @ 0x08057634
 	asrs r0, r0, #0x10
 	cmp r0, #0xc
 	bne _0805765A
-	ldr r0, _08057660 @ =0x0201774C
+	ldr r0, _08057660 @ =gEfxBgSemaphore
 	ldr r1, [r0]
 	subs r1, #1
 	str r1, [r0]
@@ -5884,7 +5884,7 @@ _0805765A:
 	pop {r0}
 	bx r0
 	.align 2, 0
-_08057660: .4byte 0x0201774C
+_08057660: .4byte gEfxBgSemaphore
 
 	thumb_func_start sub_08057664
 sub_08057664: @ 0x08057664
@@ -5941,7 +5941,7 @@ sub_0805769C: @ 0x0805769C
 	bl sub_080565FC
 	adds r0, r4, #0
 	movs r1, #0x64
-	bl sub_0805618C
+	bl NewEfxTwobaiRST
 	ldr r3, _08057764 @ =gDispIo
 	adds r2, r3, #0
 	adds r2, #0x3c
@@ -5965,14 +5965,14 @@ sub_0805769C: @ 0x0805769C
 	movs r1, #0
 	movs r2, #8
 	movs r3, #0
-	bl sub_080566F0
+	bl NewEfxALPHA
 	str r6, [sp]
 	str r6, [sp, #4]
 	adds r0, r4, #0
 	movs r1, #0x3c
 	movs r2, #0x28
 	movs r3, #0x10
-	bl sub_080566F0
+	bl NewEfxALPHA
 	movs r1, #0x80
 	lsls r1, r1, #1
 	movs r0, #2
@@ -6043,7 +6043,7 @@ sub_080577AC: @ 0x080577AC
 	push {r4, r5, lr}
 	adds r5, r0, #0
 	adds r4, r1, #0
-	ldr r1, _080577F4 @ =0x0201774C
+	ldr r1, _080577F4 @ =gEfxBgSemaphore
 	ldr r0, [r1]
 	adds r0, #1
 	str r0, [r1]
@@ -6073,7 +6073,7 @@ sub_080577AC: @ 0x080577AC
 	pop {r0}
 	bx r0
 	.align 2, 0
-_080577F4: .4byte 0x0201774C
+_080577F4: .4byte gEfxBgSemaphore
 _080577F8: .4byte gUnk_08C10A08
 _080577FC: .4byte gUnk_081EDC70
 _08057800: .4byte gUnk_08C10A20
@@ -6126,7 +6126,7 @@ _0805785C:
 	cmp r1, r0
 	bne _0805787A
 	bl SpellFx_ClearBG1
-	ldr r1, _08057884 @ =0x0201774C
+	ldr r1, _08057884 @ =gEfxBgSemaphore
 	ldr r0, [r1]
 	subs r0, #1
 	str r0, [r1]
@@ -6140,7 +6140,7 @@ _0805787A:
 	pop {r0}
 	bx r0
 	.align 2, 0
-_08057884: .4byte 0x0201774C
+_08057884: .4byte gEfxBgSemaphore
 
 	thumb_func_start sub_08057888
 sub_08057888: @ 0x08057888
@@ -6148,7 +6148,7 @@ sub_08057888: @ 0x08057888
 	sub sp, #4
 	adds r6, r0, #0
 	adds r5, r1, #0
-	ldr r1, _080578DC @ =0x0201774C
+	ldr r1, _080578DC @ =gEfxBgSemaphore
 	ldr r0, [r1]
 	adds r0, #1
 	str r0, [r1]
@@ -6183,7 +6183,7 @@ sub_08057888: @ 0x08057888
 	pop {r0}
 	bx r0
 	.align 2, 0
-_080578DC: .4byte 0x0201774C
+_080578DC: .4byte gEfxBgSemaphore
 _080578E0: .4byte gUnk_08C10AF8
 _080578E4: .4byte gUnk_08C48338
 _080578E8: .4byte gUnk_082E2700
@@ -6203,7 +6203,7 @@ sub_080578F0: @ 0x080578F0
 	ble _08057918
 	ldr r0, [r4, #0x60]
 	bl AnimDelete
-	ldr r1, _08057920 @ =0x0201774C
+	ldr r1, _08057920 @ =gEfxBgSemaphore
 	ldr r0, [r1]
 	subs r0, #1
 	str r0, [r1]
@@ -6214,7 +6214,7 @@ _08057918:
 	pop {r0}
 	bx r0
 	.align 2, 0
-_08057920: .4byte 0x0201774C
+_08057920: .4byte gEfxBgSemaphore
 
 	thumb_func_start sub_08057924
 sub_08057924: @ 0x08057924
@@ -6271,7 +6271,7 @@ sub_0805795C: @ 0x0805795C
 	bl sub_080565FC
 	adds r0, r4, #0
 	movs r1, #0x64
-	bl sub_0805618C
+	bl NewEfxTwobaiRST
 	ldr r3, _08057A24 @ =gDispIo
 	adds r2, r3, #0
 	adds r2, #0x3c
@@ -6295,14 +6295,14 @@ sub_0805795C: @ 0x0805795C
 	movs r1, #0
 	movs r2, #8
 	movs r3, #0
-	bl sub_080566F0
+	bl NewEfxALPHA
 	str r6, [sp]
 	str r6, [sp, #4]
 	adds r0, r4, #0
 	movs r1, #0x3c
 	movs r2, #0x28
 	movs r3, #0x10
-	bl sub_080566F0
+	bl NewEfxALPHA
 	movs r1, #0x80
 	lsls r1, r1, #1
 	movs r0, #2
@@ -6502,7 +6502,7 @@ sub_08057B7C: @ 0x08057B7C
 	push {r4, r5, r6, r7, lr}
 	sub sp, #4
 	adds r5, r0, #0
-	ldr r1, _08057BD0 @ =0x0201774C
+	ldr r1, _08057BD0 @ =gEfxBgSemaphore
 	ldr r0, [r1]
 	adds r0, #1
 	str r0, [r1]
@@ -6538,7 +6538,7 @@ sub_08057B7C: @ 0x08057B7C
 	lsls r1, r1, #7
 	b _08057BE4
 	.align 2, 0
-_08057BD0: .4byte 0x0201774C
+_08057BD0: .4byte gEfxBgSemaphore
 _08057BD4: .4byte gUnk_08C10B40
 _08057BD8: .4byte gUnk_08C150E8
 _08057BDC: .4byte gUnk_08C15184
@@ -6568,7 +6568,7 @@ sub_08057BF4: @ 0x08057BF4
 	ble _08057C1A
 	ldr r0, [r4, #0x60]
 	bl AnimDelete
-	ldr r1, _08057C20 @ =0x0201774C
+	ldr r1, _08057C20 @ =gEfxBgSemaphore
 	ldr r0, [r1]
 	subs r0, #1
 	str r0, [r1]
@@ -6579,7 +6579,7 @@ _08057C1A:
 	pop {r0}
 	bx r0
 	.align 2, 0
-_08057C20: .4byte 0x0201774C
+_08057C20: .4byte gEfxBgSemaphore
 
 	thumb_func_start sub_08057C24
 sub_08057C24: @ 0x08057C24
@@ -6624,7 +6624,7 @@ sub_08057C60: @ 0x08057C60
 	bne _08057C84
 	ldr r0, [r4, #0x5c]
 	movs r1, #6
-	bl sub_0804F7B8
+	bl NewEfxFlashBgWhite
 	b _08057CF6
 _08057C84:
 	cmp r0, #6
@@ -6687,7 +6687,7 @@ sub_08057CFC: @ 0x08057CFC
 	sub sp, #8
 	adds r5, r0, #0
 	adds r6, r1, #0
-	ldr r1, _08057D5C @ =0x0201774C
+	ldr r1, _08057D5C @ =gEfxBgSemaphore
 	ldr r0, [r1]
 	adds r0, #1
 	str r0, [r1]
@@ -6725,7 +6725,7 @@ sub_08057CFC: @ 0x08057CFC
 	bl EfxTmCpyBG
 	b _08057D8C
 	.align 2, 0
-_08057D5C: .4byte 0x0201774C
+_08057D5C: .4byte gEfxBgSemaphore
 _08057D60: .4byte gUnk_08C10B70
 _08057D64: .4byte gUnk_081F3CC8
 _08057D68: .4byte gUnk_081F2E08
@@ -6778,7 +6778,7 @@ sub_08057DBC: @ 0x08057DBC
 	cmp r0, r1
 	bne _08057DE6
 	bl SpellFx_ClearBG1
-	ldr r1, _08057DEC @ =0x0201774C
+	ldr r1, _08057DEC @ =gEfxBgSemaphore
 	ldr r0, [r1]
 	subs r0, #1
 	str r0, [r1]
@@ -6790,14 +6790,14 @@ _08057DE6:
 	pop {r0}
 	bx r0
 	.align 2, 0
-_08057DEC: .4byte 0x0201774C
+_08057DEC: .4byte gEfxBgSemaphore
 
 	thumb_func_start sub_08057DF0
 sub_08057DF0: @ 0x08057DF0
 	push {r4, r5, r6, lr}
 	adds r4, r0, #0
 	adds r5, r1, #0
-	ldr r1, _08057E20 @ =0x0201774C
+	ldr r1, _08057E20 @ =gEfxBgSemaphore
 	ldr r0, [r1]
 	adds r0, #1
 	str r0, [r1]
@@ -6816,7 +6816,7 @@ sub_08057DF0: @ 0x08057DF0
 	movs r0, #0xd8
 	b _08057E2C
 	.align 2, 0
-_08057E20: .4byte 0x0201774C
+_08057E20: .4byte gEfxBgSemaphore
 _08057E24: .4byte gUnk_08C10B88
 _08057E28:
 	movs r0, #0xd8
@@ -6905,7 +6905,7 @@ _08057E76:
 	lsls r1, r2, #0x10
 	cmp r0, r1
 	ble _08057EE8
-	ldr r1, _08057EF8 @ =0x0201774C
+	ldr r1, _08057EF8 @ =gEfxBgSemaphore
 	ldr r0, [r1]
 	subs r0, #1
 	str r0, [r1]
@@ -6921,13 +6921,13 @@ _08057EE8:
 	bx r0
 	.align 2, 0
 _08057EF4: .4byte gBg1Tm
-_08057EF8: .4byte 0x0201774C
+_08057EF8: .4byte gEfxBgSemaphore
 
 	thumb_func_start sub_08057EFC
 sub_08057EFC: @ 0x08057EFC
 	push {r4, lr}
 	adds r4, r0, #0
-	ldr r1, _08057F28 @ =0x0201774C
+	ldr r1, _08057F28 @ =gEfxBgSemaphore
 	ldr r0, [r1]
 	adds r0, #1
 	str r0, [r1]
@@ -6946,7 +6946,7 @@ sub_08057EFC: @ 0x08057EFC
 	pop {r0}
 	bx r0
 	.align 2, 0
-_08057F28: .4byte 0x0201774C
+_08057F28: .4byte gEfxBgSemaphore
 _08057F2C: .4byte gUnk_08C10BA0
 _08057F30: .4byte gUnk_081EDCDE
 _08057F34: .4byte gUnk_081F3CC8
@@ -6976,7 +6976,7 @@ _08057F5E:
 	cmp r1, r0
 	bne _08057F78
 	bl SpellFx_ClearColorEffects
-	ldr r1, _08057F80 @ =0x0201774C
+	ldr r1, _08057F80 @ =gEfxBgSemaphore
 	ldr r0, [r1]
 	subs r0, #1
 	str r0, [r1]
@@ -6987,7 +6987,7 @@ _08057F78:
 	pop {r0}
 	bx r0
 	.align 2, 0
-_08057F80: .4byte 0x0201774C
+_08057F80: .4byte gEfxBgSemaphore
 
 	thumb_func_start sub_08057F84
 sub_08057F84: @ 0x08057F84
@@ -7055,7 +7055,7 @@ _08057FEE:
 	bl sub_0805807C
 	ldr r0, [r4, #0x5c]
 	movs r1, #6
-	bl sub_0804F7B8
+	bl NewEfxFlashBgWhite
 	movs r0, #9
 	ldrh r1, [r5, #0x10]
 	orrs r0, r1
@@ -7083,7 +7083,7 @@ _0805803C:
 	movs r1, #0
 	movs r2, #0xe
 	movs r3, #0x10
-	bl sub_080566F0
+	bl NewEfxALPHA
 	b _08058072
 _08058056:
 	adds r0, r6, #0
@@ -7109,7 +7109,7 @@ sub_0805807C: @ 0x0805807C
 	push {r4, r5, lr}
 	sub sp, #4
 	adds r5, r0, #0
-	ldr r1, _080580D4 @ =0x0201774C
+	ldr r1, _080580D4 @ =gEfxBgSemaphore
 	ldr r0, [r1]
 	adds r0, #1
 	str r0, [r1]
@@ -7147,7 +7147,7 @@ _080580AC:
 	pop {r0}
 	bx r0
 	.align 2, 0
-_080580D4: .4byte 0x0201774C
+_080580D4: .4byte gEfxBgSemaphore
 _080580D8: .4byte gUnk_08C10BD8
 _080580DC: .4byte gUnk_08C17264
 _080580E0: .4byte gUnk_08C16604
@@ -7168,7 +7168,7 @@ sub_080580EC: @ 0x080580EC
 	ble _08058114
 	ldr r0, [r4, #0x60]
 	bl AnimDelete
-	ldr r1, _0805811C @ =0x0201774C
+	ldr r1, _0805811C @ =gEfxBgSemaphore
 	ldr r0, [r1]
 	subs r0, #1
 	str r0, [r1]
@@ -7179,7 +7179,7 @@ _08058114:
 	pop {r0}
 	bx r0
 	.align 2, 0
-_0805811C: .4byte 0x0201774C
+_0805811C: .4byte gEfxBgSemaphore
 
 	thumb_func_start sub_08058120
 sub_08058120: @ 0x08058120
@@ -7248,7 +7248,7 @@ _08058180:
 	movs r1, #0x28
 	movs r2, #0xf
 	movs r3, #0x10
-	bl sub_080566F0
+	bl NewEfxALPHA
 	ldr r0, _080581C8 @ =0x0000011D
 	movs r1, #0x80
 	lsls r1, r1, #1
@@ -7294,7 +7294,7 @@ sub_08058208: @ 0x08058208
 	push {r4, r5, r6, lr}
 	sub sp, #4
 	adds r6, r0, #0
-	ldr r1, _08058264 @ =0x0201774C
+	ldr r1, _08058264 @ =gEfxBgSemaphore
 	ldr r0, [r1]
 	adds r0, #1
 	str r0, [r1]
@@ -7334,7 +7334,7 @@ _08058238:
 	adds r0, #0x10
 	b _08058292
 	.align 2, 0
-_08058264: .4byte 0x0201774C
+_08058264: .4byte gEfxBgSemaphore
 _08058268: .4byte gUnk_08C10C08
 _0805826C: .4byte gUnk_08C195F4
 _08058270: .4byte gUnk_08C189F4
@@ -7409,7 +7409,7 @@ _080582EA:
 	ble _0805830E
 	ldr r0, [r4, #0x60]
 	bl AnimDelete
-	ldr r1, _08058314 @ =0x0201774C
+	ldr r1, _08058314 @ =gEfxBgSemaphore
 	ldr r0, [r1]
 	subs r0, #1
 	str r0, [r1]
@@ -7420,13 +7420,13 @@ _0805830E:
 	pop {r0}
 	bx r0
 	.align 2, 0
-_08058314: .4byte 0x0201774C
+_08058314: .4byte gEfxBgSemaphore
 
 	thumb_func_start sub_08058318
 sub_08058318: @ 0x08058318
 	push {r4, r5, lr}
 	adds r5, r0, #0
-	ldr r1, _0805835C @ =0x0201774C
+	ldr r1, _0805835C @ =gEfxBgSemaphore
 	ldr r0, [r1]
 	adds r0, #1
 	str r0, [r1]
@@ -7453,7 +7453,7 @@ sub_08058318: @ 0x08058318
 	pop {r0}
 	bx r0
 	.align 2, 0
-_0805835C: .4byte 0x0201774C
+_0805835C: .4byte gEfxBgSemaphore
 _08058360: .4byte gUnk_08C10C20
 _08058364: .4byte gUnk_08280884
 _08058368: .4byte gUnk_08281C9C
@@ -7472,7 +7472,7 @@ sub_0805836C: @ 0x0805836C
 	bne _08058396
 	bl SpellFx_ClearBG1
 	bl SpellFx_ClearColorEffects
-	ldr r1, _0805839C @ =0x0201774C
+	ldr r1, _0805839C @ =gEfxBgSemaphore
 	ldr r0, [r1]
 	subs r0, #1
 	str r0, [r1]
@@ -7483,13 +7483,13 @@ _08058396:
 	pop {r0}
 	bx r0
 	.align 2, 0
-_0805839C: .4byte 0x0201774C
+_0805839C: .4byte gEfxBgSemaphore
 
 	thumb_func_start sub_080583A0
 sub_080583A0: @ 0x080583A0
 	push {r4, lr}
 	adds r4, r0, #0
-	ldr r1, _080583CC @ =0x0201774C
+	ldr r1, _080583CC @ =gEfxBgSemaphore
 	ldr r0, [r1]
 	adds r0, #1
 	str r0, [r1]
@@ -7508,7 +7508,7 @@ sub_080583A0: @ 0x080583A0
 	pop {r0}
 	bx r0
 	.align 2, 0
-_080583CC: .4byte 0x0201774C
+_080583CC: .4byte gEfxBgSemaphore
 _080583D0: .4byte gUnk_08C10C38
 _080583D4: .4byte gUnk_081EDD00
 _080583D8: .4byte gUnk_08281C7C
@@ -7527,7 +7527,7 @@ sub_080583DC: @ 0x080583DC
 	cmp r5, #0
 	blt _0805841C
 	ldr r0, [r4, #0x4c]
-	ldr r4, _08058418 @ =0x020165C8
+	ldr r4, _08058418 @ =gEfxPal
 	adds r1, r4, #0
 	movs r2, #8
 	bl CpuFastSet
@@ -7541,13 +7541,13 @@ sub_080583DC: @ 0x080583DC
 	bl SpellFx_RegisterBgPal
 	b _08058432
 	.align 2, 0
-_08058418: .4byte 0x020165C8
+_08058418: .4byte gEfxPal
 _0805841C:
 	movs r0, #1
 	rsbs r0, r0, #0
 	cmp r5, r0
 	bne _08058432
-	ldr r1, _08058438 @ =0x0201774C
+	ldr r1, _08058438 @ =gEfxBgSemaphore
 	ldr r0, [r1]
 	subs r0, #1
 	str r0, [r1]
@@ -7558,7 +7558,7 @@ _08058432:
 	pop {r0}
 	bx r0
 	.align 2, 0
-_08058438: .4byte 0x0201774C
+_08058438: .4byte gEfxBgSemaphore
 
 	thumb_func_start sub_0805843C
 sub_0805843C: @ 0x0805843C
@@ -7653,7 +7653,7 @@ sub_080584F8: @ 0x080584F8
 	push {r4, r5, r6, lr}
 	sub sp, #4
 	adds r4, r0, #0
-	ldr r1, _08058534 @ =0x0201774C
+	ldr r1, _08058534 @ =gEfxBgSemaphore
 	ldr r0, [r1]
 	adds r0, #1
 	str r0, [r1]
@@ -7678,7 +7678,7 @@ sub_080584F8: @ 0x080584F8
 	adds r0, #0x20
 	b _08058548
 	.align 2, 0
-_08058534: .4byte 0x0201774C
+_08058534: .4byte gEfxBgSemaphore
 _08058538: .4byte gUnk_08C10C70
 _0805853C: .4byte gUnk_08C1A224
 _08058540: .4byte gUnk_08C1AE54
@@ -7705,7 +7705,7 @@ _08058568: .4byte gUnk_081F4190
 	thumb_func_start sub_0805856C
 sub_0805856C: @ 0x0805856C
 	push {lr}
-	ldr r2, _08058580 @ =0x0201774C
+	ldr r2, _08058580 @ =gEfxBgSemaphore
 	ldr r1, [r2]
 	subs r1, #1
 	str r1, [r2]
@@ -7714,7 +7714,7 @@ sub_0805856C: @ 0x0805856C
 	pop {r0}
 	bx r0
 	.align 2, 0
-_08058580: .4byte 0x0201774C
+_08058580: .4byte gEfxBgSemaphore
 
 	thumb_func_start sub_08058584
 sub_08058584: @ 0x08058584
@@ -7811,7 +7811,7 @@ _08058642:
 sub_08058648: @ 0x08058648
 	push {r4, lr}
 	adds r4, r0, #0
-	ldr r1, _08058684 @ =0x0201774C
+	ldr r1, _08058684 @ =gEfxBgSemaphore
 	ldr r0, [r1]
 	adds r0, #1
 	str r0, [r1]
@@ -7836,7 +7836,7 @@ sub_08058648: @ 0x08058648
 	pop {r0}
 	bx r0
 	.align 2, 0
-_08058684: .4byte 0x0201774C
+_08058684: .4byte gEfxBgSemaphore
 _08058688: .4byte gUnk_08C10CA8
 _0805868C: .4byte gUnk_081EDDDA
 _08058690: .4byte gUnk_08C10CC0
@@ -7871,7 +7871,7 @@ _080586C6:
 	cmp r2, r0
 	bne _080586E4
 	bl SpellFx_ClearBG1
-	ldr r1, _080586EC @ =0x0201774C
+	ldr r1, _080586EC @ =gEfxBgSemaphore
 	ldr r0, [r1]
 	subs r0, #1
 	str r0, [r1]
@@ -7883,13 +7883,13 @@ _080586E4:
 	pop {r0}
 	bx r0
 	.align 2, 0
-_080586EC: .4byte 0x0201774C
+_080586EC: .4byte gEfxBgSemaphore
 
 	thumb_func_start sub_080586F0
 sub_080586F0: @ 0x080586F0
 	push {r4, lr}
 	adds r4, r0, #0
-	ldr r1, _0805871C @ =0x0201774C
+	ldr r1, _0805871C @ =gEfxBgSemaphore
 	ldr r0, [r1]
 	adds r0, #1
 	str r0, [r1]
@@ -7908,7 +7908,7 @@ sub_080586F0: @ 0x080586F0
 	pop {r0}
 	bx r0
 	.align 2, 0
-_0805871C: .4byte 0x0201774C
+_0805871C: .4byte gEfxBgSemaphore
 _08058720: .4byte gUnk_08C10CF0
 _08058724: .4byte gUnk_081EDE20
 _08058728: .4byte gUnk_082131F8
@@ -7938,7 +7938,7 @@ _08058752:
 	cmp r1, r0
 	bne _0805876C
 	bl SpellFx_ClearColorEffects
-	ldr r1, _08058774 @ =0x0201774C
+	ldr r1, _08058774 @ =gEfxBgSemaphore
 	ldr r0, [r1]
 	subs r0, #1
 	str r0, [r1]
@@ -7949,14 +7949,14 @@ _0805876C:
 	pop {r0}
 	bx r0
 	.align 2, 0
-_08058774: .4byte 0x0201774C
+_08058774: .4byte gEfxBgSemaphore
 
 	thumb_func_start sub_08058778
 sub_08058778: @ 0x08058778
 	push {r4, r5, r6, lr}
 	sub sp, #4
 	adds r5, r0, #0
-	ldr r1, _080587BC @ =0x0201774C
+	ldr r1, _080587BC @ =gEfxBgSemaphore
 	ldr r0, [r1]
 	adds r0, #1
 	str r0, [r1]
@@ -7985,7 +7985,7 @@ sub_08058778: @ 0x08058778
 	adds r0, #0x24
 	b _080587CC
 	.align 2, 0
-_080587BC: .4byte 0x0201774C
+_080587BC: .4byte gEfxBgSemaphore
 _080587C0: .4byte gUnk_08C10D10
 _080587C4: .4byte gUnk_08C1BA90
 _080587C8:
@@ -8023,7 +8023,7 @@ sub_080587F8: @ 0x080587F8
 	lsls r1, r2, #0x10
 	cmp r0, r1
 	bne _08058820
-	ldr r0, _08058828 @ =0x0201774C
+	ldr r0, _08058828 @ =gEfxBgSemaphore
 	ldr r1, [r0]
 	subs r1, #1
 	str r1, [r0]
@@ -8036,7 +8036,7 @@ _08058820:
 	pop {r0}
 	bx r0
 	.align 2, 0
-_08058828: .4byte 0x0201774C
+_08058828: .4byte gEfxBgSemaphore
 
 	thumb_func_start sub_0805882C
 sub_0805882C: @ 0x0805882C
@@ -8144,7 +8144,7 @@ _08058902:
 sub_08058908: @ 0x08058908
 	push {r4, r5, lr}
 	adds r4, r0, #0
-	ldr r1, _08058960 @ =0x0201774C
+	ldr r1, _08058960 @ =gEfxBgSemaphore
 	ldr r0, [r1]
 	adds r0, #1
 	str r0, [r1]
@@ -8182,7 +8182,7 @@ sub_08058908: @ 0x08058908
 	bl SetBgOffset
 	b _08058986
 	.align 2, 0
-_08058960: .4byte 0x0201774C
+_08058960: .4byte gEfxBgSemaphore
 _08058964: .4byte gUnk_08C10D40
 _08058968: .4byte gUnk_081EDEC2
 _0805896C: .4byte gUnk_08C10D58
@@ -8248,7 +8248,7 @@ _080589E4:
 	cmp r5, r0
 	bne _08058A02
 	bl SpellFx_ClearBG1
-	ldr r1, _08058A0C @ =0x0201774C
+	ldr r1, _08058A0C @ =gEfxBgSemaphore
 	ldr r0, [r1]
 	subs r0, #1
 	str r0, [r1]
@@ -8261,13 +8261,13 @@ _08058A02:
 	pop {r0}
 	bx r0
 	.align 2, 0
-_08058A0C: .4byte 0x0201774C
+_08058A0C: .4byte gEfxBgSemaphore
 
 	thumb_func_start sub_08058A10
 sub_08058A10: @ 0x08058A10
 	push {r4, lr}
 	adds r4, r0, #0
-	ldr r1, _08058A3C @ =0x0201774C
+	ldr r1, _08058A3C @ =gEfxBgSemaphore
 	ldr r0, [r1]
 	adds r0, #1
 	str r0, [r1]
@@ -8286,7 +8286,7 @@ sub_08058A10: @ 0x08058A10
 	pop {r0}
 	bx r0
 	.align 2, 0
-_08058A3C: .4byte 0x0201774C
+_08058A3C: .4byte gEfxBgSemaphore
 _08058A40: .4byte gUnk_08C10D68
 _08058A44: .4byte gUnk_081EDECC
 _08058A48: .4byte gUnk_082019E4
@@ -8316,7 +8316,7 @@ _08058A72:
 	cmp r1, r0
 	bne _08058A8C
 	bl SpellFx_ClearColorEffects
-	ldr r1, _08058A94 @ =0x0201774C
+	ldr r1, _08058A94 @ =gEfxBgSemaphore
 	ldr r0, [r1]
 	subs r0, #1
 	str r0, [r1]
@@ -8327,14 +8327,14 @@ _08058A8C:
 	pop {r0}
 	bx r0
 	.align 2, 0
-_08058A94: .4byte 0x0201774C
+_08058A94: .4byte gEfxBgSemaphore
 
 	thumb_func_start sub_08058A98
 sub_08058A98: @ 0x08058A98
 	push {r4, r5, lr}
 	sub sp, #4
 	adds r5, r0, #0
-	ldr r1, _08058AE0 @ =0x0201774C
+	ldr r1, _08058AE0 @ =gEfxBgSemaphore
 	ldr r0, [r1]
 	adds r0, #1
 	str r0, [r1]
@@ -8364,7 +8364,7 @@ sub_08058A98: @ 0x08058A98
 	pop {r0}
 	bx r0
 	.align 2, 0
-_08058AE0: .4byte 0x0201774C
+_08058AE0: .4byte gEfxBgSemaphore
 _08058AE4: .4byte gUnk_08C10D88
 _08058AE8: .4byte gUnk_08C2327C
 _08058AEC: .4byte gUnk_08C22750
@@ -8384,7 +8384,7 @@ sub_08058AF8: @ 0x08058AF8
 	ble _08058B1E
 	ldr r0, [r4, #0x60]
 	bl AnimDelete
-	ldr r1, _08058B24 @ =0x0201774C
+	ldr r1, _08058B24 @ =gEfxBgSemaphore
 	ldr r0, [r1]
 	subs r0, #1
 	str r0, [r1]
@@ -8395,7 +8395,7 @@ _08058B1E:
 	pop {r0}
 	bx r0
 	.align 2, 0
-_08058B24: .4byte 0x0201774C
+_08058B24: .4byte gEfxBgSemaphore
 
 	thumb_func_start sub_08058B28
 sub_08058B28: @ 0x08058B28
@@ -8589,7 +8589,7 @@ _08058CAC:
 sub_08058CB8: @ 0x08058CB8
 	push {r4, lr}
 	adds r4, r0, #0
-	ldr r1, _08058CFC @ =0x0201774C
+	ldr r1, _08058CFC @ =gEfxBgSemaphore
 	ldr r0, [r1]
 	adds r0, #1
 	str r0, [r1]
@@ -8618,7 +8618,7 @@ sub_08058CB8: @ 0x08058CB8
 	pop {r0}
 	bx r0
 	.align 2, 0
-_08058CFC: .4byte 0x0201774C
+_08058CFC: .4byte gEfxBgSemaphore
 _08058D00: .4byte gUnk_08C10DB8
 _08058D04: .4byte gUnk_081EDF0E
 _08058D08: .4byte gUnk_08C10DD0
@@ -8655,7 +8655,7 @@ _08058D46:
 	cmp r2, r0
 	bne _08058D64
 	bl SpellFx_ClearBG1
-	ldr r1, _08058D6C @ =0x0201774C
+	ldr r1, _08058D6C @ =gEfxBgSemaphore
 	ldr r0, [r1]
 	subs r0, #1
 	str r0, [r1]
@@ -8667,14 +8667,14 @@ _08058D64:
 	pop {r0}
 	bx r0
 	.align 2, 0
-_08058D6C: .4byte 0x0201774C
+_08058D6C: .4byte gEfxBgSemaphore
 
 	thumb_func_start sub_08058D70
 sub_08058D70: @ 0x08058D70
 	push {r4, r5, r6, lr}
 	sub sp, #4
 	adds r6, r0, #0
-	ldr r1, _08058DB4 @ =0x0201774C
+	ldr r1, _08058DB4 @ =gEfxBgSemaphore
 	ldr r0, [r1]
 	adds r0, #1
 	str r0, [r1]
@@ -8702,7 +8702,7 @@ sub_08058D70: @ 0x08058D70
 	subs r0, #8
 	b _08058DD0
 	.align 2, 0
-_08058DB4: .4byte 0x0201774C
+_08058DB4: .4byte gEfxBgSemaphore
 _08058DB8: .4byte gUnk_08C10E30
 _08058DBC: .4byte gUnk_08C23A1C
 _08058DC0: .4byte gUnk_08C23694
@@ -8756,7 +8756,7 @@ _08058E22:
 	ble _08058E3A
 	ldr r0, [r4, #0x60]
 	bl AnimDelete
-	ldr r1, _08058E40 @ =0x0201774C
+	ldr r1, _08058E40 @ =gEfxBgSemaphore
 	ldr r0, [r1]
 	subs r0, #1
 	str r0, [r1]
@@ -8767,13 +8767,13 @@ _08058E3A:
 	pop {r0}
 	bx r0
 	.align 2, 0
-_08058E40: .4byte 0x0201774C
+_08058E40: .4byte gEfxBgSemaphore
 
 	thumb_func_start sub_08058E44
 sub_08058E44: @ 0x08058E44
 	push {r4, r5, lr}
 	adds r4, r0, #0
-	ldr r1, _08058E9C @ =0x0201774C
+	ldr r1, _08058E9C @ =gEfxBgSemaphore
 	ldr r0, [r1]
 	adds r0, #1
 	str r0, [r1]
@@ -8811,7 +8811,7 @@ sub_08058E44: @ 0x08058E44
 	bl SetBgOffset
 	b _08058EC2
 	.align 2, 0
-_08058E9C: .4byte 0x0201774C
+_08058E9C: .4byte gEfxBgSemaphore
 _08058EA0: .4byte gUnk_08C10E48
 _08058EA4: .4byte gUnk_081EDF40
 _08058EA8: .4byte gUnk_08C10EB4
@@ -8863,7 +8863,7 @@ _08058F04:
 	cmp r4, r0
 	bne _08058F22
 	bl SpellFx_ClearBG1
-	ldr r1, _08058F28 @ =0x0201774C
+	ldr r1, _08058F28 @ =gEfxBgSemaphore
 	ldr r0, [r1]
 	subs r0, #1
 	str r0, [r1]
@@ -8875,14 +8875,14 @@ _08058F22:
 	pop {r0}
 	bx r0
 	.align 2, 0
-_08058F28: .4byte 0x0201774C
+_08058F28: .4byte gEfxBgSemaphore
 
 	thumb_func_start sub_08058F2C
 sub_08058F2C: @ 0x08058F2C
 	push {r4, r5, lr}
 	sub sp, #4
 	adds r4, r0, #0
-	ldr r1, _08058F88 @ =0x0201774C
+	ldr r1, _08058F88 @ =gEfxBgSemaphore
 	ldr r0, [r1]
 	adds r0, #1
 	str r0, [r1]
@@ -8918,7 +8918,7 @@ sub_08058F2C: @ 0x08058F2C
 	bl SetBgOffset
 	b _08058FA6
 	.align 2, 0
-_08058F88: .4byte 0x0201774C
+_08058F88: .4byte gEfxBgSemaphore
 _08058F8C: .4byte gUnk_08C10F08
 _08058F90: .4byte gUnk_0820F194
 _08058F94: .4byte gUnk_08210350
@@ -8958,7 +8958,7 @@ sub_08058FC4: @ 0x08058FC4
 	bne _08058FEC
 	bl SpellFx_ClearBG1
 	bl SpellFx_ClearColorEffects
-	ldr r1, _08058FF4 @ =0x0201774C
+	ldr r1, _08058FF4 @ =gEfxBgSemaphore
 	ldr r0, [r1]
 	subs r0, #1
 	str r0, [r1]
@@ -8969,13 +8969,13 @@ _08058FEC:
 	pop {r0}
 	bx r0
 	.align 2, 0
-_08058FF4: .4byte 0x0201774C
+_08058FF4: .4byte gEfxBgSemaphore
 
 	thumb_func_start sub_08058FF8
 sub_08058FF8: @ 0x08058FF8
 	push {r4, lr}
 	adds r4, r0, #0
-	ldr r1, _0805902C @ =0x0201774C
+	ldr r1, _0805902C @ =gEfxBgSemaphore
 	ldr r0, [r1]
 	adds r0, #1
 	str r0, [r1]
@@ -8997,7 +8997,7 @@ sub_08058FF8: @ 0x08058FF8
 	pop {r0}
 	bx r0
 	.align 2, 0
-_0805902C: .4byte 0x0201774C
+_0805902C: .4byte gEfxBgSemaphore
 _08059030: .4byte gUnk_08C10F20
 _08059034: .4byte gUnk_081EDF96
 _08059038: .4byte gUnk_08210150
@@ -9026,7 +9026,7 @@ _08059062:
 	rsbs r0, r0, #0
 	cmp r1, r0
 	bne _08059078
-	ldr r1, _08059080 @ =0x0201774C
+	ldr r1, _08059080 @ =gEfxBgSemaphore
 	ldr r0, [r1]
 	subs r0, #1
 	str r0, [r1]
@@ -9037,14 +9037,14 @@ _08059078:
 	pop {r0}
 	bx r0
 	.align 2, 0
-_08059080: .4byte 0x0201774C
+_08059080: .4byte gEfxBgSemaphore
 
 	thumb_func_start sub_08059084
 sub_08059084: @ 0x08059084
 	push {r4, r5, r6, lr}
 	sub sp, #4
 	adds r5, r0, #0
-	ldr r1, _080590C4 @ =0x0201774C
+	ldr r1, _080590C4 @ =gEfxBgSemaphore
 	ldr r0, [r1]
 	adds r0, #1
 	str r0, [r1]
@@ -9071,7 +9071,7 @@ sub_08059084: @ 0x08059084
 	subs r0, #8
 	b _080590D8
 	.align 2, 0
-_080590C4: .4byte 0x0201774C
+_080590C4: .4byte gEfxBgSemaphore
 _080590C8: .4byte gUnk_08C10F40
 _080590CC: .4byte gUnk_08C25638
 _080590D0: .4byte gUnk_08C24818
@@ -9113,7 +9113,7 @@ sub_08059108: @ 0x08059108
 	ble _0805912E
 	ldr r0, [r4, #0x60]
 	bl AnimDelete
-	ldr r1, _08059134 @ =0x0201774C
+	ldr r1, _08059134 @ =gEfxBgSemaphore
 	ldr r0, [r1]
 	subs r0, #1
 	str r0, [r1]
@@ -9124,7 +9124,7 @@ _0805912E:
 	pop {r0}
 	bx r0
 	.align 2, 0
-_08059134: .4byte 0x0201774C
+_08059134: .4byte gEfxBgSemaphore
 
 	thumb_func_start sub_08059138
 sub_08059138: @ 0x08059138
@@ -9213,7 +9213,7 @@ _080591AA:
 	movs r1, #0
 	movs r2, #0x10
 	movs r3, #0
-	bl sub_080566F0
+	bl NewEfxALPHA
 	movs r0, #0x91
 	lsls r0, r0, #1
 	movs r1, #0x80
@@ -9231,7 +9231,7 @@ _08059206:
 	bne _08059220
 	ldr r0, [r4, #0x5c]
 	movs r1, #4
-	bl sub_0804F7B8
+	bl NewEfxFlashBgWhite
 	b _080592A0
 	.align 2, 0
 _0805921C: .4byte gDispIo
@@ -9250,7 +9250,7 @@ _08059220:
 	movs r1, #0x18
 	movs r2, #0x10
 	movs r3, #0x10
-	bl sub_080566F0
+	bl NewEfxALPHA
 	ldr r0, _08059258 @ =0x00000123
 	movs r1, #0x80
 	lsls r1, r1, #1
@@ -9304,7 +9304,7 @@ _080592A0:
 sub_080592AC: @ 0x080592AC
 	push {r4, r5, lr}
 	adds r4, r0, #0
-	ldr r1, _08059300 @ =0x0201774C
+	ldr r1, _08059300 @ =gEfxBgSemaphore
 	ldr r0, [r1]
 	adds r0, #1
 	str r0, [r1]
@@ -9341,7 +9341,7 @@ sub_080592AC: @ 0x080592AC
 	bl SetBgOffset
 	b _08059326
 	.align 2, 0
-_08059300: .4byte 0x0201774C
+_08059300: .4byte gEfxBgSemaphore
 _08059304: .4byte gUnk_08C10F70
 _08059308: .4byte gUnk_081EDFEC
 _0805930C: .4byte gUnk_08C10F88
@@ -9394,7 +9394,7 @@ _0805936C:
 	cmp r3, r0
 	bne _0805938A
 	bl SpellFx_ClearBG1
-	ldr r1, _08059390 @ =0x0201774C
+	ldr r1, _08059390 @ =gEfxBgSemaphore
 	ldr r0, [r1]
 	subs r0, #1
 	str r0, [r1]
@@ -9406,13 +9406,13 @@ _0805938A:
 	pop {r0}
 	bx r0
 	.align 2, 0
-_08059390: .4byte 0x0201774C
+_08059390: .4byte gEfxBgSemaphore
 
 	thumb_func_start sub_08059394
 sub_08059394: @ 0x08059394
 	push {r4, r5, lr}
 	adds r4, r0, #0
-	ldr r1, _080593E8 @ =0x0201774C
+	ldr r1, _080593E8 @ =gEfxBgSemaphore
 	ldr r0, [r1]
 	adds r0, #1
 	str r0, [r1]
@@ -9449,7 +9449,7 @@ sub_08059394: @ 0x08059394
 	bl SetBgOffset
 	b _0805940E
 	.align 2, 0
-_080593E8: .4byte 0x0201774C
+_080593E8: .4byte gEfxBgSemaphore
 _080593EC: .4byte gUnk_08C10FB8
 _080593F0: .4byte gUnk_081EE05A
 _080593F4: .4byte gUnk_08C10FD0
@@ -9502,7 +9502,7 @@ _08059454:
 	cmp r3, r0
 	bne _08059472
 	bl SpellFx_ClearBG1
-	ldr r1, _08059478 @ =0x0201774C
+	ldr r1, _08059478 @ =gEfxBgSemaphore
 	ldr r0, [r1]
 	subs r0, #1
 	str r0, [r1]
@@ -9514,14 +9514,14 @@ _08059472:
 	pop {r0}
 	bx r0
 	.align 2, 0
-_08059478: .4byte 0x0201774C
+_08059478: .4byte gEfxBgSemaphore
 
 	thumb_func_start sub_0805947C
 sub_0805947C: @ 0x0805947C
 	push {r4, r5, lr}
 	sub sp, #4
 	adds r5, r0, #0
-	ldr r1, _080594CC @ =0x0201774C
+	ldr r1, _080594CC @ =gEfxBgSemaphore
 	ldr r0, [r1]
 	adds r0, #1
 	str r0, [r1]
@@ -9554,7 +9554,7 @@ sub_0805947C: @ 0x0805947C
 	pop {r0}
 	bx r0
 	.align 2, 0
-_080594CC: .4byte 0x0201774C
+_080594CC: .4byte gEfxBgSemaphore
 _080594D0: .4byte gUnk_08C11028
 _080594D4: .4byte gUnk_08C28508
 _080594D8: .4byte gUnk_082708B0
@@ -9573,7 +9573,7 @@ sub_080594E0: @ 0x080594E0
 	ble _08059506
 	ldr r0, [r4, #0x60]
 	bl AnimDelete
-	ldr r1, _0805950C @ =0x0201774C
+	ldr r1, _0805950C @ =gEfxBgSemaphore
 	ldr r0, [r1]
 	subs r0, #1
 	str r0, [r1]
@@ -9584,13 +9584,13 @@ _08059506:
 	pop {r0}
 	bx r0
 	.align 2, 0
-_0805950C: .4byte 0x0201774C
+_0805950C: .4byte gEfxBgSemaphore
 
 	thumb_func_start sub_08059510
 sub_08059510: @ 0x08059510
 	push {r4, lr}
 	adds r4, r0, #0
-	ldr r1, _0805954C @ =0x0201774C
+	ldr r1, _0805954C @ =gEfxBgSemaphore
 	ldr r0, [r1]
 	adds r0, #1
 	str r0, [r1]
@@ -9615,7 +9615,7 @@ sub_08059510: @ 0x08059510
 	pop {r0}
 	bx r0
 	.align 2, 0
-_0805954C: .4byte 0x0201774C
+_0805954C: .4byte gEfxBgSemaphore
 _08059550: .4byte gUnk_08C11040
 _08059554: .4byte gUnk_082708B0
 _08059558: .4byte gUnk_082224D4
@@ -9632,7 +9632,7 @@ _08059562:
 	adds r4, #1
 	cmp r4, #0x1f
 	ble _08059562
-	ldr r1, _08059584 @ =0x0201774C
+	ldr r1, _08059584 @ =gEfxBgSemaphore
 	ldr r0, [r1]
 	subs r0, #1
 	str r0, [r1]
@@ -9642,7 +9642,7 @@ _08059562:
 	pop {r0}
 	bx r0
 	.align 2, 0
-_08059584: .4byte 0x0201774C
+_08059584: .4byte gEfxBgSemaphore
 
 	thumb_func_start sub_08059588
 sub_08059588: @ 0x08059588
@@ -9661,7 +9661,7 @@ sub_08059588: @ 0x08059588
 	movs r0, #1
 	strb r0, [r4, #6]
 	strb r0, [r4, #7]
-	ldr r1, _08059618 @ =0x0201774C
+	ldr r1, _08059618 @ =gEfxBgSemaphore
 	ldr r0, [r1]
 	adds r0, #1
 	str r0, [r1]
@@ -9712,7 +9712,7 @@ sub_08059588: @ 0x08059588
 	lsls r1, r1, #3
 	b _0805963E
 	.align 2, 0
-_08059618: .4byte 0x0201774C
+_08059618: .4byte gEfxBgSemaphore
 _0805961C: .4byte gUnk_08C11058
 _08059620: .4byte gUnk_08C28574
 _08059624: .4byte 0x0000FFFF
@@ -9811,7 +9811,7 @@ sub_080596E0: @ 0x080596E0
 	lsls r0, r5, #0x10
 	cmp r1, r0
 	ble _08059710
-	ldr r1, _0805970C @ =0x0201774C
+	ldr r1, _0805970C @ =gEfxBgSemaphore
 	ldr r0, [r1]
 	subs r0, #1
 	str r0, [r1]
@@ -9821,7 +9821,7 @@ sub_080596E0: @ 0x080596E0
 	bl Proc_Break
 	b _08059790
 	.align 2, 0
-_0805970C: .4byte 0x0201774C
+_0805970C: .4byte gEfxBgSemaphore
 _08059710:
 	movs r0, #1
 	ands r2, r0
@@ -10020,7 +10020,7 @@ _08059890:
 sub_08059898: @ 0x08059898
 	push {r4, lr}
 	adds r4, r0, #0
-	ldr r1, _080598D4 @ =0x0201774C
+	ldr r1, _080598D4 @ =gEfxBgSemaphore
 	ldr r0, [r1]
 	adds r0, #1
 	str r0, [r1]
@@ -10046,7 +10046,7 @@ sub_08059898: @ 0x08059898
 	pop {r0}
 	bx r0
 	.align 2, 0
-_080598D4: .4byte 0x0201774C
+_080598D4: .4byte gEfxBgSemaphore
 _080598D8: .4byte gUnk_08C11088
 _080598DC: .4byte gUnk_081EE088
 _080598E0: .4byte gUnk_08C110CC
@@ -10087,7 +10087,7 @@ _08059928:
 	rsbs r0, r0, #0
 	cmp r4, r0
 	bne _0805993E
-	ldr r1, _08059944 @ =0x0201774C
+	ldr r1, _08059944 @ =gEfxBgSemaphore
 	ldr r0, [r1]
 	subs r0, #1
 	str r0, [r1]
@@ -10098,13 +10098,13 @@ _0805993E:
 	pop {r0}
 	bx r0
 	.align 2, 0
-_08059944: .4byte 0x0201774C
+_08059944: .4byte gEfxBgSemaphore
 
 	thumb_func_start sub_08059948
 sub_08059948: @ 0x08059948
 	push {r4, lr}
 	adds r4, r0, #0
-	ldr r1, _08059964 @ =0x0201774C
+	ldr r1, _08059964 @ =gEfxBgSemaphore
 	ldr r0, [r1]
 	adds r0, #1
 	str r0, [r1]
@@ -10116,7 +10116,7 @@ sub_08059948: @ 0x08059948
 	pop {r0}
 	bx r0
 	.align 2, 0
-_08059964: .4byte 0x0201774C
+_08059964: .4byte gEfxBgSemaphore
 _08059968: .4byte gUnk_08C110F8
 
 	thumb_func_start sub_0805996C
@@ -10155,7 +10155,7 @@ sub_080599B0: @ 0x080599B0
 	adds r4, r0, #0
 	ldr r0, [r4, #0x60]
 	bl AnimDelete
-	ldr r1, _080599D0 @ =0x0201774C
+	ldr r1, _080599D0 @ =gEfxBgSemaphore
 	ldr r0, [r1]
 	subs r0, #1
 	str r0, [r1]
@@ -10165,13 +10165,13 @@ sub_080599B0: @ 0x080599B0
 	pop {r0}
 	bx r0
 	.align 2, 0
-_080599D0: .4byte 0x0201774C
+_080599D0: .4byte gEfxBgSemaphore
 
 	thumb_func_start sub_080599D4
 sub_080599D4: @ 0x080599D4
 	push {r4, lr}
 	adds r4, r0, #0
-	ldr r1, _080599F0 @ =0x0201774C
+	ldr r1, _080599F0 @ =gEfxBgSemaphore
 	ldr r0, [r1]
 	adds r0, #1
 	str r0, [r1]
@@ -10183,7 +10183,7 @@ sub_080599D4: @ 0x080599D4
 	pop {r0}
 	bx r0
 	.align 2, 0
-_080599F0: .4byte 0x0201774C
+_080599F0: .4byte gEfxBgSemaphore
 _080599F4: .4byte gUnk_08C11120
 
 	thumb_func_start sub_080599F8
@@ -10201,7 +10201,7 @@ sub_080599F8: @ 0x080599F8
 	bl PlaySFX
 	ldr r0, [r4, #0x5c]
 	movs r1, #0x26
-	bl sub_0804F7B8
+	bl NewEfxFlashBgWhite
 	movs r0, #0
 	strh r0, [r4, #0x2c]
 	movs r0, #5
@@ -10228,7 +10228,7 @@ sub_08059A2C: @ 0x08059A2C
 	bl Interpolate
 	adds r5, r0, #0
 	ldr r0, _08059A88 @ =gPal
-	ldr r4, _08059A8C @ =0x020165C8
+	ldr r4, _08059A8C @ =gEfxPal
 	movs r2, #0x80
 	lsls r2, r2, #1
 	adds r1, r4, #0
@@ -10259,7 +10259,7 @@ _08059A80:
 	bx r0
 	.align 2, 0
 _08059A88: .4byte gPal
-_08059A8C: .4byte 0x020165C8
+_08059A8C: .4byte gEfxPal
 
 	thumb_func_start sub_08059A90
 sub_08059A90: @ 0x08059A90
@@ -10305,7 +10305,7 @@ sub_08059A90: @ 0x08059A90
 	ble _08059AF8
 	bl SpellFx_ClearBG1
 	bl SpellFx_ClearColorEffects
-	ldr r1, _08059B04 @ =0x0201774C
+	ldr r1, _08059B04 @ =gEfxBgSemaphore
 	ldr r0, [r1]
 	subs r0, #1
 	str r0, [r1]
@@ -10318,7 +10318,7 @@ _08059AF8:
 	bx r0
 	.align 2, 0
 _08059B00: .4byte gDispIo
-_08059B04: .4byte 0x0201774C
+_08059B04: .4byte gEfxBgSemaphore
 
 	thumb_func_start sub_08059B08
 sub_08059B08: @ 0x08059B08
@@ -10326,12 +10326,12 @@ sub_08059B08: @ 0x08059B08
 	adds r4, r0, #0
 	adds r5, r1, #0
 	adds r6, r2, #0
-	ldr r1, _08059B3C @ =0x0201774C
+	ldr r1, _08059B3C @ =gEfxBgSemaphore
 	ldr r0, [r1]
 	adds r0, #1
 	str r0, [r1]
 	ldr r0, _08059B40 @ =gPal
-	ldr r1, _08059B44 @ =0x020165C8
+	ldr r1, _08059B44 @ =gEfxPal
 	movs r2, #0x80
 	lsls r2, r2, #1
 	bl CpuFastSet
@@ -10347,9 +10347,9 @@ sub_08059B08: @ 0x08059B08
 	pop {r0}
 	bx r0
 	.align 2, 0
-_08059B3C: .4byte 0x0201774C
+_08059B3C: .4byte gEfxBgSemaphore
 _08059B40: .4byte gPal
-_08059B44: .4byte 0x020165C8
+_08059B44: .4byte gEfxPal
 _08059B48: .4byte gUnk_08C11160
 
 	thumb_func_start sub_08059B4C
@@ -10367,7 +10367,7 @@ sub_08059B4C: @ 0x08059B4C
 	movs r2, #0x10
 	bl Interpolate
 	adds r3, r0, #0
-	ldr r4, _08059BA8 @ =0x020165C8
+	ldr r4, _08059BA8 @ =gEfxPal
 	adds r0, r4, #0
 	movs r1, #0
 	movs r2, #0x20
@@ -10397,13 +10397,13 @@ _08059BA0:
 	pop {r0}
 	bx r0
 	.align 2, 0
-_08059BA8: .4byte 0x020165C8
+_08059BA8: .4byte gEfxPal
 
 	thumb_func_start sub_08059BAC
 sub_08059BAC: @ 0x08059BAC
 	push {r4, lr}
 	adds r4, r0, #0
-	ldr r0, _08059BE8 @ =0x020165C8
+	ldr r0, _08059BE8 @ =gEfxPal
 	movs r1, #0xa0
 	lsls r1, r1, #0x13
 	movs r2, #0x80
@@ -10418,7 +10418,7 @@ sub_08059BAC: @ 0x08059BAC
 	lsls r1, r2, #0x10
 	cmp r0, r1
 	ble _08059BE0
-	ldr r1, _08059BEC @ =0x0201774C
+	ldr r1, _08059BEC @ =gEfxBgSemaphore
 	ldr r0, [r1]
 	subs r0, #1
 	str r0, [r1]
@@ -10429,8 +10429,8 @@ _08059BE0:
 	pop {r0}
 	bx r0
 	.align 2, 0
-_08059BE8: .4byte 0x020165C8
-_08059BEC: .4byte 0x0201774C
+_08059BE8: .4byte gEfxPal
+_08059BEC: .4byte gEfxBgSemaphore
 
 	thumb_func_start nullsub_50
 nullsub_50: @ 0x08059BF0
@@ -10549,7 +10549,7 @@ _08059CD4:
 	bne _08059D04
 	ldr r0, [r4, #0x5c]
 	movs r1, #6
-	bl sub_0804F7B8
+	bl NewEfxFlashBgWhite
 	movs r0, #9
 	ldrh r1, [r5, #0x10]
 	orrs r0, r1
@@ -10582,7 +10582,7 @@ _08059D1A:
 sub_08059D20: @ 0x08059D20
 	push {r4, r5, lr}
 	adds r4, r0, #0
-	ldr r1, _08059D78 @ =0x0201774C
+	ldr r1, _08059D78 @ =gEfxBgSemaphore
 	ldr r0, [r1]
 	adds r0, #1
 	str r0, [r1]
@@ -10620,7 +10620,7 @@ sub_08059D20: @ 0x08059D20
 	bl SetBgOffset
 	b _08059D9E
 	.align 2, 0
-_08059D78: .4byte 0x0201774C
+_08059D78: .4byte gEfxBgSemaphore
 _08059D7C: .4byte gUnk_08C11198
 _08059D80: .4byte gUnk_081EE0CE
 _08059D84: .4byte gUnk_08C111B0
@@ -10663,7 +10663,7 @@ _08059DCC: .4byte gDispIo
 sub_08059DD0: @ 0x08059DD0
 	push {r4, r5, lr}
 	adds r4, r0, #0
-	ldr r1, _08059E50 @ =0x0201774C
+	ldr r1, _08059E50 @ =gEfxBgSemaphore
 	ldr r0, [r1]
 	adds r0, #1
 	str r0, [r1]
@@ -10721,7 +10721,7 @@ sub_08059DD0: @ 0x08059DD0
 	bl SetBgOffset
 	b _08059E7A
 	.align 2, 0
-_08059E50: .4byte 0x0201774C
+_08059E50: .4byte gEfxBgSemaphore
 _08059E54: .4byte gUnk_08C11198
 _08059E58: .4byte gUnk_081EE100
 _08059E5C: .4byte gUnk_08C111B0
@@ -10774,7 +10774,7 @@ _08059EBC:
 	cmp r4, r0
 	bne _08059EDA
 	bl SpellFx_ClearBG1
-	ldr r1, _08059EE0 @ =0x0201774C
+	ldr r1, _08059EE0 @ =gEfxBgSemaphore
 	ldr r0, [r1]
 	subs r0, #1
 	str r0, [r1]
@@ -10786,14 +10786,14 @@ _08059EDA:
 	pop {r0}
 	bx r0
 	.align 2, 0
-_08059EE0: .4byte 0x0201774C
+_08059EE0: .4byte gEfxBgSemaphore
 
 	thumb_func_start sub_08059EE4
 sub_08059EE4: @ 0x08059EE4
 	push {r4, r5, lr}
 	sub sp, #4
 	adds r5, r0, #0
-	ldr r1, _08059F1C @ =0x0201774C
+	ldr r1, _08059F1C @ =gEfxBgSemaphore
 	ldr r0, [r1]
 	adds r0, #1
 	str r0, [r1]
@@ -10816,7 +10816,7 @@ sub_08059EE4: @ 0x08059EE4
 	pop {r0}
 	bx r0
 	.align 2, 0
-_08059F1C: .4byte 0x0201774C
+_08059F1C: .4byte gEfxBgSemaphore
 _08059F20: .4byte gUnk_08C112F8
 _08059F24: .4byte gUnk_08C10828
 
@@ -10825,7 +10825,7 @@ sub_08059F28: @ 0x08059F28
 	push {r4, r5, lr}
 	sub sp, #4
 	adds r5, r0, #0
-	ldr r1, _08059F68 @ =0x0201774C
+	ldr r1, _08059F68 @ =gEfxBgSemaphore
 	ldr r0, [r1]
 	adds r0, #1
 	str r0, [r1]
@@ -10852,14 +10852,14 @@ sub_08059F28: @ 0x08059F28
 	pop {r1}
 	bx r1
 	.align 2, 0
-_08059F68: .4byte 0x0201774C
+_08059F68: .4byte gEfxBgSemaphore
 _08059F6C: .4byte gUnk_08C11340
 _08059F70: .4byte gUnk_08C10828
 
 	thumb_func_start sub_08059F74
 sub_08059F74: @ 0x08059F74
 	push {lr}
-	ldr r2, _08059F88 @ =0x0201774C
+	ldr r2, _08059F88 @ =gEfxBgSemaphore
 	ldr r1, [r2]
 	subs r1, #1
 	str r1, [r2]
@@ -10868,7 +10868,7 @@ sub_08059F74: @ 0x08059F74
 	pop {r0}
 	bx r0
 	.align 2, 0
-_08059F88: .4byte 0x0201774C
+_08059F88: .4byte gEfxBgSemaphore
 
 	thumb_func_start sub_08059F8C
 sub_08059F8C: @ 0x08059F8C
@@ -11079,14 +11079,14 @@ _0805A102:
 	movs r1, #0
 	movs r2, #0xa
 	movs r3, #0
-	bl sub_080566F0
+	bl NewEfxALPHA
 	str r7, [sp]
 	str r7, [sp, #4]
 	adds r0, r6, #0
 	movs r1, #0x23
 	movs r2, #0x14
 	movs r3, #0x10
-	bl sub_080566F0
+	bl NewEfxALPHA
 	adds r0, r6, #0
 	bl sub_0805A29C
 	movs r0, #0x92
@@ -11105,7 +11105,7 @@ _0805A160:
 	movs r1, #0x2a
 	movs r2, #0xf
 	movs r3, #0
-	bl sub_080560A4
+	bl NewefxRestRST
 	adds r1, r0, #0
 	adds r0, r6, #0
 	movs r2, #0x1e
@@ -11184,7 +11184,7 @@ sub_0805A210: @ 0x0805A210
 	push {r4, r5, r6, lr}
 	adds r4, r0, #0
 	adds r5, r1, #0
-	ldr r1, _0805A270 @ =0x0201774C
+	ldr r1, _0805A270 @ =gEfxBgSemaphore
 	ldr r0, [r1]
 	adds r0, #1
 	str r0, [r1]
@@ -11225,7 +11225,7 @@ sub_0805A210: @ 0x0805A210
 	bl SetBgOffset
 	b _0805A296
 	.align 2, 0
-_0805A270: .4byte 0x0201774C
+_0805A270: .4byte gEfxBgSemaphore
 _0805A274: .4byte gUnk_08C11388
 _0805A278: .4byte gUnk_081EE176
 _0805A27C: .4byte gUnk_08C1149C
@@ -11246,7 +11246,7 @@ _0805A296:
 sub_0805A29C: @ 0x0805A29C
 	push {r4, r5, lr}
 	adds r4, r0, #0
-	ldr r1, _0805A30C @ =0x0201774C
+	ldr r1, _0805A30C @ =gEfxBgSemaphore
 	ldr r0, [r1]
 	adds r0, #1
 	str r0, [r1]
@@ -11295,7 +11295,7 @@ sub_0805A29C: @ 0x0805A29C
 	bl SetBgOffset
 	b _0805A336
 	.align 2, 0
-_0805A30C: .4byte 0x0201774C
+_0805A30C: .4byte gEfxBgSemaphore
 _0805A310: .4byte gUnk_08C113B8
 _0805A314: .4byte gUnk_081EE242
 _0805A318: .4byte gUnk_08C1149C
@@ -11353,7 +11353,7 @@ _0805A378:
 	ldrb r0, [r0]
 	cmp r0, #1
 	bne _0805A3AC
-	ldr r1, _0805A3A8 @ =0x0201774C
+	ldr r1, _0805A3A8 @ =gEfxBgSemaphore
 	ldr r0, [r1]
 	subs r0, #1
 	str r0, [r1]
@@ -11363,7 +11363,7 @@ _0805A378:
 	bl Proc_End
 	b _0805A3BA
 	.align 2, 0
-_0805A3A8: .4byte 0x0201774C
+_0805A3A8: .4byte gEfxBgSemaphore
 _0805A3AC:
 	movs r0, #0
 	strh r0, [r7, #0x2c]
@@ -11384,7 +11384,7 @@ sub_0805A3C0: @ 0x0805A3C0
 	ldr r0, [r5]
 	cmp r0, #2
 	bne _0805A3EC
-	ldr r1, _0805A3E8 @ =0x0201774C
+	ldr r1, _0805A3E8 @ =gEfxBgSemaphore
 	ldr r0, [r1]
 	subs r0, #1
 	str r0, [r1]
@@ -11395,7 +11395,7 @@ sub_0805A3C0: @ 0x0805A3C0
 	b _0805A446
 	.align 2, 0
 _0805A3E4: .4byte 0x02017750
-_0805A3E8: .4byte 0x0201774C
+_0805A3E8: .4byte gEfxBgSemaphore
 _0805A3EC:
 	ldrh r0, [r4, #0x2c]
 	adds r0, #1
@@ -11540,7 +11540,7 @@ _0805A504:
 	cmp r4, r0
 	bne _0805A526
 	bl SpellFx_ClearBG1
-	ldr r1, _0805A52C @ =0x0201774C
+	ldr r1, _0805A52C @ =gEfxBgSemaphore
 	ldr r0, [r1]
 	subs r0, #1
 	str r0, [r1]
@@ -11553,7 +11553,7 @@ _0805A526:
 	pop {r0}
 	bx r0
 	.align 2, 0
-_0805A52C: .4byte 0x0201774C
+_0805A52C: .4byte gEfxBgSemaphore
 
 	thumb_func_start sub_0805A530
 sub_0805A530: @ 0x0805A530
@@ -11590,7 +11590,7 @@ _0805A56C:
 	cmp r4, r0
 	bne _0805A58A
 	bl SpellFx_ClearBG1
-	ldr r1, _0805A590 @ =0x0201774C
+	ldr r1, _0805A590 @ =gEfxBgSemaphore
 	ldr r0, [r1]
 	subs r0, #1
 	str r0, [r1]
@@ -11602,7 +11602,7 @@ _0805A58A:
 	pop {r0}
 	bx r0
 	.align 2, 0
-_0805A590: .4byte 0x0201774C
+_0805A590: .4byte gEfxBgSemaphore
 
 	thumb_func_start sub_0805A594
 sub_0805A594: @ 0x0805A594
@@ -11610,7 +11610,7 @@ sub_0805A594: @ 0x0805A594
 	adds r4, r0, #0
 	adds r6, r1, #0
 	adds r5, r2, #0
-	ldr r1, _0805A5BC @ =0x0201774C
+	ldr r1, _0805A5BC @ =gEfxBgSemaphore
 	ldr r0, [r1]
 	adds r0, #1
 	str r0, [r1]
@@ -11626,7 +11626,7 @@ sub_0805A594: @ 0x0805A594
 	pop {r0}
 	bx r0
 	.align 2, 0
-_0805A5BC: .4byte 0x0201774C
+_0805A5BC: .4byte gEfxBgSemaphore
 _0805A5C0: .4byte gUnk_08C11568
 
 	thumb_func_start sub_0805A5C4
@@ -11653,7 +11653,7 @@ sub_0805A5C4: @ 0x0805A5C4
 	lsls r1, r2, #0x10
 	cmp r0, r1
 	ble _0805A600
-	ldr r1, _0805A608 @ =0x0201774C
+	ldr r1, _0805A608 @ =gEfxBgSemaphore
 	ldr r0, [r1]
 	subs r0, #1
 	str r0, [r1]
@@ -11665,7 +11665,7 @@ _0805A600:
 	pop {r0}
 	bx r0
 	.align 2, 0
-_0805A608: .4byte 0x0201774C
+_0805A608: .4byte gEfxBgSemaphore
 
 	thumb_func_start sub_0805A60C
 sub_0805A60C: @ 0x0805A60C
@@ -11745,7 +11745,7 @@ _0805A696:
 	bl PlaySFX
 	ldr r0, [r4, #0x5c]
 	movs r1, #4
-	bl sub_0804F7B8
+	bl NewEfxFlashBgWhite
 	movs r0, #9
 	ldrh r1, [r5, #0x10]
 	orrs r0, r1
@@ -11784,7 +11784,7 @@ _0805A6F8:
 sub_0805A700: @ 0x0805A700
 	push {r4, r5, lr}
 	adds r4, r0, #0
-	ldr r1, _0805A754 @ =0x0201774C
+	ldr r1, _0805A754 @ =gEfxBgSemaphore
 	ldr r0, [r1]
 	adds r0, #1
 	str r0, [r1]
@@ -11821,7 +11821,7 @@ sub_0805A700: @ 0x0805A700
 	bl SetBgOffset
 	b _0805A77A
 	.align 2, 0
-_0805A754: .4byte 0x0201774C
+_0805A754: .4byte gEfxBgSemaphore
 _0805A758: .4byte gUnk_08C11598
 _0805A75C: .4byte gUnk_081EE248
 _0805A760: .4byte gUnk_08C116B8
@@ -11908,7 +11908,7 @@ _0805A808:
 	cmp r5, r0
 	bne _0805A826
 	bl SpellFx_ClearBG1
-	ldr r1, _0805A834 @ =0x0201774C
+	ldr r1, _0805A834 @ =gEfxBgSemaphore
 	ldr r0, [r1]
 	subs r0, #1
 	str r0, [r1]
@@ -11923,7 +11923,7 @@ _0805A826:
 	pop {r0}
 	bx r0
 	.align 2, 0
-_0805A834: .4byte 0x0201774C
+_0805A834: .4byte gEfxBgSemaphore
 
 	thumb_func_start sub_0805A838
 sub_0805A838: @ 0x0805A838
@@ -12017,7 +12017,7 @@ _0805A8E6:
 	bne _0805A908
 	adds r0, r5, #0
 	movs r1, #4
-	bl sub_0804F7B8
+	bl NewEfxFlashBgWhite
 	adds r0, r5, #0
 	bl sub_0805A9E8
 	adds r0, r5, #0
@@ -12031,7 +12031,7 @@ _0805A908:
 	bne _0805A91C
 	adds r0, r5, #0
 	movs r1, #4
-	bl sub_0804F7B8
+	bl NewEfxFlashBgWhite
 	movs r0, #0xa0
 	b _0805A92E
 _0805A91C:
@@ -12041,7 +12041,7 @@ _0805A91C:
 	bne _0805A936
 	adds r0, r5, #0
 	movs r1, #4
-	bl sub_0804F7B8
+	bl NewEfxFlashBgWhite
 	movs r0, #0x70
 _0805A92E:
 	movs r1, #0
@@ -12054,7 +12054,7 @@ _0805A936:
 	bne _0805A96A
 	adds r0, r5, #0
 	movs r1, #4
-	bl sub_0804F7B8
+	bl NewEfxFlashBgWhite
 	movs r0, #0x10
 	str r0, [sp]
 	str r7, [sp, #4]
@@ -12062,7 +12062,7 @@ _0805A936:
 	movs r1, #3
 	movs r2, #0xa
 	movs r3, #0
-	bl sub_080566F0
+	bl NewEfxALPHA
 	movs r1, #0x80
 	lsls r1, r1, #1
 	movs r3, #2
@@ -12078,7 +12078,7 @@ _0805A96A:
 	bne _0805A9B0
 	adds r0, r5, #0
 	movs r1, #4
-	bl sub_0804F7B8
+	bl NewEfxFlashBgWhite
 	movs r0, #9
 	ldrh r1, [r5, #0x10]
 	orrs r0, r1
@@ -12114,7 +12114,7 @@ _0805A9B0:
 	movs r1, #0
 	movs r2, #0x14
 	movs r3, #8
-	bl sub_080566F0
+	bl NewEfxALPHA
 	b _0805A9E0
 _0805A9CA:
 	adds r0, r4, #0
@@ -12135,7 +12135,7 @@ _0805A9E0:
 sub_0805A9E8: @ 0x0805A9E8
 	push {r4, lr}
 	adds r4, r0, #0
-	ldr r1, _0805AA20 @ =0x0201774C
+	ldr r1, _0805AA20 @ =gEfxBgSemaphore
 	ldr r0, [r1]
 	adds r0, #1
 	str r0, [r1]
@@ -12160,7 +12160,7 @@ sub_0805A9E8: @ 0x0805A9E8
 	pop {r0}
 	bx r0
 	.align 2, 0
-_0805AA20: .4byte 0x0201774C
+_0805AA20: .4byte gEfxBgSemaphore
 _0805AA24: .4byte gUnk_08C11754
 _0805AA28: .4byte gUnk_081EE2CE
 _0805AA2C: .4byte gUnk_08C119DC
@@ -12210,7 +12210,7 @@ _0805AA86:
 	cmp r5, r0
 	bne _0805AAA4
 	bl SpellFx_ClearBG1
-	ldr r1, _0805AAB0 @ =0x0201774C
+	ldr r1, _0805AAB0 @ =gEfxBgSemaphore
 	ldr r0, [r1]
 	subs r0, #1
 	str r0, [r1]
@@ -12224,13 +12224,13 @@ _0805AAA4:
 	pop {r0}
 	bx r0
 	.align 2, 0
-_0805AAB0: .4byte 0x0201774C
+_0805AAB0: .4byte gEfxBgSemaphore
 
 	thumb_func_start sub_0805AAB4
 sub_0805AAB4: @ 0x0805AAB4
 	push {r4, lr}
 	adds r4, r0, #0
-	ldr r1, _0805AAE0 @ =0x0201774C
+	ldr r1, _0805AAE0 @ =gEfxBgSemaphore
 	ldr r0, [r1]
 	adds r0, #1
 	str r0, [r1]
@@ -12249,7 +12249,7 @@ sub_0805AAB4: @ 0x0805AAB4
 	pop {r0}
 	bx r0
 	.align 2, 0
-_0805AAE0: .4byte 0x0201774C
+_0805AAE0: .4byte gEfxBgSemaphore
 _0805AAE4: .4byte gUnk_08C11B14
 
 	thumb_func_start sub_0805AAE8
@@ -12291,7 +12291,7 @@ sub_0805AAE8: @ 0x0805AAE8
 	ldr r1, [r5, #0x48]
 	cmp r0, r1
 	ble _0805AB44
-	ldr r1, _0805AB50 @ =0x0201774C
+	ldr r1, _0805AB50 @ =gEfxBgSemaphore
 	ldr r0, [r1]
 	subs r0, #1
 	str r0, [r1]
@@ -12303,7 +12303,7 @@ _0805AB44:
 	bx r0
 	.align 2, 0
 _0805AB4C: .4byte gUnk_08C11B34
-_0805AB50: .4byte 0x0201774C
+_0805AB50: .4byte gEfxBgSemaphore
 
 	thumb_func_start sub_0805AB54
 sub_0805AB54: @ 0x0805AB54
@@ -12314,7 +12314,7 @@ sub_0805AB54: @ 0x0805AB54
 	adds r5, r0, #0
 	adds r6, r1, #0
 	mov r8, r2
-	ldr r1, _0805ABAC @ =0x0201774C
+	ldr r1, _0805ABAC @ =gEfxBgSemaphore
 	ldr r0, [r1]
 	adds r0, #1
 	str r0, [r1]
@@ -12347,7 +12347,7 @@ sub_0805AB54: @ 0x0805AB54
 	pop {r0}
 	bx r0
 	.align 2, 0
-_0805ABAC: .4byte 0x0201774C
+_0805ABAC: .4byte gEfxBgSemaphore
 _0805ABB0: .4byte gUnk_08C11B6C
 _0805ABB4: .4byte gUnk_08C2ACB0
 _0805ABB8: .4byte gUnk_0826F94C
@@ -12358,14 +12358,14 @@ sub_0805ABC0: @ 0x0805ABC0
 	push {lr}
 	ldr r0, [r0, #0x60]
 	bl AnimDelete
-	ldr r1, _0805ABD4 @ =0x0201774C
+	ldr r1, _0805ABD4 @ =gEfxBgSemaphore
 	ldr r0, [r1]
 	subs r0, #1
 	str r0, [r1]
 	pop {r0}
 	bx r0
 	.align 2, 0
-_0805ABD4: .4byte 0x0201774C
+_0805ABD4: .4byte gEfxBgSemaphore
 
 	thumb_func_start sub_0805ABD8
 sub_0805ABD8: @ 0x0805ABD8
@@ -12487,14 +12487,14 @@ _0805AC9A:
 	movs r1, #0
 	movs r2, #8
 	movs r3, #0
-	bl sub_080566F0
+	bl NewEfxALPHA
 	str r4, [sp]
 	str r4, [sp, #4]
 	adds r0, r5, #0
 	movs r1, #0x20
 	movs r2, #8
 	movs r3, #0x10
-	bl sub_080566F0
+	bl NewEfxALPHA
 _0805ACE6:
 	movs r2, #0x2c
 	ldrsh r1, [r6, r2]
@@ -12569,14 +12569,14 @@ _0805AD18:
 	movs r1, #0
 	movs r2, #5
 	movs r3, #0
-	bl sub_080566F0
+	bl NewEfxALPHA
 	str r7, [sp]
 	str r7, [sp, #4]
 	adds r0, r5, #0
 	movs r1, #0x3c
 	movs r2, #0x1e
 	movs r3, #0xc
-	bl sub_080566F0
+	bl NewEfxALPHA
 	adds r0, r5, #0
 	bl sub_0805AF74
 	ldr r0, _0805ADC8 @ =0x000002CB
@@ -12641,7 +12641,7 @@ sub_0805AE14: @ 0x0805AE14
 	push {r4, r5, lr}
 	adds r4, r0, #0
 	adds r5, r1, #0
-	ldr r1, _0805AE54 @ =0x0201774C
+	ldr r1, _0805AE54 @ =gEfxBgSemaphore
 	ldr r0, [r1]
 	adds r0, #1
 	str r0, [r1]
@@ -12668,7 +12668,7 @@ sub_0805AE14: @ 0x0805AE14
 	pop {r0}
 	bx r0
 	.align 2, 0
-_0805AE54: .4byte 0x0201774C
+_0805AE54: .4byte gEfxBgSemaphore
 _0805AE58: .4byte gUnk_08C11BA4
 _0805AE5C: .4byte gUnk_081EE444
 _0805AE60: .4byte gUnk_08C11BBC
@@ -12714,7 +12714,7 @@ _0805AEA6:
 	cmp r0, r1
 	ble _0805AECC
 	bl SpellFx_ClearBG1
-	ldr r1, _0805AEDC @ =0x0201774C
+	ldr r1, _0805AEDC @ =gEfxBgSemaphore
 	ldr r0, [r1]
 	subs r0, #1
 	str r0, [r1]
@@ -12729,14 +12729,14 @@ _0805AECC:
 	.align 2, 0
 _0805AED4: .4byte gBg1Tm + 0x3c
 _0805AED8: .4byte 0x0000011F
-_0805AEDC: .4byte 0x0201774C
+_0805AEDC: .4byte gEfxBgSemaphore
 
 	thumb_func_start sub_0805AEE0
 sub_0805AEE0: @ 0x0805AEE0
 	push {r4, r5, lr}
 	adds r4, r0, #0
 	adds r5, r1, #0
-	ldr r1, _0805AF18 @ =0x0201774C
+	ldr r1, _0805AF18 @ =gEfxBgSemaphore
 	ldr r0, [r1]
 	adds r0, #1
 	str r0, [r1]
@@ -12760,7 +12760,7 @@ sub_0805AEE0: @ 0x0805AEE0
 	pop {r0}
 	bx r0
 	.align 2, 0
-_0805AF18: .4byte 0x0201774C
+_0805AF18: .4byte gEfxBgSemaphore
 _0805AF1C: .4byte gUnk_08C11BEC
 _0805AF20: .4byte gUnk_081EE476
 _0805AF24: .4byte gUnk_082838A8
@@ -12792,7 +12792,7 @@ _0805AF4C:
 	lsls r1, r2, #0x10
 	cmp r0, r1
 	bne _0805AF6A
-	ldr r1, _0805AF70 @ =0x0201774C
+	ldr r1, _0805AF70 @ =gEfxBgSemaphore
 	ldr r0, [r1]
 	subs r0, #1
 	str r0, [r1]
@@ -12803,13 +12803,13 @@ _0805AF6A:
 	pop {r0}
 	bx r0
 	.align 2, 0
-_0805AF70: .4byte 0x0201774C
+_0805AF70: .4byte gEfxBgSemaphore
 
 	thumb_func_start sub_0805AF74
 sub_0805AF74: @ 0x0805AF74
 	push {r4, lr}
 	adds r4, r0, #0
-	ldr r1, _0805AFB0 @ =0x0201774C
+	ldr r1, _0805AFB0 @ =gEfxBgSemaphore
 	ldr r0, [r1]
 	adds r0, #1
 	str r0, [r1]
@@ -12835,7 +12835,7 @@ sub_0805AF74: @ 0x0805AF74
 	pop {r0}
 	bx r0
 	.align 2, 0
-_0805AFB0: .4byte 0x0201774C
+_0805AFB0: .4byte gEfxBgSemaphore
 _0805AFB4: .4byte gUnk_08C11C0C
 _0805AFB8: .4byte gUnk_081EE488
 _0805AFBC: .4byte gUnk_08C11C24
@@ -12888,7 +12888,7 @@ _0805B020:
 	cmp r4, r0
 	bne _0805B03E
 	bl SpellFx_ClearBG1
-	ldr r1, _0805B048 @ =0x0201774C
+	ldr r1, _0805B048 @ =gEfxBgSemaphore
 	ldr r0, [r1]
 	subs r0, #1
 	str r0, [r1]
@@ -12901,14 +12901,14 @@ _0805B03E:
 	pop {r0}
 	bx r0
 	.align 2, 0
-_0805B048: .4byte 0x0201774C
+_0805B048: .4byte gEfxBgSemaphore
 
 	thumb_func_start sub_0805B04C
 sub_0805B04C: @ 0x0805B04C
 	push {r4, r5, lr}
 	adds r4, r0, #0
 	adds r5, r1, #0
-	ldr r1, _0805B08C @ =0x0201774C
+	ldr r1, _0805B08C @ =gEfxBgSemaphore
 	ldr r0, [r1]
 	adds r0, #1
 	str r0, [r1]
@@ -12934,7 +12934,7 @@ sub_0805B04C: @ 0x0805B04C
 	pop {r0}
 	bx r0
 	.align 2, 0
-_0805B08C: .4byte 0x0201774C
+_0805B08C: .4byte gEfxBgSemaphore
 _0805B090: .4byte gUnk_08C11C4C
 _0805B094: .4byte gUnk_08293E50
 _0805B098: .4byte gUnk_082946D8
@@ -12951,7 +12951,7 @@ sub_0805B09C: @ 0x0805B09C
 	lsls r1, r2, #0x10
 	cmp r0, r1
 	bne _0805B0C4
-	ldr r1, _0805B0C0 @ =0x0201774C
+	ldr r1, _0805B0C0 @ =gEfxBgSemaphore
 	ldr r0, [r1]
 	subs r0, #1
 	str r0, [r1]
@@ -12959,7 +12959,7 @@ sub_0805B09C: @ 0x0805B09C
 	bl Proc_Break
 	b _0805B108
 	.align 2, 0
-_0805B0C0: .4byte 0x0201774C
+_0805B0C0: .4byte gEfxBgSemaphore
 _0805B0C4:
 	ldrh r0, [r4, #0x2e]
 	adds r0, #1
@@ -13013,7 +13013,7 @@ sub_0805B110: @ 0x0805B110
 	adds r0, r4, #0
 	movs r2, #0x80
 	bl memcpy
-	ldr r1, _0805B184 @ =0x0201774C
+	ldr r1, _0805B184 @ =gEfxBgSemaphore
 	ldr r0, [r1]
 	adds r0, #1
 	str r0, [r1]
@@ -13052,7 +13052,7 @@ sub_0805B110: @ 0x0805B110
 	.align 2, 0
 _0805B17C: .4byte gUnk_081EE53E
 _0805B180: .4byte gUnk_081EE54E
-_0805B184: .4byte 0x0201774C
+_0805B184: .4byte gEfxBgSemaphore
 _0805B188: .4byte gUnk_08C11C64
 _0805B18C: .4byte _0805B190
 _0805B190: @ jump table
@@ -13097,7 +13097,7 @@ _0805B1D2:
 _0805B1DC:
 	cmp r1, #0
 	bne _0805B1F8
-	ldr r1, _0805B1F4 @ =0x0201774C
+	ldr r1, _0805B1F4 @ =gEfxBgSemaphore
 	ldr r0, [r1]
 	subs r0, #1
 	str r0, [r1]
@@ -13106,7 +13106,7 @@ _0805B1DC:
 	b _0805B206
 	.align 2, 0
 _0805B1F0: .4byte gUnk_08C417A4
-_0805B1F4: .4byte 0x0201774C
+_0805B1F4: .4byte gEfxBgSemaphore
 _0805B1F8:
 	movs r0, #0x91
 	lsls r0, r0, #6
@@ -13134,7 +13134,7 @@ sub_0805B210: @ 0x0805B210
 	ldrsh r0, [r4, r2]
 	cmp r1, r0
 	ble _0805B240
-	ldr r1, _0805B23C @ =0x0201774C
+	ldr r1, _0805B23C @ =gEfxBgSemaphore
 	ldr r0, [r1]
 	subs r0, #1
 	str r0, [r1]
@@ -13144,7 +13144,7 @@ sub_0805B210: @ 0x0805B210
 	bl Proc_Break
 	b _0805B25C
 	.align 2, 0
-_0805B23C: .4byte 0x0201774C
+_0805B23C: .4byte gEfxBgSemaphore
 _0805B240:
 	movs r0, #0x2c
 	ldrsh r3, [r4, r0]
@@ -13170,7 +13170,7 @@ sub_0805B264: @ 0x0805B264
 	push {r4, r5, lr}
 	adds r4, r0, #0
 	adds r5, r1, #0
-	ldr r1, _0805B2A8 @ =0x0201774C
+	ldr r1, _0805B2A8 @ =gEfxBgSemaphore
 	ldr r0, [r1]
 	adds r0, #1
 	str r0, [r1]
@@ -13198,7 +13198,7 @@ sub_0805B264: @ 0x0805B264
 	pop {r0}
 	bx r0
 	.align 2, 0
-_0805B2A8: .4byte 0x0201774C
+_0805B2A8: .4byte gEfxBgSemaphore
 _0805B2AC: .4byte gUnk_08C11C7C
 _0805B2B0: .4byte gUnk_081EE5CE
 _0805B2B4: .4byte gUnk_08C11C94
@@ -13243,7 +13243,7 @@ _0805B2FA:
 	cmp r0, r1
 	ble _0805B320
 	bl SpellFx_ClearBG1
-	ldr r1, _0805B328 @ =0x0201774C
+	ldr r1, _0805B328 @ =gEfxBgSemaphore
 	ldr r0, [r1]
 	subs r0, #1
 	str r0, [r1]
@@ -13255,14 +13255,14 @@ _0805B320:
 	pop {r0}
 	bx r0
 	.align 2, 0
-_0805B328: .4byte 0x0201774C
+_0805B328: .4byte gEfxBgSemaphore
 
 	thumb_func_start sub_0805B32C
 sub_0805B32C: @ 0x0805B32C
 	push {r4, r5, lr}
 	adds r4, r0, #0
 	adds r5, r1, #0
-	ldr r1, _0805B370 @ =0x0201774C
+	ldr r1, _0805B370 @ =gEfxBgSemaphore
 	ldr r0, [r1]
 	adds r0, #1
 	str r0, [r1]
@@ -13290,7 +13290,7 @@ sub_0805B32C: @ 0x0805B32C
 	pop {r0}
 	bx r0
 	.align 2, 0
-_0805B370: .4byte 0x0201774C
+_0805B370: .4byte gEfxBgSemaphore
 _0805B374: .4byte gUnk_08C11CAC
 _0805B378: .4byte gUnk_082946F8
 _0805B37C: .4byte gUnk_0829472C
@@ -13311,7 +13311,7 @@ sub_0805B384: @ 0x0805B384
 	ldr r1, _0805B3B0 @ =0x0202003C
 	movs r0, #1
 	str r0, [r1]
-	ldr r1, _0805B3B4 @ =0x0201774C
+	ldr r1, _0805B3B4 @ =gEfxBgSemaphore
 	ldr r0, [r1]
 	subs r0, #1
 	str r0, [r1]
@@ -13320,7 +13320,7 @@ sub_0805B384: @ 0x0805B384
 	b _0805B3FC
 	.align 2, 0
 _0805B3B0: .4byte 0x0202003C
-_0805B3B4: .4byte 0x0201774C
+_0805B3B4: .4byte gEfxBgSemaphore
 _0805B3B8:
 	ldrh r0, [r4, #0x2e]
 	adds r0, #1
@@ -13392,7 +13392,7 @@ sub_0805B404: @ 0x0805B404
 	adds r0, r4, #0
 	movs r2, #0x10
 	bl memcpy
-	ldr r1, _0805B4AC @ =0x0201774C
+	ldr r1, _0805B4AC @ =gEfxBgSemaphore
 	ldr r0, [r1]
 	adds r0, #1
 	str r0, [r1]
@@ -13435,7 +13435,7 @@ sub_0805B404: @ 0x0805B404
 _0805B4A0: .4byte gUnk_081EE5DC
 _0805B4A4: .4byte gUnk_081EE5EC
 _0805B4A8: .4byte gUnk_081EE5FC
-_0805B4AC: .4byte 0x0201774C
+_0805B4AC: .4byte gEfxBgSemaphore
 _0805B4B0: .4byte gUnk_08C11CC4
 _0805B4B4:
 	mov r2, sb
@@ -13473,7 +13473,7 @@ _0805B4E6:
 _0805B4F0:
 	cmp r1, #0
 	bne _0805B50C
-	ldr r1, _0805B508 @ =0x0201774C
+	ldr r1, _0805B508 @ =gEfxBgSemaphore
 	ldr r0, [r1]
 	subs r0, #1
 	str r0, [r1]
@@ -13482,7 +13482,7 @@ _0805B4F0:
 	b _0805B51A
 	.align 2, 0
 _0805B504: .4byte gUnk_08C4181C
-_0805B508: .4byte 0x0201774C
+_0805B508: .4byte gEfxBgSemaphore
 _0805B50C:
 	movs r0, #0x91
 	lsls r0, r0, #6
@@ -13519,7 +13519,7 @@ sub_0805B52C: @ 0x0805B52C
 	cmp r1, r0
 	ble _0805B568
 _0805B548:
-	ldr r1, _0805B564 @ =0x0201774C
+	ldr r1, _0805B564 @ =gEfxBgSemaphore
 	ldr r0, [r1]
 	subs r0, #1
 	str r0, [r1]
@@ -13530,7 +13530,7 @@ _0805B548:
 	b _0805B5CC
 	.align 2, 0
 _0805B560: .4byte 0x0202003C
-_0805B564: .4byte 0x0201774C
+_0805B564: .4byte gEfxBgSemaphore
 _0805B568:
 	movs r4, #0x2c
 	ldrsh r3, [r5, r4]
@@ -13595,7 +13595,7 @@ sub_0805B5D8: @ 0x0805B5D8
 	adds r4, r0, #0
 	adds r6, r1, #0
 	adds r5, r2, #0
-	ldr r1, _0805B608 @ =0x0201774C
+	ldr r1, _0805B608 @ =gEfxBgSemaphore
 	ldr r0, [r1]
 	adds r0, #1
 	str r0, [r1]
@@ -13608,12 +13608,12 @@ sub_0805B5D8: @ 0x0805B5D8
 	strh r5, [r0, #0x2e]
 	adds r0, r4, #0
 	adds r1, r6, #0
-	bl sub_0804F7B8
+	bl NewEfxFlashBgWhite
 	pop {r4, r5, r6}
 	pop {r0}
 	bx r0
 	.align 2, 0
-_0805B608: .4byte 0x0201774C
+_0805B608: .4byte gEfxBgSemaphore
 _0805B60C: .4byte gUnk_08C11CDC
 
 	thumb_func_start sub_0805B610
@@ -13632,7 +13632,7 @@ sub_0805B610: @ 0x0805B610
 	bl Interpolate
 	adds r5, r0, #0
 	ldr r0, _0805B66C @ =gPal
-	ldr r4, _0805B670 @ =0x020165C8
+	ldr r4, _0805B670 @ =gEfxPal
 	movs r2, #0x80
 	lsls r2, r2, #1
 	adds r1, r4, #0
@@ -13650,7 +13650,7 @@ sub_0805B610: @ 0x0805B610
 	lsls r1, r2, #0x10
 	cmp r0, r1
 	ble _0805B664
-	ldr r1, _0805B674 @ =0x0201774C
+	ldr r1, _0805B674 @ =gEfxBgSemaphore
 	ldr r0, [r1]
 	subs r0, #1
 	str r0, [r1]
@@ -13663,8 +13663,8 @@ _0805B664:
 	bx r0
 	.align 2, 0
 _0805B66C: .4byte gPal
-_0805B670: .4byte 0x020165C8
-_0805B674: .4byte 0x0201774C
+_0805B670: .4byte gEfxPal
+_0805B674: .4byte gEfxBgSemaphore
 
 	thumb_func_start sub_0805B678
 sub_0805B678: @ 0x0805B678
@@ -13770,7 +13770,7 @@ _0805B744:
 	bne _0805B756
 	ldr r0, [r4, #0x5c]
 	movs r1, #0xa
-	bl sub_0804F7B8
+	bl NewEfxFlashBgWhite
 	b _0805B79E
 _0805B756:
 	adds r0, r3, #0
@@ -13813,7 +13813,7 @@ _0805B79E:
 sub_0805B7A4: @ 0x0805B7A4
 	push {r4, r5, lr}
 	adds r4, r0, #0
-	ldr r1, _0805B7F8 @ =0x0201774C
+	ldr r1, _0805B7F8 @ =gEfxBgSemaphore
 	ldr r0, [r1]
 	adds r0, #1
 	str r0, [r1]
@@ -13850,7 +13850,7 @@ sub_0805B7A4: @ 0x0805B7A4
 	bl SetBgOffset
 	b _0805B81E
 	.align 2, 0
-_0805B7F8: .4byte 0x0201774C
+_0805B7F8: .4byte gEfxBgSemaphore
 _0805B7FC: .4byte gUnk_08C11D0C
 _0805B800: .4byte gUnk_081EE60C
 _0805B804: .4byte gUnk_08C11D74
@@ -13872,7 +13872,7 @@ _0805B81E:
 sub_0805B828: @ 0x0805B828
 	push {r4, r5, lr}
 	adds r4, r0, #0
-	ldr r1, _0805B87C @ =0x0201774C
+	ldr r1, _0805B87C @ =gEfxBgSemaphore
 	ldr r0, [r1]
 	adds r0, #1
 	str r0, [r1]
@@ -13909,7 +13909,7 @@ sub_0805B828: @ 0x0805B828
 	bl SetBgOffset
 	b _0805B8A2
 	.align 2, 0
-_0805B87C: .4byte 0x0201774C
+_0805B87C: .4byte gEfxBgSemaphore
 _0805B880: .4byte gUnk_08C11D0C
 _0805B884: .4byte gUnk_081EE67A
 _0805B888: .4byte gUnk_08C11DD0
@@ -13931,7 +13931,7 @@ _0805B8A2:
 sub_0805B8AC: @ 0x0805B8AC
 	push {r4, r5, lr}
 	adds r4, r0, #0
-	ldr r1, _0805B900 @ =0x0201774C
+	ldr r1, _0805B900 @ =gEfxBgSemaphore
 	ldr r0, [r1]
 	adds r0, #1
 	str r0, [r1]
@@ -13968,7 +13968,7 @@ sub_0805B8AC: @ 0x0805B8AC
 	bl SetBgOffset
 	b _0805B926
 	.align 2, 0
-_0805B900: .4byte 0x0201774C
+_0805B900: .4byte gEfxBgSemaphore
 _0805B904: .4byte gUnk_08C11D0C
 _0805B908: .4byte gUnk_081EE688
 _0805B90C: .4byte gUnk_08C11E30
@@ -14048,7 +14048,7 @@ _0805B9A8:
 	cmp r4, r0
 	bne _0805B9C6
 	bl SpellFx_ClearBG1
-	ldr r1, _0805B9D0 @ =0x0201774C
+	ldr r1, _0805B9D0 @ =gEfxBgSemaphore
 	ldr r0, [r1]
 	subs r0, #1
 	str r0, [r1]
@@ -14061,14 +14061,14 @@ _0805B9C6:
 	pop {r0}
 	bx r0
 	.align 2, 0
-_0805B9D0: .4byte 0x0201774C
+_0805B9D0: .4byte gEfxBgSemaphore
 
 	thumb_func_start sub_0805B9D4
 sub_0805B9D4: @ 0x0805B9D4
 	push {r4, r5, r6, lr}
 	sub sp, #4
 	adds r5, r0, #0
-	ldr r1, _0805BA14 @ =0x0201774C
+	ldr r1, _0805BA14 @ =gEfxBgSemaphore
 	ldr r0, [r1]
 	adds r0, #1
 	str r0, [r1]
@@ -14095,7 +14095,7 @@ sub_0805B9D4: @ 0x0805B9D4
 	subs r0, #6
 	b _0805BA24
 	.align 2, 0
-_0805BA14: .4byte 0x0201774C
+_0805BA14: .4byte gEfxBgSemaphore
 _0805BA18: .4byte gUnk_08C11E84
 _0805BA1C: .4byte gUnk_08C29458
 _0805BA20:
@@ -14131,7 +14131,7 @@ sub_0805BA48: @ 0x0805BA48
 	bne _0805BA6E
 	ldr r0, [r4, #0x60]
 	bl AnimDelete
-	ldr r1, _0805BA74 @ =0x0201774C
+	ldr r1, _0805BA74 @ =gEfxBgSemaphore
 	ldr r0, [r1]
 	subs r0, #1
 	str r0, [r1]
@@ -14142,7 +14142,7 @@ _0805BA6E:
 	pop {r0}
 	bx r0
 	.align 2, 0
-_0805BA74: .4byte 0x0201774C
+_0805BA74: .4byte gEfxBgSemaphore
 
 	thumb_func_start sub_0805BA78
 sub_0805BA78: @ 0x0805BA78
@@ -14228,7 +14228,7 @@ _0805BAE8:
 	movs r1, #0
 	movs r2, #0x20
 	movs r3, #0
-	bl sub_080566F0
+	bl NewEfxALPHA
 	adds r0, r5, #0
 	movs r1, #0xaa
 	bl sub_0805BEDC
@@ -14273,7 +14273,7 @@ _0805BB7C:
 	bne _0805BBAE
 	adds r0, r5, #0
 	movs r1, #0xc
-	bl sub_0804F7B8
+	bl NewEfxFlashBgWhite
 	movs r0, #9
 	ldrh r1, [r5, #0x10]
 	orrs r0, r1
@@ -14318,7 +14318,7 @@ _0805BBAE:
 	movs r1, #0x46
 	movs r2, #0x1e
 	movs r3, #0x10
-	bl sub_080566F0
+	bl NewEfxALPHA
 	adds r0, r5, #0
 	bl sub_0805C230
 	b _0805BC14
@@ -14344,7 +14344,7 @@ _0805BC14:
 sub_0805BC20: @ 0x0805BC20
 	push {r4, r5, lr}
 	adds r4, r0, #0
-	ldr r1, _0805BC74 @ =0x0201774C
+	ldr r1, _0805BC74 @ =gEfxBgSemaphore
 	ldr r0, [r1]
 	adds r0, #1
 	str r0, [r1]
@@ -14380,7 +14380,7 @@ sub_0805BC20: @ 0x0805BC20
 	movs r1, #0xf8
 	b _0805BC94
 	.align 2, 0
-_0805BC74: .4byte 0x0201774C
+_0805BC74: .4byte gEfxBgSemaphore
 _0805BC78: .4byte gUnk_08C11EB4
 _0805BC7C: .4byte gUnk_081EE6DE
 _0805BC80: .4byte gUnk_08C11EE0
@@ -14443,7 +14443,7 @@ _0805BCF2:
 	cmp r4, r0
 	bne _0805BD10
 	bl SpellFx_ClearBG1
-	ldr r1, _0805BD18 @ =0x0201774C
+	ldr r1, _0805BD18 @ =gEfxBgSemaphore
 	ldr r0, [r1]
 	subs r0, #1
 	str r0, [r1]
@@ -14455,14 +14455,14 @@ _0805BD10:
 	pop {r0}
 	bx r0
 	.align 2, 0
-_0805BD18: .4byte 0x0201774C
+_0805BD18: .4byte gEfxBgSemaphore
 
 	thumb_func_start sub_0805BD1C
 sub_0805BD1C: @ 0x0805BD1C
 	push {r4, r5, lr}
 	adds r4, r0, #0
 	adds r5, r1, #0
-	ldr r1, _0805BD64 @ =0x0201774C
+	ldr r1, _0805BD64 @ =gEfxBgSemaphore
 	ldr r0, [r1]
 	adds r0, #1
 	str r0, [r1]
@@ -14490,7 +14490,7 @@ sub_0805BD1C: @ 0x0805BD1C
 	pop {r0}
 	bx r0
 	.align 2, 0
-_0805BD64: .4byte 0x0201774C
+_0805BD64: .4byte gEfxBgSemaphore
 _0805BD68: .4byte gUnk_08C11EF4
 _0805BD6C: .4byte gUnk_0827D620
 _0805BD70: .4byte gUnk_0827FB38
@@ -14572,7 +14572,7 @@ _0805BE06:
 	bne _0805BE2C
 	bl SpellFx_ClearBG1
 	bl SpellFx_ClearColorEffects
-	ldr r1, _0805BE44 @ =0x0201774C
+	ldr r1, _0805BE44 @ =gEfxBgSemaphore
 	ldr r0, [r1]
 	subs r0, #1
 	str r0, [r1]
@@ -14588,14 +14588,14 @@ _0805BE34: .4byte gDispIo
 _0805BE38: .4byte gUnk_0827FDA0
 _0805BE3C: .4byte gEkrTsaBuffer
 _0805BE40: .4byte gBg1Tm
-_0805BE44: .4byte 0x0201774C
+_0805BE44: .4byte gEfxBgSemaphore
 
 	thumb_func_start sub_0805BE48
 sub_0805BE48: @ 0x0805BE48
 	push {r4, r5, lr}
 	adds r4, r0, #0
 	adds r5, r1, #0
-	ldr r1, _0805BE80 @ =0x0201774C
+	ldr r1, _0805BE80 @ =gEfxBgSemaphore
 	ldr r0, [r1]
 	adds r0, #1
 	str r0, [r1]
@@ -14619,7 +14619,7 @@ sub_0805BE48: @ 0x0805BE48
 	pop {r0}
 	bx r0
 	.align 2, 0
-_0805BE80: .4byte 0x0201774C
+_0805BE80: .4byte gEfxBgSemaphore
 _0805BE84: .4byte gUnk_08C11F0C
 _0805BE88: .4byte gUnk_081EE6F4
 _0805BE8C: .4byte gUnk_0827FB38
@@ -14651,7 +14651,7 @@ _0805BEB4:
 	lsls r1, r2, #0x10
 	cmp r0, r1
 	bne _0805BED2
-	ldr r1, _0805BED8 @ =0x0201774C
+	ldr r1, _0805BED8 @ =gEfxBgSemaphore
 	ldr r0, [r1]
 	subs r0, #1
 	str r0, [r1]
@@ -14662,14 +14662,14 @@ _0805BED2:
 	pop {r0}
 	bx r0
 	.align 2, 0
-_0805BED8: .4byte 0x0201774C
+_0805BED8: .4byte gEfxBgSemaphore
 
 	thumb_func_start sub_0805BEDC
 sub_0805BEDC: @ 0x0805BEDC
 	push {r4, r5, lr}
 	adds r4, r0, #0
 	adds r5, r1, #0
-	ldr r1, _0805BF1C @ =0x0201774C
+	ldr r1, _0805BF1C @ =gEfxBgSemaphore
 	ldr r0, [r1]
 	adds r0, #1
 	str r0, [r1]
@@ -14695,7 +14695,7 @@ sub_0805BEDC: @ 0x0805BEDC
 	pop {r0}
 	bx r0
 	.align 2, 0
-_0805BF1C: .4byte 0x0201774C
+_0805BF1C: .4byte gEfxBgSemaphore
 _0805BF20: .4byte gUnk_08C11F2C
 _0805BF24: .4byte gUnk_08280864
 _0805BF28: .4byte gUnk_08280370
@@ -14712,7 +14712,7 @@ sub_0805BF2C: @ 0x0805BF2C
 	lsls r1, r2, #0x10
 	cmp r0, r1
 	bne _0805BF54
-	ldr r1, _0805BF50 @ =0x0201774C
+	ldr r1, _0805BF50 @ =gEfxBgSemaphore
 	ldr r0, [r1]
 	subs r0, #1
 	str r0, [r1]
@@ -14720,7 +14720,7 @@ sub_0805BF2C: @ 0x0805BF2C
 	bl Proc_Break
 	b _0805BF7A
 	.align 2, 0
-_0805BF50: .4byte 0x0201774C
+_0805BF50: .4byte gEfxBgSemaphore
 _0805BF54:
 	ldrh r0, [r3, #0x30]
 	adds r0, #1
@@ -14749,7 +14749,7 @@ _0805BF7A:
 sub_0805BF80: @ 0x0805BF80
 	push {r4, r5, r6, lr}
 	adds r6, r0, #0
-	ldr r1, _0805C00C @ =0x0201774C
+	ldr r1, _0805C00C @ =gEfxBgSemaphore
 	ldr r0, [r1]
 	adds r0, #1
 	str r0, [r1]
@@ -14813,7 +14813,7 @@ _0805BFF8:
 	ldr r0, _0805C01C @ =gUnk_08C40B14
 	b _0805C02A
 	.align 2, 0
-_0805C00C: .4byte 0x0201774C
+_0805C00C: .4byte gEfxBgSemaphore
 _0805C010: .4byte gUnk_08C11F44
 _0805C014: .4byte 0x0000FFEC
 _0805C018: .4byte gEkrDistanceType
@@ -14832,7 +14832,7 @@ _0805C02A:
 	str r1, [r4, #0x60]
 	cmp r1, #0
 	bne _0805C050
-	ldr r1, _0805C04C @ =0x0201774C
+	ldr r1, _0805C04C @ =gEfxBgSemaphore
 	ldr r0, [r1]
 	subs r0, #1
 	str r0, [r1]
@@ -14841,7 +14841,7 @@ _0805C02A:
 	b _0805C05E
 	.align 2, 0
 _0805C048: .4byte gUnk_08C40B0C
-_0805C04C: .4byte 0x0201774C
+_0805C04C: .4byte gEfxBgSemaphore
 _0805C050:
 	movs r0, #0x91
 	lsls r0, r0, #6
@@ -14867,7 +14867,7 @@ sub_0805C064: @ 0x0805C064
 	ldrsh r0, [r5, r2]
 	cmp r1, r0
 	ble _0805C094
-	ldr r1, _0805C090 @ =0x0201774C
+	ldr r1, _0805C090 @ =gEfxBgSemaphore
 	ldr r0, [r1]
 	subs r0, #1
 	str r0, [r1]
@@ -14877,7 +14877,7 @@ sub_0805C064: @ 0x0805C064
 	bl Proc_Break
 	b _0805C0D4
 	.align 2, 0
-_0805C090: .4byte 0x0201774C
+_0805C090: .4byte gEfxBgSemaphore
 _0805C094:
 	movs r4, #0x32
 	ldrsh r1, [r5, r4]
@@ -14921,7 +14921,7 @@ sub_0805C0DC: @ 0x0805C0DC
 	sub sp, #4
 	adds r6, r0, #0
 	adds r4, r1, #0
-	ldr r1, _0805C174 @ =0x0201774C
+	ldr r1, _0805C174 @ =gEfxBgSemaphore
 	ldr r0, [r1]
 	adds r0, #1
 	str r0, [r1]
@@ -14991,7 +14991,7 @@ _0805C13A:
 	pop {r0}
 	bx r0
 	.align 2, 0
-_0805C174: .4byte 0x0201774C
+_0805C174: .4byte gEfxBgSemaphore
 _0805C178: .4byte gUnk_08C11F5C
 _0805C17C: .4byte 0x0000FFF6
 _0805C180: .4byte gEkrDistanceType
@@ -15062,7 +15062,7 @@ _0805C1F2:
 	bl AnimDelete
 	adds r0, r5, #0
 	bl AnimDelete
-	ldr r1, _0805C22C @ =0x0201774C
+	ldr r1, _0805C22C @ =gEfxBgSemaphore
 	ldr r0, [r1]
 	subs r0, #1
 	str r0, [r1]
@@ -15077,13 +15077,13 @@ _0805C21C:
 	bx r0
 	.align 2, 0
 _0805C228: .4byte gUnk_08C40B40
-_0805C22C: .4byte 0x0201774C
+_0805C22C: .4byte gEfxBgSemaphore
 
 	thumb_func_start sub_0805C230
 sub_0805C230: @ 0x0805C230
 	push {r4, lr}
 	adds r4, r0, #0
-	ldr r1, _0805C258 @ =0x0201774C
+	ldr r1, _0805C258 @ =gEfxBgSemaphore
 	ldr r0, [r1]
 	adds r0, #1
 	str r0, [r1]
@@ -15101,7 +15101,7 @@ sub_0805C230: @ 0x0805C230
 	pop {r0}
 	bx r0
 	.align 2, 0
-_0805C258: .4byte 0x0201774C
+_0805C258: .4byte gEfxBgSemaphore
 _0805C25C: .4byte gUnk_08C11F74
 
 	thumb_func_start sub_0805C260
@@ -15115,7 +15115,7 @@ sub_0805C260: @ 0x0805C260
 	asrs r0, r0, #0x10
 	cmp r0, #0x2f
 	bne _0805C288
-	ldr r1, _0805C284 @ =0x0201774C
+	ldr r1, _0805C284 @ =gEfxBgSemaphore
 	ldr r0, [r1]
 	subs r0, #1
 	str r0, [r1]
@@ -15123,7 +15123,7 @@ sub_0805C260: @ 0x0805C260
 	bl Proc_Break
 	b _0805C2AE
 	.align 2, 0
-_0805C284: .4byte 0x0201774C
+_0805C284: .4byte gEfxBgSemaphore
 _0805C288:
 	ldrh r0, [r3, #0x2e]
 	adds r0, #1
@@ -15152,7 +15152,7 @@ _0805C2AE:
 sub_0805C2B4: @ 0x0805C2B4
 	push {r4, r5, lr}
 	adds r4, r0, #0
-	ldr r1, _0805C310 @ =0x0201774C
+	ldr r1, _0805C310 @ =gEfxBgSemaphore
 	ldr r0, [r1]
 	adds r0, #1
 	str r0, [r1]
@@ -15194,7 +15194,7 @@ sub_0805C2B4: @ 0x0805C2B4
 	ldr r0, _0805C31C @ =gUnk_08C40B8C
 	b _0805C322
 	.align 2, 0
-_0805C310: .4byte 0x0201774C
+_0805C310: .4byte gEfxBgSemaphore
 _0805C314: .4byte gUnk_08C11F8C
 _0805C318: .4byte 0xFFFFFEB8
 _0805C31C: .4byte gUnk_08C40B8C
@@ -15207,7 +15207,7 @@ _0805C322:
 	str r1, [r5, #0x60]
 	cmp r1, #0
 	bne _0805C348
-	ldr r1, _0805C344 @ =0x0201774C
+	ldr r1, _0805C344 @ =gEfxBgSemaphore
 	ldr r0, [r1]
 	subs r0, #1
 	str r0, [r1]
@@ -15216,7 +15216,7 @@ _0805C322:
 	b _0805C356
 	.align 2, 0
 _0805C340: .4byte gUnk_08C40BA8
-_0805C344: .4byte 0x0201774C
+_0805C344: .4byte gEfxBgSemaphore
 _0805C348:
 	movs r0, #0x91
 	lsls r0, r0, #6
@@ -15242,7 +15242,7 @@ sub_0805C35C: @ 0x0805C35C
 	ldrsh r0, [r5, r2]
 	cmp r1, r0
 	ble _0805C38C
-	ldr r1, _0805C388 @ =0x0201774C
+	ldr r1, _0805C388 @ =gEfxBgSemaphore
 	ldr r0, [r1]
 	subs r0, #1
 	str r0, [r1]
@@ -15252,7 +15252,7 @@ sub_0805C35C: @ 0x0805C35C
 	bl Proc_Break
 	b _0805C3CC
 	.align 2, 0
-_0805C388: .4byte 0x0201774C
+_0805C388: .4byte gEfxBgSemaphore
 _0805C38C:
 	movs r4, #0x32
 	ldrsh r1, [r5, r4]
@@ -15378,14 +15378,14 @@ _0805C44A:
 	movs r1, #0
 	movs r2, #0xf
 	movs r3, #0
-	bl sub_080566F0
+	bl NewEfxALPHA
 	str r7, [sp]
 	str r7, [sp, #4]
 	adds r0, r5, #0
 	movs r1, #0x50
 	movs r2, #0xf
 	movs r3, #0x10
-	bl sub_080566F0
+	bl NewEfxALPHA
 	ldr r0, [r6, #0x5c]
 	bl sub_0805C5B4
 	ldr r0, [r6, #0x5c]
@@ -15411,7 +15411,7 @@ _0805C4BC:
 	movs r1, #0x2a
 	movs r2, #0xf
 	movs r3, #0
-	bl sub_080560A4
+	bl NewefxRestRST
 	adds r1, r0, #0
 	adds r0, r5, #0
 	movs r2, #0x1e
@@ -15466,7 +15466,7 @@ _0805C528:
 	bl PlaySFX
 	adds r0, r5, #0
 	movs r1, #0xa
-	bl sub_0804F7B8
+	bl NewEfxFlashBgWhite
 	movs r0, #9
 	ldrh r1, [r5, #0x10]
 	orrs r0, r1
@@ -15497,7 +15497,7 @@ _0805C570:
 	movs r1, #0x10
 	movs r2, #0xa
 	movs r3, #0x10
-	bl sub_080566F0
+	bl NewEfxALPHA
 	b _0805C5A8
 _0805C590:
 	movs r2, #0x87
@@ -15521,7 +15521,7 @@ _0805C5A8:
 sub_0805C5B4: @ 0x0805C5B4
 	push {r4, lr}
 	adds r4, r0, #0
-	ldr r1, _0805C608 @ =0x0201774C
+	ldr r1, _0805C608 @ =gEfxBgSemaphore
 	ldr r0, [r1]
 	adds r0, #1
 	str r0, [r1]
@@ -15559,7 +15559,7 @@ sub_0805C5B4: @ 0x0805C5B4
 	pop {r0}
 	bx r0
 	.align 2, 0
-_0805C608: .4byte 0x0201774C
+_0805C608: .4byte gEfxBgSemaphore
 _0805C60C: .4byte gUnk_08C11FBC
 _0805C610: .4byte gUnk_081EE706
 _0805C614: .4byte gUnk_08C11FD4
@@ -15571,7 +15571,7 @@ _0805C620: .4byte gDispIo
 sub_0805C624: @ 0x0805C624
 	push {r4, lr}
 	adds r4, r0, #0
-	ldr r1, _0805C68C @ =0x0201774C
+	ldr r1, _0805C68C @ =gEfxBgSemaphore
 	ldr r0, [r1]
 	adds r0, #1
 	str r0, [r1]
@@ -15618,7 +15618,7 @@ sub_0805C624: @ 0x0805C624
 	pop {r0}
 	bx r0
 	.align 2, 0
-_0805C68C: .4byte 0x0201774C
+_0805C68C: .4byte gEfxBgSemaphore
 _0805C690: .4byte gUnk_08C11FBC
 _0805C694: .4byte gUnk_081EE70C
 _0805C698: .4byte gUnk_08C11FD4
@@ -15630,7 +15630,7 @@ _0805C6A4: .4byte gDispIo
 sub_0805C6A8: @ 0x0805C6A8
 	push {r4, lr}
 	adds r4, r0, #0
-	ldr r1, _0805C6E8 @ =0x0201774C
+	ldr r1, _0805C6E8 @ =gEfxBgSemaphore
 	ldr r0, [r1]
 	adds r0, #1
 	str r0, [r1]
@@ -15657,7 +15657,7 @@ sub_0805C6A8: @ 0x0805C6A8
 	pop {r0}
 	bx r0
 	.align 2, 0
-_0805C6E8: .4byte 0x0201774C
+_0805C6E8: .4byte gEfxBgSemaphore
 _0805C6EC: .4byte gUnk_08C11FBC
 _0805C6F0: .4byte gUnk_081EE7AE
 _0805C6F4: .4byte gUnk_08C11FD4
@@ -15710,7 +15710,7 @@ _0805C750:
 	cmp r1, r0
 	bne _0805C76E
 	bl SpellFx_ClearBG1
-	ldr r1, _0805C778 @ =0x0201774C
+	ldr r1, _0805C778 @ =gEfxBgSemaphore
 	ldr r0, [r1]
 	subs r0, #1
 	str r0, [r1]
@@ -15724,14 +15724,14 @@ _0805C76E:
 	pop {r0}
 	bx r0
 	.align 2, 0
-_0805C778: .4byte 0x0201774C
+_0805C778: .4byte gEfxBgSemaphore
 
 	thumb_func_start sub_0805C77C
 sub_0805C77C: @ 0x0805C77C
 	push {r4, r5, r6, lr}
 	sub sp, #4
 	adds r5, r0, #0
-	ldr r1, _0805C7D4 @ =0x0201774C
+	ldr r1, _0805C7D4 @ =gEfxBgSemaphore
 	ldr r0, [r1]
 	adds r0, #1
 	str r0, [r1]
@@ -15769,7 +15769,7 @@ sub_0805C77C: @ 0x0805C77C
 	subs r0, #8
 	b _0805C7E8
 	.align 2, 0
-_0805C7D4: .4byte 0x0201774C
+_0805C7D4: .4byte gEfxBgSemaphore
 _0805C7D8: .4byte gUnk_08C120AC
 _0805C7DC: .4byte gUnk_08C10828
 _0805C7E0: .4byte 0x0000F3FF
@@ -15789,7 +15789,7 @@ _0805C7E8:
 	thumb_func_start sub_0805C7F8
 sub_0805C7F8: @ 0x0805C7F8
 	push {lr}
-	ldr r2, _0805C80C @ =0x0201774C
+	ldr r2, _0805C80C @ =gEfxBgSemaphore
 	ldr r1, [r2]
 	subs r1, #1
 	str r1, [r2]
@@ -15798,7 +15798,7 @@ sub_0805C7F8: @ 0x0805C7F8
 	pop {r0}
 	bx r0
 	.align 2, 0
-_0805C80C: .4byte 0x0201774C
+_0805C80C: .4byte gEfxBgSemaphore
 
 	thumb_func_start sub_0805C810
 sub_0805C810: @ 0x0805C810
@@ -15939,7 +15939,7 @@ _0805C91C:
 sub_0805C924: @ 0x0805C924
 	push {r4, lr}
 	adds r4, r0, #0
-	ldr r1, _0805C95C @ =0x0201774C
+	ldr r1, _0805C95C @ =gEfxBgSemaphore
 	ldr r0, [r1]
 	adds r0, #1
 	str r0, [r1]
@@ -15963,7 +15963,7 @@ sub_0805C924: @ 0x0805C924
 	pop {r0}
 	bx r0
 	.align 2, 0
-_0805C95C: .4byte 0x0201774C
+_0805C95C: .4byte gEfxBgSemaphore
 _0805C960: .4byte gUnk_08C120F4
 _0805C964: .4byte gUnk_0822FED0
 _0805C968: .4byte gUnk_0822F2D8
@@ -16003,7 +16003,7 @@ sub_0805C96C: @ 0x0805C96C
 	asrs r0, r0, #0x10
 	cmp r0, #6
 	bne _0805C9BE
-	ldr r1, _0805C9C8 @ =0x0201774C
+	ldr r1, _0805C9C8 @ =gEfxBgSemaphore
 	ldr r0, [r1]
 	subs r0, #1
 	str r0, [r1]
@@ -16015,7 +16015,7 @@ _0805C9BE:
 	bx r0
 	.align 2, 0
 _0805C9C4: .4byte gUnk_08C1210C
-_0805C9C8: .4byte 0x0201774C
+_0805C9C8: .4byte gEfxBgSemaphore
 
 	thumb_func_start sub_0805C9CC
 sub_0805C9CC: @ 0x0805C9CC
@@ -16026,7 +16026,7 @@ sub_0805C9CC: @ 0x0805C9CC
 	adds r5, r0, #0
 	adds r6, r1, #0
 	mov r8, r2
-	ldr r1, _0805CA14 @ =0x0201774C
+	ldr r1, _0805CA14 @ =gEfxBgSemaphore
 	ldr r0, [r1]
 	adds r0, #1
 	str r0, [r1]
@@ -16054,14 +16054,14 @@ sub_0805C9CC: @ 0x0805C9CC
 	pop {r0}
 	bx r0
 	.align 2, 0
-_0805CA14: .4byte 0x0201774C
+_0805CA14: .4byte gEfxBgSemaphore
 _0805CA18: .4byte gUnk_08C12124
 _0805CA1C: .4byte gUnk_08C28880
 
 	thumb_func_start sub_0805CA20
 sub_0805CA20: @ 0x0805CA20
 	push {lr}
-	ldr r2, _0805CA34 @ =0x0201774C
+	ldr r2, _0805CA34 @ =gEfxBgSemaphore
 	ldr r1, [r2]
 	subs r1, #1
 	str r1, [r2]
@@ -16070,7 +16070,7 @@ sub_0805CA20: @ 0x0805CA20
 	pop {r0}
 	bx r0
 	.align 2, 0
-_0805CA34: .4byte 0x0201774C
+_0805CA34: .4byte gEfxBgSemaphore
 
 	thumb_func_start sub_0805CA38
 sub_0805CA38: @ 0x0805CA38
@@ -16145,7 +16145,7 @@ _0805CAAA:
 	movs r1, #0x64
 	movs r2, #2
 	adds r3, r4, #0
-	bl sub_080560A4
+	bl NewefxRestRST
 	adds r0, r5, #0
 	movs r1, #0x69
 	movs r2, #0
@@ -16174,14 +16174,14 @@ _0805CAAA:
 	movs r1, #0
 	movs r2, #0xf
 	movs r3, #0
-	bl sub_080566F0
+	bl NewEfxALPHA
 	str r7, [sp]
 	str r7, [sp, #4]
 	adds r0, r5, #0
 	movs r1, #0x46
 	movs r2, #0xf
 	movs r3, #0x10
-	bl sub_080566F0
+	bl NewEfxALPHA
 	movs r0, #0x98
 	lsls r0, r0, #1
 	adds r1, r4, #0
@@ -16264,7 +16264,7 @@ _0805CBBC:
 	bne _0805CC08
 	adds r0, r5, #0
 	movs r1, #0xa
-	bl sub_0804F7B8
+	bl NewEfxFlashBgWhite
 	adds r0, r5, #0
 	bl sub_0805D044
 	movs r0, #9
@@ -16305,7 +16305,7 @@ _0805CC08:
 	movs r1, #0x12
 	movs r2, #8
 	movs r3, #0x10
-	bl sub_080566F0
+	bl NewEfxALPHA
 	b _0805CC4C
 _0805CC2A:
 	movs r2, #0x91
@@ -16336,7 +16336,7 @@ sub_0805CC58: @ 0x0805CC58
 	sub sp, #8
 	adds r4, r0, #0
 	adds r5, r1, #0
-	ldr r1, _0805CCCC @ =0x0201774C
+	ldr r1, _0805CCCC @ =gEfxBgSemaphore
 	ldr r0, [r1]
 	adds r0, #1
 	str r0, [r1]
@@ -16384,7 +16384,7 @@ sub_0805CC58: @ 0x0805CC58
 	pop {r0}
 	bx r0
 	.align 2, 0
-_0805CCCC: .4byte 0x0201774C
+_0805CCCC: .4byte gEfxBgSemaphore
 _0805CCD0: .4byte gUnk_08C1215C
 _0805CCD4: .4byte gUnk_08253254
 _0805CCD8: .4byte gUnk_08253B94
@@ -16396,7 +16396,7 @@ _0805CCE4: .4byte gDispIo
 sub_0805CCE8: @ 0x0805CCE8
 	push {lr}
 	bl SpellFx_ClearBG1
-	ldr r1, _0805CD00 @ =0x0201774C
+	ldr r1, _0805CD00 @ =gEfxBgSemaphore
 	ldr r0, [r1]
 	subs r0, #1
 	str r0, [r1]
@@ -16404,7 +16404,7 @@ sub_0805CCE8: @ 0x0805CCE8
 	pop {r0}
 	bx r0
 	.align 2, 0
-_0805CD00: .4byte 0x0201774C
+_0805CD00: .4byte gEfxBgSemaphore
 
 	thumb_func_start sub_0805CD04
 sub_0805CD04: @ 0x0805CD04
@@ -16438,7 +16438,7 @@ sub_0805CD34: @ 0x0805CD34
 	push {r4, r5, lr}
 	adds r4, r0, #0
 	adds r5, r1, #0
-	ldr r1, _0805CD6C @ =0x0201774C
+	ldr r1, _0805CD6C @ =gEfxBgSemaphore
 	ldr r0, [r1]
 	adds r0, #1
 	str r0, [r1]
@@ -16462,20 +16462,20 @@ sub_0805CD34: @ 0x0805CD34
 	pop {r0}
 	bx r0
 	.align 2, 0
-_0805CD6C: .4byte 0x0201774C
+_0805CD6C: .4byte gEfxBgSemaphore
 _0805CD70: .4byte gUnk_08C1217C
 _0805CD74: .4byte gUnk_081EE7E4
 _0805CD78: .4byte gUnk_082539B4
 
 	thumb_func_start sub_0805CD7C
 sub_0805CD7C: @ 0x0805CD7C
-	ldr r1, _0805CD88 @ =0x0201774C
+	ldr r1, _0805CD88 @ =gEfxBgSemaphore
 	ldr r0, [r1]
 	subs r0, #1
 	str r0, [r1]
 	bx lr
 	.align 2, 0
-_0805CD88: .4byte 0x0201774C
+_0805CD88: .4byte gEfxBgSemaphore
 
 	thumb_func_start sub_0805CD8C
 sub_0805CD8C: @ 0x0805CD8C
@@ -16517,7 +16517,7 @@ sub_0805CDCC: @ 0x0805CDCC
 	sub sp, #4
 	adds r5, r0, #0
 	adds r6, r1, #0
-	ldr r1, _0805CE18 @ =0x0201774C
+	ldr r1, _0805CE18 @ =gEfxBgSemaphore
 	ldr r0, [r1]
 	adds r0, #1
 	str r0, [r1]
@@ -16548,7 +16548,7 @@ sub_0805CDCC: @ 0x0805CDCC
 	pop {r0}
 	bx r0
 	.align 2, 0
-_0805CE18: .4byte 0x0201774C
+_0805CE18: .4byte gEfxBgSemaphore
 _0805CE1C: .4byte gUnk_08C121A4
 _0805CE20: .4byte gUnk_08C2A90C
 _0805CE24: .4byte gUnk_0825CF18
@@ -16566,7 +16566,7 @@ sub_0805CE2C: @ 0x0805CE2C
 	lsls r1, r2, #0x10
 	cmp r0, r1
 	ble _0805CE54
-	ldr r0, _0805CE5C @ =0x0201774C
+	ldr r0, _0805CE5C @ =gEfxBgSemaphore
 	ldr r1, [r0]
 	subs r1, #1
 	str r1, [r0]
@@ -16579,13 +16579,13 @@ _0805CE54:
 	pop {r0}
 	bx r0
 	.align 2, 0
-_0805CE5C: .4byte 0x0201774C
+_0805CE5C: .4byte gEfxBgSemaphore
 
 	thumb_func_start sub_0805CE60
 sub_0805CE60: @ 0x0805CE60
 	push {r4, r5, lr}
 	adds r4, r0, #0
-	ldr r1, _0805CEC4 @ =0x0201774C
+	ldr r1, _0805CEC4 @ =gEfxBgSemaphore
 	ldr r0, [r1]
 	adds r0, #1
 	str r0, [r1]
@@ -16628,7 +16628,7 @@ sub_0805CE60: @ 0x0805CE60
 	bl SetBgOffset
 	b _0805CEEA
 	.align 2, 0
-_0805CEC4: .4byte 0x0201774C
+_0805CEC4: .4byte gEfxBgSemaphore
 _0805CEC8: .4byte gUnk_08C121BC
 _0805CECC: .4byte gUnk_081EE822
 _0805CED0: .4byte gUnk_08C122A0
@@ -16649,7 +16649,7 @@ _0805CEEA:
 sub_0805CEF0: @ 0x0805CEF0
 	push {r4, r5, lr}
 	adds r4, r0, #0
-	ldr r1, _0805CF4C @ =0x0201774C
+	ldr r1, _0805CF4C @ =gEfxBgSemaphore
 	ldr r0, [r1]
 	adds r0, #1
 	str r0, [r1]
@@ -16688,7 +16688,7 @@ sub_0805CEF0: @ 0x0805CEF0
 	bl SetBgOffset
 	b _0805CF72
 	.align 2, 0
-_0805CF4C: .4byte 0x0201774C
+_0805CF4C: .4byte gEfxBgSemaphore
 _0805CF50: .4byte gUnk_08C121BC
 _0805CF54: .4byte gUnk_081EDF40
 _0805CF58: .4byte gUnk_08C10EB4
@@ -16785,7 +16785,7 @@ _0805D014:
 	cmp r1, r0
 	bne _0805D032
 	bl SpellFx_ClearBG1
-	ldr r1, _0805D040 @ =0x0201774C
+	ldr r1, _0805D040 @ =gEfxBgSemaphore
 	ldr r0, [r1]
 	subs r0, #1
 	str r0, [r1]
@@ -16800,13 +16800,13 @@ _0805D032:
 	pop {r0}
 	bx r0
 	.align 2, 0
-_0805D040: .4byte 0x0201774C
+_0805D040: .4byte gEfxBgSemaphore
 
 	thumb_func_start sub_0805D044
 sub_0805D044: @ 0x0805D044
 	push {r4, lr}
 	adds r4, r0, #0
-	ldr r1, _0805D07C @ =0x0201774C
+	ldr r1, _0805D07C @ =gEfxBgSemaphore
 	ldr r0, [r1]
 	adds r0, #1
 	str r0, [r1]
@@ -16829,7 +16829,7 @@ sub_0805D044: @ 0x0805D044
 	pop {r0}
 	bx r0
 	.align 2, 0
-_0805D07C: .4byte 0x0201774C
+_0805D07C: .4byte gEfxBgSemaphore
 _0805D080: .4byte gUnk_08C1236C
 _0805D084: .4byte gUnk_0825CF38
 _0805D088: .4byte gUnk_0825C39C
@@ -16860,7 +16860,7 @@ sub_0805D08C: @ 0x0805D08C
 	asrs r0, r0, #0x10
 	cmp r0, #8
 	bne _0805D0CC
-	ldr r1, _0805D0D4 @ =0x0201774C
+	ldr r1, _0805D0D4 @ =gEfxBgSemaphore
 	ldr r0, [r1]
 	subs r0, #1
 	str r0, [r1]
@@ -16871,14 +16871,14 @@ _0805D0CC:
 	pop {r0}
 	bx r0
 	.align 2, 0
-_0805D0D4: .4byte 0x0201774C
+_0805D0D4: .4byte gEfxBgSemaphore
 
 	thumb_func_start sub_0805D0D8
 sub_0805D0D8: @ 0x0805D0D8
 	push {r4, r5, r6, lr}
 	adds r6, r0, #0
 	adds r4, r1, #0
-	ldr r1, _0805D118 @ =0x0201774C
+	ldr r1, _0805D118 @ =gEfxBgSemaphore
 	ldr r0, [r1]
 	adds r0, #1
 	str r0, [r1]
@@ -16907,7 +16907,7 @@ sub_0805D0D8: @ 0x0805D0D8
 	beq _0805D12C
 	b _0805D138
 	.align 2, 0
-_0805D118: .4byte 0x0201774C
+_0805D118: .4byte gEfxBgSemaphore
 _0805D11C: .4byte gUnk_08C12384
 _0805D120: .4byte gUnk_08C1239C
 _0805D124:
@@ -16986,7 +16986,7 @@ sub_0805D158: @ 0x0805D158
 	lsls r1, r3, #0x10
 	cmp r0, r1
 	ble _0805D1C6
-	ldr r0, _0805D1D4 @ =0x0201774C
+	ldr r0, _0805D1D4 @ =gEfxBgSemaphore
 	ldr r1, [r0]
 	subs r1, #1
 	str r1, [r0]
@@ -17001,7 +17001,7 @@ _0805D1C6:
 	bx r0
 	.align 2, 0
 _0805D1D0: .4byte gSinLut
-_0805D1D4: .4byte 0x0201774C
+_0805D1D4: .4byte gEfxBgSemaphore
 
 	thumb_func_start sub_0805D1D8
 sub_0805D1D8: @ 0x0805D1D8
@@ -17776,7 +17776,7 @@ sub_0805D824: @ 0x0805D824
 	push {r4, r5, r6, lr}
 	adds r4, r0, #0
 	adds r6, r1, #0
-	ldr r1, _0805D86C @ =0x0201774C
+	ldr r1, _0805D86C @ =gEfxBgSemaphore
 	ldr r0, [r1]
 	adds r0, #1
 	str r0, [r1]
@@ -17808,7 +17808,7 @@ sub_0805D824: @ 0x0805D824
 	bl SpellFx_RegisterBgGfx
 	b _0805D8D6
 	.align 2, 0
-_0805D86C: .4byte 0x0201774C
+_0805D86C: .4byte gEfxBgSemaphore
 _0805D870: .4byte gUnk_08C1241C
 _0805D874: .4byte gUnk_081EE930
 _0805D878: .4byte gUnk_082710C8
@@ -17862,7 +17862,7 @@ sub_0805D8E0: @ 0x0805D8E0
 	push {r4, r5, r6, lr}
 	adds r4, r0, #0
 	adds r6, r1, #0
-	ldr r1, _0805D928 @ =0x0201774C
+	ldr r1, _0805D928 @ =gEfxBgSemaphore
 	ldr r0, [r1]
 	adds r0, #1
 	str r0, [r1]
@@ -17894,7 +17894,7 @@ sub_0805D8E0: @ 0x0805D8E0
 	bl SpellFx_RegisterBgGfx
 	b _0805D98A
 	.align 2, 0
-_0805D928: .4byte 0x0201774C
+_0805D928: .4byte gEfxBgSemaphore
 _0805D92C: .4byte gUnk_08C1241C
 _0805D930: .4byte gUnk_081EE936
 _0805D934: .4byte gUnk_082710C8
@@ -17981,7 +17981,7 @@ _0805D9E0:
 	movs r1, #0
 	movs r2, #0
 	bl SetBgOffset
-	ldr r1, _0805DA00 @ =0x0201774C
+	ldr r1, _0805DA00 @ =gEfxBgSemaphore
 	ldr r0, [r1]
 	subs r0, #1
 	str r0, [r1]
@@ -17992,14 +17992,14 @@ _0805D9F8:
 	pop {r0}
 	bx r0
 	.align 2, 0
-_0805DA00: .4byte 0x0201774C
+_0805DA00: .4byte gEfxBgSemaphore
 
 	thumb_func_start sub_0805DA04
 sub_0805DA04: @ 0x0805DA04
 	push {r4, r5, lr}
 	adds r4, r0, #0
 	adds r5, r1, #0
-	ldr r1, _0805DA2C @ =0x0201774C
+	ldr r1, _0805DA2C @ =gEfxBgSemaphore
 	ldr r0, [r1]
 	adds r0, #1
 	str r0, [r1]
@@ -18016,7 +18016,7 @@ sub_0805DA04: @ 0x0805DA04
 	ldr r0, _0805DA34 @ =gUnk_081EE93C
 	b _0805DA46
 	.align 2, 0
-_0805DA2C: .4byte 0x0201774C
+_0805DA2C: .4byte gEfxBgSemaphore
 _0805DA30: .4byte gUnk_08C12434
 _0805DA34: .4byte gUnk_081EE93C
 _0805DA38:
@@ -18059,7 +18059,7 @@ sub_0805DA74: @ 0x0805DA74
 	push {r4, r5, lr}
 	adds r4, r0, #0
 	adds r5, r1, #0
-	ldr r1, _0805DA9C @ =0x0201774C
+	ldr r1, _0805DA9C @ =gEfxBgSemaphore
 	ldr r0, [r1]
 	adds r0, #1
 	str r0, [r1]
@@ -18076,7 +18076,7 @@ sub_0805DA74: @ 0x0805DA74
 	ldr r0, _0805DAA4 @ =gUnk_081EE97E
 	b _0805DAB6
 	.align 2, 0
-_0805DA9C: .4byte 0x0201774C
+_0805DA9C: .4byte gEfxBgSemaphore
 _0805DAA0: .4byte gUnk_08C12434
 _0805DAA4: .4byte gUnk_081EE97E
 _0805DAA8:
@@ -18138,7 +18138,7 @@ _0805DB0A:
 	rsbs r0, r0, #0
 	cmp r1, r0
 	bne _0805DB20
-	ldr r1, _0805DB28 @ =0x0201774C
+	ldr r1, _0805DB28 @ =gEfxBgSemaphore
 	ldr r0, [r1]
 	subs r0, #1
 	str r0, [r1]
@@ -18149,7 +18149,7 @@ _0805DB20:
 	pop {r0}
 	bx r0
 	.align 2, 0
-_0805DB28: .4byte 0x0201774C
+_0805DB28: .4byte gEfxBgSemaphore
 
 	thumb_func_start sub_0805DB2C
 sub_0805DB2C: @ 0x0805DB2C
@@ -18160,7 +18160,7 @@ sub_0805DB2C: @ 0x0805DB2C
 	adds r5, r1, #0
 	adds r6, r2, #0
 	mov r8, r3
-	ldr r1, _0805DB60 @ =0x0201774C
+	ldr r1, _0805DB60 @ =gEfxBgSemaphore
 	ldr r0, [r1]
 	adds r0, #1
 	str r0, [r1]
@@ -18179,7 +18179,7 @@ sub_0805DB2C: @ 0x0805DB2C
 	pop {r0}
 	bx r0
 	.align 2, 0
-_0805DB60: .4byte 0x0201774C
+_0805DB60: .4byte gEfxBgSemaphore
 _0805DB64: .4byte gUnk_08C12454
 
 	thumb_func_start sub_0805DB68
@@ -18210,7 +18210,7 @@ sub_0805DB84: @ 0x0805DB84
 	ldrsh r0, [r4, r2]
 	cmp r1, r0
 	ble _0805DBAC
-	ldr r1, _0805DBA8 @ =0x0201774C
+	ldr r1, _0805DBA8 @ =gEfxBgSemaphore
 	ldr r0, [r1]
 	subs r0, #1
 	str r0, [r1]
@@ -18218,7 +18218,7 @@ sub_0805DB84: @ 0x0805DB84
 	bl Proc_Break
 	b _0805DC0A
 	.align 2, 0
-_0805DBA8: .4byte 0x0201774C
+_0805DBA8: .4byte gEfxBgSemaphore
 _0805DBAC:
 	adds r0, r4, #0
 	adds r0, #0x29
@@ -18281,7 +18281,7 @@ sub_0805DC18: @ 0x0805DC18
 	push {r4, r5, lr}
 	sub sp, #4
 	adds r5, r0, #0
-	ldr r1, _0805DC64 @ =0x0201774C
+	ldr r1, _0805DC64 @ =gEfxBgSemaphore
 	ldr r0, [r1]
 	adds r0, #1
 	str r0, [r1]
@@ -18313,7 +18313,7 @@ sub_0805DC18: @ 0x0805DC18
 	pop {r0}
 	bx r0
 	.align 2, 0
-_0805DC64: .4byte 0x0201774C
+_0805DC64: .4byte gEfxBgSemaphore
 _0805DC68: .4byte gUnk_08C12474
 _0805DC6C: .4byte gUnk_08C2D9FC
 _0805DC70: .4byte gUnk_082708B0
@@ -18324,7 +18324,7 @@ sub_0805DC78: @ 0x0805DC78
 	push {r4, r5, lr}
 	sub sp, #4
 	adds r5, r0, #0
-	ldr r1, _0805DCC8 @ =0x0201774C
+	ldr r1, _0805DCC8 @ =gEfxBgSemaphore
 	ldr r0, [r1]
 	adds r0, #1
 	str r0, [r1]
@@ -18358,7 +18358,7 @@ sub_0805DC78: @ 0x0805DC78
 	pop {r0}
 	bx r0
 	.align 2, 0
-_0805DCC8: .4byte 0x0201774C
+_0805DCC8: .4byte gEfxBgSemaphore
 _0805DCCC: .4byte gUnk_08C1248C
 _0805DCD0: .4byte gUnk_08C2D9FC
 _0805DCD4: .4byte gUnk_082708B0
@@ -18376,7 +18376,7 @@ sub_0805DCDC: @ 0x0805DCDC
 	lsls r1, r2, #0x10
 	cmp r0, r1
 	bne _0805DD04
-	ldr r0, _0805DD0C @ =0x0201774C
+	ldr r0, _0805DD0C @ =gEfxBgSemaphore
 	ldr r1, [r0]
 	subs r1, #1
 	str r1, [r0]
@@ -18389,7 +18389,7 @@ _0805DD04:
 	pop {r0}
 	bx r0
 	.align 2, 0
-_0805DD0C: .4byte 0x0201774C
+_0805DD0C: .4byte gEfxBgSemaphore
 
 	thumb_func_start sub_0805DD10
 sub_0805DD10: @ 0x0805DD10
@@ -18431,7 +18431,7 @@ sub_0805DD44: @ 0x0805DD44
 	lsls r1, r2, #0x10
 	cmp r0, r1
 	bne _0805DD6C
-	ldr r0, _0805DD74 @ =0x0201774C
+	ldr r0, _0805DD74 @ =gEfxBgSemaphore
 	ldr r1, [r0]
 	subs r1, #1
 	str r1, [r0]
@@ -18444,14 +18444,14 @@ _0805DD6C:
 	pop {r0}
 	bx r0
 	.align 2, 0
-_0805DD74: .4byte 0x0201774C
+_0805DD74: .4byte gEfxBgSemaphore
 
 	thumb_func_start sub_0805DD78
 sub_0805DD78: @ 0x0805DD78
 	push {r4, r5, lr}
 	adds r5, r0, #0
 	adds r4, r1, #0
-	ldr r1, _0805DDA8 @ =0x0201774C
+	ldr r1, _0805DDA8 @ =gEfxBgSemaphore
 	ldr r0, [r1]
 	adds r0, #1
 	str r0, [r1]
@@ -18472,7 +18472,7 @@ sub_0805DD78: @ 0x0805DD78
 	movs r0, #0x44
 	b _0805DDB6
 	.align 2, 0
-_0805DDA8: .4byte 0x0201774C
+_0805DDA8: .4byte gEfxBgSemaphore
 _0805DDAC: .4byte gUnk_08C124AC
 _0805DDB0:
 	movs r0, #0x1f
@@ -18598,7 +18598,7 @@ sub_0805DE8C: @ 0x0805DE8C
 	lsls r1, r2, #0x10
 	cmp r0, r1
 	bne _0805DEB4
-	ldr r0, _0805DEBC @ =0x0201774C
+	ldr r0, _0805DEBC @ =gEfxBgSemaphore
 	ldr r1, [r0]
 	subs r1, #1
 	str r1, [r0]
@@ -18611,7 +18611,7 @@ _0805DEB4:
 	pop {r0}
 	bx r0
 	.align 2, 0
-_0805DEBC: .4byte 0x0201774C
+_0805DEBC: .4byte gEfxBgSemaphore
 
 	thumb_func_start sub_0805DEC0
 sub_0805DEC0: @ 0x0805DEC0
@@ -18760,7 +18760,7 @@ _0805DFF0: .4byte 0x000001C5
 sub_0805DFF4: @ 0x0805DFF4
 	push {r4, lr}
 	adds r4, r0, #0
-	ldr r1, _0805E030 @ =0x0201774C
+	ldr r1, _0805E030 @ =gEfxBgSemaphore
 	ldr r0, [r1]
 	adds r0, #1
 	str r0, [r1]
@@ -18785,7 +18785,7 @@ sub_0805DFF4: @ 0x0805DFF4
 	pop {r0}
 	bx r0
 	.align 2, 0
-_0805E030: .4byte 0x0201774C
+_0805E030: .4byte gEfxBgSemaphore
 _0805E034: .4byte gUnk_08C124E4
 _0805E038: .4byte gUnk_081EEA34
 _0805E03C: .4byte gUnk_08C124FC
@@ -18838,7 +18838,7 @@ _0805E09C:
 	cmp r5, r0
 	bne _0805E0BA
 	bl SpellFx_ClearBG1
-	ldr r1, _0805E0C0 @ =0x0201774C
+	ldr r1, _0805E0C0 @ =gEfxBgSemaphore
 	ldr r0, [r1]
 	subs r0, #1
 	str r0, [r1]
@@ -18850,14 +18850,14 @@ _0805E0BA:
 	pop {r0}
 	bx r0
 	.align 2, 0
-_0805E0C0: .4byte 0x0201774C
+_0805E0C0: .4byte gEfxBgSemaphore
 
 	thumb_func_start sub_0805E0C4
 sub_0805E0C4: @ 0x0805E0C4
 	push {r4, r5, lr}
 	adds r4, r0, #0
 	adds r5, r1, #0
-	ldr r1, _0805E0F0 @ =0x0201774C
+	ldr r1, _0805E0F0 @ =gEfxBgSemaphore
 	ldr r0, [r1]
 	adds r0, #1
 	str r0, [r1]
@@ -18876,7 +18876,7 @@ sub_0805E0C4: @ 0x0805E0C4
 	ldr r0, _0805E0FC @ =gUnk_08273048
 	b _0805E102
 	.align 2, 0
-_0805E0F0: .4byte 0x0201774C
+_0805E0F0: .4byte gEfxBgSemaphore
 _0805E0F4: .4byte gUnk_08C1250C
 _0805E0F8: .4byte gUnk_081EEA56
 _0805E0FC: .4byte gUnk_08273048
@@ -18914,7 +18914,7 @@ _0805E136:
 	rsbs r0, r0, #0
 	cmp r1, r0
 	bne _0805E14C
-	ldr r1, _0805E154 @ =0x0201774C
+	ldr r1, _0805E154 @ =gEfxBgSemaphore
 	ldr r0, [r1]
 	subs r0, #1
 	str r0, [r1]
@@ -18925,7 +18925,7 @@ _0805E14C:
 	pop {r0}
 	bx r0
 	.align 2, 0
-_0805E154: .4byte 0x0201774C
+_0805E154: .4byte gEfxBgSemaphore
 
 	thumb_func_start sub_0805E158
 sub_0805E158: @ 0x0805E158
@@ -18933,7 +18933,7 @@ sub_0805E158: @ 0x0805E158
 	mov r7, r8
 	push {r7}
 	adds r5, r0, #0
-	ldr r1, _0805E214 @ =0x0201774C
+	ldr r1, _0805E214 @ =gEfxBgSemaphore
 	ldr r0, [r1]
 	adds r0, #1
 	str r0, [r1]
@@ -19019,7 +19019,7 @@ _0805E1EC:
 	pop {r0}
 	bx r0
 	.align 2, 0
-_0805E214: .4byte 0x0201774C
+_0805E214: .4byte gEfxBgSemaphore
 _0805E218: .4byte gUnk_08C1252C
 _0805E21C: .4byte gUnk_081EEB58
 _0805E220: .4byte gUnk_08C12544
@@ -19084,7 +19084,7 @@ _0805E2A0:
 	cmp r3, r0
 	bne _0805E30A
 	bl SpellFx_ClearBG1
-	ldr r1, _0805E310 @ =0x0201774C
+	ldr r1, _0805E310 @ =gEfxBgSemaphore
 	ldr r0, [r1]
 	subs r0, #1
 	str r0, [r1]
@@ -19135,7 +19135,7 @@ _0805E30A:
 	pop {r0}
 	bx r0
 	.align 2, 0
-_0805E310: .4byte 0x0201774C
+_0805E310: .4byte gEfxBgSemaphore
 _0805E314: .4byte gDispIo
 _0805E318: .4byte 0x0000F3FF
 
@@ -19144,7 +19144,7 @@ sub_0805E31C: @ 0x0805E31C
 	push {r4, r5, lr}
 	adds r4, r0, #0
 	adds r5, r1, #0
-	ldr r1, _0805E348 @ =0x0201774C
+	ldr r1, _0805E348 @ =gEfxBgSemaphore
 	ldr r0, [r1]
 	adds r0, #1
 	str r0, [r1]
@@ -19163,7 +19163,7 @@ sub_0805E31C: @ 0x0805E31C
 	ldr r0, _0805E354 @ =gUnk_0827045C
 	b _0805E35A
 	.align 2, 0
-_0805E348: .4byte 0x0201774C
+_0805E348: .4byte gEfxBgSemaphore
 _0805E34C: .4byte gUnk_08C12548
 _0805E350: .4byte gUnk_081EEB5E
 _0805E354: .4byte gUnk_0827045C
@@ -19201,7 +19201,7 @@ _0805E38E:
 	rsbs r0, r0, #0
 	cmp r1, r0
 	bne _0805E3A4
-	ldr r1, _0805E3AC @ =0x0201774C
+	ldr r1, _0805E3AC @ =gEfxBgSemaphore
 	ldr r0, [r1]
 	subs r0, #1
 	str r0, [r1]
@@ -19212,7 +19212,7 @@ _0805E3A4:
 	pop {r0}
 	bx r0
 	.align 2, 0
-_0805E3AC: .4byte 0x0201774C
+_0805E3AC: .4byte gEfxBgSemaphore
 
 	thumb_func_start sub_0805E3B0
 sub_0805E3B0: @ 0x0805E3B0
@@ -19282,7 +19282,7 @@ _0805E422:
 	movs r1, #0x28
 	movs r2, #0x1e
 	movs r3, #0x10
-	bl sub_080566F0
+	bl NewEfxALPHA
 	movs r4, #0x10
 	str r4, [sp]
 	str r7, [sp, #4]
@@ -19290,28 +19290,28 @@ _0805E422:
 	movs r1, #0x47
 	movs r2, #0x1e
 	movs r3, #8
-	bl sub_080566F0
+	bl NewEfxALPHA
 	str r5, [sp]
 	str r7, [sp, #4]
 	adds r0, r6, #0
 	movs r1, #0x66
 	movs r2, #0x1e
 	movs r3, #0x10
-	bl sub_080566F0
+	bl NewEfxALPHA
 	str r4, [sp]
 	str r7, [sp, #4]
 	adds r0, r6, #0
 	movs r1, #0x85
 	movs r2, #0x1e
 	movs r3, #8
-	bl sub_080566F0
+	bl NewEfxALPHA
 	str r7, [sp]
 	str r7, [sp, #4]
 	adds r0, r6, #0
 	movs r1, #0xa4
 	movs r2, #0x3c
 	movs r3, #0x10
-	bl sub_080566F0
+	bl NewEfxALPHA
 	movs r1, #0x80
 	lsls r1, r1, #1
 	movs r0, #2
@@ -19383,7 +19383,7 @@ _0805E504:
 sub_0805E510: @ 0x0805E510
 	push {r4, lr}
 	adds r4, r0, #0
-	ldr r1, _0805E54C @ =0x0201774C
+	ldr r1, _0805E54C @ =gEfxBgSemaphore
 	ldr r0, [r1]
 	adds r0, #1
 	str r0, [r1]
@@ -19409,7 +19409,7 @@ sub_0805E510: @ 0x0805E510
 	pop {r0}
 	bx r0
 	.align 2, 0
-_0805E54C: .4byte 0x0201774C
+_0805E54C: .4byte gEfxBgSemaphore
 _0805E550: .4byte gUnk_08C12580
 _0805E554: .4byte gUnk_081EEC3C
 _0805E558: .4byte gUnk_08C12598
@@ -19451,7 +19451,7 @@ _0805E5A0:
 	cmp r3, r0
 	bne _0805E5BE
 	bl SpellFx_ClearBG1
-	ldr r1, _0805E5C4 @ =0x0201774C
+	ldr r1, _0805E5C4 @ =gEfxBgSemaphore
 	ldr r0, [r1]
 	subs r0, #1
 	str r0, [r1]
@@ -19463,14 +19463,14 @@ _0805E5BE:
 	pop {r0}
 	bx r0
 	.align 2, 0
-_0805E5C4: .4byte 0x0201774C
+_0805E5C4: .4byte gEfxBgSemaphore
 
 	thumb_func_start sub_0805E5C8
 sub_0805E5C8: @ 0x0805E5C8
 	push {r4, r5, r6, lr}
 	sub sp, #4
 	adds r4, r0, #0
-	ldr r1, _0805E604 @ =0x0201774C
+	ldr r1, _0805E604 @ =gEfxBgSemaphore
 	ldr r0, [r1]
 	adds r0, #1
 	str r0, [r1]
@@ -19495,7 +19495,7 @@ sub_0805E5C8: @ 0x0805E5C8
 	subs r0, #8
 	b _0805E614
 	.align 2, 0
-_0805E604: .4byte 0x0201774C
+_0805E604: .4byte gEfxBgSemaphore
 _0805E608: .4byte gUnk_08C12600
 _0805E60C: .4byte gUnk_08C33390
 _0805E610:
@@ -19523,13 +19523,13 @@ _0805E63C: .4byte gUnk_0827BC24
 
 	thumb_func_start sub_0805E640
 sub_0805E640: @ 0x0805E640
-	ldr r1, _0805E64C @ =0x0201774C
+	ldr r1, _0805E64C @ =gEfxBgSemaphore
 	ldr r0, [r1]
 	subs r0, #1
 	str r0, [r1]
 	bx lr
 	.align 2, 0
-_0805E64C: .4byte 0x0201774C
+_0805E64C: .4byte gEfxBgSemaphore
 
 	thumb_func_start sub_0805E650
 sub_0805E650: @ 0x0805E650
@@ -19621,7 +19621,7 @@ _0805E6E2:
 	movs r1, #0x42
 	movs r2, #0x14
 	movs r3, #0x10
-	bl sub_080566F0
+	bl NewEfxALPHA
 	b _0805E786
 _0805E716:
 	adds r0, r6, #0
@@ -19647,7 +19647,7 @@ _0805E716:
 	bl sub_08050BBC
 	ldr r0, [r4, #0x5c]
 	movs r1, #0xa
-	bl sub_0804F7B8
+	bl NewEfxFlashBgWhite
 	ldrb r0, [r6]
 	cmp r0, #0
 	bne _0805E786
@@ -19685,7 +19685,7 @@ _0805E786:
 sub_0805E794: @ 0x0805E794
 	push {r4, r5, lr}
 	adds r4, r0, #0
-	ldr r1, _0805E7F4 @ =0x0201774C
+	ldr r1, _0805E7F4 @ =gEfxBgSemaphore
 	ldr r0, [r1]
 	adds r0, #1
 	str r0, [r1]
@@ -19725,7 +19725,7 @@ sub_0805E794: @ 0x0805E794
 	bl SetBgOffset
 	b _0805E81A
 	.align 2, 0
-_0805E7F4: .4byte 0x0201774C
+_0805E7F4: .4byte gEfxBgSemaphore
 _0805E7F8: .4byte gUnk_08C12638
 _0805E7FC: .4byte gUnk_081EEC72
 _0805E800: .4byte gUnk_08C12650
@@ -19771,7 +19771,7 @@ _0805E84E:
 	cmp r2, r0
 	bne _0805E86C
 	bl SpellFx_ClearBG1
-	ldr r1, _0805E874 @ =0x0201774C
+	ldr r1, _0805E874 @ =gEfxBgSemaphore
 	ldr r0, [r1]
 	subs r0, #1
 	str r0, [r1]
@@ -19783,14 +19783,14 @@ _0805E86C:
 	pop {r0}
 	bx r0
 	.align 2, 0
-_0805E874: .4byte 0x0201774C
+_0805E874: .4byte gEfxBgSemaphore
 
 	thumb_func_start sub_0805E878
 sub_0805E878: @ 0x0805E878
 	push {r4, r5, lr}
 	sub sp, #4
 	adds r5, r0, #0
-	ldr r1, _0805E8BC @ =0x0201774C
+	ldr r1, _0805E8BC @ =gEfxBgSemaphore
 	ldr r0, [r1]
 	adds r0, #1
 	str r0, [r1]
@@ -19818,7 +19818,7 @@ sub_0805E878: @ 0x0805E878
 	pop {r0}
 	bx r0
 	.align 2, 0
-_0805E8BC: .4byte 0x0201774C
+_0805E8BC: .4byte gEfxBgSemaphore
 _0805E8C0: .4byte gUnk_08C12698
 _0805E8C4: .4byte gUnk_08C3365C
 _0805E8C8: .4byte gUnk_08278A10
@@ -19829,14 +19829,14 @@ sub_0805E8D0: @ 0x0805E8D0
 	push {lr}
 	ldr r0, [r0, #0x60]
 	bl AnimDelete
-	ldr r1, _0805E8E4 @ =0x0201774C
+	ldr r1, _0805E8E4 @ =gEfxBgSemaphore
 	ldr r0, [r1]
 	subs r0, #1
 	str r0, [r1]
 	pop {r0}
 	bx r0
 	.align 2, 0
-_0805E8E4: .4byte 0x0201774C
+_0805E8E4: .4byte gEfxBgSemaphore
 
 	thumb_func_start sub_0805E8E8
 sub_0805E8E8: @ 0x0805E8E8
@@ -19925,14 +19925,14 @@ _0805E978:
 	movs r1, #0
 	movs r2, #0x14
 	movs r3, #0
-	bl sub_080566F0
+	bl NewEfxALPHA
 	str r7, [sp]
 	str r7, [sp, #4]
 	adds r0, r5, #0
 	movs r1, #0xe6
 	movs r2, #0x14
 	movs r3, #0x10
-	bl sub_080566F0
+	bl NewEfxALPHA
 	b _0805EA16
 	.align 2, 0
 _0805E9BC: .4byte 0x0000011B
@@ -19988,7 +19988,7 @@ _0805EA16:
 sub_0805EA24: @ 0x0805EA24
 	push {r4, r5, lr}
 	adds r4, r0, #0
-	ldr r1, _0805EA84 @ =0x0201774C
+	ldr r1, _0805EA84 @ =gEfxBgSemaphore
 	ldr r0, [r1]
 	adds r0, #1
 	str r0, [r1]
@@ -20028,7 +20028,7 @@ sub_0805EA24: @ 0x0805EA24
 	bl SetBgOffset
 	b _0805EAAA
 	.align 2, 0
-_0805EA84: .4byte 0x0201774C
+_0805EA84: .4byte gEfxBgSemaphore
 _0805EA88: .4byte gUnk_08C126D0
 _0805EA8C: .4byte gUnk_081EECBC
 _0805EA90: .4byte gUnk_08C126E8
@@ -20074,7 +20074,7 @@ _0805EADE:
 	cmp r2, r0
 	bne _0805EAFC
 	bl SpellFx_ClearBG1
-	ldr r1, _0805EB04 @ =0x0201774C
+	ldr r1, _0805EB04 @ =gEfxBgSemaphore
 	ldr r0, [r1]
 	subs r0, #1
 	str r0, [r1]
@@ -20086,14 +20086,14 @@ _0805EAFC:
 	pop {r0}
 	bx r0
 	.align 2, 0
-_0805EB04: .4byte 0x0201774C
+_0805EB04: .4byte gEfxBgSemaphore
 
 	thumb_func_start sub_0805EB08
 sub_0805EB08: @ 0x0805EB08
 	push {r4, r5, lr}
 	sub sp, #4
 	adds r5, r0, #0
-	ldr r1, _0805EB4C @ =0x0201774C
+	ldr r1, _0805EB4C @ =gEfxBgSemaphore
 	ldr r0, [r1]
 	adds r0, #1
 	str r0, [r1]
@@ -20121,7 +20121,7 @@ sub_0805EB08: @ 0x0805EB08
 	pop {r0}
 	bx r0
 	.align 2, 0
-_0805EB4C: .4byte 0x0201774C
+_0805EB4C: .4byte gEfxBgSemaphore
 _0805EB50: .4byte gUnk_08C12728
 _0805EB54: .4byte gUnk_08C3B52C
 _0805EB58: .4byte gUnk_0827BE0C
@@ -20132,7 +20132,7 @@ sub_0805EB60: @ 0x0805EB60
 	push {r4, r5, lr}
 	sub sp, #4
 	adds r5, r0, #0
-	ldr r1, _0805EB98 @ =0x0201774C
+	ldr r1, _0805EB98 @ =gEfxBgSemaphore
 	ldr r0, [r1]
 	adds r0, #1
 	str r0, [r1]
@@ -20156,25 +20156,25 @@ sub_0805EB60: @ 0x0805EB60
 	pop {r0}
 	bx r0
 	.align 2, 0
-_0805EB98: .4byte 0x0201774C
+_0805EB98: .4byte gEfxBgSemaphore
 _0805EB9C: .4byte gUnk_08C12748
 _0805EBA0: .4byte gUnk_08C3B3AC
 
 	thumb_func_start sub_0805EBA4
 sub_0805EBA4: @ 0x0805EBA4
-	ldr r1, _0805EBB0 @ =0x0201774C
+	ldr r1, _0805EBB0 @ =gEfxBgSemaphore
 	ldr r0, [r1]
 	subs r0, #1
 	str r0, [r1]
 	bx lr
 	.align 2, 0
-_0805EBB0: .4byte 0x0201774C
+_0805EBB0: .4byte gEfxBgSemaphore
 
 	thumb_func_start sub_0805EBB4
 sub_0805EBB4: @ 0x0805EBB4
 	push {r4, lr}
 	adds r4, r0, #0
-	ldr r1, _0805EBD0 @ =0x0201774C
+	ldr r1, _0805EBD0 @ =gEfxBgSemaphore
 	ldr r0, [r1]
 	adds r0, #1
 	str r0, [r1]
@@ -20186,7 +20186,7 @@ sub_0805EBB4: @ 0x0805EBB4
 	pop {r0}
 	bx r0
 	.align 2, 0
-_0805EBD0: .4byte 0x0201774C
+_0805EBD0: .4byte gEfxBgSemaphore
 _0805EBD4: .4byte gUnk_08C12768
 
 	thumb_func_start sub_0805EBD8
@@ -20209,13 +20209,13 @@ sub_0805EBD8: @ 0x0805EBD8
 
 	thumb_func_start sub_0805EBF8
 sub_0805EBF8: @ 0x0805EBF8
-	ldr r1, _0805EC04 @ =0x0201774C
+	ldr r1, _0805EC04 @ =gEfxBgSemaphore
 	ldr r0, [r1]
 	subs r0, #1
 	str r0, [r1]
 	bx lr
 	.align 2, 0
-_0805EC04: .4byte 0x0201774C
+_0805EC04: .4byte gEfxBgSemaphore
 
 	thumb_func_start sub_0805EC08
 sub_0805EC08: @ 0x0805EC08
@@ -20285,7 +20285,7 @@ _0805EC7A:
 	movs r1, #0x28
 	movs r2, #0x1e
 	movs r3, #0x10
-	bl sub_080566F0
+	bl NewEfxALPHA
 	movs r4, #0x10
 	str r4, [sp]
 	str r7, [sp, #4]
@@ -20293,28 +20293,28 @@ _0805EC7A:
 	movs r1, #0x47
 	movs r2, #0x1e
 	movs r3, #8
-	bl sub_080566F0
+	bl NewEfxALPHA
 	str r5, [sp]
 	str r7, [sp, #4]
 	adds r0, r6, #0
 	movs r1, #0x66
 	movs r2, #0x1e
 	movs r3, #0x10
-	bl sub_080566F0
+	bl NewEfxALPHA
 	str r4, [sp]
 	str r7, [sp, #4]
 	adds r0, r6, #0
 	movs r1, #0x85
 	movs r2, #0x1e
 	movs r3, #8
-	bl sub_080566F0
+	bl NewEfxALPHA
 	str r7, [sp]
 	str r7, [sp, #4]
 	adds r0, r6, #0
 	movs r1, #0xa4
 	movs r2, #0x3c
 	movs r3, #0x10
-	bl sub_080566F0
+	bl NewEfxALPHA
 	ldr r0, _0805ECF0 @ =0x00000103
 	movs r1, #0x80
 	lsls r1, r1, #1
@@ -20385,7 +20385,7 @@ _0805ED58:
 sub_0805ED64: @ 0x0805ED64
 	push {r4, lr}
 	adds r4, r0, #0
-	ldr r1, _0805EDA0 @ =0x0201774C
+	ldr r1, _0805EDA0 @ =gEfxBgSemaphore
 	ldr r0, [r1]
 	adds r0, #1
 	str r0, [r1]
@@ -20411,7 +20411,7 @@ sub_0805ED64: @ 0x0805ED64
 	pop {r0}
 	bx r0
 	.align 2, 0
-_0805EDA0: .4byte 0x0201774C
+_0805EDA0: .4byte gEfxBgSemaphore
 _0805EDA4: .4byte gUnk_08C127C8
 _0805EDA8: .4byte gUnk_081EEDBE
 _0805EDAC: .4byte gUnk_08C127E0
@@ -20453,7 +20453,7 @@ _0805EDF4:
 	cmp r3, r0
 	bne _0805EE12
 	bl SpellFx_ClearBG1
-	ldr r1, _0805EE18 @ =0x0201774C
+	ldr r1, _0805EE18 @ =gEfxBgSemaphore
 	ldr r0, [r1]
 	subs r0, #1
 	str r0, [r1]
@@ -20465,14 +20465,14 @@ _0805EE12:
 	pop {r0}
 	bx r0
 	.align 2, 0
-_0805EE18: .4byte 0x0201774C
+_0805EE18: .4byte gEfxBgSemaphore
 
 	thumb_func_start sub_0805EE1C
 sub_0805EE1C: @ 0x0805EE1C
 	push {r4, r5, lr}
 	sub sp, #4
 	adds r5, r0, #0
-	ldr r1, _0805EE60 @ =0x0201774C
+	ldr r1, _0805EE60 @ =gEfxBgSemaphore
 	ldr r0, [r1]
 	adds r0, #1
 	str r0, [r1]
@@ -20500,7 +20500,7 @@ sub_0805EE1C: @ 0x0805EE1C
 	pop {r0}
 	bx r0
 	.align 2, 0
-_0805EE60: .4byte 0x0201774C
+_0805EE60: .4byte gEfxBgSemaphore
 _0805EE64: .4byte gUnk_08C12848
 _0805EE68: .4byte gUnk_08C36340
 _0805EE6C: .4byte gUnk_0827BE2C
@@ -20508,13 +20508,13 @@ _0805EE70: .4byte gUnk_0827BC24
 
 	thumb_func_start sub_0805EE74
 sub_0805EE74: @ 0x0805EE74
-	ldr r1, _0805EE80 @ =0x0201774C
+	ldr r1, _0805EE80 @ =gEfxBgSemaphore
 	ldr r0, [r1]
 	subs r0, #1
 	str r0, [r1]
 	bx lr
 	.align 2, 0
-_0805EE80: .4byte 0x0201774C
+_0805EE80: .4byte gEfxBgSemaphore
 
 	thumb_func_start sub_0805EE84
 sub_0805EE84: @ 0x0805EE84
@@ -20587,7 +20587,7 @@ _0805EEEE:
 	movs r1, #0x4a
 	movs r2, #0xa
 	adds r3, r4, #0
-	bl sub_080560A4
+	bl NewefxRestRST
 	adds r0, r5, #0
 	movs r1, #0x4a
 	movs r2, #0
@@ -20606,7 +20606,7 @@ _0805EF3C:
 	bne _0805EF78
 	adds r0, r5, #0
 	movs r1, #5
-	bl sub_0804F7B8
+	bl NewEfxFlashBgWhite
 	movs r0, #9
 	ldrh r1, [r5, #0x10]
 	orrs r0, r1
@@ -20652,7 +20652,7 @@ sub_0805EFA0: @ 0x0805EFA0
 	sub sp, #8
 	adds r5, r0, #0
 	adds r4, r1, #0
-	ldr r1, _0805F098 @ =0x0201774C
+	ldr r1, _0805F098 @ =gEfxBgSemaphore
 	ldr r0, [r1]
 	adds r0, #1
 	str r0, [r1]
@@ -20767,7 +20767,7 @@ sub_0805EFA0: @ 0x0805EFA0
 	pop {r0}
 	bx r0
 	.align 2, 0
-_0805F098: .4byte 0x0201774C
+_0805F098: .4byte gEfxBgSemaphore
 _0805F09C: .4byte gUnk_08C12880
 _0805F0A0: .4byte gUnk_0827BE4C
 _0805F0A4: .4byte gUnk_08279658
@@ -20809,7 +20809,7 @@ sub_0805F0C0: @ 0x0805F0C0
 	adds r1, r2, #0
 	orrs r0, r1
 	strh r0, [r5, #8]
-	ldr r1, _0805F120 @ =0x0201774C
+	ldr r1, _0805F120 @ =gEfxBgSemaphore
 	ldr r0, [r1]
 	subs r0, #1
 	str r0, [r1]
@@ -20823,14 +20823,14 @@ _0805F10C:
 _0805F114: .4byte gDispIo
 _0805F118: .4byte 0xFFFFF7FF
 _0805F11C: .4byte 0x0000F3FF
-_0805F120: .4byte 0x0201774C
+_0805F120: .4byte gEfxBgSemaphore
 
 	thumb_func_start sub_0805F124
 sub_0805F124: @ 0x0805F124
 	push {r4, r5, lr}
 	adds r4, r0, #0
 	adds r5, r1, #0
-	ldr r1, _0805F148 @ =0x0201774C
+	ldr r1, _0805F148 @ =gEfxBgSemaphore
 	ldr r0, [r1]
 	adds r0, #1
 	str r0, [r1]
@@ -20845,7 +20845,7 @@ sub_0805F124: @ 0x0805F124
 	pop {r0}
 	bx r0
 	.align 2, 0
-_0805F148: .4byte 0x0201774C
+_0805F148: .4byte gEfxBgSemaphore
 _0805F14C: .4byte gUnk_08C12898
 
 	thumb_func_start sub_0805F150
@@ -20900,20 +20900,20 @@ _0805F1B0: .4byte 0x0000F3FF
 
 	thumb_func_start sub_0805F1B4
 sub_0805F1B4: @ 0x0805F1B4
-	ldr r1, _0805F1C0 @ =0x0201774C
+	ldr r1, _0805F1C0 @ =gEfxBgSemaphore
 	ldr r0, [r1]
 	subs r0, #1
 	str r0, [r1]
 	bx lr
 	.align 2, 0
-_0805F1C0: .4byte 0x0201774C
+_0805F1C0: .4byte gEfxBgSemaphore
 
 	thumb_func_start sub_0805F1C4
 sub_0805F1C4: @ 0x0805F1C4
 	push {r4, r5, lr}
 	sub sp, #4
 	adds r5, r0, #0
-	ldr r1, _0805F20C @ =0x0201774C
+	ldr r1, _0805F20C @ =gEfxBgSemaphore
 	ldr r0, [r1]
 	adds r0, #1
 	str r0, [r1]
@@ -20944,7 +20944,7 @@ sub_0805F1C4: @ 0x0805F1C4
 	pop {r0}
 	bx r0
 	.align 2, 0
-_0805F20C: .4byte 0x0201774C
+_0805F20C: .4byte gEfxBgSemaphore
 _0805F210: .4byte gUnk_08C128B8
 _0805F214: .4byte gUnk_08C10828
 _0805F218: .4byte 0x0000F3FF
@@ -20952,7 +20952,7 @@ _0805F218: .4byte 0x0000F3FF
 	thumb_func_start sub_0805F21C
 sub_0805F21C: @ 0x0805F21C
 	push {lr}
-	ldr r2, _0805F230 @ =0x0201774C
+	ldr r2, _0805F230 @ =gEfxBgSemaphore
 	ldr r1, [r2]
 	subs r1, #1
 	str r1, [r2]
@@ -20961,7 +20961,7 @@ sub_0805F21C: @ 0x0805F21C
 	pop {r0}
 	bx r0
 	.align 2, 0
-_0805F230: .4byte 0x0201774C
+_0805F230: .4byte gEfxBgSemaphore
 
 	thumb_func_start sub_0805F234
 sub_0805F234: @ 0x0805F234
@@ -21363,7 +21363,7 @@ _0805F58E:
 sub_0805F594: @ 0x0805F594
 	push {r4, lr}
 	adds r4, r0, #0
-	ldr r1, _0805F5D8 @ =0x0201774C
+	ldr r1, _0805F5D8 @ =gEfxBgSemaphore
 	ldr r0, [r1]
 	adds r0, #1
 	str r0, [r1]
@@ -21391,7 +21391,7 @@ sub_0805F594: @ 0x0805F594
 	pop {r0}
 	bx r0
 	.align 2, 0
-_0805F5D8: .4byte 0x0201774C
+_0805F5D8: .4byte gEfxBgSemaphore
 _0805F5DC: .4byte gUnk_08C12988
 _0805F5E0: .4byte gUnk_081EEDF4
 _0805F5E4: .4byte gUnk_08C129A0
@@ -21427,7 +21427,7 @@ _0805F61E:
 	cmp r2, r0
 	bne _0805F63C
 	bl SpellFx_ClearBG1
-	ldr r1, _0805F644 @ =0x0201774C
+	ldr r1, _0805F644 @ =gEfxBgSemaphore
 	ldr r0, [r1]
 	subs r0, #1
 	str r0, [r1]
@@ -21439,14 +21439,14 @@ _0805F63C:
 	pop {r0}
 	bx r0
 	.align 2, 0
-_0805F644: .4byte 0x0201774C
+_0805F644: .4byte gEfxBgSemaphore
 
 	thumb_func_start sub_0805F648
 sub_0805F648: @ 0x0805F648
 	push {r4, r5, lr}
 	sub sp, #4
 	adds r5, r0, #0
-	ldr r1, _0805F68C @ =0x0201774C
+	ldr r1, _0805F68C @ =gEfxBgSemaphore
 	ldr r0, [r1]
 	adds r0, #1
 	str r0, [r1]
@@ -21474,7 +21474,7 @@ sub_0805F648: @ 0x0805F648
 	pop {r0}
 	bx r0
 	.align 2, 0
-_0805F68C: .4byte 0x0201774C
+_0805F68C: .4byte gEfxBgSemaphore
 _0805F690: .4byte gUnk_08C129B4
 _0805F694: .4byte gUnk_08C3FF94
 _0805F698: .4byte gUnk_0827D600
@@ -21485,7 +21485,7 @@ sub_0805F6A0: @ 0x0805F6A0
 	push {r4, r5, lr}
 	sub sp, #4
 	adds r5, r0, #0
-	ldr r1, _0805F6D4 @ =0x0201774C
+	ldr r1, _0805F6D4 @ =gEfxBgSemaphore
 	ldr r0, [r1]
 	adds r0, #1
 	str r0, [r1]
@@ -21506,7 +21506,7 @@ sub_0805F6A0: @ 0x0805F6A0
 	pop {r0}
 	bx r0
 	.align 2, 0
-_0805F6D4: .4byte 0x0201774C
+_0805F6D4: .4byte gEfxBgSemaphore
 _0805F6D8: .4byte gUnk_08C129D4
 _0805F6DC: .4byte gUnk_08C400E4
 
@@ -21515,14 +21515,14 @@ sub_0805F6E0: @ 0x0805F6E0
 	push {lr}
 	ldr r0, [r0, #0x60]
 	bl AnimDelete
-	ldr r1, _0805F6F4 @ =0x0201774C
+	ldr r1, _0805F6F4 @ =gEfxBgSemaphore
 	ldr r0, [r1]
 	subs r0, #1
 	str r0, [r1]
 	pop {r0}
 	bx r0
 	.align 2, 0
-_0805F6F4: .4byte 0x0201774C
+_0805F6F4: .4byte gEfxBgSemaphore
 
 	thumb_func_start sub_0805F6F8
 sub_0805F6F8: @ 0x0805F6F8
@@ -21579,7 +21579,7 @@ _0805F75E:
 	bne _0805F772
 	adds r0, r5, #0
 	movs r1, #0xa
-	bl sub_0804F7B8
+	bl NewEfxFlashBgWhite
 	b _0805F800
 _0805F772:
 	adds r0, r6, #0
@@ -21604,7 +21604,7 @@ _0805F794:
 	bne _0805F7AC
 	adds r0, r5, #0
 	movs r1, #5
-	bl sub_0804F7B8
+	bl NewEfxFlashBgWhite
 	adds r0, r5, #0
 	bl sub_0805FA70
 	b _0805F800
@@ -21656,7 +21656,7 @@ _0805F800:
 sub_0805F808: @ 0x0805F808
 	push {r4, lr}
 	adds r4, r0, #0
-	ldr r1, _0805F848 @ =0x0201774C
+	ldr r1, _0805F848 @ =gEfxBgSemaphore
 	ldr r0, [r1]
 	adds r0, #1
 	str r0, [r1]
@@ -21684,7 +21684,7 @@ sub_0805F808: @ 0x0805F808
 	pop {r0}
 	bx r0
 	.align 2, 0
-_0805F848: .4byte 0x0201774C
+_0805F848: .4byte gEfxBgSemaphore
 _0805F84C: .4byte gUnk_08C12A0C
 _0805F850: .4byte gUnk_081EEEBE
 _0805F854: .4byte gUnk_08C12A24
@@ -21726,7 +21726,7 @@ _0805F89C:
 	cmp r4, r0
 	bne _0805F8BA
 	bl SpellFx_ClearBG1
-	ldr r1, _0805F8C0 @ =0x0201774C
+	ldr r1, _0805F8C0 @ =gEfxBgSemaphore
 	ldr r0, [r1]
 	subs r0, #1
 	str r0, [r1]
@@ -21738,13 +21738,13 @@ _0805F8BA:
 	pop {r0}
 	bx r0
 	.align 2, 0
-_0805F8C0: .4byte 0x0201774C
+_0805F8C0: .4byte gEfxBgSemaphore
 
 	thumb_func_start sub_0805F8C4
 sub_0805F8C4: @ 0x0805F8C4
 	push {r4, r5, lr}
 	adds r4, r0, #0
-	ldr r1, _0805F920 @ =0x0201774C
+	ldr r1, _0805F920 @ =gEfxBgSemaphore
 	ldr r0, [r1]
 	adds r0, #1
 	str r0, [r1]
@@ -21783,7 +21783,7 @@ sub_0805F8C4: @ 0x0805F8C4
 	bl SetBgOffset
 	b _0805F946
 	.align 2, 0
-_0805F920: .4byte 0x0201774C
+_0805F920: .4byte gEfxBgSemaphore
 _0805F924: .4byte gUnk_08C12A30
 _0805F928: .4byte gUnk_081EEEC4
 _0805F92C: .4byte gUnk_08C12A48
@@ -21857,7 +21857,7 @@ _0805F9B8:
 	cmp r2, r0
 	bne _0805F9D6
 	bl SpellFx_ClearBG1
-	ldr r1, _0805F9E0 @ =0x0201774C
+	ldr r1, _0805F9E0 @ =gEfxBgSemaphore
 	ldr r0, [r1]
 	subs r0, #1
 	str r0, [r1]
@@ -21870,13 +21870,13 @@ _0805F9D6:
 	pop {r0}
 	bx r0
 	.align 2, 0
-_0805F9E0: .4byte 0x0201774C
+_0805F9E0: .4byte gEfxBgSemaphore
 
 	thumb_func_start sub_0805F9E4
 sub_0805F9E4: @ 0x0805F9E4
 	push {r4, lr}
 	adds r4, r0, #0
-	ldr r1, _0805FA18 @ =0x0201774C
+	ldr r1, _0805FA18 @ =gEfxBgSemaphore
 	ldr r0, [r1]
 	adds r0, #1
 	str r0, [r1]
@@ -21899,7 +21899,7 @@ sub_0805F9E4: @ 0x0805F9E4
 	pop {r0}
 	bx r0
 	.align 2, 0
-_0805FA18: .4byte 0x0201774C
+_0805FA18: .4byte gEfxBgSemaphore
 _0805FA1C: .4byte gUnk_08C12A6C
 _0805FA20: .4byte gUnk_081EEEEA
 _0805FA24: .4byte gUnk_08295974
@@ -21928,7 +21928,7 @@ _0805FA4E:
 	rsbs r0, r0, #0
 	cmp r1, r0
 	bne _0805FA64
-	ldr r1, _0805FA6C @ =0x0201774C
+	ldr r1, _0805FA6C @ =gEfxBgSemaphore
 	ldr r0, [r1]
 	subs r0, #1
 	str r0, [r1]
@@ -21939,13 +21939,13 @@ _0805FA64:
 	pop {r0}
 	bx r0
 	.align 2, 0
-_0805FA6C: .4byte 0x0201774C
+_0805FA6C: .4byte gEfxBgSemaphore
 
 	thumb_func_start sub_0805FA70
 sub_0805FA70: @ 0x0805FA70
 	push {r4, lr}
 	adds r4, r0, #0
-	ldr r1, _0805FAA8 @ =0x0201774C
+	ldr r1, _0805FAA8 @ =gEfxBgSemaphore
 	ldr r0, [r1]
 	adds r0, #1
 	str r0, [r1]
@@ -21969,7 +21969,7 @@ sub_0805FA70: @ 0x0805FA70
 	pop {r0}
 	bx r0
 	.align 2, 0
-_0805FAA8: .4byte 0x0201774C
+_0805FAA8: .4byte gEfxBgSemaphore
 _0805FAAC: .4byte gUnk_08C12A8C
 _0805FAB0: .4byte gUnk_082972A0
 _0805FAB4: .4byte gUnk_08296FDC
@@ -22046,7 +22046,7 @@ _0805FB34:
 	asrs r0, r0, #0x10
 	cmp r0, #7
 	ble _0805FB54
-	ldr r1, _0805FB60 @ =0x0201774C
+	ldr r1, _0805FB60 @ =gEfxBgSemaphore
 	ldr r0, [r1]
 	subs r0, #1
 	str r0, [r1]
@@ -22058,7 +22058,7 @@ _0805FB54:
 	bx r0
 	.align 2, 0
 _0805FB5C: .4byte gUnk_08C12AA4
-_0805FB60: .4byte 0x0201774C
+_0805FB60: .4byte gEfxBgSemaphore
 
 	thumb_func_start sub_0805FB64
 sub_0805FB64: @ 0x0805FB64
@@ -22069,7 +22069,7 @@ sub_0805FB64: @ 0x0805FB64
 	adds r5, r0, #0
 	adds r6, r1, #0
 	mov r8, r2
-	ldr r1, _0805FBB0 @ =0x0201774C
+	ldr r1, _0805FBB0 @ =gEfxBgSemaphore
 	ldr r0, [r1]
 	adds r0, #1
 	str r0, [r1]
@@ -22099,7 +22099,7 @@ sub_0805FB64: @ 0x0805FB64
 	pop {r0}
 	bx r0
 	.align 2, 0
-_0805FBB0: .4byte 0x0201774C
+_0805FBB0: .4byte gEfxBgSemaphore
 _0805FBB4: .4byte gUnk_08C12AB4
 _0805FBB8: .4byte gUnk_08C41AF8
 
@@ -22115,7 +22115,7 @@ sub_0805FBBC: @ 0x0805FBBC
 	lsls r1, r3, #0x10
 	cmp r0, r1
 	bne _0805FBDE
-	ldr r1, _0805FBE4 @ =0x0201774C
+	ldr r1, _0805FBE4 @ =gEfxBgSemaphore
 	ldr r0, [r1]
 	subs r0, #1
 	str r0, [r1]
@@ -22125,7 +22125,7 @@ _0805FBDE:
 	pop {r0}
 	bx r0
 	.align 2, 0
-_0805FBE4: .4byte 0x0201774C
+_0805FBE4: .4byte gEfxBgSemaphore
 
 	thumb_func_start sub_0805FBE8
 sub_0805FBE8: @ 0x0805FBE8
@@ -22222,7 +22222,7 @@ _0805FC58:
 	movs r1, #0
 	movs r2, #0xa
 	movs r3, #0
-	bl sub_080566F0
+	bl NewEfxALPHA
 	movs r4, #0x80
 	lsls r4, r4, #1
 	movs r0, #2
@@ -22231,7 +22231,7 @@ _0805FC58:
 	movs r1, #0x14
 	movs r2, #0xf
 	adds r3, r4, #0
-	bl sub_080560A4
+	bl NewefxRestRST
 	adds r1, r0, #0
 	adds r0, r5, #0
 	movs r2, #0x14
@@ -22270,7 +22270,7 @@ _0805FCF4:
 	movs r1, #0
 	movs r2, #0x19
 	movs r3, #0x10
-	bl sub_080566F0
+	bl NewEfxALPHA
 	b _0805FE12
 _0805FD24:
 	adds r0, r4, #0
@@ -22322,14 +22322,14 @@ _0805FD44:
 	movs r1, #0
 	movs r2, #0xa
 	movs r3, #0
-	bl sub_080566F0
+	bl NewEfxALPHA
 	movs r0, #1
 	str r0, [sp]
 	adds r0, r5, #0
 	movs r1, #0x41
 	movs r2, #2
 	movs r3, #0x80
-	bl sub_080560A4
+	bl NewefxRestRST
 	adds r0, r5, #0
 	movs r1, #0x44
 	movs r2, #0
@@ -22344,7 +22344,7 @@ _0805FDB0:
 	bne _0805FDE2
 	adds r0, r5, #0
 	movs r1, #5
-	bl sub_0804F7B8
+	bl NewEfxFlashBgWhite
 	movs r0, #9
 	ldrh r1, [r5, #0x10]
 	orrs r0, r1
@@ -22394,7 +22394,7 @@ _0805FE12:
 sub_0805FE20: @ 0x0805FE20
 	push {r4, lr}
 	adds r4, r0, #0
-	ldr r1, _0805FE64 @ =0x0201774C
+	ldr r1, _0805FE64 @ =gEfxBgSemaphore
 	ldr r0, [r1]
 	adds r0, #1
 	str r0, [r1]
@@ -22422,7 +22422,7 @@ sub_0805FE20: @ 0x0805FE20
 	pop {r0}
 	bx r0
 	.align 2, 0
-_0805FE64: .4byte 0x0201774C
+_0805FE64: .4byte gEfxBgSemaphore
 _0805FE68: .4byte gUnk_08C12AE4
 _0805FE6C: .4byte gUnk_081EEF04
 _0805FE70: .4byte gUnk_08C12AFC
@@ -22458,7 +22458,7 @@ _0805FEAA:
 	cmp r2, r0
 	bne _0805FEC8
 	bl SpellFx_ClearBG1
-	ldr r1, _0805FED0 @ =0x0201774C
+	ldr r1, _0805FED0 @ =gEfxBgSemaphore
 	ldr r0, [r1]
 	subs r0, #1
 	str r0, [r1]
@@ -22470,7 +22470,7 @@ _0805FEC8:
 	pop {r0}
 	bx r0
 	.align 2, 0
-_0805FED0: .4byte 0x0201774C
+_0805FED0: .4byte gEfxBgSemaphore
 
 	thumb_func_start sub_0805FED4
 sub_0805FED4: @ 0x0805FED4
@@ -22495,17 +22495,17 @@ sub_0805FEF4: @ 0x0805FEF4
 	mov r6, r8
 	push {r6, r7}
 	mov sb, r0
-	ldr r0, _0805FF58 @ =0x0201FDAC
+	ldr r0, _0805FF58 @ =gEkrBg1ScrollFlip
 	ldr r0, [r0]
-	ldr r5, _0805FF5C @ =0x0201FB2C
+	ldr r5, _0805FF5C @ =gpEkrLvupBg2ScrollOffsetTable2
 	cmp r0, #0
 	bne _0805FF0A
-	ldr r5, _0805FF60 @ =0x0201FC6C
+	ldr r5, _0805FF60 @ =gpEkrLvupBg2ScrollOffsetTable1
 _0805FF0A:
-	ldr r3, _0805FF64 @ =0x0201FDB8
+	ldr r3, _0805FF64 @ =gpEkrLvupBg1ScrollOffsetList2
 	cmp r0, #0
 	bne _0805FF12
-	ldr r3, _0805FF68 @ =0x0201FEF8
+	ldr r3, _0805FF68 @ =gpEkrLvupBg1ScrollOffsetList1
 _0805FF12:
 	movs r4, #0
 	movs r6, #0
@@ -22543,11 +22543,11 @@ _0805FF26:
 	lsls r0, r0, #0x10
 	b _0805FF7A
 	.align 2, 0
-_0805FF58: .4byte 0x0201FDAC
-_0805FF5C: .4byte 0x0201FB2C
-_0805FF60: .4byte 0x0201FC6C
-_0805FF64: .4byte 0x0201FDB8
-_0805FF68: .4byte 0x0201FEF8
+_0805FF58: .4byte gEkrBg1ScrollFlip
+_0805FF5C: .4byte gpEkrLvupBg2ScrollOffsetTable2
+_0805FF60: .4byte gpEkrLvupBg2ScrollOffsetTable1
+_0805FF64: .4byte gpEkrLvupBg1ScrollOffsetList2
+_0805FF68: .4byte gpEkrLvupBg1ScrollOffsetList1
 _0805FF6C: .4byte gUnk_08C12B30
 _0805FF70: .4byte 0x0000FF90
 _0805FF74:
@@ -22644,7 +22644,7 @@ sub_08060014: @ 0x08060014
 	sub sp, #8
 	adds r4, r0, #0
 	adds r5, r1, #0
-	ldr r1, _08060078 @ =0x0201774C
+	ldr r1, _08060078 @ =gEfxBgSemaphore
 	ldr r0, [r1]
 	adds r0, #1
 	str r0, [r1]
@@ -22683,7 +22683,7 @@ sub_08060014: @ 0x08060014
 	bl EfxTmCpyBgHFlip
 	b _080600A8
 	.align 2, 0
-_08060078: .4byte 0x0201774C
+_08060078: .4byte gEfxBgSemaphore
 _0806007C: .4byte gUnk_08C12BF0
 _08060080: .4byte gUnk_08297EE0
 _08060084: .4byte gUnk_08298640
@@ -22749,7 +22749,7 @@ _08060104: .4byte gDispIo
 sub_08060108: @ 0x08060108
 	push {lr}
 	bl SpellFx_ClearBG1
-	ldr r1, _08060120 @ =0x0201774C
+	ldr r1, _08060120 @ =gEfxBgSemaphore
 	ldr r0, [r1]
 	subs r0, #1
 	str r0, [r1]
@@ -22757,7 +22757,7 @@ sub_08060108: @ 0x08060108
 	pop {r0}
 	bx r0
 	.align 2, 0
-_08060120: .4byte 0x0201774C
+_08060120: .4byte gEfxBgSemaphore
 
 	thumb_func_start sub_08060124
 sub_08060124: @ 0x08060124
@@ -22788,7 +22788,7 @@ sub_08060150: @ 0x08060150
 	push {r4, r5, lr}
 	adds r4, r0, #0
 	adds r5, r1, #0
-	ldr r1, _08060188 @ =0x0201774C
+	ldr r1, _08060188 @ =gEfxBgSemaphore
 	ldr r0, [r1]
 	adds r0, #1
 	str r0, [r1]
@@ -22812,20 +22812,20 @@ sub_08060150: @ 0x08060150
 	pop {r0}
 	bx r0
 	.align 2, 0
-_08060188: .4byte 0x0201774C
+_08060188: .4byte gEfxBgSemaphore
 _0806018C: .4byte gUnk_08C12C10
 _08060190: .4byte gUnk_081EEF0A
 _08060194: .4byte gUnk_08298640
 
 	thumb_func_start sub_08060198
 sub_08060198: @ 0x08060198
-	ldr r1, _080601A4 @ =0x0201774C
+	ldr r1, _080601A4 @ =gEfxBgSemaphore
 	ldr r0, [r1]
 	subs r0, #1
 	str r0, [r1]
 	bx lr
 	.align 2, 0
-_080601A4: .4byte 0x0201774C
+_080601A4: .4byte gEfxBgSemaphore
 
 	thumb_func_start sub_080601A8
 sub_080601A8: @ 0x080601A8
@@ -22865,7 +22865,7 @@ _080601E2:
 sub_080601E8: @ 0x080601E8
 	push {r4, r5, lr}
 	adds r4, r0, #0
-	ldr r1, _08060240 @ =0x0201774C
+	ldr r1, _08060240 @ =gEfxBgSemaphore
 	ldr r0, [r1]
 	adds r0, #1
 	str r0, [r1]
@@ -22903,7 +22903,7 @@ sub_080601E8: @ 0x080601E8
 	bl SetBgOffset
 	b _08060266
 	.align 2, 0
-_08060240: .4byte 0x0201774C
+_08060240: .4byte gEfxBgSemaphore
 _08060244: .4byte gUnk_08C12C38
 _08060248: .4byte gUnk_081EEF48
 _0806024C: .4byte gUnk_08C12C50
@@ -22955,7 +22955,7 @@ _080602A8:
 	cmp r3, r0
 	bne _080602C6
 	bl SpellFx_ClearBG1
-	ldr r1, _080602CC @ =0x0201774C
+	ldr r1, _080602CC @ =gEfxBgSemaphore
 	ldr r0, [r1]
 	subs r0, #1
 	str r0, [r1]
@@ -22967,7 +22967,7 @@ _080602C6:
 	pop {r0}
 	bx r0
 	.align 2, 0
-_080602CC: .4byte 0x0201774C
+_080602CC: .4byte gEfxBgSemaphore
 
 	thumb_func_start sub_080602D0
 sub_080602D0: @ 0x080602D0
@@ -23003,7 +23003,7 @@ sub_0806030C: @ 0x0806030C
 	push {r4, r5, lr}
 	sub sp, #4
 	adds r4, r0, #0
-	ldr r1, _0806036C @ =0x0201774C
+	ldr r1, _0806036C @ =gEfxBgSemaphore
 	ldr r0, [r1]
 	adds r0, #1
 	str r0, [r1]
@@ -23046,7 +23046,7 @@ sub_0806030C: @ 0x0806030C
 	pop {r0}
 	bx r0
 	.align 2, 0
-_0806036C: .4byte 0x0201774C
+_0806036C: .4byte gEfxBgSemaphore
 _08060370: .4byte 0x00002AAA
 _08060374: .4byte gUnk_08C41D18
 _08060378: .4byte 0x0000F3FF
@@ -23255,7 +23255,7 @@ _080604FA:
 	asrs r0, r0, #0x10
 	cmp r0, #0xa
 	ble _0806051C
-	ldr r0, _08060528 @ =0x0201774C
+	ldr r0, _08060528 @ =gEfxBgSemaphore
 	ldr r1, [r0]
 	subs r1, #1
 	str r1, [r0]
@@ -23270,7 +23270,7 @@ _0806051C:
 	bx r0
 	.align 2, 0
 _08060524: .4byte gSinLut
-_08060528: .4byte 0x0201774C
+_08060528: .4byte gEfxBgSemaphore
 
 	thumb_func_start sub_0806052C
 sub_0806052C: @ 0x0806052C
@@ -23278,7 +23278,7 @@ sub_0806052C: @ 0x0806052C
 	adds r4, r0, #0
 	adds r6, r1, #0
 	adds r5, r2, #0
-	ldr r1, _08060554 @ =0x0201774C
+	ldr r1, _08060554 @ =gEfxBgSemaphore
 	ldr r0, [r1]
 	adds r0, #1
 	str r0, [r1]
@@ -23294,7 +23294,7 @@ sub_0806052C: @ 0x0806052C
 	pop {r0}
 	bx r0
 	.align 2, 0
-_08060554: .4byte 0x0201774C
+_08060554: .4byte gEfxBgSemaphore
 _08060558: .4byte gUnk_08C12CE0
 
 	thumb_func_start sub_0806055C
@@ -23321,7 +23321,7 @@ sub_0806055C: @ 0x0806055C
 	lsls r1, r2, #0x10
 	cmp r0, r1
 	ble _08060598
-	ldr r1, _080605A0 @ =0x0201774C
+	ldr r1, _080605A0 @ =gEfxBgSemaphore
 	ldr r0, [r1]
 	subs r0, #1
 	str r0, [r1]
@@ -23333,7 +23333,7 @@ _08060598:
 	pop {r0}
 	bx r0
 	.align 2, 0
-_080605A0: .4byte 0x0201774C
+_080605A0: .4byte gEfxBgSemaphore
 
 	thumb_func_start sub_080605A4
 sub_080605A4: @ 0x080605A4
@@ -23454,7 +23454,7 @@ _08060694:
 	bne _080606BE
 	adds r0, r4, #0
 	movs r1, #5
-	bl sub_0804F7B8
+	bl NewEfxFlashBgWhite
 	movs r0, #9
 	ldrh r1, [r4, #0x10]
 	orrs r0, r1
@@ -23522,7 +23522,7 @@ _08060728:
 sub_08060730: @ 0x08060730
 	push {r4, lr}
 	adds r4, r0, #0
-	ldr r1, _08060784 @ =0x0201774C
+	ldr r1, _08060784 @ =gEfxBgSemaphore
 	ldr r0, [r1]
 	adds r0, #1
 	str r0, [r1]
@@ -23558,7 +23558,7 @@ sub_08060730: @ 0x08060730
 	pop {r0}
 	bx r0
 	.align 2, 0
-_08060784: .4byte 0x0201774C
+_08060784: .4byte gEfxBgSemaphore
 _08060788: .4byte gUnk_08C12D10
 _0806078C: .4byte gUnk_0829C488
 _08060790: .4byte gUnk_0829CA18
@@ -23569,7 +23569,7 @@ _08060798: .4byte gDispIo
 sub_0806079C: @ 0x0806079C
 	push {lr}
 	bl SpellFx_ClearBG1
-	ldr r1, _080607B4 @ =0x0201774C
+	ldr r1, _080607B4 @ =gEfxBgSemaphore
 	ldr r0, [r1]
 	subs r0, #1
 	str r0, [r1]
@@ -23577,7 +23577,7 @@ sub_0806079C: @ 0x0806079C
 	pop {r0}
 	bx r0
 	.align 2, 0
-_080607B4: .4byte 0x0201774C
+_080607B4: .4byte gEfxBgSemaphore
 
 	thumb_func_start sub_080607B8
 sub_080607B8: @ 0x080607B8
@@ -23713,7 +23713,7 @@ _080608B2:
 sub_080608B8: @ 0x080608B8
 	push {r4, lr}
 	adds r4, r0, #0
-	ldr r1, _080608EC @ =0x0201774C
+	ldr r1, _080608EC @ =gEfxBgSemaphore
 	ldr r0, [r1]
 	adds r0, #1
 	str r0, [r1]
@@ -23736,20 +23736,20 @@ sub_080608B8: @ 0x080608B8
 	pop {r0}
 	bx r0
 	.align 2, 0
-_080608EC: .4byte 0x0201774C
+_080608EC: .4byte gEfxBgSemaphore
 _080608F0: .4byte gUnk_08C12D40
 _080608F4: .4byte gUnk_081EEF7A
 _080608F8: .4byte gUnk_0829C878
 
 	thumb_func_start sub_080608FC
 sub_080608FC: @ 0x080608FC
-	ldr r1, _08060908 @ =0x0201774C
+	ldr r1, _08060908 @ =gEfxBgSemaphore
 	ldr r0, [r1]
 	subs r0, #1
 	str r0, [r1]
 	bx lr
 	.align 2, 0
-_08060908: .4byte 0x0201774C
+_08060908: .4byte gEfxBgSemaphore
 
 	thumb_func_start sub_0806090C
 sub_0806090C: @ 0x0806090C
@@ -23809,17 +23809,17 @@ sub_0806096C: @ 0x0806096C
 	mov r6, r8
 	push {r6, r7}
 	mov sb, r0
-	ldr r0, _080609C8 @ =0x0201FDAC
+	ldr r0, _080609C8 @ =gEkrBg1ScrollFlip
 	ldr r0, [r0]
-	ldr r5, _080609CC @ =0x0201FB2C
+	ldr r5, _080609CC @ =gpEkrLvupBg2ScrollOffsetTable2
 	cmp r0, #0
 	bne _08060982
-	ldr r5, _080609D0 @ =0x0201FC6C
+	ldr r5, _080609D0 @ =gpEkrLvupBg2ScrollOffsetTable1
 _08060982:
-	ldr r4, _080609D4 @ =0x0201FDB8
+	ldr r4, _080609D4 @ =gpEkrLvupBg1ScrollOffsetList2
 	cmp r0, #0
 	bne _0806098A
-	ldr r4, _080609D8 @ =0x0201FEF8
+	ldr r4, _080609D8 @ =gpEkrLvupBg1ScrollOffsetList1
 _0806098A:
 	movs r3, #0
 	movs r0, #0
@@ -23853,11 +23853,11 @@ _0806099A:
 	lsls r0, r0, #0x10
 	b _080609EA
 	.align 2, 0
-_080609C8: .4byte 0x0201FDAC
-_080609CC: .4byte 0x0201FB2C
-_080609D0: .4byte 0x0201FC6C
-_080609D4: .4byte 0x0201FDB8
-_080609D8: .4byte 0x0201FEF8
+_080609C8: .4byte gEkrBg1ScrollFlip
+_080609CC: .4byte gpEkrLvupBg2ScrollOffsetTable2
+_080609D0: .4byte gpEkrLvupBg2ScrollOffsetTable1
+_080609D4: .4byte gpEkrLvupBg1ScrollOffsetList2
+_080609D8: .4byte gpEkrLvupBg1ScrollOffsetList1
 _080609DC: .4byte gUnk_08C12D98
 _080609E0: .4byte 0x0000FF80
 _080609E4:
@@ -23952,7 +23952,7 @@ sub_08060A80: @ 0x08060A80
 	push {r4, r5, lr}
 	sub sp, #8
 	adds r4, r0, #0
-	ldr r1, _08060AC4 @ =0x0201774C
+	ldr r1, _08060AC4 @ =gEfxBgSemaphore
 	ldr r0, [r1]
 	adds r0, #1
 	str r0, [r1]
@@ -23980,7 +23980,7 @@ sub_08060A80: @ 0x08060A80
 	bl LZ77UnCompWram
 	b _08060AE4
 	.align 2, 0
-_08060AC4: .4byte 0x0201774C
+_08060AC4: .4byte gEfxBgSemaphore
 _08060AC8: .4byte gUnk_08C12E98
 _08060ACC: .4byte gUnk_0829CBC4
 _08060AD0: .4byte gEkrDistanceType
@@ -24051,7 +24051,7 @@ _08060B60: .4byte gDispIo
 sub_08060B64: @ 0x08060B64
 	push {lr}
 	bl SpellFx_ClearBG1
-	ldr r1, _08060B7C @ =0x0201774C
+	ldr r1, _08060B7C @ =gEfxBgSemaphore
 	ldr r0, [r1]
 	subs r0, #1
 	str r0, [r1]
@@ -24059,7 +24059,7 @@ sub_08060B64: @ 0x08060B64
 	pop {r0}
 	bx r0
 	.align 2, 0
-_08060B7C: .4byte 0x0201774C
+_08060B7C: .4byte gEfxBgSemaphore
 
 	thumb_func_start sub_08060B80
 sub_08060B80: @ 0x08060B80
@@ -24084,7 +24084,7 @@ _08060B9A:
 sub_08060BA0: @ 0x08060BA0
 	push {r4, lr}
 	adds r4, r0, #0
-	ldr r1, _08060BD4 @ =0x0201774C
+	ldr r1, _08060BD4 @ =gEfxBgSemaphore
 	ldr r0, [r1]
 	adds r0, #1
 	str r0, [r1]
@@ -24107,7 +24107,7 @@ sub_08060BA0: @ 0x08060BA0
 	pop {r0}
 	bx r0
 	.align 2, 0
-_08060BD4: .4byte 0x0201774C
+_08060BD4: .4byte gEfxBgSemaphore
 _08060BD8: .4byte gUnk_08C12EB8
 _08060BDC: .4byte gUnk_081EEFB0
 _08060BE0: .4byte gUnk_0829DC30
@@ -24136,7 +24136,7 @@ _08060C0A:
 	rsbs r0, r0, #0
 	cmp r1, r0
 	bne _08060C20
-	ldr r1, _08060C28 @ =0x0201774C
+	ldr r1, _08060C28 @ =gEfxBgSemaphore
 	ldr r0, [r1]
 	subs r0, #1
 	str r0, [r1]
@@ -24147,14 +24147,14 @@ _08060C20:
 	pop {r0}
 	bx r0
 	.align 2, 0
-_08060C28: .4byte 0x0201774C
+_08060C28: .4byte gEfxBgSemaphore
 
 	thumb_func_start sub_08060C2C
 sub_08060C2C: @ 0x08060C2C
 	push {r4, r5, lr}
 	sub sp, #8
 	adds r4, r0, #0
-	ldr r1, _08060C70 @ =0x0201774C
+	ldr r1, _08060C70 @ =gEfxBgSemaphore
 	ldr r0, [r1]
 	adds r0, #1
 	str r0, [r1]
@@ -24182,7 +24182,7 @@ sub_08060C2C: @ 0x08060C2C
 	bl LZ77UnCompWram
 	b _08060C90
 	.align 2, 0
-_08060C70: .4byte 0x0201774C
+_08060C70: .4byte gEfxBgSemaphore
 _08060C74: .4byte gUnk_08C12ED8
 _08060C78: .4byte gUnk_0829474C
 _08060C7C: .4byte gEkrDistanceType
@@ -24253,7 +24253,7 @@ _08060D0C: .4byte gDispIo
 sub_08060D10: @ 0x08060D10
 	push {lr}
 	bl SpellFx_ClearBG1
-	ldr r1, _08060D28 @ =0x0201774C
+	ldr r1, _08060D28 @ =gEfxBgSemaphore
 	ldr r0, [r1]
 	subs r0, #1
 	str r0, [r1]
@@ -24261,7 +24261,7 @@ sub_08060D10: @ 0x08060D10
 	pop {r0}
 	bx r0
 	.align 2, 0
-_08060D28: .4byte 0x0201774C
+_08060D28: .4byte gEfxBgSemaphore
 
 	thumb_func_start sub_08060D2C
 sub_08060D2C: @ 0x08060D2C
@@ -24286,7 +24286,7 @@ _08060D46:
 sub_08060D4C: @ 0x08060D4C
 	push {r4, lr}
 	adds r4, r0, #0
-	ldr r1, _08060D80 @ =0x0201774C
+	ldr r1, _08060D80 @ =gEfxBgSemaphore
 	ldr r0, [r1]
 	adds r0, #1
 	str r0, [r1]
@@ -24309,7 +24309,7 @@ sub_08060D4C: @ 0x08060D4C
 	pop {r0}
 	bx r0
 	.align 2, 0
-_08060D80: .4byte 0x0201774C
+_08060D80: .4byte gEfxBgSemaphore
 _08060D84: .4byte gUnk_08C12EF8
 _08060D88: .4byte gUnk_081EEFC2
 _08060D8C: .4byte gUnk_0829E4D0
@@ -24338,7 +24338,7 @@ _08060DB6:
 	rsbs r0, r0, #0
 	cmp r1, r0
 	bne _08060DCC
-	ldr r1, _08060DD4 @ =0x0201774C
+	ldr r1, _08060DD4 @ =gEfxBgSemaphore
 	ldr r0, [r1]
 	subs r0, #1
 	str r0, [r1]
@@ -24349,14 +24349,14 @@ _08060DCC:
 	pop {r0}
 	bx r0
 	.align 2, 0
-_08060DD4: .4byte 0x0201774C
+_08060DD4: .4byte gEfxBgSemaphore
 
 	thumb_func_start sub_08060DD8
 sub_08060DD8: @ 0x08060DD8
 	push {r4, r5, lr}
 	sub sp, #4
 	adds r5, r0, #0
-	ldr r1, _08060E30 @ =0x0201774C
+	ldr r1, _08060E30 @ =gEfxBgSemaphore
 	ldr r0, [r1]
 	adds r0, #1
 	str r0, [r1]
@@ -24394,7 +24394,7 @@ sub_08060DD8: @ 0x08060DD8
 	pop {r0}
 	bx r0
 	.align 2, 0
-_08060E30: .4byte 0x0201774C
+_08060E30: .4byte gEfxBgSemaphore
 _08060E34: .4byte gUnk_08C12F18
 _08060E38: .4byte gUnk_08C42AA4
 _08060E3C: .4byte gUnk_0829E9AC
@@ -24412,7 +24412,7 @@ sub_08060E44: @ 0x08060E44
 	lsls r1, r3, #0x10
 	cmp r0, r1
 	bne _08060E66
-	ldr r1, _08060E6C @ =0x0201774C
+	ldr r1, _08060E6C @ =gEfxBgSemaphore
 	ldr r0, [r1]
 	subs r0, #1
 	str r0, [r1]
@@ -24422,7 +24422,7 @@ _08060E66:
 	pop {r0}
 	bx r0
 	.align 2, 0
-_08060E6C: .4byte 0x0201774C
+_08060E6C: .4byte gEfxBgSemaphore
 
 	thumb_func_start sub_08060E70
 sub_08060E70: @ 0x08060E70
@@ -24510,7 +24510,7 @@ _08060EE0:
 	movs r1, #0
 	movs r2, #0x14
 	movs r3, #0
-	bl sub_080566F0
+	bl NewEfxALPHA
 	mov r0, r8
 	str r0, [sp]
 	str r0, [sp, #4]
@@ -24518,7 +24518,7 @@ _08060EE0:
 	movs r1, #0x32
 	movs r2, #0xa
 	movs r3, #0x10
-	bl sub_080566F0
+	bl NewEfxALPHA
 	ldr r0, _08060F4C @ =0x000002C7
 	movs r1, #0x80
 	lsls r1, r1, #1
@@ -24564,7 +24564,7 @@ _08060F50:
 	movs r1, #0
 	movs r2, #0x14
 	movs r3, #0
-	bl sub_080566F0
+	bl NewEfxALPHA
 	movs r0, #0xb2
 	lsls r0, r0, #2
 	b _0806104A
@@ -24591,7 +24591,7 @@ _08060FBA:
 _08060FCA:
 	adds r0, r5, #0
 	movs r1, #5
-	bl sub_0804F7B8
+	bl NewEfxFlashBgWhite
 	b _08061086
 _08060FD4:
 	adds r0, r4, #0
@@ -24600,7 +24600,7 @@ _08060FD4:
 	bne _08061006
 	adds r0, r5, #0
 	movs r1, #0xa
-	bl sub_0804F7B8
+	bl NewEfxFlashBgWhite
 	movs r0, #9
 	ldrh r1, [r5, #0x10]
 	orrs r0, r1
@@ -24688,7 +24688,7 @@ _08061086:
 sub_08061094: @ 0x08061094
 	push {r4, r5, lr}
 	adds r4, r0, #0
-	ldr r1, _080610F8 @ =0x0201774C
+	ldr r1, _080610F8 @ =gEfxBgSemaphore
 	ldr r0, [r1]
 	adds r0, #1
 	str r0, [r1]
@@ -24731,7 +24731,7 @@ sub_08061094: @ 0x08061094
 	bl SetBgOffset
 	b _0806111E
 	.align 2, 0
-_080610F8: .4byte 0x0201774C
+_080610F8: .4byte gEfxBgSemaphore
 _080610FC: .4byte gUnk_08C12F48
 _08061100: .4byte gUnk_081EEFD4
 _08061104: .4byte gUnk_08C12F60
@@ -24812,7 +24812,7 @@ _080611A0:
 	cmp r2, r0
 	bne _080611BE
 	bl SpellFx_ClearBG1
-	ldr r1, _080611C8 @ =0x0201774C
+	ldr r1, _080611C8 @ =gEfxBgSemaphore
 	ldr r0, [r1]
 	subs r0, #1
 	str r0, [r1]
@@ -24825,7 +24825,7 @@ _080611BE:
 	pop {r0}
 	bx r0
 	.align 2, 0
-_080611C8: .4byte 0x0201774C
+_080611C8: .4byte gEfxBgSemaphore
 
 	thumb_func_start sub_080611CC
 sub_080611CC: @ 0x080611CC
@@ -24833,7 +24833,7 @@ sub_080611CC: @ 0x080611CC
 	sub sp, #8
 	adds r4, r0, #0
 	adds r5, r1, #0
-	ldr r1, _08061254 @ =0x0201774C
+	ldr r1, _08061254 @ =gEfxBgSemaphore
 	ldr r0, [r1]
 	adds r0, #1
 	str r0, [r1]
@@ -24888,7 +24888,7 @@ sub_080611CC: @ 0x080611CC
 	pop {r0}
 	bx r0
 	.align 2, 0
-_08061254: .4byte 0x0201774C
+_08061254: .4byte gEfxBgSemaphore
 _08061258: .4byte gUnk_08C12F90
 _0806125C: .4byte gUnk_082A222C
 _08061260: .4byte gUnk_082A2C1C
@@ -24901,7 +24901,7 @@ _08061270: .4byte gDispIo
 sub_08061274: @ 0x08061274
 	push {lr}
 	bl SpellFx_ClearBG1
-	ldr r1, _0806128C @ =0x0201774C
+	ldr r1, _0806128C @ =gEfxBgSemaphore
 	ldr r0, [r1]
 	subs r0, #1
 	str r0, [r1]
@@ -24909,7 +24909,7 @@ sub_08061274: @ 0x08061274
 	pop {r0}
 	bx r0
 	.align 2, 0
-_0806128C: .4byte 0x0201774C
+_0806128C: .4byte gEfxBgSemaphore
 
 	thumb_func_start sub_08061290
 sub_08061290: @ 0x08061290
@@ -24954,7 +24954,7 @@ sub_080612D4: @ 0x080612D4
 	sub sp, #8
 	adds r4, r0, #0
 	adds r5, r1, #0
-	ldr r1, _0806135C @ =0x0201774C
+	ldr r1, _0806135C @ =gEfxBgSemaphore
 	ldr r0, [r1]
 	adds r0, #1
 	str r0, [r1]
@@ -25009,7 +25009,7 @@ sub_080612D4: @ 0x080612D4
 	pop {r0}
 	bx r0
 	.align 2, 0
-_0806135C: .4byte 0x0201774C
+_0806135C: .4byte gEfxBgSemaphore
 _08061360: .4byte gUnk_08C12FB0
 _08061364: .4byte gUnk_082A0E30
 _08061368: .4byte gUnk_082A1C90
@@ -25022,7 +25022,7 @@ _08061378: .4byte gDispIo
 sub_0806137C: @ 0x0806137C
 	push {lr}
 	bl SpellFx_ClearBG1
-	ldr r1, _08061394 @ =0x0201774C
+	ldr r1, _08061394 @ =gEfxBgSemaphore
 	ldr r0, [r1]
 	subs r0, #1
 	str r0, [r1]
@@ -25030,7 +25030,7 @@ sub_0806137C: @ 0x0806137C
 	pop {r0}
 	bx r0
 	.align 2, 0
-_08061394: .4byte 0x0201774C
+_08061394: .4byte gEfxBgSemaphore
 
 	thumb_func_start sub_08061398
 sub_08061398: @ 0x08061398
@@ -25055,7 +25055,7 @@ _080613B2:
 sub_080613B8: @ 0x080613B8
 	push {r4, lr}
 	adds r4, r0, #0
-	ldr r1, _080613EC @ =0x0201774C
+	ldr r1, _080613EC @ =gEfxBgSemaphore
 	ldr r0, [r1]
 	adds r0, #1
 	str r0, [r1]
@@ -25078,7 +25078,7 @@ sub_080613B8: @ 0x080613B8
 	pop {r0}
 	bx r0
 	.align 2, 0
-_080613EC: .4byte 0x0201774C
+_080613EC: .4byte gEfxBgSemaphore
 _080613F0: .4byte gUnk_08C12FD0
 _080613F4: .4byte gUnk_081EF02A
 _080613F8: .4byte gUnk_082A1C90
@@ -25108,7 +25108,7 @@ _08061426:
 	rsbs r0, r0, #0
 	cmp r1, r0
 	bne _0806143C
-	ldr r1, _08061444 @ =0x0201774C
+	ldr r1, _08061444 @ =gEfxBgSemaphore
 	ldr r0, [r1]
 	subs r0, #1
 	str r0, [r1]
@@ -25119,7 +25119,7 @@ _0806143C:
 	pop {r0}
 	bx r0
 	.align 2, 0
-_08061444: .4byte 0x0201774C
+_08061444: .4byte gEfxBgSemaphore
 
 	thumb_func_start sub_08061448
 sub_08061448: @ 0x08061448
@@ -25127,7 +25127,7 @@ sub_08061448: @ 0x08061448
 	sub sp, #4
 	adds r5, r0, #0
 	adds r6, r1, #0
-	ldr r1, _0806149C @ =0x0201774C
+	ldr r1, _0806149C @ =gEfxBgSemaphore
 	ldr r0, [r1]
 	adds r0, #1
 	str r0, [r1]
@@ -25162,7 +25162,7 @@ sub_08061448: @ 0x08061448
 	pop {r0}
 	bx r0
 	.align 2, 0
-_0806149C: .4byte 0x0201774C
+_0806149C: .4byte gEfxBgSemaphore
 _080614A0: .4byte gUnk_08C12FF0
 _080614A4: .4byte gUnk_08C43190
 _080614A8: .4byte gUnk_082A3700
@@ -25180,7 +25180,7 @@ sub_080614B0: @ 0x080614B0
 	lsls r1, r2, #0x10
 	cmp r0, r1
 	bne _080614D8
-	ldr r0, _080614E0 @ =0x0201774C
+	ldr r0, _080614E0 @ =gEfxBgSemaphore
 	ldr r1, [r0]
 	subs r1, #1
 	str r1, [r0]
@@ -25193,14 +25193,14 @@ _080614D8:
 	pop {r0}
 	bx r0
 	.align 2, 0
-_080614E0: .4byte 0x0201774C
+_080614E0: .4byte gEfxBgSemaphore
 
 	thumb_func_start sub_080614E4
 sub_080614E4: @ 0x080614E4
 	push {r4, r5, lr}
 	sub sp, #4
 	adds r5, r0, #0
-	ldr r1, _08061540 @ =0x0201774C
+	ldr r1, _08061540 @ =gEfxBgSemaphore
 	ldr r0, [r1]
 	adds r0, #1
 	str r0, [r1]
@@ -25238,7 +25238,7 @@ sub_080614E4: @ 0x080614E4
 	pop {r0}
 	bx r0
 	.align 2, 0
-_08061540: .4byte 0x0201774C
+_08061540: .4byte gEfxBgSemaphore
 _08061544: .4byte gUnk_08C13008
 _08061548: .4byte gUnk_08C10828
 _0806154C: .4byte 0x0000F3FF
@@ -25248,7 +25248,7 @@ _08061554: .4byte gUnk_082A3720
 	thumb_func_start sub_08061558
 sub_08061558: @ 0x08061558
 	push {lr}
-	ldr r2, _0806156C @ =0x0201774C
+	ldr r2, _0806156C @ =gEfxBgSemaphore
 	ldr r1, [r2]
 	subs r1, #1
 	str r1, [r2]
@@ -25257,7 +25257,7 @@ sub_08061558: @ 0x08061558
 	pop {r0}
 	bx r0
 	.align 2, 0
-_0806156C: .4byte 0x0201774C
+_0806156C: .4byte gEfxBgSemaphore
 
 	thumb_func_start sub_08061570
 sub_08061570: @ 0x08061570
@@ -25387,7 +25387,7 @@ _08061660:
 	bl sub_0804EC74
 	adds r0, r5, #0
 	movs r1, #0xa
-	bl sub_0804F7B8
+	bl NewEfxFlashBgWhite
 	b _0806174E
 _08061678:
 	movs r0, #0x2c
@@ -25443,7 +25443,7 @@ _080616D6:
 	bne _08061706
 	adds r0, r5, #0
 	movs r1, #0xa
-	bl sub_0804F7B8
+	bl NewEfxFlashBgWhite
 	movs r0, #9
 	ldrh r1, [r5, #0x10]
 	orrs r0, r1
@@ -25469,7 +25469,7 @@ _08061706:
 	bl sub_080565FC
 	ldr r0, [r4, #0x5c]
 	movs r1, #0x38
-	bl sub_0805618C
+	bl NewEfxTwobaiRST
 	adds r0, r5, #0
 	bl sub_08061B1C
 	str r6, [sp]
@@ -25479,7 +25479,7 @@ _08061706:
 	movs r2, #0xc
 _08061730:
 	movs r3, #0x10
-	bl sub_080566F0
+	bl NewEfxALPHA
 	b _0806174E
 _08061738:
 	adds r0, r2, #0
@@ -25501,7 +25501,7 @@ _0806174E:
 sub_08061758: @ 0x08061758
 	push {r4, r5, lr}
 	adds r4, r0, #0
-	ldr r1, _080617BC @ =0x0201774C
+	ldr r1, _080617BC @ =gEfxBgSemaphore
 	ldr r0, [r1]
 	adds r0, #1
 	str r0, [r1]
@@ -25544,7 +25544,7 @@ sub_08061758: @ 0x08061758
 	bl SetBgOffset
 	b _080617E2
 	.align 2, 0
-_080617BC: .4byte 0x0201774C
+_080617BC: .4byte gEfxBgSemaphore
 _080617C0: .4byte gUnk_08C13068
 _080617C4: .4byte gUnk_081EF07C
 _080617C8: .4byte gUnk_08C13080
@@ -25566,7 +25566,7 @@ _080617E2:
 sub_080617EC: @ 0x080617EC
 	push {r4, r5, lr}
 	adds r4, r0, #0
-	ldr r1, _08061850 @ =0x0201774C
+	ldr r1, _08061850 @ =gEfxBgSemaphore
 	ldr r0, [r1]
 	adds r0, #1
 	str r0, [r1]
@@ -25609,7 +25609,7 @@ sub_080617EC: @ 0x080617EC
 	bl SetBgOffset
 	b _08061876
 	.align 2, 0
-_08061850: .4byte 0x0201774C
+_08061850: .4byte gEfxBgSemaphore
 _08061854: .4byte gUnk_08C13068
 _08061858: .4byte gUnk_081EF0AA
 _0806185C: .4byte gUnk_08C13080
@@ -25631,7 +25631,7 @@ _08061876:
 sub_08061880: @ 0x08061880
 	push {r4, r5, lr}
 	adds r4, r0, #0
-	ldr r1, _080618E4 @ =0x0201774C
+	ldr r1, _080618E4 @ =gEfxBgSemaphore
 	ldr r0, [r1]
 	adds r0, #1
 	str r0, [r1]
@@ -25674,7 +25674,7 @@ sub_08061880: @ 0x08061880
 	bl SetBgOffset
 	b _0806190A
 	.align 2, 0
-_080618E4: .4byte 0x0201774C
+_080618E4: .4byte gEfxBgSemaphore
 _080618E8: .4byte gUnk_08C13068
 _080618EC: .4byte gUnk_081EF0DC
 _080618F0: .4byte gUnk_08C13080
@@ -25721,7 +25721,7 @@ _08061942:
 	cmp r2, r0
 	bne _08061960
 	bl SpellFx_ClearBG1
-	ldr r1, _08061968 @ =0x0201774C
+	ldr r1, _08061968 @ =gEfxBgSemaphore
 	ldr r0, [r1]
 	subs r0, #1
 	str r0, [r1]
@@ -25733,14 +25733,14 @@ _08061960:
 	pop {r0}
 	bx r0
 	.align 2, 0
-_08061968: .4byte 0x0201774C
+_08061968: .4byte gEfxBgSemaphore
 
 	thumb_func_start sub_0806196C
 sub_0806196C: @ 0x0806196C
 	push {r4, r5, lr}
 	sub sp, #8
 	adds r4, r0, #0
-	ldr r1, _080619B0 @ =0x0201774C
+	ldr r1, _080619B0 @ =gEfxBgSemaphore
 	ldr r0, [r1]
 	adds r0, #1
 	str r0, [r1]
@@ -25768,7 +25768,7 @@ sub_0806196C: @ 0x0806196C
 	bl LZ77UnCompWram
 	b _080619D0
 	.align 2, 0
-_080619B0: .4byte 0x0201774C
+_080619B0: .4byte gEfxBgSemaphore
 _080619B4: .4byte gUnk_08C130F0
 _080619B8: .4byte gUnk_0829474C
 _080619BC: .4byte gEkrDistanceType
@@ -25839,7 +25839,7 @@ _08061A4C: .4byte gDispIo
 sub_08061A50: @ 0x08061A50
 	push {lr}
 	bl SpellFx_ClearBG1
-	ldr r1, _08061A68 @ =0x0201774C
+	ldr r1, _08061A68 @ =gEfxBgSemaphore
 	ldr r0, [r1]
 	subs r0, #1
 	str r0, [r1]
@@ -25847,7 +25847,7 @@ sub_08061A50: @ 0x08061A50
 	pop {r0}
 	bx r0
 	.align 2, 0
-_08061A68: .4byte 0x0201774C
+_08061A68: .4byte gEfxBgSemaphore
 
 	thumb_func_start sub_08061A6C
 sub_08061A6C: @ 0x08061A6C
@@ -25872,7 +25872,7 @@ _08061A86:
 sub_08061A8C: @ 0x08061A8C
 	push {r4, lr}
 	adds r4, r0, #0
-	ldr r1, _08061AC4 @ =0x0201774C
+	ldr r1, _08061AC4 @ =gEfxBgSemaphore
 	ldr r0, [r1]
 	adds r0, #1
 	str r0, [r1]
@@ -25896,7 +25896,7 @@ sub_08061A8C: @ 0x08061A8C
 	pop {r0}
 	bx r0
 	.align 2, 0
-_08061AC4: .4byte 0x0201774C
+_08061AC4: .4byte gEfxBgSemaphore
 _08061AC8: .4byte gUnk_08C13110
 _08061ACC: .4byte gUnk_081EF0F6
 _08061AD0: .4byte gUnk_08295974
@@ -25925,7 +25925,7 @@ _08061AFA:
 	rsbs r0, r0, #0
 	cmp r1, r0
 	bne _08061B10
-	ldr r1, _08061B18 @ =0x0201774C
+	ldr r1, _08061B18 @ =gEfxBgSemaphore
 	ldr r0, [r1]
 	subs r0, #1
 	str r0, [r1]
@@ -25936,13 +25936,13 @@ _08061B10:
 	pop {r0}
 	bx r0
 	.align 2, 0
-_08061B18: .4byte 0x0201774C
+_08061B18: .4byte gEfxBgSemaphore
 
 	thumb_func_start sub_08061B1C
 sub_08061B1C: @ 0x08061B1C
 	push {r4, lr}
 	adds r4, r0, #0
-	ldr r1, _08061B64 @ =0x0201774C
+	ldr r1, _08061B64 @ =gEfxBgSemaphore
 	ldr r0, [r1]
 	adds r0, #1
 	str r0, [r1]
@@ -25972,7 +25972,7 @@ sub_08061B1C: @ 0x08061B1C
 	pop {r0}
 	bx r0
 	.align 2, 0
-_08061B64: .4byte 0x0201774C
+_08061B64: .4byte gEfxBgSemaphore
 _08061B68: .4byte gUnk_08C13130
 _08061B6C: .4byte gUnk_081EF108
 _08061B70: .4byte gUnk_08C13148
@@ -26014,7 +26014,7 @@ _08061BB8:
 	cmp r4, r0
 	bne _08061BD6
 	bl SpellFx_ClearBG1
-	ldr r1, _08061BDC @ =0x0201774C
+	ldr r1, _08061BDC @ =gEfxBgSemaphore
 	ldr r0, [r1]
 	subs r0, #1
 	str r0, [r1]
@@ -26026,7 +26026,7 @@ _08061BD6:
 	pop {r0}
 	bx r0
 	.align 2, 0
-_08061BDC: .4byte 0x0201774C
+_08061BDC: .4byte gEfxBgSemaphore
 
 	thumb_func_start sub_08061BE0
 sub_08061BE0: @ 0x08061BE0
@@ -26088,7 +26088,7 @@ _08061C50:
 	bne _08061C64
 	adds r0, r5, #0
 	movs r1, #0xa
-	bl sub_0804F7B8
+	bl NewEfxFlashBgWhite
 	b _08061D76
 _08061C64:
 	adds r0, r4, #0
@@ -26132,7 +26132,7 @@ _08061C78:
 	movs r1, #0xa
 	movs r2, #0xa
 	movs r3, #0
-	bl sub_080566F0
+	bl NewEfxALPHA
 	ldr r0, _08061CC4 @ =0x000002C5
 	b _08061D4E
 	.align 2, 0
@@ -26199,7 +26199,7 @@ _08061D20:
 	movs r1, #0x50
 	movs r2, #0x14
 	movs r3, #0x10
-	bl sub_080566F0
+	bl NewEfxALPHA
 	ldr r0, _08061D5C @ =0x000002C6
 _08061D4E:
 	movs r1, #0x80
@@ -26232,7 +26232,7 @@ _08061D76:
 sub_08061D84: @ 0x08061D84
 	push {r4, lr}
 	adds r4, r0, #0
-	ldr r1, _08061DD0 @ =0x0201774C
+	ldr r1, _08061DD0 @ =gEfxBgSemaphore
 	ldr r0, [r1]
 	adds r0, #1
 	str r0, [r1]
@@ -26264,7 +26264,7 @@ sub_08061D84: @ 0x08061D84
 	pop {r0}
 	bx r0
 	.align 2, 0
-_08061DD0: .4byte 0x0201774C
+_08061DD0: .4byte gEfxBgSemaphore
 _08061DD4: .4byte gUnk_08C131C0
 _08061DD8: .4byte gUnk_081EF17A
 _08061DDC: .4byte gUnk_08C131D8
@@ -26300,7 +26300,7 @@ _08061E16:
 	cmp r2, r0
 	bne _08061E34
 	bl SpellFx_ClearBG1
-	ldr r1, _08061E3C @ =0x0201774C
+	ldr r1, _08061E3C @ =gEfxBgSemaphore
 	ldr r0, [r1]
 	subs r0, #1
 	str r0, [r1]
@@ -26312,7 +26312,7 @@ _08061E34:
 	pop {r0}
 	bx r0
 	.align 2, 0
-_08061E3C: .4byte 0x0201774C
+_08061E3C: .4byte gEfxBgSemaphore
 
 	thumb_func_start sub_08061E40
 sub_08061E40: @ 0x08061E40
@@ -26320,7 +26320,7 @@ sub_08061E40: @ 0x08061E40
 	sub sp, #8
 	adds r4, r0, #0
 	adds r5, r1, #0
-	ldr r1, _08061EC8 @ =0x0201774C
+	ldr r1, _08061EC8 @ =gEfxBgSemaphore
 	ldr r0, [r1]
 	adds r0, #1
 	str r0, [r1]
@@ -26375,7 +26375,7 @@ sub_08061E40: @ 0x08061E40
 	pop {r0}
 	bx r0
 	.align 2, 0
-_08061EC8: .4byte 0x0201774C
+_08061EC8: .4byte gEfxBgSemaphore
 _08061ECC: .4byte gUnk_08C13208
 _08061ED0: .4byte gUnk_082B6970
 _08061ED4: .4byte gUnk_082B6ED0
@@ -26388,7 +26388,7 @@ _08061EE4: .4byte gDispIo
 sub_08061EE8: @ 0x08061EE8
 	push {lr}
 	bl SpellFx_ClearBG1
-	ldr r1, _08061F00 @ =0x0201774C
+	ldr r1, _08061F00 @ =gEfxBgSemaphore
 	ldr r0, [r1]
 	subs r0, #1
 	str r0, [r1]
@@ -26396,7 +26396,7 @@ sub_08061EE8: @ 0x08061EE8
 	pop {r0}
 	bx r0
 	.align 2, 0
-_08061F00: .4byte 0x0201774C
+_08061F00: .4byte gEfxBgSemaphore
 
 	thumb_func_start sub_08061F04
 sub_08061F04: @ 0x08061F04
@@ -26441,7 +26441,7 @@ sub_08061F48: @ 0x08061F48
 	sub sp, #4
 	adds r5, r0, #0
 	adds r6, r1, #0
-	ldr r1, _08061FAC @ =0x0201774C
+	ldr r1, _08061FAC @ =gEfxBgSemaphore
 	ldr r0, [r1]
 	adds r0, #1
 	str r0, [r1]
@@ -26484,7 +26484,7 @@ sub_08061F48: @ 0x08061F48
 	pop {r0}
 	bx r0
 	.align 2, 0
-_08061FAC: .4byte 0x0201774C
+_08061FAC: .4byte gEfxBgSemaphore
 _08061FB0: .4byte gUnk_08C13228
 _08061FB4: .4byte gUnk_08C44720
 _08061FB8: .4byte 0x0000F3FF
@@ -26497,7 +26497,7 @@ sub_08061FC4: @ 0x08061FC4
 	sub sp, #4
 	adds r5, r0, #0
 	adds r6, r1, #0
-	ldr r1, _08062018 @ =0x0201774C
+	ldr r1, _08062018 @ =gEfxBgSemaphore
 	ldr r0, [r1]
 	adds r0, #1
 	str r0, [r1]
@@ -26533,7 +26533,7 @@ sub_08061FC4: @ 0x08061FC4
 	pop {r0}
 	bx r0
 	.align 2, 0
-_08062018: .4byte 0x0201774C
+_08062018: .4byte gEfxBgSemaphore
 _0806201C: .4byte gUnk_08C13228
 _08062020: .4byte gUnk_08C447B8
 _08062024: .4byte 0x0000F3FF
@@ -26550,7 +26550,7 @@ sub_08062028: @ 0x08062028
 	lsls r1, r2, #0x10
 	cmp r0, r1
 	bne _08062050
-	ldr r0, _08062058 @ =0x0201774C
+	ldr r0, _08062058 @ =gEfxBgSemaphore
 	ldr r1, [r0]
 	subs r1, #1
 	str r1, [r0]
@@ -26563,7 +26563,7 @@ _08062050:
 	pop {r0}
 	bx r0
 	.align 2, 0
-_08062058: .4byte 0x0201774C
+_08062058: .4byte gEfxBgSemaphore
 
 	thumb_func_start sub_0806205C
 sub_0806205C: @ 0x0806205C
@@ -26571,7 +26571,7 @@ sub_0806205C: @ 0x0806205C
 	adds r4, r0, #0
 	adds r6, r1, #0
 	adds r5, r2, #0
-	ldr r1, _0806208C @ =0x0201774C
+	ldr r1, _0806208C @ =gEfxBgSemaphore
 	ldr r0, [r1]
 	adds r0, #1
 	str r0, [r1]
@@ -26584,12 +26584,12 @@ sub_0806205C: @ 0x0806205C
 	strh r5, [r0, #0x2e]
 	adds r0, r4, #0
 	adds r1, r6, #0
-	bl sub_0804F7B8
+	bl NewEfxFlashBgWhite
 	pop {r4, r5, r6}
 	pop {r0}
 	bx r0
 	.align 2, 0
-_0806208C: .4byte 0x0201774C
+_0806208C: .4byte gEfxBgSemaphore
 _08062090: .4byte gUnk_08C13240
 
 	thumb_func_start sub_08062094
@@ -26608,7 +26608,7 @@ sub_08062094: @ 0x08062094
 	bl Interpolate
 	adds r5, r0, #0
 	ldr r0, _080620F0 @ =gPal
-	ldr r4, _080620F4 @ =0x020165C8
+	ldr r4, _080620F4 @ =gEfxPal
 	movs r2, #0x80
 	lsls r2, r2, #1
 	adds r1, r4, #0
@@ -26626,7 +26626,7 @@ sub_08062094: @ 0x08062094
 	lsls r1, r2, #0x10
 	cmp r0, r1
 	ble _080620E8
-	ldr r1, _080620F8 @ =0x0201774C
+	ldr r1, _080620F8 @ =gEfxBgSemaphore
 	ldr r0, [r1]
 	subs r0, #1
 	str r0, [r1]
@@ -26639,15 +26639,15 @@ _080620E8:
 	bx r0
 	.align 2, 0
 _080620F0: .4byte gPal
-_080620F4: .4byte 0x020165C8
-_080620F8: .4byte 0x0201774C
+_080620F4: .4byte gEfxPal
+_080620F8: .4byte gEfxBgSemaphore
 
 	thumb_func_start sub_080620FC
 sub_080620FC: @ 0x080620FC
 	push {r4, r5, r6, r7, lr}
 	adds r7, r0, #0
 	adds r4, r1, #0
-	ldr r1, _08062180 @ =0x0201774C
+	ldr r1, _08062180 @ =gEfxBgSemaphore
 	ldr r0, [r1]
 	adds r0, #1
 	str r0, [r1]
@@ -26706,7 +26706,7 @@ sub_080620FC: @ 0x080620FC
 	strb r0, [r3, #0x18]
 	b _080621CC
 	.align 2, 0
-_08062180: .4byte 0x0201774C
+_08062180: .4byte gEfxBgSemaphore
 _08062184: .4byte gUnk_08C13258
 _08062188: .4byte gUnk_081EF1AC
 _0806218C: .4byte gUnk_082B9224
@@ -26825,7 +26825,7 @@ _08062270:
 	lsls r1, r2, #0x10
 	cmp r0, r1
 	ble _08062340
-	ldr r1, _080622D0 @ =0x0201774C
+	ldr r1, _080622D0 @ =gEfxBgSemaphore
 	ldr r0, [r1]
 	subs r0, #1
 	str r0, [r1]
@@ -26861,7 +26861,7 @@ _08062270:
 _080622C4: .4byte 0x02000010
 _080622C8: .4byte 0x0000F3FF
 _080622CC: .4byte gPal + 0x2
-_080622D0: .4byte 0x0201774C
+_080622D0: .4byte gEfxBgSemaphore
 _080622D4: .4byte gAnims
 _080622D8: .4byte gDispIo
 _080622DC:
@@ -27075,7 +27075,7 @@ _08062488:
 	bne _0806249A
 	ldr r0, [r4, #0x5c]
 	movs r1, #0xa
-	bl sub_0804F7B8
+	bl NewEfxFlashBgWhite
 	b _08062500
 _0806249A:
 	adds r0, r5, #0
@@ -27088,7 +27088,7 @@ _0806249A:
 	bl sub_080565FC
 	ldr r0, [r4, #0x5c]
 	movs r1, #0x32
-	bl sub_0805618C
+	bl NewEfxTwobaiRST
 	ldr r0, [r4, #0x5c]
 	bl sub_080627C4
 	str r7, [sp]
@@ -27097,7 +27097,7 @@ _0806249A:
 	movs r1, #0x10
 	movs r2, #0xa
 	movs r3, #0x10
-	bl sub_080566F0
+	bl NewEfxALPHA
 	b _08062500
 _080624CC:
 	adds r0, r5, #0
@@ -27136,7 +27136,7 @@ _08062508: .4byte 0x0000010B
 sub_0806250C: @ 0x0806250C
 	push {r4, lr}
 	adds r4, r0, #0
-	ldr r1, _08062548 @ =0x0201774C
+	ldr r1, _08062548 @ =gEfxBgSemaphore
 	ldr r0, [r1]
 	adds r0, #1
 	str r0, [r1]
@@ -27162,7 +27162,7 @@ sub_0806250C: @ 0x0806250C
 	pop {r0}
 	bx r0
 	.align 2, 0
-_08062548: .4byte 0x0201774C
+_08062548: .4byte gEfxBgSemaphore
 _0806254C: .4byte gUnk_08C13288
 _08062550: .4byte gUnk_082DF474
 _08062554: .4byte gUnk_082DF8E8
@@ -27212,7 +27212,7 @@ sub_08062558: @ 0x08062558
 	ldr r1, [r6, #0x48]
 	cmp r0, r1
 	ble _080625BE
-	ldr r1, _080625CC @ =0x0201774C
+	ldr r1, _080625CC @ =gEfxBgSemaphore
 	ldr r0, [r1]
 	subs r0, #1
 	str r0, [r1]
@@ -27225,7 +27225,7 @@ _080625BE:
 	bx r0
 	.align 2, 0
 _080625C8: .4byte gUnk_08C132A8
-_080625CC: .4byte 0x0201774C
+_080625CC: .4byte gEfxBgSemaphore
 
 	thumb_func_start sub_080625D0
 sub_080625D0: @ 0x080625D0
@@ -27239,7 +27239,7 @@ sub_080625D0: @ 0x080625D0
 	mov sb, r2
 	adds r4, r3, #0
 	ldr r7, [sp, #0x20]
-	ldr r1, _08062630 @ =0x0201774C
+	ldr r1, _08062630 @ =gEfxBgSemaphore
 	ldr r0, [r1]
 	adds r0, #1
 	str r0, [r1]
@@ -27275,7 +27275,7 @@ sub_080625D0: @ 0x080625D0
 	pop {r0}
 	bx r0
 	.align 2, 0
-_08062630: .4byte 0x0201774C
+_08062630: .4byte gEfxBgSemaphore
 _08062634: .4byte gUnk_08C13390
 _08062638: .4byte gUnk_08C13378
 _0806263C: .4byte 0x0000F3FF
@@ -27285,21 +27285,21 @@ sub_08062640: @ 0x08062640
 	push {lr}
 	ldr r0, [r0, #0x60]
 	bl AnimDelete
-	ldr r1, _08062654 @ =0x0201774C
+	ldr r1, _08062654 @ =gEfxBgSemaphore
 	ldr r0, [r1]
 	subs r0, #1
 	str r0, [r1]
 	pop {r0}
 	bx r0
 	.align 2, 0
-_08062654: .4byte 0x0201774C
+_08062654: .4byte gEfxBgSemaphore
 
 	thumb_func_start sub_08062658
 sub_08062658: @ 0x08062658
 	push {r4, r5, lr}
 	sub sp, #4
 	adds r5, r0, #0
-	ldr r1, _080626AC @ =0x0201774C
+	ldr r1, _080626AC @ =gEfxBgSemaphore
 	ldr r0, [r1]
 	adds r0, #1
 	str r0, [r1]
@@ -27335,7 +27335,7 @@ sub_08062658: @ 0x08062658
 	pop {r0}
 	bx r0
 	.align 2, 0
-_080626AC: .4byte 0x0201774C
+_080626AC: .4byte gEfxBgSemaphore
 _080626B0: .4byte gUnk_08C133B0
 _080626B4: .4byte gUnk_08C46040
 _080626B8: .4byte 0x0000F3FF
@@ -27345,14 +27345,14 @@ sub_080626BC: @ 0x080626BC
 	push {lr}
 	ldr r0, [r0, #0x60]
 	bl AnimDelete
-	ldr r1, _080626D0 @ =0x0201774C
+	ldr r1, _080626D0 @ =gEfxBgSemaphore
 	ldr r0, [r1]
 	subs r0, #1
 	str r0, [r1]
 	pop {r0}
 	bx r0
 	.align 2, 0
-_080626D0: .4byte 0x0201774C
+_080626D0: .4byte gEfxBgSemaphore
 
 	thumb_func_start sub_080626D4
 sub_080626D4: @ 0x080626D4
@@ -27373,7 +27373,7 @@ _080626EC: .4byte gUnk_08C46060
 sub_080626F0: @ 0x080626F0
 	push {r4, lr}
 	adds r4, r0, #0
-	ldr r1, _08062730 @ =0x0201774C
+	ldr r1, _08062730 @ =gEfxBgSemaphore
 	ldr r0, [r1]
 	adds r0, #1
 	str r0, [r1]
@@ -27400,7 +27400,7 @@ sub_080626F0: @ 0x080626F0
 	pop {r0}
 	bx r0
 	.align 2, 0
-_08062730: .4byte 0x0201774C
+_08062730: .4byte gEfxBgSemaphore
 _08062734: .4byte gUnk_08C133E0
 _08062738: .4byte gUnk_081EF1EA
 _0806273C: .4byte gUnk_08C13420
@@ -27453,7 +27453,7 @@ _08062798:
 	cmp r1, r0
 	bne _080627B6
 	bl SpellFx_ClearBG1
-	ldr r1, _080627C0 @ =0x0201774C
+	ldr r1, _080627C0 @ =gEfxBgSemaphore
 	ldr r0, [r1]
 	subs r0, #1
 	str r0, [r1]
@@ -27467,13 +27467,13 @@ _080627B6:
 	pop {r0}
 	bx r0
 	.align 2, 0
-_080627C0: .4byte 0x0201774C
+_080627C0: .4byte gEfxBgSemaphore
 
 	thumb_func_start sub_080627C4
 sub_080627C4: @ 0x080627C4
 	push {r4, lr}
 	adds r4, r0, #0
-	ldr r1, _0806280C @ =0x0201774C
+	ldr r1, _0806280C @ =gEfxBgSemaphore
 	ldr r0, [r1]
 	adds r0, #1
 	str r0, [r1]
@@ -27504,7 +27504,7 @@ sub_080627C4: @ 0x080627C4
 	pop {r0}
 	bx r0
 	.align 2, 0
-_0806280C: .4byte 0x0201774C
+_0806280C: .4byte gEfxBgSemaphore
 _08062810: .4byte gUnk_08C13448
 _08062814: .4byte gUnk_081EF298
 _08062818: .4byte gUnk_08C13488
@@ -27591,7 +27591,7 @@ _080628C0:
 	cmp r1, r0
 	bne _080628DE
 	bl SpellFx_ClearBG1
-	ldr r1, _080628EC @ =0x0201774C
+	ldr r1, _080628EC @ =gEfxBgSemaphore
 	ldr r0, [r1]
 	subs r0, #1
 	str r0, [r1]
@@ -27606,7 +27606,7 @@ _080628DE:
 	pop {r0}
 	bx r0
 	.align 2, 0
-_080628EC: .4byte 0x0201774C
+_080628EC: .4byte gEfxBgSemaphore
 
 	thumb_func_start sub_080628F0
 sub_080628F0: @ 0x080628F0
@@ -27616,7 +27616,7 @@ sub_080628F0: @ 0x080628F0
 	adds r5, r0, #0
 	mov r8, r1
 	adds r6, r2, #0
-	ldr r1, _08062930 @ =0x0201774C
+	ldr r1, _08062930 @ =gEfxBgSemaphore
 	ldr r0, [r1]
 	adds r0, #1
 	str r0, [r1]
@@ -27628,7 +27628,7 @@ sub_080628F0: @ 0x080628F0
 	movs r0, #0
 	strh r0, [r4, #0x2c]
 	ldr r0, _08062938 @ =gPal
-	ldr r1, _0806293C @ =0x020165C8
+	ldr r1, _0806293C @ =gEfxPal
 	movs r2, #0x80
 	lsls r2, r2, #1
 	bl CpuFastSet
@@ -27641,10 +27641,10 @@ sub_080628F0: @ 0x080628F0
 	pop {r0}
 	bx r0
 	.align 2, 0
-_08062930: .4byte 0x0201774C
+_08062930: .4byte gEfxBgSemaphore
 _08062934: .4byte gUnk_08C134B0
 _08062938: .4byte gPal
-_0806293C: .4byte 0x020165C8
+_0806293C: .4byte gEfxPal
 
 	thumb_func_start sub_08062940
 sub_08062940: @ 0x08062940
@@ -27672,7 +27672,7 @@ _0806295C:
 	movs r2, #0x10
 	bl Interpolate
 	adds r4, r0, #0
-	ldr r7, _080629C0 @ =0x020165C8
+	ldr r7, _080629C0 @ =gEfxPal
 	ldr r6, _080629C4 @ =gPal
 	movs r2, #0x80
 	lsls r2, r2, #1
@@ -27697,7 +27697,7 @@ _0806295C:
 	adds r1, r6, #0
 	mov r2, r8
 	bl CpuFastSet
-	ldr r1, _080629C8 @ =0x0201774C
+	ldr r1, _080629C8 @ =gEfxBgSemaphore
 	ldr r0, [r1]
 	subs r0, #1
 	str r0, [r1]
@@ -27711,16 +27711,16 @@ _080629B4:
 	pop {r0}
 	bx r0
 	.align 2, 0
-_080629C0: .4byte 0x020165C8
+_080629C0: .4byte gEfxPal
 _080629C4: .4byte gPal
-_080629C8: .4byte 0x0201774C
+_080629C8: .4byte gEfxBgSemaphore
 
 	thumb_func_start sub_080629CC
 sub_080629CC: @ 0x080629CC
 	push {r4, r5, lr}
 	sub sp, #4
 	adds r4, r0, #0
-	ldr r1, _08062A18 @ =0x0201774C
+	ldr r1, _08062A18 @ =gEfxBgSemaphore
 	ldr r0, [r1]
 	adds r0, #1
 	str r0, [r1]
@@ -27752,7 +27752,7 @@ sub_080629CC: @ 0x080629CC
 	pop {r0}
 	bx r0
 	.align 2, 0
-_08062A18: .4byte 0x0201774C
+_08062A18: .4byte gEfxBgSemaphore
 _08062A1C: .4byte gUnk_08C134C8
 _08062A20: .4byte gUnk_08C463C4
 _08062A24: .4byte gUnk_082DF908
@@ -27760,20 +27760,20 @@ _08062A28: .4byte gUnk_082DFEB4
 
 	thumb_func_start sub_08062A2C
 sub_08062A2C: @ 0x08062A2C
-	ldr r1, _08062A38 @ =0x0201774C
+	ldr r1, _08062A38 @ =gEfxBgSemaphore
 	ldr r0, [r1]
 	subs r0, #1
 	str r0, [r1]
 	bx lr
 	.align 2, 0
-_08062A38: .4byte 0x0201774C
+_08062A38: .4byte gEfxBgSemaphore
 
 	thumb_func_start sub_08062A3C
 sub_08062A3C: @ 0x08062A3C
 	push {r4, r5, lr}
 	sub sp, #4
 	adds r4, r0, #0
-	ldr r1, _08062A88 @ =0x0201774C
+	ldr r1, _08062A88 @ =gEfxBgSemaphore
 	ldr r0, [r1]
 	adds r0, #1
 	str r0, [r1]
@@ -27805,7 +27805,7 @@ sub_08062A3C: @ 0x08062A3C
 	pop {r0}
 	bx r0
 	.align 2, 0
-_08062A88: .4byte 0x0201774C
+_08062A88: .4byte gEfxBgSemaphore
 _08062A8C: .4byte gUnk_08C134E8
 _08062A90: .4byte gUnk_08C463DC
 _08062A94: .4byte gUnk_082DF908
@@ -27813,13 +27813,13 @@ _08062A98: .4byte gUnk_082DFEB4
 
 	thumb_func_start sub_08062A9C
 sub_08062A9C: @ 0x08062A9C
-	ldr r1, _08062AA8 @ =0x0201774C
+	ldr r1, _08062AA8 @ =gEfxBgSemaphore
 	ldr r0, [r1]
 	subs r0, #1
 	str r0, [r1]
 	bx lr
 	.align 2, 0
-_08062AA8: .4byte 0x0201774C
+_08062AA8: .4byte gEfxBgSemaphore
 
 	thumb_func_start sub_08062AAC
 sub_08062AAC: @ 0x08062AAC
@@ -27962,7 +27962,7 @@ sub_08062B9C: @ 0x08062B9C
 	bl sub_080565FC
 	adds r0, r4, #0
 	movs r1, #0x64
-	bl sub_0805618C
+	bl NewEfxTwobaiRST
 	ldr r3, _08062C44 @ =gDispIo
 	adds r2, r3, #0
 	adds r2, #0x3c
@@ -27986,14 +27986,14 @@ sub_08062B9C: @ 0x08062B9C
 	movs r1, #0
 	movs r2, #8
 	movs r3, #0
-	bl sub_080566F0
+	bl NewEfxALPHA
 	str r6, [sp]
 	str r6, [sp, #4]
 	adds r0, r4, #0
 	movs r1, #0x3c
 	movs r2, #0x28
 	movs r3, #0x10
-	bl sub_080566F0
+	bl NewEfxALPHA
 	movs r1, #0x80
 	lsls r1, r1, #1
 	movs r0, #2
@@ -28347,7 +28347,7 @@ sub_08062EBC: @ 0x08062EBC
 	bne _08062EE0
 	ldr r0, [r4, #0x5c]
 	movs r1, #4
-	bl sub_0804F7B8
+	bl NewEfxFlashBgWhite
 	b _08062EF6
 _08062EE0:
 	cmp r0, #4
@@ -28369,7 +28369,7 @@ _08062EF6:
 sub_08062EFC: @ 0x08062EFC
 	push {r4, r5, lr}
 	adds r4, r0, #0
-	ldr r1, _08062F5C @ =0x0201774C
+	ldr r1, _08062F5C @ =gEfxBgSemaphore
 	ldr r0, [r1]
 	adds r0, #1
 	str r0, [r1]
@@ -28409,7 +28409,7 @@ sub_08062EFC: @ 0x08062EFC
 	bl SetBgOffset
 	b _08062F82
 	.align 2, 0
-_08062F5C: .4byte 0x0201774C
+_08062F5C: .4byte gEfxBgSemaphore
 _08062F60: .4byte gUnk_08C135B8
 _08062F64: .4byte gUnk_081EF306
 _08062F68: .4byte gUnk_08C135D0
@@ -28455,7 +28455,7 @@ _08062FB6:
 	cmp r2, r0
 	bne _08062FD4
 	bl SpellFx_ClearBG1
-	ldr r1, _08062FDC @ =0x0201774C
+	ldr r1, _08062FDC @ =gEfxBgSemaphore
 	ldr r0, [r1]
 	subs r0, #1
 	str r0, [r1]
@@ -28467,7 +28467,7 @@ _08062FD4:
 	pop {r0}
 	bx r0
 	.align 2, 0
-_08062FDC: .4byte 0x0201774C
+_08062FDC: .4byte gEfxBgSemaphore
 
 	thumb_func_start NewEfxYushaSpinShield
 NewEfxYushaSpinShield: @ 0x08062FE0
@@ -28718,7 +28718,7 @@ _080631AA:
 NewEfxHurtmutEff00: @ 0x080631B0
 	push {r4, r5, lr}
 	adds r4, r0, #0
-	ldr r0, _080631DC @ =0x0201774C
+	ldr r0, _080631DC @ =gEfxBgSemaphore
 	ldr r5, [r0]
 	cmp r5, #0
 	bne _080631EE
@@ -28736,7 +28736,7 @@ NewEfxHurtmutEff00: @ 0x080631B0
 	bl sub_08063200
 	b _080631EE
 	.align 2, 0
-_080631DC: .4byte 0x0201774C
+_080631DC: .4byte gEfxBgSemaphore
 _080631E0: .4byte gUnk_08C13640
 _080631E4: .4byte gEkrDistanceType
 _080631E8:
@@ -28760,7 +28760,7 @@ sub_08063200: @ 0x08063200
 	push {r4, r5, lr}
 	sub sp, #4
 	adds r5, r0, #0
-	ldr r1, _08063238 @ =0x0201774C
+	ldr r1, _08063238 @ =gEfxBgSemaphore
 	ldr r0, [r1]
 	adds r0, #1
 	str r0, [r1]
@@ -28783,7 +28783,7 @@ sub_08063200: @ 0x08063200
 	pop {r0}
 	bx r0
 	.align 2, 0
-_08063238: .4byte 0x0201774C
+_08063238: .4byte gEfxBgSemaphore
 _0806323C: .4byte gUnk_08C13658
 _08063240: .4byte gUnk_08C10828
 
@@ -28865,7 +28865,7 @@ _080632D8: .4byte gUnk_081F5750
 sub_080632DC: @ 0x080632DC
 	push {r4, lr}
 	adds r4, r0, #0
-	ldr r1, _080632FC @ =0x0201774C
+	ldr r1, _080632FC @ =gEfxBgSemaphore
 	ldr r0, [r1]
 	subs r0, #1
 	str r0, [r1]
@@ -28877,14 +28877,14 @@ sub_080632DC: @ 0x080632DC
 	pop {r0}
 	bx r0
 	.align 2, 0
-_080632FC: .4byte 0x0201774C
+_080632FC: .4byte gEfxBgSemaphore
 
 	thumb_func_start sub_08063300
 sub_08063300: @ 0x08063300
 	push {r4, r5, lr}
 	sub sp, #4
 	adds r5, r0, #0
-	ldr r1, _08063338 @ =0x0201774C
+	ldr r1, _08063338 @ =gEfxBgSemaphore
 	ldr r0, [r1]
 	adds r0, #1
 	str r0, [r1]
@@ -28907,7 +28907,7 @@ sub_08063300: @ 0x08063300
 	pop {r0}
 	bx r0
 	.align 2, 0
-_08063338: .4byte 0x0201774C
+_08063338: .4byte gEfxBgSemaphore
 _0806333C: .4byte gUnk_08C13690
 _08063340: .4byte gUnk_08C10828
 
@@ -28989,7 +28989,7 @@ _080633D8: .4byte gUnk_081F5750
 sub_080633DC: @ 0x080633DC
 	push {r4, lr}
 	adds r4, r0, #0
-	ldr r1, _080633FC @ =0x0201774C
+	ldr r1, _080633FC @ =gEfxBgSemaphore
 	ldr r0, [r1]
 	subs r0, #1
 	str r0, [r1]
@@ -29001,14 +29001,14 @@ sub_080633DC: @ 0x080633DC
 	pop {r0}
 	bx r0
 	.align 2, 0
-_080633FC: .4byte 0x0201774C
+_080633FC: .4byte gEfxBgSemaphore
 
 	thumb_func_start NewEfxMagfcast
 NewEfxMagfcast: @ 0x08063400
 	push {r4, r5, r6, r7, lr}
 	adds r6, r0, #0
 	adds r7, r1, #0
-	ldr r0, _08063444 @ =0x0201774C
+	ldr r0, _08063444 @ =gEfxBgSemaphore
 	ldr r4, [r0]
 	cmp r4, #0
 	bne _08063458
@@ -29035,7 +29035,7 @@ NewEfxMagfcast: @ 0x08063400
 	bl sub_0806347C
 	b _08063458
 	.align 2, 0
-_08063444: .4byte 0x0201774C
+_08063444: .4byte gEfxBgSemaphore
 _08063448: .4byte gUnk_08C136C8
 _0806344C: .4byte 0x0203E066
 _08063450:
@@ -29070,7 +29070,7 @@ sub_0806347C: @ 0x0806347C
 	push {r4, r5, r6, lr}
 	adds r6, r0, #0
 	adds r5, r1, #0
-	ldr r1, _080634B0 @ =0x0201774C
+	ldr r1, _080634B0 @ =gEfxBgSemaphore
 	ldr r0, [r1]
 	adds r0, #1
 	str r0, [r1]
@@ -29092,7 +29092,7 @@ sub_0806347C: @ 0x0806347C
 	beq _080634EC
 	b _08063502
 	.align 2, 0
-_080634B0: .4byte 0x0201774C
+_080634B0: .4byte gEfxBgSemaphore
 _080634B4: .4byte gUnk_08C136E0
 _080634B8:
 	ldr r0, _080634C0 @ =gUnk_081EF330
@@ -29200,7 +29200,7 @@ _0806358A:
 	cmp r2, r0
 	bne _080635A8
 	bl SpellFx_ClearBG1
-	ldr r1, _080635B0 @ =0x0201774C
+	ldr r1, _080635B0 @ =gEfxBgSemaphore
 	ldr r0, [r1]
 	subs r0, #1
 	str r0, [r1]
@@ -29212,14 +29212,14 @@ _080635A8:
 	pop {r0}
 	bx r0
 	.align 2, 0
-_080635B0: .4byte 0x0201774C
+_080635B0: .4byte gEfxBgSemaphore
 
 	thumb_func_start NewEfxSunakemuri
 NewEfxSunakemuri: @ 0x080635B4
 	push {r4, r5, r6, lr}
 	adds r5, r0, #0
 	adds r6, r1, #0
-	ldr r0, _080635DC @ =0x0201774C
+	ldr r0, _080635DC @ =gEfxBgSemaphore
 	ldr r4, [r0]
 	cmp r4, #0
 	bne _080635D6
@@ -29236,7 +29236,7 @@ _080635D6:
 	pop {r0}
 	bx r0
 	.align 2, 0
-_080635DC: .4byte 0x0201774C
+_080635DC: .4byte gEfxBgSemaphore
 _080635E0: .4byte gUnk_08C13750
 
 	thumb_func_start sub_080635E4
@@ -29253,7 +29253,7 @@ sub_080635F0: @ 0x080635F0
 	sub sp, #4
 	adds r6, r0, #0
 	adds r4, r1, #0
-	ldr r1, _08063658 @ =0x0201774C
+	ldr r1, _08063658 @ =gEfxBgSemaphore
 	ldr r0, [r1]
 	adds r0, #1
 	str r0, [r1]
@@ -29302,7 +29302,7 @@ _0806364E:
 	ldr r0, [r0]
 	mov pc, r0
 	.align 2, 0
-_08063658: .4byte 0x0201774C
+_08063658: .4byte gEfxBgSemaphore
 _0806365C: .4byte gUnk_08C13768
 _08063660: .4byte gUnk_08C2066C
 _08063664: .4byte gUnk_08C208FC
@@ -29428,7 +29428,7 @@ sub_080637D4: @ 0x080637D4
 	asrs r0, r0, #0x10
 	cmp r0, #9
 	bne _080637FA
-	ldr r0, _08063800 @ =0x0201774C
+	ldr r0, _08063800 @ =gEfxBgSemaphore
 	ldr r1, [r0]
 	subs r1, #1
 	str r1, [r0]
@@ -29441,13 +29441,13 @@ _080637FA:
 	pop {r0}
 	bx r0
 	.align 2, 0
-_08063800: .4byte 0x0201774C
+_08063800: .4byte gEfxBgSemaphore
 
 	thumb_func_start NewEfxLokmsuna
 NewEfxLokmsuna: @ 0x08063804
 	push {r4, r5, lr}
 	adds r5, r0, #0
-	ldr r0, _08063828 @ =0x0201774C
+	ldr r0, _08063828 @ =gEfxBgSemaphore
 	ldr r4, [r0]
 	cmp r4, #0
 	bne _08063822
@@ -29463,7 +29463,7 @@ _08063822:
 	pop {r0}
 	bx r0
 	.align 2, 0
-_08063828: .4byte 0x0201774C
+_08063828: .4byte gEfxBgSemaphore
 _0806382C: .4byte gUnk_08C13780
 
 	thumb_func_start sub_08063830
@@ -29479,7 +29479,7 @@ sub_0806383C: @ 0x0806383C
 	push {r4, r5, r6, r7, lr}
 	sub sp, #4
 	adds r5, r0, #0
-	ldr r1, _08063888 @ =0x0201774C
+	ldr r1, _08063888 @ =gEfxBgSemaphore
 	ldr r0, [r1]
 	adds r0, #1
 	str r0, [r1]
@@ -29511,7 +29511,7 @@ sub_0806383C: @ 0x0806383C
 	lsls r1, r1, #7
 	b _080638A0
 	.align 2, 0
-_08063888: .4byte 0x0201774C
+_08063888: .4byte gEfxBgSemaphore
 _0806388C: .4byte gUnk_08C13798
 _08063890: .4byte gUnk_08C48524
 _08063894: .4byte gUnk_08C48648
@@ -29546,7 +29546,7 @@ sub_080638C0: @ 0x080638C0
 	asrs r0, r0, #0x10
 	cmp r0, #0xf
 	bne _080638E6
-	ldr r0, _080638EC @ =0x0201774C
+	ldr r0, _080638EC @ =gEfxBgSemaphore
 	ldr r1, [r0]
 	subs r1, #1
 	str r1, [r0]
@@ -29559,7 +29559,7 @@ _080638E6:
 	pop {r0}
 	bx r0
 	.align 2, 0
-_080638EC: .4byte 0x0201774C
+_080638EC: .4byte gEfxBgSemaphore
 
 	thumb_func_start NewEfxKingPika
 NewEfxKingPika: @ 0x080638F0
@@ -29600,7 +29600,7 @@ _0806392E:
 	bne _0806393C
 	adds r0, r6, #0
 	movs r1, #0x14
-	bl sub_0804F7B8
+	bl NewEfxFlashBgWhite
 	b _08063972
 _0806393C:
 	cmp r0, #0x2d
@@ -29664,7 +29664,7 @@ sub_08063998: @ 0x08063998
 	bne _080639B6
 	adds r0, r6, #0
 	movs r1, #5
-	bl sub_0804F7B8
+	bl NewEfxFlashBgWhite
 	b _080639EC
 _080639B6:
 	cmp r0, #6
@@ -29703,7 +29703,7 @@ sub_080639F8: @ 0x080639F8
 	push {r4, r5, lr}
 	sub sp, #4
 	adds r5, r0, #0
-	ldr r1, _08063A58 @ =0x0201774C
+	ldr r1, _08063A58 @ =gEfxBgSemaphore
 	ldr r0, [r1]
 	adds r0, #1
 	str r0, [r1]
@@ -29743,7 +29743,7 @@ sub_080639F8: @ 0x080639F8
 	pop {r0}
 	bx r0
 	.align 2, 0
-_08063A58: .4byte 0x0201774C
+_08063A58: .4byte gEfxBgSemaphore
 _08063A5C: .4byte gUnk_08C137E0
 _08063A60: .4byte gUnk_08C159AC
 _08063A64: .4byte gUnk_081F1574
@@ -29777,7 +29777,7 @@ _08063A90:
 	ble _08063AB0
 	ldr r0, [r4, #0x60]
 	bl AnimDelete
-	ldr r1, _08063AB8 @ =0x0201774C
+	ldr r1, _08063AB8 @ =gEfxBgSemaphore
 	ldr r0, [r1]
 	subs r0, #1
 	str r0, [r1]
@@ -29788,14 +29788,14 @@ _08063AB0:
 	pop {r0}
 	bx r0
 	.align 2, 0
-_08063AB8: .4byte 0x0201774C
+_08063AB8: .4byte gEfxBgSemaphore
 
 	thumb_func_start sub_08063ABC
 sub_08063ABC: @ 0x08063ABC
 	push {r4, r5, lr}
 	sub sp, #4
 	adds r5, r0, #0
-	ldr r1, _08063B1C @ =0x0201774C
+	ldr r1, _08063B1C @ =gEfxBgSemaphore
 	ldr r0, [r1]
 	adds r0, #1
 	str r0, [r1]
@@ -29835,7 +29835,7 @@ sub_08063ABC: @ 0x08063ABC
 	pop {r0}
 	bx r0
 	.align 2, 0
-_08063B1C: .4byte 0x0201774C
+_08063B1C: .4byte gEfxBgSemaphore
 _08063B20: .4byte gUnk_08C137F8
 _08063B24: .4byte gUnk_08C1597C
 _08063B28: .4byte gUnk_081F1574
@@ -29855,7 +29855,7 @@ sub_08063B30: @ 0x08063B30
 	ble _08063B58
 	ldr r0, [r4, #0x60]
 	bl AnimDelete
-	ldr r1, _08063B60 @ =0x0201774C
+	ldr r1, _08063B60 @ =gEfxBgSemaphore
 	ldr r0, [r1]
 	subs r0, #1
 	str r0, [r1]
@@ -29866,7 +29866,7 @@ _08063B58:
 	pop {r0}
 	bx r0
 	.align 2, 0
-_08063B60: .4byte 0x0201774C
+_08063B60: .4byte gEfxBgSemaphore
 
 	thumb_func_start NewEfxSpecalEffect
 NewEfxSpecalEffect: @ 0x08063B64
@@ -30105,12 +30105,12 @@ _08063D40: .4byte gUnk_08C13858
 sub_08063D44: @ 0x08063D44
 	push {r4, r5, r6, r7, lr}
 	mov ip, r0
-	ldr r0, _08063D8C @ =0x0201FDAC
+	ldr r0, _08063D8C @ =gEkrBg1ScrollFlip
 	ldr r0, [r0]
-	ldr r4, _08063D90 @ =0x0201FDB8
+	ldr r4, _08063D90 @ =gpEkrLvupBg1ScrollOffsetList2
 	cmp r0, #0
 	bne _08063D54
-	ldr r4, _08063D94 @ =0x0201FEF8
+	ldr r4, _08063D94 @ =gpEkrLvupBg1ScrollOffsetList1
 _08063D54:
 	movs r3, #0
 	movs r7, #0x88
@@ -30142,9 +30142,9 @@ _08063D5E:
 	lsrs r2, r0, #0x10
 	b _08063DA6
 	.align 2, 0
-_08063D8C: .4byte 0x0201FDAC
-_08063D90: .4byte 0x0201FDB8
-_08063D94: .4byte 0x0201FEF8
+_08063D8C: .4byte gEkrBg1ScrollFlip
+_08063D90: .4byte gpEkrLvupBg1ScrollOffsetList2
+_08063D94: .4byte gpEkrLvupBg1ScrollOffsetList1
 _08063D98: .4byte gUnk_08C13888
 _08063D9C: .4byte 0x0000FF78
 _08063DA0:
@@ -30284,7 +30284,7 @@ sub_08063E94: @ 0x08063E94
 	push {r4, r5, lr}
 	adds r4, r0, #0
 	adds r5, r1, #0
-	ldr r1, _08063F14 @ =0x0201774C
+	ldr r1, _08063F14 @ =gEfxBgSemaphore
 	ldr r0, [r1]
 	adds r0, #1
 	str r0, [r1]
@@ -30340,7 +30340,7 @@ sub_08063E94: @ 0x08063E94
 	pop {r0}
 	bx r0
 	.align 2, 0
-_08063F14: .4byte 0x0201774C
+_08063F14: .4byte gEfxBgSemaphore
 _08063F18: .4byte gUnk_08C13990
 _08063F1C: .4byte gUnk_081EF390
 _08063F20: .4byte gUnk_08C139A8
@@ -30402,7 +30402,7 @@ _08063F5C:
 	orrs r0, r1
 	strb r0, [r3, #0x14]
 	bl SpellFx_ClearBG1
-	ldr r1, _08063FB8 @ =0x0201774C
+	ldr r1, _08063FB8 @ =gEfxBgSemaphore
 	ldr r0, [r1]
 	subs r0, #1
 	str r0, [r1]
@@ -30415,7 +30415,7 @@ _08063FAE:
 	bx r0
 	.align 2, 0
 _08063FB4: .4byte gDispIo
-_08063FB8: .4byte 0x0201774C
+_08063FB8: .4byte gEfxBgSemaphore
 
 	thumb_func_start NewEfxMantBatabata
 NewEfxMantBatabata: @ 0x08063FBC
@@ -30671,7 +30671,7 @@ _080641F0:
 _080641F8:
 	ldr r0, [r4, #0x5c]
 	movs r1, #5
-	bl sub_0804F834
+	bl NewEfxFlashBgBlack
 	b _0806420C
 _08064202:
 	cmp r0, #0x24
@@ -30688,7 +30688,7 @@ _0806420C:
 sub_08064214: @ 0x08064214
 	push {r4, lr}
 	adds r4, r0, #0
-	ldr r1, _08064258 @ =0x0201774C
+	ldr r1, _08064258 @ =gEfxBgSemaphore
 	ldr r0, [r1]
 	adds r0, #1
 	str r0, [r1]
@@ -30717,7 +30717,7 @@ sub_08064214: @ 0x08064214
 	pop {r0}
 	bx r0
 	.align 2, 0
-_08064258: .4byte 0x0201774C
+_08064258: .4byte gEfxBgSemaphore
 _0806425C: .4byte gUnk_08C139F0
 _08064260: .4byte gUnk_081EF3AE
 _08064264: .4byte gUnk_08C13A08
@@ -30752,7 +30752,7 @@ _0806429A:
 	cmp r2, r0
 	bne _080642B8
 	bl SpellFx_ClearBG1
-	ldr r1, _080642C0 @ =0x0201774C
+	ldr r1, _080642C0 @ =gEfxBgSemaphore
 	ldr r0, [r1]
 	subs r0, #1
 	str r0, [r1]
@@ -30764,7 +30764,7 @@ _080642B8:
 	pop {r0}
 	bx r0
 	.align 2, 0
-_080642C0: .4byte 0x0201774C
+_080642C0: .4byte gEfxBgSemaphore
 
 	thumb_func_start sub_080642C4
 sub_080642C4: @ 0x080642C4
@@ -31224,12 +31224,12 @@ sub_0806466C: @ 0x0806466C
 	mov r7, r8
 	push {r7}
 	adds r2, r0, #0
-	ldr r0, _080646DC @ =0x0201FDAC
+	ldr r0, _080646DC @ =gEkrBg1ScrollFlip
 	ldr r0, [r0]
-	ldr r4, _080646E0 @ =0x0201FDB8
+	ldr r4, _080646E0 @ =gpEkrLvupBg1ScrollOffsetList2
 	cmp r0, #0
 	bne _08064680
-	ldr r4, _080646E4 @ =0x0201FEF8
+	ldr r4, _080646E4 @ =gpEkrLvupBg1ScrollOffsetList1
 _08064680:
 	movs r3, #0
 	ldr r0, [r2, #0x44]
@@ -31278,9 +31278,9 @@ _080646D0:
 	pop {r0}
 	bx r0
 	.align 2, 0
-_080646DC: .4byte 0x0201FDAC
-_080646E0: .4byte 0x0201FDB8
-_080646E4: .4byte 0x0201FEF8
+_080646DC: .4byte gEkrBg1ScrollFlip
+_080646E0: .4byte gpEkrLvupBg1ScrollOffsetList2
+_080646E4: .4byte gpEkrLvupBg1ScrollOffsetList1
 _080646E8: .4byte gSinLut
 
 	thumb_func_start sub_080646EC

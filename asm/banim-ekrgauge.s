@@ -2505,7 +2505,7 @@ EkrEfxStatusClear: @ 0x0804DCA8
 	str r0, [r1]
 	ldr r1, _0804DD1C @ =0x02017748
 	str r0, [r1]
-	ldr r1, _0804DD20 @ =0x0201774C
+	ldr r1, _0804DD20 @ =gEfxBgSemaphore
 	str r0, [r1]
 	ldr r1, _0804DD24 @ =0x02017750
 	str r0, [r1]
@@ -2543,7 +2543,7 @@ _0804DD10: .4byte 0x02017738
 _0804DD14: .4byte 0x0201773C
 _0804DD18: .4byte 0x02017740
 _0804DD1C: .4byte 0x02017748
-_0804DD20: .4byte 0x0201774C
+_0804DD20: .4byte gEfxBgSemaphore
 _0804DD24: .4byte 0x02017750
 _0804DD28: .4byte 0x02017754
 _0804DD2C: .4byte 0x02017758

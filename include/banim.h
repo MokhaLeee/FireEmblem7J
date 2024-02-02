@@ -73,6 +73,11 @@ extern short gEfxPairHpBufOffset[];
 extern u16 gEkrTsaBuffer[0x1000 / 2];
 extern u16 gEfxFrameTmap[0x2520 / 2];
 extern s16 gEkrSpellAnimIndex[2];
+extern u32 gEkrBgPosition;
+extern s16 gEkrXPosReal[2];
+extern s16 gEkrYPosReal[2];
+extern u16 gEkrXPosBase[2];
+extern u16 gEkrYPosBase[2];
 
 void NewEkrLvlupFan(void);
 // ??? EkrLvupFanMain
@@ -151,26 +156,26 @@ int sub_0804DD50(void);
 // ??? sub_0804EDB8
 // ??? sub_0804EE24
 // ??? sub_0804EEB8
-// ??? sub_0804EF18
+ProcPtr NewEfxQuakePure(int, int);
 // ??? sub_0804EF58
-// ??? sub_0804EFC8
+// ??? NewEfxHitQuakePure
 // ??? nullsub_48
 void NewEfxQuake(int type);
 // ??? sub_0804F0DC
-// ??? sub_0804F284
+// ??? NewEfxHitQuake
 // ??? sub_0804F464
-// ??? sub_0804F7B8
-// ??? sub_0804F7F4
-// ??? sub_0804F834
-// ??? sub_0804F86C
-// ??? sub_0804F88C
-// ??? sub_0804F8C4
-// ??? sub_0804F8D8
-// ??? sub_0804F8FC
-// ??? sub_0804F954
-// ??? sub_0804F9C4
-// ??? sub_0804F9D8
-// ??? sub_0804FA10
+void NewEfxFlashBgWhite(struct Anim * anim, int duartion);
+void NewEfxFlashBgRed(struct Anim * anim, int duartion);
+void NewEfxFlashBgBlack(struct Anim * anim, int duartion);
+void NewEfxFlashBgDirectly(struct Anim * anim, int duartion);
+// ??? EfxFlashBgMain
+// ??? EfxFlashRestorePalSync
+// ??? NewEfxWhiteOUT
+// ??? EfxWhiteOutMain1
+// ??? EfxWhiteOutMain2
+// ??? EfxWhiteOutRestorePalSync
+// ??? NewEfxWhiteIN
+// ??? EfxWhiteInMain1
 // ??? sub_0804FA30
 // ??? sub_0804FAC4
 // ??? sub_0804FB58
@@ -372,16 +377,16 @@ void SetAnimStateUnHidden(int pos);
 // ??? sub_08056038
 void StartSpellAnimation(struct Anim * anim);
 // ??? nullsub_49
-// ??? sub_080560A4
+// ??? NewefxRestRST
 // ??? sub_080560E8
-// ??? sub_080560F8
-// ??? sub_0805618C
-// ??? sub_080561D8
-// ??? sub_080561F8
+// ??? efxRestRSTMain
+// ??? NewEfxTwobaiRST
+// ??? EfxTwobaiRSTMain
+// ??? NewDummvRST
 // ??? sub_08056228
-// ??? sub_08056238
-// ??? sub_08056284
-// ??? sub_08056314
+// ??? DummvRSTMain
+// ??? NewEfxRestWIN
+// ??? EfxRestWINMain
 // ??? sub_080563C8
 // ??? sub_080563F0
 // ??? sub_08056418
@@ -391,7 +396,7 @@ void StartSpellAnimation(struct Anim * anim);
 // ??? sub_080565FC
 // ??? sub_0805660C
 // ??? sub_08056618
-// ??? sub_080566F0
+// ??? NewEfxALPHA
 // ??? sub_08056738
 // ??? sub_0805683C
 // ??? sub_0805689C
@@ -992,40 +997,6 @@ void sub_08064458(struct Anim * anim);
 // ??? sub_080651B0
 
 /* banim_ekrdragon.h */
-
-// ??? sub_08066380
-// ??? sub_08066398
-// ??? sub_080663EC
-// ??? sub_08066414
-// ??? sub_08066480
-// ??? sub_0806648C
-// ??? sub_080664CC
-// ??? sub_08066500
-// ??? sub_08066590
-// ??? sub_080665B8
-// ??? sub_08066634
-// ??? sub_08066640
-// ??? sub_080666A4
-// ??? sub_080666D4
-// ??? sub_08066804
-// ??? sub_08066828
-// ??? nullsub_55
-// ??? sub_080668B8
-// ??? sub_08066950
-// ??? sub_080669A4
-// ??? sub_080669E8
-// ??? sub_08066AE0
-// ??? nullsub_56
-// ??? sub_08066CAC
-// ??? sub_08066D30
-// ??? sub_08066D40
-// ??? sub_08066DA0
-// ??? sub_08066DD8
-// ??? sub_08066F80
-// ??? sub_08066FC0
-// ??? sub_08067030
-// ??? sub_08067088
-// ??? sub_080670F8
 
 /* efxutils */
 void sub_08067128(u16 * tm, u16 width, u16 height, int pal, int chr);
