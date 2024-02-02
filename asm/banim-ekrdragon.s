@@ -1102,7 +1102,7 @@ _080669A0: .4byte gBg3Tm
 NewEkrDragonTunk: @ 0x080669A4
 	push {r4, r5, lr}
 	adds r4, r0, #0
-	ldr r0, _080669DC @ =gUnk_08C4889C
+	ldr r0, _080669DC @ =ProcScr_EkrDragon_08C4889C
 	movs r1, #3
 	bl Proc_Start
 	adds r5, r0, #0
@@ -1127,7 +1127,7 @@ _080669CA:
 	pop {r1}
 	bx r1
 	.align 2, 0
-_080669DC: .4byte gUnk_08C4889C
+_080669DC: .4byte ProcScr_EkrDragon_08C4889C
 _080669E0: .4byte gEkrDistanceType
 _080669E4: .4byte 0x0000FFE0
 
@@ -1467,7 +1467,7 @@ sub_08066CAC: @ 0x08066CAC
 	sub sp, #8
 	adds r4, r0, #0
 	adds r5, r1, #0
-	ldr r0, _08066D18 @ =gUnk_08C488C4
+	ldr r0, _08066D18 @ =ProcScr_EkrDragon_08C488C4
 	movs r1, #3
 	bl Proc_Start
 	str r4, [r0, #0x5c]
@@ -1508,7 +1508,7 @@ sub_08066CAC: @ 0x08066CAC
 	pop {r0}
 	bx r0
 	.align 2, 0
-_08066D18: .4byte gUnk_08C488C4
+_08066D18: .4byte ProcScr_EkrDragon_08C488C4
 _08066D1C: .4byte gUnk_082E9DD8
 _08066D20: .4byte gUnk_082EA7C8
 _08066D24: .4byte gUnk_082EA7E8
@@ -1583,7 +1583,7 @@ sub_08066DA0: @ 0x08066DA0
 	adds r6, r0, #0
 	mov r8, r1
 	adds r5, r2, #0
-	ldr r0, _08066DD4 @ =gUnk_08C488E4
+	ldr r0, _08066DD4 @ =ProcScr_EkrDragon_08C488E4
 	movs r1, #3
 	bl Proc_Start
 	adds r4, r0, #0
@@ -1602,7 +1602,7 @@ sub_08066DA0: @ 0x08066DA0
 	pop {r0}
 	bx r0
 	.align 2, 0
-_08066DD4: .4byte gUnk_08C488E4
+_08066DD4: .4byte ProcScr_EkrDragon_08C488E4
 
 	thumb_func_start sub_08066DD8
 sub_08066DD8: @ 0x08066DD8
@@ -1806,7 +1806,7 @@ sub_08066F80: @ 0x08066F80
 	adds r4, r0, #0
 	adds r5, r1, #0
 	adds r6, r2, #0
-	ldr r0, _08066FB8 @ =gUnk_08C488FC
+	ldr r0, _08066FB8 @ =ProcScr_EkrDragon_08C488FC
 	movs r1, #0
 	bl Proc_Start
 	movs r1, #0
@@ -1830,7 +1830,7 @@ sub_08066F80: @ 0x08066F80
 	pop {r0}
 	bx r0
 	.align 2, 0
-_08066FB8: .4byte gUnk_08C488FC
+_08066FB8: .4byte ProcScr_EkrDragon_08C488FC
 _08066FBC: .4byte gDispIo
 
 	thumb_func_start sub_08066FC0

@@ -270,6 +270,7 @@ SECTIONS
 		. = ALIGN(4); data/data_08C03574.o(.data)
 		. = ALIGN(4); src/banim-ekrdragon.o(.data)
 		. = ALIGN(4); src/banim-ekrdragonfx.o(.data)
+		. = ALIGN(4); data/data-banim-ekrdragon.o(.data)
 		. = ALIGN(4); data/data_08C486EC.o(.data)
 		. = ALIGN(4); src/save_core.o(.data)
 		. = ALIGN(4); data/data_08DAD284.o(.data)

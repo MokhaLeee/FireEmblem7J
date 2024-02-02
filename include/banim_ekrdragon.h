@@ -229,10 +229,10 @@ extern u16 Pal_EkrDragon_082EB510[0x10];
 // ??? gUnk_08C4885C
 // ??? gUnk_08C48874
 // ??? gUnk_08C4887C
-// ??? gUnk_08C4889C
-// ??? gUnk_08C488C4
-// ??? gUnk_08C488E4
-// ??? gUnk_08C488FC
+// ??? ProcScr_EkrDragon_08C4889C
+// ??? ProcScr_EkrDragon_08C488C4
+// ??? ProcScr_EkrDragon_08C488E4
+// ??? ProcScr_EkrDragon_08C488FC
 extern AnimScr AnimScr_EfxDragonDeadFallBody[];
 extern AnimScr AnimScr_08C49F4C[];
 extern AnimScr AnimScr_EkrDragonHead[];
