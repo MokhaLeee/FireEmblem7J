@@ -78,8 +78,8 @@ SECTIONS
 		. = 0x026A48;
 		. = ALIGN(4); src/icon.o(ewram_data);
 		. = 0x028D68; gActiveFont = .;
-		. = 0x028E6C; sAnimPool = .;
-		. = 0x029C7C; sFirstAnim = .;
+		. = 0x028E6C;
+		. = ALIGN(4); src/anime.o(ewram_data);
 		. = 0x02BBB4; gBmSt = .;
 		. = 0x02BBF4; gPlaySt = .;
 		. = 0x02BD44; gActiveUnitId = .;
@@ -171,6 +171,7 @@ SECTIONS
 		src/icon.o(.text);
 		asm/debug-text.o(.text);
 		asm/text.o(.text);
+		src/anime.o(.text);
 		asm/anim-drv.o(.text);
 		asm/sprite.o(.text);
 		asm/face.o(.text);

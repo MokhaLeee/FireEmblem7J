@@ -34,3 +34,4 @@ struct Unit;
 struct UnitDefinition;
 struct BattleHit;
 struct SupportBonuses;
+struct BattleAnimDef;

@@ -31,7 +31,7 @@ void SyncHiOam(void)
 
     gOamHiPutIt = sOamHi.buf;
 
-    gOamAffinePutIt = (struct OamView *) gOam;
+    (struct OamView *) gOamAffinePutIt = (struct OamView *) gOam;
     gOamAffinePutId = 0;
 }
 

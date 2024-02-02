@@ -2,6 +2,8 @@
 
 #include "global.h"
 
+typedef u32 AnimScr;
+
 struct Anim {
     /* 00 */ u16 state;
     /* 02 */ short xPosition;
@@ -20,18 +22,18 @@ struct Anim {
 
     /* 1C */ u32 oamBase;
 
-    /* 20 */ const u32 *pScrCurrent;
-    /* 24 */ const u32 *pScrStart;
-    /* 28 */ const void *pImgSheet;
-    /* 2C */ void *pUnk2C;
-    /* 30 */ const void *pSpriteDataPool; // aka "OAM data"
+    /* 20 */ const AnimScr * pScrCurrent;
+    /* 24 */ const AnimScr * pScrStart;
+    /* 28 */ const void * pImgSheet;
+    /* 2C */ void * pImgSheetBuf;
+    /* 30 */ const void * pSpriteDataPool; // aka "OAM data"
 
-    /* 34 */ struct Anim *pPrev;
-    /* 38 */ struct Anim *pNext;
+    /* 34 */ struct Anim * pPrev;
+    /* 38 */ struct Anim * pNext;
 
-    /* 3C */ const void *pSpriteData;
-    /* 40 */ const void *pUnk40;
-    /* 44 */ const void *pUnk44;
+    /* 3C */ const void * pSpriteData;
+    /* 40 */ const void * pUnk40;
+    /* 44 */ const void * pUnk44;
 };
 
 enum Anim_state {
@@ -149,7 +151,6 @@ enum anim_inst_type {
 #define ANINS_FRAME_GET_UNK(instruction) ((instruction) >> 16) & 0xFF
 
 /* Anim Script commands */
-typedef u32 AnimScr;
 #define ANIMSCR_FRAME(delay, img, oam2) \
     (ANFMT_NOT_FORCESPRITE + ANFMT_INST_TYPE(ANIM_INS_TYPE_FRAME) + ((delay) & 0xFFFF)), \
     (AnimScr)(img), \
@@ -184,8 +185,24 @@ struct AnimSpriteData {
 
 void AnimUpdateAll(void);
 void AnimClearAll(void);
-struct Anim * AnimCreate_unused(const void * script);
+struct Anim * AnimCreate_unused(const AnimScr * scr);
 struct Anim * AnimCreate(const void * script, u16 displayPriority);
 void AnimSort(void);
-void AnimDelete(struct Anim* anim);
-void AnimDisplay(struct Anim* anim);
+void AnimDelete(struct Anim * anim);
+void AnimDisplay(struct Anim * anim);
+int  AnimInterpret(struct Anim * anim);
+void AnimInsert(struct Anim * anim);
+void AnimDisplayPrivate(struct Anim * anim);
+void Anim_8005334(struct Anim * anim, u32 instruction);
+bool PrepareBattleGraphicsMaybe(void);
+u16 GetBattleAnimationId_WithUnique(struct Unit * unit, const struct BattleAnimDef * pBattleAnimDef, u16, int * out);
+int GetBanimTerrainGround(u16 terrain, u16 tileset);
+int GetBanimBackgroundIndex(u16 terrain, u16 tileset);
+s16 GetSpellAnimId(u16 jid, u16 weapon);
+void UnsetMapStaffAnim(s16 * out, u16 pos, u16 weapon);
+void ParseBattleHitToBanimCmd(void);
+u16 GetBattleAnimationId(struct Unit * unit, const struct BattleAnimDef * anim_def, u16 wpn, u32 * out);
+bool CheckBattleHasHit(void);
+// ??? sub_805893C(???);
+u16 * FilterBattleAnimCharacterPalette(s16 banim_index, u16 item);
+int GetAllegienceId(u32 faction);
