@@ -166,13 +166,13 @@ NewEkrGauge: @ 0x0804C9AC
 	bl EkrGauge_0804CC68
 	bl EkrGauge_0804CC28
 	bl DisableEkrGauge
-	bl sub_0804CCB0
-	ldr r1, _0804CA00 @ =0x02000038
+	bl EkrGauge_ClrInitFlag
+	ldr r1, _0804CA00 @ =gEkrBg0QuakeVec
 	movs r2, #0
 	ldrsh r0, [r1, r2]
 	movs r2, #2
 	ldrsh r1, [r1, r2]
-	bl sub_0804CC78
+	bl EkrGauge_0804CC78
 	ldr r0, _0804CA04 @ =gEkrPairHpInitial
 	movs r1, #0
 	ldrsh r0, [r0, r1]
@@ -186,7 +186,7 @@ NewEkrGauge: @ 0x0804C9AC
 	.align 2, 0
 _0804C9F8: .4byte 0x02000068
 _0804C9FC: .4byte gUnk_08C09D48
-_0804CA00: .4byte 0x02000038
+_0804CA00: .4byte gEkrBg0QuakeVec
 _0804CA04: .4byte gEkrPairHpInitial
 _0804CA08: .4byte gUnk_081DF3A4
 _0804CA0C: .4byte gPal + 0x360
@@ -434,8 +434,8 @@ EkrGauge_0804CC38: @ 0x0804CC38
 	.align 2, 0
 _0804CC44: .4byte 0x02000068
 
-	thumb_func_start sub_0804CC48
-sub_0804CC48: @ 0x0804CC48
+	thumb_func_start EkrGauge_0804CC48
+EkrGauge_0804CC48: @ 0x0804CC48
 	ldr r0, _0804CC54 @ =0x02000068
 	ldr r1, [r0]
 	movs r0, #1
@@ -444,8 +444,8 @@ sub_0804CC48: @ 0x0804CC48
 	.align 2, 0
 _0804CC54: .4byte 0x02000068
 
-	thumb_func_start sub_0804CC58
-sub_0804CC58: @ 0x0804CC58
+	thumb_func_start EkrGauge_0804CC58
+EkrGauge_0804CC58: @ 0x0804CC58
 	ldr r0, _0804CC64 @ =0x02000068
 	ldr r1, [r0]
 	movs r0, #1
@@ -465,8 +465,8 @@ EkrGauge_0804CC68: @ 0x0804CC68
 	.align 2, 0
 _0804CC74: .4byte 0x02000068
 
-	thumb_func_start sub_0804CC78
-sub_0804CC78: @ 0x0804CC78
+	thumb_func_start EkrGauge_0804CC78
+EkrGauge_0804CC78: @ 0x0804CC78
 	ldr r2, _0804CC88 @ =0x02000068
 	ldr r2, [r2]
 	movs r3, #0
@@ -478,8 +478,8 @@ sub_0804CC78: @ 0x0804CC78
 	.align 2, 0
 _0804CC88: .4byte 0x02000068
 
-	thumb_func_start sub_0804CC8C
-sub_0804CC8C: @ 0x0804CC8C
+	thumb_func_start EkrGauge_0804CC8C
+EkrGauge_0804CC8C: @ 0x0804CC8C
 	ldr r2, _0804CC9C @ =0x02000068
 	ldr r2, [r2]
 	strh r0, [r2, #0x32]
@@ -491,8 +491,8 @@ sub_0804CC8C: @ 0x0804CC8C
 	.align 2, 0
 _0804CC9C: .4byte 0x02000068
 
-	thumb_func_start sub_0804CCA0
-sub_0804CCA0: @ 0x0804CCA0
+	thumb_func_start EkrGauge_SetInitFlag
+EkrGauge_SetInitFlag: @ 0x0804CCA0
 	ldr r0, _0804CCAC @ =0x02000068
 	ldr r0, [r0]
 	adds r0, #0x29
@@ -502,8 +502,8 @@ sub_0804CCA0: @ 0x0804CCA0
 	.align 2, 0
 _0804CCAC: .4byte 0x02000068
 
-	thumb_func_start sub_0804CCB0
-sub_0804CCB0: @ 0x0804CCB0
+	thumb_func_start EkrGauge_ClrInitFlag
+EkrGauge_ClrInitFlag: @ 0x0804CCB0
 	ldr r0, _0804CCBC @ =0x02000068
 	ldr r0, [r0]
 	adds r0, #0x29
@@ -1601,83 +1601,83 @@ _0804D534: .4byte gUnk_08C09E50
 _0804D538: .4byte 0x0000D1DC
 _0804D53C: .4byte 0x0000E1DE
 
-	thumb_func_start sub_0804D540
-sub_0804D540: @ 0x0804D540
+	thumb_func_start NewEkrDispUP
+NewEkrDispUP: @ 0x0804D540
 	push {r4, lr}
-	ldr r4, _0804D568 @ =0x0200006C
-	ldr r0, _0804D56C @ =gUnk_08C09EF8
+	ldr r4, _0804D568 @ =gpProcEkrDispUP
+	ldr r0, _0804D56C @ =ProcScr_ekrDispUP
 	movs r1, #5
 	bl Proc_Start
 	str r0, [r4]
 	movs r0, #0
 	movs r1, #0
-	bl sub_0804D5C4
-	bl sub_0804D584
-	bl EkrGauge_0804D61C
-	bl sub_0804D5FC
+	bl EkrDispUP_SetPositionUnsync
+	bl EkrDispUP_0804D584
+	bl UnAsyncEkrDispUP
+	bl UnsyncEkrDispUP
 	pop {r4}
 	pop {r0}
 	bx r0
 	.align 2, 0
-_0804D568: .4byte 0x0200006C
-_0804D56C: .4byte gUnk_08C09EF8
+_0804D568: .4byte gpProcEkrDispUP
+_0804D56C: .4byte ProcScr_ekrDispUP
 
-	thumb_func_start sub_0804D570
-sub_0804D570: @ 0x0804D570
+	thumb_func_start EndEkrDispUP
+EndEkrDispUP: @ 0x0804D570
 	push {lr}
-	ldr r0, _0804D580 @ =0x0200006C
+	ldr r0, _0804D580 @ =gpProcEkrDispUP
 	ldr r0, [r0]
 	bl Proc_End
 	pop {r0}
 	bx r0
 	.align 2, 0
-_0804D580: .4byte 0x0200006C
+_0804D580: .4byte gpProcEkrDispUP
 
-	thumb_func_start sub_0804D584
-sub_0804D584: @ 0x0804D584
-	ldr r0, _0804D590 @ =0x0200006C
+	thumb_func_start EkrDispUP_0804D584
+EkrDispUP_0804D584: @ 0x0804D584
+	ldr r0, _0804D590 @ =gpProcEkrDispUP
 	ldr r1, [r0]
 	movs r0, #0
 	str r0, [r1, #0x4c]
 	str r0, [r1, #0x50]
 	bx lr
 	.align 2, 0
-_0804D590: .4byte 0x0200006C
+_0804D590: .4byte gpProcEkrDispUP
 
-	thumb_func_start sub_0804D594
-sub_0804D594: @ 0x0804D594
-	ldr r0, _0804D5A0 @ =0x0200006C
+	thumb_func_start EkrDispUP_0804D594
+EkrDispUP_0804D594: @ 0x0804D594
+	ldr r0, _0804D5A0 @ =gpProcEkrDispUP
 	ldr r1, [r0]
 	movs r0, #1
 	str r0, [r1, #0x4c]
 	str r0, [r1, #0x50]
 	bx lr
 	.align 2, 0
-_0804D5A0: .4byte 0x0200006C
+_0804D5A0: .4byte gpProcEkrDispUP
 
-	thumb_func_start sub_0804D5A4
-sub_0804D5A4: @ 0x0804D5A4
-	ldr r0, _0804D5B0 @ =0x0200006C
+	thumb_func_start EkrDispUP_0804D5A4
+EkrDispUP_0804D5A4: @ 0x0804D5A4
+	ldr r0, _0804D5B0 @ =gpProcEkrDispUP
 	ldr r1, [r0]
 	movs r0, #1
 	str r0, [r1, #0x4c]
 	bx lr
 	.align 2, 0
-_0804D5B0: .4byte 0x0200006C
+_0804D5B0: .4byte gpProcEkrDispUP
 
-	thumb_func_start sub_0804D5B4
-sub_0804D5B4: @ 0x0804D5B4
-	ldr r0, _0804D5C0 @ =0x0200006C
+	thumb_func_start EkrDispUP_0804D5B4
+EkrDispUP_0804D5B4: @ 0x0804D5B4
+	ldr r0, _0804D5C0 @ =gpProcEkrDispUP
 	ldr r1, [r0]
 	movs r0, #1
 	str r0, [r1, #0x50]
 	bx lr
 	.align 2, 0
-_0804D5C0: .4byte 0x0200006C
+_0804D5C0: .4byte gpProcEkrDispUP
 
-	thumb_func_start sub_0804D5C4
-sub_0804D5C4: @ 0x0804D5C4
-	ldr r2, _0804D5D4 @ =0x0200006C
+	thumb_func_start EkrDispUP_SetPositionUnsync
+EkrDispUP_SetPositionUnsync: @ 0x0804D5C4
+	ldr r2, _0804D5D4 @ =gpProcEkrDispUP
 	ldr r2, [r2]
 	movs r3, #0
 	strh r0, [r2, #0x32]
@@ -1686,11 +1686,11 @@ sub_0804D5C4: @ 0x0804D5C4
 	strb r3, [r2]
 	bx lr
 	.align 2, 0
-_0804D5D4: .4byte 0x0200006C
+_0804D5D4: .4byte gpProcEkrDispUP
 
-	thumb_func_start sub_0804D5D8
-sub_0804D5D8: @ 0x0804D5D8
-	ldr r2, _0804D5E8 @ =0x0200006C
+	thumb_func_start EkrDispUP_SetPositionSync
+EkrDispUP_SetPositionSync: @ 0x0804D5D8
+	ldr r2, _0804D5E8 @ =gpProcEkrDispUP
 	ldr r2, [r2]
 	strh r0, [r2, #0x32]
 	strh r1, [r2, #0x3a]
@@ -1699,54 +1699,54 @@ sub_0804D5D8: @ 0x0804D5D8
 	strb r0, [r2]
 	bx lr
 	.align 2, 0
-_0804D5E8: .4byte 0x0200006C
+_0804D5E8: .4byte gpProcEkrDispUP
 
-	thumb_func_start sub_0804D5EC
-sub_0804D5EC: @ 0x0804D5EC
-	ldr r0, _0804D5F8 @ =0x0200006C
+	thumb_func_start SyncEkrDispUP
+SyncEkrDispUP: @ 0x0804D5EC
+	ldr r0, _0804D5F8 @ =gpProcEkrDispUP
 	ldr r0, [r0]
 	adds r0, #0x29
 	movs r1, #1
 	strb r1, [r0]
 	bx lr
 	.align 2, 0
-_0804D5F8: .4byte 0x0200006C
+_0804D5F8: .4byte gpProcEkrDispUP
 
-	thumb_func_start sub_0804D5FC
-sub_0804D5FC: @ 0x0804D5FC
-	ldr r0, _0804D608 @ =0x0200006C
+	thumb_func_start UnsyncEkrDispUP
+UnsyncEkrDispUP: @ 0x0804D5FC
+	ldr r0, _0804D608 @ =gpProcEkrDispUP
 	ldr r0, [r0]
 	adds r0, #0x29
 	movs r1, #0
 	strb r1, [r0]
 	bx lr
 	.align 2, 0
-_0804D608: .4byte 0x0200006C
+_0804D608: .4byte gpProcEkrDispUP
 
-	thumb_func_start EkrGauge_0804D60C
-EkrGauge_0804D60C: @ 0x0804D60C
-	ldr r0, _0804D618 @ =0x0200006C
+	thumb_func_start AsyncEkrDispUP
+AsyncEkrDispUP: @ 0x0804D60C
+	ldr r0, _0804D618 @ =gpProcEkrDispUP
 	ldr r0, [r0]
 	adds r0, #0x2a
 	movs r1, #1
 	strb r1, [r0]
 	bx lr
 	.align 2, 0
-_0804D618: .4byte 0x0200006C
+_0804D618: .4byte gpProcEkrDispUP
 
-	thumb_func_start EkrGauge_0804D61C
-EkrGauge_0804D61C: @ 0x0804D61C
-	ldr r0, _0804D628 @ =0x0200006C
+	thumb_func_start UnAsyncEkrDispUP
+UnAsyncEkrDispUP: @ 0x0804D61C
+	ldr r0, _0804D628 @ =gpProcEkrDispUP
 	ldr r0, [r0]
 	adds r0, #0x2a
 	movs r1, #0
 	strb r1, [r0]
 	bx lr
 	.align 2, 0
-_0804D628: .4byte 0x0200006C
+_0804D628: .4byte gpProcEkrDispUP
 
-	thumb_func_start sub_0804D62C
-sub_0804D62C: @ 0x0804D62C
+	thumb_func_start ekrDispUPMain
+ekrDispUPMain: @ 0x0804D62C
 	push {r4, r5, r6, r7, lr}
 	mov r7, sl
 	mov r6, sb
@@ -2393,7 +2393,7 @@ _0804DB3A:
 	movs r2, #8
 	bl CpuFastSet
 	bl EnablePalSync
-	ldr r1, _0804DC14 @ =0x02000038
+	ldr r1, _0804DC14 @ =gEkrBg0QuakeVec
 	movs r0, #0
 	strh r0, [r1]
 	strh r0, [r1, #2]
@@ -2414,7 +2414,7 @@ _0804DC04: .4byte gUnk_081DEBC4
 _0804DC08: .4byte 0x0203DFF8
 _0804DC0C: .4byte gUnk_081DEC14
 _0804DC10: .4byte gPal + 0x40
-_0804DC14: .4byte 0x02000038
+_0804DC14: .4byte gEkrBg0QuakeVec
 
 	thumb_func_start sub_0804DC18
 sub_0804DC18: @ 0x0804DC18
@@ -2515,7 +2515,7 @@ EkrEfxStatusClear: @ 0x0804DCA8
 	str r0, [r1]
 	ldr r1, _0804DD30 @ =0x0201775C
 	str r0, [r1]
-	ldr r1, _0804DD34 @ =0x02017760
+	ldr r1, _0804DD34 @ =gEkrBg2QuakeVec
 	strh r0, [r1]
 	strh r0, [r1, #2]
 	ldr r1, _0804DD38 @ =0x02017764
@@ -2548,7 +2548,7 @@ _0804DD24: .4byte 0x02017750
 _0804DD28: .4byte 0x02017754
 _0804DD2C: .4byte 0x02017758
 _0804DD30: .4byte 0x0201775C
-_0804DD34: .4byte 0x02017760
+_0804DD34: .4byte gEkrBg2QuakeVec
 _0804DD38: .4byte 0x02017764
 _0804DD3C: .4byte 0x02017768
 _0804DD40: .4byte 0x02017780

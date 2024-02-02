@@ -952,8 +952,8 @@ gUnk_08C09EC8:	@ 0x08C09EC8
 gUnk_08C09EE0:	@ 0x08C09EE0
 	.incbin "FireEmblem7J.base.gba", 0xC09EE0, 0xC09EF8 - 0xC09EE0
 
-	.global gUnk_08C09EF8
-gUnk_08C09EF8:	@ 0x08C09EF8
+	.global ProcScr_ekrDispUP
+ProcScr_ekrDispUP:	@ 0x08C09EF8
 	.incbin "FireEmblem7J.base.gba", 0xC09EF8, 0xC09F10 - 0xC09EF8
 
 	.global gUnk_08C09F10

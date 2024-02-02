@@ -403,7 +403,7 @@ sub_080514B8: @ 0x080514B8
 	cmp r0, #0
 	bne _0805151C
 	bl NewEkrGauge
-	bl sub_0804D540
+	bl NewEkrDispUP
 	ldr r0, _080514E8 @ =gEkrDistanceType
 	movs r1, #0
 	ldrsh r0, [r0, r1]
@@ -423,21 +423,21 @@ _080514EC:
 	ldrsh r0, [r4, r1]
 	cmp r0, #0
 	bne _080514FE
-	bl sub_0804CC48
-	bl sub_0804D5A4
+	bl EkrGauge_0804CC48
+	bl EkrDispUP_0804D5A4
 _080514FE:
 	movs r1, #2
 	ldrsh r0, [r4, r1]
 	cmp r0, #0
 	bne _0805151C
-	bl sub_0804CC58
-	bl sub_0804D5B4
+	bl EkrGauge_0804CC58
+	bl EkrDispUP_0804D5B4
 	b _0805151C
 	.align 2, 0
 _08051510: .4byte 0x0203DFE8
 _08051514:
-	bl sub_0804CC48
-	bl sub_0804D5A4
+	bl EkrGauge_0804CC48
+	bl EkrDispUP_0804D5A4
 _0805151C:
 	bl sub_0804D738
 	movs r0, #0
@@ -2114,24 +2114,24 @@ NewEkrWindowAppear: @ 0x08052278
 	bne _0805229A
 	movs r2, #0x39
 _0805229A:
-	ldr r1, _080522C0 @ =0x02000038
+	ldr r1, _080522C0 @ =gEkrBg0QuakeVec
 	movs r3, #0
 	ldrsh r0, [r1, r3]
 	ldrh r1, [r1, #2]
 	adds r1, r1, r2
 	lsls r1, r1, #0x10
 	asrs r1, r1, #0x10
-	bl sub_0804CC78
+	bl EkrGauge_0804CC78
 	ldr r1, _080522C4 @ =0x0201FAC0
 	movs r0, #1
 	str r0, [r1]
-	bl sub_0804CCB0
+	bl EkrGauge_ClrInitFlag
 	pop {r4, r5}
 	pop {r0}
 	bx r0
 	.align 2, 0
 _080522BC: .4byte gUnk_08C0A588
-_080522C0: .4byte 0x02000038
+_080522C0: .4byte gEkrBg0QuakeVec
 _080522C4: .4byte 0x0201FAC0
 
 	thumb_func_start CheckEkrWindowAppearUnexist
@@ -2164,7 +2164,7 @@ sub_080522DC: @ 0x080522DC
 	ldr r1, _08052304 @ =0x0201FAC0
 	movs r0, #0
 	str r0, [r1]
-	bl sub_0804CCA0
+	bl EkrGauge_SetInitFlag
 	adds r0, r4, #0
 	bl Proc_Break
 	b _08052350
@@ -2199,21 +2199,21 @@ _08052326:
 _08052338:
 	bl Interpolate
 	adds r2, r0, #0
-	ldr r1, _08052358 @ =0x02000038
+	ldr r1, _08052358 @ =gEkrBg0QuakeVec
 	movs r3, #0
 	ldrsh r0, [r1, r3]
 	ldrh r1, [r1, #2]
 	adds r1, r1, r2
 	lsls r1, r1, #0x10
 	asrs r1, r1, #0x10
-	bl sub_0804CC78
+	bl EkrGauge_0804CC78
 _08052350:
 	add sp, #4
 	pop {r4}
 	pop {r0}
 	bx r0
 	.align 2, 0
-_08052358: .4byte 0x02000038
+_08052358: .4byte gEkrBg0QuakeVec
 
 	thumb_func_start NewEkrNamewinAppear
 NewEkrNamewinAppear: @ 0x0805235C
@@ -2236,19 +2236,19 @@ NewEkrNamewinAppear: @ 0x0805235C
 	lsls r1, r1, #0x10
 	lsrs r1, r1, #0x10
 	movs r0, #0
-	bl sub_0804D5C4
+	bl EkrDispUP_SetPositionUnsync
 	b _08052398
 	.align 2, 0
 _0805238C: .4byte gUnk_08C0A5A0
 _08052390:
 	movs r0, #0
 	movs r1, #0
-	bl sub_0804D5C4
+	bl EkrDispUP_SetPositionUnsync
 _08052398:
 	ldr r1, _080523A8 @ =0x0201FAC4
 	movs r0, #1
 	str r0, [r1]
-	bl sub_0804D5FC
+	bl UnsyncEkrDispUP
 	pop {r4, r5, r6}
 	pop {r0}
 	bx r0
@@ -2305,11 +2305,11 @@ sub_080523E0: @ 0x080523E0
 	ldr r0, _08052410 @ =0x0201FAC4
 	movs r1, #0
 	str r1, [r0]
-	bl sub_0804D5EC
+	bl SyncEkrDispUP
 	ldr r0, [r4, #0x44]
 	cmp r0, #2
 	bne _08052408
-	bl sub_0804D570
+	bl EndEkrDispUP
 _08052408:
 	adds r0, r4, #0
 	bl Proc_Break
@@ -2346,7 +2346,7 @@ _08052448:
 	lsls r1, r0, #0x10
 	lsrs r1, r1, #0x10
 	movs r0, #0
-	bl sub_0804D5C4
+	bl EkrDispUP_SetPositionUnsync
 _08052452:
 	add sp, #4
 	pop {r4}

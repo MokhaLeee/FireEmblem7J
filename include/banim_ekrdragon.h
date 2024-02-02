@@ -42,7 +42,7 @@ void SetEkrDragonExit(struct Anim * anim);
 void SetEkrDragonDead(struct Anim * anim);
 bool CheckEkrDragonDead(struct Anim * anim);
 
-struct ProcEkrDragonSub2 {
+struct ProcEkrDragonFx {
     PROC_HEADER;
 
     /* 29 */ bool unk29;
@@ -66,7 +66,7 @@ struct ProcEkrDragon {
     STRUCT_PAD(0x29, 0x2C);
 
     /* 2C */ s16 timer;
-    /* 2E */ s16 tcounter;
+    /* 2E */ s16 terminator;
 
     STRUCT_PAD(0x30, 0x3A);
 
@@ -83,7 +83,7 @@ struct ProcEkrDragon {
     /* 58 */ ProcPtr proc58;
     /* 5C */ struct Anim * anim;
     /* 60 */ ProcPtr sproc1;
-    /* 64 */ struct ProcEkrDragonSub2 * sproc2;
+    /* 64 */ struct ProcEkrDragonFx * procfx;
     /* 68 */ ProcPtr sproc3;
 };
 
@@ -104,8 +104,8 @@ void EkrDragon_080657D4(struct ProcEkrDragon * proc);
 void EkrDragon_080658F8(struct ProcEkrDragon * proc);
 void EkrDragon_08065AB0(struct ProcEkrDragon * proc);
 void EkrDragon_08065BA0(struct ProcEkrDragon * proc);
-void EkrDragon_08065BC0(struct ProcEkrDragon * proc);
-void EkrDragon_08065C14(struct ProcEkrDragon * proc);
+void EkrDragon_InBattleIDLE(struct ProcEkrDragon * proc);
+void EkrDragon_WaitForFadeOut(struct ProcEkrDragon * proc);
 void EkrDragon_08065C34(struct ProcEkrDragon * proc);
 void EkrDragon_08065CC8(struct ProcEkrDragon * proc);
 void EkrDragon_08065D20(struct ProcEkrDragon * proc);
@@ -145,21 +145,21 @@ ProcPtr sub_080664CC(int, int, int, int);
 void sub_080665B8(int, u16);
 // ??? sub_08066634
 // ??? sub_08066640
-// ??? sub_080666A4
+ProcPtr sub_080666A4(struct Anim * anim);
 // ??? sub_080666D4
-// ??? sub_08066804
+ProcPtr NewEkrDragonBodyBlack(struct Anim * anim);
 // ??? sub_08066828
 // ??? nullsub_55
 // ??? sub_080668B8
 // ??? sub_08066950
-// ??? sub_080669A4
+ProcPtr NewEkrDragonTunk(struct Anim * anim);
 // ??? sub_080669E8
 // ??? sub_08066AE0
 // ??? nullsub_56
 void sub_08066CAC(struct Anim * anim, int);
 // ??? sub_08066D30
 // ??? sub_08066D40
-// ??? sub_08066DA0
+void sub_08066DA0(ProcPtr parent, int, int);
 // ??? sub_08066DD8
 // ??? sub_08066F80
 // ??? sub_08066FC0

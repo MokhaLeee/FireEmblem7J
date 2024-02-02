@@ -389,14 +389,14 @@ EkrBattleStartBattleQuote: @ 0x0804BC6C
 	cmp r0, #1
 	bne _0804BCF6
 	bl EnableEkrGauge
-	bl EkrGauge_0804D60C
+	bl AsyncEkrDispUP
 	movs r0, #0
 	str r0, [sp]
 	ldr r1, _0804BCD0 @ =gBg0Tm
 	ldr r2, _0804BCD4 @ =0x01000200
 	mov r0, sp
 	bl CpuFastSet
-	ldr r0, _0804BCD8 @ =0x02000038
+	ldr r0, _0804BCD8 @ =gEkrBg0QuakeVec
 	ldrh r1, [r0]
 	ldrh r2, [r0, #2]
 	movs r0, #0
@@ -424,7 +424,7 @@ EkrBattleStartBattleQuote: @ 0x0804BC6C
 	.align 2, 0
 _0804BCD0: .4byte gBg0Tm
 _0804BCD4: .4byte 0x01000200
-_0804BCD8: .4byte 0x02000038
+_0804BCD8: .4byte gEkrBg0QuakeVec
 _0804BCDC: .4byte gEkrInitialHitSide
 _0804BCE0: .4byte gEkrPids
 _0804BCE4:
@@ -466,7 +466,7 @@ EkrBattleWaitBattleQuote: @ 0x0804BD08
 	movs r2, #0
 	bl NewEkrNamewinAppear
 	bl DisableEkrGauge
-	bl EkrGauge_0804D61C
+	bl UnAsyncEkrDispUP
 	bl EkrGauge_0804CC28
 	ldr r0, _0804BD48 @ =EkrBattleWaitWindowAppear
 	str r0, [r4, #0xc]

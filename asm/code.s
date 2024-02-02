@@ -21,7 +21,7 @@ sub_0806BFE4: @ 0x0806BFE4
 	bl sub_0804D738
 	bl UpdateBanimFrame
 	bl NewEkrGauge
-	bl sub_0804D540
+	bl NewEkrDispUP
 	bl NewEkrBattle
 	ldr r0, _0806C038 @ =0x0203DFE2
 	movs r1, #0
@@ -54,8 +54,8 @@ _0806C040: .4byte gEfxPal
 sub_0806C044: @ 0x0806C044
 	push {r4, lr}
 	adds r4, r0, #0
-	bl sub_0804CC48
-	bl sub_0804D5A4
+	bl EkrGauge_0804CC48
+	bl EkrDispUP_0804D5A4
 	movs r0, #0
 	strh r0, [r4, #0x2c]
 	movs r0, #0x10

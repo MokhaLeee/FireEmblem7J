@@ -6558,7 +6558,7 @@ _080A7420: .4byte gUnk_08DADD90
 	thumb_func_start sub_080A7424
 sub_080A7424: @ 0x080A7424
 	push {r4, r5, r6, lr}
-	ldr r4, _080A74F8 @ =0x0200006C
+	ldr r4, _080A74F8 @ =gpProcEkrDispUP
 	ldr r1, _080A74FC @ =0x06011000
 	adds r0, r4, #0
 	movs r2, #0xf
@@ -6645,7 +6645,7 @@ _080A7442:
 	pop {r0}
 	bx r0
 	.align 2, 0
-_080A74F8: .4byte 0x0200006C
+_080A74F8: .4byte gpProcEkrDispUP
 _080A74FC: .4byte 0x06011000
 _080A7500: .4byte gUnk_08190268
 _080A7504: .4byte 0x02000084
@@ -7437,7 +7437,7 @@ sub_080A7B2C: @ 0x080A7B2C
 	movs r1, #0x60
 	movs r2, #2
 	bl sub_080AA3F8
-	ldr r0, _080A7BAC @ =0x0200006C
+	ldr r0, _080A7BAC @ =gpProcEkrDispUP
 	bl SetTextFont
 	movs r0, #0
 	bl SetTextFontGlyphs
@@ -7464,7 +7464,7 @@ _080A7B7A:
 	bx r0
 	.align 2, 0
 _080A7BA8: .4byte gPlaySt
-_080A7BAC: .4byte 0x0200006C
+_080A7BAC: .4byte gpProcEkrDispUP
 _080A7BB0: .4byte 0x0200008C
 
 	thumb_func_start sub_080A7BB4
@@ -7533,7 +7533,7 @@ _080A7C02:
 	movs r2, #0xa0
 	lsls r2, r2, #7
 	bl PutIcon
-	ldr r4, _080A7C94 @ =0x0200006C
+	ldr r4, _080A7C94 @ =gpProcEkrDispUP
 	adds r0, r4, #0
 	bl SetTextFont
 	movs r0, #1
@@ -7566,7 +7566,7 @@ _080A7C84: .4byte gPlaySt
 _080A7C88: .4byte 0x0000038A
 _080A7C8C: .4byte gBg0Tm + 0x15c
 _080A7C90: .4byte Unk_081C8FCC
-_080A7C94: .4byte 0x0200006C
+_080A7C94: .4byte gpProcEkrDispUP
 _080A7C98: .4byte 0x06011000
 _080A7C9C:
 	movs r0, #2
@@ -7668,7 +7668,7 @@ sub_080A7D50: @ 0x080A7D50
 	ldr r0, _080A7D80 @ =gBg1Tm
 	movs r1, #0
 	bl TmFill
-	ldr r4, _080A7D84 @ =0x0200006C
+	ldr r4, _080A7D84 @ =gpProcEkrDispUP
 	adds r0, r4, #0
 	bl SetTextFont
 	adds r4, #0x20
@@ -7684,7 +7684,7 @@ sub_080A7D50: @ 0x080A7D50
 	bx r0
 	.align 2, 0
 _080A7D80: .4byte gBg1Tm
-_080A7D84: .4byte 0x0200006C
+_080A7D84: .4byte gpProcEkrDispUP
 
 	thumb_func_start sub_080A7D88
 sub_080A7D88: @ 0x080A7D88
@@ -7734,7 +7734,7 @@ sub_080A7D9C: @ 0x080A7D9C
 	adds r0, r4, #0
 	movs r2, #1
 	bl sub_080AA3F8
-	ldr r4, _080A7E48 @ =0x0200006C
+	ldr r4, _080A7E48 @ =gpProcEkrDispUP
 	adds r0, r4, #0
 	bl SetTextFont
 	movs r0, #0
@@ -7772,7 +7772,7 @@ _080A7E00:
 	bx r0
 	.align 2, 0
 _080A7E44: .4byte gPlaySt
-_080A7E48: .4byte 0x0200006C
+_080A7E48: .4byte gpProcEkrDispUP
 
 	thumb_func_start sub_080A7E4C
 sub_080A7E4C: @ 0x080A7E4C
@@ -7839,7 +7839,7 @@ _080A7E9E:
 	movs r2, #0xa0
 	lsls r2, r2, #7
 	bl PutIcon
-	ldr r4, _080A7F28 @ =0x0200006C
+	ldr r4, _080A7F28 @ =gpProcEkrDispUP
 	adds r0, r4, #0
 	bl SetTextFont
 	movs r0, #1
@@ -7871,7 +7871,7 @@ _080A7F18: .4byte gPlaySt
 _080A7F1C: .4byte 0x0000038A
 _080A7F20: .4byte gBg0Tm + 0x15c
 _080A7F24: .4byte Unk_081C8FCC
-_080A7F28: .4byte 0x0200006C
+_080A7F28: .4byte gpProcEkrDispUP
 _080A7F2C: .4byte 0x06011000
 _080A7F30:
 	movs r0, #2
@@ -8040,7 +8040,7 @@ sub_080A806C: @ 0x080A806C
 	ldr r0, _080A809C @ =gBg1Tm
 	movs r1, #0
 	bl TmFill
-	ldr r4, _080A80A0 @ =0x0200006C
+	ldr r4, _080A80A0 @ =gpProcEkrDispUP
 	adds r0, r4, #0
 	bl SetTextFont
 	adds r4, #0x20
@@ -8056,7 +8056,7 @@ sub_080A806C: @ 0x080A806C
 	bx r0
 	.align 2, 0
 _080A809C: .4byte gBg1Tm
-_080A80A0: .4byte 0x0200006C
+_080A80A0: .4byte gpProcEkrDispUP
 
 	thumb_func_start sub_080A80A4
 sub_080A80A4: @ 0x080A80A4
@@ -8099,7 +8099,7 @@ sub_080A80B8: @ 0x080A80B8
 	movs r1, #0x60
 	movs r2, #1
 	bl sub_080AA3F8
-	ldr r0, _080A8138 @ =0x0200006C
+	ldr r0, _080A8138 @ =gpProcEkrDispUP
 	bl SetTextFont
 	movs r0, #0
 	bl SetTextFontGlyphs
@@ -8126,7 +8126,7 @@ _080A8106:
 	bx r0
 	.align 2, 0
 _080A8134: .4byte gPlaySt
-_080A8138: .4byte 0x0200006C
+_080A8138: .4byte gpProcEkrDispUP
 _080A813C: .4byte 0x0200008C
 
 	thumb_func_start sub_080A8140
@@ -8181,7 +8181,7 @@ _080A8190:
 	ands r0, r2
 	orrs r0, r1
 	strb r0, [r5]
-	ldr r4, _080A81FC @ =0x0200006C
+	ldr r4, _080A81FC @ =gpProcEkrDispUP
 	adds r0, r4, #0
 	bl SetTextFont
 	movs r0, #1
@@ -8212,7 +8212,7 @@ _080A81EC: .4byte Sprite_64x32
 _080A81F0: .4byte gpKeySt
 _080A81F4: .4byte gPlaySt
 _080A81F8: .4byte 0x0000038A
-_080A81FC: .4byte 0x0200006C
+_080A81FC: .4byte gpProcEkrDispUP
 _080A8200: .4byte 0x06011000
 _080A8204:
 	movs r0, #2
@@ -8313,7 +8313,7 @@ sub_080A82B8: @ 0x080A82B8
 	ldr r0, _080A82E8 @ =gBg1Tm
 	movs r1, #0
 	bl TmFill
-	ldr r4, _080A82EC @ =0x0200006C
+	ldr r4, _080A82EC @ =gpProcEkrDispUP
 	adds r0, r4, #0
 	bl SetTextFont
 	adds r4, #0x20
@@ -8329,7 +8329,7 @@ sub_080A82B8: @ 0x080A82B8
 	bx r0
 	.align 2, 0
 _080A82E8: .4byte gBg1Tm
-_080A82EC: .4byte 0x0200006C
+_080A82EC: .4byte gpProcEkrDispUP
 
 	thumb_func_start sub_080A82F0
 sub_080A82F0: @ 0x080A82F0
@@ -25779,7 +25779,7 @@ _080B0A54:
 	strh r1, [r0, #0xe]
 	movs r1, #2
 	strh r1, [r0, #0x10]
-	ldr r1, _080B0BB8 @ =0x02000038
+	ldr r1, _080B0BB8 @ =gEkrBg0QuakeVec
 	str r1, [r0, #0x1c]
 	ldr r1, _080B0BBC @ =0x02002038
 	str r1, [r0, #0x24]
@@ -25865,7 +25865,7 @@ _080B0A54:
 	bx r0
 	.align 2, 0
 _080B0BB4: .4byte gAnims
-_080B0BB8: .4byte 0x02000038
+_080B0BB8: .4byte gEkrBg0QuakeVec
 _080B0BBC: .4byte 0x02002038
 _080B0BC0: .4byte 0x02007838
 _080B0BC4: .4byte 0x020078D8

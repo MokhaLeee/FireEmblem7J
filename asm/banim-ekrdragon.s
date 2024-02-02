@@ -1,362 +1,8 @@
 	.include "macro.inc"
 	.syntax unified
 
-
-	thumb_func_start EkrDragon_080658F8
-EkrDragon_080658F8: @ 0x080658F8
-	push {r4, r5, r6, r7, lr}
-	mov r7, sl
-	mov r6, sb
-	mov r5, r8
-	push {r5, r6, r7}
-	sub sp, #4
-	adds r5, r0, #0
-	ldr r0, _08065918 @ =gEkrDistanceType
-	ldrh r0, [r0]
-	cmp r0, #2
-	bne _0806591C
-	adds r0, r5, #0
-	bl Proc_Break
-	b _08065A8C
-	.align 2, 0
-_08065918: .4byte gEkrDistanceType
-_0806591C:
-	movs r0, #0x3a
-	ldrsh r1, [r5, r0]
-	movs r3, #0x3c
-	ldrsh r2, [r5, r3]
-	movs r4, #0x2c
-	ldrsh r3, [r5, r4]
-	movs r6, #0x2e
-	ldrsh r0, [r5, r6]
-	str r0, [sp]
-	movs r0, #0
-	bl Interpolate
-	adds r7, r0, #0
-	ldr r1, [r5, #0x64]
-	ldr r0, [r5, #0x5c]
-	ldrh r0, [r0, #2]
-	strh r0, [r1, #0x32]
-	ldr r1, [r5, #0x64]
-	ldr r0, [r5, #0x5c]
-	ldrh r0, [r0, #4]
-	subs r0, r0, r7
-	strh r0, [r1, #0x3a]
-	ldr r1, [r5, #0x64]
-	ldr r4, _08065A9C @ =0x02017760
-	ldrh r2, [r1, #0x32]
-	ldrh r3, [r4]
-	subs r0, r2, r3
-	strh r0, [r1, #0x32]
-	ldr r1, [r5, #0x64]
-	ldrh r6, [r1, #0x3a]
-	ldrh r2, [r4, #2]
-	subs r0, r6, r2
-	strh r0, [r1, #0x3a]
-	ldr r3, _08065AA0 @ =gEkrXPosReal
-	mov sl, r3
-	ldrh r6, [r3, #2]
-	ldrh r0, [r4]
-	adds r1, r6, r0
-	ldr r2, _08065AA4 @ =gEkrBgPosition
-	mov r8, r2
-	ldr r0, [r2]
-	subs r1, r1, r0
-	ldr r3, _08065AA8 @ =gEkrYPosReal
-	mov sb, r3
-	ldrh r6, [r3, #2]
-	ldrh r0, [r4, #2]
-	subs r2, r6, r0
-	lsls r1, r1, #0x10
-	asrs r1, r1, #0x10
-	lsls r2, r2, #0x10
-	asrs r2, r2, #0x10
-	movs r0, #1
-	bl SetEkrFrontAnimPostion
-	movs r2, #0
-	ldrsh r1, [r4, r2]
-	mov r3, r8
-	ldr r0, [r3]
-	adds r0, r0, r1
-	movs r6, #2
-	ldrsh r1, [r4, r6]
-	adds r1, r7, r1
-	bl EkrDragonTmCpyExt
-	ldrh r1, [r4]
-	ldrh r2, [r4, #2]
-	movs r0, #2
-	bl SetBgOffset
-	ldr r6, _08065AAC @ =0x02000038
-	ldrh r0, [r4]
-	ldrh r2, [r6]
-	adds r1, r0, r2
-	lsls r1, r1, #0x10
-	lsrs r1, r1, #0x10
-	ldrh r3, [r4, #2]
-	ldrh r0, [r6, #2]
-	adds r2, r3, r0
-	lsls r2, r2, #0x10
-	lsrs r2, r2, #0x10
-	movs r0, #0
-	bl SetBgOffset
-	ldrh r1, [r4]
-	ldrh r2, [r6]
-	adds r0, r1, r2
-	rsbs r0, r0, #0
-	lsls r0, r0, #0x10
-	asrs r0, r0, #0x10
-	ldrh r3, [r4, #2]
-	ldrh r2, [r6, #2]
-	adds r1, r3, r2
-	rsbs r1, r1, #0
-	lsls r1, r1, #0x10
-	asrs r1, r1, #0x10
-	bl sub_0804CC8C
-	ldrh r3, [r4]
-	ldrh r1, [r6]
-	adds r0, r3, r1
-	rsbs r0, r0, #0
-	lsls r0, r0, #0x10
-	lsrs r0, r0, #0x10
-	ldrh r4, [r4, #2]
-	ldrh r2, [r6, #2]
-	adds r1, r4, r2
-	rsbs r1, r1, #0
-	lsls r1, r1, #0x10
-	lsrs r1, r1, #0x10
-	bl sub_0804D5D8
-	ldrh r1, [r5, #0x2c]
-	adds r1, #1
-	strh r1, [r5, #0x2c]
-	lsls r1, r1, #0x10
-	asrs r1, r1, #0x10
-	movs r3, #0x2e
-	ldrsh r0, [r5, r3]
-	adds r0, #1
-	cmp r1, r0
-	bne _08065A8C
-	ldr r1, [r5, #0x64]
-	ldr r0, [r5, #0x5c]
-	ldrh r0, [r0, #2]
-	strh r0, [r1, #0x32]
-	ldr r1, [r5, #0x64]
-	ldr r0, [r5, #0x5c]
-	ldrh r0, [r0, #4]
-	subs r0, r0, r7
-	strh r0, [r1, #0x3a]
-	mov r4, r8
-	ldr r1, [r4]
-	mov r0, sl
-	ldrh r0, [r0, #2]
-	subs r1, r0, r1
-	lsls r1, r1, #0x10
-	asrs r1, r1, #0x10
-	mov r3, sb
-	movs r4, #2
-	ldrsh r2, [r3, r4]
-	movs r0, #1
-	bl SetEkrFrontAnimPostion
-	mov r1, r8
-	ldr r0, [r1]
-	adds r1, r7, #0
-	bl EkrDragonTmCpyExt
-	movs r0, #2
-	movs r1, #0
-	movs r2, #0
-	bl SetBgOffset
-	ldrh r1, [r6]
-	ldrh r2, [r6, #2]
-	movs r0, #0
-	bl SetBgOffset
-	ldrh r2, [r6]
-	rsbs r0, r2, #0
-	lsls r0, r0, #0x10
-	asrs r0, r0, #0x10
-	ldrh r3, [r6, #2]
-	rsbs r1, r3, #0
-	lsls r1, r1, #0x10
-	asrs r1, r1, #0x10
-	bl sub_0804CC8C
-	ldrh r4, [r6]
-	rsbs r0, r4, #0
-	lsls r0, r0, #0x10
-	lsrs r0, r0, #0x10
-	ldrh r6, [r6, #2]
-	rsbs r1, r6, #0
-	lsls r1, r1, #0x10
-	lsrs r1, r1, #0x10
-	bl sub_0804D5D8
-	ldr r0, [r5, #0x54]
-	bl Proc_End
-	adds r0, r5, #0
-	bl Proc_Break
-_08065A8C:
-	add sp, #4
-	pop {r3, r4, r5}
-	mov r8, r3
-	mov sb, r4
-	mov sl, r5
-	pop {r4, r5, r6, r7}
-	pop {r0}
-	bx r0
-	.align 2, 0
-_08065A9C: .4byte 0x02017760
-_08065AA0: .4byte gEkrXPosReal
-_08065AA4: .4byte gEkrBgPosition
-_08065AA8: .4byte gEkrYPosReal
-_08065AAC: .4byte 0x02000038
-
-	thumb_func_start EkrDragon_08065AB0
-EkrDragon_08065AB0: @ 0x08065AB0
-	push {r4, lr}
-	adds r4, r0, #0
-	ldr r0, _08065AF4 @ =gEkrDistanceType
-	ldrh r0, [r0]
-	cmp r0, #2
-	bne _08065B0C
-	ldr r0, [r4, #0x5c]
-	bl GetAnimPosition
-	bl SetAnimStateUnHidden
-	ldr r0, _08065AF8 @ =Tsa_EkrDragon_082E6E8C
-	ldr r1, _08065AFC @ =gEkrTsaBuffer
-	bl LZ77UnCompWram
-	ldr r0, _08065B00 @ =0x001F001F
-	bl EfxTmFill
-	ldr r0, _08065B04 @ =gBg3Tm
-	movs r1, #0x1f
-	bl TmFill
-	bl EkrDragonTmCpyWithDistance
-	ldr r0, _08065B08 @ =gEkrBgPosition
-	ldr r0, [r0]
-	movs r1, #0
-	bl EkrDragonTmCpyExt
-	adds r0, r4, #0
-	bl Proc_Break
-	b _08065B78
-	.align 2, 0
-_08065AF4: .4byte gEkrDistanceType
-_08065AF8: .4byte Tsa_EkrDragon_082E6E8C
-_08065AFC: .4byte gEkrTsaBuffer
-_08065B00: .4byte 0x001F001F
-_08065B04: .4byte gBg3Tm
-_08065B08: .4byte gEkrBgPosition
-_08065B0C:
-	ldrh r0, [r4, #0x2c]
-	adds r0, #1
-	strh r0, [r4, #0x2c]
-	lsls r0, r0, #0x10
-	ldr r1, _08065B80 @ =0x010D0000
-	cmp r0, r1
-	bne _08065B32
-	ldr r0, [r4, #0x64]
-	movs r1, #0x3c
-	movs r2, #9
-	bl sub_08066DA0
-	ldr r0, _08065B84 @ =0x000002F1
-	movs r1, #0x80
-	lsls r1, r1, #1
-	movs r2, #0x78
-	movs r3, #0
-	bl PlaySFX
-_08065B32:
-	ldr r0, _08065B88 @ =0x00000195
-	ldrh r1, [r4, #0x2c]
-	cmp r1, r0
-	bne _08065B78
-	movs r0, #0
-	strh r0, [r4, #0x2c]
-	ldr r0, [r4, #0x64]
-	bl Proc_End
-	ldr r0, [r4, #0x5c]
-	bl GetAnimPosition
-	bl SetAnimStateUnHidden
-	ldr r0, _08065B8C @ =Tsa_EkrDragon_082E6E8C
-	ldr r1, _08065B90 @ =gEkrTsaBuffer
-	bl LZ77UnCompWram
-	ldr r0, _08065B94 @ =0x001F001F
-	bl EfxTmFill
-	ldr r0, _08065B98 @ =gBg3Tm
-	movs r1, #0x1f
-	bl TmFill
-	bl EkrDragonTmCpyWithDistance
-	ldr r0, _08065B9C @ =gEkrBgPosition
-	ldr r0, [r0]
-	movs r1, #0
-	bl EkrDragonTmCpyExt
-	adds r0, r4, #0
-	bl Proc_Break
-_08065B78:
-	pop {r4}
-	pop {r0}
-	bx r0
-	.align 2, 0
-_08065B80: .4byte 0x010D0000
-_08065B84: .4byte 0x000002F1
-_08065B88: .4byte 0x00000195
-_08065B8C: .4byte Tsa_EkrDragon_082E6E8C
-_08065B90: .4byte gEkrTsaBuffer
-_08065B94: .4byte 0x001F001F
-_08065B98: .4byte gBg3Tm
-_08065B9C: .4byte gEkrBgPosition
-
-	thumb_func_start EkrDragon_08065BA0
-EkrDragon_08065BA0: @ 0x08065BA0
-	push {r4, lr}
-	adds r4, r0, #0
-	ldr r0, [r4, #0x5c]
-	bl sub_080666A4
-	str r0, [r4, #0x50]
-	ldr r0, [r4, #0x5c]
-	movs r1, #2
-	bl AddEkrDragonStatusAttr
-	adds r0, r4, #0
-	bl Proc_Break
-	pop {r4}
-	pop {r0}
-	bx r0
-
-	thumb_func_start EkrDragon_08065BC0
-EkrDragon_08065BC0: @ 0x08065BC0
-	push {r4, lr}
-	adds r4, r0, #0
-	ldr r0, [r4, #0x5c]
-	bl GetEkrDragonStatusAttr
-	lsls r0, r0, #0x10
-	lsrs r0, r0, #0x10
-	movs r1, #4
-	ands r0, r1
-	cmp r0, #0
-	beq _08065C0E
-	movs r0, #0
-	strh r0, [r4, #0x2c]
-	ldr r0, [r4, #0x68]
-	bl Proc_End
-	ldr r0, [r4, #0x44]
-	bl Proc_End
-	ldr r0, [r4, #0x50]
-	bl Proc_End
-	ldr r0, [r4, #0x5c]
-	bl CheckEkrDragonDead
-	lsls r0, r0, #0x18
-	cmp r0, #0
-	bne _08065C00
-	ldr r0, [r4, #0x5c]
-	bl sub_08066804
-	b _08065C06
-_08065C00:
-	ldr r0, [r4, #0x5c]
-	bl sub_080669A4
-_08065C06:
-	str r0, [r4, #0x50]
-	adds r0, r4, #0
-	bl Proc_Break
-_08065C0E:
-	pop {r4}
-	pop {r0}
-	bx r0
-
-	thumb_func_start EkrDragon_08065C14
-EkrDragon_08065C14: @ 0x08065C14
+	thumb_func_start EkrDragon_WaitForFadeOut
+EkrDragon_WaitForFadeOut: @ 0x08065C14
 	push {r4, lr}
 	adds r4, r0, #0
 	ldr r0, [r4, #0x50]
@@ -1880,8 +1526,8 @@ _080667F8:
 	.align 2, 0
 _08066800: .4byte 0x000002F2
 
-	thumb_func_start sub_08066804
-sub_08066804: @ 0x08066804
+	thumb_func_start NewEkrDragonBodyBlack
+NewEkrDragonBodyBlack: @ 0x08066804
 	push {r4, lr}
 	adds r4, r0, #0
 	ldr r0, _08066824 @ =gUnk_08C4887C
@@ -2082,8 +1728,8 @@ sub_08066950: @ 0x08066950
 _0806699C: .4byte gEfxFrameTmap
 _080669A0: .4byte gBg3Tm
 
-	thumb_func_start sub_080669A4
-sub_080669A4: @ 0x080669A4
+	thumb_func_start NewEkrDragonTunk
+NewEkrDragonTunk: @ 0x080669A4
 	push {r4, r5, lr}
 	adds r4, r0, #0
 	ldr r0, _080669DC @ =gUnk_08C4889C
@@ -2257,7 +1903,7 @@ sub_08066AE0: @ 0x08066AE0
 	adds r0, #0xd8
 	strh r0, [r2, #0x3a]
 	ldr r2, [r4, #0x64]
-	ldr r5, _08066C9C @ =0x02017760
+	ldr r5, _08066C9C @ =gEkrBg2QuakeVec
 	ldrh r3, [r2, #0x32]
 	ldrh r6, [r5]
 	subs r0, r3, r6
@@ -2277,7 +1923,7 @@ sub_08066AE0: @ 0x08066AE0
 	ldrh r2, [r5, #2]
 	movs r0, #2
 	bl SetBgOffset
-	ldr r6, _08066CA0 @ =0x02000038
+	ldr r6, _08066CA0 @ =gEkrBg0QuakeVec
 	ldrh r0, [r5]
 	ldrh r2, [r6]
 	adds r1, r0, r2
@@ -2302,7 +1948,7 @@ sub_08066AE0: @ 0x08066AE0
 	rsbs r1, r1, #0
 	lsls r1, r1, #0x10
 	asrs r1, r1, #0x10
-	bl sub_0804CC8C
+	bl EkrGauge_0804CC8C
 	ldrh r3, [r5]
 	ldrh r1, [r6]
 	adds r0, r3, r1
@@ -2315,7 +1961,7 @@ sub_08066AE0: @ 0x08066AE0
 	rsbs r1, r1, #0
 	lsls r1, r1, #0x10
 	lsrs r1, r1, #0x10
-	bl sub_0804D5D8
+	bl EkrDispUP_SetPositionSync
 	ldrh r1, [r4, #0x2c]
 	adds r1, #1
 	strh r1, [r4, #0x2c]
@@ -2406,7 +2052,7 @@ _08066C14:
 	rsbs r1, r2, #0
 	lsls r1, r1, #0x10
 	asrs r1, r1, #0x10
-	bl sub_0804CC8C
+	bl EkrGauge_0804CC8C
 	ldrh r3, [r6]
 	rsbs r0, r3, #0
 	lsls r0, r0, #0x10
@@ -2415,7 +2061,7 @@ _08066C14:
 	rsbs r1, r6, #0
 	lsls r1, r1, #0x10
 	lsrs r1, r1, #0x10
-	bl sub_0804D5D8
+	bl EkrDispUP_SetPositionSync
 	movs r0, #0x10
 	bl EkrDragonUpdatePal_08065510
 _08066C7A:
@@ -2436,8 +2082,8 @@ _08066C92:
 	pop {r0}
 	bx r0
 	.align 2, 0
-_08066C9C: .4byte 0x02017760
-_08066CA0: .4byte 0x02000038
+_08066C9C: .4byte gEkrBg2QuakeVec
+_08066CA0: .4byte gEkrBg0QuakeVec
 _08066CA4: .4byte 0x000002F3
 
 	thumb_func_start nullsub_56
@@ -2599,12 +2245,12 @@ sub_08066DD8: @ 0x08066DD8
 	mov sb, r0
 	ldr r0, [r0, #0x5c]
 	str r0, [sp]
-	ldr r4, _08066F6C @ =0x02017760
+	ldr r4, _08066F6C @ =gEkrBg2QuakeVec
 	ldrh r1, [r4]
 	ldrh r2, [r4, #2]
 	movs r0, #2
 	bl SetBgOffset
-	ldr r7, _08066F70 @ =0x02000038
+	ldr r7, _08066F70 @ =gEkrBg0QuakeVec
 	ldrh r2, [r4]
 	ldrh r3, [r7]
 	adds r1, r2, r3
@@ -2629,7 +2275,7 @@ sub_08066DD8: @ 0x08066DD8
 	rsbs r1, r1, #0
 	lsls r1, r1, #0x10
 	asrs r1, r1, #0x10
-	bl sub_0804CC8C
+	bl EkrGauge_0804CC8C
 	ldrh r1, [r4]
 	ldrh r2, [r7]
 	adds r0, r1, r2
@@ -2642,7 +2288,7 @@ sub_08066DD8: @ 0x08066DD8
 	rsbs r1, r1, #0
 	lsls r1, r1, #0x10
 	lsrs r1, r1, #0x10
-	bl sub_0804D5D8
+	bl EkrDispUP_SetPositionSync
 	ldrh r1, [r4]
 	ldrh r2, [r4, #2]
 	movs r0, #3
@@ -2716,7 +2362,7 @@ sub_08066DD8: @ 0x08066DD8
 	rsbs r1, r2, #0
 	lsls r1, r1, #0x10
 	asrs r1, r1, #0x10
-	bl sub_0804CC8C
+	bl EkrGauge_0804CC8C
 	ldrh r3, [r7]
 	rsbs r0, r3, #0
 	lsls r0, r0, #0x10
@@ -2725,7 +2371,7 @@ sub_08066DD8: @ 0x08066DD8
 	rsbs r1, r7, #0
 	lsls r1, r1, #0x10
 	lsrs r1, r1, #0x10
-	bl sub_0804D5D8
+	bl EkrDispUP_SetPositionSync
 	movs r0, #3
 	movs r1, #0
 	movs r2, #0
@@ -2778,8 +2424,8 @@ _08066F5C:
 	pop {r0}
 	bx r0
 	.align 2, 0
-_08066F6C: .4byte 0x02017760
-_08066F70: .4byte 0x02000038
+_08066F6C: .4byte gEkrBg2QuakeVec
+_08066F70: .4byte gEkrBg0QuakeVec
 _08066F74: .4byte gEkrXPosReal
 _08066F78: .4byte gEkrBgPosition
 _08066F7C: .4byte gEkrYPosReal

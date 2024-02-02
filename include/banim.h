@@ -78,40 +78,42 @@ extern s16 gEkrXPosReal[2];
 extern s16 gEkrYPosReal[2];
 extern u16 gEkrXPosBase[2];
 extern u16 gEkrYPosBase[2];
+extern struct Vec2 gEkrBg0QuakeVec;
+extern struct Vec2 gEkrBg2QuakeVec;
 
 void NewEkrLvlupFan(void);
 // ??? EkrLvupFanMain
 // ??? sub_0804C8F4
 // ??? sub_0804C944
-// ??? NewEkrGauge
-// ??? EndEkrGauge
-// ??? EkrGauge_0804CC28
-// ??? EkrGauge_0804CC38
-// ??? sub_0804CC48
-// ??? sub_0804CC58
-// ??? EkrGauge_0804CC68
-// ??? sub_0804CC78
-// ??? sub_0804CC8C
-// ??? sub_0804CCA0
-// ??? sub_0804CCB0
+void NewEkrGauge(void);
+void EndEkrGauge(void);
+void EkrGauge_0804CC28(void);
+void EkrGauge_0804CC38(void);
+void EkrGauge_0804CC48(void);
+void EkrGauge_0804CC58(void);
+void EkrGauge_0804CC68(u16 val);
+void EkrGauge_0804CC78(s16 x, s16 y);
+void EkrGauge_0804CC8C(s16 x, s16 y);
+void EkrGauge_SetInitFlag(void);
+void EkrGauge_ClrInitFlag(void);
 // ??? EnableEkrGauge
 // ??? DisableEkrGauge
 // ??? sub_0804CCE0
 // ??? ekrGaugeMain
 // ??? sub_0804D13C
-// ??? sub_0804D540
-// ??? sub_0804D570
-// ??? sub_0804D584
-// ??? sub_0804D594
-// ??? sub_0804D5A4
-// ??? sub_0804D5B4
-// ??? sub_0804D5C4
-// ??? sub_0804D5D8
-// ??? sub_0804D5EC
-// ??? sub_0804D5FC
-// ??? EkrGauge_0804D60C
-// ??? EkrGauge_0804D61C
-// ??? sub_0804D62C
+void NewEkrDispUP(void);
+void EndEkrDispUP(void);
+// ??? EkrDispUP_0804D584
+// ??? EkrDispUP_0804D594
+// ??? EkrDispUP_0804D5A4
+// ??? EkrDispUP_0804D5B4
+void EkrDispUP_SetPositionUnsync(u16 x, u16 y);
+void EkrDispUP_SetPositionSync(u16 x, u16 y);
+void SyncEkrDispUP(void);
+void UnsyncEkrDispUP(void);
+void AsyncEkrDispUP(void);
+void UnAsyncEkrDispUP(void);
+// ??? ekrDispUPMain
 // ??? sub_0804D738
 // ??? sub_0804D894
 // ??? EfxPrepareScreenFx

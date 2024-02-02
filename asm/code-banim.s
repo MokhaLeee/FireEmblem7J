@@ -2873,7 +2873,7 @@ sub_08055DA8: @ 0x08055DA8
 	bl sub_0804D738
 	bl UpdateBanimFrame
 	bl NewEkrGauge
-	bl sub_0804D540
+	bl NewEkrDispUP
 	bl NewEkrBattle
 	ldr r0, _08055E24 @ =gUnk_081E4210
 	ldr r4, _08055E28 @ =gPal + 0xc0
@@ -4444,12 +4444,12 @@ sub_080569FC: @ 0x080569FC
 	mov r5, r8
 	push {r5, r6, r7}
 	mov r8, r0
-	ldr r5, _08056A8C @ =0x02017760
+	ldr r5, _08056A8C @ =gEkrBg2QuakeVec
 	ldrh r1, [r5]
 	ldrh r2, [r5, #2]
 	movs r0, #2
 	bl SetBgOffset
-	ldr r4, _08056A90 @ =0x02000038
+	ldr r4, _08056A90 @ =gEkrBg0QuakeVec
 	ldrh r0, [r5]
 	ldrh r2, [r4]
 	adds r1, r0, r2
@@ -4474,7 +4474,7 @@ sub_080569FC: @ 0x080569FC
 	rsbs r1, r1, #0
 	lsls r1, r1, #0x10
 	asrs r1, r1, #0x10
-	bl sub_0804CC8C
+	bl EkrGauge_0804CC8C
 	ldrh r3, [r5]
 	ldrh r1, [r4]
 	adds r0, r3, r1
@@ -4487,7 +4487,7 @@ sub_080569FC: @ 0x080569FC
 	rsbs r1, r1, #0
 	lsls r1, r1, #0x10
 	lsrs r1, r1, #0x10
-	bl sub_0804D5D8
+	bl EkrDispUP_SetPositionSync
 	bl CheckInEkrDragon
 	cmp r0, #0
 	beq _08056A7A
@@ -4505,8 +4505,8 @@ _08056A7A:
 	subs r0, r4, r1
 	b _08056AA0
 	.align 2, 0
-_08056A8C: .4byte 0x02017760
-_08056A90: .4byte 0x02000038
+_08056A8C: .4byte gEkrBg2QuakeVec
+_08056A90: .4byte gEkrBg0QuakeVec
 _08056A94: .4byte gEkrXPosReal
 _08056A98:
 	ldr r3, _08056BB0 @ =gEkrXPosReal
@@ -4527,7 +4527,7 @@ _08056AA0:
 	lsrs r6, r0, #0x10
 	mov sb, r3
 	mov sl, r1
-	ldr r2, _08056BBC @ =0x02017760
+	ldr r2, _08056BBC @ =gEkrBg2QuakeVec
 	mov r1, sb
 	ldrh r1, [r1, #2]
 	ldrh r3, [r2]
@@ -4572,7 +4572,7 @@ _08056AA0:
 	movs r1, #0
 	movs r2, #0
 	bl SetBgOffset
-	ldr r4, _08056BC4 @ =0x02000038
+	ldr r4, _08056BC4 @ =gEkrBg0QuakeVec
 	ldrh r1, [r4]
 	ldrh r2, [r4, #2]
 	movs r0, #0
@@ -4585,7 +4585,7 @@ _08056AA0:
 	rsbs r1, r2, #0
 	lsls r1, r1, #0x10
 	asrs r1, r1, #0x10
-	bl sub_0804CC8C
+	bl EkrGauge_0804CC8C
 	ldrh r3, [r4]
 	rsbs r0, r3, #0
 	lsls r0, r0, #0x10
@@ -4594,7 +4594,7 @@ _08056AA0:
 	rsbs r1, r4, #0
 	lsls r1, r1, #0x10
 	lsrs r1, r1, #0x10
-	bl sub_0804D5D8
+	bl EkrDispUP_SetPositionSync
 	bl CheckInEkrDragon
 	cmp r0, #0
 	beq _08056B60
@@ -4644,9 +4644,9 @@ _08056BA2:
 _08056BB0: .4byte gEkrXPosReal
 _08056BB4: .4byte gEkrBgPosition
 _08056BB8: .4byte gEkrYPosReal
-_08056BBC: .4byte 0x02017760
+_08056BBC: .4byte gEkrBg2QuakeVec
 _08056BC0: .4byte gEfxBgSemaphore
-_08056BC4: .4byte 0x02000038
+_08056BC4: .4byte gEkrBg0QuakeVec
 
 	thumb_func_start sub_08056BC8
 sub_08056BC8: @ 0x08056BC8

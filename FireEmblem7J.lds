@@ -32,14 +32,17 @@ SECTIONS
 		. = 0x00002C; gEkrYPosReal = .;
 		. = 0x000030; gEkrXPosBase = .;
 		. = 0x000034; gEkrYPosBase = .;
+		. = 0x000038; gEkrBg0QuakeVec = .;
 		. = 0x00005C; gpBanimModesLeft = .;
 		. = 0x000060; gpBanimModesRight = .;
+		. = 0x00006C; gpProcEkrDispUP = .;
 		. = 0x00F1C8; gBanimScrLeft = .;
 		. = 0x0165C8; gEfxPal = .;
 		. = 0x017724; gEkrBattleEndFlag = .;
 		. = 0x017744; gEkrInitPosReal = .;
 		. = 0x01774C; gEfxBgSemaphore = .;
 		. = 0x017758; Unk_02017758 = .;
+		. = 0x017760; gEkrBg2QuakeVec = .;
 		. = 0x019784; gEkrTsaBuffer = .;
 		. = 0x01D41C; gEfxFrameTmap = .;
 		. = 0x01FAF8; gBanimDoneFlag = .;

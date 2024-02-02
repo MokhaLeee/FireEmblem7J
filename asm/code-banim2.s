@@ -8724,12 +8724,12 @@ sub_0806B5F8: @ 0x0806B5F8
 	mov r5, r8
 	push {r5, r6, r7}
 	adds r7, r0, #0
-	ldr r4, _0806B760 @ =0x02017760
+	ldr r4, _0806B760 @ =gEkrBg2QuakeVec
 	ldrh r1, [r4]
 	ldrh r2, [r4, #2]
 	movs r0, #2
 	bl SetBgOffset
-	ldr r6, _0806B764 @ =0x02000038
+	ldr r6, _0806B764 @ =gEkrBg0QuakeVec
 	ldrh r0, [r4]
 	ldrh r2, [r6]
 	adds r1, r0, r2
@@ -8754,7 +8754,7 @@ sub_0806B5F8: @ 0x0806B5F8
 	rsbs r1, r1, #0
 	lsls r1, r1, #0x10
 	asrs r1, r1, #0x10
-	bl sub_0804CC8C
+	bl EkrGauge_0804CC8C
 	ldrh r3, [r4]
 	ldrh r1, [r6]
 	adds r0, r3, r1
@@ -8767,7 +8767,7 @@ sub_0806B5F8: @ 0x0806B5F8
 	rsbs r1, r1, #0
 	lsls r1, r1, #0x10
 	lsrs r1, r1, #0x10
-	bl sub_0804D5D8
+	bl EkrDispUP_SetPositionSync
 	ldr r0, _0806B768 @ =gEkrXPosReal
 	mov sb, r0
 	ldrh r5, [r4]
@@ -8837,7 +8837,7 @@ sub_0806B5F8: @ 0x0806B5F8
 	rsbs r1, r2, #0
 	lsls r1, r1, #0x10
 	asrs r1, r1, #0x10
-	bl sub_0804CC8C
+	bl EkrGauge_0804CC8C
 	ldrh r3, [r6]
 	rsbs r0, r3, #0
 	lsls r0, r0, #0x10
@@ -8846,7 +8846,7 @@ sub_0806B5F8: @ 0x0806B5F8
 	rsbs r1, r6, #0
 	lsls r1, r1, #0x10
 	lsrs r1, r1, #0x10
-	bl sub_0804D5D8
+	bl EkrDispUP_SetPositionSync
 	mov r0, sl
 	ldr r4, [r0]
 	mov r2, sb
@@ -8886,8 +8886,8 @@ _0806B752:
 	pop {r0}
 	bx r0
 	.align 2, 0
-_0806B760: .4byte 0x02017760
-_0806B764: .4byte 0x02000038
+_0806B760: .4byte gEkrBg2QuakeVec
+_0806B764: .4byte gEkrBg0QuakeVec
 _0806B768: .4byte gEkrXPosReal
 _0806B76C: .4byte gEkrBgPosition
 _0806B770: .4byte gEkrYPosReal

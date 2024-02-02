@@ -1421,14 +1421,14 @@ sub_0804E8CC: @ 0x0804E8CC
 	cmp r0, #1
 	bne _0804E92A
 	bl EnableEkrGauge
-	bl EkrGauge_0804D60C
+	bl AsyncEkrDispUP
 	movs r0, #0
 	str r0, [sp]
 	ldr r1, _0804E934 @ =gBg0Tm
 	ldr r2, _0804E938 @ =0x01000200
 	mov r0, sp
 	bl CpuFastSet
-	ldr r0, _0804E93C @ =0x02000038
+	ldr r0, _0804E93C @ =gEkrBg0QuakeVec
 	ldrh r1, [r0]
 	ldrh r2, [r0, #2]
 	movs r0, #0
@@ -1456,7 +1456,7 @@ _0804E92A:
 	.align 2, 0
 _0804E934: .4byte gBg0Tm
 _0804E938: .4byte 0x01000200
-_0804E93C: .4byte 0x02000038
+_0804E93C: .4byte gEkrBg0QuakeVec
 _0804E940: .4byte gEkrPids
 
 	thumb_func_start sub_0804E944
@@ -1489,7 +1489,7 @@ sub_0804E944: @ 0x0804E944
 	movs r2, #0
 	bl NewEkrNamewinAppear
 	bl DisableEkrGauge
-	bl EkrGauge_0804D61C
+	bl UnAsyncEkrDispUP
 	bl EkrGauge_0804CC28
 	adds r0, r4, #0
 	bl Proc_Break
@@ -2237,7 +2237,7 @@ sub_0804EF58: @ 0x0804EF58
 	ldr r1, _0804EF88 @ =0x00007FFF
 	cmp r4, r1
 	beq _0804EF90
-	ldr r1, _0804EF8C @ =0x02017760
+	ldr r1, _0804EF8C @ =gEkrBg2QuakeVec
 	strh r4, [r1]
 	movs r4, #0x2c
 	ldrsh r0, [r2, r4]
@@ -2251,7 +2251,7 @@ sub_0804EF58: @ 0x0804EF58
 	b _0804EFBC
 	.align 2, 0
 _0804EF88: .4byte 0x00007FFF
-_0804EF8C: .4byte 0x02017760
+_0804EF8C: .4byte gEkrBg2QuakeVec
 _0804EF90:
 	adds r0, r2, #0
 	adds r0, #0x2a
@@ -2263,16 +2263,16 @@ _0804EF90:
 	b _0804EFBC
 _0804EFA0:
 	strh r0, [r2, #0x2c]
-	ldr r0, _0804EFB0 @ =0x02017760
+	ldr r0, _0804EFB0 @ =gEkrBg2QuakeVec
 	ldrh r1, [r3]
 	strh r1, [r0]
 	ldrh r1, [r3, #2]
 	strh r1, [r0, #2]
 	b _0804EFBC
 	.align 2, 0
-_0804EFB0: .4byte 0x02017760
+_0804EFB0: .4byte gEkrBg2QuakeVec
 _0804EFB4:
-	ldr r1, _0804EFC4 @ =0x02017760
+	ldr r1, _0804EFC4 @ =gEkrBg2QuakeVec
 	movs r0, #0
 	strh r0, [r1, #2]
 	strh r0, [r1]
@@ -2281,7 +2281,7 @@ _0804EFBC:
 	pop {r0}
 	bx r0
 	.align 2, 0
-_0804EFC4: .4byte 0x02017760
+_0804EFC4: .4byte gEkrBg2QuakeVec
 
 	thumb_func_start NewEfxHitQuakePure
 NewEfxHitQuakePure: @ 0x0804EFC8
@@ -2492,7 +2492,7 @@ _0804F15C: .4byte gEkrBgPosition
 _0804F160: .4byte gEkrYPosReal
 _0804F164: .4byte 0x0201773C
 _0804F168:
-	ldr r5, _0804F1C0 @ =0x02017760
+	ldr r5, _0804F1C0 @ =gEkrBg2QuakeVec
 	strh r2, [r5]
 	movs r1, #0x2c
 	ldrsh r0, [r6, r1]
@@ -2533,7 +2533,7 @@ _0804F1A8:
 	subs r1, r1, r0
 	b _0804F1D4
 	.align 2, 0
-_0804F1C0: .4byte 0x02017760
+_0804F1C0: .4byte gEkrBg2QuakeVec
 _0804F1C4: .4byte gEkrXPosReal
 _0804F1C8:
 	ldr r4, _0804F234 @ =gEkrXPosReal
@@ -2558,7 +2558,7 @@ _0804F1D4:
 	adds r5, r2, #0
 	movs r2, #2
 	ldrsh r1, [r4, r2]
-	ldr r2, _0804F240 @ =0x02017760
+	ldr r2, _0804F240 @ =gEkrBg2QuakeVec
 	movs r4, #0
 	ldrsh r0, [r2, r4]
 	adds r1, r1, r0
@@ -2592,7 +2592,7 @@ _0804F1D4:
 _0804F234: .4byte gEkrXPosReal
 _0804F238: .4byte gEkrBgPosition
 _0804F23C: .4byte gEkrYPosReal
-_0804F240: .4byte 0x02017760
+_0804F240: .4byte gEkrBg2QuakeVec
 _0804F244: .4byte gEkrDistanceType
 _0804F248:
 	cmp r0, #0
@@ -2951,7 +2951,7 @@ _0804F4E6:
 	movs r2, #0
 	bl SetBgOffset
 _0804F53A:
-	ldr r4, _0804F58C @ =0x02000038
+	ldr r4, _0804F58C @ =gEkrBg0QuakeVec
 	ldrh r1, [r4]
 	ldrh r2, [r4, #2]
 	movs r0, #0
@@ -2964,7 +2964,7 @@ _0804F53A:
 	rsbs r1, r6, #0
 	lsls r1, r1, #0x10
 	asrs r1, r1, #0x10
-	bl sub_0804CC8C
+	bl EkrGauge_0804CC8C
 	ldrh r1, [r4]
 	rsbs r0, r1, #0
 	lsls r0, r0, #0x10
@@ -2973,7 +2973,7 @@ _0804F53A:
 	rsbs r1, r4, #0
 	lsls r1, r1, #0x10
 	lsrs r1, r1, #0x10
-	bl sub_0804D5D8
+	bl EkrDispUP_SetPositionSync
 _0804F56E:
 	adds r0, r7, #0
 	bl Proc_End
@@ -2984,7 +2984,7 @@ _0804F57C: .4byte 0x0201FAD0
 _0804F580: .4byte gEkrXPosReal
 _0804F584: .4byte gEkrYPosReal
 _0804F588: .4byte 0x02017740
-_0804F58C: .4byte 0x02000038
+_0804F58C: .4byte gEkrBg0QuakeVec
 _0804F590:
 	movs r2, #0x2c
 	ldrsh r4, [r7, r2]
@@ -3007,7 +3007,7 @@ _0804F590:
 	movs r3, #0
 	bl FillBGRect
 _0804F5BC:
-	ldr r4, _0804F61C @ =0x02017760
+	ldr r4, _0804F61C @ =gEkrBg2QuakeVec
 	movs r3, #0x2c
 	ldrsh r0, [r7, r3]
 	lsls r0, r0, #2
@@ -3053,7 +3053,7 @@ _0804F5BC:
 	b _0804F632
 	.align 2, 0
 _0804F618: .4byte gBg2Tm + 0x2c0
-_0804F61C: .4byte 0x02017760
+_0804F61C: .4byte gEkrBg2QuakeVec
 _0804F620: .4byte gEkrBgPosition
 _0804F624: .4byte gEkrXPosBase
 _0804F628:
@@ -3079,8 +3079,8 @@ _0804F632:
 	movs r0, #3
 	bl SetBgOffset
 _0804F656:
-	ldr r5, _0804F6E8 @ =0x02017760
-	ldr r4, _0804F6EC @ =0x02000038
+	ldr r5, _0804F6E8 @ =gEkrBg2QuakeVec
+	ldr r4, _0804F6EC @ =gEkrBg0QuakeVec
 	ldrh r2, [r5]
 	ldrh r3, [r4]
 	adds r1, r2, r3
@@ -3105,7 +3105,7 @@ _0804F656:
 	rsbs r1, r1, #0
 	lsls r1, r1, #0x10
 	asrs r1, r1, #0x10
-	bl sub_0804CC8C
+	bl EkrGauge_0804CC8C
 	ldrh r1, [r5]
 	ldrh r2, [r4]
 	adds r0, r1, r2
@@ -3118,12 +3118,12 @@ _0804F656:
 	rsbs r1, r1, #0
 	lsls r1, r1, #0x10
 	lsrs r1, r1, #0x10
-	bl sub_0804D5D8
+	bl EkrDispUP_SetPositionSync
 _0804F6AC:
 	bl CheckInEkrDragon
 	cmp r0, #0
 	beq _0804F6C0
-	ldr r0, _0804F6E8 @ =0x02017760
+	ldr r0, _0804F6E8 @ =gEkrBg2QuakeVec
 	ldrh r1, [r0]
 	ldrh r2, [r0, #2]
 	movs r0, #3
@@ -3136,7 +3136,7 @@ _0804F6C0:
 	mov ip, r3
 	movs r4, #0
 	ldrsh r1, [r3, r4]
-	ldr r2, _0804F6E8 @ =0x02017760
+	ldr r2, _0804F6E8 @ =gEkrBg2QuakeVec
 	movs r5, #0
 	ldrsh r0, [r2, r5]
 	subs r1, r1, r0
@@ -3148,8 +3148,8 @@ _0804F6C0:
 	ldrsh r1, [r3, r0]
 	b _0804F718
 	.align 2, 0
-_0804F6E8: .4byte 0x02017760
-_0804F6EC: .4byte 0x02000038
+_0804F6E8: .4byte gEkrBg2QuakeVec
+_0804F6EC: .4byte gEkrBg0QuakeVec
 _0804F6F0: .4byte gEkrXPosReal
 _0804F6F4: .4byte gEkrBgPosition
 _0804F6F8: .4byte gEkrYPosReal
@@ -3158,7 +3158,7 @@ _0804F6FC:
 	mov ip, r6
 	movs r0, #0
 	ldrsh r1, [r6, r0]
-	ldr r2, _0804F768 @ =0x02017760
+	ldr r2, _0804F768 @ =gEkrBg2QuakeVec
 	movs r3, #0
 	ldrsh r0, [r2, r3]
 	adds r1, r1, r0
@@ -3207,7 +3207,7 @@ _0804F718:
 	b _0804F7AA
 	.align 2, 0
 _0804F764: .4byte gEkrXPosReal
-_0804F768: .4byte 0x02017760
+_0804F768: .4byte gEkrBg2QuakeVec
 _0804F76C: .4byte gEkrBgPosition
 _0804F770: .4byte gEkrYPosReal
 _0804F774: .4byte gEkrDistanceType
