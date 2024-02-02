@@ -44063,7 +44063,7 @@ sub_08080FB8: @ 0x08080FB8
 	str r0, [sp, #8]
 	ldr r4, _080810A0 @ =gStatScreenSt
 	ldr r0, [r4, #0xc]
-	bl sub_08026B44
+	bl GetUnitTotalSupportLevel
 	movs r1, #0
 	str r1, [sp, #0xc]
 	cmp r0, #5
@@ -44088,14 +44088,14 @@ _08080FF8:
 	ldr r1, _080810A0 @ =gStatScreenSt
 	ldr r0, [r1, #0xc]
 	mov r1, sb
-	bl sub_08026B20
+	bl GetUnitSupportLevel
 	adds r7, r0, #0
 	cmp r7, #0
 	beq _08081088
 	ldr r1, _080810A0 @ =gStatScreenSt
 	ldr r0, [r1, #0xc]
 	mov r1, sb
-	bl sub_08026AC4
+	bl GetUnitSupportPid
 	adds r4, r0, #0
 	lsls r4, r4, #0x18
 	lsrs r4, r4, #0x18
@@ -46635,7 +46635,7 @@ sub_08082498: @ 0x08082498
 	adds r4, r0, #0
 	ldr r0, _080824BC @ =gStatScreenSt
 	ldr r0, [r0, #0xc]
-	bl sub_08026B44
+	bl GetUnitTotalSupportLevel
 	cmp r0, #0
 	bne _080824C6
 	adds r0, r4, #0
@@ -65680,7 +65680,7 @@ _0808BDD4:
 	ldr r0, [r7]
 	ldr r0, [r0]
 	adds r1, r6, #0
-	bl sub_08026AD8
+	bl GetUnitSupportUnit
 	ldr r0, [r0, #0xc]
 	movs r1, #8
 	ands r0, r1
@@ -65691,7 +65691,7 @@ _0808BDD4:
 	ldr r0, [r7]
 	ldr r0, [r0]
 	adds r1, r6, #0
-	bl sub_08026AC4
+	bl GetUnitSupportPid
 	lsls r0, r0, #0x18
 	lsrs r0, r0, #0x18
 	bl GetCharacterData
@@ -65723,7 +65723,7 @@ _0808BE4C:
 	ldr r0, [r7]
 	ldr r0, [r0]
 	adds r1, r6, #0
-	bl sub_08026AC4
+	bl GetUnitSupportPid
 	lsls r0, r0, #0x18
 	lsrs r0, r0, #0x18
 	bl GetCharacterData
@@ -97590,7 +97590,7 @@ _0809BC88:
 	adds r4, r0, #0
 	adds r0, r5, #0
 	adds r1, r6, #0
-	bl sub_08026B20
+	bl GetUnitSupportLevel
 	ldr r2, [r7]
 	mov r1, r8
 	ldr r3, [r1]

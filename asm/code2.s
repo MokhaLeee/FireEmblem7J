@@ -42955,7 +42955,7 @@ sub_080B8FC0: @ 0x080B8FC0
 _080B8FCA:
 	adds r0, r5, #0
 	adds r1, r4, #0
-	bl sub_08026AC4
+	bl GetUnitSupportPid
 	lsls r0, r0, #0x18
 	lsrs r0, r0, #0x18
 	b _080B8FEE
@@ -42964,7 +42964,7 @@ _080B8FD8:
 _080B8FDA:
 	adds r0, r5, #0
 	adds r1, r4, #0
-	bl sub_08026B20
+	bl GetUnitSupportLevel
 	cmp r0, #3
 	beq _080B8FCA
 	adds r4, #1

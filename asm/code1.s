@@ -2875,7 +2875,7 @@ sub_0802FA0C: @ 0x0802FA0C
 	ldr r1, [r4]
 	ldrb r5, [r1, #4]
 	adds r1, r7, #0
-	bl sub_08026B20
+	bl GetUnitSupportLevel
 	adds r2, r0, #0
 	adds r0, r6, #0
 	adds r1, r5, #0

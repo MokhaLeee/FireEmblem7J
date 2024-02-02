@@ -190,6 +190,7 @@ SECTIONS
 		src/gold.o(.text);
 		asm/target-sel.o(.text);
 		asm/unit-sprite.o(.text);
+		src/support.o(.text);
 		asm/support.o(.text);
 		asm/item-use.o(.text);
 		src/battle.o(.text);
