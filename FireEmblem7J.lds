@@ -231,6 +231,7 @@ SECTIONS
 		. = ALIGN(4); src/battle.o(.rodata)
 		. = ALIGN(4); data/const_data_081C94C8.o(.rodata)
 		. = ALIGN(4); src/save_core.o(.rodata)
+
 		. = ALIGN(4); data/data_0842D270.o(.data)
 		. = ALIGN(4); src/hardware.o(.data)
 		. = ALIGN(4); data/data_08BBFCA8.o(.data)
