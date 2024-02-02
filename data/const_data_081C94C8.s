@@ -704,12 +704,12 @@ gUnk_081DE00C:	@ 0x081DE00C
 gUnk_081DE036:	@ 0x081DE036
 	.incbin "FireEmblem7J.base.gba", 0x1DE036, 0x1DE058 - 0x1DE036
 
-	.global gUnk_081DE058
-gUnk_081DE058:	@ 0x081DE058
+	.global FrameLut_EfxStatusUnit
+FrameLut_EfxStatusUnit:	@ 0x081DE058
 	.incbin "FireEmblem7J.base.gba", 0x1DE058, 0x1DE07A - 0x1DE058
 
-	.global gUnk_081DE07A
-gUnk_081DE07A:	@ 0x081DE07A
+	.global FrameLut_EfxWeaponIcon
+FrameLut_EfxWeaponIcon:	@ 0x081DE07A
 	.incbin "FireEmblem7J.base.gba", 0x1DE07A, 0x1DE0A8 - 0x1DE07A
 
 	.global gUnk_081DE0A8
@@ -2274,20 +2274,20 @@ Tsa_EkrDragon_MainBg:	@ 0x082E6E8C
 gUnk_082E7418:	@ 0x082E7418
 	.incbin "FireEmblem7J.base.gba", 0x2E7418, 0x2E76A4 - 0x2E7418
 
-	.global Img_EkrDragonHeadAnim
-Img_EkrDragonHeadAnim:	@ 0x082E76A4
+	.global Img_EkrDragonTunkFace
+Img_EkrDragonTunkFace:	@ 0x082E76A4
 	.incbin "FireEmblem7J.base.gba", 0x2E76A4, 0x2E8584 - 0x2E76A4
 
 	.global Img_EkrDragonSpark
 Img_EkrDragonSpark:	@ 0x082E8584
 	.incbin "FireEmblem7J.base.gba", 0x2E8584, 0x2E9240 - 0x2E8584
 
-	.global Img_EkrDragonDead
-Img_EkrDragonDead:	@ 0x082E9240
+	.global Img_EfxDragonDeadFallHead
+Img_EfxDragonDeadFallHead:	@ 0x082E9240
 	.incbin "FireEmblem7J.base.gba", 0x2E9240, 0x2E9CD8 - 0x2E9240
 
-	.global Pal_EkrDragonHeadAnim
-Pal_EkrDragonHeadAnim:	@ 0x082E9CD8
+	.global Pal_EkrDragonHead
+Pal_EkrDragonHead:	@ 0x082E9CD8
 	.incbin "FireEmblem7J.base.gba", 0x2E9CD8, 0x2E9CF8 - 0x2E9CD8
 
 	.global gUnk_082E9CF8

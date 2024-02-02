@@ -1,29 +1,5 @@
 	.section .data
 
-	.global ProcScr_EkrDragonBaseHide
-ProcScr_EkrDragonBaseHide:	@ 0x08C486EC
-	.incbin "FireEmblem7J.base.gba", 0xC486EC, 0xC4870C - 0xC486EC
-
-	.global gUnk_08C4870C
-gUnk_08C4870C:	@ 0x08C4870C
-	.incbin "FireEmblem7J.base.gba", 0xC4870C, 0xC4872C - 0xC4870C
-
-	.global gUnk_08C4872C
-gUnk_08C4872C:	@ 0x08C4872C
-	.incbin "FireEmblem7J.base.gba", 0xC4872C, 0xC48744 - 0xC4872C
-
-	.global gUnk_08C48744
-gUnk_08C48744:	@ 0x08C48744
-	.incbin "FireEmblem7J.base.gba", 0xC48744, 0xC48774 - 0xC48744
-
-	.global gUnk_08C48774
-gUnk_08C48774:	@ 0x08C48774
-	.incbin "FireEmblem7J.base.gba", 0xC48774, 0xC4879C - 0xC48774
-
-	.global gUnk_08C4879C
-gUnk_08C4879C:	@ 0x08C4879C
-	.incbin "FireEmblem7J.base.gba", 0xC4879C, 0xC487B4 - 0xC4879C
-
 	.global gUnk_08C487B4
 gUnk_08C487B4:	@ 0x08C487B4
 	.incbin "FireEmblem7J.base.gba", 0xC487B4, 0xC487CC - 0xC487B4
@@ -76,20 +52,20 @@ gUnk_08C488E4:	@ 0x08C488E4
 gUnk_08C488FC:	@ 0x08C488FC
 	.incbin "FireEmblem7J.base.gba", 0xC488FC, 0xC49EEC - 0xC488FC
 
-	.global gUnk_08C49EEC
-gUnk_08C49EEC:	@ 0x08C49EEC
+	.global AnimScr_EfxDragonDeadFallBody
+AnimScr_EfxDragonDeadFallBody:	@ 0x08C49EEC
 	.incbin "FireEmblem7J.base.gba", 0xC49EEC, 0xC49FA4 - 0xC49EEC
 
 	.global AnimScr_EkrDragonHead
 AnimScr_EkrDragonHead:	@ 0x08C49FA4
 	.incbin "FireEmblem7J.base.gba", 0xC49FA4, 0xC49FAC - 0xC49FA4
 
-	.global gUnk_08C49FAC
-gUnk_08C49FAC:	@ 0x08C49FAC
+	.global AnimScr_EfxDragonDeadFallBody2
+AnimScr_EfxDragonDeadFallBody2:	@ 0x08C49FAC
 	.incbin "FireEmblem7J.base.gba", 0xC49FAC, 0xC49FFC - 0xC49FAC
 
-	.global gUnk_08C49FFC
-gUnk_08C49FFC:	@ 0x08C49FFC
+	.global AnimScr_EfxDragonDeadFallHeadFx
+AnimScr_EfxDragonDeadFallHeadFx:	@ 0x08C49FFC
 	.incbin "FireEmblem7J.base.gba", 0xC49FFC, 0xC4A008 - 0xC49FFC
 
 	.global gUnk_08C4A008

@@ -195,12 +195,12 @@ void SetEkrDragonExit(struct Anim * anim)
     AddEkrDragonStatusAttr(anim, EKRDRGON_ATTR_BANIMFINISH);
 }
 
-void SetEkrDragonDead(struct Anim * anim)
+void SetEfxDragonDeadFallHead(struct Anim * anim)
 {
     AddEkrDragonStatusAttr(anim, EKRDRGON_ATTR_DEAD);
 }
 
-bool CheckEkrDragonDead(struct Anim * anim)
+bool CheckEfxDragonDeadFallHead(struct Anim * anim)
 {
     u16 attr = GetEkrDragonStatusAttr(anim);
     if (attr & EKRDRGON_ATTR_DEAD)
@@ -228,7 +228,7 @@ void EkrDragonUpdateFlashingUnit(struct Anim * anim)
     }
 }
 
-void EkrDragonUpdatePal_080654C8(struct Anim * anim)
+void BanimSetFrontPaletteForDragon(struct Anim * anim)
 {
     if (CheckInEkrDragon() != false)
     {
@@ -320,7 +320,7 @@ void EkrDragon_StartMainBodyIntro(struct ProcEkrDragon * proc)
     }
 
     proc->timer = 0;
-    proc->procfx = EkrDragonFxHandler_Main(proc->anim);
+    proc->procfx = NewEkrDragonTunkFace(proc->anim);
 
     switch (gEkrDistanceType) {
     case EKR_DISTANCE_CLOSE:
@@ -341,7 +341,7 @@ void EkrDragon_StartMainBodyIntro(struct ProcEkrDragon * proc)
 
 void EkrDragon_DisplayMainBodyIntro(struct ProcEkrDragon * proc)
 {
-    struct ProcEkrDragonFx * procfx = proc->procfx;
+    struct ProcEkrDragonIntroFx * procfx = proc->procfx;
 
     if (gEkrDistanceType == EKR_DISTANCE_FARFAR)
     {
@@ -378,7 +378,7 @@ void EkrDragon_080657D4(struct ProcEkrDragon * proc)
 {
     if (gEkrDistanceType == EKR_DISTANCE_FARFAR)
     {
-        proc->sproc3 = sub_080660F4(proc->anim);
+        proc->sproc3 = NewEkrDragonStatusFlashing(proc->anim);
         proc->proc44 = sub_08066200(proc->anim);
         proc->proc4C = sub_08066414(proc->anim);
         proc->proc58 = sub_08066380();
@@ -393,7 +393,7 @@ void EkrDragon_080657D4(struct ProcEkrDragon * proc)
         proc->terminator = 0x80;
         proc->y = 0x20;
         proc->unk3C = 0;
-        proc->procfx = sub_08065F38(proc->anim);
+        proc->procfx = NewEfxDragonDeadFallBody(proc->anim);
         proc->procfx->x = proc->anim->xPosition;
         proc->procfx->unk3A = proc->anim->yPosition - proc->y;
         proc->proc54 = NewEfxQuakePure(8, 0);
@@ -406,7 +406,7 @@ void EkrDragon_080657D4(struct ProcEkrDragon * proc)
         EkrDragonTmCpyWithDistance();
         EkrDragonTmCpyExt(gEkrBgPosition, proc->y);
 
-        proc->sproc3 = sub_080660F4(proc->anim);
+        proc->sproc3 = NewEkrDragonStatusFlashing(proc->anim);
         proc->proc44 = sub_08066200(proc->anim);
         proc->proc4C = sub_08066414(proc->anim);
         proc->proc58 = sub_08066380();
@@ -535,7 +535,7 @@ void EkrDragon_InBattleIDLE(struct ProcEkrDragon * proc)
         Proc_End(proc->proc44);
         Proc_End(proc->mainfxproc);
 
-        if (!CheckEkrDragonDead(proc->anim))
+        if (!CheckEfxDragonDeadFallHead(proc->anim))
             proc->mainfxproc = NewEkrDragonBodyBlack(proc->anim);
         else
             proc->mainfxproc = NewEkrDragonTunk(proc->anim);

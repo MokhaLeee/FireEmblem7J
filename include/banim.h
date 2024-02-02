@@ -189,19 +189,49 @@ void NewEfxFlashBgDirectly(struct Anim * anim, int duartion);
 // ??? sub_0804FD74
 // ??? sub_0804FDB0
 // ??? sub_0804FE1C
-// ??? sub_0804FE74
+
+struct ProcEfxStatusUnit {
+    PROC_HEADER;
+    /* 29 */ u8 invalid;
+
+    STRUCT_PAD(0x2A, 0x2C);
+
+    /* 2C */ u16 timer;
+
+    STRUCT_PAD(0x2E, 0x32);
+
+    /* 32 */ s16 red;
+    /* 34 */ s16 green;
+    /* 36 */ s16 blue;
+
+    STRUCT_PAD(0x38, 0x44);
+
+    /* 44 */ u32 frame;
+    /* 48 */ const u16 *frame_lut;
+    /* 4C */ u32 debuff;
+    /* 50 */ u32 debuf_bak;
+
+    STRUCT_PAD(0x54, 0x5C);
+
+    /* 54 */ u8 _pad_54[0x5C - 0x54];
+    /* 5C */ struct Anim * anim;
+};
+
+extern struct ProcEfxStatusUnit * gpProcEfxStatusUnits[2];
+
+// ??? NewEfxStatusUnit
 // ??? EndEfxStatusUnits
-// ??? sub_0804FFAC
-// ??? sub_0804FFCC
-// ??? sub_0804FFEC
-// ??? sub_0805001C
-// ??? sub_08050038
-// ??? sub_080500DC
+// ??? DisableEfxStatusUnits
+// ??? EnableEfxStatusUnits
+// ??? SetUnitEfxDebuff
+// ??? GetUnitEfxDebuff
+// ??? EfxStatusUnitFlashing
+// ??? EfxStatusUnit_Loop
 // ??? sub_080501E4
-// ??? sub_0805022C
+// ??? NewEfxWeaponIcon
 // ??? EndProcEfxWeaponIcon
-// ??? sub_08050290
-// ??? sub_080502A0
+// ??? DisableEfxWeaponIcon
+// ??? EnableEfxWeaponIcon
 // ??? sub_080502B0
 // ??? sub_08050318
 // ??? sub_08050348
@@ -227,16 +257,16 @@ void SpellFx_SetSomeColorEffect(void);
 void SpellFx_ClearColorEffects(void);
 void StartBattleAnimHitEffectsDefault(struct Anim * anim, int type);
 // ??? sub_0805092C
-// ??? StartBattleAnimHitEffects
-// ??? StartBattleAnimResireHitEffects
-// ??? sub_08050BBC
-// ??? sub_08050BF8
-// ??? sub_08050C54
+void StartBattleAnimHitEffects(struct Anim * anim, int type);
+void StartBattleAnimResireHitEffects(struct Anim * anim, int type);
+void StartBattleAnimStatusChgHitEffects(struct Anim * anim, int type);
+struct Anim * EfxCreateFrontAnim(struct Anim * anim, const AnimScr * scr1, const AnimScr * scr2, const AnimScr * scr3, const AnimScr * scr4);
+struct Anim * EfxCreateBackAnim(struct Anim * anim, const AnimScr * scr1, const AnimScr *scr2, const AnimScr * scr3, const AnimScr * scr4);
 void SpellFx_WriteBgMap(struct Anim * anim, const u16 * src1, const u16 * src2);
 // ??? sub_08050D38
-void SpellFx_RegisterObjGfx(const u16 * img, u32 size);
+void SpellFx_RegisterObjGfx(const void * img, u32 size);
 void SpellFx_RegisterObjPal(const u16 * pal, u32 size);
-void SpellFx_RegisterBgGfx(const u16 * img, u32 size);
+void SpellFx_RegisterBgGfx(const void * img, u32 size);
 void SpellFx_RegisterBgPal(const u16 * pal, u32 size);
 // ??? sub_08050E2C
 // ??? sub_08050E58
@@ -350,11 +380,54 @@ void SetAnimStateUnHidden(int pos);
 // ??? sub_08055658
 // ??? sub_08055670
 // ??? sub_08055690
+
+/* ekrmainmini */
+struct BanimUnkStructComm {
+    /* 00 */ s16 unk00; // terrain L
+    /* 02 */ s16 unk02; // pal ID L
+    /* 04 */ s16 unk04; // chr L
+    /* 06 */ s16 unk06; // terrain R
+    /* 08 */ s16 unk08; // pal ID R
+    /* 0A */ s16 unk0A; // chr R
+    /* 0C */ s16 unk0C;
+    /* 0E */ s16 unk0E;
+    /* 10 */ u16 unk10;
+    /* 14 */ ProcPtr proc14; // sub emulator proc a
+    /* 18 */ ProcPtr proc18; // sub emulator proc b
+    /* 1C */ void * unk1C;
+    /* 20 */ void * unk20;
+    /* 24 */ void * unk24;
+};
+
+struct AnimBuffer {
+    /* 00 */ u8 unk_00;
+    /* 01 */ u8 genericPalId;
+    /* 02 */ u16 xPos;
+    /* 04 */ u16 yPos;
+    /* 06 */ s16 animId;
+    /* 08 */ s16 charPalId;
+    /* 0A */ u16 roundType;
+    /* 0C */ u16 state2;
+    /* 0E */ u16 oam2Tile;
+    /* 10 */ u16 oam2Pal;
+    /* 14 */ struct Anim * anim1;
+    /* 18 */ struct Anim * anim2;
+    /* 1C */ void * pImgSheetBuf;
+    /* 20 */ void * unk_20; // pal
+    /* 24 */ void * unk_24; // rtlOam
+    /* 28 */ void * unk_28; // frameData
+    /* 2C */ const void * unk_2C; // sheetPointer
+    /* 30 */ void * unk_30; // magicEffects
+    /* 34 */ void * unk_34; // ProcPtr; Procs_ekrUnitMainMini
+};
+
+extern struct BanimUnkStructComm EkrMainMiniConf_0201FAD0;
+
 // ??? sub_080556A4
 // ??? sub_080556B0
 // ??? sub_080556D8
 // ??? sub_080556FC
-// ??? sub_08055718
+void sub_08055718(struct BanimUnkStructComm * conf); // FE8U: void sub_805AA68(struct BanimUnkStructComm * buf)
 // ??? sub_08055AC4
 // ??? sub_08055AF0
 // ??? sub_08055B08
@@ -1015,7 +1088,7 @@ void EkrModifyBarfx(u16 * tm, int arg);
 bool EkrPalModifyUnused(u16 * pal_start, u16 * pal_end, u16 * dst, u16 amount, u16 start, u16 end);
 void EfxPalBlackInOut(u16 * pal_buf, int line, int length, int ref);
 void EfxPalWhiteInOut(u16 * pal_buf, int line, int length, int ref);
-void EfxPalGrayInOut(u16 * pal_buf, int line, int length, int r0, int g0, int b0);
+void EfxPalFlashingInOut(u16 * pal_buf, int line, int length, int r0, int g0, int b0);
 void EfxPalModifyPetrifyEffect(u16 * pal_buf, int line, int length);
 void EfxSplitColor(u16 * pal, u8 * dst, u32 length);
 void EfxSplitColorPetrify(u16 * src, u8 * dst, u32 length);

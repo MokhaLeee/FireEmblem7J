@@ -1044,12 +1044,12 @@ gUnk_08C0A218:	@ 0x08C0A218
 gUnk_08C0A238:	@ 0x08C0A238
 	.incbin "FireEmblem7J.base.gba", 0xC0A238, 0xC0A260 - 0xC0A238
 
-	.global gUnk_08C0A260
-gUnk_08C0A260:	@ 0x08C0A260
+	.global ProcScr_efxStatusUnit
+ProcScr_efxStatusUnit:	@ 0x08C0A260
 	.incbin "FireEmblem7J.base.gba", 0xC0A260, 0xC0A288 - 0xC0A260
 
-	.global gUnk_08C0A288
-gUnk_08C0A288:	@ 0x08C0A288
+	.global ProcScr_EfxWeaponIcon
+ProcScr_EfxWeaponIcon:	@ 0x08C0A288
 	.incbin "FireEmblem7J.base.gba", 0xC0A288, 0xC0A2B0 - 0xC0A288
 
 	.global gUnk_08C0A2B0

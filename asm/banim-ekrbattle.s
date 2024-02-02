@@ -649,15 +649,15 @@ sub_0804BE84: @ 0x0804BE84
 	adds r5, r0, #0
 	ldr r4, _0804BEC8 @ =gAnims
 	ldr r0, [r4]
-	bl sub_0804FE74
+	bl NewEfxStatusUnit
 	ldr r0, [r4, #8]
-	bl sub_0804FE74
+	bl NewEfxStatusUnit
 	ldr r1, _0804BECC @ =0x0203E0BC
 	movs r2, #0
 	ldrsh r0, [r1, r2]
 	movs r2, #2
 	ldrsh r1, [r1, r2]
-	bl sub_0805022C
+	bl NewEfxWeaponIcon
 	ldr r1, _0804BED0 @ =gBattleStats
 	movs r0, #0x40
 	ldrh r1, [r1]
@@ -665,7 +665,7 @@ sub_0804BE84: @ 0x0804BE84
 	cmp r0, #0
 	beq _0804BEB6
 	ldr r0, [r4]
-	bl sub_0804FFAC
+	bl DisableEfxStatusUnits
 _0804BEB6:
 	ldr r0, [r4]
 	bl sub_0804FB58
@@ -1019,7 +1019,7 @@ sub_0804C144: @ 0x0804C144
 	str r0, [r5, #0xc]
 	ldr r4, _0804C1BC @ =gAnims
 	ldr r0, [r4]
-	bl CheckEkrDragonDead
+	bl CheckEfxDragonDeadFallHead
 	lsls r0, r0, #0x18
 	cmp r0, #0
 	bne _0804C1AA

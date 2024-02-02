@@ -2038,7 +2038,7 @@ sub_0804D894: @ 0x0804D894
 	push {r4, r5, r6, r7, lr}
 	mov r7, r8
 	push {r7}
-	ldr r4, _0804D8D4 @ =0x0201FAD0
+	ldr r4, _0804D8D4 @ =EkrMainMiniConf_0201FAD0
 	ldr r2, _0804D8D8 @ =0x0203E000
 	movs r0, #0
 	ldrsh r1, [r2, r0]
@@ -2067,7 +2067,7 @@ sub_0804D894: @ 0x0804D894
 	ldr r0, _0804D8E4 @ =0x020145C8
 	b _0804D91E
 	.align 2, 0
-_0804D8D4: .4byte 0x0201FAD0
+_0804D8D4: .4byte EkrMainMiniConf_0201FAD0
 _0804D8D8: .4byte 0x0203E000
 _0804D8DC: .4byte gUnk_08FC0008
 _0804D8E0: .4byte gEkrDistanceType
@@ -2527,7 +2527,7 @@ EkrEfxStatusClear: @ 0x0804DCA8
 	ldr r1, _0804DD40 @ =0x02017780
 	strh r0, [r1]
 	strh r0, [r1, #2]
-	ldr r1, _0804DD44 @ =0x0201776C
+	ldr r1, _0804DD44 @ =gpProcEfxStatusUnits
 	str r0, [r1]
 	str r0, [r1, #4]
 	ldr r1, _0804DD48 @ =0x02017778
@@ -2552,7 +2552,7 @@ _0804DD34: .4byte gEkrBg2QuakeVec
 _0804DD38: .4byte 0x02017764
 _0804DD3C: .4byte 0x02017768
 _0804DD40: .4byte 0x02017780
-_0804DD44: .4byte 0x0201776C
+_0804DD44: .4byte gpProcEfxStatusUnits
 _0804DD48: .4byte 0x02017778
 _0804DD4C: .4byte 0x0201777C
 

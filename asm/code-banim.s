@@ -227,7 +227,7 @@ UpdateBanimFrame: @ 0x0805480C
 	movs r1, #0
 	bl sub_08054798
 _0805488E:
-	ldr r1, _08054A04 @ =0x02000054
+	ldr r1, _08054A04 @ =gpEfxUnitPaletteBackup
 	lsls r0, r7, #5
 	adds r0, r0, r5
 	str r0, [r1]
@@ -297,7 +297,7 @@ _080548C4:
 	movs r1, #1
 	bl sub_08054798
 _08054928:
-	ldr r1, _08054A04 @ =0x02000054
+	ldr r1, _08054A04 @ =gpEfxUnitPaletteBackup
 	lsls r0, r7, #5
 	adds r0, r0, r5
 	str r0, [r1, #4]
@@ -393,7 +393,7 @@ _080549F4: .4byte 0x0203DFF4
 _080549F8: .4byte gBanimScrLeft
 _080549FC: .4byte gpBanimModesLeft
 _08054A00: .4byte 0x02004088
-_08054A04: .4byte 0x02000054
+_08054A04: .4byte gpEfxUnitPaletteBackup
 _08054A08: .4byte gPal + 0x2e0
 _08054A0C: .4byte 0x0203E080
 _08054A10: .4byte 0x020041C8
@@ -4832,7 +4832,7 @@ sub_08056D14: @ 0x08056D14
 	ldr r0, _08056D6C @ =gUnk_08C141F8
 	str r0, [sp]
 	adds r0, r4, #0
-	bl sub_08050BF8
+	bl EfxCreateFrontAnim
 	adds r5, r0, #0
 	str r5, [r6, #0x60]
 	adds r0, r4, #0
@@ -4969,7 +4969,7 @@ sub_08056E38: @ 0x08056E38
 	str r2, [sp]
 	adds r0, r4, #0
 	adds r1, r3, #0
-	bl sub_08050BF8
+	bl EfxCreateFrontAnim
 	adds r5, r0, #0
 	str r5, [r6, #0x60]
 	adds r0, r4, #0
@@ -5256,7 +5256,7 @@ sub_08057088: @ 0x08057088
 	ldr r0, _080570E4 @ =gUnk_08C14660
 	str r0, [sp]
 	adds r0, r5, #0
-	bl sub_08050BF8
+	bl EfxCreateFrontAnim
 	str r0, [r4, #0x60]
 	ldr r0, _080570E8 @ =gUnk_081EF9F8
 	movs r1, #0x20
@@ -5836,7 +5836,7 @@ _080575FC:
 	str r2, [sp]
 	adds r0, r6, #0
 	adds r1, r3, #0
-	bl sub_08050BF8
+	bl EfxCreateFrontAnim
 	adds r4, r0, #0
 	str r4, [r5, #0x60]
 	adds r0, r6, #0
@@ -5993,12 +5993,12 @@ _08057730:
 	adds r0, #0x29
 	ldrb r1, [r0]
 	adds r0, r4, #0
-	bl sub_08050BBC
+	bl StartBattleAnimStatusChgHitEffects
 	adds r0, r4, #0
 	bl GetAnimPosition
 	cmp r0, #0
 	bne _08057770
-	ldr r0, _08057768 @ =0x02000054
+	ldr r0, _08057768 @ =gpEfxUnitPaletteBackup
 	ldr r0, [r0]
 	ldr r1, _0805776C @ =gPal + 0x2e0
 	movs r2, #8
@@ -6006,20 +6006,20 @@ _08057730:
 	b _0805777C
 	.align 2, 0
 _08057764: .4byte gDispIo
-_08057768: .4byte 0x02000054
+_08057768: .4byte gpEfxUnitPaletteBackup
 _0805776C: .4byte gPal + 0x2e0
 _08057770:
-	ldr r0, _08057784 @ =0x02000054
+	ldr r0, _08057784 @ =gpEfxUnitPaletteBackup
 	ldr r0, [r0, #4]
 	ldr r1, _08057788 @ =gPal + 0x320
 	movs r2, #8
 	bl CpuFastSet
 _0805777C:
 	adds r0, r4, #0
-	bl sub_0804FFCC
+	bl EnableEfxStatusUnits
 	b _080577A2
 	.align 2, 0
-_08057784: .4byte 0x02000054
+_08057784: .4byte gpEfxUnitPaletteBackup
 _08057788: .4byte gPal + 0x320
 _0805778C:
 	cmp r0, #0xb3
@@ -6166,7 +6166,7 @@ sub_08057888: @ 0x08057888
 	adds r0, r6, #0
 	adds r1, r3, #0
 	adds r2, r3, #0
-	bl sub_08050BF8
+	bl EfxCreateFrontAnim
 	str r0, [r4, #0x60]
 	lsls r5, r5, #5
 	ldr r0, _080578E8 @ =gUnk_082E2700
@@ -6323,12 +6323,12 @@ _080579F0:
 	adds r0, #0x29
 	ldrb r1, [r0]
 	adds r0, r4, #0
-	bl sub_08050BBC
+	bl StartBattleAnimStatusChgHitEffects
 	adds r0, r4, #0
 	bl GetAnimPosition
 	cmp r0, #0
 	bne _08057A30
-	ldr r0, _08057A28 @ =0x02000054
+	ldr r0, _08057A28 @ =gpEfxUnitPaletteBackup
 	ldr r0, [r0]
 	ldr r1, _08057A2C @ =gPal + 0x2e0
 	movs r2, #8
@@ -6336,20 +6336,20 @@ _080579F0:
 	b _08057A3C
 	.align 2, 0
 _08057A24: .4byte gDispIo
-_08057A28: .4byte 0x02000054
+_08057A28: .4byte gpEfxUnitPaletteBackup
 _08057A2C: .4byte gPal + 0x2e0
 _08057A30:
-	ldr r0, _08057A44 @ =0x02000054
+	ldr r0, _08057A44 @ =gpEfxUnitPaletteBackup
 	ldr r0, [r0, #4]
 	ldr r1, _08057A48 @ =gPal + 0x320
 	movs r2, #8
 	bl CpuFastSet
 _08057A3C:
 	adds r0, r4, #0
-	bl sub_0804FFCC
+	bl EnableEfxStatusUnits
 	b _08057A62
 	.align 2, 0
-_08057A44: .4byte 0x02000054
+_08057A44: .4byte gpEfxUnitPaletteBackup
 _08057A48: .4byte gPal + 0x320
 _08057A4C:
 	cmp r0, #0xa5
@@ -6519,7 +6519,7 @@ sub_08057B7C: @ 0x08057B7C
 	str r2, [sp]
 	adds r0, r5, #0
 	adds r1, r3, #0
-	bl sub_08050BF8
+	bl EfxCreateFrontAnim
 	adds r6, r0, #0
 	str r6, [r4, #0x60]
 	ldrh r0, [r6, #4]
@@ -7133,7 +7133,7 @@ _080580AC:
 	adds r0, r5, #0
 	adds r1, r3, #0
 	adds r2, r3, #0
-	bl sub_08050BF8
+	bl EfxCreateFrontAnim
 	str r0, [r4, #0x60]
 	ldr r0, _080580E4 @ =gUnk_081F4E90
 	movs r1, #0x20
@@ -7318,7 +7318,7 @@ _08058238:
 	adds r0, r6, #0
 	adds r1, r3, #0
 	adds r2, r3, #0
-	bl sub_08050BF8
+	bl EfxCreateFrontAnim
 	adds r4, r0, #0
 	str r4, [r5, #0x60]
 	ldr r0, _08058274 @ =gEkrDistanceType
@@ -7667,7 +7667,7 @@ sub_080584F8: @ 0x080584F8
 	str r2, [sp]
 	adds r0, r4, #0
 	adds r1, r3, #0
-	bl sub_08050BF8
+	bl EfxCreateFrontAnim
 	adds r6, r0, #0
 	str r6, [r5, #0x60]
 	adds r0, r4, #0
@@ -7974,7 +7974,7 @@ sub_08058778: @ 0x08058778
 	adds r0, r5, #0
 	adds r1, r3, #0
 	adds r2, r3, #0
-	bl sub_08050BF8
+	bl EfxCreateFrontAnim
 	adds r6, r0, #0
 	str r6, [r4, #0x60]
 	adds r0, r5, #0
@@ -8350,7 +8350,7 @@ sub_08058A98: @ 0x08058A98
 	str r2, [sp]
 	adds r0, r5, #0
 	adds r1, r3, #0
-	bl sub_08050BF8
+	bl EfxCreateFrontAnim
 	str r0, [r4, #0x60]
 	ldr r0, _08058AF0 @ =gUnk_082022A8
 	movs r1, #0x20
@@ -8691,7 +8691,7 @@ sub_08058D70: @ 0x08058D70
 	ldr r0, _08058DC8 @ =gUnk_08C236C0
 	str r0, [sp]
 	adds r0, r6, #0
-	bl sub_08050BF8
+	bl EfxCreateFrontAnim
 	adds r5, r0, #0
 	str r5, [r4, #0x60]
 	adds r0, r6, #0
@@ -9060,7 +9060,7 @@ sub_08059084: @ 0x08059084
 	str r2, [sp]
 	adds r0, r5, #0
 	adds r1, r3, #0
-	bl sub_08050BF8
+	bl EfxCreateFrontAnim
 	adds r6, r0, #0
 	str r6, [r4, #0x60]
 	adds r0, r5, #0
@@ -9537,7 +9537,7 @@ sub_0805947C: @ 0x0805947C
 	adds r0, r5, #0
 	adds r1, r3, #0
 	adds r2, r3, #0
-	bl sub_08050BF8
+	bl EfxCreateFrontAnim
 	str r0, [r4, #0x60]
 	ldrh r1, [r0, #2]
 	adds r1, #0x18
@@ -10129,7 +10129,7 @@ sub_0805996C: @ 0x0805996C
 	str r3, [sp]
 	adds r1, r3, #0
 	adds r2, r3, #0
-	bl sub_08050BF8
+	bl EfxCreateFrontAnim
 	str r0, [r4, #0x60]
 	ldr r0, _080599A8 @ =gUnk_082022A8
 	movs r1, #0x20
@@ -10809,7 +10809,7 @@ sub_08059EE4: @ 0x08059EE4
 	str r3, [sp]
 	adds r1, r3, #0
 	adds r2, r3, #0
-	bl sub_08050BF8
+	bl EfxCreateFrontAnim
 	str r0, [r4, #0x60]
 	add sp, #4
 	pop {r4, r5}
@@ -10841,7 +10841,7 @@ sub_08059F28: @ 0x08059F28
 	str r3, [sp]
 	adds r1, r3, #0
 	adds r2, r3, #0
-	bl sub_08050BF8
+	bl EfxCreateFrontAnim
 	str r0, [r4, #0x60]
 	ldrh r1, [r0, #4]
 	subs r1, #4
@@ -12328,7 +12328,7 @@ sub_0805AB54: @ 0x0805AB54
 	adds r0, r5, #0
 	adds r1, r3, #0
 	adds r2, r3, #0
-	bl sub_08050BF8
+	bl EfxCreateFrontAnim
 	str r0, [r4, #0x60]
 	strh r6, [r0, #2]
 	mov r1, r8
@@ -14084,7 +14084,7 @@ sub_0805B9D4: @ 0x0805B9D4
 	adds r0, r5, #0
 	adds r1, r3, #0
 	adds r2, r3, #0
-	bl sub_08050BF8
+	bl EfxCreateFrontAnim
 	adds r6, r0, #0
 	str r6, [r4, #0x60]
 	adds r0, r5, #0
@@ -14969,7 +14969,7 @@ _0805C13A:
 	adds r0, r6, #0
 	adds r1, r3, #0
 	adds r2, r3, #0
-	bl sub_08050BF8
+	bl EfxCreateFrontAnim
 	str r0, [r5, #0x60]
 	ldrh r1, [r5, #0x32]
 	strh r1, [r0, #2]
@@ -14980,7 +14980,7 @@ _0805C13A:
 	adds r0, r6, #0
 	adds r1, r3, #0
 	adds r2, r3, #0
-	bl sub_08050BF8
+	bl EfxCreateFrontAnim
 	str r0, [r5, #0x64]
 	ldrh r1, [r5, #0x32]
 	strh r1, [r0, #2]
@@ -15750,7 +15750,7 @@ sub_0805C77C: @ 0x0805C77C
 	adds r0, r5, #0
 	adds r1, r3, #0
 	adds r2, r3, #0
-	bl sub_08050BF8
+	bl EfxCreateFrontAnim
 	adds r6, r0, #0
 	str r6, [r4, #0x60]
 	ldr r0, _0805C7E0 @ =0x0000F3FF
@@ -16042,7 +16042,7 @@ sub_0805C9CC: @ 0x0805C9CC
 	adds r0, r5, #0
 	adds r1, r3, #0
 	adds r2, r3, #0
-	bl sub_08050BF8
+	bl EfxCreateFrontAnim
 	str r0, [r4, #0x60]
 	strh r6, [r0, #2]
 	mov r1, r8
@@ -16534,7 +16534,7 @@ sub_0805CDCC: @ 0x0805CDCC
 	adds r0, r5, #0
 	adds r1, r3, #0
 	adds r2, r3, #0
-	bl sub_08050BF8
+	bl EfxCreateFrontAnim
 	str r0, [r4, #0x60]
 	ldr r0, _0805CE24 @ =gUnk_0825CF18
 	movs r1, #0x20
@@ -17962,7 +17962,7 @@ sub_0805D994: @ 0x0805D994
 	lsls r3, r3, #4
 	adds r1, r1, r3
 	adds r2, r2, r3
-	bl sub_08050C54
+	bl EfxCreateBackAnim
 	b _0805D9F8
 _0805D9C6:
 	movs r0, #1
@@ -18299,7 +18299,7 @@ sub_0805DC18: @ 0x0805DC18
 	adds r0, r5, #0
 	adds r1, r3, #0
 	adds r2, r3, #0
-	bl sub_08050BF8
+	bl EfxCreateFrontAnim
 	str r0, [r4, #0x60]
 	ldr r0, _0805DC70 @ =gUnk_082708B0
 	movs r1, #0x20
@@ -18344,7 +18344,7 @@ sub_0805DC78: @ 0x0805DC78
 	adds r0, r5, #0
 	adds r1, r3, #0
 	adds r2, r3, #0
-	bl sub_08050BF8
+	bl EfxCreateFrontAnim
 	str r0, [r4, #0x60]
 	ldr r0, _0805DCD4 @ =gUnk_082708B0
 	movs r1, #0x20
@@ -18571,7 +18571,7 @@ _0805DE64:
 	str r2, [sp]
 	adds r1, r7, #0
 	adds r3, r7, #0
-	bl sub_08050BF8
+	bl EfxCreateFrontAnim
 	str r0, [r4, #0x60]
 	strh r5, [r0, #2]
 	strh r6, [r0, #4]
@@ -19352,10 +19352,10 @@ _0805E4BE:
 	adds r0, #0x29
 	ldrb r1, [r0]
 	adds r0, r6, #0
-	bl sub_08050BBC
+	bl StartBattleAnimStatusChgHitEffects
 	adds r0, r6, #0
 	movs r1, #0
-	bl sub_0804FFEC
+	bl SetUnitEfxDebuff
 	b _0805E504
 _0805E4E4:
 	movs r2, #0x96
@@ -19484,7 +19484,7 @@ sub_0805E5C8: @ 0x0805E5C8
 	adds r0, r4, #0
 	adds r1, r3, #0
 	adds r2, r3, #0
-	bl sub_08050BF8
+	bl EfxCreateFrontAnim
 	adds r6, r0, #0
 	str r6, [r5, #0x60]
 	adds r0, r4, #0
@@ -19644,7 +19644,7 @@ _0805E716:
 	adds r6, #0x29
 	ldrb r1, [r6]
 	adds r0, r5, #0
-	bl sub_08050BBC
+	bl StartBattleAnimStatusChgHitEffects
 	ldr r0, [r4, #0x5c]
 	movs r1, #0xa
 	bl NewEfxFlashBgWhite
@@ -19652,12 +19652,12 @@ _0805E716:
 	cmp r0, #0
 	bne _0805E786
 	adds r0, r5, #0
-	bl sub_0805001C
+	bl GetUnitEfxDebuff
 	cmp r0, #0
 	bne _0805E786
 	adds r0, r5, #0
 	movs r1, #3
-	bl sub_0804FFEC
+	bl SetUnitEfxDebuff
 	b _0805E786
 _0805E768:
 	adds r0, r6, #0
@@ -19804,7 +19804,7 @@ sub_0805E878: @ 0x0805E878
 	adds r0, r5, #0
 	adds r1, r3, #0
 	adds r2, r3, #0
-	bl sub_08050BF8
+	bl EfxCreateFrontAnim
 	str r0, [r4, #0x60]
 	ldr r0, _0805E8C8 @ =gUnk_08278A10
 	movs r1, #0x20
@@ -19949,17 +19949,17 @@ _0805E9C0:
 	adds r4, #0x29
 	ldrb r1, [r4]
 	adds r0, r5, #0
-	bl sub_08050BBC
+	bl StartBattleAnimStatusChgHitEffects
 	ldrb r0, [r4]
 	cmp r0, #0
 	bne _0805EA16
 	adds r0, r5, #0
-	bl sub_0805001C
+	bl GetUnitEfxDebuff
 	cmp r0, #0
 	bne _0805EA16
 	adds r0, r5, #0
 	movs r1, #2
-	bl sub_0804FFEC
+	bl SetUnitEfxDebuff
 	b _0805EA16
 _0805E9F6:
 	movs r2, #0xb9
@@ -20107,7 +20107,7 @@ sub_0805EB08: @ 0x0805EB08
 	adds r0, r5, #0
 	adds r1, r3, #0
 	adds r2, r3, #0
-	bl sub_08050BF8
+	bl EfxCreateFrontAnim
 	str r0, [r4, #0x60]
 	ldr r0, _0805EB58 @ =gUnk_0827BE0C
 	movs r1, #0x20
@@ -20146,7 +20146,7 @@ sub_0805EB60: @ 0x0805EB60
 	adds r0, r5, #0
 	adds r1, r3, #0
 	adds r2, r3, #0
-	bl sub_08050BF8
+	bl EfxCreateFrontAnim
 	str r0, [r4, #0x60]
 	ldrh r1, [r0, #4]
 	subs r1, #8
@@ -20357,7 +20357,7 @@ _0805ED1A:
 	adds r0, #0x29
 	ldrb r1, [r0]
 	adds r0, r6, #0
-	bl sub_08050BBC
+	bl StartBattleAnimStatusChgHitEffects
 	b _0805ED58
 _0805ED38:
 	movs r2, #0x96
@@ -20486,7 +20486,7 @@ sub_0805EE1C: @ 0x0805EE1C
 	adds r0, r5, #0
 	adds r1, r3, #0
 	adds r2, r3, #0
-	bl sub_08050BF8
+	bl EfxCreateFrontAnim
 	str r0, [r4, #0x60]
 	ldr r0, _0805EE6C @ =gUnk_0827BE2C
 	movs r1, #0x20
@@ -20614,17 +20614,17 @@ _0805EF3C:
 	adds r4, #0x29
 	ldrb r1, [r4]
 	adds r0, r5, #0
-	bl sub_08050BBC
+	bl StartBattleAnimStatusChgHitEffects
 	ldrb r0, [r4]
 	cmp r0, #0
 	bne _0805EF96
 	adds r0, r5, #0
-	bl sub_0805001C
+	bl GetUnitEfxDebuff
 	cmp r0, #0
 	bne _0805EF96
 	adds r0, r5, #0
 	movs r1, #4
-	bl sub_0804FFEC
+	bl SetUnitEfxDebuff
 	b _0805EF96
 _0805EF78:
 	adds r0, r6, #0
@@ -20929,7 +20929,7 @@ sub_0805F1C4: @ 0x0805F1C4
 	str r3, [sp]
 	adds r1, r3, #0
 	adds r2, r3, #0
-	bl sub_08050BF8
+	bl EfxCreateFrontAnim
 	str r0, [r4, #0x60]
 	ldr r1, _0805F218 @ =0x0000F3FF
 	ldrh r2, [r0, #8]
@@ -21339,7 +21339,7 @@ _0805F552:
 	adds r0, #0x29
 	ldrb r1, [r0]
 	adds r0, r4, #0
-	bl sub_08050BBC
+	bl StartBattleAnimStatusChgHitEffects
 	b _0805F58E
 _0805F570:
 	adds r0, r6, #0
@@ -21460,7 +21460,7 @@ sub_0805F648: @ 0x0805F648
 	adds r0, r5, #0
 	adds r1, r3, #0
 	adds r2, r3, #0
-	bl sub_08050BF8
+	bl EfxCreateFrontAnim
 	str r0, [r4, #0x60]
 	ldr r0, _0805F698 @ =gUnk_0827D600
 	movs r1, #0x20
@@ -21499,7 +21499,7 @@ sub_0805F6A0: @ 0x0805F6A0
 	adds r0, r5, #0
 	adds r1, r3, #0
 	adds r2, r3, #0
-	bl sub_08050BF8
+	bl EfxCreateFrontAnim
 	str r0, [r4, #0x60]
 	add sp, #4
 	pop {r4, r5}
@@ -22087,7 +22087,7 @@ sub_0805FB64: @ 0x0805FB64
 	adds r0, r5, #0
 	adds r1, r3, #0
 	adds r2, r3, #0
-	bl sub_08050BF8
+	bl EfxCreateFrontAnim
 	str r0, [r4, #0x60]
 	strh r6, [r0, #2]
 	mov r1, r8
@@ -23019,7 +23019,7 @@ sub_0806030C: @ 0x0806030C
 	str r3, [sp]
 	adds r1, r3, #0
 	adds r2, r3, #0
-	bl sub_08050BF8
+	bl EfxCreateFrontAnim
 	str r0, [r4, #0x60]
 	strh r5, [r0, #6]
 	ldr r1, _08060378 @ =0x0000F3FF
@@ -24374,7 +24374,7 @@ sub_08060DD8: @ 0x08060DD8
 	adds r0, r5, #0
 	adds r1, r3, #0
 	adds r2, r3, #0
-	bl sub_08050BF8
+	bl EfxCreateFrontAnim
 	str r0, [r4, #0x60]
 	ldr r1, [r4, #0x5c]
 	ldrh r1, [r1, #2]
@@ -25144,7 +25144,7 @@ sub_08061448: @ 0x08061448
 	adds r0, r5, #0
 	adds r1, r3, #0
 	adds r2, r3, #0
-	bl sub_08050BF8
+	bl EfxCreateFrontAnim
 	str r0, [r4, #0x60]
 	movs r1, #0x78
 	strh r1, [r0, #2]
@@ -25216,7 +25216,7 @@ sub_080614E4: @ 0x080614E4
 	str r3, [sp]
 	adds r1, r3, #0
 	adds r2, r3, #0
-	bl sub_08050BF8
+	bl EfxCreateFrontAnim
 	str r0, [r4, #0x60]
 	ldr r1, _0806154C @ =0x0000F3FF
 	ldrh r2, [r0, #8]
@@ -26458,7 +26458,7 @@ sub_08061F48: @ 0x08061F48
 	adds r0, r5, #0
 	adds r1, r3, #0
 	adds r2, r3, #0
-	bl sub_08050BF8
+	bl EfxCreateFrontAnim
 	str r0, [r4, #0x60]
 	movs r1, #0x78
 	strh r1, [r0, #2]
@@ -26514,7 +26514,7 @@ sub_08061FC4: @ 0x08061FC4
 	adds r0, r5, #0
 	adds r1, r3, #0
 	adds r2, r3, #0
-	bl sub_08050BF8
+	bl EfxCreateFrontAnim
 	str r0, [r4, #0x60]
 	movs r1, #0x78
 	strh r1, [r0, #2]
@@ -27256,7 +27256,7 @@ sub_080625D0: @ 0x080625D0
 	adds r0, r6, #0
 	adds r1, r3, #0
 	adds r2, r3, #0
-	bl sub_08050BF8
+	bl EfxCreateFrontAnim
 	str r0, [r5, #0x60]
 	mov r1, r8
 	strh r1, [r0, #2]
@@ -27313,7 +27313,7 @@ sub_08062658: @ 0x08062658
 	adds r0, r5, #0
 	adds r1, r3, #0
 	adds r2, r3, #0
-	bl sub_08050BF8
+	bl EfxCreateFrontAnim
 	str r0, [r4, #0x60]
 	movs r1, #0x78
 	strh r1, [r0, #2]
@@ -27734,7 +27734,7 @@ sub_080629CC: @ 0x080629CC
 	adds r0, r4, #0
 	adds r1, r3, #0
 	adds r2, r3, #0
-	bl sub_08050BF8
+	bl EfxCreateFrontAnim
 	str r0, [r5, #0x60]
 	ldrh r1, [r4, #2]
 	strh r1, [r0, #2]
@@ -27787,7 +27787,7 @@ sub_08062A3C: @ 0x08062A3C
 	adds r0, r4, #0
 	adds r1, r3, #0
 	adds r2, r3, #0
-	bl sub_08050BF8
+	bl EfxCreateFrontAnim
 	str r0, [r5, #0x60]
 	ldrh r1, [r4, #2]
 	strh r1, [r0, #2]
@@ -28529,7 +28529,7 @@ _0806304C:
 	str r2, [sp]
 	adds r0, r6, #0
 	adds r1, r3, #0
-	bl sub_08050BF8
+	bl EfxCreateFrontAnim
 	adds r4, r0, #0
 	str r4, [r5, #0x60]
 	movs r0, #0xc0
@@ -28776,7 +28776,7 @@ sub_08063200: @ 0x08063200
 	adds r0, r5, #0
 	adds r1, r3, #0
 	adds r2, r3, #0
-	bl sub_08050BF8
+	bl EfxCreateFrontAnim
 	str r0, [r4, #0x60]
 	add sp, #4
 	pop {r4, r5}
@@ -28900,7 +28900,7 @@ sub_08063300: @ 0x08063300
 	adds r0, r5, #0
 	adds r1, r3, #0
 	adds r2, r3, #0
-	bl sub_08050BF8
+	bl EfxCreateFrontAnim
 	str r0, [r4, #0x60]
 	add sp, #4
 	pop {r4, r5}
@@ -29283,7 +29283,7 @@ _0806362C:
 	str r2, [sp]
 	adds r0, r6, #0
 	adds r1, r3, #0
-	bl sub_08050BF8
+	bl EfxCreateFrontAnim
 	str r0, [r5, #0x60]
 	ldr r4, _08063678 @ =0x0203E0B0
 	ldr r0, [r5, #0x5c]
@@ -29496,7 +29496,7 @@ sub_0806383C: @ 0x0806383C
 	str r2, [sp]
 	adds r0, r5, #0
 	adds r1, r3, #0
-	bl sub_08050BF8
+	bl EfxCreateFrontAnim
 	adds r6, r0, #0
 	str r6, [r4, #0x60]
 	ldr r0, _08063898 @ =0x00000FFF
@@ -29721,7 +29721,7 @@ sub_080639F8: @ 0x080639F8
 	adds r0, r5, #0
 	adds r1, r3, #0
 	adds r2, r3, #0
-	bl sub_08050BF8
+	bl EfxCreateFrontAnim
 	str r0, [r4, #0x60]
 	ldr r0, _08063A64 @ =gUnk_081F1574
 	movs r1, #0x20
@@ -29813,7 +29813,7 @@ sub_08063ABC: @ 0x08063ABC
 	adds r0, r5, #0
 	adds r1, r3, #0
 	adds r2, r3, #0
-	bl sub_08050BF8
+	bl EfxCreateFrontAnim
 	str r0, [r4, #0x60]
 	ldr r0, _08063B28 @ =gUnk_081F1574
 	movs r1, #0x20
@@ -30524,7 +30524,7 @@ _080640B4:
 	adds r1, r4, #0
 	adds r2, r5, #0
 	adds r3, r4, #0
-	bl sub_08050BF8
+	bl EfxCreateFrontAnim
 	adds r4, r0, #0
 	str r4, [r6, #0x60]
 	ldr r0, [r6, #0x5c]
@@ -30854,7 +30854,7 @@ _08064350:
 	adds r1, r4, #0
 	adds r2, r6, #0
 	adds r3, r4, #0
-	bl sub_08050BF8
+	bl EfxCreateFrontAnim
 	adds r4, r0, #0
 	str r4, [r5, #0x60]
 	ldr r0, [r5, #0x5c]

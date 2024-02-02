@@ -33,6 +33,7 @@ SECTIONS
 		. = 0x000030; gEkrXPosBase = .;
 		. = 0x000034; gEkrYPosBase = .;
 		. = 0x000038; gEkrBg0QuakeVec = .;
+		. = 0x000054; gpEfxUnitPaletteBackup = .;
 		. = 0x00005C; gpBanimModesLeft = .;
 		. = 0x000060; gpBanimModesRight = .;
 		. = 0x00006C; gpProcEkrDispUP = .;
@@ -43,8 +44,11 @@ SECTIONS
 		. = 0x01774C; gEfxBgSemaphore = .;
 		. = 0x017758; Unk_02017758 = .;
 		. = 0x017760; gEkrBg2QuakeVec = .;
+		. = 0x01776C; gpProcEfxStatusUnits = .;
+		. = 0x017774; gpProcEfxWeaponIcon = .;
 		. = 0x019784; gEkrTsaBuffer = .;
 		. = 0x01D41C; gEfxFrameTmap = .;
+		. = 0x01FAD0; EkrMainMiniConf_0201FAD0 = .;
 		. = 0x01FAF8; gBanimDoneFlag = .;
 		. = 0x01FB00; gEkrBgPosition = .;
 		. = 0x01FB10; gpImgSheet = .;
@@ -60,6 +64,7 @@ SECTIONS
 		. = 0x01FEF8; gpEkrLvupBg1ScrollOffsetList1 = .;
 		. = 0x020040; gEkrDragonStatusLeft = .;
 		. = 0x020050; gEkrDragonStatusRight = .;
+		. = 0x020060; gEkrBgPaletteBackup = .;
     }
     __ewram_overlay_end = MAX(., __ewram_overlay_end);
 
@@ -212,6 +217,7 @@ SECTIONS
 		src/banim-main.o(.text);
 		asm/code-banim.o(.text);
 		src/banim-ekrdragon.o(.text);
+		src/banim-ekrdragonfx.o(.text);
 		asm/banim-ekrdragon.o(.text);
 		asm/code-banim2.o(.text);
 		asm/code.o(.text);
@@ -262,6 +268,7 @@ SECTIONS
 		. = ALIGN(4); src/battle.o(.data)
 		. = ALIGN(4); data/data_08C03574.o(.data)
 		. = ALIGN(4); src/banim-ekrdragon.o(.data)
+		. = ALIGN(4); src/banim-ekrdragonfx.o(.data)
 		. = ALIGN(4); data/data_08C486EC.o(.data)
 		. = ALIGN(4); src/save_core.o(.data)
 		. = ALIGN(4); data/data_08DAD284.o(.data)

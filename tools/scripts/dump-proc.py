@@ -4,17 +4,18 @@
 import sys
 import symbols
 
+rom_name = "FireEmblem7J.base.gba"
+elf_name = "FireEmblem7J.elf"
+
 def read_int(f, count, signed = False):
     return int.from_bytes(f.read(count), byteorder = 'little', signed = signed)
 
 def main(args):
     try:
-        elf_name = args[0]
-        rom_name = args[1]
-        offset = 0x1FFFFFF & int(args[2], base = 0)
+        offset = 0x1FFFFFF & int(args[0], base = 0)
 
     except IndexError:
-        sys.exit(f"Usage: {sys.argv[0]} ELF ROM OFFSET")
+        sys.exit(f"Usage: {sys.argv[0]} OFFSET")
 
     with open(elf_name, 'rb') as f:
         syms = { addr: name for addr, name in symbols.from_elf(f) }
@@ -22,7 +23,7 @@ def main(args):
     addr = offset + 0x08000000
     name = syms[addr] if addr in syms else f'ProcScr_Unk_{offset + 0x08000000:08X}'
 
-    print(f"struct ProcScr CONST_DATA {name}[] =")
+    print(f"struct ProcCmd CONST_DATA {name}[] =")
     print("{")
 
     with open(rom_name, 'rb') as f:

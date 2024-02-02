@@ -957,8 +957,8 @@ _080677C6:
 	pop {r0}
 	bx r0
 
-	thumb_func_start EfxPalGrayInOut
-EfxPalGrayInOut: @ 0x080677D4
+	thumb_func_start EfxPalFlashingInOut
+EfxPalFlashingInOut: @ 0x080677D4
 	push {r4, r5, r6, r7, lr}
 	mov r7, sl
 	mov r6, sb
@@ -3360,9 +3360,9 @@ sub_08068A68: @ 0x08068A68
 	cmp r1, #1
 	bne _08068AC4
 	ldr r0, [r4, #0x5c]
-	bl sub_0804FFAC
+	bl DisableEfxStatusUnits
 	adds r0, r5, #0
-	bl sub_0804FFAC
+	bl DisableEfxStatusUnits
 	adds r0, r5, #0
 	bl sub_08068D2C
 	adds r0, r5, #0
@@ -3946,7 +3946,7 @@ sub_08068F28: @ 0x08068F28
 	adds r0, r4, #0
 	adds r1, r3, #0
 	adds r2, r3, #0
-	bl sub_08050BF8
+	bl EfxCreateFrontAnim
 	str r0, [r5, #0x60]
 	ldr r0, _08068F6C @ =gUnk_082022A8
 	movs r1, #0x20
@@ -4272,7 +4272,7 @@ sub_080691B8: @ 0x080691B8
 	bl GetAnimPosition
 	cmp r0, #0
 	bne _08069210
-	ldr r0, _08069204 @ =0x02000054
+	ldr r0, _08069204 @ =gpEfxUnitPaletteBackup
 	ldr r0, [r0]
 	ldr r4, _08069208 @ =gPal + 0x2e0
 	adds r1, r4, #0
@@ -4287,11 +4287,11 @@ sub_080691B8: @ 0x080691B8
 	bl EfxPalBlackInOut
 	b _0806922E
 	.align 2, 0
-_08069204: .4byte 0x02000054
+_08069204: .4byte gpEfxUnitPaletteBackup
 _08069208: .4byte gPal + 0x2e0
 _0806920C: .4byte 0xFFFFFD20
 _08069210:
-	ldr r0, _08069250 @ =0x02000054
+	ldr r0, _08069250 @ =gpEfxUnitPaletteBackup
 	ldr r0, [r0, #4]
 	ldr r4, _08069254 @ =gPal + 0x320
 	adds r1, r4, #0
@@ -4322,7 +4322,7 @@ _08069248:
 	pop {r0}
 	bx r0
 	.align 2, 0
-_08069250: .4byte 0x02000054
+_08069250: .4byte gpEfxUnitPaletteBackup
 _08069254: .4byte gPal + 0x320
 _08069258: .4byte 0xFFFFFCE0
 
@@ -5241,11 +5241,11 @@ _0806994A:
 	bl EkrGauge_0804CC68
 	mov r2, sb
 	ldr r0, [r2, #0x5c]
-	bl sub_0804FFAC
+	bl DisableEfxStatusUnits
 	mov r3, sb
 	ldr r0, [r3, #0x60]
-	bl sub_0804FFAC
-	bl sub_08050290
+	bl DisableEfxStatusUnits
+	bl DisableEfxWeaponIcon
 	bl sub_0804FC5C
 	movs r0, #0x21
 	rsbs r0, r0, #0
@@ -6265,10 +6265,10 @@ sub_0806A298: @ 0x0806A298
 	ldr r0, [r0]
 	bl Proc_End
 	ldr r0, [r4, #0x5c]
-	bl sub_0804FFCC
+	bl EnableEfxStatusUnits
 	ldr r0, [r4, #0x60]
-	bl sub_0804FFCC
-	bl sub_080502A0
+	bl EnableEfxStatusUnits
+	bl EnableEfxWeaponIcon
 	bl sub_0804FC6C
 	adds r4, #0x29
 	movs r0, #1
@@ -6872,7 +6872,7 @@ sub_0806A740: @ 0x0806A740
 	adds r0, r5, #0
 	adds r1, r3, #0
 	adds r2, r3, #0
-	bl sub_08050BF8
+	bl EfxCreateFrontAnim
 	str r0, [r4, #0x64]
 	strh r6, [r0, #2]
 	mov r1, r8
@@ -8093,7 +8093,7 @@ _0806B0D2:
 	adds r0, r7, #0
 	adds r1, r3, #0
 	adds r2, r3, #0
-	bl sub_08050BF8
+	bl EfxCreateFrontAnim
 	str r0, [r5, #0x60]
 	ldr r4, _0806B124 @ =0x0201A784
 	adds r0, r6, #0
@@ -8342,7 +8342,7 @@ _0806B2D8:
 	mov r0, r8
 	adds r1, r3, #0
 	adds r2, r3, #0
-	bl sub_08050BF8
+	bl EfxCreateFrontAnim
 	adds r1, r0, #0
 	str r1, [r5, #0x60]
 	ldr r0, _0806B320 @ =0x00008840
@@ -8402,7 +8402,7 @@ _0806B364:
 	mov r0, r8
 	adds r1, r3, #0
 	adds r2, r3, #0
-	bl sub_08050BF8
+	bl EfxCreateFrontAnim
 	adds r1, r0, #0
 	str r1, [r5, #0x64]
 	ldr r0, _0806B3D4 @ =0x0000A880
@@ -8570,7 +8570,7 @@ _0806B4CC:
 	mov r0, r8
 	adds r1, r3, #0
 	adds r2, r3, #0
-	bl sub_08050BF8
+	bl EfxCreateFrontAnim
 	adds r1, r0, #0
 	str r1, [r4, #0x60]
 	cmp r5, #0

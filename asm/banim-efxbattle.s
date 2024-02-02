@@ -1542,7 +1542,7 @@ sub_0804E9D0: @ 0x0804E9D0
 	strh r1, [r0, #0x2c]
 	strh r1, [r0, #0x2e]
 	adds r0, r4, #0
-	bl sub_0804FFAC
+	bl DisableEfxStatusUnits
 	pop {r4, r5}
 	pop {r0}
 	bx r0
@@ -1567,7 +1567,7 @@ sub_0804EA10: @ 0x0804EA10
 	cmp r0, #0
 	beq _0804EA3C
 	ldr r0, [r4, #0x5c]
-	bl SetEkrDragonDead
+	bl SetEfxDragonDeadFallHead
 	b _0804EA44
 	.align 2, 0
 _0804EA34: .4byte gEfxBgSemaphore
@@ -1599,7 +1599,7 @@ sub_0804EA54: @ 0x0804EA54
 	cmp r1, #0x1e
 	bne _0804EA9A
 	adds r0, r5, #0
-	bl CheckEkrDragonDead
+	bl CheckEfxDragonDeadFallHead
 	lsls r0, r0, #0x18
 	asrs r0, r0, #0x18
 	cmp r0, #1
@@ -2909,7 +2909,7 @@ _0804F4D6:
 	cmp r0, #0
 	beq _0804F4E6
 	bl AnimDelete
-	ldr r0, _0804F57C @ =0x0201FAD0
+	ldr r0, _0804F57C @ =EkrMainMiniConf_0201FAD0
 	bl sub_08055B08
 _0804F4E6:
 	ldr r3, _0804F580 @ =gEkrXPosReal
@@ -2980,7 +2980,7 @@ _0804F56E:
 	b _0804F7AA
 	.align 2, 0
 _0804F578: .4byte gEkrBgPosition
-_0804F57C: .4byte 0x0201FAD0
+_0804F57C: .4byte EkrMainMiniConf_0201FAD0
 _0804F580: .4byte gEkrXPosReal
 _0804F584: .4byte gEkrYPosReal
 _0804F588: .4byte 0x02017740
@@ -4041,25 +4041,25 @@ sub_0804FE1C: @ 0x0804FE1C
 	bl GetAnimPosition
 	cmp r0, #0
 	bne _0804FE48
-	ldr r0, _0804FE40 @ =0x02000054
+	ldr r0, _0804FE40 @ =gpEfxUnitPaletteBackup
 	ldr r0, [r0]
 	ldr r1, _0804FE44 @ =gPal + 0x2e0
 	movs r2, #8
 	bl CpuFastSet
 	ldr r0, [r4, #0x5c]
-	bl EkrDragonUpdatePal_080654C8
+	bl BanimSetFrontPaletteForDragon
 	b _0804FE5A
 	.align 2, 0
-_0804FE40: .4byte 0x02000054
+_0804FE40: .4byte gpEfxUnitPaletteBackup
 _0804FE44: .4byte gPal + 0x2e0
 _0804FE48:
-	ldr r0, _0804FE6C @ =0x02000054
+	ldr r0, _0804FE6C @ =gpEfxUnitPaletteBackup
 	ldr r0, [r0, #4]
 	ldr r1, _0804FE70 @ =gPal + 0x320
 	movs r2, #8
 	bl CpuFastSet
 	ldr r0, [r4, #0x5c]
-	bl EkrDragonUpdatePal_080654C8
+	bl BanimSetFrontPaletteForDragon
 _0804FE5A:
 	bl EnablePalSync
 	adds r0, r4, #0
@@ -4068,11 +4068,11 @@ _0804FE5A:
 	pop {r0}
 	bx r0
 	.align 2, 0
-_0804FE6C: .4byte 0x02000054
+_0804FE6C: .4byte gpEfxUnitPaletteBackup
 _0804FE70: .4byte gPal + 0x320
 
-	thumb_func_start sub_0804FE74
-sub_0804FE74: @ 0x0804FE74
+	thumb_func_start NewEfxStatusUnit
+NewEfxStatusUnit: @ 0x0804FE74
 	push {r4, r5, r6, lr}
 	sub sp, #4
 	adds r5, r0, #0
@@ -4087,7 +4087,7 @@ _0804FE8C:
 	ldr r0, _0804FF14 @ =gpEkrBattleUnitRight
 _0804FE8E:
 	ldr r6, [r0]
-	ldr r0, _0804FF18 @ =gUnk_08C0A260
+	ldr r0, _0804FF18 @ =ProcScr_efxStatusUnit
 	movs r1, #3
 	bl Proc_Start
 	adds r4, r0, #0
@@ -4097,7 +4097,7 @@ _0804FE8E:
 	str r5, [r4, #0x5c]
 	strh r1, [r4, #0x2c]
 	str r1, [r4, #0x44]
-	ldr r0, _0804FF1C @ =gUnk_081DE058
+	ldr r0, _0804FF1C @ =FrameLut_EfxStatusUnit
 	str r0, [r4, #0x48]
 	adds r0, r6, #0
 	adds r0, #0x30
@@ -4117,7 +4117,7 @@ _0804FEC0:
 	strh r1, [r4, #0x32]
 	adds r0, r5, #0
 	bl GetAnimPosition
-	ldr r1, _0804FF24 @ =0x0201776C
+	ldr r1, _0804FF24 @ =gpProcEfxStatusUnits
 	lsls r0, r0, #2
 	adds r0, r0, r1
 	str r4, [r0]
@@ -4125,7 +4125,7 @@ _0804FEC0:
 	bl GetAnimPosition
 	cmp r0, #0
 	bne _0804FF30
-	ldr r5, _0804FF28 @ =0x02000054
+	ldr r5, _0804FF28 @ =gpEfxUnitPaletteBackup
 	ldr r0, [r5]
 	ldr r4, _0804FF2C @ =gFadeComponents
 	adds r1, r4, #0
@@ -4149,14 +4149,14 @@ _0804FEC0:
 	b _0804FF60
 	.align 2, 0
 _0804FF14: .4byte gpEkrBattleUnitRight
-_0804FF18: .4byte gUnk_08C0A260
-_0804FF1C: .4byte gUnk_081DE058
+_0804FF18: .4byte ProcScr_efxStatusUnit
+_0804FF1C: .4byte FrameLut_EfxStatusUnit
 _0804FF20: .4byte gEkrDebugModeMaybe
-_0804FF24: .4byte 0x0201776C
-_0804FF28: .4byte 0x02000054
+_0804FF24: .4byte gpProcEfxStatusUnits
+_0804FF28: .4byte gpEfxUnitPaletteBackup
 _0804FF2C: .4byte gFadeComponents
 _0804FF30:
-	ldr r5, _0804FF68 @ =0x02000054
+	ldr r5, _0804FF68 @ =gpEfxUnitPaletteBackup
 	ldr r0, [r5, #4]
 	ldr r4, _0804FF6C @ =0x020222C0
 	adds r1, r4, #0
@@ -4183,14 +4183,14 @@ _0804FF60:
 	pop {r0}
 	bx r0
 	.align 2, 0
-_0804FF68: .4byte 0x02000054
+_0804FF68: .4byte gpEfxUnitPaletteBackup
 _0804FF6C: .4byte 0x020222C0
 
 	thumb_func_start EndEfxStatusUnits
 EndEfxStatusUnits: @ 0x0804FF70
 	push {r4, r5, lr}
 	adds r4, r0, #0
-	ldr r5, _0804FFA8 @ =0x0201776C
+	ldr r5, _0804FFA8 @ =gpProcEfxStatusUnits
 	bl GetAnimPosition
 	lsls r0, r0, #2
 	adds r0, r0, r5
@@ -4214,12 +4214,12 @@ _0804FFA2:
 	pop {r0}
 	bx r0
 	.align 2, 0
-_0804FFA8: .4byte 0x0201776C
+_0804FFA8: .4byte gpProcEfxStatusUnits
 
-	thumb_func_start sub_0804FFAC
-sub_0804FFAC: @ 0x0804FFAC
+	thumb_func_start DisableEfxStatusUnits
+DisableEfxStatusUnits: @ 0x0804FFAC
 	push {r4, lr}
-	ldr r4, _0804FFC8 @ =0x0201776C
+	ldr r4, _0804FFC8 @ =gpProcEfxStatusUnits
 	bl GetAnimPosition
 	lsls r0, r0, #2
 	adds r0, r0, r4
@@ -4231,12 +4231,12 @@ sub_0804FFAC: @ 0x0804FFAC
 	pop {r0}
 	bx r0
 	.align 2, 0
-_0804FFC8: .4byte 0x0201776C
+_0804FFC8: .4byte gpProcEfxStatusUnits
 
-	thumb_func_start sub_0804FFCC
-sub_0804FFCC: @ 0x0804FFCC
+	thumb_func_start EnableEfxStatusUnits
+EnableEfxStatusUnits: @ 0x0804FFCC
 	push {r4, lr}
-	ldr r4, _0804FFE8 @ =0x0201776C
+	ldr r4, _0804FFE8 @ =gpProcEfxStatusUnits
 	bl GetAnimPosition
 	lsls r0, r0, #2
 	adds r0, r0, r4
@@ -4248,14 +4248,14 @@ sub_0804FFCC: @ 0x0804FFCC
 	pop {r0}
 	bx r0
 	.align 2, 0
-_0804FFE8: .4byte 0x0201776C
+_0804FFE8: .4byte gpProcEfxStatusUnits
 
-	thumb_func_start sub_0804FFEC
-sub_0804FFEC: @ 0x0804FFEC
+	thumb_func_start SetUnitEfxDebuff
+SetUnitEfxDebuff: @ 0x0804FFEC
 	push {r4, r5, r6, lr}
 	adds r6, r0, #0
 	adds r5, r1, #0
-	ldr r4, _08050018 @ =0x0201776C
+	ldr r4, _08050018 @ =gpProcEfxStatusUnits
 	bl GetAnimPosition
 	lsls r0, r0, #2
 	adds r0, r0, r4
@@ -4267,18 +4267,18 @@ sub_0804FFEC: @ 0x0804FFEC
 	movs r1, #0
 	movs r2, #0
 	movs r3, #0
-	bl sub_08050038
+	bl EfxStatusUnitFlashing
 _08050010:
 	pop {r4, r5, r6}
 	pop {r0}
 	bx r0
 	.align 2, 0
-_08050018: .4byte 0x0201776C
+_08050018: .4byte gpProcEfxStatusUnits
 
-	thumb_func_start sub_0805001C
-sub_0805001C: @ 0x0805001C
+	thumb_func_start GetUnitEfxDebuff
+GetUnitEfxDebuff: @ 0x0805001C
 	push {r4, lr}
-	ldr r4, _08050034 @ =0x0201776C
+	ldr r4, _08050034 @ =gpProcEfxStatusUnits
 	bl GetAnimPosition
 	lsls r0, r0, #2
 	adds r0, r0, r4
@@ -4288,10 +4288,10 @@ sub_0805001C: @ 0x0805001C
 	pop {r1}
 	bx r1
 	.align 2, 0
-_08050034: .4byte 0x0201776C
+_08050034: .4byte gpProcEfxStatusUnits
 
-	thumb_func_start sub_08050038
-sub_08050038: @ 0x08050038
+	thumb_func_start EfxStatusUnitFlashing
+EfxStatusUnitFlashing: @ 0x08050038
 	push {r4, r5, r6, r7, lr}
 	mov r7, r8
 	push {r7}
@@ -4303,7 +4303,7 @@ sub_08050038: @ 0x08050038
 	bl GetAnimPosition
 	cmp r0, #0
 	bne _080500A0
-	ldr r0, _08050094 @ =0x02000054
+	ldr r0, _08050094 @ =gpEfxUnitPaletteBackup
 	ldr r0, [r0]
 	ldr r4, _08050098 @ =gPal + 0x2e0
 	adds r1, r4, #0
@@ -4317,26 +4317,26 @@ sub_08050038: @ 0x08050038
 	movs r1, #0x17
 	movs r2, #1
 	adds r3, r7, #0
-	bl EfxPalGrayInOut
+	bl EfxPalFlashingInOut
 	bl CheckInEkrDragon
 	cmp r0, #0
 	beq _080500C2
 	mov r0, r8
-	bl EkrDragonUpdatePal_080654C8
+	bl BanimSetFrontPaletteForDragon
 	str r5, [sp]
 	str r6, [sp, #4]
 	adds r0, r4, #0
 	movs r1, #6
 	movs r2, #1
 	adds r3, r7, #0
-	bl EfxPalGrayInOut
+	bl EfxPalFlashingInOut
 	b _080500C2
 	.align 2, 0
-_08050094: .4byte 0x02000054
+_08050094: .4byte gpEfxUnitPaletteBackup
 _08050098: .4byte gPal + 0x2e0
 _0805009C: .4byte 0xFFFFFD20
 _080500A0:
-	ldr r0, _080500D0 @ =0x02000054
+	ldr r0, _080500D0 @ =gpEfxUnitPaletteBackup
 	ldr r0, [r0, #4]
 	ldr r4, _080500D4 @ =gPal + 0x320
 	adds r1, r4, #0
@@ -4350,7 +4350,7 @@ _080500A0:
 	movs r1, #0x19
 	movs r2, #1
 	adds r3, r7, #0
-	bl EfxPalGrayInOut
+	bl EfxPalFlashingInOut
 _080500C2:
 	add sp, #8
 	pop {r3}
@@ -4359,17 +4359,17 @@ _080500C2:
 	pop {r0}
 	bx r0
 	.align 2, 0
-_080500D0: .4byte 0x02000054
+_080500D0: .4byte gpEfxUnitPaletteBackup
 _080500D4: .4byte gPal + 0x320
 _080500D8: .4byte 0xFFFFFCE0
 
-	thumb_func_start sub_080500DC
-sub_080500DC: @ 0x080500DC
+	thumb_func_start EfxStatusUnit_Loop
+EfxStatusUnit_Loop: @ 0x080500DC
 	push {r4, r5, r6, lr}
 	sub sp, #0xc
 	adds r4, r0, #0
 	ldr r0, [r4, #0x5c]
-	bl sub_0805001C
+	bl GetUnitEfxDebuff
 	cmp r0, #0
 	beq _080501D2
 	adds r0, r4, #0
@@ -4451,7 +4451,7 @@ _0805016A:
 	ldrsh r2, [r4, r3]
 	movs r5, #0x36
 	ldrsh r3, [r4, r5]
-	bl sub_08050038
+	bl EfxStatusUnitFlashing
 	b _080501CE
 _0805017E:
 	ldr r0, [r4, #0x5c]
@@ -4510,34 +4510,34 @@ sub_080501E4: @ 0x080501E4
 	bl GetAnimPosition
 	cmp r0, #0
 	bne _08050208
-	ldr r0, _08050200 @ =0x02000054
+	ldr r0, _08050200 @ =gpEfxUnitPaletteBackup
 	ldr r0, [r0]
 	ldr r1, _08050204 @ =gPal + 0x2e0
 	movs r2, #8
 	bl CpuFastSet
 	b _08050214
 	.align 2, 0
-_08050200: .4byte 0x02000054
+_08050200: .4byte gpEfxUnitPaletteBackup
 _08050204: .4byte gPal + 0x2e0
 _08050208:
-	ldr r0, _08050224 @ =0x02000054
+	ldr r0, _08050224 @ =gpEfxUnitPaletteBackup
 	ldr r0, [r0, #4]
 	ldr r1, _08050228 @ =gPal + 0x320
 	movs r2, #8
 	bl CpuFastSet
 _08050214:
 	ldr r0, [r4, #0x5c]
-	bl EkrDragonUpdatePal_080654C8
+	bl BanimSetFrontPaletteForDragon
 	bl EnablePalSync
 	pop {r4}
 	pop {r0}
 	bx r0
 	.align 2, 0
-_08050224: .4byte 0x02000054
+_08050224: .4byte gpEfxUnitPaletteBackup
 _08050228: .4byte gPal + 0x320
 
-	thumb_func_start sub_0805022C
-sub_0805022C: @ 0x0805022C
+	thumb_func_start NewEfxWeaponIcon
+NewEfxWeaponIcon: @ 0x0805022C
 	push {r4, r5, lr}
 	adds r4, r0, #0
 	adds r5, r1, #0
@@ -4545,13 +4545,13 @@ sub_0805022C: @ 0x0805022C
 	lsrs r4, r4, #0x10
 	lsls r5, r5, #0x10
 	lsrs r5, r5, #0x10
-	ldr r0, _08050268 @ =gUnk_08C0A288
+	ldr r0, _08050268 @ =ProcScr_EfxWeaponIcon
 	movs r1, #3
 	bl Proc_Start
 	movs r2, #0
 	strh r2, [r0, #0x2c]
 	str r2, [r0, #0x44]
-	ldr r1, _0805026C @ =gUnk_081DE07A
+	ldr r1, _0805026C @ =FrameLut_EfxWeaponIcon
 	str r1, [r0, #0x48]
 	str r2, [r0, #0x4c]
 	str r2, [r0, #0x50]
@@ -4561,20 +4561,20 @@ sub_0805022C: @ 0x0805022C
 	lsls r5, r5, #0x10
 	asrs r5, r5, #0x10
 	str r5, [r0, #0x58]
-	ldr r1, _08050270 @ =0x02017774
+	ldr r1, _08050270 @ =gpProcEfxWeaponIcon
 	str r0, [r1]
 	pop {r4, r5}
 	pop {r0}
 	bx r0
 	.align 2, 0
-_08050268: .4byte gUnk_08C0A288
-_0805026C: .4byte gUnk_081DE07A
-_08050270: .4byte 0x02017774
+_08050268: .4byte ProcScr_EfxWeaponIcon
+_0805026C: .4byte FrameLut_EfxWeaponIcon
+_08050270: .4byte gpProcEfxWeaponIcon
 
 	thumb_func_start EndProcEfxWeaponIcon
 EndProcEfxWeaponIcon: @ 0x08050274
 	push {r4, lr}
-	ldr r4, _0805028C @ =0x02017774
+	ldr r4, _0805028C @ =gpProcEfxWeaponIcon
 	ldr r0, [r4]
 	cmp r0, #0
 	beq _08050286
@@ -4586,27 +4586,27 @@ _08050286:
 	pop {r0}
 	bx r0
 	.align 2, 0
-_0805028C: .4byte 0x02017774
+_0805028C: .4byte gpProcEfxWeaponIcon
 
-	thumb_func_start sub_08050290
-sub_08050290: @ 0x08050290
-	ldr r0, _0805029C @ =0x02017774
+	thumb_func_start DisableEfxWeaponIcon
+DisableEfxWeaponIcon: @ 0x08050290
+	ldr r0, _0805029C @ =gpProcEfxWeaponIcon
 	ldr r1, [r0]
 	movs r0, #1
 	str r0, [r1, #0x50]
 	bx lr
 	.align 2, 0
-_0805029C: .4byte 0x02017774
+_0805029C: .4byte gpProcEfxWeaponIcon
 
-	thumb_func_start sub_080502A0
-sub_080502A0: @ 0x080502A0
-	ldr r0, _080502AC @ =0x02017774
+	thumb_func_start EnableEfxWeaponIcon
+EnableEfxWeaponIcon: @ 0x080502A0
+	ldr r0, _080502AC @ =gpProcEfxWeaponIcon
 	ldr r1, [r0]
 	movs r0, #0
 	str r0, [r1, #0x50]
 	bx lr
 	.align 2, 0
-_080502AC: .4byte 0x02017774
+_080502AC: .4byte gpProcEfxWeaponIcon
 
 	thumb_func_start sub_080502B0
 sub_080502B0: @ 0x080502B0
@@ -5514,12 +5514,12 @@ _08050988:
 	cmp r0, #0
 	beq _080509D8
 	adds r0, r7, #0
-	bl sub_0805001C
+	bl GetUnitEfxDebuff
 	cmp r0, #0
 	bne _080509D8
 	adds r0, r7, #0
 	movs r1, #1
-	bl sub_0804FFEC
+	bl SetUnitEfxDebuff
 _080509D8:
 	lsls r0, r4, #0x10
 	asrs r1, r0, #0x10
@@ -5530,12 +5530,12 @@ _080509D8:
 	cmp r1, #0
 	beq _080509FA
 	adds r0, r5, #0
-	bl sub_0805001C
+	bl GetUnitEfxDebuff
 	cmp r0, #0
 	bne _080509FA
 	adds r0, r5, #0
 	movs r1, #1
-	bl sub_0804FFEC
+	bl SetUnitEfxDebuff
 _080509FA:
 	lsls r0, r6, #0x10
 	asrs r0, r0, #0x10
@@ -5750,8 +5750,8 @@ _08050BAE:
 	bx r0
 	.align 2, 0
 
-	thumb_func_start sub_08050BBC
-sub_08050BBC: @ 0x08050BBC
+	thumb_func_start StartBattleAnimStatusChgHitEffects
+StartBattleAnimStatusChgHitEffects: @ 0x08050BBC
 	push {r4, lr}
 	adds r4, r1, #0
 	bl GetAnimPosition
@@ -5783,8 +5783,8 @@ _08050BF2:
 	pop {r0}
 	bx r0
 
-	thumb_func_start sub_08050BF8
-sub_08050BF8: @ 0x08050BF8
+	thumb_func_start EfxCreateFrontAnim
+EfxCreateFrontAnim: @ 0x08050BF8
 	push {r4, r5, r6, r7, lr}
 	adds r4, r0, #0
 	adds r7, r1, #0
@@ -5832,8 +5832,8 @@ _08050C34:
 	bx r1
 	.align 2, 0
 
-	thumb_func_start sub_08050C54
-sub_08050C54: @ 0x08050C54
+	thumb_func_start EfxCreateBackAnim
+EfxCreateBackAnim: @ 0x08050C54
 	push {r4, lr}
 	sub sp, #8
 	adds r3, r0, #0
