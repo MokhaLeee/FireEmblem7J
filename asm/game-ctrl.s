@@ -748,19 +748,19 @@ sub_08013128: @ 0x08013128
 	.align 2, 0
 _08013140: .4byte gPlaySt
 _08013144:
-	ldr r0, _0801314C @ =0x08D8A0E0
+	ldr r0, _0801314C @ =gUnk_08D8A0E0
 	bl sub_0800AE98
 	b _08013156
 	.align 2, 0
-_0801314C: .4byte 0x08D8A0E0
+_0801314C: .4byte gUnk_08D8A0E0
 _08013150:
-	ldr r0, _0801315C @ =0x08D8A114
+	ldr r0, _0801315C @ =gUnk_08D8A114
 	bl sub_0800AE98
 _08013156:
 	pop {r0}
 	bx r0
 	.align 2, 0
-_0801315C: .4byte 0x08D8A114
+_0801315C: .4byte gUnk_08D8A114
 
 	thumb_func_start sub_08013160
 sub_08013160: @ 0x08013160
@@ -777,19 +777,19 @@ sub_08013160: @ 0x08013160
 	.align 2, 0
 _08013178: .4byte gPlaySt
 _0801317C:
-	ldr r0, _08013184 @ =0x08D8A148
+	ldr r0, _08013184 @ =gUnk_08D8A148
 	bl sub_0800AE98
 	b _0801318E
 	.align 2, 0
-_08013184: .4byte 0x08D8A148
+_08013184: .4byte gUnk_08D8A148
 _08013188:
-	ldr r0, _08013194 @ =0x08D8A1B4
+	ldr r0, _08013194 @ =gUnk_08D8A1B4
 	bl sub_0800AE98
 _0801318E:
 	pop {r0}
 	bx r0
 	.align 2, 0
-_08013194: .4byte 0x08D8A1B4
+_08013194: .4byte gUnk_08D8A1B4
 
 	thumb_func_start sub_08013198
 sub_08013198: @ 0x08013198
@@ -818,7 +818,7 @@ StartGame: @ 0x080131B8
 	bl SetMainFunc
 	ldr r0, _080131E8 @ =OnVBlank
 	bl SetOnVBlank
-	ldr r0, _080131EC @ =0x08C01744
+	ldr r0, _080131EC @ =ProcScr_GameControl
 	movs r1, #3
 	bl Proc_Start
 	adds r2, r0, #0
@@ -834,17 +834,17 @@ StartGame: @ 0x080131B8
 	.align 2, 0
 _080131E4: .4byte OnGameLoopMain
 _080131E8: .4byte OnVBlank
-_080131EC: .4byte 0x08C01744
+_080131EC: .4byte ProcScr_GameControl
 
 	thumb_func_start sub_080131F0
 sub_080131F0: @ 0x080131F0
 	push {lr}
-	ldr r0, _080131FC @ =0x08C01744
+	ldr r0, _080131FC @ =ProcScr_GameControl
 	bl Proc_Find
 	pop {r1}
 	bx r1
 	.align 2, 0
-_080131FC: .4byte 0x08C01744
+_080131FC: .4byte ProcScr_GameControl
 
 	thumb_func_start sub_08013200
 sub_08013200: @ 0x08013200
@@ -887,7 +887,7 @@ sub_08013228: @ 0x08013228
 	thumb_func_start sub_08013240
 sub_08013240: @ 0x08013240
 	push {r4, lr}
-	ldr r4, _08013260 @ =0x08C01744
+	ldr r4, _08013260 @ =ProcScr_GameControl
 	adds r0, r4, #0
 	bl sub_08004748
 	adds r0, r4, #0
@@ -899,12 +899,12 @@ sub_08013240: @ 0x08013240
 	pop {r0}
 	bx r0
 	.align 2, 0
-_08013260: .4byte 0x08C01744
+_08013260: .4byte ProcScr_GameControl
 
 	thumb_func_start sub_08013264
 sub_08013264: @ 0x08013264
 	push {r4, lr}
-	ldr r4, _08013284 @ =0x08C01744
+	ldr r4, _08013284 @ =ProcScr_GameControl
 	adds r0, r4, #0
 	bl sub_08004748
 	adds r0, r4, #0
@@ -916,12 +916,12 @@ sub_08013264: @ 0x08013264
 	pop {r0}
 	bx r0
 	.align 2, 0
-_08013284: .4byte 0x08C01744
+_08013284: .4byte ProcScr_GameControl
 
 	thumb_func_start sub_08013288
 sub_08013288: @ 0x08013288
 	push {r4, lr}
-	ldr r4, _080132A8 @ =0x08C01744
+	ldr r4, _080132A8 @ =ProcScr_GameControl
 	adds r0, r4, #0
 	bl sub_08004748
 	adds r0, r4, #0
@@ -933,7 +933,7 @@ sub_08013288: @ 0x08013288
 	pop {r0}
 	bx r0
 	.align 2, 0
-_080132A8: .4byte 0x08C01744
+_080132A8: .4byte ProcScr_GameControl
 
 	thumb_func_start ForceEnableSounds
 ForceEnableSounds: @ 0x080132AC
@@ -1001,7 +1001,7 @@ DecodeMsg: @ 0x08013318
 	ldr r0, [r6]
 	cmp r5, r0
 	beq _08013348
-	ldr r1, _08013340 @ =0x08BBB370
+	ldr r1, _08013340 @ =gUnk_08BBB370
 	lsls r0, r5, #2
 	adds r0, r0, r1
 	ldr r0, [r0]
@@ -1013,7 +1013,7 @@ DecodeMsg: @ 0x08013318
 	b _0801334A
 	.align 2, 0
 _0801333C: .4byte 0x0202B5B0
-_08013340: .4byte 0x08BBB370
+_08013340: .4byte gUnk_08BBB370
 _08013344: .4byte 0x0202A5B0
 _08013348:
 	ldr r0, _08013350 @ =0x0202A5B0
@@ -1028,7 +1028,7 @@ _08013350: .4byte 0x0202A5B0
 sub_08013354: @ 0x08013354
 	push {r4, lr}
 	adds r4, r1, #0
-	ldr r1, _08013370 @ =0x08BBB370
+	ldr r1, _08013370 @ =gUnk_08BBB370
 	lsls r0, r0, #2
 	adds r0, r0, r1
 	ldr r0, [r0]
@@ -1039,7 +1039,7 @@ sub_08013354: @ 0x08013354
 	pop {r1}
 	bx r1
 	.align 2, 0
-_08013370: .4byte 0x08BBB370
+_08013370: .4byte gUnk_08BBB370
 
 	thumb_func_start sub_08013374
 sub_08013374: @ 0x08013374

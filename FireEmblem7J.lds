@@ -9,28 +9,45 @@ SECTIONS
 	__ewram_overlay_beg = 0x02000000;
     __ewram_overlay_end = __ewram_overlay_beg;
 
+	. = __ewram_overlay_beg;
+    ewram_overlay_0 (NOLOAD) : ALIGN(4)
+	{
+		. = 0x00310C; gStatScreenSt = .;
+		. = 0x00323C; gUiTmScratchA = .;
+	}
+
     . = __ewram_overlay_beg;
     ewram_overlay_savemenu (NOLOAD) : ALIGN(4)
     {
         . = ALIGN(4); src/savemenu.o(ewram_overlay_savemenu);
     }
-    /* __ewram_overlay_end = MAX(., __ewram_overlay_end); */
+    __ewram_overlay_end = MAX(., __ewram_overlay_end);
 
-	. = __ewram_overlay_end;
+	. = __ewram_overlay_beg;
+    ewram_overlay_banim (NOLOAD) : ALIGN(4)
+    {
+        . = 0x000000; gAnims = .;
+		. = 0x000024; gAnimC01Blocking = .;
+		. = 0x00005C; gpBanimModesLeft = .;
+		. = 0x000060; gpBanimModesRight = .;
+		. = 0x00F1C8; gBanimScrLeft = .;
+		. = 0x017724; gEkrBattleEndFlag = .;
+		. = 0x017744; gEkrInitPosReal = .;
+		. = 0x017758; Unk_02017758 = .;
+		. = 0x019784; gEkrTsaBuffer = .;
+		. = 0x01D41C; gEfxFrameTmap = .;
+		. = 0x01FAF8; gBanimDoneFlag = .;
+		. = 0x01FB00; gEkrBgPosition = .;
+		. = 0x01FB10; gpImgSheet = .;
+		. = 0x020040; gEkrDragonStatusLeft = .;
+		. = 0x020050; gEkrDragonStatusRight = .;
+    }
+    __ewram_overlay_end = MAX(., __ewram_overlay_end);
+
+	. = __ewram_overlay_beg;
 	EWRAM (NOLOAD) :
 	ALIGN(4)
 	{
-		. = 0x000000; gAnims = .;
-		. = 0x000024; gEkrDebugUnk3 = .;
-		. = 0x00005C; gpBanimModesLeft = .;
-		. = 0x000060; gpBanimModesRight = .;
-		. = 0x00310C; gStatScreenSt = .;
-		. = 0x00323C; gBmFrameTmap0 = .;
-		. = 0x00F1C8; gBanimScrLeft = .;
-		. = 0x017758; Unk_02017758 = .;
-		. = 0x019784; gEkrTsaBuffer = .;
-		. = 0x01FAF8; gBanimDoneFlag = .;
-		. = 0x01FB10; gpImgSheet = .;
 		. = 0x020140;
 		. = ALIGN(4); src/hardware.o(ewram_data);
 		. = ALIGN(4); src/move-data.o(ewram_data);
@@ -66,16 +83,22 @@ SECTIONS
 
 		. = 0x03A7F0; gArenaSt = .;
 		. = 0x03A858; gActionSt = .;
+		. = 0x03DFE0; gEkrDebugModeMaybe = .;
+		. = 0x03DFE4; gEkrInitialHitSide = .;
 		. = 0x03DFEC; Unk_0203DFEC = .;
+		. = 0x03DFFC; gEkrSpellAnimIndex = .;
 		. = 0x03E004; gEkrDistanceType = .;
 		. = 0x03E00E; gAnimRoundData = .;
 		. = 0x03E036; gEfxPairHpBufOffset = .;
 		. = 0x03E03A; gEfxHpLut = .;
 		. = 0x03E06C; gpEkrBattleUnitLeft = .;
 		. = 0x03E070; gpEkrBattleUnitRight = .;
+		. = 0x03E074; gEkrPids = .;
 		. = 0x03E078; gpEkrTriangleUnits = .;
 		. = 0x03E088; Unk_0203E088 = .;
 		. = 0x03E090; gEkrPairHpInitial = .;
+		. = 0x03E0A8; gEkrPairExpPrevious = .;
+		. = 0x03E0AC; gEkrPairExpGain = .;
 		. = 0x03E772; gIsSramWorking = .;
 	}
 
@@ -163,9 +186,13 @@ SECTIONS
 		asm/ui-menu.o(.text);
 		asm/map-sel.o(.text);
 		asm/banim-ekrbattle.o(.text);
+		asm/banim-ekrgauge.o(.text);
 		asm/banim-efxbattle.o(.text);
 		asm/code-banim1.o(.text);
 		src/banim-main.o(.text);
+		asm/code-banim.o(.text);
+		src/banim-ekrdragon.o(.text);
+		asm/code-banim2.o(.text);
 		asm/code.o(.text);
 		src/save_core.o(.text);
 		asm/save.o(.text);
@@ -205,6 +232,7 @@ SECTIONS
 		. = ALIGN(4); src/battle.o(.rodata)
 		. = ALIGN(4); data/const_data_081C94C8.o(.rodata)
 		. = ALIGN(4); src/save_core.o(.rodata)
+
 		. = ALIGN(4); data/data_0842D270.o(.data)
 		. = ALIGN(4); src/hardware.o(.data)
 		. = ALIGN(4); data/data_08BBFCA8.o(.data)
@@ -212,6 +240,8 @@ SECTIONS
 		. = ALIGN(4); data/data.o(.data)
 		. = ALIGN(4); src/battle.o(.data)
 		. = ALIGN(4); data/data_08C03574.o(.data)
+		. = ALIGN(4); src/banim-ekrdragon.o(.data)
+		. = ALIGN(4); data/data_08C486EC.o(.data)
 		. = ALIGN(4); src/save_core.o(.data)
 		. = ALIGN(4); data/data_08DAD284.o(.data)
 	}

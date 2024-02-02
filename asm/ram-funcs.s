@@ -7,7 +7,7 @@ InitRamFuncs: @ 0x08004158
 	push {r4, r7, lr}
 	sub sp, #4
 	mov r7, sp
-	ldr r0, _080041D8 @ =0x08000A20
+	ldr r0, _080041D8 @ =ArmCodeEnd
 	ldr r1, _080041DC @ =ArmCodeStart
 	subs r0, r0, r1
 	str r0, [r7]
@@ -68,7 +68,7 @@ InitRamFuncs: @ 0x08004158
 	pop {r0}
 	bx r0
 	.align 2, 0
-_080041D8: .4byte 0x08000A20
+_080041D8: .4byte ArmCodeEnd
 _080041DC: .4byte ArmCodeStart
 _080041E0: .4byte 0x03002E60
 _080041E4: .4byte 0x03002E50

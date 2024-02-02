@@ -184,13 +184,13 @@ sub_0800694C: @ 0x0800694C
 	adds r6, r3, #0
 	cmp r4, #0
 	beq _08006964
-	ldr r0, _08006960 @ =0x08BFF7F8
+	ldr r0, _08006960 @ =gUnk_08BFF7F8
 	adds r1, r4, #0
 	b _08006968
 	.align 2, 0
-_08006960: .4byte 0x08BFF7F8
+_08006960: .4byte gUnk_08BFF7F8
 _08006964:
-	ldr r0, _0800698C @ =0x08BFF7F8
+	ldr r0, _0800698C @ =gUnk_08BFF7F8
 	movs r1, #3
 _08006968:
 	bl Proc_Start
@@ -211,7 +211,7 @@ _08006968:
 	pop {r1}
 	bx r1
 	.align 2, 0
-_0800698C: .4byte 0x08BFF7F8
+_0800698C: .4byte gUnk_08BFF7F8
 
 	thumb_func_start MoveSpriteRefresher
 MoveSpriteRefresher: @ 0x08006990
@@ -220,7 +220,7 @@ MoveSpriteRefresher: @ 0x08006990
 	adds r5, r2, #0
 	cmp r0, #0
 	bne _080069A0
-	ldr r0, _080069AC @ =0x08BFF7F8
+	ldr r0, _080069AC @ =gUnk_08BFF7F8
 	bl Proc_Find
 _080069A0:
 	str r4, [r0, #0x2c]
@@ -229,4 +229,4 @@ _080069A0:
 	pop {r0}
 	bx r0
 	.align 2, 0
-_080069AC: .4byte 0x08BFF7F8
+_080069AC: .4byte gUnk_08BFF7F8

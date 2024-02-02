@@ -524,7 +524,7 @@ _080BE828:
 MPlyJmpTblCopy: @ 0x080BE834
 	mov ip, lr
 	movs r1, #0x24
-	ldr r2, _080BE864 @ =0x086C4560
+	ldr r2, _080BE864 @ =gUnk_086C4560
 _080BE83A:
 	ldr r3, [r2]
 	bl _080BE84E
@@ -542,7 +542,7 @@ _080BE84E:
 	push {r0}
 	lsrs r0, r2, #0x19
 	bne _080BE860
-	ldr r0, _080BE864 @ =0x086C4560
+	ldr r0, _080BE864 @ =gUnk_086C4560
 	cmp r2, r0
 	blo _080BE85E
 	lsrs r0, r2, #0xe
@@ -553,7 +553,7 @@ _080BE860:
 	pop {r0}
 	bx lr
 	.align 2, 0
-_080BE864: .4byte 0x086C4560
+_080BE864: .4byte gUnk_086C4560
 
 	thumb_func_start ld_r3_tp_adr_i
 ld_r3_tp_adr_i: @ 0x080BE868
@@ -987,7 +987,7 @@ _080BEB2C:
 	beq _080BEBB4
 	b _080BEB58
 _080BEB4E:
-	ldr r0, _080BECA0 @ =0x086C47D4
+	ldr r0, _080BECA0 @ =gUnk_086C47D4
 	subs r1, #0x80
 	adds r1, r1, r0
 	ldrb r0, [r1]
@@ -1176,7 +1176,7 @@ _080BEC8C:
 sub_080BEC9C: @ 0x080BEC9C
 	bx r3
 	.align 2, 0
-_080BECA0: .4byte 0x086C47D4
+_080BECA0: .4byte gUnk_086C47D4
 _080BECA4: .4byte 0x03007FF0
 _080BECA8: .4byte 0x68736D53
 
@@ -1263,7 +1263,7 @@ ply_note_rev01: @ 0x080BED20
 	ldr r1, _080BEF18 @ =0x03007FF0
 	ldr r1, [r1]
 	str r1, [sp, #4]
-	ldr r1, _080BEF1C @ =0x086C47D4
+	ldr r1, _080BEF1C @ =gUnk_086C47D4
 	adds r0, r0, r1
 	ldrb r0, [r0]
 	strb r0, [r5, #4]
@@ -1526,7 +1526,7 @@ _080BEF06:
 	bx r0
 	.align 2, 0
 _080BEF18: .4byte 0x03007FF0
-_080BEF1C: .4byte 0x086C47D4
+_080BEF1C: .4byte gUnk_086C47D4
 
 	thumb_func_start ply_endtie_rev01
 ply_endtie_rev01: @ 0x080BEF20

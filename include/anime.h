@@ -34,10 +34,124 @@ struct Anim {
     /* 44 */ const void *pUnk44;
 };
 
+enum Anim_state {
+    ANIM_BIT_ENABLED = (1 << 0),
+    ANIM_BIT_HIDDEN  = (1 << 1),
+    ANIM_BIT_2       = (1 << 2),
+    ANIM_BIT_FROZEN  = (1 << 3),
+};
+
+enum Anim_state2 {
+    ANIM_BIT2_0001        = (1 << 0),
+    ANIM_BIT2_0002        = (1 << 1),
+    ANIM_BIT2_0004        = (1 << 2),
+    ANIM_BIT2_0008        = (1 << 3),
+    ANIM_BIT2_0010        = (1 << 4),
+    ANIM_BIT2_0020        = (1 << 5),
+    ANIM_BIT2_0040        = (1 << 6),
+    ANIM_BIT2_0080        = (1 << 7),
+
+    ANIM_BIT2_FRONT_FRAME = (1 << 8),
+    ANIM_BIT2_BACK_FRAME  = (0 << 8),
+
+    ANIM_BIT2_POS_RIGHT   = (1 << 9),
+    ANIM_BIT2_POS_LEFT    = (0 << 9),
+
+    ANIM_BIT2_0400        = (1 << 10),
+    ANIM_BIT2_0800        = (1 << 11),
+    ANIM_BIT2_COMMAND     = (1 << 12), /* 0x1000 */
+    ANIM_BIT2_FRAME       = (1 << 13), /* 0x2000 */
+    ANIM_BIT2_STOP        = (1 << 14), /* 0x4000 */
+    ANIM_BIT2_8000        = (1 << 15), /* 0x8000 */
+};
+
+#define ANIM_BIT2_CMD_MASK (ANIM_BIT2_COMMAND | ANIM_BIT2_FRAME | ANIM_BIT2_STOP | ANIM_BIT2_8000)
+
+enum Anim_state3 {
+    ANIM_BIT3_TAKE_BACK_ENABLE   = (1 << 0),
+    ANIM_BIT3_NEXT_ROUND_START   = (1 << 1),
+
+    /**
+     * If set, C01 will block the anim
+     * set bit when hit effect applied
+     * and then cleared after hitted
+     */
+    ANIM_BIT3_C01_BLOCKING_IN_BATTLE = (1 << 2),
+    ANIM_BIT3_HIT_EFFECT_APPLIED = (1 << 3),
+    ANIM_BIT3_0010               = (1 << 4),
+    ANIM_BIT3_BLOCKING           = (1 << 5),
+    ANIM_BIT3_BLOCKEND           = (1 << 6),
+    ANIM_BIT3_0080               = (1 << 7),
+    ANIM_BIT3_0100               = (1 << 8),
+    ANIM_BIT3_0200               = (1 << 9),
+    ANIM_BIT3_0400               = (1 << 10),
+    ANIM_BIT3_0800               = (1 << 11),
+    ANIM_BIT3_1000               = (1 << 12),
+    ANIM_BIT3_2000               = (1 << 13),
+    ANIM_BIT3_4000               = (1 << 14),
+    ANIM_BIT3_NEW_ROUND_START    = (1 << 15),
+};
+
+enum {
+    ANIM_MAX_COUNT = 50,
+};
+
+enum {
+    // Animation Command Identifiers
+    // TODO: complete during battle animation decomp
+
+    ANIM_CMD_NOP     = 0x00,
+    ANIM_CMD_WAIT_01 = 0x01, // wait for hp depletion
+    ANIM_CMD_WAIT_02 = 0x02, // wait for dodge start, then dodge
+    ANIM_CMD_WAIT_03 = 0x03, // wait for attack start
+    ANIM_CMD_WAIT_04 = 0x04,
+    ANIM_CMD_WAIT_05 = 0x05, // wait for spell animation?
+    // TODO: more
+    ANIM_CMD_WAIT_13 = 0x13, // unk
+    ANIM_CMD_WAIT_18 = 0x18, // wait for dodge start, then forward dodge
+    ANIM_CMD_WAIT_2D = 0x2D, // unk
+    ANIM_CMD_WAIT_39 = 0x39, // unk
+    ANIM_CMD_WAIT_52 = 0x52, // unk
+};
+
+// TODO: add macro helpers for writing animation scripts.
+#define ANIM_IS_DISABLED(anim) ((anim)->state == 0)
+
+enum anim_inst_type {
+    ANIM_INS_TYPE_STOP    = 0,
+    ANIM_INS_TYPE_END     = 1,
+    ANIM_INS_TYPE_LOOP    = 2,
+    ANIM_INS_TYPE_MOVE    = 3,
+    ANIM_INS_TYPE_WAIT    = 4,
+    ANIM_INS_TYPE_COMMAND = 5,
+    ANIM_INS_TYPE_FRAME   = 6,
+};
+
+struct AnimSpriteData {
+    /* 00 */ u32 header;
+
+    union {
+        struct {
+            /* 04 */ u16 pa;
+            /* 06 */ u16 pb;
+            /* 08 */ u16 pc;
+            /* 0A */ u16 pd;
+        } affine;
+
+        struct {
+            /* 04 */ u16 oam2;
+            /* 06 */ short x;
+            /* 08 */ short y;
+        } object;
+    } as;
+};
+
+#define ANIM_SPRITE_END {.header = 1}
+
 void AnimUpdateAll(void);
 void AnimClearAll(void);
-struct Anim* AnimCreate_unused(const void* script);
-struct Anim* AnimCreate(const void* script, u16 displayPriority);
+struct Anim * AnimCreate_unused(const void * script);
+struct Anim * AnimCreate(const void * script, u16 displayPriority);
 void AnimSort(void);
 void AnimDelete(struct Anim* anim);
 void AnimDisplay(struct Anim* anim);

@@ -23,6 +23,12 @@ struct Vec2u {
     u16 x, y;
 };
 
+enum glb_pos {
+    POS_L = 0,
+    POS_R = 1,
+    POS_INVALID = -1
+};
+
 struct SMSHandle;
 struct Unit;
 struct UnitDefinition;

@@ -15,10 +15,10 @@ MidiKey2fr: @ 0x080BEFB0
 	movs r7, #0xff
 	lsls r7, r7, #0x18
 _080BEFC4:
-	ldr r3, _080BF00C @ =0x086C45F0
+	ldr r3, _080BF00C @ =gUnk_086C45F0
 	adds r0, r6, r3
 	ldrb r5, [r0]
-	ldr r4, _080BF010 @ =0x086C46A4
+	ldr r4, _080BF010 @ =gUnk_086C46A4
 	movs r2, #0xf
 	adds r0, r5, #0
 	ands r0, r2
@@ -50,8 +50,8 @@ _080BEFC4:
 	pop {r1}
 	bx r1
 	.align 2, 0
-_080BF00C: .4byte 0x086C45F0
-_080BF010: .4byte 0x086C46A4
+_080BF00C: .4byte gUnk_086C45F0
+_080BF010: .4byte gUnk_086C46A4
 
 	thumb_func_start DummyFunc
 DummyFunc: @ 0x080BF014
@@ -115,7 +115,7 @@ m4aSoundInit: @ 0x080BF054
 	lsrs r0, r0, #0x10
 	cmp r0, #0
 	beq _080BF0A2
-	ldr r5, _080BF0C4 @ =0x086EA858
+	ldr r5, _080BF0C4 @ =gUnk_086EA858
 	adds r6, r0, #0
 _080BF086:
 	ldr r4, [r5]
@@ -143,7 +143,7 @@ _080BF0B4: .4byte 0x03004A00
 _080BF0B8: .4byte 0x03005B00
 _080BF0BC: .4byte 0x0094D700
 _080BF0C0: .4byte 0x00000009
-_080BF0C4: .4byte 0x086EA858
+_080BF0C4: .4byte gUnk_086EA858
 _080BF0C8: .4byte 0x03005D00
 
 	thumb_func_start m4aSoundMain
@@ -158,8 +158,8 @@ m4aSoundMain: @ 0x080BF0CC
 m4aSongNumStart: @ 0x080BF0D8
 	push {lr}
 	lsls r0, r0, #0x10
-	ldr r2, _080BF0FC @ =0x086EA858
-	ldr r1, _080BF100 @ =0x086EA8D0
+	ldr r2, _080BF0FC @ =gUnk_086EA858
+	ldr r1, _080BF100 @ =gUnk_086EA8D0
 	lsrs r0, r0, #0xd
 	adds r0, r0, r1
 	ldrh r3, [r0, #4]
@@ -174,15 +174,15 @@ m4aSongNumStart: @ 0x080BF0D8
 	pop {r0}
 	bx r0
 	.align 2, 0
-_080BF0FC: .4byte 0x086EA858
-_080BF100: .4byte 0x086EA8D0
+_080BF0FC: .4byte gUnk_086EA858
+_080BF100: .4byte gUnk_086EA8D0
 
 	thumb_func_start m4aSongNumStartOrChange
 m4aSongNumStartOrChange: @ 0x080BF104
 	push {lr}
 	lsls r0, r0, #0x10
-	ldr r2, _080BF130 @ =0x086EA858
-	ldr r1, _080BF134 @ =0x086EA8D0
+	ldr r2, _080BF130 @ =gUnk_086EA858
+	ldr r1, _080BF134 @ =gUnk_086EA8D0
 	lsrs r0, r0, #0xd
 	adds r0, r0, r1
 	ldrh r3, [r0, #4]
@@ -200,8 +200,8 @@ m4aSongNumStartOrChange: @ 0x080BF104
 	bl MPlayStart_rev01
 	b _080BF14C
 	.align 2, 0
-_080BF130: .4byte 0x086EA858
-_080BF134: .4byte 0x086EA8D0
+_080BF130: .4byte gUnk_086EA858
+_080BF134: .4byte gUnk_086EA8D0
 _080BF138:
 	ldr r2, [r1, #4]
 	ldrh r0, [r1, #4]
@@ -221,8 +221,8 @@ _080BF14C:
 m4aSongNumStartOrContinue: @ 0x080BF150
 	push {lr}
 	lsls r0, r0, #0x10
-	ldr r2, _080BF17C @ =0x086EA858
-	ldr r1, _080BF180 @ =0x086EA8D0
+	ldr r2, _080BF17C @ =gUnk_086EA858
+	ldr r1, _080BF180 @ =gUnk_086EA8D0
 	lsrs r0, r0, #0xd
 	adds r0, r0, r1
 	ldrh r3, [r0, #4]
@@ -240,8 +240,8 @@ m4aSongNumStartOrContinue: @ 0x080BF150
 	bl MPlayStart_rev01
 	b _080BF1A0
 	.align 2, 0
-_080BF17C: .4byte 0x086EA858
-_080BF180: .4byte 0x086EA8D0
+_080BF17C: .4byte gUnk_086EA858
+_080BF180: .4byte gUnk_086EA8D0
 _080BF184:
 	ldr r2, [r1, #4]
 	ldrh r0, [r1, #4]
@@ -264,8 +264,8 @@ _080BF1A0:
 m4aSongNumStop: @ 0x080BF1A4
 	push {lr}
 	lsls r0, r0, #0x10
-	ldr r2, _080BF1D0 @ =0x086EA858
-	ldr r1, _080BF1D4 @ =0x086EA8D0
+	ldr r2, _080BF1D0 @ =gUnk_086EA858
+	ldr r1, _080BF1D4 @ =gUnk_086EA8D0
 	lsrs r0, r0, #0xd
 	adds r0, r0, r1
 	ldrh r3, [r0, #4]
@@ -284,15 +284,15 @@ _080BF1CA:
 	pop {r0}
 	bx r0
 	.align 2, 0
-_080BF1D0: .4byte 0x086EA858
-_080BF1D4: .4byte 0x086EA8D0
+_080BF1D0: .4byte gUnk_086EA858
+_080BF1D4: .4byte gUnk_086EA8D0
 
 	thumb_func_start m4aSongNumContinue
 m4aSongNumContinue: @ 0x080BF1D8
 	push {lr}
 	lsls r0, r0, #0x10
-	ldr r2, _080BF204 @ =0x086EA858
-	ldr r1, _080BF208 @ =0x086EA8D0
+	ldr r2, _080BF204 @ =gUnk_086EA858
+	ldr r1, _080BF208 @ =gUnk_086EA8D0
 	lsrs r0, r0, #0xd
 	adds r0, r0, r1
 	ldrh r3, [r0, #4]
@@ -311,8 +311,8 @@ _080BF1FE:
 	pop {r0}
 	bx r0
 	.align 2, 0
-_080BF204: .4byte 0x086EA858
-_080BF208: .4byte 0x086EA8D0
+_080BF204: .4byte gUnk_086EA858
+_080BF208: .4byte gUnk_086EA8D0
 
 	thumb_func_start m4aMPlayAllStop
 m4aMPlayAllStop: @ 0x080BF20C
@@ -322,7 +322,7 @@ m4aMPlayAllStop: @ 0x080BF20C
 	lsrs r0, r0, #0x10
 	cmp r0, #0
 	beq _080BF22A
-	ldr r5, _080BF234 @ =0x086EA858
+	ldr r5, _080BF234 @ =gUnk_086EA858
 	adds r4, r0, #0
 _080BF21C:
 	ldr r0, [r5]
@@ -337,7 +337,7 @@ _080BF22A:
 	bx r0
 	.align 2, 0
 _080BF230: .4byte 0x00000009
-_080BF234: .4byte 0x086EA858
+_080BF234: .4byte gUnk_086EA858
 
 	thumb_func_start m4aMPlayContinue
 m4aMPlayContinue: @ 0x080BF238
@@ -355,7 +355,7 @@ m4aMPlayAllContinue: @ 0x080BF244
 	lsrs r0, r0, #0x10
 	cmp r0, #0
 	beq _080BF262
-	ldr r5, _080BF26C @ =0x086EA858
+	ldr r5, _080BF26C @ =gUnk_086EA858
 	adds r4, r0, #0
 _080BF254:
 	ldr r0, [r5]
@@ -370,7 +370,7 @@ _080BF262:
 	bx r0
 	.align 2, 0
 _080BF268: .4byte 0x00000009
-_080BF26C: .4byte 0x086EA858
+_080BF26C: .4byte gUnk_086EA858
 
 	thumb_func_start m4aMPlayFadeOut
 m4aMPlayFadeOut: @ 0x080BF270
@@ -739,7 +739,7 @@ SampFreqSet_rev01: @ 0x080BF54C
 	lsrs r2, r0, #0x10
 	movs r6, #0
 	strb r2, [r4, #8]
-	ldr r1, _080BF5D0 @ =0x086C46D4
+	ldr r1, _080BF5D0 @ =gUnk_086C46D4
 	subs r0, r2, #1
 	lsls r0, r0, #1
 	adds r0, r0, r1
@@ -791,7 +791,7 @@ _080BF5B8:
 	bx r0
 	.align 2, 0
 _080BF5CC: .4byte 0x03007FF0
-_080BF5D0: .4byte 0x086C46D4
+_080BF5D0: .4byte gUnk_086C46D4
 _080BF5D4: .4byte 0x00091D1B
 _080BF5D8: .4byte 0x00001388
 _080BF5DC: .4byte 0x00002710
@@ -1480,12 +1480,12 @@ _080BFAC8:
 	bls _080BFAD6
 	movs r5, #0x3b
 _080BFAD6:
-	ldr r0, _080BFAE0 @ =0x086C4788
+	ldr r0, _080BFAE0 @ =gUnk_086C4788
 	adds r0, r5, r0
 	ldrb r0, [r0]
 	b _080BFB46
 	.align 2, 0
-_080BFAE0: .4byte 0x086C4788
+_080BFAE0: .4byte gUnk_086C4788
 _080BFAE4:
 	cmp r5, #0x23
 	bhi _080BFAF0
@@ -1504,10 +1504,10 @@ _080BFAF0:
 	movs r1, #0xff
 	mov ip, r1
 _080BFB02:
-	ldr r3, _080BFB4C @ =0x086C46EC
+	ldr r3, _080BFB4C @ =gUnk_086C46EC
 	adds r0, r5, r3
 	ldrb r6, [r0]
-	ldr r4, _080BFB50 @ =0x086C4770
+	ldr r4, _080BFB50 @ =gUnk_086C4770
 	movs r2, #0xf
 	adds r0, r6, #0
 	ands r0, r2
@@ -1543,8 +1543,8 @@ _080BFB46:
 	pop {r1}
 	bx r1
 	.align 2, 0
-_080BFB4C: .4byte 0x086C46EC
-_080BFB50: .4byte 0x086C4770
+_080BFB4C: .4byte gUnk_086C46EC
+_080BFB50: .4byte gUnk_086C4770
 
 	thumb_func_start CgbOscOff
 CgbOscOff: @ 0x080BFB54
@@ -2167,7 +2167,7 @@ _080BFFB2:
 	strb r0, [r1]
 	cmp r6, #3
 	bne _080C0004
-	ldr r0, _080C0000 @ =0x086C47C4
+	ldr r0, _080C0000 @ =gUnk_086C47C4
 	ldrb r1, [r4, #9]
 	adds r0, r1, r0
 	ldrb r0, [r0]
@@ -2191,7 +2191,7 @@ _080BFFB2:
 	b _080C0038
 	.align 2, 0
 _080BFFFC: .4byte 0x04000081
-_080C0000: .4byte 0x086C47C4
+_080C0000: .4byte gUnk_086C47C4
 _080C0004:
 	movs r0, #0xf
 	mov r1, r8
@@ -2776,7 +2776,7 @@ ply_xcmd: @ 0x080C0424
 	ldrb r3, [r2]
 	adds r2, #1
 	str r2, [r1, #0x40]
-	ldr r2, _080C0440 @ =0x086C4808
+	ldr r2, _080C0440 @ =gUnk_086C4808
 	lsls r3, r3, #2
 	adds r3, r3, r2
 	ldr r2, [r3]
@@ -2784,7 +2784,7 @@ ply_xcmd: @ 0x080C0424
 	pop {r0}
 	bx r0
 	.align 2, 0
-_080C0440: .4byte 0x086C4808
+_080C0440: .4byte gUnk_086C4808
 
 	thumb_func_start ply_xxx
 ply_xxx: @ 0x080C0444

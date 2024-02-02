@@ -486,7 +486,7 @@ ApplyMapChange: @ 0x0802C228
 	ldrb r0, [r3, #4]
 	cmp r6, r0
 	bge _0802C282
-	ldr r7, _0802C290 @ =0x08C02570
+	ldr r7, _0802C290 @ =gUnk_08C02570
 	mov r8, r7
 _0802C244:
 	movs r5, #0
@@ -531,7 +531,7 @@ _0802C282:
 	pop {r0}
 	bx r0
 	.align 2, 0
-_0802C290: .4byte 0x08C02570
+_0802C290: .4byte gUnk_08C02570
 
 	thumb_func_start AddMapChangeTrap
 AddMapChangeTrap: @ 0x0802C294
@@ -1113,13 +1113,13 @@ sub_0802C68C: @ 0x0802C68C
 	lsls r0, r0, #0x18
 	cmp r0, #0
 	beq _0802C6A0
-	ldr r0, _0802C6A4 @ =0x08D6F71C
+	ldr r0, _0802C6A4 @ =gUnk_08D6F71C
 	bl sub_0800AE98
 _0802C6A0:
 	pop {r0}
 	bx r0
 	.align 2, 0
-_0802C6A4: .4byte 0x08D6F71C
+_0802C6A4: .4byte gUnk_08D6F71C
 
 	thumb_func_start sub_0802C6A8
 sub_0802C6A8: @ 0x0802C6A8
