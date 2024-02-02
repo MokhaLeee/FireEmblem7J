@@ -80,6 +80,7 @@ extern u16 gEkrXPosBase[2];
 extern u16 gEkrYPosBase[2];
 extern struct Vec2 gEkrBg0QuakeVec;
 extern struct Vec2 gEkrBg2QuakeVec;
+extern s16 gEkrPairSideVaild[2];
 
 void NewEkrLvlupFan(void);
 // ??? EkrLvupFanMain

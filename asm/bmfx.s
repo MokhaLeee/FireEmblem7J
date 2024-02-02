@@ -5106,7 +5106,7 @@ sub_0801FFE0: @ 0x0801FFE0
 	ldr r4, _080200C4 @ =gPlaySt
 	movs r0, #0xe
 	ldrsb r0, [r4, r0]
-	bl sub_080195BC
+	bl UnpackChapterMapGraphics
 	bl ApplyUnitSpritePalettes
 	bl ApplySystemObjectsGraphics
 	movs r0, #0xe

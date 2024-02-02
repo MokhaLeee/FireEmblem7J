@@ -1,7 +1,7 @@
 	.section .data
 
-	.global gUnk_08C486EC
-gUnk_08C486EC:	@ 0x08C486EC
+	.global ProcScr_EkrDragonBaseHide
+ProcScr_EkrDragonBaseHide:	@ 0x08C486EC
 	.incbin "FireEmblem7J.base.gba", 0xC486EC, 0xC4870C - 0xC486EC
 
 	.global gUnk_08C4870C
@@ -80,8 +80,8 @@ gUnk_08C488FC:	@ 0x08C488FC
 gUnk_08C49EEC:	@ 0x08C49EEC
 	.incbin "FireEmblem7J.base.gba", 0xC49EEC, 0xC49FA4 - 0xC49EEC
 
-	.global gUnk_08C49FA4
-gUnk_08C49FA4:	@ 0x08C49FA4
+	.global AnimScr_EkrDragonHead
+AnimScr_EkrDragonHead:	@ 0x08C49FA4
 	.incbin "FireEmblem7J.base.gba", 0xC49FA4, 0xC49FAC - 0xC49FA4
 
 	.global gUnk_08C49FAC

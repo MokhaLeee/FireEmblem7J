@@ -1,148 +1,11 @@
 	.include "macro.inc"
 	.syntax unified
 
-	thumb_func_start EkrDragon_WaitForFadeOut
-EkrDragon_WaitForFadeOut: @ 0x08065C14
+	thumb_func_start NewEkrDragonBaseHide
+NewEkrDragonBaseHide: @ 0x08065D38
 	push {r4, lr}
 	adds r4, r0, #0
-	ldr r0, [r4, #0x50]
-	adds r1, r0, #0
-	adds r1, #0x29
-	ldrb r1, [r1]
-	cmp r1, #1
-	bne _08065C2E
-	bl Proc_End
-	adds r0, r4, #0
-	bl Proc_Break
-_08065C2E:
-	pop {r4}
-	pop {r0}
-	bx r0
-
-	thumb_func_start EkrDragon_08065C34
-EkrDragon_08065C34: @ 0x08065C34
-	push {r4, lr}
-	adds r4, r0, #0
-	ldr r0, [r4, #0x4c]
-	bl Proc_End
-	ldr r0, [r4, #0x58]
-	bl Proc_End
-	ldr r0, [r4, #0x48]
-	bl Proc_End
-	ldr r3, _08065CB8 @ =gDispIo
-	movs r1, #4
-	rsbs r1, r1, #0
-	adds r0, r1, #0
-	ldrb r2, [r3, #0xc]
-	ands r0, r2
-	strb r0, [r3, #0xc]
-	adds r0, r1, #0
-	ldrb r2, [r3, #0x10]
-	ands r0, r2
-	movs r2, #1
-	orrs r0, r2
-	strb r0, [r3, #0x10]
-	ldrb r0, [r3, #0x14]
-	ands r1, r0
-	movs r0, #2
-	orrs r1, r0
-	strb r1, [r3, #0x14]
-	movs r0, #3
-	ldrb r1, [r3, #0x18]
-	orrs r0, r1
-	strb r0, [r3, #0x18]
-	ldr r0, [r4, #0x5c]
-	bl GetAnimPosition
-	bl SetAnimStateHidden
-	ldr r0, [r4, #0x5c]
-	bl GetAnimPosition
-	ldr r1, _08065CBC @ =0x0203DFE8
-	lsls r0, r0, #1
-	adds r0, r0, r1
-	movs r1, #0
-	strh r1, [r0]
-	ldr r0, [r4, #0x5c]
-	bl sub_08065DD0
-	ldr r0, _08065CC0 @ =gBg3Tm
-	ldr r1, _08065CC4 @ =0x0000601F
-	bl TmFill
-	movs r0, #8
-	bl EnableBgSync
-	movs r0, #0x10
-	bl EfxChapterMapFadeOUT
-	adds r0, r4, #0
-	bl Proc_Break
-	pop {r4}
-	pop {r0}
-	bx r0
-	.align 2, 0
-_08065CB8: .4byte gDispIo
-_08065CBC: .4byte 0x0203DFE8
-_08065CC0: .4byte gBg3Tm
-_08065CC4: .4byte 0x0000601F
-
-	thumb_func_start EkrDragon_08065CC8
-EkrDragon_08065CC8: @ 0x08065CC8
-	push {r4, lr}
-	sub sp, #4
-	adds r4, r0, #0
-	movs r1, #0x2c
-	ldrsh r0, [r4, r1]
-	cmp r0, #0
-	bne _08065CE6
-	ldr r0, _08065D1C @ =gPlaySt
-	ldrb r0, [r0, #0xe]
-	lsls r0, r0, #0x18
-	asrs r0, r0, #0x18
-	bl sub_080195BC
-	bl RenderMap
-_08065CE6:
-	movs r0, #0x2c
-	ldrsh r3, [r4, r0]
-	movs r0, #8
-	str r0, [sp]
-	movs r0, #4
-	movs r1, #0x10
-	movs r2, #4
-	bl Interpolate
-	bl EfxChapterMapFadeOUT
-	ldrh r0, [r4, #0x2c]
-	adds r0, #1
-	strh r0, [r4, #0x2c]
-	lsls r0, r0, #0x10
-	asrs r0, r0, #0x10
-	cmp r0, #9
-	bne _08065D14
-	movs r0, #0
-	strh r0, [r4, #0x2c]
-	adds r0, r4, #0
-	bl Proc_Break
-_08065D14:
-	add sp, #4
-	pop {r4}
-	pop {r0}
-	bx r0
-	.align 2, 0
-_08065D1C: .4byte gPlaySt
-
-	thumb_func_start EkrDragon_08065D20
-EkrDragon_08065D20: @ 0x08065D20
-	push {r4, lr}
-	adds r4, r0, #0
-	ldr r0, [r4, #0x5c]
-	movs r1, #8
-	bl AddEkrDragonStatusAttr
-	adds r0, r4, #0
-	bl Proc_Break
-	pop {r4}
-	pop {r0}
-	bx r0
-
-	thumb_func_start sub_08065D38
-sub_08065D38: @ 0x08065D38
-	push {r4, lr}
-	adds r4, r0, #0
-	ldr r0, _08065D58 @ =gUnk_08C486EC
+	ldr r0, _08065D58 @ =ProcScr_EkrDragonBaseHide
 	movs r1, #3
 	bl Proc_Start
 	str r4, [r0, #0x5c]
@@ -155,7 +18,7 @@ sub_08065D38: @ 0x08065D38
 	pop {r1}
 	bx r1
 	.align 2, 0
-_08065D58: .4byte gUnk_08C486EC
+_08065D58: .4byte ProcScr_EkrDragonBaseHide
 
 	thumb_func_start sub_08065D5C
 sub_08065D5C: @ 0x08065D5C
@@ -215,8 +78,8 @@ sub_08065DC4: @ 0x08065DC4
 	bx r0
 	.align 2, 0
 
-	thumb_func_start sub_08065DD0
-sub_08065DD0: @ 0x08065DD0
+	thumb_func_start NewEkrDragonBaseAppear
+NewEkrDragonBaseAppear: @ 0x08065DD0
 	push {r4, r5, lr}
 	sub sp, #4
 	adds r4, r0, #0
@@ -318,8 +181,8 @@ sub_08065EA0: @ 0x08065EA0
 	bx r0
 	.align 2, 0
 
-	thumb_func_start sub_08065EAC
-sub_08065EAC: @ 0x08065EAC
+	thumb_func_start EkrDragonFxHandler_Main
+EkrDragonFxHandler_Main: @ 0x08065EAC
 	push {r4, r5, lr}
 	adds r5, r0, #0
 	ldr r0, _08065EFC @ =gUnk_08C4872C
@@ -327,14 +190,14 @@ sub_08065EAC: @ 0x08065EAC
 	bl Proc_Start
 	adds r4, r0, #0
 	str r5, [r4, #0x5c]
-	ldr r0, _08065F00 @ =gUnk_082E76A4
+	ldr r0, _08065F00 @ =Img_EkrDragonHeadAnim
 	movs r1, #0x80
 	lsls r1, r1, #6
 	bl SpellFx_RegisterObjGfx
-	ldr r0, _08065F04 @ =gUnk_082E9CD8
+	ldr r0, _08065F04 @ =Pal_EkrDragonHeadAnim
 	movs r1, #0x20
 	bl SpellFx_RegisterObjPal
-	ldr r0, _08065F08 @ =gUnk_08C49FA4
+	ldr r0, _08065F08 @ =AnimScr_EkrDragonHead
 	movs r1, #0x14
 	bl AnimCreate
 	movs r2, #0
@@ -357,9 +220,9 @@ sub_08065EAC: @ 0x08065EAC
 	bx r1
 	.align 2, 0
 _08065EFC: .4byte gUnk_08C4872C
-_08065F00: .4byte gUnk_082E76A4
-_08065F04: .4byte gUnk_082E9CD8
-_08065F08: .4byte gUnk_08C49FA4
+_08065F00: .4byte Img_EkrDragonHeadAnim
+_08065F04: .4byte Pal_EkrDragonHeadAnim
+_08065F08: .4byte AnimScr_EkrDragonHead
 
 	thumb_func_start sub_08065F0C
 sub_08065F0C: @ 0x08065F0C
@@ -396,10 +259,10 @@ sub_08065F38: @ 0x08065F38
 	adds r5, r0, #0
 	str r4, [r5, #0x5c]
 	ldr r4, _08065F80 @ =gUnk_08C49EEC
-	ldr r0, _08065F84 @ =gUnk_082E9CD8
+	ldr r0, _08065F84 @ =Pal_EkrDragonHeadAnim
 	movs r1, #0x20
 	bl SpellFx_RegisterObjPal
-	ldr r0, _08065F88 @ =gUnk_082E76A4
+	ldr r0, _08065F88 @ =Img_EkrDragonHeadAnim
 	movs r1, #0x80
 	lsls r1, r1, #6
 	bl SpellFx_RegisterObjGfx
@@ -420,8 +283,8 @@ sub_08065F38: @ 0x08065F38
 	.align 2, 0
 _08065F7C: .4byte gUnk_08C48744
 _08065F80: .4byte gUnk_08C49EEC
-_08065F84: .4byte gUnk_082E9CD8
-_08065F88: .4byte gUnk_082E76A4
+_08065F84: .4byte Pal_EkrDragonHeadAnim
+_08065F88: .4byte Img_EkrDragonHeadAnim
 
 	thumb_func_start sub_08065F8C
 sub_08065F8C: @ 0x08065F8C
@@ -454,10 +317,10 @@ sub_08065F98: @ 0x08065F98
 	str r0, [r2, #0x24]
 	str r0, [r2, #0x20]
 	strh r3, [r2, #6]
-	ldr r0, _08065FE4 @ =gUnk_082E9CD8
+	ldr r0, _08065FE4 @ =Pal_EkrDragonHeadAnim
 	movs r1, #0x20
 	bl SpellFx_RegisterObjPal
-	ldr r0, _08065FE8 @ =gUnk_082E8584
+	ldr r0, _08065FE8 @ =Img_EkrDragonSpark
 	movs r1, #0x80
 	lsls r1, r1, #6
 	bl SpellFx_RegisterObjGfx
@@ -469,8 +332,8 @@ _08065FDA:
 	bx r0
 	.align 2, 0
 _08065FE0: .4byte gUnk_08C49FAC
-_08065FE4: .4byte gUnk_082E9CD8
-_08065FE8: .4byte gUnk_082E8584
+_08065FE4: .4byte Pal_EkrDragonHeadAnim
+_08065FE8: .4byte Img_EkrDragonSpark
 
 	thumb_func_start sub_08065FEC
 sub_08065FEC: @ 0x08065FEC
@@ -488,10 +351,10 @@ sub_08065FEC: @ 0x08065FEC
 	asrs r0, r0, #0x10
 	cmp r0, #0x2e
 	bne _08066020
-	ldr r0, _08066028 @ =gUnk_082E9CD8
+	ldr r0, _08066028 @ =Pal_EkrDragonHeadAnim
 	movs r1, #0x20
 	bl SpellFx_RegisterObjPal
-	ldr r0, _0806602C @ =gUnk_082E76A4
+	ldr r0, _0806602C @ =Img_EkrDragonHeadAnim
 	movs r1, #0x80
 	lsls r1, r1, #6
 	bl SpellFx_RegisterObjGfx
@@ -502,8 +365,8 @@ _08066020:
 	pop {r0}
 	bx r0
 	.align 2, 0
-_08066028: .4byte gUnk_082E9CD8
-_0806602C: .4byte gUnk_082E76A4
+_08066028: .4byte Pal_EkrDragonHeadAnim
+_0806602C: .4byte Img_EkrDragonHeadAnim
 
 	thumb_func_start sub_08066030
 sub_08066030: @ 0x08066030
@@ -514,8 +377,8 @@ sub_08066030: @ 0x08066030
 	strh r0, [r2, #4]
 	bx lr
 
-	thumb_func_start sub_0806603C
-sub_0806603C: @ 0x0806603C
+	thumb_func_start InitEkrDragonDeadFx
+InitEkrDragonDeadFx: @ 0x0806603C
 	push {r4, r5, lr}
 	sub sp, #4
 	adds r4, r0, #0
@@ -525,10 +388,10 @@ sub_0806603C: @ 0x0806603C
 	adds r5, r0, #0
 	str r4, [r5, #0x5c]
 	ldr r4, _08066084 @ =gUnk_08C49FFC
-	ldr r0, _08066088 @ =gUnk_082E9CD8
+	ldr r0, _08066088 @ =Pal_EkrDragonHeadAnim
 	movs r1, #0x20
 	bl SpellFx_RegisterObjPal
-	ldr r0, _0806608C @ =gUnk_082E9240
+	ldr r0, _0806608C @ =Img_EkrDragonDead
 	movs r1, #0x80
 	lsls r1, r1, #6
 	bl SpellFx_RegisterObjGfx
@@ -549,8 +412,8 @@ sub_0806603C: @ 0x0806603C
 	.align 2, 0
 _08066080: .4byte gUnk_08C48774
 _08066084: .4byte gUnk_08C49FFC
-_08066088: .4byte gUnk_082E9CD8
-_0806608C: .4byte gUnk_082E9240
+_08066088: .4byte Pal_EkrDragonHeadAnim
+_0806608C: .4byte Img_EkrDragonDead
 
 	thumb_func_start sub_08066090
 sub_08066090: @ 0x08066090
@@ -1114,8 +977,8 @@ _080664C0: .4byte gpEkrLvupBg2ScrollOffsetStart
 _080664C4: .4byte gpEkrLvupBg2ScrollOffsetTable1
 _080664C8: .4byte gpEkrLvupBg2ScrollOffset
 
-	thumb_func_start sub_080664CC
-sub_080664CC: @ 0x080664CC
+	thumb_func_start EkrDragonFxHandler_OnIntro
+EkrDragonFxHandler_OnIntro: @ 0x080664CC
 	push {r4, r5, r6, lr}
 	mov r6, r8
 	push {r6}
@@ -1823,7 +1686,7 @@ _08066A50:
 	strh r4, [r5, #0x3a]
 	strh r6, [r5, #0x3c]
 	ldr r0, [r5, #0x5c]
-	bl sub_0806603C
+	bl InitEkrDragonDeadFx
 	str r0, [r5, #0x64]
 	ldr r1, [r5, #0x5c]
 	ldrh r1, [r1, #2]
@@ -1836,7 +1699,7 @@ _08066A50:
 	subs r0, r0, r2
 	adds r0, #0xd8
 	strh r0, [r1, #0x3a]
-	ldr r0, _08066AD0 @ =Tsa_EkrDragon_082E6E8C
+	ldr r0, _08066AD0 @ =Tsa_EkrDragon_MainBg
 	ldr r1, _08066AD4 @ =gEkrTsaBuffer
 	bl LZ77UnCompWram
 	ldr r0, _08066AD8 @ =0x001F001F
@@ -1868,7 +1731,7 @@ _08066AC4:
 	bx r0
 	.align 2, 0
 _08066ACC: .4byte 0x00000147
-_08066AD0: .4byte Tsa_EkrDragon_082E6E8C
+_08066AD0: .4byte Tsa_EkrDragon_MainBg
 _08066AD4: .4byte gEkrTsaBuffer
 _08066AD8: .4byte 0x001F001F
 _08066ADC: .4byte gBg3Tm

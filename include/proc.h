@@ -41,6 +41,8 @@ struct ProcCmd {
 #define PROC_19                                      { 0x19, 0x0000, 0 }
 #define PROC_YIELD                                   PROC_SLEEP(0)
 
+#define PROC_NAME_DEBUG(name) PROC_19
+
 // allows local Proc structs to invoke the general Proc
 // fields when creating local Proc definitions.
 #define PROC_HEADER                                                                        \

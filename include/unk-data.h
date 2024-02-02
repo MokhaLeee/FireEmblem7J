@@ -945,13 +945,13 @@ extern struct unk_type_0203A50C gUnk_0203A50C;
 // ??? gUnk_082E4430
 // ??? gUnk_082E4442
 extern u8 Img_EkrDragon_082E445C[];
-extern u8 Tsa_EkrDragon_082E445C[];
-extern u8 Tsa_EkrDragon_082E6E8C[];
+extern u8 Tsa_EkrDragon_DragonTail[];
+extern u8 Tsa_EkrDragon_MainBg[];
 // ??? gUnk_082E7418
-// ??? gUnk_082E76A4
-// ??? gUnk_082E8584
-// ??? gUnk_082E9240
-// ??? gUnk_082E9CD8
+// ??? Img_EkrDragonHeadAnim
+// ??? Img_EkrDragonSpark
+// ??? Img_EkrDragonDead
+// ??? Pal_EkrDragonHeadAnim
 // ??? gUnk_082E9CF8
 // ??? gUnk_082E9DD8
 // ??? gUnk_082EA7C8
@@ -2326,7 +2326,7 @@ extern u8 Tsa_EkrDragon_082E6E8C[];
 // ??? gUnk_08C48524
 // ??? gUnk_08C48648
 
-// ??? gUnk_08C486EC
+// ??? ProcScr_EkrDragonBaseHide
 // ??? gUnk_08C4870C
 // ??? gUnk_08C4872C
 // ??? gUnk_08C48744
@@ -2346,7 +2346,7 @@ extern u8 Tsa_EkrDragon_082E6E8C[];
 // ??? gUnk_08C488E4
 // ??? gUnk_08C488FC
 // ??? gUnk_08C49EEC
-// ??? gUnk_08C49FA4
+// ??? AnimScr_EkrDragonHead
 // ??? gUnk_08C49FAC
 // ??? gUnk_08C49FFC
 // ??? gUnk_08C4A008

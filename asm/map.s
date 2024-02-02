@@ -9,7 +9,7 @@ InitChapterMap: @ 0x08019170
 	adds r1, r4, #0
 	bl sub_0801955C
 	adds r0, r4, #0
-	bl sub_080195BC
+	bl UnpackChapterMapGraphics
 	ldr r0, _0801922C @ =0x0202E3F4
 	ldr r6, _08019230 @ =gBmMapUnit
 	ldr r4, _08019234 @ =gBmMapSize
@@ -539,8 +539,8 @@ _080195B0: .4byte gUnk_08D648F4
 _080195B4: .4byte 0x02030A8C
 _080195B8: .4byte gBmSt
 
-	thumb_func_start sub_080195BC
-sub_080195BC: @ 0x080195BC
+	thumb_func_start UnpackChapterMapGraphics
+UnpackChapterMapGraphics: @ 0x080195BC
 	push {r4, r5, lr}
 	adds r4, r0, #0
 	ldr r5, _08019618 @ =gUnk_08D648F4

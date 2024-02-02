@@ -104,6 +104,7 @@ SECTIONS
 		. = 0x03A858; gActionSt = .;
 		. = 0x03DFE0; gEkrDebugModeMaybe = .;
 		. = 0x03DFE4; gEkrInitialHitSide = .;
+		. = 0x03DFE8; gEkrPairSideVaild = .;
 		. = 0x03DFEC; Unk_0203DFEC = .;
 		. = 0x03DFFC; gEkrSpellAnimIndex = .;
 		. = 0x03E004; gEkrDistanceType = .;

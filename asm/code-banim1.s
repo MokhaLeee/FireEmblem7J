@@ -418,7 +418,7 @@ sub_080514B8: @ 0x080514B8
 _080514E4: .4byte gEkrDebugModeMaybe
 _080514E8: .4byte gEkrDistanceType
 _080514EC:
-	ldr r4, _08051510 @ =0x0203DFE8
+	ldr r4, _08051510 @ =gEkrPairSideVaild
 	movs r1, #0
 	ldrsh r0, [r4, r1]
 	cmp r0, #0
@@ -434,7 +434,7 @@ _080514FE:
 	bl EkrDispUP_0804D5B4
 	b _0805151C
 	.align 2, 0
-_08051510: .4byte 0x0203DFE8
+_08051510: .4byte gEkrPairSideVaild
 _08051514:
 	bl EkrGauge_0804CC48
 	bl EkrDispUP_0804D5A4
@@ -710,7 +710,7 @@ _08051744:
 	ldrb r0, [r0, #0xe]
 	lsls r0, r0, #0x18
 	asrs r0, r0, #0x18
-	bl sub_080195BC
+	bl UnpackChapterMapGraphics
 	movs r0, #0x10
 	bl EfxChapterMapFadeOUT
 	bl RenderMap
@@ -1663,7 +1663,7 @@ NewEkrUnitKakudai: @ 0x08051EC4
 _08051EF0: .4byte gUnk_08C0A560
 _08051EF4: .4byte gEkrDistanceType
 _08051EF8:
-	ldr r0, _08051F1C @ =0x0203DFE8
+	ldr r0, _08051F1C @ =gEkrPairSideVaild
 	movs r1, #0
 	ldrsh r5, [r0, r1]
 	cmp r5, #1
@@ -1673,7 +1673,7 @@ _08051EF8:
 	bne _08051F0C
 	str r5, [r4, #0x4c]
 _08051F0C:
-	ldr r0, _08051F1C @ =0x0203DFE8
+	ldr r0, _08051F1C @ =gEkrPairSideVaild
 	movs r2, #2
 	ldrsh r0, [r0, r2]
 	cmp r0, #1
@@ -1681,7 +1681,7 @@ _08051F0C:
 	str r0, [r4, #0x50]
 	b _08051F32
 	.align 2, 0
-_08051F1C: .4byte 0x0203DFE8
+_08051F1C: .4byte gEkrPairSideVaild
 _08051F20:
 	cmp r5, #0
 	bne _08051F2C
@@ -1727,7 +1727,7 @@ UnitKakudai1: @ 0x08051F38
 	movs r2, #1
 	bl EfxPalModifyPetrifyEffect
 _08051F70:
-	ldr r5, _0805205C @ =0x0203DFE8
+	ldr r5, _0805205C @ =gEkrPairSideVaild
 	ldrh r3, [r5]
 	cmp r3, #1
 	bne _08051F96
@@ -1839,7 +1839,7 @@ _0805204C: .4byte gEkrDistanceType
 _08052050: .4byte gBanimRoundScripts
 _08052054: .4byte gBattleStats
 _08052058: .4byte gPal
-_0805205C: .4byte 0x0203DFE8
+_0805205C: .4byte gEkrPairSideVaild
 _08052060: .4byte gpBanimModesLeft
 _08052064: .4byte gBanimScrLeft
 _08052068: .4byte 0x020041C8
@@ -2541,7 +2541,7 @@ _080525A4:
 	movs r0, #0
 	strh r0, [r1, #2]
 	strh r0, [r1]
-	ldr r0, _080525E8 @ =0x0203DFE8
+	ldr r0, _080525E8 @ =gEkrPairSideVaild
 	movs r1, #1
 	strh r1, [r0]
 	strh r1, [r0, #2]
@@ -2555,7 +2555,7 @@ _080525D8: .4byte gBattleActor
 _080525DC: .4byte gpEkrBattleUnitRight
 _080525E0: .4byte gBattleTarget
 _080525E4: .4byte Unk_0203DFEC
-_080525E8: .4byte 0x0203DFE8
+_080525E8: .4byte gEkrPairSideVaild
 _080525EC:
 	ldr r5, _08052624 @ =gBattleActor
 	movs r4, #0x40
@@ -2605,7 +2605,7 @@ _08052640:
 	lsrs r0, r0, #0x18
 	str r0, [sp, #0x20]
 _08052654:
-	ldr r1, _080526A8 @ =0x0203DFE8
+	ldr r1, _080526A8 @ =gEkrPairSideVaild
 	movs r0, #1
 	strh r0, [r1, #2]
 	strh r0, [r1]
@@ -2642,14 +2642,14 @@ _0805267C:
 	strh r2, [r0]
 	strh r1, [r0, #2]
 	ldr r7, [sp, #0xc]
-	ldr r3, _080526A8 @ =0x0203DFE8
+	ldr r3, _080526A8 @ =gEkrPairSideVaild
 	ldr r4, [sp, #0x20]
 	cmp r4, #1
 	bne _080526E6
 	strh r1, [r3]
 	b _080526E6
 	.align 2, 0
-_080526A8: .4byte 0x0203DFE8
+_080526A8: .4byte gEkrPairSideVaild
 _080526AC: .4byte gpEkrBattleUnitLeft
 _080526B0: .4byte gBattleTarget
 _080526B4: .4byte gpEkrBattleUnitRight
@@ -2670,7 +2670,7 @@ _080526C0:
 	movs r0, #1
 	strh r0, [r1, #2]
 	ldr r7, [sp, #8]
-	ldr r3, _080527B0 @ =0x0203DFE8
+	ldr r3, _080527B0 @ =gEkrPairSideVaild
 	ldr r0, [sp, #0x20]
 	cmp r0, #1
 	bne _080526E6
@@ -2776,7 +2776,7 @@ _080527A0: .4byte gBattleActor
 _080527A4: .4byte gpEkrBattleUnitRight
 _080527A8: .4byte gBattleTarget
 _080527AC: .4byte Unk_0203DFEC
-_080527B0: .4byte 0x0203DFE8
+_080527B0: .4byte gEkrPairSideVaild
 _080527B4: .4byte 0x0203E006
 _080527B8: .4byte gBmSt
 _080527BC: .4byte gEkrDistanceType
@@ -3653,7 +3653,7 @@ _08052E80:
 	bl GetBattleAnimType
 	cmp r0, #3
 	bne _08052ECE
-	ldr r0, _08052EAC @ =0x0203DFE8
+	ldr r0, _08052EAC @ =gEkrPairSideVaild
 	movs r4, #0
 	ldrsh r0, [r0, r4]
 	cmp r0, #0
@@ -3664,7 +3664,7 @@ _08052E80:
 	.align 2, 0
 _08052EA4: .4byte 0x0203E0C0
 _08052EA8: .4byte 0x0203DFE2
-_08052EAC: .4byte 0x0203DFE8
+_08052EAC: .4byte gEkrPairSideVaild
 _08052EB0: .4byte 0x0203E0B0
 _08052EB4:
 	ldr r0, _0805300C @ =0x0203E0B0
@@ -3765,7 +3765,7 @@ _08052F60:
 _08052F70:
 	cmp r4, #0
 	beq _08053008
-	ldr r0, _0805301C @ =0x0203DFE8
+	ldr r0, _0805301C @ =gEkrPairSideVaild
 	adds r3, r0, #0
 	ldrh r2, [r3]
 	cmp r2, #1
@@ -3848,7 +3848,7 @@ _0805300C: .4byte 0x0203E0B0
 _08053010: .4byte gPlaySt
 _08053014: .4byte 0x0203DFE2
 _08053018: .4byte gEkrDistanceType
-_0805301C: .4byte 0x0203DFE8
+_0805301C: .4byte gEkrPairSideVaild
 _08053020: .4byte 0x0203E066
 _08053024: .4byte gEkrSpellAnimIndex
 _08053028: .4byte 0x0203E000

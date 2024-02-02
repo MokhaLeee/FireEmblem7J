@@ -2847,7 +2847,7 @@ _080686AC:
 	.align 2, 0
 _080686C0: .4byte gEkrDistanceType
 _080686C4:
-	ldr r7, _08068740 @ =0x0203DFE8
+	ldr r7, _08068740 @ =gEkrPairSideVaild
 	movs r1, #0
 	ldrsh r0, [r7, r1]
 	rsbs r1, r0, #0
@@ -2916,7 +2916,7 @@ _08068734:
 	bl EfxOverrideBgm
 	b _080688BA
 	.align 2, 0
-_08068740: .4byte 0x0203DFE8
+_08068740: .4byte gEkrPairSideVaild
 _08068744: .4byte gPlaySt
 _08068748:
 	cmp r0, #0x86
@@ -2948,7 +2948,7 @@ _08068768:
 	movs r4, #1
 	rsbs r4, r4, #0
 _08068786:
-	ldr r0, _080687A8 @ =0x0203DFE8
+	ldr r0, _080687A8 @ =gEkrPairSideVaild
 	movs r1, #0
 	ldrsh r0, [r0, r1]
 	cmp r0, #0
@@ -2966,7 +2966,7 @@ _08068794:
 	bl EfxOverrideBgm
 	b _080688BA
 	.align 2, 0
-_080687A8: .4byte 0x0203DFE8
+_080687A8: .4byte gEkrPairSideVaild
 _080687AC:
 	movs r4, #0
 	ldr r0, [r5]

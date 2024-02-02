@@ -774,7 +774,7 @@ _0804CEA8: .4byte gEkrPairHpInitial
 _0804CEAC: .4byte 0x0203E094
 _0804CEB0: .4byte gEkrDistanceType
 _0804CEB4:
-	ldr r0, _0804CEC8 @ =0x0203DFE8
+	ldr r0, _0804CEC8 @ =gEkrPairSideVaild
 	ldrh r0, [r0]
 	cmp r0, #1
 	bne _0804CECC
@@ -784,7 +784,7 @@ _0804CEB4:
 	adds r0, #0x38
 	b _0804CEDC
 	.align 2, 0
-_0804CEC8: .4byte 0x0203DFE8
+_0804CEC8: .4byte gEkrPairSideVaild
 _0804CECC:
 	mov r3, sb
 	movs r4, #0x32
@@ -2190,7 +2190,7 @@ EfxPrepareScreenFx: @ 0x0804D9B0
 	ldr r0, _0804D9FC @ =gUnk_081DE528
 	ldr r1, _0804DA00 @ =0x06001000
 	bl LZ77UnCompVram
-	ldr r0, _0804DA04 @ =0x0203DFE8
+	ldr r0, _0804DA04 @ =gEkrPairSideVaild
 	movs r1, #0
 	ldrsh r0, [r0, r1]
 	cmp r0, #0
@@ -2203,7 +2203,7 @@ _0804D9F4: .4byte 0x02017648
 _0804D9F8: .4byte 0x06001400
 _0804D9FC: .4byte gUnk_081DE528
 _0804DA00: .4byte 0x06001000
-_0804DA04: .4byte 0x0203DFE8
+_0804DA04: .4byte gEkrPairSideVaild
 _0804DA08: .4byte gUnk_08C09CE4
 _0804DA0C:
 	ldr r0, _0804DA54 @ =gpEkrBattleUnitLeft
@@ -2229,7 +2229,7 @@ _0804DA1A:
 	adds r0, r4, #0
 	adds r1, r5, #0
 	bl Text_DrawString
-	ldr r0, _0804DA64 @ =0x0203DFE8
+	ldr r0, _0804DA64 @ =gEkrPairSideVaild
 	movs r1, #0
 	ldrsh r0, [r0, r1]
 	cmp r0, #0
@@ -2241,7 +2241,7 @@ _0804DA54: .4byte gpEkrBattleUnitLeft
 _0804DA58: .4byte 0x02017660
 _0804DA5C: .4byte gUnk_081DE730
 _0804DA60: .4byte 0x06001400
-_0804DA64: .4byte 0x0203DFE8
+_0804DA64: .4byte gEkrPairSideVaild
 _0804DA68: .4byte gUnk_08C09CE4
 _0804DA6C:
 	ldr r0, _0804DAB4 @ =gpEkrBattleUnitLeft
@@ -2267,7 +2267,7 @@ _0804DA7A:
 	adds r0, r4, #0
 	adds r1, r5, #0
 	bl Text_DrawString
-	ldr r0, _0804DAC4 @ =0x0203DFE8
+	ldr r0, _0804DAC4 @ =gEkrPairSideVaild
 	movs r1, #2
 	ldrsh r0, [r0, r1]
 	cmp r0, #0
@@ -2279,7 +2279,7 @@ _0804DAB4: .4byte gpEkrBattleUnitLeft
 _0804DAB8: .4byte 0x02017670
 _0804DABC: .4byte gUnk_081DE780
 _0804DAC0: .4byte 0x06001580
-_0804DAC4: .4byte 0x0203DFE8
+_0804DAC4: .4byte gEkrPairSideVaild
 _0804DAC8: .4byte gUnk_08C09CE4
 _0804DACC:
 	ldr r0, _0804DB14 @ =gpEkrBattleUnitRight
@@ -2305,7 +2305,7 @@ _0804DADA:
 	adds r0, r4, #0
 	adds r1, r5, #0
 	bl Text_DrawString
-	ldr r0, _0804DB24 @ =0x0203DFE8
+	ldr r0, _0804DB24 @ =gEkrPairSideVaild
 	movs r1, #2
 	ldrsh r0, [r0, r1]
 	cmp r0, #0
@@ -2317,7 +2317,7 @@ _0804DB14: .4byte gpEkrBattleUnitRight
 _0804DB18: .4byte 0x02017678
 _0804DB1C: .4byte gUnk_081DE7EC
 _0804DB20: .4byte 0x06001740
-_0804DB24: .4byte 0x0203DFE8
+_0804DB24: .4byte gEkrPairSideVaild
 _0804DB28: .4byte gUnk_08C09CE4
 _0804DB2C:
 	ldr r0, _0804DBF0 @ =gpEkrBattleUnitRight

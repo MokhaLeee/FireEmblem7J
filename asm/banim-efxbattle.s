@@ -217,7 +217,7 @@ _0804DF28:
 	bl sub_0804E9D0
 	ldr r0, [r5, #0x60]
 	bl GetAnimPosition
-	ldr r1, _0804DF4C @ =0x0203DFE8
+	ldr r1, _0804DF4C @ =gEkrPairSideVaild
 	lsls r0, r0, #1
 	adds r0, r0, r1
 	movs r1, #0
@@ -227,7 +227,7 @@ _0804DF44:
 	bl Proc_Break
 	b _0804DF5C
 	.align 2, 0
-_0804DF4C: .4byte 0x0203DFE8
+_0804DF4C: .4byte gEkrPairSideVaild
 _0804DF50:
 	adds r0, r1, #1
 	str r0, [r5, #0x54]
@@ -759,7 +759,7 @@ _0804E3A0:
 	bl sub_0804E9D0
 	ldr r0, [r5, #0x60]
 	bl GetAnimPosition
-	ldr r1, _0804E3C4 @ =0x0203DFE8
+	ldr r1, _0804E3C4 @ =gEkrPairSideVaild
 	lsls r0, r0, #1
 	adds r0, r0, r1
 	movs r1, #0
@@ -769,7 +769,7 @@ _0804E3BC:
 	bl Proc_Break
 	b _0804E3D4
 	.align 2, 0
-_0804E3C4: .4byte 0x0203DFE8
+_0804E3C4: .4byte gEkrPairSideVaild
 _0804E3C8:
 	adds r0, r1, #1
 	str r0, [r5, #0x54]
@@ -1475,7 +1475,7 @@ sub_0804E944: @ 0x0804E944
 	bl EfxPrepareScreenFx
 	ldr r0, [r4, #0x5c]
 	bl GetAnimPosition
-	ldr r1, _0804E9A4 @ =0x0203DFE8
+	ldr r1, _0804E9A4 @ =gEkrPairSideVaild
 	lsls r0, r0, #1
 	adds r0, r0, r1
 	strh r5, [r0]
@@ -1498,7 +1498,7 @@ _0804E99C:
 	pop {r0}
 	bx r0
 	.align 2, 0
-_0804E9A4: .4byte 0x0203DFE8
+_0804E9A4: .4byte gEkrPairSideVaild
 
 	thumb_func_start sub_0804E9A8
 sub_0804E9A8: @ 0x0804E9A8
@@ -5147,7 +5147,7 @@ sub_080506E0: @ 0x080506E0
 	ldrb r0, [r0, #0xe]
 	lsls r0, r0, #0x18
 	asrs r0, r0, #0x18
-	bl sub_080195BC
+	bl UnpackChapterMapGraphics
 	bl RenderMap
 	b _08050712
 	.align 2, 0

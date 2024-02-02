@@ -60,6 +60,32 @@ struct ProcEkrDragonFx {
     /* 3C */ s16 unk3C;
 };
 
+struct ProcEkrDragonMainFx {
+    PROC_HEADER;
+
+    /* 29 */ u8 finished;
+    /* 2A */ s16 unk2A;
+    /* 2C */ s16 timer;
+    /* 2E */ s16 unk2E;
+    /* 30 */ s16 unk30;
+    /* 32 */ s16 unk32;
+
+    STRUCT_PAD(0x34, 0x3A);
+
+    /* 3A */ u16 unk3A;
+
+    STRUCT_PAD(0x3C, 0x44);
+
+    /* 44 */ u32 frame;
+    /* 48 */ const s16 * frame_lut;
+    /* 4C */ const u16 ** tsa_set;
+    /* 50 */ u32 unk50;
+    /* 54 */ u32 round_cur;
+    /* 58 */ u32 unk58;
+    /* 5C */ struct Anim *anim;
+    /* 60 */ struct Anim *anim2;
+};
+
 struct ProcEkrDragon {
     PROC_HEADER;
 
@@ -78,7 +104,7 @@ struct ProcEkrDragon {
     /* 44 */ ProcPtr proc44;
     /* 48 */ ProcPtr proc48;
     /* 4C */ ProcPtr proc4C;
-    /* 50 */ ProcPtr fxproc;
+    /* 50 */ struct ProcEkrDragonMainFx * mainfxproc;
     /* 54 */ ProcPtr proc54;
     /* 58 */ ProcPtr proc58;
     /* 5C */ struct Anim * anim;
@@ -96,33 +122,33 @@ void EkrDragonUpdatePal_080654C8(struct Anim * anim);
 void NewEkrDragon(struct Anim * anim);
 void EkrDragon_Preparefx(struct ProcEkrDragon * proc);
 void EkrDragon_CustomBgFadeIn(struct ProcEkrDragon * proc);
-void EkrDragon_080655A0(struct ProcEkrDragon * proc);
-void EkrDragon_08065660(struct ProcEkrDragon * proc);
-void EkrDragon_080656D8(struct ProcEkrDragon * proc);
-void EkrDragon_0806574C(struct ProcEkrDragon * proc);
+void EkrDragon_StartDragonTailIntro(struct ProcEkrDragon * proc);
+void EkrDragon_DragonTailDisplay(struct ProcEkrDragon * proc);
+void EkrDragon_StartMainBodyIntro(struct ProcEkrDragon * proc);
+void EkrDragon_DisplayMainBodyIntro(struct ProcEkrDragon * proc);
 void EkrDragon_080657D4(struct ProcEkrDragon * proc);
 void EkrDragon_080658F8(struct ProcEkrDragon * proc);
 void EkrDragon_08065AB0(struct ProcEkrDragon * proc);
-void EkrDragon_08065BA0(struct ProcEkrDragon * proc);
+void EkrDragon_TriggerIntroDone(struct ProcEkrDragon * proc);
 void EkrDragon_InBattleIDLE(struct ProcEkrDragon * proc);
 void EkrDragon_WaitForFadeOut(struct ProcEkrDragon * proc);
-void EkrDragon_08065C34(struct ProcEkrDragon * proc);
-void EkrDragon_08065CC8(struct ProcEkrDragon * proc);
-void EkrDragon_08065D20(struct ProcEkrDragon * proc);
-void sub_08065D38(struct Anim * anim);
+void EkrDragon_ReloadTerrainEtc(struct ProcEkrDragon * proc);
+void EkrDragon_ReloadCustomBgAndFadeOut(struct ProcEkrDragon * proc);
+void EkrDragon_TriggerEnding(struct ProcEkrDragon * proc);
+void NewEkrDragonBaseHide(struct Anim * anim);
 // ??? sub_08065D5C
 // ??? sub_08065DC4
-// ??? sub_08065DD0
+void NewEkrDragonBaseAppear(struct Anim * anim);
 // ??? sub_08065E38
 // ??? sub_08065EA0
-ProcPtr sub_08065EAC(struct Anim * anim);
+ProcPtr EkrDragonFxHandler_Main(struct Anim * anim);
 // ??? sub_08065F0C
 ProcPtr sub_08065F38(struct Anim * anim);
 // ??? sub_08065F8C
 // ??? sub_08065F98
 // ??? sub_08065FEC
 // ??? sub_08066030
-// ??? sub_0806603C
+// ??? InitEkrDragonDeadFx
 // ??? sub_08066090
 // ??? sub_0806609C
 // ??? sub_080660C8
@@ -139,7 +165,7 @@ ProcPtr sub_08066380(void);
 ProcPtr sub_08066414(struct Anim * anim);
 // ??? sub_08066480
 // ??? sub_0806648C
-ProcPtr sub_080664CC(int, int, int, int);
+ProcPtr EkrDragonFxHandler_OnIntro(int, int, int, int);
 // ??? sub_08066500
 // ??? sub_08066590
 void sub_080665B8(int, u16);

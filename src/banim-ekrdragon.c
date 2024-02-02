@@ -2,6 +2,8 @@
 #include "hardware.h"
 #include "proc.h"
 #include "util.h"
+#include "bm.h"
+#include "map.h"
 #include "anime.h"
 #include "banim.h"
 #include "banim_ekrdragon.h"
@@ -157,22 +159,22 @@ bool CheckEkrDragonEndingDone(struct Anim * anim)
  */
 
 struct ProcCmd CONST_DATA ProcScr_EkrDragon[] = {
-    PROC_19,
+    PROC_NAME_DEBUG("ekrDragon"),
     PROC_REPEAT(EkrDragon_Preparefx),
     PROC_REPEAT(EkrDragon_CustomBgFadeIn),
-    PROC_REPEAT(EkrDragon_080655A0),
-    PROC_REPEAT(EkrDragon_08065660),
-    PROC_REPEAT(EkrDragon_080656D8),
-    PROC_REPEAT(EkrDragon_0806574C),
+    PROC_REPEAT(EkrDragon_StartDragonTailIntro),
+    PROC_REPEAT(EkrDragon_DragonTailDisplay),
+    PROC_REPEAT(EkrDragon_StartMainBodyIntro),
+    PROC_REPEAT(EkrDragon_DisplayMainBodyIntro),
     PROC_REPEAT(EkrDragon_080657D4),
     PROC_REPEAT(EkrDragon_080658F8),
     PROC_REPEAT(EkrDragon_08065AB0),
-    PROC_REPEAT(EkrDragon_08065BA0),
+    PROC_REPEAT(EkrDragon_TriggerIntroDone),
     PROC_REPEAT(EkrDragon_InBattleIDLE),
     PROC_REPEAT(EkrDragon_WaitForFadeOut),
-    PROC_REPEAT(EkrDragon_08065C34),
-    PROC_REPEAT(EkrDragon_08065CC8),
-    PROC_REPEAT(EkrDragon_08065D20),
+    PROC_REPEAT(EkrDragon_ReloadTerrainEtc),
+    PROC_REPEAT(EkrDragon_ReloadCustomBgAndFadeOut),
+    PROC_REPEAT(EkrDragon_TriggerEnding),
     PROC_END,
 };
 
@@ -248,7 +250,7 @@ void EkrDragonUpdatePal_08065510(int ref)
 void EkrDragon_Preparefx(struct ProcEkrDragon * proc)
 {
     EkrPrepareBanimfx(proc->anim, 0x8A);    /* battle anim idx */
-    sub_08065D38(proc->anim);
+    NewEkrDragonBaseHide(proc->anim);
     gEkrSpellAnimIndex[POS_L] = 0x13;       /* spell anim idx */
     Proc_Break(proc);
 }
@@ -264,15 +266,16 @@ void EkrDragon_CustomBgFadeIn(struct ProcEkrDragon * proc)
     }
 }
 
-void EkrDragon_080655A0(struct ProcEkrDragon * proc)
+void EkrDragon_StartDragonTailIntro(struct ProcEkrDragon * proc)
 {
+    /* Display a tail */
     gDispIo.bg0_ct.priority = 0;
     gDispIo.bg1_ct.priority = 1;
     gDispIo.bg3_ct.priority = 2;
     gDispIo.bg2_ct.priority = 3;
 
     LZ77UnCompVram(Img_EkrDragon_082E445C, (void *)0x06008000);
-    LZ77UnCompWram(Tsa_EkrDragon_082E445C, gEkrTsaBuffer);
+    LZ77UnCompWram(Tsa_EkrDragon_DragonTail, gEkrTsaBuffer);
     CpuFastCopy(Pal_EkrDragon_082E6C60, PAL_BG(6), 0x20);
 
     EfxTmFill(0x001F001F);
@@ -280,7 +283,7 @@ void EkrDragon_080655A0(struct ProcEkrDragon * proc)
     EkrDragonTmCpyHFlip(0, 0x78);
     EkrDragonTmCpyExt(-0xF8, 0);
     EnablePalSync();
-    proc->procfx = sub_080664CC(0x78, 0x400, 0x60, 2);
+    proc->procfx = EkrDragonFxHandler_OnIntro(0x78, 0x400, 0x60, 2);
     sub_080665B8(0x78, 0);
 
     proc->timer = 0;
@@ -288,7 +291,7 @@ void EkrDragon_080655A0(struct ProcEkrDragon * proc)
     Proc_Break(proc);
 }
 
-void EkrDragon_08065660(struct ProcEkrDragon * proc)
+void EkrDragon_DragonTailDisplay(struct ProcEkrDragon * proc)
 {
     int x = Interpolate(INTERPOLATE_RSQUARE, -0xF8, -0x18, proc->timer, proc->terminator);
     int y = Interpolate(INTERPOLATE_RSQUARE,     0, 0x140, proc->timer, proc->terminator);
@@ -305,7 +308,7 @@ void EkrDragon_08065660(struct ProcEkrDragon * proc)
         PlaySFX(0xE6, 0x100, 0x78, 0);
 }
 
-void EkrDragon_080656D8(struct ProcEkrDragon * proc)
+void EkrDragon_StartMainBodyIntro(struct ProcEkrDragon * proc)
 {
     if (++proc->timer != 0x3C)
         return;
@@ -317,7 +320,7 @@ void EkrDragon_080656D8(struct ProcEkrDragon * proc)
     }
 
     proc->timer = 0;
-    proc->procfx = sub_08065EAC(proc->anim);
+    proc->procfx = EkrDragonFxHandler_Main(proc->anim);
 
     switch (gEkrDistanceType) {
     case EKR_DISTANCE_CLOSE:
@@ -336,7 +339,7 @@ void EkrDragon_080656D8(struct ProcEkrDragon * proc)
     Proc_Break(proc);
 }
 
-void EkrDragon_0806574C(struct ProcEkrDragon * proc)
+void EkrDragon_DisplayMainBodyIntro(struct ProcEkrDragon * proc)
 {
     struct ProcEkrDragonFx * procfx = proc->procfx;
 
@@ -395,7 +398,7 @@ void EkrDragon_080657D4(struct ProcEkrDragon * proc)
         proc->procfx->unk3A = proc->anim->yPosition - proc->y;
         proc->proc54 = NewEfxQuakePure(8, 0);
         sub_08066CAC(proc->anim, 0x13A);
-        LZ77UnCompWram(Tsa_EkrDragon_082E6E8C, gEkrTsaBuffer);
+        LZ77UnCompWram(Tsa_EkrDragon_MainBg, gEkrTsaBuffer);
         CpuFill32(0x001F001F, gEkrTsaBuffer + 0x3C0, 0x80);
         EfxTmFill(0x001F001F);
         TmFill(gBg3Tm, 0x1F);
@@ -485,7 +488,7 @@ void EkrDragon_08065AB0(struct ProcEkrDragon * proc)
     if (gEkrDistanceType == EKR_DISTANCE_FARFAR)
     {
         SetAnimStateUnHidden(GetAnimPosition(proc->anim));
-        LZ77UnCompWram(Tsa_EkrDragon_082E6E8C, gEkrTsaBuffer);
+        LZ77UnCompWram(Tsa_EkrDragon_MainBg, gEkrTsaBuffer);
         EfxTmFill(0x001F001F);
         TmFill(gBg3Tm, 0x1F);
         EkrDragonTmCpyWithDistance();
@@ -506,7 +509,7 @@ void EkrDragon_08065AB0(struct ProcEkrDragon * proc)
         Proc_End(proc->procfx);
 
         SetAnimStateUnHidden(GetAnimPosition(proc->anim));
-        LZ77UnCompWram(Tsa_EkrDragon_082E6E8C, gEkrTsaBuffer);
+        LZ77UnCompWram(Tsa_EkrDragon_MainBg, gEkrTsaBuffer);
         EfxTmFill(0x001F001F);
         TmFill(gBg3Tm, 0x1F);
         EkrDragonTmCpyWithDistance();
@@ -515,9 +518,9 @@ void EkrDragon_08065AB0(struct ProcEkrDragon * proc)
     }
 }
 
-void EkrDragon_08065BA0(struct ProcEkrDragon * proc)
+void EkrDragon_TriggerIntroDone(struct ProcEkrDragon * proc)
 {
-    proc->fxproc = sub_080666A4(proc->anim);
+    proc->mainfxproc = sub_080666A4(proc->anim);
     AddEkrDragonStatusAttr(proc->anim, EKRDRGON_ATTR_BANIMFX_PREPARED);
     Proc_Break(proc);
 }
@@ -530,13 +533,66 @@ void EkrDragon_InBattleIDLE(struct ProcEkrDragon * proc)
         proc->timer = 0;
         Proc_End(proc->sproc3);
         Proc_End(proc->proc44);
-        Proc_End(proc->fxproc);
+        Proc_End(proc->mainfxproc);
 
         if (!CheckEkrDragonDead(proc->anim))
-            proc->fxproc = NewEkrDragonBodyBlack(proc->anim);
+            proc->mainfxproc = NewEkrDragonBodyBlack(proc->anim);
         else
-            proc->fxproc = NewEkrDragonTunk(proc->anim);
+            proc->mainfxproc = NewEkrDragonTunk(proc->anim);
 
         Proc_Break(proc);
     }
+}
+
+void EkrDragon_WaitForFadeOut(struct ProcEkrDragon * proc)
+{
+    if (proc->mainfxproc->finished == true)
+    {
+        Proc_End(proc->mainfxproc);
+        Proc_Break(proc);
+    }
+}
+
+void EkrDragon_ReloadTerrainEtc(struct ProcEkrDragon * proc)
+{
+    Proc_End(proc->proc4C);
+    Proc_End(proc->proc58);
+    Proc_End(proc->proc48);
+
+    gDispIo.bg0_ct.priority = 0;
+    gDispIo.bg1_ct.priority = 1;
+    gDispIo.bg2_ct.priority = 2;
+    gDispIo.bg3_ct.priority = 3;
+
+    SetAnimStateHidden(GetAnimPosition(proc->anim));
+    gEkrPairSideVaild[GetAnimPosition(proc->anim)] = false;
+
+    NewEkrDragonBaseAppear(proc->anim);
+    TmFill(gBg3Tm, 0x601F);
+    EnableBgSync(BG3_SYNC_BIT);
+    EfxChapterMapFadeOUT(0x10);
+    Proc_Break(proc);
+}
+
+void EkrDragon_ReloadCustomBgAndFadeOut(struct ProcEkrDragon * proc)
+{
+    if (proc->timer == 0)
+    {
+        UnpackChapterMapGraphics(gPlaySt.chapterIndex);
+        RenderMap();
+    }
+
+    EfxChapterMapFadeOUT(Interpolate(INTERPOLATE_RSQUARE, 0x10, 4, proc->timer, 8));
+
+    if (++proc->timer == 0x9)
+    {
+        proc->timer = 0;
+        Proc_Break(proc);
+    }
+}
+
+void EkrDragon_TriggerEnding(struct ProcEkrDragon * proc)
+{
+    AddEkrDragonStatusAttr(proc->anim, EKRDRGON_ATTR_END);
+    Proc_Break(proc);
 }

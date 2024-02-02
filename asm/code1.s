@@ -514,7 +514,7 @@ sub_0802E804: @ 0x0802E804
 	ldr r4, _0802E830 @ =gPlaySt
 	movs r0, #0xe
 	ldrsb r0, [r4, r0]
-	bl sub_080195BC
+	bl UnpackChapterMapGraphics
 	ldrb r0, [r4, #0x15]
 	bl sub_0802D8E4
 	bl RenderMap

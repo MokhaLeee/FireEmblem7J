@@ -26,3 +26,4 @@ extern EWRAM_DATA u8** gBmMapHidden;
 extern EWRAM_DATA u8** gBmMapOther;
 
 void GenerateExtendedMovementMap(int x, int y, const s8 mct[]);
+void UnpackChapterMapGraphics(int chapterId);

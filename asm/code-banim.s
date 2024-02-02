@@ -180,7 +180,7 @@ UpdateBanimFrame: @ 0x0805480C
 	movs r0, #0
 	str r0, [r1, #4]
 	str r0, [r1]
-	ldr r0, _080549E8 @ =0x0203DFE8
+	ldr r0, _080549E8 @ =gEkrPairSideVaild
 	movs r1, #0
 	ldrsh r2, [r0, r1]
 	mov r8, r2
@@ -251,7 +251,7 @@ _0805488E:
 	mov r1, r8
 	str r1, [r4]
 _080548C4:
-	ldr r0, _080549E8 @ =0x0203DFE8
+	ldr r0, _080549E8 @ =gEkrPairSideVaild
 	movs r1, #2
 	ldrsh r2, [r0, r1]
 	mov r8, r2
@@ -386,7 +386,7 @@ _080549CC:
 _080549DC: .4byte gUnk_08E00008
 _080549E0: .4byte gUnk_08FD8008
 _080549E4: .4byte gpImgSheet
-_080549E8: .4byte 0x0203DFE8
+_080549E8: .4byte gEkrPairSideVaild
 _080549EC: .4byte 0x0203E066
 _080549F0: .4byte 0x0203DFF8
 _080549F4: .4byte 0x0203DFF4
@@ -484,7 +484,7 @@ InitBattleAnimFrame: @ 0x08054AC0
 	str r0, [r4, #4]
 	str r0, [r4, #8]
 	str r0, [r4, #0xc]
-	ldr r5, _08054B10 @ =0x0203DFE8
+	ldr r5, _08054B10 @ =gEkrPairSideVaild
 	ldrh r0, [r5]
 	cmp r0, #1
 	bne _08054AE0
@@ -516,7 +516,7 @@ _08054B06:
 	bx r0
 	.align 2, 0
 _08054B0C: .4byte gAnims
-_08054B10: .4byte 0x0203DFE8
+_08054B10: .4byte gEkrPairSideVaild
 _08054B14: .4byte gEkrDistanceType
 
 	thumb_func_start InitLeftAnim
