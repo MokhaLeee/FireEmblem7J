@@ -39,11 +39,11 @@ GetCharacterData: @ 0x08019120
 	ble _08019134
 	movs r0, #0x34
 	muls r0, r1, r0
-	ldr r1, _08019130 @ =0x08C4C124
+	ldr r1, _08019130 @ =gUnk_08C4C124
 	adds r0, r0, r1
 	b _08019136
 	.align 2, 0
-_08019130: .4byte 0x08C4C124
+_08019130: .4byte gUnk_08C4C124
 _08019134:
 	movs r0, #0
 _08019136:

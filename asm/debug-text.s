@@ -18,7 +18,7 @@ _08004DE2:
 	adds r0, r5, #0
 	movs r1, #0
 	bl SetBgScreenSize
-	ldr r0, _08004E38 @ =0x08BBFD90
+	ldr r0, _08004E38 @ =gUnk_08BBFD90
 	ldr r1, _08004E3C @ =0x0001FFFF
 	ands r1, r6
 	movs r2, #0xc0
@@ -48,7 +48,7 @@ _08004DE2:
 	pop {r0}
 	bx r0
 	.align 2, 0
-_08004E38: .4byte 0x08BBFD90
+_08004E38: .4byte gUnk_08BBFD90
 _08004E3C: .4byte 0x0001FFFF
 _08004E40: .4byte gPal
 _08004E44: .4byte 0x00007FFF
@@ -250,7 +250,7 @@ sub_08004FA8: @ 0x08004FA8
 	bl sub_08004F08
 	movs r2, #7
 	ldr r1, _08004FEC @ =0x02028D3C
-	ldr r3, _08004FF0 @ =0x0818F8E4
+	ldr r3, _08004FF0 @ =gUnk_0818F8E4
 	movs r0, #0xf
 	ands r0, r4
 	adds r0, r0, r3
@@ -281,7 +281,7 @@ _08004FE4:
 	bx r0
 	.align 2, 0
 _08004FEC: .4byte 0x02028D3C
-_08004FF0: .4byte 0x0818F8E4
+_08004FF0: .4byte gUnk_0818F8E4
 
 	thumb_func_start sub_08004FF4
 sub_08004FF4: @ 0x08004FF4
@@ -506,7 +506,7 @@ _0800516A:
 	ands r0, r4
 	lsls r0, r0, #0xc
 	str r0, [r1]
-	ldr r0, _080051D8 @ =0x08BBFD90
+	ldr r0, _080051D8 @ =gUnk_08BBFD90
 	movs r3, #0x80
 	lsls r3, r3, #9
 	adds r1, r2, r3
@@ -545,7 +545,7 @@ _0800516A:
 _080051CC: .4byte 0x0000FFFF
 _080051D0: .4byte 0x02028D48
 _080051D4: .4byte 0x02028D4C
-_080051D8: .4byte 0x08BBFD90
+_080051D8: .4byte gUnk_08BBFD90
 _080051DC: .4byte 0x0001FFFF
 _080051E0: .4byte gPal
 _080051E4: .4byte 0x00007FFF

@@ -46,18 +46,18 @@ _080219F4: .4byte 0x00000717
 	thumb_func_start sub_080219F8
 sub_080219F8: @ 0x080219F8
 	push {lr}
-	ldr r0, _08021A08 @ =0x08C02630
+	ldr r0, _08021A08 @ =gUnk_08C02630
 	bl sub_08004748
 	movs r0, #0x17
 	pop {r1}
 	bx r1
 	.align 2, 0
-_08021A08: .4byte 0x08C02630
+_08021A08: .4byte gUnk_08C02630
 
 	thumb_func_start sub_08021A0C
 sub_08021A0C: @ 0x08021A0C
 	push {lr}
-	ldr r0, _08021A24 @ =0x08C02630
+	ldr r0, _08021A24 @ =gUnk_08C02630
 	bl Proc_Find
 	movs r1, #0xa
 	bl Proc_Goto
@@ -66,19 +66,19 @@ sub_08021A0C: @ 0x08021A0C
 	pop {r1}
 	bx r1
 	.align 2, 0
-_08021A24: .4byte 0x08C02630
+_08021A24: .4byte gUnk_08C02630
 
 	thumb_func_start sub_08021A28
 sub_08021A28: @ 0x08021A28
 	push {lr}
-	ldr r0, _08021A38 @ =0x08DAF408
+	ldr r0, _08021A38 @ =gUnk_08DAF408
 	movs r1, #3
 	bl Proc_Start
 	movs r0, #0x17
 	pop {r1}
 	bx r1
 	.align 2, 0
-_08021A38: .4byte 0x08DAF408
+_08021A38: .4byte gUnk_08DAF408
 
 	thumb_func_start sub_08021A3C
 sub_08021A3C: @ 0x08021A3C
@@ -99,7 +99,7 @@ sub_08021A4C: @ 0x08021A4C
 	ldr r0, _08021A70 @ =gBmSt
 	adds r0, #0x3e
 	strb r1, [r0]
-	ldr r0, _08021A74 @ =0x08C02630
+	ldr r0, _08021A74 @ =gUnk_08C02630
 	bl Proc_Find
 	movs r1, #0xc
 	bl Proc_Goto
@@ -109,7 +109,7 @@ sub_08021A4C: @ 0x08021A4C
 	.align 2, 0
 _08021A6C: .4byte gActiveUnit
 _08021A70: .4byte gBmSt
-_08021A74: .4byte 0x08C02630
+_08021A74: .4byte gUnk_08C02630
 
 	thumb_func_start sub_08021A78
 sub_08021A78: @ 0x08021A78
@@ -145,13 +145,13 @@ _08021AA0:
 	thumb_func_start sub_08021AA8
 sub_08021AA8: @ 0x08021AA8
 	push {lr}
-	ldr r0, _08021AB8 @ =0x08C03060
+	ldr r0, _08021AB8 @ =gUnk_08C03060
 	bl sub_0800AE98
 	movs r0, #0x17
 	pop {r1}
 	bx r1
 	.align 2, 0
-_08021AB8: .4byte 0x08C03060
+_08021AB8: .4byte gUnk_08C03060
 
 	thumb_func_start sub_08021ABC
 sub_08021ABC: @ 0x08021ABC
@@ -174,7 +174,7 @@ sub_08021ACC: @ 0x08021ACC
 	bl EnableBgSync
 	bl ResetTextFont
 	bl sub_0801D6D8
-	ldr r0, _08021B1C @ =0x08C04D68
+	ldr r0, _08021B1C @ =gUnk_08C04D68
 	ldr r2, _08021B20 @ =gBmSt
 	movs r3, #0x1c
 	ldrsh r1, [r2, r3]
@@ -197,7 +197,7 @@ sub_08021ACC: @ 0x08021ACC
 	bx r1
 	.align 2, 0
 _08021B18: .4byte gBg2Tm
-_08021B1C: .4byte 0x08C04D68
+_08021B1C: .4byte gUnk_08C04D68
 _08021B20: .4byte gBmSt
 _08021B24: .4byte gActiveUnit
 
@@ -219,7 +219,7 @@ sub_08021B28: @ 0x08021B28
 	ldr r0, [r5]
 	movs r4, #0x11
 	ldrsb r4, [r0, r4]
-	ldr r0, _08021B84 @ =0x08C020F4
+	ldr r0, _08021B84 @ =gUnk_08C020F4
 	bl sub_08004748
 	lsls r0, r4, #4
 	bl sub_08015D54
@@ -247,13 +247,13 @@ _08021B7A:
 	bx r0
 	.align 2, 0
 _08021B80: .4byte gActiveUnit
-_08021B84: .4byte 0x08C020F4
+_08021B84: .4byte gUnk_08C020F4
 _08021B88: .4byte gBmSt
 
 	thumb_func_start sub_08021B8C
 sub_08021B8C: @ 0x08021B8C
 	push {lr}
-	ldr r0, _08021BA8 @ =0x08C04D68
+	ldr r0, _08021BA8 @ =gUnk_08C04D68
 	ldr r2, _08021BAC @ =gBmSt
 	movs r3, #0x1c
 	ldrsh r1, [r2, r3]
@@ -266,7 +266,7 @@ sub_08021B8C: @ 0x08021B8C
 	pop {r0}
 	bx r0
 	.align 2, 0
-_08021BA8: .4byte 0x08C04D68
+_08021BA8: .4byte gUnk_08C04D68
 _08021BAC: .4byte gBmSt
 
 	thumb_func_start sub_08021BB0
@@ -280,7 +280,7 @@ sub_08021BB0: @ 0x08021BB0
 	bl EnableBgSync
 	bl sub_0801D6D8
 	bl ResetTextFont
-	ldr r0, _08021BE0 @ =0x08C03098
+	ldr r0, _08021BE0 @ =gUnk_08C03098
 	movs r1, #3
 	bl Proc_Start
 	movs r0, #0x19
@@ -288,7 +288,7 @@ sub_08021BB0: @ 0x08021BB0
 	bx r1
 	.align 2, 0
 _08021BDC: .4byte gBg2Tm
-_08021BE0: .4byte 0x08C03098
+_08021BE0: .4byte gUnk_08C03098
 
 	thumb_func_start sub_08021BE4
 sub_08021BE4: @ 0x08021BE4
@@ -299,7 +299,7 @@ sub_08021BE4: @ 0x08021BE4
 	movs r0, #4
 	bl EnableBgSync
 	bl ResetTextFont
-	ldr r0, _08021C1C @ =0x08C04D68
+	ldr r0, _08021C1C @ =gUnk_08C04D68
 	ldr r2, _08021C20 @ =gBmSt
 	movs r3, #0x1c
 	ldrsh r1, [r2, r3]
@@ -315,7 +315,7 @@ sub_08021BE4: @ 0x08021BE4
 	bx r1
 	.align 2, 0
 _08021C18: .4byte gBg2Tm
-_08021C1C: .4byte 0x08C04D68
+_08021C1C: .4byte gUnk_08C04D68
 _08021C20: .4byte gBmSt
 
 	thumb_func_start sub_08021C24
@@ -360,14 +360,14 @@ sub_08021C60: @ 0x08021C60
 	ldr r0, _08021C78 @ =gActiveUnit
 	ldr r0, [r0]
 	bl sub_080242C4
-	ldr r0, _08021C7C @ =0x08C04FD4
+	ldr r0, _08021C7C @ =gUnk_08C04FD4
 	bl sub_0804B664
 	movs r0, #7
 	pop {r1}
 	bx r1
 	.align 2, 0
 _08021C78: .4byte gActiveUnit
-_08021C7C: .4byte 0x08C04FD4
+_08021C7C: .4byte gUnk_08C04FD4
 
 	thumb_func_start sub_08021C80
 sub_08021C80: @ 0x08021C80
@@ -417,14 +417,14 @@ sub_08021CCC: @ 0x08021CCC
 	ldr r0, _08021CE4 @ =gActiveUnit
 	ldr r0, [r0]
 	bl sub_08024350
-	ldr r0, _08021CE8 @ =0x08C04FB4
+	ldr r0, _08021CE8 @ =gUnk_08C04FB4
 	bl sub_0804B664
 	movs r0, #0x17
 	pop {r1}
 	bx r1
 	.align 2, 0
 _08021CE4: .4byte gActiveUnit
-_08021CE8: .4byte 0x08C04FB4
+_08021CE8: .4byte gUnk_08C04FB4
 
 	thumb_func_start sub_08021CEC
 sub_08021CEC: @ 0x08021CEC
@@ -489,14 +489,14 @@ sub_08021D58: @ 0x08021D58
 	ldr r0, _08021D70 @ =gActiveUnit
 	ldr r0, [r0]
 	bl sub_080243F0
-	ldr r0, _08021D74 @ =0x08C04F94
+	ldr r0, _08021D74 @ =gUnk_08C04F94
 	bl sub_0804B664
 	movs r0, #7
 	pop {r1}
 	bx r1
 	.align 2, 0
 _08021D70: .4byte gActiveUnit
-_08021D74: .4byte 0x08C04F94
+_08021D74: .4byte gUnk_08C04F94
 
 	thumb_func_start sub_08021D78
 sub_08021D78: @ 0x08021D78
@@ -542,14 +542,14 @@ sub_08021DC0: @ 0x08021DC0
 	ldr r0, _08021DD8 @ =gActiveUnit
 	ldr r0, [r0]
 	bl sub_080244A4
-	ldr r0, _08021DDC @ =0x08C04F74
+	ldr r0, _08021DDC @ =gUnk_08C04F74
 	bl sub_0804B664
 	movs r0, #7
 	pop {r1}
 	bx r1
 	.align 2, 0
 _08021DD8: .4byte gActiveUnit
-_08021DDC: .4byte 0x08C04F74
+_08021DDC: .4byte gUnk_08C04F74
 
 	thumb_func_start sub_08021DE0
 sub_08021DE0: @ 0x08021DE0
@@ -696,7 +696,7 @@ _08021F08:
 sub_08021F10: @ 0x08021F10
 	push {r4, r5, lr}
 	sub sp, #4
-	ldr r0, _08021F54 @ =0x08C04D20
+	ldr r0, _08021F54 @ =gUnk_08C04D20
 	bl StartMenu
 	adds r5, r0, #0
 	ldr r4, _08021F58 @ =gActiveUnit
@@ -723,14 +723,14 @@ sub_08021F10: @ 0x08021F10
 	pop {r1}
 	bx r1
 	.align 2, 0
-_08021F54: .4byte 0x08C04D20
+_08021F54: .4byte gUnk_08C04D20
 _08021F58: .4byte gActiveUnit
 
 	thumb_func_start sub_08021F5C
 sub_08021F5C: @ 0x08021F5C
 	push {r4, r5, lr}
 	sub sp, #4
-	ldr r0, _08021FA4 @ =0x08C04D44
+	ldr r0, _08021FA4 @ =gUnk_08C04D44
 	bl StartMenu
 	adds r5, r0, #0
 	ldr r4, _08021FA8 @ =gActiveUnit
@@ -758,7 +758,7 @@ sub_08021F5C: @ 0x08021F5C
 	pop {r1}
 	bx r1
 	.align 2, 0
-_08021FA4: .4byte 0x08C04D44
+_08021FA4: .4byte gUnk_08C04D44
 _08021FA8: .4byte gActiveUnit
 
 	thumb_func_start sub_08021FAC
@@ -873,7 +873,7 @@ sub_0802206C: @ 0x0802206C
 	ldr r0, [r4]
 	ldrh r1, [r0, #0x1e]
 	bl sub_080240E4
-	ldr r0, _080220AC @ =0x08C04F54
+	ldr r0, _080220AC @ =gUnk_08C04F54
 	bl sub_0804B664
 	bl sub_0807988C
 	movs r0, #0x27
@@ -883,7 +883,7 @@ sub_0802206C: @ 0x0802206C
 	.align 2, 0
 _080220A4: .4byte gActiveUnit
 _080220A8: .4byte gActionSt
-_080220AC: .4byte 0x08C04F54
+_080220AC: .4byte gUnk_08C04F54
 
 	thumb_func_start sub_080220B0
 sub_080220B0: @ 0x080220B0
@@ -995,14 +995,14 @@ sub_0802216C: @ 0x0802216C
 	ldrb r0, [r1, #3]
 	strb r0, [r2, #0x15]
 _0802218C:
-	ldr r0, _0802219C @ =0x08C06030
+	ldr r0, _0802219C @ =gUnk_08C06030
 	bl sub_08004748
 	movs r0, #0x17
 	pop {r1}
 	bx r1
 	.align 2, 0
 _08022198: .4byte gActionSt
-_0802219C: .4byte 0x08C06030
+_0802219C: .4byte gUnk_08C06030
 
 	thumb_func_start sub_080221A0
 sub_080221A0: @ 0x080221A0
@@ -1033,14 +1033,14 @@ sub_080221BC: @ 0x080221BC
 	thumb_func_start sub_080221CC
 sub_080221CC: @ 0x080221CC
 	push {lr}
-	ldr r0, _080221DC @ =0x08C030C8
+	ldr r0, _080221DC @ =gUnk_08C030C8
 	movs r1, #3
 	bl Proc_Start
 	movs r0, #0xb
 	pop {r1}
 	bx r1
 	.align 2, 0
-_080221DC: .4byte 0x08C030C8
+_080221DC: .4byte gUnk_08C030C8
 
 	thumb_func_start sub_080221E0
 sub_080221E0: @ 0x080221E0
@@ -1172,14 +1172,14 @@ sub_080222DC: @ 0x080222DC
 	ldr r0, _080222F8 @ =gActiveUnit
 	ldr r0, [r0]
 	bl sub_080241F0
-	ldr r0, _080222FC @ =0x08C04F34
+	ldr r0, _080222FC @ =gUnk_08C04F34
 	bl sub_0804B664
 	movs r0, #7
 	pop {r1}
 	bx r1
 	.align 2, 0
 _080222F8: .4byte gActiveUnit
-_080222FC: .4byte 0x08C04F34
+_080222FC: .4byte gUnk_08C04F34
 
 	thumb_func_start sub_08022300
 sub_08022300: @ 0x08022300
@@ -1529,7 +1529,7 @@ _0802256A:
 	.align 2, 0
 _08022584: .4byte gActiveUnit
 _08022588:
-	ldr r0, _080225D8 @ =0x08C04CB4
+	ldr r0, _080225D8 @ =gUnk_08C04CB4
 	bl StartMenu
 	adds r5, r0, #0
 	ldr r4, _080225DC @ =gActiveUnit
@@ -1564,7 +1564,7 @@ _080225C8:
 	pop {r1}
 	bx r1
 	.align 2, 0
-_080225D8: .4byte 0x08C04CB4
+_080225D8: .4byte gUnk_08C04CB4
 _080225DC: .4byte gActiveUnit
 
 	thumb_func_start sub_080225E0
@@ -1612,7 +1612,7 @@ sub_08022614: @ 0x08022614
 	movs r0, #4
 	bl ApplyIconPalettes
 	bl ResetTextFont
-	ldr r0, _08022668 @ =0x08C04CFC
+	ldr r0, _08022668 @ =gUnk_08C04CFC
 	bl StartMenu
 	adds r5, r0, #0
 	ldr r4, _0802266C @ =gActiveUnit
@@ -1636,7 +1636,7 @@ sub_08022614: @ 0x08022614
 	movs r0, #0x17
 	b _08022672
 	.align 2, 0
-_08022668: .4byte 0x08C04CFC
+_08022668: .4byte gUnk_08C04CFC
 _0802266C: .4byte gActiveUnit
 _08022670:
 	movs r0, #0
@@ -1792,7 +1792,7 @@ sub_08022754: @ 0x08022754
 	lsls r1, r5, #0x10
 	asrs r1, r1, #0x18
 	bl sub_080227D8
-	ldr r0, _080227C0 @ =0x08C04C90
+	ldr r0, _080227C0 @ =gUnk_08C04C90
 	adds r1, r5, #0
 	adds r2, r4, #0
 	bl StartLockingMenuExt
@@ -1806,7 +1806,7 @@ _080227B0: .4byte 0xFFFFFF00
 _080227B4: .4byte 0xFFFF00FF
 _080227B8: .4byte 0xFF00FFFF
 _080227BC: .4byte 0x00FFFFFF
-_080227C0: .4byte 0x08C04C90
+_080227C0: .4byte gUnk_08C04C90
 
 	thumb_func_start sub_080227C4
 sub_080227C4: @ 0x080227C4
@@ -1906,7 +1906,7 @@ sub_0802287C: @ 0x0802287C
 	bl sub_08022864
 	adds r0, r4, #0
 	bl sub_08022828
-	ldr r0, _080228CC @ =0x08C04CFC
+	ldr r0, _080228CC @ =gUnk_08C04CFC
 	bl StartMenu
 	adds r5, r0, #0
 	ldr r4, _080228D0 @ =gActiveUnit
@@ -1933,7 +1933,7 @@ sub_0802287C: @ 0x0802287C
 	pop {r1}
 	bx r1
 	.align 2, 0
-_080228CC: .4byte 0x08C04CFC
+_080228CC: .4byte gUnk_08C04CFC
 _080228D0: .4byte gActiveUnit
 
 	thumb_func_start sub_080228D4
@@ -1972,7 +1972,7 @@ sub_080228D4: @ 0x080228D4
 	bl TmFillRect_thm
 	movs r0, #3
 	bl EnableBgSync
-	ldr r0, _08022970 @ =0x08C04CFC
+	ldr r0, _08022970 @ =gUnk_08C04CFC
 	bl StartMenu
 	adds r4, r0, #0
 	ldr r0, [r6]
@@ -2000,12 +2000,12 @@ _08022960: .4byte gUiTmScratchA
 _08022964: .4byte 0x02022CB6
 _08022968: .4byte 0x0200373C
 _0802296C: .4byte 0x020234B6
-_08022970: .4byte 0x08C04CFC
+_08022970: .4byte gUnk_08C04CFC
 _08022974:
 	bl ClearBg0Bg1
 	movs r0, #0
 	bl EndFaceById
-	ldr r0, _080229A0 @ =0x08C04D68
+	ldr r0, _080229A0 @ =gUnk_08C04D68
 	ldr r2, _080229A4 @ =gBmSt
 	movs r3, #0x1c
 	ldrsh r1, [r2, r3]
@@ -2022,7 +2022,7 @@ _08022996:
 	pop {r1}
 	bx r1
 	.align 2, 0
-_080229A0: .4byte 0x08C04D68
+_080229A0: .4byte gUnk_08C04D68
 _080229A4: .4byte gBmSt
 
 	thumb_func_start sub_080229A8
@@ -2302,7 +2302,7 @@ sub_08022B9C: @ 0x08022B9C
 	orrs r3, r0
 	ldr r0, _08022BF4 @ =0x00FFFFFF
 	ands r3, r0
-	ldr r0, _08022BF8 @ =0x08C04C6C
+	ldr r0, _08022BF8 @ =gUnk_08C04C6C
 	adds r1, r3, #0
 	adds r2, r4, #0
 	bl StartLockingMenuExt
@@ -2316,7 +2316,7 @@ _08022BE8: .4byte 0xFFFFFF00
 _08022BEC: .4byte 0xFFFF00FF
 _08022BF0: .4byte 0xFF00FFFF
 _08022BF4: .4byte 0x00FFFFFF
-_08022BF8: .4byte 0x08C04C6C
+_08022BF8: .4byte gUnk_08C04C6C
 _08022BFC:
 	ldr r1, _08022C0C @ =0x00000703
 	adds r0, r4, #0
@@ -2440,7 +2440,7 @@ sub_08022CD0: @ 0x08022CD0
 	ldr r0, _08022CF4 @ =gActiveUnit
 	ldr r0, [r0]
 	bl sub_08024638
-	ldr r0, _08022CF8 @ =0x08C04F54
+	ldr r0, _08022CF8 @ =gUnk_08C04F54
 	bl sub_0804B664
 	movs r0, #0x26
 	pop {r1}
@@ -2448,7 +2448,7 @@ sub_08022CD0: @ 0x08022CD0
 	.align 2, 0
 _08022CF0: .4byte gActionSt
 _08022CF4: .4byte gActiveUnit
-_08022CF8: .4byte 0x08C04F54
+_08022CF8: .4byte gUnk_08C04F54
 
 	thumb_func_start sub_08022CFC
 sub_08022CFC: @ 0x08022CFC
@@ -2584,7 +2584,7 @@ sub_08022DFC: @ 0x08022DFC
 	bl ClearIcons
 	movs r0, #4
 	bl ApplyIconPalettes
-	ldr r0, _08022E4C @ =0x08C04CD8
+	ldr r0, _08022E4C @ =gUnk_08C04CD8
 	bl StartMenu
 	adds r5, r0, #0
 	ldr r4, _08022E50 @ =gActiveUnit
@@ -2608,7 +2608,7 @@ sub_08022DFC: @ 0x08022DFC
 	movs r0, #0x17
 	b _08022E5C
 	.align 2, 0
-_08022E4C: .4byte 0x08C04CD8
+_08022E4C: .4byte gUnk_08C04CD8
 _08022E50: .4byte gActiveUnit
 _08022E54:
 	ldr r1, _08022E64 @ =0x00000705
@@ -2830,13 +2830,13 @@ sub_08022FF0: @ 0x08022FF0
 	ldr r0, _0802300C @ =gActiveUnit
 	ldr r0, [r0]
 	bl sub_08024520
-	ldr r0, _08023010 @ =0x08C04EF4
+	ldr r0, _08023010 @ =gUnk_08C04EF4
 	bl sub_0804B664
 	movs r0, #7
 	b _0802301C
 	.align 2, 0
 _0802300C: .4byte gActiveUnit
-_08023010: .4byte 0x08C04EF4
+_08023010: .4byte gUnk_08C04EF4
 _08023014:
 	ldr r1, _08023020 @ =0x00000706
 	bl sub_0804B210
@@ -2912,13 +2912,13 @@ sub_08023088: @ 0x08023088
 	ldr r0, _080230A4 @ =gActiveUnit
 	ldr r0, [r0]
 	bl sub_08024554
-	ldr r0, _080230A8 @ =0x08C04ED4
+	ldr r0, _080230A8 @ =gUnk_08C04ED4
 	bl sub_0804B664
 	movs r0, #7
 	b _080230B4
 	.align 2, 0
 _080230A4: .4byte gActiveUnit
-_080230A8: .4byte 0x08C04ED4
+_080230A8: .4byte gUnk_08C04ED4
 _080230AC:
 	ldr r1, _080230B8 @ =0x00000706
 	bl sub_0804B210
@@ -3453,13 +3453,13 @@ sub_08023454: @ 0x08023454
 	ldr r0, _08023474 @ =gActiveUnit
 	ldr r0, [r0]
 	bl sub_08024990
-	ldr r0, _08023478 @ =0x08C04EB4
+	ldr r0, _08023478 @ =gUnk_08C04EB4
 	bl sub_0804B664
 	movs r0, #7
 	b _08023484
 	.align 2, 0
 _08023474: .4byte gActiveUnit
-_08023478: .4byte 0x08C04EB4
+_08023478: .4byte gUnk_08C04EB4
 _0802347C:
 	ldr r1, _08023488 @ =0x00000715
 	bl sub_0804B210
@@ -3515,12 +3515,12 @@ sub_080234D0: @ 0x080234D0
 	bl ClearIcons
 	movs r0, #4
 	bl ApplyIconPalettes
-	ldr r0, _08023564 @ =0x08C04BDC
+	ldr r0, _08023564 @ =gUnk_08C04BDC
 	bl StartMenu
 	adds r0, r4, #0
 	bl sub_0804B6DC
 	ldr r0, _08023568 @ =0x020234E4
-	ldr r1, _0802356C @ =0x08191C28
+	ldr r1, _0802356C @ =gUnk_08191C28
 	movs r2, #0x80
 	lsls r2, r2, #5
 	bl TmApplyTsa_thm
@@ -3566,9 +3566,9 @@ sub_080234D0: @ 0x080234D0
 	bx r1
 	.align 2, 0
 _08023560: .4byte gActionSt
-_08023564: .4byte 0x08C04BDC
+_08023564: .4byte gUnk_08C04BDC
 _08023568: .4byte 0x020234E4
-_0802356C: .4byte 0x08191C28
+_0802356C: .4byte gUnk_08191C28
 _08023570: .4byte 0x02022D26
 
 	thumb_func_start sub_08023574
@@ -4351,13 +4351,13 @@ sub_08023B4C: @ 0x08023B4C
 	ldr r0, _08023B68 @ =gActiveUnit
 	ldr r0, [r0]
 	bl sub_08024904
-	ldr r0, _08023B6C @ =0x08C04E54
+	ldr r0, _08023B6C @ =gUnk_08C04E54
 	bl sub_0804B664
 	movs r0, #0x27
 	b _08023B72
 	.align 2, 0
 _08023B68: .4byte gActiveUnit
-_08023B6C: .4byte 0x08C04E54
+_08023B6C: .4byte gUnk_08C04E54
 _08023B70:
 	movs r0, #8
 _08023B72:

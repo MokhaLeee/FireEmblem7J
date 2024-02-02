@@ -142,7 +142,7 @@ sub_08026B70: @ 0x08026B70
 	adds r0, #0x32
 	adds r7, r0, r1
 	ldrb r5, [r7]
-	ldr r4, _08026BCC @ =0x08C03440
+	ldr r4, _08026BCC @ =gUnk_08C03440
 	adds r0, r2, #0
 	bl sub_08026B20
 	lsls r0, r0, #2
@@ -168,7 +168,7 @@ _08026BBC:
 	bx r0
 	.align 2, 0
 _08026BC8: .4byte gPlaySt
-_08026BCC: .4byte 0x08C03440
+_08026BCC: .4byte gUnk_08C03440
 
 	thumb_func_start sub_08026BD0
 sub_08026BD0: @ 0x08026BD0
@@ -232,7 +232,7 @@ sub_08026C04: @ 0x08026C04
 	adds r0, #0x32
 	adds r0, r0, r6
 	ldrb r7, [r0]
-	ldr r4, _08026C6C @ =0x08C03440
+	ldr r4, _08026C6C @ =gUnk_08C03440
 	adds r0, r5, #0
 	adds r1, r6, #0
 	bl sub_08026B20
@@ -246,7 +246,7 @@ _08026C62:
 	b _08026C7A
 	.align 2, 0
 _08026C68: .4byte gPlaySt
-_08026C6C: .4byte 0x08C03440
+_08026C6C: .4byte gUnk_08C03440
 _08026C70:
 	movs r1, #0
 	cmp r7, r0
@@ -487,10 +487,10 @@ _08026E10:
 	thumb_func_start sub_08026E1C
 sub_08026E1C: @ 0x08026E1C
 	adds r2, r0, #0
-	ldr r1, _08026E24 @ =0x08D61E78
+	ldr r1, _08026E24 @ =gUnk_08D61E78
 	b _08026E34
 	.align 2, 0
-_08026E24: .4byte 0x08D61E78
+_08026E24: .4byte gUnk_08D61E78
 _08026E28:
 	ldrb r0, [r1]
 	cmp r0, r2
@@ -732,7 +732,7 @@ GetSupportLevelUiChar: @ 0x08026FDC
 	push {r4, lr}
 	sub sp, #4
 	adds r4, r0, #0
-	ldr r1, _08026FFC @ =0x081C947C
+	ldr r1, _08026FFC @ =gUnk_081C947C
 	mov r0, sp
 	movs r2, #4
 	bl memcpy
@@ -744,14 +744,14 @@ GetSupportLevelUiChar: @ 0x08026FDC
 	pop {r1}
 	bx r1
 	.align 2, 0
-_08026FFC: .4byte 0x081C947C
+_08026FFC: .4byte gUnk_081C947C
 
 	thumb_func_start sub_08027000
 sub_08027000: @ 0x08027000
 	push {r4, r5, lr}
 	sub sp, #0x20
 	mov r2, sp
-	ldr r1, _08027024 @ =0x081C94A0
+	ldr r1, _08027024 @ =gUnk_081C94A0
 	ldm r1!, {r3, r4, r5}
 	stm r2!, {r3, r4, r5}
 	ldm r1!, {r3, r4, r5}
@@ -766,7 +766,7 @@ sub_08027000: @ 0x08027000
 	pop {r1}
 	bx r1
 	.align 2, 0
-_08027024: .4byte 0x081C94A0
+_08027024: .4byte gUnk_081C94A0
 
 	thumb_func_start sub_08027028
 sub_08027028: @ 0x08027028

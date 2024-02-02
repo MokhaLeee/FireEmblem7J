@@ -157,7 +157,7 @@ sub_080192D4: @ 0x080192D4
 	blt _080192EE
 	b _0801941A
 _080192EE:
-	ldr r0, _080193B0 @ =0x08C02570
+	ldr r0, _080193B0 @ =gUnk_08C02570
 	mov sl, r0
 _080192F2:
 	movs r4, #0
@@ -265,7 +265,7 @@ _0801939C:
 	b _080193FC
 	.align 2, 0
 _080193AC: .4byte gBmMapSize
-_080193B0: .4byte 0x08C02570
+_080193B0: .4byte gUnk_08C02570
 _080193B4: .4byte gBmMapTerrain
 _080193B8:
 	cmp r2, #3
@@ -510,7 +510,7 @@ sub_0801955C: @ 0x0801955C
 	strh r0, [r5]
 	ldrb r0, [r4, #1]
 	strh r0, [r5, #2]
-	ldr r4, _080195B0 @ =0x08D648F4
+	ldr r4, _080195B0 @ =gUnk_08D648F4
 	adds r0, r6, #0
 	bl GetROMChapterStruct
 	ldrb r0, [r0, #7]
@@ -535,7 +535,7 @@ sub_0801955C: @ 0x0801955C
 	bx r0
 	.align 2, 0
 _080195AC: .4byte gBmMapSize
-_080195B0: .4byte 0x08D648F4
+_080195B0: .4byte gUnk_08D648F4
 _080195B4: .4byte 0x02030A8C
 _080195B8: .4byte gBmSt
 
@@ -543,7 +543,7 @@ _080195B8: .4byte gBmSt
 sub_080195BC: @ 0x080195BC
 	push {r4, r5, lr}
 	adds r4, r0, #0
-	ldr r5, _08019618 @ =0x08D648F4
+	ldr r5, _08019618 @ =gUnk_08D648F4
 	bl GetROMChapterStruct
 	ldrb r0, [r0, #4]
 	lsls r0, r0, #2
@@ -582,14 +582,14 @@ _080195FA:
 	pop {r0}
 	bx r0
 	.align 2, 0
-_08019618: .4byte 0x08D648F4
+_08019618: .4byte gUnk_08D648F4
 _0801961C: .4byte 0x06008000
 _08019620: .4byte 0x0600C000
 
 	thumb_func_start UnpackChapterMapPalette
 UnpackChapterMapPalette: @ 0x08019624
 	push {r4, lr}
-	ldr r4, _0801964C @ =0x08D648F4
+	ldr r4, _0801964C @ =gUnk_08D648F4
 	ldr r0, _08019650 @ =gPlaySt
 	ldrb r0, [r0, #0xe]
 	lsls r0, r0, #0x18
@@ -607,7 +607,7 @@ UnpackChapterMapPalette: @ 0x08019624
 	pop {r0}
 	bx r0
 	.align 2, 0
-_0801964C: .4byte 0x08D648F4
+_0801964C: .4byte gUnk_08D648F4
 _08019650: .4byte gPlaySt
 
 	thumb_func_start sub_08019654
@@ -617,7 +617,7 @@ sub_08019654: @ 0x08019654
 	mov r6, sb
 	mov r5, r8
 	push {r5, r6, r7}
-	ldr r3, _08019708 @ =0x08C02570
+	ldr r3, _08019708 @ =gUnk_08C02570
 	ldr r0, [r3]
 	mov sb, r0
 	ldr r5, _0801970C @ =0x02001000
@@ -650,7 +650,7 @@ _08019684:
 	adds r6, r4, #1
 	cmp r2, r1
 	bge _080196C0
-	ldr r1, _08019708 @ =0x08C02570
+	ldr r1, _08019708 @ =gUnk_08C02570
 	mov r8, r1
 	adds r4, r3, #0
 _080196A4:
@@ -675,7 +675,7 @@ _080196C0:
 	cmp r4, r0
 	blt _08019684
 _080196CA:
-	ldr r1, _08019708 @ =0x08C02570
+	ldr r1, _08019708 @ =gUnk_08C02570
 	ldr r0, [r1]
 	lsls r1, r4, #2
 	adds r1, r1, r0
@@ -709,7 +709,7 @@ _080196F2:
 	pop {r0}
 	bx r0
 	.align 2, 0
-_08019708: .4byte 0x08C02570
+_08019708: .4byte gUnk_08C02570
 _0801970C: .4byte 0x02001000
 _08019710: .4byte gBmMapSize
 
@@ -728,7 +728,7 @@ RefreshTerrainMap: @ 0x08019714
 	cmp r1, r0
 	bge _08019782
 	mov r8, sb
-	ldr r3, _08019798 @ =0x08C02570
+	ldr r3, _08019798 @ =gUnk_08C02570
 	mov sl, r3
 _08019732:
 	movs r3, #0
@@ -741,7 +741,7 @@ _08019732:
 	ldr r4, _0801979C @ =gBmMapTerrain
 	mov ip, r4
 	lsls r4, r1, #2
-	ldr r5, _080197A0 @ =0x08C0256C
+	ldr r5, _080197A0 @ =gUnk_08C0256C
 	mov r7, sl
 _0801974A:
 	mov r1, ip
@@ -784,13 +784,13 @@ _08019782:
 	bx r0
 	.align 2, 0
 _08019794: .4byte gBmMapSize
-_08019798: .4byte 0x08C02570
+_08019798: .4byte gUnk_08C02570
 _0801979C: .4byte gBmMapTerrain
-_080197A0: .4byte 0x08C0256C
+_080197A0: .4byte gUnk_08C0256C
 
 	thumb_func_start sub_080197A4
 sub_080197A4: @ 0x080197A4
-	ldr r2, _080197C0 @ =0x08C02570
+	ldr r2, _080197C0 @ =gUnk_08C02570
 	ldr r2, [r2]
 	lsls r1, r1, #2
 	adds r1, r1, r2
@@ -799,14 +799,14 @@ sub_080197A4: @ 0x080197A4
 	adds r0, r0, r1
 	ldrh r0, [r0]
 	lsrs r1, r0, #2
-	ldr r0, _080197C4 @ =0x08C0256C
+	ldr r0, _080197C4 @ =gUnk_08C0256C
 	ldr r0, [r0]
 	adds r0, r0, r1
 	ldrb r0, [r0]
 	bx lr
 	.align 2, 0
-_080197C0: .4byte 0x08C02570
-_080197C4: .4byte 0x08C0256C
+_080197C0: .4byte gUnk_08C02570
+_080197C4: .4byte gUnk_08C0256C
 
 	thumb_func_start sub_080197C8
 sub_080197C8: @ 0x080197C8
@@ -816,7 +816,7 @@ sub_080197C8: @ 0x080197C8
 	adds r0, r0, r2
 	lsls r1, r1, #2
 	adds r5, r0, r1
-	ldr r0, _0801982C @ =0x08C02570
+	ldr r0, _0801982C @ =gUnk_08C02570
 	ldr r0, [r0]
 	lsls r4, r4, #2
 	adds r0, r4, r0
@@ -861,7 +861,7 @@ _08019802:
 	pop {r0}
 	bx r0
 	.align 2, 0
-_0801982C: .4byte 0x08C02570
+_0801982C: .4byte gUnk_08C02570
 _08019830: .4byte 0x02030A8C
 _08019834: .4byte 0x0202E3E8
 
@@ -1734,35 +1734,35 @@ _08019EEC: .4byte gPlaySt
 
 	thumb_func_start sub_08019EF0
 sub_08019EF0: @ 0x08019EF0
-	ldr r1, _08019EFC @ =0x08C542F0
+	ldr r1, _08019EFC @ =gUnk_08C542F0
 	lsls r0, r0, #2
 	adds r0, r0, r1
 	ldr r0, [r0]
 	bx lr
 	.align 2, 0
-_08019EFC: .4byte 0x08C542F0
+_08019EFC: .4byte gUnk_08C542F0
 
 	thumb_func_start GetTerrainHealAmount
 GetTerrainHealAmount: @ 0x08019F00
-	ldr r1, _08019F0C @ =0x08C53AD0
+	ldr r1, _08019F0C @ =gUnk_08C53AD0
 	adds r0, r0, r1
 	ldrb r0, [r0]
 	lsls r0, r0, #0x18
 	asrs r0, r0, #0x18
 	bx lr
 	.align 2, 0
-_08019F0C: .4byte 0x08C53AD0
+_08019F0C: .4byte gUnk_08C53AD0
 
 	thumb_func_start GetTerrainHealsStatus
 GetTerrainHealsStatus: @ 0x08019F10
-	ldr r1, _08019F1C @ =0x08C53B11
+	ldr r1, _08019F1C @ =gUnk_08C53B11
 	adds r0, r0, r1
 	ldrb r0, [r0]
 	lsls r0, r0, #0x18
 	asrs r0, r0, #0x18
 	bx lr
 	.align 2, 0
-_08019F1C: .4byte 0x08C53B11
+_08019F1C: .4byte gUnk_08C53B11
 
 	thumb_func_start sub_08019F20
 sub_08019F20: @ 0x08019F20

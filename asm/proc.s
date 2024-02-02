@@ -1142,10 +1142,10 @@ sub_08004A60: @ 0x08004A60
 	ldr r0, [r4, #0xc]
 	cmp r0, #0
 	bne _08004AA2
-	ldr r5, _08004A80 @ =0x08BBFD28
+	ldr r5, _08004A80 @ =gUnk_08BBFD28
 	b _08004A8A
 	.align 2, 0
-_08004A80: .4byte 0x08BBFD28
+_08004A80: .4byte gUnk_08BBFD28
 _08004A84:
 	ldr r0, [r4]
 	cmp r0, #0

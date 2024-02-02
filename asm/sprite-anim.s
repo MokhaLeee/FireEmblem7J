@@ -451,7 +451,7 @@ sub_08012944: @ 0x08012944
 	str r1, [sp]
 	cmp r2, #0
 	ble _08012A38
-	ldr r2, _080129F4 @ =0x08C01714
+	ldr r2, _080129F4 @ =gUnk_08C01714
 	mov sb, r2
 	movs r7, #0xc0
 	lsls r7, r7, #8
@@ -509,7 +509,7 @@ _08012988:
 	ldrb r0, [r0]
 	b _08012A26
 	.align 2, 0
-_080129F4: .4byte 0x08C01714
+_080129F4: .4byte gUnk_08C01714
 _080129F8: .4byte 0x000003FF
 _080129FC: .4byte 0x06010000
 _08012A00: .4byte gDispIo
@@ -665,7 +665,7 @@ sub_08012AF0: @ 0x08012AF0
 	adds r1, r5, #0
 	bl sub_080128F0
 	strh r6, [r4, #0x22]
-	ldr r0, _08012B34 @ =0x08C016FC
+	ldr r0, _08012B34 @ =gUnk_08C016FC
 	movs r1, #3
 	bl Proc_Start
 	str r4, [r0, #0x50]
@@ -680,7 +680,7 @@ sub_08012AF0: @ 0x08012AF0
 	pop {r1}
 	bx r1
 	.align 2, 0
-_08012B34: .4byte 0x08C016FC
+_08012B34: .4byte gUnk_08C016FC
 
 	thumb_func_start sub_08012B38
 sub_08012B38: @ 0x08012B38
@@ -744,17 +744,17 @@ EndSpriteAnimProc: @ 0x08012B8C
 	thumb_func_start EndEachSpriteAnimProc
 EndEachSpriteAnimProc: @ 0x08012B98
 	push {lr}
-	ldr r0, _08012BA4 @ =0x08C016FC
+	ldr r0, _08012BA4 @ =gUnk_08C016FC
 	bl sub_08004748
 	pop {r0}
 	bx r0
 	.align 2, 0
-_08012BA4: .4byte 0x08C016FC
+_08012BA4: .4byte gUnk_08C016FC
 
 	thumb_func_start SpriteAnimProcExists
 SpriteAnimProcExists: @ 0x08012BA8
 	push {lr}
-	ldr r0, _08012BBC @ =0x08C016FC
+	ldr r0, _08012BBC @ =gUnk_08C016FC
 	bl Proc_Find
 	cmp r0, #0
 	beq _08012BB6
@@ -763,4 +763,4 @@ _08012BB6:
 	pop {r1}
 	bx r1
 	.align 2, 0
-_08012BBC: .4byte 0x08C016FC
+_08012BBC: .4byte gUnk_08C016FC

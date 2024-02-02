@@ -97,10 +97,10 @@ PutBuildInfo: @ 0x08000AF4
 	add r4, sp, #0x14
 	mov fp, r4
 	adds r4, r0, #0
-	ldr r1, _08000B28 @ =0x080C0C50
+	ldr r1, _08000B28 @ =gUnk_080C0C50
 	bl sub_08004E4C
 	subs r4, #0x40
-	ldr r1, _08000B2C @ =0x080C0C6C
+	ldr r1, _08000B2C @ =gUnk_080C0C6C
 	adds r0, r4, #0
 	bl sub_08004E4C
 	pop {r4}
@@ -109,5 +109,5 @@ PutBuildInfo: @ 0x08000AF4
 	mov sp, r2
 	bx r0
 	.align 2, 0
-_08000B28: .4byte 0x080C0C50
-_08000B2C: .4byte 0x080C0C6C
+_08000B28: .4byte gUnk_080C0C50
+_08000B2C: .4byte gUnk_080C0C6C

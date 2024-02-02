@@ -21,7 +21,7 @@ _0804B984: .4byte 0x0203DFD4
 NewEkrBattleDeamon: @ 0x0804B988
 	push {r4, lr}
 	ldr r4, _0804B9A8 @ =0x0203DFDC
-	ldr r0, _0804B9AC @ =0x08C09CE8
+	ldr r0, _0804B9AC @ =gUnk_08C09CE8
 	movs r1, #3
 	bl Proc_Start
 	str r0, [r4]
@@ -34,7 +34,7 @@ NewEkrBattleDeamon: @ 0x0804B988
 	bx r0
 	.align 2, 0
 _0804B9A8: .4byte 0x0203DFDC
-_0804B9AC: .4byte 0x08C09CE8
+_0804B9AC: .4byte gUnk_08C09CE8
 _0804B9B0: .4byte 0x0203DFD8
 
 	thumb_func_start EndEkrBattleDeamon
@@ -85,7 +85,7 @@ NewEkrBattle: @ 0x0804B9F4
 	push {r4, lr}
 	bl AnimClearAll
 	ldr r4, _0804BA3C @ =0x02000064
-	ldr r0, _0804BA40 @ =0x08C09D08
+	ldr r0, _0804BA40 @ =gUnk_08C09D08
 	movs r1, #3
 	bl Proc_Start
 	str r0, [r4]
@@ -115,7 +115,7 @@ _0804BA34:
 	bx r0
 	.align 2, 0
 _0804BA3C: .4byte 0x02000064
-_0804BA40: .4byte 0x08C09D08
+_0804BA40: .4byte gUnk_08C09D08
 _0804BA44: .4byte InBattleMainRoutine
 _0804BA48: .4byte gEkrBattleEndFlag
 _0804BA4C: .4byte 0x02000018
@@ -1172,12 +1172,12 @@ sub_0804C20C: @ 0x0804C20C
 	strb r1, [r3]
 	ands r0, r2
 	strb r0, [r6, r7]
-	ldr r0, _0804C320 @ =0x081DF464
+	ldr r0, _0804C320 @ =gUnk_081DF464
 	ldr r1, _0804C324 @ =0x06002000
 	movs r2, #0xc0
 	lsls r2, r2, #2
 	bl RegisterDataMove
-	ldr r0, _0804C328 @ =0x081DFBC4
+	ldr r0, _0804C328 @ =gUnk_081DFBC4
 	ldr r1, _0804C32C @ =0x020238AC
 	movs r2, #1
 	str r2, [sp]
@@ -1186,7 +1186,7 @@ sub_0804C20C: @ 0x0804C20C
 	movs r2, #0x12
 	movs r3, #3
 	bl EfxTmCpyBG
-	ldr r0, _0804C330 @ =0x081DFC30
+	ldr r0, _0804C330 @ =gUnk_081DFC30
 	ldr r1, _0804C334 @ =0x02022880
 	movs r2, #8
 	bl CpuFastSet
@@ -1229,11 +1229,11 @@ sub_0804C20C: @ 0x0804C20C
 _0804C314: .4byte 0x02019484
 _0804C318: .4byte gDispIo
 _0804C31C: .4byte 0x030027C4
-_0804C320: .4byte 0x081DF464
+_0804C320: .4byte gUnk_081DF464
 _0804C324: .4byte 0x06002000
-_0804C328: .4byte 0x081DFBC4
+_0804C328: .4byte gUnk_081DFBC4
 _0804C32C: .4byte 0x020238AC
-_0804C330: .4byte 0x081DFC30
+_0804C330: .4byte gUnk_081DFC30
 _0804C334: .4byte 0x02022880
 _0804C338: .4byte gEkrPairExpGain
 _0804C33C: .4byte gEkrPairExpPrevious
@@ -1265,7 +1265,7 @@ _0804C364:
 	mov sb, r4
 	mov r5, sl
 	ldr r4, _0804C3E0 @ =0x02019484
-	ldr r7, _0804C3E4 @ =0x081DF764
+	ldr r7, _0804C3E4 @ =gUnk_081DF764
 	movs r6, #0xc
 _0804C37C:
 	ldrh r1, [r4]
@@ -1279,7 +1279,7 @@ _0804C37C:
 	subs r6, #1
 	cmp r6, #0
 	bge _0804C37C
-	ldr r4, _0804C3E8 @ =0x081DFA64
+	ldr r4, _0804C3E8 @ =gUnk_081DFA64
 	mov r2, r8
 	adds r0, r2, r4
 	movs r1, #0xd0
@@ -1315,8 +1315,8 @@ _0804C37C:
 	.align 2, 0
 _0804C3DC: .4byte gEkrPairExpPrevious
 _0804C3E0: .4byte 0x02019484
-_0804C3E4: .4byte 0x081DF764
-_0804C3E8: .4byte 0x081DFA64
+_0804C3E4: .4byte gUnk_081DF764
+_0804C3E8: .4byte gUnk_081DFA64
 _0804C3EC: .4byte 0x060020E0
 _0804C3F0: .4byte sub_0804C3F4
 
@@ -1458,7 +1458,7 @@ _0804C4E8:
 	str r6, [sp]
 	mov r6, sl
 	mov r5, r8
-	ldr r0, _0804C578 @ =0x081DF764
+	ldr r0, _0804C578 @ =gUnk_081DF764
 	mov r8, r0
 	movs r4, #0xc
 _0804C502:
@@ -1473,7 +1473,7 @@ _0804C502:
 	subs r4, #1
 	cmp r4, #0
 	bge _0804C502
-	ldr r4, _0804C57C @ =0x081DFA64
+	ldr r4, _0804C57C @ =gUnk_081DFA64
 	mov r2, sb
 	adds r0, r2, r4
 	movs r1, #0xd0
@@ -1517,8 +1517,8 @@ _0804C562:
 	bx r0
 	.align 2, 0
 _0804C574: .4byte 0x02019484
-_0804C578: .4byte 0x081DF764
-_0804C57C: .4byte 0x081DFA64
+_0804C578: .4byte gUnk_081DF764
+_0804C57C: .4byte gUnk_081DFA64
 _0804C580: .4byte 0x060020E0
 _0804C584: .4byte sub_0804C588
 

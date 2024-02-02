@@ -9,7 +9,7 @@ ApplyUiWindowFramePal: @ 0x0804A27C
 	bge _0804A286
 	movs r3, #1
 _0804A286:
-	ldr r2, _0804A2A4 @ =0x08C09B84
+	ldr r2, _0804A2A4 @ =gUnk_08C09B84
 	ldr r1, _0804A2A8 @ =gPlaySt
 	adds r1, #0x41
 	movs r0, #0xc
@@ -23,7 +23,7 @@ _0804A286:
 	pop {r0}
 	bx r0
 	.align 2, 0
-_0804A2A4: .4byte 0x08C09B84
+_0804A2A4: .4byte gUnk_08C09B84
 _0804A2A8: .4byte gPlaySt
 
 	thumb_func_start sub_0804A2AC
@@ -35,7 +35,7 @@ sub_0804A2AC: @ 0x0804A2AC
 	movs r3, #0xc0
 	lsls r3, r3, #0x13
 _0804A2B8:
-	ldr r2, _0804A2D4 @ =0x08C09B94
+	ldr r2, _0804A2D4 @ =gUnk_08C09B94
 	ldr r1, _0804A2D8 @ =gPlaySt
 	adds r1, #0x41
 	movs r0, #0xc
@@ -48,7 +48,7 @@ _0804A2B8:
 	pop {r0}
 	bx r0
 	.align 2, 0
-_0804A2D4: .4byte 0x08C09B94
+_0804A2D4: .4byte gUnk_08C09B94
 _0804A2D8: .4byte gPlaySt
 
 	thumb_func_start sub_0804A2DC
@@ -59,7 +59,7 @@ sub_0804A2DC: @ 0x0804A2DC
 	bge _0804A2E6
 	movs r3, #6
 _0804A2E6:
-	ldr r2, _0804A304 @ =0x08C09BA4
+	ldr r2, _0804A304 @ =gUnk_08C09BA4
 	ldr r1, _0804A308 @ =gPlaySt
 	adds r1, #0x41
 	movs r0, #0xc
@@ -73,7 +73,7 @@ _0804A2E6:
 	pop {r0}
 	bx r0
 	.align 2, 0
-_0804A304: .4byte 0x08C09BA4
+_0804A304: .4byte gUnk_08C09BA4
 _0804A308: .4byte gPlaySt
 
 	thumb_func_start sub_0804A30C
@@ -88,7 +88,7 @@ sub_0804A30C: @ 0x0804A30C
 	lsls r0, r0, #0x1c
 	lsrs r5, r0, #0x1e
 _0804A31E:
-	ldr r0, _0804A358 @ =0x08C09B94
+	ldr r0, _0804A358 @ =gUnk_08C09B94
 	lsls r5, r5, #2
 	adds r5, r5, r0
 	ldr r0, [r5]
@@ -112,7 +112,7 @@ _0804A31E:
 	bx r0
 	.align 2, 0
 _0804A354: .4byte gPlaySt
-_0804A358: .4byte 0x08C09B94
+_0804A358: .4byte gUnk_08C09B94
 _0804A35C: .4byte gFadeComponentStep
 
 	thumb_func_start sub_0804A360
@@ -129,7 +129,7 @@ sub_0804A360: @ 0x0804A360
 	ldr r2, [sp, #0x34]
 	ldr r6, [sp, #0x38]
 	ldr r0, [sp, #0x3c]
-	ldr r1, _0804A4C8 @ =0x08C09B78
+	ldr r1, _0804A4C8 @ =gUnk_08C09B78
 	lsls r0, r0, #2
 	adds r0, r0, r1
 	ldr r5, [r0]
@@ -306,7 +306,7 @@ _0804A47E:
 	pop {r0}
 	bx r0
 	.align 2, 0
-_0804A4C8: .4byte 0x08C09B78
+_0804A4C8: .4byte gUnk_08C09B78
 
 	thumb_func_start sub_0804A4CC
 sub_0804A4CC: @ 0x0804A4CC
@@ -319,7 +319,7 @@ sub_0804A4CC: @ 0x0804A4CC
 	str r0, [sp]
 	mov sb, r1
 	ldr r0, [sp, #0x50]
-	ldr r1, _0804A734 @ =0x08C09B78
+	ldr r1, _0804A734 @ =gUnk_08C09B78
 	lsls r0, r0, #2
 	adds r0, r0, r1
 	ldr r6, [r0]
@@ -624,7 +624,7 @@ _0804A6BC:
 	pop {r0}
 	bx r0
 	.align 2, 0
-_0804A734: .4byte 0x08C09B78
+_0804A734: .4byte gUnk_08C09B78
 _0804A738: .4byte gBg1Tm
 _0804A73C: .4byte gBg0Tm
 
@@ -659,13 +659,13 @@ _0804A768:
 	bl GetGameTime
 	adds r3, r5, #0
 	subs r3, #0xe
-	ldr r2, _0804A7A8 @ =0x08C09BBC
+	ldr r2, _0804A7A8 @ =gUnk_08C09BBC
 	movs r1, #0x1f
 	ands r1, r0
 	adds r1, r1, r2
 	ldrb r1, [r1]
 	adds r5, r1, r3
-	ldr r3, _0804A7AC @ =0x08C09BB4
+	ldr r3, _0804A7AC @ =gUnk_08C09BB4
 	str r4, [sp]
 	movs r0, #2
 	adds r1, r5, #0
@@ -678,8 +678,8 @@ _0804A768:
 	.align 2, 0
 _0804A7A0: .4byte 0x0203DCC8
 _0804A7A4: .4byte 0x0203DCC4
-_0804A7A8: .4byte 0x08C09BBC
-_0804A7AC: .4byte 0x08C09BB4
+_0804A7A8: .4byte gUnk_08C09BBC
+_0804A7AC: .4byte gUnk_08C09BB4
 
 	thumb_func_start sub_0804A7B0
 sub_0804A7B0: @ 0x0804A7B0
@@ -690,13 +690,13 @@ sub_0804A7B0: @ 0x0804A7B0
 	bl GetGameTime
 	adds r3, r5, #0
 	subs r3, #0xe
-	ldr r2, _0804A7E4 @ =0x08C09BBC
+	ldr r2, _0804A7E4 @ =gUnk_08C09BBC
 	movs r1, #0x1f
 	ands r1, r0
 	adds r1, r1, r2
 	ldrb r1, [r1]
 	adds r5, r1, r3
-	ldr r3, _0804A7E8 @ =0x08C09BB4
+	ldr r3, _0804A7E8 @ =gUnk_08C09BB4
 	movs r0, #0
 	str r0, [sp]
 	movs r0, #2
@@ -708,8 +708,8 @@ sub_0804A7B0: @ 0x0804A7B0
 	pop {r0}
 	bx r0
 	.align 2, 0
-_0804A7E4: .4byte 0x08C09BBC
-_0804A7E8: .4byte 0x08C09BB4
+_0804A7E4: .4byte gUnk_08C09BBC
+_0804A7E8: .4byte gUnk_08C09BB4
 
 	thumb_func_start sub_0804A7EC
 sub_0804A7EC: @ 0x0804A7EC
@@ -718,7 +718,7 @@ sub_0804A7EC: @ 0x0804A7EC
 	adds r4, r0, #0
 	adds r2, r1, #0
 	subs r4, #0xc
-	ldr r3, _0804A80C @ =0x08C09BB4
+	ldr r3, _0804A80C @ =gUnk_08C09BB4
 	movs r0, #0
 	str r0, [sp]
 	movs r0, #3
@@ -729,7 +729,7 @@ sub_0804A7EC: @ 0x0804A7EC
 	pop {r0}
 	bx r0
 	.align 2, 0
-_0804A80C: .4byte 0x08C09BB4
+_0804A80C: .4byte gUnk_08C09BB4
 
 	thumb_func_start sub_0804A810
 sub_0804A810: @ 0x0804A810
@@ -830,7 +830,7 @@ sub_0804A8B0: @ 0x0804A8B0
 	adds r4, #1
 	ldr r0, _0804A910 @ =gBg1Tm
 	mov r8, r0
-	ldr r1, _0804A914 @ =0x081DB490
+	ldr r1, _0804A914 @ =gUnk_081DB490
 	mov ip, r1
 	cmp r3, r5
 	bge _0804A8F4
@@ -869,7 +869,7 @@ _0804A8F4:
 	b _0804A91C
 	.align 2, 0
 _0804A910: .4byte gBg1Tm
-_0804A914: .4byte 0x081DB490
+_0804A914: .4byte gUnk_081DB490
 _0804A918:
 	mov r2, ip
 	ldrh r0, [r2, #0xe]
@@ -890,10 +890,10 @@ sub_0804A930: @ 0x0804A930
 	adds r3, r0, #0
 	adds r4, r1, #0
 	adds r5, r2, #0
-	ldr r0, _0804A954 @ =0x081DD7F4
+	ldr r0, _0804A954 @ =gUnk_081DD7F4
 	adds r1, r3, #0
 	bl Decompress
-	ldr r0, _0804A958 @ =0x081DDA48
+	ldr r0, _0804A958 @ =gUnk_081DDA48
 	lsls r4, r4, #5
 	lsls r5, r5, #5
 	adds r1, r4, #0
@@ -903,8 +903,8 @@ sub_0804A930: @ 0x0804A930
 	pop {r0}
 	bx r0
 	.align 2, 0
-_0804A954: .4byte 0x081DD7F4
-_0804A958: .4byte 0x081DDA48
+_0804A954: .4byte gUnk_081DD7F4
+_0804A958: .4byte gUnk_081DDA48
 
 	thumb_func_start sub_0804A95C
 sub_0804A95C: @ 0x0804A95C
@@ -937,13 +937,13 @@ _0804A986:
 	bl GetGameTime
 	adds r3, r4, #0
 	subs r3, #0xe
-	ldr r2, _0804A9C8 @ =0x08C09BBC
+	ldr r2, _0804A9C8 @ =gUnk_08C09BBC
 	movs r1, #0x1f
 	ands r1, r0
 	adds r1, r1, r2
 	ldrb r1, [r1]
 	adds r4, r1, r3
-	ldr r3, _0804A9CC @ =0x08C09BB4
+	ldr r3, _0804A9CC @ =gUnk_08C09BB4
 	lsls r0, r7, #0xf
 	lsrs r0, r0, #0x14
 	str r0, [sp]
@@ -958,8 +958,8 @@ _0804A986:
 	.align 2, 0
 _0804A9C0: .4byte 0x0203DCC8
 _0804A9C4: .4byte 0x0203DCC4
-_0804A9C8: .4byte 0x08C09BBC
-_0804A9CC: .4byte 0x08C09BB4
+_0804A9C8: .4byte gUnk_08C09BBC
+_0804A9CC: .4byte gUnk_08C09BB4
 
 	thumb_func_start sub_0804A9D0
 sub_0804A9D0: @ 0x0804A9D0
@@ -968,7 +968,7 @@ sub_0804A9D0: @ 0x0804A9D0
 	adds r4, r0, #0
 	adds r5, r1, #0
 	subs r4, #0xc
-	ldr r3, _0804A9F4 @ =0x08C09BB4
+	ldr r3, _0804A9F4 @ =gUnk_08C09BB4
 	lsls r2, r2, #0xf
 	lsrs r2, r2, #0x14
 	str r2, [sp]
@@ -981,7 +981,7 @@ sub_0804A9D0: @ 0x0804A9D0
 	pop {r0}
 	bx r0
 	.align 2, 0
-_0804A9F4: .4byte 0x08C09BB4
+_0804A9F4: .4byte gUnk_08C09BB4
 
 	thumb_func_start UnpackUiWindowFrameGraphics
 UnpackUiWindowFrameGraphics: @ 0x0804A9F8

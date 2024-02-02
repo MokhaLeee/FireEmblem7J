@@ -497,7 +497,7 @@ sub_0802CBC8: @ 0x0802CBC8
 	adds r0, r5, #0
 	bl BattleApplyItemEffect
 	bl BeginBattleAnimations
-	ldr r0, _0802CC28 @ =0x08C03884
+	ldr r0, _0802CC28 @ =gUnk_08C03884
 	adds r1, r5, #0
 	bl Proc_StartBlocking
 	pop {r4, r5}
@@ -506,7 +506,7 @@ sub_0802CBC8: @ 0x0802CBC8
 	.align 2, 0
 _0802CC20: .4byte gActionSt
 _0802CC24: .4byte gBattleTarget
-_0802CC28: .4byte 0x08C03884
+_0802CC28: .4byte gUnk_08C03884
 
 	thumb_func_start sub_0802CC2C
 sub_0802CC2C: @ 0x0802CC2C
@@ -1713,7 +1713,7 @@ _0802D6F4:
 	asrs r0, r0, #0x18
 	cmp r0, #0
 	blt _0802D70A
-	ldr r0, _0802D714 @ =0x08C038A4
+	ldr r0, _0802D714 @ =gUnk_08C038A4
 	adds r1, r5, #0
 	bl Proc_StartBlocking
 _0802D70A:
@@ -1722,7 +1722,7 @@ _0802D70A:
 	bx r0
 	.align 2, 0
 _0802D710: .4byte gBattleTarget
-_0802D714: .4byte 0x08C038A4
+_0802D714: .4byte gUnk_08C038A4
 
 	thumb_func_start ApplyStatusChange
 ApplyStatusChange: @ 0x0802D718
