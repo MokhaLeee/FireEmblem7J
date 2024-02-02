@@ -38,7 +38,7 @@ EkrDragon_080655A0: @ 0x080655A0
 	movs r2, #8
 	bl CpuFastSet
 	ldr r0, _08065658 @ =0x001F001F
-	bl sub_08050F94
+	bl EfxTmFill
 	ldr r0, _0806565C @ =gBg3Tm
 	movs r1, #0x1f
 	bl TmFill
@@ -345,7 +345,7 @@ _08065814:
 	adds r1, r4, #0
 	bl CpuSet
 	adds r0, r5, #0
-	bl sub_08050F94
+	bl EfxTmFill
 	ldr r0, _080658F0 @ =gBg3Tm
 	movs r1, #0x1f
 	bl TmFill
@@ -461,7 +461,7 @@ _0806591C:
 	lsls r2, r2, #0x10
 	asrs r2, r2, #0x10
 	movs r0, #1
-	bl sub_08050FB4
+	bl SetEkrFrontAnimPostion
 	movs r2, #0
 	ldrsh r1, [r4, r2]
 	mov r3, r8
@@ -544,7 +544,7 @@ _0806591C:
 	movs r4, #2
 	ldrsh r2, [r3, r4]
 	movs r0, #1
-	bl sub_08050FB4
+	bl SetEkrFrontAnimPostion
 	mov r1, r8
 	ldr r0, [r1]
 	adds r1, r7, #0
@@ -610,7 +610,7 @@ EkrDragon_08065AB0: @ 0x08065AB0
 	ldr r1, _08065AFC @ =gEkrTsaBuffer
 	bl LZ77UnCompWram
 	ldr r0, _08065B00 @ =0x001F001F
-	bl sub_08050F94
+	bl EfxTmFill
 	ldr r0, _08065B04 @ =gBg3Tm
 	movs r1, #0x1f
 	bl TmFill
@@ -663,7 +663,7 @@ _08065B32:
 	ldr r1, _08065B90 @ =gEkrTsaBuffer
 	bl LZ77UnCompWram
 	ldr r0, _08065B94 @ =0x001F001F
-	bl sub_08050F94
+	bl EfxTmFill
 	ldr r0, _08065B98 @ =gBg3Tm
 	movs r1, #0x1f
 	bl TmFill
@@ -1431,7 +1431,7 @@ _0806617C:
 	adds r1, r4, #0
 	adds r1, #0x44
 	ldr r2, [r4, #0x48]
-	bl SpellFx_InterpretBgAnimScript
+	bl EfxAdvanceFrameLut
 	lsls r0, r0, #0x10
 	asrs r1, r0, #0x10
 	cmp r1, #0
@@ -1562,7 +1562,7 @@ _08066272:
 	adds r1, r4, #0
 	adds r1, #0x44
 	ldr r2, [r4, #0x48]
-	bl SpellFx_InterpretBgAnimScript
+	bl EfxAdvanceFrameLut
 	lsls r0, r0, #0x10
 	asrs r1, r0, #0x10
 	cmp r1, #0
@@ -2179,7 +2179,7 @@ _08066744:
 	adds r1, r4, #0
 	adds r1, #0x44
 	ldr r2, [r4, #0x48]
-	bl SpellFx_InterpretBgAnimScript
+	bl EfxAdvanceFrameLut
 	lsls r0, r0, #0x10
 	asrs r2, r0, #0x10
 	cmp r2, #0
@@ -2583,7 +2583,7 @@ _08066A50:
 	ldr r1, _08066AD4 @ =gEkrTsaBuffer
 	bl LZ77UnCompWram
 	ldr r0, _08066AD8 @ =0x001F001F
-	bl sub_08050F94
+	bl EfxTmFill
 	ldr r0, _08066ADC @ =gBg3Tm
 	movs r1, #0x1f
 	bl TmFill
@@ -3067,7 +3067,7 @@ sub_08066DD8: @ 0x08066DD8
 	lsrs r6, r2, #0x10
 	asrs r2, r2, #0x10
 	movs r0, #0
-	bl sub_08050FB4
+	bl SetEkrFrontAnimPostion
 	lsls r5, r5, #0x10
 	asrs r5, r5, #0x10
 	lsls r4, r4, #0x10
@@ -3075,7 +3075,7 @@ sub_08066DD8: @ 0x08066DD8
 	movs r0, #1
 	adds r1, r5, #0
 	adds r2, r4, #0
-	bl sub_08050FB4
+	bl SetEkrFrontAnimPostion
 	mov r2, r8
 	ldr r1, [sp]
 	strh r2, [r1, #0x32]
@@ -3139,7 +3139,7 @@ sub_08066DD8: @ 0x08066DD8
 	movs r0, #0
 	ldrsh r2, [r3, r0]
 	movs r0, #0
-	bl sub_08050FB4
+	bl SetEkrFrontAnimPostion
 	lsls r4, r4, #0x10
 	asrs r4, r4, #0x10
 	lsls r5, r5, #0x10
@@ -3147,7 +3147,7 @@ sub_08066DD8: @ 0x08066DD8
 	movs r0, #1
 	adds r1, r4, #0
 	adds r2, r5, #0
-	bl sub_08050FB4
+	bl SetEkrFrontAnimPostion
 	mov r2, r8
 	ldr r1, [sp]
 	strh r2, [r1, #0x32]
@@ -7122,7 +7122,7 @@ sub_08068DB4: @ 0x08068DB4
 	adds r1, r7, #0
 	adds r1, #0x44
 	ldr r2, [r7, #0x48]
-	bl SpellFx_InterpretBgAnimScript
+	bl EfxAdvanceFrameLut
 	lsls r0, r0, #0x10
 	asrs r5, r0, #0x10
 	cmp r5, #0
@@ -10126,7 +10126,7 @@ sub_0806A658: @ 0x0806A658
 	adds r1, r4, #0
 	adds r1, #0x44
 	ldr r2, [r4, #0x48]
-	bl SpellFx_InterpretBgAnimScript
+	bl EfxAdvanceFrameLut
 	lsls r0, r0, #0x10
 	asrs r3, r0, #0x10
 	cmp r3, #0
@@ -10202,7 +10202,7 @@ sub_0806A6FC: @ 0x0806A6FC
 	adds r1, r4, #0
 	adds r1, #0x44
 	ldr r2, [r4, #0x48]
-	bl SpellFx_InterpretBgAnimScript
+	bl EfxAdvanceFrameLut
 	lsls r0, r0, #0x10
 	asrs r2, r0, #0x10
 	cmp r2, #0
@@ -10316,7 +10316,7 @@ sub_0806A7E0: @ 0x0806A7E0
 	adds r1, r4, #0
 	adds r1, #0x44
 	ldr r2, [r4, #0x48]
-	bl SpellFx_InterpretBgAnimScript
+	bl EfxAdvanceFrameLut
 	lsls r0, r0, #0x10
 	asrs r3, r0, #0x10
 	cmp r3, #0
@@ -10365,7 +10365,7 @@ sub_0806A844: @ 0x0806A844
 	adds r1, r4, #0
 	adds r1, #0x44
 	ldr r2, [r4, #0x48]
-	bl SpellFx_InterpretBgAnimScript
+	bl EfxAdvanceFrameLut
 	lsls r0, r0, #0x10
 	asrs r1, r0, #0x10
 	cmp r1, #0
@@ -11400,7 +11400,7 @@ sub_0806B040: @ 0x0806B040
 	adds r1, r4, #0
 	adds r1, #0x44
 	ldr r2, [r4, #0x48]
-	bl SpellFx_InterpretBgAnimScript
+	bl EfxAdvanceFrameLut
 	lsls r0, r0, #0x10
 	asrs r2, r0, #0x10
 	cmp r2, #0
@@ -12177,7 +12177,7 @@ sub_0806B5F8: @ 0x0806B5F8
 	lsls r2, r0, #0x10
 	asrs r2, r2, #0x10
 	movs r0, #0
-	bl sub_08050FB4
+	bl SetEkrFrontAnimPostion
 	lsls r5, r5, #0x10
 	asrs r5, r5, #0x10
 	lsls r4, r4, #0x10
@@ -12185,7 +12185,7 @@ sub_0806B5F8: @ 0x0806B5F8
 	movs r0, #1
 	adds r1, r5, #0
 	adds r2, r4, #0
-	bl sub_08050FB4
+	bl SetEkrFrontAnimPostion
 	ldrh r0, [r7, #0x2c]
 	adds r0, #1
 	strh r0, [r7, #0x2c]
@@ -12241,7 +12241,7 @@ sub_0806B5F8: @ 0x0806B5F8
 	movs r3, #0
 	ldrsh r2, [r0, r3]
 	movs r0, #0
-	bl sub_08050FB4
+	bl SetEkrFrontAnimPostion
 	lsls r4, r4, #0x10
 	asrs r4, r4, #0x10
 	lsls r5, r5, #0x10
@@ -12249,7 +12249,7 @@ sub_0806B5F8: @ 0x0806B5F8
 	movs r0, #1
 	adds r1, r4, #0
 	adds r2, r5, #0
-	bl sub_08050FB4
+	bl SetEkrFrontAnimPostion
 	ldr r0, [r7, #0x60]
 	bl Proc_End
 	adds r0, r7, #0

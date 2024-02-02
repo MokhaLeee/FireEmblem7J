@@ -3165,7 +3165,7 @@ sub_08056038: @ 0x08056038
 	adds r1, r4, #0
 	adds r1, #0x44
 	ldr r2, [r4, #0x48]
-	bl SpellFx_InterpretBgAnimScript
+	bl EfxAdvanceFrameLut
 	lsls r0, r0, #0x10
 	asrs r0, r0, #0x10
 	cmp r0, #0
@@ -4548,13 +4548,13 @@ _08056AA0:
 	lsls r2, r6, #0x10
 	asrs r2, r2, #0x10
 	movs r0, #0
-	bl sub_08050FB4
+	bl SetEkrFrontAnimPostion
 	lsls r1, r5, #0x10
 	asrs r1, r1, #0x10
 	lsls r2, r4, #0x10
 	asrs r2, r2, #0x10
 	movs r0, #1
-	bl sub_08050FB4
+	bl SetEkrFrontAnimPostion
 	mov r2, r8
 	ldrh r0, [r2, #0x2c]
 	adds r0, #1
@@ -4620,13 +4620,13 @@ _08056B60:
 	movs r3, #0
 	ldrsh r2, [r0, r3]
 	movs r0, #0
-	bl sub_08050FB4
+	bl SetEkrFrontAnimPostion
 	lsls r1, r5, #0x10
 	asrs r1, r1, #0x10
 	lsls r2, r4, #0x10
 	asrs r2, r2, #0x10
 	movs r0, #1
-	bl sub_08050FB4
+	bl SetEkrFrontAnimPostion
 	mov r4, r8
 	ldr r0, [r4, #0x60]
 	bl Proc_End
@@ -5155,7 +5155,7 @@ sub_08056FD0: @ 0x08056FD0
 	ldr r0, [r5, #0x5c]
 	bl GetAnimAnotherSide
 	adds r6, r0, #0
-	bl GetSpellAnimationStartFrame
+	bl EfxGetCamMovDuration
 	adds r4, r0, #0
 	ldrh r0, [r5, #0x2c]
 	adds r0, #1
@@ -6090,7 +6090,7 @@ sub_0805780C: @ 0x0805780C
 	adds r1, r4, #0
 	adds r1, #0x44
 	ldr r2, [r4, #0x48]
-	bl SpellFx_InterpretBgAnimScript
+	bl EfxAdvanceFrameLut
 	lsls r0, r0, #0x10
 	asrs r1, r0, #0x10
 	cmp r1, #0
@@ -6959,7 +6959,7 @@ sub_08057F38: @ 0x08057F38
 	adds r1, r4, #0
 	adds r1, #0x44
 	ldr r2, [r4, #0x48]
-	bl SpellFx_InterpretBgAnimScript
+	bl EfxAdvanceFrameLut
 	lsls r0, r0, #0x10
 	asrs r1, r0, #0x10
 	cmp r1, #0
@@ -7024,7 +7024,7 @@ sub_08057FC0: @ 0x08057FC0
 	ldr r0, [r4, #0x5c]
 	bl GetAnimAnotherSide
 	adds r5, r0, #0
-	bl GetSpellAnimationStartFrame
+	bl EfxGetCamMovDuration
 	adds r6, r0, #0
 	ldrh r0, [r4, #0x2c]
 	adds r0, #1
@@ -7521,7 +7521,7 @@ sub_080583DC: @ 0x080583DC
 	adds r1, r4, #0
 	adds r1, #0x44
 	ldr r2, [r4, #0x48]
-	bl SpellFx_InterpretBgAnimScript
+	bl EfxAdvanceFrameLut
 	lsls r0, r0, #0x10
 	asrs r5, r0, #0x10
 	cmp r5, #0
@@ -7850,7 +7850,7 @@ sub_08058698: @ 0x08058698
 	adds r1, r4, #0
 	adds r1, #0x44
 	ldr r2, [r4, #0x48]
-	bl SpellFx_InterpretBgAnimScript
+	bl EfxAdvanceFrameLut
 	lsls r0, r0, #0x10
 	asrs r2, r0, #0x10
 	cmp r2, #0
@@ -7921,7 +7921,7 @@ sub_0805872C: @ 0x0805872C
 	adds r1, r4, #0
 	adds r1, #0x44
 	ldr r2, [r4, #0x48]
-	bl SpellFx_InterpretBgAnimScript
+	bl EfxAdvanceFrameLut
 	lsls r0, r0, #0x10
 	asrs r1, r0, #0x10
 	cmp r1, #0
@@ -8072,7 +8072,7 @@ sub_08058868: @ 0x08058868
 	ldr r0, [r4, #0x5c]
 	bl GetAnimAnotherSide
 	adds r5, r0, #0
-	bl GetSpellAnimationStartFrame
+	bl EfxGetCamMovDuration
 	adds r6, r0, #0
 	ldrh r0, [r4, #0x2c]
 	adds r0, #1
@@ -8209,7 +8209,7 @@ sub_0805898C: @ 0x0805898C
 	adds r1, r4, #0
 	adds r1, #0x44
 	ldr r2, [r4, #0x48]
-	bl SpellFx_InterpretBgAnimScript
+	bl EfxAdvanceFrameLut
 	lsls r0, r0, #0x10
 	asrs r5, r0, #0x10
 	cmp r5, #0
@@ -8299,7 +8299,7 @@ sub_08058A4C: @ 0x08058A4C
 	adds r1, r4, #0
 	adds r1, #0x44
 	ldr r2, [r4, #0x48]
-	bl SpellFx_InterpretBgAnimScript
+	bl EfxAdvanceFrameLut
 	lsls r0, r0, #0x10
 	asrs r1, r0, #0x10
 	cmp r1, #0
@@ -8634,7 +8634,7 @@ sub_08058D18: @ 0x08058D18
 	adds r1, r4, #0
 	adds r1, #0x44
 	ldr r2, [r4, #0x48]
-	bl SpellFx_InterpretBgAnimScript
+	bl EfxAdvanceFrameLut
 	lsls r0, r0, #0x10
 	asrs r2, r0, #0x10
 	cmp r2, #0
@@ -8836,7 +8836,7 @@ sub_08058EC8: @ 0x08058EC8
 	adds r1, r7, #0
 	adds r1, #0x44
 	ldr r2, [r7, #0x48]
-	bl SpellFx_InterpretBgAnimScript
+	bl EfxAdvanceFrameLut
 	lsls r0, r0, #0x10
 	asrs r4, r0, #0x10
 	cmp r4, #0
@@ -9010,7 +9010,7 @@ sub_0805903C: @ 0x0805903C
 	adds r1, r4, #0
 	adds r1, #0x44
 	ldr r2, [r4, #0x48]
-	bl SpellFx_InterpretBgAnimScript
+	bl EfxAdvanceFrameLut
 	lsls r0, r0, #0x10
 	asrs r1, r0, #0x10
 	cmp r1, #0
@@ -9163,7 +9163,7 @@ sub_08059174: @ 0x08059174
 	ldr r0, [r4, #0x5c]
 	bl GetAnimAnotherSide
 	adds r5, r0, #0
-	bl GetSpellAnimationStartFrame
+	bl EfxGetCamMovDuration
 	adds r6, r0, #0
 	ldrh r0, [r4, #0x2c]
 	adds r0, #1
@@ -9367,7 +9367,7 @@ sub_08059330: @ 0x08059330
 	adds r1, r4, #0
 	adds r1, #0x44
 	ldr r2, [r4, #0x48]
-	bl SpellFx_InterpretBgAnimScript
+	bl EfxAdvanceFrameLut
 	lsls r0, r0, #0x10
 	asrs r3, r0, #0x10
 	cmp r3, #0
@@ -9475,7 +9475,7 @@ sub_08059418: @ 0x08059418
 	adds r1, r4, #0
 	adds r1, #0x44
 	ldr r2, [r4, #0x48]
-	bl SpellFx_InterpretBgAnimScript
+	bl EfxAdvanceFrameLut
 	lsls r0, r0, #0x10
 	asrs r3, r0, #0x10
 	cmp r3, #0
@@ -9932,7 +9932,7 @@ sub_080597D8: @ 0x080597D8
 	ldr r0, [r4, #0x5c]
 	bl GetAnimAnotherSide
 	adds r5, r0, #0
-	bl GetSpellAnimationStartFrame
+	bl EfxGetCamMovDuration
 	adds r6, r0, #0
 	ldrh r0, [r4, #0x2c]
 	adds r0, #1
@@ -10061,7 +10061,7 @@ sub_080598EC: @ 0x080598EC
 	adds r1, r7, #0
 	adds r1, #0x44
 	ldr r2, [r7, #0x48]
-	bl SpellFx_InterpretBgAnimScript
+	bl EfxAdvanceFrameLut
 	lsls r0, r0, #0x10
 	asrs r4, r0, #0x10
 	cmp r4, #0
@@ -10471,7 +10471,7 @@ sub_08059C30: @ 0x08059C30
 	ldr r0, [r4, #0x5c]
 	bl GetAnimAnotherSide
 	adds r5, r0, #0
-	bl GetSpellAnimationStartFrame
+	bl EfxGetCamMovDuration
 	adds r2, r0, #0
 	ldrh r0, [r4, #0x2c]
 	adds r0, #1
@@ -10747,7 +10747,7 @@ sub_08059E80: @ 0x08059E80
 	adds r1, r7, #0
 	adds r1, #0x44
 	ldr r2, [r7, #0x48]
-	bl SpellFx_InterpretBgAnimScript
+	bl EfxAdvanceFrameLut
 	lsls r0, r0, #0x10
 	asrs r4, r0, #0x10
 	cmp r4, #0
@@ -11033,7 +11033,7 @@ sub_0805A0CC: @ 0x0805A0CC
 	ldr r0, [r4, #0x5c]
 	bl GetAnimAnotherSide
 	adds r6, r0, #0
-	bl GetSpellAnimationStartFrame
+	bl EfxGetCamMovDuration
 	adds r5, r0, #0
 	ldrh r0, [r4, #0x2c]
 	adds r0, #1
@@ -11321,7 +11321,7 @@ sub_0805A33C: @ 0x0805A33C
 	adds r1, r7, #0
 	adds r1, #0x44
 	ldr r2, [r7, #0x48]
-	bl SpellFx_InterpretBgAnimScript
+	bl EfxAdvanceFrameLut
 	lsls r0, r0, #0x10
 	asrs r4, r0, #0x10
 	cmp r4, #0
@@ -11432,7 +11432,7 @@ _0805A404:
 	ldrsh r0, [r0, r1]
 	cmp r0, #0
 	beq _0805A440
-	bl GetSpellAnimationStartFrame
+	bl EfxGetCamMovDuration
 	strh r0, [r4, #0x2e]
 	ldr r0, [r4, #0x5c]
 	movs r1, #1
@@ -11513,7 +11513,7 @@ sub_0805A4C8: @ 0x0805A4C8
 	adds r1, r7, #0
 	adds r1, #0x44
 	ldr r2, [r7, #0x48]
-	bl SpellFx_InterpretBgAnimScript
+	bl EfxAdvanceFrameLut
 	lsls r0, r0, #0x10
 	asrs r4, r0, #0x10
 	cmp r4, #0
@@ -11563,7 +11563,7 @@ sub_0805A530: @ 0x0805A530
 	adds r1, r7, #0
 	adds r1, #0x44
 	ldr r2, [r7, #0x48]
-	bl SpellFx_InterpretBgAnimScript
+	bl EfxAdvanceFrameLut
 	lsls r0, r0, #0x10
 	asrs r4, r0, #0x10
 	cmp r4, #0
@@ -11701,7 +11701,7 @@ sub_0805A648: @ 0x0805A648
 	ldr r0, [r4, #0x5c]
 	bl GetAnimAnotherSide
 	adds r5, r0, #0
-	bl GetSpellAnimationStartFrame
+	bl EfxGetCamMovDuration
 	adds r6, r0, #0
 	ldrh r0, [r4, #0x2c]
 	adds r0, #1
@@ -11849,7 +11849,7 @@ sub_0805A780: @ 0x0805A780
 	adds r1, r7, #0
 	adds r1, #0x44
 	ldr r2, [r7, #0x48]
-	bl SpellFx_InterpretBgAnimScript
+	bl EfxAdvanceFrameLut
 	lsls r0, r0, #0x10
 	asrs r5, r0, #0x10
 	cmp r5, #0
@@ -11995,7 +11995,7 @@ sub_0805A8B8: @ 0x0805A8B8
 	ldr r0, [r6, #0x5c]
 	bl GetAnimAnotherSide
 	adds r5, r0, #0
-	bl GetSpellAnimationStartFrame
+	bl EfxGetCamMovDuration
 	adds r4, r0, #0
 	ldrh r0, [r6, #0x2c]
 	adds r0, #1
@@ -12177,7 +12177,7 @@ sub_0805AA38: @ 0x0805AA38
 	adds r1, r7, #0
 	adds r1, #0x44
 	ldr r2, [r7, #0x48]
-	bl SpellFx_InterpretBgAnimScript
+	bl EfxAdvanceFrameLut
 	lsls r0, r0, #0x10
 	asrs r5, r0, #0x10
 	cmp r5, #0
@@ -12405,7 +12405,7 @@ sub_0805AC14: @ 0x0805AC14
 	ldr r0, [r6, #0x5c]
 	bl GetAnimAnotherSide
 	adds r5, r0, #0
-	bl GetSpellAnimationStartFrame
+	bl EfxGetCamMovDuration
 	mov r8, r0
 	ldrh r0, [r6, #0x2c]
 	adds r0, #1
@@ -12683,7 +12683,7 @@ sub_0805AE68: @ 0x0805AE68
 	adds r1, r4, #0
 	adds r1, #0x44
 	ldr r2, [r4, #0x48]
-	bl SpellFx_InterpretBgAnimScript
+	bl EfxAdvanceFrameLut
 	lsls r0, r0, #0x10
 	asrs r2, r0, #0x10
 	cmp r2, #0
@@ -12773,7 +12773,7 @@ sub_0805AF28: @ 0x0805AF28
 	adds r1, r4, #0
 	adds r1, #0x44
 	ldr r2, [r4, #0x48]
-	bl SpellFx_InterpretBgAnimScript
+	bl EfxAdvanceFrameLut
 	lsls r0, r0, #0x10
 	asrs r1, r0, #0x10
 	cmp r1, #0
@@ -12851,7 +12851,7 @@ sub_0805AFC8: @ 0x0805AFC8
 	adds r1, r7, #0
 	adds r1, #0x44
 	ldr r2, [r7, #0x48]
-	bl SpellFx_InterpretBgAnimScript
+	bl EfxAdvanceFrameLut
 	lsls r0, r0, #0x10
 	asrs r4, r0, #0x10
 	cmp r4, #0
@@ -13213,7 +13213,7 @@ sub_0805B2C0: @ 0x0805B2C0
 	adds r1, r6, #0
 	adds r1, #0x44
 	ldr r2, [r6, #0x48]
-	bl SpellFx_InterpretBgAnimScript
+	bl EfxAdvanceFrameLut
 	lsls r0, r0, #0x10
 	asrs r4, r0, #0x10
 	cmp r4, #0
@@ -13700,7 +13700,7 @@ sub_0805B6B4: @ 0x0805B6B4
 	ldr r0, [r4, #0x5c]
 	bl GetAnimAnotherSide
 	adds r5, r0, #0
-	bl GetSpellAnimationStartFrame
+	bl EfxGetCamMovDuration
 	adds r3, r0, #0
 	ldrh r0, [r4, #0x2c]
 	adds r0, #1
@@ -13995,7 +13995,7 @@ sub_0805B930: @ 0x0805B930
 	adds r1, r7, #0
 	adds r1, #0x44
 	ldr r2, [r7, #0x48]
-	bl SpellFx_InterpretBgAnimScript
+	bl EfxAdvanceFrameLut
 	lsls r0, r0, #0x10
 	asrs r4, r0, #0x10
 	cmp r4, #0
@@ -14181,7 +14181,7 @@ sub_0805BAB4: @ 0x0805BAB4
 	ldr r0, [r4, #0x5c]
 	bl GetAnimAnotherSide
 	adds r5, r0, #0
-	bl GetSpellAnimationStartFrame
+	bl EfxGetCamMovDuration
 	adds r6, r0, #0
 	ldrh r0, [r4, #0x2c]
 	adds r0, #1
@@ -14417,7 +14417,7 @@ sub_0805BCB8: @ 0x0805BCB8
 	adds r1, r6, #0
 	adds r1, #0x44
 	ldr r2, [r6, #0x48]
-	bl SpellFx_InterpretBgAnimScript
+	bl EfxAdvanceFrameLut
 	lsls r0, r0, #0x10
 	asrs r4, r0, #0x10
 	cmp r4, #0
@@ -14632,7 +14632,7 @@ sub_0805BE90: @ 0x0805BE90
 	adds r1, r4, #0
 	adds r1, #0x44
 	ldr r2, [r4, #0x48]
-	bl SpellFx_InterpretBgAnimScript
+	bl EfxAdvanceFrameLut
 	lsls r0, r0, #0x10
 	asrs r1, r0, #0x10
 	cmp r1, #0
@@ -15332,7 +15332,7 @@ sub_0805C414: @ 0x0805C414
 	ldr r0, [r6, #0x5c]
 	bl GetAnimAnotherSide
 	adds r5, r0, #0
-	bl GetSpellAnimationStartFrame
+	bl EfxGetCamMovDuration
 	adds r4, r0, #0
 	ldrh r0, [r6, #0x2c]
 	adds r0, #1
@@ -15674,7 +15674,7 @@ sub_0805C700: @ 0x0805C700
 	adds r1, r4, #0
 	adds r1, #0x44
 	ldr r2, [r4, #0x48]
-	bl SpellFx_InterpretBgAnimScript
+	bl EfxAdvanceFrameLut
 	lsls r0, r0, #0x10
 	asrs r1, r0, #0x10
 	cmp r1, #0
@@ -16109,7 +16109,7 @@ sub_0805CA74: @ 0x0805CA74
 	ldr r0, [r6, #0x5c]
 	bl GetAnimAnotherSide
 	adds r5, r0, #0
-	bl GetSpellAnimationStartFrame
+	bl EfxGetCamMovDuration
 	adds r4, r0, #0
 	ldrh r0, [r6, #0x2c]
 	adds r0, #1
@@ -16485,7 +16485,7 @@ sub_0805CD8C: @ 0x0805CD8C
 	adds r1, r4, #0
 	adds r1, #0x44
 	ldr r2, [r4, #0x48]
-	bl SpellFx_InterpretBgAnimScript
+	bl EfxAdvanceFrameLut
 	lsls r0, r0, #0x10
 	asrs r1, r0, #0x10
 	cmp r1, #0
@@ -16716,7 +16716,7 @@ sub_0805CF78: @ 0x0805CF78
 	adds r1, r4, #0
 	adds r1, #0x44
 	ldr r2, [r4, #0x48]
-	bl SpellFx_InterpretBgAnimScript
+	bl EfxAdvanceFrameLut
 	lsls r0, r0, #0x10
 	asrs r1, r0, #0x10
 	cmp r1, #0
@@ -17191,7 +17191,7 @@ sub_0805D350: @ 0x0805D350
 	ldr r0, [r4, #0x5c]
 	bl GetAnimAnotherSide
 	adds r5, r0, #0
-	bl GetSpellAnimationStartFrame
+	bl EfxGetCamMovDuration
 	adds r2, r0, #0
 	ldrh r0, [r4, #0x2c]
 	adds r0, #1
@@ -17391,7 +17391,7 @@ sub_0805D4F4: @ 0x0805D4F4
 	ldr r0, [r4, #0x5c]
 	bl GetAnimAnotherSide
 	adds r5, r0, #0
-	bl GetSpellAnimationStartFrame
+	bl EfxGetCamMovDuration
 	adds r2, r0, #0
 	ldrh r0, [r4, #0x2c]
 	adds r0, #1
@@ -17591,7 +17591,7 @@ sub_0805D698: @ 0x0805D698
 	ldr r0, [r4, #0x5c]
 	bl GetAnimAnotherSide
 	adds r5, r0, #0
-	bl GetSpellAnimationStartFrame
+	bl EfxGetCamMovDuration
 	adds r2, r0, #0
 	ldrh r0, [r4, #0x2c]
 	adds r0, #1
@@ -17947,7 +17947,7 @@ sub_0805D994: @ 0x0805D994
 	adds r1, r4, #0
 	adds r1, #0x44
 	ldr r2, [r4, #0x48]
-	bl SpellFx_InterpretBgAnimScript
+	bl EfxAdvanceFrameLut
 	lsls r0, r0, #0x10
 	asrs r3, r0, #0x10
 	cmp r3, #0
@@ -18122,7 +18122,7 @@ sub_0805DAE4: @ 0x0805DAE4
 	adds r1, r4, #0
 	adds r1, #0x44
 	ldr r2, [r4, #0x48]
-	bl SpellFx_InterpretBgAnimScript
+	bl EfxAdvanceFrameLut
 	lsls r0, r0, #0x10
 	asrs r1, r0, #0x10
 	cmp r1, #0
@@ -18803,7 +18803,7 @@ sub_0805E044: @ 0x0805E044
 	adds r1, r4, #0
 	adds r1, #0x44
 	ldr r2, [r4, #0x48]
-	bl SpellFx_InterpretBgAnimScript
+	bl EfxAdvanceFrameLut
 	lsls r0, r0, #0x10
 	asrs r5, r0, #0x10
 	cmp r5, #0
@@ -18898,7 +18898,7 @@ sub_0805E110: @ 0x0805E110
 	adds r1, r4, #0
 	adds r1, #0x44
 	ldr r2, [r4, #0x48]
-	bl SpellFx_InterpretBgAnimScript
+	bl EfxAdvanceFrameLut
 	lsls r0, r0, #0x10
 	asrs r1, r0, #0x10
 	cmp r1, #0
@@ -19060,7 +19060,7 @@ _0805E26C:
 	adds r1, r5, #0
 	adds r1, #0x44
 	ldr r2, [r5, #0x48]
-	bl SpellFx_InterpretBgAnimScript
+	bl EfxAdvanceFrameLut
 	lsls r0, r0, #0x10
 	asrs r3, r0, #0x10
 	cmp r3, #0
@@ -19185,7 +19185,7 @@ sub_0805E368: @ 0x0805E368
 	adds r1, r4, #0
 	adds r1, #0x44
 	ldr r2, [r4, #0x48]
-	bl SpellFx_InterpretBgAnimScript
+	bl EfxAdvanceFrameLut
 	lsls r0, r0, #0x10
 	asrs r1, r0, #0x10
 	cmp r1, #0
@@ -19251,7 +19251,7 @@ sub_0805E3EC: @ 0x0805E3EC
 	ldr r0, [r4, #0x5c]
 	bl GetAnimAnotherSide
 	adds r6, r0, #0
-	bl GetSpellAnimationStartFrame
+	bl EfxGetCamMovDuration
 	adds r5, r0, #0
 	ldrh r0, [r4, #0x2c]
 	adds r0, #1
@@ -19424,7 +19424,7 @@ sub_0805E564: @ 0x0805E564
 	adds r1, r4, #0
 	adds r1, #0x44
 	ldr r2, [r4, #0x48]
-	bl SpellFx_InterpretBgAnimScript
+	bl EfxAdvanceFrameLut
 	lsls r0, r0, #0x10
 	asrs r3, r0, #0x10
 	cmp r3, #0
@@ -19568,7 +19568,7 @@ sub_0805E68C: @ 0x0805E68C
 	ldr r0, [r4, #0x5c]
 	bl GetAnimAnotherSide
 	adds r5, r0, #0
-	bl GetSpellAnimationStartFrame
+	bl EfxGetCamMovDuration
 	adds r6, r0, #0
 	ldrh r0, [r4, #0x2c]
 	adds r0, #1
@@ -19750,7 +19750,7 @@ sub_0805E820: @ 0x0805E820
 	adds r1, r4, #0
 	adds r1, #0x44
 	ldr r2, [r4, #0x48]
-	bl SpellFx_InterpretBgAnimScript
+	bl EfxAdvanceFrameLut
 	lsls r0, r0, #0x10
 	asrs r2, r0, #0x10
 	cmp r2, #0
@@ -19875,7 +19875,7 @@ sub_0805E924: @ 0x0805E924
 	ldr r0, [r4, #0x5c]
 	bl GetAnimAnotherSide
 	adds r5, r0, #0
-	bl GetSpellAnimationStartFrame
+	bl EfxGetCamMovDuration
 	adds r6, r0, #0
 	ldrh r0, [r4, #0x2c]
 	adds r0, #1
@@ -20053,7 +20053,7 @@ sub_0805EAB0: @ 0x0805EAB0
 	adds r1, r4, #0
 	adds r1, #0x44
 	ldr r2, [r4, #0x48]
-	bl SpellFx_InterpretBgAnimScript
+	bl EfxAdvanceFrameLut
 	lsls r0, r0, #0x10
 	asrs r2, r0, #0x10
 	cmp r2, #0
@@ -20254,7 +20254,7 @@ sub_0805EC44: @ 0x0805EC44
 	ldr r0, [r4, #0x5c]
 	bl GetAnimAnotherSide
 	adds r6, r0, #0
-	bl GetSpellAnimationStartFrame
+	bl EfxGetCamMovDuration
 	adds r5, r0, #0
 	ldrh r0, [r4, #0x2c]
 	adds r0, #1
@@ -20426,7 +20426,7 @@ sub_0805EDB8: @ 0x0805EDB8
 	adds r1, r4, #0
 	adds r1, #0x44
 	ldr r2, [r4, #0x48]
-	bl SpellFx_InterpretBgAnimScript
+	bl EfxAdvanceFrameLut
 	lsls r0, r0, #0x10
 	asrs r3, r0, #0x10
 	cmp r3, #0
@@ -20551,7 +20551,7 @@ sub_0805EEC0: @ 0x0805EEC0
 	ldr r0, [r4, #0x5c]
 	bl GetAnimAnotherSide
 	adds r5, r0, #0
-	bl GetSpellAnimationStartFrame
+	bl EfxGetCamMovDuration
 	adds r6, r0, #0
 	ldrh r0, [r4, #0x2c]
 	adds r0, #1
@@ -21267,7 +21267,7 @@ sub_0805F4C8: @ 0x0805F4C8
 	ldr r0, [r5, #0x5c]
 	bl GetAnimAnotherSide
 	adds r4, r0, #0
-	bl GetSpellAnimationStartFrame
+	bl EfxGetCamMovDuration
 	adds r6, r0, #0
 	ldrh r0, [r5, #0x2c]
 	adds r0, #1
@@ -21406,7 +21406,7 @@ sub_0805F5F0: @ 0x0805F5F0
 	adds r1, r4, #0
 	adds r1, #0x44
 	ldr r2, [r4, #0x48]
-	bl SpellFx_InterpretBgAnimScript
+	bl EfxAdvanceFrameLut
 	lsls r0, r0, #0x10
 	asrs r2, r0, #0x10
 	cmp r2, #0
@@ -21558,7 +21558,7 @@ sub_0805F734: @ 0x0805F734
 	ldr r0, [r4, #0x5c]
 	bl GetAnimAnotherSide
 	adds r5, r0, #0
-	bl GetSpellAnimationStartFrame
+	bl EfxGetCamMovDuration
 	adds r6, r0, #0
 	ldrh r0, [r4, #0x2c]
 	adds r0, #1
@@ -21699,7 +21699,7 @@ sub_0805F860: @ 0x0805F860
 	adds r1, r7, #0
 	adds r1, #0x44
 	ldr r2, [r7, #0x48]
-	bl SpellFx_InterpretBgAnimScript
+	bl EfxAdvanceFrameLut
 	lsls r0, r0, #0x10
 	asrs r4, r0, #0x10
 	cmp r4, #0
@@ -21810,7 +21810,7 @@ sub_0805F950: @ 0x0805F950
 	adds r1, r4, #0
 	adds r1, #0x44
 	ldr r2, [r4, #0x48]
-	bl SpellFx_InterpretBgAnimScript
+	bl EfxAdvanceFrameLut
 	lsls r0, r0, #0x10
 	asrs r2, r0, #0x10
 	cmp r2, #0
@@ -21912,7 +21912,7 @@ sub_0805FA28: @ 0x0805FA28
 	adds r1, r4, #0
 	adds r1, #0x44
 	ldr r2, [r4, #0x48]
-	bl SpellFx_InterpretBgAnimScript
+	bl EfxAdvanceFrameLut
 	lsls r0, r0, #0x10
 	asrs r1, r0, #0x10
 	cmp r1, #0
@@ -22164,7 +22164,7 @@ sub_0805FC24: @ 0x0805FC24
 	ldr r0, [r6, #0x5c]
 	bl GetAnimAnotherSide
 	adds r5, r0, #0
-	bl GetSpellAnimationStartFrame
+	bl EfxGetCamMovDuration
 	adds r4, r0, #0
 	ldrh r0, [r6, #0x2c]
 	adds r0, #1
@@ -22437,7 +22437,7 @@ sub_0805FE7C: @ 0x0805FE7C
 	adds r1, r4, #0
 	adds r1, #0x44
 	ldr r2, [r4, #0x48]
-	bl SpellFx_InterpretBgAnimScript
+	bl EfxAdvanceFrameLut
 	lsls r0, r0, #0x10
 	asrs r2, r0, #0x10
 	cmp r2, #0
@@ -22835,7 +22835,7 @@ sub_080601A8: @ 0x080601A8
 	adds r1, r4, #0
 	adds r1, #0x44
 	ldr r2, [r4, #0x48]
-	bl SpellFx_InterpretBgAnimScript
+	bl EfxAdvanceFrameLut
 	lsls r0, r0, #0x10
 	asrs r1, r0, #0x10
 	cmp r1, #0
@@ -22928,7 +22928,7 @@ sub_0806026C: @ 0x0806026C
 	adds r1, r4, #0
 	adds r1, #0x44
 	ldr r2, [r4, #0x48]
-	bl SpellFx_InterpretBgAnimScript
+	bl EfxAdvanceFrameLut
 	lsls r0, r0, #0x10
 	asrs r3, r0, #0x10
 	cmp r3, #0
@@ -23369,7 +23369,7 @@ sub_080605E0: @ 0x080605E0
 	ldr r0, [r5, #0x5c]
 	bl GetAnimAnotherSide
 	adds r4, r0, #0
-	bl GetSpellAnimationStartFrame
+	bl EfxGetCamMovDuration
 	adds r6, r0, #0
 	ldrh r0, [r5, #0x2c]
 	adds r0, #1
@@ -23759,7 +23759,7 @@ sub_0806090C: @ 0x0806090C
 	adds r1, r4, #0
 	adds r1, #0x44
 	ldr r2, [r4, #0x48]
-	bl SpellFx_InterpretBgAnimScript
+	bl EfxAdvanceFrameLut
 	lsls r0, r0, #0x10
 	asrs r1, r0, #0x10
 	cmp r1, #0
@@ -24120,7 +24120,7 @@ sub_08060BE4: @ 0x08060BE4
 	adds r1, r4, #0
 	adds r1, #0x44
 	ldr r2, [r4, #0x48]
-	bl SpellFx_InterpretBgAnimScript
+	bl EfxAdvanceFrameLut
 	lsls r0, r0, #0x10
 	asrs r1, r0, #0x10
 	cmp r1, #0
@@ -24322,7 +24322,7 @@ sub_08060D90: @ 0x08060D90
 	adds r1, r4, #0
 	adds r1, #0x44
 	ldr r2, [r4, #0x48]
-	bl SpellFx_InterpretBgAnimScript
+	bl EfxAdvanceFrameLut
 	lsls r0, r0, #0x10
 	asrs r1, r0, #0x10
 	cmp r1, #0
@@ -24461,7 +24461,7 @@ sub_08060EAC: @ 0x08060EAC
 	ldr r0, [r6, #0x5c]
 	bl GetAnimAnotherSide
 	adds r5, r0, #0
-	bl GetSpellAnimationStartFrame
+	bl EfxGetCamMovDuration
 	adds r4, r0, #0
 	ldrh r0, [r6, #0x2c]
 	adds r0, #1
@@ -24758,7 +24758,7 @@ sub_08061128: @ 0x08061128
 	adds r1, r4, #0
 	adds r1, #0x44
 	ldr r2, [r4, #0x48]
-	bl SpellFx_InterpretBgAnimScript
+	bl EfxAdvanceFrameLut
 	lsls r0, r0, #0x10
 	asrs r2, r0, #0x10
 	cmp r2, #0
@@ -25092,7 +25092,7 @@ sub_08061400: @ 0x08061400
 	adds r1, r4, #0
 	adds r1, #0x44
 	ldr r2, [r4, #0x48]
-	bl SpellFx_InterpretBgAnimScript
+	bl EfxAdvanceFrameLut
 	lsls r0, r0, #0x10
 	asrs r1, r0, #0x10
 	cmp r1, #0
@@ -25339,7 +25339,7 @@ sub_08061600: @ 0x08061600
 	ldr r0, [r4, #0x5c]
 	bl GetAnimAnotherSide
 	adds r5, r0, #0
-	bl GetSpellAnimationStartFrame
+	bl EfxGetCamMovDuration
 	adds r2, r0, #0
 	ldrh r0, [r4, #0x2c]
 	adds r0, #1
@@ -25700,7 +25700,7 @@ sub_08061914: @ 0x08061914
 	adds r1, r4, #0
 	adds r1, #0x44
 	ldr r2, [r4, #0x48]
-	bl SpellFx_InterpretBgAnimScript
+	bl EfxAdvanceFrameLut
 	lsls r0, r0, #0x10
 	asrs r2, r0, #0x10
 	cmp r2, #0
@@ -25909,7 +25909,7 @@ sub_08061AD4: @ 0x08061AD4
 	adds r1, r4, #0
 	adds r1, #0x44
 	ldr r2, [r4, #0x48]
-	bl SpellFx_InterpretBgAnimScript
+	bl EfxAdvanceFrameLut
 	lsls r0, r0, #0x10
 	asrs r1, r0, #0x10
 	cmp r1, #0
@@ -25987,7 +25987,7 @@ sub_08061B7C: @ 0x08061B7C
 	adds r1, r7, #0
 	adds r1, #0x44
 	ldr r2, [r7, #0x48]
-	bl SpellFx_InterpretBgAnimScript
+	bl EfxAdvanceFrameLut
 	lsls r0, r0, #0x10
 	asrs r4, r0, #0x10
 	cmp r4, #0
@@ -26065,7 +26065,7 @@ sub_08061C1C: @ 0x08061C1C
 	ldr r0, [r6, #0x5c]
 	bl GetAnimAnotherSide
 	adds r5, r0, #0
-	bl GetSpellAnimationStartFrame
+	bl EfxGetCamMovDuration
 	adds r4, r0, #0
 	ldrh r0, [r6, #0x2c]
 	adds r0, #1
@@ -26279,7 +26279,7 @@ sub_08061DE8: @ 0x08061DE8
 	adds r1, r4, #0
 	adds r1, #0x44
 	ldr r2, [r4, #0x48]
-	bl SpellFx_InterpretBgAnimScript
+	bl EfxAdvanceFrameLut
 	lsls r0, r0, #0x10
 	asrs r2, r0, #0x10
 	cmp r2, #0
@@ -26804,7 +26804,7 @@ _0806224A:
 	adds r1, r5, #0
 	adds r1, #0x44
 	ldr r2, [r5, #0x48]
-	bl SpellFx_InterpretBgAnimScript
+	bl EfxAdvanceFrameLut
 	lsls r0, r0, #0x10
 	asrs r3, r0, #0x10
 	cmp r3, #0
@@ -26960,7 +26960,7 @@ sub_0806238C: @ 0x0806238C
 	ldr r0, [r4, #0x5c]
 	bl GetAnimAnotherSide
 	adds r6, r0, #0
-	bl GetSpellAnimationStartFrame
+	bl EfxGetCamMovDuration
 	adds r5, r0, #0
 	ldrh r0, [r4, #0x2c]
 	adds r0, #1
@@ -27417,7 +27417,7 @@ sub_08062748: @ 0x08062748
 	adds r1, r4, #0
 	adds r1, #0x44
 	ldr r2, [r4, #0x48]
-	bl SpellFx_InterpretBgAnimScript
+	bl EfxAdvanceFrameLut
 	lsls r0, r0, #0x10
 	asrs r1, r0, #0x10
 	cmp r1, #0
@@ -27522,7 +27522,7 @@ sub_08062824: @ 0x08062824
 	adds r1, r4, #0
 	adds r1, #0x44
 	ldr r2, [r4, #0x48]
-	bl SpellFx_InterpretBgAnimScript
+	bl EfxAdvanceFrameLut
 	lsls r0, r0, #0x10
 	asrs r1, r0, #0x10
 	cmp r1, #0
@@ -28290,7 +28290,7 @@ sub_08062E60: @ 0x08062E60
 	adds r1, r4, #0
 	adds r1, #0x44
 	ldr r2, [r4, #0x48]
-	bl SpellFx_InterpretBgAnimScript
+	bl EfxAdvanceFrameLut
 	lsls r0, r0, #0x10
 	asrs r1, r0, #0x10
 	cmp r1, #0
@@ -28434,7 +28434,7 @@ sub_08062F88: @ 0x08062F88
 	adds r1, r4, #0
 	adds r1, #0x44
 	ldr r2, [r4, #0x48]
-	bl SpellFx_InterpretBgAnimScript
+	bl EfxAdvanceFrameLut
 	lsls r0, r0, #0x10
 	asrs r2, r0, #0x10
 	cmp r2, #0
@@ -29179,7 +29179,7 @@ sub_0806355C: @ 0x0806355C
 	adds r1, r4, #0
 	adds r1, #0x44
 	ldr r2, [r4, #0x48]
-	bl SpellFx_InterpretBgAnimScript
+	bl EfxAdvanceFrameLut
 	lsls r0, r0, #0x10
 	asrs r2, r0, #0x10
 	cmp r2, #0
@@ -30356,7 +30356,7 @@ sub_08063F30: @ 0x08063F30
 	adds r1, r4, #0
 	adds r1, #0x44
 	ldr r2, [r4, #0x48]
-	bl SpellFx_InterpretBgAnimScript
+	bl EfxAdvanceFrameLut
 	lsls r0, r0, #0x10
 	asrs r2, r0, #0x10
 	cmp r2, #0
@@ -30731,7 +30731,7 @@ sub_0806426C: @ 0x0806426C
 	adds r1, r4, #0
 	adds r1, #0x44
 	ldr r2, [r4, #0x48]
-	bl SpellFx_InterpretBgAnimScript
+	bl EfxAdvanceFrameLut
 	lsls r0, r0, #0x10
 	asrs r2, r0, #0x10
 	cmp r2, #0
@@ -30797,7 +30797,7 @@ sub_080642F4: @ 0x080642F4
 	adds r1, r4, #0
 	adds r1, #0x44
 	ldr r2, [r4, #0x48]
-	bl SpellFx_InterpretBgAnimScript
+	bl EfxAdvanceFrameLut
 	lsls r0, r0, #0x10
 	asrs r1, r0, #0x10
 	cmp r1, #0
@@ -31150,7 +31150,7 @@ sub_080645D4: @ 0x080645D4
 	adds r1, r4, #0
 	adds r1, #0x44
 	ldr r2, [r4, #0x48]
-	bl SpellFx_InterpretBgAnimScript
+	bl EfxAdvanceFrameLut
 	lsls r0, r0, #0x10
 	asrs r1, r0, #0x10
 	cmp r1, #0
@@ -31832,7 +31832,7 @@ sub_08064AF4: @ 0x08064AF4
 	adds r1, r4, #0
 	adds r1, #0x44
 	ldr r2, [r4, #0x48]
-	bl SpellFx_InterpretBgAnimScript
+	bl EfxAdvanceFrameLut
 	lsls r0, r0, #0x10
 	asrs r1, r0, #0x10
 	cmp r1, #0
@@ -32030,7 +32030,7 @@ sub_08064C88: @ 0x08064C88
 	adds r1, r4, #0
 	adds r1, #0x44
 	ldr r2, [r4, #0x48]
-	bl SpellFx_InterpretBgAnimScript
+	bl EfxAdvanceFrameLut
 	lsls r0, r0, #0x10
 	asrs r5, r0, #0x10
 	cmp r5, #0
@@ -32115,7 +32115,7 @@ sub_08064D40: @ 0x08064D40
 	adds r1, r4, #0
 	adds r1, #0x44
 	ldr r2, [r4, #0x48]
-	bl SpellFx_InterpretBgAnimScript
+	bl EfxAdvanceFrameLut
 	lsls r0, r0, #0x10
 	asrs r2, r0, #0x10
 	cmp r2, #0
@@ -32331,7 +32331,7 @@ sub_08064F04: @ 0x08064F04
 	adds r1, r4, #0
 	adds r1, #0x44
 	ldr r2, [r4, #0x48]
-	bl SpellFx_InterpretBgAnimScript
+	bl EfxAdvanceFrameLut
 	lsls r0, r0, #0x10
 	asrs r1, r0, #0x10
 	cmp r1, #0
@@ -32394,7 +32394,7 @@ sub_08064F84: @ 0x08064F84
 	adds r1, r4, #0
 	adds r1, #0x44
 	ldr r2, [r4, #0x48]
-	bl SpellFx_InterpretBgAnimScript
+	bl EfxAdvanceFrameLut
 	lsls r0, r0, #0x10
 	asrs r2, r0, #0x10
 	cmp r2, #0
@@ -32675,7 +32675,7 @@ sub_080651B0: @ 0x080651B0
 	adds r1, r7, #0
 	adds r1, #0x44
 	ldr r2, [r7, #0x48]
-	bl SpellFx_InterpretBgAnimScript
+	bl EfxAdvanceFrameLut
 	lsls r0, r0, #0x10
 	asrs r4, r0, #0x10
 	cmp r4, #0

@@ -233,12 +233,12 @@ void SpellFx_RegisterBgPal(const u16 * pal, u32 size);
 // ??? sub_08050E2C
 // ??? sub_08050E58
 // ??? sub_08050E88
-s16 SpellFx_InterpretBgAnimScript(s16 *ptime, s16 *pcount, const s16 lut[]);
+s16 EfxAdvanceFrameLut(s16 *ptime, s16 *pcount, const s16 lut[]);
 // ??? sub_08050F48
-// ??? GetSpellAnimationStartFrame
+int EfxGetCamMovDuration(void);
 // ??? sub_08050F74
-// ??? sub_08050F94
-// ??? sub_08050FB4
+void EfxTmFill(u32 val);
+void SetEkrFrontAnimPostion(int pos, s16 x, s16 y);
 int sub_08050FE4(void);
 void sub_08050FF0(int);
 void NewEfxspdquake(struct Anim * anim);

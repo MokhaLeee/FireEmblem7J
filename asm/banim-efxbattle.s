@@ -2461,12 +2461,12 @@ sub_0804F0DC: @ 0x0804F0DC
 	movs r3, #0
 	ldrsh r2, [r2, r3]
 	movs r0, #0
-	bl sub_08050FB4
+	bl SetEkrFrontAnimPostion
 	lsls r1, r4, #0x10
 	asrs r1, r1, #0x10
 	adds r2, r5, #0
 	movs r0, #1
-	bl sub_08050FB4
+	bl SetEkrFrontAnimPostion
 	movs r0, #2
 	movs r1, #0
 	movs r2, #0
@@ -2580,13 +2580,13 @@ _0804F1D4:
 	lsls r2, r3, #0x10
 	asrs r2, r2, #0x10
 	movs r0, #0
-	bl sub_08050FB4
+	bl SetEkrFrontAnimPostion
 	lsls r1, r4, #0x10
 	asrs r1, r1, #0x10
 	lsls r2, r5, #0x10
 	asrs r2, r2, #0x10
 	movs r0, #1
-	bl sub_08050FB4
+	bl SetEkrFrontAnimPostion
 	b _0804F27A
 	.align 2, 0
 _0804F234: .4byte 0x02000028
@@ -2609,7 +2609,7 @@ _0804F248:
 	lsls r2, r4, #0x10
 	asrs r2, r2, #0x10
 	movs r0, #0
-	bl sub_08050FB4
+	bl SetEkrFrontAnimPostion
 	b _0804F27A
 _0804F26C:
 	lsls r1, r4, #0x10
@@ -2617,7 +2617,7 @@ _0804F26C:
 	lsls r2, r5, #0x10
 	asrs r2, r2, #0x10
 	movs r0, #1
-	bl sub_08050FB4
+	bl SetEkrFrontAnimPostion
 _0804F27A:
 	pop {r3}
 	mov r8, r3
@@ -2929,12 +2929,12 @@ _0804F4E6:
 	movs r3, #0
 	ldrsh r2, [r2, r3]
 	movs r0, #0
-	bl sub_08050FB4
+	bl SetEkrFrontAnimPostion
 	lsls r1, r4, #0x10
 	asrs r1, r1, #0x10
 	adds r2, r5, #0
 	movs r0, #1
-	bl sub_08050FB4
+	bl SetEkrFrontAnimPostion
 	ldr r1, _0804F588 @ =0x02017740
 	movs r0, #0
 	str r0, [r1]
@@ -3197,13 +3197,13 @@ _0804F718:
 	lsls r2, r3, #0x10
 	asrs r2, r2, #0x10
 	movs r0, #0
-	bl sub_08050FB4
+	bl SetEkrFrontAnimPostion
 	lsls r1, r4, #0x10
 	asrs r1, r1, #0x10
 	lsls r2, r5, #0x10
 	asrs r2, r2, #0x10
 	movs r0, #1
-	bl sub_08050FB4
+	bl SetEkrFrontAnimPostion
 	b _0804F7AA
 	.align 2, 0
 _0804F764: .4byte 0x02000028
@@ -3226,7 +3226,7 @@ _0804F778:
 	lsls r2, r4, #0x10
 	asrs r2, r2, #0x10
 	movs r0, #0
-	bl sub_08050FB4
+	bl SetEkrFrontAnimPostion
 	b _0804F7AA
 _0804F79C:
 	lsls r1, r4, #0x10
@@ -3234,7 +3234,7 @@ _0804F79C:
 	lsls r2, r5, #0x10
 	asrs r2, r2, #0x10
 	movs r0, #1
-	bl sub_08050FB4
+	bl SetEkrFrontAnimPostion
 _0804F7AA:
 	add sp, #4
 	pop {r3}
@@ -3849,7 +3849,7 @@ sub_0804FC7C: @ 0x0804FC7C
 	adds r1, r4, #0
 	adds r1, #0x44
 	ldr r2, [r4, #0x48]
-	bl SpellFx_InterpretBgAnimScript
+	bl EfxAdvanceFrameLut
 	lsls r0, r0, #0x10
 	asrs r0, r0, #0x10
 	cmp r0, #0
@@ -3861,7 +3861,7 @@ _0804FCA2:
 	adds r1, r4, #0
 	adds r1, #0x4c
 	ldr r2, [r4, #0x50]
-	bl SpellFx_InterpretBgAnimScript
+	bl EfxAdvanceFrameLut
 	lsls r0, r0, #0x10
 	asrs r0, r0, #0x10
 	cmp r0, #0
@@ -4391,7 +4391,7 @@ _08050106:
 	adds r1, r4, #0
 	adds r1, #0x44
 	ldr r2, [r4, #0x48]
-	bl SpellFx_InterpretBgAnimScript
+	bl EfxAdvanceFrameLut
 	lsls r0, r0, #0x10
 	asrs r1, r0, #0x10
 	cmp r1, #0
@@ -4621,7 +4621,7 @@ sub_080502B0: @ 0x080502B0
 	adds r1, r4, #0
 	adds r1, #0x44
 	ldr r2, [r4, #0x48]
-	bl SpellFx_InterpretBgAnimScript
+	bl EfxAdvanceFrameLut
 	lsls r0, r0, #0x10
 	asrs r0, r0, #0x10
 	cmp r0, #0
@@ -5082,7 +5082,7 @@ sub_08050654: @ 0x08050654
 	adds r1, r4, #0
 	adds r1, #0x44
 	ldr r2, [r4, #0x48]
-	bl SpellFx_InterpretBgAnimScript
+	bl EfxAdvanceFrameLut
 	lsls r0, r0, #0x10
 	asrs r0, r0, #0x10
 	cmp r0, #0
@@ -6151,8 +6151,8 @@ _08050EB4:
 	bx r0
 	.align 2, 0
 
-	thumb_func_start SpellFx_InterpretBgAnimScript
-SpellFx_InterpretBgAnimScript: @ 0x08050EC0
+	thumb_func_start EfxAdvanceFrameLut
+EfxAdvanceFrameLut: @ 0x08050EC0
 	push {r4, r5, r6, r7, lr}
 	adds r5, r0, #0
 	adds r3, r1, #0
@@ -6237,8 +6237,8 @@ sub_08050F48: @ 0x08050F48
 	.align 2, 0
 _08050F50: .4byte 0x0201775C
 
-	thumb_func_start GetSpellAnimationStartFrame
-GetSpellAnimationStartFrame: @ 0x08050F54
+	thumb_func_start EfxGetCamMovDuration
+EfxGetCamMovDuration: @ 0x08050F54
 	ldr r0, _08050F64 @ =gEkrDistanceType
 	movs r1, #0
 	ldrsh r0, [r0, r1]
@@ -6274,8 +6274,8 @@ sub_08050F74: @ 0x08050F74
 _08050F8C: .4byte 0x0201C8C4
 _08050F90: .4byte 0x050002D6
 
-	thumb_func_start sub_08050F94
-sub_08050F94: @ 0x08050F94
+	thumb_func_start EfxTmFill
+EfxTmFill: @ 0x08050F94
 	push {lr}
 	sub sp, #4
 	ldr r1, _08050FAC @ =gEfxFrameTmap
@@ -6290,8 +6290,8 @@ sub_08050F94: @ 0x08050F94
 _08050FAC: .4byte gEfxFrameTmap
 _08050FB0: .4byte 0x05000948
 
-	thumb_func_start sub_08050FB4
-sub_08050FB4: @ 0x08050FB4
+	thumb_func_start SetEkrFrontAnimPostion
+SetEkrFrontAnimPostion: @ 0x08050FB4
 	lsls r1, r1, #0x10
 	lsrs r1, r1, #0x10
 	lsls r2, r2, #0x10
@@ -6480,13 +6480,13 @@ sub_080510F4: @ 0x080510F4
 	movs r0, #0
 	ldrsh r2, [r3, r0]
 	movs r0, #0
-	bl sub_08050FB4
+	bl SetEkrFrontAnimPostion
 	lsls r4, r4, #0x10
 	asrs r4, r4, #0x10
 	movs r0, #1
 	adds r1, r4, #0
 	adds r2, r5, #0
-	bl sub_08050FB4
+	bl SetEkrFrontAnimPostion
 	ldr r0, _08051150 @ =gEkrDistanceType
 	movs r1, #0
 	ldrsh r0, [r0, r1]
