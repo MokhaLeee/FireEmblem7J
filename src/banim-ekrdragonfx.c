@@ -629,3 +629,24 @@ void EkrDragonBgScrollExt_Loop(void)
     }
     gpBg2ScrollOffset = gpBg2ScrollOffsetStart;
 }
+
+struct ProcCmd CONST_DATA ProcScr_EkrDragon_08C48824[] = {
+    PROC_19,
+    PROC_REPEAT(sub_8066500),
+    PROC_END,
+};
+
+ProcPtr EkrDragonFxHandler_OnIntro(int a, int b , int c, int d)
+{
+    struct ProcEkrDragonIntroFx * proc;
+
+    proc = Proc_Start(ProcScr_EkrDragon_08C48824, PROC_TREE_3);
+    proc->timer = 0;
+    proc->terminator = 0;
+
+    proc->unk44 = a;
+    proc->unk48 = b;
+    proc->unk4C = c;
+    proc->unk50 = d;
+    return proc;
+}

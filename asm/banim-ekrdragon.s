@@ -1,34 +1,6 @@
 	.include "macro.inc"
 	.syntax unified
 
-	thumb_func_start EkrDragonFxHandler_OnIntro
-EkrDragonFxHandler_OnIntro: @ 0x080664CC
-	push {r4, r5, r6, lr}
-	mov r6, r8
-	push {r6}
-	adds r4, r0, #0
-	adds r5, r1, #0
-	adds r6, r2, #0
-	mov r8, r3
-	ldr r0, _080664FC @ =ProcScr_EkrDragon_08C48824
-	movs r1, #3
-	bl Proc_Start
-	movs r1, #0
-	strh r1, [r0, #0x2c]
-	strh r1, [r0, #0x2e]
-	str r4, [r0, #0x44]
-	str r5, [r0, #0x48]
-	str r6, [r0, #0x4c]
-	mov r1, r8
-	str r1, [r0, #0x50]
-	pop {r3}
-	mov r8, r3
-	pop {r4, r5, r6}
-	pop {r1}
-	bx r1
-	.align 2, 0
-_080664FC: .4byte ProcScr_EkrDragon_08C48824
-
 	thumb_func_start sub_8066500
 sub_8066500: @ 0x08066500
 	push {r4, r5, r6, r7, lr}

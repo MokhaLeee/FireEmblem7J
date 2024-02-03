@@ -47,9 +47,10 @@ struct ProcEkrDragonIntroFx {
 
     /* 29 */ bool unk29;
     /* 2A */ u16 unk2A;
-    /* 2C */ u16 unk2C;
+    /* 2C */ u16 timer;
+    /* 2E */ s16 terminator;
 
-    STRUCT_PAD(0x2E, 0x32);
+    STRUCT_PAD(0x30, 0x32);
 
     /* 32 */ u16 x;
     /* 34 */ s16 y;
@@ -58,6 +59,13 @@ struct ProcEkrDragonIntroFx {
 
     /* 3A */ s16 unk3A;
     /* 3C */ s16 unk3C;
+
+    STRUCT_PAD(0x3E, 0x44);
+
+    /* 44 */ int unk44;
+    /* 48 */ int unk48;
+    /* 4C */ int unk4C;
+    /* 50 */ int unk50;
 };
 
 struct ProcEkrDragonFx {
@@ -222,7 +230,7 @@ void EkrDragonBgScrollExt_CallBack(void);
 void EkrDragonBgScrollExt_Loop(void);
 
 ProcPtr EkrDragonFxHandler_OnIntro(int, int, int, int);
-// ??? sub_8066500
+void sub_8066500(struct ProcEkrDragonIntroFx * proc);
 // ??? sub_8066590
 void sub_80665B8(int, u16);
 // ??? sub_8066634

@@ -6,6 +6,8 @@
 
 #include "global.h"
 #include "proc.h"
+#include "unit.h"
+#include "battle.h"
 #include "anime.h"
 
 #define EFX_BG_WIDTH 66
@@ -135,6 +137,8 @@ extern u16 * gpBg1ScrollOffsetStart;
 extern u16 * gpBg1ScrollOffset;
 extern u16 gpBg1ScrollOffsetList1[];
 extern u16 gpBg1ScrollOffsetList2[];
+extern struct BattleUnit * gpEkrBattleUnitLeft;
+extern struct BattleUnit * gpEkrBattleUnitRight;
 
 void NewEkrLvlupFan(void);
 // ??? EkrLvupFanMain
