@@ -1,15 +1,15 @@
 	.section .rodata
 
-	.global FrameLut_EkrDragonBodyFlashingNormalAtk
-FrameLut_EkrDragonBodyFlashingNormalAtk:	@ 0x082E420C
+	.global FrameLut_EkrDragonWingFlashingNormalAtk
+FrameLut_EkrDragonWingFlashingNormalAtk:	@ 0x082E420C
 	.SHORT 0, 6
 	.SHORT 1, 6
 	.SHORT 2, 6
 	.SHORT 3, 6
 	.SHORT -2
 
-	.global FrameLut_EkrDragonBodyFlashingCriticalAtk
-FrameLut_EkrDragonBodyFlashingCriticalAtk:	@ 0x082E421E
+	.global FrameLut_EkrDragonWingFlashingCriticalAtk
+FrameLut_EkrDragonWingFlashingCriticalAtk:	@ 0x082E421E
     .SHORT 4, 1
     .SHORT 5, 1
     .SHORT 6, 1
@@ -74,13 +74,13 @@ FrameLut_EkrDragonBodyFlashingCriticalAtk:	@ 0x082E421E
     .SHORT 0, 1
     .SHORT -1
 
-	.global FrameLut_EkrDragonFaceFlashingNormalAtk
-FrameLut_EkrDragonFaceFlashingNormalAtk:	@ 0x082E4318
+	.global FrameLut_EkrDragonFlashingWingObjNormalAtk
+FrameLut_EkrDragonFlashingWingObjNormalAtk:	@ 0x082E4318
     .SHORT 0, 1
     .SHORT -1
 
-	.global FrameLut_EkrDragonFaceFlashingCriticalAtk
-FrameLut_EkrDragonFaceFlashingCriticalAtk:	@ 0x082E431E
+	.global FrameLut_EkrDragonFlashingWingObjCriticalAtk
+FrameLut_EkrDragonFlashingWingObjCriticalAtk:	@ 0x082E431E
     .SHORT 4, 1
     .SHORT 5, 1
     .SHORT 6, 1
@@ -180,8 +180,8 @@ FrameLut_EkrDragon_082E4442:	@ 0x082E4442
 Img_EkrDragon_082E445C:	@ 0x082E445C
 	.incbin "FireEmblem7J.base.gba", 0x2E445C, 0x2E6C60 - 0x2E445C
 
-.global Pals_EkrDragonBodyFlashing
-Pals_EkrDragonBodyFlashing:
+.global Pals_EkrDragonFlashingWingBg
+Pals_EkrDragonFlashingWingBg:
 	.incbin "FireEmblem7J.base.gba", 0x2E6C60, 0x2E6D40 - 0x2E6C60
 
 	.global Tsa_EkrDragon_DragonTail
@@ -216,8 +216,8 @@ Img_EfxDragonDeadFallHead:	@ 0x082E9240
 Pal_EkrDragonHead:	@ 0x082E9CD8
 	.incbin "FireEmblem7J.base.gba", 0x2E9CD8, 0x2E9CF8 - 0x2E9CD8
 
-	.global Pals_EkrDragonFaceFlashing
-Pals_EkrDragonFaceFlashing:	@ 0x082E9CF8
+	.global Pals_EkrDragonFlashingWingObj
+Pals_EkrDragonFlashingWingObj:	@ 0x082E9CF8
 	.incbin "FireEmblem7J.base.gba", 0x2E9CF8, 0x2E9DD8 - 0x2E9CF8
 
 	.global gUnk_082E9DD8

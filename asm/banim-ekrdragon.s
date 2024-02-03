@@ -419,7 +419,7 @@ sub_8066828: @ 0x08066828
 	movs r2, #0x10
 	bl Interpolate
 	adds r5, r0, #0
-	ldr r0, _080668A8 @ =Pals_EkrDragonBodyFlashing
+	ldr r0, _080668A8 @ =Pals_EkrDragonFlashingWingBg
 	ldr r4, _080668AC @ =gPal + 0xc0
 	adds r1, r4, #0
 	movs r2, #8
@@ -464,7 +464,7 @@ _0806689E:
 	pop {r0}
 	bx r0
 	.align 2, 0
-_080668A8: .4byte Pals_EkrDragonBodyFlashing
+_080668A8: .4byte Pals_EkrDragonFlashingWingBg
 _080668AC: .4byte gPal + 0xc0
 _080668B0: .4byte gpEfxUnitPaletteBackup
 

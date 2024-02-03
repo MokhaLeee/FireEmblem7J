@@ -274,24 +274,24 @@ void EfxDragonDeadFallHead_Loop2(struct ProcEkrDragonFx * proc)
     }
 }
 
-struct ProcCmd CONST_DATA ProcScr_EkrDragonBodyFlashing[] = {
+struct ProcCmd CONST_DATA ProcScr_EkrDragonFlashingWingBg[] = {
     PROC_19,
-    PROC_REPEAT(EkrDragonBodyFlashing_Loop),
+    PROC_REPEAT(EkrDragonFlashingWingBg_Loop),
     PROC_END,
 };
 
-ProcPtr NewEkrDragonBodyFlashing(struct Anim * anim)
+ProcPtr NewEkrDragonFlashingWingBg(struct Anim * anim)
 {
     struct ProcEkrDragonStatusFlashing * proc;
 
-    proc = Proc_Start(ProcScr_EkrDragonBodyFlashing, PROC_TREE_4);
+    proc = Proc_Start(ProcScr_EkrDragonFlashingWingBg, PROC_TREE_4);
     proc->fxtype = 0;
     proc->anim = anim;
     proc->round_cur = anim->currentRoundType;
     return proc;
 }
 
-void EkrDragonBodyFlashing_Loop(struct ProcEkrDragonStatusFlashing * proc)
+void EkrDragonFlashingWingBg_Loop(struct ProcEkrDragonStatusFlashing * proc)
 {
     s16 ret;
 
@@ -302,8 +302,8 @@ void EkrDragonBodyFlashing_Loop(struct ProcEkrDragonStatusFlashing * proc)
     case 0:
         proc->timer = 0;
         proc->frame = 0;
-        proc->conf = FrameLut_EkrDragonBodyFlashingNormalAtk;
-        proc->pal = Pals_EkrDragonBodyFlashing;
+        proc->conf = FrameLut_EkrDragonWingFlashingNormalAtk;
+        proc->pal = Pals_EkrDragonFlashingWingBg;
         proc->fxtype = 100;
         break;
 
@@ -311,8 +311,8 @@ void EkrDragonBodyFlashing_Loop(struct ProcEkrDragonStatusFlashing * proc)
     case 1:
         proc->timer = 0;
         proc->frame = 0;
-        proc->conf = FrameLut_EkrDragonBodyFlashingCriticalAtk;
-        proc->pal = Pals_EkrDragonBodyFlashing;
+        proc->conf = FrameLut_EkrDragonWingFlashingCriticalAtk;
+        proc->pal = Pals_EkrDragonFlashingWingBg;
         proc->fxtype = 100;
         StartSpellThing_MagicQuake(proc->anim, 60, 10);
         break;
@@ -358,24 +358,24 @@ void EkrDragonBodyFlashing_Loop(struct ProcEkrDragonStatusFlashing * proc)
     proc->round_cur = proc->anim->currentRoundType;
 }
 
-struct ProcCmd CONST_DATA ProcScr_EkrDragonFaceFlashing[] = {
+struct ProcCmd CONST_DATA ProcScr_EkrDragonFlashingWingObj[] = {
     PROC_19,
-    PROC_REPEAT(EkrDragonFaceFlashing_Loop),
+    PROC_REPEAT(EkrDragonFlashingWingObj_Loop),
     PROC_END,
 };
 
-ProcPtr NewEkrDragonFaceFlashing(struct Anim * anim)
+ProcPtr NewEkrDragonFlashingWingObj(struct Anim * anim)
 {
     struct ProcEkrDragonStatusFlashing * proc;
 
-    proc = Proc_Start(ProcScr_EkrDragonFaceFlashing, PROC_TREE_4);
+    proc = Proc_Start(ProcScr_EkrDragonFlashingWingObj, PROC_TREE_4);
     proc->fxtype = 0;
     proc->anim = anim;
     proc->round_cur = anim->currentRoundType;
     return proc;
 }
 
-void EkrDragonFaceFlashing_Loop(struct ProcEkrDragonStatusFlashing * proc)
+void EkrDragonFlashingWingObj_Loop(struct ProcEkrDragonStatusFlashing * proc)
 {
     s16 ret;
 
@@ -386,8 +386,8 @@ void EkrDragonFaceFlashing_Loop(struct ProcEkrDragonStatusFlashing * proc)
     case 0:
         proc->timer = 0;
         proc->frame = 0;
-        proc->conf = FrameLut_EkrDragonFaceFlashingNormalAtk;
-        proc->pal = Pals_EkrDragonFaceFlashing;
+        proc->conf = FrameLut_EkrDragonFlashingWingObjNormalAtk;
+        proc->pal = Pals_EkrDragonFlashingWingObj;
         proc->fxtype = 100;
         break;
 
@@ -395,8 +395,8 @@ void EkrDragonFaceFlashing_Loop(struct ProcEkrDragonStatusFlashing * proc)
     case 1:
         proc->timer = 0;
         proc->frame = 0;
-        proc->conf = FrameLut_EkrDragonFaceFlashingCriticalAtk;
-        proc->pal = Pals_EkrDragonFaceFlashing;
+        proc->conf = FrameLut_EkrDragonFlashingWingObjCriticalAtk;
+        proc->pal = Pals_EkrDragonFlashingWingObj;
         proc->fxtype = 100;
         break;
 

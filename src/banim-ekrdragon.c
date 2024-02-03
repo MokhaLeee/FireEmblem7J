@@ -233,9 +233,9 @@ void BanimSetFrontPaletteForDragon(struct Anim * anim)
     if (CheckInEkrDragon() != false)
     {
         if (GetAnimPosition(anim) == EKR_POS_L)
-            CpuFastCopy(Pals_EkrDragonBodyFlashing, PAL_BG(0x6), 0x20);
+            CpuFastCopy(Pals_EkrDragonFlashingWingBg, PAL_BG(0x6), 0x20);
         else
-            CpuFastCopy(Pals_EkrDragonBodyFlashing, PAL_BG(0x7), 0x20);
+            CpuFastCopy(Pals_EkrDragonFlashingWingBg, PAL_BG(0x7), 0x20);
 
         EnablePalSync();
     }
@@ -276,7 +276,7 @@ void EkrDragon_StartDragonTailIntro(struct ProcEkrDragon * proc)
 
     LZ77UnCompVram(Img_EkrDragon_082E445C, (void *)0x06008000);
     LZ77UnCompWram(Tsa_EkrDragon_DragonTail, gEkrTsaBuffer);
-    CpuFastCopy(Pals_EkrDragonBodyFlashing, PAL_BG(6), 0x20);
+    CpuFastCopy(Pals_EkrDragonFlashingWingBg, PAL_BG(6), 0x20);
 
     EfxTmFill(0x001F001F);
     TmFill(gBg3Tm, 0x1F);
@@ -378,8 +378,8 @@ void EkrDragon_080657D4(struct ProcEkrDragon * proc)
 {
     if (gEkrDistanceType == EKR_DISTANCE_FARFAR)
     {
-        proc->sproc_bodyflashing = NewEkrDragonBodyFlashing(proc->anim);
-        proc->sproc_Faceflashing = NewEkrDragonFaceFlashing(proc->anim);
+        proc->sproc_flashingbg = NewEkrDragonFlashingWingBg(proc->anim);
+        proc->sproc_flashingobj = NewEkrDragonFlashingWingObj(proc->anim);
         proc->proc4C = NewEkrDragonBgScrollExt(proc->anim);
         proc->proc58 = NewEkrDragonBgScrollHandler();
         proc->proc48 = NewEkrDragonFireBG(proc->anim);
@@ -406,8 +406,8 @@ void EkrDragon_080657D4(struct ProcEkrDragon * proc)
         EkrDragonTmCpyWithDistance();
         EkrDragonTmCpyExt(gEkrBgPosition, proc->y);
 
-        proc->sproc_bodyflashing = NewEkrDragonBodyFlashing(proc->anim);
-        proc->sproc_Faceflashing = NewEkrDragonFaceFlashing(proc->anim);
+        proc->sproc_flashingbg = NewEkrDragonFlashingWingBg(proc->anim);
+        proc->sproc_flashingobj = NewEkrDragonFlashingWingObj(proc->anim);
         proc->proc4C = NewEkrDragonBgScrollExt(proc->anim);
         proc->proc58 = NewEkrDragonBgScrollHandler();
         proc->proc48 = NewEkrDragonFireBG(proc->anim);
@@ -531,8 +531,8 @@ void EkrDragon_InBattleIDLE(struct ProcEkrDragon * proc)
     if (attr & EKRDRGON_ATTR_BANIMFINISH)
     {
         proc->timer = 0;
-        Proc_End(proc->sproc_bodyflashing);
-        Proc_End(proc->sproc_Faceflashing);
+        Proc_End(proc->sproc_flashingbg);
+        Proc_End(proc->sproc_flashingobj);
         Proc_End(proc->mainfxproc);
 
         if (!CheckEfxDragonDeadFallHead(proc->anim))
