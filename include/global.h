@@ -11,6 +11,7 @@
 
 #define SECTION(name) __attribute__((section(name)))
 
+#define NAKEDFUNC __attribute__((naked))
 #define CONST_DATA        SECTION(".data")
 #define EWRAM_OVERLAY(id) SECTION("ewram_overlay_" # id)
 
@@ -21,9 +22,6 @@
 #define BLUE_VALUE(color) (((color) >> 10) & 0x1F)
 
 #define ABS(aValue) ((aValue) >= 0 ? (aValue) : -(aValue))
-
-#define SIN(aAngle) (gSinLookup[(aAngle&0xFF)])
-#define COS(aAngle) (gSinLookup[0x40 + (aAngle&0xFF)])
 
 #define RECT_DISTANCE(aXA, aYA, aXB, aYB) (ABS((aXA) - (aXB)) + ABS((aYA) - (aYB)))
 

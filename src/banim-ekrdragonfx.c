@@ -4,6 +4,7 @@
 #include "util.h"
 #include "bm.h"
 #include "map.h"
+#include "unit.h"
 #include "anime.h"
 #include "banim.h"
 #include "banim_ekrdragon.h"
@@ -21,7 +22,7 @@ ProcPtr NewEkrDragonBaseHide(struct Anim * anim)
         Proc_Start(ProcScr_EkrDragonBaseHide, PROC_TREE_3);
 
     proc->anim = anim;
-    proc->finished = false;
+    proc->done = false;
     proc->timer = 0;
     return proc;
 }
@@ -36,7 +37,7 @@ void EkrDragonBaseHide_Loop(struct ProcEkrDragonFx * proc)
     if (++proc->timer == 0x9)
     {
         proc->timer = 0;
-        proc->finished = true;
+        proc->done = true;
         Proc_Break(proc);
     }
 }
@@ -59,7 +60,7 @@ ProcPtr NewEkrDragonBaseAppear(struct Anim * anim)
         Proc_Start(ProcScr_EkrDragonBaseAppear, PROC_TREE_3);
 
     proc->anim = anim;
-    proc->finished = false;
+    proc->done = false;
     proc->timer = 0;
     FillBGRect(gBg2Tm, 0x20, 0x20, 0, 0);
     sub_8055718(&EkrMainMiniConf_0201FAD0);
@@ -78,7 +79,7 @@ void EkrDragonBaseAppear_Loop(struct ProcEkrDragonFx * proc)
     if (++proc->timer == 0x9)
     {
         proc->timer = 0;
-        proc->finished = true;
+        proc->done = true;
         Proc_Break(proc);
     }
 }
@@ -115,7 +116,7 @@ ProcPtr NewEkrDragonTunkFace(struct Anim * anim)
     face_anim->yPosition = 0x180;
 
     proc->anim2 = face_anim;
-    proc->finished = false;
+    proc->done = false;
     return proc;
 }
 
@@ -126,7 +127,7 @@ void EkrDragonTunkFace_Loop(struct ProcEkrDragonFx * proc)
     anim->xPosition = proc->x;
     anim->yPosition = proc->y;
 
-    if (proc->finished == true)
+    if (proc->done == true)
     {
         AnimDelete(proc->anim2);
         Proc_Break(proc);
@@ -273,21 +274,358 @@ void EfxDragonDeadFallHead_Loop2(struct ProcEkrDragonFx * proc)
     }
 }
 
-struct ProcCmd CONST_DATA ProcScr_EkrDragonStatusFlashing[] = {
+struct ProcCmd CONST_DATA ProcScr_EkrDragonBodyFlashing[] = {
     PROC_19,
-    PROC_REPEAT(EkrDragonStatusFlashing_Loop),
+    PROC_REPEAT(EkrDragonBodyFlashing_Loop),
     PROC_END,
 };
 
-ProcPtr NewEkrDragonStatusFlashing(struct Anim * anim)
+ProcPtr NewEkrDragonBodyFlashing(struct Anim * anim)
 {
-    const AnimScr * scr;
-    struct Anim * anim2;
-    struct ProcEkrDragonFx * proc;
+    struct ProcEkrDragonStatusFlashing * proc;
 
-    proc = Proc_Start(ProcScr_EkrDragonStatusFlashing, PROC_TREE_4);
-    proc->finished = false;
+    proc = Proc_Start(ProcScr_EkrDragonBodyFlashing, PROC_TREE_4);
+    proc->fxtype = 0;
     proc->anim = anim;
     proc->round_cur = anim->currentRoundType;
     return proc;
+}
+
+void EkrDragonBodyFlashing_Loop(struct ProcEkrDragonStatusFlashing * proc)
+{
+    s16 ret;
+
+    if (GetEkrDragonStatusAttr(proc->anim) & EKRDRGON_ATTR_BANIMFX_PREPARED && GetUnitEfxDebuff(proc->anim) != UNIT_STATUS_NONE)
+        return;
+
+    switch (proc->fxtype) {
+    case 0:
+        proc->timer = 0;
+        proc->frame = 0;
+        proc->conf = FrameLut_EkrDragonBodyFlashingNormalAtk;
+        proc->pal = Pals_EkrDragonBodyFlashing;
+        proc->fxtype = 100;
+        break;
+
+    /* Critical attack ? */
+    case 1:
+        proc->timer = 0;
+        proc->frame = 0;
+        proc->conf = FrameLut_EkrDragonBodyFlashingCriticalAtk;
+        proc->pal = Pals_EkrDragonBodyFlashing;
+        proc->fxtype = 100;
+        StartSpellThing_MagicQuake(proc->anim, 60, 10);
+        break;
+
+    default:
+        break;
+    }
+
+    ret = EfxAdvanceFrameLut((void *)&proc->timer, (void *)&proc->frame, (const s16 *)proc->conf);
+    if (ret >= 0)
+    {
+        const u16 * pal = proc->pal;
+        CpuFastCopy(&PAL_BUF_COLOR(pal, ret, 0), PAL_BG(6), 0x20);
+        EnablePalSync();
+    }
+    else if (ret == -6)
+    {
+        proc->fxtype = 0;
+    }
+    else if (ret == -5)
+    {
+        NewEfxFlashBgWhite(proc->anim, 5);
+        proc->frame++;
+    }
+
+    if (proc->anim->currentRoundType != proc->round_cur)
+    {
+        register int rtype asm("r0");
+
+        rtype = proc->anim->currentRoundType;
+        /* Config round switch */
+        switch (rtype) {
+        case ANIM_ROUND_CRIT_CLOSE:
+        case ANIM_ROUND_CRIT_FAR:
+            proc->fxtype = 1;
+            break;
+
+        default:
+            proc->fxtype = 0;
+            break;
+        }
+    }
+    proc->round_cur = proc->anim->currentRoundType;
+}
+
+struct ProcCmd CONST_DATA ProcScr_EkrDragonFaceFlashing[] = {
+    PROC_19,
+    PROC_REPEAT(EkrDragonFaceFlashing_Loop),
+    PROC_END,
+};
+
+ProcPtr NewEkrDragonFaceFlashing(struct Anim * anim)
+{
+    struct ProcEkrDragonStatusFlashing * proc;
+
+    proc = Proc_Start(ProcScr_EkrDragonFaceFlashing, PROC_TREE_4);
+    proc->fxtype = 0;
+    proc->anim = anim;
+    proc->round_cur = anim->currentRoundType;
+    return proc;
+}
+
+void EkrDragonFaceFlashing_Loop(struct ProcEkrDragonStatusFlashing * proc)
+{
+    s16 ret;
+
+    if (GetEkrDragonStatusAttr(proc->anim) & EKRDRGON_ATTR_BANIMFX_PREPARED && GetUnitEfxDebuff(proc->anim) != UNIT_STATUS_NONE)
+        return;
+
+    switch (proc->fxtype) {
+    case 0:
+        proc->timer = 0;
+        proc->frame = 0;
+        proc->conf = FrameLut_EkrDragonFaceFlashingNormalAtk;
+        proc->pal = Pals_EkrDragonFaceFlashing;
+        proc->fxtype = 100;
+        break;
+
+    /* Critical attack ? */
+    case 1:
+        proc->timer = 0;
+        proc->frame = 0;
+        proc->conf = FrameLut_EkrDragonFaceFlashingCriticalAtk;
+        proc->pal = Pals_EkrDragonFaceFlashing;
+        proc->fxtype = 100;
+        break;
+
+    default:
+        break;
+    }
+
+    ret = EfxAdvanceFrameLut((void *)&proc->timer, (void *)&proc->frame, (const s16 *)proc->conf);
+    if (ret >= 0)
+    {
+        const u16 * pal = proc->pal;
+        CpuFastCopy(&PAL_BUF_COLOR(pal, ret, 0), PAL_OBJ(7), 0x20);
+        EnablePalSync();
+    }
+    else if (ret == -6)
+    {
+        proc->fxtype = 0;
+    }
+    else if (ret == -5)
+    {
+        NewEfxFlashBgWhite(proc->anim, 5);
+        proc->frame++;
+    }
+
+    if (proc->anim->currentRoundType != proc->round_cur)
+    {
+        register int rtype asm("r0");
+
+        rtype = proc->anim->currentRoundType;
+        /* Config round switch */
+        switch (rtype) {
+        case ANIM_ROUND_CRIT_CLOSE:
+        case ANIM_ROUND_CRIT_FAR:
+            proc->fxtype = 1;
+            break;
+
+        default:
+            proc->fxtype = 0;
+            break;
+        }
+    }
+    proc->round_cur = proc->anim->currentRoundType;
+}
+
+struct ProcCmd CONST_DATA ProcScr_EkrDragonFireBG[] = {
+    PROC_19,
+    PROC_SET_END_CB(EkrDragonFireBG_CallBackNop),
+    PROC_REPEAT(EkrDragonFireBG_Blocking),
+    PROC_END,
+};
+
+ProcPtr NewEkrDragonFireBG(struct Anim * anim)
+{
+    struct ProcEkrDragonFx * proc;
+
+    proc = Proc_Start(ProcScr_EkrDragonFireBG, PROC_TREE_3);
+    proc->anim = anim;
+    proc->timer = 0;
+
+    LZ77UnCompVram(Img_EkrDragonFireBG, (void *)0x06005000);
+    LZ77UnCompWram(Tsa_EkrDragonFireBG, gEkrTsaBuffer);
+    CpuFastCopy(Pal_EkrDragonFireBG, PAL_BG(4), 0x20);
+    TmFill(gBg2Tm, 0x1F);
+    EfxTmCpyBG(gEkrTsaBuffer, gBg2Tm, 0x20, 0x20, 4, 0x280);
+    EnableBgSync(BG2_SYNC_BIT);
+    return proc;
+}
+
+void EkrDragonFireBG_CallBackNop(struct ProcEkrDragonFx * proc)
+{
+    return;
+}
+
+void EkrDragonFireBG_Blocking(struct ProcEkrDragonFx * proc)
+{
+    return;
+}
+
+struct ProcCmd CONST_DATA ProcScr_EkrDragonBgScrollHandler[] = {
+    PROC_19,
+    PROC_REPEAT(EkrDragonBgScrollHandler_Loop),
+    PROC_END,
+};
+
+ProcPtr NewEkrDragonBgScrollHandler(void)
+{
+    struct ProcEkrDragonFx * proc;
+
+    proc = Proc_Start(ProcScr_EkrDragonBgScrollHandler, PROC_TREE_3);
+    proc->timer = 0;
+}
+
+void EkrDragonBgScrollHandler_Loop(struct ProcEkrDragonFx * proc)
+{
+    u32 i;
+    u16 * buf;
+
+    if (gEkrBg2ScrollFlip == 0)
+        buf = gpBg2ScrollOffsetTable1;
+    else
+        buf = gpBg2ScrollOffsetTable2;
+
+    for (i = 0; i < 160; i++)
+    {
+        int val = SIN_Q12(i * 2 + proc->timer);
+        *buf++ = (val >> 10) + 4;
+    }
+    proc->timer = proc->timer + 2;
+}
+
+void EkrDragonBgScroll_OnVBlank(void)
+{
+    if (!(REG_DISPSTAT & DISPSTAT_VBLANK))
+    {
+        REG_BG2VOFS = *gpBg2ScrollOffset++;
+    }
+}
+
+struct ProcCmd CONST_DATA ProcScr_EkrDragonBgScrollExt[] = {
+    PROC_19,
+    PROC_SET_END_CB(EkrDragonBgScrollExt_CallBack),
+    PROC_REPEAT(EkrDragonBgScrollExt_Loop),
+    PROC_END,
+};
+
+/* Quite strange: https://decomp.me/scratch/be5w2 */
+#if NONMATCHING
+
+ProcPtr NewEkrDragonBgScrollExt(struct Anim * anim)
+{
+    u32 i;
+    u16 * buf;
+    struct ProcEkrDragonFx * proc;
+
+    buf = gpBg2ScrollOffsetTable2;
+    for (i = 0; i < 160; buf++, i++)
+        *buf = 0;
+
+    buf = gpBg2ScrollOffsetTable1;
+    for (i = 0; i < 160; buf++, i++)
+        *buf = 0;
+
+    gEkrBg2ScrollFlip = 0;
+    gpBg2ScrollOffsetStart = gpBg2ScrollOffsetTable2;
+    gpBg2ScrollOffset = gpBg2ScrollOffsetTable2;
+
+    SetOnHBlankA(EkrDragonBgScroll_OnVBlank);
+
+    proc = Proc_Start(ProcScr_EkrDragonBgScrollExt, PROC_TREE_VSYNC);
+    proc->timer = 0;
+    return proc;
+}
+
+#else
+
+NAKEDFUNC
+ProcPtr NewEkrDragonBgScrollExt(struct Anim * anim)
+{
+asm("\
+	.syntax unified\n\
+	push {r4, r5, r6, r7, lr}\n\
+	ldr r2, _08066464 @ =gpBg2ScrollOffsetTable2\n\
+	movs r1, #0\n\
+	adds r0, r2, #0\n\
+	ldr r4, _08066468 @ =gpBg2ScrollOffsetTable1\n\
+	ldr r5, _0806646C @ =gEkrBg2ScrollFlip\n\
+	ldr r6, _08066470 @ =gpBg2ScrollOffsetStart\n\
+	ldr r7, _08066474 @ =gpBg2ScrollOffset\n\
+	ldr r3, _08066478 @ =EkrDragonBgScroll_OnVBlank\n\
+	mov ip, r3\n\
+	movs r3, #0\n\
+_0806642A:\n\
+	strh r3, [r2]\n\
+	adds r2, #2\n\
+	adds r1, #1\n\
+	cmp r1, #0x9f\n\
+	bls _0806642A\n\
+	adds r2, r4, #0\n\
+	movs r1, #0\n\
+	movs r3, #0\n\
+_0806643A:\n\
+	strh r3, [r2]\n\
+	adds r2, #2\n\
+	adds r1, #1\n\
+	cmp r1, #0x9f\n\
+	bls _0806643A\n\
+	movs r4, #0\n\
+	str r4, [r5]\n\
+	str r0, [r6]\n\
+	str r0, [r7]\n\
+	mov r0, ip\n\
+	bl SetOnHBlankA\n\
+	ldr r0, _0806647C @ =ProcScr_EkrDragonBgScrollExt\n\
+	movs r1, #0\n\
+	bl Proc_Start\n\
+	strh r4, [r0, #0x2c]\n\
+	pop {r4, r5, r6, r7}\n\
+	pop {r1}\n\
+	bx r1\n\
+	.align 2, 0\n\
+_08066464: .4byte gpBg2ScrollOffsetTable2\n\
+_08066468: .4byte gpBg2ScrollOffsetTable1\n\
+_0806646C: .4byte gEkrBg2ScrollFlip\n\
+_08066470: .4byte gpBg2ScrollOffsetStart\n\
+_08066474: .4byte gpBg2ScrollOffset\n\
+_08066478: .4byte EkrDragonBgScroll_OnVBlank\n\
+_0806647C: .4byte ProcScr_EkrDragonBgScrollExt\n\
+	.syntax divided\n\
+");
+}
+
+#endif
+
+void EkrDragonBgScrollExt_CallBack(void)
+{
+    SetOnHBlankA(NULL);
+}
+
+void EkrDragonBgScrollExt_Loop(void)
+{
+    if (gEkrBg2ScrollFlip == 1)
+    {
+        gEkrBg2ScrollFlip = 0;
+        gpBg2ScrollOffsetStart = gpBg2ScrollOffsetTable2;
+    }
+    else
+    {
+        gEkrBg2ScrollFlip = 1;
+        gpBg2ScrollOffsetStart = gpBg2ScrollOffsetTable1;
+    }
+    gpBg2ScrollOffset = gpBg2ScrollOffsetStart;
 }

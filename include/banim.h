@@ -16,7 +16,7 @@ enum ekr_battle_unit_position {
     EKR_POS_R
 };
 
-extern struct Anim *gAnims[4];
+extern struct Anim * gAnims[4];
 
 enum gEkrDistanceType_index {
     EKR_DISTANCE_CLOSE,
@@ -24,6 +24,50 @@ enum gEkrDistanceType_index {
     EKR_DISTANCE_FARFAR,
     EKR_DISTANCE_3,
     EKR_DISTANCE_PROMOTION
+};
+
+enum AnimRoundData_type_identifier {
+    ANIM_ROUND_HIT_CLOSE,
+    ANIM_ROUND_CRIT_CLOSE,
+    ANIM_ROUND_NONCRIT_FAR,
+    ANIM_ROUND_CRIT_FAR,
+    ANIM_ROUND_TAKING_MISS_CLOSE,
+    ANIM_ROUND_TAKING_MISS_FAR,
+    ANIM_ROUND_TAKING_HIT_CLOSE,
+    ANIM_ROUND_STANDING,
+    ANIM_ROUND_TAKING_HIT_FAR,
+    ANIM_ROUND_MISS_CLOSE,
+    ANIM_ROUND_MAX,
+
+    ANIM_ROUND_INVALID = -1,
+};
+
+enum anim_round_type {
+    ANIM_ROUND_BIT8 = 0x0100,
+    ANIM_ROUND_PIERCE = 0x0200,
+    ANIM_ROUND_GREAT_SHIELD = 0x0400,
+    ANIM_ROUND_SURE_SHOT = 0x0800,
+    ANIM_ROUND_SILENCER = 0x1000,
+    ANIM_ROUND_POISON = 0x2000,
+    ANIM_ROUND_BIT14 = 0x4000,
+    ANIM_ROUND_DEVIL = 0x8000,    
+};
+
+enum banim_mode_index {
+    BANIM_MODE_NORMAL_ATK,
+    BANIM_MODE_NORMAL_ATK_PRIORITY_L,
+    BANIM_MODE_CRIT_ATK,
+    BANIM_MODE_CRIT_ATK_PRIORITY_L,
+    BANIM_MODE_RANGED_ATK,
+    BANIM_MODE_RANGED_CRIT_ATK,
+    BANIM_MODE_CLOSE_DODGE,
+    BANIM_MODE_RANGED_DODGE,
+    BANIM_MODE_STANDING,
+    BANIM_MODE_STANDING2,
+    BANIM_MODE_RANGED_STANDING,
+    BANIM_MODE_MISSED_ATK,
+
+    BANIM_MODE_INVALID = -1,
 };
 
 extern s16 gEkrDistanceType;
@@ -81,6 +125,16 @@ extern u16 gEkrYPosBase[2];
 extern struct Vec2 gEkrBg0QuakeVec;
 extern struct Vec2 gEkrBg2QuakeVec;
 extern s16 gEkrPairSideVaild[2];
+extern int gEkrBg2ScrollFlip;
+extern u16 * gpBg2ScrollOffsetStart;
+extern u16 * gpBg2ScrollOffset;
+extern u16 gpBg2ScrollOffsetTable1[];
+extern u16 gpBg2ScrollOffsetTable2[];
+extern int gEkrBg1ScrollFlip;
+extern u16 * gpBg1ScrollOffsetStart;
+extern u16 * gpBg1ScrollOffset;
+extern u16 gpBg1ScrollOffsetList1[];
+extern u16 gpBg1ScrollOffsetList2[];
 
 void NewEkrLvlupFan(void);
 // ??? EkrLvupFanMain
@@ -219,19 +273,19 @@ struct ProcEfxStatusUnit {
 
 extern struct ProcEfxStatusUnit * gpProcEfxStatusUnits[2];
 
-// ??? NewEfxStatusUnit
-// ??? EndEfxStatusUnits
-// ??? DisableEfxStatusUnits
-// ??? EnableEfxStatusUnits
-// ??? SetUnitEfxDebuff
-// ??? GetUnitEfxDebuff
-// ??? EfxStatusUnitFlashing
-// ??? EfxStatusUnit_Loop
+void NewEfxStatusUnit(struct Anim * anim);
+void EndEfxStatusUnits(struct Anim *anim);
+void DisableEfxStatusUnits(struct Anim * anim);
+void EnableEfxStatusUnits(struct Anim * anim);
+void SetUnitEfxDebuff(struct Anim * anim, int debuff);
+u32 GetUnitEfxDebuff(struct Anim * anim);
+void EfxStatusUnitFlashing(struct Anim * anim, int, int, int);
+void EfxStatusUnit_Loop(struct ProcEfxStatusUnit * proc);
 // ??? sub_80501E4
-// ??? NewEfxWeaponIcon
-// ??? EndProcEfxWeaponIcon
-// ??? DisableEfxWeaponIcon
-// ??? EnableEfxWeaponIcon
+void NewEfxWeaponIcon(s16 effective1, s16 effective2);
+void EndProcEfxWeaponIcon(void);
+void DisableEfxWeaponIcon(void);
+void EnableEfxWeaponIcon(void);
 // ??? sub_80502B0
 // ??? sub_8050318
 // ??? sub_8050348
@@ -249,9 +303,9 @@ extern struct ProcEfxStatusUnit * gpProcEfxStatusUnits[2];
 // ??? sub_8050654
 // ??? sub_80506E0
 // ??? sub_805073C
-// ??? SpellFx_Begin
-// ??? SpellFx_Finish
-// ??? SpellFx_ClearBG1Position
+void SpellFx_Begin(void);
+void SpellFx_Finish(void);
+void SpellFx_ClearBG1Position(void);
 void SpellFx_ClearBG1(void);
 void SpellFx_SetSomeColorEffect(void);
 void SpellFx_ClearColorEffects(void);
@@ -305,28 +359,28 @@ void BeginAnimsOnBattleAnimations(void);
 // ??? sub_8051A38
 // ??? sub_8051A50
 // ??? sub_8051E28
-// ??? NewEkrUnitKakudai
+void NewEkrUnitKakudai(int identifier);
 // ??? UnitKakudai1
 // ??? UnitKakudai2
 // ??? sub_805226C
-// ??? NewEkrWindowAppear
-// ??? CheckEkrWindowAppearUnexist
+void NewEkrWindowAppear(int identifier, int);
+bool CheckEkrWindowAppearUnexist(void);
 // ??? sub_80522DC
-// ??? NewEkrNamewinAppear
+void NewEkrNamewinAppear(int identifier, int duration, int delay);
 // ??? sub_80523AC
 // ??? sub_80523C0
 // ??? sub_80523E0
 // ??? sub_805245C
 // ??? sub_80524A4
 // ??? sub_80524B8
-// ??? PrepareBattleGraphicsMaybe
+bool PrepareBattleGraphicsMaybe(void);
 // ??? sub_8053040
 // ??? sub_805313C
 // ??? sub_8053218
 // ??? sub_80532F0
 // ??? sub_8053438
-// ??? ParseBattleHitToBanimCmd
-// ??? CheckBattleHasHit
+void ParseBattleHitToBanimCmd(void);
+bool CheckBattleHasHit(void);
 // ??? sub_8053A14
 u16 * FilterBattleAnimCharacterPalette(s16 index, u16 item);
 int GetAllegienceId(u32 arg);
@@ -334,13 +388,13 @@ void EkrPrepareBanimfx(struct Anim * anim, u16 index);
 s16 GetBattleAnimRoundType(int index);
 s16 GetBattleAnimRoundTypeFlags(int);
 s16 GetEfxHp(int index);
-// ??? GetEfxHpModMaybe
-// ??? IsItemDisplayedInBattle
-// ??? IsWeaponLegency
-// ??? EkrCheckAttackRound
-// ??? SetBattleScriptted
-// ??? SetBattleUnscriptted
-// ??? CheckBattleScriptted
+s16 GetEfxHpModMaybe(int index);
+u16 IsItemDisplayedInBattle(u16 item);
+u16 IsWeaponLegency(u16 item);
+bool EkrCheckAttackRound(u16 round);
+void SetBattleScriptted(void);
+void SetBattleUnscriptted(void);
+bool CheckBattleScriptted(void);
 void BattleAIS_ExecCommands(void);
 void AnimScrAdvance(struct Anim * anim);
 void NewEkrChienCHR(struct Anim * anim);
@@ -476,8 +530,8 @@ void StartSpellAnimation(struct Anim * anim);
 // ??? sub_8056738
 // ??? sub_805683C
 // ??? sub_805689C
-// ??? sub_80569B8
-// ??? sub_80569FC
+void StartSpellThing_MagicQuake(struct Anim *, int, int);
+// ??? Loop6C_efxMagicQUAKE
 // ??? sub_8056BC8
 // ??? sub_8056BEC
 // ??? sub_8056C40

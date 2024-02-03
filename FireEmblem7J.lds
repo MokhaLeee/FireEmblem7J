@@ -53,15 +53,15 @@ SECTIONS
 		. = 0x01FB00; gEkrBgPosition = .;
 		. = 0x01FB10; gpImgSheet = .;
 		. = 0x01FB20; gEkrBg2ScrollFlip = .;
-		. = 0x01FB24; gpEkrLvupBg2ScrollOffsetStart = .;
-		. = 0x01FB28; gpEkrLvupBg2ScrollOffset = .;
-		. = 0x01FB2C; gpEkrLvupBg2ScrollOffsetTable2 = .;
-		. = 0x01FC6C; gpEkrLvupBg2ScrollOffsetTable1 = .;
+		. = 0x01FB24; gpBg2ScrollOffsetStart = .;
+		. = 0x01FB28; gpBg2ScrollOffset = .;
+		. = 0x01FB2C; gpBg2ScrollOffsetTable2 = .;
+		. = 0x01FC6C; gpBg2ScrollOffsetTable1 = .;
 		. = 0x01FDAC; gEkrBg1ScrollFlip = .;
-		. = 0x01FDB0; gpEkrLvupBg1ScrollOffsetStart = .;
-		. = 0x01FDB4; gpEkrLvupBg1ScrollOffset = .;
-		. = 0x01FDB8; gpEkrLvupBg1ScrollOffsetList2 = .;
-		. = 0x01FEF8; gpEkrLvupBg1ScrollOffsetList1 = .;
+		. = 0x01FDB0; gpBg1ScrollOffsetStart = .;
+		. = 0x01FDB4; gpBg1ScrollOffset = .;
+		. = 0x01FDB8; gpBg1ScrollOffsetList2 = .;
+		. = 0x01FEF8; gpBg1ScrollOffsetList1 = .;
 		. = 0x020040; gEkrDragonStatusLeft = .;
 		. = 0x020050; gEkrDragonStatusRight = .;
 		. = 0x020060; gEkrBgPaletteBackup = .;
@@ -259,6 +259,8 @@ SECTIONS
 		. = ALIGN(4); data/const_data_081C9238.o(.rodata)
 		. = ALIGN(4); src/battle.o(.rodata)
 		. = ALIGN(4); data/const_data_081C94C8.o(.rodata)
+		. = ALIGN(4); data/const_data_ekrdragon.o(.rodata)
+		. = ALIGN(4); data/const_data_082EB740.o(.rodata)
 		. = ALIGN(4); src/save_core.o(.rodata)
 
 		. = ALIGN(4); data/data_0842D270.o(.data)

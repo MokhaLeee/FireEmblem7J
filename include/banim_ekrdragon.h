@@ -63,7 +63,7 @@ struct ProcEkrDragonIntroFx {
 struct ProcEkrDragonFx {
     PROC_HEADER;
 
-    /* 29 */ u8 finished;
+    /* 29 */ u8 done;
     /* 2A */ s16 unk2A;
     /* 2C */ s16 timer;
     /* 2E */ s16 unk2E;
@@ -77,13 +77,13 @@ struct ProcEkrDragonFx {
     STRUCT_PAD(0x3C, 0x44);
 
     /* 44 */ u32 frame;
-    /* 48 */ const s16 * frame_lut;
-    /* 4C */ const u16 ** tsa_set;
+    /* 48 */ const s16 * conf;
+    /* 4C */ u16 const * const * fx;
     /* 50 */ u32 unk50;
     /* 54 */ u32 round_cur;
     /* 58 */ u32 unk58;
-    /* 5C */ struct Anim *anim;
-    /* 60 */ struct Anim *anim2;
+    /* 5C */ struct Anim * anim;
+    /* 60 */ struct Anim * anim2;
 };
 
 struct ProcEkrDragon {
@@ -101,7 +101,7 @@ struct ProcEkrDragon {
 
     STRUCT_PAD(0x3E, 0x44);
 
-    /* 44 */ ProcPtr proc44;
+    /* 44 */ ProcPtr sproc_Faceflashing;
     /* 48 */ ProcPtr proc48;
     /* 4C */ ProcPtr proc4C;
     /* 50 */ struct ProcEkrDragonFx * mainfxproc;
@@ -110,7 +110,7 @@ struct ProcEkrDragon {
     /* 5C */ struct Anim * anim;
     /* 60 */ ProcPtr sproc1;
     /* 64 */ struct ProcEkrDragonIntroFx * procfx;
-    /* 68 */ ProcPtr sproc3;
+    /* 68 */ ProcPtr sproc_bodyflashing;
 };
 
 extern struct ProcCmd CONST_DATA ProcScr_EkrDragon[];
@@ -173,20 +173,54 @@ void EfxDragonDeadFallHead_CallBack(struct ProcEkrDragonFx * proc);
 void EfxDragonDeadFallHead_Loop1(struct ProcEkrDragonFx * proc);
 void EfxDragonDeadFallHead_Loop2(struct ProcEkrDragonFx * proc);
 
-ProcPtr NewEkrDragonStatusFlashing(struct Anim * anim);
-void EkrDragonStatusFlashing_Loop(struct ProcEkrDragonFx * proc);
+struct ProcEkrDragonStatusFlashing {
+    /* This maybe a same type of ProcEkrDragonFx */
+    PROC_HEADER;
 
-ProcPtr sub_8066200(struct Anim * anim);
-// ??? sub_8066224
-ProcPtr sub_80662F4(struct Anim * anim);
-// ??? nullsub_53
-// ??? nullsub_54
-ProcPtr sub_8066380(void);
-// ??? sub_8066398
-// ??? sub_80663EC
-ProcPtr sub_8066414(struct Anim * anim);
-// ??? sub_8066480
-// ??? sub_806648C
+    /* 29 */ u8 fxtype;
+
+    STRUCT_PAD(0x2A, 0x2C);
+
+    /* 2C */ s16 timer;
+
+    STRUCT_PAD(0x2E, 0x44);
+
+    /* 44 */ u32 frame;
+    /* 48 */ const s16 * conf;
+    /* 4C */ const u16 * pal;
+
+    STRUCT_PAD(0x50, 0x54);
+
+    /* 54 */ u32 round_cur;
+
+    STRUCT_PAD(0x58, 0x5C);
+
+    /* 5C */ struct Anim * anim;
+};
+
+extern CONST_DATA struct ProcCmd ProcScr_EkrDragonBodyFlashing[];
+ProcPtr NewEkrDragonBodyFlashing(struct Anim * anim);
+void EkrDragonBodyFlashing_Loop(struct ProcEkrDragonStatusFlashing * proc);
+
+extern CONST_DATA struct ProcCmd ProcScr_EkrDragonFaceFlashing[];
+ProcPtr NewEkrDragonFaceFlashing(struct Anim * anim);
+void EkrDragonFaceFlashing_Loop(struct ProcEkrDragonStatusFlashing * proc);
+
+extern CONST_DATA struct ProcCmd ProcScr_EkrDragonFireBG[];
+ProcPtr NewEkrDragonFireBG(struct Anim * anim);
+void EkrDragonFireBG_CallBackNop(struct ProcEkrDragonFx * proc);
+void EkrDragonFireBG_Blocking(struct ProcEkrDragonFx * proc);
+
+extern CONST_DATA struct ProcCmd ProcScr_EkrDragonBgScrollHandler[];
+ProcPtr NewEkrDragonBgScrollHandler(void);
+void EkrDragonBgScrollHandler_Loop(struct ProcEkrDragonFx * proc);
+
+extern CONST_DATA struct ProcCmd ProcScr_EkrDragonBgScrollExt[];
+void EkrDragonBgScroll_OnVBlank(void);
+ProcPtr NewEkrDragonBgScrollExt(struct Anim * anim);
+void EkrDragonBgScrollExt_CallBack(void);
+void EkrDragonBgScrollExt_Loop(void);
+
 ProcPtr EkrDragonFxHandler_OnIntro(int, int, int, int);
 // ??? sub_8066500
 // ??? sub_8066590
@@ -216,23 +250,21 @@ void sub_8066DA0(ProcPtr parent, int, int);
 // ??? sub_80670F8
 
 extern u16 Pal_EkrDragon[0x10];
-extern u16 Pal_EkrDragon_082E6C60[0x10];
-extern u16 Pal_EkrDragon_082EB510[0x10];
+extern const u16 Pals_EkrDragonBodyFlashing[];
+extern u16 Pal_EkrDragonFireBG[0x10];
 
-// ??? ProcScr_EkrDragonStatusFlashing
-// ??? gUnk_08C487B4
-// ??? gUnk_08C487CC
-// ??? gUnk_08C487EC
-// ??? gUnk_08C48804
-// ??? gUnk_08C48824
-// ??? gUnk_08C4883C
-// ??? gUnk_08C4885C
-// ??? gUnk_08C48874
-// ??? gUnk_08C4887C
-// ??? ProcScr_EkrDragon_08C4889C
-// ??? ProcScr_EkrDragon_08C488C4
-// ??? ProcScr_EkrDragon_08C488E4
-// ??? ProcScr_EkrDragon_08C488FC
+extern CONST_DATA struct ProcCmd ProcScr_EkrDragon_08C48824[];
+extern CONST_DATA struct ProcCmd ProcScr_EkrDragon_08C4883C[];
+extern CONST_DATA struct ProcCmd ProcScr_EkrDragon_08C4885C[];
+extern CONST_DATA const u8 * Tsas_EkrDragon_08C48874[];
+extern CONST_DATA struct ProcCmd ProcScr_EkrDragon_08C4887C[];
+extern CONST_DATA struct ProcCmd ProcScr_EkrDragon_08C4889C[];
+extern CONST_DATA struct ProcCmd ProcScr_EkrDragon_08C488C4[];
+extern CONST_DATA struct ProcCmd ProcScr_EkrDragon_08C488E4[];
+extern CONST_DATA struct ProcCmd ProcScr_EkrDragon_08C488FC[];
+extern CONST_DATA struct ProcCmd ProcScr_EkrDragonBodyFlashing[];
+extern CONST_DATA struct ProcCmd ProcScr_EkrDragonBodyFlashing[];
+extern CONST_DATA struct ProcCmd ProcScr_EkrDragonBodyFlashing[];
 extern AnimScr AnimScr_EfxDragonDeadFallBody[];
 extern AnimScr AnimScr_08C49F4C[];
 extern AnimScr AnimScr_EkrDragonHead[];

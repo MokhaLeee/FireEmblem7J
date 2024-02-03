@@ -233,9 +233,9 @@ void BanimSetFrontPaletteForDragon(struct Anim * anim)
     if (CheckInEkrDragon() != false)
     {
         if (GetAnimPosition(anim) == EKR_POS_L)
-            CpuFastCopy(Pal_EkrDragon_082E6C60, PAL_BG(0x6), 0x20);
+            CpuFastCopy(Pals_EkrDragonBodyFlashing, PAL_BG(0x6), 0x20);
         else
-            CpuFastCopy(Pal_EkrDragon_082E6C60, PAL_BG(0x7), 0x20);
+            CpuFastCopy(Pals_EkrDragonBodyFlashing, PAL_BG(0x7), 0x20);
 
         EnablePalSync();
     }
@@ -243,7 +243,7 @@ void BanimSetFrontPaletteForDragon(struct Anim * anim)
 
 void EkrDragonUpdatePal_08065510(int ref)
 {
-    CpuFastCopy(Pal_EkrDragon_082EB510, PAL_BG(0x4), 0x20);
+    CpuFastCopy(Pal_EkrDragonFireBG, PAL_BG(0x4), 0x20);
     EfxPalBlackInOut(gPal, 4, 1, ref);
 }
 
@@ -276,7 +276,7 @@ void EkrDragon_StartDragonTailIntro(struct ProcEkrDragon * proc)
 
     LZ77UnCompVram(Img_EkrDragon_082E445C, (void *)0x06008000);
     LZ77UnCompWram(Tsa_EkrDragon_DragonTail, gEkrTsaBuffer);
-    CpuFastCopy(Pal_EkrDragon_082E6C60, PAL_BG(6), 0x20);
+    CpuFastCopy(Pals_EkrDragonBodyFlashing, PAL_BG(6), 0x20);
 
     EfxTmFill(0x001F001F);
     TmFill(gBg3Tm, 0x1F);
@@ -378,11 +378,11 @@ void EkrDragon_080657D4(struct ProcEkrDragon * proc)
 {
     if (gEkrDistanceType == EKR_DISTANCE_FARFAR)
     {
-        proc->sproc3 = NewEkrDragonStatusFlashing(proc->anim);
-        proc->proc44 = sub_8066200(proc->anim);
-        proc->proc4C = sub_8066414(proc->anim);
-        proc->proc58 = sub_8066380();
-        proc->proc48 = sub_80662F4(proc->anim);
+        proc->sproc_bodyflashing = NewEkrDragonBodyFlashing(proc->anim);
+        proc->sproc_Faceflashing = NewEkrDragonFaceFlashing(proc->anim);
+        proc->proc4C = NewEkrDragonBgScrollExt(proc->anim);
+        proc->proc58 = NewEkrDragonBgScrollHandler();
+        proc->proc48 = NewEkrDragonFireBG(proc->anim);
         Proc_Break(proc);
         return;
     }
@@ -406,11 +406,11 @@ void EkrDragon_080657D4(struct ProcEkrDragon * proc)
         EkrDragonTmCpyWithDistance();
         EkrDragonTmCpyExt(gEkrBgPosition, proc->y);
 
-        proc->sproc3 = NewEkrDragonStatusFlashing(proc->anim);
-        proc->proc44 = sub_8066200(proc->anim);
-        proc->proc4C = sub_8066414(proc->anim);
-        proc->proc58 = sub_8066380();
-        proc->proc48 = sub_80662F4(proc->anim);
+        proc->sproc_bodyflashing = NewEkrDragonBodyFlashing(proc->anim);
+        proc->sproc_Faceflashing = NewEkrDragonFaceFlashing(proc->anim);
+        proc->proc4C = NewEkrDragonBgScrollExt(proc->anim);
+        proc->proc58 = NewEkrDragonBgScrollHandler();
+        proc->proc48 = NewEkrDragonFireBG(proc->anim);
 
         PlaySFX(0x2F0, 0x100, 0x78, 0);
         Proc_Break(proc);
@@ -531,8 +531,8 @@ void EkrDragon_InBattleIDLE(struct ProcEkrDragon * proc)
     if (attr & EKRDRGON_ATTR_BANIMFINISH)
     {
         proc->timer = 0;
-        Proc_End(proc->sproc3);
-        Proc_End(proc->proc44);
+        Proc_End(proc->sproc_bodyflashing);
+        Proc_End(proc->sproc_Faceflashing);
         Proc_End(proc->mainfxproc);
 
         if (!CheckEfxDragonDeadFallHead(proc->anim))
@@ -546,7 +546,7 @@ void EkrDragon_InBattleIDLE(struct ProcEkrDragon * proc)
 
 void EkrDragon_WaitForFadeOut(struct ProcEkrDragon * proc)
 {
-    if (proc->mainfxproc->finished == true)
+    if (proc->mainfxproc->done == true)
     {
         Proc_End(proc->mainfxproc);
         Proc_Break(proc);

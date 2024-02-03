@@ -6299,15 +6299,15 @@ sub_806A2EC: @ 0x0806A2EC
 	push {r4, r5, r6, lr}
 	ldr r0, _0806A318 @ =gEkrBg1ScrollFlip
 	ldr r0, [r0]
-	ldr r2, _0806A31C @ =gpEkrLvupBg2ScrollOffsetTable2
+	ldr r2, _0806A31C @ =gpBg2ScrollOffsetTable2
 	cmp r0, #0
 	bne _0806A2FA
-	ldr r2, _0806A320 @ =gpEkrLvupBg2ScrollOffsetTable1
+	ldr r2, _0806A320 @ =gpBg2ScrollOffsetTable1
 _0806A2FA:
-	ldr r1, _0806A324 @ =gpEkrLvupBg1ScrollOffsetList2
+	ldr r1, _0806A324 @ =gpBg1ScrollOffsetList2
 	cmp r0, #0
 	bne _0806A302
-	ldr r1, _0806A328 @ =gpEkrLvupBg1ScrollOffsetList1
+	ldr r1, _0806A328 @ =gpBg1ScrollOffsetList1
 _0806A302:
 	movs r3, #0
 	movs r6, #0
@@ -6322,10 +6322,10 @@ _0806A30A:
 	b _0806A350
 	.align 2, 0
 _0806A318: .4byte gEkrBg1ScrollFlip
-_0806A31C: .4byte gpEkrLvupBg2ScrollOffsetTable2
-_0806A320: .4byte gpEkrLvupBg2ScrollOffsetTable1
-_0806A324: .4byte gpEkrLvupBg1ScrollOffsetList2
-_0806A328: .4byte gpEkrLvupBg1ScrollOffsetList1
+_0806A31C: .4byte gpBg2ScrollOffsetTable2
+_0806A320: .4byte gpBg2ScrollOffsetTable1
+_0806A324: .4byte gpBg1ScrollOffsetList2
+_0806A328: .4byte gpBg1ScrollOffsetList1
 _0806A32C: .4byte 0x0202012C
 _0806A330: .4byte 0x0202012E
 _0806A334:
@@ -6393,15 +6393,15 @@ sub_806A38C: @ 0x0806A38C
 	push {r4, r5, r6, lr}
 	ldr r0, _0806A3D8 @ =gEkrBg1ScrollFlip
 	ldr r0, [r0]
-	ldr r3, _0806A3DC @ =gpEkrLvupBg2ScrollOffsetTable2
+	ldr r3, _0806A3DC @ =gpBg2ScrollOffsetTable2
 	cmp r0, #0
 	bne _0806A39A
-	ldr r3, _0806A3E0 @ =gpEkrLvupBg2ScrollOffsetTable1
+	ldr r3, _0806A3E0 @ =gpBg2ScrollOffsetTable1
 _0806A39A:
-	ldr r2, _0806A3E4 @ =gpEkrLvupBg1ScrollOffsetList2
+	ldr r2, _0806A3E4 @ =gpBg1ScrollOffsetList2
 	cmp r0, #0
 	bne _0806A3A2
-	ldr r2, _0806A3E8 @ =gpEkrLvupBg1ScrollOffsetList1
+	ldr r2, _0806A3E8 @ =gpBg1ScrollOffsetList1
 _0806A3A2:
 	movs r4, #0
 	movs r5, #0
@@ -6435,10 +6435,10 @@ _0806A3D0:
 	b _0806A402
 	.align 2, 0
 _0806A3D8: .4byte gEkrBg1ScrollFlip
-_0806A3DC: .4byte gpEkrLvupBg2ScrollOffsetTable2
-_0806A3E0: .4byte gpEkrLvupBg2ScrollOffsetTable1
-_0806A3E4: .4byte gpEkrLvupBg1ScrollOffsetList2
-_0806A3E8: .4byte gpEkrLvupBg1ScrollOffsetList1
+_0806A3DC: .4byte gpBg2ScrollOffsetTable2
+_0806A3E0: .4byte gpBg2ScrollOffsetTable1
+_0806A3E4: .4byte gpBg1ScrollOffsetList2
+_0806A3E8: .4byte gpBg1ScrollOffsetList1
 _0806A3EC: .4byte gUnk_08C4A9F8
 _0806A3F0: .4byte 0x0202012C
 _0806A3F4: .4byte 0x0000FFE0
@@ -6472,20 +6472,20 @@ sub_806A414: @ 0x0806A414
 	ldr r0, [r1]
 	adds r0, #1
 	str r0, [r1]
-	ldr r2, _0806A4B4 @ =gpEkrLvupBg2ScrollOffsetTable2
+	ldr r2, _0806A4B4 @ =gpBg2ScrollOffsetTable2
 	movs r1, #0
 	adds r6, r2, #0
-	ldr r4, _0806A4B8 @ =gpEkrLvupBg2ScrollOffsetTable1
-	ldr r0, _0806A4BC @ =gpEkrLvupBg1ScrollOffsetList2
-	ldr r5, _0806A4C0 @ =gpEkrLvupBg1ScrollOffsetList1
+	ldr r4, _0806A4B8 @ =gpBg2ScrollOffsetTable1
+	ldr r0, _0806A4BC @ =gpBg1ScrollOffsetList2
+	ldr r5, _0806A4C0 @ =gpBg1ScrollOffsetList1
 	ldr r7, _0806A4C4 @ =gEkrBg2ScrollFlip
 	ldr r3, _0806A4C8 @ =gEkrBg1ScrollFlip
 	mov ip, r3
-	ldr r3, _0806A4CC @ =gpEkrLvupBg2ScrollOffsetStart
+	ldr r3, _0806A4CC @ =gpBg2ScrollOffsetStart
 	mov r8, r3
-	ldr r3, _0806A4D0 @ =gpEkrLvupBg1ScrollOffsetStart
+	ldr r3, _0806A4D0 @ =gpBg1ScrollOffsetStart
 	mov sb, r3
-	ldr r3, _0806A4D4 @ =gpEkrLvupBg2ScrollOffset
+	ldr r3, _0806A4D4 @ =gpBg2ScrollOffset
 	mov sl, r3
 	movs r3, #0
 _0806A446:
@@ -6531,7 +6531,7 @@ _0806A476:
 	str r0, [r1]
 	mov r3, sl
 	str r6, [r3]
-	ldr r1, _0806A4D8 @ =gpEkrLvupBg1ScrollOffset
+	ldr r1, _0806A4D8 @ =gpBg1ScrollOffset
 	str r0, [r1]
 	ldr r0, _0806A4DC @ =gUnk_08C4AA38
 	movs r1, #0
@@ -6546,16 +6546,16 @@ _0806A476:
 	bx r1
 	.align 2, 0
 _0806A4B0: .4byte gEfxBgSemaphore
-_0806A4B4: .4byte gpEkrLvupBg2ScrollOffsetTable2
-_0806A4B8: .4byte gpEkrLvupBg2ScrollOffsetTable1
-_0806A4BC: .4byte gpEkrLvupBg1ScrollOffsetList2
-_0806A4C0: .4byte gpEkrLvupBg1ScrollOffsetList1
+_0806A4B4: .4byte gpBg2ScrollOffsetTable2
+_0806A4B8: .4byte gpBg2ScrollOffsetTable1
+_0806A4BC: .4byte gpBg1ScrollOffsetList2
+_0806A4C0: .4byte gpBg1ScrollOffsetList1
 _0806A4C4: .4byte gEkrBg2ScrollFlip
 _0806A4C8: .4byte gEkrBg1ScrollFlip
-_0806A4CC: .4byte gpEkrLvupBg2ScrollOffsetStart
-_0806A4D0: .4byte gpEkrLvupBg1ScrollOffsetStart
-_0806A4D4: .4byte gpEkrLvupBg2ScrollOffset
-_0806A4D8: .4byte gpEkrLvupBg1ScrollOffset
+_0806A4CC: .4byte gpBg2ScrollOffsetStart
+_0806A4D0: .4byte gpBg1ScrollOffsetStart
+_0806A4D4: .4byte gpBg2ScrollOffset
+_0806A4D8: .4byte gpBg1ScrollOffset
 _0806A4DC: .4byte gUnk_08C4AA38
 
 	thumb_func_start sub_806A4E0
@@ -6580,8 +6580,8 @@ sub_806A4F8: @ 0x0806A4F8
 	ldrb r0, [r0]
 	lsls r0, r0, #0x18
 	asrs r0, r0, #0x18
-	ldr r3, _0806A51C @ =gpEkrLvupBg2ScrollOffsetStart
-	ldr r2, _0806A520 @ =gpEkrLvupBg1ScrollOffsetStart
+	ldr r3, _0806A51C @ =gpBg2ScrollOffsetStart
+	ldr r2, _0806A520 @ =gpBg1ScrollOffsetStart
 	cmp r0, #0
 	beq _0806A564
 	ldr r1, _0806A524 @ =gEkrBg2ScrollFlip
@@ -6590,18 +6590,18 @@ sub_806A4F8: @ 0x0806A4F8
 	bne _0806A52C
 	movs r0, #0
 	str r0, [r1]
-	ldr r0, _0806A528 @ =gpEkrLvupBg2ScrollOffsetTable2
+	ldr r0, _0806A528 @ =gpBg2ScrollOffsetTable2
 	b _0806A532
 	.align 2, 0
 _0806A518: .4byte gBmSt
-_0806A51C: .4byte gpEkrLvupBg2ScrollOffsetStart
-_0806A520: .4byte gpEkrLvupBg1ScrollOffsetStart
+_0806A51C: .4byte gpBg2ScrollOffsetStart
+_0806A520: .4byte gpBg1ScrollOffsetStart
 _0806A524: .4byte gEkrBg2ScrollFlip
-_0806A528: .4byte gpEkrLvupBg2ScrollOffsetTable2
+_0806A528: .4byte gpBg2ScrollOffsetTable2
 _0806A52C:
 	movs r0, #1
 	str r0, [r1]
-	ldr r0, _0806A548 @ =gpEkrLvupBg2ScrollOffsetTable1
+	ldr r0, _0806A548 @ =gpBg2ScrollOffsetTable1
 _0806A532:
 	str r0, [r3]
 	ldr r1, _0806A54C @ =gEkrBg1ScrollFlip
@@ -6610,35 +6610,35 @@ _0806A532:
 	bne _0806A558
 	movs r0, #0
 	str r0, [r1]
-	ldr r1, _0806A550 @ =gpEkrLvupBg1ScrollOffsetStart
-	ldr r0, _0806A554 @ =gpEkrLvupBg1ScrollOffsetList2
+	ldr r1, _0806A550 @ =gpBg1ScrollOffsetStart
+	ldr r0, _0806A554 @ =gpBg1ScrollOffsetList2
 	b _0806A560
 	.align 2, 0
-_0806A548: .4byte gpEkrLvupBg2ScrollOffsetTable1
+_0806A548: .4byte gpBg2ScrollOffsetTable1
 _0806A54C: .4byte gEkrBg1ScrollFlip
-_0806A550: .4byte gpEkrLvupBg1ScrollOffsetStart
-_0806A554: .4byte gpEkrLvupBg1ScrollOffsetList2
+_0806A550: .4byte gpBg1ScrollOffsetStart
+_0806A554: .4byte gpBg1ScrollOffsetList2
 _0806A558:
 	movs r0, #1
 	str r0, [r1]
-	ldr r1, _0806A574 @ =gpEkrLvupBg1ScrollOffsetStart
-	ldr r0, _0806A578 @ =gpEkrLvupBg1ScrollOffsetList1
+	ldr r1, _0806A574 @ =gpBg1ScrollOffsetStart
+	ldr r0, _0806A578 @ =gpBg1ScrollOffsetList1
 _0806A560:
 	str r0, [r1]
 	adds r2, r1, #0
 _0806A564:
-	ldr r1, _0806A57C @ =gpEkrLvupBg2ScrollOffset
+	ldr r1, _0806A57C @ =gpBg2ScrollOffset
 	ldr r0, [r3]
 	str r0, [r1]
-	ldr r1, _0806A580 @ =gpEkrLvupBg1ScrollOffset
+	ldr r1, _0806A580 @ =gpBg1ScrollOffset
 	ldr r0, [r2]
 	str r0, [r1]
 	bx lr
 	.align 2, 0
-_0806A574: .4byte gpEkrLvupBg1ScrollOffsetStart
-_0806A578: .4byte gpEkrLvupBg1ScrollOffsetList1
-_0806A57C: .4byte gpEkrLvupBg2ScrollOffset
-_0806A580: .4byte gpEkrLvupBg1ScrollOffset
+_0806A574: .4byte gpBg1ScrollOffsetStart
+_0806A578: .4byte gpBg1ScrollOffsetList1
+_0806A57C: .4byte gpBg2ScrollOffset
+_0806A580: .4byte gpBg1ScrollOffset
 
 	thumb_func_start sub_806A584
 sub_806A584: @ 0x0806A584
@@ -6649,14 +6649,14 @@ sub_806A584: @ 0x0806A584
 	cmp r0, #0
 	bne _0806A5AC
 	ldr r3, _0806A5B4 @ =0x04000018
-	ldr r2, _0806A5B8 @ =gpEkrLvupBg2ScrollOffset
+	ldr r2, _0806A5B8 @ =gpBg2ScrollOffset
 	ldr r0, [r2]
 	ldrh r1, [r0]
 	strh r1, [r3]
 	adds r0, #2
 	str r0, [r2]
 	subs r3, #4
-	ldr r2, _0806A5BC @ =gpEkrLvupBg1ScrollOffset
+	ldr r2, _0806A5BC @ =gpBg1ScrollOffset
 	ldr r0, [r2]
 	ldrh r1, [r0]
 	strh r1, [r3]
@@ -6667,8 +6667,8 @@ _0806A5AC:
 	.align 2, 0
 _0806A5B0: .4byte 0x04000004
 _0806A5B4: .4byte 0x04000018
-_0806A5B8: .4byte gpEkrLvupBg2ScrollOffset
-_0806A5BC: .4byte gpEkrLvupBg1ScrollOffset
+_0806A5B8: .4byte gpBg2ScrollOffset
+_0806A5BC: .4byte gpBg1ScrollOffset
 
 	thumb_func_start sub_806A5C0
 sub_806A5C0: @ 0x0806A5C0
@@ -6681,7 +6681,7 @@ sub_806A5C0: @ 0x0806A5C0
 	bne _0806A5F4
 	ldr r3, _0806A600 @ =0x0400001A
 	ldr r4, _0806A604 @ =gDispIo
-	ldr r2, _0806A608 @ =gpEkrLvupBg2ScrollOffset
+	ldr r2, _0806A608 @ =gpBg2ScrollOffset
 	ldr r0, [r2]
 	ldrh r5, [r4, #0x26]
 	ldrh r6, [r0]
@@ -6690,7 +6690,7 @@ sub_806A5C0: @ 0x0806A5C0
 	adds r0, #2
 	str r0, [r2]
 	subs r3, #4
-	ldr r2, _0806A60C @ =gpEkrLvupBg1ScrollOffset
+	ldr r2, _0806A60C @ =gpBg1ScrollOffset
 	ldr r0, [r2]
 	ldrh r4, [r4, #0x22]
 	ldrh r5, [r0]
@@ -6706,8 +6706,8 @@ _0806A5F4:
 _0806A5FC: .4byte 0x04000004
 _0806A600: .4byte 0x0400001A
 _0806A604: .4byte gDispIo
-_0806A608: .4byte gpEkrLvupBg2ScrollOffset
-_0806A60C: .4byte gpEkrLvupBg1ScrollOffset
+_0806A608: .4byte gpBg2ScrollOffset
+_0806A60C: .4byte gpBg1ScrollOffset
 
 	thumb_func_start sub_806A610
 sub_806A610: @ 0x0806A610

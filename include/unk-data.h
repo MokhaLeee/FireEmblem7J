@@ -936,29 +936,29 @@ extern struct unk_type_0203A50C gUnk_0203A50C;
 // ??? gUnk_082E2700
 // ??? gUnk_082E3E64
 // ??? gUnk_082E4074
-// ??? gUnk_082E420C
-// ??? gUnk_082E421E
-// ??? gUnk_082E4318
-// ??? gUnk_082E431E
-// ??? gUnk_082E4418
-// ??? gUnk_082E441E
-// ??? gUnk_082E4430
-// ??? gUnk_082E4442
-extern u8 Img_EkrDragon_082E445C[];
-extern u8 Tsa_EkrDragon_DragonTail[];
-extern u8 Tsa_EkrDragon_MainBg[];
-// ??? gUnk_082E7418
-extern u8 Img_EkrDragonTunkFace[];
-extern u8 Img_EkrDragonSpark[];
-extern u8 Img_EfxDragonDeadFallHead[];
-extern u16 Pal_EkrDragonHead[];
-// ??? gUnk_082E9CF8
+extern const u16 FrameLut_EkrDragonBodyFlashingNormalAtk[];
+extern const u16 FrameLut_EkrDragonBodyFlashingCriticalAtk[];
+extern const u16 FrameLut_EkrDragonFaceFlashingNormalAtk[];
+extern const u16 FrameLut_EkrDragonFaceFlashingCriticalAtk[];
+extern const u16 FrameLut_EkrDragon_082E4418[];
+extern const u16 FrameLut_EkrDragon_082E441E[];
+extern const u16 FrameLut_EkrDragon_082E4430[];
+extern const u16 FrameLut_EkrDragon_082E4442[];
+extern const u8 Img_EkrDragon_082E445C[];
+extern const u8 Tsa_EkrDragon_DragonTail[];
+extern const u8 Tsa_EkrDragon_MainBg[];
+extern const u8 Tsa_EkrDragon_082E7170[];
+extern const u8 Tsa_EkrDragon_082E7418[];
+extern const u8 Img_EkrDragonTunkFace[];
+extern const u8 Img_EkrDragonSpark[];
+extern const u8 Img_EfxDragonDeadFallHead[];
+extern const u16 Pal_EkrDragonHead[];
+extern const u16 Pals_EkrDragonFaceFlashing[];
 // ??? gUnk_082E9DD8
 // ??? gUnk_082EA7C8
 // ??? gUnk_082EA7E8
-// ??? gUnk_082EA9A4
-
-// ??? gUnk_082EB530
+extern const u8 Img_EkrDragonFireBG[];
+extern const u8 Tsa_EkrDragonFireBG[];
 // ??? gUnk_082EB740
 // ??? gUnk_082EB74E
 // ??? gUnk_082EB760

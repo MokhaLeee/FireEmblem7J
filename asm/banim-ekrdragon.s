@@ -1,489 +1,6 @@
 	.include "macro.inc"
 	.syntax unified
 
-	thumb_func_start EkrDragonStatusFlashing_Loop
-EkrDragonStatusFlashing_Loop: @ 0x08066118
-	push {r4, r5, lr}
-	adds r4, r0, #0
-	ldr r0, [r4, #0x5c]
-	bl GetEkrDragonStatusAttr
-	movs r1, #2
-	ands r1, r0
-	cmp r1, #0
-	beq _08066134
-	ldr r0, [r4, #0x5c]
-	bl GetUnitEfxDebuff
-	cmp r0, #0
-	bne _080661FA
-_08066134:
-	adds r0, r4, #0
-	adds r0, #0x29
-	ldrb r1, [r0]
-	adds r5, r0, #0
-	cmp r1, #0
-	beq _08066146
-	cmp r1, #1
-	beq _08066160
-	b _0806617C
-_08066146:
-	strh r1, [r4, #0x2c]
-	str r1, [r4, #0x44]
-	ldr r0, _08066158 @ =gUnk_082E420C
-	str r0, [r4, #0x48]
-	ldr r0, _0806615C @ =Pal_EkrDragon_082E6C60
-	str r0, [r4, #0x4c]
-	movs r0, #0x64
-	strb r0, [r5]
-	b _0806617C
-	.align 2, 0
-_08066158: .4byte gUnk_082E420C
-_0806615C: .4byte Pal_EkrDragon_082E6C60
-_08066160:
-	movs r0, #0
-	strh r0, [r4, #0x2c]
-	str r0, [r4, #0x44]
-	ldr r0, _080661A8 @ =gUnk_082E421E
-	str r0, [r4, #0x48]
-	ldr r0, _080661AC @ =Pal_EkrDragon_082E6C60
-	str r0, [r4, #0x4c]
-	movs r0, #0x64
-	strb r0, [r5]
-	ldr r0, [r4, #0x5c]
-	movs r1, #0x3c
-	movs r2, #0xa
-	bl sub_80569B8
-_0806617C:
-	adds r0, r4, #0
-	adds r0, #0x2c
-	adds r1, r4, #0
-	adds r1, #0x44
-	ldr r2, [r4, #0x48]
-	bl EfxAdvanceFrameLut
-	lsls r0, r0, #0x10
-	asrs r1, r0, #0x10
-	cmp r1, #0
-	blt _080661B4
-	ldr r0, [r4, #0x4c]
-	lsls r1, r1, #5
-	adds r0, r0, r1
-	ldr r1, _080661B0 @ =gPal + 0xc0
-	movs r2, #8
-	bl CpuFastSet
-	bl EnablePalSync
-	b _080661D8
-	.align 2, 0
-_080661A8: .4byte gUnk_082E421E
-_080661AC: .4byte Pal_EkrDragon_082E6C60
-_080661B0: .4byte gPal + 0xc0
-_080661B4:
-	movs r0, #6
-	rsbs r0, r0, #0
-	cmp r1, r0
-	bne _080661C2
-	movs r0, #0
-	strb r0, [r5]
-	b _080661D8
-_080661C2:
-	movs r0, #5
-	rsbs r0, r0, #0
-	cmp r1, r0
-	bne _080661D8
-	ldr r0, [r4, #0x5c]
-	movs r1, #5
-	bl NewEfxFlashBgWhite
-	ldr r0, [r4, #0x44]
-	adds r0, #1
-	str r0, [r4, #0x44]
-_080661D8:
-	ldr r0, [r4, #0x5c]
-	ldrb r1, [r0, #0x12]
-	ldr r0, [r4, #0x54]
-	cmp r1, r0
-	beq _080661F4
-	adds r0, r1, #0
-	cmp r0, #1
-	beq _080661EC
-	cmp r0, #3
-	bne _080661F0
-_080661EC:
-	movs r0, #1
-	b _080661F2
-_080661F0:
-	movs r0, #0
-_080661F2:
-	strb r0, [r5]
-_080661F4:
-	ldr r0, [r4, #0x5c]
-	ldrb r0, [r0, #0x12]
-	str r0, [r4, #0x54]
-_080661FA:
-	pop {r4, r5}
-	pop {r0}
-	bx r0
-
-	thumb_func_start sub_8066200
-sub_8066200: @ 0x08066200
-	push {r4, lr}
-	adds r4, r0, #0
-	ldr r0, _08066220 @ =gUnk_08C487B4
-	movs r1, #4
-	bl Proc_Start
-	adds r2, r0, #0
-	adds r2, #0x29
-	movs r1, #0
-	strb r1, [r2]
-	str r4, [r0, #0x5c]
-	ldrb r1, [r4, #0x12]
-	str r1, [r0, #0x54]
-	pop {r4}
-	pop {r1}
-	bx r1
-	.align 2, 0
-_08066220: .4byte gUnk_08C487B4
-
-	thumb_func_start sub_8066224
-sub_8066224: @ 0x08066224
-	push {r4, r5, lr}
-	adds r4, r0, #0
-	ldr r0, [r4, #0x5c]
-	bl GetEkrDragonStatusAttr
-	movs r1, #2
-	ands r1, r0
-	cmp r1, #0
-	beq _08066240
-	ldr r0, [r4, #0x5c]
-	bl GetUnitEfxDebuff
-	cmp r0, #0
-	bne _080662EE
-_08066240:
-	adds r0, r4, #0
-	adds r0, #0x29
-	ldrb r1, [r0]
-	adds r5, r0, #0
-	cmp r1, #0
-	beq _08066252
-	cmp r1, #1
-	beq _08066260
-	b _08066272
-_08066252:
-	strh r1, [r4, #0x2c]
-	str r1, [r4, #0x44]
-	ldr r0, _0806625C @ =gUnk_082E4318
-	b _08066268
-	.align 2, 0
-_0806625C: .4byte gUnk_082E4318
-_08066260:
-	movs r0, #0
-	strh r0, [r4, #0x2c]
-	str r0, [r4, #0x44]
-	ldr r0, _0806629C @ =gUnk_082E431E
-_08066268:
-	str r0, [r4, #0x48]
-	ldr r0, _080662A0 @ =gUnk_082E9CF8
-	str r0, [r4, #0x4c]
-	movs r0, #0x64
-	strb r0, [r5]
-_08066272:
-	adds r0, r4, #0
-	adds r0, #0x2c
-	adds r1, r4, #0
-	adds r1, #0x44
-	ldr r2, [r4, #0x48]
-	bl EfxAdvanceFrameLut
-	lsls r0, r0, #0x10
-	asrs r1, r0, #0x10
-	cmp r1, #0
-	blt _080662A8
-	ldr r0, [r4, #0x4c]
-	lsls r1, r1, #5
-	adds r0, r0, r1
-	ldr r1, _080662A4 @ =gPal + 0x2e0
-	movs r2, #8
-	bl CpuFastSet
-	bl EnablePalSync
-	b _080662CC
-	.align 2, 0
-_0806629C: .4byte gUnk_082E431E
-_080662A0: .4byte gUnk_082E9CF8
-_080662A4: .4byte gPal + 0x2e0
-_080662A8:
-	movs r0, #6
-	rsbs r0, r0, #0
-	cmp r1, r0
-	bne _080662B6
-	movs r0, #0
-	strb r0, [r5]
-	b _080662CC
-_080662B6:
-	movs r0, #5
-	rsbs r0, r0, #0
-	cmp r1, r0
-	bne _080662CC
-	ldr r0, [r4, #0x5c]
-	movs r1, #5
-	bl NewEfxFlashBgWhite
-	ldr r0, [r4, #0x44]
-	adds r0, #1
-	str r0, [r4, #0x44]
-_080662CC:
-	ldr r0, [r4, #0x5c]
-	ldrb r1, [r0, #0x12]
-	ldr r0, [r4, #0x54]
-	cmp r1, r0
-	beq _080662E8
-	adds r0, r1, #0
-	cmp r0, #1
-	beq _080662E0
-	cmp r0, #3
-	bne _080662E4
-_080662E0:
-	movs r0, #1
-	b _080662E6
-_080662E4:
-	movs r0, #0
-_080662E6:
-	strb r0, [r5]
-_080662E8:
-	ldr r0, [r4, #0x5c]
-	ldrb r0, [r0, #0x12]
-	str r0, [r4, #0x54]
-_080662EE:
-	pop {r4, r5}
-	pop {r0}
-	bx r0
-
-	thumb_func_start sub_80662F4
-sub_80662F4: @ 0x080662F4
-	push {r4, r5, r6, lr}
-	sub sp, #8
-	adds r4, r0, #0
-	ldr r0, _08066358 @ =gUnk_08C487CC
-	movs r1, #3
-	bl Proc_Start
-	adds r5, r0, #0
-	str r4, [r5, #0x5c]
-	movs r0, #0
-	strh r0, [r5, #0x2c]
-	ldr r0, _0806635C @ =gUnk_082EA9A4
-	ldr r1, _08066360 @ =0x06005000
-	bl LZ77UnCompVram
-	ldr r0, _08066364 @ =gUnk_082EB530
-	ldr r6, _08066368 @ =gEkrTsaBuffer
-	adds r1, r6, #0
-	bl LZ77UnCompWram
-	ldr r0, _0806636C @ =Pal_EkrDragon_082EB510
-	ldr r1, _08066370 @ =gPal + 0x80
-	movs r2, #8
-	bl CpuFastSet
-	ldr r4, _08066374 @ =gBg2Tm
-	adds r0, r4, #0
-	movs r1, #0x1f
-	bl TmFill
-	movs r0, #4
-	str r0, [sp]
-	movs r0, #0xa0
-	lsls r0, r0, #2
-	str r0, [sp, #4]
-	adds r0, r6, #0
-	adds r1, r4, #0
-	movs r2, #0x20
-	movs r3, #0x20
-	bl EfxTmCpyBG
-	movs r0, #4
-	bl EnableBgSync
-	adds r0, r5, #0
-	add sp, #8
-	pop {r4, r5, r6}
-	pop {r1}
-	bx r1
-	.align 2, 0
-_08066358: .4byte gUnk_08C487CC
-_0806635C: .4byte gUnk_082EA9A4
-_08066360: .4byte 0x06005000
-_08066364: .4byte gUnk_082EB530
-_08066368: .4byte gEkrTsaBuffer
-_0806636C: .4byte Pal_EkrDragon_082EB510
-_08066370: .4byte gPal + 0x80
-_08066374: .4byte gBg2Tm
-
-	thumb_func_start nullsub_53
-nullsub_53: @ 0x08066378
-	bx lr
-	.align 2, 0
-
-	thumb_func_start nullsub_54
-nullsub_54: @ 0x0806637C
-	bx lr
-	.align 2, 0
-
-	thumb_func_start sub_8066380
-sub_8066380: @ 0x08066380
-	push {lr}
-	ldr r0, _08066394 @ =gUnk_08C487EC
-	movs r1, #3
-	bl Proc_Start
-	movs r1, #0
-	strh r1, [r0, #0x2c]
-	pop {r1}
-	bx r1
-	.align 2, 0
-_08066394: .4byte gUnk_08C487EC
-
-	thumb_func_start sub_8066398
-sub_8066398: @ 0x08066398
-	push {r4, r5, r6, r7, lr}
-	adds r4, r0, #0
-	ldr r0, _080663DC @ =gEkrBg2ScrollFlip
-	ldr r0, [r0]
-	ldr r3, _080663E0 @ =gpEkrLvupBg2ScrollOffsetTable2
-	cmp r0, #0
-	bne _080663A8
-	ldr r3, _080663E4 @ =gpEkrLvupBg2ScrollOffsetTable1
-_080663A8:
-	movs r2, #0
-	ldr r6, _080663E8 @ =gSinLut
-	movs r5, #0xff
-_080663AE:
-	lsls r0, r2, #1
-	movs r7, #0x2c
-	ldrsh r1, [r4, r7]
-	adds r0, r0, r1
-	ands r0, r5
-	lsls r0, r0, #1
-	adds r0, r0, r6
-	movs r1, #0
-	ldrsh r0, [r0, r1]
-	asrs r0, r0, #0xa
-	adds r0, #4
-	strh r0, [r3]
-	adds r3, #2
-	adds r2, #1
-	cmp r2, #0x9f
-	bls _080663AE
-	ldrh r0, [r4, #0x2c]
-	adds r0, #2
-	strh r0, [r4, #0x2c]
-	pop {r4, r5, r6, r7}
-	pop {r0}
-	bx r0
-	.align 2, 0
-_080663DC: .4byte gEkrBg2ScrollFlip
-_080663E0: .4byte gpEkrLvupBg2ScrollOffsetTable2
-_080663E4: .4byte gpEkrLvupBg2ScrollOffsetTable1
-_080663E8: .4byte gSinLut
-
-	thumb_func_start sub_80663EC
-sub_80663EC: @ 0x080663EC
-	ldr r0, _08066408 @ =0x04000004
-	ldrh r1, [r0]
-	movs r0, #1
-	ands r0, r1
-	cmp r0, #0
-	bne _08066406
-	ldr r3, _0806640C @ =0x0400001A
-	ldr r2, _08066410 @ =gpEkrLvupBg2ScrollOffset
-	ldr r0, [r2]
-	ldrh r1, [r0]
-	strh r1, [r3]
-	adds r0, #2
-	str r0, [r2]
-_08066406:
-	bx lr
-	.align 2, 0
-_08066408: .4byte 0x04000004
-_0806640C: .4byte 0x0400001A
-_08066410: .4byte gpEkrLvupBg2ScrollOffset
-
-	thumb_func_start sub_8066414
-sub_8066414: @ 0x08066414
-	push {r4, r5, r6, r7, lr}
-	ldr r2, _08066464 @ =gpEkrLvupBg2ScrollOffsetTable2
-	movs r1, #0
-	adds r0, r2, #0
-	ldr r4, _08066468 @ =gpEkrLvupBg2ScrollOffsetTable1
-	ldr r5, _0806646C @ =gEkrBg2ScrollFlip
-	ldr r6, _08066470 @ =gpEkrLvupBg2ScrollOffsetStart
-	ldr r7, _08066474 @ =gpEkrLvupBg2ScrollOffset
-	ldr r3, _08066478 @ =sub_80663EC
-	mov ip, r3
-	movs r3, #0
-_0806642A:
-	strh r3, [r2]
-	adds r2, #2
-	adds r1, #1
-	cmp r1, #0x9f
-	bls _0806642A
-	adds r2, r4, #0
-	movs r1, #0
-	movs r3, #0
-_0806643A:
-	strh r3, [r2]
-	adds r2, #2
-	adds r1, #1
-	cmp r1, #0x9f
-	bls _0806643A
-	movs r4, #0
-	str r4, [r5]
-	str r0, [r6]
-	str r0, [r7]
-	mov r0, ip
-	bl SetOnHBlankA
-	ldr r0, _0806647C @ =gUnk_08C48804
-	movs r1, #0
-	bl Proc_Start
-	strh r4, [r0, #0x2c]
-	pop {r4, r5, r6, r7}
-	pop {r1}
-	bx r1
-	.align 2, 0
-_08066464: .4byte gpEkrLvupBg2ScrollOffsetTable2
-_08066468: .4byte gpEkrLvupBg2ScrollOffsetTable1
-_0806646C: .4byte gEkrBg2ScrollFlip
-_08066470: .4byte gpEkrLvupBg2ScrollOffsetStart
-_08066474: .4byte gpEkrLvupBg2ScrollOffset
-_08066478: .4byte sub_80663EC
-_0806647C: .4byte gUnk_08C48804
-
-	thumb_func_start sub_8066480
-sub_8066480: @ 0x08066480
-	push {lr}
-	movs r0, #0
-	bl SetOnHBlankA
-	pop {r0}
-	bx r0
-
-	thumb_func_start sub_806648C
-sub_806648C: @ 0x0806648C
-	ldr r1, _080664A0 @ =gEkrBg2ScrollFlip
-	ldr r0, [r1]
-	cmp r0, #1
-	bne _080664AC
-	movs r0, #0
-	str r0, [r1]
-	ldr r1, _080664A4 @ =gpEkrLvupBg2ScrollOffsetStart
-	ldr r0, _080664A8 @ =gpEkrLvupBg2ScrollOffsetTable2
-	b _080664B4
-	.align 2, 0
-_080664A0: .4byte gEkrBg2ScrollFlip
-_080664A4: .4byte gpEkrLvupBg2ScrollOffsetStart
-_080664A8: .4byte gpEkrLvupBg2ScrollOffsetTable2
-_080664AC:
-	movs r0, #1
-	str r0, [r1]
-	ldr r1, _080664C0 @ =gpEkrLvupBg2ScrollOffsetStart
-	ldr r0, _080664C4 @ =gpEkrLvupBg2ScrollOffsetTable1
-_080664B4:
-	str r0, [r1]
-	adds r0, r1, #0
-	ldr r1, _080664C8 @ =gpEkrLvupBg2ScrollOffset
-	ldr r0, [r0]
-	str r0, [r1]
-	bx lr
-	.align 2, 0
-_080664C0: .4byte gpEkrLvupBg2ScrollOffsetStart
-_080664C4: .4byte gpEkrLvupBg2ScrollOffsetTable1
-_080664C8: .4byte gpEkrLvupBg2ScrollOffset
-
 	thumb_func_start EkrDragonFxHandler_OnIntro
 EkrDragonFxHandler_OnIntro: @ 0x080664CC
 	push {r4, r5, r6, lr}
@@ -493,7 +10,7 @@ EkrDragonFxHandler_OnIntro: @ 0x080664CC
 	adds r5, r1, #0
 	adds r6, r2, #0
 	mov r8, r3
-	ldr r0, _080664FC @ =gUnk_08C48824
+	ldr r0, _080664FC @ =ProcScr_EkrDragon_08C48824
 	movs r1, #3
 	bl Proc_Start
 	movs r1, #0
@@ -510,7 +27,7 @@ EkrDragonFxHandler_OnIntro: @ 0x080664CC
 	pop {r1}
 	bx r1
 	.align 2, 0
-_080664FC: .4byte gUnk_08C48824
+_080664FC: .4byte ProcScr_EkrDragon_08C48824
 
 	thumb_func_start sub_8066500
 sub_8066500: @ 0x08066500
@@ -522,10 +39,10 @@ sub_8066500: @ 0x08066500
 	adds r1, r0, #0
 	ldr r0, _0806657C @ =gEkrBg1ScrollFlip
 	ldr r0, [r0]
-	ldr r2, _08066580 @ =gpEkrLvupBg1ScrollOffsetList2
+	ldr r2, _08066580 @ =gpBg1ScrollOffsetList2
 	cmp r0, #0
 	bne _08066518
-	ldr r2, _08066584 @ =gpEkrLvupBg1ScrollOffsetList1
+	ldr r2, _08066584 @ =gpBg1ScrollOffsetList1
 _08066518:
 	ldr r0, [r1, #0x50]
 	ldrh r3, [r1, #0x2e]
@@ -580,8 +97,8 @@ _0806656E:
 	bx r0
 	.align 2, 0
 _0806657C: .4byte gEkrBg1ScrollFlip
-_08066580: .4byte gpEkrLvupBg1ScrollOffsetList2
-_08066584: .4byte gpEkrLvupBg1ScrollOffsetList1
+_08066580: .4byte gpBg1ScrollOffsetList2
+_08066584: .4byte gpBg1ScrollOffsetList1
 _08066588: .4byte gUnk_08C4A008
 _0806658C: .4byte gDispIo
 
@@ -594,7 +111,7 @@ sub_8066590: @ 0x08066590
 	cmp r0, #0
 	bne _080665AA
 	ldr r3, _080665B0 @ =0x0400001C
-	ldr r2, _080665B4 @ =gpEkrLvupBg1ScrollOffset
+	ldr r2, _080665B4 @ =gpBg1ScrollOffset
 	ldr r0, [r2]
 	ldrh r1, [r0]
 	strh r1, [r3]
@@ -605,7 +122,7 @@ _080665AA:
 	.align 2, 0
 _080665AC: .4byte 0x04000004
 _080665B0: .4byte 0x0400001C
-_080665B4: .4byte gpEkrLvupBg1ScrollOffset
+_080665B4: .4byte gpBg1ScrollOffset
 
 	thumb_func_start sub_80665B8
 sub_80665B8: @ 0x080665B8
@@ -615,14 +132,14 @@ sub_80665B8: @ 0x080665B8
 	mov r8, r0
 	lsls r1, r1, #0x10
 	lsrs r1, r1, #0x10
-	ldr r3, _08066618 @ =gpEkrLvupBg1ScrollOffsetList2
+	ldr r3, _08066618 @ =gpBg1ScrollOffsetList2
 	movs r2, #0
 	adds r0, r3, #0
-	ldr r4, _0806661C @ =gpEkrLvupBg1ScrollOffsetList1
+	ldr r4, _0806661C @ =gpBg1ScrollOffsetList1
 	ldr r7, _08066620 @ =gEkrBg1ScrollFlip
-	ldr r5, _08066624 @ =gpEkrLvupBg1ScrollOffsetStart
+	ldr r5, _08066624 @ =gpBg1ScrollOffsetStart
 	mov ip, r5
-	ldr r5, _08066628 @ =gpEkrLvupBg1ScrollOffset
+	ldr r5, _08066628 @ =gpBg1ScrollOffset
 	ldr r6, _0806662C @ =sub_8066590
 _080665D6:
 	strh r1, [r3]
@@ -645,7 +162,7 @@ _080665E4:
 	str r0, [r5]
 	adds r0, r6, #0
 	bl SetOnHBlankA
-	ldr r0, _08066630 @ =gUnk_08C4883C
+	ldr r0, _08066630 @ =ProcScr_EkrDragon_08C4883C
 	movs r1, #0
 	bl Proc_Start
 	strh r4, [r0, #0x2c]
@@ -657,13 +174,13 @@ _080665E4:
 	pop {r0}
 	bx r0
 	.align 2, 0
-_08066618: .4byte gpEkrLvupBg1ScrollOffsetList2
-_0806661C: .4byte gpEkrLvupBg1ScrollOffsetList1
+_08066618: .4byte gpBg1ScrollOffsetList2
+_0806661C: .4byte gpBg1ScrollOffsetList1
 _08066620: .4byte gEkrBg1ScrollFlip
-_08066624: .4byte gpEkrLvupBg1ScrollOffsetStart
-_08066628: .4byte gpEkrLvupBg1ScrollOffset
+_08066624: .4byte gpBg1ScrollOffsetStart
+_08066628: .4byte gpBg1ScrollOffset
 _0806662C: .4byte sub_8066590
-_08066630: .4byte gUnk_08C4883C
+_08066630: .4byte ProcScr_EkrDragon_08C4883C
 
 	thumb_func_start sub_8066634
 sub_8066634: @ 0x08066634
@@ -683,22 +200,22 @@ sub_8066640: @ 0x08066640
 	bne _08066664
 	movs r0, #0
 	str r0, [r1]
-	ldr r1, _0806665C @ =gpEkrLvupBg1ScrollOffsetStart
-	ldr r0, _08066660 @ =gpEkrLvupBg1ScrollOffsetList2
+	ldr r1, _0806665C @ =gpBg1ScrollOffsetStart
+	ldr r0, _08066660 @ =gpBg1ScrollOffsetList2
 	b _0806666C
 	.align 2, 0
 _08066658: .4byte gEkrBg1ScrollFlip
-_0806665C: .4byte gpEkrLvupBg1ScrollOffsetStart
-_08066660: .4byte gpEkrLvupBg1ScrollOffsetList2
+_0806665C: .4byte gpBg1ScrollOffsetStart
+_08066660: .4byte gpBg1ScrollOffsetList2
 _08066664:
 	movs r0, #1
 	str r0, [r1]
-	ldr r1, _08066698 @ =gpEkrLvupBg1ScrollOffsetStart
-	ldr r0, _0806669C @ =gpEkrLvupBg1ScrollOffsetList1
+	ldr r1, _08066698 @ =gpBg1ScrollOffsetStart
+	ldr r0, _0806669C @ =gpBg1ScrollOffsetList1
 _0806666C:
 	str r0, [r1]
 	adds r0, r1, #0
-	ldr r1, _080666A0 @ =gpEkrLvupBg1ScrollOffset
+	ldr r1, _080666A0 @ =gpBg1ScrollOffset
 	ldr r0, [r0]
 	str r0, [r1]
 	ldrh r0, [r4, #0x2c]
@@ -718,15 +235,15 @@ _08066692:
 	pop {r0}
 	bx r0
 	.align 2, 0
-_08066698: .4byte gpEkrLvupBg1ScrollOffsetStart
-_0806669C: .4byte gpEkrLvupBg1ScrollOffsetList1
-_080666A0: .4byte gpEkrLvupBg1ScrollOffset
+_08066698: .4byte gpBg1ScrollOffsetStart
+_0806669C: .4byte gpBg1ScrollOffsetList1
+_080666A0: .4byte gpBg1ScrollOffset
 
 	thumb_func_start sub_80666A4
 sub_80666A4: @ 0x080666A4
 	push {r4, lr}
 	adds r4, r0, #0
-	ldr r0, _080666CC @ =gUnk_08C4885C
+	ldr r0, _080666CC @ =ProcScr_EkrDragon_08C4885C
 	movs r1, #3
 	bl Proc_Start
 	str r4, [r0, #0x5c]
@@ -735,7 +252,7 @@ sub_80666A4: @ 0x080666A4
 	strh r1, [r0, #0x2e]
 	str r1, [r0, #0x44]
 	str r1, [r0, #0x48]
-	ldr r1, _080666D0 @ =gUnk_08C48874
+	ldr r1, _080666D0 @ =Tsas_EkrDragon_08C48874
 	str r1, [r0, #0x4c]
 	movs r1, #0x80
 	lsls r1, r1, #5
@@ -744,8 +261,8 @@ sub_80666A4: @ 0x080666A4
 	pop {r1}
 	bx r1
 	.align 2, 0
-_080666CC: .4byte gUnk_08C4885C
-_080666D0: .4byte gUnk_08C48874
+_080666CC: .4byte ProcScr_EkrDragon_08C4885C
+_080666D0: .4byte Tsas_EkrDragon_08C48874
 
 	thumb_func_start sub_80666D4
 sub_80666D4: @ 0x080666D4
@@ -782,22 +299,22 @@ _08066700: @ jump table
 	.4byte _08066740 @ case 8
 	.4byte _08066728 @ case 9
 _08066728:
-	ldr r0, _0806672C @ =gUnk_082E441E
+	ldr r0, _0806672C @ =FrameLut_EkrDragon_082E441E
 	b _08066742
 	.align 2, 0
-_0806672C: .4byte gUnk_082E441E
+_0806672C: .4byte FrameLut_EkrDragon_082E441E
 _08066730:
-	ldr r0, _08066734 @ =gUnk_082E4430
+	ldr r0, _08066734 @ =FrameLut_EkrDragon_082E4430
 	b _08066742
 	.align 2, 0
-_08066734: .4byte gUnk_082E4430
+_08066734: .4byte FrameLut_EkrDragon_082E4430
 _08066738:
-	ldr r0, _0806673C @ =gUnk_082E4442
+	ldr r0, _0806673C @ =FrameLut_EkrDragon_082E4442
 	b _08066742
 	.align 2, 0
-_0806673C: .4byte gUnk_082E4442
+_0806673C: .4byte FrameLut_EkrDragon_082E4442
 _08066740:
-	ldr r0, _08066778 @ =gUnk_082E4418
+	ldr r0, _08066778 @ =FrameLut_EkrDragon_082E4418
 _08066742:
 	str r0, [r4, #0x48]
 _08066744:
@@ -824,7 +341,7 @@ _08066744:
 	bl EkrDragonTmCpyExt
 	b _080667F8
 	.align 2, 0
-_08066778: .4byte gUnk_082E4418
+_08066778: .4byte FrameLut_EkrDragon_082E4418
 _0806677C: .4byte gEkrTsaBuffer
 _08066780: .4byte gEkrBgPosition
 _08066784:
@@ -900,7 +417,7 @@ _08066800: .4byte 0x000002F2
 NewEkrDragonBodyBlack: @ 0x08066804
 	push {r4, lr}
 	adds r4, r0, #0
-	ldr r0, _08066824 @ =gUnk_08C4887C
+	ldr r0, _08066824 @ =ProcScr_EkrDragon_08C4887C
 	movs r1, #3
 	bl Proc_Start
 	str r4, [r0, #0x5c]
@@ -914,7 +431,7 @@ NewEkrDragonBodyBlack: @ 0x08066804
 	pop {r1}
 	bx r1
 	.align 2, 0
-_08066824: .4byte gUnk_08C4887C
+_08066824: .4byte ProcScr_EkrDragon_08C4887C
 
 	thumb_func_start sub_8066828
 sub_8066828: @ 0x08066828
@@ -930,7 +447,7 @@ sub_8066828: @ 0x08066828
 	movs r2, #0x10
 	bl Interpolate
 	adds r5, r0, #0
-	ldr r0, _080668A8 @ =Pal_EkrDragon_082E6C60
+	ldr r0, _080668A8 @ =Pals_EkrDragonBodyFlashing
 	ldr r4, _080668AC @ =gPal + 0xc0
 	adds r1, r4, #0
 	movs r2, #8
@@ -975,7 +492,7 @@ _0806689E:
 	pop {r0}
 	bx r0
 	.align 2, 0
-_080668A8: .4byte Pal_EkrDragon_082E6C60
+_080668A8: .4byte Pals_EkrDragonBodyFlashing
 _080668AC: .4byte gPal + 0xc0
 _080668B0: .4byte gpEfxUnitPaletteBackup
 
@@ -996,7 +513,7 @@ sub_80668B8: @ 0x080668B8
 	adds r4, r1, #0
 	asrs r5, r5, #3
 	asrs r4, r4, #3
-	ldr r0, _08066944 @ =gUnk_082E7418
+	ldr r0, _08066944 @ =Tsa_EkrDragon_082E7418
 	ldr r6, _08066948 @ =gEkrTsaBuffer
 	adds r1, r6, #0
 	bl LZ77UnCompWram
@@ -1053,7 +570,7 @@ sub_80668B8: @ 0x080668B8
 	pop {r0}
 	bx r0
 	.align 2, 0
-_08066944: .4byte gUnk_082E7418
+_08066944: .4byte Tsa_EkrDragon_082E7418
 _08066948: .4byte gEkrTsaBuffer
 _0806694C: .4byte gEfxFrameTmap
 
