@@ -134,11 +134,11 @@ void InitGlobalSaveInfo(void)
     WriteGlobalSaveInfo(&info);
 }
 
-void sub_0809F098(void)
+void sub_809F098(void)
 {
     u8 buf[0x24];
     CPU_FILL(0, buf, sizeof(buf), 16);
-    sub_0809FA94(buf);
+    sub_809FA94(buf);
 }
 
 void EraseBonusContentData(void)

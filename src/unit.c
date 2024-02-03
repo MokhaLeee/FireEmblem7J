@@ -334,7 +334,7 @@ int LoadUnits(const struct UnitDefinition *info)
     return count;
 }
 
-void sub_08017B44(struct Unit *unit)
+void sub_8017B44(struct Unit *unit)
 {
     if (unit->pow >= 4)
         unit->pow /= 2;
@@ -790,7 +790,7 @@ void UnitBeginAction(struct Unit *unit)
     gBmSt.partial_actions_taken = 0;
     gBmSt.unk_3F = 0xFF;
 
-    sub_0802A21C();
+    sub_802A21C();
 
     gActiveUnit->state |= US_HIDDEN;
     gBmMapUnit[unit->yPos][unit->xPos] = 0;
@@ -808,7 +808,7 @@ void UnitBeginCantoAction(struct Unit *unit)
 
     gBmSt.partial_actions_taken = 0;
 
-    sub_0802A21C();
+    sub_802A21C();
 
     gActiveUnit->state |= US_HIDDEN;
     gBmMapUnit[unit->yPos][unit->xPos] = 0;
@@ -956,7 +956,7 @@ bool UnitHasMagicRank(struct Unit *unit)
     return combinedRanks ? true : false;
 }
 
-void sub_080188F4(struct Unit *unit, int x, int y)
+void sub_80188F4(struct Unit *unit, int x, int y)
 {
     if (!(unit->state & US_UNDER_A_ROOF)) {
         unit->state = unit->state &~ (US_HIDDEN | US_NOT_DEPLOYED);
@@ -1153,10 +1153,10 @@ void UpdatePrevDeployStates(void)
             unit->state &= ~US_BIT20;
     }
 
-    sub_0807B32C();
+    sub_807B32C();
 }
 
-void sub_08018C78(void)
+void sub_8018C78(void)
 {
     int i;
     for (i = 1; i < 0x40; ++i) {
@@ -1173,7 +1173,7 @@ void sub_08018C78(void)
     }
 }
 
-void sub_08018CC4(void)
+void sub_8018CC4(void)
 {
     int i;
 
@@ -1208,14 +1208,14 @@ void sub_08018CC4(void)
         }
     }
 
-    sub_0807B32C();
+    sub_807B32C();
 }
 
-void sub_08018D70(void)
+void sub_8018D70(void)
 {
     int i, j;
 
-    sub_0807B32C();
+    sub_807B32C();
 
     for (i = 1; i < 0x40; ++i) {
         struct Unit *unit = _GetUnit(i);
@@ -1265,5 +1265,5 @@ void sub_08018D70(void)
         ClearUnit(unit);
     }
 
-    sub_080799E4();
+    sub_80799E4();
 }

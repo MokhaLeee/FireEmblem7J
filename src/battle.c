@@ -549,7 +549,7 @@ void ComputeBattleUnitHitRate(struct BattleUnit *bu)
         bu->battleHitRate += ret;
     }
 
-    if (sub_08028620(&bu->unit))
+    if (sub_8028620(&bu->unit))
         bu->battleHitRate += 10;
 }
 
@@ -568,7 +568,7 @@ void ComputeBattleUnitAvoidRate(struct BattleUnit *bu)
             bu->battleAvoidRate += ret;
         }
 
-        if (sub_08028620(&bu->unit))
+        if (sub_8028620(&bu->unit))
             bu->battleAvoidRate += 10;
     }
 
@@ -1254,7 +1254,7 @@ void BattleApplyUnitUpdates(void)
         UpdateObstacleFromBattle(&gBattleTarget);
 }
 
-bool sub_08029FA8(void)
+bool sub_8029FA8(void)
 {
     return true;
 }
@@ -1385,7 +1385,7 @@ void BattleApplyBallistaUpdates(void)
     }
 }
 
-void sub_0802A21C(void)
+void sub_802A21C(void)
 {
     gUnk_0203A50C.unk00 = 0;
     gUnk_0203A50C.unk01 = 0;

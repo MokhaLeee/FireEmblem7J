@@ -62,7 +62,7 @@ ProcPtr NewEkrDragonBaseAppear(struct Anim * anim)
     proc->finished = false;
     proc->timer = 0;
     FillBGRect(gBg2Tm, 0x20, 0x20, 0, 0);
-    sub_08055718(&EkrMainMiniConf_0201FAD0);
+    sub_8055718(&EkrMainMiniConf_0201FAD0);
     CpuFastCopy(PAL_BG(4), gEkrBgPaletteBackup, 0x40);
     EfxPalBlackInOut(PAL_BG(0), 4, 2, 0x10);
     return proc;

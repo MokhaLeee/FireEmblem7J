@@ -284,7 +284,7 @@ void EkrDragon_StartDragonTailIntro(struct ProcEkrDragon * proc)
     EkrDragonTmCpyExt(-0xF8, 0);
     EnablePalSync();
     proc->procfx = EkrDragonFxHandler_OnIntro(0x78, 0x400, 0x60, 2);
-    sub_080665B8(0x78, 0);
+    sub_80665B8(0x78, 0);
 
     proc->timer = 0;
     proc->terminator = 60;
@@ -379,10 +379,10 @@ void EkrDragon_080657D4(struct ProcEkrDragon * proc)
     if (gEkrDistanceType == EKR_DISTANCE_FARFAR)
     {
         proc->sproc3 = NewEkrDragonStatusFlashing(proc->anim);
-        proc->proc44 = sub_08066200(proc->anim);
-        proc->proc4C = sub_08066414(proc->anim);
-        proc->proc58 = sub_08066380();
-        proc->proc48 = sub_080662F4(proc->anim);
+        proc->proc44 = sub_8066200(proc->anim);
+        proc->proc4C = sub_8066414(proc->anim);
+        proc->proc58 = sub_8066380();
+        proc->proc48 = sub_80662F4(proc->anim);
         Proc_Break(proc);
         return;
     }
@@ -397,7 +397,7 @@ void EkrDragon_080657D4(struct ProcEkrDragon * proc)
         proc->procfx->x = proc->anim->xPosition;
         proc->procfx->unk3A = proc->anim->yPosition - proc->y;
         proc->proc54 = NewEfxQuakePure(8, 0);
-        sub_08066CAC(proc->anim, 0x13A);
+        sub_8066CAC(proc->anim, 0x13A);
         LZ77UnCompWram(Tsa_EkrDragon_MainBg, gEkrTsaBuffer);
         CpuFill32(0x001F001F, gEkrTsaBuffer + 0x3C0, 0x80);
         EfxTmFill(0x001F001F);
@@ -407,10 +407,10 @@ void EkrDragon_080657D4(struct ProcEkrDragon * proc)
         EkrDragonTmCpyExt(gEkrBgPosition, proc->y);
 
         proc->sproc3 = NewEkrDragonStatusFlashing(proc->anim);
-        proc->proc44 = sub_08066200(proc->anim);
-        proc->proc4C = sub_08066414(proc->anim);
-        proc->proc58 = sub_08066380();
-        proc->proc48 = sub_080662F4(proc->anim);
+        proc->proc44 = sub_8066200(proc->anim);
+        proc->proc4C = sub_8066414(proc->anim);
+        proc->proc58 = sub_8066380();
+        proc->proc48 = sub_80662F4(proc->anim);
 
         PlaySFX(0x2F0, 0x100, 0x78, 0);
         Proc_Break(proc);
@@ -499,7 +499,7 @@ void EkrDragon_08065AB0(struct ProcEkrDragon * proc)
 
     if (++proc->timer == 0x10D)
     {
-        sub_08066DA0(proc->procfx, 60, 9);
+        sub_8066DA0(proc->procfx, 60, 9);
         PlaySFX(0x2F1, 0x100, 0x78, 0);
     }
 
@@ -520,7 +520,7 @@ void EkrDragon_08065AB0(struct ProcEkrDragon * proc)
 
 void EkrDragon_TriggerIntroDone(struct ProcEkrDragon * proc)
 {
-    proc->mainfxproc = sub_080666A4(proc->anim);
+    proc->mainfxproc = sub_80666A4(proc->anim);
     AddEkrDragonStatusAttr(proc->anim, EKRDRGON_ATTR_BANIMFX_PREPARED);
     Proc_Break(proc);
 }

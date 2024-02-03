@@ -48,12 +48,12 @@ void BattleAIS_ExecCommands(void)
                     else if (!(anim->state3 & 0x4))
                         anim->pScrCurrent = anim->pScrCurrent + 1;
                     else if (anim->state3 & 0x8) {
-                        if (sub_0804DD50() == 1) {
+                        if (sub_804DD50() == 1) {
                             anim->state3 &= ~(0x1 | 0x4 | 0x8);
                             anim->pScrCurrent = anim->pScrCurrent + 1;
 
-                            if (sub_08050FE4() != 0)
-                                sub_08050FF0(0);
+                            if (sub_8050FE4() != 0)
+                                sub_8050FF0(0);
                         }
                     }
                     break;
@@ -127,8 +127,8 @@ void BattleAIS_ExecCommands(void)
                         if (GetAISLayerId(anim) == 0) {
                             StartSpellAnimation(anim);
 
-                            if (sub_08050FE4())
-                                sub_08050FF0(0x2);
+                            if (sub_8050FE4())
+                                sub_8050FF0(0x2);
                         }
                     }
                     break;
@@ -152,7 +152,7 @@ void BattleAIS_ExecCommands(void)
                         anim1 = GetAnimAnotherSide(anim);
                         state2 = GetAnimRoundTypeAnotherSide(anim);
                         if (CheckRoundMiss(state2) == 0) {
-                            type = sub_080684B0(anim1);
+                            type = sub_80684B0(anim1);
                             if (type != 2) {
                                 if (0x1000 & GetBattleAnimRoundTypeFlags((anim->nextRoundId - 1) * 2 + GetAnimPosition(anim)))
                                     NewEfxChillEffect(anim1);
@@ -295,7 +295,7 @@ void BattleAIS_ExecCommands(void)
                             StartBattleAnimHitEffectsDefault(anim1, CheckRoundMiss(state2));
                         }
 
-                        if (sub_080684B0(anim1) != 2) {
+                        if (sub_80684B0(anim1) != 2) {
                             if (0x1000 & GetBattleAnimRoundTypeFlags((anim->nextRoundId - 1) * 2 + GetAnimPosition(anim)))
                                     NewEfxChillEffect(anim1);
                                 else
@@ -383,9 +383,9 @@ void BattleAIS_ExecCommands(void)
                     if ((anim->state3 & 0x20) == 0) {
                         anim->state3 |= 0x20;
                         if (GetAISLayerId(anim) == 0)
-                            sub_08050FF0(1);
+                            sub_8050FF0(1);
                         
-                        sub_08064458(anim);
+                        sub_8064458(anim);
                         NewEfxspdquake(anim);
                     }
 

@@ -214,13 +214,13 @@ void CheckBattleUnitLevelUp(struct BattleUnit *bu);
 // GenerateBattleUnitStatGainsComparatively
 void CheckBattleUnitStatCaps(struct Unit *unit, struct BattleUnit *bu);
 void BattleApplyUnitUpdates(void);
-// sub_08029FA8
+// sub_8029FA8
 int GetBattleUnitUpdatedWeaponExp(struct BattleUnit* bu);
 bool HasBattleUnitGainedWeaponLevel(struct BattleUnit *bu);
 void UpdateUnitFromBattle(struct Unit *unit, struct BattleUnit *bu);
 void UpdateUnitDuringBattle(struct Unit *unit, struct BattleUnit *bu);
 void BattleApplyBallistaUpdates(void);
-// sub_0802A21C
+// sub_802A21C
 // GetUnitExpLevel
 // GetUnitRoundExp
 // GetUnitPowerLevel

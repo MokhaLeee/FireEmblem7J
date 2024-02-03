@@ -28,7 +28,7 @@ NewEkrBattleDeamon: @ 0x0804B988
 	ldr r1, _0804B9B0 @ =0x0203DFD8
 	movs r0, #1
 	str r0, [r1]
-	bl sub_08015784
+	bl sub_8015784
 	pop {r4}
 	pop {r0}
 	bx r0
@@ -69,7 +69,7 @@ EkrBattleDeamon_OnEnd: @ 0x0804B9DC
 	ldr r1, _0804B9EC @ =0x0203DFD8
 	movs r0, #0
 	str r0, [r1]
-	bl sub_08015794
+	bl sub_8015794
 	pop {r0}
 	bx r0
 	.align 2, 0
@@ -207,7 +207,7 @@ MainUpdateEkrBattle: @ 0x0804BB04
 	push {r4, lr}
 	bl ClearSprites
 	bl UnregisterEfxSoundSeExist
-	bl sub_080157A4
+	bl sub_80157A4
 	lsls r0, r0, #0x18
 	cmp r0, #0
 	bne _0804BB20
@@ -606,28 +606,28 @@ EkrBattlePostDragonIntro: @ 0x0804BE1C
 	ldr r0, [r0]
 	movs r1, #1
 	rsbs r1, r1, #0
-	bl sub_0804EC74
+	bl sub_804EC74
 	movs r0, #0
 	strh r0, [r4, #0x2c]
-	ldr r0, _0804BE54 @ =sub_0804BE68
+	ldr r0, _0804BE54 @ =sub_804BE68
 	b _0804BE5A
 	.align 2, 0
 _0804BE48: .4byte gEkrInitialHitSide
 _0804BE4C: .4byte gEkrInitPosReal
 _0804BE50: .4byte gAnims
-_0804BE54: .4byte sub_0804BE68
+_0804BE54: .4byte sub_804BE68
 _0804BE58:
-	ldr r0, _0804BE64 @ =sub_0804BE84
+	ldr r0, _0804BE64 @ =sub_804BE84
 _0804BE5A:
 	str r0, [r4, #0xc]
 	pop {r4}
 	pop {r0}
 	bx r0
 	.align 2, 0
-_0804BE64: .4byte sub_0804BE84
+_0804BE64: .4byte sub_804BE84
 
-	thumb_func_start sub_0804BE68
-sub_0804BE68: @ 0x0804BE68
+	thumb_func_start sub_804BE68
+sub_804BE68: @ 0x0804BE68
 	adds r1, r0, #0
 	ldrh r0, [r1, #0x2c]
 	adds r0, #1
@@ -636,15 +636,15 @@ sub_0804BE68: @ 0x0804BE68
 	asrs r0, r0, #0x10
 	cmp r0, #8
 	bne _0804BE7C
-	ldr r0, _0804BE80 @ =sub_0804BE84
+	ldr r0, _0804BE80 @ =sub_804BE84
 	str r0, [r1, #0xc]
 _0804BE7C:
 	bx lr
 	.align 2, 0
-_0804BE80: .4byte sub_0804BE84
+_0804BE80: .4byte sub_804BE84
 
-	thumb_func_start sub_0804BE84
-sub_0804BE84: @ 0x0804BE84
+	thumb_func_start sub_804BE84
+sub_804BE84: @ 0x0804BE84
 	push {r4, r5, lr}
 	adds r5, r0, #0
 	ldr r4, _0804BEC8 @ =gAnims
@@ -668,8 +668,8 @@ sub_0804BE84: @ 0x0804BE84
 	bl DisableEfxStatusUnits
 _0804BEB6:
 	ldr r0, [r4]
-	bl sub_0804FB58
-	ldr r0, _0804BED4 @ =sub_0804BED8
+	bl sub_804FB58
+	ldr r0, _0804BED4 @ =sub_804BED8
 	str r0, [r5, #0xc]
 	pop {r4, r5}
 	pop {r0}
@@ -678,10 +678,10 @@ _0804BEB6:
 _0804BEC8: .4byte gAnims
 _0804BECC: .4byte 0x0203E0BC
 _0804BED0: .4byte gBattleStats
-_0804BED4: .4byte sub_0804BED8
+_0804BED4: .4byte sub_804BED8
 
-	thumb_func_start sub_0804BED8
-sub_0804BED8: @ 0x0804BED8
+	thumb_func_start sub_804BED8
+sub_804BED8: @ 0x0804BED8
 	push {r4, lr}
 	adds r4, r0, #0
 	ldr r0, _0804BEF0 @ =gpEkrTriangleUnits
@@ -690,28 +690,28 @@ sub_0804BED8: @ 0x0804BED8
 	beq _0804BEFC
 	ldr r0, _0804BEF4 @ =gAnims
 	ldr r0, [r0, #8]
-	bl sub_0806AC9C
-	ldr r0, _0804BEF8 @ =sub_0804BF0C
+	bl sub_806AC9C
+	ldr r0, _0804BEF8 @ =sub_804BF0C
 	b _0804BEFE
 	.align 2, 0
 _0804BEF0: .4byte gpEkrTriangleUnits
 _0804BEF4: .4byte gAnims
-_0804BEF8: .4byte sub_0804BF0C
+_0804BEF8: .4byte sub_804BF0C
 _0804BEFC:
-	ldr r0, _0804BF08 @ =sub_0804BF34
+	ldr r0, _0804BF08 @ =sub_804BF34
 _0804BEFE:
 	str r0, [r4, #0xc]
 	pop {r4}
 	pop {r0}
 	bx r0
 	.align 2, 0
-_0804BF08: .4byte sub_0804BF34
+_0804BF08: .4byte sub_804BF34
 
-	thumb_func_start sub_0804BF0C
-sub_0804BF0C: @ 0x0804BF0C
+	thumb_func_start sub_804BF0C
+sub_804BF0C: @ 0x0804BF0C
 	push {r4, lr}
 	adds r4, r0, #0
-	bl sub_0806AC84
+	bl sub_806AC84
 	lsls r0, r0, #0x18
 	asrs r0, r0, #0x18
 	cmp r0, #1
@@ -719,17 +719,17 @@ sub_0804BF0C: @ 0x0804BF0C
 	bl nullsub_10
 	movs r0, #0x1e
 	strh r0, [r4, #0x2c]
-	ldr r0, _0804BF30 @ =sub_0804BF34
+	ldr r0, _0804BF30 @ =sub_804BF34
 	str r0, [r4, #0xc]
 _0804BF28:
 	pop {r4}
 	pop {r0}
 	bx r0
 	.align 2, 0
-_0804BF30: .4byte sub_0804BF34
+_0804BF30: .4byte sub_804BF34
 
-	thumb_func_start sub_0804BF34
-sub_0804BF34: @ 0x0804BF34
+	thumb_func_start sub_804BF34
+sub_804BF34: @ 0x0804BF34
 	push {r4, r5, r6, r7, lr}
 	adds r5, r0, #0
 	ldrh r0, [r5, #0x2c]
@@ -784,7 +784,7 @@ _0804BF96:
 	ldr r0, _0804BFB0 @ =gBanimDoneFlag
 	str r7, [r0]
 	str r7, [r0, #4]
-	ldr r0, _0804BFB4 @ =sub_0804BFB8
+	ldr r0, _0804BFB4 @ =sub_804BFB8
 	str r0, [r5, #0xc]
 _0804BFA0:
 	pop {r4, r5, r6, r7}
@@ -794,22 +794,22 @@ _0804BFA0:
 _0804BFA8: .4byte gEkrPairSideVaild
 _0804BFAC: .4byte gAnims
 _0804BFB0: .4byte gBanimDoneFlag
-_0804BFB4: .4byte sub_0804BFB8
+_0804BFB4: .4byte sub_804BFB8
 
-	thumb_func_start sub_0804BFB8
-sub_0804BFB8: @ 0x0804BFB8
+	thumb_func_start sub_804BFB8
+sub_804BFB8: @ 0x0804BFB8
 	ldr r2, _0804BFC4 @ =gAnimC01Blocking
 	movs r1, #0
 	str r1, [r2]
-	ldr r1, _0804BFC8 @ =sub_0804BFCC
+	ldr r1, _0804BFC8 @ =sub_804BFCC
 	str r1, [r0, #0xc]
 	bx lr
 	.align 2, 0
 _0804BFC4: .4byte gAnimC01Blocking
-_0804BFC8: .4byte sub_0804BFCC
+_0804BFC8: .4byte sub_804BFCC
 
-	thumb_func_start sub_0804BFCC
-sub_0804BFCC: @ 0x0804BFCC
+	thumb_func_start sub_804BFCC
+sub_804BFCC: @ 0x0804BFCC
 	push {r4, lr}
 	adds r4, r0, #0
 	ldr r0, _0804BFE4 @ =gEkrDistanceType
@@ -818,37 +818,37 @@ sub_0804BFCC: @ 0x0804BFCC
 	bne _0804BFF0
 	ldr r0, _0804BFE8 @ =gAnims
 	ldr r0, [r0, #8]
-	bl sub_08068A38
-	ldr r0, _0804BFEC @ =sub_0804C008
+	bl sub_8068A38
+	ldr r0, _0804BFEC @ =sub_804C008
 	b _0804BFFA
 	.align 2, 0
 _0804BFE4: .4byte gEkrDistanceType
 _0804BFE8: .4byte gAnims
-_0804BFEC: .4byte sub_0804C008
+_0804BFEC: .4byte sub_804C008
 _0804BFF0:
 	adds r1, r4, #0
 	adds r1, #0x29
 	movs r0, #0
 	strb r0, [r1]
-	ldr r0, _0804C004 @ =sub_0804C034
+	ldr r0, _0804C004 @ =sub_804C034
 _0804BFFA:
 	str r0, [r4, #0xc]
 	pop {r4}
 	pop {r0}
 	bx r0
 	.align 2, 0
-_0804C004: .4byte sub_0804C034
+_0804C004: .4byte sub_804C034
 
-	thumb_func_start sub_0804C008
-sub_0804C008: @ 0x0804C008
+	thumb_func_start sub_804C008
+sub_804C008: @ 0x0804C008
 	push {r4, r5, lr}
 	adds r5, r0, #0
-	bl sub_08068A0C
+	bl sub_8068A0C
 	lsls r0, r0, #0x18
 	asrs r4, r0, #0x18
 	cmp r4, #1
 	bne _0804C024
-	bl sub_08068A24
+	bl sub_8068A24
 	ldr r0, _0804C02C @ =gEkrPairExpGain
 	strh r4, [r0]
 	ldr r0, _0804C030 @ =EkrBattleExecEkrLvup
@@ -861,8 +861,8 @@ _0804C024:
 _0804C02C: .4byte gEkrPairExpGain
 _0804C030: .4byte EkrBattleExecEkrLvup
 
-	thumb_func_start sub_0804C034
-sub_0804C034: @ 0x0804C034
+	thumb_func_start sub_804C034
+sub_804C034: @ 0x0804C034
 	push {r4, r5, r6, lr}
 	adds r6, r0, #0
 	movs r4, #0
@@ -924,7 +924,7 @@ _0804C06C:
 	cmp r0, #0
 	bne _0804C0C8
 	movs r0, #1
-	bl sub_0802F5B8
+	bl sub_802F5B8
 	b _0804C118
 	.align 2, 0
 _0804C0B4: .4byte gBanimDoneFlag
@@ -939,7 +939,7 @@ _0804C0C8:
 	bne _0804C0DA
 	movs r0, #2
 _0804C0D2:
-	bl sub_0802F5B8
+	bl sub_802F5B8
 	strh r4, [r5, #2]
 	b _0804C118
 _0804C0DA:
@@ -948,21 +948,21 @@ _0804C0DA:
 	ldrb r0, [r0]
 	cmp r0, #1
 	bne _0804C0EC
-	bl sub_08055D44
+	bl sub_8055D44
 	movs r0, #4
 	b _0804C0D2
 _0804C0EC:
-	bl sub_0802F5C4
+	bl sub_802F5C4
 	bl ParseBattleHitToBanimCmd
 	bl AnimClearAll
 	bl UpdateBanimFrame
 	bl InitMainAnims
 	strh r4, [r6, #0x2c]
-	ldr r0, _0804C108 @ =sub_0804BF34
+	ldr r0, _0804C108 @ =sub_804BF34
 	str r0, [r6, #0xc]
 	b _0804C11A
 	.align 2, 0
-_0804C108: .4byte sub_0804BF34
+_0804C108: .4byte sub_804BF34
 _0804C10C:
 	ldr r0, _0804C128 @ =gBanimDoneFlag
 	ldr r1, [r0]
@@ -975,7 +975,7 @@ _0804C118:
 _0804C11A:
 	cmp r4, #1
 	bne _0804C122
-	ldr r0, _0804C12C @ =sub_0804C130
+	ldr r0, _0804C12C @ =sub_804C130
 	str r0, [r6, #0xc]
 _0804C122:
 	pop {r4, r5, r6}
@@ -983,22 +983,22 @@ _0804C122:
 	bx r0
 	.align 2, 0
 _0804C128: .4byte gBanimDoneFlag
-_0804C12C: .4byte sub_0804C130
+_0804C12C: .4byte sub_804C130
 
-	thumb_func_start sub_0804C130
-sub_0804C130: @ 0x0804C130
+	thumb_func_start sub_804C130
+sub_804C130: @ 0x0804C130
 	adds r2, r0, #0
 	adds r2, #0x29
 	movs r1, #0
 	strb r1, [r2]
-	ldr r1, _0804C140 @ =sub_0804C144
+	ldr r1, _0804C140 @ =sub_804C144
 	str r1, [r0, #0xc]
 	bx lr
 	.align 2, 0
-_0804C140: .4byte sub_0804C144
+_0804C140: .4byte sub_804C144
 
-	thumb_func_start sub_0804C144
-sub_0804C144: @ 0x0804C144
+	thumb_func_start sub_804C144
+sub_804C144: @ 0x0804C144
 	push {r4, r5, r6, lr}
 	adds r5, r0, #0
 	ldr r0, _0804C1B0 @ =0x02017728
@@ -1009,13 +1009,13 @@ sub_0804C144: @ 0x0804C144
 	ldr r4, [r0]
 	cmp r4, #0
 	bne _0804C1AA
-	bl sub_080523AC
+	bl sub_80523AC
 	lsls r0, r0, #0x18
 	asrs r6, r0, #0x18
 	cmp r6, #1
 	bne _0804C1AA
 	strh r4, [r5, #0x2c]
-	ldr r0, _0804C1B8 @ =sub_0804C1C8
+	ldr r0, _0804C1B8 @ =sub_804C1C8
 	str r0, [r5, #0xc]
 	ldr r4, _0804C1BC @ =gAnims
 	ldr r0, [r4]
@@ -1048,7 +1048,7 @@ _0804C194:
 	ldr r0, [r0]
 	movs r1, #1
 	rsbs r1, r1, #0
-	bl sub_0804EC74
+	bl sub_804EC74
 _0804C1AA:
 	pop {r4, r5, r6}
 	pop {r0}
@@ -1056,13 +1056,13 @@ _0804C1AA:
 	.align 2, 0
 _0804C1B0: .4byte 0x02017728
 _0804C1B4: .4byte 0x02017738
-_0804C1B8: .4byte sub_0804C1C8
+_0804C1B8: .4byte sub_804C1C8
 _0804C1BC: .4byte gAnims
 _0804C1C0: .4byte gEkrPairExpGain
 _0804C1C4: .4byte gEkrInitPosReal
 
-	thumb_func_start sub_0804C1C8
-sub_0804C1C8: @ 0x0804C1C8
+	thumb_func_start sub_804C1C8
+sub_804C1C8: @ 0x0804C1C8
 	push {r4, lr}
 	adds r4, r0, #0
 	ldrh r0, [r4, #0x2c]
@@ -1082,11 +1082,11 @@ sub_0804C1C8: @ 0x0804C1C8
 	ldrsh r0, [r0, r2]
 	cmn r1, r0
 	beq _0804C1FC
-	ldr r0, _0804C1F8 @ =sub_0804C20C
+	ldr r0, _0804C1F8 @ =sub_804C20C
 	b _0804C1FE
 	.align 2, 0
 _0804C1F4: .4byte gEkrPairExpGain
-_0804C1F8: .4byte sub_0804C20C
+_0804C1F8: .4byte sub_804C20C
 _0804C1FC:
 	ldr r0, _0804C208 @ =EkrBattleExecPopup
 _0804C1FE:
@@ -1098,8 +1098,8 @@ _0804C200:
 	.align 2, 0
 _0804C208: .4byte EkrBattleExecPopup
 
-	thumb_func_start sub_0804C20C
-sub_0804C20C: @ 0x0804C20C
+	thumb_func_start sub_804C20C
+sub_804C20C: @ 0x0804C20C
 	push {r4, r5, r6, r7, lr}
 	mov r7, sl
 	mov r6, sb
@@ -1302,7 +1302,7 @@ _0804C37C:
 	movs r0, #0
 	ldr r3, [sp, #8]
 	strh r0, [r3, #0x2c]
-	ldr r0, _0804C3F0 @ =sub_0804C3F4
+	ldr r0, _0804C3F0 @ =sub_804C3F4
 	str r0, [r3, #0xc]
 	add sp, #0xc
 	pop {r3, r4, r5}
@@ -1318,10 +1318,10 @@ _0804C3E0: .4byte 0x02019484
 _0804C3E4: .4byte gUnk_081DF764
 _0804C3E8: .4byte gUnk_081DFA64
 _0804C3EC: .4byte 0x060020E0
-_0804C3F0: .4byte sub_0804C3F4
+_0804C3F0: .4byte sub_804C3F4
 
-	thumb_func_start sub_0804C3F4
-sub_0804C3F4: @ 0x0804C3F4
+	thumb_func_start sub_804C3F4
+sub_804C3F4: @ 0x0804C3F4
 	adds r2, r0, #0
 	ldrh r1, [r2, #0x2c]
 	adds r1, #1
@@ -1332,11 +1332,11 @@ sub_0804C3F4: @ 0x0804C3F4
 	ble _0804C414
 	movs r0, #0
 	strh r0, [r2, #0x2c]
-	ldr r0, _0804C410 @ =sub_0804C440
+	ldr r0, _0804C410 @ =sub_804C440
 	str r0, [r2, #0xc]
 	b _0804C43A
 	.align 2, 0
-_0804C410: .4byte sub_0804C440
+_0804C410: .4byte sub_804C440
 _0804C414:
 	ldr r3, _0804C43C @ =gDispIo
 	adds r2, r3, #0
@@ -1362,8 +1362,8 @@ _0804C43A:
 	.align 2, 0
 _0804C43C: .4byte gDispIo
 
-	thumb_func_start sub_0804C440
-sub_0804C440: @ 0x0804C440
+	thumb_func_start sub_804C440
+sub_804C440: @ 0x0804C440
 	push {r4, lr}
 	adds r1, r0, #0
 	ldrh r0, [r1, #0x2c]
@@ -1398,7 +1398,7 @@ _0804C47A:
 	adds r0, r0, r3
 	strh r0, [r1, #0x2e]
 _0804C480:
-	ldr r0, _0804C4A8 @ =sub_0804C4AC
+	ldr r0, _0804C4A8 @ =sub_804C4AC
 	str r0, [r1, #0xc]
 	movs r4, #0xe5
 	lsls r4, r4, #2
@@ -1416,10 +1416,10 @@ _0804C49C:
 	bx r0
 	.align 2, 0
 _0804C4A4: .4byte gEkrPairExpPrevious
-_0804C4A8: .4byte sub_0804C4AC
+_0804C4A8: .4byte sub_804C4AC
 
-	thumb_func_start sub_0804C4AC
-sub_0804C4AC: @ 0x0804C4AC
+	thumb_func_start sub_804C4AC
+sub_804C4AC: @ 0x0804C4AC
 	push {r4, r5, r6, r7, lr}
 	mov r7, sl
 	mov r6, sb
@@ -1504,7 +1504,7 @@ _0804C502:
 	ble _0804C562
 	movs r0, #0
 	strh r0, [r7, #0x2c]
-	ldr r0, _0804C584 @ =sub_0804C588
+	ldr r0, _0804C584 @ =sub_804C588
 	str r0, [r7, #0xc]
 _0804C562:
 	add sp, #4
@@ -1520,10 +1520,10 @@ _0804C574: .4byte 0x02019484
 _0804C578: .4byte gUnk_081DF764
 _0804C57C: .4byte gUnk_081DFA64
 _0804C580: .4byte 0x060020E0
-_0804C584: .4byte sub_0804C588
+_0804C584: .4byte sub_804C588
 
-	thumb_func_start sub_0804C588
-sub_0804C588: @ 0x0804C588
+	thumb_func_start sub_804C588
+sub_804C588: @ 0x0804C588
 	push {r4, lr}
 	adds r4, r0, #0
 	movs r1, #0x2c
@@ -1543,17 +1543,17 @@ _0804C59C:
 	ble _0804C5B2
 	movs r0, #0
 	strh r0, [r4, #0x2c]
-	ldr r0, _0804C5B8 @ =sub_0804C5BC
+	ldr r0, _0804C5B8 @ =sub_804C5BC
 	str r0, [r4, #0xc]
 _0804C5B2:
 	pop {r4}
 	pop {r0}
 	bx r0
 	.align 2, 0
-_0804C5B8: .4byte sub_0804C5BC
+_0804C5B8: .4byte sub_804C5BC
 
-	thumb_func_start sub_0804C5BC
-sub_0804C5BC: @ 0x0804C5BC
+	thumb_func_start sub_804C5BC
+sub_804C5BC: @ 0x0804C5BC
 	adds r1, r0, #0
 	ldrh r2, [r1, #0x2c]
 	adds r2, #1

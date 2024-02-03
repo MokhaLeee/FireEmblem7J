@@ -26,8 +26,8 @@ _0804A286:
 _0804A2A4: .4byte gUnk_08C09B84
 _0804A2A8: .4byte gPlaySt
 
-	thumb_func_start sub_0804A2AC
-sub_0804A2AC: @ 0x0804A2AC
+	thumb_func_start sub_804A2AC
+sub_804A2AC: @ 0x0804A2AC
 	push {lr}
 	adds r3, r0, #0
 	cmp r3, #0
@@ -51,8 +51,8 @@ _0804A2B8:
 _0804A2D4: .4byte gUnk_08C09B94
 _0804A2D8: .4byte gPlaySt
 
-	thumb_func_start sub_0804A2DC
-sub_0804A2DC: @ 0x0804A2DC
+	thumb_func_start sub_804A2DC
+sub_804A2DC: @ 0x0804A2DC
 	push {lr}
 	adds r3, r0, #0
 	cmp r3, #0
@@ -76,8 +76,8 @@ _0804A2E6:
 _0804A304: .4byte gUnk_08C09BA4
 _0804A308: .4byte gPlaySt
 
-	thumb_func_start sub_0804A30C
-sub_0804A30C: @ 0x0804A30C
+	thumb_func_start sub_804A30C
+sub_804A30C: @ 0x0804A30C
 	push {r4, r5, r6, lr}
 	adds r5, r0, #0
 	cmp r5, #0
@@ -92,7 +92,7 @@ _0804A31E:
 	lsls r5, r5, #2
 	adds r5, r5, r0
 	ldr r0, [r5]
-	bl sub_080136C8
+	bl sub_80136C8
 	adds r6, r0, #0
 	ldr r4, _0804A35C @ =gFadeComponentStep
 	subs r4, r4, r6
@@ -115,8 +115,8 @@ _0804A354: .4byte gPlaySt
 _0804A358: .4byte gUnk_08C09B94
 _0804A35C: .4byte gFadeComponentStep
 
-	thumb_func_start sub_0804A360
-sub_0804A360: @ 0x0804A360
+	thumb_func_start sub_804A360
+sub_804A360: @ 0x0804A360
 	push {r4, r5, r6, r7, lr}
 	mov r7, sl
 	mov r6, sb
@@ -308,8 +308,8 @@ _0804A47E:
 	.align 2, 0
 _0804A4C8: .4byte gUnk_08C09B78
 
-	thumb_func_start sub_0804A4CC
-sub_0804A4CC: @ 0x0804A4CC
+	thumb_func_start sub_804A4CC
+sub_804A4CC: @ 0x0804A4CC
 	push {r4, r5, r6, r7, lr}
 	mov r7, sl
 	mov r6, sb
@@ -628,8 +628,8 @@ _0804A734: .4byte gUnk_08C09B78
 _0804A738: .4byte gBg1Tm
 _0804A73C: .4byte gBg0Tm
 
-	thumb_func_start sub_0804A740
-sub_0804A740: @ 0x0804A740
+	thumb_func_start sub_804A740
+sub_804A740: @ 0x0804A740
 	push {r4, r5, r6, r7, lr}
 	sub sp, #4
 	adds r5, r0, #0
@@ -670,7 +670,7 @@ _0804A768:
 	movs r0, #2
 	adds r1, r5, #0
 	adds r2, r6, #0
-	bl sub_08006884
+	bl sub_8006884
 	add sp, #4
 	pop {r4, r5, r6, r7}
 	pop {r0}
@@ -681,8 +681,8 @@ _0804A7A4: .4byte 0x0203DCC4
 _0804A7A8: .4byte gUnk_08C09BBC
 _0804A7AC: .4byte gUnk_08C09BB4
 
-	thumb_func_start sub_0804A7B0
-sub_0804A7B0: @ 0x0804A7B0
+	thumb_func_start sub_804A7B0
+sub_804A7B0: @ 0x0804A7B0
 	push {r4, r5, lr}
 	sub sp, #4
 	adds r5, r0, #0
@@ -702,7 +702,7 @@ sub_0804A7B0: @ 0x0804A7B0
 	movs r0, #2
 	adds r1, r5, #0
 	adds r2, r4, #0
-	bl sub_08006884
+	bl sub_8006884
 	add sp, #4
 	pop {r4, r5}
 	pop {r0}
@@ -711,8 +711,8 @@ sub_0804A7B0: @ 0x0804A7B0
 _0804A7E4: .4byte gUnk_08C09BBC
 _0804A7E8: .4byte gUnk_08C09BB4
 
-	thumb_func_start sub_0804A7EC
-sub_0804A7EC: @ 0x0804A7EC
+	thumb_func_start sub_804A7EC
+sub_804A7EC: @ 0x0804A7EC
 	push {r4, lr}
 	sub sp, #4
 	adds r4, r0, #0
@@ -723,7 +723,7 @@ sub_0804A7EC: @ 0x0804A7EC
 	str r0, [sp]
 	movs r0, #3
 	adds r1, r4, #0
-	bl sub_08006884
+	bl sub_8006884
 	add sp, #4
 	pop {r4}
 	pop {r0}
@@ -731,8 +731,8 @@ sub_0804A7EC: @ 0x0804A7EC
 	.align 2, 0
 _0804A80C: .4byte gUnk_08C09BB4
 
-	thumb_func_start sub_0804A810
-sub_0804A810: @ 0x0804A810
+	thumb_func_start sub_804A810
+sub_804A810: @ 0x0804A810
 	ldr r0, _0804A818 @ =0x0203DCC4
 	movs r1, #0
 	ldrsh r0, [r0, r1]
@@ -740,8 +740,8 @@ sub_0804A810: @ 0x0804A810
 	.align 2, 0
 _0804A818: .4byte 0x0203DCC4
 
-	thumb_func_start sub_0804A81C
-sub_0804A81C: @ 0x0804A81C
+	thumb_func_start sub_804A81C
+sub_804A81C: @ 0x0804A81C
 	ldr r0, _0804A824 @ =0x0203DCC4
 	movs r1, #2
 	ldrsh r0, [r0, r1]
@@ -766,8 +766,8 @@ ClearBg0Bg1: @ 0x0804A828
 _0804A844: .4byte gBg0Tm
 _0804A848: .4byte gBg1Tm
 
-	thumb_func_start sub_0804A84C
-sub_0804A84C: @ 0x0804A84C
+	thumb_func_start sub_804A84C
+sub_804A84C: @ 0x0804A84C
 	push {r4, r5, r6, lr}
 	adds r3, r0, #0
 	adds r4, r1, #0
@@ -816,8 +816,8 @@ _0804A8A4: .4byte 0x0000106A
 _0804A8A8: .4byte 0x00001076
 _0804A8AC: .4byte 0x0000106B
 
-	thumb_func_start sub_0804A8B0
-sub_0804A8B0: @ 0x0804A8B0
+	thumb_func_start sub_804A8B0
+sub_804A8B0: @ 0x0804A8B0
 	push {r4, r5, r6, r7, lr}
 	mov r7, sb
 	mov r6, r8
@@ -884,8 +884,8 @@ _0804A91C:
 	pop {r0}
 	bx r0
 
-	thumb_func_start sub_0804A930
-sub_0804A930: @ 0x0804A930
+	thumb_func_start sub_804A930
+sub_804A930: @ 0x0804A930
 	push {r4, r5, lr}
 	adds r3, r0, #0
 	adds r4, r1, #0
@@ -906,8 +906,8 @@ sub_0804A930: @ 0x0804A930
 _0804A954: .4byte gUnk_081DD7F4
 _0804A958: .4byte gUnk_081DDA48
 
-	thumb_func_start sub_0804A95C
-sub_0804A95C: @ 0x0804A95C
+	thumb_func_start sub_804A95C
+sub_804A95C: @ 0x0804A95C
 	push {r4, r5, r6, r7, lr}
 	sub sp, #4
 	adds r4, r0, #0
@@ -950,7 +950,7 @@ _0804A986:
 	movs r0, #2
 	adds r1, r4, #0
 	adds r2, r5, #0
-	bl sub_08006884
+	bl sub_8006884
 	add sp, #4
 	pop {r4, r5, r6, r7}
 	pop {r0}
@@ -961,8 +961,8 @@ _0804A9C4: .4byte 0x0203DCC4
 _0804A9C8: .4byte gUnk_08C09BBC
 _0804A9CC: .4byte gUnk_08C09BB4
 
-	thumb_func_start sub_0804A9D0
-sub_0804A9D0: @ 0x0804A9D0
+	thumb_func_start sub_804A9D0
+sub_804A9D0: @ 0x0804A9D0
 	push {r4, r5, lr}
 	sub sp, #4
 	adds r4, r0, #0
@@ -975,7 +975,7 @@ sub_0804A9D0: @ 0x0804A9D0
 	movs r0, #3
 	adds r1, r4, #0
 	adds r2, r5, #0
-	bl sub_08006884
+	bl sub_8006884
 	add sp, #4
 	pop {r4, r5}
 	pop {r0}
@@ -987,7 +987,7 @@ _0804A9F4: .4byte gUnk_08C09BB4
 UnpackUiWindowFrameGraphics: @ 0x0804A9F8
 	push {lr}
 	movs r0, #0
-	bl sub_0804A2AC
+	bl sub_804A2AC
 	movs r0, #1
 	rsbs r0, r0, #0
 	bl ApplyUiWindowFramePal

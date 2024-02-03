@@ -78,7 +78,7 @@ enum weapon_lv_exp {
     WPN_EXP_S = 251,
 };
 
-// sub_08016470
+// sub_8016470
 int GetItemHpBonus(int item);
 int GetItemPowBonus(int item);
 int GetItemSklBonus(int item);
@@ -90,11 +90,11 @@ int MakeNewItem(int item);
 bool CanUnitUseWeapon(struct Unit *unit, int item);
 bool CanUnitUseWeaponNow(struct Unit *unit, int item);
 bool CanUnitUseStaff(struct Unit *unit, int item);
-// sub_080168A4
-// sub_080168EC
-// sub_08016984
-// sub_08016A4C
-// sub_08016AD0
+// sub_80168A4
+// sub_80168EC
+// sub_8016984
+// sub_8016A4C
+// sub_8016AD0
 u16 GetItemAfterUse(int item);
 u16 GetUnitEquippedWeapon(struct Unit *unit);
 int GetUnitEquippedWeaponSlot(struct Unit *unit);
@@ -103,25 +103,25 @@ void EquipUnitItemSlot(struct Unit *unit, int itemSlot);
 bool IsItemEffectiveAgainst(u16 item, struct Unit *unit);
 char *GetItemDisplayRangeString(int item);
 int GetWeaponLevelFromExp(int wexp);
-// sub_08016DD8
-// sub_08016E38
-// sub_08016E60
-// sub_08016E8C
-// sub_08016F04
-// sub_08016F80
-// sub_08016FBC
+// sub_8016DD8
+// sub_8016E38
+// sub_8016E60
+// sub_8016E8C
+// sub_8016F04
+// sub_8016F80
+// sub_8016FBC
 int GetUnitItemSlot(struct Unit *unit, int itemIndex);
-// sub_0801718C
-// sub_080171B4
-// sub_08017208
-// sub_08017310
-// sub_08017364
-// sub_08017420
-// sub_080174A0
-// sub_080174F4
-// sub_08017574
-// sub_0801759C
-// sub_080175CC
+// sub_801718C
+// sub_80171B4
+// sub_8017208
+// sub_8017310
+// sub_8017364
+// sub_8017420
+// sub_80174A0
+// sub_80174F4
+// sub_8017574
+// sub_801759C
+// sub_80175CC
 int GetItemIndex(int item);
 char *GetItemName(int item);
 int GetItemDescId(int item);
@@ -134,17 +134,17 @@ int GetItemMight(int item);
 int GetItemHit(int item);
 int GetItemWeight(int item);
 int GetItemCrit(int item);
-// sub_08017748
-// sub_08017774
-// sub_0801778C
-// sub_080177A8
+// sub_8017748
+// sub_8017774
+// sub_801778C
+// sub_80177A8
 int GetItemRequiredExp(int item);
-// sub_080177D8
-// sub_080177F0
-// sub_08017808
+// sub_80177D8
+// sub_80177F0
+// sub_8017808
 int GetItemWeaponEffect(int item);
-// sub_08017844
+// sub_8017844
 int GetItemCostPerUse(int item);
-// sub_08017874
+// sub_8017874
 int GetItemAwardedExp(int item);
 // GetItemData

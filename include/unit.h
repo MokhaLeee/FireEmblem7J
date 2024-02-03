@@ -379,7 +379,7 @@ void UnitRemoveInvalidItems(struct Unit *unit);
 int GetUnitItemCount(struct Unit *unit);
 // UnitHasItem
 // LoadUnits
-// sub_08017B44
+// sub_8017B44
 struct Unit *LoadUnit(const struct UnitDefinition *uDef);
 void UnitInitFromDefinition(struct Unit *unit, const struct UnitDefinition *uDef);
 void UnitLoadItemsFromDefinition(struct Unit *unit, const struct UnitDefinition *uDef);
@@ -412,7 +412,7 @@ void UnitUpdateUsedItem(struct Unit *unit, int itemSlot);
 int GetUnitAid(struct Unit *unit);
 int GetUnitMagRange(struct Unit *unit);
 bool UnitHasMagicRank(struct Unit *unit);
-// sub_080188F4
+// sub_80188F4
 // GetUnitKeyItemSlotForTerrain
 // GetUnitAidIconId
 // GetUnitWeaponUsabilityBits
@@ -424,9 +424,9 @@ bool UnitHasMagicRank(struct Unit *unit);
 const s8* GetUnitMovementCost(struct Unit *unit);
 // GetClassSMSId
 // UpdatePrevDeployStates
-// sub_08018C78
-// sub_08018CC4
-// sub_08018D70
+// sub_8018C78
+// sub_8018CC4
+// sub_8018D70
 int GetUnitCurrentHp(struct Unit *unit);
 int GetUnitMaxHp(struct Unit *unit);
 int GetUnitPower(struct Unit *unit);

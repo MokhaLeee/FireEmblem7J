@@ -52,8 +52,8 @@ _0804C8EE:
 	pop {r0}
 	bx r0
 
-	thumb_func_start sub_0804C8F4
-sub_0804C8F4: @ 0x0804C8F4
+	thumb_func_start sub_804C8F4
+sub_804C8F4: @ 0x0804C8F4
 	push {r4, r5, r6, r7, lr}
 	sub sp, #4
 	adds r4, r0, #0
@@ -94,8 +94,8 @@ _0804C90A:
 _0804C93C: .4byte gUnk_081DF024
 _0804C940: .4byte 0x01000008
 
-	thumb_func_start sub_0804C944
-sub_0804C944: @ 0x0804C944
+	thumb_func_start sub_804C944
+sub_804C944: @ 0x0804C944
 	push {r4, r5, r6, lr}
 	adds r5, r1, #0
 	lsls r0, r0, #0x10
@@ -268,33 +268,33 @@ _0804CA68:
 	ldrsh r0, [r6, r1]
 	ldr r7, _0804CBE8 @ =0x02017700
 	adds r1, r7, #0
-	bl sub_0804C944
+	bl sub_804C944
 	ldr r5, _0804CBEC @ =0x0203E0A0
 	movs r2, #0
 	ldrsh r0, [r5, r2]
 	adds r1, r7, #6
-	bl sub_0804C944
+	bl sub_804C944
 	ldr r4, _0804CBF0 @ =0x0203E0A4
 	movs r1, #0
 	ldrsh r0, [r4, r1]
 	adds r1, r7, #0
 	adds r1, #0xc
-	bl sub_0804C944
+	bl sub_804C944
 	movs r2, #2
 	ldrsh r0, [r6, r2]
 	adds r1, r7, #0
 	adds r1, #0x12
-	bl sub_0804C944
+	bl sub_804C944
 	movs r1, #2
 	ldrsh r0, [r5, r1]
 	adds r1, r7, #0
 	adds r1, #0x18
-	bl sub_0804C944
+	bl sub_804C944
 	movs r2, #2
 	ldrsh r0, [r4, r2]
 	adds r1, r7, #0
 	adds r1, #0x1e
-	bl sub_0804C944
+	bl sub_804C944
 	movs r0, #0
 	str r0, [sp]
 	ldr r1, _0804CBF4 @ =0x020169C8
@@ -352,7 +352,7 @@ _0804CB1E:
 	ldr r0, [r0]
 	adds r0, #0x4a
 	ldrh r0, [r0]
-	bl sub_08017808
+	bl sub_8017808
 	movs r1, #0xee
 	lsls r1, r1, #1
 	bl PutIconObjImg
@@ -360,7 +360,7 @@ _0804CB1E:
 	ldr r0, [r0]
 	adds r0, #0x4a
 	ldrh r0, [r0]
-	bl sub_08017808
+	bl sub_8017808
 	movs r1, #0xef
 	lsls r1, r1, #1
 	bl PutIconObjImg
@@ -535,8 +535,8 @@ DisableEkrGauge: @ 0x0804CCD0
 	.align 2, 0
 _0804CCDC: .4byte 0x02000068
 
-	thumb_func_start sub_0804CCE0
-sub_0804CCE0: @ 0x0804CCE0
+	thumb_func_start sub_804CCE0
+sub_804CCE0: @ 0x0804CCE0
 	adds r3, r0, #0
 	cmp r1, #0
 	ble _0804CD08
@@ -687,7 +687,7 @@ _0804CDAE:
 	movs r1, #0xf
 	adds r2, r4, #0
 	movs r3, #2
-	bl sub_08067128
+	bl sub_8067128
 _0804CE00:
 	mov r4, sb
 	ldr r0, [r4, #0x50]
@@ -718,7 +718,7 @@ _0804CE00:
 	movs r1, #0x10
 	adds r2, r4, #0
 	movs r3, #3
-	bl sub_08067128
+	bl sub_8067128
 _0804CE40:
 	movs r0, #1
 	bl EnableBgSync
@@ -1101,8 +1101,8 @@ _0804D132:
 _0804D13A:
 	lsls r0, r7, #0x10
 
-	thumb_func_start sub_0804D13C
-sub_0804D13C: @ 0x0804D13C
+	thumb_func_start sub_804D13C
+sub_804D13C: @ 0x0804D13C
 	asrs r0, r0, #0x10
 	cmp r0, #0x28
 	ble _0804D144
@@ -1145,13 +1145,13 @@ _0804D152:
 	lsls r1, r6, #0x10
 	asrs r1, r1, #0x10
 	adds r0, r4, #0
-	bl sub_0806748C
+	bl sub_806748C
 	ldr r3, [sp, #0xd8]
 	cmp r3, #1
 	bne _0804D19E
 	ldr r1, _0804D1FC @ =0x02016E48
 	adds r0, r4, #0
-	bl sub_0804C8F4
+	bl sub_804C8F4
 _0804D19E:
 	add r1, sp, #8
 	ldr r0, [sp, #0xe0]
@@ -1177,13 +1177,13 @@ _0804D1C2:
 	lsls r2, r3, #0x10
 	asrs r2, r2, #0x10
 	adds r0, r4, #0
-	bl sub_0806748C
+	bl sub_806748C
 	ldr r0, [sp, #0xd8]
 	cmp r0, #1
 	bne _0804D1E0
 	ldr r1, _0804D200 @ =0x02017248
 	adds r0, r4, #0
-	bl sub_0804C8F4
+	bl sub_804C8F4
 _0804D1E0:
 	cmp r5, #0
 	beq _0804D204
@@ -1298,13 +1298,13 @@ _0804D276:
 	lsls r1, r6, #0x10
 	asrs r1, r1, #0x10
 	adds r0, r4, #0
-	bl sub_0806748C
+	bl sub_806748C
 	ldr r3, [sp, #0xd8]
 	cmp r3, #1
 	bne _0804D2CE
 	ldr r1, _0804D328 @ =0x02017048
 	adds r0, r4, #0
-	bl sub_0804C8F4
+	bl sub_804C8F4
 _0804D2CE:
 	add r1, sp, #8
 	ldr r0, [sp, #0xe0]
@@ -1330,13 +1330,13 @@ _0804D2F2:
 	lsls r2, r3, #0x10
 	asrs r2, r2, #0x10
 	adds r0, r4, #0
-	bl sub_0806748C
+	bl sub_806748C
 	ldr r0, [sp, #0xd8]
 	cmp r0, #1
 	bne _0804D310
 	ldr r1, _0804D32C @ =0x02017448
 	adds r0, r4, #0
-	bl sub_0804C8F4
+	bl sub_804C8F4
 _0804D310:
 	cmp r5, #0
 	beq _0804D330
@@ -1487,7 +1487,7 @@ _0804D424:
 	adds r1, r0, #0
 	add r0, sp, #8
 	ldr r2, [sp, #0xe4]
-	bl sub_0804CCE0
+	bl sub_804CCE0
 	add r0, sp, #8
 	movs r1, #0xe5
 	lsls r1, r1, #1
@@ -1540,7 +1540,7 @@ _0804D490:
 	adds r1, r0, #0
 	add r0, sp, #8
 	ldr r2, [sp, #0xe4]
-	bl sub_0804CCE0
+	bl sub_804CCE0
 	add r0, sp, #8
 	movs r1, #0xe5
 	lsls r1, r1, #1
@@ -1835,7 +1835,7 @@ _0804D68A:
 	movs r1, #0xf
 	adds r2, r4, #0
 	movs r3, #2
-	bl sub_08067128
+	bl sub_8067128
 _0804D6DC:
 	ldr r0, [r7, #0x50]
 	cmp r0, #0
@@ -1863,7 +1863,7 @@ _0804D6DC:
 	movs r1, #0xf
 	adds r2, r4, #0
 	movs r3, #3
-	bl sub_08067128
+	bl sub_8067128
 _0804D716:
 	movs r0, #1
 	bl EnableBgSync
@@ -1881,8 +1881,8 @@ _0804D72C: .4byte gBg0Tm
 _0804D730: .4byte gUnk_081DE8A8
 _0804D734: .4byte gUnk_081DE95C
 
-	thumb_func_start sub_0804D738
-sub_0804D738: @ 0x0804D738
+	thumb_func_start sub_804D738
+sub_804D738: @ 0x0804D738
 	push {r4, r5, r6, lr}
 	sub sp, #0x10
 	ldr r4, _0804D82C @ =gDispIo
@@ -1987,7 +1987,7 @@ sub_0804D738: @ 0x0804D738
 	bl GetBattleAnimArenaFlag
 	cmp r0, #0
 	bne _0804D840
-	bl sub_0804D894
+	bl sub_804D894
 	b _0804D84C
 	.align 2, 0
 _0804D82C: .4byte gDispIo
@@ -2033,8 +2033,8 @@ _0804D84C:
 	.align 2, 0
 _0804D890: .4byte gDispIo
 
-	thumb_func_start sub_0804D894
-sub_0804D894: @ 0x0804D894
+	thumb_func_start sub_804D894
+sub_804D894: @ 0x0804D894
 	push {r4, r5, r6, r7, lr}
 	mov r7, r8
 	push {r7}
@@ -2152,7 +2152,7 @@ _0804D920:
 	ldrh r0, [r0]
 	strh r0, [r4, #0x10]
 	adds r0, r4, #0
-	bl sub_08055718
+	bl sub_8055718
 	pop {r3}
 	mov r8, r3
 	pop {r4, r5, r6, r7}
@@ -2365,13 +2365,13 @@ _0804DB3A:
 	movs r1, #1
 	movs r2, #0x14
 	movs r3, #2
-	bl sub_08067128
+	bl sub_8067128
 	str r5, [sp]
 	adds r0, r6, #0
 	movs r1, #1
 	movs r2, #0x14
 	movs r3, #3
-	bl sub_08067128
+	bl sub_8067128
 	movs r0, #1
 	bl EnableBgSync
 	ldr r6, _0804DC08 @ =0x0203DFF8
@@ -2416,8 +2416,8 @@ _0804DC0C: .4byte gUnk_081DEC14
 _0804DC10: .4byte gPal + 0x40
 _0804DC14: .4byte gEkrBg0QuakeVec
 
-	thumb_func_start sub_0804DC18
-sub_0804DC18: @ 0x0804DC18
+	thumb_func_start sub_804DC18
+sub_804DC18: @ 0x0804DC18
 	push {r4, r5, lr}
 	ldr r0, _0804DC30 @ =gEkrDistanceType
 	movs r1, #0
@@ -2556,8 +2556,8 @@ _0804DD44: .4byte gpProcEfxStatusUnits
 _0804DD48: .4byte 0x02017778
 _0804DD4C: .4byte 0x0201777C
 
-	thumb_func_start sub_0804DD50
-sub_0804DD50: @ 0x0804DD50
+	thumb_func_start sub_804DD50
+sub_804DD50: @ 0x0804DD50
 	ldr r0, _0804DD64 @ =0x02017728
 	ldr r0, [r0]
 	cmp r0, #0

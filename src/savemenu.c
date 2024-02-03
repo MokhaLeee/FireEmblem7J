@@ -34,7 +34,7 @@ void SaveMenuOnHBlank(void)
     }
 }
 
-void sub_080A3FC8(struct SaveMenuProc * proc)
+void sub_80A3FC8(struct SaveMenuProc * proc)
 {
     Proc_Goto(proc, 0x12);
     StartBgmVolumeChange(0xC0, 0x00, 0x10, NULL);
@@ -57,7 +57,7 @@ u8 SaveMenuIndexToValidBitfile(u8 byte, int num)
     return UINT8_MAX;
 }
 
-u8 sub_080A4018(u8 byte1, u8 byte2)
+u8 sub_80A4018(u8 byte1, u8 byte2)
 {
     int i;
     int count = 0;
@@ -76,7 +76,7 @@ u8 sub_080A4018(u8 byte1, u8 byte2)
     return UINT8_MAX;
 }
 
-u8 sub_080A4054(u8 byte)
+u8 sub_80A4054(u8 byte)
 {
     int i, count = 0;
 

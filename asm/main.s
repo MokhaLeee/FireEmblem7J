@@ -62,7 +62,7 @@ AgbMain: @ 0x08000A20
 	bl RandInit
 	bl LoadAndVerifySramSaveData
 	bl m4aSoundInit
-	bl sub_08003E48
+	bl sub_8003E48
 	ldr r0, _08000AF0 @ =OnVBlank
 	bl SetOnVBlank
 	bl StartGame
@@ -98,11 +98,11 @@ PutBuildInfo: @ 0x08000AF4
 	mov fp, r4
 	adds r4, r0, #0
 	ldr r1, _08000B28 @ =gUnk_080C0C50
-	bl sub_08004E4C
+	bl sub_8004E4C
 	subs r4, #0x40
 	ldr r1, _08000B2C @ =gUnk_080C0C6C
 	adds r0, r4, #0
-	bl sub_08004E4C
+	bl sub_8004E4C
 	pop {r4}
 	pop {r0, r1, r2}
 	mov fp, r1

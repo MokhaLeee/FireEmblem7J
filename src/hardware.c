@@ -96,7 +96,7 @@ void ApplyPaletteExt(void const * data, int startOffset, int size)
 #define GREEN_MASK (0x1F << 5)
 #define BLUE_MASK (0x1F << 10)
 
-void sub_080010CC(u16 *a, int b, int size, int d)
+void sub_80010CC(u16 *a, int b, int size, int d)
 {
     int i;
     u16 *dest = gPal + (b >> 1);
@@ -531,7 +531,7 @@ void SetBgOffset(u16 bgid, u16 x_offset, u16 y_offset)
     }
 }
 
-void sub_08001E6C(void)
+void sub_8001E6C(void)
 {
     sUnk_03000014 = sUnk_03000015 = 0;
 
@@ -539,13 +539,13 @@ void sub_08001E6C(void)
     EnableBgSync(BG0_SYNC_BIT);
 }
 
-void sub_08001EA0(u8 a, u8 b)
+void sub_8001EA0(u8 a, u8 b)
 {
     sUnk_03000014 = a;
     sUnk_03000015 = b;
 }
 
-void sub_08001ED4(u16 *dst, u16 *src)
+void sub_8001ED4(u16 *dst, u16 *src)
 {
     int i;
 
@@ -553,7 +553,7 @@ void sub_08001ED4(u16 *dst, u16 *src)
         *dst++ = *src++;
 }
 
-void sub_08001F14(void *tm, void const *in_data, u8 base, u8 linebits)
+void sub_8001F14(void *tm, void const *in_data, u8 base, u8 linebits)
 {
     u8 const *it = (u8 const *) in_data + 2;
     u8 *out;
@@ -572,7 +572,7 @@ void sub_08001F14(void *tm, void const *in_data, u8 base, u8 linebits)
     }
 }
 
-void sub_08001FF0(u16 *tm, short const *in_data, int unused)
+void sub_8001FF0(u16 *tm, short const *in_data, int unused)
 {
     int x_size = (in_data[0]) & 0xFF;
     int y_size = (in_data[0] >> 8) & 0xFF;
@@ -601,7 +601,7 @@ void ColorFadeInit(void)
         gFadeComponentStep[i] = 0;
 }
 
-void sub_080020CC(u16 const * in_pal, int bank, int count, int component_step)
+void sub_80020CC(u16 const * in_pal, int bank, int count, int component_step)
 {
     int pal_idx, color_idx;
 
@@ -621,7 +621,7 @@ void sub_080020CC(u16 const * in_pal, int bank, int count, int component_step)
     }
 }
 
-void sub_080021F0(int a, int b, int c, int d)
+void sub_80021F0(int a, int b, int c, int d)
 {
     int pal_idx;
     int color_idx;
@@ -642,7 +642,7 @@ void sub_080021F0(int a, int b, int c, int d)
     }
 }
 
-void sub_08002310(int a, int b, int c)
+void sub_8002310(int a, int b, int c)
 {
     int i;
 
@@ -838,7 +838,7 @@ void SoftResetIfKeyCombo(void)
     }
 }
 
-void sub_08002C24(int unk)
+void sub_8002C24(int unk)
 {
     u16 ie = REG_IE;
 

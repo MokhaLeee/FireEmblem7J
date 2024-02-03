@@ -1,8 +1,8 @@
 	.include "macro.inc"
 	.syntax unified
 
-	thumb_func_start sub_08025114
-sub_08025114: @ 0x08025114
+	thumb_func_start sub_8025114
+sub_8025114: @ 0x08025114
 	ldr r1, _08025120 @ =gUnitSpriteSyncRequest
 	ldr r0, [r1]
 	adds r0, #1
@@ -47,8 +47,8 @@ _08025164:
 	.align 2, 0
 _08025168: .4byte gUnk_08190188
 
-	thumb_func_start sub_0802516C
-sub_0802516C: @ 0x0802516C
+	thumb_func_start sub_802516C
+sub_802516C: @ 0x0802516C
 	push {lr}
 	ldr r0, _08025180 @ =gUnk_081901A8
 	movs r1, #0xf0
@@ -189,8 +189,8 @@ _08025262:
 	.align 2, 0
 _08025274: .4byte gUnitSpriteSlots
 
-	thumb_func_start sub_08025278
-sub_08025278: @ 0x08025278
+	thumb_func_start sub_8025278
+sub_8025278: @ 0x08025278
 	push {r4, r5, r6, r7, lr}
 	adds r6, r0, #0
 	ldr r0, _080252B0 @ =gUnitSpriteSlots
@@ -229,7 +229,7 @@ _080252C2:
 	ldr r4, _080252DC @ =gUnitSpriteSmallAllocCount
 	ldr r0, [r4]
 	adds r1, r6, #0
-	bl sub_08025344
+	bl sub_8025344
 	lsrs r1, r0, #0x1f
 	adds r0, r0, r1
 	asrs r0, r0, #1
@@ -292,8 +292,8 @@ _08025338: .4byte gUnitSpriteLargeAllocCount
 _0802533C: .4byte gUnitSpriteSyncRequest
 _08025340: .4byte gUnitSpriteSlots
 
-	thumb_func_start sub_08025344
-sub_08025344: @ 0x08025344
+	thumb_func_start sub_8025344
+sub_8025344: @ 0x08025344
 	push {r4, r5, r6, r7, lr}
 	mov r7, sl
 	mov r6, sb
@@ -707,8 +707,8 @@ _0802568C: .4byte gUnk_08C03114
 _08025690: .4byte gUnk_08C03100
 _08025694: .4byte 0x02033F10
 
-	thumb_func_start sub_08025698
-sub_08025698: @ 0x08025698
+	thumb_func_start sub_8025698
+sub_8025698: @ 0x08025698
 	push {r4, r5, r6, r7, lr}
 	mov r7, sl
 	mov r6, sb
@@ -718,7 +718,7 @@ sub_08025698: @ 0x08025698
 	str r1, [sp]
 	bl GetUnitSMSId
 	str r0, [sp, #4]
-	bl sub_08025278
+	bl sub_8025278
 	lsls r6, r0, #5
 	ldr r1, _08025700 @ =gUnk_08C031D4
 	ldr r2, [sp]
@@ -1091,8 +1091,8 @@ _08025998: .4byte 0x06011800
 _0802599C: .4byte 0x06011C00
 _080259A0: .4byte gUnitSpriteSlots
 
-	thumb_func_start sub_080259A4
-sub_080259A4: @ 0x080259A4
+	thumb_func_start sub_80259A4
+sub_80259A4: @ 0x080259A4
 	push {r4, r5, lr}
 	bl GetGameTime
 	movs r1, #0x48
@@ -1140,8 +1140,8 @@ _08025A00: .4byte 0x06011000
 _08025A04: .4byte 0x02035F10
 _08025A08: .4byte 0x02037F10
 
-	thumb_func_start sub_08025A0C
-sub_08025A0C: @ 0x08025A0C
+	thumb_func_start sub_8025A0C
+sub_8025A0C: @ 0x08025A0C
 	push {lr}
 	ldr r0, _08025A2C @ =gUnitSpriteSyncRequest
 	movs r1, #0
@@ -1188,8 +1188,8 @@ _08025A60:
 _08025A64: .4byte 0x02033F10
 _08025A68: .4byte 0x06011000
 
-	thumb_func_start sub_08025A6C
-sub_08025A6C: @ 0x08025A6C
+	thumb_func_start sub_8025A6C
+sub_8025A6C: @ 0x08025A6C
 	push {r4, r5, r6, lr}
 	adds r4, r0, #0
 	adds r5, r1, #0
@@ -1248,8 +1248,8 @@ _08025AD4: .4byte 0x02035F10
 _08025AD8: .4byte 0x02037F10
 _08025ADC: .4byte gUnk_08C03104
 
-	thumb_func_start sub_08025AE0
-sub_08025AE0: @ 0x08025AE0
+	thumb_func_start sub_8025AE0
+sub_8025AE0: @ 0x08025AE0
 	push {r4, r5, r6, lr}
 	adds r4, r0, #0
 	adds r5, r1, #0
@@ -1311,8 +1311,8 @@ _08025B46:
 _08025B4C: .4byte 0x02033F10
 _08025B50: .4byte gUnk_08C03104
 
-	thumb_func_start sub_08025B54
-sub_08025B54: @ 0x08025B54
+	thumb_func_start sub_8025B54
+sub_8025B54: @ 0x08025B54
 	push {lr}
 	adds r2, r0, #0
 	ldr r1, [r2, #0xc]
@@ -1329,7 +1329,7 @@ _08025B68:
 	cmp r1, #0
 	bne _08025B78
 	adds r0, r2, #0
-	bl sub_08025B80
+	bl sub_8025B80
 	b _08025B7A
 _08025B78:
 	movs r0, #0xf
@@ -1338,8 +1338,8 @@ _08025B7A:
 	bx r1
 	.align 2, 0
 
-	thumb_func_start sub_08025B80
-sub_08025B80: @ 0x08025B80
+	thumb_func_start sub_8025B80
+sub_8025B80: @ 0x08025B80
 	movs r1, #0xc0
 	ldrb r0, [r0, #0xb]
 	ands r1, r0
@@ -1431,10 +1431,10 @@ _08025BD0:
 	strh r0, [r5, #4]
 	adds r0, r6, #0
 	bl GetUnitSMSId
-	bl sub_08025278
+	bl sub_8025278
 	adds r4, r0, #0
 	adds r0, r6, #0
-	bl sub_08025B54
+	bl sub_8025B54
 	adds r4, #0x80
 	movs r1, #0xf
 	ands r1, r0
@@ -1523,7 +1523,7 @@ _08025CDE:
 _08025CE2:
 	movs r0, #0x54
 _08025CE4:
-	bl sub_08025278
+	bl sub_8025278
 	adds r0, r0, r6
 	lsls r0, r0, #0x10
 	lsrs r0, r0, #0x10
@@ -1558,7 +1558,7 @@ _08025D0E:
 	lsls r0, r1, #4
 	strh r0, [r5, #4]
 	movs r0, #0x57
-	bl sub_08025278
+	bl sub_8025278
 	ldr r2, _08025D5C @ =0xFFFFB080
 	adds r0, r0, r2
 	strh r0, [r5, #8]
@@ -1575,7 +1575,7 @@ _08025D44:
 	ldr r0, [r0]
 	cmp r0, #0
 	beq _08025D50
-	bl sub_08025A0C
+	bl sub_8025A0C
 _08025D50:
 	pop {r3, r4}
 	mov r8, r3
@@ -2423,8 +2423,8 @@ _0802640C: .4byte 0x00000107
 _08026410: .4byte Sprite_8x8
 _08026414: .4byte 0x00000811
 
-	thumb_func_start sub_08026418
-sub_08026418: @ 0x08026418
+	thumb_func_start sub_8026418
+sub_8026418: @ 0x08026418
 	ldr r1, _08026420 @ =gBmSt
 	ldr r0, _08026424 @ =0x0000FFFF
 	strh r0, [r1, #0x18]
@@ -2433,8 +2433,8 @@ sub_08026418: @ 0x08026418
 _08026420: .4byte gBmSt
 _08026424: .4byte 0x0000FFFF
 
-	thumb_func_start sub_08026428
-sub_08026428: @ 0x08026428
+	thumb_func_start sub_8026428
+sub_8026428: @ 0x08026428
 	ldr r1, _08026430 @ =0x0203A3D0
 	movs r0, #0
 	str r0, [r1]
@@ -2531,8 +2531,8 @@ _080264E4: .4byte gBmSt
 _080264E8: .4byte 0x0203A3D0
 _080264EC: .4byte gBmMapUnit
 
-	thumb_func_start sub_080264F0
-sub_080264F0: @ 0x080264F0
+	thumb_func_start sub_80264F0
+sub_80264F0: @ 0x080264F0
 	push {lr}
 	ldr r2, _08026534 @ =gBmMapUnit
 	ldr r2, [r2]
@@ -2575,8 +2575,8 @@ _0802653A:
 	bx r1
 	.align 2, 0
 
-	thumb_func_start sub_08026540
-sub_08026540: @ 0x08026540
+	thumb_func_start sub_8026540
+sub_8026540: @ 0x08026540
 	push {r4, r5, r6, r7, lr}
 	mov r7, sb
 	mov r6, r8
@@ -2589,7 +2589,7 @@ sub_08026540: @ 0x08026540
 	adds r0, r4, #0
 	bl GetUnitSMSId
 	adds r5, r0, #0
-	bl sub_08025278
+	bl sub_8025278
 	adds r6, r0, #0
 	mov r1, r8
 	adds r1, #0x10
@@ -2622,7 +2622,7 @@ _08026594:
 	b _08026616
 _0802659A:
 	adds r0, r4, #0
-	bl sub_08025B54
+	bl sub_8025B54
 	movs r1, #0xf
 	ands r1, r0
 	lsls r1, r1, #0xc
@@ -2635,13 +2635,13 @@ _0802659A:
 	mov r0, sb
 	mov r1, r8
 	adds r2, r7, #0
-	bl sub_08006884
+	bl sub_8006884
 	b _08026616
 	.align 2, 0
 _080265C0: .4byte Sprite_16x16
 _080265C4:
 	adds r0, r4, #0
-	bl sub_08025B54
+	bl sub_8025B54
 	movs r1, #0xf
 	ands r1, r0
 	lsls r1, r1, #0xc
@@ -2655,13 +2655,13 @@ _080265C4:
 	str r1, [sp]
 	mov r0, sb
 	mov r1, r8
-	bl sub_08006884
+	bl sub_8006884
 	b _08026616
 	.align 2, 0
 _080265EC: .4byte Sprite_16x32
 _080265F0:
 	adds r0, r4, #0
-	bl sub_08025B54
+	bl sub_8025B54
 	movs r4, #0xf
 	ands r4, r0
 	lsls r4, r4, #0xc
@@ -2676,7 +2676,7 @@ _080265F0:
 	ldr r3, _08026624 @ =Sprite_32x32
 	str r4, [sp]
 	mov r0, sb
-	bl sub_08006884
+	bl sub_8006884
 _08026616:
 	add sp, #4
 	pop {r3, r4}
@@ -2688,8 +2688,8 @@ _08026616:
 	.align 2, 0
 _08026624: .4byte Sprite_32x32
 
-	thumb_func_start sub_08026628
-sub_08026628: @ 0x08026628
+	thumb_func_start sub_8026628
+sub_8026628: @ 0x08026628
 	push {r4, r5, r6, r7, lr}
 	mov r7, sb
 	mov r6, r8
@@ -2703,7 +2703,7 @@ sub_08026628: @ 0x08026628
 	lsrs r7, r3, #0x10
 	bl GetClassSMSId
 	mov r8, r0
-	bl sub_08025278
+	bl sub_8025278
 	adds r4, r0, #0
 	adds r4, #0x80
 	adds r1, r6, #0
@@ -2743,7 +2743,7 @@ _08026686:
 	mov r0, sb
 	adds r1, r6, #0
 	adds r2, r5, #0
-	bl sub_08006884
+	bl sub_8006884
 	b _080266C8
 	.align 2, 0
 _08026698: .4byte Sprite_16x16
@@ -2755,7 +2755,7 @@ _0802669C:
 	str r0, [sp]
 	mov r0, sb
 	adds r1, r6, #0
-	bl sub_08006884
+	bl sub_8006884
 	b _080266C8
 	.align 2, 0
 _080266B0: .4byte Sprite_16x32
@@ -2768,7 +2768,7 @@ _080266B4:
 	adds r0, r7, r4
 	str r0, [sp]
 	mov r0, sb
-	bl sub_08006884
+	bl sub_8006884
 _080266C8:
 	add sp, #4
 	pop {r3, r4}
@@ -2780,8 +2780,8 @@ _080266C8:
 	.align 2, 0
 _080266D8: .4byte Sprite_32x32
 
-	thumb_func_start sub_080266DC
-sub_080266DC: @ 0x080266DC
+	thumb_func_start sub_80266DC
+sub_80266DC: @ 0x080266DC
 	push {r4, r5, r6, r7, lr}
 	mov r7, r8
 	push {r7}
@@ -2792,7 +2792,7 @@ sub_080266DC: @ 0x080266DC
 	adds r0, r3, #0
 	bl GetClassSMSId
 	adds r6, r0, #0
-	bl sub_08025278
+	bl sub_8025278
 	adds r7, r0, #0
 	adds r7, #0x80
 	adds r1, r5, #0
@@ -2845,7 +2845,7 @@ _08026750:
 	str r7, [sp]
 	mov r0, r8
 	adds r1, r5, #0
-	bl sub_080068C4
+	bl sub_80068C4
 	b _08026780
 	.align 2, 0
 _0802675C: .4byte Sprite_16x32
@@ -2864,7 +2864,7 @@ _08026760:
 	ldr r3, _08026790 @ =Sprite_32x32
 	str r7, [sp]
 	mov r0, r8
-	bl sub_080068C4
+	bl sub_80068C4
 _08026780:
 	add sp, #4
 	pop {r3}
@@ -2876,8 +2876,8 @@ _08026780:
 _0802678C: .4byte 0x000001FF
 _08026790: .4byte Sprite_32x32
 
-	thumb_func_start sub_08026794
-sub_08026794: @ 0x08026794
+	thumb_func_start sub_8026794
+sub_8026794: @ 0x08026794
 	push {r4, r5, r6, r7, lr}
 	mov r7, r8
 	push {r7}
@@ -2930,7 +2930,7 @@ _080267F0:
 	str r0, [sp]
 	mov r0, r8
 	adds r1, r6, #0
-	bl sub_08006884
+	bl sub_8006884
 	b _0802681C
 	.align 2, 0
 _08026804: .4byte Sprite_16x32
@@ -2943,7 +2943,7 @@ _08026808:
 	adds r0, r7, r4
 	str r0, [sp]
 	mov r0, r8
-	bl sub_08006884
+	bl sub_8006884
 _0802681C:
 	add sp, #4
 	pop {r3}
@@ -2954,8 +2954,8 @@ _0802681C:
 	.align 2, 0
 _08026828: .4byte Sprite_32x32
 
-	thumb_func_start sub_0802682C
-sub_0802682C: @ 0x0802682C
+	thumb_func_start sub_802682C
+sub_802682C: @ 0x0802682C
 	push {r4, r5, r6, r7, lr}
 	mov r7, sb
 	mov r6, r8
@@ -2968,7 +2968,7 @@ sub_0802682C: @ 0x0802682C
 	ldr r0, [sp, #0x20]
 	bl GetUnitSMSId
 	adds r4, r0, #0
-	bl sub_08025278
+	bl sub_8025278
 	adds r5, r0, #0
 	adds r5, #0x80
 	mov r1, r8
@@ -3002,7 +3002,7 @@ _08026880:
 	b _080268F6
 _08026886:
 	ldr r0, [sp, #0x20]
-	bl sub_08025B80
+	bl sub_8025B80
 	movs r1, #0xf
 	ands r1, r0
 	lsls r1, r1, #0xc
@@ -3013,13 +3013,13 @@ _08026886:
 	mov r0, sb
 	mov r1, r8
 	adds r2, r6, #0
-	bl sub_08006884
+	bl sub_8006884
 	b _080268F6
 	.align 2, 0
 _080268A8: .4byte Sprite_16x16
 _080268AC:
 	ldr r0, [sp, #0x20]
-	bl sub_08025B80
+	bl sub_8025B80
 	movs r1, #0xf
 	ands r1, r0
 	lsls r1, r1, #0xc
@@ -3031,13 +3031,13 @@ _080268AC:
 	str r1, [sp]
 	mov r0, sb
 	mov r1, r8
-	bl sub_08006884
+	bl sub_8006884
 	b _080268F6
 	.align 2, 0
 _080268D0: .4byte Sprite_16x32
 _080268D4:
 	ldr r0, [sp, #0x20]
-	bl sub_08025B80
+	bl sub_8025B80
 	movs r4, #0xf
 	ands r4, r0
 	lsls r4, r4, #0xc
@@ -3050,7 +3050,7 @@ _080268D4:
 	ldr r3, _08026904 @ =Sprite_32x32
 	str r4, [sp]
 	mov r0, sb
-	bl sub_08006884
+	bl sub_8006884
 _080268F6:
 	add sp, #4
 	pop {r3, r4}
@@ -3062,8 +3062,8 @@ _080268F6:
 	.align 2, 0
 _08026904: .4byte Sprite_32x32
 
-	thumb_func_start sub_08026908
-sub_08026908: @ 0x08026908
+	thumb_func_start sub_8026908
+sub_8026908: @ 0x08026908
 	push {r4, r5, r6, r7, lr}
 	mov r7, sb
 	mov r6, r8
@@ -3076,7 +3076,7 @@ sub_08026908: @ 0x08026908
 	ldr r0, [sp, #0x20]
 	bl GetUnitSMSId
 	adds r5, r0, #0
-	bl sub_08025278
+	bl sub_8025278
 	adds r4, r0, #0
 	adds r4, #0x80
 	adds r1, r7, #0
@@ -3115,13 +3115,13 @@ _08026962:
 	mov r0, sb
 	adds r1, r7, #0
 	adds r2, r6, #0
-	bl sub_08006884
+	bl sub_8006884
 	ldr r3, _08026988 @ =gUnk_08C03426
 	str r4, [sp]
 	mov r0, sb
 	adds r1, r7, #0
 	adds r2, r6, #0
-	bl sub_08006884
+	bl sub_8006884
 	b _080269DC
 	.align 2, 0
 _08026984: .4byte gUnk_08C0340E
@@ -3135,13 +3135,13 @@ _0802698C:
 	mov r0, sb
 	adds r1, r7, #0
 	adds r2, r5, #0
-	bl sub_08006884
+	bl sub_8006884
 	ldr r3, _080269B4 @ =gUnk_08C0342E
 	str r4, [sp]
 	mov r0, sb
 	adds r1, r7, #0
 	adds r2, r5, #0
-	bl sub_08006884
+	bl sub_8006884
 	b _080269DC
 	.align 2, 0
 _080269B0: .4byte gUnk_08C03416
@@ -3156,13 +3156,13 @@ _080269B8:
 	mov r0, sb
 	adds r1, r5, #0
 	adds r2, r6, #0
-	bl sub_08006884
+	bl sub_8006884
 	ldr r3, _080269F0 @ =gUnk_08C03436
 	str r4, [sp]
 	mov r0, sb
 	adds r1, r5, #0
 	adds r2, r6, #0
-	bl sub_08006884
+	bl sub_8006884
 _080269DC:
 	add sp, #4
 	pop {r3, r4}
@@ -3175,8 +3175,8 @@ _080269DC:
 _080269EC: .4byte gUnk_08C0341E
 _080269F0: .4byte gUnk_08C03436
 
-	thumb_func_start sub_080269F4
-sub_080269F4: @ 0x080269F4
+	thumb_func_start sub_80269F4
+sub_80269F4: @ 0x080269F4
 	ldr r1, _080269FC @ =gUnitSprites
 	movs r0, #0
 	str r0, [r1]
@@ -3235,8 +3235,8 @@ _08026A48:
 _08026A4A:
 	bx lr
 
-	thumb_func_start sub_08026A4C
-sub_08026A4C: @ 0x08026A4C
+	thumb_func_start sub_8026A4C
+sub_8026A4C: @ 0x08026A4C
 	push {r4, r5, r6, r7, lr}
 	mov r7, sb
 	mov r6, r8

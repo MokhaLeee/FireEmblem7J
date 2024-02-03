@@ -4,11 +4,11 @@
 
 	thumb_func_start MulByQ32
 MulByQ32: @ 0x080BE394
-	add r2, pc, #0x0 @ =sub_080BE398
+	add r2, pc, #0x0 @ =sub_80BE398
 	bx r2
 
-	arm_func_start sub_080BE398
-sub_080BE398: @ 0x080BE398
+	arm_func_start sub_80BE398
+sub_80BE398: @ 0x080BE398
 	umull r2, r3, r0, r1
 	add r0, r3, #0
 	bx lr
@@ -83,13 +83,13 @@ _080BE424: .4byte 0x00000630
 SoundMainRAM: @ 0x080BE428
 	ldrb r3, [r0, #5]
 	cmp r3, #0
-	beq sub_080BE488
-	add r1, pc, #0x4 @ =sub_080BE434
+	beq sub_80BE488
+	add r1, pc, #0x4 @ =sub_80BE434
 	bx r1
 	.align 2, 0
 
-	arm_func_start sub_080BE434
-sub_080BE434: @ 0x080BE434
+	arm_func_start sub_80BE434
+sub_80BE434: @ 0x080BE434
 	cmp r4, #2
 	addeq r7, r0, #0x350
 	addne r7, r5, r8
@@ -110,11 +110,11 @@ _080BE444:
 	strb r0, [r5], #1
 	subs r4, r4, #1
 	bgt _080BE444
-	add r0, pc, #0x2F @ =sub_080BE4B6
+	add r0, pc, #0x2F @ =sub_80BE4B6
 	bx r0
 
-	thumb_func_start sub_080BE488
-sub_080BE488: @ 0x080BE488
+	thumb_func_start sub_80BE488
+sub_80BE488: @ 0x080BE488
 	movs r0, #0
 	mov r1, r8
 	adds r6, r6, r5
@@ -141,8 +141,8 @@ _080BE4A2:
 	subs r1, #1
 	bgt _080BE4A2
 
-	non_word_aligned_thumb_func_start sub_080BE4B6
-sub_080BE4B6: @ 0x080BE4B6
+	non_word_aligned_thumb_func_start sub_80BE4B6
+sub_80BE4B6: @ 0x080BE4B6
 	ldr r4, [sp, #0x18]
 	ldr r0, [r4, #0x18]
 	mov ip, r0
@@ -170,7 +170,7 @@ _080BE4E0:
 	movs r0, #0xc7
 	tst r0, r6
 	bne _080BE4EA
-	b sub_080BE7A8
+	b sub_80BE7A8
 _080BE4EA:
 	movs r0, #0x80
 	tst r0, r6
@@ -208,7 +208,7 @@ _080BE51A:
 _080BE52A:
 	movs r0, #0
 	strb r0, [r4]
-	b sub_080BE7A8
+	b sub_80BE7A8
 _080BE530:
 	movs r0, #0x40
 	tst r0, r6
@@ -285,12 +285,12 @@ _080BE5B4:
 	ldr r5, [sp, #8]
 	ldr r2, [r4, #0x18]
 	ldr r3, [r4, #0x28]
-	add r0, pc, #0x4 @ =sub_080BE5C0
+	add r0, pc, #0x4 @ =sub_80BE5C0
 	bx r0
 	.align 2, 0
 
-	arm_func_start sub_080BE5C0
-sub_080BE5C0: @ 0x080BE5C0
+	arm_func_start sub_80BE5C0
+sub_80BE5C0: @ 0x080BE5C0
 	str r8, [sp]
 	ldrb sl, [r4, #0xa]
 	ldrb fp, [r4, #0xb]
@@ -429,11 +429,11 @@ _080BE794:
 	str r3, [r4, #0x28]
 _080BE79C:
 	ldr r8, [sp]
-	add r0, pc, #0x1 @ =sub_080BE7A8
+	add r0, pc, #0x1 @ =sub_80BE7A8
 	bx r0
 
-	thumb_func_start sub_080BE7A8
-sub_080BE7A8: @ 0x080BE7A8
+	thumb_func_start sub_80BE7A8
+sub_80BE7A8: @ 0x080BE7A8
 	ldr r0, [sp, #4]
 	subs r0, #1
 	ble _080BE7B2
@@ -559,8 +559,8 @@ _080BE864: .4byte gUnk_086C4560
 ld_r3_tp_adr_i: @ 0x080BE868
 	ldr r2, [r1, #0x40]
 
-	non_word_aligned_thumb_func_start sub_080BE86A
-sub_080BE86A: @ 0x080BE86A
+	non_word_aligned_thumb_func_start sub_80BE86A
+sub_80BE86A: @ 0x080BE86A
 	adds r3, r2, #1
 	str r3, [r1, #0x40]
 	ldrb r3, [r2]
@@ -791,10 +791,10 @@ ply_port: @ 0x080BE9E0
 	adds r2, #1
 	ldr r0, _080BE9F4 @ =0x04000060
 	adds r0, r0, r3
-	bl sub_080BE86A
+	bl sub_80BE86A
 
-	thumb_func_start sub_080BE9F0
-sub_080BE9F0: @ 0x080BE9F0
+	thumb_func_start sub_80BE9F0
+sub_80BE9F0: @ 0x080BE9F0
 	strb r3, [r0]
 	bx ip
 	.align 2, 0
@@ -857,7 +857,7 @@ _080BEA4E:
 	cmp r3, #0
 	beq _080BEA60
 	ldr r0, [r0, #0x3c]
-	bl sub_080BEC9C
+	bl sub_80BEC9C
 _080BEA60:
 	pop {r0}
 	push {r4, r5, r6, r7}
@@ -967,7 +967,7 @@ _080BEB16:
 	subs r0, #0xcf
 	adds r1, r7, #0
 	adds r2, r5, #0
-	bl sub_080BEC9C
+	bl sub_80BEC9C
 	b _080BEB58
 _080BEB2C:
 	cmp r1, #0xb0
@@ -981,7 +981,7 @@ _080BEB2C:
 	ldr r3, [r3, r0]
 	adds r0, r7, #0
 	adds r1, r5, #0
-	bl sub_080BEC9C
+	bl sub_80BEC9C
 	ldrb r0, [r5]
 	cmp r0, #0
 	beq _080BEBB4
@@ -1133,7 +1133,7 @@ _080BEC48:
 	adds r1, r2, #0
 	ldrb r2, [r5, #9]
 	adds r0, r6, #0
-	bl sub_080BEC9C
+	bl sub_80BEC9C
 	str r0, [r4, #0x20]
 	ldrb r0, [r4, #0x1d]
 	movs r1, #2
@@ -1172,8 +1172,8 @@ _080BEC8C:
 	mov fp, r3
 	pop {r3}
 
-	thumb_func_start sub_080BEC9C
-sub_080BEC9C: @ 0x080BEC9C
+	thumb_func_start sub_80BEC9C
+sub_80BEC9C: @ 0x080BEC9C
 	bx r3
 	.align 2, 0
 _080BECA0: .4byte gUnk_086C47D4
@@ -1203,7 +1203,7 @@ _080BECC0:
 	ldr r3, _080BECEC @ =0x03007FF0
 	ldr r3, [r3]
 	ldr r3, [r3, #0x2c]
-	bl sub_080BEC9C
+	bl sub_80BEC9C
 _080BECD8:
 	strb r6, [r4]
 _080BECDA:
@@ -1500,7 +1500,7 @@ _080BEEDC:
 	ldr r0, [sp, #0xc]
 	ldr r3, [sp, #4]
 	ldr r3, [r3, #0x30]
-	bl sub_080BEC9C
+	bl sub_80BEC9C
 	b _080BEEF8
 _080BEEEE:
 	ldrb r2, [r5, #9]

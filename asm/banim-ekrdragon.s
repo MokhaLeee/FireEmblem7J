@@ -51,7 +51,7 @@ _08066160:
 	ldr r0, [r4, #0x5c]
 	movs r1, #0x3c
 	movs r2, #0xa
-	bl sub_080569B8
+	bl sub_80569B8
 _0806617C:
 	adds r0, r4, #0
 	adds r0, #0x2c
@@ -121,8 +121,8 @@ _080661FA:
 	pop {r0}
 	bx r0
 
-	thumb_func_start sub_08066200
-sub_08066200: @ 0x08066200
+	thumb_func_start sub_8066200
+sub_8066200: @ 0x08066200
 	push {r4, lr}
 	adds r4, r0, #0
 	ldr r0, _08066220 @ =gUnk_08C487B4
@@ -141,8 +141,8 @@ sub_08066200: @ 0x08066200
 	.align 2, 0
 _08066220: .4byte gUnk_08C487B4
 
-	thumb_func_start sub_08066224
-sub_08066224: @ 0x08066224
+	thumb_func_start sub_8066224
+sub_8066224: @ 0x08066224
 	push {r4, r5, lr}
 	adds r4, r0, #0
 	ldr r0, [r4, #0x5c]
@@ -252,8 +252,8 @@ _080662EE:
 	pop {r0}
 	bx r0
 
-	thumb_func_start sub_080662F4
-sub_080662F4: @ 0x080662F4
+	thumb_func_start sub_80662F4
+sub_80662F4: @ 0x080662F4
 	push {r4, r5, r6, lr}
 	sub sp, #8
 	adds r4, r0, #0
@@ -316,8 +316,8 @@ nullsub_54: @ 0x0806637C
 	bx lr
 	.align 2, 0
 
-	thumb_func_start sub_08066380
-sub_08066380: @ 0x08066380
+	thumb_func_start sub_8066380
+sub_8066380: @ 0x08066380
 	push {lr}
 	ldr r0, _08066394 @ =gUnk_08C487EC
 	movs r1, #3
@@ -329,8 +329,8 @@ sub_08066380: @ 0x08066380
 	.align 2, 0
 _08066394: .4byte gUnk_08C487EC
 
-	thumb_func_start sub_08066398
-sub_08066398: @ 0x08066398
+	thumb_func_start sub_8066398
+sub_8066398: @ 0x08066398
 	push {r4, r5, r6, r7, lr}
 	adds r4, r0, #0
 	ldr r0, _080663DC @ =gEkrBg2ScrollFlip
@@ -372,8 +372,8 @@ _080663E0: .4byte gpEkrLvupBg2ScrollOffsetTable2
 _080663E4: .4byte gpEkrLvupBg2ScrollOffsetTable1
 _080663E8: .4byte gSinLut
 
-	thumb_func_start sub_080663EC
-sub_080663EC: @ 0x080663EC
+	thumb_func_start sub_80663EC
+sub_80663EC: @ 0x080663EC
 	ldr r0, _08066408 @ =0x04000004
 	ldrh r1, [r0]
 	movs r0, #1
@@ -394,8 +394,8 @@ _08066408: .4byte 0x04000004
 _0806640C: .4byte 0x0400001A
 _08066410: .4byte gpEkrLvupBg2ScrollOffset
 
-	thumb_func_start sub_08066414
-sub_08066414: @ 0x08066414
+	thumb_func_start sub_8066414
+sub_8066414: @ 0x08066414
 	push {r4, r5, r6, r7, lr}
 	ldr r2, _08066464 @ =gpEkrLvupBg2ScrollOffsetTable2
 	movs r1, #0
@@ -404,7 +404,7 @@ sub_08066414: @ 0x08066414
 	ldr r5, _0806646C @ =gEkrBg2ScrollFlip
 	ldr r6, _08066470 @ =gpEkrLvupBg2ScrollOffsetStart
 	ldr r7, _08066474 @ =gpEkrLvupBg2ScrollOffset
-	ldr r3, _08066478 @ =sub_080663EC
+	ldr r3, _08066478 @ =sub_80663EC
 	mov ip, r3
 	movs r3, #0
 _0806642A:
@@ -441,19 +441,19 @@ _08066468: .4byte gpEkrLvupBg2ScrollOffsetTable1
 _0806646C: .4byte gEkrBg2ScrollFlip
 _08066470: .4byte gpEkrLvupBg2ScrollOffsetStart
 _08066474: .4byte gpEkrLvupBg2ScrollOffset
-_08066478: .4byte sub_080663EC
+_08066478: .4byte sub_80663EC
 _0806647C: .4byte gUnk_08C48804
 
-	thumb_func_start sub_08066480
-sub_08066480: @ 0x08066480
+	thumb_func_start sub_8066480
+sub_8066480: @ 0x08066480
 	push {lr}
 	movs r0, #0
 	bl SetOnHBlankA
 	pop {r0}
 	bx r0
 
-	thumb_func_start sub_0806648C
-sub_0806648C: @ 0x0806648C
+	thumb_func_start sub_806648C
+sub_806648C: @ 0x0806648C
 	ldr r1, _080664A0 @ =gEkrBg2ScrollFlip
 	ldr r0, [r1]
 	cmp r0, #1
@@ -512,8 +512,8 @@ EkrDragonFxHandler_OnIntro: @ 0x080664CC
 	.align 2, 0
 _080664FC: .4byte gUnk_08C48824
 
-	thumb_func_start sub_08066500
-sub_08066500: @ 0x08066500
+	thumb_func_start sub_8066500
+sub_8066500: @ 0x08066500
 	push {r4, r5, r6, r7, lr}
 	mov r7, sl
 	mov r6, sb
@@ -585,8 +585,8 @@ _08066584: .4byte gpEkrLvupBg1ScrollOffsetList1
 _08066588: .4byte gUnk_08C4A008
 _0806658C: .4byte gDispIo
 
-	thumb_func_start sub_08066590
-sub_08066590: @ 0x08066590
+	thumb_func_start sub_8066590
+sub_8066590: @ 0x08066590
 	ldr r0, _080665AC @ =0x04000004
 	ldrh r1, [r0]
 	movs r0, #1
@@ -607,8 +607,8 @@ _080665AC: .4byte 0x04000004
 _080665B0: .4byte 0x0400001C
 _080665B4: .4byte gpEkrLvupBg1ScrollOffset
 
-	thumb_func_start sub_080665B8
-sub_080665B8: @ 0x080665B8
+	thumb_func_start sub_80665B8
+sub_80665B8: @ 0x080665B8
 	push {r4, r5, r6, r7, lr}
 	mov r7, r8
 	push {r7}
@@ -623,7 +623,7 @@ sub_080665B8: @ 0x080665B8
 	ldr r5, _08066624 @ =gpEkrLvupBg1ScrollOffsetStart
 	mov ip, r5
 	ldr r5, _08066628 @ =gpEkrLvupBg1ScrollOffset
-	ldr r6, _0806662C @ =sub_08066590
+	ldr r6, _0806662C @ =sub_8066590
 _080665D6:
 	strh r1, [r3]
 	adds r3, #2
@@ -662,19 +662,19 @@ _0806661C: .4byte gpEkrLvupBg1ScrollOffsetList1
 _08066620: .4byte gEkrBg1ScrollFlip
 _08066624: .4byte gpEkrLvupBg1ScrollOffsetStart
 _08066628: .4byte gpEkrLvupBg1ScrollOffset
-_0806662C: .4byte sub_08066590
+_0806662C: .4byte sub_8066590
 _08066630: .4byte gUnk_08C4883C
 
-	thumb_func_start sub_08066634
-sub_08066634: @ 0x08066634
+	thumb_func_start sub_8066634
+sub_8066634: @ 0x08066634
 	push {lr}
 	bl Proc_Break
 	pop {r0}
 	bx r0
 	.align 2, 0
 
-	thumb_func_start sub_08066640
-sub_08066640: @ 0x08066640
+	thumb_func_start sub_8066640
+sub_8066640: @ 0x08066640
 	push {r4, lr}
 	adds r4, r0, #0
 	ldr r1, _08066658 @ =gEkrBg1ScrollFlip
@@ -722,8 +722,8 @@ _08066698: .4byte gpEkrLvupBg1ScrollOffsetStart
 _0806669C: .4byte gpEkrLvupBg1ScrollOffsetList1
 _080666A0: .4byte gpEkrLvupBg1ScrollOffset
 
-	thumb_func_start sub_080666A4
-sub_080666A4: @ 0x080666A4
+	thumb_func_start sub_80666A4
+sub_80666A4: @ 0x080666A4
 	push {r4, lr}
 	adds r4, r0, #0
 	ldr r0, _080666CC @ =gUnk_08C4885C
@@ -747,8 +747,8 @@ sub_080666A4: @ 0x080666A4
 _080666CC: .4byte gUnk_08C4885C
 _080666D0: .4byte gUnk_08C48874
 
-	thumb_func_start sub_080666D4
-sub_080666D4: @ 0x080666D4
+	thumb_func_start sub_80666D4
+sub_80666D4: @ 0x080666D4
 	push {r4, lr}
 	adds r4, r0, #0
 	ldr r0, [r4, #0x5c]
@@ -846,7 +846,7 @@ _08066784:
 	beq _080667F8
 	b _080667C2
 _080667A8:
-	bl sub_0804DD50
+	bl sub_804DD50
 	cmp r0, #1
 	bne _080667F8
 	b _080667EC
@@ -916,8 +916,8 @@ NewEkrDragonBodyBlack: @ 0x08066804
 	.align 2, 0
 _08066824: .4byte gUnk_08C4887C
 
-	thumb_func_start sub_08066828
-sub_08066828: @ 0x08066828
+	thumb_func_start sub_8066828
+sub_8066828: @ 0x08066828
 	push {r4, r5, r6, lr}
 	sub sp, #4
 	adds r6, r0, #0
@@ -984,8 +984,8 @@ nullsub_55: @ 0x080668B4
 	bx lr
 	.align 2, 0
 
-	thumb_func_start sub_080668B8
-sub_080668B8: @ 0x080668B8
+	thumb_func_start sub_80668B8
+sub_80668B8: @ 0x080668B8
 	push {r4, r5, r6, r7, lr}
 	mov r7, sl
 	mov r6, sb
@@ -1057,8 +1057,8 @@ _08066944: .4byte gUnk_082E7418
 _08066948: .4byte gEkrTsaBuffer
 _0806694C: .4byte gEfxFrameTmap
 
-	thumb_func_start sub_08066950
-sub_08066950: @ 0x08066950
+	thumb_func_start sub_8066950
+sub_8066950: @ 0x08066950
 	push {r4, r5, lr}
 	sub sp, #0x10
 	adds r3, r0, #0
@@ -1121,7 +1121,7 @@ NewEkrDragonTunk: @ 0x080669A4
 _080669CA:
 	strh r0, [r5, #0x32]
 	movs r0, #1
-	bl sub_080034C8
+	bl sub_80034C8
 	adds r0, r5, #0
 	pop {r4, r5}
 	pop {r1}
@@ -1131,8 +1131,8 @@ _080669DC: .4byte ProcScr_EkrDragon_08C4889C
 _080669E0: .4byte gEkrDistanceType
 _080669E4: .4byte 0x0000FFE0
 
-	thumb_func_start sub_080669E8
-sub_080669E8: @ 0x080669E8
+	thumb_func_start sub_80669E8
+sub_80669E8: @ 0x080669E8
 	push {r4, r5, r6, lr}
 	adds r5, r0, #0
 	ldrh r0, [r5, #0x2c]
@@ -1146,7 +1146,7 @@ sub_080669E8: @ 0x080669E8
 	movs r0, #3
 	movs r1, #2
 	movs r2, #3
-	bl sub_08066F80
+	bl sub_8066F80
 	ldr r0, _08066ACC @ =0x00000147
 	movs r1, #0x80
 	lsls r1, r1, #1
@@ -1160,7 +1160,7 @@ _08066A14:
 	movs r0, #3
 	movs r1, #2
 	movs r2, #3
-	bl sub_08066F80
+	bl sub_8066F80
 	ldr r0, _08066ACC @ =0x00000147
 	movs r1, #0x80
 	lsls r1, r1, #1
@@ -1174,7 +1174,7 @@ _08066A32:
 	movs r0, #3
 	movs r1, #2
 	movs r2, #3
-	bl sub_08066F80
+	bl sub_8066F80
 	ldr r0, _08066ACC @ =0x00000147
 	movs r1, #0x80
 	lsls r1, r1, #1
@@ -1217,10 +1217,10 @@ _08066A50:
 	movs r1, #0x32
 	ldrsh r0, [r5, r1]
 	movs r1, #0xf0
-	bl sub_080668B8
+	bl sub_80668B8
 	movs r0, #0
 	adds r1, r4, #0
-	bl sub_08066950
+	bl sub_8066950
 _08066AAE:
 	ldrh r2, [r5, #0x2c]
 	cmp r2, #0x64
@@ -1243,8 +1243,8 @@ _08066AD4: .4byte gEkrTsaBuffer
 _08066AD8: .4byte 0x001F001F
 _08066ADC: .4byte gBg3Tm
 
-	thumb_func_start sub_08066AE0
-sub_08066AE0: @ 0x08066AE0
+	thumb_func_start sub_8066AE0
+sub_8066AE0: @ 0x08066AE0
 	push {r4, r5, r6, r7, lr}
 	sub sp, #4
 	adds r4, r0, #0
@@ -1288,7 +1288,7 @@ sub_08066AE0: @ 0x08066AE0
 	movs r3, #2
 	ldrsh r2, [r5, r3]
 	adds r1, r1, r2
-	bl sub_08066950
+	bl sub_8066950
 	ldrh r1, [r5]
 	ldrh r2, [r5, #2]
 	movs r0, #2
@@ -1389,7 +1389,7 @@ _08066C04:
 	movs r0, #0x3c
 	movs r1, #0x1e
 	movs r2, #0x78
-	bl sub_08066F80
+	bl sub_8066F80
 _08066C14:
 	ldrh r2, [r4, #0x30]
 	cmp r2, #0xc8
@@ -1405,7 +1405,7 @@ _08066C14:
 	movs r3, #0x3c
 	ldrsh r1, [r4, r3]
 	movs r0, #0
-	bl sub_08066950
+	bl sub_8066950
 	movs r0, #2
 	movs r1, #0
 	movs r2, #0
@@ -1461,8 +1461,8 @@ nullsub_56: @ 0x08066CA8
 	bx lr
 	.align 2, 0
 
-	thumb_func_start sub_08066CAC
-sub_08066CAC: @ 0x08066CAC
+	thumb_func_start sub_8066CAC
+sub_8066CAC: @ 0x08066CAC
 	push {r4, r5, lr}
 	sub sp, #8
 	adds r4, r0, #0
@@ -1515,8 +1515,8 @@ _08066D24: .4byte gUnk_082EA7E8
 _08066D28: .4byte gEkrTsaBuffer
 _08066D2C: .4byte gBg1Tm
 
-	thumb_func_start sub_08066D30
-sub_08066D30: @ 0x08066D30
+	thumb_func_start sub_8066D30
+sub_8066D30: @ 0x08066D30
 	push {lr}
 	bl SpellFx_ClearBG1
 	bl SpellFx_ClearColorEffects
@@ -1524,8 +1524,8 @@ sub_08066D30: @ 0x08066D30
 	bx r0
 	.align 2, 0
 
-	thumb_func_start sub_08066D40
-sub_08066D40: @ 0x08066D40
+	thumb_func_start sub_8066D40
+sub_8066D40: @ 0x08066D40
 	push {r4, lr}
 	sub sp, #8
 	adds r2, r0, #0
@@ -1575,8 +1575,8 @@ _08066D98:
 	pop {r0}
 	bx r0
 
-	thumb_func_start sub_08066DA0
-sub_08066DA0: @ 0x08066DA0
+	thumb_func_start sub_8066DA0
+sub_8066DA0: @ 0x08066DA0
 	push {r4, r5, r6, lr}
 	mov r6, r8
 	push {r6}
@@ -1604,8 +1604,8 @@ sub_08066DA0: @ 0x08066DA0
 	.align 2, 0
 _08066DD4: .4byte ProcScr_EkrDragon_08C488E4
 
-	thumb_func_start sub_08066DD8
-sub_08066DD8: @ 0x08066DD8
+	thumb_func_start sub_8066DD8
+sub_8066DD8: @ 0x08066DD8
 	push {r4, r5, r6, r7, lr}
 	mov r7, sl
 	mov r6, sb
@@ -1800,8 +1800,8 @@ _08066F74: .4byte gEkrXPosReal
 _08066F78: .4byte gEkrBgPosition
 _08066F7C: .4byte gEkrYPosReal
 
-	thumb_func_start sub_08066F80
-sub_08066F80: @ 0x08066F80
+	thumb_func_start sub_8066F80
+sub_8066F80: @ 0x08066F80
 	push {r4, r5, r6, lr}
 	adds r4, r0, #0
 	adds r5, r1, #0
@@ -1833,8 +1833,8 @@ sub_08066F80: @ 0x08066F80
 _08066FB8: .4byte ProcScr_EkrDragon_08C488FC
 _08066FBC: .4byte gDispIo
 
-	thumb_func_start sub_08066FC0
-sub_08066FC0: @ 0x08066FC0
+	thumb_func_start sub_8066FC0
+sub_8066FC0: @ 0x08066FC0
 	push {r4, r5, r6, r7, lr}
 	sub sp, #4
 	adds r7, r0, #0
@@ -1886,8 +1886,8 @@ _08067020:
 _08067028: .4byte gPal
 _0806702C: .4byte gEfxPal
 
-	thumb_func_start sub_08067030
-sub_08067030: @ 0x08067030
+	thumb_func_start sub_8067030
+sub_8067030: @ 0x08067030
 	push {r4, r5, r6, lr}
 	adds r6, r0, #0
 	ldr r0, _08067080 @ =gPal
@@ -1928,8 +1928,8 @@ _0806707A:
 _08067080: .4byte gPal
 _08067084: .4byte gEfxPal
 
-	thumb_func_start sub_08067088
-sub_08067088: @ 0x08067088
+	thumb_func_start sub_8067088
+sub_8067088: @ 0x08067088
 	push {r4, r5, r6, r7, lr}
 	sub sp, #4
 	adds r7, r0, #0
@@ -1981,8 +1981,8 @@ _080670E8:
 _080670F0: .4byte gPal
 _080670F4: .4byte gEfxPal
 
-	thumb_func_start sub_080670F8
-sub_080670F8: @ 0x080670F8
+	thumb_func_start sub_80670F8
+sub_80670F8: @ 0x080670F8
 	push {r4, lr}
 	adds r4, r0, #0
 	ldr r2, _08067124 @ =gDispIo

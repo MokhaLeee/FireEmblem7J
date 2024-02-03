@@ -176,44 +176,44 @@ void EfxDragonDeadFallHead_Loop2(struct ProcEkrDragonFx * proc);
 ProcPtr NewEkrDragonStatusFlashing(struct Anim * anim);
 void EkrDragonStatusFlashing_Loop(struct ProcEkrDragonFx * proc);
 
-ProcPtr sub_08066200(struct Anim * anim);
-// ??? sub_08066224
-ProcPtr sub_080662F4(struct Anim * anim);
+ProcPtr sub_8066200(struct Anim * anim);
+// ??? sub_8066224
+ProcPtr sub_80662F4(struct Anim * anim);
 // ??? nullsub_53
 // ??? nullsub_54
-ProcPtr sub_08066380(void);
-// ??? sub_08066398
-// ??? sub_080663EC
-ProcPtr sub_08066414(struct Anim * anim);
-// ??? sub_08066480
-// ??? sub_0806648C
+ProcPtr sub_8066380(void);
+// ??? sub_8066398
+// ??? sub_80663EC
+ProcPtr sub_8066414(struct Anim * anim);
+// ??? sub_8066480
+// ??? sub_806648C
 ProcPtr EkrDragonFxHandler_OnIntro(int, int, int, int);
-// ??? sub_08066500
-// ??? sub_08066590
-void sub_080665B8(int, u16);
-// ??? sub_08066634
-// ??? sub_08066640
-ProcPtr sub_080666A4(struct Anim * anim);
-// ??? sub_080666D4
+// ??? sub_8066500
+// ??? sub_8066590
+void sub_80665B8(int, u16);
+// ??? sub_8066634
+// ??? sub_8066640
+ProcPtr sub_80666A4(struct Anim * anim);
+// ??? sub_80666D4
 ProcPtr NewEkrDragonBodyBlack(struct Anim * anim);
-// ??? sub_08066828
+// ??? sub_8066828
 // ??? nullsub_55
-// ??? sub_080668B8
-// ??? sub_08066950
+// ??? sub_80668B8
+// ??? sub_8066950
 ProcPtr NewEkrDragonTunk(struct Anim * anim);
-// ??? sub_080669E8
-// ??? sub_08066AE0
+// ??? sub_80669E8
+// ??? sub_8066AE0
 // ??? nullsub_56
-void sub_08066CAC(struct Anim * anim, int);
-// ??? sub_08066D30
-// ??? sub_08066D40
-void sub_08066DA0(ProcPtr parent, int, int);
-// ??? sub_08066DD8
-// ??? sub_08066F80
-// ??? sub_08066FC0
-// ??? sub_08067030
-// ??? sub_08067088
-// ??? sub_080670F8
+void sub_8066CAC(struct Anim * anim, int);
+// ??? sub_8066D30
+// ??? sub_8066D40
+void sub_8066DA0(ProcPtr parent, int, int);
+// ??? sub_8066DD8
+// ??? sub_8066F80
+// ??? sub_8066FC0
+// ??? sub_8067030
+// ??? sub_8067088
+// ??? sub_80670F8
 
 extern u16 Pal_EkrDragon[0x10];
 extern u16 Pal_EkrDragon_082E6C60[0x10];

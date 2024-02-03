@@ -43,10 +43,10 @@ ProcScr_GameControl: @ 0xC01744
         .word 0x0
         @ PROC_CALL_2
         .short 0x16, 0x0
-        .word sub_08012C64
+        .word sub_8012C64
         @ PROC_CALL
         .short 0x2, 0x0
-        .word sub_08012E40
+        .word sub_8012E40
         @ PROC_YIELD
         .short 0xe, 0x0
         .word 0x0
@@ -61,10 +61,10 @@ ProcScr_GameControl: @ 0xC01744
         .word 0x0
         @ PROC_CALL
         .short 0x2, 0x0
-        .word sub_08012D60
+        .word sub_8012D60
         @ PROC_CALL
         .short 0x2, 0x0
-        .word sub_08012E40
+        .word sub_8012E40
         @ PROC_YIELD
         .short 0xe, 0x0
         .word 0x0
@@ -127,7 +127,7 @@ ProcScr_GameControl: @ 0xC01744
         .word 0x0
         @ PROC_CALL
         .short 0x2, 0x0
-        .word sub_080A7A94
+        .word sub_80A7A94
         @ PROC_YIELD
         .short 0xe, 0x0
         .word 0x0
@@ -142,13 +142,13 @@ ProcScr_GameControl: @ 0xC01744
         .word ForceEnableSounds
         @ PROC_CALL
         .short 0x2, 0x0
-        .word sub_080A5AA0
+        .word sub_80A5AA0
         @ PROC_YIELD
         .short 0xe, 0x0
         .word 0x0
         @ PROC_CALL
         .short 0x2, 0x0
-        .word sub_08012E64
+        .word sub_8012E64
         @ PROC_YIELD
         .short 0xe, 0x0
         .word 0x0
@@ -157,22 +157,22 @@ ProcScr_GameControl: @ 0xC01744
         .word 0x0
         @ PROC_CALL
         .short 0x2, 0x0
-        .word sub_08013050
+        .word sub_8013050
         @ PROC_CALL
         .short 0x2, 0x0
-        .word sub_08013198
+        .word sub_8013198
         @ PROC_START_CHILD_BLOCKING
         .short 0x6, 0x1
         .word 0x8db0fc4
         @ PROC_CALL
         .short 0x2, 0x0
-        .word sub_080130E8
+        .word sub_80130E8
         @ PROC_YIELD
         .short 0xe, 0x0
         .word 0x0
         @ PROC_CALL
         .short 0x2, 0x0
-        .word sub_0802E4E8
+        .word sub_802E4E8
         @ PROC_YIELD
         .short 0xe, 0x0
         .word 0x0
@@ -184,22 +184,22 @@ ProcScr_GameControl: @ 0xC01744
         .word 0x0
         @ PROC_CALL
         .short 0x2, 0x0
-        .word sub_08012FEC
+        .word sub_8012FEC
         @ PROC_YIELD
         .short 0xe, 0x0
         .word 0x0
         @ PROC_CALL
         .short 0x2, 0x0
-        .word sub_080131A8
+        .word sub_80131A8
         @ PROC_LABEL
         .short 0xb, 0x10
         .word 0x0
         @ PROC_CALL
         .short 0x2, 0x0
-        .word sub_0801309C
+        .word sub_801309C
         @ PROC_CALL
         .short 0x2, 0x0
-        .word sub_080130C0
+        .word sub_80130C0
         @ PROC_YIELD
         .short 0xe, 0x0
         .word 0x0
@@ -217,22 +217,22 @@ ProcScr_GameControl: @ 0xC01744
         .word 0x8db7eb0
         @ PROC_CALL
         .short 0x2, 0x0
-        .word sub_0807FD9C
+        .word sub_807FD9C
         @ PROC_YIELD
         .short 0xe, 0x0
         .word 0x0
         @ PROC_CALL
         .short 0x2, 0x0
-        .word sub_080130DC
+        .word sub_80130DC
         @ PROC_CALL
         .short 0x2, 0x0
-        .word sub_080A9590
+        .word sub_80A9590
         @ PROC_YIELD
         .short 0xe, 0x0
         .word 0x0
         @ PROC_CALL
         .short 0x2, 0x0
-        .word sub_0807FE8C
+        .word sub_807FE8C
         @ PROC_START_CHILD_BLOCKING
         .short 0x6, 0x1
         .word 0x8db8088
@@ -241,7 +241,7 @@ ProcScr_GameControl: @ 0xC01744
         .word 0x0
         @ PROC_CALL
         .short 0x2, 0x0
-        .word sub_08012F2C
+        .word sub_8012F2C
         @ PROC_LABEL
         .short 0xb, 0x14
         .word 0x0
@@ -256,19 +256,19 @@ ProcScr_GameControl: @ 0xC01744
         .word 0x0
         @ PROC_CALL
         .short 0x2, 0x0
-        .word sub_080130E8
+        .word sub_80130E8
         @ PROC_CALL
         .short 0x2, 0x0
-        .word sub_0802E650
+        .word sub_802E650
         @ PROC_YIELD
         .short 0xe, 0x0
         .word 0x0
         @ PROC_CALL
         .short 0x2, 0x0
-        .word sub_08013198
+        .word sub_8013198
         @ PROC_CALL
         .short 0x2, 0x0
-        .word sub_08013070
+        .word sub_8013070
         @ PROC_GOTO
         .short 0xc, 0x7
         .word 0x0
@@ -277,10 +277,10 @@ ProcScr_GameControl: @ 0xC01744
         .word 0x0
         @ PROC_CALL
         .short 0x2, 0x0
-        .word sub_08012FB0
+        .word sub_8012FB0
         @ PROC_CALL
         .short 0x2, 0x0
-        .word sub_0802E4E8
+        .word sub_802E4E8
         @ PROC_YIELD
         .short 0xe, 0x0
         .word 0x0
@@ -292,19 +292,19 @@ ProcScr_GameControl: @ 0xC01744
         .word 0x0
         @ PROC_CALL
         .short 0x2, 0x0
-        .word sub_08012FEC
+        .word sub_8012FEC
         @ PROC_YIELD
         .short 0xe, 0x0
         .word 0x0
         @ PROC_CALL
         .short 0x2, 0x0
-        .word sub_08012FCC
+        .word sub_8012FCC
         @ PROC_SLEEP
         .short 0xe, 0x1e
         .word 0x0
         @ PROC_CALL
         .short 0x2, 0x0
-        .word sub_080BAAB8
+        .word sub_80BAAB8
         @ PROC_YIELD
         .short 0xe, 0x0
         .word 0x0
@@ -316,13 +316,13 @@ ProcScr_GameControl: @ 0xC01744
         .word 0x0
         @ PROC_CALL
         .short 0x2, 0x0
-        .word sub_08043290
+        .word sub_8043290
         @ PROC_YIELD
         .short 0xe, 0x0
         .word 0x0
         @ PROC_CALL
         .short 0x2, 0x0
-        .word sub_08012D98
+        .word sub_8012D98
         @ PROC_GOTO
         .short 0xc, 0x4
         .word 0x0
@@ -331,13 +331,13 @@ ProcScr_GameControl: @ 0xC01744
         .word 0x0
         @ PROC_CALL
         .short 0x2, 0x0
-        .word sub_080448B8
+        .word sub_80448B8
         @ PROC_YIELD
         .short 0xe, 0x0
         .word 0x0
         @ PROC_CALL
         .short 0x2, 0x0
-        .word sub_08012D98
+        .word sub_8012D98
         @ PROC_GOTO
         .short 0xc, 0x4
         .word 0x0
@@ -346,10 +346,10 @@ ProcScr_GameControl: @ 0xC01744
         .word 0x0
         @ PROC_CALL
         .short 0x2, 0x0
-        .word sub_0802EB7C
+        .word sub_802EB7C
         @ PROC_CALL
         .short 0x2, 0x0
-        .word sub_08013128
+        .word sub_8013128
         @ PROC_YIELD
         .short 0xe, 0x0
         .word 0x0
@@ -358,7 +358,7 @@ ProcScr_GameControl: @ 0xC01744
         .word 0x0
         @ PROC_CALL
         .short 0x2, 0x0
-        .word sub_08013160
+        .word sub_8013160
         @ PROC_YIELD
         .short 0xe, 0x0
         .word 0x0
@@ -367,10 +367,10 @@ ProcScr_GameControl: @ 0xC01744
         .word IsEventRunning
         @ PROC_CALL
         .short 0x2, 0x0
-        .word sub_0802EBA0
+        .word sub_802EBA0
         @ PROC_CALL
         .short 0x2, 0x0
-        .word sub_080B9C0C
+        .word sub_80B9C0C
         @ PROC_SLEEP
         .short 0xe, 0x1e
         .word 0x0
@@ -382,28 +382,28 @@ ProcScr_GameControl: @ 0xC01744
         .word 0x0
         @ PROC_CALL
         .short 0x2, 0x0
-        .word sub_08012CA4
+        .word sub_8012CA4
         @ PROC_CALL
         .short 0x2, 0x0
-        .word sub_080144DC
+        .word sub_80144DC
         @ PROC_REPEAT
         .short 0x3, 0x0
-        .word sub_080147B8
+        .word sub_80147B8
         @ PROC_CALL
         .short 0x2, 0x0
-        .word sub_08043948
+        .word sub_8043948
         @ PROC_YIELD
         .short 0xe, 0x0
         .word 0x0
         @ PROC_CALL
         .short 0x2, 0x0
-        .word sub_080144B8
+        .word sub_80144B8
         @ PROC_REPEAT
         .short 0x3, 0x0
-        .word sub_080147B8
+        .word sub_80147B8
         @ PROC_CALL
         .short 0x2, 0x0
-        .word sub_080807BC
+        .word sub_80807BC
         @ PROC_GOTO
         .short 0xc, 0x0
         .word 0x0

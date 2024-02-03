@@ -853,7 +853,7 @@ ProcScr_TitleScreen: @ 0xDB8ED8
         .word Title_SetupMainGraphics
         @ PROC_CALL
         .short 0x2, 0x0
-        .word sub_08014714
+        .word sub_8014714
         @ PROC_YIELD
         .short 0xe, 0x0
         .word 0x0
@@ -868,22 +868,22 @@ ProcScr_TitleScreen: @ 0xDB8ED8
         .word 0x0
         @ PROC_CALL
         .short 0x2, 0x0
-        .word sub_080BB210
+        .word sub_80BB210
         @ PROC_REPEAT
         .short 0x3, 0x0
-        .word sub_080BB29C
+        .word sub_80BB29C
         @ PROC_WHILE
         .short 0x14, 0x0
-        .word sub_080AB5E0
+        .word sub_80AB5E0
         @ PROC_CALL
         .short 0x2, 0x0
-        .word sub_080BB3EC
+        .word sub_80BB3EC
         @ PROC_REPEAT
         .short 0x3, 0x0
-        .word sub_080BB46C
+        .word sub_80BB46C
         @ PROC_CALL
         .short 0x2, 0x0
-        .word sub_080BB510
+        .word sub_80BB510
         @ PROC_LABEL
         .short 0xb, 0x1
         .word 0x0
@@ -895,13 +895,13 @@ ProcScr_TitleScreen: @ 0xDB8ED8
         .word 0x0
         @ PROC_CALL
         .short 0x2, 0x0
-        .word sub_08014690
+        .word sub_8014690
         @ PROC_YIELD
         .short 0xe, 0x0
         .word 0x0
         @ PROC_CALL
         .short 0x2, 0x0
-        .word sub_080BB5B0
+        .word sub_80BB5B0
         @ PROC_END
         .short 0x0, 0x0
         .word 0x0

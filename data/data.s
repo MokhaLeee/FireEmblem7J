@@ -100,13 +100,13 @@ ProcScr_BmMain:
         .word 0x0
         @ PROC_CALL
         .short 0x2, 0x0
-        .word sub_08015918
+        .word sub_8015918
         @ PROC_CALL
         .short 0x2, 0x0
         .word SetFlag_145
         @ PROC_CALL
         .short 0x2, 0x0
-        .word sub_08018CC4
+        .word sub_8018CC4
         @ PROC_CALL_2
         .short 0x16, 0x0
         .word CallChapterStartEventMaybe
@@ -136,7 +136,7 @@ ProcScr_BmMain:
         .word BmMain_ChangePhase
         @ PROC_CALL
         .short 0x2, 0x0
-        .word sub_08015900
+        .word sub_8015900
         @ PROC_LABEL
         .short 0xb, 0x7
         .word 0x0
@@ -166,7 +166,7 @@ ProcScr_BmMain:
         .word 0x8c02920
         @ PROC_CALL_2
         .short 0x16, 0x0
-        .word sub_08015840
+        .word sub_8015840
         @ PROC_LABEL
         .short 0xb, 0x3
         .word 0x0
@@ -178,7 +178,7 @@ ProcScr_BmMain:
         .word 0x8c0617c
         @ PROC_CALL_2
         .short 0x16, 0x0
-        .word sub_080158D4
+        .word sub_80158D4
         @ PROC_GOTO
         .short 0xc, 0x1
         .word 0x0
@@ -190,13 +190,13 @@ ProcScr_BmMain:
         .word RenderMap
         @ PROC_CALL
         .short 0x2, 0x0
-        .word sub_08016400
+        .word sub_8016400
         @ PROC_CALL
         .short 0x2, 0x0
-        .word sub_080144DC
+        .word sub_80144DC
         @ PROC_REPEAT
         .short 0x3, 0x0
-        .word sub_080147B8
+        .word sub_80147B8
         @ PROC_GOTO
         .short 0xc, 0x3
         .word 0x0
@@ -208,16 +208,16 @@ ProcScr_BmMain:
         .word RenderMap
         @ PROC_CALL
         .short 0x2, 0x0
-        .word sub_08016400
+        .word sub_8016400
         @ PROC_CALL
         .short 0x2, 0x0
-        .word sub_080144DC
+        .word sub_80144DC
         @ PROC_REPEAT
         .short 0x3, 0x0
-        .word sub_080147B8
+        .word sub_80147B8
         @ PROC_REPEAT
         .short 0x3, 0x0
-        .word sub_080158B0
+        .word sub_80158B0
         @ PROC_START_CHILD_BLOCKING
         .short 0x6, 0x1
         .word 0x8c0617c
@@ -232,7 +232,7 @@ ProcScr_BmMain:
         .word 0x0
         @ PROC_REPEAT
         .short 0x3, 0x0
-        .word sub_080158B0
+        .word sub_80158B0
         @ PROC_START_CHILD_BLOCKING
         .short 0x6, 0x1
         .word 0x8c0617c
@@ -247,13 +247,13 @@ ProcScr_BmMain:
         .word RenderMap
         @ PROC_CALL
         .short 0x2, 0x0
-        .word sub_08016400
+        .word sub_8016400
         @ PROC_CALL
         .short 0x2, 0x0
-        .word sub_080144DC
+        .word sub_80144DC
         @ PROC_REPEAT
         .short 0x3, 0x0
-        .word sub_080147B8
+        .word sub_80147B8
         @ PROC_GOTO
         .short 0xc, 0x7
         .word 0x0
@@ -265,13 +265,13 @@ ProcScr_BmMain:
         .word RenderMap
         @ PROC_CALL
         .short 0x2, 0x0
-        .word sub_08016400
+        .word sub_8016400
         @ PROC_CALL
         .short 0x2, 0x0
-        .word sub_080144DC
+        .word sub_80144DC
         @ PROC_REPEAT
         .short 0x3, 0x0
-        .word sub_080147B8
+        .word sub_80147B8
         @ PROC_START_CHILD_BLOCKING
         .short 0x6, 0x1
         .word 0x8c0617c
