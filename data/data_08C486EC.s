@@ -1,9 +1,5 @@
 	.section .data
 
-	.global gUnk_08C4A008
-gUnk_08C4A008:	@ 0x08C4A008
-	.incbin "FireEmblem7J.base.gba", 0xC4A008, 0xC4A288 - 0xC4A008
-
 	.global gUnk_08C4A288
 gUnk_08C4A288:	@ 0x08C4A288
 	.incbin "FireEmblem7J.base.gba", 0xC4A288, 0xC4A29C - 0xC4A288

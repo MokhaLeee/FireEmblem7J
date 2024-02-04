@@ -2,21 +2,8 @@
     .include "animscr.inc"
     .include "gba_sprites.inc"
 
-    .global ProcScr_EkrDragon_08C4883C
-ProcScr_EkrDragon_08C4883C:    @ 0x08C4883C
-    .incbin "FireEmblem7J.base.gba", 0xC4883C, 0xC4885C - 0xC4883C
-
-    .global ProcScr_EkrDragon_08C4885C
-ProcScr_EkrDragon_08C4885C:    @ 0x08C4885C
-    .incbin "FireEmblem7J.base.gba", 0xC4885C, 0xC48874 - 0xC4885C
-
-    .global Tsas_EkrDragon_08C48874
-Tsas_EkrDragon_08C48874:    @ 0x08C48874
-        .4byte Tsa_EkrDragon_MainBg
-        .4byte Tsa_EkrDragon_082E7170
-
-    .global ProcScr_EkrDragon_08C4887C
-ProcScr_EkrDragon_08C4887C:    @ 0x08C4887C
+    .global ProcScr_EkrDragonBodyBlack
+ProcScr_EkrDragonBodyBlack:    @ 0x08C4887C
     .incbin "FireEmblem7J.base.gba", 0xC4887C, 0xC4889C - 0xC4887C
 
     .global ProcScr_EkrDragon_08C4889C
@@ -641,3 +628,7 @@ AnimScr_EfxDragonDeadFallHeadFx: @ 0xC49FFC
     ANIMSCR_FORCE_SPRITE AnimSprite_EfxDragonDeadFallBody_08C49E5C, 2
     ANIMSCR_FORCE_SPRITE AnimSprite_EfxDragonDeadFallBody_08C49EA4, 2
     ANIMSCR_BLOCKED
+
+	.global gUnk_08C4A008
+gUnk_08C4A008:	@ 0x08C4A008
+	.incbin "FireEmblem7J.base.gba", 0xC4A008, 0xC4A288 - 0xC4A008

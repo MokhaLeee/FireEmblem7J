@@ -957,8 +957,8 @@ extern const u16 Pals_EkrDragonFlashingWingObj[];
 // ??? gUnk_082E9DD8
 // ??? gUnk_082EA7C8
 // ??? gUnk_082EA7E8
-extern const u8 Img_EkrDragonFireBG[];
-extern const u8 Tsa_EkrDragonFireBG[];
+extern const u8 Img_EkrDragonFireBG2[];
+extern const u8 Tsa_EkrDragonFireBG2[];
 // ??? gUnk_082EB740
 // ??? gUnk_082EB74E
 // ??? gUnk_082EB760

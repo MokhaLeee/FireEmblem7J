@@ -47,8 +47,8 @@ struct ProcEkrDragonIntroFx {
 
     /* 29 */ bool unk29;
     /* 2A */ u16 unk2A;
-    /* 2C */ u16 timer;
-    /* 2E */ s16 terminator;
+    /* 2C */ s16 timer;
+    /* 2E */ s16 timer2;
 
     STRUCT_PAD(0x30, 0x32);
 
@@ -62,9 +62,9 @@ struct ProcEkrDragonIntroFx {
 
     STRUCT_PAD(0x3E, 0x44);
 
-    /* 44 */ int unk44;
-    /* 48 */ int unk48;
-    /* 4C */ int unk4C;
+    /* 44 */ int duration;
+    /* 48 */ int step;
+    /* 4C */ int speed;
     /* 50 */ int unk50;
 };
 
@@ -74,7 +74,7 @@ struct ProcEkrDragonFx {
     /* 29 */ u8 done;
     /* 2A */ s16 unk2A;
     /* 2C */ s16 timer;
-    /* 2E */ s16 unk2E;
+    /* 2E */ s16 duration;
     /* 30 */ s16 unk30;
     /* 32 */ s16 x;
 
@@ -104,17 +104,17 @@ struct ProcEkrDragon {
 
     STRUCT_PAD(0x30, 0x3A);
 
-    /* 3A */ s16 y;
-    /* 3C */ s16 unk3C;
+    /* 3A */ s16 y_lo;
+    /* 3C */ s16 y_hi;
 
     STRUCT_PAD(0x3E, 0x44);
 
     /* 44 */ ProcPtr sproc_flashingobj;
-    /* 48 */ ProcPtr proc48;
-    /* 4C */ ProcPtr proc4C;
+    /* 48 */ ProcPtr sproc_bg2fx;
+    /* 4C */ ProcPtr sproc_bg2scroll;
     /* 50 */ struct ProcEkrDragonFx * mainfxproc;
     /* 54 */ ProcPtr proc54;
-    /* 58 */ ProcPtr proc58;
+    /* 58 */ ProcPtr sproc_bg2scrollhandle;
     /* 5C */ struct Anim * anim;
     /* 60 */ ProcPtr sproc1;
     /* 64 */ struct ProcEkrDragonIntroFx * procfx;
@@ -135,10 +135,10 @@ void EkrDragon_CustomBgFadeIn(struct ProcEkrDragon * proc);
 void EkrDragon_StartDragonTailIntro(struct ProcEkrDragon * proc);
 void EkrDragon_DragonTailDisplay(struct ProcEkrDragon * proc);
 void EkrDragon_StartMainBodyIntro(struct ProcEkrDragon * proc);
-void EkrDragon_DisplayMainBodyIntro(struct ProcEkrDragon * proc);
-void EkrDragon_080657D4(struct ProcEkrDragon * proc);
-void EkrDragon_080658F8(struct ProcEkrDragon * proc);
-void EkrDragon_08065AB0(struct ProcEkrDragon * proc);
+void EkrDragon_PreMainBodyIntro(struct ProcEkrDragon * proc);
+void EkrDragon_StartMainBodyFallIn(struct ProcEkrDragon * proc);
+void EkrDragon_WaitMainBodyFallIn(struct ProcEkrDragon * proc);
+void EkrDragon_PreBattleSpark(struct ProcEkrDragon * proc);
 void EkrDragon_TriggerIntroDone(struct ProcEkrDragon * proc);
 void EkrDragon_InBattleIDLE(struct ProcEkrDragon * proc);
 void EkrDragon_WaitForFadeOut(struct ProcEkrDragon * proc);
@@ -215,31 +215,36 @@ ProcPtr NewEkrDragonFlashingWingObj(struct Anim * anim);
 void EkrDragonFlashingWingObj_Loop(struct ProcEkrDragonStatusFlashing * proc);
 
 /* Fire BG */
-extern CONST_DATA struct ProcCmd ProcScr_EkrDragonFireBG[];
-ProcPtr NewEkrDragonFireBG(struct Anim * anim);
-void EkrDragonFireBG_CallBackNop(struct ProcEkrDragonFx * proc);
-void EkrDragonFireBG_Blocking(struct ProcEkrDragonFx * proc);
+extern CONST_DATA struct ProcCmd ProcScr_EkrDragonFireBG2[];
+ProcPtr NewEkrDragonFireBG2(struct Anim * anim);
+void EkrDragonFireBG2_CallBackNop(struct ProcEkrDragonFx * proc);
+void EkrDragonFireBG2_Blocking(struct ProcEkrDragonFx * proc);
 
 /* Maybe Fire BG move position */
-extern CONST_DATA struct ProcCmd ProcScr_EkrDragonBgScrollHandler[];
-ProcPtr NewEkrDragonBgScrollHandler(void);
-void EkrDragonBgScrollHandler_Loop(struct ProcEkrDragonFx * proc);
+extern CONST_DATA struct ProcCmd ProcScr_EkrDragonBg2ScrollHandler[];
+ProcPtr NewEkrDragonBg2ScrollHandler(void);
+void EkrDragonBg2ScrollHandler_Loop(struct ProcEkrDragonFx * proc);
 
 /* Fire BG special effect ? */
-extern CONST_DATA struct ProcCmd ProcScr_EkrDragonBgScrollExt[];
-void EkrDragonBgScroll_OnVBlank(void);
-ProcPtr NewEkrDragonBgScrollExt(struct Anim * anim);
-void EkrDragonBgScrollExt_CallBack(void);
-void EkrDragonBgScrollExt_Loop(void);
+extern CONST_DATA struct ProcCmd ProcScr_EkrDragonBg2ScrollExt[];
+void EkrDragonBg2Scroll_OnVBlank(void);
+ProcPtr NewEkrDragonBg2ScrollExt(struct Anim * anim);
+void EkrDragonBg2ScrollExt_CallBack(void);
+void EkrDragonBg2ScrollExt_Loop(void);
 
-ProcPtr EkrDragonFxHandler_OnIntro(int, int, int, int);
-void sub_8066500(struct ProcEkrDragonIntroFx * proc);
-// ??? sub_8066590
-void sub_80665B8(int, u16);
-// ??? sub_8066634
-// ??? sub_8066640
-ProcPtr sub_80666A4(struct Anim * anim);
-// ??? sub_80666D4
+/* Fire BG1 on intro */
+ProcPtr NewEkrDragonBg3HfScrollHandler(int, int, int, int);
+void EkrDragonBg3HfScrollHandler_Loop(struct ProcEkrDragonIntroFx * proc);
+
+extern struct ProcCmd CONST_DATA ProcScr_EkrDragonBg3HfScroll[];
+void EkrDragonBg3HfScroll_OnVBlank(void);
+void NewEkrDragonBg3HfScroll(int, u16);
+void EkrDragonBg3HfScroll_Nop(struct ProcEkrDragonIntroFx * proc);
+void EkrDragonBg3HfScroll_Loop(struct ProcEkrDragonIntroFx * proc);
+
+ProcPtr NewEkrDragonFxMain(struct Anim * anim);
+void EkrDragonFxMainHandler(struct ProcEkrDragonFx * proc);
+
 ProcPtr NewEkrDragonBodyBlack(struct Anim * anim);
 // ??? sub_8066828
 // ??? nullsub_55
@@ -262,13 +267,13 @@ void sub_8066DA0(ProcPtr parent, int, int);
 
 extern u16 Pal_EkrDragon[0x10];
 extern const u16 Pals_EkrDragonFlashingWingBg[];
-extern u16 Pal_EkrDragonFireBG[0x10];
+extern u16 Pal_EkrDragonFireBG2[0x10];
 
-extern CONST_DATA struct ProcCmd ProcScr_EkrDragon_08C48824[];
-extern CONST_DATA struct ProcCmd ProcScr_EkrDragon_08C4883C[];
-extern CONST_DATA struct ProcCmd ProcScr_EkrDragon_08C4885C[];
-extern CONST_DATA const u8 * Tsas_EkrDragon_08C48874[];
-extern CONST_DATA struct ProcCmd ProcScr_EkrDragon_08C4887C[];
+extern CONST_DATA struct ProcCmd ProcScr_EkrDragonBg3HfScrollHandler[];
+extern CONST_DATA struct ProcCmd ProcScr_EkrDragonBg3HfScroll[];
+extern CONST_DATA struct ProcCmd ProcScr_EkrDragonFxMain[];
+extern CONST_DATA const u16 * Tsas_EkrDragon_08C48874[];
+extern CONST_DATA struct ProcCmd ProcScr_EkrDragonBodyBlack[];
 extern CONST_DATA struct ProcCmd ProcScr_EkrDragon_08C4889C[];
 extern CONST_DATA struct ProcCmd ProcScr_EkrDragon_08C488C4[];
 extern CONST_DATA struct ProcCmd ProcScr_EkrDragon_08C488E4[];
@@ -281,7 +286,7 @@ extern AnimScr AnimScr_08C49F4C[];
 extern AnimScr AnimScr_EkrDragonHead[];
 extern AnimScr AnimScr_EfxDragonDeadFallBody2[];
 extern AnimScr AnimScr_EfxDragonDeadFallHeadFx[];
-// ??? gUnk_08C4A008
+extern s16 gUnk_08C4A008[];
 // ??? gUnk_08C4A288
 // ??? gUnk_08C4A29C
 // ??? gUnk_08C4A2B4
