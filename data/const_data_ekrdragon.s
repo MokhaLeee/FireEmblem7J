@@ -204,8 +204,8 @@ Tsa_EkrDragon_082E7418:	@ 0x082E7418
 Img_EkrDragonTunkFace:	@ 0x082E76A4
     .incbin "FireEmblem7J.base.gba", 0x2E76A4, 0x2E8584 - 0x2E76A4
 
-    .global Img_EkrDragonSpark
-Img_EkrDragonSpark:	@ 0x082E8584
+    .global Img_EkrDragonBark
+Img_EkrDragonBark:	@ 0x082E8584
     .incbin "FireEmblem7J.base.gba", 0x2E8584, 0x2E9240 - 0x2E8584
 
     .global Img_EfxDragonDeadFallHead

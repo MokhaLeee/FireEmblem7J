@@ -1,6 +1,4 @@
-#include "global.h"
-#include "anime.h"
-#include "oam.h"
+#include "gbafe.h"
 
 typedef void (* AnimCallback_t) (struct Anim * anim);
 

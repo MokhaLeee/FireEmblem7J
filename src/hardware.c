@@ -1,10 +1,4 @@
-#include "global.h"
-#include "hardware.h"
-#include "irq.h"
-#include "proc.h"
-#include "bm.h"
-#include "oam.h"
-#include "armfunc.h"
+#include "gbafe.h"
 
 static u8 sBgSyncBits;
 static bool sPalSyncFlag;

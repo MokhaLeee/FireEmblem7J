@@ -1,5 +1,4 @@
-#include "global.h"
-#include "random.h"
+#include "gbafe.h"
 
 static u16 sRandStA[3];
 static int sRandStB;

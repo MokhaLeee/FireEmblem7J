@@ -1,5 +1,4 @@
-#include "global.h"
-#include "hardware.h"
+#include "gbafe.h"
 
 struct MoveStats EWRAM_DATA gMoveStats = {};
 struct MoveEntry EWRAM_DATA gMoveList[DATA_MOV_LIST_MAX] = {};

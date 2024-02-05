@@ -531,7 +531,7 @@ void StartSpellAnimation(struct Anim * anim);
 // ??? sub_80565FC
 // ??? sub_805660C
 // ??? sub_8056618
-// ??? NewEfxALPHA
+void NewEfxALPHA(struct Anim * anim, int a, int b, int c, int d, int e);
 // ??? sub_8056738
 // ??? sub_805683C
 // ??? sub_805689C

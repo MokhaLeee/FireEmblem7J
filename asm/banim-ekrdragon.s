@@ -1,151 +1,10 @@
 	.include "macro.inc"
 	.syntax unified
 
-	thumb_func_start NewEkrDragonFireBg3
-NewEkrDragonFireBg3: @ 0x08066CAC
-	push {r4, r5, lr}
-	sub sp, #8
-	adds r4, r0, #0
-	adds r5, r1, #0
-	ldr r0, _08066D18 @ =ProcScr_EkrDragonFireBg2
-	movs r1, #3
-	bl Proc_Start
-	str r4, [r0, #0x5c]
-	movs r1, #0
-	strh r1, [r0, #0x2c]
-	strh r5, [r0, #0x2e]
-	str r1, [r0, #0x44]
-	ldr r0, _08066D1C @ =Img_EkrDragonFireBg3
-	movs r1, #0x80
-	lsls r1, r1, #6
-	bl SpellFx_RegisterBgGfx
-	ldr r0, _08066D20 @ =Pal_EkrDragonFireBg3
-	movs r1, #0x20
-	bl SpellFx_RegisterBgPal
-	bl SpellFx_ClearBG1
-	ldr r0, _08066D24 @ =Tsa_EkrDragonFireBg3
-	ldr r4, _08066D28 @ =gEkrTsaBuffer
-	adds r1, r4, #0
-	bl LZ77UnCompWram
-	ldr r1, _08066D2C @ =gBg1Tm
-	movs r0, #1
-	str r0, [sp]
-	adds r0, #0xff
-	str r0, [sp, #4]
-	adds r0, r4, #0
-	movs r2, #0x20
-	movs r3, #0x20
-	bl EfxTmCpyBgHFlip
-	movs r0, #2
-	bl EnableBgSync
-	bl SpellFx_SetSomeColorEffect
-	movs r0, #1
-	movs r1, #0
-	movs r2, #0
-	bl SetBgOffset
-	add sp, #8
-	pop {r4, r5}
-	pop {r0}
-	bx r0
-	.align 2, 0
-_08066D18: .4byte ProcScr_EkrDragonFireBg2
-_08066D1C: .4byte Img_EkrDragonFireBg3
-_08066D20: .4byte Pal_EkrDragonFireBg3
-_08066D24: .4byte Tsa_EkrDragonFireBg3
-_08066D28: .4byte gEkrTsaBuffer
-_08066D2C: .4byte gBg1Tm
 
-	thumb_func_start sub_8066D30
-sub_8066D30: @ 0x08066D30
-	push {lr}
-	bl SpellFx_ClearBG1
-	bl SpellFx_ClearColorEffects
-	pop {r0}
-	bx r0
-	.align 2, 0
 
-	thumb_func_start sub_8066D40
-sub_8066D40: @ 0x08066D40
-	push {r4, lr}
-	sub sp, #8
-	adds r2, r0, #0
-	ldr r0, [r2, #0x44]
-	movs r1, #0x80
-	lsls r1, r1, #1
-	adds r0, r0, r1
-	str r0, [r2, #0x44]
-	ldr r1, _08066D80 @ =gDispIo
-	asrs r0, r0, #8
-	movs r3, #0
-	strh r0, [r1, #0x20]
-	ldrh r0, [r2, #0x2c]
-	adds r0, #1
-	strh r0, [r2, #0x2c]
-	lsls r0, r0, #0x10
-	asrs r1, r0, #0x10
-	cmp r1, #1
-	beq _08066D98
-	movs r4, #0x2e
-	ldrsh r0, [r2, r4]
-	cmp r1, r0
-	bne _08066D84
-	ldr r0, [r2, #0x5c]
-	str r3, [sp]
-	str r3, [sp, #4]
-	movs r1, #0
-	movs r2, #0x1e
-	movs r3, #0x10
-	bl NewEfxALPHA
-	b _08066D98
-	.align 2, 0
-_08066D80: .4byte gDispIo
-_08066D84:
-	movs r0, #0x2c
-	ldrsh r1, [r2, r0]
-	movs r3, #0x2e
-	ldrsh r0, [r2, r3]
-	adds r0, #0x1e
-	cmp r1, r0
-	bne _08066D98
-	adds r0, r2, #0
-	bl Proc_Break
-_08066D98:
-	add sp, #8
-	pop {r4}
-	pop {r0}
-	bx r0
-
-	thumb_func_start sub_8066DA0
-sub_8066DA0: @ 0x08066DA0
-	push {r4, r5, r6, lr}
-	mov r6, r8
-	push {r6}
-	adds r6, r0, #0
-	mov r8, r1
-	adds r5, r2, #0
-	ldr r0, _08066DD4 @ =ProcScr_EkrDragon_08C488E4
-	movs r1, #3
-	bl Proc_Start
-	adds r4, r0, #0
-	str r6, [r4, #0x5c]
-	adds r0, r5, #0
-	movs r1, #0
-	bl NewEfxQuakePure
-	str r0, [r4, #0x60]
-	movs r0, #0
-	strh r0, [r4, #0x2c]
-	mov r0, r8
-	strh r0, [r4, #0x2e]
-	pop {r3}
-	mov r8, r3
-	pop {r4, r5, r6}
-	pop {r0}
-	bx r0
-	.align 2, 0
-_08066DD4: .4byte ProcScr_EkrDragon_08C488E4
-
-	thumb_func_start sub_8066DD8
-sub_8066DD8: @ 0x08066DD8
+	thumb_func_start EkrDragonBarkQuake_Loop
+EkrDragonBarkQuake_Loop: @ 0x08066DD8
 	push {r4, r5, r6, r7, lr}
 	mov r7, sl
 	mov r6, sb
@@ -153,13 +12,16 @@ sub_8066DD8: @ 0x08066DD8
 	push {r5, r6, r7}
 	sub sp, #4
 	mov sb, r0
+
 	ldr r0, [r0, #0x5c]
 	str r0, [sp]
+
 	ldr r4, _08066F6C @ =gEkrBg2QuakeVec
 	ldrh r1, [r4]
 	ldrh r2, [r4, #2]
 	movs r0, #2
 	bl SetBgOffset
+
 	ldr r7, _08066F70 @ =gEkrBg0QuakeVec
 	ldrh r2, [r4]
 	ldrh r3, [r7]
@@ -203,6 +65,7 @@ sub_8066DD8: @ 0x08066DD8
 	ldrh r2, [r4, #2]
 	movs r0, #3
 	bl SetBgOffset
+
 	ldrh r5, [r4]
 	ldr r0, _08066F74 @ =gEkrXPosReal
 	ldrh r0, [r0]
@@ -211,12 +74,14 @@ sub_8066DD8: @ 0x08066DD8
 	ldr r0, [r2]
 	subs r1, r1, r0
 	lsls r1, r1, #0x10
+
 	ldr r3, _08066F7C @ =gEkrYPosReal
 	mov sl, r3
 	ldrh r4, [r4, #2]
 	ldrh r6, [r3]
 	subs r2, r6, r4
 	lsls r2, r2, #0x10
+
 	ldr r3, _08066F74 @ =gEkrXPosReal
 	ldrh r3, [r3, #2]
 	adds r5, r5, r3
@@ -243,6 +108,7 @@ sub_8066DD8: @ 0x08066DD8
 	adds r1, r5, #0
 	adds r2, r4, #0
 	bl SetEkrFrontAnimPostion
+
 	mov r2, r8
 	ldr r1, [sp]
 	strh r2, [r1, #0x32]

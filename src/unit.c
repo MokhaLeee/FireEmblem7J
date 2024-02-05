@@ -1,14 +1,4 @@
-#include "global.h"
-#include "unit.h"
-#include "item.h"
-#include "battle.h"
-#include "map.h"
-#include "action.h"
-#include "bm.h"
-#include "terrain.h"
-#include "constants/items.h"
-#include "constants/terrains.h"
-#include "constants/icons.h"
+#include "gbafe.h"
 
 static inline struct Unit *_GetUnit(int id)
 {

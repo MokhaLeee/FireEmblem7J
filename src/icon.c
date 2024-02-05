@@ -1,7 +1,4 @@
-#include "global.h"
-#include "icon.h"
-#include "hardware.h"
-#include "constants/videoalloc-global.h"
+#include "gbafe.h"
 
 struct IconSt EWRAM_DATA IconStTable[MAX_ICON_COUNT] = {};
 u8 EWRAM_DATA IconDisplayList[MAX_ICON_DISPLAY_COUNT] = {};

@@ -1,12 +1,4 @@
-#include "global.h"
-#include "hardware.h"
-#include "proc.h"
-#include "util.h"
-#include "bm.h"
-#include "map.h"
-#include "anime.h"
-#include "banim.h"
-#include "banim_ekrdragon.h"
+#include "gbafe.h"
 
 void ResetEkrDragonStatus(void)
 {
@@ -168,7 +160,7 @@ struct ProcCmd CONST_DATA ProcScr_EkrDragon[] = {
     PROC_REPEAT(EkrDragon_PreMainBodyIntro),
     PROC_REPEAT(EkrDragon_StartMainBodyFallIn),
     PROC_REPEAT(EkrDragon_WaitMainBodyFallIn),
-    PROC_REPEAT(EkrDragon_PreBattleSpark),
+    PROC_REPEAT(EkrDragon_PreBattleBark),
     PROC_REPEAT(EkrDragon_TriggerIntroDone),
     PROC_REPEAT(EkrDragon_InBattleIDLE),
     PROC_REPEAT(EkrDragon_WaitForFadeOut),
@@ -483,7 +475,7 @@ void EkrDragon_WaitMainBodyFallIn(struct ProcEkrDragon * proc)
     }
 }
 
-void EkrDragon_PreBattleSpark(struct ProcEkrDragon * proc)
+void EkrDragon_PreBattleBark(struct ProcEkrDragon * proc)
 {
     if (gEkrDistanceType == EKR_DISTANCE_FARFAR)
     {
@@ -499,7 +491,7 @@ void EkrDragon_PreBattleSpark(struct ProcEkrDragon * proc)
 
     if (++proc->timer == 0x10D)
     {
-        sub_8066DA0(proc->procfx, 60, 9);
+        NewEkrDragonBarkQuake(proc->procfx, 60, 9);
         PlaySFX(0x2F1, 0x100, 0x78, 0);
     }
 

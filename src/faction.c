@@ -1,7 +1,4 @@
-#include "global.h"
-#include "bm.h"
-#include "unit.h"
-#include "faction.h"
+#include "gbafe.h"
 
 int CountFactionMoveableUnits(int faction) {
 

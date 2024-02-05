@@ -1,7 +1,4 @@
-#include "global.h"
-#include "anime.h"
-#include "banim.h"
-#include "banim_ekrbattle.h"
+#include "gbafe.h"
 
 struct UnkStruct {
     const u32 *unk0;

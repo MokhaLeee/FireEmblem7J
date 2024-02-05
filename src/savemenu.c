@@ -1,6 +1,4 @@
-#include "global.h"
-#include "savemenu.h"
-#include "proc.h"
+#include "gbafe.h"
 
 EWRAM_OVERLAY(savemenu) u8 gUnk_Savemenu_02000000 = 0;
 EWRAM_OVERLAY(savemenu) u8 gUnk_Savemenu_02000001 = 0;

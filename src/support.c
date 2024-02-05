@@ -1,13 +1,4 @@
-#include "support.h"
-#include "global.h"
-
-#include "text.h"
-#include "bm.h"
-#include "unit.h"
-#include "faction.h"
-
-#include "constants/icons.h"
-
+#include "gbafe.h"
 
 int GetUnitSupporterCount(struct Unit* unit) {
 

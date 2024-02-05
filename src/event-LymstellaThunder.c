@@ -1,2 +1,1 @@
-#include "global.h"
-#include "proc.h"
+#include "gbafe.h"

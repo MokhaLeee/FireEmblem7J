@@ -144,7 +144,7 @@ void EkrDragon_StartMainBodyIntro(struct ProcEkrDragon * proc);
 void EkrDragon_PreMainBodyIntro(struct ProcEkrDragon * proc);
 void EkrDragon_StartMainBodyFallIn(struct ProcEkrDragon * proc);
 void EkrDragon_WaitMainBodyFallIn(struct ProcEkrDragon * proc);
-void EkrDragon_PreBattleSpark(struct ProcEkrDragon * proc);
+void EkrDragon_PreBattleBark(struct ProcEkrDragon * proc);
 void EkrDragon_TriggerIntroDone(struct ProcEkrDragon * proc);
 void EkrDragon_InBattleIDLE(struct ProcEkrDragon * proc);
 void EkrDragon_WaitForFadeOut(struct ProcEkrDragon * proc);
@@ -267,10 +267,24 @@ void EkrDragonTunk_Loop2(struct ProcEkrDragon * proc);
 void EkrDragonTunk_NopLoop(struct ProcEkrDragon * proc);
 
 void NewEkrDragonFireBg3(struct Anim * anim, int);
-// ??? sub_8066D30
-// ??? sub_8066D40
-void sub_8066DA0(ProcPtr parent, int, int);
-// ??? sub_8066DD8
+void EkrDragonFireBG3_CallBack(struct ProcEkrDragonFx * proc);
+void EkrDragonFireBG3_Loop(struct ProcEkrDragonFx * proc);
+
+struct ProcEkrDragonBarkQuake {
+    PROC_HEADER;
+
+    STRUCT_PAD(0x29, 0x2C);
+
+    /* 2C */ s16 timer, duration;
+
+    STRUCT_PAD(0x30, 0x5C);
+
+    /* 5C */ ProcPtr procfx;
+    /* 60 */ ProcPtr procquake;
+};
+
+void NewEkrDragonBarkQuake(ProcPtr parent, int duration, int strenuous);
+void EkrDragonBarkQuake_Loop(struct ProcEkrDragonBarkQuake * proc);
 void NewEkrDragonProc_8066F80(int, int, int);
 // ??? sub_8066FC0
 // ??? sub_8067030
@@ -282,8 +296,8 @@ extern const u16 Pals_EkrDragonFlashingWingBg[];
 extern u16 Pal_EkrDragonFireBG2[0x10];
 
 extern CONST_DATA struct ProcCmd ProcScr_EkrDragonTunk[];
-extern CONST_DATA struct ProcCmd ProcScr_EkrDragonFireBg2[];
-extern CONST_DATA struct ProcCmd ProcScr_EkrDragon_08C488E4[];
+extern CONST_DATA struct ProcCmd ProcScr_EkrDragonFireBG3[];
+extern CONST_DATA struct ProcCmd ProcScr_EkrDragonBarkQuake[];
 extern CONST_DATA struct ProcCmd ProcScr_EkrDragon_08C488FC[];
 extern CONST_DATA struct ProcCmd ProcScr_EkrDragonFlashingWingBg[];
 extern CONST_DATA struct ProcCmd ProcScr_EkrDragonFlashingWingBg[];

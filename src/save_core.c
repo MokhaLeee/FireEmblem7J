@@ -1,8 +1,4 @@
-#include "global.h"
-#include "gbasram.h"
-#include "save.h"
-#include "util.h"
-#include "hardware.h"
+#include "gbafe.h"
 
 char const SaveMarker[] = "AGB-FE7";
 

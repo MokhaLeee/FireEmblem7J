@@ -1,5 +1,4 @@
-#include "global.h"
-#include "bm.h"
+#include "gbafe.h"
 
 u32 GetGold() {
 	return gPlaySt.partyGoldAmount;

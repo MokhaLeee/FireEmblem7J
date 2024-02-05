@@ -1,13 +1,4 @@
-#include "global.h"
-#include "hardware.h"
-#include "proc.h"
-#include "util.h"
-#include "bm.h"
-#include "map.h"
-#include "unit.h"
-#include "anime.h"
-#include "banim.h"
-#include "banim_ekrdragon.h"
+#include "gbafe.h"
 
 struct ProcCmd CONST_DATA ProcScr_EkrDragonBaseHide[] = {
     PROC_NAME_DEBUG("ekrDragonBaseHide"),
@@ -183,7 +174,7 @@ void EfxDragonDeadFallBody_Loop1(struct ProcEkrDragonFx * proc)
         anim->timer = 0;
 
         SpellFx_RegisterObjPal(Pal_EkrDragonHead, 0x20);
-        SpellFx_RegisterObjGfx(Img_EkrDragonSpark, 0x2000);
+        SpellFx_RegisterObjGfx(Img_EkrDragonBark, 0x2000);
         Proc_Break(proc);
     }
 }
@@ -1173,3 +1164,110 @@ void EkrDragonTunk_NopLoop(struct ProcEkrDragon * proc)
 {
     return;
 }
+
+struct ProcCmd CONST_DATA ProcScr_EkrDragonFireBG3[] = {
+    PROC_19,
+    PROC_SET_END_CB(EkrDragonFireBG3_CallBack),
+    PROC_REPEAT(EkrDragonFireBG3_Loop),
+    PROC_END,
+};
+
+void NewEkrDragonFireBg3(struct Anim * anim, int duration)
+{
+    struct ProcEkrDragonFx * proc;
+    proc = Proc_Start(ProcScr_EkrDragonFireBG3, PROC_TREE_3);
+    proc->anim = anim;
+    proc->timer = 0;
+    proc->step = duration;
+    proc->frame = 0;
+
+    SpellFx_RegisterBgGfx(Img_EkrDragonFireBg3, 0x2000);
+    SpellFx_RegisterBgPal(Pal_EkrDragonFireBg3, 0x20);
+    SpellFx_ClearBG1();
+
+    LZ77UnCompWram(Tsa_EkrDragonFireBg3, gEkrTsaBuffer);
+    EfxTmCpyBgHFlip(gEkrTsaBuffer, gBg1Tm, 0x20, 0x20, 1, 0x100);
+    EnableBgSync(BG1_SYNC_BIT);
+    SpellFx_SetSomeColorEffect();
+    SetBgOffset(BG_1, 0, 0);
+}
+
+void EkrDragonFireBG3_CallBack(struct ProcEkrDragonFx * proc)
+{
+    SpellFx_ClearBG1();
+    SpellFx_ClearColorEffects();
+}
+
+void EkrDragonFireBG3_Loop(struct ProcEkrDragonFx * proc)
+{
+    proc->frame = proc->frame + 0x100;
+
+    gDispIo.bg_off[1].x = (int)proc->frame >> 8;
+
+    proc->timer++;
+    if (proc->timer == 1)
+        return;
+
+    if (proc->timer == proc->step)
+    {
+        NewEfxALPHA(proc->anim, 0, 0x1E, 0x10, 0, 0);
+        return;
+    }
+
+    if (proc->timer == (proc->step + 0x1E))
+    {
+        Proc_Break(proc);
+        return;
+    }
+}
+
+struct ProcCmd CONST_DATA ProcScr_EkrDragonBarkQuake[] = {
+    PROC_19,
+    PROC_REPEAT(EkrDragonBarkQuake_Loop),
+    PROC_END,
+};
+
+void NewEkrDragonBarkQuake(ProcPtr procfx, int duration, int strenuous)
+{
+    struct ProcEkrDragonBarkQuake * proc;
+    proc = Proc_Start(ProcScr_EkrDragonBarkQuake, PROC_TREE_3);
+    proc->procfx = procfx;
+    proc->procquake = NewEfxQuakePure(strenuous, 0);
+    proc->timer = 0;
+    proc->duration = duration;
+}
+
+#if 0
+void EkrDragonBarkQuake_Loop(struct ProcEkrDragonBarkQuake * proc)
+{
+    s16 x1, y1;
+    s16 x2, y2;
+
+    struct ProcEkrDragonIntroFx * procfx = proc->procfx;
+
+    SetBgOffset(BG_2, gEkrBg2QuakeVec.x, gEkrBg2QuakeVec.y);
+    SetBgOffset(
+        BG_0,
+        gEkrBg2QuakeVec.x + gEkrBg0QuakeVec.x,
+        gEkrBg2QuakeVec.y + gEkrBg0QuakeVec.y);
+
+    EkrGauge_0804CC8C(
+        -(gEkrBg2QuakeVec.x + gEkrBg0QuakeVec.x),
+        -(gEkrBg2QuakeVec.y + gEkrBg0QuakeVec.y));
+
+    EkrDispUP_SetPositionSync(
+        -(gEkrBg2QuakeVec.x + gEkrBg0QuakeVec.x),
+        -(gEkrBg2QuakeVec.y + gEkrBg0QuakeVec.y));
+
+    SetBgOffset(BG_3, gEkrBg2QuakeVec.x, gEkrBg2QuakeVec.y);
+
+    x1 = (gEkrXPosReal[POS_L] - gEkrBg2QuakeVec.x) - gEkrBgPosition;
+    y1 = gEkrYPosReal[POS_L] - gEkrBg2QuakeVec.y;
+
+    x2 = (gEkrXPosReal[POS_R] - gEkrBg2QuakeVec.x) - gEkrBgPosition;
+    y2 = gEkrYPosReal[POS_R] - gEkrBg2QuakeVec.y;
+
+    SetEkrFrontAnimPostion(POS_L, x1, y1);
+    SetEkrFrontAnimPostion(POS_R, x2, y2);
+}
+#endif

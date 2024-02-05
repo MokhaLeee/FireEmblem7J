@@ -1,5 +1,4 @@
-#include "global.h"
-#include "irq.h"
+#include "gbafe.h"
 
 extern IrqFunc gIrqFuncs[INT_COUNT];
 extern u32 IntrMainRam[0x200];

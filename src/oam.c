@@ -1,7 +1,4 @@
-#include "global.h"
-#include "hardware.h"
-#include "oam.h"
-#include "armfunc.h"
+#include "gbafe.h"
 
 static struct OamSection sOamHi;
 static struct OamSection sOamLo;
