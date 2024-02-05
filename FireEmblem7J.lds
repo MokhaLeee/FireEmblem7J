@@ -26,7 +26,7 @@ SECTIONS
 	. = __ewram_overlay_beg;
     ewram_overlay_banim (NOLOAD) : ALIGN(4)
     {
-        . = 0x000000; gAnims = .;
+		. = 0x000000; gAnims = .;
 		. = 0x000024; gAnimC01Blocking = .;
 		. = 0x000028; gEkrXPosReal = .;
 		. = 0x00002C; gEkrYPosReal = .;
@@ -37,6 +37,7 @@ SECTIONS
 		. = 0x00005C; gpBanimModesLeft = .;
 		. = 0x000060; gpBanimModesRight = .;
 		. = 0x00006C; gpProcEkrDispUP = .;
+		. = 0x0099C8; gBanimOamr2 = .;
 		. = 0x00F1C8; gBanimScrLeft = .;
 		. = 0x0165C8; gEfxPal = .;
 		. = 0x017724; gEkrBattleEndFlag = .;
@@ -70,6 +71,10 @@ SECTIONS
 		. = 0x020040; gEkrDragonStatusLeft = .;
 		. = 0x020050; gEkrDragonStatusRight = .;
 		. = 0x020060; gEkrBgPaletteBackup = .;
+		. = 0x0200D0; gpProcEfxPartsofScroll = .;
+		. = 0x0200D4; gpProcEfxleveluphb = .;
+		. = 0x02012C; gEkrLvupScrollPos1 = .;
+		. = 0x02012E; gEkrLvupScrollPos2 = .;
     }
     __ewram_overlay_end = MAX(., __ewram_overlay_end);
 
@@ -224,7 +229,6 @@ SECTIONS
 		asm/code-banim.o(.text);
 		src/banim-ekrdragon.o(.text);
 		src/banim-ekrdragonfx.o(.text);
-		asm/banim-ekrdragon.o(.text);
 		asm/code-banim2.o(.text);
 		asm/code.o(.text);
 		src/save_core.o(.text);
@@ -277,7 +281,7 @@ SECTIONS
 		. = ALIGN(4); data/data_08C03574.o(.data)
 		. = ALIGN(4); src/banim-ekrdragon.o(.data)
 		. = ALIGN(4); src/banim-ekrdragonfx.o(.data)
-		. = ALIGN(4); data/data-banim-ekrdragon.o(.data)
+		. = ALIGN(4); src/banim-ekrdragonfx-data.o(.data)
 		. = ALIGN(4); data/data_08C486EC.o(.data)
 		. = ALIGN(4); src/save_core.o(.data)
 		. = ALIGN(4); data/data_08DAD284.o(.data)

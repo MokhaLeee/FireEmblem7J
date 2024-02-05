@@ -88,8 +88,8 @@ gUnk_08C4A8E8:	@ 0x08C4A8E8
 gUnk_08C4A908:	@ 0x08C4A908
 	.incbin "FireEmblem7J.base.gba", 0xC4A908, 0xC4A9B8 - 0xC4A908
 
-	.global gUnk_08C4A9B8
-gUnk_08C4A9B8:	@ 0x08C4A9B8
+	.global ProcScr_EfxPartsofScroll
+ProcScr_EfxPartsofScroll:	@ 0x08C4A9B8
 	.incbin "FireEmblem7J.base.gba", 0xC4A9B8, 0xC4A9D8 - 0xC4A9B8
 
 	.global gUnk_08C4A9D8

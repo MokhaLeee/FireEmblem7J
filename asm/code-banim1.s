@@ -1758,7 +1758,7 @@ _08051F96:
 	adds r1, r1, r0
 	ldr r0, [r1, #4]
 	ldr r1, [r1, #8]
-	ldr r2, _08052078 @ =0x020099C8
+	ldr r2, _08052078 @ =gBanimOamr2
 	adds r1, r1, r2
 	str r1, [r4, #0x58]
 	ldr r1, _0805207C @ =0x02002088
@@ -1846,7 +1846,7 @@ _08052068: .4byte 0x020041C8
 _0805206C: .4byte 0x02000088
 _08052070: .4byte gpBanimModesRight
 _08052074: .4byte 0x02011BC8
-_08052078: .4byte 0x020099C8
+_08052078: .4byte gBanimOamr2
 _0805207C: .4byte 0x02002088
 _08052080: .4byte Unk_0203E088
 _08052084: .4byte 0x02001088

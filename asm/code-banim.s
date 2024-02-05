@@ -313,7 +313,7 @@ _08054928:
 	bl CpuFastSet
 	bl EnablePalSync
 	ldr r0, [r6, #0x14]
-	ldr r4, _08054A28 @ =0x020099C8
+	ldr r4, _08054A28 @ =gBanimOamr2
 	adds r1, r4, #0
 	bl LZ77UnCompWram
 	ldr r2, _08054A14 @ =0x000057F0
@@ -402,7 +402,7 @@ _08054A18: .4byte 0x02011BC8
 _08054A1C: .4byte gpBanimModesRight
 _08054A20: .4byte 0x02004128
 _08054A24: .4byte gPal + 0x320
-_08054A28: .4byte 0x020099C8
+_08054A28: .4byte gBanimOamr2
 _08054A2C: .4byte gpEkrTriangleUnits
 
 	thumb_func_start InitMainAnims
@@ -739,7 +739,7 @@ _08054CAE:
 	strb r5, [r2, #0x12]
 	ldr r0, _08054D70 @ =0x02002088
 	str r0, [r2, #0x2c]
-	ldr r0, _08054D74 @ =0x020099C8
+	ldr r0, _08054D74 @ =gBanimOamr2
 	str r0, [r2, #0x30]
 	ldr r0, _08054D78 @ =gAnims
 	str r2, [r0, #8]
@@ -780,7 +780,7 @@ _08054D00:
 	strb r5, [r2, #0x12]
 	ldr r0, _08054D70 @ =0x02002088
 	str r0, [r2, #0x2c]
-	ldr r0, _08054D74 @ =0x020099C8
+	ldr r0, _08054D74 @ =gBanimOamr2
 	str r0, [r2, #0x30]
 	ldr r0, _08054D78 @ =gAnims
 	str r2, [r0, #0xc]
@@ -800,7 +800,7 @@ _08054D64: .4byte 0x02011BC8
 _08054D68: .4byte gUnk_08C0A5D8
 _08054D6C: .4byte gEkrBgPosition
 _08054D70: .4byte 0x02002088
-_08054D74: .4byte 0x020099C8
+_08054D74: .4byte gBanimOamr2
 _08054D78: .4byte gAnims
 
 	thumb_func_start SwitchAISFrameDataFromBARoundType
@@ -3284,7 +3284,7 @@ _08056110:
 	mov r8, r0
 	ldr r6, [r2, #0x48]
 	mov sl, r6
-	ldr r7, _08056184 @ =gUnk_08C4A008
+	ldr r7, _08056184 @ =EkrBg3HfScrollingConf
 	mov ip, r7
 	ldr r5, [r2, #0x4c]
 	ldr r0, _08056188 @ =gDispIo
@@ -3330,7 +3330,7 @@ _0805616A:
 _08056178: .4byte gEkrBg1ScrollFlip
 _0805617C: .4byte gpBg1ScrollOffsetList2
 _08056180: .4byte gpBg1ScrollOffsetList1
-_08056184: .4byte gUnk_08C4A008
+_08056184: .4byte EkrBg3HfScrollingConf
 _08056188: .4byte gDispIo
 
 	thumb_func_start NewEfxTwobaiRST

@@ -5199,10 +5199,10 @@ _0806994A:
 	ldrb r1, [r5, #0x18]
 	orrs r0, r1
 	strb r0, [r5, #0x18]
-	ldr r0, _08069A74 @ =0x0202012C
+	ldr r0, _08069A74 @ =gEkrLvupScrollPos1
 	movs r1, #0x90
 	strh r1, [r0]
-	ldr r0, _08069A78 @ =0x0202012E
+	ldr r0, _08069A78 @ =gEkrLvupScrollPos2
 	strh r1, [r0]
 	movs r0, #2
 	movs r1, #0
@@ -5230,11 +5230,11 @@ _0806994A:
 	movs r0, #2
 	movs r1, #1
 	bl SetBgScreenSize
-	bl sub_806A2D4
-	ldr r1, _08069A7C @ =0x020200D0
+	bl NewEfxPartsofScroll
+	ldr r1, _08069A7C @ =gpProcEfxPartsofScroll
 	str r0, [r1]
 	bl sub_806A414
-	ldr r1, _08069A80 @ =0x020200D4
+	ldr r1, _08069A80 @ =gpProcEfxleveluphb
 	str r0, [r1]
 	bl sub_806A2EC
 	movs r0, #2
@@ -5283,10 +5283,10 @@ _0806994A:
 	.align 2, 0
 _08069A6C: .4byte 0x0000F3FF
 _08069A70: .4byte gDispIo
-_08069A74: .4byte 0x0202012C
-_08069A78: .4byte 0x0202012E
-_08069A7C: .4byte 0x020200D0
-_08069A80: .4byte 0x020200D4
+_08069A74: .4byte gEkrLvupScrollPos1
+_08069A78: .4byte gEkrLvupScrollPos2
+_08069A7C: .4byte gpProcEfxPartsofScroll
+_08069A80: .4byte gpProcEfxleveluphb
 
 	thumb_func_start sub_8069A84
 sub_8069A84: @ 0x08069A84
@@ -5549,7 +5549,7 @@ _08069C7E:
 	adds r3, r5, #0
 	bl Interpolate
 	mov sl, r0
-	ldr r5, _08069D3C @ =0x0202012C
+	ldr r5, _08069D3C @ =gEkrLvupScrollPos1
 	str r4, [sp]
 	movs r0, #0
 	movs r1, #0x90
@@ -5557,7 +5557,7 @@ _08069C7E:
 	adds r3, r6, #0
 	bl Interpolate
 	strh r0, [r5]
-	ldr r5, _08069D40 @ =0x0202012E
+	ldr r5, _08069D40 @ =gEkrLvupScrollPos2
 	str r4, [sp]
 	movs r0, #0
 	movs r1, #0x90
@@ -5609,8 +5609,8 @@ _08069D2A:
 	pop {r0}
 	bx r0
 	.align 2, 0
-_08069D3C: .4byte 0x0202012C
-_08069D40: .4byte 0x0202012E
+_08069D3C: .4byte gEkrLvupScrollPos1
+_08069D40: .4byte gEkrLvupScrollPos2
 _08069D44: .4byte 0x030040E0
 _08069D48: .4byte gEfxPal
 _08069D4C: .4byte gPal
@@ -5653,7 +5653,7 @@ sub_8069D7C: @ 0x08069D7C
 _08069D90:
 	ldr r0, _08069DD0 @ =sub_806A5C0
 	bl SetOnHBlankA
-	ldr r4, _08069DD4 @ =0x020200D0
+	ldr r4, _08069DD4 @ =gpProcEfxPartsofScroll
 	ldr r0, [r4]
 	bl Proc_End
 	bl sub_806A370
@@ -5679,7 +5679,7 @@ _08069DC8:
 	bx r0
 	.align 2, 0
 _08069DD0: .4byte sub_806A5C0
-_08069DD4: .4byte 0x020200D0
+_08069DD4: .4byte gpProcEfxPartsofScroll
 _08069DD8: .4byte 0x000002CD
 
 	thumb_func_start sub_8069DDC
@@ -5695,7 +5695,7 @@ sub_8069DDC: @ 0x08069DDC
 	bl Proc_Break
 	b _08069E46
 _08069DF2:
-	ldr r4, _08069E50 @ =0x0202012C
+	ldr r4, _08069E50 @ =gEkrLvupScrollPos1
 	movs r2, #0x80
 	lsls r2, r2, #5
 	movs r0, #0x2c
@@ -5739,7 +5739,7 @@ _08069E46:
 	pop {r0}
 	bx r0
 	.align 2, 0
-_08069E50: .4byte 0x0202012C
+_08069E50: .4byte gEkrLvupScrollPos1
 _08069E54: .4byte 0x02020100
 _08069E58: .4byte 0x02020104
 _08069E5C: .4byte 0x02020108
@@ -5758,7 +5758,7 @@ sub_8069E64: @ 0x08069E64
 	bl Proc_Break
 	b _08069EAA
 _08069E7A:
-	ldr r4, _08069EB4 @ =0x0202012C
+	ldr r4, _08069EB4 @ =gEkrLvupScrollPos1
 	movs r1, #0x80
 	lsls r1, r1, #5
 	movs r0, #0x2c
@@ -5786,7 +5786,7 @@ _08069EAA:
 	pop {r0}
 	bx r0
 	.align 2, 0
-_08069EB4: .4byte 0x0202012C
+_08069EB4: .4byte gEkrLvupScrollPos1
 
 	thumb_func_start sub_8069EB8
 sub_8069EB8: @ 0x08069EB8
@@ -5828,10 +5828,10 @@ _08069F04: .4byte 0x02020108
 _08069F08: .4byte 0x0202010A
 _08069F0C: .4byte 0x000002CD
 _08069F10:
-	ldr r4, _08069F34 @ =0x020200D0
+	ldr r4, _08069F34 @ =gpProcEfxPartsofScroll
 	ldr r0, [r4]
 	bl Proc_End
-	bl sub_806A2D4
+	bl NewEfxPartsofScroll
 	str r0, [r4]
 	movs r0, #0
 	strh r0, [r5, #0x2c]
@@ -5844,7 +5844,7 @@ _08069F2A:
 	pop {r0}
 	bx r0
 	.align 2, 0
-_08069F34: .4byte 0x020200D0
+_08069F34: .4byte gpProcEfxPartsofScroll
 
 	thumb_func_start sub_8069F38
 sub_8069F38: @ 0x08069F38
@@ -6031,7 +6031,7 @@ sub_806A098: @ 0x0806A098
 	push {r4, r5, r6, r7, lr}
 	sub sp, #4
 	adds r7, r0, #0
-	ldr r5, _0806A14C @ =0x0202012C
+	ldr r5, _0806A14C @ =gEkrLvupScrollPos1
 	movs r0, #0x2c
 	ldrsh r3, [r7, r0]
 	movs r4, #8
@@ -6041,7 +6041,7 @@ sub_806A098: @ 0x0806A098
 	movs r2, #0x90
 	bl Interpolate
 	strh r0, [r5]
-	ldr r5, _0806A150 @ =0x0202012E
+	ldr r5, _0806A150 @ =gEkrLvupScrollPos2
 	movs r0, #0x2c
 	ldrsh r3, [r7, r0]
 	str r4, [sp]
@@ -6111,8 +6111,8 @@ _0806A142:
 	pop {r0}
 	bx r0
 	.align 2, 0
-_0806A14C: .4byte 0x0202012C
-_0806A150: .4byte 0x0202012E
+_0806A14C: .4byte gEkrLvupScrollPos1
+_0806A150: .4byte gEkrLvupScrollPos2
 _0806A154: .4byte 0x030040E0
 _0806A158: .4byte gEfxPal
 _0806A15C: .4byte gPal
@@ -6254,14 +6254,14 @@ _0806A28C: .4byte gBg1Tm
 _0806A290: .4byte 0x01000200
 _0806A294: .4byte gDispIo
 
-	thumb_func_start sub_806A298
-sub_806A298: @ 0x0806A298
+	thumb_func_start EkrLvup_OnEnd
+EkrLvup_OnEnd: @ 0x0806A298
 	push {r4, lr}
 	adds r4, r0, #0
-	ldr r0, _0806A2CC @ =0x020200D0
+	ldr r0, _0806A2CC @ =gpProcEfxPartsofScroll
 	ldr r0, [r0]
 	bl Proc_End
-	ldr r0, _0806A2D0 @ =0x020200D4
+	ldr r0, _0806A2D0 @ =gpProcEfxleveluphb
 	ldr r0, [r0]
 	bl Proc_End
 	ldr r0, [r4, #0x5c]
@@ -6269,7 +6269,7 @@ sub_806A298: @ 0x0806A298
 	ldr r0, [r4, #0x60]
 	bl EnableEfxStatusUnits
 	bl EnableEfxWeaponIcon
-	bl sub_804FC6C
+	bl EfxHpBarColorChange_804FC6C
 	adds r4, #0x29
 	movs r0, #1
 	strb r0, [r4]
@@ -6277,13 +6277,13 @@ sub_806A298: @ 0x0806A298
 	pop {r0}
 	bx r0
 	.align 2, 0
-_0806A2CC: .4byte 0x020200D0
-_0806A2D0: .4byte 0x020200D4
+_0806A2CC: .4byte gpProcEfxPartsofScroll
+_0806A2D0: .4byte gpProcEfxleveluphb
 
-	thumb_func_start sub_806A2D4
-sub_806A2D4: @ 0x0806A2D4
+	thumb_func_start NewEfxPartsofScroll
+NewEfxPartsofScroll: @ 0x0806A2D4
 	push {lr}
-	ldr r0, _0806A2E8 @ =gUnk_08C4A9B8
+	ldr r0, _0806A2E8 @ =ProcScr_EfxPartsofScroll
 	movs r1, #3
 	bl Proc_Start
 	movs r1, #0
@@ -6292,7 +6292,7 @@ sub_806A2D4: @ 0x0806A2D4
 	pop {r1}
 	bx r1
 	.align 2, 0
-_0806A2E8: .4byte gUnk_08C4A9B8
+_0806A2E8: .4byte ProcScr_EfxPartsofScroll
 
 	thumb_func_start sub_806A2EC
 sub_806A2EC: @ 0x0806A2EC
@@ -6311,8 +6311,8 @@ _0806A2FA:
 _0806A302:
 	movs r3, #0
 	movs r6, #0
-	ldr r5, _0806A32C @ =0x0202012C
-	ldr r4, _0806A330 @ =0x0202012E
+	ldr r5, _0806A32C @ =gEkrLvupScrollPos1
+	ldr r4, _0806A330 @ =gEkrLvupScrollPos2
 _0806A30A:
 	cmp r3, #0x27
 	bhi _0806A334
@@ -6326,8 +6326,8 @@ _0806A31C: .4byte gpBg2ScrollOffsetTable2
 _0806A320: .4byte gpBg2ScrollOffsetTable1
 _0806A324: .4byte gpBg1ScrollOffsetList2
 _0806A328: .4byte gpBg1ScrollOffsetList1
-_0806A32C: .4byte 0x0202012C
-_0806A330: .4byte 0x0202012E
+_0806A32C: .4byte gEkrLvupScrollPos1
+_0806A330: .4byte gEkrLvupScrollPos2
 _0806A334:
 	cmp r3, #0x47
 	bhi _0806A342
@@ -6415,7 +6415,7 @@ _0806A3AC:
 	bhi _0806A3F8
 	movs r0, #0
 	ldrsh r1, [r6, r0]
-	ldr r0, _0806A3F0 @ =0x0202012C
+	ldr r0, _0806A3F0 @ =gEkrLvupScrollPos1
 	ldrh r0, [r0]
 	muls r0, r1, r0
 	lsls r0, r0, #4
@@ -6440,7 +6440,7 @@ _0806A3E0: .4byte gpBg2ScrollOffsetTable1
 _0806A3E4: .4byte gpBg1ScrollOffsetList2
 _0806A3E8: .4byte gpBg1ScrollOffsetList1
 _0806A3EC: .4byte gUnk_08C4A9F8
-_0806A3F0: .4byte 0x0202012C
+_0806A3F0: .4byte gEkrLvupScrollPos1
 _0806A3F4: .4byte 0x0000FFE0
 _0806A3F8:
 	cmp r4, #0x9f

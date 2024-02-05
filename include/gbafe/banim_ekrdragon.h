@@ -285,11 +285,24 @@ struct ProcEkrDragonBarkQuake {
 
 void NewEkrDragonBarkQuake(ProcPtr parent, int duration, int strenuous);
 void EkrDragonBarkQuake_Loop(struct ProcEkrDragonBarkQuake * proc);
-void NewEkrDragonProc_8066F80(int, int, int);
-// ??? sub_8066FC0
-// ??? sub_8067030
-// ??? sub_8067088
-// ??? sub_80670F8
+
+struct ProcEkrDragonScreenFlashing {
+    PROC_HEADER;
+
+    STRUCT_PAD(0x29, 0x2C);
+
+    /* 2C */ s16 timer;
+
+    STRUCT_PAD(0x2E, 0x44);
+
+    /* 44 */ int dura1, dura2, dura3;
+};
+
+void NewEkrDragonScreenFlashing(int dura1, int dura2, int dura3);
+void EkrDragonScreenFlashing_Loop1(struct ProcEkrDragonScreenFlashing * proc);
+void EkrDragonScreenFlashing_Loop2(struct ProcEkrDragonScreenFlashing * proc);
+void EkrDragonScreenFlashing_Loop3(struct ProcEkrDragonScreenFlashing * proc);
+void EkrDragonScreenFlashing_RefrainPalette(struct ProcEkrDragonScreenFlashing * proc);
 
 extern u16 Pal_EkrDragon[0x10];
 extern const u16 Pals_EkrDragonFlashingWingBg[];
@@ -298,7 +311,7 @@ extern u16 Pal_EkrDragonFireBG2[0x10];
 extern CONST_DATA struct ProcCmd ProcScr_EkrDragonTunk[];
 extern CONST_DATA struct ProcCmd ProcScr_EkrDragonFireBG3[];
 extern CONST_DATA struct ProcCmd ProcScr_EkrDragonBarkQuake[];
-extern CONST_DATA struct ProcCmd ProcScr_EkrDragon_08C488FC[];
+extern CONST_DATA struct ProcCmd ProcScr_EkrDragonScreenFlashing[];
 extern CONST_DATA struct ProcCmd ProcScr_EkrDragonFlashingWingBg[];
 extern CONST_DATA struct ProcCmd ProcScr_EkrDragonFlashingWingBg[];
 extern CONST_DATA struct ProcCmd ProcScr_EkrDragonFlashingWingBg[];
@@ -307,16 +320,4 @@ extern AnimScr AnimScr_08C49F4C[];
 extern AnimScr AnimScr_EkrDragonHead[];
 extern AnimScr AnimScr_EfxDragonDeadFallBody2[];
 extern AnimScr AnimScr_EfxDragonDeadFallHeadFx[];
-extern s16 gUnk_08C4A008[];
-// ??? gUnk_08C4A288
-// ??? gUnk_08C4A29C
-// ??? gUnk_08C4A2B4
-// ??? gUnk_08C4A2CC
-// ??? gUnk_08C4A674
-// ??? gUnk_08C4A690
-// ??? gUnk_08C4A6AC
-// ??? gUnk_08C4A6C8
-// ??? gUnk_08C4A6E4
-// ??? gUnk_08C4A704
-// ??? gUnk_08C4A71C
-// ??? gUnk_08C4A778
+extern s16 EkrBg3HfScrollingConf[];

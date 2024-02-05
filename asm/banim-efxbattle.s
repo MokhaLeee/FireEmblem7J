@@ -3844,8 +3844,8 @@ sub_804FC5C: @ 0x0804FC5C
 	.align 2, 0
 _0804FC68: .4byte gpProcEfxHpBarColorChange
 
-	thumb_func_start sub_804FC6C
-sub_804FC6C: @ 0x0804FC6C
+	thumb_func_start EfxHpBarColorChange_804FC6C
+EfxHpBarColorChange_804FC6C: @ 0x0804FC6C
 	ldr r0, _0804FC78 @ =gpProcEfxHpBarColorChange
 	ldr r0, [r0]
 	adds r0, #0x29

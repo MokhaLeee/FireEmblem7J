@@ -100,6 +100,7 @@ struct ProcEkrSubAnimeEmulator {
     /* 50 */ int oamBase;
 };
 
+extern u16 gEfxPal[];
 extern const void * gpImgSheet[2];
 extern int gEkrDebugUnk2;
 extern int gAnimC01Blocking;
@@ -243,7 +244,7 @@ void NewEfxFlashBgDirectly(struct Anim * anim, int duartion);
 // ??? sub_804FB58
 // ??? EndEfxHPBarColorChange
 // ??? sub_804FC5C
-// ??? sub_804FC6C
+// ??? EfxHpBarColorChange_804FC6C
 // ??? sub_804FC7C
 // ??? sub_804FD74
 // ??? sub_804FDB0
@@ -1248,8 +1249,8 @@ void PlaySFX(int, int, int, int);
 // ??? sub_806A08C
 // ??? sub_806A098
 // ??? sub_806A160
-// ??? sub_806A298
-// ??? sub_806A2D4
+// ??? EkrLvup_OnEnd
+// ??? NewEfxPartsofScroll
 // ??? sub_806A2EC
 // ??? nullsub_58
 // ??? sub_806A364

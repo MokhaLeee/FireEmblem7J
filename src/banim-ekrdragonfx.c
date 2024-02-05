@@ -662,7 +662,7 @@ void EkrDragonBg3HfScrollHandler_Loop(struct ProcEkrDragonIntroFx * proc)
 
         k = k + proc->step;
         _k = k >> 8;
-        ix = gUnk_08C4A008[_k] * proc->speed;
+        ix = EkrBg3HfScrollingConf[_k] * proc->speed;
         ix = ix >> 8;
 
         *buf++ = ix + 4 + gDispIo.bg_off[3].x;
@@ -1036,19 +1036,19 @@ void EkrDragonTunk_Loop1(struct ProcEkrDragon * proc)
 
     if (proc->timer == 1)
     {
-        NewEkrDragonProc_8066F80(3, 2, 3);
+        NewEkrDragonScreenFlashing(3, 2, 3);
         PlaySFX(0x147, 0x100, 0x78, 0);
     }
 
     if (proc->timer == 0x23)
     {
-        NewEkrDragonProc_8066F80(3, 2, 3);
+        NewEkrDragonScreenFlashing(3, 2, 3);
         PlaySFX(0x147, 0x100, 0x78, 0);
     }
 
     if (proc->timer == 0x32)
     {
-        NewEkrDragonProc_8066F80(3, 2, 3);
+        NewEkrDragonScreenFlashing(3, 2, 3);
         PlaySFX(0x147, 0x100, 0x78, 0);
     }
 
@@ -1133,7 +1133,7 @@ void EkrDragonTunk_Loop2(struct ProcEkrDragon * proc)
 
     if (proc->timer2 == 0x87)
     {
-        NewEkrDragonProc_8066F80(0x3C, 0x1E, 0x78);
+        NewEkrDragonScreenFlashing(0x3C, 0x1E, 0x78);
     }
 
     if (proc->timer2 == 0xC8)
@@ -1237,7 +1237,6 @@ void NewEkrDragonBarkQuake(ProcPtr procfx, int duration, int strenuous)
     proc->duration = duration;
 }
 
-#if 0
 void EkrDragonBarkQuake_Loop(struct ProcEkrDragonBarkQuake * proc)
 {
     s16 x1, y1;
@@ -1264,10 +1263,113 @@ void EkrDragonBarkQuake_Loop(struct ProcEkrDragonBarkQuake * proc)
     x1 = (gEkrXPosReal[POS_L] - gEkrBg2QuakeVec.x) - gEkrBgPosition;
     y1 = gEkrYPosReal[POS_L] - gEkrBg2QuakeVec.y;
 
-    x2 = (gEkrXPosReal[POS_R] - gEkrBg2QuakeVec.x) - gEkrBgPosition;
+    x2 = (gEkrXPosReal[POS_R] + gEkrBg2QuakeVec.x) - gEkrBgPosition;
     y2 = gEkrYPosReal[POS_R] - gEkrBg2QuakeVec.y;
 
     SetEkrFrontAnimPostion(POS_L, x1, y1);
     SetEkrFrontAnimPostion(POS_R, x2, y2);
+
+    procfx->x = x1;
+    procfx->y = y1;
+
+    if (++proc->timer > proc->duration)
+    {
+        SetBgOffset(BG_2, 0, 0);
+        SetBgOffset(BG_0, gEkrBg0QuakeVec.x, gEkrBg0QuakeVec.y);
+        EkrGauge_0804CC8C(-gEkrBg0QuakeVec.x, -gEkrBg0QuakeVec.y);
+        EkrDispUP_SetPositionSync(-gEkrBg0QuakeVec.x, -gEkrBg0QuakeVec.y);
+        SetBgOffset(BG_3, 0, 0);
+
+        x1 = gEkrXPosReal[POS_L] - gEkrBgPosition;
+        x2 = gEkrXPosReal[POS_R] - gEkrBgPosition;
+
+        y1 = gEkrYPosReal[POS_L];
+        y2 = gEkrYPosReal[POS_R];
+
+        SetEkrFrontAnimPostion(POS_L, x1, y1);
+        SetEkrFrontAnimPostion(POS_R, x2, y2);
+
+        procfx->x = x1;
+        procfx->y = y1;
+
+        Proc_End(proc->procquake);
+        Proc_Break(proc);
+    }
 }
-#endif
+
+struct ProcCmd CONST_DATA ProcScr_EkrDragonScreenFlashing[] = {
+    PROC_19,
+    PROC_REPEAT(EkrDragonScreenFlashing_Loop1),
+    PROC_REPEAT(EkrDragonScreenFlashing_Loop2),
+    PROC_REPEAT(EkrDragonScreenFlashing_Loop3),
+    PROC_REPEAT(EkrDragonScreenFlashing_RefrainPalette),
+    PROC_END,
+};
+
+void NewEkrDragonScreenFlashing(int dura1, int dura2, int dura3)
+{
+    struct ProcEkrDragonScreenFlashing * proc;
+    proc = Proc_Start(ProcScr_EkrDragonScreenFlashing, PROC_TREE_VSYNC);
+
+    proc->timer = 0;
+    proc->dura1 = dura1;
+    proc->dura2 = dura2;
+    proc->dura3 = dura3;
+
+    gDispIo.blend_ct.target1_enable_bd = false;
+    gDispIo.blend_ct.target2_enable_bd = false;
+}
+
+void EkrDragonScreenFlashing_Loop1(struct ProcEkrDragonScreenFlashing * proc)
+{
+    int ret = Interpolate(INTERPOLATE_LINEAR, 0, 0x10, proc->timer, proc->dura1);
+
+    CpuFastCopy(gPal, gEfxPal, PLTT_SIZE);
+    EfxPalWhiteInOut(gEfxPal, 0, 0x20, ret);
+    CpuFastCopy(gEfxPal, (void *)PLTT, PLTT_SIZE);
+    DisablePalSync();
+
+    if (++proc->timer > proc->dura1)
+    {
+        proc->timer = 0;
+        Proc_Break(proc);
+    }
+}
+
+void EkrDragonScreenFlashing_Loop2(struct ProcEkrDragonScreenFlashing * proc)
+{
+    CpuFastCopy(gPal, gEfxPal, PLTT_SIZE);
+    EfxPalWhiteInOut(gEfxPal, 0, 0x20, 0x10);
+    CpuFastCopy(gEfxPal, (void *)PLTT, PLTT_SIZE);
+    DisablePalSync();
+
+    if (++proc->timer > proc->dura2)
+    {
+        proc->timer = 0;
+        Proc_Break(proc);
+    }
+}
+
+void EkrDragonScreenFlashing_Loop3(struct ProcEkrDragonScreenFlashing * proc)
+{
+    int ret = Interpolate(INTERPOLATE_LINEAR, 0x10, 0, proc->timer, proc->dura3);
+
+    CpuFastCopy(gPal, gEfxPal, PLTT_SIZE);
+    EfxPalWhiteInOut(gEfxPal, 0, 0x20, ret);
+    CpuFastCopy(gEfxPal, (void *)PLTT, PLTT_SIZE);
+    DisablePalSync();
+
+    if (++proc->timer > proc->dura3)
+    {
+        proc->timer = 0;
+        Proc_Break(proc);
+    }
+}
+
+void EkrDragonScreenFlashing_RefrainPalette(struct ProcEkrDragonScreenFlashing * proc)
+{
+    gDispIo.blend_ct.target1_enable_bd = true;
+    gDispIo.blend_ct.target2_enable_bd = true;
+    EnablePalSync();
+    Proc_Break(proc);
+}
