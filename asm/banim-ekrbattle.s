@@ -1001,7 +1001,7 @@ _0804C140: .4byte sub_804C144
 sub_804C144: @ 0x0804C144
 	push {r4, r5, r6, lr}
 	adds r5, r0, #0
-	ldr r0, _0804C1B0 @ =0x02017728
+	ldr r0, _0804C1B0 @ =gEkrHpBarCount
 	ldr r0, [r0]
 	cmp r0, #0
 	bne _0804C1AA
@@ -1054,7 +1054,7 @@ _0804C1AA:
 	pop {r0}
 	bx r0
 	.align 2, 0
-_0804C1B0: .4byte 0x02017728
+_0804C1B0: .4byte gEkrHpBarCount
 _0804C1B4: .4byte 0x02017738
 _0804C1B8: .4byte sub_804C1C8
 _0804C1BC: .4byte gAnims

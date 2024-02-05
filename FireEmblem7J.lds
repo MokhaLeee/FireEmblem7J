@@ -40,12 +40,17 @@ SECTIONS
 		. = 0x00F1C8; gBanimScrLeft = .;
 		. = 0x0165C8; gEfxPal = .;
 		. = 0x017724; gEkrBattleEndFlag = .;
+		. = 0x017728; gEkrHpBarCount = .;
+		. = 0x01772C; gEfxSpellAnimExists = .;
 		. = 0x017744; gEkrInitPosReal = .;
 		. = 0x01774C; gEfxBgSemaphore = .;
 		. = 0x017758; Unk_02017758 = .;
 		. = 0x017760; gEkrBg2QuakeVec = .;
 		. = 0x01776C; gpProcEfxStatusUnits = .;
 		. = 0x017774; gpProcEfxWeaponIcon = .;
+		. = 0x017778; gpProcEfxSpellCast = .;
+		. = 0x01777C; gpProcEfxHpBarColorChange = .;
+		. = 0x017780; gEkrHitEfxBool = .;
 		. = 0x019784; gEkrTsaBuffer = .;
 		. = 0x01D41C; gEfxFrameTmap = .;
 		. = 0x01FAD0; EkrMainMiniConf_0201FAD0 = .;

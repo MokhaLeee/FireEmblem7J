@@ -220,16 +220,16 @@ Pal_EkrDragonHead:	@ 0x082E9CD8
 Pals_EkrDragonFlashingWingObj:	@ 0x082E9CF8
     .incbin "FireEmblem7J.base.gba", 0x2E9CF8, 0x2E9DD8 - 0x2E9CF8
 
-    .global gUnk_082E9DD8
-gUnk_082E9DD8:	@ 0x082E9DD8
+    .global Img_EkrDragonFireBg3
+Img_EkrDragonFireBg3:	@ 0x082E9DD8
     .incbin "FireEmblem7J.base.gba", 0x2E9DD8, 0x2EA7C8 - 0x2E9DD8
 
-    .global gUnk_082EA7C8
-gUnk_082EA7C8:	@ 0x082EA7C8
+    .global Pal_EkrDragonFireBg3
+Pal_EkrDragonFireBg3:	@ 0x082EA7C8
     .incbin "FireEmblem7J.base.gba", 0x2EA7C8, 0x2EA7E8 - 0x2EA7C8
 
-    .global gUnk_082EA7E8
-gUnk_082EA7E8:	@ 0x082EA7E8
+    .global Tsa_EkrDragonFireBg3
+Tsa_EkrDragonFireBg3:	@ 0x082EA7E8
     .incbin "FireEmblem7J.base.gba", 0x2EA7E8, 0x2EA9A4 - 0x2EA7E8
 
     .global Img_EkrDragonFireBG2

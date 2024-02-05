@@ -1,28 +1,48 @@
 	.include "macro.inc"
 	.syntax unified
 
-	thumb_func_start CheckEfxHpBarExist
-CheckEfxHpBarExist: @ 0x0804DD70
-	ldr r1, _0804DD7C @ =0x02017780
+	thumb_func_start CheckEkrHitDone
+CheckEkrHitDone: @ 0x0804DD50
+	ldr r0, _0804DD64 @ =gEkrHpBarCount
+	ldr r0, [r0]
+	cmp r0, #0
+	bne _0804DD6C
+	ldr r0, _0804DD68 @ =gEfxSpellAnimExists
+	ldr r0, [r0]
+	cmp r0, #0
+	bne _0804DD6C
+	movs r0, #1
+	b _0804DD6E
+	.align 2, 0
+_0804DD64: .4byte gEkrHpBarCount
+_0804DD68: .4byte gEfxSpellAnimExists
+_0804DD6C:
+	movs r0, #0
+_0804DD6E:
+	bx lr
+
+	thumb_func_start EkrEfxIsUnitHittedNow
+EkrEfxIsUnitHittedNow: @ 0x0804DD70
+	ldr r1, _0804DD7C @ =gEkrHitEfxBool
 	lsls r0, r0, #1
 	adds r0, r0, r1
 	movs r1, #0
 	ldrsh r0, [r0, r1]
 	bx lr
 	.align 2, 0
-_0804DD7C: .4byte 0x02017780
+_0804DD7C: .4byte gEkrHitEfxBool
 
-	thumb_func_start sub_804DD80
-sub_804DD80: @ 0x0804DD80
+	thumb_func_start NewEfxHPBar
+NewEfxHPBar: @ 0x0804DD80
 	push {r4, r5, r6, lr}
 	adds r4, r0, #0
-	ldr r1, _0804DDB0 @ =0x02017728
+	ldr r1, _0804DDB0 @ =gEkrHpBarCount
 	ldr r0, [r1]
 	cmp r0, #0
 	bne _0804DE40
 	movs r0, #1
 	str r0, [r1]
-	ldr r0, _0804DDB4 @ =gUnk_08C09F10
+	ldr r0, _0804DDB4 @ =ProcScr_efxHPBar
 	movs r1, #3
 	bl Proc_Start
 	adds r6, r0, #0
@@ -37,8 +57,8 @@ sub_804DD80: @ 0x0804DD80
 	ldr r0, [r0]
 	b _0804DDC4
 	.align 2, 0
-_0804DDB0: .4byte 0x02017728
-_0804DDB4: .4byte gUnk_08C09F10
+_0804DDB0: .4byte gEkrHpBarCount
+_0804DDB4: .4byte ProcScr_efxHPBar
 _0804DDB8: .4byte gAnims
 _0804DDBC:
 	ldr r0, _0804DE18 @ =gAnims
@@ -97,7 +117,7 @@ _0804DE22:
 	str r1, [r6, #0x58]
 	ldr r0, [r6, #0x60]
 	bl GetAnimPosition
-	ldr r1, _0804DE48 @ =0x02017780
+	ldr r1, _0804DE48 @ =gEkrHitEfxBool
 	lsls r0, r0, #1
 	adds r0, r0, r1
 	movs r1, #1
@@ -107,7 +127,7 @@ _0804DE40:
 	pop {r0}
 	bx r0
 	.align 2, 0
-_0804DE48: .4byte 0x02017780
+_0804DE48: .4byte gEkrHitEfxBool
 
 	thumb_func_start sub_804DE4C
 sub_804DE4C: @ 0x0804DE4C
@@ -175,7 +195,7 @@ _0804DEAE:
 	strh r1, [r0]
 	ldr r0, [r5, #0x60]
 	bl GetAnimPosition
-	ldr r1, _0804DEFC @ =0x02017780
+	ldr r1, _0804DEFC @ =gEkrHitEfxBool
 	lsls r0, r0, #1
 	adds r0, r0, r1
 	strh r4, [r0]
@@ -191,7 +211,7 @@ _0804DEAE:
 _0804DEF0: .4byte gAnims
 _0804DEF4: .4byte gEkrPairHpInitial
 _0804DEF8: .4byte gEfxPairHpBufOffset
-_0804DEFC: .4byte 0x02017780
+_0804DEFC: .4byte gEkrHitEfxBool
 _0804DF00:
 	ldr r4, _0804DF24 @ =gEkrPids
 	adds r0, r6, #0
@@ -249,7 +269,7 @@ sub_804DF64: @ 0x0804DF64
 	ldr r0, [r0]
 	cmp r0, #0
 	bne _0804DFFC
-	ldr r0, _0804DFB0 @ =0x0201772C
+	ldr r0, _0804DFB0 @ =gEfxSpellAnimExists
 	ldr r0, [r0]
 	cmp r0, #0
 	bne _0804DFFC
@@ -277,7 +297,7 @@ sub_804DF64: @ 0x0804DF64
 	mov pc, r0
 	.align 2, 0
 _0804DFAC: .4byte gEfxBgSemaphore
-_0804DFB0: .4byte 0x0201772C
+_0804DFB0: .4byte gEfxSpellAnimExists
 _0804DFB4: .4byte gEkrDistanceType
 _0804DFB8: .4byte _0804DFBC
 _0804DFBC: @ jump table
@@ -336,7 +356,7 @@ _0804E02A:
 	ldrsh r0, [r2, r3]
 	cmp r1, r0
 	bne _0804E040
-	ldr r1, _0804E044 @ =0x02017728
+	ldr r1, _0804E044 @ =gEkrHpBarCount
 	ldr r0, [r1]
 	subs r0, #1
 	str r0, [r1]
@@ -346,13 +366,13 @@ _0804E040:
 	pop {r0}
 	bx r0
 	.align 2, 0
-_0804E044: .4byte 0x02017728
+_0804E044: .4byte gEkrHpBarCount
 
 	thumb_func_start sub_804E048
 sub_804E048: @ 0x0804E048
 	push {r4, r5, r6, lr}
 	adds r4, r0, #0
-	ldr r1, _0804E080 @ =0x02017728
+	ldr r1, _0804E080 @ =gEkrHpBarCount
 	ldr r0, [r1]
 	cmp r0, #0
 	bne _0804E11A
@@ -375,7 +395,7 @@ sub_804E048: @ 0x0804E048
 	ldr r0, [r0]
 	b _0804E094
 	.align 2, 0
-_0804E080: .4byte 0x02017728
+_0804E080: .4byte gEkrHpBarCount
 _0804E084: .4byte gUnk_08C09F38
 _0804E088: .4byte gAnims
 _0804E08C:
@@ -440,7 +460,7 @@ _0804E0F2:
 	str r1, [r0]
 	ldr r0, [r6, #0x60]
 	bl GetAnimPosition
-	ldr r1, _0804E124 @ =0x02017780
+	ldr r1, _0804E124 @ =gEkrHitEfxBool
 	lsls r0, r0, #1
 	adds r0, r0, r1
 	movs r1, #1
@@ -451,7 +471,7 @@ _0804E11A:
 	bx r0
 	.align 2, 0
 _0804E120: .4byte 0x02017750
-_0804E124: .4byte 0x02017780
+_0804E124: .4byte gEkrHitEfxBool
 
 	thumb_func_start sub_804E128
 sub_804E128: @ 0x0804E128
@@ -510,7 +530,7 @@ _0804E178:
 	strh r1, [r0]
 	ldr r0, [r5, #0x60]
 	bl GetAnimPosition
-	ldr r1, _0804E1CC @ =0x02017780
+	ldr r1, _0804E1CC @ =gEkrHitEfxBool
 	lsls r0, r0, #1
 	adds r0, r0, r1
 	strh r4, [r0]
@@ -532,7 +552,7 @@ _0804E1B2:
 	.align 2, 0
 _0804E1C4: .4byte gEkrPairHpInitial
 _0804E1C8: .4byte gEfxPairHpBufOffset
-_0804E1CC: .4byte 0x02017780
+_0804E1CC: .4byte gEkrHitEfxBool
 _0804E1D0: .4byte 0x02017750
 _0804E1D4:
 	adds r0, #1
@@ -616,7 +636,7 @@ _0804E26A:
 	bl Proc_Break
 	ldr r0, [r6, #0x5c]
 	bl GetAnimPosition
-	ldr r1, _0804E288 @ =0x02017780
+	ldr r1, _0804E288 @ =gEkrHitEfxBool
 	lsls r0, r0, #1
 	adds r0, r0, r1
 	movs r1, #2
@@ -626,7 +646,7 @@ _0804E282:
 	pop {r0}
 	bx r0
 	.align 2, 0
-_0804E288: .4byte 0x02017780
+_0804E288: .4byte gEkrHitEfxBool
 
 	thumb_func_start sub_804E28C
 sub_804E28C: @ 0x0804E28C
@@ -714,7 +734,7 @@ _0804E31E:
 	strh r1, [r0]
 	ldr r0, [r5, #0x5c]
 	bl GetAnimPosition
-	ldr r1, _0804E374 @ =0x02017780
+	ldr r1, _0804E374 @ =gEkrHitEfxBool
 	lsls r0, r0, #1
 	adds r0, r0, r1
 	strh r4, [r0]
@@ -733,7 +753,7 @@ _0804E364: .4byte gAnims
 _0804E368: .4byte gEkrPairHpInitial
 _0804E36C: .4byte 0x00000395
 _0804E370: .4byte gEfxPairHpBufOffset
-_0804E374: .4byte 0x02017780
+_0804E374: .4byte gEkrHitEfxBool
 _0804E378:
 	ldr r4, _0804E39C @ =gEkrPids
 	adds r0, r6, #0
@@ -789,7 +809,7 @@ _0804E3D4:
 sub_804E3E0: @ 0x0804E3E0
 	push {r4, r5, r6, lr}
 	adds r6, r0, #0
-	ldr r1, _0804E410 @ =0x02017728
+	ldr r1, _0804E410 @ =gEkrHpBarCount
 	ldr r5, [r1]
 	cmp r5, #0
 	bne _0804E44E
@@ -810,7 +830,7 @@ sub_804E3E0: @ 0x0804E3E0
 	ldr r0, [r0]
 	b _0804E424
 	.align 2, 0
-_0804E410: .4byte 0x02017728
+_0804E410: .4byte gEkrHpBarCount
 _0804E414: .4byte gUnk_08C09F70
 _0804E418: .4byte gAnims
 _0804E41C:
@@ -865,7 +885,7 @@ _0804E470:
 sub_804E474: @ 0x0804E474
 	push {r4, r5, r6, r7, lr}
 	adds r7, r0, #0
-	ldr r1, _0804E4A4 @ =0x02017728
+	ldr r1, _0804E4A4 @ =gEkrHpBarCount
 	ldr r0, [r1]
 	cmp r0, #0
 	bne _0804E540
@@ -885,7 +905,7 @@ sub_804E474: @ 0x0804E474
 	ldr r0, [r0]
 	b _0804E4B8
 	.align 2, 0
-_0804E4A4: .4byte 0x02017728
+_0804E4A4: .4byte gEkrHpBarCount
 _0804E4A8: .4byte gUnk_08C09F98
 _0804E4AC: .4byte gAnims
 _0804E4B0:
@@ -954,7 +974,7 @@ _0804E526:
 	str r7, [r6, #0x64]
 	ldr r0, [r6, #0x5c]
 	bl GetAnimPosition
-	ldr r1, _0804E548 @ =0x02017780
+	ldr r1, _0804E548 @ =gEkrHitEfxBool
 	lsls r0, r0, #1
 	adds r0, r0, r1
 	movs r1, #2
@@ -964,7 +984,7 @@ _0804E540:
 	pop {r0}
 	bx r0
 	.align 2, 0
-_0804E548: .4byte 0x02017780
+_0804E548: .4byte gEkrHitEfxBool
 
 	thumb_func_start sub_804E54C
 sub_804E54C: @ 0x0804E54C
@@ -1030,7 +1050,7 @@ _0804E5AA:
 	strh r1, [r0]
 	adds r0, r6, #0
 	bl GetAnimPosition
-	ldr r1, _0804E5EC @ =0x02017780
+	ldr r1, _0804E5EC @ =gEkrHitEfxBool
 	lsls r0, r0, #1
 	adds r0, r0, r1
 	strh r4, [r0]
@@ -1041,7 +1061,7 @@ _0804E5AA:
 _0804E5E0: .4byte gEkrPairHpInitial
 _0804E5E4: .4byte 0x00000395
 _0804E5E8: .4byte gEfxPairHpBufOffset
-_0804E5EC: .4byte 0x02017780
+_0804E5EC: .4byte gEkrHitEfxBool
 _0804E5F0:
 	adds r0, r1, #1
 	str r0, [r5, #0x54]
@@ -1063,7 +1083,7 @@ sub_804E604: @ 0x0804E604
 	adds r5, r0, #0
 	adds r6, r1, #0
 	mov r8, r2
-	ldr r1, _0804E650 @ =0x02017728
+	ldr r1, _0804E650 @ =gEkrHpBarCount
 	ldr r0, [r1]
 	adds r0, #1
 	str r0, [r1]
@@ -1092,7 +1112,7 @@ sub_804E604: @ 0x0804E604
 	pop {r0}
 	bx r0
 	.align 2, 0
-_0804E650: .4byte 0x02017728
+_0804E650: .4byte gEkrHpBarCount
 _0804E654: .4byte gUnk_08C09FC0
 
 	thumb_func_start sub_804E658
@@ -1268,7 +1288,7 @@ _0804E7A8: .4byte gEkrBgPosition
 sub_804E7AC: @ 0x0804E7AC
 	push {r4, r5, lr}
 	adds r5, r0, #0
-	ldr r1, _0804E7D0 @ =0x02017728
+	ldr r1, _0804E7D0 @ =gEkrHpBarCount
 	ldr r4, [r1]
 	cmp r4, #0
 	bne _0804E7C8
@@ -1284,7 +1304,7 @@ _0804E7C8:
 	pop {r0}
 	bx r0
 	.align 2, 0
-_0804E7D0: .4byte 0x02017728
+_0804E7D0: .4byte gEkrHpBarCount
 _0804E7D4: .4byte gUnk_08C0A000
 
 	thumb_func_start sub_804E7D8
@@ -1336,7 +1356,7 @@ sub_804E81C: @ 0x0804E81C
 	ldr r0, [r0]
 	cmp r0, #0
 	bne _0804E84E
-	ldr r0, _0804E88C @ =0x0201772C
+	ldr r0, _0804E88C @ =gEfxSpellAnimExists
 	ldr r0, [r0]
 	cmp r0, #0
 	bne _0804E84E
@@ -1380,7 +1400,7 @@ _0804E882:
 	bx r0
 	.align 2, 0
 _0804E888: .4byte gEfxBgSemaphore
-_0804E88C: .4byte 0x0201772C
+_0804E88C: .4byte gEfxSpellAnimExists
 _0804E890: .4byte gBanimDoneFlag
 _0804E894: .4byte gEkrDistanceType
 _0804E898: .4byte gEkrInitPosReal
@@ -1526,7 +1546,7 @@ sub_804E9D0: @ 0x0804E9D0
 	push {r4, r5, lr}
 	adds r4, r0, #0
 	adds r5, r1, #0
-	ldr r1, _0804EA04 @ =0x02017728
+	ldr r1, _0804EA04 @ =gEkrHpBarCount
 	ldr r0, [r1]
 	adds r0, #1
 	str r0, [r1]
@@ -1547,7 +1567,7 @@ sub_804E9D0: @ 0x0804E9D0
 	pop {r0}
 	bx r0
 	.align 2, 0
-_0804EA04: .4byte 0x02017728
+_0804EA04: .4byte gEkrHpBarCount
 _0804EA08: .4byte 0x02017734
 _0804EA0C: .4byte gUnk_08C0A068
 
@@ -1559,7 +1579,7 @@ sub_804EA10: @ 0x0804EA10
 	ldr r0, [r0]
 	cmp r0, #0
 	bne _0804EA4E
-	ldr r0, _0804EA38 @ =0x0201772C
+	ldr r0, _0804EA38 @ =gEfxSpellAnimExists
 	ldr r0, [r0]
 	cmp r0, #0
 	bne _0804EA4E
@@ -1571,7 +1591,7 @@ sub_804EA10: @ 0x0804EA10
 	b _0804EA44
 	.align 2, 0
 _0804EA34: .4byte gEfxBgSemaphore
-_0804EA38: .4byte 0x0201772C
+_0804EA38: .4byte gEfxSpellAnimExists
 _0804EA3C:
 	ldr r0, [r4, #0x5c]
 	ldr r1, [r4, #0x60]
@@ -1624,7 +1644,7 @@ _0804EA9A:
 	ldrsh r0, [r4, r2]
 	cmp r1, r0
 	bne _0804EAB6
-	ldr r1, _0804EABC @ =0x02017728
+	ldr r1, _0804EABC @ =gEkrHpBarCount
 	ldr r0, [r1]
 	subs r0, #1
 	str r0, [r1]
@@ -1638,7 +1658,7 @@ _0804EAB6:
 	pop {r0}
 	bx r0
 	.align 2, 0
-_0804EABC: .4byte 0x02017728
+_0804EABC: .4byte gEkrHpBarCount
 _0804EAC0: .4byte 0x02017734
 
 	thumb_func_start sub_804EAC4
@@ -3707,7 +3727,7 @@ sub_804FB58: @ 0x0804FB58
 	push {r4, r5, r6}
 	sub sp, #4
 	adds r5, r0, #0
-	ldr r4, _0804FC14 @ =0x0201777C
+	ldr r4, _0804FC14 @ =gpProcEfxHpBarColorChange
 	ldr r0, _0804FC18 @ =gUnk_08C0A218
 	movs r1, #3
 	bl Proc_Start
@@ -3788,7 +3808,7 @@ sub_804FB58: @ 0x0804FB58
 	pop {r0}
 	bx r0
 	.align 2, 0
-_0804FC14: .4byte 0x0201777C
+_0804FC14: .4byte gpProcEfxHpBarColorChange
 _0804FC18: .4byte gUnk_08C0A218
 _0804FC1C: .4byte gUnk_081DE00C
 _0804FC20: .4byte gUnk_081DE036
@@ -3805,35 +3825,35 @@ _0804FC44: .4byte 0x0201FA5C
 	thumb_func_start EndEfxHPBarColorChange
 EndEfxHPBarColorChange: @ 0x0804FC48
 	push {lr}
-	ldr r0, _0804FC58 @ =0x0201777C
+	ldr r0, _0804FC58 @ =gpProcEfxHpBarColorChange
 	ldr r0, [r0]
 	bl Proc_End
 	pop {r0}
 	bx r0
 	.align 2, 0
-_0804FC58: .4byte 0x0201777C
+_0804FC58: .4byte gpProcEfxHpBarColorChange
 
 	thumb_func_start sub_804FC5C
 sub_804FC5C: @ 0x0804FC5C
-	ldr r0, _0804FC68 @ =0x0201777C
+	ldr r0, _0804FC68 @ =gpProcEfxHpBarColorChange
 	ldr r0, [r0]
 	adds r0, #0x29
 	movs r1, #1
 	strb r1, [r0]
 	bx lr
 	.align 2, 0
-_0804FC68: .4byte 0x0201777C
+_0804FC68: .4byte gpProcEfxHpBarColorChange
 
 	thumb_func_start sub_804FC6C
 sub_804FC6C: @ 0x0804FC6C
-	ldr r0, _0804FC78 @ =0x0201777C
+	ldr r0, _0804FC78 @ =gpProcEfxHpBarColorChange
 	ldr r0, [r0]
 	adds r0, #0x29
 	movs r1, #0
 	strb r1, [r0]
 	bx lr
 	.align 2, 0
-_0804FC78: .4byte 0x0201777C
+_0804FC78: .4byte gpProcEfxHpBarColorChange
 
 	thumb_func_start sub_804FC7C
 sub_804FC7C: @ 0x0804FC7C
@@ -4701,7 +4721,7 @@ sub_8050348: @ 0x08050348
 	strh r4, [r5, #0x2c]
 	movs r0, #4
 	strh r0, [r5, #0x2e]
-	ldr r0, _08050380 @ =0x02017778
+	ldr r0, _08050380 @ =gpProcEfxSpellCast
 	ldr r0, [r0]
 	cmp r0, #0
 	bne _0805038C
@@ -4712,24 +4732,24 @@ sub_8050348: @ 0x08050348
 	b _08050390
 	.align 2, 0
 _0805037C: .4byte gUnk_08C0A2B0
-_08050380: .4byte 0x02017778
+_08050380: .4byte gpProcEfxSpellCast
 _08050384: .4byte gPal + 0xc0
 _08050388: .4byte 0x0201C784
 _0805038C:
 	bl Proc_End
 _08050390:
-	ldr r0, _0805039C @ =0x02017778
+	ldr r0, _0805039C @ =gpProcEfxSpellCast
 	str r5, [r0]
 _08050394:
 	pop {r4, r5}
 	pop {r0}
 	bx r0
 	.align 2, 0
-_0805039C: .4byte 0x02017778
+_0805039C: .4byte gpProcEfxSpellCast
 
 	thumb_func_start sub_80503A0
 sub_80503A0: @ 0x080503A0
-	ldr r0, _080503B4 @ =0x02017778
+	ldr r0, _080503B4 @ =gpProcEfxSpellCast
 	ldr r0, [r0]
 	cmp r0, #0
 	beq _080503B0
@@ -4740,12 +4760,12 @@ sub_80503A0: @ 0x080503A0
 _080503B0:
 	bx lr
 	.align 2, 0
-_080503B4: .4byte 0x02017778
+_080503B4: .4byte gpProcEfxSpellCast
 
 	thumb_func_start sub_80503B8
 sub_80503B8: @ 0x080503B8
 	push {lr}
-	ldr r1, _080503D0 @ =0x02017778
+	ldr r1, _080503D0 @ =gpProcEfxSpellCast
 	ldr r0, [r1]
 	cmp r0, #0
 	beq _080503CA
@@ -4756,7 +4776,7 @@ _080503CA:
 	pop {r0}
 	bx r0
 	.align 2, 0
-_080503D0: .4byte 0x02017778
+_080503D0: .4byte gpProcEfxSpellCast
 
 	thumb_func_start sub_80503D4
 sub_80503D4: @ 0x080503D4
@@ -4876,7 +4896,7 @@ sub_8050478: @ 0x08050478
 	adds r0, #1
 	cmp r1, r0
 	bne _080504E2
-	ldr r1, _080504F4 @ =0x02017778
+	ldr r1, _080504F4 @ =gpProcEfxSpellCast
 	movs r0, #0
 	str r0, [r1]
 	adds r0, r7, #0
@@ -4894,7 +4914,7 @@ _080504E2:
 	.align 2, 0
 _080504EC: .4byte 0x0201C784
 _080504F0: .4byte gPal + 0xc0
-_080504F4: .4byte 0x02017778
+_080504F4: .4byte gpProcEfxSpellCast
 
 	thumb_func_start sub_80504F8
 sub_80504F8: @ 0x080504F8
@@ -4910,7 +4930,7 @@ sub_80504F8: @ 0x080504F8
 	strh r0, [r4, #0x2c]
 	movs r0, #4
 	strh r0, [r4, #0x2e]
-	ldr r5, _0805052C @ =0x02017778
+	ldr r5, _0805052C @ =gpProcEfxSpellCast
 	ldr r0, [r5]
 	cmp r0, #0
 	beq _0805051E
@@ -4922,11 +4942,11 @@ _0805051E:
 	bx r0
 	.align 2, 0
 _08050528: .4byte gUnk_08C0A2E0
-_0805052C: .4byte 0x02017778
+_0805052C: .4byte gpProcEfxSpellCast
 
 	thumb_func_start sub_8050530
 sub_8050530: @ 0x08050530
-	ldr r0, _08050544 @ =0x02017778
+	ldr r0, _08050544 @ =gpProcEfxSpellCast
 	ldr r0, [r0]
 	cmp r0, #0
 	beq _08050540
@@ -4937,11 +4957,11 @@ sub_8050530: @ 0x08050530
 _08050540:
 	bx lr
 	.align 2, 0
-_08050544: .4byte 0x02017778
+_08050544: .4byte gpProcEfxSpellCast
 
 	thumb_func_start sub_8050548
 sub_8050548: @ 0x08050548
-	ldr r0, _0805055C @ =0x02017778
+	ldr r0, _0805055C @ =gpProcEfxSpellCast
 	ldr r0, [r0]
 	cmp r0, #0
 	beq _08050558
@@ -4952,12 +4972,12 @@ sub_8050548: @ 0x08050548
 _08050558:
 	bx lr
 	.align 2, 0
-_0805055C: .4byte 0x02017778
+_0805055C: .4byte gpProcEfxSpellCast
 
 	thumb_func_start sub_8050560
 sub_8050560: @ 0x08050560
 	push {lr}
-	ldr r1, _08050578 @ =0x02017778
+	ldr r1, _08050578 @ =gpProcEfxSpellCast
 	ldr r0, [r1]
 	cmp r0, #0
 	beq _08050572
@@ -4968,7 +4988,7 @@ _08050572:
 	pop {r0}
 	bx r0
 	.align 2, 0
-_08050578: .4byte 0x02017778
+_08050578: .4byte gpProcEfxSpellCast
 
 	thumb_func_start sub_805057C
 sub_805057C: @ 0x0805057C
@@ -5233,7 +5253,7 @@ _0805079C:
 	adds r0, #1
 	cmp r1, r0
 	bne _080507BC
-	ldr r1, _080507C8 @ =0x02017778
+	ldr r1, _080507C8 @ =gpProcEfxSpellCast
 	movs r0, #0
 	str r0, [r1]
 	adds r0, r5, #0
@@ -5245,25 +5265,25 @@ _080507BC:
 	bx r0
 	.align 2, 0
 _080507C4: .4byte gPal
-_080507C8: .4byte 0x02017778
+_080507C8: .4byte gpProcEfxSpellCast
 
 	thumb_func_start SpellFx_Begin
 SpellFx_Begin: @ 0x080507CC
-	ldr r1, _080507D4 @ =0x0201772C
+	ldr r1, _080507D4 @ =gEfxSpellAnimExists
 	movs r0, #1
 	str r0, [r1]
 	bx lr
 	.align 2, 0
-_080507D4: .4byte 0x0201772C
+_080507D4: .4byte gEfxSpellAnimExists
 
 	thumb_func_start SpellFx_Finish
 SpellFx_Finish: @ 0x080507D8
-	ldr r1, _080507E0 @ =0x0201772C
+	ldr r1, _080507E0 @ =gEfxSpellAnimExists
 	movs r0, #0
 	str r0, [r1]
 	bx lr
 	.align 2, 0
-_080507E0: .4byte 0x0201772C
+_080507E0: .4byte gEfxSpellAnimExists
 
 	thumb_func_start SpellFx_ClearBG1Position
 SpellFx_ClearBG1Position: @ 0x080507E4
@@ -5587,7 +5607,7 @@ _08050A18:
 	cmp r6, r4
 	beq _08050AA6
 	adds r0, r5, #0
-	bl sub_804DD80
+	bl NewEfxHPBar
 	adds r0, r7, #0
 	bl CheckRoundCrit
 	cmp r0, #1

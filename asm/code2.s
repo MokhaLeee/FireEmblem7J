@@ -22515,7 +22515,7 @@ sub_80AF130: @ 0x080AF130
 	cmp r0, #0
 	beq _080AF174
 	movs r0, #1
-	bl sub_80034C8
+	bl FadeBgmOut
 	b _080AF18C
 	.align 2, 0
 _080AF16C: .4byte gUnk_08DAF054
@@ -23997,7 +23997,7 @@ sub_80AFCC4: @ 0x080AFCC4
 	adds r0, r4, #0
 	bl sub_80AAC88
 	movs r0, #1
-	bl sub_80034C8
+	bl FadeBgmOut
 	ldr r2, _080AFD24 @ =gDispIo
 	movs r0, #2
 	rsbs r0, r0, #0
@@ -24142,7 +24142,7 @@ _080AFDF4: .4byte gUnk_08DAF65C
 sub_80AFDF8: @ 0x080AFDF8
 	push {lr}
 	movs r0, #3
-	bl sub_80034C8
+	bl FadeBgmOut
 	pop {r0}
 	bx r0
 
@@ -25895,7 +25895,7 @@ sub_80B0BF4: @ 0x080B0BF4
 	cmp r0, #0
 	beq _080B0C1C
 	movs r0, #0x3c
-	bl sub_80034C8
+	bl FadeBgmOut
 	adds r0, r4, #0
 	movs r1, #7
 	bl Proc_Goto
@@ -31819,7 +31819,7 @@ sub_80B39EC: @ 0x080B39EC
 	movs r1, #1
 	rsbs r1, r1, #0
 	adds r0, r1, #0
-	bl sub_80034C8
+	bl FadeBgmOut
 	add sp, #4
 	pop {r7}
 	pop {r0}
@@ -37358,7 +37358,7 @@ _080B6440: .4byte gPlaySt
 sub_80B6444: @ 0x080B6444
 	push {lr}
 	movs r0, #4
-	bl sub_80034C8
+	bl FadeBgmOut
 	pop {r0}
 	bx r0
 
@@ -43292,7 +43292,7 @@ _080B9240: .4byte 0x0000E0FF
 sub_80B9244: @ 0x080B9244
 	push {lr}
 	movs r0, #0xb
-	bl sub_80034C8
+	bl FadeBgmOut
 	pop {r0}
 	bx r0
 
@@ -46227,7 +46227,7 @@ sub_80BAA54: @ 0x080BAA54
 	beq _080BAA74
 	movs r0, #1
 	rsbs r0, r0, #0
-	bl sub_80034C8
+	bl FadeBgmOut
 	adds r0, r4, #0
 	bl Proc_Break
 _080BAA74:
@@ -46241,7 +46241,7 @@ _080BAA7C: .4byte gpKeySt
 sub_80BAA80: @ 0x080BAA80
 	push {lr}
 	movs r0, #3
-	bl sub_80034C8
+	bl FadeBgmOut
 	pop {r0}
 	bx r0
 
@@ -49208,7 +49208,7 @@ sub_80BC240: @ 0x080BC240
 	mov r0, sp
 	bl InitBgs
 	movs r0, #1
-	bl sub_80034C8
+	bl FadeBgmOut
 	movs r4, #0
 	str r4, [sp, #0x18]
 	add r0, sp, #0x18

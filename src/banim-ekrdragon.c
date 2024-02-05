@@ -324,18 +324,18 @@ void EkrDragon_StartMainBodyIntro(struct ProcEkrDragon * proc)
 
     switch (gEkrDistanceType) {
     case EKR_DISTANCE_CLOSE:
-        proc->procfx->y = 0x38 - (u16)gEkrBgPosition;
+        proc->procfx->x_hi = 0x38 - (u16)gEkrBgPosition;
         break;
 
     case EKR_DISTANCE_FAR:
-        proc->procfx->y = -(u16)gEkrBgPosition;
+        proc->procfx->x_hi = -(u16)gEkrBgPosition;
         break;
 
     default:
         break;
     }
 
-    proc->procfx->unk3C = 0x4C;
+    proc->procfx->y_hi = 0x4C;
     Proc_Break(proc);
 }
 
@@ -353,15 +353,15 @@ void EkrDragon_PreMainBodyIntro(struct ProcEkrDragon * proc)
 
     procfx->x = Interpolate(
         INTERPOLATE_SQUARE,
-        procfx->y - 0x30,
-        procfx->y,
+        procfx->x_hi - 0x30,
+        procfx->x_hi,
         proc->timer,
         16);
 
-    procfx->unk3A = Interpolate(
+    procfx->y = Interpolate(
         INTERPOLATE_SQUARE,
-        procfx->unk3C - 0x80,
-        procfx->unk3C,
+        procfx->y_hi - 0x80,
+        procfx->y_hi,
         proc->timer,
         16);
 
@@ -395,9 +395,9 @@ void EkrDragon_StartMainBodyFallIn(struct ProcEkrDragon * proc)
         proc->y_hi = 0;
         proc->procfx = NewEfxDragonDeadFallBody(proc->anim);
         proc->procfx->x = proc->anim->xPosition;
-        proc->procfx->unk3A = proc->anim->yPosition - proc->y_lo;
+        proc->procfx->y = proc->anim->yPosition - proc->y_lo;
         proc->proc54 = NewEfxQuakePure(8, 0);
-        sub_8066CAC(proc->anim, 0x13A);
+        NewEkrDragonFireBg3(proc->anim, 0x13A);
         LZ77UnCompWram(Tsa_EkrDragon_MainBg, gEkrTsaBuffer);
         CpuFill32(0x001F001F, gEkrTsaBuffer + 0x3C0, 0x80);
         EfxTmFill(0x001F001F);
@@ -436,10 +436,10 @@ void EkrDragon_WaitMainBodyFallIn(struct ProcEkrDragon * proc)
         proc->terminator);
 
     proc->procfx->x = proc->anim->xPosition;
-    proc->procfx->unk3A = proc->anim->yPosition - ret;
+    proc->procfx->y = proc->anim->yPosition - ret;
 
     proc->procfx->x = proc->procfx->x - gEkrBg2QuakeVec.x;
-    proc->procfx->unk3A = proc->procfx->unk3A - gEkrBg2QuakeVec.y;
+    proc->procfx->y = proc->procfx->y - gEkrBg2QuakeVec.y;
 
     x = (gEkrXPosReal[POS_R] + gEkrBg2QuakeVec.x) - gEkrBgPosition;
     y = gEkrYPosReal[POS_R] - gEkrBg2QuakeVec.y;
@@ -466,7 +466,7 @@ void EkrDragon_WaitMainBodyFallIn(struct ProcEkrDragon * proc)
     if (++proc->timer == (proc->terminator + 1))
     {
         proc->procfx->x = proc->anim->xPosition;
-        proc->procfx->unk3A = proc->anim->yPosition - ret;
+        proc->procfx->y = proc->anim->yPosition - ret;
 
         SetEkrFrontAnimPostion(
             POS_R,

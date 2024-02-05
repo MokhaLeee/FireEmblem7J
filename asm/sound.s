@@ -133,8 +133,8 @@ _080034BC: .4byte 0x03005A30
 _080034C0: .4byte 0x0000FFFF
 _080034C4: .4byte 0x03005C40
 
-	thumb_func_start sub_80034C8
-sub_80034C8: @ 0x080034C8
+	thumb_func_start FadeBgmOut
+FadeBgmOut: @ 0x080034C8
 	push {r7, lr}
 	sub sp, #4
 	mov r7, sp
@@ -432,7 +432,7 @@ _08003730:
 	beq _0800375C
 	ldr r1, [r7, #4]
 	adds r0, r1, #0
-	bl sub_80034C8
+	bl FadeBgmOut
 	ldr r0, [r7, #4]
 	adds r2, r0, #0
 	lsls r1, r2, #4

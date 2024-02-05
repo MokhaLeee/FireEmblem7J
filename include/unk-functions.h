@@ -41,3 +41,4 @@ void StartBgmVolumeChange(int volume_from, int volume_to, int duration, ProcPtr 
 void CloseHelpBox(void);
 void LoadHelpBoxGfx(void * vram, int palId);
 void StartHelpBoxExt_Unk(int x, int y, int mid);
+void FadeBgmOut(int volume);

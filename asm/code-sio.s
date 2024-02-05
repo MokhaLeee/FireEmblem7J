@@ -8836,7 +8836,7 @@ _08040B38: .4byte gUnk_08C07DAC
 _08040B3C: .4byte 0x0203DB28
 _08040B40:
 	movs r0, #1
-	bl sub_80034C8
+	bl FadeBgmOut
 _08040B46:
 	pop {r3, r4}
 	mov r8, r3
@@ -12070,7 +12070,7 @@ sub_8042658: @ 0x08042658
 	cmp r0, #0
 	beq _08042676
 	movs r0, #0
-	bl sub_80034C8
+	bl FadeBgmOut
 	adds r0, r4, #0
 	bl Proc_Break
 _08042676:
@@ -13372,7 +13372,7 @@ _0804312A:
 	movs r0, #1
 	bl sub_803E248
 	movs r0, #2
-	bl sub_80034C8
+	bl FadeBgmOut
 	ldr r1, _08043158 @ =0x0203D908
 	movs r0, #0xff
 	strb r0, [r1]
@@ -14291,7 +14291,7 @@ _08043874:
 	movs r1, #0xa
 	bl sub_800536C
 	movs r0, #1
-	bl sub_80034C8
+	bl FadeBgmOut
 	pop {r4, r5}
 	pop {r0}
 	bx r0
@@ -18556,7 +18556,7 @@ sub_8045B20: @ 0x08045B20
 	bl sub_8047344
 	bl sub_802D864
 	movs r0, #1
-	bl sub_80034C8
+	bl FadeBgmOut
 	pop {r0}
 	bx r0
 	.align 2, 0

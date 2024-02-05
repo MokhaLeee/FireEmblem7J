@@ -28645,7 +28645,7 @@ sub_8063124: @ 0x08063124
 	push {r4, r5, lr}
 	adds r5, r0, #0
 	ldr r4, [r5, #0x60]
-	bl sub_804DD50
+	bl CheckEkrHitDone
 	cmp r0, #1
 	bne _0806317E
 	adds r0, r5, #0
@@ -30606,7 +30606,7 @@ sub_806416C: @ 0x0806416C
 	ldr r0, [r4, #0x5c]
 	ldrh r0, [r0, #2]
 	strh r0, [r1, #2]
-	bl sub_804DD50
+	bl CheckEkrHitDone
 	cmp r0, #1
 	bne _080641A6
 	ldr r0, [r4, #0x5c]

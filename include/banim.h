@@ -100,14 +100,14 @@ struct ProcEkrSubAnimeEmulator {
     /* 50 */ int oamBase;
 };
 
-extern const void *gpImgSheet[2];
+extern const void * gpImgSheet[2];
 extern int gEkrDebugUnk2;
 extern int gAnimC01Blocking;
 extern u32 gBanimDoneFlag[];
 extern u8 gBanimRoundScripts[];
 extern u8 gBanimScr_81DE208[];
-extern int *gpBanimModesLeft;
-extern int *gpBanimModesRight;
+extern int * gpBanimModesLeft;
+extern int * gpBanimModesRight;
 extern u8 gBanimScrLeft[];
 extern u8 gBanimScrRight[];
 extern int Unk_02017758;
@@ -139,6 +139,7 @@ extern u16 gpBg1ScrollOffsetList1[];
 extern u16 gpBg1ScrollOffsetList2[];
 extern struct BattleUnit * gpEkrBattleUnitLeft;
 extern struct BattleUnit * gpEkrBattleUnitRight;
+extern u16 * gpEfxUnitPaletteBackup[2];
 
 void NewEkrLvlupFan(void);
 // ??? EkrLvupFanMain
@@ -178,9 +179,9 @@ void UnAsyncEkrDispUP(void);
 // ??? EfxPrepareScreenFx
 // ??? sub_804DC18
 // ??? EkrEfxStatusClear
-int sub_804DD50(void);
-// ??? CheckEfxHpBarExist
-// ??? sub_804DD80
+int CheckEkrHitDone(void);
+// ??? EkrEfxIsUnitHittedNow
+// ??? NewEfxHPBar
 // ??? sub_804DE4C
 // ??? sub_804DF64
 // ??? sub_804E004

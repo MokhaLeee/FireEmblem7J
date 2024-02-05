@@ -31676,7 +31676,7 @@ sub_807AEC8: @ 0x0807AEC8
 	bne _0807AEE8
 _0807AEE2:
 	movs r0, #4
-	bl sub_80034C8
+	bl FadeBgmOut
 _0807AEE8:
 	pop {r0}
 	bx r0

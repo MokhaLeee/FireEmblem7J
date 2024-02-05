@@ -2214,7 +2214,7 @@ sub_801E94C: @ 0x0801E94C
 	cmp r4, r0
 	beq _0801E964
 	movs r0, #4
-	bl sub_80034C8
+	bl FadeBgmOut
 _0801E964:
 	ldr r0, _0801E984 @ =gPlaySt
 	adds r0, #0x41
@@ -4507,7 +4507,7 @@ sub_801FB94: @ 0x0801FB94
 	movs r1, #0xc
 	strh r1, [r0]
 	movs r0, #2
-	bl sub_80034C8
+	bl FadeBgmOut
 	pop {r0}
 	bx r0
 	.align 2, 0
@@ -6099,7 +6099,7 @@ sub_8020838: @ 0x08020838
 	adds r3, r5, #0
 	bl sub_80020CC
 	movs r0, #4
-	bl sub_80034C8
+	bl FadeBgmOut
 	pop {r4, r5}
 	pop {r0}
 	bx r0

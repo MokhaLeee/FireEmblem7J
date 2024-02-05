@@ -834,9 +834,342 @@ ProcPtr NewEkrDragonFxMain(struct Anim * anim)
     proc = Proc_Start(ProcScr_EkrDragonFxMain, PROC_TREE_3);
     proc->anim = anim;
     proc->timer = 0;
-    proc->duration = 0;
+    proc->step = 0;
     proc->frame = 0;
     proc->conf = NULL;
     proc->fx = Tsas_EkrDragon_08C48874;
     proc->round_cur = 0x1000;
+}
+
+void EkrDragonFxMainHandler(struct ProcEkrDragonFx * proc)
+{
+    s16 ret;
+    int round_type = proc->anim->currentRoundType;
+
+    if (proc->round_cur != round_type)
+    {
+        proc->round_cur = round_type;
+        proc->timer = 0;
+        proc->step = 0;
+        proc->frame = 0;
+
+        switch (round_type) {
+        case ANIM_ROUND_HIT_CLOSE:
+        case ANIM_ROUND_NONCRIT_FAR:
+        case ANIM_ROUND_MISS_CLOSE:
+            proc->conf = FrameLut_EkrDragon_082E441E;
+            break;
+
+        case ANIM_ROUND_CRIT_CLOSE:
+        case ANIM_ROUND_CRIT_FAR:
+            proc->conf = FrameLut_EkrDragon_082E4430;
+            break;
+
+        case ANIM_ROUND_TAKING_MISS_CLOSE:
+        case ANIM_ROUND_TAKING_MISS_FAR:
+            proc->conf = FrameLut_EkrDragon_082E4442;
+            break;
+
+        case ANIM_ROUND_TAKING_HIT_CLOSE:
+        case ANIM_ROUND_STANDING:
+        case ANIM_ROUND_TAKING_HIT_FAR:
+            proc->conf = FrameLut_EkrDragon_082E4418;
+            break;
+
+        default:
+            break;
+        }
+    }
+
+    ret = EfxAdvanceFrameLut(&proc->timer, (void *)&proc->frame, proc->conf);
+    if (ret >= 0)
+    {
+        LZ77UnCompWram(proc->fx[ret], gEkrTsaBuffer);
+        EkrDragonTmCpyWithDistance();
+        EkrDragonTmCpyExt(gEkrBgPosition, 0);
+        return;
+    }
+    else if (ret == -6)
+    {
+        if (proc->step == 0)
+        {
+#if NONMATCHING
+            if (GetAnimAnotherSide(proc->anim)->state3 & ANIM_BIT3_HIT_EFFECT_APPLIED)
+                proc->step = 1;
+#else
+            register struct Anim * anim2 asm("r1");
+            register int bitfile asm("r0");
+
+            anim2 = GetAnimAnotherSide(proc->anim);
+            bitfile = ANIM_BIT3_HIT_EFFECT_APPLIED;
+
+            bitfile &= anim2->state3;
+            if (bitfile)
+                proc->step = 1;
+#endif
+        }
+        else if (CheckEkrHitDone() == true)
+        {
+            proc->timer = 0;
+            proc->step = 0;
+            proc->frame++;
+        }
+    }
+    else if (ret == -5)
+    {
+        if (proc->step == 0)
+        {
+            proc->step = 1;
+        }
+        else if (proc->anim->state3 & ANIM_BIT3_HIT_EFFECT_APPLIED)
+        {
+            proc->timer = 0;
+            proc->step = 0;
+            proc->frame++;
+        }
+    }
+    else if (ret == -4)
+    {
+        PlaySFX(0x2F2, 0x100, 0x78, 0);
+        proc->timer = 0;
+        proc->step = 0;
+        proc->frame++;
+    }
+}
+
+struct ProcCmd CONST_DATA ProcScr_EkrDragonBodyBlack[] = {
+    PROC_19,
+    PROC_REPEAT(EkrDragonBodyBlack_Loop),
+    PROC_REPEAT(EkrDragonBodyBlack_Nop),
+    PROC_END,
+};
+
+ProcPtr NewEkrDragonBodyBlack(struct Anim * anim)
+{
+    struct ProcEkrDragonFx * proc;
+    proc = Proc_Start(ProcScr_EkrDragonBodyBlack, PROC_TREE_3);
+    proc->anim = anim;
+    proc->timer = 0;
+    proc->done = false;
+    return proc;
+}
+
+void EkrDragonBodyBlack_Loop(struct ProcEkrDragonFx * proc)
+{
+    int ret = Interpolate(INTERPOLATE_RSQUARE, 0, 0x10, proc->timer, 0x8);
+    CpuFastCopy(Pals_EkrDragonFlashingWingBg, PAL_BG(0x6), 0x20);
+    CpuFastCopy(gpEfxUnitPaletteBackup[0], PAL_OBJ(0x7), 0x20);
+    EfxPalBlackInOut(gPal, 6, 1, ret);
+    EfxPalBlackInOut(gPal, 0x17, 1, ret);
+    EkrDragonUpdatePal_08065510(ret);
+    EnablePalSync();
+
+    if (++proc->timer == 9)
+    {
+        proc->done = true;
+        Proc_Break(proc);
+    }
+}
+
+void EkrDragonBodyBlack_Nop(struct ProcEkrDragonFx * proc)
+{
+    return;
+}
+
+void sub_80668B8(int x, int y)
+{
+    /* sub_8077474 in FE8U */
+
+    int ix = x >> 3;
+    int iy = y >> 3;
+
+    LZ77UnCompWram(Tsa_EkrDragon_082E7418, gEkrTsaBuffer);
+
+    EfxTmCpyExtHFlip(&gEkrTsaBuffer[0x3C0], -1,
+        EFX_TILEMAP_LOC(gEfxFrameTmap, ix, iy),
+        EFX_BG_WIDTH, TILE_SIZE_4BPP, 2, 6, 0);
+
+    EfxTmCpyExtHFlip(gEkrTsaBuffer, -1,
+        EFX_TILEMAP_LOC(gEfxFrameTmap, ix, iy + 2),
+        EFX_BG_WIDTH, TILE_SIZE_4BPP,
+        30, 6, 0);
+}
+
+void sub_8066950(int x, int y)
+{
+    /* sub_807750C in FE8U */
+
+    int _ix = x >> 3;
+    int ix = x & 7;
+    int _iy = y >> 3;
+    int iy = y & 7;
+
+    SetBgOffset(BG_3, ix, iy);
+    EfxTmCpyExt(
+        EFX_TILEMAP_LOC(gEfxFrameTmap, _ix, _iy),
+        EFX_BG_WIDTH,
+        gBg3Tm,
+        TILE_SIZE_4BPP, TILE_SIZE_4BPP, TILE_SIZE_4BPP, -1, -1);
+
+    EnableBgSync(BG3_SYNC_BIT);
+}
+
+struct ProcCmd CONST_DATA ProcScr_EkrDragonTunk[] = {
+    PROC_19,
+    PROC_REPEAT(EkrDragonTunk_Loop1),
+    PROC_REPEAT(EkrDragonTunk_Loop2),
+    PROC_REPEAT(EkrDragonTunk_NopLoop),
+    PROC_END,
+};
+
+ProcPtr NewEkrDragonTunk(struct Anim * anim)
+{
+    struct ProcEkrDragon * proc;
+    proc = Proc_Start(ProcScr_EkrDragonTunk, PROC_TREE_3);
+    proc->anim = anim;
+    proc->done = false;
+    proc->timer = 0;
+
+    if (gEkrDistanceType == EKR_DISTANCE_CLOSE)
+        proc->x = 0;
+    else
+        proc->x = -0x20;
+
+    FadeBgmOut(1);
+    return proc;
+}
+
+void EkrDragonTunk_Loop1(struct ProcEkrDragon * proc)
+{
+    proc->timer++;
+
+    if (proc->timer == 1)
+    {
+        NewEkrDragonProc_8066F80(3, 2, 3);
+        PlaySFX(0x147, 0x100, 0x78, 0);
+    }
+
+    if (proc->timer == 0x23)
+    {
+        NewEkrDragonProc_8066F80(3, 2, 3);
+        PlaySFX(0x147, 0x100, 0x78, 0);
+    }
+
+    if (proc->timer == 0x32)
+    {
+        NewEkrDragonProc_8066F80(3, 2, 3);
+        PlaySFX(0x147, 0x100, 0x78, 0);
+    }
+
+    if (proc->timer == 0x36)
+    {
+        SetAnimStateHidden(GetAnimPosition(proc->anim));
+        proc->y_lo = 0x100;
+        proc->y_hi = 0;
+        proc->procfx = NewEfxDragonDeadFallHeadFx(proc->anim);
+        proc->procfx->x = proc->anim->xPosition - 0x16;
+        proc->procfx->y = proc->anim->yPosition - proc->y_lo + 0xD8;
+
+        LZ77UnCompWram(Tsa_EkrDragon_MainBg, gEkrTsaBuffer);
+        EfxTmFill(0x001F001F);
+        TmFill(gBg3Tm, 0x1F);
+        sub_80668B8(proc->x, 0xF0);
+        sub_8066950(0, 0x100);
+    }
+
+    if (proc->timer == 0x64)
+    {
+        proc->timer = 0;
+        proc->terminator = 0x180;
+        proc->timer2 = 0;
+        Proc_Break(proc);
+    }
+}
+
+void EkrDragonTunk_Loop2(struct ProcEkrDragon * proc)
+{
+    int ret = ret = Interpolate(
+        INTERPOLATE_LINEAR,
+        proc->y_lo,
+        proc->y_hi,
+        proc->timer,
+        proc->terminator);
+
+    proc->procfx->x = proc->anim->xPosition - 0x16;
+    proc->procfx->y = proc->anim->yPosition - ret + 0xD8;
+
+    proc->procfx->x -= gEkrBg2QuakeVec.x;
+    proc->procfx->y -= gEkrBg2QuakeVec.y;
+
+    sub_8066950(gEkrBg2QuakeVec.x, ret + gEkrBg2QuakeVec.y);
+
+    SetBgOffset(BG_2, gEkrBg2QuakeVec.x, gEkrBg2QuakeVec.y);
+    SetBgOffset(
+        BG_0,
+        gEkrBg2QuakeVec.x + gEkrBg0QuakeVec.x,
+        gEkrBg2QuakeVec.y + gEkrBg0QuakeVec.y);
+
+    EkrGauge_0804CC8C(
+        -(gEkrBg2QuakeVec.x + gEkrBg0QuakeVec.x),
+        -(gEkrBg2QuakeVec.y + gEkrBg0QuakeVec.y));
+
+    EkrDispUP_SetPositionSync(
+        -(gEkrBg2QuakeVec.x + gEkrBg0QuakeVec.x),
+        -(gEkrBg2QuakeVec.y + gEkrBg0QuakeVec.y));
+
+    if (++proc->timer == (proc->terminator + 1))
+        proc->timer = proc->terminator;
+
+    proc->timer2++;
+
+    if (proc->timer2 == 1)
+    {
+        proc->proc54 = NewEfxQuakePure(8, 0);
+        PlaySFX(0x2F3, 0x100, 0x78, 0);
+    }
+
+    if (proc->timer2 == 0x3C)
+    {
+        Proc_End(proc->proc54);
+        proc->proc54 = NewEfxQuakePure(9, 0);
+    }
+
+    if (proc->timer2 == 0x5A)
+    {
+        Proc_End(proc->proc54);
+        proc->proc54 = NewEfxQuakePure(10, 0);
+    }
+
+    if (proc->timer2 == 0x87)
+    {
+        NewEkrDragonProc_8066F80(0x3C, 0x1E, 0x78);
+    }
+
+    if (proc->timer2 == 0xC8)
+    {
+        proc->timer = proc->terminator;
+        Proc_End(proc->procfx);
+        Proc_End(proc->proc54);
+
+        gEkrBg2QuakeVec.x = 0;
+        gEkrBg2QuakeVec.y = 0;
+
+        sub_8066950(0, proc->y_hi);
+        SetBgOffset(BG_2, 0, 0);
+        SetBgOffset(BG_0, gEkrBg0QuakeVec.x, gEkrBg0QuakeVec.y);
+        EkrGauge_0804CC8C(-gEkrBg0QuakeVec.x, -gEkrBg0QuakeVec.y);
+        EkrDispUP_SetPositionSync(-gEkrBg0QuakeVec.x, -gEkrBg0QuakeVec.y);
+        EkrDragonUpdatePal_08065510(0x10);
+    }
+
+    if (proc->timer2 == 0x190)
+    {
+        proc->done = true;
+        Proc_Break(proc);
+    }
+}
+
+void EkrDragonTunk_NopLoop(struct ProcEkrDragon * proc)
+{
+    return;
 }

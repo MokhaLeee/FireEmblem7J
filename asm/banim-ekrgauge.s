@@ -962,7 +962,7 @@ _0804CFFC:
 	strh r2, [r0, #4]
 	strh r4, [r0, #0xc]
 	movs r0, #0
-	bl CheckEfxHpBarExist
+	bl EkrEfxIsUnitHittedNow
 	lsls r0, r0, #0x10
 	asrs r3, r0, #0x10
 	cmp r3, #1
@@ -1027,7 +1027,7 @@ _0804D088:
 	strh r2, [r0, #4]
 	strh r4, [r0, #0xc]
 	movs r0, #1
-	bl CheckEfxHpBarExist
+	bl EkrEfxIsUnitHittedNow
 	lsls r0, r0, #0x10
 	asrs r3, r0, #0x10
 	cmp r3, #1
@@ -2490,10 +2490,10 @@ _0804DCA2:
 
 	thumb_func_start EkrEfxStatusClear
 EkrEfxStatusClear: @ 0x0804DCA8
-	ldr r1, _0804DD04 @ =0x02017728
+	ldr r1, _0804DD04 @ =gEkrHpBarCount
 	movs r0, #0
 	str r0, [r1]
-	ldr r1, _0804DD08 @ =0x0201772C
+	ldr r1, _0804DD08 @ =gEfxSpellAnimExists
 	str r0, [r1]
 	ldr r1, _0804DD0C @ =0x02017730
 	str r0, [r1]
@@ -2524,20 +2524,20 @@ EkrEfxStatusClear: @ 0x0804DCA8
 	ldr r1, _0804DD3C @ =0x02017768
 	strh r0, [r1]
 	strh r0, [r1, #2]
-	ldr r1, _0804DD40 @ =0x02017780
+	ldr r1, _0804DD40 @ =gEkrHitEfxBool
 	strh r0, [r1]
 	strh r0, [r1, #2]
 	ldr r1, _0804DD44 @ =gpProcEfxStatusUnits
 	str r0, [r1]
 	str r0, [r1, #4]
-	ldr r1, _0804DD48 @ =0x02017778
+	ldr r1, _0804DD48 @ =gpProcEfxSpellCast
 	str r0, [r1]
-	ldr r1, _0804DD4C @ =0x0201777C
+	ldr r1, _0804DD4C @ =gpProcEfxHpBarColorChange
 	str r0, [r1]
 	bx lr
 	.align 2, 0
-_0804DD04: .4byte 0x02017728
-_0804DD08: .4byte 0x0201772C
+_0804DD04: .4byte gEkrHpBarCount
+_0804DD08: .4byte gEfxSpellAnimExists
 _0804DD0C: .4byte 0x02017730
 _0804DD10: .4byte 0x02017738
 _0804DD14: .4byte 0x0201773C
@@ -2551,27 +2551,7 @@ _0804DD30: .4byte 0x0201775C
 _0804DD34: .4byte gEkrBg2QuakeVec
 _0804DD38: .4byte 0x02017764
 _0804DD3C: .4byte 0x02017768
-_0804DD40: .4byte 0x02017780
+_0804DD40: .4byte gEkrHitEfxBool
 _0804DD44: .4byte gpProcEfxStatusUnits
-_0804DD48: .4byte 0x02017778
-_0804DD4C: .4byte 0x0201777C
-
-	thumb_func_start sub_804DD50
-sub_804DD50: @ 0x0804DD50
-	ldr r0, _0804DD64 @ =0x02017728
-	ldr r0, [r0]
-	cmp r0, #0
-	bne _0804DD6C
-	ldr r0, _0804DD68 @ =0x0201772C
-	ldr r0, [r0]
-	cmp r0, #0
-	bne _0804DD6C
-	movs r0, #1
-	b _0804DD6E
-	.align 2, 0
-_0804DD64: .4byte 0x02017728
-_0804DD68: .4byte 0x0201772C
-_0804DD6C:
-	movs r0, #0
-_0804DD6E:
-	bx lr
+_0804DD48: .4byte gpProcEfxSpellCast
+_0804DD4C: .4byte gpProcEfxHpBarColorChange

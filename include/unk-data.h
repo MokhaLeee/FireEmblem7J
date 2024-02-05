@@ -954,9 +954,9 @@ extern const u8 Img_EkrDragonSpark[];
 extern const u8 Img_EfxDragonDeadFallHead[];
 extern const u16 Pal_EkrDragonHead[];
 extern const u16 Pals_EkrDragonFlashingWingObj[];
-// ??? gUnk_082E9DD8
-// ??? gUnk_082EA7C8
-// ??? gUnk_082EA7E8
+extern const u8 Img_EkrDragonFireBg3[];
+extern const u8 Pal_EkrDragonFireBg3[];
+extern const u8 Tsa_EkrDragonFireBg3[];
 extern const u8 Img_EkrDragonFireBG2[];
 extern const u8 Tsa_EkrDragonFireBG2[];
 // ??? gUnk_082EB740
@@ -1765,7 +1765,7 @@ extern const u8 Tsa_EkrDragonFireBG2[];
 // ??? gUnk_08C09EC8
 // ??? gUnk_08C09EE0
 // ??? ProcScr_ekrDispUP
-// ??? gUnk_08C09F10
+// ??? ProcScr_efxHPBar
 // ??? gUnk_08C09F38
 // ??? gUnk_08C09F70
 // ??? gUnk_08C09F98

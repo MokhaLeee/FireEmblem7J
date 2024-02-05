@@ -2,16 +2,8 @@
     .include "animscr.inc"
     .include "gba_sprites.inc"
 
-    .global ProcScr_EkrDragonBodyBlack
-ProcScr_EkrDragonBodyBlack:    @ 0x08C4887C
-    .incbin "FireEmblem7J.base.gba", 0xC4887C, 0xC4889C - 0xC4887C
-
-    .global ProcScr_EkrDragon_08C4889C
-ProcScr_EkrDragon_08C4889C:    @ 0x08C4889C
-    .incbin "FireEmblem7J.base.gba", 0xC4889C, 0xC488C4 - 0xC4889C
-
-    .global ProcScr_EkrDragon_08C488C4
-ProcScr_EkrDragon_08C488C4:    @ 0x08C488C4
+    .global ProcScr_EkrDragonFireBg2
+ProcScr_EkrDragonFireBg2:    @ 0x08C488C4
     .incbin "FireEmblem7J.base.gba", 0xC488C4, 0xC488E4 - 0xC488C4
 
     .global ProcScr_EkrDragon_08C488E4

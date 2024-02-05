@@ -8573,7 +8573,7 @@ _0800E47E:
 	cmp r5, #0x2f
 	beq _0800E488
 	movs r0, #4
-	bl sub_80034C8
+	bl FadeBgmOut
 _0800E488:
 	movs r0, #2
 	pop {r4, r5}

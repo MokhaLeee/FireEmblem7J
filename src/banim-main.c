@@ -48,7 +48,7 @@ void BattleAIS_ExecCommands(void)
                     else if (!(anim->state3 & 0x4))
                         anim->pScrCurrent = anim->pScrCurrent + 1;
                     else if (anim->state3 & 0x8) {
-                        if (sub_804DD50() == 1) {
+                        if (CheckEkrHitDone() == 1) {
                             anim->state3 &= ~(0x1 | 0x4 | 0x8);
                             anim->pScrCurrent = anim->pScrCurrent + 1;
 

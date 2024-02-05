@@ -4214,7 +4214,7 @@ sub_80152A4: @ 0x080152A4
 	push {lr}
 	lsls r0, r0, #0x10
 	asrs r0, r0, #0x10
-	bl sub_80034C8
+	bl FadeBgmOut
 	pop {r0}
 	bx r0
 	.align 2, 0
