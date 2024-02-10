@@ -241,13 +241,13 @@ struct ProcBmfx
     /* 4C */ int total_duration;
     /* 50 */ int counter_procloop;
     /* 54 */ int counter_functioncall;
-    /* 58 */ s8 (* callback)(ProcPtr);
+    /* 58 */ bool (* callback)(ProcPtr);
 };
 
 void BmBgfx_Init(struct ProcBmfx * proc);
 void BmBgfx_Loop(struct ProcBmfx * proc);
 void BmBgfx_End(struct ProcBmfx * proc);
-s8 CheckBmBgfxDone(void);
+bool CheckBmBgfxDone(void);
 void BmBgfxAdvance(void);
 void EndBmBgfx(void);
 void BmBgfxSetLoopEN(u8);

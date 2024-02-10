@@ -16,7 +16,7 @@ void ParallelFiniteLoop_Loop(struct ParallelFiniteLoopProc * proc)
 }
 
 struct ProcCmd CONST_DATA ProcScr_ParallelFiniteLoop[] = {
-    PROC_SLEEP(0),
+    PROC_YIELD,
     PROC_CALL(ParallelFiniteLoop_Init),
     PROC_REPEAT(ParallelFiniteLoop_Loop),
     PROC_END,
