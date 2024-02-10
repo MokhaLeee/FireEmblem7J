@@ -340,8 +340,8 @@ gUnk_08BFFF78:	@ 0x08BFFF78
 gUnk_08C00018:	@ 0x08C00018
 	.incbin "FireEmblem7J.base.gba", 0xC00018, 0xC00038 - 0xC00018
 
-	.global gUnk_08C00038
-gUnk_08C00038:	@ 0x08C00038
+	.global gEventCmdTable
+gEventCmdTable:	@ 0x08C00038
 	.incbin "FireEmblem7J.base.gba", 0xC00038, 0xC0003C - 0xC00038
 
 	.global gUnk_08C0003C
@@ -502,15 +502,52 @@ gUnk_08C0127C:	@ 0x08C0127C
 
 	.global gUnk_08C012BC
 gUnk_08C012BC:	@ 0x08C012BC
-	.incbin "FireEmblem7J.base.gba", 0xC012BC, 0xC012FC - 0xC012BC
+	@ PROC_YIELD
+	.short 0xe, 0x0
+	.word 0x0
+	@ PROC_CALL
+	.short 0x2, 0x0
+	.word sub_80117DC
+	@ PROC_YIELD
+	.short 0xe, 0x0
+	.word 0x0
+	@ PROC_REPEAT
+	.short 0x3, 0x0
+	.word sub_80118A8
+	@ PROC_WHILE
+	.short 0x14, 0x0
+	.word EventThunderfx_Loop
+	@ PROC_REPEAT
+	.short 0x3, 0x0
+	.word sub_8011900
+	@ PROC_CALL
+	.short 0x2, 0x0
+	.word sub_8011954
+	@ PROC_END
+	.short 0x0, 0x0
+	.word 0x0
 
 	.global gUnk_08C012FC
 gUnk_08C012FC:	@ 0x08C012FC
 	.incbin "FireEmblem7J.base.gba", 0xC012FC, 0xC013C8 - 0xC012FC
 
-	.global gUnk_08C013C8
-gUnk_08C013C8:	@ 0x08C013C8
-	.incbin "FireEmblem7J.base.gba", 0xC013C8, 0xC013F0 - 0xC013C8
+	.global ProcScr_EventThunderfx
+ProcScr_EventThunderfx:	@ 0x08C013C8
+	@ PROC_YIELD
+	.short 0xe, 0x0
+	.word 0x0
+	@ PROC_CALL
+	.short 0x2, 0x0
+	.word EventThunderfx_Init
+	@ PROC_WHILE
+	.short 0x14, 0x0
+	.word EventThunderfx_Loop
+	@ PROC_CALL
+	.short 0x2, 0x0
+	.word EventThunderfx_End
+	@ PROC_END
+	.short 0x0, 0x0
+	.word 0x0
 
 	.global gUnk_08C013F0
 gUnk_08C013F0:	@ 0x08C013F0
@@ -526,11 +563,36 @@ gUnk_08C0162C:	@ 0x08C0162C
 
 	.global gUnk_08C01654
 gUnk_08C01654:	@ 0x08C01654
-	.incbin "FireEmblem7J.base.gba", 0xC01654, 0xC01674 - 0xC01654
+	@ PROC_YIELD
+	.short 0xe, 0x0
+	.word 0x0
+	@ PROC_CALL
+	.short 0x2, 0x0
+	.word sub_80120D8
+	@ PROC_REPEAT
+	.short 0x3, 0x0
+	.word sub_80120E0
+	@ PROC_END
+	.short 0x0, 0x0
+	.word 0x0
 
 	.global gUnk_08C01674
 gUnk_08C01674:	@ 0x08C01674
-	.incbin "FireEmblem7J.base.gba", 0xC01674, 0xC0169C - 0xC01674
+	@ PROC_YIELD
+	.short 0xe, 0x0
+	.word 0x0
+	@ PROC_SET_END_CB
+	.short 0x4, 0x0
+	.word sub_80122CC
+	@ PROC_CALL
+	.short 0x2, 0x0
+	.word sub_8012214
+	@ PROC_REPEAT
+	.short 0x3, 0x0
+	.word sub_801227C
+	@ PROC_END
+	.short 0x0, 0x0
+	.word 0x0
 
 	.global gUnk_08C0169C
 gUnk_08C0169C:	@ 0x08C0169C
@@ -538,7 +600,15 @@ gUnk_08C0169C:	@ 0x08C0169C
 
 	.global gUnk_08C016FC
 gUnk_08C016FC:	@ 0x08C016FC
-	.incbin "FireEmblem7J.base.gba", 0xC016FC, 0xC01714 - 0xC016FC
+        @ PROC_SET_END_CB
+        .short 0x4, 0x0
+        .word sub_8012B64
+        @ PROC_REPEAT
+        .short 0x3, 0x0
+        .word sub_8012B38
+        @ PROC_END
+        .short 0x0, 0x0
+        .word 0x0
 
 	.global gUnk_08C01714
 gUnk_08C01714:	@ 0x08C01714

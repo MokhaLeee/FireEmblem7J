@@ -1386,7 +1386,7 @@ extern const u8 Tsa_EkrDragonFireBG2[];
 // ??? gUnk_08BFFF58
 // ??? gUnk_08BFFF78
 // ??? gUnk_08C00018
-// ??? gUnk_08C00038
+// ??? gEventCmdTable
 // ??? gUnk_08C0003C
 // ??? gUnk_08C0024C
 // ??? gUnk_08C00798
@@ -1428,7 +1428,7 @@ extern const u8 Tsa_EkrDragonFireBG2[];
 // ??? gUnk_08C0127C
 // ??? gUnk_08C012BC
 // ??? gUnk_08C012FC
-// ??? gUnk_08C013C8
+extern struct ProcCmd ProcScr_EventThunderfx[];
 // ??? gUnk_08C013F0
 // ??? gUnk_08C015DC
 // ??? gUnk_08C0162C

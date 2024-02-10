@@ -15018,8 +15018,8 @@ _080AB5DA:
 	pop {r0}
 	bx r0
 
-	thumb_func_start sub_80AB5E0
-sub_80AB5E0: @ 0x080AB5E0
+	thumb_func_start EventThunderfx_Loop
+EventThunderfx_Loop: @ 0x080AB5E0
 	push {lr}
 	ldr r0, _080AB5F0 @ =gUnk_08DAE49C
 	bl Proc_Find

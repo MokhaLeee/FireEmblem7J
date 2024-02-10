@@ -188,7 +188,7 @@ SECTIONS
 		asm/talk.o(.text);
 		asm/event.o(.text);
 		asm/event-08010630.o(.text);
-		asm/evt-utils.o(.text);
+		asm/eventscr_08011AFC.o(.text);
 		asm/sprite-anim.o(.text);
 		asm/game-ctrl.o(.text);
 		asm/utils.o(.text);

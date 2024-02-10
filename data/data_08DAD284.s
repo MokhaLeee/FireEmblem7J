@@ -874,7 +874,7 @@ ProcScr_TitleScreen: @ 0xDB8ED8
         .word sub_80BB29C
         @ PROC_WHILE
         .short 0x14, 0x0
-        .word sub_80AB5E0
+        .word EventThunderfx_Loop
         @ PROC_CALL
         .short 0x2, 0x0
         .word sub_80BB3EC

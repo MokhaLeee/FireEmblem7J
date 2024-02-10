@@ -1908,7 +1908,7 @@ _0800B378:
 _0800B386:
 	adds r6, r4, #0
 	adds r6, #0x56
-	ldr r7, _0800B3A4 @ =gUnk_08C00038
+	ldr r7, _0800B3A4 @ =gEventCmdTable
 	adds r0, r7, #4
 	mov r8, r0
 _0800B390:
@@ -1922,7 +1922,7 @@ _0800B390:
 	movs r2, #0
 	b _0800B3B6
 	.align 2, 0
-_0800B3A4: .4byte gUnk_08C00038
+_0800B3A4: .4byte gEventCmdTable
 _0800B3A8:
 	lsls r0, r5, #3
 	adds r0, r0, r7
@@ -6474,7 +6474,7 @@ sub_800D510: @ 0x0800D510
 	movs r0, #0
 	b _0800D56E
 _0800D52A:
-	ldr r0, _0800D540 @ =gUnk_08C00038
+	ldr r0, _0800D540 @ =gEventCmdTable
 	movs r1, #0x85
 	lsls r1, r1, #2
 	adds r0, r0, r1
@@ -6485,7 +6485,7 @@ _0800D52A:
 	movs r0, #1
 	b _0800D56E
 	.align 2, 0
-_0800D540: .4byte gUnk_08C00038
+_0800D540: .4byte gEventCmdTable
 _0800D544:
 	ldr r0, [r4]
 	cmp r0, #0
@@ -6534,7 +6534,7 @@ sub_800D57C: @ 0x0800D57C
 	movs r0, #0
 	b _0800D5DA
 _0800D596:
-	ldr r0, _0800D5AC @ =gUnk_08C00038
+	ldr r0, _0800D5AC @ =gEventCmdTable
 	movs r1, #0x85
 	lsls r1, r1, #2
 	adds r0, r0, r1
@@ -6545,7 +6545,7 @@ _0800D596:
 	movs r0, #1
 	b _0800D5DA
 	.align 2, 0
-_0800D5AC: .4byte gUnk_08C00038
+_0800D5AC: .4byte gEventCmdTable
 _0800D5B0:
 	ldr r0, [r4]
 	cmp r0, #0
@@ -6613,7 +6613,7 @@ _0800D610:
 	.align 2, 0
 _0800D624: .4byte gActiveUnit
 _0800D628:
-	ldr r0, _0800D63C @ =gUnk_08C00038
+	ldr r0, _0800D63C @ =gEventCmdTable
 	movs r1, #0x85
 	lsls r1, r1, #2
 	adds r0, r0, r1
@@ -6624,7 +6624,7 @@ _0800D628:
 	movs r0, #1
 	b _0800D66A
 	.align 2, 0
-_0800D63C: .4byte gUnk_08C00038
+_0800D63C: .4byte gEventCmdTable
 _0800D640:
 	ldr r0, [r2]
 	cmp r0, #0
