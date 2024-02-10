@@ -13206,19 +13206,19 @@ _08010578:
 	b _080105A0
 _08010582:
 	movs r0, #0x10
-	bl sub_80AB1AC
+	bl NewBlockedFadeIn
 	b _080105A0
 _0801058A:
 	movs r0, #8
-	bl sub_80AB1AC
+	bl NewBlockedFadeIn
 	b _080105A0
 _08010592:
 	movs r0, #4
-	bl sub_80AB1AC
+	bl NewBlockedFadeIn
 	b _080105A0
 _0801059A:
 	movs r0, #2
-	bl sub_80AB1AC
+	bl NewBlockedFadeIn
 _080105A0:
 	movs r0, #2
 _080105A2:
@@ -13257,19 +13257,19 @@ _080105D0:
 	b _080105F8
 _080105DA:
 	movs r0, #0x10
-	bl sub_80AB1D0
+	bl NewBlockedFadeOut
 	b _080105F8
 _080105E2:
 	movs r0, #8
-	bl sub_80AB1D0
+	bl NewBlockedFadeOut
 	b _080105F8
 _080105EA:
 	movs r0, #4
-	bl sub_80AB1D0
+	bl NewBlockedFadeOut
 	b _080105F8
 _080105F2:
 	movs r0, #2
-	bl sub_80AB1D0
+	bl NewBlockedFadeOut
 _080105F8:
 	movs r0, #2
 _080105FA:

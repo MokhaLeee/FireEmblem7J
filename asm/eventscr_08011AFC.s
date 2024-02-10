@@ -71,7 +71,7 @@ EventThunderfx_Init: @ 0x08011A24
 	str r0, [sp, #0x10]
 	adds r0, r5, #0
 	movs r1, #2
-	bl sub_80AB654
+	bl StartBmBgfx
 	add sp, #0x14
 	pop {r4, r5}
 	pop {r0}
@@ -237,7 +237,7 @@ sub_8011BD4: @ 0x08011BD4
 	ldr r3, _08011C04 @ =0xFFFFBFFF
 	adds r0, r2, #0
 	adds r1, r2, #0
-	bl sub_8013C48
+	bl WriteFadedPaletteFromArchive
 	ldr r0, [r4, #0x30]
 	cmp r0, #0x40
 	bne _08011BFE
@@ -263,7 +263,7 @@ sub_8011C08: @ 0x08011C08
 	ldr r3, _08011C34 @ =0xFFFFBFFF
 	adds r0, r2, #0
 	adds r1, r2, #0
-	bl sub_8013C48
+	bl WriteFadedPaletteFromArchive
 	ldr r0, [r4, #0x30]
 	cmp r0, #0x40
 	bne _08011C2E
@@ -290,7 +290,7 @@ sub_8011C38: @ 0x08011C38
 	cmp r0, r1
 	bne _08011C56
 	movs r0, #0
-	bl sub_80AB634
+	bl BmBgfxSetLoopEN
 	adds r0, r4, #0
 	bl Proc_Break
 _08011C56:
@@ -530,7 +530,7 @@ sub_8011DF4: @ 0x08011DF4
 	str r4, [sp, #0xc]
 	str r5, [sp, #0x10]
 	movs r1, #2
-	bl sub_80AB654
+	bl StartBmBgfx
 	str r4, [r5, #0x30]
 	add sp, #0x14
 	pop {r4, r5, r6}
@@ -567,7 +567,7 @@ _08011E70:
 	bne _08011E84
 	str r5, [r4, #0x30]
 	movs r0, #0
-	bl sub_80AB634
+	bl BmBgfxSetLoopEN
 	adds r0, r4, #0
 	bl Proc_Break
 _08011E84:
@@ -651,7 +651,7 @@ sub_8011F10: @ 0x08011F10
 	push {lr}
 	movs r1, #0
 	str r1, [r0, #0x3c]
-	bl sub_8013BCC
+	bl ArchiveCurrentPalettes
 	pop {r0}
 	bx r0
 	.align 2, 0
@@ -725,7 +725,7 @@ _08011F92:
 	asrs r2, r0, #8
 	ldr r3, [r4, #0x30]
 	adds r0, r5, #0
-	bl sub_8013C48
+	bl WriteFadedPaletteFromArchive
 	ldr r1, [r4, #0x3c]
 	movs r0, #0x80
 	lsls r0, r0, #1
@@ -795,7 +795,7 @@ _08012010:
 	ldr r3, [r4, #0x30]
 	adds r0, r6, #0
 	adds r1, r5, #0
-	bl sub_8013C48
+	bl WriteFadedPaletteFromArchive
 	ldr r0, [r4, #0x3c]
 	cmp r0, r7
 	bne _08012028
@@ -958,7 +958,7 @@ _0801213E:
 	ldr r3, [r4, #0x30]
 	adds r0, r6, #0
 	adds r1, r5, #0
-	bl sub_8013C48
+	bl WriteFadedPaletteFromArchive
 	pop {r4, r5, r6}
 	pop {r0}
 	bx r0
@@ -1049,7 +1049,7 @@ _080121E6:
 	thumb_func_start sub_80121F0
 sub_80121F0: @ 0x080121F0
 	push {lr}
-	bl sub_8013BCC
+	bl ArchiveCurrentPalettes
 	movs r0, #2
 	pop {r1}
 	bx r1
@@ -1063,7 +1063,7 @@ sub_80121FC: @ 0x080121FC
 	rsbs r3, r3, #0
 	adds r0, r2, #0
 	adds r1, r2, #0
-	bl sub_8013C48
+	bl WriteFadedPaletteFromArchive
 	movs r0, #2
 	pop {r1}
 	bx r1

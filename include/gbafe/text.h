@@ -30,3 +30,10 @@ struct Font {
     /* 14 */ u16 palid;
     /* 16 */ u8 lang;
 };
+
+void SetTextFont(struct Font *);
+const char * Text_DrawCharacter(struct Text * text, const char * str);
+void InitSpriteTextFont(struct Font * font, void * vramDest, int c);
+void InitSpriteText(struct Text * text);
+void SpriteText_DrawBackgroundExt(struct Text * text, u32 b);
+void SetTextFontGlyphs(int a);

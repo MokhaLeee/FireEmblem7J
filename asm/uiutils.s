@@ -628,8 +628,8 @@ _0804A734: .4byte gUnk_08C09B78
 _0804A738: .4byte gBg1Tm
 _0804A73C: .4byte gBg0Tm
 
-	thumb_func_start sub_804A740
-sub_804A740: @ 0x0804A740
+	thumb_func_start DisplayUiHand
+DisplayUiHand: @ 0x0804A740
 	push {r4, r5, r6, r7, lr}
 	sub sp, #4
 	adds r5, r0, #0

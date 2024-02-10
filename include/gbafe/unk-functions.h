@@ -42,3 +42,5 @@ void CloseHelpBox(void);
 void LoadHelpBoxGfx(void * vram, int palId);
 void StartHelpBoxExt_Unk(int x, int y, int mid);
 void FadeBgmOut(int volume);
+void DisplayUiHand(int x, int y);
+void DisplayBmTextShadow(int x, int y);

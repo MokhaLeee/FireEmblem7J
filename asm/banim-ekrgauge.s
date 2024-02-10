@@ -2172,7 +2172,7 @@ _0804D9AC: .4byte 0x0203DFE6
 EfxPrepareScreenFx: @ 0x0804D9B0
 	push {r4, r5, r6, lr}
 	sub sp, #8
-	ldr r4, _0804D9F0 @ =gUnk_081901C8
+	ldr r4, _0804D9F0 @ =Pal_Text
 	adds r0, r4, #0
 	movs r1, #0x40
 	movs r2, #0x20
@@ -2198,7 +2198,7 @@ EfxPrepareScreenFx: @ 0x0804D9B0
 	ldr r5, _0804DA08 @ =gUnk_08C09CE4
 	b _0804DA1A
 	.align 2, 0
-_0804D9F0: .4byte gUnk_081901C8
+_0804D9F0: .4byte Pal_Text
 _0804D9F4: .4byte 0x02017648
 _0804D9F8: .4byte 0x06001400
 _0804D9FC: .4byte gUnk_081DE528

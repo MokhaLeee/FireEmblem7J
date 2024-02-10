@@ -1291,8 +1291,8 @@ _08004B64:
 	.align 2, 0
 _08004B68: .4byte 0x02026920
 
-	thumb_func_start sub_8004B6C
-sub_8004B6C: @ 0x08004B6C
+	thumb_func_start Proc_FindAfterWithParent
+Proc_FindAfterWithParent: @ 0x08004B6C
 	adds r2, r0, #0
 	cmp r2, #0
 	bne _08004B80

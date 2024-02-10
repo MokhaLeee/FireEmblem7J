@@ -44,9 +44,9 @@ void Decompress(void const * src, void * dst);
 // ??? sub_8013BA0
 // ??? sub_8013BAC
 // ??? sub_8013BBC
-// ??? sub_8013BCC
-// ??? sub_8013C18
-// ??? sub_8013C48
+void ArchiveCurrentPalettes(void);
+void ArchivePalette(int index);
+void WriteFadedPaletteFromArchive(int red, int green, int blue, u32 mask);
 // ??? sub_8013E84
 // ??? sub_8013E8C
 // ??? sub_8013EF8

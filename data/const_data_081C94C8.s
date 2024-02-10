@@ -652,8 +652,8 @@ gUnk_081DD7F4:	@ 0x081DD7F4
 gUnk_081DDA48:	@ 0x081DDA48
 	.incbin "FireEmblem7J.base.gba", 0x1DDA48, 0x1DDAC8 - 0x1DDA48
 
-	.global gUnk_081DDAC8
-gUnk_081DDAC8:	@ 0x081DDAC8
+	.global Img_SysGrayBox
+Img_SysGrayBox:	@ 0x081DDAC8
 	.incbin "FireEmblem7J.base.gba", 0x1DDAC8, 0x1DDB58 - 0x1DDAC8
 
 	.global gUnk_081DDB58

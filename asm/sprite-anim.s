@@ -109,7 +109,7 @@ _080126E6:
 	str r1, [sp]
 	adds r1, r2, #0
 	adds r2, r6, #0
-	bl sub_80068C4
+	bl PutSpriteExt
 	ldr r0, [r4, #0x24]
 	cmp r0, #0
 	beq _0801270E

@@ -4613,7 +4613,7 @@ sub_803E924: @ 0x0803E924
 	push {r7}
 	sub sp, #0x10
 	adds r7, r0, #0
-	ldr r4, _0803EB04 @ =gUnk_081901C8
+	ldr r4, _0803EB04 @ =Pal_Text
 	bl sub_803E080
 	bl sub_8048320
 	ldr r0, _0803EB08 @ =gUnk_081CB3E0
@@ -4635,7 +4635,7 @@ sub_803E924: @ 0x0803E924
 	ldr r0, _0803EB1C @ =gUnk_081CBC70
 	ldr r1, _0803EB20 @ =0x06016000
 	bl Decompress
-	ldr r0, _0803EB24 @ =gUnk_0841EC70
+	ldr r0, _0803EB24 @ =Pal_SysBrownBox
 	movs r1, #0x88
 	lsls r1, r1, #2
 	movs r2, #0x40
@@ -4826,7 +4826,7 @@ _0803EA04:
 	pop {r0}
 	bx r0
 	.align 2, 0
-_0803EB04: .4byte gUnk_081901C8
+_0803EB04: .4byte Pal_Text
 _0803EB08: .4byte gUnk_081CB3E0
 _0803EB0C: .4byte 0x06014800
 _0803EB10: .4byte gBg2Tm + 0x112
@@ -4834,7 +4834,7 @@ _0803EB14: .4byte gUnk_081CDB10
 _0803EB18: .4byte gUnk_081CD798
 _0803EB1C: .4byte gUnk_081CBC70
 _0803EB20: .4byte 0x06016000
-_0803EB24: .4byte gUnk_0841EC70
+_0803EB24: .4byte Pal_SysBrownBox
 _0803EB28: .4byte gPal
 _0803EB2C: .4byte 0x0203DA48
 _0803EB30: .4byte 0x0203D908
@@ -5280,7 +5280,7 @@ _0803EEB0:
 	lsls r1, r1, #4
 	adds r1, #0x28
 	movs r0, #0x50
-	bl sub_804A740
+	bl DisplayUiHand
 	ldr r0, [r7, #0x38]
 	lsls r0, r0, #0x18
 	lsrs r0, r0, #0x18
@@ -5298,7 +5298,7 @@ _0803EECE:
 	lsls r1, r1, #4
 	adds r1, #0x28
 	movs r0, #0x50
-	bl sub_804A740
+	bl DisplayUiHand
 	ldr r0, _0803EF0C @ =gpKeySt
 	ldr r1, [r0]
 	movs r0, #1
@@ -6026,7 +6026,7 @@ _0803F4A8:
 	ldr r1, [r4, #0x58]
 	lsls r1, r1, #3
 	adds r1, #0x20
-	bl sub_804A740
+	bl DisplayUiHand
 	ldr r0, _0803F4F8 @ =gpKeySt
 	ldr r0, [r0]
 	ldrh r1, [r0, #8]
@@ -7662,7 +7662,7 @@ _08040198:
 	lsls r0, r0, #3
 	adds r0, #0x50
 	movs r1, #0x60
-	bl sub_804A740
+	bl DisplayUiHand
 	ldr r0, _080401D8 @ =gpKeySt
 	ldr r0, [r0]
 	ldrh r1, [r0, #8]
@@ -8336,7 +8336,7 @@ sub_804068C: @ 0x0804068C
 	ldr r1, _08040830 @ =0x06012000
 	movs r2, #0xe
 	bl InitSpriteTextFont
-	ldr r0, _08040834 @ =gUnk_081901C8
+	ldr r0, _08040834 @ =Pal_Text
 	movs r1, #0xf0
 	lsls r1, r1, #2
 	movs r2, #0x20
@@ -8454,7 +8454,7 @@ _08040824: .4byte gBg3Tm
 _08040828: .4byte gUnk_081D0ED0
 _0804082C: .4byte 0x02000C60
 _08040830: .4byte 0x06012000
-_08040834: .4byte gUnk_081901C8
+_08040834: .4byte Pal_Text
 _08040838: .4byte 0x0203D9F8
 _0804083C: .4byte gUnk_08C07DAC
 _08040840: .4byte 0x01000010
@@ -10981,7 +10981,7 @@ sub_8041D00: @ 0x08041D00
 	lsls r1, r1, #5
 	adds r1, #0x28
 	movs r0, #0x18
-	bl sub_804A740
+	bl DisplayUiHand
 	ldr r0, [r6, #0x48]
 	cmp r5, r0
 	beq _08041D3A
@@ -15431,7 +15431,7 @@ sub_8044214: @ 0x08044214
 	ldr r1, _08044308 @ =0x06015000
 	movs r2, #0xe
 	bl InitSpriteTextFont
-	ldr r0, _0804430C @ =gUnk_081901C8
+	ldr r0, _0804430C @ =Pal_Text
 	movs r1, #0xd0
 	lsls r1, r1, #2
 	movs r2, #0x20
@@ -15523,7 +15523,7 @@ _080442FC: .4byte 0x06012800
 _08044300: .4byte gUnk_081D8E2C
 _08044304: .4byte 0x02000C60
 _08044308: .4byte 0x06015000
-_0804430C: .4byte gUnk_081901C8
+_0804430C: .4byte Pal_Text
 _08044310: .4byte 0x02000C04
 _08044314: .4byte 0x02000C40
 _08044318: .4byte 0x02000C58
@@ -15707,7 +15707,7 @@ _08044426:
 	movs r2, #0
 	ldrsh r1, [r1, r2]
 	adds r1, #8
-	bl sub_804A740
+	bl DisplayUiHand
 	ldr r0, [r6, #0x50]
 	cmp r0, #1
 	bne _080444AE
@@ -16079,7 +16079,7 @@ sub_8044750: @ 0x08044750
 	muls r0, r1, r0
 	adds r0, #0x28
 	movs r1, #0x60
-	bl sub_804A740
+	bl DisplayUiHand
 	ldr r0, _080447AC @ =gpKeySt
 	ldr r0, [r0]
 	ldrh r1, [r0, #8]
@@ -17293,7 +17293,7 @@ sub_804513C: @ 0x0804513C
 	mov sb, r3
 	movs r0, #0
 	mov sl, r0
-	ldr r0, _08045214 @ =gUnk_081901C8
+	ldr r0, _08045214 @ =Pal_Text
 	movs r1, #0xc8
 	lsls r1, r1, #2
 	movs r2, #0x20
@@ -17379,7 +17379,7 @@ _080451F4:
 	add sl, r0
 	b _08045240
 	.align 2, 0
-_08045214: .4byte gUnk_081901C8
+_08045214: .4byte Pal_Text
 _08045218: .4byte 0x02000C60
 _0804521C: .4byte 0x06016800
 _08045220: .4byte 0x02000C78
@@ -23855,7 +23855,7 @@ sub_804854C: @ 0x0804854C
 	movs r0, #4
 	movs r1, #0x28
 	movs r2, #8
-	bl sub_80068C4
+	bl PutSpriteExt
 	add sp, #4
 	pop {r0}
 	bx r0
@@ -24334,7 +24334,7 @@ _08048896:
 	movs r0, #0
 	str r0, [sp]
 	movs r0, #4
-	bl sub_80068C4
+	bl PutSpriteExt
 _0804891C:
 	add sp, #4
 	pop {r3}
@@ -25270,7 +25270,7 @@ _08049042:
 	ldrsh r0, [r5, r2]
 	movs r2, #0x30
 	ldrsh r1, [r5, r2]
-	bl sub_804A740
+	bl DisplayUiHand
 	movs r0, #0xc0
 	movs r1, #0x10
 	bl sub_804829C

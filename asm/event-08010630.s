@@ -42,7 +42,7 @@ sub_8010630: @ 0x08010630
 	str r7, [sp]
 	movs r0, #4
 	adds r3, r5, #0
-	bl sub_80068C4
+	bl PutSpriteExt
 	ldr r0, [r6, #0x44]
 	subs r0, #2
 	lsls r0, r0, #3
@@ -55,7 +55,7 @@ sub_8010630: @ 0x08010630
 	str r0, [sp]
 	movs r0, #4
 	adds r3, r5, #0
-	bl sub_80068C4
+	bl PutSpriteExt
 	ldr r1, [r6, #0x30]
 	ldrh r0, [r4]
 	adds r0, #0x18
@@ -66,7 +66,7 @@ sub_8010630: @ 0x08010630
 	str r0, [sp]
 	movs r0, #4
 	adds r3, r5, #0
-	bl sub_80068C4
+	bl PutSpriteExt
 	ldr r0, [r6, #0x44]
 	subs r0, #2
 	lsls r0, r0, #3
@@ -81,7 +81,7 @@ sub_8010630: @ 0x08010630
 	str r0, [sp]
 	movs r0, #4
 	adds r3, r5, #0
-	bl sub_80068C4
+	bl PutSpriteExt
 	ldr r1, [r6, #0x30]
 	ldrh r0, [r4]
 	adds r0, #8
@@ -92,7 +92,7 @@ sub_8010630: @ 0x08010630
 	str r0, [sp]
 	movs r0, #4
 	adds r3, r5, #0
-	bl sub_80068C4
+	bl PutSpriteExt
 	ldr r1, [r6, #0x30]
 	ldrh r0, [r4]
 	adds r0, #0x10
@@ -103,7 +103,7 @@ sub_8010630: @ 0x08010630
 	str r0, [sp]
 	movs r0, #4
 	adds r3, r5, #0
-	bl sub_80068C4
+	bl PutSpriteExt
 	ldr r0, [r6, #0x44]
 	subs r0, #1
 	lsls r0, r0, #3
@@ -118,7 +118,7 @@ sub_8010630: @ 0x08010630
 	str r0, [sp]
 	movs r0, #4
 	adds r3, r5, #0
-	bl sub_80068C4
+	bl PutSpriteExt
 	ldr r0, [r6, #0x44]
 	subs r0, #1
 	lsls r0, r0, #3
@@ -133,7 +133,7 @@ sub_8010630: @ 0x08010630
 	str r0, [sp]
 	movs r0, #4
 	adds r3, r5, #0
-	bl sub_80068C4
+	bl PutSpriteExt
 	movs r5, #2
 	b _08010772
 	.align 2, 0
@@ -153,7 +153,7 @@ _08010754:
 	str r0, [sp]
 	movs r0, #4
 	ldr r3, _080107B0 @ =Sprite_16x8
-	bl sub_80068C4
+	bl PutSpriteExt
 	adds r5, #2
 _08010772:
 	ldr r0, [r6, #0x44]
@@ -179,7 +179,7 @@ _08010788:
 	str r0, [sp]
 	movs r0, #4
 	ldr r3, _080107B4 @ =Sprite_8x8
-	bl sub_80068C4
+	bl PutSpriteExt
 	adds r5, #1
 	ldr r0, [r6, #0x44]
 	subs r0, #1
@@ -205,7 +205,7 @@ _080107B8:
 	str r0, [sp]
 	movs r0, #4
 	ldr r3, _080108B8 @ =Sprite_16x8
-	bl sub_80068C4
+	bl PutSpriteExt
 	adds r5, #2
 _080107D8:
 	ldr r0, [r6, #0x44]
@@ -234,7 +234,7 @@ _080107F2:
 	str r3, [sp]
 	movs r0, #4
 	ldr r3, _080108B8 @ =Sprite_16x8
-	bl sub_80068C4
+	bl PutSpriteExt
 	ldr r1, [r6, #0x30]
 	adds r1, r1, r4
 	mov r2, sb
@@ -246,7 +246,7 @@ _080107F2:
 	str r3, [sp]
 	movs r0, #4
 	ldr r3, _080108B8 @ =Sprite_16x8
-	bl sub_80068C4
+	bl PutSpriteExt
 	adds r5, #2
 	ldr r0, [r6, #0x44]
 	subs r0, #2
@@ -273,7 +273,7 @@ _08010842:
 	str r7, [sp]
 	movs r0, #4
 	mov r3, sb
-	bl sub_80068C4
+	bl PutSpriteExt
 	ldr r1, [r6, #0x30]
 	adds r1, r1, r4
 	mov r3, r8
@@ -284,7 +284,7 @@ _08010842:
 	str r7, [sp]
 	movs r0, #4
 	mov r3, sb
-	bl sub_80068C4
+	bl PutSpriteExt
 	adds r5, #1
 	ldr r0, [r6, #0x44]
 	subs r0, #1
@@ -305,7 +305,7 @@ _08010884:
 	str r4, [sp]
 	movs r0, #0
 	ldr r3, _080108C0 @ =Sprite_64x32
-	bl sub_80068C4
+	bl PutSpriteExt
 	adds r4, #4
 	adds r7, #0x20
 	subs r5, #1
@@ -648,7 +648,7 @@ sub_8010AF4: @ 0x08010AF4
 	lsls r1, r1, #5
 	movs r2, #0x20
 	bl ApplyPaletteExt
-	ldr r0, _08010BE4 @ =gUnk_081901C8
+	ldr r0, _08010BE4 @ =Pal_Text
 	ldr r1, [r7, #0x3c]
 	adds r1, #0x11
 	lsls r1, r1, #5
@@ -713,7 +713,7 @@ _08010B72:
 _08010BD8: .4byte gUnk_08C01124
 _08010BDC: .4byte gUnk_08C01144
 _08010BE0: .4byte gUnk_08452C74
-_08010BE4: .4byte gUnk_081901C8
+_08010BE4: .4byte Pal_Text
 _08010BE8: .4byte gUnk_08452AD4
 _08010BEC: .4byte 0x06010000
 _08010BF0: .4byte 0x06010400
@@ -2307,7 +2307,7 @@ sub_80117DC: @ 0x080117DC
 	movs r1, #2
 	movs r2, #0
 	movs r3, #0
-	bl sub_80AB654
+	bl StartBmBgfx
 	add sp, #0x14
 	pop {r4, r5, r6}
 	pop {r0}

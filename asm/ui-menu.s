@@ -647,7 +647,7 @@ _0804AECE:
 	bl sub_804B334
 	ldr r0, [sp]
 	ldr r1, [sp, #4]
-	bl sub_804A740
+	bl DisplayUiHand
 _0804AF02:
 	add sp, #8
 	pop {r4, r5, r6}
@@ -967,7 +967,7 @@ sub_804B130: @ 0x0804B130
 	bl sub_804B334
 	ldr r0, [sp]
 	ldr r1, [sp, #4]
-	bl sub_804A740
+	bl DisplayUiHand
 	ldr r0, _0804B178 @ =gpKeySt
 	ldr r1, [r0]
 	movs r0, #0x81

@@ -19,7 +19,7 @@ sub_802B064: @ 0x0802B064
 	str r0, [sp, #4]
 	movs r0, #6
 	movs r2, #8
-	bl sub_80AAA50
+	bl StartSysBrownBox
 	movs r1, #0x28
 	rsbs r1, r1, #0
 	movs r4, #1
@@ -27,12 +27,12 @@ sub_802B064: @ 0x0802B064
 	movs r0, #0
 	adds r2, r4, #0
 	movs r3, #1
-	bl sub_80AAAD0
+	bl EnableSysBrownBox
 	movs r0, #1
 	movs r1, #0xb8
 	adds r2, r4, #0
 	movs r3, #0
-	bl sub_80AAAD0
+	bl EnableSysBrownBox
 	ldr r3, _0802B14C @ =gDispIo
 	adds r2, r3, #0
 	adds r2, #0x3c
@@ -721,7 +721,7 @@ sub_802B5E4: @ 0x0802B5E4
 	movs r2, #2
 	ldrsh r1, [r1, r2]
 	lsls r1, r1, #3
-	bl sub_804A740
+	bl DisplayUiHand
 	b _0802B6C6
 	.align 2, 0
 _0802B61C: .4byte gUnk_08C03574
@@ -746,7 +746,7 @@ _0802B620:
 	movs r5, #2
 	ldrsh r1, [r1, r5]
 	lsls r1, r1, #3
-	bl sub_804A740
+	bl DisplayUiHand
 	ldr r0, _0802B67C @ =gpKeySt
 	ldr r0, [r0]
 	ldrh r1, [r0, #8]
@@ -888,7 +888,7 @@ sub_802B738: @ 0x0802B738
 	movs r3, #2
 	ldrsh r1, [r1, r3]
 	lsls r1, r1, #3
-	bl sub_804A740
+	bl DisplayUiHand
 	adds r2, r5, #0
 	adds r2, #0x44
 	adds r0, r5, #0
@@ -931,7 +931,7 @@ _0802B79C:
 	movs r3, #2
 	ldrsh r1, [r1, r3]
 	lsls r1, r1, #3
-	bl sub_804A740
+	bl DisplayUiHand
 	adds r0, r5, #0
 	adds r0, #0x44
 	adds r2, r5, #0
@@ -1254,7 +1254,7 @@ _0802BA2C:
 	movs r2, #2
 	ldrsh r1, [r1, r2]
 	lsls r1, r1, #3
-	bl sub_804A740
+	bl DisplayUiHand
 	adds r0, r4, #0
 	adds r0, #0x45
 	ldrb r0, [r0]
@@ -1335,7 +1335,7 @@ _0802BAC4:
 	movs r3, #2
 	ldrsh r1, [r1, r3]
 	lsls r1, r1, #3
-	bl sub_804A740
+	bl DisplayUiHand
 	movs r0, #0
 	ldrsb r0, [r5, r0]
 	cmp r0, #0

@@ -38,7 +38,7 @@ extern struct unk_type_0203A50C gUnk_0203A50C;
 
 // ??? gUnk_08190188
 // ??? gUnk_081901A8
-// ??? gUnk_081901C8
+extern u16 Pal_Text[];
 // ??? gUnk_081901E8
 // ??? gUnk_08190208
 // ??? gUnk_08190228
@@ -545,7 +545,7 @@ extern struct unk_type_0203A50C gUnk_0203A50C;
 // ??? gUnk_081DBD64
 // ??? gUnk_081DD7F4
 // ??? gUnk_081DDA48
-// ??? gUnk_081DDAC8
+extern u8 Img_SysGrayBox[];
 // ??? gUnk_081DDB58
 // ??? gUnk_081DDB74
 // ??? gEfxQuakeVecs
@@ -1135,7 +1135,7 @@ extern const u8 Tsa_EkrDragonFireBG2[];
 // ??? gUnk_0841BB50
 // ??? gUnk_0841BBB0
 // ??? gUnk_0841BC44
-// ??? gUnk_0841BC84
+extern u8 Img_SysBlackBox[];
 // ??? gUnk_0841BCA8
 // ??? gUnk_0841BE00
 // ??? gUnk_0841C554
@@ -1199,7 +1199,7 @@ extern const u8 Tsa_EkrDragonFireBG2[];
 // ??? gUnk_0841E634
 // ??? gUnk_0841E7F4
 // ??? gUnk_0841E814
-// ??? gUnk_0841EC70
+extern u16 Pal_SysBrownBox[];
 // ??? gUnk_0841ECB0
 // ??? gUnk_0841ECD0
 // ??? gUnk_0841EF4C
@@ -1219,11 +1219,11 @@ extern const u8 Tsa_EkrDragonFireBG2[];
 // ??? gUnk_08427BFC
 // ??? gUnk_08428114
 // ??? gUnk_08428A40
-// ??? gUnk_08428A80
+extern u16 Pal_08428A80[];
 // ??? gUnk_08428B00
 // ??? gUnk_08428DB4
 // ??? gUnk_084291AC
-// ??? gUnk_08429278
+extern u8 Img_PrepTextShadow[];
 // ??? gUnk_084292A0
 // ??? gUnk_084295B4
 // ??? gUnk_08429638
@@ -1240,7 +1240,7 @@ extern const u8 Tsa_EkrDragonFireBG2[];
 // ??? gUnk_0842BF0C
 // ??? gUnk_0842C3C0
 // ??? gUnk_0842C874
-// ??? gUnk_0842CCF4
+extern u8 Img_SysBrownBox[];
 // ??? gUnk_0842CE04
 // ??? gUnk_0842CE14
 // ??? gUnk_0842CE1C
@@ -2793,16 +2793,9 @@ extern struct ProcCmd ProcScr_EventThunderfx[];
 // ??? gUnk_08DAE214
 // ??? gUnk_08DAE222
 // ??? gUnk_08DAE22C
-// ??? gUnk_08DAE24C
-// ??? gUnk_08DAE26C
-// ??? gUnk_08DAE29C
-// ??? gUnk_08DAE2B4
-// ??? gUnk_08DAE2E4
-// ??? gUnk_08DAE404
-// ??? gUnk_08DAE424
-// ??? gUnk_08DAE43C
-// ??? gUnk_08DAE46C
-// ??? gUnk_08DAE49C
+
+/* sysutil.h */
+
 // ??? gUnk_08DAE4C4
 // ??? gUnk_08DAE4E4
 // ??? gUnk_08DAE514

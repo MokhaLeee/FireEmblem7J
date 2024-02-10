@@ -33098,7 +33098,7 @@ sub_807B94C: @ 0x0807B94C
 	bl SetOnHBlankA
 	ldr r0, _0807BA10 @ =sub_807B8E4
 	adds r1, r4, #0
-	bl sub_80AA20C
+	bl StartParallelWorker
 	adds r4, #0x64
 	movs r0, #2
 	strh r0, [r4]
@@ -33602,7 +33602,7 @@ sub_807BDFC: @ 0x0807BDFC
 	sub sp, #0x14
 	adds r4, r0, #0
 	bl sub_80AB82C
-	bl sub_8013BCC
+	bl ArchiveCurrentPalettes
 	adds r6, r4, #0
 	adds r6, #0x4c
 	movs r3, #0
@@ -33683,7 +33683,7 @@ sub_807BDFC: @ 0x0807BDFC
 	movs r1, #2
 	movs r2, #0
 	movs r3, #0
-	bl sub_80AB654
+	bl StartBmBgfx
 	movs r3, #0x80
 	lsls r3, r3, #1
 	movs r0, #0x80
@@ -33705,7 +33705,7 @@ sub_807BDFC: @ 0x0807BDFC
 	strh r0, [r1]
 	ldr r0, _0807BF04 @ =sub_807BDC8
 	adds r1, r4, #0
-	bl sub_80AA20C
+	bl StartParallelWorker
 	add sp, #0x14
 	pop {r4, r5, r6, r7}
 	pop {r0}
@@ -33772,7 +33772,7 @@ sub_807BF5C: @ 0x0807BF5C
 	movs r5, #0
 	strh r5, [r0]
 	movs r0, #0
-	bl sub_80AB634
+	bl BmBgfxSetLoopEN
 	movs r2, #0x80
 	lsls r2, r2, #1
 	movs r3, #0x80
@@ -33921,7 +33921,7 @@ sub_807C080: @ 0x0807C080
 	bl CpuFastSet
 	bl EnablePalSync
 	movs r0, #0x1b
-	bl sub_8013C18
+	bl ArchivePalette
 	movs r2, #0x80
 	lsls r2, r2, #1
 	movs r3, #0x80
@@ -34174,7 +34174,7 @@ sub_807C28C: @ 0x0807C28C
 	push {r4, r5, r6, r7, lr}
 	sub sp, #0x14
 	adds r5, r0, #0
-	bl sub_8013BCC
+	bl ArchiveCurrentPalettes
 	adds r6, r5, #0
 	adds r6, #0x4c
 	movs r3, #0
@@ -34256,7 +34256,7 @@ sub_807C28C: @ 0x0807C28C
 	movs r1, #2
 	movs r2, #0
 	movs r3, #0
-	bl sub_80AB654
+	bl StartBmBgfx
 	movs r3, #0x80
 	lsls r3, r3, #1
 	movs r0, #0x80
@@ -34784,7 +34784,7 @@ sub_807C754: @ 0x0807C754
 	bl SetOnHBlankA
 	ldr r0, _0807C7D0 @ =sub_807C6F0
 	adds r1, r5, #0
-	bl sub_80AA20C
+	bl StartParallelWorker
 	ldr r0, _0807C7D4 @ =gUnk_0857E570
 	ldr r1, _0807C7D8 @ =gUnk_08453438
 	movs r2, #7
@@ -35076,7 +35076,7 @@ sub_807C9A4: @ 0x0807C9A4
 	ldrb r1, [r3, #0x18]
 	orrs r0, r1
 	strb r0, [r3, #0x18]
-	bl sub_80AA230
+	bl EndAllParallelWorkers
 	movs r0, #0
 	bl SetOnHBlankA
 	pop {r0}
@@ -35231,7 +35231,7 @@ sub_807CAB8: @ 0x0807CAB8
 	bl SetOnHBlankA
 	ldr r0, _0807CB78 @ =sub_807CA30
 	adds r1, r5, #0
-	bl sub_80AA20C
+	bl StartParallelWorker
 	ldr r0, _0807CB7C @ =gUnk_08D6FA14
 	movs r1, #0
 	bl Proc_Start
@@ -35753,7 +35753,7 @@ sub_807CE90: @ 0x0807CE90
 	bl SetOnHBlankA
 	ldr r0, _0807CF90 @ =sub_807CE14
 	adds r1, r5, #0
-	bl sub_80AA20C
+	bl StartParallelWorker
 	add sp, #8
 	pop {r4, r5}
 	pop {r0}
@@ -36004,7 +36004,7 @@ sub_807D140: @ 0x0807D140
 	push {r4, r5, r6, lr}
 	sub sp, #0x14
 	adds r5, r0, #0
-	bl sub_8013BCC
+	bl ArchiveCurrentPalettes
 	adds r0, r5, #0
 	adds r0, #0x4c
 	movs r3, #0
@@ -36082,7 +36082,7 @@ sub_807D140: @ 0x0807D140
 	movs r1, #2
 	movs r2, #0
 	movs r3, #0
-	bl sub_80AB654
+	bl StartBmBgfx
 	ldr r0, _0807D220 @ =gPlaySt
 	adds r0, #0x41
 	ldrb r0, [r0]
@@ -36114,7 +36114,7 @@ sub_807D228: @ 0x0807D228
 	movs r0, #0x80
 	lsls r0, r0, #1
 	strh r0, [r1]
-	bl sub_8013BCC
+	bl ArchiveCurrentPalettes
 	adds r0, r4, #0
 	bl sub_807B750
 	pop {r4}
@@ -36136,7 +36136,7 @@ sub_807D248: @ 0x0807D248
 	adds r0, r2, #0
 	adds r1, r2, #0
 	movs r3, #1
-	bl sub_8013C48
+	bl WriteFadedPaletteFromArchive
 	movs r0, #0x80
 	lsls r0, r0, #2
 	ldrh r1, [r4]
@@ -36393,13 +36393,13 @@ sub_807D424: @ 0x0807D424
 	strh r0, [r2, #0x3c]
 	movs r0, #0x1c
 	bl sub_800B72C
-	bl sub_8013BCC
+	bl ArchiveCurrentPalettes
 	movs r3, #0xf0
 	lsls r3, r3, #4
 	movs r0, #0xc0
 	movs r1, #0xc0
 	movs r2, #0xc0
-	bl sub_8013C48
+	bl WriteFadedPaletteFromArchive
 	pop {r0}
 	bx r0
 	.align 2, 0
@@ -42629,7 +42629,7 @@ sub_80803D0: @ 0x080803D0
 	strb r2, [r0]
 	adds r0, #1
 	strb r2, [r0]
-	bl sub_8013BCC
+	bl ArchiveCurrentPalettes
 	movs r2, #0x80
 	lsls r2, r2, #1
 	movs r3, #0x80
@@ -42656,7 +42656,7 @@ sub_808043C: @ 0x0808043C
 	push {r4, lr}
 	sub sp, #0x14
 	adds r4, r0, #0
-	bl sub_8013BCC
+	bl ArchiveCurrentPalettes
 	movs r2, #0x80
 	lsls r2, r2, #1
 	movs r0, #0
@@ -45650,7 +45650,7 @@ sub_8081C40: @ 0x08081C40
 	ldr r0, _08081CAC @ =0x0000A460
 	str r0, [sp]
 	movs r0, #2
-	bl sub_80068C4
+	bl PutSpriteExt
 	add sp, #4
 	pop {r4}
 	pop {r0}
@@ -47212,7 +47212,7 @@ sub_8082914: @ 0x08082914
 	lsls r1, r1, #3
 	ldrb r2, [r2, #0x11]
 	adds r1, r2, r1
-	bl sub_804A740
+	bl DisplayUiHand
 	ldr r6, _080829B0 @ =gpKeySt
 	ldr r1, [r6]
 	movs r0, #0x40
@@ -49848,7 +49848,7 @@ _08083D44:
 	blt _08083D38
 	movs r0, #0
 	bl SetTextFont
-	ldr r0, _08083D9C @ =gUnk_081901C8
+	ldr r0, _08083D9C @ =Pal_Text
 	adds r1, r7, #0
 	movs r2, #0x20
 	bl ApplyPaletteExt
@@ -49881,7 +49881,7 @@ _08083D90:
 	bx r0
 	.align 2, 0
 _08083D98: .4byte 0x0203E6E4
-_08083D9C: .4byte gUnk_081901C8
+_08083D9C: .4byte Pal_Text
 _08083DA0: .4byte 0x0203E6CC
 _08083DA4: .4byte gPlaySt
 _08083DA8: .4byte 0x000002E6
@@ -56784,7 +56784,7 @@ _08087530:
 	mov r1, r8
 	bl Proc_Start
 	mov r0, r8
-	bl sub_80AA0C0
+	bl NewSysBlackBoxHandler
 	movs r0, #2
 	rsbs r0, r0, #0
 	ldrb r1, [r6, #1]
@@ -57043,7 +57043,7 @@ _08087818: .4byte gDispIo
 	thumb_func_start sub_808781C
 sub_808781C: @ 0x0808781C
 	push {r4, lr}
-	ldr r0, _08087858 @ =gUnk_081901C8
+	ldr r0, _08087858 @ =Pal_Text
 	movs r1, #0xd0
 	lsls r1, r1, #2
 	movs r2, #0x20
@@ -57066,7 +57066,7 @@ sub_808781C: @ 0x0808781C
 	pop {r0}
 	bx r0
 	.align 2, 0
-_08087858: .4byte gUnk_081901C8
+_08087858: .4byte Pal_Text
 _0808785C: .4byte 0x020040D4
 _08087860: .4byte 0x06017800
 
@@ -57490,7 +57490,7 @@ sub_8087B98: @ 0x08087B98
 	strh r0, [r4]
 	movs r0, #0xc0
 	lsls r0, r0, #2
-	bl sub_80AA0E4
+	bl SysBlackBoxSetGfx
 	adds r0, r5, #0
 	adds r0, #0x3f
 	ldrb r0, [r0]
@@ -57505,7 +57505,7 @@ sub_8087B98: @ 0x08087B98
 	movs r0, #0
 	movs r1, #7
 	movs r3, #0x17
-	bl sub_80AA118
+	bl EnableSysBlackBox
 _08087BF2:
 	adds r0, r5, #0
 	adds r0, #0x2b
@@ -57521,7 +57521,7 @@ _08087BF2:
 	movs r0, #1
 	movs r1, #0xc2
 	movs r3, #5
-	bl sub_80AA118
+	bl EnableSysBlackBox
 _08087C12:
 	ldr r2, _08087C64 @ =0x0000044E
 	movs r0, #6
@@ -57532,7 +57532,7 @@ _08087C12:
 	movs r0, #2
 	movs r1, #0x84
 	movs r3, #0xd
-	bl sub_80AA118
+	bl EnableSysBlackBox
 	movs r0, #0x80
 	movs r1, #0x13
 	bl sub_8082DB8
@@ -57983,7 +57983,7 @@ _08087F90:
 	bl Text_InsertDrawString
 	movs r0, #0
 	bl SetTextFont
-	ldr r0, _08088014 @ =gUnk_081901C8
+	ldr r0, _08088014 @ =Pal_Text
 	movs r1, #0x90
 	lsls r1, r1, #2
 	movs r2, #0x20
@@ -58003,7 +58003,7 @@ _08088006:
 	bx r0
 	.align 2, 0
 _08088010: .4byte 0x06017800
-_08088014: .4byte gUnk_081901C8
+_08088014: .4byte Pal_Text
 _08088018: .4byte gUnk_08198D78
 _0808801C: .4byte gUnk_08198CC8
 _08088020: .4byte 0x06017900
@@ -58266,7 +58266,7 @@ _08088234:
 	bl sub_8088834
 	ldr r0, _080882A8 @ =sub_8088A20
 	adds r1, r6, #0
-	bl sub_80AA20C
+	bl StartParallelWorker
 	ldr r0, [r6, #0x30]
 	bl SetTextFont
 	movs r0, #1
@@ -59348,7 +59348,7 @@ _08088ABA:
 	ldr r0, _08088B34 @ =0x000013C8
 	str r0, [sp]
 	movs r0, #0
-	bl sub_80068C4
+	bl PutSpriteExt
 	adds r1, r6, #0
 	subs r1, #8
 	ands r1, r5
@@ -59360,7 +59360,7 @@ _08088ABA:
 	lsls r0, r0, #6
 	str r0, [sp]
 	movs r0, #0
-	bl sub_80068C4
+	bl PutSpriteExt
 _08088AFE:
 	movs r4, #0
 	mov r0, r8
@@ -59411,7 +59411,7 @@ _08088B3C:
 	str r0, [sp]
 	movs r0, #2
 	ldr r3, _08088BBC @ =Sprite_64x32
-	bl sub_80068C4
+	bl PutSpriteExt
 	movs r5, #1
 	add sb, r5
 _08088B6C:
@@ -59489,7 +59489,7 @@ _08088BCA:
 	str r0, [sp]
 	movs r0, #2
 	ldr r3, _08088C70 @ =Sprite_8x16
-	bl sub_80068C4
+	bl PutSpriteExt
 	movs r5, #1
 	add sb, r5
 _08088C00:
@@ -59540,7 +59540,7 @@ _08088C2E:
 	adds r0, r0, r4
 	str r0, [sp]
 	movs r0, #2
-	bl sub_80068C4
+	bl PutSpriteExt
 	add sp, #0x14
 	pop {r3, r4, r5}
 	mov r8, r3
@@ -60531,7 +60531,7 @@ _080894C2:
 	subs r0, #4
 	movs r2, #0x2e
 	ldrsh r1, [r4, r2]
-	bl sub_804A740
+	bl DisplayUiHand
 _080894DE:
 	pop {r4, r5, r6}
 	pop {r0}
@@ -60660,7 +60660,7 @@ sub_80895BC: @ 0x080895BC
 	movs r0, #0xd
 	mov r1, r8
 	adds r2, r7, #0
-	bl sub_80068C4
+	bl PutSpriteExt
 	movs r5, #0
 	subs r0, r6, #1
 	cmp r5, r0
@@ -60676,7 +60676,7 @@ _080895F2:
 	movs r0, #0xd
 	adds r1, r4, #0
 	adds r2, r7, #0
-	bl sub_80068C4
+	bl PutSpriteExt
 	adds r4, #0x10
 	adds r5, #1
 	subs r0, r6, #1
@@ -60693,7 +60693,7 @@ _08089610:
 	str r0, [sp]
 	movs r0, #0xd
 	adds r2, r7, #0
-	bl sub_80068C4
+	bl PutSpriteExt
 	add sp, #4
 	pop {r3}
 	mov r8, r3
@@ -61484,7 +61484,7 @@ sub_8089BDC: @ 0x08089BDC
 	str r0, [sp]
 	movs r0, #0xb
 	movs r1, #0xb8
-	bl sub_80068C4
+	bl PutSpriteExt
 	b _08089C56
 	.align 2, 0
 _08089C28: .4byte gUnk_0842CE04
@@ -61507,7 +61507,7 @@ _08089C30:
 	lsls r0, r0, #8
 	str r0, [sp]
 	movs r0, #0xb
-	bl sub_80068C4
+	bl PutSpriteExt
 _08089C56:
 	str r4, [sp, #0x14]
 	ldr r1, _08089CD4 @ =gUnk_08D8BAD8
@@ -61523,13 +61523,13 @@ _08089C56:
 	movs r0, #0xd
 	movs r1, #0x20
 	movs r2, #8
-	bl sub_80068C4
+	bl PutSpriteExt
 	ldr r3, _08089CD8 @ =gUnk_08D8BA18
 	str r5, [sp]
 	movs r0, #0xd
 	movs r1, #0xa0
 	movs r2, #0
-	bl sub_80068C4
+	bl PutSpriteExt
 	ldr r0, [r6, #0x2c]
 	ldrh r1, [r0, #0x3e]
 	ldr r0, _08089CDC @ =0x0200E668
@@ -61561,7 +61561,7 @@ _08089C56:
 	ldrb r1, [r1]
 	lsls r1, r1, #4
 	adds r1, #0x28
-	bl sub_804A740
+	bl DisplayUiHand
 	b _08089CFA
 	.align 2, 0
 _08089CCC: .4byte 0x000020B8
@@ -61580,7 +61580,7 @@ _08089CE4:
 	str r5, [sp]
 	movs r0, #0xd
 	movs r1, #4
-	bl sub_80068C4
+	bl PutSpriteExt
 _08089CFA:
 	ldr r1, [r6, #0x2c]
 	ldrh r0, [r6, #0x38]
@@ -72021,7 +72021,7 @@ sub_808EDD0: @ 0x0808EDD0
 	adds r1, r2, #0
 	adds r2, r4, #0
 	bl InitSpriteTextFont
-	ldr r0, _0808EE4C @ =gUnk_081901C8
+	ldr r0, _0808EE4C @ =Pal_Text
 	adds r4, #0x10
 	lsls r4, r4, #5
 	adds r1, r4, #0
@@ -72062,7 +72062,7 @@ sub_808EDD0: @ 0x0808EDD0
 	bx r0
 	.align 2, 0
 _0808EE48: .4byte 0x06010000
-_0808EE4C: .4byte gUnk_081901C8
+_0808EE4C: .4byte Pal_Text
 _0808EE50: .4byte gPlaySt
 
 	thumb_func_start sub_808EE54
@@ -72243,7 +72243,7 @@ _0808EF94: .4byte gUnk_08D8C124
 sub_808EF98: @ 0x0808EF98
 	push {r4, lr}
 	adds r4, r0, #0
-	bl sub_80AA1E8
+	bl EndSysBlackBoxs
 	bl sub_80903E8
 	bl sub_808EDB0
 	bl sub_80908E8
@@ -72363,7 +72363,7 @@ _0808F094:
 	ldr r0, _0808F218 @ =gUnk_0841E814
 	ldr r1, _0808F21C @ =0x06014800
 	bl Decompress
-	ldr r0, _0808F220 @ =gUnk_0841EC70
+	ldr r0, _0808F220 @ =Pal_SysBrownBox
 	movs r1, #0x90
 	lsls r1, r1, #2
 	movs r2, #0x40
@@ -72478,10 +72478,10 @@ _0808F094:
 	movs r1, #0xb
 	bl sub_808EDD0
 	adds r0, r6, #0
-	bl sub_80AA0C0
+	bl NewSysBlackBoxHandler
 	movs r0, #0xd0
 	lsls r0, r0, #7
-	bl sub_80AA0E4
+	bl SysBlackBoxSetGfx
 	movs r2, #0x90
 	lsls r2, r2, #3
 	movs r0, #3
@@ -72492,7 +72492,7 @@ _0808F094:
 	movs r0, #0
 	movs r1, #4
 	movs r3, #0xb
-	bl sub_80AA118
+	bl EnableSysBlackBox
 	bl sub_80908E8
 	strb r0, [r7]
 	bl sub_808E344
@@ -72513,7 +72513,7 @@ _0808F210: .4byte 0x02010694
 _0808F214: .4byte 0x0201068C
 _0808F218: .4byte gUnk_0841E814
 _0808F21C: .4byte 0x06014800
-_0808F220: .4byte gUnk_0841EC70
+_0808F220: .4byte Pal_SysBrownBox
 _0808F224: .4byte gUnk_084292A0
 _0808F228: .4byte 0x06016000
 _0808F22C: .4byte gUnk_084291AC
@@ -72702,7 +72702,7 @@ sub_808F394: @ 0x0808F394
 	lsls r3, r3, #3
 	movs r0, #0x2c
 	movs r2, #7
-	bl sub_80AA3F8
+	bl ShowSysHandCursor
 	pop {r4}
 	pop {r0}
 	bx r0
@@ -72938,7 +72938,7 @@ _0808F592:
 	mov r0, sl
 	adds r1, r7, #0
 	movs r2, #7
-	bl sub_80AA3F8
+	bl ShowSysHandCursor
 	ldr r0, _0808F5C4 @ =gPlaySt
 	adds r0, #0x41
 	ldrb r0, [r0]
@@ -72996,7 +72996,7 @@ _0808F600: .4byte 0xFDFFFFFF
 sub_808F604: @ 0x0808F604
 	push {r4, lr}
 	adds r4, r0, #0
-	bl sub_80AAC88
+	bl EndAllProcChildren
 	bl sub_808EDB0
 	bl sub_80903E8
 	movs r0, #0
@@ -73370,7 +73370,7 @@ _0808F8EC:
 	adds r1, r5, #0
 	movs r2, #0x14
 	ldr r3, _0808F930 @ =Sprite_64x32
-	bl sub_80068C4
+	bl PutSpriteExt
 	adds r6, #4
 	adds r5, #0x20
 	subs r4, #1
@@ -73715,7 +73715,7 @@ _0808FBA0:
 	ldr r0, _0808FC6C @ =gUnk_0841E814
 	ldr r1, _0808FC70 @ =0x06011000
 	bl Decompress
-	ldr r0, _0808FC74 @ =gUnk_0841EC70
+	ldr r0, _0808FC74 @ =Pal_SysBrownBox
 	movs r1, #0xf0
 	lsls r1, r1, #2
 	movs r2, #0x40
@@ -73742,11 +73742,11 @@ _0808FBA0:
 	movs r2, #1
 	bl InitTalk
 	adds r0, r6, #0
-	bl sub_80AA390
+	bl ResetSysHandCursor
 	movs r0, #0xc0
 	lsls r0, r0, #3
 	movs r1, #1
-	bl sub_80AA3B4
+	bl DisplaySysHandCursorTextShadow
 	movs r0, #0xf0
 	lsls r0, r0, #7
 	movs r1, #2
@@ -73782,7 +73782,7 @@ _0808FC64: .4byte 0x0000F2C0
 _0808FC68: .4byte 0x020106B4
 _0808FC6C: .4byte gUnk_0841E814
 _0808FC70: .4byte 0x06011000
-_0808FC74: .4byte gUnk_0841EC70
+_0808FC74: .4byte Pal_SysBrownBox
 _0808FC78: .4byte gUnk_0841ECD0
 _0808FC7C: .4byte 0x0000EC80
 _0808FC80:
@@ -73795,7 +73795,7 @@ _0808FC88:
 	strh r0, [r1]
 	ldr r0, _0808FCA8 @ =sub_808F8D0
 	adds r1, r6, #0
-	bl sub_80AA20C
+	bl StartParallelWorker
 _0808FC96:
 	add sp, #8
 	pop {r3}
@@ -73881,7 +73881,7 @@ _0808FD2A:
 	movs r0, #0x14
 	movs r1, #0x28
 	movs r2, #6
-	bl sub_80AA3F8
+	bl ShowSysHandCursor
 	movs r4, #0
 	str r4, [sp]
 	movs r0, #0x20
@@ -73933,7 +73933,7 @@ _0808FD96:
 	movs r0, #0x14
 	movs r1, #0x38
 	movs r2, #6
-	bl sub_80AA3F8
+	bl ShowSysHandCursor
 	movs r4, #0
 	str r4, [sp]
 	movs r0, #0x4a
@@ -73998,7 +73998,7 @@ _0808FE18:
 	movs r0, #0x14
 	movs r1, #0x48
 	movs r2, #6
-	bl sub_80AA3F8
+	bl ShowSysHandCursor
 	movs r4, #0
 	str r4, [sp]
 	movs r0, #0x4b
@@ -74050,7 +74050,7 @@ _0808FE86:
 	movs r0, #0x14
 	movs r1, #0x28
 	movs r2, #6
-	bl sub_80AA3F8
+	bl ShowSysHandCursor
 	movs r4, #0
 	str r4, [sp]
 	movs r0, #0x4a
@@ -74329,7 +74329,7 @@ sub_809005C: @ 0x0809005C
 	orrs r0, r1
 	strh r0, [r3, #0x3c]
 	adds r0, r4, #0
-	bl sub_80AAC88
+	bl EndAllProcChildren
 	ldr r0, _080900E4 @ =gUnk_08D8C364
 	adds r1, r4, #0
 	bl Proc_StartBlocking
@@ -74419,7 +74419,7 @@ sub_8090148: @ 0x08090148
 	ldr r3, _0809018C @ =gUnk_08D8C55E
 	str r7, [sp]
 	movs r0, #4
-	bl sub_80068C4
+	bl PutSpriteExt
 	adds r1, r6, #0
 	adds r1, #0x38
 	ldr r0, _08090190 @ =gUnk_08D8C5D8
@@ -74427,7 +74427,7 @@ sub_8090148: @ 0x08090148
 	str r7, [sp]
 	movs r0, #4
 	mov r2, r8
-	bl sub_80068C4
+	bl PutSpriteExt
 	b _080901B4
 	.align 2, 0
 _0809018C: .4byte gUnk_08D8C55E
@@ -74439,21 +74439,21 @@ _08090194:
 	ldr r3, _080901E0 @ =gUnk_08D8C544
 	str r7, [sp]
 	movs r0, #4
-	bl sub_80068C4
+	bl PutSpriteExt
 	adds r1, r6, #0
 	adds r1, #0x38
 	ldr r3, _080901E4 @ =gUnk_08D8C53C
 	str r7, [sp]
 	movs r0, #4
 	mov r2, r8
-	bl sub_80068C4
+	bl PutSpriteExt
 _080901B4:
 	ldr r3, _080901E8 @ =gUnk_08D8C52E
 	str r7, [sp]
 	movs r0, #4
 	adds r1, r6, #0
 	mov r2, r8
-	bl sub_80068C4
+	bl PutSpriteExt
 	asrs r4, r4, #1
 	mov sb, r4
 	cmp r4, #9
@@ -74465,7 +74465,7 @@ _080901B4:
 	str r7, [sp]
 	movs r0, #4
 	mov r2, r8
-	bl sub_80068C4
+	bl PutSpriteExt
 	b _08090210
 	.align 2, 0
 _080901E0: .4byte gUnk_08D8C544
@@ -74486,7 +74486,7 @@ _080901F0:
 	movs r0, #4
 	adds r1, r5, #0
 	mov r2, r8
-	bl sub_80068C4
+	bl PutSpriteExt
 _08090210:
 	adds r5, r6, #0
 	adds r5, #0x30
@@ -74501,7 +74501,7 @@ _08090210:
 	movs r0, #4
 	adds r1, r5, #0
 	mov r2, r8
-	bl sub_80068C4
+	bl PutSpriteExt
 	add sp, #4
 	pop {r3, r4}
 	mov r8, r3
@@ -74547,7 +74547,7 @@ _0809027C:
 	adds r1, r5, #0
 	movs r2, #0x14
 	ldr r3, _080902C0 @ =Sprite_64x32
-	bl sub_80068C4
+	bl PutSpriteExt
 	adds r6, #4
 	adds r5, #0x20
 	subs r4, #1
@@ -74571,7 +74571,7 @@ _080902A8:
 	movs r0, #4
 	movs r1, #6
 	movs r2, #0x80
-	bl sub_80068C4
+	bl PutSpriteExt
 	b _080902DA
 	.align 2, 0
 _080902BC: .4byte 0x0000B680
@@ -74585,7 +74585,7 @@ _080902C8:
 	movs r0, #4
 	movs r1, #6
 	movs r2, #0x80
-	bl sub_80068C4
+	bl PutSpriteExt
 _080902DA:
 	add sp, #4
 	pop {r3}
@@ -74841,11 +74841,11 @@ _0809049E:
 	adds r0, #1
 	strb r4, [r0]
 	adds r0, r5, #0
-	bl sub_80AA390
+	bl ResetSysHandCursor
 	movs r0, #0xc0
 	lsls r0, r0, #3
 	movs r1, #1
-	bl sub_80AA3B4
+	bl DisplaySysHandCursorTextShadow
 	str r4, [r5, #0x58]
 	str r4, [r5, #0x5c]
 	str r4, [r5, #0x60]
@@ -74886,7 +74886,7 @@ sub_80904D8: @ 0x080904D8
 	mov r0, r8
 	adds r1, r7, #0
 	movs r2, #6
-	bl sub_80AA3F8
+	bl ShowSysHandCursor
 	ldrb r5, [r5]
 	lsls r1, r5, #2
 	adds r0, r4, #0
@@ -75190,7 +75190,7 @@ sub_8090748: @ 0x08090748
 	movs r3, #0x80
 	lsls r3, r3, #3
 	movs r2, #6
-	bl sub_80AA3F8
+	bl ShowSysHandCursor
 	pop {r0}
 	bx r0
 
@@ -75748,7 +75748,7 @@ _08090B6A:
 	str r3, [sp]
 	movs r0, #4
 	ldr r3, _08090C74 @ =gUnk_08D8C73C
-	bl sub_80068C4
+	bl PutSpriteExt
 	adds r6, #1
 	mov r5, sl
 	ldrb r5, [r5]
@@ -75804,7 +75804,7 @@ _08090BB2:
 	mov r6, sb
 	str r6, [sp]
 	movs r0, #4
-	bl sub_80068C4
+	bl PutSpriteExt
 _08090BF2:
 	movs r6, #0
 	ldr r0, [sp, #8]
@@ -75829,7 +75829,7 @@ _08090C06:
 	mov r0, sb
 	str r0, [sp]
 	movs r0, #4
-	bl sub_80068C4
+	bl PutSpriteExt
 	adds r6, #1
 	cmp r6, r5
 	blo _08090C06
@@ -75868,7 +75868,7 @@ _08090C28:
 	mov r6, sb
 	str r6, [sp]
 	movs r0, #4
-	bl sub_80068C4
+	bl PutSpriteExt
 	b _08090CE4
 	.align 2, 0
 _08090C74: .4byte gUnk_08D8C73C
@@ -75901,7 +75901,7 @@ _08090C84:
 	mov r5, sb
 	str r5, [sp]
 	movs r0, #4
-	bl sub_80068C4
+	bl PutSpriteExt
 _08090CBA:
 	ldrh r1, [r4, #0x2a]
 	adds r1, #1
@@ -75922,7 +75922,7 @@ _08090CBA:
 	mov r6, sb
 	str r6, [sp]
 	movs r0, #4
-	bl sub_80068C4
+	bl PutSpriteExt
 _08090CE4:
 	ldrh r1, [r4, #0x2a]
 	mov r0, r8
@@ -75932,7 +75932,7 @@ _08090CE4:
 	mov r5, sb
 	str r5, [sp]
 	movs r0, #4
-	bl sub_80068C4
+	bl PutSpriteExt
 	ldrh r1, [r4, #0x2a]
 	mov r6, sl
 	ldrb r6, [r6]
@@ -75943,7 +75943,7 @@ _08090CE4:
 	ldr r3, _08090D80 @ =gUnk_08D8C74C
 	str r5, [sp]
 	movs r0, #4
-	bl sub_80068C4
+	bl PutSpriteExt
 _08090D10:
 	ldrh r1, [r4, #0x30]
 	ldrh r0, [r4, #0x2e]
@@ -77468,7 +77468,7 @@ sub_809186C: @ 0x0809186C
 	movs r1, #0
 	ldr r4, _08091898 @ =0x0202BC35
 	ldr r2, _0809189C @ =0x02012970
-	ldr r3, _080918A0 @ =gUnk_08428A80
+	ldr r3, _080918A0 @ =Pal_08428A80
 _08091876:
 	ldrb r5, [r4]
 	lsls r0, r5, #0x1c
@@ -77489,7 +77489,7 @@ _08091876:
 	.align 2, 0
 _08091898: .4byte 0x0202BC35
 _0809189C: .4byte 0x02012970
-_080918A0: .4byte gUnk_08428A80
+_080918A0: .4byte Pal_08428A80
 
 	thumb_func_start sub_80918A4
 sub_80918A4: @ 0x080918A4
@@ -78089,7 +78089,7 @@ sub_8091CC8: @ 0x08091CC8
 	movs r1, #0x88
 	movs r2, #0x8b
 	movs r3, #2
-	bl sub_80AAAD0
+	bl EnableSysBrownBox
 	movs r0, #1
 	bl EnableBgSync
 	pop {r4, r5}
@@ -78108,7 +78108,7 @@ sub_8091D14: @ 0x08091D14
 	movs r3, #0
 	bl TmFillRect_thm
 	movs r0, #0
-	bl sub_80AAB18
+	bl DisableSysBrownBox
 	movs r0, #1
 	bl EnableBgSync
 	pop {r0}
@@ -78193,10 +78193,10 @@ sub_8091D38: @ 0x08091D38
 	movs r4, #0
 	strb r0, [r1]
 	mov r0, r8
-	bl sub_80AA390
+	bl ResetSysHandCursor
 	ldr r0, _080920FC @ =sub_8093550
 	mov r1, r8
-	bl sub_80AA20C
+	bl StartParallelWorker
 	mov r0, r8
 	bl sub_80A98C8
 	movs r0, #0
@@ -78374,7 +78374,7 @@ _08091E58:
 	ldr r0, [sp, #0x2c]
 	bl CpuFastSet
 	bl sub_8025A0C
-	ldr r0, _08092134 @ =gUnk_08429278
+	ldr r0, _08092134 @ =Img_PrepTextShadow
 	ldr r1, _08092138 @ =0x06013E00
 	bl Decompress
 	movs r0, #0x3c
@@ -78387,7 +78387,7 @@ _08091E58:
 	movs r0, #0xc0
 	lsls r0, r0, #3
 	movs r1, #1
-	bl sub_80AA3B4
+	bl DisplaySysHandCursorTextShadow
 	bl sub_808ED8C
 	mov r1, sb
 	ldrb r0, [r1]
@@ -78490,10 +78490,10 @@ _08091FF6:
 	str r2, [sp, #4]
 	movs r0, #6
 	movs r2, #8
-	bl sub_80AAA50
+	bl StartSysBrownBox
 	movs r0, #0
 	movs r1, #1
-	bl sub_80AAB3C
+	bl SetSysBrownBoxWidth
 	ldr r0, _08092114 @ =0x02012A90
 	movs r1, #3
 	bl Text_SetColor
@@ -78549,7 +78549,7 @@ _08092124: .4byte 0x0000FFFC
 _08092128: .4byte 0x0000FFD8
 _0809212C: .4byte gPal + 0x360
 _08092130: .4byte 0x01000008
-_08092134: .4byte gUnk_08429278
+_08092134: .4byte Img_PrepTextShadow
 _08092138: .4byte 0x06013E00
 _0809213C: .4byte 0x00000503
 _08092140: .4byte sub_8091C60
@@ -78566,8 +78566,8 @@ sub_8092150: @ 0x08092150
 	ldr r0, [r0]
 	ldrb r0, [r0, #4]
 	bl sub_808E694
-	bl sub_80AA230
-	bl sub_80AA45C
+	bl EndAllParallelWorkers
+	bl EndSysHandCursor
 	bl sub_80A9A08
 	movs r0, #0
 	bl sub_80932B0
@@ -78576,7 +78576,7 @@ sub_8092150: @ 0x08092150
 	bl sub_808EDB0
 	bl sub_8082D74
 	bl sub_8090DBC
-	bl sub_80AAB64
+	bl EndSysBrownBox
 	movs r0, #0
 	bl SetOnHBlankA
 	pop {r0}
@@ -78685,13 +78685,13 @@ _08092258: .4byte 0x0000A980
 sub_809225C: @ 0x0809225C
 	push {lr}
 	ldr r0, _08092280 @ =sub_80921FC
-	bl sub_80AA24C
+	bl GetParallelWorker
 	bl Proc_End
 	ldr r0, _08092284 @ =sub_809221C
-	bl sub_80AA24C
+	bl GetParallelWorker
 	bl Proc_End
 	ldr r0, _08092288 @ =sub_809223C
-	bl sub_80AA24C
+	bl GetParallelWorker
 	bl Proc_End
 	pop {r0}
 	bx r0
@@ -78841,7 +78841,7 @@ sub_8092310: @ 0x08092310
 	lsls r3, r3, #4
 	adds r0, r4, #0
 	movs r2, #7
-	bl sub_80AA3F8
+	bl ShowSysHandCursor
 	adds r0, r6, #0
 	movs r1, #0
 	bl sub_80937E0
@@ -78854,7 +78854,7 @@ sub_8092310: @ 0x08092310
 	bl sub_809225C
 	ldr r0, _0809241C @ =sub_80921FC
 	adds r1, r6, #0
-	bl sub_80AA20C
+	bl StartParallelWorker
 	bl sub_8091CC8
 	movs r0, #7
 	bl EnableBgSync
@@ -79020,7 +79020,7 @@ _08092522:
 	lsls r3, r3, #4
 	adds r0, r4, #0
 	movs r2, #7
-	bl sub_80AA3F8
+	bl ShowSysHandCursor
 _08092552:
 	ldr r0, _08092568 @ =gPlaySt
 	adds r0, #0x41
@@ -79655,7 +79655,7 @@ sub_8092A9C: @ 0x08092A9C
 	bl sub_8092838
 	ldr r0, _08092AF4 @ =sub_809223C
 	adds r1, r4, #0
-	bl sub_80AA20C
+	bl StartParallelWorker
 	movs r0, #0xc9
 	movs r1, #0x7b
 	adds r2, r4, #0
@@ -79672,7 +79672,7 @@ sub_8092A9C: @ 0x08092A9C
 	movs r3, #0x80
 	lsls r3, r3, #3
 	movs r2, #3
-	bl sub_80AA3F8
+	bl ShowSysHandCursor
 	movs r0, #1
 	bl EnableBgSync
 	pop {r4, r5}
@@ -80094,7 +80094,7 @@ _08092E2C:
 	movs r3, #0x80
 	lsls r3, r3, #3
 	movs r2, #3
-	bl sub_80AA3F8
+	bl ShowSysHandCursor
 	adds r0, r5, #0
 	adds r0, #0x2c
 	ldrb r0, [r0]
@@ -80219,7 +80219,7 @@ sub_8092EDC: @ 0x08092EDC
 	lsls r3, r3, #4
 	adds r0, r4, #0
 	movs r2, #7
-	bl sub_80AA3F8
+	bl ShowSysHandCursor
 	adds r0, r6, #0
 	movs r1, #0
 	bl sub_80937E0
@@ -80269,7 +80269,7 @@ sub_8092EDC: @ 0x08092EDC
 	ldr r0, _08093000 @ =sub_8092E84
 	movs r1, #1
 	adds r2, r6, #0
-	bl sub_80A9D28
+	bl StartParallelFiniteLoop
 	bl sub_80A99EC
 	bl sub_8082D74
 	add sp, #4
@@ -81031,7 +81031,7 @@ _080935E4:
 	ldr r1, [sp, #4]
 	mov r2, sl
 	adds r3, r5, #0
-	bl sub_80068C4
+	bl PutSpriteExt
 	ldr r1, [sp, #8]
 	lsls r1, r1, #3
 	mov sb, r1
@@ -81045,7 +81045,7 @@ _080935E4:
 	movs r0, #4
 	mov r2, sl
 	adds r3, r5, #0
-	bl sub_80068C4
+	bl PutSpriteExt
 	movs r0, #0xc0
 	lsls r0, r0, #6
 	adds r4, r4, r0
@@ -81060,7 +81060,7 @@ _080935E4:
 	adds r1, r4, #0
 	adds r2, r6, #0
 	adds r3, r5, #0
-	bl sub_80068C4
+	bl PutSpriteExt
 	ldr r3, [sp, #4]
 	movs r0, #0x80
 	lsls r0, r0, #6
@@ -81070,7 +81070,7 @@ _080935E4:
 	movs r0, #4
 	adds r2, r6, #0
 	adds r3, r5, #0
-	bl sub_80068C4
+	bl PutSpriteExt
 	movs r5, #1
 	mov r3, sb
 	str r3, [sp, #0x18]
@@ -81095,14 +81095,14 @@ _0809366E:
 	adds r1, r4, #0
 	mov r2, sl
 	mov r3, r8
-	bl sub_80068C4
+	bl PutSpriteExt
 	str r7, [sp]
 	movs r0, #4
 	adds r1, r6, #0
 	mov r2, sl
 	add r2, sb
 	mov r3, r8
-	bl sub_80068C4
+	bl PutSpriteExt
 	adds r6, #0x10
 	adds r4, #0x10
 	adds r5, #2
@@ -81132,14 +81132,14 @@ _080936B8:
 	adds r1, r4, #0
 	mov r2, sl
 	mov r3, r8
-	bl sub_80068C4
+	bl PutSpriteExt
 	str r7, [sp]
 	movs r0, #4
 	adds r1, r6, #0
 	mov r2, sl
 	add r2, sb
 	mov r3, r8
-	bl sub_80068C4
+	bl PutSpriteExt
 	adds r6, #8
 	adds r4, #8
 	subs r5, #1
@@ -81166,7 +81166,7 @@ _080936FC:
 	ldr r1, [sp, #4]
 	adds r2, r4, #0
 	adds r3, r7, #0
-	bl sub_80068C4
+	bl PutSpriteExt
 	str r5, [sp]
 	movs r0, #4
 	movs r1, #0x80
@@ -81174,7 +81174,7 @@ _080936FC:
 	add r1, r8
 	adds r2, r4, #0
 	adds r3, r7, #0
-	bl sub_80068C4
+	bl PutSpriteExt
 	adds r4, #8
 	subs r6, #1
 	cmp r6, #0
@@ -81207,7 +81207,7 @@ _08093748:
 	mov r3, sl
 	adds r2, r3, r7
 	ldr r3, _080937DC @ =Sprite_8x32
-	bl sub_80068C4
+	bl PutSpriteExt
 	adds r4, #0x20
 	adds r5, #4
 	cmp r5, sb
@@ -81228,7 +81228,7 @@ _08093770:
 	mov r3, sl
 	adds r2, r3, r7
 	ldr r3, _080937D4 @ =Sprite_16x8
-	bl sub_80068C4
+	bl PutSpriteExt
 	adds r4, #0x10
 	adds r5, #2
 	ldr r0, [sp, #0x10]
@@ -81251,7 +81251,7 @@ _0809379C:
 	mov r3, sl
 	adds r2, r3, r6
 	ldr r3, _080937D0 @ =Sprite_8x8
-	bl sub_80068C4
+	bl PutSpriteExt
 	adds r4, #8
 	subs r5, #1
 	cmp r5, #0
@@ -81594,7 +81594,7 @@ _08093A42:
 	movs r0, #4
 	movs r1, #0x80
 	movs r2, #0x8e
-	bl sub_80068C4
+	bl PutSpriteExt
 	adds r1, r7, #0
 	adds r1, #0x37
 	ldrb r0, [r1]
@@ -81618,7 +81618,7 @@ _08093A60:
 	movs r0, #4
 	movs r1, #0x80
 	movs r2, #0x7e
-	bl sub_80068C4
+	bl PutSpriteExt
 	b _08093AA2
 	.align 2, 0
 _08093A88: .4byte gDispIo
@@ -81630,7 +81630,7 @@ _08093A94:
 	movs r0, #4
 	movs r1, #0x80
 	movs r2, #0x7e
-	bl sub_80068C4
+	bl PutSpriteExt
 _08093AA2:
 	bl sub_80259A4
 	add sp, #4
@@ -81717,9 +81717,9 @@ sub_8093B5C: @ 0x08093B5C
 	push {r4, lr}
 	sub sp, #8
 	adds r4, r1, #0
-	bl sub_80AA0C0
+	bl NewSysBlackBoxHandler
 	adds r0, r4, #0
-	bl sub_80AA0E4
+	bl SysBlackBoxSetGfx
 	bl sub_803DEC4
 	lsls r0, r0, #0x18
 	cmp r0, #0
@@ -81734,7 +81734,7 @@ sub_8093B5C: @ 0x08093B5C
 	movs r0, #0
 	movs r1, #4
 	movs r3, #0xc
-	bl sub_80AA118
+	bl EnableSysBlackBox
 	b _08093BA8
 _08093B90:
 	movs r2, #0x91
@@ -81747,7 +81747,7 @@ _08093B90:
 	movs r0, #0
 	movs r1, #4
 	movs r3, #0xc
-	bl sub_80AA118
+	bl EnableSysBlackBox
 _08093BA8:
 	movs r2, #0x90
 	lsls r2, r2, #3
@@ -81759,7 +81759,7 @@ _08093BA8:
 	movs r0, #1
 	movs r1, #0x6c
 	movs r3, #0x10
-	bl sub_80AA118
+	bl EnableSysBlackBox
 	add sp, #8
 	pop {r4}
 	pop {r0}
@@ -82600,13 +82600,13 @@ sub_8094178: @ 0x08094178
 	bl sub_8093BC8
 	ldr r0, _0809436C @ =sub_8093948
 	adds r1, r5, #0
-	bl sub_80AA20C
+	bl StartParallelWorker
 	adds r0, r5, #0
-	bl sub_80AA390
+	bl ResetSysHandCursor
 	movs r0, #0xc0
 	lsls r0, r0, #3
 	movs r1, #1
-	bl sub_80AA3B4
+	bl DisplaySysHandCursorTextShadow
 	ldrh r1, [r5, #0x2e]
 	movs r2, #1
 	ands r2, r1
@@ -82622,7 +82622,7 @@ sub_8094178: @ 0x08094178
 	movs r3, #0x80
 	lsls r3, r3, #4
 	movs r2, #7
-	bl sub_80AA3F8
+	bl ShowSysHandCursor
 	adds r0, r5, #0
 	bl sub_8090DD0
 	movs r0, #0xe2
@@ -82694,9 +82694,9 @@ _08094370: .4byte 0x06015000
 sub_8094374: @ 0x08094374
 	push {lr}
 	bl sub_8090DBC
-	bl sub_80AA230
-	bl sub_80AA1E8
-	bl sub_80AA45C
+	bl EndAllParallelWorkers
+	bl EndSysBlackBoxs
+	bl EndSysHandCursor
 	bl sub_8082D74
 	bl sub_80A9CE4
 	bl sub_808EDB0
@@ -82910,7 +82910,7 @@ _08094522:
 	ldr r0, _08094580 @ =sub_8093CC0
 	movs r1, #1
 	adds r2, r5, #0
-	bl sub_80A9D28
+	bl StartParallelFiniteLoop
 	ldr r0, _08094584 @ =gPlaySt
 	adds r0, #0x41
 	ldrb r0, [r0]
@@ -82967,7 +82967,7 @@ _0809458C:
 	movs r3, #0x80
 	lsls r3, r3, #4
 	movs r2, #7
-	bl sub_80AA3F8
+	bl ShowSysHandCursor
 _080945B2:
 	ldrh r7, [r5, #0x2c]
 	ldrh r0, [r5, #0x2e]
@@ -83128,7 +83128,7 @@ sub_80946D0: @ 0x080946D0
 	movs r0, #0xd0
 	movs r1, #0x68
 	movs r2, #0
-	bl sub_80AA3F8
+	bl ShowSysHandCursor
 	pop {r0}
 	bx r0
 
@@ -83151,7 +83151,7 @@ sub_80946E8: @ 0x080946E8
 	movs r3, #0x80
 	lsls r3, r3, #4
 	movs r2, #7
-	bl sub_80AA3F8
+	bl ShowSysHandCursor
 	pop {r0}
 	bx r0
 	.align 2, 0
@@ -84029,11 +84029,11 @@ _08094D06:
 	mov r0, r8
 	bl sub_80A98C8
 	mov r0, r8
-	bl sub_80AA390
+	bl ResetSysHandCursor
 	movs r0, #0xc0
 	lsls r0, r0, #3
 	movs r1, #1
-	bl sub_80AA3B4
+	bl DisplaySysHandCursorTextShadow
 	mov r2, r8
 	ldr r1, [r2, #0x34]
 	asrs r2, r1, #3
@@ -84049,7 +84049,7 @@ _08094D06:
 	lsls r5, r5, #4
 	movs r2, #0xb
 	adds r3, r5, #0
-	bl sub_80AA3F8
+	bl ShowSysHandCursor
 	movs r0, #0xc8
 	movs r1, #0x90
 	mov r2, r8
@@ -84065,7 +84065,7 @@ _08094D06:
 	str r4, [sp, #4]
 	movs r0, #0xd
 	movs r2, #0xf
-	bl sub_80AAA50
+	bl StartSysBrownBox
 	movs r1, #0x28
 	rsbs r1, r1, #0
 	movs r4, #1
@@ -84073,12 +84073,12 @@ _08094D06:
 	movs r0, #0
 	adds r2, r4, #0
 	movs r3, #1
-	bl sub_80AAAD0
+	bl EnableSysBrownBox
 	movs r0, #1
 	movs r1, #0xb8
 	adds r2, r4, #0
 	movs r3, #0
-	bl sub_80AAAD0
+	bl EnableSysBrownBox
 	ldr r3, _08094EB4 @ =gDispIo
 	adds r2, r3, #0
 	adds r2, #0x3c
@@ -84311,7 +84311,7 @@ _08095014:
 	movs r3, #0x80
 	lsls r3, r3, #4
 	movs r2, #0xb
-	bl sub_80AA3F8
+	bl ShowSysHandCursor
 	b _080951B6
 	.align 2, 0
 _08095040: .4byte gPlaySt
@@ -84337,7 +84337,7 @@ _08095052:
 	movs r3, #0x80
 	lsls r3, r3, #4
 	movs r2, #0xb
-	bl sub_80AA3F8
+	bl ShowSysHandCursor
 	ldr r0, _0809508C @ =gPlaySt
 	adds r0, #0x41
 	ldrb r0, [r0]
@@ -84412,7 +84412,7 @@ _080950EC:
 	movs r3, #0x80
 	lsls r3, r3, #4
 	movs r2, #0xb
-	bl sub_80AA3F8
+	bl ShowSysHandCursor
 	ldr r0, _08095120 @ =gPlaySt
 	adds r0, #0x41
 	ldrb r0, [r0]
@@ -84463,7 +84463,7 @@ _08095154:
 	movs r3, #0x80
 	lsls r3, r3, #4
 	movs r2, #0xb
-	bl sub_80AA3F8
+	bl ShowSysHandCursor
 	ldr r0, [r6, #0x3c]
 	cmp r0, #0xff
 	beq _080951B6
@@ -85459,14 +85459,14 @@ _08095920:
 	str r7, [sp, #4]
 	movs r0, #0xd
 	movs r2, #0xf
-	bl sub_80AAA50
+	bl StartSysBrownBox
 	movs r1, #0x28
 	rsbs r1, r1, #0
 	movs r2, #1
 	rsbs r2, r2, #0
 	movs r0, #0
 	movs r3, #1
-	bl sub_80AAAD0
+	bl EnableSysBrownBox
 	ldr r0, [r7, #0x2c]
 	ldr r0, [r0]
 	ldrh r0, [r0]
@@ -85488,14 +85488,14 @@ _08095920:
 	adds r0, r7, #0
 	bl sub_80A98C8
 	adds r0, r7, #0
-	bl sub_80AA390
+	bl ResetSysHandCursor
 	movs r0, #0xc0
 	lsls r0, r0, #3
 	movs r1, #1
-	bl sub_80AA3B4
+	bl DisplaySysHandCursorTextShadow
 	ldr r0, _08095B54 @ =sub_8095800
 	adds r1, r7, #0
-	bl sub_80AA20C
+	bl StartParallelWorker
 	ldr r3, _08095B30 @ =gDispIo
 	mov ip, r3
 	movs r0, #0x20
@@ -85602,7 +85602,7 @@ _08095920:
 	movs r3, #0x80
 	lsls r3, r3, #4
 	movs r2, #0xb
-	bl sub_80AA3F8
+	bl ShowSysHandCursor
 	ldr r0, [r7, #0x2c]
 	bl GetUnitSMSId
 	bl sub_8025278
@@ -85747,7 +85747,7 @@ _08095C40:
 	lsls r3, r3, #4
 	movs r0, #0x10
 	movs r2, #0xb
-	bl sub_80AA3F8
+	bl ShowSysHandCursor
 	ldr r0, [r4, #0x2c]
 	ldr r1, [r4, #0x30]
 	bl sub_8095750
@@ -85864,7 +85864,7 @@ sub_8095D38: @ 0x08095D38
 	lsls r3, r3, #4
 	movs r1, #0x78
 	movs r2, #0
-	bl sub_80AA3F8
+	bl ShowSysHandCursor
 	pop {r4}
 	pop {r0}
 	bx r0
@@ -85896,7 +85896,7 @@ sub_8095D58: @ 0x08095D58
 	lsls r3, r3, #4
 	movs r0, #0x10
 	movs r2, #0xb
-	bl sub_80AA3F8
+	bl ShowSysHandCursor
 	movs r0, #0
 	bl sub_80A998C
 	bl sub_8095D1C
@@ -85924,7 +85924,7 @@ _08095DC0:
 	ldr r0, [r4, #0x3c]
 	cmp r0, #0
 	bne _08095DFC
-	bl sub_80AA440
+	bl HideSysHandCursor
 	ldr r0, _08095DF4 @ =gPlaySt
 	adds r0, #0x41
 	ldrb r0, [r0]
@@ -85949,7 +85949,7 @@ _08095DFC:
 	lsls r3, r3, #4
 	movs r0, #0x10
 	movs r2, #0xb
-	bl sub_80AA3F8
+	bl ShowSysHandCursor
 	ldr r0, _08095E30 @ =gPlaySt
 	adds r0, #0x41
 	ldrb r0, [r0]
@@ -85993,7 +85993,7 @@ _08095E52:
 	lsls r3, r3, #4
 	movs r1, #0x78
 	movs r2, #0
-	bl sub_80AA3F8
+	bl ShowSysHandCursor
 	ldr r0, _08095E84 @ =gPlaySt
 	adds r0, #0x41
 	ldrb r0, [r0]
@@ -86158,8 +86158,8 @@ sub_8095FAC: @ 0x08095FAC
 	adds r1, #0x46
 	movs r0, #8
 	strb r0, [r1]
-	bl sub_80AAB64
-	bl sub_80AA230
+	bl EndSysBrownBox
+	bl EndAllParallelWorkers
 	movs r0, #0
 	bl EndFaceById
 	movs r0, #0
@@ -86604,7 +86604,7 @@ _080963AA:
 	lsls r3, r3, #4
 	movs r0, #0x10
 	movs r2, #0xb
-	bl sub_80AA3F8
+	bl ShowSysHandCursor
 _080963BC:
 	ldr r0, _080963F0 @ =gBg0Tm + 0x244
 	ldr r1, _080963F4 @ =0x02012A20
@@ -86644,7 +86644,7 @@ _08096406:
 	adds r1, r5, #0
 	movs r2, #0x10
 	ldr r3, _0809642C @ =Sprite_64x32
-	bl sub_80068C4
+	bl PutSpriteExt
 	adds r6, #4
 	adds r5, #0x20
 	subs r4, #1
@@ -86664,7 +86664,7 @@ sub_8096430: @ 0x08096430
 	sub sp, #4
 	adds r4, r0, #0
 	ldr r0, _0809645C @ =sub_80963FC
-	bl sub_80AA20C
+	bl StartParallelWorker
 	movs r0, #0xf0
 	lsls r0, r0, #7
 	ldr r1, _08096460 @ =gUnk_08D8D10C
@@ -86675,7 +86675,7 @@ sub_8096430: @ 0x08096430
 	str r1, [sp]
 	movs r1, #0xd
 	movs r3, #1
-	bl sub_80AABE4
+	bl NewSysboxText
 	add sp, #4
 	pop {r4}
 	pop {r0}
@@ -87088,7 +87088,7 @@ sub_8096784: @ 0x08096784
 	adds r0, r4, #0
 	movs r2, #0xb
 	bl InitSpriteTextFont
-	ldr r0, _080967BC @ =gUnk_081901C8
+	ldr r0, _080967BC @ =Pal_Text
 	movs r1, #0xd8
 	lsls r1, r1, #2
 	movs r2, #0x20
@@ -87104,7 +87104,7 @@ sub_8096784: @ 0x08096784
 	.align 2, 0
 _080967B4: .4byte 0x02012B50
 _080967B8: .4byte 0x06011000
-_080967BC: .4byte gUnk_081901C8
+_080967BC: .4byte Pal_Text
 
 	thumb_func_start sub_80967C0
 sub_80967C0: @ 0x080967C0
@@ -87256,14 +87256,14 @@ sub_80968E8: @ 0x080968E8
 	movs r1, #0x48
 	movs r2, #0x26
 	adds r3, r4, #0
-	bl sub_80068C4
+	bl PutSpriteExt
 	ldr r0, _08096934 @ =0x0000B088
 	str r0, [sp]
 	movs r0, #4
 	movs r1, #0x48
 	movs r2, #0x36
 	adds r3, r4, #0
-	bl sub_80068C4
+	bl PutSpriteExt
 	add sp, #4
 	pop {r4}
 	pop {r0}
@@ -87291,7 +87291,7 @@ sub_8096938: @ 0x08096938
 	movs r0, #4
 	movs r1, #0x48
 	movs r2, #0x26
-	bl sub_80068C4
+	bl PutSpriteExt
 	add sp, #4
 	pop {r0}
 	bx r0
@@ -87317,7 +87317,7 @@ sub_8096970: @ 0x08096970
 	movs r0, #4
 	movs r1, #0x48
 	movs r2, #0x36
-	bl sub_80068C4
+	bl PutSpriteExt
 	add sp, #4
 	pop {r0}
 	bx r0
@@ -87538,12 +87538,12 @@ sub_8096A78: @ 0x08096A78
 	str r6, [sp, #4]
 	movs r0, #0xd
 	movs r2, #0xf
-	bl sub_80AAA50
+	bl StartSysBrownBox
 	movs r0, #0
 	movs r1, #0x98
 	movs r2, #6
 	movs r3, #2
-	bl sub_80AAAD0
+	bl EnableSysBrownBox
 	ldr r0, [r6, #0x2c]
 	ldr r0, [r0]
 	ldrh r0, [r0]
@@ -87551,11 +87551,11 @@ sub_8096A78: @ 0x08096A78
 	mov r0, sl
 	bl sub_80A98C8
 	mov r0, sl
-	bl sub_80AA390
+	bl ResetSysHandCursor
 	movs r0, #0xc0
 	lsls r0, r0, #3
 	movs r1, #1
-	bl sub_80AA3B4
+	bl DisplaySysHandCursorTextShadow
 	movs r5, #0x20
 	ldrb r0, [r7, #1]
 	orrs r0, r5
@@ -87733,7 +87733,7 @@ _08096C7E:
 	bl sub_80A9C68
 	ldr r0, _08096D84 @ =sub_80969A8
 	mov r1, sl
-	bl sub_80AA20C
+	bl StartParallelWorker
 	add sp, #8
 	pop {r3, r4, r5}
 	mov r8, r3
@@ -87777,16 +87777,16 @@ sub_8096D88: @ 0x08096D88
 	lsls r3, r3, #3
 	movs r0, #0x44
 	movs r2, #4
-	bl sub_80AA3F8
+	bl ShowSysHandCursor
 	ldr r0, _08096DE0 @ =sub_8096938
-	bl sub_80AA24C
+	bl GetParallelWorker
 	bl Proc_End
 	ldr r0, _08096DE4 @ =sub_8096970
-	bl sub_80AA24C
+	bl GetParallelWorker
 	bl Proc_End
 	ldr r0, _08096DE8 @ =sub_80968E8
 	adds r1, r4, #0
-	bl sub_80AA20C
+	bl StartParallelWorker
 	movs r0, #7
 	bl EnableBgSync
 	pop {r4}
@@ -87845,11 +87845,11 @@ _08096E20:
 	movs r3, #2
 	bl sub_80A98DC
 	ldr r0, _08096E7C @ =sub_80968E8
-	bl sub_80AA24C
+	bl GetParallelWorker
 	bl Proc_End
 	ldr r0, _08096E80 @ =sub_8096938
 	adds r1, r5, #0
-	bl sub_80AA20C
+	bl StartParallelWorker
 	movs r0, #1
 	adds r1, r5, #0
 	bl sub_8096430
@@ -87884,11 +87884,11 @@ _08096E8C:
 	movs r3, #2
 	bl sub_80A98DC
 	ldr r0, _08096EDC @ =sub_80968E8
-	bl sub_80AA24C
+	bl GetParallelWorker
 	bl Proc_End
 	ldr r0, _08096EE0 @ =sub_8096970
 	adds r1, r5, #0
-	bl sub_80AA20C
+	bl StartParallelWorker
 	movs r0, #2
 	adds r1, r5, #0
 	bl sub_8096430
@@ -88044,7 +88044,7 @@ _08096FE0:
 	lsls r3, r3, #3
 	movs r0, #0x44
 	movs r2, #4
-	bl sub_80AA3F8
+	bl ShowSysHandCursor
 	ldrh r0, [r5, #0x38]
 	cmp r0, #0
 	beq _0809700C
@@ -88106,7 +88106,7 @@ sub_8097020: @ 0x08097020
 	lsls r3, r3, #4
 	movs r0, #0x80
 	movs r2, #0xb
-	bl sub_80AA3F8
+	bl ShowSysHandCursor
 	movs r0, #5
 	bl EnableBgSync
 	ldrh r0, [r4, #0x38]
@@ -88465,7 +88465,7 @@ _0809730A:
 	lsls r3, r3, #4
 	movs r0, #0x80
 	movs r2, #0xb
-	bl sub_80AA3F8
+	bl ShowSysHandCursor
 	pop {r3}
 	mov r8, r3
 	pop {r4, r5, r6, r7}
@@ -88653,7 +88653,7 @@ _08097428:
 	ldr r0, _08097518 @ =sub_80973E0
 	movs r1, #1
 	adds r2, r7, #0
-	bl sub_80A9D28
+	bl StartParallelFiniteLoop
 	mov r1, r8
 	ldrb r1, [r1]
 	lsls r0, r1, #1
@@ -88668,7 +88668,7 @@ _08097428:
 	lsls r3, r3, #4
 	movs r0, #0x80
 	movs r2, #0xb
-	bl sub_80AA3F8
+	bl ShowSysHandCursor
 	movs r0, #5
 	bl EnableBgSync
 	ldr r1, _0809751C @ =gActionSt
@@ -89163,7 +89163,7 @@ _080978AC:
 	lsls r3, r3, #4
 	movs r0, #0x80
 	movs r2, #0xb
-	bl sub_80AA3F8
+	bl ShowSysHandCursor
 _080978CA:
 	pop {r3, r4, r5}
 	mov r8, r3
@@ -89268,7 +89268,7 @@ sub_8097974: @ 0x08097974
 	lsls r3, r3, #4
 	movs r0, #0x10
 	movs r2, #0xb
-	bl sub_80AA3F8
+	bl ShowSysHandCursor
 	pop {r0}
 	bx r0
 	.align 2, 0
@@ -89331,7 +89331,7 @@ sub_8097990: @ 0x08097990
 	ldr r0, _08097A64 @ =sub_80973E0
 	movs r1, #1
 	adds r2, r5, #0
-	bl sub_80A9D28
+	bl StartParallelFiniteLoop
 	movs r0, #4
 	bl EnableBgSync
 	ldr r0, [r5, #0x2c]
@@ -89389,7 +89389,7 @@ _08097A86:
 	lsls r3, r3, #4
 	movs r0, #0x10
 	movs r2, #0xb
-	bl sub_80AA3F8
+	bl ShowSysHandCursor
 _08097AA0:
 	pop {r4, r5, r6, r7}
 	pop {r0}
@@ -89508,7 +89508,7 @@ _08097B74:
 	lsls r3, r3, #4
 	movs r0, #0x10
 	movs r2, #0xb
-	bl sub_80AA3F8
+	bl ShowSysHandCursor
 	ldrh r0, [r4, #0x38]
 	cmp r0, #1
 	bne _08097BB6
@@ -89546,7 +89546,7 @@ sub_8097BBC: @ 0x08097BBC
 	strb r1, [r0]
 _08097BD8:
 	adds r0, r4, #0
-	bl sub_80AAC88
+	bl EndAllProcChildren
 	bl sub_808EDB0
 	movs r0, #0
 	bl SetOnHBlankA
@@ -89966,11 +89966,11 @@ sub_8097E64: @ 0x08097E64
 	adds r0, r7, #0
 	bl sub_80A98C8
 	adds r0, r7, #0
-	bl sub_80AA390
+	bl ResetSysHandCursor
 	movs r0, #0xc0
 	lsls r0, r0, #3
 	movs r1, #1
-	bl sub_80AA3B4
+	bl DisplaySysHandCursorTextShadow
 	movs r0, #0x20
 	mov r2, r8
 	ldrb r2, [r2, #1]
@@ -90132,7 +90132,7 @@ _0809801E:
 	bl sub_80A9C68
 	ldr r0, _080981CC @ =sub_8097DD4
 	adds r1, r7, #0
-	bl sub_80AA20C
+	bl StartParallelWorker
 	ldr r0, [r7, #0x2c]
 	bl GetUnitPortraitId
 	adds r1, r0, #0
@@ -90158,19 +90158,19 @@ _0809801E:
 	str r7, [sp, #4]
 	movs r0, #0xd
 	movs r2, #0xf
-	bl sub_80AAA50
+	bl StartSysBrownBox
 	movs r1, #0x28
 	rsbs r1, r1, #0
 	movs r2, #1
 	rsbs r2, r2, #0
 	movs r0, #0
 	movs r3, #1
-	bl sub_80AAAD0
+	bl EnableSysBrownBox
 	movs r0, #1
 	movs r1, #0x98
 	movs r2, #6
 	movs r3, #2
-	bl sub_80AAAD0
+	bl EnableSysBrownBox
 	ldr r3, _080981A4 @ =gDispIo
 	adds r2, r3, #0
 	adds r2, #0x3c
@@ -90251,7 +90251,7 @@ sub_80981E0: @ 0x080981E0
 	adds r0, #0x31
 	strb r1, [r0]
 	adds r0, r4, #0
-	bl sub_80AAC88
+	bl EndAllProcChildren
 	movs r0, #0
 	bl EndFaceById
 	bl sub_808EDB0
@@ -90303,13 +90303,13 @@ sub_8098210: @ 0x08098210
 	lsls r3, r3, #4
 	movs r0, #0x80
 	movs r2, #0xb
-	bl sub_80AA3F8
+	bl ShowSysHandCursor
 	movs r0, #5
 	bl EnableBgSync
 	ldr r0, _080982BC @ =sub_8097D1C
 	movs r1, #2
 	adds r2, r4, #0
-	bl sub_80A9D28
+	bl StartParallelFiniteLoop
 	ldrh r0, [r4, #0x36]
 	cmp r0, #0
 	beq _080982D0
@@ -90782,7 +90782,7 @@ _08098598:
 	ldr r0, _0809868C @ =sub_8097D1C
 	movs r1, #1
 	adds r2, r6, #0
-	bl sub_80A9D28
+	bl StartParallelFiniteLoop
 _08098632:
 	ldrb r7, [r7]
 	lsls r0, r7, #1
@@ -90797,7 +90797,7 @@ _08098632:
 	lsls r3, r3, #4
 	movs r0, #0x80
 	movs r2, #0xb
-	bl sub_80AA3F8
+	bl ShowSysHandCursor
 	movs r0, #5
 	bl EnableBgSync
 	ldr r0, [r6, #0x2c]
@@ -90912,7 +90912,7 @@ _08098722:
 	lsls r3, r3, #4
 	movs r0, #0x80
 	movs r2, #0xb
-	bl sub_80AA3F8
+	bl ShowSysHandCursor
 	pop {r3}
 	mov r8, r3
 	pop {r4, r5, r6, r7}
@@ -91428,7 +91428,7 @@ _08098B34:
 	lsls r3, r3, #4
 	movs r0, #0x80
 	movs r2, #0xb
-	bl sub_80AA3F8
+	bl ShowSysHandCursor
 _08098B52:
 	pop {r3, r4, r5}
 	mov r8, r3
@@ -91560,7 +91560,7 @@ _08098C2E:
 	lsls r3, r3, #4
 	movs r0, #0x10
 	movs r2, #0xb
-	bl sub_80AA3F8
+	bl ShowSysHandCursor
 	pop {r4}
 	pop {r0}
 	bx r0
@@ -91625,7 +91625,7 @@ _08098C90:
 	ldr r0, _08098CF8 @ =sub_8097D1C
 	movs r1, #1
 	adds r2, r6, #0
-	bl sub_80A9D28
+	bl StartParallelFiniteLoop
 	movs r0, #4
 	bl EnableBgSync
 	ldr r0, _08098CFC @ =gPlaySt
@@ -91777,7 +91777,7 @@ _08098DF4:
 	lsls r3, r3, #4
 	movs r0, #0x10
 	movs r2, #0xb
-	bl sub_80AA3F8
+	bl ShowSysHandCursor
 	ldrh r0, [r5, #0x36]
 	cmp r0, #1
 	bne _08098E36
@@ -91852,7 +91852,7 @@ _08098E96:
 	adds r1, r5, #0
 	movs r2, #0x10
 	ldr r3, _08098EBC @ =Sprite_64x32
-	bl sub_80068C4
+	bl PutSpriteExt
 	adds r6, #4
 	adds r5, #0x20
 	subs r4, #1
@@ -91872,7 +91872,7 @@ sub_8098EC0: @ 0x08098EC0
 	sub sp, #4
 	adds r4, r0, #0
 	ldr r0, _08098EEC @ =sub_8098E8C
-	bl sub_80AA20C
+	bl StartParallelWorker
 	movs r0, #0xe0
 	lsls r0, r0, #7
 	ldr r1, _08098EF0 @ =gUnk_08D8D410
@@ -91883,7 +91883,7 @@ sub_8098EC0: @ 0x08098EC0
 	str r1, [sp]
 	movs r1, #0xd
 	movs r3, #1
-	bl sub_80AABE4
+	bl NewSysboxText
 	add sp, #4
 	pop {r4}
 	pop {r0}
@@ -91944,7 +91944,7 @@ sub_8098F3C: @ 0x08098F3C
 	adds r0, r5, #0
 	movs r2, #0xb
 	bl InitSpriteTextFont
-	ldr r0, _08098FC4 @ =gUnk_081901C8
+	ldr r0, _08098FC4 @ =Pal_Text
 	movs r1, #0xd8
 	lsls r1, r1, #2
 	movs r2, #0x20
@@ -91993,7 +91993,7 @@ sub_8098F3C: @ 0x08098F3C
 	.align 2, 0
 _08098FBC: .4byte 0x02012B50
 _08098FC0: .4byte 0x06011000
-_08098FC4: .4byte gUnk_081901C8
+_08098FC4: .4byte Pal_Text
 _08098FC8: .4byte gUnk_0842D150
 _08098FCC: .4byte gUnk_0842D158
 _08098FD0: .4byte gUnk_0842D160
@@ -92019,28 +92019,28 @@ sub_8098FDC: @ 0x08098FDC
 	movs r1, #0xb0
 	movs r2, #0x6c
 	adds r3, r4, #0
-	bl sub_80068C4
+	bl PutSpriteExt
 	ldr r0, _08099044 @ =0x0000B08C
 	str r0, [sp]
 	movs r0, #4
 	movs r1, #0xd0
 	movs r2, #0x6c
 	adds r3, r4, #0
-	bl sub_80068C4
+	bl PutSpriteExt
 	ldr r0, _08099048 @ =0x0000B080
 	str r0, [sp]
 	movs r0, #4
 	movs r1, #0xa8
 	movs r2, #0x7c
 	adds r3, r4, #0
-	bl sub_80068C4
+	bl PutSpriteExt
 	ldr r0, _0809904C @ =0x0000B084
 	str r0, [sp]
 	movs r0, #4
 	movs r1, #0xc8
 	movs r2, #0x7c
 	adds r3, r4, #0
-	bl sub_80068C4
+	bl PutSpriteExt
 	add sp, #4
 	pop {r4}
 	pop {r0}
@@ -92063,21 +92063,21 @@ sub_8099050: @ 0x08099050
 	movs r1, #0x8c
 	movs r2, #0x58
 	adds r3, r4, #0
-	bl sub_80068C4
+	bl PutSpriteExt
 	ldr r3, _08099098 @ =Sprite_8x16
 	ldr r0, _0809909C @ =0x0000B094
 	str r0, [sp]
 	movs r0, #4
 	movs r1, #0xac
 	movs r2, #0x58
-	bl sub_80068C4
+	bl PutSpriteExt
 	ldr r0, _080990A0 @ =0x0000B098
 	str r0, [sp]
 	movs r0, #4
 	movs r1, #0x90
 	movs r2, #0x38
 	adds r3, r4, #0
-	bl sub_80068C4
+	bl PutSpriteExt
 	add sp, #4
 	pop {r4}
 	pop {r0}
@@ -92325,11 +92325,11 @@ sub_80991C4: @ 0x080991C4
 	mov r0, sb
 	bl sub_80A98C8
 	mov r0, sb
-	bl sub_80AA390
+	bl ResetSysHandCursor
 	movs r0, #0xc0
 	lsls r0, r0, #3
 	movs r1, #1
-	bl sub_80AA3B4
+	bl DisplaySysHandCursorTextShadow
 	movs r5, #0x20
 	ldrb r0, [r7, #1]
 	orrs r0, r5
@@ -92438,7 +92438,7 @@ _08099380:
 	bl sub_8099168
 	ldr r0, _08099434 @ =sub_8099050
 	mov r1, sb
-	bl sub_80AA20C
+	bl StartParallelWorker
 	mov r6, sb
 	ldr r0, [r6, #0x2c]
 	mov r1, sb
@@ -92459,15 +92459,15 @@ _08099380:
 	str r6, [sp, #4]
 	movs r0, #0xd
 	movs r2, #0xf
-	bl sub_80AAA50
+	bl StartSysBrownBox
 	movs r0, #0
 	movs r1, #1
-	bl sub_80AAB3C
+	bl SetSysBrownBoxWidth
 	movs r0, #0
 	movs r1, #0x88
 	movs r2, #0x36
 	movs r3, #2
-	bl sub_80AAAD0
+	bl EnableSysBrownBox
 	add sp, #8
 	pop {r3, r4, r5}
 	mov r8, r3
@@ -92593,7 +92593,7 @@ sub_80994D4: @ 0x080994D4
 	movs r0, #0
 	bl sub_80A998C
 	ldr r0, _08099530 @ =sub_8098FDC
-	bl sub_80AA24C
+	bl GetParallelWorker
 	bl Proc_End
 	ldrb r5, [r5]
 	lsls r1, r5, #4
@@ -92602,7 +92602,7 @@ sub_80994D4: @ 0x080994D4
 	lsls r3, r3, #3
 	movs r0, #0x10
 	movs r2, #0xb
-	bl sub_80AA3F8
+	bl ShowSysHandCursor
 	movs r0, #0
 	adds r1, r4, #0
 	bl sub_8098EC0
@@ -92751,7 +92751,7 @@ _08099630:
 	lsls r3, r3, #3
 	movs r0, #0x10
 	movs r2, #0xb
-	bl sub_80AA3F8
+	bl ShowSysHandCursor
 	ldr r0, [r4, #0x2c]
 	ldrb r2, [r5]
 	lsls r1, r2, #1
@@ -92789,7 +92789,7 @@ sub_8099688: @ 0x08099688
 	strb r0, [r5]
 	ldr r0, _080996D0 @ =sub_8098FDC
 	adds r1, r4, #0
-	bl sub_80AA20C
+	bl StartParallelWorker
 	adds r0, r4, #0
 	adds r0, #0x30
 	ldrb r0, [r0]
@@ -92806,7 +92806,7 @@ sub_8099688: @ 0x08099688
 	lsls r3, r3, #3
 	movs r1, #0x7c
 	movs r2, #0
-	bl sub_80AA3F8
+	bl ShowSysHandCursor
 	movs r0, #1
 	adds r1, r4, #0
 	bl sub_8098EC0
@@ -92963,7 +92963,7 @@ _080997F0:
 	lsls r3, r3, #3
 	movs r1, #0x7c
 	movs r2, #0
-	bl sub_80AA3F8
+	bl ShowSysHandCursor
 _08099802:
 	pop {r4, r5, r6}
 	pop {r0}
@@ -93359,7 +93359,7 @@ _08099AE0:
 	movs r3, #0x80
 	lsls r3, r3, #4
 	movs r2, #8
-	bl sub_80AA3F8
+	bl ShowSysHandCursor
 	ldr r1, _08099B28 @ =gUnk_08D8D620
 	ldrb r5, [r5]
 	lsls r0, r5, #2
@@ -93381,7 +93381,7 @@ sub_8099B2C: @ 0x08099B2C
 	adds r4, r0, #0
 	bl sub_80886CC
 	adds r0, r4, #0
-	bl sub_80AAC88
+	bl EndAllProcChildren
 	bl sub_808EDB0
 	movs r0, #0
 	bl EndFaceById
@@ -93852,7 +93852,7 @@ _08099E86:
 	lsls r3, r3, #1
 	adds r2, r7, r3
 	mov r3, ip
-	bl sub_80068C4
+	bl PutSpriteExt
 	adds r4, #0xf
 	adds r5, #1
 	ldrb r7, [r6]
@@ -94102,7 +94102,7 @@ sub_809A044: @ 0x0809A044
 	bl ApplyPaletteExt
 	ldr r0, _0809A0E4 @ =sub_8099E34
 	adds r1, r7, #0
-	bl sub_80AA20C
+	bl StartParallelWorker
 	add sp, #4
 	pop {r3, r4, r5}
 	mov r8, r3
@@ -94135,11 +94135,11 @@ sub_809A0E8: @ 0x0809A0E8
 	movs r0, #7
 	bl EnableBgSync
 	adds r0, r4, #0
-	bl sub_80AA390
+	bl ResetSysHandCursor
 	movs r0, #0xc0
 	lsls r0, r0, #3
 	movs r1, #1
-	bl sub_80AA3B4
+	bl DisplaySysHandCursorTextShadow
 	ldr r0, _0809A1EC @ =gDispIo
 	mov ip, r0
 	movs r0, #0x21
@@ -94312,7 +94312,7 @@ sub_809A270: @ 0x0809A270
 	adds r4, r0, #0
 	bl sub_80886CC
 	adds r0, r4, #0
-	bl sub_80AAC88
+	bl EndAllProcChildren
 	bl sub_808EDB0
 	movs r0, #0
 	bl EndFaceById
@@ -94455,7 +94455,7 @@ _0809A388:
 	movs r0, #0xd
 	adds r1, r4, #0
 	adds r2, r6, #0
-	bl sub_80068C4
+	bl PutSpriteExt
 	adds r4, #0xa
 	adds r5, #1
 	mov r0, sb
@@ -94491,7 +94491,7 @@ _0809A3AC:
 	ldr r0, _0809A400 @ =0x0000F380
 	str r0, [sp]
 	movs r0, #0xd
-	bl sub_80068C4
+	bl PutSpriteExt
 _0809A3E6:
 	add sp, #8
 	pop {r3, r4, r5}
@@ -94560,7 +94560,7 @@ _0809A44C:
 	cmp r0, #0
 	bne _0809A474
 	movs r0, #0x20
-	bl sub_8013C18
+	bl ArchivePalette
 	movs r0, #0xc0
 	movs r1, #0xc0
 	movs r2, #0xc0
@@ -94624,7 +94624,7 @@ _0809A4A8:
 	strb r0, [r2]
 	ldr r0, _0809A520 @ =sub_809A324
 	adds r1, r4, #0
-	bl sub_80AA20C
+	bl StartParallelWorker
 	adds r0, r4, #0
 	bl sub_8005E88
 	ldr r2, _0809A524 @ =gDispIo
@@ -95156,11 +95156,11 @@ sub_809A978: @ 0x0809A978
 	adds r4, r0, #0
 	bl sub_8099D18
 	adds r0, r4, #0
-	bl sub_80AA390
+	bl ResetSysHandCursor
 	movs r0, #0xc0
 	lsls r0, r0, #3
 	movs r1, #1
-	bl sub_80AA3B4
+	bl DisplaySysHandCursorTextShadow
 	adds r0, r4, #0
 	bl sub_80A9BE8
 	movs r1, #0xa0
@@ -96347,7 +96347,7 @@ _0809B2D6:
 	adds r1, r5, #0
 	movs r2, #0x12
 	ldr r3, _0809B2F8 @ =Sprite_64x32
-	bl sub_80068C4
+	bl PutSpriteExt
 	adds r6, #4
 	adds r5, #0x20
 	subs r4, #1
@@ -96381,7 +96381,7 @@ sub_809B2FC: @ 0x0809B2FC
 	adds r1, r5, #0
 	movs r2, #1
 	bl InitSpriteTextFont
-	ldr r0, _0809B37C @ =gUnk_081901C8
+	ldr r0, _0809B37C @ =Pal_Text
 	adds r4, #0x10
 	lsls r4, r4, #5
 	adds r1, r4, #0
@@ -96414,7 +96414,7 @@ sub_809B2FC: @ 0x0809B2FC
 	.align 2, 0
 _0809B374: .4byte gPlaySt
 _0809B378: .4byte 0x06010000
-_0809B37C: .4byte gUnk_081901C8
+_0809B37C: .4byte Pal_Text
 
 	thumb_func_start sub_809B380
 sub_809B380: @ 0x0809B380
@@ -96498,12 +96498,12 @@ sub_809B380: @ 0x0809B380
 	str r5, [sp, #4]
 	movs r0, #0xd
 	movs r2, #0xf
-	bl sub_80AAA50
+	bl StartSysBrownBox
 	movs r0, #0
 	movs r1, #0x90
 	movs r2, #0x10
 	movs r3, #0
-	bl sub_80AAAD0
+	bl EnableSysBrownBox
 	movs r0, #0xe0
 	lsls r0, r0, #7
 	movs r1, #1
@@ -96528,7 +96528,7 @@ _0809B478:
 	bl sub_808EFBC
 	ldr r0, _0809B4C0 @ =sub_809B2BC
 	adds r1, r5, #0
-	bl sub_80AA20C
+	bl StartParallelWorker
 	movs r0, #0x80
 	lsls r0, r0, #2
 	movs r1, #3
@@ -96808,7 +96808,7 @@ sub_809B6D4: @ 0x0809B6D4
 	adds r4, r0, #0
 	bl sub_80886CC
 	adds r0, r4, #0
-	bl sub_80AAC88
+	bl EndAllProcChildren
 	bl sub_808EDB0
 	movs r0, #0
 	bl EndFaceById
@@ -98218,11 +98218,11 @@ sub_809C0C8: @ 0x0809C0C8
 	cmp r0, #0
 	beq _0809C1EE
 	adds r0, r7, #0
-	bl sub_80AA390
+	bl ResetSysHandCursor
 	movs r0, #0xc0
 	lsls r0, r0, #3
 	movs r1, #1
-	bl sub_80AA3B4
+	bl DisplaySysHandCursorTextShadow
 	ldr r4, [r7, #0x38]
 	adds r0, r4, #0
 	movs r1, #3
@@ -98246,7 +98246,7 @@ _0809C1DA:
 	lsls r3, r3, #4
 	adds r0, r5, #0
 	movs r2, #7
-	bl sub_80AA3F8
+	bl ShowSysHandCursor
 _0809C1EE:
 	ldr r1, _0809C2F8 @ =gDispIo
 	mov ip, r1
@@ -98366,7 +98366,7 @@ _0809C2A0:
 	movs r1, #0
 	movs r2, #1
 	bl InitTalk
-	ldr r0, _0809C318 @ =gUnk_0841BC84
+	ldr r0, _0809C318 @ =Img_SysBlackBox
 	ldr r1, _0809C31C @ =0x06017800
 	bl Decompress
 	movs r0, #0
@@ -98384,7 +98384,7 @@ _0809C308: .4byte 0x0000FFE0
 _0809C30C: .4byte 0x020129A8
 _0809C310: .4byte 0x02012A90
 _0809C314: .4byte 0x00000901
-_0809C318: .4byte gUnk_0841BC84
+_0809C318: .4byte Img_SysBlackBox
 _0809C31C: .4byte 0x06017800
 _0809C320: .4byte 0x00000F4B
 _0809C324:
@@ -98393,7 +98393,7 @@ _0809C326:
 	str r0, [r7, #0x30]
 	ldr r0, _0809C37C @ =sub_809BFCC
 	adds r1, r7, #0
-	bl sub_80AA20C
+	bl StartParallelWorker
 	adds r0, r7, #0
 	bl sub_8090DD0
 	movs r0, #0x80
@@ -98485,7 +98485,7 @@ sub_809C3EC: @ 0x0809C3EC
 	adds r4, r0, #0
 	bl sub_80886CC
 	adds r0, r4, #0
-	bl sub_80AAC88
+	bl EndAllProcChildren
 	bl sub_808EDB0
 	movs r0, #0
 	bl EndFaceById
@@ -98811,7 +98811,7 @@ _0809C682:
 	movs r3, #0x80
 	lsls r3, r3, #4
 	movs r2, #7
-	bl sub_80AA3F8
+	bl ShowSysHandCursor
 _0809C69C:
 	mov r1, sb
 	movs r0, #0
@@ -99215,14 +99215,14 @@ _0809C9AE:
 	adds r1, r5, #0
 	mov r2, sb
 	adds r3, r7, #0
-	bl sub_80068C4
+	bl PutSpriteExt
 	ldr r0, _0809C9F4 @ =0x0000FF80
 	str r0, [sp]
 	movs r0, #4
 	adds r1, r4, #0
 	mov r2, sb
 	adds r3, r7, #0
-	bl sub_80068C4
+	bl PutSpriteExt
 	adds r5, #0xf
 	adds r4, #0xf
 	adds r6, #1
@@ -99572,7 +99572,7 @@ _0809CC80:
 	bl ApplyPaletteExt
 	ldr r0, _0809CD5C @ =sub_809C980
 	mov r1, r8
-	bl sub_80AA20C
+	bl StartParallelWorker
 	ldr r0, _0809CD60 @ =gUnk_08439190
 	ldr r1, _0809CD64 @ =0x06017800
 	bl Decompress
@@ -99630,7 +99630,7 @@ sub_809CD78: @ 0x0809CD78
 	bl EndEachSpriteAnimProc
 	bl sub_80886CC
 	adds r0, r4, #0
-	bl sub_80AAC88
+	bl EndAllProcChildren
 	bl sub_808EDB0
 	movs r0, #0
 	bl EndFaceById
@@ -99806,7 +99806,7 @@ sub_809CEC8: @ 0x0809CEC8
 	str r4, [sp]
 	movs r0, #4
 	movs r2, #0xa
-	bl sub_80068C4
+	bl PutSpriteExt
 	ldr r1, [r6, #0x30]
 	adds r1, #0xa8
 	ands r1, r5
@@ -99814,7 +99814,7 @@ sub_809CEC8: @ 0x0809CEC8
 	str r4, [sp]
 	movs r0, #4
 	movs r2, #0xa
-	bl sub_80068C4
+	bl PutSpriteExt
 	ldr r1, [r6, #0x30]
 	adds r1, #0xc8
 	ands r1, r5
@@ -99822,7 +99822,7 @@ sub_809CEC8: @ 0x0809CEC8
 	str r4, [sp]
 	movs r0, #4
 	movs r2, #0xa
-	bl sub_80068C4
+	bl PutSpriteExt
 	ldr r1, [r6, #0x30]
 	adds r1, #0x20
 	ands r1, r5
@@ -99831,7 +99831,7 @@ sub_809CEC8: @ 0x0809CEC8
 	str r4, [sp]
 	movs r0, #4
 	movs r2, #0x50
-	bl sub_80068C4
+	bl PutSpriteExt
 	ldr r1, [r6, #0x30]
 	adds r1, #0xa0
 	ands r1, r5
@@ -99839,7 +99839,7 @@ sub_809CEC8: @ 0x0809CEC8
 	str r4, [sp]
 	movs r0, #4
 	movs r2, #0x90
-	bl sub_80068C4
+	bl PutSpriteExt
 	ldr r0, [r6, #0x30]
 	adds r7, r0, #0
 	adds r7, #0x70
@@ -99902,7 +99902,7 @@ _0809CF92:
 	str r0, [sp]
 	movs r0, #4
 	movs r2, #0x90
-	bl sub_80068C4
+	bl PutSpriteExt
 	bl sub_80259A4
 	add sp, #4
 	pop {r4, r5, r6, r7}
@@ -100172,7 +100172,7 @@ sub_809D1C8: @ 0x0809D1C8
 	mov r0, sp
 	movs r2, #0xe
 	bl InitSpriteTextFont
-	ldr r0, _0809D28C @ =gUnk_081901C8
+	ldr r0, _0809D28C @ =Pal_Text
 	movs r1, #0xf0
 	lsls r1, r1, #2
 	movs r2, #0x20
@@ -100251,7 +100251,7 @@ _0809D27C:
 	b _0809D2E8
 	.align 2, 0
 _0809D288: .4byte 0x06015000
-_0809D28C: .4byte gUnk_081901C8
+_0809D28C: .4byte Pal_Text
 _0809D290: .4byte gCharacterData
 _0809D294: .4byte gUnk_0842D214
 _0809D298: .4byte gUnk_0842D220
@@ -100794,13 +100794,13 @@ sub_809D648: @ 0x0809D648
 	orrs r0, r1
 	strb r0, [r2]
 	adds r0, r5, #0
-	bl sub_80AA390
+	bl ResetSysHandCursor
 	movs r0, #0xc0
 	lsls r0, r0, #3
 	movs r1, #1
-	bl sub_80AA3B4
+	bl DisplaySysHandCursorTextShadow
 	movs r0, #1
-	bl sub_80AA470
+	bl ConfigSysHandCursorShadowEnabled
 	adds r1, r5, #0
 	adds r1, #0x3a
 	movs r0, #0xff
@@ -100825,7 +100825,7 @@ sub_809D648: @ 0x0809D648
 	movs r3, #0x80
 	lsls r3, r3, #4
 	movs r2, #1
-	bl sub_80AA3F8
+	bl ShowSysHandCursor
 _0809D714:
 	movs r0, #0
 	movs r1, #0
@@ -100948,7 +100948,7 @@ _0809D800:
 	bl sub_809D1C8
 	ldr r0, _0809D84C @ =sub_809CEC8
 	adds r1, r5, #0
-	bl sub_80AA20C
+	bl StartParallelWorker
 	add sp, #4
 	pop {r4, r5, r6}
 	pop {r0}
@@ -101144,7 +101144,7 @@ _0809D9A0:
 	movs r3, #0x80
 	lsls r3, r3, #4
 	movs r2, #1
-	bl sub_80AA3F8
+	bl ShowSysHandCursor
 	ldr r0, _0809D9DC @ =gPlaySt
 	adds r0, #0x41
 	ldrb r0, [r0]
@@ -101277,7 +101277,7 @@ sub_809DAD4: @ 0x0809DAD4
 	adds r0, #0x3a
 	movs r4, #0
 	strb r4, [r0]
-	bl sub_80AA440
+	bl HideSysHandCursor
 	ldr r3, _0809DB64 @ =gDispIo
 	movs r1, #4
 	rsbs r1, r1, #0
@@ -101983,7 +101983,7 @@ sub_809DFE8: @ 0x0809DFE8
 	movs r3, #0x80
 	lsls r3, r3, #4
 	movs r2, #1
-	bl sub_80AA3F8
+	bl ShowSysHandCursor
 	adds r1, r4, #0
 	adds r1, #0x3a
 	movs r0, #0xff
@@ -102001,7 +102001,7 @@ _0809E0BC: .4byte 0x0000E0FF
 sub_809E0C0: @ 0x0809E0C0
 	push {r4, lr}
 	adds r4, r0, #0
-	bl sub_80AAC88
+	bl EndAllProcChildren
 	bl sub_808EDB0
 	movs r0, #0
 	bl EndFaceById

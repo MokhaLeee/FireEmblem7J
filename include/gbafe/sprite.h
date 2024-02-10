@@ -33,3 +33,5 @@ extern u16 CONST_DATA Sprite_8x8_HFlipped[];
 extern u16 CONST_DATA Sprite_8x8_VFlipped[];
 extern u16 CONST_DATA Sprite_8x8_HFlipped_VFlipped[];
 extern u16 CONST_DATA Sprite_16x16_VFlipped[];
+
+void PutSpriteExt(int layer, int xOam1, int yOam0, const u16 * object, int oam2);

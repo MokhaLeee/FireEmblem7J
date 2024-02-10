@@ -43,3 +43,4 @@
 #include "gbafe/map.h"
 #include "gbafe/save.h"
 #include "gbafe/statscreen.h"
+#include "gbafe/sysutil.h"

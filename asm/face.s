@@ -123,7 +123,7 @@ sub_8006A54: @ 0x08006A54
 	ldr r3, [r4, #0x38]
 	ldrh r4, [r4, #0x3c]
 	str r4, [sp]
-	bl sub_80068C4
+	bl PutSpriteExt
 	add sp, #4
 	pop {r4}
 	pop {r0}
@@ -1566,7 +1566,7 @@ _0800759A:
 	adds r1, #0x1c
 	str r1, [sp]
 	adds r1, r5, #0
-	bl sub_80068C4
+	bl PutSpriteExt
 	add sp, #4
 	pop {r4, r5, r6}
 	pop {r0}
@@ -1688,7 +1688,7 @@ _080076AA:
 	str r1, [sp]
 	adds r1, r4, #0
 	adds r2, r6, #0
-	bl sub_80068C4
+	bl PutSpriteExt
 	b _080076E6
 	.align 2, 0
 _080076C8: .4byte 0x000001FF
@@ -1703,7 +1703,7 @@ _080076D0:
 	str r1, [sp]
 	adds r1, r4, #0
 	adds r2, r6, #0
-	bl sub_80068C4
+	bl PutSpriteExt
 _080076E6:
 	add sp, #4
 	pop {r3, r4}

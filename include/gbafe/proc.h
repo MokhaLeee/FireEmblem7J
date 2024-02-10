@@ -114,30 +114,30 @@ struct ProcFindIterator {
 extern struct Proc * gProcTreeRootArray[8];
 
 void Proc_Init(void);
-ProcPtr Proc_Start(const struct ProcCmd* script, ProcPtr parent);
-ProcPtr Proc_StartBlocking(const struct ProcCmd* script, ProcPtr parent);
+ProcPtr Proc_Start(const struct ProcCmd * script, ProcPtr parent);
+ProcPtr Proc_StartBlocking(const struct ProcCmd * script, ProcPtr parent);
 void Proc_End(ProcPtr proc);
 void Proc_Run(ProcPtr proc);
 void Proc_Break(ProcPtr proc);
-ProcPtr Proc_Find(const struct ProcCmd* script);
+ProcPtr Proc_Find(const struct ProcCmd * script);
 void Proc_Goto(ProcPtr proc, int label);
-void Proc_GotoScript(ProcPtr proc, const struct ProcCmd* script);
+void Proc_GotoScript(ProcPtr proc, const struct ProcCmd * script);
 void Proc_SetMark(ProcPtr proc, int mark);
 void Proc_SetEndCb(ProcPtr proc, ProcFunc func);
 void Proc_ForAll(ProcFunc func);
-void Proc_ForEach(const struct ProcCmd *script, ProcFunc func);
+void Proc_ForEach(const struct ProcCmd * script, ProcFunc func);
 void Proc_ForEachMarked(int mark, ProcFunc func);
 void Proc_BlockEachMarked(int mark);
 void Proc_UnblockEachMarked(int mark);
 void Proc_EndEachMarked(int mark);
-void Proc_EndEach(const struct ProcCmd *script);
-void Proc_BreakEach(const struct ProcCmd* script);
+void Proc_EndEach(const struct ProcCmd * script);
+void Proc_BreakEach(const struct ProcCmd * script);
 void Proc_SetRepeatCb(ProcPtr proc, ProcFunc func);
-// ??? Proc_FindAfter(???);
-// ??? Proc_FindAfterWithParent(???);
+ProcPtr Proc_FindAfter(struct ProcCmd * script, struct Proc * proc);
+struct Proc * Proc_FindAfterWithParent(struct Proc * proc, struct Proc * parent);
 // ??? sub_80034D4(???);
-// ??? sub_80034FC(???);
-void Proc_FindBegin(struct ProcFindIterator* it, const struct ProcCmd* script);
-ProcPtr Proc_FindNext(struct ProcFindIterator* it);
+int CountProcs(const struct ProcCmd * script);
+void Proc_FindBegin(struct ProcFindIterator * it, const struct ProcCmd * script);
+ProcPtr Proc_FindNext(struct ProcFindIterator * it);
 
 #define Proc_Exists(script) (Proc_Find((script)) ? TRUE : FALSE)

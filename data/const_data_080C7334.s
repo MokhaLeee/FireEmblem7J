@@ -110,8 +110,8 @@ gUnk_08190188:	@ 0x08190188
 gUnk_081901A8:	@ 0x081901A8
 	.incbin "FireEmblem7J.base.gba", 0x1901A8, 0x1901C8 - 0x1901A8
 
-	.global gUnk_081901C8
-gUnk_081901C8:	@ 0x081901C8
+	.global Pal_Text
+Pal_Text:	@ 0x081901C8
 	.incbin "FireEmblem7J.base.gba", 0x1901C8, 0x1901E8 - 0x1901C8
 
 	.global gUnk_081901E8

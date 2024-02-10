@@ -148,6 +148,7 @@ SECTIONS
 		. = 0x002778; gArenaLevelBackup = .;
 		. = 0x002780; gOamLoPutIt = .;
 		. = 0x002790; gDispIo = .;
+		. = 0x0027D8; gOpAnimBgAffineDstData = .;
 		. = 0x002800; gIrqFuncs = .;
 		. = 0x00283C; gOamAffinePutId = .;
 		. = 0x002844; gOnHBlankA = .;
@@ -234,7 +235,9 @@ SECTIONS
 		src/save_core.o(.text);
 		asm/save.o(.text);
 		src/savemenu.o(.text);
-		asm/code2.o(.text);
+		asm/code_080A40E8.o(.text);
+		src/sysutil.o(.text);
+		asm/code_080AB6FC.o(.text);
 
 		asm/m4a_1.o(.text);
 		asm/m4a.o(.text);
@@ -272,7 +275,9 @@ SECTIONS
 		. = ALIGN(4); data/const_data_082EB740.o(.rodata)
 		. = ALIGN(4); src/save_core.o(.rodata)
 
-		. = ALIGN(4); data/data_0842D270.o(.data)
+		. = ALIGN(4); data/const_data_0842D270.o(.rodata)
+		. = ALIGN(4); src/sysutil.o(.rodata)
+		. = ALIGN(4); data/data_0843943C.o(.data)
 		. = ALIGN(4); src/hardware.o(.data)
 		. = ALIGN(4); data/data_08BBFCA8.o(.data)
 		. = ALIGN(4); data/gamecontrol.o(.data)
@@ -285,5 +290,7 @@ SECTIONS
 		. = ALIGN(4); data/data_08C486EC.o(.data)
 		. = ALIGN(4); src/save_core.o(.data)
 		. = ALIGN(4); data/data_08DAD284.o(.data)
+		. = ALIGN(4); src/sysutil.o(.data)
+		. = ALIGN(4); data/data_08DAE4C4.o(.data)
 	}
 }

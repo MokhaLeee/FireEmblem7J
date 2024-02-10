@@ -99,8 +99,8 @@ _080068B8: .4byte 0x030040B0
 _080068BC: .4byte 0x0202A480
 _080068C0: .4byte 0x000001FF
 
-	thumb_func_start sub_80068C4
-sub_80068C4: @ 0x080068C4
+	thumb_func_start PutSpriteExt
+PutSpriteExt: @ 0x080068C4
 	push {r4, r5, r6, r7, lr}
 	ldr r7, [sp, #0x14]
 	ldr r6, _080068EC @ =0x030040B0

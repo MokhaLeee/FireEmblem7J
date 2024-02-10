@@ -167,7 +167,7 @@ enum bg_index {
     BG_INVALID = -1,
 };
 
-extern struct KeySt CONST_DATA *gpKeySt;
+extern struct KeySt CONST_DATA * gpKeySt;
 extern struct KeySt EWRAM_DATA gKeyStObj;
 
 struct MoveStats {
@@ -225,6 +225,8 @@ extern const s16 gSinLut[0x40];
 
 extern Func gOnHBlankA;
 extern Func gOnHBlankB;
+
+extern struct BgAffineDstData gOpAnimBgAffineDstData[2];
 
 #define RGB_GET_RED(color) ((color) & 0x1F)
 #define RGB_GET_GREEN(color) (((color) >> 5) & 0x1F)

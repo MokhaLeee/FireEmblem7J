@@ -930,7 +930,7 @@ _08005900: .4byte gActiveFont
 	thumb_func_start InitSystemTextFont
 InitSystemTextFont: @ 0x08005904
 	push {r4, lr}
-	ldr r0, _08005934 @ =gUnk_081901C8
+	ldr r0, _08005934 @ =Pal_Text
 	ldr r4, _08005938 @ =gActiveFont
 	ldr r1, [r4]
 	ldrh r1, [r1, #0x14]
@@ -952,7 +952,7 @@ InitSystemTextFont: @ 0x08005904
 	pop {r0}
 	bx r0
 	.align 2, 0
-_08005934: .4byte gUnk_081901C8
+_08005934: .4byte Pal_Text
 _08005938: .4byte gActiveFont
 _0800593C: .4byte gPal
 _08005940: .4byte DrawTextGlyph

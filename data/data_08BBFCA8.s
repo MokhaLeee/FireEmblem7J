@@ -516,7 +516,7 @@ gUnk_08C012BC:	@ 0x08C012BC
 	.word sub_80118A8
 	@ PROC_WHILE
 	.short 0x14, 0x0
-	.word EventThunderfx_Loop
+	.word CheckBmBgfxDone
 	@ PROC_REPEAT
 	.short 0x3, 0x0
 	.word sub_8011900
@@ -541,7 +541,7 @@ ProcScr_EventThunderfx:	@ 0x08C013C8
 	.word EventThunderfx_Init
 	@ PROC_WHILE
 	.short 0x14, 0x0
-	.word EventThunderfx_Loop
+	.word CheckBmBgfxDone
 	@ PROC_CALL
 	.short 0x2, 0x0
 	.word EventThunderfx_End

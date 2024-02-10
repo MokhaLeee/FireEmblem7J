@@ -2845,7 +2845,7 @@ _08026750:
 	str r7, [sp]
 	mov r0, r8
 	adds r1, r5, #0
-	bl sub_80068C4
+	bl PutSpriteExt
 	b _08026780
 	.align 2, 0
 _0802675C: .4byte Sprite_16x32
@@ -2864,7 +2864,7 @@ _08026760:
 	ldr r3, _08026790 @ =Sprite_32x32
 	str r7, [sp]
 	mov r0, r8
-	bl sub_80068C4
+	bl PutSpriteExt
 _08026780:
 	add sp, #4
 	pop {r3}

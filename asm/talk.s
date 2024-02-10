@@ -153,14 +153,14 @@ _08007DDC: .4byte 0x030000C8
 	thumb_func_start sub_8007DE0
 sub_8007DE0: @ 0x08007DE0
 	push {lr}
-	ldr r0, _08007DF0 @ =gUnk_081901C8
+	ldr r0, _08007DF0 @ =Pal_Text
 	movs r1, #0x40
 	movs r2, #0x20
 	bl ApplyPaletteExt
 	pop {r0}
 	bx r0
 	.align 2, 0
-_08007DF0: .4byte gUnk_081901C8
+_08007DF0: .4byte Pal_Text
 
 	thumb_func_start sub_8007DF4
 sub_8007DF4: @ 0x08007DF4
@@ -975,7 +975,7 @@ _0800842C:
 	movs r1, #0x60
 	movs r2, #0x20
 	bl ApplyPaletteExt
-	ldr r0, _08008448 @ =gUnk_081901C8
+	ldr r0, _08008448 @ =Pal_Text
 	movs r1, #0x40
 	movs r2, #0x20
 	bl ApplyPaletteExt
@@ -984,7 +984,7 @@ _08008440:
 	bx r0
 	.align 2, 0
 _08008444: .4byte gUnk_08402A4C
-_08008448: .4byte gUnk_081901C8
+_08008448: .4byte Pal_Text
 
 	thumb_func_start sub_800844C
 sub_800844C: @ 0x0800844C
@@ -2867,7 +2867,7 @@ _080093E8:
 	subs r0, #4
 	movs r2, #0x2e
 	ldrsh r1, [r4, r2]
-	bl sub_804A740
+	bl DisplayUiHand
 _08009404:
 	pop {r4, r5}
 	pop {r0}

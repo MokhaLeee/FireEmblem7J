@@ -1074,8 +1074,8 @@ _08015EA2:
 _08015ED0: .4byte gUnk_08C0206C
 _08015ED4: .4byte gBmSt
 
-	thumb_func_start sub_8015ED8
-sub_8015ED8: @ 0x08015ED8
+	thumb_func_start DisplayBmTextShadow
+DisplayBmTextShadow: @ 0x08015ED8
 	push {r4, r5, lr}
 	sub sp, #4
 	adds r4, r0, #0

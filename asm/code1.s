@@ -4911,12 +4911,12 @@ sub_8030A04: @ 0x08030A04
 	thumb_func_start sub_8030A14
 sub_8030A14: @ 0x08030A14
 	push {lr}
-	bl sub_8013BCC
+	bl ArchiveCurrentPalettes
 	ldr r3, _08030A2C @ =0xFF00FFF0
 	movs r0, #0xc0
 	movs r1, #0xc0
 	movs r2, #0xc0
-	bl sub_8013C48
+	bl WriteFadedPaletteFromArchive
 	pop {r0}
 	bx r0
 	.align 2, 0
@@ -4950,7 +4950,7 @@ sub_8030A5C: @ 0x08030A5C
 	push {r4, lr}
 	sub sp, #0x14
 	adds r4, r0, #0
-	bl sub_8013BCC
+	bl ArchiveCurrentPalettes
 	movs r2, #0x80
 	lsls r2, r2, #1
 	movs r0, #0xc0
@@ -6294,7 +6294,7 @@ sub_803157C: @ 0x0803157C
 	movs r0, #0
 	bl InitBgs
 	adds r0, r4, #0
-	bl sub_80AAC88
+	bl EndAllProcChildren
 	pop {r4}
 	pop {r0}
 	bx r0

@@ -1000,8 +1000,8 @@ sub_8013BBC: @ 0x08013BBC
 	bx r1
 	.align 2, 0
 
-	thumb_func_start sub_8013BCC
-sub_8013BCC: @ 0x08013BCC
+	thumb_func_start ArchiveCurrentPalettes
+ArchiveCurrentPalettes: @ 0x08013BCC
 	push {r4, r5, lr}
 	bl sub_8013B44
 	ldr r3, _08013C14 @ =gPal
@@ -1038,8 +1038,8 @@ _08013BE0:
 	.align 2, 0
 _08013C14: .4byte gPal
 
-	thumb_func_start sub_8013C18
-sub_8013C18: @ 0x08013C18
+	thumb_func_start ArchivePalette
+ArchivePalette: @ 0x08013C18
 	push {r4, lr}
 	adds r4, r0, #0
 	bl sub_8013B44
@@ -1065,8 +1065,8 @@ _08013C30:
 	.align 2, 0
 _08013C44: .4byte gPal
 
-	thumb_func_start sub_8013C48
-sub_8013C48: @ 0x08013C48
+	thumb_func_start WriteFadedPaletteFromArchive
+WriteFadedPaletteFromArchive: @ 0x08013C48
 	push {r4, r5, r6, r7, lr}
 	mov r7, sl
 	mov r6, sb
@@ -1423,7 +1423,7 @@ _08013ED8:
 	ldr r3, [r4, #0x4c]
 	adds r0, r6, #0
 	adds r1, r5, #0
-	bl sub_8013C48
+	bl WriteFadedPaletteFromArchive
 	ldr r0, [r4, #0x44]
 	cmp r0, r7
 	bne _08013EF0
