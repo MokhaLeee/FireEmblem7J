@@ -220,8 +220,7 @@ enum BmBgxConf_type {
 
 typedef s8 bmfx_idle(ProcPtr);
 
-struct ProcBmfx
-{
+struct ProcBmBgfx {
     /* 00 */ PROC_HEADER;
     /* 2C */ struct BmBgxConf * conf;
     /* 30 */ u16 x;
@@ -244,13 +243,13 @@ struct ProcBmfx
     /* 58 */ bool (* callback)(ProcPtr);
 };
 
-void BmBgfx_Init(struct ProcBmfx * proc);
-void BmBgfx_Loop(struct ProcBmfx * proc);
-void BmBgfx_End(struct ProcBmfx * proc);
+void BmBgfx_Init(struct ProcBmBgfx * proc);
+void BmBgfx_Loop(struct ProcBmBgfx * proc);
+void BmBgfx_End(struct ProcBmBgfx * proc);
 bool CheckBmBgfxDone(void);
 void BmBgfxAdvance(void);
 void EndBmBgfx(void);
 void BmBgfxSetLoopEN(u8);
-void StartBmBgfx(struct BmBgxConf * input, int bg, int x, int y, int e, int f, int g, void * func, ProcPtr parent);
+void StartBmBgfx(struct BmBgxConf * input, int bg, int x, int y, int vram_off, int size, int pal_bank, void * func, ProcPtr parent);
 
 extern struct ProcCmd ProcScr_BmBgfx[];

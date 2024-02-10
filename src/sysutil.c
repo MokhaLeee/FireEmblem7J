@@ -1269,7 +1269,7 @@ void EndFadeInOut(void)
     Proc_End(Proc_Find(ProcScr_BmFadeOUT));
 }
 
-void BmBgfx_Init(struct ProcBmfx * proc)
+void BmBgfx_Init(struct ProcBmBgfx * proc)
 {
     proc->conf = 0;
     proc->bg = 0;
@@ -1290,7 +1290,7 @@ void BmBgfx_Init(struct ProcBmfx * proc)
     proc->counter = 0;
 }
 
-void BmBgfx_Loop(struct ProcBmfx * proc)
+void BmBgfx_Loop(struct ProcBmBgfx * proc)
 {
     struct BmBgxConf * conf = proc->conf;
 
@@ -1425,7 +1425,7 @@ void BmBgfx_Loop(struct ProcBmfx * proc)
     proc->counter_procloop++;
 }
 
-void BmBgfx_End(struct ProcBmfx * proc)
+void BmBgfx_End(struct ProcBmBgfx * proc)
 {
     if (proc->conf->type == 10)
     {
@@ -1454,7 +1454,7 @@ bool CheckBmBgfxDone(void)
 
 void BmBgfxAdvance(void)
 {
-    struct ProcBmfx * proc = Proc_Find(ProcScr_BmBgfx);
+    struct ProcBmBgfx * proc = Proc_Find(ProcScr_BmBgfx);
     if ((proc != NULL) && (proc->conf->type == BMFX_CONFT_BLOCKING))
         proc->conf++;
 }
@@ -1466,14 +1466,14 @@ void EndBmBgfx(void)
 
 void BmBgfxSetLoopEN(u8 loop_en)
 {
-    struct ProcBmfx * proc = Proc_Find(ProcScr_BmBgfx);
+    struct ProcBmBgfx * proc = Proc_Find(ProcScr_BmBgfx);
     if (proc != NULL)
         proc->loop_en = loop_en;
 }
 
 void StartBmBgfx(struct BmBgxConf * input, int bg, int x, int y, int vram_off, int size, int pal_bank, void * func, ProcPtr parent)
 {
-    struct ProcBmfx * proc;
+    struct ProcBmBgfx * proc;
 
     if (parent == NULL)
         proc = Proc_Start(ProcScr_BmBgfx, PROC_TREE_3);

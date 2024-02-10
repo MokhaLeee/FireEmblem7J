@@ -380,7 +380,71 @@ gUnk_081A7634:	@ 0x081A7634
 
 	.global gUnk_081A7F00
 gUnk_081A7F00:	@ 0x081A7F00
-	.incbin "FireEmblem7J.base.gba", 0x1A7F00, 0x1AC808 - 0x1A7F00
+	.incbin "FireEmblem7J.base.gba", 0x1A7F00, 0x1A8F68 - 0x1A7F00
+
+	.global Pal_EventThunderfx
+Pal_EventThunderfx:	@ 0x081A8F68
+	.incbin "FireEmblem7J.base.gba", 0x1A8F68, 0x1A8F88 - 0x1A8F68
+
+	.global Img_EventThunderfx1
+Img_EventThunderfx1:	@ 0x081A8F88
+	.incbin "FireEmblem7J.base.gba", 0x1A8F88, 0x1A9AEC - 0x1A8F88
+
+	.global Img_EventThunderfx2
+Img_EventThunderfx2:	@ 0x081A9AEC
+	.incbin "FireEmblem7J.base.gba", 0x1A9AEC, 0x1AA44C - 0x1A9AEC
+
+	.global Tsa_EventThunderfx1
+Tsa_EventThunderfx1:
+	.incbin "FireEmblem7J.base.gba", 0x1AA44C, 0x1AA5B8 - 0x1AA44C
+
+	.global Tsa_EventThunderfx2
+Tsa_EventThunderfx2:
+	.incbin "FireEmblem7J.base.gba", 0x1AA5B8, 0x1AA724 - 0x1AA5B8
+
+	.global Tsa_EventThunderfx3
+Tsa_EventThunderfx3:
+	.incbin "FireEmblem7J.base.gba", 0x1AA724, 0x1AA890 - 0x1AA724
+
+	.global Tsa_EventThunderfx4
+Tsa_EventThunderfx4:
+	.incbin "FireEmblem7J.base.gba", 0x1AA890, 0x1AA9FC - 0x1AA890
+
+	.global Tsa_EventThunderfx5
+Tsa_EventThunderfx5:
+	.incbin "FireEmblem7J.base.gba", 0x1AA9FC, 0x1AAB68 - 0x1AA9FC
+
+	.global Tsa_EventThunderfx6
+Tsa_EventThunderfx6:
+	.incbin "FireEmblem7J.base.gba", 0x1AAB68, 0x1AACD4 - 0x1AAB68
+
+	.global Tsa_EventThunderfx7
+Tsa_EventThunderfx7:
+	.incbin "FireEmblem7J.base.gba", 0x1AACD4, 0x1AAE40 - 0x1AACD4
+
+	.global Img_EventThunderfx3
+Img_EventThunderfx3:
+	.incbin "FireEmblem7J.base.gba", 0x1AAE40, 0x1AB990 - 0x1AAE40
+
+	.global Img_EventThunderfx4
+Img_EventThunderfx4:
+	.incbin "FireEmblem7J.base.gba", 0x1AB990, 0x1AC258 - 0x1AB990
+
+	.global Tsa_EventThunderfx8
+Tsa_EventThunderfx8:
+	.incbin "FireEmblem7J.base.gba", 0x1AC258, 0x1AC3C4 - 0x1AC258
+
+	.global Tsa_EventThunderfx9
+Tsa_EventThunderfx9:
+	.incbin "FireEmblem7J.base.gba", 0x1AC3C4, 0x1AC530 - 0x1AC3C4
+
+	.global Tsa_EventThunderfx10
+Tsa_EventThunderfx10:
+	.incbin "FireEmblem7J.base.gba", 0x1AC530, 0x1AC69C - 0x1AC530
+
+	.global Tsa_EventThunderfx11
+Tsa_EventThunderfx11:
+	.incbin "FireEmblem7J.base.gba", 0x1AC69C, 0x1AC808 - 0x1AC69C
 
 	.global gUnk_081AC808
 gUnk_081AC808:	@ 0x081AC808

@@ -189,6 +189,7 @@ SECTIONS
 		asm/talk.o(.text);
 		asm/event.o(.text);
 		asm/event-08010630.o(.text);
+		src/eventscr_thunderfx.o(.text);
 		asm/eventscr_08011AFC.o(.text);
 		asm/sprite-anim.o(.text);
 		asm/game-ctrl.o(.text);
@@ -280,6 +281,8 @@ SECTIONS
 		. = ALIGN(4); data/data_0843943C.o(.data)
 		. = ALIGN(4); src/hardware.o(.data)
 		. = ALIGN(4); data/data_08BBFCA8.o(.data)
+		. = ALIGN(4); src/eventscr_thunderfx.o(.data)
+		. = ALIGN(4); data/data_08C013F0.o(.data)
 		. = ALIGN(4); data/gamecontrol.o(.data)
 		. = ALIGN(4); data/data.o(.data)
 		. = ALIGN(4); src/battle.o(.data)

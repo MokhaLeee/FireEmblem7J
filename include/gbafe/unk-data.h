@@ -106,6 +106,22 @@ extern u16 Pal_Text[];
 // ??? gUnk_08199290
 // ??? gUnk_081A7634
 // ??? gUnk_081A7F00
+extern u16 Pal_EventThunderfx[];
+extern u8 Img_EventThunderfx1[];
+extern u8 Img_EventThunderfx2[];
+extern u8 Tsa_EventThunderfx1[];
+extern u8 Tsa_EventThunderfx2[];
+extern u8 Tsa_EventThunderfx3[];
+extern u8 Tsa_EventThunderfx4[];
+extern u8 Tsa_EventThunderfx5[];
+extern u8 Tsa_EventThunderfx6[];
+extern u8 Tsa_EventThunderfx7[];
+extern u8 Img_EventThunderfx3[];
+extern u8 Img_EventThunderfx4[];
+extern u8 Tsa_EventThunderfx8[];
+extern u8 Tsa_EventThunderfx9[];
+extern u8 Tsa_EventThunderfx10[];
+extern u8 Tsa_EventThunderfx11[];
 // ??? gUnk_081AC808
 // ??? gUnk_081ACA20
 // ??? gUnk_081ACA40
@@ -1427,8 +1443,9 @@ extern u8 Img_SysBrownBox[];
 // ??? gUnk_08C01224
 // ??? gUnk_08C0127C
 // ??? gUnk_08C012BC
-// ??? gUnk_08C012FC
-extern struct ProcCmd ProcScr_EventThunderfx[];
+
+/* eventscr_bmfxthunder.c */
+
 // ??? gUnk_08C013F0
 // ??? gUnk_08C015DC
 // ??? gUnk_08C0162C

@@ -23,8 +23,7 @@ def main(args):
     addr = offset + 0x08000000
     name = syms[addr] if addr in syms else f'ProcScr_Unk_{offset + 0x08000000:08X}'
 
-    print(f"struct ProcCmd CONST_DATA {name}[] =")
-    print("{")
+    print(f"struct ProcCmd CONST_DATA {name}[] = " + "{")
 
     with open(rom_name, 'rb') as f:
         f.seek(offset)
@@ -95,7 +94,10 @@ def main(args):
                 break
 
             if opc == 0x0E:
-                print(f"    PROC_SLEEP({arg}),")
+                if arg == 0:
+                    print("    PROC_YIELD,")
+                else:
+                    print(f"    PROC_SLEEP({arg}),")
                 continue
 
             if opc == 0x0F:

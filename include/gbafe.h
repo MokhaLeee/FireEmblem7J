@@ -44,3 +44,6 @@
 #include "gbafe/save.h"
 #include "gbafe/statscreen.h"
 #include "gbafe/sysutil.h"
+#include "gbafe/event.h"
+#include "gbafe/eventscript.h"
+#include "gbafe/bmfx.h"

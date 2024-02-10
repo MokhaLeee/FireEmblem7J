@@ -539,6 +539,18 @@
 #define BGCNT_AFF1024x1024      0xC000
 
 // BLDCNT
+enum
+{
+    BLEND_EFFECT_NONE = 0,
+    BLEND_EFFECT_ALPHA = 1,
+    BLEND_EFFECT_BRIGHTEN = 2,
+    BLEND_EFFECT_DARKEN = 3,
+};
+
+#define BLDCNT_TARGETA(bg0, bg1, bg2, bg3, obj) (((bg0) << 0) | ((bg1) << 1) | ((bg2) << 2) | ((bg3) << 3) | ((obj) << 4))
+#define BLDCNT_TARGETB(bg0, bg1, bg2, bg3, obj) (((bg0) << 8) | ((bg1) << 9) | ((bg2) << 10) | ((bg3) << 11) | ((obj) << 12))
+#define BLDCNT_EFFECT(n) (((n) & 3) << 6)
+
 // Bits 0-5 select layers for the 1st target
 #define BLDCNT_TGT1_BG0      (1 << 0)
 #define BLDCNT_TGT1_BG1      (1 << 1)
