@@ -333,7 +333,7 @@ sub_802E650: @ 0x0802E650
 	ldrb r0, [r4, #0xe]
 	cmp r0, #0x30
 	bne _0802E660
-	bl sub_80A2B50
+	bl ReadExtraMapInfo
 _0802E660:
 	movs r0, #0
 	bl InitBgs
@@ -6938,24 +6938,24 @@ GetROMChapterStruct: @ 0x08031A5C
 	.align 2, 0
 _08031A6C: .4byte gUnk_08D62110
 _08031A70:
-	ldr r0, _08031A78 @ =gUnk_08DAD298
+	ldr r0, _08031A78 @ =gExtraMapInfo
 	ldr r0, [r0]
 	ldr r0, [r0]
 _08031A76:
 	bx lr
 	.align 2, 0
-_08031A78: .4byte gUnk_08DAD298
+_08031A78: .4byte gExtraMapInfo
 
-	thumb_func_start sub_8031A7C
-sub_8031A7C: @ 0x08031A7C
+	thumb_func_start GetChapterMapPointer
+GetChapterMapPointer: @ 0x08031A7C
 	push {r4, r5, r6, lr}
 	cmp r0, #0x30
 	bne _08031AA8
 	ldr r6, _08031AA0 @ =ReadSramFast
-	bl sub_80A2A50
+	bl GetExtraMapMapReadAddr
 	adds r4, r0, #0
 	ldr r5, _08031AA4 @ =gBuf
-	bl sub_80A2A6C
+	bl GetExtraMapMapSize
 	adds r2, r0, #0
 	ldr r3, [r6]
 	adds r0, r4, #0
@@ -6967,7 +6967,7 @@ sub_8031A7C: @ 0x08031A7C
 _08031AA0: .4byte ReadSramFast
 _08031AA4: .4byte gBuf
 _08031AA8:
-	ldr r4, _08031ABC @ =gUnk_08D648F4
+	ldr r4, _08031ABC @ =gChapterDataAssetTable
 	bl GetROMChapterStruct
 	ldrb r0, [r0, #8]
 	lsls r0, r0, #2
@@ -6978,21 +6978,21 @@ _08031AB6:
 	pop {r1}
 	bx r1
 	.align 2, 0
-_08031ABC: .4byte gUnk_08D648F4
+_08031ABC: .4byte gChapterDataAssetTable
 
 	thumb_func_start sub_8031AC0
 sub_8031AC0: @ 0x08031AC0
 	push {r4, lr}
 	cmp r0, #0x30
 	bne _08031AD4
-	ldr r0, _08031AD0 @ =gUnk_08DAD298
+	ldr r0, _08031AD0 @ =gExtraMapInfo
 	ldr r0, [r0]
 	ldr r0, [r0, #4]
 	b _08031AE2
 	.align 2, 0
-_08031AD0: .4byte gUnk_08DAD298
+_08031AD0: .4byte gExtraMapInfo
 _08031AD4:
-	ldr r4, _08031AE8 @ =gUnk_08D648F4
+	ldr r4, _08031AE8 @ =gChapterDataAssetTable
 	bl GetROMChapterStruct
 	ldrb r0, [r0, #0xb]
 	lsls r0, r0, #2
@@ -7003,21 +7003,21 @@ _08031AE2:
 	pop {r1}
 	bx r1
 	.align 2, 0
-_08031AE8: .4byte gUnk_08D648F4
+_08031AE8: .4byte gChapterDataAssetTable
 
 	thumb_func_start GetChapterEventInfo
 GetChapterEventInfo: @ 0x08031AEC
 	push {r4, lr}
 	cmp r0, #0x30
 	bne _08031B00
-	ldr r0, _08031AFC @ =gUnk_08DAD298
+	ldr r0, _08031AFC @ =gExtraMapInfo
 	ldr r0, [r0]
 	ldr r0, [r0, #8]
 	b _08031B10
 	.align 2, 0
-_08031AFC: .4byte gUnk_08DAD298
+_08031AFC: .4byte gExtraMapInfo
 _08031B00:
-	ldr r4, _08031B18 @ =gUnk_08D648F4
+	ldr r4, _08031B18 @ =gChapterDataAssetTable
 	bl GetROMChapterStruct
 	adds r0, #0x74
 	ldrb r0, [r0]
@@ -7029,19 +7029,19 @@ _08031B10:
 	pop {r1}
 	bx r1
 	.align 2, 0
-_08031B18: .4byte gUnk_08D648F4
+_08031B18: .4byte gChapterDataAssetTable
 
 	thumb_func_start sub_8031B1C
 sub_8031B1C: @ 0x08031B1C
 	push {lr}
 	cmp r0, #0x30
 	bne _08031B30
-	ldr r0, _08031B2C @ =gUnk_08DAD298
+	ldr r0, _08031B2C @ =gExtraMapInfo
 	ldr r0, [r0]
 	ldr r0, [r0, #0xc]
 	b _08031B3A
 	.align 2, 0
-_08031B2C: .4byte gUnk_08DAD298
+_08031B2C: .4byte gExtraMapInfo
 _08031B30:
 	bl GetROMChapterStruct
 	adds r0, #0x70
@@ -7717,7 +7717,7 @@ _08032068:
 	adds r2, r0, #0
 	adds r0, r7, #0
 	movs r1, #2
-	bl sub_8006074
+	bl PutNumberOrBlank
 	adds r0, r4, #0
 	bl sub_8017808
 	adds r1, r0, #0
@@ -7836,7 +7836,7 @@ _0803218A:
 	adds r2, r0, #0
 	adds r0, r4, #0
 	adds r1, r5, #0
-	bl sub_8006074
+	bl PutNumberOrBlank
 	ldr r4, [sp, #0x1c]
 	adds r4, #1
 	ldr r1, [sp, #0x10]
@@ -7972,7 +7972,7 @@ _080322A2:
 	adds r2, r0, #0
 	adds r0, r4, #0
 	adds r1, r5, #0
-	bl sub_8006074
+	bl PutNumberOrBlank
 	mov r4, sl
 	adds r4, #0xe
 	add r4, sb
@@ -7983,7 +7983,7 @@ _080322A2:
 	adds r2, r0, #0
 	adds r0, r4, #0
 	adds r1, r5, #0
-	bl sub_8006074
+	bl PutNumberOrBlank
 	mov r4, sl
 	adds r4, #1
 	add r4, sb
@@ -11069,7 +11069,7 @@ _08033B3C: .4byte gBattleTarget
 DrawBattleForecastContentsStandard: @ 0x08033B40
 	push {r4, r5, r6, r7, lr}
 	adds r6, r0, #0
-	ldr r0, _08033BBC @ =0x0200373C
+	ldr r0, _08033BBC @ =gUiTmScratchB
 	ldr r1, _08033BC0 @ =gUnk_08191780
 	movs r2, #0x90
 	lsls r2, r2, #5
@@ -11125,7 +11125,7 @@ DrawBattleForecastContentsStandard: @ 0x08033B40
 	adds r2, r7, #0
 	b _08033BF2
 	.align 2, 0
-_08033BBC: .4byte 0x0200373C
+_08033BBC: .4byte gUiTmScratchB
 _08033BC0: .4byte gUnk_08191780
 _08033BC4: .4byte gUiTmScratchA
 _08033BC8: .4byte gBattleActor
@@ -11312,7 +11312,7 @@ _08033D5C: .4byte 0xFFFFFEF2
 sub_8033D60: @ 0x08033D60
 	push {r4, r5, r6, r7, lr}
 	adds r5, r0, #0
-	ldr r0, _08033DE4 @ =0x0200373C
+	ldr r0, _08033DE4 @ =gUiTmScratchB
 	ldr r1, _08033DE8 @ =gUnk_081918C4
 	movs r2, #0x90
 	lsls r2, r2, #5
@@ -11371,7 +11371,7 @@ _08033DC8:
 	bl sub_8006094
 	b _08033E10
 	.align 2, 0
-_08033DE4: .4byte 0x0200373C
+_08033DE4: .4byte gUiTmScratchB
 _08033DE8: .4byte gUnk_081918C4
 _08033DEC: .4byte gUiTmScratchA
 _08033DF0: .4byte gBattleActor
@@ -11762,7 +11762,7 @@ _08034120:
 	movs r2, #0xa
 	adds r3, r4, #0
 	bl TmCopyRect_thm
-	ldr r0, _08034150 @ =0x0200373C
+	ldr r0, _08034150 @ =gUiTmScratchB
 	ldr r1, _08034154 @ =gBg1Tm
 	movs r2, #0xa
 	adds r3, r4, #0
@@ -11771,7 +11771,7 @@ _08034120:
 	.align 2, 0
 _08034148: .4byte gUiTmScratchA
 _0803414C: .4byte gBg0Tm
-_08034150: .4byte 0x0200373C
+_08034150: .4byte gUiTmScratchB
 _08034154: .4byte gBg1Tm
 _08034158:
 	ldr r0, _0803417C @ =gUiTmScratchA
@@ -11779,7 +11779,7 @@ _08034158:
 	movs r2, #0xa
 	adds r3, r4, #0
 	bl TmCopyRect_thm
-	ldr r0, _08034184 @ =0x0200373C
+	ldr r0, _08034184 @ =gUiTmScratchB
 	ldr r1, _08034188 @ =gBg1Tm + 0x28
 	movs r2, #0xa
 	adds r3, r4, #0
@@ -11793,7 +11793,7 @@ _08034170:
 	.align 2, 0
 _0803417C: .4byte gUiTmScratchA
 _08034180: .4byte gBg0Tm + 0x28
-_08034184: .4byte 0x0200373C
+_08034184: .4byte gUiTmScratchB
 _08034188: .4byte gBg1Tm + 0x28
 
 	thumb_func_start sub_803418C
@@ -12165,7 +12165,7 @@ _0803440C:
 	adds r2, r5, #0
 	mov r3, sb
 	bl TmCopyRect_thm
-	ldr r0, _08034480 @ =0x0200373C
+	ldr r0, _08034480 @ =gUiTmScratchB
 	adds r4, r4, r0
 	adds r0, r4, #0
 	mov r1, sl
@@ -12178,7 +12178,7 @@ _08034470: .4byte gBg0Tm
 _08034474: .4byte gBg1Tm
 _08034478: .4byte gUnk_08C06028
 _0803447C: .4byte gUiTmScratchA
-_08034480: .4byte 0x0200373C
+_08034480: .4byte gUiTmScratchB
 _08034484:
 	ldr r0, _080344CC @ =gUiTmScratchA
 	movs r4, #0x1e
@@ -12189,7 +12189,7 @@ _08034484:
 	adds r2, r5, #0
 	mov r3, sb
 	bl TmCopyRect_thm
-	ldr r0, _080344D0 @ =0x0200373C
+	ldr r0, _080344D0 @ =gUiTmScratchB
 	add r4, sl
 	adds r1, r4, #0
 	adds r2, r5, #0
@@ -12217,7 +12217,7 @@ _080344BE:
 	bx r0
 	.align 2, 0
 _080344CC: .4byte gUiTmScratchA
-_080344D0: .4byte 0x0200373C
+_080344D0: .4byte gUiTmScratchB
 
 	thumb_func_start sub_80344D4
 sub_80344D4: @ 0x080344D4
@@ -12272,7 +12272,7 @@ _080344F0:
 	adds r2, r5, #0
 	mov r3, sb
 	bl TmCopyRect_thm
-	ldr r0, _08034564 @ =0x0200373C
+	ldr r0, _08034564 @ =gUiTmScratchB
 	adds r4, r4, r0
 	adds r0, r4, #0
 	mov r1, sl
@@ -12285,7 +12285,7 @@ _08034554: .4byte gBg0Tm
 _08034558: .4byte gBg1Tm
 _0803455C: .4byte gUnk_08C0602C
 _08034560: .4byte gUiTmScratchA
-_08034564: .4byte 0x0200373C
+_08034564: .4byte gUiTmScratchB
 _08034568:
 	ldr r0, _080345B0 @ =gUiTmScratchA
 	movs r4, #0x1e
@@ -12296,7 +12296,7 @@ _08034568:
 	adds r2, r5, #0
 	mov r3, sb
 	bl TmCopyRect_thm
-	ldr r0, _080345B4 @ =0x0200373C
+	ldr r0, _080345B4 @ =gUiTmScratchB
 	add r4, sl
 	adds r1, r4, #0
 	adds r2, r5, #0
@@ -12324,7 +12324,7 @@ _080345A2:
 	bx r0
 	.align 2, 0
 _080345B0: .4byte gUiTmScratchA
-_080345B4: .4byte 0x0200373C
+_080345B4: .4byte gUiTmScratchB
 
 	thumb_func_start sub_80345B8
 sub_80345B8: @ 0x080345B8

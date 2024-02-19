@@ -1926,8 +1926,8 @@ sub_8006068: @ 0x08006068
 	pop {r0}
 	bx r0
 
-	thumb_func_start sub_8006074
-sub_8006074: @ 0x08006074
+	thumb_func_start PutNumberOrBlank
+PutNumberOrBlank: @ 0x08006074
 	push {lr}
 	cmp r2, #0
 	blt _0800607E
@@ -1982,8 +1982,8 @@ sub_80060C4: @ 0x080060C4
 	pop {r0}
 	bx r0
 
-	thumb_func_start sub_80060D0
-sub_80060D0: @ 0x080060D0
+	thumb_func_start PutNumberBonus
+PutNumberBonus: @ 0x080060D0
 	push {r4, r5, lr}
 	adds r5, r0, #0
 	adds r4, r1, #0

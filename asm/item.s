@@ -699,7 +699,7 @@ _08016946:
 _08016954:
 	adds r0, r3, #0
 	adds r1, r5, #0
-	bl sub_8006074
+	bl PutNumberOrBlank
 	cmp r6, #0
 	bne _0801696C
 	movs r1, #1
@@ -775,7 +775,7 @@ _080169DE:
 	movs r2, #0xff
 _080169EE:
 	mov r0, ip
-	bl sub_8006074
+	bl PutNumberOrBlank
 	adds r3, r7, #0
 	adds r3, #0x1a
 	movs r1, #1
@@ -791,7 +791,7 @@ _08016A00:
 	ldrb r2, [r5, #0x14]
 _08016A0C:
 	adds r0, r3, #0
-	bl sub_8006074
+	bl PutNumberOrBlank
 	adds r0, r7, #0
 	adds r0, #0x16
 	movs r1, #0
@@ -865,7 +865,7 @@ sub_8016A4C: @ 0x08016A4C
 _08016AA2:
 	mov r0, r8
 	adds r1, r3, #0
-	bl sub_8006074
+	bl PutNumberOrBlank
 	cmp r6, #0
 	bne _08016AB8
 	movs r1, #1
@@ -944,7 +944,7 @@ _08016B2C:
 _08016B40:
 	adds r0, r1, #0
 	adds r1, r4, #0
-	bl sub_8006074
+	bl PutNumberOrBlank
 	adds r1, r7, #0
 	adds r1, #0x1c
 	ldr r0, [r6, #8]
@@ -956,7 +956,7 @@ _08016B40:
 _08016B58:
 	adds r0, r1, #0
 	adds r1, r4, #0
-	bl sub_8006074
+	bl PutNumberOrBlank
 	adds r1, r7, #4
 	mov r0, r8
 	bl PutText

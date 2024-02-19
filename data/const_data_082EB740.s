@@ -500,8 +500,8 @@ gUnk_0840348C:	@ 0x0840348C
 gUnk_0840349C:	@ 0x0840349C
 	.incbin "FireEmblem7J.base.gba", 0x40349C, 0x4034EC - 0x40349C
 
-	.global gUnk_084034EC
-gUnk_084034EC:	@ 0x084034EC
+	.global sPage0TextInfo
+sPage0TextInfo:	@ 0x084034EC
 	.incbin "FireEmblem7J.base.gba", 0x4034EC, 0x403560 - 0x4034EC
 
 	.global gUnk_08403560

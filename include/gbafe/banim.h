@@ -120,7 +120,7 @@ extern short gEfxPairHpBufOffset[];
 extern u16 gEkrTsaBuffer[0x1000 / 2];
 extern u16 gEfxFrameTmap[0x2520 / 2];
 extern s16 gEkrSpellAnimIndex[2];
-extern u32 gEkrBgPosition;
+extern int gEkrBgPosition;
 extern s16 gEkrXPosReal[2];
 extern s16 gEkrYPosReal[2];
 extern u16 gEkrXPosBase[2];

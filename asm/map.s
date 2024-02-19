@@ -7,7 +7,7 @@ InitChapterMap: @ 0x08019170
 	adds r4, r0, #0
 	ldr r0, _08019228 @ =0x02001000
 	adds r1, r4, #0
-	bl sub_801955C
+	bl UnpackChapterMap
 	adds r0, r4, #0
 	bl UnpackChapterMapGraphics
 	ldr r0, _0801922C @ =0x0202E3F4
@@ -104,7 +104,7 @@ InitChapterPreviewMap: @ 0x0801926C
 	push {r4, r5, r6, lr}
 	adds r1, r0, #0
 	ldr r0, _080192BC @ =0x02001000
-	bl sub_801955C
+	bl UnpackChapterMap
 	ldr r0, _080192C0 @ =0x0202E3F4
 	ldr r6, _080192C4 @ =gBmMapUnit
 	ldr r4, _080192C8 @ =gBmMapSize
@@ -341,7 +341,7 @@ sub_8019428: @ 0x08019428
 	ldrb r1, [r1, #0xe]
 	lsls r1, r1, #0x18
 	asrs r1, r1, #0x18
-	bl sub_801955C
+	bl UnpackChapterMap
 	bl sub_8019654
 	bl sub_802C100
 	bl RefreshTerrainMap
@@ -496,13 +496,13 @@ _08019550:
 	.align 2, 0
 _08019558: .4byte gBmMapSize
 
-	thumb_func_start sub_801955C
-sub_801955C: @ 0x0801955C
+	thumb_func_start UnpackChapterMap
+UnpackChapterMap: @ 0x0801955C
 	push {r4, r5, r6, lr}
 	adds r4, r0, #0
 	adds r6, r1, #0
 	adds r0, r6, #0
-	bl sub_8031A7C
+	bl GetChapterMapPointer
 	adds r1, r4, #0
 	bl Decompress
 	ldr r5, _080195AC @ =gBmMapSize
@@ -510,7 +510,7 @@ sub_801955C: @ 0x0801955C
 	strh r0, [r5]
 	ldrb r0, [r4, #1]
 	strh r0, [r5, #2]
-	ldr r4, _080195B0 @ =gUnk_08D648F4
+	ldr r4, _080195B0 @ =gChapterDataAssetTable
 	adds r0, r6, #0
 	bl GetROMChapterStruct
 	ldrb r0, [r0, #7]
@@ -535,7 +535,7 @@ sub_801955C: @ 0x0801955C
 	bx r0
 	.align 2, 0
 _080195AC: .4byte gBmMapSize
-_080195B0: .4byte gUnk_08D648F4
+_080195B0: .4byte gChapterDataAssetTable
 _080195B4: .4byte 0x02030A8C
 _080195B8: .4byte gBmSt
 
@@ -543,7 +543,7 @@ _080195B8: .4byte gBmSt
 UnpackChapterMapGraphics: @ 0x080195BC
 	push {r4, r5, lr}
 	adds r4, r0, #0
-	ldr r5, _08019618 @ =gUnk_08D648F4
+	ldr r5, _08019618 @ =gChapterDataAssetTable
 	bl GetROMChapterStruct
 	ldrb r0, [r0, #4]
 	lsls r0, r0, #2
@@ -582,14 +582,14 @@ _080195FA:
 	pop {r0}
 	bx r0
 	.align 2, 0
-_08019618: .4byte gUnk_08D648F4
+_08019618: .4byte gChapterDataAssetTable
 _0801961C: .4byte 0x06008000
 _08019620: .4byte 0x0600C000
 
 	thumb_func_start UnpackChapterMapPalette
 UnpackChapterMapPalette: @ 0x08019624
 	push {r4, lr}
-	ldr r4, _0801964C @ =gUnk_08D648F4
+	ldr r4, _0801964C @ =gChapterDataAssetTable
 	ldr r0, _08019650 @ =gPlaySt
 	ldrb r0, [r0, #0xe]
 	lsls r0, r0, #0x18
@@ -607,7 +607,7 @@ UnpackChapterMapPalette: @ 0x08019624
 	pop {r0}
 	bx r0
 	.align 2, 0
-_0801964C: .4byte gUnk_08D648F4
+_0801964C: .4byte gChapterDataAssetTable
 _08019650: .4byte gPlaySt
 
 	thumb_func_start sub_8019654

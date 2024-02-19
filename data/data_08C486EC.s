@@ -495,8 +495,8 @@ gUnk_08D62110:	@ 0x08D62110
 gUnk_08D62170:	@ 0x08D62170
 	.incbin "FireEmblem7J.base.gba", 0xD62170, 0xD648F4 - 0xD62170
 
-	.global gUnk_08D648F4
-gUnk_08D648F4:	@ 0x08D648F4
+	.global gChapterDataAssetTable
+gChapterDataAssetTable:	@ 0x08D648F4
 	.incbin "FireEmblem7J.base.gba", 0xD648F4, 0xD64CE4 - 0xD648F4
 
 	.global gUnk_08D64CE4

@@ -2842,7 +2842,7 @@ sub_80A577C: @ 0x080A577C
 	ldrb r1, [r4, #0x14]
 	orrs r0, r1
 	strb r0, [r4, #0x14]
-	bl sub_80A2B50
+	bl ReadExtraMapInfo
 	movs r0, #0x30
 	strb r0, [r4, #0xe]
 	ldr r0, [r5, #0x14]

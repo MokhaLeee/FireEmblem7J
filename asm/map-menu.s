@@ -1838,7 +1838,7 @@ sub_80227D8: @ 0x080227D8
 	movs r3, #0x13
 	bl TmCopyRect_thm
 	ldr r0, _08022814 @ =gBg1Tm + 0x56
-	ldr r1, _08022818 @ =0x0200373C
+	ldr r1, _08022818 @ =gUiTmScratchB
 	movs r2, #9
 	movs r3, #0x13
 	bl TmCopyRect_thm
@@ -1850,7 +1850,7 @@ _08022808: .4byte 0x06004000
 _0802280C: .4byte gBg0Tm + 0x56
 _08022810: .4byte gUiTmScratchA
 _08022814: .4byte gBg1Tm + 0x56
-_08022818: .4byte 0x0200373C
+_08022818: .4byte gUiTmScratchB
 
 	thumb_func_start sub_802281C
 sub_802281C: @ 0x0802281C
@@ -1870,7 +1870,7 @@ sub_8022828: @ 0x08022828
 	movs r2, #9
 	movs r3, #0x13
 	bl TmCopyRect_thm
-	ldr r0, _0802285C @ =0x0200373C
+	ldr r0, _0802285C @ =gUiTmScratchB
 	ldr r1, _08022860 @ =gBg1Tm + 0x56
 	movs r2, #9
 	movs r3, #0x13
@@ -1883,7 +1883,7 @@ sub_8022828: @ 0x08022828
 	.align 2, 0
 _08022854: .4byte gUiTmScratchA
 _08022858: .4byte gBg0Tm + 0x56
-_0802285C: .4byte 0x0200373C
+_0802285C: .4byte gUiTmScratchB
 _08022860: .4byte gBg1Tm + 0x56
 
 	thumb_func_start sub_8022864
@@ -1952,7 +1952,7 @@ sub_80228D4: @ 0x080228D4
 	movs r2, #9
 	movs r3, #0x13
 	bl TmCopyRect_thm
-	ldr r0, _08022968 @ =0x0200373C
+	ldr r0, _08022968 @ =gUiTmScratchB
 	ldr r4, _0802296C @ =gBg1Tm + 0x56
 	adds r1, r4, #0
 	movs r2, #9
@@ -1998,7 +1998,7 @@ sub_80228D4: @ 0x080228D4
 _0802295C: .4byte gActiveUnit
 _08022960: .4byte gUiTmScratchA
 _08022964: .4byte gBg0Tm + 0x56
-_08022968: .4byte 0x0200373C
+_08022968: .4byte gUiTmScratchB
 _0802296C: .4byte gBg1Tm + 0x56
 _08022970: .4byte gUnk_08C04CFC
 _08022974:

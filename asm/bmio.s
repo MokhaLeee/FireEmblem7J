@@ -94,7 +94,7 @@ BmVSync_AnimInit: @ 0x0802D7E4
 	movs r0, #0xe
 	ldrsb r0, [r5, r0]
 	bl GetROMChapterStruct
-	ldr r6, _0802D824 @ =gUnk_08D648F4
+	ldr r6, _0802D824 @ =gChapterDataAssetTable
 	ldrb r0, [r0, #9]
 	lsls r0, r0, #2
 	adds r0, r0, r6
@@ -115,7 +115,7 @@ BmVSync_AnimInit: @ 0x0802D7E4
 	bx r0
 	.align 2, 0
 _0802D820: .4byte gPlaySt
-_0802D824: .4byte gUnk_08D648F4
+_0802D824: .4byte gChapterDataAssetTable
 
 	thumb_func_start BmVSync_End
 BmVSync_End: @ 0x0802D828
@@ -1533,7 +1533,7 @@ sub_802E32C: @ 0x0802E32C
 	lsls r0, r0, #0x18
 	asrs r0, r0, #0x18
 	bl GetROMChapterStruct
-	ldr r1, _0802E364 @ =gUnk_08D648F4
+	ldr r1, _0802E364 @ =gChapterDataAssetTable
 	ldrb r0, [r0, #0xa]
 	lsls r0, r0, #2
 	adds r0, r0, r1
@@ -1547,7 +1547,7 @@ _0802E354:
 	.align 2, 0
 _0802E35C: .4byte gUnk_08C05414
 _0802E360: .4byte gPlaySt
-_0802E364: .4byte gUnk_08D648F4
+_0802E364: .4byte gChapterDataAssetTable
 
 	thumb_func_start sub_802E368
 sub_802E368: @ 0x0802E368

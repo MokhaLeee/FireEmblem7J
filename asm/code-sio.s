@@ -13735,7 +13735,7 @@ _0804341C:
 	asrs r0, r0, #0x18
 	cmp r0, #0
 	bne _08043464
-	bl sub_80A2AE0
+	bl IsExtraMapAvailable
 	lsls r0, r0, #0x18
 	cmp r0, #0
 	bne _08043464
@@ -13983,7 +13983,7 @@ _080435F4:
 	subs r1, r1, r5
 	str r1, [sp, #8]
 	movs r1, #0xe
-	bl sub_8080600
+	bl DrawStatBarGfx
 	movs r0, #1
 	bl EnableBgSync
 _08043628:
@@ -14037,7 +14037,7 @@ _08043664:
 	subs r1, r1, r5
 	str r1, [sp, #8]
 	movs r1, #0xe
-	bl sub_8080600
+	bl DrawStatBarGfx
 	movs r0, #1
 	bl EnableBgSync
 _08043698:
@@ -14228,7 +14228,7 @@ sub_80437DC: @ 0x080437DC
 	str r4, [sp, #4]
 	str r1, [sp, #8]
 	movs r1, #0xd
-	bl sub_8080600
+	bl DrawStatBarGfx
 	movs r0, #1
 	bl EnableBgSync
 	add sp, #0xc
@@ -14323,7 +14323,7 @@ sub_80438E0: @ 0x080438E0
 	bl sub_8040D1C
 	bl sub_8040D40
 	bl sub_803C8C8
-	bl sub_80A2984
+	bl LoadAndVerfySuspendSave
 	pop {r0}
 	bx r0
 	.align 2, 0

@@ -14,6 +14,8 @@ SECTIONS
 	{
 		. = 0x00310C; gStatScreenSt = .;
 		. = 0x00323C; gUiTmScratchA = .;
+		. = 0x00373C; gUiTmScratchB = .;
+		. = 0x003C3C; gUiTmScratchC = .;
 	}
 
     . = __ewram_overlay_beg;
@@ -135,6 +137,7 @@ SECTIONS
 		. = 0x03E0A8; gEkrPairExpPrevious = .;
 		. = 0x03E0AC; gEkrPairExpGain = .;
 		. = 0x03E772; gIsSramWorking = .;
+		. = 0x03EE28; gExtraMapSaveHead = .;
 	}
 
 	. = 0x03000000;

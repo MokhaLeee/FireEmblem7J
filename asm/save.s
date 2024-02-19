@@ -328,7 +328,7 @@ sub_809F588: @ 0x0809F588
 	lsls r0, r0, #0x18
 	cmp r0, #0
 	beq _0809F5A6
-	bl sub_80A2AE0
+	bl IsExtraMapAvailable
 	lsls r0, r0, #0x18
 	cmp r0, #0
 	beq _0809F5A6
@@ -2184,7 +2184,7 @@ _080A033E:
 	bne _080A034E
 	bl sub_80A01C8
 _080A034E:
-	bl sub_80A2984
+	bl LoadAndVerfySuspendSave
 	pop {r0}
 	bx r0
 	.align 2, 0
@@ -3893,7 +3893,7 @@ sub_80A0FA8: @ 0x080A0FA8
 	cmp r0, r5
 	bne _080A0FD0
 	movs r0, #3
-	bl sub_80A1A60
+	bl InvalidateSuspendSave
 _080A0FD0:
 	mov r1, sp
 	movs r0, #0xff
@@ -3977,7 +3977,7 @@ _080A106C:
 	bl sub_802EBD4
 	bl sub_807A0A0
 	movs r0, #3
-	bl sub_80A1A60
+	bl InvalidateSuspendSave
 	ldr r4, _080A1180 @ =gPlaySt
 	adds r1, r4, #0
 	adds r1, #0x2c
@@ -4113,7 +4113,7 @@ WriteGameSave: @ 0x080A119C
 	bl GetSaveWriteAddr
 	adds r7, r0, #0
 	movs r0, #3
-	bl sub_80A1A60
+	bl InvalidateSuspendSave
 	ldr r4, _080A126C @ =gPlaySt
 	mov r0, sb
 	strb r0, [r4, #0xc]
@@ -4214,7 +4214,7 @@ ReadGameSave: @ 0x080A1278
 	cmp r0, #0
 	bne _080A129A
 	movs r0, #3
-	bl sub_80A1A60
+	bl InvalidateSuspendSave
 _080A129A:
 	ldr r0, _080A131C @ =ReadSramFast
 	ldr r4, _080A1320 @ =gPlaySt
@@ -5224,8 +5224,8 @@ _080A1A4A:
 _080A1A58: .4byte ReadSramFast
 _080A1A5C: .4byte 0x00000FFF
 
-	thumb_func_start sub_80A1A60
-sub_80A1A60: @ 0x080A1A60
+	thumb_func_start InvalidateSuspendSave
+InvalidateSuspendSave: @ 0x080A1A60
 	push {r4, lr}
 	sub sp, #0x10
 	adds r4, r0, #0
@@ -7117,8 +7117,8 @@ _080A297C:
 	pop {r1}
 	bx r1
 
-	thumb_func_start sub_80A2984
-sub_80A2984: @ 0x080A2984
+	thumb_func_start LoadAndVerfySuspendSave
+LoadAndVerfySuspendSave: @ 0x080A2984
 	push {r4, lr}
 	sub sp, #0x48
 	movs r0, #3
@@ -7134,9 +7134,9 @@ sub_80A2984: @ 0x080A2984
 	cmp r0, #0x30
 	bne _080A29C8
 	ldr r1, _080A29D0 @ =ReadSramFast
-	ldr r0, _080A29D4 @ =gUnk_08DAD294
+	ldr r0, _080A29D4 @ =gpSramExtraData
 	ldr r0, [r0]
-	ldr r4, _080A29D8 @ =0x0203EE28
+	ldr r4, _080A29D8 @ =gExtraMapSaveHead
 	ldr r3, [r1]
 	adds r1, r4, #0
 	movs r2, #0x1c
@@ -7148,7 +7148,7 @@ sub_80A2984: @ 0x080A2984
 	cmp r0, r4
 	beq _080A29C8
 	movs r0, #3
-	bl sub_80A1A60
+	bl InvalidateSuspendSave
 _080A29C8:
 	add sp, #0x48
 	pop {r4}
@@ -7156,16 +7156,16 @@ _080A29C8:
 	bx r0
 	.align 2, 0
 _080A29D0: .4byte ReadSramFast
-_080A29D4: .4byte gUnk_08DAD294
-_080A29D8: .4byte 0x0203EE28
+_080A29D4: .4byte gpSramExtraData
+_080A29D8: .4byte gExtraMapSaveHead
 
-	thumb_func_start sub_80A29DC
-sub_80A29DC: @ 0x080A29DC
+	thumb_func_start ReadExtraMapSaveHead
+ReadExtraMapSaveHead: @ 0x080A29DC
 	push {r4, r5, lr}
 	ldr r1, _080A2A2C @ =ReadSramFast
-	ldr r5, _080A2A30 @ =gUnk_08DAD294
+	ldr r5, _080A2A30 @ =gpSramExtraData
 	ldr r0, [r5]
-	ldr r4, _080A2A34 @ =0x0203EE28
+	ldr r4, _080A2A34 @ =gExtraMapSaveHead
 	ldr r3, [r1]
 	adds r1, r4, #0
 	movs r2, #0x1c
@@ -7200,8 +7200,8 @@ sub_80A29DC: @ 0x080A29DC
 	b _080A2A4A
 	.align 2, 0
 _080A2A2C: .4byte ReadSramFast
-_080A2A30: .4byte gUnk_08DAD294
-_080A2A34: .4byte 0x0203EE28
+_080A2A30: .4byte gpSramExtraData
+_080A2A34: .4byte gExtraMapSaveHead
 _080A2A38: .4byte 0x50414D58
 _080A2A3C: .4byte 0x00020223
 _080A2A40: .4byte gPlaySt
@@ -7213,9 +7213,9 @@ _080A2A4A:
 	pop {r1}
 	bx r1
 
-	thumb_func_start sub_80A2A50
-sub_80A2A50: @ 0x080A2A50
-	ldr r2, _080A2A60 @ =0x0203EE28
+	thumb_func_start GetExtraMapMapReadAddr
+GetExtraMapMapReadAddr: @ 0x080A2A50
+	ldr r2, _080A2A60 @ =gExtraMapSaveHead
 	ldr r1, [r2]
 	ldr r0, _080A2A64 @ =0x50414D58
 	cmp r1, r0
@@ -7223,16 +7223,16 @@ sub_80A2A50: @ 0x080A2A50
 	ldr r0, [r2, #0x10]
 	b _080A2A6A
 	.align 2, 0
-_080A2A60: .4byte 0x0203EE28
+_080A2A60: .4byte gExtraMapSaveHead
 _080A2A64: .4byte 0x50414D58
 _080A2A68:
 	movs r0, #0
 _080A2A6A:
 	bx lr
 
-	thumb_func_start sub_80A2A6C
-sub_80A2A6C: @ 0x080A2A6C
-	ldr r2, _080A2A7C @ =0x0203EE28
+	thumb_func_start GetExtraMapMapSize
+GetExtraMapMapSize: @ 0x080A2A6C
+	ldr r2, _080A2A7C @ =gExtraMapSaveHead
 	ldr r1, [r2]
 	ldr r0, _080A2A80 @ =0x50414D58
 	cmp r1, r0
@@ -7241,16 +7241,16 @@ sub_80A2A6C: @ 0x080A2A6C
 	ldrsh r0, [r2, r1]
 	b _080A2A86
 	.align 2, 0
-_080A2A7C: .4byte 0x0203EE28
+_080A2A7C: .4byte gExtraMapSaveHead
 _080A2A80: .4byte 0x50414D58
 _080A2A84:
 	movs r0, #0
 _080A2A86:
 	bx lr
 
-	thumb_func_start sub_80A2A88
-sub_80A2A88: @ 0x080A2A88
-	ldr r2, _080A2A98 @ =0x0203EE28
+	thumb_func_start GetExtraMapInfoReadAddr
+GetExtraMapInfoReadAddr: @ 0x080A2A88
+	ldr r2, _080A2A98 @ =gExtraMapSaveHead
 	ldr r1, [r2]
 	ldr r0, _080A2A9C @ =0x50414D58
 	cmp r1, r0
@@ -7258,16 +7258,16 @@ sub_80A2A88: @ 0x080A2A88
 	ldr r0, [r2, #0x18]
 	b _080A2AA2
 	.align 2, 0
-_080A2A98: .4byte 0x0203EE28
+_080A2A98: .4byte gExtraMapSaveHead
 _080A2A9C: .4byte 0x50414D58
 _080A2AA0:
 	movs r0, #0
 _080A2AA2:
 	bx lr
 
-	thumb_func_start sub_80A2AA4
-sub_80A2AA4: @ 0x080A2AA4
-	ldr r2, _080A2AB4 @ =0x0203EE28
+	thumb_func_start GetExtraMapInfoSize
+GetExtraMapInfoSize: @ 0x080A2AA4
+	ldr r2, _080A2AB4 @ =gExtraMapSaveHead
 	ldr r1, [r2]
 	ldr r0, _080A2AB8 @ =0x50414D58
 	cmp r1, r0
@@ -7276,15 +7276,15 @@ sub_80A2AA4: @ 0x080A2AA4
 	ldrsh r0, [r2, r1]
 	b _080A2ABE
 	.align 2, 0
-_080A2AB4: .4byte 0x0203EE28
+_080A2AB4: .4byte gExtraMapSaveHead
 _080A2AB8: .4byte 0x50414D58
 _080A2ABC:
 	movs r0, #0
 _080A2ABE:
 	bx lr
 
-	thumb_func_start sub_80A2AC0
-sub_80A2AC0: @ 0x080A2AC0
+	thumb_func_start ExtraMapChecksum
+ExtraMapChecksum: @ 0x080A2AC0
 	adds r2, r0, #0
 	movs r3, #0
 	lsrs r0, r1, #0x1f
@@ -7304,8 +7304,8 @@ _080A2ADA:
 	lsrs r0, r0, #0x10
 	bx lr
 
-	thumb_func_start sub_80A2AE0
-sub_80A2AE0: @ 0x080A2AE0
+	thumb_func_start IsExtraMapAvailable
+IsExtraMapAvailable: @ 0x080A2AE0
 	push {r4, lr}
 	ldr r4, _080A2B34 @ =gBuf
 	bl IsSramWorking
@@ -7336,7 +7336,7 @@ sub_80A2AE0: @ 0x080A2AE0
 	adds r0, r4, #0
 	adds r0, #8
 	ldrh r1, [r4, #4]
-	bl sub_80A2AC0
+	bl ExtraMapChecksum
 	lsls r0, r0, #0x10
 	lsrs r0, r0, #0x10
 	ldrh r4, [r4, #6]
@@ -7357,21 +7357,21 @@ _080A2B4A:
 	pop {r1}
 	bx r1
 
-	thumb_func_start sub_80A2B50
-sub_80A2B50: @ 0x080A2B50
+	thumb_func_start ReadExtraMapInfo
+ReadExtraMapInfo: @ 0x080A2B50
 	push {r4, r5, r6, lr}
-	bl sub_80A29DC
+	bl ReadExtraMapSaveHead
 	ldr r5, _080A2BB8 @ =ReadSramFast
-	bl sub_80A2A88
+	bl GetExtraMapInfoReadAddr
 	adds r4, r0, #0
 	ldr r6, _080A2BBC @ =gBuf
-	bl sub_80A2AA4
+	bl GetExtraMapInfoSize
 	adds r2, r0, #0
 	ldr r3, [r5]
 	adds r0, r4, #0
 	adds r1, r6, #0
 	bl _call_via_r3
-	ldr r4, _080A2BC0 @ =gUnk_08DAD298
+	ldr r4, _080A2BC0 @ =gExtraMapInfo
 	ldr r1, [r4]
 	adds r0, r6, #0
 	bl Decompress
@@ -7406,7 +7406,7 @@ sub_80A2B50: @ 0x080A2B50
 	.align 2, 0
 _080A2BB8: .4byte ReadSramFast
 _080A2BBC: .4byte gBuf
-_080A2BC0: .4byte gUnk_08DAD298
+_080A2BC0: .4byte gExtraMapInfo
 _080A2BC4: .4byte gPlaySt
 _080A2BC8: .4byte gBmSt
 _080A2BCC: .4byte gActiveUnit

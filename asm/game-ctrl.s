@@ -552,7 +552,7 @@ _08012FC8: .4byte gPlaySt
 sub_8012FCC: @ 0x08012FCC
 	push {lr}
 	movs r0, #3
-	bl sub_80A1A60
+	bl InvalidateSuspendSave
 	ldr r1, _08012FE8 @ =gPlaySt
 	adds r1, #0x41
 	movs r0, #2
