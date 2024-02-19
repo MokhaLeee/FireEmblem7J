@@ -35653,23 +35653,23 @@ _080BCFC0: .4byte gpKeySt
 sub_80BCFC4: @ 0x080BCFC4
 	push {lr}
 	adds r1, r0, #0
-	ldr r0, _080BCFD4 @ =gUnk_08DB91A8
+	ldr r0, _080BCFD4 @ =ProcScr_08DB91A8
 	bl Proc_Start
 	pop {r0}
 	bx r0
 	.align 2, 0
-_080BCFD4: .4byte gUnk_08DB91A8
+_080BCFD4: .4byte ProcScr_08DB91A8
 
 	thumb_func_start sub_80BCFD8
 sub_80BCFD8: @ 0x080BCFD8
 	push {lr}
-	ldr r0, _080BCFE8 @ =gUnk_08DB91A8
+	ldr r0, _080BCFE8 @ =ProcScr_08DB91A8
 	bl Proc_Find
 	bl Proc_End
 	pop {r0}
 	bx r0
 	.align 2, 0
-_080BCFE8: .4byte gUnk_08DB91A8
+_080BCFE8: .4byte ProcScr_08DB91A8
 
 	thumb_func_start sub_80BCFEC
 sub_80BCFEC: @ 0x080BCFEC
@@ -36130,7 +36130,7 @@ sub_80BD36C: @ 0x080BD36C
 	movs r0, #0x62
 	bl m4aSongNumStart
 _080BD388:
-	ldr r0, _080BD39C @ =gUnk_08DB91C0
+	ldr r0, _080BD39C @ =ProcScr_08DB91C0
 	adds r1, r4, #0
 	bl Proc_Start
 	pop {r4}
@@ -36138,7 +36138,7 @@ _080BD388:
 	bx r0
 	.align 2, 0
 _080BD398: .4byte gPlaySt
-_080BD39C: .4byte gUnk_08DB91C0
+_080BD39C: .4byte ProcScr_08DB91C0
 
 	thumb_func_start sub_80BD3A0
 sub_80BD3A0: @ 0x080BD3A0
@@ -36246,14 +36246,14 @@ _080BD460: .4byte gBg0Tm
 sub_80BD464: @ 0x080BD464
 	push {r4, lr}
 	adds r4, r0, #0
-	ldr r0, _080BD478 @ =gUnk_08DB9208
+	ldr r0, _080BD478 @ =ProcScr_08DB9208
 	bl Proc_Start
 	str r4, [r0, #0x30]
 	pop {r4}
 	pop {r0}
 	bx r0
 	.align 2, 0
-_080BD478: .4byte gUnk_08DB9208
+_080BD478: .4byte ProcScr_08DB9208
 
 	thumb_func_start sub_80BD47C
 sub_80BD47C: @ 0x080BD47C

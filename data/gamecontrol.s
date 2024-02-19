@@ -28,7 +28,7 @@ ProcScr_GameControl: @ 0xC01744
         .word ForceEnableSounds
         @ PROC_START_CHILD_BLOCKING
         .short 0x6, 0x1
-        .word 0x8db9058
+        .word ProcScr_OpeningSeqence
         @ PROC_CALL
         .short 0x2, 0x0
         .word GC_PostIntro

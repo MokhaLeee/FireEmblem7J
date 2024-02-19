@@ -664,19 +664,193 @@ gUnk_08DB9010:	@ 0x08DB9010
 
 	.global gUnk_08DB9030
 gUnk_08DB9030:	@ 0x08DB9030
-	.incbin "FireEmblem7J.base.gba", 0xDB9030, 0xDB91A8 - 0xDB9030
+	.incbin "FireEmblem7J.base.gba", 0xDB9030, 0xDB9058 - 0xDB9030
 
-	.global gUnk_08DB91A8
-gUnk_08DB91A8:	@ 0x08DB91A8
-	.incbin "FireEmblem7J.base.gba", 0xDB91A8, 0xDB91C0 - 0xDB91A8
+	.global ProcScr_OpeningSeqence
+ProcScr_OpeningSeqence:	@ 0x08DB9058
+        @ PROC_YIELD
+        .short 0xe, 0x0
+        .word 0x0
+        @ PROC_CALL
+        .short 0x2, 0x0
+        .word sub_80BC240
+        @ PROC_SLEEP
+        .short 0xe, 0x1
+        .word 0x0
+        @ PROC_CALL
+        .short 0x2, 0x0
+        .word sub_80BC398
+        @ PROC_CALL_ARG
+        .short 0x18, 0x4
+        .word NewFadeIn
+        @ PROC_WHILE
+        .short 0x14, 0x0
+        .word FadeInExists
+        @ PROC_SLEEP
+        .short 0xe, 0x3c
+        .word 0x0
+        @ PROC_CALL
+        .short 0x2, 0x0
+        .word sub_80BC4D0
+        @ PROC_REPEAT
+        .short 0x3, 0x0
+        .word sub_80BC53C
+        @ PROC_SLEEP
+        .short 0xe, 0x3c
+        .word 0x0
+        @ PROC_REPEAT
+        .short 0x3, 0x0
+        .word sub_80BC448
+        @ PROC_BLOCK
+        .short 0x10, 0x0
+        .word 0x0
+        @ PROC_LABEL
+        .short 0xb, 0x2
+        .word 0x0
+        @ PROC_CALL
+        .short 0x2, 0x0
+        .word sub_80BD36C
+        @ PROC_BLOCK
+        .short 0x10, 0x0
+        .word 0x0
+        @ PROC_LABEL
+        .short 0xb, 0x0
+        .word 0x0
+        @ PROC_CALL
+        .short 0x2, 0x0
+        .word sub_80BC5B0
+        @ PROC_BLOCK
+        .short 0x10, 0x0
+        .word 0x0
+        @ PROC_LABEL
+        .short 0xb, 0x1
+        .word 0x0
+        @ PROC_CALL
+        .short 0x2, 0x0
+        .word sub_80BC5C4
+        @ PROC_REPEAT
+        .short 0x3, 0x0
+        .word sub_80BC8B8
+        @ PROC_CALL
+        .short 0x2, 0x0
+        .word sub_80BCAAC
+        @ PROC_REPEAT
+        .short 0x3, 0x0
+        .word sub_80BCACC
+        @ PROC_YIELD
+        .short 0xe, 0x0
+        .word 0x0
+        @ PROC_CALL
+        .short 0x2, 0x0
+        .word sub_80BCB6C
+        @ PROC_REPEAT
+        .short 0x3, 0x0
+        .word sub_80BCC0C
+        @ PROC_SLEEP
+        .short 0xe, 0x3c
+        .word 0x0
+        @ PROC_REPEAT
+        .short 0x3, 0x0
+        .word sub_80BCC9C
+        @ PROC_LABEL
+        .short 0xb, 0x62
+        .word 0x0
+        @ PROC_SLEEP
+        .short 0xe, 0x1e
+        .word 0x0
+        @ PROC_CALL
+        .short 0x2, 0x0
+        .word sub_80BCD34
+        @ PROC_YIELD
+        .short 0xe, 0x0
+        .word 0x0
+        @ PROC_CALL
+        .short 0x2, 0x0
+        .word sub_80BCE9C
+        @ PROC_CALL_ARG
+        .short 0x18, 0x2
+        .word NewFadeInWhite
+        @ PROC_WHILE
+        .short 0x14, 0x0
+        .word FadeInExists
+        @ PROC_YIELD
+        .short 0xe, 0x0
+        .word 0x0
+        @ PROC_REPEAT
+        .short 0x3, 0x0
+        .word sub_80BCEBC
+        @ PROC_WHILE
+        .short 0x14, 0x0
+        .word CheckBmBgfxDone
+        @ PROC_LABEL
+        .short 0xb, 0x63
+        .word 0x0
+        @ PROC_CALL
+        .short 0x2, 0x0
+        .word sub_80BCB0C
+        @ PROC_SLEEP
+        .short 0xe, 0x1
+        .word 0x0
+        @ PROC_END
+        .short 0x0, 0x0
+        .word 0x0
 
-	.global gUnk_08DB91C0
-gUnk_08DB91C0:	@ 0x08DB91C0
-	.incbin "FireEmblem7J.base.gba", 0xDB91C0, 0xDB9208 - 0xDB91C0
+	.global ProcScr_08DB91A8
+ProcScr_08DB91A8:	@ 0x08DB91A8
+        @ PROC_YIELD
+        .short 0xe, 0x0
+        .word 0x0
+        @ PROC_REPEAT
+        .short 0x3, 0x0
+        .word sub_80BCF98
+        @ PROC_END
+        .short 0x0, 0x0
+        .word 0x0
 
-	.global gUnk_08DB9208
-gUnk_08DB9208:	@ 0x08DB9208
-	.incbin "FireEmblem7J.base.gba", 0xDB9208, 0xDB9228 - 0xDB9208
+	.global ProcScr_08DB91C0
+ProcScr_08DB91C0:	@ 0x08DB91C0
+        @ PROC_YIELD
+        .short 0xe, 0x0
+        .word 0x0
+        @ PROC_CALL
+        .short 0x2, 0x0
+        .word sub_80BD000
+        @ PROC_REPEAT
+        .short 0x3, 0x0
+        .word sub_80BD19C
+        @ PROC_CALL
+        .short 0x2, 0x0
+        .word sub_80BD1F0
+        @ PROC_REPEAT
+        .short 0x3, 0x0
+        .word sub_80BD2CC
+        @ PROC_REPEAT
+        .short 0x3, 0x0
+        .word sub_80BD304
+        @ PROC_YIELD
+        .short 0xe, 0x0
+        .word 0x0
+        @ PROC_CALL
+        .short 0x2, 0x0
+        .word sub_80BD358
+        @ PROC_END
+        .short 0x0, 0x0
+        .word 0x0
+
+	.global ProcScr_08DB9208
+ProcScr_08DB9208:	@ 0x08DB9208
+        @ PROC_YIELD
+        .short 0xe, 0x0
+        .word 0x0
+        @ PROC_CALL
+        .short 0x2, 0x0
+        .word sub_80BD3A0
+        @ PROC_REPEAT
+        .short 0x3, 0x0
+        .word sub_80BD3B0
+        @ PROC_END
+        .short 0x0, 0x0
+        .word 0x0
 
 	.global gUnk_08DB9228
 gUnk_08DB9228:	@ 0x08DB9228

@@ -310,6 +310,7 @@ def read_procs(f, start_off, end_off):
                 current_script = []
 
         current_off += 8
+        print("@ end at" + f"{hex(current_off)}")
     return procs_found
 
 
