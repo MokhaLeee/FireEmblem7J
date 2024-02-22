@@ -732,7 +732,7 @@ extern u8 Img_SysGrayBox[];
 // ??? gUnk_081EF390
 // ??? gUnk_081EF3AE
 // ??? gUnk_081EF3BC
-// ??? gUnk_081EF406
+extern const u16 FrameLut_EfxDrsmmoya[];
 // ??? gUnk_081EF4AC
 // ??? gUnk_081EF4DE
 // ??? gUnk_081EF4E8
@@ -940,7 +940,24 @@ extern u8 Img_SysGrayBox[];
 // ??? gUnk_082B96A0
 // ??? gUnk_082B99D0
 // ??? gUnk_082B99F0
-// ??? gUnk_082BE028
+extern u16 Tsa_EfxDrsmmoyaBgRight1[];
+extern u16 Tsa_EfxDrsmmoyaBgRight2[];
+extern u16 Tsa_EfxDrsmmoyaBgRight3[];
+extern u16 Tsa_EfxDrsmmoyaBgRight4[];
+extern const u16 Pal_EfxDrsmmoyaBg[];
+extern u16 Tsa_EfxDrsmmoyaBgLeft1[];
+extern u16 Tsa_EfxDrsmmoyaBgLeft2[];
+extern u16 Tsa_EfxDrsmmoyaBgLeft3[];
+extern u16 Tsa_EfxDrsmmoyaBgLeft4[];
+extern u16 Tsa_EfxDrsmmoyaBgLeft5[];
+extern u16 Tsa_EfxDrsmmoyaBgLeft6[];
+extern u16 Tsa_EfxDrsmmoyaBgLeft7[];
+extern u16 Tsa_EfxDrsmmoyaBgLeft8[];
+extern u16 Tsa_EfxDrsmmoyaBgLeft9[];
+extern u16 Tsa_EfxDrsmmoyaBgLeft10[];
+extern u16 Tsa_EfxDrsmmoyaBgLeft11[];
+extern u16 Tsa_EfxDrsmmoyaBgLeft12[];
+extern u16 Tsa_EfxDrsmmoyaBgLeft13[];
 // ??? gUnk_082CB87C
 // ??? gUnk_082CDB44
 // ??? gUnk_082D3338

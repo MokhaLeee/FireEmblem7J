@@ -81,14 +81,14 @@ struct ProcEfx {
     /* 2A */ u8 type;
     /* 2B */ STRUCT_PAD(0x2B, 0x2C);
     /* 2C */ s16 timer;
-    /* 2E */ s16 unk2E;
+    /* 2E */ s16 step;
     /* 30 */ s16 unk30;
     /* 32 */ u16 unk32;
     /* 34 */ STRUCT_PAD(0x34, 0x44);
     /* 44 */ u32 unk44;
     /* 48 */ u32 unk48;
-    /* 4C */ u32 unk4C;
-    /* 50 */ u32 unk50;
+    /* 4C */ u32 frame;
+    /* 50 */ u32 speed;
     /* 54 */ s16 * unk54;
     /* 58 */ s16 ** unk58;
     /* 5C */ struct Anim * anim;
@@ -100,15 +100,21 @@ struct ProcEfxBG {
     PROC_HEADER;
 
     /* 29 */ u8 unk29;
+
     STRUCT_PAD(0x2A, 0x2C);
+
     /* 2C */ s16 timer;
     /* 2E */ s16 terminator;
     /* 30 */ s16 unk30;
     /* 32 */ s16 unk32;
     /* 34 */ s16 unk34;
+
     STRUCT_PAD(0x36, 0x3C);
+
     /* 3C */ s16 unk3C;
+
     STRUCT_PAD(0x3E, 0x44);
+
     /* 44 */ u32 frame;
     /* 48 */ const u16 * frame_config;
     /* 4C */ u16 ** tsal;
@@ -122,16 +128,37 @@ struct ProcEfxBGCOL {
     PROC_HEADER;
 
     STRUCT_PAD(0x29, 0x2C);
+
     /* 2C */ s16 timer;
     /* 2E */ s16 timer2;
     /* 30 */ s16 terminator;
     /* 32 */ s16 unk32;
+
     STRUCT_PAD(0x34, 0x44);
+
     /* 44 */ u32 frame;
     /* 48 */ const u16 * frame_config;
     /* 4C */ void * pal;
+
     STRUCT_PAD(0x50, 0x5C);
+
     /* 5C */ struct Anim * anim;
+};
+
+struct ProcEfxRST {
+    PROC_HEADER;
+
+    STRUCT_PAD(0x29, 0x2C);
+    /* 2C */ s16 timer;
+    /* 2E */ s16 duration;
+
+    STRUCT_PAD(0x30, 0x5C);
+
+    /* 5C */ struct Anim * anim;
+
+    STRUCT_PAD(0x60, 0x64);
+
+    /* 64 */ struct ProcEfx * efxproc;
 };
 
 struct ProcEfxOBJ {
@@ -139,7 +166,9 @@ struct ProcEfxOBJ {
 
     /* 29 */ u8 unk29;
     /* 2A */ u8 unk2A;
+
     STRUCT_PAD(0x2B, 0x2C);
+
     /* 2C */ s16 timer;
     /* 2E */ s16 terminator;
     /* 30 */ u16 unk30;
@@ -155,11 +184,42 @@ struct ProcEfxOBJ {
     /* 44 */ int unk44;
     /* 48 */ int unk48;
     /* 4C */ int unk4C;
+
     STRUCT_PAD(0x50, 0x5C);
+
     /* 5C */ struct Anim * anim;
     /* 60 */ struct Anim * anim2;
     /* 64 */ struct Anim * anim3;
     /* 68 */ struct Anim * anim4;
+};
+
+struct ProcEfxALPHA {
+    PROC_HEADER;
+
+    /* 29 */ u8 unk29;
+
+    STRUCT_PAD(0x2A, 0x2C);
+
+    /* 2C */ s16 timer;
+    /* 2E */ s16 unk2E;
+    /* 30 */ s16 unk30;
+
+    STRUCT_PAD(0x32, 0x5C);
+
+    /* 5C */ struct Anim * anim;
+};
+
+struct ProcEfxSCR {
+    /* 00 */ PROC_HEADER;
+
+    /* 29 */ STRUCT_PAD(0x29, 0x2C);
+
+    /* 2C */ s16 timer;
+    /* 2E */ s16 unk2E;
+    /* 34 */ STRUCT_PAD(0x30, 0x44);
+    /* 44 */ int unk44;
+    /* 48 */ STRUCT_PAD(0x48, 0x5C);
+    /* 5C */ struct ProcEfx * unk5C;
 };
 
 struct ProcEkrSubAnimeEmulator {
@@ -1163,16 +1223,75 @@ void NewEfxChillEffect(struct Anim *anim);
 // ??? sub_80642F4
 void NewEfxChillAnime(struct Anim * anim, int);
 // ??? sub_80643DC
+
+struct ProcEfxDrsmmoyaBG {
+    PROC_HEADER;
+
+    STRUCT_PAD(0x29, 0x2C);
+
+    /* 2C */ s16 timer;
+
+    STRUCT_PAD(0x2E, 0x44);
+
+    /* 44 */ u32 frame;
+    /* 48 */ const u16 * frame_config;
+    /* 4C */ u16 ** tsal;
+    /* 50 */ u16 ** tsar;
+    /* 54 */ u16 ** img;
+    /* 58 */ u16 * img_bak;
+    /* 5C */ struct Anim * anim;
+};
+
+struct ProcEfxDrsmmoyaScroll {
+    PROC_HEADER;
+
+    STRUCT_PAD(0x29, 0x2C);
+
+    /* 2C */ s16 timer;
+    /* 2E */ s16 step;
+
+    STRUCT_PAD(0x30, 0x44);
+
+    /* 44 */ int duration;
+    /* 48 */ int speed;
+
+    STRUCT_PAD(0x4C, 0x5C);
+
+    /* 5C */ struct Anim * anim;
+};
+
+struct ProcEfxDrsmmoyaScrollCOL {
+    PROC_HEADER;
+
+    STRUCT_PAD(0x29, 0x2C);
+
+    /* 2C */ s16 timer;
+
+    STRUCT_PAD(0x2E, 0x44);
+
+    /* 44 */ int duration1;
+    /* 48 */ int duration2;
+    /* 4C */ int duration3;
+
+    STRUCT_PAD(0x50, 0x5C);
+
+    /* 5C */ struct Anim * anim;
+
+    STRUCT_PAD(0x60, 0x64);
+
+    /* 64 */ struct ProcEfxDrsmmoyaScroll * procefx;
+};
+
 void NewEfxDrsmmoya(struct Anim * anim);
 void EfxDrsmmoya_Loop(struct ProcEfx * proc);
-// ??? NewEfxDrsmmoyaBG
-// ??? sub_80645D4
-// ??? sub_8064644
-// ??? sub_806466C
-// ??? sub_80646EC
-// ??? sub_8064724
-// ??? sub_8064764
-// ??? sub_8064788
+void NewEfxDrsmmoyaBG(struct Anim * anim);
+void EfxDrsmmoyaBG_Loop(struct ProcEfxDrsmmoyaBG * proc);
+ProcPtr NewEfxDrsmmoyaScroll(struct Anim * anim, int type);
+void EfxDrsmmoyaScroll_Loop(struct ProcEfxDrsmmoyaScroll * proc);
+void NewEfxDrsmmoyaScrollCOL(struct Anim * anim, struct ProcEfxDrsmmoyaScroll * procefx, int duration1, int duration2, int duration3);
+void EfxDrsmmoyaScrollCOL_Loop1(struct ProcEfxDrsmmoyaScrollCOL * proc);
+void EfxDrsmmoyaScrollCOL_Delay(struct ProcEfxDrsmmoyaScrollCOL * proc);
+void EfxDrsmmoyaScrollCOL_Loop3(struct ProcEfxDrsmmoyaScrollCOL * proc);
 // ??? sub_80647C8
 // ??? sub_80647DC
 // ??? sub_80647F8
@@ -1819,11 +1938,11 @@ extern struct ProcCmd ProcScr_efxALPHA[];
 // ??? gUnk_08C13A14
 // ??? gUnk_08C13A34
 extern struct ProcCmd ProcScr_EfxDrsmmoya[];
-// ??? ProcScr_EfxDrsmmoyaBG
-// ??? gUnk_08C13A7C
-// ??? gUnk_08C13AB0
-// ??? gUnk_08C13AE4
-// ??? gUnk_08C13AFC
+extern struct ProcCmd ProcScr_EfxDrsmmoyaBG[];
+extern u16 * TsaSet_EfxDrsmmoyaBgLeft[];
+extern u16 * TsaSet_EfxDrsmmoyaBgRight[];
+extern struct ProcCmd ProcScr_EfxDrsmmoyaScroll[];
+extern struct ProcCmd ProcScr_EfxDrsmmoyaScrollCOL[];
 // ??? gUnk_08C13B24
 // ??? gUnk_08C13B44
 // ??? gUnk_08C13B6C

@@ -1,25 +1,5 @@
 	.section .data
 
-	.global ProcScr_EfxDrsmmoyaBG
-ProcScr_EfxDrsmmoyaBG:	@ 0x08C13A64
-	.incbin "FireEmblem7J.base.gba", 0xC13A64, 0xC13A7C - 0xC13A64
-
-	.global gUnk_08C13A7C
-gUnk_08C13A7C:	@ 0x08C13A7C
-	.incbin "FireEmblem7J.base.gba", 0xC13A7C, 0xC13AB0 - 0xC13A7C
-
-	.global gUnk_08C13AB0
-gUnk_08C13AB0:	@ 0x08C13AB0
-	.incbin "FireEmblem7J.base.gba", 0xC13AB0, 0xC13AE4 - 0xC13AB0
-
-	.global gUnk_08C13AE4
-gUnk_08C13AE4:	@ 0x08C13AE4
-	.incbin "FireEmblem7J.base.gba", 0xC13AE4, 0xC13AFC - 0xC13AE4
-
-	.global gUnk_08C13AFC
-gUnk_08C13AFC:	@ 0x08C13AFC
-	.incbin "FireEmblem7J.base.gba", 0xC13AFC, 0xC13B24 - 0xC13AFC
-
 	.global gUnk_08C13B24
 gUnk_08C13B24:	@ 0x08C13B24
 	.incbin "FireEmblem7J.base.gba", 0xC13B24, 0xC13B44 - 0xC13B24
