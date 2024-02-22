@@ -1108,13 +1108,13 @@ _0800AD5C: .4byte gUnk_08BFFE90
 	thumb_func_start sub_800AD60
 sub_800AD60: @ 0x0800AD60
 	push {lr}
-	ldr r0, _0800AD70 @ =gUnk_08BFFF78
+	ldr r0, _0800AD70 @ =ProcScr_Event
 	ldr r1, _0800AD74 @ =sub_800AD78
 	bl sub_8004670
 	pop {r0}
 	bx r0
 	.align 2, 0
-_0800AD70: .4byte gUnk_08BFFF78
+_0800AD70: .4byte ProcScr_Event
 _0800AD74: .4byte sub_800AD78
 
 	thumb_func_start sub_800AD78
@@ -1170,7 +1170,7 @@ sub_800ADC0: @ 0x0800ADC0
 	cmp r0, #0
 	bne _0800ADD8
 	adds r0, r2, #0
-	bl sub_8014500
+	bl StartMidLockingFadeFromBlack
 _0800ADD8:
 	pop {r0}
 	bx r0
@@ -1261,28 +1261,28 @@ _0800AE92:
 	pop {r0}
 	bx r0
 
-	thumb_func_start sub_800AE98
-sub_800AE98: @ 0x0800AE98
+	thumb_func_start StartEvent
+StartEvent: @ 0x0800AE98
 	push {lr}
 	movs r1, #3
-	bl sub_800AEB0
+	bl StartEventInternal
 	pop {r1}
 	bx r1
 
-	thumb_func_start sub_800AEA4
-sub_800AEA4: @ 0x0800AEA4
+	thumb_func_start StartEventLocking
+StartEventLocking: @ 0x0800AEA4
 	push {lr}
-	bl sub_800AEB0
+	bl StartEventInternal
 	pop {r1}
 	bx r1
 	.align 2, 0
 
-	thumb_func_start sub_800AEB0
-sub_800AEB0: @ 0x0800AEB0
+	thumb_func_start StartEventInternal
+StartEventInternal: @ 0x0800AEB0
 	push {r4, r5, r6, r7, lr}
 	adds r7, r0, #0
 	adds r5, r1, #0
-	ldr r6, _0800AED8 @ =gUnk_08BFFF78
+	ldr r6, _0800AED8 @ =ProcScr_Event
 	adds r0, r6, #0
 	bl Proc_Find
 	adds r4, r0, #0
@@ -1299,7 +1299,7 @@ sub_800AEB0: @ 0x0800AEB0
 	strb r0, [r1]
 	b _0800B024
 	.align 2, 0
-_0800AED8: .4byte gUnk_08BFFF78
+_0800AED8: .4byte ProcScr_Event
 _0800AEDC: .4byte 0x03004090
 _0800AEE0: .4byte 0x03004080
 _0800AEE4:
@@ -2373,7 +2373,7 @@ _0800B6C0:
 	cmp r0, #0
 	beq _0800B700
 	adds r0, r4, #0
-	bl sub_8014500
+	bl StartMidLockingFadeFromBlack
 	b _0800B700
 	.align 2, 0
 _0800B6E4: .4byte gPlaySt
@@ -3308,7 +3308,7 @@ _0800BDB2:
 	strh r0, [r1, #0xe]
 	adds r0, r4, #0
 	adds r1, r5, #0
-	bl sub_8015F0C
+	bl SetMapCursorPosition
 	bl RenderMap
 	movs r0, #0
 	b _0800BDF4
@@ -3321,7 +3321,7 @@ _0800BDE0:
 	bl sub_80160D4
 	adds r0, r4, #0
 	adds r1, r5, #0
-	bl sub_8015F0C
+	bl SetMapCursorPosition
 	movs r0, #2
 _0800BDF4:
 	add sp, #8
@@ -3364,7 +3364,7 @@ _0800BE28:
 	strh r0, [r4, #0xe]
 	adds r0, r6, #0
 	adds r1, r5, #0
-	bl sub_8015F0C
+	bl SetMapCursorPosition
 	bl RenderMap
 	movs r0, #0
 	b _0800BE64
@@ -3377,7 +3377,7 @@ _0800BE50:
 	bl sub_801615C
 	adds r0, r4, #0
 	adds r1, r5, #0
-	bl sub_8015F0C
+	bl SetMapCursorPosition
 	movs r0, #2
 _0800BE64:
 	pop {r4, r5, r6}
@@ -3423,7 +3423,7 @@ _0800BE96:
 	ldrsb r0, [r5, r0]
 	movs r1, #0x11
 	ldrsb r1, [r5, r1]
-	bl sub_8015F0C
+	bl SetMapCursorPosition
 	bl RenderMap
 	bl RenderMap
 _0800BEC4:
@@ -3437,7 +3437,7 @@ _0800BEC4:
 	ldrsb r0, [r5, r0]
 	movs r1, #0x11
 	ldrsb r1, [r5, r1]
-	bl sub_8015F0C
+	bl SetMapCursorPosition
 	movs r0, #2
 	pop {r4, r5, r6}
 	pop {r1}
@@ -3462,7 +3462,7 @@ sub_800BEEC: @ 0x0800BEEC
 	ldrsb r0, [r4, r0]
 	movs r1, #0x11
 	ldrsb r1, [r4, r1]
-	bl sub_8015F0C
+	bl SetMapCursorPosition
 	movs r0, #2
 	pop {r4, r5}
 	pop {r1}
@@ -8556,7 +8556,7 @@ sub_800E44C: @ 0x0800E44C
 	adds r0, r5, #0
 	bl sub_8013214
 	movs r0, #1
-	bl sub_8013200
+	bl SetNextGameAction
 	adds r1, r4, #0
 	adds r1, #0x5e
 	movs r0, #8
@@ -8568,7 +8568,7 @@ sub_800E44C: @ 0x0800E44C
 	cmp r0, #0
 	bne _0800E47E
 	adds r0, r4, #0
-	bl sub_8014510
+	bl StartSlowLockingFadeFromBlack
 _0800E47E:
 	cmp r5, #0x2f
 	beq _0800E488
@@ -8585,7 +8585,7 @@ sub_800E490: @ 0x0800E490
 	push {r4, lr}
 	adds r4, r0, #0
 	movs r0, #2
-	bl sub_8013200
+	bl SetNextGameAction
 	adds r0, r4, #0
 	bl sub_800E43C
 	movs r0, #2
@@ -8598,7 +8598,7 @@ sub_800E4A8: @ 0x0800E4A8
 	push {r4, lr}
 	adds r4, r0, #0
 	movs r0, #3
-	bl sub_8013200
+	bl SetNextGameAction
 	adds r0, r4, #0
 	bl sub_800E43C
 	movs r0, #2
@@ -8622,13 +8622,13 @@ sub_800E4C0: @ 0x0800E4C0
 	ldr r0, [r4, #0x30]
 	ldr r0, [r0, #8]
 	lsls r0, r0, #4
-	bl sub_8015D98
+	bl GetCameraCenteredX
 	ldr r5, _0800E50C @ =gBmSt
 	strh r0, [r5, #0xc]
 	ldr r0, [r4, #0x30]
 	ldr r0, [r0, #0xc]
 	lsls r0, r0, #4
-	bl sub_8015DC0
+	bl GetCameraCenteredY
 	strh r0, [r5, #0xe]
 	bl RefreshEntityMaps
 	bl RenderMap
@@ -8912,7 +8912,7 @@ sub_800E6D4: @ 0x0800E6D4
 	bne _0800E6F2
 	ldr r0, [r1, #0x30]
 	ldrh r0, [r0, #2]
-	bl sub_8014458
+	bl StartLockingFadeFromBlack
 	movs r0, #2
 	b _0800E6F4
 _0800E6F2:
@@ -8966,7 +8966,7 @@ _0800E732:
 _0800E740:
 	adds r0, r1, #0
 	adds r1, r4, #0
-	bl sub_8014458
+	bl StartLockingFadeFromBlack
 	movs r0, #2
 _0800E74A:
 	pop {r4}
@@ -9509,7 +9509,7 @@ sub_800EB3C: @ 0x0800EB3C
 	push {lr}
 	ldr r0, [r0, #0x30]
 	ldr r0, [r0, #4]
-	bl sub_800AE98
+	bl StartEvent
 	movs r0, #0
 	pop {r1}
 	bx r1
@@ -9652,7 +9652,7 @@ _0800EC3A:
 	thumb_func_start sub_800EC40
 sub_800EC40: @ 0x0800EC40
 	push {lr}
-	ldr r0, _0800EC54 @ =gUnk_08BFFF78
+	ldr r0, _0800EC54 @ =ProcScr_Event
 	bl Proc_FindNonBlocked
 	cmp r0, #0
 	beq _0800EC4E
@@ -9661,7 +9661,7 @@ _0800EC4E:
 	pop {r1}
 	bx r1
 	.align 2, 0
-_0800EC54: .4byte gUnk_08BFFF78
+_0800EC54: .4byte ProcScr_Event
 
 	thumb_func_start sub_800EC58
 sub_800EC58: @ 0x0800EC58
@@ -9691,7 +9691,7 @@ sub_800EC84: @ 0x0800EC84
 	push {r4, lr}
 	adds r4, r0, #0
 	ldr r0, _0800EC98 @ =gUnk_08C00CE8
-	bl sub_800AE98
+	bl StartEvent
 	str r4, [r0, #0x48]
 	pop {r4}
 	pop {r1}
@@ -9705,7 +9705,7 @@ sub_800EC9C: @ 0x0800EC9C
 	adds r4, r0, #0
 	adds r5, r1, #0
 	ldr r0, _0800ECB4 @ =gUnk_08C00CF8
-	bl sub_800AE98
+	bl StartEvent
 	str r4, [r0, #0x48]
 	str r5, [r0, #0x58]
 	pop {r4, r5}
@@ -9736,7 +9736,7 @@ sub_800ECD4: @ 0x0800ECD4
 	push {r4, lr}
 	adds r4, r0, #0
 	ldr r0, _0800ECE8 @ =gUnk_08C00D20
-	bl sub_800AE98
+	bl StartEvent
 	str r4, [r0, #0x48]
 	pop {r4}
 	pop {r1}
@@ -10004,7 +10004,7 @@ sub_800EED8: @ 0x0800EED8
 	lsls r4, r4, #0x10
 	lsrs r4, r4, #0x10
 	ldr r0, _0800EEF0 @ =gUnk_08C00FAC
-	bl sub_800AE98
+	bl StartEvent
 	adds r0, #0x5c
 	strh r4, [r0]
 	pop {r4}
@@ -10023,7 +10023,7 @@ sub_800EEF4: @ 0x0800EEF4
 	lsls r5, r5, #0x10
 	lsrs r5, r5, #0x10
 	ldr r0, _0800EF18 @ =gUnk_08C00FC4
-	bl sub_800AE98
+	bl StartEvent
 	adds r1, r0, #0
 	adds r1, #0x55
 	strb r4, [r1]
@@ -10040,7 +10040,7 @@ sub_800EF1C: @ 0x0800EF1C
 	push {r4, lr}
 	adds r4, r0, #0
 	ldr r0, _0800EF30 @ =gUnk_08C00FE0
-	bl sub_800AE98
+	bl StartEvent
 	str r4, [r0, #0x58]
 	pop {r4}
 	pop {r0}
@@ -10055,7 +10055,7 @@ sub_800EF34: @ 0x0800EF34
 	lsls r4, r4, #0x18
 	lsrs r4, r4, #0x18
 	ldr r0, _0800EF4C @ =gUnk_08C00FF8
-	bl sub_800AE98
+	bl StartEvent
 	adds r0, #0x4f
 	strb r4, [r0]
 	pop {r4}
@@ -10074,7 +10074,7 @@ sub_800EF50: @ 0x0800EF50
 	lsls r5, r5, #0x18
 	lsrs r5, r5, #0x18
 	ldr r0, _0800EF74 @ =gUnk_08C01004
-	bl sub_800AE98
+	bl StartEvent
 	adds r1, r0, #0
 	adds r1, #0x5c
 	strh r4, [r1]
@@ -10093,7 +10093,7 @@ sub_800EF78: @ 0x0800EF78
 	lsls r4, r1, #0x18
 	lsrs r4, r4, #0x18
 	ldr r0, _0800EF94 @ =gUnk_08C01020
-	bl sub_800AE98
+	bl StartEvent
 	str r5, [r0, #0x58]
 	adds r0, #0x4f
 	strb r4, [r0]
@@ -10106,7 +10106,7 @@ _0800EF94: .4byte gUnk_08C01020
 	thumb_func_start sub_800EF98
 sub_800EF98: @ 0x0800EF98
 	push {lr}
-	ldr r0, _0800EFB4 @ =gUnk_08BFFF78
+	ldr r0, _0800EFB4 @ =ProcScr_Event
 	bl Proc_Find
 	cmp r0, #0
 	beq _0800EFAE
@@ -10119,7 +10119,7 @@ _0800EFAE:
 	pop {r0}
 	bx r0
 	.align 2, 0
-_0800EFB4: .4byte gUnk_08BFFF78
+_0800EFB4: .4byte ProcScr_Event
 
 	thumb_func_start sub_800EFB8
 sub_800EFB8: @ 0x0800EFB8
@@ -10582,7 +10582,7 @@ sub_800F2E0: @ 0x0800F2E0
 	cmp r0, #0
 	bne _0800F2FC
 	adds r0, r2, #0
-	bl sub_8014510
+	bl StartSlowLockingFadeFromBlack
 	movs r0, #2
 	b _0800F31C
 _0800F2FC:

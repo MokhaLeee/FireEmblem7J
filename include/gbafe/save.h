@@ -171,7 +171,7 @@ void SaveBonusContentData(void * buf);
 // ??? GetNextChapterStatsSlot
 // ??? sub_80A053C
 // ??? sub_80A0580
-// ??? sub_80A05A0
+// ??? RegisterChapterStats
 // ??? sub_80A05FC
 // ??? sub_80A0628
 // ??? sub_80A0654
@@ -204,7 +204,7 @@ void SaveBonusContentData(void * buf);
 // ??? sub_80A0D94
 // ??? sub_80A0DCC
 // ??? sub_80A0DFC
-// ??? sub_80A0E48
+// ??? WriteCompletedPlaythroughSaveData
 // ??? GetPidStats
 // ??? sub_80A0F08
 // ??? sub_80A0F14

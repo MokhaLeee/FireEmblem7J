@@ -812,7 +812,7 @@ _0801CC00:
 	ldrsh r0, [r4, r1]
 	movs r2, #2
 	ldrsh r1, [r4, r2]
-	bl sub_8015F0C
+	bl SetMapCursorPosition
 _0801CC3E:
 	ldr r1, _0801CC78 @ =gBmSt
 	movs r0, #0xf7
@@ -842,7 +842,7 @@ _0801CC78: .4byte gBmSt
 _0801CC7C: .4byte gPlaySt
 _0801CC80: .4byte 0x0000038B
 _0801CC84:
-	ldr r0, _0801CCEC @ =gUnk_08BFFF78
+	ldr r0, _0801CCEC @ =ProcScr_Event
 	bl Proc_Find
 	cmp r0, #0
 	bne _0801CD78
@@ -887,7 +887,7 @@ _0801CCB6:
 	bl Proc_Goto
 	b _0801CD98
 	.align 2, 0
-_0801CCEC: .4byte gUnk_08BFFF78
+_0801CCEC: .4byte ProcScr_Event
 _0801CCF0: .4byte gBmSt
 _0801CCF4: .4byte gBmMapUnit
 _0801CCF8: .4byte gActiveUnitMoveOrigin
@@ -908,7 +908,7 @@ _0801CD00:
 	ldrsh r0, [r4, r1]
 	movs r2, #2
 	ldrsh r1, [r4, r2]
-	bl sub_8015F0C
+	bl SetMapCursorPosition
 	ldr r0, _0801CD40 @ =gPlaySt
 	adds r0, #0x41
 	ldrb r0, [r0]
@@ -1345,7 +1345,7 @@ _0801D0DE:
 	ldrb r1, [r1, #0x11]
 	lsls r1, r1, #0x18
 	asrs r1, r1, #0x18
-	bl sub_8015F0C
+	bl SetMapCursorPosition
 	ldr r2, _0801D118 @ =gPlaySt
 	ldr r1, _0801D11C @ =gBmSt
 	ldrh r0, [r1, #0x14]
@@ -2145,7 +2145,7 @@ _0801D730:
 	ldrsb r0, [r4, r0]
 	movs r1, #0x11
 	ldrsb r1, [r4, r1]
-	bl sub_8015F0C
+	bl SetMapCursorPosition
 	movs r0, #1
 _0801D74A:
 	pop {r4}

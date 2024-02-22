@@ -332,8 +332,8 @@ gUnk_08BFFF30:	@ 0x08BFFF30
 gUnk_08BFFF58:	@ 0x08BFFF58
 	.incbin "FireEmblem7J.base.gba", 0xBFFF58, 0xBFFF78 - 0xBFFF58
 
-	.global gUnk_08BFFF78
-gUnk_08BFFF78:	@ 0x08BFFF78
+	.global ProcScr_Event
+ProcScr_Event:	@ 0x08BFFF78
 	.incbin "FireEmblem7J.base.gba", 0xBFFF78, 0xC00018 - 0xBFFF78
 
 	.global gUnk_08C00018

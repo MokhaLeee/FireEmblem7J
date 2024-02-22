@@ -14309,7 +14309,7 @@ sub_80438C0: @ 0x080438C0
 	movs r0, #3
 	strb r0, [r2]
 	ldr r0, _080438DC @ =gUnk_08C089E4
-	bl sub_800AEA4
+	bl StartEventLocking
 	pop {r0}
 	bx r0
 	.align 2, 0
@@ -14371,7 +14371,7 @@ sub_8043948: @ 0x08043948
 	push {lr}
 	adds r1, r0, #0
 	ldr r0, _08043958 @ =gUnk_08C08B80
-	bl sub_800AEA4
+	bl StartEventLocking
 	pop {r0}
 	bx r0
 	.align 2, 0
@@ -18241,7 +18241,7 @@ _08045880:
 	movs r1, #0x11
 	ldrsb r1, [r0, r1]
 	adds r0, r2, #0
-	bl sub_8015F0C
+	bl SetMapCursorPosition
 	ldr r0, _08045908 @ =gBmSt
 	strh r4, [r0, #0xc]
 	strh r4, [r0, #0xe]
@@ -18799,7 +18799,7 @@ sub_8045CEC: @ 0x08045CEC
 	blt _08045D14
 	bl sub_8044AF8
 	ldr r0, _08045D28 @ =gUnk_08C09098
-	bl sub_800AE98
+	bl StartEvent
 	adds r0, r4, #0
 	movs r1, #3
 	bl Proc_Goto
@@ -18997,7 +18997,7 @@ _08045EA4:
 	lsls r0, r0, #2
 	bl m4aSongNumStart
 	ldr r0, _08045EDC @ =gUnk_08C0907C
-	bl sub_800AE98
+	bl StartEvent
 _08045ECE:
 	adds r0, r6, #0
 	movs r1, #2
@@ -19016,7 +19016,7 @@ _08045EE0:
 	lsls r1, r1, #0x18
 	asrs r1, r1, #0x18
 	lsls r4, r1, #4
-	bl sub_8015F0C
+	bl SetMapCursorPosition
 	bl GetGameTime
 	subs r0, #1
 	ldr r6, _08045F5C @ =0x03001418
@@ -19115,7 +19115,7 @@ sub_8045F7C: @ 0x08045F7C
 	ldrsb r1, [r0, r1]
 	lsls r4, r1, #4
 	adds r0, r2, #0
-	bl sub_8015F0C
+	bl SetMapCursorPosition
 	bl GetGameTime
 	subs r0, #1
 	ldr r7, _0804606C @ =0x03001418
@@ -20921,7 +20921,7 @@ sub_8046E5C: @ 0x08046E5C
 	lsls r0, r0, #2
 	bl m4aSongNumStart
 	ldr r0, _08046EA4 @ =gUnk_08C0907C
-	bl sub_800AE98
+	bl StartEvent
 _08046E90:
 	adds r0, r5, #0
 	movs r1, #3
@@ -23652,7 +23652,7 @@ sub_80483C0: @ 0x080483C0
 	adds r6, r0, #0
 	adds r5, r1, #0
 	ldr r4, _0804841C @ =gBg3Tm
-	ldr r0, _08048420 @ =gUnk_08D8A220
+	ldr r0, _08048420 @ =ProcScr_BackgroundSlide
 	bl sub_8004748
 	movs r0, #0x14
 	subs r0, r0, r5
@@ -23673,7 +23673,7 @@ _080483E0:
 	bne _080483E0
 _080483EE:
 	lsls r0, r5, #5
-	ldr r3, _08048420 @ =gUnk_08D8A220
+	ldr r3, _08048420 @ =ProcScr_BackgroundSlide
 	cmp r0, #0
 	ble _0804840C
 	movs r5, #0xf0
@@ -23697,7 +23697,7 @@ _0804840C:
 	bx r0
 	.align 2, 0
 _0804841C: .4byte gBg3Tm
-_08048420: .4byte gUnk_08D8A220
+_08048420: .4byte ProcScr_BackgroundSlide
 
 	thumb_func_start sub_8048424
 sub_8048424: @ 0x08048424
@@ -23711,7 +23711,7 @@ sub_8048424: @ 0x08048424
 	movs r2, #0x28
 	bl memcpy
 	ldr r4, _08048488 @ =gBg3Tm
-	ldr r0, _0804848C @ =gUnk_08D8A220
+	ldr r0, _0804848C @ =ProcScr_BackgroundSlide
 	bl sub_8004748
 	movs r3, #0
 	movs r6, #0xf
@@ -23738,7 +23738,7 @@ _08048452:
 	adds r3, #1
 	cmp r3, r5
 	ble _08048446
-	ldr r0, _0804848C @ =gUnk_08D8A220
+	ldr r0, _0804848C @ =ProcScr_BackgroundSlide
 	mov r1, r8
 	bl Proc_Start
 	add sp, #0x28
@@ -23750,18 +23750,18 @@ _08048452:
 	.align 2, 0
 _08048484: .4byte gUnk_081DB1A2
 _08048488: .4byte gBg3Tm
-_0804848C: .4byte gUnk_08D8A220
+_0804848C: .4byte ProcScr_BackgroundSlide
 _08048490: .4byte 0x0000027F
 
 	thumb_func_start sub_8048494
 sub_8048494: @ 0x08048494
 	push {lr}
-	ldr r0, _080484A0 @ =gUnk_08D8A220
+	ldr r0, _080484A0 @ =ProcScr_BackgroundSlide
 	bl sub_8004748
 	pop {r0}
 	bx r0
 	.align 2, 0
-_080484A0: .4byte gUnk_08D8A220
+_080484A0: .4byte ProcScr_BackgroundSlide
 
 	thumb_func_start sub_80484A4
 sub_80484A4: @ 0x080484A4

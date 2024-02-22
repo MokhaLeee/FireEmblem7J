@@ -146,7 +146,7 @@ _08021AA0:
 sub_8021AA8: @ 0x08021AA8
 	push {lr}
 	ldr r0, _08021AB8 @ =gUnk_08C03060
-	bl sub_800AE98
+	bl StartEvent
 	movs r0, #0x17
 	pop {r1}
 	bx r1

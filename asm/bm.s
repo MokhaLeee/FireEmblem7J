@@ -34,8 +34,8 @@ _0801570C: .4byte 0x03007FF8
 _08015710: .4byte 0x02026A28
 _08015714: .4byte gBmSt
 
-	thumb_func_start OnGameLoopMain
-OnGameLoopMain: @ 0x08015718
+	thumb_func_start OnMain
+OnMain: @ 0x08015718
 	push {r4, lr}
 	ldr r0, _08015774 @ =gpKeySt
 	ldr r0, [r0]
@@ -157,7 +157,7 @@ CallChapterStartEventMaybe: @ 0x080157F8
 	asrs r0, r0, #0x18
 	bl GetChapterEventInfo
 	ldr r0, [r0, #0x38]
-	bl sub_800AE98
+	bl StartEvent
 	movs r0, #0
 	pop {r1}
 	bx r1
@@ -908,8 +908,8 @@ _08015D8A:
 	.align 2, 0
 _08015D94: .4byte gBmSt
 
-	thumb_func_start sub_8015D98
-sub_8015D98: @ 0x08015D98
+	thumb_func_start GetCameraCenteredX
+GetCameraCenteredX: @ 0x08015D98
 	adds r1, r0, #0
 	subs r1, #0x78
 	cmp r1, #0
@@ -933,8 +933,8 @@ _08015DAE:
 	.align 2, 0
 _08015DBC: .4byte gBmSt
 
-	thumb_func_start sub_8015DC0
-sub_8015DC0: @ 0x08015DC0
+	thumb_func_start GetCameraCenteredY
+GetCameraCenteredY: @ 0x08015DC0
 	adds r1, r0, #0
 	subs r1, #0x50
 	cmp r1, #0
@@ -1101,8 +1101,8 @@ DisplayBmTextShadow: @ 0x08015ED8
 	.align 2, 0
 _08015F08: .4byte gUnk_08C0206C
 
-	thumb_func_start sub_8015F0C
-sub_8015F0C: @ 0x08015F0C
+	thumb_func_start SetMapCursorPosition
+SetMapCursorPosition: @ 0x08015F0C
 	ldr r2, _08015F20 @ =gBmSt
 	strh r0, [r2, #0x14]
 	strh r1, [r2, #0x16]

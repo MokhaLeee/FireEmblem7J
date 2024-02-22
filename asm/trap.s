@@ -1114,7 +1114,7 @@ sub_802C68C: @ 0x0802C68C
 	cmp r0, #0
 	beq _0802C6A0
 	ldr r0, _0802C6A4 @ =gUnk_08D6F71C
-	bl sub_800AE98
+	bl StartEvent
 _0802C6A0:
 	pop {r0}
 	bx r0

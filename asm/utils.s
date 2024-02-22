@@ -2109,8 +2109,8 @@ sub_80143A4: @ 0x080143A4
 	.align 2, 0
 _080143D4: .4byte gDispIo
 
-	thumb_func_start sub_80143D8
-sub_80143D8: @ 0x080143D8
+	thumb_func_start FadeExists
+FadeExists: @ 0x080143D8
 	push {lr}
 	ldr r0, _08014408 @ =gUnk_08C01C14
 	bl Proc_Find
@@ -2142,8 +2142,8 @@ _0801441A:
 	bx r1
 	.align 2, 0
 
-	thumb_func_start sub_8014420
-sub_8014420: @ 0x08014420
+	thumb_func_start StartFadeFromBlack
+StartFadeFromBlack: @ 0x08014420
 	push {r4, lr}
 	adds r4, r0, #0
 	ldr r0, _08014438 @ =gUnk_08C01BF4
@@ -2157,8 +2157,8 @@ sub_8014420: @ 0x08014420
 	.align 2, 0
 _08014438: .4byte gUnk_08C01BF4
 
-	thumb_func_start sub_801443C
-sub_801443C: @ 0x0801443C
+	thumb_func_start StartLockingFadeToBlack
+StartLockingFadeToBlack: @ 0x0801443C
 	push {r4, lr}
 	adds r4, r0, #0
 	ldr r0, _08014454 @ =gUnk_08C01C14
@@ -2172,8 +2172,8 @@ sub_801443C: @ 0x0801443C
 	.align 2, 0
 _08014454: .4byte gUnk_08C01C14
 
-	thumb_func_start sub_8014458
-sub_8014458: @ 0x08014458
+	thumb_func_start StartLockingFadeFromBlack
+StartLockingFadeFromBlack: @ 0x08014458
 	push {r4, lr}
 	adds r4, r0, #0
 	ldr r0, _0801446C @ =gUnk_08C01BF4
@@ -2228,80 +2228,80 @@ sub_80144A0: @ 0x080144A0
 	.align 2, 0
 _080144B4: .4byte gUnk_08C01C54
 
-	thumb_func_start sub_80144B8
-sub_80144B8: @ 0x080144B8
+	thumb_func_start StartMidFadeFromBlack
+StartMidFadeFromBlack: @ 0x080144B8
 	push {lr}
 	movs r0, #0x10
-	bl sub_8014420
+	bl StartFadeFromBlack
 	pop {r0}
 	bx r0
 
-	thumb_func_start sub_80144C4
-sub_80144C4: @ 0x080144C4
+	thumb_func_start StartSlowFadeFromBlack
+StartSlowFadeFromBlack: @ 0x080144C4
 	push {lr}
 	movs r0, #4
-	bl sub_8014420
+	bl StartFadeFromBlack
 	pop {r0}
 	bx r0
 
-	thumb_func_start sub_80144D0
-sub_80144D0: @ 0x080144D0
+	thumb_func_start StartFastFadeFromBlack
+StartFastFadeFromBlack: @ 0x080144D0
 	push {lr}
 	movs r0, #0x40
-	bl sub_8014420
+	bl StartFadeFromBlack
 	pop {r0}
 	bx r0
 
-	thumb_func_start sub_80144DC
-sub_80144DC: @ 0x080144DC
+	thumb_func_start StartMidLockingFadeToBlack
+StartMidLockingFadeToBlack: @ 0x080144DC
 	push {lr}
 	movs r0, #0x10
-	bl sub_801443C
+	bl StartLockingFadeToBlack
 	pop {r0}
 	bx r0
 
-	thumb_func_start sub_80144E8
-sub_80144E8: @ 0x080144E8
+	thumb_func_start StartSlowLockingFadeToBlack
+StartSlowLockingFadeToBlack: @ 0x080144E8
 	push {lr}
 	movs r0, #4
-	bl sub_801443C
+	bl StartLockingFadeToBlack
 	pop {r0}
 	bx r0
 
-	thumb_func_start sub_80144F4
-sub_80144F4: @ 0x080144F4
+	thumb_func_start StartFastLockingFadeToBlack
+StartFastLockingFadeToBlack: @ 0x080144F4
 	push {lr}
 	movs r0, #0x40
-	bl sub_801443C
+	bl StartLockingFadeToBlack
 	pop {r0}
 	bx r0
 
-	thumb_func_start sub_8014500
-sub_8014500: @ 0x08014500
+	thumb_func_start StartMidLockingFadeFromBlack
+StartMidLockingFadeFromBlack: @ 0x08014500
 	push {lr}
 	adds r1, r0, #0
 	movs r0, #0x10
-	bl sub_8014458
+	bl StartLockingFadeFromBlack
 	pop {r0}
 	bx r0
 	.align 2, 0
 
-	thumb_func_start sub_8014510
-sub_8014510: @ 0x08014510
+	thumb_func_start StartSlowLockingFadeFromBlack
+StartSlowLockingFadeFromBlack: @ 0x08014510
 	push {lr}
 	adds r1, r0, #0
 	movs r0, #4
-	bl sub_8014458
+	bl StartLockingFadeFromBlack
 	pop {r0}
 	bx r0
 	.align 2, 0
 
-	thumb_func_start sub_8014520
-sub_8014520: @ 0x08014520
+	thumb_func_start StartFastLockingFadeFromBlack
+StartFastLockingFadeFromBlack: @ 0x08014520
 	push {lr}
 	adds r1, r0, #0
 	movs r0, #0x40
-	bl sub_8014458
+	bl StartLockingFadeFromBlack
 	pop {r0}
 	bx r0
 	.align 2, 0
@@ -2363,7 +2363,7 @@ sub_8014580: @ 0x08014580
 	ldr r3, _08014594 @ =sub_8014900
 	movs r0, #1
 	movs r1, #4
-	bl sub_80147E8
+	bl StartFadeCore
 	pop {r0}
 	bx r0
 	.align 2, 0
@@ -2376,7 +2376,7 @@ sub_8014598: @ 0x08014598
 	ldr r3, _080145AC @ =sub_8014900
 	movs r0, #1
 	movs r1, #8
-	bl sub_80147E8
+	bl StartFadeCore
 	pop {r0}
 	bx r0
 	.align 2, 0
@@ -2389,7 +2389,7 @@ sub_80145B0: @ 0x080145B0
 	ldr r3, _080145C4 @ =sub_8014900
 	movs r0, #1
 	movs r1, #0x10
-	bl sub_80147E8
+	bl StartFadeCore
 	pop {r0}
 	bx r0
 	.align 2, 0
@@ -2402,7 +2402,7 @@ sub_80145C8: @ 0x080145C8
 	ldr r3, _080145DC @ =sub_8014900
 	movs r0, #1
 	movs r1, #0x20
-	bl sub_80147E8
+	bl StartFadeCore
 	pop {r0}
 	bx r0
 	.align 2, 0
@@ -2415,7 +2415,7 @@ sub_80145E0: @ 0x080145E0
 	ldr r3, _080145F4 @ =sub_8014900
 	movs r0, #1
 	movs r1, #0x40
-	bl sub_80147E8
+	bl StartFadeCore
 	pop {r0}
 	bx r0
 	.align 2, 0
@@ -2428,7 +2428,7 @@ sub_80145F8: @ 0x080145F8
 	movs r0, #0
 	movs r1, #8
 	movs r3, #0
-	bl sub_80147E8
+	bl StartFadeCore
 	pop {r0}
 	bx r0
 	.align 2, 0
@@ -2440,7 +2440,7 @@ sub_801460C: @ 0x0801460C
 	movs r0, #0
 	movs r1, #0x10
 	movs r3, #0
-	bl sub_80147E8
+	bl StartFadeCore
 	pop {r0}
 	bx r0
 	.align 2, 0
@@ -2452,7 +2452,7 @@ sub_8014620: @ 0x08014620
 	movs r0, #0
 	movs r1, #0x20
 	movs r3, #0
-	bl sub_80147E8
+	bl StartFadeCore
 	pop {r0}
 	bx r0
 	.align 2, 0
@@ -2464,7 +2464,7 @@ sub_8014634: @ 0x08014634
 	movs r0, #0
 	movs r1, #0x40
 	movs r3, #0
-	bl sub_80147E8
+	bl StartFadeCore
 	pop {r0}
 	bx r0
 	.align 2, 0
@@ -2476,7 +2476,7 @@ sub_8014648: @ 0x08014648
 	ldr r3, _0801465C @ =sub_8014900
 	movs r0, #3
 	movs r1, #4
-	bl sub_80147E8
+	bl StartFadeCore
 	pop {r0}
 	bx r0
 	.align 2, 0
@@ -2489,7 +2489,7 @@ sub_8014660: @ 0x08014660
 	ldr r3, _08014674 @ =sub_8014900
 	movs r0, #3
 	movs r1, #8
-	bl sub_80147E8
+	bl StartFadeCore
 	pop {r0}
 	bx r0
 	.align 2, 0
@@ -2502,7 +2502,7 @@ sub_8014678: @ 0x08014678
 	ldr r3, _0801468C @ =sub_8014900
 	movs r0, #3
 	movs r1, #0x10
-	bl sub_80147E8
+	bl StartFadeCore
 	pop {r0}
 	bx r0
 	.align 2, 0
@@ -2515,7 +2515,7 @@ sub_8014690: @ 0x08014690
 	ldr r3, _080146A4 @ =sub_8014900
 	movs r0, #3
 	movs r1, #0x20
-	bl sub_80147E8
+	bl StartFadeCore
 	pop {r0}
 	bx r0
 	.align 2, 0
@@ -2528,7 +2528,7 @@ sub_80146A8: @ 0x080146A8
 	ldr r3, _080146BC @ =sub_8014900
 	movs r0, #3
 	movs r1, #0x40
-	bl sub_80147E8
+	bl StartFadeCore
 	pop {r0}
 	bx r0
 	.align 2, 0
@@ -2541,7 +2541,7 @@ sub_80146C0: @ 0x080146C0
 	movs r0, #2
 	movs r1, #4
 	movs r3, #0
-	bl sub_80147E8
+	bl StartFadeCore
 	pop {r0}
 	bx r0
 	.align 2, 0
@@ -2553,7 +2553,7 @@ sub_80146D4: @ 0x080146D4
 	movs r0, #2
 	movs r1, #8
 	movs r3, #0
-	bl sub_80147E8
+	bl StartFadeCore
 	pop {r0}
 	bx r0
 	.align 2, 0
@@ -2565,7 +2565,7 @@ sub_80146E8: @ 0x080146E8
 	movs r0, #2
 	movs r1, #8
 	movs r3, #0
-	bl sub_80147E8
+	bl StartFadeCore
 	bl sub_80148C0
 	pop {r0}
 	bx r0
@@ -2578,7 +2578,7 @@ sub_8014700: @ 0x08014700
 	movs r0, #2
 	movs r1, #0x10
 	movs r3, #0
-	bl sub_80147E8
+	bl StartFadeCore
 	pop {r0}
 	bx r0
 	.align 2, 0
@@ -2590,7 +2590,7 @@ sub_8014714: @ 0x08014714
 	movs r0, #2
 	movs r1, #0x20
 	movs r3, #0
-	bl sub_80147E8
+	bl StartFadeCore
 	pop {r0}
 	bx r0
 	.align 2, 0
@@ -2602,7 +2602,7 @@ sub_8014728: @ 0x08014728
 	movs r0, #2
 	movs r1, #0x40
 	movs r3, #0
-	bl sub_80147E8
+	bl StartFadeCore
 	pop {r0}
 	bx r0
 	.align 2, 0
@@ -2614,7 +2614,7 @@ sub_801473C: @ 0x0801473C
 	movs r0, #6
 	movs r1, #0x10
 	movs r3, #0
-	bl sub_80147E8
+	bl StartFadeCore
 	pop {r0}
 	bx r0
 	.align 2, 0
@@ -2626,7 +2626,7 @@ sub_8014750: @ 0x08014750
 	movs r0, #7
 	movs r1, #0x10
 	movs r3, #0
-	bl sub_80147E8
+	bl StartFadeCore
 	pop {r0}
 	bx r0
 	.align 2, 0
@@ -2638,7 +2638,7 @@ sub_8014764: @ 0x08014764
 	movs r0, #6
 	movs r1, #8
 	movs r3, #0
-	bl sub_80147E8
+	bl StartFadeCore
 	pop {r0}
 	bx r0
 	.align 2, 0
@@ -2650,7 +2650,7 @@ sub_8014778: @ 0x08014778
 	movs r0, #4
 	movs r1, #4
 	movs r3, #0
-	bl sub_80147E8
+	bl StartFadeCore
 	pop {r0}
 	bx r0
 	.align 2, 0
@@ -2662,7 +2662,7 @@ sub_801478C: @ 0x0801478C
 	movs r0, #4
 	movs r1, #8
 	movs r3, #0
-	bl sub_80147E8
+	bl StartFadeCore
 	pop {r0}
 	bx r0
 	.align 2, 0
@@ -2674,17 +2674,17 @@ sub_80147A0: @ 0x080147A0
 	ldr r3, _080147B4 @ =sub_8014970
 	movs r0, #7
 	movs r1, #8
-	bl sub_80147E8
+	bl StartFadeCore
 	pop {r0}
 	bx r0
 	.align 2, 0
 _080147B4: .4byte sub_8014970
 
-	thumb_func_start sub_80147B8
-sub_80147B8: @ 0x080147B8
+	thumb_func_start WhileFadeExists
+WhileFadeExists: @ 0x080147B8
 	push {r4, lr}
 	adds r4, r0, #0
-	bl sub_80143D8
+	bl FadeExists
 	lsls r0, r0, #0x18
 	cmp r0, #0
 	bne _080147CC
@@ -2703,13 +2703,13 @@ sub_80147D4: @ 0x080147D4
 	adds r3, r1, #0
 	movs r0, #3
 	movs r1, #0x40
-	bl sub_80147E8
+	bl StartFadeCore
 	pop {r0}
 	bx r0
 	.align 2, 0
 
-	thumb_func_start sub_80147E8
-sub_80147E8: @ 0x080147E8
+	thumb_func_start StartFadeCore
+StartFadeCore: @ 0x080147E8
 	push {r4, r5, r6, r7, lr}
 	adds r4, r1, #0
 	adds r1, r2, #0

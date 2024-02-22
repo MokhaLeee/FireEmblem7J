@@ -2488,8 +2488,8 @@ _080A059C:
 	pop {r1}
 	bx r1
 
-	thumb_func_start sub_80A05A0
-sub_80A05A0: @ 0x080A05A0
+	thumb_func_start RegisterChapterStats
+RegisterChapterStats: @ 0x080A05A0
 	push {r4, r5, lr}
 	adds r4, r0, #0
 	bl GetNextChapterStatsSlot
@@ -3680,8 +3680,8 @@ _080A0E42:
 	bx r1
 	.align 2, 0
 
-	thumb_func_start sub_80A0E48
-sub_80A0E48: @ 0x080A0E48
+	thumb_func_start WriteCompletedPlaythroughSaveData
+WriteCompletedPlaythroughSaveData: @ 0x080A0E48
 	push {r4, r5, r6, r7, lr}
 	sub sp, #0x64
 	bl sub_80A0DFC
@@ -9794,7 +9794,7 @@ _080A3DF4:
 _080A3E02:
 	asrs r1, r1, #4
 	adds r1, #5
-	bl sub_8015F0C
+	bl SetMapCursorPosition
 _080A3E0A:
 	movs r0, #0
 	bl SetOnHBlankA

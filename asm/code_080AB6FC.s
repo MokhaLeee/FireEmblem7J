@@ -6593,7 +6593,7 @@ _080AEAEE:
 	cmp r2, r3
 	ble _080AEAEE
 	ldr r4, _080AEB34 @ =gBg3Tm + 0xc0
-	ldr r3, _080AEB38 @ =gUnk_08D8A220
+	ldr r3, _080AEB38 @ =ProcScr_BackgroundSlide
 	movs r5, #0x80
 	lsls r5, r5, #5
 	adds r1, r5, #0
@@ -6619,7 +6619,7 @@ _080AEB28: .4byte gUnk_08439BF0
 _080AEB2C: .4byte gUnk_0843F084
 _080AEB30: .4byte 0x0000027F
 _080AEB34: .4byte gBg3Tm + 0xc0
-_080AEB38: .4byte gUnk_08D8A220
+_080AEB38: .4byte ProcScr_BackgroundSlide
 
 	thumb_func_start sub_80AEB3C
 sub_80AEB3C: @ 0x080AEB3C
@@ -8297,7 +8297,7 @@ _080AF8E4:
 sub_80AF8F8: @ 0x080AF8F8
 	push {r4, lr}
 	adds r4, r0, #0
-	bl sub_80807BC
+	bl EndMuralBackground
 	ldr r0, _080AF91C @ =gUnk_08DAF3D0
 	bl sub_8004748
 	ldr r0, _080AF920 @ =gUnk_08DAF3B0
@@ -8841,7 +8841,7 @@ sub_80AFCC4: @ 0x080AFCC4
 	ands r0, r1
 	strb r0, [r2, #1]
 	movs r0, #0
-	bl sub_8013200
+	bl SetNextGameAction
 	adds r0, r4, #0
 	movs r1, #5
 	bl Proc_Goto
@@ -8883,7 +8883,7 @@ _080AFD46:
 	cmp r0, #0
 	bne _080AFD6C
 	movs r0, #1
-	bl sub_8013200
+	bl SetNextGameAction
 	adds r0, r4, #0
 	movs r1, #4
 	bl Proc_Goto
@@ -17060,7 +17060,7 @@ sub_80B3D4C: @ 0x080B3D4C
 	mov r7, sp
 	ldr r1, _080B3D60 @ =gUnk_08DB0D68
 	adds r0, r1, #0
-	bl sub_800AE98
+	bl StartEvent
 	pop {r7}
 	pop {r0}
 	bx r0
@@ -17125,7 +17125,7 @@ sub_80B3DB8: @ 0x080B3DB8
 	mov r7, sp
 	str r0, [r7]
 	movs r0, #0
-	bl sub_8013200
+	bl SetNextGameAction
 	ldr r0, [r7]
 	bl sub_800E43C
 	add sp, #4
@@ -22172,7 +22172,7 @@ sub_80B6404: @ 0x080B6404
 	lsls r0, r0, #2
 	adds r0, r0, r5
 	ldr r0, [r0]
-	bl sub_800AE98
+	bl StartEvent
 _080B6436:
 	pop {r4, r5}
 	pop {r0}
@@ -27174,7 +27174,7 @@ sub_80B8AF0: @ 0x080B8AF0
 	push {r4, r5, r6, lr}
 	adds r5, r0, #0
 	movs r0, #0xc
-	bl sub_8013200
+	bl SetNextGameAction
 	movs r0, #0
 	bl InitBgs
 	ldr r6, _080B8B60 @ =gDispIo
@@ -27304,11 +27304,11 @@ sub_80B8BF8: @ 0x080B8BF8
 	cmp r0, #2
 	bne _080B8C0A
 	movs r0, #5
-	bl sub_8013200
+	bl SetNextGameAction
 	b _080B8C10
 _080B8C0A:
 	movs r0, #0xc
-	bl sub_8013200
+	bl SetNextGameAction
 _080B8C10:
 	pop {r0}
 	bx r0
@@ -32422,7 +32422,7 @@ Title_IDLE: @ 0x080BB528
 	bl m4aSongNumStart
 _080BB576:
 	movs r0, #0
-	bl sub_8013200
+	bl SetNextGameAction
 	adds r0, r4, #0
 	bl Proc_Break
 	b _080BB5AA
@@ -32438,7 +32438,7 @@ _080BB594:
 	cmp r1, r0
 	bne _080BB5AA
 	movs r0, #1
-	bl sub_8013200
+	bl SetNextGameAction
 	adds r0, r4, #0
 	bl Proc_Break
 _080BB5AA:
@@ -34135,7 +34135,7 @@ _080BC28A:
 	adds r1, r6, #0
 	bl Proc_Start
 	movs r0, #3
-	bl sub_8013200
+	bl SetNextGameAction
 	add sp, #0x24
 	pop {r4, r5, r6}
 	pop {r0}
@@ -35638,7 +35638,7 @@ sub_80BCF98: @ 0x080BCF98
 	cmp r0, #0
 	beq _080BCFB8
 	movs r0, #2
-	bl sub_8013200
+	bl SetNextGameAction
 	ldr r0, [r4, #0x14]
 	movs r1, #0x63
 	bl Proc_Goto

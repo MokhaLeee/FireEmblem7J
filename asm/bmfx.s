@@ -479,7 +479,7 @@ _0801DB5C:
 	bl sub_801615C
 	ldr r0, [sp]
 	ldr r1, [sp, #4]
-	bl sub_8015F0C
+	bl SetMapCursorPosition
 _0801DB76:
 	add sp, #8
 	pop {r4, r5}
@@ -491,7 +491,7 @@ _0801DB76:
 sub_801DB80: @ 0x0801DB80
 	push {r4, r5, r6, lr}
 	adds r6, r0, #0
-	bl sub_80807CC
+	bl GetLastStatScreenUnitId
 	bl GetUnit
 	cmp r0, #0
 	beq _0801DBAA
@@ -505,7 +505,7 @@ sub_801DB80: @ 0x0801DB80
 	bl sub_801615C
 	adds r0, r4, #0
 	adds r1, r5, #0
-	bl sub_8015F0C
+	bl SetMapCursorPosition
 _0801DBAA:
 	pop {r4, r5, r6}
 	pop {r0}
@@ -5114,7 +5114,7 @@ sub_801FFE0: @ 0x0801FFE0
 	bl GetROMChapterStruct
 	ldrb r0, [r0, #0x10]
 	lsls r0, r0, #4
-	bl sub_8015D98
+	bl GetCameraCenteredX
 	lsls r0, r0, #0x10
 	lsrs r0, r0, #0x10
 	adds r0, #0xf
@@ -5128,7 +5128,7 @@ sub_801FFE0: @ 0x0801FFE0
 	bl GetROMChapterStruct
 	ldrb r0, [r0, #0x11]
 	lsls r0, r0, #4
-	bl sub_8015DC0
+	bl GetCameraCenteredY
 	lsls r0, r0, #0x10
 	lsrs r0, r0, #0x10
 	adds r0, #0xf

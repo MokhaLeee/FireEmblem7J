@@ -918,14 +918,14 @@ _08010D6E:
 	str r0, [r5, #0x44]
 	movs r0, #0
 	str r0, [r5, #0x30]
-	ldr r0, _08010D84 @ =gUnk_08BFFF78
+	ldr r0, _08010D84 @ =ProcScr_Event
 	bl Proc_Find
 	str r0, [r5, #0x40]
 	pop {r4, r5, r6, r7}
 	pop {r0}
 	bx r0
 	.align 2, 0
-_08010D84: .4byte gUnk_08BFFF78
+_08010D84: .4byte ProcScr_Event
 
 	thumb_func_start sub_8010D88
 sub_8010D88: @ 0x08010D88
@@ -1251,7 +1251,7 @@ sub_8010F74: @ 0x08010F74
 	movs r0, #6
 	str r0, [r5, #0x44]
 	str r4, [r5, #0x30]
-	ldr r0, _08011034 @ =gUnk_08BFFF78
+	ldr r0, _08011034 @ =ProcScr_Event
 	bl Proc_Find
 	str r0, [r5, #0x40]
 	pop {r4, r5, r6, r7}
@@ -1261,7 +1261,7 @@ sub_8010F74: @ 0x08010F74
 _08011028: .4byte gDispIo
 _0801102C: .4byte 0x0000FFE0
 _08011030: .4byte 0x0000E0FF
-_08011034: .4byte gUnk_08BFFF78
+_08011034: .4byte ProcScr_Event
 
 	thumb_func_start sub_8011038
 sub_8011038: @ 0x08011038
@@ -1650,7 +1650,7 @@ sub_8011298: @ 0x08011298
 	movs r0, #6
 	str r0, [r5, #0x44]
 	str r4, [r5, #0x30]
-	ldr r0, _08011358 @ =gUnk_08BFFF78
+	ldr r0, _08011358 @ =ProcScr_Event
 	bl Proc_Find
 	str r0, [r5, #0x40]
 	pop {r4, r5, r6, r7}
@@ -1660,7 +1660,7 @@ sub_8011298: @ 0x08011298
 _0801134C: .4byte gDispIo
 _08011350: .4byte 0x0000FFE0
 _08011354: .4byte 0x0000E0FF
-_08011358: .4byte gUnk_08BFFF78
+_08011358: .4byte ProcScr_Event
 
 	thumb_func_start sub_801135C
 sub_801135C: @ 0x0801135C

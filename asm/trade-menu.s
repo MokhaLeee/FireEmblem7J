@@ -1649,7 +1649,7 @@ sub_802BD14: @ 0x0802BD14
 	cmp r0, #0
 	beq _0802BD26
 	ldr r0, _0802BD2C @ =gUnk_08C036D4
-	bl sub_800AEB0
+	bl StartEventInternal
 _0802BD26:
 	pop {r0}
 	bx r0
@@ -1661,7 +1661,7 @@ sub_802BD30: @ 0x0802BD30
 	push {lr}
 	adds r1, r0, #0
 	ldr r0, _0802BD40 @ =gUnk_08C03728
-	bl sub_800AEB0
+	bl StartEventInternal
 	pop {r0}
 	bx r0
 	.align 2, 0
@@ -1672,7 +1672,7 @@ sub_802BD44: @ 0x0802BD44
 	push {lr}
 	adds r1, r0, #0
 	ldr r0, _0802BD54 @ =gUnk_08C03784
-	bl sub_800AEB0
+	bl StartEventInternal
 	pop {r0}
 	bx r0
 	.align 2, 0
@@ -1683,7 +1683,7 @@ sub_802BD58: @ 0x0802BD58
 	push {lr}
 	adds r1, r0, #0
 	ldr r0, _0802BD68 @ =gUnk_08C037D8
-	bl sub_800AEB0
+	bl StartEventInternal
 	pop {r0}
 	bx r0
 	.align 2, 0

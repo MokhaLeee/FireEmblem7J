@@ -1232,7 +1232,7 @@ sub_8035714: @ 0x08035714
 	ldr r4, _08035768 @ =0x0203A978
 	ldrb r0, [r4, #2]
 	ldrb r1, [r4, #3]
-	bl sub_8015F0C
+	bl SetMapCursorPosition
 	bl RenderMapForFade
 	ldrb r0, [r4, #2]
 	ldrb r1, [r4, #3]

@@ -157,16 +157,16 @@ ProcScr_GameControl: @ 0xC01744
         .word 0x0
         @ PROC_CALL
         .short 0x2, 0x0
-        .word sub_8013050
+        .word GC_CheckForGameEnded
         @ PROC_CALL
         .short 0x2, 0x0
-        .word sub_8013198
+        .word GC_InitDemo
         @ PROC_START_CHILD_BLOCKING
         .short 0x6, 0x1
         .word 0x8db0fc4
         @ PROC_CALL
         .short 0x2, 0x0
-        .word sub_80130E8
+        .word GC_DarkenScreen_
         @ PROC_YIELD
         .short 0xe, 0x0
         .word 0x0
@@ -190,13 +190,13 @@ ProcScr_GameControl: @ 0xC01744
         .word 0x0
         @ PROC_CALL
         .short 0x2, 0x0
-        .word sub_80131A8
+        .word GC_DarkenScreen
         @ PROC_LABEL
         .short 0xb, 0x10
         .word 0x0
         @ PROC_CALL
         .short 0x2, 0x0
-        .word sub_801309C
+        .word GC_InitNextChapter
         @ PROC_CALL
         .short 0x2, 0x0
         .word sub_80130C0
@@ -256,19 +256,19 @@ ProcScr_GameControl: @ 0xC01744
         .word 0x0
         @ PROC_CALL
         .short 0x2, 0x0
-        .word sub_80130E8
+        .word GC_DarkenScreen_
         @ PROC_CALL
         .short 0x2, 0x0
-        .word sub_802E650
+        .word ResumeChapterFromSuspend
         @ PROC_YIELD
         .short 0xe, 0x0
         .word 0x0
         @ PROC_CALL
         .short 0x2, 0x0
-        .word sub_8013198
+        .word GC_InitDemo
         @ PROC_CALL
         .short 0x2, 0x0
-        .word sub_8013070
+        .word GC_PostLoadSuspend
         @ PROC_GOTO
         .short 0xc, 0x7
         .word 0x0
@@ -382,13 +382,13 @@ ProcScr_GameControl: @ 0xC01744
         .word 0x0
         @ PROC_CALL
         .short 0x2, 0x0
-        .word sub_8012CA4
+        .word GC_InitSramResetScreen
         @ PROC_CALL
         .short 0x2, 0x0
-        .word sub_80144DC
+        .word StartMidLockingFadeToBlack
         @ PROC_REPEAT
         .short 0x3, 0x0
-        .word sub_80147B8
+        .word WhileFadeExists
         @ PROC_CALL
         .short 0x2, 0x0
         .word sub_8043948
@@ -397,13 +397,13 @@ ProcScr_GameControl: @ 0xC01744
         .word 0x0
         @ PROC_CALL
         .short 0x2, 0x0
-        .word sub_80144B8
+        .word StartMidFadeFromBlack
         @ PROC_REPEAT
         .short 0x3, 0x0
-        .word sub_80147B8
+        .word WhileFadeExists
         @ PROC_CALL
         .short 0x2, 0x0
-        .word sub_80807BC
+        .word EndMuralBackground
         @ PROC_GOTO
         .short 0xc, 0x0
         .word 0x0

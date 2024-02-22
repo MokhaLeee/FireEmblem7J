@@ -1189,7 +1189,7 @@ sub_8027BA4: @ 0x08027BA4
 	movs r1, #0x11
 	ldrsb r1, [r0, r1]
 	adds r0, r4, #0
-	bl sub_8015F0C
+	bl SetMapCursorPosition
 	ldr r0, _08027C54 @ =gUnk_08191D7C
 	movs r1, #0
 	bl StartSpriteAnim
@@ -1372,7 +1372,7 @@ sub_8027D98: @ 0x08027D98
 	ldrb r1, [r1, #0x11]
 	lsls r1, r1, #0x18
 	asrs r1, r1, #0x18
-	bl sub_8015F0C
+	bl SetMapCursorPosition
 	ldr r0, [r4]
 	movs r1, #0x10
 	ldrsb r1, [r0, r1]
@@ -1399,7 +1399,7 @@ sub_8027DD4: @ 0x08027DD4
 	ldrb r1, [r1, #0x11]
 	lsls r1, r1, #0x18
 	asrs r1, r1, #0x18
-	bl sub_8015F0C
+	bl SetMapCursorPosition
 	ldr r0, _08027E04 @ =gUnk_08C03098
 	movs r1, #3
 	bl Proc_Start

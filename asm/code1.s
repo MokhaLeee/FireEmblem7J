@@ -163,8 +163,8 @@ _0802E4B0: .4byte 0x01000024
 _0802E4B4: .4byte 0x0202BC34
 _0802E4B8: .4byte 0xFFFFFE7F
 
-	thumb_func_start sub_802E4BC
-sub_802E4BC: @ 0x0802E4BC
+	thumb_func_start ResetBmSt
+ResetBmSt: @ 0x0802E4BC
 	push {r4, r5, lr}
 	sub sp, #4
 	ldr r4, _0802E4E0 @ =gBmSt
@@ -194,11 +194,11 @@ sub_802E4E8: @ 0x0802E4E8
 	mov r8, r0
 	movs r0, #0
 	bl InitBgs
-	ldr r0, _0802E59C @ =OnGameLoopMain
+	ldr r0, _0802E59C @ =OnMain
 	bl SetMainFunc
 	ldr r0, _0802E5A0 @ =OnVBlank
 	bl SetOnVBlank
-	bl sub_802E4BC
+	bl ResetBmSt
 	bl ApplySystemGraphics
 	bl ApplyUnitSpritePalettes
 	bl sub_8079FDC
@@ -259,7 +259,7 @@ sub_802E4E8: @ 0x0802E4E8
 	pop {r0}
 	bx r0
 	.align 2, 0
-_0802E59C: .4byte OnGameLoopMain
+_0802E59C: .4byte OnMain
 _0802E5A0: .4byte OnVBlank
 _0802E5A4: .4byte gPlaySt
 _0802E5A8: .4byte gPal
@@ -271,7 +271,7 @@ sub_802E5B4: @ 0x0802E5B4
 	push {r4, r5, lr}
 	movs r0, #0
 	bl InitBgs
-	ldr r0, _0802E638 @ =OnGameLoopMain
+	ldr r0, _0802E638 @ =OnMain
 	bl SetMainFunc
 	ldr r0, _0802E63C @ =OnVBlank
 	bl SetOnVBlank
@@ -318,15 +318,15 @@ sub_802E5B4: @ 0x0802E5B4
 	pop {r0}
 	bx r0
 	.align 2, 0
-_0802E638: .4byte OnGameLoopMain
+_0802E638: .4byte OnMain
 _0802E63C: .4byte OnVBlank
 _0802E640: .4byte gPlaySt
 _0802E644: .4byte gUnk_08C05464
 _0802E648: .4byte gPal
 _0802E64C: .4byte gDispIo
 
-	thumb_func_start sub_802E650
-sub_802E650: @ 0x0802E650
+	thumb_func_start ResumeChapterFromSuspend
+ResumeChapterFromSuspend: @ 0x0802E650
 	push {r4, r5, lr}
 	adds r5, r0, #0
 	ldr r4, _0802E6D0 @ =gPlaySt
@@ -337,14 +337,14 @@ sub_802E650: @ 0x0802E650
 _0802E660:
 	movs r0, #0
 	bl InitBgs
-	ldr r0, _0802E6D4 @ =OnGameLoopMain
+	ldr r0, _0802E6D4 @ =OnMain
 	bl SetMainFunc
 	ldr r0, _0802E6D8 @ =OnVBlank
 	bl SetOnVBlank
-	bl sub_802E4BC
+	bl ResetBmSt
 	ldrb r0, [r4, #0x12]
 	ldrb r1, [r4, #0x13]
-	bl sub_8015F0C
+	bl SetMapCursorPosition
 	bl ApplySystemGraphics
 	bl ApplyUnitSpritePalettes
 	bl ResetUnitSprites
@@ -362,12 +362,12 @@ _0802E660:
 	movs r1, #0x14
 	ldrsh r0, [r4, r1]
 	lsls r0, r0, #4
-	bl sub_8015D98
+	bl GetCameraCenteredX
 	strh r0, [r4, #0xc]
 	movs r1, #0x16
 	ldrsh r0, [r4, r1]
 	lsls r0, r0, #4
-	bl sub_8015DC0
+	bl GetCameraCenteredY
 	strh r0, [r4, #0xe]
 	ldr r0, _0802E6E0 @ =gActionSt
 	ldrb r0, [r0, #0x16]
@@ -380,7 +380,7 @@ _0802E660:
 	mov pc, r0
 	.align 2, 0
 _0802E6D0: .4byte gPlaySt
-_0802E6D4: .4byte OnGameLoopMain
+_0802E6D4: .4byte OnMain
 _0802E6D8: .4byte OnVBlank
 _0802E6DC: .4byte gBmSt
 _0802E6E0: .4byte gActionSt
@@ -398,23 +398,23 @@ _0802E6E8: @ jump table
 	.4byte _0802E730 @ case 9
 _0802E710:
 	adds r0, r5, #0
-	bl sub_802EA08
+	bl ResumeMapMainDuringAction
 	b _0802E736
 _0802E718:
 	adds r0, r5, #0
-	bl sub_802E9CC
+	bl ResumeMapMainDuringPhase
 	b _0802E736
 _0802E720:
 	adds r0, r5, #0
-	bl sub_802EA88
+	bl ResumeMapMainDuringBerserk
 	b _0802E736
 _0802E728:
 	adds r0, r5, #0
-	bl sub_802EAC4
+	bl ResumeMapMainDuringArena
 	b _0802E736
 _0802E730:
 	adds r0, r5, #0
-	bl sub_802EB40
+	bl ResumeMapMainDuringPhaseChange
 _0802E736:
 	ldr r2, _0802E760 @ =0x030027CC
 	ldr r0, _0802E764 @ =0x0000FFE0
@@ -444,7 +444,7 @@ _0802E764: .4byte 0x0000FFE0
 	thumb_func_start sub_802E768
 sub_802E768: @ 0x0802E768
 	push {lr}
-	ldr r0, _0802E7D0 @ =OnGameLoopMain
+	ldr r0, _0802E7D0 @ =OnMain
 	bl SetMainFunc
 	ldr r0, _0802E7D4 @ =OnVBlank
 	bl SetOnVBlank
@@ -487,7 +487,7 @@ sub_802E768: @ 0x0802E768
 	pop {r0}
 	bx r0
 	.align 2, 0
-_0802E7D0: .4byte OnGameLoopMain
+_0802E7D0: .4byte OnMain
 _0802E7D4: .4byte OnVBlank
 _0802E7D8: .4byte gDispIo
 _0802E7DC: .4byte gBg2Tm
@@ -581,8 +581,8 @@ EndMapMain: @ 0x0802E87C
 	.align 2, 0
 _0802E89C: .4byte ProcScr_BmMain
 
-	thumb_func_start sub_802E8A0
-sub_802E8A0: @ 0x0802E8A0
+	thumb_func_start CleanupUnitsBeforeChapter
+CleanupUnitsBeforeChapter: @ 0x0802E8A0
 	push {r4, r5, r6, r7, lr}
 	movs r4, #0x41
 _0802E8A4:
@@ -731,8 +731,8 @@ _0802E9B2:
 _0802E9C4: .4byte 0x0631E00C
 _0802E9C8: .4byte gPlaySt
 
-	thumb_func_start sub_802E9CC
-sub_802E9CC: @ 0x0802E9CC
+	thumb_func_start ResumeMapMainDuringPhase
+ResumeMapMainDuringPhase: @ 0x0802E9CC
 	push {r4, lr}
 	adds r4, r0, #0
 	bl RefreshEntityMaps
@@ -761,8 +761,8 @@ sub_802E9CC: @ 0x0802E9CC
 	.align 2, 0
 _0802EA04: .4byte gDispIo
 
-	thumb_func_start sub_802EA08
-sub_802EA08: @ 0x0802EA08
+	thumb_func_start ResumeMapMainDuringAction
+ResumeMapMainDuringAction: @ 0x0802EA08
 	push {r4, r5, lr}
 	adds r4, r0, #0
 	bl RefreshEntityMaps
@@ -817,8 +817,8 @@ _0802EA7C: .4byte gActionSt
 _0802EA80: .4byte gActiveUnit
 _0802EA84: .4byte gBmMapUnit
 
-	thumb_func_start sub_802EA88
-sub_802EA88: @ 0x0802EA88
+	thumb_func_start ResumeMapMainDuringBerserk
+ResumeMapMainDuringBerserk: @ 0x0802EA88
 	push {r4, lr}
 	adds r4, r0, #0
 	bl RefreshEntityMaps
@@ -847,8 +847,8 @@ sub_802EA88: @ 0x0802EA88
 	.align 2, 0
 _0802EAC0: .4byte gDispIo
 
-	thumb_func_start sub_802EAC4
-sub_802EAC4: @ 0x0802EAC4
+	thumb_func_start ResumeMapMainDuringArena
+ResumeMapMainDuringArena: @ 0x0802EAC4
 	push {r4, r5, r6, lr}
 	adds r6, r0, #0
 	ldr r5, _0802EB30 @ =gActionSt
@@ -900,8 +900,8 @@ _0802EB34: .4byte gActiveUnit
 _0802EB38: .4byte gDispIo
 _0802EB3C: .4byte gBmMapUnit
 
-	thumb_func_start sub_802EB40
-sub_802EB40: @ 0x0802EB40
+	thumb_func_start ResumeMapMainDuringPhaseChange
+ResumeMapMainDuringPhaseChange: @ 0x0802EB40
 	push {r4, lr}
 	adds r4, r0, #0
 	bl RefreshEntityMaps
@@ -935,7 +935,7 @@ sub_802EB7C: @ 0x0802EB7C
 	push {r4, lr}
 	ldr r4, _0802EB9C @ =gPlaySt
 	adds r0, r4, #0
-	bl sub_80A05A0
+	bl RegisterChapterStats
 	bl sub_80B7880
 	bl sub_80A0054
 	movs r0, #0x20
@@ -952,8 +952,8 @@ _0802EB9C: .4byte gPlaySt
 sub_802EBA0: @ 0x0802EBA0
 	push {lr}
 	movs r0, #2
-	bl sub_8013200
-	bl sub_80A0E48
+	bl SetNextGameAction
+	bl WriteCompletedPlaythroughSaveData
 	pop {r0}
 	bx r0
 
@@ -5362,11 +5362,11 @@ _08030DA8:
 	strb r0, [r5, #0x14]
 _08030DC6:
 	movs r0, #0
-	bl sub_8015D98
+	bl GetCameraCenteredX
 	ldr r4, _08030DF8 @ =gBmSt
 	strh r0, [r4, #0xc]
 	movs r0, #0
-	bl sub_8015DC0
+	bl GetCameraCenteredY
 	strh r0, [r4, #0xe]
 	ldrb r0, [r4, #4]
 	orrs r0, r6
@@ -5398,23 +5398,23 @@ sub_8030DFC: @ 0x08030DFC
 	ldrb r1, [r1, #0x11]
 	lsls r1, r1, #0x18
 	asrs r1, r1, #0x18
-	bl sub_8015F0C
+	bl SetMapCursorPosition
 	b _08030E24
 _08030E1C:
 	movs r0, #0
 	movs r1, #0
-	bl sub_8015F0C
+	bl SetMapCursorPosition
 _08030E24:
 	ldr r4, _08030E44 @ =gBmSt
 	movs r1, #0x14
 	ldrsh r0, [r4, r1]
 	lsls r0, r0, #4
-	bl sub_8015D98
+	bl GetCameraCenteredX
 	strh r0, [r4, #0xc]
 	movs r1, #0x16
 	ldrsh r0, [r4, r1]
 	lsls r0, r0, #4
-	bl sub_8015DC0
+	bl GetCameraCenteredY
 	strh r0, [r4, #0xe]
 	pop {r4}
 	pop {r0}
@@ -5982,7 +5982,7 @@ sub_80312E8: @ 0x080312E8
 	ldrb r1, [r1, #0x11]
 	lsls r1, r1, #0x18
 	asrs r1, r1, #0x18
-	bl sub_8015F0C
+	bl SetMapCursorPosition
 	ldr r0, [r4]
 	movs r1, #0x10
 	ldrsb r1, [r0, r1]
@@ -6257,7 +6257,7 @@ _08031504:
 	ldrsh r0, [r4, r1]
 	movs r2, #2
 	ldrsh r1, [r4, r2]
-	bl sub_8015F0C
+	bl SetMapCursorPosition
 	ldr r0, _08031574 @ =gPlaySt
 	adds r0, #0x41
 	ldrb r0, [r0]
@@ -12329,14 +12329,14 @@ _080345B4: .4byte gUiTmScratchB
 	thumb_func_start sub_80345B8
 sub_80345B8: @ 0x080345B8
 	push {lr}
-	ldr r0, _080345C8 @ =gUnk_08BFFF78
+	ldr r0, _080345C8 @ =ProcScr_Event
 	bl Proc_Find
 	cmp r0, #0
 	bne _080345CC
 	movs r0, #0
 	b _080345CE
 	.align 2, 0
-_080345C8: .4byte gUnk_08BFFF78
+_080345C8: .4byte ProcScr_Event
 _080345CC:
 	movs r0, #1
 _080345CE:

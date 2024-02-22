@@ -271,7 +271,7 @@ sub_801B7A4: @ 0x0801B7A4
 	adds r4, #0x3c
 	ldrb r0, [r4]
 	strb r0, [r1, #0xe]
-	bl sub_802E8A0
+	bl CleanupUnitsBeforeChapter
 	bl sub_8013240
 	movs r0, #0x17
 	pop {r4}
@@ -880,13 +880,13 @@ _0801BC80: .4byte gUnk_08C04B04
 	thumb_func_start sub_801BC84
 sub_801BC84: @ 0x0801BC84
 	push {lr}
-	bl sub_80A0E48
+	bl WriteCompletedPlaythroughSaveData
 	ldr r0, _0801BCAC @ =gPlaySt
 	movs r1, #0xef
 	ldrb r2, [r0, #0x14]
 	ands r1, r2
 	strb r1, [r0, #0x14]
-	bl sub_802E8A0
+	bl CleanupUnitsBeforeChapter
 	bl ReadLastGameSaveId
 	bl WriteGameSave
 	movs r0, #0xff
@@ -916,7 +916,7 @@ _0801BCD0: .4byte gBg0Tm + 0xce
 	thumb_func_start sub_801BCD4
 sub_801BCD4: @ 0x0801BCD4
 	push {r4, lr}
-	ldr r0, _0801BD24 @ =OnGameLoopMain
+	ldr r0, _0801BD24 @ =OnMain
 	bl SetMainFunc
 	ldr r0, _0801BD28 @ =OnVBlank
 	bl SetOnVBlank
@@ -936,7 +936,7 @@ sub_801BCD4: @ 0x0801BCD4
 	ldr r1, _0801BD38 @ =0x0600B000
 	movs r2, #1
 	rsbs r2, r2, #0
-	bl sub_808068C
+	bl StartMuralBackgroundAlt
 	movs r0, #0xbf
 	ldrb r1, [r4, #4]
 	ands r0, r1
@@ -947,7 +947,7 @@ sub_801BCD4: @ 0x0801BCD4
 	pop {r0}
 	bx r0
 	.align 2, 0
-_0801BD24: .4byte OnGameLoopMain
+_0801BD24: .4byte OnMain
 _0801BD28: .4byte OnVBlank
 _0801BD2C: .4byte gUnk_081C92C8
 _0801BD30: .4byte gUnk_08C04B4C
@@ -1233,7 +1233,7 @@ _0801BF5E:
 	strb r0, [r1, #0xe]
 	movs r0, #0
 	bl WriteGameSave
-	bl sub_802E8A0
+	bl CleanupUnitsBeforeChapter
 	bl sub_8013240
 	movs r0, #2
 	pop {r4}

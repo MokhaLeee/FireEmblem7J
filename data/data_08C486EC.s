@@ -999,8 +999,8 @@ gUnk_08D8A148:	@ 0x08D8A148
 gUnk_08D8A1B4:	@ 0x08D8A1B4
 	.incbin "FireEmblem7J.base.gba", 0xD8A1B4, 0xD8A220 - 0xD8A1B4
 
-	.global gUnk_08D8A220
-gUnk_08D8A220:	@ 0x08D8A220
+	.global ProcScr_BackgroundSlide
+ProcScr_BackgroundSlide:	@ 0x08D8A220
 	.incbin "FireEmblem7J.base.gba", 0xD8A220, 0xD8A238 - 0xD8A220
 
 	.global gUnk_08D8A238

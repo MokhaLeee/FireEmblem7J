@@ -209,7 +209,7 @@ sub_806C178: @ 0x0806C178
 	adds r4, r0, #0
 	bl EndEkrBattleDeamon
 	bl EndEkrGauge
-	ldr r0, _0806C19C @ =OnGameLoopMain
+	ldr r0, _0806C19C @ =OnMain
 	bl SetMainFunc
 	ldr r0, _0806C1A0 @ =OnVBlank
 	bl SetOnVBlank
@@ -219,7 +219,7 @@ sub_806C178: @ 0x0806C178
 	pop {r0}
 	bx r0
 	.align 2, 0
-_0806C19C: .4byte OnGameLoopMain
+_0806C19C: .4byte OnMain
 _0806C1A0: .4byte OnVBlank
 
 	thumb_func_start sub_806C1A4
@@ -26110,7 +26110,7 @@ sub_80788D0: @ 0x080788D0
 	ldr r0, [r4, #4]
 	cmp r0, #1
 	beq _080788EA
-	bl sub_800AE98
+	bl StartEvent
 _080788EA:
 	pop {r4}
 	pop {r0}
@@ -28840,7 +28840,7 @@ StartBattleTalk: @ 0x08079C34
 	b _08079C6C
 _08079C66:
 	ldr r0, [r5, #8]
-	bl sub_800AE98
+	bl StartEvent
 _08079C6C:
 	bl sub_800AD60
 	ldr r0, [r5, #0xc]
@@ -29050,7 +29050,7 @@ _08079E06:
 	ldr r0, [r4, #4]
 	cmp r0, #0
 	beq _08079E1C
-	bl sub_800AE98
+	bl StartEvent
 _08079E1C:
 	bl sub_800AD60
 	ldr r0, [r4, #8]
@@ -29102,7 +29102,7 @@ _08079E88:
 	ldr r0, [r4, #8]
 	cmp r0, #0
 	beq _08079E92
-	bl sub_800AE98
+	bl StartEvent
 _08079E92:
 	bl sub_800AD60
 	ldr r0, [r4, #0xc]
@@ -29151,7 +29151,7 @@ sub_8079ED4: @ 0x08079ED4
 	orrs r1, r2
 	strb r1, [r0]
 	ldr r0, _08079F00 @ =gUnk_08D6F71C
-	bl sub_800AE98
+	bl StartEvent
 	pop {r0}
 	bx r0
 	.align 2, 0
@@ -29666,7 +29666,7 @@ sub_807A208: @ 0x0807A208
 	asrs r0, r0, #0x18
 	bl GetChapterEventInfo
 	ldr r0, [r0, #0x3c]
-	bl sub_800AE98
+	bl StartEvent
 	movs r0, #0x91
 	bl SetFlag
 	pop {r0}
@@ -32026,7 +32026,7 @@ sub_807B158: @ 0x0807B158
 	ldrb r1, [r1, #0x11]
 	lsls r1, r1, #0x18
 	asrs r1, r1, #0x18
-	bl sub_8015F0C
+	bl SetMapCursorPosition
 	b _0807B1CE
 	.align 2, 0
 _0807B1A8: .4byte gActiveUnit
@@ -32043,7 +32043,7 @@ _0807B1B4:
 	ldrb r1, [r1, #0x11]
 	lsls r1, r1, #0x18
 	asrs r1, r1, #0x18
-	bl sub_8015F0C
+	bl SetMapCursorPosition
 _0807B1CE:
 	pop {r4, r5, r6}
 	pop {r0}
@@ -39358,7 +39358,7 @@ _0807EAA0:
 	ldrsb r0, [r4, r0]
 	movs r1, #0x11
 	ldrsb r1, [r4, r1]
-	bl sub_8015F0C
+	bl SetMapCursorPosition
 	b _0807EAE8
 _0807EAC8:
 	ldr r4, _0807EAF0 @ =gUnk_08BFF970
@@ -41826,7 +41826,7 @@ sub_807FD9C: @ 0x0807FD9C
 	movs r7, #0
 	movs r6, #1
 	ldr r0, _0807FDE4 @ =gPlaySt
-	bl sub_80A05A0
+	bl RegisterChapterStats
 	bl sub_80B7880
 	bl sub_80A0054
 	bl sub_807FD58
@@ -41924,7 +41924,7 @@ _0807FE64:
 	ldr r1, _0807FE88 @ =gPlaySt
 	movs r0, #0xc
 	strb r0, [r1, #0xe]
-	bl sub_802E8A0
+	bl CleanupUnitsBeforeChapter
 	bl sub_80A0DCC
 	pop {r3}
 	mov r8, r3
@@ -42970,8 +42970,8 @@ _0808067C:
 	.align 2, 0
 _08080688: .4byte 0x0400001C
 
-	thumb_func_start sub_808068C
-sub_808068C: @ 0x0808068C
+	thumb_func_start StartMuralBackgroundAlt
+StartMuralBackgroundAlt: @ 0x0808068C
 	push {r4, r5, r6, r7, lr}
 	adds r7, r0, #0
 	adds r4, r1, #0
@@ -43031,7 +43031,7 @@ _080806FA:
 	adds r2, #1
 	cmp r2, r3
 	ble _080806FA
-	ldr r0, _08080720 @ =gUnk_08D8A220
+	ldr r0, _08080720 @ =ProcScr_BackgroundSlide
 	adds r1, r7, #0
 	bl Proc_Start
 	pop {r4, r5, r6, r7}
@@ -43041,10 +43041,10 @@ _080806FA:
 _08080714: .4byte gUnk_0843F084
 _08080718: .4byte gUnk_08439BF0
 _0808071C: .4byte 0x0000027F
-_08080720: .4byte gUnk_08D8A220
+_08080720: .4byte ProcScr_BackgroundSlide
 
-	thumb_func_start sub_8080724
-sub_8080724: @ 0x08080724
+	thumb_func_start StartMuralBackgroundExt
+StartMuralBackgroundExt: @ 0x08080724
 	push {r4, r5, r6, r7, lr}
 	mov r7, r8
 	push {r7}
@@ -43103,7 +43103,7 @@ _0808078E:
 	adds r2, #1
 	cmp r2, r3
 	ble _0808078E
-	ldr r0, _080807B8 @ =gUnk_08D8A220
+	ldr r0, _080807B8 @ =ProcScr_BackgroundSlide
 	mov r1, r8
 	bl Proc_Start
 	pop {r3}
@@ -43115,28 +43115,28 @@ _0808078E:
 _080807AC: .4byte gUnk_0843F084
 _080807B0: .4byte gUnk_08439BF0
 _080807B4: .4byte 0x0000027F
-_080807B8: .4byte gUnk_08D8A220
+_080807B8: .4byte ProcScr_BackgroundSlide
 
-	thumb_func_start sub_80807BC
-sub_80807BC: @ 0x080807BC
+	thumb_func_start EndMuralBackground
+EndMuralBackground: @ 0x080807BC
 	push {lr}
-	ldr r0, _080807C8 @ =gUnk_08D8A220
+	ldr r0, _080807C8 @ =ProcScr_BackgroundSlide
 	bl sub_8004748
 	pop {r0}
 	bx r0
 	.align 2, 0
-_080807C8: .4byte gUnk_08D8A220
+_080807C8: .4byte ProcScr_BackgroundSlide
 
-	thumb_func_start sub_80807CC
-sub_80807CC: @ 0x080807CC
+	thumb_func_start GetLastStatScreenUnitId
+GetLastStatScreenUnitId: @ 0x080807CC
 	ldr r0, _080807D4 @ =0x0203E648
 	ldrb r0, [r0, #1]
 	bx lr
 	.align 2, 0
 _080807D4: .4byte 0x0203E648
 
-	thumb_func_start sub_80807D8
-sub_80807D8: @ 0x080807D8
+	thumb_func_start SetStatScreenExcludedUnitFlags
+SetStatScreenExcludedUnitFlags: @ 0x080807D8
 	ldr r1, _080807E0 @ =0x0203E648
 	strb r0, [r1, #1]
 	bx lr
@@ -45840,7 +45840,7 @@ sub_8081DE4: @ 0x08081DE4
 	movs r2, #1
 	rsbs r2, r2, #0
 	movs r0, #0
-	bl sub_808068C
+	bl StartMuralBackgroundAlt
 	ldr r0, _08081EBC @ =gUnk_0840392C
 	ldr r1, _08081EC0 @ =0x06014800
 	bl Decompress
@@ -46269,7 +46269,7 @@ _080821E8: .4byte gStatScreenSt
 	thumb_func_start sub_80821EC
 sub_80821EC: @ 0x080821EC
 	push {lr}
-	bl sub_80807BC
+	bl EndMuralBackground
 	pop {r0}
 	bx r0
 	.align 2, 0
@@ -56770,7 +56770,7 @@ _08087530:
 	mov r0, r8
 	movs r1, #0
 	movs r2, #0xe
-	bl sub_808068C
+	bl StartMuralBackgroundAlt
 	ldr r0, _080875F4 @ =gUnk_0841BC44
 	movs r1, #0xe0
 	lsls r1, r1, #1
@@ -57287,7 +57287,7 @@ _08087A18:
 	bne _08087A4C
 	movs r0, #0xb
 	ldrsb r0, [r2, r0]
-	bl sub_80807D8
+	bl SetStatScreenExcludedUnitFlags
 	adds r1, r5, #0
 	adds r1, #0x2a
 	movs r0, #1
@@ -61056,7 +61056,7 @@ _080898D2:
 	strh r7, [r4, #0x3e]
 	b _0808998C
 _080898DE:
-	bl sub_80807CC
+	bl GetLastStatScreenUnitId
 _080898E2:
 	adds r1, r0, #0
 	movs r3, #0
@@ -62533,7 +62533,7 @@ _0808A4D0:
 	movs r0, #0
 	movs r1, #0
 	movs r2, #0xa
-	bl sub_808068C
+	bl StartMuralBackgroundAlt
 	mov r1, r8
 	str r0, [r1, #0x44]
 _0808A4DE:
@@ -62998,7 +62998,7 @@ _0808A850:
 	ldrb r0, [r0, #0xb]
 	lsls r0, r0, #0x18
 	asrs r0, r0, #0x18
-	bl sub_80807D8
+	bl SetStatScreenExcludedUnitFlags
 	ldr r0, _0808A888 @ =gPlaySt
 	adds r0, #0x41
 	ldrb r0, [r0]
@@ -63860,7 +63860,7 @@ _0808AEFC:
 	bl m4aSongNumStart
 _0808AF26:
 	movs r0, #0
-	bl sub_80807D8
+	bl SetStatScreenExcludedUnitFlags
 	adds r0, r4, #0
 	bl Proc_Break
 _0808AF32:
@@ -71515,7 +71515,7 @@ sub_808EA20: @ 0x0808EA20
 	movs r5, #0
 	b _0808EA42
 _0808EA26:
-	bl sub_80807CC
+	bl GetLastStatScreenUnitId
 	adds r4, r0, #0
 	adds r0, r5, #0
 	bl sub_808E644
@@ -71978,7 +71978,7 @@ sub_808ED8C: @ 0x0808ED8C
 	movs r0, #0
 	movs r1, #0
 	movs r2, #0xa
-	bl sub_808068C
+	bl StartMuralBackgroundAlt
 	b _0808EDAC
 _0808EDA4:
 	movs r0, #0
@@ -71995,7 +71995,7 @@ sub_808EDB0: @ 0x0808EDB0
 	lsls r0, r0, #0x18
 	cmp r0, #0
 	beq _0808EDC2
-	bl sub_80807BC
+	bl EndMuralBackground
 	b _0808EDC6
 _0808EDC2:
 	bl sub_8091104
@@ -103596,7 +103596,7 @@ _0809ED84:
 	movs r0, #0
 	movs r1, #0
 	movs r2, #0xa
-	bl sub_808068C
+	bl StartMuralBackgroundAlt
 	str r0, [r6, #0x2c]
 _0809EDA6:
 	add sp, #4

@@ -3109,7 +3109,7 @@ sub_8055FC4: @ 0x08055FC4
 	adds r4, r0, #0
 	bl EndEkrBattleDeamon
 	bl EndEkrGauge
-	ldr r0, _08055FE8 @ =OnGameLoopMain
+	ldr r0, _08055FE8 @ =OnMain
 	bl SetMainFunc
 	ldr r0, _08055FEC @ =OnVBlank
 	bl SetOnVBlank
@@ -3119,7 +3119,7 @@ sub_8055FC4: @ 0x08055FC4
 	pop {r0}
 	bx r0
 	.align 2, 0
-_08055FE8: .4byte OnGameLoopMain
+_08055FE8: .4byte OnMain
 _08055FEC: .4byte OnVBlank
 
 	thumb_func_start sub_8055FF0

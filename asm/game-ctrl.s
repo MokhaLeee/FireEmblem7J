@@ -132,8 +132,8 @@ _08012C9A:
 	.align 2, 0
 _08012CA0: .4byte gpKeySt
 
-	thumb_func_start sub_8012CA4
-sub_8012CA4: @ 0x08012CA4
+	thumb_func_start GC_InitSramResetScreen
+GC_InitSramResetScreen: @ 0x08012CA4
 	push {lr}
 	movs r0, #0
 	bl InitBgs
@@ -151,7 +151,7 @@ sub_8012CA4: @ 0x08012CA4
 	rsbs r2, r2, #0
 	movs r0, #3
 	movs r1, #0
-	bl sub_808068C
+	bl StartMuralBackgroundAlt
 	pop {r0}
 	bx r0
 	.align 2, 0
@@ -242,7 +242,7 @@ sub_8012D60: @ 0x08012D60
 	bl EnablePalSync
 	ldr r0, _08012D90 @ =sub_8012D4C
 	bl sub_8004648
-	ldr r0, _08012D94 @ =OnGameLoopMain
+	ldr r0, _08012D94 @ =OnMain
 	bl SetMainFunc
 	add sp, #4
 	pop {r0}
@@ -251,7 +251,7 @@ sub_8012D60: @ 0x08012D60
 _08012D88: .4byte gPal
 _08012D8C: .4byte 0x01000100
 _08012D90: .4byte sub_8012D4C
-_08012D94: .4byte OnGameLoopMain
+_08012D94: .4byte OnMain
 
 	thumb_func_start sub_8012D98
 sub_8012D98: @ 0x08012D98
@@ -539,7 +539,7 @@ sub_8012FB0: @ 0x08012FB0
 	push {lr}
 	bl sub_80A2BFC
 	bl ClearPidStats
-	bl sub_802E8A0
+	bl CleanupUnitsBeforeChapter
 	ldr r1, _08012FC8 @ =gPlaySt
 	movs r0, #0x30
 	strb r0, [r1, #0xe]
@@ -613,8 +613,8 @@ _0801304A:
 	pop {r0}
 	bx r0
 
-	thumb_func_start sub_8013050
-sub_8013050: @ 0x08013050
+	thumb_func_start GC_CheckForGameEnded
+GC_CheckForGameEnded: @ 0x08013050
 	push {lr}
 	adds r2, r0, #0
 	ldr r1, _0801306C @ =gPlaySt
@@ -632,8 +632,8 @@ _08013068:
 	.align 2, 0
 _0801306C: .4byte gPlaySt
 
-	thumb_func_start sub_8013070
-sub_8013070: @ 0x08013070
+	thumb_func_start GC_PostLoadSuspend
+GC_PostLoadSuspend: @ 0x08013070
 	push {lr}
 	adds r2, r0, #0
 	ldr r1, _0801308C @ =gPlaySt
@@ -656,18 +656,18 @@ _08013098:
 	pop {r0}
 	bx r0
 
-	thumb_func_start sub_801309C
-sub_801309C: @ 0x0801309C
+	thumb_func_start GC_InitNextChapter
+GC_InitNextChapter: @ 0x0801309C
 	push {r4, r5, lr}
 	adds r4, r0, #0
 	ldr r5, _080130BC @ =gPlaySt
 	adds r0, r5, #0
-	bl sub_80A05A0
+	bl RegisterChapterStats
 	bl sub_80B7880
 	adds r4, #0x2a
 	ldrb r0, [r4]
 	strb r0, [r5, #0xe]
-	bl sub_802E8A0
+	bl CleanupUnitsBeforeChapter
 	pop {r4, r5}
 	pop {r0}
 	bx r0
@@ -699,8 +699,8 @@ sub_80130DC: @ 0x080130DC
 	.align 2, 0
 _080130E4: .4byte gPlaySt
 
-	thumb_func_start sub_80130E8
-sub_80130E8: @ 0x080130E8
+	thumb_func_start GC_DarkenScreen_
+GC_DarkenScreen_: @ 0x080130E8
 	ldr r3, _08013120 @ =gDispIo
 	adds r2, r3, #0
 	adds r2, #0x3c
@@ -749,13 +749,13 @@ sub_8013128: @ 0x08013128
 _08013140: .4byte gPlaySt
 _08013144:
 	ldr r0, _0801314C @ =gUnk_08D8A0E0
-	bl sub_800AE98
+	bl StartEvent
 	b _08013156
 	.align 2, 0
 _0801314C: .4byte gUnk_08D8A0E0
 _08013150:
 	ldr r0, _0801315C @ =gUnk_08D8A114
-	bl sub_800AE98
+	bl StartEvent
 _08013156:
 	pop {r0}
 	bx r0
@@ -778,21 +778,21 @@ sub_8013160: @ 0x08013160
 _08013178: .4byte gPlaySt
 _0801317C:
 	ldr r0, _08013184 @ =gUnk_08D8A148
-	bl sub_800AE98
+	bl StartEvent
 	b _0801318E
 	.align 2, 0
 _08013184: .4byte gUnk_08D8A148
 _08013188:
 	ldr r0, _08013194 @ =gUnk_08D8A1B4
-	bl sub_800AE98
+	bl StartEvent
 _0801318E:
 	pop {r0}
 	bx r0
 	.align 2, 0
 _08013194: .4byte gUnk_08D8A1B4
 
-	thumb_func_start sub_8013198
-sub_8013198: @ 0x08013198
+	thumb_func_start GC_InitDemo
+GC_InitDemo: @ 0x08013198
 	ldr r1, _080131A4 @ =gPlaySt
 	ldrb r1, [r1, #0xe]
 	adds r0, #0x30
@@ -801,8 +801,8 @@ sub_8013198: @ 0x08013198
 	.align 2, 0
 _080131A4: .4byte gPlaySt
 
-	thumb_func_start sub_80131A8
-sub_80131A8: @ 0x080131A8
+	thumb_func_start GC_DarkenScreen
+GC_DarkenScreen: @ 0x080131A8
 	ldr r1, _080131B4 @ =gPlaySt
 	adds r0, #0x30
 	ldrb r0, [r0]
@@ -814,7 +814,7 @@ _080131B4: .4byte gPlaySt
 	thumb_func_start StartGame
 StartGame: @ 0x080131B8
 	push {lr}
-	ldr r0, _080131E4 @ =OnGameLoopMain
+	ldr r0, _080131E4 @ =OnMain
 	bl SetMainFunc
 	ldr r0, _080131E8 @ =OnVBlank
 	bl SetOnVBlank
@@ -832,7 +832,7 @@ StartGame: @ 0x080131B8
 	pop {r0}
 	bx r0
 	.align 2, 0
-_080131E4: .4byte OnGameLoopMain
+_080131E4: .4byte OnMain
 _080131E8: .4byte OnVBlank
 _080131EC: .4byte ProcScr_GameControl
 
@@ -846,8 +846,8 @@ sub_80131F0: @ 0x080131F0
 	.align 2, 0
 _080131FC: .4byte ProcScr_GameControl
 
-	thumb_func_start sub_8013200
-sub_8013200: @ 0x08013200
+	thumb_func_start SetNextGameAction
+SetNextGameAction: @ 0x08013200
 	push {r4, lr}
 	adds r4, r0, #0
 	bl sub_80131F0

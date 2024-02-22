@@ -2750,11 +2750,11 @@ _080A56AE:
 	cmp r0, #0x10
 	bne _080A575E
 	movs r0, #7
-	bl sub_8013200
+	bl SetNextGameAction
 	b _080A575E
 _080A56E0:
 	movs r0, #6
-	bl sub_8013200
+	bl SetNextGameAction
 	b _080A575E
 _080A56E8:
 	movs r0, #0x40
@@ -2777,11 +2777,11 @@ _080A56E8:
 	cmp r0, #0
 	beq _080A5718
 	movs r0, #0xb
-	bl sub_8013200
+	bl SetNextGameAction
 	b _080A575E
 _080A5718:
 	movs r0, #5
-	bl sub_8013200
+	bl SetNextGameAction
 	b _080A575E
 _080A5720:
 	movs r0, #1
@@ -2791,7 +2791,7 @@ _080A5720:
 	movs r0, #3
 	bl ReadSuspendSave
 	movs r0, #4
-	bl sub_8013200
+	bl SetNextGameAction
 	b _080A575E
 _080A5736:
 	movs r0, #0x82
@@ -2803,7 +2803,7 @@ _080A5736:
 	bl ReadGameSave
 	ldrb r0, [r4]
 	adds r0, #1
-	bl sub_8013200
+	bl SetNextGameAction
 	b _080A575E
 _080A5750:
 	movs r0, #0x10
@@ -2811,7 +2811,7 @@ _080A5750:
 	cmp r0, #0
 	beq _080A575E
 	movs r0, #0
-	bl sub_8013200
+	bl SetNextGameAction
 _080A575E:
 	pop {r4, r5}
 	pop {r0}
@@ -2836,7 +2836,7 @@ sub_80A577C: @ 0x080A577C
 	push {r4, r5, lr}
 	adds r5, r0, #0
 	movs r0, #8
-	bl sub_8013200
+	bl SetNextGameAction
 	ldr r4, _080A57A4 @ =gPlaySt
 	movs r0, #0x80
 	ldrb r1, [r4, #0x14]
@@ -6819,7 +6819,7 @@ sub_80A75C4: @ 0x080A75C4
 	movs r0, #0
 	movs r2, #0xa
 	movs r3, #1
-	bl sub_8080724
+	bl StartMuralBackgroundExt
 	bl sub_80A7424
 	ldr r0, _080A76C4 @ =sub_80A7514
 	mov r1, sb
@@ -7012,7 +7012,7 @@ _080A7814:
 sub_80A781C: @ 0x080A781C
 	push {r4, lr}
 	adds r4, r0, #0
-	bl sub_80807BC
+	bl EndMuralBackground
 	bl sub_808EDB0
 	adds r0, r4, #0
 	bl EndAllProcChildren
