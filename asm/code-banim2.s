@@ -3461,7 +3461,7 @@ _08068B40:
 	ldr r0, [r4, #0x5c]
 	movs r1, #0x38
 	movs r2, #0
-	bl sub_80565FC
+	bl NewEfxRestWINH_
 	ldr r0, [r4, #0x5c]
 	mov r3, r8
 	str r3, [sp]
@@ -3507,7 +3507,7 @@ _08068B84:
 	ldr r0, [r4, #0x5c]
 	movs r1, #0x38
 	movs r2, #0
-	bl sub_80565FC
+	bl NewEfxRestWINH_
 	adds r2, r6, #0
 	adds r2, #0x3c
 	movs r0, #0x3f
@@ -3639,7 +3639,7 @@ _08068CA8:
 	adds r0, r5, #0
 	movs r1, #0x82
 	movs r2, #0
-	bl sub_80565FC
+	bl NewEfxRestWINH_
 	ldr r0, _08068D04 @ =0x0000013D
 	movs r3, #2
 	ldrsh r2, [r5, r3]

@@ -232,6 +232,9 @@ SECTIONS
 		asm/code-banim1.o(.text);
 		src/banim-main.o(.text);
 		asm/code-banim.o(.text);
+		src/banim-efxdrsmmoya.o(.text);
+		asm/banim-efxdrsmmoya.o(.text);
+		asm/code-banim-08064458.o(.text);
 		src/banim-ekrdragon.o(.text);
 		src/banim-ekrdragonfx.o(.text);
 		asm/code-banim2.o(.text);
@@ -290,6 +293,8 @@ SECTIONS
 		. = ALIGN(4); data/data.o(.data)
 		. = ALIGN(4); src/battle.o(.data)
 		. = ALIGN(4); data/data_08C03574.o(.data)
+		. = ALIGN(4); src/banim-efxdrsmmoya.o(.data)
+		. = ALIGN(4); data/data_08C13A64.o(.data)
 		. = ALIGN(4); src/banim-ekrdragon.o(.data)
 		. = ALIGN(4); src/banim-ekrdragonfx.o(.data)
 		. = ALIGN(4); src/banim-ekrdragonfx-data.o(.data)

@@ -381,8 +381,9 @@ void BattleAIS_ExecCommands(void)
                         anim->state3 |= 0x20;
                         if (GetAISLayerId(anim) == 0)
                             sub_8050FF0(1);
-                        
-                        sub_8064458(anim);
+
+                        /* Show Nergal's dark aura animation */
+                        NewEfxDrsmmoya(anim);
                         NewEfxspdquake(anim);
                     }
 
