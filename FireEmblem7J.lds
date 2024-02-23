@@ -243,6 +243,8 @@ SECTIONS
 		src/banim-ekrdragonfx.o(.text);
 		asm/code-banim2.o(.text);
 		asm/code.o(.text);
+		src/quintessence-fx.o(.text);
+		asm/code_0807CD8C.o(.text);
 		src/save_core.o(.text);
 		asm/save.o(.text);
 		src/savemenu.o(.text);
