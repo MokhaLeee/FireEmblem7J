@@ -312,6 +312,8 @@ SECTIONS
 		. = ALIGN(4); src/banim-ekrdragonfx.o(.data)
 		. = ALIGN(4); src/banim-ekrdragonfx-data.o(.data)
 		. = ALIGN(4); data/data_08C486EC.o(.data)
+		. = ALIGN(4); src/quintessence-fx.o(.data)
+		. = ALIGN(4); data/data_08D6FAC4.o(.data)
 		. = ALIGN(4); src/save_core.o(.data)
 		. = ALIGN(4); data/data_08DAD284.o(.data)
 		. = ALIGN(4); src/sysutil.o(.data)

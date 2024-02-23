@@ -33,7 +33,16 @@ void sub_807CA9C(struct QuintessenceFxProc * proc)
     SetBgOffset(BG_2, proc->unk_58 >> 2, proc->unk_58 >> 1);
 }
 
-extern struct ProcCmd gUnk_08D6FA14[];
+// clang-format off
+
+struct ProcCmd CONST_DATA gUnk_08D6FA14[] = {
+    PROC_CALL(sub_807CA94),
+    PROC_REPEAT(sub_807CA9C),
+
+    PROC_END,
+};
+
+// clang-format on
 
 void sub_807CAB8(struct QuintessenceFxProc * proc)
 {
@@ -143,7 +152,41 @@ void sub_807CCCC(void)
     gDispIo.bg3_ct.priority = 3;
 }
 
-extern struct ProcCmd gUnk_08D6FA2C[];
+// clang-format off
+
+void sub_807B430(struct Proc *);
+void sub_807B43C(struct Proc *);
+
+struct ProcCmd CONST_DATA gUnk_08D6FA2C[] = {
+    PROC_SET_END_CB(sub_807CCCC),
+
+    PROC_CALL(sub_807B430),
+    PROC_CALL(sub_807CAB8),
+    PROC_REPEAT(sub_807CB80),
+    PROC_CALL(sub_807B43C),
+
+    PROC_BLOCK,
+
+PROC_LABEL(0),
+    PROC_CALL(sub_807B430),
+    PROC_CALL(sub_807CBD0),
+    PROC_REPEAT(sub_807CC2C),
+    PROC_CALL(sub_807B43C),
+
+    PROC_BLOCK,
+
+PROC_LABEL(1),
+    PROC_CALL(sub_807B430),
+    PROC_CALL(sub_807CBD0),
+    PROC_REPEAT(sub_807CC7C),
+    PROC_CALL(sub_807B43C),
+
+    PROC_BLOCK,
+
+    PROC_END,
+};
+
+// clang-format on
 
 void sub_807CD34(struct Proc * parent)
 {
