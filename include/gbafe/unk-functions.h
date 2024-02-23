@@ -44,8 +44,10 @@ void StartHelpBoxExt_Unk(int x, int y, int mid);
 void FadeBgmOut(int volume);
 void DisplayUiHand(int x, int y);
 void DisplayBmTextShadow(int x, int y);
-void sub_807702C(void); // InitScanlineEffect
-void sub_8077898(void); // SwapScanlineBufs
+void InitScanlineEffect(void);
+void SwapScanlineBufs(void);
 u16 * sub_8077CEC(int, int);
 void sub_80781C8(u16 *, s16, s16, s16, s16, s16, s16);
-void sub_807850C(void);
+void QuintessenceFx_OnHBlank(void);
+void TryLockParentProc(ProcPtr);
+void TryUnlockParentProc(ProcPtr);

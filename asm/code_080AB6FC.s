@@ -21755,7 +21755,7 @@ sub_80B60F0: @ 0x080B60F0
 	ands r0, r1
 	cmp r0, #0
 	beq _080B615A
-	bl sub_807702C
+	bl InitScanlineEffect
 	ldr r0, _080B6160 @ =sub_8078030
 	bl SetOnHBlankB
 	movs r0, #0
@@ -22625,7 +22625,7 @@ sub_80B67B0: @ 0x080B67B0
 	movs r1, #0
 	mov sb, r1
 	str r1, [r0, #0x2c]
-	bl sub_807702C
+	bl InitScanlineEffect
 	ldr r2, _080B6898 @ =0x030027CC
 	mov ip, r2
 	ldr r0, _080B689C @ =0x0000FFE0
@@ -23505,7 +23505,7 @@ sub_80B6E98: @ 0x080B6E98
 	push {r5, r6, r7}
 	movs r1, #0
 	str r1, [r0, #0x2c]
-	bl sub_807702C
+	bl InitScanlineEffect
 	ldr r2, _080B6F84 @ =0x030027CC
 	mov ip, r2
 	ldr r0, _080B6F88 @ =0x0000FFE0
@@ -29358,11 +29358,11 @@ sub_80B9C20: @ 0x080B9C20
 	movs r1, #0xa0
 	movs r2, #0x20
 	bl ApplyPaletteExt
-	ldr r0, _080B9C78 @ =gUnk_08406218
+	ldr r0, _080B9C78 @ =Img_ChapterIntroFog
 	ldr r1, _080B9C7C @ =0x06004000
 	bl Decompress
 	ldr r0, _080B9C80 @ =gBg2Tm
-	ldr r1, _080B9C84 @ =gUnk_081BD6E4
+	ldr r1, _080B9C84 @ =Tsa_QuintessenceFx
 	movs r2, #0xa4
 	lsls r2, r2, #7
 	bl TmApplyTsa_thm
@@ -29377,10 +29377,10 @@ sub_80B9C20: @ 0x080B9C20
 	.align 2, 0
 _080B9C70: .4byte gDispIo
 _080B9C74: .4byte gUnk_08407E9C
-_080B9C78: .4byte gUnk_08406218
+_080B9C78: .4byte Img_ChapterIntroFog
 _080B9C7C: .4byte 0x06004000
 _080B9C80: .4byte gBg2Tm
-_080B9C84: .4byte gUnk_081BD6E4
+_080B9C84: .4byte Tsa_QuintessenceFx
 
 	thumb_func_start sub_80B9C88
 sub_80B9C88: @ 0x080B9C88
@@ -32675,7 +32675,7 @@ sub_80BB62C: @ 0x080BB62C
 	bl TmApplyTsa_thm
 	movs r0, #1
 	bl EnableBgSync
-	bl sub_807702C
+	bl InitScanlineEffect
 	ldr r0, _080BB7D0 @ =sub_80782AC
 	bl SetOnHBlankA
 	ldr r0, _080BB7D4 @ =gUnk_08DB8F80
@@ -32811,7 +32811,7 @@ _080BB86E:
 	ldrsh r3, [r4, r7]
 	str r6, [sp]
 	bl sub_8077794
-	bl sub_8077898
+	bl SwapScanlineBufs
 	ldrh r2, [r4, #0x10]
 	movs r0, #0
 	movs r1, #0

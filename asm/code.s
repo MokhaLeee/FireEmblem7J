@@ -8650,7 +8650,7 @@ _08070094:
 	.align 2, 0
 _080700B0: .4byte 0x0203E0D4
 _080700B4:
-	bl sub_807702C
+	bl InitScanlineEffect
 	ldr r0, _080700F4 @ =0x0203E0D4
 	ldrb r1, [r0, #0x11]
 	adds r0, r1, #0
@@ -14809,7 +14809,7 @@ _080730FA:
 	movs r4, #2
 	str r4, [sp, #4]
 	bl sub_8012AF0
-	bl sub_807702C
+	bl InitScanlineEffect
 	bl sub_807706C
 	bl sub_807456C
 	ldr r0, _08073200 @ =gDispIo
@@ -16048,7 +16048,7 @@ sub_8073B40: @ 0x08073B40
 	ldr r1, [r0, #0x30]
 	movs r0, #0xfd
 	bl sub_80151FC
-	bl sub_807702C
+	bl InitScanlineEffect
 	bl sub_807706C
 	ldr r1, _08073C0C @ =sub_8077248
 	adds r0, r1, #0
@@ -17070,7 +17070,7 @@ _0807434C:
 	movs r2, #0x20
 	movs r3, #4
 	bl sub_8014BA4
-	bl sub_807702C
+	bl InitScanlineEffect
 	bl sub_807706C
 	bl sub_807456C
 	ldr r0, _08074438 @ =gDispIo
@@ -22838,8 +22838,8 @@ sub_8077014: @ 0x08077014
 	bx r0
 	.align 2, 0
 
-	thumb_func_start sub_807702C
-sub_807702C: @ 0x0807702C
+	thumb_func_start InitScanlineEffect
+InitScanlineEffect: @ 0x0807702C
 	push {r7, lr}
 	mov r7, sp
 	ldr r1, _0807705C @ =0x0203E138
@@ -23037,7 +23037,7 @@ sub_807719C: @ 0x0807719C
 	ldr r3, [r7, #8]
 	ldr r1, [r7]
 	bl sub_807798C
-	bl sub_8077898
+	bl SwapScanlineBufs
 	add sp, #0xc
 	pop {r7}
 	pop {r0}
@@ -23485,7 +23485,7 @@ sub_8077420: @ 0x08077420
 	lsrs r4, r5, #0x10
 	str r4, [sp]
 	bl sub_8077A70
-	bl sub_8077898
+	bl SwapScanlineBufs
 	ldr r1, _08077558 @ =sub_80772CC
 	adds r0, r1, #0
 	bl SetOnHBlankA
@@ -23946,8 +23946,8 @@ _08077890:
 	pop {r0}
 	bx r0
 
-	thumb_func_start sub_8077898
-sub_8077898: @ 0x08077898
+	thumb_func_start SwapScanlineBufs
+SwapScanlineBufs: @ 0x08077898
 	push {r7, lr}
 	sub sp, #4
 	mov r7, sp
@@ -24421,7 +24421,7 @@ sub_8077BE0: @ 0x08077BE0
 	movs r2, #0x10
 	movs r3, #8
 	bl sub_807761C
-	bl sub_8077898
+	bl SwapScanlineBufs
 	add sp, #4
 	pop {r4, r7}
 	pop {r0}
@@ -24717,7 +24717,7 @@ sub_8077E1C: @ 0x08077E1C
 	ldr r3, [r7, #8]
 	ldr r1, [r7]
 	bl sub_8077D1C
-	bl sub_8077898
+	bl SwapScanlineBufs
 	add sp, #0xc
 	pop {r7}
 	pop {r0}
@@ -24915,7 +24915,7 @@ _08077F8A:
 	.align 2, 0
 _08077FA4: .4byte 0x0203E638
 _08077FA8:
-	bl sub_8077898
+	bl SwapScanlineBufs
 	add sp, #0x14
 	pop {r7}
 	pop {r0}
@@ -25113,7 +25113,7 @@ _080780F6:
 	.align 2, 0
 _08078120: .4byte 0x0203E640
 _08078124:
-	bl sub_8077898
+	bl SwapScanlineBufs
 	add sp, #0xc
 	pop {r7}
 	pop {r0}
@@ -25626,8 +25626,8 @@ _08078500: .4byte 0x0400001C
 _08078504: .4byte 0x0203E640
 _08078508: .4byte 0x0400001E
 
-	thumb_func_start sub_807850C
-sub_807850C: @ 0x0807850C
+	thumb_func_start QuintessenceFx_OnHBlank
+QuintessenceFx_OnHBlank: @ 0x0807850C
 	push {r7, lr}
 	sub sp, #4
 	mov r7, sp
@@ -26090,7 +26090,7 @@ sub_8078894: @ 0x08078894
 	str r1, [sp]
 	ldr r1, [r7]
 	bl sub_8078688
-	bl sub_8077898
+	bl SwapScanlineBufs
 	add sp, #0x14
 	pop {r7}
 	pop {r0}
@@ -32369,19 +32369,19 @@ _0807B42A:
 	bx r0
 	.align 2, 0
 
-	thumb_func_start sub_807B430
-sub_807B430: @ 0x0807B430
+	thumb_func_start TryLockParentProc
+TryLockParentProc: @ 0x0807B430
 	push {lr}
 	ldr r0, [r0, #0x14]
-	bl sub_8091618
+	bl TryLockProc
 	pop {r0}
 	bx r0
 
-	thumb_func_start sub_807B43C
-sub_807B43C: @ 0x0807B43C
+	thumb_func_start TryUnlockParentProc
+TryUnlockParentProc: @ 0x0807B43C
 	push {lr}
 	ldr r0, [r0, #0x14]
-	bl sub_8091628
+	bl TryUnlockProc
 	pop {r0}
 	bx r0
 
@@ -33016,7 +33016,7 @@ sub_807B8E4: @ 0x0807B8E4
 	movs r2, #8
 	movs r3, #3
 	bl sub_8077794
-	bl sub_8077898
+	bl SwapScanlineBufs
 	adds r4, #0x64
 	ldrh r4, [r4]
 	movs r0, #3
@@ -33093,7 +33093,7 @@ sub_807B94C: @ 0x0807B94C
 	movs r2, #2
 	movs r3, #6
 	bl sub_80AB7F4
-	bl sub_807702C
+	bl InitScanlineEffect
 	ldr r0, _0807BA0C @ =sub_80783DC
 	bl SetOnHBlankA
 	ldr r0, _0807BA10 @ =sub_807B8E4
@@ -33191,7 +33191,7 @@ sub_807BA14: @ 0x0807BA14
 	adds r0, #0x4c
 	strh r5, [r0]
 	ldr r0, [r4, #0x14]
-	bl sub_8091618
+	bl TryLockProc
 	adds r4, #0x64
 	movs r0, #1
 	strh r0, [r4]
@@ -33317,7 +33317,7 @@ sub_807BB48: @ 0x0807BB48
 	orrs r2, r0
 	strb r2, [r5, #0x18]
 	ldr r0, [r4, #0x14]
-	bl sub_8091628
+	bl TryUnlockProc
 	adds r4, #0x64
 	movs r0, #2
 	strh r0, [r4]
@@ -33639,7 +33639,7 @@ sub_807BDFC: @ 0x0807BDFC
 	adds r1, r2, #0
 	orrs r0, r1
 	strh r0, [r7, #0x3c]
-	bl sub_807702C
+	bl InitScanlineEffect
 	movs r0, #0
 	movs r1, #0
 	bl sub_80780E0
@@ -34211,7 +34211,7 @@ sub_807C28C: @ 0x0807C28C
 	adds r1, r2, #0
 	orrs r0, r1
 	strh r0, [r7, #0x3c]
-	bl sub_807702C
+	bl InitScanlineEffect
 	movs r0, #0
 	movs r1, #0
 	bl sub_80780E0
@@ -34748,7 +34748,7 @@ sub_807C6F0: @ 0x0807C6F0
 	movs r2, #3
 	movs r3, #0xf
 	bl sub_80781C8
-	bl sub_8077898
+	bl SwapScanlineBufs
 	add sp, #0xc
 	pop {r3}
 	mov r8, r3
@@ -34779,7 +34779,7 @@ sub_807C754: @ 0x0807C754
 	bl ApplyPaletteExt
 	movs r0, #2
 	bl EnableBgSync
-	bl sub_807702C
+	bl InitScanlineEffect
 	ldr r0, _0807C7CC @ =sub_8078130
 	bl SetOnHBlankA
 	ldr r0, _0807C7D0 @ =sub_807C6F0

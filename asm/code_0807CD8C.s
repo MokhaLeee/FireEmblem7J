@@ -130,7 +130,7 @@ sub_807CE14: @ 0x0807CE14
 	movs r2, #3
 	movs r3, #2
 	bl sub_80781C8
-	bl sub_8077898
+	bl SwapScanlineBufs
 	add sp, #0xc
 	pop {r3}
 	mov r8, r3
@@ -230,7 +230,7 @@ sub_807CE90: @ 0x0807CE90
 	adds r0, r5, #0
 	adds r0, #0x4c
 	strh r4, [r0]
-	bl sub_807702C
+	bl InitScanlineEffect
 	ldr r0, _0807CF8C @ =sub_80782AC
 	bl SetOnHBlankA
 	ldr r0, _0807CF90 @ =sub_807CE14
@@ -521,7 +521,7 @@ sub_807D140: @ 0x0807D140
 	adds r1, r2, #0
 	orrs r0, r1
 	strh r0, [r6, #0x3c]
-	bl sub_807702C
+	bl InitScanlineEffect
 	movs r0, #0
 	movs r1, #0
 	bl sub_80780E0
@@ -1189,7 +1189,7 @@ sub_807D6E0: @ 0x0807D6E0
 	push {r5, r6, r7}
 	movs r1, #0
 	str r1, [r0, #0x2c]
-	bl sub_807702C
+	bl InitScanlineEffect
 	ldr r2, _0807D7BC @ =0x030027CC
 	mov ip, r2
 	ldr r0, _0807D7C0 @ =0x0000FFE0
@@ -41625,8 +41625,8 @@ sub_80915D8: @ 0x080915D8
 _08091610: .4byte gUnk_08D8C94C
 _08091614: .4byte gDispIo
 
-	thumb_func_start sub_8091618
-sub_8091618: @ 0x08091618
+	thumb_func_start TryLockProc
+TryLockProc: @ 0x08091618
 	cmp r0, #0
 	beq _08091626
 	adds r1, r0, #0
@@ -41637,8 +41637,8 @@ sub_8091618: @ 0x08091618
 _08091626:
 	bx lr
 
-	thumb_func_start sub_8091628
-sub_8091628: @ 0x08091628
+	thumb_func_start TryUnlockProc
+TryUnlockProc: @ 0x08091628
 	cmp r0, #0
 	beq _0809163A
 	adds r1, r0, #0

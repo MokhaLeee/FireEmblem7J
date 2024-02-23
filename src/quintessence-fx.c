@@ -5,46 +5,46 @@ struct QuintessenceFxProc
     /* 00 */ PROC_HEADER;
     /* 29 */ STRUCT_PAD(0x29, 0x4C);
 
-    /* 4C */ s16 unk_4c;
+    /* 4C */ s16 timer;
 
     /* 4E */ STRUCT_PAD(0x4E, 0x58);
 
-    /* 58 */ int unk_58;
+    /* 58 */ int bg2_offset;
 };
 
-void sub_807CA30(struct QuintessenceFxProc * proc)
+void QuintessenceFx_ParallelWorker(struct QuintessenceFxProc * proc)
 {
-    proc->unk_58++;
+    proc->bg2_offset++;
 
-    sub_80781C8(sub_8077CEC(1, 0), proc->unk_58, 3, 2, 0, 60, 16);
-    sub_80781C8(sub_8077CEC(1, 160), proc->unk_58, 2, 4, 0, 60, 16);
+    sub_80781C8(sub_8077CEC(1, 0), proc->bg2_offset, 3, 2, 0, 60, 16);
+    sub_80781C8(sub_8077CEC(1, 160), proc->bg2_offset, 2, 4, 0, 60, 16);
 
-    sub_8077898();
+    SwapScanlineBufs();
 }
 
-void sub_807CA94(struct QuintessenceFxProc * proc)
+void QuintFxBg2_Init(struct QuintessenceFxProc * proc)
 {
-    proc->unk_58 = 0;
+    proc->bg2_offset = 0;
 }
 
-void sub_807CA9C(struct QuintessenceFxProc * proc)
+void QuintFxBg2_Loop(struct QuintessenceFxProc * proc)
 {
-    proc->unk_58++;
-    SetBgOffset(BG_2, proc->unk_58 >> 2, proc->unk_58 >> 1);
+    proc->bg2_offset++;
+    SetBgOffset(BG_2, proc->bg2_offset >> 2, proc->bg2_offset >> 1);
 }
 
 // clang-format off
 
-struct ProcCmd CONST_DATA gUnk_08D6FA14[] = {
-    PROC_CALL(sub_807CA94),
-    PROC_REPEAT(sub_807CA9C),
+struct ProcCmd CONST_DATA ProcScr_QuintessenceFxBg2Scroll[] = {
+    PROC_CALL(QuintFxBg2_Init),
+    PROC_REPEAT(QuintFxBg2_Loop),
 
     PROC_END,
 };
 
 // clang-format on
 
-void sub_807CAB8(struct QuintessenceFxProc * proc)
+void QuintessenceFx_Init_Main(struct QuintessenceFxProc * proc)
 {
     gDispIo.blend_ct.effect = 1;
 
@@ -55,27 +55,27 @@ void sub_807CAB8(struct QuintessenceFxProc * proc)
     SetBlendTargetA(0, 0, 1, 0, 0);
     SetBlendTargetB(0, 0, 0, 1, 0);
 
-    ApplyPalette(gUnk_081BD6C4, 5);
-    Decompress(gUnk_08406218, (void *)0x06004000);
-    TmApplyTsa_thm(gBg2Tm, gUnk_081BD6E4, 0x5200);
+    ApplyPalette(Pal_QuintessenceFx, 5);
+    Decompress(Img_ChapterIntroFog, (void *)0x06004000);
+    TmApplyTsa_thm(gBg2Tm, Tsa_QuintessenceFx, 0x5200);
 
     EnableBgSync(BG2_SYNC_BIT | BG3_SYNC_BIT);
     SetBgOffset(BG_2, 0, 0);
 
-    proc->unk_4c = 0;
-    proc->unk_58 = 0;
+    proc->timer = 0;
+    proc->bg2_offset = 0;
 
-    sub_807702C();
+    InitScanlineEffect();
 
-    SetOnHBlankA(sub_807850C);
-    StartParallelWorker(sub_807CA30, proc);
+    SetOnHBlankA(QuintessenceFx_OnHBlank);
+    StartParallelWorker(QuintessenceFx_ParallelWorker, proc);
 
-    Proc_Start(gUnk_08D6FA14, PROC_TREE_VSYNC);
+    Proc_Start(ProcScr_QuintessenceFxBg2Scroll, PROC_TREE_VSYNC);
 }
 
-void sub_807CB80(struct QuintessenceFxProc * proc)
+void QuintessenceFx_Loop_A(struct QuintessenceFxProc * proc)
 {
-    int bld_amt = proc->unk_4c++ >> 1;
+    int bld_amt = proc->timer++ >> 1;
 
     gDispIo.blend_ct.effect = 1;
 
@@ -89,7 +89,7 @@ void sub_807CB80(struct QuintessenceFxProc * proc)
     }
 }
 
-void sub_807CBD0(struct QuintessenceFxProc * proc)
+void QuintessenceFx_ResetBlend(struct QuintessenceFxProc * proc)
 {
     gDispIo.blend_ct.effect = 1;
 
@@ -100,12 +100,12 @@ void sub_807CBD0(struct QuintessenceFxProc * proc)
     SetBlendTargetA(0, 0, 1, 0, 0);
     SetBlendTargetB(0, 0, 0, 1, 1);
 
-    proc->unk_4c = 0;
+    proc->timer = 0;
 }
 
-void sub_807CC2C(struct QuintessenceFxProc * proc)
+void QuintessenceFx_Loop_B(struct QuintessenceFxProc * proc)
 {
-    int bld_amt = proc->unk_4c++ >> 2;
+    int bld_amt = proc->timer++ >> 2;
 
     gDispIo.blend_ct.effect = 1;
 
@@ -119,9 +119,9 @@ void sub_807CC2C(struct QuintessenceFxProc * proc)
     }
 }
 
-void sub_807CC7C(struct QuintessenceFxProc * proc)
+void QuintessenceFx_Loop_C(struct QuintessenceFxProc * proc)
 {
-    int bld_amt = proc->unk_4c++ >> 2;
+    int bld_amt = proc->timer++ >> 2;
 
     gDispIo.blend_ct.effect = 1;
 
@@ -135,9 +135,9 @@ void sub_807CC7C(struct QuintessenceFxProc * proc)
     }
 }
 
-void sub_807CCCC(void)
+void QuintessenceFx_OnEnd(void)
 {
-    Proc_End(Proc_Find(gUnk_08D6FA14));
+    Proc_End(Proc_Find(ProcScr_QuintessenceFxBg2Scroll));
 
     SetOnHBlankA(NULL);
 
@@ -154,32 +154,29 @@ void sub_807CCCC(void)
 
 // clang-format off
 
-void sub_807B430(struct Proc *);
-void sub_807B43C(struct Proc *);
+struct ProcCmd CONST_DATA ProcScr_QuintessenceFx[] = {
+    PROC_SET_END_CB(QuintessenceFx_OnEnd),
 
-struct ProcCmd CONST_DATA gUnk_08D6FA2C[] = {
-    PROC_SET_END_CB(sub_807CCCC),
-
-    PROC_CALL(sub_807B430),
-    PROC_CALL(sub_807CAB8),
-    PROC_REPEAT(sub_807CB80),
-    PROC_CALL(sub_807B43C),
+    PROC_CALL(TryLockParentProc),
+    PROC_CALL(QuintessenceFx_Init_Main),
+    PROC_REPEAT(QuintessenceFx_Loop_A),
+    PROC_CALL(TryUnlockParentProc),
 
     PROC_BLOCK,
 
 PROC_LABEL(0),
-    PROC_CALL(sub_807B430),
-    PROC_CALL(sub_807CBD0),
-    PROC_REPEAT(sub_807CC2C),
-    PROC_CALL(sub_807B43C),
+    PROC_CALL(TryLockParentProc),
+    PROC_CALL(QuintessenceFx_ResetBlend),
+    PROC_REPEAT(QuintessenceFx_Loop_B),
+    PROC_CALL(TryUnlockParentProc),
 
     PROC_BLOCK,
 
 PROC_LABEL(1),
-    PROC_CALL(sub_807B430),
-    PROC_CALL(sub_807CBD0),
-    PROC_REPEAT(sub_807CC7C),
-    PROC_CALL(sub_807B43C),
+    PROC_CALL(TryLockParentProc),
+    PROC_CALL(QuintessenceFx_ResetBlend),
+    PROC_REPEAT(QuintessenceFx_Loop_C),
+    PROC_CALL(TryUnlockParentProc),
 
     PROC_BLOCK,
 
@@ -188,22 +185,22 @@ PROC_LABEL(1),
 
 // clang-format on
 
-void sub_807CD34(struct Proc * parent)
+void StartQuintessenceStealEffect(struct Proc * parent)
 {
-    Proc_Start(gUnk_08D6FA2C, parent);
+    Proc_Start(ProcScr_QuintessenceFx, parent);
 }
 
-void sub_807CD48(void)
+void QuintessenceFx_Goto_B(void)
 {
-    Proc_Goto(Proc_Find(gUnk_08D6FA2C), 0);
+    Proc_Goto(Proc_Find(ProcScr_QuintessenceFx), 0);
 }
 
-void sub_807CD60(void)
+void QuintessenceFx_Goto_C(void)
 {
-    Proc_Goto(Proc_Find(gUnk_08D6FA2C), 1);
+    Proc_Goto(Proc_Find(ProcScr_QuintessenceFx), 1);
 }
 
-void sub_807CD78(void)
+void EndQuintessenceStealEffect(void)
 {
-    Proc_End(Proc_Find(gUnk_08D6FA2C));
+    Proc_End(Proc_Find(ProcScr_QuintessenceFx));
 }

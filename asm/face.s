@@ -273,13 +273,13 @@ sub_8007B94: @ 0x08007B94
 	ldr r0, [r0, #0x48]
 	cmp r0, #0
 	beq _08007BA4
-	bl sub_8091618
+	bl TryLockProc
 _08007BA4:
 	ldr r0, [r4, #0x2c]
 	ldr r0, [r0, #0x44]
 	cmp r0, #0
 	beq _08007BB0
-	bl sub_8091618
+	bl TryLockProc
 _08007BB0:
 	pop {r4}
 	pop {r0}
