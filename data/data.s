@@ -302,8 +302,8 @@ gUnk_08C020DC:	@ 0x08C020DC
 gUnk_08C020E8:	@ 0x08C020E8
 	.incbin "FireEmblem7J.base.gba", 0xC020E8, 0xC020F4 - 0xC020E8
 
-	.global gUnk_08C020F4
-gUnk_08C020F4:	@ 0x08C020F4
+	.global ProcScr_CamMove
+ProcScr_CamMove:	@ 0x08C020F4
 	.incbin "FireEmblem7J.base.gba", 0xC020F4, 0xC0211C - 0xC020F4
 
 	.global gUnk_08C0211C

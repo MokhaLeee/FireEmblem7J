@@ -1381,7 +1381,7 @@ sub_802E1EC: @ 0x0802E1EC
 	str r0, [sp]
 	movs r0, #0xe
 	movs r1, #0
-	bl sub_8006884
+	bl PutSprite
 	add sp, #4
 	pop {r0}
 	bx r0

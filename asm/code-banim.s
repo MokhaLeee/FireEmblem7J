@@ -4653,7 +4653,7 @@ sub_8056BC8: @ 0x08056BC8
 	push {r4, lr}
 	adds r4, r0, #0
 	bl SpellFx_Begin
-	bl SpellFx_ClearBG1Position
+	bl SpellFx_SetBG1Position
 	ldr r0, _08056BE8 @ =gUnk_08C10908
 	movs r1, #3
 	bl Proc_Start
@@ -4715,7 +4715,7 @@ sub_8056C40: @ 0x08056C40
 	push {r4, r5, lr}
 	adds r5, r0, #0
 	bl SpellFx_Begin
-	bl SpellFx_ClearBG1Position
+	bl SpellFx_SetBG1Position
 	ldr r0, _08056C74 @ =gUnk_08C10920
 	movs r1, #3
 	bl Proc_Start
@@ -5127,7 +5127,7 @@ sub_8056F98: @ 0x08056F98
 	push {r4, r5, lr}
 	adds r5, r0, #0
 	bl SpellFx_Begin
-	bl SpellFx_ClearBG1Position
+	bl SpellFx_SetBG1Position
 	ldr r0, _08056FCC @ =gUnk_08C10990
 	movs r1, #3
 	bl Proc_Start
@@ -5309,7 +5309,7 @@ sub_8057120: @ 0x08057120
 	push {r4, r5, lr}
 	adds r5, r0, #0
 	bl SpellFx_Begin
-	bl SpellFx_ClearBG1Position
+	bl SpellFx_SetBG1Position
 	ldr r0, _08057170 @ =gUnk_08C109C0
 	movs r1, #3
 	bl Proc_Start
@@ -5347,7 +5347,7 @@ sub_805717C: @ 0x0805717C
 	push {r4, r5, lr}
 	adds r5, r0, #0
 	bl SpellFx_Begin
-	bl SpellFx_ClearBG1Position
+	bl SpellFx_SetBG1Position
 	ldr r0, _080571CC @ =gUnk_08C109C0
 	movs r1, #3
 	bl Proc_Start
@@ -5385,7 +5385,7 @@ sub_80571D8: @ 0x080571D8
 	push {r4, r5, lr}
 	adds r5, r0, #0
 	bl SpellFx_Begin
-	bl SpellFx_ClearBG1Position
+	bl SpellFx_SetBG1Position
 	ldr r0, _08057228 @ =gUnk_08C109C0
 	movs r1, #3
 	bl Proc_Start
@@ -5423,7 +5423,7 @@ sub_8057234: @ 0x08057234
 	push {r4, r5, lr}
 	adds r5, r0, #0
 	bl SpellFx_Begin
-	bl SpellFx_ClearBG1Position
+	bl SpellFx_SetBG1Position
 	ldr r0, _08057284 @ =gUnk_08C109C0
 	movs r1, #3
 	bl Proc_Start
@@ -5461,7 +5461,7 @@ sub_8057290: @ 0x08057290
 	push {r4, r5, lr}
 	adds r5, r0, #0
 	bl SpellFx_Begin
-	bl SpellFx_ClearBG1Position
+	bl SpellFx_SetBG1Position
 	ldr r0, _080572E0 @ =gUnk_08C109C0
 	movs r1, #3
 	bl Proc_Start
@@ -5499,7 +5499,7 @@ sub_80572EC: @ 0x080572EC
 	push {r4, r5, lr}
 	adds r5, r0, #0
 	bl SpellFx_Begin
-	bl SpellFx_ClearBG1Position
+	bl SpellFx_SetBG1Position
 	ldr r0, _0805733C @ =gUnk_08C109C0
 	movs r1, #3
 	bl Proc_Start
@@ -5537,7 +5537,7 @@ sub_8057348: @ 0x08057348
 	push {r4, r5, lr}
 	adds r5, r0, #0
 	bl SpellFx_Begin
-	bl SpellFx_ClearBG1Position
+	bl SpellFx_SetBG1Position
 	ldr r0, _08057398 @ =gUnk_08C109C0
 	movs r1, #3
 	bl Proc_Start
@@ -5575,7 +5575,7 @@ sub_80573A4: @ 0x080573A4
 	push {r4, r5, lr}
 	adds r5, r0, #0
 	bl SpellFx_Begin
-	bl SpellFx_ClearBG1Position
+	bl SpellFx_SetBG1Position
 	ldr r0, _080573F4 @ =gUnk_08C109C0
 	movs r1, #3
 	bl Proc_Start
@@ -5613,7 +5613,7 @@ sub_8057400: @ 0x08057400
 	push {r4, r5, lr}
 	adds r5, r0, #0
 	bl SpellFx_Begin
-	bl SpellFx_ClearBG1Position
+	bl SpellFx_SetBG1Position
 	ldr r0, _08057450 @ =gUnk_08C109C0
 	movs r1, #3
 	bl Proc_Start
@@ -5651,7 +5651,7 @@ sub_805745C: @ 0x0805745C
 	push {r4, r5, lr}
 	adds r5, r0, #0
 	bl SpellFx_Begin
-	bl SpellFx_ClearBG1Position
+	bl SpellFx_SetBG1Position
 	ldr r0, _080574AC @ =gUnk_08C109C0
 	movs r1, #3
 	bl Proc_Start
@@ -5689,7 +5689,7 @@ sub_80574B8: @ 0x080574B8
 	push {r4, r5, lr}
 	adds r5, r0, #0
 	bl SpellFx_Begin
-	bl SpellFx_ClearBG1Position
+	bl SpellFx_SetBG1Position
 	ldr r0, _08057508 @ =gUnk_08C109C0
 	movs r1, #3
 	bl Proc_Start
@@ -5891,7 +5891,7 @@ sub_8057664: @ 0x08057664
 	push {r4, r5, lr}
 	adds r5, r0, #0
 	bl SpellFx_Begin
-	bl SpellFx_ClearBG1Position
+	bl SpellFx_SetBG1Position
 	ldr r0, _08057698 @ =gUnk_08C109F0
 	movs r1, #3
 	bl Proc_Start
@@ -6221,7 +6221,7 @@ sub_8057924: @ 0x08057924
 	push {r4, r5, lr}
 	adds r5, r0, #0
 	bl SpellFx_Begin
-	bl SpellFx_ClearBG1Position
+	bl SpellFx_SetBG1Position
 	ldr r0, _08057958 @ =gUnk_08C10B10
 	movs r1, #3
 	bl Proc_Start
@@ -6373,7 +6373,7 @@ sub_8057A6C: @ 0x08057A6C
 	push {r4, r5, lr}
 	adds r5, r0, #0
 	bl SpellFx_Begin
-	bl SpellFx_ClearBG1Position
+	bl SpellFx_SetBG1Position
 	ldr r0, _08057AB8 @ =gUnk_08C10B28
 	movs r1, #3
 	bl Proc_Start
@@ -6587,7 +6587,7 @@ sub_8057C24: @ 0x08057C24
 	adds r5, r0, #0
 	bl SpellFx_Begin
 	bl sub_8050348
-	bl SpellFx_ClearBG1Position
+	bl SpellFx_SetBG1Position
 	ldr r0, _08057C5C @ =gUnk_08C10B58
 	movs r1, #3
 	bl Proc_Start
@@ -6995,7 +6995,7 @@ sub_8057F84: @ 0x08057F84
 	adds r5, r0, #0
 	bl SpellFx_Begin
 	bl sub_8050348
-	bl SpellFx_ClearBG1Position
+	bl SpellFx_SetBG1Position
 	ldr r0, _08057FBC @ =gUnk_08C10BC0
 	movs r1, #3
 	bl Proc_Start
@@ -7186,7 +7186,7 @@ sub_8058120: @ 0x08058120
 	push {r4, r5, lr}
 	adds r5, r0, #0
 	bl SpellFx_Begin
-	bl SpellFx_ClearBG1Position
+	bl SpellFx_SetBG1Position
 	ldr r0, _08058154 @ =gUnk_08C10BF0
 	movs r1, #3
 	bl Proc_Start
@@ -7447,7 +7447,7 @@ sub_8058318: @ 0x08058318
 	ldr r0, [r4, #0x5c]
 	adds r1, r2, #0
 	bl SpellFx_WriteBgMap
-	bl SpellFx_ClearBG1Position
+	bl SpellFx_SetBG1Position
 	bl SpellFx_SetSomeColorEffect
 	pop {r4, r5}
 	pop {r0}
@@ -7566,7 +7566,7 @@ sub_805843C: @ 0x0805843C
 	adds r5, r0, #0
 	bl SpellFx_Begin
 	bl sub_8050348
-	bl SpellFx_ClearBG1Position
+	bl SpellFx_SetBG1Position
 	ldr r0, _08058474 @ =gUnk_08C10C58
 	movs r1, #3
 	bl Proc_Start
@@ -7721,7 +7721,7 @@ sub_8058584: @ 0x08058584
 	push {r4, r5, lr}
 	adds r5, r0, #0
 	bl SpellFx_Begin
-	bl SpellFx_ClearBG1Position
+	bl SpellFx_SetBG1Position
 	ldr r0, _080585B8 @ =gUnk_08C10C90
 	movs r1, #3
 	bl Proc_Start
@@ -8044,7 +8044,7 @@ sub_805882C: @ 0x0805882C
 	adds r5, r0, #0
 	bl SpellFx_Begin
 	bl sub_8050348
-	bl SpellFx_ClearBG1Position
+	bl SpellFx_SetBG1Position
 	ldr r0, _08058864 @ =gUnk_08C10D28
 	movs r1, #3
 	bl Proc_Start
@@ -8403,7 +8403,7 @@ sub_8058B28: @ 0x08058B28
 	adds r5, r0, #0
 	bl SpellFx_Begin
 	bl sub_8050348
-	bl SpellFx_ClearBG1Position
+	bl SpellFx_SetBG1Position
 	ldr r0, _08058B68 @ =gUnk_08C10DA0
 	movs r1, #3
 	bl Proc_Start
@@ -8434,7 +8434,7 @@ sub_8058B6C: @ 0x08058B6C
 	adds r5, r0, #0
 	bl SpellFx_Begin
 	bl sub_8050348
-	bl SpellFx_ClearBG1Position
+	bl SpellFx_SetBG1Position
 	ldr r0, _08058BAC @ =gUnk_08C10DA0
 	movs r1, #3
 	bl Proc_Start
@@ -8901,7 +8901,7 @@ sub_8058F2C: @ 0x08058F2C
 	ldr r2, _08058F94 @ =gUnk_08210350
 	adds r1, r2, #0
 	bl SpellFx_WriteBgMap
-	bl SpellFx_ClearBG1Position
+	bl SpellFx_SetBG1Position
 	bl SpellFx_SetSomeColorEffect
 	ldr r0, _08058F98 @ =gEkrDistanceType
 	movs r1, #0
@@ -9132,7 +9132,7 @@ sub_8059138: @ 0x08059138
 	adds r5, r0, #0
 	bl SpellFx_Begin
 	bl sub_8050348
-	bl SpellFx_ClearBG1Position
+	bl SpellFx_SetBG1Position
 	ldr r0, _08059170 @ =gUnk_08C10F58
 	movs r1, #3
 	bl Proc_Start
@@ -9904,7 +9904,7 @@ sub_805979C: @ 0x0805979C
 	adds r5, r0, #0
 	bl SpellFx_Begin
 	bl sub_8050348
-	bl SpellFx_ClearBG1Position
+	bl SpellFx_SetBG1Position
 	ldr r0, _080597D4 @ =gUnk_08C11070
 	movs r1, #3
 	bl Proc_Start
@@ -10443,7 +10443,7 @@ sub_8059BF4: @ 0x08059BF4
 	adds r5, r0, #0
 	bl SpellFx_Begin
 	bl sub_8050348
-	bl SpellFx_ClearBG1Position
+	bl SpellFx_SetBG1Position
 	ldr r0, _08059C2C @ =gUnk_08C11180
 	movs r1, #3
 	bl Proc_Start
@@ -11002,7 +11002,7 @@ sub_805A090: @ 0x0805A090
 	adds r5, r0, #0
 	bl SpellFx_Begin
 	bl sub_8050348
-	bl SpellFx_ClearBG1Position
+	bl SpellFx_SetBG1Position
 	ldr r0, _0805A0C8 @ =gUnk_08C11370
 	movs r1, #3
 	bl Proc_Start
@@ -11673,7 +11673,7 @@ sub_805A60C: @ 0x0805A60C
 	adds r5, r0, #0
 	bl SpellFx_Begin
 	bl sub_8050348
-	bl SpellFx_ClearBG1Position
+	bl SpellFx_SetBG1Position
 	ldr r0, _0805A644 @ =gUnk_08C11580
 	movs r1, #3
 	bl Proc_Start
@@ -11931,7 +11931,7 @@ sub_805A838: @ 0x0805A838
 	adds r5, r0, #0
 	bl SpellFx_Begin
 	bl sub_8050348
-	bl SpellFx_ClearBG1Position
+	bl SpellFx_SetBG1Position
 	ldr r0, _0805A874 @ =gUnk_08C1173C
 	movs r1, #3
 	bl Proc_Start
@@ -12373,7 +12373,7 @@ sub_805ABD8: @ 0x0805ABD8
 	adds r5, r0, #0
 	bl SpellFx_Begin
 	bl sub_8050348
-	bl SpellFx_ClearBG1Position
+	bl SpellFx_SetBG1Position
 	ldr r0, _0805AC10 @ =gUnk_08C11B8C
 	movs r1, #3
 	bl Proc_Start
@@ -13672,7 +13672,7 @@ sub_805B678: @ 0x0805B678
 	adds r5, r0, #0
 	bl SpellFx_Begin
 	bl sub_8050348
-	bl SpellFx_ClearBG1Position
+	bl SpellFx_SetBG1Position
 	ldr r0, _0805B6B0 @ =gUnk_08C11CF4
 	movs r1, #3
 	bl Proc_Start
@@ -14150,7 +14150,7 @@ sub_805BA78: @ 0x0805BA78
 	adds r5, r0, #0
 	bl SpellFx_Begin
 	bl sub_8050348
-	bl SpellFx_ClearBG1Position
+	bl SpellFx_SetBG1Position
 	ldr r0, _0805BAB0 @ =gUnk_08C11E9C
 	movs r1, #3
 	bl Proc_Start
@@ -14365,7 +14365,7 @@ sub_805BC20: @ 0x0805BC20
 	ldr r0, _0805BC88 @ =gUnk_0827FB18
 	movs r1, #0x20
 	bl SpellFx_RegisterBgPal
-	bl SpellFx_ClearBG1Position
+	bl SpellFx_SetBG1Position
 	bl SpellFx_SetSomeColorEffect
 	ldr r0, _0805BC8C @ =gEkrDistanceType
 	movs r1, #0
@@ -14484,7 +14484,7 @@ sub_805BD1C: @ 0x0805BD1C
 	ldr r0, _0805BD70 @ =gUnk_0827FB38
 	movs r1, #0x20
 	bl SpellFx_RegisterBgPal
-	bl SpellFx_ClearBG1Position
+	bl SpellFx_SetBG1Position
 	bl SpellFx_SetSomeColorEffect
 	pop {r4, r5}
 	pop {r0}
@@ -15301,7 +15301,7 @@ sub_805C3D8: @ 0x0805C3D8
 	adds r5, r0, #0
 	bl SpellFx_Begin
 	bl sub_8050348
-	bl SpellFx_ClearBG1Position
+	bl SpellFx_SetBG1Position
 	ldr r0, _0805C410 @ =gUnk_08C11FA4
 	movs r1, #3
 	bl Proc_Start
@@ -16078,7 +16078,7 @@ sub_805CA38: @ 0x0805CA38
 	adds r5, r0, #0
 	bl SpellFx_Begin
 	bl sub_8050348
-	bl SpellFx_ClearBG1Position
+	bl SpellFx_SetBG1Position
 	ldr r0, _0805CA70 @ =gUnk_08C12144
 	movs r1, #3
 	bl Proc_Start
@@ -17009,7 +17009,7 @@ sub_805D1D8: @ 0x0805D1D8
 	adds r4, r0, #0
 	bl SpellFx_Begin
 	bl sub_8050348
-	bl SpellFx_ClearBG1Position
+	bl SpellFx_SetBG1Position
 	ldr r0, _0805D1FC @ =gUnk_08C123BC
 	movs r1, #3
 	bl Proc_Start
@@ -17171,7 +17171,7 @@ sub_805D328: @ 0x0805D328
 	adds r4, r0, #0
 	bl SpellFx_Begin
 	bl sub_8050348
-	bl SpellFx_ClearBG1Position
+	bl SpellFx_SetBG1Position
 	ldr r0, _0805D34C @ =gUnk_08C123D4
 	movs r1, #3
 	bl Proc_Start
@@ -17371,7 +17371,7 @@ sub_805D4CC: @ 0x0805D4CC
 	adds r4, r0, #0
 	bl SpellFx_Begin
 	bl sub_8050348
-	bl SpellFx_ClearBG1Position
+	bl SpellFx_SetBG1Position
 	ldr r0, _0805D4F0 @ =gUnk_08C123EC
 	movs r1, #3
 	bl Proc_Start
@@ -17571,7 +17571,7 @@ sub_805D670: @ 0x0805D670
 	adds r4, r0, #0
 	bl SpellFx_Begin
 	bl sub_8050348
-	bl SpellFx_ClearBG1Position
+	bl SpellFx_SetBG1Position
 	ldr r0, _0805D694 @ =gUnk_08C12404
 	movs r1, #3
 	bl Proc_Start
@@ -18619,7 +18619,7 @@ sub_805DEC0: @ 0x0805DEC0
 	adds r4, r0, #0
 	bl SpellFx_Begin
 	bl sub_8050348
-	bl SpellFx_ClearBG1Position
+	bl SpellFx_SetBG1Position
 	ldr r0, _0805DEEC @ =gUnk_08C124CC
 	movs r1, #3
 	bl Proc_Start
@@ -18641,7 +18641,7 @@ sub_805DEF0: @ 0x0805DEF0
 	adds r4, r0, #0
 	bl SpellFx_Begin
 	bl sub_8050348
-	bl SpellFx_ClearBG1Position
+	bl SpellFx_SetBG1Position
 	ldr r0, _0805DF1C @ =gUnk_08C124CC
 	movs r1, #3
 	bl Proc_Start
@@ -19220,7 +19220,7 @@ sub_805E3B0: @ 0x0805E3B0
 	adds r5, r0, #0
 	bl SpellFx_Begin
 	bl sub_8050348
-	bl SpellFx_ClearBG1Position
+	bl SpellFx_SetBG1Position
 	ldr r0, _0805E3E8 @ =gUnk_08C12568
 	movs r1, #3
 	bl Proc_Start
@@ -19337,7 +19337,7 @@ _0805E4A8:
 	movs r1, #1
 	movs r2, #5
 	movs r3, #0
-	bl sub_804FD74
+	bl NewEfxFlashUnit
 	b _0805E504
 _0805E4BE:
 	adds r0, r5, #0
@@ -19537,7 +19537,7 @@ sub_805E650: @ 0x0805E650
 	adds r5, r0, #0
 	bl SpellFx_Begin
 	bl sub_8050348
-	bl SpellFx_ClearBG1Position
+	bl SpellFx_SetBG1Position
 	ldr r0, _0805E688 @ =gUnk_08C12620
 	movs r1, #3
 	bl Proc_Start
@@ -19844,7 +19844,7 @@ sub_805E8E8: @ 0x0805E8E8
 	adds r5, r0, #0
 	bl SpellFx_Begin
 	bl sub_8050348
-	bl SpellFx_ClearBG1Position
+	bl SpellFx_SetBG1Position
 	ldr r0, _0805E920 @ =gUnk_08C126B8
 	movs r1, #3
 	bl Proc_Start
@@ -20223,7 +20223,7 @@ sub_805EC08: @ 0x0805EC08
 	adds r5, r0, #0
 	bl SpellFx_Begin
 	bl sub_8050348
-	bl SpellFx_ClearBG1Position
+	bl SpellFx_SetBG1Position
 	ldr r0, _0805EC40 @ =gUnk_08C127B0
 	movs r1, #3
 	bl Proc_Start
@@ -20342,7 +20342,7 @@ _0805ED04:
 	movs r1, #1
 	movs r2, #5
 	movs r3, #0
-	bl sub_804FD74
+	bl NewEfxFlashUnit
 	b _0805ED58
 _0805ED1A:
 	adds r0, r5, #0
@@ -20522,7 +20522,7 @@ sub_805EE84: @ 0x0805EE84
 	adds r5, r0, #0
 	bl SpellFx_Begin
 	bl sub_8050348
-	bl SpellFx_ClearBG1Position
+	bl SpellFx_SetBG1Position
 	ldr r0, _0805EEBC @ =gUnk_08C12868
 	movs r1, #3
 	bl Proc_Start
@@ -21239,7 +21239,7 @@ sub_805F48C: @ 0x0805F48C
 	adds r5, r0, #0
 	bl SpellFx_Begin
 	bl sub_8050348
-	bl SpellFx_ClearBG1Position
+	bl SpellFx_SetBG1Position
 	ldr r0, _0805F4C4 @ =gUnk_08C12970
 	movs r1, #3
 	bl Proc_Start
@@ -21324,7 +21324,7 @@ _0805F53C:
 	movs r1, #1
 	movs r2, #5
 	movs r3, #0
-	bl sub_804FD74
+	bl NewEfxFlashUnit
 	b _0805F58E
 _0805F552:
 	adds r0, r6, #0
@@ -21530,7 +21530,7 @@ sub_805F6F8: @ 0x0805F6F8
 	adds r5, r0, #0
 	bl SpellFx_Begin
 	bl sub_8050348
-	bl SpellFx_ClearBG1Position
+	bl SpellFx_SetBG1Position
 	ldr r0, _0805F730 @ =gUnk_08C129F4
 	movs r1, #3
 	bl Proc_Start
@@ -22133,7 +22133,7 @@ sub_805FBE8: @ 0x0805FBE8
 	adds r5, r0, #0
 	bl SpellFx_Begin
 	bl sub_8050348
-	bl SpellFx_ClearBG1Position
+	bl SpellFx_SetBG1Position
 	ldr r0, _0805FC20 @ =gUnk_08C12ACC
 	movs r1, #3
 	bl Proc_Start
@@ -23341,7 +23341,7 @@ sub_80605A4: @ 0x080605A4
 	adds r5, r0, #0
 	bl SpellFx_Begin
 	bl sub_8050348
-	bl SpellFx_ClearBG1Position
+	bl SpellFx_SetBG1Position
 	ldr r0, _080605DC @ =gUnk_08C12CF8
 	movs r1, #3
 	bl Proc_Start
@@ -24430,7 +24430,7 @@ sub_8060E70: @ 0x08060E70
 	adds r5, r0, #0
 	bl SpellFx_Begin
 	bl sub_8050348
-	bl SpellFx_ClearBG1Position
+	bl SpellFx_SetBG1Position
 	ldr r0, _08060EA8 @ =gUnk_08C12F30
 	movs r1, #3
 	bl Proc_Start
@@ -25310,7 +25310,7 @@ sub_80615C4: @ 0x080615C4
 	adds r5, r0, #0
 	bl SpellFx_Begin
 	bl sub_8050348
-	bl SpellFx_ClearBG1Position
+	bl SpellFx_SetBG1Position
 	ldr r0, _080615FC @ =gUnk_08C13050
 	movs r1, #3
 	bl Proc_Start
@@ -26034,7 +26034,7 @@ sub_8061BE0: @ 0x08061BE0
 	adds r5, r0, #0
 	bl SpellFx_Begin
 	bl sub_8050348
-	bl SpellFx_ClearBG1Position
+	bl SpellFx_SetBG1Position
 	ldr r0, _08061C18 @ =gUnk_08C131A8
 	movs r1, #3
 	bl Proc_Start
@@ -26931,7 +26931,7 @@ sub_8062350: @ 0x08062350
 	adds r5, r0, #0
 	bl SpellFx_Begin
 	bl sub_80504F8
-	bl SpellFx_ClearBG1Position
+	bl SpellFx_SetBG1Position
 	ldr r0, _08062388 @ =gUnk_08C13270
 	movs r1, #3
 	bl Proc_Start
@@ -27826,7 +27826,7 @@ sub_8062AAC: @ 0x08062AAC
 	push {r4, r5, lr}
 	adds r5, r0, #0
 	bl SpellFx_Begin
-	bl SpellFx_ClearBG1Position
+	bl SpellFx_SetBG1Position
 	ldr r0, _08062AE4 @ =gUnk_08C13508
 	movs r1, #3
 	bl Proc_Start
@@ -27854,7 +27854,7 @@ sub_8062AE8: @ 0x08062AE8
 	push {r4, r5, lr}
 	adds r5, r0, #0
 	bl SpellFx_Begin
-	bl SpellFx_ClearBG1Position
+	bl SpellFx_SetBG1Position
 	ldr r0, _08062B20 @ =gUnk_08C13508
 	movs r1, #3
 	bl Proc_Start
@@ -27882,7 +27882,7 @@ sub_8062B24: @ 0x08062B24
 	push {r4, r5, lr}
 	adds r5, r0, #0
 	bl SpellFx_Begin
-	bl SpellFx_ClearBG1Position
+	bl SpellFx_SetBG1Position
 	ldr r0, _08062B5C @ =gUnk_08C13508
 	movs r1, #3
 	bl Proc_Start
@@ -27910,7 +27910,7 @@ sub_8062B60: @ 0x08062B60
 	push {r4, r5, lr}
 	adds r5, r0, #0
 	bl SpellFx_Begin
-	bl SpellFx_ClearBG1Position
+	bl SpellFx_SetBG1Position
 	ldr r0, _08062B98 @ =gUnk_08C13508
 	movs r1, #3
 	bl Proc_Start
@@ -28166,7 +28166,7 @@ _08062D60:
 NewEfxPierceCritical: @ 0x08062D68
 	push {r4, lr}
 	adds r4, r0, #0
-	bl SpellFx_ClearBG1Position
+	bl SpellFx_SetBG1Position
 	ldr r0, _08062D84 @ =gUnk_08C13550
 	movs r1, #3
 	bl Proc_Start
@@ -28318,7 +28318,7 @@ _08062E94:
 NewEfxNormalEffect: @ 0x08062E9C
 	push {r4, lr}
 	adds r4, r0, #0
-	bl SpellFx_ClearBG1Position
+	bl SpellFx_SetBG1Position
 	ldr r0, _08062EB8 @ =gUnk_08C135A0
 	movs r1, #3
 	bl Proc_Start
@@ -29012,7 +29012,7 @@ NewEfxMagfcast: @ 0x08063400
 	ldr r4, [r0]
 	cmp r4, #0
 	bne _08063458
-	bl SpellFx_ClearBG1Position
+	bl SpellFx_SetBG1Position
 	ldr r0, _08063448 @ =gUnk_08C136C8
 	movs r1, #3
 	bl Proc_Start
@@ -29593,7 +29593,7 @@ sub_806390C: @ 0x0806390C
 	movs r1, #1
 	movs r2, #0x28
 	movs r3, #0
-	bl sub_804FD74
+	bl NewEfxFlashUnit
 	b _08063972
 _0806392E:
 	cmp r0, #0xa
@@ -29964,7 +29964,7 @@ sub_8063C14: @ 0x08063C14
 sub_8063C20: @ 0x08063C20
 	push {r4, lr}
 	adds r4, r0, #0
-	bl SpellFx_ClearBG1Position
+	bl SpellFx_SetBG1Position
 	ldr r0, _08063C3C @ =gUnk_08C13828
 	movs r1, #3
 	bl Proc_Start
@@ -30229,7 +30229,7 @@ _08063E24:
 sub_8063E2C: @ 0x08063E2C
 	push {r4, lr}
 	adds r4, r0, #0
-	bl SpellFx_ClearBG1Position
+	bl SpellFx_SetBG1Position
 	ldr r0, _08063E48 @ =gUnk_08C13978
 	movs r1, #3
 	bl Proc_Start
@@ -30634,7 +30634,7 @@ _080641AC: .4byte 0x02000010
 NewEfxChillEffect: @ 0x080641B0
 	push {r4, lr}
 	adds r4, r0, #0
-	bl SpellFx_ClearBG1Position
+	bl SpellFx_SetBG1Position
 	ldr r0, _080641CC @ =gUnk_08C139D8
 	movs r1, #3
 	bl Proc_Start

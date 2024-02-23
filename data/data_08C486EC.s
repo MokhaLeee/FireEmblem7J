@@ -419,8 +419,8 @@ gUnk_08C542AF:	@ 0x08C542AF
 gUnk_08C542F0:	@ 0x08C542F0
 	.incbin "FireEmblem7J.base.gba", 0xC542F0, 0xD5E23C - 0xC542F0
 
-	.global gUnk_08D5E23C
-gUnk_08D5E23C:	@ 0x08D5E23C
+	.global FaceInfoTable
+FaceInfoTable:	@ 0x08D5E23C
 	.incbin "FireEmblem7J.base.gba", 0xD5E23C, 0xD5FB8A - 0xD5E23C
 
 	.global gUnk_08D5FB8A

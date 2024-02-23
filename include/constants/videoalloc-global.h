@@ -15,3 +15,17 @@ enum {
 enum {
     BGCHR_ICON_END   = 0x300,
 };
+
+enum objchr_idx {
+    OBCHR_FACE_DEFAULT2 = 0x200,
+    OBCHR_FACE_DEFAULT1 = 0x280,
+    OBCHR_FACE_DEFAULT0 = 0x300,
+    OBCHR_FACE_DEFAULT3 = 0x380,
+};
+
+enum objpal_idx {
+    OBPAL_FACE_DEFAULT0 = 6,
+    OBPAL_FACE_DEFAULT1 = 7,
+    OBPAL_FACE_DEFAULT2 = 8,
+    OBPAL_FACE_DEFAULT3 = 9,
+};

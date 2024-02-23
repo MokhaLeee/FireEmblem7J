@@ -2635,7 +2635,7 @@ _0802659A:
 	mov r0, sb
 	mov r1, r8
 	adds r2, r7, #0
-	bl sub_8006884
+	bl PutSprite
 	b _08026616
 	.align 2, 0
 _080265C0: .4byte Sprite_16x16
@@ -2655,7 +2655,7 @@ _080265C4:
 	str r1, [sp]
 	mov r0, sb
 	mov r1, r8
-	bl sub_8006884
+	bl PutSprite
 	b _08026616
 	.align 2, 0
 _080265EC: .4byte Sprite_16x32
@@ -2676,7 +2676,7 @@ _080265F0:
 	ldr r3, _08026624 @ =Sprite_32x32
 	str r4, [sp]
 	mov r0, sb
-	bl sub_8006884
+	bl PutSprite
 _08026616:
 	add sp, #4
 	pop {r3, r4}
@@ -2743,7 +2743,7 @@ _08026686:
 	mov r0, sb
 	adds r1, r6, #0
 	adds r2, r5, #0
-	bl sub_8006884
+	bl PutSprite
 	b _080266C8
 	.align 2, 0
 _08026698: .4byte Sprite_16x16
@@ -2755,7 +2755,7 @@ _0802669C:
 	str r0, [sp]
 	mov r0, sb
 	adds r1, r6, #0
-	bl sub_8006884
+	bl PutSprite
 	b _080266C8
 	.align 2, 0
 _080266B0: .4byte Sprite_16x32
@@ -2768,7 +2768,7 @@ _080266B4:
 	adds r0, r7, r4
 	str r0, [sp]
 	mov r0, sb
-	bl sub_8006884
+	bl PutSprite
 _080266C8:
 	add sp, #4
 	pop {r3, r4}
@@ -2930,7 +2930,7 @@ _080267F0:
 	str r0, [sp]
 	mov r0, r8
 	adds r1, r6, #0
-	bl sub_8006884
+	bl PutSprite
 	b _0802681C
 	.align 2, 0
 _08026804: .4byte Sprite_16x32
@@ -2943,7 +2943,7 @@ _08026808:
 	adds r0, r7, r4
 	str r0, [sp]
 	mov r0, r8
-	bl sub_8006884
+	bl PutSprite
 _0802681C:
 	add sp, #4
 	pop {r3}
@@ -3013,7 +3013,7 @@ _08026886:
 	mov r0, sb
 	mov r1, r8
 	adds r2, r6, #0
-	bl sub_8006884
+	bl PutSprite
 	b _080268F6
 	.align 2, 0
 _080268A8: .4byte Sprite_16x16
@@ -3031,7 +3031,7 @@ _080268AC:
 	str r1, [sp]
 	mov r0, sb
 	mov r1, r8
-	bl sub_8006884
+	bl PutSprite
 	b _080268F6
 	.align 2, 0
 _080268D0: .4byte Sprite_16x32
@@ -3050,7 +3050,7 @@ _080268D4:
 	ldr r3, _08026904 @ =Sprite_32x32
 	str r4, [sp]
 	mov r0, sb
-	bl sub_8006884
+	bl PutSprite
 _080268F6:
 	add sp, #4
 	pop {r3, r4}
@@ -3115,13 +3115,13 @@ _08026962:
 	mov r0, sb
 	adds r1, r7, #0
 	adds r2, r6, #0
-	bl sub_8006884
+	bl PutSprite
 	ldr r3, _08026988 @ =gUnk_08C03426
 	str r4, [sp]
 	mov r0, sb
 	adds r1, r7, #0
 	adds r2, r6, #0
-	bl sub_8006884
+	bl PutSprite
 	b _080269DC
 	.align 2, 0
 _08026984: .4byte gUnk_08C0340E
@@ -3135,13 +3135,13 @@ _0802698C:
 	mov r0, sb
 	adds r1, r7, #0
 	adds r2, r5, #0
-	bl sub_8006884
+	bl PutSprite
 	ldr r3, _080269B4 @ =gUnk_08C0342E
 	str r4, [sp]
 	mov r0, sb
 	adds r1, r7, #0
 	adds r2, r5, #0
-	bl sub_8006884
+	bl PutSprite
 	b _080269DC
 	.align 2, 0
 _080269B0: .4byte gUnk_08C03416
@@ -3156,13 +3156,13 @@ _080269B8:
 	mov r0, sb
 	adds r1, r5, #0
 	adds r2, r6, #0
-	bl sub_8006884
+	bl PutSprite
 	ldr r3, _080269F0 @ =gUnk_08C03436
 	str r4, [sp]
 	mov r0, sb
 	adds r1, r5, #0
 	adds r2, r6, #0
-	bl sub_8006884
+	bl PutSprite
 _080269DC:
 	add sp, #4
 	pop {r3, r4}

@@ -9481,7 +9481,7 @@ sub_80A8B98: @ 0x080A8B98
 	movs r0, #0x64
 	strb r0, [r1]
 	ldr r0, _080A8CD0 @ =gUnk_08DAE0FC
-	bl sub_80069E0
+	bl SetFaceConfig
 	ldr r0, _080A8CD4 @ =gUnk_084352DC
 	movs r1, #0xf0
 	lsls r1, r1, #1
@@ -11092,7 +11092,7 @@ _080A9844:
 	str r0, [sp]
 	movs r0, #3
 	ldr r3, _080A98A0 @ =gUnk_08DAE1DC
-	bl sub_8006884
+	bl PutSprite
 	b _080A98B2
 	.align 2, 0
 _080A98A0: .4byte gUnk_08DAE1DC
@@ -11102,7 +11102,7 @@ _080A98A4:
 	str r0, [sp]
 	movs r0, #3
 	ldr r3, _080A98C4 @ =gUnk_08DAE1D4
-	bl sub_8006884
+	bl PutSprite
 _080A98B2:
 	adds r4, #4
 	adds r7, #1

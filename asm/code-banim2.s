@@ -5376,15 +5376,15 @@ _08069B56:
 	ldr r0, [r1]
 	ldrh r4, [r0, #6]
 	ldr r0, _08069BA0 @ =gUnk_08C4A8E8
-	bl sub_80069E0
+	bl SetFaceConfig
 	ldr r0, _08069BA4 @ =0x00001042
 	str r0, [sp]
 	movs r0, #0
 	adds r1, r4, #0
 	movs r2, #0xbc
 	movs r3, #0x50
-	bl sub_8006AC4
-	ldr r0, _08069BA8 @ =0x030040E0
+	bl StartFace
+	ldr r0, _08069BA8 @ =gFaces
 	ldr r1, [r0]
 	movs r2, #0
 	movs r0, #0xa0
@@ -5408,7 +5408,7 @@ _08069B56:
 	.align 2, 0
 _08069BA0: .4byte gUnk_08C4A8E8
 _08069BA4: .4byte 0x00001042
-_08069BA8: .4byte 0x030040E0
+_08069BA8: .4byte gFaces
 _08069BAC: .4byte gBg2Tm
 _08069BB0: .4byte 0x01000200
 
@@ -5565,7 +5565,7 @@ _08069C7E:
 	mov r3, sb
 	bl Interpolate
 	strh r0, [r5]
-	ldr r0, _08069D44 @ =0x030040E0
+	ldr r0, _08069D44 @ =gFaces
 	ldr r1, [r0]
 	movs r0, #0x50
 	mov r2, r8
@@ -5611,7 +5611,7 @@ _08069D2A:
 	.align 2, 0
 _08069D3C: .4byte gEkrLvupScrollPos1
 _08069D40: .4byte gEkrLvupScrollPos2
-_08069D44: .4byte 0x030040E0
+_08069D44: .4byte gFaces
 _08069D48: .4byte gEfxPal
 _08069D4C: .4byte gPal
 
@@ -6067,7 +6067,7 @@ sub_806A098: @ 0x0806A098
 	movs r2, #0
 	bl Interpolate
 	adds r6, r0, #0
-	ldr r0, _0806A154 @ =0x030040E0
+	ldr r0, _0806A154 @ =gFaces
 	ldr r1, [r0]
 	movs r0, #0x50
 	subs r0, r0, r5
@@ -6113,7 +6113,7 @@ _0806A142:
 	.align 2, 0
 _0806A14C: .4byte gEkrLvupScrollPos1
 _0806A150: .4byte gEkrLvupScrollPos2
-_0806A154: .4byte 0x030040E0
+_0806A154: .4byte gFaces
 _0806A158: .4byte gEfxPal
 _0806A15C: .4byte gPal
 

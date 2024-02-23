@@ -3481,7 +3481,7 @@ sub_800BF1C: @ 0x0800BF1C
 	ands r0, r1
 	cmp r0, #0
 	beq _0800BF4C
-	ldr r0, _0800BF5C @ =gUnk_08C020F4
+	ldr r0, _0800BF5C @ =ProcScr_CamMove
 	bl Proc_Find
 	cmp r0, #0
 	bne _0800BF60
@@ -3500,7 +3500,7 @@ _0800BF4C:
 	movs r0, #1
 	b _0800BF62
 	.align 2, 0
-_0800BF5C: .4byte gUnk_08C020F4
+_0800BF5C: .4byte ProcScr_CamMove
 _0800BF60:
 	movs r0, #0
 _0800BF62:
@@ -9540,14 +9540,14 @@ _0800EB6C:
 	ands r0, r1
 	cmp r0, #0
 	beq _0800EB90
-	ldr r0, _0800EB8C @ =gUnk_08BFF970
+	ldr r0, _0800EB8C @ =ProcScr_Face
 	bl Proc_Find
 	cmp r0, #0
 	beq _0800EB9E
 	bl sub_800EC08
 	b _0800EB9E
 	.align 2, 0
-_0800EB8C: .4byte gUnk_08BFF970
+_0800EB8C: .4byte ProcScr_Face
 _0800EB90:
 	movs r0, #0x10
 	ands r0, r1
@@ -9589,7 +9589,7 @@ sub_800EBBC: @ 0x0800EBBC
 	bl sub_800EC08
 	b _0800EBFA
 _0800EBD2:
-	ldr r5, _0800EC00 @ =gUnk_08BFF970
+	ldr r5, _0800EC00 @ =ProcScr_Face
 	adds r0, r5, #0
 	bl Proc_Find
 	cmp r0, #0
@@ -9610,21 +9610,21 @@ _0800EBFA:
 	pop {r0}
 	bx r0
 	.align 2, 0
-_0800EC00: .4byte gUnk_08BFF970
+_0800EC00: .4byte ProcScr_Face
 _0800EC04: .4byte sub_80073F4
 
 	thumb_func_start sub_800EC08
 sub_800EC08: @ 0x0800EC08
 	push {lr}
 	bl sub_80095E4
-	ldr r0, _0800EC20 @ =gUnk_08BFF970
+	ldr r0, _0800EC20 @ =ProcScr_Face
 	bl sub_8004748
 	bl InitFaces
 	bl sub_8007C64
 	pop {r0}
 	bx r0
 	.align 2, 0
-_0800EC20: .4byte gUnk_08BFF970
+_0800EC20: .4byte ProcScr_Face
 
 	thumb_func_start nullsub_27
 nullsub_27: @ 0x0800EC24
@@ -9680,7 +9680,7 @@ sub_800EC58: @ 0x0800EC58
 sub_800EC74: @ 0x0800EC74
 	push {lr}
 	ldr r0, _0800EC80 @ =gUnk_08C00CC8
-	bl sub_80069E0
+	bl SetFaceConfig
 	pop {r0}
 	bx r0
 	.align 2, 0

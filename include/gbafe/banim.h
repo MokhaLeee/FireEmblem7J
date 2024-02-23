@@ -338,11 +338,11 @@ int CheckEkrHitDone(void);
 // ??? sub_804E128
 // ??? sub_804E1E8
 // ??? sub_804E28C
-// ??? sub_804E3E0
+// ??? NewEfxAvoid
 // ??? sub_804E458
 // ??? sub_804E474
 // ??? sub_804E54C
-// ??? sub_804E604
+// ??? NewEfxNoDmage
 // ??? sub_804E658
 // ??? sub_804E6AC
 // ??? sub_804E6D0
@@ -385,7 +385,7 @@ void NewEfxFlashBgDirectly(struct Anim * anim, int duartion);
 // ??? EfxWhiteOutMain1
 // ??? EfxWhiteOutMain2
 // ??? EfxWhiteOutRestorePalSync
-// ??? NewEfxWhiteIN
+// ??? NewEfxFlashHPBar
 // ??? EfxWhiteInMain1
 // ??? sub_804FA30
 // ??? sub_804FAC4
@@ -394,7 +394,7 @@ void NewEfxFlashBgDirectly(struct Anim * anim, int duartion);
 // ??? sub_804FC5C
 // ??? EfxHpBarColorChange_804FC6C
 // ??? sub_804FC7C
-// ??? sub_804FD74
+// ??? NewEfxFlashUnit
 // ??? sub_804FDB0
 // ??? sub_804FE1C
 
@@ -459,7 +459,7 @@ void EnableEfxWeaponIcon(void);
 // ??? sub_805073C
 void SpellFx_Begin(void);
 void SpellFx_Finish(void);
-void SpellFx_ClearBG1Position(void);
+void SpellFx_SetBG1Position(void);
 void SpellFx_ClearBG1(void);
 void SpellFx_SetSomeColorEffect(void);
 void SpellFx_ClearColorEffects(void);

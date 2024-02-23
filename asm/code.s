@@ -19101,8 +19101,8 @@ _08075278:
 	str r0, [sp]
 	movs r0, #0
 	movs r2, #0xb8
-	bl sub_8006AC4
-	ldr r1, _080753F0 @ =0x030040E0
+	bl StartFace
+	ldr r1, _080753F0 @ =gFaces
 	ldr r0, [r1]
 	ldr r1, [r7]
 	ldrh r2, [r1, #0x32]
@@ -19132,7 +19132,7 @@ _080753E0: .4byte 0x0000FF70
 _080753E4: .4byte gDispIo
 _080753E8: .4byte 0x0203E0D4
 _080753EC: .4byte 0x00001042
-_080753F0: .4byte 0x030040E0
+_080753F0: .4byte gFaces
 
 	thumb_func_start sub_80753F4
 sub_80753F4: @ 0x080753F4
@@ -19253,7 +19253,7 @@ sub_807549C: @ 0x0807549C
 	movs r0, #1
 	movs r1, #0
 	bl SetBgOffset
-	ldr r1, _0807550C @ =0x030040E0
+	ldr r1, _0807550C @ =gFaces
 	ldr r0, [r1]
 	ldr r1, [r7]
 	ldrh r2, [r1, #0x32]
@@ -19281,7 +19281,7 @@ _08075504:
 	pop {r0}
 	bx r0
 	.align 2, 0
-_0807550C: .4byte 0x030040E0
+_0807550C: .4byte gFaces
 
 	thumb_func_start sub_8075510
 sub_8075510: @ 0x08075510
@@ -19312,7 +19312,7 @@ sub_8075510: @ 0x08075510
 	movs r0, #1
 	movs r1, #0
 	bl SetBgOffset
-	ldr r1, _08075580 @ =0x030040E0
+	ldr r1, _08075580 @ =gFaces
 	ldr r0, [r1]
 	ldr r1, [r7]
 	ldrh r2, [r1, #0x32]
@@ -19340,7 +19340,7 @@ _08075578:
 	pop {r0}
 	bx r0
 	.align 2, 0
-_08075580: .4byte 0x030040E0
+_08075580: .4byte gFaces
 
 	thumb_func_start sub_8075584
 sub_8075584: @ 0x08075584
@@ -39361,7 +39361,7 @@ _0807EAA0:
 	bl SetMapCursorPosition
 	b _0807EAE8
 _0807EAC8:
-	ldr r4, _0807EAF0 @ =gUnk_08BFF970
+	ldr r4, _0807EAF0 @ =ProcScr_Face
 	adds r0, r4, #0
 	bl Proc_Find
 	cmp r0, #0
@@ -39379,7 +39379,7 @@ _0807EAE8:
 	strb r0, [r5]
 	b _0807EB3C
 	.align 2, 0
-_0807EAF0: .4byte gUnk_08BFF970
+_0807EAF0: .4byte ProcScr_Face
 _0807EAF4: .4byte sub_80073F4
 _0807EAF8:
 	ldrb r0, [r5, #2]
@@ -45082,7 +45082,7 @@ sub_80817C8: @ 0x080817C8
 	adds r0, r0, r4
 	str r0, [sp]
 	movs r0, #4
-	bl sub_8006884
+	bl PutSprite
 	bl GetGameTime
 	lsrs r0, r0, #2
 	movs r1, #0xf
@@ -45523,7 +45523,7 @@ _08081B46:
 	adds r1, r5, #0
 	adds r2, r4, #0
 	mov r3, r8
-	bl sub_8006884
+	bl PutSprite
 	movs r2, #4
 	ldrsh r5, [r6, r2]
 	movs r3, #0x2c
@@ -45546,7 +45546,7 @@ _08081B46:
 	adds r1, r5, #0
 	adds r2, r4, #0
 	adds r3, r6, #0
-	bl sub_8006884
+	bl PutSprite
 	add sp, #4
 	pop {r3, r4}
 	mov r8, r3
@@ -45578,7 +45578,7 @@ sub_8081BCC: @ 0x08081BCC
 	str r0, [sp]
 	movs r0, #2
 	adds r3, r5, #0
-	bl sub_8006884
+	bl PutSprite
 	movs r6, #4
 	ldrsh r1, [r4, r6]
 	adds r1, #0xdd
@@ -45589,7 +45589,7 @@ sub_8081BCC: @ 0x08081BCC
 	str r0, [sp]
 	movs r0, #2
 	adds r3, r5, #0
-	bl sub_8006884
+	bl PutSprite
 	movs r3, #4
 	ldrsh r1, [r4, r3]
 	adds r1, #0xd6
@@ -45602,7 +45602,7 @@ sub_8081BCC: @ 0x08081BCC
 	str r0, [sp]
 	movs r0, #2
 	adds r3, r5, #0
-	bl sub_8006884
+	bl PutSprite
 	add sp, #4
 	pop {r4, r5, r6}
 	pop {r0}
@@ -45628,7 +45628,7 @@ sub_8081C40: @ 0x08081C40
 	lsls r0, r0, #6
 	str r0, [sp]
 	movs r0, #0xc
-	bl sub_8006884
+	bl PutSprite
 	movs r0, #4
 	ldrsh r1, [r4, r0]
 	adds r1, #0x40
@@ -45639,7 +45639,7 @@ sub_8081C40: @ 0x08081C40
 	ldr r0, _08081CA0 @ =0x00004E90
 	str r0, [sp]
 	movs r0, #0xb
-	bl sub_8006884
+	bl PutSprite
 	movs r0, #4
 	ldrsh r1, [r4, r0]
 	adds r1, #0x60
@@ -45723,7 +45723,7 @@ _08081CC4:
 	movs r0, #4
 	movs r1, #0xb8
 	movs r2, #0x4e
-	bl sub_8006884
+	bl PutSprite
 _08081D2C:
 	ldr r0, _08081D70 @ =gStatScreenSt
 	ldr r2, [r0, #0xc]
@@ -45751,7 +45751,7 @@ _08081D2C:
 	movs r0, #4
 	movs r1, #0x20
 	movs r2, #0x56
-	bl sub_8006884
+	bl PutSprite
 _08081D64:
 	add sp, #0xc
 	pop {r4, r5}
@@ -45948,7 +45948,7 @@ _08081F18:
 	adds r2, r4, #0
 	bl sub_8007354
 	adds r0, r4, #0
-	bl GetPortraitData
+	bl GetFaceInfo
 	ldr r0, [r0]
 	cmp r0, #0
 	beq _08081F60
@@ -47752,7 +47752,7 @@ sub_8082D00: @ 0x08082D00
 	ldr r3, _08082D18 @ =gUnk_08D8A650
 	movs r0, #0
 	str r0, [sp]
-	bl sub_8006884
+	bl PutSprite
 	add sp, #4
 	pop {r0}
 	bx r0
@@ -48304,7 +48304,7 @@ _08083114:
 	str r0, [sp]
 	movs r0, #0
 	ldr r3, _08083240 @ =Sprite_64x32
-	bl sub_8006884
+	bl PutSprite
 	subs r5, #1
 	cmp r5, #0
 	bge _080830FE
@@ -48334,7 +48334,7 @@ _08083150:
 	adds r1, r4, #0
 	ldr r2, [sp, #0x14]
 	ldr r3, _08083244 @ =Sprite_8x32
-	bl sub_8006884
+	bl PutSprite
 	ldrh r0, [r5, #0x30]
 	adds r0, #0x1b
 	str r0, [sp]
@@ -48342,7 +48342,7 @@ _08083150:
 	adds r1, r4, #0
 	ldr r2, [sp, #0xc]
 	ldr r3, _08083248 @ =gUnk_08BFF7C8
-	bl sub_8006884
+	bl PutSprite
 	subs r6, #1
 	cmp r6, #0
 	bge _08083146
@@ -48368,7 +48368,7 @@ _08083192:
 	ldr r1, [sp, #0x10]
 	adds r2, r4, #0
 	ldr r3, _0808324C @ =Sprite_8x16
-	bl sub_8006884
+	bl PutSprite
 	ldrh r0, [r6, #0x30]
 	adds r0, #0x1f
 	str r0, [sp]
@@ -48376,7 +48376,7 @@ _08083192:
 	ldr r1, [sp, #8]
 	adds r2, r4, #0
 	ldr r3, _08083250 @ =gUnk_08BFF7D0
-	bl sub_8006884
+	bl PutSprite
 	subs r5, #1
 	cmp r5, #0
 	bge _08083188
@@ -48389,7 +48389,7 @@ _080831C2:
 	movs r0, #0
 	ldr r1, [sp, #0x10]
 	ldr r2, [sp, #0x14]
-	bl sub_8006884
+	bl PutSprite
 	ldr r3, _08083258 @ =gUnk_08BFF7D8
 	ldrh r0, [r4, #0x30]
 	adds r0, #0x3e
@@ -48397,7 +48397,7 @@ _080831C2:
 	movs r0, #0
 	ldr r1, [sp, #8]
 	ldr r2, [sp, #0x14]
-	bl sub_8006884
+	bl PutSprite
 	ldr r3, _0808325C @ =gUnk_08BFF7E0
 	ldrh r0, [r4, #0x30]
 	adds r0, #0x3e
@@ -48405,7 +48405,7 @@ _080831C2:
 	movs r0, #0
 	ldr r1, [sp, #0x10]
 	ldr r2, [sp, #0xc]
-	bl sub_8006884
+	bl PutSprite
 	ldr r3, _08083260 @ =gUnk_08BFF7E8
 	ldrh r0, [r4, #0x30]
 	adds r0, #0x3e
@@ -48413,7 +48413,7 @@ _080831C2:
 	movs r0, #0
 	ldr r1, [sp, #8]
 	ldr r2, [sp, #0xc]
-	bl sub_8006884
+	bl PutSprite
 	ldr r0, [sp, #0x3c]
 	cmp r0, #0
 	bne _0808322A
@@ -48427,7 +48427,7 @@ _080831C2:
 	str r0, [sp]
 	movs r0, #0
 	mov r1, sl
-	bl sub_8006884
+	bl PutSprite
 _0808322A:
 	add sp, #0x1c
 	pop {r3, r4, r5}
@@ -50695,7 +50695,7 @@ _0808438A:
 	mov r3, sb
 	adds r1, r3, r7
 	ldr r3, _08084560 @ =Sprite_64x32
-	bl sub_8006884
+	bl PutSprite
 	subs r5, #1
 	cmp r5, #0
 	bge _08084380
@@ -50738,7 +50738,7 @@ _080843D8:
 	mov r3, sb
 	adds r1, r3, r7
 	ldr r3, _08084564 @ =Sprite_16x16
-	bl sub_8006884
+	bl PutSprite
 	subs r5, #1
 	cmp r5, #0
 	bge _080843CE
@@ -50779,7 +50779,7 @@ _08084422:
 	mov r3, sb
 	adds r1, r3, r7
 	ldr r3, _08084568 @ =Sprite_8x16
-	bl sub_8006884
+	bl PutSprite
 	subs r5, #1
 	cmp r5, #0
 	bge _08084418
@@ -50803,7 +50803,7 @@ _0808445A:
 	adds r1, r4, #0
 	ldr r2, [sp, #0x14]
 	ldr r3, _0808456C @ =Sprite_16x8
-	bl sub_8006884
+	bl PutSprite
 	ldrh r0, [r5]
 	adds r0, #0x1b
 	str r0, [sp]
@@ -50811,7 +50811,7 @@ _0808445A:
 	adds r1, r4, #0
 	ldr r2, [sp, #0x20]
 	ldr r3, _08084570 @ =Sprite_32x16
-	bl sub_8006884
+	bl PutSprite
 	adds r4, #0x10
 	adds r6, #2
 	ldr r2, [sp, #0x1c]
@@ -50833,7 +50833,7 @@ _08084496:
 	adds r1, r4, #0
 	ldr r2, [sp, #0x14]
 	ldr r3, _08084574 @ =Sprite_8x8
-	bl sub_8006884
+	bl PutSprite
 	ldrh r0, [r5]
 	adds r0, #0x1b
 	str r0, [sp]
@@ -50841,7 +50841,7 @@ _08084496:
 	adds r1, r4, #0
 	ldr r2, [sp, #0x20]
 	ldr r3, _08084578 @ =gUnk_08BFF7E0
-	bl sub_8006884
+	bl PutSprite
 	adds r4, #8
 	adds r6, #1
 	ldr r2, [sp, #8]
@@ -50870,7 +50870,7 @@ _080844D8:
 	ldr r1, [sp, #0x10]
 	adds r2, r4, #0
 	ldr r3, _08084568 @ =Sprite_8x16
-	bl sub_8006884
+	bl PutSprite
 	ldrh r0, [r7]
 	adds r0, #0x1f
 	str r0, [sp]
@@ -50879,7 +50879,7 @@ _080844D8:
 	adds r1, r2, r6
 	adds r2, r4, #0
 	ldr r3, _0808457C @ =gUnk_08BFF7D0
-	bl sub_8006884
+	bl PutSprite
 	subs r5, #1
 	cmp r5, #0
 	bge _080844CE
@@ -50893,7 +50893,7 @@ _0808450A:
 	movs r0, #2
 	ldr r1, [sp, #0x10]
 	ldr r2, [sp, #0x14]
-	bl sub_8006884
+	bl PutSprite
 	mov r3, sb
 	adds r5, r3, r6
 	ldr r3, _08084584 @ =gUnk_08BFF7D8
@@ -50903,7 +50903,7 @@ _0808450A:
 	movs r0, #2
 	adds r1, r5, #0
 	ldr r2, [sp, #0x14]
-	bl sub_8006884
+	bl PutSprite
 	ldr r3, _08084578 @ =gUnk_08BFF7E0
 	ldrh r0, [r4]
 	adds r0, #0x3e
@@ -50911,7 +50911,7 @@ _0808450A:
 	movs r0, #2
 	ldr r1, [sp, #0x10]
 	ldr r2, [sp, #0x20]
-	bl sub_8006884
+	bl PutSprite
 	ldr r3, _08084588 @ =gUnk_08BFF7E8
 	ldrh r0, [r4]
 	adds r0, #0x3e
@@ -50919,7 +50919,7 @@ _0808450A:
 	movs r0, #2
 	adds r1, r5, #0
 	ldr r2, [sp, #0x20]
-	bl sub_8006884
+	bl PutSprite
 	b _080845EE
 	.align 2, 0
 _0808455C: .4byte 0x0203E70C
@@ -50977,7 +50977,7 @@ _080845C4:
 	adds r1, r2, r7
 	adds r2, r4, #0
 	ldr r3, _08084604 @ =Sprite_64x32
-	bl sub_8006884
+	bl PutSprite
 	subs r4, #0x10
 	subs r5, #1
 	cmp r5, #0
@@ -51036,12 +51036,12 @@ sub_8084640: @ 0x08084640
 	cmp r1, #0
 	beq _08084660
 	movs r0, #0
-	bl sub_8006C30
+	bl GetFaceDispById
 	movs r1, #0x11
 	rsbs r1, r1, #0
 	ands r1, r0
 	movs r0, #0
-	bl sub_8006C14
+	bl SetFaceDispById
 _08084660:
 	pop {r0}
 	bx r0
@@ -51055,11 +51055,11 @@ sub_8084664: @ 0x08084664
 	cmp r1, #0
 	beq _08084682
 	movs r0, #0
-	bl sub_8006C30
+	bl GetFaceDispById
 	movs r1, #0x10
 	orrs r1, r0
 	movs r0, #0
-	bl sub_8006C14
+	bl SetFaceDispById
 _08084682:
 	pop {r0}
 	bx r0
@@ -53572,7 +53572,7 @@ _08085B82:
 	adds r0, r2, #0
 	movs r2, #0xf0
 	movs r3, #4
-	bl sub_8006E10
+	bl PutFaceChibi
 	mov r0, sb
 	adds r0, #0xca
 	str r0, [r7, #0x40]
@@ -54261,7 +54261,7 @@ sub_8086110: @ 0x08086110
 	ands r0, r2
 	cmp r1, r0
 	beq _080861AE
-	ldr r0, _08086198 @ =gUnk_08C020F4
+	ldr r0, _08086198 @ =ProcScr_CamMove
 	bl Proc_Find
 	cmp r0, #0
 	bne _080861A0
@@ -54295,7 +54295,7 @@ _08086180:
 	.align 2, 0
 _08086190: .4byte gBmSt
 _08086194: .4byte 0x0000FFFF
-_08086198: .4byte gUnk_08C020F4
+_08086198: .4byte ProcScr_CamMove
 _0808619C: .4byte gUnk_08D8B134
 _080861A0:
 	adds r1, r4, #0
@@ -54472,7 +54472,7 @@ _080862CC:
 	beq _08086362
 	cmp r7, #0
 	beq _08086354
-	ldr r0, _0808634C @ =gUnk_08C020F4
+	ldr r0, _0808634C @ =ProcScr_CamMove
 	bl Proc_Find
 	cmp r0, #0
 	bne _08086354
@@ -54506,7 +54506,7 @@ _08086336:
 _08086340: .4byte gBmSt
 _08086344: .4byte gBmMapUnit
 _08086348: .4byte 0x0000FFFF
-_0808634C: .4byte gUnk_08C020F4
+_0808634C: .4byte ProcScr_CamMove
 _08086350: .4byte gUnk_08D8B134
 _08086354:
 	adds r1, r5, #0
@@ -54627,7 +54627,7 @@ _0808642C:
 	adds r6, r0, #0
 	cmp r1, #0
 	beq _080864D4
-	ldr r0, _0808647C @ =gUnk_08C020F4
+	ldr r0, _0808647C @ =ProcScr_CamMove
 	bl Proc_Find
 	cmp r0, #0
 	bne _080864D4
@@ -54661,7 +54661,7 @@ _08086470:
 	str r0, [r4, #0x58]
 	b _080864D4
 	.align 2, 0
-_0808647C: .4byte gUnk_08C020F4
+_0808647C: .4byte ProcScr_CamMove
 _08086480: .4byte gUnk_08D8B1A0
 _08086484: .4byte gUnk_08D8B2D8
 _08086488:
@@ -55638,7 +55638,7 @@ sub_8086C68: @ 0x08086C68
 	ands r0, r2
 	cmp r1, r0
 	beq _08086CE6
-	ldr r0, _08086CF4 @ =gUnk_08C020F4
+	ldr r0, _08086CF4 @ =ProcScr_CamMove
 	bl Proc_Find
 	cmp r0, #0
 	bne _08086CD8
@@ -55677,7 +55677,7 @@ _08086CE6:
 	.align 2, 0
 _08086CEC: .4byte gBmSt
 _08086CF0: .4byte 0x0000FFFF
-_08086CF4: .4byte gUnk_08C020F4
+_08086CF4: .4byte ProcScr_CamMove
 _08086CF8: .4byte gUnk_08D8B134
 
 	thumb_func_start sub_8086CFC
@@ -55847,7 +55847,7 @@ sub_8086E0C: @ 0x08086E0C
 	movs r0, #4
 	adds r2, r5, #0
 	adds r3, r6, #0
-	bl sub_8006884
+	bl PutSprite
 	adds r1, r4, #0
 	adds r1, #0x20
 	mov r0, r8
@@ -55858,7 +55858,7 @@ sub_8086E0C: @ 0x08086E0C
 	movs r0, #4
 	adds r2, r5, #0
 	adds r3, r6, #0
-	bl sub_8006884
+	bl PutSprite
 	adds r1, r4, #0
 	adds r1, #0x40
 	mov r0, r8
@@ -55869,7 +55869,7 @@ sub_8086E0C: @ 0x08086E0C
 	movs r0, #4
 	adds r2, r5, #0
 	adds r3, r6, #0
-	bl sub_8006884
+	bl PutSprite
 	adds r4, #0x60
 	mov r0, r8
 	ands r4, r0
@@ -55880,7 +55880,7 @@ sub_8086E0C: @ 0x08086E0C
 	movs r0, #4
 	adds r1, r4, #0
 	adds r2, r5, #0
-	bl sub_8006884
+	bl PutSprite
 	add sp, #4
 	pop {r3}
 	mov r8, r3
@@ -55996,7 +55996,7 @@ sub_8086F18: @ 0x08086F18
 	ands r0, r2
 	cmp r1, r0
 	beq _08086FA8
-	ldr r0, _08086FB8 @ =gUnk_08C020F4
+	ldr r0, _08086FB8 @ =ProcScr_CamMove
 	bl Proc_Find
 	cmp r0, #0
 	bne _08086F9A
@@ -56035,7 +56035,7 @@ _08086FA8:
 	.align 2, 0
 _08086FB0: .4byte gBmSt
 _08086FB4: .4byte 0x0000FFFF
-_08086FB8: .4byte gUnk_08C020F4
+_08086FB8: .4byte ProcScr_CamMove
 _08086FBC: .4byte gUnk_08D8B134
 
 	thumb_func_start sub_8086FC0
@@ -56940,7 +56940,7 @@ _0808772A:
 	movs r3, #0
 	str r3, [sp]
 	movs r3, #4
-	bl sub_8006E10
+	bl PutFaceChibi
 	movs r0, #0
 	bl sub_8087380
 	b _08087786
@@ -57575,7 +57575,7 @@ sub_8087C6C: @ 0x08087C6C
 	movs r0, #4
 	movs r1, #4
 	movs r2, #8
-	bl sub_8006884
+	bl PutSprite
 _08087C90:
 	adds r5, r6, #0
 	adds r5, #0x2e
@@ -57591,50 +57591,50 @@ _08087C90:
 	str r2, [sp]
 	movs r0, #4
 	movs r2, #0x1c
-	bl sub_8006884
+	bl PutSprite
 	ldr r3, _08087DF0 @ =gUnk_08D8B398
 	movs r4, #0
 	str r4, [sp]
 	movs r0, #4
 	movs r1, #0x8a
 	movs r2, #0x83
-	bl sub_8006884
+	bl PutSprite
 	ldr r3, _08087DF4 @ =gUnk_08D8B3AE
 	str r4, [sp]
 	movs r0, #4
 	movs r1, #0x8c
 	movs r2, #0x26
-	bl sub_8006884
+	bl PutSprite
 	ldr r3, _08087DF8 @ =gUnk_08D8B3BC
 	str r4, [sp]
 	movs r0, #4
 	movs r1, #0xc0
 	movs r2, #0x26
-	bl sub_8006884
+	bl PutSprite
 	ldr r3, _08087DFC @ =gUnk_08D8B3CA
 	str r4, [sp]
 	movs r0, #4
 	movs r1, #0x12
 	movs r2, #0x6a
-	bl sub_8006884
+	bl PutSprite
 	ldr r3, _08087E00 @ =gUnk_08D8B3E6
 	str r4, [sp]
 	movs r0, #4
 	movs r1, #0x12
 	movs r2, #0x7a
-	bl sub_8006884
+	bl PutSprite
 	ldr r3, _08087E04 @ =gUnk_08D8B3EE
 	str r4, [sp]
 	movs r0, #4
 	movs r1, #0x63
 	movs r2, #0x7c
-	bl sub_8006884
+	bl PutSprite
 	ldr r3, _08087E08 @ =gUnk_08D8B3D2
 	str r4, [sp]
 	movs r0, #4
 	movs r1, #0x28
 	movs r2, #0x30
-	bl sub_8006884
+	bl PutSprite
 	adds r7, r5, #0
 	movs r0, #0x34
 	adds r0, r0, r6
@@ -57650,7 +57650,7 @@ _08087D26:
 	adds r1, r5, #0
 	movs r2, #0x56
 	ldr r3, _08087E10 @ =Sprite_64x32
-	bl sub_8006884
+	bl PutSprite
 	adds r6, #4
 	adds r5, #0x20
 	subs r4, #1
@@ -57662,20 +57662,20 @@ _08087D26:
 	movs r0, #4
 	movs r1, #0x88
 	movs r2, #0x5f
-	bl sub_8006884
+	bl PutSprite
 	ldr r3, _08087E10 @ =Sprite_64x32
 	ldr r0, _08087E18 @ =0x0000A3D0
 	str r0, [sp]
 	movs r0, #4
 	movs r1, #0xb4
 	movs r2, #0x60
-	bl sub_8006884
+	bl PutSprite
 	ldr r3, _08087E1C @ =gUnk_08D8B3FE
 	str r4, [sp]
 	movs r0, #4
 	movs r1, #0x88
 	movs r2, #0x6c
-	bl sub_8006884
+	bl PutSprite
 	ldr r6, _08087E20 @ =0x0000A3D4
 	movs r5, #0x9c
 	movs r4, #1
@@ -57685,7 +57685,7 @@ _08087D72:
 	adds r1, r5, #0
 	movs r2, #0x6d
 	ldr r3, _08087E10 @ =Sprite_64x32
-	bl sub_8006884
+	bl PutSprite
 	adds r6, #4
 	adds r5, #0x20
 	subs r4, #1
@@ -57722,7 +57722,7 @@ _08087DB8:
 	movs r0, #4
 	movs r1, #0xd4
 	movs r2, #3
-	bl sub_8006884
+	bl PutSprite
 _08087DD4:
 	bl sub_80872E4
 	add sp, #4
@@ -58490,12 +58490,12 @@ sub_8088404: @ 0x08088404
 	adds r4, r0, #0
 	bl sub_8088718
 	movs r0, #0
-	bl sub_8006C30
+	bl GetFaceDispById
 	movs r1, #0x11
 	rsbs r1, r1, #0
 	ands r1, r0
 	movs r0, #0
-	bl sub_8006C14
+	bl SetFaceDispById
 	bl sub_80893E0
 	bl sub_8087E90
 	movs r1, #1
@@ -58518,7 +58518,7 @@ _08088440:
 	ands r1, r0
 	cmp r1, #0
 	beq _08088458
-	ldr r0, _08088460 @ =gUnk_08BFF970
+	ldr r0, _08088460 @ =ProcScr_Face
 	bl Proc_Find
 	bl sub_80073F4
 _08088458:
@@ -58526,7 +58526,7 @@ _08088458:
 	pop {r0}
 	bx r0
 	.align 2, 0
-_08088460: .4byte gUnk_08BFF970
+_08088460: .4byte ProcScr_Face
 
 	thumb_func_start sub_8088464
 sub_8088464: @ 0x08088464
@@ -58629,12 +58629,12 @@ sub_8088520: @ 0x08088520
 	push {r4, lr}
 	adds r4, r0, #0
 	movs r0, #0
-	bl sub_8006C30
+	bl GetFaceDispById
 	movs r1, #0x11
 	rsbs r1, r1, #0
 	ands r1, r0
 	movs r0, #0
-	bl sub_8006C14
+	bl SetFaceDispById
 	adds r0, r4, #0
 	bl sub_80884E0
 	movs r0, #0
@@ -59602,7 +59602,7 @@ _08088CD6:
 	movs r0, #0
 	movs r1, #5
 _08088CDA:
-	bl sub_80078F4
+	bl SetFaceBlinkControlById
 	movs r0, #1
 	b _08088D02
 _08088CE2:
@@ -59692,14 +59692,14 @@ _08088D74:
 	ldr r0, [r6, #0x30]
 	bl SetTextFont
 	movs r0, #0
-	bl sub_8006C30
+	bl GetFaceDispById
 	movs r1, #0x10
 	orrs r0, r1
 	lsls r0, r0, #0x10
 	lsrs r7, r0, #0x10
 	movs r0, #0
 	movs r1, #3
-	bl sub_80078F4
+	bl SetFaceBlinkControlById
 	movs r2, #0
 	mov sb, r2
 	cmp sb, sl
@@ -60211,7 +60211,7 @@ _08089274:
 	bl SetTextFont
 	movs r0, #0
 	adds r1, r7, #0
-	bl sub_8006C14
+	bl SetFaceDispById
 _08089282:
 	add sp, #0xc
 	pop {r3, r4, r5}
@@ -78142,7 +78142,7 @@ sub_8091D38: @ 0x08091D38
 	ands r0, r1
 	strb r0, [r4]
 	add r0, sp, #8
-	bl sub_80069E0
+	bl SetFaceConfig
 	movs r0, #2
 	rsbs r0, r0, #0
 	ldrb r2, [r4, #1]
@@ -79521,7 +79521,7 @@ _0809294A:
 	str r6, [sp]
 	adds r1, r7, #0
 	movs r3, #2
-	bl sub_8006E10
+	bl PutFaceChibi
 	ldr r5, _08092A18 @ =0x02012A98
 	adds r0, r5, #0
 	bl ClearText
@@ -80581,7 +80581,7 @@ _0809325C:
 	bl sub_8007B80
 	adds r0, r4, #0
 	mov r1, sb
-	bl sub_8006C14
+	bl SetFaceDispById
 _08093278:
 	lsls r1, r4, #2
 	adds r0, r5, #0
@@ -81813,7 +81813,7 @@ sub_8093C00: @ 0x08093C00
 	mov sb, r3
 	str r3, [sp]
 	movs r3, #2
-	bl sub_8006E10
+	bl PutFaceChibi
 	ldr r0, _08093CBC @ =0x02012B38
 	mov r8, r0
 	bl ClearText
@@ -83820,7 +83820,7 @@ sub_8094BE0: @ 0x08094BE0
 	ldrh r0, [r0]
 	bl InitBgs
 	add r0, sp, #8
-	bl sub_80069E0
+	bl SetFaceConfig
 	ldr r3, _08094CE0 @ =gDispIo
 	movs r2, #4
 	rsbs r2, r2, #0
@@ -85307,7 +85307,7 @@ sub_8095830: @ 0x08095830
 	ldr r0, _08095B34 @ =gUnk_08D8C0A0
 	bl InitBgs
 	add r0, sp, #8
-	bl sub_80069E0
+	bl SetFaceConfig
 	movs r0, #0xff
 	str r0, [r7, #0x34]
 	movs r0, #0
@@ -87189,7 +87189,7 @@ sub_8096834: @ 0x08096834
 	str r0, [sp]
 	movs r0, #0x4a
 	movs r3, #2
-	bl sub_8006E10
+	bl PutFaceChibi
 	adds r4, #8
 	str r5, [sp]
 	ldr r0, _080968E4 @ =gUnk_0842D0F4
@@ -87362,13 +87362,13 @@ sub_80969A8: @ 0x080969A8
 	movs r0, #4
 	adds r1, r4, #0
 	movs r2, #0x18
-	bl sub_8006884
+	bl PutSprite
 	ldr r3, _08096A30 @ =gUnk_08D8D4E8
 	str r5, [sp]
 	movs r0, #4
 	adds r1, r4, #0
 	movs r2, #0x18
-	bl sub_8006884
+	bl PutSprite
 	ldrb r7, [r7]
 	lsls r0, r7, #1
 	adds r6, #0x4c
@@ -89832,13 +89832,13 @@ sub_8097DD4: @ 0x08097DD4
 	movs r0, #4
 	adds r1, r4, #0
 	movs r2, #0x18
-	bl sub_8006884
+	bl PutSprite
 	ldr r3, _08097E5C @ =gUnk_08D8D4E8
 	str r5, [sp]
 	movs r0, #4
 	adds r1, r4, #0
 	movs r2, #0x18
-	bl sub_8006884
+	bl PutSprite
 	ldrb r7, [r7]
 	lsls r0, r7, #1
 	adds r6, #0x4a
@@ -92211,7 +92211,7 @@ sub_8099168: @ 0x08099168
 	movs r0, #0x4a
 	adds r1, r4, #0
 	movs r3, #2
-	bl sub_8006E10
+	bl PutFaceChibi
 	movs r0, #1
 	bl EnableBgSync
 	add sp, #8
@@ -100894,7 +100894,7 @@ _0809D714:
 	adds r0, r0, r4
 	ldrh r4, [r0, #6]
 	adds r0, r4, #0
-	bl sub_80070AC
+	bl ShouldFaceBeRaised
 	lsls r0, r0, #0x18
 	cmp r0, #0
 	beq _0809D7E8
@@ -101838,7 +101838,7 @@ sub_809DEEC: @ 0x0809DEEC
 	adds r0, r0, r4
 	ldrh r4, [r0, #6]
 	adds r0, r4, #0
-	bl sub_80070AC
+	bl ShouldFaceBeRaised
 	lsls r0, r0, #0x18
 	cmp r0, #0
 	beq _0809DFB0

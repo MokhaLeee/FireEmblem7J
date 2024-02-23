@@ -805,8 +805,8 @@ _0804E3D4:
 	bx r0
 	.align 2, 0
 
-	thumb_func_start sub_804E3E0
-sub_804E3E0: @ 0x0804E3E0
+	thumb_func_start NewEfxAvoid
+NewEfxAvoid: @ 0x0804E3E0
 	push {r4, r5, r6, lr}
 	adds r6, r0, #0
 	ldr r1, _0804E410 @ =gEkrHpBarCount
@@ -1075,8 +1075,8 @@ _0804E5FC:
 	bx r0
 	.align 2, 0
 
-	thumb_func_start sub_804E604
-sub_804E604: @ 0x0804E604
+	thumb_func_start NewEfxNoDmage
+NewEfxNoDmage: @ 0x0804E604
 	push {r4, r5, r6, lr}
 	mov r6, r8
 	push {r6}
@@ -3531,8 +3531,8 @@ EfxWhiteOutRestorePalSync: @ 0x0804F9C4
 	pop {r0}
 	bx r0
 
-	thumb_func_start NewEfxWhiteIN
-NewEfxWhiteIN: @ 0x0804F9D8
+	thumb_func_start NewEfxFlashHPBar
+NewEfxFlashHPBar: @ 0x0804F9D8
 	push {r4, r5, r6, lr}
 	adds r6, r0, #0
 	adds r4, r1, #0
@@ -3970,8 +3970,8 @@ _0804FD64:
 _0804FD6C: .4byte gUnk_081DF3A4
 _0804FD70: .4byte gPal + 0x380
 
-	thumb_func_start sub_804FD74
-sub_804FD74: @ 0x0804FD74
+	thumb_func_start NewEfxFlashUnit
+NewEfxFlashUnit: @ 0x0804FD74
 	push {r4, r5, r6, lr}
 	mov r6, r8
 	push {r6}
@@ -5285,8 +5285,8 @@ SpellFx_Finish: @ 0x080507D8
 	.align 2, 0
 _080507E0: .4byte gEfxSpellAnimExists
 
-	thumb_func_start SpellFx_ClearBG1Position
-SpellFx_ClearBG1Position: @ 0x080507E4
+	thumb_func_start SpellFx_SetBG1Position
+SpellFx_SetBG1Position: @ 0x080507E4
 	push {lr}
 	movs r0, #1
 	movs r1, #0
@@ -5628,22 +5628,22 @@ _08050A8E:
 	adds r0, r5, #0
 	movs r1, #0
 	movs r2, #5
-	bl NewEfxWhiteIN
+	bl NewEfxFlashHPBar
 	adds r0, r5, #0
 	movs r1, #0
 	movs r2, #8
 	movs r3, #0
-	bl sub_804FD74
+	bl NewEfxFlashUnit
 	b _08050AB8
 _08050AA6:
 	adds r0, r5, #0
 	mov r1, r8
 	movs r2, #0
-	bl sub_804E604
+	bl NewEfxNoDmage
 	b _08050AB8
 _08050AB2:
 	adds r0, r5, #0
-	bl sub_804E3E0
+	bl NewEfxAvoid
 _08050AB8:
 	add sp, #4
 	pop {r3, r4, r5}
@@ -5740,12 +5740,12 @@ _08050B7A:
 	adds r0, r5, #0
 	movs r1, #0
 	movs r2, #5
-	bl NewEfxWhiteIN
+	bl NewEfxFlashHPBar
 	adds r0, r5, #0
 	movs r1, #0
 	movs r2, #8
 	movs r3, #0
-	bl sub_804FD74
+	bl NewEfxFlashUnit
 	b _08050BAE
 _08050B92:
 	ldr r1, _08050BA4 @ =0x02017750
@@ -5754,13 +5754,13 @@ _08050B92:
 	adds r0, r5, #0
 	mov r1, r8
 	movs r2, #1
-	bl sub_804E604
+	bl NewEfxNoDmage
 	b _08050BAE
 	.align 2, 0
 _08050BA4: .4byte 0x02017750
 _08050BA8:
 	adds r0, r5, #0
-	bl sub_804E3E0
+	bl NewEfxAvoid
 _08050BAE:
 	pop {r3, r4}
 	mov r8, r3
@@ -5797,7 +5797,7 @@ _08050BE8:
 	bl sub_804E7AC
 	b _08050BF2
 _08050BEE:
-	bl sub_804E3E0
+	bl NewEfxAvoid
 _08050BF2:
 	pop {r4}
 	pop {r0}

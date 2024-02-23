@@ -67,8 +67,8 @@ _08006878: .4byte 0x0202A480
 _0800687C: .4byte 0x030040B0
 _08006880: .4byte 0x02029C80
 
-	thumb_func_start sub_8006884
-sub_8006884: @ 0x08006884
+	thumb_func_start PutSprite
+PutSprite: @ 0x08006884
 	push {r4, r5, r6, r7, lr}
 	ldr r6, _080068B8 @ =0x030040B0
 	ldr r5, [r6]
@@ -168,7 +168,7 @@ sub_8006924: @ 0x08006924
 	ldrh r0, [r0]
 	str r0, [sp]
 	adds r0, r4, #0
-	bl sub_8006884
+	bl PutSprite
 	add sp, #4
 	pop {r4}
 	pop {r0}

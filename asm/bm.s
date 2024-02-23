@@ -1062,7 +1062,7 @@ _08015EA2:
 	adds r1, r6, #0
 	adds r2, r7, #0
 	mov r3, r8
-	bl sub_8006884
+	bl PutSprite
 	add sp, #4
 	pop {r3, r4}
 	mov r8, r3
@@ -1093,7 +1093,7 @@ DisplayBmTextShadow: @ 0x08015ED8
 	movs r0, #4
 	adds r1, r4, #0
 	adds r2, r5, #0
-	bl sub_8006884
+	bl PutSprite
 	add sp, #4
 	pop {r4, r5}
 	pop {r0}
@@ -1145,7 +1145,7 @@ _08015F4A:
 	movs r0, #4
 	adds r1, r5, #0
 	adds r2, r6, #0
-	bl sub_8006884
+	bl PutSprite
 	add sp, #4
 	pop {r4, r5, r6}
 	pop {r0}
@@ -1378,7 +1378,7 @@ sub_80160D4: @ 0x080160D4
 	cmp r2, r0
 	beq _08016114
 _08016108:
-	ldr r4, _0801611C @ =gUnk_08C020F4
+	ldr r4, _0801611C @ =ProcScr_CamMove
 	adds r0, r4, #0
 	bl Proc_Find
 	cmp r0, #0
@@ -1388,7 +1388,7 @@ _08016114:
 	b _08016150
 	.align 2, 0
 _08016118: .4byte gBmSt
-_0801611C: .4byte gUnk_08C020F4
+_0801611C: .4byte ProcScr_CamMove
 _08016120:
 	cmp r5, #0
 	beq _0801612E
@@ -1450,7 +1450,7 @@ sub_801615C: @ 0x0801615C
 	cmp r6, r0
 	beq _0801619E
 _08016192:
-	ldr r4, _080161A8 @ =gUnk_08C020F4
+	ldr r4, _080161A8 @ =ProcScr_CamMove
 	adds r0, r4, #0
 	bl Proc_Find
 	cmp r0, #0
@@ -1460,7 +1460,7 @@ _0801619E:
 	b _080161DC
 	.align 2, 0
 _080161A4: .4byte gBmSt
-_080161A8: .4byte gUnk_08C020F4
+_080161A8: .4byte ProcScr_CamMove
 _080161AC:
 	cmp r5, #0
 	beq _080161BA
@@ -1541,7 +1541,7 @@ sub_801622C: @ 0x0801622C
 	ldrsh r0, [r0, r2]
 	cmp r1, r0
 	ble _0801624A
-	ldr r4, _08016254 @ =gUnk_08C020F4
+	ldr r4, _08016254 @ =ProcScr_CamMove
 	adds r0, r4, #0
 	bl Proc_Find
 	cmp r0, #0
@@ -1551,7 +1551,7 @@ _0801624A:
 	b _08016284
 	.align 2, 0
 _08016250: .4byte gBmSt
-_08016254: .4byte gUnk_08C020F4
+_08016254: .4byte ProcScr_CamMove
 _08016258:
 	cmp r5, #0
 	beq _08016266

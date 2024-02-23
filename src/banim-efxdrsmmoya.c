@@ -10,7 +10,7 @@ void NewEfxDrsmmoya(struct Anim * anim)
 {
     struct ProcEfx * proc;
 
-    SpellFx_ClearBG1Position();
+    SpellFx_SetBG1Position();
     proc = Proc_Start(ProcScr_EfxDrsmmoya, PROC_TREE_3);
     proc->anim = anim;
     proc->timer = 0;

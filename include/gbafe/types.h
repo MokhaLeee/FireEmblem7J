@@ -29,6 +29,7 @@ enum glb_pos {
     POS_INVALID = -1
 };
 
+struct ProcCmd;
 struct SMSHandle;
 struct Unit;
 struct UnitDefinition;

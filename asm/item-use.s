@@ -1559,10 +1559,10 @@ sub_8027F14: @ 0x08027F14
 	movs r0, #0
 	movs r2, #0xb8
 	movs r3, #0xc
-	bl sub_8006AC4
+	bl StartFace
 	movs r0, #0
 	movs r1, #5
-	bl sub_80078F4
+	bl SetFaceBlinkControlById
 	movs r0, #0x17
 	add sp, #4
 	pop {r4, r5}

@@ -986,7 +986,7 @@ _0801BD70:
 	movs r1, #0xb7
 	movs r2, #0x20
 	movs r3, #0x50
-	bl sub_8006AC4
+	bl StartFace
 	movs r0, #0x81
 	lsls r0, r0, #1
 	str r0, [sp]
@@ -1002,7 +1002,7 @@ _0801BD90:
 	movs r1, #0xb4
 	movs r2, #0x20
 	movs r3, #0x50
-	bl sub_8006AC4
+	bl StartFace
 	movs r0, #0x81
 	lsls r0, r0, #1
 	str r0, [sp]
@@ -1011,7 +1011,7 @@ _0801BD90:
 _0801BDAA:
 	movs r2, #0xd0
 	movs r3, #0x50
-	bl sub_8006AC4
+	bl StartFace
 	movs r0, #0
 	add sp, #0x14
 	pop {r1}

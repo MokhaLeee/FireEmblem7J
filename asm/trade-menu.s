@@ -659,7 +659,7 @@ sub_802B544: @ 0x0802B544
 	movs r0, #0
 	movs r2, #0x40
 	adds r3, r4, #0
-	bl sub_8006AC4
+	bl StartFace
 	ldr r0, [r5, #0x30]
 	bl GetUnitPortraitId
 	adds r1, r0, #0
@@ -668,13 +668,13 @@ sub_802B544: @ 0x0802B544
 	movs r0, #1
 	movs r2, #0xb0
 	adds r3, r4, #0
-	bl sub_8006AC4
+	bl StartFace
 	movs r0, #0
 	movs r1, #5
-	bl sub_80078F4
+	bl SetFaceBlinkControlById
 	movs r0, #1
 	movs r1, #5
-	bl sub_80078F4
+	bl SetFaceBlinkControlById
 	movs r0, #3
 	bl EnableBgSync
 	add sp, #4

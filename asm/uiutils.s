@@ -670,7 +670,7 @@ _0804A768:
 	movs r0, #2
 	adds r1, r5, #0
 	adds r2, r6, #0
-	bl sub_8006884
+	bl PutSprite
 	add sp, #4
 	pop {r4, r5, r6, r7}
 	pop {r0}
@@ -702,7 +702,7 @@ sub_804A7B0: @ 0x0804A7B0
 	movs r0, #2
 	adds r1, r5, #0
 	adds r2, r4, #0
-	bl sub_8006884
+	bl PutSprite
 	add sp, #4
 	pop {r4, r5}
 	pop {r0}
@@ -723,7 +723,7 @@ sub_804A7EC: @ 0x0804A7EC
 	str r0, [sp]
 	movs r0, #3
 	adds r1, r4, #0
-	bl sub_8006884
+	bl PutSprite
 	add sp, #4
 	pop {r4}
 	pop {r0}
@@ -950,7 +950,7 @@ _0804A986:
 	movs r0, #2
 	adds r1, r4, #0
 	adds r2, r5, #0
-	bl sub_8006884
+	bl PutSprite
 	add sp, #4
 	pop {r4, r5, r6, r7}
 	pop {r0}
@@ -975,7 +975,7 @@ sub_804A9D0: @ 0x0804A9D0
 	movs r0, #3
 	adds r1, r4, #0
 	adds r2, r5, #0
-	bl sub_8006884
+	bl PutSprite
 	add sp, #4
 	pop {r4, r5}
 	pop {r0}

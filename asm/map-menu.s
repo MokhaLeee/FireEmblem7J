@@ -219,7 +219,7 @@ sub_8021B28: @ 0x08021B28
 	ldr r0, [r5]
 	movs r4, #0x11
 	ldrsb r4, [r0, r4]
-	ldr r0, _08021B84 @ =gUnk_08C020F4
+	ldr r0, _08021B84 @ =ProcScr_CamMove
 	bl sub_8004748
 	lsls r0, r4, #4
 	bl sub_8015D54
@@ -247,7 +247,7 @@ _08021B7A:
 	bx r0
 	.align 2, 0
 _08021B80: .4byte gActiveUnit
-_08021B84: .4byte gUnk_08C020F4
+_08021B84: .4byte ProcScr_CamMove
 _08021B88: .4byte gBmSt
 
 	thumb_func_start sub_8021B8C
@@ -708,10 +708,10 @@ sub_8021F10: @ 0x08021F10
 	movs r0, #0
 	movs r2, #0xb0
 	movs r3, #0xc
-	bl sub_8006AC4
+	bl StartFace
 	movs r0, #0
 	movs r1, #5
-	bl sub_80078F4
+	bl SetFaceBlinkControlById
 	ldr r1, [r4]
 	adds r0, r5, #0
 	movs r2, #0xf
@@ -742,10 +742,10 @@ sub_8021F5C: @ 0x08021F5C
 	movs r0, #0
 	movs r2, #0xb0
 	movs r3, #0xc
-	bl sub_8006AC4
+	bl StartFace
 	movs r0, #0
 	movs r1, #5
-	bl sub_80078F4
+	bl SetFaceBlinkControlById
 	ldr r1, [r4]
 	adds r0, r5, #0
 	movs r2, #0xf
@@ -1541,10 +1541,10 @@ _08022588:
 	movs r0, #0
 	movs r2, #0xb0
 	movs r3, #0xc
-	bl sub_8006AC4
+	bl StartFace
 	movs r0, #0
 	movs r1, #5
-	bl sub_80078F4
+	bl SetFaceBlinkControlById
 	ldr r1, [r4]
 	adds r0, r5, #0
 	movs r2, #0xf
@@ -1624,10 +1624,10 @@ sub_8022614: @ 0x08022614
 	movs r0, #0
 	movs r2, #0xb0
 	movs r3, #0xc
-	bl sub_8006AC4
+	bl StartFace
 	movs r0, #0
 	movs r1, #5
-	bl sub_80078F4
+	bl SetFaceBlinkControlById
 	ldr r1, [r4]
 	adds r0, r5, #0
 	movs r2, #0xf
@@ -1918,10 +1918,10 @@ sub_802287C: @ 0x0802287C
 	movs r0, #0
 	movs r2, #0xb0
 	movs r3, #0xc
-	bl sub_8006AC4
+	bl StartFace
 	movs r0, #0
 	movs r1, #5
-	bl sub_80078F4
+	bl SetFaceBlinkControlById
 	ldr r1, [r4]
 	adds r0, r5, #0
 	movs r2, #0xf
@@ -1983,10 +1983,10 @@ sub_80228D4: @ 0x080228D4
 	movs r0, #0
 	movs r2, #0xb0
 	movs r3, #0xc
-	bl sub_8006AC4
+	bl StartFace
 	movs r0, #0
 	movs r1, #5
-	bl sub_80078F4
+	bl SetFaceBlinkControlById
 	ldr r1, [r6]
 	adds r0, r4, #0
 	movs r2, #0xf
@@ -2596,10 +2596,10 @@ sub_8022DFC: @ 0x08022DFC
 	movs r0, #0
 	movs r2, #0xb0
 	movs r3, #0xc
-	bl sub_8006AC4
+	bl StartFace
 	movs r0, #0
 	movs r1, #5
-	bl sub_80078F4
+	bl SetFaceBlinkControlById
 	ldr r1, [r4]
 	adds r0, r5, #0
 	movs r2, #0xf
@@ -3558,7 +3558,7 @@ sub_80234D0: @ 0x080234D0
 	lsls r2, r2, #2
 	adds r0, r5, #0
 	movs r3, #5
-	bl sub_8007160
+	bl PutFace80x72_Core
 	movs r0, #0
 	add sp, #8
 	pop {r4, r5, r6}

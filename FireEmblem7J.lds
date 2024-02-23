@@ -92,6 +92,7 @@ SECTIONS
 		. = 0x028D68; gActiveFont = .;
 		. = 0x028E6C;
 		. = ALIGN(4); src/anime.o(ewram_data);
+		. = 0x02A580; gFaceConfig = .;
 		. = 0x02BBB4; gBmSt = .;
 		. = 0x02BBF4; gPlaySt = .;
 		. = 0x02BD44; gActiveUnitId = .;
@@ -160,6 +161,7 @@ SECTIONS
 		. = 0x002E58; gOnHBlankB = .;
 		. = 0x003868; gOamAffinePutIt = .;
 		. = 0x003870; IntrMainRam = .;
+		. = 0x0040E0; gFaces = .;
 		. = 0x0045B0; gActiveUnit = .;
 		. = 0x004750; Unk_03004750 = .;
 		. = 0x005D90; ReadSramFast = .;
@@ -188,6 +190,7 @@ SECTIONS
 		src/anime.o(.text);
 		asm/anim-drv.o(.text);
 		asm/sprite.o(.text);
+		src/face.o(.text);
 		asm/face.o(.text);
 		asm/talk.o(.text);
 		asm/event.o(.text);
@@ -288,6 +291,8 @@ SECTIONS
 		. = ALIGN(4); data/data_0843943C.o(.data)
 		. = ALIGN(4); src/hardware.o(.data)
 		. = ALIGN(4); data/data_08BBFCA8.o(.data)
+		. = ALIGN(4); src/face.o(.data)
+		. = ALIGN(4); data/data_08BFFB20.o(.data)
 		. = ALIGN(4); src/eventscr_thunderfx.o(.data)
 		. = ALIGN(4); data/data_08C013F0.o(.data)
 		. = ALIGN(4); data/gamecontrol.o(.data)

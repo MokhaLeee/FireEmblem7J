@@ -668,10 +668,10 @@ sub_801DCB4: @ 0x0801DCB4
 	movs r0, #0
 	movs r2, #0xb0
 	movs r3, #4
-	bl sub_8006AC4
+	bl StartFace
 	movs r0, #0
 	movs r1, #5
-	bl sub_80078F4
+	bl SetFaceBlinkControlById
 	adds r0, r6, #0
 	adds r1, r4, #0
 	movs r2, #0xf
@@ -1992,7 +1992,7 @@ sub_801E6E4: @ 0x0801E6E4
 	str r0, [sp]
 	movs r0, #4
 	adds r1, r5, #0
-	bl sub_8006884
+	bl PutSprite
 	ldr r3, [r7, #0x2c]
 	movs r0, #4
 	adds r1, r5, #0
@@ -7453,7 +7453,7 @@ _08021326:
 	lsls r0, r0, #4
 	str r0, [sp]
 	movs r0, #0xa
-	bl sub_8006884
+	bl PutSprite
 _0802133A:
 	add sp, #4
 	pop {r4}

@@ -4024,7 +4024,7 @@ _080AD5EA:
 	str r4, [sp]
 	movs r0, #0xb
 	movs r2, #0x58
-	bl sub_8006884
+	bl PutSprite
 	movs r1, #0
 	ldrsb r1, [r6, r1]
 	lsls r1, r1, #3
@@ -4034,7 +4034,7 @@ _080AD5EA:
 	str r4, [sp]
 	movs r0, #0xb
 	movs r2, #0x68
-	bl sub_8006884
+	bl PutSprite
 	movs r1, #0
 	ldrsb r1, [r6, r1]
 	lsls r1, r1, #3
@@ -4044,7 +4044,7 @@ _080AD5EA:
 	str r4, [sp]
 	movs r0, #0xb
 	movs r2, #0x78
-	bl sub_8006884
+	bl PutSprite
 	adds r0, r7, #0
 	bl sub_80AD424
 	add sp, #4
@@ -20086,11 +20086,11 @@ _080B53DA:
 	cmp r0, #1
 	bne _080B540C
 	adds r0, r4, #0
-	bl sub_8006C2C
+	bl GetFaceDisp
 	ldr r1, _080B542C @ =0xFFFFFBFF
 	ands r1, r0
 	adds r0, r4, #0
-	bl sub_8006BF8
+	bl SetFaceDisp
 	ldr r0, [r7, #0x40]
 	adds r0, r0, r5
 	adds r0, #0x34
@@ -21174,7 +21174,7 @@ _080B5C46:
 	strb r0, [r1]
 	adds r0, r7, #0
 	movs r1, #5
-	bl sub_80078F4
+	bl SetFaceBlinkControlById
 	movs r6, #0
 	movs r0, #1
 	strb r0, [r5, #8]
@@ -21262,12 +21262,12 @@ sub_80B5CA8: @ 0x080B5CA8
 	cmp r0, #0
 	bne _080B5D48
 	adds r0, r4, #0
-	bl sub_8006C2C
+	bl GetFaceDisp
 	movs r1, #0x80
 	lsls r1, r1, #3
 	orrs r1, r0
 	adds r0, r4, #0
-	bl sub_8006BF8
+	bl SetFaceDisp
 	movs r0, #0xff
 	lsls r0, r0, #8
 	mov r2, sb
@@ -21478,7 +21478,7 @@ sub_80B5E50: @ 0x080B5E50
 	bl ResetText
 	bl InitFaces
 	mov r0, sp
-	bl sub_80069E0
+	bl SetFaceConfig
 	bl ResetUnitSprites
 	bl MU_Init
 	bl ApplyUnitSpritePalettes
