@@ -26,6 +26,9 @@ struct FaceVramEnt {
 
 extern struct FaceVramEnt EWRAM_DATA gFaceConfig[FACE_SLOT_COUNT];
 
+struct FaceMouthProc;
+struct FaceEyeProc;
+
 struct FaceProc {
     /* 00 */ PROC_HEADER;
 
@@ -41,8 +44,8 @@ struct FaceProc {
     /* 40 */ u8 slot;
     /* 41 */ u8 sprite_layer;
 
-    /* 44 */ ProcPtr mouth_proc;
-    /* 48 */ ProcPtr eye_proc;
+    /* 44 */ struct FaceMouthProc * mouth_proc;
+    /* 48 */ struct FaceEyeProc   * eye_proc;
 };
 
 extern struct FaceProc * gFaces[FACE_SLOT_COUNT];
@@ -109,13 +112,13 @@ void EndFaceChibiSpr(void);
 // ShouldFaceBeRaised
 // PutFace80x72_Core
 
-struct FaceFmtProc {
+struct FaceEyeProc {
     /* 00 */ PROC_HEADER;
 
     /* 2C */ struct FaceProc * face_proc;
 
     /* 30 */ s16 blink;
-    /* 32 */ s16 unk_32;
+    /* 32 */ s16 state; /* a finite state machine */
     /* 34 */ s16 timer;
 
     /* 38 */ int dealy;
@@ -126,9 +129,20 @@ struct FaceFmtProc {
     /* 44 */ u16 faceId;
 };
 
-void FaceFormat_Init(struct FaceFmtProc * proc);
-void FaceFormat_Delay(struct FaceFmtProc * proc);
-void FaceFormat_PutFace(struct FaceFmtProc * proc);
+enum face_eye_proc_state_idx {
+    FACE_EYE_INIT = 0,
+    FACE_EYE_PRE_SWITCH = 1,
+
+    FACE_EYE_FRAME0_DISP = 2,
+    FACE_EYE_FRAME1_DISP = 3,
+    FACE_EYE_FRAME_FLIP_DISP = 4,
+
+    FACE_EYE_END = 97,
+};
+
+void FaceFormat_Init(struct FaceEyeProc * proc);
+void FaceFormat_Delay(struct FaceEyeProc * proc);
+void FaceFormat_PutFace(struct FaceEyeProc * proc);
 void PutFace80x72(ProcPtr proc, u16 * tm, int fid, int chr, int pal);
 void EndFacePtr(struct Proc * proc);
 void EndFaceIn8Frames(struct FaceProc * proc);
@@ -148,41 +162,30 @@ struct FaceMouthProc {
 void FaceMouth_Init(struct FaceMouthProc * proc);
 void FaceMouth_Loop(struct FaceMouthProc * proc);
 
-struct FaceBlinkProc {
-    /* 00 */ PROC_HEADER;
-
-    /* 2C */ struct FaceProc * pFaceProc;
-
-    /* 30 */ s16 blinkControl;
-    /* 32 */ s16 unk_32;
-    /* 34 */ s16 unk_34;
-
-    /* 38 */ int unk_38;
-    /* 3C */ u16* unk_3c;
-
-    /* 40 */ u16 tileId;
-    /* 42 */ u16 palId;
-    /* 44 */ u16 faceId;
+enum face_eye_frame_idx {
+    FACE_EYE_FRAME_0 = 0,
+    FACE_EYE_FRAME_1,
 };
 
-// PutFaceEyeSprite
-void FaceEye_80076F8(ProcPtr proc);
-void FaceEye_800773C(ProcPtr proc);
-void FaceEye_8007774(ProcPtr proc);
-void FaceEye_80077E0(ProcPtr proc);
-void FaceEye_80077E8(ProcPtr proc);
-void FaceEye_800781C(ProcPtr proc);
-void FaceEye_8007824(ProcPtr proc);
-void FaceEye_8007858(ProcPtr proc);
-void FaceEye_8007860(ProcPtr proc);
+void PutFaceEyeSprite(struct FaceEyeProc * proc, int frame_idx);
+
+void FaceEye_Init(struct FaceEyeProc * proc);
+void FaceEye_Delay(struct FaceEyeProc * proc);
+void FaceEye_PreSwitch(struct FaceEyeProc * proc);
+void FaceEye_InitDisplayFrame0(struct FaceEyeProc * proc);
+void FaceEye_DisplayFrame0(struct FaceEyeProc * proc);
+void FaceEye_InitDisplayFrame1(struct FaceEyeProc * proc);
+void FaceEye_DisplayFrame1(struct FaceEyeProc * proc);
+void FaceEye_InitDisplayFrameFlip(struct FaceEyeProc * proc);
+void FaceEye_DisplayFrameFlip(struct FaceEyeProc * proc);
 void SetFaceBlinkControl(struct FaceProc * proc, int blink);
 void SetFaceBlinkControlById(int slot, int blink);
-int FaceFmtProc_GenBlinkInterval(struct FaceFmtProc * proc);
-// sub_800796C
-// sub_8007974
-// sub_800798C
+int GetFaceBlinkInterval(struct FaceEyeProc * proc);
+void SetFaceEyeState(struct FaceProc * proc, int state);
+void SetFaceEyeStateById(int slot, int state);
+// Face_0800798C
 // sub_8007A00
-// sub_8007A5C
+// StartBmFace
 // sub_8007B80
 // sub_8007B94
 // sub_8007BB8
@@ -200,7 +203,7 @@ extern u16 CONST_DATA Sprite_Face64x72_Flipped[];
 extern u16 CONST_DATA Sprite_Face96x72[];
 extern u16 CONST_DATA Sprite_Face96x72_Flipped[];
 extern CONST_DATA struct ProcCmd ProcScr_Face[];
-// ??? FaceTm_Unk_08BFF9A8
+extern CONST_DATA struct ProcCmd ProcScr_BmFace[];
 extern u8 CONST_DATA FaceTm_Chibi[];
 extern CONST_DATA struct ProcCmd ProcScr_FaceChibiSpr[];
 extern u16 CONST_DATA Sprite_FaceChibi[];

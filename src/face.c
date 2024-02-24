@@ -375,18 +375,14 @@ void UnpackFaceChibiGraphics(int fid, int chr, int pal)
     }
 }
 
-u8 CONST_DATA FaceTm_Unk_08BFF9A8[] =
-{
-    25, 0,
-    0x00, 0x00, 0x00, 0x00, 0x00, 0x00,
-    0x08, 0x00, 0x00, 0x00, 0xF4, 0x20,
-    0xC0, 0x08, 0x0E, 0x00, 0x01, 0x00,
-    0x00, 0x00, 0x00, 0x00, 0x02, 0x00,
-    0x00, 0x00, 0x2D, 0x6A, 0x00, 0x08,
-    0x02, 0x00, 0x00, 0x00, 0x55, 0x6A,
-    0x00, 0x08, 0x03, 0x00, 0x00, 0x00,
-    0x55, 0x6A, 0x00, 0x08, 0x00, 0x00,
-    0x00, 0x00, 0x00, 0x00, 0x00, 0x00,
+struct ProcCmd CONST_DATA ProcScr_BmFace[] = {
+    PROC_19,
+    PROC_WHILE_EXISTS(ProcScr_CamMove),
+    PROC_SLEEP(1),
+    PROC_CALL(Face_OnInit),
+    PROC_CALL(Face_OnIdle),
+    PROC_REPEAT(Face_OnIdle),
+    PROC_END,
 };
 
 u8 CONST_DATA FaceTm_Chibi[] =
@@ -507,7 +503,6 @@ void PutFace80x72_Standard(u16 * tm, int tileref, const struct FaceInfo * info)
     tm[TM_OFFSET(x, y) + 0x20 + 3] = tileref + 0x20 + 0x1F;
 }
 
-//! FE8U = 0x08005BCC
 void PutFace80x72_Raised(u16 * tm, int tileref, const struct FaceInfo * info)
 {
     int x = info->x_mouth - 1;
@@ -587,25 +582,25 @@ PROC_LABEL(0),
     PROC_END,
 };
 
-void FaceFormat_Init(struct FaceFmtProc * proc)
+void FaceFormat_Init(struct FaceEyeProc * proc)
 {
     proc->face_proc = NULL;
     proc->dealy = 120;
-    proc->unk_32 = 0;
+    proc->state = FACE_EYE_INIT;
 }
 
-void FaceFormat_Delay(struct FaceFmtProc * proc)
+void FaceFormat_Delay(struct FaceEyeProc * proc)
 {
     if (--proc->dealy >= 0)
         return;
 
-    proc->dealy = FaceFmtProc_GenBlinkInterval(proc);
+    proc->dealy = GetFaceBlinkInterval(proc);
     proc->timer = 0;
 
     Proc_Break(proc);
 }
 
-void FaceFormat_PutFace(struct FaceFmtProc * proc)
+void FaceFormat_PutFace(struct FaceEyeProc * proc)
 {
     const struct FaceInfo * info;
     u16 * tm1;
@@ -829,51 +824,29 @@ void FaceMouth_Loop(struct FaceMouthProc * proc)
     );
 }
 
-struct ProcCmd CONST_DATA ProcScr_FaceEye[] = {
-PROC_LABEL(0),
-    PROC_CALL(FaceEye_80076F8),
-PROC_LABEL(0),
-    PROC_REPEAT(FaceEye_800773C),
-PROC_LABEL(1),
-    PROC_REPEAT(FaceEye_8007774),
-PROC_LABEL(2),
-    PROC_CALL(FaceEye_80077E0),
-    PROC_REPEAT(FaceEye_80077E8),
-    PROC_REPEAT(FaceEye_800773C),
-PROC_LABEL(3),
-    PROC_CALL(FaceEye_800781C),
-    PROC_REPEAT(FaceEye_8007824),
-    PROC_REPEAT(FaceEye_800773C),
-PROC_LABEL(4),
-    PROC_CALL(FaceEye_8007858),
-    PROC_REPEAT(FaceEye_8007860),
-PROC_LABEL(97),
-    PROC_REPEAT(FaceEye_80077E8),
-    PROC_END,
-};
-
-void PutFaceEyeSprite(struct FaceBlinkProc * proc, int chr)
+void PutFaceEyeSprite(struct FaceEyeProc * proc, int frame_idx)
 {
     int oam1;
     int oam0;
+    int chr = frame_idx;
 
     bool flip = 0;
 
-    switch (chr) {
-    case 0:
+    switch (frame_idx) {
+    case FACE_EYE_FRAME_0:
         chr = 88;
         break;
 
-    case 1:
+    case FACE_EYE_FRAME_1:
         chr = 24;
         break;
 
-    case 0x80:
+    case FACE_EYE_FRAME_0 + 0x80:
         chr = 88;
         flip = true;
         break;
 
-    case 0x81:
+    case FACE_EYE_FRAME_1 + 0x80:
         chr = 24;
         flip = true;
         break;
@@ -882,43 +855,261 @@ void PutFaceEyeSprite(struct FaceBlinkProc * proc, int chr)
         return;
     }
 
-    oam1 = 4 - proc->pFaceProc->info->x_eyes;
+    oam1 = 4 - proc->face_proc->info->x_eyes;
 
-    oam1 = (GetFaceDisp(proc->pFaceProc) & FACE_DISP_FLIPPED) ? oam1 : -oam1;
+    oam1 = (GetFaceDisp(proc->face_proc) & FACE_DISP_FLIPPED) ? oam1 : -oam1;
 
-    oam1 = ((oam1 * 8 + proc->pFaceProc->x_disp) - 16) & 0x1FF;
+    oam1 = ((oam1 * 8 + proc->face_proc->x_disp) - 16) & 0x1FF;
 
-    if (GetFaceDisp(proc->pFaceProc) & 1)
+    if (GetFaceDisp(proc->face_proc) & 1)
         oam1 = oam1 + 0x1000;
 
-    if (GetFaceDisp(proc->pFaceProc) & FACE_DISP_BLEND)
+    if (GetFaceDisp(proc->face_proc) & FACE_DISP_BLEND)
         oam0 = OAM0_BLEND;
     else
         oam0 = 0;
 
-    oam0 += (proc->pFaceProc->y_disp + (proc->pFaceProc->info->y_eyes * 8)) & 0xff;
+    oam0 += (proc->face_proc->y_disp + (proc->face_proc->info->y_eyes * 8)) & 0xff;
 
     if (flip)
     {
-        if (!(GetFaceDisp(proc->pFaceProc) & FACE_DISP_FLIPPED))
+        if (!(GetFaceDisp(proc->face_proc) & FACE_DISP_FLIPPED))
             oam1 = oam1 + 16;
 
         PutSpriteExt(
-            proc->pFaceProc->sprite_layer,
+            proc->face_proc->sprite_layer,
             oam1,
             oam0,
             Sprite_16x16,
-            proc->pFaceProc->oam2 + chr + 2
+            proc->face_proc->oam2 + chr + 2
         );
     }
     else
     {
         PutSpriteExt(
-            proc->pFaceProc->sprite_layer,
+            proc->face_proc->sprite_layer,
             oam1,
             oam0,
             Sprite_32x16,
-            proc->pFaceProc->oam2 + chr
+            proc->face_proc->oam2 + chr
         );
     }
+}
+
+struct ProcCmd CONST_DATA ProcScr_FaceEye[] = {
+PROC_LABEL(FACE_EYE_INIT),
+    PROC_CALL(FaceEye_Init),
+PROC_LABEL(FACE_EYE_INIT),
+    PROC_REPEAT(FaceEye_Delay),
+PROC_LABEL(FACE_EYE_PRE_SWITCH),
+    PROC_REPEAT(FaceEye_PreSwitch),
+
+PROC_LABEL(FACE_EYE_FRAME0_DISP),
+    PROC_CALL(FaceEye_InitDisplayFrame0),
+    PROC_REPEAT(FaceEye_DisplayFrame0),
+    PROC_REPEAT(FaceEye_Delay),
+
+PROC_LABEL(FACE_EYE_FRAME1_DISP),
+    PROC_CALL(FaceEye_InitDisplayFrame1),
+    PROC_REPEAT(FaceEye_DisplayFrame1),
+    PROC_REPEAT(FaceEye_Delay),
+
+PROC_LABEL(FACE_EYE_FRAME_FLIP_DISP),
+    PROC_CALL(FaceEye_InitDisplayFrameFlip),
+    PROC_REPEAT(FaceEye_DisplayFrameFlip),
+
+PROC_LABEL(FACE_EYE_END),
+    PROC_REPEAT(FaceEye_DisplayFrame0),
+    PROC_END,
+};
+
+void FaceEye_Init(struct FaceEyeProc * proc)
+{
+    proc->face_proc = proc->proc_parent;
+    proc->blink = ((struct FaceProc *)(proc->proc_parent))->info->blink_type;
+    proc->dealy = GetFaceBlinkInterval(proc);
+    proc->state = FACE_EYE_INIT;
+
+    if (proc->blink == 6)
+    {
+        proc->blink = 5;
+        proc->dealy = INT32_MAX;
+        proc->state = 2;
+        proc->timer = 6;
+
+        Proc_Goto(proc, FACE_EYE_END);
+    }
+}
+
+void FaceEye_Delay(struct FaceEyeProc * proc)
+{
+    int state;
+
+    proc->dealy--;
+
+    state = proc->state;
+
+    if (state != 0)
+    {
+        Proc_Goto(proc, (s16)state);
+        return;
+    }
+
+    if (proc->dealy < 0)
+    {
+        proc->dealy = GetFaceBlinkInterval(proc);
+        proc->timer = 0;
+
+        Proc_Goto(proc, FACE_EYE_PRE_SWITCH);
+    }
+}
+
+void FaceEye_PreSwitch(struct FaceEyeProc * proc)
+{
+    int frame_idx = 2;
+
+    switch (proc->timer) {
+    case 3:
+    case 4:
+    case 5:
+        frame_idx = 0;
+        break;
+
+    case 0:
+    case 1:
+    case 2:
+    case 6:
+    case 7:
+    case 8:
+        frame_idx = 1;
+        break;
+
+    case 10:
+        Proc_Goto(proc, FACE_EYE_INIT);
+        break;
+    }
+
+    PutFaceEyeSprite(proc, frame_idx);
+    proc->timer++;
+}
+
+void FaceEye_InitDisplayFrame0(struct FaceEyeProc * proc)
+{
+    proc->timer = 0;
+}
+
+void FaceEye_DisplayFrame0(struct FaceEyeProc * proc)
+{
+    if (proc->timer < 6)
+    {
+        FaceEye_PreSwitch(proc);
+        return;
+    }
+
+    PutFaceEyeSprite(proc, 0);
+
+    if (proc->state == FACE_EYE_INIT)
+        Proc_Goto(proc, FACE_EYE_PRE_SWITCH);
+}
+
+void FaceEye_InitDisplayFrame1(struct FaceEyeProc * proc)
+{
+    proc->timer = 0;
+}
+
+void FaceEye_DisplayFrame1(struct FaceEyeProc * proc)
+{
+    if (proc->timer < 3)
+    {
+        FaceEye_PreSwitch(proc);
+        return;
+    }
+
+    PutFaceEyeSprite(proc, 1);
+
+    if (proc->state == FACE_EYE_INIT)
+        Proc_Goto(proc, FACE_EYE_PRE_SWITCH);
+}
+
+void FaceEye_InitDisplayFrameFlip(struct FaceEyeProc * proc)
+{
+    proc->timer = 0;
+}
+
+void FaceEye_DisplayFrameFlip(struct FaceEyeProc * proc)
+{
+    int frame = 2;
+
+    switch (proc->timer) {
+    case 3:
+    case 4:
+    case 5:
+        frame = 0;
+        break;
+
+    case 0:
+    case 1:
+    case 2:
+    case 6:
+    case 7:
+    case 8:
+        frame = 1;
+        break;
+
+    case 10:
+        Proc_Goto(proc, FACE_EYE_INIT);
+        proc->state = FACE_EYE_INIT;
+    }
+
+    PutFaceEyeSprite(proc, 0x80 + frame);
+    proc->timer++;
+}
+
+void SetFaceBlinkControl(struct FaceProc * proc, int blink)
+{
+    struct FaceEyeProc * eye_proc;
+
+    if (blink == 0)
+        blink = proc->info->blink_type;
+
+    eye_proc = proc->eye_proc;
+    eye_proc->blink = blink;
+    eye_proc->dealy = GetFaceBlinkInterval(eye_proc);
+}
+
+void SetFaceBlinkControlById(int slot, int blink)
+{
+    SetFaceBlinkControl(gFaces[slot], blink);
+}
+
+int GetFaceBlinkInterval(struct FaceEyeProc * proc)
+{
+    int var = RandNextB() >> 16;
+
+    switch (proc->blink) {
+    case 3:
+        return (var >> 7) + 300;
+
+    case 1:
+        return (var >> 7) + 30;
+
+    case 2:
+        return (var >> 9) + 30;
+
+    case 4:
+        return 1;
+
+    case 5:
+        return INT32_MAX;
+    }
+}
+
+void SetFaceEyeState(struct FaceProc * proc, int state)
+{
+    proc->eye_proc->state = state;
+}
+
+void SetFaceEyeStateById(int slot, int state)
+{
+    SetFaceEyeState(gFaces[slot], state);
 }

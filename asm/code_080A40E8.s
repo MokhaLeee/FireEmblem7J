@@ -8839,7 +8839,7 @@ sub_80A86D4: @ 0x080A86D4
 	movs r0, #0
 	movs r2, #0xcc
 	movs r3, #0x48
-	bl sub_8007A5C
+	bl StartBmFace
 	adds r4, r0, #0
 	bl StartFaceFadeIn
 	adds r0, r4, #0

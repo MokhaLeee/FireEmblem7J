@@ -59621,7 +59621,7 @@ _08088CF4:
 	movs r0, #0
 	movs r1, #4
 _08088CF8:
-	bl sub_8007974
+	bl SetFaceEyeStateById
 	movs r0, #1
 	b _08088D02
 _08088D00:
@@ -80565,7 +80565,7 @@ _08093236:
 	mov r0, sb
 	str r0, [sp]
 	adds r0, r4, #0
-	bl sub_8007A5C
+	bl StartBmFace
 	b _08093278
 	.align 2, 0
 _08093258: .4byte gUnk_08D8C9C0
@@ -83941,7 +83941,7 @@ _08094D06:
 	movs r0, #0
 	movs r2, #0x40
 	adds r3, r4, #0
-	bl sub_8007A5C
+	bl StartBmFace
 	mov r3, r8
 	ldr r0, [r3, #0x30]
 	bl GetUnitPortraitId
@@ -83951,7 +83951,7 @@ _08094D06:
 	movs r0, #1
 	movs r2, #0xae
 	adds r3, r4, #0
-	bl sub_8007A5C
+	bl StartBmFace
 	movs r6, #0
 	str r6, [sp]
 	movs r0, #1
@@ -85434,7 +85434,7 @@ _08095920:
 	str r0, [sp]
 	movs r0, #0
 	movs r2, #0x40
-	bl sub_8007A5C
+	bl StartBmFace
 	movs r0, #0xc0
 	lsls r0, r0, #7
 	movs r1, #5
@@ -90142,7 +90142,7 @@ _0809801E:
 	str r0, [sp]
 	movs r0, #0
 	movs r2, #0x40
-	bl sub_8007A5C
+	bl StartBmFace
 	ldr r0, [r7, #0x2c]
 	ldr r0, [r0]
 	ldrh r0, [r0]
@@ -92321,7 +92321,7 @@ sub_80991C4: @ 0x080991C4
 	movs r0, #0
 	movs r2, #0x44
 	movs r3, #0x4a
-	bl sub_8007A5C
+	bl StartBmFace
 	mov r0, sb
 	bl sub_80A98C8
 	mov r0, sb
@@ -95457,7 +95457,7 @@ _0809ABAA:
 	movs r0, #0
 	movs r2, #0xd8
 	movs r3, #0x58
-	bl sub_8007A5C
+	bl StartBmFace
 	ldrb r0, [r4]
 	adds r1, r6, #0
 	adds r1, #0x39
@@ -98361,7 +98361,7 @@ _0809C2A0:
 	movs r0, #0
 	movs r1, #0x41
 	movs r2, #0x38
-	bl sub_8007A5C
+	bl StartBmFace
 	movs r0, #0x28
 	movs r1, #0
 	movs r2, #1
@@ -100908,7 +100908,7 @@ _0809D714:
 	adds r1, r4, #0
 	movs r2, #0x38
 	movs r3, #0
-	bl sub_8007A5C
+	bl StartBmFace
 	b _0809D800
 	.align 2, 0
 _0809D7CC: .4byte gDispIo
@@ -100929,7 +100929,7 @@ _0809D7E8:
 	adds r1, r4, #0
 	movs r2, #0x38
 	movs r3, #8
-	bl sub_8007A5C
+	bl StartBmFace
 _0809D800:
 	ldr r0, _0809D838 @ =gUnk_0842C874
 	ldr r1, _0809D83C @ =0x06017000
@@ -101853,7 +101853,7 @@ sub_809DEEC: @ 0x0809DEEC
 	adds r1, r4, #0
 	movs r2, #0x38
 	movs r3, #0
-	bl sub_8007A5C
+	bl StartBmFace
 	b _0809DFC8
 	.align 2, 0
 _0809DF9C: .4byte gBg0Tm
@@ -101872,7 +101872,7 @@ _0809DFB0:
 	adds r1, r4, #0
 	movs r2, #0x38
 	movs r3, #8
-	bl sub_8007A5C
+	bl StartBmFace
 _0809DFC8:
 	adds r0, r5, #0
 	bl sub_809D4D0

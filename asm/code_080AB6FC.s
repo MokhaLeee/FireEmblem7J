@@ -21127,7 +21127,7 @@ _080B5BE4:
 	adds r0, r7, #0
 	mov r1, sb
 	movs r3, #0x28
-	bl sub_8007A5C
+	bl StartBmFace
 	adds r2, r0, #0
 	str r2, [r5, #4]
 	movs r1, #0xc0
@@ -28351,7 +28351,7 @@ _080B93A8:
 	str r0, [sp]
 	movs r0, #0
 	movs r3, #0x38
-	bl sub_8007A5C
+	bl StartBmFace
 	ldr r0, [r4, #0x2c]
 	ldr r0, [r0, #0xc]
 	movs r1, #4
@@ -28621,7 +28621,7 @@ sub_80B950C: @ 0x080B950C
 	str r0, [sp]
 	movs r0, #0
 	movs r3, #0x30
-	bl sub_8007A5C
+	bl StartBmFace
 	mov r2, sb
 	ldr r0, [r2, #0x38]
 	ldrb r0, [r0, #2]
@@ -28635,7 +28635,7 @@ sub_80B950C: @ 0x080B950C
 	str r0, [sp]
 	movs r0, #1
 	movs r3, #0x30
-	bl sub_8007A5C
+	bl StartBmFace
 	add sp, #8
 	pop {r3, r4}
 	mov r8, r3

@@ -1957,7 +1957,7 @@ _08008C8E:
 	ldr r0, [r1]
 	movs r1, #4
 _08008CA2:
-	bl sub_800796C
+	bl SetFaceEyeState
 	b _08008706
 _08008CA8:
 	movs r0, #1
