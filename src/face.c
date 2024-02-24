@@ -1,5 +1,4 @@
 #include "gbafe.h"
-#include "gbafe/face.h"
 
 struct FaceVramEnt CONST_DATA DefaultFaceConfig[FACE_SLOT_COUNT] = {
     [0] = { OBCHR_FACE_DEFAULT0 * CHR_SIZE, OBPAL_FACE_DEFAULT0 },

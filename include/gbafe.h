@@ -47,4 +47,4 @@
 #include "gbafe/event.h"
 #include "gbafe/eventscript.h"
 #include "gbafe/bmfx.h"
-// #include "gbafe/face.h"
+#include "gbafe/face.h"

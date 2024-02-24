@@ -88,7 +88,7 @@ enum {
 struct FaceInfo const * GetFaceInfo(int fid);
 void InitFaces(void);
 void SetFaceConfig(struct FaceVramEnt const * config);
-// GetFreeFaceSlot
+int GetFreeFaceSlot(void);
 void Face_OnInit(struct FaceProc * proc);
 void Face_OnIdle(struct FaceProc * proc);
 struct FaceProc * StartFaceAuto(int fid, int x, int y, int disp);
@@ -107,10 +107,10 @@ void UnpackFaceChibiSprGraphics(int fid, int chr, int pal);
 void FaceChibiSpr_OnIdle(struct FaceProc * proc);
 void StartFaceChibiStr(int x, int y, int fid, int chr, int pal, bool is_flipped, ProcPtr parent);
 void EndFaceChibiSpr(void);
-// PutFace80x72_Standard
-// PutFace80x72_Raised
-// ShouldFaceBeRaised
-// PutFace80x72_Core
+void PutFace80x72_Standard(u16 * tm, int tileref, const struct FaceInfo * info);
+void PutFace80x72_Raised(u16 * tm, int tileref, const struct FaceInfo * info);
+bool ShouldFaceBeRaised(int fid);
+void PutFace80x72_Core(u16 * tm, int fid, int chr, int pal);
 
 struct FaceEyeProc {
     /* 00 */ PROC_HEADER;
@@ -185,7 +185,7 @@ void SetFaceEyeState(struct FaceProc * proc, int state);
 void SetFaceEyeStateById(int slot, int state);
 // Face_0800798C
 // sub_8007A00
-// StartBmFace
+struct FaceProc * StartBmFace(int slot, int fid, int x, int y, int disp);
 // sub_8007B80
 // sub_8007B94
 // sub_8007BB8
