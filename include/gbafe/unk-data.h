@@ -1,7 +1,5 @@
 #pragma once
 
-#include "global.h"
-
 extern s8 MoveTable_Flying[];
 extern s8 MoveTable_Ballista[];
 extern char const *StatusNameStringLut[];
@@ -1473,7 +1471,7 @@ extern u8 Img_SysBrownBox[];
 // ??? gUnk_08C0206C
 // ??? gUnk_08C020DC
 // ??? gUnk_08C020E8
-extern struct ProcCmd ProcScr_CamMove[];
+extern uintptr_t ProcScr_CamMove[];
 // ??? gUnk_08C0211C
 // ??? gUnk_08C0212C
 
@@ -2279,9 +2277,9 @@ extern struct ProcCmd ProcScr_CamMove[];
 // ??? gUnk_08DB8FD0
 // ??? gUnk_08DB9010
 // ??? gUnk_08DB9030
-extern struct ProcCmd ProcScr_08DB91A8[];
-extern struct ProcCmd ProcScr_08DB91C0[];
-extern struct ProcCmd ProcScr_08DB9208[];
+extern uintptr_t ProcScr_08DB91A8[];
+extern uintptr_t ProcScr_08DB91C0[];
+extern uintptr_t ProcScr_08DB9208[];
 // ??? gUnk_08DB9228
 // ??? gUnk_08DB9248
 // ??? gUnk_08DB92C8
