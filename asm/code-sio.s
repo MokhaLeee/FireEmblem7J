@@ -16741,7 +16741,7 @@ _08044CBE:
 	movs r2, #0x80
 	lsls r2, r2, #1
 	adds r1, r1, r2
-	ldr r2, _08044D0C @ =Sprite_64x32
+	ldr r2, _08044D0C @ =Sprite_32x16
 	adds r3, r7, #0
 	adds r3, #0x32
 	ldrb r3, [r3]
@@ -16770,7 +16770,7 @@ _08044CF2:
 	.align 2, 0
 _08044D04: .4byte gUnk_08C08E6C
 _08044D08: .4byte gUnk_08C08E92
-_08044D0C: .4byte Sprite_64x32
+_08044D0C: .4byte Sprite_32x16
 _08044D10: .4byte 0x00009340
 
 	thumb_func_start sub_8044D14
@@ -16797,7 +16797,7 @@ sub_8044D14: @ 0x08044D14
 	movs r0, #5
 	bl Interpolate
 	adds r1, r0, #0
-	ldr r2, _08044D70 @ =Sprite_64x32
+	ldr r2, _08044D70 @ =Sprite_32x16
 	adds r0, r6, #0
 	adds r0, #0x32
 	ldrb r0, [r0]
@@ -16819,7 +16819,7 @@ _08044D68:
 	pop {r0}
 	bx r0
 	.align 2, 0
-_08044D70: .4byte Sprite_64x32
+_08044D70: .4byte Sprite_32x16
 _08044D74: .4byte 0x00009340
 
 	thumb_func_start sub_8044D78
@@ -17096,7 +17096,7 @@ _08044F9A:
 	movs r4, #0x80
 	lsls r4, r4, #1
 	adds r1, r1, r4
-	ldr r5, _08045010 @ =Sprite_64x32
+	ldr r5, _08045010 @ =Sprite_32x16
 	ldr r3, _08045014 @ =0x00009350
 	adds r2, r5, #0
 	bl PutOamHiRam
@@ -17142,7 +17142,7 @@ _08044FF6:
 	.align 2, 0
 _08045008: .4byte gSinLut
 _0804500C: .4byte gCosLut
-_08045010: .4byte Sprite_64x32
+_08045010: .4byte Sprite_32x16
 _08045014: .4byte 0x00009350
 _08045018: .4byte 0x00009354
 _0804501C: .4byte Sprite_16x16
@@ -17228,7 +17228,7 @@ _080450BA:
 	movs r4, #0x80
 	lsls r4, r4, #1
 	adds r1, r1, r4
-	ldr r5, _08045128 @ =Sprite_64x32
+	ldr r5, _08045128 @ =Sprite_32x16
 	ldr r3, _0804512C @ =0x00009350
 	adds r2, r5, #0
 	bl PutOamHiRam
@@ -17271,7 +17271,7 @@ _08045112:
 	bx r0
 	.align 2, 0
 _08045124: .4byte gSinLut
-_08045128: .4byte Sprite_64x32
+_08045128: .4byte Sprite_32x16
 _0804512C: .4byte 0x00009350
 _08045130: .4byte 0x00009354
 _08045134: .4byte Sprite_16x16
@@ -24305,7 +24305,7 @@ _08048896:
 	movs r6, #0x2c
 	ldrsh r4, [r7, r6]
 	adds r4, #8
-	ldr r6, _08048938 @ =gUnk_08BFF7D0
+	ldr r6, _08048938 @ =Sprite_8x16_HFlipped
 	ldrh r1, [r7, #0x38]
 	lsrs r0, r1, #5
 	movs r1, #6
@@ -24347,7 +24347,7 @@ _08048928: .4byte 0x000082DA
 _0804892C: .4byte gUnk_08C0974C
 _08048930: .4byte gUnk_081DB210
 _08048934: .4byte Sprite_8x16
-_08048938: .4byte gUnk_08BFF7D0
+_08048938: .4byte Sprite_8x16_HFlipped
 _0804893C: .4byte gUnk_08C09760
 _08048940: .4byte 0x0203D908
 

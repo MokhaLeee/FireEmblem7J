@@ -56,11 +56,11 @@ _0801573E:
 	ldr r0, [r4, #0x14]
 	bl Proc_Run
 	movs r0, #0
-	bl PushSpriteLayerObjects
+	bl PutSpriteLayerOam
 	ldr r0, [r4, #0x10]
 	bl Proc_Run
 	movs r0, #0xd
-	bl PushSpriteLayerObjects
+	bl PutSpriteLayerOam
 	ldr r1, _0801577C @ =gBmSt
 	movs r0, #1
 	strb r0, [r1]

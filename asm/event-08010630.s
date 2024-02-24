@@ -304,7 +304,7 @@ _08010884:
 	adds r2, r2, r0
 	str r4, [sp]
 	movs r0, #0
-	ldr r3, _080108C0 @ =Sprite_64x32
+	ldr r3, _080108C0 @ =Sprite_32x16
 	bl PutSpriteExt
 	adds r4, #4
 	adds r7, #0x20
@@ -322,7 +322,7 @@ _08010884:
 	.align 2, 0
 _080108B8: .4byte Sprite_16x8
 _080108BC: .4byte Sprite_8x8
-_080108C0: .4byte Sprite_64x32
+_080108C0: .4byte Sprite_32x16
 
 	thumb_func_start nullsub_32
 nullsub_32: @ 0x080108C4

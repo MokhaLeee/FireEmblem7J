@@ -4996,7 +4996,7 @@ _08030AB4: .4byte 0x06017000
 sub_8030AB8: @ 0x08030AB8
 	push {r4, r5, lr}
 	sub sp, #4
-	ldr r4, _08030B3C @ =Sprite_64x32
+	ldr r4, _08030B3C @ =Sprite_32x16
 	ldr r0, _08030B40 @ =0x0000038D
 	str r0, [sp]
 	movs r0, #4
@@ -5053,7 +5053,7 @@ sub_8030AB8: @ 0x08030AB8
 	pop {r0}
 	bx r0
 	.align 2, 0
-_08030B3C: .4byte Sprite_64x32
+_08030B3C: .4byte Sprite_32x16
 _08030B40: .4byte 0x0000038D
 _08030B44: .4byte 0x00000391
 _08030B48: .4byte Sprite_16x16
@@ -8304,7 +8304,7 @@ sub_803255C: @ 0x0803255C
 	bl ApplyIconPalettes
 	adds r0, r4, #0
 	bl sub_803252C
-	ldr r0, _08032590 @ =gUnk_08BFF7F0
+	ldr r0, _08032590 @ =Sprite_16x16_VFlipped
 	str r0, [sp]
 	movs r0, #6
 	str r0, [sp, #4]
@@ -8312,13 +8312,13 @@ sub_803255C: @ 0x0803255C
 	movs r1, #2
 	movs r2, #0
 	movs r3, #0
-	bl sub_800694C
+	bl StartSpriteRefresher
 	add sp, #8
 	pop {r4}
 	pop {r0}
 	bx r0
 	.align 2, 0
-_08032590: .4byte gUnk_08BFF7F0
+_08032590: .4byte Sprite_16x16_VFlipped
 
 	thumb_func_start sub_8032594
 sub_8032594: @ 0x08032594
@@ -8505,7 +8505,7 @@ sub_8032710: @ 0x08032710
 	movs r1, #2
 	movs r2, #0
 	movs r3, #0
-	bl sub_800694C
+	bl StartSpriteRefresher
 	add sp, #8
 	pop {r4}
 	pop {r0}
@@ -8634,7 +8634,7 @@ _08032816:
 	movs r0, #2
 	adds r1, r4, #0
 	adds r2, r7, #0
-	ldr r3, _0803286C @ =Sprite_64x32
+	ldr r3, _0803286C @ =Sprite_32x16
 	bl PutSprite
 	adds r5, #1
 	cmp r5, #8
@@ -8646,7 +8646,7 @@ _08032816:
 	.align 2, 0
 _08032864: .4byte gUnk_08C05C64
 _08032868: .4byte 0x00004240
-_0803286C: .4byte Sprite_64x32
+_0803286C: .4byte Sprite_32x16
 
 	thumb_func_start InitSubtitleHelpText
 InitSubtitleHelpText: @ 0x08032870
@@ -9029,7 +9029,7 @@ sub_8032B4C: @ 0x08032B4C
 	bge _08032B68
 	movs r1, #5
 _08032B68:
-	ldr r4, _08032BF4 @ =Sprite_64x32
+	ldr r4, _08032BF4 @ =Sprite_32x16
 	lsls r5, r1, #0xc
 	movs r0, #0xa0
 	lsls r0, r0, #2
@@ -9093,7 +9093,7 @@ _08032B68:
 	b _08032C2E
 	.align 2, 0
 _08032BF0: .4byte gPlaySt
-_08032BF4: .4byte Sprite_64x32
+_08032BF4: .4byte Sprite_32x16
 _08032BF8: .4byte Sprite_16x16
 _08032BFC: .4byte Sprite_8x16
 _08032C00: .4byte 0x0000028E

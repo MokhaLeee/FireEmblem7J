@@ -148,7 +148,24 @@ struct FaceMouthProc {
 void FaceMouth_Init(struct FaceMouthProc * proc);
 void FaceMouth_Loop(struct FaceMouthProc * proc);
 
-// PutFaceMouthSprite
+struct FaceBlinkProc {
+    /* 00 */ PROC_HEADER;
+
+    /* 2C */ struct FaceProc * pFaceProc;
+
+    /* 30 */ s16 blinkControl;
+    /* 32 */ s16 unk_32;
+    /* 34 */ s16 unk_34;
+
+    /* 38 */ int unk_38;
+    /* 3C */ u16* unk_3c;
+
+    /* 40 */ u16 tileId;
+    /* 42 */ u16 palId;
+    /* 44 */ u16 faceId;
+};
+
+// PutFaceEyeSprite
 void FaceEye_80076F8(ProcPtr proc);
 void FaceEye_800773C(ProcPtr proc);
 void FaceEye_8007774(ProcPtr proc);

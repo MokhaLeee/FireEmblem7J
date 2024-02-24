@@ -221,7 +221,7 @@ _0804BB20:
 	ldr r0, [r4, #0x14]
 	bl Proc_Run
 	movs r0, #0
-	bl PushSpriteLayerObjects
+	bl PutSpriteLayerOam
 	ldr r0, [r4, #4]
 	bl Proc_Run
 	bl AnimUpdateAll
@@ -243,7 +243,7 @@ _0804BB20:
 	str r0, [r1]
 _0804BB62:
 	movs r0, #0xd
-	bl PushSpriteLayerObjects
+	bl PutSpriteLayerOam
 	pop {r4}
 	pop {r0}
 	bx r0

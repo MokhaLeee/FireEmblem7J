@@ -6665,14 +6665,14 @@ _080A751E:
 	movs r0, #4
 	adds r1, r5, #0
 	movs r2, #0x28
-	ldr r3, _080A7574 @ =Sprite_64x32
+	ldr r3, _080A7574 @ =Sprite_32x16
 	bl PutSpriteExt
 	adds r6, #4
 	adds r5, #0x20
 	subs r4, #1
 	cmp r4, #0
 	bge _080A751E
-	ldr r4, _080A7574 @ =Sprite_64x32
+	ldr r4, _080A7574 @ =Sprite_32x16
 	ldr r0, _080A7578 @ =0x0000F888
 	str r0, [sp]
 	movs r0, #4
@@ -6700,7 +6700,7 @@ _080A751E:
 	bx r0
 	.align 2, 0
 _080A7570: .4byte 0x0000F880
-_080A7574: .4byte Sprite_64x32
+_080A7574: .4byte Sprite_32x16
 _080A7578: .4byte 0x0000F888
 _080A757C: .4byte 0x0000F88C
 _080A7580: .4byte 0x0000F890
@@ -7484,7 +7484,7 @@ _080A7BC8:
 	movs r0, #4
 	adds r1, r5, #0
 	movs r2, #0x60
-	ldr r3, _080A7C7C @ =Sprite_64x32
+	ldr r3, _080A7C7C @ =Sprite_32x16
 	bl PutSpriteExt
 	adds r6, #4
 	adds r5, #0x20
@@ -7560,7 +7560,7 @@ _080A7C02:
 	b _080A7CB6
 	.align 2, 0
 _080A7C78: .4byte 0x0000F4C0
-_080A7C7C: .4byte Sprite_64x32
+_080A7C7C: .4byte Sprite_32x16
 _080A7C80: .4byte gpKeySt
 _080A7C84: .4byte gPlaySt
 _080A7C88: .4byte 0x0000038A
@@ -7792,7 +7792,7 @@ _080A7E62:
 	movs r0, #4
 	adds r1, r5, #0
 	movs r2, #0x60
-	ldr r3, _080A7F10 @ =Sprite_32x8
+	ldr r3, _080A7F10 @ =Sprite_64x32
 	bl PutSpriteExt
 	adds r6, #8
 	adds r5, #0x40
@@ -7865,7 +7865,7 @@ _080A7E9E:
 	b _080A7F4A
 	.align 2, 0
 _080A7F0C: .4byte 0x0000F4C0
-_080A7F10: .4byte Sprite_32x8
+_080A7F10: .4byte Sprite_64x32
 _080A7F14: .4byte gpKeySt
 _080A7F18: .4byte gPlaySt
 _080A7F1C: .4byte 0x0000038A
@@ -8146,7 +8146,7 @@ _080A8154:
 	movs r0, #4
 	adds r1, r5, #0
 	movs r2, #0x60
-	ldr r3, _080A81EC @ =Sprite_64x32
+	ldr r3, _080A81EC @ =Sprite_32x16
 	bl PutSpriteExt
 	adds r6, #4
 	adds r5, #0x20
@@ -8208,7 +8208,7 @@ _080A8190:
 	b _080A821E
 	.align 2, 0
 _080A81E8: .4byte 0x0000F4C0
-_080A81EC: .4byte Sprite_64x32
+_080A81EC: .4byte Sprite_32x16
 _080A81F0: .4byte gpKeySt
 _080A81F4: .4byte gPlaySt
 _080A81F8: .4byte 0x0000038A

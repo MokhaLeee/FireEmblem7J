@@ -1,144 +1,6 @@
 	.include "macro.inc"
 	.syntax unified
 
-	thumb_func_start PutFaceMouthSprite
-PutFaceMouthSprite: @ 0x080075F0
-	push {r4, r5, r6, r7, lr}
-	mov r7, sb
-	mov r6, r8
-	push {r6, r7}
-	sub sp, #4
-	adds r7, r0, #0
-	adds r5, r1, #0
-	movs r0, #0
-	mov sb, r0
-	cmp r5, #1
-	beq _0800761E
-	cmp r5, #1
-	bgt _08007610
-	cmp r5, #0
-	beq _0800761A
-	b _080076E6
-_08007610:
-	cmp r5, #0x80
-	beq _08007622
-	cmp r5, #0x81
-	beq _0800762A
-	b _080076E6
-_0800761A:
-	movs r5, #0x58
-	b _08007630
-_0800761E:
-	movs r5, #0x18
-	b _08007630
-_08007622:
-	movs r5, #0x58
-	movs r1, #1
-	mov sb, r1
-	b _08007630
-_0800762A:
-	movs r5, #0x18
-	movs r3, #1
-	mov sb, r3
-_08007630:
-	ldr r0, [r7, #0x2c]
-	ldr r2, [r0, #0x2c]
-	movs r1, #4
-	ldrb r2, [r2, #0x16]
-	subs r4, r1, r2
-	bl GetFaceDisp
-	movs r1, #1
-	mov r8, r1
-	ands r0, r1
-	cmp r0, #0
-	bne _0800764A
-	rsbs r4, r4, #0
-_0800764A:
-	lsls r1, r4, #3
-	ldr r0, [r7, #0x2c]
-	movs r3, #0x34
-	ldrsh r2, [r0, r3]
-	adds r1, r1, r2
-	adds r4, r1, #0
-	subs r4, #0x10
-	ldr r1, _080076C8 @ =0x000001FF
-	ands r4, r1
-	bl GetFaceDisp
-	mov r1, r8
-	ands r0, r1
-	cmp r0, #0
-	beq _0800766E
-	movs r0, #0x80
-	lsls r0, r0, #5
-	adds r4, r4, r0
-_0800766E:
-	ldr r0, [r7, #0x2c]
-	bl GetFaceDisp
-	movs r1, #0x80
-	lsls r1, r1, #3
-	ands r0, r1
-	rsbs r0, r0, #0
-	asrs r6, r0, #0x1f
-	ands r6, r1
-	ldr r2, [r7, #0x2c]
-	movs r3, #0x36
-	ldrsh r0, [r2, r3]
-	ldr r1, [r2, #0x2c]
-	ldrb r1, [r1, #0x17]
-	lsls r1, r1, #3
-	adds r0, r0, r1
-	movs r1, #0xff
-	ands r0, r1
-	adds r6, r6, r0
-	mov r0, sb
-	cmp r0, #0
-	beq _080076D0
-	adds r0, r2, #0
-	bl GetFaceDisp
-	mov r1, r8
-	ands r0, r1
-	cmp r0, #0
-	bne _080076AA
-	adds r4, #0x10
-_080076AA:
-	ldr r1, [r7, #0x2c]
-	adds r0, r1, #0
-	adds r0, #0x41
-	ldrb r0, [r0]
-	ldr r3, _080076CC @ =Sprite_16x16
-	ldrh r1, [r1, #0x3c]
-	adds r1, r1, r5
-	adds r1, #2
-	str r1, [sp]
-	adds r1, r4, #0
-	adds r2, r6, #0
-	bl PutSpriteExt
-	b _080076E6
-	.align 2, 0
-_080076C8: .4byte 0x000001FF
-_080076CC: .4byte Sprite_16x16
-_080076D0:
-	adds r0, r2, #0
-	adds r0, #0x41
-	ldrb r0, [r0]
-	ldr r3, _080076F4 @ =Sprite_64x32
-	ldrh r2, [r2, #0x3c]
-	adds r1, r2, r5
-	str r1, [sp]
-	adds r1, r4, #0
-	adds r2, r6, #0
-	bl PutSpriteExt
-_080076E6:
-	add sp, #4
-	pop {r3, r4}
-	mov r8, r3
-	mov sb, r4
-	pop {r4, r5, r6, r7}
-	pop {r0}
-	bx r0
-	.align 2, 0
-_080076F4: .4byte Sprite_64x32
-
 	thumb_func_start FaceEye_80076F8
 FaceEye_80076F8: @ 0x080076F8
 	push {r4, r5, lr}
@@ -245,7 +107,7 @@ _080077C4:
 _080077CC:
 	adds r0, r4, #0
 	adds r1, r5, #0
-	bl PutFaceMouthSprite
+	bl PutFaceEyeSprite
 	ldrh r0, [r4, #0x34]
 	adds r0, #1
 	strh r0, [r4, #0x34]
@@ -274,7 +136,7 @@ FaceEye_80077E8: @ 0x080077E8
 _080077FC:
 	adds r0, r4, #0
 	movs r1, #0
-	bl PutFaceMouthSprite
+	bl PutFaceEyeSprite
 	movs r1, #0x32
 	ldrsh r0, [r4, r1]
 	cmp r0, #0
@@ -309,7 +171,7 @@ FaceEye_8007824: @ 0x08007824
 _08007838:
 	adds r0, r4, #0
 	movs r1, #1
-	bl PutFaceMouthSprite
+	bl PutFaceEyeSprite
 	movs r1, #0x32
 	ldrsh r0, [r4, r1]
 	cmp r0, #0
@@ -374,7 +236,7 @@ _080078BC:
 	adds r1, r5, #0
 	adds r1, #0x80
 	adds r0, r4, #0
-	bl PutFaceMouthSprite
+	bl PutFaceEyeSprite
 	ldrh r0, [r4, #0x34]
 	adds r0, #1
 	strh r0, [r4, #0x34]

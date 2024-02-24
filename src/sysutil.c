@@ -91,7 +91,7 @@ void SysBlackBox_Main(struct SysBlackBoxProc * proc)
                         0xd,
                         xOam1,
                         yOam0,
-                        Sprite_8x32,
+                        Sprite_32x8,
                         proc->chr + proc->oam2[i]);
                     xOam1 = xOam1 + 0x20;
                 }
@@ -114,7 +114,7 @@ void SysBlackBox_Main(struct SysBlackBoxProc * proc)
 
                 for (; j > 3; j -= 4)
                 {
-                    PutSpriteExt(0xd, xOam1, yOam0, Sprite_8x32, proc->chr + proc->oam2[i]);
+                    PutSpriteExt(0xd, xOam1, yOam0, Sprite_32x8, proc->chr + proc->oam2[i]);
                     xOam1 = xOam1 + 0x20;
                 }
 
@@ -140,7 +140,7 @@ void SysBlackBox_Main(struct SysBlackBoxProc * proc)
 
                     for (; j > 3; j -= 4)
                     {
-                        PutSpriteExt(0xd, xOam1, yOam0, Sprite_8x32, proc->chr + proc->oam2[i]);
+                        PutSpriteExt(0xd, xOam1, yOam0, Sprite_32x8, proc->chr + proc->oam2[i]);
                         xOam1 = xOam1 + 0x20;
                     }
 
@@ -456,12 +456,12 @@ void SysGrayBox_Loop(struct ProcSysGrayBox * proc)
             PutSpriteExt(priv->layer,
                 (priv->x + j * 8) & 0x1FF,
                 priv->y & 0xFF,
-                Sprite_8x32, oam2 + 1);
+                Sprite_32x8, oam2 + 1);
 
             PutSpriteExt(priv->layer,
                 ((priv->x + j * 8) & 0x1FF) + 0x2000,
                 (priv->y + (priv->height - 1) * 8) & 0xFF,
-                Sprite_8x32, oam2 + 1);
+                Sprite_32x8, oam2 + 1);
         }
 
         for (; j < (priv->width - 2); j = j + 2)
@@ -509,7 +509,7 @@ void SysGrayBox_Loop(struct ProcSysGrayBox * proc)
                 PutSpriteExt(priv->layer,
                     (priv->x + k * 8) & 0x1FF,
                     (priv->y + j * 8) & 0xFF,
-                    Sprite_8x32, oam2 + 5);
+                    Sprite_32x8, oam2 + 5);
             }
 
             for (; k < (priv->width - 2); k = k + 2)

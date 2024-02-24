@@ -100,13 +100,13 @@ _0805123A:
 	ldr r0, [r4, #0x14]
 	bl Proc_Run
 	movs r0, #0
-	bl PushSpriteLayerObjects
+	bl PutSpriteLayerOam
 	ldr r0, [r4, #0x10]
 	bl Proc_Run
 	bl AnimUpdateAll
 	bl BattleAIS_ExecCommands
 	movs r0, #0xd
-	bl PushSpriteLayerObjects
+	bl PutSpriteLayerOam
 	ldr r1, _08051280 @ =gBmSt
 	movs r0, #1
 	strb r0, [r1]

@@ -824,7 +824,7 @@ void FaceMouth_Loop(struct FaceMouthProc * proc)
         proc->face_proc->sprite_layer,
         oam1,
         oam0,
-        Sprite_64x32,
+        Sprite_32x16,
         proc->face_proc->oam2 + 28
     );
 }
@@ -851,3 +851,74 @@ PROC_LABEL(97),
     PROC_REPEAT(FaceEye_80077E8),
     PROC_END,
 };
+
+void PutFaceEyeSprite(struct FaceBlinkProc * proc, int chr)
+{
+    int oam1;
+    int oam0;
+
+    bool flip = 0;
+
+    switch (chr) {
+    case 0:
+        chr = 88;
+        break;
+
+    case 1:
+        chr = 24;
+        break;
+
+    case 0x80:
+        chr = 88;
+        flip = true;
+        break;
+
+    case 0x81:
+        chr = 24;
+        flip = true;
+        break;
+
+    default:
+        return;
+    }
+
+    oam1 = 4 - proc->pFaceProc->info->x_eyes;
+
+    oam1 = (GetFaceDisp(proc->pFaceProc) & FACE_DISP_FLIPPED) ? oam1 : -oam1;
+
+    oam1 = ((oam1 * 8 + proc->pFaceProc->x_disp) - 16) & 0x1FF;
+
+    if (GetFaceDisp(proc->pFaceProc) & 1)
+        oam1 = oam1 + 0x1000;
+
+    if (GetFaceDisp(proc->pFaceProc) & FACE_DISP_BLEND)
+        oam0 = OAM0_BLEND;
+    else
+        oam0 = 0;
+
+    oam0 += (proc->pFaceProc->y_disp + (proc->pFaceProc->info->y_eyes * 8)) & 0xff;
+
+    if (flip)
+    {
+        if (!(GetFaceDisp(proc->pFaceProc) & FACE_DISP_FLIPPED))
+            oam1 = oam1 + 16;
+
+        PutSpriteExt(
+            proc->pFaceProc->sprite_layer,
+            oam1,
+            oam0,
+            Sprite_16x16,
+            proc->pFaceProc->oam2 + chr + 2
+        );
+    }
+    else
+    {
+        PutSpriteExt(
+            proc->pFaceProc->sprite_layer,
+            oam1,
+            oam0,
+            Sprite_32x16,
+            proc->pFaceProc->oam2 + chr
+        );
+    }
+}

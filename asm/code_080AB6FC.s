@@ -3698,7 +3698,7 @@ _080AD35A:
 	movs r2, #0x80
 	lsls r2, r2, #1
 	add r2, sl
-	ldr r3, _080AD398 @ =Sprite_64x32
+	ldr r3, _080AD398 @ =Sprite_32x16
 	bl PutSpriteExt
 	adds r5, #0x20
 	adds r4, #1
@@ -3716,7 +3716,7 @@ _080AD380:
 	.align 2, 0
 _080AD390: .4byte gSinLut
 _080AD394: .4byte 0x0201EA98
-_080AD398: .4byte Sprite_64x32
+_080AD398: .4byte Sprite_32x16
 
 	thumb_func_start sub_80AD39C
 sub_80AD39C: @ 0x080AD39C
@@ -17754,7 +17754,7 @@ _080B422C:
 	bge _080B4296
 	movs r3, #0xff
 	mov r8, r3
-	ldr r7, _080B44B4 @ =Sprite_8x32
+	ldr r7, _080B44B4 @ =Sprite_32x8
 	ldr r0, [sp, #0xc]
 	ldr r1, _080B44B8 @ =0x00000806
 	adds r6, r0, r1
@@ -17881,7 +17881,7 @@ _080B433E:
 	bge _080B438E
 	ldr r0, _080B44BC @ =0x000001FF
 	mov sl, r0
-	ldr r1, _080B44C8 @ =gUnk_08BFF7C0
+	ldr r1, _080B44C8 @ =Sprite_8x32
 	mov r8, r1
 	ldr r2, [sp, #0xc]
 	ldr r3, _080B44CC @ =0x00000804
@@ -18058,12 +18058,12 @@ _080B44A2:
 	pop {r0}
 	bx r0
 	.align 2, 0
-_080B44B4: .4byte Sprite_8x32
+_080B44B4: .4byte Sprite_32x8
 _080B44B8: .4byte 0x00000806
 _080B44BC: .4byte 0x000001FF
 _080B44C0: .4byte Sprite_16x8
 _080B44C4: .4byte Sprite_8x8
-_080B44C8: .4byte gUnk_08BFF7C0
+_080B44C8: .4byte Sprite_8x32
 _080B44CC: .4byte 0x00000804
 _080B44D0: .4byte Sprite_8x16
 _080B44D4: .4byte 0x00000805
@@ -26064,7 +26064,7 @@ _080B8226:
 	movs r3, #0x80
 	lsls r3, r3, #3
 	adds r2, r4, r3
-	ldr r3, _080B825C @ =Sprite_64x32
+	ldr r3, _080B825C @ =Sprite_32x16
 	bl PutSpriteExt
 	adds r5, #4
 	adds r7, #0x20
@@ -26085,7 +26085,7 @@ _080B8242:
 	bx r0
 	.align 2, 0
 _080B8258: .4byte 0x0001FFFF
-_080B825C: .4byte Sprite_64x32
+_080B825C: .4byte Sprite_32x16
 
 	thumb_func_start sub_80B8260
 sub_80B8260: @ 0x080B8260
@@ -26129,7 +26129,7 @@ _080B829C:
 	movs r3, #0x80
 	lsls r3, r3, #3
 	adds r2, r4, r3
-	ldr r3, _080B82D8 @ =Sprite_64x32
+	ldr r3, _080B82D8 @ =Sprite_32x16
 	bl PutSpriteExt
 	adds r7, #4
 	adds r6, #0x20
@@ -26149,7 +26149,7 @@ _080B829C:
 	bx r0
 	.align 2, 0
 _080B82D4: .4byte 0x0001FFFF
-_080B82D8: .4byte Sprite_64x32
+_080B82D8: .4byte Sprite_32x16
 
 	thumb_func_start sub_80B82DC
 sub_80B82DC: @ 0x080B82DC
@@ -33999,7 +33999,7 @@ _080BC200:
 	str r5, [sp]
 	movs r0, #4
 	ldr r2, _080BC234 @ =0x00000484
-	ldr r3, _080BC238 @ =Sprite_32x8
+	ldr r3, _080BC238 @ =Sprite_64x32
 	bl PutSpriteExt
 	adds r4, #1
 	cmp r4, #3
@@ -34020,7 +34020,7 @@ _080BC214:
 	.align 2, 0
 _080BC230: .4byte 0x03001620
 _080BC234: .4byte 0x00000484
-_080BC238: .4byte Sprite_32x8
+_080BC238: .4byte Sprite_64x32
 _080BC23C: .4byte gUnk_08DB941C
 
 	thumb_func_start sub_80BC240
