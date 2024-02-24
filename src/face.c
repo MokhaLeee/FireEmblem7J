@@ -572,23 +572,23 @@ void PutFace80x72_Core(u16 * tm, int fid, int chr, int pal)
     }
 }
 
-struct ProcCmd CONST_DATA ProcScr_FaceFormatGenerate[] = {
-    PROC_CALL(FaceFormat_Init),
+struct ProcCmd CONST_DATA ProcScr_BgFaceEyeBlink[] = {
+    PROC_CALL(BgFaceEyeBlink_Init),
 PROC_LABEL(0),
-    PROC_REPEAT(FaceFormat_Delay),
-    PROC_REPEAT(FaceFormat_PutFace),
+    PROC_REPEAT(BgFaceEyeBlink_Delay),
+    PROC_REPEAT(BgFaceEyeBlink_PutFace),
     PROC_GOTO(0),
     PROC_END,
 };
 
-void FaceFormat_Init(struct FaceEyeProc * proc)
+void BgFaceEyeBlink_Init(struct FaceEyeProc * proc)
 {
     proc->face_proc = NULL;
     proc->dealy = 120;
     proc->state = FACE_EYE_INIT;
 }
 
-void FaceFormat_Delay(struct FaceEyeProc * proc)
+void BgFaceEyeBlink_Delay(struct FaceEyeProc * proc)
 {
     if (--proc->dealy >= 0)
         return;
@@ -599,7 +599,7 @@ void FaceFormat_Delay(struct FaceEyeProc * proc)
     Proc_Break(proc);
 }
 
-void FaceFormat_PutFace(struct FaceEyeProc * proc)
+void BgFaceEyeBlink_PutFace(struct FaceEyeProc * proc)
 {
     const struct FaceInfo * info;
     u16 * tm1;
@@ -660,7 +660,7 @@ void FaceFormat_PutFace(struct FaceEyeProc * proc)
 
 void PutFace80x72(ProcPtr proc, u16 * tm, int fid, int chr, int pal)
 {
-    Proc_EndEach(ProcScr_FaceFormatGenerate);
+    Proc_EndEach(ProcScr_BgFaceEyeBlink);
     PutFace80x72_Core(tm, fid, chr, pal);
     GetFaceInfo(fid);
 }

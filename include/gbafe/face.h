@@ -140,9 +140,9 @@ enum face_eye_proc_state_idx {
     FACE_EYE_END = 97,
 };
 
-void FaceFormat_Init(struct FaceEyeProc * proc);
-void FaceFormat_Delay(struct FaceEyeProc * proc);
-void FaceFormat_PutFace(struct FaceEyeProc * proc);
+void BgFaceEyeBlink_Init(struct FaceEyeProc * proc);
+void BgFaceEyeBlink_Delay(struct FaceEyeProc * proc);
+void BgFaceEyeBlink_PutFace(struct FaceEyeProc * proc);
 void PutFace80x72(ProcPtr proc, u16 * tm, int fid, int chr, int pal);
 void EndFacePtr(struct Proc * proc);
 void EndFaceIn8Frames(struct FaceProc * proc);
@@ -208,7 +208,7 @@ extern u8 CONST_DATA FaceTm_Chibi[];
 extern CONST_DATA struct ProcCmd ProcScr_FaceChibiSpr[];
 extern u16 CONST_DATA Sprite_FaceChibi[];
 extern u16 CONST_DATA Sprite_FaceChibi_Flipped[];
-extern CONST_DATA struct ProcCmd ProcScr_FaceFormatGenerate[];
+extern CONST_DATA struct ProcCmd ProcScr_BgFaceEyeBlink[];
 extern CONST_DATA struct ProcCmd ProcScr_FaceEndIn8Frames[];
 extern CONST_DATA struct ProcCmd ProcScr_FaceMouth[];
 extern CONST_DATA struct ProcCmd ProcScr_FaceEye[];
