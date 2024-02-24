@@ -154,7 +154,7 @@ _0802D860: .4byte gBmSt
 sub_802D864: @ 0x0802D864
 	push {lr}
 	ldr r0, _0802D870 @ =gUnk_08C05414
-	bl sub_8004748
+	bl Proc_EndEach
 	pop {r0}
 	bx r0
 	.align 2, 0
@@ -201,7 +201,7 @@ sub_802D8A8: @ 0x0802D8A8
 	cmp r0, #0
 	bne _0802D8D8
 	movs r0, #1
-	bl sub_80046E8
+	bl Proc_UnblockEachMarked
 	ldr r0, _0802D8E0 @ =gUnk_08C05414
 	bl Proc_Find
 	cmp r0, #0

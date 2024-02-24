@@ -26,8 +26,6 @@ struct FaceVramEnt {
 
 extern struct FaceVramEnt EWRAM_DATA gFaceConfig[FACE_SLOT_COUNT];
 
-struct FaceBlinkProc;
-
 struct FaceProc {
     /* 00 */ PROC_HEADER;
 
@@ -44,27 +42,10 @@ struct FaceProc {
     /* 41 */ u8 sprite_layer;
 
     /* 44 */ ProcPtr mouth_proc;
-    /* 48 */ struct FaceBlinkProc * blink_proc;
+    /* 48 */ ProcPtr eye_proc;
 };
 
 extern struct FaceProc * gFaces[FACE_SLOT_COUNT];
-
-struct FaceBlinkProc {
-    /* 00 */ PROC_HEADER;
-
-    /* 2C */ struct FaceProc * pFaceProc;
-
-    /* 30 */ s16 blinkControl;
-    /* 32 */ s16 unk_32;
-    /* 34 */ s16 unk_34;
-
-    /* 38 */ int unk_38;
-    /* 3C */ u16 * unk_3c;
-
-    /* 40 */ u16 tileId;
-    /* 42 */ u16 palId;
-    /* 44 */ u16 faceId;
-};
 
 enum {
     FACE_64x80,
@@ -116,42 +97,70 @@ u32 SetFaceDispById(int slot, u32 disp);
 u32 GetFaceDisp(struct FaceProc * proc);
 u32 GetFaceDispById(int slot);
 void FaceRefreshSprite(struct FaceProc * proc);
-// PutFaceTm
-// UnpackFaceChibiGraphics
-// PutFaceChibi
-// UnpackFaceChibiSprGraphics
-// FaceChibiSpr_OnIdle
-// StartFaceChibiStr
-// sub_8006FF0
-// sub_8007000
-// sub_8007054
+void PutFaceTm(u16 * tm, u8 const * data, int tileref, bool is_flipped);
+void UnpackFaceChibiGraphics(int fid, int chr, int pal);
+void PutFaceChibi(int fid, u16 * tm, int chr, int pal, bool is_flipped);
+void UnpackFaceChibiSprGraphics(int fid, int chr, int pal);
+void FaceChibiSpr_OnIdle(struct FaceProc * proc);
+void StartFaceChibiStr(int x, int y, int fid, int chr, int pal, bool is_flipped, ProcPtr parent);
+void EndFaceChibiSpr(void);
+// PutFace80x72_Standard
+// PutFace80x72_Raised
 // ShouldFaceBeRaised
 // PutFace80x72_Core
-// sub_8007220
-// sub_800722C
-// sub_8007254
-// sub_8007354
-// sub_8007388
-// sub_8007394
-// sub_80073AC
-// sub_80073F4
-u8 * GetFactionFaceImg(int);
+
+struct FaceFmtProc {
+    /* 00 */ PROC_HEADER;
+
+    /* 2C */ struct FaceProc * face_proc;
+
+    /* 30 */ s16 blink;
+    /* 32 */ s16 unk_32;
+    /* 34 */ s16 timer;
+
+    /* 38 */ int dealy;
+    /* 3C */ u16 * tm;
+
+    /* 40 */ u16 tileId;
+    /* 42 */ u16 palId;
+    /* 44 */ u16 faceId;
+};
+
+void FaceFormat_Init(struct FaceFmtProc * proc);
+void FaceFormat_Delay(struct FaceFmtProc * proc);
+void FaceFormat_PutFace(struct FaceFmtProc * proc);
+void PutFace80x72(ProcPtr proc, u16 * tm, int fid, int chr, int pal);
+void EndFacePtr(struct Proc * proc);
+void EndFaceIn8Frames(struct FaceProc * proc);
+void StartFaceFadeIn(struct FaceProc * proc);
+void StartFaceFadeOut(struct FaceProc * proc);
+const u8 * GetFactionFaceImg(int);
 void ApplyFactionFacePal(int, int);
-// sub_8007490
-// sub_800749C
-// sub_80075F0
-// sub_80076F8
-// sub_800773C
-// sub_8007774
-// sub_80077E0
-// sub_80077E8
-// sub_800781C
-// sub_8007824
-// sub_8007858
-// sub_8007860
-// SetFaceBlinkControl
-// SetFaceBlinkControlById
-// FaceBlinkProc_GenBlinkInterval
+
+struct FaceMouthProc {
+    /* 00 */ PROC_HEADER;
+
+    /* 2C */ struct FaceProc * face_proc;
+    /* 30 */ s16 frame;
+    /* 32 */ s16 timer;
+};
+
+void FaceMouth_Init(struct FaceMouthProc * proc);
+void FaceMouth_Loop(struct FaceMouthProc * proc);
+
+// PutFaceMouthSprite
+void FaceEye_80076F8(ProcPtr proc);
+void FaceEye_800773C(ProcPtr proc);
+void FaceEye_8007774(ProcPtr proc);
+void FaceEye_80077E0(ProcPtr proc);
+void FaceEye_80077E8(ProcPtr proc);
+void FaceEye_800781C(ProcPtr proc);
+void FaceEye_8007824(ProcPtr proc);
+void FaceEye_8007858(ProcPtr proc);
+void FaceEye_8007860(ProcPtr proc);
+void SetFaceBlinkControl(struct FaceProc * proc, int blink);
+void SetFaceBlinkControlById(int slot, int blink);
+int FaceFmtProc_GenBlinkInterval(struct FaceFmtProc * proc);
 // sub_800796C
 // sub_8007974
 // sub_800798C
@@ -164,15 +173,6 @@ void ApplyFactionFacePal(int, int);
 // sub_8007C48
 // sub_8007C64
 
-// ??? gUnk_08BFF7B8
-// ??? gUnk_08BFF7C0
-// ??? gUnk_08BFF7C8
-// ??? gUnk_08BFF7D0
-// ??? gUnk_08BFF7D8
-// ??? gUnk_08BFF7E0
-// ??? gUnk_08BFF7E8
-// ??? gUnk_08BFF7F0
-// ??? gUnk_08BFF7F8
 extern struct FaceVramEnt CONST_DATA DefaultFaceConfig[FACE_SLOT_COUNT];
 extern u16 CONST_DATA Sprite_Face64x80[];
 extern u16 CONST_DATA Sprite_Face64x80_Flipped[];
@@ -185,10 +185,13 @@ extern u16 CONST_DATA Sprite_Face96x72_Flipped[];
 extern CONST_DATA struct ProcCmd ProcScr_Face[];
 // ??? FaceTm_Unk_08BFF9A8
 extern u8 CONST_DATA FaceTm_Chibi[];
-// ??? ProcScr_FaceChibiSpr
-// ??? Sprite_FaceChibi
-// ??? Sprite_FaceChibi_Flipped
-// ??? gUnk_08BFFA20
-// ??? gUnk_08BFFA50
+extern CONST_DATA struct ProcCmd ProcScr_FaceChibiSpr[];
+extern u16 CONST_DATA Sprite_FaceChibi[];
+extern u16 CONST_DATA Sprite_FaceChibi_Flipped[];
+extern CONST_DATA struct ProcCmd ProcScr_FaceFormatGenerate[];
+extern CONST_DATA struct ProcCmd ProcScr_FaceEndIn8Frames[];
 extern CONST_DATA struct ProcCmd ProcScr_FaceMouth[];
 extern CONST_DATA struct ProcCmd ProcScr_FaceEye[];
+
+extern const u8 Img_FactionMiniCard[];
+extern const u16 Pal_FactionMiniCard[];

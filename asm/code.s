@@ -2771,7 +2771,7 @@ MU_EndAll: @ 0x0806D4A4
 	mov r7, sp
 	ldr r1, _0806D4B8 @ =gUnk_08D64F4C
 	adds r0, r1, #0
-	bl sub_8004748
+	bl Proc_EndEach
 	pop {r7}
 	pop {r0}
 	bx r0
@@ -2847,7 +2847,7 @@ sub_806D52C: @ 0x0806D52C
 	push {r7, lr}
 	mov r7, sp
 	movs r0, #4
-	bl sub_80046E8
+	bl Proc_UnblockEachMarked
 	pop {r7}
 	pop {r0}
 	bx r0
@@ -4831,7 +4831,7 @@ sub_806E380: @ 0x0806E380
 	movs r1, #0x15
 	movs r2, #8
 	ldr r3, [r7]
-	bl sub_8014020
+	bl StartPalFade
 	add sp, #8
 	pop {r4, r7}
 	pop {r0}
@@ -4862,7 +4862,7 @@ sub_806E400: @ 0x0806E400
 	movs r1, #0x15
 	movs r2, #8
 	ldr r3, [r7]
-	bl sub_8014020
+	bl StartPalFade
 	ldr r1, _0806E44C @ =gUnk_08D64FFC
 	adds r0, r1, #0
 	movs r1, #3
@@ -5292,7 +5292,7 @@ sub_806E730: @ 0x0806E730
 	movs r1, #0x15
 	movs r2, #0x14
 	ldr r3, [r7]
-	bl sub_8014020
+	bl StartPalFade
 	add sp, #4
 	pop {r7}
 	pop {r0}
@@ -5469,7 +5469,7 @@ sub_806E840: @ 0x0806E840
 	movs r1, #0x15
 	movs r2, #0x14
 	ldr r3, [r7]
-	bl sub_8014020
+	bl StartPalFade
 	ldr r1, _0806E8D8 @ =gUnk_08D6509C
 	adds r0, r1, #0
 	ldr r1, [r7]
@@ -5538,7 +5538,7 @@ sub_806E930: @ 0x0806E930
 	mov r7, sp
 	ldr r0, _0806E944 @ =gUnk_08D64F4C
 	ldr r1, _0806E948 @ =sub_806E94C
-	bl sub_8004670
+	bl Proc_ForEach
 	pop {r7}
 	pop {r0}
 	bx r0
@@ -8484,7 +8484,7 @@ sub_806FF58: @ 0x0806FF58
 	mov r7, sp
 	ldr r1, _0806FF6C @ =gUnk_08D656F0
 	adds r0, r1, #0
-	bl sub_8004748
+	bl Proc_EndEach
 	pop {r7}
 	pop {r0}
 	bx r0
@@ -10503,7 +10503,7 @@ sub_8070F70: @ 0x08070F70
 	str r0, [r7]
 	ldr r1, _08071164 @ =gUnk_08C025F8
 	adds r0, r1, #0
-	bl sub_8004748
+	bl Proc_EndEach
 	ldr r0, [r7]
 	adds r1, r0, #0
 	adds r0, #0x64
@@ -17550,7 +17550,7 @@ sub_807475C: @ 0x0807475C
 	mov r7, sp
 	ldr r1, _08074770 @ =gUnk_08D65CE4
 	adds r0, r1, #0
-	bl sub_8004748
+	bl Proc_EndEach
 	pop {r7}
 	pop {r0}
 	bx r0
@@ -18285,7 +18285,7 @@ sub_8074D38: @ 0x08074D38
 	mov r7, sp
 	ldr r1, _08074D4C @ =gUnk_08D65D6C
 	adds r0, r1, #0
-	bl sub_8004748
+	bl Proc_EndEach
 	pop {r7}
 	pop {r0}
 	bx r0
@@ -19806,7 +19806,7 @@ _0807590C:
 	adds r1, r2, #6
 	movs r2, #0x3c
 	ldr r3, [r7]
-	bl sub_8014020
+	bl StartPalFade
 	adds r1, r0, #0
 	adds r0, r1, #0
 	movs r1, #0xf
@@ -19875,7 +19875,7 @@ _08075984:
 	adds r1, r2, #6
 	movs r2, #0xf
 	ldr r3, [r7]
-	bl sub_8014020
+	bl StartPalFade
 	ldr r0, [r7, #4]
 	adds r1, r0, #1
 	str r1, [r7, #4]
@@ -31791,7 +31791,7 @@ sub_807AFA0: @ 0x0807AFA0
 	adds r0, #0x66
 	strh r2, [r0]
 	ldr r0, _0807AFC4 @ =gUnk_08D6F7D4
-	bl sub_8004748
+	bl Proc_EndEach
 	ldr r0, _0807AFC8 @ =gUnk_0843F164
 	movs r1, #0x90
 	lsls r1, r1, #2
@@ -32084,7 +32084,7 @@ sub_807B1E0: @ 0x0807B1E0
 	beq _0807B21A
 _0807B20E:
 	ldr r0, _0807B224 @ =gUnk_08D6F7B4
-	bl sub_8004748
+	bl Proc_EndEach
 	adds r0, r4, #0
 	bl Proc_Break
 _0807B21A:
@@ -32829,7 +32829,7 @@ sub_807B7A0: @ 0x0807B7A0
 	ands r1, r2
 	strh r1, [r0, #0xc]
 	ldr r0, _0807B7C4 @ =gUnk_08D6F7EC
-	bl sub_8004748
+	bl Proc_EndEach
 	movs r0, #4
 	bl sub_80035EC
 	pop {r0}
@@ -32848,7 +32848,7 @@ sub_807B7C8: @ 0x0807B7C8
 	ands r1, r2
 	strh r1, [r0, #0xe]
 	ldr r0, _0807B7EC @ =gUnk_08D6F81C
-	bl sub_8004748
+	bl Proc_EndEach
 	movs r0, #4
 	bl sub_80035EC
 	pop {r0}
@@ -32961,7 +32961,7 @@ sub_807B8A4: @ 0x0807B8A4
 	movs r0, #4
 	bl sub_80035EC
 	ldr r0, _0807B8C8 @ =gUnk_08D6F834
-	bl sub_8004748
+	bl Proc_EndEach
 	pop {r0}
 	bx r0
 	.align 2, 0
@@ -38415,7 +38415,7 @@ _0807E3B8: .4byte 0x0000026A
 sub_807E3BC: @ 0x0807E3BC
 	push {lr}
 	ldr r0, _0807E3E0 @ =gUnk_08D837E8
-	bl sub_8004748
+	bl Proc_EndEach
 	ldr r2, _0807E3E4 @ =gBmSt
 	ldrh r0, [r2, #0xc]
 	adds r0, #0xf
@@ -38540,7 +38540,7 @@ sub_807E4A4: @ 0x0807E4A4
 	cmp r1, #0
 	bne _0807E4B8
 	ldr r0, _0807E4BC @ =gUnk_08D837F8
-	bl sub_8004764
+	bl Proc_BreakEach
 _0807E4B8:
 	pop {r0}
 	bx r0
@@ -39367,9 +39367,9 @@ _0807EAC8:
 	cmp r0, #0
 	beq _0807EAE8
 	bl sub_80095E4
-	ldr r1, _0807EAF4 @ =sub_80073F4
+	ldr r1, _0807EAF4 @ =StartFaceFadeOut
 	adds r0, r4, #0
-	bl sub_8004670
+	bl Proc_ForEach
 	adds r0, r6, #0
 	movs r1, #8
 	bl sub_80149B4
@@ -39380,7 +39380,7 @@ _0807EAE8:
 	b _0807EB3C
 	.align 2, 0
 _0807EAF0: .4byte ProcScr_Face
-_0807EAF4: .4byte sub_80073F4
+_0807EAF4: .4byte StartFaceFadeOut
 _0807EAF8:
 	ldrb r0, [r5, #2]
 	bl sub_807E9E0
@@ -40545,7 +40545,7 @@ _0807F434: .4byte gUnk_081C564C
 sub_807F438: @ 0x0807F438
 	push {lr}
 	ldr r0, _0807F444 @ =gUnk_08D87F28
-	bl sub_8004748
+	bl Proc_EndEach
 	pop {r0}
 	bx r0
 	.align 2, 0
@@ -41171,7 +41171,7 @@ _0807F904: .4byte gUnk_08D87F48
 sub_807F908: @ 0x0807F908
 	push {lr}
 	ldr r0, _0807F914 @ =gUnk_08D87F48
-	bl sub_8004748
+	bl Proc_EndEach
 	pop {r0}
 	bx r0
 	.align 2, 0
@@ -42919,7 +42919,7 @@ DrawStatBarGfx: @ 0x08080600
 	adds r1, r4, #0
 	adds r2, r6, #0
 	movs r3, #1
-	bl sub_801383C
+	bl PutAppliedBitmap
 	add sp, #8
 	pop {r3}
 	mov r8, r3
@@ -43121,7 +43121,7 @@ _080807B8: .4byte ProcScr_BackgroundSlide
 EndMuralBackground: @ 0x080807BC
 	push {lr}
 	ldr r0, _080807C8 @ =ProcScr_BackgroundSlide
-	bl sub_8004748
+	bl Proc_EndEach
 	pop {r0}
 	bx r0
 	.align 2, 0
@@ -45946,7 +45946,7 @@ _08081F18:
 	str r0, [sp]
 	adds r0, r6, #0
 	adds r2, r4, #0
-	bl sub_8007354
+	bl PutFace80x72
 	adds r0, r4, #0
 	bl GetFaceInfo
 	ldr r0, [r0]
@@ -48987,7 +48987,7 @@ sub_808368C: @ 0x0808368C
 	bl SetTextFont
 	ldr r4, _08083738 @ =gUnk_08D8AF34
 	adds r0, r4, #0
-	bl sub_8004748
+	bl Proc_EndEach
 	adds r0, r4, #0
 	movs r1, #3
 	bl Proc_Start
@@ -49103,9 +49103,9 @@ sub_8083798: @ 0x08083798
 	adds r0, r4, #0
 	bl SpriteText_DrawBackground
 	ldr r0, _080837D8 @ =gUnk_08D8AF34
-	bl sub_8004748
+	bl Proc_EndEach
 	ldr r0, _080837DC @ =gUnk_08D8AF5C
-	bl sub_8004748
+	bl Proc_EndEach
 	movs r0, #0
 	bl SetTextFont
 	pop {r4}
@@ -49312,7 +49312,7 @@ sub_8083950: @ 0x08083950
 _08083964:
 	bl sub_8083798
 	ldr r0, _0808397C @ =gUnk_08D8AF84
-	bl sub_8004764
+	bl Proc_BreakEach
 	pop {r0}
 	bx r0
 	.align 2, 0
@@ -50182,7 +50182,7 @@ sub_8083FBC: @ 0x08083FBC
 	adds r0, r4, #0
 	bl Proc_Break
 	ldr r0, _08083FE8 @ =gUnk_08D8B124
-	bl sub_8004748
+	bl Proc_EndEach
 _08083FE2:
 	pop {r4}
 	pop {r0}
@@ -50195,7 +50195,7 @@ sub_8083FEC: @ 0x08083FEC
 	push {lr}
 	bl sub_8085008
 	ldr r0, _08083FFC @ =gUnk_08D8B04C
-	bl sub_8004764
+	bl Proc_BreakEach
 	pop {r0}
 	bx r0
 	.align 2, 0
@@ -50212,7 +50212,7 @@ sub_8084000: @ 0x08084000
 	adds r5, r3, #0
 	ldr r4, _0808402C @ =gUnk_08D8AFEC
 	adds r0, r4, #0
-	bl sub_8004748
+	bl Proc_EndEach
 	movs r0, #0
 	bl sub_8083B9C
 	cmp r5, #0
@@ -50264,7 +50264,7 @@ sub_8084068: @ 0x08084068
 	ldr r5, [sp, #0x20]
 	ldr r4, _08084098 @ =gUnk_08D8AFEC
 	adds r0, r4, #0
-	bl sub_8004748
+	bl Proc_EndEach
 	movs r0, #0
 	bl sub_8083B9C
 	cmp r5, #0
@@ -50501,7 +50501,7 @@ sub_8084208: @ 0x08084208
 	str r5, [sp, #4]
 	ldr r4, _08084258 @ =gUnk_08D8B04C
 	adds r0, r4, #0
-	bl sub_8004748
+	bl Proc_EndEach
 	adds r0, r4, #0
 	movs r1, #3
 	bl Proc_Start
@@ -51145,7 +51145,7 @@ _0808471C:
 	movs r1, #1
 	bl Proc_Goto
 	ldr r0, _08084740 @ =gUnk_08D8B124
-	bl sub_8004748
+	bl Proc_EndEach
 	b _08084A24
 	.align 2, 0
 _0808473C: .4byte gUnk_08D8AFEC
@@ -51567,7 +51567,7 @@ _08084B74:
 	movs r1, #1
 	bl Proc_Goto
 	ldr r0, _08084B94 @ =gUnk_08D8B124
-	bl sub_8004748
+	bl Proc_EndEach
 	b _08084CD2
 	.align 2, 0
 _08084B90: .4byte gUnk_08D8AFEC
@@ -52021,7 +52021,7 @@ _08084F1E:
 	bl SetTextFont
 	ldr r4, _08084FA0 @ =gUnk_08D8B06C
 	adds r0, r4, #0
-	bl sub_8004748
+	bl Proc_EndEach
 	adds r0, r4, #0
 	movs r1, #3
 	bl Proc_Start
@@ -52192,9 +52192,9 @@ _08085076:
 	blt _08085068
 _08085082:
 	ldr r0, _080850A0 @ =gUnk_08D8B06C
-	bl sub_8004748
+	bl Proc_EndEach
 	ldr r0, _080850A4 @ =gUnk_08D8B10C
-	bl sub_8004748
+	bl Proc_EndEach
 	movs r0, #0
 	bl SetTextFont
 	pop {r4}
@@ -52238,15 +52238,15 @@ _080850D2:
 sub_80850D8: @ 0x080850D8
 	push {lr}
 	ldr r0, _080850FC @ =gUnk_08D8AFEC
-	bl sub_8004748
+	bl Proc_EndEach
 	ldr r0, _08085100 @ =gUnk_08D8B124
-	bl sub_8004748
+	bl Proc_EndEach
 	ldr r0, _08085104 @ =gUnk_08D8B04C
-	bl sub_8004748
+	bl Proc_EndEach
 	ldr r0, _08085108 @ =gUnk_08D8B06C
-	bl sub_8004748
+	bl Proc_EndEach
 	ldr r0, _0808510C @ =gUnk_08D8B10C
-	bl sub_8004748
+	bl Proc_EndEach
 	pop {r0}
 	bx r0
 	.align 2, 0
@@ -54899,15 +54899,15 @@ _08086678: .4byte gUnk_08D8B2B8
 sub_808667C: @ 0x0808667C
 	push {lr}
 	ldr r0, _080866C4 @ =gUnk_08D8B200
-	bl sub_8004748
+	bl Proc_EndEach
 	ldr r0, _080866C8 @ =gUnk_08D8B288
-	bl sub_8004748
+	bl Proc_EndEach
 	ldr r0, _080866CC @ =gUnk_08D8B1A0
-	bl sub_8004748
+	bl Proc_EndEach
 	ldr r0, _080866D0 @ =gUnk_08D8B2D8
-	bl sub_8004748
+	bl Proc_EndEach
 	ldr r0, _080866D4 @ =gUnk_08D8B338
-	bl sub_8004748
+	bl Proc_EndEach
 	ldr r3, _080866D8 @ =gDispIo
 	adds r1, r3, #0
 	adds r1, #0x3c
@@ -57387,7 +57387,7 @@ sub_8087B00: @ 0x08087B00
 	push {r4, lr}
 	adds r4, r0, #0
 	ldr r0, _08087B28 @ =gUnk_08D8B5A0
-	bl sub_8004748
+	bl Proc_EndEach
 	bl sub_8082D74
 	adds r0, r4, #0
 	adds r0, #0x29
@@ -58520,7 +58520,7 @@ _08088440:
 	beq _08088458
 	ldr r0, _08088460 @ =ProcScr_Face
 	bl Proc_Find
-	bl sub_80073F4
+	bl StartFaceFadeOut
 _08088458:
 	pop {r4}
 	pop {r0}

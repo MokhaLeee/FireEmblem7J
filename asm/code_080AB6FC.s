@@ -2841,7 +2841,7 @@ sub_80ACC60: @ 0x080ACC60
 	push {lr}
 	bl EndAllProcChildren
 	ldr r0, _080ACC70 @ =gUnk_08DAECA0
-	bl sub_8004748
+	bl Proc_EndEach
 	pop {r0}
 	bx r0
 	.align 2, 0
@@ -8299,9 +8299,9 @@ sub_80AF8F8: @ 0x080AF8F8
 	adds r4, r0, #0
 	bl EndMuralBackground
 	ldr r0, _080AF91C @ =gUnk_08DAF3D0
-	bl sub_8004748
+	bl Proc_EndEach
 	ldr r0, _080AF920 @ =gUnk_08DAF3B0
-	bl sub_8004748
+	bl Proc_EndEach
 	adds r0, r4, #0
 	adds r0, #0x36
 	ldrb r0, [r0]
@@ -13146,10 +13146,10 @@ sub_80B1E90: @ 0x080B1E90
 	str r0, [r7]
 	ldr r1, _080B1EB0 @ =gUnk_08DB0ADC
 	adds r0, r1, #0
-	bl sub_8004748
+	bl Proc_EndEach
 	ldr r0, _080B1EB4 @ =gUnk_08D64F4C
 	ldr r1, _080B1EB8 @ =sub_806E2C8
-	bl sub_8004670
+	bl Proc_ForEach
 	add sp, #4
 	pop {r7}
 	pop {r0}
@@ -13534,7 +13534,7 @@ _080B219A:
 _080B21A2:
 	ldr r0, _080B22B4 @ =gUnk_08D64F4C
 	ldr r1, _080B22B8 @ =sub_806E2A0
-	bl sub_8004670
+	bl Proc_ForEach
 	bl sub_80B2C4C
 	ldr r0, _080B22BC @ =gDispIo
 	ldrb r1, [r0, #0xc]
@@ -16025,7 +16025,7 @@ sub_80B34E8: @ 0x080B34E8
 	str r0, [r7]
 	ldr r0, _080B383C @ =gUnk_08D64F4C
 	ldr r1, _080B3840 @ =sub_806E2A0
-	bl sub_8004670
+	bl Proc_ForEach
 	bl sub_80B2C4C
 	ldr r0, _080B3844 @ =gDispIo
 	ldrb r1, [r0, #0xc]
@@ -16665,7 +16665,7 @@ sub_80B3A08: @ 0x080B3A08
 	bl sub_800EC08
 	ldr r1, _080B3A78 @ =gUnk_08DB0ADC
 	adds r0, r1, #0
-	bl sub_8004748
+	bl Proc_EndEach
 	ldr r0, _080B3A7C @ =gActionSt
 	ldrb r1, [r0, #0x11]
 	movs r2, #0
@@ -16866,10 +16866,10 @@ sub_80B3BA4: @ 0x080B3BA4
 	str r0, [r7]
 	ldr r1, _080B3BC4 @ =gUnk_08DB0ADC
 	adds r0, r1, #0
-	bl sub_8004748
+	bl Proc_EndEach
 	ldr r0, _080B3BC8 @ =gUnk_08D64F4C
 	ldr r1, _080B3BCC @ =sub_806E2C8
-	bl sub_8004670
+	bl Proc_ForEach
 	add sp, #4
 	pop {r7}
 	pop {r0}
@@ -21328,7 +21328,7 @@ _080B5D74: .4byte gUnk_08DB0F24
 sub_80B5D78: @ 0x080B5D78
 	push {lr}
 	ldr r0, _080B5D84 @ =gUnk_08DB0F24
-	bl sub_8004748
+	bl Proc_EndEach
 	pop {r0}
 	bx r0
 	.align 2, 0
@@ -29063,7 +29063,7 @@ _080B99F4: .4byte gUnk_08DB8944
 sub_80B99F8: @ 0x080B99F8
 	push {lr}
 	ldr r0, _080B9A04 @ =gUnk_08DB8944
-	bl sub_8004748
+	bl Proc_EndEach
 	pop {r0}
 	bx r0
 	.align 2, 0

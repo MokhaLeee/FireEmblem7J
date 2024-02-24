@@ -7108,7 +7108,7 @@ _0806A938: .4byte 0x02020130
 sub_806A93C: @ 0x0806A93C
 	push {lr}
 	ldr r0, _0806A950 @ =gUnk_08C4AB40
-	bl sub_8004748
+	bl Proc_EndEach
 	ldr r1, _0806A954 @ =0x02020130
 	movs r0, #1
 	str r0, [r1]

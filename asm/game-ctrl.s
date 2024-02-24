@@ -889,7 +889,7 @@ sub_8013240: @ 0x08013240
 	push {r4, lr}
 	ldr r4, _08013260 @ =ProcScr_GameControl
 	adds r0, r4, #0
-	bl sub_8004748
+	bl Proc_EndEach
 	adds r0, r4, #0
 	movs r1, #3
 	bl Proc_Start
@@ -906,7 +906,7 @@ sub_8013264: @ 0x08013264
 	push {r4, lr}
 	ldr r4, _08013284 @ =ProcScr_GameControl
 	adds r0, r4, #0
-	bl sub_8004748
+	bl Proc_EndEach
 	adds r0, r4, #0
 	movs r1, #3
 	bl Proc_Start
@@ -923,7 +923,7 @@ sub_8013288: @ 0x08013288
 	push {r4, lr}
 	ldr r4, _080132A8 @ =ProcScr_GameControl
 	adds r0, r4, #0
-	bl sub_8004748
+	bl Proc_EndEach
 	adds r0, r4, #0
 	movs r1, #3
 	bl Proc_Start

@@ -1828,7 +1828,7 @@ _0801E64C: .4byte gBg0Tm
 sub_801E650: @ 0x0801E650
 	push {lr}
 	ldr r0, _0801E65C @ =gUnk_08C029A8
-	bl sub_8004748
+	bl Proc_EndEach
 	pop {r0}
 	bx r0
 	.align 2, 0
@@ -7791,7 +7791,7 @@ _080215CC: .4byte gUnk_08C02F90
 sub_80215D0: @ 0x080215D0
 	push {lr}
 	ldr r0, _080215DC @ =gUnk_08C02F90
-	bl sub_8004748
+	bl Proc_EndEach
 	pop {r0}
 	bx r0
 	.align 2, 0

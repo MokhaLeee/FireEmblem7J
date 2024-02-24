@@ -3494,7 +3494,7 @@ _0803E064: .4byte gUnk_08C07E98
 sub_803E068: @ 0x0803E068
 	push {lr}
 	ldr r0, _0803E074 @ =gUnk_08C07E98
-	bl sub_8004748
+	bl Proc_EndEach
 	pop {r0}
 	bx r0
 	.align 2, 0
@@ -9066,11 +9066,11 @@ sub_8040CC8: @ 0x08040CC8
 sub_8040D1C: @ 0x08040D1C
 	push {lr}
 	ldr r0, _08040D34 @ =gUnk_08C07E20
-	bl sub_8004748
+	bl Proc_EndEach
 	ldr r0, _08040D38 @ =gUnk_08C07E48
-	bl sub_8004748
+	bl Proc_EndEach
 	ldr r0, _08040D3C @ =gUnk_08C07DF8
-	bl sub_8004748
+	bl Proc_EndEach
 	pop {r0}
 	bx r0
 	.align 2, 0
@@ -10354,7 +10354,7 @@ _080417A2:
 	cmp r0, r2
 	bne _080417E4
 	ldr r0, _080417FC @ =gUnk_08C07E80
-	bl sub_8004748
+	bl Proc_EndEach
 	adds r0, r5, #0
 	bl Proc_Break
 _080417E4:
@@ -13511,7 +13511,7 @@ _0804323A:
 	bl sub_8048494
 	bl sub_803DEB4
 	ldr r0, _08043274 @ =gUnk_08C025F8
-	bl sub_8004748
+	bl Proc_EndEach
 	adds r0, r6, #0
 	bl Proc_End
 	b _08043288
@@ -14878,11 +14878,11 @@ _08043DAC: .4byte 0x030045E0
 sub_8043DB0: @ 0x08043DB0
 	push {lr}
 	ldr r0, _08043DD4 @ =gUnk_08C07E20
-	bl sub_8004748
+	bl Proc_EndEach
 	ldr r0, _08043DD8 @ =gUnk_08C07E48
-	bl sub_8004748
+	bl Proc_EndEach
 	ldr r0, _08043DDC @ =gUnk_08C07DF8
-	bl sub_8004748
+	bl Proc_EndEach
 	bl sub_803C9AC
 	bl CloseHelpBox
 	bl sub_803C8C8
@@ -15984,7 +15984,7 @@ sub_80446B4: @ 0x080446B4
 	adds r0, r4, #0
 	bl sub_80AD968
 	ldr r0, _080446FC @ =gUnk_08C08BCC
-	bl sub_8004748
+	bl Proc_EndEach
 	adds r0, r4, #0
 	bl sub_80446A0
 	str r0, [r4, #0x54]
@@ -16515,7 +16515,7 @@ _08044AF4: .4byte gUnk_08C08E34
 sub_8044AF8: @ 0x08044AF8
 	push {lr}
 	ldr r0, _08044B08 @ =gUnk_08C08E34
-	bl sub_8004748
+	bl Proc_EndEach
 	bl ClearBg0Bg1
 	pop {r0}
 	bx r0
@@ -18552,7 +18552,7 @@ _08045B1C: .4byte gUnk_08C07DAC
 sub_8045B20: @ 0x08045B20
 	push {lr}
 	ldr r0, _08045B3C @ =gUnk_08C05464
-	bl sub_8004748
+	bl Proc_EndEach
 	bl sub_8047344
 	bl sub_802D864
 	movs r0, #1
@@ -21532,7 +21532,7 @@ _08047340: .4byte gUnk_08C09014
 sub_8047344: @ 0x08047344
 	push {lr}
 	ldr r0, _08047350 @ =gUnk_08C09014
-	bl sub_8004748
+	bl Proc_EndEach
 	pop {r0}
 	bx r0
 	.align 2, 0
@@ -22988,7 +22988,7 @@ sub_8047E5C: @ 0x08047E5C
 	movs r1, #0x16
 	movs r2, #0x14
 	adds r3, r4, #0
-	bl sub_8014020
+	bl StartPalFade
 	ldr r0, _08047EB0 @ =gUnk_08C095C4
 	adds r1, r4, #0
 	bl Proc_Start
@@ -23111,7 +23111,7 @@ sub_8047F54: @ 0x08047F54
 	movs r1, #0x16
 	movs r2, #8
 	adds r3, r5, #0
-	bl sub_8014020
+	bl StartPalFade
 	pop {r4, r5}
 	pop {r0}
 	bx r0
@@ -23132,7 +23132,7 @@ sub_8047FA0: @ 0x08047FA0
 	movs r1, #0x16
 	movs r2, #8
 	adds r3, r4, #0
-	bl sub_8014020
+	bl StartPalFade
 	ldr r0, _08047FD0 @ =gUnk_08D64FFC
 	movs r1, #3
 	bl Proc_Start
@@ -23546,7 +23546,7 @@ sub_80482D0: @ 0x080482D0
 	adds r5, r2, #0
 	ldr r4, _080482FC @ =gUnk_08C096DC
 	adds r0, r4, #0
-	bl sub_8004748
+	bl Proc_EndEach
 	adds r0, r4, #0
 	adds r1, r5, #0
 	bl Proc_Start
@@ -23570,7 +23570,7 @@ sub_8048300: @ 0x08048300
 	cmp r0, #0
 	beq _08048314
 	adds r0, r4, #0
-	bl sub_8004748
+	bl Proc_EndEach
 _08048314:
 	pop {r4}
 	pop {r0}
@@ -23653,7 +23653,7 @@ sub_80483C0: @ 0x080483C0
 	adds r5, r1, #0
 	ldr r4, _0804841C @ =gBg3Tm
 	ldr r0, _08048420 @ =ProcScr_BackgroundSlide
-	bl sub_8004748
+	bl Proc_EndEach
 	movs r0, #0x14
 	subs r0, r0, r5
 	lsls r0, r0, #5
@@ -23712,7 +23712,7 @@ sub_8048424: @ 0x08048424
 	bl memcpy
 	ldr r4, _08048488 @ =gBg3Tm
 	ldr r0, _0804848C @ =ProcScr_BackgroundSlide
-	bl sub_8004748
+	bl Proc_EndEach
 	movs r3, #0
 	movs r6, #0xf
 	ldr r5, _08048490 @ =0x0000027F
@@ -23757,7 +23757,7 @@ _08048490: .4byte 0x0000027F
 sub_8048494: @ 0x08048494
 	push {lr}
 	ldr r0, _080484A0 @ =ProcScr_BackgroundSlide
-	bl sub_8004748
+	bl Proc_EndEach
 	pop {r0}
 	bx r0
 	.align 2, 0
@@ -23869,7 +23869,7 @@ sub_804856C: @ 0x0804856C
 	adds r6, r1, #0
 	ldr r4, _0804858C @ =gUnk_08C09704
 	adds r0, r4, #0
-	bl sub_8004748
+	bl Proc_EndEach
 	adds r0, r4, #0
 	adds r1, r5, #0
 	bl Proc_Start
@@ -23884,7 +23884,7 @@ _0804858C: .4byte gUnk_08C09704
 sub_8048590: @ 0x08048590
 	push {lr}
 	ldr r0, _0804859C @ =gUnk_08C09704
-	bl sub_8004748
+	bl Proc_EndEach
 	pop {r0}
 	bx r0
 	.align 2, 0
@@ -24041,7 +24041,7 @@ _080486B4:
 	bl ApplyPaletteExt
 	ldr r4, _08048704 @ =gUnk_08C0972C
 	adds r0, r4, #0
-	bl sub_8004748
+	bl Proc_EndEach
 	adds r0, r4, #0
 	ldr r1, [sp, #0x20]
 	bl Proc_Start
@@ -24086,7 +24086,7 @@ sub_8048708: @ 0x08048708
 	adds r0, #1
 	strb r1, [r0]
 	ldr r0, _08048738 @ =gUnk_08C0972C
-	bl sub_8004748
+	bl Proc_EndEach
 	pop {r0}
 	bx r0
 	.align 2, 0
@@ -24827,7 +24827,7 @@ sub_8048CF0: @ 0x08048CF0
 	mov r8, r2
 	ldr r4, _08048D90 @ =gUnk_08C097FC
 	adds r0, r4, #0
-	bl sub_8004748
+	bl Proc_EndEach
 	adds r0, r4, #0
 	adds r1, r6, #0
 	bl Proc_Start
@@ -24984,7 +24984,7 @@ sub_8048E18: @ 0x08048E18
 	ldr r5, [sp, #0x24]
 	ldr r4, _08048E5C @ =gUnk_08C09814
 	adds r0, r4, #0
-	bl sub_8004748
+	bl Proc_EndEach
 	adds r0, r4, #0
 	adds r1, r5, #0
 	bl Proc_Start
@@ -25188,7 +25188,7 @@ sub_8048FC4: @ 0x08048FC4
 	mov r8, r2
 	ldr r4, _08049000 @ =gUnk_08C09848
 	adds r0, r4, #0
-	bl sub_8004748
+	bl Proc_EndEach
 	adds r0, r4, #0
 	adds r1, r6, #0
 	bl Proc_Start
@@ -25289,7 +25289,7 @@ sub_8049090: @ 0x08049090
 	adds r5, r0, #0
 	ldr r4, _080490B0 @ =gUnk_08C0986C
 	adds r0, r4, #0
-	bl sub_8004748
+	bl Proc_EndEach
 	adds r0, r4, #0
 	adds r1, r5, #0
 	bl Proc_Start
@@ -25726,7 +25726,7 @@ sub_80493CC: @ 0x080493CC
 	lsrs r6, r6, #0x18
 	ldr r4, _08049434 @ =gUnk_08C098B4
 	adds r0, r4, #0
-	bl sub_8004748
+	bl Proc_EndEach
 	adds r0, r4, #0
 	adds r1, r7, #0
 	bl Proc_Start
@@ -26274,7 +26274,7 @@ sub_804984C: @ 0x0804984C
 	adds r5, r2, #0
 	ldr r4, _08049898 @ =gUnk_08C09934
 	adds r0, r4, #0
-	bl sub_8004748
+	bl Proc_EndEach
 	adds r0, r4, #0
 	adds r1, r5, #0
 	bl Proc_Start
@@ -26310,7 +26310,7 @@ _08049898: .4byte gUnk_08C09934
 sub_804989C: @ 0x0804989C
 	push {lr}
 	ldr r0, _080498A8 @ =gUnk_08C09934
-	bl sub_8004748
+	bl Proc_EndEach
 	pop {r0}
 	bx r0
 	.align 2, 0
@@ -26481,7 +26481,7 @@ sub_80499D8: @ 0x080499D8
 	adds r5, r2, #0
 	ldr r4, _08049A04 @ =gUnk_08C09944
 	adds r0, r4, #0
-	bl sub_8004748
+	bl Proc_EndEach
 	adds r0, r4, #0
 	adds r1, r5, #0
 	bl Proc_Start

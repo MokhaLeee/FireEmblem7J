@@ -1,6 +1,73 @@
 	.include "macro.inc"
 	.syntax unified
 
+	thumb_func_start sub_8007C10
+sub_8007C10: @ 0x08007C10
+	push {r4, lr}
+	adds r4, r0, #0
+	ldr r0, [r4, #0x2c]
+	ldr r1, [r0, #0x48]
+	cmp r1, #0
+	beq _08007C34
+	ldr r0, [r4, #0x30]
+	ldrb r0, [r0, #0x18]
+	strh r0, [r1, #0x30]
+	ldr r0, [r4, #0x2c]
+	ldr r0, [r0, #0x48]
+	movs r1, #0
+	bl Proc_Goto
+	ldr r0, [r4, #0x2c]
+	ldr r0, [r0, #0x48]
+	bl sub_8091628
+_08007C34:
+	ldr r0, [r4, #0x2c]
+	ldr r0, [r0, #0x44]
+	cmp r0, #0
+	beq _08007C40
+	bl sub_8091628
+_08007C40:
+	pop {r4}
+	pop {r0}
+	bx r0
+	.align 2, 0
+
+	thumb_func_start sub_8007C48
+sub_8007C48: @ 0x08007C48
+	push {r4, r5, lr}
+	adds r4, r0, #0
+	adds r5, r1, #0
+	ldr r0, _08007C60 @ =gUnk_08BFFB30
+	adds r1, r4, #0
+	bl Proc_Start
+	str r4, [r0, #0x2c]
+	str r5, [r0, #0x34]
+	pop {r4, r5}
+	pop {r0}
+	bx r0
+	.align 2, 0
+_08007C60: .4byte gUnk_08BFFB30
+
+	thumb_func_start sub_8007C64
+sub_8007C64: @ 0x08007C64
+	push {r4, lr}
+	movs r2, #0
+	ldr r4, _08007C84 @ =gUnk_08BFFB68
+	movs r3, #0
+_08007C6C:
+	ldr r0, [r4]
+	lsls r1, r2, #2
+	adds r0, #0x18
+	adds r0, r0, r1
+	str r3, [r0]
+	adds r2, #1
+	cmp r2, #7
+	ble _08007C6C
+	pop {r4}
+	pop {r0}
+	bx r0
+	.align 2, 0
+_08007C84: .4byte gUnk_08BFFB68
+
 	thumb_func_start InitTalk
 InitTalk: @ 0x08007C88
 	push {r4, r5, r6, r7, lr}
@@ -297,7 +364,7 @@ sub_8007EEC: @ 0x08007EEC
 sub_8007EF8: @ 0x08007EF8
 	push {lr}
 	ldr r0, _08007F04 @ =gUnk_08BFFB84
-	bl sub_8004748
+	bl Proc_EndEach
 	pop {r0}
 	bx r0
 	.align 2, 0
@@ -875,7 +942,7 @@ _08008368: .4byte gUnk_08BFFBB4
 sub_800836C: @ 0x0800836C
 	push {lr}
 	ldr r0, _08008378 @ =gUnk_08BFFBB4
-	bl sub_8004748
+	bl Proc_EndEach
 	pop {r0}
 	bx r0
 	.align 2, 0
@@ -1403,7 +1470,7 @@ _08008876:
 	adds r0, #0x18
 	adds r0, r0, r1
 	ldr r0, [r0]
-	bl sub_80073F4
+	bl StartFaceFadeOut
 	ldr r2, [r4]
 	ldrb r3, [r2, #0x11]
 	lsls r1, r3, #2
@@ -2002,7 +2069,7 @@ _08008D58:
 	lsls r0, r3, #2
 	adds r2, r2, r0
 	ldr r0, [r2]
-	bl sub_80073AC
+	bl StartFaceFadeIn
 	ldr r0, [r5]
 	ldrb r4, [r0, #0x11]
 	movs r0, #0x10
@@ -2421,9 +2488,9 @@ _0800907C: .4byte gFaces
 sub_8009080: @ 0x08009080
 	push {lr}
 	ldr r0, _08009094 @ =gUnk_08BFFB6C
-	bl sub_8004748
+	bl Proc_EndEach
 	ldr r0, _08009098 @ =gUnk_08BFFC7C
-	bl sub_8004748
+	bl Proc_EndEach
 	pop {r0}
 	bx r0
 	.align 2, 0

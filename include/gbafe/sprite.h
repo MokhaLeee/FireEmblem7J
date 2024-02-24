@@ -33,6 +33,15 @@ extern u16 CONST_DATA Sprite_8x8_HFlipped[];
 extern u16 CONST_DATA Sprite_8x8_VFlipped[];
 extern u16 CONST_DATA Sprite_8x8_HFlipped_VFlipped[];
 extern u16 CONST_DATA Sprite_16x16_VFlipped[];
+// ??? gUnk_08BFF7B8
+// ??? gUnk_08BFF7C0
+// ??? gUnk_08BFF7C8
+// ??? gUnk_08BFF7D0
+// ??? gUnk_08BFF7D8
+// ??? gUnk_08BFF7E0
+// ??? gUnk_08BFF7E8
+// ??? gUnk_08BFF7F0
+// ??? gUnk_08BFF7F8
 
 void PutSprite(int layer, int x, int y, u16 const * object, int oam2);
 void PutSpriteExt(int layer, int xOam1, int yOam0, const u16 * object, int oam2);

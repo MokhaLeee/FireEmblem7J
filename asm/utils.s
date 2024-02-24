@@ -315,8 +315,8 @@ sub_8013718: @ 0x08013718
 	bx lr
 	.align 2, 0
 
-	thumb_func_start sub_801372C
-sub_801372C: @ 0x0801372C
+	thumb_func_start Register2dChrMove
+Register2dChrMove: @ 0x0801372C
 	push {r4, r5, r6, r7, lr}
 	adds r6, r0, #0
 	adds r5, r1, #0
@@ -472,8 +472,8 @@ _080137FC:
 	bx r0
 	.align 2, 0
 
-	thumb_func_start sub_801383C
-sub_801383C: @ 0x0801383C
+	thumb_func_start PutAppliedBitmap
+PutAppliedBitmap: @ 0x0801383C
 	push {r4, r5, r6, lr}
 	adds r6, r0, #0
 	adds r4, r1, #0
@@ -1574,8 +1574,8 @@ nullsub_35: @ 0x08013FE4
 	bx lr
 	.align 2, 0
 
-	thumb_func_start sub_8013FE8
-sub_8013FE8: @ 0x08013FE8
+	thumb_func_start StartPalFadeToBlack
+StartPalFadeToBlack: @ 0x08013FE8
 	push {r4, r5, lr}
 	adds r4, r0, #0
 	adds r5, r1, #0
@@ -1583,15 +1583,15 @@ sub_8013FE8: @ 0x08013FE8
 	ldr r0, _08014000 @ =gUnk_08C01CEC
 	adds r1, r4, #0
 	adds r2, r5, #0
-	bl sub_8014020
+	bl StartPalFade
 	pop {r4, r5}
 	pop {r0}
 	bx r0
 	.align 2, 0
 _08014000: .4byte gUnk_08C01CEC
 
-	thumb_func_start sub_8014004
-sub_8014004: @ 0x08014004
+	thumb_func_start StartPalFadeToWhite
+StartPalFadeToWhite: @ 0x08014004
 	push {r4, r5, lr}
 	adds r4, r0, #0
 	adds r5, r1, #0
@@ -1599,15 +1599,15 @@ sub_8014004: @ 0x08014004
 	ldr r0, _0801401C @ =gUnk_08C01D0C
 	adds r1, r4, #0
 	adds r2, r5, #0
-	bl sub_8014020
+	bl StartPalFade
 	pop {r4, r5}
 	pop {r0}
 	bx r0
 	.align 2, 0
 _0801401C: .4byte gUnk_08C01D0C
 
-	thumb_func_start sub_8014020
-sub_8014020: @ 0x08014020
+	thumb_func_start StartPalFade
+StartPalFade: @ 0x08014020
 	push {r4, r5, r6, lr}
 	mov r6, sb
 	mov r5, r8
@@ -1657,7 +1657,7 @@ _0801407C: .4byte gPal
 sub_8014080: @ 0x08014080
 	push {lr}
 	ldr r0, _0801408C @ =gUnk_08C01BDC
-	bl sub_8004748
+	bl Proc_EndEach
 	pop {r0}
 	bx r0
 	.align 2, 0
@@ -1786,8 +1786,8 @@ _0801416C:
 	pop {r0}
 	bx r0
 
-	thumb_func_start sub_801417C
-sub_801417C: @ 0x0801417C
+	thumb_func_start SetBlackPal
+SetBlackPal: @ 0x0801417C
 	push {lr}
 	adds r1, r0, #0
 	ldr r0, _08014194 @ =gUnk_08C01CEC
@@ -1824,7 +1824,7 @@ sub_80141BC: @ 0x080141BC
 	movs r4, #0
 _080141C0:
 	adds r0, r4, #0
-	bl sub_801417C
+	bl SetBlackPal
 	adds r4, #1
 	cmp r4, #0x1f
 	ble _080141C0
@@ -1839,7 +1839,7 @@ sub_80141D4: @ 0x080141D4
 	movs r4, #0
 _080141D8:
 	adds r0, r4, #0
-	bl sub_801417C
+	bl SetBlackPal
 	adds r4, #1
 	cmp r4, #0x1f
 	ble _080141D8
@@ -2751,7 +2751,7 @@ _08014830: .4byte gUnk_08C01C74
 sub_8014834: @ 0x08014834
 	push {lr}
 	ldr r0, _08014840 @ =gUnk_08C01C74
-	bl sub_8004748
+	bl Proc_EndEach
 	pop {r0}
 	bx r0
 	.align 2, 0
@@ -3174,7 +3174,7 @@ _08014B54: .4byte 0x03000430
 sub_8014B58: @ 0x08014B58
 	push {lr}
 	ldr r0, _08014B64 @ =gUnk_08C01CC4
-	bl sub_8004748
+	bl Proc_EndEach
 	pop {r0}
 	bx r0
 	.align 2, 0

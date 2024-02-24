@@ -567,7 +567,7 @@ _0802E878: .4byte gUnk_08C05464
 EndMapMain: @ 0x0802E87C
 	push {lr}
 	movs r0, #1
-	bl sub_8004710
+	bl Proc_EndEachMarked
 	ldr r0, _0802E89C @ =ProcScr_BmMain
 	bl Proc_Find
 	ldr r1, [r0, #0x54]
@@ -5079,7 +5079,7 @@ sub_8030B74: @ 0x08030B74
 	push {lr}
 	bl sub_8082D74
 	ldr r0, _08030B84 @ =gUnk_08C05704
-	bl sub_8004748
+	bl Proc_EndEach
 	pop {r0}
 	bx r0
 	.align 2, 0
@@ -6497,7 +6497,7 @@ _0803170A:
 	ble _080316CC
 	bl sub_8031664
 	ldr r0, _08031734 @ =gUnk_08C0571C
-	bl sub_8004748
+	bl Proc_EndEach
 	ldr r2, _08031738 @ =gBmSt
 	movs r1, #0xef
 	adds r0, r1, #0
@@ -8876,7 +8876,7 @@ sub_8032A20: @ 0x08032A20
 	movs r0, #0
 	bl sub_801622C
 	ldr r0, _08032A40 @ =gUnk_08C05CA0
-	bl sub_8004764
+	bl Proc_BreakEach
 	pop {r0}
 	bx r0
 	.align 2, 0
@@ -9200,7 +9200,7 @@ _08032CC8: .4byte gBmSt
 sub_8032CCC: @ 0x08032CCC
 	push {lr}
 	ldr r0, _08032CD8 @ =gUnk_08C05CD0
-	bl sub_8004748
+	bl Proc_EndEach
 	pop {r0}
 	bx r0
 	.align 2, 0

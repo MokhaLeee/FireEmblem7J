@@ -276,6 +276,8 @@ SECTIONS
 		. = ALIGN(4); data/const_data_080C1170.o(.rodata)
 		. = ALIGN(4); data/const_data_icon.o(.rodata)
 		. = ALIGN(4); data/const_data_080C7334.o(.rodata)
+		. = ALIGN(4); src/face.o(.rodata)
+		. = ALIGN(4); data/const_data_0818F93C.o(.rodata)
 		. = ALIGN(4); src/unit.o(.rodata)
 		. = ALIGN(4); data/const_data_081C9238.o(.rodata)
 		. = ALIGN(4); src/battle.o(.rodata)

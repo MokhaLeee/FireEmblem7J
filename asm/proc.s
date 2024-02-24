@@ -519,8 +519,8 @@ _0800465C:
 	.align 2, 0
 _0800466C: .4byte 0x02024E20
 
-	thumb_func_start sub_8004670
-sub_8004670: @ 0x08004670
+	thumb_func_start Proc_ForEach
+Proc_ForEach: @ 0x08004670
 	push {r4, r5, r6, r7, lr}
 	adds r7, r0, #0
 	adds r6, r1, #0
@@ -592,8 +592,8 @@ _080046DA:
 	.align 2, 0
 _080046E4: .4byte 0x02024E20
 
-	thumb_func_start sub_80046E8
-sub_80046E8: @ 0x080046E8
+	thumb_func_start Proc_UnblockEachMarked
+Proc_UnblockEachMarked: @ 0x080046E8
 	adds r3, r0, #0
 	movs r2, #0x3f
 	ldr r0, _0800470C @ =0x02024E20
@@ -617,8 +617,8 @@ _08004702:
 	.align 2, 0
 _0800470C: .4byte 0x02024E20
 
-	thumb_func_start sub_8004710
-sub_8004710: @ 0x08004710
+	thumb_func_start Proc_EndEachMarked
+Proc_EndEachMarked: @ 0x08004710
 	push {r4, r5, r6, lr}
 	adds r6, r0, #0
 	ldr r4, _08004738 @ =0x02024E20
@@ -642,51 +642,51 @@ _08004728:
 	.align 2, 0
 _08004738: .4byte 0x02024E20
 
-	thumb_func_start sub_800473C
-sub_800473C: @ 0x0800473C
+	thumb_func_start EndProc
+EndProc: @ 0x0800473C
 	push {lr}
 	bl Proc_End
 	pop {r0}
 	bx r0
 	.align 2, 0
 
-	thumb_func_start sub_8004748
-sub_8004748: @ 0x08004748
+	thumb_func_start Proc_EndEach
+Proc_EndEach: @ 0x08004748
 	push {lr}
-	ldr r1, _08004754 @ =sub_800473C
-	bl sub_8004670
+	ldr r1, _08004754 @ =EndProc
+	bl Proc_ForEach
 	pop {r0}
 	bx r0
 	.align 2, 0
-_08004754: .4byte sub_800473C
+_08004754: .4byte EndProc
 
-	thumb_func_start sub_8004758
-sub_8004758: @ 0x08004758
+	thumb_func_start ClearNativeCallback
+ClearNativeCallback: @ 0x08004758
 	push {lr}
 	bl Proc_Break
 	pop {r0}
 	bx r0
 	.align 2, 0
 
-	thumb_func_start sub_8004764
-sub_8004764: @ 0x08004764
+	thumb_func_start Proc_BreakEach
+Proc_BreakEach: @ 0x08004764
 	push {lr}
-	ldr r1, _08004770 @ =sub_8004758
-	bl sub_8004670
+	ldr r1, _08004770 @ =ClearNativeCallback
+	bl Proc_ForEach
 	pop {r0}
 	bx r0
 	.align 2, 0
-_08004770: .4byte sub_8004758
+_08004770: .4byte ClearNativeCallback
 
-	thumb_func_start sub_8004774
-sub_8004774: @ 0x08004774
+	thumb_func_start ForAllFollowingProcs
+ForAllFollowingProcs: @ 0x08004774
 	push {r4, r5, lr}
 	adds r4, r0, #0
 	adds r5, r1, #0
 	ldr r0, [r4, #0x20]
 	cmp r0, #0
 	beq _08004784
-	bl sub_8004774
+	bl ForAllFollowingProcs
 _08004784:
 	adds r0, r4, #0
 	bl _call_via_r5
@@ -694,7 +694,7 @@ _08004784:
 	cmp r0, #0
 	beq _08004796
 	adds r1, r5, #0
-	bl sub_8004774
+	bl ForAllFollowingProcs
 _08004796:
 	pop {r4, r5}
 	pop {r0}
@@ -710,7 +710,7 @@ sub_800479C: @ 0x0800479C
 	cmp r0, #0
 	beq _080047B2
 	adds r1, r5, #0
-	bl sub_8004774
+	bl ForAllFollowingProcs
 _080047B2:
 	pop {r4, r5}
 	pop {r0}
@@ -912,7 +912,7 @@ sub_80048F8: @ 0x080048F8
 	adds r4, r0, #0
 	ldr r0, [r4, #4]
 	ldr r0, [r0, #4]
-	bl sub_8004748
+	bl Proc_EndEach
 	ldr r0, [r4, #4]
 	adds r0, #8
 	str r0, [r4, #4]
@@ -928,7 +928,7 @@ sub_8004914: @ 0x08004914
 	adds r4, r0, #0
 	ldr r0, [r4, #4]
 	ldr r0, [r0, #4]
-	bl sub_8004764
+	bl Proc_BreakEach
 	ldr r0, [r4, #4]
 	adds r0, #8
 	str r0, [r4, #4]

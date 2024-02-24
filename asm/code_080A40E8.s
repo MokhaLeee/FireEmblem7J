@@ -3147,9 +3147,9 @@ sub_80A5980: @ 0x080A5980
 	ldrb r0, [r0]
 	bl sub_80A715C
 	movs r0, #0xc
-	bl sub_80046E8
+	bl Proc_UnblockEachMarked
 	movs r0, #0xd
-	bl sub_80046E8
+	bl Proc_UnblockEachMarked
 	movs r0, #3
 	bl EnableBgSync
 	adds r0, r4, #0
@@ -8841,7 +8841,7 @@ sub_80A86D4: @ 0x080A86D4
 	movs r3, #0x48
 	bl sub_8007A5C
 	adds r4, r0, #0
-	bl sub_80073AC
+	bl StartFaceFadeIn
 	adds r0, r4, #0
 	add sp, #0x10
 	pop {r4, r5}
@@ -10396,7 +10396,7 @@ sub_80A9338: @ 0x080A9338
 	movs r0, #0
 	str r0, [r4, #0x2c]
 	ldr r0, [r4, #0x3c]
-	bl sub_80073F4
+	bl StartFaceFadeOut
 	adds r1, r4, #0
 	adds r1, #0x41
 	ldrb r0, [r1]
@@ -10449,7 +10449,7 @@ sub_80A93A0: @ 0x080A93A0
 	movs r5, #0
 	str r5, [r4, #0x2c]
 	ldr r0, [r4, #0x3c]
-	bl sub_80073F4
+	bl StartFaceFadeOut
 	adds r1, r4, #0
 	adds r1, #0x41
 	ldrb r2, [r1]

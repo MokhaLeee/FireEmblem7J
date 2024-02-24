@@ -324,7 +324,7 @@ sub_804AC78: @ 0x0804AC78
 	push {lr}
 	ldr r0, _0804AC88 @ =gUnk_08C09BF4
 	ldr r1, _0804AC8C @ =sub_804AC0C
-	bl sub_8004670
+	bl Proc_ForEach
 	pop {r0}
 	bx r0
 	.align 2, 0

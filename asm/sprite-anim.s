@@ -488,7 +488,7 @@ _08012988:
 	adds r3, #1
 	add r3, sb
 	ldrb r3, [r3]
-	bl sub_801372C
+	bl Register2dChrMove
 	ldr r1, _08012A00 @ =gDispIo
 	movs r0, #0x40
 	ldrb r1, [r1]
@@ -745,7 +745,7 @@ EndSpriteAnimProc: @ 0x08012B8C
 EndEachSpriteAnimProc: @ 0x08012B98
 	push {lr}
 	ldr r0, _08012BA4 @ =gUnk_08C016FC
-	bl sub_8004748
+	bl Proc_EndEach
 	pop {r0}
 	bx r0
 	.align 2, 0

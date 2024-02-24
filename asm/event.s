@@ -21,7 +21,7 @@ _0800A51C: .4byte gUnk_08BFFE70
 sub_800A520: @ 0x0800A520
 	push {lr}
 	ldr r0, _0800A52C @ =gUnk_08BFFE70
-	bl sub_8004748
+	bl Proc_EndEach
 	pop {r0}
 	bx r0
 	.align 2, 0
@@ -1099,7 +1099,7 @@ _0800AD4C: .4byte gUnk_08BFFE90
 sub_800AD50: @ 0x0800AD50
 	push {lr}
 	ldr r0, _0800AD5C @ =gUnk_08BFFE90
-	bl sub_8004748
+	bl Proc_EndEach
 	pop {r0}
 	bx r0
 	.align 2, 0
@@ -1110,7 +1110,7 @@ sub_800AD60: @ 0x0800AD60
 	push {lr}
 	ldr r0, _0800AD70 @ =ProcScr_Event
 	ldr r1, _0800AD74 @ =sub_800AD78
-	bl sub_8004670
+	bl Proc_ForEach
 	pop {r0}
 	bx r0
 	.align 2, 0
@@ -1557,7 +1557,7 @@ sub_800B0D4: @ 0x0800B0D4
 	adds r4, r0, #0
 	bl sub_8014900
 	ldr r0, _0800B0FC @ =gUnk_08BFFD4C
-	bl sub_8004748
+	bl Proc_EndEach
 	adds r4, #0x4c
 	movs r1, #0
 	ldrsb r1, [r4, r1]
@@ -7495,7 +7495,7 @@ sub_800DC94: @ 0x0800DC94
 	cmp r0, #0
 	beq _0800DCB4
 	ldr r0, _0800DCB0 @ =gUnk_08C00C48
-	bl sub_8004748
+	bl Proc_EndEach
 	movs r0, #0
 	b _0800DCBE
 	.align 2, 0
@@ -7629,7 +7629,7 @@ sub_800DD70: @ 0x0800DD70
 sub_800DD90: @ 0x0800DD90
 	push {lr}
 	ldr r0, _0800DDA0 @ =gUnk_08C00C60
-	bl sub_8004748
+	bl Proc_EndEach
 	movs r0, #0
 	pop {r1}
 	bx r1
@@ -9595,9 +9595,9 @@ _0800EBD2:
 	cmp r0, #0
 	beq _0800EBFA
 	bl sub_80095E4
-	ldr r1, _0800EC04 @ =sub_80073F4
+	ldr r1, _0800EC04 @ =StartFaceFadeOut
 	adds r0, r5, #0
-	bl sub_8004670
+	bl Proc_ForEach
 	adds r1, r4, #0
 	adds r1, #0x50
 	movs r0, #8
@@ -9611,14 +9611,14 @@ _0800EBFA:
 	bx r0
 	.align 2, 0
 _0800EC00: .4byte ProcScr_Face
-_0800EC04: .4byte sub_80073F4
+_0800EC04: .4byte StartFaceFadeOut
 
 	thumb_func_start sub_800EC08
 sub_800EC08: @ 0x0800EC08
 	push {lr}
 	bl sub_80095E4
 	ldr r0, _0800EC20 @ =ProcScr_Face
-	bl sub_8004748
+	bl Proc_EndEach
 	bl InitFaces
 	bl sub_8007C64
 	pop {r0}
@@ -9667,11 +9667,11 @@ _0800EC54: .4byte ProcScr_Event
 sub_800EC58: @ 0x0800EC58
 	push {lr}
 	movs r0, #6
-	bl sub_8004710
+	bl Proc_EndEachMarked
 	movs r0, #7
-	bl sub_8004710
+	bl Proc_EndEachMarked
 	movs r0, #5
-	bl sub_8004710
+	bl Proc_EndEachMarked
 	bl MU_EndAll
 	pop {r0}
 	bx r0

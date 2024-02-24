@@ -1630,7 +1630,7 @@ sub_8005E48: @ 0x08005E48
 sub_8005E50: @ 0x08005E50
 	push {lr}
 	ldr r0, _08005E5C @ =gUnk_08BC05C4
-	bl sub_8004748
+	bl Proc_EndEach
 	pop {r0}
 	bx r0
 	.align 2, 0
@@ -1681,7 +1681,7 @@ _08005EA8: .4byte gUnk_08BC05D4
 sub_8005EAC: @ 0x08005EAC
 	push {lr}
 	ldr r0, _08005EB8 @ =gUnk_08BC05D4
-	bl sub_8004748
+	bl Proc_EndEach
 	pop {r0}
 	bx r0
 	.align 2, 0

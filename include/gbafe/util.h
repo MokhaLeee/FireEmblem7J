@@ -20,12 +20,12 @@ void Decompress(void const * src, void * dst);
 // ??? sub_80136D0
 // ??? sub_80136E8
 // ??? sub_8013718
-// ??? sub_801372C
+void Register2dChrMove(u8 const * img, u8 * vram, int width, int height);
 // ??? Copy2dChr
 // ??? sub_8013790
 // ??? sub_80137CC
 // ??? sub_80137F4
-// ??? sub_801383C
+void PutAppliedBitmap(u16 * tm, int tileref, int width, int height);
 // ??? sub_8013870
 // ??? sub_80138A0
 // ??? sub_80138A8
@@ -55,13 +55,23 @@ void WriteFadedPaletteFromArchive(int red, int green, int blue, u32 mask);
 // ??? sub_8013F68
 // ??? sub_8013FD0
 // ??? nullsub_35
-// ??? sub_8013FE8
-// ??? sub_8014004
-// ??? sub_8014020
+
+struct PalFadeSt {
+    /* 00 */ u16 from_colors[0x10];
+    /* 20 */ u16 const * to_colors;
+    /* 24 */ u16 * pal;
+    /* 28 */ u16 clock;
+    /* 2A */ u16 clock_end;
+    /* 2C */ u16 clock_stop;
+};
+
+void StartPalFadeToBlack(int palid, int duration, ProcPtr parent);
+void StartPalFadeToWhite(int palid, int duration, ProcPtr parent);
+struct PalFadeSt * StartPalFade(u16 const * colors, int pal, int duration, ProcPtr parent);
 // ??? sub_8014080
 // ??? sub_8014090
 // ??? sub_8014094
-// ??? sub_801417C
+void SetBlackPal(int palid);
 // ??? sub_801419C
 // ??? sub_80141BC
 // ??? sub_80141D4

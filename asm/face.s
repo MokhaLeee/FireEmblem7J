@@ -1,796 +1,8 @@
 	.include "macro.inc"
 	.syntax unified
 
-	thumb_func_start StartFaceChibiStr
-StartFaceChibiStr: @ 0x08006F8C
-	push {r4, r5, r6, r7, lr}
-	mov r7, sb
-	mov r6, r8
-	push {r6, r7}
-	mov r8, r0
-	mov sb, r1
-	adds r0, r2, #0
-	adds r6, r3, #0
-	ldr r4, [sp, #0x1c]
-	ldr r5, [sp, #0x20]
-	ldr r7, [sp, #0x24]
-	lsls r5, r5, #0x18
-	lsrs r5, r5, #0x18
-	adds r1, r6, #0
-	adds r2, r4, #0
-	bl UnpackFaceChibiSprGraphics
-	ldr r0, _08006FD4 @ =ProcScr_FaceChibiSpr
-	adds r1, r7, #0
-	bl Proc_Start
-	adds r1, r0, #0
-	mov r0, r8
-	strh r0, [r1, #0x34]
-	mov r0, sb
-	strh r0, [r1, #0x36]
-	movs r0, #0xf
-	ands r4, r0
-	lsls r4, r4, #0xc
-	adds r6, r6, r4
-	strh r6, [r1, #0x3c]
-	cmp r5, #0
-	beq _08006FDC
-	ldr r0, _08006FD8 @ =Sprite_FaceChibi_Flipped
-	b _08006FDE
-	.align 2, 0
-_08006FD4: .4byte ProcScr_FaceChibiSpr
-_08006FD8: .4byte Sprite_FaceChibi_Flipped
-_08006FDC:
-	ldr r0, _08006FEC @ =Sprite_FaceChibi
-_08006FDE:
-	str r0, [r1, #0x38]
-	pop {r3, r4}
-	mov r8, r3
-	mov sb, r4
-	pop {r4, r5, r6, r7}
-	pop {r0}
-	bx r0
-	.align 2, 0
-_08006FEC: .4byte Sprite_FaceChibi
-
-	thumb_func_start sub_8006FF0
-sub_8006FF0: @ 0x08006FF0
-	push {lr}
-	ldr r0, _08006FFC @ =ProcScr_FaceChibiSpr
-	bl sub_8004748
-	pop {r0}
-	bx r0
-	.align 2, 0
-_08006FFC: .4byte ProcScr_FaceChibiSpr
-
-	thumb_func_start sub_8007000
-sub_8007000: @ 0x08007000
-	push {r4, r5, r6, r7, lr}
-	adds r5, r0, #0
-	adds r7, r1, #0
-	ldrb r6, [r2, #0x14]
-	subs r6, #1
-	ldrb r4, [r2, #0x15]
-	ldr r1, _08007050 @ =gUnk_081911D4
-	lsls r2, r7, #0x10
-	lsrs r2, r2, #0x10
-	bl TmApplyTsa_thm
-	lsls r4, r4, #5
-	adds r4, r4, r6
-	lsls r4, r4, #1
-	adds r2, r4, r5
-	adds r0, r7, #0
-	adds r0, #0x1c
-	strh r0, [r2]
-	adds r0, #1
-	strh r0, [r2, #2]
-	adds r0, #1
-	strh r0, [r2, #4]
-	adds r0, #1
-	strh r0, [r2, #6]
-	adds r1, r2, #0
-	adds r1, #0x40
-	adds r0, #0x1d
-	strh r0, [r1]
-	adds r1, #2
-	adds r0, #1
-	strh r0, [r1]
-	adds r1, #2
-	adds r0, #1
-	strh r0, [r1]
-	adds r1, #2
-	adds r0, #1
-	strh r0, [r1]
-	pop {r4, r5, r6, r7}
-	pop {r0}
-	bx r0
-	.align 2, 0
-_08007050: .4byte gUnk_081911D4
-
-	thumb_func_start sub_8007054
-sub_8007054: @ 0x08007054
-	push {r4, r5, r6, r7, lr}
-	adds r5, r0, #0
-	adds r7, r1, #0
-	ldrb r6, [r2, #0x14]
-	subs r6, #1
-	ldrb r4, [r2, #0x15]
-	subs r4, #1
-	ldr r1, _080070A8 @ =gUnk_0819128C
-	lsls r2, r7, #0x10
-	lsrs r2, r2, #0x10
-	bl TmApplyTsa_thm
-	lsls r4, r4, #5
-	adds r4, r4, r6
-	lsls r4, r4, #1
-	adds r2, r4, r5
-	adds r0, r7, #0
-	adds r0, #0x1c
-	strh r0, [r2]
-	adds r0, #1
-	strh r0, [r2, #2]
-	adds r0, #1
-	strh r0, [r2, #4]
-	adds r0, #1
-	strh r0, [r2, #6]
-	adds r1, r2, #0
-	adds r1, #0x40
-	adds r0, #0x1d
-	strh r0, [r1]
-	adds r1, #2
-	adds r0, #1
-	strh r0, [r1]
-	adds r1, #2
-	adds r0, #1
-	strh r0, [r1]
-	adds r1, #2
-	adds r0, #1
-	strh r0, [r1]
-	pop {r4, r5, r6, r7}
-	pop {r0}
-	bx r0
-	.align 2, 0
-_080070A8: .4byte gUnk_0819128C
-
-	thumb_func_start ShouldFaceBeRaised
-ShouldFaceBeRaised: @ 0x080070AC
-	subs r0, #0x1c
-	cmp r0, #0x25
-	bhi _0800715C
-	lsls r0, r0, #2
-	ldr r1, _080070BC @ =_080070C0
-	adds r0, r0, r1
-	ldr r0, [r0]
-	mov pc, r0
-	.align 2, 0
-_080070BC: .4byte _080070C0
-_080070C0: @ jump table
-	.4byte _08007158 @ case 0
-	.4byte _0800715C @ case 1
-	.4byte _0800715C @ case 2
-	.4byte _0800715C @ case 3
-	.4byte _0800715C @ case 4
-	.4byte _0800715C @ case 5
-	.4byte _0800715C @ case 6
-	.4byte _0800715C @ case 7
-	.4byte _0800715C @ case 8
-	.4byte _0800715C @ case 9
-	.4byte _0800715C @ case 10
-	.4byte _0800715C @ case 11
-	.4byte _0800715C @ case 12
-	.4byte _0800715C @ case 13
-	.4byte _0800715C @ case 14
-	.4byte _0800715C @ case 15
-	.4byte _0800715C @ case 16
-	.4byte _0800715C @ case 17
-	.4byte _0800715C @ case 18
-	.4byte _0800715C @ case 19
-	.4byte _0800715C @ case 20
-	.4byte _0800715C @ case 21
-	.4byte _0800715C @ case 22
-	.4byte _08007158 @ case 23
-	.4byte _0800715C @ case 24
-	.4byte _0800715C @ case 25
-	.4byte _0800715C @ case 26
-	.4byte _0800715C @ case 27
-	.4byte _0800715C @ case 28
-	.4byte _08007158 @ case 29
-	.4byte _0800715C @ case 30
-	.4byte _0800715C @ case 31
-	.4byte _0800715C @ case 32
-	.4byte _0800715C @ case 33
-	.4byte _08007158 @ case 34
-	.4byte _08007158 @ case 35
-	.4byte _0800715C @ case 36
-	.4byte _08007158 @ case 37
-_08007158:
-	movs r0, #1
-	b _0800715E
-_0800715C:
-	movs r0, #0
-_0800715E:
-	bx lr
-
-	thumb_func_start PutFace80x72_Core
-PutFace80x72_Core: @ 0x08007160
-	push {r4, r5, r6, r7, lr}
-	mov r7, sb
-	mov r6, r8
-	push {r6, r7}
-	mov sb, r0
-	adds r5, r1, #0
-	adds r6, r2, #0
-	adds r7, r3, #0
-	cmp r5, #0
-	beq _08007210
-	adds r0, r5, #0
-	bl GetFaceInfo
-	adds r4, r0, #0
-	ldr r0, [r4, #8]
-	lsls r1, r7, #5
-	mov r8, r1
-	movs r2, #0x20
-	bl ApplyPaletteExt
-	ldr r0, [r4]
-	cmp r0, #0
-	beq _080071F0
-	lsls r1, r6, #5
-	movs r2, #0xc0
-	lsls r2, r2, #0x13
-	adds r1, r1, r2
-	bl Decompress
-	ldr r0, [r4, #8]
-	mov r1, r8
-	movs r2, #0x20
-	bl ApplyPaletteExt
-	adds r0, r5, #0
-	bl ShouldFaceBeRaised
-	lsls r0, r0, #0x18
-	cmp r0, #0
-	beq _080071C8
-	lsls r1, r7, #0xc
-	ldr r0, _080071C4 @ =0x000003FF
-	ands r0, r6
-	adds r1, r1, r0
-	mov r0, sb
-	adds r2, r4, #0
-	bl sub_8007054
-	b _080071D8
-	.align 2, 0
-_080071C4: .4byte 0x000003FF
-_080071C8:
-	lsls r1, r7, #0xc
-	ldr r0, _080071EC @ =0x000003FF
-	ands r0, r6
-	adds r1, r1, r0
-	mov r0, sb
-	adds r2, r4, #0
-	bl sub_8007000
-_080071D8:
-	movs r2, #0
-	mov r0, sb
-	movs r1, #5
-_080071DE:
-	strh r2, [r0]
-	strh r2, [r0, #0x12]
-	adds r0, #0x40
-	subs r1, #1
-	cmp r1, #0
-	bge _080071DE
-	b _08007210
-	.align 2, 0
-_080071EC: .4byte 0x000003FF
-_080071F0:
-	ldr r0, [r4, #0x10]
-	lsls r1, r6, #5
-	movs r2, #0xc0
-	lsls r2, r2, #0x13
-	adds r1, r1, r2
-	bl Decompress
-	lsls r1, r7, #0xc
-	ldr r0, _0800721C @ =0x000003FF
-	ands r0, r6
-	adds r1, r1, r0
-	mov r0, sb
-	movs r2, #0xa
-	movs r3, #9
-	bl sub_801383C
-_08007210:
-	pop {r3, r4}
-	mov r8, r3
-	mov sb, r4
-	pop {r4, r5, r6, r7}
-	pop {r0}
-	bx r0
-	.align 2, 0
-_0800721C: .4byte 0x000003FF
-
-	thumb_func_start sub_8007220
-sub_8007220: @ 0x08007220
-	movs r2, #0
-	str r2, [r0, #0x2c]
-	movs r1, #0x78
-	str r1, [r0, #0x38]
-	strh r2, [r0, #0x32]
-	bx lr
-
-	thumb_func_start sub_800722C
-sub_800722C: @ 0x0800722C
-	push {r4, lr}
-	adds r4, r0, #0
-	ldr r0, [r4, #0x38]
-	subs r0, #1
-	str r0, [r4, #0x38]
-	cmp r0, #0
-	bge _0800724C
-	adds r0, r4, #0
-	bl FaceBlinkProc_GenBlinkInterval
-	str r0, [r4, #0x38]
-	movs r0, #0
-	strh r0, [r4, #0x34]
-	adds r0, r4, #0
-	bl Proc_Break
-_0800724C:
-	pop {r4}
-	pop {r0}
-	bx r0
-	.align 2, 0
-
-	thumb_func_start sub_8007254
-sub_8007254: @ 0x08007254
-	push {r4, r5, r6, r7, lr}
-	adds r4, r0, #0
-	adds r0, #0x42
-	ldrh r0, [r0]
-	lsls r2, r0, #0xc
-	adds r1, r4, #0
-	adds r1, #0x40
-	ldr r0, _0800728C @ =0x000003FF
-	ldrh r1, [r1]
-	ands r0, r1
-	adds r7, r2, r0
-	adds r0, r4, #0
-	adds r0, #0x44
-	ldrh r0, [r0]
-	bl GetFaceInfo
-	adds r5, r0, #0
-	movs r6, #0
-	movs r1, #0x34
-	ldrsh r0, [r4, r1]
-	cmp r0, #9
-	bhi _080072F8
-	lsls r0, r0, #2
-	ldr r1, _08007290 @ =_08007294
-	adds r0, r0, r1
-	ldr r0, [r0]
-	mov pc, r0
-	.align 2, 0
-_0800728C: .4byte 0x000003FF
-_08007290: .4byte _08007294
-_08007294: @ jump table
-	.4byte _080072C0 @ case 0
-	.4byte _08007348 @ case 1
-	.4byte _08007348 @ case 2
-	.4byte _080072BC @ case 3
-	.4byte _08007348 @ case 4
-	.4byte _08007348 @ case 5
-	.4byte _080072C0 @ case 6
-	.4byte _08007348 @ case 7
-	.4byte _08007348 @ case 8
-	.4byte _080072C4 @ case 9
-_080072BC:
-	movs r6, #0x58
-	b _080072F8
-_080072C0:
-	movs r6, #0x18
-	b _080072F8
-_080072C4:
-	ldr r0, [r4, #0x3c]
-	adds r1, r4, #0
-	adds r1, #0x42
-	ldrh r1, [r1]
-	lsls r1, r1, #0xc
-	adds r3, r4, #0
-	adds r3, #0x40
-	ldr r2, _080072F4 @ =0x000003FF
-	ldrh r3, [r3]
-	ands r2, r3
-	adds r1, r1, r2
-	adds r2, r5, #0
-	bl sub_8007000
-	ldr r0, [r4, #0x3c]
-	bl GetBgFromPtr
-	bl EnableBgSyncById
-	adds r0, r4, #0
-	bl Proc_Break
-	b _0800734E
-	.align 2, 0
-_080072F4: .4byte 0x000003FF
-_080072F8:
-	adds r0, r4, #0
-	adds r0, #0x44
-	ldrh r0, [r0]
-	bl GetFaceInfo
-	adds r5, r0, #0
-	ldrb r3, [r5, #0x17]
-	lsls r1, r3, #6
-	ldr r0, [r4, #0x3c]
-	adds r0, r0, r1
-	ldrb r5, [r5, #0x16]
-	lsls r1, r5, #1
-	adds r0, r0, r1
-	mov ip, r0
-	subs r0, #2
-	adds r2, r7, r6
-	strh r2, [r0]
-	adds r1, r2, #1
-	strh r1, [r0, #2]
-	adds r1, r2, #2
-	strh r1, [r0, #4]
-	adds r1, r2, #3
-	strh r1, [r0, #6]
-	adds r1, #0x1d
-	mov r3, ip
-	strh r1, [r3, #0x3e]
-	adds r3, #0x40
-	adds r1, #1
-	strh r1, [r3]
-	adds r3, #2
-	adds r1, #1
-	strh r1, [r3]
-	mov r1, ip
-	adds r1, #0x44
-	adds r2, #0x23
-	strh r2, [r1]
-	bl GetBgFromPtr
-	bl EnableBgSyncById
-_08007348:
-	ldrh r0, [r4, #0x34]
-	adds r0, #1
-	strh r0, [r4, #0x34]
-_0800734E:
-	pop {r4, r5, r6, r7}
-	pop {r0}
-	bx r0
-
-	thumb_func_start sub_8007354
-sub_8007354: @ 0x08007354
-	push {r4, r5, r6, lr}
-	mov r6, r8
-	push {r6}
-	adds r4, r1, #0
-	mov r8, r2
-	adds r5, r3, #0
-	ldr r6, [sp, #0x14]
-	ldr r0, _08007384 @ =gUnk_08BFFA20
-	bl sub_8004748
-	adds r0, r4, #0
-	mov r1, r8
-	adds r2, r5, #0
-	adds r3, r6, #0
-	bl PutFace80x72_Core
-	mov r0, r8
-	bl GetFaceInfo
-	pop {r3}
-	mov r8, r3
-	pop {r4, r5, r6}
-	pop {r0}
-	bx r0
-	.align 2, 0
-_08007384: .4byte gUnk_08BFFA20
-
-	thumb_func_start sub_8007388
-sub_8007388: @ 0x08007388
-	push {lr}
-	ldr r0, [r0, #0x54]
-	bl EndFace
-	pop {r0}
-	bx r0
-
-	thumb_func_start sub_8007394
-sub_8007394: @ 0x08007394
-	push {r4, lr}
-	adds r4, r0, #0
-	ldr r0, _080073A8 @ =gUnk_08BFFA50
-	movs r1, #3
-	bl Proc_Start
-	str r4, [r0, #0x54]
-	pop {r4}
-	pop {r0}
-	bx r0
-	.align 2, 0
-_080073A8: .4byte gUnk_08BFFA50
-
-	thumb_func_start sub_80073AC
-sub_80073AC: @ 0x080073AC
-	push {r4, r5, r6, lr}
-	mov r6, r8
-	push {r6}
-	adds r5, r0, #0
-	ldrh r0, [r5, #0x3e]
-	bl GetFaceInfo
-	mov r8, r0
-	ldr r6, _080073F0 @ =gFaceConfig
-	adds r4, r5, #0
-	adds r4, #0x40
-	ldrb r1, [r4]
-	lsls r0, r1, #3
-	adds r0, r0, r6
-	ldrh r0, [r0, #4]
-	adds r0, #0x10
-	bl sub_801417C
-	mov r1, r8
-	ldr r0, [r1, #8]
-	ldrb r4, [r4]
-	lsls r1, r4, #3
-	adds r1, r1, r6
-	ldrh r1, [r1, #4]
-	adds r1, #0x10
-	movs r2, #0xc
-	adds r3, r5, #0
-	bl sub_8014020
-	pop {r3}
-	mov r8, r3
-	pop {r4, r5, r6}
-	pop {r0}
-	bx r0
-	.align 2, 0
-_080073F0: .4byte gFaceConfig
-
-	thumb_func_start sub_80073F4
-sub_80073F4: @ 0x080073F4
-	push {r4, lr}
-	adds r4, r0, #0
-	ldrh r0, [r4, #0x3e]
-	bl GetFaceInfo
-	ldr r1, _08007424 @ =gFaceConfig
-	adds r0, r4, #0
-	adds r0, #0x40
-	ldrb r0, [r0]
-	lsls r0, r0, #3
-	adds r0, r0, r1
-	ldrh r0, [r0, #4]
-	adds r0, #0x10
-	movs r1, #0xc
-	adds r2, r4, #0
-	bl sub_8013FE8
-	adds r0, r4, #0
-	bl sub_8007394
-	pop {r4}
-	pop {r0}
-	bx r0
-	.align 2, 0
-_08007424: .4byte gFaceConfig
-
-	thumb_func_start GetFactionFaceImg
-GetFactionFaceImg: @ 0x08007428
-	push {r4, r5, lr}
-	sub sp, #0x1c
-	mov r2, sp
-	ldr r1, _08007450 @ =gUnk_0818F904
-	ldm r1!, {r3, r4, r5}
-	stm r2!, {r3, r4, r5}
-	ldm r1!, {r3, r4, r5}
-	stm r2!, {r3, r4, r5}
-	ldr r1, [r1]
-	str r1, [r2]
-	ldr r1, _08007454 @ =0xFFFF8100
-	adds r0, r0, r1
-	lsls r0, r0, #2
-	add r0, sp
-	ldr r0, [r0]
-	add sp, #0x1c
-	pop {r4, r5}
-	pop {r1}
-	bx r1
-	.align 2, 0
-_08007450: .4byte gUnk_0818F904
-_08007454: .4byte 0xFFFF8100
-
-	thumb_func_start ApplyFactionFacePal
-ApplyFactionFacePal: @ 0x08007458
-	push {r4, r5, r6, lr}
-	sub sp, #0x1c
-	mov r3, sp
-	ldr r2, _08007488 @ =gUnk_0818F920
-	ldm r2!, {r4, r5, r6}
-	stm r3!, {r4, r5, r6}
-	ldm r2!, {r4, r5, r6}
-	stm r3!, {r4, r5, r6}
-	ldr r2, [r2]
-	str r2, [r3]
-	ldr r2, _0800748C @ =0xFFFF8100
-	adds r0, r0, r2
-	lsls r0, r0, #2
-	add r0, sp
-	ldr r0, [r0]
-	lsls r1, r1, #5
-	movs r2, #0x20
-	bl ApplyPaletteExt
-	add sp, #0x1c
-	pop {r4, r5, r6}
-	pop {r0}
-	bx r0
-	.align 2, 0
-_08007488: .4byte gUnk_0818F920
-_0800748C: .4byte 0xFFFF8100
-
-	thumb_func_start sub_8007490
-sub_8007490: @ 0x08007490
-	ldr r1, [r0, #0x14]
-	str r1, [r0, #0x2c]
-	movs r1, #0
-	strh r1, [r0, #0x32]
-	bx lr
-	.align 2, 0
-
-	thumb_func_start sub_800749C
-sub_800749C: @ 0x0800749C
-	push {r4, r5, r6, lr}
-	sub sp, #4
-	adds r4, r0, #0
-	ldr r0, [r4, #0x2c]
-	bl GetFaceDisp
-	movs r1, #0x30
-	ands r1, r0
-	cmp r1, #0
-	bne _080074F0
-	ldr r0, [r4, #0x2c]
-	bl GetFaceDisp
-	movs r1, #8
-	ands r1, r0
-	movs r3, #0
-	cmp r1, #0
-	bne _080074C2
-	movs r3, #0x18
-_080074C2:
-	adds r3, #0x10
-	ldr r2, [r4, #0x2c]
-	ldr r0, [r2, #0x2c]
-	lsls r1, r3, #5
-	ldr r0, [r0, #0xc]
-	adds r0, r0, r1
-	ldrh r1, [r2, #0x3c]
-	adds r1, #0x1c
-	ldr r2, _080074E8 @ =0x000003FF
-	ands r1, r2
-	lsls r1, r1, #5
-	ldr r2, _080074EC @ =0x06010000
-	adds r1, r1, r2
-	movs r2, #4
-	movs r3, #2
-	bl sub_801372C
-	b _08007560
-	.align 2, 0
-_080074E8: .4byte 0x000003FF
-_080074EC: .4byte 0x06010000
-_080074F0:
-	ldrh r0, [r4, #0x32]
-	subs r0, #1
-	strh r0, [r4, #0x32]
-	lsls r0, r0, #0x10
-	cmp r0, #0
-	bge _08007560
-	ldr r0, [r4, #0x2c]
-	bl GetFaceDisp
-	movs r1, #8
-	ands r1, r0
-	movs r5, #0
-	cmp r1, #0
-	bne _0800750E
-	movs r5, #0x18
-_0800750E:
-	bl RandNextB
-	lsrs r0, r0, #0x10
-	movs r1, #7
-	ands r0, r1
-	adds r0, #1
-	strh r0, [r4, #0x32]
-	ldrh r0, [r4, #0x30]
-	adds r0, #1
-	movs r1, #3
-	ands r0, r1
-	strh r0, [r4, #0x30]
-	movs r1, #0x30
-	ldrsh r0, [r4, r1]
-	cmp r0, #1
-	beq _0800753A
-	cmp r0, #1
-	ble _08007540
-	cmp r0, #2
-	beq _0800753E
-	cmp r0, #3
-	bne _08007540
-_0800753A:
-	adds r5, #8
-	b _08007540
-_0800753E:
-	adds r5, #0x10
-_08007540:
-	ldr r2, [r4, #0x2c]
-	ldr r0, [r2, #0x2c]
-	lsls r1, r5, #5
-	ldr r0, [r0, #0xc]
-	adds r0, r0, r1
-	ldrh r1, [r2, #0x3c]
-	adds r1, #0x1c
-	ldr r2, _080075E0 @ =0x000003FF
-	ands r1, r2
-	lsls r1, r1, #5
-	ldr r2, _080075E4 @ =0x06010000
-	adds r1, r1, r2
-	movs r2, #4
-	movs r3, #2
-	bl sub_801372C
-_08007560:
-	ldr r0, [r4, #0x2c]
-	ldr r2, [r0, #0x2c]
-	movs r1, #4
-	ldrb r2, [r2, #0x14]
-	subs r5, r1, r2
-	bl GetFaceDisp
-	movs r6, #1
-	ands r0, r6
-	cmp r0, #0
-	bne _08007578
-	rsbs r5, r5, #0
-_08007578:
-	lsls r1, r5, #3
-	ldr r0, [r4, #0x2c]
-	movs r3, #0x34
-	ldrsh r2, [r0, r3]
-	adds r1, r1, r2
-	adds r5, r1, #0
-	subs r5, #0x10
-	ldr r1, _080075E8 @ =0x000001FF
-	ands r5, r1
-	bl GetFaceDisp
-	ands r0, r6
-	cmp r0, #0
-	beq _0800759A
-	movs r0, #0x80
-	lsls r0, r0, #5
-	adds r5, r5, r0
-_0800759A:
-	ldr r0, [r4, #0x2c]
-	bl GetFaceDisp
-	adds r2, r0, #0
-	movs r0, #0x80
-	lsls r0, r0, #3
-	ands r2, r0
-	rsbs r2, r2, #0
-	asrs r2, r2, #0x1f
-	ands r2, r0
-	ldr r4, [r4, #0x2c]
-	movs r1, #0x36
-	ldrsh r0, [r4, r1]
-	ldr r1, [r4, #0x2c]
-	ldrb r1, [r1, #0x15]
-	lsls r1, r1, #3
-	adds r0, r0, r1
-	movs r1, #0xff
-	ands r0, r1
-	adds r2, r2, r0
-	adds r0, r4, #0
-	adds r0, #0x41
-	ldrb r0, [r0]
-	ldr r3, _080075EC @ =Sprite_64x32
-	ldrh r1, [r4, #0x3c]
-	adds r1, #0x1c
-	str r1, [sp]
-	adds r1, r5, #0
-	bl PutSpriteExt
-	add sp, #4
-	pop {r4, r5, r6}
-	pop {r0}
-	bx r0
-	.align 2, 0
-_080075E0: .4byte 0x000003FF
-_080075E4: .4byte 0x06010000
-_080075E8: .4byte 0x000001FF
-_080075EC: .4byte Sprite_64x32
-
-	thumb_func_start sub_80075F0
-sub_80075F0: @ 0x080075F0
+	thumb_func_start PutFaceMouthSprite
+PutFaceMouthSprite: @ 0x080075F0
 	push {r4, r5, r6, r7, lr}
 	mov r7, sb
 	mov r6, r8
@@ -927,8 +139,8 @@ _080076E6:
 	.align 2, 0
 _080076F4: .4byte Sprite_64x32
 
-	thumb_func_start sub_80076F8
-sub_80076F8: @ 0x080076F8
+	thumb_func_start FaceEye_80076F8
+FaceEye_80076F8: @ 0x080076F8
 	push {r4, r5, lr}
 	adds r5, r0, #0
 	ldr r0, [r5, #0x14]
@@ -938,7 +150,7 @@ sub_80076F8: @ 0x080076F8
 	movs r4, #0
 	strh r0, [r5, #0x30]
 	adds r0, r5, #0
-	bl FaceBlinkProc_GenBlinkInterval
+	bl FaceFmtProc_GenBlinkInterval
 	str r0, [r5, #0x38]
 	strh r4, [r5, #0x32]
 	movs r0, #0x30
@@ -962,8 +174,8 @@ _08007730:
 	.align 2, 0
 _08007738: .4byte 0x7FFFFFFF
 
-	thumb_func_start sub_800773C
-sub_800773C: @ 0x0800773C
+	thumb_func_start FaceEye_800773C
+FaceEye_800773C: @ 0x0800773C
 	push {r4, r5, lr}
 	adds r4, r0, #0
 	ldr r0, [r4, #0x38]
@@ -981,7 +193,7 @@ _08007758:
 	cmp r0, #0
 	bge _0800776E
 	adds r0, r4, #0
-	bl FaceBlinkProc_GenBlinkInterval
+	bl FaceFmtProc_GenBlinkInterval
 	str r0, [r4, #0x38]
 	strh r5, [r4, #0x34]
 	adds r0, r4, #0
@@ -992,8 +204,8 @@ _0800776E:
 	pop {r0}
 	bx r0
 
-	thumb_func_start sub_8007774
-sub_8007774: @ 0x08007774
+	thumb_func_start FaceEye_8007774
+FaceEye_8007774: @ 0x08007774
 	push {r4, r5, lr}
 	adds r4, r0, #0
 	movs r5, #2
@@ -1033,7 +245,7 @@ _080077C4:
 _080077CC:
 	adds r0, r4, #0
 	adds r1, r5, #0
-	bl sub_80075F0
+	bl PutFaceMouthSprite
 	ldrh r0, [r4, #0x34]
 	adds r0, #1
 	strh r0, [r4, #0x34]
@@ -1041,15 +253,15 @@ _080077CC:
 	pop {r0}
 	bx r0
 
-	thumb_func_start sub_80077E0
-sub_80077E0: @ 0x080077E0
+	thumb_func_start FaceEye_80077E0
+FaceEye_80077E0: @ 0x080077E0
 	movs r1, #0
 	strh r1, [r0, #0x34]
 	bx lr
 	.align 2, 0
 
-	thumb_func_start sub_80077E8
-sub_80077E8: @ 0x080077E8
+	thumb_func_start FaceEye_80077E8
+FaceEye_80077E8: @ 0x080077E8
 	push {r4, lr}
 	adds r4, r0, #0
 	movs r1, #0x34
@@ -1057,12 +269,12 @@ sub_80077E8: @ 0x080077E8
 	cmp r0, #5
 	bgt _080077FC
 	adds r0, r4, #0
-	bl sub_8007774
+	bl FaceEye_8007774
 	b _08007814
 _080077FC:
 	adds r0, r4, #0
 	movs r1, #0
-	bl sub_80075F0
+	bl PutFaceMouthSprite
 	movs r1, #0x32
 	ldrsh r0, [r4, r1]
 	cmp r0, #0
@@ -1076,15 +288,15 @@ _08007814:
 	bx r0
 	.align 2, 0
 
-	thumb_func_start sub_800781C
-sub_800781C: @ 0x0800781C
+	thumb_func_start FaceEye_800781C
+FaceEye_800781C: @ 0x0800781C
 	movs r1, #0
 	strh r1, [r0, #0x34]
 	bx lr
 	.align 2, 0
 
-	thumb_func_start sub_8007824
-sub_8007824: @ 0x08007824
+	thumb_func_start FaceEye_8007824
+FaceEye_8007824: @ 0x08007824
 	push {r4, lr}
 	adds r4, r0, #0
 	movs r1, #0x34
@@ -1092,12 +304,12 @@ sub_8007824: @ 0x08007824
 	cmp r0, #2
 	bgt _08007838
 	adds r0, r4, #0
-	bl sub_8007774
+	bl FaceEye_8007774
 	b _08007850
 _08007838:
 	adds r0, r4, #0
 	movs r1, #1
-	bl sub_80075F0
+	bl PutFaceMouthSprite
 	movs r1, #0x32
 	ldrsh r0, [r4, r1]
 	cmp r0, #0
@@ -1111,15 +323,15 @@ _08007850:
 	bx r0
 	.align 2, 0
 
-	thumb_func_start sub_8007858
-sub_8007858: @ 0x08007858
+	thumb_func_start FaceEye_8007858
+FaceEye_8007858: @ 0x08007858
 	movs r1, #0
 	strh r1, [r0, #0x34]
 	bx lr
 	.align 2, 0
 
-	thumb_func_start sub_8007860
-sub_8007860: @ 0x08007860
+	thumb_func_start FaceEye_8007860
+FaceEye_8007860: @ 0x08007860
 	push {r4, r5, lr}
 	adds r4, r0, #0
 	movs r5, #2
@@ -1162,7 +374,7 @@ _080078BC:
 	adds r1, r5, #0
 	adds r1, #0x80
 	adds r0, r4, #0
-	bl sub_80075F0
+	bl PutFaceMouthSprite
 	ldrh r0, [r4, #0x34]
 	adds r0, #1
 	strh r0, [r4, #0x34]
@@ -1183,7 +395,7 @@ _080078E0:
 	ldr r4, [r2, #0x48]
 	strh r1, [r4, #0x30]
 	adds r0, r4, #0
-	bl FaceBlinkProc_GenBlinkInterval
+	bl FaceFmtProc_GenBlinkInterval
 	str r0, [r4, #0x38]
 	pop {r4}
 	pop {r0}
@@ -1203,8 +415,8 @@ SetFaceBlinkControlById: @ 0x080078F4
 	.align 2, 0
 _08007908: .4byte gFaces
 
-	thumb_func_start FaceBlinkProc_GenBlinkInterval
-FaceBlinkProc_GenBlinkInterval: @ 0x0800790C
+	thumb_func_start FaceFmtProc_GenBlinkInterval
+FaceFmtProc_GenBlinkInterval: @ 0x0800790C
 	push {r4, lr}
 	adds r4, r0, #0
 	bl RandNextB
@@ -1600,70 +812,3 @@ sub_8007BB8: @ 0x08007BB8
 	.align 2, 0
 _08007C08: .4byte gFaceConfig
 _08007C0C: .4byte 0x06010000
-
-	thumb_func_start sub_8007C10
-sub_8007C10: @ 0x08007C10
-	push {r4, lr}
-	adds r4, r0, #0
-	ldr r0, [r4, #0x2c]
-	ldr r1, [r0, #0x48]
-	cmp r1, #0
-	beq _08007C34
-	ldr r0, [r4, #0x30]
-	ldrb r0, [r0, #0x18]
-	strh r0, [r1, #0x30]
-	ldr r0, [r4, #0x2c]
-	ldr r0, [r0, #0x48]
-	movs r1, #0
-	bl Proc_Goto
-	ldr r0, [r4, #0x2c]
-	ldr r0, [r0, #0x48]
-	bl sub_8091628
-_08007C34:
-	ldr r0, [r4, #0x2c]
-	ldr r0, [r0, #0x44]
-	cmp r0, #0
-	beq _08007C40
-	bl sub_8091628
-_08007C40:
-	pop {r4}
-	pop {r0}
-	bx r0
-	.align 2, 0
-
-	thumb_func_start sub_8007C48
-sub_8007C48: @ 0x08007C48
-	push {r4, r5, lr}
-	adds r4, r0, #0
-	adds r5, r1, #0
-	ldr r0, _08007C60 @ =gUnk_08BFFB30
-	adds r1, r4, #0
-	bl Proc_Start
-	str r4, [r0, #0x2c]
-	str r5, [r0, #0x34]
-	pop {r4, r5}
-	pop {r0}
-	bx r0
-	.align 2, 0
-_08007C60: .4byte gUnk_08BFFB30
-
-	thumb_func_start sub_8007C64
-sub_8007C64: @ 0x08007C64
-	push {r4, lr}
-	movs r2, #0
-	ldr r4, _08007C84 @ =gUnk_08BFFB68
-	movs r3, #0
-_08007C6C:
-	ldr r0, [r4]
-	lsls r1, r2, #2
-	adds r0, #0x18
-	adds r0, r0, r1
-	str r3, [r0]
-	adds r2, #1
-	cmp r2, #7
-	ble _08007C6C
-	pop {r4}
-	pop {r0}
-	bx r0
-	.align 2, 0
-_08007C84: .4byte gUnk_08BFFB68

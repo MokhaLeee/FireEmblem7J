@@ -1705,7 +1705,7 @@ sub_80040F8: @ 0x080040F8
 	mov r7, sp
 	ldr r1, _0800410C @ =gUnk_08BBFCD8
 	adds r0, r1, #0
-	bl sub_8004748
+	bl Proc_EndEach
 	pop {r7}
 	pop {r0}
 	bx r0

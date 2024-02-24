@@ -47,7 +47,7 @@ _080219F4: .4byte 0x00000717
 sub_80219F8: @ 0x080219F8
 	push {lr}
 	ldr r0, _08021A08 @ =gUnk_08C02630
-	bl sub_8004748
+	bl Proc_EndEach
 	movs r0, #0x17
 	pop {r1}
 	bx r1
@@ -220,7 +220,7 @@ sub_8021B28: @ 0x08021B28
 	movs r4, #0x11
 	ldrsb r4, [r0, r4]
 	ldr r0, _08021B84 @ =ProcScr_CamMove
-	bl sub_8004748
+	bl Proc_EndEach
 	lsls r0, r4, #4
 	bl sub_8015D54
 	lsls r0, r0, #0x10
@@ -996,7 +996,7 @@ sub_802216C: @ 0x0802216C
 	strb r0, [r2, #0x15]
 _0802218C:
 	ldr r0, _0802219C @ =gUnk_08C06030
-	bl sub_8004748
+	bl Proc_EndEach
 	movs r0, #0x17
 	pop {r1}
 	bx r1

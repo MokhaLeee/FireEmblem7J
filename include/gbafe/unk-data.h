@@ -54,8 +54,8 @@ extern u16 Pal_Text[];
 // ??? gUnk_08190BFC
 // ??? gUnk_08191054
 // ??? gUnk_08191074
-// ??? gUnk_081911D4
-// ??? gUnk_0819128C
+extern const u8 Tsa_Unk_081911D4[];
+extern const u8 Tsa_Unk_0819128C[];
 // ??? gUnk_08191410
 // ??? gUnk_08191700
 // ??? gUnk_08191720
@@ -1357,6 +1357,7 @@ extern u8 Img_SysBrownBox[];
 // ??? gUnk_08BDC134
 // ??? gUnk_08BDC1E0
 
+/* sprite.h */
 /* face.h */
 
 // ??? gUnk_08BFFB20

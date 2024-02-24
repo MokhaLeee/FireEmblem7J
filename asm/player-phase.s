@@ -2093,7 +2093,7 @@ _0801D6D0:
 sub_801D6D8: @ 0x0801D6D8
 	push {lr}
 	ldr r0, _0801D6E4 @ =gUnk_08C02870
-	bl sub_8004748
+	bl Proc_EndEach
 	pop {r0}
 	bx r0
 	.align 2, 0

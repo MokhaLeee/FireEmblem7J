@@ -1,33 +1,5 @@
 	.section .data
 
-	.global ProcScr_FaceChibiSpr
-ProcScr_FaceChibiSpr:	@ 0x08BFF9F4
-	.incbin "FireEmblem7J.base.gba", 0xBFF9F4, 0xBFFA04 - 0xBFF9F4
-
-	.global Sprite_FaceChibi
-Sprite_FaceChibi:	@ 0x08BFFA04
-	.incbin "FireEmblem7J.base.gba", 0xBFFA04, 0xBFFA12 - 0xBFFA04
-
-	.global Sprite_FaceChibi_Flipped
-Sprite_FaceChibi_Flipped:	@ 0x08BFFA12
-	.incbin "FireEmblem7J.base.gba", 0xBFFA12, 0xBFFA20 - 0xBFFA12
-
-	.global gUnk_08BFFA20
-gUnk_08BFFA20:	@ 0x08BFFA20
-	.incbin "FireEmblem7J.base.gba", 0xBFFA20, 0xBFFA50 - 0xBFFA20
-
-	.global gUnk_08BFFA50
-gUnk_08BFFA50:	@ 0x08BFFA50
-	.incbin "FireEmblem7J.base.gba", 0xBFFA50, 0xBFFA68 - 0xBFFA50
-
-	.global ProcScr_FaceMouth
-ProcScr_FaceMouth:	@ 0x08BFFA68
-	.incbin "FireEmblem7J.base.gba", 0xBFFA68, 0xBFFA80 - 0xBFFA68
-
-	.global ProcScr_FaceEye
-ProcScr_FaceEye:	@ 0x08BFFA80
-	.incbin "FireEmblem7J.base.gba", 0xBFFA80, 0xBFFB20 - 0xBFFA80
-
 	.global gUnk_08BFFB20
 gUnk_08BFFB20:	@ 0x08BFFB20
 	.incbin "FireEmblem7J.base.gba", 0xBFFB20, 0xBFFB30 - 0xBFFB20
