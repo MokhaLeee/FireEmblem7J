@@ -18,13 +18,13 @@ sub_8007C10: @ 0x08007C10
 	bl Proc_Goto
 	ldr r0, [r4, #0x2c]
 	ldr r0, [r0, #0x48]
-	bl sub_8091628
+	bl TryUnlockProc
 _08007C34:
 	ldr r0, [r4, #0x2c]
 	ldr r0, [r0, #0x44]
 	cmp r0, #0
 	beq _08007C40
-	bl sub_8091628
+	bl TryUnlockProc
 _08007C40:
 	pop {r4}
 	pop {r0}

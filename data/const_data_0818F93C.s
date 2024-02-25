@@ -412,12 +412,12 @@ gUnk_081BD514:	@ 0x081BD514
 gUnk_081BD534:	@ 0x081BD534
 	.incbin "FireEmblem7J.base.gba", 0x1BD534, 0x1BD6C4 - 0x1BD534
 
-	.global gUnk_081BD6C4
-gUnk_081BD6C4:	@ 0x081BD6C4
+	.global Pal_QuintessenceFx
+Pal_QuintessenceFx:	@ 0x081BD6C4
 	.incbin "FireEmblem7J.base.gba", 0x1BD6C4, 0x1BD6E4 - 0x1BD6C4
 
-	.global gUnk_081BD6E4
-gUnk_081BD6E4:	@ 0x081BD6E4
+	.global Tsa_QuintessenceFx
+Tsa_QuintessenceFx:	@ 0x081BD6E4
 	.incbin "FireEmblem7J.base.gba", 0x1BD6E4, 0x1BDEE8 - 0x1BD6E4
 
 	.global gUnk_081BDEE8

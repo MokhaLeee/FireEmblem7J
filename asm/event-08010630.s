@@ -2262,7 +2262,7 @@ sub_80117DC: @ 0x080117DC
 	adds r1, r2, #0
 	orrs r0, r1
 	strh r0, [r6, #0x3c]
-	bl sub_807702C
+	bl InitScanlineEffect
 	movs r0, #0
 	movs r1, #0
 	bl sub_80780E0

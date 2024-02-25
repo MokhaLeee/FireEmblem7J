@@ -4429,7 +4429,7 @@ sub_801F9D8: @ 0x0801F9D8
 	bl sub_80021F0
 	bl ColorFadeTick_thm
 	bl EnablePalSync
-	ldr r0, _0801FB78 @ =gUnk_08406218
+	ldr r0, _0801FB78 @ =Img_ChapterIntroFog
 	ldr r1, _0801FB7C @ =0x0600A000
 	bl Decompress
 	ldr r0, _0801FB80 @ =gUnk_08407E9C
@@ -4471,7 +4471,7 @@ _0801FB68: .4byte gBg3Tm
 _0801FB6C: .4byte gDispIo
 _0801FB70: .4byte gPlaySt
 _0801FB74: .4byte 0x00000246
-_0801FB78: .4byte gUnk_08406218
+_0801FB78: .4byte Img_ChapterIntroFog
 _0801FB7C: .4byte 0x0600A000
 _0801FB80: .4byte gUnk_08407E9C
 _0801FB84: .4byte gUnk_08405010
@@ -5919,7 +5919,7 @@ sub_8020674: @ 0x08020674
 	movs r1, #0x80
 	movs r2, #0x20
 	bl ApplyPaletteExt
-	ldr r0, _08020798 @ =gUnk_08406218
+	ldr r0, _08020798 @ =Img_ChapterIntroFog
 	ldr r1, _0802079C @ =0x06002000
 	bl Decompress
 	ldr r0, _080207A0 @ =gUnk_08409020
@@ -6002,7 +6002,7 @@ _08020788: .4byte gDispIo
 _0802078C: .4byte gUnk_08408CE8
 _08020790: .4byte 0x06001000
 _08020794: .4byte gUnk_08409040
-_08020798: .4byte gUnk_08406218
+_08020798: .4byte Img_ChapterIntroFog
 _0802079C: .4byte 0x06002000
 _080207A0: .4byte gUnk_08409020
 _080207A4: .4byte gBg0Tm + 0x24e

@@ -636,8 +636,8 @@ gUnk_08405FD0:	@ 0x08405FD0
 gUnk_084061F8:	@ 0x084061F8
 	.incbin "FireEmblem7J.base.gba", 0x4061F8, 0x406218 - 0x4061F8
 
-	.global gUnk_08406218
-gUnk_08406218:	@ 0x08406218
+	.global Img_ChapterIntroFog
+Img_ChapterIntroFog:	@ 0x08406218
 	.incbin "FireEmblem7J.base.gba", 0x406218, 0x407E9C - 0x406218
 
 	.global gUnk_08407E9C
