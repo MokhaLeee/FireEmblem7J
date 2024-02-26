@@ -32799,8 +32799,8 @@ _0807B768:
 	.align 2, 0
 _0807B774: .4byte gUnk_08D6F7EC
 
-	thumb_func_start sub_807B778
-sub_807B778: @ 0x0807B778
+	thumb_func_start EventCall_Ch31x_NinianPrayEffect2
+EventCall_Ch31x_NinianPrayEffect2: @ 0x0807B778
 	push {r4, r5, lr}
 	adds r4, r0, #0
 	ldr r5, _0807B79C @ =gUnk_08D6F7EC

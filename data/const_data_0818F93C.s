@@ -482,7 +482,15 @@ gUnk_081C2974:	@ 0x081C2974
 
 	.global gUnk_081C2D44
 gUnk_081C2D44:	@ 0x081C2D44
-	.incbin "FireEmblem7J.base.gba", 0x1C2D44, 0x1C3850 - 0x1C2D44
+	.incbin "FireEmblem7J.base.gba", 0x1C2D44, 0x1C2D84 - 0x1C2D44
+
+	.global Img_EventSpriteAnim_NinianEffect
+Img_EventSpriteAnim_NinianEffect:	@ 0x081C2D84
+	.incbin "FireEmblem7J.base.gba", 0x1C2D84, 0x1C3680 - 0x1C2D84
+
+	.global ApConf_EventSpriteAnim_NinianEffect
+ApConf_EventSpriteAnim_NinianEffect:	@ 0x081C3680
+	.incbin "FireEmblem7J.base.gba", 0x1C3680, 0x1C3850 - 0x1C3680
 
 	.global gUnk_081C3850
 gUnk_081C3850:	@ 0x081C3850

@@ -625,7 +625,7 @@ sub_807D248: @ 0x0807D248
 	cmp r1, r0
 	bne _0807D27E
 	adds r0, r5, #0
-	bl sub_807B778
+	bl EventCall_Ch31x_NinianPrayEffect2
 	movs r0, #0
 	strh r0, [r4]
 	adds r0, r5, #0
@@ -5659,8 +5659,8 @@ sub_807F908: @ 0x0807F908
 	.align 2, 0
 _0807F914: .4byte gUnk_08D87F48
 
-	thumb_func_start sub_807F918
-sub_807F918: @ 0x0807F918
+	thumb_func_start EventCall_Ch31x_NinianPrayEffect1
+EventCall_Ch31x_NinianPrayEffect1: @ 0x0807F918
 	push {r4, r5, lr}
 	sub sp, #8
 	movs r5, #1

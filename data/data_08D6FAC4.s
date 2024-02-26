@@ -23,14 +23,3 @@ gUnk_08D6FC14:	@ 0x08D6FC14
 	.global gUnk_08D6FC44
 gUnk_08D6FC44:	@ 0x08D6FC44
 	.incbin "FireEmblem7J.base.gba", 0xD6FC44, 0xD7C3A8 - 0xD6FC44
-
-	.global EventSpriteAnimConf_SpawnAssassin
-EventSpriteAnimConf_SpawnAssassin:	@ 0x08D7C3A8
-	.word  0          @ pal
-	.word  Img_EventSpriteAnim_SpawnAssassin    @ img
-	.word  ApConf_EventSpriteAnim_SpawnAssassin @ ap_conf
-	.short 0x0000	  @ oam0
-	.short 0x0200     @ oam2
-	.byte  0xB        @ pal_bank
-	.byte  0x1        @ pal_size
-	.align 2, 0
