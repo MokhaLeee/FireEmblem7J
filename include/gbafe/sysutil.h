@@ -253,3 +253,14 @@ void BmBgfxSetLoopEN(u8);
 void StartBmBgfx(struct BmBgxConf * input, int bg, int x, int y, int vram_off, int size, int pal_bank, void * func, ProcPtr parent);
 
 extern struct ProcCmd ProcScr_BmBgfx[];
+
+/* ProcMixPalette in FE8U */
+struct ProcMixPalette {
+    /* 00 */ PROC_HEADER;
+    /* 2C */ int speed;
+    /* 30 */ int targetPalId;
+    /* 34 */ int palCount;
+    /* 38 */ int timer;
+    /* 3C */ u16 * srcA;
+    /* 40 */ u16 * srcB;
+};

@@ -1,5 +1,7 @@
 	.section .data
 
+        .incbin "FireEmblem7J.base.gba", 0xC0172C, 0xC01744 - 0xC0172C
+
 .global ProcScr_GameControl
 ProcScr_GameControl: @ 0xC01744
         @ PROC_19

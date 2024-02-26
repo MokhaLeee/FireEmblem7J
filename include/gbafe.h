@@ -48,3 +48,4 @@
 #include "gbafe/eventscript.h"
 #include "gbafe/bmfx.h"
 #include "gbafe/face.h"
+#include "gbafe/sprite-anim.h"

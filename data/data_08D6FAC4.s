@@ -22,7 +22,11 @@ gUnk_08D6FC14:	@ 0x08D6FC14
 
 	.global gUnk_08D6FC44
 gUnk_08D6FC44:	@ 0x08D6FC44
-	.incbin "FireEmblem7J.base.gba", 0xD6FC44, 0xD80D24 - 0xD6FC44
+	.incbin "FireEmblem7J.base.gba", 0xD6FC44, 0xD7C3A8 - 0xD6FC44
+
+	.global gUnk_08D7C3A8
+gUnk_08D7C3A8:	@ 0x08D7C3A8
+	.incbin "FireEmblem7J.base.gba", 0xD7C3A8, 0xD80D24 - 0xD7C3A8
 
 	.global gUnk_08D80D24
 gUnk_08D80D24:	@ 0x08D80D24

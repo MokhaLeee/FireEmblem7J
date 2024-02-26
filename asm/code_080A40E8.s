@@ -4107,7 +4107,7 @@ _080A6178:
 	str r7, [sp]
 	movs r4, #4
 	str r4, [sp, #4]
-	bl sub_8012AF0
+	bl StartSpriteAnimProc
 	ldr r1, [r6, #0x14]
 	str r0, [r1, #0x60]
 _080A6196:
@@ -4927,7 +4927,7 @@ _080A67DC:
 	adds r2, #0x34
 	movs r3, #0xb0
 	lsls r3, r3, #1
-	bl sub_8012B70
+	bl SetSpriteAnimProcParameters
 	b _080A683C
 _080A6802:
 	ldr r0, [r2, #0x60]
@@ -4938,7 +4938,7 @@ _080A6802:
 	adds r2, #0x34
 	movs r3, #0xb0
 	lsls r3, r3, #1
-	bl sub_8012B70
+	bl SetSpriteAnimProcParameters
 	mov r1, r8
 	ldr r0, [r1, #0x14]
 	adds r2, r0, #0

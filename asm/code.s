@@ -909,7 +909,7 @@ _0806C52C:
 	ldr r1, [r7, #0x10]
 	adds r0, r1, #0
 	movs r1, #4
-	bl sub_80128F0
+	bl SetSpriteAnimId
 	ldr r1, [r7, #0xc]
 	adds r0, r1, #0
 	bl sub_806DD40
@@ -1014,7 +1014,7 @@ _0806C774:
 	adds r2, #0x42
 	movs r1, #0
 	ldrsb r1, [r2, r1]
-	bl sub_80128F0
+	bl SetSpriteAnimId
 _0806C786:
 	add sp, #8
 	pop {r7}
@@ -1818,7 +1818,7 @@ sub_806CD2C: @ 0x0806CD2C
 	ldr r1, [r7, #0xc]
 	adds r0, r1, #0
 	movs r1, #0
-	bl sub_80128F0
+	bl SetSpriteAnimId
 	ldr r1, _0806CDA4 @ =gUnk_08D64DE0
 	adds r0, r1, #0
 	movs r1, #3
@@ -2039,7 +2039,7 @@ _0806CE8C:
 	movs r3, #0xc0
 	lsls r3, r3, #2
 	orrs r2, r3
-	bl sub_8012694
+	bl DisplaySpriteAnim
 	add sp, #0xc
 	pop {r4, r5, r6, r7}
 	pop {r0}
@@ -2077,7 +2077,7 @@ _0806CF70:
 	lsls r4, r4, #1
 	adds r2, r3, #0
 	orrs r2, r4
-	bl sub_8012694
+	bl DisplaySpriteAnim
 	add sp, #4
 	pop {r4, r7}
 	pop {r0}
@@ -2759,7 +2759,7 @@ sub_806D47C: @ 0x0806D47C
 	ldr r0, [r7]
 	ldr r1, [r0, #0x30]
 	adds r0, r1, #0
-	bl sub_8012680
+	bl EndSpriteAnim
 	add sp, #4
 	pop {r7}
 	pop {r0}
@@ -3688,7 +3688,7 @@ _0806DB50:
 	adds r3, r7, #6
 	movs r4, #0
 	ldrsh r2, [r3, r4]
-	bl sub_8012694
+	bl DisplaySpriteAnim
 _0806DB64:
 	add sp, #8
 	pop {r4, r7}
@@ -4932,7 +4932,7 @@ sub_806E4A0: @ 0x0806E4A0
 	ldr r1, [r0, #0x30]
 	adds r0, r1, #0
 	movs r1, #4
-	bl sub_80128F0
+	bl SetSpriteAnimId
 	ldr r1, [r7]
 	ldr r0, [r1, #0x30]
 	ldrh r1, [r0, #0x18]
@@ -5613,7 +5613,7 @@ sub_806E974: @ 0x0806E974
 	bl sub_806DD6C
 	adds r1, r0, #0
 	adds r0, r4, #0
-	bl sub_8012924
+	bl SetSpriteAnimInfo
 	ldr r0, [r7]
 	bl sub_806DD40
 	adds r4, r0, #0
@@ -12172,7 +12172,7 @@ sub_8071C10: @ 0x08071C10
 	str r4, [sp]
 	movs r4, #2
 	str r4, [sp, #4]
-	bl sub_8012AF0
+	bl StartSpriteAnimProc
 	add sp, #0xc
 	pop {r4, r5, r7}
 	pop {r0}
@@ -12231,7 +12231,7 @@ sub_8071C8C: @ 0x08071C8C
 	str r4, [sp]
 	movs r4, #2
 	str r4, [sp, #4]
-	bl sub_8012AF0
+	bl StartSpriteAnimProc
 	add sp, #0xc
 	pop {r4, r5, r7}
 	pop {r0}
@@ -12347,7 +12347,7 @@ sub_8071D9C: @ 0x08071D9C
 	str r4, [sp]
 	movs r4, #2
 	str r4, [sp, #4]
-	bl sub_8012AF0
+	bl StartSpriteAnimProc
 	add sp, #0xc
 	pop {r4, r5, r6, r7}
 	pop {r0}
@@ -12446,7 +12446,7 @@ sub_8071E68: @ 0x08071E68
 	str r4, [sp]
 	movs r4, #2
 	str r4, [sp, #4]
-	bl sub_8012AF0
+	bl StartSpriteAnimProc
 	add sp, #0xc
 	pop {r4, r7}
 	pop {r0}
@@ -14808,7 +14808,7 @@ _080730FA:
 	str r4, [sp]
 	movs r4, #2
 	str r4, [sp, #4]
-	bl sub_8012AF0
+	bl StartSpriteAnimProc
 	bl InitScanlineEffect
 	bl sub_807706C
 	bl sub_807456C
@@ -15219,7 +15219,7 @@ sub_807347C: @ 0x0807347C
 	str r4, [sp]
 	movs r4, #2
 	str r4, [sp, #4]
-	bl sub_8012AF0
+	bl StartSpriteAnimProc
 	ldr r0, [r7]
 	adds r1, r0, #0
 	adds r0, #0x48
@@ -15912,7 +15912,7 @@ sub_80739EC: @ 0x080739EC
 	str r4, [sp]
 	movs r4, #2
 	str r4, [sp, #4]
-	bl sub_8012AF0
+	bl StartSpriteAnimProc
 	add sp, #0xc
 	pop {r4, r7}
 	pop {r0}
@@ -15946,7 +15946,7 @@ sub_8073A58: @ 0x08073A58
 	str r4, [sp]
 	movs r4, #2
 	str r4, [sp, #4]
-	bl sub_8012AF0
+	bl StartSpriteAnimProc
 	add sp, #0xc
 	pop {r4, r7}
 	pop {r0}
@@ -15975,7 +15975,7 @@ sub_8073A98: @ 0x08073A98
 	str r4, [sp]
 	movs r4, #2
 	str r4, [sp, #4]
-	bl sub_8012AF0
+	bl StartSpriteAnimProc
 	add sp, #0xc
 	pop {r4, r7}
 	pop {r0}
@@ -16387,7 +16387,7 @@ sub_8073DA4: @ 0x08073DA4
 	str r4, [sp]
 	movs r4, #2
 	str r4, [sp, #4]
-	bl sub_8012AF0
+	bl StartSpriteAnimProc
 	ldr r0, [r7]
 	adds r1, r0, #0
 	adds r0, #0x48
@@ -17215,7 +17215,7 @@ sub_807443C: @ 0x0807443C
 	str r4, [sp]
 	movs r4, #2
 	str r4, [sp, #4]
-	bl sub_8012AF0
+	bl StartSpriteAnimProc
 	ldr r0, _080744F0 @ =gUnk_083F3778
 	ldr r2, [r7]
 	ldr r1, [r2, #0x30]
@@ -17226,7 +17226,7 @@ sub_807443C: @ 0x0807443C
 	str r4, [sp]
 	movs r4, #2
 	str r4, [sp, #4]
-	bl sub_8012AF0
+	bl StartSpriteAnimProc
 _080744E6:
 	add sp, #0x10
 	pop {r4, r7}
@@ -18354,7 +18354,7 @@ sub_8074D50: @ 0x08074D50
 	str r4, [sp]
 	movs r4, #2
 	str r4, [sp, #4]
-	bl sub_8012AF0
+	bl StartSpriteAnimProc
 	b _08074F30
 	.align 2, 0
 _08074DD0: .4byte gUnk_083FA1B8
@@ -18400,7 +18400,7 @@ _08074DEC:
 	movs r1, #2
 	str r1, [sp, #4]
 	ldr r1, [r7]
-	bl sub_8012AF0
+	bl StartSpriteAnimProc
 	ldr r0, _08074F38 @ =gUnk_083F28D0
 	ldr r2, [r7]
 	subs r1, r2, #3
@@ -18433,7 +18433,7 @@ _08074DEC:
 	str r5, [sp]
 	movs r4, #2
 	str r4, [sp, #4]
-	bl sub_8012AF0
+	bl StartSpriteAnimProc
 	ldr r0, [r7, #0xc]
 	cmp r0, #0
 	ble _08074EBA
@@ -18470,7 +18470,7 @@ _08074DEC:
 	str r4, [sp]
 	movs r4, #2
 	str r4, [sp, #4]
-	bl sub_8012AF0
+	bl StartSpriteAnimProc
 _08074EBA:
 	ldr r0, [r7, #0xc]
 	cmp r0, #0
@@ -18595,7 +18595,7 @@ sub_8074F40: @ 0x08074F40
 	movs r1, #2
 	str r1, [sp, #4]
 	ldr r1, [r7]
-	bl sub_8012AF0
+	bl StartSpriteAnimProc
 	ldr r0, _08075090 @ =gUnk_083F28D0
 	ldr r2, [r7]
 	subs r1, r2, #3
@@ -18627,7 +18627,7 @@ sub_8074F40: @ 0x08074F40
 	str r4, [sp]
 	movs r4, #2
 	str r4, [sp, #4]
-	bl sub_8012AF0
+	bl StartSpriteAnimProc
 	ldr r0, _08075090 @ =gUnk_083F28D0
 	ldr r2, [r7]
 	adds r1, r2, #0
@@ -18661,7 +18661,7 @@ sub_8074F40: @ 0x08074F40
 	str r4, [sp]
 	movs r4, #2
 	str r4, [sp, #4]
-	bl sub_8012AF0
+	bl StartSpriteAnimProc
 	ldr r0, [r7, #8]
 	lsls r1, r0, #0x16
 	lsrs r0, r1, #0x16
@@ -19682,7 +19682,7 @@ _0807580E:
 	str r4, [sp]
 	movs r4, #2
 	str r4, [sp, #4]
-	bl sub_8012AF0
+	bl StartSpriteAnimProc
 	ldr r1, _0807585C @ =gPlaySt
 	adds r0, r1, #0
 	adds r1, #0x41
@@ -20629,7 +20629,7 @@ _08075EE2:
 	ldr r1, [r0, #0x30]
 	adds r0, r1, #0
 	movs r1, #5
-	bl sub_80128F0
+	bl SetSpriteAnimId
 	add sp, #4
 	pop {r7}
 	pop {r0}
@@ -33092,7 +33092,7 @@ sub_807B94C: @ 0x0807B94C
 	adds r0, r5, #0
 	movs r2, #2
 	movs r3, #6
-	bl sub_80AB7F4
+	bl StartMixPalette
 	bl InitScanlineEffect
 	ldr r0, _0807BA0C @ =sub_80783DC
 	bl SetOnHBlankA
@@ -33601,7 +33601,7 @@ sub_807BDFC: @ 0x0807BDFC
 	push {r4, r5, r6, r7, lr}
 	sub sp, #0x14
 	adds r4, r0, #0
-	bl sub_80AB82C
+	bl EndMixPalette
 	bl ArchiveCurrentPalettes
 	adds r6, r4, #0
 	adds r6, #0x4c
@@ -33875,7 +33875,7 @@ sub_807BFEC: @ 0x0807BFEC
 	adds r1, r2, #0
 	orrs r0, r1
 	strh r0, [r3, #0x3c]
-	ldr r0, _0807C07C @ =gUnk_08C01674
+	ldr r0, _0807C07C @ =ProcScr_EventE8Handler
 	bl Proc_Find
 	bl Proc_End
 	movs r0, #0x70
@@ -33907,7 +33907,7 @@ sub_807BFEC: @ 0x0807BFEC
 _0807C070: .4byte gDispIo
 _0807C074: .4byte 0x0000FFE0
 _0807C078: .4byte 0x0000E0FF
-_0807C07C: .4byte gUnk_08C01674
+_0807C07C: .4byte ProcScr_EventE8Handler
 
 	thumb_func_start sub_807C080
 sub_807C080: @ 0x0807C080
@@ -34792,7 +34792,7 @@ sub_807C754: @ 0x0807C754
 	str r5, [sp, #4]
 	movs r2, #2
 	movs r3, #8
-	bl sub_80AB7F4
+	bl StartMixPalette
 	add sp, #8
 	pop {r4, r5}
 	pop {r0}
@@ -34812,7 +34812,7 @@ _0807C7D8: .4byte gUnk_08453438
 	thumb_func_start sub_807C7DC
 sub_807C7DC: @ 0x0807C7DC
 	push {lr}
-	bl sub_80AB82C
+	bl EndMixPalette
 	pop {r0}
 	bx r0
 	.align 2, 0
@@ -34821,7 +34821,7 @@ sub_807C7DC: @ 0x0807C7DC
 sub_807C7E8: @ 0x0807C7E8
 	push {r4, r5, r6, lr}
 	adds r5, r0, #0
-	bl sub_80AB82C
+	bl EndMixPalette
 	ldr r3, _0807C894 @ =gDispIo
 	movs r0, #1
 	ldrb r1, [r3, #1]
@@ -34976,7 +34976,7 @@ sub_807C8DC: @ 0x0807C8DC
 	str r2, [sp, #4]
 	movs r2, #2
 	movs r3, #8
-	bl sub_80AB7F4
+	bl StartMixPalette
 	add sp, #8
 	pop {r4}
 	pop {r0}

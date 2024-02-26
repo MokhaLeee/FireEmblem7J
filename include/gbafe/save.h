@@ -236,7 +236,7 @@ void SaveBonusContentData(void * buf);
 // ??? ReadTraps
 // ??? sub_80A22AC
 // ??? sub_80A22CC
-// ??? sub_80A22DC
+// ??? WriteSwappedSuspendSaveId
 int SramChecksum32(void const * sram_src, int size);
 bool VerifySaveBlockChecksum(struct SaveBlockInfo * block_info);
 void PopulateSaveBlockChecksum(struct SaveBlockInfo * block_info);

@@ -150,6 +150,8 @@ SECTIONS
 		. = ALIGN(4); src/random.o(.bss);
 		. = ALIGN(4); src/hardware.o(.bss);
 		. = ALIGN(4); src/oam.o(.bss);
+		. = 0x000110;
+		. = ALIGN(4); src/sprite-anim.o(.bss);
 		. = 0x002778; gArenaLevelBackup = .;
 		. = 0x002780; gOamLoPutIt = .;
 		. = 0x002790; gDispIo = .;
@@ -199,7 +201,7 @@ SECTIONS
 		asm/event-08010630.o(.text);
 		src/eventscr_thunderfx.o(.text);
 		asm/eventscr_08011AFC.o(.text);
-		asm/sprite-anim.o(.text);
+		src/sprite-anim.o(.text);
 		asm/game-ctrl.o(.text);
 		asm/utils.o(.text);
 		asm/bm.o(.text);
@@ -302,6 +304,7 @@ SECTIONS
 		. = ALIGN(4); data/data_08BFFB20.o(.data)
 		. = ALIGN(4); src/eventscr_thunderfx.o(.data)
 		. = ALIGN(4); data/data_08C013F0.o(.data)
+		. = ALIGN(4); src/sprite-anim.o(.data)
 		. = ALIGN(4); data/gamecontrol.o(.data)
 		. = ALIGN(4); data/data.o(.data)
 		. = ALIGN(4); src/battle.o(.data)

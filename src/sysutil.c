@@ -1503,3 +1503,68 @@ void StartBmBgfx(struct BmBgxConf * input, int bg, int x, int y, int vram_off, i
     for (; input->type < BMFX_CONFT_END; input++)
         proc->total_duration += input->duration;
 }
+
+void MixPaletteCore(struct ProcMixPalette * proc, int val)
+{
+    int i;
+    int j;
+
+    u16 * dst = gPal + PAL_COLOR_OFFSET(proc->targetPalId, 0);
+    u16 * ptrA = proc->srcA;
+    u16 * ptrB = proc->srcB;
+
+    for (i = 0; i < proc->palCount; i++)
+    {
+        for (j = 0; j < 0x10; j++)
+        {
+            *dst = ((((*ptrA & RED_MASK)   * (0x80 - val) + val * (*ptrB & RED_MASK))   >> 7) & RED_MASK) +
+                   ((((*ptrA & GREEN_MASK) * (0x80 - val) + val * (*ptrB & GREEN_MASK)) >> 7) & GREEN_MASK) +
+                   ((((*ptrA & BLUE_MASK)  * (0x80 - val) + val * (*ptrB & BLUE_MASK))  >> 7) & BLUE_MASK);
+
+            dst++;
+            ptrA++;
+            ptrB++;
+        }
+    }
+    EnablePalSync();
+}
+
+void MixPalette_Init(struct ProcMixPalette * proc)
+{
+    proc->timer = 0;
+    return;
+}
+
+void MixPalette_Loop(struct ProcMixPalette * proc)
+{
+    proc->timer += proc->speed;
+
+    if (proc->timer > 0x100)
+        proc->timer = 0;
+
+    MixPaletteCore(proc, proc->timer < 0x80 ? proc->timer : 0x100 - proc->timer);
+}
+
+struct ProcCmd CONST_DATA ProcScr_MixPalette[] = {
+    PROC_YIELD,
+    PROC_CALL(MixPalette_Init),
+    PROC_REPEAT(MixPalette_Loop),
+    PROC_END,
+};
+
+void StartMixPalette(u16 * palA, u16 * palB, int speed, int targetPalId, int palCount, ProcPtr parent)
+{
+    struct ProcMixPalette * proc = Proc_Start(ProcScr_MixPalette, parent);
+
+    proc->speed = speed;
+    proc->targetPalId = targetPalId;
+    proc->palCount = palCount;
+
+    proc->srcA = palA;
+    proc->srcB = palB;
+}
+
+void EndMixPalette(void)
+{
+    Proc_End(Proc_Find(ProcScr_MixPalette));
+}

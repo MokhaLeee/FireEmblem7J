@@ -1973,7 +1973,7 @@ sub_8011568: @ 0x08011568
 	adds r0, r4, #0
 	movs r2, #0x20
 	movs r3, #0xf
-	bl sub_80AB7F4
+	bl StartMixPalette
 	str r5, [r6, #0x30]
 	movs r0, #0x20
 	str r0, [r6, #0x34]

@@ -3322,7 +3322,7 @@ sub_807E6A4: @ 0x0807E6A4
 	str r6, [sp, #4]
 	adds r1, r4, #0
 	adds r2, r5, #0
-	bl sub_8012AF0
+	bl StartSpriteAnimProc
 	ldr r0, _0807E718 @ =sub_807E694
 	movs r1, #1
 	bl sub_8014FB0
@@ -4905,7 +4905,7 @@ _0807F326:
 	ldr r3, [sp]
 	adds r1, r1, r3
 	ldrb r1, [r1]
-	bl sub_80128F0
+	bl SetSpriteAnimId
 _0807F350:
 	movs r5, #1
 	b _0807F35E
@@ -4943,7 +4943,7 @@ _0807F376:
 	adds r1, r6, #0
 	movs r3, #1
 	rsbs r3, r3, #0
-	bl sub_8012B70
+	bl SetSpriteAnimProcParameters
 _0807F396:
 	movs r0, #2
 	add sl, r0
@@ -5083,7 +5083,7 @@ sub_807F448: @ 0x0807F448
 	str r1, [sp, #4]
 	adds r1, r7, #0
 	mov r2, sb
-	bl sub_8012AF0
+	bl StartSpriteAnimProc
 	mov r3, r8
 	str r0, [r3]
 	lsls r2, r6, #1
@@ -5115,12 +5115,12 @@ _0807F4E4:
 	bne _0807F4F4
 	ldr r0, [r0, #0x50]
 	adds r1, r5, #0
-	bl sub_80128F0
+	bl SetSpriteAnimId
 	b _0807F542
 _0807F4F4:
 	ldr r0, [r0, #0x50]
 	adds r1, r5, #0
-	bl sub_80128F0
+	bl SetSpriteAnimId
 	lsls r2, r6, #1
 	adds r0, r4, #0
 	adds r0, #0x38
@@ -38216,7 +38216,7 @@ _0808FBA0:
 	movs r1, #0xd
 	str r1, [sp, #4]
 	movs r1, #0x78
-	bl sub_8012AF0
+	bl StartSpriteAnimProc
 	strh r4, [r7]
 	movs r0, #0x80
 	lsls r0, r0, #2
@@ -39109,7 +39109,7 @@ sub_80902F0: @ 0x080902F0
 	movs r1, #0xd
 	str r1, [sp, #4]
 	movs r1, #0x78
-	bl sub_8012AF0
+	bl StartSpriteAnimProc
 	str r0, [r5, #0x38]
 	b _08090368
 	.align 2, 0
@@ -39124,7 +39124,7 @@ _08090330:
 	movs r1, #0xd
 	str r1, [sp, #4]
 	movs r1, #0x78
-	bl sub_8012AF0
+	bl StartSpriteAnimProc
 	str r0, [r5, #0x38]
 	ldr r4, _08090384 @ =gPlaySt
 	movs r0, #0xe
@@ -64070,7 +64070,7 @@ _0809CC80:
 	str r1, [sp, #4]
 	movs r1, #0x86
 	movs r2, #0x6c
-	bl sub_8012AF0
+	bl StartSpriteAnimProc
 	ldr r0, _0809CD74 @ =0x00000FB3
 	mov r1, r8
 	str r0, [r1, #0x30]

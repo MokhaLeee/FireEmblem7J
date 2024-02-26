@@ -3106,7 +3106,7 @@ _0801F024:
 	str r0, [sp, #4]
 	adds r0, r6, #0
 	adds r1, r4, #0
-	bl sub_8012AF0
+	bl StartSpriteAnimProc
 	adds r4, #8
 	movs r0, #0xba
 	adds r1, r4, #0
@@ -3175,7 +3175,7 @@ sub_801F0B8: @ 0x0801F0B8
 	str r1, [sp]
 	str r1, [sp, #4]
 	adds r1, r4, #0
-	bl sub_8012AF0
+	bl StartSpriteAnimProc
 	adds r4, #8
 	movs r0, #0xbf
 	adds r1, r4, #0
@@ -3264,7 +3264,7 @@ sub_801F174: @ 0x0801F174
 	movs r4, #0
 	str r4, [sp]
 	str r4, [sp, #4]
-	bl sub_8012AF0
+	bl StartSpriteAnimProc
 	ldr r0, [r5, #0x5c]
 	subs r0, #1
 	str r0, [r5, #0x5c]
@@ -3383,7 +3383,7 @@ sub_801F260: @ 0x0801F260
 	str r1, [sp, #4]
 	adds r1, r4, #0
 	movs r2, #0x50
-	bl sub_8012AF0
+	bl StartSpriteAnimProc
 	adds r4, #8
 	movs r0, #0xbc
 	adds r1, r4, #0
@@ -3537,7 +3537,7 @@ sub_801F38C: @ 0x0801F38C
 	movs r1, #0
 	str r1, [sp, #4]
 	adds r1, r4, #0
-	bl sub_8012AF0
+	bl StartSpriteAnimProc
 	adds r4, #8
 	movs r0, #0xbb
 	adds r1, r4, #0
@@ -8029,7 +8029,7 @@ sub_8021770: @ 0x08021770
 	str r1, [sp, #4]
 	adds r1, r5, #0
 	adds r2, r6, #0
-	bl sub_8012AF0
+	bl StartSpriteAnimProc
 	ldr r0, _080217E8 @ =gUnk_08C03000
 	adds r1, r4, #0
 	bl Proc_Start

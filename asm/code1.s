@@ -5768,7 +5768,7 @@ sub_8031114: @ 0x08031114
 	strh r0, [r4, #0x22]
 	adds r0, r4, #0
 	movs r1, #0
-	bl sub_80128F0
+	bl SetSpriteAnimId
 	str r4, [r5, #0x54]
 	adds r1, r5, #0
 	adds r1, #0x4a
@@ -5882,7 +5882,7 @@ _0803120C:
 	cmp r7, #0
 	beq _08031244
 	ldr r0, [r4, #0x54]
-	bl sub_8012680
+	bl EndSpriteAnim
 	adds r0, r4, #0
 	bl Proc_Break
 	bl sub_8032CCC
@@ -5912,7 +5912,7 @@ _08031260:
 	cmp r0, #0
 	beq _08031298
 	ldr r0, [r4, #0x54]
-	bl sub_8012680
+	bl EndSpriteAnim
 	adds r0, r4, #0
 	movs r1, #4
 	bl Proc_Goto
@@ -5946,7 +5946,7 @@ _08031298:
 	bne _080312B6
 	movs r1, #1
 _080312B6:
-	bl sub_80128F0
+	bl SetSpriteAnimId
 _080312BA:
 	ldr r0, [r4, #0x54]
 	ldr r3, _080312E4 @ =gBmSt
@@ -5960,7 +5960,7 @@ _080312BA:
 	movs r4, #0xe
 	ldrsh r3, [r3, r4]
 	subs r2, r2, r3
-	bl sub_8012694
+	bl DisplaySpriteAnim
 	asrs r0, r6, #0x18
 	strh r0, [r5]
 _080312DA:

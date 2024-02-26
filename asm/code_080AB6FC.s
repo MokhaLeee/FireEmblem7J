@@ -1,183 +1,6 @@
 	.include "macro.inc"
 	.syntax unified
 
-	thumb_func_start sub_80AB6FC
-sub_80AB6FC: @ 0x080AB6FC
-	push {r4, r5, r6, r7, lr}
-	mov r7, sl
-	mov r6, sb
-	mov r5, r8
-	push {r5, r6, r7}
-	sub sp, #8
-	adds r6, r1, #0
-	ldr r1, [r0, #0x30]
-	lsls r1, r1, #5
-	ldr r2, _080AB7BC @ =gPal
-	adds r1, r1, r2
-	mov r8, r1
-	ldr r1, [r0, #0x3c]
-	mov ip, r1
-	ldr r7, [r0, #0x40]
-	movs r1, #0
-	ldr r0, [r0, #0x34]
-	cmp r1, r0
-	bge _080AB7A8
-	str r0, [sp, #4]
-	movs r0, #0x80
-	subs r5, r0, r6
-	movs r0, #0xf8
-	lsls r0, r0, #7
-	mov sl, r0
-_080AB72E:
-	adds r1, #1
-	str r1, [sp]
-	movs r1, #0xf
-	mov sb, r1
-_080AB736:
-	mov r0, ip
-	ldrh r4, [r0]
-	movs r0, #0x1f
-	ands r0, r4
-	adds r2, r0, #0
-	muls r2, r5, r2
-	ldrh r3, [r7]
-	movs r0, #0x1f
-	ands r0, r3
-	muls r0, r6, r0
-	adds r2, r2, r0
-	asrs r2, r2, #7
-	movs r1, #0x1f
-	ands r2, r1
-	movs r0, #0xf8
-	lsls r0, r0, #2
-	ands r0, r4
-	adds r1, r0, #0
-	muls r1, r5, r1
-	movs r0, #0xf8
-	lsls r0, r0, #2
-	ands r0, r3
-	muls r0, r6, r0
-	adds r1, r1, r0
-	asrs r1, r1, #7
-	movs r0, #0xf8
-	lsls r0, r0, #2
-	ands r1, r0
-	adds r2, r2, r1
-	mov r0, sl
-	ands r0, r4
-	adds r1, r0, #0
-	muls r1, r5, r1
-	mov r0, sl
-	ands r0, r3
-	muls r0, r6, r0
-	adds r1, r1, r0
-	asrs r1, r1, #7
-	mov r0, sl
-	ands r1, r0
-	adds r2, r2, r1
-	mov r1, r8
-	strh r2, [r1]
-	movs r0, #2
-	add r8, r0
-	add ip, r0
-	adds r7, #2
-	movs r1, #1
-	rsbs r1, r1, #0
-	add sb, r1
-	mov r0, sb
-	cmp r0, #0
-	bge _080AB736
-	ldr r1, [sp]
-	ldr r0, [sp, #4]
-	cmp r1, r0
-	blt _080AB72E
-_080AB7A8:
-	bl EnablePalSync
-	add sp, #8
-	pop {r3, r4, r5}
-	mov r8, r3
-	mov sb, r4
-	mov sl, r5
-	pop {r4, r5, r6, r7}
-	pop {r0}
-	bx r0
-	.align 2, 0
-_080AB7BC: .4byte gPal
-
-	thumb_func_start sub_80AB7C0
-sub_80AB7C0: @ 0x080AB7C0
-	movs r1, #0
-	str r1, [r0, #0x38]
-	bx lr
-	.align 2, 0
-
-	thumb_func_start sub_80AB7C8
-sub_80AB7C8: @ 0x080AB7C8
-	push {lr}
-	adds r2, r0, #0
-	ldr r0, [r2, #0x38]
-	ldr r1, [r2, #0x2c]
-	adds r0, r0, r1
-	str r0, [r2, #0x38]
-	movs r1, #0x80
-	lsls r1, r1, #1
-	cmp r0, r1
-	ble _080AB7E0
-	movs r0, #0
-	str r0, [r2, #0x38]
-_080AB7E0:
-	ldr r0, [r2, #0x38]
-	subs r1, r1, r0
-	cmp r0, #0x7f
-	bgt _080AB7EA
-	adds r1, r0, #0
-_080AB7EA:
-	adds r0, r2, #0
-	bl sub_80AB6FC
-	pop {r0}
-	bx r0
-
-	thumb_func_start sub_80AB7F4
-sub_80AB7F4: @ 0x080AB7F4
-	push {r4, r5, r6, lr}
-	mov r6, sb
-	mov r5, r8
-	push {r5, r6}
-	mov r8, r0
-	mov sb, r1
-	adds r4, r2, #0
-	adds r5, r3, #0
-	ldr r6, [sp, #0x18]
-	ldr r1, [sp, #0x1c]
-	ldr r0, _080AB828 @ =gUnk_08DAE4C4
-	bl Proc_Start
-	str r4, [r0, #0x2c]
-	str r5, [r0, #0x30]
-	str r6, [r0, #0x34]
-	mov r1, r8
-	str r1, [r0, #0x3c]
-	mov r1, sb
-	str r1, [r0, #0x40]
-	pop {r3, r4}
-	mov r8, r3
-	mov sb, r4
-	pop {r4, r5, r6}
-	pop {r0}
-	bx r0
-	.align 2, 0
-_080AB828: .4byte gUnk_08DAE4C4
-
-	thumb_func_start sub_80AB82C
-sub_80AB82C: @ 0x080AB82C
-	push {lr}
-	ldr r0, _080AB83C @ =gUnk_08DAE4C4
-	bl Proc_Find
-	bl Proc_End
-	pop {r0}
-	bx r0
-	.align 2, 0
-_080AB83C: .4byte gUnk_08DAE4C4
-
 	thumb_func_start sub_80AB840
 sub_80AB840: @ 0x080AB840
 	push {r4, r5, r6, r7, lr}
@@ -225,7 +48,7 @@ _080AB884:
 	mov r0, r8
 	mov r1, sb
 	ldr r2, [sp, #0x24]
-	bl sub_8012AF0
+	bl StartSpriteAnimProc
 	add sp, #8
 	pop {r3, r4}
 	mov r8, r3
@@ -18567,7 +18390,7 @@ sub_80B4810: @ 0x080B4810
 	movs r4, #0xd
 	str r4, [sp, #4]
 	mov r2, ip
-	bl sub_8012AF0
+	bl StartSpriteAnimProc
 	mov r5, sb
 	str r0, [r5]
 	mov r1, sl
@@ -20895,7 +20718,7 @@ sub_80B59AC: @ 0x080B59AC
 	str r4, [sp]
 	movs r4, #7
 	str r4, [sp, #4]
-	bl sub_8012AF0
+	bl StartSpriteAnimProc
 	ldr r1, [r6, #0x38]
 	adds r1, #0x30
 	adds r1, r1, r5
@@ -21004,7 +20827,7 @@ sub_80B5A80: @ 0x080B5A80
 	str r7, [sp]
 	movs r4, #0xa
 	str r4, [sp, #4]
-	bl sub_8012AF0
+	bl StartSpriteAnimProc
 	ldr r1, [r6, #0x3c]
 	adds r1, #0x30
 	adds r1, r1, r5
@@ -30766,7 +30589,7 @@ _080BA806:
 	str r5, [sp, #4]
 	movs r2, #2
 	movs r3, #0x17
-	bl sub_80AB7F4
+	bl StartMixPalette
 	add sp, #0x10
 	pop {r3, r4, r5}
 	mov r8, r3
@@ -31705,7 +31528,7 @@ _080BAF4A:
 	adds r0, r6, #0
 	mov r1, r8
 	movs r2, #0x48
-	bl sub_8012AF0
+	bl StartSpriteAnimProc
 	str r0, [r7, #0x30]
 	movs r5, #0x80
 	lsls r5, r5, #3
@@ -31716,7 +31539,7 @@ _080BAF4A:
 	mov r1, r8
 	movs r2, #0x48
 	adds r3, r5, #0
-	bl sub_8012AF0
+	bl StartSpriteAnimProc
 	str r0, [r7, #0x34]
 	movs r0, #3
 	str r0, [sp]
@@ -31725,7 +31548,7 @@ _080BAF4A:
 	mov r1, r8
 	movs r2, #0x30
 	adds r3, r5, #0
-	bl sub_8012AF0
+	bl StartSpriteAnimProc
 	str r0, [r7, #0x38]
 	movs r0, #4
 	str r0, [sp]
@@ -31734,7 +31557,7 @@ _080BAF4A:
 	mov r1, r8
 	movs r2, #0x80
 	adds r3, r5, #0
-	bl sub_8012AF0
+	bl StartSpriteAnimProc
 	str r0, [r7, #0x3c]
 	movs r0, #5
 	str r0, [sp]
@@ -31743,7 +31566,7 @@ _080BAF4A:
 	mov r1, r8
 	movs r2, #0x68
 	adds r3, r5, #0
-	bl sub_8012AF0
+	bl StartSpriteAnimProc
 	str r0, [r7, #0x40]
 	movs r0, #6
 	str r0, [sp]
@@ -31752,7 +31575,7 @@ _080BAF4A:
 	mov r1, r8
 	movs r2, #0x90
 	adds r3, r5, #0
-	bl sub_8012AF0
+	bl StartSpriteAnimProc
 	str r0, [r7, #0x44]
 	add sp, #8
 	pop {r3}
@@ -32549,7 +32372,7 @@ sub_80BB62C: @ 0x080BB62C
 	str r1, [sp, #4]
 	movs r1, #0x78
 	movs r3, #0
-	bl sub_8012AF0
+	bl StartSpriteAnimProc
 	movs r0, #0x21
 	rsbs r0, r0, #0
 	ldrb r1, [r7, #1]
@@ -32913,7 +32736,7 @@ _080BB95C:
 	ldr r2, [r5, #0x44]
 	movs r3, #1
 	rsbs r3, r3, #0
-	bl sub_8012B70
+	bl SetSpriteAnimProcParameters
 	b _080BBA56
 _080BB97A:
 	subs r4, r7, r6
@@ -33014,7 +32837,7 @@ _080BBA30:
 	movs r3, #1
 	rsbs r3, r3, #0
 	mov r1, sb
-	bl sub_8012B70
+	bl SetSpriteAnimProcParameters
 	b _080BBA56
 	.align 2, 0
 _080BBA44: .4byte gDispIo
@@ -33024,7 +32847,7 @@ _080BBA48:
 	rsbs r3, r3, #0
 	mov r1, sb
 	mov r2, r8
-	bl sub_8012B70
+	bl SetSpriteAnimProcParameters
 _080BBA56:
 	pop {r3, r4}
 	mov r8, r3
@@ -33833,7 +33656,7 @@ _080BC064:
 	movs r2, #0xa
 	str r2, [sp, #4]
 	movs r2, #0x50
-	bl sub_8012AF0
+	bl StartSpriteAnimProc
 _080BC0B6:
 	ldr r4, _080BC0F0 @ =0x03001620
 	ldr r0, [r4]
@@ -34502,7 +34325,7 @@ sub_80BC664: @ 0x080BC664
 	str r1, [sp, #4]
 	movs r1, #0x78
 	movs r2, #0x50
-	bl sub_8012AF0
+	bl StartSpriteAnimProc
 	add sp, #8
 	pop {r0}
 	bx r0
@@ -37599,7 +37422,7 @@ sub_80BDE68: @ 0x080BDE68
 	str r5, [sp, #4]
 	adds r0, r6, #0
 	mov r3, r8
-	bl sub_8012AF0
+	bl StartSpriteAnimProc
 	str r0, [r4, #0x2c]
 	movs r0, #0x3a
 	ldrsh r1, [r4, r0]
@@ -37610,7 +37433,7 @@ sub_80BDE68: @ 0x080BDE68
 	str r5, [sp, #4]
 	adds r0, r6, #0
 	mov r3, r8
-	bl sub_8012AF0
+	bl StartSpriteAnimProc
 	str r0, [r4, #0x30]
 	add sp, #8
 	pop {r3}
@@ -37696,7 +37519,7 @@ _080BDF3C:
 	adds r0, r7, #0
 	movs r3, #0xe6
 	lsls r3, r3, #6
-	bl sub_8012B70
+	bl SetSpriteAnimProcParameters
 _080BDF4E:
 	movs r3, #1
 	add sb, r3

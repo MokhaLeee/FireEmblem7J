@@ -5369,7 +5369,7 @@ _080A1B22:
 	ldr r0, _080A1BE8 @ =gBmSt
 	adds r0, #0x3c
 	strb r4, [r0]
-	bl sub_80A22DC
+	bl WriteSwappedSuspendSaveId
 _080A1BA0:
 	add sp, #0x20
 	pop {r3, r4, r5}
@@ -6271,8 +6271,8 @@ sub_80A22CC: @ 0x080A22CC
 	pop {r1}
 	bx r1
 
-	thumb_func_start sub_80A22DC
-sub_80A22DC: @ 0x080A22DC
+	thumb_func_start WriteSwappedSuspendSaveId
+WriteSwappedSuspendSaveId: @ 0x080A22DC
 	push {lr}
 	sub sp, #0x64
 	mov r0, sp

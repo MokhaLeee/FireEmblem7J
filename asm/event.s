@@ -12366,7 +12366,7 @@ sub_800FF38: @ 0x0800FF38
 	movs r2, #0xd
 	str r2, [sp, #4]
 	movs r2, #0
-	bl sub_8012AF0
+	bl StartSpriteAnimProc
 	str r0, [r4, #0x2c]
 	adds r1, r4, #0
 	adds r1, #0x48
@@ -12447,7 +12447,7 @@ _0800FFDA:
 	adds r1, #0x4a
 	ldrh r3, [r1]
 	adds r1, r4, #0
-	bl sub_8012B70
+	bl SetSpriteAnimProcParameters
 	mov r3, r8
 	ldrh r0, [r3]
 	adds r0, #1
@@ -12732,7 +12732,7 @@ sub_80101C8: @ 0x080101C8
 	str r4, [sp]
 	movs r4, #0xd
 	str r4, [sp, #4]
-	bl sub_8012AF0
+	bl StartSpriteAnimProc
 	str r0, [r5, #0x30]
 	adds r0, r5, #0
 	adds r0, #0x3a
@@ -12813,7 +12813,7 @@ sub_8010230: @ 0x08010230
 	str r0, [sp, #4]
 	mov r0, sb
 	adds r1, r4, #0
-	bl sub_8012AF0
+	bl StartSpriteAnimProc
 _080102B0:
 	ldrb r7, [r7]
 	cmp r7, #0x50

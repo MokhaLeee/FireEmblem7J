@@ -1440,9 +1440,11 @@ extern u8 Img_SysBrownBox[];
 // ??? gUnk_08C015DC
 // ??? gUnk_08C0162C
 // ??? gUnk_08C01654
-// ??? gUnk_08C01674
+// ??? ProcScr_EventE8Handler
 // ??? gUnk_08C0169C
-// ??? gUnk_08C016FC
+
+/* sprite-anim.h */
+
 // ??? gUnk_08C01714
 // ??? gUnk_08C01744
 
@@ -2126,7 +2128,7 @@ extern uintptr_t ProcScr_CamMove[];
 
 /* sysutil.h */
 
-// ??? gUnk_08DAE4C4
+// ??? ProcScr_MixPalette
 // ??? gUnk_08DAE4E4
 // ??? gUnk_08DAE514
 // ??? gUnk_08DAEB64

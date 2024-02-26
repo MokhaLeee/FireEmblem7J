@@ -168,7 +168,7 @@ _08011C78:
 	lsls r1, r1, #1
 	movs r2, #0
 	ldr r3, _08011CB8 @ =0x00005040
-	bl sub_8012AF0
+	bl StartSpriteAnimProc
 	lsls r2, r4, #2
 	adds r1, r6, #0
 	adds r1, #0x44
@@ -283,7 +283,7 @@ _08011D30:
 	adds r2, r2, r3
 	movs r3, #1
 	rsbs r3, r3, #0
-	bl sub_8012B70
+	bl SetSpriteAnimProcParameters
 	adds r4, #0x20
 	adds r5, #1
 	cmp r5, #7
@@ -304,7 +304,7 @@ _08011D30:
 	movs r1, #4
 	str r1, [sp, #4]
 	ldr r1, [sp, #8]
-	bl sub_8012AF0
+	bl StartSpriteAnimProc
 _08011DA8:
 	ldr r0, [r6, #0x30]
 	cmp r0, #0xa0
@@ -993,7 +993,7 @@ sub_801227C: @ 0x0801227C
 	movs r3, #1
 	rsbs r3, r3, #0
 	adds r0, r6, #0
-	bl sub_8012B70
+	bl SetSpriteAnimProcParameters
 	b _080122C4
 	.align 2, 0
 _080122B4: .4byte gBmSt
@@ -1019,8 +1019,8 @@ _080122D8:
 	pop {r0}
 	bx r0
 
-	thumb_func_start sub_80122DC
-sub_80122DC: @ 0x080122DC
+	thumb_func_start EventE8
+EventE8: @ 0x080122DC
 	push {r4, r5, r6, lr}
 	adds r1, r0, #0
 	ldr r0, [r1, #0x30]
@@ -1061,7 +1061,7 @@ _08012314:
 	movs r0, #0
 	b _08012332
 _08012326:
-	ldr r0, _08012338 @ =gUnk_08C01674
+	ldr r0, _08012338 @ =ProcScr_EventE8Handler
 	bl Proc_Start
 	str r4, [r0, #0x2c]
 	str r5, [r0, #0x30]
@@ -1071,23 +1071,23 @@ _08012332:
 	pop {r1}
 	bx r1
 	.align 2, 0
-_08012338: .4byte gUnk_08C01674
+_08012338: .4byte ProcScr_EventE8Handler
 
 	thumb_func_start sub_801233C
 sub_801233C: @ 0x0801233C
 	push {lr}
-	ldr r0, _0801234C @ =gUnk_08C01674
+	ldr r0, _0801234C @ =ProcScr_EventE8Handler
 	bl Proc_Find
 	bl Proc_End
 	pop {r1}
 	bx r1
 	.align 2, 0
-_0801234C: .4byte gUnk_08C01674
+_0801234C: .4byte ProcScr_EventE8Handler
 
 	thumb_func_start sub_8012350
 sub_8012350: @ 0x08012350
 	push {lr}
-	ldr r0, _0801236C @ =gUnk_08C01674
+	ldr r0, _0801236C @ =ProcScr_EventE8Handler
 	bl Proc_Find
 	cmp r0, #0
 	beq _08012370
@@ -1101,7 +1101,7 @@ _08012368:
 	movs r0, #0
 	b _08012372
 	.align 2, 0
-_0801236C: .4byte gUnk_08C01674
+_0801236C: .4byte ProcScr_EventE8Handler
 _08012370:
 	movs r0, #1
 _08012372:
@@ -1139,7 +1139,7 @@ _08012398:
 	str r5, [sp, #4]
 	adds r0, r6, #0
 	adds r1, r7, #0
-	bl sub_80AB7F4
+	bl StartMixPalette
 _080123B2:
 	add sp, #8
 	pop {r4, r5, r6, r7}
@@ -1150,7 +1150,7 @@ _080123B2:
 	thumb_func_start sub_80123BC
 sub_80123BC: @ 0x080123BC
 	push {lr}
-	bl sub_80AB82C
+	bl EndMixPalette
 	pop {r1}
 	bx r1
 	.align 2, 0

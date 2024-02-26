@@ -8,6 +8,12 @@ enum times_amt {
     FRAMES_PER_HOUR   = 60 * FRAMES_PER_MINUTE,
 };
 
+enum {
+    /* DispCnt::obj_mapping */
+    OBJ_MAPPING_2D = 0,
+    OBJ_MAPPING_1D = 1,
+};
+
 #if MODERN
 #  define IO_ALIGNED(n) ALIGNED(n)
 #else
@@ -240,6 +246,10 @@ extern struct BgAffineDstData gOpAnimBgAffineDstData[2];
 #define TILEREF(chr, pal) ((chr) + ((pal) << 12))
 #define TILE_HFLIP 0x0400
 #define TILE_VFLIP 0x0800
+
+#define RED_MASK 0x1F
+#define GREEN_MASK (0x1F << 5)
+#define BLUE_MASK (0x1F << 10)
 
 #define PAL_COLOR_OFFSET(palid, colornum) (palid) * 0x10 + (colornum)
 #define PAL_OFFSET(palid) PAL_COLOR_OFFSET((palid), 0)
