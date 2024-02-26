@@ -1,23 +1,5 @@
 #include "gbafe.h"
 
-struct EventSpriteAnimConf {
-    /* 00 */ const u16 * pal;
-    /* 04 */ const u8  * img;
-    /* 08 */ const u8  * ap_conf;
-    /* 0C */ u16 oam0, oam2;
-    /* 10 */ u8 pal_bank, pal_size;
-
-    /* 12 */ u8 _pad_[2];
-};
-
-struct ProcEventSpriteAnim {
-    PROC_HEADER;
-
-    /* 2C */ int x, y;
-    /* 34 */ ProcPtr approc;
-    /* 38 */ const struct EventSpriteAnimConf * priv;
-};
-
 void EventSpriteAnim_Init(struct ProcEventSpriteAnim * proc)
 {
     int x = proc->x - gBmSt.camera.x + 8;
@@ -108,7 +90,7 @@ int EventE8_StartSpriteAnim(struct EventProc * proc)
     return ret;
 }
 
-int EndEventSpriteAnim()
+int EndEventSpriteAnim(void)
 {
 #if BUGFIX
     Proc_End(Proc_Find(ProcScr_EventSpriteAnim));

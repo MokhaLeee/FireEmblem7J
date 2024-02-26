@@ -448,12 +448,30 @@ bool EventThunderfxExists(void);
 // sub_80121F0
 // sub_80121FC
 
-// EventSpriteAnim_Init
-// EventSpriteAnim_Loop
-// EventSpriteAnim_End
-// EventE8_StartSpriteAnim
-// EndEventSpriteAnim
-// EventSpriteAnimExists
+struct EventSpriteAnimConf {
+    /* 00 */ const u16 * pal;
+    /* 04 */ const u8  * img;
+    /* 08 */ const u8  * ap_conf;
+    /* 0C */ u16 oam0, oam2;
+    /* 10 */ u8 pal_bank, pal_size;
+
+    /* 12 */ u8 _pad_[2];
+};
+
+struct ProcEventSpriteAnim {
+    PROC_HEADER;
+
+    /* 2C */ int x, y;
+    /* 34 */ ProcPtr approc;
+    /* 38 */ const struct EventSpriteAnimConf * priv;
+};
+
+void EventSpriteAnim_Init(struct ProcEventSpriteAnim * proc);
+void EventSpriteAnim_Loop(struct ProcEventSpriteAnim * proc);
+void EventSpriteAnim_End(struct ProcEventSpriteAnim * proc);
+int EventE8_StartSpriteAnim(struct EventProc * proc);
+int EndEventSpriteAnim(void);
+bool EventSpriteAnimExists(void);
 
 // sub_8012378
 // sub_80123BC
