@@ -1,20 +1,5 @@
 #include "gbafe.h"
 
-extern struct BmBgxConf BmBgfxConf_EventThunder[];
-extern struct ProcCmd ProcScr_EventThunderfx[];
-
-struct ProcEventThunderfx {
-    PROC_HEADER;
-
-    STRUCT_PAD(0x29, 0x30);
-
-    /* 30 */ int unk30;
-
-    STRUCT_PAD(0x34, 0x3C);
-
-    /* 3C */ int x, y;
-};
-
 void EventThunderfx_Init(struct ProcEventThunderfx * proc)
 {
     gDispIo.bg0_ct.priority = 0;

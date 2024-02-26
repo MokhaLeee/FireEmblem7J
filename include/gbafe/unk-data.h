@@ -361,7 +361,7 @@ extern u8 Tsa_QuintessenceFx[];
 // ??? gUnk_086C4808
 // ??? gUnk_086EA858
 // ??? gUnk_086EA8D0
-// ??? gUnk_08BBB370
+// ??? gMsgTable
 
 // ??? gUnk_081C9108
 // ??? gUnk_081C9150
@@ -1434,15 +1434,7 @@ extern u8 Img_SysBrownBox[];
 // ??? gUnk_08C0127C
 // ??? gUnk_08C012BC
 
-/* eventscr_bmfxthunder.c */
-
-// ??? gUnk_08C013F0
-// ??? gUnk_08C015DC
-// ??? gUnk_08C0162C
-// ??? gUnk_08C01654
-// ??? ProcScr_EventE8Handler
-// ??? gUnk_08C0169C
-
+/* event.h */
 /* sprite-anim.h */
 
 // ??? gUnk_08C01714

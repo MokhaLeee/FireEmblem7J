@@ -264,3 +264,19 @@ struct ProcMixPalette {
     /* 3C */ u16 * srcA;
     /* 40 */ u16 * srcB;
 };
+
+extern struct ProcCmd CONST_DATA ProcScr_MixPalette[];
+
+void MixPaletteCore(struct ProcMixPalette * proc, int val);
+void MixPalette_Init(struct ProcMixPalette * proc);
+void MixPalette_Loop(struct ProcMixPalette * proc);
+void StartMixPalette(u16 * palA, u16 * palB, int speed, int targetPalId, int palCount, ProcPtr parent);
+void EndMixPalette(void);
+
+ProcPtr StartSpriteAnimfx(const u8 * gfx, const u16 * pal, const void * info, int x, int y, int animId, int palId, int palCount, u16 chr, int layer);
+
+int GetBgXOffset(int bg);
+int GetBgYOffset(int bg);
+
+char * AppendString(const char * src, char * dst);
+char * AppendCharacter(int ch, char * str);

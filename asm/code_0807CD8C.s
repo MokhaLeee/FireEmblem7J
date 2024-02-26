@@ -97,7 +97,7 @@ sub_807CE14: @ 0x0807CE14
 	bl sub_8077CEC
 	adds r5, r0, #0
 	movs r0, #0
-	bl sub_80AB8FC
+	bl GetBgYOffset
 	lsls r0, r0, #0x10
 	asrs r0, r0, #0x10
 	movs r2, #0
@@ -117,7 +117,7 @@ sub_807CE14: @ 0x0807CE14
 	bl sub_8077CEC
 	adds r5, r0, #0
 	movs r0, #0
-	bl sub_80AB8B4
+	bl GetBgXOffset
 	lsls r0, r0, #0x10
 	asrs r0, r0, #0x10
 	movs r2, #0

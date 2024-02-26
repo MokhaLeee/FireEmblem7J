@@ -1001,7 +1001,7 @@ DecodeMsg: @ 0x08013318
 	ldr r0, [r6]
 	cmp r5, r0
 	beq _08013348
-	ldr r1, _08013340 @ =gUnk_08BBB370
+	ldr r1, _08013340 @ =gMsgTable
 	lsls r0, r5, #2
 	adds r0, r0, r1
 	ldr r0, [r0]
@@ -1013,7 +1013,7 @@ DecodeMsg: @ 0x08013318
 	b _0801334A
 	.align 2, 0
 _0801333C: .4byte 0x0202B5B0
-_08013340: .4byte gUnk_08BBB370
+_08013340: .4byte gMsgTable
 _08013344: .4byte 0x0202A5B0
 _08013348:
 	ldr r0, _08013350 @ =0x0202A5B0
@@ -1024,11 +1024,11 @@ _0801334A:
 	.align 2, 0
 _08013350: .4byte 0x0202A5B0
 
-	thumb_func_start sub_8013354
-sub_8013354: @ 0x08013354
+	thumb_func_start DecodeMsgInBuffer
+DecodeMsgInBuffer: @ 0x08013354
 	push {r4, lr}
 	adds r4, r1, #0
-	ldr r1, _08013370 @ =gUnk_08BBB370
+	ldr r1, _08013370 @ =gMsgTable
 	lsls r0, r0, #2
 	adds r0, r0, r1
 	ldr r0, [r0]
@@ -1039,7 +1039,7 @@ sub_8013354: @ 0x08013354
 	pop {r1}
 	bx r1
 	.align 2, 0
-_08013370: .4byte gUnk_08BBB370
+_08013370: .4byte gMsgTable
 
 	thumb_func_start sub_8013374
 sub_8013374: @ 0x08013374

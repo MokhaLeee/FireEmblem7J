@@ -49,3 +49,4 @@
 #include "gbafe/bmfx.h"
 #include "gbafe/face.h"
 #include "gbafe/sprite-anim.h"
+#include "gbafe/msg.h"

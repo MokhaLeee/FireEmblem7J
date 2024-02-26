@@ -1568,3 +1568,64 @@ void EndMixPalette(void)
 {
     Proc_End(Proc_Find(ProcScr_MixPalette));
 }
+
+ProcPtr StartSpriteAnimfx(const u8 * gfx, const u16 * pal, const void * info, int x, int y, int animId, int palId, int palCount, u16 chr, int layer)
+{
+    if (gfx != NULL)
+        Decompress(gfx, OBJ_VRAM0 + OAM2_CHR(chr) * CHR_SIZE);
+
+    if (pal != NULL)
+    {
+        ApplyPalettes(pal, (palId + 0x10), palCount);
+    }
+
+    return StartSpriteAnimProc(info, x, y, OAM2_PAL(palId) + chr, animId, layer);
+}
+
+int GetBgXOffset(int bg)
+{
+    switch (bg) {
+    case BG_0:
+        return gDispIo.bg_off[BG_0].x;
+
+    case BG_1:
+        return gDispIo.bg_off[BG_1].x;
+
+    case BG_2:
+        return gDispIo.bg_off[BG_2].x;
+
+    case BG_3:
+        return gDispIo.bg_off[BG_3].x;
+    }
+}
+
+int GetBgYOffset(int bg)
+{
+    switch (bg) {
+    case BG_0:
+        return gDispIo.bg_off[BG_0].y;
+
+    case BG_1:
+        return gDispIo.bg_off[BG_1].y;
+
+    case BG_2:
+        return gDispIo.bg_off[BG_2].y;
+
+    case BG_3:
+        return gDispIo.bg_off[BG_3].y;
+    }
+}
+
+char * AppendString(const char * src, char * dst)
+{
+    strcpy(dst, src);
+    return dst + strlen(src);
+}
+
+char * AppendCharacter(int ch, char * str)
+{
+    *str = ch;
+    str++;
+    *str = '\0';
+    return str;
+}

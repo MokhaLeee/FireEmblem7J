@@ -26,25 +26,3 @@ gUnk_08C01654:	@ 0x08C01654
 	@ PROC_END
 	.short 0x0, 0x0
 	.word 0x0
-
-	.global ProcScr_EventE8Handler
-ProcScr_EventE8Handler:	@ 0x08C01674
-	@ PROC_YIELD
-	.short 0xe, 0x0
-	.word 0x0
-	@ PROC_SET_END_CB
-	.short 0x4, 0x0
-	.word sub_80122CC
-	@ PROC_CALL
-	.short 0x2, 0x0
-	.word sub_8012214
-	@ PROC_REPEAT
-	.short 0x3, 0x0
-	.word sub_801227C
-	@ PROC_END
-	.short 0x0, 0x0
-	.word 0x0
-
-	.global gUnk_08C0169C
-gUnk_08C0169C:	@ 0x08C0169C
-	.incbin "FireEmblem7J.base.gba", 0xC0169C, 0xC016FC - 0xC0169C

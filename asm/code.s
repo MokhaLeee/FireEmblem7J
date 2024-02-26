@@ -32628,7 +32628,7 @@ _0807B608:
 	cmp r1, #0
 	beq _0807B62C
 	movs r0, #3
-	bl sub_80AB8B4
+	bl GetBgXOffset
 	adds r1, r0, #0
 	movs r0, #1
 	eors r1, r0
@@ -32900,7 +32900,7 @@ _0807B830:
 	cmp r1, #0
 	beq _0807B854
 	movs r0, #3
-	bl sub_80AB8B4
+	bl GetBgXOffset
 	adds r1, r0, #0
 	movs r0, #1
 	eors r1, r0
@@ -33007,7 +33007,7 @@ sub_807B8E4: @ 0x0807B8E4
 	bl sub_8077CEC
 	adds r5, r0, #0
 	movs r0, #3
-	bl sub_80AB8B4
+	bl GetBgXOffset
 	ldr r1, [r4, #0x58]
 	lsls r1, r1, #0x10
 	asrs r1, r1, #0x10
@@ -33020,7 +33020,7 @@ sub_807B8E4: @ 0x0807B8E4
 	adds r4, #0x64
 	ldrh r4, [r4]
 	movs r0, #3
-	bl sub_80AB8B4
+	bl GetBgXOffset
 	adds r1, r0, #0
 	lsls r1, r1, #0x10
 	lsrs r1, r1, #0x10
@@ -33555,7 +33555,7 @@ sub_807BD6C: @ 0x0807BD6C
 	movs r1, #4
 	str r1, [sp, #0x14]
 	adds r1, r6, #0
-	bl sub_80AB840
+	bl StartSpriteAnimfx
 	add sp, #0x18
 	pop {r4, r5, r6}
 	pop {r0}
@@ -33875,7 +33875,7 @@ sub_807BFEC: @ 0x0807BFEC
 	adds r1, r2, #0
 	orrs r0, r1
 	strh r0, [r3, #0x3c]
-	ldr r0, _0807C07C @ =ProcScr_EventE8Handler
+	ldr r0, _0807C07C @ =ProcScr_EventSpriteAnim
 	bl Proc_Find
 	bl Proc_End
 	movs r0, #0x70
@@ -33907,7 +33907,7 @@ sub_807BFEC: @ 0x0807BFEC
 _0807C070: .4byte gDispIo
 _0807C074: .4byte 0x0000FFE0
 _0807C078: .4byte 0x0000E0FF
-_0807C07C: .4byte ProcScr_EventE8Handler
+_0807C07C: .4byte ProcScr_EventSpriteAnim
 
 	thumb_func_start sub_807C080
 sub_807C080: @ 0x0807C080

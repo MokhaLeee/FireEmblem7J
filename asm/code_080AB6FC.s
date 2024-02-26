@@ -1,172 +1,6 @@
 	.include "macro.inc"
 	.syntax unified
 
-	thumb_func_start sub_80AB840
-sub_80AB840: @ 0x080AB840
-	push {r4, r5, r6, r7, lr}
-	mov r7, sb
-	mov r6, r8
-	push {r6, r7}
-	sub sp, #8
-	adds r5, r0, #0
-	adds r6, r1, #0
-	mov r8, r2
-	mov sb, r3
-	ldr r4, [sp, #0x2c]
-	ldr r0, [sp, #0x34]
-	lsls r0, r0, #0x10
-	lsrs r0, r0, #0x10
-	adds r7, r0, #0
-	cmp r5, #0
-	beq _080AB870
-	ldr r1, _080AB8AC @ =0x000003FF
-	ands r1, r0
-	lsls r1, r1, #5
-	ldr r0, _080AB8B0 @ =0x06010000
-	adds r1, r1, r0
-	adds r0, r5, #0
-	bl Decompress
-_080AB870:
-	cmp r6, #0
-	beq _080AB884
-	adds r1, r4, #0
-	adds r1, #0x10
-	lsls r1, r1, #5
-	ldr r2, [sp, #0x30]
-	lsls r2, r2, #5
-	adds r0, r6, #0
-	bl ApplyPaletteExt
-_080AB884:
-	movs r0, #0xf
-	ands r4, r0
-	lsls r3, r4, #0xc
-	adds r3, r3, r7
-	ldr r0, [sp, #0x28]
-	str r0, [sp]
-	ldr r0, [sp, #0x38]
-	str r0, [sp, #4]
-	mov r0, r8
-	mov r1, sb
-	ldr r2, [sp, #0x24]
-	bl StartSpriteAnimProc
-	add sp, #8
-	pop {r3, r4}
-	mov r8, r3
-	mov sb, r4
-	pop {r4, r5, r6, r7}
-	pop {r1}
-	bx r1
-	.align 2, 0
-_080AB8AC: .4byte 0x000003FF
-_080AB8B0: .4byte 0x06010000
-
-	thumb_func_start sub_80AB8B4
-sub_80AB8B4: @ 0x080AB8B4
-	cmp r0, #1
-	beq _080AB8D8
-	cmp r0, #1
-	bgt _080AB8C2
-	cmp r0, #0
-	beq _080AB8CC
-	b _080AB8F4
-_080AB8C2:
-	cmp r0, #2
-	beq _080AB8E4
-	cmp r0, #3
-	beq _080AB8F0
-	b _080AB8F4
-_080AB8CC:
-	ldr r0, _080AB8D4 @ =gDispIo
-	ldrh r0, [r0, #0x1c]
-	b _080AB8F4
-	.align 2, 0
-_080AB8D4: .4byte gDispIo
-_080AB8D8:
-	ldr r0, _080AB8E0 @ =gDispIo
-	ldrh r0, [r0, #0x20]
-	b _080AB8F4
-	.align 2, 0
-_080AB8E0: .4byte gDispIo
-_080AB8E4:
-	ldr r0, _080AB8EC @ =gDispIo
-	ldrh r0, [r0, #0x24]
-	b _080AB8F4
-	.align 2, 0
-_080AB8EC: .4byte gDispIo
-_080AB8F0:
-	ldr r0, _080AB8F8 @ =gDispIo
-	ldrh r0, [r0, #0x28]
-_080AB8F4:
-	bx lr
-	.align 2, 0
-_080AB8F8: .4byte gDispIo
-
-	thumb_func_start sub_80AB8FC
-sub_80AB8FC: @ 0x080AB8FC
-	cmp r0, #1
-	beq _080AB920
-	cmp r0, #1
-	bgt _080AB90A
-	cmp r0, #0
-	beq _080AB914
-	b _080AB93C
-_080AB90A:
-	cmp r0, #2
-	beq _080AB92C
-	cmp r0, #3
-	beq _080AB938
-	b _080AB93C
-_080AB914:
-	ldr r0, _080AB91C @ =gDispIo
-	ldrh r0, [r0, #0x1e]
-	b _080AB93C
-	.align 2, 0
-_080AB91C: .4byte gDispIo
-_080AB920:
-	ldr r0, _080AB928 @ =gDispIo
-	ldrh r0, [r0, #0x22]
-	b _080AB93C
-	.align 2, 0
-_080AB928: .4byte gDispIo
-_080AB92C:
-	ldr r0, _080AB934 @ =gDispIo
-	ldrh r0, [r0, #0x26]
-	b _080AB93C
-	.align 2, 0
-_080AB934: .4byte gDispIo
-_080AB938:
-	ldr r0, _080AB940 @ =gDispIo
-	ldrh r0, [r0, #0x2a]
-_080AB93C:
-	bx lr
-	.align 2, 0
-_080AB940: .4byte gDispIo
-
-	thumb_func_start sub_80AB944
-sub_80AB944: @ 0x080AB944
-	push {r4, r5, lr}
-	adds r5, r0, #0
-	adds r4, r1, #0
-	adds r0, r4, #0
-	adds r1, r5, #0
-	bl strcpy
-	adds r0, r5, #0
-	bl strlen
-	adds r4, r4, r0
-	adds r0, r4, #0
-	pop {r4, r5}
-	pop {r1}
-	bx r1
-	.align 2, 0
-
-	thumb_func_start sub_80AB964
-sub_80AB964: @ 0x080AB964
-	strb r0, [r1]
-	adds r1, #1
-	movs r0, #0
-	strb r0, [r1]
-	adds r0, r1, #0
-	bx lr
 
 	thumb_func_start sub_80AB970
 sub_80AB970: @ 0x080AB970
@@ -211,9 +45,9 @@ _080AB9AA:
 	ldr r0, _080AB9DC @ =0x0000117D
 	add r4, sp, #0x28
 	adds r1, r4, #0
-	bl sub_8013354
+	bl DecodeMsgInBuffer
 	adds r1, r5, #0
-	bl sub_80AB944
+	bl AppendString
 	adds r5, r0, #0
 	ldr r0, _080AB9E0 @ =0x00001182
 	adds r1, r4, #0
@@ -230,9 +64,9 @@ _080AB9E4:
 	beq _080AB9FC
 	ldr r0, _080ABA98 @ =0x0000117A
 	adds r1, r6, #0
-	bl sub_8013354
+	bl DecodeMsgInBuffer
 	adds r1, r5, #0
-	bl sub_80AB944
+	bl AppendString
 	adds r5, r0, #0
 _080AB9FC:
 	cmp r4, #9
@@ -244,9 +78,9 @@ _080AB9FC:
 	add r0, sp
 	ldr r0, [r0]
 	adds r1, r6, #0
-	bl sub_8013354
+	bl DecodeMsgInBuffer
 	adds r1, r5, #0
-	bl sub_80AB944
+	bl AppendString
 	adds r5, r0, #0
 _080ABA1C:
 	adds r0, r4, #0
@@ -257,15 +91,15 @@ _080ABA1C:
 	ldr r0, [r0]
 	adds r4, r6, #0
 	adds r1, r4, #0
-	bl sub_8013354
+	bl DecodeMsgInBuffer
 	adds r1, r5, #0
-	bl sub_80AB944
+	bl AppendString
 	adds r5, r0, #0
 	ldr r0, _080ABA9C @ =0x0000117B
 	adds r1, r4, #0
-	bl sub_8013354
+	bl DecodeMsgInBuffer
 	adds r1, r5, #0
-	bl sub_80AB944
+	bl AppendString
 	adds r5, r0, #0
 	adds r0, r7, #0
 	bl GetROMChapterStruct
@@ -286,17 +120,17 @@ _080ABA5E:
 	beq _080ABA7C
 	ldr r0, _080ABAA4 @ =0x0000117C
 	adds r1, r4, #0
-	bl sub_8013354
+	bl DecodeMsgInBuffer
 	adds r1, r5, #0
-	bl sub_80AB944
+	bl AppendString
 	adds r5, r0, #0
 _080ABA7C:
 	ldr r0, _080ABAA8 @ =0x00001182
 	adds r1, r6, #0
 _080ABA80:
-	bl sub_8013354
+	bl DecodeMsgInBuffer
 	adds r1, r5, #0
-	bl sub_80AB944
+	bl AppendString
 	adds r5, r0, #0
 	add sp, #0x48
 	pop {r3}
@@ -6048,7 +5882,7 @@ sub_80AE740: @ 0x080AE740
 	adds r7, r0, #0
 	ldr r0, _080AE898 @ =0x000010A7
 	add r1, sp, #0xc
-	bl sub_8013354
+	bl DecodeMsgInBuffer
 	adds r6, r0, #0
 	adds r0, r7, #0
 	bl GetStringTextLen
@@ -25321,15 +25155,15 @@ _080B7DD0:
 	adds r0, r0, r1
 	ldrh r0, [r0]
 	mov r1, sp
-	bl sub_8013354
+	bl DecodeMsgInBuffer
 	ldr r1, [r4]
-	bl sub_80AB944
+	bl AppendString
 	str r0, [r5]
 	ldr r0, _080B7E00 @ =0x00001182
 	mov r1, sp
-	bl sub_8013354
+	bl DecodeMsgInBuffer
 	ldr r1, [r5]
-	bl sub_80AB944
+	bl AppendString
 	str r0, [r5]
 	b _080B7D88
 	.align 2, 0
@@ -27230,11 +27064,11 @@ _080B8CAE:
 	ldrh r0, [r0]
 	bl DecodeMsg
 	adds r1, r4, #0
-	bl sub_80AB944
+	bl AppendString
 	adds r4, r0, #0
 	movs r0, #1
 	adds r1, r4, #0
-	bl sub_80AB964
+	bl AppendCharacter
 	adds r4, r0, #0
 	cmp r7, #5
 	bhi _080B8D54
@@ -27295,7 +27129,7 @@ _080B8D3C:
 _080B8D3E:
 	bl DecodeMsg
 	adds r1, r4, #0
-	bl sub_80AB944
+	bl AppendString
 	b _080B8D54
 	.align 2, 0
 _080B8D4C: .4byte 0x00001087
