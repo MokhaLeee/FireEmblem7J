@@ -36,7 +36,7 @@
 #include "gbafe/proc.h"
 #include "gbafe/item.h"
 #include "gbafe/arena.h"
-#include "gbafe/soundwrapper.h"
+#include "gbafe/sound.h"
 #include "gbafe/util.h"
 #include "gbafe/faction.h"
 #include "gbafe/irq.h"

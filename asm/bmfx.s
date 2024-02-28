@@ -5485,7 +5485,7 @@ sub_8020350: @ 0x08020350
 	movs r0, #0xf
 	strh r0, [r4]
 	movs r0, #1
-	bl sub_80035EC
+	bl Sound_FadeOutSE
 	pop {r4}
 	pop {r0}
 	bx r0

@@ -1865,9 +1865,9 @@ extern uintptr_t ProcScr_CamMove[];
 // ??? gUnk_08D6F798
 // ??? gUnk_08D6F7B4
 // ??? gUnk_08D6F7D4
-// ??? gUnk_08D6F7EC
-// ??? gUnk_08D6F81C
-// ??? gUnk_08D6F834
+// ??? ProcScr_EventHorizontalQuakefx
+// ??? ProcScr_EventVerticalQuakefx
+// ??? ProcScr_EventQuakefx
 // ??? gUnk_08D6F854
 // ??? gUnk_08D6F8AC
 // ??? gUnk_08D6F8BC

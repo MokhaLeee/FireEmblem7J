@@ -247,6 +247,8 @@ SECTIONS
 		src/banim-ekrdragonfx.o(.text);
 		asm/code-banim2.o(.text);
 		asm/code.o(.text);
+		src/eventcall_quakefx.o(.text);
+		asm/code_807B7C8.o(.text);
 		src/quintessence-fx.o(.text);
 		asm/code_0807CD8C.o(.text);
 		src/save_core.o(.text);
@@ -320,6 +322,8 @@ SECTIONS
 		. = ALIGN(4); src/banim-ekrdragonfx.o(.data)
 		. = ALIGN(4); src/banim-ekrdragonfx-data.o(.data)
 		. = ALIGN(4); data/data_08C486EC.o(.data)
+		. = ALIGN(4); src/eventcall_quakefx.o(.data)
+		. = ALIGN(4); data/data_08D6F834.o(.data)
 		. = ALIGN(4); src/quintessence-fx.o(.data)
 		. = ALIGN(4); data/data_08D6FAC4.o(.data)
 		. = ALIGN(4); data/data_08D7C3BC.o(.data)

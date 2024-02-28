@@ -598,7 +598,7 @@ sub_807D228: @ 0x0807D228
 	strh r0, [r1]
 	bl ArchiveCurrentPalettes
 	adds r0, r4, #0
-	bl sub_807B750
+	bl StartEventHorizontalQuakefxViolentlyNoSound
 	pop {r4}
 	pop {r0}
 	bx r0
@@ -625,7 +625,7 @@ sub_807D248: @ 0x0807D248
 	cmp r1, r0
 	bne _0807D27E
 	adds r0, r5, #0
-	bl EventCall_Ch31x_NinianPrayEffect2
+	bl StartEventHorizontalQuakefxSlightlyNoSound
 	movs r0, #0
 	strh r0, [r4]
 	adds r0, r5, #0
@@ -2907,7 +2907,7 @@ sub_807E3BC: @ 0x0807E3BC
 	ands r0, r1
 	strh r0, [r2, #0xc]
 	movs r0, #4
-	bl sub_80035EC
+	bl Sound_FadeOutSE
 	pop {r0}
 	bx r0
 	.align 2, 0
@@ -5720,7 +5720,7 @@ sub_807F958: @ 0x0807F958
 	movs r3, #0
 	bl sub_807F448
 	adds r0, r6, #0
-	bl sub_807B878
+	bl StartEventQuakefx
 	add sp, #8
 	pop {r4, r5, r6}
 	pop {r0}

@@ -273,8 +273,8 @@ _080035E0: .4byte 0x03005A30
 _080035E4: .4byte 0x03005C40
 _080035E8: .4byte 0x02024E14
 
-	thumb_func_start sub_80035EC
-sub_80035EC: @ 0x080035EC
+	thumb_func_start Sound_FadeOutSE
+Sound_FadeOutSE: @ 0x080035EC
 	push {r7, lr}
 	sub sp, #4
 	mov r7, sp
