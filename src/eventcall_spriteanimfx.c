@@ -1,6 +1,6 @@
 #include "gbafe.h"
 
-void EventSpriteAnimfx_Init(struct ProcEventSpriteAnimfx * proc)
+void EventDragonsDownfx_Init(struct ProcEventDragonsDownfx * proc)
 {
     int i;
     proc->unk6B = 0;
@@ -13,7 +13,7 @@ void EventSpriteAnimfx_Init(struct ProcEventSpriteAnimfx * proc)
     }
 }
 
-void EventSpriteAnimfx_End(struct ProcEventSpriteAnimfx * proc)
+void EventDragonsDownfx_End(struct ProcEventDragonsDownfx * proc)
 {
     int i;
     for (i = 0; i < 3; i++)
@@ -23,9 +23,9 @@ void EventSpriteAnimfx_End(struct ProcEventSpriteAnimfx * proc)
     }
 }
 
-struct ProcCmd CONST_DATA ProcScr_EventSpriteAnimfx[] = {
-    PROC_CALL(EventSpriteAnimfx_Init),
-    PROC_SET_END_CB(EventSpriteAnimfx_End),
-    PROC_REPEAT(EventSpriteAnimfx_Loop),
+struct ProcCmd CONST_DATA ProcScr_EventDragonsDownfx[] = {
+    PROC_CALL(EventDragonsDownfx_Init),
+    PROC_SET_END_CB(EventDragonsDownfx_End),
+    PROC_REPEAT(EventDragonsDownfx_Loop),
     PROC_END,
 };

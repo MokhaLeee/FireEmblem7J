@@ -895,7 +895,7 @@ void EndEventQuakefx(struct ProcEventQuakeHandler * proc);
 // sub_807F1B8
 // sub_807F1DC
 
-struct ProcEventSpriteAnimfx {
+struct ProcEventDragonsDownfx {
     PROC_HEADER;
 
     /* 2C */ ProcPtr approc[3];
@@ -911,11 +911,11 @@ struct ProcEventSpriteAnimfx {
     /* 6B */ u8 unk6B;
 };
 
-void EventSpriteAnimfx_Init(struct ProcEventSpriteAnimfx * proc);
-void EventSpriteAnimfx_End(struct ProcEventSpriteAnimfx * proc);
-void EventSpriteAnimfx_Loop(struct ProcEventSpriteAnimfx * proc);
-// sub_807F3FC
-// sub_807F438
+void EventDragonsDownfx_Init(struct ProcEventDragonsDownfx * proc);
+void EventDragonsDownfx_End(struct ProcEventDragonsDownfx * proc);
+void EventDragonsDownfx_Loop(struct ProcEventDragonsDownfx * proc);
+// StartEventDragonsDownfx
+// EndEventDragonsDownfx
 // sub_807F448
 // sub_807F550
 // sub_807F590

@@ -144,8 +144,8 @@ extern u8 Tsa_QuintessenceFx[];
 // ??? gUnk_081C2358
 // ??? gUnk_081C2974
 // ??? gUnk_081C2D44
-// ??? gUnk_081C3850
-// ??? gUnk_081C564C
+// ??? Img_EventDragonsDownfx1
+// ??? Img_EventDragonsDownfx2
 // ??? gUnk_081C6BAC
 // ??? gUnk_081C6C34
 // ??? gUnk_081C6E34
@@ -1886,7 +1886,7 @@ extern uintptr_t ProcScr_CamMove[];
 // ??? gUnk_08D837E8
 // ??? gUnk_08D837F8
 // ??? gUnk_08D87684
-// ??? ProcScr_EventSpriteAnimfx
+// ??? ProcScr_EventDragonsDownfx
 // ??? gUnk_08D87F48
 // ??? gUnk_08D87F68
 // ??? gUnk_08D8977C
