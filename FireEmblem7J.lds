@@ -251,8 +251,8 @@ SECTIONS
 		asm/code_807B7C8.o(.text);
 		src/quintessence-fx.o(.text);
 		asm/code_0807CD8C.o(.text);
-		src/eventcall_bganimfx.o(.text);
-		asm/eventcall_bganimfx.o(.text);
+		src/eventcall_spriteanimfx.o(.text);
+		asm/eventcall_spriteanimfx.o(.text);
 		asm/code_0807F9EC.o(.text);
 		src/save_core.o(.text);
 		asm/save.o(.text);
@@ -329,7 +329,7 @@ SECTIONS
 		. = ALIGN(4); src/quintessence-fx.o(.data)
 		. = ALIGN(4); data/data_08D6FAC4.o(.data)
 		. = ALIGN(4); data/data_eventcall.o(.data)
-		. = ALIGN(4); src/eventcall_bganimfx.o(.data)
+		. = ALIGN(4); src/eventcall_spriteanimfx.o(.data)
 		. = ALIGN(4); data/data_08D7C3BC.o(.data)
 		. = ALIGN(4); src/save_core.o(.data)
 		. = ALIGN(4); data/data_08DAD284.o(.data)

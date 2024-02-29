@@ -1886,7 +1886,7 @@ extern uintptr_t ProcScr_CamMove[];
 // ??? gUnk_08D837E8
 // ??? gUnk_08D837F8
 // ??? gUnk_08D87684
-// ??? ProcScr_EventBgAnimfx
+// ??? ProcScr_EventSpriteAnimfx
 // ??? gUnk_08D87F48
 // ??? gUnk_08D87F68
 // ??? gUnk_08D8977C

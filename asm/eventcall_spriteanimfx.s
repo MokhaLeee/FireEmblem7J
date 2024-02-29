@@ -1,61 +1,8 @@
 	.include "macro.inc"
 	.syntax unified
 
-	thumb_func_start EventBgAnimfx_Init
-EventBgAnimfx_Init: @ 0x0807F1FC
-	push {r4, r5, r6, lr}
-	adds r2, r0, #0
-	adds r1, r2, #0
-	adds r1, #0x6b
-	movs r0, #0
-	strb r0, [r1]
-	movs r3, #0
-	movs r4, #0
-	subs r1, #0x33
-	adds r5, r2, #0
-	adds r5, #0x2c
-	ldr r0, _0807F234 @ =0x0000FFFF
-	adds r6, r0, #0
-	adds r2, #0x5c
-_0807F218:
-	stm r5!, {r4}
-	ldrh r0, [r1]
-	orrs r0, r6
-	strh r0, [r1]
-	strh r4, [r2]
-	adds r1, #2
-	adds r2, #2
-	adds r3, #1
-	cmp r3, #2
-	ble _0807F218
-	pop {r4, r5, r6}
-	pop {r0}
-	bx r0
-	.align 2, 0
-_0807F234: .4byte 0x0000FFFF
-
-	thumb_func_start EventBgAnimfx_End
-EventBgAnimfx_End: @ 0x0807F238
-	push {r4, r5, lr}
-	adds r4, r0, #0
-	adds r4, #0x2c
-	movs r5, #2
-_0807F240:
-	ldr r0, [r4]
-	cmp r0, #0
-	beq _0807F24A
-	bl EndSpriteAnimProc
-_0807F24A:
-	adds r4, #4
-	subs r5, #1
-	cmp r5, #0
-	bge _0807F240
-	pop {r4, r5}
-	pop {r0}
-	bx r0
-
-	thumb_func_start EventBgAnimfx_Loop
-EventBgAnimfx_Loop: @ 0x0807F258
+	thumb_func_start EventSpriteAnimfx_Loop
+EventSpriteAnimfx_Loop: @ 0x0807F258
 	push {r4, r5, r6, r7, lr}
 	mov r7, sl
 	mov r6, sb
@@ -278,7 +225,7 @@ _0807F3F8: .4byte gPlaySt
 sub_807F3FC: @ 0x0807F3FC
 	push {r4, lr}
 	adds r4, r0, #0
-	ldr r0, _0807F428 @ =ProcScr_EventBgAnimfx
+	ldr r0, _0807F428 @ =ProcScr_EventSpriteAnimfx
 	bl Proc_Start
 	adds r0, #0x6a
 	strb r4, [r0]
@@ -298,7 +245,7 @@ _0807F422:
 	pop {r0}
 	bx r0
 	.align 2, 0
-_0807F428: .4byte ProcScr_EventBgAnimfx
+_0807F428: .4byte ProcScr_EventSpriteAnimfx
 _0807F42C: .4byte gUnk_081C3850
 _0807F430: .4byte 0x06013000
 _0807F434: .4byte gUnk_081C564C
@@ -306,12 +253,12 @@ _0807F434: .4byte gUnk_081C564C
 	thumb_func_start sub_807F438
 sub_807F438: @ 0x0807F438
 	push {lr}
-	ldr r0, _0807F444 @ =ProcScr_EventBgAnimfx
+	ldr r0, _0807F444 @ =ProcScr_EventSpriteAnimfx
 	bl Proc_EndEach
 	pop {r0}
 	bx r0
 	.align 2, 0
-_0807F444: .4byte ProcScr_EventBgAnimfx
+_0807F444: .4byte ProcScr_EventSpriteAnimfx
 
 	thumb_func_start sub_807F448
 sub_807F448: @ 0x0807F448
@@ -330,7 +277,7 @@ sub_807F448: @ 0x0807F448
 	ldr r0, [r0]
 	str r0, [sp, #8]
 	str r1, [sp, #0xc]
-	ldr r0, _0807F4DC @ =ProcScr_EventBgAnimfx
+	ldr r0, _0807F4DC @ =ProcScr_EventSpriteAnimfx
 	bl Proc_Find
 	adds r4, r0, #0
 	cmp r4, #0
@@ -387,7 +334,7 @@ sub_807F448: @ 0x0807F448
 	b _0807F542
 	.align 2, 0
 _0807F4D8: .4byte gUnk_08403434
-_0807F4DC: .4byte ProcScr_EventBgAnimfx
+_0807F4DC: .4byte ProcScr_EventSpriteAnimfx
 _0807F4E0: .4byte 0x0000A980
 _0807F4E4:
 	ldr r3, [sp, #0x30]
@@ -450,7 +397,7 @@ _0807F542:
 sub_807F550: @ 0x0807F550
 	push {r4, r5, r6, lr}
 	adds r6, r0, #0
-	ldr r0, _0807F588 @ =ProcScr_EventBgAnimfx
+	ldr r0, _0807F588 @ =ProcScr_EventSpriteAnimfx
 	bl Proc_Find
 	adds r4, r0, #0
 	cmp r4, #0
@@ -475,14 +422,14 @@ _0807F580:
 	pop {r0}
 	bx r0
 	.align 2, 0
-_0807F588: .4byte ProcScr_EventBgAnimfx
+_0807F588: .4byte ProcScr_EventSpriteAnimfx
 _0807F58C: .4byte 0x0000FFFF
 
 	thumb_func_start sub_807F590
 sub_807F590: @ 0x0807F590
 	push {r4, lr}
 	adds r4, r0, #0
-	ldr r0, _0807F5C4 @ =ProcScr_EventBgAnimfx
+	ldr r0, _0807F5C4 @ =ProcScr_EventSpriteAnimfx
 	bl Proc_Find
 	adds r2, r0, #0
 	cmp r2, #0
@@ -506,7 +453,7 @@ _0807F5BC:
 	pop {r0}
 	bx r0
 	.align 2, 0
-_0807F5C4: .4byte ProcScr_EventBgAnimfx
+_0807F5C4: .4byte ProcScr_EventSpriteAnimfx
 
 	thumb_func_start sub_807F5C8
 sub_807F5C8: @ 0x0807F5C8
