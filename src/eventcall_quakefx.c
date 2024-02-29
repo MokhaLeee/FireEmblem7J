@@ -1,21 +1,5 @@
 #include "gbafe.h"
 
-struct ProcEventQuakeHandler {
-    PROC_HEADER;
-
-    STRUCT_PAD(0x29, 0x4C);
-
-    /* 4C */ s8 quake_type;
-};
-
-struct ProcEventQuakefx {
-    PROC_HEADER;
-
-    STRUCT_PAD(0x29, 0x4C);
-
-    /* 4C */ s16 timer;
-};
-
 /* sub_8085618 in FE8U */
 void EventQuakefxHorizon_ViolentLoop(struct Proc * procfx)
 {

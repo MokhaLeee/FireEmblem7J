@@ -251,13 +251,15 @@ SECTIONS
 		asm/code_807B7C8.o(.text);
 		src/quintessence-fx.o(.text);
 		asm/code_0807CD8C.o(.text);
+		src/eventcall_bganimfx.o(.text);
+		asm/eventcall_bganimfx.o(.text);
+		asm/code_0807F9EC.o(.text);
 		src/save_core.o(.text);
 		asm/save.o(.text);
 		src/savemenu.o(.text);
 		asm/code_080A40E8.o(.text);
 		src/sysutil.o(.text);
 		asm/code_080AB6FC.o(.text);
-
 		asm/m4a_1.o(.text);
 		asm/m4a.o(.text);
 		asm/gba-syscall.o(.text);
@@ -326,6 +328,8 @@ SECTIONS
 		. = ALIGN(4); data/data_08D6F834.o(.data)
 		. = ALIGN(4); src/quintessence-fx.o(.data)
 		. = ALIGN(4); data/data_08D6FAC4.o(.data)
+		. = ALIGN(4); data/data_eventcall.o(.data)
+		. = ALIGN(4); src/eventcall_bganimfx.o(.data)
 		. = ALIGN(4); data/data_08D7C3BC.o(.data)
 		. = ALIGN(4); src/save_core.o(.data)
 		. = ALIGN(4); data/data_08DAD284.o(.data)
