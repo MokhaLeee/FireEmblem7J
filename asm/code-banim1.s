@@ -88,7 +88,7 @@ sub_8051214: @ 0x08051214
 	ldr r4, _0805127C @ =0x02026A28
 	ldr r0, [r4, #4]
 	bl Proc_Run
-	bl sub_80157A4
+	bl GetGameLock
 	lsls r0, r0, #0x18
 	cmp r0, #0
 	bne _0805123A

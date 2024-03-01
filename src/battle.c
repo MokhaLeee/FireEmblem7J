@@ -164,7 +164,8 @@ void BattleGenerate(struct Unit *actor, struct Unit *target)
         BattleUnwind();
 }
 
-void BattleGenerateUiStats(struct Unit* unit, s8 itemSlot) {
+void BattleGenerateUiStats(struct Unit * unit, s8 itemSlot)
+{
     gBattleStats.config = BATTLE_CONFIG_BIT2;
 
     gBattleTarget.weapon = 0;
@@ -990,7 +991,7 @@ bool BattleGenerateHit(struct BattleUnit *attacker, struct BattleUnit *defender)
 void BattleApplyExpGains(void)
 {
     if ((UNIT_FACTION(&gBattleActor.unit) != FACTION_BLUE) || (UNIT_FACTION(&gBattleTarget.unit) != FACTION_BLUE)) {
-        if (!(gPlaySt.chapterStateBits & PLAY_FLAG_7)) {
+        if (!(gPlaySt.chapterStateBits & PLAY_FLAG_EXTRA_MAP)) {
             gBattleActor.expGain  = GetBattleUnitExpGain(&gBattleActor, &gBattleTarget);
             gBattleTarget.expGain = GetBattleUnitExpGain(&gBattleTarget, &gBattleActor);
 
@@ -1249,7 +1250,7 @@ int GetBattleUnitUpdatedWeaponExp(struct BattleUnit* bu)
     if (bu->unit.curHP == 0)
         return -1;
     
-    if (gPlaySt.chapterStateBits & PLAY_FLAG_7)
+    if (gPlaySt.chapterStateBits & PLAY_FLAG_EXTRA_MAP)
         return -1;
     
     if (gBmSt.flags & BM_FLAG_LINKARENA)
@@ -1489,7 +1490,7 @@ int GetBattleUnitExpGain(struct BattleUnit *actor, struct BattleUnit *target)
 
 void BattleApplyItemExpGains(void)
 {
-    if (!(gPlaySt.chapterStateBits & PLAY_FLAG_7)) {
+    if (!(gPlaySt.chapterStateBits & PLAY_FLAG_EXTRA_MAP)) {
         if (gBattleActor.weaponAttributes & IA_STAFF) {
             if (UNIT_FACTION(&gBattleActor.unit) == FACTION_BLUE)
                 gBattleActor.wexpMultiplier++;
@@ -1536,7 +1537,7 @@ void BattleApplyMiscActionExpGains(void)
     if (!CanBattleUnitGainLevels(&gBattleActor))
         return;
 
-    if (gPlaySt.chapterStateBits & PLAY_FLAG_7)
+    if (gPlaySt.chapterStateBits & PLAY_FLAG_EXTRA_MAP)
         return;
 
     gBattleActor.expGain = 10;

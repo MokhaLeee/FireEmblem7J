@@ -44,7 +44,7 @@ OnMain: @ 0x08015718
 	ldr r4, _08015778 @ =0x02026A28
 	ldr r0, [r4, #4]
 	bl Proc_Run
-	bl sub_80157A4
+	bl GetGameLock
 	lsls r0, r0, #0x18
 	cmp r0, #0
 	bne _0801573E
@@ -97,8 +97,8 @@ sub_8015794: @ 0x08015794
 	.align 2, 0
 _080157A0: .4byte gBmSt
 
-	thumb_func_start sub_80157A4
-sub_80157A4: @ 0x080157A4
+	thumb_func_start GetGameLock
+GetGameLock: @ 0x080157A4
 	ldr r0, _080157AC @ =gBmSt
 	ldrb r0, [r0, #1]
 	bx lr

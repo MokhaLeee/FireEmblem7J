@@ -21,9 +21,9 @@ void Decompress(void const * src, void * dst);
 // ??? sub_80136E8
 // ??? sub_8013718
 void Register2dChrMove(u8 const * img, u8 * vram, int width, int height);
-// ??? Copy2dChr
-// ??? sub_8013790
-// ??? sub_80137CC
+void Copy2dChr(void const * src, u8 * dst, int width, int height);
+void ApplyBitmap(u8 const * src, void * dst, int width, int height);
+void ApplyBitmapLine(u8 const * src, void * dst, int width);
 // ??? sub_80137F4
 void PutAppliedBitmap(u16 * tm, int tileref, int width, int height);
 // ??? sub_8013870

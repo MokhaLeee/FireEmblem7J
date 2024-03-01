@@ -1157,7 +1157,7 @@ _0801BEBC:
 	ldr r1, _0801BEE8 @ =gPlaySt
 	movs r0, #3
 	strb r0, [r1, #0x1b]
-	ldr r0, _0801BEEC @ =gUnk_0843F084
+	ldr r0, _0801BEEC @ =Pal_MuralBackground
 	movs r1, #0xe0
 	lsls r1, r1, #1
 	movs r2, #0x40
@@ -1167,12 +1167,12 @@ _0801BEBC:
 _0801BEE0: .4byte gBg0Tm
 _0801BEE4: .4byte gUnk_081C9238
 _0801BEE8: .4byte gPlaySt
-_0801BEEC: .4byte gUnk_0843F084
+_0801BEEC: .4byte Pal_MuralBackground
 _0801BEF0:
 	ldr r1, _0801BF1C @ =gPlaySt
 	movs r0, #2
 	strb r0, [r1, #0x1b]
-	ldr r0, _0801BF20 @ =gUnk_081CDA18
+	ldr r0, _0801BF20 @ =Pal_LinkArenaMuralBackground
 	movs r1, #0xe0
 	lsls r1, r1, #1
 	movs r2, #0x40
@@ -1193,7 +1193,7 @@ _0801BF10:
 	bx r1
 	.align 2, 0
 _0801BF1C: .4byte gPlaySt
-_0801BF20: .4byte gUnk_081CDA18
+_0801BF20: .4byte Pal_LinkArenaMuralBackground
 
 	thumb_func_start sub_801BF24
 sub_801BF24: @ 0x0801BF24

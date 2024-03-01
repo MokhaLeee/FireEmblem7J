@@ -284,7 +284,7 @@ enum event_func_ret_idx {
 // sub_800EB4C
 // sub_800EBB0
 // sub_800EBBC
-// sub_800EC08
+// ResetDialogueScreen
 // nullsub_27
 // nullsub_28
 // IsEventRunning

@@ -1545,8 +1545,8 @@ _08003FCA:
 	bx r0
 	.align 2, 0
 
-	thumb_func_start sub_8003FD4
-sub_8003FD4: @ 0x08003FD4
+	thumb_func_start CallSomeSoundMaybe
+CallSomeSoundMaybe: @ 0x08003FD4
 	push {r7, lr}
 	sub sp, #0x14
 	mov r7, sp

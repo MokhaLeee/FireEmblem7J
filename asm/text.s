@@ -155,8 +155,8 @@ sub_800536C: @ 0x0800536C
 	.align 2, 0
 _08005390: .4byte gActiveFont
 
-	thumb_func_start sub_8005394
-sub_8005394: @ 0x08005394
+	thumb_func_start InitTextList
+InitTextList: @ 0x08005394
 	push {r4, lr}
 	adds r4, r0, #0
 	b _080053A4
@@ -202,8 +202,8 @@ ClearText: @ 0x080053B0
 	.align 2, 0
 _080053E4: .4byte gActiveFont
 
-	thumb_func_start sub_80053E8
-sub_80053E8: @ 0x080053E8
+	thumb_func_start ClearTextPart
+ClearTextPart: @ 0x080053E8
 	push {r4, r5, r6, lr}
 	sub sp, #4
 	ldr r3, _08005424 @ =gActiveFont
@@ -236,8 +236,8 @@ sub_80053E8: @ 0x080053E8
 _08005424: .4byte gActiveFont
 _08005428: .4byte 0x001FFFFF
 
-	thumb_func_start sub_800542C
-sub_800542C: @ 0x0800542C
+	thumb_func_start Text_GetChrOffset
+Text_GetChrOffset: @ 0x0800542C
 	ldrb r2, [r0, #4]
 	ldrb r3, [r0, #6]
 	adds r1, r2, #0
@@ -249,8 +249,8 @@ sub_800542C: @ 0x0800542C
 	bx lr
 	.align 2, 0
 
-	thumb_func_start sub_8005440
-sub_8005440: @ 0x08005440
+	thumb_func_start Text_GetCursor
+Text_GetCursor: @ 0x08005440
 	ldrb r0, [r0, #2]
 	bx lr
 
@@ -1677,8 +1677,8 @@ _08005EA4:
 	.align 2, 0
 _08005EA8: .4byte gUnk_08BC05D4
 
-	thumb_func_start sub_8005EAC
-sub_8005EAC: @ 0x08005EAC
+	thumb_func_start EndGreenText
+EndGreenText: @ 0x08005EAC
 	push {lr}
 	ldr r0, _08005EB8 @ =gUnk_08BC05D4
 	bl Proc_EndEach
@@ -1815,8 +1815,8 @@ sub_8005F70: @ 0x08005F70
 _08005FA4: .4byte gActiveFont
 _08005FA8: .4byte gUnk_08BDC134
 
-	thumb_func_start sub_8005FAC
-sub_8005FAC: @ 0x08005FAC
+	thumb_func_start GetSpecialCharChr
+GetSpecialCharChr: @ 0x08005FAC
 	push {lr}
 	adds r3, r0, #0
 	adds r2, r1, #0
@@ -1852,8 +1852,8 @@ _08005FE6:
 	bx r1
 	.align 2, 0
 
-	thumb_func_start sub_8005FEC
-sub_8005FEC: @ 0x08005FEC
+	thumb_func_start PutSpecialChar
+PutSpecialChar: @ 0x08005FEC
 	push {r4, lr}
 	adds r4, r0, #0
 	adds r0, r1, #0
@@ -1867,7 +1867,7 @@ sub_8005FEC: @ 0x08005FEC
 	strh r1, [r0]
 	b _0800601C
 _08006004:
-	bl sub_8005FAC
+	bl GetSpecialCharChr
 	lsls r0, r0, #1
 	ldr r1, _08006024 @ =gActiveFont
 	ldr r1, [r1]
@@ -1885,8 +1885,8 @@ _0800601C:
 	.align 2, 0
 _08006024: .4byte gActiveFont
 
-	thumb_func_start sub_8006028
-sub_8006028: @ 0x08006028
+	thumb_func_start PutNumberExt
+PutNumberExt: @ 0x08006028
 	push {r4, r5, r6, r7, lr}
 	adds r5, r0, #0
 	adds r7, r1, #0
@@ -1895,7 +1895,7 @@ sub_8006028: @ 0x08006028
 	cmp r4, #0
 	bne _0800603E
 	adds r2, r6, #0
-	bl sub_8005FEC
+	bl PutSpecialChar
 	b _08006062
 _0800603E:
 	adds r0, r4, #0
@@ -1905,7 +1905,7 @@ _0800603E:
 	adds r2, r2, r6
 	adds r0, r5, #0
 	adds r1, r7, #0
-	bl sub_8005FEC
+	bl PutSpecialChar
 	adds r0, r4, #0
 	movs r1, #0xa
 	bl __divsi3
@@ -1918,11 +1918,11 @@ _08006062:
 	pop {r0}
 	bx r0
 
-	thumb_func_start sub_8006068
-sub_8006068: @ 0x08006068
+	thumb_func_start PutNumber
+PutNumber: @ 0x08006068
 	push {lr}
 	movs r3, #0
-	bl sub_8006028
+	bl PutNumberExt
 	pop {r0}
 	bx r0
 
@@ -1940,14 +1940,14 @@ _0800607E:
 	bl PutTwoSpecialChar
 	b _0800608E
 _0800608A:
-	bl sub_8006068
+	bl PutNumber
 _0800608E:
 	pop {r0}
 	bx r0
 	.align 2, 0
 
-	thumb_func_start sub_8006094
-sub_8006094: @ 0x08006094
+	thumb_func_start PutNumberTwoChr
+PutNumberTwoChr: @ 0x08006094
 	push {lr}
 	cmp r2, #0x64
 	bne _080060A6
@@ -1968,17 +1968,17 @@ _080060AE:
 	bl PutTwoSpecialChar
 	b _080060BE
 _080060BA:
-	bl sub_8006068
+	bl PutNumber
 _080060BE:
 	pop {r0}
 	bx r0
 	.align 2, 0
 
-	thumb_func_start sub_80060C4
-sub_80060C4: @ 0x080060C4
+	thumb_func_start PutNumberSmall
+PutNumberSmall: @ 0x080060C4
 	push {lr}
 	movs r3, #0xa
-	bl sub_8006028
+	bl PutNumberExt
 	pop {r0}
 	bx r0
 
@@ -1992,7 +1992,7 @@ PutNumberBonus: @ 0x080060D0
 	adds r0, r4, #0
 	movs r1, #4
 	movs r2, #0x15
-	bl sub_8005FEC
+	bl PutSpecialChar
 	adds r0, r4, #2
 	cmp r5, #9
 	ble _080060EC
@@ -2000,7 +2000,7 @@ PutNumberBonus: @ 0x080060D0
 _080060EC:
 	movs r1, #4
 	adds r2, r5, #0
-	bl sub_80060C4
+	bl PutNumberSmall
 _080060F4:
 	pop {r4, r5}
 	pop {r0}
@@ -2028,7 +2028,7 @@ _08006114:
 	ands r2, r5
 	adds r5, #1
 	movs r1, #0
-	bl sub_8005FEC
+	bl PutSpecialChar
 	adds r4, #2
 	subs r6, #1
 	cmp r6, #0
@@ -2077,7 +2077,7 @@ PutTime: @ 0x08006148
 	adds r0, r7, #4
 	ldrh r2, [r1]
 	adds r1, r6, #0
-	bl sub_8006068
+	bl PutNumber
 	ldrh r5, [r4]
 	adds r4, r7, #0
 	adds r4, #0xa
@@ -2087,7 +2087,7 @@ PutTime: @ 0x08006148
 	adds r2, r0, #0
 	adds r0, r4, #0
 	adds r1, r6, #0
-	bl sub_8005FEC
+	bl PutSpecialChar
 	subs r4, #2
 	adds r0, r5, #0
 	movs r1, #0xa
@@ -2097,7 +2097,7 @@ PutTime: @ 0x08006148
 	adds r2, r0, #0
 	adds r0, r4, #0
 	adds r1, r6, #0
-	bl sub_8005FEC
+	bl PutSpecialChar
 	mov r1, r8
 	ldrh r5, [r1]
 	adds r4, #8
@@ -2108,7 +2108,7 @@ PutTime: @ 0x08006148
 	adds r2, #0xa
 	adds r0, r4, #0
 	adds r1, r6, #0
-	bl sub_8005FEC
+	bl PutSpecialChar
 	subs r4, #2
 	adds r0, r5, #0
 	movs r1, #0xa
@@ -2119,7 +2119,7 @@ PutTime: @ 0x08006148
 	adds r2, #0xa
 	adds r0, r4, #0
 	adds r1, r6, #0
-	bl sub_8005FEC
+	bl PutSpecialChar
 	mov r0, sb
 	cmp r0, #0
 	beq _080061FC
@@ -2130,23 +2130,23 @@ _080061FC:
 	adds r0, r7, #6
 	adds r1, r6, #0
 	movs r2, #0x20
-	bl sub_8005FEC
+	bl PutSpecialChar
 	adds r0, r7, #0
 	adds r0, #0xc
 	adds r1, r6, #0
 	movs r2, #0x21
-	bl sub_8005FEC
+	bl PutSpecialChar
 	b _0800622A
 _08006214:
 	adds r0, r7, #6
 	adds r1, r6, #0
 	movs r2, #0xff
-	bl sub_8005FEC
+	bl PutSpecialChar
 	adds r0, r7, #0
 	adds r0, #0xc
 	adds r1, r6, #0
 	movs r2, #0xff
-	bl sub_8005FEC
+	bl PutSpecialChar
 _0800622A:
 	add sp, #0x10
 	pop {r3, r4, r5}
@@ -2165,11 +2165,11 @@ PutTwoSpecialChar: @ 0x0800623C
 	adds r5, r1, #0
 	adds r6, r3, #0
 	adds r4, #2
-	bl sub_8005FEC
+	bl PutSpecialChar
 	adds r0, r4, #0
 	adds r1, r5, #0
 	adds r2, r6, #0
-	bl sub_8005FEC
+	bl PutSpecialChar
 	pop {r4, r5, r6}
 	pop {r0}
 	bx r0
@@ -2187,7 +2187,7 @@ sub_800625C: @ 0x0800625C
 	adds r2, r0, #0
 	adds r0, r4, #0
 	adds r1, r6, #0
-	bl sub_8005FEC
+	bl PutSpecialChar
 	subs r4, #2
 	adds r0, r5, #0
 	movs r1, #0xa
@@ -2197,7 +2197,7 @@ sub_800625C: @ 0x0800625C
 	adds r2, r0, #0
 	adds r0, r4, #0
 	adds r1, r6, #0
-	bl sub_8005FEC
+	bl PutSpecialChar
 	pop {r4, r5, r6}
 	pop {r0}
 	bx r0
@@ -2216,7 +2216,7 @@ sub_8006298: @ 0x08006298
 	adds r2, #0xa
 	adds r0, r4, #0
 	adds r1, r6, #0
-	bl sub_8005FEC
+	bl PutSpecialChar
 	subs r4, #2
 	adds r0, r5, #0
 	movs r1, #0xa
@@ -2227,7 +2227,7 @@ sub_8006298: @ 0x08006298
 	adds r2, #0xa
 	adds r0, r4, #0
 	adds r1, r6, #0
-	bl sub_8005FEC
+	bl PutSpecialChar
 	pop {r4, r5, r6}
 	pop {r0}
 	bx r0
@@ -2249,7 +2249,7 @@ sub_80062D8: @ 0x080062D8
 	adds r2, r2, r6
 	adds r0, r4, #0
 	mov r1, r8
-	bl sub_8005FEC
+	bl PutSpecialChar
 	subs r4, #2
 	adds r0, r5, #0
 	movs r1, #0xa
@@ -2260,7 +2260,7 @@ sub_80062D8: @ 0x080062D8
 	adds r2, r2, r6
 	adds r0, r4, #0
 	mov r1, r8
-	bl sub_8005FEC
+	bl PutSpecialChar
 	pop {r3}
 	mov r8, r3
 	pop {r4, r5, r6}

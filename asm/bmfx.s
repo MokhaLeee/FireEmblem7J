@@ -3762,10 +3762,10 @@ sub_801F514: @ 0x0801F514
 	adds r0, r7, #0
 	bl Text_DrawString
 	add r0, sp, #4
-	bl sub_8005440
+	bl Text_GetCursor
 	adds r4, r0, #0
 	adds r0, r7, #0
-	bl sub_8005440
+	bl Text_GetCursor
 	adds r2, r0, #0
 	cmp r4, r2
 	ble _0801F5BA
@@ -3871,7 +3871,7 @@ sub_801F650: @ 0x0801F650
 	add r0, sp, #4
 	bl Text_DrawString
 	add r0, sp, #4
-	bl sub_8005440
+	bl Text_GetCursor
 	adds r2, r0, #0
 	adds r2, #0x28
 	movs r0, #0xf0

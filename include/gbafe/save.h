@@ -159,6 +159,25 @@ void SaveBonusContentData(void * buf);
 // ??? sub_80A0270
 // ??? sub_80A02A8
 // ??? LoadAndVerifySramSaveData
+
+struct PidStats
+{
+    u32 loss_count      : 8;
+    u32 favval          : 16;
+    u32 act_count       : 8;
+    u32 stat_view_count : 8;
+    u32 defeat_chapter  : 6;
+    u32 defeat_turn     : 10;
+    u32 deploy_count    : 6;
+    u32 move_count      : 10;
+    u32 defeat_cause    : 4;
+    u32 exp_gained      : 12;
+    u32 win_count       : 10;
+    u32 battle_count    : 12;
+    u32 killer_pid      : 9;
+    u32 : 0; // unused/padding (15 bits)
+};
+
 // ??? ClearPidChStatsSaveData
 // ??? ClearPidStats_ret
 // ??? ClearPidStats
@@ -205,7 +224,7 @@ void SaveBonusContentData(void * buf);
 // ??? sub_80A0DCC
 // ??? sub_80A0DFC
 // ??? WriteCompletedPlaythroughSaveData
-// ??? GetPidStats
+struct PidStats * GetPidStats(u8 pid);
 // ??? sub_80A0F08
 // ??? sub_80A0F14
 // ??? sub_80A0F20

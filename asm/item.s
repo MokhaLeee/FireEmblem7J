@@ -800,7 +800,7 @@ _08016A0C:
 	movs r1, #1
 _08016A1E:
 	movs r2, #0x16
-	bl sub_8005FEC
+	bl PutSpecialChar
 	mov r0, r8
 	cmp r0, #0
 	bne _08016A34
@@ -925,7 +925,7 @@ _08016B18:
 	adds r0, #0x18
 	adds r1, r4, #0
 	movs r2, #0x16
-	bl sub_8005FEC
+	bl PutSpecialChar
 	movs r4, #1
 	cmp r5, #1
 	beq _08016B2C

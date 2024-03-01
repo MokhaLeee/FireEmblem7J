@@ -161,21 +161,21 @@ extern struct WeaponTriangleRule WeaponTriangleRules[];
 // BattleGenerateReal
 // BattleGenerateBallistaSimulation
 // BattleGenerateBallistaReal
-void BattleGenerate(struct Unit *actor, struct Unit *target);
-// BattleGenerateUiStats
+void BattleGenerate(struct Unit * actor, struct Unit * target);
+void BattleGenerateUiStats(struct Unit * unit, s8 itemSlot);
 bool BattleRoll1RN(u16 threshold, bool simulationResult);
 bool BattleRoll2RN(u16 threshold, bool simulationResult);
-void InitBattleUnit(struct BattleUnit *bu, struct Unit *unit);
+void InitBattleUnit(struct BattleUnit * bu, struct Unit * unit);
 // InitBattleUnitWithoutBonuses
 // SetBattleUnitTerrainBonuses
-void SetBattleUnitTerrainBonusesAuto(struct BattleUnit *bu);
-void SetBattleUnitWeapon(struct BattleUnit *bu, int itemSlot);
-void SetBattleUnitWeaponBallista(struct BattleUnit *bu);
+void SetBattleUnitTerrainBonusesAuto(struct BattleUnit * bu);
+void SetBattleUnitWeapon(struct BattleUnit * bu, int itemSlot);
+void SetBattleUnitWeaponBallista(struct BattleUnit * bu);
 // nullsub_42
-void ComputeBattleUnitStats(struct BattleUnit *attacker, struct BattleUnit *defender);
-void ComputeBattleUnitEffectiveStats(struct BattleUnit *attacker, struct BattleUnit *defender);
-void ComputeBattleUnitSupportBonuses(struct BattleUnit *attacker, struct BattleUnit *defender);
-void ComputeBattleUnitDefense(struct BattleUnit *attacker, struct BattleUnit *defender);
+void ComputeBattleUnitStats(struct BattleUnit * attacker, struct BattleUnit * defender);
+void ComputeBattleUnitEffectiveStats(struct BattleUnit * attacker, struct BattleUnit * defender);
+void ComputeBattleUnitSupportBonuses(struct BattleUnit * attacker, struct BattleUnit * defender);
+void ComputeBattleUnitDefense(struct BattleUnit * attacker, struct BattleUnit * defender);
 void ComputeBattleUnitBaseDefense(struct BattleUnit *bu);
 void ComputeBattleUnitStatusBonuses(struct BattleUnit *bu);
 void ComputeBattleUnitSpecialWeaponStats(struct BattleUnit *attacker, struct BattleUnit *defender);

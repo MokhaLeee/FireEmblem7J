@@ -1355,7 +1355,7 @@ _08008790:
 	lsls r0, r0, #3
 	ldr r1, _080087C8 @ =0x030000C8
 	adds r0, r0, r1
-	bl sub_8005440
+	bl Text_GetCursor
 	ldr r3, [r7]
 	ldrb r2, [r3, #0xc]
 	lsls r1, r2, #3
@@ -2744,7 +2744,7 @@ sub_800925C: @ 0x0800925C
 	adds r5, r2, #0
 	mov sb, r3
 	adds r0, r6, #0
-	bl sub_8005440
+	bl Text_GetCursor
 	adds r4, r0, #0
 	movs r0, #0x10
 	adds r0, r0, r4
@@ -4947,7 +4947,7 @@ _0800A474:
 	ldr r0, [r6, #0x2c]
 	cmp r5, r0
 	beq _0800A4C8
-	bl sub_800EC08
+	bl ResetDialogueScreen
 	bl sub_8007EF8
 	movs r4, #1
 	rsbs r4, r4, #0
@@ -4983,7 +4983,7 @@ _0800A4C8:
 	ands r0, r1
 	cmp r0, #0
 	beq _0800A4E6
-	bl sub_800EC08
+	bl ResetDialogueScreen
 	bl sub_8007EF8
 	movs r0, #0
 	str r0, [r6, #0x34]

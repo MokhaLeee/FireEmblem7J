@@ -12,8 +12,8 @@ gUnk_08439BE4:	@ 0x08439BE4
 gUnk_08439BE8:	@ 0x08439BE8
 	.incbin "FireEmblem7J.base.gba", 0x439BE8, 0x439BF0 - 0x439BE8
 
-	.global gUnk_08439BF0
-gUnk_08439BF0:	@ 0x08439BF0
+	.global Img_MuralBackground
+Img_MuralBackground:	@ 0x08439BF0
 	.incbin "FireEmblem7J.base.gba", 0x439BF0, 0x43E7EC - 0x439BF0
 
 	.global gUnk_0843E7EC
@@ -36,8 +36,8 @@ gUnk_0843EF2C:	@ 0x0843EF2C
 gUnk_0843EFB0:	@ 0x0843EFB0
 	.incbin "FireEmblem7J.base.gba", 0x43EFB0, 0x43F084 - 0x43EFB0
 
-	.global gUnk_0843F084
-gUnk_0843F084:	@ 0x0843F084
+	.global Pal_MuralBackground
+Pal_MuralBackground:	@ 0x0843F084
 	.incbin "FireEmblem7J.base.gba", 0x43F084, 0x43F0E4 - 0x43F084
 
 	.global gUnk_0843F0E4

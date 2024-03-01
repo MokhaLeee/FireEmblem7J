@@ -925,7 +925,7 @@ sub_807D4B8: @ 0x0807D4B8
 	push {r4, r5, lr}
 	sub sp, #8
 	adds r5, r0, #0
-	bl sub_800EC08
+	bl ResetDialogueScreen
 	movs r0, #0
 	bl InitBgs
 	ldr r2, _0807D528 @ =gDispIo
@@ -1088,7 +1088,7 @@ _0807D5E8:
 	movs r2, #8
 	ldrsb r2, [r6, r2]
 	movs r1, #2
-	bl sub_8006068
+	bl PutNumber
 	adds r1, r5, #0
 	adds r1, #0x20
 	str r4, [sp]
@@ -3877,7 +3877,7 @@ _0807EB06:
 	bl sub_8007DF4
 	bl sub_800968C
 	bl sub_8009628
-	bl sub_800EC08
+	bl ResetDialogueScreen
 	ldrh r0, [r5, #4]
 	bl DecodeMsg
 	adds r2, r0, #0

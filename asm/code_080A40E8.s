@@ -307,7 +307,7 @@ ProcSaveMenu_InitScreen: @ 0x080A4320
 	movs r1, #0
 	movs r2, #0x60
 	bl ApplyPaletteExt
-	ldr r4, _080A4500 @ =gUnk_08439BF0
+	ldr r4, _080A4500 @ =Img_MuralBackground
 	movs r0, #0
 	bl GetBgChrOffset
 	adds r1, r0, #0
@@ -506,7 +506,7 @@ _080A4492:
 	bx r0
 	.align 2, 0
 _080A44FC: .4byte gUnk_0842D800
-_080A4500: .4byte gUnk_08439BF0
+_080A4500: .4byte Img_MuralBackground
 _080A4504: .4byte gBg0Tm
 _080A4508: .4byte gUnk_0842D860
 _080A450C: .4byte gUnk_08432594
@@ -2309,7 +2309,7 @@ _080A5368:
 	movs r1, #0xc0
 _080A536A:
 	movs r3, #0x18
-	bl sub_8003FD4
+	bl CallSomeSoundMaybe
 	adds r0, r4, #0
 	movs r1, #0xe
 	bl Proc_Goto
@@ -2826,7 +2826,7 @@ sub_80A5764: @ 0x080A5764
 	movs r1, #0xc0
 	movs r2, #0
 	movs r3, #0x18
-	bl sub_8003FD4
+	bl CallSomeSoundMaybe
 	add sp, #4
 	pop {r0}
 	bx r0
@@ -3234,7 +3234,7 @@ _080A5A90:
 	thumb_func_start sub_80A5A94
 sub_80A5A94: @ 0x080A5A94
 	push {lr}
-	bl sub_8082D74
+	bl EndHelpPromptSprite
 	pop {r0}
 	bx r0
 	.align 2, 0
@@ -3405,7 +3405,7 @@ sub_80A5B44: @ 0x080A5B44
 	movs r1, #0
 	movs r2, #0x60
 	bl ApplyPaletteExt
-	ldr r4, _080A5C48 @ =gUnk_08439BF0
+	ldr r4, _080A5C48 @ =Img_MuralBackground
 	movs r0, #0
 	bl GetBgChrOffset
 	adds r1, r0, #0
@@ -3443,7 +3443,7 @@ _080A5C38: .4byte gAnims
 _080A5C3C: .4byte SaveMenuOnHBlank
 _080A5C40: .4byte gUnk_08432594
 _080A5C44: .4byte gUnk_0842D800
-_080A5C48: .4byte gUnk_08439BF0
+_080A5C48: .4byte Img_MuralBackground
 _080A5C4C: .4byte gBg0Tm
 _080A5C50: .4byte gUnk_0842D860
 _080A5C54: .4byte gUnk_0842DD14
@@ -7013,7 +7013,7 @@ sub_80A781C: @ 0x080A781C
 	push {r4, lr}
 	adds r4, r0, #0
 	bl EndMuralBackground
-	bl sub_808EDB0
+	bl EndMuralBackground_
 	adds r0, r4, #0
 	bl EndAllProcChildren
 	pop {r4}

@@ -13983,7 +13983,7 @@ _080435F4:
 	subs r1, r1, r5
 	str r1, [sp, #8]
 	movs r1, #0xe
-	bl DrawStatBarGfx
+	bl PutDrawUiGauge
 	movs r0, #1
 	bl EnableBgSync
 _08043628:
@@ -14037,7 +14037,7 @@ _08043664:
 	subs r1, r1, r5
 	str r1, [sp, #8]
 	movs r1, #0xe
-	bl DrawStatBarGfx
+	bl PutDrawUiGauge
 	movs r0, #1
 	bl EnableBgSync
 _08043698:
@@ -14228,7 +14228,7 @@ sub_80437DC: @ 0x080437DC
 	str r4, [sp, #4]
 	str r1, [sp, #8]
 	movs r1, #0xd
-	bl DrawStatBarGfx
+	bl PutDrawUiGauge
 	movs r0, #1
 	bl EnableBgSync
 	add sp, #0xc
@@ -16377,7 +16377,7 @@ _080449B0:
 	adds r0, r0, r1
 	movs r1, #2
 	ldr r2, [sp, #0x10]
-	bl sub_8006068
+	bl PutNumber
 	pop {r4, r5, r6}
 	pop {r0}
 	bx r0
@@ -19303,7 +19303,7 @@ sub_804614C: @ 0x0804614C
 	ldr r1, _08046194 @ =gActiveUnit
 	str r0, [r1]
 	bl sub_80452DC
-	bl sub_80157A4
+	bl GetGameLock
 	lsls r0, r0, #0x18
 	lsrs r0, r0, #0x18
 	adds r4, #0x64
@@ -19328,7 +19328,7 @@ sub_804619C: @ 0x0804619C
 	adds r0, #0x64
 	movs r1, #0
 	ldrsh r4, [r0, r1]
-	bl sub_80157A4
+	bl GetGameLock
 	lsls r0, r0, #0x18
 	lsrs r0, r0, #0x18
 	cmp r4, r0
@@ -19365,7 +19365,7 @@ sub_80461DC: @ 0x080461DC
 	adds r0, #0x1e
 	adds r0, r0, r1
 	ldrh r5, [r0]
-	bl sub_80157A4
+	bl GetGameLock
 	lsls r0, r0, #0x18
 	lsrs r0, r0, #0x18
 	adds r4, #0x64
@@ -19480,7 +19480,7 @@ sub_80462A4: @ 0x080462A4
 	adds r0, #0x64
 	movs r1, #0
 	ldrsh r4, [r0, r1]
-	bl sub_80157A4
+	bl GetGameLock
 	lsls r0, r0, #0x18
 	lsrs r0, r0, #0x18
 	cmp r4, r0
@@ -21543,7 +21543,7 @@ sub_8047354: @ 0x08047354
 	push {r4, lr}
 	adds r4, r0, #0
 	movs r0, #0x1f
-	bl sub_80807E4
+	bl SetStatScreenExcludedUnitFlags
 	ldr r0, _08047370 @ =gActiveUnit
 	ldr r0, [r0]
 	adds r1, r4, #0

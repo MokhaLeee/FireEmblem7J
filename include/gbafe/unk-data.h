@@ -1,5 +1,7 @@
 #pragma once
 
+#include "proc.h"
+
 extern s8 MoveTable_Flying[];
 extern s8 MoveTable_Ballista[];
 extern char const *StatusNameStringLut[];
@@ -210,13 +212,13 @@ extern u8 Tsa_QuintessenceFx[];
 // ??? gUnk_0843943C
 // ??? gUnk_08439BE4
 // ??? gUnk_08439BE8
-// ??? gUnk_08439BF0
+extern u8 Img_MuralBackground[];
 // ??? gUnk_0843E7EC
 // ??? gUnk_0843EA3C
 // ??? gUnk_0843EA50
 // ??? gUnk_0843EF2C
 // ??? gUnk_0843EFB0
-// ??? gUnk_0843F084
+extern u16 Pal_MuralBackground[];
 // ??? gUnk_0843F0E4
 // ??? gUnk_0843F144
 // ??? gUnk_0843F164
@@ -437,7 +439,7 @@ extern u8 Tsa_QuintessenceFx[];
 // ??? gUnk_081CD9B8
 // ??? gUnk_081CD9D8
 // ??? gUnk_081CD9F8
-// ??? gUnk_081CDA18
+extern u16 Pal_LinkArenaMuralBackground[];
 // ??? gUnk_081CDA58
 // ??? gUnk_081CDB10
 // ??? gUnk_081CDD60
@@ -1127,7 +1129,7 @@ extern const u8 Tsa_EkrDragonFireBG2[];
 // ??? gUnk_08403908
 // ??? gUnk_0840392C
 // ??? gUnk_08404024
-// ??? gUnk_08404124
+extern const u8 Tsa_Statscreen_08404124[];
 // ??? gUnk_0840417C
 // ??? gUnk_084041FC
 // ??? gUnk_0840431C
@@ -1390,7 +1392,7 @@ extern u8 Img_SysBrownBox[];
 // ??? gUnk_08BFFEF8
 // ??? gUnk_08BFFF30
 // ??? gUnk_08BFFF58
-// ??? ProcScr_Event
+extern struct ProcCmd ProcScr_Event[];
 // ??? gUnk_08C00018
 // ??? gEventCmdTable
 // ??? gUnk_08C0003C
@@ -1865,16 +1867,16 @@ extern uintptr_t ProcScr_CamMove[];
 // ??? gUnk_08D6F798
 // ??? gUnk_08D6F7B4
 // ??? gUnk_08D6F7D4
-// ??? ProcScr_EventHorizontalQuakefx
-// ??? ProcScr_EventVerticalQuakefx
-// ??? ProcScr_EventQuakefx
+extern struct ProcCmd ProcScr_EventHorizontalQuakefx[];
+extern struct ProcCmd ProcScr_EventVerticalQuakefx[];
+extern struct ProcCmd ProcScr_EventQuakefx[];
 // ??? gUnk_08D6F854
 // ??? gUnk_08D6F8AC
 // ??? gUnk_08D6F8BC
 // ??? gUnk_08D6F95C
 // ??? gUnk_08D6F9D4
-// ??? ProcScr_QuintessenceFxBg2Scroll
-// ??? ProcScr_QuintessenceFx
+extern struct ProcCmd ProcScr_QuintessenceFxBg2Scroll[];
+extern struct ProcCmd ProcScr_QuintessenceFx[];
 // ??? gUnk_08D6FAC4
 // ??? gUnk_08D6FAE4
 // ??? gUnk_08D6FB1C
@@ -1886,7 +1888,7 @@ extern uintptr_t ProcScr_CamMove[];
 // ??? gUnk_08D837E8
 // ??? gUnk_08D837F8
 // ??? gUnk_08D87684
-// ??? ProcScr_EventDragonsDownfx
+extern struct ProcCmd ProcScr_EventDragonsDownfx[];
 // ??? gUnk_08D87F48
 // ??? gUnk_08D87F68
 // ??? gUnk_08D8977C
@@ -1895,17 +1897,9 @@ extern uintptr_t ProcScr_CamMove[];
 // ??? gUnk_08D8A114
 // ??? gUnk_08D8A148
 // ??? gUnk_08D8A1B4
-// ??? ProcScr_BackgroundSlide
-// ??? gUnk_08D8A238
-// ??? gUnk_08D8A358
-// ??? gUnk_08D8A368
-// ??? gUnk_08D8A380
-// ??? gUnk_08D8A3C0
-// ??? gUnk_08D8A3D4
-// ??? gUnk_08D8A41C
-// ??? gUnk_08D8A466
-// ??? gUnk_08D8A530
-// ??? gUnk_08D8A5D8
+
+// statscreen.h
+
 // ??? gUnk_08D8A610
 // ??? gUnk_08D8A640
 // ??? gUnk_08D8A650
@@ -1985,7 +1979,7 @@ extern uintptr_t ProcScr_CamMove[];
 // ??? gUnk_08D8C0B8
 // ??? gUnk_08D8C124
 // ??? gUnk_08D8C154
-// ??? gUnk_08D8C364
+extern struct ProcCmd ProcScr_PrepPromoteDebug[];
 // ??? gUnk_08D8C3A4
 // ??? gUnk_08D8C52E
 // ??? gUnk_08D8C53C
@@ -2013,7 +2007,7 @@ extern uintptr_t ProcScr_CamMove[];
 // ??? gUnk_08D8CDD0
 // ??? gUnk_08D8CDE4
 // ??? gUnk_08D8CF74
-// ??? gUnk_08D8CFBC
+extern struct ProcCmd ProcScr_PrepItemUseScreen[];
 // ??? gUnk_08D8D10C
 // ??? gUnk_08D8D118
 // ??? gUnk_08D8D120
@@ -2120,7 +2114,7 @@ extern uintptr_t ProcScr_CamMove[];
 
 /* sysutil.h */
 
-// ??? ProcScr_MixPalette
+extern struct ProcCmd ProcScr_MixPalette[];
 // ??? gUnk_08DAE4E4
 // ??? gUnk_08DAE514
 // ??? gUnk_08DAEB64

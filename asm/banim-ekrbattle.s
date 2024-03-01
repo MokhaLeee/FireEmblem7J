@@ -207,7 +207,7 @@ MainUpdateEkrBattle: @ 0x0804BB04
 	push {r4, lr}
 	bl ClearSprites
 	bl UnregisterEfxSoundSeExist
-	bl sub_80157A4
+	bl GetGameLock
 	lsls r0, r0, #0x18
 	cmp r0, #0
 	bne _0804BB20

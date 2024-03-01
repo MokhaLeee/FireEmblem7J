@@ -164,8 +164,8 @@ gUnk_081CD9D8:	@ 0x081CD9D8
 gUnk_081CD9F8:	@ 0x081CD9F8
 	.incbin "FireEmblem7J.base.gba", 0x1CD9F8, 0x1CDA18 - 0x1CD9F8
 
-	.global gUnk_081CDA18
-gUnk_081CDA18:	@ 0x081CDA18
+	.global Pal_LinkArenaMuralBackground
+Pal_LinkArenaMuralBackground:	@ 0x081CDA18
 	.incbin "FireEmblem7J.base.gba", 0x1CDA18, 0x1CDA58 - 0x1CDA18
 
 	.global gUnk_081CDA58

@@ -374,8 +374,8 @@ _08013788:
 	bx r0
 	.align 2, 0
 
-	thumb_func_start sub_8013790
-sub_8013790: @ 0x08013790
+	thumb_func_start ApplyBitmap
+ApplyBitmap: @ 0x08013790
 	push {r4, r5, r6, r7, lr}
 	mov r7, sb
 	mov r6, r8
@@ -394,7 +394,7 @@ _080137AC:
 	adds r0, r6, #0
 	adds r1, r5, #0
 	adds r2, r7, #0
-	bl sub_80137CC
+	bl ApplyBitmapLine
 	add r6, sb
 	add r5, r8
 	subs r4, #1
@@ -408,8 +408,8 @@ _080137C0:
 	pop {r0}
 	bx r0
 
-	thumb_func_start sub_80137CC
-sub_80137CC: @ 0x080137CC
+	thumb_func_start ApplyBitmapLine
+ApplyBitmapLine: @ 0x080137CC
 	push {r4, r5, r6, r7, lr}
 	adds r6, r0, #0
 	adds r5, r1, #0
@@ -3862,7 +3862,7 @@ sub_8015020: @ 0x08015020
 	ldr r0, _08015040 @ =gUnk_08C01DAC
 	bl Proc_StartBlocking
 	adds r4, r0, #0
-	bl sub_80157A4
+	bl GetGameLock
 	lsls r0, r0, #0x18
 	lsrs r0, r0, #0x18
 	adds r4, #0x64
@@ -3877,7 +3877,7 @@ _08015040: .4byte gUnk_08C01DAC
 sub_8015044: @ 0x08015044
 	push {r4, lr}
 	adds r4, r0, #0
-	bl sub_80157A4
+	bl GetGameLock
 	lsls r0, r0, #0x18
 	lsrs r0, r0, #0x18
 	adds r1, r4, #0

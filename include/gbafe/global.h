@@ -25,6 +25,10 @@
 
 #define RECT_DISTANCE(aXA, aYA, aXB, aYB) (ABS((aXA) - (aXB)) + ABS((aYA) - (aYB)))
 
+// For translate-able strings.
+#define JTEXT(orig) (orig)
+#define TEXT(orig, english) (orig)
+
 #define LIMIT_AREA(num, min, max)   \
     if (num > max)                  \
         num = max;                  \

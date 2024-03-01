@@ -36,8 +36,8 @@ gUnk_08D8A1B4:	@ 0x08D8A1B4
 ProcScr_BackgroundSlide:	@ 0x08D8A220
 	.incbin "FireEmblem7J.base.gba", 0xD8A220, 0xD8A238 - 0xD8A220
 
-	.global gUnk_08D8A238
-gUnk_08D8A238:	@ 0x08D8A238
+	.global gStatScreenTextList
+gStatScreenTextList:	@ 0x08D8A238
 	.incbin "FireEmblem7J.base.gba", 0xD8A238, 0xD8A358 - 0xD8A238
 
 	.global gUnk_08D8A358
@@ -392,8 +392,8 @@ gUnk_08D8C124:	@ 0x08D8C124
 gUnk_08D8C154:	@ 0x08D8C154
 	.incbin "FireEmblem7J.base.gba", 0xD8C154, 0xD8C364 - 0xD8C154
 
-	.global gUnk_08D8C364
-gUnk_08D8C364:	@ 0x08D8C364
+	.global ProcScr_PrepPromoteDebug
+ProcScr_PrepPromoteDebug:	@ 0x08D8C364
 	.incbin "FireEmblem7J.base.gba", 0xD8C364, 0xD8C3A4 - 0xD8C364
 
 	.global gUnk_08D8C3A4
@@ -504,8 +504,8 @@ gUnk_08D8CDE4:	@ 0x08D8CDE4
 gUnk_08D8CF74:	@ 0x08D8CF74
 	.incbin "FireEmblem7J.base.gba", 0xD8CF74, 0xD8CFBC - 0xD8CF74
 
-	.global gUnk_08D8CFBC
-gUnk_08D8CFBC:	@ 0x08D8CFBC
+	.global ProcScr_PrepItemUseScreen
+ProcScr_PrepItemUseScreen:	@ 0x08D8CFBC
 	.incbin "FireEmblem7J.base.gba", 0xD8CFBC, 0xD8D10C - 0xD8CFBC
 
 	.global gUnk_08D8D10C

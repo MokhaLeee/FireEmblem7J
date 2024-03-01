@@ -170,7 +170,7 @@ _0801C696:
 	bl MU_EndAll
 	bl sub_808667C
 	movs r0, #0x1f
-	bl sub_80807E4
+	bl SetStatScreenExcludedUnitFlags
 	movs r3, #0x16
 	ldrsh r0, [r4, r3]
 	ldr r1, [r5]
@@ -877,7 +877,7 @@ _0801CCB6:
 	beq _0801CD78
 	bl MU_EndAll
 	movs r0, #0x1f
-	bl sub_80807E4
+	bl SetStatScreenExcludedUnitFlags
 	adds r0, r4, #0
 	bl GetUnit
 	adds r1, r5, #0

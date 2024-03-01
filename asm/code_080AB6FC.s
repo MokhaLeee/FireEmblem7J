@@ -190,7 +190,7 @@ sub_80ABAEC: @ 0x080ABAEC
 	movs r0, #0
 	str r0, [sp]
 	movs r2, #0
-	bl sub_8003FD4
+	bl CallSomeSoundMaybe
 	add sp, #4
 	pop {r0}
 	bx r0
@@ -206,7 +206,7 @@ sub_80ABB08: @ 0x080ABB08
 	str r1, [sp]
 	adds r1, r2, #0
 	movs r3, #0x20
-	bl sub_8003FD4
+	bl CallSomeSoundMaybe
 	add sp, #4
 	pop {r0}
 	bx r0
@@ -706,7 +706,7 @@ sub_80ABE84: @ 0x080ABE84
 	movs r0, #0
 	movs r2, #0
 	movs r3, #0x78
-	bl sub_8003FD4
+	bl CallSomeSoundMaybe
 	adds r4, #0x3f
 	movs r0, #1
 	strb r0, [r4]
@@ -1707,7 +1707,7 @@ _080AC5BC:
 	adds r0, r0, r1
 	adds r2, r4, #1
 	adds r1, r5, #0
-	bl sub_8006068
+	bl PutNumber
 	b _080AC614
 	.align 2, 0
 _080AC5E4: .4byte gBg2Tm
@@ -1772,7 +1772,7 @@ sub_80AC640: @ 0x080AC640
 _080AC652:
 	ldrb r2, [r1]
 	adds r1, r3, #0
-	bl sub_8006068
+	bl PutNumber
 	ldr r0, _080AC66C @ =0x0201EA90
 	adds r1, r4, #0
 	adds r1, #8
@@ -2155,7 +2155,7 @@ sub_80AC998: @ 0x080AC998
 	str r3, [sp]
 	adds r1, r2, #0
 	adds r3, r6, #0
-	bl sub_8003FD4
+	bl CallSomeSoundMaybe
 	movs r0, #1
 	b _080AC9DA
 	.align 2, 0
@@ -2187,7 +2187,7 @@ sub_80AC9E4: @ 0x080AC9E4
 	movs r0, #0
 	movs r2, #0
 	movs r3, #0x18
-	bl sub_8003FD4
+	bl CallSomeSoundMaybe
 	adds r0, r5, #0
 	adds r0, #0x2f
 	strb r4, [r0]
@@ -2483,7 +2483,7 @@ sub_80ACC30: @ 0x080ACC30
 	movs r1, #0
 	movs r2, #0xc0
 	movs r3, #0x18
-	bl sub_8003FD4
+	bl CallSomeSoundMaybe
 	adds r0, r4, #0
 	bl Proc_Break
 _080ACC56:
@@ -3956,7 +3956,7 @@ sub_80AD818: @ 0x080AD818
 	movs r1, #0
 	movs r2, #0x60
 	bl ApplyPaletteExt
-	ldr r0, _080AD8DC @ =gUnk_08439BF0
+	ldr r0, _080AD8DC @ =Img_MuralBackground
 	ldr r1, _080AD8E0 @ =0x06001000
 	bl Decompress
 	ldr r0, _080AD8E4 @ =gBg0Tm
@@ -4034,7 +4034,7 @@ sub_80AD818: @ 0x080AD818
 	bx r0
 	.align 2, 0
 _080AD8D8: .4byte gUnk_0842D800
-_080AD8DC: .4byte gUnk_08439BF0
+_080AD8DC: .4byte Img_MuralBackground
 _080AD8E0: .4byte 0x06001000
 _080AD8E4: .4byte gBg0Tm
 _080AD8E8: .4byte gUnk_0842D860
@@ -4720,12 +4720,12 @@ sub_80ADE30: @ 0x080ADE30
 	adds r2, r0, #0
 	adds r0, r4, #0
 	movs r1, #2
-	bl sub_8006068
+	bl PutNumber
 	adds r4, #2
 	adds r0, r4, #0
 	movs r1, #3
 	movs r2, #0x1e
-	bl sub_8005FEC
+	bl PutSpecialChar
 	movs r0, #3
 	bl EnableBgSync
 	add sp, #4
@@ -4751,7 +4751,7 @@ sub_80ADE84: @ 0x080ADE84
 	lsls r1, r1, #1
 	movs r2, #0x60
 	bl ApplyPaletteExt
-	ldr r0, _080AE0A8 @ =gUnk_08439BF0
+	ldr r0, _080AE0A8 @ =Img_MuralBackground
 	ldr r1, _080AE0AC @ =0x06008000
 	bl Decompress
 	ldr r0, _080AE0B0 @ =gBg3Tm
@@ -4981,7 +4981,7 @@ _080ADFCC:
 	bx r0
 	.align 2, 0
 _080AE0A4: .4byte gUnk_0842D800
-_080AE0A8: .4byte gUnk_08439BF0
+_080AE0A8: .4byte Img_MuralBackground
 _080AE0AC: .4byte 0x06008000
 _080AE0B0: .4byte gBg3Tm
 _080AE0B4: .4byte gUnk_0842D860
@@ -5552,7 +5552,7 @@ _080AE528:
 _080AE53A:
 	ldr r0, [sp, #8]
 	adds r2, r5, #0
-	bl sub_8006068
+	bl PutNumber
 	adds r6, #8
 	ldr r3, [sp, #8]
 	adds r3, #0x80
@@ -6114,7 +6114,7 @@ _080AE9F0: .4byte gDispIo
 sub_80AE9F4: @ 0x080AE9F4
 	push {r4, lr}
 	adds r4, r0, #0
-	bl sub_8005EAC
+	bl EndGreenText
 	adds r0, r4, #0
 	bl EndAllProcChildren
 	movs r0, #0
@@ -6224,10 +6224,10 @@ _080AEABE:
 	bge _080AEAC4
 	movs r6, #0xe
 _080AEAC4:
-	ldr r0, _080AEB28 @ =gUnk_08439BF0
+	ldr r0, _080AEB28 @ =Img_MuralBackground
 	adds r1, r5, #0
 	bl Decompress
-	ldr r0, _080AEB2C @ =gUnk_0843F084
+	ldr r0, _080AEB2C @ =Pal_MuralBackground
 	lsls r1, r6, #5
 	movs r2, #0x40
 	bl ApplyPaletteExt
@@ -6272,8 +6272,8 @@ _080AEB08:
 	bx r0
 	.align 2, 0
 _080AEB24: .4byte gBg3Tm
-_080AEB28: .4byte gUnk_08439BF0
-_080AEB2C: .4byte gUnk_0843F084
+_080AEB28: .4byte Img_MuralBackground
+_080AEB2C: .4byte Pal_MuralBackground
 _080AEB30: .4byte 0x0000027F
 _080AEB34: .4byte gBg3Tm + 0xc0
 _080AEB38: .4byte ProcScr_BackgroundSlide
@@ -10198,7 +10198,7 @@ _080B0A54:
 	ldrb r2, [r0]
 	mov r0, sl
 	movs r1, #0
-	bl sub_8006068
+	bl PutNumber
 	movs r2, #0x80
 	add sl, r2
 	adds r6, #0x80
@@ -13161,7 +13161,7 @@ sub_80B2140: @ 0x080B2140
 _080B2168: .4byte gBmSt
 _080B216C: .4byte gUnk_08DB07DC
 _080B2170:
-	bl sub_800EC08
+	bl ResetDialogueScreen
 _080B2174:
 	add sp, #4
 	pop {r7}
@@ -13658,7 +13658,7 @@ _080B22EC:
 	ldr r1, _080B25AC @ =0x030027CC
 	ldrh r2, [r1]
 	strh r2, [r0]
-	ldr r4, _080B25B8 @ =gUnk_08439BF0
+	ldr r4, _080B25B8 @ =Img_MuralBackground
 	movs r0, #3
 	bl GetBgChrOffset
 	movs r2, #0xc0
@@ -13687,7 +13687,7 @@ _080B25A8: .4byte gDispIo
 _080B25AC: .4byte 0x030027CC
 _080B25B0: .4byte 0x0000FFE0
 _080B25B4: .4byte 0x0000E0FF
-_080B25B8: .4byte gUnk_08439BF0
+_080B25B8: .4byte Img_MuralBackground
 _080B25BC: .4byte gBg3Tm
 _080B25C0: .4byte gUnk_0842D860
 _080B25C4: .4byte gUnk_0843F144
@@ -13841,7 +13841,7 @@ sub_80B26DC: @ 0x080B26DC
 	adds r2, r0, #0
 	ldr r0, [r7]
 	movs r1, #2
-	bl sub_8006068
+	bl PutNumber
 	movs r0, #1
 	bl EnableBgSync
 	add sp, #4
@@ -14335,7 +14335,7 @@ _080B2AE4:
 _080B2AE6:
 	ldr r2, [r7, #0x10]
 	adds r0, r4, #0
-	bl sub_8006068
+	bl PutNumber
 	add sp, #0x14
 	pop {r4, r7}
 	pop {r0}
@@ -14378,7 +14378,7 @@ sub_80B2AF8: @ 0x080B2AF8
 	lsrs r2, r1, #0x10
 	adds r0, r4, #0
 	movs r1, #2
-	bl sub_8006068
+	bl PutNumber
 	b _080B2B56
 _080B2B4A:
 	ldr r3, _080B2B60 @ =gUnk_0844BFA0
@@ -16319,7 +16319,7 @@ sub_80B3A08: @ 0x080B3A08
 	ldr r0, [r7]
 	movs r1, #7
 	bl sub_800463C
-	bl sub_800EC08
+	bl ResetDialogueScreen
 	ldr r1, _080B3A78 @ =gUnk_08DB0ADC
 	adds r0, r1, #0
 	bl Proc_EndEach
@@ -16600,7 +16600,7 @@ sub_80B3C1C: @ 0x080B3C1C
 	movs r2, #8
 	ldrsb r2, [r3, r2]
 	movs r1, #2
-	bl sub_8006068
+	bl PutNumber
 	ldr r4, _080B3CC8 @ =gBg0Tm + 0x310
 	ldr r0, _080B3CC4 @ =gArenaSt
 	ldr r1, [r0, #4]
@@ -21775,7 +21775,7 @@ sub_80B63AC: @ 0x080B63AC
 	ldr r0, _080B63D8 @ =gUnk_08DB0F44
 	bl Proc_Find
 	bl Proc_End
-	bl sub_800EC08
+	bl ResetDialogueScreen
 	bl EndEachSpriteAnimProc
 	movs r0, #0
 	bl InitBgs
@@ -23121,7 +23121,7 @@ _080B6E3C: .4byte 0x04000040
 sub_80B6E40: @ 0x080B6E40
 	push {r4, lr}
 	adds r4, r0, #0
-	bl sub_800EC08
+	bl ResetDialogueScreen
 	ldr r0, _080B6E84 @ =gUnk_0860A86C
 	movs r1, #0
 	movs r2, #0x80
@@ -27381,7 +27381,7 @@ sub_80B8F48: @ 0x080B8F48
 	ldr r0, _080B8F80 @ =gBg2Tm
 	movs r1, #0
 	bl TmFill
-	bl sub_800EC08
+	bl ResetDialogueScreen
 	bl sub_80B99F8
 	bl sub_80B8D8C
 	movs r0, #7
@@ -27726,7 +27726,7 @@ sub_80B91D8: @ 0x080B91D8
 	push {lr}
 	movs r0, #0
 	bl InitBgs
-	bl sub_800EC08
+	bl ResetDialogueScreen
 	bl sub_80B99F8
 	ldr r3, _080B9238 @ =gDispIo
 	adds r1, r3, #0
@@ -27978,21 +27978,21 @@ _080B93A8:
 	mov r1, r8
 	ldrh r2, [r1, #0x3c]
 	movs r1, #2
-	bl sub_8006068
+	bl PutNumber
 	ldr r0, [r7]
 	adds r0, #0x6e
 	mov r1, r8
 	adds r1, #0x40
 	ldrh r2, [r1]
 	movs r1, #2
-	bl sub_8006068
+	bl PutNumber
 	ldr r0, [r7]
 	adds r0, #0x76
 	mov r1, r8
 	adds r1, #0x44
 	ldrh r2, [r1]
 	movs r1, #2
-	bl sub_8006068
+	bl PutNumber
 	ldr r2, _080B9494 @ =gCharacterData
 	mov r4, r8
 	ldr r0, [r4, #0x38]
@@ -28180,7 +28180,7 @@ sub_80B950C: @ 0x080B950C
 	mov r3, sb
 	ldrh r2, [r3, #0x3c]
 	movs r1, #2
-	bl sub_8006068
+	bl PutNumber
 	ldr r0, [r4]
 	ldr r1, _080B96D4 @ =0x0000044C
 	adds r0, r0, r1
@@ -28188,7 +28188,7 @@ sub_80B950C: @ 0x080B950C
 	adds r1, #0x40
 	ldrh r2, [r1]
 	movs r1, #2
-	bl sub_8006068
+	bl PutNumber
 	ldr r0, [r4]
 	ldr r2, _080B96D8 @ =0x00000454
 	adds r0, r0, r2
@@ -28196,7 +28196,7 @@ sub_80B950C: @ 0x080B950C
 	adds r1, #0x44
 	ldrh r2, [r1]
 	movs r1, #2
-	bl sub_8006068
+	bl PutNumber
 	mov r3, sb
 	ldr r0, [r3, #0x38]
 	ldrb r0, [r0, #2]
@@ -28231,21 +28231,21 @@ sub_80B950C: @ 0x080B950C
 	mov r1, sb
 	ldrh r2, [r1, #0x3e]
 	movs r1, #2
-	bl sub_8006068
+	bl PutNumber
 	ldr r0, [r4]
 	adds r0, #0x6e
 	mov r1, sb
 	adds r1, #0x42
 	ldrh r2, [r1]
 	movs r1, #2
-	bl sub_8006068
+	bl PutNumber
 	ldr r0, [r4]
 	adds r0, #0x76
 	mov r1, sb
 	adds r1, #0x46
 	ldrh r2, [r1]
 	movs r1, #2
-	bl sub_8006068
+	bl PutNumber
 	mov r2, sb
 	str r5, [r2, #0x34]
 	ldr r2, _080B96E0 @ =gDispIo
@@ -29360,7 +29360,7 @@ sub_80B9EA0: @ 0x080B9EA0
 	add r0, sl
 	movs r1, #2
 	adds r2, r4, #0
-	bl sub_8006068
+	bl PutNumber
 	mov r3, sb
 	ldr r0, [r3]
 	adds r0, #0x90
@@ -29451,7 +29451,7 @@ _080B9FE8:
 	lsls r0, r0, #1
 	add r0, sl
 	movs r1, #2
-	bl sub_8006068
+	bl PutNumber
 	movs r0, #0x8c
 	lsls r0, r0, #5
 	bl DecodeMsg
@@ -29474,7 +29474,7 @@ _080BA012:
 	ldr r7, _080BA074 @ =gBg1Tm
 	adds r0, r0, r7
 	movs r1, #2
-	bl sub_8006068
+	bl PutNumber
 	mov r0, r8
 	bl GetROMChapterStruct
 	adds r1, r0, #0
@@ -29599,7 +29599,7 @@ _080BA0EC:
 	adds r0, r0, r4
 	movs r1, #2
 	adds r2, r7, #0
-	bl sub_8006068
+	bl PutNumber
 	ldr r0, [r5]
 	adds r0, #0x90
 	adds r1, r6, #0
@@ -30362,12 +30362,12 @@ _080BA7AA:
 	add r1, sp, #8
 	ldrh r2, [r1]
 	movs r1, #2
-	bl sub_8006068
+	bl PutNumber
 	adds r0, r4, #0
 	adds r0, #0xc
 	movs r1, #2
 	movs r2, #0x20
-	bl sub_8005FEC
+	bl PutSpecialChar
 	adds r0, r4, #0
 	adds r0, #0x10
 	mov r7, sb
@@ -30378,7 +30378,7 @@ _080BA7AA:
 	adds r0, #0x12
 	movs r1, #2
 	movs r2, #0x20
-	bl sub_8005FEC
+	bl PutSpecialChar
 	adds r0, r4, #0
 	adds r0, #0x16
 	mov r1, sl

@@ -1208,7 +1208,7 @@ sub_800ADF8: @ 0x0800ADF8
 	bl EnableBgSync
 	movs r0, #2
 	bl EnableBgSync
-	bl sub_800EC08
+	bl ResetDialogueScreen
 	pop {r0}
 	bx r0
 	.align 2, 0
@@ -1230,7 +1230,7 @@ sub_800AE34: @ 0x0800AE34
 	bl EnableBgSync
 	movs r0, #2
 	bl EnableBgSync
-	bl sub_800EC08
+	bl ResetDialogueScreen
 	bl sub_802E834
 	adds r1, r5, #0
 	adds r1, #0x5e
@@ -2416,7 +2416,7 @@ sub_800B70C: @ 0x0800B70C
 sub_800B72C: @ 0x0800B72C
 	push {r4, r5, r6, lr}
 	adds r6, r0, #0
-	bl sub_800EC08
+	bl ResetDialogueScreen
 	movs r0, #0
 	movs r1, #0
 	movs r2, #0
@@ -9289,7 +9289,7 @@ _0800E9A0: .4byte gBattleStats
 _0800E9A4: .4byte gBattleHitIterator
 _0800E9A8: .4byte gActionSt
 _0800E9AC:
-	bl sub_80157A4
+	bl GetGameLock
 	lsls r0, r0, #0x18
 	lsrs r0, r0, #0x18
 	mov r1, r8
@@ -9338,7 +9338,7 @@ sub_800EA10: @ 0x0800EA10
 	adds r0, #0x52
 	movs r1, #0
 	ldrsh r4, [r0, r1]
-	bl sub_80157A4
+	bl GetGameLock
 	lsls r0, r0, #0x18
 	lsrs r0, r0, #0x18
 	cmp r4, r0
@@ -9544,7 +9544,7 @@ _0800EB6C:
 	bl Proc_Find
 	cmp r0, #0
 	beq _0800EB9E
-	bl sub_800EC08
+	bl ResetDialogueScreen
 	b _0800EB9E
 	.align 2, 0
 _0800EB8C: .4byte ProcScr_Face
@@ -9586,7 +9586,7 @@ sub_800EBBC: @ 0x0800EBBC
 	asrs r0, r0, #0x18
 	cmp r0, #0
 	beq _0800EBD2
-	bl sub_800EC08
+	bl ResetDialogueScreen
 	b _0800EBFA
 _0800EBD2:
 	ldr r5, _0800EC00 @ =ProcScr_Face
@@ -9613,8 +9613,8 @@ _0800EBFA:
 _0800EC00: .4byte ProcScr_Face
 _0800EC04: .4byte StartFaceFadeOut
 
-	thumb_func_start sub_800EC08
-sub_800EC08: @ 0x0800EC08
+	thumb_func_start ResetDialogueScreen
+ResetDialogueScreen: @ 0x0800EC08
 	push {lr}
 	bl sub_80095E4
 	ldr r0, _0800EC20 @ =ProcScr_Face
@@ -13101,7 +13101,7 @@ sub_80104B8: @ 0x080104B8
 	ands r1, r0
 	cmp r1, #0
 	bne _080104CE
-	bl sub_80886CC
+	bl EndCgText
 	movs r0, #2
 	b _080104D0
 _080104CE:
@@ -13288,7 +13288,7 @@ sub_8010600: @ 0x08010600
 	ands r0, r1
 	cmp r0, #0
 	beq _0801061A
-	bl sub_80886CC
+	bl EndCgText
 	movs r0, #0
 	b _08010626
 _0801061A:

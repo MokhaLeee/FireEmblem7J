@@ -138,6 +138,7 @@ SECTIONS
 		. = 0x03E090; gEkrPairHpInitial = .;
 		. = 0x03E0A8; gEkrPairExpPrevious = .;
 		. = 0x03E0AC; gEkrPairExpGain = .;
+		. = 0x03E648; gStatScreenInfo = .;
 		. = 0x03E772; gIsSramWorking = .;
 		. = 0x03EE28; gExtraMapSaveHead = .;
 	}
@@ -254,6 +255,9 @@ SECTIONS
 		src/eventcall_spriteanimfx.o(.text);
 		asm/eventcall_spriteanimfx.o(.text);
 		asm/code_0807F9EC.o(.text);
+		src/statscreen.o(.text);
+		asm/statscreen.o(.text);
+		asm/helpbox.o(.text);
 		src/save_core.o(.text);
 		asm/save.o(.text);
 		src/savemenu.o(.text);
@@ -300,8 +304,9 @@ SECTIONS
 		. = ALIGN(4); data/const_data_081EF4AC.o(.rodata)
 		. = ALIGN(4); data/const_data_ekrdragon.o(.rodata)
 		. = ALIGN(4); data/const_data_082EB740.o(.rodata)
+		. = ALIGN(4); src/statscreen.o(.rodata)
+		. = ALIGN(4); data/const_data_0841CD8C.o(.rodata)
 		. = ALIGN(4); src/save_core.o(.rodata)
-
 		. = ALIGN(4); data/const_data_0842D270.o(.rodata)
 		. = ALIGN(4); src/sysutil.o(.rodata)
 		. = ALIGN(4); data/data_0843943C.o(.data)

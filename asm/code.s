@@ -19745,7 +19745,7 @@ sub_8075898: @ 0x08075898
 	sub sp, #4
 	mov r7, sp
 	str r0, [r7]
-	bl sub_800EC08
+	bl ResetDialogueScreen
 	add sp, #4
 	pop {r7}
 	pop {r0}
