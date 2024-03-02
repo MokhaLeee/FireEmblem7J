@@ -1,16 +1,6 @@
 	.section .rodata
 
-	.global gUnk_0841CDA0
-gUnk_0841CDA0:	@ 0x0841CDA0
-	.incbin "FireEmblem7J.base.gba", 0x41CDA0, 0x41CDA6 - 0x41CDA0
-
-	.global gUnk_0841CDA6
-gUnk_0841CDA6:	@ 0x0841CDA6
-	.incbin "FireEmblem7J.base.gba", 0x41CDA6, 0x41CDBE - 0x41CDA6
-
-	.global gUnk_0841CDBE
-gUnk_0841CDBE:	@ 0x0841CDBE
-	.incbin "FireEmblem7J.base.gba", 0x41CDBE, 0x41D06C - 0x41CDBE
+	.incbin "FireEmblem7J.base.gba", 0x41CDD0, 0x41D06C - 0x41CDD0
 
 	.global gUnk_0841D06C
 gUnk_0841D06C:	@ 0x0841D06C

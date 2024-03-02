@@ -558,7 +558,7 @@ extern u16 Pal_LinkArenaMuralBackground[];
 // ??? gUnk_081DB3CE
 // ??? gUnk_081DB400
 // ??? gUnk_081DB490
-// ??? gUnk_081DBD64
+extern u16 Pal_StatScreen_081DBD64[];
 // ??? gUnk_081DD7F4
 // ??? gUnk_081DDA48
 extern u8 Img_SysGrayBox[];
@@ -1116,21 +1116,21 @@ extern const u8 Tsa_EkrDragonFireBG2[];
 // ??? gUnk_08403464
 // ??? gUnk_08403474
 // ??? gUnk_0840348C
-// ??? gUnk_0840349C
+extern const u8 Tsa_StatScreen_0840349C[];
 extern const u8 Tsa_StatScreenPage0[];
 extern const u8 Tsa_Statscreen_Pag1_08403560[];
 extern const u8 Tsa_StatScreen_084035D0[];
-// ??? gUnk_0840364C
-// ??? gUnk_0840366C
-// ??? gUnk_0840368C
-// ??? gUnk_08403730
-// ??? gUnk_084038AC
+extern const u16 Pal_StatScreenFaceDefault[];
+extern const u16 Pal_StatScreenFaceGeneric[];
+extern const u8 Tsa_StatScreen_0840368C[];
+extern const u8 Img_StatScreen_08403730[];
+extern const u16 Pal_StatScreen_084038AC[];
 extern const u8 Tsa_Statscreen_Pag1_084038CC[];
 extern const u8 Tsa_Statscreen_Pag1_08403908[];
-// ??? gUnk_0840392C
+extern const u8 Img_StatScreen_0840392C[];
 extern u16 const Pals_StatScreen_Title[][0x20];
 extern const u8 Tsa_Statscreen_08404124[];
-// ??? gUnk_0840417C
+extern const u8 Tsa_StatScreen_0840417C[];
 // ??? gUnk_084041FC
 // ??? gUnk_0840431C
 // ??? gUnk_08404734
@@ -1898,13 +1898,6 @@ extern struct ProcCmd ProcScr_EventDragonsDownfx[];
 
 // statscreen.h
 
-// ??? gUnk_08D8A610
-// ??? gUnk_08D8A640
-// ??? gUnk_08D8A650
-// ??? gUnk_08D8A660
-// ??? gUnk_08D8A704
-// ??? gUnk_08D8A8E0
-// ??? gUnk_08D8AA84
 // ??? gUnk_08D8AB2C
 // ??? gUnk_08D8ABD4
 // ??? gUnk_08D8AC98

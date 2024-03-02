@@ -167,7 +167,7 @@ _0801C696:
 	lsls r0, r0, #0x18
 	cmp r0, #0
 	beq _0801C700
-	bl MU_EndAll
+	bl EndAllMus
 	bl sub_808667C
 	movs r0, #0x1f
 	bl SetStatScreenExcludedUnitFlags
@@ -183,7 +183,7 @@ _0801C696:
 	ldrb r0, [r0]
 	bl GetUnit
 	adds r1, r6, #0
-	bl sub_80821F8
+	bl StartStatScreen
 	adds r0, r6, #0
 	movs r1, #5
 	bl Proc_Goto
@@ -240,7 +240,7 @@ _0801C74C:
 	strb r1, [r0, #0x13]
 	cmp r4, #0
 	beq _0801C776
-	bl MU_EndAll
+	bl EndAllMus
 	adds r0, r4, #0
 	bl ShowUnitSprite
 _0801C776:
@@ -318,7 +318,7 @@ _0801C7D0:
 	adds r4, r0, #0
 	cmp r4, #0
 	beq _0801C822
-	bl MU_EndAll
+	bl EndAllMus
 	adds r0, r4, #0
 	bl ShowUnitSprite
 _0801C822:
@@ -359,7 +359,7 @@ _0801C840:
 	adds r4, r0, #0
 	cmp r4, #0
 	beq _0801C882
-	bl MU_EndAll
+	bl EndAllMus
 	adds r0, r4, #0
 	bl ShowUnitSprite
 _0801C882:
@@ -789,7 +789,7 @@ _0801CC00:
 	ldr r0, [r4]
 	cmp r0, #0
 	beq _0801CC3E
-	bl MU_EndAll
+	bl EndAllMus
 	ldr r2, [r4]
 	ldr r0, [r2, #0xc]
 	movs r1, #2
@@ -875,13 +875,13 @@ _0801CCB6:
 	lsls r0, r0, #0x18
 	cmp r0, #0
 	beq _0801CD78
-	bl MU_EndAll
+	bl EndAllMus
 	movs r0, #0x1f
 	bl SetStatScreenExcludedUnitFlags
 	adds r0, r4, #0
 	bl GetUnit
 	adds r1, r5, #0
-	bl sub_80821F8
+	bl StartStatScreen
 	adds r0, r5, #0
 	movs r1, #6
 	bl Proc_Goto
@@ -1024,7 +1024,7 @@ _0801CE16:
 	ldr r4, _0801CE38 @ =gActiveUnit
 	ldr r0, [r4]
 	bl HideUnitSprite
-	bl MU_EndAll
+	bl EndAllMus
 	ldr r0, [r4]
 	bl StartMu
 	adds r0, r5, #0
@@ -1242,7 +1242,7 @@ _0801CFF8:
 	subs r1, #0x43
 	ands r0, r1
 	str r0, [r2, #0xc]
-	bl MU_EndAll
+	bl EndAllMus
 	ldr r0, [r5]
 	bl StartMu
 	bl sub_806C7CC
@@ -1370,7 +1370,7 @@ _0801D120:
 	lsls r0, r0, #0x18
 	cmp r0, #0
 	beq _0801D148
-	bl MU_EndAll
+	bl EndAllMus
 	bl RefreshEntityMaps
 	bl RenderMap
 	bl RefreshUnitSprites
@@ -1380,7 +1380,7 @@ _0801D120:
 	bl Proc_Goto
 	b _0801D14C
 _0801D148:
-	bl MU_EndAll
+	bl EndAllMus
 _0801D14C:
 	pop {r4, r5}
 	pop {r0}
@@ -1401,7 +1401,7 @@ sub_801D154: @ 0x0801D154
 	bl RefreshEntityMaps
 	bl RenderMap
 	bl RefreshUnitSprites
-	bl MU_EndAll
+	bl EndAllMus
 _0801D178:
 	pop {r0}
 	bx r0

@@ -2381,8 +2381,8 @@ GetItemName: @ 0x08017610
 	.align 2, 0
 _08017630: .4byte gUnk_08C51538
 
-	thumb_func_start GetItemDescId
-GetItemDescId: @ 0x08017634
+	thumb_func_start GetItemDescMsg
+GetItemDescMsg: @ 0x08017634
 	movs r1, #0xff
 	ands r0, r1
 	lsls r1, r0, #3

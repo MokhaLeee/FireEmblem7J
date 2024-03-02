@@ -1388,7 +1388,7 @@ _0801112C: .4byte gDispIo
 sub_8011130: @ 0x08011130
 	push {r4, r5, lr}
 	adds r4, r0, #0
-	bl sub_802D874
+	bl LockBmDisplay
 	bl sub_806D51C
 	movs r0, #3
 	movs r1, #0
@@ -1763,7 +1763,7 @@ sub_801140C: @ 0x0801140C
 	bl sub_802516C
 _0801143C:
 	bl sub_8025A0C
-	bl sub_802D8A8
+	bl UnlockBmDisplay
 	bl sub_806D52C
 	movs r0, #8
 	bl EnableBgSync
@@ -1890,7 +1890,7 @@ sub_8011508: @ 0x08011508
 	movs r0, #0xff
 	strb r0, [r4]
 	bl sub_802E834
-	bl sub_802D8A8
+	bl UnlockBmDisplay
 	bl sub_806D52C
 _08011544:
 	movs r0, #0

@@ -53,3 +53,5 @@
 #include "gbafe/eventcall.h"
 #include "gbafe/support.h"
 #include "gbafe/mu.h"
+#include "gbafe/ui.h"
+#include "gbafe/bmio.h"

@@ -8,6 +8,14 @@ enum statscreen_frame_rect {
     PAGE_FRAME_SCREEN_Y = 2,
 };
 
+enum statscreen_page_idx {
+    STATSCREEN_PAGE_PERSONALINFO,
+    STATSCREEN_PAGE_ITEMS,
+    STATSCREEN_PAGE_WEXPANDSUPPORTS,
+
+    STATSCREEN_PAGE_MAX
+};
+
 enum statscreen_text_index {
     STATSCREEN_TEXT_PNAME,
     STATSCREEN_TEXT_JNAME,
@@ -51,55 +59,13 @@ enum statscreen_text_index {
 
 struct HelpBoxInfo;
 
-struct HelpBoxProc {
-    /* 00 */ PROC_HEADER;
-
-    /* 2C */ struct HelpBoxInfo const *info;
-
-    /* 30 */ s16 x_box;
-    /* 32 */ s16 y_box;
-    /* 34 */ s16 w_box;
-    /* 36 */ s16 h_box;
-    /* 38 */ s16 x_box_init;
-    /* 3A */ s16 y_box_init;
-    /* 3C */ s16 x_box_fini;
-    /* 3E */ s16 y_box_fini;
-    /* 40 */ s16 w_box_init;
-    /* 42 */ s16 h_box_init;
-    /* 44 */ s16 w_box_fini;
-    /* 46 */ s16 h_box_fini;
-    /* 48 */ s16 timer;
-    /* 4A */ s16 timer_end;
-
-    /* 4C */ u16 msg;
-    /* 4E */ u16 item;
-
-    /* 50 */ u16 move_key_bit; // move ctrl proc only
-
-    /* 52 */ u8 unk_52;
-
-    // NOTE: there's likely more, need to decompile more files
-};
-
-struct HelpBoxInfo
-{
-    /* 00 */ struct HelpBoxInfo const *adjacent_up;
-    /* 04 */ struct HelpBoxInfo const *adjacent_down;
-    /* 08 */ struct HelpBoxInfo const *adjacent_left;
-    /* 0C */ struct HelpBoxInfo const *adjacent_right;
-    /* 10 */ u8 x, y;
-    /* 12 */ u16 msg;
-    /* 14 */ void (* redirect)(struct HelpBoxProc *proc);
-    /* 18 */ void (* populate)(struct HelpBoxProc *proc);
-};
-
 struct StatScreenSt {
     /* 00 */ u8 page;
     /* 01 */ u8 page_count;
     /* 02 */ u16 page_slide_key_bit;
     /* 04 */ s16 x_disp_off; // Note: Always 0, not properly taked into account by most things
     /* 06 */ s16 y_disp_off;
-    /* 08 */ bool8 is_transitioning;
+    /* 08 */ bool is_transitioning;
     /* 0C */ struct Unit * unit;
     /* 10 */ struct MuProc * mu;
     /* 14 */ struct HelpBoxInfo const * help;
@@ -232,34 +198,80 @@ struct StatScreenSpritesProc
 };
 
 void PutUpdateStatScreenPageName(int page_id);
-// StatScreenPageName_Init
-// StatScreenPageName_Main
-// StatScreenPageName_CloseMain
-// StatScreenPageName_OpenMain
-// sub_8081A98
-// sub_8081AB0
-// sub_8081AE4
-// sub_8081BCC
-// sub_8081C40
-// sub_8081CB0
-// sub_8081D7C
-// sub_8081DE4
+void StatScreenPageName_Init(struct StatScreenSpritesProc * proc);
+void StatScreenPageName_Main(struct StatScreenSpritesProc * proc);
+void StatScreenPageName_CloseMain(struct StatScreenSpritesProc * proc);
+void StatScreenPageName_OpenMain(struct StatScreenSpritesProc * proc);
+
+void StatScreenSprites_Init(struct StatScreenSpritesProc * proc);
+void StatScreenSprites_BumpCheck(struct StatScreenSpritesProc * proc);
+void StatScreenSprites_PutArrows(struct StatScreenSpritesProc * proc);
+void StatScreenSprites_PutNumberLabel(struct StatScreenSpritesProc * proc);
+void StatScreenSprites_PutMuAreaSprites(struct StatScreenSpritesProc * proc);
+void StatScreenSprites_PutRescueMarkers(struct StatScreenSpritesProc * proc);
+
+void StatScreen_DisableScreen(ProcPtr proc);
+void StatScreen_Init(ProcPtr proc);
 void StatScreen_InitUnit(ProcPtr proc);
-// sub_8081FD8
-// sub_8082168
-// sub_80821A0
-// sub_80821B4
-// sub_80821EC
-// sub_80821F8
-// StartStatScreenHelp
-// sub_80822B0
-// sub_80822DC
-// sub_8082394
-// sub_80823C8
-// sub_808241C
-// sub_808245C
-// sub_8082484
-// sub_8082498
+void StatScreen_Main(ProcPtr proc);
+void StatScreen_BackUpStatus(ProcPtr proc);
+void StatScreen_UpdateLastHelpInfo(ProcPtr proc);
+void SyncStatScreenBgOffset(void);
+void StatScreen_CleanUp(ProcPtr proc);
+void StartStatScreen(struct Unit * unit, ProcPtr parent);
+
+struct HelpBoxProc {
+    /* 00 */ PROC_HEADER;
+
+    /* 2C */ struct HelpBoxInfo const *info;
+
+    /* 30 */ s16 x_box;
+    /* 32 */ s16 y_box;
+    /* 34 */ s16 w_box;
+    /* 36 */ s16 h_box;
+    /* 38 */ s16 x_box_init;
+    /* 3A */ s16 y_box_init;
+    /* 3C */ s16 x_box_fini;
+    /* 3E */ s16 y_box_fini;
+    /* 40 */ s16 w_box_init;
+    /* 42 */ s16 h_box_init;
+    /* 44 */ s16 w_box_fini;
+    /* 46 */ s16 h_box_fini;
+    /* 48 */ s16 timer;
+    /* 4A */ s16 timer_end;
+
+    /* 4C */ u16 msg;
+    /* 4E */ u16 item;
+
+    /* 50 */ u16 move_key_bit; // move ctrl proc only
+
+    /* 52 */ u8 unk_52;
+
+    // NOTE: there's likely more, need to decompile more files
+};
+
+struct HelpBoxInfo
+{
+    /* 00 */ struct HelpBoxInfo const *adjacent_up;
+    /* 04 */ struct HelpBoxInfo const *adjacent_down;
+    /* 08 */ struct HelpBoxInfo const *adjacent_left;
+    /* 0C */ struct HelpBoxInfo const *adjacent_right;
+    /* 10 */ u8 x, y;
+    /* 12 */ u16 msg;
+    /* 14 */ void (* redirect)(struct HelpBoxProc *proc);
+    /* 18 */ void (* populate)(struct HelpBoxProc *proc);
+};
+
+void StartStatScreenHelp(int page_id, ProcPtr proc);
+void HelpBoxPopulateStatScreenItem(struct HelpBoxProc * proc);
+void HelpBoxPopulateStatScreenStatus(struct HelpBoxProc * proc);
+void HelpBoxPopulateStatScreenPower(struct HelpBoxProc * proc);
+void HelpBoxRedirectStatScreenItem(struct HelpBoxProc * proc);
+void HelpBoxPopulateStatScreenWeaponExp(struct HelpBoxProc * proc);
+void HelpBoxPopulateStatScreenPInfo(struct HelpBoxProc * proc);
+void HelpBoxPopulateStatScreenJInfo(struct HelpBoxProc * proc);
+void HelpBoxRedirectStatScreenSupports(struct HelpBoxProc * proc);
+
 // UpdateHelpBoxDisplay
 // sub_8082580
 // sub_80825C4
@@ -269,13 +281,13 @@ void StatScreen_InitUnit(ProcPtr proc);
 // sub_80826A0
 // sub_80826EC
 // sub_8082728
-// StartHelpBoxExt_Unk
-// CloseHelpBox
+void StartHelpBoxExt_Unk(int x, int y, int mid);
+void CloseHelpBox(void);
 // sub_80828C8
 // sub_80828EC
 // sub_8082914
 // sub_80829E0
-// sub_80829F4
+void StartMovingHelpBox(struct HelpBoxInfo const * info, ProcPtr parent);
 // sub_8082A18
 // sub_8082A3C
 // sub_8082AA0
@@ -294,7 +306,7 @@ int HelpBoxTryRelocateRight(struct HelpBoxProc *proc);
 // sub_8082D48
 // EndHelpPromptSprite
 // sub_8082D8C
-// sub_8082DAC
+struct HelpBoxInfo const * GetLastHelpBoxInfo(void);
 // sub_8082DB8
 // sub_8082E2C
 // sub_8082E6C
@@ -303,7 +315,7 @@ int HelpBoxTryRelocateRight(struct HelpBoxProc *proc);
 // sub_8082EEC
 // sub_8082F0C
 // sub_8082F30
-// LoadHelpBoxGfx
+void LoadHelpBoxGfx(void * vram, int palId);
 // sub_8083000
 // sub_8083088
 // sub_8083268
@@ -1066,8 +1078,8 @@ extern struct ProcCmd ProcScr_StatScreenPageSlide[];
 extern struct ProcCmd ProcScr_StatScreenUnitSlide[];
 // ??? Sprite_StatScreenPageName
 extern u16 CONST_DATA gStatScreenPageNameChrOffsetLut[];
-// ??? gUnk_08D8A41C
-// ??? gUnk_08D8A466
+// ??? Sprite_StatScreenMuAreaBackground
+// ??? Sprite_StatScreenFaceSideWindow
 extern struct ProcCmd ProcScr_StatScreen[];
 // ??? gUnk_08D8A5D8
 
@@ -1076,3 +1088,18 @@ extern struct StatScreenTextInfo const gStatScreenPersonalInfoLabelsInfo[];
 extern struct StatScreenTextInfo const gStatScreenEquipmentLabelsInfo[];
 extern struct StatScreenTextInfo const gStatScreenWeaponExpLabelsPhysicalInfo[];
 extern struct StatScreenTextInfo const gStatScreenWeaponExpLabelsMagicalInfo[];
+
+extern struct ProcCmd CONST_DATA ProcScr_StatScreenUnitSlide[];
+extern u16 CONST_DATA Sprite_StatScreenPageName[];
+extern u16 CONST_DATA gStatScreenPageNameChrOffsetLut[];
+extern struct ProcCmd CONST_DATA ProcScr_StatScreenPageName[];
+extern u16 CONST_DATA Sprite_StatScreenMuAreaBackground[];
+extern u16 CONST_DATA Sprite_StatScreenFaceSideWindow[];
+extern struct ProcCmd CONST_DATA ProcScr_StatScreenSprites[];
+// ??? gUnk_08D8A610
+// ??? gUnk_08D8A640
+// ??? gUnk_08D8A650
+// ??? gUnk_08D8A660
+extern struct HelpBoxInfo CONST_DATA HelpInfo_StatScreenPersonalInfo_Pow;
+extern struct HelpBoxInfo CONST_DATA HelpInfo_StatScreenItems_ItemA;
+extern struct HelpBoxInfo CONST_DATA HelpInfo_StatScreenWeaponExp_WExpA;

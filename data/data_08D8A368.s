@@ -1,21 +1,5 @@
 	.section .data
 
-	.global gUnk_08D8A3DC
-gUnk_08D8A3DC:	@ 0x08D8A3DC
-	.incbin "FireEmblem7J.base.gba", 0xD8A3DC, 0xD8A41C - 0xD8A3DC
-
-	.global gUnk_08D8A41C
-gUnk_08D8A41C:	@ 0x08D8A41C
-	.incbin "FireEmblem7J.base.gba", 0xD8A41C, 0xD8A466 - 0xD8A41C
-
-	.global gUnk_08D8A466
-gUnk_08D8A466:	@ 0x08D8A466
-	.incbin "FireEmblem7J.base.gba", 0xD8A466, 0xD8A530 - 0xD8A466
-
-	.global ProcScr_StatScreen
-ProcScr_StatScreen:	@ 0x08D8A530
-	.incbin "FireEmblem7J.base.gba", 0xD8A530, 0xD8A5D8 - 0xD8A530
-
 	.global gUnk_08D8A5D8
 gUnk_08D8A5D8:	@ 0x08D8A5D8
 	.incbin "FireEmblem7J.base.gba", 0xD8A5D8, 0xD8A610 - 0xD8A5D8
@@ -36,16 +20,16 @@ gUnk_08D8A650:	@ 0x08D8A650
 gUnk_08D8A660:	@ 0x08D8A660
 	.incbin "FireEmblem7J.base.gba", 0xD8A660, 0xD8A704 - 0xD8A660
 
-	.global gUnk_08D8A704
-gUnk_08D8A704:	@ 0x08D8A704
+	.global HelpInfo_StatScreenPersonalInfo_Pow
+HelpInfo_StatScreenPersonalInfo_Pow:	@ 0x08D8A704
 	.incbin "FireEmblem7J.base.gba", 0xD8A704, 0xD8A8E0 - 0xD8A704
 
-	.global gUnk_08D8A8E0
-gUnk_08D8A8E0:	@ 0x08D8A8E0
+	.global HelpInfo_StatScreenItems_ItemA
+HelpInfo_StatScreenItems_ItemA:	@ 0x08D8A8E0
 	.incbin "FireEmblem7J.base.gba", 0xD8A8E0, 0xD8AA84 - 0xD8A8E0
 
-	.global gUnk_08D8AA84
-gUnk_08D8AA84:	@ 0x08D8AA84
+	.global HelpInfo_StatScreenWeaponExp_WExpA
+HelpInfo_StatScreenWeaponExp_WExpA:	@ 0x08D8AA84
 	.incbin "FireEmblem7J.base.gba", 0xD8AA84, 0xD8AB2C - 0xD8AA84
 
 	.global gUnk_08D8AB2C

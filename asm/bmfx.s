@@ -1226,7 +1226,7 @@ _0801E132:
 	adds r1, #3
 	lsls r1, r1, #3
 	movs r2, #0
-	bl sub_8015F24
+	bl PutSysArrow
 _0801E166:
 	mov r0, r8
 	movs r2, #0
@@ -1246,7 +1246,7 @@ _0801E166:
 	adds r1, #3
 	lsls r1, r1, #3
 	movs r2, #1
-	bl sub_8015F24
+	bl PutSysArrow
 _0801E18E:
 	adds r7, r6, #0
 	adds r7, #0x60
@@ -1270,7 +1270,7 @@ _0801E18E:
 	adds r1, #5
 	lsls r1, r1, #3
 	movs r2, #0
-	bl sub_8015F24
+	bl PutSysArrow
 _0801E1BE:
 	movs r0, #0
 	ldrsh r1, [r7, r0]
@@ -1290,7 +1290,7 @@ _0801E1BE:
 	adds r1, #5
 	lsls r1, r1, #3
 	movs r2, #1
-	bl sub_8015F24
+	bl PutSysArrow
 _0801E1E6:
 	adds r7, r6, #0
 	adds r7, #0x66
@@ -1314,7 +1314,7 @@ _0801E1E6:
 	adds r1, #3
 	lsls r1, r1, #3
 	movs r2, #0
-	bl sub_8015F24
+	bl PutSysArrow
 _0801E216:
 	movs r0, #0
 	ldrsh r1, [r7, r0]
@@ -1334,7 +1334,7 @@ _0801E216:
 	adds r1, #3
 	lsls r1, r1, #3
 	movs r2, #1
-	bl sub_8015F24
+	bl PutSysArrow
 _0801E23E:
 	adds r6, #0x62
 	adds r5, #0x62
@@ -1355,7 +1355,7 @@ _0801E23E:
 	adds r1, #5
 	lsls r1, r1, #3
 	movs r2, #0
-	bl sub_8015F24
+	bl PutSysArrow
 _0801E268:
 	movs r3, #0
 	ldrsh r1, [r6, r3]
@@ -1374,7 +1374,7 @@ _0801E268:
 	adds r1, #5
 	lsls r1, r1, #3
 	movs r2, #1
-	bl sub_8015F24
+	bl PutSysArrow
 _0801E28E:
 	pop {r3}
 	mov r8, r3
@@ -5880,7 +5880,7 @@ _08020670: .4byte 0x04000052
 sub_8020674: @ 0x08020674
 	push {r4, r5, lr}
 	adds r5, r0, #0
-	bl sub_802D874
+	bl LockBmDisplay
 	movs r0, #0x2b
 	movs r1, #0
 	bl sub_800376C

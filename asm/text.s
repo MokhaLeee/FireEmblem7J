@@ -1656,8 +1656,8 @@ sub_8005E60: @ 0x08005E60
 _08005E80: .4byte gPal
 _08005E84: .4byte gUnk_08190288
 
-	thumb_func_start sub_8005E88
-sub_8005E88: @ 0x08005E88
+	thumb_func_start StartGreenText
+StartGreenText: @ 0x08005E88
 	push {lr}
 	adds r1, r0, #0
 	cmp r1, #0

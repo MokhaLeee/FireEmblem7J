@@ -247,8 +247,8 @@ sub_806C3D8: @ 0x0806C3D8
 	pop {r0}
 	bx r0
 
-	thumb_func_start sub_806C3F8
-sub_806C3F8: @ 0x0806C3F8
+	thumb_func_start StartUiMu
+StartUiMu: @ 0x0806C3F8
 	push {r7, lr}
 	sub sp, #0x10
 	mov r7, sp
@@ -2455,8 +2455,8 @@ sub_806D47C: @ 0x0806D47C
 	pop {r0}
 	bx r0
 
-	thumb_func_start MU_EndAll
-MU_EndAll: @ 0x0806D4A4
+	thumb_func_start EndAllMus
+EndAllMus: @ 0x0806D4A4
 	push {r7, lr}
 	mov r7, sp
 	ldr r1, _0806D4B8 @ =gUnk_08D64F4C

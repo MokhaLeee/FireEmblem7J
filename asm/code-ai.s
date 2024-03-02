@@ -1241,7 +1241,7 @@ sub_8035714: @ 0x08035714
 	bl RenderMap
 	movs r0, #1
 	bl StartMapFade
-	bl MU_EndAll
+	bl EndAllMus
 	bl RefreshEntityMaps
 	ldr r0, [r5]
 	bl ShowUnitSprite
@@ -1650,7 +1650,7 @@ _08035A82:
 	ands r0, r1
 	cmp r0, #0
 	bne _08035AEA
-	bl MU_EndAll
+	bl EndAllMus
 	ldr r1, [r4]
 	ldrb r0, [r7, #2]
 	strb r0, [r1, #0x10]

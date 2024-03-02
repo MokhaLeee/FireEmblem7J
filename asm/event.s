@@ -1196,7 +1196,7 @@ _0800ADF4:
 sub_800ADF8: @ 0x0800ADF8
 	push {lr}
 	bl sub_802E834
-	bl sub_802D8A8
+	bl UnlockBmDisplay
 	bl sub_806D52C
 	ldr r0, _0800AE2C @ =gBg0Tm
 	movs r1, #0
@@ -2090,7 +2090,7 @@ _0800B4AE:
 	rsbs r0, r0, #0
 	cmp r1, r0
 	bne _0800B4C6
-	bl sub_802D874
+	bl LockBmDisplay
 	bl sub_806D51C
 _0800B4C6:
 	adds r0, r5, #0
@@ -2155,7 +2155,7 @@ _0800B534:
 	rsbs r0, r0, #0
 	cmp r1, r0
 	bne _0800B54A
-	bl sub_802D874
+	bl LockBmDisplay
 	bl sub_806D51C
 _0800B54A:
 	adds r0, r5, #0
@@ -2234,7 +2234,7 @@ _0800B5C6:
 	rsbs r0, r0, #0
 	cmp r1, r0
 	bne _0800B5DE
-	bl sub_802D874
+	bl LockBmDisplay
 	bl sub_806D51C
 _0800B5DE:
 	adds r0, r5, #0
@@ -2336,7 +2336,7 @@ sub_800B678: @ 0x0800B678
 	rsbs r6, r6, #0
 	cmp r0, r6
 	beq _0800B694
-	bl sub_802D8A8
+	bl UnlockBmDisplay
 	bl sub_806D52C
 _0800B694:
 	adds r0, r4, #0
@@ -2400,7 +2400,7 @@ _0800B708: .4byte gPlaySt
 sub_800B70C: @ 0x0800B70C
 	push {r4, lr}
 	adds r4, r0, #0
-	bl sub_802D874
+	bl LockBmDisplay
 	bl sub_806D51C
 	adds r0, r4, #0
 	bl sub_800AD84
@@ -7933,7 +7933,7 @@ sub_800DFE0: @ 0x0800DFE0
 	ldrb r0, [r0]
 	bl GetUnitFromCharId
 	adds r4, r0, #0
-	bl MU_EndAll
+	bl EndAllMus
 	adds r0, r4, #0
 	bl ClearUnit
 	bl RefreshEntityMaps
@@ -8552,7 +8552,7 @@ sub_800E44C: @ 0x0800E44C
 	adds r4, r0, #0
 	ldr r0, [r4, #0x30]
 	ldrh r5, [r0, #2]
-	bl MU_EndAll
+	bl EndAllMus
 	adds r0, r5, #0
 	bl sub_8013214
 	movs r0, #1
@@ -9672,7 +9672,7 @@ sub_800EC58: @ 0x0800EC58
 	bl Proc_EndEachMarked
 	movs r0, #5
 	bl Proc_EndEachMarked
-	bl MU_EndAll
+	bl EndAllMus
 	pop {r0}
 	bx r0
 
@@ -13135,7 +13135,7 @@ _080104F0:
 	rsbs r0, r0, #0
 	cmp r1, r0
 	bne _08010508
-	bl sub_802D874
+	bl LockBmDisplay
 	bl sub_806D51C
 _08010508:
 	movs r0, #0x61

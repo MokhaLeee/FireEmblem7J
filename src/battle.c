@@ -1712,7 +1712,7 @@ void BeginBattleAnimations(void)
         SetBanimLinkArenaFlag(0);
         BeginAnimsOnBattleAnimations();
     } else {
-        MU_EndAll();
+        EndAllMus();
         RenderMap();
         StartBattleManim();
 

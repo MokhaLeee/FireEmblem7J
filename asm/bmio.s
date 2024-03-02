@@ -160,8 +160,8 @@ sub_802D864: @ 0x0802D864
 	.align 2, 0
 _0802D870: .4byte gUnk_08C05414
 
-	thumb_func_start sub_802D874
-sub_802D874: @ 0x0802D874
+	thumb_func_start LockBmDisplay
+LockBmDisplay: @ 0x0802D874
 	push {lr}
 	ldr r1, _0802D8A0 @ =gBmSt
 	ldrb r0, [r1, #2]
@@ -186,8 +186,8 @@ _0802D89C:
 _0802D8A0: .4byte gBmSt
 _0802D8A4: .4byte gPal
 
-	thumb_func_start sub_802D8A8
-sub_802D8A8: @ 0x0802D8A8
+	thumb_func_start UnlockBmDisplay
+UnlockBmDisplay: @ 0x0802D8A8
 	push {lr}
 	ldr r1, _0802D8DC @ =gBmSt
 	ldrb r2, [r1, #2]

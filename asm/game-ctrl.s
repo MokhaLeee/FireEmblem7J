@@ -569,7 +569,7 @@ _08012FE8: .4byte gPlaySt
 sub_8012FEC: @ 0x08012FEC
 	push {r4, lr}
 	adds r4, r0, #0
-	bl MU_EndAll
+	bl EndAllMus
 	adds r0, r4, #0
 	adds r0, #0x29
 	ldrb r0, [r0]

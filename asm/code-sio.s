@@ -14203,7 +14203,7 @@ sub_80437DC: @ 0x080437DC
 	push {r4, lr}
 	sub sp, #0xc
 	movs r0, #6
-	bl sub_804A2DC
+	bl ApplyUiStatBarPal
 	movs r4, #0
 	str r4, [sp]
 	movs r0, #0xd
@@ -18712,7 +18712,7 @@ sub_8045C34: @ 0x08045C34
 	adds r4, r0, #0
 	cmp r5, #0
 	beq _08045C66
-	bl MU_EndAll
+	bl EndAllMus
 	adds r0, r5, #0
 	bl ShowUnitSprite
 _08045C66:
@@ -18895,7 +18895,7 @@ sub_8045D44: @ 0x08045D44
 	ldr r0, _08045E4C @ =0x00000389
 	bl m4aSongNumStart
 _08045DD0:
-	bl MU_EndAll
+	bl EndAllMus
 	ldr r0, [r7]
 	bl StartMu
 	ldr r4, _08045E50 @ =0x03001420
@@ -18970,7 +18970,7 @@ _08045E68:
 	ands r0, r1
 	cmp r0, #0
 	bne _08045EA4
-	bl MU_EndAll
+	bl EndAllMus
 	adds r0, r6, #0
 	movs r1, #4
 	bl Proc_Goto
@@ -19252,7 +19252,7 @@ _080460E8:
 	ands r0, r1
 	cmp r0, #0
 	bne _08046114
-	bl MU_EndAll
+	bl EndAllMus
 	mov r0, r8
 	movs r1, #6
 	bl Proc_Goto
@@ -19983,7 +19983,7 @@ sub_8046694: @ 0x08046694
 	adds r0, r7, #0
 	movs r1, #0
 	bl SetUnitStatus
-	bl MU_EndAll
+	bl EndAllMus
 	adds r0, r6, #0
 	bl GetUnitCurrentHp
 	cmp r0, #0
@@ -20393,8 +20393,8 @@ _08046A70: .4byte gPlaySt
 	thumb_func_start sub_8046A74
 sub_8046A74: @ 0x08046A74
 	push {lr}
-	bl MU_EndAll
-	bl MU_EndAll
+	bl EndAllMus
+	bl EndAllMus
 	bl sub_80455BC
 	bl sub_804561C
 	bl RefreshUnitSprites
@@ -21547,7 +21547,7 @@ sub_8047354: @ 0x08047354
 	ldr r0, _08047370 @ =gActiveUnit
 	ldr r0, [r0]
 	adds r1, r4, #0
-	bl sub_80821F8
+	bl StartStatScreen
 	pop {r4}
 	pop {r0}
 	bx r0
@@ -21569,7 +21569,7 @@ sub_8047374: @ 0x08047374
 	.align 2, 0
 _0804738C: .4byte 0x0203DC74
 _08047390:
-	bl MU_EndAll
+	bl EndAllMus
 	ldr r0, _080473A8 @ =gPlaySt
 	ldrb r1, [r0, #0xf]
 	movs r0, #6
@@ -21596,7 +21596,7 @@ sub_80473AC: @ 0x080473AC
 	.align 2, 0
 _080473C0: .4byte 0x0203DC74
 _080473C4:
-	bl MU_EndAll
+	bl EndAllMus
 	ldr r0, _080473DC @ =gPlaySt
 	ldrb r1, [r0, #0xf]
 	movs r0, #7
@@ -21624,8 +21624,8 @@ sub_80473E0: @ 0x080473E0
 	.align 2, 0
 _080473F8: .4byte 0x0203DC74
 _080473FC:
-	bl MU_EndAll
-	bl MU_EndAll
+	bl EndAllMus
+	bl EndAllMus
 	ldr r1, _08047420 @ =0x0203D908
 	movs r0, #1
 	strb r0, [r1, #0xb]
@@ -22107,7 +22107,7 @@ sub_8047784: @ 0x08047784
 	.align 2, 0
 _080477B0: .4byte gBg2Tm
 _080477B4:
-	bl MU_EndAll
+	bl EndAllMus
 	bl RenderMap
 	bl StartBattleManim
 	ldr r0, _080477D0 @ =gBattleStats

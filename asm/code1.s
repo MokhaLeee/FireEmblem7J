@@ -2973,7 +2973,7 @@ _0802FAE4:
 	strh r6, [r4]
 	adds r0, r7, #0
 	bl BattleApplyMiscAction
-	bl MU_EndAll
+	bl EndAllMus
 	bl sub_806F8C8
 	movs r0, #0
 	pop {r4, r5, r6, r7}
@@ -5513,7 +5513,7 @@ _08030EDC:
 	ldrb r0, [r0]
 	cmp r0, #0
 	beq _08030F40
-	bl MU_EndAll
+	bl EndAllMus
 	bl sub_808667C
 	movs r0, #0x1f
 	bl SetStatScreenExcludedUnitFlags
@@ -5529,7 +5529,7 @@ _08030EDC:
 	ldrb r0, [r0]
 	bl GetUnit
 	adds r1, r5, #0
-	bl sub_80821F8
+	bl StartStatScreen
 	adds r0, r5, #0
 	movs r1, #5
 	bl Proc_Goto
@@ -6159,7 +6159,7 @@ sub_8031440: @ 0x08031440
 	ands r0, r1
 	cmp r0, #0
 	beq _080314B0
-	bl MU_EndAll
+	bl EndAllMus
 	ldr r0, _080314A0 @ =gActiveUnit
 	ldr r2, [r0]
 	ldr r0, [r2, #0xc]
@@ -6223,13 +6223,13 @@ _080314B0:
 _080314E2:
 	cmp r4, #0
 	beq _08031504
-	bl MU_EndAll
+	bl EndAllMus
 	movs r0, #0x1f
 	bl SetStatScreenExcludedUnitFlags
 	adds r0, r4, #0
 	bl GetUnit
 	adds r1, r5, #0
-	bl sub_80821F8
+	bl StartStatScreen
 	adds r0, r5, #0
 	movs r1, #6
 	bl Proc_Goto
@@ -10186,7 +10186,7 @@ _08033460:
 	thumb_func_start FinishDamageDisplay
 FinishDamageDisplay: @ 0x08033468
 	push {lr}
-	bl MU_EndAll
+	bl EndAllMus
 	ldr r0, _0803348C @ =gBattleActor
 	ldrb r0, [r0, #0x13]
 	lsls r0, r0, #0x18
@@ -11851,7 +11851,7 @@ _080341C0:
 	movs r2, #1
 _080341EA:
 	adds r0, r3, #0
-	bl sub_8015F24
+	bl PutSysArrow
 _080341F0:
 	cmp r6, #0
 	beq _08034220
@@ -11876,7 +11876,7 @@ _080341F0:
 	movs r2, #1
 _0803421A:
 	adds r0, r3, #0
-	bl sub_8015F24
+	bl PutSysArrow
 _08034220:
 	pop {r4, r5, r6}
 	pop {r0}
@@ -12651,10 +12651,10 @@ _08034804:
 	beq _08034828
 	b _08034832
 _0803480A:
-	bl MU_EndAll
+	bl EndAllMus
 	b _08034832
 _08034810:
-	bl MU_EndAll
+	bl EndAllMus
 	ldr r0, _08034824 @ =gActiveUnit
 	ldr r0, [r0]
 	bl StartMu

@@ -1934,11 +1934,11 @@ sub_80AC680: @ 0x080AC680
 	ldr r0, _080AC95C @ =gUnk_08432E44
 	ldr r1, _080AC960 @ =0x06004000
 	bl Decompress
-	ldr r0, _080AC964 @ =gUnk_0840364C
+	ldr r0, _080AC964 @ =Pal_StatScreenFaceDefault
 	movs r1, #0x80
 	movs r2, #0x20
 	bl ApplyPaletteExt
-	ldr r0, _080AC968 @ =gUnk_0840366C
+	ldr r0, _080AC968 @ =Pal_StatScreenFaceGeneric
 	movs r1, #0xa0
 	movs r2, #0x20
 	bl ApplyPaletteExt
@@ -2091,7 +2091,7 @@ sub_80AC680: @ 0x080AC680
 	orrs r0, r1
 	strh r0, [r7, #0x3c]
 	adds r0, r4, #0
-	bl sub_8005E88
+	bl StartGreenText
 	bl sub_80AC1A4
 	ldr r0, _080AC990 @ =sub_80AC670
 	adds r1, r4, #0
@@ -2115,8 +2115,8 @@ _080AC954: .4byte gBg2Tm
 _080AC958: .4byte gBg3Tm
 _080AC95C: .4byte gUnk_08432E44
 _080AC960: .4byte 0x06004000
-_080AC964: .4byte gUnk_0840364C
-_080AC968: .4byte gUnk_0840366C
+_080AC964: .4byte Pal_StatScreenFaceDefault
+_080AC968: .4byte Pal_StatScreenFaceGeneric
 _080AC96C: .4byte gUnk_08433C0C
 _080AC970: .4byte gUnk_08433CA0
 _080AC974: .4byte 0x0000FFFE
@@ -4947,7 +4947,7 @@ _080ADFCC:
 	movs r2, #0x13
 	bl ShowSysHandCursor
 	adds r0, r6, #0
-	bl sub_8005E88
+	bl StartGreenText
 	adds r0, r6, #0
 	bl sub_8090DD0
 	movs r0, #0xc8
@@ -13742,7 +13742,7 @@ sub_80B25C8: @ 0x080B25C8
 	orrs r1, r3
 	adds r2, r1, #0
 	strh r2, [r0]
-	ldr r0, _080B2660 @ =gUnk_081DBD64
+	ldr r0, _080B2660 @ =Pal_StatScreen_081DBD64
 	movs r1, #0xa0
 	lsls r1, r1, #2
 	movs r2, #0x20
@@ -13762,7 +13762,7 @@ _080B2650: .4byte gUnk_083FAE28
 _080B2654: .4byte 0x06014C00
 _080B2658: .4byte gUnk_08DB0ADC
 _080B265C: .4byte 0x00004260
-_080B2660: .4byte gUnk_081DBD64
+_080B2660: .4byte Pal_StatScreen_081DBD64
 _080B2664: .4byte gBg0Tm + 0x1b8
 _080B2668: .4byte gBg0Tm + 0x1b6
 
@@ -16345,7 +16345,7 @@ sub_80B3A08: @ 0x080B3A08
 	ldr r1, [r0]
 	adds r0, r1, #0
 	bl PidStatsAddBattleAmt
-	bl MU_EndAll
+	bl EndAllMus
 	ldr r0, _080B3A7C @ =gActionSt
 	ldrb r1, [r0, #0x15]
 	movs r2, #0

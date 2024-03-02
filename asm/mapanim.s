@@ -222,7 +222,7 @@ Manim_Finish: @ 0x0806EC60
 	asrs r0, r1, #0x18
 	cmp r0, #0
 	beq _0806EC90
-	bl MU_EndAll
+	bl EndAllMus
 _0806EC90:
 	add sp, #4
 	pop {r7}
@@ -4991,7 +4991,7 @@ sub_807116C: @ 0x0807116C
 	sub sp, #0x10
 	add r7, sp, #4
 	str r0, [r7]
-	bl MU_EndAll
+	bl EndAllMus
 	bl ResetText
 	ldr r0, _08071260 @ =gDispIo
 	adds r1, r0, #0
@@ -26527,7 +26527,7 @@ _0807B392:
 	cmp r5, #0x3f
 	ble _0807B352
 	bl RefreshEntityMaps
-	bl MU_EndAll
+	bl EndAllMus
 	pop {r4, r5, r6}
 	pop {r0}
 	bx r0
@@ -26545,7 +26545,7 @@ sub_807B3AC: @ 0x0807B3AC
 	rsbs r0, r0, #0
 	cmp r1, r0
 	bne _0807B3CA
-	bl sub_802D874
+	bl LockBmDisplay
 	bl sub_806D51C
 	movs r0, #0
 	strb r0, [r4]
@@ -26569,7 +26569,7 @@ sub_807B3D0: @ 0x0807B3D0
 	movs r0, #0xff
 	strb r0, [r2]
 	bl sub_802E834
-	bl sub_802D8A8
+	bl UnlockBmDisplay
 	bl sub_806D52C
 	b _0807B3FA
 _0807B3F6:
@@ -26594,7 +26594,7 @@ sub_807B400: @ 0x0807B400
 	movs r0, #0xff
 	strb r0, [r2]
 	bl sub_802E804
-	bl sub_802D8A8
+	bl UnlockBmDisplay
 	bl sub_806D52C
 	b _0807B42A
 _0807B426:

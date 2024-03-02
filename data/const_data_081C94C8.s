@@ -640,8 +640,8 @@ gUnk_081DB400:	@ 0x081DB400
 gUnk_081DB490:	@ 0x081DB490
 	.incbin "FireEmblem7J.base.gba", 0x1DB490, 0x1DBD64 - 0x1DB490
 
-	.global gUnk_081DBD64
-gUnk_081DBD64:	@ 0x081DBD64
+	.global Pal_StatScreen_081DBD64
+Pal_StatScreen_081DBD64:	@ 0x081DBD64
 	.incbin "FireEmblem7J.base.gba", 0x1DBD64, 0x1DD7F4 - 0x1DBD64
 
 	.global gUnk_081DD7F4

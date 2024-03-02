@@ -2990,8 +2990,8 @@ _080A096C:
 	.align 2, 0
 _080A0974: .4byte 0x0203E768
 
-	thumb_func_start sub_80A0978
-sub_80A0978: @ 0x080A0978
+	thumb_func_start PidStatsAddStatView
+PidStatsAddStatView: @ 0x080A0978
 	push {r4, r5, lr}
 	lsls r0, r0, #0x18
 	lsrs r4, r0, #0x18

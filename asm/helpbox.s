@@ -653,8 +653,8 @@ sub_80829E0: @ 0x080829E0
 	pop {r0}
 	bx r0
 
-	thumb_func_start sub_80829F4
-sub_80829F4: @ 0x080829F4
+	thumb_func_start StartMovingHelpBox
+StartMovingHelpBox: @ 0x080829F4
 	push {r4, lr}
 	adds r4, r0, #0
 	ldr r0, _08082A10 @ =gUnk_08D8A610
@@ -916,7 +916,7 @@ HelpBoxPopulateAutoItem: @ 0x08082BB0
 	b _08082BDA
 _08082BD0:
 	adds r0, r5, #0
-	bl GetItemDescId
+	bl GetItemDescMsg
 	adds r1, r4, #0
 	adds r1, #0x4c
 _08082BDA:
@@ -1182,8 +1182,8 @@ _08082DA0:
 	.align 2, 0
 _08082DA8: .4byte gUnk_08D8A660
 
-	thumb_func_start sub_8082DAC
-sub_8082DAC: @ 0x08082DAC
+	thumb_func_start GetLastHelpBoxInfo
+GetLastHelpBoxInfo: @ 0x08082DAC
 	ldr r0, _08082DB4 @ =0x0203E668
 	ldr r0, [r0]
 	bx lr
@@ -8431,7 +8431,7 @@ sub_80867D8: @ 0x080867D8
 	movs r1, #8
 	bl InitText
 	adds r0, r7, #0
-	bl sub_8005E88
+	bl StartGreenText
 	adds r0, r5, #0
 	bl ClearText
 	adds r0, r4, #0
@@ -9642,7 +9642,7 @@ sub_80871E4: @ 0x080871E4
 	bl LoadHelpBoxGfx
 	ldr r0, _08087204 @ =gUnk_08DAF58C
 	adds r1, r4, #0
-	bl sub_80829F4
+	bl StartMovingHelpBox
 	pop {r4}
 	pop {r0}
 	bx r0
@@ -14643,7 +14643,7 @@ _08089AA4: .4byte gDispIo
 sub_8089AA8: @ 0x08089AA8
 	push {r4, lr}
 	adds r4, r0, #0
-	bl MU_EndAll
+	bl EndAllMus
 	ldr r0, [r4, #0x40]
 	bl Proc_End
 	ldr r0, [r4, #0x44]
@@ -14683,7 +14683,7 @@ _08089AF2:
 	ldr r0, [r0]
 	ldr r0, [r0]
 	adds r1, r4, #0
-	bl sub_80821F8
+	bl StartStatScreen
 	ldr r1, _08089B30 @ =gPlaySt
 	adds r0, r4, #0
 	adds r0, #0x34
@@ -15476,7 +15476,7 @@ sub_808A0F4: @ 0x0808A0F4
 	bl CpuFastSet
 	bl ApplySystemObjectsGraphics
 	mov r0, r8
-	bl sub_8005E88
+	bl StartGreenText
 	mov r0, r8
 	adds r0, #0x3b
 	strb r4, [r0]
@@ -26566,7 +26566,7 @@ sub_808F7D4: @ 0x0808F7D4
 	cmp r0, #0
 	bne _0808F7E8
 	bl sub_8015784
-	bl sub_802D874
+	bl LockBmDisplay
 _0808F7E8:
 	pop {r0}
 	bx r0
@@ -26578,7 +26578,7 @@ sub_808F7EC: @ 0x0808F7EC
 	lsls r0, r0, #0x18
 	cmp r0, #0
 	bne _0808F800
-	bl sub_802D8A8
+	bl UnlockBmDisplay
 	bl sub_8015794
 _0808F800:
 	pop {r0}
@@ -32539,7 +32539,7 @@ sub_80926A4: @ 0x080926A4
 	ldrb r0, [r0]
 	bl sub_808E644
 	adds r1, r4, #0
-	bl sub_80821F8
+	bl StartStatScreen
 	adds r0, r4, #0
 	bl Proc_Break
 	pop {r4}
@@ -36016,7 +36016,7 @@ _0809431C:
 	movs r1, #0
 	bl sub_8093DC8
 	adds r0, r5, #0
-	bl sub_8005E88
+	bl StartGreenText
 	ldr r0, _08094370 @ =0x06015000
 	movs r1, #5
 	bl LoadHelpBoxGfx
@@ -36692,7 +36692,7 @@ sub_809486C: @ 0x0809486C
 	ldrh r0, [r4, #0x2e]
 	bl sub_808E644
 	adds r1, r4, #0
-	bl sub_80821F8
+	bl StartStatScreen
 	pop {r4}
 	pop {r0}
 	bx r0
@@ -38151,7 +38151,7 @@ sub_8095430: @ 0x08095430
 	adds r5, r0, #0
 	mov r8, r1
 	movs r0, #2
-	bl sub_804A2DC
+	bl ApplyUiStatBarPal
 	add r4, sp, #0xc
 	adds r0, r5, #0
 	bl GetUnitCurrentHp
@@ -38920,7 +38920,7 @@ _08095920:
 	mov r2, ip
 	strh r0, [r2, #0x3c]
 	adds r0, r7, #0
-	bl sub_8005E88
+	bl StartGreenText
 	movs r0, #0xc0
 	movs r1, #0x8c
 	adds r2, r7, #0
@@ -40969,7 +40969,7 @@ sub_8096A78: @ 0x08096A78
 	movs r0, #8
 	strb r0, [r1]
 	mov r0, sl
-	bl sub_8005E88
+	bl StartGreenText
 	movs r0, #0xc8
 	movs r1, #0x90
 	mov r2, sl
@@ -42924,7 +42924,7 @@ sub_8097C10: @ 0x08097C10
 	ldr r0, [r4]
 	cmp r0, #0
 	beq _08097C24
-	bl MU_EndAll
+	bl EndAllMus
 	ldr r0, [r4]
 	bl ShowUnitSprite
 _08097C24:
@@ -43366,7 +43366,7 @@ sub_8097E64: @ 0x08097E64
 	orrs r4, r3
 	strb r4, [r1]
 	adds r0, r7, #0
-	bl sub_8005E88
+	bl StartGreenText
 	movs r0, #0xc8
 	movs r1, #0x90
 	adds r2, r7, #0
@@ -45744,7 +45744,7 @@ sub_80991C4: @ 0x080991C4
 	adds r0, #1
 	strb r1, [r0]
 	mov r0, sb
-	bl sub_8005E88
+	bl StartGreenText
 	movs r0, #0xc8
 	movs r1, #0x90
 	mov r2, sb
@@ -47971,7 +47971,7 @@ _0809A4A8:
 	adds r1, r4, #0
 	bl StartParallelWorker
 	adds r0, r4, #0
-	bl sub_8005E88
+	bl StartGreenText
 	ldr r2, _0809A524 @ =gDispIo
 	adds r3, r2, #0
 	adds r3, #0x3c
@@ -49830,7 +49830,7 @@ sub_809B380: @ 0x0809B380
 	movs r0, #7
 	bl EnableBgSync
 	adds r0, r5, #0
-	bl sub_8005E88
+	bl StartGreenText
 	ldr r0, _0809B4B8 @ =0x02012A90
 	movs r1, #8
 	bl InitText
@@ -51788,7 +51788,7 @@ _0809C392:
 	cmp r4, r0
 	blt _0809C380
 	adds r0, r7, #0
-	bl sub_8005E88
+	bl StartGreenText
 	movs r0, #0
 	mov r1, r8
 	strb r0, [r1]
@@ -54121,7 +54121,7 @@ sub_809D648: @ 0x0809D648
 	movs r0, #0xd
 	bl ApplyIconPalettes
 	adds r0, r5, #0
-	bl sub_8005E88
+	bl StartGreenText
 	adds r0, r5, #0
 	adds r0, #0x38
 	ldrb r0, [r0]

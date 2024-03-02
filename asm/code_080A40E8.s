@@ -3372,7 +3372,7 @@ sub_80A5B44: @ 0x080A5B44
 	ands r1, r0
 	orrs r1, r2
 	strb r1, [r4, #0x18]
-	bl MU_EndAll
+	bl EndAllMus
 	movs r0, #2
 	rsbs r0, r0, #0
 	ldrb r1, [r4, #1]

@@ -201,7 +201,7 @@ struct PidStats
 // ??? sub_80A07C8
 // ??? sub_80A08B4
 // ??? sub_80A0938
-// ??? sub_80A0978
+void PidStatsAddStatView(u8 pid);
 // ??? sub_80A09B8
 // ??? PidStatsAddMove
 // ??? PidStatsAddExpGained

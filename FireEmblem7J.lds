@@ -257,7 +257,8 @@ SECTIONS
 		asm/code_0807F9EC.o(.text);
 		src/statscreenfx.o(.text);
 		src/statscreen-util.o(.text);
-		asm/statscreen.o(.text);
+		asm/statscreen-util.o(.text);
+		src/statscreen.o(.text);
 		asm/helpbox.o(.text);
 		src/save_core.o(.text);
 		asm/save.o(.text);
@@ -307,6 +308,8 @@ SECTIONS
 		. = ALIGN(4); data/const_data_082EB740.o(.rodata)
 		. = ALIGN(4); data/statscreenfx-const.o(.rodata)
 		. = ALIGN(4); src/statscreenfx.o(.rodata)
+		. = ALIGN(4); src/statscreen-util.o(.rodata)
+		. = ALIGN(4); src/statscreen.o(.rodata)
 		. = ALIGN(4); data/const_data_0841CD8C.o(.rodata)
 		. = ALIGN(4); src/save_core.o(.rodata)
 		. = ALIGN(4); data/const_data_0842D270.o(.rodata)
@@ -340,6 +343,7 @@ SECTIONS
 		. = ALIGN(4); data/data_08D7C3BC.o(.data)
 		. = ALIGN(4); src/statscreenfx.o(.data)
 		. = ALIGN(4); src/statscreen-util.o(.data)
+		. = ALIGN(4); src/statscreen.o(.data)
 		. = ALIGN(4); data/data_08D8A368.o(.data)
 		. = ALIGN(4); src/save_core.o(.data)
 		. = ALIGN(4); data/data_08DAD284.o(.data)

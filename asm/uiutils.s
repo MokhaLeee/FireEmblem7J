@@ -51,8 +51,8 @@ _0804A2B8:
 _0804A2D4: .4byte gUnk_08C09B94
 _0804A2D8: .4byte gPlaySt
 
-	thumb_func_start sub_804A2DC
-sub_804A2DC: @ 0x0804A2DC
+	thumb_func_start ApplyUiStatBarPal
+ApplyUiStatBarPal: @ 0x0804A2DC
 	push {lr}
 	adds r3, r0, #0
 	cmp r3, #0

@@ -363,7 +363,7 @@ _080513C8:
 	strb r0, [r2]
 	movs r0, #0
 	bl InitOam
-	bl sub_802D874
+	bl LockBmDisplay
 	mov r0, sb
 	mov r2, r8
 	strb r0, [r2]
@@ -378,7 +378,7 @@ _080513C8:
 	movs r3, #4
 	bl EfxPalBlackInOut
 	bl EnablePalSync
-	bl MU_EndAll
+	bl EndAllMus
 	adds r0, r7, #0
 	bl Proc_Break
 _080514A0:

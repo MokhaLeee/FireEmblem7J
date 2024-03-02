@@ -1116,8 +1116,8 @@ SetMapCursorPosition: @ 0x08015F0C
 	.align 2, 0
 _08015F20: .4byte gBmSt
 
-	thumb_func_start sub_8015F24
-sub_8015F24: @ 0x08015F24
+	thumb_func_start PutSysArrow
+PutSysArrow: @ 0x08015F24
 	push {r4, r5, r6, lr}
 	sub sp, #4
 	adds r5, r0, #0

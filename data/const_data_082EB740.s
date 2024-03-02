@@ -496,8 +496,8 @@ gUnk_08403474:	@ 0x08403474
 gUnk_0840348C:	@ 0x0840348C
 	.incbin "FireEmblem7J.base.gba", 0x40348C, 0x40349C - 0x40348C
 
-	.global gUnk_0840349C
-gUnk_0840349C:	@ 0x0840349C
+	.global Tsa_StatScreen_0840349C
+Tsa_StatScreen_0840349C:	@ 0x0840349C
 	.incbin "FireEmblem7J.base.gba", 0x40349C, 0x4034EC - 0x40349C
 
 	.global Tsa_StatScreenPage0
@@ -512,24 +512,24 @@ Tsa_Statscreen_Pag1_08403560:	@ 0x08403560
 Tsa_StatScreen_084035D0:	@ 0x084035D0
 	.incbin "FireEmblem7J.base.gba", 0x4035D0, 0x40364C - 0x4035D0
 
-	.global gUnk_0840364C
-gUnk_0840364C:	@ 0x0840364C
+	.global Pal_StatScreenFaceDefault
+Pal_StatScreenFaceDefault:	@ 0x0840364C
 	.incbin "FireEmblem7J.base.gba", 0x40364C, 0x40366C - 0x40364C
 
-	.global gUnk_0840366C
-gUnk_0840366C:	@ 0x0840366C
+	.global Pal_StatScreenFaceGeneric
+Pal_StatScreenFaceGeneric:	@ 0x0840366C
 	.incbin "FireEmblem7J.base.gba", 0x40366C, 0x40368C - 0x40366C
 
-	.global gUnk_0840368C
-gUnk_0840368C:	@ 0x0840368C
+	.global Tsa_StatScreen_0840368C
+Tsa_StatScreen_0840368C:	@ 0x0840368C
 	.incbin "FireEmblem7J.base.gba", 0x40368C, 0x403730 - 0x40368C
 
-	.global gUnk_08403730
-gUnk_08403730:	@ 0x08403730
+	.global Img_StatScreen_08403730
+Img_StatScreen_08403730:	@ 0x08403730
 	.incbin "FireEmblem7J.base.gba", 0x403730, 0x4038AC - 0x403730
 
-	.global gUnk_084038AC
-gUnk_084038AC:	@ 0x084038AC
+	.global Pal_StatScreen_084038AC
+Pal_StatScreen_084038AC:	@ 0x084038AC
 	.incbin "FireEmblem7J.base.gba", 0x4038AC, 0x4038CC - 0x4038AC
 
 	.global Tsa_Statscreen_Pag1_084038CC
@@ -540,8 +540,8 @@ Tsa_Statscreen_Pag1_084038CC:	@ 0x084038CC
 Tsa_Statscreen_Pag1_08403908:	@ 0x08403908
 	.incbin "FireEmblem7J.base.gba", 0x403908, 0x40392C - 0x403908
 
-	.global gUnk_0840392C
-gUnk_0840392C:	@ 0x0840392C
+	.global Img_StatScreen_0840392C
+Img_StatScreen_0840392C:	@ 0x0840392C
 	.incbin "FireEmblem7J.base.gba", 0x40392C, 0x404024 - 0x40392C
 
 	.global Pals_StatScreen_Title
@@ -552,8 +552,8 @@ Pals_StatScreen_Title:	@ 0x08404024
 Tsa_Statscreen_08404124:	@ 0x08404124
 	.incbin "FireEmblem7J.base.gba", 0x404124, 0x40417C - 0x404124
 
-	.global gUnk_0840417C
-gUnk_0840417C:	@ 0x0840417C
+	.global Tsa_StatScreen_0840417C
+Tsa_StatScreen_0840417C:	@ 0x0840417C
 	.incbin "FireEmblem7J.base.gba", 0x40417C, 0x4041FC - 0x40417C
 
 	.global gUnk_084041FC

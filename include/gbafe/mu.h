@@ -74,7 +74,7 @@ struct MuConfig
 // sub_806C398
 // sub_806C3B0
 // sub_806C3D8
-// sub_806C3F8
+struct MuProc * StartUiMu(struct Unit * unit, int x, int y);
 // sub_806C474
 // sub_806C4A0
 // sub_806C738
@@ -107,7 +107,7 @@ struct MuConfig
 // sub_806D2E4
 // sub_806D3F8
 // sub_806D47C
-// MU_EndAll
+// EndAllMus
 // sub_806D4BC
 // sub_806D4D4
 // sub_806D4EC

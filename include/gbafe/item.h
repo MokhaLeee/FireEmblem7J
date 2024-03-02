@@ -124,7 +124,7 @@ int GetUnitItemSlot(struct Unit *unit, int itemIndex);
 // sub_80175CC
 int GetItemIndex(int item);
 char *GetItemName(int item);
-int GetItemDescId(int item);
+int GetItemDescMsg(int item);
 int GetItemUseDescId(int item);
 int GetItemType(int item);
 int GetItemAttributes(int item);

@@ -4114,7 +4114,7 @@ sub_8023980: @ 0x08023980
 	ldr r4, _080239A8 @ =gActiveUnit
 	ldr r0, [r4]
 	bl sub_8034C48
-	bl MU_EndAll
+	bl EndAllMus
 	ldr r0, [r4]
 	bl StartMu
 	movs r0, #0x17
@@ -4161,7 +4161,7 @@ sub_80239DC: @ 0x080239DC
 	ldr r4, _08023A04 @ =gActiveUnit
 	ldr r0, [r4]
 	bl sub_8034C80
-	bl MU_EndAll
+	bl EndAllMus
 	ldr r0, [r4]
 	bl StartMu
 	movs r0, #0x17
