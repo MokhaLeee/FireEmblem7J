@@ -210,7 +210,6 @@ SECTIONS
 		asm/bm.o(.text);
 		asm/item.o(.text);
 		src/unit.o(.text);
-		asm/unit.o(.text);
 		asm/map.o(.text);
 		asm/mapwork.o(.text);
 		asm/debug-menu.o(.text);

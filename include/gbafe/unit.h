@@ -414,7 +414,7 @@ int GetUnitMagRange(struct Unit *unit);
 bool UnitHasMagicRank(struct Unit *unit);
 // sub_80188F4
 // GetUnitKeyItemSlotForTerrain
-// GetUnitAidIconId
+int GetUnitAidIconId(u32 attributes);
 // GetUnitWeaponUsabilityBits
 // GetCombinedEnemyWeaponUsabilityBits
 // CanActiveUnitStillMove
@@ -435,16 +435,16 @@ int GetUnitSpeed(struct Unit *unit);
 int GetUnitDefense(struct Unit *unit);
 int GetUnitResistance(struct Unit *unit);
 int GetUnitLuck(struct Unit *unit);
-// GetUnitPortraitId
-// GetUnitMiniPortraitId
-// GetUnitLeaderCharId
-// SetUnitLeaderCharId
-// SetUnitHp
-// AddUnitHp
-// GetUnitRescueName
-// GetUnitStatusName
-struct Unit *GetUnit(int uid);
-const struct ClassData *GetClassData(int jid);
-const struct CharacterData *GetCharacterData(int pid);
-// UnitRemoveItem
+int GetUnitPortraitId(struct Unit *unit);
+int GetUnitMiniPortraitId(struct Unit *unit);
+int GetUnitLeaderCharId(struct Unit *unit);
+void SetUnitLeaderCharId(struct Unit *unit, int charId);
+void SetUnitHp(struct Unit *unit, int value);
+void AddUnitHp(struct Unit *unit, int amount);
+const char * GetUnitRescueName(struct Unit * unit);
+const char * GetUnitStatusName(struct Unit * unit);
+struct Unit * GetUnit(int uid);
+const struct ClassData * GetClassData(int jid);
+const struct CharacterData * GetCharacterData(int pid);
+void UnitRemoveItem(struct Unit *unit, int slot);
 bool CanUnitCrossTerrain(struct Unit *unit, int terrain);

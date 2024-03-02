@@ -500,8 +500,8 @@ gUnk_0840348C:	@ 0x0840348C
 gUnk_0840349C:	@ 0x0840349C
 	.incbin "FireEmblem7J.base.gba", 0x40349C, 0x4034EC - 0x40349C
 
-	.global sPage0TextInfo
-sPage0TextInfo:	@ 0x084034EC
+	.global Tsa_StatScreenPage0
+Tsa_StatScreenPage0:	@ 0x084034EC
 	.incbin "FireEmblem7J.base.gba", 0x4034EC, 0x403560 - 0x4034EC
 
 	.global gUnk_08403560
@@ -776,8 +776,8 @@ gUnk_0841CACC:	@ 0x0841CACC
 gUnk_0841CB54:	@ 0x0841CB54
 	.incbin "FireEmblem7J.base.gba", 0x41CB54, 0x41CBB8 - 0x41CB54
 
-	.global gUnk_0841CBB8
-gUnk_0841CBB8:	@ 0x0841CBB8
+	.global gStatScreenPersonalInfoLabelsInfo
+gStatScreenPersonalInfoLabelsInfo:	@ 0x0841CBB8
 	.incbin "FireEmblem7J.base.gba", 0x41CBB8, 0x41CC78 - 0x41CBB8
 
 	.global gUnk_0841CC78

@@ -1117,7 +1117,7 @@ extern const u8 Tsa_EkrDragonFireBG2[];
 // ??? gUnk_08403474
 // ??? gUnk_0840348C
 // ??? gUnk_0840349C
-// ??? sPage0TextInfo
+extern const u8 Tsa_StatScreenPage0[];
 // ??? gUnk_08403560
 // ??? gUnk_084035D0
 // ??? gUnk_0840364C
@@ -1185,11 +1185,9 @@ extern u8 Img_SysBlackBox[];
 // ??? gUnk_0841CAAC
 // ??? gUnk_0841CAB8
 // ??? gUnk_0841CACC
-// ??? gUnk_0841CB54
-// ??? gUnk_0841CBB8
-// ??? gUnk_0841CC78
-// ??? gUnk_0841CCD8
-// ??? gUnk_0841CD28
+
+/* statscreen.h */
+
 // ??? gUnk_0841CD78
 // ??? gUnk_0841CD7C
 // ??? gUnk_0841CD80

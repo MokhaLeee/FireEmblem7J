@@ -1,18 +1,18 @@
 #include "gbafe.h"
 
-static inline struct Unit *_GetUnit(int id)
+inline struct Unit *GetUnit(int id)
 {
     return gUnitLut[id & 0xFF];
 }
 
-static inline const struct ClassData *_GetClassData(int classId) {
+inline const struct ClassData *GetClassData(int classId) {
     if (classId < 1)
         return NULL;
 
     return gClassData + (classId - 1);
 }
 
-static inline const struct CharacterData *_GetCharacterData(int charId) {
+inline const struct CharacterData *GetCharacterData(int charId) {
     if (charId < 1)
         return NULL;
 
@@ -24,7 +24,7 @@ void InitUnits(void)
     int i;
 
     for (i = 0; i < 0x100; ++i) {
-        struct Unit *unit = _GetUnit(i);
+        struct Unit *unit = GetUnit(i);
 
         if (unit) {
             ClearUnit(unit);
@@ -52,7 +52,7 @@ struct Unit *GetFreeUnit(int faction)
     int i, last = (faction + 0x40);
 
     for (i = faction + 1; i < last; ++i) {
-        struct Unit *unit = _GetUnit(i);
+        struct Unit *unit = GetUnit(i);
 
         if (unit->pCharacterData == NULL)
             return unit;
@@ -69,7 +69,7 @@ struct Unit *GetFreeBlueUnit(const struct UnitDefinition *info)
         ++i;
 
     for (i = 1; i < last; ++i) {
-        struct Unit *unit = _GetUnit(i);
+        struct Unit *unit = GetUnit(i);
 
         if (unit->pCharacterData == NULL)
             return unit;
@@ -247,7 +247,7 @@ bool UnitAddItem(struct Unit *unit, int item)
     return false;
 }
 
-static inline void UnitRemoveItem(struct Unit *unit, int slot)
+inline void UnitRemoveItem(struct Unit *unit, int slot)
 {
     unit->items[slot] = 0;
     UnitRemoveInvalidItems(unit);
@@ -392,12 +392,12 @@ void UnitInitFromDefinition(struct Unit *unit, const struct UnitDefinition *info
 {
     int i;
 
-    unit->pCharacterData = _GetCharacterData(info->pid);
+    unit->pCharacterData = GetCharacterData(info->pid);
 
     if (info->jid != 0)
-        unit->pClassData = _GetClassData(info->jid);
+        unit->pClassData = GetClassData(info->jid);
     else
-        unit->pClassData = _GetClassData(unit->pCharacterData->defaultClass);
+        unit->pClassData = GetClassData(unit->pCharacterData->defaultClass);
 
     unit->level = info->level;
 
@@ -450,7 +450,7 @@ void FixROMUnitStructPtr(struct Unit *unit) {
     // TODO: investigate why
 
     if (UNIT_CATTRIBUTES(unit) & CA_BIT_23)
-        unit->pCharacterData = _GetCharacterData(unit->pCharacterData->number - 1);
+        unit->pCharacterData = GetCharacterData(unit->pCharacterData->number - 1);
 }
 
 void UnitLoadSupports(struct Unit *unit) {
@@ -579,7 +579,7 @@ struct Unit *GetUnitFromCharId(int charId)
     int i;
 
     for (i = 1; i < 0x100; ++i) {
-        struct Unit *unit = _GetUnit(i);
+        struct Unit *unit = GetUnit(i);
 
         if (UNIT_IS_VALID(unit) && unit->pCharacterData->number == charId)
             return unit;
@@ -593,7 +593,7 @@ struct Unit *GetUnitFromCharIdAndFaction(int charId, int faction)
     int i, last = faction + 0x40;
 
     for (i = faction + 1; i < last; ++i) {
-        struct Unit *unit = _GetUnit(i);
+        struct Unit *unit = GetUnit(i);
 
         if (UNIT_IS_VALID(unit) && unit->pCharacterData->number == charId)
             return unit;
@@ -624,7 +624,7 @@ void UnitRescue(struct Unit *actor, struct Unit *target)
 
 void UnitDrop(struct Unit *actor, int xTarget, int yTarget)
 {
-    struct Unit *target = _GetUnit(actor->rescue);
+    struct Unit *target = GetUnit(actor->rescue);
 
     actor->state = actor->state &~ (US_RESCUING | US_RESCUED);
     target->state = target->state &~ (US_RESCUING | US_RESCUED | US_HIDDEN);
@@ -641,7 +641,7 @@ void UnitDrop(struct Unit *actor, int xTarget, int yTarget)
 
 bool UnitGive(struct Unit *actor, struct Unit *target)
 {
-    struct Unit *rescuee = _GetUnit(actor->rescue);
+    struct Unit *rescuee = GetUnit(actor->rescue);
 
     // no used be needed to match etc
     int couldGive = CanUnitRescue(target, rescuee);
@@ -652,15 +652,15 @@ bool UnitGive(struct Unit *actor, struct Unit *target)
     // return couldGive; // devs probably forgot to add this
 }
 
-inline const char *GetUnitRescueName(struct Unit* unit)
+inline const char * GetUnitRescueName(struct Unit * unit)
 {
     if (unit->rescue == 0)
         return StatusNameStringLut[UNIT_STATUS_NONE];
 
-    return DecodeMsg(_GetUnit(unit->rescue)->pCharacterData->nameTextId);
+    return DecodeMsg(GetUnit(unit->rescue)->pCharacterData->nameTextId);
 }
 
-inline const char *GetUnitStatusName(struct Unit* unit)
+inline const char * GetUnitStatusName(struct Unit * unit)
 {
     return StatusNameStringLut[unit->statusIndex];
 }
@@ -694,10 +694,10 @@ void UnitChangeFaction(struct Unit *unit, int faction)
     newUnit->state = newUnit->state &~ US_DROP_ITEM;
 
     if (newUnit->rescue)
-        _GetUnit(newUnit->rescue)->rescue = newUnit->index;
+        GetUnit(newUnit->rescue)->rescue = newUnit->index;
 }
 
-static inline s8 _CanUnitCrossTerrain(struct Unit *unit, int terrain)
+inline s8 CanUnitCrossTerrain(struct Unit *unit, int terrain)
 {
     const s8* lookup = GetUnitMovementCost(unit);
     return (lookup[terrain] > 0) ? TRUE : FALSE;
@@ -706,7 +706,7 @@ static inline s8 _CanUnitCrossTerrain(struct Unit *unit, int terrain)
 void UnitSyncMovement(struct Unit *unit)
 {
     if (unit->state & US_RESCUING) {
-        struct Unit *rescuee = _GetUnit(unit->rescue);
+        struct Unit *rescuee = GetUnit(unit->rescue);
 
         rescuee->xPos = unit->xPos;
         rescuee->yPos = unit->yPos;
@@ -723,7 +723,7 @@ void UnitSyncMovement(struct Unit *unit)
 void UnitGetDeathDropLocation(struct Unit *unit, int *xOut, int *yOut)
 {
     int iy, ix, minDistance = 9999;
-    struct Unit *rescuee = _GetUnit(unit->rescue);
+    struct Unit *rescuee = GetUnit(unit->rescue);
 
     // Fill the movement map
     GenerateExtendedMovementMap(unit->xPos, unit->yPos, MoveTable_Flying);
@@ -747,7 +747,7 @@ void UnitGetDeathDropLocation(struct Unit *unit, int *xOut, int *yOut)
             if (gBmMapHidden[iy][ix] & HIDDEN_BIT_UNIT)
                 continue;
 
-            if (!_CanUnitCrossTerrain(rescuee, gBmMapTerrain[iy][ix]))
+            if (!CanUnitCrossTerrain(rescuee, gBmMapTerrain[iy][ix]))
                 continue;
 
             distance = RECT_DISTANCE(ix, iy, unit->xPos, unit->yPos);
@@ -830,7 +830,7 @@ void ClearActiveFactionGrayedStates(void)
         int i;
 
         for (i = 1; i < 0x40; ++i) {
-            struct Unit *unit = _GetUnit(i);
+            struct Unit *unit = GetUnit(i);
 
             if (!UNIT_IS_VALID(unit))
                 continue;
@@ -846,7 +846,7 @@ void ClearActiveFactionGrayedStates(void)
     }
 
     for (i = gPlaySt.faction + 1; i < gPlaySt.faction + 0x40; ++i) {
-        struct Unit *unit = _GetUnit(i);
+        struct Unit *unit = GetUnit(i);
 
         if (UNIT_IS_VALID(unit))
             unit->state = unit->state &~ (US_UNSELECTABLE | US_HAS_MOVED | US_HAS_MOVED_AI);
@@ -860,7 +860,7 @@ void TickActiveFactionTurn(void)
     BeginTargetList(0, 0);
 
     for (i = gPlaySt.faction + 1; i < gPlaySt.faction + 0x40; ++i) {
-        struct Unit *unit = _GetUnit(i);
+        struct Unit *unit = GetUnit(i);
 
         if (!UNIT_IS_VALID(unit))
             continue;
@@ -898,7 +898,7 @@ void SetAllUnitNotBackSprite(void)
     int i;
 
     for (i = 1; i < 0xC0; i++) {
-        struct Unit *unit = _GetUnit(i);
+        struct Unit *unit = GetUnit(i);
 
         if (UNIT_IS_VALID(unit))
             unit->state &= ~US_SEEN;
@@ -985,7 +985,8 @@ int GetUnitKeyItemSlotForTerrain(struct Unit *unit, int terrain) {
     return GetUnitItemSlot(unit, item);
 }
 
-int GetUnitAidIconId(u32 attributes) {
+int GetUnitAidIconId(u32 attributes)
+{
     // TODO: use icon id constants
 
     if (attributes & CA_MOUNTED)
@@ -1018,7 +1019,7 @@ int GetCombinedEnemyWeaponUsabilityBits(void) {
     int i, ret = 0;
 
     for (i = FACTION_RED + 1; i < FACTION_RED + 0x40; ++i) {
-        struct Unit *unit = _GetUnit(i);
+        struct Unit *unit = GetUnit(i);
 
         if (UNIT_IS_VALID(unit))
             ret |= GetUnitWeaponUsabilityBits(unit);
@@ -1070,7 +1071,7 @@ bool IsPositionMagicSealed(int x, int y)
     int i;
 
     for (i = 0x81; i < 0xC0; ++i) {
-        struct Unit *unit = _GetUnit(i);
+        struct Unit *unit = GetUnit(i);
 
         if (!UNIT_IS_VALID(unit))
             continue;
@@ -1123,7 +1124,7 @@ const s8 *GetUnitMovementCost(struct Unit *unit)
 
 int GetClassSMSId(int jid)
 {
-    return _GetClassData(jid)->SMSId;
+    return GetClassData(jid)->SMSId;
 }
 
 void UpdatePrevDeployStates(void)
@@ -1131,7 +1132,7 @@ void UpdatePrevDeployStates(void)
     int i;
 
     for (i = 1; i < 0x40; ++i) {
-        struct Unit *unit = _GetUnit(i);
+        struct Unit *unit = GetUnit(i);
 
         if (!UNIT_IS_VALID(unit))
             continue;
@@ -1150,7 +1151,7 @@ void sub_8018C78(void)
 {
     int i;
     for (i = 1; i < 0x40; ++i) {
-        struct Unit *unit = _GetUnit(i);
+        struct Unit *unit = GetUnit(i);
 
         if (!UNIT_IS_VALID(unit))
             continue;
@@ -1168,7 +1169,7 @@ void sub_8018CC4(void)
     int i;
 
     for (i = 1; i < 0x40; ++i) {
-        struct Unit *unit = _GetUnit(i);
+        struct Unit *unit = GetUnit(i);
 
         if (!UNIT_IS_VALID(unit))
             continue;
@@ -1187,7 +1188,7 @@ void sub_8018CC4(void)
     if (gPlaySt.chapterStateBits & PLAY_FLAG_PREPSCREEN) {
         for (i = 1; i < 0x40; i++) {
             u8 *buf;
-            struct Unit *unit = _GetUnit(i);
+            struct Unit *unit = GetUnit(i);
 
             if (!UNIT_IS_VALID(unit))
                 continue;
@@ -1208,7 +1209,7 @@ void sub_8018D70(void)
     sub_807B32C();
 
     for (i = 1; i < 0x40; ++i) {
-        struct Unit *unit = _GetUnit(i);
+        struct Unit *unit = GetUnit(i);
 
         if (!UNIT_IS_VALID(unit))
             continue;
@@ -1234,7 +1235,7 @@ void sub_8018D70(void)
     if (gPlaySt.chapterStateBits & PLAY_FLAG_PREPSCREEN) {
         for (j = 1; j < 0x40; j++) {
             u8 *buf;
-            struct Unit *unit = _GetUnit(j);
+            struct Unit *unit = GetUnit(j);
 
             if (!UNIT_IS_VALID(unit))
                 continue;
@@ -1247,7 +1248,7 @@ void sub_8018D70(void)
     }
 
     for (i = 0x41; i < 0xC0; i++) {
-        struct Unit *unit = _GetUnit(i);
+        struct Unit *unit = GetUnit(i);
 
         if (!UNIT_IS_VALID(unit))
             continue;

@@ -18641,7 +18641,7 @@ _0808BAAE:
 	bl PutNumberOrBlank
 	ldr r0, [r4]
 	ldr r0, [r0]
-	bl sub_8026FB0
+	bl GetUnitAffinityIcon
 	adds r1, r0, #0
 	movs r0, #1
 	rsbs r0, r0, #0
@@ -21293,14 +21293,14 @@ _0808CFAC:
 	adds r6, r0, r3
 	ldr r0, [r6]
 	ldr r0, [r0]
-	bl sub_8026FB0
+	bl GetUnitAffinityIcon
 	adds r4, r0, #0
 	lsls r0, r5, #2
 	mov r1, sb
 	adds r5, r0, r1
 	ldr r0, [r5]
 	ldr r0, [r0]
-	bl sub_8026FB0
+	bl GetUnitAffinityIcon
 	cmp r4, r0
 	bge _0808CFDC
 	ldr r1, [r5]
@@ -21358,14 +21358,14 @@ _0808D02E:
 	adds r6, r0, r1
 	ldr r0, [r6]
 	ldr r0, [r0]
-	bl sub_8026FB0
+	bl GetUnitAffinityIcon
 	adds r4, r0, #0
 	lsls r0, r5, #2
 	mov r2, sb
 	adds r5, r0, r2
 	ldr r0, [r5]
 	ldr r0, [r0]
-	bl sub_8026FB0
+	bl GetUnitAffinityIcon
 	cmp r4, r0
 	ble _0808D05E
 	ldr r1, [r5]

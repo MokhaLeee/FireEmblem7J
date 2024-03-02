@@ -16,6 +16,7 @@ enum {
 };
 
 enum {
+    BGCHR_WINDOWFRAME = 0,
     BGCHR_ICON_END   = 0x300,
 };
 

@@ -579,8 +579,8 @@ _08026F70:
 _08026FA8: .4byte gBmSt
 _08026FAC: .4byte 0x0001002C
 
-	thumb_func_start sub_8026FB0
-sub_8026FB0: @ 0x08026FB0
+	thumb_func_start GetUnitAffinityIcon
+GetUnitAffinityIcon: @ 0x08026FB0
 	ldr r0, [r0]
 	ldrb r0, [r0, #9]
 	cmp r0, #0
@@ -594,8 +594,8 @@ _08026FC0:
 	bx lr
 	.align 2, 0
 
-	thumb_func_start sub_8026FC4
-sub_8026FC4: @ 0x08026FC4
+	thumb_func_start GetAffinityIconByPid
+GetAffinityIconByPid: @ 0x08026FC4
 	push {lr}
 	bl GetCharacterData
 	ldrb r0, [r0, #9]
@@ -610,8 +610,8 @@ _08026FD8:
 	pop {r1}
 	bx r1
 
-	thumb_func_start GetSupportLevelUiChar
-GetSupportLevelUiChar: @ 0x08026FDC
+	thumb_func_start GetSupportLevelSpecialChar
+GetSupportLevelSpecialChar: @ 0x08026FDC
 	push {r4, lr}
 	sub sp, #4
 	adds r4, r0, #0
@@ -629,8 +629,8 @@ GetSupportLevelUiChar: @ 0x08026FDC
 	.align 2, 0
 _08026FFC: .4byte gUnk_081C947C
 
-	thumb_func_start sub_8027000
-sub_8027000: @ 0x08027000
+	thumb_func_start GetAffinityName
+GetAffinityName: @ 0x08027000
 	push {r4, r5, lr}
 	sub sp, #0x20
 	mov r2, sp

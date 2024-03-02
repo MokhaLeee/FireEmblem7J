@@ -151,7 +151,7 @@ void PutStatScreenText(struct StatScreenTextInfo const * list);
 // PutStatScreenLeftPanelInfo
 void DisplayBwl(void);
 // PutStatScreenStatWithBar
-// DisplayPage0
+// PutStatScreenPersonalInfoPage
 // sub_8080E04
 // sub_8080FB8
 // sub_80810A8
@@ -1008,3 +1008,9 @@ extern struct TextInitInfo gStatScreenTextList[];
 // ??? gUnk_08D8A466
 // ??? gUnk_08D8A530
 // ??? gUnk_08D8A5D8
+
+// ??? gUnk_0841CB54
+extern struct StatScreenTextInfo const gStatScreenPersonalInfoLabelsInfo[];
+// ??? gUnk_0841CC78
+// ??? gUnk_0841CCD8
+// ??? gUnk_0841CD28
