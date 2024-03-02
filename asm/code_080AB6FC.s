@@ -14314,7 +14314,7 @@ sub_80B2A9C: @ 0x080B2A9C
 	ldr r4, [r7, #4]
 	ldr r0, [r7, #8]
 	ldr r1, [r7, #4]
-	bl sub_8016F04
+	bl IsItemDisplayUsable
 	lsls r1, r0, #0x18
 	asrs r2, r1, #0x18
 	ldr r3, [r7, #0xc]
@@ -14354,7 +14354,7 @@ sub_80B2AF8: @ 0x080B2AF8
 	ldr r4, [r7, #4]
 	ldr r0, [r7, #8]
 	ldr r1, [r7, #4]
-	bl sub_8016F04
+	bl IsItemDisplayUsable
 	lsls r1, r0, #0x18
 	asrs r2, r1, #0x18
 	ldr r3, [r7, #0xc]
@@ -19304,7 +19304,7 @@ _080B5098:
 	ldr r3, [sp, #0x10]
 	subs r2, r3, r2
 	subs r2, #0xc
-	bl sub_806E2E8
+	bl SetMuScreenPosition
 	ldr r0, [r4, #0x58]
 	bl sub_806E2C8
 	b _080B50DA

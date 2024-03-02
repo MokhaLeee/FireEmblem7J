@@ -9883,8 +9883,8 @@ _0800EDF4:
 	.align 2, 0
 _0800EDFC: .4byte gUnk_08C00E9C
 
-	thumb_func_start sub_800EE00
-sub_800EE00: @ 0x0800EE00
+	thumb_func_start StartStoleItemPopup
+StartStoleItemPopup: @ 0x0800EE00
 	push {r4, lr}
 	adds r4, r1, #0
 	lsls r0, r0, #0x10

@@ -176,7 +176,7 @@ _0804B602:
 	ands r0, r5
 	cmp r0, #0
 	beq _0804B60E
-	bl ClearBg0Bg1
+	bl ClearUi
 _0804B60E:
 	movs r0, #0x20
 	ands r0, r5

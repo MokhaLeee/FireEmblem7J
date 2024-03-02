@@ -604,7 +604,7 @@ _0804AE9E:
 	ands r0, r4
 	cmp r0, #0
 	beq _0804AEAA
-	bl ClearBg0Bg1
+	bl ClearUi
 _0804AEAA:
 	movs r6, #0x20
 	adds r0, r4, #0

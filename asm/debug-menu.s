@@ -178,7 +178,7 @@ _0801B6F0: .4byte gUnk_08C02600
 sub_801B6F4: @ 0x0801B6F4
 	push {lr}
 	bl sub_804AC0C
-	bl ClearBg0Bg1
+	bl ClearUi
 	ldr r0, _0801B714 @ =gUnk_08C04B94
 	bl StartMenu
 	movs r0, #2
@@ -486,7 +486,7 @@ sub_801B954: @ 0x0801B954
 	bl sub_804AC0C
 	movs r0, #0
 	bl EndFaceById
-	bl ClearBg0Bg1
+	bl ClearUi
 	movs r0, #1
 	pop {r1}
 	bx r1
@@ -868,7 +868,7 @@ sub_801BC68: @ 0x0801BC68
 	thumb_func_start sub_801BC6C
 sub_801BC6C: @ 0x0801BC6C
 	push {lr}
-	bl ClearBg0Bg1
+	bl ClearUi
 	ldr r0, _0801BC80 @ =gUnk_08C04B04
 	bl StartMenu
 	movs r0, #7

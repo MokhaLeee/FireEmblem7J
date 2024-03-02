@@ -6,7 +6,6 @@ int GetPlayerLeaderUnitId(void);
 int GetItemIndex(int item);
 void UnitHideIfUnderRoof(struct Unit * unit);
 void CharStoreAI(struct Unit * unit, const struct UnitDefinition * uDef);
-int GetUnitSupporterCount(struct Unit * unit);
 int GetUnitSupporterInitialExp(struct Unit * unit, int num);
 int GetAutoleveledStatIncrease(int growth, int levelCount);
 int GetCurrentPromotedLevelBonus(void);
@@ -35,7 +34,7 @@ bool sub_8028620(struct Unit * unit);
 void PidStatsAddExpGained(u8 pid, int expGain);
 int GetMapChangeIdAt(int x, int y);
 void MU_EndAll(void);
-void BeginBattleMapAnims(void);
+void StartBattleManim(void);
 void WriteSuspendSave(int slot);
 void StartBgmVolumeChange(int volume_from, int volume_to, int duration, ProcPtr parent);
 void CloseHelpBox(void);
@@ -376,90 +375,15 @@ int IsFirstPlaythrough(void);
 // sub_806C114
 // sub_806C178
 // sub_806C1A4
-// sub_806C1D8
+// GetWeaponAnimActorCount
 // sub_806C1E8
-// sub_806C1F8
+// GetWeaponAnimManimSpecialScr
 // sub_806C208
 // sub_806C218
 // sub_806C228
-// MU_Init
-// sub_806C274
-// StartMu
-// sub_806C398
-// sub_806C3B0
-// sub_806C3D8
-// sub_806C3F8
-// sub_806C474
-// sub_806C4A0
-// sub_806C738
-// sub_806C790
-// sub_806C7CC
-// sub_806C7F8
-// sub_806C82C
-// sub_806C850
-// sub_806C8B8
-// sub_806C8F0
-// sub_806C964
-// sub_806C9BC
-// sub_806C9F8
-// sub_806CA1C
-// sub_806CA48
-// sub_806CAD0
-// sub_806CAE8
-// sub_806CAF8
-// sub_806CD2C
-// sub_806CDA8
-// sub_806CE68
-// sub_806CF4C
-// sub_806CF90
-// sub_806CFB4
-// sub_806CFE8
-// sub_806D010
-// sub_806D06C
-// sub_806D07C
-// sub_806D08C
-// sub_806D2E4
-// sub_806D3F8
-// sub_806D47C
-// MU_EndAll
-// sub_806D4BC
-// sub_806D4D4
-// sub_806D4EC
-// sub_806D51C
-// sub_806D52C
-// sub_806D53C
-// sub_806D5EC
-// sub_806D62C
-// sub_806D6A0
-// sub_806D744
-// sub_806D7E8
-// sub_806D934
-// sub_806DA3C
-// sub_806DB6C
-// sub_806DCB8
-// sub_806DD10
-// sub_806DD40
-// sub_806DD6C
-// sub_806DD98
-// sub_806DEC4
-// sub_806DF58
-// sub_806DFF0
-// sub_806E07C
-// sub_806E154
-// sub_806E204
-// sub_806E2A0
-// sub_806E2C8
-// sub_806E2E8
-// sub_806E334
-// sub_806E380
-// sub_806E400
-// sub_806E450
-// sub_806E4A0
-// sub_806E4F4
-// sub_806E51C
-// sub_806E564
-// sub_806E5C0
-// sub_806E608
+
+/*mu.h */
+
 // sub_806E630
 // sub_806E678
 // sub_806E698
@@ -475,13 +399,13 @@ int IsFirstPlaythrough(void);
 // sub_806EA0C
 // sub_806EA64
 // sub_806EAA4
-// sub_806EAE8
-// sub_806EB28
-// sub_806EB84
-// sub_806EBB8
-// sub_806EC14
-// sub_806EC4C
-// sub_806EC60
+// Manim_StoleItemPopup
+// Manim_WeaponBrokePopup
+// ManimShouldBuDisplayWeaponBroke
+// Manim_WeaponLevelGainedPopup
+// ManimShouldBuDisplayWeaponLevelGained
+// Manim_PrepareBattleTalk
+// Manim_Finish
 // sub_806EC98
 // sub_806ED78
 // sub_806EDC0
@@ -496,26 +420,26 @@ int IsFirstPlaythrough(void);
 // sub_806F2C8
 // sub_806F2D8
 // sub_806F30C
-// sub_806F330
+// InitManimActor
 // sub_806F404
-// sub_806F514
+// InitManimActorFacings
 // sub_806F598
 // sub_806F7B0
 // sub_806F83C
 // sub_806F8C8
 // sub_806F97C
-// BeginBattleMapAnims
-// sub_806FAA4
-// sub_806FAF8
-// sub_806FC64
-// sub_806FCE8
-// sub_806FD1C
-// sub_806FE08
-// sub_806FE3C
-// sub_806FEA0
-// sub_806FF58
-// sub_806FF70
-// sub_806FFCC
+// StartBattleManim
+// InitManimHits
+// InitManimActors
+// GetFacingFromTo
+// UnpackManimWindowDigits
+// PutManimWindowNumber
+// UnpackManimWindowGraphics
+// PutManimWindowBarTile
+// PutManimWindowBar
+// EndManimInfoWindow
+// StartManimInfoWindow
+// ManimWindow_Clear
 // sub_806FFE8
 // sub_80700FC
 // sub_8070258

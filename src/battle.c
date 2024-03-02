@@ -1714,7 +1714,7 @@ void BeginBattleAnimations(void)
     } else {
         MU_EndAll();
         RenderMap();
-        BeginBattleMapAnims();
+        StartBattleManim();
 
         gBattleStats.config |= BATTLE_CONFIG_MAPANIMS;
     }

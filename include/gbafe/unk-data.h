@@ -1043,7 +1043,7 @@ extern const u8 Tsa_EkrDragonFireBG2[];
 // ??? gUnk_083F9F2C
 // ??? gUnk_083FA1B8
 // ??? gUnk_083FA9B8
-// ??? gUnk_083FAA20
+// ??? Img_ManimInfoWindowDigits
 // ??? gUnk_083FAAE4
 // ??? gUnk_083FAC48
 // ??? gUnk_083FAC68
@@ -1091,7 +1091,7 @@ extern const u8 Tsa_EkrDragonFireBG2[];
 // ??? gUnk_083FFCA0
 // ??? gUnk_0840085C
 // ??? gUnk_084009F0
-// ??? gUnk_08400BA8
+// ??? Pal_ManimWindowHpBar
 // ??? gUnk_084027B0
 // ??? gUnk_08402A4C
 // ??? gUnk_08402BF0
@@ -1118,15 +1118,15 @@ extern const u8 Tsa_EkrDragonFireBG2[];
 // ??? gUnk_0840348C
 // ??? gUnk_0840349C
 extern const u8 Tsa_StatScreenPage0[];
-// ??? gUnk_08403560
-// ??? gUnk_084035D0
+extern const u8 Tsa_Statscreen_Pag1_08403560[];
+extern const u8 Tsa_StatScreen_084035D0[];
 // ??? gUnk_0840364C
 // ??? gUnk_0840366C
 // ??? gUnk_0840368C
 // ??? gUnk_08403730
 // ??? gUnk_084038AC
-// ??? gUnk_084038CC
-// ??? gUnk_08403908
+extern const u8 Tsa_Statscreen_Pag1_084038CC[];
+extern const u8 Tsa_Statscreen_Pag1_08403908[];
 // ??? gUnk_0840392C
 // ??? gUnk_08404024
 extern const u8 Tsa_Statscreen_08404124[];
@@ -1802,9 +1802,9 @@ extern uintptr_t ProcScr_CamMove[];
 // ??? gUnk_08D65574
 // ??? gUnk_08D6561C
 // ??? gUnk_08D656B4
-// ??? gUnk_08D656D0
+// ??? gManimWindowBarPalTable
 // ??? gUnk_08D656D8
-// ??? gUnk_08D656F0
+// ??? ProcScr_ManimInfoWindow
 // ??? gUnk_08D65728
 // ??? gUnk_08D65760
 // ??? gUnk_08D657D8

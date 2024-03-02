@@ -7359,7 +7359,7 @@ _08085EA0:
 	adds r1, r4, #0
 	adds r2, r5, #0
 	movs r3, #2
-	bl sub_8013870
+	bl PutDigits
 	ldr r0, _08085F84 @ =gUnk_08C53805
 	adds r0, r7, r0
 	ldrb r0, [r0]
@@ -7372,7 +7372,7 @@ _08085EA0:
 	adds r1, r4, #0
 	adds r2, r5, #0
 	movs r3, #2
-	bl sub_8013870
+	bl PutDigits
 _08085F54:
 	cmp r7, #0x29
 	bgt _08085F88
@@ -7431,7 +7431,7 @@ _08085FD0:
 	movs r2, #0x94
 	lsls r2, r2, #1
 	movs r3, #2
-	bl sub_8013870
+	bl PutDigits
 	b _0808601A
 	.align 2, 0
 _08085FE8: .4byte 0x02028D43
@@ -7454,7 +7454,7 @@ _08085FEC:
 	movs r2, #0x94
 	lsls r2, r2, #1
 	movs r3, #2
-	bl sub_8013870
+	bl PutDigits
 _0808601A:
 	ldr r0, _0808603C @ =0x020039BC
 	ldr r1, _08086040 @ =gUnk_0841C7B4
@@ -8269,7 +8269,7 @@ sub_808667C: @ 0x0808667C
 	strb r2, [r0]
 	adds r0, #1
 	strb r2, [r0]
-	bl ClearBg0Bg1
+	bl ClearUi
 	pop {r0}
 	bx r0
 	.align 2, 0
@@ -9956,7 +9956,7 @@ sub_80873B4: @ 0x080873B4
 	movs r1, #0
 	movs r2, #0
 	bl SetBgOffset
-	bl ClearBg0Bg1
+	bl ClearUi
 	ldr r0, _080874DC @ =gUnk_0841B080
 	movs r1, #0x20
 	movs r2, #0x60
@@ -34043,7 +34043,7 @@ _08093330:
 _08093350:
 	mov r0, r8
 	adds r1, r5, #0
-	bl sub_8016F04
+	bl IsItemDisplayUsable
 _08093358:
 	movs r7, #0
 	lsls r0, r0, #0x18
@@ -35279,7 +35279,7 @@ _08093D10:
 	bl ClearText
 	adds r0, r7, #0
 	adds r1, r4, #0
-	bl sub_8016F04
+	bl IsItemDisplayUsable
 	movs r6, #0
 	lsls r0, r0, #0x18
 	cmp r0, #0
@@ -35301,7 +35301,7 @@ _08093D4E:
 	bl PutDrawText
 	adds r0, r7, #0
 	adds r1, r4, #0
-	bl sub_8016F04
+	bl IsItemDisplayUsable
 	lsls r0, r0, #0x18
 	movs r5, #1
 	cmp r0, #0
@@ -37047,7 +37047,7 @@ _08094AFA:
 _08094B16:
 	mov r0, sl
 	adds r1, r6, #0
-	bl sub_8016F04
+	bl IsItemDisplayUsable
 _08094B1E:
 	lsls r0, r0, #0x18
 	lsrs r4, r0, #0x18
@@ -40113,7 +40113,7 @@ _080964FE:
 	ldrh r7, [r0, #2]
 	ldr r0, [sp, #8]
 	adds r1, r7, #0
-	bl sub_8016F04
+	bl IsItemDisplayUsable
 	movs r1, #0
 	mov sb, r1
 	lsls r0, r0, #0x18
@@ -40261,7 +40261,7 @@ sub_8096618: @ 0x08096618
 	ldrh r6, [r0, #2]
 	adds r0, r3, #0
 	adds r1, r6, #0
-	bl sub_8016F04
+	bl IsItemDisplayUsable
 	movs r1, #0
 	mov r8, r1
 	lsls r0, r0, #0x18

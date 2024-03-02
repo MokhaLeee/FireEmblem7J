@@ -2975,7 +2975,7 @@ sub_801EEF8: @ 0x0801EEF8
 	bl Proc_Find
 	cmp r0, #0
 	bne _0801EF7A
-	bl ClearBg0Bg1
+	bl ClearUi
 	movs r0, #0
 	bl SetOnVMatch
 	movs r0, #0
@@ -3015,7 +3015,7 @@ sub_801EF94: @ 0x0801EF94
 	ldrb r1, [r1, #0x11]
 	lsls r1, r1, #0x18
 	asrs r1, r1, #0x18
-	bl sub_806FC64
+	bl GetFacingFromTo
 	adds r0, #5
 	ldr r1, _0801EFC4 @ =0x02033DFC
 	strb r0, [r1]
@@ -5537,7 +5537,7 @@ _080203CC: .4byte gDispIo
 sub_80203D0: @ 0x080203D0
 	push {r4, r5, lr}
 	adds r4, r0, #0
-	bl ClearBg0Bg1
+	bl ClearUi
 	bl ColorFadeInit
 	ldr r5, _0802046C @ =gPal + 0xc0
 	adds r0, r5, #0
@@ -5930,7 +5930,7 @@ sub_8020674: @ 0x08020674
 	movs r1, #0
 	movs r2, #0
 	bl SetBgOffset
-	bl ClearBg0Bg1
+	bl ClearUi
 	ldr r0, _080207A4 @ =gBg0Tm + 0x24e
 	ldr r1, _080207A8 @ =gUnk_08409060
 	movs r2, #0x80
@@ -7271,7 +7271,7 @@ sub_8021184: @ 0x08021184
 	adds r1, r2, #0
 	orrs r0, r1
 	strh r0, [r3, #0x3c]
-	bl ClearBg0Bg1
+	bl ClearUi
 	pop {r0}
 	bx r0
 	.align 2, 0
@@ -7350,7 +7350,7 @@ _08021202:
 	movs r1, #0
 	movs r2, #0
 	bl SetBgOffset
-	bl ClearBg0Bg1
+	bl ClearUi
 	movs r0, #0
 	movs r1, #0
 	bl SetBgChrOffset
@@ -7891,7 +7891,7 @@ sub_8021678: @ 0x08021678
 	movs r1, #0x10
 	orrs r0, r1
 	strb r0, [r2, #1]
-	bl ClearBg0Bg1
+	bl ClearUi
 	pop {r0}
 	bx r0
 	.align 2, 0
@@ -8092,7 +8092,7 @@ sub_8021820: @ 0x08021820
 	bl Proc_Goto
 	b _080218D8
 _0802183C:
-	bl ClearBg0Bg1
+	bl ClearUi
 	ldr r0, [r6, #0x30]
 	lsls r0, r0, #5
 	ldr r1, [r6, #0x2c]

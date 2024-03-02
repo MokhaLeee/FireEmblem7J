@@ -301,7 +301,7 @@ enum event_func_ret_idx {
 // sub_800ED58
 // sub_800ED9C
 // sub_800EDBC
-// sub_800EE00
+// StartStoleItemPopup
 // sub_800EE48
 // sub_800EE60
 // sub_800EEA8

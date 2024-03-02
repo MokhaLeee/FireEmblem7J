@@ -16516,7 +16516,7 @@ sub_8044AF8: @ 0x08044AF8
 	push {lr}
 	ldr r0, _08044B08 @ =gUnk_08C08E34
 	bl Proc_EndEach
-	bl ClearBg0Bg1
+	bl ClearUi
 	pop {r0}
 	bx r0
 	.align 2, 0
@@ -18294,7 +18294,7 @@ sub_8045914: @ 0x08045914
 	ldrsb r2, [r4, r2]
 	subs r2, #1
 	lsls r2, r2, #4
-	bl sub_806E2E8
+	bl SetMuScreenPosition
 	ldr r0, [r5]
 	bl sub_806C3D8
 	ldr r0, [r5]
@@ -19656,7 +19656,7 @@ sub_8046440: @ 0x08046440
 	ldrb r0, [r0]
 	bl GetUnit
 	adds r4, r0, #0
-	bl ClearBg0Bg1
+	bl ClearUi
 	ldrb r0, [r6, #6]
 	cmp r0, #0
 	bne _080464CC
@@ -22109,7 +22109,7 @@ _080477B0: .4byte gBg2Tm
 _080477B4:
 	bl MU_EndAll
 	bl RenderMap
-	bl BeginBattleMapAnims
+	bl StartBattleManim
 	ldr r0, _080477D0 @ =gBattleStats
 	movs r1, #0x80
 	ldrh r2, [r0]
@@ -22157,7 +22157,7 @@ _080477F0:
 	ldrsb r2, [r5, r2]
 	movs r3, #0x11
 	ldrsb r3, [r5, r3]
-	bl sub_806FC64
+	bl GetFacingFromTo
 	ldr r1, _08047850 @ =0x02033DFC
 	strb r0, [r1]
 	movs r0, #4
@@ -23361,7 +23361,7 @@ sub_8048178: @ 0x08048178
 	lsls r1, r1, #4
 	ldr r2, [r4, #0x38]
 	lsls r2, r2, #4
-	bl sub_806E2E8
+	bl SetMuScreenPosition
 	ldr r1, [r4, #0x2c]
 	ldr r0, [r4, #0x34]
 	strb r0, [r1, #0x10]

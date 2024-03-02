@@ -307,7 +307,7 @@ _0802B2A0:
 	mov r1, sb
 	ldr r0, [r1]
 	adds r1, r5, #0
-	bl sub_8016F04
+	bl IsItemDisplayUsable
 	adds r2, r0, #0
 	lsls r2, r2, #0x18
 	asrs r2, r2, #0x18

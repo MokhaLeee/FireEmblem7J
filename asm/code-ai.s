@@ -1370,7 +1370,7 @@ sub_8035824: @ 0x08035824
 	bl UnitRemoveItem
 	adds r0, r5, #0
 	mov r1, r8
-	bl sub_800EE00
+	bl StartStoleItemPopup
 	pop {r3}
 	mov r8, r3
 	pop {r4, r5, r6}

@@ -94,7 +94,7 @@ bool CanUnitUseStaff(struct Unit *unit, int item);
 // sub_80168EC
 // sub_8016984
 // sub_8016A4C
-// sub_8016AD0
+void DrawItemStatScreenLine(struct Text * text, int item, int nameColor, u16 * mapOut);
 u16 GetItemAfterUse(int item);
 u16 GetUnitEquippedWeapon(struct Unit *unit);
 int GetUnitEquippedWeaponSlot(struct Unit *unit);
@@ -104,10 +104,10 @@ bool IsItemEffectiveAgainst(u16 item, struct Unit *unit);
 char *GetItemDisplayRangeString(int item);
 int GetWeaponLevelFromExp(int wexp);
 // sub_8016DD8
-// sub_8016E38
+int GetWeaponLevelSpecialCharFromExp(int wexp);
 // sub_8016E60
-// sub_8016E8C
-// sub_8016F04
+void GetWeaponExpProgressState(int wexp, int * outValue, int * outMax);
+bool IsItemDisplayUsable(struct Unit * unit, int item);
 // sub_8016F80
 // sub_8016FBC
 int GetUnitItemSlot(struct Unit *unit, int itemIndex);

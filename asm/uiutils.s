@@ -749,8 +749,8 @@ sub_804A81C: @ 0x0804A81C
 	.align 2, 0
 _0804A824: .4byte 0x0203DCC4
 
-	thumb_func_start ClearBg0Bg1
-ClearBg0Bg1: @ 0x0804A828
+	thumb_func_start ClearUi
+ClearUi: @ 0x0804A828
 	push {lr}
 	ldr r0, _0804A844 @ =gBg0Tm
 	movs r1, #0

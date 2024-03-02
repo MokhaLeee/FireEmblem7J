@@ -3,6 +3,11 @@
 #include "proc.h"
 #include "text.h"
 
+enum statscreen_frame_rect {
+    PAGE_FRAME_SCREEN_X = 12,
+    PAGE_FRAME_SCREEN_Y = 2,
+};
+
 enum statscreen_text_index {
     STATSCREEN_TEXT_PNAME,
     STATSCREEN_TEXT_JNAME,
@@ -132,6 +137,16 @@ struct StatScreenInfo {
     /* 02 */ u16 excluded_unit_flags;
 };
 
+enum statscreen_flag_bitfile {
+    // StatScreenInfo::excluded_unit_flags
+    STATSCREEN_CONFIG_NONDEAD    = (1 << 0),
+    STATSCREEN_CONFIG_NONBENCHED = (1 << 1),
+    STATSCREEN_CONFIG_NONUNK9    = (1 << 2),
+    STATSCREEN_CONFIG_NONROOFED  = (1 << 3),
+    STATSCREEN_CONFIG_NONUNK16   = (1 << 4),
+    STATSCREEN_CONFIG_NONSUPPLY  = (1 << 5),
+};
+
 extern struct StatScreenInfo gStatScreenInfo;
 
 // GetLastStatScreenUnitId
@@ -148,27 +163,55 @@ struct StatScreenTextInfo {
 };
 
 void PutStatScreenText(struct StatScreenTextInfo const * list);
-// PutStatScreenLeftPanelInfo
+void PutStatScreenLeftPanelInfo(void);
 void DisplayBwl(void);
-// PutStatScreenStatWithBar
-// PutStatScreenPersonalInfoPage
-// sub_8080E04
-// sub_8080FB8
-// sub_80810A8
-// sub_808116C
-// sub_8081224
+void PutStatScreenStatWithBar(int num, int x, int y, int base, int total, int max);
+void PutStatScreenPersonalInfoPage(void);
+void PutStatScreenItemsPage(void);
+void PutStatScreenSupportList(void);
+void PutStatScreenWeaponExpBar(int num, int x, int y, int item_kind);
+void PutStatScreenWeaponExpAndSupportsPage(void);
+void PutStatScreenPage(int page_id);
 // sub_808125C
-// sub_8081278
-// sub_8081334
-// sub_808144C
-// sub_8081458
-// sub_80814C4
-// sub_8081554
-// sub_80815D4
-// sub_808164C
-// sub_80816C8
-// sub_80816F8
-// sub_808178C
+// FindNextStatScreenUnit
+
+struct StatScreenPageSlideProc {
+    /* 00 */ PROC_HEADER;
+
+    STRUCT_PAD(0x29, 0x4A);
+
+    /* 4A */ s16 new_page;
+    /* 4C */ s16 clock;
+
+    STRUCT_PAD(0x4E, 0x52);
+
+    /* 52 */ u16 key_bit;
+};
+
+// StatScreenPageSlide_Loop
+// StatScreenPageSlide_End
+// StartStatScreenPageSlide
+
+struct StatScreenUnitSlideProc
+{
+    /* 00 */ PROC_HEADER;
+
+    /* 29 */ u8 pad_29[0x38 - 0x29];
+    /* 38 */ int direction;
+    /* 3C */ int y_disp_init;
+    /* 40 */ int y_disp_fini;
+    /* 44 */ u8 pad_44[0x4A - 0x44];
+    /* 4A */ s16 new_unit_id;
+    /* 4C */ s16 clock;
+};
+
+// StatScreenUnitSlide_FadeOutInit
+// StatScreenUnitSlide_FadeOutLoop
+// StatScreenUnitSlide_FadeInInit
+// StatScreenUnitSlide_FadeInLoop
+// StatScreenUnitSlide_ChangeUnit
+// StatScreenUnitSlide_End
+// StartStatScreenUnitSlide
 // sub_80817C8
 // sub_8081834
 // sub_80818CC
@@ -182,7 +225,7 @@ void DisplayBwl(void);
 // sub_8081CB0
 // sub_8081D7C
 // sub_8081DE4
-// sub_8081EF8
+void StatScreen_InitUnit(ProcPtr proc);
 // sub_8081FD8
 // sub_8082168
 // sub_80821A0
@@ -999,18 +1042,18 @@ int HelpBoxTryRelocateRight(struct HelpBoxProc *proc);
 
 extern struct ProcCmd ProcScr_BackgroundSlide[];
 extern struct TextInitInfo gStatScreenTextList[];
-// ??? gUnk_08D8A358
-// ??? gUnk_08D8A368
-// ??? gUnk_08D8A380
+// ??? gStatScreenPageSlideOffsetLut
+extern struct ProcCmd ProcScr_StatScreenPageSlide[];
+extern struct ProcCmd ProcScr_StatScreenUnitSlide[];
 // ??? gUnk_08D8A3C0
 // ??? gUnk_08D8A3D4
 // ??? gUnk_08D8A41C
 // ??? gUnk_08D8A466
-// ??? gUnk_08D8A530
+extern struct ProcCmd ProcScr_StatScreen[];
 // ??? gUnk_08D8A5D8
 
 // ??? gUnk_0841CB54
 extern struct StatScreenTextInfo const gStatScreenPersonalInfoLabelsInfo[];
-// ??? gUnk_0841CC78
-// ??? gUnk_0841CCD8
-// ??? gUnk_0841CD28
+extern struct StatScreenTextInfo const gStatScreenEquipmentLabelsInfo[];
+extern struct StatScreenTextInfo const gStatScreenWeaponExpLabelsPhysicalInfo[];
+extern struct StatScreenTextInfo const gStatScreenWeaponExpLabelsMagicalInfo[];

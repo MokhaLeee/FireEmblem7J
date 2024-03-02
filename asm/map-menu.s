@@ -869,7 +869,7 @@ sub_802206C: @ 0x0802206C
 	ldr r1, _080220A8 @ =gActionSt
 	movs r0, #0
 	strb r0, [r1, #0x12]
-	bl ClearBg0Bg1
+	bl ClearUi
 	ldr r0, [r4]
 	ldrh r1, [r0, #0x1e]
 	bl sub_80240E4
@@ -1168,7 +1168,7 @@ _080222D6:
 	thumb_func_start sub_80222DC
 sub_80222DC: @ 0x080222DC
 	push {lr}
-	bl ClearBg0Bg1
+	bl ClearUi
 	ldr r0, _080222F8 @ =gActiveUnit
 	ldr r0, [r0]
 	bl sub_80241F0
@@ -2002,7 +2002,7 @@ _08022968: .4byte gUiTmScratchB
 _0802296C: .4byte gBg1Tm + 0x56
 _08022970: .4byte gUnk_08C04CFC
 _08022974:
-	bl ClearBg0Bg1
+	bl ClearUi
 	movs r0, #0
 	bl EndFaceById
 	ldr r0, _080229A0 @ =gUnk_08C04D68
@@ -2179,7 +2179,7 @@ sub_8022A9C: @ 0x08022A9C
 _08022ACC: .4byte gActiveUnit
 _08022AD0: .4byte gActionSt
 _08022AD4:
-	bl ClearBg0Bg1
+	bl ClearUi
 	ldr r0, _08022B18 @ =gActiveUnit
 	ldr r0, [r0]
 	ldr r1, _08022B1C @ =gActionSt
@@ -2433,7 +2433,7 @@ _08022CCC: .4byte gBg0Tm
 	thumb_func_start sub_8022CD0
 sub_8022CD0: @ 0x08022CD0
 	push {lr}
-	bl ClearBg0Bg1
+	bl ClearUi
 	ldr r1, _08022CF0 @ =gActionSt
 	movs r0, #8
 	strb r0, [r1, #0x12]
@@ -2705,7 +2705,7 @@ sub_8022EF4: @ 0x08022EF4
 	ldr r4, _08022F30 @ =gActionSt
 	movs r0, #0
 	strb r0, [r4, #0x12]
-	bl ClearBg0Bg1
+	bl ClearUi
 	ldr r0, [r5]
 	ldrb r4, [r4, #0x12]
 	lsls r2, r4, #1
@@ -3449,7 +3449,7 @@ sub_8023454: @ 0x08023454
 	ldrb r1, [r1]
 	cmp r1, #2
 	beq _0802347C
-	bl ClearBg0Bg1
+	bl ClearUi
 	ldr r0, _08023474 @ =gActiveUnit
 	ldr r0, [r0]
 	bl sub_8024990
@@ -4441,7 +4441,7 @@ sub_8023BF8: @ 0x08023BF8
 	ldrb r0, [r1]
 	subs r0, #1
 	strb r0, [r4, #0x12]
-	bl ClearBg0Bg1
+	bl ClearUi
 	ldr r0, _08023C28 @ =gActiveUnit
 	ldr r0, [r0]
 	ldrb r4, [r4, #0x12]

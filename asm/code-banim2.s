@@ -9934,3 +9934,313 @@ sub_806BFB8: @ 0x0806BFB8
 	bx r0
 	.align 2, 0
 _0806BFCC: .4byte sub_8051214
+
+	thumb_func_start sub_806BFD0
+sub_806BFD0: @ 0x0806BFD0
+	push {lr}
+	ldr r0, _0806BFE0 @ =gUnk_08C4C100
+	movs r1, #3
+	bl Proc_Start
+	pop {r0}
+	bx r0
+	.align 2, 0
+_0806BFE0: .4byte gUnk_08C4C100
+
+	thumb_func_start sub_806BFE4
+sub_806BFE4: @ 0x0806BFE4
+	push {r4, r5, lr}
+	adds r5, r0, #0
+	movs r0, #0
+	bl InitOam
+	bl sub_804D738
+	bl UpdateBanimFrame
+	bl NewEkrGauge
+	bl NewEkrDispUP
+	bl NewEkrBattle
+	ldr r0, _0806C038 @ =0x0203DFE2
+	movs r1, #0
+	ldrsh r0, [r0, r1]
+	subs r0, #1
+	bl sub_806B800
+	ldr r4, _0806C03C @ =gPal
+	ldr r1, _0806C040 @ =gEfxPal
+	movs r2, #0x80
+	lsls r2, r2, #1
+	adds r0, r4, #0
+	bl CpuFastSet
+	adds r0, r4, #0
+	movs r1, #0
+	movs r2, #0x20
+	movs r3, #0x10
+	bl EfxPalBlackInOut
+	bl EnablePalSync
+	adds r0, r5, #0
+	bl Proc_Break
+	pop {r4, r5}
+	pop {r0}
+	bx r0
+	.align 2, 0
+_0806C038: .4byte 0x0203DFE2
+_0806C03C: .4byte gPal
+_0806C040: .4byte gEfxPal
+
+	thumb_func_start sub_806C044
+sub_806C044: @ 0x0806C044
+	push {r4, lr}
+	adds r4, r0, #0
+	bl EkrGauge_0804CC48
+	bl EkrDispUP_0804D5A4
+	movs r0, #0
+	strh r0, [r4, #0x2c]
+	movs r0, #0x10
+	strh r0, [r4, #0x2e]
+	adds r0, r4, #0
+	bl Proc_Break
+	pop {r4}
+	pop {r0}
+	bx r0
+
+	thumb_func_start sub_806C064
+sub_806C064: @ 0x0806C064
+	push {r4, r5, r6, lr}
+	sub sp, #4
+	adds r6, r0, #0
+	movs r0, #0x2c
+	ldrsh r3, [r6, r0]
+	movs r1, #0x2e
+	ldrsh r0, [r6, r1]
+	str r0, [sp]
+	movs r0, #0
+	movs r1, #0x10
+	movs r2, #0
+	bl Interpolate
+	adds r5, r0, #0
+	ldr r0, _0806C0C0 @ =gEfxPal
+	ldr r4, _0806C0C4 @ =gPal
+	movs r2, #0x80
+	lsls r2, r2, #1
+	adds r1, r4, #0
+	bl CpuFastSet
+	adds r0, r4, #0
+	movs r1, #0
+	movs r2, #0x20
+	adds r3, r5, #0
+	bl EfxPalBlackInOut
+	bl EnablePalSync
+	ldrh r1, [r6, #0x2c]
+	adds r1, #1
+	strh r1, [r6, #0x2c]
+	lsls r1, r1, #0x10
+	asrs r1, r1, #0x10
+	movs r2, #0x2e
+	ldrsh r0, [r6, r2]
+	adds r0, #1
+	cmp r1, r0
+	bne _0806C0B8
+	adds r0, r6, #0
+	bl Proc_Break
+_0806C0B8:
+	add sp, #4
+	pop {r4, r5, r6}
+	pop {r0}
+	bx r0
+	.align 2, 0
+_0806C0C0: .4byte gEfxPal
+_0806C0C4: .4byte gPal
+
+	thumb_func_start sub_806C0C8
+sub_806C0C8: @ 0x0806C0C8
+	push {lr}
+	bl Proc_Break
+	pop {r0}
+	bx r0
+	.align 2, 0
+
+	thumb_func_start sub_806C0D4
+sub_806C0D4: @ 0x0806C0D4
+	push {lr}
+	ldr r0, _0806C0E4 @ =gUnk_08C4C130
+	movs r1, #3
+	bl Proc_Start
+	pop {r0}
+	bx r0
+	.align 2, 0
+_0806C0E4: .4byte gUnk_08C4C130
+
+	thumb_func_start sub_806C0E8
+sub_806C0E8: @ 0x0806C0E8
+	push {r4, lr}
+	adds r4, r0, #0
+	ldr r0, _0806C10C @ =gPal
+	ldr r1, _0806C110 @ =gEfxPal
+	movs r2, #0x80
+	lsls r2, r2, #1
+	bl CpuFastSet
+	movs r0, #0
+	strh r0, [r4, #0x2c]
+	movs r0, #0x10
+	strh r0, [r4, #0x2e]
+	adds r0, r4, #0
+	bl Proc_Break
+	pop {r4}
+	pop {r0}
+	bx r0
+	.align 2, 0
+_0806C10C: .4byte gPal
+_0806C110: .4byte gEfxPal
+
+	thumb_func_start sub_806C114
+sub_806C114: @ 0x0806C114
+	push {r4, r5, r6, lr}
+	sub sp, #4
+	adds r6, r0, #0
+	movs r0, #0x2c
+	ldrsh r3, [r6, r0]
+	movs r1, #0x2e
+	ldrsh r0, [r6, r1]
+	str r0, [sp]
+	movs r0, #0
+	movs r1, #0
+	movs r2, #0x10
+	bl Interpolate
+	adds r5, r0, #0
+	ldr r0, _0806C170 @ =gEfxPal
+	ldr r4, _0806C174 @ =gPal
+	movs r2, #0x80
+	lsls r2, r2, #1
+	adds r1, r4, #0
+	bl CpuFastSet
+	adds r0, r4, #0
+	movs r1, #0
+	movs r2, #0x20
+	adds r3, r5, #0
+	bl EfxPalBlackInOut
+	bl EnablePalSync
+	ldrh r1, [r6, #0x2c]
+	adds r1, #1
+	strh r1, [r6, #0x2c]
+	lsls r1, r1, #0x10
+	asrs r1, r1, #0x10
+	movs r2, #0x2e
+	ldrsh r0, [r6, r2]
+	adds r0, #1
+	cmp r1, r0
+	bne _0806C168
+	adds r0, r6, #0
+	bl Proc_Break
+_0806C168:
+	add sp, #4
+	pop {r4, r5, r6}
+	pop {r0}
+	bx r0
+	.align 2, 0
+_0806C170: .4byte gEfxPal
+_0806C174: .4byte gPal
+
+	thumb_func_start sub_806C178
+sub_806C178: @ 0x0806C178
+	push {r4, lr}
+	adds r4, r0, #0
+	bl EndEkrBattleDeamon
+	bl EndEkrGauge
+	ldr r0, _0806C19C @ =OnMain
+	bl SetMainFunc
+	ldr r0, _0806C1A0 @ =OnVBlank
+	bl SetOnVBlank
+	adds r0, r4, #0
+	bl Proc_Break
+	pop {r4}
+	pop {r0}
+	bx r0
+	.align 2, 0
+_0806C19C: .4byte OnMain
+_0806C1A0: .4byte OnVBlank
+
+	thumb_func_start sub_806C1A4
+sub_806C1A4: @ 0x0806C1A4
+	push {r4, lr}
+	lsls r0, r0, #0x10
+	lsrs r0, r0, #0x10
+	ldr r4, _0806C1D0 @ =gUnk_08D61678
+	bl GetItemIndex
+	lsls r0, r0, #0x10
+	lsrs r0, r0, #0x10
+	ldrh r1, [r4]
+	ldr r2, _0806C1D4 @ =0x0000FFFF
+	cmp r1, r2
+	beq _0806C1C8
+_0806C1BC:
+	cmp r1, r0
+	beq _0806C1C8
+	adds r4, #0x10
+	ldrh r1, [r4]
+	cmp r1, r2
+	bne _0806C1BC
+_0806C1C8:
+	adds r0, r4, #0
+	pop {r4}
+	pop {r1}
+	bx r1
+	.align 2, 0
+_0806C1D0: .4byte gUnk_08D61678
+_0806C1D4: .4byte 0x0000FFFF
+
+	thumb_func_start GetWeaponAnimActorCount
+GetWeaponAnimActorCount: @ 0x0806C1D8
+	push {lr}
+	lsls r0, r0, #0x10
+	lsrs r0, r0, #0x10
+	bl sub_806C1A4
+	ldrb r0, [r0, #2]
+	pop {r1}
+	bx r1
+
+	thumb_func_start sub_806C1E8
+sub_806C1E8: @ 0x0806C1E8
+	push {lr}
+	lsls r0, r0, #0x10
+	lsrs r0, r0, #0x10
+	bl sub_806C1A4
+	ldrh r0, [r0, #4]
+	pop {r1}
+	bx r1
+
+	thumb_func_start GetWeaponAnimManimSpecialScr
+GetWeaponAnimManimSpecialScr: @ 0x0806C1F8
+	push {lr}
+	lsls r0, r0, #0x10
+	lsrs r0, r0, #0x10
+	bl sub_806C1A4
+	ldr r0, [r0, #8]
+	pop {r1}
+	bx r1
+
+	thumb_func_start sub_806C208
+sub_806C208: @ 0x0806C208
+	push {lr}
+	lsls r0, r0, #0x10
+	lsrs r0, r0, #0x10
+	bl sub_806C1A4
+	ldrb r0, [r0, #0xc]
+	pop {r1}
+	bx r1
+
+	thumb_func_start sub_806C218
+sub_806C218: @ 0x0806C218
+	push {lr}
+	lsls r0, r0, #0x10
+	lsrs r0, r0, #0x10
+	bl sub_806C1A4
+	ldrb r0, [r0, #0xd]
+	pop {r1}
+	bx r1
+
+	thumb_func_start sub_806C228
+sub_806C228: @ 0x0806C228
+	push {lr}
+	lsls r0, r0, #0x10
+	lsrs r0, r0, #0x10
+	bl sub_806C1A4
+	ldrb r0, [r0, #0xe]
+	pop {r1}
+	bx r1

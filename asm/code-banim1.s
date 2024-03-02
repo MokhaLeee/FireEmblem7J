@@ -2600,7 +2600,7 @@ _08052640:
 	bl GetItemIndex
 	lsls r0, r0, #0x10
 	lsrs r0, r0, #0x10
-	bl sub_806C1D8
+	bl GetWeaponAnimActorCount
 	lsls r0, r0, #0x18
 	lsrs r0, r0, #0x18
 	str r0, [sp, #0x20]

@@ -26,7 +26,7 @@ void ApplyBitmap(u8 const * src, void * dst, int width, int height);
 void ApplyBitmapLine(u8 const * src, void * dst, int width);
 // ??? sub_80137F4
 void PutAppliedBitmap(u16 * tm, int tileref, int width, int height);
-// ??? sub_8013870
+// ??? PutDigits
 // ??? sub_80138A0
 // ??? sub_80138A8
 // ??? sub_80138BC

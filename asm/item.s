@@ -887,8 +887,8 @@ _08016ABA:
 	bx r0
 	.align 2, 0
 
-	thumb_func_start sub_8016AD0
-sub_8016AD0: @ 0x08016AD0
+	thumb_func_start DrawItemStatScreenLine
+DrawItemStatScreenLine: @ 0x08016AD0
 	push {r4, r5, r6, r7, lr}
 	mov r7, sb
 	mov r6, r8
@@ -1383,8 +1383,8 @@ _08016E28:
 	bx r1
 	.align 2, 0
 
-	thumb_func_start sub_8016E38
-sub_8016E38: @ 0x08016E38
+	thumb_func_start GetWeaponLevelSpecialCharFromExp
+GetWeaponLevelSpecialCharFromExp: @ 0x08016E38
 	push {r4, lr}
 	sub sp, #8
 	adds r4, r0, #0
@@ -1427,8 +1427,8 @@ sub_8016E60: @ 0x08016E60
 	.align 2, 0
 _08016E88: .4byte gUnk_081C91A4
 
-	thumb_func_start sub_8016E8C
-sub_8016E8C: @ 0x08016E8C
+	thumb_func_start GetWeaponExpProgressState
+GetWeaponExpProgressState: @ 0x08016E8C
 	push {r4, r5, r6, lr}
 	adds r5, r0, #0
 	adds r4, r1, #0
@@ -1490,8 +1490,8 @@ _08016EFE:
 	pop {r0}
 	bx r0
 
-	thumb_func_start sub_8016F04
-sub_8016F04: @ 0x08016F04
+	thumb_func_start IsItemDisplayUsable
+IsItemDisplayUsable: @ 0x08016F04
 	push {r4, r5, lr}
 	adds r3, r0, #0
 	adds r2, r1, #0

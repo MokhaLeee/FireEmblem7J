@@ -6,7 +6,26 @@ struct SupportData;
 
 // Config
 enum { UNIT_LEVEL_MAX = 20 };
-enum { UNIT_ITEM_COUNT = 5 };
+
+enum item_slot_idx {
+    // 0..4 are unit inventory
+
+    ITEMSLOT_INV0,
+    ITEMSLOT_INV1,
+    ITEMSLOT_INV2,
+    ITEMSLOT_INV3,
+    ITEMSLOT_INV4,
+
+    ITEMSLOT_INV_COUNT,
+
+    ITEMSLOT_OVERFLOW = ITEMSLOT_INV_COUNT + 0,
+    ITEMSLOT_ARENA_PLAYER = ITEMSLOT_INV_COUNT + 1,
+    ITEMSLOT_ARENA_OPPONENT = ITEMSLOT_INV_COUNT + 2,
+    ITEMSLOT_BALLISTA = ITEMSLOT_INV_COUNT + 3,
+};
+
+#define UNIT_ITEM_COUNT ITEMSLOT_INV_COUNT /* port from fe6 --> fireemblem8u */
+
 enum { UNIT_DEFINITION_ITEM_COUNT = 4 };
 enum { UNIT_SUPPORT_MAX_COUNT = 7 };
 

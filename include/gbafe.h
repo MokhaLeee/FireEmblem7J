@@ -52,3 +52,4 @@
 #include "gbafe/msg.h"
 #include "gbafe/eventcall.h"
 #include "gbafe/support.h"
+#include "gbafe/mu.h"

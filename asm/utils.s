@@ -505,8 +505,8 @@ _08013868:
 	bx r0
 	.align 2, 0
 
-	thumb_func_start sub_8013870
-sub_8013870: @ 0x08013870
+	thumb_func_start PutDigits
+PutDigits: @ 0x08013870
 	push {r4, r5, lr}
 	adds r4, r0, #0
 	adds r5, r2, #0

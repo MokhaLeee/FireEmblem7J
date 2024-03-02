@@ -246,7 +246,8 @@ SECTIONS
 		src/banim-ekrdragon.o(.text);
 		src/banim-ekrdragonfx.o(.text);
 		asm/code-banim2.o(.text);
-		asm/code.o(.text);
+		asm/mu.o(.text);
+		asm/mapanim.o(.text);
 		src/eventcall_quakefx.o(.text);
 		asm/code_807B7C8.o(.text);
 		src/quintessence-fx.o(.text);
@@ -254,7 +255,8 @@ SECTIONS
 		src/eventcall_spriteanimfx.o(.text);
 		asm/eventcall_spriteanimfx.o(.text);
 		asm/code_0807F9EC.o(.text);
-		src/statscreen.o(.text);
+		src/statscreenfx.o(.text);
+		src/statscreen-util.o(.text);
 		asm/statscreen.o(.text);
 		asm/helpbox.o(.text);
 		src/save_core.o(.text);
@@ -303,7 +305,8 @@ SECTIONS
 		. = ALIGN(4); data/const_data_081EF4AC.o(.rodata)
 		. = ALIGN(4); data/const_data_ekrdragon.o(.rodata)
 		. = ALIGN(4); data/const_data_082EB740.o(.rodata)
-		. = ALIGN(4); src/statscreen.o(.rodata)
+		. = ALIGN(4); data/statscreenfx-const.o(.rodata)
+		. = ALIGN(4); src/statscreenfx.o(.rodata)
 		. = ALIGN(4); data/const_data_0841CD8C.o(.rodata)
 		. = ALIGN(4); src/save_core.o(.rodata)
 		. = ALIGN(4); data/const_data_0842D270.o(.rodata)
@@ -335,6 +338,9 @@ SECTIONS
 		. = ALIGN(4); data/data_eventcall.o(.data)
 		. = ALIGN(4); src/eventcall_spriteanimfx.o(.data)
 		. = ALIGN(4); data/data_08D7C3BC.o(.data)
+		. = ALIGN(4); src/statscreenfx.o(.data)
+		. = ALIGN(4); src/statscreen-util.o(.data)
+		. = ALIGN(4); data/data_08D8A368.o(.data)
 		. = ALIGN(4); src/save_core.o(.data)
 		. = ALIGN(4); data/data_08DAD284.o(.data)
 		. = ALIGN(4); src/sysutil.o(.data)

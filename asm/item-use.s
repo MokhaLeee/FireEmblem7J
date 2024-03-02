@@ -419,7 +419,7 @@ DoItemUse: @ 0x08027584
 	push {r4, r5, lr}
 	adds r5, r0, #0
 	adds r4, r1, #0
-	bl ClearBg0Bg1
+	bl ClearUi
 	movs r0, #0
 	bl EndFaceById
 	adds r0, r4, #0
@@ -2004,7 +2004,7 @@ _080282E0: .4byte gActiveUnit
 sub_80282E4: @ 0x080282E4
 	push {lr}
 	bl sub_8032CCC
-	bl ClearBg0Bg1
+	bl ClearUi
 	pop {r0}
 	bx r0
 	.align 2, 0

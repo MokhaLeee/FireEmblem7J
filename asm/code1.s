@@ -450,7 +450,7 @@ sub_802E768: @ 0x0802E768
 	bl SetOnVBlank
 	bl ApplySystemGraphics
 	bl ApplyUnitSpritePalettes
-	bl ClearBg0Bg1
+	bl ClearUi
 	ldr r3, _0802E7D8 @ =gDispIo
 	movs r0, #0x21
 	rsbs r0, r0, #0
@@ -3312,7 +3312,7 @@ _0802FDB2:
 	ldrsb r2, [r5, r2]
 	movs r3, #0x11
 	ldrsb r3, [r5, r3]
-	bl sub_806FC64
+	bl GetFacingFromTo
 	ldr r1, _0802FE1C @ =0x02033DFC
 	strb r0, [r1]
 	movs r0, #4
@@ -7225,7 +7225,7 @@ sub_8031C6C: @ 0x08031C6C
 	ldr r0, _08031D80 @ =gUnk_08C05C54
 	bl Proc_Find
 	adds r5, r0, #0
-	bl ClearBg0Bg1
+	bl ClearUi
 _08031C90:
 	ldr r0, [sp, #4]
 	str r0, [r5, #0x2c]
@@ -8332,7 +8332,7 @@ sub_8032594: @ 0x08032594
 	movs r1, #0xa
 	bl sub_8031D9C
 	adds r4, r0, #0
-	bl ClearBg0Bg1
+	bl ClearUi
 	ldr r6, _0803263C @ =0x0203A8E0
 	ldr r0, [r6]
 	ldr r5, _08032640 @ =gActiveUnit
@@ -8413,7 +8413,7 @@ sub_803264C: @ 0x0803264C
 	movs r1, #0xa
 	bl sub_8031D9C
 	adds r4, r0, #0
-	bl ClearBg0Bg1
+	bl ClearUi
 	ldrb r0, [r5, #0x1b]
 	bl GetUnit
 	adds r7, r0, #0
@@ -8530,7 +8530,7 @@ sub_8032748: @ 0x08032748
 	ldrb r0, [r0, #0x1b]
 	bl GetUnit
 	adds r6, r0, #0
-	bl ClearBg0Bg1
+	bl ClearUi
 	ldr r5, _08032800 @ =0x0203A8E0
 	ldr r0, [r5]
 	movs r1, #0xa
@@ -9552,7 +9552,7 @@ _08032F8A:
 	thumb_func_start sub_8032F90
 sub_8032F90: @ 0x08032F90
 	push {r4, r5, r6, lr}
-	bl ClearBg0Bg1
+	bl ClearUi
 	ldr r0, _08032FE4 @ =gUnk_08404B2C
 	ldr r1, _08032FE8 @ =0x06005000
 	bl Decompress
@@ -9962,7 +9962,7 @@ _080332A4:
 	thumb_func_start sub_80332AC
 sub_80332AC: @ 0x080332AC
 	push {lr}
-	bl ClearBg0Bg1
+	bl ClearUi
 	ldr r3, _08033300 @ =gDispIo
 	movs r0, #0x21
 	rsbs r0, r0, #0
@@ -12437,7 +12437,7 @@ sub_8034664: @ 0x08034664
 	asrs r0, r0, #0x18
 	cmp r0, #0
 	bne _08034690
-	bl ClearBg0Bg1
+	bl ClearUi
 	adds r0, r4, #0
 	bl Proc_End
 	b _08034698

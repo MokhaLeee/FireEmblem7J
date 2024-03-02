@@ -627,16 +627,16 @@ gUnk_08D6561C:	@ 0x08D6561C
 gUnk_08D656B4:	@ 0x08D656B4
 	.incbin "FireEmblem7J.base.gba", 0xD656B4, 0xD656D0 - 0xD656B4
 
-	.global gUnk_08D656D0
-gUnk_08D656D0:	@ 0x08D656D0
+	.global gManimWindowBarPalTable
+gManimWindowBarPalTable:	@ 0x08D656D0
 	.incbin "FireEmblem7J.base.gba", 0xD656D0, 0xD656D8 - 0xD656D0
 
 	.global gUnk_08D656D8
 gUnk_08D656D8:	@ 0x08D656D8
 	.incbin "FireEmblem7J.base.gba", 0xD656D8, 0xD656F0 - 0xD656D8
 
-	.global gUnk_08D656F0
-gUnk_08D656F0:	@ 0x08D656F0
+	.global ProcScr_ManimInfoWindow
+ProcScr_ManimInfoWindow:	@ 0x08D656F0
 	.incbin "FireEmblem7J.base.gba", 0xD656F0, 0xD65728 - 0xD656F0
 
 	.global gUnk_08D65728

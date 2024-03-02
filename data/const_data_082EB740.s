@@ -204,8 +204,8 @@ gUnk_083FA1B8:	@ 0x083FA1B8
 gUnk_083FA9B8:	@ 0x083FA9B8
 	.incbin "FireEmblem7J.base.gba", 0x3FA9B8, 0x3FAA20 - 0x3FA9B8
 
-	.global gUnk_083FAA20
-gUnk_083FAA20:	@ 0x083FAA20
+	.global Img_ManimInfoWindowDigits
+Img_ManimInfoWindowDigits:	@ 0x083FAA20
 	.incbin "FireEmblem7J.base.gba", 0x3FAA20, 0x3FAAE4 - 0x3FAA20
 
 	.global gUnk_083FAAE4
@@ -396,8 +396,8 @@ gUnk_0840085C:	@ 0x0840085C
 gUnk_084009F0:	@ 0x084009F0
 	.incbin "FireEmblem7J.base.gba", 0x4009F0, 0x400BA8 - 0x4009F0
 
-	.global gUnk_08400BA8
-gUnk_08400BA8:	@ 0x08400BA8
+	.global Pal_ManimWindowHpBar
+Pal_ManimWindowHpBar:	@ 0x08400BA8
 	.incbin "FireEmblem7J.base.gba", 0x400BA8, 0x4027B0 - 0x400BA8
 
 	.global gUnk_084027B0
@@ -504,12 +504,12 @@ gUnk_0840349C:	@ 0x0840349C
 Tsa_StatScreenPage0:	@ 0x084034EC
 	.incbin "FireEmblem7J.base.gba", 0x4034EC, 0x403560 - 0x4034EC
 
-	.global gUnk_08403560
-gUnk_08403560:	@ 0x08403560
+	.global Tsa_Statscreen_Pag1_08403560
+Tsa_Statscreen_Pag1_08403560:	@ 0x08403560
 	.incbin "FireEmblem7J.base.gba", 0x403560, 0x4035D0 - 0x403560
 
-	.global gUnk_084035D0
-gUnk_084035D0:	@ 0x084035D0
+	.global Tsa_StatScreen_084035D0
+Tsa_StatScreen_084035D0:	@ 0x084035D0
 	.incbin "FireEmblem7J.base.gba", 0x4035D0, 0x40364C - 0x4035D0
 
 	.global gUnk_0840364C
@@ -532,12 +532,12 @@ gUnk_08403730:	@ 0x08403730
 gUnk_084038AC:	@ 0x084038AC
 	.incbin "FireEmblem7J.base.gba", 0x4038AC, 0x4038CC - 0x4038AC
 
-	.global gUnk_084038CC
-gUnk_084038CC:	@ 0x084038CC
+	.global Tsa_Statscreen_Pag1_084038CC
+Tsa_Statscreen_Pag1_084038CC:	@ 0x084038CC
 	.incbin "FireEmblem7J.base.gba", 0x4038CC, 0x403908 - 0x4038CC
 
-	.global gUnk_08403908
-gUnk_08403908:	@ 0x08403908
+	.global Tsa_Statscreen_Pag1_08403908
+Tsa_Statscreen_Pag1_08403908:	@ 0x08403908
 	.incbin "FireEmblem7J.base.gba", 0x403908, 0x40392C - 0x403908
 
 	.global gUnk_0840392C
@@ -775,19 +775,3 @@ gUnk_0841CACC:	@ 0x0841CACC
 	.global gUnk_0841CB54
 gUnk_0841CB54:	@ 0x0841CB54
 	.incbin "FireEmblem7J.base.gba", 0x41CB54, 0x41CBB8 - 0x41CB54
-
-	.global gStatScreenPersonalInfoLabelsInfo
-gStatScreenPersonalInfoLabelsInfo:	@ 0x0841CBB8
-	.incbin "FireEmblem7J.base.gba", 0x41CBB8, 0x41CC78 - 0x41CBB8
-
-	.global gUnk_0841CC78
-gUnk_0841CC78:	@ 0x0841CC78
-	.incbin "FireEmblem7J.base.gba", 0x41CC78, 0x41CCD8 - 0x41CC78
-
-	.global gUnk_0841CCD8
-gUnk_0841CCD8:	@ 0x0841CCD8
-	.incbin "FireEmblem7J.base.gba", 0x41CCD8, 0x41CD28 - 0x41CCD8
-
-	.global gUnk_0841CD28
-gUnk_0841CD28:	@ 0x0841CD28
-	.incbin "FireEmblem7J.base.gba", 0x41CD28, 0x41CD78 - 0x41CD28
