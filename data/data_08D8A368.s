@@ -1,12 +1,8 @@
 	.section .data
 
-	.global gUnk_08D8A3C0
-gUnk_08D8A3C0:	@ 0x08D8A3C0
-	.incbin "FireEmblem7J.base.gba", 0xD8A3C0, 0xD8A3D4 - 0xD8A3C0
-
-	.global gUnk_08D8A3D4
-gUnk_08D8A3D4:	@ 0x08D8A3D4
-	.incbin "FireEmblem7J.base.gba", 0xD8A3D4, 0xD8A41C - 0xD8A3D4
+	.global gUnk_08D8A3DC
+gUnk_08D8A3DC:	@ 0x08D8A3DC
+	.incbin "FireEmblem7J.base.gba", 0xD8A3DC, 0xD8A41C - 0xD8A3DC
 
 	.global gUnk_08D8A41C
 gUnk_08D8A41C:	@ 0x08D8A41C

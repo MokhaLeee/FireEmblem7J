@@ -1,56 +1,8 @@
 	.include "macro.inc"
 	.syntax unified
 
-	thumb_func_start sub_80817C8
-sub_80817C8: @ 0x080817C8
-	push {r4, r5, lr}
-	sub sp, #4
-	adds r5, r0, #0
-	ldr r0, _08081820 @ =gStatScreenSt
-	movs r2, #4
-	ldrsh r1, [r0, r2]
-	adds r1, #0x6d
-	movs r3, #6
-	ldrsh r2, [r0, r3]
-	adds r2, #5
-	ldr r3, _08081824 @ =gUnk_08D8A3C0
-	ldr r4, _08081828 @ =gUnk_08D8A3D4
-	lsls r0, r5, #1
-	adds r0, r0, r4
-	ldrh r0, [r0]
-	movs r4, #0xf9
-	lsls r4, r4, #6
-	adds r0, r0, r4
-	str r0, [sp]
-	movs r0, #4
-	bl PutSprite
-	bl GetGameTime
-	lsrs r0, r0, #2
-	movs r1, #0xf
-	ands r0, r1
-	lsls r5, r5, #6
-	lsls r0, r0, #1
-	ldr r1, _0808182C @ =gUnk_08404024
-	adds r0, r0, r1
-	adds r5, r5, r0
-	ldr r1, _08081830 @ =gPal + 0x268
-	adds r0, r5, #0
-	movs r2, #0xb
-	bl CpuSet
-	bl EnablePalSync
-	add sp, #4
-	pop {r4, r5}
-	pop {r0}
-	bx r0
-	.align 2, 0
-_08081820: .4byte gStatScreenSt
-_08081824: .4byte gUnk_08D8A3C0
-_08081828: .4byte gUnk_08D8A3D4
-_0808182C: .4byte gUnk_08404024
-_08081830: .4byte gPal + 0x268
-
-	thumb_func_start sub_8081834
-sub_8081834: @ 0x08081834
+	thumb_func_start StatScreenPageName_Init
+StatScreenPageName_Init: @ 0x08081834
 	push {r4, r5, r6, lr}
 	mov r6, sl
 	mov r5, sb
@@ -122,14 +74,14 @@ sub_8081834: @ 0x08081834
 _080818C4: .4byte gSinLut
 _080818C8: .4byte gStatScreenSt
 
-	thumb_func_start sub_80818CC
-sub_80818CC: @ 0x080818CC
+	thumb_func_start StatScreenPageName_Main
+StatScreenPageName_Main: @ 0x080818CC
 	push {r4, r5, lr}
 	adds r4, r0, #0
 	adds r5, r4, #0
 	adds r5, #0x36
 	ldrb r0, [r5]
-	bl sub_80817C8
+	bl PutUpdateStatScreenPageName
 	ldr r1, _080818F0 @ =gStatScreenSt
 	ldrh r0, [r1, #2]
 	cmp r0, #0
@@ -150,8 +102,8 @@ _080818F8:
 	bx r0
 	.align 2, 0
 
-	thumb_func_start sub_8081900
-sub_8081900: @ 0x08081900
+	thumb_func_start StatScreenPageName_CloseMain
+StatScreenPageName_CloseMain: @ 0x08081900
 	push {r4, r5, r6, r7, lr}
 	mov r7, sl
 	mov r6, sb
@@ -221,7 +173,7 @@ sub_8081900: @ 0x08081900
 	adds r0, r7, #0
 	adds r0, #0x36
 	ldrb r0, [r0]
-	bl sub_80817C8
+	bl PutUpdateStatScreenPageName
 	ldrh r0, [r7, #0x38]
 	subs r0, #1
 	strh r0, [r7, #0x38]
@@ -244,8 +196,8 @@ _080819B2:
 	.align 2, 0
 _080819C4: .4byte gSinLut
 
-	thumb_func_start sub_80819C8
-sub_80819C8: @ 0x080819C8
+	thumb_func_start StatScreenPageName_OpenMain
+StatScreenPageName_OpenMain: @ 0x080819C8
 	push {r4, r5, r6, r7, lr}
 	mov r7, sl
 	mov r6, sb
@@ -314,7 +266,7 @@ sub_80819C8: @ 0x080819C8
 	bl SetObjAffine
 	ldr r4, _08081A94 @ =gStatScreenSt
 	ldrb r0, [r4]
-	bl sub_80817C8
+	bl PutUpdateStatScreenPageName
 	ldrh r0, [r7, #0x38]
 	adds r0, #1
 	strh r0, [r7, #0x38]

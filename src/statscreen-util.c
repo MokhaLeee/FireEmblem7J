@@ -286,3 +286,38 @@ void StartStatScreenUnitSlide(struct Unit * unit, int direction, ProcPtr parent)
 
     PlaySoundEffect(0xC8);
 }
+
+u16 CONST_DATA Sprite_StatScreenPageName[] =
+{
+    3,
+    OAM0_SHAPE_32x16 + OAM0_AFFINE_ENABLE, OAM1_SIZE_32x16 + OAM1_AFFINE_ID(8), 0,
+    OAM0_SHAPE_32x16 + OAM0_AFFINE_ENABLE, OAM1_SIZE_32x16 + OAM1_X(32) + OAM1_AFFINE_ID(8), OAM2_CHR(0x4),
+    OAM0_SHAPE_32x16 + OAM0_AFFINE_ENABLE, OAM1_SIZE_32x16 + OAM1_X(64) + OAM1_AFFINE_ID(8), OAM2_CHR(0x8),
+};
+
+u16 CONST_DATA gStatScreenPageNameChrOffsetLut[] =
+{
+    OAM2_CHR(0x14),
+    OAM2_CHR(0x08),
+    OAM2_CHR(0x54),
+};
+
+void PutUpdateStatScreenPageName(int page_id)
+{
+    int color_num;
+
+    PutSprite(4,
+        109 + gStatScreenSt.x_disp_off,
+        5 + gStatScreenSt.y_disp_off,
+        Sprite_StatScreenPageName,
+        OAM2_CHR(OBCHR_STATSCREEN_240) + OAM2_PAL(OBPAL_STATSCREEN_PAGENAME) + gStatScreenPageNameChrOffsetLut[page_id] + OAM2_LAYER(3));
+
+    color_num = (GetGameTime() / 4) % 16;
+
+    CpuCopy16(
+        Pals_StatScreen_Title[page_id] + color_num,
+        gPal + (0x10 + OBPAL_STATSCREEN_PAGENAME) * 0x10 + 4,
+        sizeof(u16) * 11);
+
+    EnablePalSync();
+}

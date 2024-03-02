@@ -124,11 +124,11 @@ struct MuralBackgroundProc {
     /* 4C */ s16 offset;
 };
 
-// BackgroundSlide_Init
-// BackgroundSlide_Loop
-// StartMuralBackgroundAlt
-// StartMuralBackgroundExt
-// EndMuralBackground
+void BackgroundSlide_Init(struct MuralBackgroundProc * proc);
+void BackgroundSlide_Loop(struct MuralBackgroundProc * proc);
+ProcPtr StartMuralBackgroundAlt(ProcPtr parent, void * vram, int pal);
+ProcPtr StartMuralBackgroundExt(ProcPtr parent, void * vram, int pal, u8 type);
+void EndMuralBackground(void);
 
 struct StatScreenInfo {
     /* 00 */ u8 _pad_;
@@ -149,10 +149,9 @@ enum statscreen_flag_bitfile {
 
 extern struct StatScreenInfo gStatScreenInfo;
 
-// GetLastStatScreenUnitId
-// SetStatScreenLastUnitId
-// SetStatScreenExcludedUnitFlags
-// InitStatScreenText
+int GetLastStatScreenUnitId(void);
+void SetStatScreenLastUnitId(int unit_id);
+void SetStatScreenExcludedUnitFlags(int flags);
 
 struct StatScreenTextInfo {
     /* 00 */ struct Text * text;
@@ -162,6 +161,7 @@ struct StatScreenTextInfo {
     /* 0C */ char const * const * str_list;
 };
 
+void InitStatScreenText(void);
 void PutStatScreenText(struct StatScreenTextInfo const * list);
 void PutStatScreenLeftPanelInfo(void);
 void DisplayBwl(void);
@@ -172,8 +172,7 @@ void PutStatScreenSupportList(void);
 void PutStatScreenWeaponExpBar(int num, int x, int y, int item_kind);
 void PutStatScreenWeaponExpAndSupportsPage(void);
 void PutStatScreenPage(int page_id);
-// sub_808125C
-// FindNextStatScreenUnit
+struct Unit * FindNextStatScreenUnit(struct Unit * current_unit, int iter_step);
 
 struct StatScreenPageSlideProc {
     /* 00 */ PROC_HEADER;
@@ -188,9 +187,9 @@ struct StatScreenPageSlideProc {
     /* 52 */ u16 key_bit;
 };
 
-// StatScreenPageSlide_Loop
-// StatScreenPageSlide_End
-// StartStatScreenPageSlide
+void StatScreenPageSlide_Loop(struct StatScreenPageSlideProc * proc);
+void StatScreenPageSlide_End(struct StatScreenPageSlideProc * proc);
+void StartStatScreenPageSlide(u16 key_bit, int new_page, ProcPtr parent);
 
 struct StatScreenUnitSlideProc
 {
@@ -205,18 +204,38 @@ struct StatScreenUnitSlideProc
     /* 4C */ s16 clock;
 };
 
-// StatScreenUnitSlide_FadeOutInit
-// StatScreenUnitSlide_FadeOutLoop
-// StatScreenUnitSlide_FadeInInit
-// StatScreenUnitSlide_FadeInLoop
-// StatScreenUnitSlide_ChangeUnit
-// StatScreenUnitSlide_End
-// StartStatScreenUnitSlide
-// sub_80817C8
-// sub_8081834
-// sub_80818CC
-// sub_8081900
-// sub_80819C8
+void StatScreenUnitSlide_FadeOutInit(struct StatScreenUnitSlideProc * proc);
+void StatScreenUnitSlide_FadeOutLoop(struct StatScreenUnitSlideProc * proc);
+void StatScreenUnitSlide_FadeInInit(struct StatScreenUnitSlideProc * proc);
+void StatScreenUnitSlide_FadeInLoop(struct StatScreenUnitSlideProc * proc);
+void StatScreenUnitSlide_ChangeUnit(struct StatScreenUnitSlideProc * proc);
+void StatScreenUnitSlide_End(struct StatScreenUnitSlideProc * proc);
+void StartStatScreenUnitSlide(struct Unit * unit, int direction, ProcPtr parent);
+
+#define STATSCREEN_PAGE_NAME_SCALE_STEPS 6
+
+struct StatScreenSpritesProc
+{
+    /* 00 */ PROC_HEADER;
+
+    // sprites proc only
+    /* 2A */ s16 x_left;
+    /* 2C */ s16 x_right;
+    /* 2E */ u16 clock_left;
+    /* 30 */ u16 clock_right;
+    /* 32 */ s16 anim_speed_left;
+    /* 34 */ s16 anim_speed_right;
+
+    // name sprite proc only
+    /* 36 */ u8 page_id;
+    /* 38 */ s16 vertical_scale; // int 6 == 1:1 (1.0) scale
+};
+
+void PutUpdateStatScreenPageName(int page_id);
+// StatScreenPageName_Init
+// StatScreenPageName_Main
+// StatScreenPageName_CloseMain
+// StatScreenPageName_OpenMain
 // sub_8081A98
 // sub_8081AB0
 // sub_8081AE4
@@ -1045,8 +1064,8 @@ extern struct TextInitInfo gStatScreenTextList[];
 // ??? gStatScreenPageSlideOffsetLut
 extern struct ProcCmd ProcScr_StatScreenPageSlide[];
 extern struct ProcCmd ProcScr_StatScreenUnitSlide[];
-// ??? gUnk_08D8A3C0
-// ??? gUnk_08D8A3D4
+// ??? Sprite_StatScreenPageName
+extern u16 CONST_DATA gStatScreenPageNameChrOffsetLut[];
 // ??? gUnk_08D8A41C
 // ??? gUnk_08D8A466
 extern struct ProcCmd ProcScr_StatScreen[];

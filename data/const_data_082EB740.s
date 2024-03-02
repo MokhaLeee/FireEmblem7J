@@ -544,8 +544,8 @@ Tsa_Statscreen_Pag1_08403908:	@ 0x08403908
 gUnk_0840392C:	@ 0x0840392C
 	.incbin "FireEmblem7J.base.gba", 0x40392C, 0x404024 - 0x40392C
 
-	.global gUnk_08404024
-gUnk_08404024:	@ 0x08404024
+	.global Pals_StatScreen_Title
+Pals_StatScreen_Title:	@ 0x08404024
 	.incbin "FireEmblem7J.base.gba", 0x404024, 0x404124 - 0x404024
 
 	.global Tsa_Statscreen_08404124
