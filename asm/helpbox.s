@@ -1,1195 +1,6 @@
 	.include "macro.inc"
 	.syntax unified
 
-	thumb_func_start UpdateHelpBoxDisplay
-UpdateHelpBoxDisplay: @ 0x080824CC
-	push {r4, r5, r6, r7, lr}
-	sub sp, #4
-	adds r6, r0, #0
-	adds r5, r1, #0
-	movs r0, #0x38
-	ldrsh r1, [r6, r0]
-	movs r3, #0x3c
-	ldrsh r2, [r6, r3]
-	adds r4, r6, #0
-	adds r4, #0x48
-	movs r3, #0
-	ldrsh r0, [r4, r3]
-	mov ip, r0
-	adds r7, r6, #0
-	adds r7, #0x4a
-	movs r3, #0
-	ldrsh r0, [r7, r3]
-	str r0, [sp]
-	adds r0, r5, #0
-	mov r3, ip
-	bl Interpolate
-	strh r0, [r6, #0x30]
-	movs r0, #0x3a
-	ldrsh r1, [r6, r0]
-	movs r3, #0x3e
-	ldrsh r2, [r6, r3]
-	movs r3, #0
-	ldrsh r0, [r4, r3]
-	mov ip, r0
-	movs r3, #0
-	ldrsh r0, [r7, r3]
-	str r0, [sp]
-	adds r0, r5, #0
-	mov r3, ip
-	bl Interpolate
-	strh r0, [r6, #0x32]
-	adds r0, r6, #0
-	adds r0, #0x40
-	movs r2, #0
-	ldrsh r1, [r0, r2]
-	adds r0, #4
-	movs r3, #0
-	ldrsh r2, [r0, r3]
-	movs r3, #0
-	ldrsh r0, [r4, r3]
-	mov ip, r0
-	movs r3, #0
-	ldrsh r0, [r7, r3]
-	str r0, [sp]
-	adds r0, r5, #0
-	mov r3, ip
-	bl Interpolate
-	strh r0, [r6, #0x34]
-	adds r0, r6, #0
-	adds r0, #0x42
-	movs r2, #0
-	ldrsh r1, [r0, r2]
-	adds r0, #4
-	movs r3, #0
-	ldrsh r2, [r0, r3]
-	movs r0, #0
-	ldrsh r3, [r4, r0]
-	movs r4, #0
-	ldrsh r0, [r7, r4]
-	str r0, [sp]
-	adds r0, r5, #0
-	bl Interpolate
-	strh r0, [r6, #0x36]
-	movs r1, #0x30
-	ldrsh r0, [r6, r1]
-	movs r2, #0x32
-	ldrsh r1, [r6, r2]
-	movs r3, #0x34
-	ldrsh r2, [r6, r3]
-	movs r4, #0x36
-	ldrsh r3, [r6, r4]
-	adds r4, r6, #0
-	adds r4, #0x52
-	ldrb r4, [r4]
-	str r4, [sp]
-	bl sub_8083088
-	add sp, #4
-	pop {r4, r5, r6, r7}
-	pop {r0}
-	bx r0
-
-	thumb_func_start sub_8082580
-sub_8082580: @ 0x08082580
-	push {r4, lr}
-	adds r4, r0, #0
-	ldr r0, _080825BC @ =gUnk_08D8A660
-	bl Proc_Find
-	cmp r0, #0
-	beq _08082596
-	adds r1, r0, #0
-	adds r1, #0x28
-	movs r0, #1
-	strb r0, [r1]
-_08082596:
-	adds r0, r4, #0
-	adds r0, #0x52
-	ldrb r0, [r0]
-	cmp r0, #0
-	bne _080825B4
-	ldr r0, _080825C0 @ =gPlaySt
-	adds r0, #0x41
-	ldrb r0, [r0]
-	lsls r0, r0, #0x1e
-	cmp r0, #0
-	blt _080825B4
-	movs r0, #0xe4
-	lsls r0, r0, #2
-	bl m4aSongNumStart
-_080825B4:
-	pop {r4}
-	pop {r0}
-	bx r0
-	.align 2, 0
-_080825BC: .4byte gUnk_08D8A660
-_080825C0: .4byte gPlaySt
-
-	thumb_func_start sub_80825C4
-sub_80825C4: @ 0x080825C4
-	push {r4, r5, lr}
-	adds r4, r0, #0
-	movs r1, #5
-	bl UpdateHelpBoxDisplay
-	adds r2, r4, #0
-	adds r2, #0x48
-	adds r4, #0x4a
-	ldrh r3, [r2]
-	movs r0, #0
-	ldrsh r1, [r2, r0]
-	movs r5, #0
-	ldrsh r0, [r4, r5]
-	cmp r1, r0
-	bge _080825E6
-	adds r0, r3, #1
-	strh r0, [r2]
-_080825E6:
-	pop {r4, r5}
-	pop {r0}
-	bx r0
-
-	thumb_func_start sub_80825EC
-sub_80825EC: @ 0x080825EC
-	push {r4, lr}
-	adds r4, r0, #0
-	ldr r0, _08082638 @ =gUnk_08D8A660
-	bl Proc_Find
-	cmp r0, #0
-	beq _08082602
-	adds r1, r0, #0
-	adds r1, #0x28
-	movs r0, #0
-	strb r0, [r1]
-_08082602:
-	adds r0, r4, #0
-	adds r0, #0x52
-	ldrb r0, [r0]
-	cmp r0, #0
-	bne _08082630
-	ldr r0, _0808263C @ =gPlaySt
-	adds r0, #0x41
-	ldrb r0, [r0]
-	lsls r0, r0, #0x1e
-	cmp r0, #0
-	blt _0808261E
-	ldr r0, _08082640 @ =0x00000391
-	bl m4aSongNumStart
-_0808261E:
-	adds r0, r4, #0
-	bl sub_8082B50
-	ldr r0, [r4, #0x2c]
-	ldrb r1, [r0, #0x10]
-	ldrb r2, [r0, #0x11]
-	adds r0, r4, #0
-	bl sub_8082B2C
-_08082630:
-	pop {r4}
-	pop {r0}
-	bx r0
-	.align 2, 0
-_08082638: .4byte gUnk_08D8A660
-_0808263C: .4byte gPlaySt
-_08082640: .4byte 0x00000391
-
-	thumb_func_start sub_8082644
-sub_8082644: @ 0x08082644
-	push {r4, lr}
-	adds r4, r0, #0
-	movs r1, #0
-	bl UpdateHelpBoxDisplay
-	adds r1, r4, #0
-	adds r1, #0x48
-	ldrh r0, [r1]
-	subs r0, #3
-	strh r0, [r1]
-	lsls r0, r0, #0x10
-	cmp r0, #0
-	bge _08082664
-	adds r0, r4, #0
-	bl Proc_Break
-_08082664:
-	pop {r4}
-	pop {r0}
-	bx r0
-	.align 2, 0
-
-	thumb_func_start sub_808266C
-sub_808266C: @ 0x0808266C
-	push {r4, lr}
-	adds r4, r0, #0
-	ldr r0, _08082698 @ =0x0203E64C
-	movs r3, #0
-	str r3, [r0]
-	str r3, [r0, #4]
-	str r3, [r0, #8]
-	str r3, [r0, #0xc]
-	strb r4, [r0, #0x10]
-	strb r1, [r0, #0x11]
-	strh r2, [r0, #0x12]
-	str r3, [r0, #0x14]
-	str r3, [r0, #0x18]
-	ldr r1, _0808269C @ =0x0203E66C
-	strh r3, [r1]
-	strh r3, [r1, #2]
-	movs r1, #0
-	bl sub_8082728
-	pop {r4}
-	pop {r0}
-	bx r0
-	.align 2, 0
-_08082698: .4byte 0x0203E64C
-_0808269C: .4byte 0x0203E66C
-
-	thumb_func_start sub_80826A0
-sub_80826A0: @ 0x080826A0
-	push {r4, r5, lr}
-	adds r4, r0, #0
-	adds r3, r1, #0
-	adds r5, r2, #0
-	cmp r4, #0
-	bge _080826BC
-	cmp r3, #0
-	bge _080826BC
-	bl sub_804A810
-	adds r4, r0, #0
-	bl sub_804A81C
-	adds r3, r0, #0
-_080826BC:
-	ldr r0, _080826E4 @ =0x0203E64C
-	movs r1, #0
-	str r1, [r0]
-	str r1, [r0, #4]
-	str r1, [r0, #8]
-	str r1, [r0, #0xc]
-	strb r4, [r0, #0x10]
-	strb r3, [r0, #0x11]
-	strh r5, [r0, #0x12]
-	str r1, [r0, #0x14]
-	str r1, [r0, #0x18]
-	ldr r2, _080826E8 @ =0x0203E66C
-	strh r1, [r2]
-	strh r1, [r2, #2]
-	movs r1, #1
-	bl sub_8082728
-	pop {r4, r5}
-	pop {r0}
-	bx r0
-	.align 2, 0
-_080826E4: .4byte 0x0203E64C
-_080826E8: .4byte 0x0203E66C
-
-	thumb_func_start sub_80826EC
-sub_80826EC: @ 0x080826EC
-	push {r4, lr}
-	adds r4, r0, #0
-	ldr r0, _0808271C @ =0x0203E64C
-	movs r3, #0
-	str r3, [r0]
-	str r3, [r0, #4]
-	str r3, [r0, #8]
-	str r3, [r0, #0xc]
-	strb r4, [r0, #0x10]
-	strb r1, [r0, #0x11]
-	strh r2, [r0, #0x12]
-	str r3, [r0, #0x14]
-	ldr r1, _08082720 @ =HelpBoxPopulateAutoItem
-	str r1, [r0, #0x18]
-	ldr r1, _08082724 @ =0x0203E66C
-	strh r3, [r1]
-	strh r3, [r1, #2]
-	movs r1, #0
-	bl sub_8082728
-	pop {r4}
-	pop {r0}
-	bx r0
-	.align 2, 0
-_0808271C: .4byte 0x0203E64C
-_08082720: .4byte HelpBoxPopulateAutoItem
-_08082724: .4byte 0x0203E66C
-
-	thumb_func_start sub_8082728
-sub_8082728: @ 0x08082728
-	push {r4, r5, r6, r7, lr}
-	sub sp, #8
-	adds r5, r0, #0
-	adds r7, r1, #0
-	ldr r6, _08082760 @ =gUnk_08D8A5D8
-	adds r0, r6, #0
-	bl Proc_Find
-	adds r4, r0, #0
-	cmp r4, #0
-	bne _08082764
-	adds r0, r6, #0
-	movs r1, #3
-	bl Proc_Start
-	adds r4, r0, #0
-	adds r0, #0x52
-	strb r7, [r0]
-	ldrb r1, [r5, #0x10]
-	ldrb r2, [r5, #0x11]
-	adds r0, r4, #0
-	bl sub_8082B2C
-	adds r0, r4, #0
-	bl sub_8082B50
-	b _0808277C
-	.align 2, 0
-_08082760: .4byte gUnk_08D8A5D8
-_08082764:
-	ldrh r0, [r4, #0x30]
-	strh r0, [r4, #0x38]
-	ldrh r0, [r4, #0x32]
-	strh r0, [r4, #0x3a]
-	ldrh r1, [r4, #0x34]
-	adds r0, r4, #0
-	adds r0, #0x40
-	strh r1, [r0]
-	ldrh r0, [r4, #0x36]
-	adds r1, r4, #0
-	adds r1, #0x42
-	strh r0, [r1]
-_0808277C:
-	str r5, [r4, #0x2c]
-	adds r0, r4, #0
-	adds r0, #0x48
-	movs r1, #0
-	strh r1, [r0]
-	adds r2, r4, #0
-	adds r2, #0x4a
-	movs r0, #0xc
-	strh r0, [r2]
-	adds r7, r4, #0
-	adds r7, #0x4e
-	strh r1, [r7]
-	ldrh r0, [r5, #0x12]
-	adds r6, r4, #0
-	adds r6, #0x4c
-	strh r0, [r6]
-	ldr r0, [r4, #0x2c]
-	ldr r1, [r0, #0x18]
-	cmp r1, #0
-	beq _080827AA
-	adds r0, r4, #0
-	bl _call_via_r1
-_080827AA:
-	movs r0, #1
-	bl SetTextFontGlyphs
-	ldrh r0, [r6]
-	bl DecodeMsg
-	add r2, sp, #4
-	mov r1, sp
-	bl GetStringTextBox
-	movs r0, #0
-	bl SetTextFontGlyphs
-	ldr r1, [sp]
-	ldr r2, [sp, #4]
-	adds r0, r4, #0
-	bl sub_8082A3C
-	ldrb r1, [r5, #0x10]
-	ldrb r2, [r5, #0x11]
-	adds r0, r4, #0
-	bl sub_8082AA0
-	bl sub_8083798
-	ldrh r0, [r7]
-	ldrh r1, [r6]
-	bl sub_808377C
-	ldr r0, _080827F0 @ =0x0203E668
-	str r5, [r0]
-	add sp, #8
-	pop {r4, r5, r6, r7}
-	pop {r0}
-	bx r0
-	.align 2, 0
-_080827F0: .4byte 0x0203E668
-
-	thumb_func_start StartHelpBoxExt_Unk
-StartHelpBoxExt_Unk: @ 0x080827F4
-	push {r4, r5, r6, r7, lr}
-	mov r7, sb
-	mov r6, r8
-	push {r6, r7}
-	sub sp, #8
-	adds r7, r0, #0
-	adds r6, r1, #0
-	mov sb, r2
-	ldr r0, _080828A0 @ =gUnk_08D8A5D8
-	movs r1, #3
-	bl Proc_Start
-	adds r5, r0, #0
-	adds r1, r5, #0
-	adds r1, #0x52
-	movs r0, #1
-	strb r0, [r1]
-	cmp r7, #0
-	bge _0808282A
-	cmp r6, #0
-	bge _0808282A
-	bl sub_804A810
-	adds r7, r0, #0
-	bl sub_804A81C
-	adds r6, r0, #0
-_0808282A:
-	adds r0, r5, #0
-	adds r0, #0x48
-	movs r1, #0
-	strh r1, [r0]
-	adds r2, r5, #0
-	adds r2, #0x4a
-	movs r0, #0xc
-	strh r0, [r2]
-	movs r0, #0x4e
-	adds r0, r0, r5
-	mov r8, r0
-	strh r1, [r0]
-	adds r4, r5, #0
-	adds r4, #0x4c
-	mov r1, sb
-	strh r1, [r4]
-	movs r0, #1
-	bl SetTextFontGlyphs
-	ldrh r0, [r4]
-	bl DecodeMsg
-	add r2, sp, #4
-	mov r1, sp
-	bl GetStringTextBox
-	movs r0, #0
-	bl SetTextFontGlyphs
-	adds r0, r5, #0
-	bl sub_8082B50
-	ldr r1, [sp]
-	ldr r2, [sp, #4]
-	adds r0, r5, #0
-	bl sub_8082A3C
-	adds r1, r7, #0
-	adds r1, #8
-	strh r1, [r5, #0x38]
-	adds r0, r6, #0
-	adds r0, #8
-	strh r0, [r5, #0x3a]
-	strh r1, [r5, #0x3c]
-	strh r0, [r5, #0x3e]
-	bl sub_8083798
-	mov r1, r8
-	ldrh r0, [r1]
-	ldrh r1, [r4]
-	bl sub_808377C
-	add sp, #8
-	pop {r3, r4}
-	mov r8, r3
-	mov sb, r4
-	pop {r4, r5, r6, r7}
-	pop {r0}
-	bx r0
-	.align 2, 0
-_080828A0: .4byte gUnk_08D8A5D8
-
-	thumb_func_start CloseHelpBox
-CloseHelpBox: @ 0x080828A4
-	push {r4, lr}
-	ldr r0, _080828C4 @ =gUnk_08D8A5D8
-	bl Proc_Find
-	adds r4, r0, #0
-	cmp r4, #0
-	beq _080828BE
-	bl sub_8083798
-	adds r0, r4, #0
-	movs r1, #0x63
-	bl Proc_Goto
-_080828BE:
-	pop {r4}
-	pop {r0}
-	bx r0
-	.align 2, 0
-_080828C4: .4byte gUnk_08D8A5D8
-
-	thumb_func_start sub_80828C8
-sub_80828C8: @ 0x080828C8
-	push {r4, lr}
-	ldr r0, _080828E8 @ =gUnk_08D8A5D8
-	bl Proc_Find
-	adds r4, r0, #0
-	cmp r4, #0
-	beq _080828E0
-	bl sub_8083798
-	adds r0, r4, #0
-	bl Proc_End
-_080828E0:
-	pop {r4}
-	pop {r0}
-	bx r0
-	.align 2, 0
-_080828E8: .4byte gUnk_08D8A5D8
-
-	thumb_func_start sub_80828EC
-sub_80828EC: @ 0x080828EC
-	push {r4, lr}
-	adds r4, r0, #0
-	adds r0, #0x50
-	movs r1, #0
-	strh r1, [r0]
-	ldr r0, [r4, #0x2c]
-	ldr r1, [r0, #0x14]
-	cmp r1, #0
-	beq _08082904
-	adds r0, r4, #0
-	bl _call_via_r1
-_08082904:
-	ldr r0, [r4, #0x2c]
-	movs r1, #0
-	bl sub_8082728
-	pop {r4}
-	pop {r0}
-	bx r0
-	.align 2, 0
-
-	thumb_func_start sub_8082914
-sub_8082914: @ 0x08082914
-	push {r4, r5, r6, lr}
-	adds r5, r0, #0
-	movs r4, #0
-	ldr r1, _080829AC @ =0x0203E66C
-	movs r2, #0
-	ldrsh r0, [r1, r2]
-	lsls r0, r0, #3
-	ldr r2, [r5, #0x2c]
-	ldrb r3, [r2, #0x10]
-	adds r0, r3, r0
-	movs r3, #2
-	ldrsh r1, [r1, r3]
-	lsls r1, r1, #3
-	ldrb r2, [r2, #0x11]
-	adds r1, r2, r1
-	bl DisplayUiHand
-	ldr r6, _080829B0 @ =gpKeySt
-	ldr r1, [r6]
-	movs r0, #0x40
-	ldrh r1, [r1, #6]
-	ands r0, r1
-	cmp r0, #0
-	beq _0808294E
-	adds r0, r5, #0
-	bl HelpBoxTryRelocateUp
-	lsls r0, r0, #0x18
-	lsrs r4, r0, #0x18
-_0808294E:
-	ldr r1, [r6]
-	movs r0, #0x80
-	ldrh r1, [r1, #6]
-	ands r0, r1
-	cmp r0, #0
-	beq _08082966
-	adds r0, r5, #0
-	bl HelpBoxTryRelocateDown
-	orrs r4, r0
-	lsls r0, r4, #0x18
-	lsrs r4, r0, #0x18
-_08082966:
-	ldr r1, [r6]
-	movs r0, #0x20
-	ldrh r1, [r1, #6]
-	ands r0, r1
-	cmp r0, #0
-	beq _0808297E
-	adds r0, r5, #0
-	bl HelpBoxTryRelocateLeft
-	orrs r4, r0
-	lsls r0, r4, #0x18
-	lsrs r4, r0, #0x18
-_0808297E:
-	ldr r1, [r6]
-	movs r0, #0x10
-	ldrh r1, [r1, #6]
-	ands r0, r1
-	cmp r0, #0
-	beq _08082996
-	adds r0, r5, #0
-	bl HelpBoxTryRelocateRight
-	orrs r4, r0
-	lsls r0, r4, #0x18
-	lsrs r4, r0, #0x18
-_08082996:
-	ldr r1, [r6]
-	movs r0, #0x81
-	lsls r0, r0, #1
-	ldrh r1, [r1, #8]
-	ands r0, r1
-	cmp r0, #0
-	beq _080829B4
-	adds r0, r5, #0
-	bl Proc_Break
-	b _080829D2
-	.align 2, 0
-_080829AC: .4byte 0x0203E66C
-_080829B0: .4byte gpKeySt
-_080829B4:
-	cmp r4, #0
-	beq _080829D2
-	ldr r0, _080829D8 @ =gPlaySt
-	adds r0, #0x41
-	ldrb r0, [r0]
-	lsls r0, r0, #0x1e
-	cmp r0, #0
-	blt _080829CA
-	ldr r0, _080829DC @ =0x00000387
-	bl m4aSongNumStart
-_080829CA:
-	adds r0, r5, #0
-	movs r1, #0
-	bl Proc_Goto
-_080829D2:
-	pop {r4, r5, r6}
-	pop {r0}
-	bx r0
-	.align 2, 0
-_080829D8: .4byte gPlaySt
-_080829DC: .4byte 0x00000387
-
-	thumb_func_start sub_80829E0
-sub_80829E0: @ 0x080829E0
-	push {r4, lr}
-	adds r4, r0, #0
-	bl CloseHelpBox
-	adds r0, r4, #0
-	bl Proc_End
-	pop {r4}
-	pop {r0}
-	bx r0
-
-	thumb_func_start StartMovingHelpBox
-StartMovingHelpBox: @ 0x080829F4
-	push {r4, lr}
-	adds r4, r0, #0
-	ldr r0, _08082A10 @ =gUnk_08D8A610
-	bl Proc_StartBlocking
-	ldr r2, _08082A14 @ =0x0203E66C
-	movs r1, #0
-	strh r1, [r2]
-	strh r1, [r2, #2]
-	str r4, [r0, #0x2c]
-	pop {r4}
-	pop {r0}
-	bx r0
-	.align 2, 0
-_08082A10: .4byte gUnk_08D8A610
-_08082A14: .4byte 0x0203E66C
-
-	thumb_func_start sub_8082A18
-sub_8082A18: @ 0x08082A18
-	push {r4, r5, r6, lr}
-	adds r6, r0, #0
-	adds r4, r2, #0
-	adds r5, r3, #0
-	ldr r0, _08082A34 @ =gUnk_08D8A610
-	bl Proc_StartBlocking
-	ldr r1, _08082A38 @ =0x0203E66C
-	strh r4, [r1]
-	strh r5, [r1, #2]
-	str r6, [r0, #0x2c]
-	pop {r4, r5, r6}
-	pop {r0}
-	bx r0
-	.align 2, 0
-_08082A34: .4byte gUnk_08D8A610
-_08082A38: .4byte 0x0203E66C
-
-	thumb_func_start sub_8082A3C
-sub_8082A3C: @ 0x08082A3C
-	push {r4, r5, r6, lr}
-	adds r6, r0, #0
-	adds r4, r1, #0
-	adds r5, r2, #0
-	adds r4, #0x1f
-	movs r0, #0xe0
-	ands r4, r0
-	adds r0, r6, #0
-	adds r0, #0x4e
-	ldrh r0, [r0]
-	bl sub_8082B60
-	cmp r0, #2
-	beq _08082A6E
-	cmp r0, #2
-	bgt _08082A62
-	cmp r0, #1
-	beq _08082A68
-	b _08082A8A
-_08082A62:
-	cmp r0, #3
-	beq _08082A76
-	b _08082A8A
-_08082A68:
-	movs r4, #0xa0
-	adds r5, #0x20
-	b _08082A8A
-_08082A6E:
-	cmp r4, #0x5f
-	bgt _08082A88
-	movs r4, #0x60
-	b _08082A88
-_08082A76:
-	ldr r0, _08082A9C @ =gPlaySt
-	adds r0, #0x2b
-	movs r1, #1
-	ldrb r0, [r0]
-	ands r1, r0
-	movs r4, #0x40
-	cmp r1, #0
-	beq _08082A88
-	movs r4, #0xa0
-_08082A88:
-	adds r5, #0x10
-_08082A8A:
-	adds r0, r6, #0
-	adds r0, #0x44
-	strh r4, [r0]
-	adds r0, #2
-	strh r5, [r0]
-	pop {r4, r5, r6}
-	pop {r0}
-	bx r0
-	.align 2, 0
-_08082A9C: .4byte gPlaySt
-
-	thumb_func_start sub_8082AA0
-sub_8082AA0: @ 0x08082AA0
-	push {r4, r5, r6, r7, lr}
-	mov r7, r8
-	push {r7}
-	adds r5, r0, #0
-	adds r4, r1, #0
-	adds r7, r2, #0
-	adds r0, #0x44
-	movs r1, #0
-	ldrsh r0, [r0, r1]
-	adds r6, r0, #0
-	adds r6, #0x10
-	adds r0, r5, #0
-	adds r0, #0x46
-	movs r2, #0
-	ldrsh r0, [r0, r2]
-	adds r0, #0x10
-	mov r8, r0
-	ldr r1, _08082B28 @ =0x0203E66C
-	movs r2, #0
-	ldrsh r0, [r1, r2]
-	lsls r0, r0, #3
-	adds r4, r4, r0
-	movs r2, #2
-	ldrsh r0, [r1, r2]
-	lsls r0, r0, #3
-	adds r7, r7, r0
-	adds r0, r6, #0
-	movs r1, #6
-	bl __divsi3
-	adds r0, #0x10
-	subs r4, r4, r0
-	strh r4, [r5, #0x3c]
-	lsls r4, r4, #0x10
-	cmp r4, #0
-	bge _08082AEC
-	movs r0, #0
-	strh r0, [r5, #0x3c]
-_08082AEC:
-	movs r1, #0x3c
-	ldrsh r0, [r5, r1]
-	adds r0, r0, r6
-	cmp r0, #0xf0
-	ble _08082AFC
-	movs r0, #0xf0
-	subs r0, r0, r6
-	strh r0, [r5, #0x3c]
-_08082AFC:
-	adds r0, r7, #0
-	adds r0, #0x10
-	strh r0, [r5, #0x3e]
-	movs r2, #0x3e
-	ldrsh r0, [r5, r2]
-	add r0, r8
-	cmp r0, #0xa0
-	ble _08082B12
-	mov r1, r8
-	subs r0, r7, r1
-	strh r0, [r5, #0x3e]
-_08082B12:
-	ldrh r0, [r5, #0x3c]
-	adds r0, #8
-	strh r0, [r5, #0x3c]
-	ldrh r0, [r5, #0x3e]
-	adds r0, #8
-	strh r0, [r5, #0x3e]
-	pop {r3}
-	mov r8, r3
-	pop {r4, r5, r6, r7}
-	pop {r0}
-	bx r0
-	.align 2, 0
-_08082B28: .4byte 0x0203E66C
-
-	thumb_func_start sub_8082B2C
-sub_8082B2C: @ 0x08082B2C
-	push {r4, r5, lr}
-	ldr r4, _08082B4C @ =0x0203E66C
-	movs r5, #0
-	ldrsh r3, [r4, r5]
-	lsls r3, r3, #3
-	adds r1, r1, r3
-	movs r5, #2
-	ldrsh r3, [r4, r5]
-	lsls r3, r3, #3
-	adds r2, r2, r3
-	strh r1, [r0, #0x38]
-	strh r2, [r0, #0x3a]
-	pop {r4, r5}
-	pop {r0}
-	bx r0
-	.align 2, 0
-_08082B4C: .4byte 0x0203E66C
-
-	thumb_func_start sub_8082B50
-sub_8082B50: @ 0x08082B50
-	adds r2, r0, #0
-	adds r2, #0x40
-	movs r1, #0x20
-	strh r1, [r2]
-	adds r0, #0x42
-	movs r1, #0x10
-	strh r1, [r0]
-	bx lr
-
-	thumb_func_start sub_8082B60
-sub_8082B60: @ 0x08082B60
-	push {r4, lr}
-	adds r4, r0, #0
-	ldr r0, _08082B70 @ =0x0000FFFF
-	cmp r4, r0
-	bne _08082B74
-	movs r0, #3
-	b _08082BAA
-	.align 2, 0
-_08082B70: .4byte 0x0000FFFF
-_08082B74:
-	adds r0, r4, #0
-	bl GetItemAttributes
-	movs r1, #0x80
-	lsls r1, r1, #3
-	ands r1, r0
-	cmp r1, #0
-	bne _08082BA4
-	adds r0, r4, #0
-	bl GetItemAttributes
-	movs r1, #1
-	ands r1, r0
-	cmp r1, #0
-	beq _08082B96
-	movs r0, #1
-	b _08082BAA
-_08082B96:
-	adds r0, r4, #0
-	bl GetItemAttributes
-	movs r1, #4
-	ands r1, r0
-	cmp r1, #0
-	bne _08082BA8
-_08082BA4:
-	movs r0, #0
-	b _08082BAA
-_08082BA8:
-	movs r0, #2
-_08082BAA:
-	pop {r4}
-	pop {r1}
-	bx r1
-
-	thumb_func_start HelpBoxPopulateAutoItem
-HelpBoxPopulateAutoItem: @ 0x08082BB0
-	push {r4, r5, lr}
-	adds r4, r0, #0
-	ldr r0, [r4, #0x2c]
-	ldrh r5, [r0, #0x12]
-	adds r0, r4, #0
-	adds r0, #0x4e
-	strh r5, [r0]
-	ldrh r0, [r0]
-	bl sub_8082B60
-	cmp r0, #3
-	bne _08082BD0
-	adds r1, r4, #0
-	adds r1, #0x4c
-	movs r0, #0
-	b _08082BDA
-_08082BD0:
-	adds r0, r5, #0
-	bl GetItemDescMsg
-	adds r1, r4, #0
-	adds r1, #0x4c
-_08082BDA:
-	strh r0, [r1]
-	pop {r4, r5}
-	pop {r0}
-	bx r0
-	.align 2, 0
-
-	thumb_func_start HelpBoxTryRelocateUp
-HelpBoxTryRelocateUp: @ 0x08082BE4
-	push {lr}
-	adds r2, r0, #0
-	ldr r0, [r2, #0x2c]
-	ldr r0, [r0]
-	cmp r0, #0
-	bne _08082BF4
-	movs r0, #0
-	b _08082C0E
-_08082BF4:
-	str r0, [r2, #0x2c]
-	adds r0, r2, #0
-	adds r0, #0x50
-	movs r1, #0x40
-	strh r1, [r0]
-	ldr r0, [r2, #0x2c]
-	ldr r1, [r0, #0x14]
-	cmp r1, #0
-	beq _08082C0C
-	adds r0, r2, #0
-	bl _call_via_r1
-_08082C0C:
-	movs r0, #1
-_08082C0E:
-	pop {r1}
-	bx r1
-	.align 2, 0
-
-	thumb_func_start HelpBoxTryRelocateDown
-HelpBoxTryRelocateDown: @ 0x08082C14
-	push {lr}
-	adds r2, r0, #0
-	ldr r0, [r2, #0x2c]
-	ldr r0, [r0, #4]
-	cmp r0, #0
-	bne _08082C24
-	movs r0, #0
-	b _08082C3E
-_08082C24:
-	str r0, [r2, #0x2c]
-	adds r0, r2, #0
-	adds r0, #0x50
-	movs r1, #0x80
-	strh r1, [r0]
-	ldr r0, [r2, #0x2c]
-	ldr r1, [r0, #0x14]
-	cmp r1, #0
-	beq _08082C3C
-	adds r0, r2, #0
-	bl _call_via_r1
-_08082C3C:
-	movs r0, #1
-_08082C3E:
-	pop {r1}
-	bx r1
-	.align 2, 0
-
-	thumb_func_start HelpBoxTryRelocateLeft
-HelpBoxTryRelocateLeft: @ 0x08082C44
-	push {lr}
-	adds r2, r0, #0
-	ldr r0, [r2, #0x2c]
-	ldr r0, [r0, #8]
-	cmp r0, #0
-	bne _08082C54
-	movs r0, #0
-	b _08082C6E
-_08082C54:
-	str r0, [r2, #0x2c]
-	adds r0, r2, #0
-	adds r0, #0x50
-	movs r1, #0x20
-	strh r1, [r0]
-	ldr r0, [r2, #0x2c]
-	ldr r1, [r0, #0x14]
-	cmp r1, #0
-	beq _08082C6C
-	adds r0, r2, #0
-	bl _call_via_r1
-_08082C6C:
-	movs r0, #1
-_08082C6E:
-	pop {r1}
-	bx r1
-	.align 2, 0
-
-	thumb_func_start HelpBoxTryRelocateRight
-HelpBoxTryRelocateRight: @ 0x08082C74
-	push {lr}
-	adds r2, r0, #0
-	ldr r0, [r2, #0x2c]
-	ldr r0, [r0, #0xc]
-	cmp r0, #0
-	bne _08082C84
-	movs r0, #0
-	b _08082C9E
-_08082C84:
-	str r0, [r2, #0x2c]
-	adds r0, r2, #0
-	adds r0, #0x50
-	movs r1, #0x10
-	strh r1, [r0]
-	ldr r0, [r2, #0x2c]
-	ldr r1, [r0, #0x14]
-	cmp r1, #0
-	beq _08082C9C
-	adds r0, r2, #0
-	bl _call_via_r1
-_08082C9C:
-	movs r0, #1
-_08082C9E:
-	pop {r1}
-	bx r1
-	.align 2, 0
-
-	thumb_func_start sub_8082CA4
-sub_8082CA4: @ 0x08082CA4
-	push {lr}
-	adds r2, r0, #0
-	ldr r0, _08082CC4 @ =gpKeySt
-	ldr r1, [r0]
-	movs r0, #0x81
-	lsls r0, r0, #1
-	ldrh r1, [r1, #8]
-	ands r0, r1
-	cmp r0, #0
-	beq _08082CBE
-	adds r0, r2, #0
-	bl Proc_Break
-_08082CBE:
-	pop {r0}
-	bx r0
-	.align 2, 0
-_08082CC4: .4byte gpKeySt
-
-	thumb_func_start sub_8082CC8
-sub_8082CC8: @ 0x08082CC8
-	push {r4, r5, r6, lr}
-	adds r5, r0, #0
-	adds r6, r1, #0
-	movs r1, #1
-	rsbs r1, r1, #0
-	movs r0, #0
-	bl LoadHelpBoxGfx
-	bl sub_804A810
-	adds r4, r0, #0
-	bl sub_804A81C
-	adds r1, r0, #0
-	adds r0, r4, #0
-	adds r2, r5, #0
-	bl sub_808266C
-	ldr r0, _08082CFC @ =gUnk_08D8A640
-	adds r1, r6, #0
-	bl Proc_StartBlocking
-	movs r0, #1
-	pop {r4, r5, r6}
-	pop {r1}
-	bx r1
-	.align 2, 0
-_08082CFC: .4byte gUnk_08D8A640
-
-	thumb_func_start sub_8082D00
-sub_8082D00: @ 0x08082D00
-	push {lr}
-	sub sp, #4
-	ldr r1, [r0, #0x2c]
-	ldr r2, [r0, #0x30]
-	ldr r3, _08082D18 @ =gUnk_08D8A650
-	movs r0, #0
-	str r0, [sp]
-	bl PutSprite
-	add sp, #4
-	pop {r0}
-	bx r0
-	.align 2, 0
-_08082D18: .4byte gUnk_08D8A650
-
-	thumb_func_start sub_8082D1C
-sub_8082D1C: @ 0x08082D1C
-	push {r4, r5, r6, r7, lr}
-	adds r6, r0, #0
-	adds r7, r1, #0
-	adds r4, r2, #0
-	ldr r5, _08082D44 @ =gUnk_08D8A660
-	adds r0, r5, #0
-	bl Proc_Find
-	cmp r0, #0
-	bne _08082D38
-	adds r0, r5, #0
-	adds r1, r4, #0
-	bl Proc_Start
-_08082D38:
-	str r6, [r0, #0x2c]
-	str r7, [r0, #0x30]
-	pop {r4, r5, r6, r7}
-	pop {r1}
-	bx r1
-	.align 2, 0
-_08082D44: .4byte gUnk_08D8A660
-
-	thumb_func_start sub_8082D48
-sub_8082D48: @ 0x08082D48
-	push {r4, r5, r6, r7, lr}
-	adds r6, r0, #0
-	adds r7, r1, #0
-	adds r4, r2, #0
-	ldr r5, _08082D70 @ =gUnk_08D8A660
-	adds r0, r5, #0
-	bl Proc_Find
-	cmp r0, #0
-	bne _08082D64
-	adds r0, r5, #0
-	adds r1, r4, #0
-	bl Proc_StartBlocking
-_08082D64:
-	str r6, [r0, #0x2c]
-	str r7, [r0, #0x30]
-	pop {r4, r5, r6, r7}
-	pop {r1}
-	bx r1
-	.align 2, 0
-_08082D70: .4byte gUnk_08D8A660
-
-	thumb_func_start EndHelpPromptSprite
-EndHelpPromptSprite: @ 0x08082D74
-	push {lr}
-	ldr r0, _08082D88 @ =gUnk_08D8A660
-	bl Proc_Find
-	cmp r0, #0
-	beq _08082D84
-	bl Proc_End
-_08082D84:
-	pop {r0}
-	bx r0
-	.align 2, 0
-_08082D88: .4byte gUnk_08D8A660
-
-	thumb_func_start sub_8082D8C
-sub_8082D8C: @ 0x08082D8C
-	push {r4, r5, lr}
-	adds r4, r0, #0
-	adds r5, r1, #0
-	ldr r0, _08082DA8 @ =gUnk_08D8A660
-	bl Proc_Find
-	cmp r0, #0
-	beq _08082DA0
-	str r4, [r0, #0x2c]
-	str r5, [r0, #0x30]
-_08082DA0:
-	pop {r4, r5}
-	pop {r0}
-	bx r0
-	.align 2, 0
-_08082DA8: .4byte gUnk_08D8A660
-
-	thumb_func_start GetLastHelpBoxInfo
-GetLastHelpBoxInfo: @ 0x08082DAC
-	ldr r0, _08082DB4 @ =0x0203E668
-	ldr r0, [r0]
-	bx lr
-	.align 2, 0
-_08082DB4: .4byte 0x0203E668
-
 	thumb_func_start sub_8082DB8
 sub_8082DB8: @ 0x08082DB8
 	push {lr}
@@ -1554,8 +365,8 @@ _0808307C: .4byte gUnk_0841BCA8
 _08083080: .4byte 0x0203E678
 _08083084: .4byte gUnk_08190208
 
-	thumb_func_start sub_8083088
-sub_8083088: @ 0x08083088
+	thumb_func_start PutSpriteTalkBox
+PutSpriteTalkBox: @ 0x08083088
 	push {r4, r5, r6, r7, lr}
 	mov r7, sl
 	mov r6, sb
@@ -2216,7 +1027,7 @@ sub_80835D8: @ 0x080835D8
 	movs r0, #0
 	bl SetTextFontGlyphs
 	adds r0, r4, #0
-	bl sub_8082B60
+	bl GetHelpBoxItemInfoKind
 	adds r1, r0, #0
 	cmp r1, #1
 	beq _08083616
@@ -2275,7 +1086,7 @@ sub_808364C: @ 0x0808364C
 	ldr r0, _08083668 @ =0x0203E678
 	bl SetTextFont
 	adds r0, r4, #0
-	bl sub_8082B60
+	bl GetHelpBoxItemInfoKind
 	cmp r0, #1
 	beq _0808366C
 	cmp r0, #3
@@ -2416,8 +1227,8 @@ _0808376E:
 	pop {r0}
 	bx r0
 
-	thumb_func_start sub_808377C
-sub_808377C: @ 0x0808377C
+	thumb_func_start StartHelpBoxTextInit
+StartHelpBoxTextInit: @ 0x0808377C
 	push {r4, r5, lr}
 	adds r4, r0, #0
 	adds r5, r1, #0
@@ -2432,8 +1243,8 @@ sub_808377C: @ 0x0808377C
 	.align 2, 0
 _08083794: .4byte gUnk_08D8AF5C
 
-	thumb_func_start sub_8083798
-sub_8083798: @ 0x08083798
+	thumb_func_start ClearHelpBoxText
+ClearHelpBoxText: @ 0x08083798
 	push {r4, lr}
 	ldr r4, _080837D4 @ =0x0203E678
 	adds r0, r4, #0
@@ -2628,12 +1439,12 @@ _080838E8:
 	ldrb r2, [r6, #0x11]
 	adds r0, r5, #0
 	bl sub_8083A48
-	bl sub_8083798
+	bl ClearHelpBoxText
 	adds r0, r5, #0
 	adds r0, #0x4e
 	ldrh r0, [r0]
 	ldrh r1, [r4]
-	bl sub_808377C
+	bl StartHelpBoxTextInit
 	ldr r0, _0808394C @ =0x0203E6C8
 	str r6, [r0]
 	add sp, #8
@@ -2655,7 +1466,7 @@ sub_8083950: @ 0x08083950
 	ldr r0, _08083978 @ =0x00000391
 	bl m4aSongNumStart
 _08083964:
-	bl sub_8083798
+	bl ClearHelpBoxText
 	ldr r0, _0808397C @ =gUnk_08D8AF84
 	bl Proc_BreakEach
 	pop {r0}
@@ -2936,9 +1747,9 @@ sub_8083B48: @ 0x08083B48
 	rsbs r1, r1, #0
 	movs r0, #0
 	bl LoadHelpBoxGfx
-	bl sub_804A810
+	bl GetUiHandPrevX
 	adds r4, r0, #0
-	bl sub_804A81C
+	bl GetUiHandPrevY
 	adds r1, r0, #0
 	adds r0, r4, #0
 	adds r2, r5, #0
@@ -3495,7 +2306,7 @@ _08083F92:
 sub_8083F98: @ 0x08083F98
 	push {r4, r5, lr}
 	adds r4, r0, #0
-	bl sub_8082B50
+	bl ResetHelpBoxInitSize
 	adds r5, r4, #0
 	adds r5, #0x4a
 	movs r1, #0
@@ -3853,9 +2664,9 @@ sub_8084208: @ 0x08084208
 	adds r4, r0, #0
 	adds r1, r6, #0
 	adds r2, r7, #0
-	bl sub_8082B2C
+	bl SetHelpBoxInitPosition
 	adds r0, r4, #0
-	bl sub_8082B50
+	bl ResetHelpBoxInitSize
 	str r5, [r4, #0x2c]
 	adds r0, r4, #0
 	adds r0, #0x48
@@ -10124,7 +8935,7 @@ _08087530:
 	movs r0, #0xc0
 	movs r1, #0xe
 	mov r2, r8
-	bl sub_8082D1C
+	bl StartHelpPromptSprite
 	ldr r0, _080875F8 @ =gUnk_08D8B5A0
 	mov r1, r8
 	bl Proc_Start
@@ -13876,7 +12687,7 @@ _080894C2:
 	subs r0, #4
 	movs r2, #0x2e
 	ldrsh r1, [r4, r2]
-	bl DisplayUiHand
+	bl PutUiHand
 _080894DE:
 	pop {r4, r5, r6}
 	pop {r0}
@@ -14906,7 +13717,7 @@ _08089C56:
 	ldrb r1, [r1]
 	lsls r1, r1, #4
 	adds r1, #0x28
-	bl DisplayUiHand
+	bl PutUiHand
 	b _08089CFA
 	.align 2, 0
 _08089CCC: .4byte 0x000020B8
@@ -17092,7 +15903,7 @@ _0808AE10:
 	adds r1, r1, r2
 	ldr r2, [r1]
 	movs r1, #0x28
-	bl sub_808266C
+	bl StartHelpBox
 _0808AE50:
 	add sp, #0xc
 	pop {r3, r4, r5}
@@ -17231,7 +16042,7 @@ _0808AF38:
 	adds r1, r1, r2
 	ldr r2, [r1]
 	movs r1, #0x28
-	bl sub_808266C
+	bl StartHelpBox
 _0808AF60:
 	pop {r4, r5, r6}
 	pop {r0}
@@ -26161,7 +24972,7 @@ _0808F478:
 	ldr r2, [r0]
 	movs r0, #0x2c
 	adds r1, r7, #0
-	bl sub_808266C
+	bl StartHelpBox
 	b _0808F5B2
 _0808F4A4:
 	movs r0, #2
@@ -26276,7 +25087,7 @@ _0808F560:
 	ldr r2, [r0]
 	mov r0, sl
 	adds r1, r7, #0
-	bl sub_808266C
+	bl StartHelpBox
 _0808F592:
 	movs r3, #0x80
 	lsls r3, r3, #3
@@ -28277,7 +27088,7 @@ _0809054C:
 _08090564:
 	mov r0, r8
 	adds r1, r7, #0
-	bl sub_808266C
+	bl StartHelpBox
 	movs r0, #1
 	strb r0, [r6]
 	b _0809070C
@@ -28481,7 +27292,7 @@ _080906D6:
 	adds r2, r2, r3
 	ldr r5, [r2]
 	ldr r2, [r5, #0x30]
-	bl sub_808266C
+	bl StartHelpBox
 _0809070C:
 	pop {r3, r4}
 	mov r8, r3
@@ -30545,14 +29356,14 @@ sub_8091664: @ 0x08091664
 	bge _08091680
 	cmp r1, #0
 	bge _08091680
-	bl sub_804A810
+	bl GetUiHandPrevX
 	adds r4, r0, #0
-	bl sub_804A81C
+	bl GetUiHandPrevY
 	adds r1, r0, #0
 _08091680:
 	adds r0, r4, #0
 	adds r2, r5, #0
-	bl sub_808266C
+	bl StartHelpBox
 	ldr r0, _08091698 @ =gUnk_08D8C96C
 	adds r1, r6, #0
 	bl Proc_StartBlocking
@@ -32195,7 +31006,7 @@ sub_8092310: @ 0x08092310
 	movs r0, #0xc9
 	movs r1, #0x7b
 	adds r2, r6, #0
-	bl sub_8082D1C
+	bl StartHelpPromptSprite
 	bl sub_809225C
 	ldr r0, _0809241C @ =sub_80921FC
 	adds r1, r6, #0
@@ -33004,7 +31815,7 @@ sub_8092A9C: @ 0x08092A9C
 	movs r0, #0xc9
 	movs r1, #0x7b
 	adds r2, r4, #0
-	bl sub_8082D1C
+	bl StartHelpPromptSprite
 	adds r4, #0x2d
 	ldrb r1, [r4]
 	movs r0, #1
@@ -33088,7 +31899,7 @@ _08092B46:
 	lsls r2, r2, #2
 	adds r2, r2, r3
 	ldr r2, [r2]
-	bl sub_808266C
+	bl StartHelpBox
 	b _08092E70
 	.align 2, 0
 _08092B78: .4byte gpKeySt
@@ -33458,7 +32269,7 @@ _08092E2C:
 	lsls r2, r4, #2
 	adds r2, r2, r3
 	ldr r2, [r2]
-	bl sub_808266C
+	bl StartHelpBox
 _08092E70:
 	pop {r4, r5, r6, r7}
 	pop {r0}
@@ -35994,7 +34805,7 @@ sub_8094178: @ 0x08094178
 	movs r0, #0x20
 	movs r1, #0x8c
 	adds r2, r5, #0
-	bl sub_8082D1C
+	bl StartHelpPromptSprite
 	ldrh r0, [r5, #0x2e]
 	bl sub_808E644
 	bl sub_8093CD0
@@ -37398,7 +36209,7 @@ _08094D06:
 	movs r0, #0xc8
 	movs r1, #0x90
 	mov r2, r8
-	bl sub_8082D1C
+	bl StartHelpPromptSprite
 	movs r1, #0xe0
 	lsls r1, r1, #4
 	movs r3, #0xc0
@@ -37834,7 +36645,7 @@ _08095154:
 	lsls r1, r3, #4
 _080951AC:
 	adds r1, #0x48
-	bl sub_80826EC
+	bl StartItemHelpBox
 	ldr r0, [r6, #0x34]
 _080951B4:
 	str r0, [r6, #0x3c]
@@ -38924,7 +37735,7 @@ _08095920:
 	movs r0, #0xc0
 	movs r1, #0x8c
 	adds r2, r7, #0
-	bl sub_8082D1C
+	bl StartHelpPromptSprite
 	ldr r0, [r7, #0x2c]
 	ldr r1, [r7, #0x30]
 	bl sub_8095750
@@ -39111,7 +37922,7 @@ _08095C6C:
 	lsls r1, r3, #4
 	adds r1, #0x48
 	movs r0, #0x10
-	bl sub_80826EC
+	bl StartItemHelpBox
 	ldr r0, [r4, #0x30]
 _08095C88:
 	str r0, [r4, #0x38]
@@ -40973,7 +39784,7 @@ sub_8096A78: @ 0x08096A78
 	movs r0, #0xc8
 	movs r1, #0x90
 	mov r2, sl
-	bl sub_8082D1C
+	bl StartHelpPromptSprite
 	ldr r4, _08096D68 @ =0x02012B68
 	adds r0, r4, #0
 	movs r1, #4
@@ -41303,7 +40114,7 @@ _08096F34:
 	adds r0, r0, r2
 	ldr r2, [r0]
 	movs r0, #0x44
-	bl sub_808266C
+	bl StartHelpBox
 	strh r7, [r5, #0x38]
 	b _0809700C
 	.align 2, 0
@@ -41401,7 +40212,7 @@ _08096FE0:
 	adds r0, r0, r2
 	ldr r2, [r0]
 	movs r0, #0x44
-	bl sub_808266C
+	bl StartHelpBox
 _0809700C:
 	pop {r4, r5, r6, r7}
 	pop {r0}
@@ -41475,7 +40286,7 @@ sub_8097020: @ 0x08097020
 	subs r0, #0x28
 	subs r1, r1, r0
 	movs r0, #0x80
-	bl sub_80826EC
+	bl StartItemHelpBox
 	movs r0, #1
 	b _080970CA
 	.align 2, 0
@@ -42122,7 +40933,7 @@ _0809758A:
 	subs r0, #0x28
 	subs r1, r1, r0
 	movs r0, #0x80
-	bl sub_80826EC
+	bl StartItemHelpBox
 	movs r0, #1
 	strh r0, [r4, #0x38]
 	b _080978CA
@@ -42431,7 +41242,7 @@ _080977FE:
 	adds r1, #0x10
 	movs r0, #0x80
 	mov r2, sb
-	bl sub_80826EC
+	bl StartItemHelpBox
 _0809782E:
 	adds r0, r4, #0
 	adds r0, #0x32
@@ -42466,7 +41277,7 @@ _08097848:
 	subs r1, #0x10
 	movs r0, #0x80
 	mov r2, sb
-	bl sub_80826EC
+	bl StartItemHelpBox
 _08097878:
 	adds r0, r4, #0
 	adds r0, #0x32
@@ -42493,7 +41304,7 @@ _0809788C:
 	subs r1, r1, r0
 	movs r0, #0x80
 	mov r2, sb
-	bl sub_80826EC
+	bl StartItemHelpBox
 _080978AC:
 	ldrb r7, [r7]
 	lsls r0, r7, #1
@@ -42786,7 +41597,7 @@ _08097AD8:
 	lsls r1, r3, #4
 	adds r1, #0x48
 	movs r0, #0x10
-	bl sub_80826EC
+	bl StartItemHelpBox
 	movs r0, #1
 	strh r0, [r4, #0x38]
 	b _08097BB6
@@ -42868,7 +41679,7 @@ _08097B74:
 	lsls r1, r3, #4
 	adds r1, #0x48
 	movs r0, #0x10
-	bl sub_80826EC
+	bl StartItemHelpBox
 _08097BB6:
 	pop {r4, r5}
 	pop {r0}
@@ -43370,7 +42181,7 @@ sub_8097E64: @ 0x08097E64
 	movs r0, #0xc8
 	movs r1, #0x90
 	adds r2, r7, #0
-	bl sub_8082D1C
+	bl StartHelpPromptSprite
 	ldr r4, _080981B4 @ =0x02012B68
 	adds r0, r4, #0
 	movs r1, #6
@@ -43676,7 +42487,7 @@ sub_8098210: @ 0x08098210
 	subs r0, #0x28
 	subs r1, r1, r0
 	movs r0, #0x80
-	bl sub_80826EC
+	bl StartItemHelpBox
 	movs r0, #1
 	b _080982CE
 	.align 2, 0
@@ -44326,7 +43137,7 @@ _08098794:
 	subs r0, #0x28
 	subs r1, r1, r0
 	movs r0, #0x80
-	bl sub_80826EC
+	bl StartItemHelpBox
 	movs r0, #1
 	strh r0, [r4, #0x36]
 	b _08098B52
@@ -44696,7 +43507,7 @@ _08098A86:
 	adds r1, #0x10
 	movs r0, #0x80
 	mov r2, sl
-	bl sub_80826EC
+	bl StartItemHelpBox
 _08098AB6:
 	adds r0, r4, #0
 	adds r0, #0x31
@@ -44731,7 +43542,7 @@ _08098AD0:
 	subs r1, #0x10
 	movs r0, #0x80
 	mov r2, sl
-	bl sub_80826EC
+	bl StartItemHelpBox
 _08098B00:
 	adds r0, r4, #0
 	adds r0, #0x31
@@ -44758,7 +43569,7 @@ _08098B14:
 	subs r1, r1, r0
 	movs r0, #0x80
 	mov r2, sl
-	bl sub_80826EC
+	bl StartItemHelpBox
 _08098B34:
 	ldrb r7, [r7]
 	lsls r0, r7, #1
@@ -45037,7 +43848,7 @@ _08098D2C:
 	lsls r1, r3, #4
 	adds r1, #0x48
 	movs r0, #0x10
-	bl sub_80826EC
+	bl StartItemHelpBox
 	movs r0, #1
 	strh r0, [r5, #0x36]
 	b _08098E36
@@ -45137,7 +43948,7 @@ _08098DF4:
 	lsls r1, r3, #4
 	adds r1, #0x48
 	movs r0, #0x10
-	bl sub_80826EC
+	bl StartItemHelpBox
 _08098E36:
 	pop {r4, r5}
 	pop {r0}
@@ -45748,7 +44559,7 @@ sub_80991C4: @ 0x080991C4
 	movs r0, #0xc8
 	movs r1, #0x90
 	mov r2, sb
-	bl sub_8082D1C
+	bl StartHelpPromptSprite
 	ldr r4, _08099424 @ =0x02012B68
 	adds r0, r4, #0
 	movs r1, #4
@@ -46004,7 +44815,7 @@ _08099582:
 	lsls r1, r3, #4
 	adds r1, #0x48
 	movs r0, #0x10
-	bl sub_80826EC
+	bl StartItemHelpBox
 	movs r0, #1
 	strh r0, [r4, #0x34]
 	b _08099682
@@ -46118,7 +44929,7 @@ _08099630:
 	lsls r1, r3, #4
 	adds r1, #0x48
 	movs r0, #0x10
-	bl sub_80826EC
+	bl StartItemHelpBox
 _08099682:
 	pop {r4, r5, r6}
 	pop {r0}
@@ -51811,7 +50622,7 @@ _0809C392:
 	movs r0, #0x10
 	movs r1, #0x8c
 	adds r2, r7, #0
-	bl sub_8082D1C
+	bl StartHelpPromptSprite
 	add sp, #4
 	pop {r3, r4, r5}
 	mov r8, r3
@@ -51965,7 +50776,7 @@ _0809C4EC:
 	ldrh r2, [r0, #2]
 	mov r0, r8
 	adds r1, r4, #0
-	bl sub_808266C
+	bl StartHelpBox
 	movs r0, #1
 	mov r1, sb
 	strb r0, [r1]
@@ -52197,7 +51008,7 @@ _0809C6C6:
 	ldrh r2, [r0, #2]
 	mov r0, sb
 	adds r1, r4, #0
-	bl sub_808266C
+	bl StartHelpBox
 _0809C6F2:
 	mov r7, r8
 	movs r0, #0

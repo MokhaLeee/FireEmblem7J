@@ -647,7 +647,7 @@ _0804AECE:
 	bl sub_804B334
 	ldr r0, [sp]
 	ldr r1, [sp, #4]
-	bl DisplayUiHand
+	bl PutUiHand
 _0804AF02:
 	add sp, #8
 	pop {r4, r5, r6}
@@ -921,7 +921,7 @@ sub_804B0E4: @ 0x0804B0E4
 	ldr r1, [r1, #0x30]
 	ldrh r2, [r1, #6]
 	adds r1, r3, #0
-	bl sub_808266C
+	bl StartHelpBox
 	pop {r1}
 	bx r1
 
@@ -967,7 +967,7 @@ sub_804B130: @ 0x0804B130
 	bl sub_804B334
 	ldr r0, [sp]
 	ldr r1, [sp, #4]
-	bl DisplayUiHand
+	bl PutUiHand
 	ldr r0, _0804B178 @ =gpKeySt
 	ldr r1, [r0]
 	movs r0, #0x81
@@ -1067,13 +1067,13 @@ sub_804B210: @ 0x0804B210
 	rsbs r1, r1, #0
 	movs r0, #0
 	bl LoadHelpBoxGfx
-	bl sub_804A810
+	bl GetUiHandPrevX
 	adds r4, r0, #0
-	bl sub_804A81C
+	bl GetUiHandPrevY
 	adds r1, r0, #0
 	adds r0, r4, #0
 	adds r2, r5, #0
-	bl sub_808266C
+	bl StartHelpBox
 	pop {r4, r5}
 	pop {r1}
 	bx r1

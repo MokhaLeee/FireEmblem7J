@@ -5280,7 +5280,7 @@ _0803EEB0:
 	lsls r1, r1, #4
 	adds r1, #0x28
 	movs r0, #0x50
-	bl DisplayUiHand
+	bl PutUiHand
 	ldr r0, [r7, #0x38]
 	lsls r0, r0, #0x18
 	lsrs r0, r0, #0x18
@@ -5298,7 +5298,7 @@ _0803EECE:
 	lsls r1, r1, #4
 	adds r1, #0x28
 	movs r0, #0x50
-	bl DisplayUiHand
+	bl PutUiHand
 	ldr r0, _0803EF0C @ =gpKeySt
 	ldr r1, [r0]
 	movs r0, #1
@@ -6026,7 +6026,7 @@ _0803F4A8:
 	ldr r1, [r4, #0x58]
 	lsls r1, r1, #3
 	adds r1, #0x20
-	bl DisplayUiHand
+	bl PutUiHand
 	ldr r0, _0803F4F8 @ =gpKeySt
 	ldr r0, [r0]
 	ldrh r1, [r0, #8]
@@ -7662,7 +7662,7 @@ _08040198:
 	lsls r0, r0, #3
 	adds r0, #0x50
 	movs r1, #0x60
-	bl DisplayUiHand
+	bl PutUiHand
 	ldr r0, _080401D8 @ =gpKeySt
 	ldr r0, [r0]
 	ldrh r1, [r0, #8]
@@ -10981,7 +10981,7 @@ sub_8041D00: @ 0x08041D00
 	lsls r1, r1, #5
 	adds r1, #0x28
 	movs r0, #0x18
-	bl DisplayUiHand
+	bl PutUiHand
 	ldr r0, [r6, #0x48]
 	cmp r5, r0
 	beq _08041D3A
@@ -15707,7 +15707,7 @@ _08044426:
 	movs r2, #0
 	ldrsh r1, [r1, r2]
 	adds r1, #8
-	bl DisplayUiHand
+	bl PutUiHand
 	ldr r0, [r6, #0x50]
 	cmp r0, #1
 	bne _080444AE
@@ -15998,7 +15998,7 @@ sub_80446B4: @ 0x080446B4
 	movs r1, #0x12
 	movs r2, #0x10
 	movs r3, #0xb
-	bl sub_804A360
+	bl PutUiWindowFrame
 	movs r0, #0xf
 	bl EnableBgSync
 	add sp, #0xc
@@ -16038,7 +16038,7 @@ sub_804471C: @ 0x0804471C
 	movs r1, #2
 	movs r2, #9
 	movs r3, #0x10
-	bl sub_804A360
+	bl PutUiWindowFrame
 	movs r0, #2
 	bl EnableBgSync
 	adds r5, #0x68
@@ -16079,7 +16079,7 @@ sub_8044750: @ 0x08044750
 	muls r0, r1, r0
 	adds r0, #0x28
 	movs r1, #0x60
-	bl DisplayUiHand
+	bl PutUiHand
 	ldr r0, _080447AC @ =gpKeySt
 	ldr r0, [r0]
 	ldrh r1, [r0, #8]
@@ -25270,7 +25270,7 @@ _08049042:
 	ldrsh r0, [r5, r2]
 	movs r2, #0x30
 	ldrsh r1, [r5, r2]
-	bl DisplayUiHand
+	bl PutUiHand
 	movs r0, #0xc0
 	movs r1, #0x10
 	bl sub_804829C

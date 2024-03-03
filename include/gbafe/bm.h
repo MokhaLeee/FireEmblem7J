@@ -109,7 +109,7 @@ struct PlaySt {
     u32 cfgGameSpeed:1; // 1
     u32 cfgDisableBgm:1; // 1
     u32 cfgDisableSoundEffects:1; // 1
-    u32 cfgWindowColor:2;
+    u32 config_window_theme:2;
     u32 unk41_5:1; // 1
     u32 unk41_6:1; // unk
     u32 cfgDisableAutoEndTurns:1; // 1

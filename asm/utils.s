@@ -164,7 +164,7 @@ sub_8013614: @ 0x08013614
 	push {r4, r5, lr}
 	adds r4, r0, #0
 	adds r5, r1, #0
-	bl sub_80136C8
+	bl GetDataSize
 	adds r2, r0, #0
 	subs r1, r2, #4
 	movs r0, #0x1f
@@ -205,7 +205,7 @@ sub_8013658: @ 0x08013658
 	adds r1, r6, #0
 	bl LZ77UnCompWram
 	adds r0, r4, #0
-	bl sub_80136C8
+	bl GetDataSize
 	cmp r0, #0
 	bge _08013672
 	adds r0, #3
@@ -254,8 +254,8 @@ _0801369E:
 _080136C0: .4byte 0x00017FFF
 _080136C4: .4byte gUnk_08C01B84
 
-	thumb_func_start sub_80136C8
-sub_80136C8: @ 0x080136C8
+	thumb_func_start GetDataSize
+GetDataSize: @ 0x080136C8
 	ldr r0, [r0]
 	lsrs r0, r0, #8
 	bx lr
@@ -285,7 +285,7 @@ sub_80136E8: @ 0x080136E8
 	adds r0, r4, #0
 	bl Decompress
 	adds r0, r4, #0
-	bl sub_80136C8
+	bl GetDataSize
 	ldr r1, [r5]
 	adds r1, r1, r0
 	str r1, [r5]

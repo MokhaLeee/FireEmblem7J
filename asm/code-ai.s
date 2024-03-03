@@ -17,7 +17,7 @@ AiPhase_Begin: @ 0x08034DB8
 	adds r0, r2, #0
 	adds r0, #0x78
 	strb r1, [r0]
-	ldr r5, _08034E18 @ =gUnk_081D92F4
+	ldr r5, _08034E18 @ =AiItemConfigTable
 	ldr r4, _08034E1C @ =gPlaySt
 	movs r3, #0
 	movs r1, #7
@@ -39,9 +39,9 @@ _08034DDE:
 	adds r1, #4
 	movs r0, #0
 	strb r0, [r1]
-	bl sub_8039BB8
-	bl sub_8037610
-	ldr r0, _08034E20 @ =gUnk_08C061A8
+	bl AiUpdateUnitsSeekHealing
+	bl SetupUnitInventoryAIFlags
+	ldr r0, _08034E20 @ =ProcScr_AiOrder
 	adds r1, r6, #0
 	bl Proc_StartBlocking
 	pop {r4, r5, r6}
@@ -49,9 +49,9 @@ _08034DDE:
 	bx r0
 	.align 2, 0
 _08034E14: .4byte 0x0203A8E8
-_08034E18: .4byte gUnk_081D92F4
+_08034E18: .4byte AiItemConfigTable
 _08034E1C: .4byte gPlaySt
-_08034E20: .4byte gUnk_08C061A8
+_08034E20: .4byte ProcScr_AiOrder
 
 	thumb_func_start sub_8034E24
 sub_8034E24: @ 0x08034E24
@@ -66,7 +66,7 @@ sub_8034E24: @ 0x08034E24
 	movs r1, #0xff
 	strb r1, [r2]
 	adds r1, r0, #0
-	ldr r5, _08034E78 @ =gUnk_081D92F4
+	ldr r5, _08034E78 @ =AiItemConfigTable
 	ldr r4, _08034E7C @ =gPlaySt
 	movs r0, #0
 	movs r3, #7
@@ -85,8 +85,8 @@ _08034E46:
 	adds r0, r0, r5
 	ldr r0, [r0]
 	str r0, [r1]
-	bl sub_8039BB8
-	bl sub_8037610
+	bl AiUpdateUnitsSeekHealing
+	bl SetupUnitInventoryAIFlags
 	ldr r0, _08034E80 @ =gUnk_08C061C0
 	adds r1, r6, #0
 	bl Proc_StartBlocking
@@ -95,7 +95,7 @@ _08034E46:
 	bx r0
 	.align 2, 0
 _08034E74: .4byte 0x0203A8E8
-_08034E78: .4byte gUnk_081D92F4
+_08034E78: .4byte AiItemConfigTable
 _08034E7C: .4byte gPlaySt
 _08034E80: .4byte gUnk_08C061C0
 
@@ -711,8 +711,8 @@ sub_8035308: @ 0x08035308
 	.align 2, 0
 _08035324: .4byte 0x0203A978
 
-	thumb_func_start sub_8035328
-sub_8035328: @ 0x08035328
+	thumb_func_start AiSetDecision
+AiSetDecision: @ 0x08035328
 	push {r4, r5, r6, lr}
 	mov r6, sb
 	mov r5, r8
@@ -896,7 +896,7 @@ _0803546C:
 	str r2, [sp]
 	movs r2, #0
 	movs r3, #0
-	bl sub_8036FD8
+	bl AiTryMoveTowards
 	ldr r0, _080354A0 @ =0x0203A978
 	ldrb r0, [r0, #0xa]
 	cmp r0, #1
@@ -1850,7 +1850,7 @@ _08035C2C: .4byte 0x0203A978
 sub_8035C30: @ 0x08035C30
 	push {r4, lr}
 	adds r4, r0, #0
-	bl sub_8039BB8
+	bl AiUpdateUnitsSeekHealing
 	bl sub_8035714
 	ldr r0, _08035C60 @ =gActiveUnit
 	ldr r1, [r0]
@@ -2037,7 +2037,7 @@ sub_8035D74: @ 0x08035D74
 	adds r2, r0, #0
 	adds r0, r4, #0
 	adds r1, r5, #0
-	bl sub_801A030
+	bl GenerateExtendedMovementMapOnRange
 	bl sub_801A5C8
 	ldr r0, _08035E14 @ =0x0000FFFF
 	strh r0, [r6]
@@ -2159,7 +2159,7 @@ sub_8035E64: @ 0x08035E64
 	adds r2, r0, #0
 	adds r0, r4, #0
 	adds r1, r5, #0
-	bl sub_801A030
+	bl GenerateExtendedMovementMapOnRange
 	ldr r0, _08035EF8 @ =0x0000FFFF
 	strh r0, [r6]
 	movs r4, #1
@@ -2251,7 +2251,7 @@ sub_8035F10: @ 0x08035F10
 	adds r2, r0, #0
 	adds r0, r4, #0
 	adds r1, r5, #0
-	bl sub_801A030
+	bl GenerateExtendedMovementMapOnRange
 	ldr r2, _08035F54 @ =0x0000FFFF
 	str r2, [sp, #0xc]
 	ldr r0, _08035F58 @ =gBmMapSize
@@ -2608,7 +2608,7 @@ _080361E2:
 	adds r0, r2, #0
 	movs r2, #0
 	movs r3, #0
-	bl sub_8035328
+	bl AiSetDecision
 _08036208:
 	add sp, #0x14
 	pop {r3, r4}
@@ -2623,8 +2623,8 @@ _0803621C: .4byte gBmMapMovement
 _08036220: .4byte gBmMapUnit
 _08036224: .4byte 0xFFFF0000
 
-	thumb_func_start sub_8036228
-sub_8036228: @ 0x08036228
+	thumb_func_start AiReachesByBirdsEyeDistance
+AiReachesByBirdsEyeDistance: @ 0x08036228
 	push {r4, r5, r6, lr}
 	adds r4, r0, #0
 	adds r5, r1, #0
@@ -4376,7 +4376,7 @@ _08036F0C:
 	adds r2, r0, #0
 	adds r0, r4, #0
 	adds r1, r5, #0
-	bl sub_801A030
+	bl GenerateExtendedMovementMapOnRange
 	adds r0, r6, #0
 	movs r1, #0
 	adds r2, r7, #0
@@ -4463,8 +4463,8 @@ _08036FD0:
 	bx r1
 	.align 2, 0
 
-	thumb_func_start sub_8036FD8
-sub_8036FD8: @ 0x08036FD8
+	thumb_func_start AiTryMoveTowards
+AiTryMoveTowards: @ 0x08036FD8
 	push {r4, r5, r6, r7, lr}
 	mov r7, sl
 	mov r6, sb
@@ -4507,7 +4507,7 @@ sub_8036FD8: @ 0x08036FD8
 	adds r0, r2, #0
 	ldr r2, [sp, #0xc]
 	movs r3, #0
-	bl sub_8035328
+	bl AiSetDecision
 	b _08037190
 	.align 2, 0
 _08037034: .4byte gActiveUnit
@@ -4524,7 +4524,7 @@ _08037038:
 	adds r2, r0, #0
 	adds r0, r5, #0
 	adds r1, r4, #0
-	bl sub_801A030
+	bl GenerateExtendedMovementMapOnRange
 	b _0803706C
 	.align 2, 0
 _08037058: .4byte gActiveUnit
@@ -4535,7 +4535,7 @@ _0803705C:
 	asrs r1, r1, #0x10
 	ldr r2, _0803709C @ =gActiveUnit
 	ldr r2, [r2]
-	bl sub_803C5B0
+	bl AiMapFloodRangeFrom
 _0803706C:
 	ldr r4, _0803709C @ =gActiveUnit
 	ldr r0, [r4]
@@ -4683,7 +4683,7 @@ _08037168:
 	adds r0, r2, #0
 	ldr r2, [sp, #0xc]
 	movs r3, #0
-	bl sub_8035328
+	bl AiSetDecision
 _08037190:
 	add sp, #0x18
 	pop {r3, r4, r5}
@@ -4748,7 +4748,7 @@ sub_80371C4: @ 0x080371C4
 	adds r0, r2, #0
 	ldr r2, [sp, #0xc]
 	movs r3, #0
-	bl sub_8035328
+	bl AiSetDecision
 	b _0803737C
 	.align 2, 0
 _08037220: .4byte gActiveUnit
@@ -4924,7 +4924,7 @@ _08037354:
 	adds r0, r2, #0
 	ldr r2, [sp, #0xc]
 	movs r3, #0
-	bl sub_8035328
+	bl AiSetDecision
 _0803737C:
 	add sp, #0x18
 	pop {r3, r4, r5}
@@ -4991,7 +4991,7 @@ _08037400:
 	adds r2, r0, #0
 	adds r0, r4, #0
 	adds r1, r5, #0
-	bl sub_801A030
+	bl GenerateExtendedMovementMapOnRange
 	ldr r0, [sp, #4]
 	bl sub_8019FFC
 	movs r1, #0x7c
@@ -5277,8 +5277,8 @@ _0803760A:
 	pop {r1}
 	bx r1
 
-	thumb_func_start sub_8037610
-sub_8037610: @ 0x08037610
+	thumb_func_start SetupUnitInventoryAIFlags
+SetupUnitInventoryAIFlags: @ 0x08037610
 	push {r4, r5, r6, r7, lr}
 	ldr r0, _080376C4 @ =0x0203A8E8
 	adds r0, #0x85
@@ -6763,7 +6763,7 @@ sub_8038130: @ 0x08038130
 	movs r2, #1
 	str r2, [sp]
 	movs r2, #0
-	bl sub_8036FD8
+	bl AiTryMoveTowards
 	ldr r0, _08038178 @ =0x0203A978
 	ldrb r1, [r0, #0xa]
 	cmp r1, #1
@@ -6813,7 +6813,7 @@ sub_803817C: @ 0x0803817C
 	ldrb r3, [r2, #2]
 	str r4, [sp]
 	movs r2, #0
-	bl sub_8036FD8
+	bl AiTryMoveTowards
 	add r0, sp, #4
 	movs r1, #0
 	ldrsh r0, [r0, r1]
@@ -6911,7 +6911,7 @@ sub_8038240: @ 0x08038240
 	ldrb r3, [r2, #2]
 	str r4, [sp]
 	movs r2, #0
-	bl sub_8036FD8
+	bl AiTryMoveTowards
 _08038272:
 	ldrb r0, [r6]
 	adds r0, #1
@@ -6977,7 +6977,7 @@ _080382D4:
 	str r2, [sp]
 	movs r2, #0
 	movs r3, #0xff
-	bl sub_8036FD8
+	bl AiTryMoveTowards
 	ldr r4, _08038354 @ =0x0203A978
 	ldrb r0, [r4, #2]
 	ldrb r1, [r4, #3]
@@ -6996,7 +6996,7 @@ _080382D4:
 	str r4, [sp, #8]
 	movs r2, #4
 	movs r3, #0
-	bl sub_8035328
+	bl AiSetDecision
 	ldr r3, _08038358 @ =0x030013B8
 	ldr r0, [r3]
 	ldrb r0, [r0, #3]
@@ -7066,7 +7066,7 @@ sub_803837C: @ 0x0803837C
 	str r2, [sp, #4]
 	str r2, [sp, #8]
 	movs r3, #0
-	bl sub_8035328
+	bl AiSetDecision
 _080383AE:
 	ldrb r0, [r5]
 	adds r0, #1
@@ -7105,7 +7105,7 @@ sub_80383C0: @ 0x080383C0
 	ldrb r3, [r2, #2]
 	str r4, [sp]
 	movs r2, #0
-	bl sub_8036FD8
+	bl AiTryMoveTowards
 	b _0803842C
 	.align 2, 0
 _080383FC: .4byte 0x030013B8
@@ -7128,7 +7128,7 @@ _08038404:
 	ldrb r3, [r2, #2]
 	str r4, [sp]
 	movs r2, #0
-	bl sub_8036FD8
+	bl AiTryMoveTowards
 _0803842C:
 	ldrb r0, [r7]
 	adds r0, #1
@@ -7666,7 +7666,7 @@ _0803882E:
 	str r2, [sp, #8]
 	movs r2, #1
 	movs r3, #0
-	bl sub_8035328
+	bl AiSetDecision
 	b _0803887E
 	.align 2, 0
 _08038854: .4byte gActiveUnit
@@ -7679,7 +7679,7 @@ _0803885C:
 	str r6, [sp]
 	movs r2, #0
 	movs r3, #0xff
-	bl sub_8036FD8
+	bl AiTryMoveTowards
 	b _0803887E
 _08038870:
 	ldr r0, _0803888C @ =0x0203A8E8
@@ -7717,7 +7717,7 @@ sub_8038894: @ 0x08038894
 	adds r2, r0, #0
 	adds r0, r4, #0
 	adds r1, r5, #0
-	bl sub_801A030
+	bl GenerateExtendedMovementMapOnRange
 	ldr r6, _080388E8 @ =0x030013B8
 	ldr r0, [r6]
 	adds r0, #3
@@ -7738,7 +7738,7 @@ sub_8038894: @ 0x08038894
 	ldrb r3, [r2, #2]
 	str r4, [sp]
 	movs r2, #0
-	bl sub_8036FD8
+	bl AiTryMoveTowards
 	b _080388FA
 	.align 2, 0
 _080388E4: .4byte gActiveUnit
@@ -7778,7 +7778,7 @@ sub_8038910: @ 0x08038910
 	adds r2, r0, #0
 	adds r0, r4, #0
 	adds r1, r5, #0
-	bl sub_801A030
+	bl GenerateExtendedMovementMapOnRange
 	ldr r6, _08038964 @ =0x030013B8
 	ldr r0, [r6]
 	ldr r0, [r0, #8]
@@ -7799,7 +7799,7 @@ sub_8038910: @ 0x08038910
 	ldrb r3, [r2, #2]
 	str r4, [sp]
 	movs r2, #0
-	bl sub_8036FD8
+	bl AiTryMoveTowards
 	b _08038976
 	.align 2, 0
 _08038960: .4byte gActiveUnit
@@ -7873,7 +7873,7 @@ sub_80389C0: @ 0x080389C0
 	str r2, [sp]
 	movs r2, #0
 	movs r3, #0xff
-	bl sub_8036FD8
+	bl AiTryMoveTowards
 _080389EA:
 	add sp, #8
 	pop {r4}
@@ -8072,13 +8072,13 @@ _08038B4A:
 	ldr r0, [r2]
 	adds r1, r4, #0
 	adds r2, r5, #0
-	bl sub_8036228
+	bl AiReachesByBirdsEyeDistance
 	lsls r0, r0, #0x18
 	cmp r0, #0
 	beq _08038BB6
 	adds r0, r4, #0
 	adds r1, r5, #0
-	bl sub_8038E18
+	bl AiFillReversedAttackRangeMap
 	ldrb r0, [r4, #0xb]
 	mov r3, sb
 	strb r0, [r3, #2]
@@ -8128,7 +8128,7 @@ _08038BD2:
 	beq _08038C08
 	ldr r0, [sp, #0x24]
 	add r1, sp, #0xc
-	bl sub_8038F30
+	bl AiAttemptBallistaCombat
 	lsls r0, r0, #0x18
 	asrs r0, r0, #0x18
 	cmp r0, #1
@@ -8161,7 +8161,7 @@ _08038C16:
 	str r2, [sp, #4]
 	str r2, [sp, #8]
 	movs r2, #1
-	bl sub_8035328
+	bl AiSetDecision
 	mov r3, sp
 	movs r1, #0x1c
 	ldrsb r1, [r3, r1]
@@ -8285,13 +8285,13 @@ _08038CFC:
 	ldr r0, [r2]
 	adds r1, r4, #0
 	adds r2, r5, #0
-	bl sub_8036228
+	bl AiReachesByBirdsEyeDistance
 	lsls r0, r0, #0x18
 	cmp r0, #0
 	beq _08038D6A
 	adds r0, r4, #0
 	adds r1, r5, #0
-	bl sub_8038E18
+	bl AiFillReversedAttackRangeMap
 	ldrb r0, [r4, #0xb]
 	mov r3, sl
 	strb r0, [r3, #2]
@@ -8342,7 +8342,7 @@ _08038D86:
 	beq _08038DBE
 	ldr r0, [sp, #0x24]
 	add r1, sp, #0xc
-	bl sub_8038F30
+	bl AiAttemptBallistaCombat
 	lsls r0, r0, #0x18
 	asrs r0, r0, #0x18
 	cmp r0, #1
@@ -8375,7 +8375,7 @@ _08038DCC:
 	str r2, [sp, #4]
 	str r2, [sp, #8]
 	movs r2, #1
-	bl sub_8035328
+	bl AiSetDecision
 	movs r1, #4
 	ldrsb r1, [r4, r1]
 	movs r0, #1
@@ -8400,8 +8400,8 @@ _08038E0C: .4byte gBmMapMovement
 _08038E10: .4byte 0x0202E3E4
 _08038E14: .4byte 0x00010025
 
-	thumb_func_start sub_8038E18
-sub_8038E18: @ 0x08038E18
+	thumb_func_start AiFillReversedAttackRangeMap
+AiFillReversedAttackRangeMap: @ 0x08038E18
 	push {r4, r5, r6, lr}
 	mov r6, r8
 	push {r6}
@@ -8536,8 +8536,8 @@ _08038F24: .4byte gBmMapMovement
 _08038F28: .4byte 0x0202E3E4
 _08038F2C: .4byte gBmMapSize
 
-	thumb_func_start sub_8038F30
-sub_8038F30: @ 0x08038F30
+	thumb_func_start AiAttemptBallistaCombat
+AiAttemptBallistaCombat: @ 0x08038F30
 	push {r4, r5, r6, r7, lr}
 	mov r7, sl
 	mov r6, sb
@@ -8661,18 +8661,18 @@ _08038FF2:
 	ldr r0, [r0]
 	adds r1, r4, #0
 	adds r2, r5, #0
-	bl sub_8036228
+	bl AiReachesByBirdsEyeDistance
 	lsls r0, r0, #0x18
 	cmp r0, #0
 	beq _08039060
 	adds r0, r4, #0
 	adds r1, r5, #0
-	bl sub_8038E18
+	bl AiFillReversedAttackRangeMap
 	ldrb r0, [r4, #0xb]
 	strb r0, [r6, #2]
 	mov r0, sp
 	adds r1, r5, #0
-	bl sub_8039318
+	bl AiSimulateBestBallistaBattleAgainstTarget
 	lsls r0, r0, #0x18
 	cmp r0, #0
 	beq _08039060
@@ -8930,7 +8930,7 @@ _0803921C:
 	str r2, [sp, #8]
 	movs r2, #3
 	ldr r3, [sp, #0x18]
-	bl sub_8035328
+	bl AiSetDecision
 	movs r0, #1
 _08039244:
 	add sp, #0x24
@@ -9044,8 +9044,8 @@ _0803930A:
 	bx r1
 	.align 2, 0
 
-	thumb_func_start sub_8039318
-sub_8039318: @ 0x08039318
+	thumb_func_start AiSimulateBestBallistaBattleAgainstTarget
+AiSimulateBestBallistaBattleAgainstTarget: @ 0x08039318
 	push {r4, r5, r6, r7, lr}
 	mov r7, sb
 	mov r6, r8
@@ -10185,8 +10185,8 @@ _08039BA6:
 	bx r1
 	.align 2, 0
 
-	thumb_func_start sub_8039BB8
-sub_8039BB8: @ 0x08039BB8
+	thumb_func_start AiUpdateUnitsSeekHealing
+AiUpdateUnitsSeekHealing: @ 0x08039BB8
 	push {r4, r5, r6, lr}
 	sub sp, #0xc
 	ldr r0, _08039C08 @ =gPlaySt
@@ -10378,7 +10378,7 @@ _08039D14:
 _08039D2C:
 	movs r2, #6
 	movs r3, #0
-	bl sub_8035328
+	bl AiSetDecision
 	movs r0, #1
 	b _08039D40
 _08039D38:
@@ -10431,7 +10431,7 @@ sub_8039D48: @ 0x08039D48
 	adds r1, r5, #0
 	movs r2, #0
 	movs r3, #0xff
-	bl sub_8036FD8
+	bl AiTryMoveTowards
 	ldr r1, _08039DC0 @ =0x0203A978
 	ldrb r0, [r1, #2]
 	ldrb r1, [r1, #3]
@@ -10443,7 +10443,7 @@ sub_8039D48: @ 0x08039D48
 	movs r2, #0
 	str r2, [sp, #8]
 	movs r2, #2
-	bl sub_8035328
+	bl AiSetDecision
 	movs r0, #1
 	b _08039DE6
 	.align 2, 0
@@ -10457,7 +10457,7 @@ _08039DC4:
 	adds r1, r5, #0
 	movs r2, #0
 	movs r3, #0xff
-	bl sub_8036FD8
+	bl AiTryMoveTowards
 	ldr r0, _08039DE0 @ =0x0203A978
 	ldrb r0, [r0, #0xa]
 	lsls r0, r0, #0x18
@@ -11236,7 +11236,7 @@ _0803A380:
 	str r2, [sp, #8]
 	movs r2, #7
 	mov r3, sb
-	bl sub_8035328
+	bl AiSetDecision
 	movs r0, #1
 _0803A39E:
 	add sp, #0x10
@@ -11338,7 +11338,7 @@ _0803A43C:
 	str r0, [sp, #8]
 	adds r0, r2, #0
 	movs r2, #1
-	bl sub_8035328
+	bl AiSetDecision
 	movs r0, #1
 	b _0803A524
 	.align 2, 0
@@ -11853,7 +11853,7 @@ _0803A85C:
 	str r2, [sp]
 	movs r2, #0
 	movs r3, #0xff
-	bl sub_8036FD8
+	bl AiTryMoveTowards
 _0803A86C:
 	movs r0, #1
 	add sp, #8
@@ -12058,7 +12058,7 @@ _0803A9DE:
 	str r2, [sp]
 	movs r2, #0
 	movs r3, #0xff
-	bl sub_8036FD8
+	bl AiTryMoveTowards
 	movs r0, #1
 _0803A9F4:
 	add sp, #8
@@ -12426,7 +12426,7 @@ sub_803AC7C: @ 0x0803AC7C
 	str r2, [sp]
 	movs r2, #0
 	movs r3, #0xff
-	bl sub_8036FD8
+	bl AiTryMoveTowards
 _0803ACC2:
 	movs r0, #1
 	add sp, #4
@@ -12562,7 +12562,7 @@ _0803ADB4:
 	str r2, [sp, #8]
 	movs r2, #0xa
 	movs r3, #0
-	bl sub_8035328
+	bl AiSetDecision
 	b _0803AEDC
 	.align 2, 0
 _0803ADD4: .4byte 0x0000FFFF
@@ -12652,7 +12652,7 @@ _0803AE64:
 	adds r0, r4, #0
 	movs r2, #0
 	movs r3, #0xff
-	bl sub_8036FD8
+	bl AiTryMoveTowards
 _0803AE82:
 	ldr r1, _0803AEBC @ =0x0203A978
 	ldrb r2, [r1, #0xa]
@@ -12720,7 +12720,7 @@ sub_803AEF4: @ 0x0803AEF4
 	adds r0, r2, #0
 	movs r2, #0
 	movs r3, #0xff
-	bl sub_8036FD8
+	bl AiTryMoveTowards
 	movs r0, #1
 	add sp, #4
 	pop {r1}
@@ -13144,7 +13144,7 @@ _0803B226:
 	str r2, [sp, #4]
 	str r2, [sp, #8]
 	movs r2, #5
-	bl sub_8035328
+	bl AiSetDecision
 _0803B24A:
 	add sp, #0x24
 	pop {r3, r4, r5}
@@ -13368,7 +13368,7 @@ _0803B3F8:
 	str r2, [sp, #4]
 	str r2, [sp, #8]
 	movs r2, #5
-	bl sub_8035328
+	bl AiSetDecision
 _0803B41C:
 	add sp, #0x20
 	pop {r3, r4, r5}
@@ -13499,7 +13499,7 @@ _0803B504:
 	str r2, [sp, #8]
 	movs r2, #5
 	movs r3, #0
-	bl sub_8035328
+	bl AiSetDecision
 _0803B52C:
 	add sp, #0x10
 	pop {r3, r4, r5}
@@ -13671,7 +13671,7 @@ _0803B654:
 	lsrs r2, r2, #0x18
 	str r2, [sp, #8]
 	movs r2, #5
-	bl sub_8035328
+	bl AiSetDecision
 _0803B68A:
 	add sp, #0x24
 	pop {r3, r4, r5}
@@ -13831,7 +13831,7 @@ _0803B7AE:
 	str r2, [sp, #4]
 	str r2, [sp, #8]
 	movs r2, #5
-	bl sub_8035328
+	bl AiSetDecision
 _0803B7CE:
 	add sp, #0x24
 	pop {r3, r4, r5}
@@ -14114,7 +14114,7 @@ _0803B9E8:
 	str r2, [sp, #4]
 	str r2, [sp, #8]
 	movs r2, #5
-	bl sub_8035328
+	bl AiSetDecision
 _0803BA0C:
 	add sp, #0x24
 	pop {r3, r4, r5}
@@ -14300,7 +14300,7 @@ _0803BB6A:
 	str r2, [sp, #4]
 	str r2, [sp, #8]
 	movs r2, #5
-	bl sub_8035328
+	bl AiSetDecision
 _0803BB8E:
 	add sp, #0x20
 	pop {r3, r4, r5}
@@ -14455,7 +14455,7 @@ _0803BCAA:
 	str r2, [sp, #4]
 	str r2, [sp, #8]
 	movs r2, #5
-	bl sub_8035328
+	bl AiSetDecision
 _0803BCCA:
 	add sp, #0x24
 	pop {r3, r4, r5}
@@ -14826,7 +14826,7 @@ sub_803BF5C: @ 0x0803BF5C
 	movs r2, #1
 	str r2, [sp]
 	movs r2, #0
-	bl sub_8036FD8
+	bl AiTryMoveTowards
 	ldr r4, _0803BFF0 @ =0x0203A978
 	ldrb r0, [r4, #0xa]
 	cmp r0, #1
@@ -14854,7 +14854,7 @@ sub_803BF5C: @ 0x0803BF5C
 	str r5, [sp, #8]
 	movs r2, #6
 	movs r3, #0
-	bl sub_8035328
+	bl AiSetDecision
 _0803BFDA:
 	add sp, #0x10
 	pop {r4, r5, r6}
@@ -14939,7 +14939,7 @@ _0803C05E:
 	movs r5, #0
 	str r5, [sp]
 	movs r2, #0
-	bl sub_8036FD8
+	bl AiTryMoveTowards
 	ldr r4, _0803C0D8 @ =0x0203A978
 	ldrb r0, [r4, #0xa]
 	cmp r0, #1
@@ -14966,7 +14966,7 @@ _0803C05E:
 	str r5, [sp, #8]
 	movs r2, #6
 	movs r3, #0
-	bl sub_8035328
+	bl AiSetDecision
 _0803C0C6:
 	add sp, #0x10
 	pop {r4, r5, r6, r7}
@@ -15019,7 +15019,7 @@ sub_803C0DC: @ 0x0803C0DC
 	str r2, [sp, #8]
 	movs r2, #6
 	movs r3, #0
-	bl sub_8035328
+	bl AiSetDecision
 _0803C132:
 	add sp, #0x10
 	pop {r4, r5}
@@ -15603,8 +15603,8 @@ _0803C5A8:
 	.align 2, 0
 _0803C5AC: .4byte 0x0203A8E8
 
-	thumb_func_start sub_803C5B0
-sub_803C5B0: @ 0x0803C5B0
+	thumb_func_start AiMapFloodRangeFrom
+AiMapFloodRangeFrom: @ 0x0803C5B0
 	push {r4, r5, r6, lr}
 	adds r5, r0, #0
 	adds r6, r1, #0

@@ -2934,7 +2934,7 @@ _080093E8:
 	subs r0, #4
 	movs r2, #0x2e
 	ldrsh r1, [r4, r2]
-	bl DisplayUiHand
+	bl PutUiHand
 _08009404:
 	pop {r4, r5}
 	pop {r0}

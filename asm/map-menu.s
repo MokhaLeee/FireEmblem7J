@@ -3696,7 +3696,7 @@ sub_8023644: @ 0x08023644
 	lsls r1, r1, #3
 	ldr r2, _0802366C @ =gBmSt
 	ldrh r2, [r2, #0x2c]
-	bl sub_80826EC
+	bl StartItemHelpBox
 	movs r0, #0
 	b _08023690
 	.align 2, 0
@@ -3716,7 +3716,7 @@ _08023670:
 	adds r3, #0x1e
 	adds r3, r3, r2
 	ldrh r2, [r3]
-	bl sub_80826EC
+	bl StartItemHelpBox
 _08023690:
 	pop {r4}
 	pop {r1}
@@ -3745,7 +3745,7 @@ sub_802369C: @ 0x0802369C
 	adds r0, r0, r2
 	ldrh r2, [r0]
 	adds r0, r3, #0
-	bl sub_80826EC
+	bl StartItemHelpBox
 	pop {r4}
 	pop {r1}
 	bx r1
@@ -3772,7 +3772,7 @@ sub_80236D4: @ 0x080236D4
 	adds r2, r0, #0
 	adds r0, r5, #0
 	adds r1, r4, #0
-	bl sub_80826EC
+	bl StartItemHelpBox
 	pop {r4, r5}
 	pop {r1}
 	bx r1
@@ -4517,7 +4517,7 @@ _08023C82:
 	movs r4, #0x2c
 	ldrsh r1, [r3, r4]
 	lsls r1, r1, #3
-	bl sub_80826EC
+	bl StartItemHelpBox
 	pop {r4}
 	pop {r1}
 	bx r1

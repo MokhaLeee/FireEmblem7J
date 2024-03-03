@@ -721,7 +721,7 @@ sub_802B5E4: @ 0x0802B5E4
 	movs r2, #2
 	ldrsh r1, [r1, r2]
 	lsls r1, r1, #3
-	bl DisplayUiHand
+	bl PutUiHand
 	b _0802B6C6
 	.align 2, 0
 _0802B61C: .4byte gUnk_08C03574
@@ -746,7 +746,7 @@ _0802B620:
 	movs r5, #2
 	ldrsh r1, [r1, r5]
 	lsls r1, r1, #3
-	bl DisplayUiHand
+	bl PutUiHand
 	ldr r0, _0802B67C @ =gpKeySt
 	ldr r0, [r0]
 	ldrh r1, [r0, #8]
@@ -888,7 +888,7 @@ sub_802B738: @ 0x0802B738
 	movs r3, #2
 	ldrsh r1, [r1, r3]
 	lsls r1, r1, #3
-	bl DisplayUiHand
+	bl PutUiHand
 	adds r2, r5, #0
 	adds r2, #0x44
 	adds r0, r5, #0
@@ -931,7 +931,7 @@ _0802B79C:
 	movs r3, #2
 	ldrsh r1, [r1, r3]
 	lsls r1, r1, #3
-	bl DisplayUiHand
+	bl PutUiHand
 	adds r0, r5, #0
 	adds r0, #0x44
 	adds r2, r5, #0
@@ -1170,7 +1170,7 @@ _0802B97A:
 	ldrsh r1, [r1, r2]
 	lsls r1, r1, #3
 	adds r2, r6, #0
-	bl sub_80826EC
+	bl StartItemHelpBox
 	ldr r0, _0802B9BC @ =gpKeySt
 	ldr r1, [r0]
 	ldr r0, _0802B9C0 @ =0x0000FEFD
@@ -1226,7 +1226,7 @@ sub_802B9C4: @ 0x0802B9C4
 	movs r3, #2
 	ldrsh r1, [r1, r3]
 	lsls r1, r1, #3
-	bl sub_80826EC
+	bl StartItemHelpBox
 _0802BA16:
 	ldr r0, _0802BA94 @ =gpKeySt
 	ldr r1, [r0]
@@ -1254,7 +1254,7 @@ _0802BA2C:
 	movs r2, #2
 	ldrsh r1, [r1, r2]
 	lsls r1, r1, #3
-	bl DisplayUiHand
+	bl PutUiHand
 	adds r0, r4, #0
 	adds r0, #0x45
 	ldrb r0, [r0]
@@ -1335,7 +1335,7 @@ _0802BAC4:
 	movs r3, #2
 	ldrsh r1, [r1, r3]
 	lsls r1, r1, #3
-	bl DisplayUiHand
+	bl PutUiHand
 	movs r0, #0
 	ldrsb r0, [r5, r0]
 	cmp r0, #0

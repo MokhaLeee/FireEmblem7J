@@ -1,5 +1,154 @@
 #include "gbafe.h"
 
+EWRAM_DATA struct StatScreenInfo gStatScreenInfo = {};
+
+u16 CONST_DATA Sprite_StatScreenMuAreaBackground[] = {
+    12,
+    OAM0_SHAPE_32x8 + OAM0_Y(128) + OAM0_BLEND, OAM1_SIZE_32x8 + OAM1_X(8), OAM2_CHR(0x45),
+    OAM0_SHAPE_32x8 + OAM0_Y(128) + OAM0_BLEND, OAM1_SIZE_32x8 + OAM1_X(32), OAM2_CHR(0x46),
+    OAM0_SHAPE_32x8 + OAM0_Y(144) + OAM0_BLEND, OAM1_SIZE_32x8 + OAM1_X(8), OAM2_CHR(0x45),
+    OAM0_SHAPE_32x8 + OAM0_Y(144) + OAM0_BLEND, OAM1_SIZE_32x8 + OAM1_X(32), OAM2_CHR(0x46),
+    OAM0_SHAPE_32x32 + OAM0_Y(104) + OAM0_BLEND, OAM1_SIZE_32x32, 0,
+    OAM0_SHAPE_32x32 + OAM0_Y(104) + OAM0_BLEND, OAM1_SIZE_32x32 + OAM1_X(32), 0,
+    OAM0_SHAPE_32x32 + OAM0_Y(104) + OAM0_BLEND, OAM1_SIZE_32x32 + OAM1_X(64), 0,
+    OAM0_SHAPE_32x32 + OAM0_Y(120) + OAM0_BLEND, OAM1_SIZE_32x32, 0,
+    OAM0_SHAPE_32x32 + OAM0_Y(120) + OAM0_BLEND, OAM1_SIZE_32x32 + OAM1_X(32), 0,
+    OAM0_SHAPE_32x32 + OAM0_Y(120) + OAM0_BLEND, OAM1_SIZE_32x32 + OAM1_X(64), 0,
+    OAM0_SHAPE_8x32 + OAM0_Y(104) + OAM0_BLEND, OAM1_SIZE_8x32 + OAM1_X(96), OAM2_CHR(0x4),
+    OAM0_SHAPE_8x32 + OAM0_Y(120) + OAM0_BLEND, OAM1_SIZE_8x32 + OAM1_X(96) + OAM1_VFLIP, OAM2_CHR(0x4),
+};
+
+void StatScreenSprites_Init(struct StatScreenSpritesProc * proc)
+{
+    proc->x_left = 105;
+    proc->x_right = 202;
+    proc->clock_right = 0;
+    proc->clock_left = 0;
+    proc->anim_speed_right = 4;
+    proc->anim_speed_left = 4;
+}
+
+void StatScreenSprites_BumpCheck(struct StatScreenSpritesProc * proc)
+{
+    if (gStatScreenSt.page_slide_key_bit & DPAD_LEFT)
+    {
+        proc->anim_speed_left = 31;
+        proc->x_left = 105 - 6;
+    }
+
+    if (gStatScreenSt.page_slide_key_bit & DPAD_RIGHT)
+    {
+        proc->anim_speed_right = 31;
+        proc->x_right = 202 + 6;
+    }
+
+    gStatScreenSt.page_slide_key_bit = 0;
+}
+
+void StatScreenSprites_PutArrows(struct StatScreenSpritesProc * proc)
+{
+    int base_oam2 = OAM2_CHR(OBCHR_STATSCREEN_240) + OAM2_PAL(OBPAL_STATSCREEN_SPRITES) + OAM2_LAYER(1);
+
+    proc->clock_left += proc->anim_speed_left;
+    proc->clock_right += proc->anim_speed_right;
+
+    if (proc->anim_speed_left > 4)
+        proc->anim_speed_left--;
+
+    if (proc->anim_speed_right > 4)
+        proc->anim_speed_right--;
+
+    if ((GetGameTime() % 4) == 0)
+    {
+        if (proc->x_left < 105)
+            proc->x_left++;
+
+        if (proc->x_right > 202)
+            proc->x_right--;
+    }
+
+    PutSprite(
+        0, gStatScreenSt.x_disp_off + proc->x_left,
+        gStatScreenSt.y_disp_off + 6, Sprite_8x16,
+        base_oam2 + 0x4A + (proc->clock_left >> 5) % 6);
+
+    PutSprite(
+        0, gStatScreenSt.x_disp_off + proc->x_right,
+        gStatScreenSt.y_disp_off + 6, Sprite_8x16_HFlipped,
+        base_oam2 + 0x4A + (proc->clock_right >> 5) % 6);
+}
+void StatScreenSprites_PutNumberLabel(struct StatScreenSpritesProc * proc)
+{
+    enum
+    {
+        PAGENUM_X = 214,
+        PAGENUM_Y = 12
+    };
+
+    // page amt
+    PutSprite(
+        2, gStatScreenSt.x_disp_off + PAGENUM_X + 13,
+        gStatScreenSt.y_disp_off + PAGENUM_Y, Sprite_8x8,
+        OAM2_CHR(OBCHR_STATSCREEN_240 + 0x64) + OAM2_PAL(OBPAL_STATSCREEN_SPRITES) +
+            OAM2_LAYER(3) + gStatScreenSt.page_count);
+
+    // '/'
+    PutSprite(
+        2, gStatScreenSt.x_disp_off + PAGENUM_X + 7,
+        gStatScreenSt.y_disp_off + PAGENUM_Y, Sprite_8x8,
+        OAM2_CHR(OBCHR_STATSCREEN_240 + 0x05) + OAM2_PAL(OBPAL_STATSCREEN_SPRITES) +
+            OAM2_LAYER(3));
+
+    // page num
+    PutSprite(
+        2, gStatScreenSt.x_disp_off + PAGENUM_X,
+        gStatScreenSt.y_disp_off + PAGENUM_Y, Sprite_8x8,
+        OAM2_CHR(OBCHR_STATSCREEN_240 + 0x64) + OAM2_PAL(OBPAL_STATSCREEN_SPRITES) +
+            OAM2_LAYER(3) + gStatScreenSt.page + 1);
+}
+
+u16 CONST_DATA Sprite_StatScreenFaceSideWindow[] = {
+    17,
+    OAM0_SHAPE_8x8, OAM1_SIZE_8x8 + OAM1_X(424) + OAM1_HFLIP, 0,
+    OAM0_SHAPE_16x8, OAM1_SIZE_16x8 + OAM1_X(432), OAM2_CHR(0x6),
+    OAM0_SHAPE_32x8, OAM1_SIZE_32x8 + OAM1_X(448), OAM2_CHR(0x6),
+    OAM0_SHAPE_32x8, OAM1_SIZE_32x8 + OAM1_X(480), OAM2_CHR(0x6),
+    OAM0_SHAPE_8x8, OAM1_SIZE_8x8, 0,
+    OAM0_SHAPE_8x8 + OAM0_Y(8), OAM1_SIZE_8x8, OAM2_CHR(0x1),
+    OAM0_SHAPE_8x8 + OAM0_Y(16), OAM1_SIZE_8x8, OAM2_CHR(0x1),
+    OAM0_SHAPE_8x8 + OAM0_Y(24), OAM1_SIZE_8x8, OAM2_CHR(0x1),
+    OAM0_SHAPE_8x8 + OAM0_Y(32), OAM1_SIZE_8x8, OAM2_CHR(0x1),
+    OAM0_SHAPE_8x8 + OAM0_Y(40), OAM1_SIZE_8x8, OAM2_CHR(0x1),
+    OAM0_SHAPE_8x8 + OAM0_Y(48), OAM1_SIZE_8x8, OAM2_CHR(0x1),
+    OAM0_SHAPE_8x8 + OAM0_Y(56), OAM1_SIZE_8x8, OAM2_CHR(0x1),
+    OAM0_SHAPE_8x8 + OAM0_Y(64), OAM1_SIZE_8x8, OAM2_CHR(0x1),
+    OAM0_SHAPE_8x8 + OAM0_Y(72), OAM1_SIZE_8x8, OAM2_CHR(0x1),
+    OAM0_SHAPE_8x8 + OAM0_Y(80), OAM1_SIZE_8x8, OAM2_CHR(0x2),
+    OAM0_SHAPE_8x8 + OAM0_Y(88), OAM1_SIZE_8x8, OAM2_CHR(0x3),
+    OAM0_SHAPE_8x8 + OAM0_Y(96), OAM1_SIZE_8x8, OAM2_CHR(0x4),
+};
+
+void StatScreenSprites_PutMuAreaSprites(struct StatScreenSpritesProc * proc)
+{
+    PutSprite(12,
+        gStatScreenSt.x_disp_off,
+        gStatScreenSt.y_disp_off,
+        Sprite_StatScreenMuAreaBackground,
+        OAM2_CHR(OBCHR_STATSCREEN_240 + 0x00) + OAM2_PAL(OBPAL_STATSCREEN_WINDOWFRAME) + OAM2_LAYER(3));
+
+    PutSprite(11,
+        gStatScreenSt.x_disp_off + 64,
+        gStatScreenSt.y_disp_off + 131,
+        Sprite_32x16,
+        OAM2_CHR(OBCHR_STATSCREEN_240 + 0x50) + OAM2_PAL(OBPAL_STATSCREEN_SPRITES) + OAM2_LAYER(3));
+
+    PutSpriteExt(2,
+        OAM1_X(gStatScreenSt.x_disp_off + 96),
+        OAM0_Y(gStatScreenSt.y_disp_off),
+        Sprite_StatScreenFaceSideWindow,
+        OAM2_CHR(OBCHR_STATSCREEN_60) + OAM2_PAL(OBPAL_STATSCREEN_10) + OAM2_LAYER(1));
+}
+
 void StatScreenSprites_PutRescueMarkers(struct StatScreenSpritesProc * proc)
 {
     bool display_icon = (GetGameTime() % 32) < 20;
@@ -37,6 +186,19 @@ void StatScreenSprites_PutRescueMarkers(struct StatScreenSpritesProc * proc)
         }
     }
 }
+
+struct ProcCmd CONST_DATA ProcScr_StatScreenSprites[] = {
+    PROC_CALL(StatScreenSprites_Init),
+PROC_LABEL(0),
+    PROC_YIELD,
+    PROC_CALL(StatScreenSprites_BumpCheck),
+    PROC_CALL(StatScreenSprites_PutArrows),
+    PROC_CALL(StatScreenSprites_PutNumberLabel),
+    PROC_CALL(StatScreenSprites_PutMuAreaSprites),
+    PROC_CALL(StatScreenSprites_PutRescueMarkers),
+    PROC_GOTO(0),
+    PROC_END,
+};
 
 void StatScreen_DisableScreen(ProcPtr proc)
 {
@@ -206,11 +368,6 @@ void StatScreen_UpdateLastHelpInfo(ProcPtr proc)
     gStatScreenSt.help = GetLastHelpBoxInfo();
 }
 
-struct ProcCmd CONST_DATA ProcScr_SyncStatScreenBgOffset[] = {
-    PROC_REPEAT(SyncStatScreenBgOffset),
-    PROC_END,
-};
-
 void SyncStatScreenBgOffset(void)
 {
     int y_bg = 0xFF & -gStatScreenSt.y_disp_off;
@@ -224,6 +381,11 @@ void StatScreen_CleanUp(ProcPtr proc)
 {
     EndMuralBackground();
 }
+
+struct ProcCmd CONST_DATA ProcScr_SyncStatScreenBgOffset[] = {
+    PROC_REPEAT(SyncStatScreenBgOffset),
+    PROC_END,
+};
 
 struct ProcCmd CONST_DATA ProcScr_StatScreen[] = {
     PROC_SET_END_CB(StatScreen_CleanUp),

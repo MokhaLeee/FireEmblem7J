@@ -38,7 +38,7 @@ void StartBattleManim(void);
 void WriteSuspendSave(int slot);
 void StartBgmVolumeChange(int volume_from, int volume_to, int duration, ProcPtr parent);
 void FadeBgmOut(int volume);
-void DisplayUiHand(int x, int y);
+void PutUiHand(int x, int y);
 void DisplayBmTextShadow(int x, int y);
 void InitScanlineEffect(void);
 void SwapScanlineBufs(void);

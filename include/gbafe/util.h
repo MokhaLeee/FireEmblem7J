@@ -16,7 +16,7 @@ void StringCopy(char * dst, char const * src);
 // ??? sub_8013614
 // ??? sub_8013658
 void Decompress(void const * src, void * dst);
-// ??? sub_80136C8
+int GetDataSize(void const * data);
 // ??? sub_80136D0
 // ??? sub_80136E8
 // ??? sub_8013718

@@ -11,6 +11,8 @@ enum {
     BGPAL_ICONS           = 4, // .. 5
     BGPAL_TILESET         = 6, // .. 15
 
+    BGPAL_UI_STATBAR = 6,
+
     BGPAL_STATSCREEN_6    = 6,
     BGPAL_MURALBACKGROUND = 14,
 
@@ -40,6 +42,8 @@ enum {
 };
 
 enum objchr_idx {
+    OBCHR_SYSTEM_OBJECTS = 0x000,
+
     OBCHR_FACE_DEFAULT2 = 0x200,
     OBCHR_FACE_DEFAULT1 = 0x280,
     OBCHR_FACE_DEFAULT0 = 0x300,
@@ -50,6 +54,8 @@ enum objchr_idx {
 };
 
 enum objpal_idx {
+    OBPAL_SYSTEM_OBJECTS = 0,
+
     OBPAL_FACE_DEFAULT0 = 6,
     OBPAL_FACE_DEFAULT1 = 7,
     OBPAL_FACE_DEFAULT2 = 8,

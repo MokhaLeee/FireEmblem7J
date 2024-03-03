@@ -20,16 +20,16 @@ enum
 };
 
 void ApplyUiWindowFramePal(int palid);
-// sub_804A2AC
+// UnpackUiWindowFrameImg
 void ApplyUiStatBarPal(int palid);
-// sub_804A30C
-// sub_804A360
+// UnpackUiWindowFrameGraphics2
+// PutUiWindowFrame
 // sub_804A4CC
-// DisplayUiHand
+void PutUiHand(int x, int y);
 // sub_804A7B0
 // sub_804A7EC
-// sub_804A810
-// sub_804A81C
+int GetUiHandPrevX(void);
+int GetUiHandPrevY(void);
 // ClearUi
 // sub_804A84C
 // sub_804A8B0
@@ -37,3 +37,21 @@ void ApplyUiStatBarPal(int palid);
 // sub_804A95C
 // sub_804A9D0
 void UnpackUiWindowFrameGraphics(void);
+
+// ??? gUnk_08C09944
+// ??? gUnk_08C09B0C
+extern u16 const * CONST_DATA gUiWindowFrameModelLut[];
+extern u16 const * CONST_DATA gUiWindowFramePalLut[];
+extern u8 const * CONST_DATA gUiWindowFrameImgLut[];
+extern u16 const * CONST_DATA gUiStatBarPalLut[];
+// ??? gUnk_08C09BB4
+// ??? gUnk_08C09BBC
+// ??? gUnk_08C09BDC
+// ??? gUnk_08C09BF4
+// ??? gUnk_08C09C34
+// ??? gUnk_08C09C3C
+// ??? gUnk_08C09C54
+// ??? gUnk_08C09C64
+// ??? gUnk_08C09C74
+// ??? gUnk_08C09C80
+// ??? gUnk_08C09CB0

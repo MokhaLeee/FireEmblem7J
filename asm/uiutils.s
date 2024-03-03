@@ -1,122 +1,8 @@
 	.include "macro.inc"
 	.syntax unified
 
-	thumb_func_start ApplyUiWindowFramePal
-ApplyUiWindowFramePal: @ 0x0804A27C
-	push {lr}
-	adds r3, r0, #0
-	cmp r3, #0
-	bge _0804A286
-	movs r3, #1
-_0804A286:
-	ldr r2, _0804A2A4 @ =gUnk_08C09B84
-	ldr r1, _0804A2A8 @ =gPlaySt
-	adds r1, #0x41
-	movs r0, #0xc
-	ldrb r1, [r1]
-	ands r0, r1
-	adds r0, r0, r2
-	ldr r0, [r0]
-	lsls r1, r3, #5
-	movs r2, #0x20
-	bl ApplyPaletteExt
-	pop {r0}
-	bx r0
-	.align 2, 0
-_0804A2A4: .4byte gUnk_08C09B84
-_0804A2A8: .4byte gPlaySt
-
-	thumb_func_start sub_804A2AC
-sub_804A2AC: @ 0x0804A2AC
-	push {lr}
-	adds r3, r0, #0
-	cmp r3, #0
-	bne _0804A2B8
-	movs r3, #0xc0
-	lsls r3, r3, #0x13
-_0804A2B8:
-	ldr r2, _0804A2D4 @ =gUnk_08C09B94
-	ldr r1, _0804A2D8 @ =gPlaySt
-	adds r1, #0x41
-	movs r0, #0xc
-	ldrb r1, [r1]
-	ands r0, r1
-	adds r0, r0, r2
-	ldr r0, [r0]
-	adds r1, r3, #0
-	bl Decompress
-	pop {r0}
-	bx r0
-	.align 2, 0
-_0804A2D4: .4byte gUnk_08C09B94
-_0804A2D8: .4byte gPlaySt
-
-	thumb_func_start ApplyUiStatBarPal
-ApplyUiStatBarPal: @ 0x0804A2DC
-	push {lr}
-	adds r3, r0, #0
-	cmp r3, #0
-	bge _0804A2E6
-	movs r3, #6
-_0804A2E6:
-	ldr r2, _0804A304 @ =gUnk_08C09BA4
-	ldr r1, _0804A308 @ =gPlaySt
-	adds r1, #0x41
-	movs r0, #0xc
-	ldrb r1, [r1]
-	ands r0, r1
-	adds r0, r0, r2
-	ldr r0, [r0]
-	lsls r1, r3, #5
-	movs r2, #0x20
-	bl ApplyPaletteExt
-	pop {r0}
-	bx r0
-	.align 2, 0
-_0804A304: .4byte gUnk_08C09BA4
-_0804A308: .4byte gPlaySt
-
-	thumb_func_start sub_804A30C
-sub_804A30C: @ 0x0804A30C
-	push {r4, r5, r6, lr}
-	adds r5, r0, #0
-	cmp r5, #0
-	bge _0804A31E
-	ldr r0, _0804A354 @ =gPlaySt
-	adds r0, #0x41
-	ldrb r0, [r0]
-	lsls r0, r0, #0x1c
-	lsrs r5, r0, #0x1e
-_0804A31E:
-	ldr r0, _0804A358 @ =gUnk_08C09B94
-	lsls r5, r5, #2
-	adds r5, r5, r0
-	ldr r0, [r5]
-	bl sub_80136C8
-	adds r6, r0, #0
-	ldr r4, _0804A35C @ =gFadeComponentStep
-	subs r4, r4, r6
-	ldr r0, [r5]
-	adds r1, r4, #0
-	bl Decompress
-	movs r1, #0xc0
-	lsls r1, r1, #0x13
-	adds r0, r4, #0
-	adds r2, r6, #0
-	bl RegisterDataMove
-	movs r0, #1
-	rsbs r0, r0, #0
-	bl ApplyUiWindowFramePal
-	pop {r4, r5, r6}
-	pop {r0}
-	bx r0
-	.align 2, 0
-_0804A354: .4byte gPlaySt
-_0804A358: .4byte gUnk_08C09B94
-_0804A35C: .4byte gFadeComponentStep
-
-	thumb_func_start sub_804A360
-sub_804A360: @ 0x0804A360
+	thumb_func_start PutUiWindowFrame
+PutUiWindowFrame: @ 0x0804A360
 	push {r4, r5, r6, r7, lr}
 	mov r7, sl
 	mov r6, sb
@@ -129,7 +15,7 @@ sub_804A360: @ 0x0804A360
 	ldr r2, [sp, #0x34]
 	ldr r6, [sp, #0x38]
 	ldr r0, [sp, #0x3c]
-	ldr r1, _0804A4C8 @ =gUnk_08C09B78
+	ldr r1, _0804A4C8 @ =gUiWindowFrameModelLut
 	lsls r0, r0, #2
 	adds r0, r0, r1
 	ldr r5, [r0]
@@ -306,7 +192,7 @@ _0804A47E:
 	pop {r0}
 	bx r0
 	.align 2, 0
-_0804A4C8: .4byte gUnk_08C09B78
+_0804A4C8: .4byte gUiWindowFrameModelLut
 
 	thumb_func_start sub_804A4CC
 sub_804A4CC: @ 0x0804A4CC
@@ -319,7 +205,7 @@ sub_804A4CC: @ 0x0804A4CC
 	str r0, [sp]
 	mov sb, r1
 	ldr r0, [sp, #0x50]
-	ldr r1, _0804A734 @ =gUnk_08C09B78
+	ldr r1, _0804A734 @ =gUiWindowFrameModelLut
 	lsls r0, r0, #2
 	adds r0, r0, r1
 	ldr r6, [r0]
@@ -624,12 +510,12 @@ _0804A6BC:
 	pop {r0}
 	bx r0
 	.align 2, 0
-_0804A734: .4byte gUnk_08C09B78
+_0804A734: .4byte gUiWindowFrameModelLut
 _0804A738: .4byte gBg1Tm
 _0804A73C: .4byte gBg0Tm
 
-	thumb_func_start DisplayUiHand
-DisplayUiHand: @ 0x0804A740
+	thumb_func_start PutUiHand
+PutUiHand: @ 0x0804A740
 	push {r4, r5, r6, r7, lr}
 	sub sp, #4
 	adds r5, r0, #0
@@ -731,8 +617,8 @@ sub_804A7EC: @ 0x0804A7EC
 	.align 2, 0
 _0804A80C: .4byte gUnk_08C09BB4
 
-	thumb_func_start sub_804A810
-sub_804A810: @ 0x0804A810
+	thumb_func_start GetUiHandPrevX
+GetUiHandPrevX: @ 0x0804A810
 	ldr r0, _0804A818 @ =0x0203DCC4
 	movs r1, #0
 	ldrsh r0, [r0, r1]
@@ -740,8 +626,8 @@ sub_804A810: @ 0x0804A810
 	.align 2, 0
 _0804A818: .4byte 0x0203DCC4
 
-	thumb_func_start sub_804A81C
-sub_804A81C: @ 0x0804A81C
+	thumb_func_start GetUiHandPrevY
+GetUiHandPrevY: @ 0x0804A81C
 	ldr r0, _0804A824 @ =0x0203DCC4
 	movs r1, #2
 	ldrsh r0, [r0, r1]
@@ -987,7 +873,7 @@ _0804A9F4: .4byte gUnk_08C09BB4
 UnpackUiWindowFrameGraphics: @ 0x0804A9F8
 	push {lr}
 	movs r0, #0
-	bl sub_804A2AC
+	bl UnpackUiWindowFrameImg
 	movs r0, #1
 	rsbs r0, r0, #0
 	bl ApplyUiWindowFramePal

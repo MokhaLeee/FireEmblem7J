@@ -293,11 +293,11 @@ void DisplayExtendedSysHand(struct SysHandCursorProc * proc)
     clk = GetGameTime();
     dst = gPal;
     _dst = dst + (proc->pal_bank * 0x10  + 0x10E);
-    src = &PAL_BUF_COLOR(Pal_08428A80, gPlaySt.cfgWindowColor, (clk / 4) % 0x10);
+    src = &PAL_BUF_COLOR(Pal_08428A80, gPlaySt.config_window_theme, (clk / 4) % 0x10);
     *_dst = *src;
 #else
     gPal[proc->pal_bank * 0x10  + 0x10E] =
-        Pal_08A1D448[gPlaySt.cfgWindowColor * 0x10 + ((GetGameTime() / 5) % 0x10)];
+        Pal_08A1D448[gPlaySt.config_window_theme * 0x10 + ((GetGameTime() / 5) % 0x10)];
 #endif
 
     EnablePalSync();
@@ -319,7 +319,7 @@ void SysHandCursor_Init(struct SysHandCursorProc * proc)
 
 void SysHandCursor_Loop(struct SysHandCursorProc * proc)
 {
-    DisplayUiHand(proc->x, proc->y);
+    PutUiHand(proc->x, proc->y);
 
     if (proc->enable_sysshadow != false)
         DisplayExtendedSysHand(proc);

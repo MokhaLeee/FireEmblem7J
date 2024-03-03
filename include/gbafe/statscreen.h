@@ -220,6 +220,15 @@ void SyncStatScreenBgOffset(void);
 void StatScreen_CleanUp(ProcPtr proc);
 void StartStatScreen(struct Unit * unit, ProcPtr parent);
 
+enum helpbox_info_idx {
+    HELPBOX_INFO_NONE,
+    HELPBOX_INFO_WEAPON,
+    HELPBOX_INFO_STAFF,
+    HELPBOX_INFO_SAVE_MENU,
+};
+
+struct HelpBoxInfo;
+
 struct HelpBoxProc {
     /* 00 */ PROC_HEADER;
 
@@ -250,6 +259,31 @@ struct HelpBoxProc {
     // NOTE: there's likely more, need to decompile more files
 };
 
+void StartStatScreenHelp(int page_id, ProcPtr proc);
+void HelpBoxPopulateStatScreenItem(struct HelpBoxProc * proc);
+void HelpBoxPopulateStatScreenStatus(struct HelpBoxProc * proc);
+void HelpBoxPopulateStatScreenPower(struct HelpBoxProc * proc);
+void HelpBoxRedirectStatScreenItem(struct HelpBoxProc * proc);
+void HelpBoxPopulateStatScreenWeaponExp(struct HelpBoxProc * proc);
+void HelpBoxPopulateStatScreenPInfo(struct HelpBoxProc * proc);
+void HelpBoxPopulateStatScreenJInfo(struct HelpBoxProc * proc);
+void HelpBoxRedirectStatScreenSupports(struct HelpBoxProc * proc);
+
+void UpdateHelpBoxDisplay(struct HelpBoxProc * proc, int interpolate_method);
+void HelpBox_OnOpen(struct HelpBoxProc * proc);
+void HelpBox_OnLoop(struct HelpBoxProc * proc);
+void HelpBox_OnClose(struct HelpBoxProc * proc);
+void HelpBox_WaitClose(struct HelpBoxProc * proc);
+void StartHelpBox(int x, int y, int msg);
+void StartHelpBox_Unk(int x, int y, int mid);
+void StartItemHelpBox(int x, int y, int item);
+void StartHelpBoxExt(struct HelpBoxInfo const * info, int unk);
+void StartHelpBoxExt_Unk(int x, int y, int mid);
+void CloseHelpBox(void);
+void KillHelpBox(void);
+void HelpBoxMoveControl_OnInitBox(struct HelpBoxProc * proc);
+void HelpBoxMoveControl_OnIdle(struct HelpBoxProc * proc);
+
 struct HelpBoxInfo
 {
     /* 00 */ struct HelpBoxInfo const *adjacent_up;
@@ -262,51 +296,36 @@ struct HelpBoxInfo
     /* 18 */ void (* populate)(struct HelpBoxProc *proc);
 };
 
-void StartStatScreenHelp(int page_id, ProcPtr proc);
-void HelpBoxPopulateStatScreenItem(struct HelpBoxProc * proc);
-void HelpBoxPopulateStatScreenStatus(struct HelpBoxProc * proc);
-void HelpBoxPopulateStatScreenPower(struct HelpBoxProc * proc);
-void HelpBoxRedirectStatScreenItem(struct HelpBoxProc * proc);
-void HelpBoxPopulateStatScreenWeaponExp(struct HelpBoxProc * proc);
-void HelpBoxPopulateStatScreenPInfo(struct HelpBoxProc * proc);
-void HelpBoxPopulateStatScreenJInfo(struct HelpBoxProc * proc);
-void HelpBoxRedirectStatScreenSupports(struct HelpBoxProc * proc);
-
-// UpdateHelpBoxDisplay
-// sub_8082580
-// sub_80825C4
-// sub_80825EC
-// sub_8082644
-// sub_808266C
-// sub_80826A0
-// sub_80826EC
-// sub_8082728
-void StartHelpBoxExt_Unk(int x, int y, int mid);
-void CloseHelpBox(void);
-// sub_80828C8
-// sub_80828EC
-// sub_8082914
-// sub_80829E0
+void HelpBoxMoveControl_OnEnd(struct HelpBoxProc * proc);
 void StartMovingHelpBox(struct HelpBoxInfo const * info, ProcPtr parent);
-// sub_8082A18
-// sub_8082A3C
-// sub_8082AA0
-// sub_8082B2C
-// sub_8082B50
-// sub_8082B60
-// HelpBoxPopulateAutoItem
+void StartMovingHelpBoxExt(struct HelpBoxInfo const * info, ProcPtr parent, int x, int y);
+void ApplyHelpBoxContentSize(struct HelpBoxProc * proc, int w_inner, int h_inner);
+void ApplyHelpBoxPosition(struct HelpBoxProc * proc, int x, int y);
+void SetHelpBoxInitPosition(struct HelpBoxProc * proc, int x, int y);
+void ResetHelpBoxInitSize(struct HelpBoxProc * proc);
+int GetHelpBoxItemInfoKind(int item);
+void HelpBoxPopulateAutoItem(struct HelpBoxProc * proc);
 int HelpBoxTryRelocateUp(struct HelpBoxProc *proc);
 int HelpBoxTryRelocateDown(struct HelpBoxProc *proc);
 int HelpBoxTryRelocateLeft(struct HelpBoxProc *proc);
 int HelpBoxTryRelocateRight(struct HelpBoxProc *proc);
-// sub_8082CA4
-// sub_8082CC8
-// sub_8082D00
-// sub_8082D1C
-// sub_8082D48
-// EndHelpPromptSprite
-// sub_8082D8C
+void HelpBoxLockHelper_Loop(ProcPtr proc);
+int StartLockingHelpBox(int msg, ProcPtr parent);
+
+struct HelpPromptSprProc
+{
+    PROC_HEADER;
+
+    /* 2C */ int x, y;
+};
+
+void HelpPrompt_OnIdle(struct HelpPromptSprProc * proc);
+ProcPtr StartHelpPromptSprite(int x, int y, ProcPtr parent);
+ProcPtr StartHelpPromptSpriteBlocking(int x, int y, ProcPtr parent);
+void EndHelpPromptSprite(void);
+void MoveHelpPromptSprite(int x, int y);
 struct HelpBoxInfo const * GetLastHelpBoxInfo(void);
+
 // sub_8082DB8
 // sub_8082E2C
 // sub_8082E6C
@@ -317,7 +336,7 @@ struct HelpBoxInfo const * GetLastHelpBoxInfo(void);
 // sub_8082F30
 void LoadHelpBoxGfx(void * vram, int palId);
 // sub_8083000
-// sub_8083088
+void PutSpriteTalkBox(int x, int y, int w, int h, int unk);
 // sub_8083268
 // sub_80832E0
 // sub_808335C
@@ -328,8 +347,8 @@ void LoadHelpBoxGfx(void * vram, int palId);
 // sub_80835D8
 // sub_808364C
 // sub_808368C
-// sub_808377C
-// sub_8083798
+void StartHelpBoxTextInit(int msg, int item);
+void ClearHelpBoxText(void);
 // sub_80837E0
 // sub_8083808
 // sub_8083838
@@ -1076,12 +1095,21 @@ extern struct TextInitInfo gStatScreenTextList[];
 // ??? gStatScreenPageSlideOffsetLut
 extern struct ProcCmd ProcScr_StatScreenPageSlide[];
 extern struct ProcCmd ProcScr_StatScreenUnitSlide[];
-// ??? Sprite_StatScreenPageName
+extern u16 CONST_DATA Sprite_StatScreenPageName[];
 extern u16 CONST_DATA gStatScreenPageNameChrOffsetLut[];
-// ??? Sprite_StatScreenMuAreaBackground
-// ??? Sprite_StatScreenFaceSideWindow
+extern u16 CONST_DATA Sprite_StatScreenMuAreaBackground[];
+extern u16 CONST_DATA Sprite_StatScreenFaceSideWindow[];
+extern struct ProcCmd CONST_DATA ProcScr_StatScreenPageName[];
+extern struct ProcCmd CONST_DATA ProcScr_StatScreenSprites[];
 extern struct ProcCmd ProcScr_StatScreen[];
-// ??? gUnk_08D8A5D8
+// ??? ProcScr_HelpBox
+// ??? ProcScr_HelpBoxMoveControl
+// ??? ProcScr_HelpBoxLockHelper
+// ??? Sprite_MetaHelp
+extern struct ProcCmd CONST_DATA ProcScr_HelpPromptSpr[];
+extern struct HelpBoxInfo CONST_DATA HelpInfo_StatScreenPersonalInfo_Pow;
+extern struct HelpBoxInfo CONST_DATA HelpInfo_StatScreenItems_ItemA;
+extern struct HelpBoxInfo CONST_DATA HelpInfo_StatScreenWeaponExp_WExpA;
 
 // ??? gUnk_0841CB54
 extern struct StatScreenTextInfo const gStatScreenPersonalInfoLabelsInfo[];
@@ -1089,17 +1117,3 @@ extern struct StatScreenTextInfo const gStatScreenEquipmentLabelsInfo[];
 extern struct StatScreenTextInfo const gStatScreenWeaponExpLabelsPhysicalInfo[];
 extern struct StatScreenTextInfo const gStatScreenWeaponExpLabelsMagicalInfo[];
 
-extern struct ProcCmd CONST_DATA ProcScr_StatScreenUnitSlide[];
-extern u16 CONST_DATA Sprite_StatScreenPageName[];
-extern u16 CONST_DATA gStatScreenPageNameChrOffsetLut[];
-extern struct ProcCmd CONST_DATA ProcScr_StatScreenPageName[];
-extern u16 CONST_DATA Sprite_StatScreenMuAreaBackground[];
-extern u16 CONST_DATA Sprite_StatScreenFaceSideWindow[];
-extern struct ProcCmd CONST_DATA ProcScr_StatScreenSprites[];
-// ??? gUnk_08D8A610
-// ??? gUnk_08D8A640
-// ??? gUnk_08D8A650
-// ??? gUnk_08D8A660
-extern struct HelpBoxInfo CONST_DATA HelpInfo_StatScreenPersonalInfo_Pow;
-extern struct HelpBoxInfo CONST_DATA HelpInfo_StatScreenItems_ItemA;
-extern struct HelpBoxInfo CONST_DATA HelpInfo_StatScreenWeaponExp_WExpA;

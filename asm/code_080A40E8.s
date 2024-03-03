@@ -158,7 +158,7 @@ _080A4208:
 	adds r1, #0x2c
 	ldr r2, _080A4248 @ =0x0000FFFF
 	movs r0, #0x50
-	bl sub_80826EC
+	bl StartItemHelpBox
 	strb r7, [r5]
 _080A4228:
 	adds r1, r6, #0
@@ -3212,7 +3212,7 @@ sub_80A5A60: @ 0x080A5A60
 	bne _080A5A7A
 	movs r0, #0xc0
 	movs r1, #8
-	bl sub_8082D1C
+	bl StartHelpPromptSprite
 _080A5A7A:
 	pop {r0}
 	bx r0
@@ -4996,7 +4996,7 @@ _080A683C:
 	lsls r0, r0, #3
 	adds r0, #0x34
 	movs r1, #0x88
-	bl DisplayUiHand
+	bl PutUiHand
 	mov r2, r8
 	ldr r0, [r2, #0x14]
 	adds r0, #0x2c
@@ -6452,7 +6452,7 @@ _080A7344:
 	lsls r3, r3, #2
 	adds r3, r3, r2
 	ldr r2, [r3]
-	bl sub_808266C
+	bl StartHelpBox
 	pop {r4, r5}
 	pop {r0}
 	bx r0
@@ -6827,7 +6827,7 @@ sub_80A75C4: @ 0x080A75C4
 	movs r0, #0xb4
 	movs r1, #0x10
 	mov r2, sb
-	bl sub_8082D1C
+	bl StartHelpPromptSprite
 	pop {r3, r4, r5}
 	mov r8, r3
 	mov sb, r4

@@ -229,7 +229,7 @@ _080ABB3C:
 	ldr r0, [r4, #0x2c]
 	ldr r1, [r4, #0x30]
 	ldr r2, [r4, #0x58]
-	bl sub_80826A0
+	bl StartHelpBox_Unk
 	pop {r4}
 	pop {r0}
 	bx r0
@@ -2687,7 +2687,7 @@ sub_80ACDD8: @ 0x080ACDD8
 	movs r1, #0
 	movs r2, #0
 	movs r3, #0x1a
-	bl sub_804A360
+	bl PutUiWindowFrame
 	ldr r0, [r6]
 	movs r1, #4
 	str r1, [sp]
@@ -2696,7 +2696,7 @@ sub_80ACDD8: @ 0x080ACDD8
 	movs r1, #0
 	movs r2, #7
 	movs r3, #9
-	bl sub_804A360
+	bl PutUiWindowFrame
 	ldr r0, [r6]
 	movs r1, #0xb0
 	lsls r1, r1, #2
@@ -2714,7 +2714,7 @@ sub_80ACDD8: @ 0x080ACDD8
 	movs r1, #0xa
 	movs r2, #7
 	movs r3, #0x11
-	bl sub_804A360
+	bl PutUiWindowFrame
 	ldr r0, [r6]
 	ldr r1, _080ACE98 @ =0x000004D4
 	adds r0, r0, r1
@@ -5982,7 +5982,7 @@ _080AE8D2:
 	mov r1, r8
 	movs r2, #0xa
 	mov r3, sb
-	bl sub_804A360
+	bl PutUiWindowFrame
 	ldr r0, _080AE968 @ =gDispIo
 	mov ip, r0
 	movs r0, #0x20
@@ -6637,7 +6637,7 @@ sub_80AEDC0: @ 0x080AEDC0
 	ldrb r0, [r0, #8]
 	subs r0, #2
 	adds r1, r4, #0
-	bl DisplayUiHand
+	bl PutUiHand
 	ldr r1, [r6]
 	movs r2, #0x34
 	ldrsh r0, [r1, r2]
@@ -6966,7 +6966,7 @@ sub_80AF114: @ 0x080AF114
 	beq _080AF128
 	movs r0, #1
 	rsbs r0, r0, #0
-	bl sub_804A30C
+	bl UnpackUiWindowFrameGraphics2
 _080AF128:
 	movs r0, #0
 	pop {r1}
@@ -11815,7 +11815,7 @@ _080B1674:
 	subs r2, #0x48
 	subs r1, r0, r2
 	movs r0, #0x38
-	bl DisplayUiHand
+	bl PutUiHand
 	ldr r1, [r7]
 	adds r0, r1, #0
 	adds r1, #0x62
@@ -11853,7 +11853,7 @@ _080B1674:
 	adds r3, r0, r2
 	ldrh r2, [r3]
 	movs r0, #0x38
-	bl sub_80826EC
+	bl StartItemHelpBox
 _080B1756:
 	bl sub_80B2D50
 	bl sub_80B33C4
@@ -11947,7 +11947,7 @@ _080B17AA:
 	adds r3, r0, r2
 	ldrh r2, [r3]
 	movs r0, #0x38
-	bl sub_80826EC
+	bl StartItemHelpBox
 	b _080B18CC
 	.align 2, 0
 _080B1814: .4byte gpKeySt
@@ -12387,7 +12387,7 @@ _080B1B08:
 	subs r2, #0x48
 	subs r1, r0, r2
 	movs r0, #0x38
-	bl DisplayUiHand
+	bl PutUiHand
 	ldr r1, [r7]
 	adds r0, r1, #0
 	adds r1, #0x62
@@ -12426,7 +12426,7 @@ _080B1B08:
 	adds r3, r0, r2
 	ldrh r2, [r3]
 	movs r0, #0x38
-	bl sub_80826EC
+	bl StartItemHelpBox
 _080B1BB0:
 	bl sub_80B33C4
 	lsls r1, r0, #0x18
@@ -12520,7 +12520,7 @@ _080B1BFE:
 	adds r3, r0, r2
 	ldrh r2, [r3]
 	movs r0, #0x38
-	bl sub_80826EC
+	bl StartItemHelpBox
 	b _080B1D3C
 	.align 2, 0
 _080B1C6C: .4byte gpKeySt
@@ -12933,7 +12933,7 @@ _080B1F18:
 	subs r2, #0x48
 	subs r1, r0, r2
 	movs r0, #0x38
-	bl DisplayUiHand
+	bl PutUiHand
 	ldr r1, [r7]
 	adds r0, r1, #0
 	adds r1, #0x62
@@ -12971,7 +12971,7 @@ _080B1F18:
 	adds r3, r0, r2
 	ldrh r2, [r3]
 	movs r0, #0x38
-	bl sub_80826EC
+	bl StartItemHelpBox
 _080B1FFA:
 	bl sub_80B2D50
 	bl sub_80B33C4
@@ -13065,7 +13065,7 @@ _080B204E:
 	adds r3, r0, r2
 	ldrh r2, [r3]
 	movs r0, #0x38
-	bl sub_80826EC
+	bl StartItemHelpBox
 	b _080B2100
 	.align 2, 0
 _080B20B8: .4byte gpKeySt

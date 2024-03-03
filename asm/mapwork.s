@@ -54,8 +54,8 @@ sub_8019FFC: @ 0x08019FFC
 _0801A028: .4byte gBmMapMovement
 _0801A02C: .4byte 0x03004100
 
-	thumb_func_start sub_801A030
-sub_801A030: @ 0x0801A030
+	thumb_func_start GenerateExtendedMovementMapOnRange
+GenerateExtendedMovementMapOnRange: @ 0x0801A030
 	push {r4, r5, lr}
 	adds r4, r0, #0
 	adds r5, r1, #0

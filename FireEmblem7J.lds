@@ -138,7 +138,9 @@ SECTIONS
 		. = 0x03E090; gEkrPairHpInitial = .;
 		. = 0x03E0A8; gEkrPairExpPrevious = .;
 		. = 0x03E0AC; gEkrPairExpGain = .;
-		. = 0x03E648; gStatScreenInfo = .;
+		. = 0x03E648;
+		. = ALIGN(4); src/statscreen.o(ewram_data);
+		. = ALIGN(4); src/statscreen-helpbox.o(ewram_data);
 		. = 0x03E772; gIsSramWorking = .;
 		. = 0x03EE28; gExtraMapSaveHead = .;
 	}
@@ -232,6 +234,7 @@ SECTIONS
 		asm/code1.o(.text);
 		asm/code-ai.o(.text);
 		asm/code-sio.o(.text);
+		src/ui.o(.text);
 		asm/uiutils.o(.text);
 		asm/ui-menu.o(.text);
 		asm/map-sel.o(.text);
@@ -259,6 +262,7 @@ SECTIONS
 		src/statscreen-util.o(.text);
 		asm/statscreen-util.o(.text);
 		src/statscreen.o(.text);
+		src/statscreen-helpbox.o(.text);
 		asm/helpbox.o(.text);
 		src/save_core.o(.text);
 		asm/save.o(.text);
@@ -328,6 +332,7 @@ SECTIONS
 		. = ALIGN(4); data/data.o(.data)
 		. = ALIGN(4); src/battle.o(.data)
 		. = ALIGN(4); data/data_08C03574.o(.data)
+		. = ALIGN(4); data/data_ai.o(.data)
 		. = ALIGN(4); src/banim-efxdrsmmoya.o(.data)
 		. = ALIGN(4); data/data_08C13A64.o(.data)
 		. = ALIGN(4); src/banim-ekrdragon.o(.data)
@@ -344,6 +349,7 @@ SECTIONS
 		. = ALIGN(4); src/statscreenfx.o(.data)
 		. = ALIGN(4); src/statscreen-util.o(.data)
 		. = ALIGN(4); src/statscreen.o(.data)
+		. = ALIGN(4); src/statscreen-helpbox.o(.data)
 		. = ALIGN(4); data/data_08D8A368.o(.data)
 		. = ALIGN(4); src/save_core.o(.data)
 		. = ALIGN(4); data/data_08DAD284.o(.data)

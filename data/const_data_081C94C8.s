@@ -316,8 +316,8 @@ gUnk_081D8F0C:	@ 0x081D8F0C
 gUnk_081D8F88:	@ 0x081D8F88
 	.incbin "FireEmblem7J.base.gba", 0x1D8F88, 0x1D92F4 - 0x1D8F88
 
-	.global gUnk_081D92F4
-gUnk_081D92F4:	@ 0x081D92F4
+	.global AiItemConfigTable
+AiItemConfigTable:	@ 0x081D92F4
 	.incbin "FireEmblem7J.base.gba", 0x1D92F4, 0x1D93F8 - 0x1D92F4
 
 	.global gUnk_081D93F8

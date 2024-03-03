@@ -4979,7 +4979,7 @@ sub_8030A90: @ 0x08030A90
 	movs r0, #8
 	movs r1, #0x8c
 	adds r2, r4, #0
-	bl sub_8082D1C
+	bl StartHelpPromptSprite
 	ldr r0, _08030AB0 @ =gUnk_0841D838
 	ldr r1, _08030AB4 @ =0x06017000
 	bl Decompress
@@ -11735,7 +11735,7 @@ sub_8034100: @ 0x08034100
 	push {lr}
 	movs r0, #1
 	rsbs r0, r0, #0
-	bl sub_804A30C
+	bl UnpackUiWindowFrameGraphics2
 	pop {r0}
 	bx r0
 	.align 2, 0
@@ -12498,7 +12498,7 @@ _080346F0:
 	adds r1, r6, #0
 	adds r2, r5, #0
 	movs r3, #0
-	bl sub_8082A18
+	bl StartMovingHelpBoxExt
 	b _08034710
 	.align 2, 0
 _08034700: .4byte gUnk_08D8AB2C
@@ -12507,7 +12507,7 @@ _08034704:
 	adds r1, r6, #0
 	adds r2, r5, #0
 	movs r3, #0
-	bl sub_8082A18
+	bl StartMovingHelpBoxExt
 _08034710:
 	movs r0, #0
 	pop {r4, r5, r6}

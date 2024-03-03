@@ -5054,7 +5054,7 @@ _0800CAF0:
 	ldrsb r1, [r6, r1]
 	ldr r2, [r6, #4]
 	ldr r2, [r2, #0x38]
-	bl sub_801A030
+	bl GenerateExtendedMovementMapOnRange
 	mov r0, sp
 	movs r1, #0
 	ldrsh r0, [r0, r1]

@@ -55,3 +55,4 @@
 #include "gbafe/mu.h"
 #include "gbafe/ui.h"
 #include "gbafe/bmio.h"
+#include "gbafe/ai.h"
