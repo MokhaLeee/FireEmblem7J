@@ -682,8 +682,8 @@ _08003940: .4byte 0x03005C40
 _08003944: .4byte 0x0000FFFF
 _08003948: .4byte 0x03000038
 
-	thumb_func_start sub_800394C
-sub_800394C: @ 0x0800394C
+	thumb_func_start OverrideBgm
+OverrideBgm: @ 0x0800394C
 	push {r7, lr}
 	sub sp, #4
 	mov r7, sp

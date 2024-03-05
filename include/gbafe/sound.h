@@ -16,7 +16,7 @@ void Sound_FadeOutSE(int speed);
 // sub_8003788
 // sub_80037A8
 // sub_8003858
-// sub_800394C
+// OverrideBgm
 // RestoreBgm
 // sub_8003A68
 // MakeBgmOverridePersist

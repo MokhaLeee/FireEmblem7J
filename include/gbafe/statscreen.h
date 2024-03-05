@@ -837,7 +837,7 @@ void ClearHelpBoxText(void);
 // sub_8095D1C
 // sub_8095D38
 // sub_8095D58
-// sub_8095E8C
+// PrepItemUse_HandleItemEffect
 // PrepItemUse_ExecPromotionItem
 // PrepItemUse_WaitPromotionDone
 // PrepItemUse_PostPromotion

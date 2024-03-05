@@ -416,7 +416,135 @@ gUnk_08D8CF74:	@ 0x08D8CF74
 
 	.global ProcScr_PrepItemUseScreen
 ProcScr_PrepItemUseScreen:	@ 0x08D8CFBC
-	.incbin "FireEmblem7J.base.gba", 0xD8CFBC, 0xD8D10C - 0xD8CFBC
+	@ PROC_YIELD
+	.short 0xe, 0x0
+	.word 0x0
+	@ PROC_LABEL
+	.short 0xb, 0x0
+	.word 0x0
+	@ PROC_CALL
+	.short 0x2, 0x0
+	.word sub_8095824
+	@ PROC_CALL
+	.short 0x2, 0x0
+	.word sub_8095830
+	@ PROC_CALL_ARG
+	.short 0x18, 0x10
+	.word NewFadeIn
+	@ PROC_WHILE
+	.short 0x14, 0x0
+	.word FadeInExists
+	@ PROC_LABEL
+	.short 0xb, 0x1
+	.word 0x0
+	@ PROC_REPEAT
+	.short 0x3, 0x0
+	.word sub_8095B64
+	@ PROC_LABEL
+	.short 0xb, 0x2
+	.word 0x0
+	@ PROC_CALL
+	.short 0x2, 0x0
+	.word sub_8095D38
+	@ PROC_REPEAT
+	.short 0x3, 0x0
+	.word sub_8095D58
+	@ PROC_GOTO
+	.short 0xc, 0x1
+	.word 0x0
+	@ PROC_LABEL
+	.short 0xb, 0x3
+	.word 0x0
+	@ PROC_CALL
+	.short 0x2, 0x0
+	.word PrepItemUse_HandleItemEffect
+	@ PROC_START_CHILD_BLOCKING
+	.short 0x6, 0x1
+	.word ProcScr_PrepItemUseBooster
+	@ PROC_GOTO
+	.short 0xc, 0x1
+	.word 0x0
+	@ PROC_LABEL
+	.short 0xb, 0x4
+	.word 0x0
+	@ PROC_CALL
+	.short 0x2, 0x0
+	.word sub_80960C4
+	@ PROC_CALL_ARG
+	.short 0x18, 0x10
+	.word NewFadeOut
+	@ PROC_WHILE
+	.short 0x14, 0x0
+	.word FadeOutExists
+	@ PROC_WHILE
+	.short 0x14, 0x0
+	.word sub_800409C
+	@ PROC_CALL
+	.short 0x2, 0x0
+	.word PrepItemUse_ExecPromotionItem
+	@ PROC_REPEAT
+	.short 0x3, 0x0
+	.word PrepItemUse_WaitPromotionDone
+	@ PROC_SLEEP
+	.short 0xe, 0x8
+	.word 0x0
+	@ PROC_CALL
+	.short 0x2, 0x0
+	.word PrepItemUse_ResetBgmAfterPromo
+	@ PROC_SLEEP
+	.short 0xe, 0x1e
+	.word 0x0
+	@ PROC_CALL
+	.short 0x2, 0x0
+	.word PrepItemUse_PostPromotion
+	@ PROC_CALL
+	.short 0x2, 0x0
+	.word sub_8095830
+	@ PROC_CALL_ARG
+	.short 0x18, 0x10
+	.word NewFadeIn
+	@ PROC_WHILE
+	.short 0x14, 0x0
+	.word FadeInExists
+	@ PROC_WHILE
+	.short 0x14, 0x0
+	.word sub_800409C
+	@ PROC_GOTO
+	.short 0xc, 0x1
+	.word 0x0
+	@ PROC_LABEL
+	.short 0xb, 0x5
+	.word 0x0
+	@ PROC_CALL_ARG
+	.short 0x18, 0x10
+	.word NewFadeOut
+	@ PROC_WHILE
+	.short 0x14, 0x0
+	.word FadeOutExists
+	@ PROC_LABEL
+	.short 0xb, 0x6
+	.word 0x0
+	@ PROC_CALL
+	.short 0x2, 0x0
+	.word sub_8095C90
+	@ PROC_END
+	.short 0x0, 0x0
+	.word 0x0
+
+	.global ProcScr_PrepItemUseBooster
+ProcScr_PrepItemUseBooster:
+	@ PROC_SET_END_CB
+	.short 0x4, 0x0
+	.word sub_8096374
+	@ PROC_CALL
+	.short 0x2, 0x0
+	.word sub_80961B8
+	@ PROC_REPEAT
+	.short 0x3, 0x0
+	.word sub_8096330
+	@ PROC_END
+	.short 0x0, 0x0
+	.word 0x0
 
 	.global gUnk_08D8D10C
 gUnk_08D8D10C:	@ 0x08D8D10C

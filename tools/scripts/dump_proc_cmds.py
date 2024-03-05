@@ -384,6 +384,6 @@ if __name__ == "__main__":
             for start, proc in procs:
                 symbol = resolve_pointer(start)
                 start_str = symbol or hex(start)
-                print(f"Found script at {start_str}")
+                # print(f"Found script at {start_str}")
                 for cmd in proc:
                     print(resolve_and_format_command(cmd))

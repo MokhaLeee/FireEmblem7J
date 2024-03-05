@@ -38167,8 +38167,8 @@ _08095E7A:
 _08095E84: .4byte gPlaySt
 _08095E88: .4byte 0x00000387
 
-	thumb_func_start sub_8095E8C
-sub_8095E8C: @ 0x08095E8C
+	thumb_func_start PrepItemUse_HandleItemEffect
+PrepItemUse_HandleItemEffect: @ 0x08095E8C
 	push {r4, lr}
 	adds r4, r0, #0
 	ldr r1, [r4, #0x2c]

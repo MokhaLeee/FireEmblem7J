@@ -2145,7 +2145,7 @@ _0800B520:
 	cmp r0, #0
 	bne _0800B534
 	movs r0, #0x2c
-	bl sub_800394C
+	bl OverrideBgm
 	bl sub_807FC14
 _0800B534:
 	adds r4, #0x4c
@@ -8390,7 +8390,7 @@ sub_800E32C: @ 0x0800E32C
 	bne _0800E352
 	ldr r0, [r4, #0x30]
 	ldrh r0, [r0, #2]
-	bl sub_800394C
+	bl OverrideBgm
 	adds r0, r4, #0
 	movs r1, #0x21
 	bl sub_80149B4

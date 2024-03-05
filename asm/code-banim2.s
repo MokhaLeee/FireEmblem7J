@@ -1857,7 +1857,7 @@ EfxOverrideBgm: @ 0x08067E78
 	adds r0, r2, #0
 	bl SetBgmVolume
 	adds r0, r4, #0
-	bl sub_800394C
+	bl OverrideBgm
 _08067E96:
 	pop {r4}
 	pop {r0}
