@@ -1225,7 +1225,7 @@ _0801BF54:
 _0801BF5E:
 	ldr r0, _0801BF88 @ =0x00000569
 	bl DecodeMsg
-	bl sub_802EBB8
+	bl SetTacticianName
 	ldr r1, _0801BF8C @ =gPlaySt
 	adds r0, r4, #0
 	adds r0, #0x3c

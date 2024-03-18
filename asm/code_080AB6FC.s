@@ -21806,10 +21806,10 @@ _080B63FA:
 	.align 2, 0
 _080B6400: .4byte gPlaySt
 
-	thumb_func_start sub_80B6404
-sub_80B6404: @ 0x080B6404
+	thumb_func_start StartWorldMapEvent
+StartWorldMapEvent: @ 0x080B6404
 	push {r4, r5, lr}
-	ldr r5, _080B643C @ =gUnk_08D64CE4
+	ldr r5, _080B643C @ =gWorldMapEvents
 	ldr r4, _080B6440 @ =gPlaySt
 	movs r0, #0xe
 	ldrsb r0, [r4, r0]
@@ -21835,7 +21835,7 @@ _080B6436:
 	pop {r0}
 	bx r0
 	.align 2, 0
-_080B643C: .4byte gUnk_08D64CE4
+_080B643C: .4byte gWorldMapEvents
 _080B6440: .4byte gPlaySt
 
 	thumb_func_start sub_80B6444

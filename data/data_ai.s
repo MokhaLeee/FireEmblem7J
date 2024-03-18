@@ -112,8 +112,8 @@ gUnk_08C07DA8:	@ 0x08C07DA8
 gUnk_08C07DAA:	@ 0x08C07DAA
 	.incbin "FireEmblem7J.base.gba", 0xC07DAA, 0xC07DAC - 0xC07DAA
 
-	.global gUnk_08C07DAC
-gUnk_08C07DAC:	@ 0x08C07DAC
+	.global gSioSt
+gSioSt:	@ 0x08C07DAC
 	.incbin "FireEmblem7J.base.gba", 0xC07DAC, 0xC07DB0 - 0xC07DAC
 
 	.global gUnk_08C07DB0
@@ -172,8 +172,8 @@ gUnk_08C07F8C:	@ 0x08C07F8C
 gUnk_08C07F98:	@ 0x08C07F98
 	.incbin "FireEmblem7J.base.gba", 0xC07F98, 0xC080F8 - 0xC07F98
 
-	.global gUnk_08C080F8
-gUnk_08C080F8:	@ 0x08C080F8
+	.global ProcScr_TacticianNameSelection
+ProcScr_TacticianNameSelection:	@ 0x08C080F8
 	.incbin "FireEmblem7J.base.gba", 0xC080F8, 0xC081B8 - 0xC080F8
 
 	.global gUnk_08C081B8

@@ -14667,7 +14667,7 @@ _0808A3A6:
 	ldrb r2, [r2]
 	cmp r2, #1
 	bne _0808A4D0
-	bl sub_803DEC4
+	bl CheckInLinkArena
 	lsls r0, r0, #0x18
 	cmp r0, #0
 	bne _0808A4D0
@@ -14959,7 +14959,7 @@ _0808A6E0:
 	ands r1, r0
 	cmp r1, #0
 	beq _0808A722
-	bl sub_803DEC4
+	bl CheckInLinkArena
 	lsls r0, r0, #0x18
 	cmp r0, #0
 	beq _0808A718
@@ -16703,7 +16703,7 @@ _0808B486:
 	adds r1, #0x39
 	movs r0, #1
 	strb r0, [r1]
-	bl sub_803DEC4
+	bl CheckInLinkArena
 	lsls r0, r0, #0x18
 	asrs r0, r0, #0x18
 	cmp r0, #1
@@ -16978,7 +16978,7 @@ sub_808B654: @ 0x0808B654
 	adds r0, r5, #0
 	movs r1, #0
 	bl Text_SetCursor
-	bl sub_803DEC4
+	bl CheckInLinkArena
 	lsls r0, r0, #0x18
 	mov r8, r4
 	cmp r0, #0
@@ -22741,7 +22741,7 @@ sub_808E344: @ 0x0808E344
 	push {r4, lr}
 	bl sub_80908E8
 	adds r4, r0, #0
-	bl sub_803DEC4
+	bl CheckInLinkArena
 	lsls r0, r0, #0x18
 	cmp r0, #0
 	beq _0808E368
@@ -23052,7 +23052,7 @@ sub_808E57C: @ 0x0808E57C
 sub_808E588: @ 0x0808E588
 	push {r4, lr}
 	adds r4, r0, #0
-	bl sub_803DEC4
+	bl CheckInLinkArena
 	lsls r0, r0, #0x18
 	cmp r0, #0
 	bne _0808E59E
@@ -23237,7 +23237,7 @@ _0808E6A0: .4byte 0x020116DC
 sub_808E6A4: @ 0x0808E6A4
 	push {r4, lr}
 	adds r4, r0, #0
-	bl sub_803DEC4
+	bl CheckInLinkArena
 	lsls r0, r0, #0x18
 	cmp r0, #0
 	bne _0808E78A
@@ -23540,7 +23540,7 @@ sub_808E8DC: @ 0x0808E8DC
 	sub sp, #4
 	adds r5, r0, #0
 	bl sub_8090788
-	bl sub_803DEC4
+	bl CheckInLinkArena
 	lsls r0, r0, #0x18
 	asrs r4, r0, #0x18
 	cmp r4, #0
@@ -24127,7 +24127,7 @@ _0808ED86:
 	thumb_func_start sub_808ED8C
 sub_808ED8C: @ 0x0808ED8C
 	push {lr}
-	bl sub_803DEC4
+	bl CheckInLinkArena
 	lsls r0, r0, #0x18
 	cmp r0, #0
 	beq _0808EDA4
@@ -24147,7 +24147,7 @@ _0808EDAC:
 	thumb_func_start EndMuralBackground_
 EndMuralBackground_: @ 0x0808EDB0
 	push {lr}
-	bl sub_803DEC4
+	bl CheckInLinkArena
 	lsls r0, r0, #0x18
 	cmp r0, #0
 	beq _0808EDC2
@@ -24230,7 +24230,7 @@ sub_808EE54: @ 0x0808EE54
 	movs r0, #0
 	str r0, [r4, #0x40]
 	strh r0, [r4, #0x3c]
-	bl sub_803DEC4
+	bl CheckInLinkArena
 	lsls r0, r0, #0x18
 	cmp r0, #0
 	beq _0808EE76
@@ -25211,7 +25211,7 @@ sub_808F670: @ 0x0808F670
 	bl sub_80316C8
 	b _0808F694
 _0808F686:
-	bl sub_803DEC4
+	bl CheckInLinkArena
 	lsls r0, r0, #0x18
 	cmp r0, #0
 	beq _0808F694
@@ -25372,7 +25372,7 @@ _0808F7D0: .4byte gDispIo
 	thumb_func_start sub_808F7D4
 sub_808F7D4: @ 0x0808F7D4
 	push {lr}
-	bl sub_803DEC4
+	bl CheckInLinkArena
 	lsls r0, r0, #0x18
 	cmp r0, #0
 	bne _0808F7E8
@@ -25385,7 +25385,7 @@ _0808F7E8:
 	thumb_func_start sub_808F7EC
 sub_808F7EC: @ 0x0808F7EC
 	push {lr}
-	bl sub_803DEC4
+	bl CheckInLinkArena
 	lsls r0, r0, #0x18
 	cmp r0, #0
 	bne _0808F800
@@ -25455,7 +25455,7 @@ _0808F86C:
 	movs r0, #1
 	b _0808F8C4
 _0808F870:
-	bl sub_803DEC4
+	bl CheckInLinkArena
 	lsls r0, r0, #0x18
 	cmp r0, #0
 	bne _0808F8C2
@@ -25601,7 +25601,7 @@ sub_808F970: @ 0x0808F970
 	ands r0, r1
 	cmp r0, #0
 	bne _0808F9D8
-	bl sub_803DEC4
+	bl CheckInLinkArena
 	lsls r0, r0, #0x18
 	cmp r0, #0
 	bne _0808F9D8
@@ -26675,7 +26675,7 @@ sub_8090244: @ 0x08090244
 	push {r7}
 	sub sp, #4
 	adds r7, r0, #0
-	bl sub_803DEC4
+	bl CheckInLinkArena
 	lsls r0, r0, #0x18
 	cmp r0, #0
 	bne _080902C8
@@ -26768,7 +26768,7 @@ sub_80902F0: @ 0x080902F0
 	strb r0, [r1]
 	strh r0, [r5, #0x34]
 	bl sub_8025A0C
-	bl sub_803DEC4
+	bl CheckInLinkArena
 	lsls r0, r0, #0x18
 	asrs r1, r0, #0x18
 	cmp r1, #0
@@ -29466,7 +29466,7 @@ sub_8091730: @ 0x08091730
 	adds r6, r3, #0
 	cmp r4, r5
 	beq _080917CA
-	bl sub_803DEC4
+	bl CheckInLinkArena
 	cmp r0, #0
 	beq _080917CA
 	ldr r0, [r4, #0xc]
@@ -29545,7 +29545,7 @@ sub_80917D4: @ 0x080917D4
 	adds r4, r0, #0
 	adds r5, r1, #0
 	adds r6, r2, #0
-	bl sub_803DEC4
+	bl CheckInLinkArena
 	cmp r0, #0
 	beq _08091820
 	ldr r0, [r4, #0xc]
@@ -29587,7 +29587,7 @@ sub_8091828: @ 0x08091828
 	push {r4, r5, lr}
 	adds r4, r0, #0
 	adds r5, r1, #0
-	bl sub_803DEC4
+	bl CheckInLinkArena
 	cmp r0, #0
 	beq _08091864
 	ldr r0, [r4, #0xc]
@@ -31595,7 +31595,7 @@ _080928A8:
 	bl GetUnitItemCount
 	cmp r0, #0
 	ble _080928D4
-	bl sub_803DEC4
+	bl CheckInLinkArena
 	cmp r0, #0
 	beq _080928D6
 _080928D4:
@@ -31979,7 +31979,7 @@ _08092C00:
 	bl GetUnitItemCount
 	cmp r0, #0
 	ble _08092CF0
-	bl sub_803DEC4
+	bl CheckInLinkArena
 	cmp r0, #0
 	bne _08092CF0
 	adds r0, r5, #0
@@ -31999,7 +31999,7 @@ _08092C32:
 	bl Proc_Goto
 	b _08092CC8
 _08092C4A:
-	bl sub_803DEC4
+	bl CheckInLinkArena
 	cmp r0, #0
 	beq _08092C78
 	adds r0, r5, #0
@@ -33528,7 +33528,7 @@ _0809387C:
 	bl sub_808E644
 	adds r5, r0, #0
 	movs r6, #0
-	bl sub_803DEC4
+	bl CheckInLinkArena
 	lsls r0, r0, #0x18
 	cmp r0, #0
 	bne _080938AE
@@ -33765,7 +33765,7 @@ _08093A60:
 	ands r0, r1
 	cmp r0, #0
 	bne _08093AA2
-	bl sub_803DEC4
+	bl CheckInLinkArena
 	lsls r0, r0, #0x18
 	cmp r0, #0
 	beq _08093A94
@@ -33876,7 +33876,7 @@ sub_8093B5C: @ 0x08093B5C
 	bl NewSysBlackBoxHandler
 	adds r0, r4, #0
 	bl SysBlackBoxSetGfx
-	bl sub_803DEC4
+	bl CheckInLinkArena
 	lsls r0, r0, #0x18
 	cmp r0, #0
 	bne _08093B90
@@ -34407,7 +34407,7 @@ _08093FC8:
 	ands r1, r0
 	cmp r1, #0
 	beq _08094012
-	bl sub_803DEC4
+	bl CheckInLinkArena
 	lsls r0, r0, #0x18
 	cmp r0, #0
 	beq _08094008
@@ -34458,7 +34458,7 @@ _08094026:
 sub_809402C: @ 0x0809402C
 	push {r4, r5, r6, lr}
 	sub sp, #8
-	bl sub_803DEC4
+	bl CheckInLinkArena
 	lsls r0, r0, #0x18
 	asrs r6, r0, #0x18
 	cmp r6, #0
@@ -47503,7 +47503,7 @@ _0809AA3A:
 	adds r0, r4, #0
 	bl strcpy
 	adds r0, r4, #0
-	bl sub_802EBB8
+	bl SetTacticianName
 	b _0809AB2A
 	.align 2, 0
 _0809AB18: .4byte 0x0100000C
@@ -47511,7 +47511,7 @@ _0809AB1C: .4byte 0x001FFFFF
 _0809AB20:
 	ldr r0, _0809AB68 @ =0x00000569
 	bl DecodeMsg
-	bl sub_802EBB8
+	bl SetTacticianName
 _0809AB2A:
 	ldrb r0, [r5]
 	cmp r0, #0
@@ -49825,7 +49825,7 @@ _0809BD30:
 	bl ReadGlobalSaveInfo
 	ldr r0, _0809BDA8 @ =0x00000569
 	bl DecodeMsg
-	bl sub_802EBB8
+	bl SetTacticianName
 	movs r6, #0
 	add r0, sp, #0x28
 	mov sl, r0

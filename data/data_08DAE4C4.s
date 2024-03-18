@@ -342,7 +342,11 @@ gUnk_08DB0F24:	@ 0x08DB0F24
 
 	.global gUnk_08DB0F44
 gUnk_08DB0F44:	@ 0x08DB0F44
-	.incbin "FireEmblem7J.base.gba", 0xDB0F44, 0xDB1004 - 0xDB0F44
+	.incbin "FireEmblem7J.base.gba", 0xDB0F44, 0xDB0FC4 - 0xDB0F44
+
+	.global ProcScr_StartWorldMapEvent
+ProcScr_StartWorldMapEvent:	@ 0x08DB0FC4
+	.incbin "FireEmblem7J.base.gba", 0xDB0FC4, 0xDB1004 - 0xDB0FC4
 
 	.global gUnk_08DB1004
 gUnk_08DB1004:	@ 0x08DB1004
@@ -370,7 +374,11 @@ gUnk_08DB10A4:	@ 0x08DB10A4
 
 	.global gUnk_08DB10D4
 gUnk_08DB10D4:	@ 0x08DB10D4
-	.incbin "FireEmblem7J.base.gba", 0xDB10D4, 0xDB6EBC - 0xDB10D4
+	.incbin "FireEmblem7J.base.gba", 0xDB10D4, 0xDB1178 - 0xDB10D4
+
+	.global WorldMapEvent_Prologue
+WorldMapEvent_Prologue: @ 0x08DB1178
+	.incbin "FireEmblem7J.base.gba", 0xDB1178, 0xDB6EBC - 0xDB1178
 
 	.global gUnk_08DB6EBC
 gUnk_08DB6EBC:	@ 0x08DB6EBC

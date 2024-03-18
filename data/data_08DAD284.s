@@ -130,7 +130,126 @@ gUnk_08DADDB0:	@ 0x08DADDB0
 
 	.global gUnk_08DADDC0
 gUnk_08DADDC0:	@ 0x08DADDC0
-	.incbin "FireEmblem7J.base.gba", 0xDADDC0, 0xDADF00 - 0xDADDC0
+	@ PROC_YIELD
+	.short 0xe, 0x0
+	.word 0x0
+	@ PROC_CALL
+	.short 0x2, 0x0
+	.word sub_80A7584
+	@ PROC_CALL
+	.short 0x2, 0x0
+	.word sub_80A79C8
+	@ PROC_YIELD
+	.short 0xe, 0x0
+	.word 0x0
+	@ PROC_CALL
+	.short 0x2, 0x0
+	.word sub_80A7A60
+	@ PROC_LABEL
+	.short 0xb, 0x0
+	.word 0x0
+	@ PROC_CALL
+	.short 0x2, 0x0
+	.word sub_80A75C4
+	@ PROC_CALL_ARG
+	.short 0x18, 0x4
+	.word NewFadeIn
+	@ PROC_WHILE
+	.short 0x14, 0x0
+	.word FadeInExists
+	@ PROC_CALL
+	.short 0x2, 0x0
+	.word sub_80A76FC
+	@ PROC_YIELD
+	.short 0xe, 0x0
+	.word 0x0
+	@ PROC_CALL
+	.short 0x2, 0x0
+	.word sub_80A773C
+	@ PROC_YIELD
+	.short 0xe, 0x0
+	.word 0x0
+	@ PROC_CALL
+	.short 0x2, 0x0
+	.word sub_80A7778
+	@ PROC_LABEL
+	.short 0xb, 0x1
+	.word 0x0
+	@ PROC_CALL
+	.short 0x2, 0x0
+	.word sub_80A77AC
+	@ PROC_YIELD
+	.short 0xe, 0x0
+	.word 0x0
+	@ PROC_CALL
+	.short 0x2, 0x0
+	.word sub_80A77E8
+	@ PROC_LABEL
+	.short 0xb, 0x2
+	.word 0x0
+	@ PROC_CALL
+	.short 0x2, 0x0
+	.word sub_80A76C8
+	@ PROC_REPEAT
+	.short 0x3, 0x0
+	.word sub_80A7834
+	@ PROC_LABEL
+	.short 0xb, 0x4
+	.word 0x0
+	@ PROC_CALL_ARG
+	.short 0x18, 0x8
+	.word NewFadeOut
+	@ PROC_WHILE
+	.short 0x14, 0x0
+	.word FadeOutExists
+	@ PROC_CALL
+	.short 0x2, 0x0
+	.word sub_80A781C
+	@ PROC_CALL
+	.short 0x2, 0x0
+	.word StartTacticianNameSelect
+	@ PROC_YIELD
+	.short 0xe, 0x0
+	.word 0x0
+	@ PROC_CALL
+	.short 0x2, 0x0
+	.word sub_80A75C4
+	@ PROC_CALL_ARG
+	.short 0x18, 0x8
+	.word NewFadeIn
+	@ PROC_WHILE
+	.short 0x14, 0x0
+	.word FadeInExists
+	@ PROC_GOTO
+	.short 0xc, 0x2
+	.word 0x0
+	@ PROC_LABEL
+	.short 0xb, 0x3
+	.word 0x0
+	@ PROC_CALL_ARG
+	.short 0x18, 0x4
+	.word NewFadeOut
+	@ PROC_WHILE
+	.short 0x14, 0x0
+	.word FadeOutExists
+	@ PROC_CALL
+	.short 0x2, 0x0
+	.word sub_80A781C
+	@ PROC_LABEL
+	.short 0xb, 0x5
+	.word 0x0
+	@ PROC_YIELD
+	.short 0xe, 0x0
+	.word 0x0
+	@ PROC_CALL
+	.short 0x2, 0x0
+	.word sub_80A79B8
+	@ PROC_SLEEP
+	.short 0xe, 0xa
+	.word 0x0
+	@ PROC_END
+	.short 0x0, 0x0
+	.word 0x0
 
 	.global gUnk_08DADF00
 gUnk_08DADF00:	@ 0x08DADF00

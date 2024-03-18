@@ -1,8 +1,8 @@
 	.include "macro.inc"
 	.syntax unified
 
-	thumb_func_start sub_803C5E4
-sub_803C5E4: @ 0x0803C5E4
+	thumb_func_start SioPollingMsg
+SioPollingMsg: @ 0x0803C5E4
 	push {r4, r5, lr}
 	ldr r4, _0803C5F8 @ =0x03004668
 	ldr r3, [r4]
@@ -20,7 +20,7 @@ _0803C600:
 	ldr r0, _0803C650 @ =0x04000134
 	strh r3, [r0]
 	ldr r2, _0803C654 @ =0x04000128
-	ldr r0, _0803C658 @ =gUnk_08C07DAC
+	ldr r0, _0803C658 @ =gSioSt
 	ldr r0, [r0]
 	ldr r1, _0803C65C @ =0x00001B78
 	adds r0, r0, r1
@@ -60,7 +60,7 @@ _0803C644:
 	.align 2, 0
 _0803C650: .4byte 0x04000134
 _0803C654: .4byte 0x04000128
-_0803C658: .4byte gUnk_08C07DAC
+_0803C658: .4byte gSioSt
 _0803C65C: .4byte 0x00001B78
 _0803C660: .4byte 0x030013C8
 _0803C664: .4byte 0x030013CC
@@ -71,7 +71,7 @@ _0803C66C:
 	adds r2, r0, #0
 	ldr r0, _0803C6A4 @ =0x030045D8
 	ldr r0, [r0]
-	ldr r3, _0803C6A8 @ =gUnk_08C07DAC
+	ldr r3, _0803C6A8 @ =gSioSt
 	cmp r0, #0
 	beq _0803C6B4
 	movs r0, #0x40
@@ -94,7 +94,7 @@ _0803C66C:
 	.align 2, 0
 _0803C6A0: .4byte 0x04000128
 _0803C6A4: .4byte 0x030045D8
-_0803C6A8: .4byte gUnk_08C07DAC
+_0803C6A8: .4byte gSioSt
 _0803C6AC: .4byte 0x0000FFFF
 _0803C6B0: .4byte 0x030013CC
 _0803C6B4:
@@ -138,8 +138,8 @@ _0803C6F6:
 	.align 2, 0
 _0803C6FC: .4byte 0x030013C8
 
-	thumb_func_start sub_803C700
-sub_803C700: @ 0x0803C700
+	thumb_func_start GetSioIndex
+GetSioIndex: @ 0x0803C700
 	ldr r0, _0803C70C @ =0x04000128
 	ldrh r1, [r0]
 	movs r0, #0x30
@@ -154,7 +154,7 @@ sub_803C710: @ 0x0803C710
 	push {r4, r5, lr}
 	lsls r1, r1, #0x10
 	lsrs r1, r1, #0x10
-	ldr r3, _0803C738 @ =gUnk_08C07DAC
+	ldr r3, _0803C738 @ =gSioSt
 	ldr r3, [r3]
 	ldr r5, _0803C73C @ =0x00001B78
 	adds r4, r3, r5
@@ -171,7 +171,7 @@ sub_803C710: @ 0x0803C710
 	pop {r0}
 	bx r0
 	.align 2, 0
-_0803C738: .4byte gUnk_08C07DAC
+_0803C738: .4byte gSioSt
 _0803C73C: .4byte 0x00001B78
 _0803C740: .4byte 0x00001B7A
 _0803C744: .4byte 0x030013C8
@@ -185,7 +185,7 @@ sub_803C748: @ 0x0803C748
 	ldr r0, _0803C898 @ =0x030045D4
 	movs r3, #0
 	str r3, [r0]
-	ldr r2, _0803C89C @ =gUnk_08C07DAC
+	ldr r2, _0803C89C @ =gSioSt
 	ldr r0, [r2]
 	movs r1, #0
 	strh r3, [r0, #0x22]
@@ -244,7 +244,7 @@ _0803C79C:
 	movs r3, #0
 	ldr r5, _0803C8AC @ =0x030046D0
 	movs r2, #0
-	ldr r4, _0803C89C @ =gUnk_08C07DAC
+	ldr r4, _0803C89C @ =gSioSt
 _0803C7CC:
 	adds r0, r3, r5
 	strb r2, [r0]
@@ -257,7 +257,7 @@ _0803C7CC:
 	cmp r3, #0x7f
 	ble _0803C7CC
 	movs r4, #0
-	ldr r5, _0803C89C @ =gUnk_08C07DAC
+	ldr r5, _0803C89C @ =gSioSt
 	movs r1, #0
 	movs r2, #0x9a
 	lsls r2, r2, #1
@@ -279,7 +279,7 @@ _0803C7F6:
 	cmp r4, #0x1f
 	ble _0803C7EA
 	movs r4, #0
-	ldr r2, _0803C89C @ =gUnk_08C07DAC
+	ldr r2, _0803C89C @ =gSioSt
 	mov ip, r2
 	movs r5, #0
 	movs r7, #0x8c
@@ -356,7 +356,7 @@ _0803C87A:
 	bx r0
 	.align 2, 0
 _0803C898: .4byte 0x030045D4
-_0803C89C: .4byte gUnk_08C07DAC
+_0803C89C: .4byte gSioSt
 _0803C8A0: .4byte 0x00001B74
 _0803C8A4: .4byte 0x030013D8
 _0803C8A8: .4byte 0x030013DA
@@ -371,7 +371,7 @@ _0803C8C4: .4byte 0x030013E8
 	thumb_func_start sub_803C8C8
 sub_803C8C8: @ 0x0803C8C8
 	push {r4, lr}
-	ldr r2, _0803C924 @ =gUnk_08C07DAC
+	ldr r2, _0803C924 @ =gSioSt
 	ldr r0, [r2]
 	movs r4, #0
 	strb r4, [r0]
@@ -413,12 +413,12 @@ sub_803C8C8: @ 0x0803C8C8
 	pop {r0}
 	bx r0
 	.align 2, 0
-_0803C924: .4byte gUnk_08C07DAC
+_0803C924: .4byte gSioSt
 _0803C928: .4byte 0x00006582
 _0803C92C: .4byte 0x030013D4
 
-	thumb_func_start sub_803C930
-sub_803C930: @ 0x0803C930
+	thumb_func_start SioRegisterIrq
+SioRegisterIrq: @ 0x0803C930
 	push {r4, lr}
 	ldr r0, _0803C980 @ =0x04000134
 	movs r3, #0
@@ -526,7 +526,7 @@ sub_803CA0C: @ 0x0803CA0C
 	ldr r0, _0803CAA0 @ =0x030045D8
 	movs r2, #1
 	str r2, [r0]
-	ldr r1, _0803CAA4 @ =gUnk_08C07DAC
+	ldr r1, _0803CAA4 @ =gSioSt
 	ldr r0, [r1]
 	mov r3, sb
 	strb r3, [r0, #0x1e]
@@ -575,7 +575,7 @@ _0803CA76:
 	beq _0803CAC4
 	cmp r0, sl
 	beq _0803CAC4
-	ldr r1, _0803CAA4 @ =gUnk_08C07DAC
+	ldr r1, _0803CAA4 @ =gSioSt
 	ldr r0, [r1]
 	adds r0, #0xb
 	adds r2, r0, r5
@@ -594,7 +594,7 @@ _0803CA92:
 	b _0803CAFE
 	.align 2, 0
 _0803CAA0: .4byte 0x030045D8
-_0803CAA4: .4byte gUnk_08C07DAC
+_0803CAA4: .4byte gSioSt
 _0803CAA8: .4byte 0x030045D4
 _0803CAAC: .4byte 0x0400010E
 _0803CAB0: .4byte 0x04000128
@@ -610,7 +610,7 @@ _0803CAC4:
 	asrs r0, r0, #0x18
 	cmp r0, #1
 	bne _0803CAFE
-	ldr r0, _0803CAF0 @ =gUnk_08C07DAC
+	ldr r0, _0803CAF0 @ =gSioSt
 	ldr r1, [r0]
 	adds r0, r1, #0
 	adds r0, #0x12
@@ -625,7 +625,7 @@ _0803CAC4:
 	adds r1, #1
 	b _0803CAFC
 	.align 2, 0
-_0803CAF0: .4byte gUnk_08C07DAC
+_0803CAF0: .4byte gSioSt
 _0803CAF4:
 	adds r0, r1, #0
 	adds r0, #0x1a
@@ -634,7 +634,7 @@ _0803CAF4:
 _0803CAFC:
 	strb r1, [r0]
 _0803CAFE:
-	ldr r3, _0803CB58 @ =gUnk_08C07DAC
+	ldr r3, _0803CB58 @ =gSioSt
 	mov r8, r3
 	ldr r6, [r3]
 	adds r3, r6, #0
@@ -679,7 +679,7 @@ _0803CAFE:
 	beq _0803CBCC
 	b _0803CC24
 	.align 2, 0
-_0803CB58: .4byte gUnk_08C07DAC
+_0803CB58: .4byte gSioSt
 _0803CB5C: .4byte 0x0203C908
 _0803CB60: .4byte 0x030013E8
 _0803CB64: .4byte 0x0000FFFF
@@ -702,7 +702,7 @@ _0803CB6C:
 	ands r1, r3
 	strh r1, [r2]
 	movs r1, #1
-	bl sub_803D594
+	bl SioSend16
 _0803CB92:
 	ldr r1, [r4]
 	movs r0, #6
@@ -736,7 +736,7 @@ _0803CBCC:
 	adds r0, r6, #0
 	adds r0, #0x30
 	movs r1, #1
-	bl sub_803D594
+	bl SioSend16
 	mov r0, r8
 	ldr r1, [r0]
 	ldr r0, _0803CC3C @ =0x00005FFF
@@ -768,7 +768,7 @@ _0803CC0A:
 	mov r2, sb
 	cmp r2, #0
 	bne _0803CC24
-	ldr r0, _0803CC44 @ =gUnk_08C07DAC
+	ldr r0, _0803CC44 @ =gSioSt
 	ldr r0, [r0]
 	ldr r3, _0803CC48 @ =0x00001B7E
 	adds r0, r0, r3
@@ -789,7 +789,7 @@ _0803CC24:
 	.align 2, 0
 _0803CC3C: .4byte 0x00005FFF
 _0803CC40: .4byte 0x00001286
-_0803CC44: .4byte gUnk_08C07DAC
+_0803CC44: .4byte gSioSt
 _0803CC48: .4byte 0x00001B7E
 _0803CC4C: .4byte 0x030045D4
 
@@ -797,7 +797,7 @@ _0803CC4C: .4byte 0x030045D4
 sub_803CC50: @ 0x0803CC50
 	push {r4, r5, r6, lr}
 	sub sp, #4
-	ldr r0, _0803CC8C @ =gUnk_08C07DAC
+	ldr r0, _0803CC8C @ =gSioSt
 	ldr r2, [r0]
 	adds r5, r0, #0
 	ldrh r0, [r2, #4]
@@ -828,7 +828,7 @@ _0803CC6A:
 	beq _0803CCD0
 	b _0803CCF8
 	.align 2, 0
-_0803CC8C: .4byte gUnk_08C07DAC
+_0803CC8C: .4byte gSioSt
 _0803CC90:
 	cmp r0, #3
 	bne _0803CCF8
@@ -843,7 +843,7 @@ _0803CC90:
 	strb r0, [r1]
 	bl sub_80871AC
 _0803CCAA:
-	ldr r4, _0803CD1C @ =gUnk_08C07DAC
+	ldr r4, _0803CD1C @ =gSioSt
 	ldr r0, [r4]
 	ldrb r0, [r0, #1]
 	cmp r0, #0
@@ -862,9 +862,9 @@ _0803CCAA:
 	bl sub_80871AC
 _0803CCD0:
 	movs r4, #0
-	ldr r5, _0803CD1C @ =gUnk_08C07DAC
+	ldr r5, _0803CD1C @ =gSioSt
 _0803CCD4:
-	ldr r0, _0803CD1C @ =gUnk_08C07DAC
+	ldr r0, _0803CD1C @ =gSioSt
 	ldr r1, [r0]
 	adds r0, r1, #0
 	adds r0, #0x1a
@@ -901,7 +901,7 @@ _0803CCF8:
 	strh r0, [r1, #4]
 	b _0803CD90
 	.align 2, 0
-_0803CD1C: .4byte gUnk_08C07DAC
+_0803CD1C: .4byte gSioSt
 _0803CD20:
 	mov r0, sp
 	bl sub_803D6C0
@@ -925,7 +925,7 @@ _0803CD20:
 	adds r0, #0x2e
 	strb r6, [r0]
 _0803CD4E:
-	ldr r2, _0803CD68 @ =gUnk_08C07DAC
+	ldr r2, _0803CD68 @ =gSioSt
 	ldr r1, [r2]
 	ldrb r0, [r1, #0x10]
 	adds r0, #1
@@ -937,7 +937,7 @@ _0803CD4E:
 	strb r0, [r4, #0x10]
 	b _0803CD90
 	.align 2, 0
-_0803CD68: .4byte gUnk_08C07DAC
+_0803CD68: .4byte gSioSt
 _0803CD6C:
 	subs r0, #2
 	lsls r0, r0, #0x18
@@ -952,7 +952,7 @@ _0803CD6C:
 	adds r0, #0x30
 	movs r1, #1
 	rsbs r1, r1, #0
-	bl sub_803D594
+	bl SioSend16
 	ldr r1, [r5]
 	ldr r0, _0803CD98 @ =0x00005FFF
 	strh r0, [r1, #0x30]
@@ -1018,7 +1018,7 @@ sub_803CDF8: @ 0x0803CDF8
 	push {r4, r5, r6, r7, lr}
 	mov r7, r8
 	push {r7}
-	ldr r0, _0803CE4C @ =gUnk_08C07DAC
+	ldr r0, _0803CE4C @ =gSioSt
 	ldr r2, [r0]
 	ldrb r1, [r2, #1]
 	cmp r1, #1
@@ -1035,7 +1035,7 @@ _0803CE0A:
 _0803CE18:
 	lsls r4, r7, #0x18
 	asrs r0, r4, #0x18
-	ldr r5, _0803CE4C @ =gUnk_08C07DAC
+	ldr r5, _0803CE4C @ =gSioSt
 	ldr r1, [r5]
 	adds r1, #0x32
 	bl sub_803D3DC
@@ -1060,7 +1060,7 @@ _0803CE44:
 	beq _0803CE64
 	b _0803D15E
 	.align 2, 0
-_0803CE4C: .4byte gUnk_08C07DAC
+_0803CE4C: .4byte gSioSt
 _0803CE50:
 	cmp r0, #0x2e
 	beq _0803CE64
@@ -1074,7 +1074,7 @@ _0803CE5E:
 	beq _0803CE64
 	b _0803D15E
 _0803CE64:
-	ldr r6, _0803CEBC @ =gUnk_08C07DAC
+	ldr r6, _0803CEBC @ =gSioSt
 	ldr r3, [r6]
 	adds r5, r3, #0
 	adds r5, #0x32
@@ -1119,7 +1119,7 @@ _0803CE88:
 	bl sub_803D2E4
 	b _0803CE18
 	.align 2, 0
-_0803CEBC: .4byte gUnk_08C07DAC
+_0803CEBC: .4byte gSioSt
 _0803CEC0: .4byte 0x030046BC
 _0803CEC4:
 	adds r0, r5, #0
@@ -1166,7 +1166,7 @@ _0803CF02:
 	lsls r0, r0, #0x18
 	cmp r0, #0
 	bne _0803CF2E
-	ldr r0, _0803CF58 @ =gUnk_08C07DAC
+	ldr r0, _0803CF58 @ =gSioSt
 	ldr r0, [r0]
 	ldrb r1, [r0]
 	ldrb r2, [r5, #2]
@@ -1183,7 +1183,7 @@ _0803CF2E:
 	cmp r0, #1
 	bne _0803CF60
 _0803CF3C:
-	ldr r0, _0803CF58 @ =gUnk_08C07DAC
+	ldr r0, _0803CF58 @ =gSioSt
 	ldr r2, [r0]
 	movs r0, #6
 	ldrsb r0, [r2, r0]
@@ -1198,10 +1198,10 @@ _0803CF4A:
 	b _0803CF80
 	.align 2, 0
 _0803CF54: .4byte 0x0203D908
-_0803CF58: .4byte gUnk_08C07DAC
+_0803CF58: .4byte gSioSt
 _0803CF5C: .4byte 0x030046BC
 _0803CF60:
-	ldr r0, _0803CF8C @ =gUnk_08C07DAC
+	ldr r0, _0803CF8C @ =gSioSt
 	ldr r1, [r0]
 	movs r0, #6
 	ldrsb r0, [r1, r0]
@@ -1227,7 +1227,7 @@ _0803CF84:
 	bl sub_803D2E4
 	b _0803D15E
 	.align 2, 0
-_0803CF8C: .4byte gUnk_08C07DAC
+_0803CF8C: .4byte gSioSt
 _0803CF90: .4byte 0x030046BC
 _0803CF94:
 	ldr r0, [r5]
@@ -1259,7 +1259,7 @@ _0803CFB4: @ jump table
 	.4byte _0803D15E @ case 9
 	.4byte _0803CFF8 @ case 10
 _0803CFE0:
-	ldr r0, _0803CFF4 @ =gUnk_08C07DAC
+	ldr r0, _0803CFF4 @ =gSioSt
 	ldr r1, [r0]
 	movs r0, #1
 	ldrb r5, [r5, #1]
@@ -1269,9 +1269,9 @@ _0803CFE0:
 	strb r0, [r1, #0xa]
 	b _0803D15A
 	.align 2, 0
-_0803CFF4: .4byte gUnk_08C07DAC
+_0803CFF4: .4byte gSioSt
 _0803CFF8:
-	ldr r6, _0803D09C @ =gUnk_08C07DAC
+	ldr r6, _0803D09C @ =gSioSt
 	ldr r3, [r6]
 	adds r0, r3, #0
 	adds r0, #0x2e
@@ -1358,7 +1358,7 @@ _0803D058:
 	strb r3, [r0, #0x10]
 	b _0803D15E
 	.align 2, 0
-_0803D09C: .4byte gUnk_08C07DAC
+_0803D09C: .4byte gSioSt
 _0803D0A0: .4byte 0x030013D0
 _0803D0A4: .4byte 0x00001B74
 _0803D0A8:
@@ -1369,7 +1369,7 @@ _0803D0A8:
 	mov r8, r7
 	cmp r0, #0
 	bne _0803D15E
-	ldr r3, _0803D0E8 @ =gUnk_08C07DAC
+	ldr r3, _0803D0E8 @ =gSioSt
 	ldr r0, [r3]
 	movs r1, #6
 	ldrsb r1, [r0, r1]
@@ -1393,7 +1393,7 @@ _0803D0A8:
 	ldr r1, [r3]
 	b _0803D10C
 	.align 2, 0
-_0803D0E8: .4byte gUnk_08C07DAC
+_0803D0E8: .4byte gSioSt
 _0803D0EC:
 	ldrb r0, [r5, #2]
 	bl sub_803D1CC
@@ -1402,7 +1402,7 @@ _0803D0EC:
 	mov r8, r7
 	cmp r0, #0
 	bne _0803D15E
-	ldr r2, _0803D114 @ =gUnk_08C07DAC
+	ldr r2, _0803D114 @ =gSioSt
 	ldr r0, [r2]
 	adds r0, #0xb
 	ldrh r5, [r5, #2]
@@ -1415,7 +1415,7 @@ _0803D10C:
 	strh r0, [r1, #4]
 	b _0803D15E
 	.align 2, 0
-_0803D114: .4byte gUnk_08C07DAC
+_0803D114: .4byte gSioSt
 _0803D118:
 	ldr r0, _0803D14C @ =0x0203D908
 	adds r0, #0x9c
@@ -1424,7 +1424,7 @@ _0803D118:
 	movs r4, #0
 	movs r2, #1
 	strb r2, [r0]
-	ldr r3, _0803D150 @ =gUnk_08C07DAC
+	ldr r3, _0803D150 @ =gSioSt
 	ldr r0, [r3]
 	adds r0, #0xb
 	ldrh r1, [r5, #2]
@@ -1445,7 +1445,7 @@ _0803D118:
 	b _0803D15A
 	.align 2, 0
 _0803D14C: .4byte 0x0203D908
-_0803D150: .4byte gUnk_08C07DAC
+_0803D150: .4byte gSioSt
 _0803D154:
 	ldrb r0, [r5, #1]
 	bl sub_803CDC0
@@ -1525,7 +1525,7 @@ _0803D1BC:
 sub_803D1CC: @ 0x0803D1CC
 	lsls r0, r0, #0x18
 	lsrs r0, r0, #0x18
-	ldr r1, _0803D1E8 @ =gUnk_08C07DAC
+	ldr r1, _0803D1E8 @ =gSioSt
 	ldr r1, [r1]
 	ldrb r1, [r1, #9]
 	asrs r1, r0
@@ -1537,7 +1537,7 @@ sub_803D1CC: @ 0x0803D1CC
 	movs r0, #0
 	b _0803D1EE
 	.align 2, 0
-_0803D1E8: .4byte gUnk_08C07DAC
+_0803D1E8: .4byte gSioSt
 _0803D1EC:
 	movs r0, #1
 _0803D1EE:
@@ -1547,7 +1547,7 @@ _0803D1EE:
 sub_803D1F0: @ 0x0803D1F0
 	lsls r0, r0, #0x18
 	lsrs r0, r0, #0x18
-	ldr r1, _0803D20C @ =gUnk_08C07DAC
+	ldr r1, _0803D20C @ =gSioSt
 	ldr r1, [r1]
 	ldrb r1, [r1, #8]
 	asrs r1, r0
@@ -1559,7 +1559,7 @@ sub_803D1F0: @ 0x0803D1F0
 	movs r0, #0
 	b _0803D212
 	.align 2, 0
-_0803D20C: .4byte gUnk_08C07DAC
+_0803D20C: .4byte gSioSt
 _0803D210:
 	movs r0, #1
 _0803D212:
@@ -1568,7 +1568,7 @@ _0803D212:
 	thumb_func_start sub_803D214
 sub_803D214: @ 0x0803D214
 	push {r4, lr}
-	ldr r2, _0803D240 @ =gUnk_08C07DAC
+	ldr r2, _0803D240 @ =gSioSt
 	ldr r3, [r2]
 	ldrh r1, [r3, #2]
 	movs r0, #0
@@ -1590,7 +1590,7 @@ sub_803D214: @ 0x0803D214
 	strb r0, [r1]
 	b _0803D250
 	.align 2, 0
-_0803D240: .4byte gUnk_08C07DAC
+_0803D240: .4byte gSioSt
 _0803D244: .4byte 0x04000128
 _0803D248:
 	ldr r0, [r2]
@@ -1615,7 +1615,7 @@ _0803D260:
 
 	thumb_func_start sub_803D268
 sub_803D268: @ 0x0803D268
-	ldr r0, _0803D284 @ =gUnk_08C07DAC
+	ldr r0, _0803D284 @ =gSioSt
 	ldr r0, [r0]
 	ldr r2, _0803D288 @ =0x00001B75
 	adds r1, r0, r2
@@ -1630,7 +1630,7 @@ sub_803D268: @ 0x0803D268
 	subs r0, r2, r0
 	b _0803D296
 	.align 2, 0
-_0803D284: .4byte gUnk_08C07DAC
+_0803D284: .4byte gSioSt
 _0803D288: .4byte 0x00001B75
 _0803D28C: .4byte 0x00001B74
 _0803D290:
@@ -1645,7 +1645,7 @@ sub_803D298: @ 0x0803D298
 	push {r4, lr}
 	movs r2, #0
 	movs r1, #0
-	ldr r4, _0803D2D8 @ =gUnk_08C07DAC
+	ldr r4, _0803D2D8 @ =gSioSt
 	ldr r0, [r4]
 	adds r3, r0, #0
 	adds r3, #0xb
@@ -1679,7 +1679,7 @@ _0803D2D2:
 	movs r0, #1
 	b _0803D2DE
 	.align 2, 0
-_0803D2D8: .4byte gUnk_08C07DAC
+_0803D2D8: .4byte gSioSt
 _0803D2DC:
 	movs r0, #0
 _0803D2DE:
@@ -2050,11 +2050,11 @@ _0803D584:
 	pop {r1}
 	bx r1
 
-	thumb_func_start sub_803D594
-sub_803D594: @ 0x0803D594
+	thumb_func_start SioSend16
+SioSend16: @ 0x0803D594
 	push {r4, lr}
 	adds r4, r0, #0
-	ldr r0, _0803D5AC @ =gUnk_08C07DAC
+	ldr r0, _0803D5AC @ =gSioSt
 	ldr r3, [r0]
 	movs r2, #6
 	ldrsb r2, [r3, r2]
@@ -2065,7 +2065,7 @@ sub_803D594: @ 0x0803D594
 	adds r0, r2, #0
 	b _0803D5D2
 	.align 2, 0
-_0803D5AC: .4byte gUnk_08C07DAC
+_0803D5AC: .4byte gSioSt
 _0803D5B0:
 	ldr r2, _0803D5D8 @ =0x04000128
 	ldrh r0, [r4]
@@ -2153,7 +2153,7 @@ _0803D648: .4byte 0x000001FF
 sub_803D64C: @ 0x0803D64C
 	push {r4, r5, r6, lr}
 	adds r4, r0, #0
-	ldr r3, _0803D6B4 @ =gUnk_08C07DAC
+	ldr r3, _0803D6B4 @ =gSioSt
 	ldr r2, [r3]
 	ldr r0, _0803D6B8 @ =0x00001B77
 	adds r1, r2, r0
@@ -2205,7 +2205,7 @@ _0803D694:
 	pop {r0}
 	bx r0
 	.align 2, 0
-_0803D6B4: .4byte gUnk_08C07DAC
+_0803D6B4: .4byte gSioSt
 _0803D6B8: .4byte 0x00001B77
 _0803D6BC: .4byte 0x000012B4
 
@@ -2213,7 +2213,7 @@ _0803D6BC: .4byte 0x000012B4
 sub_803D6C0: @ 0x0803D6C0
 	push {r4, r5, r6, r7, lr}
 	adds r7, r0, #0
-	ldr r0, _0803D710 @ =gUnk_08C07DAC
+	ldr r0, _0803D710 @ =gSioSt
 	ldr r3, [r0]
 	ldr r0, _0803D714 @ =0x00001B74
 	adds r4, r3, r0
@@ -2251,7 +2251,7 @@ sub_803D6C0: @ 0x0803D6C0
 	adds r0, #4
 	b _0803D71E
 	.align 2, 0
-_0803D710: .4byte gUnk_08C07DAC
+_0803D710: .4byte gSioSt
 _0803D714: .4byte 0x00001B74
 _0803D718: .4byte 0x030013D0
 _0803D71C:
@@ -2272,7 +2272,7 @@ sub_803D724: @ 0x0803D724
 	ldr r6, _0803D7C0 @ =0x030013D4
 	movs r0, #1
 	str r0, [r6]
-	ldr r4, _0803D7C4 @ =gUnk_08C07DAC
+	ldr r4, _0803D7C4 @ =gSioSt
 	ldr r1, [r4]
 	ldr r2, _0803D7C8 @ =0x00001B75
 	adds r0, r1, r2
@@ -2345,7 +2345,7 @@ _0803D798:
 	bx r1
 	.align 2, 0
 _0803D7C0: .4byte 0x030013D4
-_0803D7C4: .4byte gUnk_08C07DAC
+_0803D7C4: .4byte gSioSt
 _0803D7C8: .4byte 0x00001B75
 
 	thumb_func_start sub_803D7CC
@@ -2360,7 +2360,7 @@ sub_803D7CC: @ 0x0803D7CC
 	str r1, [sp]
 	mov sl, r2
 _0803D7DE:
-	ldr r0, _0803D80C @ =gUnk_08C07DAC
+	ldr r0, _0803D80C @ =gSioSt
 	mov r8, r0
 	ldr r2, [r0]
 	ldr r7, _0803D810 @ =0x00001B76
@@ -2384,7 +2384,7 @@ _0803D806:
 	movs r0, #0
 	b _0803D940
 	.align 2, 0
-_0803D80C: .4byte gUnk_08C07DAC
+_0803D80C: .4byte gSioSt
 _0803D810: .4byte 0x00001B76
 _0803D814: .4byte 0x000012B4
 _0803D818:
@@ -2455,7 +2455,7 @@ _0803D886:
 	ldr r0, _0803D8DC @ =0x030046BC
 	movs r1, #0xce
 	strb r1, [r0]
-	ldr r4, _0803D8E0 @ =gUnk_08C07DAC
+	ldr r4, _0803D8E0 @ =gSioSt
 	ldr r2, [r4]
 	ldrb r3, [r2, #6]
 	lsls r1, r3, #4
@@ -2488,13 +2488,13 @@ _0803D8D2:
 	b _0803D7DE
 	.align 2, 0
 _0803D8DC: .4byte 0x030046BC
-_0803D8E0: .4byte gUnk_08C07DAC
+_0803D8E0: .4byte gSioSt
 _0803D8E4: .4byte 0x00001B76
 _0803D8E8:
 	movs r0, #0
 	strb r0, [r6]
 	ldrb r5, [r6, #1]
-	ldr r4, _0803D950 @ =gUnk_08C07DAC
+	ldr r4, _0803D950 @ =gSioSt
 	ldr r2, [r4]
 	lsls r1, r5, #1
 	adds r0, r2, #0
@@ -2544,7 +2544,7 @@ _0803D940:
 	pop {r1}
 	bx r1
 	.align 2, 0
-_0803D950: .4byte gUnk_08C07DAC
+_0803D950: .4byte gSioSt
 _0803D954: .4byte 0x00001B76
 _0803D958: .4byte 0x030046BC
 
@@ -2555,13 +2555,13 @@ sub_803D95C: @ 0x0803D95C
 	ldr r1, _0803D998 @ =0x00007FFF
 	mov r0, sp
 	strh r1, [r0]
-	ldr r0, _0803D99C @ =gUnk_08C07DAC
+	ldr r0, _0803D99C @ =gSioSt
 	ldr r1, [r0]
 	movs r0, #0
 	strb r0, [r1, #1]
 	mov r0, sp
 	movs r1, #1
-	bl sub_803D594
+	bl SioSend16
 	ldr r1, _0803D9A0 @ =0x030013DA
 	ldr r0, _0803D9A4 @ =0x030013D8
 	ldrh r0, [r0]
@@ -2582,7 +2582,7 @@ _0803D984:
 	bx r0
 	.align 2, 0
 _0803D998: .4byte 0x00007FFF
-_0803D99C: .4byte gUnk_08C07DAC
+_0803D99C: .4byte gSioSt
 _0803D9A0: .4byte 0x030013DA
 _0803D9A4: .4byte 0x030013D8
 _0803D9A8: .4byte 0x030013E0
@@ -2590,13 +2590,13 @@ _0803D9AC: .4byte 0x030013E8
 
 	thumb_func_start sub_803D9B0
 sub_803D9B0: @ 0x0803D9B0
-	ldr r1, _0803D9BC @ =gUnk_08C07DAC
+	ldr r1, _0803D9BC @ =gSioSt
 	ldr r1, [r1]
 	adds r1, #0x21
 	strb r0, [r1]
 	bx lr
 	.align 2, 0
-_0803D9BC: .4byte gUnk_08C07DAC
+_0803D9BC: .4byte gSioSt
 
 	thumb_func_start sub_803D9C0
 sub_803D9C0: @ 0x0803D9C0
@@ -2605,7 +2605,7 @@ sub_803D9C0: @ 0x0803D9C0
 	ldr r1, _0803DA14 @ =0x00007FFF
 	mov r0, sp
 	strh r1, [r0]
-	ldr r1, _0803DA18 @ =gUnk_08C07DAC
+	ldr r1, _0803DA18 @ =gSioSt
 	ldr r0, [r1]
 	movs r2, #0
 	strb r2, [r0, #1]
@@ -2615,7 +2615,7 @@ sub_803D9C0: @ 0x0803D9C0
 	strh r2, [r0]
 	mov r0, sp
 	movs r1, #1
-	bl sub_803D594
+	bl SioSend16
 	ldr r1, _0803DA20 @ =0x030013DA
 	ldr r0, _0803DA24 @ =0x030013D8
 	ldrh r0, [r0]
@@ -2631,7 +2631,7 @@ _0803D9F0:
 	subs r1, #1
 	cmp r1, #0
 	bge _0803D9F0
-	ldr r0, _0803DA18 @ =gUnk_08C07DAC
+	ldr r0, _0803DA18 @ =gSioSt
 	ldr r2, [r0]
 	ldr r0, _0803DA30 @ =0x00001B7E
 	adds r1, r2, r0
@@ -2644,7 +2644,7 @@ _0803D9F0:
 	bx r0
 	.align 2, 0
 _0803DA14: .4byte 0x00007FFF
-_0803DA18: .4byte gUnk_08C07DAC
+_0803DA18: .4byte gSioSt
 _0803DA1C: .4byte 0x00001B7C
 _0803DA20: .4byte 0x030013DA
 _0803DA24: .4byte 0x030013D8
@@ -2659,7 +2659,7 @@ sub_803DA34: @ 0x0803DA34
 	ldr r1, _0803DA90 @ =0x00002586
 	mov r0, sp
 	strh r1, [r0]
-	ldr r3, _0803DA94 @ =gUnk_08C07DAC
+	ldr r3, _0803DA94 @ =gSioSt
 	ldr r1, [r3]
 	movs r2, #0
 	movs r0, #0
@@ -2695,14 +2695,14 @@ _0803DA64:
 	movs r1, #1
 	rsbs r1, r1, #0
 	mov r0, sp
-	bl sub_803D594
+	bl SioSend16
 	add sp, #4
 	pop {r4}
 	pop {r0}
 	bx r0
 	.align 2, 0
 _0803DA90: .4byte 0x00002586
-_0803DA94: .4byte gUnk_08C07DAC
+_0803DA94: .4byte gSioSt
 _0803DA98: .4byte 0x00001B7C
 _0803DA9C: .4byte 0x030013DA
 _0803DAA0: .4byte 0x030013D8
@@ -2716,7 +2716,7 @@ sub_803DAAC: @ 0x0803DAAC
 	ldr r1, _0803DB08 @ =0x00002586
 	mov r0, sp
 	strh r1, [r0]
-	ldr r3, _0803DB0C @ =gUnk_08C07DAC
+	ldr r3, _0803DB0C @ =gSioSt
 	ldr r1, [r3]
 	movs r2, #0
 	movs r0, #0
@@ -2752,14 +2752,14 @@ _0803DADC:
 	movs r1, #1
 	rsbs r1, r1, #0
 	mov r0, sp
-	bl sub_803D594
+	bl SioSend16
 	add sp, #4
 	pop {r4}
 	pop {r0}
 	bx r0
 	.align 2, 0
 _0803DB08: .4byte 0x00002586
-_0803DB0C: .4byte gUnk_08C07DAC
+_0803DB0C: .4byte gSioSt
 _0803DB10: .4byte 0x00001B7C
 _0803DB14: .4byte 0x030013DA
 _0803DB18: .4byte 0x030013D8
@@ -2782,7 +2782,7 @@ sub_803DB38: @ 0x0803DB38
 	push {r4, r5, lr}
 	sub sp, #4
 	adds r4, r0, #0
-	ldr r5, _0803DB94 @ =gUnk_08C07DAC
+	ldr r5, _0803DB94 @ =gSioSt
 	ldr r1, [r5]
 	adds r2, r1, #0
 	adds r2, #0x2e
@@ -2823,7 +2823,7 @@ sub_803DB38: @ 0x0803DB38
 	pop {r0}
 	bx r0
 	.align 2, 0
-_0803DB94: .4byte gUnk_08C07DAC
+_0803DB94: .4byte gSioSt
 
 	thumb_func_start sub_803DB98
 sub_803DB98: @ 0x0803DB98
@@ -2834,7 +2834,7 @@ sub_803DB98: @ 0x0803DB98
 	beq _0803DBA6
 	bl _call_via_r1
 _0803DBA6:
-	ldr r5, _0803DC04 @ =gUnk_08C07DAC
+	ldr r5, _0803DC04 @ =gSioSt
 	ldr r1, [r5]
 	adds r0, r1, #0
 	adds r0, #0x2e
@@ -2880,12 +2880,12 @@ _0803DBFC:
 	pop {r0}
 	bx r0
 	.align 2, 0
-_0803DC04: .4byte gUnk_08C07DAC
+_0803DC04: .4byte gSioSt
 
 	thumb_func_start sub_803DC08
 sub_803DC08: @ 0x0803DC08
 	push {lr}
-	ldr r2, _0803DC2C @ =gUnk_08C07DAC
+	ldr r2, _0803DC2C @ =gSioSt
 	ldr r1, [r2]
 	adds r3, r1, #0
 	adds r3, #0x2e
@@ -2902,7 +2902,7 @@ sub_803DC08: @ 0x0803DC08
 	pop {r0}
 	bx r0
 	.align 2, 0
-_0803DC2C: .4byte gUnk_08C07DAC
+_0803DC2C: .4byte gSioSt
 
 	thumb_func_start sub_803DC30
 sub_803DC30: @ 0x0803DC30
@@ -3144,8 +3144,8 @@ _0803DDF2:
 	bx r1
 	.align 2, 0
 
-	thumb_func_start sub_803DDF8
-sub_803DDF8: @ 0x0803DDF8
+	thumb_func_start SioStrCpy
+SioStrCpy: @ 0x0803DDF8
 	movs r3, #0
 	b _0803DE04
 _0803DDFC:
@@ -3163,8 +3163,8 @@ _0803DE04:
 	bx lr
 	.align 2, 0
 
-	thumb_func_start sub_803DE14
-sub_803DE14: @ 0x0803DE14
+	thumb_func_start SioDrawNumber
+SioDrawNumber: @ 0x0803DE14
 	push {r4, r5, r6, lr}
 	adds r4, r0, #0
 	adds r5, r2, #0
@@ -3181,12 +3181,12 @@ sub_803DE14: @ 0x0803DE14
 	bx r0
 	.align 2, 0
 
-	thumb_func_start sub_803DE38
-sub_803DE38: @ 0x0803DE38
+	thumb_func_start SioInit
+SioInit: @ 0x0803DE38
 	push {lr}
-	bl sub_803C930
+	bl SioRegisterIrq
 	bl sub_803C8C8
-	ldr r2, _0803DE54 @ =gUnk_08C07DAC
+	ldr r2, _0803DE54 @ =gSioSt
 	ldr r1, [r2]
 	movs r3, #0
 	movs r0, #1
@@ -3196,34 +3196,34 @@ sub_803DE38: @ 0x0803DE38
 	pop {r0}
 	bx r0
 	.align 2, 0
-_0803DE54: .4byte gUnk_08C07DAC
+_0803DE54: .4byte gSioSt
 
-	thumb_func_start sub_803DE58
-sub_803DE58: @ 0x0803DE58
+	thumb_func_start SioPollingMsgAndAck
+SioPollingMsgAndAck: @ 0x0803DE58
 	push {r4, r5, r6, lr}
 	sub sp, #4
 	adds r6, r0, #0
 	ldr r0, _0803DE9C @ =0x00002586
 	mov r1, sp
 	strh r0, [r1]
-	bl sub_803C5E4
+	bl SioPollingMsg
 	movs r5, #1
 	rsbs r5, r5, #0
 	cmp r0, r5
 	beq _0803DE94
-	ldr r4, _0803DEA0 @ =gUnk_08C07DAC
+	ldr r4, _0803DEA0 @ =gSioSt
 	ldr r1, [r4]
 	movs r0, #0
 	strb r0, [r1, #0x11]
 	ldr r1, [r4]
 	movs r0, #5
 	strh r0, [r1, #4]
-	bl sub_803C700
+	bl GetSioIndex
 	ldr r1, [r4]
 	strb r0, [r1, #6]
 	mov r0, sp
 	adds r1, r5, #0
-	bl sub_803D594
+	bl SioSend16
 	adds r0, r6, #0
 	bl Proc_Break
 _0803DE94:
@@ -3233,10 +3233,10 @@ _0803DE94:
 	bx r0
 	.align 2, 0
 _0803DE9C: .4byte 0x00002586
-_0803DEA0: .4byte gUnk_08C07DAC
+_0803DEA0: .4byte gSioSt
 
-	thumb_func_start sub_803DEA4
-sub_803DEA4: @ 0x0803DEA4
+	thumb_func_start SetBmStLinkArenaFlag
+SetBmStLinkArenaFlag: @ 0x0803DEA4
 	ldr r0, _0803DEB0 @ =gBmSt
 	movs r1, #0x40
 	ldrb r2, [r0, #4]
@@ -3246,8 +3246,8 @@ sub_803DEA4: @ 0x0803DEA4
 	.align 2, 0
 _0803DEB0: .4byte gBmSt
 
-	thumb_func_start sub_803DEB4
-sub_803DEB4: @ 0x0803DEB4
+	thumb_func_start UnsetBmStLinkArenaFlag
+UnsetBmStLinkArenaFlag: @ 0x0803DEB4
 	ldr r1, _0803DEC0 @ =gBmSt
 	movs r0, #0xbf
 	ldrb r2, [r1, #4]
@@ -3257,8 +3257,8 @@ sub_803DEB4: @ 0x0803DEB4
 	.align 2, 0
 _0803DEC0: .4byte gBmSt
 
-	thumb_func_start sub_803DEC4
-sub_803DEC4: @ 0x0803DEC4
+	thumb_func_start CheckInLinkArena
+CheckInLinkArena: @ 0x0803DEC4
 	ldr r0, _0803DED0 @ =gBmSt
 	ldrb r0, [r0, #4]
 	lsrs r0, r0, #6
@@ -3378,7 +3378,7 @@ _0803DF90: .4byte gDispIo
 sub_803DF94: @ 0x0803DF94
 	push {lr}
 	adds r2, r0, #0
-	ldr r0, _0803DFB4 @ =gUnk_08C07DAC
+	ldr r0, _0803DFB4 @ =gSioSt
 	ldr r0, [r0]
 	ldr r1, _0803DFB8 @ =0x00001286
 	strh r1, [r0, #0x30]
@@ -3393,13 +3393,13 @@ _0803DFB0:
 	pop {r0}
 	bx r0
 	.align 2, 0
-_0803DFB4: .4byte gUnk_08C07DAC
+_0803DFB4: .4byte gSioSt
 _0803DFB8: .4byte 0x00001286
 _0803DFBC: .4byte 0x00001B7E
 
 	thumb_func_start sub_803DFC0
 sub_803DFC0: @ 0x0803DFC0
-	ldr r0, _0803DFD0 @ =gUnk_08C07DAC
+	ldr r0, _0803DFD0 @ =gSioSt
 	ldr r2, [r0]
 	movs r1, #6
 	ldrsb r1, [r2, r1]
@@ -3408,7 +3408,7 @@ sub_803DFC0: @ 0x0803DFC0
 	strb r0, [r2, #0xa]
 	bx lr
 	.align 2, 0
-_0803DFD0: .4byte gUnk_08C07DAC
+_0803DFD0: .4byte gSioSt
 
 	thumb_func_start sub_803DFD4
 sub_803DFD4: @ 0x0803DFD4
@@ -3418,7 +3418,7 @@ sub_803DFD4: @ 0x0803DFD4
 	movs r2, #0
 	movs r1, #0xc9
 	strb r1, [r0]
-	ldr r4, _0803E018 @ =gUnk_08C07DAC
+	ldr r4, _0803E018 @ =gSioSt
 	ldr r1, [r4]
 	ldrb r1, [r1, #6]
 	strb r1, [r0, #1]
@@ -3445,7 +3445,7 @@ _0803E00E:
 	bx r0
 	.align 2, 0
 _0803E014: .4byte 0x030046BC
-_0803E018: .4byte gUnk_08C07DAC
+_0803E018: .4byte gSioSt
 
 	thumb_func_start sub_803E01C
 sub_803E01C: @ 0x0803E01C
@@ -3721,8 +3721,8 @@ _0803E236:
 	.align 2, 0
 _0803E244: .4byte gUnk_081DAE7D
 
-	thumb_func_start sub_803E248
-sub_803E248: @ 0x0803E248
+	thumb_func_start SioPlaySoundEffect
+SioPlaySoundEffect: @ 0x0803E248
 	push {r4, lr}
 	sub sp, #8
 	adds r4, r0, #0
@@ -4013,7 +4013,7 @@ _0803E458: .4byte 0x0203DA60
 _0803E45C:
 	ldr r0, _0803E494 @ =gUnk_081DAE90
 	adds r1, r4, #0
-	bl sub_803DDF8
+	bl SioStrCpy
 	ldrb r0, [r5, #5]
 	strb r0, [r4, #0x10]
 	movs r0, #0x80
@@ -4273,7 +4273,7 @@ sub_803E628: @ 0x0803E628
 	bl sub_80A2820
 	ldr r0, _0803E6B8 @ =gUnk_081DAE90
 	adds r1, r4, #0
-	bl sub_803DDF8
+	bl SioStrCpy
 	ldr r0, [r7, #0x3c]
 	lsls r0, r0, #4
 	add r0, r8
@@ -4377,7 +4377,7 @@ sub_803E6F8: @ 0x0803E6F8
 	bne _0803E768
 	ldr r0, _0803E764 @ =gUnk_081DAE90
 	adds r1, r6, #0
-	bl sub_803DDF8
+	bl SioStrCpy
 	movs r3, #0x80
 	rsbs r3, r3, #0
 	adds r1, r3, #0
@@ -4407,7 +4407,7 @@ _0803E76A:
 	bne _0803E7AC
 	ldr r0, _0803E7A8 @ =gUnk_081DAE90
 	adds r1, r4, #0
-	bl sub_803DDF8
+	bl SioStrCpy
 	movs r2, #0x80
 	rsbs r2, r2, #0
 	adds r1, r2, #0
@@ -4485,7 +4485,7 @@ _0803E828:
 	adds r4, r7, r4
 	ldr r0, _0803E874 @ =gUnk_081DAE9C
 	adds r1, r4, #0
-	bl sub_803DDF8
+	bl SioStrCpy
 	adds r0, r5, #0
 	bl ClearText
 	movs r0, #0xa
@@ -4940,7 +4940,7 @@ sub_803EBA8: @ 0x0803EBA8
 	cmp r6, r0
 	beq _0803EC26
 	movs r0, #3
-	bl sub_803E248
+	bl SioPlaySoundEffect
 	adds r0, r5, #0
 	adds r0, #0x3a
 	adds r1, r0, r6
@@ -4989,7 +4989,7 @@ _0803EC26:
 	cmp r0, #7
 	bne _0803EC80
 	movs r0, #1
-	bl sub_803E248
+	bl SioPlaySoundEffect
 	adds r0, r4, #0
 	movs r1, #9
 	bl Proc_Goto
@@ -5003,17 +5003,17 @@ _0803EC78: .4byte 0x0203D908
 _0803EC7C: .4byte gpKeySt
 _0803EC80:
 	movs r0, #2
-	bl sub_803E248
+	bl SioPlaySoundEffect
 	adds r0, r4, #0
 	bl Proc_Break
 	b _0803ECB8
 _0803EC8E:
 	movs r0, #0
-	bl sub_803E248
+	bl SioPlaySoundEffect
 	b _0803ECB8
 _0803EC96:
 	movs r0, #2
-	bl sub_803E248
+	bl SioPlaySoundEffect
 	adds r1, r4, #0
 	adds r1, #0x52
 	movs r0, #8
@@ -5036,7 +5036,7 @@ _0803ECB8:
 	cmp r0, #0
 	beq _0803ECDA
 	movs r0, #1
-	bl sub_803E248
+	bl SioPlaySoundEffect
 	adds r0, r4, #0
 	movs r1, #9
 	bl Proc_Goto
@@ -5349,7 +5349,7 @@ _0803EF34:
 	b _0803F070
 _0803EF4C:
 	movs r0, #2
-	bl sub_803E248
+	bl SioPlaySoundEffect
 	ldr r1, _0803EF60 @ =0x0203D908
 	ldr r0, [r7, #0x40]
 	strb r0, [r1, #3]
@@ -5359,7 +5359,7 @@ _0803EF5C: .4byte 0x0203DA60
 _0803EF60: .4byte 0x0203D908
 _0803EF64:
 	movs r0, #2
-	bl sub_803E248
+	bl SioPlaySoundEffect
 	ldr r2, _0803EF84 @ =0x0203D908
 	ldr r1, _0803EF88 @ =0x0203DA60
 	mov r3, sb
@@ -5389,7 +5389,7 @@ _0803EF8C:
 	cmp r0, #0
 	bne _0803F070
 	movs r0, #2
-	bl sub_803E248
+	bl SioPlaySoundEffect
 	adds r0, r7, #0
 	movs r1, #4
 	bl Proc_Goto
@@ -5403,7 +5403,7 @@ _0803EFB8:
 	b _0803F106
 _0803EFC0:
 	movs r0, #2
-	bl sub_803E248
+	bl SioPlaySoundEffect
 	adds r0, r7, #0
 	adds r0, #0x53
 	mov r3, sb
@@ -5448,7 +5448,7 @@ _0803F00E:
 _0803F018: .4byte gpKeySt
 _0803F01C:
 	movs r0, #2
-	bl sub_803E248
+	bl SioPlaySoundEffect
 	adds r0, r7, #0
 	bl sub_803E6F8
 	b _0803F106
@@ -5465,7 +5465,7 @@ _0803F02A:
 	cmp r0, #0
 	bne _0803F070
 	movs r0, #2
-	bl sub_803E248
+	bl SioPlaySoundEffect
 	mov r0, sb
 	mov r3, sl
 	ldrb r3, [r3]
@@ -5487,11 +5487,11 @@ _0803F02A:
 _0803F06C: .4byte 0x0203DA60
 _0803F070:
 	movs r0, #0
-	bl sub_803E248
+	bl SioPlaySoundEffect
 	b _0803F106
 _0803F078:
 	movs r0, #2
-	bl sub_803E248
+	bl SioPlaySoundEffect
 	mov r0, sb
 	lsls r4, r0, #2
 	add r4, sb
@@ -5509,7 +5509,7 @@ _0803F078:
 	ldr r6, _0803F134 @ =0x0203DC34
 	adds r1, r1, r6
 	adds r0, r4, #0
-	bl sub_803DDF8
+	bl SioStrCpy
 	ldr r5, _0803F138 @ =0x0203D908
 	adds r0, r5, #6
 	mov r1, r8
@@ -5565,7 +5565,7 @@ _0803F106:
 	cmp r0, #0
 	beq _0803F15A
 	movs r0, #1
-	bl sub_803E248
+	bl SioPlaySoundEffect
 	adds r1, r7, #0
 	adds r1, #0x52
 	ldrb r0, [r1]
@@ -5760,7 +5760,7 @@ _0803F2A8:
 	cmp sb, r0
 	beq _0803F2B4
 	movs r0, #3
-	bl sub_803E248
+	bl SioPlaySoundEffect
 _0803F2B4:
 	add sp, #0xc
 	pop {r3, r4, r5}
@@ -5999,7 +5999,7 @@ sub_803F454: @ 0x0803F454
 	movs r0, #0
 	strb r0, [r1]
 	movs r0, #3
-	bl sub_803E248
+	bl SioPlaySoundEffect
 _0803F486:
 	ldr r0, _0803F4F8 @ =gpKeySt
 	ldr r1, [r0]
@@ -6016,7 +6016,7 @@ _0803F486:
 	movs r0, #1
 	strb r0, [r5]
 	movs r0, #3
-	bl sub_803E248
+	bl SioPlaySoundEffect
 _0803F4A8:
 	ldrb r1, [r5]
 	lsls r0, r1, #2
@@ -6035,7 +6035,7 @@ _0803F4A8:
 	cmp r0, #0
 	beq _0803F500
 	movs r0, #1
-	bl sub_803E248
+	bl SioPlaySoundEffect
 	ldr r0, [r4, #0x30]
 	bl Proc_End
 	ldr r0, [r4, #0x58]
@@ -6068,11 +6068,11 @@ _0803F500:
 	adds r0, r4, #0
 	bl sub_803E628
 	movs r0, #2
-	bl sub_803E248
+	bl SioPlaySoundEffect
 	b _0803F528
 _0803F522:
 	movs r0, #1
-	bl sub_803E248
+	bl SioPlaySoundEffect
 _0803F528:
 	ldr r0, [r4, #0x58]
 	adds r0, #4
@@ -6111,8 +6111,8 @@ sub_803F554: @ 0x0803F554
 	bx r0
 	.align 2, 0
 
-	thumb_func_start sub_803F574
-sub_803F574: @ 0x0803F574
+	thumb_func_start GetTacticianTextConf
+GetTacticianTextConf: @ 0x0803F574
 	lsls r0, r0, #0x10
 	asrs r0, r0, #0xa
 	ldr r1, _0803F580 @ =gUnk_081D94A0
@@ -6146,7 +6146,7 @@ _0803F5A8:
 	mov r5, r8
 	lsls r0, r5, #0x10
 	asrs r0, r0, #0x10
-	bl sub_803F574
+	bl GetTacticianTextConf
 	str r0, [sp, #4]
 	movs r7, #0
 	mov r6, r8
@@ -6334,8 +6334,8 @@ _0803F718: .4byte gUnk_081DACFE
 _0803F71C: .4byte gUnk_081D94A0
 _0803F720: .4byte gBg1Tm
 
-	thumb_func_start sub_803F724
-sub_803F724: @ 0x0803F724
+	thumb_func_start TacticianDrawCharacters
+TacticianDrawCharacters: @ 0x0803F724
 	push {r4, r5, r6, lr}
 	adds r4, r0, #0
 	adds r4, #0x3d
@@ -6372,8 +6372,8 @@ _0803F756:
 _0803F76C: .4byte 0x0203DC00
 _0803F770: .4byte gBg0Tm + 0x158
 
-	thumb_func_start sub_803F774
-sub_803F774: @ 0x0803F774
+	thumb_func_start SioStrLen
+SioStrLen: @ 0x0803F774
 	adds r1, r0, #0
 	movs r2, #0
 	b _0803F77E
@@ -6387,8 +6387,8 @@ _0803F77E:
 	adds r0, r2, #0
 	bx lr
 
-	thumb_func_start sub_803F788
-sub_803F788: @ 0x0803F788
+	thumb_func_start Tactician_InitScreen
+Tactician_InitScreen: @ 0x0803F788
 	push {r4, r5, r6, r7, lr}
 	mov r7, sl
 	mov r6, sb
@@ -6427,7 +6427,7 @@ sub_803F788: @ 0x0803F788
 	bl SetTextFont
 	bl InitSystemTextFont
 	bl ResetTextFont
-	bl sub_803DEC4
+	bl CheckInLinkArena
 	lsls r0, r0, #0x18
 	asrs r1, r0, #0x18
 	cmp r1, #0
@@ -6515,7 +6515,7 @@ _0803F888:
 	movs r4, #0
 	movs r0, #6
 	strh r0, [r6, #0x34]
-	bl sub_803F574
+	bl GetTacticianTextConf
 	ldrh r1, [r0, #0x30]
 	subs r1, #4
 	ldrh r2, [r0, #0x32]
@@ -6612,7 +6612,7 @@ _0803F962:
 	mov r1, sl
 	bl sub_803F584
 	adds r0, r6, #0
-	bl sub_803F724
+	bl TacticianDrawCharacters
 	mov r1, r8
 	ldrb r1, [r1]
 	lsls r0, r1, #1
@@ -6621,7 +6621,7 @@ _0803F962:
 	movs r1, #0
 	strb r1, [r0]
 	mov r0, sl
-	bl sub_803F774
+	bl SioStrLen
 	ldr r2, [r6, #0x2c]
 	lsls r1, r0, #3
 	adds r1, r1, r0
@@ -6644,8 +6644,8 @@ _0803F9AC: .4byte 0x0203D9F8
 _0803F9B0: .4byte 0x0203D994
 _0803F9B4: .4byte 0x0203DC08
 
-	thumb_func_start sub_803F9B8
-sub_803F9B8: @ 0x0803F9B8
+	thumb_func_start SioUpdateTeam
+SioUpdateTeam: @ 0x0803F9B8
 	push {r4, r5, r6, r7, lr}
 	mov r7, sl
 	mov r6, sb
@@ -6755,8 +6755,8 @@ _0803FA82:
 	.align 2, 0
 _0803FA8C: .4byte gUnk_081D94A0
 
-	thumb_func_start sub_803FA90
-sub_803FA90: @ 0x0803FA90
+	thumb_func_start TacticianTryAppendChar
+TacticianTryAppendChar: @ 0x0803FA90
 	push {r4, r5, r6, r7, lr}
 	mov r7, r8
 	push {r7}
@@ -6773,7 +6773,7 @@ sub_803FA90: @ 0x0803FA90
 	cmp r2, r0
 	bge _0803FB18
 	movs r0, #2
-	bl sub_803E248
+	bl SioPlaySoundEffect
 	adds r4, r5, #0
 	adds r4, #0x30
 	ldrb r3, [r4]
@@ -6785,7 +6785,7 @@ sub_803FA90: @ 0x0803FA90
 	ldrb r1, [r6]
 	adds r1, #0x3d
 	adds r1, r5, r1
-	bl sub_803DDF8
+	bl SioStrCpy
 	ldrb r1, [r6]
 	lsrs r0, r1, #1
 	lsls r0, r0, #1
@@ -6817,7 +6817,7 @@ _0803FB04:
 	strh r0, [r5, #0x34]
 _0803FB08:
 	adds r0, r5, #0
-	bl sub_803F724
+	bl TacticianDrawCharacters
 	adds r1, r5, #0
 	adds r1, #0x39
 	movs r0, #0
@@ -6825,7 +6825,7 @@ _0803FB08:
 	b _0803FB1E
 _0803FB18:
 	movs r0, #0
-	bl sub_803E248
+	bl SioPlaySoundEffect
 _0803FB1E:
 	pop {r3}
 	mov r8, r3
@@ -6833,8 +6833,8 @@ _0803FB1E:
 	pop {r0}
 	bx r0
 
-	thumb_func_start sub_803FB28
-sub_803FB28: @ 0x0803FB28
+	thumb_func_start TacticianTryDeleteChar
+TacticianTryDeleteChar: @ 0x0803FB28
 	push {r4, r5, lr}
 	adds r5, r0, #0
 	adds r4, r5, #0
@@ -6843,7 +6843,7 @@ sub_803FB28: @ 0x0803FB28
 	cmp r0, #0
 	beq _0803FB78
 	movs r0, #2
-	bl sub_803E248
+	bl SioPlaySoundEffect
 	ldrb r1, [r4]
 	lsrs r0, r1, #1
 	lsls r0, r0, #1
@@ -6872,18 +6872,18 @@ _0803FB52:
 	adds r0, #0x39
 	strb r2, [r0]
 	adds r0, r5, #0
-	bl sub_803F724
+	bl TacticianDrawCharacters
 	b _0803FB7E
 _0803FB78:
 	movs r0, #0
-	bl sub_803E248
+	bl SioPlaySoundEffect
 _0803FB7E:
 	pop {r4, r5}
 	pop {r0}
 	bx r0
 
-	thumb_func_start sub_803FB84
-sub_803FB84: @ 0x0803FB84
+	thumb_func_start SaveTactician
+SaveTactician: @ 0x0803FB84
 	push {r4, r5, lr}
 	adds r5, r0, #0
 	adds r4, r5, #0
@@ -6892,28 +6892,28 @@ sub_803FB84: @ 0x0803FB84
 	cmp r0, #0
 	beq _0803FBC2
 	movs r0, #2
-	bl sub_803E248
-	bl sub_803DEC4
+	bl SioPlaySoundEffect
+	bl CheckInLinkArena
 	lsls r0, r0, #0x18
 	cmp r0, #0
 	beq _0803FBB4
 	ldr r0, _0803FBB0 @ =0x0203D908
 	ldrb r1, [r0, #3]
 	adds r0, r4, #0
-	bl sub_803F9B8
+	bl SioUpdateTeam
 	b _0803FBBA
 	.align 2, 0
 _0803FBB0: .4byte 0x0203D908
 _0803FBB4:
 	adds r0, r4, #0
-	bl sub_802EBB8
+	bl SetTacticianName
 _0803FBBA:
 	adds r0, r5, #0
 	bl Proc_Break
 	b _0803FBC8
 _0803FBC2:
 	movs r0, #0
-	bl sub_803E248
+	bl SioPlaySoundEffect
 _0803FBC8:
 	pop {r4, r5}
 	pop {r0}
@@ -6937,10 +6937,10 @@ sub_803FBD0: @ 0x0803FBD0
 	cmp r7, #0
 	bne _0803FBFC
 	movs r0, #2
-	bl sub_803E248
+	bl SioPlaySoundEffect
 	adds r0, r5, #0
 	adds r1, r4, #0
-	bl sub_803FA90
+	bl TacticianTryAppendChar
 	b _0803FC9E
 _0803FBFC:
 	adds r6, r5, #0
@@ -6972,7 +6972,7 @@ _0803FC26:
 	adds r0, r3, #0
 	ldrh r1, [r1]
 	ands r0, r1
-	bl sub_803F574
+	bl GetTacticianTextConf
 	ldrb r2, [r6]
 	lsrs r1, r2, #1
 	mov r3, r8
@@ -6991,7 +6991,7 @@ _0803FC26:
 	cmp r0, #0
 	beq _0803FC88
 	movs r0, #2
-	bl sub_803E248
+	bl SioPlaySoundEffect
 	ldr r0, [r4]
 	ldrb r1, [r6]
 	adds r1, #0x3d
@@ -6999,9 +6999,9 @@ _0803FC26:
 	mov r3, r8
 	lsls r2, r3, #1
 	subs r1, r1, r2
-	bl sub_803DDF8
+	bl SioStrCpy
 	adds r0, r5, #0
-	bl sub_803F724
+	bl TacticianDrawCharacters
 	adds r0, r5, #0
 	adds r0, #0x39
 	mov r1, sb
@@ -7014,13 +7014,13 @@ _0803FC88:
 	cmp r7, #0
 	bne _0803FC9E
 	movs r0, #0
-	bl sub_803E248
+	bl SioPlaySoundEffect
 	b _0803FC9E
 _0803FC94:
 	cmp r7, #0
 	bne _0803FC9E
 	movs r0, #0
-	bl sub_803E248
+	bl SioPlaySoundEffect
 _0803FC9E:
 	movs r0, #0
 _0803FCA0:
@@ -7112,17 +7112,17 @@ _0803FD34: @ jump table
 _0803FD54:
 	adds r0, r5, #0
 	adds r1, r6, #0
-	bl sub_803FA90
+	bl TacticianTryAppendChar
 	b _0803FE02
 _0803FD5E:
 	adds r0, r5, #0
 	adds r1, r6, #0
-	bl sub_803FB28
+	bl TacticianTryDeleteChar
 	b _0803FE02
 _0803FD68:
 	adds r0, r5, #0
 	adds r1, r6, #0
-	bl sub_803FB84
+	bl SaveTactician
 	b _0803FE02
 _0803FD72:
 	adds r0, r5, #0
@@ -7144,7 +7144,7 @@ _0803FD88:
 	cmp r0, #0
 	beq _0803FDC2
 	movs r0, #2
-	bl sub_803E248
+	bl SioPlaySoundEffect
 	movs r0, #0
 	strb r0, [r4]
 	adds r1, r5, #0
@@ -7158,7 +7158,7 @@ _0803FDA4:
 	cmp r0, #1
 	beq _0803FDC2
 	movs r0, #2
-	bl sub_803E248
+	bl SioPlaySoundEffect
 	movs r1, #0
 	movs r0, #1
 	strb r0, [r4]
@@ -7168,7 +7168,7 @@ _0803FDA4:
 	b _0803FEE0
 _0803FDC2:
 	movs r0, #0
-	bl sub_803E248
+	bl SioPlaySoundEffect
 	b _0803FE02
 _0803FDCA:
 	adds r4, r5, #0
@@ -7180,7 +7180,7 @@ _0803FDCA:
 	cmp r0, #1
 	bls _0803FDFC
 	movs r0, #2
-	bl sub_803E248
+	bl SioPlaySoundEffect
 	movs r0, #2
 	strb r0, [r4]
 	adds r0, r5, #0
@@ -7198,7 +7198,7 @@ _0803FDF2:
 	b _0803FEE0
 _0803FDFC:
 	movs r0, #0
-	bl sub_803E248
+	bl SioPlaySoundEffect
 _0803FE02:
 	ldr r0, _0803FE1C @ =gpKeySt
 	ldr r1, [r0]
@@ -7247,7 +7247,7 @@ _0803FE4A:
 	beq _0803FE62
 	adds r0, r5, #0
 	adds r1, r6, #0
-	bl sub_803FB28
+	bl TacticianTryDeleteChar
 _0803FE62:
 	ldr r1, [r4]
 	movs r0, #8
@@ -7256,7 +7256,7 @@ _0803FE62:
 	cmp r0, #0
 	beq _0803FE78
 	movs r0, #3
-	bl sub_803E248
+	bl SioPlaySoundEffect
 	movs r0, #5
 	strh r0, [r5, #0x34]
 _0803FE78:
@@ -7267,7 +7267,7 @@ _0803FE78:
 	cmp r0, #0
 	beq _0803FEF4
 	movs r0, #2
-	bl sub_803E248
+	bl SioPlaySoundEffect
 	adds r1, r5, #0
 	adds r1, #0x30
 	ldrb r2, [r1]
@@ -7332,15 +7332,15 @@ _0803FEF4:
 	beq _0803FF10
 	adds r0, r5, #0
 	adds r1, r6, #0
-	bl sub_803FB28
+	bl TacticianTryDeleteChar
 	b _0803FF28
 _0803FF10:
-	bl sub_803DEC4
+	bl CheckInLinkArena
 	lsls r0, r0, #0x18
 	cmp r0, #0
 	beq _0803FF28
 	movs r0, #1
-	bl sub_803E248
+	bl SioPlaySoundEffect
 	adds r0, r5, #0
 	movs r1, #3
 	bl Proc_Goto
@@ -7350,8 +7350,8 @@ _0803FF28:
 	bx r0
 	.align 2, 0
 
-	thumb_func_start sub_803FF30
-sub_803FF30: @ 0x0803FF30
+	thumb_func_start Tactician_Loop
+Tactician_Loop: @ 0x0803FF30
 	push {r4, r5, r6, r7, lr}
 	mov r7, sb
 	mov r6, r8
@@ -7374,7 +7374,7 @@ sub_803FF30: @ 0x0803FF30
 	add r6, sp, #8
 	movs r1, #0x34
 	ldrsh r0, [r4, r1]
-	bl sub_803F574
+	bl GetTacticianTextConf
 	adds r5, r0, #0
 	ldrh r0, [r4, #0x34]
 	strh r0, [r4, #0x36]
@@ -7386,16 +7386,16 @@ sub_803FF30: @ 0x0803FF30
 	cmp r2, r0
 	beq _0803FF7C
 	movs r0, #3
-	bl sub_803E248
+	bl SioPlaySoundEffect
 _0803FF7C:
 	movs r1, #0x34
 	ldrsh r0, [r4, r1]
-	bl sub_803F574
+	bl GetTacticianTextConf
 	adds r5, r0, #0
 	adds r0, r4, #0
 	adds r0, #0x3d
 	adds r1, r6, #0
-	bl sub_803DDF8
+	bl SioStrCpy
 	mov r2, sb
 	ldrb r2, [r2]
 	lsls r0, r2, #1
@@ -7404,7 +7404,7 @@ _0803FF7C:
 	movs r1, #0
 	strb r1, [r0]
 	adds r0, r6, #0
-	bl sub_803F774
+	bl SioStrLen
 	lsls r1, r0, #3
 	adds r3, r1, r0
 	ldr r6, [r4, #0x2c]
@@ -7637,7 +7637,7 @@ sub_8040148: @ 0x08040148
 	movs r0, #0
 	strb r0, [r1]
 	movs r0, #3
-	bl sub_803E248
+	bl SioPlaySoundEffect
 _08040176:
 	ldr r0, _080401D8 @ =gpKeySt
 	ldr r1, [r0]
@@ -7654,7 +7654,7 @@ _08040176:
 	movs r0, #1
 	strb r0, [r4]
 	movs r0, #3
-	bl sub_803E248
+	bl SioPlaySoundEffect
 _08040198:
 	ldrb r1, [r4]
 	lsls r0, r1, #2
@@ -7671,7 +7671,7 @@ _08040198:
 	cmp r0, #0
 	beq _080401E0
 	movs r0, #1
-	bl sub_803E248
+	bl SioPlaySoundEffect
 	ldr r0, _080401DC @ =gBg0Tm + 0x316
 	movs r1, #0xc
 	movs r2, #2
@@ -7694,7 +7694,7 @@ _080401E0:
 	cmp r0, #0
 	bne _08040208
 	movs r0, #2
-	bl sub_803E248
+	bl SioPlaySoundEffect
 	ldr r1, _08040204 @ =0x0203DC08
 	movs r0, #1
 	strb r0, [r1]
@@ -7706,7 +7706,7 @@ _080401E0:
 _08040204: .4byte 0x0203DC08
 _08040208:
 	movs r0, #1
-	bl sub_803E248
+	bl SioPlaySoundEffect
 _0804020E:
 	ldr r0, _0804022C @ =gBg0Tm + 0x316
 	movs r1, #0xc
@@ -7727,7 +7727,7 @@ _0804022C: .4byte gBg0Tm + 0x316
 	thumb_func_start sub_8040230
 sub_8040230: @ 0x08040230
 	push {lr}
-	bl sub_803DEC4
+	bl CheckInLinkArena
 	lsls r0, r0, #0x18
 	cmp r0, #0
 	bne _08040240
@@ -8231,7 +8231,7 @@ _08040622:
 	ldr r0, _08040658 @ =0x0203DA00
 	mov r1, r8
 	movs r2, #2
-	bl sub_803DE14
+	bl SioDrawNumber
 	movs r0, #8
 	add sl, r0
 	movs r0, #0x20
@@ -8356,7 +8356,7 @@ _0804072C:
 	subs r5, #1
 	cmp r5, #0
 	bge _0804072C
-	ldr r0, _0804083C @ =gUnk_08C07DAC
+	ldr r0, _0804083C @ =gSioSt
 	ldr r0, [r0]
 	ldrb r2, [r0, #7]
 	adds r1, r6, #0
@@ -8456,7 +8456,7 @@ _0804082C: .4byte 0x02000C60
 _08040830: .4byte 0x06012000
 _08040834: .4byte Pal_Text
 _08040838: .4byte 0x0203D9F8
-_0804083C: .4byte gUnk_08C07DAC
+_0804083C: .4byte gSioSt
 _08040840: .4byte 0x01000010
 _08040844: .4byte gDispIo
 _08040848: .4byte 0x0000FFE0
@@ -8709,7 +8709,7 @@ _080409D2:
 	adds r0, r1, r0
 	adds r6, #4
 	adds r1, r1, r6
-	bl sub_803DDF8
+	bl SioStrCpy
 	mov r2, r8
 	cmp r2, r7
 	bgt _080409D2
@@ -8751,7 +8751,7 @@ _08040A40:
 	ands r0, r2
 	orrs r0, r3
 	strb r0, [r4]
-	ldr r0, _08040AB8 @ =gUnk_08C07DAC
+	ldr r0, _08040AB8 @ =gSioSt
 	ldr r0, [r0]
 	movs r2, #6
 	ldrsb r2, [r0, r2]
@@ -8761,7 +8761,7 @@ _08040A40:
 	adds r0, r0, r2
 	adds r5, #4
 	adds r1, r1, r5
-	bl sub_803DDF8
+	bl SioStrCpy
 	adds r0, r7, #0
 _08040AA4:
 	add sp, #8
@@ -8774,7 +8774,7 @@ _08040AA4:
 	bx r1
 	.align 2, 0
 _08040AB4: .4byte 0x0203DB28
-_08040AB8: .4byte gUnk_08C07DAC
+_08040AB8: .4byte gSioSt
 _08040ABC: .4byte 0x0203D9A9
 
 	thumb_func_start sub_8040AC0
@@ -8799,7 +8799,7 @@ sub_8040AC0: @ 0x08040AC0
 	lsls r4, r4, #0x18
 	lsrs r4, r4, #0x18
 	ldr r1, _08040B34 @ =0x0203DC74
-	ldr r0, _08040B38 @ =gUnk_08C07DAC
+	ldr r0, _08040B38 @ =gSioSt
 	ldr r0, [r0]
 	ldrb r0, [r0, #6]
 	lsls r0, r0, #0x18
@@ -8832,7 +8832,7 @@ sub_8040AC0: @ 0x08040AC0
 	.align 2, 0
 _08040B30: .4byte 0x0203D908
 _08040B34: .4byte 0x0203DC74
-_08040B38: .4byte gUnk_08C07DAC
+_08040B38: .4byte gSioSt
 _08040B3C: .4byte 0x0203DB28
 _08040B40:
 	movs r0, #1
@@ -8952,7 +8952,7 @@ _08040C2C:
 	ldr r0, _08040C68 @ =0x0203DC74
 	movs r1, #0
 	strb r1, [r0]
-	ldr r2, _08040C6C @ =gUnk_08C07DAC
+	ldr r2, _08040C6C @ =gSioSt
 	ldr r0, [r2]
 	strb r1, [r0, #6]
 	ldr r3, [r2]
@@ -8980,7 +8980,7 @@ _08040C2C:
 	.align 2, 0
 _08040C64: .4byte 0x0203D9F4
 _08040C68: .4byte 0x0203DC74
-_08040C6C: .4byte gUnk_08C07DAC
+_08040C6C: .4byte gSioSt
 _08040C70: .4byte 0x0203D908
 
 	thumb_func_start sub_8040C74
@@ -9108,7 +9108,7 @@ _08040D6C:
 	mov r0, sb
 	adds r0, #0x9c
 	adds r5, r6, r0
-	ldr r0, _08040DC8 @ =gUnk_08C07DAC
+	ldr r0, _08040DC8 @ =gSioSt
 	ldr r0, [r0]
 	adds r0, #0xb
 	adds r0, r0, r6
@@ -9146,7 +9146,7 @@ _08040D6C:
 	b _08040DF2
 	.align 2, 0
 _08040DC4: .4byte 0x0203D908
-_08040DC8: .4byte gUnk_08C07DAC
+_08040DC8: .4byte gSioSt
 _08040DCC: .4byte gUnk_08C07E68
 _08040DD0: .4byte gUnk_081CD9F8
 _08040DD4:
@@ -9350,7 +9350,7 @@ sub_8040F78: @ 0x08040F78
 	movs r1, #1
 	rsbs r1, r1, #0
 	mov r0, sp
-	bl sub_803D594
+	bl SioSend16
 	add sp, #4
 	pop {r4}
 	pop {r0}
@@ -9388,7 +9388,7 @@ sub_8040FC0: @ 0x08040FC0
 	b _080411D6
 _08040FF2:
 	movs r0, #1
-	bl sub_803E248
+	bl SioPlaySoundEffect
 	bl sub_8048300
 	b _08041040
 	.align 2, 0
@@ -9397,7 +9397,7 @@ _08041004: .4byte gUnk_08C07DF8
 _08041008: .4byte gpKeySt
 _0804100C:
 	bl sub_8048300
-	ldr r2, _08041054 @ =gUnk_08C07DAC
+	ldr r2, _08041054 @ =gSioSt
 	ldr r1, [r2]
 	movs r0, #6
 	ldrsb r0, [r1, r0]
@@ -9431,7 +9431,7 @@ _08041040:
 	bl Proc_Goto
 	b _080411D6
 	.align 2, 0
-_08041054: .4byte gUnk_08C07DAC
+_08041054: .4byte gSioSt
 _08041058:
 	bl sub_803D214
 	lsls r0, r0, #0x18
@@ -9504,9 +9504,9 @@ _080410DE:
 	cmp r3, #3
 	ble _080410DE
 	movs r0, #2
-	bl sub_803E248
+	bl SioPlaySoundEffect
 	bl sub_803D174
-	ldr r2, _08041124 @ =gUnk_08C07DAC
+	ldr r2, _08041124 @ =gSioSt
 	ldr r1, [r2]
 	strb r0, [r1, #7]
 	ldr r0, _08041128 @ =0x0203D908
@@ -9526,7 +9526,7 @@ _080410DE:
 	.align 2, 0
 _0804111C: .4byte 0x000003CD
 _08041120: .4byte gpKeySt
-_08041124: .4byte gUnk_08C07DAC
+_08041124: .4byte gSioSt
 _08041128: .4byte 0x0203D908
 _0804112C:
 	ldr r0, [r4, #0x30]
@@ -9539,7 +9539,7 @@ _0804112C:
 	movs r1, #1
 	bl sub_803E13C
 _08041140:
-	ldr r5, _080411A8 @ =gUnk_08C07DAC
+	ldr r5, _080411A8 @ =gSioSt
 	ldr r1, [r5]
 	movs r0, #6
 	ldrsb r0, [r1, r0]
@@ -9574,7 +9574,7 @@ _08041178:
 	cmp r3, #3
 	ble _08041178
 	bl sub_803D174
-	ldr r2, _080411A8 @ =gUnk_08C07DAC
+	ldr r2, _080411A8 @ =gSioSt
 	ldr r1, [r2]
 	strb r0, [r1, #7]
 	ldr r0, _080411AC @ =0x0203D908
@@ -9588,7 +9588,7 @@ _0804119E:
 	bl Proc_Break
 	b _080411D6
 	.align 2, 0
-_080411A8: .4byte gUnk_08C07DAC
+_080411A8: .4byte gSioSt
 _080411AC: .4byte 0x0203D908
 _080411B0:
 	bl GetGameTime
@@ -9599,7 +9599,7 @@ _080411B0:
 	ldr r0, _080411E0 @ =0x030045E0
 	movs r1, #0xcc
 	strb r1, [r0]
-	ldr r1, _080411E4 @ =gUnk_08C07DAC
+	ldr r1, _080411E4 @ =gSioSt
 	ldr r2, [r1]
 	ldrb r1, [r2, #6]
 	strb r1, [r0, #1]
@@ -9614,7 +9614,7 @@ _080411D6:
 	bx r0
 	.align 2, 0
 _080411E0: .4byte 0x030045E0
-_080411E4: .4byte gUnk_08C07DAC
+_080411E4: .4byte gSioSt
 
 	thumb_func_start sub_80411E8
 sub_80411E8: @ 0x080411E8
@@ -9627,7 +9627,7 @@ sub_80411E8: @ 0x080411E8
 	str r3, [r1]
 	ldr r0, _08041244 @ =0x0203D908
 	adds r0, #0xa0
-	ldr r1, _08041248 @ =gUnk_08C07DAC
+	ldr r1, _08041248 @ =gSioSt
 	ldr r2, [r1]
 	ldrb r0, [r0]
 	ldrb r1, [r2, #7]
@@ -9658,7 +9658,7 @@ _08041210:
 	.align 2, 0
 _08041240: .4byte 0x0203DC0C
 _08041244: .4byte 0x0203D908
-_08041248: .4byte gUnk_08C07DAC
+_08041248: .4byte gSioSt
 _0804124C: .4byte 0x000003CB
 _08041250:
 	movs r0, #6
@@ -9700,7 +9700,7 @@ sub_8041288: @ 0x08041288
 	lsls r0, r0, #2
 	movs r1, #1
 	bl sub_803E13C
-	ldr r0, _08041320 @ =gUnk_08C07DAC
+	ldr r0, _08041320 @ =gSioSt
 	ldr r0, [r0]
 	ldrb r0, [r0, #6]
 	lsls r0, r0, #0x18
@@ -9764,7 +9764,7 @@ _0804130A:
 	pop {r0}
 	bx r0
 	.align 2, 0
-_08041320: .4byte gUnk_08C07DAC
+_08041320: .4byte gSioSt
 _08041324: .4byte 0x0203D908
 
 	thumb_func_start sub_8041328
@@ -9773,7 +9773,7 @@ sub_8041328: @ 0x08041328
 	sub sp, #0x14
 	adds r5, r0, #0
 	ldr r7, [r5, #0x2c]
-	ldr r0, _08041364 @ =gUnk_08C07DAC
+	ldr r0, _08041364 @ =gSioSt
 	ldr r2, [r0]
 	movs r4, #6
 	ldrsb r4, [r2, r4]
@@ -9798,7 +9798,7 @@ sub_8041328: @ 0x08041328
 	bl Proc_Break
 	b _080413EC
 	.align 2, 0
-_08041364: .4byte gUnk_08C07DAC
+_08041364: .4byte gSioSt
 _08041368: .4byte 0x000003D1
 _0804136C:
 	bl GetGameTime
@@ -9916,7 +9916,7 @@ _08041450:
 	bne _080414A0
 	adds r0, r6, #0
 	adds r0, #0x3b
-	ldr r1, _08041480 @ =gUnk_08C07DAC
+	ldr r1, _08041480 @ =gSioSt
 	ldr r1, [r1]
 	ldrb r2, [r0]
 	adds r4, r0, #0
@@ -9932,7 +9932,7 @@ _08041450:
 	.align 2, 0
 _08041478: .4byte 0x0203D908
 _0804147C: .4byte gPlaySt
-_08041480: .4byte gUnk_08C07DAC
+_08041480: .4byte gSioSt
 _08041484: .4byte 0x000003D3
 _08041488:
 	ldr r0, _080414A8 @ =0x000003D2
@@ -10008,7 +10008,7 @@ sub_8041504: @ 0x08041504
 	mov r5, r8
 	push {r5, r6, r7}
 	mov sb, r0
-	ldr r0, _080415C0 @ =gUnk_08C07DAC
+	ldr r0, _080415C0 @ =gSioSt
 	ldr r0, [r0]
 	ldrb r0, [r0, #6]
 	lsls r0, r0, #0x18
@@ -10048,7 +10048,7 @@ _0804153E:
 	bne _0804157C
 	adds r0, r5, #0
 	bl GetUnitMiniPortraitId
-	ldr r1, _080415C0 @ =gUnk_08C07DAC
+	ldr r1, _080415C0 @ =gSioSt
 	ldr r1, [r1]
 	ldrb r1, [r1, #6]
 	lsls r1, r1, #0x18
@@ -10061,7 +10061,7 @@ _0804157C:
 	adds r6, #1
 	cmp r6, #4
 	ble _0804153E
-	ldr r2, _080415C0 @ =gUnk_08C07DAC
+	ldr r2, _080415C0 @ =gSioSt
 	mov r3, sb
 	adds r3, #0x64
 	mov r4, sb
@@ -10093,7 +10093,7 @@ _08041596:
 	pop {r0}
 	bx r0
 	.align 2, 0
-_080415C0: .4byte gUnk_08C07DAC
+_080415C0: .4byte gSioSt
 _080415C4: .4byte 0x0203DC0C
 _080415C8: .4byte 0x0203D908
 _080415CC: .4byte gUnk_08C08368
@@ -10160,7 +10160,7 @@ _0804161A:
 	adds r2, #1
 	strh r2, [r4]
 	ldr r1, _08041748 @ =0x0203D908
-	ldr r0, _0804174C @ =gUnk_08C07DAC
+	ldr r0, _0804174C @ =gSioSt
 	ldr r0, [r0]
 	ldrb r0, [r0, #6]
 	lsls r0, r0, #0x18
@@ -10261,7 +10261,7 @@ _0804170E:
 	mov r0, sl
 	cmp r0, #0
 	bne _0804172E
-	ldr r0, _0804174C @ =gUnk_08C07DAC
+	ldr r0, _0804174C @ =gSioSt
 	ldr r2, [r0]
 	movs r1, #6
 	ldrsb r1, [r2, r1]
@@ -10283,7 +10283,7 @@ _0804172E:
 _08041740: .4byte gPlaySt
 _08041744: .4byte gUnk_08C08368
 _08041748: .4byte 0x0203D908
-_0804174C: .4byte gUnk_08C07DAC
+_0804174C: .4byte gSioSt
 _08041750: .4byte 0x0203DC74
 _08041754: .4byte 0x0203D9A4
 
@@ -10330,7 +10330,7 @@ _080417A2:
 	ldr r0, _080417F4 @ =0x030046BC
 	movs r1, #0xc9
 	strb r1, [r0]
-	ldr r4, _080417F8 @ =gUnk_08C07DAC
+	ldr r4, _080417F8 @ =gSioSt
 	ldr r1, [r4]
 	ldrb r1, [r1, #6]
 	strb r1, [r0, #1]
@@ -10365,7 +10365,7 @@ _080417E4:
 _080417EC: .4byte gPlaySt
 _080417F0: .4byte 0x0203DC0C
 _080417F4: .4byte 0x030046BC
-_080417F8: .4byte gUnk_08C07DAC
+_080417F8: .4byte gSioSt
 _080417FC: .4byte gUnk_08C07E80
 
 	thumb_func_start sub_8041800
@@ -10986,7 +10986,7 @@ sub_8041D00: @ 0x08041D00
 	cmp r5, r0
 	beq _08041D3A
 	movs r0, #3
-	bl sub_803E248
+	bl SioPlaySoundEffect
 _08041D3A:
 	ldr r4, _08041D78 @ =gpKeySt
 	ldr r1, [r4]
@@ -10996,7 +10996,7 @@ _08041D3A:
 	cmp r0, #0
 	beq _08041D54
 	movs r0, #2
-	bl sub_803E248
+	bl SioPlaySoundEffect
 	adds r0, r6, #0
 	bl Proc_Break
 _08041D54:
@@ -11007,7 +11007,7 @@ _08041D54:
 	cmp r0, #0
 	beq _08041D6E
 	movs r0, #1
-	bl sub_803E248
+	bl SioPlaySoundEffect
 	adds r0, r6, #0
 	movs r1, #4
 	bl Proc_Goto
@@ -11233,7 +11233,7 @@ sub_8041EE4: @ 0x08041EE4
 	movs r1, #0x60
 	movs r2, #2
 	adds r3, r4, #0
-	bl sub_803DE14
+	bl SioDrawNumber
 	ldr r3, _08041F64 @ =gUnk_081DABC8
 	adds r0, r5, #0
 	movs r1, #0x68
@@ -11243,7 +11243,7 @@ sub_8041EE4: @ 0x08041EE4
 	movs r1, #0x86
 	movs r2, #2
 	adds r3, r6, #0
-	bl sub_803DE14
+	bl SioDrawNumber
 	ldr r3, _08041F68 @ =gUnk_081DB008
 	adds r0, r5, #0
 	movs r1, #0x8e
@@ -11253,7 +11253,7 @@ sub_8041EE4: @ 0x08041EE4
 	movs r1, #0x9c
 	movs r2, #2
 	mov r3, r8
-	bl sub_803DE14
+	bl SioDrawNumber
 	ldr r3, _08041F6C @ =gUnk_081DB00C
 	adds r0, r5, #0
 	movs r1, #0xa4
@@ -11614,7 +11614,7 @@ _0804226A:
 	cmp r0, #0
 	beq _080422B0
 	movs r0, #3
-	bl sub_803E248
+	bl SioPlaySoundEffect
 	ldrh r0, [r4, #0x36]
 	subs r0, #4
 	strh r0, [r4, #0x36]
@@ -11648,7 +11648,7 @@ _080422B0:
 	cmp r0, #9
 	bgt _080422FC
 	movs r0, #3
-	bl sub_803E248
+	bl SioPlaySoundEffect
 	ldrh r0, [r4, #0x36]
 	adds r0, #4
 	strh r0, [r4, #0x36]
@@ -11678,7 +11678,7 @@ _080422FC:
 	cmp r0, #0
 	beq _08042316
 	movs r0, #1
-	bl sub_803E248
+	bl SioPlaySoundEffect
 	adds r0, r4, #0
 	bl Proc_Break
 _08042316:
@@ -12415,7 +12415,7 @@ sub_8042944: @ 0x08042944
 	cmp r0, #0
 	beq _0804296E
 	movs r0, #1
-	bl sub_803E248
+	bl SioPlaySoundEffect
 	ldr r0, _08042A64 @ =0x0203D9F4
 	bl sub_80A28E8
 	adds r0, r6, #0
@@ -12498,7 +12498,7 @@ _080429FC:
 	cmp r4, #0
 	beq _08042A58
 	movs r0, #3
-	bl sub_803E248
+	bl SioPlaySoundEffect
 	ldr r5, [r6, #0x30]
 	cmp r5, #1
 	bne _08042A16
@@ -13174,7 +13174,7 @@ _08042F8E:
 	movs r3, #0x1f
 	bl sub_80489B4
 	movs r0, #3
-	bl sub_803E248
+	bl SioPlaySoundEffect
 _08042FA6:
 	ldr r0, _08043054 @ =gpKeySt
 	ldr r1, [r0]
@@ -13199,7 +13199,7 @@ _08042FA6:
 	movs r3, #4
 	bl sub_80489B4
 	movs r0, #3
-	bl sub_803E248
+	bl SioPlaySoundEffect
 _08042FDC:
 	ldr r1, _08043054 @ =gpKeySt
 	ldr r2, [r1]
@@ -13300,7 +13300,7 @@ _0804308C:
 	cmp r5, r0
 	beq _08043106
 	movs r0, #3
-	bl sub_803E248
+	bl SioPlaySoundEffect
 	lsls r0, r5, #2
 	adds r1, r4, #0
 	adds r1, #0x2c
@@ -13356,7 +13356,7 @@ _08043106:
 	movs r0, #0
 	str r0, [r4, #0x54]
 	movs r0, #2
-	bl sub_803E248
+	bl SioPlaySoundEffect
 	ldr r1, _08043158 @ =0x0203D908
 	ldr r0, [r4, #0x48]
 	strb r0, [r1]
@@ -13370,7 +13370,7 @@ _0804312A:
 	cmp r0, #0
 	beq _0804314E
 	movs r0, #1
-	bl sub_803E248
+	bl SioPlaySoundEffect
 	movs r0, #2
 	bl FadeBgmOut
 	ldr r1, _08043158 @ =0x0203D908
@@ -13509,7 +13509,7 @@ _0804323A:
 	bne _08043278
 	bl sub_802D864
 	bl sub_8048494
-	bl sub_803DEB4
+	bl UnsetBmStLinkArenaFlag
 	ldr r0, _08043274 @ =gUnk_08C025F8
 	bl Proc_EndEach
 	adds r0, r6, #0
@@ -13555,7 +13555,7 @@ _080432B4:
 	strb r0, [r1, #5]
 	strb r0, [r1, #3]
 	strb r0, [r1, #1]
-	bl sub_803DEA4
+	bl SetBmStLinkArenaFlag
 	bl sub_80456C8
 	bl StartBmVSync
 	ldr r1, _08043304 @ =gPlaySt
@@ -13586,11 +13586,11 @@ _08043304: .4byte gPlaySt
 _08043308: .4byte gUnk_08C08924
 _0804330C: .4byte gUnk_08C025F8
 
-	thumb_func_start sub_8043310
-sub_8043310: @ 0x08043310
+	thumb_func_start StartNameSelect
+StartNameSelect: @ 0x08043310
 	push {lr}
 	adds r1, r0, #0
-	ldr r0, _0804332C @ =gUnk_08C080F8
+	ldr r0, _0804332C @ =ProcScr_TacticianNameSelection
 	bl Proc_StartBlocking
 	adds r3, r0, #0
 	adds r3, #0x33
@@ -13602,14 +13602,14 @@ sub_8043310: @ 0x08043310
 	pop {r0}
 	bx r0
 	.align 2, 0
-_0804332C: .4byte gUnk_08C080F8
+_0804332C: .4byte ProcScr_TacticianNameSelection
 
-	thumb_func_start sub_8043330
-sub_8043330: @ 0x08043330
+	thumb_func_start StartTacticianNameSelect
+StartTacticianNameSelect: @ 0x08043330
 	push {r4, lr}
 	adds r4, r0, #0
 	bl UnpackUiWindowFrameGraphics
-	bl sub_803DEB4
+	bl UnsetBmStLinkArenaFlag
 	ldr r0, _0804337C @ =0x0203DA48
 	ldr r1, _08043380 @ =0x06001800
 	movs r2, #0xc0
@@ -13626,7 +13626,7 @@ sub_8043330: @ 0x08043330
 	ldrb r2, [r1]
 	ands r0, r2
 	strb r0, [r1]
-	ldr r0, _0804338C @ =gUnk_08C080F8
+	ldr r0, _0804338C @ =ProcScr_TacticianNameSelection
 	adds r1, r4, #0
 	bl Proc_StartBlocking
 	adds r2, r0, #0
@@ -13644,7 +13644,7 @@ _0804337C: .4byte 0x0203DA48
 _08043380: .4byte 0x06001800
 _08043384: .4byte 0x0203D908
 _08043388: .4byte gPlaySt
-_0804338C: .4byte gUnk_08C080F8
+_0804338C: .4byte ProcScr_TacticianNameSelection
 
 	thumb_func_start sub_8043390
 sub_8043390: @ 0x08043390
@@ -13670,7 +13670,7 @@ sub_8043390: @ 0x08043390
 _080433B8: .4byte gUnk_08C07DF8
 _080433BC: .4byte gpKeySt
 _080433C0:
-	ldr r0, _080433E0 @ =gUnk_08C07DAC
+	ldr r0, _080433E0 @ =gSioSt
 	ldr r2, [r0]
 	movs r0, #6
 	ldrsb r0, [r2, r0]
@@ -13688,7 +13688,7 @@ _080433DA:
 	movs r1, #0
 	b _08043458
 	.align 2, 0
-_080433E0: .4byte gUnk_08C07DAC
+_080433E0: .4byte gSioSt
 _080433E4:
 	movs r1, #0
 	adds r2, #0x1a
@@ -13706,7 +13706,7 @@ _080433F2:
 	lsls r0, r0, #0x18
 	cmp r0, #0
 	beq _08043410
-	ldr r6, _08043418 @ =gUnk_08C07DAC
+	ldr r6, _08043418 @ =gSioSt
 	ldr r2, [r6]
 	ldrb r0, [r2, #0x1e]
 	cmp r0, #0x3c
@@ -13718,7 +13718,7 @@ _08043410:
 	movs r1, #0
 	b _08043458
 	.align 2, 0
-_08043418: .4byte gUnk_08C07DAC
+_08043418: .4byte gSioSt
 _0804341C:
 	ldr r0, _08043460 @ =0x030045E0
 	movs r1, #0xcc
@@ -13755,7 +13755,7 @@ _0804345C:
 	.align 2, 0
 _08043460: .4byte 0x030045E0
 _08043464:
-	ldr r4, _08043498 @ =gUnk_08C07DAC
+	ldr r4, _08043498 @ =gSioSt
 	ldr r1, [r4]
 	movs r0, #3
 	ldrb r2, [r1, #9]
@@ -13780,7 +13780,7 @@ _08043464:
 	bl sub_800D384
 	b _0804345C
 	.align 2, 0
-_08043498: .4byte gUnk_08C07DAC
+_08043498: .4byte gSioSt
 _0804349C:
 	movs r0, #1
 _0804349E:
@@ -13794,7 +13794,7 @@ _0804349E:
 sub_80434A8: @ 0x080434A8
 	push {lr}
 	adds r1, r0, #0
-	ldr r0, _080434C4 @ =gUnk_08C07DAC
+	ldr r0, _080434C4 @ =gSioSt
 	ldr r0, [r0]
 	ldrb r0, [r0, #9]
 	cmp r0, #3
@@ -13806,7 +13806,7 @@ _080434BE:
 	pop {r0}
 	bx r0
 	.align 2, 0
-_080434C4: .4byte gUnk_08C07DAC
+_080434C4: .4byte gSioSt
 
 	thumb_func_start sub_80434C8
 sub_80434C8: @ 0x080434C8
@@ -13853,7 +13853,7 @@ sub_8043510: @ 0x08043510
 	adds r5, r0, #0
 	movs r4, #0
 	movs r1, #0
-	ldr r0, _08043558 @ =gUnk_08C07DAC
+	ldr r0, _08043558 @ =gSioSt
 	ldr r0, [r0]
 	adds r2, r0, #0
 	adds r2, #0x1a
@@ -13871,7 +13871,7 @@ _0804352C:
 	lsls r0, r0, #0x18
 	cmp r0, #0
 	beq _0804354A
-	ldr r0, _08043558 @ =gUnk_08C07DAC
+	ldr r0, _08043558 @ =gSioSt
 	ldr r0, [r0]
 	ldrb r0, [r0, #0x1e]
 	cmp r0, #0x3c
@@ -13886,7 +13886,7 @@ _08043552:
 	movs r0, #0
 	b _08043580
 	.align 2, 0
-_08043558: .4byte gUnk_08C07DAC
+_08043558: .4byte gSioSt
 _0804355C:
 	add r1, sp, #4
 	mov r0, sp
@@ -13927,7 +13927,7 @@ sub_8043588: @ 0x08043588
 	movs r1, #0x36
 	movs r2, #2
 	adds r3, r6, #0
-	bl sub_803DE14
+	bl SioDrawNumber
 	ldr r3, _080435C8 @ =gUnk_081DB0A0
 	adds r0, r4, #0
 	movs r1, #0x3e
@@ -14059,7 +14059,7 @@ sub_80436B0: @ 0x080436B0
 	ldr r0, _080436F4 @ =0x0203DA48
 	bl SetTextFont
 	bl InitSystemTextFont
-	ldr r0, _080436F8 @ =gUnk_08C07DAC
+	ldr r0, _080436F8 @ =gSioSt
 	ldr r0, [r0]
 	ldrb r0, [r0, #6]
 	lsls r0, r0, #0x18
@@ -14084,7 +14084,7 @@ sub_80436B0: @ 0x080436B0
 	b _08043716
 	.align 2, 0
 _080436F4: .4byte 0x0203DA48
-_080436F8: .4byte gUnk_08C07DAC
+_080436F8: .4byte gSioSt
 _080436FC: .4byte ReadSramFast
 _08043700: .4byte 0x0E007400
 _08043704: .4byte gAnims
@@ -14123,7 +14123,7 @@ _08043738:
 	bl m4aSongNumStart
 _0804374A:
 	bl InitTalkTextFont
-	ldr r0, _08043774 @ =gUnk_08C07DAC
+	ldr r0, _08043774 @ =gSioSt
 	ldr r0, [r0]
 	ldrb r0, [r0, #6]
 	lsls r0, r0, #0x18
@@ -14142,13 +14142,13 @@ _0804376A:
 	bx r1
 	.align 2, 0
 _08043770: .4byte gPlaySt
-_08043774: .4byte gUnk_08C07DAC
+_08043774: .4byte gSioSt
 _08043778: .4byte gAnims
 _0804377C: .4byte 0x0E007400
 
 	thumb_func_start sub_8043780
 sub_8043780: @ 0x08043780
-	ldr r0, _08043790 @ =gUnk_08C07DAC
+	ldr r0, _08043790 @ =gSioSt
 	ldr r2, [r0]
 	movs r1, #6
 	ldrsb r1, [r2, r1]
@@ -14157,7 +14157,7 @@ sub_8043780: @ 0x08043780
 	strb r0, [r2, #0xa]
 	bx lr
 	.align 2, 0
-_08043790: .4byte gUnk_08C07DAC
+_08043790: .4byte gSioSt
 
 	thumb_func_start sub_8043794
 sub_8043794: @ 0x08043794
@@ -14166,7 +14166,7 @@ sub_8043794: @ 0x08043794
 	movs r2, #0
 	movs r1, #0xc9
 	strb r1, [r0]
-	ldr r4, _080437C4 @ =gUnk_08C07DAC
+	ldr r4, _080437C4 @ =gSioSt
 	ldr r1, [r4]
 	ldrb r1, [r1, #6]
 	strb r1, [r0, #1]
@@ -14184,7 +14184,7 @@ sub_8043794: @ 0x08043794
 	b _080437D4
 	.align 2, 0
 _080437C0: .4byte 0x030046BC
-_080437C4: .4byte gUnk_08C07DAC
+_080437C4: .4byte gSioSt
 _080437C8:
 	movs r1, #6
 	ldrsb r1, [r4, r1]
@@ -14280,7 +14280,7 @@ _08043874:
 	movs r0, #0
 	movs r1, #0
 	bl sub_80483C0
-	ldr r0, _080438B4 @ =gUnk_08C07DAC
+	ldr r0, _080438B4 @ =gSioSt
 	ldr r1, [r0]
 	movs r0, #3
 	strb r0, [r1]
@@ -14296,7 +14296,7 @@ _08043874:
 	pop {r0}
 	bx r0
 	.align 2, 0
-_080438B4: .4byte gUnk_08C07DAC
+_080438B4: .4byte gSioSt
 _080438B8: .4byte 0x0203DA48
 _080438BC: .4byte 0x0203D96C
 
@@ -14304,7 +14304,7 @@ _080438BC: .4byte 0x0203D96C
 sub_80438C0: @ 0x080438C0
 	push {lr}
 	adds r1, r0, #0
-	ldr r0, _080438D8 @ =gUnk_08C07DAC
+	ldr r0, _080438D8 @ =gSioSt
 	ldr r2, [r0]
 	movs r0, #3
 	strb r0, [r2]
@@ -14313,7 +14313,7 @@ sub_80438C0: @ 0x080438C0
 	pop {r0}
 	bx r0
 	.align 2, 0
-_080438D8: .4byte gUnk_08C07DAC
+_080438D8: .4byte gSioSt
 _080438DC: .4byte gUnk_08C089E4
 
 	thumb_func_start sub_80438E0
@@ -14596,7 +14596,7 @@ _08043A88:
 	adds r1, #0x4b
 	strb r5, [r1]
 	bl sub_8049BD0
-	ldr r0, _08043BC8 @ =gUnk_08C07DAC
+	ldr r0, _08043BC8 @ =gSioSt
 	ldr r1, [r0]
 	movs r0, #4
 	strb r0, [r1, #0xb]
@@ -14636,7 +14636,7 @@ _08043BB8: .4byte gUnk_08DBAD14
 _08043BBC: .4byte 0x0300466C
 _08043BC0: .4byte gUnk_08DC0390
 _08043BC4: .4byte 0x03004670
-_08043BC8: .4byte gUnk_08C07DAC
+_08043BC8: .4byte gSioSt
 
 	thumb_func_start sub_8043BCC
 sub_8043BCC: @ 0x08043BCC
@@ -14646,7 +14646,7 @@ sub_8043BCC: @ 0x08043BCC
 	movs r2, #1
 	ldr r5, _08043BEC @ =0x03004670
 	movs r4, #1
-	ldr r3, _08043BF0 @ =gUnk_08C07DAC
+	ldr r3, _08043BF0 @ =gSioSt
 _08043BDA:
 	ldrb r1, [r5, #0x1d]
 	asrs r1, r2
@@ -14659,7 +14659,7 @@ _08043BDA:
 	b _08043C10
 	.align 2, 0
 _08043BEC: .4byte 0x03004670
-_08043BF0: .4byte gUnk_08C07DAC
+_08043BF0: .4byte gSioSt
 _08043BF4:
 	ldrb r0, [r5, #0x1e]
 	asrs r0, r2
@@ -14697,7 +14697,7 @@ _08043C12:
 	cmp r0, #0
 	beq _08043C48
 	movs r0, #1
-	bl sub_803E248
+	bl SioPlaySoundEffect
 	adds r0, r7, #0
 	movs r1, #0xb
 	bl Proc_Goto
@@ -14785,7 +14785,7 @@ sub_8043CC8: @ 0x08043CC8
 	movs r1, #1
 	rsbs r1, r1, #0
 	mov r0, sp
-	bl sub_803D594
+	bl SioSend16
 	bl SoundVSyncOn_rev01
 	add sp, #4
 	pop {r4}
@@ -14807,7 +14807,7 @@ sub_8043D14: @ 0x08043D14
 	cmp r0, #0
 	bne _08043DA4
 	movs r1, #0
-	ldr r0, _08043D64 @ =gUnk_08C07DAC
+	ldr r0, _08043D64 @ =gSioSt
 	ldr r0, [r0]
 	adds r2, r0, #0
 	adds r2, #0x1a
@@ -14825,7 +14825,7 @@ _08043D38:
 	lsls r0, r0, #0x18
 	cmp r0, #0
 	beq _08043D56
-	ldr r5, _08043D64 @ =gUnk_08C07DAC
+	ldr r5, _08043D64 @ =gSioSt
 	ldr r2, [r5]
 	ldrb r0, [r2, #0x1e]
 	cmp r0, #0x3c
@@ -14839,7 +14839,7 @@ _08043D56:
 	b _08043DA4
 	.align 2, 0
 _08043D60: .4byte gUnk_08C07DF8
-_08043D64: .4byte gUnk_08C07DAC
+_08043D64: .4byte gSioSt
 _08043D68:
 	ldr r0, _08043DAC @ =0x030045E0
 	movs r1, #0xcc
@@ -15041,7 +15041,7 @@ sub_8043EDC: @ 0x08043EDC
 	subs r0, #1
 	str r0, [r4, #0x44]
 	movs r0, #3
-	bl sub_803E248
+	bl SioPlaySoundEffect
 _08043F00:
 	ldr r0, _08043F50 @ =gpKeySt
 	ldr r1, [r0]
@@ -15056,7 +15056,7 @@ _08043F00:
 	adds r0, #1
 	str r0, [r4, #0x44]
 	movs r0, #3
-	bl sub_803E248
+	bl SioPlaySoundEffect
 _08043F1E:
 	ldr r0, _08043F50 @ =gpKeySt
 	ldr r1, [r0]
@@ -15074,7 +15074,7 @@ _08043F1E:
 	cmp r0, #0
 	beq _08043F58
 	movs r0, #2
-	bl sub_803E248
+	bl SioPlaySoundEffect
 	str r6, [r4, #0x50]
 	ldr r0, [r4, #0x44]
 	str r0, [r5, #0x60]
@@ -15086,7 +15086,7 @@ _08043F50: .4byte gpKeySt
 _08043F54: .4byte 0x02000C04
 _08043F58:
 	movs r0, #0
-	bl sub_803E248
+	bl SioPlaySoundEffect
 _08043F5E:
 	pop {r4, r5, r6}
 	pop {r0}
@@ -16089,7 +16089,7 @@ sub_8044750: @ 0x08044750
 	cmp r0, #0
 	beq _080447B0
 	movs r0, #1
-	bl sub_803E248
+	bl SioPlaySoundEffect
 	str r6, [r7, #0x50]
 	b _08044812
 	.align 2, 0
@@ -16106,7 +16106,7 @@ _080447B0:
 	subs r0, #1
 	strh r0, [r4]
 	movs r0, #3
-	bl sub_803E248
+	bl SioPlaySoundEffect
 _080447C8:
 	ldr r0, _0804482C @ =gpKeySt
 	ldr r1, [r0]
@@ -16125,7 +16125,7 @@ _080447C8:
 	adds r0, r2, #1
 	strh r0, [r1]
 	movs r0, #3
-	bl sub_803E248
+	bl SioPlaySoundEffect
 _080447EE:
 	ldr r0, _0804482C @ =gpKeySt
 	ldr r1, [r0]
@@ -16141,7 +16141,7 @@ _080447EE:
 	cmp r0, #0
 	beq _08044834
 	movs r0, #1
-	bl sub_803E248
+	bl SioPlaySoundEffect
 	movs r0, #2
 	str r0, [r7, #0x50]
 _08044812:
@@ -16160,7 +16160,7 @@ _0804482C: .4byte gpKeySt
 _08044830: .4byte gBg1Tm + 0x244
 _08044834:
 	movs r0, #2
-	bl sub_803E248
+	bl SioPlaySoundEffect
 	ldr r0, _0804487C @ =0x02000C00
 	ldr r1, [r7, #0x44]
 	strb r1, [r0]
@@ -16412,7 +16412,7 @@ sub_80449EC: @ 0x080449EC
 	adds r6, #0x2c
 	ldr r7, _08044ABC @ =gUnk_081DB148
 _08044A24:
-	ldr r0, _08044AC0 @ =gUnk_08C07DAC
+	ldr r0, _08044AC0 @ =gSioSt
 	ldr r0, [r0]
 	ldrb r0, [r0, #6]
 	lsls r0, r0, #0x18
@@ -16483,7 +16483,7 @@ _08044AB0: .4byte 0x06002800
 _08044AB4: .4byte gUnk_081CD798
 _08044AB8: .4byte gUnk_081DB0D8
 _08044ABC: .4byte gUnk_081DB148
-_08044AC0: .4byte gUnk_08C07DAC
+_08044AC0: .4byte gSioSt
 _08044AC4: .4byte 0x0203DC74
 _08044AC8: .4byte gUnk_081CD9F8
 
@@ -16533,7 +16533,7 @@ sub_8044B0C: @ 0x08044B0C
 	ldr r1, _08044B5C @ =gUnk_081DB0E8
 	adds r2, r5, #0
 	adds r2, #0x32
-	ldr r0, _08044B60 @ =gUnk_08C07DAC
+	ldr r0, _08044B60 @ =gSioSt
 	ldr r0, [r0]
 	ldrb r0, [r0, #6]
 	lsls r0, r0, #0x18
@@ -16564,7 +16564,7 @@ sub_8044B0C: @ 0x08044B0C
 	b _08044B8C
 	.align 2, 0
 _08044B5C: .4byte gUnk_081DB0E8
-_08044B60: .4byte gUnk_08C07DAC
+_08044B60: .4byte gSioSt
 _08044B64:
 	movs r1, #0x10
 	ldrsb r1, [r4, r1]
@@ -16610,7 +16610,7 @@ _08044B8C:
 	adds r1, #0x18
 	ldr r3, [r5, #0x34]
 	movs r2, #2
-	bl sub_803DE14
+	bl SioDrawNumber
 	str r4, [r5, #0x3c]
 	pop {r4, r5}
 	pop {r0}
@@ -16836,7 +16836,7 @@ sub_8044D78: @ 0x08044D78
 	movs r1, #0x18
 	movs r2, #2
 	adds r3, r6, #0
-	bl sub_803DE14
+	bl SioDrawNumber
 	adds r4, #1
 	lsls r4, r4, #5
 	adds r4, #1
@@ -16864,7 +16864,7 @@ sub_8044DC0: @ 0x08044DC0
 	ldr r1, _08044E20 @ =gUnk_081DB0E8
 	adds r2, r6, #0
 	adds r2, #0x32
-	ldr r0, _08044E24 @ =gUnk_08C07DAC
+	ldr r0, _08044E24 @ =gSioSt
 	ldr r0, [r0]
 	ldrb r0, [r0, #6]
 	lsls r0, r0, #0x18
@@ -16906,7 +16906,7 @@ sub_8044DC0: @ 0x08044DC0
 	bx r0
 	.align 2, 0
 _08044E20: .4byte gUnk_081DB0E8
-_08044E24: .4byte gUnk_08C07DAC
+_08044E24: .4byte gSioSt
 _08044E28: .4byte gUnk_081DB148
 
 	thumb_func_start sub_8044E2C
@@ -16938,7 +16938,7 @@ sub_8044E2C: @ 0x08044E2C
 	beq _08044E86
 	adds r1, r4, #0
 	adds r1, #0x32
-	ldr r0, _08044EB8 @ =gUnk_08C07DAC
+	ldr r0, _08044EB8 @ =gSioSt
 	ldr r0, [r0]
 	ldrb r1, [r1]
 	ldrb r0, [r0, #6]
@@ -16978,7 +16978,7 @@ _08044EAE:
 	pop {r0}
 	bx r0
 	.align 2, 0
-_08044EB8: .4byte gUnk_08C07DAC
+_08044EB8: .4byte gSioSt
 _08044EBC: .4byte gPlaySt
 _08044EC0: .4byte 0x0203DC74
 
@@ -17316,7 +17316,7 @@ sub_804513C: @ 0x0804513C
 	movs r1, #0
 	mov r8, r1
 _08045192:
-	ldr r0, _08045224 @ =gUnk_08C07DAC
+	ldr r0, _08045224 @ =gSioSt
 	ldr r0, [r0]
 	ldrb r0, [r0, #6]
 	lsls r0, r0, #0x18
@@ -17383,7 +17383,7 @@ _08045214: .4byte Pal_Text
 _08045218: .4byte 0x02000C60
 _0804521C: .4byte 0x06016800
 _08045220: .4byte 0x02000C78
-_08045224: .4byte gUnk_08C07DAC
+_08045224: .4byte gSioSt
 _08045228: .4byte gUnk_081DB0E8
 _0804522C: .4byte 0x0203DC74
 _08045230: .4byte gUnk_08C08EB8
@@ -17797,7 +17797,7 @@ sub_804551C: @ 0x0804551C
 	sub sp, #4
 	movs r7, #0
 _0804552A:
-	ldr r0, _080455A8 @ =gUnk_08C07DAC
+	ldr r0, _080455A8 @ =gSioSt
 	ldr r0, [r0]
 	ldrb r0, [r0, #6]
 	lsls r0, r0, #0x18
@@ -17862,7 +17862,7 @@ _08045592:
 	pop {r0}
 	bx r0
 	.align 2, 0
-_080455A8: .4byte gUnk_08C07DAC
+_080455A8: .4byte gSioSt
 _080455AC: .4byte gUnk_081DB0D8
 _080455B0: .4byte gUnk_081DB0F8
 _080455B4: .4byte gUnk_081DB173
@@ -17929,7 +17929,7 @@ sub_804561C: @ 0x0804561C
 	ldr r0, _08045694 @ =gUnk_081DB0D8
 	mov sl, r0
 _0804562E:
-	ldr r0, _08045698 @ =gUnk_08C07DAC
+	ldr r0, _08045698 @ =gSioSt
 	ldr r0, [r0]
 	ldrb r0, [r0, #6]
 	lsls r0, r0, #0x18
@@ -17982,7 +17982,7 @@ _0804568C:
 	b _080456AC
 	.align 2, 0
 _08045694: .4byte gUnk_081DB0D8
-_08045698: .4byte gUnk_08C07DAC
+_08045698: .4byte gSioSt
 _0804569C: .4byte 0x03001400
 _080456A0: .4byte gUnk_081DB173
 _080456A4: .4byte 0x00010005
@@ -18353,7 +18353,7 @@ _080459A8: .4byte gPlaySt
 _080459AC: .4byte gUnk_08C09354
 _080459B0:
 	ldr r0, _080459C8 @ =gPlaySt
-	ldr r1, _080459CC @ =gUnk_08C07DAC
+	ldr r1, _080459CC @ =gSioSt
 	ldr r1, [r1]
 	ldrb r0, [r0, #0xf]
 	ldrb r1, [r1, #6]
@@ -18367,7 +18367,7 @@ _080459C0:
 	b _080459DC
 	.align 2, 0
 _080459C8: .4byte gPlaySt
-_080459CC: .4byte gUnk_08C07DAC
+_080459CC: .4byte gSioSt
 _080459D0: .4byte gUnk_08C090B4
 _080459D4:
 	ldr r0, _080459E8 @ =gUnk_08C09264
@@ -18464,7 +18464,7 @@ sub_8045A7C: @ 0x08045A7C
 	push {r4, r5, r6, r7, lr}
 	movs r5, #4
 	ldr r3, _08045AD4 @ =0x0203DC74
-	ldr r0, _08045AD8 @ =gUnk_08C07DAC
+	ldr r0, _08045AD8 @ =gSioSt
 	ldr r0, [r0]
 	ldrb r0, [r0, #6]
 	lsls r0, r0, #0x18
@@ -18491,7 +18491,7 @@ _08045AAA:
 	lsls r0, r0, #0x18
 	cmp r0, #0
 	beq _08045AC8
-	ldr r0, _08045AD8 @ =gUnk_08C07DAC
+	ldr r0, _08045AD8 @ =gSioSt
 	ldr r0, [r0]
 	movs r1, #6
 	ldrsb r1, [r0, r1]
@@ -18507,7 +18507,7 @@ _08045AC8:
 	b _08045B14
 	.align 2, 0
 _08045AD4: .4byte 0x0203DC74
-_08045AD8: .4byte gUnk_08C07DAC
+_08045AD8: .4byte gSioSt
 _08045ADC: .4byte 0x0203D908
 _08045AE0:
 	adds r0, r4, #0
@@ -18522,7 +18522,7 @@ _08045AE8:
 	lsls r0, r0, #0x18
 	cmp r0, #0
 	beq _08045B0A
-	ldr r0, _08045B1C @ =gUnk_08C07DAC
+	ldr r0, _08045B1C @ =gSioSt
 	ldr r0, [r0]
 	ldrb r0, [r0, #6]
 	lsls r0, r0, #0x18
@@ -18546,7 +18546,7 @@ _08045B16:
 	pop {r1}
 	bx r1
 	.align 2, 0
-_08045B1C: .4byte gUnk_08C07DAC
+_08045B1C: .4byte gSioSt
 
 	thumb_func_start sub_8045B20
 sub_8045B20: @ 0x08045B20
@@ -18654,7 +18654,7 @@ _08045BDA:
 	cmp r4, #0
 	beq _08045C2C
 	lsrs r1, r1, #0x1e
-	ldr r0, _08045C14 @ =gUnk_08C07DAC
+	ldr r0, _08045C14 @ =gSioSt
 	ldr r0, [r0]
 	ldrb r0, [r0, #6]
 	lsls r0, r0, #0x18
@@ -18674,7 +18674,7 @@ _08045BF8:
 	.align 2, 0
 _08045C0C: .4byte gUnk_08C08F24
 _08045C10: .4byte 0x03001400
-_08045C14: .4byte gUnk_08C07DAC
+_08045C14: .4byte gSioSt
 _08045C18:
 	adds r0, r2, #1
 	lsls r0, r0, #0x18
@@ -18727,7 +18727,7 @@ _08045C66:
 	adds r0, r6, r7
 	ldrb r0, [r0]
 	lsrs r1, r0, #6
-	ldr r0, _08045CA8 @ =gUnk_08C07DAC
+	ldr r0, _08045CA8 @ =gSioSt
 	ldr r0, [r0]
 	ldrb r0, [r0, #6]
 	lsls r0, r0, #0x18
@@ -18746,7 +18746,7 @@ _08045C9A:
 	.align 2, 0
 _08045CA0: .4byte 0x0203DC74
 _08045CA4: .4byte 0x03001400
-_08045CA8: .4byte gUnk_08C07DAC
+_08045CA8: .4byte gSioSt
 
 	thumb_func_start sub_8045CAC
 sub_8045CAC: @ 0x08045CAC
@@ -18873,7 +18873,7 @@ sub_8045D44: @ 0x08045D44
 	mov r0, r8
 	ldrb r0, [r0]
 	lsrs r1, r0, #6
-	ldr r0, _08045E44 @ =gUnk_08C07DAC
+	ldr r0, _08045E44 @ =gSioSt
 	ldr r0, [r0]
 	ldrb r0, [r0, #6]
 	lsls r0, r0, #0x18
@@ -18939,7 +18939,7 @@ _08045E34: .4byte gpKeySt
 _08045E38: .4byte gActiveUnitId
 _08045E3C: .4byte 0x03001400
 _08045E40: .4byte gActiveUnit
-_08045E44: .4byte gUnk_08C07DAC
+_08045E44: .4byte gSioSt
 _08045E48: .4byte gPlaySt
 _08045E4C: .4byte 0x00000389
 _08045E50: .4byte 0x03001420
@@ -20416,7 +20416,7 @@ sub_8046A90: @ 0x08046A90
 	movs r2, #0
 	movs r1, #0xc4
 	strb r1, [r0]
-	ldr r1, _08046AC4 @ =gUnk_08C07DAC
+	ldr r1, _08046AC4 @ =gSioSt
 	ldr r1, [r1]
 	ldrb r1, [r1, #6]
 	strb r1, [r0, #1]
@@ -20429,7 +20429,7 @@ _08046AB8:
 	.align 2, 0
 _08046ABC: .4byte gpKeySt
 _08046AC0: .4byte 0x030046BC
-_08046AC4: .4byte gUnk_08C07DAC
+_08046AC4: .4byte gSioSt
 
 	thumb_func_start sub_8046AC8
 sub_8046AC8: @ 0x08046AC8
@@ -20504,7 +20504,7 @@ _08046B3C:
 	ldr r1, _08046B68 @ =0x0203D9A9
 	adds r0, r0, r1
 	ldr r1, _08046B6C @ =0x03001438
-	bl sub_803DDF8
+	bl SioStrCpy
 	ldr r0, _08046B70 @ =gUnk_08C08FC4
 	movs r1, #0x60
 	movs r2, #0
@@ -21436,7 +21436,7 @@ sub_8047264: @ 0x08047264
 	mov sl, r0
 	movs r7, #0
 _08047284:
-	ldr r0, _08047320 @ =gUnk_08C07DAC
+	ldr r0, _08047320 @ =gSioSt
 	ldr r0, [r0]
 	ldrb r0, [r0, #6]
 	lsls r0, r0, #0x18
@@ -21512,7 +21512,7 @@ _08047306:
 	bx r0
 	.align 2, 0
 _0804731C: .4byte gUnk_08C08FF4
-_08047320: .4byte gUnk_08C07DAC
+_08047320: .4byte gSioSt
 _08047324: .4byte gUnk_081DB0D8
 _08047328: .4byte 0x03001400
 _0804732C: .4byte Sprite_16x16
@@ -25094,7 +25094,7 @@ sub_8048ED0: @ 0x08048ED0
 	movs r0, #2
 	movs r2, #0x30
 	bl PutSprite
-	bl sub_803DEC4
+	bl CheckInLinkArena
 	lsls r0, r0, #0x18
 	asrs r0, r0, #0x18
 	cmp r0, #0

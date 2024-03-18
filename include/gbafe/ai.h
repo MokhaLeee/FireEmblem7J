@@ -296,7 +296,7 @@ extern struct ProcCmd ProcScr_AiOrder[];
 // ??? gUnk_08C07D88
 // ??? gUnk_08C07DA8
 // ??? gUnk_08C07DAA
-// ??? gUnk_08C07DAC
+// ??? gSioSt
 // ??? gUnk_08C07DB0
 // ??? gUnk_08C07DD0
 // ??? gUnk_08C07DF8
@@ -311,7 +311,7 @@ extern struct ProcCmd ProcScr_AiOrder[];
 // ??? gUnk_08C07F80
 // ??? gUnk_08C07F8C
 // ??? gUnk_08C07F98
-// ??? gUnk_08C080F8
+// ??? ProcScr_TacticianNameSelection
 // ??? gUnk_08C081B8
 // ??? gUnk_08C081C8
 // ??? gUnk_08C081D8

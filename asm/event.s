@@ -9514,8 +9514,8 @@ sub_800EB3C: @ 0x0800EB3C
 	pop {r1}
 	bx r1
 
-	thumb_func_start sub_800EB4C
-sub_800EB4C: @ 0x0800EB4C
+	thumb_func_start Event00_
+Event00_: @ 0x0800EB4C
 	push {r4, r5, lr}
 	adds r4, r0, #0
 	movs r5, #0
@@ -9571,7 +9571,7 @@ _0800EBA8:
 	thumb_func_start sub_800EBB0
 sub_800EBB0: @ 0x0800EBB0
 	push {lr}
-	bl sub_800EB4C
+	bl Event00_
 	pop {r1}
 	bx r1
 	.align 2, 0

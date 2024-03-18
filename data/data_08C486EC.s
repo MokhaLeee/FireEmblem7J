@@ -499,9 +499,53 @@ gUnk_08D62170:	@ 0x08D62170
 gChapterDataAssetTable:	@ 0x08D648F4
 	.incbin "FireEmblem7J.base.gba", 0xD648F4, 0xD64CE4 - 0xD648F4
 
-	.global gUnk_08D64CE4
-gUnk_08D64CE4:	@ 0x08D64CE4
-	.incbin "FireEmblem7J.base.gba", 0xD64CE4, 0xD64D98 - 0xD64CE4
+	.global gWorldMapEvents
+gWorldMapEvents:	@ 0x08D64CE4
+	.4byte 0x00000000
+	.4byte WorldMapEvent_Prologue
+	.4byte 0x08DB117C
+	.4byte 0x08DB131C
+	.4byte 0x08DB1410
+	.4byte 0x08DB1678
+	.4byte 0x08DB178C
+	.4byte 0x08DB18D4
+	.4byte 0x08DB1A78
+	.4byte 0x08DB1B98
+	.4byte 0x08DB1D24
+	.4byte 0x08DB1E74
+	.4byte 0x08DB20F0
+	.4byte 0x08DB2248
+	.4byte 0x08DB661C
+	.4byte 0x08DB25AC
+	.4byte 0x08DB2808
+	.4byte 0x08DB2A5C
+	.4byte 0x08DB2C64
+	.4byte 0x08DB6750
+	.4byte 0x08DB3454
+	.4byte 0x08DB3630
+	.4byte 0x08DB37E4
+	.4byte 0x08DB3968
+	.4byte 0x08DB3FB0
+	.4byte 0x08DB4124
+	.4byte 0x08DB687C
+	.4byte 0x08DB42B8
+	.4byte 0x08DB44A4
+	.4byte 0x08DB46FC
+	.4byte 0x08DB4944
+	.4byte 0x08DB4C08
+	.4byte 0x08DB4ED8
+	.4byte 0x08DB69CC
+	.4byte 0x08DB51A8
+	.4byte 0x08DB557C
+	.4byte 0x08DB57B8
+	.4byte 0x08DB59F4
+	.4byte 0x08DB5C54
+	.4byte 0x08DB5E10
+	.4byte 0x08DB61B0
+	.4byte 0x08DB6CBC
+	.4byte 0x08DB6268
+	.4byte 0x08DB63F4
+	.4byte 0x08DB6D98
 
 	.global gUnk_08D64D98
 gUnk_08D64D98:	@ 0x08D64D98

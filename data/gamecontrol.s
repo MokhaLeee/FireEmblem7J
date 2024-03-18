@@ -129,7 +129,7 @@ ProcScr_GameControl: @ 0xC01744
         .word 0x0
         @ PROC_CALL
         .short 0x2, 0x0
-        .word sub_80A7A94
+        .word GC_SelectMark
         @ PROC_YIELD
         .short 0xe, 0x0
         .word 0x0
@@ -165,7 +165,7 @@ ProcScr_GameControl: @ 0xC01744
         .word GC_InitDemo
         @ PROC_START_CHILD_BLOCKING
         .short 0x6, 0x1
-        .word 0x8db0fc4
+        .word ProcScr_StartWorldMapEvent
         @ PROC_CALL
         .short 0x2, 0x0
         .word GC_DarkenScreen_

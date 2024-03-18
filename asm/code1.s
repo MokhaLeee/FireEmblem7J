@@ -964,8 +964,8 @@ sub_802EBB0: @ 0x0802EBB0
 	.align 2, 0
 _0802EBB4: .4byte 0x0202BC14
 
-	thumb_func_start sub_802EBB8
-sub_802EBB8: @ 0x0802EBB8
+	thumb_func_start SetTacticianName
+SetTacticianName: @ 0x0802EBB8
 	push {lr}
 	adds r1, r0, #0
 	ldr r0, _0802EBC8 @ =0x0202BC14

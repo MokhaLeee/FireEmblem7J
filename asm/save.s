@@ -6592,7 +6592,7 @@ _080A2500:
 	str r0, [sp, #0x44]
 	mov r0, r8
 	ldr r1, [sp, #0x64]
-	bl sub_803DDF8
+	bl SioStrCpy
 	mov r0, sl
 	adds r1, r5, #0
 	movs r2, #0x14
@@ -6677,7 +6677,7 @@ sub_80A25D8: @ 0x080A25D8
 	beq _080A2614
 	adds r0, r4, #0
 	adds r1, r5, #0
-	bl sub_803DDF8
+	bl SioStrCpy
 	movs r0, #1
 	b _080A2616
 	.align 2, 0

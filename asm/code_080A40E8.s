@@ -54,7 +54,7 @@ _080A412C:
 	.align 2, 0
 _080A414C: .4byte gPlaySt
 _080A4150:
-	bl sub_802EBB8
+	bl SetTacticianName
 _080A4154:
 	ldr r3, _080A4198 @ =gPlaySt
 	add r0, sp, #0x2c
@@ -6714,7 +6714,7 @@ sub_80A7584: @ 0x080A7584
 	strb r1, [r0]
 	ldr r0, _080A75BC @ =0x0000079D
 	bl DecodeMsg
-	bl sub_802EBB8
+	bl SetTacticianName
 	ldr r2, _080A75C0 @ =gPlaySt
 	adds r3, r2, #0
 	adds r3, #0x2b
@@ -7321,8 +7321,8 @@ _080A7A8A:
 	.align 2, 0
 _080A7A90: .4byte gPlaySt
 
-	thumb_func_start sub_80A7A94
-sub_80A7A94: @ 0x080A7A94
+	thumb_func_start GC_SelectMark
+GC_SelectMark: @ 0x080A7A94
 	push {lr}
 	adds r1, r0, #0
 	ldr r0, _080A7AA4 @ =gUnk_08DADDC0

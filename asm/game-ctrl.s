@@ -422,7 +422,7 @@ _08012ED8: .4byte gPlaySt
 _08012EDC:
 	ldr r0, _08012EF0 @ =0x00000569
 	bl DecodeMsg
-	bl sub_802EBB8
+	bl SetTacticianName
 _08012EE6:
 	adds r0, r4, #0
 	movs r1, #5
