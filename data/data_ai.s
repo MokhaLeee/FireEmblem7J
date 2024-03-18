@@ -174,7 +174,78 @@ gUnk_08C07F98:	@ 0x08C07F98
 
 	.global ProcScr_TacticianNameSelection
 ProcScr_TacticianNameSelection:	@ 0x08C080F8
-	.incbin "FireEmblem7J.base.gba", 0xC080F8, 0xC081B8 - 0xC080F8
+	@ PROC_YIELD
+	.short 0xe, 0x0
+	.word 0x0
+	@ PROC_CALL
+	.short 0x2, 0x0
+	.word Tactician_InitScreen
+	@ PROC_CALL
+	.short 0x2, 0x0
+	.word sub_8014714
+	@ PROC_YIELD
+	.short 0xe, 0x0
+	.word 0x0
+	@ PROC_CALL
+	.short 0x2, 0x0
+	.word sub_80478B0
+	@ PROC_LABEL
+	.short 0xb, 0x0
+	.word 0x0
+	@ PROC_REPEAT
+	.short 0x3, 0x0
+	.word Tactician_Loop
+	@ PROC_GOTO
+	.short 0xc, 0x2
+	.word 0x0
+	@ PROC_LABEL
+	.short 0xb, 0x1
+	.word 0x0
+	@ PROC_CALL
+	.short 0x2, 0x0
+	.word sub_8040044
+	@ PROC_REPEAT
+	.short 0x3, 0x0
+	.word sub_804005C
+	@ PROC_CALL
+	.short 0x2, 0x0
+	.word sub_804009C
+	@ PROC_REPEAT
+	.short 0x3, 0x0
+	.word sub_80400C8
+	@ PROC_GOTO
+	.short 0xc, 0x0
+	.word 0x0
+	@ PROC_LABEL
+	.short 0xb, 0x3
+	.word 0x0
+	@ PROC_CALL
+	.short 0x2, 0x0
+	.word sub_804010C
+	@ PROC_REPEAT
+	.short 0x3, 0x0
+	.word sub_8040148
+	@ PROC_GOTO
+	.short 0xc, 0x0
+	.word 0x0
+	@ PROC_LABEL
+	.short 0xb, 0x2
+	.word 0x0
+	@ PROC_CALL
+	.short 0x2, 0x0
+	.word sub_80478A4
+	@ PROC_CALL
+	.short 0x2, 0x0
+	.word sub_8014690
+	@ PROC_YIELD
+	.short 0xe, 0x0
+	.word 0x0
+	@ PROC_CALL
+	.short 0x2, 0x0
+	.word sub_8040230
+	@ PROC_END
+	.short 0x0, 0x0
+	.word 0x0
 
 	.global gUnk_08C081B8
 gUnk_08C081B8:	@ 0x08C081B8

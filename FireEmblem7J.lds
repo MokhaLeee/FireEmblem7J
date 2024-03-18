@@ -121,6 +121,9 @@ SECTIONS
 
 		. = 0x03A7F0; gArenaSt = .;
 		. = 0x03A858; gActionSt = .;
+		. = 0x03D9F8; gSioTexts1 = .;
+		. = 0x03DBF0; gSioTexts2 = .;
+		. = 0x03DC00; gSioTexts3 = .;
 		. = 0x03DFE0; gEkrDebugModeMaybe = .;
 		. = 0x03DFE4; gEkrInitialHitSide = .;
 		. = 0x03DFE8; gEkrPairSideVaild = .;
@@ -233,6 +236,8 @@ SECTIONS
 
 		asm/code1.o(.text);
 		asm/code-ai.o(.text);
+		asm/sio_core.o(.text);
+		src/sio_tactician.o(.text);
 		asm/code-sio.o(.text);
 		src/ui.o(.text);
 		asm/uiutils.o(.text);

@@ -262,11 +262,6 @@ extern u32 const AiItemConfigTable[];
 // ??? gUnk_081D940C
 // ??? gUnk_081D9470
 // ??? gUnk_081D9474
-// ??? gUnk_081D9490
-// ??? gUnk_081D94A0
-// ??? gUnk_081DABC8
-// ??? gUnk_081DACFE
-// ??? gUnk_081DADEC
 
 extern struct ProcCmd ProcScr_AiOrder[];
 // ??? gUnk_08C061C0

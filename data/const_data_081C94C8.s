@@ -80,8 +80,8 @@ gUnk_081CA2A4:	@ 0x081CA2A4
 gUnk_081CA888:	@ 0x081CA888
 	.incbin "FireEmblem7J.base.gba", 0x1CA888, 0x1CB3E0 - 0x1CA888
 
-	.global gUnk_081CB3E0
-gUnk_081CB3E0:	@ 0x081CB3E0
+	.global Img_TacticianSelObj
+Img_TacticianSelObj:	@ 0x081CB3E0
 	.incbin "FireEmblem7J.base.gba", 0x1CB3E0, 0x1CBC70 - 0x1CB3E0
 
 	.global gUnk_081CBC70
@@ -120,8 +120,8 @@ gUnk_081CD5EC:	@ 0x081CD5EC
 gUnk_081CD738:	@ 0x081CD738
 	.incbin "FireEmblem7J.base.gba", 0x1CD738, 0x1CD798 - 0x1CD738
 
-	.global gUnk_081CD798
-gUnk_081CD798:	@ 0x081CD798
+	.global Pal_TacticianSelObj
+Pal_TacticianSelObj:	@ 0x081CD798
 	.incbin "FireEmblem7J.base.gba", 0x1CD798, 0x1CD818 - 0x1CD798
 
 	.global gUnk_081CD818
@@ -348,8 +348,8 @@ gUnk_081D9474:	@ 0x081D9474
 gUnk_081D9490:	@ 0x081D9490
 	.incbin "FireEmblem7J.base.gba", 0x1D9490, 0x1D94A0 - 0x1D9490
 
-	.global gUnk_081D94A0
-gUnk_081D94A0:	@ 0x081D94A0
+	.global gTacticianTextConf
+gTacticianTextConf:	@ 0x081D94A0
 	.incbin "FireEmblem7J.base.gba", 0x1D94A0, 0x1DABC8 - 0x1D94A0
 
 	.global gUnk_081DABC8
@@ -564,8 +564,8 @@ gUnk_081DB17A:	@ 0x081DB17A
 gUnk_081DB17C:	@ 0x081DB17C
 	.incbin "FireEmblem7J.base.gba", 0x1DB17C, 0x1DB18A - 0x1DB17C
 
-	.global gUnk_081DB18A
-gUnk_081DB18A:	@ 0x081DB18A
+	.global SioDefaultBgConfig
+SioDefaultBgConfig:	@ 0x081DB18A
 	.incbin "FireEmblem7J.base.gba", 0x1DB18A, 0x1DB1A2 - 0x1DB18A
 
 	.global gUnk_081DB1A2
