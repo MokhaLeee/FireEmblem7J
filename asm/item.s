@@ -1334,8 +1334,8 @@ _08016DD4:
 _08016DD6:
 	bx lr
 
-	thumb_func_start sub_8016DD8
-sub_8016DD8: @ 0x08016DD8
+	thumb_func_start GetItemDisplayRankString
+GetItemDisplayRankString: @ 0x08016DD8
 	push {r4, r5, lr}
 	sub sp, #0x20
 	mov r2, sp

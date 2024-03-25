@@ -2998,8 +2998,8 @@ sub_8023110: @ 0x08023110
 _08023130: .4byte gActionSt
 _08023134: .4byte gActiveUnit
 
-	thumb_func_start sub_8023138
-sub_8023138: @ 0x08023138
+	thumb_func_start ChestCommandUsability
+ChestCommandUsability: @ 0x08023138
 	push {r4, lr}
 	ldr r4, _08023158 @ =gActiveUnit
 	ldr r2, [r4]
@@ -3020,7 +3020,7 @@ _08023154:
 _08023158: .4byte gActiveUnit
 _0802315C:
 	ldr r0, [r4]
-	bl sub_80277E0
+	bl CanUnitUseChestKeyItem
 	lsls r0, r0, #0x18
 	movs r1, #3
 	cmp r0, #0

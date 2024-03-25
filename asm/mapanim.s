@@ -22261,8 +22261,8 @@ _080796A8:
 	bx r0
 	.align 2, 0
 
-	thumb_func_start sub_80796B0
-sub_80796B0: @ 0x080796B0
+	thumb_func_start IsThereClosedChestAt
+IsThereClosedChestAt: @ 0x080796B0
 	push {lr}
 	lsls r0, r0, #0x18
 	asrs r0, r0, #0x18
@@ -22288,7 +22288,7 @@ sub_80796CC: @ 0x080796CC
 	asrs r4, r1, #0x18
 	adds r0, r5, #0
 	adds r1, r4, #0
-	bl sub_80796B0
+	bl IsThereClosedChestAt
 	lsls r0, r0, #0x18
 	cmp r0, #0
 	beq _080796EC

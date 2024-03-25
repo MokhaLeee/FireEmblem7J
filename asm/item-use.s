@@ -204,7 +204,7 @@ _08027368:
 	b _080273B0
 _08027370:
 	adds r0, r4, #0
-	bl sub_80277E0
+	bl CanUnitUseChestKeyItem
 	b _080273B0
 _08027378:
 	adds r0, r4, #0
@@ -685,8 +685,8 @@ _080277DC:
 _080277DE:
 	bx lr
 
-	thumb_func_start sub_80277E0
-sub_80277E0: @ 0x080277E0
+	thumb_func_start CanUnitUseChestKeyItem
+CanUnitUseChestKeyItem: @ 0x080277E0
 	push {lr}
 	movs r3, #0x11
 	ldrsb r3, [r0, r3]
@@ -703,7 +703,7 @@ sub_80277E0: @ 0x080277E0
 	bne _08027814
 	adds r0, r2, #0
 	adds r1, r3, #0
-	bl sub_80796B0
+	bl IsThereClosedChestAt
 	lsls r0, r0, #0x18
 	cmp r0, #0
 	beq _08027814
@@ -754,7 +754,7 @@ sub_8027844: @ 0x08027844
 	cmp r0, #0
 	beq _0802787E
 	adds r0, r4, #0
-	bl sub_80277E0
+	bl CanUnitUseChestKeyItem
 	lsls r0, r0, #0x18
 	cmp r0, #0
 	bne _08027882

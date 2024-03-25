@@ -660,7 +660,7 @@ sub_80832E0: @ 0x080832E0
 	push {r4, r5, lr}
 	adds r5, r0, #0
 	ldr r4, _08083358 @ =0x0203E690
-	bl sub_8016DD8
+	bl GetItemDisplayRankString
 	adds r3, r0, #0
 	adds r0, r4, #0
 	movs r1, #0xc
@@ -719,7 +719,7 @@ sub_808335C: @ 0x0808335C
 	movs r2, #8
 	bl Text_InsertDrawString
 	adds r0, r5, #0
-	bl sub_8016DD8
+	bl GetItemDisplayRankString
 	adds r3, r0, #0
 	adds r0, r4, #0
 	movs r1, #0xc

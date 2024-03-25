@@ -103,7 +103,7 @@ void EquipUnitItemSlot(struct Unit *unit, int itemSlot);
 bool IsItemEffectiveAgainst(u16 item, struct Unit *unit);
 char *GetItemDisplayRangeString(int item);
 int GetWeaponLevelFromExp(int wexp);
-// sub_8016DD8
+// GetItemDisplayRankString
 int GetWeaponLevelSpecialCharFromExp(int wexp);
 // sub_8016E60
 void GetWeaponExpProgressState(int wexp, int * outValue, int * outMax);

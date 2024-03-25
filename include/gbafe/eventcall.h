@@ -17,7 +17,7 @@
 // sub_80795FC
 // sub_8079624
 // sub_8079688
-// sub_80796B0
+// IsThereClosedChestAt
 // sub_80796CC
 // sub_80796F4
 // sub_8079710
