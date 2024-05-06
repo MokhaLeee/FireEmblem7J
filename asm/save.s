@@ -1842,15 +1842,15 @@ sub_80A00A4: @ 0x080A00A4
 	mov r1, sp
 	bl CpuSet
 	mov r0, sp
-	bl sub_80A0120
+	bl WriteSoundRoomSaveData
 	add sp, #0x28
 	pop {r0}
 	bx r0
 	.align 2, 0
 _080A00C4: .4byte 0x01000012
 
-	thumb_func_start sub_80A00C8
-sub_80A00C8: @ 0x080A00C8
+	thumb_func_start LoadAndVerifySoundRoomData
+LoadAndVerifySoundRoomData: @ 0x080A00C8
 	push {r4, lr}
 	sub sp, #0x24
 	adds r4, r0, #0
@@ -1894,8 +1894,8 @@ _080A0116:
 	bx r1
 	.align 2, 0
 
-	thumb_func_start sub_80A0120
-sub_80A0120: @ 0x080A0120
+	thumb_func_start WriteSoundRoomSaveData
+WriteSoundRoomSaveData: @ 0x080A0120
 	push {r4, lr}
 	adds r4, r0, #0
 	movs r1, #0x20
@@ -1915,8 +1915,8 @@ sub_80A0120: @ 0x080A0120
 _080A0144: .4byte gSramMain
 _080A0148: .4byte 0x000070FC
 
-	thumb_func_start sub_80A014C
-sub_80A014C: @ 0x080A014C
+	thumb_func_start IsSoundRoomSongUnlocked
+IsSoundRoomSongUnlocked: @ 0x080A014C
 	push {r4, r5, lr}
 	sub sp, #0x24
 	adds r4, r0, #0
@@ -1925,7 +1925,7 @@ sub_80A014C: @ 0x080A014C
 	bne _080A0160
 	mov r4, sp
 	mov r0, sp
-	bl sub_80A00C8
+	bl LoadAndVerifySoundRoomData
 _080A0160:
 	asrs r0, r5, #5
 	lsls r0, r0, #2
@@ -1948,8 +1948,8 @@ _080A017C:
 	pop {r1}
 	bx r1
 
-	thumb_func_start sub_80A0184
-sub_80A0184: @ 0x080A0184
+	thumb_func_start UnlockSoundRoomSong
+UnlockSoundRoomSong: @ 0x080A0184
 	push {r4, r5, lr}
 	sub sp, #0x24
 	adds r4, r0, #0
@@ -1958,7 +1958,7 @@ sub_80A0184: @ 0x080A0184
 	bne _080A019E
 	mov r4, sp
 	mov r0, sp
-	bl sub_80A00C8
+	bl LoadAndVerifySoundRoomData
 	lsls r0, r0, #0x18
 	cmp r0, #0
 	beq _080A01C0
@@ -1978,7 +1978,7 @@ _080A019E:
 	orrs r1, r2
 	str r1, [r3]
 	adds r0, r4, #0
-	bl sub_80A0120
+	bl WriteSoundRoomSaveData
 _080A01C0:
 	add sp, #0x24
 	pop {r4, r5}
@@ -2171,7 +2171,7 @@ _080A031E:
 	bl sub_809FC30
 _080A032E:
 	movs r0, #0
-	bl sub_80A00C8
+	bl LoadAndVerifySoundRoomData
 	lsls r0, r0, #0x18
 	cmp r0, #0
 	bne _080A033E
