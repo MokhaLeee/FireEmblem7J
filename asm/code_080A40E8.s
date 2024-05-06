@@ -3498,7 +3498,7 @@ _080A5C98:
 	strb r0, [r1]
 	movs r0, #0
 	movs r1, #0x75
-	bl sub_80A0184
+	bl UnlockSoundRoomSong
 _080A5CC2:
 	mov r1, r8
 	ldr r0, [r1]
@@ -3514,7 +3514,7 @@ _080A5CC2:
 	strb r0, [r1]
 	movs r0, #0
 	movs r1, #0x76
-	bl sub_80A0184
+	bl UnlockSoundRoomSong
 _080A5CE2:
 	adds r6, #0x14
 	subs r7, #1

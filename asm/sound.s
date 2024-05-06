@@ -1299,7 +1299,7 @@ PlaySongCore: @ 0x08003DF0
 	bl sub_8003E9C
 	movs r0, #0
 	ldr r1, [r7]
-	bl sub_80A0184
+	bl UnlockSoundRoomSong
 _08003E0E:
 	ldr r0, [r7, #4]
 	cmp r0, #0
