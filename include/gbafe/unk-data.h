@@ -166,14 +166,14 @@ extern u8 Tsa_QuintessenceFx[];
 // ??? gUnk_0842D7B3
 // ??? gUnk_0842D7C3
 // ??? gUnk_0842D7E4
-// ??? gUnk_0842D800
-// ??? gUnk_0842D860
-// ??? gUnk_0842DD14
-// ??? gUnk_0842FD94
-// ??? gUnk_0842FF00
+extern u16 Pal_SaveMenuBackground[];
+extern u8 Tsa_SaveMenuBackground[]; // uncompressed TSA
+// ??? Img_SpinRotation
+// ??? TsaDirect_SpinRotation
+extern u8 Img_SaveMenuSprits[];
 // ??? gUnk_0843165C
-// ??? gUnk_08432594
-// ??? gUnk_08432694
+extern u16 Pal_SaveMenuWindow[];
+extern u16 Pal_Unk_08432694[];
 // ??? gUnk_08432AE8
 // ??? gUnk_08432B28
 // ??? gUnk_08432D74
@@ -1968,7 +1968,7 @@ extern struct ProcCmd ProcScr_PrepItemUseScreen[];
 // ??? gUnk_08DAD33C
 // ??? gUnk_08DAD354
 // ??? gUnk_08DAD384
-// ??? gUnk_08DAD3A4
+// ??? ProcScr_SaveMenu
 // ??? gUnk_08DAD674
 // ??? gUnk_08DAD784
 // ??? gUnk_08DAD844
@@ -1981,9 +1981,9 @@ extern struct ProcCmd ProcScr_PrepItemUseScreen[];
 // ??? gUnk_08DAD9D6
 // ??? gUnk_08DAD9E4
 // ??? gUnk_08DADA10
-// ??? gUnk_08DADA3C
-// ??? gUnk_08DADA64
-// ??? gUnk_08DADA8C
+// ??? ProcScr_SaveDraw
+// ??? ProcScr_SpinRotation
+// ??? ProcScr_SaveDrawCursor
 // ??? gUnk_08DADAAC
 // ??? gUnk_08DADAC8
 // ??? gUnk_08DADAE8

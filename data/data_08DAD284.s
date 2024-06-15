@@ -28,9 +28,278 @@ gUnk_08DAD354:	@ 0x08DAD354
 gUnk_08DAD384:	@ 0x08DAD384
 	.incbin "FireEmblem7J.base.gba", 0xDAD384, 0xDAD3A4 - 0xDAD384
 
-	.global gUnk_08DAD3A4
-gUnk_08DAD3A4:	@ 0x08DAD3A4
-	.incbin "FireEmblem7J.base.gba", 0xDAD3A4, 0xDAD674 - 0xDAD3A4
+	.global ProcScr_SaveMenu
+ProcScr_SaveMenu:	@ 0x08DAD3A4
+	@ PROC_19
+	.short 0x19, 0x0
+	.word 0x0
+	@ PROC_LABEL
+	.short 0xb, 0x0
+	.word 0x0
+	@ PROC_YIELD
+	.short 0xe, 0x0
+	.word 0x0
+	@ PROC_CALL
+	.short 0x2, 0x0
+	.word SaveMenu_Init
+	@ PROC_YIELD
+	.short 0xe, 0x0
+	.word 0x0
+	@ PROC_CALL
+	.short 0x2, 0x0
+	.word ProcSaveMenu_InitScreen
+	@ PROC_CALL
+	.short 0x2, 0x0
+	.word SaveMenu_LoadExtraMenuGraphics
+	@ PROC_YIELD
+	.short 0xe, 0x0
+	.word 0x0
+	@ PROC_CALL_ARG
+	.short 0x18, 0x8
+	.word NewFadeIn
+	@ PROC_WHILE
+	.short 0x14, 0x0
+	.word FadeInExists
+	@ PROC_YIELD
+	.short 0xe, 0x0
+	.word 0x0
+	@ PROC_WHILE
+	.short 0x14, 0x0
+	.word MusicProc4Exists
+	@ PROC_CALL
+	.short 0x2, 0x0
+	.word SaveMenu_080A465C
+	@ PROC_LABEL
+	.short 0xb, 0x2
+	.word 0x0
+	@ PROC_REPEAT
+	.short 0x3, 0x0
+	.word Loop6C_savemenu
+	@ PROC_GOTO
+	.short 0xc, 0xf
+	.word 0x0
+	@ PROC_LABEL
+	.short 0xb, 0x1
+	.word 0x0
+	@ PROC_CALL
+	.short 0x2, 0x0
+	.word sub_80A5868
+	@ PROC_REPEAT
+	.short 0x3, 0x0
+	.word sub_80A5920
+	@ PROC_CALL
+	.short 0x2, 0x0
+	.word sub_80A9578
+	@ PROC_YIELD
+	.short 0xe, 0x0
+	.word 0x0
+	@ PROC_CALL
+	.short 0x2, 0x0
+	.word sub_80A5980
+	@ PROC_CALL
+	.short 0x2, 0x0
+	.word sub_80A5868
+	@ PROC_REPEAT
+	.short 0x3, 0x0
+	.word sub_80A58C4
+	@ PROC_CALL
+	.short 0x2, 0x0
+	.word sub_80A5A40
+	@ PROC_LABEL
+	.short 0xb, 0x5
+	.word 0x0
+	@ PROC_CALL
+	.short 0x2, 0x0
+	.word sub_80A5A60
+	@ PROC_YIELD
+	.short 0xe, 0x0
+	.word 0x0
+	@ PROC_REPEAT
+	.short 0x3, 0x0
+	.word sub_80A4B10
+	@ PROC_GOTO
+	.short 0xc, 0xf
+	.word 0x0
+	@ PROC_LABEL
+	.short 0xb, 0x7
+	.word 0x0
+	@ PROC_SLEEP
+	.short 0xe, 0x5
+	.word 0x0
+	@ PROC_CALL
+	.short 0x2, 0x0
+	.word sub_80A4D64
+	@ PROC_GOTO
+	.short 0xc, 0x5
+	.word 0x0
+	@ PROC_LABEL
+	.short 0xb, 0x6
+	.word 0x0
+	@ PROC_SLEEP
+	.short 0xe, 0x1
+	.word 0x0
+	@ PROC_CALL
+	.short 0x2, 0x0
+	.word sub_80A4D70
+	@ PROC_SLEEP
+	.short 0xe, 0x1
+	.word 0x0
+	@ PROC_REPEAT
+	.short 0x3, 0x0
+	.word sub_80A4D80
+	@ PROC_GOTO
+	.short 0xc, 0x5
+	.word 0x0
+	@ PROC_LABEL
+	.short 0xb, 0x3
+	.word 0x0
+	@ PROC_REPEAT
+	.short 0x3, 0x0
+	.word sub_80A5058
+	@ PROC_GOTO
+	.short 0xc, 0x5
+	.word 0x0
+	@ PROC_LABEL
+	.short 0xb, 0x4
+	.word 0x0
+	@ PROC_CALL
+	.short 0x2, 0x0
+	.word sub_80A5A94
+	@ PROC_REPEAT
+	.short 0x3, 0x0
+	.word sub_80A50A0
+	@ PROC_GOTO
+	.short 0xc, 0x2
+	.word 0x0
+	@ PROC_LABEL
+	.short 0xb, 0x8
+	.word 0x0
+	@ PROC_REPEAT
+	.short 0x3, 0x0
+	.word sub_80A50F0
+	@ PROC_LABEL
+	.short 0xb, 0x9
+	.word 0x0
+	@ PROC_REPEAT
+	.short 0x3, 0x0
+	.word sub_80A5138
+	@ PROC_LABEL
+	.short 0xb, 0xc
+	.word 0x0
+	@ PROC_REPEAT
+	.short 0x3, 0x0
+	.word sub_80A517C
+	@ PROC_LABEL
+	.short 0xb, 0xd
+	.word 0x0
+	@ PROC_REPEAT
+	.short 0x3, 0x0
+	.word sub_80A51CC
+	@ PROC_LABEL
+	.short 0xb, 0xa
+	.word 0x0
+	@ PROC_REPEAT
+	.short 0x3, 0x0
+	.word sub_80A5218
+	@ PROC_LABEL
+	.short 0xb, 0xb
+	.word 0x0
+	@ PROC_CALL
+	.short 0x2, 0x0
+	.word sub_80A5A80
+	@ PROC_YIELD
+	.short 0xe, 0x0
+	.word 0x0
+	@ PROC_REPEAT
+	.short 0x3, 0x0
+	.word sub_80A54C8
+	@ PROC_LABEL
+	.short 0xb, 0xe
+	.word 0x0
+	@ PROC_CALL_ARG
+	.short 0x18, 0x8
+	.word NewFadeOut
+	@ PROC_WHILE
+	.short 0x14, 0x0
+	.word FadeOutExists
+	@ PROC_WHILE
+	.short 0x14, 0x0
+	.word sub_8003F04
+	@ PROC_CALL
+	.short 0x2, 0x0
+	.word sub_80A57BC
+	@ PROC_YIELD
+	.short 0xe, 0x0
+	.word 0x0
+	@ PROC_CALL
+	.short 0x2, 0x0
+	.word SaveMenu_Init
+	@ PROC_YIELD
+	.short 0xe, 0x0
+	.word 0x0
+	@ PROC_CALL
+	.short 0x2, 0x0
+	.word ProcSaveMenu_InitScreen
+	@ PROC_CALL
+	.short 0x2, 0x0
+	.word SaveMenu_LoadExtraMenuGraphics
+	@ PROC_YIELD
+	.short 0xe, 0x0
+	.word 0x0
+	@ PROC_CALL_ARG
+	.short 0x18, 0x8
+	.word NewFadeIn
+	@ PROC_WHILE
+	.short 0x14, 0x0
+	.word FadeInExists
+	@ PROC_WHILE
+	.short 0x14, 0x0
+	.word sub_8003F04
+	@ PROC_CALL
+	.short 0x2, 0x0
+	.word sub_80A5838
+	@ PROC_LABEL
+	.short 0xb, 0x15
+	.word 0x0
+	@ PROC_BLOCK
+	.short 0x10, 0x0
+	.word 0x0
+	@ PROC_LABEL
+	.short 0xb, 0x12
+	.word 0x0
+	@ PROC_CALL_ARG
+	.short 0x18, 0x4
+	.word NewFadeOut
+	@ PROC_WHILE
+	.short 0x14, 0x0
+	.word FadeOutExists
+	@ PROC_GOTO
+	.short 0xc, 0xf
+	.word 0x0
+	@ PROC_LABEL
+	.short 0xb, 0x11
+	.word 0x0
+	@ PROC_CALL_ARG
+	.short 0x18, 0x8
+	.word NewFadeOut
+	@ PROC_WHILE
+	.short 0x14, 0x0
+	.word FadeOutExists
+	@ PROC_LABEL
+	.short 0xb, 0xf
+	.word 0x0
+	@ PROC_YIELD
+	.short 0xe, 0x0
+	.word 0x0
+	@ PROC_CALL
+	.short 0x2, 0x0
+	.word SaveMenu_Finish
+	@ PROC_YIELD
+	.short 0xe, 0x0
+	.word 0x0
+	@ PROC_END
+	.short 0x0, 0x0
+	.word 0x0
 
 	.global gUnk_08DAD674
 gUnk_08DAD674:	@ 0x08DAD674
@@ -80,17 +349,56 @@ gUnk_08DAD9E4:	@ 0x08DAD9E4
 gUnk_08DADA10:	@ 0x08DADA10
 	.incbin "FireEmblem7J.base.gba", 0xDADA10, 0xDADA3C - 0xDADA10
 
-	.global gUnk_08DADA3C
-gUnk_08DADA3C:	@ 0x08DADA3C
-	.incbin "FireEmblem7J.base.gba", 0xDADA3C, 0xDADA64 - 0xDADA3C
+	.global ProcScr_SaveDraw
+ProcScr_SaveDraw:	@ 0x08DADA3C
+	@ PROC_19
+	.short 0x19, 0x0
+	.word 0x0
+	@ PROC_MARK
+	.short 0xf, 0xc
+	.word 0x0
+	@ PROC_CALL
+	.short 0x2, 0x0
+	.word SaveDraw_Init
+	@ PROC_REPEAT
+	.short 0x3, 0x0
+	.word SaveDraw_Loop
+	@ PROC_END
+	.short 0x0, 0x0
+	.word 0x0
 
-	.global gUnk_08DADA64
-gUnk_08DADA64:	@ 0x08DADA64
-	.incbin "FireEmblem7J.base.gba", 0xDADA64, 0xDADA8C - 0xDADA64
+	.global ProcScr_SpinRotation
+ProcScr_SpinRotation:	@ 0x08DADA64
+	@ PROC_19
+	.short 0x19, 0x0
+	.word 0x0
+	@ PROC_MARK
+	.short 0xf, 0xd
+	.word 0x0
+	@ PROC_CALL
+	.short 0x2, 0x0
+	.word SpinRotation_Init
+	@ PROC_REPEAT
+	.short 0x3, 0x0
+	.word SpinRotation_Loop
+	@ PROC_END
+	.short 0x0, 0x0
+	.word 0x0
 
-	.global gUnk_08DADA8C
-gUnk_08DADA8C:	@ 0x08DADA8C
-	.incbin "FireEmblem7J.base.gba", 0xDADA8C, 0xDADAAC - 0xDADA8C
+	.global ProcScr_SaveDrawCursor
+ProcScr_SaveDrawCursor:	@ 0x08DADA8C
+	@ PROC_19
+	.short 0x19, 0x0
+	.word 0x0
+	@ PROC_CALL
+	.short 0x2, 0x0
+	.word SaveDrawCursor_Init
+	@ PROC_REPEAT
+	.short 0x3, 0x0
+	.word SaveDrawCursor_Loop
+	@ PROC_END
+	.short 0x0, 0x0
+	.word 0x0
 
 	.global gUnk_08DADAAC
 gUnk_08DADAAC:	@ 0x08DADAAC

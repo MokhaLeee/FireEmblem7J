@@ -1647,8 +1647,8 @@ _08004092:
 	bx r0
 	.align 2, 0
 
-	thumb_func_start sub_800409C
-sub_800409C: @ 0x0800409C
+	thumb_func_start MusicProc4Exists
+MusicProc4Exists: @ 0x0800409C
 	push {r7, lr}
 	mov r7, sp
 	ldr r1, _080040B0 @ =gUnk_08BBFCE8

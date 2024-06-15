@@ -32,7 +32,7 @@ void Sound_FadeOutSE(int speed);
 // sub_8003F28
 // sub_8003F94
 // CallSomeSoundMaybe
-// sub_800409C
+// MusicProc4Exists
 // sub_80040C0
 // sub_80040F8
 // sub_8004110

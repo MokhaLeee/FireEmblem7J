@@ -303,7 +303,7 @@ ProcSaveMenu_InitScreen: @ 0x080A4320
 	mov r8, r0
 	bl ResetTextFont
 	bl ApplySystemObjectsGraphics
-	ldr r0, _080A44FC @ =gUnk_0842D800
+	ldr r0, _080A44FC @ =Pal_SaveMenuBackground
 	movs r1, #0
 	movs r2, #0x60
 	bl ApplyPaletteExt
@@ -317,17 +317,17 @@ ProcSaveMenu_InitScreen: @ 0x080A4320
 	adds r0, r4, #0
 	bl Decompress
 	ldr r0, _080A4504 @ =gBg0Tm
-	ldr r1, _080A4508 @ =gUnk_0842D860
+	ldr r1, _080A4508 @ =Tsa_SaveMenuBackground
 	movs r2, #0
 	bl TmApplyTsa_thm
-	ldr r0, _080A450C @ =gUnk_08432594
+	ldr r0, _080A450C @ =Pal_SaveMenuWindow
 	movs r1, #0x88
 	lsls r1, r1, #2
 	movs r5, #0x80
 	lsls r5, r5, #1
 	adds r2, r5, #0
 	bl ApplyPaletteExt
-	ldr r0, _080A4510 @ =gUnk_08432694
+	ldr r0, _080A4510 @ =Pal_Unk_08432694
 	movs r1, #0xa8
 	lsls r1, r1, #2
 	movs r2, #0x20
@@ -353,7 +353,7 @@ ProcSaveMenu_InitScreen: @ 0x080A4320
 	ldrb r1, [r2]
 	orrs r0, r1
 	strb r0, [r2]
-	ldr r0, _080A4520 @ =gUnk_0842FF00
+	ldr r0, _080A4520 @ =Img_SaveMenuSprits
 	ldr r1, _080A4524 @ =0x06010800
 	bl Decompress
 	mov r0, r8
@@ -439,7 +439,7 @@ _080A43D2:
 	strb r0, [r1]
 	ldr r0, _080A4538 @ =SaveMenuOnHBlank
 	bl SetOnHBlankA
-	ldr r4, _080A453C @ =gUnk_0842DD14
+	ldr r4, _080A453C @ =Img_SpinRotation
 	movs r0, #2
 	bl GetBgChrOffset
 	adds r1, r0, #0
@@ -449,7 +449,7 @@ _080A43D2:
 	adds r0, r4, #0
 	bl Decompress
 	ldr r0, _080A4540 @ =gBg3Tm
-	ldr r1, _080A4544 @ =gUnk_0842FD94
+	ldr r1, _080A4544 @ =TsaDirect_SpinRotation
 	movs r2, #0
 	movs r3, #5
 	bl sub_8001F14
@@ -489,11 +489,11 @@ _080A4492:
 	mov r0, r8
 	bl sub_80A4254
 	mov r0, r8
-	bl sub_80A6908
+	bl StartSaveDraw
 	mov r2, r8
 	str r0, [r2, #0x58]
 	mov r0, r8
-	bl sub_80A69A0
+	bl StartSpinRotation
 	mov r1, r8
 	str r0, [r1, #0x5c]
 	add sp, #4
@@ -505,25 +505,25 @@ _080A4492:
 	pop {r0}
 	bx r0
 	.align 2, 0
-_080A44FC: .4byte gUnk_0842D800
+_080A44FC: .4byte Pal_SaveMenuBackground
 _080A4500: .4byte Img_MuralBackground
 _080A4504: .4byte gBg0Tm
-_080A4508: .4byte gUnk_0842D860
-_080A450C: .4byte gUnk_08432594
-_080A4510: .4byte gUnk_08432694
+_080A4508: .4byte Tsa_SaveMenuBackground
+_080A450C: .4byte Pal_SaveMenuWindow
+_080A4510: .4byte Pal_Unk_08432694
 _080A4514: .4byte gUnk_08432AE8
 _080A4518: .4byte 0x02000004
 _080A451C: .4byte gDispIo
-_080A4520: .4byte gUnk_0842FF00
+_080A4520: .4byte Img_SaveMenuSprits
 _080A4524: .4byte 0x06010800
 _080A4528: .4byte gSinLut
 _080A452C: .4byte gCosLut
 _080A4530: .4byte gAnims
 _080A4534: .4byte 0x02000001
 _080A4538: .4byte SaveMenuOnHBlank
-_080A453C: .4byte gUnk_0842DD14
+_080A453C: .4byte Img_SpinRotation
 _080A4540: .4byte gBg3Tm
-_080A4544: .4byte gUnk_0842FD94
+_080A4544: .4byte TsaDirect_SpinRotation
 _080A4548: .4byte gPal
 
 	thumb_func_start SaveMenu_LoadExtraMenuGraphics
@@ -3120,17 +3120,17 @@ sub_80A5980: @ 0x080A5980
 	ldr r0, _080A5A1C @ =gUnk_0843165C
 	ldr r1, _080A5A20 @ =0x06013800
 	bl Decompress
-	ldr r0, _080A5A24 @ =gUnk_08432594
+	ldr r0, _080A5A24 @ =Pal_SaveMenuWindow
 	movs r1, #0x88
 	lsls r1, r1, #2
 	movs r2, #0x80
 	lsls r2, r2, #1
 	bl ApplyPaletteExt
-	ldr r0, _080A5A28 @ =gUnk_0842FF00
+	ldr r0, _080A5A28 @ =Img_SaveMenuSprits
 	ldr r1, _080A5A2C @ =0x06010800
 	bl Decompress
 	ldr r0, _080A5A30 @ =gBg0Tm
-	ldr r1, _080A5A34 @ =gUnk_0842D860
+	ldr r1, _080A5A34 @ =Tsa_SaveMenuBackground
 	movs r2, #0
 	bl TmApplyTsa_thm
 	ldr r1, _080A5A38 @ =gAnims
@@ -3172,11 +3172,11 @@ _080A5A10:
 _080A5A18: .4byte gBg1Tm
 _080A5A1C: .4byte gUnk_0843165C
 _080A5A20: .4byte 0x06013800
-_080A5A24: .4byte gUnk_08432594
-_080A5A28: .4byte gUnk_0842FF00
+_080A5A24: .4byte Pal_SaveMenuWindow
+_080A5A28: .4byte Img_SaveMenuSprits
 _080A5A2C: .4byte 0x06010800
 _080A5A30: .4byte gBg0Tm
-_080A5A34: .4byte gUnk_0842D860
+_080A5A34: .4byte Tsa_SaveMenuBackground
 _080A5A38: .4byte gAnims
 _080A5A3C: .4byte 0x02000001
 
@@ -3239,11 +3239,11 @@ sub_80A5A94: @ 0x080A5A94
 	bx r0
 	.align 2, 0
 
-	thumb_func_start sub_80A5AA0
-sub_80A5AA0: @ 0x080A5AA0
+	thumb_func_start StartMainMenu
+StartMainMenu: @ 0x080A5AA0
 	push {lr}
 	adds r1, r0, #0
-	ldr r0, _080A5AD0 @ =gUnk_08DAD3A4
+	ldr r0, _080A5AD0 @ =ProcScr_SaveMenu
 	bl Proc_StartBlocking
 	adds r3, r0, #0
 	adds r3, #0x42
@@ -3265,7 +3265,7 @@ sub_80A5AA0: @ 0x080A5AA0
 	pop {r0}
 	bx r0
 	.align 2, 0
-_080A5AD0: .4byte gUnk_08DAD3A4
+_080A5AD0: .4byte ProcScr_SaveMenu
 _080A5AD4: .4byte gPlaySt
 
 	thumb_func_start sub_80A5AD8
@@ -3314,7 +3314,7 @@ sub_80A5B20: @ 0x080A5B20
 	push {r4, r5, lr}
 	adds r4, r0, #0
 	adds r5, r1, #0
-	ldr r0, _080A5B40 @ =gUnk_08DAD3A4
+	ldr r0, _080A5B40 @ =ProcScr_SaveMenu
 	bl Proc_Find
 	cmp r0, #0
 	beq _080A5B3A
@@ -3328,7 +3328,7 @@ _080A5B3A:
 	pop {r0}
 	bx r0
 	.align 2, 0
-_080A5B40: .4byte gUnk_08DAD3A4
+_080A5B40: .4byte ProcScr_SaveMenu
 
 	thumb_func_start sub_80A5B44
 sub_80A5B44: @ 0x080A5B44
@@ -3395,13 +3395,13 @@ sub_80A5B44: @ 0x080A5B44
 	strb r0, [r1]
 	ldr r0, _080A5C3C @ =SaveMenuOnHBlank
 	bl SetOnHBlankA
-	ldr r0, _080A5C40 @ =gUnk_08432594
+	ldr r0, _080A5C40 @ =Pal_SaveMenuWindow
 	movs r1, #0x88
 	lsls r1, r1, #2
 	movs r2, #0x80
 	lsls r2, r2, #1
 	bl ApplyPaletteExt
-	ldr r0, _080A5C44 @ =gUnk_0842D800
+	ldr r0, _080A5C44 @ =Pal_SaveMenuBackground
 	movs r1, #0
 	movs r2, #0x60
 	bl ApplyPaletteExt
@@ -3415,10 +3415,10 @@ sub_80A5B44: @ 0x080A5B44
 	adds r0, r4, #0
 	bl Decompress
 	ldr r0, _080A5C4C @ =gBg0Tm
-	ldr r1, _080A5C50 @ =gUnk_0842D860
+	ldr r1, _080A5C50 @ =Tsa_SaveMenuBackground
 	movs r2, #0
 	bl TmApplyTsa_thm
-	ldr r4, _080A5C54 @ =gUnk_0842DD14
+	ldr r4, _080A5C54 @ =Img_SpinRotation
 	movs r0, #2
 	bl GetBgChrOffset
 	adds r1, r0, #0
@@ -3426,7 +3426,7 @@ sub_80A5B44: @ 0x080A5B44
 	adds r0, r4, #0
 	bl Decompress
 	ldr r0, _080A5C58 @ =gBg3Tm
-	ldr r1, _080A5C5C @ =gUnk_0842FD94
+	ldr r1, _080A5C5C @ =TsaDirect_SpinRotation
 	movs r2, #0
 	movs r3, #5
 	bl sub_8001F14
@@ -3441,14 +3441,14 @@ _080A5C30: .4byte gDispIo
 _080A5C34: .4byte 0x02000001
 _080A5C38: .4byte gAnims
 _080A5C3C: .4byte SaveMenuOnHBlank
-_080A5C40: .4byte gUnk_08432594
-_080A5C44: .4byte gUnk_0842D800
+_080A5C40: .4byte Pal_SaveMenuWindow
+_080A5C44: .4byte Pal_SaveMenuBackground
 _080A5C48: .4byte Img_MuralBackground
 _080A5C4C: .4byte gBg0Tm
-_080A5C50: .4byte gUnk_0842D860
-_080A5C54: .4byte gUnk_0842DD14
+_080A5C50: .4byte Tsa_SaveMenuBackground
+_080A5C54: .4byte Img_SpinRotation
 _080A5C58: .4byte gBg3Tm
-_080A5C5C: .4byte gUnk_0842FD94
+_080A5C5C: .4byte TsaDirect_SpinRotation
 
 	thumb_func_start sub_80A5C60
 sub_80A5C60: @ 0x080A5C60
@@ -4041,8 +4041,8 @@ _080A60FC: .4byte gUnk_08DAD9D6
 _080A6100: .4byte gUnk_08DADA10
 _080A6104: .4byte gUnk_08DAD9E4
 
-	thumb_func_start sub_80A6108
-sub_80A6108: @ 0x080A6108
+	thumb_func_start SaveDraw_Init
+SaveDraw_Init: @ 0x080A6108
 	push {r4, r5, r6, r7, lr}
 	sub sp, #8
 	adds r6, r0, #0
@@ -4082,7 +4082,7 @@ sub_80A6108: @ 0x080A6108
 	bl SetObjAffine
 	strh r7, [r6, #0x2a]
 	adds r0, r6, #0
-	bl sub_80A6B9C
+	bl StartSaveDrawCursor
 	str r0, [r6, #0x34]
 	adds r0, r6, #0
 	adds r0, #0x39
@@ -4524,8 +4524,8 @@ _080A64CE:
 _080A64D8: .4byte 0x000001FF
 _080A64DC: .4byte gUnk_08DADD50
 
-	thumb_func_start sub_80A64E0
-sub_80A64E0: @ 0x080A64E0
+	thumb_func_start SaveDraw_Loop
+SaveDraw_Loop: @ 0x080A64E0
 	push {r4, r5, r6, r7, lr}
 	mov r7, sl
 	mov r6, sb
@@ -5057,19 +5057,19 @@ _080A68F2:
 	pop {r0}
 	bx r0
 
-	thumb_func_start sub_80A6908
-sub_80A6908: @ 0x080A6908
+	thumb_func_start StartSaveDraw
+StartSaveDraw: @ 0x080A6908
 	push {lr}
 	adds r1, r0, #0
-	ldr r0, _080A6918 @ =gUnk_08DADA3C
+	ldr r0, _080A6918 @ =ProcScr_SaveDraw
 	bl Proc_Start
 	pop {r1}
 	bx r1
 	.align 2, 0
-_080A6918: .4byte gUnk_08DADA3C
+_080A6918: .4byte ProcScr_SaveDraw
 
-	thumb_func_start sub_80A691C
-sub_80A691C: @ 0x080A691C
+	thumb_func_start SpinRotation_Init
+SpinRotation_Init: @ 0x080A691C
 	adds r2, r0, #0
 	adds r1, r2, #0
 	adds r1, #0x39
@@ -5097,8 +5097,8 @@ sub_80A691C: @ 0x080A691C
 	bx lr
 	.align 2, 0
 
-	thumb_func_start sub_80A6950
-sub_80A6950: @ 0x080A6950
+	thumb_func_start SpinRotation_Loop
+SpinRotation_Loop: @ 0x080A6950
 	push {lr}
 	sub sp, #8
 	ldrh r1, [r0, #0x2a]
@@ -5136,11 +5136,11 @@ sub_80A6950: @ 0x080A6950
 	bx r0
 	.align 2, 0
 
-	thumb_func_start sub_80A69A0
-sub_80A69A0: @ 0x080A69A0
+	thumb_func_start StartSpinRotation
+StartSpinRotation: @ 0x080A69A0
 	push {r4, lr}
 	adds r4, r0, #0
-	ldr r0, _080A69B4 @ =gUnk_08DADA64
+	ldr r0, _080A69B4 @ =ProcScr_SpinRotation
 	movs r1, #0
 	bl Proc_Start
 	str r4, [r0, #0x30]
@@ -5148,10 +5148,10 @@ sub_80A69A0: @ 0x080A69A0
 	pop {r1}
 	bx r1
 	.align 2, 0
-_080A69B4: .4byte gUnk_08DADA64
+_080A69B4: .4byte ProcScr_SpinRotation
 
-	thumb_func_start sub_80A69B8
-sub_80A69B8: @ 0x080A69B8
+	thumb_func_start SaveDrawCursor_Init
+SaveDrawCursor_Init: @ 0x080A69B8
 	adds r2, r0, #0
 	adds r1, r2, #0
 	adds r1, #0x31
@@ -5179,8 +5179,8 @@ sub_80A69B8: @ 0x080A69B8
 	bx lr
 	.align 2, 0
 
-	thumb_func_start sub_80A69EC
-sub_80A69EC: @ 0x080A69EC
+	thumb_func_start SaveDrawCursor_Loop
+SaveDrawCursor_Loop: @ 0x080A69EC
 	push {r4, r5, r6, r7, lr}
 	mov r7, sl
 	mov r6, sb
@@ -5410,16 +5410,16 @@ sub_80A6B6C: @ 0x080A6B6C
 	bx r0
 	.align 2, 0
 
-	thumb_func_start sub_80A6B9C
-sub_80A6B9C: @ 0x080A6B9C
+	thumb_func_start StartSaveDrawCursor
+StartSaveDrawCursor: @ 0x080A6B9C
 	push {lr}
 	adds r1, r0, #0
-	ldr r0, _080A6BAC @ =gUnk_08DADA8C
+	ldr r0, _080A6BAC @ =ProcScr_SaveDrawCursor
 	bl Proc_Start
 	pop {r1}
 	bx r1
 	.align 2, 0
-_080A6BAC: .4byte gUnk_08DADA8C
+_080A6BAC: .4byte ProcScr_SaveDrawCursor
 
 	thumb_func_start sub_80A6BB0
 sub_80A6BB0: @ 0x080A6BB0

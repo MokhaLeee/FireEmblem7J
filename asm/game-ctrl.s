@@ -368,8 +368,8 @@ _08012E60:
 	pop {r0}
 	bx r0
 
-	thumb_func_start sub_8012E64
-sub_8012E64: @ 0x08012E64
+	thumb_func_start GC_PostMainMenu
+GC_PostMainMenu: @ 0x08012E64
 	push {r4, lr}
 	adds r4, r0, #0
 	adds r0, #0x29

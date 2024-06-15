@@ -478,7 +478,7 @@ ProcScr_PrepItemUseScreen:	@ 0x08D8CFBC
 	.word FadeOutExists
 	@ PROC_WHILE
 	.short 0x14, 0x0
-	.word sub_800409C
+	.word MusicProc4Exists
 	@ PROC_CALL
 	.short 0x2, 0x0
 	.word PrepItemUse_ExecPromotionItem
@@ -508,7 +508,7 @@ ProcScr_PrepItemUseScreen:	@ 0x08D8CFBC
 	.word FadeInExists
 	@ PROC_WHILE
 	.short 0x14, 0x0
-	.word sub_800409C
+	.word MusicProc4Exists
 	@ PROC_GOTO
 	.short 0xc, 0x1
 	.word 0x0

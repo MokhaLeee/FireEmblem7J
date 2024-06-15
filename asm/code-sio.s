@@ -26499,7 +26499,7 @@ _08049A04: .4byte gUnk_08C09944
 	thumb_func_start sub_8049A08
 sub_8049A08: @ 0x08049A08
 	push {r4, lr}
-	ldr r0, _08049A34 @ =gUnk_0842FF00
+	ldr r0, _08049A34 @ =Img_SaveMenuSprits
 	ldr r4, _08049A38 @ =0x0200118C
 	adds r1, r4, #0
 	bl Decompress
@@ -26508,7 +26508,7 @@ sub_8049A08: @ 0x08049A08
 	movs r2, #6
 	movs r3, #4
 	bl sub_80484A4
-	ldr r0, _08049A40 @ =gUnk_08432594
+	ldr r0, _08049A40 @ =Pal_SaveMenuWindow
 	movs r1, #0x90
 	lsls r1, r1, #2
 	movs r2, #0x20
@@ -26517,10 +26517,10 @@ sub_8049A08: @ 0x08049A08
 	pop {r0}
 	bx r0
 	.align 2, 0
-_08049A34: .4byte gUnk_0842FF00
+_08049A34: .4byte Img_SaveMenuSprits
 _08049A38: .4byte 0x0200118C
 _08049A3C: .4byte 0x06016800
-_08049A40: .4byte gUnk_08432594
+_08049A40: .4byte Pal_SaveMenuWindow
 
 	thumb_func_start sub_8049A44
 sub_8049A44: @ 0x08049A44

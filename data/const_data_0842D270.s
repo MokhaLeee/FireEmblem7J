@@ -32,36 +32,36 @@ gUnk_0842D7C3:	@ 0x0842D7C3
 gUnk_0842D7E4:	@ 0x0842D7E4
 	.incbin "FireEmblem7J.base.gba", 0x42D7E4, 0x42D800 - 0x42D7E4
 
-	.global gUnk_0842D800
-gUnk_0842D800:	@ 0x0842D800
+	.global Pal_SaveMenuBackground
+Pal_SaveMenuBackground:	@ 0x0842D800
 	.incbin "FireEmblem7J.base.gba", 0x42D800, 0x42D860 - 0x42D800
 
-	.global gUnk_0842D860
-gUnk_0842D860:	@ 0x0842D860
+	.global Tsa_SaveMenuBackground
+Tsa_SaveMenuBackground:	@ 0x0842D860
 	.incbin "FireEmblem7J.base.gba", 0x42D860, 0x42DD14 - 0x42D860
 
-	.global gUnk_0842DD14
-gUnk_0842DD14:	@ 0x0842DD14
+	.global Img_SpinRotation
+Img_SpinRotation:	@ 0x0842DD14
 	.incbin "FireEmblem7J.base.gba", 0x42DD14, 0x42FD94 - 0x42DD14
 
-	.global gUnk_0842FD94
-gUnk_0842FD94:	@ 0x0842FD94
+	.global TsaDirect_SpinRotation
+TsaDirect_SpinRotation:	@ 0x0842FD94
 	.incbin "FireEmblem7J.base.gba", 0x42FD94, 0x42FF00 - 0x42FD94
 
-	.global gUnk_0842FF00
-gUnk_0842FF00:	@ 0x0842FF00
+	.global Img_SaveMenuSprits
+Img_SaveMenuSprits:	@ 0x0842FF00
 	.incbin "FireEmblem7J.base.gba", 0x42FF00, 0x43165C - 0x42FF00
 
 	.global gUnk_0843165C
 gUnk_0843165C:	@ 0x0843165C
 	.incbin "FireEmblem7J.base.gba", 0x43165C, 0x432594 - 0x43165C
 
-	.global gUnk_08432594
-gUnk_08432594:	@ 0x08432594
+	.global Pal_SaveMenuWindow
+Pal_SaveMenuWindow:	@ 0x08432594
 	.incbin "FireEmblem7J.base.gba", 0x432594, 0x432694 - 0x432594
 
-	.global gUnk_08432694
-gUnk_08432694:	@ 0x08432694
+	.global Pal_Unk_08432694
+Pal_Unk_08432694:	@ 0x08432694
 	.incbin "FireEmblem7J.base.gba", 0x432694, 0x432AE8 - 0x432694
 
 	.global gUnk_08432AE8

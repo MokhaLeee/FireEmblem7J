@@ -137,20 +137,20 @@ ProcScr_GameControl: @ 0xC01744
         .short 0xc, 0x5
         .word 0x0
         @ PROC_LABEL
-        .short 0xb, 0x4
+        .short 0xb, 0x4 // L_GAMECTRL_MAINMENU
         .word 0x0
         @ PROC_CALL
         .short 0x2, 0x0
         .word ForceEnableSounds
         @ PROC_CALL
         .short 0x2, 0x0
-        .word sub_80A5AA0
+        .word StartMainMenu
         @ PROC_YIELD
         .short 0xe, 0x0
         .word 0x0
         @ PROC_CALL
         .short 0x2, 0x0
-        .word sub_8012E64
+        .word GC_PostMainMenu
         @ PROC_YIELD
         .short 0xe, 0x0
         .word 0x0

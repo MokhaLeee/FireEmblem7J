@@ -2136,7 +2136,7 @@ sub_80AC998: @ 0x080AC998
 	adds r4, r0, #0
 	adds r5, r1, #0
 	adds r6, r2, #0
-	bl sub_800409C
+	bl MusicProc4Exists
 	lsls r0, r0, #0x18
 	asrs r3, r0, #0x18
 	cmp r3, #0
@@ -2174,7 +2174,7 @@ sub_80AC9E4: @ 0x080AC9E4
 	push {r4, r5, lr}
 	sub sp, #4
 	adds r5, r0, #0
-	bl sub_800409C
+	bl MusicProc4Exists
 	lsls r0, r0, #0x18
 	asrs r0, r0, #0x18
 	cmp r0, #0
@@ -2446,7 +2446,7 @@ _080ACBFC:
 	ands r0, r1
 	cmp r0, #0
 	beq _080ACC18
-	bl sub_800409C
+	bl MusicProc4Exists
 	lsls r0, r0, #0x18
 	cmp r0, #0
 	bne _080ACC28
@@ -2473,7 +2473,7 @@ sub_80ACC30: @ 0x080ACC30
 	push {r4, lr}
 	sub sp, #4
 	adds r4, r0, #0
-	bl sub_800409C
+	bl MusicProc4Exists
 	lsls r0, r0, #0x18
 	asrs r0, r0, #0x18
 	cmp r0, #0
@@ -3952,7 +3952,7 @@ _080AD814: .4byte gDispIo
 sub_80AD818: @ 0x080AD818
 	push {r4, r5, lr}
 	adds r5, r0, #0
-	ldr r0, _080AD8D8 @ =gUnk_0842D800
+	ldr r0, _080AD8D8 @ =Pal_SaveMenuBackground
 	movs r1, #0
 	movs r2, #0x60
 	bl ApplyPaletteExt
@@ -3960,18 +3960,18 @@ sub_80AD818: @ 0x080AD818
 	ldr r1, _080AD8E0 @ =0x06001000
 	bl Decompress
 	ldr r0, _080AD8E4 @ =gBg0Tm
-	ldr r1, _080AD8E8 @ =gUnk_0842D860
+	ldr r1, _080AD8E8 @ =Tsa_SaveMenuBackground
 	movs r2, #0x80
 	bl TmApplyTsa_thm
 	movs r0, #1
 	bl EnableBgSync
-	ldr r0, _080AD8EC @ =gUnk_08432594
+	ldr r0, _080AD8EC @ =Pal_SaveMenuWindow
 	movs r1, #0x88
 	lsls r1, r1, #2
 	movs r2, #0x80
 	lsls r2, r2, #1
 	bl ApplyPaletteExt
-	ldr r0, _080AD8F0 @ =gUnk_0842FF00
+	ldr r0, _080AD8F0 @ =Img_SaveMenuSprits
 	ldr r1, _080AD8F4 @ =0x06010800
 	bl Decompress
 	ldr r0, _080AD8F8 @ =gUnk_0843165C
@@ -3979,7 +3979,7 @@ sub_80AD818: @ 0x080AD818
 	bl Decompress
 	ldr r0, _080AD900 @ =sub_80AD778
 	bl SetOnHBlankA
-	ldr r4, _080AD904 @ =gUnk_0842DD14
+	ldr r4, _080AD904 @ =Img_SpinRotation
 	movs r0, #2
 	bl GetBgChrOffset
 	adds r1, r0, #0
@@ -3989,7 +3989,7 @@ sub_80AD818: @ 0x080AD818
 	adds r0, r4, #0
 	bl Decompress
 	ldr r0, _080AD908 @ =gBg3Tm
-	ldr r1, _080AD90C @ =gUnk_0842FD94
+	ldr r1, _080AD90C @ =TsaDirect_SpinRotation
 	movs r2, #0
 	movs r3, #5
 	bl sub_8001F14
@@ -4007,7 +4007,7 @@ sub_80AD818: @ 0x080AD818
 	ands r0, r1
 	strb r0, [r4, #1]
 	adds r0, r5, #0
-	bl sub_80A69A0
+	bl StartSpinRotation
 	str r0, [r5, #0x54]
 	movs r0, #3
 	ldrb r2, [r4, #0xc]
@@ -4033,20 +4033,20 @@ sub_80AD818: @ 0x080AD818
 	pop {r0}
 	bx r0
 	.align 2, 0
-_080AD8D8: .4byte gUnk_0842D800
+_080AD8D8: .4byte Pal_SaveMenuBackground
 _080AD8DC: .4byte Img_MuralBackground
 _080AD8E0: .4byte 0x06001000
 _080AD8E4: .4byte gBg0Tm
-_080AD8E8: .4byte gUnk_0842D860
-_080AD8EC: .4byte gUnk_08432594
-_080AD8F0: .4byte gUnk_0842FF00
+_080AD8E8: .4byte Tsa_SaveMenuBackground
+_080AD8EC: .4byte Pal_SaveMenuWindow
+_080AD8F0: .4byte Img_SaveMenuSprits
 _080AD8F4: .4byte 0x06010800
 _080AD8F8: .4byte gUnk_0843165C
 _080AD8FC: .4byte 0x06013800
 _080AD900: .4byte sub_80AD778
-_080AD904: .4byte gUnk_0842DD14
+_080AD904: .4byte Img_SpinRotation
 _080AD908: .4byte gBg3Tm
-_080AD90C: .4byte gUnk_0842FD94
+_080AD90C: .4byte TsaDirect_SpinRotation
 _080AD910: .4byte gDispIo
 
 	thumb_func_start sub_80AD914
@@ -4746,7 +4746,7 @@ sub_80ADE84: @ 0x080ADE84
 	adds r6, r0, #0
 	movs r0, #0
 	bl InitBgs
-	ldr r0, _080AE0A4 @ =gUnk_0842D800
+	ldr r0, _080AE0A4 @ =Pal_SaveMenuBackground
 	movs r1, #0xc0
 	lsls r1, r1, #1
 	movs r2, #0x60
@@ -4755,7 +4755,7 @@ sub_80ADE84: @ 0x080ADE84
 	ldr r1, _080AE0AC @ =0x06008000
 	bl Decompress
 	ldr r0, _080AE0B0 @ =gBg3Tm
-	ldr r1, _080AE0B4 @ =gUnk_0842D860
+	ldr r1, _080AE0B4 @ =Tsa_SaveMenuBackground
 	movs r2, #0xc0
 	lsls r2, r2, #8
 	bl TmApplyTsa_thm
@@ -4980,11 +4980,11 @@ _080ADFCC:
 	pop {r0}
 	bx r0
 	.align 2, 0
-_080AE0A4: .4byte gUnk_0842D800
+_080AE0A4: .4byte Pal_SaveMenuBackground
 _080AE0A8: .4byte Img_MuralBackground
 _080AE0AC: .4byte 0x06008000
 _080AE0B0: .4byte gBg3Tm
-_080AE0B4: .4byte gUnk_0842D860
+_080AE0B4: .4byte Tsa_SaveMenuBackground
 _080AE0B8: .4byte gDispIo
 _080AE0BC: .4byte gUnk_08DAEF6C
 _080AE0C0: .4byte gUnk_08DAEF70
@@ -13667,7 +13667,7 @@ _080B22EC:
 	adds r0, r4, #0
 	bl Decompress
 	ldr r0, _080B25BC @ =gBg3Tm
-	ldr r1, _080B25C0 @ =gUnk_0842D860
+	ldr r1, _080B25C0 @ =Tsa_SaveMenuBackground
 	movs r2, #0xe0
 	lsls r2, r2, #8
 	bl TmApplyTsa_thm
@@ -13689,7 +13689,7 @@ _080B25B0: .4byte 0x0000FFE0
 _080B25B4: .4byte 0x0000E0FF
 _080B25B8: .4byte Img_MuralBackground
 _080B25BC: .4byte gBg3Tm
-_080B25C0: .4byte gUnk_0842D860
+_080B25C0: .4byte Tsa_SaveMenuBackground
 _080B25C4: .4byte gUnk_0843F144
 
 	thumb_func_start sub_80B25C8
