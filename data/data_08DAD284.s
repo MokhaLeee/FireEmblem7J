@@ -408,8 +408,8 @@ gUnk_08DADAAC:	@ 0x08DADAAC
 gUnk_08DADAC8:	@ 0x08DADAC8
 	.incbin "FireEmblem7J.base.gba", 0xDADAC8, 0xDADAE8 - 0xDADAC8
 
-	.global gUnk_08DADAE8
-gUnk_08DADAE8:	@ 0x08DADAE8
+	.global ProcScr_SaveBgUp
+ProcScr_SaveBgUp:	@ 0x08DADAE8
 	.incbin "FireEmblem7J.base.gba", 0xDADAE8, 0xDADD34 - 0xDADAE8
 
 	.global gUnk_08DADD34
@@ -635,8 +635,8 @@ gUnk_08DAE0DC:	@ 0x08DAE0DC
 gUnk_08DAE0FC:	@ 0x08DAE0FC
 	.incbin "FireEmblem7J.base.gba", 0xDAE0FC, 0xDAE11C - 0xDAE0FC
 
-	.global gUnk_08DAE11C
-gUnk_08DAE11C:	@ 0x08DAE11C
+	.global ProcScr_DifficultyMenuSprites
+ProcScr_DifficultyMenuSprites:	@ 0x08DAE11C
 	.incbin "FireEmblem7J.base.gba", 0xDAE11C, 0xDAE1D4 - 0xDAE11C
 
 	.global gUnk_08DAE1D4
@@ -647,8 +647,8 @@ gUnk_08DAE1D4:	@ 0x08DAE1D4
 gUnk_08DAE1DC:	@ 0x08DAE1DC
 	.incbin "FireEmblem7J.base.gba", 0xDAE1DC, 0xDAE1E4 - 0xDAE1DC
 
-	.global gUnk_08DAE1E4
-gUnk_08DAE1E4:	@ 0x08DAE1E4
+	.global ProcScr_UiCursorHand
+ProcScr_UiCursorHand:	@ 0x08DAE1E4
 	.incbin "FireEmblem7J.base.gba", 0xDAE1E4, 0xDAE214 - 0xDAE1E4
 
 	.global gUnk_08DAE214

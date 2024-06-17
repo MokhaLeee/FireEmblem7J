@@ -1986,7 +1986,7 @@ extern struct ProcCmd ProcScr_PrepItemUseScreen[];
 // ??? ProcScr_SaveDrawCursor
 // ??? gUnk_08DADAAC
 // ??? gUnk_08DADAC8
-// ??? gUnk_08DADAE8
+// ??? ProcScr_SaveBgUp
 // ??? gUnk_08DADD34
 // ??? gUnk_08DADD50
 // ??? gUnk_08DADD78
@@ -2013,10 +2013,10 @@ extern struct ProcCmd ProcScr_PrepItemUseScreen[];
 // ??? gUnk_08DAE0AC
 // ??? gUnk_08DAE0DC
 // ??? gUnk_08DAE0FC
-// ??? gUnk_08DAE11C
+// ??? ProcScr_DifficultyMenuSprites
 // ??? gUnk_08DAE1D4
 // ??? gUnk_08DAE1DC
-// ??? gUnk_08DAE1E4
+// ??? ProcScr_UiCursorHand
 // ??? gUnk_08DAE214
 // ??? gUnk_08DAE222
 // ??? gUnk_08DAE22C

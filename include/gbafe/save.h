@@ -236,7 +236,7 @@ struct PidStats * GetPidStats(u8 pid);
 // ??? WriteNewGameSave
 // ??? WriteGameSave
 // ??? ReadGameSave
-// ??? IsSaveValid
+bool IsSaveValid(int);
 // ??? ReadGameSavePlaySt
 // ??? sub_80A135C
 // ??? sub_80A1384

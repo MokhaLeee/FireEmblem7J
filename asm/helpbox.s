@@ -30724,7 +30724,7 @@ sub_8092150: @ 0x08092150
 	bl sub_808E694
 	bl EndAllParallelWorkers
 	bl EndSysHandCursor
-	bl sub_80A9A08
+	bl EndUiCursorHand
 	movs r0, #0
 	bl sub_80932B0
 	movs r0, #1
@@ -31001,7 +31001,7 @@ sub_8092310: @ 0x08092310
 	adds r0, r6, #0
 	movs r1, #0
 	bl sub_80937E0
-	bl sub_80A99EC
+	bl UnblockUiCursorHand
 	bl sub_80A99AC
 	movs r0, #0xc9
 	movs r1, #0x7b
@@ -31788,7 +31788,7 @@ sub_8092A1C: @ 0x08092A1C
 	.align 2, 0
 _08092A84: .4byte gBg0Tm + 0x25e
 _08092A88:
-	bl sub_80A99EC
+	bl UnblockUiCursorHand
 _08092A8C:
 	bl sub_809225C
 	movs r0, #1
@@ -32426,7 +32426,7 @@ sub_8092EDC: @ 0x08092EDC
 	movs r1, #1
 	adds r2, r6, #0
 	bl StartParallelFiniteLoop
-	bl sub_80A99EC
+	bl UnblockUiCursorHand
 	bl EndHelpPromptSprite
 	add sp, #4
 	pop {r4, r5, r6, r7}

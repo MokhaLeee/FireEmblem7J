@@ -267,7 +267,13 @@ SECTIONS
 		src/save_core.o(.text);
 		asm/save.o(.text);
 		src/savemenu.o(.text);
-		asm/code_080A40E8.o(.text);
+		asm/savemenu.o(.text);
+		asm/savedraw.o(.text);
+		asm/savedrawfx.o(.text);
+		asm/savemenu_difficulty.o(.text);
+		asm/scrolling_util.o(.text);
+		asm/cursor_hand.o(.text);
+		asm/spinning_arrow.o(.text);
 		src/sysutil.o(.text);
 		asm/code_080AB6FC.o(.text);
 		asm/m4a_1.o(.text);
