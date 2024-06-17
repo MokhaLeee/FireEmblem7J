@@ -138,9 +138,28 @@ void SaveMenu_StartHelpBox(struct SaveMenuProc * proc);
 // ??? StartSaveDraw
 
 /* savedrawfx */
-// ??? SpinRotation_Init
-// ??? SpinRotation_Loop
-// ??? StartSpinRotation
+struct ProcSpinRotation {
+    PROC_HEADER;
+
+    /* 2A */ u16 ro;
+    /* 2C */ int angle;
+    /* 30 */ ProcPtr savedraw;
+
+    /* 34 */ u8 unk_34;
+    /* 34 */ u8 unk_35;
+    /* 34 */ u8 unk_36;
+    /* 34 */ u8 unk_37;
+    /* 34 */ u8 unk_38;
+    /* 34 */ u8 unk_39;
+    /* 34 */ u8 unk_3A;
+    /* 34 */ u8 unk_3B;
+    /* 34 */ u8 unk_3C_unused;
+    /* 34 */ u8 unk_3D;
+};
+
+void SpinRotation_Init(struct ProcSpinRotation * proc);
+void SpinRotation_Loop(struct ProcSpinRotation * proc);
+ProcPtr StartSpinRotation(ProcPtr parent);
 // ??? SaveDrawCursor_Init
 // ??? SaveDrawCursor_Loop
 // ??? sub_80A6B4C

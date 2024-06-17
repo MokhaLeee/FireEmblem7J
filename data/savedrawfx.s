@@ -1,23 +1,5 @@
 	.section .data
 
-	.global ProcScr_SpinRotation
-ProcScr_SpinRotation:	@ 0x08DADA64
-	@ PROC_19
-	.short 0x19, 0x0
-	.word 0x0
-	@ PROC_MARK
-	.short 0xf, 0xd
-	.word 0x0
-	@ PROC_CALL
-	.short 0x2, 0x0
-	.word SpinRotation_Init
-	@ PROC_REPEAT
-	.short 0x3, 0x0
-	.word SpinRotation_Loop
-	@ PROC_END
-	.short 0x0, 0x0
-	.word 0x0
-
 	.global ProcScr_SaveDrawCursor
 ProcScr_SaveDrawCursor:	@ 0x08DADA8C
 	@ PROC_19

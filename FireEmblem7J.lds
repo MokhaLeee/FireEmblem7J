@@ -269,6 +269,7 @@ SECTIONS
 		src/savemenu.o(.text);
 		asm/savemenu.o(.text);
 		asm/savedraw.o(.text);
+		src/savedrawfx.o(.text);
 		asm/savedrawfx.o(.text);
 		asm/savemenu_difficulty.o(.text);
 		src/scrolling_util.o(.text);
@@ -360,6 +361,7 @@ SECTIONS
 		. = ALIGN(4); src/save_core.o(.data)
 		. = ALIGN(4); data/data_08DAD284.o(.data)
 		. = ALIGN(4); data/savemenu.o(.data)
+		. = ALIGN(4); src/savedrawfx.o(.data)
 		. = ALIGN(4); data/savedrawfx.o(.data)
 		. = ALIGN(4); src/sysutil.o(.data)
 		. = ALIGN(4); data/data_08DAE4C4.o(.data)

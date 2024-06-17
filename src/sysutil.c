@@ -929,23 +929,23 @@ void sub_80AAD94(u8 layer, s16 a, s16 b, s16 c, s16 d)
     affin->dy = affin->pc * (-a) + affin->pd * (-b) + d * 0x100;
 }
 
-void sub_80AADFC(u8 layer, int angle, int a, int b, int c, int d)
+void sub_80AADFC(u8 layer, int angle, int texX, int texY, int x_scaling, int y_scaling)
 {
     struct BgAffineSrcData data;
     struct BgAffineDstData * dst;
 
-    if (c <= 0x400)
-        c = 0x400;
+    if (x_scaling <= 0x400)
+        x_scaling = 0x400;
 
-    if (d <= 0x400)
-        d = 0x400;
+    if (y_scaling <= 0x400)
+        y_scaling = 0x400;
 
-    data.texX = a;
-    data.texY = b;
+    data.texX = texX;
+    data.texY = texY;
     data.scrX = 0;
     data.scrY = 0;
-    data.sx = 0x1000000 / c;
-    data.sy = 0x1000000 / d;
+    data.sx = 0x1000000 / x_scaling;
+    data.sy = 0x1000000 / y_scaling;
     data.alpha = angle >> 4;
 
     dst = &gOpAnimBgAffineDstData[1];
