@@ -56,3 +56,4 @@
 #include "gbafe/ui.h"
 #include "gbafe/bmio.h"
 #include "gbafe/ai.h"
+#include "gbafe/scrolling_util.h"

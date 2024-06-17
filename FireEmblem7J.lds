@@ -271,7 +271,7 @@ SECTIONS
 		asm/savedraw.o(.text);
 		asm/savedrawfx.o(.text);
 		asm/savemenu_difficulty.o(.text);
-		asm/scrolling_util.o(.text);
+		src/scrolling_util.o(.text);
 		asm/cursor_hand.o(.text);
 		asm/spinning_arrow.o(.text);
 		src/sysutil.o(.text);
