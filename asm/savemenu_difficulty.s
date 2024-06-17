@@ -3108,7 +3108,7 @@ _080A893E:
 	movs r0, #2
 	movs r2, #0
 	movs r3, #0
-	bl BgAffinRoting
+	bl BgAffinRotScaling
 	movs r1, #0xa0
 	lsls r1, r1, #2
 	movs r2, #0x80

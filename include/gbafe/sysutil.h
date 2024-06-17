@@ -149,7 +149,7 @@ void EndAllProcChildren(ProcPtr proc);
 void nullsub_85(void);
 
 /* Some objects scalling routine */
-void BgAffinRoting(u8 layer, s16 angle, s16, s16, s16, s16);
+void BgAffinRotScaling(u8 layer, s16 angle, s16, s16, s16, s16);
 void BgAffinScaling(u8, s16, s16);
 void BgAffinAnchoring(u8, s16, s16, s16, s16);
 void sub_80AADFC(u8 layer, int angle, int a, int b, int c, int d);

@@ -20,12 +20,18 @@ void SpinRotation_Loop(struct ProcSpinRotation * proc)
     proc->angle -= 4;
 
     /**
-     * I don't understand the correspondence between 0x180 and 0x4C.
+     * The spin image is slightly scaled down.
+     *
+     * Rate = (0x10000/0x180)/0x100 = 66.7%
      */
-
-    BgAffinRoting(BG_2, proc->angle, 0, 0, 0x180, 0x180);
+    BgAffinRotScaling(BG_2, proc->angle, 0, 0, 0x180, 0x180);
     BgAffinScaling(BG_2, 2 << 8, 1 << 8);
-    BgAffinAnchoring(BG_2, 120, 160, 0x4C, 0x4C);
+
+    /**
+     * [120, 160] is the author in screen space, where the pattern need to display
+     * [76, 76] is the center of the spin image
+     */
+    BgAffinAnchoring(BG_2, 120, 160, 76, 76);
 
     SyncDispIo();
 }

@@ -881,7 +881,7 @@ void nop_80ADDF8(void)
     return;
 }
 
-void BgAffinRoting(u8 bg, s16 angle, s16 x_center, s16 y_center, s16 sx, s16 sy)
+void BgAffinRotScaling(u8 bg, s16 angle, s16 x_center, s16 y_center, s16 sx, s16 sy)
 {
     struct BgAffineSrcData data;
     struct BgAffineDstData * dst;
@@ -929,19 +929,23 @@ void BgAffinScaling(u8 bg, s16 sy, s16 sx)
     affin->pc = (affin->pc * sx) >> 8;
 }
 
-void BgAffinAnchoring(u8 bg, s16 x_anchor, s16 y_anchor, s16 c, s16 d)
+void BgAffinAnchoring(u8 bg, s16 q0_x, s16 q0_y, s16 p0_x, s16 p0_y)
 {
     /**
-     * We need to fix anchors in screen space when roting in texture space.
+     * vector q0: origin in screen space
+     * vector p0: origin in texture space
      *
-     * See tonc 11.5 and 12.5: https://www.coranac.com/tonc/text/affobj.htm
+     * See tonc 12.3: https://www.coranac.com/tonc/text/affbg.htm:
+     *
+     * bgaff->dx= asx->tex_x - (pa*asx->scr_x + pb*asx->scr_y);
+     * bgaff->dy= asx->tex_y - (pc*asx->scr_x + pd*asx->scr_y);
      */
     struct BgAffineDstData * affin = NULL;
     if (bg == BG_2)
         affin = &gDispIo.bg2affin;
 
-    affin->dx = affin->pa * (-x_anchor) + affin->pb * (-y_anchor) + c * 0x100;
-    affin->dy = affin->pc * (-x_anchor) + affin->pd * (-y_anchor) + d * 0x100;
+    affin->dx = affin->pa * (-q0_x) + affin->pb * (-q0_y) + p0_x * 0x100;
+    affin->dy = affin->pc * (-q0_x) + affin->pd * (-q0_y) + p0_y * 0x100;
 }
 
 void sub_80AADFC(u8 bg, int angle, int texX, int texY, int x_scaling, int y_scaling)
