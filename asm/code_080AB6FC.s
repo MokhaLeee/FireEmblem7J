@@ -31314,7 +31314,7 @@ sub_80BAEFC: @ 0x080BAEFC
 	strh r2, [r1, #0xc]
 	strh r2, [r1, #0xe]
 	strh r3, [r1, #0x10]
-	ldr r1, _080BAF30 @ =gOpAnimBgAffineDstData + 0x10
+	ldr r1, _080BAF30 @ =gDispIo + 0x58
 	cmp r0, #2
 	bne _080BAF22
 	subs r1, #0x10
@@ -31326,7 +31326,7 @@ _080BAF22:
 	pop {r0}
 	bx r0
 	.align 2, 0
-_080BAF30: .4byte gOpAnimBgAffineDstData + 0x10
+_080BAF30: .4byte gDispIo + 0x58
 
 	thumb_func_start sub_80BAF34
 sub_80BAF34: @ 0x080BAF34

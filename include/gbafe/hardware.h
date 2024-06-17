@@ -128,18 +128,8 @@ struct DispIo {
     /* 44 */ u8 blend_coef_a;
     /* 45 */ u8 blend_coef_b;
     /* 46 */ u8 blend_y;
-    /* 48 */ u16 bg2pa;
-    /* 4A */ u16 bg2pb;
-    /* 4C */ u16 bg2pc;
-    /* 4E */ u16 bg2pd;
-    /* 50 */ u32 bg2x;
-    /* 54 */ u32 bg2y;
-    /* 58 */ u16 bg3pa;
-    /* 5A */ u16 bg3pb;
-    /* 5C */ u16 bg3pc;
-    /* 5E */ u16 bg3pd;
-    /* 60 */ u32 bg3x;
-    /* 64 */ u32 bg3y;
+    /* 48 */ struct BgAffineDstData bg2affin;
+    /* 58 */ struct BgAffineDstData bg3affin;
     /* 68 */ s8 color_addition;
 };
 
@@ -231,8 +221,6 @@ extern const s16 gSinLut[0x40];
 
 extern Func gOnHBlankA;
 extern Func gOnHBlankB;
-
-extern struct BgAffineDstData gOpAnimBgAffineDstData[2];
 
 #define RGB_GET_RED(color) ((color) & 0x1F)
 #define RGB_GET_GREEN(color) (((color) >> 5) & 0x1F)

@@ -3108,13 +3108,13 @@ _080A893E:
 	movs r0, #2
 	movs r2, #0
 	movs r3, #0
-	bl sub_80AACB0
+	bl BgAffinRoting
 	movs r1, #0xa0
 	lsls r1, r1, #2
 	movs r2, #0x80
 	lsls r2, r2, #1
 	movs r0, #2
-	bl sub_80AAD44
+	bl BgAffinScaling
 	movs r7, #0x34
 	ldrsh r1, [r5, r7]
 	movs r0, #0x38
@@ -3123,7 +3123,7 @@ _080A893E:
 	str r0, [sp]
 	movs r0, #2
 	movs r3, #0x4c
-	bl sub_80AAD94
+	bl BgAffinAnchoring
 	ldr r4, _080A89AC @ =0x02000001
 	ldr r0, [r5, #0x48]
 	str r0, [sp]

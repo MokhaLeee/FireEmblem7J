@@ -163,13 +163,13 @@ void SyncDispIo(void)
     REG_BG2PD = gDispIo.bg2pd;
 #else
     // set both BG2PA and BG2PB with a single 32-bit copy
-    SET_REG(u32, BG2PA,    gDispIo.bg2pa);
+    SET_REG(u32, BG2PA,    gDispIo.bg2affin.pa);
     // set both BG2PC and BG2PD with a single 32-bit copy
-    SET_REG(u32, BG2PC,    gDispIo.bg2pc);
+    SET_REG(u32, BG2PC,    gDispIo.bg2affin.pc);
 #endif
 
-    SET_REG(u32, BG2X,     gDispIo.bg2x);
-    SET_REG(u32, BG2Y,     gDispIo.bg2y);
+    SET_REG(u32, BG2X,     gDispIo.bg2affin.dx);
+    SET_REG(u32, BG2Y,     gDispIo.bg2affin.dy);
 
 #if MODERN
     REG_BG3PA = gDispIo.bg3pa;
@@ -178,13 +178,13 @@ void SyncDispIo(void)
     REG_BG3PD = gDispIo.bg3pd;
 #else
     // set both BG3PA and BG3PB with a single 32-bit copy
-    SET_REG(u32, BG3PA,    gDispIo.bg3pa);
+    SET_REG(u32, BG3PA,    gDispIo.bg3affin.pa);
     // set both BG3PC and BG3PD with a single 32-bit copy
-    SET_REG(u32, BG3PC,    gDispIo.bg3pc);
+    SET_REG(u32, BG3PC,    gDispIo.bg3affin.pc);
 #endif
 
-    SET_REG(u32, BG3X,     gDispIo.bg3x);
-    SET_REG(u32, BG3Y,     gDispIo.bg3y);
+    SET_REG(u32, BG3X,     gDispIo.bg3affin.dx);
+    SET_REG(u32, BG3Y,     gDispIo.bg3affin.dy);
 
     #undef SET_REG
 }

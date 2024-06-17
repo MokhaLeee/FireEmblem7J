@@ -19,9 +19,13 @@ void SpinRotation_Loop(struct ProcSpinRotation * proc)
     proc->ro++;
     proc->angle -= 4;
 
-    sub_80AACB0(2, proc->angle, 0, 0, 0x180, 0x180);
-    sub_80AAD44(2, 0x200, 0x100);
-    sub_80AAD94(2, 0x78, 0xA0, 0x4C, 0x4C);
+    /**
+     * I don't understand the correspondence between 0x180 and 0x4C.
+     */
+
+    BgAffinRoting(BG_2, proc->angle, 0, 0, 0x180, 0x180);
+    BgAffinScaling(BG_2, 2 << 8, 1 << 8);
+    BgAffinAnchoring(BG_2, 120, 160, 0x4C, 0x4C);
 
     SyncDispIo();
 }

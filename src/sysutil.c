@@ -881,55 +881,70 @@ void nop_80ADDF8(void)
     return;
 }
 
-void sub_80AACB0(u8 layer, s16 angle, s16 c, s16 d, s16 e, s16 f)
+void BgAffinRoting(u8 bg, s16 angle, s16 x_center, s16 y_center, s16 sx, s16 sy)
 {
     struct BgAffineSrcData data;
     struct BgAffineDstData * dst;
 
-    if (e <= 4)
-        e = 4;
+    if (sx <= 4)
+        sx = 4;
 
-    if (f <= 4)
-        f = 4;
+    if (sy <= 4)
+        sy = 4;
 
-    data.texX = c * 0x100;
-    data.texY = d * 0x100;
+    data.texX = x_center * 0x100;
+    data.texY = y_center * 0x100;
     data.scrX = 0;
     data.scrY = 0;
-    data.sx = 0x10000 / e;
-    data.sy = 0x10000 / f;
+    data.sx = 0x10000 / sx;
+    data.sy = 0x10000 / sy;
     data.alpha = angle * 0x10;
 
-    dst = &gOpAnimBgAffineDstData[1];
-    if (layer == 2)
-        dst = &gOpAnimBgAffineDstData[0];
+    dst = &gDispIo.bg3affin;
+    if (bg == BG_2)
+        dst = &gDispIo.bg2affin;
 
     BgAffineSet(&data, dst, 1);
 }
 
-void sub_80AAD44(u8 layer, s16 a, s16 b)
+void BgAffinScaling(u8 bg, s16 sy, s16 sx)
 {
     struct BgAffineDstData * affin = NULL;
-    if (layer == 2)
-        affin = gOpAnimBgAffineDstData;
+    if (bg == BG_2)
+        affin = &gDispIo.bg2affin;
 
-    affin->pb = (affin->pb * a) >> 8;
-    affin->pd = (affin->pd * a) >> 8;
-    affin->pa = (affin->pa * b) >> 8;
-    affin->pc = (affin->pc * b) >> 8;
+    /**
+     * y = y * (1 / sy)
+     * x = x * (1 / sx)
+     *
+     * Both of which are 8.8 fixed point numbers:
+     * a halfword with 8 integer bits and 8 fractional bits.
+     * 
+     * See tonc 10.4.1: https://www.coranac.com/tonc/text/affine.htm
+     */
+
+    affin->pb = (affin->pb * sy) >> 8;
+    affin->pd = (affin->pd * sy) >> 8;
+    affin->pa = (affin->pa * sx) >> 8;
+    affin->pc = (affin->pc * sx) >> 8;
 }
 
-void sub_80AAD94(u8 layer, s16 a, s16 b, s16 c, s16 d)
+void BgAffinAnchoring(u8 bg, s16 x_anchor, s16 y_anchor, s16 c, s16 d)
 {
+    /**
+     * We need to fix anchors in screen space when roting in texture space.
+     *
+     * See tonc 11.5 and 12.5: https://www.coranac.com/tonc/text/affobj.htm
+     */
     struct BgAffineDstData * affin = NULL;
-    if (layer == 2)
-        affin = gOpAnimBgAffineDstData;
+    if (bg == BG_2)
+        affin = &gDispIo.bg2affin;
 
-    affin->dx = affin->pa * (-a) + affin->pb * (-b) + c * 0x100;
-    affin->dy = affin->pc * (-a) + affin->pd * (-b) + d * 0x100;
+    affin->dx = affin->pa * (-x_anchor) + affin->pb * (-y_anchor) + c * 0x100;
+    affin->dy = affin->pc * (-x_anchor) + affin->pd * (-y_anchor) + d * 0x100;
 }
 
-void sub_80AADFC(u8 layer, int angle, int texX, int texY, int x_scaling, int y_scaling)
+void sub_80AADFC(u8 bg, int angle, int texX, int texY, int x_scaling, int y_scaling)
 {
     struct BgAffineSrcData data;
     struct BgAffineDstData * dst;
@@ -948,18 +963,18 @@ void sub_80AADFC(u8 layer, int angle, int texX, int texY, int x_scaling, int y_s
     data.sy = 0x1000000 / y_scaling;
     data.alpha = angle >> 4;
 
-    dst = &gOpAnimBgAffineDstData[1];
-    if (layer == 2)
-        dst = &gOpAnimBgAffineDstData[0];
+    dst = &gDispIo.bg3affin;
+    if (bg == BG_2)
+        dst = &gDispIo.bg2affin;
 
     BgAffineSet(&data, dst, 1);
 }
 
-void sub_80AAE70(u8 layer, int a, int b)
+void sub_80AAE70(u8 bg, int a, int b)
 {
     struct BgAffineDstData * affin = NULL;
-    if (layer == 2)
-        affin = gOpAnimBgAffineDstData;
+    if (bg == BG_2)
+        affin = &gDispIo.bg2affin;
 
     affin->pb = (affin->pb * a) >> 0x10;
     affin->pd = (affin->pd * a) >> 0x10;
@@ -967,11 +982,11 @@ void sub_80AAE70(u8 layer, int a, int b)
     affin->pc = (affin->pc * b) >> 0x10;
 }
 
-void sub_80AAEB0(u8 layer, int a, int b, int c, int d)
+void sub_80AAEB0(u8 bg, int a, int b, int c, int d)
 {
     struct BgAffineDstData * affin = NULL;
-    if (layer == 2)
-        affin = gOpAnimBgAffineDstData;
+    if (bg == BG_2)
+        affin = &gDispIo.bg2affin;
 
     affin->dx = ((affin->pa * (-a) + affin->pb * (-b)) >> 8) + c;
     affin->dy = ((affin->pc * (-a) + affin->pd * (-b)) >> 8) + d;

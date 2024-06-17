@@ -158,7 +158,6 @@ SECTIONS
 		. = 0x002778; gArenaLevelBackup = .;
 		. = 0x002780; gOamLoPutIt = .;
 		. = 0x002790; gDispIo = .;
-		. = 0x0027D8; gOpAnimBgAffineDstData = .;
 		. = 0x002800; gIrqFuncs = .;
 		. = 0x00283C; gOamAffinePutId = .;
 		. = 0x002844; gOnHBlankA = .;
