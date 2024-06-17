@@ -948,7 +948,7 @@ void BgAffinAnchoring(u8 bg, s16 q0_x, s16 q0_y, s16 p0_x, s16 p0_y)
     affin->dy = affin->pc * (-q0_x) + affin->pd * (-q0_y) + p0_y * 0x100;
 }
 
-void sub_80AADFC(u8 bg, int angle, int texX, int texY, int x_scaling, int y_scaling)
+void BgAffinRotScalingHighPrecision(u8 bg, int angle, int texX, int texY, int x_scaling, int y_scaling)
 {
     struct BgAffineSrcData data;
     struct BgAffineDstData * dst;
@@ -974,7 +974,7 @@ void sub_80AADFC(u8 bg, int angle, int texX, int texY, int x_scaling, int y_scal
     BgAffineSet(&data, dst, 1);
 }
 
-void sub_80AAE70(u8 bg, int a, int b)
+void BgAffinScalingHighPrecision(u8 bg, int a, int b)
 {
     struct BgAffineDstData * affin = NULL;
     if (bg == BG_2)
@@ -986,7 +986,7 @@ void sub_80AAE70(u8 bg, int a, int b)
     affin->pc = (affin->pc * b) >> 0x10;
 }
 
-void sub_80AAEB0(u8 bg, int a, int b, int c, int d)
+void BgAffinAnchoringHighPrecision(u8 bg, int a, int b, int c, int d)
 {
     struct BgAffineDstData * affin = NULL;
     if (bg == BG_2)

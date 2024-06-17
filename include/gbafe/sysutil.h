@@ -152,9 +152,9 @@ void nullsub_85(void);
 void BgAffinRotScaling(u8 layer, s16 angle, s16, s16, s16, s16);
 void BgAffinScaling(u8, s16, s16);
 void BgAffinAnchoring(u8, s16, s16, s16, s16);
-void sub_80AADFC(u8 layer, int angle, int a, int b, int c, int d);
-void sub_80AAE70(u8 layer, int a, int b);
-void sub_80AAEB0(u8 layer, int a, int b, int c, int d);
+void BgAffinRotScalingHighPrecision(u8 layer, int angle, int a, int b, int c, int d);
+void BgAffinScalingHighPrecision(u8 layer, int a, int b);
+void BgAffinAnchoringHighPrecision(u8 layer, int a, int b, int c, int d);
 void sub_80AAEF8(int a, u16 * buf, int c, int d, int e, int f, int g, int h);
 void sub_80AAFA4(int a, int b, int c, int d, int e, u16 f) ;
 
