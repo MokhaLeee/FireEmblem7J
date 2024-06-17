@@ -359,6 +359,8 @@ SECTIONS
 		. = ALIGN(4); data/data_08D8A368.o(.data)
 		. = ALIGN(4); src/save_core.o(.data)
 		. = ALIGN(4); data/data_08DAD284.o(.data)
+		. = ALIGN(4); data/savemenu.o(.data)
+		. = ALIGN(4); data/savedrawfx.o(.data)
 		. = ALIGN(4); src/sysutil.o(.data)
 		. = ALIGN(4); data/data_08DAE4C4.o(.data)
 	}
