@@ -2887,7 +2887,7 @@ sub_80A87A4: @ 0x080A87A4
 	ble _080A87B8
 	movs r4, #0x40
 _080A87B8:
-	ldr r0, _080A87F0 @ =0x02000001
+	ldr r0, _080A87F0 @ =gUnk_Savemenu_02000001
 	ldrb r0, [r0]
 	subs r0, #0xa
 	lsls r0, r0, #1
@@ -2917,7 +2917,7 @@ _080A87E6:
 	b _080A87FA
 	.align 2, 0
 _080A87EC: .4byte gPal + 0x202
-_080A87F0: .4byte 0x02000001
+_080A87F0: .4byte gUnk_Savemenu_02000001
 _080A87F4: .4byte 0x0201E9F4
 _080A87F8:
 	movs r1, #0x1f
@@ -3124,7 +3124,7 @@ _080A893E:
 	movs r0, #2
 	movs r3, #0x4c
 	bl BgAffinAnchoring
-	ldr r4, _080A89AC @ =0x02000001
+	ldr r4, _080A89AC @ =gUnk_Savemenu_02000001
 	ldr r0, [r5, #0x48]
 	str r0, [sp]
 	movs r0, #8
@@ -3149,7 +3149,7 @@ _080A893E:
 	.align 2, 0
 _080A89A4: .4byte gSinLut
 _080A89A8: .4byte 0x0201E8D4
-_080A89AC: .4byte 0x02000001
+_080A89AC: .4byte gUnk_Savemenu_02000001
 _080A89B0: .4byte 0x000003FF
 _080A89B4:
 	ldr r0, [r5, #0x48]

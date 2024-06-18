@@ -44,8 +44,8 @@ Tsa_SaveMenuBackground:	@ 0x0842D860
 Img_SpinRotation:	@ 0x0842DD14
 	.incbin "FireEmblem7J.base.gba", 0x42DD14, 0x42FD94 - 0x42DD14
 
-	.global TsaDirect_SpinRotation
-TsaDirect_SpinRotation:	@ 0x0842FD94
+	.global Tsa_SpinRotation
+Tsa_SpinRotation:	@ 0x0842FD94
 	.incbin "FireEmblem7J.base.gba", 0x42FD94, 0x42FF00 - 0x42FD94
 
 	.global Img_SaveMenuSprits

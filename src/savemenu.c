@@ -3,6 +3,13 @@
 EWRAM_OVERLAY(savemenu) u8 gUnk_Savemenu_02000000 = 0;
 EWRAM_OVERLAY(savemenu) u8 gUnk_Savemenu_02000001 = 0;
 
+CONST_DATA u16 BgConfig_SaveMenu[] = {
+    0x0000, 0x6000, 0x0000, 
+    0xC000, 0x6800, 0x0000, 
+    0x8000, 0x7800, 0x0000, 
+    0x8000, 0x7800, 0x0000,
+};
+
 void SaveMenuOnHBlank(void)
 {
     int ret;

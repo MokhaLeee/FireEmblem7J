@@ -1,125 +1,6 @@
 	.include "macro.inc"
 	.syntax unified
 
-	thumb_func_start sub_80A5B44
-sub_80A5B44: @ 0x080A5B44
-	push {r4, r5, lr}
-	ldr r0, _080A5C2C @ =gUnk_08DAD33C
-	bl InitBgs
-	ldr r4, _080A5C30 @ =gDispIo
-	movs r0, #8
-	rsbs r0, r0, #0
-	ldrb r1, [r4]
-	ands r0, r1
-	movs r1, #1
-	orrs r0, r1
-	strb r0, [r4]
-	movs r0, #0x3f
-	ldrb r2, [r4, #0x15]
-	ands r0, r2
-	movs r1, #0x40
-	orrs r0, r1
-	movs r1, #0x21
-	rsbs r1, r1, #0
-	ands r0, r1
-	strb r0, [r4, #0x15]
-	movs r0, #3
-	ldrb r1, [r4, #0xc]
-	orrs r0, r1
-	strb r0, [r4, #0xc]
-	movs r1, #4
-	rsbs r1, r1, #0
-	adds r0, r1, #0
-	ldrb r2, [r4, #0x10]
-	ands r0, r2
-	strb r0, [r4, #0x10]
-	adds r0, r1, #0
-	ldrb r2, [r4, #0x14]
-	ands r0, r2
-	movs r2, #2
-	orrs r0, r2
-	strb r0, [r4, #0x14]
-	ldrb r0, [r4, #0x18]
-	ands r1, r0
-	orrs r1, r2
-	strb r1, [r4, #0x18]
-	bl EndAllMus
-	movs r0, #2
-	rsbs r0, r0, #0
-	ldrb r1, [r4, #1]
-	ands r0, r1
-	movs r1, #3
-	rsbs r1, r1, #0
-	ands r0, r1
-	subs r1, #2
-	ands r0, r1
-	subs r1, #4
-	ands r0, r1
-	subs r1, #8
-	ands r0, r1
-	strb r0, [r4, #1]
-	ldr r1, _080A5C34 @ =0x02000001
-	movs r0, #0xa
-	strb r0, [r1]
-	ldr r1, _080A5C38 @ =gAnims
-	movs r0, #0x64
-	strb r0, [r1]
-	ldr r0, _080A5C3C @ =SaveMenuOnHBlank
-	bl SetOnHBlankA
-	ldr r0, _080A5C40 @ =Pal_SaveMenuWindow
-	movs r1, #0x88
-	lsls r1, r1, #2
-	movs r2, #0x80
-	lsls r2, r2, #1
-	bl ApplyPaletteExt
-	ldr r0, _080A5C44 @ =Pal_SaveMenuBackground
-	movs r1, #0
-	movs r2, #0x60
-	bl ApplyPaletteExt
-	ldr r4, _080A5C48 @ =Img_MuralBackground
-	movs r0, #0
-	bl GetBgChrOffset
-	adds r1, r0, #0
-	movs r5, #0xc0
-	lsls r5, r5, #0x13
-	adds r1, r1, r5
-	adds r0, r4, #0
-	bl Decompress
-	ldr r0, _080A5C4C @ =gBg0Tm
-	ldr r1, _080A5C50 @ =Tsa_SaveMenuBackground
-	movs r2, #0
-	bl TmApplyTsa_thm
-	ldr r4, _080A5C54 @ =Img_SpinRotation
-	movs r0, #2
-	bl GetBgChrOffset
-	adds r1, r0, #0
-	adds r1, r1, r5
-	adds r0, r4, #0
-	bl Decompress
-	ldr r0, _080A5C58 @ =gBg3Tm
-	ldr r1, _080A5C5C @ =TsaDirect_SpinRotation
-	movs r2, #0
-	movs r3, #5
-	bl sub_8001F14
-	movs r0, #8
-	bl EnableBgSync
-	pop {r4, r5}
-	pop {r0}
-	bx r0
-	.align 2, 0
-_080A5C2C: .4byte gUnk_08DAD33C
-_080A5C30: .4byte gDispIo
-_080A5C34: .4byte 0x02000001
-_080A5C38: .4byte gAnims
-_080A5C3C: .4byte SaveMenuOnHBlank
-_080A5C40: .4byte Pal_SaveMenuWindow
-_080A5C44: .4byte Pal_SaveMenuBackground
-_080A5C48: .4byte Img_MuralBackground
-_080A5C4C: .4byte gBg0Tm
-_080A5C50: .4byte Tsa_SaveMenuBackground
-_080A5C54: .4byte Img_SpinRotation
-_080A5C58: .4byte gBg3Tm
-_080A5C5C: .4byte TsaDirect_SpinRotation
 
 	thumb_func_start sub_80A5C60
 sub_80A5C60: @ 0x080A5C60
@@ -132,7 +13,7 @@ sub_80A5C60: @ 0x080A5C60
 	mov r1, sp
 	movs r0, #0
 	strh r0, [r1]
-	ldr r4, _080A5D00 @ =gUnk_08DAD844
+	ldr r4, _080A5D00 @ =gpBonusClaimData
 	ldr r1, [r4]
 	ldr r2, _080A5D04 @ =0x01000142
 	mov r0, sp
@@ -203,7 +84,7 @@ _080A5CF6:
 	bl Proc_Goto
 	b _080A5D10
 	.align 2, 0
-_080A5D00: .4byte gUnk_08DAD844
+_080A5D00: .4byte gpBonusClaimData
 _080A5D04: .4byte 0x01000142
 _080A5D08:
 	ldr r0, _080A5D20 @ =0x06013800
@@ -326,13 +207,13 @@ _080A5DE8:
 	thumb_func_start sub_80A5DF0
 sub_80A5DF0: @ 0x080A5DF0
 	push {lr}
-	ldr r0, _080A5E00 @ =gUnk_08DAD844
+	ldr r0, _080A5E00 @ =gpBonusClaimData
 	ldr r0, [r0]
 	bl SaveBonusContentData
 	pop {r0}
 	bx r0
 	.align 2, 0
-_080A5E00: .4byte gUnk_08DAD844
+_080A5E00: .4byte gpBonusClaimData
 
 	thumb_func_start sub_80A5E04
 sub_80A5E04: @ 0x080A5E04

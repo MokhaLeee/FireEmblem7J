@@ -1,5 +1,13 @@
 	.section .data
 
+	.global gUnk_08DAD354
+gUnk_08DAD354:	@ 0x08DAD354
+	.incbin "FireEmblem7J.base.gba", 0xDAD354, 0xDAD384 - 0xDAD354
+
+	.global gUnk_08DAD384
+gUnk_08DAD384:	@ 0x08DAD384
+	.incbin "FireEmblem7J.base.gba", 0xDAD384, 0xDAD3A4 - 0xDAD384
+
 	.global ProcScr_SaveMenu
 ProcScr_SaveMenu:	@ 0x08DAD3A4
 	@ PROC_19
@@ -281,9 +289,9 @@ gUnk_08DAD674:	@ 0x08DAD674
 gUnk_08DAD784:	@ 0x08DAD784
 	.incbin "FireEmblem7J.base.gba", 0xDAD784, 0xDAD844 - 0xDAD784
 
-	.global gUnk_08DAD844
-gUnk_08DAD844:	@ 0x08DAD844
-	.incbin "FireEmblem7J.base.gba", 0xDAD844, 0xDAD848 - 0xDAD844
+	.global gpBonusClaimData
+gpBonusClaimData:	@ 0x08DAD844
+	.4byte gBonusClaimData
 
 	.global gUnk_08DAD848
 gUnk_08DAD848:	@ 0x08DAD848

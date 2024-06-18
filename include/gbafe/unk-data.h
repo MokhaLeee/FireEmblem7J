@@ -168,8 +168,8 @@ extern u8 Tsa_QuintessenceFx[];
 // ??? gUnk_0842D7E4
 extern u16 Pal_SaveMenuBackground[];
 extern u8 Tsa_SaveMenuBackground[]; // uncompressed TSA
-// ??? Img_SpinRotation
-// ??? TsaDirect_SpinRotation
+extern u8 Img_SpinRotation[];
+extern u8 Tsa_SpinRotation[]; // uncompressed TSA
 extern u8 Img_SaveMenuSprits[];
 // ??? gUnk_0843165C
 extern u16 Pal_SaveMenuWindow[];
@@ -1965,28 +1965,9 @@ extern struct ProcCmd ProcScr_PrepItemUseScreen[];
 // ??? gpSramExtraData
 // ??? gExtraMapInfo
 // ??? gUnk_08DAD29C
-// ??? gUnk_08DAD33C
-// ??? gUnk_08DAD354
-// ??? gUnk_08DAD384
-// ??? ProcScr_SaveMenu
-// ??? gUnk_08DAD674
-// ??? gUnk_08DAD784
-// ??? gUnk_08DAD844
-// ??? gUnk_08DAD848
-// ??? gUnk_08DAD8A8
-// ??? gUnk_08DAD8C2
-// ??? gUnk_08DAD8FC
-// ??? gUnk_08DAD904
-// ??? gUnk_08DAD90C
-// ??? gUnk_08DAD9D6
-// ??? gUnk_08DAD9E4
-// ??? gUnk_08DADA10
-// ??? ProcScr_SaveDraw
-// ??? ProcScr_SpinRotation
-// ??? ProcScr_SaveDrawCursor
-// ??? gUnk_08DADAAC
-// ??? gUnk_08DADAC8
-// ??? ProcScr_SaveBgUp
+
+/* savemenu.h */
+
 // ??? gUnk_08DADD34
 // ??? gUnk_08DADD50
 // ??? gUnk_08DADD78

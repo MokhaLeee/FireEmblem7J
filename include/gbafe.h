@@ -1,6 +1,5 @@
 #pragma once
 
-#include "gba/gba.h"
 #include "gbafe/global.h"
 
 #include "constants/terrains.h"
@@ -57,3 +56,4 @@
 #include "gbafe/bmio.h"
 #include "gbafe/ai.h"
 #include "gbafe/scrolling_util.h"
+#include "gbafe/bonusclaim.h"

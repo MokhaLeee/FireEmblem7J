@@ -33,7 +33,6 @@ int GetUnitSupportBonuses(struct Unit * unit, struct SupportBonuses * bonuses);
 bool sub_8028620(struct Unit * unit);
 void PidStatsAddExpGained(u8 pid, int expGain);
 int GetMapChangeIdAt(int x, int y);
-void EndAllMus(void);
 void StartBattleManim(void);
 void WriteSuspendSave(int slot);
 void StartBgmVolumeChange(int volume_from, int volume_to, int duration, ProcPtr parent);

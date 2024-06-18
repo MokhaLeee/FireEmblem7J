@@ -12,6 +12,16 @@ enum {
     /* DispCnt::obj_mapping */
     OBJ_MAPPING_2D = 0,
     OBJ_MAPPING_1D = 1,
+
+    /* BgCnt::size */
+    BGCNT_SIZE_TXT256x256   = BGCNT_TXT256x256 >> 14,
+    BGCNT_SIZE_TXT512x256   = BGCNT_TXT512x256 >> 14,
+    BGCNT_SIZE_TXT256x512   = BGCNT_TXT256x512 >> 14,
+    BGCNT_SIZE_TXT512x512   = BGCNT_TXT512x512 >> 14,
+    BGCNT_SIZE_AFF128x128   = BGCNT_AFF128x128 >> 14,
+    BGCNT_SIZE_AFF256x256   = BGCNT_AFF256x256 >> 14,
+    BGCNT_SIZE_AFF512x512   = BGCNT_AFF512x512 >> 14,
+    BGCNT_SIZE_AFF1024x1024 = BGCNT_AFF1024x1024 >> 14,
 };
 
 #if MODERN
@@ -411,15 +421,15 @@ void RefreshKeySt(struct KeySt * keySt);
 void ClearKeySt(struct KeySt * keySt);
 void InitKeySt(struct KeySt * keySt);
 void SetBgOffset(u16 bgid, u16 x_offset, u16 y_offset);
-void func_fe6_08001AE4(void);
-void func_fe6_08001B18(u8 a, u8 b);
-void func_fe6_08001B4C(u16 * a, u16 * b);
-void func_fe6_08001B8C(void * tm, void const * in_data, u8 base, u8 linebits);
-void func_fe6_08001C68(u16 * tm, short const * in_data, int unused);
+void sub_8001E6C(void);
+void sub_8001EA0(u8 a, u8 b);
+void sub_8001ED4(u16 *dst, u16 *src);
+void sub_8001F14(void *tm, void const *in_data, u8 base, u8 linebits);
+void sub_8001FF0(u16 * tm, short const * in_data, int unused);
 void ColorFadeInit(void);
-void func_fe6_08001D44(u16 const * in_pal, int bank, int count, int unk);
-void func_fe6_08001E68(int a, int b, int c, int d);
-void func_fe6_08001F88(int a, int b, int c);
+void sub_80020CC(u16 const * in_pal, int bank, int count, int unk);
+void sub_80021F0(int a, int b, int c, int d);
+void sub_8002310(int a, int b, int c);
 void ColorFadeSetupFromColorToBlack(s8 component_step);
 void ColorFadeSetupFromBlack(s8 component_step);
 void ColorFadeSetupFromColorToWhite(s8 component_step);
@@ -428,7 +438,7 @@ void ColorFadeTick2(void);
 void InitBgs(u16 const * config);
 u16 * GetBgTilemap(int bg);
 void SoftResetIfKeyCombo(void);
-void func_fe6_0800285C(int unk);
+void sub_8002C24(int unk);
 void SetOnHBlankA(Func func);
 void SetOnHBlankB(Func func);
 int GetBgFromPtr(u16 *ptr);

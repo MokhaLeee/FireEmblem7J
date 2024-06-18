@@ -107,7 +107,7 @@ struct MuProc * StartUiMu(struct Unit * unit, int x, int y);
 // sub_806D2E4
 // sub_806D3F8
 // sub_806D47C
-// EndAllMus
+void EndAllMus(void);
 // sub_806D4BC
 // sub_806D4D4
 // sub_806D4EC

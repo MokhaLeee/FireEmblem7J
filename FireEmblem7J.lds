@@ -12,6 +12,7 @@ SECTIONS
 	. = __ewram_overlay_beg;
     ewram_overlay_0 (NOLOAD) : ALIGN(4)
 	{
+		. = 0x0000F4; gBonusClaimData = .;
 		. = 0x00310C; gStatScreenSt = .;
 		. = 0x00323C; gUiTmScratchA = .;
 		. = 0x00373C; gUiTmScratchB = .;
@@ -267,6 +268,7 @@ SECTIONS
 		asm/save.o(.text);
 		src/savemenu.o(.text);
 		asm/savemenu.o(.text);
+		src/savedraw.o(.text);
 		asm/savedraw.o(.text);
 		src/savedrawfx.o(.text);
 		asm/savedrawfx.o(.text);
@@ -359,6 +361,7 @@ SECTIONS
 		. = ALIGN(4); data/data_08D8A368.o(.data)
 		. = ALIGN(4); src/save_core.o(.data)
 		. = ALIGN(4); data/data_08DAD284.o(.data)
+		. = ALIGN(4); src/savemenu.o(.data)
 		. = ALIGN(4); data/savemenu.o(.data)
 		. = ALIGN(4); src/savedrawfx.o(.data)
 		. = ALIGN(4); data/savedrawfx.o(.data)

@@ -234,7 +234,7 @@ _080A4296:
 	thumb_func_start SaveMenu_Init
 SaveMenu_Init: @ 0x080A42A8
 	push {lr}
-	ldr r0, _080A4318 @ =gUnk_08DAD33C
+	ldr r0, _080A4318 @ =BgConfig_SaveMenu
 	bl InitBgs
 	ldr r2, _080A431C @ =gDispIo
 	movs r0, #2
@@ -289,7 +289,7 @@ SaveMenu_Init: @ 0x080A42A8
 	pop {r0}
 	bx r0
 	.align 2, 0
-_080A4318: .4byte gUnk_08DAD33C
+_080A4318: .4byte BgConfig_SaveMenu
 _080A431C: .4byte gDispIo
 
 	thumb_func_start ProcSaveMenu_InitScreen
@@ -434,7 +434,7 @@ _080A43D2:
 	ldr r1, _080A4530 @ =gAnims
 	movs r0, #0x64
 	strb r0, [r1]
-	ldr r1, _080A4534 @ =0x02000001
+	ldr r1, _080A4534 @ =gUnk_Savemenu_02000001
 	movs r0, #0xa
 	strb r0, [r1]
 	ldr r0, _080A4538 @ =SaveMenuOnHBlank
@@ -449,7 +449,7 @@ _080A43D2:
 	adds r0, r4, #0
 	bl Decompress
 	ldr r0, _080A4540 @ =gBg3Tm
-	ldr r1, _080A4544 @ =TsaDirect_SpinRotation
+	ldr r1, _080A4544 @ =Tsa_SpinRotation
 	movs r2, #0
 	movs r3, #5
 	bl sub_8001F14
@@ -519,11 +519,11 @@ _080A4524: .4byte 0x06010800
 _080A4528: .4byte gSinLut
 _080A452C: .4byte gCosLut
 _080A4530: .4byte gAnims
-_080A4534: .4byte 0x02000001
+_080A4534: .4byte gUnk_Savemenu_02000001
 _080A4538: .4byte SaveMenuOnHBlank
 _080A453C: .4byte Img_SpinRotation
 _080A4540: .4byte gBg3Tm
-_080A4544: .4byte TsaDirect_SpinRotation
+_080A4544: .4byte Tsa_SpinRotation
 _080A4548: .4byte gPal
 
 	thumb_func_start SaveMenu_LoadExtraMenuGraphics
@@ -3136,7 +3136,7 @@ sub_80A5980: @ 0x080A5980
 	ldr r1, _080A5A38 @ =gAnims
 	movs r0, #0x64
 	strb r0, [r1]
-	ldr r1, _080A5A3C @ =0x02000001
+	ldr r1, _080A5A3C @ =gUnk_Savemenu_02000001
 	movs r0, #0xa
 	strb r0, [r1]
 	bl sub_80A6BB0
@@ -3178,7 +3178,7 @@ _080A5A2C: .4byte 0x06010800
 _080A5A30: .4byte gBg0Tm
 _080A5A34: .4byte Tsa_SaveMenuBackground
 _080A5A38: .4byte gAnims
-_080A5A3C: .4byte 0x02000001
+_080A5A3C: .4byte gUnk_Savemenu_02000001
 
 	thumb_func_start sub_80A5A40
 sub_80A5A40: @ 0x080A5A40

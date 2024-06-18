@@ -5,6 +5,12 @@
 
 #define REG_BLDY_16 (*(u16 volatile *) &REG_BLDY)
 
+enum videoalloc_savemenu {
+    BGPAL_SAVEMENU_BG = 0,
+
+    OBJPAL_SAVEMENU_WINDOW = 1,
+};
+
 enum save_menu_action_flag_bitfile {
     SAVEMENU_ACTION_BITFILE_0 = 1 << 0,
     SAVEMENU_ACTION_BITFILE_1 = 1 << 1,
@@ -259,3 +265,27 @@ ProcPtr StartSpinRotation(ProcPtr parent);
 // ??? sub_80A9538
 // ??? sub_80A9578
 // ??? StartDrawDifficultyMenuSprites
+
+/* savemenu */
+extern CONST_DATA u16 BgConfig_SaveMenu[];
+// ??? gUnk_08DAD354
+// ??? gUnk_08DAD384
+// ??? ProcScr_SaveMenu
+// ??? gUnk_08DAD674
+// ??? gUnk_08DAD784
+// ??? gpBonusClaimData
+// ??? gUnk_08DAD848
+// ??? gUnk_08DAD8A8
+// ??? gUnk_08DAD8C2
+// ??? gUnk_08DAD8FC
+// ??? gUnk_08DAD904
+// ??? gUnk_08DAD90C
+// ??? gUnk_08DAD9D6
+// ??? gUnk_08DAD9E4
+// ??? gUnk_08DADA10
+// ??? ProcScr_SaveDraw
+// ??? ProcScr_SpinRotation
+// ??? ProcScr_SaveDrawCursor
+// ??? gUnk_08DADAAC
+// ??? gUnk_08DADAC8
+// ??? ProcScr_SaveBgUp

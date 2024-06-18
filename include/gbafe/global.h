@@ -3,6 +3,8 @@
 #include <stdlib.h>
 #include <stddef.h>
 
+#include "../gba/gba.h"
+
 #include "types.h"
 #include "unk-types.h"
 #include "unk-functions.h"

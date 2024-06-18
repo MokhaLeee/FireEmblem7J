@@ -3989,7 +3989,7 @@ sub_80AD818: @ 0x080AD818
 	adds r0, r4, #0
 	bl Decompress
 	ldr r0, _080AD908 @ =gBg3Tm
-	ldr r1, _080AD90C @ =TsaDirect_SpinRotation
+	ldr r1, _080AD90C @ =Tsa_SpinRotation
 	movs r2, #0
 	movs r3, #5
 	bl sub_8001F14
@@ -4046,7 +4046,7 @@ _080AD8FC: .4byte 0x06013800
 _080AD900: .4byte sub_80AD778
 _080AD904: .4byte Img_SpinRotation
 _080AD908: .4byte gBg3Tm
-_080AD90C: .4byte TsaDirect_SpinRotation
+_080AD90C: .4byte Tsa_SpinRotation
 _080AD910: .4byte gDispIo
 
 	thumb_func_start sub_80AD914
