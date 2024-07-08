@@ -874,7 +874,7 @@ sub_807D424: @ 0x0807D424
 	orrs r0, r1
 	strh r0, [r2, #0x3c]
 	movs r0, #0x1c
-	bl sub_800B72C
+	bl DisplayBackground
 	bl ArchiveCurrentPalettes
 	movs r3, #0xf0
 	lsls r3, r3, #4
@@ -902,7 +902,7 @@ sub_807D478: @ 0x0807D478
 	ldr r2, _0807D4B0 @ =0x00000FBA
 	movs r0, #1
 	movs r1, #1
-	bl sub_8007EAC
+	bl StartTalkMsg
 _0807D496:
 	ldrb r4, [r4, #0x1b]
 	cmp r4, #3
@@ -910,7 +910,7 @@ _0807D496:
 	ldr r2, _0807D4B4 @ =0x00000FBB
 	movs r0, #1
 	movs r1, #1
-	bl sub_8007EAC
+	bl StartTalkMsg
 _0807D4A6:
 	pop {r4}
 	pop {r0}
@@ -925,7 +925,7 @@ sub_807D4B8: @ 0x0807D4B8
 	push {r4, r5, lr}
 	sub sp, #8
 	adds r5, r0, #0
-	bl ResetDialogueScreen
+	bl ClearTalk
 	movs r0, #0
 	bl InitBgs
 	ldr r2, _0807D528 @ =gDispIo
@@ -3877,7 +3877,7 @@ _0807EB06:
 	bl sub_8007DF4
 	bl sub_800968C
 	bl sub_8009628
-	bl ResetDialogueScreen
+	bl ClearTalk
 	ldrh r0, [r5, #4]
 	bl DecodeMsg
 	adds r2, r0, #0

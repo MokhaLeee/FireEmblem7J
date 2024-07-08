@@ -68,7 +68,7 @@ int EventE2_Thunderfx(struct EventProc * proc)
     int x = args[1];
     int y = args[2];
 
-    if (proc->evbits & EVENT_FLAG_SKIPPED)
+    if (proc->flags & EVENT_FLAG_SKIPPED)
         return EVENT_CMDRET_CONTINUE;
  
     procfx = Proc_StartBlocking(ProcScr_EventThunderfx, proc);

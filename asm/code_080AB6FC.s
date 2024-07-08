@@ -24,7 +24,7 @@ sub_80AB970: @ 0x080AB970
 	ldr r0, [r0]
 	str r0, [r1]
 	adds r0, r7, #0
-	bl GetROMChapterStruct
+	bl GetChapterInfo
 	adds r1, r0, #0
 	movs r2, #0
 	ldr r0, _080AB9D8 @ =gPlaySt
@@ -102,7 +102,7 @@ _080ABA1C:
 	bl AppendString
 	adds r5, r0, #0
 	adds r0, r7, #0
-	bl GetROMChapterStruct
+	bl GetChapterInfo
 	adds r1, r0, #0
 	movs r2, #0
 	ldr r0, _080ABAA0 @ =gPlaySt
@@ -10225,19 +10225,19 @@ _080B0A54:
 	ldr r2, [r0, #4]
 	movs r0, #2
 	movs r1, #0xf
-	bl sub_8007EAC
+	bl StartTalkMsg
 	movs r0, #0
 	bl sub_8007F84
 	movs r0, #1
-	bl sub_8007F24
+	bl SetTalkFlag
 	movs r0, #2
-	bl sub_8007F24
+	bl SetTalkFlag
 	movs r0, #4
-	bl sub_8007F24
+	bl SetTalkFlag
 	movs r0, #8
-	bl sub_8007F24
+	bl SetTalkFlag
 	movs r0, #0x40
-	bl sub_8007F24
+	bl SetTalkFlag
 	movs r0, #4
 	bl sub_8007F68
 	ldr r0, _080B0BB4 @ =gAnims
@@ -11116,11 +11116,11 @@ sub_80B1174: @ 0x080B1174
 	movs r0, #0
 	bl sub_8007F84
 	movs r0, #1
-	bl sub_8007F24
+	bl SetTalkFlag
 	movs r0, #2
-	bl sub_8007F24
+	bl SetTalkFlag
 	movs r0, #4
-	bl sub_8007F24
+	bl SetTalkFlag
 	movs r0, #1
 	bl sub_8008CB8
 	add sp, #0xc
@@ -13161,7 +13161,7 @@ sub_80B2140: @ 0x080B2140
 _080B2168: .4byte gBmSt
 _080B216C: .4byte gUnk_08DB07DC
 _080B2170:
-	bl ResetDialogueScreen
+	bl ClearTalk
 _080B2174:
 	add sp, #4
 	pop {r7}
@@ -16319,7 +16319,7 @@ sub_80B3A08: @ 0x080B3A08
 	ldr r0, [r7]
 	movs r1, #7
 	bl sub_800463C
-	bl ResetDialogueScreen
+	bl ClearTalk
 	ldr r1, _080B3A78 @ =gUnk_08DB0ADC
 	adds r0, r1, #0
 	bl Proc_EndEach
@@ -16555,11 +16555,11 @@ sub_80B3BD0: @ 0x080B3BD0
 	movs r0, #0
 	bl sub_8007F84
 	movs r0, #1
-	bl sub_8007F24
+	bl SetTalkFlag
 	movs r0, #2
-	bl sub_8007F24
+	bl SetTalkFlag
 	movs r0, #4
-	bl sub_8007F24
+	bl SetTalkFlag
 	movs r0, #1
 	bl sub_8008CB8
 	add sp, #8
@@ -21081,17 +21081,17 @@ sub_80B5E04: @ 0x080B5E04
 	adds r1, #1
 	movs r0, #1
 	adds r2, r4, #0
-	bl sub_8007EAC
+	bl StartTalkMsg
 	movs r0, #4
 	bl sub_8007F68
 	movs r0, #0x20
-	bl sub_8007F24
+	bl SetTalkFlag
 	movs r0, #0x80
-	bl sub_8007F24
+	bl SetTalkFlag
 	movs r0, #4
-	bl sub_8007F24
+	bl SetTalkFlag
 	movs r0, #1
-	bl sub_8007F24
+	bl SetTalkFlag
 	pop {r4}
 	pop {r0}
 	bx r0
@@ -21775,7 +21775,7 @@ sub_80B63AC: @ 0x080B63AC
 	ldr r0, _080B63D8 @ =gUnk_08DB0F44
 	bl Proc_Find
 	bl Proc_End
-	bl ResetDialogueScreen
+	bl ClearTalk
 	bl EndEachSpriteAnimProc
 	movs r0, #0
 	bl InitBgs
@@ -21796,7 +21796,7 @@ sub_80B63DC: @ 0x080B63DC
 	ldrb r0, [r0, #0xe]
 	lsls r0, r0, #0x18
 	asrs r0, r0, #0x18
-	bl GetROMChapterStruct
+	bl GetChapterInfo
 	ldrh r0, [r0, #0x26]
 	movs r1, #0
 	bl sub_800376C
@@ -21813,7 +21813,7 @@ StartWorldMapEvent: @ 0x080B6404
 	ldr r4, _080B6440 @ =gPlaySt
 	movs r0, #0xe
 	ldrsb r0, [r4, r0]
-	bl GetROMChapterStruct
+	bl GetChapterInfo
 	adds r0, #0x75
 	ldrb r0, [r0]
 	lsls r0, r0, #2
@@ -21823,7 +21823,7 @@ StartWorldMapEvent: @ 0x080B6404
 	beq _080B6436
 	movs r0, #0xe
 	ldrsb r0, [r4, r0]
-	bl GetROMChapterStruct
+	bl GetChapterInfo
 	adds r0, #0x75
 	ldrb r0, [r0]
 	lsls r0, r0, #2
@@ -23121,7 +23121,7 @@ _080B6E3C: .4byte 0x04000040
 sub_80B6E40: @ 0x080B6E40
 	push {r4, lr}
 	adds r4, r0, #0
-	bl ResetDialogueScreen
+	bl ClearTalk
 	ldr r0, _080B6E84 @ =gUnk_0860A86C
 	movs r1, #0
 	movs r2, #0x80
@@ -25141,7 +25141,7 @@ _080B7D88:
 	bl sub_80AB970
 	str r0, [r5]
 	adds r0, r7, #0
-	bl GetROMChapterStruct
+	bl GetChapterInfo
 	adds r2, r0, #0
 	ldr r0, _080B7DFC @ =gPlaySt
 	movs r1, #0
@@ -27049,7 +27049,7 @@ _080B8C80:
 	bl sub_80AB970
 	adds r4, r0, #0
 	adds r0, r6, #0
-	bl GetROMChapterStruct
+	bl GetChapterInfo
 	adds r2, r0, #0
 	ldr r0, _080B8CE0 @ =gPlaySt
 	movs r1, #0
@@ -27381,7 +27381,7 @@ sub_80B8F48: @ 0x080B8F48
 	ldr r0, _080B8F80 @ =gBg2Tm
 	movs r1, #0
 	bl TmFill
-	bl ResetDialogueScreen
+	bl ClearTalk
 	bl sub_80B99F8
 	bl sub_80B8D8C
 	movs r0, #7
@@ -27726,7 +27726,7 @@ sub_80B91D8: @ 0x080B91D8
 	push {lr}
 	movs r0, #0
 	bl InitBgs
-	bl ResetDialogueScreen
+	bl ClearTalk
 	bl sub_80B99F8
 	ldr r3, _080B9238 @ =gDispIo
 	adds r1, r3, #0
@@ -29385,7 +29385,7 @@ _080B9F64:
 	lsls r0, r0, #0x19
 	lsrs r0, r0, #0x19
 	mov r8, r0
-	bl GetROMChapterStruct
+	bl GetChapterInfo
 	adds r1, r0, #0
 	movs r2, #0
 	ldr r0, _080B9F98 @ =gPlaySt
@@ -29476,7 +29476,7 @@ _080BA012:
 	movs r1, #2
 	bl PutNumber
 	mov r0, r8
-	bl GetROMChapterStruct
+	bl GetChapterInfo
 	adds r1, r0, #0
 	movs r2, #0
 	ldr r0, _080BA078 @ =gPlaySt
@@ -29562,7 +29562,7 @@ _080BA0D0:
 	lsrs r7, r0, #0x17
 _080BA0D8:
 	mov r0, r8
-	bl GetROMChapterStruct
+	bl GetChapterInfo
 	adds r2, r0, #0
 	ldr r0, _080BA150 @ =gPlaySt
 	movs r1, #0

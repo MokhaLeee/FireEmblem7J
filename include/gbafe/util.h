@@ -91,10 +91,10 @@ void SetBlackPal(int palid);
 // ??? StartMidFadeFromBlack
 // ??? StartSlowFadeFromBlack
 // ??? StartFastFadeFromBlack
-// ??? StartMidLockingFadeToBlack
+void StartMidLockingFadeToBlack(ProcPtr parent);
 // ??? StartSlowLockingFadeToBlack
 // ??? StartFastLockingFadeToBlack
-// ??? StartMidLockingFadeFromBlack
+void StartMidLockingFadeFromBlack(ProcPtr parent);
 // ??? StartSlowLockingFadeFromBlack
 // ??? StartFastLockingFadeFromBlack
 // ??? sub_8014530

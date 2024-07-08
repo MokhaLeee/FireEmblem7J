@@ -512,7 +512,7 @@ UnpackChapterMap: @ 0x0801955C
 	strh r0, [r5, #2]
 	ldr r4, _080195B0 @ =gChapterDataAssetTable
 	adds r0, r6, #0
-	bl GetROMChapterStruct
+	bl GetChapterInfo
 	ldrb r0, [r0, #7]
 	lsls r0, r0, #2
 	adds r0, r0, r4
@@ -544,7 +544,7 @@ UnpackChapterMapGraphics: @ 0x080195BC
 	push {r4, r5, lr}
 	adds r4, r0, #0
 	ldr r5, _08019618 @ =gChapterDataAssetTable
-	bl GetROMChapterStruct
+	bl GetChapterInfo
 	ldrb r0, [r0, #4]
 	lsls r0, r0, #2
 	adds r0, r0, r5
@@ -552,7 +552,7 @@ UnpackChapterMapGraphics: @ 0x080195BC
 	ldr r1, _0801961C @ =0x06008000
 	bl Decompress
 	adds r0, r4, #0
-	bl GetROMChapterStruct
+	bl GetChapterInfo
 	ldrb r0, [r0, #5]
 	lsls r0, r0, #2
 	adds r0, r0, r5
@@ -560,7 +560,7 @@ UnpackChapterMapGraphics: @ 0x080195BC
 	cmp r0, #0
 	beq _080195FA
 	adds r0, r4, #0
-	bl GetROMChapterStruct
+	bl GetChapterInfo
 	ldrb r0, [r0, #5]
 	lsls r0, r0, #2
 	adds r0, r0, r5
@@ -569,7 +569,7 @@ UnpackChapterMapGraphics: @ 0x080195BC
 	bl Decompress
 _080195FA:
 	adds r0, r4, #0
-	bl GetROMChapterStruct
+	bl GetChapterInfo
 	ldrb r0, [r0, #6]
 	lsls r0, r0, #2
 	adds r0, r0, r5
@@ -594,7 +594,7 @@ UnpackChapterMapPalette: @ 0x08019624
 	ldrb r0, [r0, #0xe]
 	lsls r0, r0, #0x18
 	asrs r0, r0, #0x18
-	bl GetROMChapterStruct
+	bl GetChapterInfo
 	ldrb r0, [r0, #6]
 	lsls r0, r0, #2
 	adds r0, r0, r4

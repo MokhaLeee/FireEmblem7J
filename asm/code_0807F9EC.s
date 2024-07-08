@@ -287,8 +287,8 @@ _0807FC00:
 _0807FC02:
 	bx lr
 
-	thumb_func_start sub_807FC04
-sub_807FC04: @ 0x0807FC04
+	thumb_func_start GetLynModeDeathFlag
+GetLynModeDeathFlag: @ 0x0807FC04
 	push {lr}
 	movs r0, #0x9d
 	bl CheckFlag
@@ -297,8 +297,8 @@ sub_807FC04: @ 0x0807FC04
 	pop {r1}
 	bx r1
 
-	thumb_func_start sub_807FC14
-sub_807FC14: @ 0x0807FC14
+	thumb_func_start SetLynModeDeathFlag
+SetLynModeDeathFlag: @ 0x0807FC14
 	push {lr}
 	movs r0, #0x9d
 	bl SetFlag

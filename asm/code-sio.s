@@ -9047,11 +9047,11 @@ sub_8040CC8: @ 0x08040CC8
 	movs r0, #1
 	bl sub_8007F84
 	movs r0, #1
-	bl sub_8007F24
+	bl SetTalkFlag
 	movs r0, #2
-	bl sub_8007F24
+	bl SetTalkFlag
 	movs r0, #4
-	bl sub_8007F24
+	bl SetTalkFlag
 	movs r0, #2
 	bl sub_8007F68
 	movs r0, #1
@@ -18030,12 +18030,12 @@ sub_80456C8: @ 0x080456C8
 	movs r0, #0x42
 	strb r0, [r4, #0xe]
 	strh r5, [r4, #0x10]
-	bl GetROMChapterStruct
+	bl GetChapterInfo
 	ldrb r0, [r0, #0xc]
 	strb r0, [r4, #0xd]
 	movs r0, #0xe
 	ldrsb r0, [r4, r0]
-	bl GetROMChapterStruct
+	bl GetChapterInfo
 	ldrb r0, [r0, #0x12]
 	strb r0, [r4, #0x15]
 	movs r0, #0x42

@@ -932,7 +932,7 @@ sub_801DEFC: @ 0x0801DEFC
 	ldrb r0, [r0, #0xe]
 	lsls r0, r0, #0x18
 	asrs r0, r0, #0x18
-	bl GetROMChapterStruct
+	bl GetChapterInfo
 	ldrb r4, [r0, #0xc]
 _0801DF12:
 	bl RenderMapForFade
@@ -959,7 +959,7 @@ sub_801DF38: @ 0x0801DF38
 	ldrb r0, [r0, #0xe]
 	lsls r0, r0, #0x18
 	asrs r0, r0, #0x18
-	bl GetROMChapterStruct
+	bl GetChapterInfo
 	ldrb r1, [r0, #0xc]
 _0801DF4E:
 	ldr r0, _0801DF64 @ =gPlaySt
@@ -5111,7 +5111,7 @@ sub_801FFE0: @ 0x0801FFE0
 	bl ApplySystemObjectsGraphics
 	movs r0, #0xe
 	ldrsb r0, [r4, r0]
-	bl GetROMChapterStruct
+	bl GetChapterInfo
 	ldrb r0, [r0, #0x10]
 	lsls r0, r0, #4
 	bl GetCameraCenteredX
@@ -5125,7 +5125,7 @@ sub_801FFE0: @ 0x0801FFE0
 	strh r0, [r5, #0xc]
 	movs r0, #0xe
 	ldrsb r0, [r4, r0]
-	bl GetROMChapterStruct
+	bl GetChapterInfo
 	ldrb r0, [r0, #0x11]
 	lsls r0, r0, #4
 	bl GetCameraCenteredY
@@ -5190,7 +5190,7 @@ sub_80200CC: @ 0x080200CC
 	ldrb r0, [r0, #0xe]
 	lsls r0, r0, #0x18
 	asrs r0, r0, #0x18
-	bl GetROMChapterStruct
+	bl GetChapterInfo
 	ldrb r0, [r0, #0x12]
 	cmp r0, #5
 	bne _08020136
@@ -5218,7 +5218,7 @@ _08020156:
 	ldr r4, _080201E4 @ =gPlaySt
 	movs r0, #0xe
 	ldrsb r0, [r4, r0]
-	bl GetROMChapterStruct
+	bl GetChapterInfo
 	ldrb r0, [r0, #0x12]
 	cmp r0, #5
 	bne _0802016E
@@ -5226,14 +5226,14 @@ _08020156:
 _0802016E:
 	movs r0, #0xe
 	ldrsb r0, [r4, r0]
-	bl GetROMChapterStruct
+	bl GetChapterInfo
 	adds r0, #0x87
 	ldrb r6, [r0]
 	cmp r6, #0
 	beq _080201F0
 	movs r0, #0xe
 	ldrsb r0, [r4, r0]
-	bl GetROMChapterStruct
+	bl GetChapterInfo
 	movs r1, #0
 	ldrb r2, [r4, #0x1b]
 	cmp r2, #3
@@ -5248,7 +5248,7 @@ _08020190:
 	beq _080201BA
 	movs r0, #0xe
 	ldrsb r0, [r4, r0]
-	bl GetROMChapterStruct
+	bl GetChapterInfo
 	movs r1, #0
 	ldrb r4, [r4, #0x1b]
 	cmp r4, #3
@@ -5332,7 +5332,7 @@ _08020236:
 	ldr r4, _080202A0 @ =gPlaySt
 	movs r0, #0xe
 	ldrsb r0, [r4, r0]
-	bl GetROMChapterStruct
+	bl GetChapterInfo
 	movs r1, #0
 	ldrb r2, [r4, #0x1b]
 	cmp r2, #3
@@ -5347,7 +5347,7 @@ _08020258:
 	beq _08020282
 	movs r0, #0xe
 	ldrsb r0, [r4, r0]
-	bl GetROMChapterStruct
+	bl GetChapterInfo
 	movs r1, #0
 	ldrb r4, [r4, #0x1b]
 	cmp r4, #3
@@ -5574,7 +5574,7 @@ sub_80203D0: @ 0x080203D0
 	ldr r4, _08020470 @ =gPlaySt
 	movs r0, #0xe
 	ldrsb r0, [r4, r0]
-	bl GetROMChapterStruct
+	bl GetChapterInfo
 	movs r1, #0
 	ldrb r2, [r4, #0x1b]
 	cmp r2, #3
@@ -5589,7 +5589,7 @@ _0802043C:
 	beq _08020466
 	movs r0, #0xe
 	ldrsb r0, [r4, r0]
-	bl GetROMChapterStruct
+	bl GetChapterInfo
 	movs r1, #0
 	ldrb r4, [r4, #0x1b]
 	cmp r4, #3
@@ -5618,7 +5618,7 @@ sub_8020478: @ 0x08020478
 	ldr r5, _080204CC @ =gPlaySt
 	movs r0, #0xe
 	ldrsb r0, [r5, r0]
-	bl GetROMChapterStruct
+	bl GetChapterInfo
 	ldrb r0, [r0, #0x12]
 	cmp r0, #5
 	bne _08020494
@@ -5626,7 +5626,7 @@ sub_8020478: @ 0x08020478
 _08020494:
 	movs r0, #0xe
 	ldrsb r0, [r5, r0]
-	bl GetROMChapterStruct
+	bl GetChapterInfo
 	adds r0, #0x87
 	ldrb r0, [r0]
 	cmp r0, #0
@@ -5734,7 +5734,7 @@ sub_8020540: @ 0x08020540
 	ldrb r0, [r0, #0xe]
 	lsls r0, r0, #0x18
 	asrs r0, r0, #0x18
-	bl GetROMChapterStruct
+	bl GetChapterInfo
 	ldrb r0, [r0, #0x12]
 	cmp r0, #5
 	bne _0802056A

@@ -47,6 +47,7 @@
 #include "gbafe/eventscript.h"
 #include "gbafe/bmfx.h"
 #include "gbafe/face.h"
+#include "gbafe/talk.h"
 #include "gbafe/sprite-anim.h"
 #include "gbafe/msg.h"
 #include "gbafe/eventcall.h"

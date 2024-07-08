@@ -318,8 +318,8 @@ _08007EA0:
 	.align 2, 0
 _08007EA8: .4byte gUnk_08BFFB84
 
-	thumb_func_start sub_8007EAC
-sub_8007EAC: @ 0x08007EAC
+	thumb_func_start StartTalkMsg
+StartTalkMsg: @ 0x08007EAC
 	push {r4, r5, lr}
 	adds r4, r0, #0
 	adds r5, r1, #0
@@ -390,8 +390,8 @@ sub_8007F14: @ 0x08007F14
 	.align 2, 0
 _08007F20: .4byte gUnk_08BFFB68
 
-	thumb_func_start sub_8007F24
-sub_8007F24: @ 0x08007F24
+	thumb_func_start SetTalkFlag
+SetTalkFlag: @ 0x08007F24
 	ldr r1, _08007F34 @ =gUnk_08BFFB68
 	ldr r1, [r1]
 	adds r1, #0x80
@@ -1498,7 +1498,7 @@ _080088AC:
 	b _080088C4
 _080088BE:
 	movs r0, #0x10
-	bl sub_8007F24
+	bl SetTalkFlag
 _080088C4:
 	ldr r0, _080088CC @ =gUnk_08BFFB68
 	ldr r1, [r0]
@@ -4837,7 +4837,7 @@ sub_800A3A4: @ 0x0800A3A4
 StartTalkDebug: @ 0x0800A3AC
 	push {lr}
 	movs r0, #0x1c
-	bl sub_800B72C
+	bl DisplayBackground
 	pop {r0}
 	bx r0
 
@@ -4947,7 +4947,7 @@ _0800A474:
 	ldr r0, [r6, #0x2c]
 	cmp r5, r0
 	beq _0800A4C8
-	bl ResetDialogueScreen
+	bl ClearTalk
 	bl sub_8007EF8
 	movs r4, #1
 	rsbs r4, r4, #0
@@ -4962,13 +4962,13 @@ _0800A474:
 	ldr r2, [r6, #0x2c]
 	movs r0, #1
 	movs r1, #1
-	bl sub_8007EAC
+	bl StartTalkMsg
 	movs r0, #1
-	bl sub_8007F24
+	bl SetTalkFlag
 	movs r0, #2
-	bl sub_8007F24
+	bl SetTalkFlag
 	movs r0, #4
-	bl sub_8007F24
+	bl SetTalkFlag
 	adds r0, r4, #0
 	bl sub_8007F68
 	movs r0, #1
@@ -4983,7 +4983,7 @@ _0800A4C8:
 	ands r0, r1
 	cmp r0, #0
 	beq _0800A4E6
-	bl ResetDialogueScreen
+	bl ClearTalk
 	bl sub_8007EF8
 	movs r0, #0
 	str r0, [r6, #0x34]

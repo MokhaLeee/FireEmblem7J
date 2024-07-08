@@ -2990,7 +2990,7 @@ _08052928:
 	ldrb r0, [r0, #0xe]
 	lsls r0, r0, #0x18
 	asrs r0, r0, #0x18
-	bl GetROMChapterStruct
+	bl GetChapterInfo
 	ldrb r1, [r0, #0x13]
 	adds r0, r4, #0
 	bl sub_805313C
@@ -3004,7 +3004,7 @@ _0805296A:
 	ldrb r0, [r0, #0xe]
 	lsls r0, r0, #0x18
 	asrs r0, r0, #0x18
-	bl GetROMChapterStruct
+	bl GetChapterInfo
 	ldrb r1, [r0, #0x13]
 	adds r0, r4, #0
 	bl sub_805313C
@@ -3026,7 +3026,7 @@ _08052988:
 	ldrb r0, [r0, #0xe]
 	lsls r0, r0, #0x18
 	asrs r0, r0, #0x18
-	bl GetROMChapterStruct
+	bl GetChapterInfo
 	ldrb r1, [r0, #0x13]
 	movs r0, #0x30
 	bl sub_805313C
@@ -3041,7 +3041,7 @@ _080529B6:
 	ldrb r0, [r0, #0xe]
 	lsls r0, r0, #0x18
 	asrs r0, r0, #0x18
-	bl GetROMChapterStruct
+	bl GetChapterInfo
 	ldrb r1, [r0, #0x13]
 	adds r0, r4, #0
 	bl sub_805313C
@@ -3674,7 +3674,7 @@ _08052EB8:
 	ldrb r0, [r0, #0xe]
 	lsls r0, r0, #0x18
 	asrs r0, r0, #0x18
-	bl GetROMChapterStruct
+	bl GetChapterInfo
 	ldrb r1, [r0, #0x13]
 	adds r0, r4, #0
 	bl sub_8053218

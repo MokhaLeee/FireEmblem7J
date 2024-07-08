@@ -307,7 +307,7 @@ sub_8015918: @ 0x08015918
 	ldrb r0, [r0, #0xe]
 	lsls r0, r0, #0x18
 	asrs r0, r0, #0x18
-	bl GetROMChapterStruct
+	bl GetChapterInfo
 	ldrb r0, [r0, #0xd]
 	cmp r0, #0
 	bne _08015936
@@ -1710,7 +1710,7 @@ _0801637C:
 	bne _080163F4
 	movs r0, #0xe
 	ldrsb r0, [r5, r0]
-	bl GetROMChapterStruct
+	bl GetChapterInfo
 	lsls r1, r6, #1
 	adds r0, #0x16
 	adds r0, r0, r1
@@ -1719,7 +1719,7 @@ _0801637C:
 _08016392:
 	movs r0, #0xe
 	ldrsb r0, [r5, r0]
-	bl GetROMChapterStruct
+	bl GetChapterInfo
 	lsls r1, r4, #1
 	adds r0, #0x16
 	adds r0, r0, r1
@@ -1728,7 +1728,7 @@ _08016392:
 _080163A4:
 	movs r0, #0xe
 	ldrsb r0, [r5, r0]
-	bl GetROMChapterStruct
+	bl GetChapterInfo
 	adds r0, #0x86
 	ldrb r0, [r0]
 	lsls r0, r0, #0x18
@@ -1741,7 +1741,7 @@ _080163A4:
 	adds r4, r0, #0
 	movs r0, #0xe
 	ldrsb r0, [r5, r0]
-	bl GetROMChapterStruct
+	bl GetChapterInfo
 	adds r0, #0x86
 	ldrb r0, [r0]
 	lsls r0, r0, #0x18
@@ -1757,7 +1757,7 @@ _080163E0:
 	ldrb r0, [r0, #0xe]
 	lsls r0, r0, #0x18
 	asrs r0, r0, #0x18
-	bl GetROMChapterStruct
+	bl GetChapterInfo
 	lsls r1, r7, #1
 	adds r0, #0x16
 	adds r0, r0, r1

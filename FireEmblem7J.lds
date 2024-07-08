@@ -200,7 +200,9 @@ SECTIONS
 		src/face.o(.text);
 		asm/face.o(.text);
 		asm/talk.o(.text);
-		asm/event.o(.text);
+		asm/event-engine.o(.text);
+		src/eventscr.o(.text);
+		asm/eventscr.o(.text);
 		asm/event-08010630.o(.text);
 		src/eventscr_thunderfx.o(.text);
 		asm/eventscr_08011AFC.o(.text);

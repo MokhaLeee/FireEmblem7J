@@ -1003,7 +1003,7 @@ sub_8010E14: @ 0x08010E14
 	asrs r0, r0, #0x18
 	cmp r0, #0
 	beq _08010E7C
-	ldr r4, _08010E70 @ =gUnk_08C00798
+	ldr r4, _08010E70 @ =gBackgroundTable
 	ldr r1, [r5, #0x2c]
 	lsls r0, r1, #1
 	adds r0, r0, r1
@@ -1037,7 +1037,7 @@ sub_8010E14: @ 0x08010E14
 	bl ApplyPaletteExt
 	b _08010E8E
 	.align 2, 0
-_08010E70: .4byte gUnk_08C00798
+_08010E70: .4byte gBackgroundTable
 _08010E74: .4byte 0x06008000
 _08010E78: .4byte gBg3Tm
 _08010E7C:
@@ -1274,7 +1274,7 @@ sub_8011038: @ 0x08011038
 	asrs r0, r0, #0x18
 	cmp r0, #0
 	beq _0801109C
-	ldr r4, _08011090 @ =gUnk_08C00798
+	ldr r4, _08011090 @ =gBackgroundTable
 	ldr r1, [r5, #0x2c]
 	lsls r0, r1, #1
 	adds r0, r0, r1
@@ -1306,7 +1306,7 @@ sub_8011038: @ 0x08011038
 	bl ApplyPaletteExt
 	b _080110AE
 	.align 2, 0
-_08011090: .4byte gUnk_08C00798
+_08011090: .4byte gBackgroundTable
 _08011094: .4byte 0x06001000
 _08011098: .4byte gBg2Tm
 _0801109C:
@@ -1389,7 +1389,7 @@ sub_8011130: @ 0x08011130
 	push {r4, r5, lr}
 	adds r4, r0, #0
 	bl LockBmDisplay
-	bl sub_806D51C
+	bl LockMus
 	movs r0, #3
 	movs r1, #0
 	movs r2, #0
@@ -1764,7 +1764,7 @@ sub_801140C: @ 0x0801140C
 _0801143C:
 	bl sub_8025A0C
 	bl UnlockBmDisplay
-	bl sub_806D52C
+	bl ReleaseMus
 	movs r0, #8
 	bl EnableBgSync
 	pop {r4, r5}
@@ -1891,7 +1891,7 @@ sub_8011508: @ 0x08011508
 	strb r0, [r4]
 	bl sub_802E834
 	bl UnlockBmDisplay
-	bl sub_806D52C
+	bl ReleaseMus
 _08011544:
 	movs r0, #0
 	b _08011560

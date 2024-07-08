@@ -548,8 +548,8 @@ void EventDragonsDownfx_Loop(struct ProcEventDragonsDownfx * proc);
 // sub_807FBB0
 // sub_807FBCC
 // sub_807FBE8
-// sub_807FC04
-// sub_807FC14
+bool GetLynModeDeathFlag(void);
+void SetLynModeDeathFlag(void);
 // sub_807FC20
 // sub_807FC3C
 // sub_807FC58

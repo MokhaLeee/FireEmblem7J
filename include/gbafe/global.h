@@ -48,3 +48,5 @@
 #else
 #  define STRUCT_PAD(from, to)
 #endif
+
+#define ALIGN_PAD STRUCT_PAD

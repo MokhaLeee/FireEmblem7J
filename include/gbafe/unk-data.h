@@ -1378,7 +1378,16 @@ extern struct ProcCmd ProcScr_Event[];
 // ??? gEventCmdTable
 // ??? gUnk_08C0003C
 // ??? gUnk_08C0024C
-// ??? gUnk_08C00798
+
+struct BackgroundInfo
+{
+    u8 const * img;
+    u8 const * tsa;
+    u16 const * pal;
+};
+
+extern struct BackgroundInfo gBackgroundTable[];
+
 // ??? gUnk_08C00C18
 // ??? gUnk_08C00C28
 // ??? gUnk_08C00C48
