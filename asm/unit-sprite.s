@@ -1826,12 +1826,12 @@ PutChapterMarkedTileIconOam: @ 0x08025F28
 	ldr r4, _08025FC4 @ =gPlaySt
 	movs r0, #0xe
 	ldrsb r0, [r4, r0]
-	bl GetROMChapterStruct
+	bl GetChapterInfo
 	adds r0, #0x8f
 	ldrb r5, [r0]
 	movs r0, #0xe
 	ldrsb r0, [r4, r0]
-	bl GetROMChapterStruct
+	bl GetChapterInfo
 	adds r0, #0x90
 	ldrb r4, [r0]
 	bl GetGameTime
@@ -1923,7 +1923,7 @@ PutUnitSpriteIconsOam: @ 0x08025FE0
 	ldrb r0, [r0, #0xe]
 	lsls r0, r0, #0x18
 	asrs r0, r0, #0x18
-	bl GetROMChapterStruct
+	bl GetChapterInfo
 	adds r0, #0x8e
 	ldrb r0, [r0]
 	str r0, [sp, #8]

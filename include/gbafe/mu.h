@@ -111,10 +111,10 @@ struct MuProc * StartUiMu(struct Unit * unit, int x, int y);
 // sub_806D4BC
 // sub_806D4D4
 // sub_806D4EC
-// sub_806D51C
-// sub_806D52C
-// sub_806D53C
-// sub_806D5EC
+void LockMus(void);
+void ReleaseMus(void);
+void ApplyMoveScriptToCoordinates(int * x, int * y, u8 const * move_script);
+bool CanStartMu(void);
 // ResetMuAnims
 // sub_806D6A0
 // sub_806D744

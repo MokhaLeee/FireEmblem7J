@@ -229,12 +229,12 @@ _08082F56:
 	cmp r1, #3
 	beq _08082F66
 	adds r0, r2, #0
-	bl GetROMChapterStruct
+	bl GetChapterInfo
 	ldrb r0, [r0, #0xe]
 	b _08082F6E
 _08082F66:
 	adds r0, r2, #0
-	bl GetROMChapterStruct
+	bl GetChapterInfo
 	ldrb r0, [r0, #0xf]
 _08082F6E:
 	pop {r1}
@@ -7250,7 +7250,7 @@ sub_80867D8: @ 0x080867D8
 	ldr r6, _08086860 @ =gPlaySt
 	movs r0, #0xe
 	ldrsb r0, [r6, r0]
-	bl GetROMChapterStruct
+	bl GetChapterInfo
 	adds r0, #0x8a
 	ldrh r0, [r0]
 	bl DecodeMsg
@@ -7265,7 +7265,7 @@ sub_80867D8: @ 0x080867D8
 	bl Text_InsertDrawString
 	movs r0, #0xe
 	ldrsb r0, [r6, r0]
-	bl GetROMChapterStruct
+	bl GetChapterInfo
 	adds r0, #0x8c
 	ldrb r0, [r0]
 	cmp r0, #4
@@ -7327,7 +7327,7 @@ _080868CC:
 	ldrh r4, [r5, #0x10]
 	movs r0, #0xe
 	ldrsb r0, [r5, r0]
-	bl GetROMChapterStruct
+	bl GetChapterInfo
 	adds r0, #0x8d
 	ldrb r0, [r0]
 	subs r0, #1
@@ -7363,7 +7363,7 @@ _08086908:
 	bl Text_InsertDrawString
 	movs r0, #0xe
 	ldrsb r0, [r5, r0]
-	bl GetROMChapterStruct
+	bl GetChapterInfo
 	adds r0, #0x8d
 	ldrb r3, [r0]
 	subs r3, #1
@@ -9318,7 +9318,7 @@ _08087920:
 	ldrb r0, [r0, #0xe]
 	lsls r0, r0, #0x18
 	asrs r0, r0, #0x18
-	bl GetROMChapterStruct
+	bl GetChapterInfo
 	adds r0, #0x88
 	ldrh r0, [r0]
 	bl DecodeMsg
@@ -24197,7 +24197,7 @@ sub_808EDD0: @ 0x0808EDD0
 	ldrb r0, [r0, #0xe]
 	lsls r0, r0, #0x18
 	asrs r0, r0, #0x18
-	bl GetROMChapterStruct
+	bl GetChapterInfo
 	adds r0, #0x8a
 	ldrh r0, [r0]
 	bl DecodeMsg
@@ -25462,7 +25462,7 @@ _0808F870:
 	ldr r4, _0808F8CC @ =gPlaySt
 	movs r0, #0xe
 	ldrsb r0, [r4, r0]
-	bl GetROMChapterStruct
+	bl GetChapterInfo
 	movs r1, #0
 	ldrb r4, [r4, #0x1b]
 	cmp r4, #3
@@ -25607,13 +25607,13 @@ sub_808F970: @ 0x0808F970
 	bne _0808F9D8
 	movs r0, #0xe
 	ldrsb r0, [r4, r0]
-	bl GetROMChapterStruct
+	bl GetChapterInfo
 	ldrb r0, [r0, #0xd]
 	cmp r0, #0
 	beq _0808F9D8
 	movs r0, #0xe
 	ldrsb r0, [r4, r0]
-	bl GetROMChapterStruct
+	bl GetChapterInfo
 	movs r1, #0
 	ldrb r4, [r4, #0x1b]
 	cmp r4, #3
@@ -25769,7 +25769,7 @@ _0808FA86:
 	ldr r4, _0808FC34 @ =gPlaySt
 	movs r0, #0xe
 	ldrsb r0, [r4, r0]
-	bl GetROMChapterStruct
+	bl GetChapterInfo
 	movs r1, #0
 	ldrb r4, [r4, #0x1b]
 	cmp r4, #3
@@ -26249,7 +26249,7 @@ sub_808FED8: @ 0x0808FED8
 sub_808FEE0: @ 0x0808FEE0
 	push {lr}
 	bl EndCgText
-	bl ResetDialogueScreen
+	bl ClearTalk
 	bl EndEachSpriteAnimProc
 	bl sub_8091104
 	ldr r3, _0808FF50 @ =gDispIo
@@ -26437,7 +26437,7 @@ PrepPromoteDebugMaybe: @ 0x0809005C
 	push {r4, lr}
 	adds r4, r0, #0
 	bl EndCgText
-	bl ResetDialogueScreen
+	bl ClearTalk
 	bl EndEachSpriteAnimProc
 	bl sub_8091104
 	ldr r3, _080900DC @ =gDispIo
@@ -26803,7 +26803,7 @@ _08090330:
 	ldr r4, _08090384 @ =gPlaySt
 	movs r0, #0xe
 	ldrsb r0, [r4, r0]
-	bl GetROMChapterStruct
+	bl GetChapterInfo
 	movs r1, #0
 	ldrb r4, [r4, #0x1b]
 	cmp r4, #3
@@ -34467,7 +34467,7 @@ sub_809402C: @ 0x0809402C
 	ldrb r0, [r0, #0xe]
 	lsls r0, r0, #0x18
 	asrs r0, r0, #0x18
-	bl GetROMChapterStruct
+	bl GetChapterInfo
 	adds r0, #0x8a
 	ldrh r0, [r0]
 	bl DecodeMsg
@@ -45656,7 +45656,7 @@ sub_8099BF8: @ 0x08099BF8
 	ldrb r0, [r0, #0xe]
 	lsls r0, r0, #0x18
 	asrs r0, r0, #0x18
-	bl GetROMChapterStruct
+	bl GetChapterInfo
 	adds r0, #0x78
 	b _08099C20
 	.align 2, 0
@@ -45665,7 +45665,7 @@ _08099C14:
 	ldrb r0, [r0, #0xe]
 	lsls r0, r0, #0x18
 	asrs r0, r0, #0x18
-	bl GetROMChapterStruct
+	bl GetChapterInfo
 	adds r0, #0x7a
 _08099C20:
 	ldrh r0, [r0]
@@ -45680,7 +45680,7 @@ sub_8099C28: @ 0x08099C28
 	ldrb r0, [r0, #0xe]
 	lsls r0, r0, #0x18
 	asrs r0, r0, #0x18
-	bl GetROMChapterStruct
+	bl GetChapterInfo
 	adds r0, #0x76
 	ldrh r0, [r0]
 	pop {r1}
@@ -45695,7 +45695,7 @@ sub_8099C44: @ 0x08099C44
 	ldrb r0, [r0, #0xe]
 	lsls r0, r0, #0x18
 	asrs r0, r0, #0x18
-	bl GetROMChapterStruct
+	bl GetChapterInfo
 	adds r0, #0x7c
 	ldrh r0, [r0]
 	pop {r1}
@@ -45710,7 +45710,7 @@ sub_8099C60: @ 0x08099C60
 	ldrb r0, [r0, #0xe]
 	lsls r0, r0, #0x18
 	asrs r0, r0, #0x18
-	bl GetROMChapterStruct
+	bl GetChapterInfo
 	adds r0, #0x7f
 	ldrb r0, [r0]
 	pop {r1}
@@ -45725,7 +45725,7 @@ sub_8099C7C: @ 0x08099C7C
 	ldrb r0, [r0, #0xe]
 	lsls r0, r0, #0x18
 	asrs r0, r0, #0x18
-	bl GetROMChapterStruct
+	bl GetChapterInfo
 	adds r0, #0x7e
 	ldrb r0, [r0]
 	pop {r1}
@@ -48526,7 +48526,7 @@ sub_809B2FC: @ 0x0809B2FC
 	ldrb r0, [r0, #0xe]
 	lsls r0, r0, #0x18
 	asrs r0, r0, #0x18
-	bl GetROMChapterStruct
+	bl GetChapterInfo
 	adds r0, #0x8a
 	ldrh r0, [r0]
 	bl DecodeMsg
@@ -48667,7 +48667,7 @@ sub_809B380: @ 0x0809B380
 	ldr r4, _0809B4BC @ =gPlaySt
 	movs r0, #0xe
 	ldrsb r0, [r4, r0]
-	bl GetROMChapterStruct
+	bl GetChapterInfo
 	movs r1, #0
 	ldrb r2, [r4, #0x1b]
 	cmp r2, #3

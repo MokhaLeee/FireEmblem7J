@@ -268,7 +268,7 @@ _0802C0B4:
 	ldrb r0, [r0, #0xe]
 	lsls r0, r0, #0x18
 	asrs r0, r0, #0x18
-	bl GetROMChapterStruct
+	bl GetChapterInfo
 	adds r0, #0x2c
 	ldrb r3, [r0]
 	adds r0, r4, #0

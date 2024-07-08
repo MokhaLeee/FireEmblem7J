@@ -211,7 +211,7 @@ int IsFirstPlaythrough(void);
 // sub_803192C
 // sub_8031958
 // sub_8031994
-// GetROMChapterStruct
+// GetChapterInfo
 // GetChapterMapPointer
 // sub_8031AC0
 // GetChapterEventInfo

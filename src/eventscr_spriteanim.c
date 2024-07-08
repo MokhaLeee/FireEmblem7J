@@ -70,7 +70,7 @@ int EventE8_StartSpriteAnim(struct EventProc * proc)
     _y = (u16)EVT_CMD_ARGV(proc->script)[4];
     y = !(_y & 0x8000) ? _y : -1;
 
-    if (proc->evbits & EVENT_FLAG_SKIPPED)
+    if (proc->flags & EVENT_FLAG_SKIPPED)
     {
         ret = EVENT_CMDRET_CONTINUE;
     }

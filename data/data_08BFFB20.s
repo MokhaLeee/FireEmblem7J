@@ -148,8 +148,8 @@ gUnk_08C0003C:	@ 0x08C0003C
 gUnk_08C0024C:	@ 0x08C0024C
 	.incbin "FireEmblem7J.base.gba", 0xC0024C, 0xC00798 - 0xC0024C
 
-	.global gUnk_08C00798
-gUnk_08C00798:	@ 0x08C00798
+	.global gBackgroundTable
+gBackgroundTable:	@ 0x08C00798
 	.incbin "FireEmblem7J.base.gba", 0xC00798, 0xC00C18 - 0xC00798
 
 	.global gUnk_08C00C18

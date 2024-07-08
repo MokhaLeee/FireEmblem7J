@@ -13980,7 +13980,7 @@ sub_8075898: @ 0x08075898
 	sub sp, #4
 	mov r7, sp
 	str r0, [r7]
-	bl ResetDialogueScreen
+	bl ClearTalk
 	add sp, #4
 	pop {r7}
 	pop {r0}
@@ -23819,7 +23819,7 @@ _0807A17A:
 	ldrb r0, [r0, #0xe]
 	lsls r0, r0, #0x18
 	asrs r0, r0, #0x18
-	bl GetROMChapterStruct
+	bl GetChapterInfo
 	ldrb r0, [r0, #0x14]
 _0807A18E:
 	pop {r1}
@@ -26546,7 +26546,7 @@ sub_807B3AC: @ 0x0807B3AC
 	cmp r1, r0
 	bne _0807B3CA
 	bl LockBmDisplay
-	bl sub_806D51C
+	bl LockMus
 	movs r0, #0
 	strb r0, [r4]
 _0807B3CA:
@@ -26570,7 +26570,7 @@ sub_807B3D0: @ 0x0807B3D0
 	strb r0, [r2]
 	bl sub_802E834
 	bl UnlockBmDisplay
-	bl sub_806D52C
+	bl ReleaseMus
 	b _0807B3FA
 _0807B3F6:
 	bl sub_802E834
@@ -26595,7 +26595,7 @@ sub_807B400: @ 0x0807B400
 	strb r0, [r2]
 	bl sub_802E804
 	bl UnlockBmDisplay
-	bl sub_806D52C
+	bl ReleaseMus
 	b _0807B42A
 _0807B426:
 	bl sub_802E804

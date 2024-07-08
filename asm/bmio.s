@@ -93,7 +93,7 @@ BmVSync_AnimInit: @ 0x0802D7E4
 	ldr r5, _0802D820 @ =gPlaySt
 	movs r0, #0xe
 	ldrsb r0, [r5, r0]
-	bl GetROMChapterStruct
+	bl GetChapterInfo
 	ldr r6, _0802D824 @ =gChapterDataAssetTable
 	ldrb r0, [r0, #9]
 	lsls r0, r0, #2
@@ -103,7 +103,7 @@ BmVSync_AnimInit: @ 0x0802D7E4
 	str r0, [r4, #0x2c]
 	movs r0, #0xe
 	ldrsb r0, [r5, r0]
-	bl GetROMChapterStruct
+	bl GetChapterInfo
 	ldrb r0, [r0, #0xa]
 	lsls r0, r0, #2
 	adds r0, r0, r6
@@ -1532,7 +1532,7 @@ sub_802E32C: @ 0x0802E32C
 	ldrb r0, [r0, #0xe]
 	lsls r0, r0, #0x18
 	asrs r0, r0, #0x18
-	bl GetROMChapterStruct
+	bl GetChapterInfo
 	ldr r1, _0802E364 @ =gChapterDataAssetTable
 	ldrb r0, [r0, #0xa]
 	lsls r0, r0, #2

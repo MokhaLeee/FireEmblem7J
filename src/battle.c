@@ -1639,7 +1639,7 @@ void InitObstacleBattleUnit(void) {
 
     gBattleTarget.unit.pClassData = GetClassData(CLASS_OBSTACLE);
 
-    gBattleTarget.unit.maxHP = GetROMChapterStruct(gPlaySt.chapterIndex)->mapCrackedWallHeath;
+    gBattleTarget.unit.maxHP = GetChapterInfo(gPlaySt.chapterIndex)->wall_hp;
     gBattleTarget.unit.curHP = gActionSt.extra; // TODO: better
 
     gBattleTarget.unit.xPos  = gActionSt.x_target;

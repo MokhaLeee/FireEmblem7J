@@ -2522,8 +2522,8 @@ sub_806D4EC: @ 0x0806D4EC
 	bx r0
 	.align 2, 0
 
-	thumb_func_start sub_806D51C
-sub_806D51C: @ 0x0806D51C
+	thumb_func_start LockMus
+LockMus: @ 0x0806D51C
 	push {r7, lr}
 	mov r7, sp
 	movs r0, #4
@@ -2532,8 +2532,8 @@ sub_806D51C: @ 0x0806D51C
 	pop {r0}
 	bx r0
 
-	thumb_func_start sub_806D52C
-sub_806D52C: @ 0x0806D52C
+	thumb_func_start ReleaseMus
+ReleaseMus: @ 0x0806D52C
 	push {r7, lr}
 	mov r7, sp
 	movs r0, #4
@@ -2542,8 +2542,8 @@ sub_806D52C: @ 0x0806D52C
 	pop {r0}
 	bx r0
 
-	thumb_func_start sub_806D53C
-sub_806D53C: @ 0x0806D53C
+	thumb_func_start ApplyMoveScriptToCoordinates
+ApplyMoveScriptToCoordinates: @ 0x0806D53C
 	push {r7, lr}
 	sub sp, #0xc
 	mov r7, sp
@@ -2634,8 +2634,8 @@ _0806D5E2:
 	bx r0
 	.align 2, 0
 
-	thumb_func_start sub_806D5EC
-sub_806D5EC: @ 0x0806D5EC
+	thumb_func_start CanStartMu
+CanStartMu: @ 0x0806D5EC
 	push {r7, lr}
 	sub sp, #4
 	mov r7, sp

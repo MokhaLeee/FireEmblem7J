@@ -246,7 +246,7 @@ _0801B764:
 	bl sub_8004E4C
 	movs r0, #0
 	ldrsb r0, [r5, r0]
-	bl GetROMChapterStruct
+	bl GetChapterInfo
 	ldr r1, [r0]
 	adds r0, r4, #0
 	bl sub_8004E4C
@@ -901,7 +901,7 @@ sub_801BCB0: @ 0x0801BCB0
 	push {r4, lr}
 	ldr r4, _0801BCD0 @ =gBg0Tm + 0xce
 	movs r0, #0
-	bl GetROMChapterStruct
+	bl GetChapterInfo
 	ldr r1, [r0]
 	adds r0, r4, #0
 	bl sub_8004E4C
@@ -1140,7 +1140,7 @@ _0801BE88:
 	bl sub_8004E4C
 	movs r0, #0
 	ldrsb r0, [r5, r0]
-	bl GetROMChapterStruct
+	bl GetChapterInfo
 	ldr r1, [r0]
 	adds r0, r4, #0
 	bl sub_8004E4C
@@ -1473,7 +1473,7 @@ sub_801C108: @ 0x0801C108
 	bne _0801C148
 	movs r0, #0xe
 	ldrsb r0, [r1, r0]
-	bl GetROMChapterStruct
+	bl GetChapterInfo
 	ldrb r0, [r0, #0xc]
 	bl sub_801DEFC
 	b _0801C14E

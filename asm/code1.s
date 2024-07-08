@@ -212,12 +212,12 @@ sub_802E4E8: @ 0x0802E4E8
 	strh r5, [r4, #0x10]
 	movs r0, #0xe
 	ldrsb r0, [r4, r0]
-	bl GetROMChapterStruct
+	bl GetChapterInfo
 	ldrb r0, [r0, #0xc]
 	strb r0, [r4, #0xd]
 	movs r0, #0xe
 	ldrsb r0, [r4, r0]
-	bl GetROMChapterStruct
+	bl GetChapterInfo
 	ldrb r0, [r0, #0x12]
 	strb r0, [r4, #0x15]
 	bl InitBmBgLayers
@@ -282,7 +282,7 @@ sub_802E5B4: @ 0x0802E5B4
 	ldr r4, _0802E640 @ =gPlaySt
 	movs r0, #0xe
 	ldrsb r0, [r4, r0]
-	bl GetROMChapterStruct
+	bl GetChapterInfo
 	ldrb r0, [r0, #0x12]
 	movs r5, #0
 	strb r0, [r4, #0x15]
@@ -1181,7 +1181,7 @@ sub_802ED30: @ 0x0802ED30
 	ldr r4, _0802ED54 @ =gPlaySt
 	movs r0, #0xe
 	ldrsb r0, [r4, r0]
-	bl GetROMChapterStruct
+	bl GetChapterInfo
 	movs r1, #0
 	ldrb r4, [r4, #0x1b]
 	cmp r4, #3
@@ -4764,7 +4764,7 @@ sub_80308E8: @ 0x080308E8
 	ldr r5, _08030944 @ =gPlaySt
 	movs r0, #0xe
 	ldrsb r0, [r5, r0]
-	bl GetROMChapterStruct
+	bl GetChapterInfo
 	movs r1, #0
 	ldrb r2, [r5, #0x1b]
 	cmp r2, #3
@@ -4777,7 +4777,7 @@ _08030912:
 	strb r0, [r4, #0x10]
 	movs r0, #0xe
 	ldrsb r0, [r5, r0]
-	bl GetROMChapterStruct
+	bl GetChapterInfo
 	movs r1, #0
 	ldrb r5, [r5, #0x1b]
 	cmp r5, #3
@@ -4867,7 +4867,7 @@ sub_80309BC: @ 0x080309BC
 	ldr r4, _08030A00 @ =gPlaySt
 	movs r0, #0xe
 	ldrsb r0, [r4, r0]
-	bl GetROMChapterStruct
+	bl GetChapterInfo
 	movs r1, #0
 	ldrb r2, [r4, #0x1b]
 	cmp r2, #3
@@ -4879,7 +4879,7 @@ _080309D4:
 	ldrb r5, [r0]
 	movs r0, #0xe
 	ldrsb r0, [r4, r0]
-	bl GetROMChapterStruct
+	bl GetChapterInfo
 	movs r1, #0
 	ldrb r4, [r4, #0x1b]
 	cmp r4, #3
@@ -5338,7 +5338,7 @@ sub_8030D88: @ 0x08030D88
 	ldr r5, _08030DA4 @ =gPlaySt
 	movs r0, #0xe
 	ldrsb r0, [r5, r0]
-	bl GetROMChapterStruct
+	bl GetChapterInfo
 	ldrb r0, [r0, #0xd]
 	cmp r0, #0
 	bne _08030DA8
@@ -5373,7 +5373,7 @@ _08030DC6:
 	strb r0, [r4, #4]
 	movs r0, #0xe
 	ldrsb r0, [r5, r0]
-	bl GetROMChapterStruct
+	bl GetChapterInfo
 	ldrb r0, [r0, #0xc]
 	strb r0, [r5, #0xd]
 	bl RefreshEntityMaps
@@ -6925,8 +6925,8 @@ _08031A50: .4byte gBmMapSize
 _08031A54: .4byte gBmMapMovement
 _08031A58: .4byte gBmMapUnit
 
-	thumb_func_start GetROMChapterStruct
-GetROMChapterStruct: @ 0x08031A5C
+	thumb_func_start GetChapterInfo
+GetChapterInfo: @ 0x08031A5C
 	adds r1, r0, #0
 	cmp r1, #0x30
 	beq _08031A70
@@ -6968,7 +6968,7 @@ _08031AA0: .4byte ReadSramFast
 _08031AA4: .4byte gBuf
 _08031AA8:
 	ldr r4, _08031ABC @ =gChapterDataAssetTable
-	bl GetROMChapterStruct
+	bl GetChapterInfo
 	ldrb r0, [r0, #8]
 	lsls r0, r0, #2
 	adds r0, r0, r4
@@ -6993,7 +6993,7 @@ sub_8031AC0: @ 0x08031AC0
 _08031AD0: .4byte gExtraMapInfo
 _08031AD4:
 	ldr r4, _08031AE8 @ =gChapterDataAssetTable
-	bl GetROMChapterStruct
+	bl GetChapterInfo
 	ldrb r0, [r0, #0xb]
 	lsls r0, r0, #2
 	adds r0, r0, r4
@@ -7018,7 +7018,7 @@ GetChapterEventInfo: @ 0x08031AEC
 _08031AFC: .4byte gExtraMapInfo
 _08031B00:
 	ldr r4, _08031B18 @ =gChapterDataAssetTable
-	bl GetROMChapterStruct
+	bl GetChapterInfo
 	adds r0, #0x74
 	ldrb r0, [r0]
 	lsls r0, r0, #2
@@ -7043,7 +7043,7 @@ sub_8031B1C: @ 0x08031B1C
 	.align 2, 0
 _08031B2C: .4byte gExtraMapInfo
 _08031B30:
-	bl GetROMChapterStruct
+	bl GetChapterInfo
 	adds r0, #0x70
 	bl DecodeMsg
 _08031B3A:

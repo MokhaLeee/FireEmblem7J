@@ -13,6 +13,8 @@ enum event_evbit_idx {
     EVENT_FLAG_DISABLETEXTSKIP = 1 << 4,
     EVENT_FLAG_ENDMAPMAIN = 1 << 5,
     EVENT_FLAG_NOAUTOCLEAR = 1 << 6,
+    EVENT_FLAG_NOSKIPTALK = 1 << 7,
+    EVENT_FLAG_SLOWTALK = 1 << 8,
 };
 
 struct EventProc {
@@ -20,10 +22,28 @@ struct EventProc {
 
     /* 2C */ EventScr const * script_start;
     /* 30 */ EventScr const * script;
+    /* 38 */ EventScr const * script_return;
 
-    STRUCT_PAD(0x34, 0x5E);
+    STRUCT_PAD(0x38, 0x40);
 
-    /* 5E */ u16 evbits;
+    /* 40 */ void (* idle_func)(struct EventProc * proc);
+    /* 44 */ struct UnitDefinition const * unit_info;
+    /* 48 */ int talk_auto_msg;
+    /* 4C */ s8 background;
+    /* 4D */ bool unk_4D;
+    /* 4E */ u8 unk_4E;
+    /* 4F */ u8 map_change_param;
+    /* 50 */ u16 sleep_duration;
+
+    STRUCT_PAD(0x52, 0x55);
+
+    /* 55 */ u8 pid_param; // TODO: what is this exactly?
+    /* 56 */ u16 ignore_count;
+
+    STRUCT_PAD(0x58, 0x5C);
+
+    /* 5C */ u16 iid_param;
+    /* 5E */ u16 flags;
 };
 
 enum event_func_ret_idx {
@@ -34,6 +54,15 @@ enum event_func_ret_idx {
 };
 
 #define EVT_CMD_ARGV(scr) ((const s16 *)(scr) + 1)
+
+#define SCR_LO16(script_word) (((script_word) & 0x0000FFFF) >> 0)
+#define SCR_HI16(script_word) (((script_word) & 0xFFFF0000) >> 16)
+
+#define SCR_LO16_SIGN(script_word) (SCR_LO16(script_word) & 0x8000 ? -1 : SCR_LO16(script_word))
+#define SCR_HI16_SIGN(script_word) (SCR_HI16(script_word) & 0x8000 ? -1 : SCR_HI16(script_word))
+
+#define LO8(half) (((half) & 0x00FF) >> 0)
+#define HI8(half) (((half) & 0xFF00) >> 8)
 
 // sub_800A508
 // sub_800A520
@@ -66,8 +95,8 @@ enum event_func_ret_idx {
 // sub_800AD50
 // sub_800AD60
 // sub_800AD78
-// sub_800AD84
-// sub_800AD98
+void Event_FadeOutOfBackgroundTalk(struct EventProc * proc);
+void Event_FadeOutOfSkip(struct EventProc * proc);
 // sub_800ADAC
 // sub_800ADC0
 // sub_800ADDC
@@ -91,20 +120,23 @@ enum event_func_ret_idx {
 // sub_800B244
 // sub_800B2CC
 // sub_800B3DC
-// sub_800B404
-// sub_800B434
-// sub_800B464
-// sub_800B494
-// sub_800B4F4
-// sub_800B578
-// sub_800B5AC
-// sub_800B5F0
-// sub_800B63C
-// sub_800B678
-// sub_800B70C
-// sub_800B72C
-// sub_800B7BC
-// sub_800B848
+// EvtCmd_Sleep
+// EvtCmd_SleepFast
+// EvtCmd_SleepText
+// EvtCmd_Background
+// EvtCmd_BackgroundLynModeDeath
+// EvtCmd_BackgroundRandom
+// EvtCmd_BackgroundMore
+// EvtCmd_ClearTalk
+// EvtCmd_ClearSkip
+// EvtCmd_ClearSkipFadeToPrep
+// EvtCmd_FadeFromOpening
+
+#define NUM_BACKGROUNDS 0x5B
+
+void DisplayBackground(int background);
+void DisplayBackgroundNoClear(int background);
+// EventStartTalk
 // sub_800B8CC
 // sub_800B900
 // sub_800B93C
@@ -283,8 +315,8 @@ enum event_func_ret_idx {
 // sub_800EB3C
 // Event00_
 // sub_800EBB0
-// sub_800EBBC
-// ResetDialogueScreen
+void EventClearTalkDisplayed(struct EventProc * proc);
+void ClearTalk(void);
 // nullsub_27
 // nullsub_28
 // IsEventRunning
