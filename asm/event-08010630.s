@@ -2491,8 +2491,8 @@ _080119E6:
 	bx r1
 	.align 2, 0
 
-	thumb_func_start sub_80119EC
-sub_80119EC: @ 0x080119EC
+	thumb_func_start EventE1
+EventE1: @ 0x080119EC
 	push {lr}
 	adds r0, #0x5e
 	movs r1, #4

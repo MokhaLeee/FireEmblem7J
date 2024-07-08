@@ -492,12 +492,12 @@ Img_EventSpriteAnim_NinianEffect:	@ 0x081C2D84
 ApConf_EventSpriteAnim_NinianEffect:	@ 0x081C3680
 	.incbin "FireEmblem7J.base.gba", 0x1C3680, 0x1C3850 - 0x1C3680
 
-	.global Img_EventDragonsDownfx1
-Img_EventDragonsDownfx1:	@ 0x081C3850
+	.global Img_EventDragonsSpritefx1
+Img_EventDragonsSpritefx1:	@ 0x081C3850
 	.incbin "FireEmblem7J.base.gba", 0x1C3850, 0x1C564C - 0x1C3850
 
-	.global Img_EventDragonsDownfx2
-Img_EventDragonsDownfx2:	@ 0x081C564C
+	.global Img_EventDragonsSpritefx2
+Img_EventDragonsSpritefx2:	@ 0x081C564C
 	.incbin "FireEmblem7J.base.gba", 0x1C564C, 0x1C6BAC - 0x1C564C
 
 	.global gUnk_081C6BAC

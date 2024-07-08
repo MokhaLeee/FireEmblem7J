@@ -3562,8 +3562,8 @@ _0800D2AA:
 	pop {r1}
 	bx r1
 
-	thumb_func_start sub_800D2B0
-sub_800D2B0: @ 0x0800D2B0
+	thumb_func_start Event3D_ASMC
+Event3D_ASMC: @ 0x0800D2B0
 	push {r4, r5, lr}
 	adds r4, r0, #0
 	ldr r2, [r4, #0x30]

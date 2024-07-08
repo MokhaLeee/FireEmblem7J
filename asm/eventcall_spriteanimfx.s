@@ -1,8 +1,8 @@
 	.include "macro.inc"
 	.syntax unified
 
-	thumb_func_start EventDragonsDownfx_Loop
-EventDragonsDownfx_Loop: @ 0x0807F258
+	thumb_func_start EventDragonsSpritefx_Loop
+EventDragonsSpritefx_Loop: @ 0x0807F258
 	push {r4, r5, r6, r7, lr}
 	mov r7, sl
 	mov r6, sb
@@ -221,23 +221,23 @@ _0807F3F0: .4byte gBmSt
 _0807F3F4: .4byte 0x000001FF
 _0807F3F8: .4byte gPlaySt
 
-	thumb_func_start StartEventDragonsDownfx
-StartEventDragonsDownfx: @ 0x0807F3FC
+	thumb_func_start StartEventDragonsSpriteDeamon
+StartEventDragonsSpriteDeamon: @ 0x0807F3FC
 	push {r4, lr}
 	adds r4, r0, #0
-	ldr r0, _0807F428 @ =ProcScr_EventDragonsDownfx
+	ldr r0, _0807F428 @ =ProcScr_EventDragonsSpritefx
 	bl Proc_Start
 	adds r0, #0x6a
 	strb r4, [r0]
 	cmp r4, #0
 	bne _0807F416
-	ldr r0, _0807F42C @ =Img_EventDragonsDownfx1
+	ldr r0, _0807F42C @ =Img_EventDragonsSpritefx1
 	ldr r1, _0807F430 @ =0x06013000
 	bl Decompress
 _0807F416:
 	cmp r4, #1
 	bne _0807F422
-	ldr r0, _0807F434 @ =Img_EventDragonsDownfx2
+	ldr r0, _0807F434 @ =Img_EventDragonsSpritefx2
 	ldr r1, _0807F430 @ =0x06013000
 	bl Decompress
 _0807F422:
@@ -245,23 +245,23 @@ _0807F422:
 	pop {r0}
 	bx r0
 	.align 2, 0
-_0807F428: .4byte ProcScr_EventDragonsDownfx
-_0807F42C: .4byte Img_EventDragonsDownfx1
+_0807F428: .4byte ProcScr_EventDragonsSpritefx
+_0807F42C: .4byte Img_EventDragonsSpritefx1
 _0807F430: .4byte 0x06013000
-_0807F434: .4byte Img_EventDragonsDownfx2
+_0807F434: .4byte Img_EventDragonsSpritefx2
 
-	thumb_func_start EndEventDragonsDownfx
-EndEventDragonsDownfx: @ 0x0807F438
+	thumb_func_start EndEventDragonsSpritefx
+EndEventDragonsSpritefx: @ 0x0807F438
 	push {lr}
-	ldr r0, _0807F444 @ =ProcScr_EventDragonsDownfx
+	ldr r0, _0807F444 @ =ProcScr_EventDragonsSpritefx
 	bl Proc_EndEach
 	pop {r0}
 	bx r0
 	.align 2, 0
-_0807F444: .4byte ProcScr_EventDragonsDownfx
+_0807F444: .4byte ProcScr_EventDragonsSpritefx
 
-	thumb_func_start sub_807F448
-sub_807F448: @ 0x0807F448
+	thumb_func_start PutFireDragonSpritefx
+PutFireDragonSpritefx: @ 0x0807F448
 	push {r4, r5, r6, r7, lr}
 	mov r7, sb
 	mov r6, r8
@@ -277,7 +277,7 @@ sub_807F448: @ 0x0807F448
 	ldr r0, [r0]
 	str r0, [sp, #8]
 	str r1, [sp, #0xc]
-	ldr r0, _0807F4DC @ =ProcScr_EventDragonsDownfx
+	ldr r0, _0807F4DC @ =ProcScr_EventDragonsSpritefx
 	bl Proc_Find
 	adds r4, r0, #0
 	cmp r4, #0
@@ -334,7 +334,7 @@ sub_807F448: @ 0x0807F448
 	b _0807F542
 	.align 2, 0
 _0807F4D8: .4byte gUnk_08403434
-_0807F4DC: .4byte ProcScr_EventDragonsDownfx
+_0807F4DC: .4byte ProcScr_EventDragonsSpritefx
 _0807F4E0: .4byte 0x0000A980
 _0807F4E4:
 	ldr r3, [sp, #0x30]
@@ -397,7 +397,7 @@ _0807F542:
 sub_807F550: @ 0x0807F550
 	push {r4, r5, r6, lr}
 	adds r6, r0, #0
-	ldr r0, _0807F588 @ =ProcScr_EventDragonsDownfx
+	ldr r0, _0807F588 @ =ProcScr_EventDragonsSpritefx
 	bl Proc_Find
 	adds r4, r0, #0
 	cmp r4, #0
@@ -422,14 +422,14 @@ _0807F580:
 	pop {r0}
 	bx r0
 	.align 2, 0
-_0807F588: .4byte ProcScr_EventDragonsDownfx
+_0807F588: .4byte ProcScr_EventDragonsSpritefx
 _0807F58C: .4byte 0x0000FFFF
 
 	thumb_func_start sub_807F590
 sub_807F590: @ 0x0807F590
 	push {r4, lr}
 	adds r4, r0, #0
-	ldr r0, _0807F5C4 @ =ProcScr_EventDragonsDownfx
+	ldr r0, _0807F5C4 @ =ProcScr_EventDragonsSpritefx
 	bl Proc_Find
 	adds r2, r0, #0
 	cmp r2, #0
@@ -453,15 +453,15 @@ _0807F5BC:
 	pop {r0}
 	bx r0
 	.align 2, 0
-_0807F5C4: .4byte ProcScr_EventDragonsDownfx
+_0807F5C4: .4byte ProcScr_EventDragonsSpritefx
 
-	thumb_func_start sub_807F5C8
-sub_807F5C8: @ 0x0807F5C8
+	thumb_func_start EventCall_PutFireDragonSprite
+EventCall_PutFireDragonSprite: @ 0x0807F5C8
 	push {r4, lr}
 	sub sp, #8
 	adds r1, r0, #0
 	movs r0, #0
-	bl StartEventDragonsDownfx
+	bl StartEventDragonsSpriteDeamon
 	movs r4, #0
 	str r4, [sp]
 	str r4, [sp, #4]
@@ -469,21 +469,21 @@ sub_807F5C8: @ 0x0807F5C8
 	movs r1, #0
 	movs r2, #0xc8
 	movs r3, #0x48
-	bl sub_807F448
+	bl PutFireDragonSpritefx
 	str r4, [sp]
 	str r4, [sp, #4]
 	movs r0, #1
 	movs r1, #1
 	movs r2, #0x98
 	movs r3, #0x58
-	bl sub_807F448
+	bl PutFireDragonSpritefx
 	str r4, [sp]
 	str r4, [sp, #4]
 	movs r0, #2
 	movs r1, #0
 	movs r2, #0xf8
 	movs r3, #0x58
-	bl sub_807F448
+	bl PutFireDragonSpritefx
 	add sp, #8
 	pop {r4}
 	pop {r0}
@@ -501,7 +501,7 @@ sub_807F610: @ 0x0807F610
 	movs r1, #1
 	movs r2, #0xa8
 	movs r3, #0x80
-	bl sub_807F448
+	bl PutFireDragonSpritefx
 	add sp, #8
 	pop {r0}
 	bx r0
@@ -516,19 +516,19 @@ sub_807F62C: @ 0x0807F62C
 	movs r1, #0
 	movs r2, #0xe8
 	movs r3, #0x80
-	bl sub_807F448
+	bl PutFireDragonSpritefx
 	add sp, #8
 	pop {r0}
 	bx r0
 	.align 2, 0
 
-	thumb_func_start sub_807F648
-sub_807F648: @ 0x0807F648
+	thumb_func_start ReputFireDragonSprite
+ReputFireDragonSprite: @ 0x0807F648
 	push {r4, lr}
 	sub sp, #8
 	adds r1, r0, #0
 	movs r0, #0
-	bl StartEventDragonsDownfx
+	bl StartEventDragonsSpriteDeamon
 	movs r4, #0
 	str r4, [sp]
 	str r4, [sp, #4]
@@ -536,29 +536,29 @@ sub_807F648: @ 0x0807F648
 	movs r1, #0
 	movs r2, #0xc8
 	movs r3, #0x48
-	bl sub_807F448
+	bl PutFireDragonSpritefx
 	str r4, [sp]
 	str r4, [sp, #4]
 	movs r0, #1
 	movs r1, #1
 	movs r2, #0xa8
 	movs r3, #0x80
-	bl sub_807F448
+	bl PutFireDragonSpritefx
 	str r4, [sp]
 	str r4, [sp, #4]
 	movs r0, #2
 	movs r1, #0
 	movs r2, #0xe8
 	movs r3, #0x80
-	bl sub_807F448
+	bl PutFireDragonSpritefx
 	add sp, #8
 	pop {r4}
 	pop {r0}
 	bx r0
 	.align 2, 0
 
-	thumb_func_start sub_807F690
-sub_807F690: @ 0x0807F690
+	thumb_func_start FireDragonSpriteRetreated
+FireDragonSpriteRetreated: @ 0x0807F690
 	push {lr}
 	sub sp, #8
 	movs r0, #3
@@ -569,7 +569,7 @@ sub_807F690: @ 0x0807F690
 	movs r1, #1
 	movs r2, #0xa8
 	movs r3, #0x68
-	bl sub_807F448
+	bl PutFireDragonSpritefx
 	add sp, #8
 	pop {r0}
 	bx r0
@@ -587,7 +587,7 @@ sub_807F6B0: @ 0x0807F6B0
 	movs r1, #0
 	movs r2, #0xe8
 	movs r3, #0x68
-	bl sub_807F448
+	bl PutFireDragonSpritefx
 	add sp, #8
 	pop {r0}
 	bx r0
@@ -599,7 +599,7 @@ sub_807F6D0: @ 0x0807F6D0
 	sub sp, #8
 	adds r1, r0, #0
 	movs r0, #1
-	bl StartEventDragonsDownfx
+	bl StartEventDragonsSpriteDeamon
 	movs r4, #0
 	str r4, [sp]
 	str r4, [sp, #4]
@@ -607,21 +607,21 @@ sub_807F6D0: @ 0x0807F6D0
 	movs r1, #0
 	movs r2, #0xc8
 	movs r3, #0x48
-	bl sub_807F448
+	bl PutFireDragonSpritefx
 	str r4, [sp]
 	str r4, [sp, #4]
 	movs r0, #1
 	movs r1, #1
 	movs r2, #0xa8
 	movs r3, #0x70
-	bl sub_807F448
+	bl PutFireDragonSpritefx
 	str r4, [sp]
 	str r4, [sp, #4]
 	movs r0, #2
 	movs r1, #0
 	movs r2, #0xe8
 	movs r3, #0x70
-	bl sub_807F448
+	bl PutFireDragonSpritefx
 	add sp, #8
 	pop {r4}
 	pop {r0}
@@ -640,7 +640,7 @@ sub_807F718: @ 0x0807F718
 	movs r1, #1
 	movs r2, #0
 	movs r3, #0
-	bl sub_807F448
+	bl PutFireDragonSpritefx
 	add sp, #8
 	pop {r0}
 	bx r0
@@ -658,7 +658,7 @@ sub_807F738: @ 0x0807F738
 	movs r1, #0
 	movs r2, #0
 	movs r3, #0
-	bl sub_807F448
+	bl PutFireDragonSpritefx
 	add sp, #8
 	pop {r0}
 	bx r0
@@ -715,8 +715,8 @@ _0807F7A4:
 	.align 2, 0
 _0807F7B8: .4byte gPlaySt
 
-	thumb_func_start sub_807F7BC
-sub_807F7BC: @ 0x0807F7BC
+	thumb_func_start StartEventDragonsSpriteMovefx
+StartEventDragonsSpriteMovefx: @ 0x0807F7BC
 	push {r4, lr}
 	sub sp, #8
 	movs r4, #0
@@ -726,14 +726,14 @@ sub_807F7BC: @ 0x0807F7BC
 	movs r1, #1
 	movs r2, #0
 	movs r3, #0
-	bl sub_807F448
+	bl PutFireDragonSpritefx
 	str r4, [sp]
 	str r4, [sp, #4]
 	movs r0, #2
 	movs r1, #0
 	movs r2, #0
 	movs r3, #0
-	bl sub_807F448
+	bl PutFireDragonSpritefx
 	add sp, #8
 	pop {r4}
 	pop {r0}
@@ -886,8 +886,8 @@ sub_807F908: @ 0x0807F908
 	.align 2, 0
 _0807F914: .4byte gUnk_08D87F48
 
-	thumb_func_start EventCall_Ch31x_NinianPrayEffect1
-EventCall_Ch31x_NinianPrayEffect1: @ 0x0807F918
+	thumb_func_start EventCall_FireDragonScreamingInPain
+EventCall_FireDragonScreamingInPain: @ 0x0807F918
 	push {r4, r5, lr}
 	sub sp, #8
 	movs r5, #1
@@ -898,28 +898,28 @@ EventCall_Ch31x_NinianPrayEffect1: @ 0x0807F918
 	movs r1, #0
 	movs r2, #0
 	movs r3, #0
-	bl sub_807F448
+	bl PutFireDragonSpritefx
 	str r5, [sp]
 	str r4, [sp, #4]
 	movs r0, #1
 	movs r1, #1
 	movs r2, #0
 	movs r3, #0
-	bl sub_807F448
+	bl PutFireDragonSpritefx
 	str r5, [sp]
 	str r4, [sp, #4]
 	movs r0, #2
 	movs r1, #0
 	movs r2, #0
 	movs r3, #0
-	bl sub_807F448
+	bl PutFireDragonSpritefx
 	add sp, #8
 	pop {r4, r5}
 	pop {r0}
 	bx r0
 
-	thumb_func_start sub_807F958
-sub_807F958: @ 0x0807F958
+	thumb_func_start EventCall_FireDragonFellWeakly
+EventCall_FireDragonFellWeakly: @ 0x0807F958
 	push {r4, r5, r6, lr}
 	sub sp, #8
 	adds r6, r0, #0
@@ -931,21 +931,21 @@ sub_807F958: @ 0x0807F958
 	movs r1, #0
 	movs r2, #0
 	movs r3, #0
-	bl sub_807F448
+	bl PutFireDragonSpritefx
 	str r5, [sp]
 	str r4, [sp, #4]
 	movs r0, #1
 	movs r1, #1
 	movs r2, #0
 	movs r3, #0
-	bl sub_807F448
+	bl PutFireDragonSpritefx
 	str r5, [sp]
 	str r4, [sp, #4]
 	movs r0, #2
 	movs r1, #0
 	movs r2, #0
 	movs r3, #0
-	bl sub_807F448
+	bl PutFireDragonSpritefx
 	adds r0, r6, #0
 	bl StartEventQuakefx
 	add sp, #8
@@ -953,8 +953,8 @@ sub_807F958: @ 0x0807F958
 	pop {r0}
 	bx r0
 
-	thumb_func_start sub_807F9A0
-sub_807F9A0: @ 0x0807F9A0
+	thumb_func_start EventCall_FireDragonFadeOut
+EventCall_FireDragonFadeOut: @ 0x0807F9A0
 	push {r4, r5, lr}
 	sub sp, #8
 	movs r5, #3
@@ -965,21 +965,21 @@ sub_807F9A0: @ 0x0807F9A0
 	movs r1, #1
 	movs r2, #0
 	movs r3, #0
-	bl sub_807F448
+	bl PutFireDragonSpritefx
 	str r5, [sp]
 	str r4, [sp, #4]
 	movs r0, #2
 	movs r1, #0
 	movs r2, #0
 	movs r3, #0
-	bl sub_807F448
+	bl PutFireDragonSpritefx
 	add sp, #8
 	pop {r4, r5}
 	pop {r0}
 	bx r0
 
-	thumb_func_start sub_807F9D0
-sub_807F9D0: @ 0x0807F9D0
+	thumb_func_start EventCall_FinalFireDragonReStandUp
+EventCall_FinalFireDragonReStandUp: @ 0x0807F9D0
 	push {lr}
 	sub sp, #8
 	movs r0, #4
@@ -989,7 +989,7 @@ sub_807F9D0: @ 0x0807F9D0
 	movs r1, #0
 	movs r2, #0
 	movs r3, #0
-	bl sub_807F448
+	bl PutFireDragonSpritefx
 	add sp, #8
 	pop {r0}
 	bx r0

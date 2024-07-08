@@ -197,7 +197,7 @@ void DisplayBackgroundNoClear(int background);
 // sub_800D268
 // sub_800D278
 // sub_800D28C
-// sub_800D2B0
+// Event3D_ASMC
 // sub_800D2E4
 // sub_800D31C
 // sub_800D34C
@@ -467,7 +467,7 @@ bool EventThunderfxExists(void);
 // sub_8011DF4
 // sub_8011E48
 // sub_8011E8C
-// sub_8011EC0
+// EventE4_NinianDisplay
 // sub_8011F10
 // sub_8011F20
 // sub_8011FD4
@@ -476,7 +476,7 @@ bool EventThunderfxExists(void);
 // sub_80120D8
 // sub_80120E0
 // sub_8012150
-// EventE5
+// EventE5_NinianResurrection
 // sub_80121F0
 // sub_80121FC
 

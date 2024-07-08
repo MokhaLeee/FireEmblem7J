@@ -146,8 +146,8 @@ extern u8 Tsa_QuintessenceFx[];
 // ??? gUnk_081C2358
 // ??? gUnk_081C2974
 // ??? gUnk_081C2D44
-// ??? Img_EventDragonsDownfx1
-// ??? Img_EventDragonsDownfx2
+// ??? Img_EventDragonsSpritefx1
+// ??? Img_EventDragonsSpritefx2
 // ??? gUnk_081C6BAC
 // ??? gUnk_081C6C34
 // ??? gUnk_081C6E34
@@ -1804,7 +1804,7 @@ extern struct ProcCmd ProcScr_QuintessenceFxBg2Scroll[];
 extern struct ProcCmd ProcScr_QuintessenceFx[];
 // ??? gUnk_08D6FAC4
 // ??? gUnk_08D6FAE4
-// ??? gUnk_08D6FB1C
+// ??? ProcScr_IceCrystalfx
 // ??? gUnk_08D6FB5C
 // ??? gUnk_08D6FC14
 // ??? gUnk_08D6FC44
@@ -1813,7 +1813,7 @@ extern struct ProcCmd ProcScr_QuintessenceFx[];
 // ??? gUnk_08D837E8
 // ??? gUnk_08D837F8
 // ??? gUnk_08D87684
-extern struct ProcCmd ProcScr_EventDragonsDownfx[];
+extern struct ProcCmd ProcScr_EventDragonsSpritefx[];
 // ??? gUnk_08D87F48
 // ??? gUnk_08D87F68
 // ??? gUnk_08D8977C

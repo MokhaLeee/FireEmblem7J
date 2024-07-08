@@ -347,7 +347,7 @@ void EndEventQuakefx(struct ProcEventQuakeHandler * proc);
 // sub_807D228
 // sub_807D248
 // sub_807D284
-// sub_807D314
+// StartLoadIceCrystal
 // sub_807D328
 // sub_807D370
 // sub_807D3E0
@@ -489,7 +489,7 @@ void EndEventQuakefx(struct ProcEventQuakeHandler * proc);
 // sub_807F1B8
 // sub_807F1DC
 
-struct ProcEventDragonsDownfx {
+struct ProcEventDragonsSpritefx {
     PROC_HEADER;
 
     /* 2C */ ProcPtr approc[3];
@@ -505,35 +505,35 @@ struct ProcEventDragonsDownfx {
     /* 6B */ u8 unk6B;
 };
 
-void EventDragonsDownfx_Init(struct ProcEventDragonsDownfx * proc);
-void EventDragonsDownfx_End(struct ProcEventDragonsDownfx * proc);
-void EventDragonsDownfx_Loop(struct ProcEventDragonsDownfx * proc);
-// StartEventDragonsDownfx
-// EndEventDragonsDownfx
-// sub_807F448
+void EventDragonsSpritefx_Init(struct ProcEventDragonsSpritefx * proc);
+void EventDragonsSpritefx_End(struct ProcEventDragonsSpritefx * proc);
+void EventDragonsSpritefx_Loop(struct ProcEventDragonsSpritefx * proc);
+// StartEventDragonsSpriteDeamon
+// EndEventDragonsSpritefx
+// PutFireDragonSpritefx
 // sub_807F550
 // sub_807F590
-// sub_807F5C8
+// EventCall_PutFireDragonSprite
 // sub_807F610
 // sub_807F62C
-// sub_807F648
-// sub_807F690
+// ReputFireDragonSprite
+// FireDragonSpriteRetreated
 // sub_807F6B0
 // sub_807F6D0
 // sub_807F718
 // sub_807F738
 // sub_807F758
 // sub_807F78C
-// sub_807F7BC
+// StartEventDragonsSpriteMovefx
 // sub_807F7EC
 // sub_807F89C
 // sub_807F8DC
 // sub_807F8F4
 // sub_807F908
-// EventCall_Ch31x_NinianPrayEffect1
-// sub_807F958
-// sub_807F9A0
-// sub_807F9D0
+// EventCall_FireDragonScreamingInPain
+// EventCall_FireDragonFellWeakly
+// EventCall_FireDragonFadeOut
+// EventCall_FinalFireDragonReStandUp
 // sub_807F9EC
 // sub_807FA64
 // sub_807FAE8

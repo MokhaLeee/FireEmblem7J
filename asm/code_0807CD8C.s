@@ -706,16 +706,17 @@ _0807D306:
 _0807D30C: .4byte gDispIo
 _0807D310: .4byte gBg2Tm
 
-	thumb_func_start sub_807D314
-sub_807D314: @ 0x0807D314
+/* Ninian pray effect on weather */
+	thumb_func_start StartLoadIceCrystal
+StartLoadIceCrystal: @ 0x0807D314
 	push {lr}
 	adds r1, r0, #0
-	ldr r0, _0807D324 @ =gUnk_08D6FB1C
+	ldr r0, _0807D324 @ =ProcScr_IceCrystalfx
 	bl Proc_StartBlocking
 	pop {r0}
 	bx r0
 	.align 2, 0
-_0807D324: .4byte gUnk_08D6FB1C
+_0807D324: .4byte ProcScr_IceCrystalfx
 
 	thumb_func_start sub_807D328
 sub_807D328: @ 0x0807D328

@@ -449,8 +449,8 @@ sub_8011E8C: @ 0x08011E8C
 	.align 2, 0
 _08011EBC: .4byte gDispIo
 
-	thumb_func_start sub_8011EC0
-sub_8011EC0: @ 0x08011EC0
+	thumb_func_start EventE4_NinianDisplay
+EventE4_NinianDisplay: @ 0x08011EC0
 	push {r4, r5, lr}
 	sub sp, #0x10
 	adds r1, r0, #0
@@ -850,8 +850,8 @@ _08012174:
 	.align 2, 0
 _080121A0: .4byte gUnk_08C01654
 
-	thumb_func_start EventE5
-EventE5: @ 0x080121A4
+	thumb_func_start EventE5_NinianResurrection
+EventE5_NinianResurrection: @ 0x080121A4
 	push {r4, r5, r6, r7, lr}
 	sub sp, #8
 	adds r5, r0, #0
