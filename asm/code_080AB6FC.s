@@ -31658,7 +31658,7 @@ sub_80BB210: @ 0x080BB210
 	bl sub_80BAF34
 	adds r0, r4, #0
 	bl sub_80BB000
-	ldr r0, _080BB290 @ =gUnk_08DB9A84
+	ldr r0, _080BB290 @ =BmBgfxConf_08DB9A84
 	movs r5, #0
 	str r5, [sp]
 	movs r1, #0xa0
@@ -31706,7 +31706,7 @@ _080BB27C:
 	bx r0
 	.align 2, 0
 _080BB28C: .4byte sub_80BAED4
-_080BB290: .4byte gUnk_08DB9A84
+_080BB290: .4byte BmBgfxConf_08DB9A84
 _080BB294: .4byte gDispIo
 _080BB298: .4byte gPlaySt
 
@@ -35063,7 +35063,7 @@ sub_80BCD34: @ 0x080BCD34
 	movs r0, #2
 	orrs r2, r0
 	strb r2, [r7, #0x18]
-	ldr r0, _080BCE70 @ =gUnk_08DBA048
+	ldr r0, _080BCE70 @ =BmBgfxConf_08DBA048
 	movs r5, #0
 	str r5, [sp]
 	movs r1, #0x80
@@ -35149,7 +35149,7 @@ _080BCE60: .4byte gBg0Tm
 _080BCE64: .4byte gBg1Tm
 _080BCE68: .4byte gBg2Tm
 _080BCE6C: .4byte gBg3Tm
-_080BCE70: .4byte gUnk_08DBA048
+_080BCE70: .4byte BmBgfxConf_08DBA048
 _080BCE74: .4byte sub_80BCD00
 _080BCE78: .4byte 0x03001620
 _080BCE7C: .4byte gUnk_086BF37C

@@ -521,7 +521,7 @@ extern struct BmBgxConf CONST_DATA  BmBgfxConf_IceCrystal[];
 // ??? gUnk_08FD8008
 extern struct BmBgxConf CONST_DATA BmBgfxConf_EventThunder[];
 extern struct ProcCmd CONST_DATA ProcScr_EventThunderfx[];
-// ??? gUnk_08C013F0
+// ??? BmBgfxConf_08C013F0
 // ??? gUnk_08C015DC
 // ??? gUnk_08C0162C
 // ??? gUnk_08C01654

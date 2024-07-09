@@ -381,5 +381,7 @@ SECTIONS
 		. = ALIGN(4); data/savedrawfx.o(.data)
 		. = ALIGN(4); src/sysutil.o(.data)
 		. = ALIGN(4); data/data_08DAE4C4.o(.data)
+		. = ALIGN(4); src/bmbgfx_data.o(.data)
+		. = ALIGN(4); data/data_08DBAD14.o(.data)
 	}
 }

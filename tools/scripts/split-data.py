@@ -11,12 +11,18 @@ elf = "FireEmblem7J.elf"
 def generate_unsymboled_const_data(pstart, pend):
     list = {}
 
-    files = os.listdir('asm/')
-    for fpath, dirs, files in os.walk('asm/'):
+    # list_dir = "asm/"
+    # identifier = ".4byte 0x08"
+
+    list_dir = "test/"
+    identifier = ".word 0x08"
+
+    files = os.listdir(list_dir)
+    for fpath, dirs, files in os.walk(list_dir):
         for file in files:
             with open(os.path.join(fpath, file), 'r') as f:
                 for line in f.readlines():
-                    if ".4byte 0x08" in line:
+                    if identifier in line:
                         ptr = eval(line[18:18+10])
 
                         if ptr < pstart or ptr > pend:

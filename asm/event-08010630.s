@@ -2293,7 +2293,7 @@ sub_80117DC: @ 0x080117DC
 	movs r0, #7
 	bl EnableBgSync
 	str r4, [r5, #0x30]
-	ldr r0, _080118A4 @ =gUnk_08DBA258
+	ldr r0, _080118A4 @ =BmBgfxConf_08DBA258
 	movs r1, #0x80
 	lsls r1, r1, #5
 	str r1, [sp]
@@ -2317,7 +2317,7 @@ _08011894: .4byte gDispIo
 _08011898: .4byte 0x0000FFE0
 _0801189C: .4byte 0x0000E0FF
 _080118A0: .4byte HBlank_Scanline_8078098
-_080118A4: .4byte gUnk_08DBA258
+_080118A4: .4byte BmBgfxConf_08DBA258
 
 	thumb_func_start sub_80118A8
 sub_80118A8: @ 0x080118A8

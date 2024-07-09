@@ -365,7 +365,7 @@ sub_8011DF4: @ 0x08011DF4
 	subs r3, r3, r0
 	subs r3, #0x28
 	ands r3, r1
-	ldr r0, _08011E44 @ =gUnk_08C013F0
+	ldr r0, _08011E44 @ =BmBgfxConf_08C013F0
 	movs r4, #0
 	str r4, [sp]
 	movs r1, #0x80
@@ -384,7 +384,7 @@ sub_8011DF4: @ 0x08011DF4
 	bx r0
 	.align 2, 0
 _08011E40: .4byte gBmSt
-_08011E44: .4byte gUnk_08C013F0
+_08011E44: .4byte BmBgfxConf_08C013F0
 
 	thumb_func_start sub_8011E48
 sub_8011E48: @ 0x08011E48

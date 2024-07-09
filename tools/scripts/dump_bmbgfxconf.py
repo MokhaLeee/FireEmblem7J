@@ -45,7 +45,7 @@ def dump_one_part(rom_data, off):
         if size == 0:
             size_s = "     0"
         else:
-            size_s = f"{hex(size)}"
+            size_s = f"0x{size:04X}"
 
         duration = rom_data[off + 10]
 
@@ -59,9 +59,9 @@ def dump_one_part(rom_data, off):
             case 3:
                 print("    { " + f"BMFX_CONFT_PAL,        {data}, {size_s}, {duration}" + " },")
             case 4:
-                print("    { " + f"BMFX_CONFT_LOOP_START, {data}, {size_s}, {duration}" + " },")
+                print("    { BMFX_CONFT_LOOP_START },")
             case 5:
-                print("    { " + f"BMFX_CONFT_LOOP,       {data}, {size_s}, {duration}" + " },")
+                print("    { " + f"BMFX_CONFT_LOOP, 0, 0, {duration}" + " },")
             case 6:
                 print("    { " + f"BMFX_CONFT_BLOCKING,   {data}, {size_s}, {duration}" + " },")
             case 7:
@@ -69,8 +69,8 @@ def dump_one_part(rom_data, off):
             case 8:
                 print("    { " + f"BMFX_CONFT_CALL_IDLE,  {data}, {size_s}, {duration}" + " },")
             case 9:
-                print("    { " + f"BMFX_CONFT_BREAK,      {data}, {size_s}, {duration}" + " },")
-
+                print("    { BMFX_CONFT_BREAK },")
+                break
             case 10:
                 print("    { BMFX_CONFT_END },")
                 break
@@ -105,6 +105,7 @@ def main(args):
             if name == None:
                 name = f"gUnknown_08{off:06X}"
 
+            print(f"// 0x08{off:06X}")
             print(f"struct BmBgxConf CONST_DATA {name}[] = " + "{")
             off = dump_one_part(rom_data, off)
             print("};")

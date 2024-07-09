@@ -314,7 +314,111 @@ gUnk_08199250:	@ 0x08199250
 
 	.global gUnk_08199290
 gUnk_08199290:	@ 0x08199290
-	.incbin "FireEmblem7J.base.gba", 0x199290, 0x1A7634 - 0x199290
+	.incbin "FireEmblem7J.base.gba", 0x199290, 0x199A94 - 0x199290
+
+	.global Pal_IceBmBgfx_08199A94
+Pal_IceBmBgfx_08199A94:	@ 0x08199A94
+	.incbin "FireEmblem7J.base.gba", 0x199A94, 0x199AB4 - 0x199A94
+
+	.global Img_IceBmBgfx_08199AB4
+Img_IceBmBgfx_08199AB4:	@ 0x08199AB4
+	.incbin "FireEmblem7J.base.gba", 0x199AB4, 0x19A6A4 - 0x199AB4
+
+	.global Img_IceBmBgfx_0819A6A4
+Img_IceBmBgfx_0819A6A4:	@ 0x0819A6A4
+	.incbin "FireEmblem7J.base.gba", 0x19A6A4, 0x19B11C - 0x19A6A4
+
+	.global Tsa_IceBmBgfx_0819B11C
+Tsa_IceBmBgfx_0819B11C:	@ 0x0819B11C
+	.incbin "FireEmblem7J.base.gba", 0x19B11C, 0x19B620 - 0x19B11C
+
+	.global Tsa_IceBmBgfx_0819B620
+Tsa_IceBmBgfx_0819B620:	@ 0x0819B620
+	.incbin "FireEmblem7J.base.gba", 0x19B620, 0x19BB24 - 0x19B620
+
+	.global Tsa_IceBmBgfx_0819BB24
+Tsa_IceBmBgfx_0819BB24:	@ 0x0819BB24
+	.incbin "FireEmblem7J.base.gba", 0x19BB24, 0x19C028 - 0x19BB24
+
+	.global Tsa_IceBmBgfx_0819C028
+Tsa_IceBmBgfx_0819C028:	@ 0x0819C028
+	.incbin "FireEmblem7J.base.gba", 0x19C028, 0x19C52C - 0x19C028
+
+	.global Tsa_IceBmBgfx_0819C52C
+Tsa_IceBmBgfx_0819C52C:	@ 0x0819C52C
+	.incbin "FireEmblem7J.base.gba", 0x19C52C, 0x19CA30 - 0x19C52C
+
+	.global Tsa_IceBmBgfx_0819CA30
+Tsa_IceBmBgfx_0819CA30:	@ 0x0819CA30
+	.incbin "FireEmblem7J.base.gba", 0x19CA30, 0x19CF34 - 0x19CA30
+
+	.global Tsa_IceBmBgfx_0819CF34
+Tsa_IceBmBgfx_0819CF34:	@ 0x0819CF34
+	.incbin "FireEmblem7J.base.gba", 0x19CF34, 0x19D438 - 0x19CF34
+
+	.global Img_IceBmBgfx_0819D438
+Img_IceBmBgfx_0819D438:	@ 0x0819D438
+	.incbin "FireEmblem7J.base.gba", 0x19D438, 0x19E1EC - 0x19D438
+
+	.global Img_IceBmBgfx_0819E1EC
+Img_IceBmBgfx_0819E1EC:	@ 0x0819E1EC
+	.incbin "FireEmblem7J.base.gba", 0x19E1EC, 0x19EEF4 - 0x19E1EC
+
+	.global Tsa_IceBmBgfx_0819EEF4
+Tsa_IceBmBgfx_0819EEF4:	@ 0x0819EEF4
+	.incbin "FireEmblem7J.base.gba", 0x19EEF4, 0x19F3F8 - 0x19EEF4
+
+	.global Tsa_IceBmBgfx_0819F3F8
+Tsa_IceBmBgfx_0819F3F8:	@ 0x0819F3F8
+	.incbin "FireEmblem7J.base.gba", 0x19F3F8, 0x19F8FC - 0x19F3F8
+
+	.global Img_IceBmBgfx_0819F8FC
+Img_IceBmBgfx_0819F8FC:	@ 0x0819F8FC
+	.incbin "FireEmblem7J.base.gba", 0x19F8FC, 0x1A07D4 - 0x19F8FC
+
+	.global Img_IceBmBgfx_081A07D4
+Img_IceBmBgfx_081A07D4:	@ 0x081A07D4
+	.incbin "FireEmblem7J.base.gba", 0x1A07D4, 0x1A0AF8 - 0x1A07D4
+
+	.global Tsa_IceBmBgfx_081A0AF8
+Tsa_IceBmBgfx_081A0AF8:	@ 0x081A0AF8
+	.incbin "FireEmblem7J.base.gba", 0x1A0AF8, 0x1A0FFC - 0x1A0AF8
+
+	.global Img_IceBmBgfx_081A0FFC
+Img_IceBmBgfx_081A0FFC:	@ 0x081A0FFC
+	.incbin "FireEmblem7J.base.gba", 0x1A0FFC, 0x1A1F0C - 0x1A0FFC
+
+	.global Img_IceBmBgfx_081A1F0C
+Img_IceBmBgfx_081A1F0C:	@ 0x081A1F0C
+	.incbin "FireEmblem7J.base.gba", 0x1A1F0C, 0x1A2374 - 0x1A1F0C
+
+	.global Tsa_IceBmBgfx_081A2374
+Tsa_IceBmBgfx_081A2374:	@ 0x081A2374
+	.incbin "FireEmblem7J.base.gba", 0x1A2374, 0x1A2878 - 0x1A2374
+
+	.global Img_IceBmBgfx_081A2878
+Img_IceBmBgfx_081A2878:	@ 0x081A2878
+	.incbin "FireEmblem7J.base.gba", 0x1A2878, 0x1A376C - 0x1A2878
+
+	.global Img_IceBmBgfx_081A376C
+Img_IceBmBgfx_081A376C:	@ 0x081A376C
+	.incbin "FireEmblem7J.base.gba", 0x1A376C, 0x1A3D2C - 0x1A376C
+
+	.global Tsa_IceBmBgfx_081A3D2C
+Tsa_IceBmBgfx_081A3D2C:	@ 0x081A3D2C
+	.incbin "FireEmblem7J.base.gba", 0x1A3D2C, 0x1A4230 - 0x1A3D2C
+
+	.global Img_IceBmBgfx_081A4230
+Img_IceBmBgfx_081A4230:	@ 0x081A4230
+	.incbin "FireEmblem7J.base.gba", 0x1A4230, 0x1A5144 - 0x1A4230
+
+	.global Img_IceBmBgfx_081A5144
+Img_IceBmBgfx_081A5144:	@ 0x081A5144
+	.incbin "FireEmblem7J.base.gba", 0x1A5144, 0x1A5708 - 0x1A5144
+
+	.global Tsa_IceBmBgfx_081A5708
+Tsa_IceBmBgfx_081A5708:	@ 0x081A5708
+	.incbin "FireEmblem7J.base.gba", 0x1A5708, 0x1A7634 - 0x1A5708
 
 	.global Img_081A7634
 Img_081A7634:	@ 0x081A7634
@@ -406,7 +510,151 @@ gUnk_081ACA20:	@ 0x081ACA20
 
 	.global gUnk_081ACA40
 gUnk_081ACA40:	@ 0x081ACA40
-	.incbin "FireEmblem7J.base.gba", 0x1ACA40, 0x1BD14C - 0x1ACA40
+	.incbin "FireEmblem7J.base.gba", 0x1ACA40, 0x1B3DF4 - 0x1ACA40
+
+	.global FireRingBgfx_081B3DF4
+FireRingBgfx_081B3DF4:	@ 0x081B3DF4
+	.incbin "FireEmblem7J.base.gba", 0x1B3DF4, 0x1B3E14 - 0x1B3DF4
+
+	.global FireRingBgfx_081B3E14
+FireRingBgfx_081B3E14:	@ 0x081B3E14
+	.incbin "FireEmblem7J.base.gba", 0x1B3E14, 0x1B43E4 - 0x1B3E14
+
+	.global FireRingBgfx_081B43E4
+FireRingBgfx_081B43E4:	@ 0x081B43E4
+	.incbin "FireEmblem7J.base.gba", 0x1B43E4, 0x1B4730 - 0x1B43E4
+
+	.global FireRingBgfx_081B4730
+FireRingBgfx_081B4730:	@ 0x081B4730
+	.incbin "FireEmblem7J.base.gba", 0x1B4730, 0x1B498C - 0x1B4730
+
+	.global FireRingBgfx_081B498C
+FireRingBgfx_081B498C:	@ 0x081B498C
+	.incbin "FireEmblem7J.base.gba", 0x1B498C, 0x1B4BE8 - 0x1B498C
+
+	.global FireRingBgfx_081B4BE8
+FireRingBgfx_081B4BE8:	@ 0x081B4BE8
+	.incbin "FireEmblem7J.base.gba", 0x1B4BE8, 0x1B4E44 - 0x1B4BE8
+
+	.global FireRingBgfx_081B4E44
+FireRingBgfx_081B4E44:	@ 0x081B4E44
+	.incbin "FireEmblem7J.base.gba", 0x1B4E44, 0x1B5438 - 0x1B4E44
+
+	.global FireRingBgfx_081B5438
+FireRingBgfx_081B5438:	@ 0x081B5438
+	.incbin "FireEmblem7J.base.gba", 0x1B5438, 0x1B55F4 - 0x1B5438
+
+	.global FireRingBgfx_081B55F4
+FireRingBgfx_081B55F4:	@ 0x081B55F4
+	.incbin "FireEmblem7J.base.gba", 0x1B55F4, 0x1B5850 - 0x1B55F4
+
+	.global FireRingBgfx_081B5850
+FireRingBgfx_081B5850:	@ 0x081B5850
+	.incbin "FireEmblem7J.base.gba", 0x1B5850, 0x1B5E5C - 0x1B5850
+
+	.global FireRingBgfx_081B5E5C
+FireRingBgfx_081B5E5C:	@ 0x081B5E5C
+	.incbin "FireEmblem7J.base.gba", 0x1B5E5C, 0x1B61F4 - 0x1B5E5C
+
+	.global FireRingBgfx_081B61F4
+FireRingBgfx_081B61F4:	@ 0x081B61F4
+	.incbin "FireEmblem7J.base.gba", 0x1B61F4, 0x1B6450 - 0x1B61F4
+
+	.global FireRingBgfx_081B6450
+FireRingBgfx_081B6450:	@ 0x081B6450
+	.incbin "FireEmblem7J.base.gba", 0x1B6450, 0x1B6A28 - 0x1B6450
+
+	.global FireRingBgfx_081B6A28
+FireRingBgfx_081B6A28:	@ 0x081B6A28
+	.incbin "FireEmblem7J.base.gba", 0x1B6A28, 0x1B6E08 - 0x1B6A28
+
+	.global FireRingBgfx_081B6E08
+FireRingBgfx_081B6E08:	@ 0x081B6E08
+	.incbin "FireEmblem7J.base.gba", 0x1B6E08, 0x1B7064 - 0x1B6E08
+
+	.global FireRingBgfx_081B7064
+FireRingBgfx_081B7064:	@ 0x081B7064
+	.incbin "FireEmblem7J.base.gba", 0x1B7064, 0x1B756C - 0x1B7064
+
+	.global FireRingBgfx_081B756C
+FireRingBgfx_081B756C:	@ 0x081B756C
+	.incbin "FireEmblem7J.base.gba", 0x1B756C, 0x1B7B88 - 0x1B756C
+
+	.global FireRingBgfx_081B7B88
+FireRingBgfx_081B7B88:	@ 0x081B7B88
+	.incbin "FireEmblem7J.base.gba", 0x1B7B88, 0x1B7DE4 - 0x1B7B88
+
+	.global FireRingBgfx_081B7DE4
+FireRingBgfx_081B7DE4:	@ 0x081B7DE4
+	.incbin "FireEmblem7J.base.gba", 0x1B7DE4, 0x1B8418 - 0x1B7DE4
+
+	.global FireRingBgfx_081B8418
+FireRingBgfx_081B8418:	@ 0x081B8418
+	.incbin "FireEmblem7J.base.gba", 0x1B8418, 0x1B8A84 - 0x1B8418
+
+	.global FireRingBgfx_081B8A84
+FireRingBgfx_081B8A84:	@ 0x081B8A84
+	.incbin "FireEmblem7J.base.gba", 0x1B8A84, 0x1B8CE0 - 0x1B8A84
+
+	.global FireRingBgfx_081B8CE0
+FireRingBgfx_081B8CE0:	@ 0x081B8CE0
+	.incbin "FireEmblem7J.base.gba", 0x1B8CE0, 0x1B9300 - 0x1B8CE0
+
+	.global FireRingBgfx_081B9300
+FireRingBgfx_081B9300:	@ 0x081B9300
+	.incbin "FireEmblem7J.base.gba", 0x1B9300, 0x1B9878 - 0x1B9300
+
+	.global FireRingBgfx_081B9878
+FireRingBgfx_081B9878:	@ 0x081B9878
+	.incbin "FireEmblem7J.base.gba", 0x1B9878, 0x1B9AD4 - 0x1B9878
+
+	.global FireRingBgfx_081B9AD4
+FireRingBgfx_081B9AD4:	@ 0x081B9AD4
+	.incbin "FireEmblem7J.base.gba", 0x1B9AD4, 0x1BA110 - 0x1B9AD4
+
+	.global FireRingBgfx_081BA110
+FireRingBgfx_081BA110:	@ 0x081BA110
+	.incbin "FireEmblem7J.base.gba", 0x1BA110, 0x1BA730 - 0x1BA110
+
+	.global FireRingBgfx_081BA730
+FireRingBgfx_081BA730:	@ 0x081BA730
+	.incbin "FireEmblem7J.base.gba", 0x1BA730, 0x1BA98C - 0x1BA730
+
+	.global FireRingBgfx_081BA98C
+FireRingBgfx_081BA98C:	@ 0x081BA98C
+	.incbin "FireEmblem7J.base.gba", 0x1BA98C, 0x1BAF4C - 0x1BA98C
+
+	.global FireRingBgfx_081BAF4C
+FireRingBgfx_081BAF4C:	@ 0x081BAF4C
+	.incbin "FireEmblem7J.base.gba", 0x1BAF4C, 0x1BB494 - 0x1BAF4C
+
+	.global FireRingBgfx_081BB494
+FireRingBgfx_081BB494:	@ 0x081BB494
+	.incbin "FireEmblem7J.base.gba", 0x1BB494, 0x1BB6F0 - 0x1BB494
+
+	.global FireRingBgfx_081BB6F0
+FireRingBgfx_081BB6F0:	@ 0x081BB6F0
+	.incbin "FireEmblem7J.base.gba", 0x1BB6F0, 0x1BBD10 - 0x1BB6F0
+
+	.global FireRingBgfx_081BBD10
+FireRingBgfx_081BBD10:	@ 0x081BBD10
+	.incbin "FireEmblem7J.base.gba", 0x1BBD10, 0x1BC1F0 - 0x1BBD10
+
+	.global FireRingBgfx_081BC1F0
+FireRingBgfx_081BC1F0:	@ 0x081BC1F0
+	.incbin "FireEmblem7J.base.gba", 0x1BC1F0, 0x1BC44C - 0x1BC1F0
+
+	.global FireRingBgfx_081BC44C
+FireRingBgfx_081BC44C:	@ 0x081BC44C
+	.incbin "FireEmblem7J.base.gba", 0x1BC44C, 0x1BC99C - 0x1BC44C
+
+	.global FireRingBgfx_081BC99C
+FireRingBgfx_081BC99C:	@ 0x081BC99C
+	.incbin "FireEmblem7J.base.gba", 0x1BC99C, 0x1BCEF0 - 0x1BC99C
+
+	.global FireRingBgfx_081BCEF0
+FireRingBgfx_081BCEF0:	@ 0x081BCEF0
+	.incbin "FireEmblem7J.base.gba", 0x1BCEF0, 0x1BD14C - 0x1BCEF0
 
 	.global gUnk_081BD14C
 gUnk_081BD14C:	@ 0x081BD14C

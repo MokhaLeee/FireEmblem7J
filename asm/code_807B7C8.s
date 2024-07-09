@@ -702,7 +702,7 @@ sub_807BDFC: @ 0x0807BDFC
 	movs r0, #7
 	bl EnableBgSync
 	strh r5, [r6]
-	ldr r0, _0807BF00 @ =gUnk_08DBA9FC
+	ldr r0, _0807BF00 @ =BmBgfxConf_FireRing
 	movs r1, #0x80
 	lsls r1, r1, #7
 	str r1, [sp]
@@ -747,7 +747,7 @@ _0807BEF0: .4byte gDispIo
 _0807BEF4: .4byte 0x0000FFE0
 _0807BEF8: .4byte 0x0000E0FF
 _0807BEFC: .4byte HBlank_Scanline_8078098
-_0807BF00: .4byte gUnk_08DBA9FC
+_0807BF00: .4byte BmBgfxConf_FireRing
 _0807BF04: .4byte sub_807BDC8
 
 	thumb_func_start sub_807BF08
@@ -1274,7 +1274,7 @@ sub_807C28C: @ 0x0807C28C
 	movs r0, #7
 	bl EnableBgSync
 	strh r4, [r6]
-	ldr r0, _0807C37C @ =gUnk_08DBA258
+	ldr r0, _0807C37C @ =BmBgfxConf_08DBA258
 	movs r1, #0x80
 	lsls r1, r1, #5
 	str r1, [sp]
@@ -1312,7 +1312,7 @@ _0807C36C: .4byte gDispIo
 _0807C370: .4byte 0x0000FFE0
 _0807C374: .4byte 0x0000E0FF
 _0807C378: .4byte HBlank_Scanline_8078098
-_0807C37C: .4byte gUnk_08DBA258
+_0807C37C: .4byte BmBgfxConf_08DBA258
 _0807C380: .4byte sub_807C228
 
 	thumb_func_start sub_807C384
