@@ -445,9 +445,9 @@ struct ProcIceCrystal {
 };
 
 void IceCrystalfx_Start(struct ProcIceCrystal * proc);
-void sub_807D228(struct ProcIceCrystal * proc);
-void sub_807D248(struct ProcIceCrystal * proc);
-void sub_807D284(struct ProcIceCrystal * proc);
+void IceCrystalfx_ResetPalette(struct ProcIceCrystal * proc);
+void IceCrystalfx_RefrainPalette(struct ProcIceCrystal * proc);
+void IceCrystalfx_Paluse(struct ProcIceCrystal * proc);
 // StartLoadIceCrystal
 // sub_807D328
 // sub_807D370

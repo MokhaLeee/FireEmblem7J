@@ -103,9 +103,9 @@ extern const u8 Tsa_Unk_0819128C[];
 // ??? gUnk_08198B04
 // ??? gUnk_08198CC8
 // ??? gUnk_08198D78
-// ??? gUnk_08198D98
-// ??? gUnk_08199250
-// ??? gUnk_08199290
+// ??? Img_SnowStormWeather
+// ??? Pal_SnowStormWeather
+// ??? Tsa_SnowStormWeather
 extern u8 Pal_IceBmBgfx_08199A94[];
 extern u8 Img_IceBmBgfx_08199AB4[];
 extern u8 Img_IceBmBgfx_0819A6A4[];
@@ -1650,7 +1650,7 @@ extern struct BackgroundInfo gBackgroundTable[];
 // ??? gUnk_08C0117C
 // ??? gUnk_08C011CC
 // ??? gUnk_08C01224
-// ??? gUnk_08C0127C
+// ??? ProcScr_SnowStormWeather
 // ??? gUnk_08C012BC
 
 /* event.h */

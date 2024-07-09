@@ -5,9 +5,9 @@ struct ProcCmd CONST_DATA ProcScr_IceCrystalfx[] = {
     PROC_CALL(IceCrystalfx_Start),
     PROC_WHILE(CheckBmBgfxDone),
     PROC_SLEEP(40),
-    PROC_CALL(sub_807D228),
-    PROC_REPEAT(sub_807D248),
-    PROC_REPEAT(sub_807D284),
+    PROC_CALL(IceCrystalfx_ResetPalette),
+    PROC_REPEAT(IceCrystalfx_RefrainPalette),
+    PROC_REPEAT(IceCrystalfx_Paluse),
     PROC_END,
 };
 
@@ -46,14 +46,14 @@ void IceCrystalfx_Start(struct ProcIceCrystal * proc)
     PlaySoundEffect(0x2FA);
 }
 
-void sub_807D228(struct ProcIceCrystal * proc)
+void IceCrystalfx_ResetPalette(struct ProcIceCrystal * proc)
 {
     proc->timer = 0x100;
     ArchiveCurrentPalettes();
     StartEventHorizontalQuakefxViolentlyNoSound(proc);
 }
 
-void sub_807D248(struct ProcIceCrystal * proc)
+void IceCrystalfx_RefrainPalette(struct ProcIceCrystal * proc)
 {
     proc->timer += 0x10;
 
@@ -67,7 +67,7 @@ void sub_807D248(struct ProcIceCrystal * proc)
     }
 }
 
-void sub_807D284(struct ProcIceCrystal * proc)
+void IceCrystalfx_Paluse(struct ProcIceCrystal * proc)
 {
     int time = ++proc->timer >> 2;
     SetBlendAlpha(0x10 - time, 0x10);

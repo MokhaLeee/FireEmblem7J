@@ -1913,8 +1913,8 @@ _08011560:
 	bx r1
 	.align 2, 0
 
-	thumb_func_start sub_8011568
-sub_8011568: @ 0x08011568
+	thumb_func_start SnowStormWeather_Init
+SnowStormWeather_Init: @ 0x08011568
 	push {r4, r5, r6, lr}
 	sub sp, #8
 	adds r6, r0, #0
@@ -1950,17 +1950,17 @@ sub_8011568: @ 0x08011568
 	adds r1, r2, #0
 	orrs r0, r1
 	strh r0, [r3, #0x3c]
-	ldr r0, _08011610 @ =gUnk_08198D98
+	ldr r0, _08011610 @ =Img_SnowStormWeather
 	ldr r1, _08011614 @ =0x06001000
 	bl Decompress
-	ldr r4, _08011618 @ =gUnk_08199250
+	ldr r4, _08011618 @ =Pal_SnowStormWeather
 	movs r1, #0xf0
 	lsls r1, r1, #1
 	adds r0, r4, #0
 	movs r2, #0x20
 	bl ApplyPaletteExt
 	ldr r0, _0801161C @ =gBg2Tm
-	ldr r1, _08011620 @ =gUnk_08199290
+	ldr r1, _08011620 @ =Tsa_SnowStormWeather
 	ldr r2, _08011624 @ =0x0000F080
 	bl TmApplyTsa_thm
 	movs r0, #4
@@ -1991,15 +1991,15 @@ sub_8011568: @ 0x08011568
 _08011604: .4byte gDispIo
 _08011608: .4byte 0x0000FFE0
 _0801160C: .4byte 0x0000E0FF
-_08011610: .4byte gUnk_08198D98
+_08011610: .4byte Img_SnowStormWeather
 _08011614: .4byte 0x06001000
-_08011618: .4byte gUnk_08199250
+_08011618: .4byte Pal_SnowStormWeather
 _0801161C: .4byte gBg2Tm
-_08011620: .4byte gUnk_08199290
+_08011620: .4byte Tsa_SnowStormWeather
 _08011624: .4byte 0x0000F080
 
-	thumb_func_start sub_8011628
-sub_8011628: @ 0x08011628
+	thumb_func_start SnowStormWeather_Loop1
+SnowStormWeather_Loop1: @ 0x08011628
 	push {r4, r5, lr}
 	adds r4, r0, #0
 	ldr r0, [r4, #0x30]
@@ -2064,8 +2064,8 @@ _08011670:
 	.align 2, 0
 _080116A4: .4byte gDispIo
 
-	thumb_func_start sub_80116A8
-sub_80116A8: @ 0x080116A8
+	thumb_func_start SnowStormWeather_Loop2
+SnowStormWeather_Loop2: @ 0x080116A8
 	push {r4, lr}
 	adds r4, r0, #0
 	ldr r0, [r4, #0x30]
@@ -2166,8 +2166,8 @@ _08011760:
 	.align 2, 0
 _08011768: .4byte gDispIo
 
-	thumb_func_start sub_801176C
-sub_801176C: @ 0x0801176C
+	thumb_func_start SnowStormWeather_End
+SnowStormWeather_End: @ 0x0801176C
 	push {lr}
 	ldr r0, _080117A4 @ =gBg2Tm
 	movs r1, #0
@@ -2198,8 +2198,8 @@ sub_801176C: @ 0x0801176C
 _080117A4: .4byte gBg2Tm
 _080117A8: .4byte gDispIo
 
-	thumb_func_start sub_80117AC
-sub_80117AC: @ 0x080117AC
+	thumb_func_start EventDF_CallSnowStormWeather
+EventDF_CallSnowStormWeather: @ 0x080117AC
 	push {r4, lr}
 	adds r1, r0, #0
 	ldr r0, [r1, #0x30]
@@ -2211,13 +2211,13 @@ sub_80117AC: @ 0x080117AC
 	ands r0, r2
 	cmp r0, #0
 	bne _080117D4
-	ldr r0, _080117D0 @ =gUnk_08C0127C
+	ldr r0, _080117D0 @ =ProcScr_SnowStormWeather
 	bl Proc_StartBlocking
 	str r4, [r0, #0x2c]
 	movs r0, #2
 	b _080117D6
 	.align 2, 0
-_080117D0: .4byte gUnk_08C0127C
+_080117D0: .4byte ProcScr_SnowStormWeather
 _080117D4:
 	movs r0, #0
 _080117D6:

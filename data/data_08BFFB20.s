@@ -292,8 +292,8 @@ gUnk_08C011CC:	@ 0x08C011CC
 gUnk_08C01224:	@ 0x08C01224
 	.incbin "FireEmblem7J.base.gba", 0xC01224, 0xC0127C - 0xC01224
 
-	.global gUnk_08C0127C
-gUnk_08C0127C:	@ 0x08C0127C
+	.global ProcScr_SnowStormWeather
+ProcScr_SnowStormWeather:	@ 0x08C0127C
 	.incbin "FireEmblem7J.base.gba", 0xC0127C, 0xC012BC - 0xC0127C
 
 	.global gUnk_08C012BC

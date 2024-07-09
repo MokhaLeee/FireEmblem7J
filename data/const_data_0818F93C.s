@@ -304,16 +304,16 @@ gUnk_08198CC8:	@ 0x08198CC8
 gUnk_08198D78:	@ 0x08198D78
 	.incbin "FireEmblem7J.base.gba", 0x198D78, 0x198D98 - 0x198D78
 
-	.global gUnk_08198D98
-gUnk_08198D98:	@ 0x08198D98
+	.global Img_SnowStormWeather
+Img_SnowStormWeather:	@ 0x08198D98
 	.incbin "FireEmblem7J.base.gba", 0x198D98, 0x199250 - 0x198D98
 
-	.global gUnk_08199250
-gUnk_08199250:	@ 0x08199250
+	.global Pal_SnowStormWeather
+Pal_SnowStormWeather:	@ 0x08199250
 	.incbin "FireEmblem7J.base.gba", 0x199250, 0x199290 - 0x199250
 
-	.global gUnk_08199290
-gUnk_08199290:	@ 0x08199290
+	.global Tsa_SnowStormWeather
+Tsa_SnowStormWeather:	@ 0x08199290
 	.incbin "FireEmblem7J.base.gba", 0x199290, 0x199A94 - 0x199290
 
 	.global Pal_IceBmBgfx_08199A94
