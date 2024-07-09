@@ -255,6 +255,8 @@ SECTIONS
 		asm/code-banim2.o(.text);
 		asm/mu.o(.text);
 		asm/mapanim.o(.text);
+		asm/scanline.o(.text);
+		asm/eventcall.o(.text);
 		src/eventcall_quakefx.o(.text);
 		asm/code_807B7C8.o(.text);
 		src/quintessence-fx.o(.text);

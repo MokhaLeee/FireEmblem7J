@@ -360,6 +360,9 @@ int IsFirstPlaythrough(void);
 // GetCurrentPromotedLevelBonus
 // sub_8034D5C
 
+/* ai.h */
+/* sio.h */
+/* banim.h */
 
 // sub_806BFD0
 // sub_806BFE4
@@ -397,80 +400,6 @@ int IsFirstPlaythrough(void);
 // sub_806EAA4
 
 /* mapanim.h */
-
-// InitScanlineEffect
-// sub_807706C
-// sub_807719C
-// sub_80771D0
-// sub_80771E0
-// sub_8077248
-// sub_80772CC
-// sub_8077350
-// sub_80773B8
-// sub_8077420
-// sub_807755C
-// sub_807761C
-// sub_8077694
-// sub_8077714
-// sub_8077794
-// sub_807781C
-// SwapScanlineBufs
-// sub_80778C0
-// sub_80778FC
-// sub_8077944
-// sub_807798C
-// sub_8077A70
-// sub_8077BC0
-// sub_8077BE0
-// sub_8077C1C
-// sub_8077CEC
-// sub_8077D1C
-// sub_8077E1C
-// sub_8077E50
-// sub_8077FB4
-// sub_8078030
-// sub_8078098
-// sub_80780E0
-// sub_8078130
-// sub_80781C8
-// sub_80782AC
-// sub_8078344
-// sub_80783DC
-// sub_8078474
-// QuintessenceFx_OnHBlank
-// sub_80785B8
-// sub_8078688
-// sub_8078894
-// sub_80788D0
-// sub_80788F0
-// sub_80788FC
-// sub_8078950
-// sub_8078980
-// sub_8078984
-// sub_80789AC
-// sub_80789EC
-// sub_8078A8C
-// sub_8078ACC
-// sub_8078BC4
-// sub_8078C48
-// sub_8078C90
-// sub_8078CDC
-// sub_8078CF0
-// sub_8078D3C
-// sub_8078D80
-// sub_8078DC4
-// sub_8078E20
-// sub_8078E84
-// sub_8078EB0
-// sub_8078EDC
-// sub_8078F08
-// sub_8078F30
-// sub_8078F64
-// sub_8078FC4
-// sub_8078FF0
-// sub_8079040
-// sub_8079058
-// sub_8079080
-// sub_80790A8
-// sub_80790D0
-// sub_80790F8
+/* scanline.h */
+/* eventcall.h */
+/* statscreen.h */
