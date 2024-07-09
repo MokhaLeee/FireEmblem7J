@@ -6,7 +6,7 @@
 sub_8012BC0: @ 0x08012BC0
 	push {r4, r5, r6, lr}
 	sub sp, #0x48
-	bl sub_80A0D74
+	bl GetGlobalCompletionCount
 	lsls r1, r0, #4
 	adds r1, r1, r0
 	lsls r1, r1, #2

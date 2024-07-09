@@ -4277,7 +4277,7 @@ sub_80ADAA0: @ 0x080ADAA0
 	ldr r2, _080ADB18 @ =0x01000142
 	bl CpuSet
 	ldr r0, [r4]
-	bl sub_809FB70
+	bl LoadBonusContentData
 	cmp r0, #0
 	beq _080ADBA6
 	ldr r0, [r4]
@@ -17900,7 +17900,7 @@ _080B460E:
 	ldr r1, _080B4678 @ =0x0203E640
 	cmp r3, #0
 	bne _080B4630
-	ldr r0, _080B467C @ =0x0203E638
+	ldr r0, _080B467C @ =gManimScanlineBufs
 	ldr r0, [r0]
 	str r0, [r1]
 _080B4630:
@@ -17941,7 +17941,7 @@ _080B4668:
 _080B4670: .4byte 0x04000006
 _080B4674: .4byte 0x02000814
 _080B4678: .4byte 0x0203E640
-_080B467C: .4byte 0x0203E638
+_080B467C: .4byte gManimScanlineBufs
 _080B4680: .4byte 0x04000040
 _080B4684: .4byte 0x02000815
 _080B4688: .4byte gPal + 0x280
@@ -23098,7 +23098,7 @@ _080B6DFC:
 	ldr r1, _080B6E34 @ =0x0203E640
 	cmp r3, #0
 	bne _080B6E1C
-	ldr r0, _080B6E38 @ =0x0203E638
+	ldr r0, _080B6E38 @ =gManimScanlineBufs
 	ldr r0, [r0]
 	str r0, [r1]
 _080B6E1C:
@@ -23114,7 +23114,7 @@ _080B6E28:
 _080B6E2C: .4byte 0x04000006
 _080B6E30: .4byte 0x02000814
 _080B6E34: .4byte 0x0203E640
-_080B6E38: .4byte 0x0203E638
+_080B6E38: .4byte gManimScanlineBufs
 _080B6E3C: .4byte 0x04000040
 
 	thumb_func_start sub_80B6E40
@@ -23153,8 +23153,8 @@ _080B6E8C: .4byte 0x06008000
 _080B6E90: .4byte gBg3Tm
 _080B6E94: .4byte gUnk_0860F964
 
-	thumb_func_start sub_80B6E98
-sub_80B6E98: @ 0x080B6E98
+	thumb_func_start WorldFlushInit
+WorldFlushInit: @ 0x080B6E98
 	push {r4, r5, r6, r7, lr}
 	mov r7, sl
 	mov r6, sb
@@ -23277,8 +23277,8 @@ _080B6F90: .4byte sub_80B6DEC
 _080B6F94: .4byte gPlaySt
 _080B6F98: .4byte 0x00000269
 
-	thumb_func_start sub_80B6F9C
-sub_80B6F9C: @ 0x080B6F9C
+	thumb_func_start WorldFlushOut
+WorldFlushOut: @ 0x080B6F9C
 	push {r4, r5, r6, r7, lr}
 	mov r7, r8
 	push {r7}
@@ -28597,7 +28597,7 @@ sub_80B98F8: @ 0x080B98F8
 	ands r0, r1
 	cmp r0, #0
 	beq _080B9928
-	bl sub_809F9D0
+	bl IsGamePlayedThrough
 	lsls r0, r0, #0x18
 	cmp r0, #0
 	beq _080B9928
@@ -31058,7 +31058,7 @@ _080BAD1E:
 	ands r0, r1
 	cmp r0, #0
 	beq _080BAD4C
-	bl sub_809F9D0
+	bl IsGamePlayedThrough
 	lsls r0, r0, #0x18
 	cmp r0, #0
 	beq _080BAD54

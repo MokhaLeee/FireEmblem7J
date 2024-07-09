@@ -707,8 +707,8 @@ _0802568C: .4byte gUnk_08C03114
 _08025690: .4byte gUnk_08C03100
 _08025694: .4byte 0x02033F10
 
-	thumb_func_start sub_8025698
-sub_8025698: @ 0x08025698
+	thumb_func_start TornOutUnitSprite
+TornOutUnitSprite: @ 0x08025698
 	push {r4, r5, r6, r7, lr}
 	mov r7, sl
 	mov r6, sb

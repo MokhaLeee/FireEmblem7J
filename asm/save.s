@@ -112,7 +112,7 @@ sub_809F40C: @ 0x0809F40C
 	cmp r0, #0
 	beq _0809F45C
 	mov r0, sp
-	bl sub_80A0D58
+	bl GetGlobalCompletionCntByInfo
 	adds r5, r0, #0
 	bl sub_809F9F8
 	rsbs r1, r0, #0
@@ -239,7 +239,7 @@ sub_809F4F0: @ 0x0809F4F0
 	movs r0, #0
 	bl sub_809F994
 	adds r4, r0, #0
-	bl sub_809F9D0
+	bl IsGamePlayedThrough
 	ands r0, r4
 	lsls r0, r0, #0x18
 	asrs r0, r0, #0x18
@@ -253,7 +253,7 @@ sub_809F50C: @ 0x0809F50C
 	push {r4, lr}
 	sub sp, #0x94
 	movs r4, #0
-	bl sub_809F9D0
+	bl IsGamePlayedThrough
 	lsls r0, r0, #0x18
 	cmp r0, #0
 	bne _0809F520
@@ -261,7 +261,7 @@ sub_809F50C: @ 0x0809F50C
 	b _0809F580
 _0809F520:
 	mov r0, sp
-	bl sub_809FB14
+	bl LoadAndVerfyRankData
 	lsls r0, r0, #0x18
 	cmp r0, #0
 	beq _0809F57E
@@ -348,7 +348,7 @@ sub_809F5B0: @ 0x0809F5B0
 	sub sp, #0x48
 	ldr r4, _0809F5EC @ =gBuf
 	adds r0, r4, #0
-	bl sub_809FB70
+	bl LoadBonusContentData
 	lsls r0, r0, #0x18
 	cmp r0, #0
 	beq _0809F5F0
@@ -945,8 +945,8 @@ nullsub_83: @ 0x0809F9CC
 	bx lr
 	.align 2, 0
 
-	thumb_func_start sub_809F9D0
-sub_809F9D0: @ 0x0809F9D0
+	thumb_func_start IsGamePlayedThrough
+IsGamePlayedThrough: @ 0x0809F9D0
 	push {lr}
 	sub sp, #0x64
 	mov r0, sp
@@ -980,7 +980,7 @@ sub_809F9F8: @ 0x0809F9F8
 	cmp r0, #0
 	beq _0809FA20
 	adds r0, r4, #0
-	bl sub_80A0D58
+	bl GetGlobalCompletionCntByInfo
 	cmp r0, #9
 	ble _0809FA18
 	movs r0, #2
@@ -1129,8 +1129,8 @@ sub_809FB10: @ 0x0809FB10
 	ldrh r0, [r0, #0x20]
 	bx lr
 
-	thumb_func_start sub_809FB14
-sub_809FB14: @ 0x0809FB14
+	thumb_func_start LoadAndVerfyRankData
+LoadAndVerfyRankData: @ 0x0809FB14
 	push {r4, r5, lr}
 	adds r5, r0, #0
 	bl IsSramWorking
@@ -1174,8 +1174,8 @@ _0809FB6A:
 	pop {r1}
 	bx r1
 
-	thumb_func_start sub_809FB70
-sub_809FB70: @ 0x0809FB70
+	thumb_func_start LoadBonusContentData
+LoadBonusContentData: @ 0x0809FB70
 	push {r4, r5, lr}
 	adds r5, r0, #0
 	bl IsSramWorking
@@ -1315,7 +1315,7 @@ sub_809FC60: @ 0x0809FC60
 	mov r1, sp
 	bl CpuSet
 	mov r0, sp
-	bl sub_809FB14
+	bl LoadAndVerfyRankData
 	lsls r0, r0, #0x18
 	cmp r0, #0
 	bne _0809FCA0
@@ -1353,7 +1353,7 @@ sub_809FCC4: @ 0x0809FCC4
 	adds r5, r1, #0
 	adds r4, r2, #0
 	mov r0, sp
-	bl sub_809FB14
+	bl LoadAndVerfyRankData
 	lsls r0, r0, #0x18
 	cmp r0, #0
 	beq _0809FCFA
@@ -2150,7 +2150,7 @@ LoadAndVerifySramSaveData: @ 0x080A02EC
 	bl InitGlobalSaveInfo
 _080A02FE:
 	movs r0, #0
-	bl sub_809FB70
+	bl LoadBonusContentData
 	lsls r0, r0, #0x18
 	cmp r0, #0
 	bne _080A030E
@@ -2164,7 +2164,7 @@ _080A030E:
 	bl sub_809F098
 _080A031E:
 	movs r0, #0
-	bl sub_809FB14
+	bl LoadAndVerfyRankData
 	lsls r0, r0, #0x18
 	cmp r0, #0
 	bne _080A032E
@@ -3420,8 +3420,8 @@ _080A0C76:
 _080A0C7C: .4byte 0x0000FFFF
 _080A0C80: .4byte 0xFF0000FF
 
-	thumb_func_start PidStatsRecordBattleResult
-PidStatsRecordBattleResult: @ 0x080A0C84
+	thumb_func_start PidStatsRecordBattleRes
+PidStatsRecordBattleRes: @ 0x080A0C84
 	push {r4, r5, r6, r7, lr}
 	movs r7, #0
 	movs r5, #0
@@ -3472,8 +3472,8 @@ _080A0CDA:
 _080A0CE0: .4byte gBattleActor
 _080A0CE4: .4byte gBattleTarget
 
-	thumb_func_start sub_80A0CE8
-sub_80A0CE8: @ 0x080A0CE8
+	thumb_func_start IsPlaythroughIdUnique
+IsPlaythroughIdUnique: @ 0x080A0CE8
 	push {r4, r5, r6, lr}
 	sub sp, #0xac
 	adds r6, r0, #0
@@ -3517,13 +3517,13 @@ _080A0D30:
 	pop {r1}
 	bx r1
 
-	thumb_func_start sub_80A0D38
-sub_80A0D38: @ 0x080A0D38
+	thumb_func_start GetNewPlaythroughId
+GetNewPlaythroughId: @ 0x080A0D38
 	push {r4, lr}
 	movs r4, #1
 _080A0D3C:
 	adds r0, r4, #0
-	bl sub_80A0CE8
+	bl IsPlaythroughIdUnique
 	lsls r0, r0, #0x18
 	cmp r0, #0
 	beq _080A0D4C
@@ -3538,8 +3538,8 @@ _080A0D52:
 	pop {r1}
 	bx r1
 
-	thumb_func_start sub_80A0D58
-sub_80A0D58: @ 0x080A0D58
+	thumb_func_start GetGlobalCompletionCntByInfo
+GetGlobalCompletionCntByInfo: @ 0x080A0D58
 	movs r2, #0
 	movs r1, #0
 	adds r3, r0, #0
@@ -3557,8 +3557,8 @@ _080A0D6A:
 	adds r0, r2, #0
 	bx lr
 
-	thumb_func_start sub_80A0D74
-sub_80A0D74: @ 0x080A0D74
+	thumb_func_start GetGlobalCompletionCount
+GetGlobalCompletionCount: @ 0x080A0D74
 	push {lr}
 	sub sp, #0x64
 	mov r0, sp
@@ -3567,7 +3567,7 @@ sub_80A0D74: @ 0x080A0D74
 	cmp r0, #0
 	beq _080A0D8C
 	mov r0, sp
-	bl sub_80A0D58
+	bl GetGlobalCompletionCntByInfo
 	b _080A0D8E
 _080A0D8C:
 	movs r0, #0
@@ -3576,8 +3576,8 @@ _080A0D8E:
 	pop {r1}
 	bx r1
 
-	thumb_func_start sub_80A0D94
-sub_80A0D94: @ 0x080A0D94
+	thumb_func_start RegisterCompletedPlaythrough
+RegisterCompletedPlaythrough: @ 0x080A0D94
 	push {r4, lr}
 	movs r3, #0
 	adds r4, r0, #0
@@ -3612,8 +3612,8 @@ _080A0DC4:
 	bx r1
 	.align 2, 0
 
-	thumb_func_start sub_80A0DCC
-sub_80A0DCC: @ 0x080A0DCC
+	thumb_func_start SavePlayThroughData
+SavePlayThroughData: @ 0x080A0DCC
 	push {lr}
 	sub sp, #0x64
 	mov r0, sp
@@ -3703,7 +3703,7 @@ WriteCompletedPlaythroughSaveData: @ 0x080A0E48
 _080A0E74:
 	ldrb r1, [r7, #0x18]
 	mov r0, sp
-	bl sub_80A0D94
+	bl RegisterCompletedPlaythrough
 	mov r1, sp
 	movs r0, #1
 	ldrb r2, [r1, #0xe]
@@ -4025,11 +4025,11 @@ _080A10DC:
 	movs r0, #0xd
 	strb r0, [r4, #0xe]
 _080A10E4:
-	bl sub_80A0D38
+	bl GetNewPlaythroughId
 	strb r0, [r4, #0x18]
 	mov r0, r8
 	strb r0, [r4, #0xc]
-	bl sub_80A0D74
+	bl GetGlobalCompletionCount
 	movs r1, #0x1f
 	ands r0, r1
 	lsls r0, r0, #7
@@ -7443,7 +7443,7 @@ sub_80A2BF8: @ 0x080A2BF8
 	thumb_func_start sub_80A2BFC
 sub_80A2BFC: @ 0x080A2BFC
 	push {lr}
-	bl sub_80A0D74
+	bl GetGlobalCompletionCount
 	ldr r1, _080A2C0C @ =gBmMapHidden
 	movs r0, #0
 	str r0, [r1]

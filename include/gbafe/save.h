@@ -128,8 +128,8 @@ void * GetSaveReadAddr(int save_id);
 // ??? sub_809F994
 // ??? nullsub_82
 // ??? nullsub_83
-// ??? sub_809F9D0
-// ??? sub_809F9F8
+// ??? IsGamePlayedThrough
+int sub_809F9F8(void);
 // ??? sub_809FA3C
 void sub_809FA94(void * buf);
 // ??? sub_809FAC0
@@ -137,8 +137,8 @@ void sub_809FA94(void * buf);
 // ??? sub_809FAF4
 // ??? sub_809FB0C
 // ??? sub_809FB10
-// ??? sub_809FB14
-// ??? sub_809FB70
+// ??? LoadAndVerfyRankData
+// ??? LoadBonusContentData
 void SaveBonusContentData(void * buf);
 // ??? sub_809FC00
 // ??? sub_809FC30
@@ -215,13 +215,13 @@ void PidStatsAddStatView(u8 pid);
 // ??? sub_80A0BA8
 // ??? sub_80A0BDC
 // ??? sub_80A0C14
-// ??? PidStatsRecordBattleResult
-// ??? sub_80A0CE8
-// ??? sub_80A0D38
-// ??? sub_80A0D58
-// ??? sub_80A0D74
-// ??? sub_80A0D94
-// ??? sub_80A0DCC
+void PidStatsRecordBattleRes(void);
+bool IsPlaythroughIdUnique(int index);
+int GetNewPlaythroughId(void);
+int GetGlobalCompletionCntByInfo(struct GlobalSaveInfo * info);
+int GetGlobalCompletionCount(void);
+bool RegisterCompletedPlaythrough(struct GlobalSaveInfo * info, int index);
+void SavePlayThroughData(void);
 // ??? sub_80A0DFC
 // ??? WriteCompletedPlaythroughSaveData
 struct PidStats * GetPidStats(u8 pid);

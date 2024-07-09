@@ -329,19 +329,68 @@ void EndEventQuakefx(struct ProcEventQuakeHandler * proc);
 // sub_807C9A4
 // sub_807CA1C
 
-/* quintessence-fx.c */
+struct ProcEventAnimfx
+{
+    PROC_HEADER;
+    STRUCT_PAD(0x29, 0x4C);
 
-// sub_807CD8C
-// sub_807CD94
-// sub_807CDD4
+    /* 4C */ s16 timer;
+
+    STRUCT_PAD(0x4E, 0x58);
+
+    /* 58 */ int bg2_offset;
+};
+
+void QuintessenceFx_ParallelWorker(struct ProcEventAnimfx * proc);
+void QuintFxBg2_Init(struct ProcEventAnimfx * proc);
+void QuintFxBg2_Loop(struct ProcEventAnimfx * proc);
+void QuintessenceFx_Init_Main(struct ProcEventAnimfx * proc);
+void QuintessenceFx_Loop_A(struct ProcEventAnimfx * proc);
+void QuintessenceFx_ResetBlend(struct ProcEventAnimfx * proc);
+void QuintessenceFx_Loop_B(struct ProcEventAnimfx * proc);
+void QuintessenceFx_Loop_C(struct ProcEventAnimfx * proc);
+void QuintessenceFx_OnEnd(void);
+void StartQuintessenceStealEffect(struct Proc * parent);
+void QuintessenceFx_Goto_B(void);
+void QuintessenceFx_Goto_C(void);
+void EndQuintessenceStealEffect(void);
+
+struct ProcUnitTornOut {
+    PROC_HEADER;
+    STRUCT_PAD(0x29, 0x4C);
+
+    /* 4C */ s16 counter;
+
+    STRUCT_PAD(0x4E, 0x54);
+
+    /* 54 */ struct Unit * unit;
+};
+
+void UnitTornOut_Init(struct ProcUnitTornOut * proc);
+void UnitTornOut_Loop(struct ProcUnitTornOut * proc);
+void StartUnitTornOut(struct Unit * unit, ProcPtr parent);
+
+struct Proc_08D6FAE4 {
+    PROC_HEADER;
+
+    /* 2C */ int unk2C;
+    /* 30 */ int unk30;
+
+    STRUCT_PAD(0x34, 0x58);
+
+    /* 58 */ const void * unk58;
+};
+
 // sub_807CDEC
 // sub_807CE00
 // sub_807CE14
-// sub_807CE90
-// sub_807CF94
-// sub_807CFEC
-// sub_807D088
-// sub_807D0E0
+
+void sub_807CE90(struct Proc_08D6FAE4 * proc);
+void sub_807CF94(struct Proc_08D6FAE4 * proc);
+void sub_807CFEC(struct Proc_08D6FAE4 * proc);
+void sub_807D088(struct Proc_08D6FAE4 * proc);
+void sub_807D0E0(struct Proc_08D6FAE4 * proc);
+
 // sub_807D120
 // sub_807D140
 // sub_807D228
@@ -585,3 +634,34 @@ void SetLynModeDeathFlag(void);
 // sub_808043C
 // sub_808046C
 // sub_8080480
+
+extern struct ProcCmd ProcScr_EventHorizontalQuakefx[];
+extern struct ProcCmd ProcScr_EventVerticalQuakefx[];
+extern struct ProcCmd ProcScr_EventQuakefx[];
+// ??? gUnk_08D6F854
+// ??? gUnk_08D6F8AC
+// ??? gUnk_08D6F8BC
+// ??? gUnk_08D6F95C
+// ??? gUnk_08D6F9D4
+extern struct ProcCmd ProcScr_QuintessenceFxBg2Scroll[];
+extern struct ProcCmd ProcScr_QuintessenceFx[];
+// ??? ProcScr_UnitTornOut
+// ??? ProcScr_08D6FAE4
+extern struct ProcCmd ProcScr_IceCrystalfx[];
+// ??? gUnk_08D6FB5C
+// ??? gUnk_08D6FC14
+// ??? gUnk_08D6FC44
+// ??? gUnk_08D80D24
+// ??? gUnk_08D80D2E
+// ??? gUnk_08D837E8
+// ??? gUnk_08D837F8
+// ??? gUnk_08D87684
+extern struct ProcCmd ProcScr_EventDragonsSpritefx[];
+// ??? gUnk_08D87F48
+// ??? gUnk_08D87F68
+// ??? gUnk_08D8977C
+// ??? gUnk_08D897EC
+// ??? gUnk_08D8A0E0
+// ??? gUnk_08D8A114
+// ??? gUnk_08D8A148
+// ??? gUnk_08D8A1B4

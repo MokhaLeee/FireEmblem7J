@@ -102,7 +102,7 @@ void BattleGenerateRealInternal(struct Unit *actor, struct Unit *target)
 
     if (gBattleTarget.unit.index) {
         BattleApplyExpGains();
-        PidStatsRecordBattleResult();
+        PidStatsRecordBattleRes();
 
         PidStatsAddBattleAmt(actor);
         PidStatsAddBattleAmt(target);
@@ -1919,7 +1919,7 @@ void BattleGenerateArena(struct Unit* actor)
     UpdateUnitDuringBattle(actor, &gBattleActor);
 
     if (!something || (gBattleTarget.unit.curHP == 0)) {
-        PidStatsRecordBattleResult();
+        PidStatsRecordBattleRes();
 
         actor->state = (actor->state &~ (US_BIT17 | US_BIT18 | US_BIT19))
             + ((((UNIT_ARENA_LEVEL(actor) + 1) <= 7) ? (UNIT_ARENA_LEVEL(actor) + 1) << 17 : 7 << 17));

@@ -1,18 +1,6 @@
 #include "gbafe.h"
 
-struct QuintessenceFxProc
-{
-    /* 00 */ PROC_HEADER;
-    /* 29 */ STRUCT_PAD(0x29, 0x4C);
-
-    /* 4C */ s16 timer;
-
-    /* 4E */ STRUCT_PAD(0x4E, 0x58);
-
-    /* 58 */ int bg2_offset;
-};
-
-void QuintessenceFx_ParallelWorker(struct QuintessenceFxProc * proc)
+void QuintessenceFx_ParallelWorker(struct ProcEventAnimfx * proc)
 {
     proc->bg2_offset++;
 
@@ -22,12 +10,12 @@ void QuintessenceFx_ParallelWorker(struct QuintessenceFxProc * proc)
     SwapScanlineBufs();
 }
 
-void QuintFxBg2_Init(struct QuintessenceFxProc * proc)
+void QuintFxBg2_Init(struct ProcEventAnimfx * proc)
 {
     proc->bg2_offset = 0;
 }
 
-void QuintFxBg2_Loop(struct QuintessenceFxProc * proc)
+void QuintFxBg2_Loop(struct ProcEventAnimfx * proc)
 {
     proc->bg2_offset++;
     SetBgOffset(BG_2, proc->bg2_offset >> 2, proc->bg2_offset >> 1);
@@ -44,7 +32,7 @@ struct ProcCmd CONST_DATA ProcScr_QuintessenceFxBg2Scroll[] = {
 
 // clang-format on
 
-void QuintessenceFx_Init_Main(struct QuintessenceFxProc * proc)
+void QuintessenceFx_Init_Main(struct ProcEventAnimfx * proc)
 {
     gDispIo.blend_ct.effect = 1;
 
@@ -73,7 +61,7 @@ void QuintessenceFx_Init_Main(struct QuintessenceFxProc * proc)
     Proc_Start(ProcScr_QuintessenceFxBg2Scroll, PROC_TREE_VSYNC);
 }
 
-void QuintessenceFx_Loop_A(struct QuintessenceFxProc * proc)
+void QuintessenceFx_Loop_A(struct ProcEventAnimfx * proc)
 {
     int bld_amt = proc->timer++ >> 1;
 
@@ -89,7 +77,7 @@ void QuintessenceFx_Loop_A(struct QuintessenceFxProc * proc)
     }
 }
 
-void QuintessenceFx_ResetBlend(struct QuintessenceFxProc * proc)
+void QuintessenceFx_ResetBlend(struct ProcEventAnimfx * proc)
 {
     gDispIo.blend_ct.effect = 1;
 
@@ -103,7 +91,7 @@ void QuintessenceFx_ResetBlend(struct QuintessenceFxProc * proc)
     proc->timer = 0;
 }
 
-void QuintessenceFx_Loop_B(struct QuintessenceFxProc * proc)
+void QuintessenceFx_Loop_B(struct ProcEventAnimfx * proc)
 {
     int bld_amt = proc->timer++ >> 2;
 
@@ -119,7 +107,7 @@ void QuintessenceFx_Loop_B(struct QuintessenceFxProc * proc)
     }
 }
 
-void QuintessenceFx_Loop_C(struct QuintessenceFxProc * proc)
+void QuintessenceFx_Loop_C(struct ProcEventAnimfx * proc)
 {
     int bld_amt = proc->timer++ >> 2;
 

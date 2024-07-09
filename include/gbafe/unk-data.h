@@ -2,6 +2,8 @@
 
 #include "proc.h"
 
+extern EWRAM_DATA u16 * gManimScanlineBufs[2];
+
 extern s8 MoveTable_Flying[];
 extern s8 MoveTable_Ballista[];
 extern char const *StatusNameStringLut[];
@@ -1792,37 +1794,8 @@ extern uintptr_t ProcScr_CamMove[];
 // ??? gUnk_08D6F798
 // ??? gUnk_08D6F7B4
 // ??? gUnk_08D6F7D4
-extern struct ProcCmd ProcScr_EventHorizontalQuakefx[];
-extern struct ProcCmd ProcScr_EventVerticalQuakefx[];
-extern struct ProcCmd ProcScr_EventQuakefx[];
-// ??? gUnk_08D6F854
-// ??? gUnk_08D6F8AC
-// ??? gUnk_08D6F8BC
-// ??? gUnk_08D6F95C
-// ??? gUnk_08D6F9D4
-extern struct ProcCmd ProcScr_QuintessenceFxBg2Scroll[];
-extern struct ProcCmd ProcScr_QuintessenceFx[];
-// ??? gUnk_08D6FAC4
-// ??? gUnk_08D6FAE4
-// ??? ProcScr_IceCrystalfx
-// ??? gUnk_08D6FB5C
-// ??? gUnk_08D6FC14
-// ??? gUnk_08D6FC44
-// ??? gUnk_08D80D24
-// ??? gUnk_08D80D2E
-// ??? gUnk_08D837E8
-// ??? gUnk_08D837F8
-// ??? gUnk_08D87684
-extern struct ProcCmd ProcScr_EventDragonsSpritefx[];
-// ??? gUnk_08D87F48
-// ??? gUnk_08D87F68
-// ??? gUnk_08D8977C
-// ??? gUnk_08D897EC
-// ??? gUnk_08D8A0E0
-// ??? gUnk_08D8A114
-// ??? gUnk_08D8A148
-// ??? gUnk_08D8A1B4
 
+// eventcall.h
 // statscreen.h
 
 // ??? gUnk_08D8AB2C

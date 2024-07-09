@@ -13,7 +13,7 @@ int UseUnitSprite(u32 id);
 // extern ??? ApplyUnitSpriteImage16x16
 // extern ??? ApplyUnitSpriteImage16x32
 // extern ??? ApplyUnitSpriteImage32x32
-// extern ??? sub_8025698
+void TornOutUnitSprite(struct Unit * unit, int timer);
 // extern ??? sub_80259A4
 // extern ??? sub_8025A0C
 // extern ??? sub_8025A6C

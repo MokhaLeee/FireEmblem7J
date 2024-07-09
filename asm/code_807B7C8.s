@@ -976,7 +976,7 @@ sub_807C080: @ 0x0807C080
 	cmp r4, #0
 	beq _0807C0D2
 	adds r1, r5, #0
-	bl sub_807CDD4
+	bl StartUnitTornOut
 	str r6, [r4, #0xc]
 _0807C0D2:
 	movs r0, #0x86
@@ -985,7 +985,7 @@ _0807C0D2:
 	cmp r4, #0
 	beq _0807C0E6
 	adds r1, r5, #0
-	bl sub_807CDD4
+	bl StartUnitTornOut
 	str r6, [r4, #0xc]
 _0807C0E6:
 	ldr r0, _0807C104 @ =gPlaySt
@@ -1628,7 +1628,7 @@ sub_807C5A4: @ 0x0807C5A4
 	movs r0, #0x86
 	bl GetUnitFromCharId
 	adds r1, r5, #0
-	bl sub_807CDD4
+	bl StartUnitTornOut
 _0807C5F6:
 	ldrh r4, [r4]
 	cmp r4, #0x10

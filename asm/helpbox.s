@@ -8809,7 +8809,7 @@ sub_80873B4: @ 0x080873B4
 	mov r1, r8
 	adds r1, #0x2f
 	strb r0, [r1]
-	bl sub_80A0D74
+	bl GetGlobalCompletionCount
 	mov r1, r8
 	adds r1, #0x2b
 	strb r0, [r1]

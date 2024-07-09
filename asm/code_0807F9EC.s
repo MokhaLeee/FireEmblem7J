@@ -641,7 +641,7 @@ _0807FE64:
 	movs r0, #0xc
 	strb r0, [r1, #0xe]
 	bl CleanupUnitsBeforeChapter
-	bl sub_80A0DCC
+	bl SavePlayThroughData
 	pop {r3}
 	mov r8, r3
 	pop {r4, r5, r6, r7}

@@ -19,7 +19,7 @@ sub_80A5C60: @ 0x080A5C60
 	mov r0, sp
 	bl CpuSet
 	ldr r0, [r4]
-	bl sub_809FB70
+	bl LoadBonusContentData
 	cmp r0, #0
 	beq _080A5CF6
 	movs r0, #0

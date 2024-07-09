@@ -6283,7 +6283,7 @@ sub_800E628: @ 0x0800E628
 	adds r0, r1, #0
 	bl sub_800E520
 _0800E640:
-	bl sub_809F9D0
+	bl IsGamePlayedThrough
 	lsls r0, r0, #0x18
 	cmp r0, #0
 	bne _0800E652
@@ -6312,7 +6312,7 @@ sub_800E65C: @ 0x0800E65C
 	adds r0, r1, #0
 	bl sub_800E520
 _0800E674:
-	bl sub_809F9D0
+	bl IsGamePlayedThrough
 	lsls r0, r0, #0x18
 	cmp r0, #0
 	beq _0800E684
@@ -6346,7 +6346,7 @@ sub_800E698: @ 0x0800E698
 	adds r0, r1, #0
 	bl sub_800E520
 _0800E6B0:
-	bl sub_809F9D0
+	bl IsGamePlayedThrough
 	lsls r0, r0, #0x18
 	cmp r0, #0
 	beq _0800E6C0

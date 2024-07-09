@@ -26,7 +26,7 @@ _0802E3A8: .4byte gPlaySt
 	thumb_func_start IsFirstPlaythrough
 IsFirstPlaythrough: @ 0x0802E3AC
 	push {lr}
-	bl sub_809F9D0
+	bl IsGamePlayedThrough
 	lsls r0, r0, #0x18
 	cmp r0, #0
 	bne _0802E3BC
@@ -2354,7 +2354,7 @@ _0802F5EE:
 	cmp r0, #0
 	bne _0802F608
 _0802F604:
-	bl PidStatsRecordBattleResult
+	bl PidStatsRecordBattleRes
 _0802F608:
 	pop {r4, r5}
 	pop {r0}

@@ -58,3 +58,4 @@
 #include "gbafe/ai.h"
 #include "gbafe/scrolling_util.h"
 #include "gbafe/bonusclaim.h"
+#include "gbafe/mapanim.h"

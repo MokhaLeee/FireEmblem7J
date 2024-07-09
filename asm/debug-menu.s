@@ -745,7 +745,7 @@ sub_801BB60: @ 0x0801BB60
 	movs r1, #0x48
 	movs r2, #2
 	bl Text_InsertDrawString
-	bl sub_80A0D74
+	bl GetGlobalCompletionCount
 	adds r3, r0, #0
 	adds r3, #1
 	adds r0, r4, #0
@@ -785,7 +785,7 @@ sub_801BBC4: @ 0x0801BBC4
 	ands r0, r1
 	cmp r0, #0
 	beq _0801BC5C
-	bl sub_80A0D74
+	bl GetGlobalCompletionCount
 	adds r5, r0, #0
 	ldr r1, [r4]
 	movs r0, #0x20
@@ -826,7 +826,7 @@ _0801BC22:
 	adds r4, #1
 	mov r0, sp
 	adds r1, r4, #0
-	bl sub_80A0D94
+	bl RegisterCompletedPlaythrough
 	cmp r4, r5
 	blt _0801BC22
 _0801BC30:

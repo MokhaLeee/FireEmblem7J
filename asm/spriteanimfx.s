@@ -1,86 +1,6 @@
 	.include "macro.inc"
 	.syntax unified
 
-	thumb_func_start sub_807CD8C
-sub_807CD8C: @ 0x0807CD8C
-	adds r0, #0x4c
-	movs r1, #0
-	strh r1, [r0]
-	bx lr
-
-	thumb_func_start sub_807CD94
-sub_807CD94: @ 0x0807CD94
-	push {r4, r5, r6, lr}
-	adds r6, r0, #0
-	ldr r5, [r6, #0x54]
-	adds r4, r6, #0
-	adds r4, #0x4c
-	movs r0, #0
-	ldrsh r1, [r4, r0]
-	adds r0, r5, #0
-	bl sub_8025698
-	ldrh r0, [r4]
-	adds r0, #1
-	strh r0, [r4]
-	lsls r0, r0, #0x10
-	asrs r0, r0, #0x10
-	cmp r0, #0x40
-	bne _0807CDCC
-	ldr r0, [r5, #0xc]
-	movs r1, #9
-	orrs r0, r1
-	str r0, [r5, #0xc]
-	bl RefreshEntityMaps
-	bl RefreshUnitSprites
-	adds r0, r6, #0
-	bl Proc_Break
-_0807CDCC:
-	pop {r4, r5, r6}
-	pop {r0}
-	bx r0
-	.align 2, 0
-
-	thumb_func_start sub_807CDD4
-sub_807CDD4: @ 0x0807CDD4
-	push {r4, lr}
-	adds r4, r0, #0
-	ldr r0, _0807CDE8 @ =gUnk_08D6FAC4
-	bl Proc_Start
-	str r4, [r0, #0x54]
-	pop {r4}
-	pop {r0}
-	bx r0
-	.align 2, 0
-_0807CDE8: .4byte gUnk_08D6FAC4
-
-	thumb_func_start sub_807CDEC
-sub_807CDEC: @ 0x0807CDEC
-	push {lr}
-	bl sub_809F9F8
-	cmp r0, #0
-	bgt _0807CDFA
-	movs r0, #0
-	b _0807CDFC
-_0807CDFA:
-	movs r0, #1
-_0807CDFC:
-	pop {r1}
-	bx r1
-
-	thumb_func_start sub_807CE00
-sub_807CE00: @ 0x0807CE00
-	push {lr}
-	bl sub_809F9F8
-	cmp r0, #1
-	bgt _0807CE0E
-	movs r0, #0
-	b _0807CE10
-_0807CE0E:
-	movs r0, #1
-_0807CE10:
-	pop {r1}
-	bx r1
-
 	thumb_func_start sub_807CE14
 sub_807CE14: @ 0x0807CE14
 	push {r4, r5, r6, lr}
@@ -470,7 +390,7 @@ sub_807D120: @ 0x0807D120
 	adds r5, r1, #0
 	adds r6, r2, #0
 	adds r1, r3, #0
-	ldr r0, _0807D13C @ =gUnk_08D6FAE4
+	ldr r0, _0807D13C @ =ProcScr_08D6FAE4
 	bl Proc_StartBlocking
 	str r4, [r0, #0x58]
 	str r5, [r0, #0x2c]
@@ -479,7 +399,7 @@ sub_807D120: @ 0x0807D120
 	pop {r0}
 	bx r0
 	.align 2, 0
-_0807D13C: .4byte gUnk_08D6FAE4
+_0807D13C: .4byte ProcScr_08D6FAE4
 
 	thumb_func_start sub_807D140
 sub_807D140: @ 0x0807D140

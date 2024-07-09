@@ -4722,17 +4722,17 @@ sub_806E564: @ 0x0806E564
 	sub sp, #4
 	mov r7, sp
 	str r0, [r7]
-	ldr r1, _0806E5BC @ =0x0203E0D4
+	ldr r1, _0806E5BC @ =gManimSt
 	adds r0, r1, #0
 	adds r1, #0x58
 	ldrb r4, [r1]
-	ldr r1, _0806E5BC @ =0x0203E0D4
+	ldr r1, _0806E5BC @ =gManimSt
 	adds r0, r1, #0
 	adds r1, #0x58
 	ldrb r0, [r1]
 	movs r1, #1
 	subs r5, r1, r0
-	ldr r0, _0806E5BC @ =0x0203E0D4
+	ldr r0, _0806E5BC @ =gManimSt
 	ldr r1, [r0, #4]
 	adds r0, r1, #0
 	adds r1, #0x4a
@@ -4761,7 +4761,7 @@ sub_806E564: @ 0x0806E564
 	pop {r0}
 	bx r0
 	.align 2, 0
-_0806E5BC: .4byte 0x0203E0D4
+_0806E5BC: .4byte gManimSt
 
 	thumb_func_start sub_806E5C0
 sub_806E5C0: @ 0x0806E5C0

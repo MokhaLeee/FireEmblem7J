@@ -7,7 +7,7 @@ Manim_StoleItemPopup: @ 0x0806EAE8
 	sub sp, #4
 	mov r7, sp
 	str r0, [r7]
-	ldr r1, _0806EB00 @ =0x0203E0D4
+	ldr r1, _0806EB00 @ =gManimSt
 	adds r0, r1, #0
 	adds r1, #0x62
 	ldrb r0, [r1]
@@ -15,13 +15,13 @@ Manim_StoleItemPopup: @ 0x0806EAE8
 	beq _0806EB04
 	b _0806EB06
 	.align 2, 0
-_0806EB00: .4byte 0x0203E0D4
+_0806EB00: .4byte gManimSt
 _0806EB04:
 	b _0806EB08
 _0806EB06:
 	b _0806EB1A
 _0806EB08:
-	ldr r0, _0806EB24 @ =0x0203E0D4
+	ldr r0, _0806EB24 @ =gManimSt
 	ldr r1, [r0, #0x18]
 	adds r0, r1, #0
 	adds r1, #0x48
@@ -35,7 +35,7 @@ _0806EB1A:
 	pop {r0}
 	bx r0
 	.align 2, 0
-_0806EB24: .4byte 0x0203E0D4
+_0806EB24: .4byte gManimSt
 
 	thumb_func_start Manim_WeaponBrokePopup
 Manim_WeaponBrokePopup: @ 0x0806EB28
@@ -233,8 +233,8 @@ _0806EC90:
 sub_806EC98: @ 0x0806EC98
 	push {r7, lr}
 	mov r7, sp
-	ldr r0, _0806ED74 @ =0x0203E0D4
-	ldr r1, _0806ED74 @ =0x0203E0D4
+	ldr r0, _0806ED74 @ =gManimSt
+	ldr r1, _0806ED74 @ =gManimSt
 	ldr r2, [r1, #0x50]
 	ldrb r1, [r2, #2]
 	lsrs r2, r1, #3
@@ -251,8 +251,8 @@ sub_806EC98: @ 0x0806EC98
 	orrs r2, r1
 	adds r1, r2, #0
 	strb r1, [r0]
-	ldr r0, _0806ED74 @ =0x0203E0D4
-	ldr r2, _0806ED74 @ =0x0203E0D4
+	ldr r0, _0806ED74 @ =gManimSt
+	ldr r2, _0806ED74 @ =gManimSt
 	adds r1, r2, #0
 	adds r2, #0x58
 	ldrb r1, [r2]
@@ -268,8 +268,8 @@ sub_806EC98: @ 0x0806EC98
 	orrs r2, r1
 	adds r1, r2, #0
 	strb r1, [r0]
-	ldr r0, _0806ED74 @ =0x0203E0D4
-	ldr r2, _0806ED74 @ =0x0203E0D4
+	ldr r0, _0806ED74 @ =gManimSt
+	ldr r2, _0806ED74 @ =gManimSt
 	ldr r1, [r2, #0x50]
 	adds r2, r0, #0
 	adds r0, #0x5a
@@ -282,8 +282,8 @@ sub_806EC98: @ 0x0806EC98
 	orrs r2, r1
 	adds r1, r2, #0
 	strh r1, [r0]
-	ldr r0, _0806ED74 @ =0x0203E0D4
-	ldr r2, _0806ED74 @ =0x0203E0D4
+	ldr r0, _0806ED74 @ =gManimSt
+	ldr r2, _0806ED74 @ =gManimSt
 	ldr r1, [r2, #0x50]
 	adds r2, r0, #0
 	adds r0, #0x5c
@@ -296,8 +296,8 @@ sub_806EC98: @ 0x0806EC98
 	orrs r2, r1
 	adds r1, r2, #0
 	strb r1, [r0]
-	ldr r0, _0806ED74 @ =0x0203E0D4
-	ldr r2, _0806ED74 @ =0x0203E0D4
+	ldr r0, _0806ED74 @ =gManimSt
+	ldr r2, _0806ED74 @ =gManimSt
 	ldr r1, [r2, #0x50]
 	adds r2, r0, #0
 	adds r0, #0x5d
@@ -310,13 +310,13 @@ sub_806EC98: @ 0x0806EC98
 	orrs r2, r1
 	adds r1, r2, #0
 	strb r1, [r0]
-	ldr r1, _0806ED74 @ =0x0203E0D4
+	ldr r1, _0806ED74 @ =gManimSt
 	adds r0, r1, #0
 	adds r1, #0x5e
 	ldrb r0, [r1]
 	cmp r0, #1
 	bne _0806ED62
-	ldr r0, _0806ED74 @ =0x0203E0D4
+	ldr r0, _0806ED74 @ =gManimSt
 	adds r1, r0, #0
 	adds r0, #0x58
 	ldrb r1, [r0]
@@ -324,7 +324,7 @@ sub_806EC98: @ 0x0806EC98
 	ands r1, r2
 	adds r2, r1, #0
 	strb r2, [r0]
-	ldr r0, _0806ED74 @ =0x0203E0D4
+	ldr r0, _0806ED74 @ =gManimSt
 	adds r1, r0, #0
 	adds r0, #0x59
 	ldrb r1, [r0]
@@ -333,9 +333,9 @@ sub_806EC98: @ 0x0806EC98
 	adds r2, r1, #0
 	strb r2, [r0]
 _0806ED62:
-	ldr r1, _0806ED74 @ =0x0203E0D4
-	ldr r0, _0806ED74 @ =0x0203E0D4
-	ldr r1, _0806ED74 @ =0x0203E0D4
+	ldr r1, _0806ED74 @ =gManimSt
+	ldr r0, _0806ED74 @ =gManimSt
+	ldr r1, _0806ED74 @ =gManimSt
 	ldr r2, [r1, #0x50]
 	adds r1, r2, #4
 	str r1, [r0, #0x50]
@@ -343,7 +343,7 @@ _0806ED62:
 	pop {r0}
 	bx r0
 	.align 2, 0
-_0806ED74: .4byte 0x0203E0D4
+_0806ED74: .4byte gManimSt
 
 	thumb_func_start sub_806ED78
 sub_806ED78: @ 0x0806ED78
@@ -351,7 +351,7 @@ sub_806ED78: @ 0x0806ED78
 	sub sp, #4
 	mov r7, sp
 	str r0, [r7]
-	ldr r0, _0806EDA4 @ =0x0203E0D4
+	ldr r0, _0806EDA4 @ =gManimSt
 	ldr r1, [r0, #0x50]
 	ldrb r0, [r1, #2]
 	movs r1, #0x80
@@ -368,7 +368,7 @@ sub_806ED78: @ 0x0806ED78
 	bl sub_8004634
 	b _0806EDB6
 	.align 2, 0
-_0806EDA4: .4byte 0x0203E0D4
+_0806EDA4: .4byte gManimSt
 _0806EDA8: .4byte gUnk_08D6561C
 _0806EDAC:
 	bl sub_806EC98
@@ -404,7 +404,7 @@ sub_806EDE0: @ 0x0806EDE0
 	sub sp, #4
 	mov r7, sp
 	str r0, [r7]
-	ldr r1, _0806EE2C @ =0x0203E0D4
+	ldr r1, _0806EE2C @ =gManimSt
 	adds r0, r1, #0
 	adds r1, #0x5a
 	ldrh r0, [r1]
@@ -415,8 +415,8 @@ sub_806EDE0: @ 0x0806EDE0
 	lsrs r0, r1, #0x10
 	cmp r0, #0
 	beq _0806EE22
-	ldr r0, _0806EE2C @ =0x0203E0D4
-	ldr r2, _0806EE2C @ =0x0203E0D4
+	ldr r0, _0806EE2C @ =gManimSt
+	ldr r2, _0806EE2C @ =gManimSt
 	adds r1, r2, #0
 	adds r2, #0x59
 	ldrb r1, [r2]
@@ -437,7 +437,7 @@ _0806EE22:
 	pop {r0}
 	bx r0
 	.align 2, 0
-_0806EE2C: .4byte 0x0203E0D4
+_0806EE2C: .4byte gManimSt
 
 	thumb_func_start sub_806EE30
 sub_806EE30: @ 0x0806EE30
@@ -445,11 +445,11 @@ sub_806EE30: @ 0x0806EE30
 	sub sp, #4
 	mov r7, sp
 	str r0, [r7]
-	ldr r0, _0806EE58 @ =0x0203E0D4
+	ldr r0, _0806EE58 @ =gManimSt
 	ldr r2, [r0]
 	movs r1, #0x10
 	ldrsb r1, [r2, r1]
-	ldr r0, _0806EE58 @ =0x0203E0D4
+	ldr r0, _0806EE58 @ =gManimSt
 	ldr r3, [r0]
 	movs r2, #0x11
 	ldrsb r2, [r3, r2]
@@ -460,7 +460,7 @@ sub_806EE30: @ 0x0806EE30
 	pop {r0}
 	bx r0
 	.align 2, 0
-_0806EE58: .4byte 0x0203E0D4
+_0806EE58: .4byte gManimSt
 
 	thumb_func_start sub_806EE5C
 sub_806EE5C: @ 0x0806EE5C
@@ -468,7 +468,7 @@ sub_806EE5C: @ 0x0806EE5C
 	sub sp, #4
 	mov r7, sp
 	str r0, [r7]
-	ldr r1, _0806EE74 @ =0x0203E0D4
+	ldr r1, _0806EE74 @ =gManimSt
 	adds r0, r1, #0
 	adds r1, #0x5e
 	ldrb r0, [r1]
@@ -476,13 +476,13 @@ sub_806EE5C: @ 0x0806EE5C
 	bne _0806EE78
 	b _0806EE8E
 	.align 2, 0
-_0806EE74: .4byte 0x0203E0D4
+_0806EE74: .4byte gManimSt
 _0806EE78:
-	ldr r0, _0806EE98 @ =0x0203E0D4
+	ldr r0, _0806EE98 @ =gManimSt
 	ldr r2, [r0, #0x14]
 	movs r1, #0x10
 	ldrsb r1, [r2, r1]
-	ldr r0, _0806EE98 @ =0x0203E0D4
+	ldr r0, _0806EE98 @ =gManimSt
 	ldr r3, [r0, #0x14]
 	movs r2, #0x11
 	ldrsb r2, [r3, r2]
@@ -494,7 +494,7 @@ _0806EE8E:
 	pop {r0}
 	bx r0
 	.align 2, 0
-_0806EE98: .4byte 0x0203E0D4
+_0806EE98: .4byte gManimSt
 
 	thumb_func_start sub_806EE9C
 sub_806EE9C: @ 0x0806EE9C
@@ -505,7 +505,7 @@ sub_806EE9C: @ 0x0806EE9C
 	movs r0, #1
 	rsbs r0, r0, #0
 	str r0, [r7, #4]
-	ldr r1, _0806EEBC @ =0x0203E0D4
+	ldr r1, _0806EEBC @ =gManimSt
 	adds r0, r1, #0
 	adds r1, #0x5e
 	ldrb r0, [r1]
@@ -515,9 +515,9 @@ sub_806EE9C: @ 0x0806EE9C
 	beq _0806EEC0
 	b _0806EEE4
 	.align 2, 0
-_0806EEBC: .4byte 0x0203E0D4
+_0806EEBC: .4byte gManimSt
 _0806EEC0:
-	ldr r1, _0806EEE0 @ =0x0203E0D4
+	ldr r1, _0806EEE0 @ =gManimSt
 	adds r0, r1, #0
 	adds r1, #0x21
 	ldrb r0, [r1]
@@ -526,7 +526,7 @@ _0806EEC0:
 	movs r0, #1
 	str r0, [r7, #4]
 _0806EED0:
-	ldr r0, _0806EEE0 @ =0x0203E0D4
+	ldr r0, _0806EEE0 @ =gManimSt
 	ldrb r1, [r0, #0xd]
 	cmp r1, #0
 	bne _0806EEDC
@@ -535,13 +535,13 @@ _0806EED0:
 _0806EEDC:
 	b _0806EEE4
 	.align 2, 0
-_0806EEE0: .4byte 0x0203E0D4
+_0806EEE0: .4byte gManimSt
 _0806EEE4:
 	ldr r0, [r7, #4]
 	movs r1, #1
 	cmn r0, r1
 	beq _0806EF2E
-	ldr r0, _0806EF38 @ =0x0203E0D4
+	ldr r0, _0806EF38 @ =gManimSt
 	ldr r1, [r7, #4]
 	adds r3, r1, #0
 	lsls r2, r3, #2
@@ -576,7 +576,7 @@ _0806EF2E:
 	pop {r0}
 	bx r0
 	.align 2, 0
-_0806EF38: .4byte 0x0203E0D4
+_0806EF38: .4byte gManimSt
 
 	thumb_func_start sub_806EF3C
 sub_806EF3C: @ 0x0806EF3C
@@ -587,7 +587,7 @@ sub_806EF3C: @ 0x0806EF3C
 	movs r0, #1
 	rsbs r0, r0, #0
 	str r0, [r7, #4]
-	ldr r1, _0806EF5C @ =0x0203E0D4
+	ldr r1, _0806EF5C @ =gManimSt
 	adds r0, r1, #0
 	adds r1, #0x5e
 	ldrb r0, [r1]
@@ -597,9 +597,9 @@ sub_806EF3C: @ 0x0806EF3C
 	beq _0806EF60
 	b _0806EF84
 	.align 2, 0
-_0806EF5C: .4byte 0x0203E0D4
+_0806EF5C: .4byte gManimSt
 _0806EF60:
-	ldr r1, _0806EF80 @ =0x0203E0D4
+	ldr r1, _0806EF80 @ =gManimSt
 	adds r0, r1, #0
 	adds r1, #0x21
 	ldrb r0, [r1]
@@ -608,7 +608,7 @@ _0806EF60:
 	movs r0, #1
 	str r0, [r7, #4]
 _0806EF70:
-	ldr r0, _0806EF80 @ =0x0203E0D4
+	ldr r0, _0806EF80 @ =gManimSt
 	ldrb r1, [r0, #0xd]
 	cmp r1, #0
 	bne _0806EF7C
@@ -617,13 +617,13 @@ _0806EF70:
 _0806EF7C:
 	b _0806EF84
 	.align 2, 0
-_0806EF80: .4byte 0x0203E0D4
+_0806EF80: .4byte gManimSt
 _0806EF84:
 	ldr r0, [r7, #4]
 	movs r1, #1
 	cmn r0, r1
 	beq _0806EFA4
-	ldr r0, _0806EFAC @ =0x0203E0D4
+	ldr r0, _0806EFAC @ =gManimSt
 	ldr r1, [r7, #4]
 	adds r3, r1, #0
 	lsls r2, r3, #2
@@ -640,7 +640,7 @@ _0806EFA4:
 	pop {r0}
 	bx r0
 	.align 2, 0
-_0806EFAC: .4byte 0x0203E0D4
+_0806EFAC: .4byte gManimSt
 
 	thumb_func_start sub_806EFB0
 sub_806EFB0: @ 0x0806EFB0
@@ -651,7 +651,7 @@ sub_806EFB0: @ 0x0806EFB0
 	movs r0, #1
 	rsbs r0, r0, #0
 	str r0, [r7, #8]
-	ldr r1, _0806EFD0 @ =0x0203E0D4
+	ldr r1, _0806EFD0 @ =gManimSt
 	adds r0, r1, #0
 	adds r1, #0x5e
 	ldrb r0, [r1]
@@ -661,9 +661,9 @@ sub_806EFB0: @ 0x0806EFB0
 	beq _0806EFD4
 	b _0806F004
 	.align 2, 0
-_0806EFD0: .4byte 0x0203E0D4
+_0806EFD0: .4byte gManimSt
 _0806EFD4:
-	ldr r0, _0806F000 @ =0x0203E0D4
+	ldr r0, _0806F000 @ =gManimSt
 	ldr r1, [r0, #0x18]
 	adds r0, r1, #0
 	adds r1, #0x6e
@@ -674,7 +674,7 @@ _0806EFD4:
 	movs r0, #1
 	str r0, [r7, #8]
 _0806EFE8:
-	ldr r0, _0806F000 @ =0x0203E0D4
+	ldr r0, _0806F000 @ =gManimSt
 	ldr r1, [r0, #4]
 	adds r0, r1, #0
 	adds r1, #0x6e
@@ -687,7 +687,7 @@ _0806EFE8:
 _0806EFFC:
 	b _0806F004
 	.align 2, 0
-_0806F000: .4byte 0x0203E0D4
+_0806F000: .4byte gManimSt
 _0806F004:
 	ldr r0, [r7, #8]
 	cmp r0, #0
@@ -698,7 +698,7 @@ _0806F004:
 	bl Proc_StartBlocking
 	str r0, [r7, #4]
 	ldr r0, [r7, #4]
-	ldr r1, _0806F0C0 @ =0x0203E0D4
+	ldr r1, _0806F0C0 @ =gManimSt
 	ldr r2, [r7, #8]
 	adds r4, r2, #0
 	lsls r3, r4, #2
@@ -723,7 +723,7 @@ _0806F004:
 	adds r2, r1, #0
 	strh r2, [r0]
 	ldr r0, [r7, #4]
-	ldr r1, _0806F0C0 @ =0x0203E0D4
+	ldr r1, _0806F0C0 @ =gManimSt
 	ldr r2, [r7, #8]
 	adds r4, r2, #0
 	lsls r3, r4, #2
@@ -738,7 +738,7 @@ _0806F004:
 	movs r3, #0
 	ldrsb r3, [r2, r3]
 	adds r1, r3, #0
-	ldr r2, _0806F0C0 @ =0x0203E0D4
+	ldr r2, _0806F0C0 @ =gManimSt
 	ldr r3, [r7, #8]
 	adds r5, r3, #0
 	lsls r4, r5, #2
@@ -783,7 +783,7 @@ _0806F0B4:
 	bx r0
 	.align 2, 0
 _0806F0BC: .4byte gUnk_08D65760
-_0806F0C0: .4byte 0x0203E0D4
+_0806F0C0: .4byte gManimSt
 
 	thumb_func_start sub_806F0C4
 sub_806F0C4: @ 0x0806F0C4
@@ -827,7 +827,7 @@ sub_806F0C4: @ 0x0806F0C4
 	ands r1, r2
 	adds r2, r1, #0
 	strb r2, [r0]
-	ldr r1, _0806F12C @ =0x0203E0D4
+	ldr r1, _0806F12C @ =gManimSt
 	adds r0, r1, #0
 	adds r1, #0x62
 	ldrb r0, [r1]
@@ -838,13 +838,13 @@ sub_806F0C4: @ 0x0806F0C4
 	b _0806F130
 	.align 2, 0
 _0806F128: .4byte gDispIo
-_0806F12C: .4byte 0x0203E0D4
+_0806F12C: .4byte gManimSt
 _0806F130:
 	b _0806F276
 _0806F132:
 	b _0806F134
 _0806F134:
-	ldr r0, _0806F150 @ =0x0203E0D4
+	ldr r0, _0806F150 @ =gManimSt
 	ldr r1, [r0, #4]
 	adds r0, r1, #0
 	adds r1, #0x4a
@@ -857,15 +857,15 @@ _0806F134:
 	bne _0806F154
 	b _0806F276
 	.align 2, 0
-_0806F150: .4byte 0x0203E0D4
+_0806F150: .4byte gManimSt
 _0806F154:
-	ldr r1, _0806F184 @ =0x0203E0D4
+	ldr r1, _0806F184 @ =gManimSt
 	adds r0, r1, #0
 	adds r1, #0x5e
 	ldrb r0, [r1]
 	cmp r0, #1
 	bne _0806F196
-	ldr r0, _0806F184 @ =0x0203E0D4
+	ldr r0, _0806F184 @ =gManimSt
 	ldr r1, [r0]
 	movs r2, #0x11
 	ldrsb r2, [r1, r2]
@@ -884,7 +884,7 @@ _0806F154:
 	str r1, [r7, #4]
 	b _0806F194
 	.align 2, 0
-_0806F184: .4byte 0x0203E0D4
+_0806F184: .4byte gManimSt
 _0806F188: .4byte gBmSt
 _0806F18C:
 	ldr r0, [r7, #4]
@@ -897,7 +897,7 @@ _0806F196:
 	movs r0, #0
 	str r0, [r7, #0x10]
 _0806F19A:
-	ldr r1, _0806F1AC @ =0x0203E0D4
+	ldr r1, _0806F1AC @ =gManimSt
 	adds r0, r1, #0
 	adds r1, #0x5e
 	ldrb r0, [r1]
@@ -906,7 +906,7 @@ _0806F19A:
 	blt _0806F1B0
 	b _0806F1EC
 	.align 2, 0
-_0806F1AC: .4byte 0x0203E0D4
+_0806F1AC: .4byte gManimSt
 _0806F1B0:
 	ldr r0, [r7, #0x10]
 	adds r1, r0, #0
@@ -914,7 +914,7 @@ _0806F1B0:
 	adds r1, r7, #0
 	adds r1, #8
 	adds r0, r1, r0
-	ldr r1, _0806F1E4 @ =0x0203E0D4
+	ldr r1, _0806F1E4 @ =gManimSt
 	ldr r2, [r7, #0x10]
 	adds r4, r2, #0
 	lsls r3, r4, #2
@@ -935,7 +935,7 @@ _0806F1B0:
 	str r1, [r7, #0x10]
 	b _0806F19A
 	.align 2, 0
-_0806F1E4: .4byte 0x0203E0D4
+_0806F1E4: .4byte gManimSt
 _0806F1E8: .4byte gBmSt
 _0806F1EC:
 	ldr r0, [r7, #8]
@@ -1026,7 +1026,7 @@ sub_806F280: @ 0x0806F280
 	sub sp, #4
 	mov r7, sp
 	str r0, [r7]
-	ldr r1, _0806F298 @ =0x0203E0D4
+	ldr r1, _0806F298 @ =gManimSt
 	adds r0, r1, #0
 	adds r1, #0x5e
 	ldrb r0, [r1]
@@ -1034,13 +1034,13 @@ sub_806F280: @ 0x0806F280
 	beq _0806F29C
 	b _0806F2B8
 	.align 2, 0
-_0806F298: .4byte 0x0203E0D4
+_0806F298: .4byte gManimSt
 _0806F29C:
-	ldr r0, _0806F2B4 @ =0x0203E0D4
+	ldr r0, _0806F2B4 @ =gManimSt
 	ldr r1, [r0]
 	ldr r2, [r1]
 	ldrb r0, [r2, #4]
-	ldr r1, _0806F2B4 @ =0x0203E0D4
+	ldr r1, _0806F2B4 @ =gManimSt
 	ldr r2, [r1, #0x14]
 	ldr r1, [r2]
 	ldrb r2, [r1, #4]
@@ -1048,7 +1048,7 @@ _0806F29C:
 	bl StartBattleTalk
 	b _0806F2BA
 	.align 2, 0
-_0806F2B4: .4byte 0x0203E0D4
+_0806F2B4: .4byte gManimSt
 _0806F2B8:
 	b _0806F2BA
 _0806F2BA:
@@ -1076,7 +1076,7 @@ sub_806F2D8: @ 0x0806F2D8
 	sub sp, #4
 	mov r7, sp
 	str r0, [r7]
-	ldr r1, _0806F2F4 @ =0x0203E0D4
+	ldr r1, _0806F2F4 @ =gManimSt
 	adds r0, r1, #0
 	adds r1, #0x5e
 	ldrb r0, [r1]
@@ -1086,7 +1086,7 @@ sub_806F2D8: @ 0x0806F2D8
 	beq _0806F2F8
 	b _0806F304
 	.align 2, 0
-_0806F2F4: .4byte 0x0203E0D4
+_0806F2F4: .4byte gManimSt
 _0806F2F8:
 	movs r0, #1
 	bl sub_806F2C8
@@ -1133,7 +1133,7 @@ InitManimActor: @ 0x0806F330
 	bne _0806F344
 	b _0806F3F8
 _0806F344:
-	ldr r0, _0806F3DC @ =0x0203E0D4
+	ldr r0, _0806F3DC @ =gManimSt
 	ldr r1, [r7]
 	adds r3, r1, #0
 	lsls r2, r3, #2
@@ -1142,7 +1142,7 @@ _0806F344:
 	adds r0, r0, r1
 	ldr r1, [r7, #8]
 	str r1, [r0]
-	ldr r0, _0806F3DC @ =0x0203E0D4
+	ldr r0, _0806F3DC @ =gManimSt
 	ldr r1, [r7]
 	adds r3, r1, #0
 	lsls r2, r3, #2
@@ -1155,7 +1155,7 @@ _0806F344:
 	ldr r1, [r7, #8]
 	adds r0, r1, #0
 	bl StartMu
-	ldr r1, _0806F3DC @ =0x0203E0D4
+	ldr r1, _0806F3DC @ =gManimSt
 	ldr r2, [r7]
 	adds r4, r2, #0
 	lsls r3, r4, #2
@@ -1164,7 +1164,7 @@ _0806F344:
 	adds r1, #8
 	adds r2, r1, r2
 	str r0, [r2]
-	ldr r0, _0806F3DC @ =0x0203E0D4
+	ldr r0, _0806F3DC @ =gManimSt
 	ldr r1, [r7]
 	adds r3, r1, #0
 	lsls r2, r3, #2
@@ -1179,7 +1179,7 @@ _0806F344:
 	ands r1, r2
 	adds r2, r1, #0
 	strh r2, [r0, #0x18]
-	ldr r0, _0806F3DC @ =0x0203E0D4
+	ldr r0, _0806F3DC @ =gManimSt
 	ldr r1, [r7]
 	adds r3, r1, #0
 	lsls r2, r3, #2
@@ -1208,9 +1208,9 @@ _0806F344:
 	beq _0806F3E0
 	b _0806F3F8
 	.align 2, 0
-_0806F3DC: .4byte 0x0203E0D4
+_0806F3DC: .4byte gManimSt
 _0806F3E0:
-	ldr r0, _0806F400 @ =0x0203E0D4
+	ldr r0, _0806F400 @ =gManimSt
 	ldr r1, [r7]
 	adds r3, r1, #0
 	lsls r2, r3, #2
@@ -1227,7 +1227,7 @@ _0806F3F8:
 	pop {r0}
 	bx r0
 	.align 2, 0
-_0806F400: .4byte 0x0203E0D4
+_0806F400: .4byte gManimSt
 
 	thumb_func_start sub_806F404
 sub_806F404: @ 0x0806F404
@@ -1250,7 +1250,7 @@ _0806F420:
 	beq _0806F4BC
 	b _0806F506
 _0806F426:
-	ldr r0, _0806F498 @ =0x0203E0D4
+	ldr r0, _0806F498 @ =gManimSt
 	ldr r1, [r7]
 	adds r3, r1, #0
 	lsls r2, r3, #2
@@ -1260,7 +1260,7 @@ _0806F426:
 	ldr r1, [r0]
 	movs r0, #0x10
 	ldrsb r0, [r1, r0]
-	ldr r1, _0806F498 @ =0x0203E0D4
+	ldr r1, _0806F498 @ =gManimSt
 	ldr r2, [r7]
 	adds r4, r2, #0
 	lsls r3, r4, #2
@@ -1270,7 +1270,7 @@ _0806F426:
 	ldr r2, [r1]
 	movs r1, #0x11
 	ldrsb r1, [r2, r1]
-	ldr r2, _0806F498 @ =0x0203E0D4
+	ldr r2, _0806F498 @ =gManimSt
 	ldr r3, [r7, #4]
 	adds r5, r3, #0
 	lsls r4, r5, #2
@@ -1280,7 +1280,7 @@ _0806F426:
 	ldr r3, [r2]
 	movs r2, #0x10
 	ldrsb r2, [r3, r2]
-	ldr r3, _0806F498 @ =0x0203E0D4
+	ldr r3, _0806F498 @ =gManimSt
 	ldr r4, [r7, #4]
 	adds r6, r4, #0
 	lsls r5, r6, #2
@@ -1292,7 +1292,7 @@ _0806F426:
 	ldrsb r3, [r4, r3]
 	bl GetFacingFromTo
 	str r0, [r7, #0xc]
-	ldr r0, _0806F498 @ =0x0203E0D4
+	ldr r0, _0806F498 @ =gManimSt
 	ldr r1, [r7]
 	adds r3, r1, #0
 	lsls r2, r3, #2
@@ -1305,9 +1305,9 @@ _0806F426:
 	bl sub_806C738
 	b _0806F506
 	.align 2, 0
-_0806F498: .4byte 0x0203E0D4
+_0806F498: .4byte gManimSt
 _0806F49C:
-	ldr r0, _0806F4B8 @ =0x0203E0D4
+	ldr r0, _0806F4B8 @ =gManimSt
 	ldr r1, [r7]
 	adds r3, r1, #0
 	lsls r2, r3, #2
@@ -1320,9 +1320,9 @@ _0806F49C:
 	bl sub_806C790
 	b _0806F506
 	.align 2, 0
-_0806F4B8: .4byte 0x0203E0D4
+_0806F4B8: .4byte gManimSt
 _0806F4BC:
-	ldr r0, _0806F510 @ =0x0203E0D4
+	ldr r0, _0806F510 @ =gManimSt
 	ldr r1, [r7]
 	adds r3, r1, #0
 	lsls r2, r3, #2
@@ -1332,7 +1332,7 @@ _0806F4BC:
 	ldr r1, [r0]
 	movs r0, #0x10
 	ldrsb r0, [r1, r0]
-	ldr r1, _0806F510 @ =0x0203E0D4
+	ldr r1, _0806F510 @ =gManimSt
 	ldr r2, [r7]
 	adds r4, r2, #0
 	lsls r3, r4, #2
@@ -1346,7 +1346,7 @@ _0806F4BC:
 	movs r3, #0
 	bl GetFacingFromTo
 	str r0, [r7, #0xc]
-	ldr r0, _0806F510 @ =0x0203E0D4
+	ldr r0, _0806F510 @ =gManimSt
 	ldr r1, [r7]
 	adds r3, r1, #0
 	lsls r2, r3, #2
@@ -1363,14 +1363,14 @@ _0806F506:
 	pop {r0}
 	bx r0
 	.align 2, 0
-_0806F510: .4byte 0x0203E0D4
+_0806F510: .4byte gManimSt
 
 	thumb_func_start InitManimActorFacings
 InitManimActorFacings: @ 0x0806F514
 	push {r7, lr}
 	sub sp, #4
 	mov r7, sp
-	ldr r0, _0806F548 @ =0x0203E0D4
+	ldr r0, _0806F548 @ =gManimSt
 	ldr r1, [r0, #4]
 	adds r0, r1, #0
 	adds r1, #0x4a
@@ -1381,7 +1381,7 @@ InitManimActorFacings: @ 0x0806F514
 	lsrs r0, r1, #0x18
 	str r0, [r7]
 	bl sub_806F598
-	ldr r1, _0806F548 @ =0x0203E0D4
+	ldr r1, _0806F548 @ =gManimSt
 	adds r0, r1, #0
 	adds r1, #0x5e
 	ldrb r0, [r1]
@@ -1391,7 +1391,7 @@ InitManimActorFacings: @ 0x0806F514
 	beq _0806F54C
 	b _0806F590
 	.align 2, 0
-_0806F548: .4byte 0x0203E0D4
+_0806F548: .4byte gManimSt
 _0806F54C:
 	ldr r0, _0806F58C @ =gBattleHitArray
 	ldrh r1, [r0]
@@ -1436,12 +1436,12 @@ sub_806F598: @ 0x0806F598
 	push {r4, r7, lr}
 	sub sp, #0x18
 	mov r7, sp
-	ldr r1, _0806F5BC @ =0x0203E0D4
+	ldr r1, _0806F5BC @ =gManimSt
 	adds r0, r1, #0
 	adds r1, #0x5e
 	ldrb r0, [r1]
 	str r0, [r7, #0x14]
-	ldr r1, _0806F5BC @ =0x0203E0D4
+	ldr r1, _0806F5BC @ =gManimSt
 	adds r0, r1, #0
 	adds r1, #0x5e
 	ldrb r0, [r1]
@@ -1451,7 +1451,7 @@ sub_806F598: @ 0x0806F598
 	beq _0806F5C0
 	b _0806F5E6
 	.align 2, 0
-_0806F5BC: .4byte 0x0203E0D4
+_0806F5BC: .4byte gManimSt
 _0806F5C0:
 	ldr r0, _0806F5E0 @ =gBattleHitArray
 	ldrh r1, [r0]
@@ -1522,7 +1522,7 @@ _0806F62A:
 _0806F634:
 	movs r0, #0
 	str r0, [r7, #0x10]
-	ldr r0, _0806F6B4 @ =0x0203E0D4
+	ldr r0, _0806F6B4 @ =gManimSt
 	adds r1, r7, #0
 	ldr r2, [r7, #8]
 	adds r3, r1, r2
@@ -1533,7 +1533,7 @@ _0806F634:
 	lsls r1, r2, #2
 	adds r2, r0, r1
 	ldr r0, [r2]
-	ldr r1, _0806F6B4 @ =0x0203E0D4
+	ldr r1, _0806F6B4 @ =gManimSt
 	adds r2, r7, #0
 	ldr r3, [r7, #0xc]
 	adds r4, r2, r3
@@ -1551,7 +1551,7 @@ _0806F634:
 	ldrsb r1, [r2, r1]
 	cmp r0, r1
 	bne _0806F6B8
-	ldr r0, _0806F6B4 @ =0x0203E0D4
+	ldr r0, _0806F6B4 @ =gManimSt
 	adds r1, r7, #0
 	ldr r2, [r7, #8]
 	adds r3, r1, r2
@@ -1562,7 +1562,7 @@ _0806F634:
 	lsls r1, r2, #2
 	adds r2, r0, r1
 	ldr r0, [r2]
-	ldr r1, _0806F6B4 @ =0x0203E0D4
+	ldr r1, _0806F6B4 @ =gManimSt
 	adds r2, r7, #0
 	ldr r3, [r7, #0xc]
 	adds r4, r2, r3
@@ -1586,9 +1586,9 @@ _0806F634:
 _0806F6B2:
 	b _0806F6F8
 	.align 2, 0
-_0806F6B4: .4byte 0x0203E0D4
+_0806F6B4: .4byte gManimSt
 _0806F6B8:
-	ldr r0, _0806F74C @ =0x0203E0D4
+	ldr r0, _0806F74C @ =gManimSt
 	adds r1, r7, #0
 	ldr r2, [r7, #8]
 	adds r3, r1, r2
@@ -1599,7 +1599,7 @@ _0806F6B8:
 	lsls r1, r2, #2
 	adds r2, r0, r1
 	ldr r0, [r2]
-	ldr r1, _0806F74C @ =0x0203E0D4
+	ldr r1, _0806F74C @ =gManimSt
 	adds r2, r7, #0
 	ldr r3, [r7, #0xc]
 	adds r4, r2, r3
@@ -1664,7 +1664,7 @@ _0806F742:
 	str r1, [r7, #0xc]
 	b _0806F62A
 	.align 2, 0
-_0806F74C: .4byte 0x0203E0D4
+_0806F74C: .4byte gManimSt
 _0806F750:
 	ldr r0, [r7, #8]
 	adds r1, r0, #1
@@ -1680,7 +1680,7 @@ _0806F75C:
 	blt _0806F766
 	b _0806F7A8
 _0806F766:
-	ldr r0, _0806F7A0 @ =0x0203E0D4
+	ldr r0, _0806F7A0 @ =gManimSt
 	adds r1, r7, #0
 	ldr r2, [r7, #8]
 	adds r3, r1, r2
@@ -1710,7 +1710,7 @@ _0806F766:
 	str r1, [r7, #8]
 	b _0806F75C
 	.align 2, 0
-_0806F7A0: .4byte 0x0203E0D4
+_0806F7A0: .4byte gManimSt
 _0806F7A4: .4byte gUnk_08402BF0
 _0806F7A8:
 	add sp, #0x18
@@ -1734,7 +1734,7 @@ sub_806F7B0: @ 0x0806F7B0
 	orrs r1, r3
 	adds r2, r1, #0
 	strh r2, [r0]
-	ldr r0, _0806F82C @ =0x0203E0D4
+	ldr r0, _0806F82C @ =gManimSt
 	adds r1, r0, #0
 	adds r0, #0x5f
 	ldrb r1, [r0]
@@ -1742,7 +1742,7 @@ sub_806F7B0: @ 0x0806F7B0
 	ands r1, r2
 	adds r2, r1, #0
 	strb r2, [r0]
-	ldr r0, _0806F82C @ =0x0203E0D4
+	ldr r0, _0806F82C @ =gManimSt
 	adds r1, r0, #0
 	adds r0, #0x62
 	ldrb r1, [r0]
@@ -1750,7 +1750,7 @@ sub_806F7B0: @ 0x0806F7B0
 	ands r1, r2
 	adds r2, r1, #0
 	strb r2, [r0]
-	ldr r0, _0806F82C @ =0x0203E0D4
+	ldr r0, _0806F82C @ =gManimSt
 	adds r1, r0, #0
 	adds r0, #0x5e
 	ldrb r1, [r0]
@@ -1762,7 +1762,7 @@ sub_806F7B0: @ 0x0806F7B0
 	orrs r1, r3
 	adds r2, r1, #0
 	strb r2, [r0]
-	ldr r0, _0806F82C @ =0x0203E0D4
+	ldr r0, _0806F82C @ =gManimSt
 	ldr r1, _0806F830 @ =gBattleHitArray
 	str r1, [r0, #0x50]
 	bl sub_806EC98
@@ -1779,7 +1779,7 @@ sub_806F7B0: @ 0x0806F7B0
 	bx r0
 	.align 2, 0
 _0806F828: .4byte gBattleActor
-_0806F82C: .4byte 0x0203E0D4
+_0806F82C: .4byte gManimSt
 _0806F830: .4byte gBattleHitArray
 _0806F834: .4byte gBattleTarget
 _0806F838: .4byte gUnk_08D653CC
@@ -1800,7 +1800,7 @@ sub_806F83C: @ 0x0806F83C
 	orrs r1, r3
 	adds r2, r1, #0
 	strh r2, [r0]
-	ldr r0, _0806F8B8 @ =0x0203E0D4
+	ldr r0, _0806F8B8 @ =gManimSt
 	adds r1, r0, #0
 	adds r0, #0x5f
 	ldrb r1, [r0]
@@ -1808,7 +1808,7 @@ sub_806F83C: @ 0x0806F83C
 	ands r1, r2
 	adds r2, r1, #0
 	strb r2, [r0]
-	ldr r0, _0806F8B8 @ =0x0203E0D4
+	ldr r0, _0806F8B8 @ =gManimSt
 	adds r1, r0, #0
 	adds r0, #0x62
 	ldrb r1, [r0]
@@ -1816,7 +1816,7 @@ sub_806F83C: @ 0x0806F83C
 	ands r1, r2
 	adds r2, r1, #0
 	strb r2, [r0]
-	ldr r0, _0806F8B8 @ =0x0203E0D4
+	ldr r0, _0806F8B8 @ =gManimSt
 	adds r1, r0, #0
 	adds r0, #0x5e
 	ldrb r1, [r0]
@@ -1828,7 +1828,7 @@ sub_806F83C: @ 0x0806F83C
 	orrs r1, r3
 	adds r2, r1, #0
 	strb r2, [r0]
-	ldr r0, _0806F8B8 @ =0x0203E0D4
+	ldr r0, _0806F8B8 @ =gManimSt
 	ldr r1, _0806F8BC @ =gBattleHitArray
 	str r1, [r0, #0x50]
 	bl sub_806EC98
@@ -1845,7 +1845,7 @@ sub_806F83C: @ 0x0806F83C
 	bx r0
 	.align 2, 0
 _0806F8B4: .4byte gBattleActor
-_0806F8B8: .4byte 0x0203E0D4
+_0806F8B8: .4byte gManimSt
 _0806F8BC: .4byte gBattleHitArray
 _0806F8C0: .4byte gBattleTarget
 _0806F8C4: .4byte gUnk_08D6540C
@@ -1866,7 +1866,7 @@ sub_806F8C8: @ 0x0806F8C8
 	orrs r1, r3
 	adds r2, r1, #0
 	strh r2, [r0]
-	ldr r0, _0806F96C @ =0x0203E0D4
+	ldr r0, _0806F96C @ =gManimSt
 	adds r1, r0, #0
 	adds r0, #0x5f
 	ldrb r1, [r0]
@@ -1874,7 +1874,7 @@ sub_806F8C8: @ 0x0806F8C8
 	ands r1, r2
 	adds r2, r1, #0
 	strb r2, [r0]
-	ldr r0, _0806F96C @ =0x0203E0D4
+	ldr r0, _0806F96C @ =gManimSt
 	adds r1, r0, #0
 	adds r0, #0x62
 	ldrb r1, [r0]
@@ -1886,7 +1886,7 @@ sub_806F8C8: @ 0x0806F8C8
 	orrs r1, r3
 	adds r2, r1, #0
 	strb r2, [r0]
-	ldr r0, _0806F96C @ =0x0203E0D4
+	ldr r0, _0806F96C @ =gManimSt
 	adds r1, r0, #0
 	adds r0, #0x5e
 	ldrb r1, [r0]
@@ -1898,7 +1898,7 @@ sub_806F8C8: @ 0x0806F8C8
 	orrs r1, r3
 	adds r2, r1, #0
 	strb r2, [r0]
-	ldr r0, _0806F96C @ =0x0203E0D4
+	ldr r0, _0806F96C @ =gManimSt
 	adds r1, r0, #0
 	adds r0, #0x58
 	ldrb r1, [r0]
@@ -1906,7 +1906,7 @@ sub_806F8C8: @ 0x0806F8C8
 	ands r1, r2
 	adds r2, r1, #0
 	strb r2, [r0]
-	ldr r0, _0806F96C @ =0x0203E0D4
+	ldr r0, _0806F96C @ =gManimSt
 	adds r1, r0, #0
 	adds r0, #0x59
 	ldrb r1, [r0]
@@ -1931,7 +1931,7 @@ sub_806F8C8: @ 0x0806F8C8
 	bx r0
 	.align 2, 0
 _0806F968: .4byte gBattleActor
-_0806F96C: .4byte 0x0203E0D4
+_0806F96C: .4byte gManimSt
 _0806F970: .4byte gBattleTarget
 _0806F974: .4byte gBattleHitArray
 _0806F978: .4byte gUnk_08D6544C
@@ -1952,7 +1952,7 @@ sub_806F97C: @ 0x0806F97C
 	orrs r1, r3
 	adds r2, r1, #0
 	strh r2, [r0]
-	ldr r0, _0806FA18 @ =0x0203E0D4
+	ldr r0, _0806FA18 @ =gManimSt
 	adds r1, r0, #0
 	adds r0, #0x5f
 	ldrb r1, [r0]
@@ -1960,7 +1960,7 @@ sub_806F97C: @ 0x0806F97C
 	ands r1, r2
 	adds r2, r1, #0
 	strb r2, [r0]
-	ldr r0, _0806FA18 @ =0x0203E0D4
+	ldr r0, _0806FA18 @ =gManimSt
 	adds r1, r0, #0
 	adds r0, #0x62
 	ldrb r1, [r0]
@@ -1972,7 +1972,7 @@ sub_806F97C: @ 0x0806F97C
 	orrs r1, r3
 	adds r2, r1, #0
 	strb r2, [r0]
-	ldr r0, _0806FA18 @ =0x0203E0D4
+	ldr r0, _0806FA18 @ =gManimSt
 	adds r1, r0, #0
 	adds r0, #0x5e
 	ldrb r1, [r0]
@@ -1984,7 +1984,7 @@ sub_806F97C: @ 0x0806F97C
 	orrs r1, r3
 	adds r2, r1, #0
 	strb r2, [r0]
-	ldr r0, _0806FA18 @ =0x0203E0D4
+	ldr r0, _0806FA18 @ =gManimSt
 	adds r1, r0, #0
 	adds r0, #0x58
 	ldrb r1, [r0]
@@ -1992,7 +1992,7 @@ sub_806F97C: @ 0x0806F97C
 	ands r1, r2
 	adds r2, r1, #0
 	strb r2, [r0]
-	ldr r0, _0806FA18 @ =0x0203E0D4
+	ldr r0, _0806FA18 @ =gManimSt
 	adds r1, r0, #0
 	adds r0, #0x59
 	ldrb r1, [r0]
@@ -2013,7 +2013,7 @@ sub_806F97C: @ 0x0806F97C
 	bx r0
 	.align 2, 0
 _0806FA14: .4byte gBattleActor
-_0806FA18: .4byte 0x0203E0D4
+_0806FA18: .4byte gManimSt
 _0806FA1C: .4byte gBattleTarget
 _0806FA20: .4byte gBattleHitArray
 _0806FA24: .4byte gUnk_08D6551C
@@ -2038,7 +2038,7 @@ StartBattleManim: @ 0x0806FA28
 	.align 2, 0
 _0806FA48: .4byte gBattleStats
 _0806FA4C:
-	ldr r0, _0806FA90 @ =0x0203E0D4
+	ldr r0, _0806FA90 @ =gManimSt
 	adds r1, r0, #0
 	adds r0, #0x5f
 	ldrb r1, [r0]
@@ -2046,7 +2046,7 @@ _0806FA4C:
 	ands r1, r2
 	adds r2, r1, #0
 	strb r2, [r0]
-	ldr r0, _0806FA90 @ =0x0203E0D4
+	ldr r0, _0806FA90 @ =gManimSt
 	adds r1, r0, #0
 	adds r0, #0x62
 	ldrb r1, [r0]
@@ -2071,7 +2071,7 @@ _0806FA8A:
 	pop {r0}
 	bx r0
 	.align 2, 0
-_0806FA90: .4byte 0x0203E0D4
+_0806FA90: .4byte gManimSt
 _0806FA94: .4byte gBattleActor
 _0806FA98: .4byte gBattleTarget
 _0806FA9C: .4byte gBattleHitArray
@@ -2091,7 +2091,7 @@ InitManimHits: @ 0x0806FAA4
 	ldrh r2, [r1]
 	adds r0, r2, #0
 	bl GetWeaponAnimActorCount
-	ldr r1, _0806FAF4 @ =0x0203E0D4
+	ldr r1, _0806FAF4 @ =gManimSt
 	adds r2, r1, #0
 	adds r1, #0x5e
 	ldrb r2, [r1]
@@ -2101,7 +2101,7 @@ InitManimHits: @ 0x0806FAA4
 	orrs r0, r3
 	adds r2, r0, #0
 	strb r2, [r1]
-	ldr r0, _0806FAF4 @ =0x0203E0D4
+	ldr r0, _0806FAF4 @ =gManimSt
 	ldr r1, [r7, #8]
 	str r1, [r0, #0x50]
 	ldr r1, [r7]
@@ -2110,14 +2110,14 @@ InitManimHits: @ 0x0806FAA4
 	ldrh r2, [r1]
 	adds r0, r2, #0
 	bl GetWeaponAnimManimSpecialScr
-	ldr r1, _0806FAF4 @ =0x0203E0D4
+	ldr r1, _0806FAF4 @ =gManimSt
 	str r0, [r1, #0x54]
 	add sp, #0xc
 	pop {r7}
 	pop {r0}
 	bx r0
 	.align 2, 0
-_0806FAF4: .4byte 0x0203E0D4
+_0806FAF4: .4byte gManimSt
 
 	thumb_func_start InitManimActors
 InitManimActors: @ 0x0806FAF8
@@ -2131,7 +2131,7 @@ InitManimActors: @ 0x0806FAF8
 	ldr r1, [r7]
 	ldr r2, [r7]
 	bl InitManimActor
-	ldr r1, _0806FB88 @ =0x0203E0D4
+	ldr r1, _0806FB88 @ =gManimSt
 	adds r0, r1, #0
 	adds r1, #0x5e
 	ldrb r0, [r1]
@@ -2179,7 +2179,7 @@ _0806FB6E:
 	movs r0, #0
 	str r0, [r7, #0xc]
 _0806FB76:
-	ldr r1, _0806FB88 @ =0x0203E0D4
+	ldr r1, _0806FB88 @ =gManimSt
 	adds r0, r1, #0
 	adds r1, #0x5e
 	ldrb r0, [r1]
@@ -2188,19 +2188,19 @@ _0806FB76:
 	blt _0806FB98
 	b _0806FC10
 	.align 2, 0
-_0806FB88: .4byte 0x0203E0D4
+_0806FB88: .4byte gManimSt
 _0806FB8C: .4byte gBattleTarget
 _0806FB90: .4byte gBattleHitArray
 _0806FB94: .4byte gBattleStats
 _0806FB98:
-	ldr r0, _0806FC0C @ =0x0203E0D4
+	ldr r0, _0806FC0C @ =gManimSt
 	ldr r1, [r7, #0xc]
 	adds r3, r1, #0
 	lsls r2, r3, #2
 	adds r2, r2, r1
 	lsls r1, r2, #2
 	adds r0, r0, r1
-	ldr r1, _0806FC0C @ =0x0203E0D4
+	ldr r1, _0806FC0C @ =gManimSt
 	ldr r2, [r7, #0xc]
 	adds r4, r2, #0
 	lsls r3, r4, #2
@@ -2220,7 +2220,7 @@ _0806FB98:
 	orrs r2, r1
 	adds r1, r2, #0
 	strb r1, [r0, #0xd]
-	ldr r0, _0806FC0C @ =0x0203E0D4
+	ldr r0, _0806FC0C @ =gManimSt
 	ldr r1, [r7, #0xc]
 	adds r3, r1, #0
 	lsls r2, r3, #2
@@ -2230,7 +2230,7 @@ _0806FB98:
 	ldr r1, [r0]
 	adds r0, r1, #0
 	bl GetUnitMaxHp
-	ldr r1, _0806FC0C @ =0x0203E0D4
+	ldr r1, _0806FC0C @ =gManimSt
 	ldr r2, [r7, #0xc]
 	adds r4, r2, #0
 	lsls r3, r4, #2
@@ -2250,7 +2250,7 @@ _0806FB98:
 	str r1, [r7, #0xc]
 	b _0806FB76
 	.align 2, 0
-_0806FC0C: .4byte 0x0203E0D4
+_0806FC0C: .4byte gManimSt
 _0806FC10:
 	ldr r0, _0806FC60 @ =gDispIo
 	adds r1, r0, #0
@@ -2812,7 +2812,7 @@ sub_806FFE8: @ 0x0806FFE8
 	ldr r1, _08070038 @ =gUnk_084009F0
 	adds r0, r1, #0
 	bl UnpackManimWindowGraphics
-	ldr r1, _0807003C @ =0x0203E0D4
+	ldr r1, _0807003C @ =gManimSt
 	adds r0, r1, #0
 	adds r1, #0x5e
 	ldrb r0, [r1]
@@ -2825,7 +2825,7 @@ sub_806FFE8: @ 0x0806FFE8
 _08070030: .4byte gUnk_083FAAE4
 _08070034: .4byte 0x06000020
 _08070038: .4byte gUnk_084009F0
-_0807003C: .4byte 0x0203E0D4
+_0807003C: .4byte gManimSt
 _08070040:
 	movs r2, #5
 	rsbs r2, r2, #0
@@ -2836,9 +2836,9 @@ _08070040:
 _0807004E:
 	movs r0, #0
 	str r0, [r7, #4]
-	ldr r1, _08070070 @ =0x0203E0D4
+	ldr r1, _08070070 @ =gManimSt
 	ldr r0, [r1]
-	ldr r1, _08070070 @ =0x0203E0D4
+	ldr r1, _08070070 @ =gManimSt
 	ldr r2, [r1, #0x14]
 	ldrb r0, [r0, #0x10]
 	lsls r0, r0, #0x18
@@ -2851,15 +2851,15 @@ _0807004E:
 	str r0, [r7, #4]
 	b _08070094
 	.align 2, 0
-_08070070: .4byte 0x0203E0D4
+_08070070: .4byte gManimSt
 _08070074:
-	ldr r0, _080700B0 @ =0x0203E0D4
+	ldr r0, _080700B0 @ =gManimSt
 	ldr r1, [r0]
 	movs r0, #0xb
 	ldrsb r0, [r1, r0]
 	movs r1, #0xc0
 	ands r0, r1
-	ldr r1, _080700B0 @ =0x0203E0D4
+	ldr r1, _080700B0 @ =gManimSt
 	ldr r2, [r1, #0x14]
 	movs r1, #0xb
 	ldrsb r1, [r2, r1]
@@ -2883,17 +2883,17 @@ _08070094:
 	bl sub_8070390
 	b _080700B4
 	.align 2, 0
-_080700B0: .4byte 0x0203E0D4
+_080700B0: .4byte gManimSt
 _080700B4:
 	bl InitScanlineEffect
-	ldr r0, _080700F4 @ =0x0203E0D4
+	ldr r0, _080700F4 @ =gManimSt
 	ldrb r1, [r0, #0x11]
 	adds r0, r1, #0
 	lsls r1, r0, #3
 	adds r0, r1, #0
 	lsls r1, r0, #0x10
 	lsrs r0, r1, #0x10
-	ldr r1, _080700F4 @ =0x0203E0D4
+	ldr r1, _080700F4 @ =gManimSt
 	ldrb r2, [r1, #0x11]
 	adds r1, r2, #0
 	lsls r2, r1, #3
@@ -2915,7 +2915,7 @@ _080700B4:
 	pop {r0}
 	bx r0
 	.align 2, 0
-_080700F4: .4byte 0x0203E0D4
+_080700F4: .4byte gManimSt
 _080700F8: .4byte gPal
 
 	thumb_func_start sub_80700FC
@@ -2931,7 +2931,7 @@ sub_80700FC: @ 0x080700FC
 	movs r0, #0
 	str r0, [r7, #4]
 _08070110:
-	ldr r1, _08070120 @ =0x0203E0D4
+	ldr r1, _08070120 @ =gManimSt
 	adds r0, r1, #0
 	adds r1, #0x5e
 	ldrb r0, [r1]
@@ -2940,11 +2940,11 @@ _08070110:
 	blt _08070124
 	b _08070224
 	.align 2, 0
-_08070120: .4byte 0x0203E0D4
+_08070120: .4byte gManimSt
 _08070124:
 	adds r0, r7, #0
 	adds r0, #8
-	ldr r1, _08070218 @ =0x0203E0D4
+	ldr r1, _08070218 @ =gManimSt
 	ldr r2, [r7, #4]
 	adds r4, r2, #0
 	lsls r3, r4, #2
@@ -2956,7 +2956,7 @@ _08070124:
 	adds r1, r7, #0
 	adds r1, #8
 	ldrh r0, [r1]
-	ldr r1, _08070218 @ =0x0203E0D4
+	ldr r1, _08070218 @ =gManimSt
 	ldr r2, [r7, #4]
 	adds r4, r2, #0
 	lsls r3, r4, #2
@@ -2980,7 +2980,7 @@ _08070168:
 	adds r1, r7, #0
 	adds r1, #8
 	ldrh r0, [r1]
-	ldr r1, _08070218 @ =0x0203E0D4
+	ldr r1, _08070218 @ =gManimSt
 	ldr r2, [r7, #4]
 	adds r4, r2, #0
 	lsls r3, r4, #2
@@ -3024,7 +3024,7 @@ _08070168:
 _080701C2:
 	adds r0, r7, #0
 	adds r0, #8
-	ldr r1, _08070218 @ =0x0203E0D4
+	ldr r1, _08070218 @ =gManimSt
 	ldr r2, [r7, #4]
 	adds r4, r2, #0
 	lsls r3, r4, #2
@@ -3035,7 +3035,7 @@ _080701C2:
 	ldrh r1, [r1, #0xe]
 	cmp r0, r1
 	beq _08070210
-	ldr r0, _08070218 @ =0x0203E0D4
+	ldr r0, _08070218 @ =gManimSt
 	ldr r1, [r7, #4]
 	adds r3, r1, #0
 	lsls r2, r3, #2
@@ -3066,7 +3066,7 @@ _08070210:
 	str r1, [r7, #4]
 	b _08070110
 	.align 2, 0
-_08070218: .4byte 0x0203E0D4
+_08070218: .4byte gManimSt
 _0807021C: .4byte gPlaySt
 _08070220: .4byte 0x00000395
 _08070224:
@@ -3076,13 +3076,13 @@ _08070224:
 	ldrsb r1, [r0, r1]
 	cmp r1, #0
 	bne _0807024C
-	ldr r1, _08070254 @ =0x0203E0D4
+	ldr r1, _08070254 @ =gManimSt
 	adds r0, r1, #0
 	adds r1, #0x5f
 	ldrb r0, [r1]
 	cmp r0, #0
 	beq _0807024C
-	ldr r0, _08070254 @ =0x0203E0D4
+	ldr r0, _08070254 @ =gManimSt
 	adds r1, r0, #0
 	adds r0, #0x5f
 	ldrb r1, [r0]
@@ -3096,7 +3096,7 @@ _0807024C:
 	pop {r0}
 	bx r0
 	.align 2, 0
-_08070254: .4byte 0x0203E0D4
+_08070254: .4byte gManimSt
 
 	thumb_func_start sub_8070258
 sub_8070258: @ 0x08070258
@@ -3105,7 +3105,7 @@ sub_8070258: @ 0x08070258
 	add r7, sp, #4
 	str r0, [r7]
 	str r1, [r7, #4]
-	ldr r0, _08070328 @ =0x0203E0D4
+	ldr r0, _08070328 @ =gManimSt
 	ldr r1, [r7, #4]
 	adds r3, r1, #0
 	lsls r2, r3, #2
@@ -3116,7 +3116,7 @@ sub_8070258: @ 0x08070258
 	adds r0, r1, #2
 	lsls r1, r0, #5
 	adds r0, r1, #2
-	ldr r1, _08070328 @ =0x0203E0D4
+	ldr r1, _08070328 @ =gManimSt
 	ldr r2, [r7, #4]
 	adds r4, r2, #0
 	lsls r3, r4, #2
@@ -3129,7 +3129,7 @@ sub_8070258: @ 0x08070258
 	lsls r0, r1, #1
 	ldr r1, _0807032C @ =gBg0Tm
 	adds r0, r0, r1
-	ldr r1, _08070328 @ =0x0203E0D4
+	ldr r1, _08070328 @ =gManimSt
 	ldr r2, [r7, #4]
 	adds r4, r2, #0
 	lsls r3, r4, #2
@@ -3146,7 +3146,7 @@ sub_8070258: @ 0x08070258
 	str r3, [sp]
 	movs r3, #3
 	bl PutManimWindowNumber
-	ldr r0, _08070328 @ =0x0203E0D4
+	ldr r0, _08070328 @ =gManimSt
 	ldr r1, [r7, #4]
 	adds r3, r1, #0
 	lsls r2, r3, #2
@@ -3157,7 +3157,7 @@ sub_8070258: @ 0x08070258
 	adds r0, r1, #2
 	lsls r1, r0, #5
 	adds r0, r1, #3
-	ldr r1, _08070328 @ =0x0203E0D4
+	ldr r1, _08070328 @ =gManimSt
 	ldr r2, [r7, #4]
 	adds r4, r2, #0
 	lsls r3, r4, #2
@@ -3170,7 +3170,7 @@ sub_8070258: @ 0x08070258
 	lsls r0, r1, #1
 	ldr r1, _0807032C @ =gBg0Tm
 	adds r0, r0, r1
-	ldr r1, _08070328 @ =0x0203E0D4
+	ldr r1, _08070328 @ =gManimSt
 	ldr r2, [r7, #4]
 	adds r4, r2, #0
 	lsls r3, r4, #2
@@ -3178,7 +3178,7 @@ sub_8070258: @ 0x08070258
 	lsls r2, r3, #2
 	adds r3, r1, r2
 	ldrb r1, [r3, #0xc]
-	ldr r2, _08070328 @ =0x0203E0D4
+	ldr r2, _08070328 @ =gManimSt
 	ldr r3, [r7, #4]
 	adds r5, r3, #0
 	lsls r4, r5, #2
@@ -3201,7 +3201,7 @@ sub_8070258: @ 0x08070258
 	pop {r0}
 	bx r0
 	.align 2, 0
-_08070328: .4byte 0x0203E0D4
+_08070328: .4byte gManimSt
 _0807032C: .4byte gBg0Tm
 _08070330: .4byte 0x00005020
 _08070334: .4byte gUnk_08D656B4
@@ -3268,7 +3268,7 @@ sub_8070390: @ 0x08070390
 	str r0, [r7]
 	str r1, [r7, #4]
 	str r2, [r7, #8]
-	ldr r0, _08070520 @ =0x0203E0D4
+	ldr r0, _08070520 @ =gManimSt
 	ldr r1, [r7, #4]
 	adds r3, r1, #0
 	lsls r2, r3, #2
@@ -3290,7 +3290,7 @@ sub_8070390: @ 0x08070390
 	orrs r2, r1
 	adds r1, r2, #0
 	strb r1, [r0, #0x10]
-	ldr r0, _08070520 @ =0x0203E0D4
+	ldr r0, _08070520 @ =gManimSt
 	ldr r1, [r7, #4]
 	adds r3, r1, #0
 	lsls r2, r3, #2
@@ -3309,7 +3309,7 @@ sub_8070390: @ 0x08070390
 	orrs r2, r1
 	adds r1, r2, #0
 	strb r1, [r0, #0x11]
-	ldr r0, _08070520 @ =0x0203E0D4
+	ldr r0, _08070520 @ =gManimSt
 	ldr r1, [r7, #4]
 	adds r3, r1, #0
 	lsls r2, r3, #2
@@ -3329,7 +3329,7 @@ sub_8070390: @ 0x08070390
 	ldr r1, [r7, #4]
 	adds r2, r1, #0
 	lsls r1, r2, #2
-	ldr r3, _08070520 @ =0x0203E0D4
+	ldr r3, _08070520 @ =gManimSt
 	adds r2, r3, #0
 	adds r3, #0x5e
 	ldrb r2, [r3]
@@ -3342,7 +3342,7 @@ sub_8070390: @ 0x08070390
 	adds r0, r1, #0
 	adds r1, r2, #0
 	bl Decompress
-	ldr r0, _08070520 @ =0x0203E0D4
+	ldr r0, _08070520 @ =gManimSt
 	ldr r1, [r7, #4]
 	adds r3, r1, #0
 	lsls r2, r3, #2
@@ -3351,7 +3351,7 @@ sub_8070390: @ 0x08070390
 	adds r0, r0, r1
 	ldrb r1, [r0, #0x11]
 	lsls r0, r1, #5
-	ldr r1, _08070520 @ =0x0203E0D4
+	ldr r1, _08070520 @ =gManimSt
 	ldr r2, [r7, #4]
 	adds r4, r2, #0
 	lsls r3, r4, #2
@@ -3379,7 +3379,7 @@ sub_8070390: @ 0x08070390
 	bl TmApplyTsa_thm
 	movs r0, #2
 	bl EnableBgSync
-	ldr r0, _08070520 @ =0x0203E0D4
+	ldr r0, _08070520 @ =gManimSt
 	ldr r1, [r7, #4]
 	adds r3, r1, #0
 	lsls r2, r3, #2
@@ -3389,7 +3389,7 @@ sub_8070390: @ 0x08070390
 	ldrb r1, [r0, #0x11]
 	lsls r2, r1, #5
 	adds r0, r2, #1
-	ldr r1, _08070520 @ =0x0203E0D4
+	ldr r1, _08070520 @ =gManimSt
 	ldr r2, [r7, #4]
 	adds r4, r2, #0
 	lsls r3, r4, #2
@@ -3402,7 +3402,7 @@ sub_8070390: @ 0x08070390
 	lsls r0, r1, #1
 	ldr r1, _08070530 @ =gBg0Tm
 	adds r4, r0, r1
-	ldr r0, _08070520 @ =0x0203E0D4
+	ldr r0, _08070520 @ =gManimSt
 	ldr r1, [r7, #4]
 	adds r3, r1, #0
 	lsls r2, r3, #2
@@ -3421,14 +3421,14 @@ sub_8070390: @ 0x08070390
 	bl sub_8014AB0
 	movs r0, #1
 	bl EnableBgSync
-	ldr r0, _08070520 @ =0x0203E0D4
+	ldr r0, _08070520 @ =gManimSt
 	ldr r1, [r7, #4]
 	adds r3, r1, #0
 	lsls r2, r3, #2
 	adds r2, r2, r1
 	lsls r1, r2, #2
 	adds r0, r0, r1
-	ldr r1, _08070520 @ =0x0203E0D4
+	ldr r1, _08070520 @ =gManimSt
 	ldr r2, [r7, #4]
 	adds r4, r2, #0
 	lsls r3, r4, #2
@@ -3454,7 +3454,7 @@ sub_8070390: @ 0x08070390
 	pop {r0}
 	bx r0
 	.align 2, 0
-_08070520: .4byte 0x0203E0D4
+_08070520: .4byte gManimSt
 _08070524: .4byte gUnk_08D656D8
 _08070528: .4byte gBuf
 _0807052C: .4byte gBg1Tm
@@ -11903,7 +11903,7 @@ sub_80747F4: @ 0x080747F4
 	lsls r0, r1, #1
 	ldr r1, _080748AC @ =gBg0Tm
 	adds r5, r0, r1
-	ldr r0, _080748B0 @ =0x0203E0D4
+	ldr r0, _080748B0 @ =gManimSt
 	ldr r1, [r7]
 	adds r3, r1, #0
 	lsls r2, r3, #2
@@ -11941,7 +11941,7 @@ _080748A0: .4byte gUnk_081E0EAC
 _080748A4: .4byte gBuf
 _080748A8: .4byte gUnk_081E0FA8
 _080748AC: .4byte gBg0Tm
-_080748B0: .4byte 0x0203E0D4
+_080748B0: .4byte gManimSt
 _080748B4: .4byte gUnk_08D65CF4
 _080748B8:
 	ldr r0, _08074928 @ =gUnk_08D65CF4
@@ -11970,7 +11970,7 @@ _080748B8:
 	lsls r0, r1, #1
 	ldr r1, _0807492C @ =gBg0Tm
 	adds r5, r0, r1
-	ldr r0, _08074930 @ =0x0203E0D4
+	ldr r0, _08074930 @ =gManimSt
 	ldr r1, [r7]
 	adds r3, r1, #0
 	lsls r2, r3, #2
@@ -12000,7 +12000,7 @@ _080748B8:
 	.align 2, 0
 _08074928: .4byte gUnk_08D65CF4
 _0807492C: .4byte gBg0Tm
-_08074930: .4byte 0x0203E0D4
+_08074930: .4byte gManimSt
 _08074934:
 	adds r2, r4, #0
 _08074936:
@@ -12132,7 +12132,7 @@ _08074A38:
 	movs r0, #1
 	b _08074B60
 _08074A3C:
-	ldr r0, _08074A5C @ =0x0203E0D4
+	ldr r0, _08074A5C @ =gManimSt
 	ldr r1, [r7]
 	adds r3, r1, #0
 	lsls r2, r3, #2
@@ -12148,9 +12148,9 @@ _08074A3C:
 	adds r0, r1, #0
 	b _08074B60
 	.align 2, 0
-_08074A5C: .4byte 0x0203E0D4
+_08074A5C: .4byte gManimSt
 _08074A60:
-	ldr r0, _08074A80 @ =0x0203E0D4
+	ldr r0, _08074A80 @ =gManimSt
 	ldr r1, [r7]
 	adds r3, r1, #0
 	lsls r2, r3, #2
@@ -12166,9 +12166,9 @@ _08074A60:
 	adds r0, r1, #0
 	b _08074B60
 	.align 2, 0
-_08074A80: .4byte 0x0203E0D4
+_08074A80: .4byte gManimSt
 _08074A84:
-	ldr r0, _08074AA4 @ =0x0203E0D4
+	ldr r0, _08074AA4 @ =gManimSt
 	ldr r1, [r7]
 	adds r3, r1, #0
 	lsls r2, r3, #2
@@ -12184,9 +12184,9 @@ _08074A84:
 	adds r0, r1, #0
 	b _08074B60
 	.align 2, 0
-_08074AA4: .4byte 0x0203E0D4
+_08074AA4: .4byte gManimSt
 _08074AA8:
-	ldr r0, _08074AC8 @ =0x0203E0D4
+	ldr r0, _08074AC8 @ =gManimSt
 	ldr r1, [r7]
 	adds r3, r1, #0
 	lsls r2, r3, #2
@@ -12202,9 +12202,9 @@ _08074AA8:
 	adds r0, r1, #0
 	b _08074B60
 	.align 2, 0
-_08074AC8: .4byte 0x0203E0D4
+_08074AC8: .4byte gManimSt
 _08074ACC:
-	ldr r0, _08074AEC @ =0x0203E0D4
+	ldr r0, _08074AEC @ =gManimSt
 	ldr r1, [r7]
 	adds r3, r1, #0
 	lsls r2, r3, #2
@@ -12220,9 +12220,9 @@ _08074ACC:
 	adds r0, r1, #0
 	b _08074B60
 	.align 2, 0
-_08074AEC: .4byte 0x0203E0D4
+_08074AEC: .4byte gManimSt
 _08074AF0:
-	ldr r0, _08074B10 @ =0x0203E0D4
+	ldr r0, _08074B10 @ =gManimSt
 	ldr r1, [r7]
 	adds r3, r1, #0
 	lsls r2, r3, #2
@@ -12238,9 +12238,9 @@ _08074AF0:
 	adds r0, r1, #0
 	b _08074B60
 	.align 2, 0
-_08074B10: .4byte 0x0203E0D4
+_08074B10: .4byte gManimSt
 _08074B14:
-	ldr r0, _08074B34 @ =0x0203E0D4
+	ldr r0, _08074B34 @ =gManimSt
 	ldr r1, [r7]
 	adds r3, r1, #0
 	lsls r2, r3, #2
@@ -12256,9 +12256,9 @@ _08074B14:
 	adds r0, r1, #0
 	b _08074B60
 	.align 2, 0
-_08074B34: .4byte 0x0203E0D4
+_08074B34: .4byte gManimSt
 _08074B38:
-	ldr r0, _08074B58 @ =0x0203E0D4
+	ldr r0, _08074B58 @ =gManimSt
 	ldr r1, [r7]
 	adds r3, r1, #0
 	lsls r2, r3, #2
@@ -12274,7 +12274,7 @@ _08074B38:
 	adds r0, r1, #0
 	b _08074B60
 	.align 2, 0
-_08074B58: .4byte 0x0203E0D4
+_08074B58: .4byte gManimSt
 _08074B5C:
 	movs r0, #0
 	b _08074B60
@@ -12291,7 +12291,7 @@ sub_8074B68: @ 0x08074B68
 	mov r7, sp
 	str r0, [r7]
 	str r1, [r7, #4]
-	ldr r0, _08074BA4 @ =0x0203E0D4
+	ldr r0, _08074BA4 @ =gManimSt
 	ldr r1, [r7]
 	adds r3, r1, #0
 	lsls r2, r3, #2
@@ -12315,7 +12315,7 @@ sub_8074B68: @ 0x08074B68
 	ldr r1, [r0]
 	mov pc, r1
 	.align 2, 0
-_08074BA4: .4byte 0x0203E0D4
+_08074BA4: .4byte gManimSt
 _08074BA8: .4byte _08074BAC
 _08074BAC: @ jump table
 	.4byte _08074BD0 @ case 0
@@ -12328,7 +12328,7 @@ _08074BAC: @ jump table
 	.4byte _08074C30 @ case 7
 	.4byte _08074C3A @ case 8
 _08074BD0:
-	ldr r0, _08074BF0 @ =0x0203E0D4
+	ldr r0, _08074BF0 @ =gManimSt
 	ldr r1, [r7]
 	adds r3, r1, #0
 	lsls r2, r3, #2
@@ -12344,7 +12344,7 @@ _08074BD0:
 	adds r0, r1, #0
 	b _08074C54
 	.align 2, 0
-_08074BF0: .4byte 0x0203E0D4
+_08074BF0: .4byte gManimSt
 _08074BF4:
 	ldr r0, [r7, #8]
 	movs r1, #0x12
@@ -13315,7 +13315,7 @@ _08075278:
 	movs r0, #1
 	movs r1, #0
 	bl SetBgOffset
-	ldr r0, _080753E8 @ =0x0203E0D4
+	ldr r0, _080753E8 @ =gManimSt
 	ldr r2, [r7]
 	movs r3, #0x2e
 	ldrsh r1, [r2, r3]
@@ -13365,7 +13365,7 @@ _08075278:
 	.align 2, 0
 _080753E0: .4byte 0x0000FF70
 _080753E4: .4byte gDispIo
-_080753E8: .4byte 0x0203E0D4
+_080753E8: .4byte gManimSt
 _080753EC: .4byte 0x00001042
 _080753F0: .4byte gFaces
 
@@ -13776,7 +13776,7 @@ sub_80756F0: @ 0x080756F0
 	lsls r1, r1, #2
 	movs r2, #0x60
 	bl ApplyPaletteExt
-	ldr r0, _08075850 @ =0x0203E0D4
+	ldr r0, _08075850 @ =gManimSt
 	ldr r2, [r7]
 	movs r3, #0x2e
 	ldrsh r1, [r2, r3]
@@ -13802,7 +13802,7 @@ sub_80756F0: @ 0x080756F0
 	adds r0, r1, #0
 	adds r0, #0x10
 	str r0, [r7, #4]
-	ldr r0, _08075850 @ =0x0203E0D4
+	ldr r0, _08075850 @ =gManimSt
 	ldr r2, [r7]
 	movs r3, #0x2e
 	ldrsh r1, [r2, r3]
@@ -13828,7 +13828,7 @@ sub_80756F0: @ 0x080756F0
 	adds r0, r1, #0
 	subs r0, #8
 	str r0, [r7, #8]
-	ldr r0, _08075850 @ =0x0203E0D4
+	ldr r0, _08075850 @ =gManimSt
 	ldr r2, [r7]
 	movs r3, #0x2e
 	ldrsh r1, [r2, r3]
@@ -13856,7 +13856,7 @@ sub_80756F0: @ 0x080756F0
 	adds r1, #0x20
 	str r1, [r7, #8]
 _080757AA:
-	ldr r0, _08075850 @ =0x0203E0D4
+	ldr r0, _08075850 @ =gManimSt
 	ldr r2, [r7]
 	movs r3, #0x2e
 	ldrsh r1, [r2, r3]
@@ -13882,7 +13882,7 @@ _080757AA:
 	movs r0, #0x30
 	str r0, [r7, #4]
 _080757DC:
-	ldr r0, _08075850 @ =0x0203E0D4
+	ldr r0, _08075850 @ =gManimSt
 	ldr r2, [r7]
 	movs r3, #0x2e
 	ldrsh r1, [r2, r3]
@@ -13938,7 +13938,7 @@ _0807583C:
 _08075844: .4byte gUnk_083F9CB8
 _08075848: .4byte 0x06013800
 _0807584C: .4byte gUnk_083F9ECC
-_08075850: .4byte 0x0203E0D4
+_08075850: .4byte gManimSt
 _08075854: .4byte gBmSt
 _08075858: .4byte gUnk_083F2F90
 _0807585C: .4byte gPlaySt
@@ -14697,22 +14697,22 @@ sub_8075DDC: @ 0x08075DDC
 sub_8075E08: @ 0x08075E08
 	push {r7, lr}
 	mov r7, sp
-	ldr r0, _08075E18 @ =0x0203E0D4
+	ldr r0, _08075E18 @ =gManimSt
 	ldr r1, [r0, #0x54]
 	cmp r1, #0
 	bne _08075E20
 	ldr r0, _08075E1C @ =gUnk_08D65ECC
 	b _08075E2C
 	.align 2, 0
-_08075E18: .4byte 0x0203E0D4
+_08075E18: .4byte gManimSt
 _08075E1C: .4byte gUnk_08D65ECC
 _08075E20:
-	ldr r0, _08075E28 @ =0x0203E0D4
+	ldr r0, _08075E28 @ =gManimSt
 	ldr r1, [r0, #0x54]
 	adds r0, r1, #0
 	b _08075E2C
 	.align 2, 0
-_08075E28: .4byte 0x0203E0D4
+_08075E28: .4byte gManimSt
 _08075E2C:
 	pop {r7}
 	pop {r1}
@@ -14725,8 +14725,8 @@ sub_8075E34: @ 0x08075E34
 	sub sp, #4
 	mov r7, sp
 	str r0, [r7]
-	ldr r0, _08075E64 @ =0x0203E0D4
-	ldr r2, _08075E64 @ =0x0203E0D4
+	ldr r0, _08075E64 @ =gManimSt
+	ldr r2, _08075E64 @ =gManimSt
 	adds r1, r2, #0
 	adds r2, #0x58
 	ldrb r1, [r2]
@@ -14744,7 +14744,7 @@ sub_8075E34: @ 0x08075E34
 	pop {r0}
 	bx r0
 	.align 2, 0
-_08075E64: .4byte 0x0203E0D4
+_08075E64: .4byte gManimSt
 
 	thumb_func_start sub_8075E68
 sub_8075E68: @ 0x08075E68
@@ -14752,8 +14752,8 @@ sub_8075E68: @ 0x08075E68
 	sub sp, #4
 	mov r7, sp
 	str r0, [r7]
-	ldr r0, _08075E98 @ =0x0203E0D4
-	ldr r2, _08075E98 @ =0x0203E0D4
+	ldr r0, _08075E98 @ =gManimSt
+	ldr r2, _08075E98 @ =gManimSt
 	adds r1, r2, #0
 	adds r2, #0x58
 	ldrb r1, [r2]
@@ -14771,7 +14771,7 @@ sub_8075E68: @ 0x08075E68
 	pop {r0}
 	bx r0
 	.align 2, 0
-_08075E98: .4byte 0x0203E0D4
+_08075E98: .4byte gManimSt
 
 	thumb_func_start sub_8075E9C
 sub_8075E9C: @ 0x08075E9C
@@ -14779,8 +14779,8 @@ sub_8075E9C: @ 0x08075E9C
 	sub sp, #4
 	mov r7, sp
 	str r0, [r7]
-	ldr r0, _08075ED0 @ =0x0203E0D4
-	ldr r2, _08075ED0 @ =0x0203E0D4
+	ldr r0, _08075ED0 @ =gManimSt
+	ldr r2, _08075ED0 @ =gManimSt
 	adds r1, r2, #0
 	adds r2, #0x58
 	ldrb r1, [r2]
@@ -14800,7 +14800,7 @@ sub_8075E9C: @ 0x08075E9C
 	bl sub_8014FB0
 	b _08075EE2
 	.align 2, 0
-_08075ED0: .4byte 0x0203E0D4
+_08075ED0: .4byte gManimSt
 _08075ED4: .4byte sub_8075F68
 _08075ED8:
 	ldr r1, _08075F60 @ =sub_8075FAC
@@ -14808,8 +14808,8 @@ _08075ED8:
 	movs r1, #0xc
 	bl sub_8014FB0
 _08075EE2:
-	ldr r0, _08075F64 @ =0x0203E0D4
-	ldr r2, _08075F64 @ =0x0203E0D4
+	ldr r0, _08075F64 @ =gManimSt
+	ldr r2, _08075F64 @ =gManimSt
 	adds r1, r2, #0
 	adds r2, #0x58
 	ldrb r1, [r2]
@@ -14826,8 +14826,8 @@ _08075EE2:
 	ands r1, r2
 	adds r2, r1, #0
 	strh r2, [r0, #0x18]
-	ldr r0, _08075F64 @ =0x0203E0D4
-	ldr r2, _08075F64 @ =0x0203E0D4
+	ldr r0, _08075F64 @ =gManimSt
+	ldr r2, _08075F64 @ =gManimSt
 	adds r1, r2, #0
 	adds r2, #0x58
 	ldrb r1, [r2]
@@ -14849,8 +14849,8 @@ _08075EE2:
 	orrs r1, r3
 	adds r2, r1, #0
 	strh r2, [r0, #0x1a]
-	ldr r0, _08075F64 @ =0x0203E0D4
-	ldr r2, _08075F64 @ =0x0203E0D4
+	ldr r0, _08075F64 @ =gManimSt
+	ldr r2, _08075F64 @ =gManimSt
 	adds r1, r2, #0
 	adds r2, #0x58
 	ldrb r1, [r2]
@@ -14871,15 +14871,15 @@ _08075EE2:
 	bx r0
 	.align 2, 0
 _08075F60: .4byte sub_8075FAC
-_08075F64: .4byte 0x0203E0D4
+_08075F64: .4byte gManimSt
 
 	thumb_func_start sub_8075F68
 sub_8075F68: @ 0x08075F68
 	push {r4, r7, lr}
 	mov r7, sp
 	ldr r0, _08075FA0 @ =0x000002D5
-	ldr r1, _08075FA4 @ =0x0203E0D4
-	ldr r3, _08075FA4 @ =0x0203E0D4
+	ldr r1, _08075FA4 @ =gManimSt
+	ldr r3, _08075FA4 @ =gManimSt
 	adds r2, r3, #0
 	adds r3, #0x58
 	ldrb r2, [r3]
@@ -14903,7 +14903,7 @@ sub_8075F68: @ 0x08075F68
 	bx r0
 	.align 2, 0
 _08075FA0: .4byte 0x000002D5
-_08075FA4: .4byte 0x0203E0D4
+_08075FA4: .4byte gManimSt
 _08075FA8: .4byte gBmSt
 
 	thumb_func_start sub_8075FAC
@@ -14911,8 +14911,8 @@ sub_8075FAC: @ 0x08075FAC
 	push {r4, r7, lr}
 	mov r7, sp
 	ldr r0, _08075FE4 @ =0x000002D6
-	ldr r1, _08075FE8 @ =0x0203E0D4
-	ldr r3, _08075FE8 @ =0x0203E0D4
+	ldr r1, _08075FE8 @ =gManimSt
+	ldr r3, _08075FE8 @ =gManimSt
 	adds r2, r3, #0
 	adds r3, #0x58
 	ldrb r2, [r3]
@@ -14936,7 +14936,7 @@ sub_8075FAC: @ 0x08075FAC
 	bx r0
 	.align 2, 0
 _08075FE4: .4byte 0x000002D6
-_08075FE8: .4byte 0x0203E0D4
+_08075FE8: .4byte gManimSt
 _08075FEC: .4byte gBmSt
 
 	thumb_func_start sub_8075FF0
@@ -14945,8 +14945,8 @@ sub_8075FF0: @ 0x08075FF0
 	sub sp, #4
 	mov r7, sp
 	str r0, [r7]
-	ldr r0, _08076048 @ =0x0203E0D4
-	ldr r2, _08076048 @ =0x0203E0D4
+	ldr r0, _08076048 @ =gManimSt
+	ldr r2, _08076048 @ =gManimSt
 	adds r1, r2, #0
 	adds r2, #0x58
 	ldrb r1, [r2]
@@ -14963,8 +14963,8 @@ sub_8075FF0: @ 0x08075FF0
 	ands r1, r2
 	adds r2, r1, #0
 	strh r2, [r0, #0x18]
-	ldr r0, _08076048 @ =0x0203E0D4
-	ldr r2, _08076048 @ =0x0203E0D4
+	ldr r0, _08076048 @ =gManimSt
+	ldr r2, _08076048 @ =gManimSt
 	adds r1, r2, #0
 	adds r2, #0x58
 	ldrb r1, [r2]
@@ -14986,7 +14986,7 @@ sub_8075FF0: @ 0x08075FF0
 	pop {r0}
 	bx r0
 	.align 2, 0
-_08076048: .4byte 0x0203E0D4
+_08076048: .4byte gManimSt
 
 	thumb_func_start sub_807604C
 sub_807604C: @ 0x0807604C
@@ -14994,8 +14994,8 @@ sub_807604C: @ 0x0807604C
 	sub sp, #4
 	mov r7, sp
 	str r0, [r7]
-	ldr r0, _0807607C @ =0x0203E0D4
-	ldr r2, _0807607C @ =0x0203E0D4
+	ldr r0, _0807607C @ =gManimSt
+	ldr r2, _0807607C @ =gManimSt
 	adds r1, r2, #0
 	adds r2, #0x58
 	ldrb r1, [r2]
@@ -15013,7 +15013,7 @@ sub_807604C: @ 0x0807604C
 	pop {r0}
 	bx r0
 	.align 2, 0
-_0807607C: .4byte 0x0203E0D4
+_0807607C: .4byte gManimSt
 
 	thumb_func_start sub_8076080
 sub_8076080: @ 0x08076080
@@ -15267,8 +15267,8 @@ sub_8076248: @ 0x08076248
 	sub sp, #0xc
 	mov r7, sp
 	str r0, [r7]
-	ldr r0, _080762C8 @ =0x0203E0D4
-	ldr r2, _080762C8 @ =0x0203E0D4
+	ldr r0, _080762C8 @ =gManimSt
+	ldr r2, _080762C8 @ =gManimSt
 	adds r1, r2, #0
 	adds r2, #0x58
 	ldrb r1, [r2]
@@ -15280,8 +15280,8 @@ sub_8076248: @ 0x08076248
 	adds r1, r0, r1
 	ldr r0, [r1]
 	str r0, [r7, #4]
-	ldr r0, _080762C8 @ =0x0203E0D4
-	ldr r2, _080762C8 @ =0x0203E0D4
+	ldr r0, _080762C8 @ =gManimSt
+	ldr r2, _080762C8 @ =gManimSt
 	adds r1, r2, #0
 	adds r2, #0x59
 	ldrb r1, [r2]
@@ -15296,7 +15296,7 @@ sub_8076248: @ 0x08076248
 	ldr r0, [r7, #4]
 	ldr r1, [r7, #8]
 	bl sub_8076080
-	ldr r1, _080762C8 @ =0x0203E0D4
+	ldr r1, _080762C8 @ =gManimSt
 	adds r0, r1, #0
 	adds r1, #0x5a
 	ldrh r0, [r1]
@@ -15308,13 +15308,13 @@ sub_8076248: @ 0x08076248
 	lsrs r0, r1, #0x10
 	cmp r0, #0
 	beq _080762C0
-	ldr r0, _080762C8 @ =0x0203E0D4
+	ldr r0, _080762C8 @ =gManimSt
 	ldr r1, [r0, #0x30]
 	str r1, [r7, #4]
 	ldr r0, [r7, #4]
 	ldr r1, [r7, #8]
 	bl sub_8076080
-	ldr r0, _080762C8 @ =0x0203E0D4
+	ldr r0, _080762C8 @ =gManimSt
 	ldr r1, [r0, #0x44]
 	str r1, [r7, #4]
 	ldr r0, [r7, #4]
@@ -15326,7 +15326,7 @@ _080762C0:
 	pop {r0}
 	bx r0
 	.align 2, 0
-_080762C8: .4byte 0x0203E0D4
+_080762C8: .4byte gManimSt
 
 	thumb_func_start sub_80762CC
 sub_80762CC: @ 0x080762CC
@@ -15334,8 +15334,8 @@ sub_80762CC: @ 0x080762CC
 	sub sp, #0xc
 	mov r7, sp
 	str r0, [r7]
-	ldr r0, _0807634C @ =0x0203E0D4
-	ldr r2, _0807634C @ =0x0203E0D4
+	ldr r0, _0807634C @ =gManimSt
+	ldr r2, _0807634C @ =gManimSt
 	adds r1, r2, #0
 	adds r2, #0x58
 	ldrb r1, [r2]
@@ -15347,8 +15347,8 @@ sub_80762CC: @ 0x080762CC
 	adds r1, r0, r1
 	ldr r0, [r1]
 	str r0, [r7, #4]
-	ldr r0, _0807634C @ =0x0203E0D4
-	ldr r2, _0807634C @ =0x0203E0D4
+	ldr r0, _0807634C @ =gManimSt
+	ldr r2, _0807634C @ =gManimSt
 	adds r1, r2, #0
 	adds r2, #0x59
 	ldrb r1, [r2]
@@ -15363,7 +15363,7 @@ sub_80762CC: @ 0x080762CC
 	ldr r0, [r7, #4]
 	ldr r1, [r7, #8]
 	bl sub_8076164
-	ldr r1, _0807634C @ =0x0203E0D4
+	ldr r1, _0807634C @ =gManimSt
 	adds r0, r1, #0
 	adds r1, #0x5a
 	ldrh r0, [r1]
@@ -15375,13 +15375,13 @@ sub_80762CC: @ 0x080762CC
 	lsrs r0, r1, #0x10
 	cmp r0, #0
 	beq _08076344
-	ldr r0, _0807634C @ =0x0203E0D4
+	ldr r0, _0807634C @ =gManimSt
 	ldr r1, [r0, #0x30]
 	str r1, [r7, #4]
 	ldr r0, [r7, #4]
 	ldr r1, [r7, #8]
 	bl sub_8076164
-	ldr r0, _0807634C @ =0x0203E0D4
+	ldr r0, _0807634C @ =gManimSt
 	ldr r1, [r0, #0x44]
 	str r1, [r7, #4]
 	ldr r0, [r7, #4]
@@ -15393,7 +15393,7 @@ _08076344:
 	pop {r0}
 	bx r0
 	.align 2, 0
-_0807634C: .4byte 0x0203E0D4
+_0807634C: .4byte gManimSt
 
 	thumb_func_start sub_8076350
 sub_8076350: @ 0x08076350
@@ -15401,8 +15401,8 @@ sub_8076350: @ 0x08076350
 	sub sp, #4
 	mov r7, sp
 	str r0, [r7]
-	ldr r0, _0807639C @ =0x0203E0D4
-	ldr r2, _0807639C @ =0x0203E0D4
+	ldr r0, _0807639C @ =gManimSt
+	ldr r2, _0807639C @ =gManimSt
 	adds r1, r2, #0
 	adds r2, #0x58
 	ldrb r1, [r2]
@@ -15414,8 +15414,8 @@ sub_8076350: @ 0x08076350
 	ldr r2, [r0]
 	movs r1, #0x10
 	ldrsb r1, [r2, r1]
-	ldr r0, _0807639C @ =0x0203E0D4
-	ldr r3, _0807639C @ =0x0203E0D4
+	ldr r0, _0807639C @ =gManimSt
+	ldr r3, _0807639C @ =gManimSt
 	adds r2, r3, #0
 	adds r3, #0x58
 	ldrb r2, [r3]
@@ -15434,7 +15434,7 @@ sub_8076350: @ 0x08076350
 	pop {r0}
 	bx r0
 	.align 2, 0
-_0807639C: .4byte 0x0203E0D4
+_0807639C: .4byte gManimSt
 
 	thumb_func_start sub_80763A0
 sub_80763A0: @ 0x080763A0
@@ -15442,8 +15442,8 @@ sub_80763A0: @ 0x080763A0
 	sub sp, #4
 	mov r7, sp
 	str r0, [r7]
-	ldr r0, _080763EC @ =0x0203E0D4
-	ldr r2, _080763EC @ =0x0203E0D4
+	ldr r0, _080763EC @ =gManimSt
+	ldr r2, _080763EC @ =gManimSt
 	adds r1, r2, #0
 	adds r2, #0x59
 	ldrb r1, [r2]
@@ -15455,8 +15455,8 @@ sub_80763A0: @ 0x080763A0
 	ldr r2, [r0]
 	movs r1, #0x10
 	ldrsb r1, [r2, r1]
-	ldr r0, _080763EC @ =0x0203E0D4
-	ldr r3, _080763EC @ =0x0203E0D4
+	ldr r0, _080763EC @ =gManimSt
+	ldr r3, _080763EC @ =gManimSt
 	adds r2, r3, #0
 	adds r3, #0x59
 	ldrb r2, [r3]
@@ -15475,7 +15475,7 @@ sub_80763A0: @ 0x080763A0
 	pop {r0}
 	bx r0
 	.align 2, 0
-_080763EC: .4byte 0x0203E0D4
+_080763EC: .4byte gManimSt
 
 	thumb_func_start sub_80763F0
 sub_80763F0: @ 0x080763F0
@@ -15483,7 +15483,7 @@ sub_80763F0: @ 0x080763F0
 	sub sp, #4
 	mov r7, sp
 	str r0, [r7]
-	ldr r0, _08076458 @ =0x0203E0D4
+	ldr r0, _08076458 @ =gManimSt
 	ldr r1, _0807645C @ =gBattleTarget
 	adds r2, r1, #0
 	adds r1, #0x73
@@ -15498,7 +15498,7 @@ sub_80763F0: @ 0x080763F0
 	orrs r2, r1
 	adds r1, r2, #0
 	strb r1, [r0]
-	ldr r0, _08076458 @ =0x0203E0D4
+	ldr r0, _08076458 @ =gManimSt
 	ldr r1, _0807645C @ =gBattleTarget
 	adds r2, r1, #0
 	adds r1, #0x74
@@ -15513,12 +15513,12 @@ sub_80763F0: @ 0x080763F0
 	orrs r2, r1
 	adds r1, r2, #0
 	strb r1, [r0]
-	ldr r1, _08076458 @ =0x0203E0D4
+	ldr r1, _08076458 @ =gManimSt
 	adds r0, r1, #0
 	adds r2, r1, #0
 	adds r2, #0x60
 	ldrb r1, [r2]
-	ldr r2, _08076458 @ =0x0203E0D4
+	ldr r2, _08076458 @ =gManimSt
 	adds r0, r2, #0
 	adds r3, r2, #0
 	adds r3, #0x61
@@ -15530,7 +15530,7 @@ sub_80763F0: @ 0x080763F0
 	pop {r0}
 	bx r0
 	.align 2, 0
-_08076458: .4byte 0x0203E0D4
+_08076458: .4byte gManimSt
 _0807645C: .4byte gBattleTarget
 
 	thumb_func_start sub_8076460
@@ -15539,12 +15539,12 @@ sub_8076460: @ 0x08076460
 	sub sp, #0x14
 	mov r7, sp
 	str r0, [r7]
-	ldr r1, _08076494 @ =0x0203E0D4
+	ldr r1, _08076494 @ =gManimSt
 	adds r0, r1, #0
 	adds r1, #0x58
 	ldrb r0, [r1]
 	str r0, [r7, #8]
-	ldr r1, _08076494 @ =0x0203E0D4
+	ldr r1, _08076494 @ =gManimSt
 	adds r0, r1, #0
 	adds r1, #0x5a
 	ldrh r0, [r1]
@@ -15555,22 +15555,22 @@ sub_8076460: @ 0x08076460
 	lsrs r0, r1, #0x10
 	cmp r0, #0
 	beq _08076498
-	ldr r1, _08076494 @ =0x0203E0D4
+	ldr r1, _08076494 @ =gManimSt
 	adds r0, r1, #0
 	adds r1, #0x58
 	ldrb r0, [r1]
 	str r0, [r7, #0xc]
 	b _080764A2
 	.align 2, 0
-_08076494: .4byte 0x0203E0D4
+_08076494: .4byte gManimSt
 _08076498:
-	ldr r1, _080764F8 @ =0x0203E0D4
+	ldr r1, _080764F8 @ =gManimSt
 	adds r0, r1, #0
 	adds r1, #0x59
 	ldrb r0, [r1]
 	str r0, [r7, #0xc]
 _080764A2:
-	ldr r0, _080764F8 @ =0x0203E0D4
+	ldr r0, _080764F8 @ =gManimSt
 	ldr r1, [r7, #8]
 	adds r3, r1, #0
 	lsls r2, r3, #2
@@ -15589,7 +15589,7 @@ _080764A2:
 	lsrs r0, r1, #0x18
 	cmp r0, #0
 	bne _080764FC
-	ldr r1, _080764F8 @ =0x0203E0D4
+	ldr r1, _080764F8 @ =gManimSt
 	adds r0, r1, #0
 	adds r1, #0x5a
 	ldrh r0, [r1]
@@ -15600,7 +15600,7 @@ _080764A2:
 	lsrs r0, r1, #0x10
 	cmp r0, #0
 	beq _080764F6
-	ldr r0, _080764F8 @ =0x0203E0D4
+	ldr r0, _080764F8 @ =gManimSt
 	ldr r1, [r7, #0xc]
 	adds r3, r1, #0
 	lsls r2, r3, #2
@@ -15613,9 +15613,9 @@ _080764A2:
 _080764F6:
 	b _0807680E
 	.align 2, 0
-_080764F8: .4byte 0x0203E0D4
+_080764F8: .4byte gManimSt
 _080764FC:
-	ldr r0, _08076560 @ =0x0203E0D4
+	ldr r0, _08076560 @ =gManimSt
 	adds r1, r0, #0
 	adds r0, #0x5f
 	ldrb r1, [r0]
@@ -15628,13 +15628,13 @@ _080764FC:
 	adds r2, r1, #0
 	strb r2, [r0]
 	ldr r0, [r7, #0xc]
-	ldr r2, _08076560 @ =0x0203E0D4
+	ldr r2, _08076560 @ =gManimSt
 	adds r1, r2, #0
 	adds r2, #0x5d
 	movs r1, #0
 	ldrsb r1, [r2, r1]
 	bl sub_8076820
-	ldr r1, _08076560 @ =0x0203E0D4
+	ldr r1, _08076560 @ =gManimSt
 	adds r0, r1, #0
 	adds r1, #0x5a
 	ldrh r0, [r1]
@@ -15647,7 +15647,7 @@ _080764FC:
 	cmp r0, #0
 	beq _08076550
 	ldr r0, [r7, #8]
-	ldr r2, _08076560 @ =0x0203E0D4
+	ldr r2, _08076560 @ =gManimSt
 	adds r1, r2, #0
 	adds r2, #0x5d
 	movs r1, #0
@@ -15656,7 +15656,7 @@ _080764FC:
 	adds r1, r2, #0
 	bl sub_8076820
 _08076550:
-	ldr r1, _08076560 @ =0x0203E0D4
+	ldr r1, _08076560 @ =gManimSt
 	adds r0, r1, #0
 	adds r1, #0x5d
 	movs r0, #0
@@ -15665,9 +15665,9 @@ _08076550:
 	bge _08076564
 	b _0807680E
 	.align 2, 0
-_08076560: .4byte 0x0203E0D4
+_08076560: .4byte gManimSt
 _08076564:
-	ldr r1, _080765B8 @ =0x0203E0D4
+	ldr r1, _080765B8 @ =gManimSt
 	adds r0, r1, #0
 	adds r1, #0x5a
 	ldrh r0, [r1]
@@ -15678,7 +15678,7 @@ _08076564:
 	lsrs r0, r1, #0x10
 	cmp r0, #0
 	beq _080765C0
-	ldr r0, _080765B8 @ =0x0203E0D4
+	ldr r0, _080765B8 @ =gManimSt
 	ldr r1, [r7, #0xc]
 	adds r3, r1, #0
 	lsls r2, r3, #2
@@ -15696,7 +15696,7 @@ _08076564:
 	subs r1, r0, r2
 	movs r0, #0xc8
 	bl sub_80151FC
-	ldr r0, _080765B8 @ =0x0203E0D4
+	ldr r0, _080765B8 @ =gManimSt
 	ldr r1, [r7, #0xc]
 	adds r3, r1, #0
 	lsls r2, r3, #2
@@ -15708,10 +15708,10 @@ _08076564:
 	bl sub_8071C10
 	b _0807680E
 	.align 2, 0
-_080765B8: .4byte 0x0203E0D4
+_080765B8: .4byte gManimSt
 _080765BC: .4byte gBmSt
 _080765C0:
-	ldr r1, _0807660C @ =0x0203E0D4
+	ldr r1, _0807660C @ =gManimSt
 	adds r0, r1, #0
 	adds r1, #0x5d
 	movs r0, #0
@@ -15719,7 +15719,7 @@ _080765C0:
 	cmp r0, #0
 	bne _08076618
 	ldr r0, _08076610 @ =0x000002CE
-	ldr r1, _0807660C @ =0x0203E0D4
+	ldr r1, _0807660C @ =gManimSt
 	ldr r2, [r7, #0xc]
 	adds r4, r2, #0
 	lsls r3, r4, #2
@@ -15736,7 +15736,7 @@ _080765C0:
 	ldrsh r3, [r2, r4]
 	subs r1, r1, r3
 	bl sub_80151FC
-	ldr r0, _0807660C @ =0x0203E0D4
+	ldr r0, _0807660C @ =gManimSt
 	ldr r1, [r7, #0xc]
 	adds r3, r1, #0
 	lsls r2, r3, #2
@@ -15748,12 +15748,12 @@ _080765C0:
 	bl sub_8071C8C
 	b _0807680E
 	.align 2, 0
-_0807660C: .4byte 0x0203E0D4
+_0807660C: .4byte gManimSt
 _08076610: .4byte 0x000002CE
 _08076614: .4byte gBmSt
 _08076618:
 	movs r0, #0
-	ldr r1, _08076658 @ =0x0203E0D4
+	ldr r1, _08076658 @ =gManimSt
 	ldr r2, [r7, #0xc]
 	adds r4, r2, #0
 	lsls r3, r4, #2
@@ -15768,7 +15768,7 @@ _08076618:
 	ldrb r1, [r2]
 	cmp r1, #0x1b
 	beq _0807665C
-	ldr r1, _08076658 @ =0x0203E0D4
+	ldr r1, _08076658 @ =gManimSt
 	ldr r2, [r7, #0xc]
 	adds r4, r2, #0
 	lsls r3, r4, #2
@@ -15785,7 +15785,7 @@ _08076618:
 	beq _0807665C
 	b _0807665E
 	.align 2, 0
-_08076658: .4byte 0x0203E0D4
+_08076658: .4byte gManimSt
 _0807665C:
 	movs r0, #1
 _0807665E:
@@ -15793,7 +15793,7 @@ _0807665E:
 	ldr r0, [r7, #0x10]
 	cmp r0, #0
 	beq _080766C4
-	ldr r1, _0807669C @ =0x0203E0D4
+	ldr r1, _0807669C @ =gManimSt
 	adds r0, r1, #0
 	adds r1, #0x5c
 	ldrb r0, [r1]
@@ -15806,7 +15806,7 @@ _0807665E:
 	beq _080766A0
 	movs r0, #0xaf
 	str r0, [r7, #4]
-	ldr r0, _0807669C @ =0x0203E0D4
+	ldr r0, _0807669C @ =gManimSt
 	ldr r1, [r7, #0xc]
 	adds r3, r1, #0
 	lsls r2, r3, #2
@@ -15819,11 +15819,11 @@ _0807665E:
 	bl sub_8071D08
 	b _080766BC
 	.align 2, 0
-_0807669C: .4byte 0x0203E0D4
+_0807669C: .4byte gManimSt
 _080766A0:
 	movs r0, #0xb0
 	str r0, [r7, #4]
-	ldr r0, _080766C0 @ =0x0203E0D4
+	ldr r0, _080766C0 @ =gManimSt
 	ldr r1, [r7, #0xc]
 	adds r3, r1, #0
 	lsls r2, r3, #2
@@ -15837,9 +15837,9 @@ _080766A0:
 _080766BC:
 	b _080766E8
 	.align 2, 0
-_080766C0: .4byte 0x0203E0D4
+_080766C0: .4byte gManimSt
 _080766C4:
-	ldr r1, _080766E0 @ =0x0203E0D4
+	ldr r1, _080766E0 @ =gManimSt
 	adds r0, r1, #0
 	adds r1, #0x5c
 	ldrb r0, [r1]
@@ -15854,12 +15854,12 @@ _080766C4:
 	str r0, [r7, #4]
 	b _080766E8
 	.align 2, 0
-_080766E0: .4byte 0x0203E0D4
+_080766E0: .4byte gManimSt
 _080766E4:
 	movs r0, #0xd2
 	str r0, [r7, #4]
 _080766E8:
-	ldr r1, _080767A4 @ =0x0203E0D4
+	ldr r1, _080767A4 @ =gManimSt
 	adds r0, r1, #0
 	adds r1, #0x5a
 	ldrh r0, [r1]
@@ -15871,7 +15871,7 @@ _080766E8:
 	cmp r0, #0
 	beq _080767AC
 	ldr r0, [r7, #4]
-	ldr r1, _080767A4 @ =0x0203E0D4
+	ldr r1, _080767A4 @ =gManimSt
 	ldr r2, [r7, #0xc]
 	adds r4, r2, #0
 	lsls r3, r4, #2
@@ -15888,7 +15888,7 @@ _080766E8:
 	ldrsh r3, [r2, r4]
 	subs r1, r1, r3
 	bl sub_80151FC
-	ldr r0, _080767A4 @ =0x0203E0D4
+	ldr r0, _080767A4 @ =gManimSt
 	ldr r1, [r7, #0xc]
 	adds r3, r1, #0
 	lsls r2, r3, #2
@@ -15897,7 +15897,7 @@ _080766E8:
 	adds r0, #8
 	adds r1, r0, r1
 	ldr r4, [r1]
-	ldr r0, _080767A4 @ =0x0203E0D4
+	ldr r0, _080767A4 @ =gManimSt
 	ldr r1, [r7, #8]
 	adds r3, r1, #0
 	lsls r2, r3, #2
@@ -15917,7 +15917,7 @@ _080766E8:
 	adds r0, r4, #0
 	bl sub_806E630
 	bl sub_80759B0
-	ldr r0, _080767A4 @ =0x0203E0D4
+	ldr r0, _080767A4 @ =gManimSt
 	ldr r1, [r7, #0xc]
 	adds r3, r1, #0
 	lsls r2, r3, #2
@@ -15935,7 +15935,7 @@ _080766E8:
 	subs r1, r0, r2
 	movs r0, #0xd8
 	bl sub_80151FC
-	ldr r0, _080767A4 @ =0x0203E0D4
+	ldr r0, _080767A4 @ =gManimSt
 	ldr r1, [r7, #8]
 	adds r3, r1, #0
 	lsls r2, r3, #2
@@ -15948,11 +15948,11 @@ _080766E8:
 	bl sub_806E5C0
 	b _0807680E
 	.align 2, 0
-_080767A4: .4byte 0x0203E0D4
+_080767A4: .4byte gManimSt
 _080767A8: .4byte gBmSt
 _080767AC:
 	ldr r0, [r7, #4]
-	ldr r1, _08076818 @ =0x0203E0D4
+	ldr r1, _08076818 @ =gManimSt
 	ldr r2, [r7, #0xc]
 	adds r4, r2, #0
 	lsls r3, r4, #2
@@ -15969,7 +15969,7 @@ _080767AC:
 	ldrsh r3, [r2, r4]
 	subs r1, r1, r3
 	bl sub_80151FC
-	ldr r0, _08076818 @ =0x0203E0D4
+	ldr r0, _08076818 @ =gManimSt
 	ldr r1, [r7, #0xc]
 	adds r3, r1, #0
 	lsls r2, r3, #2
@@ -15978,7 +15978,7 @@ _080767AC:
 	adds r0, #8
 	adds r1, r0, r1
 	ldr r4, [r1]
-	ldr r0, _08076818 @ =0x0203E0D4
+	ldr r0, _08076818 @ =gManimSt
 	ldr r1, [r7, #8]
 	adds r3, r1, #0
 	lsls r2, r3, #2
@@ -16003,7 +16003,7 @@ _0807680E:
 	pop {r0}
 	bx r0
 	.align 2, 0
-_08076818: .4byte 0x0203E0D4
+_08076818: .4byte gManimSt
 _0807681C: .4byte gBmSt
 
 	thumb_func_start sub_8076820
@@ -16013,7 +16013,7 @@ sub_8076820: @ 0x08076820
 	mov r7, sp
 	str r0, [r7]
 	str r1, [r7, #4]
-	ldr r0, _0807685C @ =0x0203E0D4
+	ldr r0, _0807685C @ =gManimSt
 	ldr r1, [r7]
 	adds r3, r1, #0
 	lsls r2, r3, #2
@@ -16024,7 +16024,7 @@ sub_8076820: @ 0x08076820
 	ldr r0, [r7, #4]
 	cmp r1, r0
 	bgt _08076860
-	ldr r0, _0807685C @ =0x0203E0D4
+	ldr r0, _0807685C @ =gManimSt
 	ldr r1, [r7]
 	adds r3, r1, #0
 	lsls r2, r3, #2
@@ -16038,16 +16038,16 @@ sub_8076820: @ 0x08076820
 	strb r2, [r0, #0xd]
 	b _08076894
 	.align 2, 0
-_0807685C: .4byte 0x0203E0D4
+_0807685C: .4byte gManimSt
 _08076860:
-	ldr r0, _080768F0 @ =0x0203E0D4
+	ldr r0, _080768F0 @ =gManimSt
 	ldr r1, [r7]
 	adds r3, r1, #0
 	lsls r2, r3, #2
 	adds r2, r2, r1
 	lsls r1, r2, #2
 	adds r0, r0, r1
-	ldr r1, _080768F0 @ =0x0203E0D4
+	ldr r1, _080768F0 @ =gManimSt
 	ldr r2, [r7]
 	adds r4, r2, #0
 	lsls r3, r4, #2
@@ -16067,14 +16067,14 @@ _08076860:
 	adds r1, r2, #0
 	strb r1, [r0, #0xd]
 _08076894:
-	ldr r0, _080768F0 @ =0x0203E0D4
+	ldr r0, _080768F0 @ =gManimSt
 	ldr r1, [r7]
 	adds r3, r1, #0
 	lsls r2, r3, #2
 	adds r2, r2, r1
 	lsls r1, r2, #2
 	adds r0, r0, r1
-	ldr r1, _080768F0 @ =0x0203E0D4
+	ldr r1, _080768F0 @ =gManimSt
 	ldr r2, [r7]
 	adds r4, r2, #0
 	lsls r3, r4, #2
@@ -16085,14 +16085,14 @@ _08076894:
 	ldrb r1, [r1, #0xc]
 	cmp r0, r1
 	bls _080768E6
-	ldr r0, _080768F0 @ =0x0203E0D4
+	ldr r0, _080768F0 @ =gManimSt
 	ldr r1, [r7]
 	adds r3, r1, #0
 	lsls r2, r3, #2
 	adds r2, r2, r1
 	lsls r1, r2, #2
 	adds r0, r0, r1
-	ldr r1, _080768F0 @ =0x0203E0D4
+	ldr r1, _080768F0 @ =gManimSt
 	ldr r2, [r7]
 	adds r4, r2, #0
 	lsls r3, r4, #2
@@ -16114,7 +16114,7 @@ _080768E6:
 	pop {r0}
 	bx r0
 	.align 2, 0
-_080768F0: .4byte 0x0203E0D4
+_080768F0: .4byte gManimSt
 
 	thumb_func_start sub_80768F4
 sub_80768F4: @ 0x080768F4
@@ -16122,7 +16122,7 @@ sub_80768F4: @ 0x080768F4
 	sub sp, #4
 	mov r7, sp
 	str r0, [r7]
-	ldr r1, _0807690C @ =0x0203E0D4
+	ldr r1, _0807690C @ =gManimSt
 	adds r0, r1, #0
 	adds r1, #0x5f
 	ldrb r0, [r1]
@@ -16130,7 +16130,7 @@ sub_80768F4: @ 0x080768F4
 	beq _08076910
 	b _08076916
 	.align 2, 0
-_0807690C: .4byte 0x0203E0D4
+_0807690C: .4byte gManimSt
 _08076910:
 	ldr r0, [r7]
 	bl Proc_Break
@@ -16147,8 +16147,8 @@ sub_8076920: @ 0x08076920
 	sub sp, #4
 	mov r7, sp
 	str r0, [r7]
-	ldr r0, _0807694C @ =0x0203E0D4
-	ldr r2, _0807694C @ =0x0203E0D4
+	ldr r0, _0807694C @ =gManimSt
+	ldr r2, _0807694C @ =gManimSt
 	adds r1, r2, #0
 	adds r2, #0x59
 	ldrb r1, [r2]
@@ -16165,7 +16165,7 @@ sub_8076920: @ 0x08076920
 	pop {r0}
 	bx r0
 	.align 2, 0
-_0807694C: .4byte 0x0203E0D4
+_0807694C: .4byte gManimSt
 
 	thumb_func_start sub_8076950
 sub_8076950: @ 0x08076950
@@ -16173,8 +16173,8 @@ sub_8076950: @ 0x08076950
 	sub sp, #4
 	mov r7, sp
 	str r0, [r7]
-	ldr r0, _0807697C @ =0x0203E0D4
-	ldr r2, _0807697C @ =0x0203E0D4
+	ldr r0, _0807697C @ =gManimSt
+	ldr r2, _0807697C @ =gManimSt
 	adds r1, r2, #0
 	adds r2, #0x59
 	ldrb r1, [r2]
@@ -16191,7 +16191,7 @@ sub_8076950: @ 0x08076950
 	pop {r0}
 	bx r0
 	.align 2, 0
-_0807697C: .4byte 0x0203E0D4
+_0807697C: .4byte gManimSt
 
 	thumb_func_start sub_8076980
 sub_8076980: @ 0x08076980
@@ -16199,8 +16199,8 @@ sub_8076980: @ 0x08076980
 	sub sp, #4
 	mov r7, sp
 	str r0, [r7]
-	ldr r0, _080769AC @ =0x0203E0D4
-	ldr r2, _080769AC @ =0x0203E0D4
+	ldr r0, _080769AC @ =gManimSt
+	ldr r2, _080769AC @ =gManimSt
 	adds r1, r2, #0
 	adds r2, #0x59
 	ldrb r1, [r2]
@@ -16217,7 +16217,7 @@ sub_8076980: @ 0x08076980
 	pop {r0}
 	bx r0
 	.align 2, 0
-_080769AC: .4byte 0x0203E0D4
+_080769AC: .4byte gManimSt
 
 	thumb_func_start sub_80769B0
 sub_80769B0: @ 0x080769B0
@@ -16225,8 +16225,8 @@ sub_80769B0: @ 0x080769B0
 	sub sp, #4
 	mov r7, sp
 	str r0, [r7]
-	ldr r0, _080769DC @ =0x0203E0D4
-	ldr r2, _080769DC @ =0x0203E0D4
+	ldr r0, _080769DC @ =gManimSt
+	ldr r2, _080769DC @ =gManimSt
 	adds r1, r2, #0
 	adds r2, #0x58
 	ldrb r1, [r2]
@@ -16243,7 +16243,7 @@ sub_80769B0: @ 0x080769B0
 	pop {r0}
 	bx r0
 	.align 2, 0
-_080769DC: .4byte 0x0203E0D4
+_080769DC: .4byte gManimSt
 
 	thumb_func_start sub_80769E0
 sub_80769E0: @ 0x080769E0
@@ -16251,8 +16251,8 @@ sub_80769E0: @ 0x080769E0
 	sub sp, #4
 	mov r7, sp
 	str r0, [r7]
-	ldr r0, _08076A10 @ =0x0203E0D4
-	ldr r2, _08076A10 @ =0x0203E0D4
+	ldr r0, _08076A10 @ =gManimSt
+	ldr r2, _08076A10 @ =gManimSt
 	adds r1, r2, #0
 	adds r2, #0x58
 	ldrb r1, [r2]
@@ -16270,7 +16270,7 @@ sub_80769E0: @ 0x080769E0
 	pop {r0}
 	bx r0
 	.align 2, 0
-_08076A10: .4byte 0x0203E0D4
+_08076A10: .4byte gManimSt
 _08076A14: .4byte gUnk_083FBC64
 _08076A18: .4byte gUnk_083FCD90
 
@@ -16280,8 +16280,8 @@ sub_8076A1C: @ 0x08076A1C
 	sub sp, #4
 	mov r7, sp
 	str r0, [r7]
-	ldr r0, _08076A4C @ =0x0203E0D4
-	ldr r2, _08076A4C @ =0x0203E0D4
+	ldr r0, _08076A4C @ =gManimSt
+	ldr r2, _08076A4C @ =gManimSt
 	adds r1, r2, #0
 	adds r2, #0x58
 	ldrb r1, [r2]
@@ -16299,7 +16299,7 @@ sub_8076A1C: @ 0x08076A1C
 	pop {r0}
 	bx r0
 	.align 2, 0
-_08076A4C: .4byte 0x0203E0D4
+_08076A4C: .4byte gManimSt
 _08076A50: .4byte gUnk_083FBC64
 _08076A54: .4byte gUnk_083FCD70
 
@@ -16309,8 +16309,8 @@ sub_8076A58: @ 0x08076A58
 	sub sp, #4
 	mov r7, sp
 	str r0, [r7]
-	ldr r0, _08076A88 @ =0x0203E0D4
-	ldr r2, _08076A88 @ =0x0203E0D4
+	ldr r0, _08076A88 @ =gManimSt
+	ldr r2, _08076A88 @ =gManimSt
 	adds r1, r2, #0
 	adds r2, #0x59
 	ldrb r1, [r2]
@@ -16329,7 +16329,7 @@ sub_8076A58: @ 0x08076A58
 	pop {r0}
 	bx r0
 	.align 2, 0
-_08076A88: .4byte 0x0203E0D4
+_08076A88: .4byte gManimSt
 _08076A8C: .4byte gUnk_083FD11C
 _08076A90: .4byte gUnk_083FD3D8
 
@@ -16339,8 +16339,8 @@ sub_8076A94: @ 0x08076A94
 	sub sp, #4
 	mov r7, sp
 	str r0, [r7]
-	ldr r0, _08076AC4 @ =0x0203E0D4
-	ldr r2, _08076AC4 @ =0x0203E0D4
+	ldr r0, _08076AC4 @ =gManimSt
+	ldr r2, _08076AC4 @ =gManimSt
 	adds r1, r2, #0
 	adds r2, #0x59
 	ldrb r1, [r2]
@@ -16359,7 +16359,7 @@ sub_8076A94: @ 0x08076A94
 	pop {r0}
 	bx r0
 	.align 2, 0
-_08076AC4: .4byte 0x0203E0D4
+_08076AC4: .4byte gManimSt
 _08076AC8: .4byte gUnk_083FCDB0
 _08076ACC: .4byte gUnk_083FD3D8
 
@@ -16369,8 +16369,8 @@ sub_8076AD0: @ 0x08076AD0
 	sub sp, #4
 	mov r7, sp
 	str r0, [r7]
-	ldr r0, _08076B00 @ =0x0203E0D4
-	ldr r2, _08076B00 @ =0x0203E0D4
+	ldr r0, _08076B00 @ =gManimSt
+	ldr r2, _08076B00 @ =gManimSt
 	adds r1, r2, #0
 	adds r2, #0x59
 	ldrb r1, [r2]
@@ -16389,7 +16389,7 @@ sub_8076AD0: @ 0x08076AD0
 	pop {r0}
 	bx r0
 	.align 2, 0
-_08076B00: .4byte 0x0203E0D4
+_08076B00: .4byte gManimSt
 _08076B04: .4byte gUnk_083FCF24
 _08076B08: .4byte gUnk_083FD3D8
 
@@ -16399,8 +16399,8 @@ sub_8076B0C: @ 0x08076B0C
 	sub sp, #4
 	mov r7, sp
 	str r0, [r7]
-	ldr r0, _08076B3C @ =0x0203E0D4
-	ldr r2, _08076B3C @ =0x0203E0D4
+	ldr r0, _08076B3C @ =gManimSt
+	ldr r2, _08076B3C @ =gManimSt
 	adds r1, r2, #0
 	adds r2, #0x59
 	ldrb r1, [r2]
@@ -16419,7 +16419,7 @@ sub_8076B0C: @ 0x08076B0C
 	pop {r0}
 	bx r0
 	.align 2, 0
-_08076B3C: .4byte 0x0203E0D4
+_08076B3C: .4byte gManimSt
 _08076B40: .4byte gUnk_083FD11C
 _08076B44: .4byte gUnk_083FD3D8
 
@@ -16429,8 +16429,8 @@ sub_8076B48: @ 0x08076B48
 	sub sp, #4
 	mov r7, sp
 	str r0, [r7]
-	ldr r0, _08076B78 @ =0x0203E0D4
-	ldr r2, _08076B78 @ =0x0203E0D4
+	ldr r0, _08076B78 @ =gManimSt
+	ldr r2, _08076B78 @ =gManimSt
 	adds r1, r2, #0
 	adds r2, #0x59
 	ldrb r1, [r2]
@@ -16449,7 +16449,7 @@ sub_8076B48: @ 0x08076B48
 	pop {r0}
 	bx r0
 	.align 2, 0
-_08076B78: .4byte 0x0203E0D4
+_08076B78: .4byte gManimSt
 _08076B7C: .4byte gUnk_083FCDB0
 _08076B80: .4byte gUnk_083FD3D8
 
@@ -16470,7 +16470,7 @@ sub_8076B84: @ 0x08076B84
 	movs r0, #0xb4
 	bl m4aSongNumStart
 _08076BA2:
-	ldr r0, _08076C38 @ =0x0203E0D4
+	ldr r0, _08076C38 @ =gManimSt
 	ldr r1, _08076C3C @ =gBattleTarget
 	adds r2, r1, #0
 	adds r1, #0x73
@@ -16485,7 +16485,7 @@ _08076BA2:
 	orrs r2, r1
 	adds r1, r2, #0
 	strb r1, [r0]
-	ldr r0, _08076C38 @ =0x0203E0D4
+	ldr r0, _08076C38 @ =gManimSt
 	ldr r1, _08076C3C @ =gBattleTarget
 	adds r2, r1, #0
 	adds r1, #0x74
@@ -16500,8 +16500,8 @@ _08076BA2:
 	orrs r2, r1
 	adds r1, r2, #0
 	strb r1, [r0]
-	ldr r0, _08076C38 @ =0x0203E0D4
-	ldr r2, _08076C38 @ =0x0203E0D4
+	ldr r0, _08076C38 @ =gManimSt
+	ldr r2, _08076C38 @ =gManimSt
 	adds r1, r2, #0
 	adds r2, #0x59
 	ldrb r1, [r2]
@@ -16511,8 +16511,8 @@ _08076BA2:
 	lsls r1, r2, #2
 	adds r2, r0, r1
 	ldr r0, [r2]
-	ldr r1, _08076C38 @ =0x0203E0D4
-	ldr r3, _08076C38 @ =0x0203E0D4
+	ldr r1, _08076C38 @ =gManimSt
+	ldr r3, _08076C38 @ =gManimSt
 	adds r2, r3, #0
 	adds r3, #0x59
 	ldrb r2, [r3]
@@ -16524,8 +16524,8 @@ _08076BA2:
 	ldr r2, [r1]
 	movs r1, #0x10
 	ldrsb r1, [r2, r1]
-	ldr r2, _08076C38 @ =0x0203E0D4
-	ldr r4, _08076C38 @ =0x0203E0D4
+	ldr r2, _08076C38 @ =gManimSt
+	ldr r4, _08076C38 @ =gManimSt
 	adds r3, r4, #0
 	adds r4, #0x59
 	ldrb r3, [r4]
@@ -16544,7 +16544,7 @@ _08076BA2:
 	bx r0
 	.align 2, 0
 _08076C34: .4byte gPlaySt
-_08076C38: .4byte 0x0203E0D4
+_08076C38: .4byte gManimSt
 _08076C3C: .4byte gBattleTarget
 
 	thumb_func_start sub_8076C40
@@ -16553,8 +16553,8 @@ sub_8076C40: @ 0x08076C40
 	sub sp, #4
 	mov r7, sp
 	str r0, [r7]
-	ldr r0, _08076C7C @ =0x0203E0D4
-	ldr r2, _08076C7C @ =0x0203E0D4
+	ldr r0, _08076C7C @ =gManimSt
+	ldr r2, _08076C7C @ =gManimSt
 	adds r1, r2, #0
 	adds r2, #0x59
 	ldrb r1, [r2]
@@ -16564,11 +16564,11 @@ sub_8076C40: @ 0x08076C40
 	lsls r1, r2, #2
 	adds r2, r0, r1
 	ldr r0, [r2]
-	ldr r2, _08076C7C @ =0x0203E0D4
+	ldr r2, _08076C7C @ =gManimSt
 	adds r1, r2, #0
 	adds r2, #0x60
 	ldrb r1, [r2]
-	ldr r3, _08076C7C @ =0x0203E0D4
+	ldr r3, _08076C7C @ =gManimSt
 	adds r2, r3, #0
 	adds r3, #0x61
 	ldrb r2, [r3]
@@ -16578,7 +16578,7 @@ sub_8076C40: @ 0x08076C40
 	pop {r0}
 	bx r0
 	.align 2, 0
-_08076C7C: .4byte 0x0203E0D4
+_08076C7C: .4byte gManimSt
 
 	thumb_func_start sub_8076C80
 sub_8076C80: @ 0x08076C80
@@ -16586,8 +16586,8 @@ sub_8076C80: @ 0x08076C80
 	sub sp, #4
 	mov r7, sp
 	str r0, [r7]
-	ldr r0, _08076CAC @ =0x0203E0D4
-	ldr r2, _08076CAC @ =0x0203E0D4
+	ldr r0, _08076CAC @ =gManimSt
+	ldr r2, _08076CAC @ =gManimSt
 	adds r1, r2, #0
 	adds r2, #0x58
 	ldrb r1, [r2]
@@ -16604,7 +16604,7 @@ sub_8076C80: @ 0x08076C80
 	pop {r0}
 	bx r0
 	.align 2, 0
-_08076CAC: .4byte 0x0203E0D4
+_08076CAC: .4byte gManimSt
 
 	thumb_func_start sub_8076CB0
 sub_8076CB0: @ 0x08076CB0
@@ -16612,11 +16612,11 @@ sub_8076CB0: @ 0x08076CB0
 	sub sp, #4
 	mov r7, sp
 	str r0, [r7]
-	ldr r1, _08076CD4 @ =0x0203E0D4
+	ldr r1, _08076CD4 @ =gManimSt
 	adds r0, r1, #0
 	adds r1, #0x60
 	ldrb r0, [r1]
-	ldr r2, _08076CD4 @ =0x0203E0D4
+	ldr r2, _08076CD4 @ =gManimSt
 	adds r1, r2, #0
 	adds r2, #0x61
 	ldrb r1, [r2]
@@ -16626,7 +16626,7 @@ sub_8076CB0: @ 0x08076CB0
 	pop {r0}
 	bx r0
 	.align 2, 0
-_08076CD4: .4byte 0x0203E0D4
+_08076CD4: .4byte gManimSt
 
 	thumb_func_start sub_8076CD8
 sub_8076CD8: @ 0x08076CD8
@@ -16634,8 +16634,8 @@ sub_8076CD8: @ 0x08076CD8
 	sub sp, #4
 	mov r7, sp
 	str r0, [r7]
-	ldr r0, _08076D04 @ =0x0203E0D4
-	ldr r2, _08076D04 @ =0x0203E0D4
+	ldr r0, _08076D04 @ =gManimSt
+	ldr r2, _08076D04 @ =gManimSt
 	adds r1, r2, #0
 	adds r2, #0x59
 	ldrb r1, [r2]
@@ -16652,7 +16652,7 @@ sub_8076CD8: @ 0x08076CD8
 	pop {r0}
 	bx r0
 	.align 2, 0
-_08076D04: .4byte 0x0203E0D4
+_08076D04: .4byte gManimSt
 
 	thumb_func_start sub_8076D08
 sub_8076D08: @ 0x08076D08
@@ -16660,8 +16660,8 @@ sub_8076D08: @ 0x08076D08
 	sub sp, #4
 	mov r7, sp
 	str r0, [r7]
-	ldr r0, _08076D34 @ =0x0203E0D4
-	ldr r2, _08076D34 @ =0x0203E0D4
+	ldr r0, _08076D34 @ =gManimSt
+	ldr r2, _08076D34 @ =gManimSt
 	adds r1, r2, #0
 	adds r2, #0x59
 	ldrb r1, [r2]
@@ -16678,7 +16678,7 @@ sub_8076D08: @ 0x08076D08
 	pop {r0}
 	bx r0
 	.align 2, 0
-_08076D34: .4byte 0x0203E0D4
+_08076D34: .4byte gManimSt
 
 	thumb_func_start sub_8076D38
 sub_8076D38: @ 0x08076D38
@@ -16686,8 +16686,8 @@ sub_8076D38: @ 0x08076D38
 	sub sp, #4
 	mov r7, sp
 	str r0, [r7]
-	ldr r0, _08076D64 @ =0x0203E0D4
-	ldr r2, _08076D64 @ =0x0203E0D4
+	ldr r0, _08076D64 @ =gManimSt
+	ldr r2, _08076D64 @ =gManimSt
 	adds r1, r2, #0
 	adds r2, #0x59
 	ldrb r1, [r2]
@@ -16704,7 +16704,7 @@ sub_8076D38: @ 0x08076D38
 	pop {r0}
 	bx r0
 	.align 2, 0
-_08076D64: .4byte 0x0203E0D4
+_08076D64: .4byte gManimSt
 
 	thumb_func_start sub_8076D68
 sub_8076D68: @ 0x08076D68
@@ -16712,8 +16712,8 @@ sub_8076D68: @ 0x08076D68
 	sub sp, #4
 	mov r7, sp
 	str r0, [r7]
-	ldr r0, _08076D94 @ =0x0203E0D4
-	ldr r2, _08076D94 @ =0x0203E0D4
+	ldr r0, _08076D94 @ =gManimSt
+	ldr r2, _08076D94 @ =gManimSt
 	adds r1, r2, #0
 	adds r2, #0x59
 	ldrb r1, [r2]
@@ -16730,7 +16730,7 @@ sub_8076D68: @ 0x08076D68
 	pop {r0}
 	bx r0
 	.align 2, 0
-_08076D94: .4byte 0x0203E0D4
+_08076D94: .4byte gManimSt
 
 	thumb_func_start sub_8076D98
 sub_8076D98: @ 0x08076D98
@@ -16738,8 +16738,8 @@ sub_8076D98: @ 0x08076D98
 	sub sp, #4
 	mov r7, sp
 	str r0, [r7]
-	ldr r0, _08076DC8 @ =0x0203E0D4
-	ldr r2, _08076DC8 @ =0x0203E0D4
+	ldr r0, _08076DC8 @ =gManimSt
+	ldr r2, _08076DC8 @ =gManimSt
 	adds r1, r2, #0
 	adds r2, #0x59
 	ldrb r1, [r2]
@@ -16758,7 +16758,7 @@ sub_8076D98: @ 0x08076D98
 	pop {r0}
 	bx r0
 	.align 2, 0
-_08076DC8: .4byte 0x0203E0D4
+_08076DC8: .4byte gManimSt
 
 	thumb_func_start sub_8076DCC
 sub_8076DCC: @ 0x08076DCC
@@ -16766,8 +16766,8 @@ sub_8076DCC: @ 0x08076DCC
 	sub sp, #4
 	mov r7, sp
 	str r0, [r7]
-	ldr r0, _08076DFC @ =0x0203E0D4
-	ldr r2, _08076DFC @ =0x0203E0D4
+	ldr r0, _08076DFC @ =gManimSt
+	ldr r2, _08076DFC @ =gManimSt
 	adds r1, r2, #0
 	adds r2, #0x59
 	ldrb r1, [r2]
@@ -16785,7 +16785,7 @@ sub_8076DCC: @ 0x08076DCC
 	pop {r0}
 	bx r0
 	.align 2, 0
-_08076DFC: .4byte 0x0203E0D4
+_08076DFC: .4byte gManimSt
 
 	thumb_func_start sub_8076E00
 sub_8076E00: @ 0x08076E00
@@ -16793,8 +16793,8 @@ sub_8076E00: @ 0x08076E00
 	sub sp, #4
 	mov r7, sp
 	str r0, [r7]
-	ldr r0, _08076E30 @ =0x0203E0D4
-	ldr r2, _08076E30 @ =0x0203E0D4
+	ldr r0, _08076E30 @ =gManimSt
+	ldr r2, _08076E30 @ =gManimSt
 	adds r1, r2, #0
 	adds r2, #0x59
 	ldrb r1, [r2]
@@ -16812,7 +16812,7 @@ sub_8076E00: @ 0x08076E00
 	pop {r0}
 	bx r0
 	.align 2, 0
-_08076E30: .4byte 0x0203E0D4
+_08076E30: .4byte gManimSt
 
 	thumb_func_start sub_8076E34
 sub_8076E34: @ 0x08076E34
@@ -16820,8 +16820,8 @@ sub_8076E34: @ 0x08076E34
 	sub sp, #4
 	mov r7, sp
 	str r0, [r7]
-	ldr r0, _08076EA0 @ =0x0203E0D4
-	ldr r2, _08076EA0 @ =0x0203E0D4
+	ldr r0, _08076EA0 @ =gManimSt
+	ldr r2, _08076EA0 @ =gManimSt
 	adds r1, r2, #0
 	adds r2, #0x59
 	ldrb r1, [r2]
@@ -16841,8 +16841,8 @@ sub_8076E34: @ 0x08076E34
 	subs r1, r0, r2
 	adds r0, r1, #0
 	adds r0, #8
-	ldr r1, _08076EA0 @ =0x0203E0D4
-	ldr r3, _08076EA0 @ =0x0203E0D4
+	ldr r1, _08076EA0 @ =gManimSt
+	ldr r3, _08076EA0 @ =gManimSt
 	adds r2, r3, #0
 	adds r3, #0x59
 	ldrb r2, [r3]
@@ -16869,7 +16869,7 @@ sub_8076E34: @ 0x08076E34
 	pop {r0}
 	bx r0
 	.align 2, 0
-_08076EA0: .4byte 0x0203E0D4
+_08076EA0: .4byte gManimSt
 _08076EA4: .4byte gBmSt
 
 	thumb_func_start sub_8076EA8
@@ -16889,8 +16889,8 @@ sub_8076EA8: @ 0x08076EA8
 	movs r0, #0xb5
 	bl m4aSongNumStart
 _08076EC6:
-	ldr r0, _08076F2C @ =0x0203E0D4
-	ldr r2, _08076F2C @ =0x0203E0D4
+	ldr r0, _08076F2C @ =gManimSt
+	ldr r2, _08076F2C @ =gManimSt
 	adds r1, r2, #0
 	adds r2, #0x59
 	ldrb r1, [r2]
@@ -16910,8 +16910,8 @@ _08076EC6:
 	subs r1, r0, r2
 	adds r0, r1, #0
 	adds r0, #8
-	ldr r1, _08076F2C @ =0x0203E0D4
-	ldr r3, _08076F2C @ =0x0203E0D4
+	ldr r1, _08076F2C @ =gManimSt
+	ldr r3, _08076F2C @ =gManimSt
 	adds r2, r3, #0
 	adds r3, #0x59
 	ldrb r2, [r3]
@@ -16939,7 +16939,7 @@ _08076EC6:
 	bx r0
 	.align 2, 0
 _08076F28: .4byte gPlaySt
-_08076F2C: .4byte 0x0203E0D4
+_08076F2C: .4byte gManimSt
 _08076F30: .4byte gBmSt
 
 	thumb_func_start sub_8076F34
@@ -16948,8 +16948,8 @@ sub_8076F34: @ 0x08076F34
 	sub sp, #4
 	mov r7, sp
 	str r0, [r7]
-	ldr r0, _08076F64 @ =0x0203E0D4
-	ldr r2, _08076F64 @ =0x0203E0D4
+	ldr r0, _08076F64 @ =gManimSt
+	ldr r2, _08076F64 @ =gManimSt
 	adds r1, r2, #0
 	adds r2, #0x59
 	ldrb r1, [r2]
@@ -16967,7 +16967,7 @@ sub_8076F34: @ 0x08076F34
 	pop {r0}
 	bx r0
 	.align 2, 0
-_08076F64: .4byte 0x0203E0D4
+_08076F64: .4byte gManimSt
 
 	thumb_func_start sub_8076F68
 sub_8076F68: @ 0x08076F68
@@ -16975,8 +16975,8 @@ sub_8076F68: @ 0x08076F68
 	sub sp, #8
 	mov r7, sp
 	str r0, [r7]
-	ldr r0, _08076FF8 @ =0x0203E0D4
-	ldr r2, _08076FF8 @ =0x0203E0D4
+	ldr r0, _08076FF8 @ =gManimSt
+	ldr r2, _08076FF8 @ =gManimSt
 	adds r1, r2, #0
 	adds r2, #0x59
 	ldrb r1, [r2]
@@ -16987,8 +16987,8 @@ sub_8076F68: @ 0x08076F68
 	adds r0, r0, r1
 	ldr r1, [r0]
 	str r1, [r7, #4]
-	ldr r0, _08076FF8 @ =0x0203E0D4
-	ldr r2, _08076FF8 @ =0x0203E0D4
+	ldr r0, _08076FF8 @ =gManimSt
+	ldr r2, _08076FF8 @ =gManimSt
 	adds r1, r2, #0
 	adds r2, #0x59
 	ldrb r1, [r2]
@@ -16999,13 +16999,13 @@ sub_8076F68: @ 0x08076F68
 	adds r0, #8
 	adds r1, r0, r1
 	ldr r0, [r1]
-	ldr r2, _08076FF8 @ =0x0203E0D4
+	ldr r2, _08076FF8 @ =gManimSt
 	adds r1, r2, #0
 	adds r2, #0x60
 	ldrb r1, [r2]
 	adds r2, r1, #0
 	lsls r1, r2, #4
-	ldr r3, _08076FF8 @ =0x0203E0D4
+	ldr r3, _08076FF8 @ =gManimSt
 	adds r2, r3, #0
 	adds r3, #0x61
 	ldrb r2, [r3]
@@ -17013,7 +17013,7 @@ sub_8076F68: @ 0x08076F68
 	lsls r2, r3, #4
 	bl SetMuScreenPosition
 	ldr r0, [r7, #4]
-	ldr r1, _08076FF8 @ =0x0203E0D4
+	ldr r1, _08076FF8 @ =gManimSt
 	adds r2, r1, #0
 	adds r1, #0x60
 	ldrb r2, [r0, #0x10]
@@ -17026,7 +17026,7 @@ sub_8076F68: @ 0x08076F68
 	adds r1, r2, #0
 	strb r1, [r0, #0x10]
 	ldr r0, [r7, #4]
-	ldr r1, _08076FF8 @ =0x0203E0D4
+	ldr r1, _08076FF8 @ =gManimSt
 	adds r2, r1, #0
 	adds r1, #0x61
 	ldrb r2, [r0, #0x11]
@@ -17043,7 +17043,7 @@ sub_8076F68: @ 0x08076F68
 	pop {r0}
 	bx r0
 	.align 2, 0
-_08076FF8: .4byte 0x0203E0D4
+_08076FF8: .4byte gManimSt
 
 	thumb_func_start sub_8076FFC
 sub_8076FFC: @ 0x08076FFC
@@ -17083,14 +17083,14 @@ InitScanlineEffect: @ 0x0807702C
 	ldr r1, _08077060 @ =0x0203E3B8
 	adds r0, r1, #0
 	bl sub_80778C0
-	ldr r0, _08077064 @ =0x0203E638
+	ldr r0, _08077064 @ =gManimScanlineBufs
 	ldr r1, _0807705C @ =0x0203E138
 	str r1, [r0]
-	ldr r0, _08077064 @ =0x0203E638
+	ldr r0, _08077064 @ =gManimScanlineBufs
 	ldr r1, _08077060 @ =0x0203E3B8
 	str r1, [r0, #4]
 	ldr r0, _08077068 @ =0x0203E640
-	ldr r1, _08077064 @ =0x0203E638
+	ldr r1, _08077064 @ =gManimScanlineBufs
 	ldr r2, [r1]
 	str r2, [r0]
 	pop {r7}
@@ -17099,7 +17099,7 @@ InitScanlineEffect: @ 0x0807702C
 	.align 2, 0
 _0807705C: .4byte 0x0203E138
 _08077060: .4byte 0x0203E3B8
-_08077064: .4byte 0x0203E638
+_08077064: .4byte gManimScanlineBufs
 _08077068: .4byte 0x0203E640
 
 	thumb_func_start sub_807706C
@@ -17262,11 +17262,11 @@ sub_807719C: @ 0x0807719C
 	str r0, [r7]
 	str r1, [r7, #4]
 	str r2, [r7, #8]
-	ldr r0, _080771CC @ =0x0203E638
+	ldr r0, _080771CC @ =gManimScanlineBufs
 	ldr r1, [r0, #4]
 	adds r0, r1, #0
 	bl sub_80778C0
-	ldr r1, _080771CC @ =0x0203E638
+	ldr r1, _080771CC @ =gManimScanlineBufs
 	ldr r0, [r1, #4]
 	ldr r2, [r7, #4]
 	ldr r3, [r7, #8]
@@ -17278,7 +17278,7 @@ sub_807719C: @ 0x0807719C
 	pop {r0}
 	bx r0
 	.align 2, 0
-_080771CC: .4byte 0x0203E638
+_080771CC: .4byte gManimScanlineBufs
 
 	thumb_func_start sub_80771D0
 sub_80771D0: @ 0x080771D0
@@ -17304,7 +17304,7 @@ sub_80771E0: @ 0x080771E0
 	cmp r1, #0x9f
 	bls _08077214
 	ldr r0, _0807720C @ =0x0203E640
-	ldr r1, _08077210 @ =0x0203E638
+	ldr r1, _08077210 @ =gManimScanlineBufs
 	ldr r2, [r1]
 	str r2, [r0]
 	adds r0, r7, #0
@@ -17314,7 +17314,7 @@ sub_80771E0: @ 0x080771E0
 	.align 2, 0
 _08077208: .4byte 0x04000006
 _0807720C: .4byte 0x0203E640
-_08077210: .4byte 0x0203E638
+_08077210: .4byte gManimScanlineBufs
 _08077214:
 	adds r1, r7, #0
 	adds r0, r7, #0
@@ -17356,7 +17356,7 @@ sub_8077248: @ 0x08077248
 	cmp r1, #0x9f
 	bls _0807727C
 	ldr r0, _08077274 @ =0x0203E640
-	ldr r1, _08077278 @ =0x0203E638
+	ldr r1, _08077278 @ =gManimScanlineBufs
 	ldr r2, [r1]
 	str r2, [r0]
 	adds r0, r7, #0
@@ -17366,7 +17366,7 @@ sub_8077248: @ 0x08077248
 	.align 2, 0
 _08077270: .4byte 0x04000006
 _08077274: .4byte 0x0203E640
-_08077278: .4byte 0x0203E638
+_08077278: .4byte gManimScanlineBufs
 _0807727C:
 	adds r1, r7, #0
 	adds r0, r7, #0
@@ -17422,7 +17422,7 @@ sub_80772CC: @ 0x080772CC
 	cmp r1, #0x9f
 	bls _08077300
 	ldr r0, _080772F8 @ =0x0203E640
-	ldr r1, _080772FC @ =0x0203E638
+	ldr r1, _080772FC @ =gManimScanlineBufs
 	ldr r2, [r1]
 	str r2, [r0]
 	adds r0, r7, #0
@@ -17432,7 +17432,7 @@ sub_80772CC: @ 0x080772CC
 	.align 2, 0
 _080772F4: .4byte 0x04000006
 _080772F8: .4byte 0x0203E640
-_080772FC: .4byte 0x0203E638
+_080772FC: .4byte gManimScanlineBufs
 _08077300:
 	adds r1, r7, #0
 	adds r0, r7, #0
@@ -17488,7 +17488,7 @@ sub_8077350: @ 0x08077350
 	cmp r1, #0x9f
 	bls _08077384
 	ldr r0, _0807737C @ =0x0203E640
-	ldr r1, _08077380 @ =0x0203E638
+	ldr r1, _08077380 @ =gManimScanlineBufs
 	ldr r2, [r1]
 	str r2, [r0]
 	adds r0, r7, #0
@@ -17498,7 +17498,7 @@ sub_8077350: @ 0x08077350
 	.align 2, 0
 _08077378: .4byte 0x04000006
 _0807737C: .4byte 0x0203E640
-_08077380: .4byte 0x0203E638
+_08077380: .4byte gManimScanlineBufs
 _08077384:
 	adds r1, r7, #0
 	adds r0, r7, #0
@@ -17540,7 +17540,7 @@ sub_80773B8: @ 0x080773B8
 	cmp r1, #0x9f
 	bls _080773EC
 	ldr r0, _080773E4 @ =0x0203E640
-	ldr r1, _080773E8 @ =0x0203E638
+	ldr r1, _080773E8 @ =gManimScanlineBufs
 	ldr r2, [r1]
 	str r2, [r0]
 	adds r0, r7, #0
@@ -17550,7 +17550,7 @@ sub_80773B8: @ 0x080773B8
 	.align 2, 0
 _080773E0: .4byte 0x04000006
 _080773E4: .4byte 0x0203E640
-_080773E8: .4byte 0x0203E638
+_080773E8: .4byte gManimScanlineBufs
 _080773EC:
 	adds r1, r7, #0
 	adds r0, r7, #0
@@ -17599,7 +17599,7 @@ sub_8077420: @ 0x08077420
 	strh r1, [r2]
 	adds r1, r7, #6
 	strh r0, [r1]
-	ldr r1, _08077554 @ =0x0203E638
+	ldr r1, _08077554 @ =gManimScanlineBufs
 	ldr r0, [r1, #4]
 	adds r2, r7, #0
 	ldrh r1, [r2]
@@ -17658,7 +17658,7 @@ sub_8077420: @ 0x08077420
 	lsrs r4, r5, #0x10
 	str r4, [sp]
 	bl sub_8077A70
-	ldr r0, _08077554 @ =0x0203E638
+	ldr r0, _08077554 @ =gManimScanlineBufs
 	ldr r1, [r0, #4]
 	movs r2, #0xa0
 	lsls r2, r2, #1
@@ -17731,7 +17731,7 @@ sub_8077420: @ 0x08077420
 	pop {r0}
 	bx r0
 	.align 2, 0
-_08077554: .4byte 0x0203E638
+_08077554: .4byte gManimScanlineBufs
 _08077558: .4byte sub_80772CC
 
 	thumb_func_start sub_807755C
@@ -17743,7 +17743,7 @@ sub_807755C: @ 0x0807755C
 	str r1, [r7, #4]
 	str r2, [r7, #8]
 	str r3, [r7, #0xc]
-	ldr r0, _08077584 @ =0x0203E638
+	ldr r0, _08077584 @ =gManimScanlineBufs
 	ldr r1, [r0, #4]
 	adds r0, r1, #0
 	bl sub_80778C0
@@ -17757,7 +17757,7 @@ _08077574:
 	bge _0807758A
 	b _08077588
 	.align 2, 0
-_08077584: .4byte 0x0203E638
+_08077584: .4byte gManimScanlineBufs
 _08077588:
 	b _080775D8
 _0807758A:
@@ -17775,7 +17775,7 @@ _0807758A:
 	ldr r0, [r7, #0x10]
 	cmp r0, #0
 	ble _080775CA
-	ldr r1, _080775D4 @ =0x0203E638
+	ldr r1, _080775D4 @ =gManimScanlineBufs
 	ldr r0, [r1, #4]
 	ldr r1, [r7]
 	ldr r3, [r7, #0x10]
@@ -17783,7 +17783,7 @@ _0807758A:
 	subs r1, r2, #1
 	ldr r2, [r7, #4]
 	bl sub_8077944
-	ldr r1, _080775D4 @ =0x0203E638
+	ldr r1, _080775D4 @ =gManimScanlineBufs
 	ldr r0, [r1, #4]
 	ldr r1, [r7]
 	ldr r2, [r7, #0x10]
@@ -17796,7 +17796,7 @@ _080775CA:
 	str r1, [r7, #4]
 	b _08077574
 	.align 2, 0
-_080775D4: .4byte 0x0203E638
+_080775D4: .4byte gManimScanlineBufs
 _080775D8:
 	ldr r0, [r7, #0x10]
 	cmp r0, #0
@@ -17807,7 +17807,7 @@ _080775DE:
 	bge _080775E6
 	b _08077614
 _080775E6:
-	ldr r1, _08077610 @ =0x0203E638
+	ldr r1, _08077610 @ =gManimScanlineBufs
 	ldr r0, [r1, #4]
 	ldr r1, [r7]
 	ldr r3, [r7, #0x10]
@@ -17815,7 +17815,7 @@ _080775E6:
 	subs r1, r2, #1
 	ldr r2, [r7, #4]
 	bl sub_8077944
-	ldr r1, _08077610 @ =0x0203E638
+	ldr r1, _08077610 @ =gManimScanlineBufs
 	ldr r0, [r1, #4]
 	ldr r1, [r7]
 	ldr r2, [r7, #0x10]
@@ -17827,7 +17827,7 @@ _080775E6:
 	str r1, [r7, #4]
 	b _080775DE
 	.align 2, 0
-_08077610: .4byte 0x0203E638
+_08077610: .4byte gManimScanlineBufs
 _08077614:
 	add sp, #0x14
 	pop {r7}
@@ -18186,14 +18186,14 @@ SwapScanlineBufs: @ 0x08077898
 	push {r7, lr}
 	sub sp, #4
 	mov r7, sp
-	ldr r0, _080778BC @ =0x0203E638
+	ldr r0, _080778BC @ =gManimScanlineBufs
 	ldr r1, [r0]
 	str r1, [r7]
-	ldr r0, _080778BC @ =0x0203E638
-	ldr r1, _080778BC @ =0x0203E638
+	ldr r0, _080778BC @ =gManimScanlineBufs
+	ldr r1, _080778BC @ =gManimScanlineBufs
 	ldr r2, [r1, #4]
 	str r2, [r0]
-	ldr r0, _080778BC @ =0x0203E638
+	ldr r0, _080778BC @ =gManimScanlineBufs
 	ldr r1, [r7]
 	str r1, [r0, #4]
 	add sp, #4
@@ -18201,7 +18201,7 @@ SwapScanlineBufs: @ 0x08077898
 	pop {r0}
 	bx r0
 	.align 2, 0
-_080778BC: .4byte 0x0203E638
+_080778BC: .4byte gManimScanlineBufs
 
 	thumb_func_start sub_80778C0
 sub_80778C0: @ 0x080778C0
@@ -18639,7 +18639,7 @@ sub_8077BE0: @ 0x08077BE0
 	sub sp, #4
 	mov r7, sp
 	str r0, [r7]
-	ldr r0, _08077C18 @ =0x0203E638
+	ldr r0, _08077C18 @ =gManimScanlineBufs
 	ldr r1, [r0, #4]
 	movs r2, #0xa0
 	lsls r2, r2, #1
@@ -18662,7 +18662,7 @@ sub_8077BE0: @ 0x08077BE0
 	pop {r0}
 	bx r0
 	.align 2, 0
-_08077C18: .4byte 0x0203E638
+_08077C18: .4byte gManimScanlineBufs
 
 	thumb_func_start sub_8077C1C
 sub_8077C1C: @ 0x08077C1C
@@ -18677,7 +18677,7 @@ _08077C26:
 	ble _08077C2E
 	b _08077C50
 _08077C2E:
-	ldr r0, _08077C4C @ =0x0203E638
+	ldr r0, _08077C4C @ =gManimScanlineBufs
 	ldr r1, [r7]
 	adds r2, r1, #0
 	lsls r1, r2, #1
@@ -18692,7 +18692,7 @@ _08077C2E:
 	str r1, [r7]
 	b _08077C26
 	.align 2, 0
-_08077C4C: .4byte 0x0203E638
+_08077C4C: .4byte gManimScanlineBufs
 _08077C50:
 	movs r0, #8
 	str r0, [r7]
@@ -18702,7 +18702,7 @@ _08077C54:
 	ble _08077C5C
 	b _08077C78
 _08077C5C:
-	ldr r0, _08077C74 @ =0x0203E638
+	ldr r0, _08077C74 @ =gManimScanlineBufs
 	ldr r1, [r7]
 	adds r2, r1, #0
 	lsls r1, r2, #1
@@ -18715,7 +18715,7 @@ _08077C5C:
 	str r1, [r7]
 	b _08077C54
 	.align 2, 0
-_08077C74: .4byte 0x0203E638
+_08077C74: .4byte gManimScanlineBufs
 _08077C78:
 	movs r0, #0
 	str r0, [r7]
@@ -18725,7 +18725,7 @@ _08077C7C:
 	ble _08077C84
 	b _08077CE4
 _08077C84:
-	ldr r0, _08077CDC @ =0x0203E638
+	ldr r0, _08077CDC @ =gManimScanlineBufs
 	ldr r1, [r7]
 	adds r2, r1, #0
 	lsls r1, r2, #1
@@ -18745,7 +18745,7 @@ _08077C84:
 	orrs r1, r2
 	adds r2, r1, #0
 	strh r2, [r0]
-	ldr r0, _08077CDC @ =0x0203E638
+	ldr r0, _08077CDC @ =gManimScanlineBufs
 	ldr r1, [r7]
 	adds r2, r1, #0
 	lsls r1, r2, #1
@@ -18770,7 +18770,7 @@ _08077C84:
 	str r1, [r7]
 	b _08077C7C
 	.align 2, 0
-_08077CDC: .4byte 0x0203E638
+_08077CDC: .4byte gManimScanlineBufs
 _08077CE0: .4byte 0xFFFFFED0
 _08077CE4:
 	add sp, #4
@@ -18785,7 +18785,7 @@ sub_8077CEC: @ 0x08077CEC
 	mov r7, sp
 	str r0, [r7]
 	str r1, [r7, #4]
-	ldr r0, _08077D10 @ =0x0203E638
+	ldr r0, _08077D10 @ =gManimScanlineBufs
 	ldr r1, [r7]
 	adds r2, r1, #0
 	lsls r1, r2, #2
@@ -18798,7 +18798,7 @@ sub_8077CEC: @ 0x08077CEC
 	adds r0, r1, #0
 	b _08077D14
 	.align 2, 0
-_08077D10: .4byte 0x0203E638
+_08077D10: .4byte gManimScanlineBufs
 _08077D14:
 	add sp, #8
 	pop {r7}
@@ -18942,11 +18942,11 @@ sub_8077E1C: @ 0x08077E1C
 	str r0, [r7]
 	str r1, [r7, #4]
 	str r2, [r7, #8]
-	ldr r0, _08077E4C @ =0x0203E638
+	ldr r0, _08077E4C @ =gManimScanlineBufs
 	ldr r1, [r0, #4]
 	adds r0, r1, #0
 	bl sub_80778C0
-	ldr r1, _08077E4C @ =0x0203E638
+	ldr r1, _08077E4C @ =gManimScanlineBufs
 	ldr r0, [r1, #4]
 	ldr r2, [r7, #4]
 	ldr r3, [r7, #8]
@@ -18958,7 +18958,7 @@ sub_8077E1C: @ 0x08077E1C
 	pop {r0}
 	bx r0
 	.align 2, 0
-_08077E4C: .4byte 0x0203E638
+_08077E4C: .4byte gManimScanlineBufs
 
 	thumb_func_start sub_8077E50
 sub_8077E50: @ 0x08077E50
@@ -18989,7 +18989,7 @@ _08077E76:
 	blt _08077E80
 	b _08077EA0
 _08077E80:
-	ldr r0, _08077E9C @ =0x0203E638
+	ldr r0, _08077E9C @ =gManimScanlineBufs
 	ldr r1, [r7, #4]
 	adds r2, r1, #0
 	lsls r1, r2, #1
@@ -19004,7 +19004,7 @@ _08077E80:
 	str r1, [r7, #4]
 	b _08077E76
 	.align 2, 0
-_08077E9C: .4byte 0x0203E638
+_08077E9C: .4byte gManimScanlineBufs
 _08077EA0:
 	ldr r0, [r7, #0xc]
 	str r0, [r7, #4]
@@ -19014,7 +19014,7 @@ _08077EA4:
 	ble _08077EAC
 	b _08077ECC
 _08077EAC:
-	ldr r0, _08077EC8 @ =0x0203E638
+	ldr r0, _08077EC8 @ =gManimScanlineBufs
 	ldr r1, [r7, #4]
 	adds r2, r1, #0
 	lsls r1, r2, #1
@@ -19029,7 +19029,7 @@ _08077EAC:
 	str r1, [r7, #4]
 	b _08077EA4
 	.align 2, 0
-_08077EC8: .4byte 0x0203E638
+_08077EC8: .4byte gManimScanlineBufs
 _08077ECC:
 	ldr r0, [r7, #8]
 	str r0, [r7, #4]
@@ -19052,7 +19052,7 @@ _08077EE6:
 	subs r0, r0, r1
 	asrs r1, r0, #1
 	str r1, [r7, #0x10]
-	ldr r0, _08077F1C @ =0x0203E638
+	ldr r0, _08077F1C @ =gManimScanlineBufs
 	ldr r1, [r7, #4]
 	adds r2, r1, #0
 	lsls r1, r2, #1
@@ -19074,7 +19074,7 @@ _08077EE6:
 	str r1, [r7, #4]
 	b _08077ED0
 	.align 2, 0
-_08077F1C: .4byte 0x0203E638
+_08077F1C: .4byte gManimScanlineBufs
 _08077F20:
 	ldr r0, [r7, #0xc]
 	subs r1, r0, #1
@@ -19098,7 +19098,7 @@ _08077F3C:
 	subs r0, r0, r1
 	asrs r1, r0, #1
 	str r1, [r7, #0x10]
-	ldr r0, _08077F70 @ =0x0203E638
+	ldr r0, _08077F70 @ =gManimScanlineBufs
 	ldr r1, [r7, #4]
 	adds r2, r1, #0
 	lsls r1, r2, #1
@@ -19120,7 +19120,7 @@ _08077F3C:
 	str r1, [r7, #4]
 	b _08077F26
 	.align 2, 0
-_08077F70: .4byte 0x0203E638
+_08077F70: .4byte gManimScanlineBufs
 _08077F74:
 	ldr r0, [r7, #8]
 	adds r1, r0, #0
@@ -19135,7 +19135,7 @@ _08077F7C:
 	blt _08077F8A
 	b _08077FA8
 _08077F8A:
-	ldr r0, _08077FA4 @ =0x0203E638
+	ldr r0, _08077FA4 @ =gManimScanlineBufs
 	ldr r1, [r7, #4]
 	adds r2, r1, #0
 	lsls r1, r2, #1
@@ -19148,7 +19148,7 @@ _08077F8A:
 	str r1, [r7, #4]
 	b _08077F7C
 	.align 2, 0
-_08077FA4: .4byte 0x0203E638
+_08077FA4: .4byte gManimScanlineBufs
 _08077FA8:
 	bl SwapScanlineBufs
 	add sp, #0x14
@@ -19170,7 +19170,7 @@ sub_8077FB4: @ 0x08077FB4
 	cmp r1, #0x9e
 	bls _08077FE8
 	ldr r0, _08077FE0 @ =0x0203E640
-	ldr r1, _08077FE4 @ =0x0203E638
+	ldr r1, _08077FE4 @ =gManimScanlineBufs
 	ldr r2, [r1]
 	str r2, [r0]
 	adds r0, r7, #0
@@ -19180,7 +19180,7 @@ sub_8077FB4: @ 0x08077FB4
 	.align 2, 0
 _08077FDC: .4byte 0x04000006
 _08077FE0: .4byte 0x0203E640
-_08077FE4: .4byte 0x0203E638
+_08077FE4: .4byte gManimScanlineBufs
 _08077FE8:
 	adds r1, r7, #0
 	adds r0, r7, #0
@@ -19233,7 +19233,7 @@ sub_8078030: @ 0x08078030
 	cmp r1, #0x9e
 	bls _08078064
 	ldr r0, _0807805C @ =0x0203E640
-	ldr r1, _08078060 @ =0x0203E638
+	ldr r1, _08078060 @ =gManimScanlineBufs
 	ldr r2, [r1]
 	str r2, [r0]
 	adds r0, r7, #0
@@ -19243,7 +19243,7 @@ sub_8078030: @ 0x08078030
 	.align 2, 0
 _08078058: .4byte 0x04000006
 _0807805C: .4byte 0x0203E640
-_08078060: .4byte 0x0203E638
+_08078060: .4byte gManimScanlineBufs
 _08078064:
 	adds r1, r7, #0
 	adds r0, r7, #0
@@ -19368,7 +19368,7 @@ sub_8078130: @ 0x08078130
 	cmp r1, #0x9f
 	bls _08078164
 	ldr r0, _0807815C @ =0x0203E640
-	ldr r1, _08078160 @ =0x0203E638
+	ldr r1, _08078160 @ =gManimScanlineBufs
 	ldr r2, [r1]
 	str r2, [r0]
 	adds r0, r7, #0
@@ -19378,7 +19378,7 @@ sub_8078130: @ 0x08078130
 	.align 2, 0
 _08078158: .4byte 0x04000006
 _0807815C: .4byte 0x0203E640
-_08078160: .4byte 0x0203E638
+_08078160: .4byte gManimScanlineBufs
 _08078164:
 	adds r1, r7, #0
 	adds r0, r7, #0
@@ -19567,7 +19567,7 @@ sub_80782AC: @ 0x080782AC
 	cmp r1, #0x9f
 	bls _080782E0
 	ldr r0, _080782D8 @ =0x0203E640
-	ldr r1, _080782DC @ =0x0203E638
+	ldr r1, _080782DC @ =gManimScanlineBufs
 	ldr r2, [r1]
 	str r2, [r0]
 	adds r0, r7, #0
@@ -19577,7 +19577,7 @@ sub_80782AC: @ 0x080782AC
 	.align 2, 0
 _080782D4: .4byte 0x04000006
 _080782D8: .4byte 0x0203E640
-_080782DC: .4byte 0x0203E638
+_080782DC: .4byte gManimScanlineBufs
 _080782E0:
 	adds r1, r7, #0
 	adds r0, r7, #0
@@ -19644,7 +19644,7 @@ sub_8078344: @ 0x08078344
 	cmp r1, #0x9f
 	bls _08078378
 	ldr r0, _08078370 @ =0x0203E640
-	ldr r1, _08078374 @ =0x0203E638
+	ldr r1, _08078374 @ =gManimScanlineBufs
 	ldr r2, [r1]
 	str r2, [r0]
 	adds r0, r7, #0
@@ -19654,7 +19654,7 @@ sub_8078344: @ 0x08078344
 	.align 2, 0
 _0807836C: .4byte 0x04000006
 _08078370: .4byte 0x0203E640
-_08078374: .4byte 0x0203E638
+_08078374: .4byte gManimScanlineBufs
 _08078378:
 	adds r1, r7, #0
 	adds r0, r7, #0
@@ -19721,7 +19721,7 @@ sub_80783DC: @ 0x080783DC
 	cmp r1, #0x9f
 	bls _08078410
 	ldr r0, _08078408 @ =0x0203E640
-	ldr r1, _0807840C @ =0x0203E638
+	ldr r1, _0807840C @ =gManimScanlineBufs
 	ldr r2, [r1]
 	str r2, [r0]
 	adds r0, r7, #0
@@ -19731,7 +19731,7 @@ sub_80783DC: @ 0x080783DC
 	.align 2, 0
 _08078404: .4byte 0x04000006
 _08078408: .4byte 0x0203E640
-_0807840C: .4byte 0x0203E638
+_0807840C: .4byte gManimScanlineBufs
 _08078410:
 	adds r1, r7, #0
 	adds r0, r7, #0
@@ -19798,7 +19798,7 @@ sub_8078474: @ 0x08078474
 	cmp r1, #0x9f
 	bls _080784A8
 	ldr r0, _080784A0 @ =0x0203E640
-	ldr r1, _080784A4 @ =0x0203E638
+	ldr r1, _080784A4 @ =gManimScanlineBufs
 	ldr r2, [r1]
 	str r2, [r0]
 	adds r0, r7, #0
@@ -19808,7 +19808,7 @@ sub_8078474: @ 0x08078474
 	.align 2, 0
 _0807849C: .4byte 0x04000006
 _080784A0: .4byte 0x0203E640
-_080784A4: .4byte 0x0203E638
+_080784A4: .4byte gManimScanlineBufs
 _080784A8:
 	adds r1, r7, #0
 	adds r0, r7, #0
@@ -19875,7 +19875,7 @@ QuintessenceFx_OnHBlank: @ 0x0807850C
 	cmp r1, #0x9f
 	bls _08078540
 	ldr r0, _08078538 @ =0x0203E640
-	ldr r1, _0807853C @ =0x0203E638
+	ldr r1, _0807853C @ =gManimScanlineBufs
 	ldr r2, [r1]
 	str r2, [r0]
 	adds r0, r7, #0
@@ -19885,7 +19885,7 @@ QuintessenceFx_OnHBlank: @ 0x0807850C
 	.align 2, 0
 _08078534: .4byte 0x04000006
 _08078538: .4byte 0x0203E640
-_0807853C: .4byte 0x0203E638
+_0807853C: .4byte gManimScanlineBufs
 _08078540:
 	adds r1, r7, #0
 	adds r0, r7, #0
@@ -19961,7 +19961,7 @@ sub_80785B8: @ 0x080785B8
 	cmp r1, #0x9f
 	bls _080785EC
 	ldr r0, _080785E4 @ =0x0203E640
-	ldr r1, _080785E8 @ =0x0203E638
+	ldr r1, _080785E8 @ =gManimScanlineBufs
 	ldr r2, [r1]
 	str r2, [r0]
 	adds r0, r7, #0
@@ -19971,7 +19971,7 @@ sub_80785B8: @ 0x080785B8
 	.align 2, 0
 _080785E0: .4byte 0x04000006
 _080785E4: .4byte 0x0203E640
-_080785E8: .4byte 0x0203E638
+_080785E8: .4byte gManimScanlineBufs
 _080785EC:
 	adds r1, r7, #0
 	adds r0, r7, #0
@@ -20313,11 +20313,11 @@ sub_8078894: @ 0x08078894
 	str r1, [r7, #4]
 	str r2, [r7, #8]
 	str r3, [r7, #0xc]
-	ldr r0, _080788CC @ =0x0203E638
+	ldr r0, _080788CC @ =gManimScanlineBufs
 	ldr r1, [r0, #4]
 	adds r0, r1, #0
 	bl sub_80778C0
-	ldr r1, _080788CC @ =0x0203E638
+	ldr r1, _080788CC @ =gManimScanlineBufs
 	ldr r0, [r1, #4]
 	ldr r2, [r7, #4]
 	ldr r3, [r7, #8]
@@ -20331,7 +20331,7 @@ sub_8078894: @ 0x08078894
 	pop {r0}
 	bx r0
 	.align 2, 0
-_080788CC: .4byte 0x0203E638
+_080788CC: .4byte gManimScanlineBufs
 
 	thumb_func_start sub_80788D0
 sub_80788D0: @ 0x080788D0
