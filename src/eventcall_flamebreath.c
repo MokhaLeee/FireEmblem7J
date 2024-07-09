@@ -54,7 +54,7 @@ bool sub_807CE00(void)
     return false;
 }
 
-struct ProcCmd CONST_DATA ProcScr_08D6FAE4[] = {
+struct ProcCmd CONST_DATA ProcScr_FlameBreathfx[] = {
     PROC_YIELD,
     PROC_CALL(sub_807CE90),
     PROC_REPEAT(sub_807CF94),
@@ -64,7 +64,7 @@ struct ProcCmd CONST_DATA ProcScr_08D6FAE4[] = {
     PROC_END,
 };
 
-void sub_807CE14(struct Proc_08D6FAE4 * proc)
+void sub_807CE14(struct ProcFlameBreathfx * proc)
 {
     proc->bg_offset += 8;
 
@@ -74,11 +74,11 @@ void sub_807CE14(struct Proc_08D6FAE4 * proc)
     SwapScanlineBufs();
 }
 
-void sub_807CE90(struct Proc_08D6FAE4 * proc)
+void sub_807CE90(struct ProcFlameBreathfx * proc)
 {
     u8 * tsalut[2] = {
-        Tsa_081A7F20,
-        Tsa_081A8764
+        Tsa_FlameBreathfxR,
+        Tsa_FlameBreathfxL
     };
 
     gDispIo.bg0_ct.priority = 0;
@@ -91,8 +91,8 @@ void sub_807CE90(struct Proc_08D6FAE4 * proc)
     SetBlendTargetA(1, 0, 0, 0, 0);
     SetBlendTargetB(0, 1, 1, 1, 1);
 
-    Decompress(Img_081A7634, (void *)BG_VRAM + 0x800);
-    ApplyPalette(Pal_081A7F00, 5);
+    Decompress(Img_FlameBreathfx, (void *)BG_VRAM + 0x800);
+    ApplyPalette(Pal_FlameBreathfx, 5);
     TmApplyTsa(gBg0Tm, tsalut[proc->type], 0x5040);
 
     SetBgOffset(BG_0, (-proc->x) & 0xFF, (-proc->y) & 0xFF);
@@ -104,7 +104,7 @@ void sub_807CE90(struct Proc_08D6FAE4 * proc)
     StartParallelWorker(sub_807CE14, proc);
 }
 
-void sub_807CF94(struct Proc_08D6FAE4 * proc)
+void sub_807CF94(struct ProcFlameBreathfx * proc)
 {
     int time = proc->timer++ * 2;
     SetBlendAlpha(time, 0x10 - time / 2);

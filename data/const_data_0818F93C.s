@@ -420,20 +420,20 @@ Img_IceBmBgfx_081A5144:	@ 0x081A5144
 Tsa_IceBmBgfx_081A5708:	@ 0x081A5708
 	.incbin "FireEmblem7J.base.gba", 0x1A5708, 0x1A7634 - 0x1A5708
 
-	.global Img_081A7634
-Img_081A7634:	@ 0x081A7634
+	.global Img_FlameBreathfx
+Img_FlameBreathfx:	@ 0x081A7634
 	.incbin "FireEmblem7J.base.gba", 0x1A7634, 0x1A7F00 - 0x1A7634
 
-	.global Pal_081A7F00
-Pal_081A7F00:	@ 0x081A7F00
+	.global Pal_FlameBreathfx
+Pal_FlameBreathfx:	@ 0x081A7F00
 	.incbin "FireEmblem7J.base.gba", 0x1A7F00, 0x1A7F20 - 0x1A7F00
 
-	.global Tsa_081A7F20
-Tsa_081A7F20:	@ 0x081A7F20
+	.global Tsa_FlameBreathfxR
+Tsa_FlameBreathfxR:	@ 0x081A7F20
 	.incbin "FireEmblem7J.base.gba", 0x1A7F20, 0x1A8764 - 0x1A7F20
 
-	.global Tsa_081A8764
-Tsa_081A8764:	@ 0x081A8764
+	.global Tsa_FlameBreathfxL
+Tsa_FlameBreathfxL:	@ 0x081A8764
 	.incbin "FireEmblem7J.base.gba", 0x1A8764, 0x1A8F68 - 0x1A8764
 
 	.global Pal_EventThunderfx

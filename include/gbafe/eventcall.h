@@ -403,7 +403,7 @@ void UnitTornOut_Init(struct ProcUnitTornOut * proc);
 void UnitTornOut_Loop(struct ProcUnitTornOut * proc);
 void StartUnitTornOut(struct Unit * unit, ProcPtr parent);
 
-struct Proc_08D6FAE4 {
+struct ProcFlameBreathfx {
     PROC_HEADER;
 
     /* 2C */ int x, y;
@@ -425,12 +425,12 @@ struct Proc_08D6FAE4 {
 // sub_807CE00
 // sub_807CE14
 
-void sub_807CE90(struct Proc_08D6FAE4 * proc);
-void sub_807CF94(struct Proc_08D6FAE4 * proc);
-void sub_807CFEC(struct Proc_08D6FAE4 * proc);
-void sub_807D088(struct Proc_08D6FAE4 * proc);
-void sub_807D0E0(struct Proc_08D6FAE4 * proc);
-// sub_807D120
+void sub_807CE90(struct ProcFlameBreathfx * proc);
+void sub_807CF94(struct ProcFlameBreathfx * proc);
+void sub_807CFEC(struct ProcFlameBreathfx * proc);
+void sub_807D088(struct ProcFlameBreathfx * proc);
+void sub_807D0E0(struct ProcFlameBreathfx * proc);
+// StartFlameBreathfx
 
 struct ProcIceCrystal {
     PROC_HEADER;
@@ -698,7 +698,7 @@ extern struct ProcCmd ProcScr_EventQuakefx[];
 extern struct ProcCmd ProcScr_QuintessenceFxBg2Scroll[];
 extern struct ProcCmd ProcScr_QuintessenceFx[];
 // ??? ProcScr_UnitTornOut
-// ??? ProcScr_08D6FAE4
+// ??? ProcScr_FlameBreathfx
 extern struct ProcCmd ProcScr_IceCrystalfx[];
 // ??? gUnk_08D6FB5C
 // ??? gUnk_08D6FC14

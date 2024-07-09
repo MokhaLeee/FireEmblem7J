@@ -682,7 +682,7 @@ _0807F76E:
 	movs r0, #0
 	movs r2, #8
 	adds r3, r4, #0
-	bl sub_807D120
+	bl StartFlameBreathfx
 	pop {r4}
 	pop {r0}
 	bx r0
@@ -708,7 +708,7 @@ _0807F7A4:
 	movs r1, #2
 	movs r2, #8
 	adds r3, r4, #0
-	bl sub_807D120
+	bl StartFlameBreathfx
 	pop {r4}
 	pop {r0}
 	bx r0
