@@ -2381,7 +2381,7 @@ extern uintptr_t ProcScr_08DB9208[];
 // ??? gUnk_08DB9674
 // ??? gUnk_08DB9794
 // ??? gUnk_08DB9A7C
-// ??? BmBgfxConf_08DB9A84
-// ??? BmBgfxConf_08DBA048
+// ??? BmBgfxConf_GameTitle
+// ??? BmBgfxConf_OpAnim
 // ??? BmBgfxConf_08DBA258
 // ??? BmBgfxConf_FireRing

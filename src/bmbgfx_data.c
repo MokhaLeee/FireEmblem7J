@@ -1,7 +1,7 @@
 #include "gbafe.h"
 
 // 0x08DB9A84
-struct BmBgxConf CONST_DATA BmBgfxConf_08DB9A84[] = {
+struct BmBgxConf CONST_DATA BmBgfxConf_GameTitle[] = {
     { BMFX_CONFT_PAL,        FireRingBgfx_08662514, 0x0001, 0 },
     { BMFX_CONFT_ZIMG,       FireRingBgfx_08662534, 0x1000, 0 },
     { BMFX_CONFT_TSA,        FireRingBgfx_08663250,      0, 1 },
@@ -128,7 +128,7 @@ struct BmBgxConf CONST_DATA BmBgfxConf_08DB9A84[] = {
 };
 
 // 0x08DBA048
-struct BmBgxConf CONST_DATA BmBgfxConf_08DBA048[] = {
+struct BmBgxConf CONST_DATA BmBgfxConf_OpAnim[] = {
     { BMFX_CONFT_PAL,        OpBmBgfx_0869CAAC, 0x0001, 0 },
     { BMFX_CONFT_LOOP_START },
     { BMFX_CONFT_ZIMG,       OpBmBgfx_0869CACC, 0x1000, 1 },
