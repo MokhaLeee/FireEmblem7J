@@ -70,7 +70,7 @@ struct ProcCmd CONST_DATA ProcScr_EventVerticalQuakefx[] = {
     PROC_END,
 };
 
-void StartEventVeriticalQuakefx(struct ProcEventQuakeHandler * parent)
+void StartEventVeriticalQuakefx(ProcPtr parent)
 {
     ProcPtr proc = Proc_Find(ProcScr_EventVerticalQuakefx);
     if (!proc)
@@ -80,7 +80,7 @@ void StartEventVeriticalQuakefx(struct ProcEventQuakeHandler * parent)
     PlaySoundEffect(0x26A);
 }
 
-void StartEventHorizontalQuakefxViolently(struct ProcEventQuakeHandler * parent)
+void StartEventHorizontalQuakefxViolently(ProcPtr parent)
 {
     ProcPtr proc = Proc_Find(ProcScr_EventHorizontalQuakefx);
     if (!proc)
@@ -91,7 +91,7 @@ void StartEventHorizontalQuakefxViolently(struct ProcEventQuakeHandler * parent)
     Proc_Goto(proc, 0);
 }
 
-void StartEventHorizontalQuakefxSlightly(struct ProcEventQuakeHandler * parent)
+void StartEventHorizontalQuakefxSlightly(ProcPtr parent)
 {
     ProcPtr proc = Proc_Find(ProcScr_EventHorizontalQuakefx);
     if (!proc)
@@ -102,7 +102,7 @@ void StartEventHorizontalQuakefxSlightly(struct ProcEventQuakeHandler * parent)
     Proc_Goto(proc, 1);
 }
 
-void StartEventHorizontalQuakefxViolentlyNoSound(struct ProcEventQuakeHandler * parent)
+void StartEventHorizontalQuakefxViolentlyNoSound(ProcPtr parent)
 {
     ProcPtr proc = Proc_Find(ProcScr_EventHorizontalQuakefx);
     if (!proc)
@@ -113,7 +113,7 @@ void StartEventHorizontalQuakefxViolentlyNoSound(struct ProcEventQuakeHandler * 
     Proc_Goto(proc, 0);
 }
 
-void StartEventHorizontalQuakefxSlightlyNoSound(struct ProcEventQuakeHandler * parent)
+void StartEventHorizontalQuakefxSlightlyNoSound(ProcPtr parent)
 {
     ProcPtr proc = Proc_Find(ProcScr_EventHorizontalQuakefx);
     if (!proc)
@@ -177,13 +177,13 @@ struct ProcCmd CONST_DATA ProcScr_EventQuakefx[] = {
     PROC_END,
 };
 
-void StartEventQuakefx(struct ProcEventQuakeHandler * proc)
+void StartEventQuakefx(ProcPtr proc)
 {
     Proc_Start(ProcScr_EventQuakefx, proc);
     PlaySoundEffect(0x26A);
 }
 
-void EndEventQuakefx(struct ProcEventQuakeHandler * proc)
+void EndEventQuakefx(ProcPtr proc)
 {
     (u16)gBmSt.camera.y &= 0xFFFC;
     Sound_FadeOutSE(4);

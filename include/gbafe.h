@@ -52,6 +52,8 @@
 #include "gbafe/talk.h"
 #include "gbafe/sprite-anim.h"
 #include "gbafe/msg.h"
+#include "gbafe/mapanim.h"
+#include "gbafe/scanline.h"
 #include "gbafe/eventcall.h"
 #include "gbafe/support.h"
 #include "gbafe/mu.h"
@@ -59,4 +61,3 @@
 #include "gbafe/bmio.h"
 #include "gbafe/scrolling_util.h"
 #include "gbafe/bonusclaim.h"
-#include "gbafe/mapanim.h"

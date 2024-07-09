@@ -300,17 +300,17 @@ struct ProcEventQuakefx {
 void EventQuakefxHorizon_ViolentLoop(struct Proc * procfx);
 void EventQuakefxHorizon_SlightLoop(struct Proc * procfx);
 void EventQuakefxVeritical_Loop(struct Proc * procfx);
-void StartEventVeriticalQuakefx(struct ProcEventQuakeHandler * parent);
-void StartEventHorizontalQuakefxViolently(struct ProcEventQuakeHandler * parent);
-void StartEventHorizontalQuakefxSlightly(struct ProcEventQuakeHandler * parent);
-void StartEventHorizontalQuakefxViolentlyNoSound(struct ProcEventQuakeHandler * parent);
-void StartEventHorizontalQuakefxSlightlyNoSound(struct ProcEventQuakeHandler * parent);
+void StartEventVeriticalQuakefx(ProcPtr parent);
+void StartEventHorizontalQuakefxViolently(ProcPtr parent);
+void StartEventHorizontalQuakefxSlightly(ProcPtr parent);
+void StartEventHorizontalQuakefxViolentlyNoSound(ProcPtr parent);
+void StartEventHorizontalQuakefxSlightlyNoSound(ProcPtr parent);
 void EndEventHorizontalQuakefx(ProcPtr parent);
 void EndEventVerticalQuakefx(ProcPtr parent);
 void EventQuakefx_Init(struct ProcEventQuakefx * procfx);
 void EventQuakefx_Loop(struct ProcEventQuakefx * procfx);
-void StartEventQuakefx(struct ProcEventQuakeHandler * proc);
-void EndEventQuakefx(struct ProcEventQuakeHandler * proc);
+void StartEventQuakefx(ProcPtr proc);
+void EndEventQuakefx(ProcPtr proc);
 
 // SetFlag_145
 // ClearFlag_145
@@ -406,12 +406,19 @@ void StartUnitTornOut(struct Unit * unit, ProcPtr parent);
 struct Proc_08D6FAE4 {
     PROC_HEADER;
 
-    /* 2C */ int unk2C;
-    /* 30 */ int unk30;
+    /* 2C */ int x, y;
 
-    STRUCT_PAD(0x34, 0x58);
+    STRUCT_PAD(0x34, 0x4C);
 
-    /* 58 */ const void * unk58;
+    /* 4C */ s16 timer;
+
+    STRUCT_PAD(0x50, 0x58);
+
+    /* 58 */ int type;
+
+    STRUCT_PAD(0x5C, 0x64);
+
+    /* 64 */ s16 bg_offset;
 };
 
 // sub_807CDEC
@@ -423,12 +430,24 @@ void sub_807CF94(struct Proc_08D6FAE4 * proc);
 void sub_807CFEC(struct Proc_08D6FAE4 * proc);
 void sub_807D088(struct Proc_08D6FAE4 * proc);
 void sub_807D0E0(struct Proc_08D6FAE4 * proc);
-
 // sub_807D120
-// sub_807D140
-// sub_807D228
-// sub_807D248
-// sub_807D284
+
+struct ProcIceCrystal {
+    PROC_HEADER;
+
+    STRUCT_PAD(0x29, 0x4C);
+
+    /* 4C */ s16 timer;
+
+    STRUCT_PAD(0x4E, 0x58);
+
+    /* 58 */ int bg2_offset;
+};
+
+void IceCrystalfx_Start(struct ProcIceCrystal * proc);
+void sub_807D228(struct ProcIceCrystal * proc);
+void sub_807D248(struct ProcIceCrystal * proc);
+void sub_807D284(struct ProcIceCrystal * proc);
 // StartLoadIceCrystal
 // sub_807D328
 // sub_807D370

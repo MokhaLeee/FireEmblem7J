@@ -4,8 +4,8 @@ void QuintessenceFx_ParallelWorker(struct ProcEventAnimfx * proc)
 {
     proc->bg2_offset++;
 
-    sub_80781C8(sub_8077CEC(1, 0), proc->bg2_offset, 3, 2, 0, 60, 16);
-    sub_80781C8(sub_8077CEC(1, 160), proc->bg2_offset, 2, 4, 0, 60, 16);
+    ScanlineRotation(GetScanlineBuf(1, 0), proc->bg2_offset, 3, 2, 0, 60, 16);
+    ScanlineRotation(GetScanlineBuf(1, 160), proc->bg2_offset, 2, 4, 0, 60, 16);
 
     SwapScanlineBufs();
 }

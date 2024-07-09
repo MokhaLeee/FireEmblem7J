@@ -140,7 +140,7 @@ SECTIONS
 		. = 0x03E0A8; gEkrPairExpPrevious = .;
 		. = 0x03E0AC; gEkrPairExpGain = .;
 		. = 0x03E0D4; gManimSt = .;
-		. = 0x03E638; gManimScanlineBufs = .;
+		. = 0x03E138; src/scanline.o(ewram_data);
 		. = 0x03E648;
 		. = ALIGN(4); src/statscreen.o(ewram_data);
 		. = ALIGN(4); src/statscreen-helpbox.o(ewram_data);
@@ -255,13 +255,16 @@ SECTIONS
 		asm/code-banim2.o(.text);
 		asm/mu.o(.text);
 		asm/mapanim.o(.text);
+		src/scanline.o(.text);
 		asm/scanline.o(.text);
 		asm/eventcall.o(.text);
 		src/eventcall_quakefx.o(.text);
 		asm/code_807B7C8.o(.text);
 		src/quintessence-fx.o(.text);
-		src/eventcall-animfx.o(.text);
-		asm/spriteanimfx.o(.text);
+		src/eventcallfx_807CFEC.o(.text);
+		asm/eventcallfx_807CFEC.o(.text);
+		src/eventcall_icecrystal.o(.text);
+		asm/eventcallfx.o(.text);
 		src/eventcall_spriteanimfx.o(.text);
 		asm/eventcall_spriteanimfx.o(.text);
 		asm/code_0807F9EC.o(.text);
@@ -325,6 +328,8 @@ SECTIONS
 		. = ALIGN(4); data/const_data_081EF4AC.o(.rodata)
 		. = ALIGN(4); data/const_data_ekrdragon.o(.rodata)
 		. = ALIGN(4); data/const_data_082EB740.o(.rodata)
+		. = ALIGN(4); src/eventcallfx_807CFEC.o(.rodata)
+		. = ALIGN(4); data/const_data_084033A0.o(.rodata)
 		. = ALIGN(4); data/statscreenfx-const.o(.rodata)
 		. = ALIGN(4); src/statscreenfx.o(.rodata)
 		. = ALIGN(4); src/statscreen-util.o(.rodata)
@@ -357,7 +362,8 @@ SECTIONS
 		. = ALIGN(4); src/eventcall_quakefx.o(.data)
 		. = ALIGN(4); data/data_08D6F834.o(.data)
 		. = ALIGN(4); src/quintessence-fx.o(.data)
-		. = ALIGN(4); src/eventcall-animfx.o(.data)
+		. = ALIGN(4); src/eventcallfx_807CFEC.o(.data)
+		. = ALIGN(4); src/eventcall_icecrystal.o(.data)
 		. = ALIGN(4); data/spriteanimfx.o(.data)
 		. = ALIGN(4); data/data_eventcall.o(.data)
 		. = ALIGN(4); src/eventcall_spriteanimfx.o(.data)

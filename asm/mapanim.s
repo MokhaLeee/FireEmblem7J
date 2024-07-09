@@ -2909,7 +2909,7 @@ _080700B4:
 	adds r3, r4, #0
 	adds r4, #0x42
 	ldrh r3, [r4]
-	bl sub_8077420
+	bl StartManimFrameGradientScanlineEffect2
 	add sp, #8
 	pop {r4, r7}
 	pop {r0}

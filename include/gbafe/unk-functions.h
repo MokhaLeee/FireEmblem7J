@@ -39,11 +39,6 @@ void StartBgmVolumeChange(int volume_from, int volume_to, int duration, ProcPtr 
 void FadeBgmOut(int volume);
 void PutUiHand(int x, int y);
 void DisplayBmTextShadow(int x, int y);
-void InitScanlineEffect(void);
-void SwapScanlineBufs(void);
-u16 * sub_8077CEC(int buf_id, int scanline);
-void sub_80781C8(u16 *, s16, s16, s16, s16, s16, s16);
-void QuintessenceFx_OnHBlank(void);
 void TryLockParentProc(ProcPtr);
 void TryUnlockParentProc(ProcPtr);
 

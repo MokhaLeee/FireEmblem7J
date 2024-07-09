@@ -936,8 +936,8 @@ gUnk_08DBA258:	@ 0x08DBA258
 gUnk_08DBA9FC:	@ 0x08DBA9FC
 	.incbin "FireEmblem7J.base.gba", 0xDBA9FC, 0xDBABD0 - 0xDBA9FC
 
-	.global gUnk_08DBABD0
-gUnk_08DBABD0:	@ 0x08DBABD0
+	.global BmBgfxConf_IceCrystal
+BmBgfxConf_IceCrystal:	@ 0x08DBABD0
 	.incbin "FireEmblem7J.base.gba", 0xDBABD0, 0xDBAD14 - 0xDBABD0
 
 	.global gUnk_08DBAD14

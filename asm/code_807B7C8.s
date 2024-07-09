@@ -27,7 +27,7 @@ sub_807B8E4: @ 0x0807B8E4
 	str r0, [r4, #0x58]
 	movs r0, #1
 	movs r1, #0
-	bl sub_8077CEC
+	bl GetScanlineBuf
 	ldr r1, [r4, #0x58]
 	lsls r1, r1, #0x10
 	asrs r1, r1, #0x10
@@ -36,7 +36,7 @@ sub_807B8E4: @ 0x0807B8E4
 	bl sub_8077714
 	movs r0, #1
 	movs r1, #0xa0
-	bl sub_8077CEC
+	bl GetScanlineBuf
 	adds r5, r0, #0
 	movs r0, #3
 	bl GetBgXOffset
@@ -677,7 +677,7 @@ sub_807BDFC: @ 0x0807BDFC
 	bl sub_80780E0
 	movs r0, #0
 	bl SetOnHBlankA
-	ldr r0, _0807BEFC @ =sub_8078098
+	ldr r0, _0807BEFC @ =HBlank_Scanline_8078098
 	bl SetOnHBlankA
 	movs r1, #4
 	rsbs r1, r1, #0
@@ -746,7 +746,7 @@ sub_807BDFC: @ 0x0807BDFC
 _0807BEF0: .4byte gDispIo
 _0807BEF4: .4byte 0x0000FFE0
 _0807BEF8: .4byte 0x0000E0FF
-_0807BEFC: .4byte sub_8078098
+_0807BEFC: .4byte HBlank_Scanline_8078098
 _0807BF00: .4byte gUnk_08DBA9FC
 _0807BF04: .4byte sub_807BDC8
 
@@ -1249,7 +1249,7 @@ sub_807C28C: @ 0x0807C28C
 	bl sub_80780E0
 	movs r0, #0
 	bl SetOnHBlankA
-	ldr r0, _0807C378 @ =sub_8078098
+	ldr r0, _0807C378 @ =HBlank_Scanline_8078098
 	bl SetOnHBlankA
 	movs r1, #4
 	rsbs r1, r1, #0
@@ -1311,7 +1311,7 @@ sub_807C28C: @ 0x0807C28C
 _0807C36C: .4byte gDispIo
 _0807C370: .4byte 0x0000FFE0
 _0807C374: .4byte 0x0000E0FF
-_0807C378: .4byte sub_8078098
+_0807C378: .4byte HBlank_Scanline_8078098
 _0807C37C: .4byte gUnk_08DBA258
 _0807C380: .4byte sub_807C228
 
@@ -1753,7 +1753,7 @@ sub_807C6F0: @ 0x0807C6F0
 	str r0, [r4, #0x58]
 	movs r0, #1
 	movs r1, #0
-	bl sub_8077CEC
+	bl GetScanlineBuf
 	ldr r1, [r4, #0x58]
 	lsls r1, r1, #0x10
 	asrs r1, r1, #0x10
@@ -1766,10 +1766,10 @@ sub_807C6F0: @ 0x0807C6F0
 	str r5, [sp, #8]
 	movs r2, #7
 	movs r3, #7
-	bl sub_80781C8
+	bl ScanlineRotation
 	movs r0, #1
 	movs r1, #0xa0
-	bl sub_8077CEC
+	bl GetScanlineBuf
 	ldr r1, [r4, #0x58]
 	lsls r1, r1, #0x11
 	asrs r1, r1, #0x10
@@ -1779,7 +1779,7 @@ sub_807C6F0: @ 0x0807C6F0
 	str r5, [sp, #8]
 	movs r2, #3
 	movs r3, #0xf
-	bl sub_80781C8
+	bl ScanlineRotation
 	bl SwapScanlineBufs
 	add sp, #0xc
 	pop {r3}

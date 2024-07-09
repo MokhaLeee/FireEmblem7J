@@ -316,13 +316,21 @@ gUnk_08199250:	@ 0x08199250
 gUnk_08199290:	@ 0x08199290
 	.incbin "FireEmblem7J.base.gba", 0x199290, 0x1A7634 - 0x199290
 
-	.global gUnk_081A7634
-gUnk_081A7634:	@ 0x081A7634
+	.global Img_081A7634
+Img_081A7634:	@ 0x081A7634
 	.incbin "FireEmblem7J.base.gba", 0x1A7634, 0x1A7F00 - 0x1A7634
 
-	.global gUnk_081A7F00
-gUnk_081A7F00:	@ 0x081A7F00
-	.incbin "FireEmblem7J.base.gba", 0x1A7F00, 0x1A8F68 - 0x1A7F00
+	.global Pal_081A7F00
+Pal_081A7F00:	@ 0x081A7F00
+	.incbin "FireEmblem7J.base.gba", 0x1A7F00, 0x1A7F20 - 0x1A7F00
+
+	.global Tsa_081A7F20
+Tsa_081A7F20:	@ 0x081A7F20
+	.incbin "FireEmblem7J.base.gba", 0x1A7F20, 0x1A8764 - 0x1A7F20
+
+	.global Tsa_081A8764
+Tsa_081A8764:	@ 0x081A8764
+	.incbin "FireEmblem7J.base.gba", 0x1A8764, 0x1A8F68 - 0x1A8764
 
 	.global Pal_EventThunderfx
 Pal_EventThunderfx:	@ 0x081A8F68

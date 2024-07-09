@@ -2268,7 +2268,7 @@ sub_80117DC: @ 0x080117DC
 	bl sub_80780E0
 	movs r0, #0
 	bl SetOnHBlankA
-	ldr r0, _080118A0 @ =sub_8078098
+	ldr r0, _080118A0 @ =HBlank_Scanline_8078098
 	bl SetOnHBlankA
 	movs r1, #4
 	rsbs r1, r1, #0
@@ -2316,7 +2316,7 @@ sub_80117DC: @ 0x080117DC
 _08011894: .4byte gDispIo
 _08011898: .4byte 0x0000FFE0
 _0801189C: .4byte 0x0000E0FF
-_080118A0: .4byte sub_8078098
+_080118A0: .4byte HBlank_Scanline_8078098
 _080118A4: .4byte gUnk_08DBA258
 
 	thumb_func_start sub_80118A8

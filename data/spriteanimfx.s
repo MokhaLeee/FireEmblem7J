@@ -1,9 +1,5 @@
 	.section .data
 
-	.global ProcScr_IceCrystalfx
-ProcScr_IceCrystalfx:	@ 0x08D6FB1C
-	.incbin "FireEmblem7J.base.gba", 0xD6FB1C, 0xD6FB5C - 0xD6FB1C
-
 	.global gUnk_08D6FB5C
 gUnk_08D6FB5C:	@ 0x08D6FB5C
 	.incbin "FireEmblem7J.base.gba", 0xD6FB5C, 0xD6FC14 - 0xD6FB5C

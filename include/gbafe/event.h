@@ -513,6 +513,12 @@ void sub_80124BC(ProcPtr proc);
 void sub_80125A4(ProcPtr proc);
 // sub_80125EC
 
+extern struct BmBgxConf CONST_DATA  BmBgfxConf_IceCrystal[];
+// ??? gUnk_08DBAD14
+// ??? gUnk_08DC0390
+// ??? gUnk_08E00008
+// ??? gUnk_08FC0008
+// ??? gUnk_08FD8008
 extern struct BmBgxConf CONST_DATA BmBgfxConf_EventThunder[];
 extern struct ProcCmd CONST_DATA ProcScr_EventThunderfx[];
 // ??? gUnk_08C013F0

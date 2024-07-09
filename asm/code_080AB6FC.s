@@ -17897,7 +17897,7 @@ _080B460E:
 	adds r4, r1, #0
 	cmp r0, #0
 	beq _080B463C
-	ldr r1, _080B4678 @ =0x0203E640
+	ldr r1, _080B4678 @ =gManimActiveScanlineBuf
 	cmp r3, #0
 	bne _080B4630
 	ldr r0, _080B467C @ =gManimScanlineBufs
@@ -17940,7 +17940,7 @@ _080B4668:
 	.align 2, 0
 _080B4670: .4byte 0x04000006
 _080B4674: .4byte 0x02000814
-_080B4678: .4byte 0x0203E640
+_080B4678: .4byte gManimActiveScanlineBuf
 _080B467C: .4byte gManimScanlineBufs
 _080B4680: .4byte 0x04000040
 _080B4684: .4byte 0x02000815
@@ -23095,7 +23095,7 @@ _080B6DFC:
 	ands r0, r1
 	cmp r0, #0
 	beq _080B6E28
-	ldr r1, _080B6E34 @ =0x0203E640
+	ldr r1, _080B6E34 @ =gManimActiveScanlineBuf
 	cmp r3, #0
 	bne _080B6E1C
 	ldr r0, _080B6E38 @ =gManimScanlineBufs
@@ -23113,7 +23113,7 @@ _080B6E28:
 	.align 2, 0
 _080B6E2C: .4byte 0x04000006
 _080B6E30: .4byte 0x02000814
-_080B6E34: .4byte 0x0203E640
+_080B6E34: .4byte gManimActiveScanlineBuf
 _080B6E38: .4byte gManimScanlineBufs
 _080B6E3C: .4byte 0x04000040
 
@@ -32333,7 +32333,7 @@ sub_80BB62C: @ 0x080BB62C
 	movs r0, #1
 	bl EnableBgSync
 	bl InitScanlineEffect
-	ldr r0, _080BB7D0 @ =sub_80782AC
+	ldr r0, _080BB7D0 @ =HBlank_Scanline_80782AC
 	bl SetOnHBlankA
 	ldr r0, _080BB7D4 @ =gUnk_08DB8F80
 	ldr r1, [sp, #8]
@@ -32360,7 +32360,7 @@ _080BB7C0: .4byte 0x06005000
 _080BB7C4: .4byte gBg0Tm
 _080BB7C8: .4byte gUnk_086C40D0
 _080BB7CC: .4byte 0x0000C280
-_080BB7D0: .4byte sub_80782AC
+_080BB7D0: .4byte HBlank_Scanline_80782AC
 _080BB7D4: .4byte gUnk_08DB8F80
 
 	thumb_func_start sub_80BB7D8
@@ -32445,7 +32445,7 @@ _080BB83E:
 _080BB86E:
 	movs r0, #1
 	movs r1, #0
-	bl sub_8077CEC
+	bl GetScanlineBuf
 	adds r5, #0x64
 	movs r2, #0
 	ldrsh r1, [r5, r2]
@@ -32459,7 +32459,7 @@ _080BB86E:
 	bl sub_8077794
 	movs r0, #1
 	movs r1, #0xa0
-	bl sub_8077CEC
+	bl GetScanlineBuf
 	movs r7, #0
 	ldrsh r1, [r5, r7]
 	movs r3, #0xc

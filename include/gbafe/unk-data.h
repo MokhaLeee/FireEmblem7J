@@ -106,8 +106,10 @@ extern const u8 Tsa_Unk_0819128C[];
 // ??? gUnk_08198D98
 // ??? gUnk_08199250
 // ??? gUnk_08199290
-// ??? gUnk_081A7634
-// ??? gUnk_081A7F00
+extern u8 Img_081A7634[];
+extern u16 Pal_081A7F00[];
+extern u8 Tsa_081A7F20[];
+extern u8 Tsa_081A8764[];
 extern u16 Pal_EventThunderfx[];
 extern u8 Img_EventThunderfx1[];
 extern u8 Img_EventThunderfx2[];
@@ -1084,7 +1086,7 @@ extern const u8 Tsa_EkrDragonFireBG2[];
 // ??? gUnk_08402F84
 // ??? gUnk_08402FB0
 // ??? gUnk_08403050
-// ??? gUnk_08403398
+// ??? TsaLut_08403398
 // ??? gUnk_084033A0
 // ??? gUnk_084033AC
 // ??? gUnk_084033B4
@@ -2160,9 +2162,3 @@ extern uintptr_t ProcScr_08DB9208[];
 // ??? gUnk_08DBA048
 // ??? gUnk_08DBA258
 // ??? gUnk_08DBA9FC
-// ??? gUnk_08DBABD0
-// ??? gUnk_08DBAD14
-// ??? gUnk_08DC0390
-// ??? gUnk_08E00008
-// ??? gUnk_08FC0008
-// ??? gUnk_08FD8008
