@@ -86,7 +86,7 @@ _0801D862:
 	bne _0801D87A
 	bl RefreshEntityMaps
 	bl RefreshUnitSprites
-	bl sub_8025A0C
+	bl ForceSyncUnitSpriteSheet
 _0801D87A:
 	pop {r4, r5}
 	pop {r0}
@@ -5028,7 +5028,7 @@ sub_801FFA8: @ 0x0801FFA8
 	ldrb r0, [r0, #0x15]
 	bl sub_802D8E4
 	bl RefreshUnitSprites
-	bl sub_8025A0C
+	bl ForceSyncUnitSpriteSheet
 	bl InitSystemTextFont
 	pop {r0}
 	bx r0

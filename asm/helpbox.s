@@ -8874,7 +8874,7 @@ _08087530:
 	subs r5, #1
 	cmp r5, #0
 	bge _08087522
-	bl sub_8025A0C
+	bl ForceSyncUnitSpriteSheet
 	ldr r6, _080875F0 @ =gDispIo
 	movs r0, #0x20
 	ldrb r2, [r6, #1]
@@ -13596,7 +13596,7 @@ sub_8089B80: @ 0x08089B80
 	lsls r0, r0, #7
 	movs r1, #1
 	bl sub_8090E38
-	bl sub_8025A0C
+	bl ForceSyncUnitSpriteSheet
 	pop {r4}
 	pop {r0}
 	bx r0
@@ -24061,7 +24061,7 @@ _0808ED12:
 	bl sub_808E664
 	cmp r4, r0
 	blt _0808ECE6
-	bl sub_8025A0C
+	bl ForceSyncUnitSpriteSheet
 	pop {r4}
 	pop {r0}
 	bx r0
@@ -26767,7 +26767,7 @@ sub_80902F0: @ 0x080902F0
 	movs r0, #0
 	strb r0, [r1]
 	strh r0, [r5, #0x34]
-	bl sub_8025A0C
+	bl ForceSyncUnitSpriteSheet
 	bl CheckInLinkArena
 	lsls r0, r0, #0x18
 	asrs r1, r0, #0x18
@@ -30529,7 +30529,7 @@ _08091E58:
 	ldr r2, _08092130 @ =0x01000008
 	ldr r0, [sp, #0x2c]
 	bl CpuFastSet
-	bl sub_8025A0C
+	bl ForceSyncUnitSpriteSheet
 	ldr r0, _08092134 @ =Img_PrepTextShadow
 	ldr r1, _08092138 @ =0x06013E00
 	bl Decompress
@@ -37762,7 +37762,7 @@ _08095920:
 	ldr r0, [r7, #0x2c]
 	bl GetUnitSMSId
 	bl sub_8025278
-	bl sub_8025A0C
+	bl ForceSyncUnitSpriteSheet
 	add sp, #0x28
 	pop {r3, r4, r5}
 	mov r8, r3
@@ -41755,7 +41755,7 @@ sub_8097C30: @ 0x08097C30
 	bl HideUnitSprite
 	ldr r0, [r4]
 	bl StartMu
-	bl sub_806C7CC
+	bl MU_SetDefaultFacing_Auto
 _08097C48:
 	pop {r4}
 	pop {r0}
@@ -49980,7 +49980,7 @@ _0809BE58:
 	cmp r4, r0
 	blt _0809BE58
 _0809BE74:
-	bl sub_8025A0C
+	bl ForceSyncUnitSpriteSheet
 	pop {r4, r5}
 	pop {r0}
 	bx r0
@@ -52723,7 +52723,7 @@ _0809D4F8:
 	ldrb r0, [r0]
 	cmp r4, r0
 	blt _0809D4DC
-	bl sub_8025A0C
+	bl ForceSyncUnitSpriteSheet
 	movs r4, #0
 	adds r0, r5, #0
 	adds r0, #0x3c

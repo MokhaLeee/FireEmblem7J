@@ -1140,8 +1140,8 @@ _08025A00: .4byte 0x06011000
 _08025A04: .4byte 0x02035F10
 _08025A08: .4byte 0x02037F10
 
-	thumb_func_start sub_8025A0C
-sub_8025A0C: @ 0x08025A0C
+	thumb_func_start ForceSyncUnitSpriteSheet
+ForceSyncUnitSpriteSheet: @ 0x08025A0C
 	push {lr}
 	ldr r0, _08025A2C @ =gUnitSpriteSyncRequest
 	movs r1, #0
@@ -1575,7 +1575,7 @@ _08025D44:
 	ldr r0, [r0]
 	cmp r0, #0
 	beq _08025D50
-	bl sub_8025A0C
+	bl ForceSyncUnitSpriteSheet
 _08025D50:
 	pop {r3, r4}
 	mov r8, r3

@@ -892,16 +892,16 @@ _080121E6:
 	bx r1
 	.align 2, 0
 
-	thumb_func_start sub_80121F0
-sub_80121F0: @ 0x080121F0
+	thumb_func_start EventE6_ArchiveCurrentPalettes
+EventE6_ArchiveCurrentPalettes: @ 0x080121F0
 	push {lr}
 	bl ArchiveCurrentPalettes
 	movs r0, #2
 	pop {r1}
 	bx r1
 
-	thumb_func_start sub_80121FC
-sub_80121FC: @ 0x080121FC
+	thumb_func_start EventE7_WriteFadedPaletteFromArchive
+EventE7_WriteFadedPaletteFromArchive: @ 0x080121FC
 	push {lr}
 	movs r2, #0x80
 	lsls r2, r2, #1

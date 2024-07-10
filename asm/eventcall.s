@@ -6236,12 +6236,12 @@ sub_807B3D0: @ 0x0807B3D0
 	beq _0807B3F6
 	movs r0, #0xff
 	strb r0, [r2]
-	bl sub_802E834
+	bl RefreshBMapGraphics
 	bl UnlockBmDisplay
 	bl ReleaseMus
 	b _0807B3FA
 _0807B3F6:
-	bl sub_802E834
+	bl RefreshBMapGraphics
 _0807B3FA:
 	pop {r0}
 	bx r0
@@ -6261,12 +6261,12 @@ sub_807B400: @ 0x0807B400
 	beq _0807B426
 	movs r0, #0xff
 	strb r0, [r2]
-	bl sub_802E804
+	bl InitMoreBMapGraphics
 	bl UnlockBmDisplay
 	bl ReleaseMus
 	b _0807B42A
 _0807B426:
-	bl sub_802E804
+	bl InitMoreBMapGraphics
 _0807B42A:
 	pop {r0}
 	bx r0

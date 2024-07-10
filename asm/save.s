@@ -3972,7 +3972,7 @@ _080A106C:
 	movs r0, #0
 	bl SetGameTime
 	adds r0, r4, #0
-	bl sub_802E3E0
+	bl InitPlayConfig
 	bl InitUnits
 	bl sub_802EBD4
 	bl sub_807A0A0

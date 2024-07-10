@@ -511,7 +511,7 @@ sub_801C980: @ 0x0801C980
 	ldr r0, [r4]
 	bl HideUnitSprite
 _0801C9BC:
-	bl sub_806C7CC
+	bl MU_SetDefaultFacing_Auto
 	bl sub_8079798
 	ldr r5, _0801CA14 @ =gBmSt
 	movs r0, #2
@@ -1245,7 +1245,7 @@ _0801CFF8:
 	bl EndAllMus
 	ldr r0, [r5]
 	bl StartMu
-	bl sub_806C7CC
+	bl MU_SetDefaultFacing_Auto
 	ldr r0, _0801D03C @ =gPlaySt
 	ldrb r0, [r0, #0xd]
 	cmp r0, #0
@@ -1703,7 +1703,7 @@ sub_801D3B8: @ 0x0801D3B8
 	ldr r2, [r5]
 	cmp r2, #0
 	bne _0801D3D8
-	bl sub_802E834
+	bl RefreshBMapGraphics
 	adds r0, r6, #0
 	movs r1, #0xc
 	bl Proc_Goto
@@ -1729,7 +1729,7 @@ _0801D3D8:
 	rsbs r1, r1, #0
 	ands r0, r1
 	str r0, [r2, #0xc]
-	bl sub_802E834
+	bl RefreshBMapGraphics
 	ldr r2, [r5]
 	movs r0, #0x11
 	ldrsb r0, [r2, r0]
@@ -1772,7 +1772,7 @@ _0801D444:
 	thumb_func_start sub_801D44C
 sub_801D44C: @ 0x0801D44C
 	push {lr}
-	bl sub_802E834
+	bl RefreshBMapGraphics
 	ldr r3, _0801D478 @ =gDispIo
 	adds r1, r3, #0
 	adds r1, #0x3c

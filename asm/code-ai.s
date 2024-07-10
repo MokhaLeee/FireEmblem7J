@@ -1207,7 +1207,7 @@ sub_803569C: @ 0x0803569C
 	beq _080356FA
 	ldr r0, [r6]
 	bl StartMu
-	bl sub_806C7CC
+	bl MU_SetDefaultFacing_Auto
 	adds r0, r7, #0
 	bl sub_806C7F8
 _080356FA:
@@ -1661,7 +1661,7 @@ _08035A82:
 	bl sub_8034C48
 	ldr r0, [r4]
 	bl StartMu
-	bl sub_806C7CC
+	bl MU_SetDefaultFacing_Auto
 	b _08035AEA
 	.align 2, 0
 _08035AC4: .4byte 0x0203A978

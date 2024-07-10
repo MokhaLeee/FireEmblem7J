@@ -6,7 +6,7 @@
 // BmVSync_End
 // BmVSync_Repeat
 void StartBmVSync(void);
-// sub_802D864
+// BMapVSync_End
 void LockBmDisplay(void);
 void UnlockBmDisplay(void);
 // sub_802D8E4

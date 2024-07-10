@@ -4689,7 +4689,7 @@ _080ADE12:
 	mov r0, r8
 	strb r4, [r0]
 	bl ApplyUnitSpritePalettes
-	bl sub_8025A0C
+	bl ForceSyncUnitSpriteSheet
 	pop {r3}
 	mov r8, r3
 	pop {r4, r5, r6, r7}
@@ -16118,7 +16118,7 @@ sub_80B3874: @ 0x080B3874
 	ldr r1, [r0]
 	adds r0, r1, #0
 	bl StartMu
-	bl sub_806C7CC
+	bl MU_SetDefaultFacing_Auto
 	add sp, #4
 	pop {r7}
 	pop {r0}

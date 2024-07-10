@@ -224,8 +224,8 @@ sub_802C068: @ 0x0802C068
 	bx r0
 	.align 2, 0
 
-	thumb_func_start sub_802C078
-sub_802C078: @ 0x0802C078
+	thumb_func_start InitMapObstacles
+InitMapObstacles: @ 0x0802C078
 	push {r4, r5, r6, lr}
 	ldr r0, _0802C0AC @ =gBmMapSize
 	movs r1, #2

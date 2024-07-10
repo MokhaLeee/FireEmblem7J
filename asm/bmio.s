@@ -150,8 +150,8 @@ StartBmVSync: @ 0x0802D840
 _0802D85C: .4byte gUnk_08C05414
 _0802D860: .4byte gBmSt
 
-	thumb_func_start sub_802D864
-sub_802D864: @ 0x0802D864
+	thumb_func_start BMapVSync_End
+BMapVSync_End: @ 0x0802D864
 	push {lr}
 	ldr r0, _0802D870 @ =gUnk_08C05414
 	bl Proc_EndEach

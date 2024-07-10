@@ -460,7 +460,7 @@ sub_802CB9C: @ 0x0802CB9C
 	bl RefreshEntityMaps
 	bl RenderMap
 	bl RefreshUnitSprites
-	bl sub_8025A0C
+	bl ForceSyncUnitSpriteSheet
 	pop {r1}
 	bx r1
 	.align 2, 0

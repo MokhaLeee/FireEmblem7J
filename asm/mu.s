@@ -744,8 +744,8 @@ _0806C7C4:
 	pop {r0}
 	bx r0
 
-	thumb_func_start sub_806C7CC
-sub_806C7CC: @ 0x0806C7CC
+	thumb_func_start MU_SetDefaultFacing_Auto
+MU_SetDefaultFacing_Auto: @ 0x0806C7CC
 	push {r7, lr}
 	sub sp, #4
 	mov r7, sp

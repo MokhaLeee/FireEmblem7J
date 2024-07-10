@@ -920,7 +920,7 @@ sub_801BCD4: @ 0x0801BCD4
 	bl SetMainFunc
 	ldr r0, _0801BD28 @ =OnVBlank
 	bl SetOnVBlank
-	bl sub_802E834
+	bl RefreshBMapGraphics
 	movs r0, #2
 	movs r1, #0
 	bl DebugInitBg

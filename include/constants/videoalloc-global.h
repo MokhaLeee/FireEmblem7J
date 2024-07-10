@@ -10,6 +10,7 @@ enum {
     BGPAL_TALK_BUBBLE     = 3,
     BGPAL_ICONS           = 4, // .. 5
     BGPAL_TILESET         = 6, // .. 15
+    BGPAL_BM_15           = 15,
 
     BGPAL_UI_STATBAR = 6,
 

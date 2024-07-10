@@ -174,7 +174,7 @@ ProcScr_GameControl: @ 0xC01744
         .word 0x0
         @ PROC_CALL
         .short 0x2, 0x0
-        .word sub_802E4E8
+        .word StartBattleMap
         @ PROC_YIELD
         .short 0xe, 0x0
         .word 0x0
@@ -282,7 +282,7 @@ ProcScr_GameControl: @ 0xC01744
         .word sub_8012FB0
         @ PROC_CALL
         .short 0x2, 0x0
-        .word sub_802E4E8
+        .word StartBattleMap
         @ PROC_YIELD
         .short 0xe, 0x0
         .word 0x0

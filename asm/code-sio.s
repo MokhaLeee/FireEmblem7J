@@ -4663,7 +4663,7 @@ _0803E982:
 	bl sub_803E1A0
 	bl ApplyUnitSpritePalettes
 	bl ResetUnitSprites
-	bl sub_8025A0C
+	bl ForceSyncUnitSpriteSheet
 	ldr r0, [r7, #0x3c]
 	ldr r1, _0803EB30 @ =0x0203D908
 	ldrb r1, [r1]
@@ -13507,7 +13507,7 @@ _0804323A:
 	adds r0, r2, #0
 	cmp r0, #0xff
 	bne _08043278
-	bl sub_802D864
+	bl BMapVSync_End
 	bl sub_8048494
 	bl UnsetBmStLinkArenaFlag
 	ldr r0, _08043274 @ =gUnk_08C025F8
@@ -18133,7 +18133,7 @@ sub_80457C0: @ 0x080457C0
 	bl InitBgs
 	bl ApplySystemGraphics
 	bl ApplyUnitSpritePalettes
-	bl sub_8025A0C
+	bl ForceSyncUnitSpriteSheet
 	bl sub_80457A8
 	bl InitSystemTextFont
 	ldr r1, _080457E8 @ =0x0203DC74
@@ -18251,7 +18251,7 @@ _08045880:
 	bl RefreshUnitSprites
 	bl sub_80457A8
 	bl sub_8047330
-	ldr r0, _0804590C @ =gUnk_08C05464
+	ldr r0, _0804590C @ =ProcScr_MapTask
 	movs r1, #4
 	bl Proc_Start
 	bl StartBmVSync
@@ -18271,7 +18271,7 @@ _080458FC: .4byte gUnk_08C08F20
 _08045900: .4byte 0x03001400
 _08045904: .4byte 0x03001414
 _08045908: .4byte gBmSt
-_0804590C: .4byte gUnk_08C05464
+_0804590C: .4byte ProcScr_MapTask
 _08045910: .4byte gPlaySt
 
 	thumb_func_start sub_8045914
@@ -18551,16 +18551,16 @@ _08045B1C: .4byte gSioSt
 	thumb_func_start sub_8045B20
 sub_8045B20: @ 0x08045B20
 	push {lr}
-	ldr r0, _08045B3C @ =gUnk_08C05464
+	ldr r0, _08045B3C @ =ProcScr_MapTask
 	bl Proc_EndEach
 	bl sub_8047344
-	bl sub_802D864
+	bl BMapVSync_End
 	movs r0, #1
 	bl FadeBgmOut
 	pop {r0}
 	bx r0
 	.align 2, 0
-_08045B3C: .4byte gUnk_08C05464
+_08045B3C: .4byte ProcScr_MapTask
 
 	thumb_func_start sub_8045B40
 sub_8045B40: @ 0x08045B40

@@ -514,7 +514,7 @@ sub_8012F6C: @ 0x08012F6C
 	b _08012FA6
 _08012F82:
 	movs r0, #0
-	bl sub_802E3E0
+	bl InitPlayConfig
 	ldr r4, _08012FAC @ =gPlaySt
 	movs r0, #8
 	ldrb r1, [r4, #0x14]

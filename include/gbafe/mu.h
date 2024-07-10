@@ -79,7 +79,7 @@ struct MuProc * StartUiMu(struct Unit * unit, int x, int y);
 // sub_806C4A0
 // sub_806C738
 // sub_806C790
-// sub_806C7CC
+// MU_SetDefaultFacing_Auto
 // sub_806C7F8
 // sub_806C82C
 // sub_806C850

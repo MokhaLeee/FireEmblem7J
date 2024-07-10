@@ -897,9 +897,9 @@ sub_80518BC: @ 0x080518BC
 	movs r0, #0xf
 	strh r0, [r5, #0x2e]
 	bl ResetUnitSprites
-	bl sub_802E7E0
+	bl BMapDispResume_FromBattleDelayed
 	bl RefreshUnitSprites
-	bl sub_8025A0C
+	bl ForceSyncUnitSpriteSheet
 	bl ApplyUnitSpritePalettes
 	ldr r2, _08051944 @ =gDispIo
 	adds r1, r2, #0
@@ -1071,7 +1071,7 @@ sub_8051A38: @ 0x08051A38
 	push {r4, lr}
 	adds r4, r0, #0
 	bl EndEkrBattleDeamon
-	bl sub_802E768
+	bl RefreshBMapDisplay_FromBattle
 	adds r0, r4, #0
 	bl Proc_Break
 	pop {r4}

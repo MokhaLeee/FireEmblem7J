@@ -474,13 +474,21 @@ void ClearTalk(void);
 
 struct ProcEventSnowStormfx {
     PROC_HEADER;
+
+    /* 2C */ int paluse_duration;
+    /* 30 */ int timer;
+    /* 34 */ int bg_offset;
+
+    STRUCT_PAD(0x38, 0x3C);
+
+    /* 3C */ int x, y;
 };
 
-void SnowStormWeather_Init(struct ProcEventSnowStormfx * proc);
-void SnowStormWeather_Loop1(struct ProcEventSnowStormfx * proc);
-void SnowStormWeather_Loop2(struct ProcEventSnowStormfx * proc);
-void SnowStormWeather_Loop3(struct ProcEventSnowStormfx * proc);
-void SnowStormWeather_End(struct ProcEventSnowStormfx * proc);
+void EventSnowStormfx_Init(struct ProcEventSnowStormfx * proc);
+void EventSnowStormfx_Loop1(struct ProcEventSnowStormfx * proc);
+void EventSnowStormfx_Loop2(struct ProcEventSnowStormfx * proc);
+void EventSnowStormfx_Loop3(struct ProcEventSnowStormfx * proc);
+void EventSnowStormfx_End(struct ProcEventSnowStormfx * proc);
 int EventDF_SnowStormfx(struct EventProc * proc);
 
 // sub_80117DC
@@ -527,8 +535,8 @@ bool EventThunderfxExists(void);
 // sub_80120E0
 // sub_8012150
 // EventE5_NinianResurrection
-// sub_80121F0
-// sub_80121FC
+// EventE6_ArchiveCurrentPalettes
+// EventE7_WriteFadedPaletteFromArchive
 
 struct EventSpriteAnimConf {
     /* 00 */ const u16 * pal;
@@ -622,7 +630,7 @@ extern struct BackgroundInfo gBackgroundTable[];
 // ??? gUnk_08C0117C
 // ??? gUnk_08C011CC
 // ??? gUnk_08C01224
-// ??? ProcScr_SnowStormWeather
+// ??? ProcScr_EventSnowStormfx
 // ??? gUnk_08C012BC
 extern struct BmBgxConf CONST_DATA  BmBgfxConf_IceCrystal[];
 // ??? gUnk_08DBAD14

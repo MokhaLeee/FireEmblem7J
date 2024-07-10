@@ -1762,7 +1762,7 @@ sub_801140C: @ 0x0801140C
 	beq _0801143C
 	bl sub_802516C
 _0801143C:
-	bl sub_8025A0C
+	bl ForceSyncUnitSpriteSheet
 	bl UnlockBmDisplay
 	bl ReleaseMus
 	movs r0, #8
@@ -1889,7 +1889,7 @@ sub_8011508: @ 0x08011508
 	beq _08011544
 	movs r0, #0xff
 	strb r0, [r4]
-	bl sub_802E834
+	bl RefreshBMapGraphics
 	bl UnlockBmDisplay
 	bl ReleaseMus
 _08011544:

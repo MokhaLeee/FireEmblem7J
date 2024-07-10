@@ -1194,7 +1194,7 @@ _0800ADF4:
 	thumb_func_start sub_800ADF8
 sub_800ADF8: @ 0x0800ADF8
 	push {lr}
-	bl sub_802E834
+	bl RefreshBMapGraphics
 	bl UnlockBmDisplay
 	bl ReleaseMus
 	ldr r0, _0800AE2C @ =gBg0Tm
@@ -1230,7 +1230,7 @@ sub_800AE34: @ 0x0800AE34
 	movs r0, #2
 	bl EnableBgSync
 	bl ClearTalk
-	bl sub_802E834
+	bl RefreshBMapGraphics
 	adds r1, r5, #0
 	adds r1, #0x5e
 	movs r0, #4

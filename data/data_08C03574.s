@@ -196,8 +196,8 @@ gUnk_08C04FD4:	@ 0x08C04FD4
 gUnk_08C05414:	@ 0x08C05414
 	.incbin "FireEmblem7J.base.gba", 0xC05414, 0xC05464 - 0xC05414
 
-	.global gUnk_08C05464
-gUnk_08C05464:	@ 0x08C05464
+	.global ProcScr_MapTask
+ProcScr_MapTask:	@ 0x08C05464
 	.incbin "FireEmblem7J.base.gba", 0xC05464, 0xC054C4 - 0xC05464
 
 	.global gUnk_08C054C4

@@ -15,7 +15,7 @@ int UseUnitSprite(u32 id);
 // extern ??? ApplyUnitSpriteImage32x32
 void TornOutUnitSprite(struct Unit * unit, int timer);
 // extern ??? sub_80259A4
-// extern ??? sub_8025A0C
+// extern ??? ForceSyncUnitSpriteSheet
 // extern ??? sub_8025A6C
 // extern ??? sub_8025AE0
 // extern ??? sub_8025B54

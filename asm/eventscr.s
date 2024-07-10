@@ -3143,7 +3143,7 @@ _0800CF90:
 	ldr r0, _0800CFA4 @ =sub_800D204
 	str r0, [r5, #0x40]
 _0800CF9A:
-	bl sub_8025A0C
+	bl ForceSyncUnitSpriteSheet
 _0800CF9E:
 	pop {r4, r5}
 	pop {r0}
@@ -3226,7 +3226,7 @@ _0800D02C:
 	ldr r0, _0800D040 @ =sub_800D204
 	str r0, [r5, #0x40]
 _0800D036:
-	bl sub_8025A0C
+	bl ForceSyncUnitSpriteSheet
 _0800D03A:
 	pop {r4, r5, r6}
 	pop {r0}
@@ -5315,7 +5315,7 @@ _0800DF28:
 	adds r0, r4, #0
 	bl StartMu
 	adds r4, r0, #0
-	bl sub_806C7CC
+	bl MU_SetDefaultFacing_Auto
 	adds r0, r4, #0
 	bl sub_806DD98
 	ldr r0, _0800DF60 @ =sub_800DFE0
@@ -5375,7 +5375,7 @@ _0800DFB0:
 	adds r0, r4, #0
 	bl StartMu
 	adds r4, r0, #0
-	bl sub_806C7CC
+	bl MU_SetDefaultFacing_Auto
 	adds r0, r4, #0
 	bl sub_806DD98
 	ldr r0, _0800DFDC @ =sub_800DFE0
@@ -6085,7 +6085,7 @@ sub_800E4C0: @ 0x0800E4C0
 	ldr r0, [r4, #0x30]
 	ldr r0, [r0, #4]
 	strb r0, [r1, #0xe]
-	bl sub_802E5B4
+	bl RestartBattleMap
 	ldr r0, [r4, #0x30]
 	ldr r0, [r0, #8]
 	lsls r0, r0, #4
@@ -6772,7 +6772,7 @@ _0800E9AC:
 	bl HideUnitSprite
 	ldr r0, [r4]
 	bl StartMu
-	bl sub_806C7CC
+	bl MU_SetDefaultFacing_Auto
 	bl BeginBattleAnimations
 	mov r0, r8
 	movs r1, #7

@@ -54,8 +54,8 @@ _0802E3DA:
 	bx r1
 	.align 2, 0
 
-	thumb_func_start sub_802E3E0
-sub_802E3E0: @ 0x0802E3E0
+	thumb_func_start InitPlayConfig
+InitPlayConfig: @ 0x0802E3E0
 	push {r4, r5, r6, r7, lr}
 	mov r7, sl
 	mov r6, sb
@@ -186,8 +186,8 @@ ResetBmSt: @ 0x0802E4BC
 _0802E4E0: .4byte gBmSt
 _0802E4E4: .4byte 0x01000020
 
-	thumb_func_start sub_802E4E8
-sub_802E4E8: @ 0x0802E4E8
+	thumb_func_start StartBattleMap
+StartBattleMap: @ 0x0802E4E8
 	push {r4, r5, r6, lr}
 	mov r6, r8
 	push {r6}
@@ -224,13 +224,13 @@ sub_802E4E8: @ 0x0802E4E8
 	movs r0, #0xe
 	ldrsb r0, [r4, r0]
 	bl InitChapterMap
-	bl sub_802C078
+	bl InitMapObstacles
 	bl GetGameTime
 	str r0, [r4, #4]
 	strh r5, [r4, #0x16]
 	bl RefreshEntityMaps
 	bl RefreshUnitSprites
-	bl sub_8034AC4
+	bl LoadChapterTraps
 	mov r0, r8
 	bl StartMapMain
 	ldr r0, _0802E5A8 @ =gPal
@@ -266,8 +266,8 @@ _0802E5A8: .4byte gPal
 _0802E5AC: .4byte 0x030027CC
 _0802E5B0: .4byte 0x0000FFE0
 
-	thumb_func_start sub_802E5B4
-sub_802E5B4: @ 0x0802E5B4
+	thumb_func_start RestartBattleMap
+RestartBattleMap: @ 0x0802E5B4
 	push {r4, r5, lr}
 	movs r0, #0
 	bl InitBgs
@@ -290,11 +290,11 @@ sub_802E5B4: @ 0x0802E5B4
 	movs r0, #0xe
 	ldrsb r0, [r4, r0]
 	bl InitChapterMap
-	bl sub_802C078
-	bl sub_8034AC4
-	bl sub_802D864
+	bl InitMapObstacles
+	bl LoadChapterTraps
+	bl BMapVSync_End
 	bl StartBmVSync
-	ldr r0, _0802E644 @ =gUnk_08C05464
+	ldr r0, _0802E644 @ =ProcScr_MapTask
 	movs r1, #4
 	bl Proc_Start
 	ldr r0, _0802E648 @ =gPal
@@ -321,7 +321,7 @@ sub_802E5B4: @ 0x0802E5B4
 _0802E638: .4byte OnMain
 _0802E63C: .4byte OnVBlank
 _0802E640: .4byte gPlaySt
-_0802E644: .4byte gUnk_08C05464
+_0802E644: .4byte ProcScr_MapTask
 _0802E648: .4byte gPal
 _0802E64C: .4byte gDispIo
 
@@ -441,8 +441,8 @@ _0802E736:
 _0802E760: .4byte 0x030027CC
 _0802E764: .4byte 0x0000FFE0
 
-	thumb_func_start sub_802E768
-sub_802E768: @ 0x0802E768
+	thumb_func_start RefreshBMapDisplay_FromBattle
+RefreshBMapDisplay_FromBattle: @ 0x0802E768
 	push {lr}
 	ldr r0, _0802E7D0 @ =OnMain
 	bl SetMainFunc
@@ -492,13 +492,13 @@ _0802E7D4: .4byte OnVBlank
 _0802E7D8: .4byte gDispIo
 _0802E7DC: .4byte gBg2Tm
 
-	thumb_func_start sub_802E7E0
-sub_802E7E0: @ 0x0802E7E0
+	thumb_func_start BMapDispResume_FromBattleDelayed
+BMapDispResume_FromBattleDelayed: @ 0x0802E7E0
 	push {lr}
 	bl ApplySystemObjectsGraphics
 	ldr r0, _0802E7FC @ =gBattleActor
 	bl StartMu
-	bl sub_806C7CC
+	bl MU_SetDefaultFacing_Auto
 	ldr r0, _0802E800 @ =gUnk_08C05540
 	movs r1, #3
 	bl Proc_Start
@@ -508,8 +508,8 @@ sub_802E7E0: @ 0x0802E7E0
 _0802E7FC: .4byte gBattleActor
 _0802E800: .4byte gUnk_08C05540
 
-	thumb_func_start sub_802E804
-sub_802E804: @ 0x0802E804
+	thumb_func_start InitMoreBMapGraphics
+InitMoreBMapGraphics: @ 0x0802E804
 	push {r4, lr}
 	ldr r4, _0802E830 @ =gPlaySt
 	movs r0, #0xe
@@ -520,7 +520,7 @@ sub_802E804: @ 0x0802E804
 	bl RenderMap
 	bl RefreshUnitSprites
 	bl ApplyUnitSpritePalettes
-	bl sub_8025A0C
+	bl ForceSyncUnitSpriteSheet
 	bl InitSystemTextFont
 	pop {r4}
 	pop {r0}
@@ -528,13 +528,13 @@ sub_802E804: @ 0x0802E804
 	.align 2, 0
 _0802E830: .4byte gPlaySt
 
-	thumb_func_start sub_802E834
-sub_802E834: @ 0x0802E834
+	thumb_func_start RefreshBMapGraphics
+RefreshBMapGraphics: @ 0x0802E834
 	push {lr}
 	movs r0, #0
 	bl InitBgs
 	bl ApplySystemGraphics
-	bl sub_802E804
+	bl InitMoreBMapGraphics
 	pop {r0}
 	bx r0
 
@@ -552,7 +552,7 @@ StartMapMain: @ 0x0802E848
 	adds r0, #1
 	strb r0, [r4]
 	bl StartBmVSync
-	ldr r0, _0802E878 @ =gUnk_08C05464
+	ldr r0, _0802E878 @ =ProcScr_MapTask
 	movs r1, #4
 	bl Proc_Start
 	adds r0, r5, #0
@@ -561,7 +561,7 @@ StartMapMain: @ 0x0802E848
 	bx r1
 	.align 2, 0
 _0802E874: .4byte ProcScr_BmMain
-_0802E878: .4byte gUnk_08C05464
+_0802E878: .4byte ProcScr_MapTask
 
 	thumb_func_start EndMapMain
 EndMapMain: @ 0x0802E87C
@@ -807,7 +807,7 @@ ResumeMapMainDuringAction: @ 0x0802EA08
 	bl HideUnitSprite
 	ldr r0, [r5]
 	bl StartMu
-	bl sub_806C7CC
+	bl MU_SetDefaultFacing_Auto
 	pop {r4, r5}
 	pop {r0}
 	bx r0
@@ -2638,7 +2638,7 @@ sub_802F858: @ 0x0802F858
 	bl RefreshEntityMaps
 	bl RenderMap
 	bl RefreshUnitSprites
-	bl sub_8025A0C
+	bl ForceSyncUnitSpriteSheet
 	pop {r1}
 	bx r1
 	.align 2, 0
@@ -3150,7 +3150,7 @@ sub_802FC20: @ 0x0802FC20
 	ldr r0, [r4, #0x2c]
 	bl GetUnitSMSId
 	bl sub_8025278
-	bl sub_8025A0C
+	bl ForceSyncUnitSpriteSheet
 	ldr r0, _0802FCD0 @ =gPlaySt
 	adds r0, #0x41
 	ldrb r0, [r0]
@@ -6308,7 +6308,7 @@ sub_8031594: @ 0x08031594
 	ldr r2, [r5]
 	cmp r2, #0
 	bne _080315B4
-	bl sub_802E834
+	bl RefreshBMapGraphics
 	adds r0, r6, #0
 	movs r1, #0xc
 	bl Proc_Goto
@@ -6334,7 +6334,7 @@ _080315B4:
 	rsbs r1, r1, #0
 	ands r0, r1
 	str r0, [r2, #0xc]
-	bl sub_802E834
+	bl RefreshBMapGraphics
 	ldr r2, [r5]
 	movs r0, #0x11
 	ldrsb r0, [r2, r0]
@@ -12658,7 +12658,7 @@ _08034810:
 	ldr r0, _08034824 @ =gActiveUnit
 	ldr r0, [r0]
 	bl StartMu
-	bl sub_806C7CC
+	bl MU_SetDefaultFacing_Auto
 	b _08034832
 	.align 2, 0
 _08034824: .4byte gActiveUnit
@@ -12978,7 +12978,7 @@ _08034A94:
 	bl sub_806D4BC
 	bl RenderMap
 	bl RefreshEntityMaps
-	bl sub_8025A0C
+	bl ForceSyncUnitSpriteSheet
 	movs r0, #1
 _08034AAC:
 	pop {r4, r5}
@@ -12996,8 +12996,8 @@ sub_8034AB4: @ 0x08034AB4
 	pop {r1}
 	bx r1
 
-	thumb_func_start sub_8034AC4
-sub_8034AC4: @ 0x08034AC4
+	thumb_func_start LoadChapterTraps
+LoadChapterTraps: @ 0x08034AC4
 	push {r4, r5, lr}
 	sub sp, #4
 	bl sub_80799C0

@@ -44,15 +44,15 @@ void TryUnlockParentProc(ProcPtr);
 
 // GetTextPrintDelay
 int IsFirstPlaythrough(void);
-// sub_802E3E0
+// InitPlayConfig
 // ResetBmSt
-// sub_802E4E8
-// sub_802E5B4
+// StartBattleMap
+// RestartBattleMap
 // ResumeChapterFromSuspend
-// sub_802E768
-// sub_802E7E0
-// sub_802E804
-// sub_802E834
+// RefreshBMapDisplay_FromBattle
+// BMapDispResume_FromBattleDelayed
+// InitMoreBMapGraphics
+// RefreshBMapGraphics
 // StartMapMain
 // EndMapMain
 // CleanupUnitsBeforeChapter
@@ -339,7 +339,7 @@ int IsFirstPlaythrough(void);
 // sub_8034A50
 // sub_8034A74
 // sub_8034AB4
-// sub_8034AC4
+// LoadChapterTraps
 // sub_8034B70
 // GetBallistaItemAt
 // sub_8034BE8

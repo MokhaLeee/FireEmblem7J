@@ -103,9 +103,9 @@ extern const u8 Tsa_Unk_0819128C[];
 // ??? gUnk_08198B04
 // ??? gUnk_08198CC8
 // ??? gUnk_08198D78
-// ??? Img_SnowStormWeather
-// ??? Pal_SnowStormWeather
-// ??? Tsa_SnowStormWeather
+extern u8 Img_EventSnowStormfx[];
+extern u16 Pal_EventSnowStormfx[];
+extern u8 Tsa_EventSnowStormfx[];
 extern u8 Pal_IceBmBgfx_08199A94[];
 extern u8 Img_IceBmBgfx_08199AB4[];
 extern u8 Img_IceBmBgfx_0819A6A4[];
@@ -1707,7 +1707,7 @@ extern uintptr_t ProcScr_CamMove[];
 // ??? gUnk_08C04FB4
 // ??? gUnk_08C04FD4
 // ??? gUnk_08C05414
-// ??? gUnk_08C05464
+// ??? ProcScr_MapTask
 // ??? gUnk_08C054C4
 // ??? gUnk_08C054D0
 // ??? gUnk_08C05540
