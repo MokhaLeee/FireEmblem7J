@@ -136,8 +136,8 @@ sub_807FAE8: @ 0x0807FAE8
 	.align 2, 0
 _0807FAF8: .4byte gUnk_08D87F68
 
-	thumb_func_start sub_807FAFC
-sub_807FAFC: @ 0x0807FAFC
+	thumb_func_start ForceCenteredDragon
+ForceCenteredDragon: @ 0x0807FAFC
 	push {r4, r5, lr}
 	adds r5, r0, #0
 	movs r0, #0x86

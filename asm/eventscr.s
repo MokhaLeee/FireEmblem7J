@@ -735,8 +735,8 @@ _0800BD78:
 	.align 2, 0
 _0800BD80: .4byte gPlaySt
 
-	thumb_func_start sub_800BD84
-sub_800BD84: @ 0x0800BD84
+	thumb_func_start Event20
+Event20: @ 0x0800BD84
 	push {r4, r5, lr}
 	sub sp, #8
 	adds r2, r0, #0
@@ -765,7 +765,7 @@ _0800BDB2:
 	adds r0, r4, #0
 	adds r1, r5, #0
 	mov r2, sp
-	bl sub_8016080
+	bl StoreAdjustedCameraPositions
 	ldr r1, _0800BDDC @ =gBmSt
 	ldr r0, [sp]
 	lsls r0, r0, #4
@@ -3540,8 +3540,8 @@ sub_800D278: @ 0x0800D278
 	.align 2, 0
 _0800D288: .4byte 0x0000FFFE
 
-	thumb_func_start sub_800D28C
-sub_800D28C: @ 0x0800D28C
+	thumb_func_start Event3C_ASMC1
+Event3C_ASMC1: @ 0x0800D28C
 	push {r4, r5, lr}
 	adds r4, r0, #0
 	ldr r0, [r4, #0x30]
@@ -3562,8 +3562,8 @@ _0800D2AA:
 	pop {r1}
 	bx r1
 
-	thumb_func_start Event3D_ASMC
-Event3D_ASMC: @ 0x0800D2B0
+	thumb_func_start Event3D_ASMC2
+Event3D_ASMC2: @ 0x0800D2B0
 	push {r4, r5, lr}
 	adds r4, r0, #0
 	ldr r2, [r4, #0x30]
@@ -3593,8 +3593,8 @@ _0800D2DC:
 	bx r1
 	.align 2, 0
 
-	thumb_func_start sub_800D2E4
-sub_800D2E4: @ 0x0800D2E4
+	thumb_func_start Event3E_ASMC3
+Event3E_ASMC3: @ 0x0800D2E4
 	push {r4, r5, lr}
 	adds r4, r0, #0
 	ldr r2, [r4, #0x30]
@@ -3626,8 +3626,8 @@ _0800D316:
 	pop {r1}
 	bx r1
 
-	thumb_func_start sub_800D31C
-sub_800D31C: @ 0x0800D31C
+	thumb_func_start Event3F_ASMC4
+Event3F_ASMC4: @ 0x0800D31C
 	push {r4, r5, lr}
 	adds r4, r0, #0
 	ldr r0, [r4, #0x30]
@@ -3655,8 +3655,8 @@ _0800D346:
 	pop {r1}
 	bx r1
 
-	thumb_func_start sub_800D34C
-sub_800D34C: @ 0x0800D34C
+	thumb_func_start Event40_ASMC5
+Event40_ASMC5: @ 0x0800D34C
 	push {r4, r5, lr}
 	adds r4, r0, #0
 	ldr r0, [r4, #0x30]
@@ -3684,13 +3684,13 @@ _0800D376:
 	pop {r1}
 	bx r1
 
-	thumb_func_start sub_800D37C
-sub_800D37C: @ 0x0800D37C
+	thumb_func_start Event41_Halt
+Event41_Halt: @ 0x0800D37C
 	movs r0, #3
 	bx lr
 
-	thumb_func_start sub_800D380
-sub_800D380: @ 0x0800D380
+	thumb_func_start Event42_Nop
+Event42_Nop: @ 0x0800D380
 	movs r0, #0
 	bx lr
 
@@ -3744,8 +3744,8 @@ _0800D3D8:
 	bx r1
 	.align 2, 0
 
-	thumb_func_start sub_800D3E0
-sub_800D3E0: @ 0x0800D3E0
+	thumb_func_start Event43_Goto
+Event43_Goto: @ 0x0800D3E0
 	push {lr}
 	ldr r1, [r0, #0x30]
 	ldr r1, [r1, #4]
@@ -6047,8 +6047,8 @@ _0800E488:
 	pop {r1}
 	bx r1
 
-	thumb_func_start sub_800E490
-sub_800E490: @ 0x0800E490
+	thumb_func_start Event80_CompleteGame
+Event80_CompleteGame: @ 0x0800E490
 	push {r4, lr}
 	adds r4, r0, #0
 	movs r0, #2
@@ -7035,8 +7035,8 @@ _0800EBA8:
 	bx r1
 	.align 2, 0
 
-	thumb_func_start sub_800EBB0
-sub_800EBB0: @ 0x0800EBB0
+	thumb_func_start Event01
+Event01: @ 0x0800EBB0
 	push {lr}
 	bl Event00_
 	pop {r1}
@@ -9625,8 +9625,8 @@ sub_800FDC4: @ 0x0800FDC4
 	movs r0, #1
 	bx lr
 
-	thumb_func_start sub_800FDD8
-sub_800FDD8: @ 0x0800FDD8
+	thumb_func_start EventCD_Warp
+EventCD_Warp: @ 0x0800FDD8
 	push {r4, r5, r6, lr}
 	sub sp, #4
 	adds r4, r0, #0
@@ -9681,7 +9681,7 @@ _0800FE28:
 	adds r0, r4, #0
 	adds r1, r5, #0
 	adds r2, r6, #0
-	bl sub_8020E5C
+	bl StartEventWarpAnim
 	b _0800FE56
 _0800FE44:
 	lsls r3, r3, #0x18
@@ -9691,7 +9691,7 @@ _0800FE44:
 	adds r0, r4, #0
 	adds r1, r5, #0
 	adds r2, r6, #0
-	bl sub_8020E5C
+	bl StartEventWarpAnim
 _0800FE56:
 	movs r0, #2
 _0800FE58:
@@ -9737,7 +9737,7 @@ _0800FE88:
 	str r1, [sp]
 	adds r0, r4, #0
 	adds r1, r5, #0
-	bl sub_8020E5C
+	bl StartEventWarpAnim
 	b _0800FEBC
 _0800FEAC:
 	lsls r3, r6, #0x18
@@ -9746,7 +9746,7 @@ _0800FEAC:
 	str r0, [sp]
 	adds r0, r4, #0
 	adds r1, r5, #0
-	bl sub_8020E5C
+	bl StartEventWarpAnim
 _0800FEBC:
 	movs r0, #2
 _0800FEBE:

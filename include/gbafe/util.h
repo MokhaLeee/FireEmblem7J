@@ -51,9 +51,9 @@ void WriteFadedPaletteFromArchive(int red, int green, int blue, u32 mask);
 // ??? sub_8013E8C
 // ??? sub_8013EF8
 // ??? sub_8013F3C
-// ??? sub_8013F58
-// ??? sub_8013F68
-// ??? sub_8013FD0
+// ??? SpacialSeTest_OnInit
+// ??? SpacialSeTest_OnLoop
+// ??? StartSpacialSeTest
 // ??? nullsub_35
 
 struct PalFadeSt {

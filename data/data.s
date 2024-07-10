@@ -8,8 +8,8 @@ gUnk_08C01B84:	@ 0x08C01B84
 gUnk_08C01BA4:	@ 0x08C01BA4
 	.incbin "FireEmblem7J.base.gba", 0xC01BA4, 0xC01BC4 - 0xC01BA4
 
-	.global gUnk_08C01BC4
-gUnk_08C01BC4:	@ 0x08C01BC4
+	.global ProcScr_SpacialSeTest
+ProcScr_SpacialSeTest:	@ 0x08C01BC4
 	.incbin "FireEmblem7J.base.gba", 0xC01BC4, 0xC01BDC - 0xC01BC4
 
 	.global gUnk_08C01BDC
@@ -434,20 +434,20 @@ gUnk_08C02DD8:	@ 0x08C02DD8
 gUnk_08C02E30:	@ 0x08C02E30
 	.incbin "FireEmblem7J.base.gba", 0xC02E30, 0xC02E50 - 0xC02E30
 
-	.global gUnk_08C02E50
-gUnk_08C02E50:	@ 0x08C02E50
+	.global ProcScr_DanceringAnim
+ProcScr_DanceringAnim:	@ 0x08C02E50
 	.incbin "FireEmblem7J.base.gba", 0xC02E50, 0xC02E88 - 0xC02E50
 
-	.global gUnk_08C02E88
-gUnk_08C02E88:	@ 0x08C02E88
+	.global Vectors_EventWarp2
+Vectors_EventWarp2:	@ 0x08C02E88
 	.incbin "FireEmblem7J.base.gba", 0xC02E88, 0xC02ECC - 0xC02E88
 
-	.global gUnk_08C02ECC
-gUnk_08C02ECC:	@ 0x08C02ECC
+	.global Vectors_EventWarp1
+Vectors_EventWarp1:	@ 0x08C02ECC
 	.incbin "FireEmblem7J.base.gba", 0xC02ECC, 0xC02F10 - 0xC02ECC
 
-	.global gUnk_08C02F10
-gUnk_08C02F10:	@ 0x08C02F10
+	.global ProcScr_EventWrapAnim
+ProcScr_EventWrapAnim:	@ 0x08C02F10
 	.incbin "FireEmblem7J.base.gba", 0xC02F10, 0xC02F38 - 0xC02F10
 
 	.global gUnk_08C02F38

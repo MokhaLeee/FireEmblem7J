@@ -330,27 +330,27 @@ void EndEventQuakefx(ProcPtr proc);
 // EndDragonSpriteBlinking
 // sub_807BD00
 // sub_807BD6C
-// sub_807BDC8
-// sub_807BDFC
-// sub_807BF08
+// DragonFlamefx_Handler
+// DragonFlamefx_Init
+// DragonFlamefx_Rotation
 // sub_807BF5C
 // sub_807BF9C
 // sub_807BFEC
 // sub_807C080
 // sub_807C108
 // sub_807C170
-// sub_807C1E8
-// sub_807C1FC
-// sub_807C210
+// StartDragonFlamefx
+// EndDragonFlamefx
+// DragonFlamefxFlashingOut
 // sub_807C228
-// sub_807C28C
-// sub_807C384
+// DeadDragonFlame_Init
+// DeadDragonFlame_Rotation
 // sub_807C3E8
 // sub_807C464
 // sub_807C490
 // sub_807C58C
 // sub_807C5A4
-// sub_807C658
+// StartDeadDragonFlamefx
 // sub_807C66C
 // sub_807C6F0
 // sub_807C754
@@ -588,7 +588,7 @@ void IceCrystalfx_Paluse(struct ProcIceCrystal * proc);
 // sub_807F16C
 // sub_807F198
 // sub_807F1B8
-// sub_807F1DC
+// ForceDisplayDragonSprite
 
 struct ProcEventDragonsSpritefx {
     PROC_HEADER;
@@ -638,7 +638,7 @@ void EventDragonsSpritefx_Loop(struct ProcEventDragonsSpritefx * proc);
 // sub_807F9EC
 // sub_807FA64
 // sub_807FAE8
-// sub_807FAFC
+// ForceCenteredDragon
 // sub_807FB34
 // sub_807FB40
 // sub_807FB54
@@ -692,8 +692,8 @@ extern struct ProcCmd ProcScr_EventVerticalQuakefx[];
 extern struct ProcCmd ProcScr_EventQuakefx[];
 // ??? ProcScr_DragonGatefx
 // ??? ProcScr_DragonSpriteBlinking
-// ??? gUnk_08D6F8BC
-// ??? gUnk_08D6F95C
+// ??? ProcScr_DragonFlamefx
+// ??? ProcScr_DeadDragonFlamefx
 // ??? gUnk_08D6F9D4
 extern struct ProcCmd ProcScr_QuintessenceFxBg2Scroll[];
 extern struct ProcCmd ProcScr_QuintessenceFx[];

@@ -599,8 +599,8 @@ _0807BDBC: .4byte gUnk_0819381C
 _0807BDC0: .4byte gUnk_08193CB8
 _0807BDC4: .4byte gUnk_0819438C
 
-	thumb_func_start sub_807BDC8
-sub_807BDC8: @ 0x0807BDC8
+	thumb_func_start DragonFlamefx_Handler
+DragonFlamefx_Handler: @ 0x0807BDC8
 	push {lr}
 	ldr r1, [r0, #0x58]
 	adds r1, #1
@@ -628,8 +628,8 @@ _0807BDF4:
 	.align 2, 0
 _0807BDF8: .4byte gPlaySt
 
-	thumb_func_start sub_807BDFC
-sub_807BDFC: @ 0x0807BDFC
+	thumb_func_start DragonFlamefx_Init
+DragonFlamefx_Init: @ 0x0807BDFC
 	push {r4, r5, r6, r7, lr}
 	sub sp, #0x14
 	adds r4, r0, #0
@@ -702,7 +702,7 @@ sub_807BDFC: @ 0x0807BDFC
 	movs r0, #7
 	bl EnableBgSync
 	strh r5, [r6]
-	ldr r0, _0807BF00 @ =BmBgfxConf_FireRing
+	ldr r0, _0807BF00 @ =BmBgfxConf_DragonFlame
 	movs r1, #0x80
 	lsls r1, r1, #7
 	str r1, [sp]
@@ -735,7 +735,7 @@ sub_807BDFC: @ 0x0807BDFC
 	adds r1, #0x64
 	movs r0, #1
 	strh r0, [r1]
-	ldr r0, _0807BF04 @ =sub_807BDC8
+	ldr r0, _0807BF04 @ =DragonFlamefx_Handler
 	adds r1, r4, #0
 	bl StartParallelWorker
 	add sp, #0x14
@@ -747,11 +747,11 @@ _0807BEF0: .4byte gDispIo
 _0807BEF4: .4byte 0x0000FFE0
 _0807BEF8: .4byte 0x0000E0FF
 _0807BEFC: .4byte HBlank_Scanline_8078098
-_0807BF00: .4byte BmBgfxConf_FireRing
-_0807BF04: .4byte sub_807BDC8
+_0807BF00: .4byte BmBgfxConf_DragonFlame
+_0807BF04: .4byte DragonFlamefx_Handler
 
-	thumb_func_start sub_807BF08
-sub_807BF08: @ 0x0807BF08
+	thumb_func_start DragonFlamefx_Rotation
+DragonFlamefx_Rotation: @ 0x0807BF08
 	push {r4, r5, r6, lr}
 	adds r6, r0, #0
 	adds r5, r6, #0
@@ -1115,39 +1115,39 @@ _0807C1DC: .4byte gBg2Tm
 _0807C1E0: .4byte gBg0Tm
 _0807C1E4: .4byte gDispIo
 
-	thumb_func_start sub_807C1E8
-sub_807C1E8: @ 0x0807C1E8
+	thumb_func_start StartDragonFlamefx
+StartDragonFlamefx: @ 0x0807C1E8
 	push {lr}
 	adds r1, r0, #0
-	ldr r0, _0807C1F8 @ =gUnk_08D6F8BC
+	ldr r0, _0807C1F8 @ =ProcScr_DragonFlamefx
 	bl Proc_Start
 	pop {r0}
 	bx r0
 	.align 2, 0
-_0807C1F8: .4byte gUnk_08D6F8BC
+_0807C1F8: .4byte ProcScr_DragonFlamefx
 
-	thumb_func_start sub_807C1FC
-sub_807C1FC: @ 0x0807C1FC
+	thumb_func_start EndDragonFlamefx
+EndDragonFlamefx: @ 0x0807C1FC
 	push {lr}
-	ldr r0, _0807C20C @ =gUnk_08D6F8BC
+	ldr r0, _0807C20C @ =ProcScr_DragonFlamefx
 	bl Proc_Find
 	bl Proc_End
 	pop {r0}
 	bx r0
 	.align 2, 0
-_0807C20C: .4byte gUnk_08D6F8BC
+_0807C20C: .4byte ProcScr_DragonFlamefx
 
-	thumb_func_start sub_807C210
-sub_807C210: @ 0x0807C210
+	thumb_func_start DragonFlamefxFlashingOut
+DragonFlamefxFlashingOut: @ 0x0807C210
 	push {lr}
-	ldr r0, _0807C224 @ =gUnk_08D6F8BC
+	ldr r0, _0807C224 @ =ProcScr_DragonFlamefx
 	bl Proc_Find
 	movs r1, #0
 	bl Proc_Goto
 	pop {r0}
 	bx r0
 	.align 2, 0
-_0807C224: .4byte gUnk_08D6F8BC
+_0807C224: .4byte ProcScr_DragonFlamefx
 
 	thumb_func_start sub_807C228
 sub_807C228: @ 0x0807C228
@@ -1201,8 +1201,8 @@ _0807C27E:
 	.align 2, 0
 _0807C288: .4byte gPlaySt
 
-	thumb_func_start sub_807C28C
-sub_807C28C: @ 0x0807C28C
+	thumb_func_start DeadDragonFlame_Init
+DeadDragonFlame_Init: @ 0x0807C28C
 	push {r4, r5, r6, r7, lr}
 	sub sp, #0x14
 	adds r5, r0, #0
@@ -1274,7 +1274,7 @@ sub_807C28C: @ 0x0807C28C
 	movs r0, #7
 	bl EnableBgSync
 	strh r4, [r6]
-	ldr r0, _0807C37C @ =BmBgfxConf_08DBA258
+	ldr r0, _0807C37C @ =BmBgfxConf_DeadDragonFlame
 	movs r1, #0x80
 	lsls r1, r1, #5
 	str r1, [sp]
@@ -1312,11 +1312,11 @@ _0807C36C: .4byte gDispIo
 _0807C370: .4byte 0x0000FFE0
 _0807C374: .4byte 0x0000E0FF
 _0807C378: .4byte HBlank_Scanline_8078098
-_0807C37C: .4byte BmBgfxConf_08DBA258
+_0807C37C: .4byte BmBgfxConf_DeadDragonFlame
 _0807C380: .4byte sub_807C228
 
-	thumb_func_start sub_807C384
-sub_807C384: @ 0x0807C384
+	thumb_func_start DeadDragonFlame_Rotation
+DeadDragonFlame_Rotation: @ 0x0807C384
 	push {r4, r5, lr}
 	adds r5, r0, #0
 	adds r1, r5, #0
@@ -1675,16 +1675,16 @@ _0807C64C: .4byte gDispIo
 _0807C650: .4byte gPlaySt
 _0807C654: .4byte gBg0Tm
 
-	thumb_func_start sub_807C658
-sub_807C658: @ 0x0807C658
+	thumb_func_start StartDeadDragonFlamefx
+StartDeadDragonFlamefx: @ 0x0807C658
 	push {lr}
 	adds r1, r0, #0
-	ldr r0, _0807C668 @ =gUnk_08D6F95C
+	ldr r0, _0807C668 @ =ProcScr_DeadDragonFlamefx
 	bl Proc_StartBlocking
 	pop {r0}
 	bx r0
 	.align 2, 0
-_0807C668: .4byte gUnk_08D6F95C
+_0807C668: .4byte ProcScr_DeadDragonFlamefx
 
 	thumb_func_start sub_807C66C
 sub_807C66C: @ 0x0807C66C

@@ -3987,8 +3987,8 @@ sub_807F1B8: @ 0x0807F1B8
 	pop {r0}
 	bx r0
 
-	thumb_func_start sub_807F1DC
-sub_807F1DC: @ 0x0807F1DC
+	thumb_func_start ForceDisplayDragonSprite
+ForceDisplayDragonSprite: @ 0x0807F1DC
 	push {lr}
 	movs r0, #0x25
 	bl GetUnitFromCharId

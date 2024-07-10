@@ -147,16 +147,16 @@ struct ProcBmFx {
 // sub_8020904
 // sub_80209D0
 // sub_8020A48
-// sub_8020A84
-// sub_8020AD0
-// sub_8020B84
-// sub_8020BEC
-// sub_8020BF4
-// sub_8020C44
-// sub_8020CB0
-// sub_8020D90
-// sub_8020E2C
-// sub_8020E5C
+// StartLightRuneAnim3
+// ProcDanceAnim_Init
+// ProcDanceAnim_Loop
+// ProcDanceAnim_ResetTimer
+// ProcDanceAnim_Loop_Blend
+// StartDanceringAnim
+// ProcEventWrapAnim_Init
+// ProcEventWrapAnim_Loop
+// ProcEventWrapAnim_End
+// StartEventWarpAnim
 // sub_8020ECC
 bool sub_8020F20(ProcPtr proc);
 // sub_8020F38

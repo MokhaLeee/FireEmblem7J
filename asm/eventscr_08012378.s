@@ -302,7 +302,7 @@ sub_80125A4: @ 0x080125A4
 	str r0, [sp]
 	adds r0, r4, #0
 	movs r3, #1
-	bl sub_8020E5C
+	bl StartEventWarpAnim
 	add r1, sp, #4
 	adds r0, r5, #0
 	ldm r0!, {r2, r3, r6}

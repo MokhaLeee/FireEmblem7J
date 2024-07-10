@@ -153,7 +153,7 @@ void DisplayBackgroundNoClear(int background);
 // sub_800BC98
 // sub_800BCE4
 // sub_800BCF0
-// sub_800BD84
+// Event20
 // sub_800BDFC
 // sub_800BE6C
 // sub_800BEEC
@@ -195,15 +195,15 @@ void DisplayBackgroundNoClear(int background);
 // sub_800D22C
 // sub_800D268
 // sub_800D278
-// sub_800D28C
-// Event3D_ASMC
-// sub_800D2E4
-// sub_800D31C
-// sub_800D34C
-// sub_800D37C
-// sub_800D380
+// Event3C_ASMC1
+// Event3D_ASMC2
+// Event3E_ASMC3
+// Event3F_ASMC4
+// Event40_ASMC5
+// Event41_Halt
+// Event42_Nop
 // sub_800D384
-// sub_800D3E0
+// Event43_Goto
 // sub_800D3F0
 // sub_800D434
 // sub_800D478
@@ -276,7 +276,7 @@ void DisplayBackgroundNoClear(int background);
 // sub_800E40C
 // sub_800E43C
 // sub_800E44C
-// sub_800E490
+// Event80_CompleteGame
 // sub_800E4A8
 // sub_800E4C0
 // sub_800E510
@@ -313,7 +313,7 @@ void DisplayBackgroundNoClear(int background);
 // sub_800EB1C
 // sub_800EB3C
 // Event00_
-// sub_800EBB0
+// Event01
 void EventClearTalkDisplayed(struct EventProc * proc);
 void ClearTalk(void);
 // nullsub_27
@@ -411,7 +411,7 @@ void ClearTalk(void);
 // sub_800FD04
 // sub_800FD78
 // sub_800FDC4
-// sub_800FDD8
+// EventCD_Warp
 // sub_800FE60
 // sub_800FEC8
 // sub_800FF38

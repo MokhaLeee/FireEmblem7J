@@ -1407,7 +1407,7 @@ sub_802D3CC: @ 0x0802D3CC
 	ldrb r1, [r4, #0x13]
 	ldrb r2, [r4, #0x14]
 	adds r0, r5, #0
-	bl sub_8020A84
+	bl StartLightRuneAnim3
 	ldr r0, _0802D408 @ =gBattleTarget
 	adds r0, #0x6f
 	movs r1, #0xff

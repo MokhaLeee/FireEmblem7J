@@ -98,9 +98,9 @@ extern const u8 Tsa_Unk_0819128C[];
 // ??? gUnk_081970AC
 // ??? gUnk_081980C0
 // ??? gUnk_081980E0
-// ??? gUnk_0819839C
-// ??? gUnk_08198AE4
-// ??? gUnk_08198B04
+// ??? Img_EventWarp
+// ??? Pal_EventWarp
+// ??? Tsa_EventWarp
 // ??? gUnk_08198CC8
 // ??? gUnk_08198D78
 extern u8 Img_EventSnowStormfx[];
@@ -196,9 +196,9 @@ extern u8 FireRingBgfx_081BCEF0[];
 // ??? gUnk_081BD534
 extern u16 Pal_QuintessenceFx[];
 extern u8 Tsa_QuintessenceFx[];
-// ??? gUnk_081BDEE8
-// ??? gUnk_081BECCC
-// ??? gUnk_081BEF08
+// ??? Img_DanceringFx
+// ??? Tsa_DanceringFx
+// ??? Pal_DanceringFx
 // ??? gUnk_081BEF28
 // ??? gUnk_081BF2E0
 // ??? gUnk_081BF4E0
@@ -618,7 +618,7 @@ extern u8 OpBmBgfx_086B69BC[];
 // ??? gUnk_081C9368
 // ??? gUnk_081C9370
 // ??? gUnk_081C9378
-// ??? gUnk_081C93AC
+// ??? Vectors_DanceringFx
 // ??? gUnk_081C93E4
 // ??? gUnk_081C9422
 // ??? gUnk_081C9474
@@ -1573,7 +1573,7 @@ extern u8 Img_SysBrownBox[];
 
 // ??? gUnk_08C01B84
 // ??? gUnk_08C01BA4
-// ??? gUnk_08C01BC4
+// ??? ProcScr_SpacialSeTest
 // ??? gUnk_08C01BDC
 // ??? gUnk_08C01BF4
 // ??? gUnk_08C01C14
@@ -1628,10 +1628,10 @@ extern uintptr_t ProcScr_CamMove[];
 // ??? gUnk_08C02BF0
 // ??? gUnk_08C02DD8
 // ??? gUnk_08C02E30
-// ??? gUnk_08C02E50
-// ??? gUnk_08C02E88
-// ??? gUnk_08C02ECC
-// ??? gUnk_08C02F10
+// ??? ProcScr_DanceringAnim
+// ??? Vectors_EventWarp2
+// ??? Vectors_EventWarp1
+// ??? ProcScr_EventWrapAnim
 // ??? gUnk_08C02F38
 // ??? gUnk_08C02F60
 // ??? gUnk_08C02F78
@@ -2295,5 +2295,5 @@ extern uintptr_t ProcScr_08DB9208[];
 // ??? gUnk_08DB9A7C
 // ??? BmBgfxConf_GameTitle
 // ??? BmBgfxConf_OpAnim
-// ??? BmBgfxConf_08DBA258
-// ??? BmBgfxConf_FireRing
+// ??? BmBgfxConf_DeadDragonFlame
+// ??? BmBgfxConf_DragonFlame

@@ -1489,8 +1489,8 @@ _08013F52:
 	bx r1
 	.align 2, 0
 
-	thumb_func_start sub_8013F58
-sub_8013F58: @ 0x08013F58
+	thumb_func_start SpacialSeTest_OnInit
+SpacialSeTest_OnInit: @ 0x08013F58
 	adds r2, r0, #0
 	adds r2, #0x64
 	movs r1, #0
@@ -1500,8 +1500,8 @@ sub_8013F58: @ 0x08013F58
 	strh r1, [r0]
 	bx lr
 
-	thumb_func_start sub_8013F68
-sub_8013F68: @ 0x08013F68
+	thumb_func_start SpacialSeTest_OnLoop
+SpacialSeTest_OnLoop: @ 0x08013F68
 	push {r4, r5, lr}
 	adds r3, r0, #0
 	movs r4, #0
@@ -1558,16 +1558,16 @@ _08013FC6:
 	.align 2, 0
 _08013FCC: .4byte gpKeySt
 
-	thumb_func_start sub_8013FD0
-sub_8013FD0: @ 0x08013FD0
+	thumb_func_start StartSpacialSeTest
+StartSpacialSeTest: @ 0x08013FD0
 	push {lr}
-	ldr r0, _08013FE0 @ =gUnk_08C01BC4
+	ldr r0, _08013FE0 @ =ProcScr_SpacialSeTest
 	movs r1, #3
 	bl Proc_Start
 	pop {r0}
 	bx r0
 	.align 2, 0
-_08013FE0: .4byte gUnk_08C01BC4
+_08013FE0: .4byte ProcScr_SpacialSeTest
 
 	thumb_func_start nullsub_35
 nullsub_35: @ 0x08013FE4

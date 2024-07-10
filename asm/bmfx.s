@@ -6360,8 +6360,8 @@ sub_8020A48: @ 0x08020A48
 _08020A7C: .4byte gDispIo
 _08020A80: .4byte gBg0Tm
 
-	thumb_func_start sub_8020A84
-sub_8020A84: @ 0x08020A84
+	thumb_func_start StartLightRuneAnim3
+StartLightRuneAnim3: @ 0x08020A84
 	push {r4, r5, lr}
 	adds r3, r0, #0
 	adds r4, r1, #0
@@ -6397,18 +6397,18 @@ sub_8020A84: @ 0x08020A84
 _08020AC8: .4byte gUnk_08C02E30
 _08020ACC: .4byte gBmSt
 
-	thumb_func_start sub_8020AD0
-sub_8020AD0: @ 0x08020AD0
+	thumb_func_start ProcDanceAnim_Init
+ProcDanceAnim_Init: @ 0x08020AD0
 	push {r4, r5, r6, lr}
 	adds r6, r0, #0
-	ldr r0, _08020B60 @ =gUnk_081BDEE8
+	ldr r0, _08020B60 @ =Img_DanceringFx
 	ldr r1, _08020B64 @ =0x06002000
 	bl Decompress
-	ldr r0, _08020B68 @ =gUnk_081BEF08
+	ldr r0, _08020B68 @ =Pal_DanceringFx
 	movs r1, #0x40
 	movs r2, #0x20
 	bl ApplyPaletteExt
-	ldr r0, _08020B6C @ =gUnk_081BECCC
+	ldr r0, _08020B6C @ =Tsa_DanceringFx
 	ldr r4, _08020B70 @ =gUiTmScratchA
 	adds r1, r4, #0
 	bl Decompress
@@ -6467,22 +6467,22 @@ _08020AFA:
 	pop {r0}
 	bx r0
 	.align 2, 0
-_08020B60: .4byte gUnk_081BDEE8
+_08020B60: .4byte Img_DanceringFx
 _08020B64: .4byte 0x06002000
-_08020B68: .4byte gUnk_081BEF08
-_08020B6C: .4byte gUnk_081BECCC
+_08020B68: .4byte Pal_DanceringFx
+_08020B6C: .4byte Tsa_DanceringFx
 _08020B70: .4byte gUiTmScratchA
 _08020B74: .4byte gBg0Tm
 _08020B78: .4byte gDispIo
 _08020B7C: .4byte 0x0000FFE0
 _08020B80: .4byte 0x0000E0FF
 
-	thumb_func_start sub_8020B84
-sub_8020B84: @ 0x08020B84
+	thumb_func_start ProcDanceAnim_Loop
+ProcDanceAnim_Loop: @ 0x08020B84
 	push {r4, lr}
 	sub sp, #0x38
 	adds r4, r0, #0
-	ldr r1, _08020BBC @ =gUnk_081C93AC
+	ldr r1, _08020BBC @ =Vectors_DanceringFx
 	mov r0, sp
 	movs r2, #0x38
 	bl memcpy
@@ -6506,7 +6506,7 @@ sub_8020B84: @ 0x08020B84
 	bl Proc_Break
 	b _08020BDA
 	.align 2, 0
-_08020BBC: .4byte gUnk_081C93AC
+_08020BBC: .4byte Vectors_DanceringFx
 _08020BC0:
 	lsls r0, r0, #5
 	adds r0, r0, r1
@@ -6528,15 +6528,15 @@ _08020BDA:
 _08020BE4: .4byte gUiTmScratchA
 _08020BE8: .4byte gBg0Tm
 
-	thumb_func_start sub_8020BEC
-sub_8020BEC: @ 0x08020BEC
+	thumb_func_start ProcDanceAnim_ResetTimer
+ProcDanceAnim_ResetTimer: @ 0x08020BEC
 	adds r0, #0x4c
 	movs r1, #0x10
 	strh r1, [r0]
 	bx lr
 
-	thumb_func_start sub_8020BF4
-sub_8020BF4: @ 0x08020BF4
+	thumb_func_start ProcDanceAnim_Loop_Blend
+ProcDanceAnim_Loop_Blend: @ 0x08020BF4
 	push {r4, r5, lr}
 	adds r5, r0, #0
 	ldr r0, _08020C40 @ =gDispIo
@@ -6577,8 +6577,8 @@ _08020C38:
 	.align 2, 0
 _08020C40: .4byte gDispIo
 
-	thumb_func_start sub_8020C44
-sub_8020C44: @ 0x08020C44
+	thumb_func_start StartDanceringAnim
+StartDanceringAnim: @ 0x08020C44
 	push {r4, r5, r6, lr}
 	adds r6, r0, #0
 	ldr r1, _08020CA0 @ =gBattleStats
@@ -6595,7 +6595,7 @@ sub_8020C44: @ 0x08020C44
 	ldrsb r4, [r0, r4]
 	movs r5, #0x11
 	ldrsb r5, [r0, r5]
-	ldr r0, _08020CA8 @ =gUnk_08C02E50
+	ldr r0, _08020CA8 @ =ProcScr_DanceringAnim
 	adds r1, r6, #0
 	bl Proc_StartBlocking
 	lsls r0, r4, #4
@@ -6626,21 +6626,21 @@ _08020C9A:
 	.align 2, 0
 _08020CA0: .4byte gBattleStats
 _08020CA4: .4byte gActionSt
-_08020CA8: .4byte gUnk_08C02E50
+_08020CA8: .4byte ProcScr_DanceringAnim
 _08020CAC: .4byte gBmSt
 
-	thumb_func_start sub_8020CB0
-sub_8020CB0: @ 0x08020CB0
+	thumb_func_start ProcEventWrapAnim_Init
+ProcEventWrapAnim_Init: @ 0x08020CB0
 	push {r4, r5, r6, lr}
 	adds r6, r0, #0
-	ldr r0, _08020D68 @ =gUnk_0819839C
+	ldr r0, _08020D68 @ =Img_EventWarp
 	ldr r1, _08020D6C @ =0x06002000
 	bl Decompress
-	ldr r0, _08020D70 @ =gUnk_08198AE4
+	ldr r0, _08020D70 @ =Pal_EventWarp
 	movs r1, #0xa0
 	movs r2, #0x20
 	bl ApplyPaletteExt
-	ldr r0, _08020D74 @ =gUnk_08198B04
+	ldr r0, _08020D74 @ =Tsa_EventWarp
 	ldr r4, _08020D78 @ =gUiTmScratchA
 	adds r1, r4, #0
 	bl Decompress
@@ -6720,10 +6720,10 @@ _08020D0A:
 	pop {r0}
 	bx r0
 	.align 2, 0
-_08020D68: .4byte gUnk_0819839C
+_08020D68: .4byte Img_EventWarp
 _08020D6C: .4byte 0x06002000
-_08020D70: .4byte gUnk_08198AE4
-_08020D74: .4byte gUnk_08198B04
+_08020D70: .4byte Pal_EventWarp
+_08020D74: .4byte Tsa_EventWarp
 _08020D78: .4byte gUiTmScratchA
 _08020D7C: .4byte gBg0Tm
 _08020D80: .4byte gPlaySt
@@ -6731,17 +6731,17 @@ _08020D84: .4byte gDispIo
 _08020D88: .4byte 0x0000FFE0
 _08020D8C: .4byte 0x0000E0FF
 
-	thumb_func_start sub_8020D90
-sub_8020D90: @ 0x08020D90
+	thumb_func_start ProcEventWrapAnim_Loop
+ProcEventWrapAnim_Loop: @ 0x08020D90
 	push {r4, r5, r6, lr}
 	adds r3, r0, #0
 	adds r0, #0x64
 	movs r1, #0
 	ldrsh r0, [r0, r1]
-	ldr r4, _08020DEC @ =gUnk_08C02ECC
+	ldr r4, _08020DEC @ =Vectors_EventWarp1
 	cmp r0, #0
 	bne _08020DA2
-	ldr r4, _08020DF0 @ =gUnk_08C02E88
+	ldr r4, _08020DF0 @ =Vectors_EventWarp2
 _08020DA2:
 	adds r0, r3, #0
 	adds r0, #0x66
@@ -6780,8 +6780,8 @@ _08020DC6:
 	bl Proc_Break
 	b _08020E1E
 	.align 2, 0
-_08020DEC: .4byte gUnk_08C02ECC
-_08020DF0: .4byte gUnk_08C02E88
+_08020DEC: .4byte Vectors_EventWarp1
+_08020DF0: .4byte Vectors_EventWarp2
 _08020DF4: .4byte gpKeySt
 _08020DF8:
 	lsls r0, r6, #0x10
@@ -6809,8 +6809,8 @@ _08020E1E:
 _08020E24: .4byte gUiTmScratchA
 _08020E28: .4byte gBg0Tm
 
-	thumb_func_start sub_8020E2C
-sub_8020E2C: @ 0x08020E2C
+	thumb_func_start ProcEventWrapAnim_End
+ProcEventWrapAnim_End: @ 0x08020E2C
 	push {lr}
 	ldr r0, _08020E54 @ =gPlaySt
 	adds r0, #0x41
@@ -6832,8 +6832,8 @@ _08020E40:
 _08020E54: .4byte gPlaySt
 _08020E58: .4byte gBg0Tm
 
-	thumb_func_start sub_8020E5C
-sub_8020E5C: @ 0x08020E5C
+	thumb_func_start StartEventWarpAnim
+StartEventWarpAnim: @ 0x08020E5C
 	push {r4, r5, r6, r7, lr}
 	mov r7, r8
 	push {r7}
@@ -6846,7 +6846,7 @@ sub_8020E5C: @ 0x08020E5C
 	lsrs r4, r4, #0x18
 	lsls r5, r5, #0x18
 	lsrs r5, r5, #0x18
-	ldr r0, _08020EC4 @ =gUnk_08C02F10
+	ldr r0, _08020EC4 @ =ProcScr_EventWrapAnim
 	adds r1, r6, #0
 	bl Proc_Start
 	lsls r4, r4, #0x18
@@ -6885,7 +6885,7 @@ sub_8020E5C: @ 0x08020E5C
 	pop {r0}
 	bx r0
 	.align 2, 0
-_08020EC4: .4byte gUnk_08C02F10
+_08020EC4: .4byte ProcScr_EventWrapAnim
 _08020EC8: .4byte gBmSt
 
 	thumb_func_start sub_8020ECC
@@ -6899,7 +6899,7 @@ sub_8020ECC: @ 0x08020ECC
 	adds r6, r2, #0
 	lsls r4, r3, #0x18
 	lsrs r4, r4, #0x18
-	ldr r0, _08020F1C @ =gUnk_08C02F10
+	ldr r0, _08020F1C @ =ProcScr_EventWrapAnim
 	mov r1, r8
 	bl Proc_Start
 	adds r3, r0, #0
@@ -6929,12 +6929,12 @@ sub_8020ECC: @ 0x08020ECC
 	pop {r0}
 	bx r0
 	.align 2, 0
-_08020F1C: .4byte gUnk_08C02F10
+_08020F1C: .4byte ProcScr_EventWrapAnim
 
 	thumb_func_start sub_8020F20
 sub_8020F20: @ 0x08020F20
 	push {lr}
-	ldr r0, _08020F34 @ =gUnk_08C02F10
+	ldr r0, _08020F34 @ =ProcScr_EventWrapAnim
 	bl Proc_Find
 	cmp r0, #0
 	beq _08020F2E
@@ -6943,7 +6943,7 @@ _08020F2E:
 	pop {r1}
 	bx r1
 	.align 2, 0
-_08020F34: .4byte gUnk_08C02F10
+_08020F34: .4byte ProcScr_EventWrapAnim
 
 	thumb_func_start sub_8020F38
 sub_8020F38: @ 0x08020F38

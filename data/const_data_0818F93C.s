@@ -284,16 +284,16 @@ gUnk_081980C0:	@ 0x081980C0
 gUnk_081980E0:	@ 0x081980E0
 	.incbin "FireEmblem7J.base.gba", 0x1980E0, 0x19839C - 0x1980E0
 
-	.global gUnk_0819839C
-gUnk_0819839C:	@ 0x0819839C
+	.global Img_EventWarp
+Img_EventWarp:	@ 0x0819839C
 	.incbin "FireEmblem7J.base.gba", 0x19839C, 0x198AE4 - 0x19839C
 
-	.global gUnk_08198AE4
-gUnk_08198AE4:	@ 0x08198AE4
+	.global Pal_EventWarp
+Pal_EventWarp:	@ 0x08198AE4
 	.incbin "FireEmblem7J.base.gba", 0x198AE4, 0x198B04 - 0x198AE4
 
-	.global gUnk_08198B04
-gUnk_08198B04:	@ 0x08198B04
+	.global Tsa_EventWarp
+Tsa_EventWarp:	@ 0x08198B04
 	.incbin "FireEmblem7J.base.gba", 0x198B04, 0x198CC8 - 0x198B04
 
 	.global gUnk_08198CC8
@@ -676,16 +676,16 @@ Pal_QuintessenceFx:	@ 0x081BD6C4
 Tsa_QuintessenceFx:	@ 0x081BD6E4
 	.incbin "FireEmblem7J.base.gba", 0x1BD6E4, 0x1BDEE8 - 0x1BD6E4
 
-	.global gUnk_081BDEE8
-gUnk_081BDEE8:	@ 0x081BDEE8
+	.global Img_DanceringFx
+Img_DanceringFx:	@ 0x081BDEE8
 	.incbin "FireEmblem7J.base.gba", 0x1BDEE8, 0x1BECCC - 0x1BDEE8
 
-	.global gUnk_081BECCC
-gUnk_081BECCC:	@ 0x081BECCC
+	.global Tsa_DanceringFx
+Tsa_DanceringFx:	@ 0x081BECCC
 	.incbin "FireEmblem7J.base.gba", 0x1BECCC, 0x1BEF08 - 0x1BECCC
 
-	.global gUnk_081BEF08
-gUnk_081BEF08:	@ 0x081BEF08
+	.global Pal_DanceringFx
+Pal_DanceringFx:	@ 0x081BEF08
 	.incbin "FireEmblem7J.base.gba", 0x1BEF08, 0x1BEF28 - 0x1BEF08
 
 	.global gUnk_081BEF28

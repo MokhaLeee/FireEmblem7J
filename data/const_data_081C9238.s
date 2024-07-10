@@ -84,8 +84,8 @@ gUnk_081C9370:	@ 0x081C9370
 gUnk_081C9378:	@ 0x081C9378
 	.incbin "FireEmblem7J.base.gba", 0x1C9378, 0x1C93AC - 0x1C9378
 
-	.global gUnk_081C93AC
-gUnk_081C93AC:	@ 0x081C93AC
+	.global Vectors_DanceringFx
+Vectors_DanceringFx:	@ 0x081C93AC
 	.incbin "FireEmblem7J.base.gba", 0x1C93AC, 0x1C93E4 - 0x1C93AC
 
 	.global gUnk_081C93E4

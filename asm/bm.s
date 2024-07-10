@@ -1302,8 +1302,8 @@ _08016072:
 _08016078: .4byte 0x0202BC44
 _0801607C: .4byte gBmSt
 
-	thumb_func_start sub_8016080
-sub_8016080: @ 0x08016080
+	thumb_func_start StoreAdjustedCameraPositions
+StoreAdjustedCameraPositions: @ 0x08016080
 	push {r4, r5, lr}
 	adds r4, r2, #0
 	subs r0, #7
@@ -1361,7 +1361,7 @@ sub_80160D4: @ 0x080160D4
 	adds r0, r6, #0
 	adds r1, r7, #0
 	mov r2, sp
-	bl sub_8016080
+	bl StoreAdjustedCameraPositions
 	ldr r1, [sp]
 	lsls r1, r1, #4
 	str r1, [sp]

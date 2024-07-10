@@ -176,7 +176,7 @@ struct BmBgxConf CONST_DATA BmBgfxConf_OpAnim[] = {
 };
 
 // 0x08DBA258
-struct BmBgxConf CONST_DATA BmBgfxConf_08DBA258[] = {
+struct BmBgxConf CONST_DATA BmBgfxConf_DeadDragonFlame[] = {
     { BMFX_CONFT_PAL,        FireRingBgfx_081B3DF4, 0x0001, 0 },
     { BMFX_CONFT_ZIMG,       FireRingBgfx_081B3E14, 0x0800, 1 },
     { BMFX_CONFT_ZIMG,       FireRingBgfx_081B43E4, 0x0800, 1 },
@@ -342,7 +342,7 @@ struct BmBgxConf CONST_DATA BmBgfxConf_08DBA258[] = {
     { BMFX_CONFT_BREAK },
 };
 
-struct BmBgxConf CONST_DATA BmBgfxConf_FireRing[] = {
+struct BmBgxConf CONST_DATA BmBgfxConf_DragonFlame[] = {
     { BMFX_CONFT_PAL,        FireRingBgfx_081B3DF4, 0x1, 0 },
     { BMFX_CONFT_ZIMG,       FireRingBgfx_081B3E14, 0x800, 1 },
     { BMFX_CONFT_ZIMG,       FireRingBgfx_081B43E4, 0x800, 1 },
