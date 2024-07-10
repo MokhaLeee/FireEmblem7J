@@ -1,15 +1,15 @@
 	.section .rodata
 
-	.global gUnk_081C83E8
-gUnk_081C83E8:	@ 0x081C83E8
+	.global Img_MineFx
+Img_MineFx:	@ 0x081C83E8
 	.incbin "FireEmblem7J.base.gba", 0x1C83E8, 0x1C855C - 0x1C83E8
 
-	.global gUnk_081C855C
-gUnk_081C855C:	@ 0x081C855C
+	.global SpritAnim_MineFx
+SpritAnim_MineFx:	@ 0x081C855C
 	.incbin "FireEmblem7J.base.gba", 0x1C855C, 0x1C85F0 - 0x1C855C
 
-	.global gUnk_081C85F0
-gUnk_081C85F0:	@ 0x081C85F0
+	.global Pal_MineFx
+Pal_MineFx:	@ 0x081C85F0
 	.incbin "FireEmblem7J.base.gba", 0x1C85F0, 0x1C8610 - 0x1C85F0
 
 	.global gUnk_081C8610

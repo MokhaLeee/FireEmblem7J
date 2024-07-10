@@ -551,7 +551,7 @@ void IceCrystalfx_Paluse(struct ProcIceCrystal * proc);
 // sub_807E5D4
 // sub_807E5E0
 // sub_807E624
-// sub_807E63C
+// EventCall_SwingSwordfx
 // sub_807E658
 // sub_807E694
 // sub_807E6A4
@@ -711,6 +711,7 @@ extern struct ProcCmd ProcScr_IceCrystalfx[];
 extern struct ProcCmd ProcScr_EventDragonsSpritefx[];
 // ??? gUnk_08D87F48
 // ??? gUnk_08D87F68
+extern EventScr EventScr_DeathQuoteOnEnd[];
 // ??? gUnk_08D8977C
 // ??? gUnk_08D897EC
 // ??? gUnk_08D8A0E0

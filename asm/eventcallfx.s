@@ -2514,8 +2514,8 @@ _0807E636:
 	bx r0
 	.align 2, 0
 
-	thumb_func_start sub_807E63C
-sub_807E63C: @ 0x0807E63C
+	thumb_func_start EventCall_SwingSwordfx
+EventCall_SwingSwordfx: @ 0x0807E63C
 	push {lr}
 	adds r2, r0, #0
 	adds r1, r2, #0
@@ -2526,7 +2526,7 @@ sub_807E63C: @ 0x0807E63C
 	cmp r0, #0
 	bne _0807E654
 	adds r0, r2, #0
-	bl sub_80216A0
+	bl StartSwingSwordfx
 _0807E654:
 	pop {r0}
 	bx r0
@@ -2550,7 +2550,7 @@ sub_807E658: @ 0x0807E658
 	movs r2, #0x11
 	ldrsb r2, [r4, r2]
 	adds r0, r5, #0
-	bl sub_802196C
+	bl NinianStartTransformToHunman
 	adds r0, r4, #0
 	bl ClearUnit
 	bl RefreshUnitSprites

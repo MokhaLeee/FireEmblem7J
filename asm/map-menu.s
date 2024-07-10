@@ -142,16 +142,16 @@ _08021AA0:
 	bx r0
 	.align 2, 0
 
-	thumb_func_start sub_8021AA8
-sub_8021AA8: @ 0x08021AA8
+	thumb_func_start CallEvent_CompleteTraining
+CallEvent_CompleteTraining: @ 0x08021AA8
 	push {lr}
-	ldr r0, _08021AB8 @ =gUnk_08C03060
+	ldr r0, _08021AB8 @ =EventScr_CompleteTraining
 	bl StartEvent
 	movs r0, #0x17
 	pop {r1}
 	bx r1
 	.align 2, 0
-_08021AB8: .4byte gUnk_08C03060
+_08021AB8: .4byte EventScr_CompleteTraining
 
 	thumb_func_start sub_8021ABC
 sub_8021ABC: @ 0x08021ABC

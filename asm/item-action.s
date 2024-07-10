@@ -1382,7 +1382,7 @@ sub_802D388: @ 0x0802D388
 	ldrb r1, [r4, #0x13]
 	ldrb r2, [r4, #0x14]
 	adds r0, r5, #0
-	bl sub_8021770
+	bl StartMineAnim
 	pop {r4, r5}
 	pop {r0}
 	bx r0

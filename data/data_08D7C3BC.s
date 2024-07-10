@@ -6,7 +6,11 @@ gUnk_08D87F48:	@ 0x08D87F48
 
 	.global gUnk_08D87F68
 gUnk_08D87F68:	@ 0x08D87F68
-	.incbin "FireEmblem7J.base.gba", 0xD87F68, 0xD8977C - 0xD87F68
+	.incbin "FireEmblem7J.base.gba", 0xD87F68, 0xD891C8 - 0xD87F68
+
+	.global EventScr_DeathQuoteOnEnd
+EventScr_DeathQuoteOnEnd:	@ 0x08D891C8
+	.incbin "FireEmblem7J.base.gba", 0xD891C8, 0xD8977C - 0xD891C8
 
 	.global gUnk_08D8977C
 gUnk_08D8977C:	@ 0x08D8977C
