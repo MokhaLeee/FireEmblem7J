@@ -212,6 +212,7 @@ extern CONST_DATA struct ProcCmd ProcScr_BgFaceEyeBlink[];
 extern CONST_DATA struct ProcCmd ProcScr_FaceEndIn8Frames[];
 extern CONST_DATA struct ProcCmd ProcScr_FaceMouth[];
 extern CONST_DATA struct ProcCmd ProcScr_FaceEye[];
+// ??? gUnk_08BFFB20
 
 extern const u8 Img_FactionMiniCard[];
 extern const u16 Pal_FactionMiniCard[];

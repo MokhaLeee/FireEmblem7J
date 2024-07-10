@@ -206,6 +206,8 @@ SECTIONS
 		src/eventscr.o(.text);
 		asm/eventscr.o(.text);
 		asm/event-08010630.o(.text);
+		src/eventscr_snowstormfx.o(.text);
+		asm/eventscr_snowstorm.o(.text);
 		src/eventscr_thunderfx.o(.text);
 		asm/eventscr_08011AFC.o(.text);
 		src/eventscr_spriteanim.o(.text);
@@ -344,6 +346,8 @@ SECTIONS
 		. = ALIGN(4); src/sprite.o(.data)
 		. = ALIGN(4); src/face.o(.data)
 		. = ALIGN(4); data/data_08BFFB20.o(.data)
+		. = ALIGN(4); src/eventscr_snowstormfx.o(.data)
+		. = ALIGN(4); data/data_08C012BC.o(.data)
 		. = ALIGN(4); src/eventscr_thunderfx.o(.data)
 		. = ALIGN(4); data/data_08C013F0.o(.data)
 		. = ALIGN(4); src/eventscr_spriteanim.o(.data)

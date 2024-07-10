@@ -291,34 +291,3 @@ gUnk_08C011CC:	@ 0x08C011CC
 	.global gUnk_08C01224
 gUnk_08C01224:	@ 0x08C01224
 	.incbin "FireEmblem7J.base.gba", 0xC01224, 0xC0127C - 0xC01224
-
-	.global ProcScr_SnowStormWeather
-ProcScr_SnowStormWeather:	@ 0x08C0127C
-	.incbin "FireEmblem7J.base.gba", 0xC0127C, 0xC012BC - 0xC0127C
-
-	.global gUnk_08C012BC
-gUnk_08C012BC:	@ 0x08C012BC
-	@ PROC_YIELD
-	.short 0xe, 0x0
-	.word 0x0
-	@ PROC_CALL
-	.short 0x2, 0x0
-	.word sub_80117DC
-	@ PROC_YIELD
-	.short 0xe, 0x0
-	.word 0x0
-	@ PROC_REPEAT
-	.short 0x3, 0x0
-	.word sub_80118A8
-	@ PROC_WHILE
-	.short 0x14, 0x0
-	.word CheckBmBgfxDone
-	@ PROC_REPEAT
-	.short 0x3, 0x0
-	.word sub_8011900
-	@ PROC_CALL
-	.short 0x2, 0x0
-	.word sub_8011954
-	@ PROC_END
-	.short 0x0, 0x0
-	.word 0x0

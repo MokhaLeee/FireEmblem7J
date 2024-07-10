@@ -5,6 +5,8 @@
 
 typedef uintptr_t EventScr;
 
+#define NUM_BACKGROUNDS 0x5B
+
 enum event_evbit_idx {
     EVENT_FLAG_UNITCAM = 1 << 0,
     EVENT_FLAG_TEXTSKIPPED = 1 << 1,
@@ -131,9 +133,6 @@ void Event_FadeOutOfSkip(struct EventProc * proc);
 // EvtCmd_ClearSkip
 // EvtCmd_ClearSkipFadeToPrep
 // EvtCmd_FadeFromOpening
-
-#define NUM_BACKGROUNDS 0x5B
-
 void DisplayBackground(int background);
 void DisplayBackgroundNoClear(int background);
 // EventStartTalk
@@ -439,6 +438,57 @@ void ClearTalk(void);
 // sub_8010550
 // sub_80105A8
 // sub_8010600
+// sub_8010630
+// nullsub_32
+// sub_80108C8
+// sub_80108F0
+// sub_801096C
+// sub_80109F4
+// sub_8010A70
+// sub_8010ACC
+// sub_8010AF4
+// sub_8010BF4
+// sub_8010C5C
+// sub_8010CB0
+// sub_8010D88
+// sub_8010DC4
+// sub_8010E14
+// sub_8010EA0
+// sub_8010EEC
+// sub_8010F48
+// sub_8010F74
+// sub_8011038
+// sub_80110E4
+// sub_8011130
+// sub_80111A8
+// sub_80111E8
+// sub_8011214
+// sub_8011248
+// sub_8011298
+// sub_801135C
+// sub_801140C
+// sub_8011458
+// sub_80114A4
+// sub_80114EC
+// sub_8011508
+
+struct ProcEventSnowStormfx {
+    PROC_HEADER;
+};
+
+void SnowStormWeather_Init(struct ProcEventSnowStormfx * proc);
+void SnowStormWeather_Loop1(struct ProcEventSnowStormfx * proc);
+void SnowStormWeather_Loop2(struct ProcEventSnowStormfx * proc);
+void SnowStormWeather_Loop3(struct ProcEventSnowStormfx * proc);
+void SnowStormWeather_End(struct ProcEventSnowStormfx * proc);
+int EventDF_SnowStormfx(struct EventProc * proc);
+
+// sub_80117DC
+// sub_80118A8
+// sub_8011900
+// sub_8011954
+// sub_80119C4
+// EventE1
 
 struct ProcEventThunderfx {
     PROC_HEADER;
@@ -513,6 +563,67 @@ void sub_80124BC(ProcPtr proc);
 void sub_80125A4(ProcPtr proc);
 // sub_80125EC
 
+// ??? gUnk_08BFFE58
+// ??? gUnk_08BFFE70
+// ??? gUnk_08BFFE88
+// ??? gUnk_08BFFE8C
+// ??? gUnk_08BFFE90
+// ??? gUnk_08BFFEF0
+// ??? gUnk_08BFFEF8
+// ??? gUnk_08BFFF30
+// ??? gUnk_08BFFF58
+extern struct ProcCmd ProcScr_Event[];
+// ??? gUnk_08C00018
+// ??? gEventCmdTable
+// ??? gUnk_08C0003C
+// ??? gUnk_08C0024C
+
+struct BackgroundInfo
+{
+    u8 const * img;
+    u8 const * tsa;
+    u16 const * pal;
+};
+
+extern struct BackgroundInfo gBackgroundTable[];
+
+// ??? gUnk_08C00C18
+// ??? gUnk_08C00C28
+// ??? gUnk_08C00C48
+// ??? gUnk_08C00C60
+// ??? gUnk_08C00C88
+// ??? gUnk_08C00CC8
+// ??? gUnk_08C00CE8
+// ??? gUnk_08C00CF8
+// ??? gUnk_08C00D20
+// ??? gUnk_08C00D44
+// ??? gUnk_08C00D84
+// ??? gUnk_08C00DC4
+// ??? gUnk_08C00DEC
+// ??? gUnk_08C00E24
+// ??? gUnk_08C00E5C
+// ??? gUnk_08C00E9C
+// ??? gUnk_08C00EDC
+// ??? gUnk_08C00F1C
+// ??? gUnk_08C00F5C
+// ??? gUnk_08C00F7C
+// ??? gUnk_08C00FAC
+// ??? gUnk_08C00FC4
+// ??? gUnk_08C00FE0
+// ??? gUnk_08C00FF8
+// ??? gUnk_08C01004
+// ??? gUnk_08C01020
+// ??? gUnk_08C01094
+// ??? gUnk_08C010BC
+// ??? gUnk_08C010EC
+// ??? gUnk_08C01124
+// ??? gUnk_08C01144
+// ??? gUnk_08C0115C
+// ??? gUnk_08C0117C
+// ??? gUnk_08C011CC
+// ??? gUnk_08C01224
+// ??? ProcScr_SnowStormWeather
+// ??? gUnk_08C012BC
 extern struct BmBgxConf CONST_DATA  BmBgfxConf_IceCrystal[];
 // ??? gUnk_08DBAD14
 // ??? gUnk_08DC0390
