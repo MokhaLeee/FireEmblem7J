@@ -700,32 +700,32 @@ gUnk_081BF2E0:	@ 0x081BF2E0
 gUnk_081BF4E0:	@ 0x081BF4E0
 	.incbin "FireEmblem7J.base.gba", 0x1BF4E0, 0x1BF61C - 0x1BF4E0
 
-	.global gUnk_081BF61C
-gUnk_081BF61C:	@ 0x081BF61C
+	.global Img_DragonGateLight
+Img_DragonGateLight:	@ 0x081BF61C
 	.incbin "FireEmblem7J.base.gba", 0x1BF61C, 0x1C0A50 - 0x1BF61C
 
-	.global gUnk_081C0A50
-gUnk_081C0A50:	@ 0x081C0A50
+	.global Pal_DragonGateLight
+Pal_DragonGateLight:	@ 0x081C0A50
 	.incbin "FireEmblem7J.base.gba", 0x1C0A50, 0x1C0A70 - 0x1C0A50
 
 	.global gUnk_081C0A70
 gUnk_081C0A70:	@ 0x081C0A70
 	.incbin "FireEmblem7J.base.gba", 0x1C0A70, 0x1C0A90 - 0x1C0A70
 
-	.global gUnk_081C0A90
-gUnk_081C0A90:	@ 0x081C0A90
+	.global Tsa_DragonGateLight
+Tsa_DragonGateLight:	@ 0x081C0A90
 	.incbin "FireEmblem7J.base.gba", 0x1C0A90, 0x1C1068 - 0x1C0A90
 
-	.global gUnk_081C1068
-gUnk_081C1068:	@ 0x081C1068
+	.global Img_DragonGateDragon
+Img_DragonGateDragon:	@ 0x081C1068
 	.incbin "FireEmblem7J.base.gba", 0x1C1068, 0x1C1CA4 - 0x1C1068
 
-	.global gUnk_081C1CA4
-gUnk_081C1CA4:	@ 0x081C1CA4
+	.global Pal_DragonGateDragon
+Pal_DragonGateDragon:	@ 0x081C1CA4
 	.incbin "FireEmblem7J.base.gba", 0x1C1CA4, 0x1C1EA4 - 0x1C1CA4
 
-	.global gUnk_081C1EA4
-gUnk_081C1EA4:	@ 0x081C1EA4
+	.global Tsa_DragonGateDragon
+Tsa_DragonGateDragon:	@ 0x081C1EA4
 	.incbin "FireEmblem7J.base.gba", 0x1C1EA4, 0x1C2358 - 0x1C1EA4
 
 	.global gUnk_081C2358

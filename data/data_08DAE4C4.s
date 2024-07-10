@@ -172,8 +172,8 @@ gUnk_08DAF4B8:	@ 0x08DAF4B8
 gUnk_08DAF58C:	@ 0x08DAF58C
 	.incbin "FireEmblem7J.base.gba", 0xDAF58C, 0xDAF5FC - 0xDAF58C
 
-	.global gUnk_08DAF5FC
-gUnk_08DAF5FC:	@ 0x08DAF5FC
+	.global ProcScr_08DAF5FC
+ProcScr_08DAF5FC:	@ 0x08DAF5FC
 	.incbin "FireEmblem7J.base.gba", 0xDAF5FC, 0xDAF62C - 0xDAF5FC
 
 	.global gUnk_08DAF62C

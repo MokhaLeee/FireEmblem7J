@@ -2,8 +2,8 @@
 
 	.syntax unified
 
-	thumb_func_start sub_8012378
-sub_8012378: @ 0x08012378
+	thumb_func_start EventEA_StartMixPalette
+EventEA_StartMixPalette: @ 0x08012378
 	push {r4, r5, r6, r7, lr}
 	sub sp, #8
 	adds r5, r0, #0
@@ -40,8 +40,8 @@ _080123B2:
 	bx r1
 	.align 2, 0
 
-	thumb_func_start sub_80123BC
-sub_80123BC: @ 0x080123BC
+	thumb_func_start EventEB_EndMixPalette
+EventEB_EndMixPalette: @ 0x080123BC
 	push {lr}
 	bl EndMixPalette
 	pop {r1}

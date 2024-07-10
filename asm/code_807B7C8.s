@@ -17,8 +17,8 @@ ClearFlag_145: @ 0x0807B8D8
 	pop {r0}
 	bx r0
 
-	thumb_func_start sub_807B8E4
-sub_807B8E4: @ 0x0807B8E4
+	thumb_func_start DragonGatefx_DistortionHandler
+DragonGatefx_DistortionHandler: @ 0x0807B8E4
 	push {r4, r5, lr}
 	sub sp, #4
 	adds r4, r0, #0
@@ -64,8 +64,8 @@ sub_807B8E4: @ 0x0807B8E4
 	pop {r0}
 	bx r0
 
-	thumb_func_start sub_807B94C
-sub_807B94C: @ 0x0807B94C
+	thumb_func_start DragonGatefx_DrawLight
+DragonGatefx_DrawLight: @ 0x0807B94C
 	push {r4, r5, lr}
 	sub sp, #8
 	adds r4, r0, #0
@@ -102,15 +102,15 @@ sub_807B94C: @ 0x0807B94C
 	movs r0, #2
 	orrs r2, r0
 	strb r2, [r3, #0x18]
-	ldr r0, _0807B9F4 @ =gUnk_081BF61C
+	ldr r0, _0807B9F4 @ =Img_DragonGateLight
 	ldr r1, _0807B9F8 @ =0x06004000
 	bl Decompress
 	ldr r0, _0807B9FC @ =gBg2Tm
-	ldr r1, _0807BA00 @ =gUnk_081C0A90
+	ldr r1, _0807BA00 @ =Tsa_DragonGateLight
 	movs r2, #0xc4
 	lsls r2, r2, #7
 	bl TmApplyTsa_thm
-	ldr r5, _0807BA04 @ =gUnk_081C0A50
+	ldr r5, _0807BA04 @ =Pal_DragonGateLight
 	adds r0, r5, #0
 	movs r1, #0xc0
 	movs r2, #0x20
@@ -126,9 +126,9 @@ sub_807B94C: @ 0x0807B94C
 	movs r3, #6
 	bl StartMixPalette
 	bl InitScanlineEffect
-	ldr r0, _0807BA0C @ =sub_80783DC
+	ldr r0, _0807BA0C @ =DragonGatefx_LightHBlank
 	bl SetOnHBlankA
-	ldr r0, _0807BA10 @ =sub_807B8E4
+	ldr r0, _0807BA10 @ =DragonGatefx_DistortionHandler
 	adds r1, r4, #0
 	bl StartParallelWorker
 	adds r4, #0x64
@@ -140,20 +140,20 @@ sub_807B94C: @ 0x0807B94C
 	bx r0
 	.align 2, 0
 _0807B9F0: .4byte gDispIo
-_0807B9F4: .4byte gUnk_081BF61C
+_0807B9F4: .4byte Img_DragonGateLight
 _0807B9F8: .4byte 0x06004000
 _0807B9FC: .4byte gBg2Tm
-_0807BA00: .4byte gUnk_081C0A90
-_0807BA04: .4byte gUnk_081C0A50
+_0807BA00: .4byte Tsa_DragonGateLight
+_0807BA04: .4byte Pal_DragonGateLight
 _0807BA08: .4byte gUnk_081C0A70
-_0807BA0C: .4byte sub_80783DC
-_0807BA10: .4byte sub_807B8E4
+_0807BA0C: .4byte DragonGatefx_LightHBlank
+_0807BA10: .4byte DragonGatefx_DistortionHandler
 
-	thumb_func_start sub_807BA14
-sub_807BA14: @ 0x0807BA14
+	thumb_func_start DragonGatefx_DrawDragon
+DragonGatefx_DrawDragon: @ 0x0807BA14
 	push {r4, r5, lr}
 	adds r4, r0, #0
-	ldr r0, _0807BAC0 @ =sub_80785B8
+	ldr r0, _0807BAC0 @ =DragonGatefx_DragonHBlank
 	bl SetOnHBlankA
 	ldr r3, _0807BAC4 @ =gDispIo
 	adds r2, r3, #0
@@ -205,15 +205,15 @@ sub_807BA14: @ 0x0807BA14
 	adds r1, r2, #0
 	orrs r0, r1
 	strh r0, [r3, #0x3c]
-	ldr r0, _0807BAD0 @ =gUnk_081C1068
+	ldr r0, _0807BAD0 @ =Img_DragonGateDragon
 	ldr r1, _0807BAD4 @ =0x06003000
 	bl Decompress
 	ldr r0, _0807BAD8 @ =gBg1Tm
-	ldr r1, _0807BADC @ =gUnk_081C1EA4
+	ldr r1, _0807BADC @ =Tsa_DragonGateDragon
 	movs r2, #0xe3
 	lsls r2, r2, #7
 	bl TmApplyTsa_thm
-	ldr r0, _0807BAE0 @ =gUnk_081C1CA4
+	ldr r0, _0807BAE0 @ =Pal_DragonGateDragon
 	movs r1, #0xe0
 	movs r2, #0x20
 	bl ApplyPaletteExt
@@ -231,18 +231,18 @@ sub_807BA14: @ 0x0807BA14
 	pop {r0}
 	bx r0
 	.align 2, 0
-_0807BAC0: .4byte sub_80785B8
+_0807BAC0: .4byte DragonGatefx_DragonHBlank
 _0807BAC4: .4byte gDispIo
 _0807BAC8: .4byte 0x0000FFE0
 _0807BACC: .4byte 0x0000E0FF
-_0807BAD0: .4byte gUnk_081C1068
+_0807BAD0: .4byte Img_DragonGateDragon
 _0807BAD4: .4byte 0x06003000
 _0807BAD8: .4byte gBg1Tm
-_0807BADC: .4byte gUnk_081C1EA4
-_0807BAE0: .4byte gUnk_081C1CA4
+_0807BADC: .4byte Tsa_DragonGateDragon
+_0807BAE0: .4byte Pal_DragonGateDragon
 
-	thumb_func_start sub_807BAE4
-sub_807BAE4: @ 0x0807BAE4
+	thumb_func_start DragonGatefx_MergeDragon
+DragonGatefx_MergeDragon: @ 0x0807BAE4
 	push {r4, r5, lr}
 	adds r5, r0, #0
 	adds r0, #0x4c
@@ -316,7 +316,7 @@ sub_807BB48: @ 0x0807BB48
 	lsls r2, r2, #3
 	bl CpuFastSet
 	ldr r0, _0807BBE0 @ =gBg2Tm
-	ldr r1, _0807BBE4 @ =gUnk_081C1EA4
+	ldr r1, _0807BBE4 @ =Tsa_DragonGateDragon
 	movs r2, #0xe4
 	lsls r2, r2, #7
 	bl TmApplyTsa_thm
@@ -361,21 +361,21 @@ _0807BBD4: .4byte gDispIo
 _0807BBD8: .4byte 0x06003000
 _0807BBDC: .4byte 0x06004000
 _0807BBE0: .4byte gBg2Tm
-_0807BBE4: .4byte gUnk_081C1EA4
+_0807BBE4: .4byte Tsa_DragonGateDragon
 _0807BBE8: .4byte gBg1Tm
 
-	thumb_func_start sub_807BBEC
-sub_807BBEC: @ 0x0807BBEC
+	thumb_func_start DragonGatefxSetHBlank
+DragonGatefxSetHBlank: @ 0x0807BBEC
 	push {lr}
-	ldr r0, _0807BBF8 @ =sub_80783DC
+	ldr r0, _0807BBF8 @ =DragonGatefx_LightHBlank
 	bl SetOnHBlankA
 	pop {r0}
 	bx r0
 	.align 2, 0
-_0807BBF8: .4byte sub_80783DC
+_0807BBF8: .4byte DragonGatefx_LightHBlank
 
-	thumb_func_start sub_807BBFC
-sub_807BBFC: @ 0x0807BBFC
+	thumb_func_start DragonGatefx_End
+DragonGatefx_End: @ 0x0807BBFC
 	push {lr}
 	sub sp, #4
 	movs r0, #0
@@ -416,39 +416,39 @@ _0807BC48: .4byte 0x06003000
 _0807BC4C: .4byte 0x01000C00
 _0807BC50: .4byte gDispIo
 
-	thumb_func_start sub_807BC54
-sub_807BC54: @ 0x0807BC54
+	thumb_func_start EventCall_StartDragonGatefx
+EventCall_StartDragonGatefx: @ 0x0807BC54
 	push {lr}
 	adds r1, r0, #0
-	ldr r0, _0807BC64 @ =gUnk_08D6F854
+	ldr r0, _0807BC64 @ =ProcScr_DragonGatefx
 	bl Proc_Start
 	pop {r0}
 	bx r0
 	.align 2, 0
-_0807BC64: .4byte gUnk_08D6F854
+_0807BC64: .4byte ProcScr_DragonGatefx
 
-	thumb_func_start sub_807BC68
-sub_807BC68: @ 0x0807BC68
+	thumb_func_start DrawDragonGateDragonfx
+DrawDragonGateDragonfx: @ 0x0807BC68
 	push {lr}
-	ldr r0, _0807BC7C @ =gUnk_08D6F854
+	ldr r0, _0807BC7C @ =ProcScr_DragonGatefx
 	bl Proc_Find
 	movs r1, #0
 	bl Proc_Goto
 	pop {r0}
 	bx r0
 	.align 2, 0
-_0807BC7C: .4byte gUnk_08D6F854
+_0807BC7C: .4byte ProcScr_DragonGatefx
 
-	thumb_func_start sub_807BC80
-sub_807BC80: @ 0x0807BC80
+	thumb_func_start EndDragonGatefx
+EndDragonGatefx: @ 0x0807BC80
 	push {lr}
-	ldr r0, _0807BC90 @ =gUnk_08D6F854
+	ldr r0, _0807BC90 @ =ProcScr_DragonGatefx
 	bl Proc_Find
 	bl Proc_End
 	pop {r0}
 	bx r0
 	.align 2, 0
-_0807BC90: .4byte gUnk_08D6F854
+_0807BC90: .4byte ProcScr_DragonGatefx
 
 	thumb_func_start sub_807BC94
 sub_807BC94: @ 0x0807BC94

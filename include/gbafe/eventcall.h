@@ -314,16 +314,16 @@ void EndEventQuakefx(ProcPtr proc);
 
 // SetFlag_145
 // ClearFlag_145
-// sub_807B8E4
-// sub_807B94C
-// sub_807BA14
-// sub_807BAE4
+// DragonGatefx_DistortionHandler
+// DragonGatefx_DrawLight
+// DragonGatefx_DrawDragon
+// DragonGatefx_MergeDragon
 // sub_807BB48
-// sub_807BBEC
-// sub_807BBFC
-// sub_807BC54
-// sub_807BC68
-// sub_807BC80
+// DragonGatefxSetHBlank
+// DragonGatefx_End
+// EventCall_StartDragonGatefx
+// DrawDragonGateDragonfx
+// EndDragonGatefx
 // sub_807BC94
 // sub_807BC9C
 // sub_807BCD8
@@ -690,7 +690,7 @@ void SetLynModeDeathFlag(void);
 extern struct ProcCmd ProcScr_EventHorizontalQuakefx[];
 extern struct ProcCmd ProcScr_EventVerticalQuakefx[];
 extern struct ProcCmd ProcScr_EventQuakefx[];
-// ??? gUnk_08D6F854
+// ??? ProcScr_DragonGatefx
 // ??? gUnk_08D6F8AC
 // ??? gUnk_08D6F8BC
 // ??? gUnk_08D6F95C

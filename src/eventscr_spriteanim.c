@@ -90,7 +90,7 @@ int EventE8_StartSpriteAnim(struct EventProc * proc)
     return ret;
 }
 
-int EndEventSpriteAnim(void)
+int EventE9_EndEventSpriteAnim(void)
 {
 #if BUGFIX
     Proc_End(Proc_Find(ProcScr_EventSpriteAnim));

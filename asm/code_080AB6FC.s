@@ -8312,7 +8312,7 @@ sub_80AFB94: @ 0x080AFB94
 	adds r6, r1, #0
 	adds r4, r2, #0
 	adds r1, r3, #0
-	ldr r0, _080AFBC0 @ =gUnk_08DAF5FC
+	ldr r0, _080AFBC0 @ =ProcScr_08DAF5FC
 	bl Proc_StartBlocking
 	adds r1, r0, #0
 	adds r0, #0x64
@@ -8329,7 +8329,7 @@ sub_80AFB94: @ 0x080AFB94
 	beq _080AFBCA
 	b _080AFBE0
 	.align 2, 0
-_080AFBC0: .4byte gUnk_08DAF5FC
+_080AFBC0: .4byte ProcScr_08DAF5FC
 _080AFBC4:
 	cmp r6, #2
 	beq _080AFBD8

@@ -44,9 +44,9 @@ void sub_80780E0(int a, int b);
 void ScanlineRotation(u16 *, s16, s16, s16, s16, s16, s16);
 void HBlank_Scanline_80782AC(void);
 // sub_8078344
-// sub_80783DC
+// DragonGatefx_LightHBlank
 // sub_8078474
 void QuintessenceFx_OnHBlank(void);
-// sub_80785B8
+// DragonGatefx_DragonHBlank
 // sub_8078688
 // sub_8078894

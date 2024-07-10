@@ -1051,7 +1051,7 @@ sub_808014C: @ 0x0808014C
 	strb r2, [r1]
 	adds r1, #1
 	strb r2, [r1]
-	bl sub_807BC80
+	bl EndDragonGatefx
 	ldr r0, _080801C8 @ =gBg1Tm
 	movs r1, #0
 	bl TmFill

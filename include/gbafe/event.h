@@ -296,7 +296,7 @@ void DisplayBackgroundNoClear(int background);
 // sub_800E774
 // sub_800E798
 // sub_800E7A4
-// sub_800E7B0
+// Event93
 // sub_800E7D8
 // sub_800E800
 // sub_800E854
@@ -560,11 +560,11 @@ void EventSpriteAnim_Init(struct ProcEventSpriteAnim * proc);
 void EventSpriteAnim_Loop(struct ProcEventSpriteAnim * proc);
 void EventSpriteAnim_End(struct ProcEventSpriteAnim * proc);
 int EventE8_StartSpriteAnim(struct EventProc * proc);
-int EndEventSpriteAnim(void);
+int EventE9_EndEventSpriteAnim(void);
 bool EventSpriteAnimExists(void);
 
-// sub_8012378
-// sub_80123BC
+// EventEA_StartMixPalette
+// EventEB_EndMixPalette
 // sub_80123C8
 // sub_8012440
 void sub_80124BC(ProcPtr proc);

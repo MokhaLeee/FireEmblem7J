@@ -106,7 +106,7 @@ def main(args):
 
             if opc == 0x10:
                 print("    PROC_BLOCK,")
-                break
+                continue # break
 
             if opc == 0x11:
                 print("    PROC_END_IF_DUPLICATE,")

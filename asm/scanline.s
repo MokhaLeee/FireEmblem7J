@@ -2635,8 +2635,8 @@ _080783D0: .4byte 0x04000014
 _080783D4: .4byte gManimActiveScanlineBuf
 _080783D8: .4byte 0x04000016
 
-	thumb_func_start sub_80783DC
-sub_80783DC: @ 0x080783DC
+	thumb_func_start DragonGatefx_LightHBlank
+DragonGatefx_LightHBlank: @ 0x080783DC
 	push {r7, lr}
 	sub sp, #4
 	mov r7, sp
@@ -2875,8 +2875,8 @@ _080785AC: .4byte gManimActiveScanlineBuf
 _080785B0: .4byte gDispIo
 _080785B4: .4byte 0x0400001A
 
-	thumb_func_start sub_80785B8
-sub_80785B8: @ 0x080785B8
+	thumb_func_start DragonGatefx_DragonHBlank
+DragonGatefx_DragonHBlank: @ 0x080785B8
 	push {r7, lr}
 	sub sp, #4
 	mov r7, sp

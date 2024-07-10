@@ -6500,8 +6500,8 @@ sub_800E7A4: @ 0x0800E7A4
 	pop {r1}
 	bx r1
 
-	thumb_func_start sub_800E7B0
-sub_800E7B0: @ 0x0800E7B0
+	thumb_func_start Event93
+Event93: @ 0x0800E7B0
 	push {lr}
 	adds r3, r0, #0
 	adds r1, r3, #0
