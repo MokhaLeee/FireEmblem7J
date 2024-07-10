@@ -324,10 +324,10 @@ void EndEventQuakefx(ProcPtr proc);
 // EventCall_StartDragonGatefx
 // DrawDragonGateDragonfx
 // EndDragonGatefx
-// sub_807BC94
-// sub_807BC9C
-// sub_807BCD8
-// sub_807BCEC
+// DragonSpriteBlinking_Init
+// DragonSpriteBlinking_Loop
+// StartDragonSpriteBlinking
+// EndDragonSpriteBlinking
 // sub_807BD00
 // sub_807BD6C
 // sub_807BDC8
@@ -691,7 +691,7 @@ extern struct ProcCmd ProcScr_EventHorizontalQuakefx[];
 extern struct ProcCmd ProcScr_EventVerticalQuakefx[];
 extern struct ProcCmd ProcScr_EventQuakefx[];
 // ??? ProcScr_DragonGatefx
-// ??? gUnk_08D6F8AC
+// ??? ProcScr_DragonSpriteBlinking
 // ??? gUnk_08D6F8BC
 // ??? gUnk_08D6F95C
 // ??? gUnk_08D6F9D4

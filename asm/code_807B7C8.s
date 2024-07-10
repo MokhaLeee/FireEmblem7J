@@ -450,15 +450,15 @@ EndDragonGatefx: @ 0x0807BC80
 	.align 2, 0
 _0807BC90: .4byte ProcScr_DragonGatefx
 
-	thumb_func_start sub_807BC94
-sub_807BC94: @ 0x0807BC94
+	thumb_func_start DragonSpriteBlinking_Init
+DragonSpriteBlinking_Init: @ 0x0807BC94
 	adds r0, #0x4c
 	movs r1, #0
 	strh r1, [r0]
 	bx lr
 
-	thumb_func_start sub_807BC9C
-sub_807BC9C: @ 0x0807BC9C
+	thumb_func_start DragonSpriteBlinking_Loop
+DragonSpriteBlinking_Loop: @ 0x0807BC9C
 	push {r4, lr}
 	adds r4, r0, #0
 	movs r0, #0x86
@@ -488,27 +488,27 @@ _0807BCD2:
 	pop {r0}
 	bx r0
 
-	thumb_func_start sub_807BCD8
-sub_807BCD8: @ 0x0807BCD8
+	thumb_func_start StartDragonSpriteBlinking
+StartDragonSpriteBlinking: @ 0x0807BCD8
 	push {lr}
 	adds r1, r0, #0
-	ldr r0, _0807BCE8 @ =gUnk_08D6F8AC
+	ldr r0, _0807BCE8 @ =ProcScr_DragonSpriteBlinking
 	bl Proc_Start
 	pop {r0}
 	bx r0
 	.align 2, 0
-_0807BCE8: .4byte gUnk_08D6F8AC
+_0807BCE8: .4byte ProcScr_DragonSpriteBlinking
 
-	thumb_func_start sub_807BCEC
-sub_807BCEC: @ 0x0807BCEC
+	thumb_func_start EndDragonSpriteBlinking
+EndDragonSpriteBlinking: @ 0x0807BCEC
 	push {lr}
-	ldr r0, _0807BCFC @ =gUnk_08D6F8AC
+	ldr r0, _0807BCFC @ =ProcScr_DragonSpriteBlinking
 	bl Proc_Find
 	bl Proc_End
 	pop {r0}
 	bx r0
 	.align 2, 0
-_0807BCFC: .4byte gUnk_08D6F8AC
+_0807BCFC: .4byte ProcScr_DragonSpriteBlinking
 
 	thumb_func_start sub_807BD00
 sub_807BD00: @ 0x0807BD00
