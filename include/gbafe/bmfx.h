@@ -6,11 +6,11 @@
 struct ProcBmFx {
     PROC_HEADER;
 
-    /* 29 */ u8 _pad_29[0x4C - 0x29];
+    STRUCT_PAD(0x29, 0x4C);
 
-    /* 4C */ s16 counter;
+    /* 4C */ s16 timer;
 
-    /* 4E */ u8 _pad_4E[0x64 - 0x4E];
+    STRUCT_PAD(0x4E, 0x64);
 
     /* 64 */ s16 xPos;
     /* 66 */ s16 yPos;

@@ -2167,7 +2167,7 @@ _0806D254:
 	lsls r0, r2, #0x10
 	asrs r1, r0, #0x10
 	adds r0, r1, #0
-	bl sub_8015D10
+	bl GetCameraAdjustedX
 	adds r1, r0, #0
 	ldr r0, _0806D2E0 @ =gBmSt
 	ldrh r2, [r0, #0xc]
@@ -2187,7 +2187,7 @@ _0806D254:
 	lsls r0, r2, #0x10
 	asrs r1, r0, #0x10
 	adds r0, r1, #0
-	bl sub_8015D54
+	bl GetCameraAdjustedY
 	adds r1, r0, #0
 	ldr r0, _0806D2E0 @ =gBmSt
 	ldrh r2, [r0, #0xe]

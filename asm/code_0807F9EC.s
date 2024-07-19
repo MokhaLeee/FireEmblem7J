@@ -158,7 +158,7 @@ ForceCenteredDragon: @ 0x0807FAFC
 	movs r2, #0x11
 	ldrsb r2, [r4, r2]
 	adds r0, r5, #0
-	bl sub_80160D4
+	bl EnsureCameraOntoCenteredPosition
 	pop {r4, r5}
 	pop {r0}
 	bx r0

@@ -454,7 +454,7 @@ sub_806EE30: @ 0x0806EE30
 	movs r2, #0x11
 	ldrsb r2, [r3, r2]
 	ldr r0, [r7]
-	bl sub_801615C
+	bl EnsureCameraOntoPosition
 	add sp, #4
 	pop {r7}
 	pop {r0}
@@ -487,7 +487,7 @@ _0806EE78:
 	movs r2, #0x11
 	ldrsb r2, [r3, r2]
 	ldr r0, [r7]
-	bl sub_801615C
+	bl EnsureCameraOntoPosition
 _0806EE8E:
 	add sp, #4
 	pop {r7}
@@ -15428,7 +15428,7 @@ sub_8076350: @ 0x08076350
 	movs r2, #0x11
 	ldrsb r2, [r3, r2]
 	ldr r0, [r7]
-	bl sub_801615C
+	bl EnsureCameraOntoPosition
 	add sp, #4
 	pop {r4, r7}
 	pop {r0}
@@ -15469,7 +15469,7 @@ sub_80763A0: @ 0x080763A0
 	movs r2, #0x11
 	ldrsb r2, [r3, r2]
 	ldr r0, [r7]
-	bl sub_801615C
+	bl EnsureCameraOntoPosition
 	add sp, #4
 	pop {r4, r7}
 	pop {r0}
@@ -15524,7 +15524,7 @@ sub_80763F0: @ 0x080763F0
 	adds r3, #0x61
 	ldrb r2, [r3]
 	ldr r0, [r7]
-	bl sub_801615C
+	bl EnsureCameraOntoPosition
 	add sp, #4
 	pop {r7}
 	pop {r0}

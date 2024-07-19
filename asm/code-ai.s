@@ -1136,7 +1136,7 @@ sub_80355FC: @ 0x080355FC
 _0803564E:
 	adds r0, r4, #0
 	adds r2, r5, #0
-	bl sub_801615C
+	bl EnsureCameraOntoPosition
 	b _08035690
 	.align 2, 0
 _08035658: .4byte gPlaySt
@@ -1152,7 +1152,7 @@ _08035668:
 	ldrb r1, [r3, #2]
 	ldrb r2, [r3, #3]
 	adds r0, r4, #0
-	bl sub_801615C
+	bl EnsureCameraOntoPosition
 	b _08035690
 _0803567E:
 	ldr r0, _08035698 @ =gActiveUnit
@@ -1162,7 +1162,7 @@ _0803567E:
 	movs r2, #0x11
 	ldrsb r2, [r0, r2]
 	adds r0, r4, #0
-	bl sub_801615C
+	bl EnsureCameraOntoPosition
 _08035690:
 	pop {r4, r5, r6}
 	pop {r0}
@@ -1689,7 +1689,7 @@ _08035AEA:
 	mov r0, r8
 	adds r1, r6, #0
 	adds r2, r5, #0
-	bl sub_801615C
+	bl EnsureCameraOntoPosition
 	lsls r0, r6, #4
 	lsls r1, r5, #4
 	movs r2, #2

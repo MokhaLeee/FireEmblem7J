@@ -777,7 +777,7 @@ _0801CBE0:
 	movs r3, #2
 	ldrsh r2, [r0, r3]
 	adds r0, r5, #0
-	bl sub_801615C
+	bl EnsureCameraOntoPosition
 	bl sub_801D6D8
 	adds r0, r5, #0
 	bl Proc_Break
@@ -807,7 +807,7 @@ _0801CC00:
 	movs r3, #2
 	ldrsh r2, [r4, r3]
 	adds r0, r5, #0
-	bl sub_801615C
+	bl EnsureCameraOntoPosition
 	movs r1, #0
 	ldrsh r0, [r4, r1]
 	movs r2, #2
@@ -903,7 +903,7 @@ _0801CD00:
 	movs r3, #2
 	ldrsh r2, [r4, r3]
 	adds r0, r5, #0
-	bl sub_801615C
+	bl EnsureCameraOntoPosition
 	movs r1, #0
 	ldrsh r0, [r4, r1]
 	movs r2, #2
@@ -1051,7 +1051,7 @@ sub_801CE3C: @ 0x0801CE3C
 	ldrsb r2, [r0, r2]
 	adds r0, r6, #0
 	adds r1, r5, #0
-	bl sub_801615C
+	bl EnsureCameraOntoPosition
 	lsls r0, r0, #0x18
 	movs r1, #0x80
 	lsls r1, r1, #0x11
@@ -1295,7 +1295,7 @@ sub_801D06C: @ 0x0801D06C
 	ldrb r2, [r2, #0x11]
 	lsls r2, r2, #0x18
 	asrs r2, r2, #0x18
-	bl sub_801615C
+	bl EnsureCameraOntoPosition
 	movs r1, #0
 	lsls r0, r0, #0x18
 	cmp r0, #0
@@ -2140,7 +2140,7 @@ _0801D730:
 	ldrsb r1, [r4, r1]
 	movs r2, #0x11
 	ldrsb r2, [r4, r2]
-	bl sub_801615C
+	bl EnsureCameraOntoPosition
 	movs r0, #0x10
 	ldrsb r0, [r4, r0]
 	movs r1, #0x11

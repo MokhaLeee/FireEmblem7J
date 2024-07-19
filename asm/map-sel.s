@@ -198,7 +198,7 @@ _0804B61C:
 	ldr r2, [sp, #4]
 	asrs r2, r2, #4
 	adds r0, r4, #0
-	bl sub_801615C
+	bl EnsureCameraOntoPosition
 	lsls r0, r0, #0x18
 	asrs r0, r0, #0x18
 	cmp r0, #1

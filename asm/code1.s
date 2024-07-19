@@ -4891,7 +4891,7 @@ _080309EC:
 	ldrb r2, [r0]
 	adds r0, r6, #0
 	adds r1, r5, #0
-	bl sub_801615C
+	bl EnsureCameraOntoPosition
 	pop {r4, r5, r6}
 	pop {r0}
 	bx r0
@@ -5793,7 +5793,7 @@ sub_8031114: @ 0x08031114
 	movs r2, #0x11
 	ldrsb r2, [r0, r2]
 	adds r0, r5, #0
-	bl sub_801615C
+	bl EnsureCameraOntoPosition
 	ldr r0, _08031190 @ =gPlaySt
 	adds r0, #0x41
 	ldrb r0, [r0]
@@ -5989,7 +5989,7 @@ sub_80312E8: @ 0x080312E8
 	movs r2, #0x11
 	ldrsb r2, [r0, r2]
 	adds r0, r5, #0
-	bl sub_801615C
+	bl EnsureCameraOntoPosition
 	pop {r4, r5}
 	pop {r0}
 	bx r0
@@ -6252,7 +6252,7 @@ _08031504:
 	movs r3, #2
 	ldrsh r2, [r4, r3]
 	adds r0, r5, #0
-	bl sub_801615C
+	bl EnsureCameraOntoPosition
 	movs r1, #0
 	ldrsh r0, [r4, r1]
 	movs r2, #2
@@ -10143,7 +10143,7 @@ MassEffectDisplay_Watch: @ 0x08033400
 	movs r2, #1
 	ldrsb r2, [r0, r2]
 	adds r0, r4, #0
-	bl sub_801615C
+	bl EnsureCameraOntoPosition
 	pop {r4}
 	pop {r0}
 	bx r0
@@ -10514,7 +10514,7 @@ sub_80336E0: @ 0x080336E0
 	lsls r2, r2, #0x18
 	asrs r2, r2, #0x18
 	adds r0, r4, #0
-	bl sub_801615C
+	bl EnsureCameraOntoPosition
 _0803370A:
 	pop {r4}
 	pop {r0}

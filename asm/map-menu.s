@@ -191,7 +191,7 @@ sub_8021ACC: @ 0x08021ACC
 	ldrb r2, [r2, #0x11]
 	lsls r2, r2, #0x18
 	asrs r2, r2, #0x18
-	bl sub_801615C
+	bl EnsureCameraOntoPosition
 	movs r0, #0x19
 	pop {r1}
 	bx r1
@@ -222,7 +222,7 @@ sub_8021B28: @ 0x08021B28
 	ldr r0, _08021B84 @ =ProcScr_CamMove
 	bl Proc_EndEach
 	lsls r0, r4, #4
-	bl sub_8015D54
+	bl GetCameraAdjustedY
 	lsls r0, r0, #0x10
 	lsrs r0, r0, #0x10
 	ldr r2, _08021B88 @ =gBmSt
@@ -240,7 +240,7 @@ _08021B6C:
 	ldrsb r1, [r0, r1]
 	adds r0, r6, #0
 	adds r2, r4, #0
-	bl sub_801615C
+	bl EnsureCameraOntoPosition
 _08021B7A:
 	pop {r4, r5, r6}
 	pop {r0}
@@ -1014,7 +1014,7 @@ sub_80221A0: @ 0x080221A0
 	movs r2, #0x11
 	ldrsb r2, [r0, r2]
 	movs r0, #0
-	bl sub_801615C
+	bl EnsureCameraOntoPosition
 	pop {r0}
 	bx r0
 	.align 2, 0

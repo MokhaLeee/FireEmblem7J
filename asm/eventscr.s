@@ -785,7 +785,7 @@ _0800BDE0:
 	adds r0, r2, #0
 	adds r1, r4, #0
 	adds r2, r5, #0
-	bl sub_80160D4
+	bl EnsureCameraOntoCenteredPosition
 	adds r0, r4, #0
 	adds r1, r5, #0
 	bl SetMapCursorPosition
@@ -823,11 +823,11 @@ sub_800BDFC: @ 0x0800BDFC
 _0800BE28:
 	adds r6, r4, #0
 	lsls r0, r6, #4
-	bl sub_8015D10
+	bl GetCameraAdjustedX
 	ldr r4, _0800BE4C @ =gBmSt
 	strh r0, [r4, #0xc]
 	lsls r0, r5, #4
-	bl sub_8015D54
+	bl GetCameraAdjustedY
 	strh r0, [r4, #0xe]
 	adds r0, r6, #0
 	adds r1, r5, #0
@@ -841,7 +841,7 @@ _0800BE50:
 	adds r0, r2, #0
 	adds r1, r4, #0
 	adds r2, r5, #0
-	bl sub_801615C
+	bl EnsureCameraOntoPosition
 	adds r0, r4, #0
 	adds r1, r5, #0
 	bl SetMapCursorPosition
@@ -878,13 +878,13 @@ _0800BE96:
 	movs r0, #0x10
 	ldrsb r0, [r5, r0]
 	lsls r0, r0, #4
-	bl sub_8015D10
+	bl GetCameraAdjustedX
 	ldr r4, _0800BEE8 @ =gBmSt
 	strh r0, [r4, #0xc]
 	movs r0, #0x11
 	ldrsb r0, [r5, r0]
 	lsls r0, r0, #4
-	bl sub_8015D54
+	bl GetCameraAdjustedY
 	strh r0, [r4, #0xe]
 	movs r0, #0x10
 	ldrsb r0, [r5, r0]
@@ -899,7 +899,7 @@ _0800BEC4:
 	movs r2, #0x11
 	ldrsb r2, [r5, r2]
 	adds r0, r6, #0
-	bl sub_801615C
+	bl EnsureCameraOntoPosition
 	movs r0, #0x10
 	ldrsb r0, [r5, r0]
 	movs r1, #0x11
@@ -924,7 +924,7 @@ sub_800BEEC: @ 0x0800BEEC
 	movs r2, #0x11
 	ldrsb r2, [r4, r2]
 	adds r0, r5, #0
-	bl sub_801615C
+	bl EnsureCameraOntoPosition
 	movs r0, #0x10
 	ldrsb r0, [r4, r0]
 	movs r1, #0x11
@@ -955,7 +955,7 @@ sub_800BF1C: @ 0x0800BF1C
 	adds r0, r4, #0
 	adds r1, r5, #0
 	adds r2, r6, #0
-	bl sub_801615C
+	bl EnsureCameraOntoPosition
 	lsls r0, r0, #0x18
 	cmp r0, #0
 	bne _0800BF60

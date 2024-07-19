@@ -3119,7 +3119,7 @@ _0807EAA0:
 	movs r2, #0x11
 	ldrsb r2, [r4, r2]
 	adds r0, r6, #0
-	bl sub_801615C
+	bl EnsureCameraOntoPosition
 	movs r0, #0x10
 	ldrsb r0, [r4, r0]
 	movs r1, #0x11

@@ -476,7 +476,7 @@ _0801DB5C:
 	cmp r2, #0
 	blt _0801DB76
 	adds r0, r5, #0
-	bl sub_801615C
+	bl EnsureCameraOntoPosition
 	ldr r0, [sp]
 	ldr r1, [sp, #4]
 	bl SetMapCursorPosition
@@ -502,7 +502,7 @@ sub_801DB80: @ 0x0801DB80
 	adds r0, r6, #0
 	adds r1, r4, #0
 	adds r2, r5, #0
-	bl sub_801615C
+	bl EnsureCameraOntoPosition
 	adds r0, r4, #0
 	adds r1, r5, #0
 	bl SetMapCursorPosition
@@ -3391,7 +3391,7 @@ sub_801F260: @ 0x0801F260
 	ldr r1, [r5, #0x2c]
 	adds r0, r5, #0
 	movs r2, #0x1f
-	bl sub_801615C
+	bl EnsureCameraOntoPosition
 	add sp, #8
 	pop {r4, r5}
 	pop {r0}
@@ -3434,7 +3434,7 @@ sub_801F2E8: @ 0x0801F2E8
 	adds r2, r0, r2
 	adds r0, r5, #0
 	adds r1, r4, #0
-	bl sub_801615C
+	bl EnsureCameraOntoPosition
 	str r4, [r5, #0x34]
 	pop {r4, r5}
 	pop {r0}

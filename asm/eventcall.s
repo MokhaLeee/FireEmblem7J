@@ -5922,7 +5922,7 @@ sub_807B158: @ 0x0807B158
 	movs r2, #1
 	ldrsb r2, [r0, r2]
 	movs r0, #0
-	bl sub_801615C
+	bl EnsureCameraOntoPosition
 	ldr r1, [r6]
 	movs r0, #0x10
 	ldrsb r0, [r1, r0]

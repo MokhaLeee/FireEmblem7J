@@ -830,8 +830,8 @@ _08015D08:
 	bx r0
 	.align 2, 0
 
-	thumb_func_start sub_8015D10
-sub_8015D10: @ 0x08015D10
+	thumb_func_start GetCameraAdjustedX
+GetCameraAdjustedX: @ 0x08015D10
 	push {r4, lr}
 	adds r3, r0, #0
 	ldr r0, _08015D50 @ =gBmSt
@@ -869,8 +869,8 @@ _08015D46:
 	.align 2, 0
 _08015D50: .4byte gBmSt
 
-	thumb_func_start sub_8015D54
-sub_8015D54: @ 0x08015D54
+	thumb_func_start GetCameraAdjustedY
+GetCameraAdjustedY: @ 0x08015D54
 	push {r4, lr}
 	adds r3, r0, #0
 	ldr r0, _08015D94 @ =gBmSt
@@ -1350,8 +1350,8 @@ _080160C8:
 	.align 2, 0
 _080160D0: .4byte gBmMapSize
 
-	thumb_func_start sub_80160D4
-sub_80160D4: @ 0x080160D4
+	thumb_func_start EnsureCameraOntoCenteredPosition
+EnsureCameraOntoCenteredPosition: @ 0x080160D4
 	push {r4, r5, r6, r7, lr}
 	sub sp, #8
 	adds r5, r0, #0
@@ -1422,8 +1422,8 @@ _08016150:
 	.align 2, 0
 _08016158: .4byte gBmSt
 
-	thumb_func_start sub_801615C
-sub_801615C: @ 0x0801615C
+	thumb_func_start EnsureCameraOntoPosition
+EnsureCameraOntoPosition: @ 0x0801615C
 	push {r4, r5, r6, r7, lr}
 	mov r7, sb
 	mov r6, r8
@@ -1432,12 +1432,12 @@ sub_801615C: @ 0x0801615C
 	mov r8, r1
 	mov sb, r2
 	lsls r0, r1, #4
-	bl sub_8015D10
+	bl GetCameraAdjustedX
 	lsls r0, r0, #0x10
 	lsrs r7, r0, #0x10
 	mov r1, sb
 	lsls r0, r1, #4
-	bl sub_8015D54
+	bl GetCameraAdjustedY
 	lsls r0, r0, #0x10
 	lsrs r6, r0, #0x10
 	ldr r1, _080161A4 @ =gBmSt
@@ -1501,13 +1501,13 @@ sub_80161EC: @ 0x080161EC
 	push {r4, r5, lr}
 	adds r5, r1, #0
 	lsls r0, r0, #4
-	bl sub_8015D10
+	bl GetCameraAdjustedX
 	adds r4, r0, #0
 	lsls r4, r4, #0x10
 	lsrs r4, r4, #0x10
 	lsls r5, r5, #4
 	adds r0, r5, #0
-	bl sub_8015D54
+	bl GetCameraAdjustedY
 	lsls r0, r0, #0x10
 	lsrs r2, r0, #0x10
 	ldr r1, _08016220 @ =gBmSt

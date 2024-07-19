@@ -274,7 +274,7 @@ _08012578:
 	ldr r1, [r7, #0x2c]
 	ldr r2, [r7, #0x30]
 	adds r0, r7, #0
-	bl sub_801615C
+	bl EnsureCameraOntoPosition
 _08012582:
 	add sp, #0x10
 	pop {r3, r4, r5}

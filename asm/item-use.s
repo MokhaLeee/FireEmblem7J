@@ -1162,7 +1162,7 @@ sub_8027BA4: @ 0x08027BA4
 	ldrsb r2, [r0, r2]
 	adds r0, r6, #0
 	adds r1, r4, #0
-	bl sub_801615C
+	bl EnsureCameraOntoPosition
 	bl sub_801D6D8
 	ldr r0, _08027C4C @ =gActiveUnit
 	ldr r4, [r0]
@@ -1379,7 +1379,7 @@ sub_8027D98: @ 0x08027D98
 	movs r2, #0x11
 	ldrsb r2, [r0, r2]
 	adds r0, r5, #0
-	bl sub_801615C
+	bl EnsureCameraOntoPosition
 	pop {r4, r5}
 	pop {r0}
 	bx r0
@@ -2090,7 +2090,7 @@ sub_8028354: @ 0x08028354
 	movs r2, #0x11
 	ldrsb r2, [r0, r2]
 	adds r0, r5, #0
-	bl sub_801615C
+	bl EnsureCameraOntoPosition
 _08028398:
 	pop {r4, r5}
 	pop {r0}
