@@ -48,8 +48,8 @@ EventEB_EndMixPalette: @ 0x080123BC
 	bx r1
 	.align 2, 0
 
-	thumb_func_start LoadUnit_80123C8
-LoadUnit_80123C8: @ 0x080123C8
+	thumb_func_start EventLoadUnit
+EventLoadUnit: @ 0x080123C8
 	push {r4, r5, r6, r7, lr}
 	mov r7, sl
 	mov r6, sb

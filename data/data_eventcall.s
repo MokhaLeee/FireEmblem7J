@@ -52,8 +52,8 @@ gUnk_08D87684:	@ 0x08D87684
 
 	.global EventSpriteAnimConf_NinianPray
 EventSpriteAnimConf_NinianPray:	@ 0x08D87F14
-	.word  gUnk_081ACA20          @ pal
-	.word  gUnk_081AC808    @ img
+	.word  Pal_NinianDispfx          @ pal
+	.word  Img_NinianDispfx    @ img
 	.word  0x081AD40C @ ap_conf
 	.short 0x0000	  @ oam0
 	.short 0x0280     @ oam2

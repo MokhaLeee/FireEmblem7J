@@ -3300,7 +3300,7 @@ _0807EBE6:
 	str r1, [sp, #0xc]
 	adds r0, r4, #0
 	movs r1, #0
-	bl LoadUnit_80123C8
+	bl EventLoadUnit
 	adds r5, #4
 	adds r7, #1
 	cmp r7, #6
@@ -3375,7 +3375,7 @@ _0807ECA4:
 	movs r1, #0
 	str r1, [sp, #8]
 	str r6, [sp, #0xc]
-	bl LoadUnit_80123C8
+	bl EventLoadUnit
 	adds r4, #4
 	subs r5, #1
 	cmp r5, #0
@@ -3422,7 +3422,7 @@ sub_807ECD4: @ 0x0807ECD4
 	str r5, [sp, #0xc]
 	movs r0, #0x27
 	movs r1, #0
-	bl LoadUnit_80123C8
+	bl EventLoadUnit
 	add r0, sp, #0x10
 	movs r2, #4
 	ldrsb r2, [r0, r2]
@@ -3441,7 +3441,7 @@ sub_807ECD4: @ 0x0807ECD4
 	str r5, [sp, #0xc]
 	movs r0, #0x26
 	movs r1, #0
-	bl LoadUnit_80123C8
+	bl EventLoadUnit
 	ldr r1, _0807ED88 @ =gPlaySt
 	adds r1, #0x2b
 	movs r4, #1
@@ -3468,7 +3468,7 @@ sub_807ECD4: @ 0x0807ECD4
 	str r5, [sp, #0xc]
 	movs r0, #0xcd
 	movs r1, #0x51
-	bl LoadUnit_80123C8
+	bl EventLoadUnit
 _0807ED7C:
 	add sp, #0x1c
 	pop {r4, r5}
@@ -3541,7 +3541,7 @@ _0807EDB8:
 	str r7, [sp, #0xc]
 	adds r0, r4, #0
 	movs r1, #0
-	bl LoadUnit_80123C8
+	bl EventLoadUnit
 	adds r5, #4
 	movs r0, #1
 	add r8, r0
@@ -3628,7 +3628,7 @@ _0807EE5A:
 	str r0, [sp, #0xc]
 	adds r0, r4, #0
 	movs r1, #0
-	bl LoadUnit_80123C8
+	bl EventLoadUnit
 _0807EEB2:
 	adds r5, #4
 	adds r7, #1
@@ -3707,7 +3707,7 @@ _0807EF26:
 	movs r1, #0
 	str r1, [sp, #8]
 	str r6, [sp, #0xc]
-	bl LoadUnit_80123C8
+	bl EventLoadUnit
 	adds r4, #4
 	subs r5, #1
 	cmp r5, #0
@@ -3982,7 +3982,7 @@ sub_807F1B8: @ 0x0807F1B8
 	movs r1, #0
 	movs r2, #0xe
 	movs r3, #0x12
-	bl LoadUnit_80123C8
+	bl EventLoadUnit
 	add sp, #0x10
 	pop {r0}
 	bx r0

@@ -515,14 +515,29 @@ void EventThunderfx_End(struct ProcEventThunderfx * proc);
 int EventE2_Thunderfx(struct EventProc * proc);
 bool EventThunderfxExists(void);
 
+enum
+{
+    BGPAL_NINIANDISP = 0x0F,
+    OBPAL_NINIANDISP = 0x05,
+    OBCHR_NINIANDISP = 0x40,
+};
+
 struct ProcNinianAppear {
     PROC_HEADER;
+
+    /* 2C */ int unk2C;
+    /* 30 */ int timer;
+
+    STRUCT_PAD(0x34, 0x3C);
+
+    /* 3C */ int x, y;
+    /* 44 */ ProcPtr approc[8];
 };
 
 void NinianAppear_Init(struct ProcNinianAppear * proc);
-void sub_8011BD4(ProcPtr proc);
-void sub_8011C08(ProcPtr proc);
-void sub_8011C38(ProcPtr proc);
+void NinianDisp_FadeIn_Unused(struct ProcNinianAppear * proc);
+void NinianDisp_FadeOut_Unused(struct ProcNinianAppear * proc);
+void NinianDisp_AnimLoopEnd_Unused(struct ProcNinianAppear * proc);
 void NinianAppear_Anim1(struct ProcNinianAppear * proc);
 void NinianAppear_LoopAnim1(struct ProcNinianAppear * proc);
 void NinianAppear_EndAnim1(struct ProcNinianAppear * proc);
@@ -581,7 +596,7 @@ bool EventSpriteAnimExists(void);
 
 // EventEA_StartMixPalette
 // EventEB_EndMixPalette
-// LoadUnit_80123C8
+void EventLoadUnit(int pid, int jid, int x_load, int y_load, int x_move, int y_move, int faction_id, void * unk);
 // sub_8012440
 void sub_80124BC(ProcPtr proc);
 void sub_80125A4(ProcPtr proc);
@@ -656,9 +671,9 @@ extern struct BmBgxConf CONST_DATA  BmBgfxConf_IceCrystal[];
 // ??? gUnk_08FD8008
 extern struct BmBgxConf CONST_DATA BmBgfxConf_EventThunder[];
 extern struct ProcCmd CONST_DATA ProcScr_EventThunderfx[];
-// ??? BmBgfxConf_08C013F0
-// ??? ProcScr_NinianAppearfx
+extern struct BmBgxConf CONST_DATA BmBgfxConf_NinianDisp[];
+extern struct ProcCmd CONST_DATA ProcScr_NinianAppearfx[];
 extern struct ProcCmd CONST_DATA ProcScr_ScreenFlashing[];
-// ??? ProcScr_EventFadefx
+extern struct ProcCmd CONST_DATA ProcScr_EventFadefx[];
 extern struct ProcCmd CONST_DATA ProcScr_EventSpriteAnim[];
 extern struct ProcCmd CONST_DATA ProcScr_Event_08C0169C[];

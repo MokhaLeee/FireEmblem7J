@@ -211,7 +211,7 @@ SECTIONS
 		src/eventscr_snowstormfx.o(.text);
 		asm/eventscr_snowstorm.o(.text);
 		src/eventscr_thunderfx.o(.text);
-		asm/eventscr_niniandisp.o(.text);
+		src/eventscr_niniandisp.o(.text);
 		src/eventscr_screenflashfx.o(.text);
 		asm/eventscr_screenflashfx.o(.text);
 		asm/eventscr_fadefx.o(.text);
@@ -361,7 +361,6 @@ SECTIONS
 		. = ALIGN(4); src/eventscr_snowstormfx.o(.data)
 		. = ALIGN(4); data/data_08C012BC.o(.data)
 		. = ALIGN(4); src/eventscr_thunderfx.o(.data)
-		. = ALIGN(4); data/data_08C013F0.o(.data)
 		. = ALIGN(4); src/eventscr_niniandisp.o(.data)
 		. = ALIGN(4); src/eventscr_screenflashfx.o(.data)
 		. = ALIGN(4); asm/eventscr_screenflashfx.o(.data)
