@@ -8,9 +8,9 @@ gUnk_08BFFB20:	@ 0x08BFFB20
 gUnk_08BFFB30:	@ 0x08BFFB30
 	.incbin "FireEmblem7J.base.gba", 0xBFFB30, 0xBFFB68 - 0xBFFB30
 
-	.global gUnk_08BFFB68
-gUnk_08BFFB68:	@ 0x08BFFB68
-	.incbin "FireEmblem7J.base.gba", 0xBFFB68, 0xBFFB6C - 0xBFFB68
+	.global sTalkSt
+sTalkSt:	@ 0x08BFFB68
+	.4byte sTalkStObj
 
 	.global gUnk_08BFFB6C
 gUnk_08BFFB6C:	@ 0x08BFFB6C

@@ -526,11 +526,23 @@ bool EventThunderfxExists(void);
 // sub_8011E48
 // sub_8011E8C
 // EventE4_NinianDisplay
-// sub_8011F10
-// sub_8011F20
-// sub_8011FD4
-// sub_8012030
-// sub_801206C
+
+struct ProcScreenFlashing {
+    PROC_HEADER;
+    int duration;
+    int mask;
+    int speed_fadein;
+    int speed_fadeout;
+    int timer;
+    int r, b, g;
+};
+
+void ScreenFlash_Init(struct ProcScreenFlashing * proc);
+void ScreenFlash_FadeIn(struct ProcScreenFlashing * proc);
+void ScreenFlash_FadeOut(struct ProcScreenFlashing * proc);
+void StartScreenFlashing(int mask, int duration, int speed_fadein, int speed_fadeout, int r, int g, int b, ProcPtr parent);
+int EventE3_ScreenFlashing(struct EventProc * proc);
+
 // sub_80120D8
 // sub_80120E0
 // sub_8012150
@@ -642,7 +654,7 @@ extern struct BmBgxConf CONST_DATA BmBgfxConf_EventThunder[];
 extern struct ProcCmd CONST_DATA ProcScr_EventThunderfx[];
 // ??? BmBgfxConf_08C013F0
 // ??? gUnk_08C015DC
-// ??? gUnk_08C0162C
+extern struct ProcCmd CONST_DATA ProcScr_ScreenFlashing[];
 // ??? gUnk_08C01654
 extern struct ProcCmd CONST_DATA ProcScr_EventSpriteAnim[];
 extern struct ProcCmd CONST_DATA ProcScr_Event_08C0169C[];

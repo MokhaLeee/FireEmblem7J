@@ -6345,7 +6345,7 @@ sub_807B498: @ 0x0807B498
 	movs r1, #2
 	movs r2, #0x20
 	movs r3, #4
-	bl sub_8012030
+	bl StartScreenFlashing
 	add sp, #0x10
 	pop {r0}
 	bx r0
@@ -6368,7 +6368,7 @@ sub_807B4C0: @ 0x0807B4C0
 	movs r1, #2
 	movs r2, #0x20
 	movs r3, #4
-	bl sub_8012030
+	bl StartScreenFlashing
 	add sp, #0x10
 	pop {r0}
 	bx r0

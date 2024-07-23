@@ -51,7 +51,7 @@ _08007C60: .4byte gUnk_08BFFB30
 sub_8007C64: @ 0x08007C64
 	push {r4, lr}
 	movs r2, #0
-	ldr r4, _08007C84 @ =gUnk_08BFFB68
+	ldr r4, _08007C84 @ =sTalkSt
 	movs r3, #0
 _08007C6C:
 	ldr r0, [r4]
@@ -66,7 +66,7 @@ _08007C6C:
 	pop {r0}
 	bx r0
 	.align 2, 0
-_08007C84: .4byte gUnk_08BFFB68
+_08007C84: .4byte sTalkSt
 
 	thumb_func_start InitTalk
 InitTalk: @ 0x08007C88
@@ -91,7 +91,7 @@ InitTalk: @ 0x08007C88
 	movs r3, #2
 	bl InitTextFont
 	bl sub_8007DF4
-	ldr r0, _08007D14 @ =gUnk_08BFFB68
+	ldr r0, _08007D14 @ =sTalkSt
 	ldr r0, [r0]
 	strb r6, [r0, #0xa]
 	cmp r6, #0
@@ -132,7 +132,7 @@ _08007D00:
 	.align 2, 0
 _08007D0C: .4byte 0x030000E8
 _08007D10: .4byte 0x000003FF
-_08007D14: .4byte gUnk_08BFFB68
+_08007D14: .4byte sTalkSt
 _08007D18: .4byte 0x030000C8
 _08007D1C: .4byte gUnk_084027B0
 _08007D20: .4byte 0x06000200
@@ -178,7 +178,7 @@ InitSpriteTalk: @ 0x08007D28
 	adds r4, r4, r2
 	ldr r0, _08007DD4 @ =0x00007FFF
 	strh r0, [r4]
-	ldr r0, _08007DD8 @ =gUnk_08BFFB68
+	ldr r0, _08007DD8 @ =sTalkSt
 	ldr r0, [r0]
 	strb r6, [r0, #0xa]
 	movs r5, #0
@@ -214,7 +214,7 @@ _08007DC8: .4byte gPal
 _08007DCC: .4byte 0x00007247
 _08007DD0: .4byte 0x000031AE
 _08007DD4: .4byte 0x00007FFF
-_08007DD8: .4byte gUnk_08BFFB68
+_08007DD8: .4byte sTalkSt
 _08007DDC: .4byte 0x030000C8
 
 	thumb_func_start sub_8007DE0
@@ -244,7 +244,7 @@ _08007E04: .4byte 0x030000E8
 sub_8007E08: @ 0x08007E08
 	push {r4, r5, r6, r7, lr}
 	adds r7, r3, #0
-	ldr r4, _08007E90 @ =gUnk_08BFFB68
+	ldr r4, _08007E90 @ =sTalkSt
 	ldr r3, [r4]
 	movs r5, #0
 	strb r0, [r3, #0xc]
@@ -305,7 +305,7 @@ sub_8007E08: @ 0x08007E08
 	bl Proc_Start
 	b _08007EA0
 	.align 2, 0
-_08007E90: .4byte gUnk_08BFFB68
+_08007E90: .4byte sTalkSt
 _08007E94: .4byte gUnk_08BFFB84
 _08007E98:
 	ldr r0, _08007EA8 @ =gUnk_08BFFB84
@@ -372,27 +372,27 @@ _08007F04: .4byte gUnk_08BFFB84
 
 	thumb_func_start sub_8007F08
 sub_8007F08: @ 0x08007F08
-	ldr r1, _08007F10 @ =gUnk_08BFFB68
+	ldr r1, _08007F10 @ =sTalkSt
 	ldr r1, [r1]
 	strb r0, [r1, #0xa]
 	bx lr
 	.align 2, 0
-_08007F10: .4byte gUnk_08BFFB68
+_08007F10: .4byte sTalkSt
 
 	thumb_func_start sub_8007F14
 sub_8007F14: @ 0x08007F14
-	ldr r0, _08007F20 @ =gUnk_08BFFB68
+	ldr r0, _08007F20 @ =sTalkSt
 	ldr r0, [r0]
 	adds r0, #0x80
 	movs r1, #0
 	strh r1, [r0]
 	bx lr
 	.align 2, 0
-_08007F20: .4byte gUnk_08BFFB68
+_08007F20: .4byte sTalkSt
 
 	thumb_func_start SetTalkFlag
 SetTalkFlag: @ 0x08007F24
-	ldr r1, _08007F34 @ =gUnk_08BFFB68
+	ldr r1, _08007F34 @ =sTalkSt
 	ldr r1, [r1]
 	adds r1, #0x80
 	ldrh r2, [r1]
@@ -400,20 +400,20 @@ SetTalkFlag: @ 0x08007F24
 	strh r0, [r1]
 	bx lr
 	.align 2, 0
-_08007F34: .4byte gUnk_08BFFB68
+_08007F34: .4byte sTalkSt
 
 	thumb_func_start sub_8007F38
 sub_8007F38: @ 0x08007F38
-	ldr r1, _08007F40 @ =gUnk_08BFFB68
+	ldr r1, _08007F40 @ =sTalkSt
 	ldr r1, [r1]
 	str r0, [r1, #0x38]
 	bx lr
 	.align 2, 0
-_08007F40: .4byte gUnk_08BFFB68
+_08007F40: .4byte sTalkSt
 
 	thumb_func_start sub_8007F44
 sub_8007F44: @ 0x08007F44
-	ldr r1, _08007F54 @ =gUnk_08BFFB68
+	ldr r1, _08007F54 @ =sTalkSt
 	ldr r1, [r1]
 	adds r1, #0x80
 	ldrh r2, [r1]
@@ -422,22 +422,22 @@ sub_8007F44: @ 0x08007F44
 	strh r0, [r1]
 	bx lr
 	.align 2, 0
-_08007F54: .4byte gUnk_08BFFB68
+_08007F54: .4byte sTalkSt
 
 	thumb_func_start sub_8007F58
 sub_8007F58: @ 0x08007F58
-	ldr r1, _08007F64 @ =gUnk_08BFFB68
+	ldr r1, _08007F64 @ =sTalkSt
 	ldr r1, [r1]
 	adds r1, #0x80
 	ldrh r1, [r1]
 	ands r0, r1
 	bx lr
 	.align 2, 0
-_08007F64: .4byte gUnk_08BFFB68
+_08007F64: .4byte sTalkSt
 
 	thumb_func_start sub_8007F68
 sub_8007F68: @ 0x08007F68
-	ldr r2, _08007F80 @ =gUnk_08BFFB68
+	ldr r2, _08007F80 @ =sTalkSt
 	ldr r1, [r2]
 	strb r0, [r1, #0x13]
 	ldr r2, [r2]
@@ -450,12 +450,12 @@ sub_8007F68: @ 0x08007F68
 _08007F7C:
 	bx lr
 	.align 2, 0
-_08007F80: .4byte gUnk_08BFFB68
+_08007F80: .4byte sTalkSt
 
 	thumb_func_start sub_8007F84
 sub_8007F84: @ 0x08007F84
 	push {r4, r5, r6, lr}
-	ldr r2, _08007FB8 @ =gUnk_08BFFB68
+	ldr r2, _08007FB8 @ =sTalkSt
 	ldr r1, [r2]
 	strb r0, [r1, #8]
 	movs r4, #0
@@ -481,7 +481,7 @@ _08007FB0:
 	pop {r0}
 	bx r0
 	.align 2, 0
-_08007FB8: .4byte gUnk_08BFFB68
+_08007FB8: .4byte sTalkSt
 _08007FBC: .4byte 0x030000C8
 
 	thumb_func_start sub_8007FC0
@@ -508,7 +508,7 @@ sub_8007FC0: @ 0x08007FC0
 	cmp r0, #0
 	beq _08008038
 	bl sub_800EF98
-	ldr r0, _0800802C @ =gUnk_08BFFB68
+	ldr r0, _0800802C @ =sTalkSt
 	ldr r0, [r0]
 	ldrb r0, [r0, #0x11]
 	bl sub_8009E24
@@ -528,7 +528,7 @@ sub_8007FC0: @ 0x08007FC0
 _08008020: .4byte gUnk_08BFFC7C
 _08008024: .4byte gUnk_08BFFCD4
 _08008028: .4byte gpKeySt
-_0800802C: .4byte gUnk_08BFFB68
+_0800802C: .4byte sTalkSt
 _08008030: .4byte gBg0Tm
 _08008034: .4byte gBg1Tm
 _08008038:
@@ -547,7 +547,7 @@ _08008038:
 	ands r0, r1
 	cmp r0, #0
 	beq _08008062
-	ldr r0, _08008070 @ =gUnk_08BFFB68
+	ldr r0, _08008070 @ =sTalkSt
 	ldr r1, [r0]
 	movs r0, #1
 	strb r0, [r1, #0x12]
@@ -558,7 +558,7 @@ _08008062:
 	.align 2, 0
 _08008068: .4byte gUnk_08BFFBFC
 _0800806C: .4byte gpKeySt
-_08008070: .4byte gUnk_08BFFB68
+_08008070: .4byte sTalkSt
 
 	thumb_func_start sub_8008074
 sub_8008074: @ 0x08008074
@@ -598,7 +598,7 @@ sub_80080A8: @ 0x080080A8
 	beq _080080BE
 	b _0800820E
 _080080BE:
-	ldr r2, _08008108 @ =gUnk_08BFFB68
+	ldr r2, _08008108 @ =sTalkSt
 	ldr r1, [r2]
 	movs r0, #0x12
 	ldrsb r0, [r1, r0]
@@ -620,7 +620,7 @@ _080080E2:
 	ldr r0, [r2]
 	strb r3, [r0, #0x14]
 _080080E6:
-	ldr r7, _08008108 @ =gUnk_08BFFB68
+	ldr r7, _08008108 @ =sTalkSt
 	ldr r0, _0800810C @ =0x0202BC35
 	mov r8, r0
 _080080EC:
@@ -628,7 +628,7 @@ _080080EC:
 	ldrb r0, [r0, #0x11]
 	bl sub_8009E24
 	adds r0, r6, #0
-	bl sub_800844C
+	bl TalkInterpret
 	cmp r0, #1
 	beq _08008144
 	cmp r0, #1
@@ -637,7 +637,7 @@ _080080EC:
 	beq _0800811A
 	b _08008144
 	.align 2, 0
-_08008108: .4byte gUnk_08BFFB68
+_08008108: .4byte sTalkSt
 _0800810C: .4byte 0x0202BC35
 _08008110:
 	cmp r0, #2
@@ -684,7 +684,7 @@ _0800815C:
 	asrs r0, r0, #0x18
 	cmp r0, #1
 	beq _0800820E
-	ldr r5, _080081AC @ =gUnk_08BFFB68
+	ldr r5, _080081AC @ =sTalkSt
 	ldr r4, [r5]
 	ldrb r1, [r4, #0xb]
 	ldrb r2, [r4, #9]
@@ -715,7 +715,7 @@ _0800815C:
 	bl m4aSongNumStart
 	b _080081F8
 	.align 2, 0
-_080081AC: .4byte gUnk_08BFFB68
+_080081AC: .4byte sTalkSt
 _080081B0: .4byte 0x030000C8
 _080081B4: .4byte 0x0000039A
 _080081B8:
@@ -780,7 +780,7 @@ sub_800821C: @ 0x0800821C
 	lsls r0, r0, #0x18
 	cmp r0, #0
 	bne _08008288
-	ldr r4, _08008284 @ =gUnk_08BFFB68
+	ldr r4, _08008284 @ =sTalkSt
 	ldr r0, [r4]
 	ldrb r0, [r0, #0x11]
 	cmp r0, #0xff
@@ -804,7 +804,7 @@ _08008248:
 	adds r0, #2
 	strb r0, [r1, #0xe]
 	bl sub_80095E4
-	ldr r4, _08008284 @ =gUnk_08BFFB68
+	ldr r4, _08008284 @ =sTalkSt
 	ldr r0, [r4]
 	ldrb r0, [r0, #0x11]
 	adds r1, r7, #0
@@ -819,9 +819,9 @@ _08008248:
 	movs r0, #1
 	b _080082F8
 	.align 2, 0
-_08008284: .4byte gUnk_08BFFB68
+_08008284: .4byte sTalkSt
 _08008288:
-	ldr r6, _080082A4 @ =gUnk_08BFFB68
+	ldr r6, _080082A4 @ =sTalkSt
 	ldr r5, [r6]
 	ldrb r0, [r5, #9]
 	ldrb r1, [r5, #0xa]
@@ -835,7 +835,7 @@ _08008288:
 	movs r0, #1
 	b _080082F8
 	.align 2, 0
-_080082A4: .4byte gUnk_08BFFB68
+_080082A4: .4byte sTalkSt
 _080082A8: .4byte gUnk_08BFFCD4
 _080082AC:
 	ldrb r0, [r5, #0x15]
@@ -886,7 +886,7 @@ _08008304: .4byte gBg0Tm
 sub_8008308: @ 0x08008308
 	push {lr}
 	adds r1, r0, #0
-	ldr r0, _08008328 @ =gUnk_08BFFB68
+	ldr r0, _08008328 @ =sTalkSt
 	ldr r2, [r0]
 	ldrb r0, [r2, #9]
 	ldrb r3, [r2, #0xa]
@@ -899,7 +899,7 @@ sub_8008308: @ 0x08008308
 	movs r0, #1
 	b _0800833C
 	.align 2, 0
-_08008328: .4byte gUnk_08BFFB68
+_08008328: .4byte sTalkSt
 _0800832C: .4byte gUnk_08BFFCFC
 _08008330:
 	ldrb r0, [r2, #0x15]
@@ -913,8 +913,8 @@ _0800833C:
 	pop {r1}
 	bx r1
 
-	thumb_func_start sub_8008340
-sub_8008340: @ 0x08008340
+	thumb_func_start LockTalk
+LockTalk: @ 0x08008340
 	push {lr}
 	adds r1, r0, #0
 	ldr r0, _08008350 @ =gUnk_08BFFBB4
@@ -951,7 +951,7 @@ _08008378: .4byte gUnk_08BFFBB4
 	thumb_func_start sub_800837C
 sub_800837C: @ 0x0800837C
 	push {r4, r5, lr}
-	ldr r0, _080083BC @ =gUnk_08BFFB68
+	ldr r0, _080083BC @ =sTalkSt
 	ldr r2, [r0]
 	ldrb r1, [r2, #8]
 	cmp r1, #1
@@ -978,12 +978,12 @@ _08008392:
 	cmp r4, r0
 	blt _08008392
 _080083B4:
-	ldr r0, _080083BC @ =gUnk_08BFFB68
+	ldr r0, _080083BC @ =sTalkSt
 	ldr r1, [r0]
 	movs r0, #4
 	b _080083F6
 	.align 2, 0
-_080083BC: .4byte gUnk_08BFFB68
+_080083BC: .4byte sTalkSt
 _080083C0: .4byte 0x030000C8
 _080083C4:
 	movs r4, #0
@@ -1008,7 +1008,7 @@ _080083CE:
 	cmp r4, r0
 	blt _080083CE
 _080083F0:
-	ldr r0, _08008404 @ =gUnk_08BFFB68
+	ldr r0, _08008404 @ =sTalkSt
 	ldr r1, [r0]
 	movs r0, #1
 _080083F6:
@@ -1018,10 +1018,10 @@ _080083F6:
 	bx r0
 	.align 2, 0
 _08008400: .4byte 0x030000C8
-_08008404: .4byte gUnk_08BFFB68
+_08008404: .4byte sTalkSt
 
-	thumb_func_start sub_8008408
-sub_8008408: @ 0x08008408
+	thumb_func_start TalkToggleInvertedPalette
+TalkToggleInvertedPalette: @ 0x08008408
 	push {lr}
 	cmp r0, #0
 	beq _0800842C
@@ -1053,15 +1053,15 @@ _08008440:
 _08008444: .4byte gUnk_08402A4C
 _08008448: .4byte Pal_Text
 
-	thumb_func_start sub_800844C
-sub_800844C: @ 0x0800844C
+	thumb_func_start TalkInterpret
+TalkInterpret: @ 0x0800844C
 	push {r4, r5, r6, r7, lr}
 	mov r7, r8
 	push {r7}
 	sub sp, #8
 	mov r8, r0
 _08008456:
-	ldr r7, _0800848C @ =gUnk_08BFFB68
+	ldr r7, _0800848C @ =sTalkSt
 	adds r5, r7, #0
 _0800845A:
 	ldr r1, [r5]
@@ -1087,7 +1087,7 @@ _0800845A:
 	strb r0, [r1, #0xe]
 	b _0800845A
 	.align 2, 0
-_0800848C: .4byte gUnk_08BFFB68
+_0800848C: .4byte sTalkSt
 _08008490:
 	ldr r0, [r7]
 	ldr r0, [r0]
@@ -1318,14 +1318,14 @@ _08008748:
 	cmp r0, #0
 	beq _08008768
 	bl sub_8009598
-	ldr r0, _08008764 @ =gUnk_08BFFB68
+	ldr r0, _08008764 @ =sTalkSt
 	ldr r1, [r0]
 	ldr r0, [r1]
 	adds r0, #1
 	str r0, [r1]
 	b _08008784
 	.align 2, 0
-_08008764: .4byte gUnk_08BFFB68
+_08008764: .4byte sTalkSt
 _08008768:
 	movs r0, #1
 	bl sub_8007F58
@@ -1340,11 +1340,11 @@ _0800877C: .4byte gUnk_08BFFC7C
 _08008780:
 	bl sub_800968C
 _08008784:
-	ldr r0, _0800878C @ =gUnk_08BFFB68
+	ldr r0, _0800878C @ =sTalkSt
 	ldr r1, [r0]
 	b _08008BBC
 	.align 2, 0
-_0800878C: .4byte gUnk_08BFFB68
+_0800878C: .4byte sTalkSt
 _08008790:
 	ldr r1, [r7]
 	ldrb r2, [r1, #0xb]
@@ -1402,11 +1402,11 @@ _080087E0:
 _080087FC: .4byte gUnk_08BFFBDC
 _08008800:
 	bl sub_80095E4
-	ldr r0, _0800880C @ =gUnk_08BFFB68
+	ldr r0, _0800880C @ =sTalkSt
 	ldr r1, [r0]
 	b _08008BBC
 	.align 2, 0
-_0800880C: .4byte gUnk_08BFFB68
+_0800880C: .4byte sTalkSt
 _08008810:
 	ldr r1, [r7]
 	movs r0, #1
@@ -1422,7 +1422,7 @@ _0800881C:
 	strb r0, [r1, #0x17]
 	b _08008BBA
 _08008828:
-	ldr r4, _08008840 @ =gUnk_08BFFB68
+	ldr r4, _08008840 @ =sTalkSt
 _0800882A:
 	ldr r2, [r4]
 	ldr r1, [r2]
@@ -1437,7 +1437,7 @@ _08008836:
 	beq _08008854
 	b _08008706
 	.align 2, 0
-_08008840: .4byte gUnk_08BFFB68
+_08008840: .4byte sTalkSt
 _08008844:
 	subs r0, #8
 	bl sub_8008CB8
@@ -1463,7 +1463,7 @@ _08008868:
 	beq _08008876
 	bl sub_80095E4
 _08008876:
-	ldr r4, _080088A8 @ =gUnk_08BFFB68
+	ldr r4, _080088A8 @ =sTalkSt
 	ldr r0, [r4]
 	ldrb r2, [r0, #0x11]
 	lsls r1, r2, #2
@@ -1487,7 +1487,7 @@ _08008876:
 	bl sub_80149B4
 	b _08008706
 	.align 2, 0
-_080088A8: .4byte gUnk_08BFFB68
+_080088A8: .4byte sTalkSt
 _080088AC:
 	movs r0, #0x10
 	bl sub_8007F58
@@ -1500,11 +1500,11 @@ _080088BE:
 	movs r0, #0x10
 	bl SetTalkFlag
 _080088C4:
-	ldr r0, _080088CC @ =gUnk_08BFFB68
+	ldr r0, _080088CC @ =sTalkSt
 	ldr r1, [r0]
 	b _08008BBC
 	.align 2, 0
-_080088CC: .4byte gUnk_08BFFB68
+_080088CC: .4byte sTalkSt
 _080088D0:
 	ldr r0, [r7]
 	ldrb r0, [r0, #0x11]
@@ -1716,16 +1716,16 @@ _08008AC8:
 	b _08008BBA
 _08008AD8:
 	bl sub_800837C
-	ldr r0, _08008AE8 @ =gUnk_08BFFB68
+	ldr r0, _08008AE8 @ =sTalkSt
 	ldr r1, [r0]
 	ldr r0, [r1]
 	adds r0, #1
 	str r0, [r1]
 	b _08008456
 	.align 2, 0
-_08008AE8: .4byte gUnk_08BFFB68
+_08008AE8: .4byte sTalkSt
 _08008AEC:
-	ldr r3, _08008B24 @ =gUnk_08BFFB68
+	ldr r3, _08008B24 @ =sTalkSt
 	ldr r1, [r3]
 	ldr r2, [r1]
 	adds r0, r2, #1
@@ -1751,11 +1751,11 @@ _08008B08:
 	cmp r4, r0
 	blt _08008B08
 _08008B1E:
-	ldr r0, _08008B24 @ =gUnk_08BFFB68
+	ldr r0, _08008B24 @ =sTalkSt
 	ldr r1, [r0]
 	b _08008BBC
 	.align 2, 0
-_08008B24: .4byte gUnk_08BFFB68
+_08008B24: .4byte sTalkSt
 _08008B28: .4byte 0x030000C8
 _08008B2C:
 	ldr r2, [r7]
@@ -1769,14 +1769,14 @@ _08008B2C:
 	b _08008BBA
 _08008B3E:
 	mov r0, r8
-	bl sub_8008340
-	ldr r0, _08008B4C @ =gUnk_08BFFB68
+	bl LockTalk
+	ldr r0, _08008B4C @ =sTalkSt
 	ldr r1, [r0]
 	b _08008BBC
 	.align 2, 0
-_08008B4C: .4byte gUnk_08BFFB68
+_08008B4C: .4byte sTalkSt
 _08008B50:
-	ldr r4, _08008B6C @ =gUnk_08BFFB68
+	ldr r4, _08008B6C @ =sTalkSt
 	ldr r1, [r4]
 	ldr r0, [r1, #0x3c]
 	adds r1, #0x40
@@ -1790,9 +1790,9 @@ _08008B50:
 	str r0, [r1]
 	b _08008456
 	.align 2, 0
-_08008B6C: .4byte gUnk_08BFFB68
+_08008B6C: .4byte sTalkSt
 _08008B70:
-	ldr r4, _08008B84 @ =gUnk_08BFFB68
+	ldr r4, _08008B84 @ =sTalkSt
 	ldr r1, [r4]
 	ldr r0, [r1]
 	subs r0, #1
@@ -1802,9 +1802,9 @@ _08008B70:
 	str r0, [r1]
 	b _08008456
 	.align 2, 0
-_08008B84: .4byte gUnk_08BFFB68
+_08008B84: .4byte sTalkSt
 _08008B88:
-	ldr r0, _08008B9C @ =gUnk_08BFFB68
+	ldr r0, _08008B9C @ =sTalkSt
 	ldr r1, [r0]
 	ldr r0, [r1]
 	subs r0, #1
@@ -1814,7 +1814,7 @@ _08008B88:
 	str r0, [r1]
 	b _08008456
 	.align 2, 0
-_08008B9C: .4byte gUnk_08BFFB68
+_08008B9C: .4byte sTalkSt
 _08008BA0:
 	ldr r1, [r7]
 	ldrb r0, [r1, #0x11]
@@ -1972,19 +1972,19 @@ _08008CAA:
 
 	thumb_func_start sub_8008CB8
 sub_8008CB8: @ 0x08008CB8
-	ldr r1, _08008CC0 @ =gUnk_08BFFB68
+	ldr r1, _08008CC0 @ =sTalkSt
 	ldr r1, [r1]
 	strb r0, [r1, #0x11]
 	bx lr
 	.align 2, 0
-_08008CC0: .4byte gUnk_08BFFB68
+_08008CC0: .4byte sTalkSt
 
 	thumb_func_start sub_8008CC4
 sub_8008CC4: @ 0x08008CC4
 	push {r4, r5, r6, r7, lr}
 	adds r7, r0, #0
 	movs r6, #0
-	ldr r0, _08008CEC @ =gUnk_08BFFB68
+	ldr r0, _08008CEC @ =sTalkSt
 	ldr r0, [r0]
 	ldrb r0, [r0, #0x11]
 	cmp r0, #0xff
@@ -1999,11 +1999,11 @@ _08008CDA:
 	bl sub_800EC74
 	b _08008CF2
 	.align 2, 0
-_08008CEC: .4byte gUnk_08BFFB68
+_08008CEC: .4byte sTalkSt
 _08008CF0:
 	movs r6, #2
 _08008CF2:
-	ldr r4, _08008D24 @ =gUnk_08BFFB68
+	ldr r4, _08008D24 @ =sTalkSt
 	ldr r0, [r4]
 	ldrb r0, [r0, #0x11]
 	bl sub_8009D94
@@ -2027,14 +2027,14 @@ _08008D04:
 	adds r4, r0, #0
 	b _08008D34
 	.align 2, 0
-_08008D24: .4byte gUnk_08BFFB68
+_08008D24: .4byte sTalkSt
 _08008D28: .4byte 0x0000FFFF
 _08008D2C: .4byte gActiveUnit
 _08008D30:
 	ldr r2, _08008D50 @ =0xFFFFFF00
 	adds r4, r4, r2
 _08008D34:
-	ldr r5, _08008D54 @ =gUnk_08BFFB68
+	ldr r5, _08008D54 @ =sTalkSt
 	ldr r0, [r5]
 	ldrb r2, [r0, #0x11]
 	lsls r1, r2, #2
@@ -2048,7 +2048,7 @@ _08008D34:
 	b _08008DA0
 	.align 2, 0
 _08008D50: .4byte 0xFFFFFF00
-_08008D54: .4byte gUnk_08BFFB68
+_08008D54: .4byte sTalkSt
 _08008D58:
 	adds r0, r2, #0
 	bl sub_8009D94
@@ -2091,7 +2091,7 @@ sub_8008DA8: @ 0x08008DA8
 	push {r4, lr}
 	ldr r4, [sp, #8]
 	bl StartFaceAuto
-	ldr r1, _08008DC4 @ =gUnk_08BFFB68
+	ldr r1, _08008DC4 @ =sTalkSt
 	ldr r1, [r1]
 	lsls r4, r4, #2
 	adds r1, #0x18
@@ -2101,7 +2101,7 @@ sub_8008DA8: @ 0x08008DA8
 	pop {r1}
 	bx r1
 	.align 2, 0
-_08008DC4: .4byte gUnk_08BFFB68
+_08008DC4: .4byte sTalkSt
 
 	thumb_func_start sub_8008DC8
 sub_8008DC8: @ 0x08008DC8
@@ -2164,7 +2164,7 @@ _08008E24:
 	adds r2, r1, #0
 	cmp r2, r4
 	bgt _08008E52
-	ldr r7, _08008E44 @ =gUnk_08BFFB68
+	ldr r7, _08008E44 @ =sTalkSt
 _08008E2C:
 	ldr r0, [r7]
 	lsls r1, r2, #2
@@ -2179,7 +2179,7 @@ _08008E2C:
 	strb r6, [r0]
 	b _08008E4C
 	.align 2, 0
-_08008E44: .4byte gUnk_08BFFB68
+_08008E44: .4byte sTalkSt
 _08008E48:
 	adds r0, #0x41
 	strb r5, [r0]
@@ -2200,7 +2200,7 @@ sub_8008E58: @ 0x08008E58
 	adds r5, r0, #0
 	adds r4, r1, #0
 	movs r7, #0
-	ldr r0, _08008EAC @ =gUnk_08BFFB68
+	ldr r0, _08008EAC @ =sTalkSt
 	mov r8, r0
 	ldr r0, [r0]
 	lsls r6, r4, #2
@@ -2235,7 +2235,7 @@ _08008E82:
 	pop {r0}
 	bx r0
 	.align 2, 0
-_08008EAC: .4byte gUnk_08BFFB68
+_08008EAC: .4byte sTalkSt
 
 	thumb_func_start sub_8008EB0
 sub_8008EB0: @ 0x08008EB0
@@ -2646,7 +2646,7 @@ _080091A8: .4byte gUnk_08BFFBFC
 sub_80091AC: @ 0x080091AC
 	push {r4, r5, lr}
 	adds r5, r0, #0
-	ldr r4, _080091F4 @ =gUnk_08BFFB68
+	ldr r4, _080091F4 @ =sTalkSt
 	ldr r2, [r4]
 	ldrb r0, [r2, #0xd]
 	adds r0, #4
@@ -2678,7 +2678,7 @@ sub_80091AC: @ 0x080091AC
 	strh r0, [r1]
 	b _08009212
 	.align 2, 0
-_080091F4: .4byte gUnk_08BFFB68
+_080091F4: .4byte sTalkSt
 _080091F8: .4byte gBg0Tm
 _080091FC:
 	ldrb r0, [r1, #9]
@@ -2948,7 +2948,7 @@ _08009414: .4byte gpKeySt
 sub_8009418: @ 0x08009418
 	push {r4, lr}
 	adds r4, r0, #0
-	ldr r0, _08009450 @ =gUnk_08BFFB68
+	ldr r0, _08009450 @ =sTalkSt
 	ldr r2, [r0]
 	ldrb r0, [r2, #0xd]
 	adds r0, #4
@@ -2973,7 +2973,7 @@ sub_8009418: @ 0x08009418
 	pop {r0}
 	bx r0
 	.align 2, 0
-_08009450: .4byte gUnk_08BFFB68
+_08009450: .4byte sTalkSt
 _08009454: .4byte gBg0Tm
 
 	thumb_func_start sub_8009458
@@ -2993,7 +2993,7 @@ sub_8009458: @ 0x08009458
 	ldrsh r0, [r4, r1]
 	cmp r0, #0xf
 	ble _08009538
-	ldr r4, _08009540 @ =gUnk_08BFFB68
+	ldr r4, _08009540 @ =sTalkSt
 	ldr r1, [r4]
 	ldrb r0, [r1, #9]
 	subs r0, #1
@@ -3039,7 +3039,7 @@ _080094A2:
 	cmp r5, r0
 	blt _080094A2
 _080094D6:
-	ldr r4, _08009540 @ =gUnk_08BFFB68
+	ldr r4, _08009540 @ =sTalkSt
 	ldr r2, [r4]
 	ldrb r0, [r2, #0xa]
 	subs r0, #1
@@ -3086,7 +3086,7 @@ _08009538:
 	pop {r0}
 	bx r0
 	.align 2, 0
-_08009540: .4byte gUnk_08BFFB68
+_08009540: .4byte sTalkSt
 _08009544: .4byte 0x030000C8
 _08009548: .4byte gBg0Tm
 
@@ -3107,7 +3107,7 @@ _08009560: .4byte 0x44444444
 	thumb_func_start sub_8009564
 sub_8009564: @ 0x08009564
 	push {r4, lr}
-	ldr r0, _08009590 @ =gUnk_08BFFB68
+	ldr r0, _08009590 @ =sTalkSt
 	ldr r1, [r0]
 	ldrb r0, [r1, #9]
 	subs r0, #1
@@ -3125,13 +3125,13 @@ sub_8009564: @ 0x08009564
 	pop {r0}
 	bx r0
 	.align 2, 0
-_08009590: .4byte gUnk_08BFFB68
+_08009590: .4byte sTalkSt
 _08009594: .4byte 0x030000D0
 
 	thumb_func_start sub_8009598
 sub_8009598: @ 0x08009598
 	push {r4, r5, lr}
-	ldr r0, _080095CC @ =gUnk_08BFFB68
+	ldr r0, _080095CC @ =sTalkSt
 	ldr r1, [r0]
 	movs r0, #0
 	strb r0, [r1, #9]
@@ -3155,7 +3155,7 @@ _080095A4:
 	pop {r0}
 	bx r0
 	.align 2, 0
-_080095CC: .4byte gUnk_08BFFB68
+_080095CC: .4byte sTalkSt
 _080095D0: .4byte 0x030000C8
 
 	thumb_func_start sub_80095D4
@@ -3172,7 +3172,7 @@ _080095E0: .4byte gUnk_08BFFD2C
 	thumb_func_start sub_80095E4
 sub_80095E4: @ 0x080095E4
 	push {lr}
-	ldr r0, _0800961C @ =gUnk_08BFFB68
+	ldr r0, _0800961C @ =sTalkSt
 	ldr r1, [r0]
 	movs r0, #0xff
 	strb r0, [r1, #0xf]
@@ -3196,7 +3196,7 @@ sub_80095E4: @ 0x080095E4
 	pop {r0}
 	bx r0
 	.align 2, 0
-_0800961C: .4byte gUnk_08BFFB68
+_0800961C: .4byte sTalkSt
 _08009620: .4byte gBg1Tm
 _08009624: .4byte gDispIo
 
@@ -3208,7 +3208,7 @@ sub_8009628: @ 0x08009628
 	bl TmFill
 	movs r0, #1
 	bl TalkBgSync
-	ldr r2, _08009684 @ =gUnk_08BFFB68
+	ldr r2, _08009684 @ =sTalkSt
 	ldr r0, [r2]
 	movs r1, #0
 	strb r1, [r0, #9]
@@ -3246,13 +3246,13 @@ _0800967A:
 	bx r0
 	.align 2, 0
 _08009680: .4byte gBg0Tm
-_08009684: .4byte gUnk_08BFFB68
+_08009684: .4byte sTalkSt
 _08009688: .4byte 0x030000C8
 
 	thumb_func_start sub_800968C
 sub_800968C: @ 0x0800968C
 	push {r4, r5, r6, lr}
-	ldr r2, _080096D8 @ =gUnk_08BFFB68
+	ldr r2, _080096D8 @ =sTalkSt
 	ldr r0, [r2]
 	movs r1, #0
 	strb r1, [r0, #9]
@@ -3289,7 +3289,7 @@ _080096D0:
 	pop {r0}
 	bx r0
 	.align 2, 0
-_080096D8: .4byte gUnk_08BFFB68
+_080096D8: .4byte sTalkSt
 _080096DC: .4byte 0x030000C8
 
 	thumb_func_start sub_80096E0
@@ -3391,7 +3391,7 @@ _08009788:
 	movs r0, #0x10
 	mov sl, r0
 _08009796:
-	ldr r5, _08009818 @ =gUnk_08BFFB68
+	ldr r5, _08009818 @ =sTalkSt
 	ldr r1, [r5]
 	adds r0, r6, #1
 	strb r0, [r1, #0xc]
@@ -3415,7 +3415,7 @@ _08009796:
 	beq _080097D8
 	movs r0, #1
 	ands r0, r1
-	bl sub_8008408
+	bl TalkToggleInvertedPalette
 	ldr r1, [r5]
 	adds r1, #0x83
 	movs r0, #2
@@ -3453,7 +3453,7 @@ _080097F2:
 	pop {r0}
 	bx r0
 	.align 2, 0
-_08009818: .4byte gUnk_08BFFB68
+_08009818: .4byte sTalkSt
 
 	thumb_func_start sub_800981C
 sub_800981C: @ 0x0800981C
@@ -4105,7 +4105,7 @@ sub_8009D0C: @ 0x08009D0C
 	adds r1, #0x66
 	movs r0, #8
 	strh r0, [r1]
-	ldr r3, _08009D6C @ =gUnk_08BFFB68
+	ldr r3, _08009D6C @ =sTalkSt
 	ldr r0, [r3]
 	ldrb r1, [r0, #0xe]
 	adds r0, r4, #0
@@ -4139,11 +4139,11 @@ _08009D58:
 	bx r0
 	.align 2, 0
 _08009D68: .4byte gUnk_08BFFD4C
-_08009D6C: .4byte gUnk_08BFFB68
+_08009D6C: .4byte sTalkSt
 
 	thumb_func_start sub_8009D70
 sub_8009D70: @ 0x08009D70
-	ldr r0, _08009D8C @ =gUnk_08BFFB68
+	ldr r0, _08009D8C @ =sTalkSt
 	ldr r1, [r0]
 	movs r0, #0xf
 	ldrsb r0, [r1, r0]
@@ -4157,7 +4157,7 @@ sub_8009D70: @ 0x08009D70
 	movs r0, #1
 	b _08009D92
 	.align 2, 0
-_08009D8C: .4byte gUnk_08BFFB68
+_08009D8C: .4byte sTalkSt
 _08009D90:
 	movs r0, #0
 _08009D92:
@@ -4203,7 +4203,7 @@ sub_8009DC0: @ 0x08009DC0
 	str r1, [sp, #4]
 	cmp r5, #0xff
 	beq _08009E06
-	ldr r4, _08009E14 @ =gUnk_08BFFB68
+	ldr r4, _08009E14 @ =sTalkSt
 	ldr r0, [r4]
 	lsls r5, r5, #2
 	adds r0, #0x18
@@ -4232,7 +4232,7 @@ _08009E06:
 	bx r0
 	.align 2, 0
 _08009E10: .4byte gUnk_0818F958
-_08009E14: .4byte gUnk_08BFFB68
+_08009E14: .4byte sTalkSt
 
 	thumb_func_start sub_8009E18
 sub_8009E18: @ 0x08009E18
@@ -4296,25 +4296,25 @@ _08009E74: .4byte 0x030000E0
 
 	thumb_func_start sub_8009E78
 sub_8009E78: @ 0x08009E78
-	ldr r1, _08009E80 @ =gUnk_08BFFB68
+	ldr r1, _08009E80 @ =sTalkSt
 	ldr r1, [r1]
 	str r0, [r1, #0x3c]
 	bx lr
 	.align 2, 0
-_08009E80: .4byte gUnk_08BFFB68
+_08009E80: .4byte sTalkSt
 
 	thumb_func_start sub_8009E84
 sub_8009E84: @ 0x08009E84
 	push {lr}
 	adds r1, r0, #0
-	ldr r0, _08009E98 @ =gUnk_08BFFB68
+	ldr r0, _08009E98 @ =sTalkSt
 	ldr r0, [r0]
 	adds r0, #0x60
 	bl strcpy
 	pop {r0}
 	bx r0
 	.align 2, 0
-_08009E98: .4byte gUnk_08BFFB68
+_08009E98: .4byte sTalkSt
 
 	thumb_func_start sub_8009E9C
 sub_8009E9C: @ 0x08009E9C
@@ -4468,7 +4468,7 @@ sub_8009FAC: @ 0x08009FAC
 	lsls r1, r1, #0x18
 	lsrs r1, r1, #0x18
 	mov r8, r1
-	ldr r0, _08009FE0 @ =gUnk_08BFFB68
+	ldr r0, _08009FE0 @ =sTalkSt
 	ldr r0, [r0]
 	movs r1, #0xf
 	ldrsb r1, [r0, r1]
@@ -4488,7 +4488,7 @@ _08009FD6:
 	ldr r0, [r0]
 	mov pc, r0
 	.align 2, 0
-_08009FE0: .4byte gUnk_08BFFB68
+_08009FE0: .4byte sTalkSt
 _08009FE4: .4byte _08009FE8
 _08009FE8: @ jump table
 	.4byte _0800A1F0 @ case 0
@@ -4729,7 +4729,7 @@ _0800A258: @ jump table
 	.4byte _0800A202 @ case 36
 	.4byte _0800A202 @ case 37
 _0800A2F0:
-	ldr r0, _0800A308 @ =gUnk_08BFFB68
+	ldr r0, _0800A308 @ =sTalkSt
 	ldr r0, [r0]
 	ldr r0, [r0, #0x3c]
 	mov r1, sp
@@ -4740,13 +4740,13 @@ _0800A2F0:
 	mov r0, sp
 	b _0800A322
 	.align 2, 0
-_0800A308: .4byte gUnk_08BFFB68
+_0800A308: .4byte sTalkSt
 _0800A30C:
 	bl sub_802EBB0
 	bl GetStringTextLen
 	b _0800A326
 _0800A316:
-	ldr r0, _0800A32C @ =gUnk_08BFFB68
+	ldr r0, _0800A32C @ =sTalkSt
 	ldr r0, [r0]
 	adds r0, #0x60
 	mov r2, r8
@@ -4758,7 +4758,7 @@ _0800A326:
 	adds r6, r6, r0
 	b _0800A202
 	.align 2, 0
-_0800A32C: .4byte gUnk_08BFFB68
+_0800A32C: .4byte sTalkSt
 _0800A330:
 	ldrb r5, [r4]
 	subs r5, #0xa
