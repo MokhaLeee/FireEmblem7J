@@ -5446,7 +5446,7 @@ _0807AE14: .4byte 0x00001387
 	thumb_func_start sub_807AE18
 sub_807AE18: @ 0x0807AE18
 	push {lr}
-	bl sub_8009E60
+	bl GetTalkChoiceResult
 	movs r1, #0
 	cmp r0, #1
 	bne _0807AE26
@@ -6222,8 +6222,8 @@ _0807B3CA:
 	pop {r0}
 	bx r0
 
-	thumb_func_start sub_807B3D0
-sub_807B3D0: @ 0x0807B3D0
+	thumb_func_start ImmediateDisplayMap
+ImmediateDisplayMap: @ 0x0807B3D0
 	push {lr}
 	adds r2, r0, #0
 	adds r2, #0x4c

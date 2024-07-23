@@ -1921,7 +1921,7 @@ _08083C8C:
 	adds r1, r6, #0
 	bl Decompress
 _08083C94:
-	bl sub_8007F14
+	bl ClearAllTalkFlags
 	bl sub_8083BA8
 	movs r1, #1
 	ands r1, r0
@@ -10890,7 +10890,7 @@ _080885FE:
 	movs r0, #0x80
 	lsls r0, r0, #7
 	bl sub_8087E2C
-	bl sub_8007F14
+	bl ClearAllTalkFlags
 	ldr r0, _080886C0 @ =0x0203E710
 	str r0, [r4, #0x30]
 	adds r3, r4, #0
@@ -12628,7 +12628,7 @@ _08089460:
 	movs r1, #0x2a
 	ldrsh r0, [r4, r1]
 _08089464:
-	bl sub_8009E6C
+	bl SetTalkChoiceResult
 	adds r0, r4, #0
 	bl Proc_Break
 	b _080894DE
@@ -37379,7 +37379,7 @@ sub_8095750: @ 0x08095750
 	ldr r2, _080957C8 @ =gBg0Tm + 0x39e
 	mov r0, sp
 	movs r3, #2
-	bl sub_8009E9C
+	bl PrintStringToTexts
 	b _080957EE
 	.align 2, 0
 _080957C0: .4byte 0x02012A70
@@ -37398,7 +37398,7 @@ _080957CC:
 	ldr r2, _080957FC @ =gBg0Tm + 0x39e
 	mov r0, sp
 	movs r3, #2
-	bl sub_8009E9C
+	bl PrintStringToTexts
 _080957EE:
 	movs r0, #1
 	bl EnableBgSync
@@ -49010,7 +49010,7 @@ _0809B738: .4byte 0x0004004E
 sub_809B73C: @ 0x0809B73C
 	push {r4, r5, lr}
 	adds r5, r0, #0
-	bl sub_8009E60
+	bl GetTalkChoiceResult
 	cmp r0, #1
 	bne _0809B78A
 	bl sub_8099C60
@@ -49055,7 +49055,7 @@ _0809B792:
 sub_809B798: @ 0x0809B798
 	push {r4, lr}
 	adds r4, r0, #0
-	bl sub_8009E60
+	bl GetTalkChoiceResult
 	cmp r0, #1
 	bne _0809B7AE
 	adds r0, r4, #0

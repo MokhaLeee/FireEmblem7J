@@ -72,7 +72,7 @@ enum event_func_ret_idx {
 // sub_800A578
 // sub_800A580
 // sub_800A604
-// sub_800A614
+// LoadUnitCore
 // sub_800A70C
 // sub_800A720
 // sub_800A7A4
@@ -143,7 +143,7 @@ void DisplayBackgroundNoClear(int background);
 // sub_800B9B8
 // sub_800B9E8
 // sub_800BA34
-// sub_800BA5C
+// Event14_TalkContinue
 // sub_800BA8C
 // sub_800BAD4
 // sub_800BB64
@@ -152,7 +152,7 @@ void DisplayBackgroundNoClear(int background);
 // sub_800BC48
 // sub_800BC98
 // sub_800BCE4
-// sub_800BCF0
+// EventEndTalk
 // Event20
 // sub_800BDFC
 // sub_800BE6C
@@ -515,17 +515,21 @@ void EventThunderfx_End(struct ProcEventThunderfx * proc);
 int EventE2_Thunderfx(struct EventProc * proc);
 bool EventThunderfxExists(void);
 
-// sub_8011B4C
-// sub_8011BD4
-// sub_8011C08
-// sub_8011C38
-// sub_8011C5C
-// sub_8011CBC
-// sub_8011DD8
-// sub_8011DF4
-// sub_8011E48
-// sub_8011E8C
-// EventE4_NinianDisplay
+struct ProcNinianAppear {
+    PROC_HEADER;
+};
+
+void NinianAppear_Init(struct ProcNinianAppear * proc);
+void sub_8011BD4(ProcPtr proc);
+void sub_8011C08(ProcPtr proc);
+void sub_8011C38(ProcPtr proc);
+void NinianAppear_Anim1(struct ProcNinianAppear * proc);
+void NinianAppear_LoopAnim1(struct ProcNinianAppear * proc);
+void NinianAppear_EndAnim1(struct ProcNinianAppear * proc);
+void NinianAppear_Anim2(struct ProcNinianAppear * proc);
+void NinianAppear_LoadUnit(struct ProcNinianAppear * proc);
+void NinianAppear_End(struct ProcNinianAppear * proc);
+int EventE4_NinianDisplay(struct EventProc * proc);
 
 struct ProcScreenFlashing {
     PROC_HEADER;
@@ -543,12 +547,12 @@ void ScreenFlash_FadeOut(struct ProcScreenFlashing * proc);
 void StartScreenFlashing(int mask, int duration, int speed_fadein, int speed_fadeout, int r, int g, int b, ProcPtr parent);
 int EventE3_ScreenFlashing(struct EventProc * proc);
 
-// sub_80120D8
-// sub_80120E0
-// sub_8012150
-// EventE5_NinianResurrection
-// EventE6_ArchiveCurrentPalettes
-// EventE7_WriteFadedPaletteFromArchive
+// EventFadefx_Init
+// EventFadefx_Loop
+// NewEventFadefx
+// EventE7_FadeSteps
+// EventE6_StartFade
+// EventE7_EndFade
 
 struct EventSpriteAnimConf {
     /* 00 */ const u16 * pal;
@@ -577,7 +581,7 @@ bool EventSpriteAnimExists(void);
 
 // EventEA_StartMixPalette
 // EventEB_EndMixPalette
-// sub_80123C8
+// LoadUnit_80123C8
 // sub_8012440
 void sub_80124BC(ProcPtr proc);
 void sub_80125A4(ProcPtr proc);
@@ -653,8 +657,8 @@ extern struct BmBgxConf CONST_DATA  BmBgfxConf_IceCrystal[];
 extern struct BmBgxConf CONST_DATA BmBgfxConf_EventThunder[];
 extern struct ProcCmd CONST_DATA ProcScr_EventThunderfx[];
 // ??? BmBgfxConf_08C013F0
-// ??? gUnk_08C015DC
+// ??? ProcScr_NinianAppearfx
 extern struct ProcCmd CONST_DATA ProcScr_ScreenFlashing[];
-// ??? gUnk_08C01654
+// ??? ProcScr_EventFadefx
 extern struct ProcCmd CONST_DATA ProcScr_EventSpriteAnim[];
 extern struct ProcCmd CONST_DATA ProcScr_Event_08C0169C[];

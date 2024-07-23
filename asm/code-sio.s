@@ -9043,7 +9043,7 @@ sub_8040CC8: @ 0x08040CC8
 	adds r1, r5, #0
 	mov r2, r8
 	adds r3, r6, #0
-	bl sub_8007E08
+	bl StartTalkExt
 	movs r0, #1
 	bl sub_8007F84
 	movs r0, #1
@@ -13813,7 +13813,7 @@ sub_80434C8: @ 0x080434C8
 	push {r4, r5, lr}
 	sub sp, #4
 	adds r5, r0, #0
-	bl sub_8009E60
+	bl GetTalkChoiceResult
 	cmp r0, #1
 	bne _080434E0
 	ldr r1, _080434DC @ =0x0203DC70
@@ -14332,7 +14332,7 @@ sub_80438E0: @ 0x080438E0
 sub_80438FC: @ 0x080438FC
 	push {r4, lr}
 	adds r4, r0, #0
-	bl sub_8009E60
+	bl GetTalkChoiceResult
 	cmp r0, #1
 	beq _08043910
 	adds r0, r4, #0
@@ -14348,7 +14348,7 @@ _08043910:
 sub_8043918: @ 0x08043918
 	push {r4, lr}
 	adds r4, r0, #0
-	bl sub_8009E60
+	bl GetTalkChoiceResult
 	cmp r0, #1
 	bne _0804393A
 	bl InitGlobalSaveInfo
@@ -21948,7 +21948,7 @@ sub_8047664: @ 0x08047664
 	thumb_func_start sub_8047678
 sub_8047678: @ 0x08047678
 	push {lr}
-	bl sub_8009E60
+	bl GetTalkChoiceResult
 	adds r1, r0, #0
 	cmp r1, #1
 	bne _08047690

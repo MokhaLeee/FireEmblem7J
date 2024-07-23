@@ -269,7 +269,7 @@
 // sub_807B304
 // sub_807B32C
 // sub_807B3AC
-// sub_807B3D0
+// ImmediateDisplayMap
 // sub_807B400
 // TryLockParentProc
 // TryUnlockParentProc

@@ -925,7 +925,7 @@ sub_801BCD4: @ 0x0801BCD4
 	movs r1, #0
 	bl DebugInitBg
 	ldr r0, _0801BD2C @ =gUnk_081C92C8
-	bl sub_8009E84
+	bl SetTalkUnkStr
 	ldr r0, _0801BD30 @ =gUnk_08C04B4C
 	bl StartMenu
 	ldr r4, _0801BD34 @ =gBmSt

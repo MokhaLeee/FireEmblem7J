@@ -157,6 +157,7 @@ SECTIONS
 		. = ALIGN(4); src/hardware.o(.bss);
 		. = ALIGN(4); src/oam.o(.bss);
 		. = 0x000040; sTalkStObj = .;
+		. = 0x0000E0; sTalkChoiceResult = .;
 		. = 0x000110;
 		. = ALIGN(4); src/sprite-anim.o(.bss);
 		. = 0x002778; gArenaLevelBackup = .;
@@ -210,10 +211,10 @@ SECTIONS
 		src/eventscr_snowstormfx.o(.text);
 		asm/eventscr_snowstorm.o(.text);
 		src/eventscr_thunderfx.o(.text);
-		asm/eventscr_08011AFC.o(.text);
+		asm/eventscr_niniandisp.o(.text);
 		src/eventscr_screenflashfx.o(.text);
 		asm/eventscr_screenflashfx.o(.text);
-		asm/eventscr_080120D8.o(.text);
+		asm/eventscr_fadefx.o(.text);
 		src/eventscr_spriteanim.o(.text);
 		asm/eventscr_08012378.o(.text);
 		src/sprite-anim.o(.text);
@@ -361,9 +362,10 @@ SECTIONS
 		. = ALIGN(4); data/data_08C012BC.o(.data)
 		. = ALIGN(4); src/eventscr_thunderfx.o(.data)
 		. = ALIGN(4); data/data_08C013F0.o(.data)
+		. = ALIGN(4); src/eventscr_niniandisp.o(.data)
 		. = ALIGN(4); src/eventscr_screenflashfx.o(.data)
 		. = ALIGN(4); asm/eventscr_screenflashfx.o(.data)
-		. = ALIGN(4); asm/eventscr_080120D8.o(.data)
+		. = ALIGN(4); asm/eventscr_fadefx.o(.data)
 		. = ALIGN(4); src/eventscr_spriteanim.o(.data)
 		. = ALIGN(4); src/sprite-anim.o(.data)
 		. = ALIGN(4); data/gamecontrol.o(.data)

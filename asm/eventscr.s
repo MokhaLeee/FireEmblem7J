@@ -61,14 +61,14 @@ _0800B8AA:
 	movs r0, #8
 	bl SetTalkFlag
 _0800B8BA:
-	ldr r0, _0800B8C8 @ =sub_800BCF0
+	ldr r0, _0800B8C8 @ =EventEndTalk
 	str r0, [r5, #0x40]
 	pop {r4, r5, r6, r7}
 	pop {r0}
 	bx r0
 	.align 2, 0
 _0800B8C4: .4byte gPlaySt
-_0800B8C8: .4byte sub_800BCF0
+_0800B8C8: .4byte EventEndTalk
 
 	thumb_func_start sub_800B8CC
 sub_800B8CC: @ 0x0800B8CC
@@ -298,8 +298,8 @@ _0800BA56:
 	bx r1
 	.align 2, 0
 
-	thumb_func_start sub_800BA5C
-sub_800BA5C: @ 0x0800BA5C
+	thumb_func_start Event14_TalkContinue
+Event14_TalkContinue: @ 0x0800BA5C
 	push {r4, lr}
 	adds r4, r0, #0
 	adds r1, r4, #0
@@ -309,15 +309,15 @@ sub_800BA5C: @ 0x0800BA5C
 	ands r0, r1
 	cmp r0, #0
 	bne _0800BA80
-	bl sub_800836C
-	ldr r0, _0800BA7C @ =sub_800BCF0
+	bl ResumeTalk
+	ldr r0, _0800BA7C @ =EventEndTalk
 	str r0, [r4, #0x40]
 	movs r0, #2
 	b _0800BA86
 	.align 2, 0
-_0800BA7C: .4byte sub_800BCF0
+_0800BA7C: .4byte EventEndTalk
 _0800BA80:
-	bl sub_8007EF8
+	bl EndTalk
 	movs r0, #0
 _0800BA86:
 	pop {r4}
@@ -658,8 +658,8 @@ sub_800BCE4: @ 0x0800BCE4
 	pop {r1}
 	bx r1
 
-	thumb_func_start sub_800BCF0
-sub_800BCF0: @ 0x0800BCF0
+	thumb_func_start EventEndTalk
+EventEndTalk: @ 0x0800BCF0 FE8U: Event1D_TEXTEND
 	push {r4, r5, lr}
 	adds r4, r0, #0
 	adds r1, r4, #0
@@ -671,7 +671,7 @@ sub_800BCF0: @ 0x0800BCF0
 	lsrs r5, r0, #0x10
 	cmp r5, #0
 	beq _0800BD3C
-	bl sub_8007EF8
+	bl EndTalk
 	adds r3, r4, #0
 	adds r3, #0x68
 	movs r1, #0
@@ -698,11 +698,11 @@ _0800BD30:
 	.align 2, 0
 _0800BD38: .4byte gPlaySt
 _0800BD3C:
-	bl sub_8009E30
+	bl IsTalkActive
 	lsls r0, r0, #0x18
 	cmp r0, #0
 	beq _0800BD50
-	bl sub_8008354
+	bl IsTalkLocked
 	lsls r0, r0, #0x18
 	cmp r0, #0
 	beq _0800BD78
@@ -3108,7 +3108,7 @@ _0800CF34:
 _0800CF52:
 	adds r0, r4, #0
 	movs r1, #0
-	bl sub_800A614
+	bl LoadUnitCore
 	adds r4, #0x10
 _0800CF5C:
 	ldrb r0, [r4]
@@ -3132,7 +3132,7 @@ _0800CF68:
 	beq _0800CF9A
 	adds r0, r4, #0
 	adds r1, r5, #0
-	bl sub_800A614
+	bl LoadUnitCore
 _0800CF8C:
 	adds r4, #0x10
 	str r4, [r5, #0x44]
@@ -3184,7 +3184,7 @@ _0800CFD0:
 	bne _0800CFE8
 	adds r0, r4, #0
 	movs r1, #0
-	bl sub_800A614
+	bl LoadUnitCore
 _0800CFE8:
 	adds r4, #0x10
 _0800CFEA:
@@ -3215,7 +3215,7 @@ _0800CFF6:
 	beq _0800D036
 	adds r0, r4, #0
 	adds r1, r5, #0
-	bl sub_800A614
+	bl LoadUnitCore
 _0800D028:
 	adds r4, #0x10
 	str r4, [r5, #0x44]
@@ -3450,7 +3450,7 @@ sub_800D168: @ 0x0800D168
 	strb r6, [r0, #6]
 	strb r1, [r0, #7]
 	movs r1, #0
-	bl sub_800A614
+	bl LoadUnitCore
 	movs r0, #2
 	pop {r3, r4, r5}
 	mov r8, r3
@@ -4211,7 +4211,7 @@ _0800D6FE:
 sub_800D704: @ 0x0800D704
 	push {r4, lr}
 	adds r4, r0, #0
-	bl sub_8009E60
+	bl GetTalkChoiceResult
 	cmp r0, #1
 	bne _0800D714
 	movs r0, #0
@@ -4230,7 +4230,7 @@ _0800D71E:
 sub_800D724: @ 0x0800D724
 	push {r4, lr}
 	adds r4, r0, #0
-	bl sub_8009E60
+	bl GetTalkChoiceResult
 	cmp r0, #1
 	bne _0800D734
 	movs r0, #0
@@ -8401,7 +8401,7 @@ _0800F53E:
 	ldr r0, [r4, #0x30]
 	ldr r0, [r0, #4]
 	bl sub_80B5E04
-	ldr r0, _0800F564 @ =sub_800BCF0
+	ldr r0, _0800F564 @ =EventEndTalk
 	str r0, [r4, #0x40]
 	movs r0, #0x80
 	ldrh r5, [r5]
@@ -8417,7 +8417,7 @@ _0800F55C:
 	pop {r1}
 	bx r1
 	.align 2, 0
-_0800F564: .4byte sub_800BCF0
+_0800F564: .4byte EventEndTalk
 
 	thumb_func_start sub_800F568
 sub_800F568: @ 0x0800F568
@@ -9563,7 +9563,7 @@ _0800FD44:
 	movs r0, #4
 	bl SetTalkFlag
 _0800FD68:
-	ldr r0, _0800FD74 @ =sub_800BCF0
+	ldr r0, _0800FD74 @ =EventEndTalk
 	str r0, [r6, #0x40]
 	movs r0, #2
 _0800FD6E:
@@ -9571,7 +9571,7 @@ _0800FD6E:
 	pop {r1}
 	bx r1
 	.align 2, 0
-_0800FD74: .4byte sub_800BCF0
+_0800FD74: .4byte EventEndTalk
 
 	thumb_func_start sub_800FD78
 sub_800FD78: @ 0x0800FD78

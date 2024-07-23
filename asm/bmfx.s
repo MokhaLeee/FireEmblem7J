@@ -702,7 +702,7 @@ _0801DD28:
 	bl StartSubtitleHelp
 _0801DD36:
 	movs r0, #2
-	bl sub_8009E6C
+	bl SetTalkChoiceResult
 	ldr r0, _0801DD50 @ =gUnk_08C02958
 	adds r1, r6, #0
 	bl Proc_StartBlocking
@@ -888,7 +888,7 @@ _0801DEAC: .4byte 0x0000072A
 	thumb_func_start sub_801DEB0
 sub_801DEB0: @ 0x0801DEB0
 	push {r4, lr}
-	bl sub_8009E60
+	bl GetTalkChoiceResult
 	cmp r0, #1
 	beq _0801DEBE
 	movs r0, #0

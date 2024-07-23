@@ -917,8 +917,8 @@ sub_8013B24: @ 0x08013B24
 	.align 2, 0
 _08013B40: .4byte gUnk_0818F980
 
-	thumb_func_start sub_8013B44
-sub_8013B44: @ 0x08013B44
+	thumb_func_start GetPalFadeSt
+GetPalFadeSt: @ 0x08013B44
 	ldr r0, _08013B48 @ =0x0202B5B4
 	bx lr
 	.align 2, 0
@@ -929,30 +929,30 @@ sub_8013B4C: @ 0x08013B4C
 	push {r4, r5, lr}
 	adds r4, r1, #0
 	adds r5, r2, #0
-	bl sub_8013B68
+	bl SetPalFadeStClkEnd1
 	adds r0, r4, #0
-	bl sub_8013B78
+	bl SetPalFadeStClkEnd2
 	adds r0, r5, #0
-	bl sub_8013B8C
+	bl SetPalFadeStClkEnd3
 	pop {r4, r5}
 	pop {r0}
 	bx r0
 
-	thumb_func_start sub_8013B68
-sub_8013B68: @ 0x08013B68
+	thumb_func_start SetPalFadeStClkEnd1
+SetPalFadeStClkEnd1: @ 0x08013B68
 	push {r4, lr}
 	adds r4, r0, #0
-	bl sub_8013B44
+	bl GetPalFadeSt
 	strh r4, [r0, #0x2a]
 	pop {r4}
 	pop {r0}
 	bx r0
 
-	thumb_func_start sub_8013B78
-sub_8013B78: @ 0x08013B78
+	thumb_func_start SetPalFadeStClkEnd2
+SetPalFadeStClkEnd2: @ 0x08013B78
 	push {r4, lr}
 	adds r4, r0, #0
-	bl sub_8013B44
+	bl GetPalFadeSt
 	adds r0, #0x5a
 	strh r4, [r0]
 	pop {r4}
@@ -960,11 +960,11 @@ sub_8013B78: @ 0x08013B78
 	bx r0
 	.align 2, 0
 
-	thumb_func_start sub_8013B8C
-sub_8013B8C: @ 0x08013B8C
+	thumb_func_start SetPalFadeStClkEnd3
+SetPalFadeStClkEnd3: @ 0x08013B8C
 	push {r4, lr}
 	adds r4, r0, #0
-	bl sub_8013B44
+	bl GetPalFadeSt
 	adds r0, #0x8a
 	strh r4, [r0]
 	pop {r4}
@@ -972,28 +972,28 @@ sub_8013B8C: @ 0x08013B8C
 	bx r0
 	.align 2, 0
 
-	thumb_func_start sub_8013BA0
-sub_8013BA0: @ 0x08013BA0
+	thumb_func_start GetPalFadeStClkEnd1
+GetPalFadeStClkEnd1: @ 0x08013BA0
 	push {lr}
-	bl sub_8013B44
+	bl GetPalFadeSt
 	ldrh r0, [r0, #0x2a]
 	pop {r1}
 	bx r1
 
-	thumb_func_start sub_8013BAC
-sub_8013BAC: @ 0x08013BAC
+	thumb_func_start GetPalFadeStClkEnd2
+GetPalFadeStClkEnd2: @ 0x08013BAC
 	push {lr}
-	bl sub_8013B44
+	bl GetPalFadeSt
 	adds r0, #0x5a
 	ldrh r0, [r0]
 	pop {r1}
 	bx r1
 	.align 2, 0
 
-	thumb_func_start sub_8013BBC
-sub_8013BBC: @ 0x08013BBC
+	thumb_func_start GetPalFadeStClkEnd3
+GetPalFadeStClkEnd3: @ 0x08013BBC
 	push {lr}
-	bl sub_8013B44
+	bl GetPalFadeSt
 	adds r0, #0x8a
 	ldrh r0, [r0]
 	pop {r1}
@@ -1003,7 +1003,7 @@ sub_8013BBC: @ 0x08013BBC
 	thumb_func_start ArchiveCurrentPalettes
 ArchiveCurrentPalettes: @ 0x08013BCC
 	push {r4, r5, lr}
-	bl sub_8013B44
+	bl GetPalFadeSt
 	ldr r3, _08013C14 @ =gPal
 	movs r1, #0
 _08013BD6:
@@ -1027,11 +1027,11 @@ _08013BE0:
 	movs r4, #0x80
 	lsls r4, r4, #1
 	adds r0, r4, #0
-	bl sub_8013B68
+	bl SetPalFadeStClkEnd1
 	adds r0, r4, #0
-	bl sub_8013B78
+	bl SetPalFadeStClkEnd2
 	adds r0, r4, #0
-	bl sub_8013B8C
+	bl SetPalFadeStClkEnd3
 	pop {r4, r5}
 	pop {r0}
 	bx r0
@@ -1042,7 +1042,7 @@ _08013C14: .4byte gPal
 ArchivePalette: @ 0x08013C18
 	push {r4, lr}
 	adds r4, r0, #0
-	bl sub_8013B44
+	bl GetPalFadeSt
 	lsls r2, r4, #5
 	ldr r1, _08013C44 @ =gPal
 	adds r2, r2, r1
@@ -1077,12 +1077,12 @@ WriteFadedPaletteFromArchive: @ 0x08013C48
 	mov r8, r1
 	str r2, [sp]
 	mov sl, r3
-	bl sub_8013B68
+	bl SetPalFadeStClkEnd1
 	mov r0, r8
-	bl sub_8013B78
+	bl SetPalFadeStClkEnd2
 	ldr r0, [sp]
-	bl sub_8013B8C
-	bl sub_8013B44
+	bl SetPalFadeStClkEnd3
+	bl GetPalFadeSt
 	mov sb, r0
 	movs r0, #0x80
 	lsls r0, r0, #1

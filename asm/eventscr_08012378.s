@@ -48,8 +48,8 @@ EventEB_EndMixPalette: @ 0x080123BC
 	bx r1
 	.align 2, 0
 
-	thumb_func_start sub_80123C8
-sub_80123C8: @ 0x080123C8
+	thumb_func_start LoadUnit_80123C8
+LoadUnit_80123C8: @ 0x080123C8
 	push {r4, r5, r6, r7, lr}
 	mov r7, sl
 	mov r6, sb
@@ -95,7 +95,7 @@ sub_80123C8: @ 0x080123C8
 	strb r1, [r4, #7]
 	adds r0, r4, #0
 	ldr r1, [sp, #0x30]
-	bl sub_800A614
+	bl LoadUnitCore
 	add sp, #4
 	pop {r3, r4, r5}
 	mov r8, r3
@@ -162,7 +162,7 @@ _080124A2:
 	strb r1, [r0, #6]
 	strb r2, [r0, #7]
 	adds r1, r6, #0
-	bl sub_800A614
+	bl LoadUnitCore
 	add sp, #4
 	pop {r4, r5, r6}
 	pop {r0}

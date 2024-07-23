@@ -10219,7 +10219,7 @@ _080B0A54:
 	bl InitTalk
 	bl sub_8007DF4
 	bl sub_800968C
-	bl sub_8007EF8
+	bl EndTalk
 	mov r4, sb
 	ldr r0, [r4, #0x34]
 	ldr r2, [r0, #4]
@@ -10688,7 +10688,7 @@ sub_80B0E7C: @ 0x080B0E7C
 	adds r4, r0, #0
 	movs r0, #0
 	bl SetOnHBlankA
-	bl sub_8007EF8
+	bl EndTalk
 	bl sub_80647F8
 	ldr r0, _080B0EB4 @ =0x0200DB00
 	bl sub_8055AC4
@@ -11112,7 +11112,7 @@ sub_80B1174: @ 0x080B1174
 	ldr r3, [r7, #4]
 	movs r0, #8
 	movs r1, #2
-	bl sub_8007E08
+	bl StartTalkExt
 	movs r0, #0
 	bl sub_8007F84
 	movs r0, #1
@@ -11480,7 +11480,7 @@ sub_80B1454: @ 0x080B1454
 	sub sp, #4
 	mov r7, sp
 	str r0, [r7]
-	bl sub_8009E60
+	bl GetTalkChoiceResult
 	cmp r0, #1
 	beq _080B147E
 	cmp r0, #1
@@ -11995,7 +11995,7 @@ _080B186C: .4byte gpKeySt
 _080B1870:
 	ldr r1, [r7, #8]
 	adds r0, r1, #0
-	bl sub_8009E78
+	bl SetTalkNumber
 	movs r0, #0x24
 	ldr r1, [r7]
 	bl sub_80B1174
@@ -12047,7 +12047,7 @@ sub_80B18D4: @ 0x080B18D4
 	sub sp, #4
 	mov r7, sp
 	str r0, [r7]
-	bl sub_8009E60
+	bl GetTalkChoiceResult
 	cmp r0, #1
 	beq _080B18F4
 	cmp r0, #1
@@ -12134,7 +12134,7 @@ sub_80B1978: @ 0x080B1978
 	sub sp, #4
 	mov r7, sp
 	str r0, [r7]
-	bl sub_8009E60
+	bl GetTalkChoiceResult
 	cmp r0, #1
 	beq _080B1998
 	cmp r0, #1
@@ -12579,7 +12579,7 @@ _080B1CC0:
 	lsls r2, r0, #0x10
 	lsrs r1, r2, #0x10
 	adds r0, r1, #0
-	bl sub_8009E78
+	bl SetTalkNumber
 	movs r0, #0x24
 	ldr r1, [r7]
 	bl sub_80B1174
@@ -12631,7 +12631,7 @@ sub_80B1D44: @ 0x080B1D44
 	sub sp, #8
 	mov r7, sp
 	str r0, [r7]
-	bl sub_8009E60
+	bl GetTalkChoiceResult
 	cmp r0, #1
 	beq _080B1D64
 	cmp r0, #1
@@ -16167,7 +16167,7 @@ sub_80B38E4: @ 0x080B38E4
 	bl sub_802F5A0
 	adds r1, r0, #0
 	adds r0, r1, #0
-	bl sub_8009E78
+	bl SetTalkNumber
 	movs r0, #0x41
 	ldr r1, [r7]
 	bl sub_80B3BD0
@@ -16182,7 +16182,7 @@ sub_80B3908: @ 0x080B3908
 	sub sp, #4
 	mov r7, sp
 	str r0, [r7]
-	bl sub_8009E60
+	bl GetTalkChoiceResult
 	cmp r0, #1
 	beq _080B393A
 	cmp r0, #1
@@ -16421,7 +16421,7 @@ _080B3ADE:
 	adds r1, r0, #0
 	lsls r2, r1, #1
 	adds r0, r2, #0
-	bl sub_8009E78
+	bl SetTalkNumber
 	movs r0, #0x45
 	ldr r1, [r7]
 	bl sub_80B3BD0
@@ -16551,7 +16551,7 @@ sub_80B3BD0: @ 0x080B3BD0
 	ldr r3, [r7, #4]
 	movs r0, #8
 	movs r1, #2
-	bl sub_8007E08
+	bl StartTalkExt
 	movs r0, #0
 	bl sub_8007F84
 	movs r0, #1
@@ -16730,7 +16730,7 @@ sub_80B3D64: @ 0x080B3D64
 	sub sp, #4
 	mov r7, sp
 	str r0, [r7]
-	bl sub_8009E60
+	bl GetTalkChoiceResult
 	cmp r0, #1
 	beq _080B3D84
 	cmp r0, #1
@@ -21069,7 +21069,7 @@ _080B5E00: .4byte gUnk_08DB0F44
 sub_80B5E04: @ 0x080B5E04
 	push {r4, lr}
 	adds r4, r0, #0
-	bl sub_8007EF8
+	bl EndTalk
 	movs r0, #0x80
 	lsls r0, r0, #2
 	movs r1, #2
@@ -21372,7 +21372,7 @@ sub_80B60A0: @ 0x080B60A0
 	bl SetOnHBlankB
 	movs r0, #0
 	bl SetOnHBlankA
-	bl sub_8007EF8
+	bl EndTalk
 	bl sub_800968C
 	bl ResetUnitSprites
 	ldr r2, _080B60E8 @ =gDispIo
@@ -26885,7 +26885,7 @@ _080B8B60: .4byte gDispIo
 sub_80B8B64: @ 0x080B8B64
 	push {r4, lr}
 	adds r4, r0, #0
-	bl sub_8009E60
+	bl GetTalkChoiceResult
 	cmp r0, #2
 	bne _080B8B7A
 	adds r0, r4, #0
@@ -26957,7 +26957,7 @@ _080B8BF4: .4byte 0x00000A11
 	thumb_func_start sub_80B8BF8
 sub_80B8BF8: @ 0x080B8BF8
 	push {lr}
-	bl sub_8009E60
+	bl GetTalkChoiceResult
 	cmp r0, #2
 	bne _080B8C0A
 	movs r0, #5

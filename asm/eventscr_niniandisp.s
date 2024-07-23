@@ -2,8 +2,8 @@
 
 	.syntax unified
 
-	thumb_func_start sub_8011B4C
-sub_8011B4C: @ 0x08011B4C
+	thumb_func_start NinianAppear_Init
+NinianAppear_Init: @ 0x08011B4C
 	push {r4, lr}
 	movs r3, #0
 	str r3, [r0, #0x30]
@@ -144,8 +144,8 @@ _08011C56:
 	pop {r0}
 	bx r0
 
-	thumb_func_start sub_8011C5C
-sub_8011C5C: @ 0x08011C5C
+	thumb_func_start NinianAppear_Anim1
+NinianAppear_Anim1: @ 0x08011C5C
 	push {r4, r5, r6, lr}
 	sub sp, #8
 	adds r6, r0, #0
@@ -189,8 +189,8 @@ _08011CB0: .4byte gUnk_081ACA20
 _08011CB4: .4byte gUnk_081ACA40
 _08011CB8: .4byte 0x00005040
 
-	thumb_func_start sub_8011CBC
-sub_8011CBC: @ 0x08011CBC
+	thumb_func_start NinianAppear_LoopAnim1
+NinianAppear_LoopAnim1: @ 0x08011CBC
 	push {r4, r5, r6, r7, lr}
 	mov r7, sl
 	mov r6, sb
@@ -327,8 +327,8 @@ _08011DCC: .4byte gSinLut
 _08011DD0: .4byte gUnk_081ACA40
 _08011DD4: .4byte 0x00005040
 
-	thumb_func_start sub_8011DD8
-sub_8011DD8: @ 0x08011DD8
+	thumb_func_start NinianAppear_EndAnim1
+NinianAppear_EndAnim1: @ 0x08011DD8
 	push {r4, r5, lr}
 	adds r5, r0, #0
 	adds r5, #0x44
@@ -344,8 +344,8 @@ _08011DE0:
 	bx r0
 	.align 2, 0
 
-	thumb_func_start sub_8011DF4
-sub_8011DF4: @ 0x08011DF4
+	thumb_func_start NinianAppear_Anim2
+NinianAppear_Anim2: @ 0x08011DF4
 	push {r4, r5, r6, lr}
 	sub sp, #0x14
 	adds r5, r0, #0
@@ -386,8 +386,8 @@ sub_8011DF4: @ 0x08011DF4
 _08011E40: .4byte gBmSt
 _08011E44: .4byte BmBgfxConf_08C013F0
 
-	thumb_func_start sub_8011E48
-sub_8011E48: @ 0x08011E48
+	thumb_func_start NinianAppear_LoadUnit
+NinianAppear_LoadUnit: @ 0x08011E48
 	push {r4, r5, lr}
 	sub sp, #0x10
 	adds r4, r0, #0
@@ -406,7 +406,7 @@ sub_8011E48: @ 0x08011E48
 	str r5, [sp, #0xc]
 	movs r0, #0xdc
 	movs r1, #0x40
-	bl sub_80123C8
+	bl LoadUnit_80123C8
 _08011E70:
 	ldr r0, [r4, #0x30]
 	cmp r0, #0x28
@@ -422,8 +422,8 @@ _08011E84:
 	pop {r0}
 	bx r0
 
-	thumb_func_start sub_8011E8C
-sub_8011E8C: @ 0x08011E8C
+	thumb_func_start NinianAppear_End
+NinianAppear_End: @ 0x08011E8C
 	push {lr}
 	ldr r2, _08011EBC @ =gDispIo
 	adds r1, r2, #0
@@ -464,14 +464,14 @@ EventE4_NinianDisplay: @ 0x08011EC0
 	ands r0, r2
 	cmp r0, #0
 	bne _08011EEC
-	ldr r0, _08011EE8 @ =gUnk_08C015DC
+	ldr r0, _08011EE8 @ =ProcScr_NinianAppearfx
 	bl Proc_StartBlocking
 	str r4, [r0, #0x3c]
 	str r5, [r0, #0x40]
 	movs r0, #2
 	b _08011F06
 	.align 2, 0
-_08011EE8: .4byte gUnk_08C015DC
+_08011EE8: .4byte ProcScr_NinianAppearfx
 _08011EEC:
 	str r4, [sp]
 	str r5, [sp, #4]
@@ -483,7 +483,7 @@ _08011EEC:
 	movs r1, #0x54
 	adds r2, r4, #0
 	adds r3, r5, #0
-	bl sub_80123C8
+	bl LoadUnit_80123C8
 	movs r0, #0
 _08011F06:
 	add sp, #0x10

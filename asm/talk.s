@@ -240,8 +240,8 @@ sub_8007DF4: @ 0x08007DF4
 	.align 2, 0
 _08007E04: .4byte 0x030000E8
 
-	thumb_func_start sub_8007E08
-sub_8007E08: @ 0x08007E08
+	thumb_func_start StartTalkExt
+StartTalkExt: @ 0x08007E08
 	push {r4, r5, r6, r7, lr}
 	adds r7, r3, #0
 	ldr r4, _08007E90 @ =sTalkSt
@@ -300,15 +300,15 @@ sub_8007E08: @ 0x08007E08
 	strb r0, [r1, #0xe]
 	cmp r7, #0
 	bne _08007E98
-	ldr r0, _08007E94 @ =gUnk_08BFFB84
+	ldr r0, _08007E94 @ =ProcScr_Talk
 	movs r1, #3
 	bl Proc_Start
 	b _08007EA0
 	.align 2, 0
 _08007E90: .4byte sTalkSt
-_08007E94: .4byte gUnk_08BFFB84
+_08007E94: .4byte ProcScr_Talk
 _08007E98:
-	ldr r0, _08007EA8 @ =gUnk_08BFFB84
+	ldr r0, _08007EA8 @ =ProcScr_Talk
 	adds r1, r7, #0
 	bl Proc_StartBlocking
 _08007EA0:
@@ -316,7 +316,7 @@ _08007EA0:
 	pop {r1}
 	bx r1
 	.align 2, 0
-_08007EA8: .4byte gUnk_08BFFB84
+_08007EA8: .4byte ProcScr_Talk
 
 	thumb_func_start StartTalkMsg
 StartTalkMsg: @ 0x08007EAC
@@ -329,14 +329,14 @@ StartTalkMsg: @ 0x08007EAC
 	adds r0, r4, #0
 	adds r1, r5, #0
 	movs r3, #0
-	bl sub_8007E08
+	bl StartTalkExt
 	pop {r4, r5}
 	pop {r1}
 	bx r1
 	.align 2, 0
 
-	thumb_func_start sub_8007ECC
-sub_8007ECC: @ 0x08007ECC
+	thumb_func_start StartTalkMsgExt
+StartTalkMsgExt: @ 0x08007ECC
 	push {r4, r5, r6, lr}
 	adds r4, r0, #0
 	adds r5, r1, #0
@@ -347,31 +347,31 @@ sub_8007ECC: @ 0x08007ECC
 	adds r0, r4, #0
 	adds r1, r5, #0
 	adds r3, r6, #0
-	bl sub_8007E08
+	bl StartTalkExt
 	pop {r4, r5, r6}
 	pop {r1}
 	bx r1
 
-	thumb_func_start sub_8007EEC
-sub_8007EEC: @ 0x08007EEC
+	thumb_func_start StartTalk
+StartTalk: @ 0x08007EEC
 	push {lr}
 	movs r3, #0
-	bl sub_8007E08
+	bl StartTalkExt
 	pop {r1}
 	bx r1
 
-	thumb_func_start sub_8007EF8
-sub_8007EF8: @ 0x08007EF8
+	thumb_func_start EndTalk
+EndTalk: @ 0x08007EF8
 	push {lr}
-	ldr r0, _08007F04 @ =gUnk_08BFFB84
+	ldr r0, _08007F04 @ =ProcScr_Talk
 	bl Proc_EndEach
 	pop {r0}
 	bx r0
 	.align 2, 0
-_08007F04: .4byte gUnk_08BFFB84
+_08007F04: .4byte ProcScr_Talk
 
-	thumb_func_start sub_8007F08
-sub_8007F08: @ 0x08007F08
+	thumb_func_start SetTalkLines
+SetTalkLines: @ 0x08007F08
 	ldr r1, _08007F10 @ =sTalkSt
 	ldr r1, [r1]
 	strb r0, [r1, #0xa]
@@ -379,8 +379,8 @@ sub_8007F08: @ 0x08007F08
 	.align 2, 0
 _08007F10: .4byte sTalkSt
 
-	thumb_func_start sub_8007F14
-sub_8007F14: @ 0x08007F14
+	thumb_func_start ClearAllTalkFlags
+ClearAllTalkFlags: @ 0x08007F14
 	ldr r0, _08007F20 @ =sTalkSt
 	ldr r0, [r0]
 	adds r0, #0x80
@@ -511,10 +511,10 @@ sub_8007FC0: @ 0x08007FC0
 	ldr r0, _0800802C @ =sTalkSt
 	ldr r0, [r0]
 	ldrb r0, [r0, #0x11]
-	bl sub_8009E24
+	bl SetTalkFaceNoMouthMove
 	adds r0, r4, #0
 	bl Proc_End
-	bl sub_8007EF8
+	bl EndTalk
 	ldr r0, _08008030 @ =gBg0Tm
 	movs r1, #0
 	bl TmFill
@@ -626,7 +626,7 @@ _080080E6:
 _080080EC:
 	ldr r0, [r7]
 	ldrb r0, [r0, #0x11]
-	bl sub_8009E24
+	bl SetTalkFaceNoMouthMove
 	adds r0, r6, #0
 	bl TalkInterpret
 	cmp r0, #1
@@ -871,7 +871,7 @@ _080082E8:
 	cmp r0, #0
 	beq _080082F6
 	ldrb r0, [r1, #0x11]
-	bl sub_8009E18
+	bl SetTalkFaceMouthMove
 _080082F6:
 	movs r0, #0
 _080082F8:
@@ -924,8 +924,8 @@ LockTalk: @ 0x08008340
 	.align 2, 0
 _08008350: .4byte gUnk_08BFFBB4
 
-	thumb_func_start sub_8008354
-sub_8008354: @ 0x08008354
+	thumb_func_start IsTalkLocked
+IsTalkLocked: @ 0x08008354
 	push {lr}
 	ldr r0, _08008368 @ =gUnk_08BFFBB4
 	bl Proc_Find
@@ -938,8 +938,8 @@ _08008362:
 	.align 2, 0
 _08008368: .4byte gUnk_08BFFBB4
 
-	thumb_func_start sub_800836C
-sub_800836C: @ 0x0800836C
+	thumb_func_start ResumeTalk
+ResumeTalk: @ 0x0800836C
 	push {lr}
 	ldr r0, _08008378 @ =gUnk_08BFFBB4
 	bl Proc_EndEach
@@ -1508,7 +1508,7 @@ _080088CC: .4byte sTalkSt
 _080088D0:
 	ldr r0, [r7]
 	ldrb r0, [r0, #0x11]
-	bl sub_8009E24
+	bl SetTalkFaceNoMouthMove
 	ldr r0, [r7]
 	ldr r0, [r0]
 	ldrb r0, [r0]
@@ -2836,14 +2836,14 @@ sub_8009310: @ 0x08009310
 	ldr r0, _08009344 @ =0x0000038B
 	bl m4aSongNumStart
 _08009334:
-	ldr r1, _08009348 @ =0x030000E0
+	ldr r1, _08009348 @ =sTalkChoiceResult
 	movs r0, #0
 	b _0800936E
 	.align 2, 0
 _0800933C: .4byte gpKeySt
 _08009340: .4byte gPlaySt
 _08009344: .4byte 0x0000038B
-_08009348: .4byte 0x030000E0
+_08009348: .4byte sTalkChoiceResult
 _0800934C:
 	movs r5, #1
 	adds r0, r5, #0
@@ -2859,7 +2859,7 @@ _0800934C:
 	ldr r0, _0800937C @ =0x0000038A
 	bl m4aSongNumStart
 _08009368:
-	ldr r1, _08009380 @ =0x030000E0
+	ldr r1, _08009380 @ =sTalkChoiceResult
 	movs r2, #0x2a
 	ldrsh r0, [r4, r2]
 _0800936E:
@@ -2870,7 +2870,7 @@ _0800936E:
 	.align 2, 0
 _08009378: .4byte gPlaySt
 _0800937C: .4byte 0x0000038A
-_08009380: .4byte 0x030000E0
+_08009380: .4byte sTalkChoiceResult
 _08009384:
 	movs r0, #0x20
 	ands r0, r1
@@ -4190,8 +4190,8 @@ _08009DB6:
 	.align 2, 0
 _08009DBC: .4byte gUnk_08BFFD7C
 
-	thumb_func_start sub_8009DC0
-sub_8009DC0: @ 0x08009DC0
+	thumb_func_start SetTalkFaceDisp
+SetTalkFaceDisp: @ 0x08009DC0
 	push {r4, r5, r6, lr}
 	sub sp, #8
 	adds r5, r0, #0
@@ -4234,26 +4234,26 @@ _08009E06:
 _08009E10: .4byte gUnk_0818F958
 _08009E14: .4byte sTalkSt
 
-	thumb_func_start sub_8009E18
-sub_8009E18: @ 0x08009E18
+	thumb_func_start SetTalkFaceMouthMove
+SetTalkFaceMouthMove: @ 0x08009E18
 	push {lr}
 	movs r1, #0x10
-	bl sub_8009DC0
+	bl SetTalkFaceDisp
 	pop {r0}
 	bx r0
 
-	thumb_func_start sub_8009E24
-sub_8009E24: @ 0x08009E24
+	thumb_func_start SetTalkFaceNoMouthMove
+SetTalkFaceNoMouthMove: @ 0x08009E24
 	push {lr}
 	movs r1, #0
-	bl sub_8009DC0
+	bl SetTalkFaceDisp
 	pop {r0}
 	bx r0
 
-	thumb_func_start sub_8009E30
-sub_8009E30: @ 0x08009E30
+	thumb_func_start IsTalkActive
+IsTalkActive: @ 0x08009E30
 	push {lr}
-	ldr r0, _08009E44 @ =gUnk_08BFFB84
+	ldr r0, _08009E44 @ =ProcScr_Talk
 	bl Proc_Find
 	cmp r0, #0
 	beq _08009E3E
@@ -4262,10 +4262,10 @@ _08009E3E:
 	pop {r1}
 	bx r1
 	.align 2, 0
-_08009E44: .4byte gUnk_08BFFB84
+_08009E44: .4byte ProcScr_Talk
 
-	thumb_func_start sub_8009E48
-sub_8009E48: @ 0x08009E48
+	thumb_func_start FaceExists
+FaceExists: @ 0x08009E48
 	push {lr}
 	ldr r0, _08009E5C @ =ProcScr_Face
 	bl Proc_Find
@@ -4278,24 +4278,24 @@ _08009E56:
 	.align 2, 0
 _08009E5C: .4byte ProcScr_Face
 
-	thumb_func_start sub_8009E60
-sub_8009E60: @ 0x08009E60
-	ldr r0, _08009E68 @ =0x030000E0
+	thumb_func_start GetTalkChoiceResult
+GetTalkChoiceResult: @ 0x08009E60
+	ldr r0, _08009E68 @ =sTalkChoiceResult
 	ldr r0, [r0]
 	bx lr
 	.align 2, 0
-_08009E68: .4byte 0x030000E0
+_08009E68: .4byte sTalkChoiceResult
 
-	thumb_func_start sub_8009E6C
-sub_8009E6C: @ 0x08009E6C
-	ldr r1, _08009E74 @ =0x030000E0
+	thumb_func_start SetTalkChoiceResult
+SetTalkChoiceResult: @ 0x08009E6C
+	ldr r1, _08009E74 @ =sTalkChoiceResult
 	str r0, [r1]
 	bx lr
 	.align 2, 0
-_08009E74: .4byte 0x030000E0
+_08009E74: .4byte sTalkChoiceResult
 
-	thumb_func_start sub_8009E78
-sub_8009E78: @ 0x08009E78
+	thumb_func_start SetTalkNumber
+SetTalkNumber: @ 0x08009E78
 	ldr r1, _08009E80 @ =sTalkSt
 	ldr r1, [r1]
 	str r0, [r1, #0x3c]
@@ -4303,8 +4303,8 @@ sub_8009E78: @ 0x08009E78
 	.align 2, 0
 _08009E80: .4byte sTalkSt
 
-	thumb_func_start sub_8009E84
-sub_8009E84: @ 0x08009E84
+	thumb_func_start SetTalkUnkStr
+SetTalkUnkStr: @ 0x08009E84
 	push {lr}
 	adds r1, r0, #0
 	ldr r0, _08009E98 @ =sTalkSt
@@ -4316,8 +4316,8 @@ sub_8009E84: @ 0x08009E84
 	.align 2, 0
 _08009E98: .4byte sTalkSt
 
-	thumb_func_start sub_8009E9C
-sub_8009E9C: @ 0x08009E9C
+	thumb_func_start PrintStringToTexts
+PrintStringToTexts: @ 0x08009E9C
 	push {r4, r5, r6, r7, lr}
 	mov r7, sl
 	mov r6, sb
@@ -4375,8 +4375,8 @@ _08009EF8:
 	pop {r0}
 	bx r0
 
-	thumb_func_start sub_8009F08
-sub_8009F08: @ 0x08009F08
+	thumb_func_start TalkPutSpriteText_OnIdle
+TalkPutSpriteText_OnIdle: @ 0x08009F08
 	push {r4, r5, r6, r7, lr}
 	mov r7, sl
 	mov r6, sb
@@ -4856,11 +4856,11 @@ sub_800A3C8: @ 0x0800A3C8
 	push {r4, r5, r6, lr}
 	adds r6, r0, #0
 	ldr r5, [r6, #0x2c]
-	bl sub_8008354
+	bl IsTalkLocked
 	lsls r0, r0, #0x18
 	cmp r0, #0
 	beq _0800A3DC
-	bl sub_800836C
+	bl ResumeTalk
 _0800A3DC:
 	bl IsEventRunning
 	lsls r0, r0, #0x18
@@ -4948,7 +4948,7 @@ _0800A474:
 	cmp r5, r0
 	beq _0800A4C8
 	bl ClearTalk
-	bl sub_8007EF8
+	bl EndTalk
 	movs r4, #1
 	rsbs r4, r4, #0
 	adds r0, r4, #0
@@ -4984,7 +4984,7 @@ _0800A4C8:
 	cmp r0, #0
 	beq _0800A4E6
 	bl ClearTalk
-	bl sub_8007EF8
+	bl EndTalk
 	movs r0, #0
 	str r0, [r6, #0x34]
 	ldr r0, [r6, #0x2c]

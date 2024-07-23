@@ -151,8 +151,8 @@ sub_800A604: @ 0x0800A604
 	.align 2, 0
 _0800A610: .4byte gUnk_08BFFE88
 
-	thumb_func_start sub_800A614
-sub_800A614: @ 0x0800A614
+	thumb_func_start LoadUnitCore
+LoadUnitCore: @ 0x0800A614
 	push {r4, r5, r6, r7, lr}
 	adds r5, r0, #0
 	adds r7, r1, #0
@@ -1962,7 +1962,7 @@ sub_800B3DC: @ 0x0800B3DC
 	ands r0, r1
 	cmp r0, #0
 	bne _0800B3F8
-	bl sub_8009E48
+	bl FaceExists
 	lsls r0, r0, #0x18
 	cmp r0, #0
 	bne _0800B3FE

@@ -16,8 +16,8 @@ sTalkSt:	@ 0x08BFFB68
 gUnk_08BFFB6C:	@ 0x08BFFB6C
 	.incbin "FireEmblem7J.base.gba", 0xBFFB6C, 0xBFFB84 - 0xBFFB6C
 
-	.global gUnk_08BFFB84
-gUnk_08BFFB84:	@ 0x08BFFB84
+	.global ProcScr_Talk
+ProcScr_Talk:	@ 0x08BFFB84
 	.incbin "FireEmblem7J.base.gba", 0xBFFB84, 0xBFFBB4 - 0xBFFB84
 
 	.global gUnk_08BFFBB4

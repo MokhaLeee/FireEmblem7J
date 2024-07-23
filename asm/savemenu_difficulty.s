@@ -869,7 +869,7 @@ sub_80A773C: @ 0x080A773C
 	movs r0, #0x70
 	bl sub_8083B9C
 	movs r0, #1
-	bl sub_8009E6C
+	bl SetTalkChoiceResult
 	add sp, #8
 	pop {r4}
 	pop {r0}
@@ -882,17 +882,17 @@ _080A7774: .4byte 0x06016000
 sub_80A7778: @ 0x080A7778
 	push {r4, lr}
 	adds r4, r0, #0
-	bl sub_8009E60
+	bl GetTalkChoiceResult
 	cmp r0, #1
 	bne _080A778C
 	adds r0, r4, #0
 	movs r1, #2
 	bl Proc_Goto
 _080A778C:
-	bl sub_8009E60
+	bl GetTalkChoiceResult
 	cmp r0, #2
 	beq _080A779C
-	bl sub_8009E60
+	bl GetTalkChoiceResult
 	cmp r0, #0
 	bne _080A77A4
 _080A779C:
@@ -924,7 +924,7 @@ sub_80A77AC: @ 0x080A77AC
 	movs r0, #0xf0
 	bl sub_8083B9C
 	movs r0, #1
-	bl sub_8009E6C
+	bl SetTalkChoiceResult
 	add sp, #8
 	pop {r4}
 	pop {r0}
@@ -936,10 +936,10 @@ _080A77E4: .4byte 0x06016000
 sub_80A77E8: @ 0x080A77E8
 	push {r4, lr}
 	adds r4, r0, #0
-	bl sub_8009E60
+	bl GetTalkChoiceResult
 	cmp r0, #2
 	beq _080A77FC
-	bl sub_8009E60
+	bl GetTalkChoiceResult
 	cmp r0, #0
 	bne _080A7804
 _080A77FC:
@@ -947,7 +947,7 @@ _080A77FC:
 	movs r1, #2
 	bl Proc_Goto
 _080A7804:
-	bl sub_8009E60
+	bl GetTalkChoiceResult
 	cmp r0, #1
 	bne _080A7814
 	adds r0, r4, #0
@@ -1233,7 +1233,7 @@ _080A79E4:
 	movs r0, #0xf0
 	bl sub_8083B9C
 	movs r0, #2
-	bl sub_8009E6C
+	bl SetTalkChoiceResult
 _080A7A4A:
 	add sp, #8
 	pop {r4}
@@ -1248,10 +1248,10 @@ _080A7A5C: .4byte 0x06016000
 sub_80A7A60: @ 0x080A7A60
 	push {r4, lr}
 	adds r4, r0, #0
-	bl sub_8009E60
+	bl GetTalkChoiceResult
 	cmp r0, #2
 	beq _080A7A74
-	bl sub_8009E60
+	bl GetTalkChoiceResult
 	cmp r0, #0
 	bne _080A7A8A
 _080A7A74:

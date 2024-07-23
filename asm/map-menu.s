@@ -130,7 +130,7 @@ sub_8021A88: @ 0x08021A88
 sub_8021A8C: @ 0x08021A8C
 	push {r4, lr}
 	adds r4, r0, #0
-	bl sub_8009E60
+	bl GetTalkChoiceResult
 	cmp r0, #1
 	beq _08021AA0
 	adds r0, r4, #0
