@@ -204,12 +204,12 @@ gUnk_08192F88:	@ 0x08192F88
 gUnk_08193260:	@ 0x08193260
 	.incbin "FireEmblem7J.base.gba", 0x193260, 0x19381C - 0x193260
 
-	.global gUnk_0819381C
-gUnk_0819381C:	@ 0x0819381C
+	.global Img_DragonFlameSmallFire
+Img_DragonFlameSmallFire:	@ 0x0819381C
 	.incbin "FireEmblem7J.base.gba", 0x19381C, 0x193CB8 - 0x19381C
 
-	.global gUnk_08193CB8
-gUnk_08193CB8:	@ 0x08193CB8
+	.global Pal_DragonFlameSmallFire
+Pal_DragonFlameSmallFire:	@ 0x08193CB8
 	.incbin "FireEmblem7J.base.gba", 0x193CB8, 0x193CD8 - 0x193CB8
 
 	.global gUnk_08193CD8
@@ -220,8 +220,8 @@ gUnk_08193CD8:	@ 0x08193CD8
 gUnk_0819436C:	@ 0x0819436C
 	.incbin "FireEmblem7J.base.gba", 0x19436C, 0x19438C - 0x19436C
 
-	.global gUnk_0819438C
-gUnk_0819438C:	@ 0x0819438C
+	.global SpriteConf_DragonFlameSmallFire
+SpriteConf_DragonFlameSmallFire:	@ 0x0819438C
 	.incbin "FireEmblem7J.base.gba", 0x19438C, 0x194AF8 - 0x19438C
 
 	.global gUnk_08194AF8
@@ -656,16 +656,16 @@ FireRingBgfx_081BC99C:	@ 0x081BC99C
 FireRingBgfx_081BCEF0:	@ 0x081BCEF0
 	.incbin "FireEmblem7J.base.gba", 0x1BCEF0, 0x1BD14C - 0x1BCEF0
 
-	.global gUnk_081BD14C
-gUnk_081BD14C:	@ 0x081BD14C
+	.global Img_DragonGateFlame
+Img_DragonGateFlame:	@ 0x081BD14C
 	.incbin "FireEmblem7J.base.gba", 0x1BD14C, 0x1BD514 - 0x1BD14C
 
-	.global gUnk_081BD514
-gUnk_081BD514:	@ 0x081BD514
+	.global Pal_DragonGateFlame
+Pal_DragonGateFlame:	@ 0x081BD514
 	.incbin "FireEmblem7J.base.gba", 0x1BD514, 0x1BD534 - 0x1BD514
 
-	.global gUnk_081BD534
-gUnk_081BD534:	@ 0x081BD534
+	.global Tsa_DragonGateFlame
+Tsa_DragonGateFlame:	@ 0x081BD534
 	.incbin "FireEmblem7J.base.gba", 0x1BD534, 0x1BD6C4 - 0x1BD534
 
 	.global Pal_QuintessenceFx

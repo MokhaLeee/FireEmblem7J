@@ -3152,7 +3152,7 @@ sub_801F0B8: @ 0x0801F0B8
 	push {r4, r5, lr}
 	sub sp, #8
 	adds r5, r0, #0
-	ldr r0, _0801F104 @ =gUnk_0819381C
+	ldr r0, _0801F104 @ =Img_DragonFlameSmallFire
 	ldr r1, _0801F108 @ =0x06014800
 	bl Decompress
 	ldr r4, [r5, #0x2c]
@@ -3185,7 +3185,7 @@ sub_801F0B8: @ 0x0801F0B8
 	pop {r0}
 	bx r0
 	.align 2, 0
-_0801F104: .4byte gUnk_0819381C
+_0801F104: .4byte Img_DragonFlameSmallFire
 _0801F108: .4byte 0x06014800
 _0801F10C: .4byte gBmSt
 _0801F110: .4byte gUnk_08193CD8
@@ -3196,7 +3196,7 @@ sub_801F114: @ 0x0801F114
 	adds r4, r0, #0
 	adds r5, r1, #0
 	adds r6, r2, #0
-	ldr r0, _0801F13C @ =gUnk_08193CB8
+	ldr r0, _0801F13C @ =Pal_DragonFlameSmallFire
 	movs r1, #0x90
 	lsls r1, r1, #2
 	movs r2, #0x20
@@ -3210,7 +3210,7 @@ sub_801F114: @ 0x0801F114
 	pop {r0}
 	bx r0
 	.align 2, 0
-_0801F13C: .4byte gUnk_08193CB8
+_0801F13C: .4byte Pal_DragonFlameSmallFire
 _0801F140: .4byte gUnk_08C02AD0
 
 	thumb_func_start sub_801F144
