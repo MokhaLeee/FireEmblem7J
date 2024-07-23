@@ -186,3 +186,8 @@ bool sub_8020F20(ProcPtr proc);
 // sub_80218F8
 // sub_8021954
 // NinianStartTransformToHunman
+
+extern struct BmBgxConf CONST_DATA BmBgfxConf_GameTitle[];
+extern struct BmBgxConf CONST_DATA BmBgfxConf_OpAnim[];
+extern struct BmBgxConf CONST_DATA BmBgfxConf_DeadDragonFlame[];
+extern struct BmBgxConf CONST_DATA BmBgfxConf_DragonFlame[];

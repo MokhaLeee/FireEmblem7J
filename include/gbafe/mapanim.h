@@ -5,6 +5,12 @@
 #include "unit.h"
 #include "battle.h"
 
+#define SCREEN_TILE_X(xPos) ((xPos) - (gBmSt.camera.x >> 4))
+#define SCREEN_TILE_Y(yPos) ((yPos) - (gBmSt.camera.y >> 4))
+
+#define SCREEN_TILE_IX(xPos) ((xPos) * 16 - (gBmSt.camera.x))
+#define SCREEN_TILE_IY(yPos) ((yPos) * 16 - (gBmSt.camera.y))
+
 struct MapAnimActor {
     /* 00 */ struct Unit * unit;
     /* 04 */ struct BattleUnit * bu;

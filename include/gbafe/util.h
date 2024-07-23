@@ -49,8 +49,8 @@ void ArchivePalette(int index);
 void WriteFadedPaletteFromArchive(int red, int green, int blue, u32 mask);
 // ??? sub_8013E84
 // ??? sub_8013E8C
-// ??? sub_8013EF8
-// ??? sub_8013F3C
+void sub_8013EF8(int a, int b, int c, int d, int e, int f, int g, int h, ProcPtr parent); // fe8u: sub_8013800
+bool sub_8013F3C(void); // fe8u: sub_8013844
 // ??? SpacialSeTest_OnInit
 // ??? SpacialSeTest_OnLoop
 // ??? StartSpacialSeTest

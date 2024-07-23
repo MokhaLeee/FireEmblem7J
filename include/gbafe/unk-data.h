@@ -78,11 +78,11 @@ extern const u8 Tsa_Unk_0819128C[];
 // ??? gUnk_08192F68
 // ??? gUnk_08192F88
 // ??? gUnk_08193260
-// ??? gUnk_0819381C
-// ??? gUnk_08193CB8
+extern u8 Img_DragonFlameSmallFire[];
+extern u16 Pal_DragonFlameSmallFire[];
 // ??? gUnk_08193CD8
 // ??? gUnk_0819436C
-// ??? gUnk_0819438C
+extern u16 SpriteConf_DragonFlameSmallFire[];
 // ??? gUnk_08194AF8
 // ??? gUnk_08194D78
 // ??? gUnk_08194F8C
@@ -191,9 +191,9 @@ extern u8 FireRingBgfx_081BC1F0[];
 extern u8 FireRingBgfx_081BC44C[];
 extern u8 FireRingBgfx_081BC99C[];
 extern u8 FireRingBgfx_081BCEF0[];
-// ??? gUnk_081BD14C
-// ??? gUnk_081BD514
-// ??? gUnk_081BD534
+extern u8 Img_DragonGateFlame[];
+extern u16 Pal_DragonGateFlame[];
+extern u8 Tsa_DragonGateFlame[];
 extern u16 Pal_QuintessenceFx[];
 extern u8 Tsa_QuintessenceFx[];
 // ??? Img_DanceringFx
@@ -2293,7 +2293,3 @@ extern uintptr_t ProcScr_08DB9208[];
 // ??? gUnk_08DB9674
 // ??? gUnk_08DB9794
 // ??? gUnk_08DB9A7C
-// ??? BmBgfxConf_GameTitle
-// ??? BmBgfxConf_OpAnim
-// ??? BmBgfxConf_DeadDragonFlame
-// ??? BmBgfxConf_DragonFlame

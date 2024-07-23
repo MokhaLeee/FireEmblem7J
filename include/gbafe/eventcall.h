@@ -328,13 +328,13 @@ void EndEventQuakefx(ProcPtr proc);
 // DragonSpriteBlinking_Loop
 // StartDragonSpriteBlinking
 // EndDragonSpriteBlinking
-// sub_807BD00
+// PutDragonGateFlame
 // sub_807BD6C
 // DragonFlamefx_Handler
 // DragonFlamefx_Init
 // DragonFlamefx_Rotation
-// sub_807BF5C
-// sub_807BF9C
+// DragonFlamefx_EndRing
+// DragonFlamefx_RefrainBlendAlpha
 // sub_807BFEC
 // sub_807C080
 // sub_807C108
