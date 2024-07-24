@@ -175,9 +175,9 @@ bool sub_8020F20(ProcPtr proc);
 // sub_8021550
 // sub_80215B8
 // sub_80215D0
-// SwingSwordfx_Init
-// SwingSwordfx_Loop
-// SwingSwordfx_End
+void SwingSwordfx_Init(struct ProcBmFx * proc);
+void SwingSwordfx_Loop(struct ProcBmFx * proc);
+void SwingSwordfx_End(struct ProcBmFx * proc);
 // StartSwingSwordfx
 // ProcMineFxFunc
 // StartMineAnim

@@ -2,16 +2,6 @@
 
 	.syntax unified
 
-	thumb_func_start sub_800A604
-sub_800A604: @ 0x0800A604
-	ldr r1, _0800A610 @ =gUnk_08BFFE88
-	ldr r0, [r1]
-	adds r0, #1
-	str r0, [r1]
-	bx lr
-	.align 2, 0
-_0800A610: .4byte gUnk_08BFFE88
-
 	thumb_func_start LoadUnitCore
 LoadUnitCore: @ 0x0800A614
 	push {r4, r5, r6, r7, lr}

@@ -30,7 +30,7 @@ void PutUiHand(int x, int y);
 // sub_804A7EC
 int GetUiHandPrevX(void);
 int GetUiHandPrevY(void);
-// ClearUi
+void ClearUi(void); // FE8U: ClearBg0Bg1
 // sub_804A84C
 // sub_804A8B0
 // sub_804A930

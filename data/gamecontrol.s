@@ -390,7 +390,7 @@ ProcScr_GameControl: @ 0xC01744
         .word StartMidLockingFadeToBlack
         @ PROC_REPEAT
         .short 0x3, 0x0
-        .word WhileFadeExists
+        .word WaitForFade
         @ PROC_CALL
         .short 0x2, 0x0
         .word sub_8043948
@@ -402,7 +402,7 @@ ProcScr_GameControl: @ 0xC01744
         .word StartMidFadeFromBlack
         @ PROC_REPEAT
         .short 0x3, 0x0
-        .word WhileFadeExists
+        .word WaitForFade
         @ PROC_CALL
         .short 0x2, 0x0
         .word EndMuralBackground

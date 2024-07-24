@@ -196,7 +196,7 @@ ProcScr_BmMain:
         .word StartMidLockingFadeToBlack
         @ PROC_REPEAT
         .short 0x3, 0x0
-        .word WhileFadeExists
+        .word WaitForFade
         @ PROC_GOTO
         .short 0xc, 0x3
         .word 0x0
@@ -214,7 +214,7 @@ ProcScr_BmMain:
         .word StartMidLockingFadeToBlack
         @ PROC_REPEAT
         .short 0x3, 0x0
-        .word WhileFadeExists
+        .word WaitForFade
         @ PROC_REPEAT
         .short 0x3, 0x0
         .word sub_80158B0
@@ -253,7 +253,7 @@ ProcScr_BmMain:
         .word StartMidLockingFadeToBlack
         @ PROC_REPEAT
         .short 0x3, 0x0
-        .word WhileFadeExists
+        .word WaitForFade
         @ PROC_GOTO
         .short 0xc, 0x7
         .word 0x0
@@ -271,7 +271,7 @@ ProcScr_BmMain:
         .word StartMidLockingFadeToBlack
         @ PROC_REPEAT
         .short 0x3, 0x0
-        .word WhileFadeExists
+        .word WaitForFade
         @ PROC_START_CHILD_BLOCKING
         .short 0x6, 0x1
         .word 0x8c0617c

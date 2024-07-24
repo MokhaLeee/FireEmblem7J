@@ -2680,8 +2680,8 @@ sub_80147A0: @ 0x080147A0
 	.align 2, 0
 _080147B4: .4byte sub_8014970
 
-	thumb_func_start WhileFadeExists
-WhileFadeExists: @ 0x080147B8
+	thumb_func_start WaitForFade
+WaitForFade: @ 0x080147B8
 	push {r4, lr}
 	adds r4, r0, #0
 	bl FadeExists

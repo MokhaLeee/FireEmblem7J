@@ -230,7 +230,6 @@ SECTIONS
 		asm/player-phase.o(.text);
 		asm/bmfx.o(.text);
 		src/bmfx-swingsword.o(.text);
-		asm/bmfx-swingsword.o(.text);
 		asm/bmfx-minefx.o(.text);
 		asm/bmfx-niniantransform.o(.text);
 		asm/map-menu.o(.text);
@@ -337,6 +336,8 @@ SECTIONS
 		. = ALIGN(4); data/const_data_081C83E8.o(.rodata)
 		. = ALIGN(4); src/unit.o(.rodata)
 		. = ALIGN(4); data/const_data_081C9238.o(.rodata)
+		. = ALIGN(4); src/bmfx-swingsword.o(.rodata)
+		. = ALIGN(4); data/const_data_081C9474.o(.rodata)
 		. = ALIGN(4); src/battle.o(.rodata)
 		. = ALIGN(4); data/const_data_081C94C8.o(.rodata)
 		. = ALIGN(4); src/banim-efxdrsmmoya.o(.rodata)
@@ -373,7 +374,6 @@ SECTIONS
 		. = ALIGN(4); data/gamecontrol.o(.data)
 		. = ALIGN(4); data/data.o(.data)
 		. = ALIGN(4); src/bmfx-swingsword.o(.data)
-		. = ALIGN(4); asm/bmfx-swingsword.o(.data)
 		. = ALIGN(4); asm/bmfx-minefx.o(.data)
 		. = ALIGN(4); asm/bmfx-niniantransform.o(.data)
 		. = ALIGN(4); data/data_08C03060.o(.data)
