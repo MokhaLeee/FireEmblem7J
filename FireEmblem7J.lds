@@ -396,6 +396,8 @@ SECTIONS
 		. = ALIGN(4); src/eventcall_icecrystal.o(.data)
 		. = ALIGN(4); data/spriteanimfx.o(.data)
 		. = ALIGN(4); data/data_eventcall.o(.data)
+		. = ALIGN(4); src/eventcall_data_08D83828.o(.data)
+		. = ALIGN(4); data/data_eventcall_08D83828.o(.data)
 		. = ALIGN(4); src/eventcall_spriteanimfx.o(.data)
 		. = ALIGN(4); data/data_08D7C3BC.o(.data)
 		. = ALIGN(4); src/statscreenfx.o(.data)

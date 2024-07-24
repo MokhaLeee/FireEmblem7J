@@ -29,6 +29,13 @@ enum glb_pos {
     POS_INVALID = -1
 };
 
+enum facing_idx {
+    FACING_LEFT  = 0,
+    FACING_RIGHT = 1,
+    FACING_DOWN  = 2,
+    FACING_UP    = 3,
+};
+
 struct ProcCmd;
 struct SMSHandle;
 struct Unit;

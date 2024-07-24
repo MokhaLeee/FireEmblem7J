@@ -2284,7 +2284,7 @@ sub_807E444: @ 0x0807E444
 	ldr r1, _0807E49C @ =gFadeComponentStep
 	movs r0, #1
 	strb r0, [r1, #0x1b]
-	ldr r0, _0807E4A0 @ =gUnk_08D837F8
+	ldr r0, _0807E4A0 @ =ProcScr_08D837F8
 	adds r1, r5, #0
 	bl Proc_Start
 _0807E492:
@@ -2294,7 +2294,7 @@ _0807E492:
 	.align 2, 0
 _0807E498: .4byte gPal + 0x3a0
 _0807E49C: .4byte gFadeComponentStep
-_0807E4A0: .4byte gUnk_08D837F8
+_0807E4A0: .4byte ProcScr_08D837F8
 
 	thumb_func_start sub_807E4A4
 sub_807E4A4: @ 0x0807E4A4
@@ -2305,13 +2305,13 @@ sub_807E4A4: @ 0x0807E4A4
 	ands r1, r0
 	cmp r1, #0
 	bne _0807E4B8
-	ldr r0, _0807E4BC @ =gUnk_08D837F8
+	ldr r0, _0807E4BC @ =ProcScr_08D837F8
 	bl Proc_BreakEach
 _0807E4B8:
 	pop {r0}
 	bx r0
 	.align 2, 0
-_0807E4BC: .4byte gUnk_08D837F8
+_0807E4BC: .4byte ProcScr_08D837F8
 
 	thumb_func_start sub_807E4C0
 sub_807E4C0: @ 0x0807E4C0

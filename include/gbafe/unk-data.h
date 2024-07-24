@@ -155,6 +155,7 @@ extern u8 Tsa_EventThunderfx11[];
 extern u8 Img_NinianDispfx[];
 extern u16 Pal_NinianDispfx[];
 extern u16 SpritAnim_NinianDispfx[];
+extern u16 SpritAnim_NinianPray[];
 extern u8 gUnk_081AD68C[];
 extern u8 gUnk_081AD6AC[];
 extern u8 gUnk_081ADE60[];
@@ -249,6 +250,9 @@ extern u8 Img_EventDragonsSpritefx2[];
 // ??? gUnk_081C6BAC
 // ??? gUnk_081C6C34
 // ??? gUnk_081C6E34
+extern u8 Img_EventSpriteAnim_SpawnAssassin[];
+extern u8 Img_EventSpriteAnim_SpawnThief[];
+extern u16 ApConf_EventSpriteAnim_SpawnAssassin[];
 extern u8 Img_MineFx[];
 extern u8 SpritAnim_MineFx[];
 extern u16 Pal_MineFx[];

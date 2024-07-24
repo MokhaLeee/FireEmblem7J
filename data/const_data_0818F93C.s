@@ -510,7 +510,11 @@ Pal_NinianDispfx:	@ 0x081ACA20
 
 	.global SpritAnim_NinianDispfx
 SpritAnim_NinianDispfx:	@ 0x081ACA40
-	.incbin "FireEmblem7J.base.gba", 0x1ACA40, 0x1AD68C - 0x1ACA40
+	.incbin "FireEmblem7J.base.gba", 0x1ACA40, 0x1AD40C - 0x1ACA40
+
+	.global SpritAnim_NinianPray
+SpritAnim_NinianPray:	@ 0x081AD40C
+	.incbin "FireEmblem7J.base.gba", 0x1AD40C, 0x1AD68C - 0x1AD40C
 
 	.global gUnk_081AD68C
 gUnk_081AD68C:	@ 0x081AD68C
@@ -868,12 +872,12 @@ gUnk_081C2974:	@ 0x081C2974
 gUnk_081C2D44:	@ 0x081C2D44
 	.incbin "FireEmblem7J.base.gba", 0x1C2D44, 0x1C2D84 - 0x1C2D44
 
-	.global Img_EventSpriteAnim_NinianEffect
-Img_EventSpriteAnim_NinianEffect:	@ 0x081C2D84
+	.global Img_EventSpriteAnim_NinianDragonDead
+Img_EventSpriteAnim_NinianDragonDead:	@ 0x081C2D84
 	.incbin "FireEmblem7J.base.gba", 0x1C2D84, 0x1C3680 - 0x1C2D84
 
-	.global ApConf_EventSpriteAnim_NinianEffect
-ApConf_EventSpriteAnim_NinianEffect:	@ 0x081C3680
+	.global ApConf_EventSpriteAnim_NinianDragonDead
+ApConf_EventSpriteAnim_NinianDragonDead:	@ 0x081C3680
 	.incbin "FireEmblem7J.base.gba", 0x1C3680, 0x1C3850 - 0x1C3680
 
 	.global Img_EventDragonsSpritefx1

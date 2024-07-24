@@ -706,7 +706,7 @@ extern struct ProcCmd ProcScr_IceCrystalfx[];
 // ??? gUnk_08D80D24
 // ??? gUnk_08D80D2E
 // ??? gUnk_08D837E8
-// ??? gUnk_08D837F8
+// ??? ProcScr_08D837F8
 // ??? gUnk_08D87684
 extern struct ProcCmd ProcScr_EventDragonsSpritefx[];
 // ??? gUnk_08D87F48
