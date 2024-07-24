@@ -213,7 +213,7 @@ SECTIONS
 		src/eventscr_thunderfx.o(.text);
 		src/eventscr_niniandisp.o(.text);
 		src/eventscr_screenflashfx.o(.text);
-		asm/eventscr_fadefx.o(.text);
+		src/eventscr_fadefx.o(.text);
 		src/eventscr_spriteanim.o(.text);
 		asm/eventscr_08012378.o(.text);
 		src/sprite-anim.o(.text);
@@ -362,8 +362,7 @@ SECTIONS
 		. = ALIGN(4); src/eventscr_thunderfx.o(.data)
 		. = ALIGN(4); src/eventscr_niniandisp.o(.data)
 		. = ALIGN(4); src/eventscr_screenflashfx.o(.data)
-		. = ALIGN(4); asm/eventscr_screenflashfx.o(.data)
-		. = ALIGN(4); asm/eventscr_fadefx.o(.data)
+		. = ALIGN(4); src/eventscr_fadefx.o(.data)
 		. = ALIGN(4); src/eventscr_spriteanim.o(.data)
 		. = ALIGN(4); src/sprite-anim.o(.data)
 		. = ALIGN(4); data/gamecontrol.o(.data)

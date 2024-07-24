@@ -41,9 +41,9 @@ void PutAppliedBitmap(u16 * tm, int tileref, int width, int height);
 // ??? SetPalFadeStClkEnd1
 // ??? SetPalFadeStClkEnd2
 // ??? SetPalFadeStClkEnd3
-// ??? GetPalFadeStClkEnd1
-// ??? GetPalFadeStClkEnd2
-// ??? GetPalFadeStClkEnd3
+int GetPalFadeStClkEnd1(void);
+int GetPalFadeStClkEnd2(void);
+int GetPalFadeStClkEnd3(void);
 void ArchiveCurrentPalettes(void);
 void ArchivePalette(int index);
 void WriteFadedPaletteFromArchive(int red, int green, int blue, u32 mask);

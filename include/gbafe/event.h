@@ -562,8 +562,18 @@ void ScreenFlash_FadeOut(struct ProcScreenFlashing * proc);
 void StartScreenFlashing(int mask, int duration, int speed_fadein, int speed_fadeout, int r, int g, int b, ProcPtr parent);
 int EventE3_ScreenFlashing(struct EventProc * proc);
 
-// EventFadefx_Init
-// EventFadefx_Loop
+struct ProcEventFade {
+    PROC_HEADER;
+    STRUCT_PAD(0x29, 0x30);
+
+    /* 30 */ u32 mask;
+    /* 34 */ int speed, timer;
+    /* 3C */ int r0, g0, b0;
+    /* 48 */ int r1, g1, b1;
+};
+
+void EventFadefx_Init(struct ProcEventFade * proc);
+void EventFadefx_Loop(struct ProcEventFade * proc);
 // NewEventFadefx
 // EventE7_FadeSteps
 // EventE6_StartFade
