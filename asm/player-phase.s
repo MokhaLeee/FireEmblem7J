@@ -842,7 +842,7 @@ _0801CC78: .4byte gBmSt
 _0801CC7C: .4byte gPlaySt
 _0801CC80: .4byte 0x0000038B
 _0801CC84:
-	ldr r0, _0801CCEC @ =ProcScr_Event
+	ldr r0, _0801CCEC @ =ProcScr_UnkEvt
 	bl Proc_Find
 	cmp r0, #0
 	bne _0801CD78
@@ -887,7 +887,7 @@ _0801CCB6:
 	bl Proc_Goto
 	b _0801CD98
 	.align 2, 0
-_0801CCEC: .4byte ProcScr_Event
+_0801CCEC: .4byte ProcScr_UnkEvt
 _0801CCF0: .4byte gBmSt
 _0801CCF4: .4byte gBmMapUnit
 _0801CCF8: .4byte gActiveUnitMoveOrigin

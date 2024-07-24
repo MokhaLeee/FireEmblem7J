@@ -7119,7 +7119,7 @@ _0800EC3A:
 	thumb_func_start sub_800EC40
 sub_800EC40: @ 0x0800EC40
 	push {lr}
-	ldr r0, _0800EC54 @ =ProcScr_Event
+	ldr r0, _0800EC54 @ =ProcScr_UnkEvt
 	bl Proc_FindNonBlocked
 	cmp r0, #0
 	beq _0800EC4E
@@ -7128,7 +7128,7 @@ _0800EC4E:
 	pop {r1}
 	bx r1
 	.align 2, 0
-_0800EC54: .4byte ProcScr_Event
+_0800EC54: .4byte ProcScr_UnkEvt
 
 	thumb_func_start sub_800EC58
 sub_800EC58: @ 0x0800EC58
@@ -7573,7 +7573,7 @@ _0800EF94: .4byte gUnk_08C01020
 	thumb_func_start sub_800EF98
 sub_800EF98: @ 0x0800EF98
 	push {lr}
-	ldr r0, _0800EFB4 @ =ProcScr_Event
+	ldr r0, _0800EFB4 @ =ProcScr_UnkEvt
 	bl Proc_Find
 	cmp r0, #0
 	beq _0800EFAE
@@ -7586,7 +7586,7 @@ _0800EFAE:
 	pop {r0}
 	bx r0
 	.align 2, 0
-_0800EFB4: .4byte ProcScr_Event
+_0800EFB4: .4byte ProcScr_UnkEvt
 
 	thumb_func_start sub_800EFB8
 sub_800EFB8: @ 0x0800EFB8

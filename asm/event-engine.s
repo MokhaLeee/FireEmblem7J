@@ -2,145 +2,6 @@
 
 	.syntax unified
 
-	thumb_func_start sub_800A508
-sub_800A508: @ 0x0800A508
-	push {lr}
-	ldr r0, _0800A51C @ =gUnk_08BFFE70
-	bl Proc_Find
-	cmp r0, #0
-	beq _0800A516
-	movs r0, #1
-_0800A516:
-	pop {r1}
-	bx r1
-	.align 2, 0
-_0800A51C: .4byte gUnk_08BFFE70
-
-	thumb_func_start sub_800A520
-sub_800A520: @ 0x0800A520
-	push {lr}
-	ldr r0, _0800A52C @ =gUnk_08BFFE70
-	bl Proc_EndEach
-	pop {r0}
-	bx r0
-	.align 2, 0
-_0800A52C: .4byte gUnk_08BFFE70
-
-	thumb_func_start sub_800A530
-sub_800A530: @ 0x0800A530
-	push {r4, r5, r6, lr}
-	mov r6, r8
-	push {r6}
-	adds r4, r0, #0
-	adds r5, r1, #0
-	adds r6, r2, #0
-	mov r8, r3
-	ldr r0, _0800A568 @ =gUnk_08BFFE70
-	movs r1, #0
-	bl Proc_Start
-	ldr r1, _0800A56C @ =0x000003FF
-	ands r1, r4
-	lsls r1, r1, #5
-	ldr r2, _0800A570 @ =0x06010000
-	adds r1, r1, r2
-	str r1, [r0, #0x4c]
-	str r5, [r0, #0x54]
-	str r6, [r0, #0x58]
-	ldr r0, _0800A574 @ =gUnk_08BFFE58
-	mov r1, r8
-	bl Proc_StartBlocking
-	pop {r3}
-	mov r8, r3
-	pop {r4, r5, r6}
-	pop {r0}
-	bx r0
-	.align 2, 0
-_0800A568: .4byte gUnk_08BFFE70
-_0800A56C: .4byte 0x000003FF
-_0800A570: .4byte 0x06010000
-_0800A574: .4byte gUnk_08BFFE58
-
-	thumb_func_start sub_800A578
-sub_800A578: @ 0x0800A578
-	adds r0, #0x64
-	movs r1, #0
-	strh r1, [r0]
-	bx lr
-
-	thumb_func_start sub_800A580
-sub_800A580: @ 0x0800A580
-	push {r4, r5, r6, r7, lr}
-	adds r3, r0, #0
-	ldr r6, [r3, #0x4c]
-	movs r1, #0
-	b _0800A5DC
-_0800A58A:
-	movs r2, #0
-	lsls r0, r1, #2
-	adds r5, r1, #0
-	adds r5, #8
-	adds r4, r0, r6
-_0800A594:
-	lsls r0, r2, #2
-	adds r1, r0, r4
-	ldr r0, [r1, #4]
-	str r0, [r1]
-	ldr r0, [r1, #8]
-	str r0, [r1, #4]
-	ldr r0, [r1, #0xc]
-	str r0, [r1, #8]
-	ldr r0, [r1, #0x10]
-	str r0, [r1, #0xc]
-	ldr r0, [r1, #0x14]
-	str r0, [r1, #0x10]
-	ldr r0, [r1, #0x18]
-	str r0, [r1, #0x14]
-	ldr r0, [r1, #0x1c]
-	str r0, [r1, #0x18]
-	ldr r0, _0800A5C4 @ =0x000002FF
-	cmp r2, r0
-	bgt _0800A5C8
-	movs r7, #0x80
-	lsls r7, r7, #3
-	adds r0, r1, r7
-	ldr r0, [r0]
-	b _0800A5CA
-	.align 2, 0
-_0800A5C4: .4byte 0x000002FF
-_0800A5C8:
-	ldr r0, [r3, #0x58]
-_0800A5CA:
-	str r0, [r1, #0x1c]
-	movs r0, #0x80
-	lsls r0, r0, #1
-	adds r2, r2, r0
-	movs r0, #0xc0
-	lsls r0, r0, #2
-	cmp r2, r0
-	ble _0800A594
-	adds r1, r5, #0
-_0800A5DC:
-	ldr r0, [r3, #0x54]
-	lsls r0, r0, #3
-	cmp r1, r0
-	blt _0800A58A
-	adds r1, r3, #0
-	adds r1, #0x64
-	ldrh r0, [r1]
-	adds r0, #1
-	strh r0, [r1]
-	lsls r0, r0, #0x10
-	asrs r0, r0, #0x10
-	cmp r0, #0xf
-	ble _0800A5FC
-	adds r0, r3, #0
-	bl Proc_Break
-_0800A5FC:
-	pop {r4, r5, r6, r7}
-	pop {r0}
-	bx r0
-	.align 2, 0
-
 	thumb_func_start sub_800A604
 sub_800A604: @ 0x0800A604
 	ldr r1, _0800A610 @ =gUnk_08BFFE88
@@ -1107,13 +968,13 @@ _0800AD5C: .4byte gUnk_08BFFE90
 	thumb_func_start sub_800AD60
 sub_800AD60: @ 0x0800AD60
 	push {lr}
-	ldr r0, _0800AD70 @ =ProcScr_Event
+	ldr r0, _0800AD70 @ =ProcScr_UnkEvt
 	ldr r1, _0800AD74 @ =sub_800AD78
 	bl Proc_ForEach
 	pop {r0}
 	bx r0
 	.align 2, 0
-_0800AD70: .4byte ProcScr_Event
+_0800AD70: .4byte ProcScr_UnkEvt
 _0800AD74: .4byte sub_800AD78
 
 	thumb_func_start sub_800AD78
@@ -1281,7 +1142,7 @@ StartEventInternal: @ 0x0800AEB0
 	push {r4, r5, r6, r7, lr}
 	adds r7, r0, #0
 	adds r5, r1, #0
-	ldr r6, _0800AED8 @ =ProcScr_Event
+	ldr r6, _0800AED8 @ =ProcScr_UnkEvt
 	adds r0, r6, #0
 	bl Proc_Find
 	adds r4, r0, #0
@@ -1298,7 +1159,7 @@ StartEventInternal: @ 0x0800AEB0
 	strb r0, [r1]
 	b _0800B024
 	.align 2, 0
-_0800AED8: .4byte ProcScr_Event
+_0800AED8: .4byte ProcScr_UnkEvt
 _0800AEDC: .4byte 0x03004090
 _0800AEE0: .4byte 0x03004080
 _0800AEE4:

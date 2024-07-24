@@ -3098,7 +3098,7 @@ sub_800954C: @ 0x0800954C
 	lsls r0, r0, #2
 	ldr r2, _08009560 @ =0x44444444
 	movs r1, #0x19
-	bl sub_800A530
+	bl CleanTalkObjects
 	pop {r0}
 	bx r0
 	.align 2, 0

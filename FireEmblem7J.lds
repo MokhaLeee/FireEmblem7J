@@ -204,6 +204,8 @@ SECTIONS
 		src/face.o(.text);
 		asm/face.o(.text);
 		asm/talk.o(.text);
+		src/talk-advance.o(.text);
+		src/event.o(.text);
 		asm/event-engine.o(.text);
 		src/eventscr.o(.text);
 		asm/eventscr.o(.text);
@@ -357,6 +359,9 @@ SECTIONS
 		. = ALIGN(4); src/sprite.o(.data)
 		. = ALIGN(4); src/face.o(.data)
 		. = ALIGN(4); data/data_08BFFB20.o(.data)
+		. = ALIGN(4); src/talk-advance.o(.data)
+		. = ALIGN(4); src/event.o(.data)
+		. = ALIGN(4); data/data_event.o(.data)
 		. = ALIGN(4); src/eventscr_snowstormfx.o(.data)
 		. = ALIGN(4); data/data_08C012BC.o(.data)
 		. = ALIGN(4); src/eventscr_thunderfx.o(.data)

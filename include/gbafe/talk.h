@@ -115,6 +115,26 @@ void InitTalk(int chr, int lines, bool unpack_bubble);
 // ??? sub_800A3C8
 // ??? TalkBgSync
 
+struct ProcTalkAdvance {
+    PROC_HEADER;
+
+    STRUCT_PAD(0x29, 0x4C);
+
+    void * dst;
+    int unk50;
+    int lines, _fill;
+
+    STRUCT_PAD(0x5C, 0x64);
+
+    s16 timer;
+};
+
+bool TalkAdvanceDeamon_Loop(ProcPtr proc);
+void TalkAdvanceDeamon_End(ProcPtr proc);
+void CleanTalkObjects(int chr, int lines, int default_val, ProcPtr parent);
+void TalkAdvance_Init(struct ProcTalkAdvance * proc);
+void TalkAdvance_Loop(struct ProcTalkAdvance * proc);
+
 // ??? gUnk_08BFFB30
 // ??? sTalkSt
 // ??? gUnk_08BFFB6C
@@ -137,3 +157,5 @@ void InitTalk(int chr, int lines, bool unpack_bubble);
 // ??? gUnk_08BFFD9C
 // ??? gUnk_08BFFDB6
 // ??? gUnk_08BFFE18
+extern struct ProcCmd ProcScr_TalkAdvanceDeamon[];
+extern struct ProcCmd ProcScr_TalkAdvance[];

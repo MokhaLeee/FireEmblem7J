@@ -12329,14 +12329,14 @@ _080345B4: .4byte gUiTmScratchB
 	thumb_func_start sub_80345B8
 sub_80345B8: @ 0x080345B8
 	push {lr}
-	ldr r0, _080345C8 @ =ProcScr_Event
+	ldr r0, _080345C8 @ =ProcScr_UnkEvt
 	bl Proc_Find
 	cmp r0, #0
 	bne _080345CC
 	movs r0, #0
 	b _080345CE
 	.align 2, 0
-_080345C8: .4byte ProcScr_Event
+_080345C8: .4byte ProcScr_UnkEvt
 _080345CC:
 	movs r0, #1
 _080345CE:

@@ -66,11 +66,6 @@ enum event_func_ret_idx {
 #define LO8(half) (((half) & 0x00FF) >> 0)
 #define HI8(half) (((half) & 0xFF00) >> 8)
 
-// sub_800A508
-// sub_800A520
-// sub_800A530
-// sub_800A578
-// sub_800A580
 // sub_800A604
 // LoadUnitCore
 // sub_800A70C
@@ -574,10 +569,10 @@ struct ProcEventFade {
 
 void EventFadefx_Init(struct ProcEventFade * proc);
 void EventFadefx_Loop(struct ProcEventFade * proc);
-// NewEventFadefx
-// EventE7_FadeSteps
-// EventE6_StartFade
-// EventE7_EndFade
+void NewEventFadefx(u32 mask, int speed, int r, int g, int b, ProcPtr parent);
+int EventE7_FadeSteps(struct EventProc * proc);
+int EventE6_StartFade(struct EventProc * proc);
+int EventE7_EndFade(struct EventProc * proc);
 
 struct EventSpriteAnimConf {
     /* 00 */ const u16 * pal;
@@ -612,8 +607,6 @@ void sub_80124BC(ProcPtr proc);
 void sub_80125A4(ProcPtr proc);
 // sub_80125EC
 
-// ??? gUnk_08BFFE58
-// ??? gUnk_08BFFE70
 // ??? gUnk_08BFFE88
 // ??? gUnk_08BFFE8C
 // ??? gUnk_08BFFE90
@@ -621,7 +614,7 @@ void sub_80125A4(ProcPtr proc);
 // ??? gUnk_08BFFEF8
 // ??? gUnk_08BFFF30
 // ??? gUnk_08BFFF58
-extern struct ProcCmd ProcScr_Event[];
+extern struct ProcCmd ProcScr_UnkEvt[];
 // ??? gUnk_08C00018
 // ??? gEventCmdTable
 // ??? gUnk_08C0003C
