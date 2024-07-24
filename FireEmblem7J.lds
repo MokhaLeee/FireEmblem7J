@@ -213,7 +213,6 @@ SECTIONS
 		src/eventscr_thunderfx.o(.text);
 		src/eventscr_niniandisp.o(.text);
 		src/eventscr_screenflashfx.o(.text);
-		asm/eventscr_screenflashfx.o(.text);
 		asm/eventscr_fadefx.o(.text);
 		src/eventscr_spriteanim.o(.text);
 		asm/eventscr_08012378.o(.text);

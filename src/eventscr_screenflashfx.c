@@ -75,3 +75,24 @@ void StartScreenFlashing(int mask, int duration, int speed_fadein, int speed_fad
     proc->g = g;
     proc->b = b;
 }
+
+int EventE3_ScreenFlashing(struct EventProc * proc)
+{
+    u32 mask = proc->script[1];
+    int duration = proc->script[2];
+
+    /* todo: add macro on eventscr */
+    int speed_fadein  = proc->script[3] & 0xFF;
+    int speed_fadeout = (proc->script[3] >> 0x10) & 0xFF;
+
+    /* todo: add macro on color */
+    int r = (proc->script[4] >> 00) & 0x3FF;
+    int g = (proc->script[4] >> 10) & 0x3FF;
+    int b = (proc->script[4] >> 20) & 0x3FF;
+
+    if (proc->flags & EVENT_FLAG_SKIPPED)
+        return EVENT_CMDRET_CONTINUE;
+
+    StartScreenFlashing(mask, duration, speed_fadein, speed_fadeout, r, g, b, proc);
+    return EVENT_CMDRET_YIELD;
+}
