@@ -2694,7 +2694,7 @@ _0802F8D8: .4byte gActionSt
 _0802F8DC: .4byte gBmMapHidden
 _0802F8E0: .4byte gUnk_08C055CC
 _0802F8E4:
-	ldr r0, _0802F8FC @ =0x02033DFC
+	ldr r0, _0802F8FC @ =gWorkingMoveScr
 	movs r1, #0xa
 	strb r1, [r0]
 	movs r1, #4
@@ -2706,7 +2706,7 @@ _0802F8F2:
 	pop {r1}
 	bx r1
 	.align 2, 0
-_0802F8FC: .4byte 0x02033DFC
+_0802F8FC: .4byte gWorkingMoveScr
 
 	thumb_func_start sub_802F900
 sub_802F900: @ 0x0802F900
@@ -3313,12 +3313,12 @@ _0802FDB2:
 	movs r3, #0x11
 	ldrsb r3, [r5, r3]
 	bl GetFacingFromTo
-	ldr r1, _0802FE1C @ =0x02033DFC
+	ldr r1, _0802FE1C @ =gWorkingMoveScr
 	strb r0, [r1]
 	movs r0, #4
 	strb r0, [r1, #1]
 	adds r0, r4, #0
-	bl sub_806C8F0
+	bl SetMuMoveScript
 	adds r0, r4, #0
 	bl sub_806DD98
 	str r4, [r6, #0x54]
@@ -3330,13 +3330,13 @@ _0802FE0A:
 _0802FE10: .4byte gBattleActor
 _0802FE14: .4byte gUnk_08D64F4C
 _0802FE18: .4byte gBattleTarget
-_0802FE1C: .4byte 0x02033DFC
+_0802FE1C: .4byte gWorkingMoveScr
 
 	thumb_func_start sub_802FE20
 sub_802FE20: @ 0x0802FE20
 	push {lr}
 	ldr r0, [r0, #0x54]
-	bl sub_806D4BC
+	bl EndMu
 	pop {r0}
 	bx r0
 
@@ -3740,7 +3740,7 @@ sub_803012C: @ 0x0803012C
 	push {r4, lr}
 	movs r4, #0
 _08030130:
-	ldr r2, _08030158 @ =0x02033DFC
+	ldr r2, _08030158 @ =gWorkingMoveScr
 	adds r1, r4, #0
 	lsls r0, r1, #0x18
 	movs r3, #0x80
@@ -3760,7 +3760,7 @@ _08030130:
 	ldr r0, [r0]
 	mov pc, r0
 	.align 2, 0
-_08030158: .4byte 0x02033DFC
+_08030158: .4byte gWorkingMoveScr
 _0803015C: .4byte _08030160
 _08030160: @ jump table
 	.4byte _08030224 @ case 0
@@ -3870,7 +3870,7 @@ sub_803022C: @ 0x0803022C
 	lsls r0, r0, #0x18
 	asrs r0, r0, #0x18
 	adds r7, r2, #0
-	ldr r1, _08030274 @ =0x02033DFC
+	ldr r1, _08030274 @ =gWorkingMoveScr
 	mov ip, r1
 	cmp r6, r0
 	bgt _080302BE
@@ -3897,7 +3897,7 @@ _08030248:
 	b _080302A4
 	.align 2, 0
 _08030270: .4byte gUnk_08C05700
-_08030274: .4byte 0x02033DFC
+_08030274: .4byte gWorkingMoveScr
 _08030278:
 	cmp r1, r0
 	ble _08030282
@@ -3994,14 +3994,14 @@ sub_8030314: @ 0x08030314
 	ldrsh r0, [r1, r2]
 	movs r2, #0x16
 	ldrsh r1, [r1, r2]
-	ldr r2, _0803033C @ =0x02033DFC
-	bl sub_801A23C
+	ldr r2, _0803033C @ =gWorkingMoveScr
+	bl BuildBestMoveScript
 	bl sub_803012C
 	pop {r0}
 	bx r0
 	.align 2, 0
 _08030338: .4byte gBmSt
-_0803033C: .4byte 0x02033DFC
+_0803033C: .4byte gWorkingMoveScr
 
 	thumb_func_start sub_8030340
 sub_8030340: @ 0x08030340
@@ -4327,10 +4327,10 @@ _080305CC: .4byte 0x0202E3F0
 _080305D0: .4byte gBmSt
 _080305D4: .4byte 0x03004100
 _080305D8:
-	ldr r2, _080305FC @ =0x02033DFC
+	ldr r2, _080305FC @ =gWorkingMoveScr
 	adds r0, r3, #0
 	adds r1, r4, #0
-	bl sub_801A23C
+	bl BuildBestMoveScript
 	bl sub_803012C
 	bl sub_8030340
 	lsls r0, r0, #0x18
@@ -4342,7 +4342,7 @@ _080305F4:
 	pop {r0}
 	bx r0
 	.align 2, 0
-_080305FC: .4byte 0x02033DFC
+_080305FC: .4byte gWorkingMoveScr
 
 	thumb_func_start sub_8030600
 sub_8030600: @ 0x08030600
@@ -12665,7 +12665,7 @@ _08034824: .4byte gActiveUnit
 _08034828:
 	adds r0, r4, #0
 	bl sub_806EAA4
-	bl sub_806D4BC
+	bl EndMu
 _08034832:
 	ldr r1, _08034848 @ =gActionSt
 	movs r0, #0xa
@@ -12975,7 +12975,7 @@ sub_8034A74: @ 0x08034A74
 _08034A94:
 	adds r0, r4, #0
 	bl sub_806EAA4
-	bl sub_806D4BC
+	bl EndMu
 	bl RenderMap
 	bl RefreshEntityMaps
 	bl ForceSyncUnitSpriteSheet

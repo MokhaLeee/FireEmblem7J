@@ -456,7 +456,7 @@ sub_802CB9C: @ 0x0802CB9C
 	ldrb r0, [r0, #0xd]
 	bl GetUnit
 	bl sub_806EAA4
-	bl sub_806D4BC
+	bl EndMu
 	bl RefreshEntityMaps
 	bl RenderMap
 	bl RefreshUnitSprites

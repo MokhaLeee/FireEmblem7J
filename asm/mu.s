@@ -64,7 +64,7 @@ sub_806C274: @ 0x0806C274
 	rsbs r3, r3, #0
 	ldr r4, [r7, #8]
 	str r4, [sp]
-	bl sub_806C4A0
+	bl StartMuInternal
 	str r0, [r7, #0xc]
 	ldr r0, [r7, #0xc]
 	ldr r1, [r7]
@@ -164,7 +164,7 @@ _0806C330:
 	adds r1, r2, #0
 	adds r2, r3, #0
 	adds r3, r4, #0
-	bl sub_806C4A0
+	bl StartMuInternal
 	str r0, [r7, #4]
 	ldr r0, [r7, #4]
 	ldr r1, [r7]
@@ -205,8 +205,8 @@ sub_806C398: @ 0x0806C398
 	bx r0
 	.align 2, 0
 
-	thumb_func_start sub_806C3B0
-sub_806C3B0: @ 0x0806C3B0
+	thumb_func_start EnableMuCamera
+EnableMuCamera: @ 0x0806C3B0
 	push {r7, lr}
 	sub sp, #4
 	mov r7, sp
@@ -228,8 +228,8 @@ sub_806C3B0: @ 0x0806C3B0
 	pop {r0}
 	bx r0
 
-	thumb_func_start sub_806C3D8
-sub_806C3D8: @ 0x0806C3D8
+	thumb_func_start DisableMuCamera
+DisableMuCamera: @ 0x0806C3D8
 	push {r7, lr}
 	sub sp, #4
 	mov r7, sp
@@ -336,8 +336,8 @@ sub_806C474: @ 0x0806C474
 	bx r0
 	.align 2, 0
 
-	thumb_func_start sub_806C4A0
-sub_806C4A0: @ 0x0806C4A0
+	thumb_func_start StartMuInternal
+StartMuInternal: @ 0x0806C4A0
 	push {r4, r7, lr}
 	sub sp, #0x1c
 	mov r7, sp
@@ -590,7 +590,7 @@ _0806C52C:
 	adds r0, r7, #4
 	ldrh r1, [r0]
 	adds r0, r1, #0
-	bl sub_806DD6C
+	bl GetMuAnimForJid
 	adds r1, r0, #0
 	adds r0, r1, #0
 	movs r1, #0xa
@@ -665,8 +665,8 @@ _0806C730:
 	pop {r1}
 	bx r1
 
-	thumb_func_start sub_806C738
-sub_806C738: @ 0x0806C738
+	thumb_func_start SetMuFacing
+SetMuFacing: @ 0x0806C738
 	push {r7, lr}
 	sub sp, #8
 	mov r7, sp
@@ -732,12 +732,12 @@ sub_806C790: @ 0x0806C790
 	beq _0806C7BC
 	ldr r0, [r7]
 	movs r1, #1
-	bl sub_806C738
+	bl SetMuFacing
 	b _0806C7C4
 _0806C7BC:
 	ldr r0, [r7]
 	movs r1, #2
-	bl sub_806C738
+	bl SetMuFacing
 _0806C7C4:
 	add sp, #4
 	pop {r7}
@@ -789,7 +789,7 @@ _0806C818:
 	ldr r1, [r7, #4]
 	adds r0, r1, #0
 	ldr r1, [r7]
-	bl sub_806C8F0
+	bl SetMuMoveScript
 _0806C822:
 	add sp, #8
 	pop {r7}
@@ -882,8 +882,8 @@ _0806C8B0:
 	pop {r1}
 	bx r1
 
-	thumb_func_start sub_806C8B8
-sub_806C8B8: @ 0x0806C8B8
+	thumb_func_start IsMuActive
+IsMuActive: @ 0x0806C8B8
 	push {r7, lr}
 	sub sp, #4
 	mov r7, sp
@@ -918,8 +918,8 @@ _0806C8E8:
 	pop {r1}
 	bx r1
 
-	thumb_func_start sub_806C8F0
-sub_806C8F0: @ 0x0806C8F0
+	thumb_func_start SetMuMoveScript
+SetMuMoveScript: @ 0x0806C8F0
 	push {r7, lr}
 	sub sp, #0xc
 	mov r7, sp
@@ -975,14 +975,14 @@ _0806C930:
 	adds r2, r1, #0
 	strb r2, [r0]
 	ldr r0, [r7]
-	bl sub_806CAD0
+	bl PlayMuStepSe
 	add sp, #0xc
 	pop {r7}
 	pop {r0}
 	bx r0
 
-	thumb_func_start sub_806C964
-sub_806C964: @ 0x0806C964
+	thumb_func_start StartMuScripted
+StartMuScripted: @ 0x0806C964
 	push {r4, r7, lr}
 	sub sp, #0x14
 	add r7, sp, #4
@@ -1006,7 +1006,7 @@ sub_806C964: @ 0x0806C964
 	rsbs r3, r3, #0
 	ldr r4, [r7, #8]
 	str r4, [sp]
-	bl sub_806C4A0
+	bl StartMuInternal
 	str r0, [r7, #0xc]
 	ldr r0, [r7, #0xc]
 	cmp r0, #0
@@ -1017,7 +1017,7 @@ _0806C9A2:
 	ldr r1, [r7, #0xc]
 	adds r0, r1, #0
 	ldr r1, [r7, #0x1c]
-	bl sub_806C8F0
+	bl SetMuMoveScript
 	ldr r1, [r7, #0xc]
 	adds r0, r1, #0
 	b _0806C9B2
@@ -1028,8 +1028,8 @@ _0806C9B2:
 	bx r1
 	.align 2, 0
 
-	thumb_func_start sub_806C9BC
-sub_806C9BC: @ 0x0806C9BC
+	thumb_func_start MuStepSe_Init
+MuStepSe_Init: @ 0x0806C9BC
 	push {r7, lr}
 	sub sp, #4
 	mov r7, sp
@@ -1061,8 +1061,8 @@ sub_806C9BC: @ 0x0806C9BC
 	pop {r0}
 	bx r0
 
-	thumb_func_start sub_806C9F8
-sub_806C9F8: @ 0x0806C9F8
+	thumb_func_start MuStepSe_PlaySeA
+MuStepSe_PlaySeA: @ 0x0806C9F8
 	push {r7, lr}
 	sub sp, #4
 	mov r7, sp
@@ -1074,15 +1074,15 @@ sub_806C9F8: @ 0x0806C9F8
 	adds r2, #0x64
 	movs r3, #0
 	ldrsh r1, [r2, r3]
-	bl sub_80151FC
+	bl PlaySeSpacial
 	add sp, #4
 	pop {r7}
 	pop {r0}
 	bx r0
 	.align 2, 0
 
-	thumb_func_start sub_806CA1C
-sub_806CA1C: @ 0x0806CA1C
+	thumb_func_start MuStepSe_PlaySeB
+MuStepSe_PlaySeB: @ 0x0806CA1C
 	push {r7, lr}
 	sub sp, #4
 	mov r7, sp
@@ -1098,7 +1098,7 @@ sub_806CA1C: @ 0x0806CA1C
 	adds r2, #0x66
 	movs r3, #0
 	ldrsh r1, [r2, r3]
-	bl sub_80151FC
+	bl PlaySeSpacial
 _0806CA3E:
 	add sp, #4
 	pop {r7}
@@ -1106,22 +1106,22 @@ _0806CA3E:
 	bx r0
 	.align 2, 0
 
-	thumb_func_start sub_806CA48
-sub_806CA48: @ 0x0806CA48
+	thumb_func_start StartPlayMuStepSe
+StartPlayMuStepSe: @ 0x0806CA48
 	push {r7, lr}
 	sub sp, #0x10
 	mov r7, sp
 	str r0, [r7]
 	str r1, [r7, #4]
 	str r2, [r7, #8]
-	ldr r1, _0806CA98 @ =gUnk_08D64DB0
+	ldr r1, _0806CA98 @ =ProcScr_MuStepSe
 	adds r0, r1, #0
 	bl Proc_Find
 	str r0, [r7, #0xc]
 	ldr r0, [r7, #0xc]
 	cmp r0, #0
 	bne _0806CA70
-	ldr r1, _0806CA98 @ =gUnk_08D64DB0
+	ldr r1, _0806CA98 @ =ProcScr_MuStepSe
 	adds r0, r1, #0
 	movs r1, #3
 	bl Proc_Start
@@ -1148,7 +1148,7 @@ _0806CA70:
 	strh r2, [r1]
 	b _0806CAC6
 	.align 2, 0
-_0806CA98: .4byte gUnk_08D64DB0
+_0806CA98: .4byte ProcScr_MuStepSe
 _0806CA9C:
 	ldr r0, [r7, #0xc]
 	ldr r1, [r0, #0x60]
@@ -1178,22 +1178,22 @@ _0806CAC6:
 	bx r0
 	.align 2, 0
 
-	thumb_func_start sub_806CAD0
-sub_806CAD0: @ 0x0806CAD0
+	thumb_func_start PlayMuStepSe
+PlayMuStepSe: @ 0x0806CAD0
 	push {r7, lr}
 	sub sp, #4
 	mov r7, sp
 	str r0, [r7]
 	ldr r0, [r7]
-	bl sub_806D2E4
+	bl UpdateMuStepSounds
 	add sp, #4
 	pop {r7}
 	pop {r0}
 	bx r0
 	.align 2, 0
 
-	thumb_func_start sub_806CAE8
-sub_806CAE8: @ 0x0806CAE8
+	thumb_func_start EndMuMovement
+EndMuMovement: @ 0x0806CAE8
 	push {r7, lr}
 	sub sp, #4
 	mov r7, sp
@@ -1203,8 +1203,8 @@ sub_806CAE8: @ 0x0806CAE8
 	pop {r0}
 	bx r0
 
-	thumb_func_start sub_806CAF8
-sub_806CAF8: @ 0x0806CAF8
+	thumb_func_start RunMuMoveScript
+RunMuMoveScript: @ 0x0806CAF8
 	push {r4, r5, r7, lr}
 	sub sp, #0xc
 	mov r7, sp
@@ -1306,7 +1306,7 @@ _0806CB88:
 	b _0806CD22
 _0806CBD4:
 	ldr r0, [r7]
-	bl sub_806CAE8
+	bl EndMuMovement
 	ldr r0, [r7]
 	adds r1, r0, #0
 	adds r0, #0x3f
@@ -1345,19 +1345,19 @@ _0806CBD4:
 	movs r4, #0xe
 	ldrsh r3, [r2, r4]
 	subs r1, r1, r3
-	bl sub_806CD2C
+	bl StartMuFogBump
 	b _0806CD22
 	.align 2, 0
 _0806CC2C: .4byte gBmSt
 _0806CC30:
 	ldr r0, [r7]
-	bl sub_806D4EC
+	bl HaltMu
 	b _0806CD22
 _0806CC38:
 	ldr r0, [r7]
-	bl sub_806CAE8
+	bl EndMuMovement
 	ldr r0, [r7]
-	bl sub_806D4BC
+	bl EndMu
 	b _0806CD22
 _0806CC46:
 	adds r0, r7, #4
@@ -1378,13 +1378,13 @@ _0806CC46:
 	adds r1, #0x41
 	ldrb r2, [r1]
 	adds r0, r2, #0
-	bl sub_806DD6C
+	bl GetMuAnimForJid
 	str r0, [r7, #8]
 	adds r0, r7, #4
 	movs r3, #0
 	ldrsh r1, [r0, r3]
 	ldr r0, [r7]
-	bl sub_806C738
+	bl SetMuFacing
 	ldr r0, [r7]
 	adds r1, r0, #0
 	adds r0, #0x3f
@@ -1424,13 +1424,13 @@ _0806CC96:
 	adds r1, #0x41
 	ldrb r2, [r1]
 	adds r0, r2, #0
-	bl sub_806DD6C
+	bl GetMuAnimForJid
 	str r0, [r7, #8]
 	adds r0, r7, #4
 	movs r2, #0
 	ldrsh r1, [r0, r2]
 	ldr r0, [r7]
-	bl sub_806C738
+	bl SetMuFacing
 _0806CCD8:
 	b _0806CB00
 _0806CCDA:
@@ -1462,11 +1462,11 @@ _0806CCDA:
 	b _0806CB00
 _0806CD0E:
 	ldr r0, [r7]
-	bl sub_806C3B0
+	bl EnableMuCamera
 	b _0806CB00
 _0806CD16:
 	ldr r0, [r7]
-	bl sub_806C3D8
+	bl DisableMuCamera
 	b _0806CB00
 _0806CD1E:
 	b _0806CD20
@@ -1479,8 +1479,8 @@ _0806CD22:
 	bx r0
 	.align 2, 0
 
-	thumb_func_start sub_806CD2C
-sub_806CD2C: @ 0x0806CD2C
+	thumb_func_start StartMuFogBump
+StartMuFogBump: @ 0x0806CD2C
 	push {r7, lr}
 	sub sp, #0x10
 	mov r7, sp
@@ -2210,7 +2210,7 @@ _0806D2B4:
 	cmp r0, #0
 	bne _0806D2D0
 	ldr r0, [r7]
-	bl sub_806D2E4
+	bl UpdateMuStepSounds
 _0806D2D0:
 	add sp, #8
 	pop {r4, r5, r7}
@@ -2221,8 +2221,8 @@ _0806D2D8: .4byte gUnk_08D64E00
 _0806D2DC: .4byte 0xFFFFFF00
 _0806D2E0: .4byte gBmSt
 
-	thumb_func_start sub_806D2E4
-sub_806D2E4: @ 0x0806D2E4
+	thumb_func_start UpdateMuStepSounds
+UpdateMuStepSounds: @ 0x0806D2E4
 	push {r4, r7, lr}
 	sub sp, #0x14
 	mov r7, sp
@@ -2356,7 +2356,7 @@ _0806D394:
 	adds r3, #0x10
 	movs r4, #0
 	ldrsh r2, [r3, r4]
-	bl sub_806CA48
+	bl StartPlayMuStepSe
 _0806D3EE:
 	add sp, #0x14
 	pop {r4, r7}
@@ -2397,7 +2397,7 @@ sub_806D3F8: @ 0x0806D3F8
 	b _0806D438
 _0806D432:
 	ldr r0, [r7]
-	bl sub_806CAF8
+	bl RunMuMoveScript
 _0806D438:
 	ldr r0, _0806D468 @ =gUnk_08D64F2C
 	ldr r2, [r7]
@@ -2468,8 +2468,8 @@ EndAllMus: @ 0x0806D4A4
 	.align 2, 0
 _0806D4B8: .4byte gUnk_08D64F4C
 
-	thumb_func_start sub_806D4BC
-sub_806D4BC: @ 0x0806D4BC
+	thumb_func_start EndMu
+EndMu: @ 0x0806D4BC
 	push {r7, lr}
 	sub sp, #4
 	mov r7, sp
@@ -2496,14 +2496,14 @@ sub_806D4D4: @ 0x0806D4D4
 	bx r0
 	.align 2, 0
 
-	thumb_func_start sub_806D4EC
-sub_806D4EC: @ 0x0806D4EC
+	thumb_func_start HaltMu
+HaltMu: @ 0x0806D4EC
 	push {r7, lr}
 	sub sp, #4
 	mov r7, sp
 	str r0, [r7]
 	ldr r0, [r7]
-	bl sub_806CAE8
+	bl EndMuMovement
 	ldr r0, [r7]
 	adds r1, r0, #0
 	adds r0, #0x3f
@@ -3662,8 +3662,8 @@ _0806DD64:
 	pop {r1}
 	bx r1
 
-	thumb_func_start sub_806DD6C
-sub_806DD6C: @ 0x0806DD6C
+	thumb_func_start GetMuAnimForJid
+GetMuAnimForJid: @ 0x0806DD6C
 	push {r7, lr}
 	sub sp, #4
 	mov r7, sp
@@ -3901,7 +3901,7 @@ sub_806DEC4: @ 0x0806DEC4
 	ldr r0, [r7]
 	ldr r1, [r0, #0x54]
 	adds r0, r1, #0
-	bl sub_806D4BC
+	bl EndMu
 	ldr r0, [r7]
 	bl Proc_Break
 _0806DF4C:
@@ -4251,7 +4251,7 @@ sub_806E154: @ 0x0806E154
 	ldr r0, [r7]
 	ldr r1, [r0, #0x54]
 	adds r0, r1, #0
-	bl sub_806D4BC
+	bl EndMu
 	ldr r0, [r7]
 	bl Proc_Break
 _0806E1F4:
@@ -5300,7 +5300,7 @@ sub_806E974: @ 0x0806E974
 	adds r1, #0x41
 	ldrb r2, [r1]
 	adds r0, r2, #0
-	bl sub_806DD6C
+	bl GetMuAnimForJid
 	adds r1, r0, #0
 	adds r0, r4, #0
 	bl SetSpriteAnimInfo

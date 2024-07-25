@@ -1550,7 +1550,7 @@ _08013FAE:
 _08013FBE:
 	movs r0, #0x9a
 	adds r1, r4, #0
-	bl sub_80151FC
+	bl PlaySeSpacial
 _08013FC6:
 	pop {r4, r5}
 	pop {r0}
@@ -4122,8 +4122,8 @@ _080151F8:
 	pop {r1}
 	bx r1
 
-	thumb_func_start sub_80151FC
-sub_80151FC: @ 0x080151FC
+	thumb_func_start PlaySeSpacial
+PlaySeSpacial: @ 0x080151FC
 	push {r4, r5, r6, lr}
 	adds r4, r0, #0
 	adds r6, r1, #0

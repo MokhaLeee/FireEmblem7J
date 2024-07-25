@@ -111,6 +111,7 @@ SECTIONS
 		. = 0x02E3E8; gBmMapFog = .;
 		. = 0x02E3EC; gBmMapHidden = .;
 		. = 0x02E3F0; gBmMapOther = .;
+		. = 0x033DFC; gWorkingMoveScr = .;
 		. = 0x033E40; gUnitSpriteSlots = .;
 		. = 0x039F10; gUnitSpriteSmallAllocCount = .;
 		. = 0x039F14; gUnitSpriteLargeAllocCount = .;

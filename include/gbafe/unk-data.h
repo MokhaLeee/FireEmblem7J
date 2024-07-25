@@ -1874,7 +1874,7 @@ extern uintptr_t ProcScr_CamMove[];
 // ??? gChapterDataAssetTable
 // ??? gWorldMapEvents
 // ??? gUnk_08D64D98
-// ??? gUnk_08D64DB0
+// ??? ProcScr_MuStepSe
 // ??? gUnk_08D64DE0
 // ??? gUnk_08D64E00
 // ??? gUnk_08D64E10

@@ -1187,9 +1187,9 @@ sub_803569C: @ 0x0803569C
 	ldr r4, _08035708 @ =0x0203A978
 	ldrb r0, [r4, #2]
 	ldrb r1, [r4, #3]
-	ldr r7, _0803570C @ =0x02033DFC
+	ldr r7, _0803570C @ =gWorkingMoveScr
 	adds r2, r7, #0
-	bl sub_801A23C
+	bl BuildBestMoveScript
 	ldr r0, [r6]
 	movs r1, #0x10
 	ldrsb r1, [r0, r1]
@@ -1218,7 +1218,7 @@ _080356FA:
 _08035700: .4byte gActiveUnit
 _08035704: .4byte gBmMapMovement
 _08035708: .4byte 0x0203A978
-_0803570C: .4byte 0x02033DFC
+_0803570C: .4byte gWorkingMoveScr
 _08035710: .4byte gActionSt
 
 	thumb_func_start sub_8035714
@@ -2037,7 +2037,7 @@ sub_8035D74: @ 0x08035D74
 	adds r2, r0, #0
 	adds r0, r4, #0
 	adds r1, r5, #0
-	bl GenerateExtendedMovementMapOnRange
+	bl MapFloodRange_Unitless
 	bl sub_801A5C8
 	ldr r0, _08035E14 @ =0x0000FFFF
 	strh r0, [r6]
@@ -2159,7 +2159,7 @@ sub_8035E64: @ 0x08035E64
 	adds r2, r0, #0
 	adds r0, r4, #0
 	adds r1, r5, #0
-	bl GenerateExtendedMovementMapOnRange
+	bl MapFloodRange_Unitless
 	ldr r0, _08035EF8 @ =0x0000FFFF
 	strh r0, [r6]
 	movs r4, #1
@@ -2251,7 +2251,7 @@ sub_8035F10: @ 0x08035F10
 	adds r2, r0, #0
 	adds r0, r4, #0
 	adds r1, r5, #0
-	bl GenerateExtendedMovementMapOnRange
+	bl MapFloodRange_Unitless
 	ldr r2, _08035F54 @ =0x0000FFFF
 	str r2, [sp, #0xc]
 	ldr r0, _08035F58 @ =gBmMapSize
@@ -4376,7 +4376,7 @@ _08036F0C:
 	adds r2, r0, #0
 	adds r0, r4, #0
 	adds r1, r5, #0
-	bl GenerateExtendedMovementMapOnRange
+	bl MapFloodRange_Unitless
 	adds r0, r6, #0
 	movs r1, #0
 	adds r2, r7, #0
@@ -4524,7 +4524,7 @@ _08037038:
 	adds r2, r0, #0
 	adds r0, r5, #0
 	adds r1, r4, #0
-	bl GenerateExtendedMovementMapOnRange
+	bl MapFloodRange_Unitless
 	b _0803706C
 	.align 2, 0
 _08037058: .4byte gActiveUnit
@@ -4945,8 +4945,8 @@ _080373A4: .4byte 0x0202E3F0
 _080373A8: .4byte 0x0202E3E4
 _080373AC: .4byte 0xFFFF0000
 
-	thumb_func_start sub_80373B0
-sub_80373B0: @ 0x080373B0
+	thumb_func_start AiGetUnitClosestValidPosition
+AiGetUnitClosestValidPosition: @ 0x080373B0
 	push {r4, r5, r6, r7, lr}
 	mov r7, sl
 	mov r6, sb
@@ -4991,7 +4991,7 @@ _08037400:
 	adds r2, r0, #0
 	adds r0, r4, #0
 	adds r1, r5, #0
-	bl GenerateExtendedMovementMapOnRange
+	bl MapFloodRange_Unitless
 	ldr r0, [sp, #4]
 	bl sub_8019FFC
 	movs r1, #0x7c
@@ -7717,7 +7717,7 @@ sub_8038894: @ 0x08038894
 	adds r2, r0, #0
 	adds r0, r4, #0
 	adds r1, r5, #0
-	bl GenerateExtendedMovementMapOnRange
+	bl MapFloodRange_Unitless
 	ldr r6, _080388E8 @ =0x030013B8
 	ldr r0, [r6]
 	adds r0, #3
@@ -7778,7 +7778,7 @@ sub_8038910: @ 0x08038910
 	adds r2, r0, #0
 	adds r0, r4, #0
 	adds r1, r5, #0
-	bl GenerateExtendedMovementMapOnRange
+	bl MapFloodRange_Unitless
 	ldr r6, _08038964 @ =0x030013B8
 	ldr r0, [r6]
 	ldr r0, [r0, #8]

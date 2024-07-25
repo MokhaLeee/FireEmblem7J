@@ -551,8 +551,8 @@ gWorldMapEvents:	@ 0x08D64CE4
 gUnk_08D64D98:	@ 0x08D64D98
 	.incbin "FireEmblem7J.base.gba", 0xD64D98, 0xD64DB0 - 0xD64D98
 
-	.global gUnk_08D64DB0
-gUnk_08D64DB0:	@ 0x08D64DB0
+	.global ProcScr_MuStepSe
+ProcScr_MuStepSe:	@ 0x08D64DB0
 	.incbin "FireEmblem7J.base.gba", 0xD64DB0, 0xD64DE0 - 0xD64DB0
 
 	.global gUnk_08D64DE0

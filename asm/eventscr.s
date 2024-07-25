@@ -935,8 +935,8 @@ sub_800BEEC: @ 0x0800BEEC
 	pop {r1}
 	bx r1
 
-	thumb_func_start sub_800BF1C
-sub_800BF1C: @ 0x0800BF1C
+	thumb_func_start CanDisplayUnitMovement
+CanDisplayUnitMovement: @ 0x0800BF1C
 	push {r4, r5, r6, lr}
 	adds r4, r0, #0
 	adds r5, r1, #0
@@ -1079,7 +1079,7 @@ _0800C022:
 	adds r1, r7, #0
 	mov r2, sb
 	movs r3, #1
-	bl sub_800C9F8
+	bl TryMoveUnit
 	bl RefreshUnitSprites
 	movs r0, #0
 	b _0800C05A
@@ -1087,7 +1087,7 @@ _0800C036:
 	adds r0, r5, #0
 	mov r1, r8
 	mov r2, sl
-	bl sub_800BF1C
+	bl CanDisplayUnitMovement
 	lsls r0, r0, #0x18
 	cmp r0, #0
 	beq _0800C058
@@ -1096,7 +1096,7 @@ _0800C036:
 	adds r1, r6, #0
 	adds r2, r7, #0
 	mov r3, sb
-	bl sub_800CA84
+	bl TryMoveUnitDisplayed
 	movs r0, #0
 	b _0800C05A
 _0800C058:
@@ -1214,7 +1214,7 @@ _0800C120:
 	adds r1, r6, #0
 	mov r2, r8
 	movs r3, #1
-	bl sub_800C9F8
+	bl TryMoveUnit
 	bl RefreshUnitSprites
 	movs r0, #0
 	b _0800C15A
@@ -1222,7 +1222,7 @@ _0800C134:
 	adds r0, r4, #0
 	adds r1, r7, #0
 	mov r2, sb
-	bl sub_800BF1C
+	bl CanDisplayUnitMovement
 	lsls r0, r0, #0x18
 	cmp r0, #0
 	beq _0800C158
@@ -1232,7 +1232,7 @@ _0800C134:
 	adds r1, r5, #0
 	adds r2, r6, #0
 	mov r3, r8
-	bl sub_800CA84
+	bl TryMoveUnitDisplayed
 	movs r0, #0
 	b _0800C15A
 _0800C158:
@@ -1305,7 +1305,7 @@ _0800C1CC:
 	adds r1, r7, #0
 	mov r2, r8
 	movs r3, #1
-	bl sub_800C9F8
+	bl TryMoveUnit
 	bl RefreshUnitSprites
 	movs r0, #0
 	b _0800C208
@@ -1315,7 +1315,7 @@ _0800C1E0:
 	movs r2, #0x11
 	ldrsb r2, [r6, r2]
 	adds r0, r4, #0
-	bl sub_800BF1C
+	bl CanDisplayUnitMovement
 	lsls r0, r0, #0x18
 	cmp r0, #0
 	beq _0800C206
@@ -1324,7 +1324,7 @@ _0800C1E0:
 	adds r1, r6, #0
 	adds r2, r7, #0
 	mov r3, r8
-	bl sub_800CA84
+	bl TryMoveUnitDisplayed
 	movs r0, #0
 	b _0800C208
 _0800C206:
@@ -1396,7 +1396,7 @@ _0800C278:
 	adds r1, r6, #0
 	adds r2, r7, #0
 	movs r3, #1
-	bl sub_800C9F8
+	bl TryMoveUnit
 	bl RefreshUnitSprites
 	movs r0, #0
 	b _0800C2B6
@@ -1406,7 +1406,7 @@ _0800C28C:
 	movs r2, #0x11
 	ldrsb r2, [r5, r2]
 	adds r0, r4, #0
-	bl sub_800BF1C
+	bl CanDisplayUnitMovement
 	lsls r0, r0, #0x18
 	cmp r0, #0
 	beq _0800C2B4
@@ -1416,7 +1416,7 @@ _0800C28C:
 	adds r1, r5, #0
 	adds r2, r6, #0
 	adds r3, r7, #0
-	bl sub_800CA84
+	bl TryMoveUnitDisplayed
 	movs r0, #0
 	b _0800C2B6
 _0800C2B4:
@@ -1493,7 +1493,7 @@ _0800C32A:
 	adds r1, r4, #0
 	adds r2, r5, #0
 	movs r3, #1
-	bl sub_800C9F8
+	bl TryMoveUnit
 	bl RefreshUnitSprites
 	movs r0, #0
 	b _0800C368
@@ -1503,7 +1503,7 @@ _0800C33E:
 	movs r2, #0x11
 	ldrsb r2, [r6, r2]
 	adds r0, r7, #0
-	bl sub_800BF1C
+	bl CanDisplayUnitMovement
 	lsls r0, r0, #0x18
 	cmp r0, #0
 	beq _0800C366
@@ -1513,7 +1513,7 @@ _0800C33E:
 	adds r1, r6, #0
 	adds r2, r4, #0
 	adds r3, r5, #0
-	bl sub_800CA84
+	bl TryMoveUnitDisplayed
 	movs r0, #0
 	b _0800C368
 _0800C366:
@@ -1566,7 +1566,7 @@ _0800C3A4:
 	ldr r2, [sp, #4]
 	adds r0, r5, #0
 	movs r3, #0
-	bl sub_800C9F8
+	bl TryMoveUnit
 	bl RefreshUnitSprites
 	movs r0, #0
 	b _0800C3F4
@@ -1576,7 +1576,7 @@ _0800C3CE:
 	movs r2, #0x11
 	ldrsb r2, [r5, r2]
 	adds r0, r4, #0
-	bl sub_800BF1C
+	bl CanDisplayUnitMovement
 	lsls r0, r0, #0x18
 	cmp r0, #0
 	beq _0800C3F2
@@ -1584,7 +1584,7 @@ _0800C3CE:
 	adds r1, r5, #0
 	adds r2, r6, #0
 	movs r3, #0
-	bl sub_800CB6C
+	bl DisplayMovement
 	movs r0, #0
 	b _0800C3F4
 _0800C3F2:
@@ -1667,7 +1667,7 @@ _0800C470:
 	ldr r2, [sp, #4]
 	adds r0, r5, #0
 	movs r3, #0
-	bl sub_800C9F8
+	bl TryMoveUnit
 	bl RefreshUnitSprites
 	movs r0, #0
 	b _0800C4B6
@@ -1677,7 +1677,7 @@ _0800C494:
 	ldr r1, [sp]
 	ldr r2, [sp, #4]
 	adds r0, r4, #0
-	bl sub_800BF1C
+	bl CanDisplayUnitMovement
 	lsls r0, r0, #0x18
 	cmp r0, #0
 	beq _0800C4B4
@@ -1685,7 +1685,7 @@ _0800C494:
 	adds r1, r5, #0
 	adds r2, r6, #0
 	movs r3, #0
-	bl sub_800CB6C
+	bl DisplayMovement
 	movs r0, #0
 	b _0800C4B6
 _0800C4B4:
@@ -1736,7 +1736,7 @@ _0800C504:
 	adds r1, r7, #0
 	mov r2, r8
 	movs r3, #1
-	bl sub_800C9F8
+	bl TryMoveUnit
 	bl RefreshUnitSprites
 	movs r0, #0
 	b _0800C540
@@ -1746,7 +1746,7 @@ _0800C518:
 	movs r2, #0x11
 	ldrsb r2, [r4, r2]
 	adds r0, r5, #0
-	bl sub_800BF1C
+	bl CanDisplayUnitMovement
 	lsls r0, r0, #0x18
 	cmp r0, #0
 	beq _0800C53E
@@ -1755,7 +1755,7 @@ _0800C518:
 	adds r1, r4, #0
 	adds r2, r7, #0
 	mov r3, r8
-	bl sub_800CA84
+	bl TryMoveUnitDisplayed
 	movs r0, #0
 	b _0800C540
 _0800C53E:
@@ -1824,7 +1824,7 @@ _0800C5AC:
 	adds r1, r7, #0
 	mov r2, r8
 	movs r3, #1
-	bl sub_800C9F8
+	bl TryMoveUnit
 	bl RefreshUnitSprites
 	movs r0, #0
 	b _0800C5E8
@@ -1834,7 +1834,7 @@ _0800C5C0:
 	movs r2, #0x11
 	ldrsb r2, [r6, r2]
 	adds r0, r4, #0
-	bl sub_800BF1C
+	bl CanDisplayUnitMovement
 	lsls r0, r0, #0x18
 	cmp r0, #0
 	beq _0800C5E6
@@ -1843,7 +1843,7 @@ _0800C5C0:
 	adds r1, r6, #0
 	adds r2, r7, #0
 	mov r3, r8
-	bl sub_800CA84
+	bl TryMoveUnitDisplayed
 	movs r0, #0
 	b _0800C5E8
 _0800C5E6:
@@ -1959,7 +1959,7 @@ _0800C6B0:
 	ldr r2, [sp, #8]
 	adds r0, r5, #0
 	movs r3, #0
-	bl sub_800C9F8
+	bl TryMoveUnit
 	bl RefreshUnitSprites
 	b _0800C6FC
 _0800C6C2:
@@ -1968,7 +1968,7 @@ _0800C6C2:
 	movs r2, #0x11
 	ldrsb r2, [r5, r2]
 	adds r0, r4, #0
-	bl sub_800BF1C
+	bl CanDisplayUnitMovement
 	lsls r0, r0, #0x18
 	cmp r0, #0
 	bne _0800C6DA
@@ -1983,14 +1983,14 @@ _0800C6DA:
 	str r0, [sp]
 	adds r0, r4, #0
 	adds r1, r5, #0
-	bl sub_800CA84
+	bl TryMoveUnitDisplayed
 	b _0800C6FC
 _0800C6F0:
 	adds r0, r4, #0
 	adds r1, r5, #0
 	adds r2, r7, #0
 	movs r3, #0
-	bl sub_800CB6C
+	bl DisplayMovement
 _0800C6FC:
 	movs r0, #0
 _0800C6FE:
@@ -2060,7 +2060,7 @@ _0800C776:
 	ldr r2, [sp, #4]
 	adds r0, r5, #0
 	movs r3, #0
-	bl sub_800C9F8
+	bl TryMoveUnit
 	bl RefreshUnitSprites
 	b _0800C7BE
 _0800C788:
@@ -2069,7 +2069,7 @@ _0800C788:
 	movs r2, #0x11
 	ldrsb r2, [r5, r2]
 	adds r0, r4, #0
-	bl sub_800BF1C
+	bl CanDisplayUnitMovement
 	lsls r0, r0, #0x18
 	cmp r0, #0
 	bne _0800C7A0
@@ -2082,14 +2082,14 @@ _0800C7A0:
 	adds r1, r5, #0
 	mov r2, r8
 	movs r3, #0
-	bl sub_800CB6C
+	bl DisplayMovement
 	b _0800C7BE
 _0800C7B2:
 	adds r0, r4, #0
 	adds r1, r5, #0
 	adds r2, r7, #0
 	movs r3, #0
-	bl sub_800CB6C
+	bl DisplayMovement
 _0800C7BE:
 	movs r0, #0
 _0800C7C0:
@@ -2175,7 +2175,7 @@ _0800C852:
 	adds r0, r5, #0
 	adds r1, r3, #0
 	movs r3, #1
-	bl sub_800C9F8
+	bl TryMoveUnit
 	bl RefreshUnitSprites
 _0800C860:
 	movs r0, #0
@@ -2220,7 +2220,7 @@ _0800C894:
 _0800C8A8:
 	adds r0, r5, #0
 	movs r3, #1
-	bl sub_800C9F8
+	bl TryMoveUnit
 	bl RefreshUnitSprites
 	movs r0, #0
 	pop {r4, r5}
@@ -2281,8 +2281,8 @@ _0800C91C:
 _0800C924: .4byte 0x0202A5A6
 _0800C928: .4byte 0x0202A5AA
 
-	thumb_func_start sub_800C92C
-sub_800C92C: @ 0x0800C92C
+	thumb_func_start EvtCmd_MovePidNextTo
+EvtCmd_MovePidNextTo: @ 0x0800C92C
 	push {r4, r5, r6, r7, lr}
 	mov r7, r8
 	push {r7}
@@ -2346,7 +2346,7 @@ _0800C9A8:
 	mov r1, r8
 	adds r2, r7, #0
 	movs r3, #1
-	bl sub_800C9F8
+	bl TryMoveUnit
 	bl RefreshUnitSprites
 _0800C9B8:
 	movs r0, #0
@@ -2360,7 +2360,7 @@ _0800C9C4:
 	movs r2, #0x11
 	ldrsb r2, [r5, r2]
 	adds r0, r4, #0
-	bl sub_800BF1C
+	bl CanDisplayUnitMovement
 	lsls r0, r0, #0x18
 	cmp r0, #0
 	beq _0800C9E8
@@ -2369,7 +2369,7 @@ _0800C9C4:
 	adds r1, r5, #0
 	mov r2, r8
 	adds r3, r7, #0
-	bl sub_800CA84
+	bl TryMoveUnitDisplayed
 	b _0800C9B8
 _0800C9E8:
 	movs r0, #3
@@ -2382,8 +2382,8 @@ _0800C9EA:
 	bx r1
 	.align 2, 0
 
-	thumb_func_start sub_800C9F8
-sub_800C9F8: @ 0x0800C9F8
+	thumb_func_start TryMoveUnit
+TryMoveUnit: @ 0x0800C9F8
 	push {r4, r5, r6, r7, lr}
 	sub sp, #4
 	adds r4, r0, #0
@@ -2429,7 +2429,7 @@ _0800CA44:
 	asrs r2, r3, #0x10
 	adds r0, r4, #0
 	mov r3, sp
-	bl sub_80373B0
+	bl AiGetUnitClosestValidPosition
 _0800CA50:
 	mov r0, sp
 	ldrh r0, [r0]
@@ -2457,8 +2457,8 @@ _0800CA78:
 	.align 2, 0
 _0800CA80: .4byte gBmMapTerrain
 
-	thumb_func_start sub_800CA84
-sub_800CA84: @ 0x0800CA84
+	thumb_func_start TryMoveUnitDisplayed
+TryMoveUnitDisplayed: @ 0x0800CA84
 	push {r4, r5, r6, r7, lr}
 	mov r7, sl
 	mov r6, sb
@@ -2513,7 +2513,7 @@ _0800CAE4:
 	asrs r2, r2, #0x10
 	adds r0, r6, #0
 	mov r3, sp
-	bl sub_80373B0
+	bl AiGetUnitClosestValidPosition
 _0800CAF0:
 	movs r0, #0x10
 	ldrsb r0, [r6, r0]
@@ -2521,16 +2521,16 @@ _0800CAF0:
 	ldrsb r1, [r6, r1]
 	ldr r2, [r6, #4]
 	ldr r2, [r2, #0x38]
-	bl GenerateExtendedMovementMapOnRange
+	bl MapFloodRange_Unitless
 	mov r0, sp
 	movs r1, #0
 	ldrsh r0, [r0, r1]
 	mov r1, sp
 	movs r2, #2
 	ldrsh r1, [r1, r2]
-	ldr r7, _0800CB64 @ =0x02033DFC
+	ldr r7, _0800CB64 @ =gWorkingMoveScr
 	adds r2, r7, #0
-	bl sub_801A23C
+	bl BuildBestMoveScript
 	mov r0, sb
 	cmp r0, #0
 	beq _0800CB28
@@ -2560,7 +2560,7 @@ _0800CB40:
 	adds r1, r6, #0
 	adds r2, r7, #0
 	mov r3, r8
-	bl sub_800CB6C
+	bl DisplayMovement
 	lsls r0, r0, #0x18
 	asrs r0, r0, #0x18
 	add sp, #4
@@ -2572,11 +2572,11 @@ _0800CB40:
 	pop {r1}
 	bx r1
 	.align 2, 0
-_0800CB64: .4byte 0x02033DFC
+_0800CB64: .4byte gWorkingMoveScr
 _0800CB68: .4byte gBmMapTerrain
 
-	thumb_func_start sub_800CB6C
-sub_800CB6C: @ 0x0800CB6C
+	thumb_func_start DisplayMovement
+DisplayMovement: @ 0x0800CB6C
 	push {r4, r5, r6, r7, lr}
 	mov r7, sb
 	mov r6, r8
@@ -2599,7 +2599,7 @@ sub_800CB6C: @ 0x0800CB6C
 	cmp r0, #0
 	bne _0800CB9E
 	adds r0, r6, #0
-	bl sub_806C3D8
+	bl DisableMuCamera
 _0800CB9E:
 	ldr r0, _0800CC1C @ =gUnk_08C00C18
 	movs r1, #3
@@ -2635,7 +2635,7 @@ _0800CB9E:
 	str r0, [r4, #0x30]
 	adds r0, r6, #0
 	mov r1, r8
-	bl sub_806C8F0
+	bl SetMuMoveScript
 	mov r0, sb
 	cmp r0, #0
 	beq _0800CBFA
@@ -2669,18 +2669,18 @@ nullsub_26: @ 0x0800CC24
 	bx lr
 	.align 2, 0
 
-	thumb_func_start sub_800CC28
-sub_800CC28: @ 0x0800CC28
+	thumb_func_start WaitForMu_OnLoop
+WaitForMu_OnLoop: @ 0x0800CC28
 	push {r4, r5, lr}
 	adds r5, r0, #0
 	ldr r4, [r5, #0x54]
 	adds r0, r4, #0
-	bl sub_806C8B8
+	bl IsMuActive
 	lsls r0, r0, #0x18
 	cmp r0, #0
 	bne _0800CC6E
 	adds r0, r4, #0
-	bl sub_806D4BC
+	bl EndMu
 	ldr r4, [r4, #0x2c]
 	ldr r0, [r5, #0x2c]
 	strb r0, [r4, #0x10]
@@ -3126,7 +3126,7 @@ _0800CF68:
 	ldrb r1, [r4, #4]
 	ldrb r2, [r4, #5]
 	adds r0, r5, #0
-	bl sub_800BF1C
+	bl CanDisplayUnitMovement
 	lsls r0, r0, #0x18
 	cmp r0, #0
 	beq _0800CF9A
@@ -3209,7 +3209,7 @@ _0800CFF6:
 	ldrb r1, [r4, #4]
 	ldrb r2, [r4, #5]
 	adds r0, r5, #0
-	bl sub_800BF1C
+	bl CanDisplayUnitMovement
 	lsls r0, r0, #0x18
 	cmp r0, #0
 	beq _0800D036

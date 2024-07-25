@@ -42,6 +42,7 @@
 #include "gbafe/faction.h"
 #include "gbafe/irq.h"
 #include "gbafe/map.h"
+#include "gbafe/mapwork.h"
 #include "gbafe/save.h"
 #include "gbafe/statscreen.h"
 #include "gbafe/sysutil.h"

@@ -67,7 +67,7 @@ enum event_func_ret_idx {
 #define HI8(half) (((half) & 0xFF00) >> 8)
 
 // sub_800A604
-// LoadUnitCore
+// void LoadUnitCore(struct UnitDefinition * udef, );
 // sub_800A70C
 // sub_800A720
 // sub_800A7A4
@@ -152,7 +152,7 @@ void DisplayBackgroundNoClear(int background);
 // sub_800BDFC
 // sub_800BE6C
 // sub_800BEEC
-// sub_800BF1C
+// CanDisplayUnitMovement
 // sub_800BF68
 // sub_800C06C
 // sub_800C16C
@@ -167,12 +167,12 @@ void DisplayBackgroundNoClear(int background);
 // sub_800C7CC
 // sub_800C868
 // sub_800C8BC
-// sub_800C92C
-// sub_800C9F8
-// sub_800CA84
-// sub_800CB6C
+// EvtCmd_MovePidNextTo
+// TryMoveUnit
+// TryMoveUnitDisplayed
+// DisplayMovement
 // nullsub_26
-// sub_800CC28
+// WaitForMu_OnLoop
 // sub_800CC74
 // sub_800CCB8
 // sub_800CCFC

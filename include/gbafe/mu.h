@@ -56,6 +56,8 @@ enum
 
     MOVE_CMD_CAMERA_ON,
     MOVE_CMD_CAMERA_OFF,
+
+    MOVE_SCRIPT_MAX_LENGTH = 0x40,
 };
 
 struct MuInfo
@@ -103,28 +105,28 @@ struct MuConfig
 // sub_806C274
 // StartMu
 // sub_806C398
-// sub_806C3B0
-// sub_806C3D8
+// EnableMuCamera
+// DisableMuCamera
 struct MuProc * StartUiMu(struct Unit * unit, int x, int y);
 // sub_806C474
-// sub_806C4A0
-// sub_806C738
+// StartMuInternal
+// SetMuFacing
 // sub_806C790
 // MU_SetDefaultFacing_Auto
 // sub_806C7F8
 // sub_806C82C
 // sub_806C850
-// sub_806C8B8
-// sub_806C8F0
-// sub_806C964
-// sub_806C9BC
-// sub_806C9F8
-// sub_806CA1C
-// sub_806CA48
-// sub_806CAD0
-// sub_806CAE8
-// sub_806CAF8
-// sub_806CD2C
+// IsMuActive
+// SetMuMoveScript
+// StartMuScripted
+// MuStepSe_Init
+// MuStepSe_PlaySeA
+// MuStepSe_PlaySeB
+// StartPlayMuStepSe
+// PlayMuStepSe
+// EndMuMovement
+// RunMuMoveScript
+// StartMuFogBump
 // sub_806CDA8
 // sub_806CE68
 // sub_806CF4C
@@ -135,13 +137,13 @@ struct MuProc * StartUiMu(struct Unit * unit, int x, int y);
 // sub_806D06C
 // sub_806D07C
 // sub_806D08C
-// sub_806D2E4
+// UpdateMuStepSounds
 // sub_806D3F8
 // sub_806D47C
 void EndAllMus(void);
-// sub_806D4BC
+// EndMu
 // sub_806D4D4
-// sub_806D4EC
+// HaltMu
 void LockMus(void);
 void ReleaseMus(void);
 void ApplyMoveScriptToCoordinates(int * x, int * y, u8 const * move_script);
@@ -156,7 +158,7 @@ bool CanStartMu(void);
 // sub_806DCB8
 // sub_806DD10
 // sub_806DD40
-// sub_806DD6C
+// GetMuAnimForJid
 // sub_806DD98
 // sub_806DEC4
 // sub_806DF58

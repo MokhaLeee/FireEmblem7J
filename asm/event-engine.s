@@ -163,7 +163,7 @@ sub_800A720: @ 0x0800A720
 	ldrb r2, [r4, #5]
 	adds r0, r6, #0
 	movs r3, #0
-	bl sub_800C9F8
+	bl TryMoveUnit
 	bl RefreshUnitSprites
 	ldr r0, _0800A774 @ =0x0000FFFF
 	adds r1, r0, #0
@@ -178,7 +178,7 @@ sub_800A720: @ 0x0800A720
 	str r5, [sp]
 	adds r0, r7, #0
 	adds r1, r6, #0
-	bl sub_800CA84
+	bl TryMoveUnitDisplayed
 	b _0800A79A
 	.align 2, 0
 _0800A774: .4byte 0x0000FFFF
@@ -187,7 +187,7 @@ _0800A778:
 	ldrb r2, [r4, #7]
 	adds r0, r6, #0
 	movs r3, #1
-	bl sub_800C9F8
+	bl TryMoveUnit
 	bl RefreshUnitSprites
 	b _0800A79A
 _0800A78A:
@@ -195,7 +195,7 @@ _0800A78A:
 	ldrb r2, [r4, #7]
 	adds r0, r6, #0
 	movs r3, #1
-	bl sub_800C9F8
+	bl TryMoveUnit
 	bl RefreshUnitSprites
 _0800A79A:
 	add sp, #4

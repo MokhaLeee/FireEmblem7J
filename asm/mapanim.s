@@ -1302,7 +1302,7 @@ _0806F426:
 	adds r1, r0, r1
 	ldr r0, [r1]
 	ldr r1, [r7, #0xc]
-	bl sub_806C738
+	bl SetMuFacing
 	b _0806F506
 	.align 2, 0
 _0806F498: .4byte gManimSt
@@ -1356,7 +1356,7 @@ _0806F4BC:
 	adds r1, r0, r1
 	ldr r0, [r1]
 	ldr r1, [r7, #0xc]
-	bl sub_806C738
+	bl SetMuFacing
 _0806F506:
 	add sp, #0x10
 	pop {r4, r5, r6, r7}
@@ -6658,7 +6658,7 @@ sub_8071E68: @ 0x08071E68
 	ldr r0, [r7]
 	ldr r1, [r0, #0x30]
 	movs r0, #0xb7
-	bl sub_80151FC
+	bl PlaySeSpacial
 	ldr r0, _08071EB8 @ =gUnk_083FB310
 	ldr r1, _08071EBC @ =0x06013800
 	bl Decompress
@@ -6953,7 +6953,7 @@ _080720CA:
 	ldr r0, [r7]
 	ldr r1, [r0, #0x30]
 	movs r0, #0x8c
-	bl sub_80151FC
+	bl PlaySeSpacial
 	b _08072196
 	.align 2, 0
 _080720F0: .4byte gUnk_083FD3D8
@@ -7017,7 +7017,7 @@ _0807214E:
 	ldr r0, [r7]
 	ldr r1, [r0, #0x30]
 	movs r0, #0x89
-	bl sub_80151FC
+	bl PlaySeSpacial
 	ldr r1, [r7]
 	adds r0, r1, #0
 	adds r1, #0x42
@@ -7708,7 +7708,7 @@ sub_80726B8: @ 0x080726B8
 	ldr r0, [r7]
 	ldr r1, [r0, #0x30]
 	movs r0, #0xb6
-	bl sub_80151FC
+	bl PlaySeSpacial
 	ldr r0, _080727B4 @ =gDispIo
 	ldrb r1, [r0, #0xc]
 	movs r2, #0xfc
@@ -7988,7 +7988,7 @@ sub_80728F0: @ 0x080728F0
 	ldr r1, [r7]
 	ldr r2, [r1, #0x30]
 	adds r1, r2, #0
-	bl sub_80151FC
+	bl PlaySeSpacial
 	add sp, #4
 	pop {r7}
 	pop {r0}
@@ -8182,7 +8182,7 @@ sub_807296C: @ 0x0807296C
 	adds r1, r2, #1
 	adds r2, r1, #0
 	lsls r1, r2, #3
-	bl sub_80151FC
+	bl PlaySeSpacial
 	add sp, #0xc
 	pop {r4, r5, r7}
 	pop {r0}
@@ -9430,7 +9430,7 @@ sub_807347C: @ 0x0807347C
 	ldr r0, [r7]
 	ldr r1, [r0, #0x30]
 	movs r0, #0x87
-	bl sub_80151FC
+	bl PlaySeSpacial
 	movs r0, #2
 	movs r1, #0
 	movs r2, #0
@@ -9542,7 +9542,7 @@ sub_8073568: @ 0x08073568
 	ldr r0, [r7]
 	ldr r1, [r0, #0x30]
 	movs r0, #0x86
-	bl sub_80151FC
+	bl PlaySeSpacial
 	add sp, #4
 	pop {r7}
 	pop {r0}
@@ -9964,7 +9964,7 @@ sub_80738B4: @ 0x080738B4
 	ldr r0, [r7]
 	ldr r1, [r0, #0x30]
 	movs r0, #0x82
-	bl sub_80151FC
+	bl PlaySeSpacial
 	ldr r1, _080738DC @ =gUnk_08275ECC
 	adds r0, r1, #0
 	movs r1, #0x80
@@ -10121,7 +10121,7 @@ sub_80739EC: @ 0x080739EC
 	ldr r0, [r7]
 	ldr r1, [r0, #0x30]
 	movs r0, #0x85
-	bl sub_80151FC
+	bl PlaySeSpacial
 	movs r0, #2
 	movs r1, #0
 	movs r2, #0
@@ -10168,7 +10168,7 @@ sub_8073A58: @ 0x08073A58
 	ldr r0, [r7]
 	ldr r1, [r0, #0x30]
 	movs r0, #0x85
-	bl sub_80151FC
+	bl PlaySeSpacial
 	ldr r0, _08073A90 @ =gUnk_083FEE30
 	ldr r2, [r7]
 	ldr r1, [r2, #0x30]
@@ -10199,7 +10199,7 @@ sub_8073A98: @ 0x08073A98
 	ldr r0, [r7]
 	ldr r1, [r0, #0x30]
 	movs r0, #0x85
-	bl sub_80151FC
+	bl PlaySeSpacial
 	ldr r0, _08073ACC @ =gUnk_083FEE30
 	ldr r2, [r7]
 	ldr r1, [r2, #0x30]
@@ -10282,7 +10282,7 @@ sub_8073B40: @ 0x08073B40
 	ldr r0, [r7]
 	ldr r1, [r0, #0x30]
 	movs r0, #0xfd
-	bl sub_80151FC
+	bl PlaySeSpacial
 	bl InitScanlineEffect
 	bl sub_807706C
 	ldr r1, _08073C0C @ =sub_8077248
@@ -10582,7 +10582,7 @@ sub_8073DA4: @ 0x08073DA4
 	ldr r0, [r7]
 	ldr r1, [r0, #0x30]
 	movs r0, #0x83
-	bl sub_80151FC
+	bl PlaySeSpacial
 	movs r0, #2
 	movs r1, #0
 	movs r2, #0
@@ -10720,7 +10720,7 @@ sub_8073ED8: @ 0x08073ED8
 	ldr r0, [r7]
 	ldr r1, [r0, #0x30]
 	movs r0, #0x84
-	bl sub_80151FC
+	bl PlaySeSpacial
 	ldr r0, _08073FB0 @ =gBg2Tm
 	ldr r1, [r7]
 	ldr r2, [r1, #0x30]
@@ -10970,7 +10970,7 @@ sub_80740CC: @ 0x080740CC
 	ldr r0, [r7]
 	ldr r1, [r0, #0x30]
 	movs r0, #0x88
-	bl sub_80151FC
+	bl PlaySeSpacial
 	movs r0, #2
 	movs r1, #0
 	movs r2, #0
@@ -11247,7 +11247,7 @@ sub_8074300: @ 0x08074300
 	ldr r0, [r7]
 	ldr r1, [r0, #0x30]
 	movs r0, #0x8d
-	bl sub_80151FC
+	bl PlaySeSpacial
 	movs r0, #2
 	movs r1, #0
 	movs r2, #0
@@ -14897,7 +14897,7 @@ sub_8075F68: @ 0x08075F68
 	movs r4, #0xc
 	ldrsh r3, [r2, r4]
 	subs r1, r1, r3
-	bl sub_80151FC
+	bl PlaySeSpacial
 	pop {r4, r7}
 	pop {r0}
 	bx r0
@@ -14930,7 +14930,7 @@ sub_8075FAC: @ 0x08075FAC
 	movs r4, #0xc
 	ldrsh r3, [r2, r4]
 	subs r1, r1, r3
-	bl sub_80151FC
+	bl PlaySeSpacial
 	pop {r4, r7}
 	pop {r0}
 	bx r0
@@ -15695,7 +15695,7 @@ _08076564:
 	ldrsh r2, [r1, r3]
 	subs r1, r0, r2
 	movs r0, #0xc8
-	bl sub_80151FC
+	bl PlaySeSpacial
 	ldr r0, _080765B8 @ =gManimSt
 	ldr r1, [r7, #0xc]
 	adds r3, r1, #0
@@ -15735,7 +15735,7 @@ _080765C0:
 	movs r4, #0xc
 	ldrsh r3, [r2, r4]
 	subs r1, r1, r3
-	bl sub_80151FC
+	bl PlaySeSpacial
 	ldr r0, _0807660C @ =gManimSt
 	ldr r1, [r7, #0xc]
 	adds r3, r1, #0
@@ -15887,7 +15887,7 @@ _080766E8:
 	movs r4, #0xc
 	ldrsh r3, [r2, r4]
 	subs r1, r1, r3
-	bl sub_80151FC
+	bl PlaySeSpacial
 	ldr r0, _080767A4 @ =gManimSt
 	ldr r1, [r7, #0xc]
 	adds r3, r1, #0
@@ -15934,7 +15934,7 @@ _080766E8:
 	ldrsh r2, [r1, r3]
 	subs r1, r0, r2
 	movs r0, #0xd8
-	bl sub_80151FC
+	bl PlaySeSpacial
 	ldr r0, _080767A4 @ =gManimSt
 	ldr r1, [r7, #8]
 	adds r3, r1, #0
@@ -15968,7 +15968,7 @@ _080767AC:
 	movs r4, #0xc
 	ldrsh r3, [r2, r4]
 	subs r1, r1, r3
-	bl sub_80151FC
+	bl PlaySeSpacial
 	ldr r0, _08076818 @ =gManimSt
 	ldr r1, [r7, #0xc]
 	adds r3, r1, #0

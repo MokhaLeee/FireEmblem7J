@@ -54,8 +54,8 @@ sub_8019FFC: @ 0x08019FFC
 _0801A028: .4byte gBmMapMovement
 _0801A02C: .4byte 0x03004100
 
-	thumb_func_start GenerateExtendedMovementMapOnRange
-GenerateExtendedMovementMapOnRange: @ 0x0801A030
+	thumb_func_start MapFloodRange_Unitless
+MapFloodRange_Unitless: @ 0x0801A030
 	push {r4, r5, lr}
 	adds r4, r0, #0
 	adds r5, r1, #0
@@ -320,8 +320,8 @@ _0801A230: .4byte gBmMapTerrain
 _0801A234: .4byte 0x03004100
 _0801A238: .4byte gBmMapUnit
 
-	thumb_func_start sub_801A23C
-sub_801A23C: @ 0x0801A23C
+	thumb_func_start BuildBestMoveScript
+BuildBestMoveScript: @ 0x0801A23C
 	push {r4, r5, r6, r7, lr}
 	mov r7, sl
 	mov r6, sb
@@ -603,13 +603,13 @@ sub_801A424: @ 0x0801A424
 	adds r7, r0, #0
 	adds r3, r1, #0
 	adds r4, r2, #0
-	ldr r5, _0801A438 @ =0x02033DFC
+	ldr r5, _0801A438 @ =gWorkingMoveScr
 	ldr r6, _0801A43C @ =gActionSt
 	ldr r0, _0801A440 @ =gBmMapHidden
 	mov ip, r0
 	b _0801A446
 	.align 2, 0
-_0801A438: .4byte 0x02033DFC
+_0801A438: .4byte gWorkingMoveScr
 _0801A43C: .4byte gActionSt
 _0801A440: .4byte gBmMapHidden
 _0801A444:

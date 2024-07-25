@@ -79,7 +79,7 @@
 // sub_8036F64
 void AiTryMoveTowards(short x, short y, u8 action, u8 maxDanger, u8 arg_4);
 // sub_80371C4
-// sub_80373B0
+// AiGetUnitClosestValidPosition
 // sub_80374F8
 // sub_8037530
 // sub_803757C

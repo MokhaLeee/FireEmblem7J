@@ -77,7 +77,7 @@ sub_801D844: @ 0x0801D844
 	cmp r0, #2
 	beq _0801D862
 	ldr r0, [r4, #0x34]
-	bl sub_806D4BC
+	bl EndMu
 _0801D862:
 	adds r0, r4, #0
 	bl Proc_Break
@@ -125,7 +125,7 @@ sub_801D880: @ 0x0801D880
 	bl sub_801D808
 	str r0, [r7, #0x34]
 	adds r1, r5, #0
-	bl sub_806C8F0
+	bl SetMuMoveScript
 	pop {r3}
 	mov r8, r3
 	pop {r4, r5, r6, r7}
@@ -164,7 +164,7 @@ sub_801D8D4: @ 0x0801D8D4
 	bl sub_801D808
 	str r0, [r7, #0x34]
 	adds r1, r5, #0
-	bl sub_806C8F0
+	bl SetMuMoveScript
 	pop {r4, r5, r6, r7}
 	pop {r0}
 	bx r0
@@ -3017,7 +3017,7 @@ sub_801EF94: @ 0x0801EF94
 	asrs r1, r1, #0x18
 	bl GetFacingFromTo
 	adds r0, #5
-	ldr r1, _0801EFC4 @ =0x02033DFC
+	ldr r1, _0801EFC4 @ =gWorkingMoveScr
 	strb r0, [r1]
 	movs r0, #4
 	strb r0, [r1, #1]
@@ -3027,7 +3027,7 @@ sub_801EF94: @ 0x0801EF94
 	bx r0
 	.align 2, 0
 _0801EFC0: .4byte gActiveUnit
-_0801EFC4: .4byte 0x02033DFC
+_0801EFC4: .4byte gWorkingMoveScr
 
 	thumb_func_start sub_801EFC8
 sub_801EFC8: @ 0x0801EFC8
@@ -3110,7 +3110,7 @@ _0801F024:
 	adds r4, #8
 	movs r0, #0xba
 	adds r1, r4, #0
-	bl sub_80151FC
+	bl PlaySeSpacial
 	add sp, #8
 	pop {r4, r5, r6, r7}
 	pop {r0}
@@ -3179,7 +3179,7 @@ sub_801F0B8: @ 0x0801F0B8
 	adds r4, #8
 	movs r0, #0xbf
 	adds r1, r4, #0
-	bl sub_80151FC
+	bl PlaySeSpacial
 	add sp, #8
 	pop {r4, r5}
 	pop {r0}
@@ -3387,7 +3387,7 @@ sub_801F260: @ 0x0801F260
 	adds r4, #8
 	movs r0, #0xbc
 	adds r1, r4, #0
-	bl sub_80151FC
+	bl PlaySeSpacial
 	ldr r1, [r5, #0x2c]
 	adds r0, r5, #0
 	movs r2, #0x1f
@@ -3462,7 +3462,7 @@ _0801F334:
 	ldr r1, [r4, #0x34]
 	subs r1, r1, r0
 	adds r0, r2, #0
-	bl sub_80151FC
+	bl PlaySeSpacial
 	pop {r4}
 	pop {r0}
 	bx r0
@@ -3541,7 +3541,7 @@ sub_801F38C: @ 0x0801F38C
 	adds r4, #8
 	movs r0, #0xbb
 	adds r1, r4, #0
-	bl sub_80151FC
+	bl PlaySeSpacial
 	add sp, #8
 	pop {r4, r5, r6}
 	pop {r0}

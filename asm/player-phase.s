@@ -1671,13 +1671,13 @@ sub_801D374: @ 0x0801D374
 	movs r2, #0x11
 	ldrsb r2, [r0, r2]
 	bl sub_801A424
-	ldr r0, _0801D398 @ =0x02033DFC
+	ldr r0, _0801D398 @ =gWorkingMoveScr
 	bl sub_806C7F8
 	pop {r0}
 	bx r0
 	.align 2, 0
 _0801D394: .4byte gActiveUnit
-_0801D398: .4byte 0x02033DFC
+_0801D398: .4byte gWorkingMoveScr
 
 	thumb_func_start sub_801D39C
 sub_801D39C: @ 0x0801D39C

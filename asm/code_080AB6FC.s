@@ -18787,7 +18787,7 @@ sub_80B4CD0: @ 0x080B4CD0
 	strb r1, [r2]
 	ldr r0, [r0, #0x58]
 	ldrb r1, [r2]
-	bl sub_806C738
+	bl SetMuFacing
 _080B4CE6:
 	pop {r0}
 	bx r0
@@ -19337,7 +19337,7 @@ sub_80B50F4: @ 0x080B50F4
 	ldr r0, [r4, #0x58]
 	cmp r0, #0
 	beq _080B5102
-	bl sub_806D4BC
+	bl EndMu
 _080B5102:
 	ldr r0, [r4, #0x54]
 	movs r1, #0x80
@@ -20295,7 +20295,7 @@ _080B57EA:
 	str r0, [sp]
 	movs r0, #0
 	movs r1, #0
-	bl sub_806C4A0
+	bl StartMuInternal
 	str r0, [r6, #0x58]
 	bl sub_806E2A0
 	adds r1, r6, #0
@@ -20304,7 +20304,7 @@ _080B57EA:
 	strb r0, [r1]
 	ldr r0, [r6, #0x58]
 	movs r1, #2
-	bl sub_806C738
+	bl SetMuFacing
 	ldr r0, [r6, #0x58]
 	bl sub_806C474
 	adds r0, r6, #0
