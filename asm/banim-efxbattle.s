@@ -237,7 +237,7 @@ _0804DF28:
 	bl sub_804E9D0
 	ldr r0, [r5, #0x60]
 	bl GetAnimPosition
-	ldr r1, _0804DF4C @ =gEkrPairSideVaild
+	ldr r1, _0804DF4C @ =gBanimValid
 	lsls r0, r0, #1
 	adds r0, r0, r1
 	movs r1, #0
@@ -247,7 +247,7 @@ _0804DF44:
 	bl Proc_Break
 	b _0804DF5C
 	.align 2, 0
-_0804DF4C: .4byte gEkrPairSideVaild
+_0804DF4C: .4byte gBanimValid
 _0804DF50:
 	adds r0, r1, #1
 	str r0, [r5, #0x54]
@@ -779,7 +779,7 @@ _0804E3A0:
 	bl sub_804E9D0
 	ldr r0, [r5, #0x60]
 	bl GetAnimPosition
-	ldr r1, _0804E3C4 @ =gEkrPairSideVaild
+	ldr r1, _0804E3C4 @ =gBanimValid
 	lsls r0, r0, #1
 	adds r0, r0, r1
 	movs r1, #0
@@ -789,7 +789,7 @@ _0804E3BC:
 	bl Proc_Break
 	b _0804E3D4
 	.align 2, 0
-_0804E3C4: .4byte gEkrPairSideVaild
+_0804E3C4: .4byte gBanimValid
 _0804E3C8:
 	adds r0, r1, #1
 	str r0, [r5, #0x54]
@@ -1495,7 +1495,7 @@ sub_804E944: @ 0x0804E944
 	bl EfxPrepareScreenFx
 	ldr r0, [r4, #0x5c]
 	bl GetAnimPosition
-	ldr r1, _0804E9A4 @ =gEkrPairSideVaild
+	ldr r1, _0804E9A4 @ =gBanimValid
 	lsls r0, r0, #1
 	adds r0, r0, r1
 	strh r5, [r0]
@@ -1518,7 +1518,7 @@ _0804E99C:
 	pop {r0}
 	bx r0
 	.align 2, 0
-_0804E9A4: .4byte gEkrPairSideVaild
+_0804E9A4: .4byte gBanimValid
 
 	thumb_func_start sub_804E9A8
 sub_804E9A8: @ 0x0804E9A8
@@ -3661,7 +3661,7 @@ sub_804FAC4: @ 0x0804FAC4
 	ldrsh r0, [r0, r1]
 	cmp r0, #0x50
 	bgt _0804FAFC
-	ldr r0, _0804FAF0 @ =0x0203DFF8
+	ldr r0, _0804FAF0 @ =gBanimFactionPal
 	movs r1, #0
 	ldrsh r0, [r0, r1]
 	lsls r0, r0, #5
@@ -3671,7 +3671,7 @@ sub_804FAC4: @ 0x0804FAC4
 	b _0804FB1C
 	.align 2, 0
 _0804FAEC: .4byte gEkrPairHpInitial
-_0804FAF0: .4byte 0x0203DFF8
+_0804FAF0: .4byte gBanimFactionPal
 _0804FAF4: .4byte gUnk_081DF224
 _0804FAF8: .4byte gPal + 0x360
 _0804FAFC:
@@ -3685,7 +3685,7 @@ _0804FB04:
 	ldrsh r0, [r0, r1]
 	cmp r0, #0x50
 	bgt _0804FB34
-	ldr r0, _0804FB28 @ =0x0203DFF8
+	ldr r0, _0804FB28 @ =gBanimFactionPal
 	movs r1, #2
 	ldrsh r0, [r0, r1]
 	lsls r0, r0, #5
@@ -3699,7 +3699,7 @@ _0804FB1C:
 	b _0804FB3E
 	.align 2, 0
 _0804FB24: .4byte gEkrPairHpInitial
-_0804FB28: .4byte 0x0203DFF8
+_0804FB28: .4byte gBanimFactionPal
 _0804FB2C: .4byte gUnk_081DF224
 _0804FB30: .4byte gPal + 0x380
 _0804FB34:
@@ -3747,7 +3747,7 @@ sub_804FB58: @ 0x0804FB58
 	str r2, [r0, #0x58]
 	adds r0, #0x29
 	strb r3, [r0]
-	ldr r5, _0804FC24 @ =0x0203DFF8
+	ldr r5, _0804FC24 @ =gBanimFactionPal
 	movs r1, #0
 	ldrsh r0, [r5, r1]
 	lsls r0, r0, #5
@@ -3812,7 +3812,7 @@ _0804FC14: .4byte gpProcEfxHpBarColorChange
 _0804FC18: .4byte gUnk_08C0A218
 _0804FC1C: .4byte gUnk_081DE00C
 _0804FC20: .4byte gUnk_081DE036
-_0804FC24: .4byte 0x0203DFF8
+_0804FC24: .4byte gBanimFactionPal
 _0804FC28: .4byte gUnk_081DF224
 _0804FC2C: .4byte 0x0201F93C
 _0804FC30: .4byte gUnk_081DF2E4

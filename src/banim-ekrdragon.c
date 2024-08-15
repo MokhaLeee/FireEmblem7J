@@ -557,7 +557,7 @@ void EkrDragon_ReloadTerrainEtc(struct ProcEkrDragon * proc)
     gDispIo.bg3_ct.priority = 3;
 
     SetAnimStateHidden(GetAnimPosition(proc->anim));
-    gEkrPairSideVaild[GetAnimPosition(proc->anim)] = false;
+    gBanimValid[GetAnimPosition(proc->anim)] = false;
 
     NewEkrDragonBaseAppear(proc->anim);
     TmFill(gBg3Tm, 0x601F);

@@ -669,9 +669,7 @@ extern struct BackgroundInfo gBackgroundTable[];
 extern struct BmBgxConf CONST_DATA  BmBgfxConf_IceCrystal[];
 // ??? gUnk_08DBAD14
 // ??? gUnk_08DC0390
-// ??? gUnk_08E00008
-// ??? gUnk_08FC0008
-// ??? gUnk_08FD8008
+
 extern struct BmBgxConf CONST_DATA BmBgfxConf_EventThunder[];
 extern struct ProcCmd CONST_DATA ProcScr_EventThunderfx[];
 extern struct BmBgxConf CONST_DATA BmBgfxConf_NinianDisp[];

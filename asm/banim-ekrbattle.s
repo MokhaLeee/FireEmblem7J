@@ -740,7 +740,7 @@ sub_804BF34: @ 0x0804BF34
 	asrs r0, r0, #0x10
 	cmp r0, #0x1e
 	ble _0804BFA0
-	ldr r6, _0804BFA8 @ =gEkrPairSideVaild
+	ldr r6, _0804BFA8 @ =gBanimValid
 	ldrh r0, [r6]
 	cmp r0, #1
 	bne _0804BF70
@@ -791,7 +791,7 @@ _0804BFA0:
 	pop {r0}
 	bx r0
 	.align 2, 0
-_0804BFA8: .4byte gEkrPairSideVaild
+_0804BFA8: .4byte gBanimValid
 _0804BFAC: .4byte gAnims
 _0804BFB0: .4byte gBanimDoneFlag
 _0804BFB4: .4byte sub_804BFB8

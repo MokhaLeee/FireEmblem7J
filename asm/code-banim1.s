@@ -418,7 +418,7 @@ sub_80514B8: @ 0x080514B8
 _080514E4: .4byte gEkrDebugModeMaybe
 _080514E8: .4byte gEkrDistanceType
 _080514EC:
-	ldr r4, _08051510 @ =gEkrPairSideVaild
+	ldr r4, _08051510 @ =gBanimValid
 	movs r1, #0
 	ldrsh r0, [r4, r1]
 	cmp r0, #0
@@ -434,7 +434,7 @@ _080514FE:
 	bl EkrDispUP_0804D5B4
 	b _0805151C
 	.align 2, 0
-_08051510: .4byte gEkrPairSideVaild
+_08051510: .4byte gBanimValid
 _08051514:
 	bl EkrGauge_0804CC48
 	bl EkrDispUP_0804D5A4
@@ -1663,7 +1663,7 @@ NewEkrUnitKakudai: @ 0x08051EC4
 _08051EF0: .4byte gUnk_08C0A560
 _08051EF4: .4byte gEkrDistanceType
 _08051EF8:
-	ldr r0, _08051F1C @ =gEkrPairSideVaild
+	ldr r0, _08051F1C @ =gBanimValid
 	movs r1, #0
 	ldrsh r5, [r0, r1]
 	cmp r5, #1
@@ -1673,7 +1673,7 @@ _08051EF8:
 	bne _08051F0C
 	str r5, [r4, #0x4c]
 _08051F0C:
-	ldr r0, _08051F1C @ =gEkrPairSideVaild
+	ldr r0, _08051F1C @ =gBanimValid
 	movs r2, #2
 	ldrsh r0, [r0, r2]
 	cmp r0, #1
@@ -1681,7 +1681,7 @@ _08051F0C:
 	str r0, [r4, #0x50]
 	b _08051F32
 	.align 2, 0
-_08051F1C: .4byte gEkrPairSideVaild
+_08051F1C: .4byte gBanimValid
 _08051F20:
 	cmp r5, #0
 	bne _08051F2C
@@ -1702,12 +1702,12 @@ _08051F32:
 UnitKakudai1: @ 0x08051F38
 	push {r4, r5, r6, lr}
 	adds r4, r0, #0
-	ldr r1, _08052048 @ =gBanimScr_81DE208
+	ldr r1, _08052048 @ =BattleTypeToAnimModeEndOfDodge
 	ldr r0, _0805204C @ =gEkrDistanceType
 	movs r2, #0
 	ldrsh r0, [r0, r2]
 	adds r0, r0, r1
-	ldr r1, _08052050 @ =gBanimRoundScripts
+	ldr r1, _08052050 @ =BanimDefaultModeConfig
 	ldrb r0, [r0]
 	lsls r0, r0, #2
 	adds r0, r0, r1
@@ -1727,7 +1727,7 @@ UnitKakudai1: @ 0x08051F38
 	movs r2, #1
 	bl EfxPalModifyPetrifyEffect
 _08051F70:
-	ldr r5, _0805205C @ =gEkrPairSideVaild
+	ldr r5, _0805205C @ =gBanimValid
 	ldrh r3, [r5]
 	cmp r3, #1
 	bne _08051F96
@@ -1740,7 +1740,7 @@ _08051F70:
 	adds r1, r1, r0
 	ldr r0, [r1, #4]
 	ldr r1, [r1, #8]
-	ldr r2, _08052068 @ =0x020041C8
+	ldr r2, _08052068 @ =gBanimOaml
 	adds r1, r1, r2
 	str r1, [r4, #0x54]
 	ldr r1, _0805206C @ =0x02000088
@@ -1754,7 +1754,7 @@ _08051F96:
 	lsls r0, r6, #2
 	adds r0, r0, r1
 	ldr r1, [r0]
-	ldr r0, _08052074 @ =0x02011BC8
+	ldr r0, _08052074 @ =gBanimScrRight
 	adds r1, r1, r0
 	ldr r0, [r1, #4]
 	ldr r1, [r1, #8]
@@ -1807,14 +1807,14 @@ _08051FD4:
 	lsls r0, r0, #4
 	adds r0, #8
 	strh r0, [r4, #0x3c]
-	ldr r1, _08052094 @ =gUnk_081DE20D
+	ldr r1, _08052094 @ =BanimTypesPosLeft
 	ldr r2, _0805204C @ =gEkrDistanceType
 	movs r3, #0
 	ldrsh r0, [r2, r3]
 	adds r0, r0, r1
 	ldrb r5, [r0]
 	strh r5, [r4, #0x36]
-	ldr r1, _08052098 @ =gUnk_081DE212
+	ldr r1, _08052098 @ =BanimTypesPosRight
 	movs r3, #0
 	ldrsh r0, [r2, r3]
 	adds r0, r0, r1
@@ -1834,18 +1834,18 @@ _08051FD4:
 	strh r0, [r4, #0x38]
 	b _080520B4
 	.align 2, 0
-_08052048: .4byte gBanimScr_81DE208
+_08052048: .4byte BattleTypeToAnimModeEndOfDodge
 _0805204C: .4byte gEkrDistanceType
-_08052050: .4byte gBanimRoundScripts
+_08052050: .4byte BanimDefaultModeConfig
 _08052054: .4byte gBattleStats
 _08052058: .4byte gPal
-_0805205C: .4byte gEkrPairSideVaild
+_0805205C: .4byte gBanimValid
 _08052060: .4byte gpBanimModesLeft
 _08052064: .4byte gBanimScrLeft
-_08052068: .4byte 0x020041C8
+_08052068: .4byte gBanimOaml
 _0805206C: .4byte 0x02000088
 _08052070: .4byte gpBanimModesRight
-_08052074: .4byte 0x02011BC8
+_08052074: .4byte gBanimScrRight
 _08052078: .4byte gBanimOamr2
 _0805207C: .4byte 0x02002088
 _08052080: .4byte Unk_0203E088
@@ -1853,8 +1853,8 @@ _08052084: .4byte 0x02001088
 _08052088: .4byte 0x02003088
 _0805208C: .4byte 0x06014000
 _08052090: .4byte 0x0203E006
-_08052094: .4byte gUnk_081DE20D
-_08052098: .4byte gUnk_081DE212
+_08052094: .4byte BanimTypesPosLeft
+_08052098: .4byte BanimTypesPosRight
 _0805209C: .4byte gEkrInitPosReal
 _080520A0: .4byte gUnk_081DE218
 _080520A4:
@@ -2541,7 +2541,7 @@ _080525A4:
 	movs r0, #0
 	strh r0, [r1, #2]
 	strh r0, [r1]
-	ldr r0, _080525E8 @ =gEkrPairSideVaild
+	ldr r0, _080525E8 @ =gBanimValid
 	movs r1, #1
 	strh r1, [r0]
 	strh r1, [r0, #2]
@@ -2555,7 +2555,7 @@ _080525D8: .4byte gBattleActor
 _080525DC: .4byte gpEkrBattleUnitRight
 _080525E0: .4byte gBattleTarget
 _080525E4: .4byte Unk_0203DFEC
-_080525E8: .4byte gEkrPairSideVaild
+_080525E8: .4byte gBanimValid
 _080525EC:
 	ldr r5, _08052624 @ =gBattleActor
 	movs r4, #0x40
@@ -2605,7 +2605,7 @@ _08052640:
 	lsrs r0, r0, #0x18
 	str r0, [sp, #0x20]
 _08052654:
-	ldr r1, _080526A8 @ =gEkrPairSideVaild
+	ldr r1, _080526A8 @ =gBanimValid
 	movs r0, #1
 	strh r0, [r1, #2]
 	strh r0, [r1]
@@ -2642,14 +2642,14 @@ _0805267C:
 	strh r2, [r0]
 	strh r1, [r0, #2]
 	ldr r7, [sp, #0xc]
-	ldr r3, _080526A8 @ =gEkrPairSideVaild
+	ldr r3, _080526A8 @ =gBanimValid
 	ldr r4, [sp, #0x20]
 	cmp r4, #1
 	bne _080526E6
 	strh r1, [r3]
 	b _080526E6
 	.align 2, 0
-_080526A8: .4byte gEkrPairSideVaild
+_080526A8: .4byte gBanimValid
 _080526AC: .4byte gpEkrBattleUnitLeft
 _080526B0: .4byte gBattleTarget
 _080526B4: .4byte gpEkrBattleUnitRight
@@ -2670,7 +2670,7 @@ _080526C0:
 	movs r0, #1
 	strh r0, [r1, #2]
 	ldr r7, [sp, #8]
-	ldr r3, _080527B0 @ =gEkrPairSideVaild
+	ldr r3, _080527B0 @ =gBanimValid
 	ldr r0, [sp, #0x20]
 	cmp r0, #1
 	bne _080526E6
@@ -2776,7 +2776,7 @@ _080527A0: .4byte gBattleActor
 _080527A4: .4byte gpEkrBattleUnitRight
 _080527A8: .4byte gBattleTarget
 _080527AC: .4byte Unk_0203DFEC
-_080527B0: .4byte gEkrPairSideVaild
+_080527B0: .4byte gBanimValid
 _080527B4: .4byte 0x0203E006
 _080527B8: .4byte gBmSt
 _080527BC: .4byte gEkrDistanceType
@@ -2863,8 +2863,8 @@ _0805284A:
 	mov r0, sl
 	mov r1, r8
 	mov r3, sp
-	bl sub_8053040
-	ldr r5, _08052884 @ =0x0203E066
+	bl GetBattleAnimationId_WithUnique
+	ldr r5, _08052884 @ =gBanimIdx
 	ldr r4, _08052888 @ =0x0203DFF0
 	strh r0, [r4]
 	strh r0, [r5]
@@ -2874,7 +2874,7 @@ _0805284A:
 	add r3, sp, #4
 	ldr r0, [sp, #0x18]
 	mov r1, sb
-	bl sub_8053040
+	bl GetBattleAnimationId_WithUnique
 	strh r0, [r4, #2]
 	strh r0, [r5, #2]
 	ldr r0, [sp, #0x1c]
@@ -2883,7 +2883,7 @@ _0805284A:
 	b _080528CC
 	.align 2, 0
 _08052880: .4byte gEkrDistanceType
-_08052884: .4byte 0x0203E066
+_08052884: .4byte gBanimIdx
 _08052888: .4byte 0x0203DFF0
 _0805288C:
 	ldr r1, [sp, #0x1c]
@@ -2897,8 +2897,8 @@ _0805288C:
 	mov r0, sl
 	mov r1, r8
 	mov r3, sp
-	bl sub_8053040
-	ldr r2, _08052A18 @ =0x0203E066
+	bl GetBattleAnimationId_WithUnique
+	ldr r2, _08052A18 @ =gBanimIdx
 	ldr r1, _08052A1C @ =0x0203DFF0
 	strh r0, [r1]
 	strh r0, [r2]
@@ -2912,8 +2912,8 @@ _080528AE:
 	add r3, sp, #4
 	ldr r0, [sp, #0x18]
 	mov r1, sb
-	bl sub_8053040
-	ldr r2, _08052A18 @ =0x0203E066
+	bl GetBattleAnimationId_WithUnique
+	ldr r2, _08052A18 @ =gBanimIdx
 	ldr r1, _08052A1C @ =0x0203DFF0
 	strh r0, [r1, #2]
 	strh r0, [r2, #2]
@@ -2924,8 +2924,8 @@ _080528CC:
 	beq _080528E0
 	ldr r1, [sp]
 	mov r0, sl
-	bl sub_8053A14
-	ldr r1, _08052A20 @ =0x0203DFF4
+	bl GetBattleAnimCharacterUniquePalIndex
+	ldr r1, _08052A20 @ =gBanimUniquePal
 	strh r0, [r1]
 _080528E0:
 	ldr r4, [sp, #0x28]
@@ -2935,33 +2935,33 @@ _080528E0:
 	beq _080528F6
 	ldr r1, [sp, #4]
 	ldr r0, [sp, #0x18]
-	bl sub_8053A14
-	ldr r1, _08052A20 @ =0x0203DFF4
+	bl GetBattleAnimCharacterUniquePalIndex
+	ldr r1, _08052A20 @ =gBanimUniquePal
 	strh r0, [r1, #2]
 _080528F6:
 	cmp r7, #0
 	beq _0805290E
-	ldr r0, _08052A18 @ =0x0203E066
+	ldr r0, _08052A18 @ =gBanimIdx
 	movs r1, #0
 	ldrsh r0, [r0, r1]
 	ldr r1, [sp, #8]
 	adds r1, #0x4a
 	ldrh r1, [r1]
 	bl FilterBattleAnimCharacterPalette
-	ldr r1, _08052A24 @ =0x0203E080
+	ldr r1, _08052A24 @ =gBanimTriAtkPalettes
 	str r0, [r1]
 _0805290E:
 	mov r2, r8
 	cmp r2, #0
 	beq _08052928
-	ldr r0, _08052A18 @ =0x0203E066
+	ldr r0, _08052A18 @ =gBanimIdx
 	movs r3, #2
 	ldrsh r0, [r0, r3]
 	ldr r1, [sp, #0xc]
 	adds r1, #0x4a
 	ldrh r1, [r1]
 	bl FilterBattleAnimCharacterPalette
-	ldr r1, _08052A24 @ =0x0203E080
+	ldr r1, _08052A24 @ =gBanimTriAtkPalettes
 	str r0, [r1, #4]
 _08052928:
 	ldr r4, _08052A28 @ =0x0203E0B0
@@ -2993,7 +2993,7 @@ _08052928:
 	bl GetChapterInfo
 	ldrb r1, [r0, #0x13]
 	adds r0, r4, #0
-	bl sub_805313C
+	bl GetBanimTerrainGround
 	strh r0, [r5]
 _0805296A:
 	mov r4, r8
@@ -3007,7 +3007,7 @@ _0805296A:
 	bl GetChapterInfo
 	ldrb r1, [r0, #0x13]
 	adds r0, r4, #0
-	bl sub_805313C
+	bl GetBanimTerrainGround
 	strh r0, [r5, #2]
 _08052988:
 	ldr r1, _08052A38 @ =gBmSt
@@ -3029,7 +3029,7 @@ _08052988:
 	bl GetChapterInfo
 	ldrb r1, [r0, #0x13]
 	movs r0, #0x30
-	bl sub_805313C
+	bl GetBanimTerrainGround
 	strh r0, [r5]
 _080529B6:
 	mov r2, r8
@@ -3044,7 +3044,7 @@ _080529B6:
 	bl GetChapterInfo
 	ldrb r1, [r0, #0x13]
 	adds r0, r4, #0
-	bl sub_805313C
+	bl GetBanimTerrainGround
 	strh r0, [r5, #2]
 _080529D6:
 	bl sub_806BF78
@@ -3082,10 +3082,10 @@ _08052A06:
 	movs r0, #1
 	b _08052A48
 	.align 2, 0
-_08052A18: .4byte 0x0203E066
+_08052A18: .4byte gBanimIdx
 _08052A1C: .4byte 0x0203DFF0
-_08052A20: .4byte 0x0203DFF4
-_08052A24: .4byte 0x0203E080
+_08052A20: .4byte gBanimUniquePal
+_08052A24: .4byte gBanimTriAtkPalettes
 _08052A28: .4byte 0x0203E0B0
 _08052A2C: .4byte 0x0203E000
 _08052A30: .4byte 0x0000FFFF
@@ -3272,7 +3272,7 @@ _08052B92:
 	ldrb r4, [r4, #0xb]
 	ands r0, r4
 	bl GetAllegienceId
-	ldr r1, _08052DB8 @ =0x0203DFF8
+	ldr r1, _08052DB8 @ =gBanimFactionPal
 	strh r0, [r1]
 _08052BAC:
 	ldr r0, [sp, #0x28]
@@ -3285,7 +3285,7 @@ _08052BAC:
 	ldrb r1, [r1, #0xb]
 	ands r0, r1
 	bl GetAllegienceId
-	ldr r1, _08052DB8 @ =0x0203DFF8
+	ldr r1, _08052DB8 @ =gBanimFactionPal
 	strh r0, [r1, #2]
 _08052BC6:
 	ldr r1, _08052DBC @ =gEkrPids
@@ -3552,7 +3552,7 @@ _08052DA8: .4byte gBattleStats
 _08052DAC: .4byte 0x0203DFFE
 _08052DB0: .4byte gEkrDistanceType
 _08052DB4: .4byte gAnims
-_08052DB8: .4byte 0x0203DFF8
+_08052DB8: .4byte gBanimFactionPal
 _08052DBC: .4byte gEkrPids
 _08052DC0: .4byte 0x0203E09C
 _08052DC4: .4byte 0x0000FFFF
@@ -3633,16 +3633,16 @@ _08052E52:
 	cmp r0, #0
 	beq _08052E7C
 _08052E66:
-	ldr r1, _08052E78 @ =0x0203E0C0
+	ldr r1, _08052E78 @ =gBanimUniquePaletteDisabled
 	movs r0, #1
 	b _08052E80
 	.align 2, 0
 _08052E6C: .4byte Unk_0203E088
 _08052E70: .4byte gUnk_081E07EC
 _08052E74: .4byte gPlaySt
-_08052E78: .4byte 0x0203E0C0
+_08052E78: .4byte gBanimUniquePaletteDisabled
 _08052E7C:
-	ldr r1, _08052EA4 @ =0x0203E0C0
+	ldr r1, _08052EA4 @ =gBanimUniquePaletteDisabled
 	movs r0, #0
 _08052E80:
 	strh r0, [r1, #2]
@@ -3653,7 +3653,7 @@ _08052E80:
 	bl GetBattleAnimType
 	cmp r0, #3
 	bne _08052ECE
-	ldr r0, _08052EAC @ =gEkrPairSideVaild
+	ldr r0, _08052EAC @ =gBanimValid
 	movs r4, #0
 	ldrsh r0, [r0, r4]
 	cmp r0, #0
@@ -3662,9 +3662,9 @@ _08052E80:
 	ldrh r4, [r0]
 	b _08052EB8
 	.align 2, 0
-_08052EA4: .4byte 0x0203E0C0
+_08052EA4: .4byte gBanimUniquePaletteDisabled
 _08052EA8: .4byte 0x0203DFE2
-_08052EAC: .4byte gEkrPairSideVaild
+_08052EAC: .4byte gBanimValid
 _08052EB0: .4byte 0x0203E0B0
 _08052EB4:
 	ldr r0, _0805300C @ =0x0203E0B0
@@ -3765,7 +3765,7 @@ _08052F60:
 _08052F70:
 	cmp r4, #0
 	beq _08053008
-	ldr r0, _0805301C @ =gEkrPairSideVaild
+	ldr r0, _0805301C @ =gBanimValid
 	adds r3, r0, #0
 	ldrh r2, [r3]
 	cmp r2, #1
@@ -3777,7 +3777,7 @@ _08052F70:
 	ands r0, r1
 	cmp r0, #4
 	beq _08053008
-	ldr r0, _08053020 @ =0x0203E066
+	ldr r0, _08053020 @ =gBanimIdx
 	movs r4, #0
 	ldrsh r0, [r0, r4]
 	movs r2, #1
@@ -3814,7 +3814,7 @@ _08052FC0:
 	ands r0, r1
 	cmp r0, #4
 	beq _08053008
-	ldr r0, _08053020 @ =0x0203E066
+	ldr r0, _08053020 @ =gBanimIdx
 	movs r3, #2
 	ldrsh r0, [r0, r3]
 	movs r2, #1
@@ -3848,8 +3848,8 @@ _0805300C: .4byte 0x0203E0B0
 _08053010: .4byte gPlaySt
 _08053014: .4byte 0x0203DFE2
 _08053018: .4byte gEkrDistanceType
-_0805301C: .4byte gEkrPairSideVaild
-_08053020: .4byte 0x0203E066
+_0805301C: .4byte gBanimValid
+_08053020: .4byte gBanimIdx
 _08053024: .4byte gEkrSpellAnimIndex
 _08053028: .4byte 0x0203E000
 _0805302C:
@@ -3865,8 +3865,8 @@ _0805302E:
 	bx r1
 	.align 2, 0
 
-	thumb_func_start sub_8053040
-sub_8053040: @ 0x08053040
+	thumb_func_start GetBattleAnimationId_WithUnique
+GetBattleAnimationId_WithUnique: @ 0x08053040
 	push {r4, r5, r6, r7, lr}
 	mov r7, sl
 	mov r6, sb
@@ -4003,8 +4003,8 @@ _0805312C:
 	pop {r1}
 	bx r1
 
-	thumb_func_start sub_805313C
-sub_805313C: @ 0x0805313C
+	thumb_func_start GetBanimTerrainGround
+GetBanimTerrainGround: @ 0x0805313C
 	lsls r0, r0, #0x10
 	lsrs r2, r0, #0x10
 	lsls r1, r1, #0x10
@@ -5124,8 +5124,8 @@ _08053A10:
 _08053A12:
 	bx lr
 
-	thumb_func_start sub_8053A14
-sub_8053A14: @ 0x08053A14
+	thumb_func_start GetBattleAnimCharacterUniquePalIndex
+GetBattleAnimCharacterUniquePalIndex: @ 0x08053A14
 	ldr r3, _08053A34 @ =0x030014D8
 	ldr r2, [r0]
 	ldr r1, [r0, #4]
@@ -5223,7 +5223,7 @@ EkrPrepareBanimfx: @ 0x08053AA8
 	lsls r4, r1, #0x10
 	lsrs r4, r4, #0x10
 	bl GetAnimPosition
-	ldr r1, _08053AD0 @ =0x0203E066
+	ldr r1, _08053AD0 @ =gBanimIdx
 	lsls r0, r0, #1
 	adds r0, r0, r1
 	strh r4, [r0]
@@ -5235,7 +5235,7 @@ EkrPrepareBanimfx: @ 0x08053AA8
 	pop {r0}
 	bx r0
 	.align 2, 0
-_08053AD0: .4byte 0x0203E066
+_08053AD0: .4byte gBanimIdx
 
 	thumb_func_start GetBattleAnimRoundType
 GetBattleAnimRoundType: @ 0x08053AD4

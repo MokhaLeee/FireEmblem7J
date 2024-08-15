@@ -191,7 +191,7 @@ _0804CA04: .4byte gEkrPairHpInitial
 _0804CA08: .4byte gUnk_081DF3A4
 _0804CA0C: .4byte gPal + 0x360
 _0804CA10:
-	ldr r0, _0804CA3C @ =0x0203DFF8
+	ldr r0, _0804CA3C @ =gBanimFactionPal
 	movs r2, #0
 	ldrsh r0, [r0, r2]
 	lsls r0, r0, #5
@@ -212,14 +212,14 @@ _0804CA24:
 	bl CpuSet
 	b _0804CA68
 	.align 2, 0
-_0804CA3C: .4byte 0x0203DFF8
+_0804CA3C: .4byte gBanimFactionPal
 _0804CA40: .4byte gUnk_081DF224
 _0804CA44: .4byte gPal + 0x360
 _0804CA48: .4byte gEkrPairHpInitial
 _0804CA4C: .4byte gUnk_081DF3A4
 _0804CA50: .4byte gPal + 0x380
 _0804CA54:
-	ldr r0, _0804CBB8 @ =0x0203DFF8
+	ldr r0, _0804CBB8 @ =gBanimFactionPal
 	movs r2, #2
 	ldrsh r0, [r0, r2]
 	lsls r0, r0, #5
@@ -244,7 +244,7 @@ _0804CA68:
 	ldr r0, _0804CBD4 @ =gUnk_081DED34
 	ldr r1, _0804CBD8 @ =0x06013C00
 	bl LZ77UnCompVram
-	ldr r6, _0804CBB8 @ =0x0203DFF8
+	ldr r6, _0804CBB8 @ =gBanimFactionPal
 	movs r1, #0
 	ldrsh r0, [r6, r1]
 	lsls r0, r0, #5
@@ -377,7 +377,7 @@ _0804CB1E:
 	pop {r0}
 	bx r0
 	.align 2, 0
-_0804CBB8: .4byte 0x0203DFF8
+_0804CBB8: .4byte gBanimFactionPal
 _0804CBBC: .4byte gUnk_081DF224
 _0804CBC0: .4byte gPal + 0x380
 _0804CBC4: .4byte 0x0203E098
@@ -774,7 +774,7 @@ _0804CEA8: .4byte gEkrPairHpInitial
 _0804CEAC: .4byte 0x0203E094
 _0804CEB0: .4byte gEkrDistanceType
 _0804CEB4:
-	ldr r0, _0804CEC8 @ =gEkrPairSideVaild
+	ldr r0, _0804CEC8 @ =gBanimValid
 	ldrh r0, [r0]
 	cmp r0, #1
 	bne _0804CECC
@@ -784,7 +784,7 @@ _0804CEB4:
 	adds r0, #0x38
 	b _0804CEDC
 	.align 2, 0
-_0804CEC8: .4byte gEkrPairSideVaild
+_0804CEC8: .4byte gBanimValid
 _0804CECC:
 	mov r3, sb
 	movs r4, #0x32
@@ -2045,7 +2045,7 @@ sub_804D894: @ 0x0804D894
 	lsls r0, r1, #1
 	adds r0, r0, r1
 	lsls r0, r0, #3
-	ldr r3, _0804D8DC @ =gUnk_08FC0008
+	ldr r3, _0804D8DC @ =battle_terrain_table
 	adds r5, r0, r3
 	movs r6, #2
 	ldrsh r1, [r2, r6]
@@ -2069,7 +2069,7 @@ sub_804D894: @ 0x0804D894
 	.align 2, 0
 _0804D8D4: .4byte EkrMainMiniConf_0201FAD0
 _0804D8D8: .4byte 0x0203E000
-_0804D8DC: .4byte gUnk_08FC0008
+_0804D8DC: .4byte battle_terrain_table
 _0804D8E0: .4byte gEkrDistanceType
 _0804D8E4: .4byte 0x020145C8
 _0804D8E8:
@@ -2111,7 +2111,7 @@ _0804D920:
 	ldr r1, [r3, #0x10]
 	str r1, [r0, #4]
 	ldr r2, _0804D9A4 @ =0x02000044
-	ldr r1, _0804D9A8 @ =gUnk_08C0A5E8
+	ldr r1, _0804D9A8 @ =TsaConfs_BanimTmA
 	movs r3, #0
 	ldrsh r0, [r6, r3]
 	lsls r0, r0, #3
@@ -2165,7 +2165,7 @@ _0804D998: .4byte 0xFFFFF800
 _0804D99C: .4byte gPlaySt
 _0804D9A0: .4byte 0x0200004C
 _0804D9A4: .4byte 0x02000044
-_0804D9A8: .4byte gUnk_08C0A5E8
+_0804D9A8: .4byte TsaConfs_BanimTmA
 _0804D9AC: .4byte 0x0203DFE6
 
 	thumb_func_start EfxPrepareScreenFx
@@ -2190,7 +2190,7 @@ EfxPrepareScreenFx: @ 0x0804D9B0
 	ldr r0, _0804D9FC @ =gUnk_081DE528
 	ldr r1, _0804DA00 @ =0x06001000
 	bl LZ77UnCompVram
-	ldr r0, _0804DA04 @ =gEkrPairSideVaild
+	ldr r0, _0804DA04 @ =gBanimValid
 	movs r1, #0
 	ldrsh r0, [r0, r1]
 	cmp r0, #0
@@ -2203,7 +2203,7 @@ _0804D9F4: .4byte 0x02017648
 _0804D9F8: .4byte 0x06001400
 _0804D9FC: .4byte gUnk_081DE528
 _0804DA00: .4byte 0x06001000
-_0804DA04: .4byte gEkrPairSideVaild
+_0804DA04: .4byte gBanimValid
 _0804DA08: .4byte gUnk_08C09CE4
 _0804DA0C:
 	ldr r0, _0804DA54 @ =gpEkrBattleUnitLeft
@@ -2229,7 +2229,7 @@ _0804DA1A:
 	adds r0, r4, #0
 	adds r1, r5, #0
 	bl Text_DrawString
-	ldr r0, _0804DA64 @ =gEkrPairSideVaild
+	ldr r0, _0804DA64 @ =gBanimValid
 	movs r1, #0
 	ldrsh r0, [r0, r1]
 	cmp r0, #0
@@ -2241,7 +2241,7 @@ _0804DA54: .4byte gpEkrBattleUnitLeft
 _0804DA58: .4byte 0x02017660
 _0804DA5C: .4byte gUnk_081DE730
 _0804DA60: .4byte 0x06001400
-_0804DA64: .4byte gEkrPairSideVaild
+_0804DA64: .4byte gBanimValid
 _0804DA68: .4byte gUnk_08C09CE4
 _0804DA6C:
 	ldr r0, _0804DAB4 @ =gpEkrBattleUnitLeft
@@ -2267,7 +2267,7 @@ _0804DA7A:
 	adds r0, r4, #0
 	adds r1, r5, #0
 	bl Text_DrawString
-	ldr r0, _0804DAC4 @ =gEkrPairSideVaild
+	ldr r0, _0804DAC4 @ =gBanimValid
 	movs r1, #2
 	ldrsh r0, [r0, r1]
 	cmp r0, #0
@@ -2279,7 +2279,7 @@ _0804DAB4: .4byte gpEkrBattleUnitLeft
 _0804DAB8: .4byte 0x02017670
 _0804DABC: .4byte gUnk_081DE780
 _0804DAC0: .4byte 0x06001580
-_0804DAC4: .4byte gEkrPairSideVaild
+_0804DAC4: .4byte gBanimValid
 _0804DAC8: .4byte gUnk_08C09CE4
 _0804DACC:
 	ldr r0, _0804DB14 @ =gpEkrBattleUnitRight
@@ -2305,7 +2305,7 @@ _0804DADA:
 	adds r0, r4, #0
 	adds r1, r5, #0
 	bl Text_DrawString
-	ldr r0, _0804DB24 @ =gEkrPairSideVaild
+	ldr r0, _0804DB24 @ =gBanimValid
 	movs r1, #2
 	ldrsh r0, [r0, r1]
 	cmp r0, #0
@@ -2317,7 +2317,7 @@ _0804DB14: .4byte gpEkrBattleUnitRight
 _0804DB18: .4byte 0x02017678
 _0804DB1C: .4byte gUnk_081DE7EC
 _0804DB20: .4byte 0x06001740
-_0804DB24: .4byte gEkrPairSideVaild
+_0804DB24: .4byte gBanimValid
 _0804DB28: .4byte gUnk_08C09CE4
 _0804DB2C:
 	ldr r0, _0804DBF0 @ =gpEkrBattleUnitRight
@@ -2374,7 +2374,7 @@ _0804DB3A:
 	bl sub_8067128
 	movs r0, #1
 	bl EnableBgSync
-	ldr r6, _0804DC08 @ =0x0203DFF8
+	ldr r6, _0804DC08 @ =gBanimFactionPal
 	movs r1, #0
 	ldrsh r0, [r6, r1]
 	lsls r0, r0, #5
@@ -2411,7 +2411,7 @@ _0804DBF8: .4byte gUnk_081DE83C
 _0804DBFC: .4byte 0x060018C0
 _0804DC00: .4byte gBg0Tm
 _0804DC04: .4byte gUnk_081DEBC4
-_0804DC08: .4byte 0x0203DFF8
+_0804DC08: .4byte gBanimFactionPal
 _0804DC0C: .4byte gUnk_081DEC14
 _0804DC10: .4byte gPal + 0x40
 _0804DC14: .4byte gEkrBg0QuakeVec

@@ -1,169 +1,6 @@
 	.include "macro.inc"
 	.syntax unified
 
-	thumb_func_start AnimScrAdvance
-AnimScrAdvance: @ 0x080546F0
-	push {r4, lr}
-	adds r4, r0, #0
-	ldrb r0, [r4, #0x12]
-	bl CheckRound1
-	cmp r0, #0
-	beq _0805472C
-	ldr r1, [r4, #0x20]
-	ldr r0, _0805470C @ =gUnk_08C0A5D8
-	cmp r1, r0
-	beq _0805472C
-	movs r2, #0x3f
-	b _08054718
-	.align 2, 0
-_0805470C: .4byte gUnk_08C0A5D8
-_08054710:
-	cmp r1, #6
-	bne _08054718
-	adds r0, #0xc
-	str r0, [r4, #0x20]
-_08054718:
-	ldr r0, [r4, #0x20]
-	adds r1, r2, #0
-	ldrb r3, [r0, #3]
-	ands r1, r3
-	cmp r1, #0
-	beq _08054728
-	cmp r1, #5
-	bne _08054710
-_08054728:
-	subs r0, #0xc
-	str r0, [r4, #0x20]
-_0805472C:
-	pop {r4}
-	pop {r0}
-	bx r0
-	.align 2, 0
-
-	thumb_func_start NewEkrChienCHR
-NewEkrChienCHR: @ 0x08054734
-	push {r4, lr}
-	adds r4, r0, #0
-	ldr r0, _08054748 @ =gUnk_08C0A610
-	movs r1, #3
-	bl Proc_Start
-	str r4, [r0, #0x5c]
-	pop {r4}
-	pop {r0}
-	bx r0
-	.align 2, 0
-_08054748: .4byte gUnk_08C0A610
-
-	thumb_func_start EkrChienCHRMain
-EkrChienCHRMain: @ 0x0805474C
-	push {r4, lr}
-	adds r4, r0, #0
-	ldr r0, [r4, #0x5c]
-	bl RegisterAISSheetGraphics
-	adds r0, r4, #0
-	bl Proc_Break
-	pop {r4}
-	pop {r0}
-	bx r0
-	.align 2, 0
-
-	thumb_func_start RegisterAISSheetGraphics
-RegisterAISSheetGraphics: @ 0x08054764
-	push {r4, r5, lr}
-	adds r5, r0, #0
-	ldr r4, _08054790 @ =0x000003FF
-	ldrh r0, [r5, #8]
-	ands r4, r0
-	lsls r4, r4, #5
-	ldr r0, _08054794 @ =0x06010000
-	adds r4, r4, r0
-	ldr r0, [r5, #0x28]
-	ldr r1, [r5, #0x2c]
-	bl LZ77UnCompWram
-	ldr r0, [r5, #0x2c]
-	movs r2, #0x80
-	lsls r2, r2, #6
-	adds r1, r4, #0
-	bl RegisterDataMove
-	pop {r4, r5}
-	pop {r0}
-	bx r0
-	.align 2, 0
-_08054790: .4byte 0x000003FF
-_08054794: .4byte 0x06010000
-
-	thumb_func_start sub_8054798
-sub_8054798: @ 0x08054798
-	adds r2, r0, #0
-	ldr r0, _080547BC @ =0x0203E0C0
-	lsls r1, r1, #1
-	adds r1, r1, r0
-	movs r3, #0
-	ldrsh r0, [r1, r3]
-	cmp r0, #0
-	beq _080547B8
-	movs r1, #0
-	adds r3, r2, #0
-	adds r3, #0x80
-_080547AE:
-	ldm r3!, {r0}
-	stm r2!, {r0}
-	adds r1, #1
-	cmp r1, #7
-	bls _080547AE
-_080547B8:
-	bx lr
-	.align 2, 0
-_080547BC: .4byte 0x0203E0C0
-
-	thumb_func_start GetBanimPalette
-GetBanimPalette: @ 0x080547C0
-	adds r2, r0, #0
-	cmp r1, #0
-	bne _080547D0
-	ldr r0, _080547CC @ =gpEkrBattleUnitLeft
-	b _080547D2
-	.align 2, 0
-_080547CC: .4byte gpEkrBattleUnitLeft
-_080547D0:
-	ldr r0, _080547E8 @ =gpEkrBattleUnitRight
-_080547D2:
-	ldr r0, [r0]
-	ldr r0, [r0, #4]
-	ldrb r0, [r0, #4]
-	cmp r0, #0x19
-	beq _080547FA
-	cmp r0, #0x19
-	bhi _080547EC
-	cmp r0, #0x18
-	beq _080547F6
-	b _08054806
-	.align 2, 0
-_080547E8: .4byte gpEkrBattleUnitRight
-_080547EC:
-	cmp r0, #0x1a
-	beq _080547FE
-	cmp r0, #0x1b
-	beq _08054802
-	b _08054806
-_080547F6:
-	movs r0, #0x24
-	b _08054808
-_080547FA:
-	movs r0, #0x26
-	b _08054808
-_080547FE:
-	movs r0, #0x28
-	b _08054808
-_08054802:
-	movs r0, #0x2a
-	b _08054808
-_08054806:
-	adds r0, r2, #0
-_08054808:
-	bx lr
-	.align 2, 0
-
 	thumb_func_start UpdateBanimFrame
 UpdateBanimFrame: @ 0x0805480C
 	push {r4, r5, r6, r7, lr}
@@ -172,31 +9,32 @@ UpdateBanimFrame: @ 0x0805480C
 	mov r5, r8
 	push {r5, r6, r7}
 	sub sp, #4
-	ldr r0, _080549DC @ =gUnk_08E00008
+	ldr r0, _080549DC @ =banim_data
 	mov sb, r0
-	ldr r1, _080549E0 @ =gUnk_08FD8008
+	ldr r1, _080549E0 @ =character_battle_animation_palette_table
 	mov sl, r1
 	ldr r1, _080549E4 @ =gpImgSheet
 	movs r0, #0
 	str r0, [r1, #4]
 	str r0, [r1]
-	ldr r0, _080549E8 @ =gEkrPairSideVaild
+	ldr r0, _080549E8 @ =gBanimValid
 	movs r1, #0
 	ldrsh r2, [r0, r1]
 	mov r8, r2
 	cmp r2, #1
 	bne _080548C4
-	ldr r0, _080549EC @ =0x0203E066
+
+	ldr r0, _080549EC @ =gBanimIdx
 	movs r2, #0
 	ldrsh r5, [r0, r2]
-	ldr r0, _080549F0 @ =0x0203DFF8
+	ldr r0, _080549F0 @ =gBanimFactionPal
 	movs r1, #0
 	ldrsh r7, [r0, r1]
-	ldr r0, _080549F4 @ =0x0203DFF4
+	ldr r0, _080549F4 @ =gBanimUniquePal
 	movs r2, #0
 	ldrsh r4, [r0, r2]
 	lsls r0, r5, #5
-	ldr r1, _080549DC @ =gUnk_08E00008
+	ldr r1, _080549DC @ =banim_data
 	adds r6, r0, r1
 	ldr r0, [r6, #0x10]
 	ldr r1, _080549F8 @ =gBanimScrLeft
@@ -208,10 +46,10 @@ UpdateBanimFrame: @ 0x0805480C
 	movs r1, #0
 	bl GetBanimPalette
 	lsls r0, r0, #5
-	ldr r2, _080549DC @ =gUnk_08E00008
+	ldr r2, _080549DC @ =banim_data
 	adds r0, r0, r2
 	ldr r0, [r0, #0x1c]
-	ldr r5, _08054A00 @ =0x02004088
+	ldr r5, _08054A00 @ =gBanimPaletteLeft
 	adds r1, r5, #0
 	bl LZ77UnCompWram
 	movs r0, #1
@@ -225,7 +63,7 @@ UpdateBanimFrame: @ 0x0805480C
 	bl LZ77UnCompWram
 	adds r0, r5, #0
 	movs r1, #0
-	bl sub_8054798
+	bl ApplyBanimUniquePalette
 _0805488E:
 	ldr r1, _08054A04 @ =gpEfxUnitPaletteBackup
 	lsls r0, r7, #5
@@ -235,7 +73,7 @@ _0805488E:
 	adds r1, r4, #0
 	movs r2, #8
 	bl CpuFastSet
-	ldr r0, _08054A0C @ =0x0203E080
+	ldr r0, _08054A0C @ =gBanimTriAtkPalettes
 	ldr r0, [r0]
 	adds r4, #0x20
 	adds r1, r4, #0
@@ -243,7 +81,7 @@ _0805488E:
 	bl CpuFastSet
 	bl EnablePalSync
 	ldr r0, [r6, #0x18]
-	ldr r4, _08054A10 @ =0x020041C8
+	ldr r4, _08054A10 @ =gBanimOaml
 	adds r1, r4, #0
 	bl LZ77UnCompWram
 	ldr r0, _08054A14 @ =0x000057F0
@@ -251,26 +89,26 @@ _0805488E:
 	mov r1, r8
 	str r1, [r4]
 _080548C4:
-	ldr r0, _080549E8 @ =gEkrPairSideVaild
+	ldr r0, _080549E8 @ =gBanimValid
 	movs r1, #2
 	ldrsh r2, [r0, r1]
 	mov r8, r2
 	cmp r2, #1
 	bne _0805495E
-	ldr r0, _080549EC @ =0x0203E066
+	ldr r0, _080549EC @ =gBanimIdx
 	movs r2, #2
 	ldrsh r5, [r0, r2]
-	ldr r0, _080549F0 @ =0x0203DFF8
+	ldr r0, _080549F0 @ =gBanimFactionPal
 	movs r1, #2
 	ldrsh r7, [r0, r1]
-	ldr r0, _080549F4 @ =0x0203DFF4
+	ldr r0, _080549F4 @ =gBanimUniquePal
 	movs r2, #2
 	ldrsh r4, [r0, r2]
 	lsls r0, r5, #5
 	mov r1, sb
 	adds r6, r0, r1
 	ldr r0, [r6, #0x10]
-	ldr r1, _08054A18 @ =0x02011BC8
+	ldr r1, _08054A18 @ =gBanimScrRight
 	bl LZ77UnCompWram
 	ldr r1, _08054A1C @ =gpBanimModesRight
 	ldr r0, [r6, #0xc]
@@ -281,7 +119,7 @@ _080548C4:
 	lsls r0, r0, #5
 	add r0, sb
 	ldr r0, [r0, #0x1c]
-	ldr r5, _08054A20 @ =0x02004128
+	ldr r5, _08054A20 @ =gBanimPaletteRight
 	adds r1, r5, #0
 	bl LZ77UnCompWram
 	movs r0, #1
@@ -295,7 +133,7 @@ _080548C4:
 	bl LZ77UnCompWram
 	adds r0, r5, #0
 	movs r1, #1
-	bl sub_8054798
+	bl ApplyBanimUniquePalette
 _08054928:
 	ldr r1, _08054A04 @ =gpEfxUnitPaletteBackup
 	lsls r0, r7, #5
@@ -305,7 +143,7 @@ _08054928:
 	adds r1, r4, #0
 	movs r2, #8
 	bl CpuFastSet
-	ldr r0, _08054A0C @ =0x0203E080
+	ldr r0, _08054A0C @ =gBanimTriAtkPalettes
 	ldr r0, [r0, #4]
 	adds r4, #0x20
 	adds r1, r4, #0
@@ -330,16 +168,17 @@ _0805495E:
 	adds r0, r2, #0
 	movs r2, #0
 	mov r3, sp
-	bl sub_8053040
+	bl GetBattleAnimationId_WithUnique
 	lsls r0, r0, #0x10
-	ldr r5, _08054A0C @ =0x0203E080
+	ldr r5, _08054A0C @ =gBanimTriAtkPalettes
 	lsrs r0, r0, #0xb
 	add r0, sb
 	ldr r0, [r0, #0x1c]
 	str r0, [r5]
+
 	ldr r0, [r6]
 	ldr r1, [sp]
-	bl sub_8053A14
+	bl GetBattleAnimCharacterUniquePalIndex
 	lsls r0, r0, #0x10
 	asrs r4, r0, #0x10
 	movs r7, #1
@@ -356,7 +195,7 @@ _0805499C:
 	ldr r1, [r1, #0x34]
 	movs r2, #0
 	mov r3, sp
-	bl sub_8053040
+	bl GetBattleAnimationId_WithUnique
 	lsls r0, r0, #0x10
 	lsrs r0, r0, #0xb
 	add r0, sb
@@ -364,7 +203,7 @@ _0805499C:
 	str r0, [r5, #4]
 	ldr r0, [r6, #4]
 	ldr r1, [sp]
-	bl sub_8053A14
+	bl GetBattleAnimCharacterUniquePalIndex
 	lsls r0, r0, #0x10
 	asrs r4, r0, #0x10
 	cmp r4, r7
@@ -383,24 +222,24 @@ _080549CC:
 	pop {r0}
 	bx r0
 	.align 2, 0
-_080549DC: .4byte gUnk_08E00008
-_080549E0: .4byte gUnk_08FD8008
+_080549DC: .4byte banim_data
+_080549E0: .4byte character_battle_animation_palette_table
 _080549E4: .4byte gpImgSheet
-_080549E8: .4byte gEkrPairSideVaild
-_080549EC: .4byte 0x0203E066
-_080549F0: .4byte 0x0203DFF8
-_080549F4: .4byte 0x0203DFF4
+_080549E8: .4byte gBanimValid
+_080549EC: .4byte gBanimIdx
+_080549F0: .4byte gBanimFactionPal
+_080549F4: .4byte gBanimUniquePal
 _080549F8: .4byte gBanimScrLeft
 _080549FC: .4byte gpBanimModesLeft
-_08054A00: .4byte 0x02004088
+_08054A00: .4byte gBanimPaletteLeft
 _08054A04: .4byte gpEfxUnitPaletteBackup
 _08054A08: .4byte gPal + 0x2e0
-_08054A0C: .4byte 0x0203E080
-_08054A10: .4byte 0x020041C8
+_08054A0C: .4byte gBanimTriAtkPalettes
+_08054A10: .4byte gBanimOaml
 _08054A14: .4byte 0x000057F0
-_08054A18: .4byte 0x02011BC8
+_08054A18: .4byte gBanimScrRight
 _08054A1C: .4byte gpBanimModesRight
-_08054A20: .4byte 0x02004128
+_08054A20: .4byte gBanimPaletteRight
 _08054A24: .4byte gPal + 0x320
 _08054A28: .4byte gBanimOamr2
 _08054A2C: .4byte gpEkrTriangleUnits
@@ -484,7 +323,7 @@ InitBattleAnimFrame: @ 0x08054AC0
 	str r0, [r4, #4]
 	str r0, [r4, #8]
 	str r0, [r4, #0xc]
-	ldr r5, _08054B10 @ =gEkrPairSideVaild
+	ldr r5, _08054B10 @ =gBanimValid
 	ldrh r0, [r5]
 	cmp r0, #1
 	bne _08054AE0
@@ -516,7 +355,7 @@ _08054B06:
 	bx r0
 	.align 2, 0
 _08054B0C: .4byte gAnims
-_08054B10: .4byte gEkrPairSideVaild
+_08054B10: .4byte gBanimValid
 _08054B14: .4byte gEkrDistanceType
 
 	thumb_func_start InitLeftAnim
@@ -526,7 +365,7 @@ InitLeftAnim: @ 0x08054B18
 	mov r6, r8
 	push {r6, r7}
 	adds r7, r0, #0
-	ldr r2, _08054C20 @ =gBanimRoundScripts
+	ldr r2, _08054C20 @ =BanimDefaultModeConfig
 	lsls r1, r7, #2
 	adds r0, r1, r2
 	ldrb r5, [r0]
@@ -541,7 +380,7 @@ InitLeftAnim: @ 0x08054B18
 	adds r1, r1, r2
 	ldrb r1, [r1]
 	mov sb, r1
-	ldr r0, _08054C24 @ =gUnk_081DE20D
+	ldr r0, _08054C24 @ =BanimTypesPosLeft
 	ldr r1, _08054C28 @ =gEkrDistanceType
 	movs r2, #0
 	ldrsh r1, [r1, r2]
@@ -572,7 +411,7 @@ InitLeftAnim: @ 0x08054B18
 	adds r0, r1, r0
 	cmp r5, #0xff
 	bne _08054B80
-	ldr r0, _08054C48 @ =gUnk_08C0A5D8
+	ldr r0, _08054C48 @ =AnimScr_DefaultAnim
 _08054B80:
 	adds r1, r6, #0
 	bl AnimCreate
@@ -600,7 +439,7 @@ _08054B80:
 	strb r7, [r2, #0x12]
 	ldr r0, _08054C50 @ =0x02000088
 	str r0, [r2, #0x2c]
-	ldr r0, _08054C54 @ =0x020041C8
+	ldr r0, _08054C54 @ =gBanimOaml
 	str r0, [r2, #0x30]
 	ldr r0, _08054C58 @ =gAnims
 	str r2, [r0]
@@ -614,7 +453,7 @@ _08054B80:
 	adds r0, r1, r0
 	cmp r2, #0xff
 	bne _08054BD4
-	ldr r0, _08054C48 @ =gUnk_08C0A5D8
+	ldr r0, _08054C48 @ =AnimScr_DefaultAnim
 _08054BD4:
 	mov r1, sb
 	bl AnimCreate
@@ -642,7 +481,7 @@ _08054BD4:
 	strb r7, [r2, #0x12]
 	ldr r0, _08054C50 @ =0x02000088
 	str r0, [r2, #0x2c]
-	ldr r0, _08054C54 @ =0x020041C8
+	ldr r0, _08054C54 @ =gBanimOaml
 	str r0, [r2, #0x30]
 	ldr r0, _08054C58 @ =gAnims
 	str r2, [r0, #4]
@@ -653,8 +492,8 @@ _08054BD4:
 	pop {r0}
 	bx r0
 	.align 2, 0
-_08054C20: .4byte gBanimRoundScripts
-_08054C24: .4byte gUnk_081DE20D
+_08054C20: .4byte BanimDefaultModeConfig
+_08054C24: .4byte BanimTypesPosLeft
 _08054C28: .4byte gEkrDistanceType
 _08054C2C: .4byte gEkrXPosBase
 _08054C30: .4byte gUnk_081DE218
@@ -663,17 +502,17 @@ _08054C38: .4byte gEkrXPosReal
 _08054C3C: .4byte gEkrYPosReal
 _08054C40: .4byte gpBanimModesLeft
 _08054C44: .4byte gBanimScrLeft
-_08054C48: .4byte gUnk_08C0A5D8
+_08054C48: .4byte AnimScr_DefaultAnim
 _08054C4C: .4byte gEkrBgPosition
 _08054C50: .4byte 0x02000088
-_08054C54: .4byte 0x020041C8
+_08054C54: .4byte gBanimOaml
 _08054C58: .4byte gAnims
 
 	thumb_func_start InitRightAnim
 InitRightAnim: @ 0x08054C5C
 	push {r4, r5, r6, r7, lr}
 	adds r5, r0, #0
-	ldr r2, _08054D44 @ =gBanimRoundScripts
+	ldr r2, _08054D44 @ =BanimDefaultModeConfig
 	lsls r1, r5, #2
 	adds r0, r1, r2
 	ldrb r3, [r0]
@@ -686,7 +525,7 @@ InitRightAnim: @ 0x08054C5C
 	adds r1, #3
 	adds r1, r1, r2
 	ldrb r7, [r1]
-	ldr r1, _08054D48 @ =gUnk_081DE212
+	ldr r1, _08054D48 @ =BanimTypesPosRight
 	ldr r0, _08054D4C @ =gEkrDistanceType
 	movs r2, #0
 	ldrsh r0, [r0, r2]
@@ -707,11 +546,11 @@ InitRightAnim: @ 0x08054C5C
 	lsls r0, r3, #2
 	adds r0, r0, r1
 	ldr r1, [r0]
-	ldr r0, _08054D64 @ =0x02011BC8
+	ldr r0, _08054D64 @ =gBanimScrRight
 	adds r0, r1, r0
 	cmp r3, #0xff
 	bne _08054CAE
-	ldr r0, _08054D68 @ =gUnk_08C0A5D8
+	ldr r0, _08054D68 @ =AnimScr_DefaultAnim
 _08054CAE:
 	adds r1, r4, #0
 	bl AnimCreate
@@ -748,11 +587,11 @@ _08054CAE:
 	lsls r0, r6, #2
 	adds r0, r0, r1
 	ldr r1, [r0]
-	ldr r0, _08054D64 @ =0x02011BC8
+	ldr r0, _08054D64 @ =gBanimScrRight
 	adds r0, r1, r0
 	cmp r6, #0xff
 	bne _08054D00
-	ldr r0, _08054D68 @ =gUnk_08C0A5D8
+	ldr r0, _08054D68 @ =AnimScr_DefaultAnim
 _08054D00:
 	adds r1, r7, #0
 	bl AnimCreate
@@ -788,16 +627,16 @@ _08054D00:
 	pop {r0}
 	bx r0
 	.align 2, 0
-_08054D44: .4byte gBanimRoundScripts
-_08054D48: .4byte gUnk_081DE212
+_08054D44: .4byte BanimDefaultModeConfig
+_08054D48: .4byte BanimTypesPosRight
 _08054D4C: .4byte gEkrDistanceType
 _08054D50: .4byte gEkrXPosBase
 _08054D54: .4byte gEkrYPosBase
 _08054D58: .4byte gEkrXPosReal
 _08054D5C: .4byte gEkrYPosReal
 _08054D60: .4byte gpBanimModesRight
-_08054D64: .4byte 0x02011BC8
-_08054D68: .4byte gUnk_08C0A5D8
+_08054D64: .4byte gBanimScrRight
+_08054D68: .4byte AnimScr_DefaultAnim
 _08054D6C: .4byte gEkrBgPosition
 _08054D70: .4byte 0x02002088
 _08054D74: .4byte gBanimOamr2
@@ -811,7 +650,7 @@ SwitchAISFrameDataFromBARoundType: @ 0x08054D7C
 	bl GetAISLayerId
 	cmp r0, #0
 	bne _08054D9C
-	ldr r0, _08054D98 @ =gBanimRoundScripts
+	ldr r0, _08054D98 @ =BanimDefaultModeConfig
 	lsls r1, r6, #2
 	adds r2, r1, r0
 	ldrb r5, [r2]
@@ -819,9 +658,9 @@ SwitchAISFrameDataFromBARoundType: @ 0x08054D7C
 	adds r1, r1, r0
 	b _08054DAA
 	.align 2, 0
-_08054D98: .4byte gBanimRoundScripts
+_08054D98: .4byte BanimDefaultModeConfig
 _08054D9C:
-	ldr r2, _08054DC8 @ =gBanimRoundScripts
+	ldr r2, _08054DC8 @ =BanimDefaultModeConfig
 	lsls r1, r6, #2
 	adds r0, r1, #2
 	adds r0, r0, r2
@@ -844,7 +683,7 @@ _08054DAA:
 	ldr r0, _08054DD0 @ =gBanimScrLeft
 	b _08054DE0
 	.align 2, 0
-_08054DC8: .4byte gBanimRoundScripts
+_08054DC8: .4byte BanimDefaultModeConfig
 _08054DCC: .4byte gpBanimModesLeft
 _08054DD0: .4byte gBanimScrLeft
 _08054DD4:
@@ -853,7 +692,7 @@ _08054DD4:
 	lsls r0, r5, #2
 	adds r0, r0, r1
 	ldr r1, [r0]
-	ldr r0, _08054DEC @ =0x02011BC8
+	ldr r0, _08054DEC @ =gBanimScrRight
 _08054DE0:
 	adds r1, r1, r0
 	str r1, [r4, #0x24]
@@ -861,9 +700,9 @@ _08054DE0:
 	b _08054DFA
 	.align 2, 0
 _08054DE8: .4byte gpBanimModesRight
-_08054DEC: .4byte 0x02011BC8
+_08054DEC: .4byte gBanimScrRight
 _08054DF0:
-	ldr r0, _08054E40 @ =gUnk_08C0A5D8
+	ldr r0, _08054E40 @ =AnimScr_DefaultAnim
 	str r0, [r4, #0x24]
 	str r0, [r4, #0x20]
 	movs r0, #0
@@ -895,7 +734,7 @@ _08054DFA:
 	lsls r1, r1, #2
 	subs r1, r1, r0
 	lsls r1, r1, #0xb
-	ldr r0, _08054E48 @ =0x020041C8
+	ldr r0, _08054E48 @ =gBanimOaml
 	adds r1, r1, r0
 	str r1, [r4, #0x30]
 	bl AnimSort
@@ -903,9 +742,9 @@ _08054DFA:
 	pop {r0}
 	bx r0
 	.align 2, 0
-_08054E40: .4byte gUnk_08C0A5D8
+_08054E40: .4byte AnimScr_DefaultAnim
 _08054E44: .4byte 0x0000F3FF
-_08054E48: .4byte 0x020041C8
+_08054E48: .4byte gBanimOaml
 
 	thumb_func_start GetAISLayerId
 GetAISLayerId: @ 0x08054E4C
@@ -1422,11 +1261,11 @@ sub_8055274: @ 0x08055274
 	bl GetAISLayerId
 	cmp r0, #0
 	bne _080552C6
-	ldr r3, _080552CC @ =gBanimRoundScripts
+	ldr r3, _080552CC @ =BanimDefaultModeConfig
 	movs r1, #6
 	ldrsh r0, [r6, r1]
 	lsls r0, r0, #5
-	ldr r1, _080552D0 @ =gUnk_08E00008
+	ldr r1, _080552D0 @ =banim_data
 	adds r0, r0, r1
 	ldr r1, [r0, #0xc]
 	ldr r2, [r6, #0x14]
@@ -1460,12 +1299,12 @@ _080552C6:
 	pop {r0}
 	bx r0
 	.align 2, 0
-_080552CC: .4byte gBanimRoundScripts
-_080552D0: .4byte gUnk_08E00008
+_080552CC: .4byte BanimDefaultModeConfig
+_080552D0: .4byte banim_data
 _080552D4: .4byte 0x000057F0
 
-	thumb_func_start sub_80552D8
-sub_80552D8: @ 0x080552D8
+	thumb_func_start InitMainMiniAnim
+InitMainMiniAnim: @ 0x080552D8
 	push {r4, r5, r6, r7, lr}
 	mov r7, sl
 	mov r6, sb
@@ -1473,9 +1312,9 @@ sub_80552D8: @ 0x080552D8
 	push {r5, r6, r7}
 	sub sp, #4
 	adds r5, r0, #0
-	ldr r0, _08055360 @ =gUnk_08E00008
+	ldr r0, _08055360 @ =banim_data
 	mov sb, r0
-	ldr r2, _08055364 @ =gBanimRoundScripts
+	ldr r2, _08055364 @ =BanimDefaultModeConfig
 	ldrh r3, [r5, #0xa]
 	lsls r1, r3, #2
 	adds r0, r1, r2
@@ -1505,7 +1344,7 @@ sub_80552D8: @ 0x080552D8
 	adds r1, r0, r3
 	ldr r2, [r1, #0xc]
 	ldr r3, [r5, #0x28]
-	ldr r7, _08055368 @ =gUnk_08C0A5D8
+	ldr r7, _08055368 @ =AnimScr_DefaultAnim
 	cmp r4, #0xff
 	beq _08055336
 	lsls r0, r4, #2
@@ -1513,7 +1352,7 @@ sub_80552D8: @ 0x080552D8
 	ldr r0, [r0]
 	adds r7, r3, r0
 _08055336:
-	ldr r0, _08055368 @ =gUnk_08C0A5D8
+	ldr r0, _08055368 @ =AnimScr_DefaultAnim
 	mov sl, r0
 	cmp r6, #0xff
 	beq _08055348
@@ -1534,9 +1373,9 @@ _08055348:
 	adds r1, r4, r2
 	b _0805537E
 	.align 2, 0
-_08055360: .4byte gUnk_08E00008
-_08055364: .4byte gBanimRoundScripts
-_08055368: .4byte gUnk_08C0A5D8
+_08055360: .4byte banim_data
+_08055364: .4byte BanimDefaultModeConfig
+_08055368: .4byte AnimScr_DefaultAnim
 _0805536C: .4byte 0x000057F0
 _08055370:
 	ldr r4, [r5, #0x24]
@@ -1631,7 +1470,7 @@ _0805537E:
 	beq _0805543A
 	adds r0, r1, #0
 	lsls r0, r0, #4
-	ldr r2, _0805546C @ =gUnk_08FD8008
+	ldr r2, _0805546C @ =character_battle_animation_palette_table
 	adds r0, r0, r2
 	ldr r0, [r0, #0xc]
 	ldr r1, [r5, #0x20]
@@ -1659,7 +1498,7 @@ _0805543A:
 	bx r0
 	.align 2, 0
 _08055468: .4byte 0x000057F0
-_0805546C: .4byte gUnk_08FD8008
+_0805546C: .4byte character_battle_animation_palette_table
 _08055470: .4byte gPal + 0x200
 
 	thumb_func_start sub_8055474
@@ -1669,9 +1508,9 @@ sub_8055474: @ 0x08055474
 	mov r6, r8
 	push {r6, r7}
 	adds r6, r0, #0
-	ldr r0, _080554E8 @ =gUnk_08E00008
+	ldr r0, _080554E8 @ =banim_data
 	mov sb, r0
-	ldr r2, _080554EC @ =gBanimRoundScripts
+	ldr r2, _080554EC @ =BanimDefaultModeConfig
 	ldrh r1, [r6, #0xa]
 	lsls r0, r1, #2
 	adds r1, r0, r2
@@ -1693,7 +1532,7 @@ sub_8055474: @ 0x08055474
 	adds r1, r0, r7
 	ldr r2, [r1, #0xc]
 	ldr r3, [r6, #0x28]
-	ldr r7, _080554F0 @ =gUnk_08C0A5D8
+	ldr r7, _080554F0 @ =AnimScr_DefaultAnim
 	cmp r4, #0xff
 	beq _080554BE
 	lsls r0, r4, #2
@@ -1701,7 +1540,7 @@ sub_8055474: @ 0x08055474
 	ldr r0, [r0]
 	adds r7, r3, r0
 _080554BE:
-	ldr r0, _080554F0 @ =gUnk_08C0A5D8
+	ldr r0, _080554F0 @ =AnimScr_DefaultAnim
 	mov r8, r0
 	cmp r5, #0xff
 	beq _080554D0
@@ -1722,9 +1561,9 @@ _080554D0:
 	adds r1, r4, r2
 	b _08055506
 	.align 2, 0
-_080554E8: .4byte gUnk_08E00008
-_080554EC: .4byte gBanimRoundScripts
-_080554F0: .4byte gUnk_08C0A5D8
+_080554E8: .4byte banim_data
+_080554EC: .4byte BanimDefaultModeConfig
+_080554F0: .4byte AnimScr_DefaultAnim
 _080554F4: .4byte 0x000057F0
 _080554F8:
 	ldr r4, [r6, #0x24]
@@ -1814,7 +1653,7 @@ _08055506:
 	beq _080555B4
 	adds r0, r1, #0
 	lsls r0, r0, #4
-	ldr r7, _080555E0 @ =gUnk_08FD8008
+	ldr r7, _080555E0 @ =character_battle_animation_palette_table
 	adds r0, r0, r7
 	ldr r0, [r0, #0xc]
 	ldr r1, [r6, #0x20]
@@ -1839,7 +1678,7 @@ _080555B4:
 	bx r0
 	.align 2, 0
 _080555DC: .4byte 0x000057F0
-_080555E0: .4byte gUnk_08FD8008
+_080555E0: .4byte character_battle_animation_palette_table
 _080555E4: .4byte gPal + 0x200
 
 	thumb_func_start sub_80555E8
@@ -1973,7 +1812,7 @@ sub_80556B0: @ 0x080556B0
 	bl Proc_Start
 	adds r5, r0, #0
 	adds r0, r4, #0
-	bl sub_80552D8
+	bl InitMainMiniAnim
 	str r4, [r5, #0x5c]
 	str r5, [r4, #0x34]
 	movs r0, #1
@@ -2030,7 +1869,7 @@ sub_8055718: @ 0x08055718
 	lsls r0, r1, #1
 	adds r0, r0, r1
 	lsls r0, r0, #3
-	ldr r2, _08055780 @ =gUnk_08FC0008
+	ldr r2, _08055780 @ =battle_terrain_table
 	adds r0, r0, r2
 	mov r8, r0
 	movs r0, #6
@@ -2071,7 +1910,7 @@ _0805576C:
 	beq _08055788
 	b _08055792
 	.align 2, 0
-_08055780: .4byte gUnk_08FC0008
+_08055780: .4byte battle_terrain_table
 _08055784:
 	cmp r0, #4
 	bne _08055792
@@ -2527,7 +2366,7 @@ sub_8055B08: @ 0x08055B08
 	adds r7, r0, #0
 	movs r4, #0
 	mov sl, r4
-	ldr r0, _08055B4C @ =gUnk_08C0A5E8
+	ldr r0, _08055B4C @ =TsaConfs_BanimTmA
 	movs r2, #0xc
 	ldrsh r1, [r7, r2]
 	lsls r2, r1, #3
@@ -2552,7 +2391,7 @@ sub_8055B08: @ 0x08055B08
 	ldr r0, [r0]
 	mov pc, r0
 	.align 2, 0
-_08055B4C: .4byte gUnk_08C0A5E8
+_08055B4C: .4byte TsaConfs_BanimTmA
 _08055B50: .4byte _08055B54
 _08055B54: @ jump table
 	.4byte _08055B68 @ case 0
@@ -29019,7 +28858,7 @@ NewEfxMagfcast: @ 0x08063400
 	adds r5, r0, #0
 	str r6, [r5, #0x5c]
 	strh r4, [r5, #0x2c]
-	ldr r4, _0806344C @ =0x0203E066
+	ldr r4, _0806344C @ =gBanimIdx
 	adds r0, r6, #0
 	bl GetAnimPosition
 	lsls r0, r0, #1
@@ -29037,7 +28876,7 @@ NewEfxMagfcast: @ 0x08063400
 	.align 2, 0
 _08063444: .4byte gEfxBgSemaphore
 _08063448: .4byte gUnk_08C136C8
-_0806344C: .4byte 0x0203E066
+_0806344C: .4byte gBanimIdx
 _08063450:
 	ldr r0, [r5, #0x5c]
 	adds r1, r7, #2
@@ -30425,7 +30264,7 @@ NewEfxMantBatabata: @ 0x08063FBC
 	sub sp, #4
 	adds r7, r0, #0
 	bl GetAnimPosition
-	ldr r1, _08063FE8 @ =0x0203E066
+	ldr r1, _08063FE8 @ =gBanimIdx
 	lsls r0, r0, #1
 	adds r0, r0, r1
 	ldrh r0, [r0]
@@ -30440,7 +30279,7 @@ NewEfxMantBatabata: @ 0x08063FBC
 	ldr r0, [r0]
 	mov pc, r0
 	.align 2, 0
-_08063FE8: .4byte 0x0203E066
+_08063FE8: .4byte gBanimIdx
 _08063FEC: .4byte _08063FF0
 _08063FF0: @ jump table
 	.4byte _08064060 @ case 0

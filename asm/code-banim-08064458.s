@@ -78,15 +78,15 @@ sub_8064834: @ 0x08064834
 	bl GetAnimPosition
 	cmp r0, #0
 	bne _08064850
-	ldr r0, _0806484C @ =gUnk_081DE20D
+	ldr r0, _0806484C @ =BanimTypesPosLeft
 	ldrh r1, [r4, #2]
 	ldrb r0, [r0]
 	subs r0, r1, r0
 	b _08064858
 	.align 2, 0
-_0806484C: .4byte gUnk_081DE20D
+_0806484C: .4byte BanimTypesPosLeft
 _08064850:
-	ldr r0, _08064888 @ =gUnk_081DE212
+	ldr r0, _08064888 @ =BanimTypesPosRight
 	ldrb r0, [r0]
 	ldrh r3, [r4, #2]
 	subs r0, r0, r3
@@ -114,7 +114,7 @@ _08064858:
 	pop {r0}
 	bx r0
 	.align 2, 0
-_08064888: .4byte gUnk_081DE212
+_08064888: .4byte BanimTypesPosRight
 
 	thumb_func_start sub_806488C
 sub_806488C: @ 0x0806488C

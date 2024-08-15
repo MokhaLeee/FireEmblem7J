@@ -36,11 +36,15 @@ enum facing_idx {
     FACING_UP    = 3,
 };
 
+struct BattleAnimDef {
+    u16 wtype;
+    u16 index;
+};
+
 struct ProcCmd;
 struct SMSHandle;
 struct Unit;
 struct UnitDefinition;
 struct BattleHit;
 struct SupportBonuses;
-struct BattleAnimDef;
 struct BmBgxConf;

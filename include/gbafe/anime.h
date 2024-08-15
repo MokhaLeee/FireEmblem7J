@@ -33,7 +33,7 @@ struct Anim {
 
     /* 3C */ const void * pSpriteData;
     /* 40 */ const void * pUnk40;
-    /* 44 */ const void * pUnk44;
+    /* 44 */ void * pUnk44;
 };
 
 enum Anim_state {
@@ -195,14 +195,10 @@ void AnimInsert(struct Anim * anim);
 void AnimDisplayPrivate(struct Anim * anim);
 void Anim_8005334(struct Anim * anim, u32 instruction);
 bool PrepareBattleGraphicsMaybe(void);
-u16 GetBattleAnimationId_WithUnique(struct Unit * unit, const struct BattleAnimDef * pBattleAnimDef, u16, int * out);
+
 int GetBanimTerrainGround(u16 terrain, u16 tileset);
 int GetBanimBackgroundIndex(u16 terrain, u16 tileset);
 s16 GetSpellAnimId(u16 jid, u16 weapon);
-void UnsetMapStaffAnim(s16 * out, u16 pos, u16 weapon);
-void ParseBattleHitToBanimCmd(void);
 u16 GetBattleAnimationId(struct Unit * unit, const struct BattleAnimDef * anim_def, u16 wpn, u32 * out);
-bool CheckBattleHasHit(void);
+
 // ??? sub_805893C(???);
-u16 * FilterBattleAnimCharacterPalette(s16 banim_index, u16 item);
-int GetAllegienceId(u32 faction);

@@ -40,8 +40,12 @@ SECTIONS
 		. = 0x00005C; gpBanimModesLeft = .;
 		. = 0x000060; gpBanimModesRight = .;
 		. = 0x00006C; gpProcEkrDispUP = .;
+		. = 0x004088; gBanimPaletteLeft = .;
+		. = 0x004128; gBanimPaletteRight = .;
+		. = 0x0041C8; gBanimOaml = .;
 		. = 0x0099C8; gBanimOamr2 = .;
 		. = 0x00F1C8; gBanimScrLeft = .;
+		. = 0x011BC8; gBanimScrRight = .;
 		. = 0x0165C8; gEfxPal = .;
 		. = 0x017724; gEkrBattleEndFlag = .;
 		. = 0x017728; gEkrHpBarCount = .;
@@ -125,21 +129,26 @@ SECTIONS
 		. = 0x03A858; gActionSt = .;
 		. = 0x03DFE0; gEkrDebugModeMaybe = .;
 		. = 0x03DFE4; gEkrInitialHitSide = .;
-		. = 0x03DFE8; gEkrPairSideVaild = .;
+		. = 0x03DFE8; gBanimValid = .;
 		. = 0x03DFEC; Unk_0203DFEC = .;
+		. = 0x03DFF4; gBanimUniquePal = .;
+		. = 0x03DFF8; gBanimFactionPal = .;
 		. = 0x03DFFC; gEkrSpellAnimIndex = .;
 		. = 0x03E004; gEkrDistanceType = .;
 		. = 0x03E00E; gAnimRoundData = .;
 		. = 0x03E036; gEfxPairHpBufOffset = .;
 		. = 0x03E03A; gEfxHpLut = .;
+		. = 0x03E066; gBanimIdx = .;
 		. = 0x03E06C; gpEkrBattleUnitLeft = .;
 		. = 0x03E070; gpEkrBattleUnitRight = .;
 		. = 0x03E074; gEkrPids = .;
 		. = 0x03E078; gpEkrTriangleUnits = .;
+		. = 0x03E080; gBanimTriAtkPalettes = .;
 		. = 0x03E088; Unk_0203E088 = .;
 		. = 0x03E090; gEkrPairHpInitial = .;
 		. = 0x03E0A8; gEkrPairExpPrevious = .;
 		. = 0x03E0AC; gEkrPairExpGain = .;
+		. = 0x03E0C0; gBanimUniquePaletteDisabled = .;
 		. = 0x03E0D4; gManimSt = .;
 		. = 0x03E138; src/scanline.o(ewram_data);
 		. = 0x03E648;
@@ -259,6 +268,7 @@ SECTIONS
 		asm/banim-efxbattle.o(.text);
 		asm/code-banim1.o(.text);
 		src/banim-main.o(.text);
+		src/banim-mainutils.o(.text);
 		asm/code-banim.o(.text);
 		src/banim-efxdrsmmoya.o(.text);
 		asm/code-banim-08064458.o(.text);
@@ -341,6 +351,8 @@ SECTIONS
 		. = ALIGN(4); data/const_data_081C9474.o(.rodata)
 		. = ALIGN(4); src/battle.o(.rodata)
 		. = ALIGN(4); data/const_data_081C94C8.o(.rodata)
+		. = ALIGN(4); src/banim-mainutils.o(.rodata)
+		. = ALIGN(4); data/const_data_banimekrmain.o(.rodata)
 		. = ALIGN(4); src/banim-efxdrsmmoya.o(.rodata)
 		. = ALIGN(4); data/const_data_081EF4AC.o(.rodata)
 		. = ALIGN(4); data/const_data_ekrdragon.o(.rodata)
@@ -381,6 +393,8 @@ SECTIONS
 		. = ALIGN(4); src/battle.o(.data)
 		. = ALIGN(4); data/data_08C03574.o(.data)
 		. = ALIGN(4); data/data_ai.o(.data)
+		. = ALIGN(4); src/banim-mainutils.o(.data)
+		. = ALIGN(4); data/data_banim.o(.data)
 		. = ALIGN(4); src/banim-efxdrsmmoya.o(.data)
 		. = ALIGN(4); data/data_08C13A64.o(.data)
 		. = ALIGN(4); src/banim-ekrdragon.o(.data)

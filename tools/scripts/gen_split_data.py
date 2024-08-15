@@ -8,14 +8,15 @@ import os, sys, subprocess
 def generate_unsymboled_const_data():
     list = {}
 
-    _identifier = "       0x08"
-    start_offse = 29
+    _identifier = ""
+    start_offse = 0
 
     for line in sys.stdin.readlines():
-        if _identifier in line:
-            ptr = eval(line[start_offse:start_offse+10])
+        if _identifier != "" and _identifier not in line:
+            continue
 
-            list[ptr] = f"gUnk_{ptr:08X}"
+        ptr = eval(line[start_offse:start_offse+10])
+        list[ptr] = f"gUnk_{ptr:08X}"
 
     return sorted(list.values())
 

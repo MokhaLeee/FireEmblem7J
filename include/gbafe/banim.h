@@ -24,7 +24,7 @@ enum gEkrDistanceType_index {
     EKR_DISTANCE_CLOSE,
     EKR_DISTANCE_FAR,
     EKR_DISTANCE_FARFAR,
-    EKR_DISTANCE_3,
+    EKR_DISTANCE_MONOCOMBAT,
     EKR_DISTANCE_PROMOTION
 };
 
@@ -73,6 +73,39 @@ enum banim_mode_index {
 };
 
 extern s16 gEkrDistanceType;
+
+struct BattleAnim {
+    char abbr[12];
+    int * modes;
+    char * script;
+    char * oam_r;
+    char * oam_l;
+    u16 * pal;
+};
+
+extern struct BattleAnim banim_data[];
+
+struct BattleAnimCharaPal {
+    char abbr[12];
+    u16 * pal;
+};
+
+extern struct BattleAnimCharaPal character_battle_animation_palette_table[];
+
+struct BattleAnimTerrain {
+    char abbr[12];
+    char * tileset;
+    u16 * palette;
+    int null_1; // useless, always 00
+};
+
+extern struct BattleAnimTerrain battle_terrain_table[];
+
+struct BanimModeData {
+    const u32 * unk0;
+    const u32 * img;
+    u32 unk2;
+};
 
 struct ProcEfx {
     PROC_HEADER;
@@ -253,12 +286,14 @@ extern const void * gpImgSheet[2];
 extern int gEkrDebugUnk2;
 extern int gAnimC01Blocking;
 extern u32 gBanimDoneFlag[];
-extern u8 gBanimRoundScripts[];
-extern u8 gBanimScr_81DE208[];
 extern int * gpBanimModesLeft;
 extern int * gpBanimModesRight;
 extern u8 gBanimScrLeft[];
 extern u8 gBanimScrRight[];
+extern u16 gBanimPaletteLeft[0x50];
+extern u16 gBanimPaletteRight[0x50];
+extern u32 gBanimOaml[0x1600];
+extern u32 gBanimOamr2[0x1600];
 extern int Unk_02017758;
 extern int Unk_03004750;
 extern int Unk_0203E088[2];
@@ -267,6 +302,8 @@ extern short gEkrPairHpInitial[2];
 extern short gEfxPairHpBufOffset[];
 extern u16 gEkrTsaBuffer[0x1000 / 2];
 extern u16 gEfxFrameTmap[0x2520 / 2];
+extern s16 gBanimUniquePal[2];
+extern s16 gBanimFactionPal[2];
 extern s16 gEkrSpellAnimIndex[2];
 extern int gEkrBgPosition;
 extern s16 gEkrXPosReal[2];
@@ -275,7 +312,7 @@ extern u16 gEkrXPosBase[2];
 extern u16 gEkrYPosBase[2];
 extern struct Vec2 gEkrBg0QuakeVec;
 extern struct Vec2 gEkrBg2QuakeVec;
-extern s16 gEkrPairSideVaild[2];
+extern s16 gBanimValid[2];
 extern int gEkrBg2ScrollFlip;
 extern u16 * gpBg2ScrollOffsetStart;
 extern u16 * gpBg2ScrollOffset;
@@ -286,9 +323,15 @@ extern u16 * gpBg1ScrollOffsetStart;
 extern u16 * gpBg1ScrollOffset;
 extern u16 gpBg1ScrollOffsetList1[];
 extern u16 gpBg1ScrollOffsetList2[];
+extern s16 gBanimIdx[2];
 extern struct BattleUnit * gpEkrBattleUnitLeft;
 extern struct BattleUnit * gpEkrBattleUnitRight;
 extern u16 * gpEfxUnitPaletteBackup[2];
+
+/* EWRAM data */
+extern struct Unit * gpEkrTriangleUnits[2];
+extern u16 * gBanimTriAtkPalettes[2];
+extern s16 gBanimUniquePaletteDisabled[2];
 
 void NewEkrLvlupFan(void);
 // ??? EkrLvupFanMain
@@ -528,14 +571,14 @@ void NewEkrNamewinAppear(int identifier, int duration, int delay);
 // ??? sub_80524A4
 // ??? sub_80524B8
 bool PrepareBattleGraphicsMaybe(void);
-// ??? sub_8053040
-// ??? sub_805313C
+u16 GetBattleAnimationId_WithUnique(struct Unit * unit, const struct BattleAnimDef * pBattleAnimDef, u16, int * out);
+// ??? GetBanimTerrainGround
 // ??? sub_8053218
 // ??? sub_80532F0
 // ??? sub_8053438
 void ParseBattleHitToBanimCmd(void);
 bool CheckBattleHasHit(void);
-// ??? sub_8053A14
+s16 GetBattleAnimCharacterUniquePalIndex(struct Unit * unit, int index);
 u16 * FilterBattleAnimCharacterPalette(s16 index, u16 item);
 int GetAllegienceId(u32 arg);
 void EkrPrepareBanimfx(struct Anim * anim, u16 index);
@@ -551,10 +594,19 @@ void SetBattleUnscriptted(void);
 bool CheckBattleScriptted(void);
 void BattleAIS_ExecCommands(void);
 void AnimScrAdvance(struct Anim * anim);
+
+struct ProcEkrChienCHR {
+    PROC_HEADER;
+    STRUCT_PAD(0x29, 0x5C);
+
+    /* 5C */ struct Anim * anim;
+};
+
 void NewEkrChienCHR(struct Anim * anim);
-// ??? EkrChienCHRMain
+void EkrChienCHRMain(struct ProcEkrChienCHR * proc);
+
 void RegisterAISSheetGraphics(struct Anim * anim);
-// ??? sub_8054798
+void ApplyBanimUniquePalette(u32 * buf, int pos);
 int GetBanimPalette(int banim_id, int pos);
 void UpdateBanimFrame(void);
 void InitMainAnims(void);
@@ -578,7 +630,7 @@ void SetAnimStateUnHidden(int pos);
 // ??? sub_80550B4
 // ??? sub_8055250
 // ??? sub_8055274
-// ??? sub_80552D8
+// ??? InitMainMiniAnim
 // ??? sub_8055474
 // ??? sub_80555E8
 // ??? sub_80555F8
@@ -1600,9 +1652,9 @@ extern struct ProcCmd ProcScr_EfxWeaponIcon[];
 // ??? gUnk_08C0A588
 // ??? gUnk_08C0A5A0
 // ??? gUnk_08C0A5C0
-// ??? gUnk_08C0A5D8
-// ??? gUnk_08C0A5E8
-// ??? gUnk_08C0A610
+extern CONST_DATA AnimScr AnimScr_DefaultAnim[];
+// ??? TsaConfs_BanimTmA
+extern struct ProcCmd ProcScr_EkrChienCHR[];
 // ??? gUnk_08C0A628
 // ??? gUnk_08C0A640
 // ??? gUnk_08C0A658
@@ -2213,3 +2265,8 @@ extern struct ProcCmd ProcScr_EfxPartsofScroll[];
 // ??? gUnk_08C5422D
 // ??? gUnk_08C5426E
 // ??? gUnk_08C542AF
+
+extern const u8 BanimDefaultModeConfig[ANIM_ROUND_MAX * 4];
+extern const u8 BattleTypeToAnimModeEndOfDodge[5];
+extern const u8 BanimTypesPosLeft[5];
+extern const u8 BanimTypesPosRight[5];

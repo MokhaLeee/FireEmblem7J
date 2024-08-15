@@ -834,11 +834,15 @@ extern u8 Img_SysGrayBox[];
 // ??? gUnk_081DE1CC
 // ??? gUnk_081DE1D6
 
-// ??? gUnk_081DE20D
-// ??? gUnk_081DE212
+// ??? BanimTypesPosLeft
+// ??? BanimTypesPosRight
 // ??? gUnk_081DE218
 // ??? gUnk_081DE222
 // ??? gUnk_081DE2B8
+extern u8 TsaConf_BanimTmA1[];
+extern u8 TsaConf_BanimTmA2[];
+extern u8 TsaConf_BanimTmA3[];
+extern u8 TsaConf_BanimTmA4[];
 // ??? gUnk_081DE528
 // ??? gUnk_081DE730
 // ??? gUnk_081DE780

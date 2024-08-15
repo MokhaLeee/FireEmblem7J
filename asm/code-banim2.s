@@ -2798,7 +2798,7 @@ _08068650:
 	ldr r1, _0806868C @ =0x020200A0
 	movs r0, #1
 	str r0, [r1]
-	ldr r1, _08068690 @ =0x0203DFF8
+	ldr r1, _08068690 @ =gBanimFactionPal
 	ldr r0, _08068694 @ =gEkrInitialHitSide
 	movs r2, #0
 	ldrsh r0, [r0, r2]
@@ -2822,7 +2822,7 @@ _08068680: .4byte gpEkrBattleUnitLeft
 _08068684: .4byte gpEkrBattleUnitRight
 _08068688: .4byte gBmSt
 _0806868C: .4byte 0x020200A0
-_08068690: .4byte 0x0203DFF8
+_08068690: .4byte gBanimFactionPal
 _08068694: .4byte gEkrInitialHitSide
 _08068698:
 	bl GetBanimLinkArenaFlag
@@ -2847,7 +2847,7 @@ _080686AC:
 	.align 2, 0
 _080686C0: .4byte gEkrDistanceType
 _080686C4:
-	ldr r7, _08068740 @ =gEkrPairSideVaild
+	ldr r7, _08068740 @ =gBanimValid
 	movs r1, #0
 	ldrsh r0, [r7, r1]
 	rsbs r1, r0, #0
@@ -2916,7 +2916,7 @@ _08068734:
 	bl EfxOverrideBgm
 	b _080688BA
 	.align 2, 0
-_08068740: .4byte gEkrPairSideVaild
+_08068740: .4byte gBanimValid
 _08068744: .4byte gPlaySt
 _08068748:
 	cmp r0, #0x86
@@ -2948,7 +2948,7 @@ _08068768:
 	movs r4, #1
 	rsbs r4, r4, #0
 _08068786:
-	ldr r0, _080687A8 @ =gEkrPairSideVaild
+	ldr r0, _080687A8 @ =gBanimValid
 	movs r1, #0
 	ldrsh r0, [r0, r1]
 	cmp r0, #0
@@ -2966,7 +2966,7 @@ _08068794:
 	bl EfxOverrideBgm
 	b _080688BA
 	.align 2, 0
-_080687A8: .4byte gEkrPairSideVaild
+_080687A8: .4byte gBanimValid
 _080687AC:
 	movs r4, #0
 	ldr r0, [r5]
@@ -7968,16 +7968,16 @@ sub_806AFB4: @ 0x0806AFB4
 	str r0, [r1, #0x44]
 	cmp r5, #0
 	bne _0806AFE8
-	ldr r0, _0806AFE0 @ =0x0203E080
+	ldr r0, _0806AFE0 @ =gBanimTriAtkPalettes
 	ldr r2, [r0]
 	ldr r0, _0806AFE4 @ =gUnk_082EB968
 	b _0806AFEE
 	.align 2, 0
 _0806AFDC: .4byte gUnk_08C4ABB0
-_0806AFE0: .4byte 0x0203E080
+_0806AFE0: .4byte gBanimTriAtkPalettes
 _0806AFE4: .4byte gUnk_082EB968
 _0806AFE8:
-	ldr r0, _0806B024 @ =0x0203E080
+	ldr r0, _0806B024 @ =gBanimTriAtkPalettes
 	ldr r2, [r0, #4]
 	ldr r0, _0806B028 @ =gUnk_082EB976
 _0806AFEE:
@@ -8007,7 +8007,7 @@ _0806B016:
 	pop {r0}
 	bx r0
 	.align 2, 0
-_0806B024: .4byte 0x0203E080
+_0806B024: .4byte gBanimTriAtkPalettes
 _0806B028: .4byte gUnk_082EB976
 _0806B02C: .4byte gUnk_08C4ABC8
 _0806B030: .4byte 0x02017784
@@ -8074,18 +8074,18 @@ sub_806B088: @ 0x0806B088
 	bne _0806B0C8
 	movs r0, #0x12
 	strh r0, [r5, #0x2e]
-	ldr r0, _0806B0C0 @ =0x0203E080
+	ldr r0, _0806B0C0 @ =gBanimTriAtkPalettes
 	ldr r6, [r0]
 	ldr r3, _0806B0C4 @ =gUnk_08C4B110
 	b _0806B0D2
 	.align 2, 0
 _0806B0BC: .4byte gUnk_08C4ABE0
-_0806B0C0: .4byte 0x0203E080
+_0806B0C0: .4byte gBanimTriAtkPalettes
 _0806B0C4: .4byte gUnk_08C4B110
 _0806B0C8:
 	movs r0, #0x11
 	strh r0, [r5, #0x2e]
-	ldr r0, _0806B11C @ =0x0203E080
+	ldr r0, _0806B11C @ =gBanimTriAtkPalettes
 	ldr r6, [r0, #4]
 	ldr r3, _0806B120 @ =gUnk_08C4B444
 _0806B0D2:
@@ -8123,7 +8123,7 @@ _0806B104:
 	pop {r0}
 	bx r0
 	.align 2, 0
-_0806B11C: .4byte 0x0203E080
+_0806B11C: .4byte gBanimTriAtkPalettes
 _0806B120: .4byte gUnk_08C4B444
 _0806B124: .4byte 0x0201A784
 _0806B128: .4byte gUnk_082EDD3C
@@ -8304,7 +8304,7 @@ sub_806B264: @ 0x0806B264
 	strh r0, [r5, #0x2c]
 	movs r0, #0x14
 	strh r0, [r5, #0x2e]
-	ldr r0, _0806B2A0 @ =0x0203E080
+	ldr r0, _0806B2A0 @ =gBanimTriAtkPalettes
 	ldr r7, [r0]
 	cmp r4, #0
 	bne _0806B2AC
@@ -8313,7 +8313,7 @@ sub_806B264: @ 0x0806B264
 	b _0806B2D8
 	.align 2, 0
 _0806B29C: .4byte gUnk_08C4AC10
-_0806B2A0: .4byte 0x0203E080
+_0806B2A0: .4byte gBanimTriAtkPalettes
 _0806B2A4: .4byte gUnk_08C4B4DC
 _0806B2A8: .4byte gUnk_082EFA68
 _0806B2AC:
@@ -8358,7 +8358,7 @@ _0806B2D8:
 	adds r0, r6, #0
 	adds r1, r4, #0
 	bl LZ77UnCompWram
-	ldr r0, _0806B32C @ =0x0203E080
+	ldr r0, _0806B32C @ =gBanimTriAtkPalettes
 	ldr r7, [r0, #4]
 	mov r0, sb
 	cmp r0, #0
@@ -8372,7 +8372,7 @@ _0806B31C: .4byte gUnk_082F0590
 _0806B320: .4byte 0x00008840
 _0806B324: .4byte 0x0201A784
 _0806B328: .4byte gPal + 0x300
-_0806B32C: .4byte 0x0203E080
+_0806B32C: .4byte gBanimTriAtkPalettes
 _0806B330: .4byte gUnk_08C4B4DC
 _0806B334: .4byte gUnk_082EFA68
 _0806B338:
@@ -8524,14 +8524,14 @@ sub_806B440: @ 0x0806B440
 	strb r6, [r0]
 	cmp r5, #0
 	bne _0806B484
-	ldr r0, _0806B480 @ =0x0203E080
+	ldr r0, _0806B480 @ =gBanimTriAtkPalettes
 	ldr r0, [r0]
 	b _0806B488
 	.align 2, 0
 _0806B47C: .4byte gUnk_08C4AC28
-_0806B480: .4byte 0x0203E080
+_0806B480: .4byte gBanimTriAtkPalettes
 _0806B484:
-	ldr r0, _0806B494 @ =0x0203E080
+	ldr r0, _0806B494 @ =gBanimTriAtkPalettes
 	ldr r0, [r0, #4]
 _0806B488:
 	mov sb, r0
@@ -8541,7 +8541,7 @@ _0806B488:
 	ldr r6, _0806B49C @ =gUnk_082F0950
 	b _0806B4CC
 	.align 2, 0
-_0806B494: .4byte 0x0203E080
+_0806B494: .4byte gBanimTriAtkPalettes
 _0806B498: .4byte gUnk_08C4B778
 _0806B49C: .4byte gUnk_082F0950
 _0806B4A0:
@@ -9500,7 +9500,7 @@ _0806BC6C:
 	str r0, [r5, #0x44]
 	str r0, [r5, #0x50]
 	str r0, [r5, #0x4c]
-	ldr r0, _0806BD24 @ =0x0203DFF8
+	ldr r0, _0806BD24 @ =gBanimFactionPal
 	movs r1, #0
 	ldrsh r0, [r0, r1]
 	cmp r0, #0
@@ -9528,7 +9528,7 @@ _0806BCAC:
 	ldrh r0, [r0]
 	str r0, [r5, #0x48]
 _0806BCC2:
-	ldr r0, _0806BD24 @ =0x0203DFF8
+	ldr r0, _0806BD24 @ =gBanimFactionPal
 	movs r1, #2
 	ldrsh r0, [r0, r1]
 	cmp r0, #0
@@ -9574,7 +9574,7 @@ _0806BD0A:
 _0806BD18: .4byte 0x02020138
 _0806BD1C: .4byte gUnk_08C4C060
 _0806BD20: .4byte 0x0202013C
-_0806BD24: .4byte 0x0203DFF8
+_0806BD24: .4byte gBanimFactionPal
 _0806BD28: .4byte gpEkrBattleUnitLeft
 _0806BD2C: .4byte gpEkrBattleUnitRight
 _0806BD30:

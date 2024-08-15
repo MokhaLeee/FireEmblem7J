@@ -194,10 +194,10 @@ void BattleAIS_ExecCommands(void)
                             anim2->state3 |= 0x4;
 
                             /* R8 = id1 */
-                            state2 = gBanimScr_81DE208[gEkrDistanceType];
+                            state2 = BattleTypeToAnimModeEndOfDodge[gEkrDistanceType];
 
                             /* R4 = id2 */
-                            id2 = gBanimRoundScripts[state2 * 4];
+                            id2 = BanimDefaultModeConfig[state2 * 4];
 
                             if (GetAnimPosition(anim) == 0)
                                 mode = gpBanimModesLeft[id2];
@@ -235,7 +235,7 @@ void BattleAIS_ExecCommands(void)
                     
                     case 4:
                     case 5:
-                        state2 = gBanimScr_81DE208[gEkrDistanceType];
+                        state2 = BattleTypeToAnimModeEndOfDodge[gEkrDistanceType];
 
                     case 6:
                     case 7:
