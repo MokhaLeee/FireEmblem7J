@@ -30,7 +30,6 @@ struct ProcCmd CONST_DATA ProcScr_EventDragonsSpritefx[] = {
     PROC_END,
 };
 
-#if 0
 void EventDragonsSpritefx_Loop(struct ProcEventDragonsSpritefx * proc)
 {
     int i;
@@ -50,8 +49,9 @@ void EventDragonsSpritefx_Loop(struct ProcEventDragonsSpritefx * proc)
                 if (proc->unk50[i] == 0)
                     proc->unk56[i] = 0x100;
 
-                x = ((proc->x_1[i] * (0x100 - proc->unk56[i])) + (proc->unk56[i] * proc->x_2[i])) / 0x100;
-                y = ((proc->y_1[i] * (0x100 - proc->unk56[i])) + (proc->unk56[i] * proc->y_2[i])) / 0x100;
+
+                x = ((proc->x_1[i] * (0x100 - proc->unk56[i])) + (proc->x_2[i] * proc->unk56[i])) / 0x100;
+                y = ((proc->y_1[i] * (0x100 - proc->unk56[i])) + (proc->y_2[i] * proc->unk56[i])) / 0x100;
 
                 if (proc->unk56[i] == 0x100)
                 {
@@ -91,10 +91,9 @@ void EventDragonsSpritefx_Loop(struct ProcEventDragonsSpritefx * proc)
 
     if (ret != 0)
     {
-        if (((proc->unk6B++) / 0x18) == 0)
+        if (((proc->unk6B++) % 0x18) == 0)
         {
             PlaySoundEffect(0x2E0);
         }
     }
 }
-#endif
