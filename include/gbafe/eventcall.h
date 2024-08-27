@@ -594,13 +594,16 @@ struct ProcEventDragonsSpritefx {
     PROC_HEADER;
 
     /* 2C */ ProcPtr approc[3];
-    /* 38 */ u16 unk38[3];
-
-    STRUCT_PAD(0x3E, 0x5C);
-
+    /* 38 */ s16 x_1[3];
+    /* 3E */ s16 y_1[3];
+    /* 44 */ s16 x_2[3];
+    /* 4A */ s16 y_2[3];
+    /* 50 */ s16 unk50[3];
+    /* 56 */ s16 unk56[3];
     /* 5C */ u16 unk5C[3];
+    /* 62 */ u8 unk62[3];
 
-    STRUCT_PAD(0x62, 0x6A);
+    STRUCT_PAD(0x65, 0x6A);
 
     /* 6A */ u8 unk6A;
     /* 6B */ u8 unk6B;
