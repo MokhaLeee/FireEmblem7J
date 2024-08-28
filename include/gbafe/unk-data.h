@@ -246,10 +246,12 @@ extern u8 Tsa_DragonGateDragon[];
 // ??? gUnk_081C2974
 // ??? gUnk_081C2D44
 extern u8 Img_EventDragonsSpritefx1[];
+extern u16 gUnk_081C5020[];
 extern u8 Img_EventDragonsSpritefx2[];
-// ??? gUnk_081C6BAC
-// ??? gUnk_081C6C34
-// ??? gUnk_081C6E34
+extern u16 gUnk_081C673C[];
+extern u8 Img_DragonFlameImpact[];
+extern u16 Pal_DragonFlameImpact[];
+extern u8 Tsa_DragonFlameImpact[];
 extern u8 Img_EventSpriteAnim_SpawnAssassin[];
 extern u8 Img_EventSpriteAnim_SpawnThief[];
 extern u16 ApConf_EventSpriteAnim_SpawnAssassin[];

@@ -430,7 +430,7 @@ void sub_807CF94(struct ProcFlameBreathfx * proc);
 void sub_807CFEC(struct ProcFlameBreathfx * proc);
 void sub_807D088(struct ProcFlameBreathfx * proc);
 void sub_807D0E0(struct ProcFlameBreathfx * proc);
-// StartFlameBreathfx
+void StartFlameBreathfx(int type, int x, int y, ProcPtr parent);
 
 struct ProcIceCrystal {
     PROC_HEADER;
@@ -593,51 +593,71 @@ void IceCrystalfx_Paluse(struct ProcIceCrystal * proc);
 struct ProcEventDragonsSpritefx {
     PROC_HEADER;
 
-    /* 2C */ ProcPtr approc[3];
+    /* 2C */ struct ProcSpriteAnim * approc[3];
     /* 38 */ s16 x_1[3];
     /* 3E */ s16 y_1[3];
     /* 44 */ s16 x_2[3];
     /* 4A */ s16 y_2[3];
-    /* 50 */ s16 unk50[3];
-    /* 56 */ s16 unk56[3];
-    /* 5C */ u16 unk5C[3];
-    /* 62 */ u8 unk62[3];
+    /* 50 */ s16 speed[3];
+    /* 56 */ s16 progress[3];
+    /* 5C */ u16 oam0[3];
+    /* 62 */ u8 facing[3];
 
     STRUCT_PAD(0x65, 0x6A);
 
-    /* 6A */ u8 unk6A;
-    /* 6B */ u8 unk6B;
+    /* 6A */ u8 kind;
+    /* 6B */ u8 timer;
+};
+
+enum fire_dragon_sprite_action_idx {
+    FIREDRAGONSPRIT_ACTION_NORMAL = 0,
+    FIREDRAGONSPRIT_ACTION_BARK,
+    FIREDRAGONSPRIT_ACTION_FELL,
+    FIREDRAGONSPRIT_ACTION_FADEOUT,
+    FIREDRAGONSPRIT_ACTION_RESTAND,
+};
+
+struct ProcDragonFlameImpact {
+    PROC_HEADER;
+
+    /* 2C */ int x, y;
+
+    STRUCT_PAD(0x34, 0x4C);
+
+    /* 4C */ s16 timer;
 };
 
 void EventDragonsSpritefx_Init(struct ProcEventDragonsSpritefx * proc);
 void EventDragonsSpritefx_End(struct ProcEventDragonsSpritefx * proc);
 void EventDragonsSpritefx_Loop(struct ProcEventDragonsSpritefx * proc);
-// StartEventDragonsSpriteDeamon
-// EndEventDragonsSpritefx
-// PutFireDragonSpritefx
-// sub_807F550
-// sub_807F590
-// EventCall_PutFireDragonSprite
-// sub_807F610
-// sub_807F62C
-// ReputFireDragonSprite
-// FireDragonSpriteRetreated
-// sub_807F6B0
-// sub_807F6D0
-// sub_807F718
-// sub_807F738
-// sub_807F758
-// sub_807F78C
-// StartEventDragonsSpriteMovefx
-// sub_807F7EC
-// sub_807F89C
-// sub_807F8DC
-// sub_807F8F4
-// sub_807F908
-// EventCall_FireDragonScreamingInPain
-// EventCall_FireDragonFellWeakly
-// EventCall_FireDragonFadeOut
-// EventCall_FinalFireDragonReStandUp
+void StartEventDragonsSpriteDeamon(int kind, ProcPtr parent);
+void EndEventDragonsSpritefx(void);
+void PutFireDragonSpritefx(int index, int ap_idx, int x, int y, int action, int speed);
+void RemoveFireDragonSpritefx(int idx);
+void sub_807F590(int idx);
+void EventCall_PutFireDragonSprite(ProcPtr proc);
+void Move2ndFireDragon(void);
+void Move3rdFireDragon(void);
+void ReputFireDragonSprite(ProcPtr proc);
+void FireDragonSpriteRetreated(void);
+void sub_807F6B0(void);
+void sub_807F6D0(ProcPtr proc);
+void sub_807F718(void);
+void sub_807F738(void);
+void sub_807F758(ProcPtr proc);
+void sub_807F78C(ProcPtr proc);
+void StartEventDragonsSpriteMovefx(ProcPtr proc);
+void DragonFlameImpact_Init(struct ProcDragonFlameImpact * proc);
+void DragonFlameImpact_Loop(struct ProcDragonFlameImpact * proc);
+void DragonFlameImpact_End(struct ProcDragonFlameImpact * proc);
+void StartDragonFlameImpact(ProcPtr parent);
+void EndDragonFlameImpact(void);
+
+void EventCall_FireDragonScreamingInPain(ProcPtr proc);
+void EventCall_FireDragonFellWeakly(ProcPtr proc);
+void EventCall_FireDragonFadeOut(ProcPtr proc);
+void EventCall_FinalFireDragonReStandUp(ProcPtr proc);
+
 // sub_807F9EC
 // sub_807FA64
 // sub_807FAE8
@@ -712,7 +732,7 @@ extern struct ProcCmd ProcScr_IceCrystalfx[];
 // ??? ProcScr_08D837F8
 // ??? gUnk_08D87684
 extern struct ProcCmd ProcScr_EventDragonsSpritefx[];
-// ??? gUnk_08D87F48
+// ??? ProcScr_DragonFlameImpact
 // ??? gUnk_08D87F68
 extern EventScr EventScr_DeathQuoteOnEnd[];
 // ??? gUnk_08D8977C

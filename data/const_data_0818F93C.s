@@ -882,20 +882,28 @@ ApConf_EventSpriteAnim_NinianDragonDead:	@ 0x081C3680
 
 	.global Img_EventDragonsSpritefx1
 Img_EventDragonsSpritefx1:	@ 0x081C3850
-	.incbin "FireEmblem7J.base.gba", 0x1C3850, 0x1C564C - 0x1C3850
+	.incbin "FireEmblem7J.base.gba", 0x1C3850, 0x1C5020 - 0x1C3850
+
+	.global gUnk_081C5020
+gUnk_081C5020:	@ 0x081C5020
+	.incbin "FireEmblem7J.base.gba", 0x1C5020, 0x1C564C - 0x1C5020
 
 	.global Img_EventDragonsSpritefx2
 Img_EventDragonsSpritefx2:	@ 0x081C564C
-	.incbin "FireEmblem7J.base.gba", 0x1C564C, 0x1C6BAC - 0x1C564C
+	.incbin "FireEmblem7J.base.gba", 0x1C564C, 0x1C673C - 0x1C564C
 
-	.global gUnk_081C6BAC
-gUnk_081C6BAC:	@ 0x081C6BAC
+	.global gUnk_081C673C
+gUnk_081C673C:	@ 0x081C673C
+	.incbin "FireEmblem7J.base.gba", 0x1C673C, 0x1C6BAC - 0x1C673C
+
+	.global Img_DragonFlameImpact
+Img_DragonFlameImpact:	@ 0x081C6BAC
 	.incbin "FireEmblem7J.base.gba", 0x1C6BAC, 0x1C6C34 - 0x1C6BAC
 
-	.global gUnk_081C6C34
-gUnk_081C6C34:	@ 0x081C6C34
+	.global Pal_DragonFlameImpact
+Pal_DragonFlameImpact:	@ 0x081C6C34
 	.incbin "FireEmblem7J.base.gba", 0x1C6C34, 0x1C6E34 - 0x1C6C34
 
-	.global gUnk_081C6E34
-gUnk_081C6E34:	@ 0x081C6E34
+	.global Tsa_DragonFlameImpact
+Tsa_DragonFlameImpact:	@ 0x081C6E34
 	.incbin "FireEmblem7J.base.gba", 0x1C6E34, 0x1C778C - 0x1C6E34

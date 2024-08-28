@@ -101,9 +101,9 @@ _0807FA84:
 	cmp r1, #0x10
 	bne _0807FAD4
 	movs r0, #1
-	bl sub_807F550
+	bl RemoveFireDragonSpritefx
 	movs r0, #2
-	bl sub_807F550
+	bl RemoveFireDragonSpritefx
 	mov r0, sl
 	ldrb r1, [r5]
 	ands r0, r1

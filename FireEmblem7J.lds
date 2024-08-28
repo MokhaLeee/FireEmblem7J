@@ -286,12 +286,12 @@ SECTIONS
 		asm/eventcall_dragonflamefx.o(.text);
 		asm/eventcall_0807C66C.o(.text);
 		src/quintessence-fx.o(.text);
+		src/eventcall_unittornout.o(.text);
 		src/eventcall_flamebreath.o(.text);
 		asm/eventcall_flamebreath.o(.text);
 		src/eventcall_icecrystal.o(.text);
 		asm/eventcallfx.o(.text);
 		src/eventcall_spriteanimfx.o(.text);
-		asm/eventcall_spriteanimfx.o(.text);
 		asm/code_0807F9EC.o(.text);
 		src/statscreenfx.o(.text);
 		src/statscreen-util.o(.text);
@@ -359,6 +359,8 @@ SECTIONS
 		. = ALIGN(4); data/const_data_082EB740.o(.rodata)
 		. = ALIGN(4); src/eventcall_flamebreath.o(.rodata)
 		. = ALIGN(4); data/const_data_084033A0.o(.rodata)
+		. = ALIGN(4); src/eventcall_spriteanimfx.o(.rodata)
+		. = ALIGN(4); data/const_data_0840343C.o(.rodata)
 		. = ALIGN(4); data/statscreenfx-const.o(.rodata)
 		. = ALIGN(4); src/statscreenfx.o(.rodata)
 		. = ALIGN(4); src/statscreen-util.o(.rodata)
@@ -407,6 +409,7 @@ SECTIONS
 		. = ALIGN(4); asm/eventcall_dragonflamefx.o(.data)
 		. = ALIGN(4); asm/eventcall_0807C66C.o(.data)
 		. = ALIGN(4); src/quintessence-fx.o(.data)
+		. = ALIGN(4); src/eventcall_unittornout.o(.data)
 		. = ALIGN(4); src/eventcall_flamebreath.o(.data)
 		. = ALIGN(4); src/eventcall_icecrystal.o(.data)
 		. = ALIGN(4); data/spriteanimfx.o(.data)
