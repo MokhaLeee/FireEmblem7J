@@ -178,7 +178,7 @@ LockBmDisplay: @ 0x0802D874
 	strh r0, [r1]
 	bl EnablePalSync
 	movs r0, #1
-	bl sub_80046C4
+	bl Proc_BlockEachMarked
 _0802D89C:
 	pop {r0}
 	bx r0

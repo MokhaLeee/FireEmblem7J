@@ -62,3 +62,4 @@
 #include "gbafe/bmio.h"
 #include "gbafe/scrolling_util.h"
 #include "gbafe/bonusclaim.h"
+#include "gbafe/spinning_arrow.h"

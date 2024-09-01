@@ -228,7 +228,7 @@ ProcScr_GameControl: @ 0xC01744
         .word sub_80130DC
         @ PROC_CALL
         .short 0x2, 0x0
-        .word StartDrawDifficultyMenuSprites
+        .word StartModeSelect
         @ PROC_YIELD
         .short 0xe, 0x0
         .word 0x0

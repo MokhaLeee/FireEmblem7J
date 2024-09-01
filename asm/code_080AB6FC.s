@@ -1548,7 +1548,7 @@ _080AC4AA:
 	orrs r3, r0
 _080AC4B4:
 	adds r0, r3, #0
-	bl sub_80A9C68
+	bl SetUiSpinningArrowConfig
 	pop {r0}
 	bx r0
 	.align 2, 0
@@ -1914,17 +1914,17 @@ sub_80AC680: @ 0x080AC680
 	movs r1, #2
 	bl DisplaySysHandCursorTextShadow
 	adds r0, r4, #0
-	bl sub_80A9BE8
+	bl StartUiSpinningArrows
 	movs r1, #0xd0
 	lsls r1, r1, #3
 	movs r0, #1
 	movs r2, #3
-	bl sub_80A9BFC
+	bl LoadUiSpinningArrowGfx
 	movs r0, #0x90
 	movs r1, #0x38
 	movs r2, #0x90
 	movs r3, #0x90
-	bl sub_80A9C84
+	bl SetUiSpinningArrowPositions
 	adds r0, r4, #0
 	bl sub_80AC490
 	adds r0, r4, #0
@@ -2739,7 +2739,7 @@ sub_80ACDD8: @ 0x080ACDD8
 	bl TmApplyTsa_thm
 	bl HideSysHandCursor
 	movs r0, #0
-	bl sub_80A9C68
+	bl SetUiSpinningArrowConfig
 	movs r0, #0x3a
 	add sb, r0
 	mov r1, sb
@@ -8634,7 +8634,7 @@ sub_80AFDF8: @ 0x080AFDF8
 sub_80AFE04: @ 0x080AFE04
 	push {lr}
 	bl EndAllProcChildren
-	bl sub_8055690
+	bl EndEfxAnimeDrvProc
 	movs r0, #0
 	bl sub_8012D60
 	bl sub_80647F8
@@ -10302,7 +10302,7 @@ _080B0A54:
 	str r2, [r1, #0x20]
 	ldr r2, _080B0BDC @ =sub_80B0714
 	str r2, [r1, #0x24]
-	bl sub_80556B0
+	bl NewEkrUnitMainMini
 	ldr r4, _080B0BE0 @ =0x0200DB00
 	mov r0, sb
 	ldr r1, [r0, #0x34]

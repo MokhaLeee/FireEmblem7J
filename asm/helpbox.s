@@ -34594,7 +34594,7 @@ _08094122:
 	orrs r5, r0
 _0809412C:
 	adds r0, r5, #0
-	bl sub_80A9C68
+	bl SetUiSpinningArrowConfig
 	pop {r4, r5}
 	pop {r0}
 	bx r0
@@ -39874,19 +39874,19 @@ _08096C7E:
 	bl sub_8094AC0
 	bl sub_8096834
 	mov r0, sl
-	bl sub_80A9BE8
+	bl StartUiSpinningArrows
 	movs r1, #0xa0
 	lsls r1, r1, #2
 	movs r0, #0
 	movs r2, #2
-	bl sub_80A9BFC
+	bl LoadUiSpinningArrowGfx
 	movs r0, #0x78
 	movs r1, #0x18
 	movs r2, #0xea
 	movs r3, #0x18
-	bl sub_80A9C84
+	bl SetUiSpinningArrowPositions
 	movs r0, #3
-	bl sub_80A9C68
+	bl SetUiSpinningArrowConfig
 	ldr r0, _08096D84 @ =sub_80969A8
 	mov r1, sl
 	bl StartParallelWorker
@@ -41014,7 +41014,7 @@ _0809764C:
 	cmp r5, #0
 	beq _08097698
 	movs r0, #0
-	bl sub_80A9CAC
+	bl SetUiSpinningArrowFastMaybe
 	ldr r0, _08097690 @ =gPlaySt
 	adds r0, #0x41
 	ldrb r0, [r0]
@@ -41043,7 +41043,7 @@ _08097698:
 	cmp r0, #0
 	beq _080976D8
 	movs r0, #1
-	bl sub_80A9CAC
+	bl SetUiSpinningArrowFastMaybe
 	ldr r0, _080976D0 @ =gPlaySt
 	adds r0, #0x41
 	ldrb r0, [r0]
@@ -42273,19 +42273,19 @@ _0809801E:
 	bl sub_8094AC0
 	bl sub_8097CDC
 	adds r0, r7, #0
-	bl sub_80A9BE8
+	bl StartUiSpinningArrows
 	movs r1, #0xa0
 	lsls r1, r1, #2
 	movs r0, #0
 	movs r2, #2
-	bl sub_80A9BFC
+	bl LoadUiSpinningArrowGfx
 	movs r0, #0x78
 	movs r1, #0x18
 	movs r2, #0xea
 	movs r3, #0x18
-	bl sub_80A9C84
+	bl SetUiSpinningArrowPositions
 	movs r0, #3
-	bl sub_80A9C68
+	bl SetUiSpinningArrowConfig
 	ldr r0, _080981CC @ =sub_8097DD4
 	adds r1, r7, #0
 	bl StartParallelWorker
@@ -43260,7 +43260,7 @@ _080988B0:
 	cmp r5, #0
 	beq _080988FC
 	movs r0, #0
-	bl sub_80A9CAC
+	bl SetUiSpinningArrowFastMaybe
 	ldr r0, _080988F4 @ =gPlaySt
 	adds r0, #0x41
 	ldrb r0, [r0]
@@ -43289,7 +43289,7 @@ _080988FC:
 	cmp r0, #0
 	beq _0809893C
 	movs r0, #1
-	bl sub_80A9CAC
+	bl SetUiSpinningArrowFastMaybe
 	ldr r0, _08098934 @ =gPlaySt
 	adds r0, #0x41
 	ldrb r0, [r0]
@@ -47318,19 +47318,19 @@ sub_809A978: @ 0x0809A978
 	movs r1, #1
 	bl DisplaySysHandCursorTextShadow
 	adds r0, r4, #0
-	bl sub_80A9BE8
+	bl StartUiSpinningArrows
 	movs r1, #0xa0
 	lsls r1, r1, #2
 	movs r0, #0
 	movs r2, #2
-	bl sub_80A9BFC
+	bl LoadUiSpinningArrowGfx
 	movs r0, #3
-	bl sub_80A9C68
+	bl SetUiSpinningArrowConfig
 	movs r0, #0
 	movs r1, #0x40
 	movs r2, #0xe8
 	movs r3, #0x40
-	bl sub_80A9C84
+	bl SetUiSpinningArrowPositions
 	ldr r3, _0809A9F8 @ =gDispIo
 	adds r2, r3, #0
 	adds r2, #0x34
@@ -48154,7 +48154,7 @@ sub_809B028: @ 0x0809B028
 	cmp r0, #0
 	ble _0809B060
 	movs r0, #1
-	bl sub_80A9CAC
+	bl SetUiSpinningArrowFastMaybe
 	adds r2, r4, #0
 	adds r2, #0x3c
 	ldrb r0, [r2]
@@ -48180,7 +48180,7 @@ _0809B060:
 	cmp r0, #0
 	bge _0809B092
 	movs r0, #0
-	bl sub_80A9CAC
+	bl SetUiSpinningArrowFastMaybe
 	adds r2, r4, #0
 	adds r2, #0x3c
 	ldrb r0, [r2]

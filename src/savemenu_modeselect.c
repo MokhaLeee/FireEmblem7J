@@ -3,19 +3,19 @@
 struct ModeSelectProc
 {
     /* 00 */ PROC_HEADER;
-    /* 2C */ s32 unk_2c;
+    /* 2C */ s32 rotateTimer;
     /* 30 */ u16 unk_30;
     /* 32 */ u16 unk_32;
     /* 34 */ s32 unk_34;
     /* 38 */ void * unk_38;
-    /* 3C */ void * unk_3c; // pFaceProc
+    /* 3C */ void * pFaceProc; // pFaceProc
     /* 40 */ u8 unk_40;
     /* 41 */ u8 unk_41;
     /* 42 */ u8 unk_42;
     /* 43 */ u8 unk_43[3];
     /* 46 */ STRUCT_PAD(0x46, 0x49);
     /* 49 */ u8 unk_49[3];
-    /* 4C */ u8 unk_4c;
+    /* 4C */ u8 activeLordCount;
     /* 50 */ s32 unk_50;
 };
 
@@ -36,124 +36,63 @@ struct ModeSelectSpriteDrawProc
     /* 4E */ u8 unk_4e;
 };
 
-extern struct AnimBuffer gUnk_0201E8D4[];
-
-struct AnimMagicFxBuffer
+struct UnkProc
 {
-    /* 00 */ u16 magic_func_idx;
-    /* 02 */ u16 x_offset_bg;
-    /* 04 */ u16 y_offset_bg;
-    /* 06 */ u16 x_offset_obj;
-    /* 08 */ u16 y_offset_obj;
-    /* 0A */ u16 bg_chr;
-    /* 0C */ u16 bg_pal_id;
-    /* 0E */ u16 obj_chr;
-    /* 10 */ u16 obj_pal_id;
-    /* 12 */ u16 bg;
-    /* 14 */ u16 * bg_tm_buf;
-    /* 18 */ void * bg_img_buf;
-    /* 1C */ void * bg_tsa_buf;
-    /* 20 */ void * obj_img_buf;
-    /* 24 */ void (*reset_callback)(void);
+    /* 00 */ PROC_HEADER;
+    /* 29 */ STRUCT_PAD(0x29, 0x34);
+    /* 34 */ s16 unk_34;
+    /* 36 */ s16 unk_36;
 };
 
+extern struct AnimBuffer gUnk_0201E8D4[];
 extern struct AnimMagicFxBuffer gUnk_0201E97C[];
 
-s32 sub_809F40C(void);
-void sub_80A9CAC(s32);
-s32 sub_80A8B60(void);
-void sub_80A9034(struct ModeSelectProc *);
-void sub_80A8618(struct ModeSelectProc *);
-void sub_8055474(struct AnimBuffer *);
+extern u8 Img_ModeSelect_Menu[];
+extern u16 Pal_ModeSelect_Menu[];
+extern u8 Tsa_ModeSelect_Menu[];
 
-void sub_80A5B20(s32, s32);
-void sub_80A8B38(u8, u8);
-void sub_80A8A90(void);
-void sub_8055644(struct AnimBuffer *);
-void sub_80046C4(s32); // Proc_LockEachMarked
-void sub_8055670(void);
-void sub_80647C8(void);
-void sub_80A8AF0(s32, s32);
-s32 sub_809F40C(void);
-void sub_80A8AC8(s32);
-void sub_80A838C(s32, u8 *);
-void sub_80A8774(s32);
-void sub_80A8AAC(void);
-void sub_80A9BE8(ProcPtr);
-void sub_80A9BFC(s32, s32, s32);
-void sub_80A9C84(s32, s32, s32, s32);
-void sub_80A9C68(s32);
+extern u8 Tsa_084352FC[];
+extern u16 Pal_08434448[];
 
-void * sub_80A86D4(s32);
-
-void sub_80A84FC(void);
-
-void sub_80A870C(s32);
-void sub_80A856C(s32);
-void sub_80A8B1C(u16);
-void sub_80A84D8(s32);
-void sub_8055690(void); // EndEfxAnimeDrvProc
-void sub_80A5B44(void);
-
-void sub_804A95C(s32 x, s32 y, u32 objTileOffset); // DisplayUiHandExt
-void sub_804A9D0(s32 x, s32 y, u32 objTileOffset); // DisplayFrozenUiHandExt
-void sub_80555F8(struct AnimBuffer *, s16, s16);
-void sub_80A8850(s32, s32);
-void sub_80A8304(s32);
-void sub_80A87A4(s32, s32);
-void sub_80556D8(struct AnimBuffer *);
-void sub_80556B0(struct AnimBuffer *);
-
-extern u8 gUnk_Savemenu_02000000;
-
-extern u8 gUnk_08434DD0[]; // img
-extern u16 gUnk_084352DC[]; // pal
-extern u8 gUnk_08434468[]; // tsa
-
-extern u8 gUnk_084352FC[]; // tsa
-extern u16 gUnk_08434448[]; // pal
-extern u8 gUnk_08433CC8[]; // img
-extern u16 gUnk_08436460[]; // pal
+extern u8 Img_ModeSelect_Sprites[];
+extern u16 Pal_ModeSelect_Sprites[];
 
 struct Unk_020000A4
 {
-    struct Font unk_00;
-    struct Text unk_18[7];
+    struct Font font;
+    struct Text text[7];
 };
 extern struct Unk_020000A4 gUnk_020000A4;
 
 extern u16 gUnk_0201E9F4[];
 
-u8 * CONST_DATA gUnk_08DADFF8[] =
-{
+// clang-format off
+
+u8 * CONST_DATA gUnk_08DADFF8[] = {
     (u8 *)0x020000F4,
     (u8 *)0x020020F4,
     (u8 *)0x020040F4,
 };
 
-u8 * CONST_DATA gUnk_08DAE004[] =
-{
+u8 * CONST_DATA gUnk_08DAE004[] = {
     (u8 *)0x020060F4,
     (u8 *)0x0200B8F4,
     (u8 *)0x020110F4,
 };
 
-u8 * CONST_DATA gUnk_08DAE010[] =
-{
+u8 * CONST_DATA gUnk_08DAE010[] = {
     (u8 *)0x020168F4,
     (u8 *)0x02016994,
     (u8 *)0x02016A34,
 };
 
-u8 * CONST_DATA gUnk_08DAE01C[] =
-{
+u8 * CONST_DATA gUnk_08DAE01C[] = {
     (u8 *)0x02016AD4,
     (u8 *)0x020194D4,
     (u8 *)0x0201BED4,
 };
 
-u16 CONST_DATA gUnk_08DAE028[] =
-{
+u16 CONST_DATA Sprite_ModeSelect_Mode[] = {
     4,
     OAM0_SHAPE_32x16, OAM1_SIZE_32x16, 0,
     OAM0_SHAPE_32x16, OAM1_SIZE_32x16 + OAM1_X(32), OAM2_CHR(0x4),
@@ -161,8 +100,7 @@ u16 CONST_DATA gUnk_08DAE028[] =
     OAM0_SHAPE_32x8 + OAM0_Y(16), OAM1_SIZE_32x8 + OAM1_X(32), OAM2_CHR(0x44),
 };
 
-u16 CONST_DATA gUnk_08DAE042[] =
-{
+u16 CONST_DATA Sprite_ModeSelect_Select[] = {
     6,
     OAM0_SHAPE_32x16, OAM1_SIZE_32x16, OAM2_CHR(0x8),
     OAM0_SHAPE_32x16, OAM1_SIZE_32x16 + OAM1_X(32), OAM2_CHR(0xC),
@@ -172,8 +110,7 @@ u16 CONST_DATA gUnk_08DAE042[] =
     OAM0_SHAPE_8x8 + OAM0_Y(16), OAM1_SIZE_8x8 + OAM1_X(64), OAM2_CHR(0x68),
 };
 
-u16 CONST_DATA gUnk_08DAE068[] =
-{
+u16 CONST_DATA Sprite_ModeSelect_PressStart[] = {
     5,
     OAM0_SHAPE_32x8, OAM1_SIZE_32x8, OAM2_CHR(0x11),
     OAM0_SHAPE_32x8 + OAM0_Y(8), OAM1_SIZE_32x8, OAM2_CHR(0x49),
@@ -182,14 +119,12 @@ u16 CONST_DATA gUnk_08DAE068[] =
     OAM0_SHAPE_8x16, OAM1_SIZE_8x16 + OAM1_X(64), OAM2_CHR(0x55),
 };
 
-u16 CONST_DATA gUnk_08DAE088[] =
-{
+u16 CONST_DATA Sprite_ModeSelect_Change[] = {
     1,
     OAM0_SHAPE_32x8, OAM1_SIZE_32x8, OAM2_CHR(0x51),
 };
 
-u16 CONST_DATA gUnk_08DAE090[] =
-{
+u16 CONST_DATA Sprite_ModeSelect_ChapterRange[] = {
     4,
     OAM0_SHAPE_32x16 + OAM0_AFFINE_ENABLE, OAM1_SIZE_32x16, OAM2_CHR(0x16),
     OAM0_SHAPE_32x16 + OAM0_AFFINE_ENABLE, OAM1_SIZE_32x16 + OAM1_X(32), OAM2_CHR(0x1A),
@@ -197,8 +132,9 @@ u16 CONST_DATA gUnk_08DAE090[] =
     OAM0_SHAPE_32x16 + OAM0_AFFINE_ENABLE, OAM1_SIZE_32x16 + OAM1_X(80), OAM2_CHR(0x56),
 };
 
+// clang-format on
 
-void sub_80A838C(s32 count, u8 * arg_1)
+void InitModeSelectAnims(s32 count, u8 * arg_1)
 {
     s32 gUnk_08439348[] = {
         0x0E,
@@ -210,8 +146,8 @@ void sub_80A838C(s32 count, u8 * arg_1)
 
     for (i = 0; i < count; i++)
     {
-        gUnk_0201E8D4[i].xPos = 0x140;
-        gUnk_0201E8D4[i].yPos = 0x58;
+        gUnk_0201E8D4[i].xPos = 320;
+        gUnk_0201E8D4[i].yPos = 88;
         gUnk_0201E8D4[i].animId = gUnk_08439348[arg_1[i]];
         gUnk_0201E8D4[i].roundType = 6;
         gUnk_0201E8D4[i].genericPalId = 0;
@@ -245,26 +181,25 @@ void sub_80A838C(s32 count, u8 * arg_1)
         gUnk_0201E97C[i].obj_img_buf = 0;
         gUnk_0201E97C[i].reset_callback = 0;
 
-        sub_80556B0(&gUnk_0201E8D4[i]);
+        NewEkrUnitMainMini(&gUnk_0201E8D4[i]);
     }
 
     return;
 }
 
-const char gUnk_08439354[] = "使用武器：";
-const char gUnk_08439360[] = "";
-const char gUnk_08439364[] = "主人公：";
-const char gUnk_08439370[] = "斧";
-const char gUnk_08439374[] = "オスティア侯弟";
-const char gUnk_08439384[] = "ヘクトル";
-const char gUnk_08439390[] = "フェレ侯公子";
-const char gUnk_084393A0[] = "エリウッド";
-const char gUnk_084393AC[] = "剣";
-const char gUnk_084393B0[] = "サカの剣士";
-const char gUnk_084393BC[] = "リン";
+const char gUnk_08439354[] = JTEXT("使用武器：");
+const char gUnk_08439360[] = JTEXT("");
+const char gUnk_08439364[] = JTEXT("主人公：");
+const char gUnk_08439370[] = JTEXT("斧");
+const char gUnk_08439374[] = JTEXT("オスティア侯弟");
+const char gUnk_08439384[] = JTEXT("ヘクトル");
+const char gUnk_08439390[] = JTEXT("フェレ侯公子");
+const char gUnk_084393A0[] = JTEXT("エリウッド");
+const char gUnk_084393AC[] = JTEXT("剣");
+const char gUnk_084393B0[] = JTEXT("サカの剣士");
+const char gUnk_084393BC[] = JTEXT("リン");
 
-const char * CONST_DATA gUnk_08DAE0AC[][3] =
-{
+const char * CONST_DATA gUnk_08DAE0AC[][3] = {
     {
         gUnk_084393BC,
         gUnk_084393B0,
@@ -288,7 +223,7 @@ const char * CONST_DATA gUnk_08DAE0AC[][3] =
     },
 };
 
-void sub_80A84D8(s32 count)
+void EndModeSelectAnims(s32 count)
 {
     s32 i;
 
@@ -300,44 +235,49 @@ void sub_80A84D8(s32 count)
     return;
 }
 
-void sub_80A84FC(void)
+void PutModeSelectLabelText(void)
 {
-    ClearText(&gUnk_020000A4.unk_18[5]);
-    ClearText(&gUnk_020000A4.unk_18[6]);
+    ClearText(&gUnk_020000A4.text[5]);
+    ClearText(&gUnk_020000A4.text[6]);
 
-    PutDrawText(&gUnk_020000A4.unk_18[5], gBg1Tm + 0x14E, 0, 0, 0, gUnk_08DAE0AC[3][0]);
-    PutDrawText(&gUnk_020000A4.unk_18[6], gBg1Tm + 0x1CE, 0, 0, 0, gUnk_08DAE0AC[3][2]);
+    PutDrawText(&gUnk_020000A4.text[5], gBg1Tm + TM_OFFSET(14, 10), TEXT_COLOR_SYSTEM_WHITE, 0, 0, gUnk_08DAE0AC[3][0]);
+    PutDrawText(&gUnk_020000A4.text[6], gBg1Tm + TM_OFFSET(14, 14), TEXT_COLOR_SYSTEM_WHITE, 0, 0, gUnk_08DAE0AC[3][2]);
 
-    EnableBgSync(2);
+    EnableBgSync(BG1_SYNC_BIT);
 
     return;
 }
 
-void sub_80A856C(s32 index)
+void PutModeSelectCharacterText(s32 index)
 {
-    ClearText(&gUnk_020000A4.unk_18[2]);
-    ClearText(&gUnk_020000A4.unk_18[3]);
-    ClearText(&gUnk_020000A4.unk_18[4]);
+    ClearText(&gUnk_020000A4.text[2]);
+    ClearText(&gUnk_020000A4.text[3]);
+    ClearText(&gUnk_020000A4.text[4]);
 
-    PutDrawText(&gUnk_020000A4.unk_18[2], gBg1Tm + 0x152, 2, 0, 0, gUnk_08DAE0AC[index][0]);
-    PutDrawText(&gUnk_020000A4.unk_18[3], gBg1Tm + 0x18E, 2, 0, 0, gUnk_08DAE0AC[index][1]);
-    PutDrawText(&gUnk_020000A4.unk_18[4], gBg1Tm + 0x1D3, 2, 0, 0, gUnk_08DAE0AC[index][2]);
+    PutDrawText(
+        &gUnk_020000A4.text[2], gBg1Tm + TM_OFFSET(18, 10), TEXT_COLOR_SYSTEM_BLUE, 0, 0, gUnk_08DAE0AC[index][0]);
+    PutDrawText(
+        &gUnk_020000A4.text[3], gBg1Tm + TM_OFFSET(14, 12), TEXT_COLOR_SYSTEM_BLUE, 0, 0, gUnk_08DAE0AC[index][1]);
+    PutDrawText(
+        &gUnk_020000A4.text[4], gBg1Tm + TM_OFFSET(19, 14), TEXT_COLOR_SYSTEM_BLUE, 0, 0, gUnk_08DAE0AC[index][2]);
 
-    EnableBgSync(2);
+    EnableBgSync(BG1_SYNC_BIT);
 
     return;
 }
 
-void sub_80A8618(struct ModeSelectProc * proc)
+void PutModeSelectDifficultyText(struct ModeSelectProc * proc)
 {
     s32 unk = proc->unk_43[proc->unk_41];
 
-    ClearText(&gUnk_020000A4.unk_18[0]);
-    ClearText(&gUnk_020000A4.unk_18[1]);
+    ClearText(&gUnk_020000A4.text[0]);
+    ClearText(&gUnk_020000A4.text[1]);
 
-    PutDrawText(&gUnk_020000A4.unk_18[0], gBg1Tm + 0xcf, unk == 0 ? 3 : 1, 0, 0, "ノーマル");
+    PutDrawText(
+        &gUnk_020000A4.text[0], gBg1Tm + TM_OFFSET(15, 6), unk == 0 ? TEXT_COLOR_SYSTEM_GOLD : TEXT_COLOR_SYSTEM_GRAY,
+        0, 0, JTEXT("ノーマル"));
 
-    EnableBgSync(2);
+    EnableBgSync(BG1_SYNC_BIT);
 
     switch (proc->unk_49[proc->unk_41])
     {
@@ -366,20 +306,23 @@ void sub_80A8618(struct ModeSelectProc * proc)
             break;
     }
 
-    PutDrawText(&gUnk_020000A4.unk_18[1], gBg1Tm + 0x10F, unk == 1 ? 3 : 1, 0, 0, "ハード");
+    PutDrawText(
+        &gUnk_020000A4.text[1], gBg1Tm + TM_OFFSET(15, 8), unk == 1 ? TEXT_COLOR_SYSTEM_GOLD : TEXT_COLOR_SYSTEM_GRAY,
+        0, 0, JTEXT("ハード"));
 
     return;
 }
 
-void * sub_80A86D4(s32 index)
+struct FaceProc * StartModeSelectFace(s32 index)
 {
-    s32 gUnk_084393D8[3] = {
+    s32 fids[3] = {
         0x16,
         0x02,
         0x0C,
     };
 
-    struct FaceProc * pFaceProc = StartBmFace(0, gUnk_084393D8[index], 0xcc, 0x48, 0x42);
+    struct FaceProc * pFaceProc =
+        StartBmFace(0, fids[index], 204, 72, (FACE_DISP_KIND(FACE_96x80) | FACE_DISP_HLAYER(FACE_HLAYER_0)));
     StartFaceFadeIn(pFaceProc);
 
     return pFaceProc;
@@ -400,9 +343,9 @@ extern u8 Img_084362B0[];
 extern u8 Img_084363A4[];
 extern u8 Img_08436408[];
 
-void sub_80A870C(s32 index)
+void LoadModeSelectChapterGfx(s32 index)
 {
-    void * gUnk_084393E4[3][4] = {
+    u8 * gUnk_084393E4[3][4] = {
         {
             Img_08435C64,
             Img_08435D54,
@@ -632,13 +575,13 @@ void sub_80A8850(s32 palId, s32 b)
     return;
 }
 
-void sub_80A8880(struct ModeSelectSpriteDrawProc * proc)
+void ModeSelectSpriteDraw_Init(struct ModeSelectSpriteDrawProc * proc)
 {
     proc->unk_30 = 0;
     proc->unk_3e = 0;
     proc->unk_3c = 0;
-    proc->unk_34 = 0x78;
-    proc->unk_38 = 0xa0;
+    proc->unk_34 = 120;
+    proc->unk_38 = 160;
     proc->unk_40 = 0;
     proc->unk_44 = 0;
     proc->unk_3c = 0;
@@ -650,7 +593,7 @@ void sub_80A8880(struct ModeSelectSpriteDrawProc * proc)
     return;
 }
 
-void sub_80A88B8(struct ModeSelectSpriteDrawProc * proc)
+void ModeSelectSpriteDraw_Loop(struct ModeSelectSpriteDrawProc * proc)
 {
     s32 i;
 
@@ -677,6 +620,7 @@ void sub_80A88B8(struct ModeSelectSpriteDrawProc * proc)
     if (proc->unk_4c == 0)
     {
         proc->unk_48 += 8;
+
         if (proc->unk_48 >= 0x400)
         {
             proc->unk_4c = 1;
@@ -694,20 +638,20 @@ void sub_80A88B8(struct ModeSelectSpriteDrawProc * proc)
 
     if (proc->unk_4e & 2)
     {
-        sub_804A9D0(0x6c, (proc->unk_4d & 1) * 0x10 + 0x38, 0xbc0);
+        DisplayFrozenUiHandExt(108, (proc->unk_4d & 1) * 16 + 56, 0xbc0);
     }
     else
     {
-        sub_804A95C(0x6c, proc->unk_4d * 0x10 + 0x38, 0xbc0);
+        DisplayUiHandExt(108, proc->unk_4d * 16 + 56, 0xbc0);
     }
 
-    PutSpriteExt(0xd, 0, 8, gUnk_08DAE028, 0xb000);
-    PutSpriteExt(0xd, 0x14, 0x1c, gUnk_08DAE042, 0xb000);
-    PutSpriteExt(0xd, 0x28, 0x40, gUnk_08DAE088, 0xb000);
+    PutSpriteExt(0xd, 0, 8, Sprite_ModeSelect_Mode, OAM2_PAL(11));
+    PutSpriteExt(0xd, 20, 28, Sprite_ModeSelect_Select, OAM2_PAL(11));
+    PutSpriteExt(0xd, 40, 64, Sprite_ModeSelect_Change, OAM2_PAL(11));
 
     if ((proc->unk_2c >> 2 & 1) == 0)
     {
-        PutSpriteExt(0xd, 8, 0x82, gUnk_08DAE068, 0xb000);
+        PutSpriteExt(0xd, 8, 130, Sprite_ModeSelect_PressStart, OAM2_PAL(11));
     }
 
     if (proc->unk_2c != 0)
@@ -715,7 +659,7 @@ void sub_80A88B8(struct ModeSelectSpriteDrawProc * proc)
         proc->unk_2c++;
     }
 
-    PutSpriteExt(0xd, 0x6c, 0x18, gUnk_08DAE090, 0xa000);
+    PutSpriteExt(0xd, 108, 24, Sprite_ModeSelect_ChapterRange, OAM2_PAL(10));
 
     sub_80A8304(proc->unk_30);
     proc->unk_30++;
@@ -725,12 +669,12 @@ void sub_80A88B8(struct ModeSelectSpriteDrawProc * proc)
 
 // clang-format off
 
-struct ProcCmd CONST_DATA gUnk_08DAE0DC[] =
+struct ProcCmd CONST_DATA ProcScr_ModeSelectSpriteDraw[] =
 {
-    PROC_CALL(sub_80A8880),
+    PROC_CALL(ModeSelectSpriteDraw_Init),
     PROC_YIELD,
 
-    PROC_REPEAT(sub_80A88B8),
+    PROC_REPEAT(ModeSelectSpriteDraw_Loop),
 
     PROC_END,
 };
@@ -739,7 +683,7 @@ struct ProcCmd CONST_DATA gUnk_08DAE0DC[] =
 
 void sub_80A8A90(void)
 {
-    struct ModeSelectSpriteDrawProc * proc = Proc_Find(gUnk_08DAE0DC);
+    struct ModeSelectSpriteDrawProc * proc = Proc_Find(ProcScr_ModeSelectSpriteDraw);
 
     if (proc != NULL)
     {
@@ -751,7 +695,7 @@ void sub_80A8A90(void)
 
 void sub_80A8AAC(void)
 {
-    struct ModeSelectSpriteDrawProc * proc = Proc_Find(gUnk_08DAE0DC);
+    struct ModeSelectSpriteDrawProc * proc = Proc_Find(ProcScr_ModeSelectSpriteDraw);
 
     if (proc != NULL)
     {
@@ -763,7 +707,7 @@ void sub_80A8AAC(void)
 
 void sub_80A8AC8(s32 arg_0)
 {
-    struct ModeSelectSpriteDrawProc * proc = Proc_Find(gUnk_08DAE0DC);
+    struct ModeSelectSpriteDrawProc * proc = Proc_Find(ProcScr_ModeSelectSpriteDraw);
 
     if (proc != NULL)
     {
@@ -776,7 +720,7 @@ void sub_80A8AC8(s32 arg_0)
 
 void sub_80A8AF0(s32 arg_0, s32 arg_1)
 {
-    struct ModeSelectSpriteDrawProc * proc = Proc_Find(gUnk_08DAE0DC);
+    struct ModeSelectSpriteDrawProc * proc = Proc_Find(ProcScr_ModeSelectSpriteDraw);
 
     if (proc != NULL)
     {
@@ -784,14 +728,14 @@ void sub_80A8AF0(s32 arg_0, s32 arg_1)
         proc->unk_38 = arg_1;
     }
 
-    gUnk_Savemenu_02000000 = arg_1 - 0x3c;
+    gUnk_Savemenu_02000000 = arg_1 - 60;
 
     return;
 }
 
 void sub_80A8B1C(u16 arg_0)
 {
-    struct ModeSelectSpriteDrawProc * proc = Proc_Find(gUnk_08DAE0DC);
+    struct ModeSelectSpriteDrawProc * proc = Proc_Find(ProcScr_ModeSelectSpriteDraw);
 
     if (proc != NULL)
     {
@@ -803,7 +747,7 @@ void sub_80A8B1C(u16 arg_0)
 
 void sub_80A8B38(u8 arg_0, u8 arg_1)
 {
-    struct ModeSelectSpriteDrawProc * proc = Proc_Find(gUnk_08DAE0DC);
+    struct ModeSelectSpriteDrawProc * proc = Proc_Find(ProcScr_ModeSelectSpriteDraw);
 
     if (proc != NULL)
     {
@@ -816,21 +760,13 @@ void sub_80A8B38(u8 arg_0, u8 arg_1)
 
 s32 sub_80A8B60(void)
 {
-    struct ModeSelectSpriteDrawProc * proc = Proc_Find(gUnk_08DAE0DC);
+    struct ModeSelectSpriteDrawProc * proc = Proc_Find(ProcScr_ModeSelectSpriteDraw);
     return proc->unk_44;
 }
 
-struct UnkProc
-{
-    PROC_HEADER;
-    STRUCT_PAD(0x29, 0x34);
-    s16 unk_34;
-    s16 unk_36;
-};
-
 void sub_80A8B74(struct UnkProc * proc, s32 arg_1, s32 arg_2)
 {
-    if (proc != 0)
+    if (proc != NULL)
     {
         proc->unk_34 = arg_1;
         proc->unk_36 = arg_2;
@@ -839,7 +775,7 @@ void sub_80A8B74(struct UnkProc * proc, s32 arg_1, s32 arg_2)
     return;
 }
 
-void sub_80A8B80(struct ModeSelectProc * proc)
+void ModeSelect_InitGfxMaybe(struct ModeSelectProc * proc)
 {
     if (proc->unk_42 & 1)
     {
@@ -849,8 +785,7 @@ void sub_80A8B80(struct ModeSelectProc * proc)
     return;
 }
 
-struct FaceVramEnt CONST_DATA gUnk_08DAE0FC[] =
-{
+struct FaceVramEnt CONST_DATA FaceConfig_ModeSelect[] = {
     {
         .chr_off = 0x1000,
         .palid = 0xC,
@@ -869,7 +804,7 @@ struct FaceVramEnt CONST_DATA gUnk_08DAE0FC[] =
     },
 };
 
-void sub_80A8B98(struct ModeSelectProc * proc)
+void ModeSelect_Init(struct ModeSelectProc * proc)
 {
     s32 i;
 
@@ -877,31 +812,31 @@ void sub_80A8B98(struct ModeSelectProc * proc)
 
     SetBgOffset(1, 8, -8);
 
-    sub_80046C4(0xC);
-    sub_80046C4(0xD);
+    Proc_BlockEachMarked(0xC);
+    Proc_BlockEachMarked(0xD);
 
     gUnk_Savemenu_02000000 = 100;
 
-    SetFaceConfig(gUnk_08DAE0FC);
+    SetFaceConfig(FaceConfig_ModeSelect);
 
-    ApplyPaletteExt(gUnk_084352DC, 0x1e0, 0x20);
+    ApplyPalette(Pal_ModeSelect_Menu, 0xF);
 
-    Decompress(gUnk_08434DD0, (void *)(0x6000000 + GetBgChrOffset(1)));
-    TmApplyTsa_thm(gBg0Tm, gUnk_08434468, 0);
-    TmApplyTsa_thm(gBg1Tm, gUnk_084352FC, 0xf000); // this loads the "claw menu" and bg of the chapters
-    ApplyPaletteExt(gUnk_08434448, 0x360, 0x20);
+    Decompress(Img_ModeSelect_Menu, (void *)(0x6000000 + GetBgChrOffset(1)));
+    TmApplyTsa_thm(gBg0Tm, Tsa_ModeSelect_Menu, 0);
+    TmApplyTsa_thm(gBg1Tm, Tsa_084352FC, 0xf000); // this loads the "claw menu" and bg of the chapters
+    ApplyPalette(Pal_08434448, 0x1B);
 
-    Decompress(gUnk_08433CC8, (void *)0x6010000);
-    ApplyPaletteExt(gUnk_08436460, 0x340, 0x20);
+    Decompress(Img_ModeSelect_Sprites, (void *)0x6010000);
+    ApplyPalette(Pal_ModeSelect_Sprites, 0x1A);
 
     sub_8055670();
     sub_80647C8();
 
-    proc->unk_38 = Proc_Start(gUnk_08DAE0DC, proc);
+    proc->unk_38 = Proc_Start(ProcScr_ModeSelectSpriteDraw, proc);
     sub_80A8AF0(0, 0x70);
 
     proc->unk_41 = 0;
-    proc->unk_4c = 0;
+    proc->activeLordCount = 0;
 
     proc->unk_40 = sub_809F40C();
 
@@ -912,11 +847,11 @@ void sub_80A8B98(struct ModeSelectProc * proc)
             0x10,
         };
 
-        proc->unk_4c = 2;
+        proc->activeLordCount = 2;
         proc->unk_49[0] = 1;
         proc->unk_49[1] = 2;
 
-        for (i = 0; i < proc->unk_4c; i++)
+        for (i = 0; i < proc->activeLordCount; i++)
         {
             if ((gPlaySt.chapterStateBits & PLAY_FLAG_HARD))
             {
@@ -934,63 +869,63 @@ void sub_80A8B98(struct ModeSelectProc * proc)
     else
     {
         proc->unk_49[0] = 0;
-        proc->unk_4c++;
+        proc->activeLordCount++;
 
         if ((proc->unk_40 & 2) != 0)
         {
-            proc->unk_49[proc->unk_4c] = 1;
-            proc->unk_4c++;
+            proc->unk_49[proc->activeLordCount] = 1;
+            proc->activeLordCount++;
         }
 
         if ((proc->unk_40 & 8) != 0)
         {
-            proc->unk_49[proc->unk_4c] = 2;
-            proc->unk_4c++;
+            proc->unk_49[proc->activeLordCount] = 2;
+            proc->activeLordCount++;
         }
 
-        for (i = 0; i < proc->unk_4c; i++)
+        for (i = 0; i < proc->activeLordCount; i++)
         {
             proc->unk_43[i] = 0;
         }
     }
 
-    sub_80A8AC8(proc->unk_4c);
-    sub_80A838C(proc->unk_4c, proc->unk_49);
+    sub_80A8AC8(proc->activeLordCount);
+    InitModeSelectAnims(proc->activeLordCount, proc->unk_49);
 
-    for (i = 0; i < proc->unk_4c; i++)
+    for (i = 0; i < proc->activeLordCount; i++)
     {
         sub_80A8774(i);
     }
 
     sub_80A8AAC();
-    sub_80A9BE8(proc);
-    sub_80A9BFC(0, 0xd20, 9);
-    sub_80A9BFC(0, 0xd20, 9);
-    sub_80A9C84(30, 61, 68, 61);
-    sub_80A9C68(3);
+    StartUiSpinningArrows(proc);
+    LoadUiSpinningArrowGfx(0, 0xd20, 9);
+    LoadUiSpinningArrowGfx(0, 0xd20, 9);
+    SetUiSpinningArrowPositions(30, 61, 68, 61);
+    SetUiSpinningArrowConfig(3);
 
-    InitTextFont(&gUnk_020000A4.unk_00, (void *)0x600E000, 0x100, 0xe);
+    InitTextFont(&gUnk_020000A4.font, (void *)0x600E000, 0x100, 0xe);
 
-    InitText(&gUnk_020000A4.unk_18[0], 5);
-    InitText(&gUnk_020000A4.unk_18[1], 9);
-    InitText(&gUnk_020000A4.unk_18[2], 5);
-    InitText(&gUnk_020000A4.unk_18[3], 8);
-    InitText(&gUnk_020000A4.unk_18[4], 2);
-    InitText(&gUnk_020000A4.unk_18[5], 4);
-    InitText(&gUnk_020000A4.unk_18[6], 5);
+    InitText(&gUnk_020000A4.text[0], 5);
+    InitText(&gUnk_020000A4.text[1], 9);
+    InitText(&gUnk_020000A4.text[2], 5);
+    InitText(&gUnk_020000A4.text[3], 8);
+    InitText(&gUnk_020000A4.text[4], 2);
+    InitText(&gUnk_020000A4.text[5], 4);
+    InitText(&gUnk_020000A4.text[6], 5);
 
     proc->unk_30 = proc->unk_41 * sub_80A8B60() * 0x10;
 
-    proc->unk_3c = (void *)sub_80A86D4(proc->unk_49[proc->unk_41]);
-    sub_80A84FC();
-    sub_80A856C(proc->unk_49[proc->unk_41]);
-    sub_80A8618(proc);
+    proc->pFaceProc = StartModeSelectFace(proc->unk_49[proc->unk_41]);
+    PutModeSelectLabelText();
+    PutModeSelectCharacterText(proc->unk_49[proc->unk_41]);
+    PutModeSelectDifficultyText(proc);
     sub_80A8B38(proc->unk_43[proc->unk_41], proc->unk_42);
     sub_80A8B1C(proc->unk_30);
 
     EnableBgSync(3);
 
-    proc->unk_2c = 0;
+    proc->rotateTimer = 0;
     proc->unk_50 = 0;
 
     SetWinEnable(1, 0, 0);
@@ -998,28 +933,20 @@ void sub_80A8B98(struct ModeSelectProc * proc)
     SetWin0Box(0, 0x50, 0xf0, 0x50);
     SetWOutLayers(0, 0, 0, 0, 0);
 
-    sub_80A870C(proc->unk_49[proc->unk_41]);
+    LoadModeSelectChapterGfx(proc->unk_49[proc->unk_41]);
 
-    // clang-format off
-    SetObjAffine(
-        0,
-        Div(+COS_Q12(0) * 16, 0x100),
-        Div(-SIN_Q12(0) * 16, 0x100),
-        Div(+SIN_Q12(0) * 16, 0x100),
-        Div(+COS_Q12(0) * 16, 0x100)
-    );
-    // clang-format on
+    SetObjAffineAuto(0, 0, 0x100, 0x100);
 
     return;
 }
 
-void sub_80A8F68(struct ModeSelectProc * proc)
+void ModeSelect_TransitionSplitOpen(struct ModeSelectProc * proc)
 {
     s32 tmp;
     s32 unk_2c;
 
-    unk_2c = proc->unk_2c + 1;
-    proc->unk_2c = unk_2c;
+    unk_2c = proc->rotateTimer + 1;
+    proc->rotateTimer = unk_2c;
 
     SetDispEnable(1, 1, 1, 1, 1);
 
@@ -1035,19 +962,19 @@ void sub_80A8F68(struct ModeSelectProc * proc)
     return;
 }
 
-void sub_80A8FD8(struct ModeSelectProc * proc)
+void ModeSelect_TransitionSplitClose(struct ModeSelectProc * proc)
 {
     s32 tmp;
-    s32 unk_2c;
+    s32 timer;
 
-    unk_2c = proc->unk_2c + 1;
-    proc->unk_2c = unk_2c;
+    timer = proc->rotateTimer + 1;
+    proc->rotateTimer = timer;
 
-    tmp = 0x48 - (((0x10 - unk_2c) * 0x48) * (0x10 - unk_2c) / 256);
+    tmp = 0x48 - (((0x10 - timer) * 0x48) * (0x10 - timer) / 256);
 
     SetWin0Box(0, tmp + 8, 0xf0, -0x68 - (tmp));
 
-    if (unk_2c == 0x10)
+    if (timer == 0x10)
     {
         Proc_Break(proc);
     }
@@ -1059,7 +986,7 @@ void sub_80A9034(struct ModeSelectProc * proc)
 {
     s32 i;
 
-    for (i = 0; i < proc->unk_4c; i++)
+    for (i = 0; i < proc->activeLordCount; i++)
     {
         sub_8055644(&gUnk_0201E8D4[i]);
     }
@@ -1073,60 +1000,55 @@ void sub_80A9064(struct ModeSelectProc * proc, s32 arg_1)
 {
     proc->unk_43[proc->unk_41] = arg_1;
 
-    sub_80A8618(proc);
+    PutModeSelectDifficultyText(proc);
     sub_80A8B38(arg_1, proc->unk_42);
 
     return;
 }
 
-void sub_80A9090(struct ModeSelectProc * proc)
+void ModeSelect_Loop_KeyHandler(struct ModeSelectProc * proc)
 {
-    if (((gpKeySt->repeated & 0x40) != 0) && (proc->unk_43[proc->unk_41]) == 1)
+    if (((gpKeySt->repeated & DPAD_UP) != 0) && (proc->unk_43[proc->unk_41]) == 1)
     {
         PlaySoundEffect(0x386);
         sub_80A9064(proc, 0);
         return;
     }
 
-    if ((gpKeySt->repeated & 0x80) != 0)
+    if ((gpKeySt->repeated & DPAD_DOWN) != 0)
     {
         if (proc->unk_43[proc->unk_41] == 0)
         {
-
             if ((proc->unk_49[proc->unk_41] == 0) && ((proc->unk_40 & 1) == 0))
             {
                 PlaySoundEffect(0x38c);
-
                 return;
             }
 
             if ((proc->unk_49[proc->unk_41] == 1) && ((proc->unk_40 & 4) == 0))
             {
                 PlaySoundEffect(0x38c);
-
                 return;
             }
 
             if ((proc->unk_49[proc->unk_41] == 2) && ((proc->unk_40 & 0x10) == 0))
             {
                 PlaySoundEffect(0x38c);
-
                 return;
             }
 
             PlaySoundEffect(0x386);
-
             sub_80A9064(proc, 1);
 
             return;
         }
     }
 
-    if ((gpKeySt->held & 0x220) != 0)
+    if ((gpKeySt->held & (DPAD_LEFT | L_BUTTON)) != 0)
     {
         Proc_Goto(proc, 1);
 
-        sub_80A9CAC(0);
+        SetUiSpinningArrowFastMaybe(0);
 
         PlaySoundEffect(0x387);
 
@@ -1135,11 +1057,11 @@ void sub_80A9090(struct ModeSelectProc * proc)
         return;
     }
 
-    if ((gpKeySt->held & 0x110) != 0)
+    if ((gpKeySt->held & (DPAD_RIGHT | R_BUTTON)) != 0)
     {
         Proc_Goto(proc, 2);
 
-        sub_80A9CAC(1);
+        SetUiSpinningArrowFastMaybe(1);
 
         PlaySoundEffect(0x387);
 
@@ -1148,9 +1070,9 @@ void sub_80A9090(struct ModeSelectProc * proc)
         return;
     }
 
-    if ((gpKeySt->pressed & 9) != 0)
+    if ((gpKeySt->pressed & (START_BUTTON | A_BUTTON)) != 0)
     {
-        proc->unk_2c = 0;
+        proc->rotateTimer = 0;
 
         PlaySoundEffect(0x38a);
 
@@ -1173,11 +1095,11 @@ void sub_80A9090(struct ModeSelectProc * proc)
 
             if (proc->unk_43[proc->unk_41] != 0)
             {
-                gPlaySt.chapterStateBits |= 0x40;
+                gPlaySt.chapterStateBits |= PLAY_FLAG_HARD;
             }
             else
             {
-                gPlaySt.chapterStateBits &= 0xbf;
+                gPlaySt.chapterStateBits &= ~PLAY_FLAG_HARD;
             }
         }
         else
@@ -1190,9 +1112,9 @@ void sub_80A9090(struct ModeSelectProc * proc)
         return;
     }
 
-    if (((gpKeySt->pressed & 2) != 0) && ((proc->unk_42 & 1) == 0))
+    if (((gpKeySt->pressed & B_BUTTON) != 0) && ((proc->unk_42 & 1) == 0))
     {
-        proc->unk_2c = 0;
+        proc->rotateTimer = 0;
         PlaySoundEffect(0x38b);
 
         Proc_Goto(proc, 4);
@@ -1217,16 +1139,16 @@ void sub_80A9090(struct ModeSelectProc * proc)
     return;
 }
 
-void sub_80A9338(struct ModeSelectProc * proc)
+void ModeSelect_RotateRight(struct ModeSelectProc * proc)
 {
     proc->unk_34 = -1;
-    proc->unk_2c = 0;
+    proc->rotateTimer = 0;
 
-    StartFaceFadeOut(proc->unk_3c);
+    StartFaceFadeOut(proc->pFaceProc);
 
     if (proc->unk_41 == 0)
     {
-        proc->unk_41 = proc->unk_4c - 1;
+        proc->unk_41 = proc->activeLordCount - 1;
     }
     else
     {
@@ -1245,14 +1167,14 @@ void sub_80A9338(struct ModeSelectProc * proc)
     return;
 }
 
-void sub_80A93A0(struct ModeSelectProc * proc)
+void ModeSelect_RotateLeft(struct ModeSelectProc * proc)
 {
     proc->unk_34 = 1;
-    proc->unk_2c = 0;
+    proc->rotateTimer = 0;
 
-    StartFaceFadeOut(proc->unk_3c);
+    StartFaceFadeOut(proc->pFaceProc);
 
-    if (proc->unk_41 < (proc->unk_4c - 1))
+    if (proc->unk_41 < (proc->activeLordCount - 1))
     {
         proc->unk_41++;
     }
@@ -1273,7 +1195,7 @@ void sub_80A93A0(struct ModeSelectProc * proc)
     return;
 }
 
-void sub_80A940C(struct ModeSelectProc * proc)
+void ModeSelect_Loop_RotateCarousel(struct ModeSelectProc * proc)
 {
     s32 a;
     s32 b;
@@ -1283,29 +1205,29 @@ void sub_80A940C(struct ModeSelectProc * proc)
 
     a = (proc->unk_32 - proc->unk_30) * proc->unk_34;
     r9 = 0x100;
-    proc->unk_2c++;
+    proc->rotateTimer++;
 
     b = a >> 2;
 
-    c = b * (0x1e - proc->unk_2c) * (0x1e - proc->unk_2c) / 900;
+    c = b * (0x1e - proc->rotateTimer) * (0x1e - proc->rotateTimer) / 900;
     d = (proc->unk_30 + proc->unk_34 * 4 * (b - c));
 
-    if (proc->unk_2c == 0xd)
+    if (proc->rotateTimer == 0xd)
     {
-        sub_80A870C(proc->unk_49[proc->unk_41]);
+        LoadModeSelectChapterGfx(proc->unk_49[proc->unk_41]);
     }
 
-    if (proc->unk_2c == 0xe)
+    if (proc->rotateTimer == 0xe)
     {
-        proc->unk_3c = sub_80A86D4(proc->unk_49[proc->unk_41]);
+        proc->pFaceProc = StartModeSelectFace(proc->unk_49[proc->unk_41]);
     }
 
-    if (proc->unk_2c == 0x14)
+    if (proc->rotateTimer == 0x14)
     {
-        sub_80A856C(proc->unk_49[proc->unk_41]);
+        PutModeSelectCharacterText(proc->unk_49[proc->unk_41]);
     }
 
-    if (proc->unk_2c == 0x1e)
+    if (proc->rotateTimer == 0x1e)
     {
         d = proc->unk_32 & 0xfff;
         proc->unk_30 = proc->unk_32 & 0xfff;
@@ -1319,10 +1241,10 @@ void sub_80A940C(struct ModeSelectProc * proc)
     return;
 }
 
-void sub_80A9538(struct ModeSelectProc * proc)
+void ModeSelect_End(struct ModeSelectProc * proc)
 {
-    sub_80A84D8(proc->unk_4c);
-    sub_8055690();
+    EndModeSelectAnims(proc->activeLordCount);
+    EndEfxAnimeDrvProc();
     EndFaceById(0);
 
     if (!(proc->unk_42 & 1))
@@ -1339,29 +1261,44 @@ void sub_80A9538(struct ModeSelectProc * proc)
 
 // clang-format off
 
-struct ProcCmd CONST_DATA ProcScr_DifficultyMenuSprites[] = {
+struct ProcCmd CONST_DATA ProcScr_ModeSelect[] =
+{
     PROC_CALL(DisableAllGfx),
     PROC_YIELD,
-    PROC_CALL(sub_80A8B80),
+
+    PROC_CALL(ModeSelect_InitGfxMaybe),
     PROC_YIELD,
-    PROC_CALL(sub_80A8B98),
+
+    PROC_CALL(ModeSelect_Init),
     PROC_YIELD,
-    PROC_REPEAT(sub_80A8F68),
+
+    PROC_REPEAT(ModeSelect_TransitionSplitOpen),
+
 PROC_LABEL(0),
-    PROC_REPEAT(sub_80A9090),
+    PROC_REPEAT(ModeSelect_Loop_KeyHandler),
+
+    // fallthrough
+
 PROC_LABEL(1),
-    PROC_CALL(sub_80A93A0),
-    PROC_REPEAT(sub_80A940C),
+    PROC_CALL(ModeSelect_RotateLeft),
+    PROC_REPEAT(ModeSelect_Loop_RotateCarousel),
+
     PROC_GOTO(0),
+
 PROC_LABEL(2),
-    PROC_CALL(sub_80A9338),
-    PROC_REPEAT(sub_80A940C),
+    PROC_CALL(ModeSelect_RotateRight),
+    PROC_REPEAT(ModeSelect_Loop_RotateCarousel),
+
     PROC_GOTO(0),
+
 PROC_LABEL(3),
     PROC_SLEEP(60),
+
 PROC_LABEL(4),
-    PROC_REPEAT(sub_80A8FD8),
-    PROC_CALL(sub_80A9538),
+    PROC_REPEAT(ModeSelect_TransitionSplitClose),
+
+    PROC_CALL(ModeSelect_End),
+
     PROC_END,
 };
 
@@ -1369,16 +1306,16 @@ PROC_LABEL(4),
 
 void sub_80A9578(ProcPtr parent)
 {
-    struct ModeSelectProc * proc = Proc_StartBlocking(ProcScr_DifficultyMenuSprites, parent);
+    struct ModeSelectProc * proc = Proc_StartBlocking(ProcScr_ModeSelect, parent);
     proc->unk_42 = 0;
     return;
 }
 
-void StartDrawDifficultyMenuSprites(ProcPtr parent)
+void StartModeSelect(ProcPtr parent)
 {
     if (sub_809F40C() > 7)
     {
-        struct ModeSelectProc * proc = Proc_StartBlocking(ProcScr_DifficultyMenuSprites, parent);
+        struct ModeSelectProc * proc = Proc_StartBlocking(ProcScr_ModeSelect, parent);
         proc->unk_42 = 1;
     }
 

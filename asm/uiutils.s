@@ -792,8 +792,8 @@ sub_804A930: @ 0x0804A930
 _0804A954: .4byte gUnk_081DD7F4
 _0804A958: .4byte gUnk_081DDA48
 
-	thumb_func_start sub_804A95C
-sub_804A95C: @ 0x0804A95C
+	thumb_func_start DisplayUiHandExt
+DisplayUiHandExt: @ 0x0804A95C
 	push {r4, r5, r6, r7, lr}
 	sub sp, #4
 	adds r4, r0, #0
@@ -847,8 +847,8 @@ _0804A9C4: .4byte 0x0203DCC4
 _0804A9C8: .4byte gUnk_08C09BBC
 _0804A9CC: .4byte gUnk_08C09BB4
 
-	thumb_func_start sub_804A9D0
-sub_804A9D0: @ 0x0804A9D0
+	thumb_func_start DisplayFrozenUiHandExt
+DisplayFrozenUiHandExt: @ 0x0804A9D0
 	push {r4, r5, lr}
 	sub sp, #4
 	adds r4, r0, #0

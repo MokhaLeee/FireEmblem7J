@@ -569,8 +569,8 @@ _080046B2:
 	.align 2, 0
 _080046C0: .4byte 0x02024E20
 
-	thumb_func_start sub_80046C4
-sub_80046C4: @ 0x080046C4
+	thumb_func_start Proc_BlockEachMarked
+Proc_BlockEachMarked: @ 0x080046C4
 	adds r3, r0, #0
 	movs r2, #0x3f
 	ldr r0, _080046E4 @ =0x02024E20
