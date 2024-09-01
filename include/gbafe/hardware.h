@@ -227,7 +227,7 @@ extern u16 EWRAM_DATA gBg3Tm[0x400];
 extern void *EWRAM_DATA gBgMapVramTable[4];
 extern Func EWRAM_DATA MainFunc;
 extern struct DispIo gDispIo;
-extern const s16 gSinLut[0x40];
+extern s16 gSinLut[0x40];
 
 extern Func gOnHBlankA;
 extern Func gOnHBlankB;
