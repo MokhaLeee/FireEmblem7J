@@ -435,6 +435,8 @@ SECTIONS
 		. = ALIGN(4); data/savemenu.o(.data)
 		. = ALIGN(4); src/savedrawfx.o(.data)
 		. = ALIGN(4); data/savedrawfx.o(.data)
+		. = ALIGN(4); src/savemenu_modeselect.o(.data)
+		. = ALIGN(4); data/cursor_hand.o(.data)
 		. = ALIGN(4); src/sysutil.o(.data)
 		. = ALIGN(4); data/data_08DAE4C4.o(.data)
 		. = ALIGN(4); src/bmbgfx_data.o(.data)

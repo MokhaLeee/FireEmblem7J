@@ -59,6 +59,7 @@ struct AnimMagicFxBuffer
 
 extern struct AnimMagicFxBuffer gUnk_0201E97C[];
 
+s32 sub_809F40C(void);
 void sub_80A9CAC(s32);
 s32 sub_80A8B60(void);
 void sub_80A9034(struct ModeSelectProc *);
@@ -105,8 +106,6 @@ void sub_80556B0(struct AnimBuffer *);
 
 extern u8 gUnk_Savemenu_02000000;
 
-extern const struct FaceVramEnt gUnk_08DAE0FC[];
-
 extern u8 gUnk_08434DD0[]; // img
 extern u16 gUnk_084352DC[]; // pal
 extern u8 gUnk_08434468[]; // tsa
@@ -116,8 +115,6 @@ extern u16 gUnk_08434448[]; // pal
 extern u8 gUnk_08433CC8[]; // img
 extern u16 gUnk_08436460[]; // pal
 
-extern struct ProcCmd gUnk_08DAE0DC[];
-
 struct Unk_020000A4
 {
     struct Font unk_00;
@@ -125,20 +122,81 @@ struct Unk_020000A4
 };
 extern struct Unk_020000A4 gUnk_020000A4;
 
-extern struct ProcCmd gUnk_08DAE0DC[];
-
-extern u16 gUnk_08DAE028[];
-extern u16 gUnk_08DAE042[];
-extern u16 gUnk_08DAE088[];
-extern u16 gUnk_08DAE068[];
-extern u16 gUnk_08DAE090[];
-
 extern u16 gUnk_0201E9F4[];
 
-extern u8 * gUnk_08DADFF8[];
-extern u8 * gUnk_08DAE004[];
-extern u8 * gUnk_08DAE010[];
-extern u8 * gUnk_08DAE01C[];
+u8 * CONST_DATA gUnk_08DADFF8[] =
+{
+    (u8 *)0x020000F4,
+    (u8 *)0x020020F4,
+    (u8 *)0x020040F4,
+};
+
+u8 * CONST_DATA gUnk_08DAE004[] =
+{
+    (u8 *)0x020060F4,
+    (u8 *)0x0200B8F4,
+    (u8 *)0x020110F4,
+};
+
+u8 * CONST_DATA gUnk_08DAE010[] =
+{
+    (u8 *)0x020168F4,
+    (u8 *)0x02016994,
+    (u8 *)0x02016A34,
+};
+
+u8 * CONST_DATA gUnk_08DAE01C[] =
+{
+    (u8 *)0x02016AD4,
+    (u8 *)0x020194D4,
+    (u8 *)0x0201BED4,
+};
+
+u16 CONST_DATA gUnk_08DAE028[] =
+{
+    4,
+    OAM0_SHAPE_32x16, OAM1_SIZE_32x16, 0,
+    OAM0_SHAPE_32x16, OAM1_SIZE_32x16 + OAM1_X(32), OAM2_CHR(0x4),
+    OAM0_SHAPE_32x8 + OAM0_Y(16), OAM1_SIZE_32x8, OAM2_CHR(0x40),
+    OAM0_SHAPE_32x8 + OAM0_Y(16), OAM1_SIZE_32x8 + OAM1_X(32), OAM2_CHR(0x44),
+};
+
+u16 CONST_DATA gUnk_08DAE042[] =
+{
+    6,
+    OAM0_SHAPE_32x16, OAM1_SIZE_32x16, OAM2_CHR(0x8),
+    OAM0_SHAPE_32x16, OAM1_SIZE_32x16 + OAM1_X(32), OAM2_CHR(0xC),
+    OAM0_SHAPE_8x16, OAM1_SIZE_8x16 + OAM1_X(64), OAM2_CHR(0x10),
+    OAM0_SHAPE_32x8 + OAM0_Y(16), OAM1_SIZE_32x8, OAM2_CHR(0x60),
+    OAM0_SHAPE_32x8 + OAM0_Y(16), OAM1_SIZE_32x8 + OAM1_X(32), OAM2_CHR(0x64),
+    OAM0_SHAPE_8x8 + OAM0_Y(16), OAM1_SIZE_8x8 + OAM1_X(64), OAM2_CHR(0x68),
+};
+
+u16 CONST_DATA gUnk_08DAE068[] =
+{
+    5,
+    OAM0_SHAPE_32x8, OAM1_SIZE_32x8, OAM2_CHR(0x11),
+    OAM0_SHAPE_32x8 + OAM0_Y(8), OAM1_SIZE_32x8, OAM2_CHR(0x49),
+    OAM0_SHAPE_32x8, OAM1_SIZE_32x8 + OAM1_X(32), OAM2_CHR(0x31),
+    OAM0_SHAPE_32x8 + OAM0_Y(8), OAM1_SIZE_32x8 + OAM1_X(32), OAM2_CHR(0x4D),
+    OAM0_SHAPE_8x16, OAM1_SIZE_8x16 + OAM1_X(64), OAM2_CHR(0x55),
+};
+
+u16 CONST_DATA gUnk_08DAE088[] =
+{
+    1,
+    OAM0_SHAPE_32x8, OAM1_SIZE_32x8, OAM2_CHR(0x51),
+};
+
+u16 CONST_DATA gUnk_08DAE090[] =
+{
+    4,
+    OAM0_SHAPE_32x16 + OAM0_AFFINE_ENABLE, OAM1_SIZE_32x16, OAM2_CHR(0x16),
+    OAM0_SHAPE_32x16 + OAM0_AFFINE_ENABLE, OAM1_SIZE_32x16 + OAM1_X(32), OAM2_CHR(0x1A),
+    OAM0_SHAPE_16x16 + OAM0_AFFINE_ENABLE, OAM1_SIZE_16x16 + OAM1_X(64), OAM2_CHR(0x1E),
+    OAM0_SHAPE_32x16 + OAM0_AFFINE_ENABLE, OAM1_SIZE_32x16 + OAM1_X(80), OAM2_CHR(0x56),
+};
+
 
 void sub_80A838C(s32 count, u8 * arg_1)
 {
@@ -205,7 +263,30 @@ const char gUnk_084393AC[] = "剣";
 const char gUnk_084393B0[] = "サカの剣士";
 const char gUnk_084393BC[] = "リン";
 
-extern const char * gUnk_08DAE0AC[][3];
+const char * CONST_DATA gUnk_08DAE0AC[][3] =
+{
+    {
+        gUnk_084393BC,
+        gUnk_084393B0,
+        gUnk_084393AC,
+    },
+
+    {
+        gUnk_084393A0,
+        gUnk_08439390,
+        gUnk_084393AC,
+    },
+    {
+        gUnk_08439384,
+        gUnk_08439374,
+        gUnk_08439370,
+    },
+    {
+        gUnk_08439364,
+        gUnk_08439360,
+        gUnk_08439354,
+    },
+};
 
 void sub_80A84D8(s32 count)
 {
@@ -642,6 +723,20 @@ void sub_80A88B8(struct ModeSelectSpriteDrawProc * proc)
     return;
 }
 
+// clang-format off
+
+struct ProcCmd CONST_DATA gUnk_08DAE0DC[] =
+{
+    PROC_CALL(sub_80A8880),
+    PROC_YIELD,
+
+    PROC_REPEAT(sub_80A88B8),
+
+    PROC_END,
+};
+
+// clang-format on
+
 void sub_80A8A90(void)
 {
     struct ModeSelectSpriteDrawProc * proc = Proc_Find(gUnk_08DAE0DC);
@@ -753,6 +848,26 @@ void sub_80A8B80(struct ModeSelectProc * proc)
 
     return;
 }
+
+struct FaceVramEnt CONST_DATA gUnk_08DAE0FC[] =
+{
+    {
+        .chr_off = 0x1000,
+        .palid = 0xC,
+    },
+    {
+        .chr_off = 0x1000,
+        .palid = 0xC,
+    },
+    {
+        .chr_off = 0x1000,
+        .palid = 0xC,
+    },
+    {
+        .chr_off = 0x1000,
+        .palid = 0xC,
+    },
+};
 
 void sub_80A8B98(struct ModeSelectProc * proc)
 {
@@ -1222,7 +1337,35 @@ void sub_80A9538(struct ModeSelectProc * proc)
     return;
 }
 
-extern struct ProcCmd ProcScr_DifficultyMenuSprites[];
+// clang-format off
+
+struct ProcCmd CONST_DATA ProcScr_DifficultyMenuSprites[] = {
+    PROC_CALL(DisableAllGfx),
+    PROC_YIELD,
+    PROC_CALL(sub_80A8B80),
+    PROC_YIELD,
+    PROC_CALL(sub_80A8B98),
+    PROC_YIELD,
+    PROC_REPEAT(sub_80A8F68),
+PROC_LABEL(0),
+    PROC_REPEAT(sub_80A9090),
+PROC_LABEL(1),
+    PROC_CALL(sub_80A93A0),
+    PROC_REPEAT(sub_80A940C),
+    PROC_GOTO(0),
+PROC_LABEL(2),
+    PROC_CALL(sub_80A9338),
+    PROC_REPEAT(sub_80A940C),
+    PROC_GOTO(0),
+PROC_LABEL(3),
+    PROC_SLEEP(60),
+PROC_LABEL(4),
+    PROC_REPEAT(sub_80A8FD8),
+    PROC_CALL(sub_80A9538),
+    PROC_END,
+};
+
+// clang-format on
 
 void sub_80A9578(ProcPtr parent)
 {
@@ -1230,8 +1373,6 @@ void sub_80A9578(ProcPtr parent)
     proc->unk_42 = 0;
     return;
 }
-
-s32 sub_809F40C(void);
 
 void StartDrawDifficultyMenuSprites(ProcPtr parent)
 {
