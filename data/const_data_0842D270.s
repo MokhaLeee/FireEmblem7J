@@ -104,36 +104,84 @@ gUnk_08433C0C:	@ 0x08433C0C
 gUnk_08433CA0:	@ 0x08433CA0
 	.incbin "FireEmblem7J.base.gba", 0x433CA0, 0x433CC8 - 0x433CA0
 
-	.global gUnk_08433CC8
-gUnk_08433CC8:	@ 0x08433CC8
+	.global Img_ModeSelect_Sprites
+Img_ModeSelect_Sprites:	@ 0x08433CC8
 	.incbin "FireEmblem7J.base.gba", 0x433CC8, 0x434448 - 0x433CC8
 
-	.global gUnk_08434448
-gUnk_08434448:	@ 0x08434448
+	.global Pal_08434448
+Pal_08434448:	@ 0x08434448
 	.incbin "FireEmblem7J.base.gba", 0x434448, 0x434460 - 0x434448
 
 	.global gUnk_08434460
 gUnk_08434460:	@ 0x08434460
 	.incbin "FireEmblem7J.base.gba", 0x434460, 0x434468 - 0x434460
 
-	.global gUnk_08434468
-gUnk_08434468:	@ 0x08434468
+	.global Tsa_ModeSelect_Menu
+Tsa_ModeSelect_Menu:	@ 0x08434468
 	.incbin "FireEmblem7J.base.gba", 0x434468, 0x434DD0 - 0x434468
 
-	.global gUnk_08434DD0
-gUnk_08434DD0:	@ 0x08434DD0
+	.global Img_ModeSelect_Menu
+Img_ModeSelect_Menu:	@ 0x08434DD0
 	.incbin "FireEmblem7J.base.gba", 0x434DD0, 0x4352DC - 0x434DD0
 
-	.global gUnk_084352DC
-gUnk_084352DC:	@ 0x084352DC
+	.global Pal_ModeSelect_Menu
+Pal_ModeSelect_Menu:	@ 0x084352DC
 	.incbin "FireEmblem7J.base.gba", 0x4352DC, 0x4352FC - 0x4352DC
 
-	.global gUnk_084352FC
-gUnk_084352FC:	@ 0x084352FC
-	.incbin "FireEmblem7J.base.gba", 0x4352FC, 0x436460 - 0x4352FC
+	.global Tsa_084352FC
+Tsa_084352FC:	@ 0x084352FC
+	.incbin "FireEmblem7J.base.gba", 0x4352FC, 0x968    @ 0x435C64 - 0x4352FC
 
-	.global gUnk_08436460
-gUnk_08436460:	@ 0x08436460
+	.global Img_08435C64
+Img_08435C64:  @ 0x08435C64
+	.incbin "FireEmblem7J.base.gba", 0x435C64, 0xF0    @ 0x435D54 - 0x435C64
+
+	.global Img_08435D54
+Img_08435D54:  @ 0x08435D54
+	.incbin "FireEmblem7J.base.gba", 0x435D54, 0xF0    @ 0x435E44 - 0x435D54
+
+	.global Img_08435E44
+Img_08435E44:  @ 0x08435E44
+	.incbin "FireEmblem7J.base.gba", 0x435E44, 0x64    @ 0x435EA8 - 0x435E44
+
+	.global Img_08435EA8
+Img_08435EA8:  @ 0x08435EA8
+	.incbin "FireEmblem7J.base.gba", 0x435EA8, 0x58    @ 0x435F00 - 0x435EA8
+
+	.global Img_08435F00
+Img_08435F00:  @ 0x08435F00
+	.incbin "FireEmblem7J.base.gba", 0x435F00, 0x100    @ 0x436000 - 0x435F00
+
+	.global Img_08436000
+Img_08436000:  @ 0x08436000
+	.incbin "FireEmblem7J.base.gba", 0x436000, 0xF4    @ 0x4360F4 - 0x436000
+
+	.global Img_084360F4
+Img_084360F4:  @ 0x084360F4
+	.incbin "FireEmblem7J.base.gba", 0x4360F4, 0x64    @ 0x436158 - 0x4360F4
+
+	.global Img_08436158
+Img_08436158:  @ 0x08436158
+	.incbin "FireEmblem7J.base.gba", 0x436158, 0x58    @ 0x4361B0 - 0x436158
+
+	.global Img_084361B0
+Img_084361B0:  @ 0x084361B0
+	.incbin "FireEmblem7J.base.gba", 0x4361B0, 0x100    @ 0x4362B0 - 0x4361B0
+
+	.global Img_084362B0
+Img_084362B0:  @ 0x084362B0
+	.incbin "FireEmblem7J.base.gba", 0x4362B0, 0xF4    @ 0x4363A4 - 0x4362B0
+
+	.global Img_084363A4
+Img_084363A4:  @ 0x084363A4
+	.incbin "FireEmblem7J.base.gba", 0x4363A4, 0x64    @ 0x436408 - 0x4363A4
+
+	.global Img_08436408
+Img_08436408:  @ 0x08436408
+	.incbin "FireEmblem7J.base.gba", 0x436408, 0x58    @ 0x436460 - 0x436408
+
+	.global Pal_ModeSelect_Sprites
+Pal_ModeSelect_Sprites:	@ 0x08436460
 	.incbin "FireEmblem7J.base.gba", 0x436460, 0x436480 - 0x436460
 
 	.global gUnk_08436480
@@ -171,27 +219,3 @@ gUnk_084392DC:	@ 0x084392DC
 	.global gUnk_08439338
 gUnk_08439338:	@ 0x08439338
 	.incbin "FireEmblem7J.base.gba", 0x439338, 0x439348 - 0x439338
-
-	.global gUnk_08439348
-gUnk_08439348:	@ 0x08439348
-	.incbin "FireEmblem7J.base.gba", 0x439348, 0x4393C4 - 0x439348
-
-	.global gUnk_084393C4
-gUnk_084393C4:	@ 0x084393C4
-	.incbin "FireEmblem7J.base.gba", 0x4393C4, 0x4393D0 - 0x4393C4
-
-	.global gUnk_084393D0
-gUnk_084393D0:	@ 0x084393D0
-	.incbin "FireEmblem7J.base.gba", 0x4393D0, 0x4393D8 - 0x4393D0
-
-	.global gUnk_084393D8
-gUnk_084393D8:	@ 0x084393D8
-	.incbin "FireEmblem7J.base.gba", 0x4393D8, 0x4393E4 - 0x4393D8
-
-	.global gUnk_084393E4
-gUnk_084393E4:	@ 0x084393E4
-	.incbin "FireEmblem7J.base.gba", 0x4393E4, 0x439414 - 0x4393E4
-
-	.global gUnk_08439414
-gUnk_08439414:	@ 0x08439414
-	.incbin "FireEmblem7J.base.gba", 0x439414, 0x43941C - 0x439414

@@ -1653,7 +1653,7 @@ _0800B2AA:
 	strb r0, [r5]
 _0800B2AE:
 	movs r0, #5
-	bl sub_80046C4
+	bl Proc_BlockEachMarked
 	ldr r1, [r4, #0x40]
 	cmp r1, #0
 	beq _0800B2C0

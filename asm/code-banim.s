@@ -1784,8 +1784,8 @@ sub_8055670: @ 0x08055670
 _08055688: .4byte 0x0201FB0C
 _0805568C: .4byte gUnk_08C0A628
 
-	thumb_func_start sub_8055690
-sub_8055690: @ 0x08055690
+	thumb_func_start EndEfxAnimeDrvProc
+EndEfxAnimeDrvProc: @ 0x08055690
 	push {lr}
 	ldr r0, _080556A0 @ =0x0201FB0C
 	ldr r0, [r0]
@@ -1803,8 +1803,8 @@ sub_80556A4: @ 0x080556A4
 	bx r0
 	.align 2, 0
 
-	thumb_func_start sub_80556B0
-sub_80556B0: @ 0x080556B0
+	thumb_func_start NewEkrUnitMainMini
+NewEkrUnitMainMini: @ 0x080556B0
 	push {r4, r5, lr}
 	adds r4, r0, #0
 	ldr r0, _080556D4 @ =gUnk_08C0A640

@@ -631,15 +631,6 @@ void SetAnimStateUnHidden(int pos);
 // ??? sub_8055250
 // ??? sub_8055274
 // ??? InitMainMiniAnim
-// ??? sub_8055474
-// ??? sub_80555E8
-// ??? sub_80555F8
-// ??? sub_8055614
-// ??? sub_8055624
-// ??? sub_8055644
-// ??? sub_8055658
-// ??? sub_8055670
-// ??? sub_8055690
 
 /* ekrmainmini */
 struct BanimUnkStructComm {
@@ -657,6 +648,25 @@ struct BanimUnkStructComm {
     /* 1C */ void * unk1C;
     /* 20 */ void * unk20;
     /* 24 */ void * unk24;
+};
+
+struct AnimMagicFxBuffer
+{
+    /* 00 */ u16 magic_func_idx;
+    /* 02 */ u16 x_offset_bg;
+    /* 04 */ u16 y_offset_bg;
+    /* 06 */ u16 x_offset_obj;
+    /* 08 */ u16 y_offset_obj;
+    /* 0A */ u16 bg_chr;
+    /* 0C */ u16 bg_pal_id;
+    /* 0E */ u16 obj_chr;
+    /* 10 */ u16 obj_pal_id;
+    /* 12 */ u16 bg;
+    /* 14 */ u16 * bg_tm_buf;
+    /* 18 */ void * bg_img_buf;
+    /* 1C */ void * bg_tsa_buf;
+    /* 20 */ void * obj_img_buf;
+    /* 24 */ void (*reset_callback)(void);
 };
 
 struct AnimBuffer {
@@ -683,9 +693,18 @@ struct AnimBuffer {
 
 extern struct BanimUnkStructComm EkrMainMiniConf_0201FAD0;
 
+void sub_8055474(struct AnimBuffer *);
+// ??? sub_80555E8
+void sub_80555F8(struct AnimBuffer *, s16, s16);
+// ??? sub_8055614
+// ??? sub_8055624
+void sub_8055644(struct AnimBuffer *);
+// ??? sub_8055658
+void sub_8055670(void);
+void EndEfxAnimeDrvProc(void);
 // ??? sub_80556A4
-// ??? sub_80556B0
-// ??? sub_80556D8
+void NewEkrUnitMainMini(struct AnimBuffer *);
+void sub_80556D8(struct AnimBuffer *);
 // ??? sub_80556FC
 void sub_8055718(struct BanimUnkStructComm * conf); // FE8U: void sub_805AA68(struct BanimUnkStructComm * buf)
 // ??? sub_8055AC4
@@ -1344,7 +1363,7 @@ void NewEfxDrsmmoyaScrollCOL(struct Anim * anim, struct ProcEfxDrsmmoyaScroll * 
 void EfxDrsmmoyaScrollCOL_Loop1(struct ProcEfxDrsmmoyaScrollCOL * proc);
 void EfxDrsmmoyaScrollCOL_Delay(struct ProcEfxDrsmmoyaScrollCOL * proc);
 void EfxDrsmmoyaScrollCOL_Loop3(struct ProcEfxDrsmmoyaScrollCOL * proc);
-// ??? sub_80647C8
+void sub_80647C8(void);
 // ??? sub_80647DC
 // ??? sub_80647F8
 // ??? sub_8064814

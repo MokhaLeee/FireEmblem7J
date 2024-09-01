@@ -34,8 +34,8 @@ void ClearUi(void); // FE8U: ClearBg0Bg1
 // sub_804A84C
 // sub_804A8B0
 // sub_804A930
-// sub_804A95C
-// sub_804A9D0
+void DisplayUiHandExt(s32 x, s32 y, u32 objTileOffset);
+void DisplayFrozenUiHandExt(s32 x, s32 y, u32 objTileOffset);
 void UnpackUiWindowFrameGraphics(void);
 
 // ??? gUnk_08C09944

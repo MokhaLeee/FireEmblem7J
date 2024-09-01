@@ -241,8 +241,8 @@ _080A9BDC: .4byte 0x000001FF
 _080A9BE0: .4byte gUnk_08DAE214
 _080A9BE4: .4byte gUnk_08DAE222
 
-	thumb_func_start sub_80A9BE8
-sub_80A9BE8: @ 0x080A9BE8
+	thumb_func_start StartUiSpinningArrows
+StartUiSpinningArrows: @ 0x080A9BE8
 	push {lr}
 	adds r1, r0, #0
 	ldr r0, _080A9BF8 @ =gUnk_08DAE22C
@@ -252,8 +252,8 @@ sub_80A9BE8: @ 0x080A9BE8
 	.align 2, 0
 _080A9BF8: .4byte gUnk_08DAE22C
 
-	thumb_func_start sub_80A9BFC
-sub_80A9BFC: @ 0x080A9BFC
+	thumb_func_start LoadUiSpinningArrowGfx
+LoadUiSpinningArrowGfx: @ 0x080A9BFC
 	push {r4, r5, r6, r7, lr}
 	adds r6, r0, #0
 	adds r4, r1, #0
@@ -303,8 +303,8 @@ _080A9C5C: .4byte gUnk_08427A48
 _080A9C60: .4byte 0x06010000
 _080A9C64: .4byte gUnk_08427974
 
-	thumb_func_start sub_80A9C68
-sub_80A9C68: @ 0x080A9C68
+	thumb_func_start SetUiSpinningArrowConfig
+SetUiSpinningArrowConfig: @ 0x080A9C68
 	push {r4, lr}
 	adds r4, r0, #0
 	ldr r0, _080A9C80 @ =gUnk_08DAE22C
@@ -319,8 +319,8 @@ _080A9C78:
 	.align 2, 0
 _080A9C80: .4byte gUnk_08DAE22C
 
-	thumb_func_start sub_80A9C84
-sub_80A9C84: @ 0x080A9C84
+	thumb_func_start SetUiSpinningArrowPositions
+SetUiSpinningArrowPositions: @ 0x080A9C84
 	push {r4, r5, r6, r7, lr}
 	adds r4, r0, #0
 	adds r5, r1, #0
@@ -341,8 +341,8 @@ _080A9CA0:
 	.align 2, 0
 _080A9CA8: .4byte gUnk_08DAE22C
 
-	thumb_func_start sub_80A9CAC
-sub_80A9CAC: @ 0x080A9CAC
+	thumb_func_start SetUiSpinningArrowFastMaybe
+SetUiSpinningArrowFastMaybe: @ 0x080A9CAC
 	push {r4, lr}
 	adds r4, r0, #0
 	ldr r0, _080A9CE0 @ =gUnk_08DAE22C

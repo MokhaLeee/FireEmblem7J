@@ -107,7 +107,7 @@ void * GetSaveReadAddr(int save_id);
 // ??? sub_809F3AC
 // ??? sub_809F3D4
 // ??? sub_809F3EC
-// ??? sub_809F40C
+s32 sub_809F40C(void);
 // ??? sub_809F468
 // ??? sub_809F48C
 // ??? sub_809F490

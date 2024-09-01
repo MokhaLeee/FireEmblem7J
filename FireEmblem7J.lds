@@ -23,6 +23,10 @@ SECTIONS
     ewram_overlay_savemenu (NOLOAD) : ALIGN(4)
     {
         . = ALIGN(4); src/savemenu.o(ewram_overlay_savemenu);
+		. = 0x0000A4; gUnk_020000A4 = .;
+		. = 0x01E8D4; gUnk_0201E8D4 = .;
+		. = 0x01E97C; gUnk_0201E97C = .;
+		. = 0x01E9F4; gUnk_0201E9F4 = .;
     }
     __ewram_overlay_end = MAX(., __ewram_overlay_end);
 
@@ -308,6 +312,7 @@ SECTIONS
 		src/savedrawfx.o(.text);
 		asm/savedrawfx.o(.text);
 		asm/savemenu_difficulty.o(.text);
+		src/savemenu_modeselect.o(.text);
 		src/scrolling_util.o(.text);
 		asm/cursor_hand.o(.text);
 		asm/spinning_arrow.o(.text);
@@ -368,6 +373,7 @@ SECTIONS
 		. = ALIGN(4); data/const_data_0841CD8C.o(.rodata)
 		. = ALIGN(4); src/save_core.o(.rodata)
 		. = ALIGN(4); data/const_data_0842D270.o(.rodata)
+		. = ALIGN(4); src/savemenu_modeselect.o(.rodata)
 		. = ALIGN(4); src/sysutil.o(.rodata)
 		. = ALIGN(4); data/data_0843943C.o(.data)
 		. = ALIGN(4); src/hardware.o(.data)
@@ -429,6 +435,8 @@ SECTIONS
 		. = ALIGN(4); data/savemenu.o(.data)
 		. = ALIGN(4); src/savedrawfx.o(.data)
 		. = ALIGN(4); data/savedrawfx.o(.data)
+		. = ALIGN(4); src/savemenu_modeselect.o(.data)
+		. = ALIGN(4); data/cursor_hand.o(.data)
 		. = ALIGN(4); src/sysutil.o(.data)
 		. = ALIGN(4); data/data_08DAE4C4.o(.data)
 		. = ALIGN(4); src/bmbgfx_data.o(.data)
