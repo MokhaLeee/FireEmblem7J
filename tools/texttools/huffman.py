@@ -1,7 +1,7 @@
 #!/bin/python3
 
 FE7J_PATCH_BUILD=True
-DEBUG_BUILD_PROCESS=True
+DEBUG_BUILD_PROCESS=False
 
 class HuffNode:
     def __init__(self, data=None, freq=None, left=None, right=None):
