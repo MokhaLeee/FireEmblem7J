@@ -71,6 +71,36 @@ DATA_SRCS := $(shell find data -name *.s)
 
 C_GENERATED :=
 
+# =========
+# = Texts =
+# =========
+TEXT_DIR := texts
+TEXT_TOOLS := tools/texttools
+
+TEXT_DECODER := $(TEXT_TOOLS)/textdecoder.py
+TEXT_DPARSER := $(TEXT_TOOLS)/textdeparser.py
+TEXT_PROCESS := $(TEXT_TOOLS)/textprocess.py
+TEXT_ENCODE := tools/textencode/textencode
+
+TEXT_MAIN := $(TEXT_DIR)/texts.txt
+TEXT_DEFS := $(TEXT_DIR)/textdefs.txt
+TEXT_SRC  := $(TEXT_MAIN) $(shell find $(TEXT_DIR) -type f -name "*.txt")
+
+TEXT_HEADER := include/constants/msg.h
+MSG_LIST    := src/msg_data.c
+
+# this should just be used for testing
+$(TEXT_MAIN):
+	@echo "[GEN]	$@"
+	@$(PYTHON) $(TEXT_DECODER) > $@
+
+$(MSG_LIST) $(TEXT_HEADER): $(TEXT_SRC) $(TEXT_DEFS)
+	@echo "[GEN]	$@"
+	@$(PYTHON) $(TEXT_PROCESS) $(TEXT_MAIN) $(TEXT_DEFS) $(MSG_LIST) $(TEXT_HEADER) cp932
+
+# C_GENERATED += $(MSG_LIST)
+CLEAN_FILES += $(MSG_LIST) # $(TEXT_HEADER)
+
 # ===========
 # = Targets =
 # ===========

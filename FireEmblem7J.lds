@@ -376,6 +376,9 @@ SECTIONS
 		. = ALIGN(4); src/savemenu_modeselect.o(.rodata)
 		. = ALIGN(4); src/sysutil.o(.rodata)
 		. = ALIGN(4); data/data_0843943C.o(.data)
+		/* . = ALIGN(4); src/msg_data.o(.rodata) */
+		. = ALIGN(4); data/const_data_msg.o(.rodata)
+		. = ALIGN(4); data/const_data_main.o(.rodata)
 		. = ALIGN(4); src/hardware.o(.data)
 		. = ALIGN(4); data/data_08BBFCA8.o(.data)
 		. = ALIGN(4); src/sprite.o(.data)
