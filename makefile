@@ -10,6 +10,11 @@ SRC_DIR = src
 ASM_DIR = asm
 BUILD_DIR = build
 
+CLEAN_FILES :=
+CLEAN_DIRS  :=
+
+all: compare
+
 # ====================
 # = TOOL DEFINITIONS =
 # ====================
@@ -48,7 +53,6 @@ CC1     := $(AGBCC_HOME)/bin/old_agbcc$(EXE)
 CC1_NEW := $(AGBCC_HOME)/bin/agbcc$(EXE)
 
 SHASUM ?= sha1sum
-
 PERL := perl
 
 # ================
@@ -61,18 +65,27 @@ ASFLAGS := -mcpu=arm7tdmi -I asm/include -I include
 LDFLAGS := # --no-warn-rwx-segments
 
 LDS := $(BUILD_NAME).lds
+C_SRCS := $(shell find $(SRC_DIR) -name *.c)
+ASM_SRCS := $(shell find $(SRC_DIR) -name *.s) $(shell find $(ASM_DIR) -name *.s)
+DATA_SRCS := $(shell find data -name *.s)
+
+C_GENERATED :=
+
+# ===========
+# = Targets =
+# ===========
+
 ROM := $(BUILD_NAME).gba
 ELF := $(ROM:%.gba=%.elf)
 MAP := $(ROM:%.gba=%.map)
 SYM := $(ROM:%.gba=%.sym)
 
-C_SRCS := $(shell find $(SRC_DIR) -name *.c)
+ifeq (,$(findstring $(C_GENERATED),$(C_SRCS)))
+C_SRCS += $(C_GENERATED)
+endif
+
 C_OBJS := $(C_SRCS:%.c=$(BUILD_DIR)/%.o)
-
-ASM_SRCS := $(shell find $(SRC_DIR) -name *.s) $(shell find $(ASM_DIR) -name *.s)
 ASM_OBJS := $(ASM_SRCS:%.s=$(BUILD_DIR)/%.o)
-
-DATA_SRCS := $(wildcard data/*.s)
 DATA_OBJS := $(DATA_SRCS:%.s=$(BUILD_DIR)/%.o)
 
 ALL_OBJS := $(C_OBJS) $(ASM_OBJS) $(DATA_OBJS)
@@ -91,24 +104,19 @@ compare: $(ROM)
 
 .PHONY: compare
 
-all: $(ROM) $(ELF) $(MAP) $(SYM)
-
-clean:
-	@echo "[ RM]	$(ROM) $(ELF) $(MAP) $(BUILD_DIR)/"
-	@rm -f $(ROM) $(ELF) $(MAP) $(SYM)
-	@rm -fr $(BUILD_DIR)/
-
-.PHONY: clean
-
 syms: $(SYM)
 
 %.gba: %.elf
 	@echo "[GEN]	$@"
 	@$(OBJCOPY) --strip-debug -O binary $< $@
 
+CLEAN_FILES += $(ROM)
+
 $(ELF): $(ALL_OBJS) $(LDS)
 	@echo "[ LD]	$@"
 	@cd $(BUILD_DIR) && $(LD) -T ../$(LDS) -Map ../$(MAP) -L../tools/agbcc/lib $(ALL_OBJS:$(BUILD_DIR)/%=%) -lc -lgcc -o ../$@ $(LDFLAGS)
+
+CLEAN_FILES += $(ELF) $(MAP)
 
 # C dependency file
 $(BUILD_DIR)/%.d: %.c
@@ -136,6 +144,8 @@ ifneq (clean,$(MAKECMDGOALS))
   .PRECIOUS: $(BUILD_DIR)/%.d
 endif
 
+CLEAN_DIRS += $(BUILD_DIR)
+
 # =====================
 # = CFLAGS overrides =
 # =====================
@@ -157,3 +167,17 @@ endif
 $(SYM): $(ELF)
 	@echo "[GEN]	$@"
 	@$(OBJDUMP) -t $< | sort -u | grep -E "^0[2389]" | $(PERL) -p -e 's/^(\w{8}) (\w).{6} \S+\t(\w{8}) (\S+)$$/\1 \2 \3 \4/g' > $@
+
+CLEAN_FILES += $(SYM)
+
+# ==============
+# = Make clean =
+# ==============
+CLEAN_DIRS += $(shell find . -type d -name "__pycache__")
+
+clean:
+	@rm -f $(CLEAN_FILES)
+	@rm -rf $(CLEAN_DIRS)
+	@echo "all cleaned..."
+
+.PHONY: clean
