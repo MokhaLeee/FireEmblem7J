@@ -1,5 +1,8 @@
 #!/bin/python3
 
+FE7J_PATCH_BUILD=True
+DEBUG_BUILD_PROCESS=True
+
 class HuffNode:
     def __init__(self, data=None, freq=None, left=None, right=None):
         self.left = left
@@ -57,6 +60,8 @@ class HuffList:
 
 
 def HuffListAdd(list_node, node):
+    global FE7J_PATCH_BUILD, DEBUG_BUILD_PROCESS
+
     new_node = HuffList(node)
 
     if list_node == None:
@@ -70,6 +75,37 @@ def HuffListAdd(list_node, node):
     current = list_node
     while current.next is not None and current.next.node.freq <= node.freq:
         current = current.next
+
+        if FE7J_PATCH_BUILD and node.is_leaf() and node.data == 0xA790:
+            # I think the handling of this node=0xA790 is very unnatural, why?
+            if current.next.node.data == 0x6195:
+                break
+
+    if DEBUG_BUILD_PROCESS:
+        print(f"[LIST_ADD] ", end="")
+
+        if node is None:
+            print(f"node=[idx={HuffNodeFindIdx(node):04X}, code=None, freq=None]", end="")
+        elif node.data is None:
+            print(f"node=[idx={HuffNodeFindIdx(node):04X}, code=None, freq={node.freq:04X}]", end="")
+        else:
+            print(f"node=[idx={HuffNodeFindIdx(node):04X}, code={node.data:04X}, freq={node.freq:04X}]", end="")
+
+        if current is None:
+            print(f"_pre=[code=None, freq=None]", end="")
+        elif current.node.data is None:
+            print(f"_pre=[code=None, freq={current.node.freq:04X}]", end="")
+        else:
+            print(f"_pre=[code={current.node.data:04X}, freq={current.node.freq:04X}]", end="")
+
+        if current.next is None:
+            print(f"next=[code=None, freq=None]", end="")
+        elif current.next.node.data is None:
+            print(f"next=[code={current.next.node.data:04X}, freq=None]", end="")
+        else:
+            print(f"next=[code={current.next.node.data:04X}, freq={current.next.node.freq:04X}]", end="")
+
+        print("")
 
     new_node.next = current.next
     current.next = new_node

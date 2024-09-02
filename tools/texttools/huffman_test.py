@@ -39,6 +39,11 @@ def test_reworked_huffmantree():
     code_table = huffman.build_code_table(huff_tree)
     huffman.dump_code_table(code_table)
 
+def test_reworked_huffmantree_process():
+    all_data = textdecoder.decode_all_data()
+    freq_table = huffman.GenerateFreqTable(all_data)
+    huff_tree = huffman.BuildHuffmanTree(freq_table)
+
 def _visualize_huffman_tree(node, graph=None, node_id=0):
     if graph is None:
         graph = Digraph(format='png')
@@ -69,7 +74,8 @@ def test_visualize_reconstructed_huffman_tree():
 
     # generate graph
     graph = _visualize_huffman_tree(huff_tree)
-    graph.render('huffman_tree')
+    graph.render('huffman_tree_res.dot')
+    # dot -Tsvg huffman_tree_res.dot -o huffman_tree_res.svg
 
 def test_visualize_vanilla_huffman_tree():
     huffman_table = textdecoder.build_huffman_table()
@@ -77,7 +83,7 @@ def test_visualize_vanilla_huffman_tree():
 
     # generate graph
     graph = _visualize_huffman_tree(huff_tree)
-    graph.render('huffman_tree')
+    graph.render('huffman_tree_vanilla.dot')
 
 def dump_all_data():
     all_data = textdecoder.decode_all_data()
@@ -111,8 +117,9 @@ def dump_vanilla_leave_order():
 
 # test_compress_value()
 # dump_data_freq()
-test_vanilla_huffmantree()
+# test_vanilla_huffmantree()
 # test_reworked_huffmantree()
+test_reworked_huffmantree_process()
 # test_visualize_reconstructed_huffman_tree()
 # test_visualize_vanilla_huffman_tree()
 # dump_all_data()
