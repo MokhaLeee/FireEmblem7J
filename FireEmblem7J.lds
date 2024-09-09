@@ -218,6 +218,7 @@ SECTIONS
 		src/face.o(.text);
 		asm/face.o(.text);
 		asm/talk.o(.text);
+		src/talk.o(.text);
 		src/talk-advance.o(.text);
 		src/event.o(.text);
 		asm/event-engine.o(.text);
