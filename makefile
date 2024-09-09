@@ -156,7 +156,7 @@ $(BUILD_DIR)/%.d: %.c
 $(BUILD_DIR)/%.o: %.c $(BUILD_DIR)/%.d
 	@echo "[ CC]	$<"
 	@$(CPP) $(CPPFLAGS) $< | iconv -f UTF-8 -t CP932 | $(CC1) $(CFLAGS) -o $(BUILD_DIR)/$*.s
-	@echo ".text\n\t.align\t2, 0\n" >> $(BUILD_DIR)/$*.s
+	@printf ".text\n\t.align\t2, 0\n" >> $(BUILD_DIR)/$*.s
 	@$(AS) $(ASFLAGS) $(BUILD_DIR)/$*.s -o $@
 	@$(STRIP) -N .gcc2_compiled. $@
 
