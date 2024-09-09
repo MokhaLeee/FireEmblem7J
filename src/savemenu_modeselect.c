@@ -388,22 +388,18 @@ void sub_80A8774(s32 palId)
     return;
 }
 
-#if NONMATCHING
-
-/* https://decomp.me/scratch/n2sFX */
-
-void sub_80A87A4(s32 param_1, s32 param_2)
+void sub_80A87A4(s32 palId, s32 amt)
 {
     s32 i;
 
-    u16 * r5 = (gPal + (param_1 + 0xd) * 0x10 + 0x101);
+    u16 * r5 = (gPal + (palId + 0xd) * 0x10 + 0x101);
 
-    if (param_2 > 0x40)
+    if (amt > 0x40)
     {
-        param_2 = 0x40;
+        amt = 0x40;
     }
 
-    param_2 = param_2 + (gUnk_Savemenu_02000001 - 10) * 2;
+    amt = amt + (gUnk_Savemenu_02000001 - 10) * 2;
 
     for (i = 0; i < 0xf; i++)
     {
@@ -412,7 +408,7 @@ void sub_80A87A4(s32 param_1, s32 param_2)
         s32 g;
         s32 b;
 
-        r = (param_2 * (gUnk_0201E9F4[i + param_1 * 0xf] & (0x1f << 0))) >> 6;
+        r = (amt * (gUnk_0201E9F4[i + palId * 0xf] & (0x1f << 0))) >> 6;
 
         if (r <= 0x1f)
         {
@@ -424,7 +420,7 @@ void sub_80A87A4(s32 param_1, s32 param_2)
         else
             accum += 0x1f;
 
-        g = (param_2 * (gUnk_0201E9F4[i + param_1 * 0xf] & 0x3e0)) >> 6;
+        g = (amt * (gUnk_0201E9F4[i + palId * 0xf] & 0x3e0)) >> 6;
 
         if (g <= 0x3e0)
         {
@@ -436,21 +432,20 @@ void sub_80A87A4(s32 param_1, s32 param_2)
         else
             accum += 0x3e0;
 
-        b = (param_2 * (gUnk_0201E9F4[i + param_1 * 0xf] & 0x7c00)) >> 6;
+        b = (amt * (gUnk_0201E9F4[i + palId * 0xf] & 0x7c00)) >> 6;
 
         if (b <= 0x7c00)
         {
             if (b < 0)
                 b = 0;
 
-            accum += b & 0x7c00;
+            *r5 = accum + (b & 0x7c00);
         }
         else
         {
-            accum += 0x7c00;
+            *r5 = accum + 0x7c00;
         }
 
-        *r5 = accum;
         r5++;
     }
 
@@ -458,113 +453,6 @@ void sub_80A87A4(s32 param_1, s32 param_2)
 
     return;
 }
-
-#else
-
-NAKEDFUNC
-void sub_80A87A4(s32 param_1, s32 param_2)
-{
-    asm("\n\
-        .syntax unified\n\
-        push {r4, r5, r6, r7, lr}\n\
-        adds r2, r0, #0\n\
-        adds r4, r1, #0\n\
-        adds r0, #0xd\n\
-        lsls r0, r0, #5\n\
-        ldr r1, _080A87EC @ =gPal + 0x202\n\
-        adds r5, r0, r1\n\
-        cmp r4, #0x40\n\
-        ble _080A87B8\n\
-        movs r4, #0x40\n\
-    _080A87B8:\n\
-        ldr r0, _080A87F0 @ =gUnk_Savemenu_02000001\n\
-        ldrb r0, [r0]\n\
-        subs r0, #0xa\n\
-        lsls r0, r0, #1\n\
-        adds r4, r4, r0\n\
-        lsls r0, r2, #4\n\
-        ldr r1, _080A87F4 @ =0x0201E9F4\n\
-        subs r0, r0, r2\n\
-        movs r2, #0x1f\n\
-        mov ip, r2\n\
-        lsls r0, r0, #1\n\
-        adds r3, r0, r1\n\
-        movs r6, #0xe\n\
-    _080A87D2:\n\
-        mov r0, ip\n\
-        ldrh r7, [r3]\n\
-        ands r0, r7\n\
-        muls r0, r4, r0\n\
-        asrs r0, r0, #6\n\
-        cmp r0, #0x1f\n\
-        bgt _080A87F8\n\
-        cmp r0, #0\n\
-        bge _080A87E6\n\
-        movs r0, #0\n\
-    _080A87E6:\n\
-        mov r1, ip\n\
-        ands r1, r0\n\
-        b _080A87FA\n\
-        .align 2, 0\n\
-    _080A87EC: .4byte gPal + 0x202\n\
-    _080A87F0: .4byte gUnk_Savemenu_02000001\n\
-    _080A87F4: .4byte 0x0201E9F4\n\
-    _080A87F8:\n\
-        movs r1, #0x1f\n\
-    _080A87FA:\n\
-        movs r2, #0xf8\n\
-        lsls r2, r2, #2\n\
-        adds r0, r2, #0\n\
-        ldrh r7, [r3]\n\
-        ands r0, r7\n\
-        muls r0, r4, r0\n\
-        asrs r0, r0, #6\n\
-        cmp r0, r2\n\
-        bgt _080A8818\n\
-        cmp r0, #0\n\
-        bge _080A8812\n\
-        movs r0, #0\n\
-    _080A8812:\n\
-        ands r0, r2\n\
-        adds r1, r1, r0\n\
-        b _080A881A\n\
-    _080A8818:\n\
-        adds r1, r1, r2\n\
-    _080A881A:\n\
-        movs r2, #0xf8\n\
-        lsls r2, r2, #7\n\
-        adds r0, r2, #0\n\
-        ldrh r7, [r3]\n\
-        ands r0, r7\n\
-        muls r0, r4, r0\n\
-        asrs r0, r0, #6\n\
-        cmp r0, r2\n\
-        bgt _080A8838\n\
-        cmp r0, #0\n\
-        bge _080A8832\n\
-        movs r0, #0\n\
-    _080A8832:\n\
-        ands r0, r2\n\
-        adds r0, r1, r0\n\
-        b _080A883A\n\
-    _080A8838:\n\
-        adds r0, r1, r2\n\
-    _080A883A:\n\
-        strh r0, [r5]\n\
-        adds r5, #2\n\
-        adds r3, #2\n\
-        subs r6, #1\n\
-        cmp r6, #0\n\
-        bge _080A87D2\n\
-        bl EnablePalSync\n\
-        pop {r4, r5, r6, r7}\n\
-        pop {r0}\n\
-        bx r0\n\
-        .syntax divided\n\
-    ");
-}
-
-#endif
 
 void sub_80A8850(s32 palId, s32 b)
 {
