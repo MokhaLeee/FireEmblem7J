@@ -1,5 +1,6 @@
 #include "gbafe.h"
 
+bool IsBattleDeamonActive();
 bool IsTalkLocked();
 bool IsEventRunning();
 void ResumeTalk();
@@ -16,7 +17,295 @@ int sub_8007F58(int);
 
 void sub_8014FB0(void (*)(), int);
 
-extern struct ProcCmd gUnk_08BFFE18;
+extern struct ProcCmd gUnk_08BFFE18[];
+extern struct ProcCmd gUnk_08BFFD4C[];
+extern u16 gUnk_08BFFDB6[];
+extern u16 gUnk_08BFFD9C[];
+extern struct ProcCmd ProcScr_Talk[];
+
+enum
+{
+    TALK_FACE_0,
+    TALK_FACE_1,
+    TALK_FACE_2,
+    TALK_FACE_3,
+    TALK_FACE_4,
+    TALK_FACE_5,
+    TALK_FACE_6,
+    TALK_FACE_7,
+
+    TALK_FACE_COUNT,
+
+    TALK_FACE_NONE = 0xFF,
+};
+
+struct TalkSt
+{
+    /* 00 */ char const * str;
+    /* 04 */ char const * str_back;
+    /* 08 */ u8 print_color;
+    /* 09 */ u8 line_active;
+    /* 0A */ u8 lines;
+    /* 0B */ u8 top_text_num;
+    /* 0C */ u8 x_text;
+    /* 0D */ u8 y_text;
+    /* 0E */ u8 active_width;
+    /* 0F */ s8 speak_talk_face;
+    /* 10 */ u8 speak_width;
+    /* 11 */ u8 active_talk_face;
+    /* 12 */ bool8 instant_print;
+    /* 13 */ s8 print_delay;
+    /* 14 */ s8 print_clock;
+    /* 15 */ u8 put_lines;
+    /* 16 */ u8 unk_16;
+    /* 17 */ u8 unk_17;
+    /* 18 */ struct FaceProc * faces[TALK_FACE_COUNT];
+    /* 38 */ u16 flags;
+    /* 3A */ // pad
+    /* 3C */ int number;
+    /* 40 */ char buf_number_str[0x20];
+    /* 60 */ char buf_unk_str[0x20];
+};
+
+static struct TalkSt sTalkStObj;
+static struct TalkSt * CONST_DATA sTalkSt = &sTalkStObj;
+static int sTalkChoiceResult;
+extern int CONST_DATA gUnk_08BFFD7C[];
+
+int sub_8009D94(int talk_face);
+void sub_8009D0C(int talk_face, struct Proc* parent)
+{
+    struct Proc* proc = Proc_StartBlocking(gUnk_08BFFD4C, parent);
+
+    proc->unk64 = sub_8009D94(talk_face);
+    proc->unk66 = 8;
+    proc->unk68 = sTalkSt->active_width;
+    proc->unk6A = 6;
+
+    if (proc->unk64 < 0)
+        proc->unk64 = 0;
+
+    if (proc->unk64 > 29)
+        proc->unk64 = 30;
+
+    sTalkSt->speak_talk_face = talk_face;
+    sTalkSt->speak_width = sTalkSt->active_width;
+}
+
+bool sub_8009D70()
+{
+    if (sTalkSt->speak_talk_face == sTalkSt->active_talk_face && sTalkSt->speak_width == sTalkSt->active_width)
+    {
+        return TRUE;
+    }
+
+    return FALSE;
+}
+
+int sub_8009D94(int talk_face)
+{
+    if (IsBattleDeamonActive())
+    {
+        if (talk_face < 3)
+        {
+            return 4;
+        }
+        else
+        {
+            return 0x1a;
+        }
+    }
+    else
+    {
+        return gUnk_08BFFD7C[talk_face];
+    }
+}
+
+void SetTalkFaceDisp(int talk_face, int faceDisp)
+{
+    int lut[] = { 0, FACE_DISP_SMILE };
+    int disp;
+
+    if (talk_face == TALK_FACE_NONE)
+        return;
+
+    disp = GetFaceDisp(sTalkSt->faces[talk_face]);
+    disp &= ~(FACE_DISP_SMILE | FACE_DISP_TALK_1 | FACE_DISP_TALK_2);
+
+    SetFaceDisp(sTalkSt->faces[talk_face], disp | faceDisp | lut[sTalkSt->unk_17]);
+}
+
+void SetTalkFaceMouthMove(int face)
+{
+    SetTalkFaceDisp(face, 0x10);
+}
+
+void SetTalkFaceNoMouthMove(int face)
+{
+    SetTalkFaceDisp(face, 0);
+}
+
+bool IsTalkActive(void)
+{
+    return Proc_Exists(ProcScr_Talk);
+}
+
+bool FaceExists(void)
+{
+    return Proc_Exists(ProcScr_Face);
+}
+
+int GetTalkChoiceResult(void)
+{
+    return sTalkChoiceResult;
+}
+
+void SetTalkChoiceResult(int res)
+{
+    sTalkChoiceResult = res;
+}
+
+void SetTalkNumber(int number)
+{
+    sTalkSt->number = number;
+}
+
+void SetTalkUnkStr(char* buffer)
+{
+    strcpy(sTalkSt->buf_unk_str, buffer);
+}
+
+NAKEDFUNC
+void PrintStringToTexts(struct Text ** texts, char const * str, int x, int y)
+{
+    asm("   .syntax unified\n\
+    push {r4, r5, r6, r7, lr}\n\
+    mov r7, sl\n\
+    mov r6, sb\n\
+    mov r5, r8\n\
+    push {r5, r6, r7}\n\
+    sub sp, #4\n\
+    mov sl, r0\n\
+    adds r4, r1, #0\n\
+    str r2, [sp]\n\
+    mov sb, r3\n\
+    movs r6, #0\n\
+    mov r7, sl\n\
+    adds r5, r2, #0\n\
+    b _08009EC2\n\
+_08009EB8:\n\
+    ldr r0, [r7]\n\
+    adds r1, r4, #0\n\
+    bl Text_DrawCharacter\n\
+    adds r4, r0, #0\n\
+_08009EC2:\n\
+    movs r0, #0\n\
+    mov r8, r0\n\
+    ldrb r0, [r4]\n\
+    cmp r0, #0\n\
+    beq _08009EE8\n\
+    cmp r0, #1\n\
+    bne _08009EE2\n\
+    ldm r7!, {r0}\n\
+    adds r1, r5, #0\n\
+    bl PutText\n\
+    adds r5, #0x80\n\
+    adds r6, #1\n\
+    adds r4, #1\n\
+    cmp r6, sb\n\
+    bge _08009EF8\n\
+_08009EE2:\n\
+    mov r2, r8\n\
+    cmp r2, #0\n\
+    beq _08009EB8\n\
+_08009EE8:\n\
+    lsls r0, r6, #2\n\
+    add r0, sl\n\
+    ldr r0, [r0]\n\
+    lsls r1, r6, #7\n\
+    ldr r2, [sp]\n\
+    adds r1, r2, r1\n\
+    bl PutText\n\
+_08009EF8:\n\
+    add sp, #4\n\
+    pop {r3, r4, r5}\n\
+    mov r8, r3\n\
+    mov sb, r4\n\
+    mov sl, r5\n\
+    pop {r4, r5, r6, r7}\n\
+    pop {r0}\n\
+    bx r0\n\
+    .syntax divided\n\
+");
+}
+
+NAKEDFUNC
+void TalkPutSpriteText_OnIdle(struct Proc * proc)
+{
+    asm("   .syntax unified\n\
+    push {r4, r5, r6, r7, lr}\n\
+    mov r7, sl\n\
+    mov r6, sb\n\
+    mov r5, r8\n\
+    push {r5, r6, r7}\n\
+    sub sp, #4\n\
+    adds r7, r0, #0\n\
+    ldr r1, [r7, #0x2c]\n\
+    ldr r2, [r7, #0x30]\n\
+    ldr r0, _08009F7C @ =gUnk_08BFFDB6\n\
+    mov ip, r0\n\
+    movs r3, #0x52\n\
+    adds r3, r3, r7\n\
+    mov sb, r3\n\
+    ldr r4, _08009F80 @ =0x000003FF\n\
+    mov sl, r4\n\
+    ldrh r6, [r3]\n\
+    ands r4, r6\n\
+    movs r0, #0x64\n\
+    adds r0, r0, r7\n\
+    mov r8, r0\n\
+    movs r5, #0xf\n\
+    adds r0, r5, #0\n\
+    mov r3, r8\n\
+    ldrh r3, [r3]\n\
+    ands r0, r3\n\
+    lsls r0, r0, #0xc\n\
+    orrs r4, r0\n\
+    str r4, [sp]\n\
+    movs r0, #3\n\
+    mov r3, ip\n\
+    bl PutSprite\n\
+    ldr r1, [r7, #0x2c]\n\
+    ldr r2, [r7, #0x30]\n\
+    ldr r3, _08009F84 @ =gUnk_08BFFD9C\n\
+    mov r6, sl\n\
+    mov r4, sb\n\
+    ldrh r4, [r4]\n\
+    ands r6, r4\n\
+    ldr r0, _08009F88 @ =0x030000E8\n\
+    ldrh r0, [r0, #0x14]\n\
+    ands r5, r0\n\
+    lsls r5, r5, #0xc\n\
+    orrs r6, r5\n\
+    str r6, [sp]\n\
+    movs r0, #3\n\
+    bl PutSprite\n\
+    add sp, #4\n\
+    pop {r3, r4, r5}\n\
+    mov r8, r3\n\
+    mov sb, r4\n\
+    mov sl, r5\n\
+    pop {r4, r5, r6, r7}\n\
+    pop {r0}\n\
+    bx r0\n\
+    .align 2, 0\n\
+_08009F7C: .4byte gUnk_08BFFDB6\n\
+_08009F80: .4byte 0x000003FF\n\
+_08009F84: .4byte gUnk_08BFFD9C\n\
+_08009F88: .4byte 0x030000E8\n\
+    .syntax divided\n\
+");
+}
 
 void sub_8009F8C()
 {
@@ -380,12 +669,12 @@ _0800A368:\n\
 
 bool sub_800A378()
 {
-	return Proc_Exists(&gUnk_08BFFE18);
+	return Proc_Exists(gUnk_08BFFE18);
 }
 
 void sub_800A390()
 {
-	Proc_Start(&gUnk_08BFFE18, (void*)3);
+	Proc_Start(gUnk_08BFFE18, (void*)3);
 }
 
 void sub_800A3A4(struct Proc* proc)
