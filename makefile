@@ -86,7 +86,7 @@ TEXT_MAIN := $(TEXT_DIR)/texts.txt
 TEXT_DEFS := $(TEXT_DIR)/textdefs.txt
 TEXT_SRC  := $(TEXT_MAIN) $(shell find $(TEXT_DIR) -type f -name "*.txt")
 
-TEXT_HEADER := include/constants/msg.h
+# TEXT_HEADER := include/constants/msg.h
 MSG_LIST    := src/msg_data.c
 
 # this should just be used for testing
