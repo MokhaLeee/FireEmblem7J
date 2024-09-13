@@ -18,6 +18,7 @@ int sub_8007F58(int);
 void sub_8014FB0(void (*)(), int);
 
 extern struct ProcCmd gUnk_08BFFE18[];
+extern struct ProcCmd gUnk_08BFFD3C;
 extern struct ProcCmd gUnk_08BFFD4C[];
 extern u16 gUnk_08BFFDB6[];
 extern u16 gUnk_08BFFD9C[];
@@ -67,10 +68,508 @@ struct TalkSt
     /* 60 */ char buf_unk_str[0x20];
 };
 
-static struct TalkSt sTalkStObj;
-static struct TalkSt * CONST_DATA sTalkSt = &sTalkStObj;
-static int sTalkChoiceResult;
+extern struct TalkSt * CONST_DATA sTalkSt;
+extern int sTalkChoiceResult;
 extern int CONST_DATA gUnk_08BFFD7C[];
+extern u8* CONST_DATA gUnk_0818F93C[];
+
+void sub_800981C()
+{
+    struct Proc * proc = Proc_Start(&gUnk_08BFFD3C, (void*)3);
+    proc->unk64 = 0;
+}
+
+#if NONMATCHING
+
+void sub_8009834(struct Proc * proc)
+{
+    if ((proc->unk64++) & 1)
+        return;
+
+    Decompress(gUnk_0818F93C[proc->unk64 >> 1],
+        (u8 *) VRAM + GetBgChrOffset(1) + 0x10 * CHR_SIZE);
+
+    if (gUnk_0818F93C[(proc->unk64 >> 1) + 1] == NULL)
+        Proc_Break(proc);
+}
+
+#else
+
+NAKEDFUNC
+void sub_8009834(struct Proc * proc)
+{
+    asm("   .syntax unified\n\
+    push {r4, r5, r6, lr}\n\
+    sub sp, #0x1c\n\
+    adds r6, r0, #0\n\
+    mov r1, sp\n\
+    ldr r0, _08009898 @ =gUnk_0818F93C\n\
+    ldm r0!, {r2, r3, r4}\n\
+    stm r1!, {r2, r3, r4}\n\
+    ldm r0!, {r2, r3, r4}\n\
+    stm r1!, {r2, r3, r4}\n\
+    ldr r0, [r0]\n\
+    str r0, [r1]\n\
+    adds r5, r6, #0\n\
+    adds r5, #0x64\n\
+    ldrh r1, [r5]\n\
+    adds r2, r1, #1\n\
+    strh r2, [r5]\n\
+    movs r0, #1\n\
+    ands r0, r1\n\
+    cmp r0, #0\n\
+    bne _08009890\n\
+    lsls r0, r2, #0x10\n\
+    asrs r0, r0, #0x11\n\
+    lsls r0, r0, #2\n\
+    add r0, sp\n\
+    ldr r4, [r0]\n\
+    movs r0, #1\n\
+    bl GetBgChrOffset\n\
+    adds r1, r0, #0\n\
+    ldr r0, _0800989C @ =0x06000200\n\
+    adds r1, r1, r0\n\
+    adds r0, r4, #0\n\
+    bl Decompress\n\
+    ldrh r5, [r5]\n\
+    lsls r0, r5, #0x10\n\
+    asrs r0, r0, #0x11\n\
+    adds r0, #1\n\
+    lsls r0, r0, #2\n\
+    add r0, sp\n\
+    ldr r0, [r0]\n\
+    cmp r0, #0\n\
+    bne _08009890\n\
+    adds r0, r6, #0\n\
+    bl Proc_Break\n\
+_08009890:\n\
+    add sp, #0x1c\n\
+    pop {r4, r5, r6}\n\
+    pop {r0}\n\
+    bx r0\n\
+    .align 2, 0\n\
+_08009898: .4byte gUnk_0818F93C\n\
+_0800989C: .4byte 0x06000200\n\
+    .syntax divided\n\
+");
+}
+
+#endif
+
+void sub_80098A0(int x, int y, int width, int height)
+{
+    SetWinEnable(1, 0, 0);
+
+    SetWin0Box((x + 1) * 8, (y + 1) * 8, (x + width - 1) * 8, (y + height - 1) * 8);
+
+    SetWin0Layers(1, 1, 1, 1, 1);
+    SetWOutLayers(0, 1, 1, 1, 1);
+}
+
+NAKEDFUNC
+void sub_8009920()
+{
+    asm("   .syntax unified\n\
+    push {r4, r5, r6, lr}\n\
+    adds r5, r1, #0\n\
+    adds r4, r2, #0\n\
+    adds r6, r3, #0\n\
+    bl GetBgTilemap\n\
+    adds r3, r0, #0\n\
+    cmp r6, #5\n\
+    bls _08009934\n\
+    b _08009A96\n\
+_08009934:\n\
+    lsls r0, r6, #2\n\
+    ldr r1, _08009940 @ =_08009944\n\
+    adds r0, r0, r1\n\
+    ldr r0, [r0]\n\
+    mov pc, r0\n\
+    .align 2, 0\n\
+_08009940: .4byte _08009944\n\
+_08009944: @ jump table\n\
+    .4byte _0800995C @ case 0\n\
+    .4byte _08009990 @ case 1\n\
+    .4byte _080099C8 @ case 2\n\
+    .4byte _080099FC @ case 3\n\
+    .4byte _08009A34 @ case 4\n\
+    .4byte _08009A6C @ case 5\n\
+_0800995C:\n\
+    lsls r0, r4, #5\n\
+    adds r0, r5, r0\n\
+    lsls r0, r0, #1\n\
+    adds r0, r0, r3\n\
+    ldr r2, _08009984 @ =0x00003014\n\
+    adds r1, r2, #0\n\
+    strh r1, [r0]\n\
+    ldr r2, _08009988 @ =0x00003414\n\
+    adds r1, r2, #0\n\
+    strh r1, [r0, #2]\n\
+    adds r0, r4, #1\n\
+    lsls r0, r0, #5\n\
+    adds r0, r5, r0\n\
+    lsls r0, r0, #1\n\
+    adds r0, r0, r3\n\
+    ldr r3, _0800998C @ =0x00003416\n\
+    adds r1, r3, #0\n\
+    strh r1, [r0]\n\
+    adds r2, #1\n\
+    b _08009A92\n\
+    .align 2, 0\n\
+_08009984: .4byte 0x00003014\n\
+_08009988: .4byte 0x00003414\n\
+_0800998C: .4byte 0x00003416\n\
+_08009990:\n\
+    lsls r0, r4, #5\n\
+    adds r0, r5, r0\n\
+    lsls r0, r0, #1\n\
+    adds r0, r0, r3\n\
+    ldr r2, _080099B8 @ =0x00003014\n\
+    adds r1, r2, #0\n\
+    strh r1, [r0]\n\
+    ldr r2, _080099BC @ =0x00003414\n\
+    adds r1, r2, #0\n\
+    strh r1, [r0, #2]\n\
+    adds r0, r4, #1\n\
+    lsls r0, r0, #5\n\
+    adds r0, r5, r0\n\
+    lsls r0, r0, #1\n\
+    adds r0, r0, r3\n\
+    ldr r3, _080099C0 @ =0x00003015\n\
+    adds r1, r3, #0\n\
+    strh r1, [r0]\n\
+    ldr r2, _080099C4 @ =0x00003016\n\
+    b _08009A92\n\
+    .align 2, 0\n\
+_080099B8: .4byte 0x00003014\n\
+_080099BC: .4byte 0x00003414\n\
+_080099C0: .4byte 0x00003015\n\
+_080099C4: .4byte 0x00003016\n\
+_080099C8:\n\
+    lsls r2, r4, #5\n\
+    adds r2, r5, r2\n\
+    lsls r2, r2, #1\n\
+    adds r2, r2, r3\n\
+    ldr r1, _080099F0 @ =0x00003418\n\
+    adds r0, r1, #0\n\
+    strh r0, [r2]\n\
+    adds r0, r4, #1\n\
+    lsls r0, r0, #5\n\
+    adds r0, r5, r0\n\
+    lsls r0, r0, #1\n\
+    adds r0, r0, r3\n\
+    ldr r3, _080099F4 @ =0x00003419\n\
+    adds r1, r3, #0\n\
+    strh r1, [r0]\n\
+    subs r3, #2\n\
+    adds r1, r3, #0\n\
+    strh r1, [r2, #2]\n\
+    ldr r2, _080099F8 @ =0x00003C17\n\
+    b _08009A92\n\
+    .align 2, 0\n\
+_080099F0: .4byte 0x00003418\n\
+_080099F4: .4byte 0x00003419\n\
+_080099F8: .4byte 0x00003C17\n\
+_080099FC:\n\
+    lsls r2, r4, #5\n\
+    adds r2, r5, r2\n\
+    lsls r2, r2, #1\n\
+    adds r2, r2, r3\n\
+    ldr r1, _08009A24 @ =0x00003017\n\
+    adds r0, r1, #0\n\
+    strh r0, [r2]\n\
+    adds r0, r4, #1\n\
+    lsls r0, r0, #5\n\
+    adds r0, r5, r0\n\
+    lsls r0, r0, #1\n\
+    adds r0, r0, r3\n\
+    ldr r3, _08009A28 @ =0x00003817\n\
+    adds r1, r3, #0\n\
+    strh r1, [r0]\n\
+    ldr r3, _08009A2C @ =0x00003018\n\
+    adds r1, r3, #0\n\
+    strh r1, [r2, #2]\n\
+    ldr r2, _08009A30 @ =0x00003019\n\
+    b _08009A92\n\
+    .align 2, 0\n\
+_08009A24: .4byte 0x00003017\n\
+_08009A28: .4byte 0x00003817\n\
+_08009A2C: .4byte 0x00003018\n\
+_08009A30: .4byte 0x00003019\n\
+_08009A34:\n\
+    lsls r2, r4, #5\n\
+    adds r2, r5, r2\n\
+    lsls r2, r2, #1\n\
+    adds r2, r2, r3\n\
+    ldr r1, _08009A5C @ =0x00003C19\n\
+    adds r0, r1, #0\n\
+    strh r0, [r2]\n\
+    adds r0, r4, #1\n\
+    lsls r0, r0, #5\n\
+    adds r0, r5, r0\n\
+    lsls r0, r0, #1\n\
+    adds r0, r0, r3\n\
+    ldr r3, _08009A60 @ =0x00003C18\n\
+    adds r1, r3, #0\n\
+    strh r1, [r0]\n\
+    ldr r3, _08009A64 @ =0x00003417\n\
+    adds r1, r3, #0\n\
+    strh r1, [r2, #2]\n\
+    ldr r2, _08009A68 @ =0x00003C17\n\
+    b _08009A92\n\
+    .align 2, 0\n\
+_08009A5C: .4byte 0x00003C19\n\
+_08009A60: .4byte 0x00003C18\n\
+_08009A64: .4byte 0x00003417\n\
+_08009A68: .4byte 0x00003C17\n\
+_08009A6C:\n\
+    lsls r2, r4, #5\n\
+    adds r2, r5, r2\n\
+    lsls r2, r2, #1\n\
+    adds r2, r2, r3\n\
+    ldr r1, _08009A9C @ =0x00003017\n\
+    adds r0, r1, #0\n\
+    strh r0, [r2]\n\
+    adds r0, r4, #1\n\
+    lsls r0, r0, #5\n\
+    adds r0, r5, r0\n\
+    lsls r0, r0, #1\n\
+    adds r0, r0, r3\n\
+    ldr r3, _08009AA0 @ =0x00003817\n\
+    adds r1, r3, #0\n\
+    strh r1, [r0]\n\
+    adds r3, #2\n\
+    adds r1, r3, #0\n\
+    strh r1, [r2, #2]\n\
+    ldr r2, _08009AA4 @ =0x00003818\n\
+_08009A92:\n\
+    adds r1, r2, #0\n\
+    strh r1, [r0, #2]\n\
+_08009A96:\n\
+    pop {r4, r5, r6}\n\
+    pop {r0}\n\
+    bx r0\n\
+    .align 2, 0\n\
+_08009A9C: .4byte 0x00003017\n\
+_08009AA0: .4byte 0x00003817\n\
+_08009AA4: .4byte 0x00003818\n\
+    .syntax divided\n\
+");
+}
+
+NAKEDFUNC
+void sub_8009AA8(int bg, u16 * a1, u16 * a2, int len)
+{
+    asm("   .syntax unified\n\
+    push {r4, r5, r6, r7, lr}\n\
+    mov r7, sl\n\
+    mov r6, sb\n\
+    mov r5, r8\n\
+    push {r5, r6, r7}\n\
+    sub sp, #8\n\
+    mov r8, r1\n\
+    str r2, [sp]\n\
+    adds r5, r3, #0\n\
+    ldr r4, [sp, #0x28]\n\
+    bl GetBgTilemap\n\
+    adds r7, r0, #0\n\
+    subs r5, #1\n\
+    subs r4, #1\n\
+    mov r0, r8\n\
+    adds r3, r0, r5\n\
+    cmp r8, r3\n\
+    bge _08009B00\n\
+    ldr r1, _08009BC0 @ =0x00003011\n\
+    mov sb, r1\n\
+    ldr r2, [sp]\n\
+    adds r0, r2, r4\n\
+    mov r6, r8\n\
+    lsls r1, r6, #1\n\
+    lsls r0, r0, #6\n\
+    adds r0, r0, r7\n\
+    adds r2, r1, r0\n\
+    ldr r6, [sp]\n\
+    lsls r0, r6, #6\n\
+    adds r0, r0, r7\n\
+    adds r1, r1, r0\n\
+    ldr r6, _08009BC4 @ =0x00003811\n\
+    adds r0, r6, #0\n\
+    mov r6, r8\n\
+    subs r3, r3, r6\n\
+_08009AF0:\n\
+    mov r6, sb\n\
+    strh r6, [r1]\n\
+    strh r0, [r2]\n\
+    adds r2, #2\n\
+    adds r1, #2\n\
+    subs r3, #1\n\
+    cmp r3, #0\n\
+    bne _08009AF0\n\
+_08009B00:\n\
+    ldr r3, [sp]\n\
+    add r5, r8\n\
+    mov ip, r5\n\
+    lsls r0, r3, #5\n\
+    str r0, [sp, #4]\n\
+    adds r4, r4, r3\n\
+    mov sb, r4\n\
+    movs r1, #1\n\
+    add r1, r8\n\
+    mov sl, r1\n\
+    cmp r3, sb\n\
+    bge _08009B44\n\
+    ldr r2, _08009BC8 @ =0x00003012\n\
+    adds r6, r2, #0\n\
+    ldr r4, _08009BCC @ =0x00003412\n\
+    adds r5, r4, #0\n\
+    lsls r0, r3, #6\n\
+    mov r2, ip\n\
+    lsls r1, r2, #1\n\
+    adds r1, r1, r7\n\
+    adds r2, r0, r1\n\
+    mov r4, r8\n\
+    lsls r1, r4, #1\n\
+    adds r1, r1, r7\n\
+    adds r0, r0, r1\n\
+    mov r1, sb\n\
+    subs r3, r1, r3\n\
+_08009B36:\n\
+    strh r6, [r0]\n\
+    strh r5, [r2]\n\
+    adds r2, #0x40\n\
+    adds r0, #0x40\n\
+    subs r3, #1\n\
+    cmp r3, #0\n\
+    bne _08009B36\n\
+_08009B44:\n\
+    mov r3, sl\n\
+    cmp r3, ip\n\
+    bge _08009B76\n\
+    mov r5, sb\n\
+    mov sl, ip\n\
+_08009B4E:\n\
+    ldr r2, [sp]\n\
+    adds r2, #1\n\
+    adds r4, r3, #1\n\
+    cmp r2, r5\n\
+    bge _08009B70\n\
+    ldr r0, _08009BD0 @ =0x00003013\n\
+    adds r6, r0, #0\n\
+    lsls r1, r2, #6\n\
+    lsls r0, r3, #1\n\
+    adds r0, r0, r7\n\
+    adds r0, r1, r0\n\
+    subs r2, r5, r2\n\
+_08009B66:\n\
+    strh r6, [r0]\n\
+    adds r0, #0x40\n\
+    subs r2, #1\n\
+    cmp r2, #0\n\
+    bne _08009B66\n\
+_08009B70:\n\
+    adds r3, r4, #0\n\
+    cmp r3, sl\n\
+    blt _08009B4E\n\
+_08009B76:\n\
+    ldr r0, [sp, #4]\n\
+    add r0, r8\n\
+    lsls r0, r0, #1\n\
+    adds r0, r0, r7\n\
+    ldr r2, _08009BD4 @ =0x00003010\n\
+    adds r1, r2, #0\n\
+    strh r1, [r0]\n\
+    ldr r0, [sp, #4]\n\
+    add r0, ip\n\
+    lsls r0, r0, #1\n\
+    adds r0, r0, r7\n\
+    ldr r3, _08009BD8 @ =0x00003410\n\
+    adds r1, r3, #0\n\
+    strh r1, [r0]\n\
+    mov r4, sb\n\
+    lsls r1, r4, #5\n\
+    mov r6, r8\n\
+    adds r0, r6, r1\n\
+    lsls r0, r0, #1\n\
+    adds r0, r0, r7\n\
+    ldr r3, _08009BDC @ =0x00003810\n\
+    adds r2, r3, #0\n\
+    strh r2, [r0]\n\
+    add r1, ip\n\
+    lsls r1, r1, #1\n\
+    adds r1, r1, r7\n\
+    ldr r4, _08009BE0 @ =0x00003C10\n\
+    adds r0, r4, #0\n\
+    strh r0, [r1]\n\
+    add sp, #8\n\
+    pop {r3, r4, r5}\n\
+    mov r8, r3\n\
+    mov sb, r4\n\
+    mov sl, r5\n\
+    pop {r4, r5, r6, r7}\n\
+    pop {r0}\n\
+    bx r0\n\
+    .syntax divided\n\
+    .align 2, 0\n\
+_08009BC0: .4byte 0x00003011\n\
+_08009BC4: .4byte 0x00003811\n\
+_08009BC8: .4byte 0x00003012\n\
+_08009BCC: .4byte 0x00003412\n\
+_08009BD0: .4byte 0x00003013\n\
+_08009BD4: .4byte 0x00003010\n\
+_08009BD8: .4byte 0x00003410\n\
+_08009BDC: .4byte 0x00003810\n\
+_08009BE0: .4byte 0x00003C10\n\
+");
+}
+
+void nullsub_25()
+{
+}
+
+void sub_8009BE8(struct Proc* proc)
+{
+    proc->unk58 = 0;
+
+    if (!sub_8007F58(0x100))
+    {
+        SetBlendTargetA(0, 1, 0, 0, 0);
+        SetBlendTargetB(0, 0, 1, 1, 1);
+
+        SetBlendBackdropB(1);
+
+        gDispIo.win_ct.win0_enable_blend = 1;
+        gDispIo.win_ct.wout_enable_blend = 1;
+
+        SetBlendAlpha(0, 0x10);
+    }
+}
+
+void sub_80096E0(short, short, short, short);
+void sub_8009C58(struct Proc* proc)
+{
+    sub_80096E0(proc->unk64, proc->unk66, proc->unk68, proc->unk6A);
+    Proc_Break(proc);
+}
+
+void sub_8009C8C(struct Proc* proc)
+{
+    int var;
+
+    proc->unk58++;
+
+    var = Interpolate(4, -30, 0, proc->unk58, 12);
+    SetBgOffset(1, 0, var / 2);
+
+    if (!sub_8007F58(0x100))
+    {
+        SetBlendAlpha(var/2 + 0x10, 1 - var/2);
+    }
+
+    if (proc->unk58 == 12)
+    {
+        Proc_Break(proc);
+    }
+}
 
 int sub_8009D94(int talk_face);
 void sub_8009D0C(int talk_face, struct Proc* parent)
@@ -121,9 +620,11 @@ int sub_8009D94(int talk_face)
     }
 }
 
+#if NONMATCHING
+
 void SetTalkFaceDisp(int talk_face, int faceDisp)
 {
-    int lut[] = { 0, FACE_DISP_SMILE };
+    int gUnk_0818F958[] = { 0, FACE_DISP_SMILE };
     int disp;
 
     if (talk_face == TALK_FACE_NONE)
@@ -132,8 +633,60 @@ void SetTalkFaceDisp(int talk_face, int faceDisp)
     disp = GetFaceDisp(sTalkSt->faces[talk_face]);
     disp &= ~(FACE_DISP_SMILE | FACE_DISP_TALK_1 | FACE_DISP_TALK_2);
 
-    SetFaceDisp(sTalkSt->faces[talk_face], disp | faceDisp | lut[sTalkSt->unk_17]);
+    SetFaceDisp(sTalkSt->faces[talk_face], disp | faceDisp | gUnk_0818F958[sTalkSt->unk_17]);
 }
+
+#else
+
+NAKEDFUNC
+void SetTalkFaceDisp(int talk_face, int faceDisp)
+{
+    asm("   .syntax unified\n\
+    push {r4, r5, r6, lr}\n\
+    sub sp, #8\n\
+    adds r5, r0, #0\n\
+    adds r6, r1, #0\n\
+    ldr r0, _08009E10 @ =gUnk_0818F958\n\
+    ldr r1, [r0, #4]\n\
+    ldr r0, [r0]\n\
+    str r0, [sp]\n\
+    str r1, [sp, #4]\n\
+    cmp r5, #0xff\n\
+    beq _08009E06\n\
+    ldr r4, _08009E14 @ =sTalkSt\n\
+    ldr r0, [r4]\n\
+    lsls r5, r5, #2\n\
+    adds r0, #0x18\n\
+    adds r0, r0, r5\n\
+    ldr r0, [r0]\n\
+    bl GetFaceDisp\n\
+    movs r1, #0x39\n\
+    rsbs r1, r1, #0\n\
+    ands r1, r0\n\
+    ldr r2, [r4]\n\
+    adds r0, r2, #0\n\
+    adds r0, #0x18\n\
+    adds r0, r0, r5\n\
+    ldr r0, [r0]\n\
+    orrs r1, r6\n\
+    ldrb r2, [r2, #0x17]\n\
+    lsls r2, r2, #2\n\
+    add r2, sp\n\
+    ldr r2, [r2]\n\
+    orrs r1, r2\n\
+    bl SetFaceDisp\n\
+_08009E06:\n\
+    add sp, #8\n\
+    pop {r4, r5, r6}\n\
+    pop {r0}\n\
+    bx r0\n\
+    .syntax divided\n\
+    .align 2, 0\n\
+_08009E10: .4byte gUnk_0818F958\n\
+_08009E14: .4byte sTalkSt");
+}
+
+#endif
 
 void SetTalkFaceMouthMove(int face)
 {
@@ -298,12 +851,12 @@ void TalkPutSpriteText_OnIdle(struct Proc * proc)
     pop {r4, r5, r6, r7}\n\
     pop {r0}\n\
     bx r0\n\
+    .syntax divided\n\
     .align 2, 0\n\
 _08009F7C: .4byte gUnk_08BFFDB6\n\
 _08009F80: .4byte 0x000003FF\n\
 _08009F84: .4byte gUnk_08BFFD9C\n\
 _08009F88: .4byte 0x030000E8\n\
-    .syntax divided\n\
 ");
 }
 
