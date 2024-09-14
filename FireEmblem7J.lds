@@ -171,6 +171,7 @@ SECTIONS
 		. = ALIGN(4); src/hardware.o(.bss);
 		. = ALIGN(4); src/oam.o(.bss);
 		. = 0x000040; sTalkStObj = .;
+		. = 0x0000C8; sTalkText = .;
 		. = 0x0000E0; sTalkChoiceResult = .;
 		. = 0x000110;
 		. = ALIGN(4); src/sprite-anim.o(.bss);
