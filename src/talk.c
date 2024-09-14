@@ -47,13 +47,12 @@ struct TalkSt
     /* 16 */ u8 unk_16;
     /* 17 */ u8 unk_17;
     /* 18 */ struct FaceProc * faces[TALK_FACE_COUNT];
-    /* 38 */ u16 flags;
+    /* 38 */ u32 flags;
     /* 3A */ // pad
     /* 3C */ int number;
     /* 40 */ char buf_number_str[0x20];
     /* 60 */ char buf_unk_str[0x20];
-    /* 80 */ char unk_80;
-    /* 81 */ char unk_81;
+    /* 80 */ u16 unk_80;
     /* 82 */ char unk_82;
     /* 83 */ char unk_83;
 };
@@ -82,12 +81,11 @@ void ResumeTalk();
 void EndTalk();
 void sub_800515C(signed char, int);
 void sub_800A3A4(struct Proc*);
-void StartTalkMsg(int, int, int);
 void sub_8005234(int, int, int, int);
 void TalkBgSync(int bits);
 void SetTalkFlag(int);
 void sub_800EC84(int);
-void sub_8007F68(int);
+void sub_8007F68(s8);
 int sub_8007F58(int);
 void TalkToggleInvertedPalette(int);
 void sub_8014FB0(void (*)(), int);
@@ -112,11 +110,20 @@ void sub_800914C(struct Proc * parent, int x, int y);
 void sub_80095E4();
 void sub_8008CC4(ProcPtr proc);
 void sub_8007C48(struct FaceProc*, int);
-int sub_8007F44(int);
+void sub_8007F44(int);
 void sub_800925C(struct TalkChoiceEnt const * choices, struct Text * text, u16 * tm, int defaultChoice, int color, struct Proc * parent);
 void LockTalk(ProcPtr proc);
 int sub_80149EC(int number, char * buf);
 void sub_8008E58(int talkFaceFrom, int talkFaceTo);
+void sub_8009D0C(int talk_face, struct Proc* parent);
+void SetTalkFaceMouthMove(int face);
+bool sub_8008EB0();
+int TalkInterpret(ProcPtr proc);
+bool sub_800821C(ProcPtr proc);
+bool sub_8008308(ProcPtr proc);
+int GetTextPrintDelay();
+void sub_800EF98();
+ProcPtr StartTalkExt(int x, int y, char const * str, ProcPtr parent);
 
 #define TALK_TEXT_BY_LINE(line) (sTalkText + ((line) + sTalkSt->top_text_num) % sTalkSt->lines)
 
@@ -131,6 +138,7 @@ extern struct ProcCmd gUnk_08BFFBBC[];
 extern struct ProcCmd gUnk_08BFFBDC[];
 extern struct ProcCmd gUnk_08BFFBB4[];
 extern struct ProcCmd gUnk_08BFFCFC[];
+extern struct ProcCmd gUnk_08BFFCD4[];
 extern u16 gUnk_08BFFDB6[];
 extern u16 gUnk_08BFFD9C[];
 extern struct ProcCmd ProcScr_Talk[];
@@ -146,6 +154,560 @@ extern u16 gUnk_081902C8[];
 extern u16 gUnk_081902A8[];
 extern u16 gUnk_08402A4C[];
 extern struct Text sTalkText[3];
+
+ProcPtr StartTalkMsg(int x, int y, int msg)
+{
+    return StartTalkExt(x, y, DecodeMsg(msg), 0);
+}
+
+ProcPtr StartTalkMsgExt(int x, int y, int msg, ProcPtr proc)
+{
+    return StartTalkExt(x, y, DecodeMsg(msg), proc);
+}
+
+ProcPtr StartTalk(int x, int y, const char* msg)
+{
+    return StartTalkExt(x, y, msg, 0);
+}
+
+void EndTalk()
+{
+    Proc_EndEach(ProcScr_Talk);
+}
+
+void SetTalkLines(u8 lines)
+{
+    sTalkSt->lines = lines;
+}
+
+void ClearAllTalkFlags()
+{
+    sTalkSt->unk_80 = 0;
+}
+
+void SetTalkFlag(int talk_flags)
+{
+    sTalkSt->unk_80 |= talk_flags;
+}
+
+void sub_8007F38(u32 flags)
+{
+    sTalkSt->flags = flags;
+}
+
+void sub_8007F44(int unk)
+{
+    sTalkSt->unk_80 &= (~unk);
+}
+
+int sub_8007F58(int flag)
+{
+    return sTalkSt->unk_80 & flag;
+}
+
+void sub_8007F68(s8 delay)
+{
+    sTalkSt->print_delay = delay;
+    if (sTalkSt->print_delay < 0)
+    {
+        sTalkSt->print_delay = 0;
+    }
+}
+
+void sub_8007F84(u8 color)
+{
+    int i;
+
+    sTalkSt->print_color = color;
+
+    for (i = 0; i < sTalkSt->lines; i++)
+    {
+        Text_SetColor(&sTalkText[i], sTalkSt->print_color);
+    }
+}
+
+void sub_8007FC0(ProcPtr proc)
+{
+    if (!Proc_Find(gUnk_08BFFC7C) && !Proc_Find(gUnk_08BFFCD4))
+    {
+        if (!sub_8007F58(4) && (gpKeySt->pressed & 0xA))
+        {
+            sub_800EF98();
+            SetTalkFaceNoMouthMove(sTalkSt->active_talk_face);
+            Proc_End(proc);
+            EndTalk();
+            TmFill(gBg0Tm, 0);
+            TmFill(gBg1Tm, 0);
+            EnableBgSync(3);
+        }
+        else if (!Proc_Find(gUnk_08BFFBFC) && !sub_8007F58(8))
+        {
+            if (gpKeySt->pressed & 0xf3)
+            {
+                sTalkSt->instant_print = 1;
+            }
+        }
+    }
+}
+
+void sub_8008074()
+{
+    if (!sub_8007F58(0x20))
+    {
+        ApplySystemObjectsGraphics();
+        SetBgOffset(0, 0, 0);
+        SetBgOffset(1, 0, 0);
+    }
+
+    Proc_Start(gUnk_08BFFB6C, (ProcPtr)3);
+}
+
+#if 0
+
+void sub_80080A8(ProcPtr proc)
+{
+    int ti;
+    bool b = sub_8008EB0();
+
+    if (b)
+        return;
+
+    if (!sTalkSt->instant_print)
+    {
+        sTalkSt->print_clock++;
+
+        if (sTalkSt->print_clock >= sTalkSt->print_delay)
+        {
+            return;
+        }
+    }
+
+    sTalkSt->print_clock = b;
+
+    for (;;)
+    {
+        SetTalkFaceNoMouthMove(sTalkSt->active_talk_face);
+
+        switch (TalkInterpret(proc))
+        {
+        case 0:
+            Proc_Break(proc);
+            return;
+        case 1:
+            goto print_next_char;
+
+        case 2:
+            if (sTalkSt->instant_print || sTalkSt->print_delay <= 0)
+            {
+                break;
+                goto reset_print_clock;
+            }
+
+            return;
+
+        case 3:
+        reset_print_clock:
+            sTalkSt->print_clock = sTalkSt->print_delay;
+            sTalkSt->instant_print = FALSE;
+            return;
+
+        default:
+        print_next_char:
+            if (!sub_8007F58(TALK_FLAG_SPRITE))
+            {
+                if (sub_800821C(proc) == TRUE)
+                    return;
+            }
+            else
+            {
+                if (sub_8008308(proc) == TRUE)
+                    return;
+            }
+
+            sTalkSt->str = Text_DrawCharacter(TALK_TEXT_BY_LINE(sTalkSt->line_active), sTalkSt->str);
+
+            if (!sub_8007F58(TALK_FLAG_SILENT))
+            {
+                if (sub_8007F58(TALK_FLAG_7) >= 0)
+                {
+                    if (...)
+                    {
+                        m4aSongNumStart(0x39A);
+                    }
+                }
+                else
+                {
+                    if ((GetTextPrintDelay() == 1) && !(GetGameTime() & 1))
+                        break;
+
+                    m4aSongNumStart(0x6E);
+                }
+            }
+        }
+
+        if (!sTalkSt->instant_print && sTalkSt->print_delay > 0)
+            return;
+    }
+}
+
+#else
+
+NAKEDFUNC
+void sub_80080A8(ProcPtr proc)
+{
+    asm("   .syntax unified\n\
+    push {r4, r5, r6, r7, lr}\n\
+    mov r7, r8\n\
+    push {r7}\n\
+    adds r6, r0, #0\n\
+    bl sub_8008EB0\n\
+    lsls r0, r0, #0x18\n\
+    asrs r3, r0, #0x18\n\
+    cmp r3, #0\n\
+    beq _080080BE\n\
+    b _0800820E_THE_END\n\
+_080080BE:\n\
+    ldr r2, _08008108 @ =sTalkSt\n\
+    ldr r1, [r2]\n\
+    movs r0, #0x12\n\
+    ldrsb r0, [r1, r0]\n\
+    cmp r0, #0\n\
+    bne _080080E2\n\
+    ldrb r0, [r1, #0x14]\n\
+    adds r0, #1\n\
+    strb r0, [r1, #0x14]\n\
+    ldr r0, [r2]\n\
+    movs r1, #0x14\n\
+    ldrsb r1, [r0, r1]\n\
+    ldrb r0, [r0, #0x13]\n\
+    lsls r0, r0, #0x18\n\
+    asrs r0, r0, #0x18\n\
+    cmp r1, r0\n\
+    bge _080080E2\n\
+    b _0800820E_THE_END\n\
+_080080E2:\n\
+    ldr r0, [r2]\n\
+    strb r3, [r0, #0x14]\n\
+_080080E6:\n\
+    ldr r7, _08008108 @ =sTalkSt\n\
+    ldr r0, _0800810C @ =0x0202BC35\n\
+    mov r8, r0\n\
+_080080EC:\n\
+    ldr r0, [r7]\n\
+    ldrb r0, [r0, #0x11]\n\
+    bl SetTalkFaceNoMouthMove\n\
+    adds r0, r6, #0\n\
+    bl TalkInterpret\n\
+    cmp r0, #1\n\
+    beq _08008144\n\
+    cmp r0, #1\n\
+    bgt _08008110\n\
+    cmp r0, #0\n\
+    beq _0800811A\n\
+    b _08008144\n\
+    .align 2, 0\n\
+_08008108: .4byte sTalkSt\n\
+_0800810C: .4byte 0x0202BC35\n\
+_08008110:\n\
+    cmp r0, #2\n\
+    beq _08008122\n\
+    cmp r0, #3\n\
+    beq _08008136\n\
+    b _08008144\n\
+_0800811A:\n\
+    adds r0, r6, #0\n\
+    bl Proc_Break\n\
+    b _0800820E_THE_END\n\
+_08008122:\n\
+    ldr r1, [r7]\n\
+    movs r0, #0x12\n\
+    ldrsb r0, [r1, r0]\n\
+    cmp r0, #0\n\
+    bne _080080E6\n\
+    movs r0, #0x13\n\
+    ldrsb r0, [r1, r0]\n\
+    cmp r0, #0\n\
+    ble _080081F8\n\
+    b _0800820E_THE_END\n\
+_08008136:\n\
+    ldr r0, [r7]\n\
+    ldrb r1, [r0, #0x13]\n\
+    movs r2, #0\n\
+    strb r1, [r0, #0x14]\n\
+    ldr r0, [r7]\n\
+    strb r2, [r0, #0x12]\n\
+    b _0800820E_THE_END\n\
+_08008144:\n\
+    movs r0, #0x20\n\
+    bl sub_8007F58\n\
+    cmp r0, #0\n\
+    bne _08008156\n\
+    adds r0, r6, #0\n\
+    bl sub_800821C\n\
+    b _0800815C\n\
+_08008156:\n\
+    adds r0, r6, #0\n\
+    bl sub_8008308\n\
+_0800815C:\n\
+    lsls r0, r0, #0x18\n\
+    asrs r0, r0, #0x18\n\
+    cmp r0, #1\n\
+    beq _0800820E_THE_END\n\
+    ldr r5, _080081AC @ =sTalkSt\n\
+    ldr r4, [r5]\n\
+    ldrb r1, [r4, #0xb]\n\
+    ldrb r2, [r4, #9]\n\
+    adds r0, r1, r2\n\
+    ldrb r1, [r4, #0xa]\n\
+    bl __modsi3\n\
+    lsls r0, r0, #3\n\
+    ldr r1, _080081B0 @ =0x030000C8\n\
+    adds r0, r0, r1\n\
+    ldr r1, [r4]\n\
+    bl Text_DrawCharacter\n\
+    ldr r1, [r5]\n\
+    str r0, [r1]\n\
+    movs r0, #0x40\n\
+    bl sub_8007F58\n\
+    cmp r0, #0\n\
+    bne _080081F8\n\
+    movs r0, #0x80\n\
+    bl sub_8007F58\n\
+    cmp r0, #0\n\
+    beq _080081B8\n\
+    mov r1, r8\n\
+    ldrb r1, [r1]\n\
+    lsls r0, r1, #0x1e\n\
+    cmp r0, #0\n\
+    blt _080081F8\n\
+    ldr r0, _080081B4 @ =0x0000039A\n\
+    bl m4aSongNumStart\n\
+    b _080081F8\n\
+    .align 2, 0\n\
+_080081AC: .4byte sTalkSt\n\
+_080081B0: .4byte 0x030000C8\n\
+_080081B4: .4byte 0x0000039A\n\
+_080081B8:\n\
+    bl GetTextPrintDelay\n\
+    adds r4, r0, #0\n\
+    cmp r4, #1\n\
+    bne _080081CC\n\
+    bl GetGameTime\n\
+    ands r0, r4\n\
+    cmp r0, #0\n\
+    beq _080081F8\n\
+_080081CC:\n\
+    ldr r1, [r5]\n\
+    movs r0, #0x12\n\
+    ldrsb r0, [r1, r0]\n\
+    cmp r0, #0\n\
+    beq _080081E0\n\
+    adds r0, r1, #0\n\
+    adds r0, #0x82\n\
+    ldrb r0, [r0]\n\
+    cmp r0, #0\n\
+    bne _080081F8\n\
+_080081E0:\n\
+    adds r0, r1, #0\n\
+    adds r0, #0x82\n\
+    movs r1, #1\n\
+    strb r1, [r0]\n\
+    mov r2, r8\n\
+    ldrb r2, [r2]\n\
+    lsls r0, r2, #0x1e\n\
+    cmp r0, #0\n\
+    blt _080081F8\n\
+    ldr r0, _08008218 @ =0x0000038E\n\
+    bl m4aSongNumStart\n\
+_080081F8:\n\
+    ldr r1, [r7]\n\
+    movs r0, #0x12\n\
+    ldrsb r0, [r1, r0]\n\
+    cmp r0, #0\n\
+    beq _08008204\n\
+    b _080080EC\n\
+_08008204:\n\
+    movs r0, #0x13\n\
+    ldrsb r0, [r1, r0]\n\
+    cmp r0, #0\n\
+    bgt _0800820E_THE_END\n\
+    b _080080EC\n\
+_0800820E_THE_END:\n\
+    pop {r3}\n\
+    mov r8, r3\n\
+    pop {r4, r5, r6, r7}\n\
+    pop {r0}\n\
+    bx r0\n\
+    .align 2, 0\n\
+_08008218: .4byte 0x0000038E\n\
+    .syntax divided\n\
+");
+}
+
+#endif
+
+#if NONMATCHING
+
+// missing useless ldr r4, _08008284 @ =sTalkSt
+
+bool sub_800821C(ProcPtr proc)
+{
+    if (!sub_8009D70() && sTalkSt->active_talk_face != 0xFF && !sub_8007F58(2))
+    {
+        const char* str = sTalkSt->str_back;
+        if (str == NULL)
+        {
+            str = sTalkSt->str;
+        }
+
+        sTalkSt->active_width = Div(sub_8009FAC(str, 0) + 7, 8) + 2;
+        sub_80095E4();
+        sub_8009D0C(sTalkSt->active_talk_face, proc);
+        sub_8008DFC(sTalkSt->active_talk_face, sub_8007F58(16));
+        return TRUE;
+    }
+    
+    if (sTalkSt->line_active >= sTalkSt->lines)
+    {
+        sTalkSt->instant_print = 0;
+        Proc_StartBlocking(gUnk_08BFFCD4, proc);
+        return TRUE;
+    }
+
+    if (sTalkSt->put_lines == 0)
+    {
+        u32 r0 = (sTalkSt->line_active + sTalkSt->top_text_num) % sTalkSt->lines;
+        PutText(&sTalkText[r0], &gBg0Tm[((sTalkSt->y_text + (sTalkSt->line_active << 1)) << 5) + sTalkSt->x_text]);
+        TalkBgSync(1);
+        sTalkSt->put_lines = 1;
+    }
+
+    if (sTalkSt->unk_16)
+    {
+        SetTalkFaceMouthMove(sTalkSt->active_talk_face);
+    }
+
+    return FALSE;
+}
+
+#else
+
+NAKEDFUNC
+bool sub_800821C(ProcPtr proc)
+{
+    asm("   .syntax unified\n\
+    push {r4, r5, r6, r7, lr}\n\
+    adds r7, r0, #0\n\
+    bl sub_8009D70\n\
+    lsls r0, r0, #0x18\n\
+    cmp r0, #0\n\
+    bne _08008288\n\
+    ldr r4, _08008284 @ =sTalkSt\n\
+    ldr r0, [r4]\n\
+    ldrb r0, [r0, #0x11]\n\
+    cmp r0, #0xff\n\
+    beq _08008288\n\
+    movs r0, #2\n\
+    bl sub_8007F58\n\
+    cmp r0, #0\n\
+    bne _08008288\n\
+    ldr r1, [r4]\n\
+    ldr r0, [r1, #4]\n\
+    cmp r0, #0\n\
+    bne _08008248\n\
+    ldr r0, [r1]\n\
+_08008248:\n\
+    movs r1, #0\n\
+    bl sub_8009FAC\n\
+    adds r0, #7\n\
+    movs r1, #8\n\
+    bl Div\n\
+    ldr r1, [r4]\n\
+    adds r0, #2\n\
+    strb r0, [r1, #0xe]\n\
+    bl sub_80095E4\n\
+    ldr r4, _08008284 @ =sTalkSt\n\
+    ldr r0, [r4]\n\
+    ldrb r0, [r0, #0x11]\n\
+    adds r1, r7, #0\n\
+    bl sub_8009D0C\n\
+    ldr r0, [r4]\n\
+    ldrb r4, [r0, #0x11]\n\
+    movs r0, #0x10\n\
+    bl sub_8007F58\n\
+    adds r1, r0, #0\n\
+    adds r0, r4, #0\n\
+    bl sub_8008DFC\n\
+    movs r0, #1\n\
+    b _080082F8\n\
+    .align 2, 0\n\
+_08008284: .4byte sTalkSt\n\
+_08008288: // if sub_8009D70()\n\
+    ldr r6, _080082A4 @ =sTalkSt\n\
+    ldr r5, [r6]\n\
+    ldrb r0, [r5, #9]\n\
+    ldrb r1, [r5, #0xa]\n\
+    cmp r0, r1\n\
+    blo _080082AC\n\
+    movs r0, #0\n\
+    strb r0, [r5, #0x12]\n\
+    ldr r0, _080082A8 @ =gUnk_08BFFCD4\n\
+    adds r1, r7, #0\n\
+    bl Proc_StartBlocking\n\
+    movs r0, #1\n\
+    b _080082F8\n\
+    .align 2, 0\n\
+_080082A4: .4byte sTalkSt\n\
+_080082A8: .4byte gUnk_08BFFCD4\n\
+_080082AC:\n\
+    ldrb r0, [r5, #0x15]\n\
+    cmp r0, #0\n\
+    bne _080082E8\n\
+    ldrb r4, [r5, #9]\n\
+    ldrb r1, [r5, #0xb]\n\
+    adds r0, r1, r4\n\
+    ldrb r1, [r5, #0xa]\n\
+    bl __modsi3\n\
+    lsls r0, r0, #3\n\
+    ldr r1, _08008300 @ =0x030000C8\n\
+    adds r0, r0, r1\n\
+    lsls r4, r4, #1\n\
+    ldrb r1, [r5, #0xd]\n\
+    adds r4, r1, r4\n\
+    lsls r4, r4, #5\n\
+    ldrb r5, [r5, #0xc]\n\
+    adds r4, r5, r4\n\
+    lsls r4, r4, #1\n\
+    ldr r1, _08008304 @ =gBg0Tm\n\
+    adds r4, r4, r1\n\
+    adds r1, r4, #0\n\
+    bl PutText\n\
+    movs r0, #1\n\
+    bl TalkBgSync\n\
+    ldr r1, [r6]\n\
+    movs r0, #1\n\
+    strb r0, [r1, #0x15]\n\
+_080082E8:\n\
+    ldr r1, [r6]\n\
+    ldrb r0, [r1, #0x16]\n\
+    cmp r0, #0\n\
+    beq _080082F6\n\
+    ldrb r0, [r1, #0x11]\n\
+    bl SetTalkFaceMouthMove\n\
+_080082F6:\n\
+    movs r0, #0\n\
+_080082F8:\n\
+    pop {r4, r5, r6, r7}\n\
+    pop {r1}\n\
+    bx r1\n\
+    .syntax divided\n\
+    .align 2, 0\n\
+_08008300: .4byte 0x030000C8\n\
+_08008304: .4byte gBg0Tm\n\
+");
+}
+
+#endif
 
 bool sub_8008308(ProcPtr proc)
 {
