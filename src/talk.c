@@ -53,8 +53,8 @@ struct TalkSt
     /* 40 */ char buf_number_str[0x20];
     /* 60 */ char buf_unk_str[0x20];
     /* 80 */ u16 unk_80;
-    /* 82 */ char unk_82;
-    /* 83 */ char unk_83;
+    /* 82 */ u8 unk_82;
+    /* 83 */ u8 unk_83;
 };
 
 struct TalkChoiceEnt
@@ -149,7 +149,6 @@ extern struct ProcCmd ProcScr_Talk[];
 extern struct TalkSt * CONST_DATA sTalkSt;
 extern int sTalkChoiceResult;
 extern int CONST_DATA gUnk_08BFFD7C[];
-extern u8* CONST_DATA gUnk_0818F93C[];
 extern int CONST_DATA gUnk_08BFFD2C[];
 extern u16 const * CONST_DATA gUnk_08BFFC3C[];
 extern struct TalkChoiceEnt CONST_DATA gUnk_08BFFCAC[];
@@ -496,7 +495,7 @@ void sub_80080A8(ProcPtr proc)
             {
                 if (sub_8007F58(TALK_FLAG_7) >= 0)
                 {
-                    if (...)
+                    if (/*0x0202BC35*/)
                     {
                         m4aSongNumStart(0x39A);
                     }
@@ -506,7 +505,7 @@ void sub_80080A8(ProcPtr proc)
                     if ((GetTextPrintDelay() == 1) && !(GetGameTime() & 1))
                         break;
 
-                    m4aSongNumStart(0x6E);
+                    m4aSongNumStart(0x38E);
                 }
             }
         }
@@ -950,286 +949,6 @@ void TalkToggleInvertedPalette(int id)
         ApplyPaletteExt(Pal_Text, 0x40, 0x20);
     }
 }
-
-#if 0
-
-int TalkInterpret(ProcPtr proc)
-{
-    struct Proc * gproc;
-    int i;
-
-    for (;TRUE;)
-    {
-        switch (*sTalkSt->str)
-        {
-
-        case 0x12:
-        case 0x13:
-        case 0x14:
-            sTalkSt->str++;
-
-            sTalkSt->active_width = 2 + Div(7 + sub_8009FAC(sTalkSt->str, sub_8009D70()), 8);
-
-            continue;
-
-        }
-
-        break;
-    }
-
-    switch (*sTalkSt->str)
-    {
-
-    case 0x81:
-        if (sTalkSt->str[1] == 0x40)
-        {
-            sTalkSt->str += 2;
-
-            Text_Skip(TALK_TEXT_BY_LINE(sTalkSt->line_active), 6);
-
-            if (!sTalkSt->instant_print || sTalkSt->print_delay <= 0)
-            {
-                return 2;
-            }
-
-            gproc = Proc_StartBlocking(gUnk_08BFFBDC, proc);
-            gproc->unk64 = sub_80095D4(4);
-
-            return 3;
-        }
-
-        return 1;
-
-    case 0x00: // end
-        if (sTalkSt->str_back == NULL)
-            return 0;
-
-        sTalkSt->str = sTalkSt->str_back;
-        sTalkSt->str_back = NULL;
-
-        return TalkInterpret(proc);
-
-    case 0x01: // newline
-        if (sTalkSt->put_lines == TRUE || sTalkSt->line_active == 1)
-        {
-            sTalkSt->line_active++;
-        }
-
-        sTalkSt->put_lines = FALSE;
-
-        sTalkSt->str++;
-        return 2;
-
-    case 0x02:
-        if (!sub_8007F58(TALK_FLAG_INSTANTSHIFT))
-            Proc_StartBlocking(gUnk_08BFFC7C, proc);
-        else
-            sub_800968C();
-
-        sTalkSt->str++;
-        return 3;
-
-    case 0x03: // wait for input to continue
-        sub_800914C(proc,
-            sTalkSt->x_text*8 + Text_GetCursor(TALK_TEXT_BY_LINE(sTalkSt->line_active)) + 4,
-            sTalkSt->y_text*8 + sTalkSt->line_active*16 + 8);
-
-        sTalkSt->str++;
-        return 3;
-
-    case 0x04 ... 0x07:
-        if (sTalkSt->instant_print)
-        {
-            sTalkSt->str++;
-            return 2;
-        }
-
-        gproc = Proc_StartBlocking(gUnk_08BFFBDC, proc);
-        gproc->unk64 = sub_80095D4 (* sTalkSt->str);
-
-        sTalkSt->str++;
-        return 3;
-
-    case 0x15:
-        sub_80095E4();
-
-        sTalkSt->str++;
-        return 3;
-
-    case 0x16:
-        sTalkSt->unk_16 = 1 - sTalkSt->unk_16;
-
-        sTalkSt->str++;
-        return 3;
-
-    case 0x17:
-        sTalkSt->unk_17 = 1 - sTalkSt->unk_17;
-
-        sTalkSt->str++;
-        return 3;
-
-    case 0x10:
-        for (;TRUE;)
-        {
-            switch (*sTalkSt->str)
-            {
-
-            case 0x08 ... 0x0F:
-                sub_8008CB8 (* sTalkSt->str - 0x08);
-
-                sTalkSt->str++;
-                continue;
-
-            case 0x10:
-                sTalkSt->str++;
-
-                sub_8008CC4(proc);
-
-                sTalkSt->str++;
-                sTalkSt->str++;
-
-                continue;
-
-            }
-
-            break;
-        }
-
-        return 3;
-
-    case 0x11:
-        if (sub_8009D70())
-            sub_80095E4();
-
-        StartFaceFadeOut(sTalkSt->faces[sTalkSt->active_talk_face]);
-        sTalkSt->faces[sTalkSt->active_talk_face] = NULL;
-
-        sTalkSt->str++;
-
-        sub_80149B4(proc, 16);
-
-        return 3;
-
-    case 0x1C:
-        if (sub_8007F58(TALK_FLAG_OPAQUE))
-            sub_8007F44(TALK_FLAG_OPAQUE);
-        else
-            SetTalkFlag(TALK_FLAG_OPAQUE);
-
-        sTalkSt->str++;
-        return 3;
-
-    case 0x08 ... 0x0F:
-        SetTalkFaceNoMouthMove(sTalkSt->active_talk_face);
-        sub_8008CB8 (* sTalkSt->str - 8);
-
-        sTalkSt->str++;
-        return 3;
-
-    case 0x18: // Yes/No choice (default: Yes)
-        sub_800925C(gUnk_08BFFCAC,
-            TALK_TEXT_BY_LINE(sTalkSt->line_active),
-            gBg0Tm + TM_OFFSET(sTalkSt->x_text, sTalkSt->y_text + 2*sTalkSt->line_active),
-            1, sTalkSt->print_color, proc);
-
-        sTalkSt->str++;
-        return 3;
-
-    case 0x19: // Yes/No choice (default: No)
-        sub_800925C(gUnk_08BFFCAC,
-            TALK_TEXT_BY_LINE(sTalkSt->line_active),
-            gBg0Tm + TM_OFFSET(sTalkSt->x_text, sTalkSt->y_text + 2*sTalkSt->line_active),
-            2, sTalkSt->print_color, proc);
-
-        sTalkSt->str++;
-        return 3;
-
-    case 0x1A:
-        sub_800925C(gUnk_08BFFCAC,
-            TALK_TEXT_BY_LINE(sTalkSt->line_active),
-            gBg0Tm + TM_OFFSET(sTalkSt->x_text, sTalkSt->y_text + 2*sTalkSt->line_active),
-            1, sTalkSt->print_color, proc);
-
-        sTalkSt->str++;
-        return 3;
-
-    case 0x1B:
-        sub_800925C(gUnk_08BFFCAC,
-            TALK_TEXT_BY_LINE(sTalkSt->line_active),
-            gBg0Tm + TM_OFFSET(sTalkSt->x_text, sTalkSt->y_text + 2*sTalkSt->line_active),
-            2, sTalkSt->print_color, proc);
-
-        sTalkSt->str++;
-        return 3;
-
-    case 0x80:
-        switch (*++sTalkSt->str)
-        {
-
-        case 0 ... 3:
-            sTalkSt->print_color = *++sTalkSt->str;
-
-            for (i = 0; i < sTalkSt->lines; ++i)
-                Text_SetColor(sTalkText + i, sTalkSt->print_color);
-
-            sTalkSt->str++;
-            return 3;
-
-        case 4:
-            LockTalk(proc);
-
-            sTalkSt->str++;
-            return 3;
-
-        case 5:
-            sub_80149EC(sTalkSt->number, sTalkSt->buf_number_str);
-
-            sTalkSt->str++;
-
-            sTalkSt->str_back = sTalkSt->str;
-            sTalkSt->str = sTalkSt->buf_number_str;
-
-            return TalkInterpret(proc);
-
-        case 6:
-            sTalkSt->str++;
-
-            sTalkSt->str_back = sTalkSt->str;
-            sTalkSt->str = sTalkSt->buf_unk_str;
-
-            return TalkInterpret(proc);
-
-        case 8:
-            sTalkSt->str++;
-            return 3;
-
-        case 7:
-            sTalkSt->str++;
-            return 3;
-
-        case 10 ... 17:
-            sub_8008E58(sTalkSt->active_talk_face, *sTalkSt->str - 10);
-            sub_8008CB8 (* sTalkSt->str - 10);
-
-            sTalkSt->str++;
-
-            return 3;
-
-        default:
-            return 0;
-
-        }
-
-    default:
-        return 1;
-
-    }
-
-    return 3;
-}
-
-#else
-
 
 NAKEDFUNC
 int TalkInterpret(ProcPtr proc)
@@ -2153,8 +1872,6 @@ _08008CAA:\n\
 ");
 }
 
-#endif
-
 void sub_8008CB8(int face)
 {
     sTalkSt->active_talk_face = face;
@@ -2625,123 +2342,37 @@ void sub_8009418(struct Proc * proc)
     proc->unk64 = 0;
 }
 
-NAKEDFUNC
-void sub_8009458()
+void sub_8009458(struct Proc * proc)
 {
-    asm("   .syntax unified\n\
-    push {r4, r5, r6, r7, lr}\n\
-    adds r7, r0, #0\n\
-    adds r4, r7, #0\n\
-    adds r4, #0x64\n\
-    ldrh r0, [r4]\n\
-    adds r0, #1\n\
-    strh r0, [r4]\n\
-    ldrh r2, [r4]\n\
-    movs r0, #0\n\
-    movs r1, #0\n\
-    bl SetBgOffset\n\
-    movs r1, #0\n\
-    ldrsh r0, [r4, r1]\n\
-    cmp r0, #0xf\n\
-    ble _08009538\n\
-    ldr r4, _08009540 @ =sTalkSt\n\
-    ldr r1, [r4]\n\
-    ldrb r0, [r1, #9]\n\
-    subs r0, #1\n\
-    strb r0, [r1, #9]\n\
-    ldr r1, [r4]\n\
-    ldrb r0, [r1, #0xb]\n\
-    adds r0, #1\n\
-    strb r0, [r1, #0xb]\n\
-    movs r0, #0\n\
-    movs r1, #0\n\
-    movs r2, #0\n\
-    bl SetBgOffset\n\
-    movs r5, #0\n\
-    ldr r0, [r4]\n\
-    ldrb r0, [r0, #0xa]\n\
-    subs r0, #1\n\
-    cmp r5, r0\n\
-    bge _080094D6\n\
-    adds r6, r4, #0\n\
-_080094A2:\n\
-    ldr r4, [r6]\n\
-    ldrb r2, [r4, #0xb]\n\
-    adds r0, r2, r5\n\
-    ldrb r1, [r4, #0xa]\n\
-    bl __modsi3\n\
-    lsls r0, r0, #3\n\
-    ldr r1, _08009544 @ =0x030000C8\n\
-    adds r0, r0, r1\n\
-    lsls r1, r5, #1\n\
-    ldrb r2, [r4, #0xd]\n\
-    adds r1, r2, r1\n\
-    lsls r1, r1, #5\n\
-    ldrb r4, [r4, #0xc]\n\
-    adds r1, r4, r1\n\
-    lsls r1, r1, #1\n\
-    ldr r2, _08009548 @ =gBg0Tm\n\
-    adds r1, r1, r2\n\
-    bl PutText\n\
-    adds r5, #1\n\
-    ldr r0, [r6]\n\
-    ldrb r0, [r0, #0xa]\n\
-    subs r0, #1\n\
-    cmp r5, r0\n\
-    blt _080094A2\n\
-_080094D6:\n\
-    ldr r4, _08009540 @ =sTalkSt\n\
-    ldr r2, [r4]\n\
-    ldrb r0, [r2, #0xa]\n\
-    subs r0, #1\n\
-    lsls r0, r0, #1\n\
-    ldrb r1, [r2, #0xd]\n\
-    adds r0, r1, r0\n\
-    lsls r0, r0, #5\n\
-    ldrb r1, [r2, #0xc]\n\
-    adds r0, r1, r0\n\
-    lsls r0, r0, #1\n\
-    ldr r1, _08009548 @ =gBg0Tm\n\
-    adds r0, r0, r1\n\
-    ldrb r1, [r2, #0xe]\n\
-    subs r1, #2\n\
-    movs r2, #2\n\
-    movs r3, #0\n\
-    bl TmFillRect_thm\n\
-    ldr r0, [r4]\n\
-    ldrb r1, [r0, #0xa]\n\
-    ldrb r0, [r0, #0xb]\n\
-    subs r0, #1\n\
-    adds r0, r1, r0\n\
-    bl __modsi3\n\
-    lsls r0, r0, #3\n\
-    ldr r5, _08009544 @ =0x030000C8\n\
-    adds r0, r0, r5\n\
-    bl ClearText\n\
-    ldr r4, [r4]\n\
-    ldrb r1, [r4, #0xa]\n\
-    ldrb r0, [r4, #0xb]\n\
-    subs r0, #1\n\
-    adds r0, r1, r0\n\
-    bl __modsi3\n\
-    lsls r0, r0, #3\n\
-    adds r0, r0, r5\n\
-    ldrb r1, [r4, #8]\n\
-    bl Text_SetColor\n\
-    movs r0, #1\n\
-    bl TalkBgSync\n\
-    adds r0, r7, #0\n\
-    bl Proc_Break\n\
-_08009538:\n\
-    pop {r4, r5, r6, r7}\n\
-    pop {r0}\n\
-    bx r0\n\
-    .syntax divided\n\
-    .align 2, 0\n\
-_08009540: .4byte sTalkSt\n\
-_08009544: .4byte 0x030000C8\n\
-_08009548: .4byte gBg0Tm\n\
-");
+    proc->unk64++;
+
+    SetBgOffset(0, 0, proc->unk64);
+
+    if (proc->unk64 >= 16)
+    {
+        int i;
+
+        sTalkSt->line_active--;
+        sTalkSt->top_text_num++;
+
+        SetBgOffset(0, 0, 0);
+
+        for (i = 0; i < sTalkSt->lines - 1; ++i)
+        {
+            PutText(TALK_TEXT_BY_LINE(i),
+                gBg0Tm + TM_OFFSET(sTalkSt->x_text, sTalkSt->y_text + 2*i));
+        }
+
+        TmFillRect(gBg0Tm + TM_OFFSET(sTalkSt->x_text, sTalkSt->y_text + (sTalkSt->lines - 1)*2),
+            sTalkSt->active_width - 2, 2, 0);
+
+        ClearText(TALK_TEXT_BY_LINE(sTalkSt->lines - 1));
+        Text_SetColor(TALK_TEXT_BY_LINE(sTalkSt->lines - 1), sTalkSt->print_color);
+
+        TalkBgSync(BG0_SYNC_BIT);
+
+        Proc_Break(proc);
+    }
 }
 
 void sub_800954C(struct Proc * proc)
@@ -2749,68 +2380,29 @@ void sub_800954C(struct Proc * proc)
     CleanTalkObjects(0x200, 0x19, 0x44444444, proc);
 }
 
-NAKEDFUNC
-void sub_8009564()
+void sub_8009564(ProcPtr proc)
 {
-    asm("   .syntax unified\n\
-    push {r4, lr}\n\
-    ldr r0, _08009590 @ =sTalkSt\n\
-    ldr r1, [r0]\n\
-    ldrb r0, [r1, #9]\n\
-    subs r0, #1\n\
-    strb r0, [r1, #9]\n\
-    ldr r4, _08009594 @ =0x030000D0\n\
-    adds r0, r4, #0\n\
-    bl SpriteText_DrawBackground\n\
-    adds r0, r4, #0\n\
-    movs r1, #6\n\
-    bl Text_SetColor\n\
-    adds r0, r4, #0\n\
-    movs r1, #4\n\
-    bl Text_SetCursor\n\
-    pop {r4}\n\
-    pop {r0}\n\
-    bx r0\n\
-    .syntax divided\n\
-    .align 2, 0\n\
-_08009590: .4byte sTalkSt\n\
-_08009594: .4byte 0x030000D0\n\
-");
+    sTalkSt->line_active--;
+
+    SpriteText_DrawBackground(sTalkText + 1);
+
+    Text_SetColor(sTalkText + 1, TEXT_COLOR_4DEF);
+    Text_SetCursor(sTalkText + 1, 4);
 }
 
-NAKEDFUNC
-void sub_8009598()
+void sub_8009598(ProcPtr proc)
 {
-    asm("   .syntax unified\n\
-    push {r4, r5, lr}\n\
-    ldr r0, _080095CC @ =sTalkSt\n\
-    ldr r1, [r0]\n\
-    movs r0, #0\n\
-    strb r0, [r1, #9]\n\
-    movs r5, #0\n\
-_080095A4:\n\
-    lsls r4, r5, #3\n\
-    ldr r0, _080095D0 @ =0x030000C8\n\
-    adds r4, r4, r0\n\
-    adds r0, r4, #0\n\
-    bl SpriteText_DrawBackground\n\
-    adds r0, r4, #0\n\
-    movs r1, #6\n\
-    bl Text_SetColor\n\
-    adds r0, r4, #0\n\
-    movs r1, #4\n\
-    bl Text_SetCursor\n\
-    adds r5, #1\n\
-    cmp r5, #1\n\
-    ble _080095A4\n\
-    pop {r4, r5}\n\
-    pop {r0}\n\
-    bx r0\n\
-    .syntax divided\n\
-    .align 2, 0\n\
-_080095CC: .4byte sTalkSt\n\
-_080095D0: .4byte 0x030000C8\n\
-");
+    int i;
+
+    sTalkSt->line_active = 0;
+
+    for (i = 0; i < 2; i++)
+    {
+        SpriteText_DrawBackground(&sTalkText[i]);
+
+        Text_SetColor(&sTalkText[i], TEXT_COLOR_4DEF);
+        Text_SetCursor(&sTalkText[i], 4);
+    }
 }
 
 int sub_80095D4(int cmd)
@@ -2827,58 +2419,23 @@ void sub_80095E4()
     SetWinEnable(0, 0, 0);
 }
 
-NAKEDFUNC
 void sub_8009628()
 {
-    asm("   .syntax unified\n\
-    push {r4, r5, r6, lr}\n\
-    ldr r0, _08009680 @ =gBg0Tm\n\
-    movs r1, #0\n\
-    bl TmFill\n\
-    movs r0, #1\n\
-    bl TalkBgSync\n\
-    ldr r2, _08009684 @ =sTalkSt\n\
-    ldr r0, [r2]\n\
-    movs r1, #0\n\
-    strb r1, [r0, #9]\n\
-    ldr r0, [r2]\n\
-    adds r0, #0x82\n\
-    strb r1, [r0]\n\
-    ldr r0, [r2]\n\
-    strb r1, [r0, #0x15]\n\
-    ldr r0, [r2]\n\
-    strb r1, [r0, #0xb]\n\
-    movs r5, #0\n\
-    ldr r0, [r2]\n\
-    ldrb r0, [r0, #0xa]\n\
-    cmp r5, r0\n\
-    bge _0800967A\n\
-    adds r6, r2, #0\n\
-_0800965A:\n\
-    lsls r4, r5, #3\n\
-    ldr r0, _08009688 @ =0x030000C8\n\
-    adds r4, r4, r0\n\
-    adds r0, r4, #0\n\
-    bl ClearText\n\
-    ldr r0, [r6]\n\
-    ldrb r1, [r0, #8]\n\
-    adds r0, r4, #0\n\
-    bl Text_SetColor\n\
-    adds r5, #1\n\
-    ldr r0, [r6]\n\
-    ldrb r0, [r0, #0xa]\n\
-    cmp r5, r0\n\
-    blt _0800965A\n\
-_0800967A:\n\
-    pop {r4, r5, r6}\n\
-    pop {r0}\n\
-    bx r0\n\
-    .syntax divided\n\
-    .align 2, 0\n\
-_08009680: .4byte gBg0Tm\n\
-_08009684: .4byte sTalkSt\n\
-_08009688: .4byte 0x030000C8\n\
-");
+    int i;
+
+    TmFill(gBg0Tm, 0);
+    TalkBgSync(BG0_SYNC_BIT);
+
+    sTalkSt->line_active = 0;
+    sTalkSt->unk_82 = 0;
+    sTalkSt->put_lines = 0;
+    sTalkSt->top_text_num = 0;
+
+    for (i = 0; i < sTalkSt->lines; ++i)
+    {
+        ClearText(sTalkText + i);
+        Text_SetColor(sTalkText + i, sTalkSt->print_color);
+    }
 }
 
 void sub_800968C()
@@ -3180,10 +2737,22 @@ void sub_800981C()
     proc->unk64 = 0;
 }
 
-#if NONMATCHING
+#if 0
 
 void sub_8009834(struct Proc * proc)
 {
+    // missing those symbols
+    u8 const * gUnk_0818F93C[] =
+    {
+        Img_TalkBubbleOpeningA,
+        Img_TalkBubbleOpeningB,
+        Img_TalkBubbleOpeningC,
+        Img_TalkBubbleOpeningD,
+        Img_TalkBubbleOpeningE,
+        Img_TalkBubble,
+        NULL,
+    };
+
     if ((proc->unk64++) & 1)
         return;
 
