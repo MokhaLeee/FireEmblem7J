@@ -124,6 +124,9 @@ bool sub_8008308(ProcPtr proc);
 int GetTextPrintDelay();
 void sub_800EF98();
 ProcPtr StartTalkExt(int x, int y, char const * str, ProcPtr parent);
+void sub_8007DF4();
+void sub_8007C64();
+void TryUnlockProc(ProcPtr proc);
 
 #define TALK_TEXT_BY_LINE(line) (sTalkText + ((line) + sTalkSt->top_text_num) % sTalkSt->lines)
 
@@ -139,6 +142,7 @@ extern struct ProcCmd gUnk_08BFFBDC[];
 extern struct ProcCmd gUnk_08BFFBB4[];
 extern struct ProcCmd gUnk_08BFFCFC[];
 extern struct ProcCmd gUnk_08BFFCD4[];
+extern struct ProcCmd gUnk_08BFFB30[];
 extern u16 gUnk_08BFFDB6[];
 extern u16 gUnk_08BFFD9C[];
 extern struct ProcCmd ProcScr_Talk[];
@@ -153,16 +157,178 @@ extern struct TalkChoiceEnt CONST_DATA gUnk_08BFFCAC[];
 extern u16 gUnk_081902C8[];
 extern u16 gUnk_081902A8[];
 extern u16 gUnk_08402A4C[];
-extern struct Text sTalkText[3];
+extern u16 gUnk_084027B0[];
+extern struct Text sTalkText[];
+extern struct Font sTalkFont;
 
-ProcPtr StartTalkMsg(int x, int y, int msg)
+struct UnkFaceProc {
+    /* 00 */ PROC_HEADER;
+    /* 2C */ struct FaceProc * face_proc;
+    /* 30 */ struct FaceInfo * info;
+};
+
+void sub_8007C10(struct UnkFaceProc * proc)
 {
-    return StartTalkExt(x, y, DecodeMsg(msg), 0);
+    if (proc->face_proc->eye_proc)
+    {
+        proc->face_proc->eye_proc->blink = proc->info->blink_type;
+        Proc_Goto(proc->face_proc->eye_proc, 0);
+        TryUnlockProc(proc->face_proc->eye_proc);
+    }
+
+    if (proc->face_proc->mouth_proc)
+    {
+        TryUnlockProc(proc->face_proc->mouth_proc);
+    }
 }
 
-ProcPtr StartTalkMsgExt(int x, int y, int msg, ProcPtr proc)
+#if 0
+
+void sub_8007C48(struct FaceProc* parent, int face_id)
 {
-    return StartTalkExt(x, y, DecodeMsg(msg), proc);
+    struct Proc * proc = Proc_Start(gUnk_08BFFB30, parent);
+    proc->x = (int)parent; //???
+    proc->unk34 = face_id;
+}
+
+#else
+
+NAKEDFUNC
+void sub_8007C48(struct FaceProc* parent, int face_id)
+{
+    asm("   .syntax unified\n\
+    push {r4, r5, lr}\n\
+    adds r4, r0, #0\n\
+    adds r5, r1, #0\n\
+    ldr r0, _08007C60 @ =gUnk_08BFFB30\n\
+    adds r1, r4, #0\n\
+    bl Proc_Start\n\
+    str r4, [r0, #0x2c]\n\
+    str r5, [r0, #0x34]\n\
+    pop {r4, r5}\n\
+    pop {r0}\n\
+    bx r0\n\
+    .align 2, 0\n\
+_08007C60: .4byte gUnk_08BFFB30\n\
+    .syntax divided\n\
+");
+}
+
+#endif
+
+void sub_8007C64()
+{
+    int i;
+
+    for (i = 0; i < TALK_FACE_COUNT; i++)
+    {
+        sTalkSt->faces[i] = 0;
+    }
+}
+
+void InitTalk(int chr, int lines, bool unpack_bubble)
+{
+    int i;
+
+    InitTextFont(&sTalkFont, (u8 *) VRAM + GetBgChrOffset(0) + ((chr & 0x3FF) << 5), chr, BGPAL_TALK);
+    sub_8007DF4();
+
+    sTalkSt->lines = lines;
+
+    for (i = 0; i < lines; ++i)
+    {
+        InitText(sTalkText + i, 30);
+        Text_SetColor(sTalkText + i, TEXT_COLOR_0456);
+    }
+
+    if (unpack_bubble)
+    {
+        Decompress(gUnk_084027B0, (u8 *) VRAM + GetBgChrOffset(1) + 0x200);
+        ApplyPalette(gUnk_08402A4C, BGPAL_TALK_BUBBLE);
+    }
+
+    sub_8007C64();
+}
+
+void InitSpriteTalk(int chr, int lines, int palid)
+{
+    int i;
+
+    InitSpriteTextFont(&sTalkFont, (u8 *) VRAM + 0x10000 + ((chr & 0x3FF) << 5), palid);
+
+    SetTextFont(&sTalkFont);
+    SetTextFontGlyphs(TEXT_GLYPHS_TALK);
+
+    ApplyPalette(Pal_Text+0x10, 0x10 + palid);
+
+    PAL_OBJ_COLOR(palid, 4)  = RGB(7,  18, 28);
+    PAL_OBJ_COLOR(palid, 14) = RGB(14, 13, 12);
+    PAL_OBJ_COLOR(palid, 15) = RGB(31, 31, 31);
+
+    sTalkSt->lines = lines;
+
+    for (i = 0; i < lines; ++i)
+    {
+        InitSpriteText(sTalkText + i);
+
+        SpriteText_DrawBackground(sTalkText + i);
+        Text_SetColor(sTalkText + i, TEXT_COLOR_4DEF);
+        Text_SetCursor(sTalkText + i, 4);
+    }
+}
+
+void sub_8007DE0()
+{
+    ApplyPaletteExt(Pal_Text, 0x40, 0x20);
+}
+
+void sub_8007DF4()
+{
+    SetTextFont(&sTalkFont);
+    InitTalkTextFont();
+}
+
+ProcPtr StartTalkExt(int x, int y, const char* msg, ProcPtr proc)
+{
+    sTalkSt->x_text = x;
+    sTalkSt->y_text = y;
+    sTalkSt->str = msg;
+    sTalkSt->str_back = 0;
+    sTalkSt->print_color = 1;
+    sTalkSt->line_active = 0;
+    sTalkSt->unk_82 = 0;
+    sTalkSt->top_text_num = 0;
+    sTalkSt->print_delay = GetTextPrintDelay();
+    sTalkSt->print_clock = 0;
+    sub_8008CB8(0xFF);
+    sTalkSt->speak_talk_face = 0xff;
+    sTalkSt->put_lines = 0;
+    sTalkSt->instant_print = 0;
+    sTalkSt->unk_16 = 1;
+    sTalkSt->unk_17 = 0;
+    sTalkSt->unk_80 = 0;
+    sTalkSt->flags = 0;
+    sTalkSt->unk_83 = 0;
+    sTalkSt->active_width = Div(sub_8009FAC(sTalkSt->str, 0) + 7, 8) + 2;
+
+    if (proc)
+    {
+        return Proc_StartBlocking(ProcScr_Talk, proc);
+    }
+    else
+    {
+        return Proc_Start(ProcScr_Talk, (ProcPtr)3);
+    }
+}
+
+ProcPtr StartTalkMsg(int x, int y, int id)
+{
+    return StartTalkExt(x, y, DecodeMsg(id), 0);
+}
+
+ProcPtr StartTalkMsgExt(int x, int y, int id, ProcPtr proc)
+{
+    return StartTalkExt(x, y, DecodeMsg(id), proc);
 }
 
 ProcPtr StartTalk(int x, int y, const char* msg)
