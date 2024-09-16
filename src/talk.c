@@ -137,6 +137,7 @@ struct UnkFaceProc {
     /* 00 */ PROC_HEADER;
     /* 2C */ struct FaceProc * face_proc;
     /* 30 */ struct FaceInfo * info;
+    /* 34 */ int unk34;
 };
 
 void sub_8007C10(struct UnkFaceProc * proc)
@@ -154,39 +155,12 @@ void sub_8007C10(struct UnkFaceProc * proc)
     }
 }
 
-#if 0
-
 void sub_8007C48(struct FaceProc* parent, int face_id)
 {
-    struct Proc * proc = Proc_Start(gUnk_08BFFB30, parent);
-    proc->x = (int)parent; //???
+    struct UnkFaceProc * proc = Proc_Start(gUnk_08BFFB30, parent);
+    proc->face_proc = parent;
     proc->unk34 = face_id;
 }
-
-#else
-
-NAKEDFUNC
-void sub_8007C48(struct FaceProc* parent, int face_id)
-{
-    asm("   .syntax unified\n\
-    push {r4, r5, lr}\n\
-    adds r4, r0, #0\n\
-    adds r5, r1, #0\n\
-    ldr r0, _08007C60 @ =gUnk_08BFFB30\n\
-    adds r1, r4, #0\n\
-    bl Proc_Start\n\
-    str r4, [r0, #0x2c]\n\
-    str r5, [r0, #0x34]\n\
-    pop {r4, r5}\n\
-    pop {r0}\n\
-    bx r0\n\
-    .align 2, 0\n\
-_08007C60: .4byte gUnk_08BFFB30\n\
-    .syntax divided\n\
-");
-}
-
-#endif
 
 void sub_8007C64()
 {
