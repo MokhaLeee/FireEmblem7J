@@ -1,6 +1,11 @@
 #include "gbafe.h"
 #include "constants/msg.h"
 
+
+#define PlaySe(id) \
+    if (!gPlaySt.cfgDisableSoundEffects) \
+        m4aSongNumStart((id))
+
 enum
 {
     TALK_FACE_0,
@@ -119,7 +124,7 @@ extern int sTalkChoiceResult;
 extern int CONST_DATA gUnk_08BFFD7C[];
 extern int CONST_DATA gUnk_08BFFD2C[];
 extern u16 const * CONST_DATA gUnk_08BFFC3C[];
-extern struct TalkChoiceEnt CONST_DATA gUnk_08BFFCAC[];
+extern struct TalkChoiceEnt CONST_DATA gUnk_08BFFC9C[];
 extern struct TalkChoiceEnt CONST_DATA gUnk_08BFFCAC[];
 extern u16 gUnk_081902C8[];
 extern u16 gUnk_081902A8[];
@@ -2169,137 +2174,48 @@ void sub_800925C(struct TalkChoiceEnt const * choices, struct Text * text, u16 *
         proc->choices[defaultChoice - 1].onSwitch();
 }
 
-NAKEDFUNC
-void sub_8009310()
+void sub_8009310(struct TalkChoiceProc * proc)
 {
-    asm("   .syntax unified\n\
-    push {r4, r5, lr}\n\
-    adds r4, r0, #0\n\
-    ldr r0, _0800933C @ =gpKeySt\n\
-    ldr r0, [r0]\n\
-    ldrh r1, [r0, #8]\n\
-    movs r0, #2\n\
-    ands r0, r1\n\
-    cmp r0, #0\n\
-    beq _0800934C\n\
-    ldr r0, _08009340 @ =gPlaySt\n\
-    adds r0, #0x41\n\
-    ldrb r0, [r0]\n\
-    lsls r0, r0, #0x1e\n\
-    cmp r0, #0\n\
-    blt _08009334\n\
-    ldr r0, _08009344 @ =0x0000038B\n\
-    bl m4aSongNumStart\n\
-_08009334:\n\
-    ldr r1, _08009348 @ =sTalkChoiceResult\n\
-    movs r0, #0\n\
-    b _0800936E\n\
-    .align 2, 0\n\
-_0800933C: .4byte gpKeySt\n\
-_08009340: .4byte gPlaySt\n\
-_08009344: .4byte 0x0000038B\n\
-_08009348: .4byte sTalkChoiceResult\n\
-_0800934C:\n\
-    movs r5, #1\n\
-    adds r0, r5, #0\n\
-    ands r0, r1\n\
-    cmp r0, #0\n\
-    beq _08009384\n\
-    ldr r0, _08009378 @ =gPlaySt\n\
-    adds r0, #0x41\n\
-    ldrb r0, [r0]\n\
-    lsls r0, r0, #0x1e\n\
-    cmp r0, #0\n\
-    blt _08009368\n\
-    ldr r0, _0800937C @ =0x0000038A\n\
-    bl m4aSongNumStart\n\
-_08009368:\n\
-    ldr r1, _08009380 @ =sTalkChoiceResult\n\
-    movs r2, #0x2a\n\
-    ldrsh r0, [r4, r2]\n\
-_0800936E:\n\
-    str r0, [r1]\n\
-    adds r0, r4, #0\n\
-    bl Proc_Break\n\
-    b _08009404\n\
-    .align 2, 0\n\
-_08009378: .4byte gPlaySt\n\
-_0800937C: .4byte 0x0000038A\n\
-_08009380: .4byte sTalkChoiceResult\n\
-_08009384:\n\
-    movs r0, #0x20\n\
-    ands r0, r1\n\
-    cmp r0, #0\n\
-    beq _080093B2\n\
-    ldrh r0, [r4, #0x2a]\n\
-    cmp r0, #2\n\
-    bne _080093B2\n\
-    ldr r0, _0800940C @ =gPlaySt\n\
-    adds r0, #0x41\n\
-    ldrb r0, [r0]\n\
-    lsls r0, r0, #0x1e\n\
-    cmp r0, #0\n\
-    blt _080093A4\n\
-    ldr r0, _08009410 @ =0x00000387\n\
-    bl m4aSongNumStart\n\
-_080093A4:\n\
-    strh r5, [r4, #0x2a]\n\
-    ldr r0, [r4, #0x34]\n\
-    ldr r0, [r0, #4]\n\
-    cmp r0, #0\n\
-    beq _080093B2\n\
-    bl _call_via_r0\n\
-_080093B2:\n\
-    ldr r0, _08009414 @ =gpKeySt\n\
-    ldr r1, [r0]\n\
-    movs r0, #0x10\n\
-    ldrh r1, [r1, #8]\n\
-    ands r0, r1\n\
-    cmp r0, #0\n\
-    beq _080093E8\n\
-    ldrh r1, [r4, #0x2a]\n\
-    cmp r1, #1\n\
-    bne _080093E8\n\
-    ldr r0, _0800940C @ =gPlaySt\n\
-    adds r0, #0x41\n\
-    ldrb r0, [r0]\n\
-    lsls r0, r0, #0x1e\n\
-    cmp r0, #0\n\
-    blt _080093D8\n\
-    ldr r0, _08009410 @ =0x00000387\n\
-    bl m4aSongNumStart\n\
-_080093D8:\n\
-    movs r0, #2\n\
-    strh r0, [r4, #0x2a]\n\
-    ldr r0, [r4, #0x34]\n\
-    ldr r0, [r0, #0xc]\n\
-    cmp r0, #0\n\
-    beq _080093E8\n\
-    bl _call_via_r0\n\
-_080093E8:\n\
-    movs r2, #0x2c\n\
-    ldrsh r0, [r4, r2]\n\
-    movs r1, #0x2a\n\
-    ldrsh r2, [r4, r1]\n\
-    subs r2, #1\n\
-    lsls r1, r2, #2\n\
-    adds r1, r1, r2\n\
-    lsls r1, r1, #3\n\
-    adds r0, r0, r1\n\
-    subs r0, #4\n\
-    movs r2, #0x2e\n\
-    ldrsh r1, [r4, r2]\n\
-    bl PutUiHand\n\
-_08009404:\n\
-    pop {r4, r5}\n\
-    pop {r0}\n\
-    bx r0\n\
-    .syntax divided\n\
-    .align 2, 0\n\
-_0800940C: .4byte gPlaySt\n\
-_08009410: .4byte 0x00000387\n\
-_08009414: .4byte gpKeySt\n\
-");
+    if (gpKeySt->pressed & 2)
+    {
+        PlaySe(0x38B);
+
+        sTalkChoiceResult = 0;
+
+        Proc_Break(proc);
+        return;
+    }
+    else if (gpKeySt->pressed & 1)
+    {
+        PlaySe(0x38A);
+
+        sTalkChoiceResult = proc->selectedChoice;
+
+        Proc_Break(proc);
+        return;
+    }
+
+    if ((gpKeySt->pressed & 32) && (proc->selectedChoice == 2))
+    {
+        PlaySe(0x387);
+
+        proc->selectedChoice = 1;
+
+        if (proc->choices[0].onSwitch)
+            proc->choices[0].onSwitch();
+    }
+
+    if ((gpKeySt->pressed & 16) && (proc->selectedChoice == 1))
+    {
+        PlaySe(0x387);
+
+        proc->selectedChoice = 2;
+
+        if (proc->choices[1].onSwitch)
+            proc->choices[1].onSwitch();
+    }
+
+    PutUiHand(proc->x_disp + (proc->selectedChoice - 1) * 40 - 4, proc->y_disp);
 }
 
 void sub_8009418(struct Proc * proc)
