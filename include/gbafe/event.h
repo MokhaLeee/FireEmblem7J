@@ -313,11 +313,11 @@ void EventClearTalkDisplayed(struct EventProc * proc);
 void ClearTalk(void);
 // nullsub_27
 // nullsub_28
-// IsEventRunning
+bool IsEventRunning();
 // sub_800EC40
 // sub_800EC58
-// sub_800EC74
-// sub_800EC84
+void sub_800EC74();
+void sub_800EC84(int);
 // sub_800EC9C
 // sub_800ECB8
 // sub_800ECD4
@@ -338,7 +338,7 @@ void ClearTalk(void);
 // sub_800EF34
 // sub_800EF50
 // sub_800EF78
-// sub_800EF98
+void sub_800EF98();
 // sub_800EFB8
 // sub_800EFD4
 // sub_800F070

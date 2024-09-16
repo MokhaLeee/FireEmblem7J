@@ -42,7 +42,7 @@ void DisplayBmTextShadow(int x, int y);
 void TryLockParentProc(ProcPtr);
 void TryUnlockParentProc(ProcPtr);
 
-// GetTextPrintDelay
+int GetTextPrintDelay();
 int IsFirstPlaythrough(void);
 // InitPlayConfig
 // ResetBmSt
@@ -63,7 +63,7 @@ int IsFirstPlaythrough(void);
 // ResumeMapMainDuringPhaseChange
 // sub_802EB7C
 // sub_802EBA0
-// sub_802EBB0
+const char* sub_802EBB0();
 // SetTacticianName
 // sub_802EBCC
 // sub_802EBD4

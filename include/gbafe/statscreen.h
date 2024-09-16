@@ -714,7 +714,7 @@ void ClearHelpBoxText(void);
 // sub_809159C
 // sub_80915D8
 // TryLockProc
-// TryUnlockProc
+void TryUnlockProc(ProcPtr proc);
 // sub_809163C
 // sub_8091664
 // sub_809169C

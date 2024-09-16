@@ -1,135 +1,16 @@
 #include "gbafe.h"
 #include "constants/msg.h"
 
-
 #define PlaySe(id) \
     if (!gPlaySt.cfgDisableSoundEffects) \
         m4aSongNumStart((id))
 
-enum
-{
-    TALK_FACE_0,
-    TALK_FACE_1,
-    TALK_FACE_2,
-    TALK_FACE_3,
-    TALK_FACE_4,
-    TALK_FACE_5,
-    TALK_FACE_6,
-    TALK_FACE_7,
-
-    TALK_FACE_COUNT,
-
-    TALK_FACE_NONE = 0xFF,
-};
-
-enum
-{
-    TALK_FLAG_INSTANTSHIFT = (1 << 0),
-    TALK_FLAG_NOBUBBLE = (1 << 1),
-    TALK_FLAG_SPRITE = (1 << 5),
-    TALK_FLAG_SILENT = (1 << 6),
-    TALK_FLAG_7 = (1 << 7),
-};
-
-struct TalkSt
-{
-    /* 00 */ char const * str;
-    /* 04 */ char const * str_back;
-    /* 08 */ u8 print_color;
-    /* 09 */ u8 line_active;
-    /* 0A */ u8 lines;
-    /* 0B */ u8 top_text_num;
-    /* 0C */ u8 x_text;
-    /* 0D */ u8 y_text;
-    /* 0E */ u8 active_width;
-    /* 0F */ s8 speak_talk_face;
-    /* 10 */ u8 speak_width;
-    /* 11 */ u8 active_talk_face;
-    /* 12 */ bool8 instant_print;
-    /* 13 */ s8 print_delay;
-    /* 14 */ s8 print_clock;
-    /* 15 */ u8 put_lines;
-    /* 16 */ u8 unk_16;
-    /* 17 */ u8 unk_17;
-    /* 18 */ struct FaceProc * faces[TALK_FACE_COUNT];
-    /* 38 */ u32 flags;
-    /* 3A */ // pad
-    /* 3C */ int number;
-    /* 40 */ char buf_number_str[0x20];
-    /* 60 */ char buf_unk_str[0x20];
-    /* 80 */ u16 unk_80;
-    /* 82 */ u8 unk_82;
-    /* 83 */ u8 unk_83;
-};
-
-struct TalkChoiceEnt
-{
-    u16 msg;
-    Func onSwitch;
-};
-
-struct TalkChoiceProc
-{
-    /* 00 */ PROC_HEADER;
-
-    /* 2A */ short selectedChoice;
-    /* 2C */ short x_disp;
-    /* 2E */ short y_disp;
-    /* 30 */ int unused30;
-    /* 34 */ struct TalkChoiceEnt const * choices;
-};
-
-void TryUnlockProc(ProcPtr proc);
-void sub_8007DF4();
-void sub_8008CB8(int);
-int sub_8009FAC(char const * str, bool isBubbleOpen);
-void sub_800EF98();
-void SetTalkFaceNoMouthMove(int face);
-void sub_800EC74();
-int sub_8009D94(int talk_face);
-void sub_8008DFC(int talk_face, int toBack);
-void sub_80149B4(ProcPtr proc, int arg_1);
-void sub_8009628();
-void TalkBgSync(int bits);
-bool IsEventRunning();
-int GetTextPrintDelay();
-void sub_8008ECC(int talkFaceFrom, int talkFaceTo, bool isSwap);
-void sub_8014FB0(void (*)(), int);
-u8 sub_80149EC(int number, char * buf);
-const char* sub_802EBB0();
 void sub_800515C(signed char, int);
 void sub_8005234(int, int, int, int);
-void sub_800EC84(int);
 
 #define TALK_TEXT_BY_LINE(line) (sTalkText + ((line) + sTalkSt->top_text_num) % sTalkSt->lines)
 
-extern struct ProcCmd gUnk_08BFFE18[];
-extern struct ProcCmd gUnk_08BFFD3C[];
-extern struct ProcCmd gUnk_08BFFD4C[];
-extern struct ProcCmd gUnk_08BFFCBC[];
-extern struct ProcCmd gUnk_08BFFBFC[];
-extern struct ProcCmd gUnk_08BFFB6C[];
-extern struct ProcCmd gUnk_08BFFC7C[];
-extern struct ProcCmd gUnk_08BFFBBC[];
-extern struct ProcCmd gUnk_08BFFBDC[];
-extern struct ProcCmd gUnk_08BFFBB4[];
-extern struct ProcCmd gUnk_08BFFCFC[];
-extern struct ProcCmd gUnk_08BFFCD4[];
-extern struct ProcCmd gUnk_08BFFB30[];
-extern u16 gUnk_08BFFDB6[];
-extern u16 gUnk_08BFFD9C[];
-extern struct ProcCmd ProcScr_Talk[];
-extern struct TalkSt * CONST_DATA sTalkSt;
 extern int sTalkChoiceResult;
-extern int CONST_DATA gUnk_08BFFD7C[];
-extern int CONST_DATA gUnk_08BFFD2C[];
-extern u16 const * CONST_DATA gUnk_08BFFC3C[];
-extern struct TalkChoiceEnt CONST_DATA gUnk_08BFFC9C[];
-extern struct TalkChoiceEnt CONST_DATA gUnk_08BFFCAC[];
-extern u16 gUnk_081902C8[];
-extern u16 gUnk_081902A8[];
-extern u16 gUnk_08402A4C[];
-extern u16 gUnk_084027B0[];
 extern struct Text sTalkText[];
 extern struct Font sTalkFont;
 

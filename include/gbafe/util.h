@@ -140,9 +140,9 @@ void WaitForFade(ProcPtr proc);
 // ??? sub_80148E4
 // ??? sub_8014900
 // ??? sub_8014970
-// ??? sub_80149B4
+void sub_80149B4(ProcPtr proc, int arg_1);
 // ??? sub_80149D0
-// ??? sub_80149EC
+u8 sub_80149EC(int number, char * buf);
 // ??? sub_8014AB0
 // ??? sub_8014B14
 // ??? sub_8014B58
@@ -157,7 +157,7 @@ void WaitForFade(ProcPtr proc);
 // ??? sub_8014EE4
 // ??? sub_8014F64
 // ??? sub_8014F88
-// ??? sub_8014FB0
+void sub_8014FB0(void (*)(), int);
 // ??? sub_8014FCC
 // ??? sub_8014FEC
 // ??? sub_8015000
