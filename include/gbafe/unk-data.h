@@ -47,8 +47,8 @@ extern u16 Pal_Text[];
 // ??? gUnk_08190248
 // ??? gUnk_08190268
 // ??? gUnk_08190288
-// ??? gUnk_081902A8
-// ??? gUnk_081902C8
+extern u16 gUnk_081902A8[];
+extern u16 gUnk_081902C8[];
 // ??? gUnk_081902E8
 // ??? gUnk_08190764
 // ??? gUnk_08190784
@@ -1344,8 +1344,8 @@ extern const u8 Tsa_EkrDragonFireBG2[];
 // ??? gUnk_0840085C
 // ??? gUnk_084009F0
 // ??? Pal_ManimWindowHpBar
-// ??? gUnk_084027B0
-// ??? gUnk_08402A4C
+extern u16 gUnk_084027B0[];
+extern u16 gUnk_08402A4C[];
 // ??? gUnk_08402BF0
 // ??? gUnk_08402F68
 // ??? gUnk_08402F84

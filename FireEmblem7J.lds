@@ -171,7 +171,9 @@ SECTIONS
 		. = ALIGN(4); src/hardware.o(.bss);
 		. = ALIGN(4); src/oam.o(.bss);
 		. = 0x000040; sTalkStObj = .;
+		. = 0x0000C8; sTalkText = .;
 		. = 0x0000E0; sTalkChoiceResult = .;
+		. = 0x0000E8; sTalkFont = .;
 		. = 0x000110;
 		. = ALIGN(4); src/sprite-anim.o(.bss);
 		. = 0x002778; gArenaLevelBackup = .;
@@ -217,7 +219,7 @@ SECTIONS
 		src/sprite.o(.text);
 		src/face.o(.text);
 		asm/face.o(.text);
-		asm/talk.o(.text);
+		src/talk.o(.text);
 		src/talk-advance.o(.text);
 		src/event.o(.text);
 		asm/event-engine.o(.text);
