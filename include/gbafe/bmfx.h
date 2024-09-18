@@ -179,8 +179,8 @@ void SwingSwordfx_Init(struct ProcBmFx * proc);
 void SwingSwordfx_Loop(struct ProcBmFx * proc);
 void SwingSwordfx_End(struct ProcBmFx * proc);
 // StartSwingSwordfx
-// ProcMineFxFunc
-// StartMineAnim
+void ProcMineFxFunc();
+void StartMineAnim(ProcPtr proc, int x_target, int y_target);
 // sub_80217EC
 // sub_8021820
 // sub_80218F8

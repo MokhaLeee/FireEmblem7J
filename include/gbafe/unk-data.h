@@ -256,7 +256,7 @@ extern u8 Img_EventSpriteAnim_SpawnAssassin[];
 extern u8 Img_EventSpriteAnim_SpawnThief[];
 extern u16 ApConf_EventSpriteAnim_SpawnAssassin[];
 extern u8 Img_MineFx[];
-extern u8 SpritAnim_MineFx[];
+extern u16 SpritAnim_MineFx[];
 extern u16 Pal_MineFx[];
 // ??? gUnk_081C8610
 // ??? gUnk_081C8AF8
@@ -1680,7 +1680,7 @@ extern uintptr_t ProcScr_CamMove[];
 // ??? gUnk_08C02F90
 // ??? gUnk_08C02FA8
 // ??? ProcScr_SwingSwordfx
-// ??? ProcScr_MineFx
+extern struct ProcCmd ProcScr_MineFx[];
 // ??? ProcScr_NinianTransformToHunman
 // ??? EventScr_CompleteTraining
 // ??? gUnk_08C03098
