@@ -181,11 +181,11 @@ void SwingSwordfx_End(struct ProcBmFx * proc);
 // StartSwingSwordfx
 void ProcMineFxFunc();
 void StartMineAnim(ProcPtr proc, int x_target, int y_target);
-// sub_80217EC
-// sub_8021820
-// sub_80218F8
-// sub_8021954
-// NinianStartTransformToHunman
+void sub_80217EC(u16 * tilemap, int x, int y);
+void sub_8021820(struct Proc * proc);
+void sub_80218F8(struct Proc * proc);
+void sub_8021954();
+void NinianStartTransformToHunman(struct Proc * parent, int x, int y);
 
 extern struct BmBgxConf CONST_DATA BmBgfxConf_GameTitle[];
 extern struct BmBgxConf CONST_DATA BmBgfxConf_OpAnim[];

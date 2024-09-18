@@ -242,7 +242,7 @@ extern u8 Tsa_DragonGateLight[];
 extern u8 Img_DragonGateDragon[];
 extern u16 Pal_DragonGateDragon[];
 extern u8 Tsa_DragonGateDragon[];
-// ??? gUnk_081C2358
+extern u8 gUnk_081C2358[];
 // ??? gUnk_081C2974
 // ??? gUnk_081C2D44
 extern u8 Img_EventDragonsSpritefx1[];
@@ -1681,7 +1681,7 @@ extern uintptr_t ProcScr_CamMove[];
 // ??? gUnk_08C02FA8
 // ??? ProcScr_SwingSwordfx
 extern struct ProcCmd ProcScr_MineFx[];
-// ??? ProcScr_NinianTransformToHunman
+extern struct ProcCmd ProcScr_NinianTransformToHunman[];
 // ??? EventScr_CompleteTraining
 // ??? gUnk_08C03098
 // ??? gUnk_08C030C8
