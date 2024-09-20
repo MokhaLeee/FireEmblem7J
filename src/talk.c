@@ -539,21 +539,19 @@ _08008218: .4byte 0x0000038E\n\
 
 #endif
 
-#if NONMATCHING
-
-// missing useless ldr r4, _08008284 @ =sTalkSt
-
 bool sub_800821C(ProcPtr proc)
 {
     if (!sub_8009D70() && sTalkSt->active_talk_face != 0xFF && !sub_8007F58(2))
     {
-        const char* str = sTalkSt->str_back;
-        if (str == NULL)
+        if (sTalkSt->str_back == NULL)
         {
-            str = sTalkSt->str;
+            sTalkSt->active_width = Div(sub_8009FAC(sTalkSt->str, 0) + 7, 8) + 2;
+        }
+        else
+        {
+            sTalkSt->active_width = Div(sub_8009FAC(sTalkSt->str_back, 0) + 7, 8) + 2;
         }
 
-        sTalkSt->active_width = Div(sub_8009FAC(str, 0) + 7, 8) + 2;
         sub_80095E4();
         sub_8009D0C(sTalkSt->active_talk_face, proc);
         sub_8008DFC(sTalkSt->active_talk_face, sub_8007F58(16));
@@ -582,125 +580,6 @@ bool sub_800821C(ProcPtr proc)
 
     return FALSE;
 }
-
-#else
-
-NAKEDFUNC
-bool sub_800821C(ProcPtr proc)
-{
-    asm("   .syntax unified\n\
-    push {r4, r5, r6, r7, lr}\n\
-    adds r7, r0, #0\n\
-    bl sub_8009D70\n\
-    lsls r0, r0, #0x18\n\
-    cmp r0, #0\n\
-    bne _08008288\n\
-    ldr r4, _08008284 @ =sTalkSt\n\
-    ldr r0, [r4]\n\
-    ldrb r0, [r0, #0x11]\n\
-    cmp r0, #0xff\n\
-    beq _08008288\n\
-    movs r0, #2\n\
-    bl sub_8007F58\n\
-    cmp r0, #0\n\
-    bne _08008288\n\
-    ldr r1, [r4]\n\
-    ldr r0, [r1, #4]\n\
-    cmp r0, #0\n\
-    bne _08008248\n\
-    ldr r0, [r1]\n\
-_08008248:\n\
-    movs r1, #0\n\
-    bl sub_8009FAC\n\
-    adds r0, #7\n\
-    movs r1, #8\n\
-    bl Div\n\
-    ldr r1, [r4]\n\
-    adds r0, #2\n\
-    strb r0, [r1, #0xe]\n\
-    bl sub_80095E4\n\
-    ldr r4, _08008284 @ =sTalkSt\n\
-    ldr r0, [r4]\n\
-    ldrb r0, [r0, #0x11]\n\
-    adds r1, r7, #0\n\
-    bl sub_8009D0C\n\
-    ldr r0, [r4]\n\
-    ldrb r4, [r0, #0x11]\n\
-    movs r0, #0x10\n\
-    bl sub_8007F58\n\
-    adds r1, r0, #0\n\
-    adds r0, r4, #0\n\
-    bl sub_8008DFC\n\
-    movs r0, #1\n\
-    b _080082F8\n\
-    .align 2, 0\n\
-_08008284: .4byte sTalkSt\n\
-_08008288: // if sub_8009D70()\n\
-    ldr r6, _080082A4 @ =sTalkSt\n\
-    ldr r5, [r6]\n\
-    ldrb r0, [r5, #9]\n\
-    ldrb r1, [r5, #0xa]\n\
-    cmp r0, r1\n\
-    blo _080082AC\n\
-    movs r0, #0\n\
-    strb r0, [r5, #0x12]\n\
-    ldr r0, _080082A8 @ =gUnk_08BFFCD4\n\
-    adds r1, r7, #0\n\
-    bl Proc_StartBlocking\n\
-    movs r0, #1\n\
-    b _080082F8\n\
-    .align 2, 0\n\
-_080082A4: .4byte sTalkSt\n\
-_080082A8: .4byte gUnk_08BFFCD4\n\
-_080082AC:\n\
-    ldrb r0, [r5, #0x15]\n\
-    cmp r0, #0\n\
-    bne _080082E8\n\
-    ldrb r4, [r5, #9]\n\
-    ldrb r1, [r5, #0xb]\n\
-    adds r0, r1, r4\n\
-    ldrb r1, [r5, #0xa]\n\
-    bl __modsi3\n\
-    lsls r0, r0, #3\n\
-    ldr r1, _08008300 @ =0x030000C8\n\
-    adds r0, r0, r1\n\
-    lsls r4, r4, #1\n\
-    ldrb r1, [r5, #0xd]\n\
-    adds r4, r1, r4\n\
-    lsls r4, r4, #5\n\
-    ldrb r5, [r5, #0xc]\n\
-    adds r4, r5, r4\n\
-    lsls r4, r4, #1\n\
-    ldr r1, _08008304 @ =gBg0Tm\n\
-    adds r4, r4, r1\n\
-    adds r1, r4, #0\n\
-    bl PutText\n\
-    movs r0, #1\n\
-    bl TalkBgSync\n\
-    ldr r1, [r6]\n\
-    movs r0, #1\n\
-    strb r0, [r1, #0x15]\n\
-_080082E8:\n\
-    ldr r1, [r6]\n\
-    ldrb r0, [r1, #0x16]\n\
-    cmp r0, #0\n\
-    beq _080082F6\n\
-    ldrb r0, [r1, #0x11]\n\
-    bl SetTalkFaceMouthMove\n\
-_080082F6:\n\
-    movs r0, #0\n\
-_080082F8:\n\
-    pop {r4, r5, r6, r7}\n\
-    pop {r1}\n\
-    bx r1\n\
-    .syntax divided\n\
-    .align 2, 0\n\
-_08008300: .4byte 0x030000C8\n\
-_08008304: .4byte gBg0Tm\n\
-");
-}
-
-#endif
 
 bool sub_8008308(ProcPtr proc)
 {
@@ -2193,14 +2072,6 @@ void sub_800968C()
     }
 }
 
-#if NONMATCHING
-
-/*
-what is this???
-ldr r1, [sp, #4]
-str r1, [sp]
-*/
-
 void sub_80096E0(int xAnchor, int yAnchor, int width, int height)
 {
     int xTail;
@@ -2285,7 +2156,7 @@ void sub_80096E0(int xAnchor, int yAnchor, int width, int height)
         sTalkSt->unk_83 ^= 2;
     }
     
-    if (sTalkSt->unk_83 & 1)
+    if (!(sTalkSt->unk_83 & 1))
     {
         sub_8009920(1, xTail, yAnchor, kind);
     }
@@ -2296,179 +2167,6 @@ void sub_80096E0(int xAnchor, int yAnchor, int width, int height)
 
     TalkBgSync(BG1_SYNC_BIT);
 }
-
-#else
-
-NAKEDFUNC
-void sub_80096E0()
-{
-    asm("   .syntax unified\n\
-    push {r4, r5, r6, r7, lr}\n\
-    mov r7, sl\n\
-    mov r6, sb\n\
-    mov r5, r8\n\
-    push {r5, r6, r7}\n\
-    sub sp, #8\n\
-    adds r5, r0, #0\n\
-    mov sl, r1\n\
-    adds r4, r2, #0\n\
-    str r3, [sp, #4]\n\
-    movs r0, #0\n\
-    mov r8, r0\n\
-    movs r6, #0\n\
-    ldr r0, _08009730 @ =gBg1Tm\n\
-    movs r1, #0\n\
-    bl TmFill\n\
-    movs r7, #1\n\
-    cmp r5, #0xf\n\
-    bgt _0800970A\n\
-    movs r7, #0\n\
-_0800970A:\n\
-    bl IsBattleDeamonActive\n\
-    lsls r0, r0, #0x18\n\
-    cmp r0, #0\n\
-    beq _08009716\n\
-    adds r7, #2\n\
-_08009716:\n\
-    mov r1, sl\n\
-    ldr r2, [sp, #4]\n\
-    subs r0, r1, r2\n\
-    adds r0, #1\n\
-    mov sb, r0\n\
-    cmp r7, #1\n\
-    beq _08009752\n\
-    cmp r7, #1\n\
-    bgt _08009734\n\
-    cmp r7, #0\n\
-    beq _0800973E\n\
-    b _08009796\n\
-    .align 2, 0\n\
-_08009730: .4byte gBg1Tm\n\
-_08009734:\n\
-    cmp r7, #2\n\
-    beq _08009776\n\
-    cmp r7, #3\n\
-    beq _08009788\n\
-    b _08009796\n\
-_0800973E:\n\
-    adds r5, #3\n\
-    mov r8, r5\n\
-    lsrs r0, r4, #0x1f\n\
-    adds r0, r4, r0\n\
-    asrs r0, r0, #1\n\
-    subs r6, r5, r0\n\
-    cmp r6, #0\n\
-    bgt _08009796\n\
-    movs r6, #1\n\
-    b _08009796\n\
-_08009752:\n\
-    subs r5, #5\n\
-    mov r8, r5\n\
-    adds r0, r4, #1\n\
-    lsrs r1, r0, #0x1f\n\
-    adds r0, r0, r1\n\
-    asrs r0, r0, #1\n\
-    add r0, r8\n\
-    cmp r0, #0x1d\n\
-    ble _0800976A\n\
-    movs r0, #0x1d\n\
-    subs r6, r0, r4\n\
-    b _08009796\n\
-_0800976A:\n\
-    lsrs r0, r4, #0x1f\n\
-    adds r0, r4, r0\n\
-    asrs r0, r0, #1\n\
-    mov r1, r8\n\
-    subs r6, r1, r0\n\
-    b _08009796\n\
-_08009776:\n\
-    movs r6, #9\n\
-    movs r2, #0xe\n\
-    mov sb, r2\n\
-    movs r4, #0x14\n\
-    movs r0, #8\n\
-    mov r8, r0\n\
-    movs r1, #0x10\n\
-    mov sl, r1\n\
-    b _08009796\n\
-_08009788:\n\
-    movs r6, #1\n\
-    movs r2, #0xe\n\
-    mov sb, r2\n\
-    movs r4, #0x14\n\
-    mov r8, r4\n\
-    movs r0, #0x10\n\
-    mov sl, r0\n\
-_08009796:\n\
-    ldr r5, _08009818 @ =sTalkSt\n\
-    ldr r1, [r5]\n\
-    adds r0, r6, #1\n\
-    strb r0, [r1, #0xc]\n\
-    ldr r1, [r5]\n\
-    mov r0, sb\n\
-    adds r0, #1\n\
-    strb r0, [r1, #0xd]\n\
-    ldr r1, [sp, #4]\n\
-    str r1, [sp]\n\
-    movs r0, #1\n\
-    adds r1, r6, #0\n\
-    mov r2, sb\n\
-    adds r3, r4, #0\n\
-    bl sub_8009AA8\n\
-    ldr r0, [r5]\n\
-    adds r0, #0x83\n\
-    ldrb r1, [r0]\n\
-    movs r0, #2\n\
-    ands r0, r1\n\
-    cmp r0, #0\n\
-    beq _080097D8\n\
-    movs r0, #1\n\
-    ands r0, r1\n\
-    bl TalkToggleInvertedPalette\n\
-    ldr r1, [r5]\n\
-    adds r1, #0x83\n\
-    movs r0, #2\n\
-    ldrb r2, [r1]\n\
-    eors r0, r2\n\
-    strb r0, [r1]\n\
-_080097D8:\n\
-    ldr r1, [r5]\n\
-    adds r1, #0x83\n\
-    movs r0, #1\n\
-    ldrb r1, [r1]\n\
-    ands r0, r1\n\
-    cmp r0, #0\n\
-    bne _080097F2\n\
-    movs r0, #1\n\
-    mov r1, r8\n\
-    mov r2, sl\n\
-    adds r3, r7, #0\n\
-    bl sub_8009920\n\
-_080097F2:\n\
-    adds r0, r6, #0\n\
-    mov r1, sb\n\
-    adds r2, r4, #0\n\
-    ldr r3, [sp, #4]\n\
-    bl sub_80098A0\n\
-    bl sub_800981C\n\
-    movs r0, #2\n\
-    bl TalkBgSync\n\
-    add sp, #8\n\
-    pop {r3, r4, r5}\n\
-    mov r8, r3\n\
-    mov sb, r4\n\
-    mov sl, r5\n\
-    pop {r4, r5, r6, r7}\n\
-    pop {r0}\n\
-    bx r0\n\
-    .syntax divided\n\
-    .align 2, 0\n\
-_08009818: .4byte sTalkSt\n\
-");
-}
-
-#endif
-
 
 void sub_800981C()
 {
@@ -2575,202 +2273,61 @@ void sub_80098A0(int x, int y, int width, int height)
     SetWOutLayers(0, 1, 1, 1, 1);
 }
 
-NAKEDFUNC
-void sub_8009920(int a, int b, int c, int d)
+void sub_8009920(int bg, int x, int y, int kind)
 {
-    asm("   .syntax unified\n\
-    push {r4, r5, r6, lr}\n\
-    adds r5, r1, #0\n\
-    adds r4, r2, #0\n\
-    adds r6, r3, #0\n\
-    bl GetBgTilemap\n\
-    adds r3, r0, #0\n\
-    cmp r6, #5\n\
-    bls _08009934\n\
-    b _08009A96\n\
-_08009934:\n\
-    lsls r0, r6, #2\n\
-    ldr r1, _08009940 @ =_08009944\n\
-    adds r0, r0, r1\n\
-    ldr r0, [r0]\n\
-    mov pc, r0\n\
-    .align 2, 0\n\
-_08009940: .4byte _08009944\n\
-_08009944: @ jump table\n\
-    .4byte _0800995C @ case 0\n\
-    .4byte _08009990 @ case 1\n\
-    .4byte _080099C8 @ case 2\n\
-    .4byte _080099FC @ case 3\n\
-    .4byte _08009A34 @ case 4\n\
-    .4byte _08009A6C @ case 5\n\
-_0800995C:\n\
-    lsls r0, r4, #5\n\
-    adds r0, r5, r0\n\
-    lsls r0, r0, #1\n\
-    adds r0, r0, r3\n\
-    ldr r2, _08009984 @ =0x00003014\n\
-    adds r1, r2, #0\n\
-    strh r1, [r0]\n\
-    ldr r2, _08009988 @ =0x00003414\n\
-    adds r1, r2, #0\n\
-    strh r1, [r0, #2]\n\
-    adds r0, r4, #1\n\
-    lsls r0, r0, #5\n\
-    adds r0, r5, r0\n\
-    lsls r0, r0, #1\n\
-    adds r0, r0, r3\n\
-    ldr r3, _0800998C @ =0x00003416\n\
-    adds r1, r3, #0\n\
-    strh r1, [r0]\n\
-    adds r2, #1\n\
-    b _08009A92\n\
-    .align 2, 0\n\
-_08009984: .4byte 0x00003014\n\
-_08009988: .4byte 0x00003414\n\
-_0800998C: .4byte 0x00003416\n\
-_08009990:\n\
-    lsls r0, r4, #5\n\
-    adds r0, r5, r0\n\
-    lsls r0, r0, #1\n\
-    adds r0, r0, r3\n\
-    ldr r2, _080099B8 @ =0x00003014\n\
-    adds r1, r2, #0\n\
-    strh r1, [r0]\n\
-    ldr r2, _080099BC @ =0x00003414\n\
-    adds r1, r2, #0\n\
-    strh r1, [r0, #2]\n\
-    adds r0, r4, #1\n\
-    lsls r0, r0, #5\n\
-    adds r0, r5, r0\n\
-    lsls r0, r0, #1\n\
-    adds r0, r0, r3\n\
-    ldr r3, _080099C0 @ =0x00003015\n\
-    adds r1, r3, #0\n\
-    strh r1, [r0]\n\
-    ldr r2, _080099C4 @ =0x00003016\n\
-    b _08009A92\n\
-    .align 2, 0\n\
-_080099B8: .4byte 0x00003014\n\
-_080099BC: .4byte 0x00003414\n\
-_080099C0: .4byte 0x00003015\n\
-_080099C4: .4byte 0x00003016\n\
-_080099C8:\n\
-    lsls r2, r4, #5\n\
-    adds r2, r5, r2\n\
-    lsls r2, r2, #1\n\
-    adds r2, r2, r3\n\
-    ldr r1, _080099F0 @ =0x00003418\n\
-    adds r0, r1, #0\n\
-    strh r0, [r2]\n\
-    adds r0, r4, #1\n\
-    lsls r0, r0, #5\n\
-    adds r0, r5, r0\n\
-    lsls r0, r0, #1\n\
-    adds r0, r0, r3\n\
-    ldr r3, _080099F4 @ =0x00003419\n\
-    adds r1, r3, #0\n\
-    strh r1, [r0]\n\
-    subs r3, #2\n\
-    adds r1, r3, #0\n\
-    strh r1, [r2, #2]\n\
-    ldr r2, _080099F8 @ =0x00003C17\n\
-    b _08009A92\n\
-    .align 2, 0\n\
-_080099F0: .4byte 0x00003418\n\
-_080099F4: .4byte 0x00003419\n\
-_080099F8: .4byte 0x00003C17\n\
-_080099FC:\n\
-    lsls r2, r4, #5\n\
-    adds r2, r5, r2\n\
-    lsls r2, r2, #1\n\
-    adds r2, r2, r3\n\
-    ldr r1, _08009A24 @ =0x00003017\n\
-    adds r0, r1, #0\n\
-    strh r0, [r2]\n\
-    adds r0, r4, #1\n\
-    lsls r0, r0, #5\n\
-    adds r0, r5, r0\n\
-    lsls r0, r0, #1\n\
-    adds r0, r0, r3\n\
-    ldr r3, _08009A28 @ =0x00003817\n\
-    adds r1, r3, #0\n\
-    strh r1, [r0]\n\
-    ldr r3, _08009A2C @ =0x00003018\n\
-    adds r1, r3, #0\n\
-    strh r1, [r2, #2]\n\
-    ldr r2, _08009A30 @ =0x00003019\n\
-    b _08009A92\n\
-    .align 2, 0\n\
-_08009A24: .4byte 0x00003017\n\
-_08009A28: .4byte 0x00003817\n\
-_08009A2C: .4byte 0x00003018\n\
-_08009A30: .4byte 0x00003019\n\
-_08009A34:\n\
-    lsls r2, r4, #5\n\
-    adds r2, r5, r2\n\
-    lsls r2, r2, #1\n\
-    adds r2, r2, r3\n\
-    ldr r1, _08009A5C @ =0x00003C19\n\
-    adds r0, r1, #0\n\
-    strh r0, [r2]\n\
-    adds r0, r4, #1\n\
-    lsls r0, r0, #5\n\
-    adds r0, r5, r0\n\
-    lsls r0, r0, #1\n\
-    adds r0, r0, r3\n\
-    ldr r3, _08009A60 @ =0x00003C18\n\
-    adds r1, r3, #0\n\
-    strh r1, [r0]\n\
-    ldr r3, _08009A64 @ =0x00003417\n\
-    adds r1, r3, #0\n\
-    strh r1, [r2, #2]\n\
-    ldr r2, _08009A68 @ =0x00003C17\n\
-    b _08009A92\n\
-    .align 2, 0\n\
-_08009A5C: .4byte 0x00003C19\n\
-_08009A60: .4byte 0x00003C18\n\
-_08009A64: .4byte 0x00003417\n\
-_08009A68: .4byte 0x00003C17\n\
-_08009A6C:\n\
-    lsls r2, r4, #5\n\
-    adds r2, r5, r2\n\
-    lsls r2, r2, #1\n\
-    adds r2, r2, r3\n\
-    ldr r1, _08009A9C @ =0x00003017\n\
-    adds r0, r1, #0\n\
-    strh r0, [r2]\n\
-    adds r0, r4, #1\n\
-    lsls r0, r0, #5\n\
-    adds r0, r5, r0\n\
-    lsls r0, r0, #1\n\
-    adds r0, r0, r3\n\
-    ldr r3, _08009AA0 @ =0x00003817\n\
-    adds r1, r3, #0\n\
-    strh r1, [r0]\n\
-    adds r3, #2\n\
-    adds r1, r3, #0\n\
-    strh r1, [r2, #2]\n\
-    ldr r2, _08009AA4 @ =0x00003818\n\
-_08009A92:\n\
-    adds r1, r2, #0\n\
-    strh r1, [r0, #2]\n\
-_08009A96:\n\
-    pop {r4, r5, r6}\n\
-    pop {r0}\n\
-    bx r0\n\
-    .align 2, 0\n\
-_08009A9C: .4byte 0x00003017\n\
-_08009AA0: .4byte 0x00003817\n\
-_08009AA4: .4byte 0x00003818\n\
-    .syntax divided\n\
-");
+    u16* buf = GetBgTilemap(bg);
+
+    switch (kind)
+    {
+        case 0:
+            buf[TM_OFFSET_(x    , y    )] = TILEREF(0x10 + 4, 3);
+            buf[TM_OFFSET_(x + 1, y    )] = TILEREF(0x10 + 4, 3) + TILE_HFLIP;
+            buf[TM_OFFSET_(x    , y + 1)] = TILEREF(0x10 + 6, 3) + TILE_HFLIP;
+            buf[TM_OFFSET_(x + 1, y + 1)] = TILEREF(0x10 + 5, 3) + TILE_HFLIP;
+
+            break;
+
+        case 1:
+            buf[TM_OFFSET_(x    , y    )] = TILEREF(0x10 + 4, 3);
+            buf[TM_OFFSET_(x + 1, y    )] = TILEREF(0x10 + 4, 3) + TILE_HFLIP;
+            buf[TM_OFFSET_(x    , y + 1)] = TILEREF(0x10 + 5, 3);
+            buf[TM_OFFSET_(x + 1, y + 1)] = TILEREF(0x10 + 6, 3);
+
+            break;
+
+        case 2:
+            buf[TM_OFFSET_(x    , y    )] = TILEREF(0x10 + 8, 3) + TILE_HFLIP;
+            buf[TM_OFFSET_(x    , y + 1)] = TILEREF(0x10 + 9, 3) + TILE_HFLIP;
+            buf[TM_OFFSET_(x + 1, y    )] = TILEREF(0x10 + 7, 3) + TILE_HFLIP;
+            buf[TM_OFFSET_(x + 1, y + 1)] = TILEREF(0x10 + 7, 3) + TILE_HFLIP + TILE_VFLIP;
+
+            break;
+
+        case 3:
+            buf[TM_OFFSET_(x    , y    )] = TILEREF(0x10 + 7, 3);
+            buf[TM_OFFSET_(x    , y + 1)] = TILEREF(0x10 + 7, 3) + TILE_VFLIP;
+            buf[TM_OFFSET_(x + 1, y    )] = TILEREF(0x10 + 8, 3);
+            buf[TM_OFFSET_(x + 1, y + 1)] = TILEREF(0x10 + 9, 3);
+
+            break;
+
+        case 4:
+            buf[TM_OFFSET_(x    , y    )] = TILEREF(0x10 + 9, 3) + TILE_HFLIP + TILE_VFLIP;
+            buf[TM_OFFSET_(x    , y + 1)] = TILEREF(0x10 + 8, 3) + TILE_HFLIP + TILE_VFLIP;
+            buf[TM_OFFSET_(x + 1, y    )] = TILEREF(0x10 + 7, 3) + TILE_HFLIP;
+            buf[TM_OFFSET_(x + 1, y + 1)] = TILEREF(0x10 + 7, 3) + TILE_HFLIP + TILE_VFLIP;
+
+            break;
+
+        case 5:
+            buf[TM_OFFSET_(x    , y    )] = TILEREF(0x10 + 7, 3);
+            buf[TM_OFFSET_(x    , y + 1)] = TILEREF(0x10 + 7, 3) + TILE_VFLIP;
+            buf[TM_OFFSET_(x + 1, y    )] = TILEREF(0x10 + 9, 3) + TILE_VFLIP;
+            buf[TM_OFFSET_(x + 1, y + 1)] = TILEREF(0x10 + 8, 3) + TILE_VFLIP;
+
+            break;
+    }
 }
-
-#if NONMATCHING
-
-// adds r0, r1, r6
-// instead of
-// adds r0, r6, r1
 
 void sub_8009AA8(int id, int x, int y, int width, int height)
 {
@@ -2782,194 +2339,25 @@ void sub_8009AA8(int id, int x, int y, int width, int height)
 
     for (i = x; i < x + width; ++i)
     {
-        tilemap[TM_OFFSET(i, y)]          = TILEREF(0x10 + 1, BGPAL_TALK_BUBBLE);
-        tilemap[TM_OFFSET(i, y + height)] = TILEREF(0x10 + 1, BGPAL_TALK_BUBBLE) + TILE_VFLIP;
+        tilemap[TM_OFFSET_(i, y)]          = TILEREF(0x10 + 1, BGPAL_TALK_BUBBLE);
+        tilemap[TM_OFFSET_(i, y + height)] = TILEREF(0x10 + 1, BGPAL_TALK_BUBBLE) + TILE_VFLIP;
     }
 
     for (i = y; i < y + height; ++i)
     {
-        tilemap[TM_OFFSET(x, i)]         = TILEREF(0x10 + 2, BGPAL_TALK_BUBBLE);
-        tilemap[TM_OFFSET(x + width, i)] = TILEREF(0x10 + 2, BGPAL_TALK_BUBBLE) + TILE_HFLIP;
+        tilemap[TM_OFFSET_(x, i)]         = TILEREF(0x10 + 2, BGPAL_TALK_BUBBLE);
+        tilemap[TM_OFFSET_(x + width, i)] = TILEREF(0x10 + 2, BGPAL_TALK_BUBBLE) + TILE_HFLIP;
     }
 
     for (i = x + 1; i < x + width; ++i)
         for (j = y + 1; j < y + height; ++j)
             tilemap[TM_OFFSET(i, j)] = TILEREF(0x10 + 3, BGPAL_TALK_BUBBLE);
 
-    tilemap[TM_OFFSET(x,         y)]          = TILEREF(0x10 + 0, BGPAL_TALK_BUBBLE);
-    tilemap[TM_OFFSET(x + width, y)]          = TILEREF(0x10 + 0, BGPAL_TALK_BUBBLE) + TILE_HFLIP;
-    tilemap[TM_OFFSET(x,         y + height)] = TILEREF(0x10 + 0, BGPAL_TALK_BUBBLE) + TILE_VFLIP;
-    tilemap[TM_OFFSET(x + width, y + height)] = TILEREF(0x10 + 0, BGPAL_TALK_BUBBLE) + TILE_HFLIP + TILE_VFLIP;
+    tilemap[TM_OFFSET_(x,         y)]          = TILEREF(0x10 + 0, BGPAL_TALK_BUBBLE);
+    tilemap[TM_OFFSET_(x + width, y)]          = TILEREF(0x10 + 0, BGPAL_TALK_BUBBLE) + TILE_HFLIP;
+    tilemap[TM_OFFSET_(x,         y + height)] = TILEREF(0x10 + 0, BGPAL_TALK_BUBBLE) + TILE_VFLIP;
+    tilemap[TM_OFFSET_(x + width, y + height)] = TILEREF(0x10 + 0, BGPAL_TALK_BUBBLE) + TILE_HFLIP + TILE_VFLIP;
 }
-
-#else
-
-NAKEDFUNC
-void sub_8009AA8(int id, int x, int y, int width, int height)
-{
-    asm("   .syntax unified\n\
-    push {r4, r5, r6, r7, lr}\n\
-    mov r7, sl\n\
-    mov r6, sb\n\
-    mov r5, r8\n\
-    push {r5, r6, r7}\n\
-    sub sp, #8\n\
-    mov r8, r1\n\
-    str r2, [sp]\n\
-    adds r5, r3, #0\n\
-    ldr r4, [sp, #0x28]\n\
-    bl GetBgTilemap\n\
-    adds r7, r0, #0\n\
-    subs r5, #1\n\
-    subs r4, #1\n\
-    mov r0, r8\n\
-    adds r3, r0, r5\n\
-    cmp r8, r3\n\
-    bge _08009B00\n\
-    ldr r1, _08009BC0 @ =0x00003011\n\
-    mov sb, r1\n\
-    ldr r2, [sp]\n\
-    adds r0, r2, r4\n\
-    mov r6, r8\n\
-    lsls r1, r6, #1\n\
-    lsls r0, r0, #6\n\
-    adds r0, r0, r7\n\
-    adds r2, r1, r0\n\
-    ldr r6, [sp]\n\
-    lsls r0, r6, #6\n\
-    adds r0, r0, r7\n\
-    adds r1, r1, r0\n\
-    ldr r6, _08009BC4 @ =0x00003811\n\
-    adds r0, r6, #0\n\
-    mov r6, r8\n\
-    subs r3, r3, r6\n\
-_08009AF0:\n\
-    mov r6, sb\n\
-    strh r6, [r1]\n\
-    strh r0, [r2]\n\
-    adds r2, #2\n\
-    adds r1, #2\n\
-    subs r3, #1\n\
-    cmp r3, #0\n\
-    bne _08009AF0\n\
-_08009B00:\n\
-    ldr r3, [sp]\n\
-    add r5, r8\n\
-    mov ip, r5\n\
-    lsls r0, r3, #5\n\
-    str r0, [sp, #4]\n\
-    adds r4, r4, r3\n\
-    mov sb, r4\n\
-    movs r1, #1\n\
-    add r1, r8\n\
-    mov sl, r1\n\
-    cmp r3, sb\n\
-    bge _08009B44\n\
-    ldr r2, _08009BC8 @ =0x00003012\n\
-    adds r6, r2, #0\n\
-    ldr r4, _08009BCC @ =0x00003412\n\
-    adds r5, r4, #0\n\
-    lsls r0, r3, #6\n\
-    mov r2, ip\n\
-    lsls r1, r2, #1\n\
-    adds r1, r1, r7\n\
-    adds r2, r0, r1\n\
-    mov r4, r8\n\
-    lsls r1, r4, #1\n\
-    adds r1, r1, r7\n\
-    adds r0, r0, r1\n\
-    mov r1, sb\n\
-    subs r3, r1, r3\n\
-_08009B36:\n\
-    strh r6, [r0]\n\
-    strh r5, [r2]\n\
-    adds r2, #0x40\n\
-    adds r0, #0x40\n\
-    subs r3, #1\n\
-    cmp r3, #0\n\
-    bne _08009B36\n\
-_08009B44:\n\
-    mov r3, sl\n\
-    cmp r3, ip\n\
-    bge _08009B76\n\
-    mov r5, sb\n\
-    mov sl, ip\n\
-_08009B4E:\n\
-    ldr r2, [sp]\n\
-    adds r2, #1\n\
-    adds r4, r3, #1\n\
-    cmp r2, r5\n\
-    bge _08009B70\n\
-    ldr r0, _08009BD0 @ =0x00003013\n\
-    adds r6, r0, #0\n\
-    lsls r1, r2, #6\n\
-    lsls r0, r3, #1\n\
-    adds r0, r0, r7\n\
-    adds r0, r1, r0\n\
-    subs r2, r5, r2\n\
-_08009B66:\n\
-    strh r6, [r0]\n\
-    adds r0, #0x40\n\
-    subs r2, #1\n\
-    cmp r2, #0\n\
-    bne _08009B66\n\
-_08009B70:\n\
-    adds r3, r4, #0\n\
-    cmp r3, sl\n\
-    blt _08009B4E\n\
-_08009B76:\n\
-    ldr r0, [sp, #4]\n\
-    add r0, r8\n\
-    lsls r0, r0, #1\n\
-    adds r0, r0, r7\n\
-    ldr r2, _08009BD4 @ =0x00003010\n\
-    adds r1, r2, #0\n\
-    strh r1, [r0]\n\
-    ldr r0, [sp, #4]\n\
-    add r0, ip\n\
-    lsls r0, r0, #1\n\
-    adds r0, r0, r7\n\
-    ldr r3, _08009BD8 @ =0x00003410\n\
-    adds r1, r3, #0\n\
-    strh r1, [r0]\n\
-    mov r4, sb\n\
-    lsls r1, r4, #5\n\
-    mov r6, r8\n\
-    adds r0, r6, r1\n\
-    lsls r0, r0, #1\n\
-    adds r0, r0, r7\n\
-    ldr r3, _08009BDC @ =0x00003810\n\
-    adds r2, r3, #0\n\
-    strh r2, [r0]\n\
-    add r1, ip\n\
-    lsls r1, r1, #1\n\
-    adds r1, r1, r7\n\
-    ldr r4, _08009BE0 @ =0x00003C10\n\
-    adds r0, r4, #0\n\
-    strh r0, [r1]\n\
-    add sp, #8\n\
-    pop {r3, r4, r5}\n\
-    mov r8, r3\n\
-    mov sb, r4\n\
-    mov sl, r5\n\
-    pop {r4, r5, r6, r7}\n\
-    pop {r0}\n\
-    bx r0\n\
-    .syntax divided\n\
-    .align 2, 0\n\
-_08009BC0: .4byte 0x00003011\n\
-_08009BC4: .4byte 0x00003811\n\
-_08009BC8: .4byte 0x00003012\n\
-_08009BCC: .4byte 0x00003412\n\
-_08009BD0: .4byte 0x00003013\n\
-_08009BD4: .4byte 0x00003010\n\
-_08009BD8: .4byte 0x00003410\n\
-_08009BDC: .4byte 0x00003810\n\
-_08009BE0: .4byte 0x00003C10\n\
-");
-}
-
-#endif
 
 void nullsub_25()
 {

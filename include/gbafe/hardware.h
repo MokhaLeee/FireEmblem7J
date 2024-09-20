@@ -236,7 +236,7 @@ extern Func gOnHBlankB;
 #define RGB_GET_GREEN(color) (((color) >> 5) & 0x1F)
 #define RGB_GET_BLUE(color) (((color) >> 10) & 0x1F)
 
-#define TM_OFFSET_(x, y) (((y) << 5) + (x))
+#define TM_OFFSET_(x, y) ((x) + ((y) << 5))
 #define TM_OFFSET(x, y) (((y) * 0x20) + (x))
 
 #define TILE_CHR_SAFE(chr) ((chr) & 0x3FF)
