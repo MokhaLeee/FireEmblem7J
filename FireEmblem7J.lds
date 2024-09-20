@@ -96,6 +96,10 @@ SECTIONS
 		. = 0x020140;
 		. = ALIGN(4); src/hardware.o(ewram_data);
 		. = ALIGN(4); src/move-data.o(ewram_data);
+		. = 0x024E20; Unk_02024E20 = .;
+		. = 0x026920; Unk_02026920 = .;
+		. = 0x026A24; Unk_02026A24 = .;
+		. = 0x026A28; Unk_02026A28 = .;
 		. = 0x026A48;
 		. = ALIGN(4); src/icon.o(ewram_data);
 		. = 0x028D68; gActiveFont = .;
@@ -210,7 +214,7 @@ SECTIONS
 		src/oam.o(.text);
 		asm/sound.o(.text);
 		asm/ram-funcs.o(.text);
-		asm/proc.o(.text);
+		src/proc.o(.text);
 		src/icon.o(.text);
 		asm/debug-text.o(.text);
 		asm/text.o(.text);
