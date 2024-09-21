@@ -480,13 +480,13 @@ void sub_800479C(ProcPtr proc, ProcFunc func)
     }
 }
 
-int sub_80047B8(ProcPtr proc)
+bool sub_80047B8(ProcPtr proc)
 {
     Proc_End(proc);
     return 0;
 }
 
-int sub_80047C4(ProcPtr proc)
+bool sub_80047C4(ProcPtr proc)
 {
     struct Proc * p = ((struct Proc*)proc);
 
@@ -496,7 +496,7 @@ int sub_80047C4(ProcPtr proc)
     return 1;
 }
 
-int sub_80047D4(ProcPtr proc)
+bool sub_80047D4(ProcPtr proc)
 {
     struct Proc * p = ((struct Proc*)proc);
 
@@ -546,7 +546,7 @@ bool sub_8004820(ProcPtr proc)
     return TRUE;
 }
 
-int sub_800484C(ProcPtr proc)
+bool sub_800484C(ProcPtr proc)
 {
     struct Proc * p = ((struct Proc*)proc);
 
@@ -556,7 +556,7 @@ int sub_800484C(ProcPtr proc)
     return 0;
 }
 
-int sub_800485C(ProcPtr proc)
+bool sub_800485C(ProcPtr proc)
 {
     struct Proc * p = ((struct Proc*)proc);
 
@@ -567,7 +567,7 @@ int sub_800485C(ProcPtr proc)
     return 1;
 }
 
-int sub_8004878(ProcPtr proc)
+bool sub_8004878(ProcPtr proc)
 {
     struct Proc * p = ((struct Proc*)proc);
 
@@ -578,7 +578,7 @@ int sub_8004878(ProcPtr proc)
     return 1;
 }
 
-int sub_8004894(ProcPtr proc)
+bool sub_8004894(ProcPtr proc)
 {
     struct Proc * p = ((struct Proc*)proc);
 
@@ -589,7 +589,7 @@ int sub_8004894(ProcPtr proc)
     return 0;
 }
 
-int sub_80048B0(ProcPtr proc)
+bool sub_80048B0(ProcPtr proc)
 {
     struct Proc * p = ((struct Proc*)proc);
 
@@ -600,7 +600,7 @@ int sub_80048B0(ProcPtr proc)
     return 1;
 }
 
-int sub_80048D0(ProcPtr proc)
+bool sub_80048D0(ProcPtr proc)
 {
     struct Proc * p = ((struct Proc*)proc);
 
@@ -615,7 +615,7 @@ int sub_80048D0(ProcPtr proc)
     return 1;
 }
 
-int sub_80048F8(ProcPtr proc)
+bool sub_80048F8(ProcPtr proc)
 {
     struct Proc * p = ((struct Proc*)proc);
 
@@ -626,7 +626,7 @@ int sub_80048F8(ProcPtr proc)
     return 1;
 }
 
-int sub_8004914(ProcPtr proc)
+bool sub_8004914(ProcPtr proc)
 {
     struct Proc * p = ((struct Proc*)proc);
 
@@ -637,7 +637,7 @@ int sub_8004914(ProcPtr proc)
     return 1;
 }
 
-int sub_8004930(ProcPtr proc)
+bool sub_8004930(ProcPtr proc)
 {
     struct Proc * p = ((struct Proc*)proc);
 
@@ -645,7 +645,7 @@ int sub_8004930(ProcPtr proc)
     return 1;
 }
 
-int sub_800493C(ProcPtr proc)
+bool sub_800493C(ProcPtr proc)
 {
     struct Proc * p = ((struct Proc*)proc);
 
@@ -655,7 +655,7 @@ int sub_800493C(ProcPtr proc)
     return 1;
 }
 
-int sub_800494C(ProcPtr proc)
+bool sub_800494C(ProcPtr proc)
 {
     struct Proc * p = ((struct Proc*)proc);
 
@@ -674,7 +674,7 @@ void sub_8004960(ProcPtr proc)
     }
 }
 
-int sub_800497C(ProcPtr proc)
+bool sub_800497C(ProcPtr proc)
 {
     struct Proc * p = ((struct Proc*)proc);
 
@@ -689,7 +689,7 @@ int sub_800497C(ProcPtr proc)
     return 0;
 }
 
-int sub_80049A0(ProcPtr proc)
+bool sub_80049A0(ProcPtr proc)
 {
     struct Proc * p = ((struct Proc*)proc);
 
@@ -699,7 +699,7 @@ int sub_80049A0(ProcPtr proc)
     return 1;
 }
 
-int sub_80049B4(ProcPtr proc)
+bool sub_80049B4(ProcPtr proc)
 {
     struct Proc * p = ((struct Proc*)proc);
 
@@ -708,12 +708,12 @@ int sub_80049B4(ProcPtr proc)
     return 1;
 }
 
-int sub_80049C0(ProcPtr proc)
+bool sub_80049C0(ProcPtr proc)
 {
     return 0;
 }
 
-int sub_80049C4(ProcPtr proc)
+bool sub_80049C4(ProcPtr proc)
 {
     struct Proc * p = ((struct Proc*)proc);
     struct Proc * ptr = Unk_02024E20;
@@ -739,7 +739,7 @@ int sub_80049C4(ProcPtr proc)
     }
 }
 
-int sub_8004A04(ProcPtr proc)
+bool sub_8004A04(ProcPtr proc)
 {
     struct Proc * p = ((struct Proc*)proc);
     struct Proc * ptr = Unk_02024E20;
@@ -758,7 +758,7 @@ int sub_8004A04(ProcPtr proc)
     return 1;
 }
 
-int sub_8004A3C(ProcPtr proc)
+bool sub_8004A3C(ProcPtr proc)
 {
     struct Proc * p = ((struct Proc*)proc);
 
@@ -767,7 +767,7 @@ int sub_8004A3C(ProcPtr proc)
     return 1;
 }
 
-int sub_8004A48(ProcPtr proc)
+bool sub_8004A48(ProcPtr proc)
 {
     struct Proc * p = ((struct Proc*)proc);
 
@@ -777,10 +777,35 @@ int sub_8004A48(ProcPtr proc)
     return 1;
 }
 
-#if NONMATCHING
-
-// seems to be a local static variable (cf StepProcScr in fe6j)
-extern BoolProcFunc gUnk_08BBFD28[]; 
+BoolProcFunc gUnk_08BBFD28[] =
+{
+    sub_80047B8,
+    sub_80047C4,
+    sub_80047D4,
+    sub_800484C,
+    sub_800485C,
+    sub_8004878,
+    sub_8004894,
+    sub_80048B0,
+    sub_80048D0,
+    sub_80048F8,
+    sub_8004914,
+    sub_8004930,
+    sub_800494C,
+    sub_800493C,
+    sub_800497C,
+    sub_80049A0,
+    sub_80049C0,
+    sub_80049C4,
+    sub_8004A48,
+    sub_80049B4,
+    sub_8004820,
+    sub_8004A3C,
+    sub_80047E8,
+    sub_8004A04,
+    sub_8004800,
+    sub_8004930,
+};
 
 void sub_8004A60(ProcPtr proc)
 {
@@ -794,61 +819,11 @@ void sub_8004A60(ProcPtr proc)
         {
             if (p->proc_script == 0)
             {
-                break;
+                return;
             }
         }
     }
 }
-
-#else
-
-NAKEDFUNC
-void sub_8004A60(ProcPtr proc)
-{
-    asm("\n\
-    .syntax unified\n\
-    push {r4, r5, lr}\n\
-    adds r4, r0, #0\n\
-    ldr r0, [r4]\n\
-    cmp r0, #0\n\
-    beq _08004AA2\n\
-    adds r0, r4, #0\n\
-    adds r0, #0x28\n\
-    ldrb r0, [r0]\n\
-    cmp r0, #0\n\
-    bne _08004AA2\n\
-    ldr r0, [r4, #0xc]\n\
-    cmp r0, #0\n\
-    bne _08004AA2\n\
-    ldr r5, _08004A80 @ =gUnk_08BBFD28\n\
-    b _08004A8A\n\
-    .align 2, 0\n\
-_08004A80: .4byte gUnk_08BBFD28\n\
-_08004A84:\n\
-    ldr r0, [r4]\n\
-    cmp r0, #0\n\
-    beq _08004AA2\n\
-_08004A8A:\n\
-    ldr r0, [r4, #4]\n\
-    movs r1, #0\n\
-    ldrsh r0, [r0, r1]\n\
-    lsls r0, r0, #2\n\
-    adds r0, r0, r5\n\
-    ldr r1, [r0]\n\
-    adds r0, r4, #0\n\
-    bl _call_via_r1\n\
-    lsls r0, r0, #0x18\n\
-    cmp r0, #0\n\
-    bne _08004A84\n\
-_08004AA2:\n\
-    pop {r4, r5}\n\
-    pop {r0}\n\
-    bx r0\n\
-    .syntax divided\n\
-");
-}
-
-#endif
 
 void nullsub_2(ProcPtr proc)
 {

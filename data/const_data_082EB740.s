@@ -402,7 +402,27 @@ Pal_ManimWindowHpBar:	@ 0x08400BA8
 
 	.global gUnk_084027B0
 gUnk_084027B0:	@ 0x084027B0
-	.incbin "FireEmblem7J.base.gba", 0x4027B0, 0x402A4C - 0x4027B0
+	.incbin "FireEmblem7J.base.gba", 0x4027B0, 0x402858 - 0x4027B0
+
+	.global gUnk_08402858
+gUnk_08402858:	@ 0x08402858
+	.incbin "FireEmblem7J.base.gba", 0x402858, 0x4028FC - 0x402858
+
+	.global gUnk_084028FC
+gUnk_084028FC:	@ 0x084028FC
+	.incbin "FireEmblem7J.base.gba", 0x4028FC, 0x402958 - 0x4028FC
+
+	.global gUnk_08402958
+gUnk_08402958:	@ 0x08402958
+	.incbin "FireEmblem7J.base.gba", 0x402958, 0x4029AC - 0x402958
+
+	.global gUnk_084029AC
+gUnk_084029AC:	@ 0x084029AC
+	.incbin "FireEmblem7J.base.gba", 0x4029AC, 0x4029FC - 0x4029AC
+
+	.global gUnk_084029FC
+gUnk_084029FC:	@ 0x084029FC
+	.incbin "FireEmblem7J.base.gba", 0x4029FC, 0x402A4C - 0x4029FC
 
 	.global gUnk_08402A4C
 gUnk_08402A4C:	@ 0x08402A4C

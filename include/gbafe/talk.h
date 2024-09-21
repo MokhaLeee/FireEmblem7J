@@ -41,6 +41,68 @@ enum talk_face
     TALK_FACE_NONE = 0xFF,
 };
 
+
+struct TalkSt
+{
+    /* 00 */ char const * str;
+    /* 04 */ char const * str_back;
+    /* 08 */ u8 print_color;
+    /* 09 */ u8 line_active;
+    /* 0A */ u8 lines;
+    /* 0B */ u8 top_text_num;
+    /* 0C */ u8 x_text;
+    /* 0D */ u8 y_text;
+    /* 0E */ u8 active_width;
+    /* 0F */ s8 speak_talk_face;
+    /* 10 */ u8 speak_width;
+    /* 11 */ u8 active_talk_face;
+    /* 12 */ bool8 instant_print;
+    /* 13 */ s8 print_delay;
+    /* 14 */ s8 print_clock;
+    /* 15 */ u8 put_lines;
+    /* 16 */ u8 unk_16;
+    /* 17 */ u8 unk_17;
+    /* 18 */ struct FaceProc * faces[TALK_FACE_COUNT];
+    /* 38 */ ProcFunc unk_38;
+    /* 3C */ int number;
+    /* 40 */ char buf_number_str[0x20];
+    /* 60 */ char buf_unk_str[0x20];
+    /* 80 */ u16 unk_80;
+    /* 82 */ u8 unk_82;
+    /* 83 */ u8 unk_83;
+};
+
+struct TalkChoiceEnt
+{
+    u16 msg;
+    Func onSwitch;
+};
+
+struct TalkChoiceProc
+{
+    PROC_HEADER;
+
+    short selectedChoice;
+    short x_disp;
+    short y_disp;
+    int unused30;
+    struct TalkChoiceEnt const * choices;
+};
+
+struct ProcTalkAdvance {
+    PROC_HEADER;
+
+    STRUCT_PAD(0x29, 0x4C);
+
+    void * dst;
+    int unk50;
+    int lines, _fill;
+
+    STRUCT_PAD(0x5C, 0x64);
+
+    s16 timer;
+};
+
 // ??? sub_8007C10
 // ??? sub_8007C48
 // ??? sub_8007C64
@@ -73,11 +135,11 @@ bool sub_8008308(ProcPtr proc);
 // ??? TalkToggleInvertedPalette
 int TalkInterpret(ProcPtr proc);
 void sub_8008CB8(int);
-// ??? sub_8008CC4
+void sub_8008CC4(ProcPtr proc);
 // ??? sub_8008DA8
 // ??? sub_8008DC8
 void sub_8008DFC(int talk_face, int toBack);
-// ??? sub_8008E58
+void sub_8008E58(int talkFaceFrom, int talkFaceTo);
 bool sub_8008EB0();
 void sub_8008ECC(int talkFaceFrom, int talkFaceTo, bool isSwap);
 // ??? sub_8008F24
@@ -86,21 +148,21 @@ void sub_8008ECC(int talkFaceFrom, int talkFaceTo, bool isSwap);
 // ??? sub_800909C
 // ??? sub_80090C0
 // ??? nullsub_24
-// ??? sub_800914C
+void sub_800914C(struct Proc * parent, int x, int y);
 // ??? sub_8009178
 // ??? sub_80091AC
 // ??? sub_8009218
-// ??? sub_800925C
+void sub_800925C(struct TalkChoiceEnt const * choices, struct Text * text, u16 * tm, int defaultChoice, int color, struct Proc * parent);
 // ??? sub_8009310
 // ??? sub_8009418
 // ??? sub_8009458
 // ??? sub_800954C
 // ??? sub_8009564
-// ??? sub_8009598
-// ??? sub_80095D4
+void sub_8009598();
+int sub_80095D4(int cmd);
 void sub_80095E4();
 void sub_8009628();
-// ??? sub_800968C
+void sub_800968C();
 // ??? sub_80096E0
 void sub_800981C();
 // ??? sub_8009834
@@ -135,67 +197,6 @@ int sub_8009FAC(char const * str, bool isBubbleOpen);
 // ??? sub_800A3B8
 // ??? sub_800A3C8
 void TalkBgSync(int bits);
-
-struct TalkSt
-{
-    char const * str;
-    char const * str_back;
-    u8 print_color;
-    u8 line_active;
-    u8 lines;
-    u8 top_text_num;
-    u8 x_text;
-    u8 y_text;
-    u8 active_width;
-    s8 speak_talk_face;
-    u8 speak_width;
-    u8 active_talk_face;
-    bool8 instant_print;
-    s8 print_delay;
-    s8 print_clock;
-    u8 put_lines;
-    u8 unk_16;
-    u8 unk_17;
-    struct FaceProc * faces[TALK_FACE_COUNT];
-    u32 flags;
-    int number;
-    char buf_number_str[0x20];
-    char buf_unk_str[0x20];
-    u16 unk_80;
-    u8 unk_82;
-    u8 unk_83;
-};
-
-struct TalkChoiceEnt
-{
-    u16 msg;
-    Func onSwitch;
-};
-
-struct TalkChoiceProc
-{
-    PROC_HEADER;
-
-    short selectedChoice;
-    short x_disp;
-    short y_disp;
-    int unused30;
-    struct TalkChoiceEnt const * choices;
-};
-
-struct ProcTalkAdvance {
-    PROC_HEADER;
-
-    STRUCT_PAD(0x29, 0x4C);
-
-    void * dst;
-    int unk50;
-    int lines, _fill;
-
-    STRUCT_PAD(0x5C, 0x64);
-
-    s16 timer;
-};
 
 bool TalkAdvanceDeamon_Loop(ProcPtr proc);
 void TalkAdvanceDeamon_End(ProcPtr proc);
