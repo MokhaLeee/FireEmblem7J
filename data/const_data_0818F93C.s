@@ -1,13 +1,5 @@
 	.section .rodata
 
-	.global gUnk_0818F93C
-gUnk_0818F93C:	@ 0x0818F93C
-	.incbin "FireEmblem7J.base.gba", 0x18F93C, 0x18F958 - 0x18F93C
-
-	.global gUnk_0818F958
-gUnk_0818F958:	@ 0x0818F958
-	.incbin "FireEmblem7J.base.gba", 0x18F958, 0x18F960 - 0x18F958
-
 	.global gUnk_0818F960
 gUnk_0818F960:	@ 0x0818F960
 	.incbin "FireEmblem7J.base.gba", 0x18F960, 0x18F980 - 0x18F960

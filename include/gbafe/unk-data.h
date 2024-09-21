@@ -1344,7 +1344,12 @@ extern const u8 Tsa_EkrDragonFireBG2[];
 // ??? gUnk_0840085C
 // ??? gUnk_084009F0
 // ??? Pal_ManimWindowHpBar
-extern u16 gUnk_084027B0[];
+extern u8 const gUnk_084027B0[];
+extern u8 const gUnk_08402858[];
+extern u8 const gUnk_084028FC[];
+extern u8 const gUnk_08402958[];
+extern u8 const gUnk_084029AC[];
+extern u8 const gUnk_084029FC[];
 extern u16 gUnk_08402A4C[];
 // ??? gUnk_08402BF0
 // ??? gUnk_08402F68
