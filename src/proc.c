@@ -3,7 +3,7 @@
 void UnlinkProcess(struct Proc *);
 struct Proc * AllocateProcess();
 void FreeProcess(struct Proc * proc);
-void InsertRootProcess(struct Proc * proc, ProcPtr parent);
+void InsertRootProcess(struct Proc * proc, s32 parent);
 void InsertChildProcess(struct Proc * proc, struct Proc * parent);
 void sub_8004A60(ProcPtr proc);
 
@@ -67,7 +67,7 @@ ProcPtr Proc_Start(const struct ProcCmd * script, ProcPtr parent)
 
     if ((s32)parent < 8)
     {
-        InsertRootProcess(proc, parent);
+        InsertRootProcess(proc, (s32)parent);
     }
     else
     {
@@ -151,52 +151,19 @@ void FreeProcess(struct Proc * proc)
     *Unk_02026A24 = proc;
 }
 
-#if NONMATCHING
-
-// ASM is matching but binary has a different byte 0x44AB
-
-void InsertRootProcess(struct Proc * proc, ProcPtr parent)
+void InsertRootProcess(struct Proc * proc, s32 parent)
 {
-    struct Proc ** ptr = &Unk_02026A28[(s32)parent];
+    struct Proc * ptr = *(Unk_02026A28 + parent);
 
-    if (*ptr != 0)
+    if (ptr != 0)
     {
-        (*ptr)->proc_next = proc;
+        ptr->proc_next = proc;
         proc->proc_prev = ptr;
     }
 
-    proc->proc_parent = parent;
-    *ptr = proc;
+    proc->proc_parent = (ProcPtr)parent;
+    Unk_02026A28[parent] = proc;
 }
-
-#else
-
-NAKEDFUNC
-void InsertRootProcess(struct Proc * proc, ProcPtr parent)
-{
-    asm("\n\
-    .syntax unified\n\
-    adds r2, r0, #0\n\
-    adds r3, r1, #0\n\
-    lsls r1, r3, #2\n\
-    ldr r0, _080044B4 @ =0x02026A28\n\
-    adds r1, r1, r0\n\
-    ldr r0, [r1]\n\
-    cmp r0, #0\n\
-    beq _080044AC\n\
-    str r2, [r0, #0x1c]\n\
-    str r0, [r2, #0x20]\n\
-_080044AC:\n\
-    str r3, [r2, #0x14]\n\
-    str r2, [r1]\n\
-    bx lr\n\
-    .align 2, 0\n\
-_080044B4: .4byte 0x02026A28\n\
-    .syntax divided\n\
-");
-}
-
-#endif
 
 void InsertChildProcess(struct Proc * proc, struct Proc * parent)
 {
@@ -550,48 +517,16 @@ bool sub_80047E8(ProcPtr proc)
     return func(p);
 }
 
-#if NONMATCHING
-
-// r1 and r2 are swapped
-
 bool sub_8004800(ProcPtr proc)
 {
     struct Proc * p = ((struct Proc*)proc);
 
     short arg = p->proc_scrCur->dataImm;
-    bool(* func)(short) = p->proc_scrCur->dataPtr;
+    bool(* func)(short, ProcPtr) = p->proc_scrCur->dataPtr;
     p->proc_scrCur++;
 
-    return func(arg);
+    return func(arg, proc);
 }
-
-#else
-
-NAKEDFUNC
-bool sub_8004800(ProcPtr proc)
-{
-    asm("\n\
-    .syntax unified\n\
-    push {lr}\n\
-    adds r1, r0, #0\n\
-    ldr r2, [r1, #4]\n\
-    ldrh r0, [r2, #2]\n\
-    ldr r3, [r2, #4]\n\
-    adds r2, #8\n\
-    str r2, [r1, #4]\n\
-    lsls r0, r0, #0x10\n\
-    asrs r0, r0, #0x10\n\
-    bl _call_via_r3\n\
-    lsls r0, r0, #0x18\n\
-    asrs r0, r0, #0x18\n\
-    pop {r1}\n\
-    bx r1\n\
-    .align 2, 0\n\
-    .syntax divided\n\
-");
-}
-
-#endif
 
 bool sub_8004820(ProcPtr proc)
 {
@@ -812,7 +747,7 @@ int sub_8004A04(ProcPtr proc)
 
     for (i = 0; i < PROC_COUNT; i++, ptr++)
     {
-        if (((struct Proc*)ptr) != p && ptr->proc_script == p->proc_script)
+        if (ptr != p && ptr->proc_script == p->proc_script)
         {
             Proc_End(ptr);
             break;
@@ -851,11 +786,13 @@ void sub_8004A60(ProcPtr proc)
 {
     struct Proc * p = ((struct Proc*)proc);
 
-    if (p->proc_script && !p->proc_lockCnt && !p->proc_idleCb && p->proc_scrCur)
+    if (p->proc_script
+        && !p->proc_lockCnt
+        && !p->proc_idleCb)
     {
         while (gUnk_08BBFD28[p->proc_scrCur->opcode](p))
         {
-            if (p->proc_script)
+            if (p->proc_script == 0)
             {
                 break;
             }

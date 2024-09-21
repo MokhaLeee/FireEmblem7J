@@ -64,21 +64,21 @@ void sub_8007DF4();
 // ??? sub_8007FC0
 // ??? sub_8008074
 // ??? sub_80080A8
-// ??? sub_800821C
-// ??? sub_8008308
+bool sub_800821C(ProcPtr proc);
+bool sub_8008308(ProcPtr proc);
 // ??? LockTalk
 // ??? IsTalkLocked
 // ??? ResumeTalk
 // ??? sub_800837C
 // ??? TalkToggleInvertedPalette
-// ??? TalkInterpret
+int TalkInterpret(ProcPtr proc);
 void sub_8008CB8(int);
 // ??? sub_8008CC4
 // ??? sub_8008DA8
 // ??? sub_8008DC8
 void sub_8008DFC(int talk_face, int toBack);
 // ??? sub_8008E58
-// ??? sub_8008EB0
+bool sub_8008EB0();
 void sub_8008ECC(int talkFaceFrom, int talkFaceTo, bool isSwap);
 // ??? sub_8008F24
 // ??? sub_8008F80
@@ -98,24 +98,24 @@ void sub_8008ECC(int talkFaceFrom, int talkFaceTo, bool isSwap);
 // ??? sub_8009564
 // ??? sub_8009598
 // ??? sub_80095D4
-// ??? sub_80095E4
+void sub_80095E4();
 void sub_8009628();
 // ??? sub_800968C
 // ??? sub_80096E0
-// ??? sub_800981C
+void sub_800981C();
 // ??? sub_8009834
-// ??? sub_80098A0
-// ??? sub_8009920
-// ??? sub_8009AA8
+void sub_80098A0(int x, int y, int width, int height);
+void sub_8009920(int bg, int x, int y, int kind);
+void sub_8009AA8(int id, int x, int y, int width, int height);
 // ??? nullsub_25
 // ??? sub_8009BE8
 // ??? sub_8009C58
 // ??? sub_8009C8C
-// ??? sub_8009D0C
-// ??? sub_8009D70
+void sub_8009D0C(int talk_face, struct Proc* parent);
+bool sub_8009D70();
 int sub_8009D94(int talk_face);
 // ??? SetTalkFaceDisp
-// ??? SetTalkFaceMouthMove
+void SetTalkFaceMouthMove(int face);
 void SetTalkFaceNoMouthMove(int face);
 // ??? IsTalkActive
 // ??? FaceExists
