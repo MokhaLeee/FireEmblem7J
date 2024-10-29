@@ -356,6 +356,7 @@ SECTIONS
 		. = ALIGN(4); src/talk.o(.rodata)
 		. = ALIGN(4); data/const_data_0818F93C.o(.rodata)
 		. = ALIGN(4); data/EventCallfx_SpriteAnim_SpawnAssassin.o(.rodata)
+		. = ALIGN(4); data/EventCallfx_SpriteAnim_SpawnAssassinAp.o(.rodata)
 		. = ALIGN(4); data/const_data_081C83E8.o(.rodata)
 		. = ALIGN(4); src/unit.o(.rodata)
 		. = ALIGN(4); data/const_data_081C9238.o(.rodata)
