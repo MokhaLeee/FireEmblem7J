@@ -387,6 +387,8 @@ SECTIONS
 		. = ALIGN(4); src/savemenu_modeselect.o(.rodata)
 		. = ALIGN(4); src/sysutil.o(.rodata)
 		. = ALIGN(4); data/data_0843943C.o(.data)
+		. = ALIGN(4); src/titlescreen.o(.rodata)
+		. = ALIGN(4); data/const_data_086C44EC.o(.rodata)
 		/* . = ALIGN(4); src/msg_data.o(.rodata) */
 		. = ALIGN(4); data/const_data_msg.o(.rodata)
 		. = ALIGN(4); data/const_data_main.o(.rodata)
@@ -455,7 +457,7 @@ SECTIONS
 		. = ALIGN(4); data/cursor_hand.o(.data)
 		. = ALIGN(4); src/sysutil.o(.data)
 		. = ALIGN(4); data/data_08DAE4C4.o(.data)
-		. = ALIGN(4); asm/titlescreen.o(.data)
+		. = ALIGN(4); src/titlescreen.o(.data)
 		. = ALIGN(4); data/data_op.o(.data)
 		. = ALIGN(4); src/bmbgfx_data.o(.data)
 		. = ALIGN(4); data/data_08DBAD14.o(.data)

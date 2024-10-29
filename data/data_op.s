@@ -1,11 +1,11 @@
 	.section .data
 
-	.global gUnk_08DB8F80
-gUnk_08DB8F80:	@ 0x08DB8F80
+	.global ProcScr_TitleFlame
+ProcScr_TitleFlame:	@ 0x08DB8F80
 	.incbin "FireEmblem7J.base.gba", 0xDB8F80, 0xDB8FA0 - 0xDB8F80
 
-	.global gUnk_08DB8FA0
-gUnk_08DB8FA0:	@ 0x08DB8FA0
+	.global Title_IntroAnimSpriteCtrl
+Title_IntroAnimSpriteCtrl:	@ 0x08DB8FA0
 	.incbin "FireEmblem7J.base.gba", 0xDB8FA0, 0xDB8FC0 - 0xDB8FA0
 
 	.global gUnk_08DB8FC0

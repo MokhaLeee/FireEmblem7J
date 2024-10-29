@@ -10,34 +10,36 @@ struct ProcTitle {
 
     /* 30 */ ProcPtr approc1, approc2, approc3, approc4, approc5, approc6;
 
-    STRUCT_PAD(0x48, 0x64);
+    STRUCT_PAD(0x48, 0x50);
 
-    /* 64 */ s16 timer;
+    /* 50 */ u8 timer; 
+    /* 51 */ s8 mode;
+    /* 54 */ int unk_54;
 };
 
-// HBlank_TitleScreen
-// ResetTitleBgAffin
-// void Title_InitSpriteAnim(struct ProcTitle * proc, bool anim_en);
-// Title_InitBg
-// Title_Init
-// Title_InitDisp
-// sub_80BB210
-// sub_80BB29C
-// sub_80BB3EC
-// sub_80BB46C
-// sub_80BB510
-// Title_IDLE
-// sub_80BB5B0
+void HBlank_TitleScreen(void);
+void ResetTitleBgAffin(u8 bg);
+void Title_InitSpriteAnim(struct ProcTitle * proc, bool anim_en);
+void Title_InitBg(struct ProcTitle * proc);
+void Title_Init(struct ProcTitle * proc);
+void Title_InitDisp(struct ProcTitle * proc);
+void Title_StartBmBgfxAnim(struct ProcTitle * proc);
+void sub_80BB29C(struct ProcTitle * proc);
+void sub_80BB3EC(struct ProcTitle * proc);
+void sub_80BB46C(struct ProcTitle * proc);
+void sub_80BB510(struct ProcTitle * proc);
+void Title_IDLE(struct ProcTitle * proc);
+void sub_80BB5B0(struct ProcTitle * proc);
 // StartTitleScreen_WithMusic
 // StartTitleScreen_FlagFalse
 // StartTitleScreen_FlagTrue
-// sub_80BB62C
+void Title_StartFlameAnim(struct ProcTitle * proc);
 // sub_80BB7D8
 // sub_80BB7FC
 // sub_80BB8CC
 // sub_80BB940
-// sub_80BBA64
-// sub_80BBAA4
+void SetTitleScreenAnimParamSync(ProcPtr approc, int a, int b, int c, int d, int e, ProcPtr parent);
+void sub_80BBAA4(ProcPtr approc, int a, int b, int c, int d, int e, int f, ProcPtr parent);
 // sub_80BBAEC
 // sub_80BBAFC
 // sub_80BBB4C
@@ -116,7 +118,7 @@ struct ProcTitle {
 // sub_80BDB24
 // sub_80BDB40
 // sub_80BDBE4
-// sub_80BDC2C
+void sub_80BDC2C(void * a, const u16 * pal, int pal_bank, int size, ProcPtr parent);
 // sub_80BDCC0
 // sub_80BDCFC
 // sub_80BDD34

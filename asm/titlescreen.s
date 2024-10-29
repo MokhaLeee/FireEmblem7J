@@ -1,689 +1,7 @@
 	.include "macro.inc"
 	.syntax unified
 
-	.section .data
 
-	.global ProcScr_TitleScreen
-ProcScr_TitleScreen: @ 0xDB8ED8
-        @ PROC_YIELD
-        .short 0xe, 0x0
-        .word 0x0
-        @ PROC_CALL
-        .short 0x2, 0x0
-        .word Title_Init
-        @ PROC_CALL
-        .short 0x2, 0x0
-        .word Title_InitDisp
-        @ PROC_CALL
-        .short 0x2, 0x0
-        .word sub_8014714
-        @ PROC_YIELD
-        .short 0xe, 0x0
-        .word 0x0
-        @ PROC_GOTO
-        .short 0xc, 0x1
-        .word 0x0
-        @ PROC_LABEL
-        .short 0xb, 0x0
-        .word 0x0
-        @ PROC_YIELD
-        .short 0xe, 0x0
-        .word 0x0
-        @ PROC_CALL
-        .short 0x2, 0x0
-        .word sub_80BB210
-        @ PROC_REPEAT
-        .short 0x3, 0x0
-        .word sub_80BB29C
-        @ PROC_WHILE
-        .short 0x14, 0x0
-        .word CheckBmBgfxDone
-        @ PROC_CALL
-        .short 0x2, 0x0
-        .word sub_80BB3EC
-        @ PROC_REPEAT
-        .short 0x3, 0x0
-        .word sub_80BB46C
-        @ PROC_CALL
-        .short 0x2, 0x0
-        .word sub_80BB510
-        @ PROC_LABEL
-        .short 0xb, 0x1
-        .word 0x0
-        @ PROC_REPEAT
-        .short 0x3, 0x0
-        .word Title_IDLE
-        @ PROC_LABEL
-        .short 0xb, 0x2
-        .word 0x0
-        @ PROC_CALL
-        .short 0x2, 0x0
-        .word sub_8014690
-        @ PROC_YIELD
-        .short 0xe, 0x0
-        .word 0x0
-        @ PROC_CALL
-        .short 0x2, 0x0
-        .word sub_80BB5B0
-        @ PROC_END
-        .short 0x0, 0x0
-        .word 0x0
-
-	.section .text
-
-	thumb_func_start Title_InitSpriteAnim
-Title_InitSpriteAnim: @ 0x080BAF34
-	push {r4, r5, r6, r7, lr}
-	mov r7, r8
-	push {r7}
-	sub sp, #8
-	adds r7, r0, #0
-	lsls r1, r1, #0x18
-	movs r4, #0
-	cmp r1, #0
-	bne _080BAF4A
-	movs r4, #0x80
-	lsls r4, r4, #1
-_080BAF4A:
-	ldr r0, _080BAFF0 @ =Pal_TitleSprites
-	movs r1, #0x80
-	lsls r1, r1, #2
-	movs r2, #0xa0
-	bl ApplyPaletteExt
-	ldr r0, _080BAFF4 @ =Img_TitleSprites
-	ldr r1, _080BAFF8 @ =0x06010000
-	bl Decompress
-
-	ldr r6, _080BAFFC @ =SpirteAnim_TitleScreen
-	adds r4, #0x78
-	mov r8, r4
-	movs r3, #0x80
-	lsls r3, r3, #4
-	movs r0, #0
-	str r0, [sp]
-	movs r4, #0xa
-	str r4, [sp, #4]
-	adds r0, r6, #0
-	mov r1, r8
-	movs r2, #0x48
-	bl StartSpriteAnimProc
-	str r0, [r7, #0x30]
-	movs r5, #0x80
-	lsls r5, r5, #3
-	movs r0, #1
-	str r0, [sp]
-	str r4, [sp, #4]
-	adds r0, r6, #0
-	mov r1, r8
-	movs r2, #0x48
-	adds r3, r5, #0
-	bl StartSpriteAnimProc
-	str r0, [r7, #0x34]
-	movs r0, #3
-	str r0, [sp]
-	str r4, [sp, #4]
-	adds r0, r6, #0
-	mov r1, r8
-	movs r2, #0x30
-	adds r3, r5, #0
-	bl StartSpriteAnimProc
-	str r0, [r7, #0x38]
-	movs r0, #4
-	str r0, [sp]
-	str r4, [sp, #4]
-	adds r0, r6, #0
-	mov r1, r8
-	movs r2, #0x80
-	adds r3, r5, #0
-	bl StartSpriteAnimProc
-	str r0, [r7, #0x3c]
-	movs r0, #5
-	str r0, [sp]
-	str r4, [sp, #4]
-	adds r0, r6, #0
-	mov r1, r8
-	movs r2, #0x68
-	adds r3, r5, #0
-	bl StartSpriteAnimProc
-	str r0, [r7, #0x40]
-	movs r0, #6
-	str r0, [sp]
-	str r4, [sp, #4]
-	adds r0, r6, #0
-	mov r1, r8
-	movs r2, #0x90
-	adds r3, r5, #0
-	bl StartSpriteAnimProc
-	str r0, [r7, #0x44]
-	add sp, #8
-	pop {r3}
-	mov r8, r3
-	pop {r4, r5, r6, r7}
-	pop {r0}
-	bx r0
-	.align 2, 0
-_080BAFF0: .4byte Pal_TitleSprites
-_080BAFF4: .4byte Img_TitleSprites
-_080BAFF8: .4byte 0x06010000
-_080BAFFC: .4byte SpirteAnim_TitleScreen
-
-	thumb_func_start Title_InitBg
-Title_InitBg: @ 0x080BB000
-	push {lr}
-	ldr r0, _080BB064 @ =gUnk_086B73E0
-	movs r1, #0xf0
-	lsls r1, r1, #1
-	movs r2, #0x20
-	bl ApplyPaletteExt
-	ldr r0, _080BB068 @ =gUnk_086B7400
-	ldr r1, _080BB06C @ =0x06008000
-	bl Decompress
-	ldr r0, _080BB070 @ =gBg3Tm
-	ldr r1, _080BB074 @ =gUnk_086BB234
-	movs r2, #0xf0
-	lsls r2, r2, #8
-	bl TmApplyTsa_thm
-	ldr r0, _080BB078 @ =gUnk_086BB6E8
-	movs r1, #0xe0
-	lsls r1, r1, #1
-	movs r2, #0x20
-	bl ApplyPaletteExt
-	ldr r0, _080BB07C @ =gUnk_086BB708
-	ldr r1, _080BB080 @ =0x0600CC00
-	bl Decompress
-	ldr r0, _080BB084 @ =gBg2Tm + 0x40
-	ldr r1, _080BB088 @ =gUnk_086BBF90
-	ldr r2, _080BB08C @ =0x0000E260
-	bl TmApplyTsa_thm
-	ldr r0, _080BB090 @ =gUnk_086B6E70
-	movs r1, #0xd0
-	lsls r1, r1, #1
-	movs r2, #0x20
-	bl ApplyPaletteExt
-	ldr r0, _080BB094 @ =gUnk_086B6E90
-	ldr r1, _080BB098 @ =0x0600DE00
-	bl Decompress
-	ldr r0, _080BB09C @ =gBg1Tm
-	ldr r1, _080BB0A0 @ =gUnk_086B7184
-	ldr r2, _080BB0A4 @ =0x0000D2F0
-	bl TmApplyTsa_thm
-	pop {r0}
-	bx r0
-	.align 2, 0
-_080BB064: .4byte gUnk_086B73E0
-_080BB068: .4byte gUnk_086B7400
-_080BB06C: .4byte 0x06008000
-_080BB070: .4byte gBg3Tm
-_080BB074: .4byte gUnk_086BB234
-_080BB078: .4byte gUnk_086BB6E8
-_080BB07C: .4byte gUnk_086BB708
-_080BB080: .4byte 0x0600CC00
-_080BB084: .4byte gBg2Tm + 0x40
-_080BB088: .4byte gUnk_086BBF90
-_080BB08C: .4byte 0x0000E260
-_080BB090: .4byte gUnk_086B6E70
-_080BB094: .4byte gUnk_086B6E90
-_080BB098: .4byte 0x0600DE00
-_080BB09C: .4byte gBg1Tm
-_080BB0A0: .4byte gUnk_086B7184
-_080BB0A4: .4byte 0x0000D2F0
-
-	thumb_func_start Title_Init
-Title_Init: @ 0x080BB0A8
-	push {r4, r5, r6, r7, lr}
-	sub sp, #0x18
-	adds r6, r0, #0
-	ldr r1, _080BB1CC @ =gUnk_086C44D4
-	mov r0, sp
-	movs r2, #0x18
-	bl memcpy
-	adds r0, r6, #0
-	adds r0, #0x50
-	movs r7, #0
-	strb r7, [r0]
-	ldr r5, _080BB1D0 @ =gDispIo
-	movs r4, #0x21
-	rsbs r4, r4, #0
-	adds r0, r4, #0
-	ldrb r1, [r5, #1]
-	ands r0, r1
-	movs r1, #0x41
-	rsbs r1, r1, #0
-	ands r0, r1
-	movs r1, #0x7f
-	ands r0, r1
-	strb r0, [r5, #1]
-	mov r0, sp
-	bl InitBgs
-	movs r0, #8
-	rsbs r0, r0, #0
-	ldrb r2, [r5]
-	ands r0, r2
-	strb r0, [r5]
-	movs r0, #2
-	rsbs r0, r0, #0
-	ldrb r3, [r5, #1]
-	ands r0, r3
-	movs r1, #3
-	rsbs r1, r1, #0
-	ands r0, r1
-	subs r1, #2
-	ands r0, r1
-	subs r1, #4
-	ands r0, r1
-	subs r1, #8
-	ands r0, r1
-	strb r0, [r5, #1]
-	movs r3, #3
-	ldrb r0, [r5, #0xc]
-	orrs r0, r3
-	strb r0, [r5, #0xc]
-	adds r1, #0xd
-	adds r0, r1, #0
-	ldrb r2, [r5, #0x10]
-	ands r0, r2
-	movs r2, #1
-	orrs r0, r2
-	strb r0, [r5, #0x10]
-	ldrb r0, [r5, #0x14]
-	ands r1, r0
-	movs r0, #2
-	orrs r1, r0
-	strb r1, [r5, #0x14]
-	ldrb r1, [r5, #0x18]
-	orrs r3, r1
-	strb r3, [r5, #0x18]
-	movs r0, #0
-	movs r1, #0
-	movs r2, #0
-	bl SetBgOffset
-	ldr r1, _080BB1D4 @ =0x0000FFF8
-	ldr r2, _080BB1D8 @ =0x0000FFD0
-	movs r0, #1
-	bl SetBgOffset
-	movs r0, #2
-	movs r1, #0
-	movs r2, #0
-	bl SetBgOffset
-	movs r0, #3
-	movs r1, #0
-	movs r2, #0
-	bl SetBgOffset
-	ldr r0, _080BB1DC @ =gBg0Tm
-	movs r1, #0
-	bl TmFill
-	ldr r0, _080BB1E0 @ =gBg1Tm
-	movs r1, #0
-	bl TmFill
-	ldr r0, _080BB1E4 @ =gBg2Tm
-	movs r1, #0
-	bl TmFill
-	ldr r0, _080BB1E8 @ =gBg3Tm
-	movs r1, #0
-	bl TmFill
-	movs r0, #2
-	bl ResetTitleBgAffin
-	adds r2, r5, #0
-	adds r2, #0x3c
-	adds r1, r4, #0
-	ldrb r3, [r2]
-	ands r1, r3
-	adds r0, r5, #0
-	adds r0, #0x3d
-	ldrb r3, [r0]
-	ands r4, r3
-	strb r4, [r0]
-	movs r0, #0x3f
-	ands r1, r0
-	strb r1, [r2]
-	adds r1, r5, #0
-	adds r1, #0x44
-	movs r0, #0x10
-	strb r0, [r1]
-	adds r0, r5, #0
-	adds r0, #0x45
-	strb r7, [r0]
-	adds r0, #1
-	strb r7, [r0]
-	movs r0, #0xf
-	bl EnableBgSync
-	adds r0, r6, #0
-	adds r0, #0x51
-	ldrb r0, [r0]
-	lsls r0, r0, #0x18
-	asrs r0, r0, #0x18
-	cmp r0, #0
-	beq _080BB1C0
-	adds r0, r6, #0
-	movs r1, #0
-	bl Proc_Goto
-_080BB1C0:
-	str r7, [r6, #0x54]
-	add sp, #0x18
-	pop {r4, r5, r6, r7}
-	pop {r0}
-	bx r0
-	.align 2, 0
-_080BB1CC: .4byte gUnk_086C44D4
-_080BB1D0: .4byte gDispIo
-_080BB1D4: .4byte 0x0000FFF8
-_080BB1D8: .4byte 0x0000FFD0
-_080BB1DC: .4byte gBg0Tm
-_080BB1E0: .4byte gBg1Tm
-_080BB1E4: .4byte gBg2Tm
-_080BB1E8: .4byte gBg3Tm
-
-	thumb_func_start Title_InitDisp
-Title_InitDisp: @ 0x080BB1EC
-	push {r4, lr}
-	adds r4, r0, #0
-	movs r1, #1
-	bl Title_InitSpriteAnim
-	adds r0, r4, #0
-	bl Title_InitBg
-	movs r0, #0xe
-	bl EnableBgSync
-	adds r0, r4, #0
-	bl sub_80BB62C
-	pop {r4}
-	pop {r0}
-	bx r0
-	.align 2, 0
-
-	thumb_func_start sub_80BB210
-sub_80BB210: @ 0x080BB210
-	push {r4, r5, lr}
-	sub sp, #0x14
-	adds r4, r0, #0
-	ldr r0, _080BB28C @ =HBlank_TitleScreen
-	bl SetOnHBlankA
-	adds r0, r4, #0
-	movs r1, #0
-	bl Title_InitSpriteAnim
-	adds r0, r4, #0
-	bl Title_InitBg
-	ldr r0, _080BB290 @ =BmBgfxConf_GameTitle
-	movs r5, #0
-	str r5, [sp]
-	movs r1, #0xa0
-	lsls r1, r1, #6
-	str r1, [sp, #4]
-	movs r1, #0xa
-	str r1, [sp, #8]
-	str r5, [sp, #0xc]
-	str r4, [sp, #0x10]
-	movs r1, #0
-	movs r2, #0
-	movs r3, #0
-	bl StartBmBgfx
-	ldr r2, _080BB294 @ =gDispIo
-	movs r0, #1
-	ldrb r1, [r2, #1]
-	orrs r0, r1
-	movs r1, #3
-	rsbs r1, r1, #0
-	ands r0, r1
-	subs r1, #2
-	ands r0, r1
-	subs r1, #4
-	ands r0, r1
-	movs r1, #0x10
-	orrs r0, r1
-	strb r0, [r2, #1]
-	movs r0, #0xe
-	bl EnableBgSync
-	ldr r0, _080BB298 @ =gPlaySt
-	adds r0, #0x41
-	ldrb r0, [r0]
-	lsls r0, r0, #0x1e
-	cmp r0, #0
-	blt _080BB27C
-	movs r0, #0x63
-	bl m4aSongNumStart
-_080BB27C:
-	adds r0, r4, #0
-	adds r0, #0x50
-	strb r5, [r0]
-	add sp, #0x14
-	pop {r4, r5}
-	pop {r0}
-	bx r0
-	.align 2, 0
-_080BB28C: .4byte HBlank_TitleScreen
-_080BB290: .4byte BmBgfxConf_GameTitle
-_080BB294: .4byte gDispIo
-_080BB298: .4byte gPlaySt
-
-	thumb_func_start sub_80BB29C
-sub_80BB29C: @ 0x080BB29C
-	push {r4, r5, r6, r7, lr}
-	sub sp, #0x10
-	adds r5, r0, #0
-	adds r4, r5, #0
-	adds r4, #0x50
-	ldrb r0, [r4]
-	cmp r0, #8
-	bne _080BB2C2
-	ldr r0, [r5, #0x34]
-	movs r1, #0x48
-	str r1, [sp]
-	movs r1, #0x10
-	str r1, [sp, #4]
-	str r5, [sp, #8]
-	movs r1, #0x78
-	movs r2, #0x38
-	movs r3, #0x78
-	bl sub_80BBA64
-_080BB2C2:
-	ldrb r0, [r4]
-	subs r0, #0x30
-	lsls r0, r0, #0x18
-	lsrs r0, r0, #0x18
-	cmp r0, #0x20
-	bhi _080BB380
-	ldrb r0, [r4]
-	adds r1, r0, #0
-	subs r1, #0x30
-	lsrs r2, r1, #0x1f
-	adds r1, r1, r2
-	asrs r6, r1, #1
-	cmp r0, #0x30
-	bne _080BB346
-	ldr r3, _080BB3DC @ =gDispIo
-	adds r2, r3, #0
-	adds r2, #0x3c
-	movs r0, #0x3f
-	ldrb r1, [r2]
-	ands r0, r1
-	movs r1, #0x40
-	orrs r0, r1
-	strb r0, [r2]
-	adds r0, r3, #0
-	adds r0, #0x44
-	movs r1, #0
-	strb r1, [r0]
-	movs r7, #0x45
-	movs r2, #0x10
-	movs r0, #0x10
-	strb r0, [r7, r3]
-	adds r0, r3, #0
-	adds r0, #0x46
-	strb r1, [r0]
-	ldr r0, _080BB3E0 @ =0x0000FFE0
-	ldrh r1, [r3, #0x3c]
-	ands r0, r1
-	movs r1, #4
-	orrs r0, r1
-	ldr r1, _080BB3E4 @ =0x0000E0FF
-	ands r0, r1
-	movs r7, #0xf8
-	lsls r7, r7, #5
-	adds r1, r7, #0
-	orrs r0, r1
-	strh r0, [r3, #0x3c]
-	movs r0, #1
-	ldrb r1, [r3, #1]
-	orrs r0, r1
-	movs r1, #3
-	rsbs r1, r1, #0
-	ands r0, r1
-	movs r1, #4
-	orrs r0, r1
-	movs r1, #9
-	rsbs r1, r1, #0
-	ands r0, r1
-	orrs r0, r2
-	strb r0, [r3, #1]
-	ldr r1, _080BB3E8 @ =gUnk_086BB6E8
-	str r5, [sp]
-	movs r0, #0
-	movs r2, #0xe
-	movs r3, #0x20
-	bl sub_80BDC2C
-_080BB346:
-	ldr r3, _080BB3DC @ =gDispIo
-	adds r2, r3, #0
-	adds r2, #0x3c
-	movs r0, #0x3f
-	ldrb r7, [r2]
-	ands r0, r7
-	movs r1, #0x40
-	orrs r0, r1
-	strb r0, [r2]
-	adds r0, r3, #0
-	adds r0, #0x44
-	movs r1, #0
-	strb r6, [r0]
-	movs r0, #0x10
-	subs r0, r0, r6
-	adds r2, #9
-	strb r0, [r2]
-	adds r0, r3, #0
-	adds r0, #0x46
-	strb r1, [r0]
-	ldrb r2, [r4]
-	subs r2, #0x30
-	asrs r2, r2, #1
-	subs r2, #0x10
-	lsls r2, r2, #0x10
-	lsrs r2, r2, #0x10
-	movs r0, #2
-	bl SetBgOffset
-_080BB380:
-	adds r4, r5, #0
-	adds r4, #0x50
-	ldrb r0, [r4]
-	cmp r0, #0x28
-	bne _080BB3A2
-	ldr r0, [r5, #0x30]
-	movs r1, #0x48
-	str r1, [sp]
-	movs r1, #0x10
-	str r1, [sp, #4]
-	movs r1, #0
-	str r1, [sp, #8]
-	str r5, [sp, #0xc]
-	movs r2, #0
-	movs r3, #0x78
-	bl sub_80BBAA4
-_080BB3A2:
-	ldrb r1, [r4]
-	cmp r1, #0x50
-	bne _080BB3BE
-	ldr r0, [r5, #0x40]
-	movs r1, #0x68
-	str r1, [sp]
-	movs r1, #0x10
-	str r1, [sp, #4]
-	str r5, [sp, #8]
-	movs r1, #0x78
-	movs r2, #0x78
-	movs r3, #0x78
-	bl sub_80BBA64
-_080BB3BE:
-	ldrb r0, [r4]
-	adds r0, #1
-	strb r0, [r4]
-	lsls r0, r0, #0x18
-	lsrs r0, r0, #0x18
-	cmp r0, #0x64
-	bne _080BB3D2
-	adds r0, r5, #0
-	bl Proc_Break
-_080BB3D2:
-	add sp, #0x10
-	pop {r4, r5, r6, r7}
-	pop {r0}
-	bx r0
-	.align 2, 0
-_080BB3DC: .4byte gDispIo
-_080BB3E0: .4byte 0x0000FFE0
-_080BB3E4: .4byte 0x0000E0FF
-_080BB3E8: .4byte gUnk_086BB6E8
-
-	thumb_func_start sub_80BB3EC
-sub_80BB3EC: @ 0x080BB3EC
-	adds r0, #0x50
-	movs r3, #0
-	strb r3, [r0]
-	ldr r0, _080BB460 @ =gDispIo
-	mov ip, r0
-	mov r2, ip
-	adds r2, #0x3c
-	movs r0, #0x3f
-	ldrb r1, [r2]
-	ands r0, r1
-	movs r1, #0x40
-	orrs r0, r1
-	strb r0, [r2]
-	mov r0, ip
-	adds r0, #0x44
-	strb r3, [r0]
-	mov r1, ip
-	adds r1, #0x45
-	movs r2, #0x10
-	movs r0, #0x10
-	strb r0, [r1]
-	mov r0, ip
-	adds r0, #0x46
-	strb r3, [r0]
-	ldr r0, _080BB464 @ =0x0000FFE0
-	mov r3, ip
-	ldrh r3, [r3, #0x3c]
-	ands r0, r3
-	movs r1, #8
-	orrs r0, r1
-	ldr r1, _080BB468 @ =0x0000E0FF
-	ands r0, r1
-	movs r3, #0xf8
-	lsls r3, r3, #5
-	adds r1, r3, #0
-	orrs r0, r1
-	mov r1, ip
-	strh r0, [r1, #0x3c]
-	movs r0, #1
-	ldrb r3, [r1, #1]
-	orrs r0, r3
-	movs r1, #3
-	rsbs r1, r1, #0
-	ands r0, r1
-	movs r1, #4
-	orrs r0, r1
-	movs r1, #8
-	orrs r0, r1
-	orrs r0, r2
-	mov r1, ip
-	strb r0, [r1, #1]
-	adds r1, #0x3d
-	movs r0, #0x20
-	ldrb r2, [r1]
-	orrs r0, r2
-	strb r0, [r1]
-	bx lr
-	.align 2, 0
-_080BB460: .4byte gDispIo
-_080BB464: .4byte 0x0000FFE0
-_080BB468: .4byte 0x0000E0FF
 
 	thumb_func_start sub_80BB46C
 sub_80BB46C: @ 0x080BB46C
@@ -710,7 +28,7 @@ sub_80BB46C: @ 0x080BB46C
 	movs r1, #0xa0
 	movs r2, #0x2c
 	movs r3, #0x78
-	bl sub_80BBA64
+	bl SetTitleScreenAnimParamSync
 	ldr r0, [r5, #0x3c]
 	movs r1, #0x80
 	str r1, [sp]
@@ -719,7 +37,7 @@ sub_80BB46C: @ 0x080BB46C
 	movs r1, #0x78
 	movs r2, #0x80
 	movs r3, #0x78
-	bl sub_80BBA64
+	bl SetTitleScreenAnimParamSync
 	ldr r0, [r5, #0x44]
 	movs r1, #0x90
 	str r1, [sp]
@@ -728,7 +46,7 @@ sub_80BB46C: @ 0x080BB46C
 	movs r1, #0x78
 	movs r2, #0x90
 	movs r3, #0x78
-	bl sub_80BBA64
+	bl SetTitleScreenAnimParamSync
 	b _080BB4F4
 _080BB4C8:
 	ldrb r1, [r1]
@@ -776,7 +94,7 @@ sub_80BB510: @ 0x080BB510
 	movs r0, #0
 	bl SetOnHBlankA
 	adds r0, r4, #0
-	bl sub_80BB62C
+	bl Title_StartFlameAnim
 	pop {r4}
 	pop {r0}
 	bx r0
@@ -914,8 +232,8 @@ StartTitleScreen_FlagTrue: @ 0x080BB614
 	.align 2, 0
 _080BB628: .4byte ProcScr_TitleScreen
 
-	thumb_func_start sub_80BB62C
-sub_80BB62C: @ 0x080BB62C
+	thumb_func_start Title_StartFlameAnim
+Title_StartFlameAnim: @ 0x080BB62C
 	push {r4, r5, r6, r7, lr}
 	mov r7, sl
 	mov r6, sb
@@ -1079,7 +397,7 @@ sub_80BB62C: @ 0x080BB62C
 	bl InitScanlineEffect
 	ldr r0, _080BB7D0 @ =HBlank_Scanline_80782AC
 	bl SetOnHBlankA
-	ldr r0, _080BB7D4 @ =gUnk_08DB8F80
+	ldr r0, _080BB7D4 @ =ProcScr_TitleFlame
 	ldr r1, [sp, #8]
 	bl Proc_Start
 	add sp, #0xc
@@ -1105,7 +423,7 @@ _080BB7C4: .4byte gBg0Tm
 _080BB7C8: .4byte gUnk_086C40D0
 _080BB7CC: .4byte 0x0000C280
 _080BB7D0: .4byte HBlank_Scanline_80782AC
-_080BB7D4: .4byte gUnk_08DB8F80
+_080BB7D4: .4byte ProcScr_TitleFlame
 
 	thumb_func_start sub_80BB7D8
 sub_80BB7D8: @ 0x080BB7D8
@@ -1435,8 +753,8 @@ _080BBA56:
 	bx r0
 	.align 2, 0
 
-	thumb_func_start sub_80BBA64
-sub_80BBA64: @ 0x080BBA64
+	thumb_func_start SetTitleScreenAnimParamSync
+SetTitleScreenAnimParamSync: @ 0x080BBA64
 	push {r4, r5, r6, r7, lr}
 	mov r7, r8
 	push {r7}
@@ -1446,7 +764,7 @@ sub_80BBA64: @ 0x080BBA64
 	mov r8, r3
 	ldr r7, [sp, #0x18]
 	ldr r1, [sp, #0x20]
-	ldr r0, _080BBAA0 @ =gUnk_08DB8FA0
+	ldr r0, _080BBAA0 @ =Title_IntroAnimSpriteCtrl
 	bl Proc_Start
 	str r4, [r0, #0x2c]
 	str r5, [r0, #0x38]
@@ -1467,7 +785,7 @@ sub_80BBA64: @ 0x080BBA64
 	pop {r0}
 	bx r0
 	.align 2, 0
-_080BBAA0: .4byte gUnk_08DB8FA0
+_080BBAA0: .4byte Title_IntroAnimSpriteCtrl
 
 	thumb_func_start sub_80BBAA4
 sub_80BBAA4: @ 0x080BBAA4
@@ -1482,7 +800,7 @@ sub_80BBAA4: @ 0x080BBAA4
 	ldr r7, [sp, #0x1c]
 	ldr r4, [sp, #0x24]
 	ldr r1, [sp, #0x28]
-	ldr r0, _080BBAE8 @ =gUnk_08DB8FA0
+	ldr r0, _080BBAE8 @ =Title_IntroAnimSpriteCtrl
 	bl Proc_Start
 	str r5, [r0, #0x2c]
 	str r6, [r0, #0x38]
@@ -1504,7 +822,7 @@ sub_80BBAA4: @ 0x080BBAA4
 	pop {r0}
 	bx r0
 	.align 2, 0
-_080BBAE8: .4byte gUnk_08DB8FA0
+_080BBAE8: .4byte Title_IntroAnimSpriteCtrl
 
 	thumb_func_start sub_80BBAEC
 sub_80BBAEC: @ 0x080BBAEC

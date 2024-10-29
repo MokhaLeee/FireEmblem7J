@@ -29152,7 +29152,7 @@ sub_80B9CBC: @ 0x080B9CBC
 	lsls r1, r1, #1
 	movs r2, #0x40
 	bl ApplyPaletteExt
-	ldr r0, _080B9D9C @ =gUnk_086B7400
+	ldr r0, _080B9D9C @ =Img_Title_086B7400
 	ldr r1, _080B9DA0 @ =0x06008000
 	bl Decompress
 	ldr r0, _080B9DA4 @ =gBg3Tm
@@ -29172,7 +29172,7 @@ sub_80B9CBC: @ 0x080B9CBC
 	.align 2, 0
 _080B9D94: .4byte gDispIo
 _080B9D98: .4byte gUnk_0861A420
-_080B9D9C: .4byte gUnk_086B7400
+_080B9D9C: .4byte Img_Title_086B7400
 _080B9DA0: .4byte 0x06008000
 _080B9DA4: .4byte gBg3Tm
 _080B9DA8: .4byte gUnk_0861A460

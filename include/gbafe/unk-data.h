@@ -584,15 +584,15 @@ extern u8 OpBmBgfx_086B5CE0[];
 extern u8 OpBmBgfx_086B6054[];
 extern u8 OpBmBgfx_086B6508[];
 extern u8 OpBmBgfx_086B69BC[];
-// ??? gUnk_086B6E70
-// ??? gUnk_086B6E90
-// ??? gUnk_086B7184
-// ??? gUnk_086B73E0
-// ??? gUnk_086B7400
-// ??? gUnk_086BB234
-// ??? gUnk_086BB6E8
-// ??? gUnk_086BB708
-// ??? gUnk_086BBF90
+extern u16 Pal_Title_086B6E70[];
+extern u8 Img_Title_086B6E90[];
+extern u8 Tsa_Title_086B7184[];
+extern u16 Pal_Title_086B73E0[];
+extern u8 Img_Title_086B7400[];
+extern u8 Tsa_Title_086BB234[];
+extern u16 Pal_Title_086BB6E8[];
+extern u8 Img_Title_086BB708[];
+extern u8 Tsa_Title_086BBF90[];
 extern u16 Pal_TitleSprites[];
 extern u8 Img_TitleSprites[];
 extern u16 SpirteAnim_TitleScreen[];
@@ -2312,8 +2312,8 @@ extern struct ProcCmd ProcScr_MixPalette[];
 // ??? gUnk_08DB8E34
 // ??? gUnk_08DB8ED4
 extern struct ProcCmd ProcScr_TitleScreen[];
-// ??? gUnk_08DB8F80
-// ??? gUnk_08DB8FA0
+// ??? ProcScr_TitleFlame
+// ??? Title_IntroAnimSpriteCtrl
 // ??? gUnk_08DB8FC0
 // ??? gUnk_08DB8FC4
 // ??? gUnk_08DB8FC8
