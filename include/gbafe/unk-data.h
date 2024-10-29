@@ -593,9 +593,9 @@ extern u8 OpBmBgfx_086B69BC[];
 // ??? gUnk_086BB6E8
 // ??? gUnk_086BB708
 // ??? gUnk_086BBF90
-// ??? gUnk_086BC444
-// ??? gUnk_086BC4E4
-// ??? gUnk_086BF118
+extern u16 Pal_TitleSprites[];
+extern u8 Img_TitleSprites[];
+extern u16 SpirteAnim_TitleScreen[];
 // ??? gUnk_086BF37C
 // ??? gUnk_086BF39C
 // ??? gUnk_086C0674
@@ -2311,7 +2311,7 @@ extern struct ProcCmd ProcScr_MixPalette[];
 // ??? gUnk_08DB8DE4
 // ??? gUnk_08DB8E34
 // ??? gUnk_08DB8ED4
-// ??? gUnk_08DB8ED8
+extern struct ProcCmd ProcScr_TitleScreen[];
 // ??? gUnk_08DB8F80
 // ??? gUnk_08DB8FA0
 // ??? gUnk_08DB8FC0

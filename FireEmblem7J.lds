@@ -324,6 +324,9 @@ SECTIONS
 		asm/spinning_arrow.o(.text);
 		src/sysutil.o(.text);
 		asm/code_080AB6FC.o(.text);
+		src/titlescreen.o(.text);
+		asm/titlescreen.o(.text);
+
 		asm/m4a_1.o(.text);
 		asm/m4a.o(.text);
 		asm/gba-syscall.o(.text);
@@ -452,6 +455,8 @@ SECTIONS
 		. = ALIGN(4); data/cursor_hand.o(.data)
 		. = ALIGN(4); src/sysutil.o(.data)
 		. = ALIGN(4); data/data_08DAE4C4.o(.data)
+		. = ALIGN(4); asm/titlescreen.o(.data)
+		. = ALIGN(4); data/data_op.o(.data)
 		. = ALIGN(4); src/bmbgfx_data.o(.data)
 		. = ALIGN(4); data/data_08DBAD14.o(.data)
 	}

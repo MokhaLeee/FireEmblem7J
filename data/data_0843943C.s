@@ -1120,16 +1120,16 @@ gUnk_086BB708:	@ 0x086BB708
 gUnk_086BBF90:	@ 0x086BBF90
 	.incbin "FireEmblem7J.base.gba", 0x6BBF90, 0x6BC444 - 0x6BBF90
 
-	.global gUnk_086BC444
-gUnk_086BC444:	@ 0x086BC444
+	.global Pal_TitleSprites
+Pal_TitleSprites:	@ 0x086BC444
 	.incbin "FireEmblem7J.base.gba", 0x6BC444, 0x6BC4E4 - 0x6BC444
 
-	.global gUnk_086BC4E4
-gUnk_086BC4E4:	@ 0x086BC4E4
+	.global Img_TitleSprites
+Img_TitleSprites:	@ 0x086BC4E4
 	.incbin "FireEmblem7J.base.gba", 0x6BC4E4, 0x6BF118 - 0x6BC4E4
 
-	.global gUnk_086BF118
-gUnk_086BF118:	@ 0x086BF118
+	.global SpirteAnim_TitleScreen
+SpirteAnim_TitleScreen:	@ 0x086BF118
 	.incbin "FireEmblem7J.base.gba", 0x6BF118, 0x6BF37C - 0x6BF118
 
 	.global gUnk_086BF37C

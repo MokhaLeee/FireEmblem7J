@@ -63,3 +63,4 @@
 #include "gbafe/scrolling_util.h"
 #include "gbafe/bonusclaim.h"
 #include "gbafe/spinning_arrow.h"
+#include "gbafe/titlescreen.h"
