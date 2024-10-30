@@ -80,7 +80,7 @@
 // sub_80BD9B8
 // sub_80BDB24
 // sub_80BDB40
-// sub_80BDBE4
+// Proc_08DB9398_Loop
 void sub_80BDC2C(void * a, const u16 * pal, int pal_bank, int size, ProcPtr parent);
 // sub_80BDCC0
 // sub_80BDCFC

@@ -4052,7 +4052,7 @@ sub_80BDB24: @ 0x080BDB24
 	adds r4, r0, #0
 	adds r5, r1, #0
 	adds r1, r2, #0
-	ldr r0, _080BDB3C @ =gUnk_08DB9378
+	ldr r0, _080BDB3C @ =ProcScr_08DB9378
 	bl Proc_Start
 	strh r4, [r0, #0x2c]
 	strh r5, [r0, #0x2a]
@@ -4060,7 +4060,7 @@ sub_80BDB24: @ 0x080BDB24
 	pop {r0}
 	bx r0
 	.align 2, 0
-_080BDB3C: .4byte gUnk_08DB9378
+_080BDB3C: .4byte ProcScr_08DB9378
 
 	thumb_func_start sub_80BDB40
 sub_80BDB40: @ 0x080BDB40
@@ -4147,8 +4147,8 @@ _080BDB66:
 	.align 2, 0
 _080BDBE0: .4byte gPal
 
-	thumb_func_start sub_80BDBE4
-sub_80BDBE4: @ 0x080BDBE4
+	thumb_func_start Proc_08DB9398_Loop
+Proc_08DB9398_Loop: @ 0x080BDBE4
 	push {r4, r5, lr}
 	adds r4, r0, #0
 	ldr r0, [r4, #0x30]
@@ -4199,7 +4199,7 @@ sub_80BDC2C: @ 0x080BDC2C
 	adds r6, r2, #0
 	mov r8, r3
 	ldr r1, [sp, #0x1c]
-	ldr r0, _080BDC60 @ =gUnk_08DB9398
+	ldr r0, _080BDC60 @ =ProcScr_08DB9398
 	bl Proc_Start
 	adds r5, r0, #0
 	movs r0, #1
@@ -4214,7 +4214,7 @@ sub_80BDC2C: @ 0x080BDC2C
 	bl CpuFastSet
 	b _080BDC92
 	.align 2, 0
-_080BDC60: .4byte gUnk_08DB9398
+_080BDC60: .4byte ProcScr_08DB9398
 _080BDC64: .4byte gPal
 _080BDC68: .4byte 0x020072BC
 _080BDC6C:

@@ -44,7 +44,7 @@ void StartTitleScreen_WithMusic(ProcPtr parent);
 void StartTitleScreen_FlagFalse(ProcPtr parent);
 void StartTitleScreen_FlagTrue(ProcPtr parent);
 
-void Title_StartFlameAnim(struct ProcTitle * proc);
+void Title_StartTextFlame(struct ProcTitle * proc);
 void TitleFlame_Init(struct Proc * proc);
 void TitleFlame_Loop(struct Proc * proc);
 

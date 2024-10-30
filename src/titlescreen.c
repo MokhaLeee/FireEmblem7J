@@ -67,7 +67,7 @@ void Title_InitSpriteAnim(struct ProcTitle * proc, bool anim_en)
     ApplyPalettes(Pal_TitleSprites, 0x10, 5);
     Decompress(Img_TitleSprites, OBJ_VRAM0);
 
-    ap_scr = SpirteAnim_TitleScreen;
+    ap_scr = SpirteAnim_TitleText;
 
     proc->approcs[0] = StartSpriteAnimProc(ap_scr, x + 0x78, 0x48, 0x800, 0, 0xA);
     proc->approcs[1] = StartSpriteAnimProc(ap_scr, x + 0x78, 0x48, 0x400, 1, 0xA);
@@ -151,7 +151,7 @@ void Title_InitDisp(struct ProcTitle * proc)
 
     EnableBgSync(BG3_SYNC_BIT | BG2_SYNC_BIT | BG1_SYNC_BIT);
 
-    Title_StartFlameAnim(proc);
+    Title_StartTextFlame(proc);
 }
 
 void Title_StartBmBgfxAnim(struct ProcTitle * proc)
@@ -247,7 +247,7 @@ void Title_BmBgfxAnimOUT(struct ProcTitle * proc)
 void Title_RefrainSprites(struct ProcTitle * proc)
 {
     SetOnHBlankA(NULL);
-    Title_StartFlameAnim(proc);
+    Title_StartTextFlame(proc);
 }
 
 void Title_IDLE(struct ProcTitle * proc)
@@ -318,10 +318,10 @@ struct ProcCmd CONST_DATA ProcScr_TitleFlame[] = {
     PROC_END,
 };
 
-void Title_StartFlameAnim(struct ProcTitle * proc)
+void Title_StartTextFlame(struct ProcTitle * proc)
 {
     SetDispEnable(1, 1, 1, 1, 1);
-    StartSpriteAnimProc(SpirteAnim_TitleScreen, 0x78, 0x848, 0, 0x7, 0xA);
+    StartSpriteAnimProc(SpirteAnim_TitleText, 0x78, 0x848, 0, 0x7, 0xA);
     SetWinEnable(0, 0, 1);
     SetWin0Layers(0, 0, 0, 0, 0);
     SetWObjLayers(1, 0, 0, 0, 1);
@@ -341,9 +341,9 @@ void Title_StartFlameAnim(struct ProcTitle * proc)
 
     SetBgOffset(BG_1, -8, -0x30);
 
-    ApplyPalette(Pal_Title_086C3CF8, 0xC);
-    Decompress(Img_Title_086C3D18, (void *)BG_VRAM + 0x5000);
-    TmApplyTsa(gBg0Tm, Tsa_Title_086C40D0, 0xC280);
+    ApplyPalette(Pal_TitleTextFlame, 0xC);
+    Decompress(Img_TitleTextFlame, (void *)BG_VRAM + 0x5000);
+    TmApplyTsa(gBg0Tm, Tsa_TitleTextFlame, 0xC280);
     EnableBgSync(BG0_SYNC_BIT);
 
     InitScanlineEffect();

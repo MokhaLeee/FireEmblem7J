@@ -595,7 +595,7 @@ extern u8 Img_TitleAxe[];
 extern u8 Tsa_TitleAxe[];
 extern u16 Pal_TitleSprites[];
 extern u8 Img_TitleSprites[];
-extern u16 SpirteAnim_TitleScreen[];
+extern u16 SpirteAnim_TitleText[];
 // ??? Pal_OpAnimCloud
 // ??? Img_OpAnimCloud
 // ??? Tsa_OpAnimCloud
@@ -608,9 +608,9 @@ extern u16 SpirteAnim_TitleScreen[];
 // ??? gUnk_086C25FC
 // ??? gUnk_086C261C
 // ??? gUnk_086C38F4
-extern u16 Pal_Title_086C3CF8[];
-extern u8 Img_Title_086C3D18[];
-extern u8 Tsa_Title_086C40D0[];
+extern u16 Pal_TitleTextFlame[];
+extern u8 Img_TitleTextFlame[];
+extern u8 Tsa_TitleTextFlame[];
 // ??? gUnk_086C44D4
 // ??? gUnk_086C44EC
 // ??? gUnk_086C450C
@@ -2328,8 +2328,8 @@ extern uintptr_t ProcScr_08DB9208[];
 // ??? gUnk_08DB9248
 // ??? gUnk_08DB92C8
 // ??? gUnk_08DB9320
-// ??? gUnk_08DB9378
-// ??? gUnk_08DB9398
+// ??? ProcScr_08DB9378
+// ??? ProcScr_08DB9398
 // ??? gUnk_08DB93B0
 // ??? ProcScr_08DB93D0
 // ??? gUnk_08DB93F0

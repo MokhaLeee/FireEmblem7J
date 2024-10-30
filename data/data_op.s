@@ -230,12 +230,12 @@ gUnk_08DB92C8:	@ 0x08DB92C8
 gUnk_08DB9320:	@ 0x08DB9320
 	.incbin "FireEmblem7J.base.gba", 0xDB9320, 0xDB9378 - 0xDB9320
 
-	.global gUnk_08DB9378
-gUnk_08DB9378:	@ 0x08DB9378
+	.global ProcScr_08DB9378
+ProcScr_08DB9378:	@ 0x08DB9378
 	.incbin "FireEmblem7J.base.gba", 0xDB9378, 0xDB9398 - 0xDB9378
 
-	.global gUnk_08DB9398
-gUnk_08DB9398:	@ 0x08DB9398
+	.global ProcScr_08DB9398
+ProcScr_08DB9398:	@ 0x08DB9398
 	.incbin "FireEmblem7J.base.gba", 0xDB9398, 0xDB93B0 - 0xDB9398
 
 	.global gUnk_08DB93B0
