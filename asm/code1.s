@@ -3382,7 +3382,7 @@ sub_802FE70: @ 0x0802FE70
 	adds r0, r4, #0
 	movs r1, #6
 	movs r2, #0
-	bl sub_8003788
+	bl StartBgmExt
 _0802FE8A:
 	pop {r4}
 	pop {r0}

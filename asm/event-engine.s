@@ -1312,7 +1312,7 @@ _0800B024:
 sub_800B02C: @ 0x0800B02C
 	push {r4, lr}
 	adds r4, r0, #0
-	bl sub_8015784
+	bl LockGame
 	movs r0, #0
 	str r0, [r4, #0x40]
 	pop {r4}
@@ -1323,7 +1323,7 @@ sub_800B02C: @ 0x0800B02C
 	thumb_func_start sub_800B040
 sub_800B040: @ 0x0800B040
 	push {lr}
-	bl sub_8015794
+	bl UnlockGame
 	pop {r0}
 	bx r0
 	.align 2, 0

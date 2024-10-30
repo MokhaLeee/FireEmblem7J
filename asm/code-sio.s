@@ -8588,13 +8588,13 @@ sub_8040944: @ 0x08040944
 	movs r0, #0x2d
 	movs r1, #0
 	movs r2, #0
-	bl sub_8003788
+	bl StartBgmExt
 	b _08040962
 _08040958:
 	movs r0, #0x2e
 	movs r1, #0
 	movs r2, #0
-	bl sub_8003788
+	bl StartBgmExt
 _08040962:
 	ldr r0, _08040978 @ =gPlaySt
 	adds r0, #0x41
@@ -8616,7 +8616,7 @@ sub_804097C: @ 0x0804097C
 	movs r0, #0x2e
 	movs r1, #0
 	movs r2, #0
-	bl sub_8003788
+	bl StartBgmExt
 	pop {r0}
 	bx r0
 
@@ -12794,7 +12794,7 @@ _08042C18:
 	str r4, [r6, #0x54]
 	movs r0, #0x47
 	movs r1, #0
-	bl sub_800376C
+	bl StartBgm
 	bl sub_80457EC
 	add sp, #0x10
 	pop {r4, r5, r6, r7}
@@ -13122,7 +13122,7 @@ _08042EB4:
 	bl sub_80457EC
 	movs r0, #0x47
 	movs r1, #0
-	bl sub_800376C
+	bl StartBgm
 	str r4, [r6, #0x54]
 	add sp, #0x10
 	pop {r3, r4, r5}
@@ -25951,7 +25951,7 @@ sub_80495C8: @ 0x080495C8
 	push {lr}
 	ldr r1, _080495D8 @ =0x03005C40
 	movs r0, #0x49
-	bl sub_800376C
+	bl StartBgm
 	pop {r0}
 	bx r0
 	.align 2, 0

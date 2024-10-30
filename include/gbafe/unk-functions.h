@@ -42,6 +42,17 @@ void DisplayBmTextShadow(int x, int y);
 void TryLockParentProc(ProcPtr);
 void TryUnlockParentProc(ProcPtr);
 
+/* sprite-anim.h */
+/* game-ctrl.h */
+
+// DecodeMsg
+// DecodeMsgInBuffer
+// sub_8013374
+// sub_8013488
+
+/* util.h */
+/* bm.h */
+
 int GetTextPrintDelay();
 int IsFirstPlaythrough(void);
 // InitPlayConfig

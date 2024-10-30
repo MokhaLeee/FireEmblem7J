@@ -25376,7 +25376,7 @@ sub_808F7D4: @ 0x0808F7D4
 	lsls r0, r0, #0x18
 	cmp r0, #0
 	bne _0808F7E8
-	bl sub_8015784
+	bl LockGame
 	bl LockBmDisplay
 _0808F7E8:
 	pop {r0}
@@ -25390,7 +25390,7 @@ sub_808F7EC: @ 0x0808F7EC
 	cmp r0, #0
 	bne _0808F800
 	bl UnlockBmDisplay
-	bl sub_8015794
+	bl UnlockGame
 _0808F800:
 	pop {r0}
 	bx r0

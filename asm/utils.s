@@ -4205,7 +4205,7 @@ sub_8015294: @ 0x08015294
 	lsls r0, r0, #0x10
 	asrs r0, r0, #0x10
 	movs r1, #0
-	bl sub_800376C
+	bl StartBgm
 	pop {r0}
 	bx r0
 

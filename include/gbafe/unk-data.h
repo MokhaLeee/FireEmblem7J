@@ -399,7 +399,7 @@ extern u16 Pal_MuralBackground[];
 // ??? gUnk_08622C70
 // ??? gUnk_08622C7C
 // ??? gUnk_08622C9C
-// ??? gUnk_086282F8
+extern u16 Pal_TitleFlameIdle[];
 // ??? gUnk_086284F8
 // ??? gUnk_0862B5B4
 // ??? gUnk_0862E4D0
@@ -608,9 +608,9 @@ extern u16 SpirteAnim_TitleScreen[];
 // ??? gUnk_086C25FC
 // ??? gUnk_086C261C
 // ??? gUnk_086C38F4
-// ??? gUnk_086C3CF8
-// ??? gUnk_086C3D18
-// ??? gUnk_086C40D0
+extern u16 Pal_Title_086C3CF8[];
+extern u8 Img_Title_086C3D18[];
+extern u8 Tsa_Title_086C40D0[];
 // ??? gUnk_086C44D4
 // ??? gUnk_086C44EC
 // ??? gUnk_086C450C
@@ -2311,16 +2311,16 @@ extern struct ProcCmd ProcScr_MixPalette[];
 // ??? gUnk_08DB8DE4
 // ??? gUnk_08DB8E34
 // ??? gUnk_08DB8ED4
-extern struct ProcCmd ProcScr_TitleScreen[];
-// ??? ProcScr_TitleFlame
-// ??? Title_IntroAnimSpriteCtrl
+
+/* titlescreen.h */
+
 // ??? gUnk_08DB8FC0
 // ??? gUnk_08DB8FC4
 // ??? gUnk_08DB8FC8
 // ??? gUnk_08DB8FCC
 // ??? gUnk_08DB8FD0
 // ??? gUnk_08DB9010
-// ??? gUnk_08DB9030
+// ??? ProcScr_08DB9030
 extern uintptr_t ProcScr_08DB91A8[];
 extern uintptr_t ProcScr_08DB91C0[];
 extern uintptr_t ProcScr_08DB9208[];

@@ -7011,7 +7011,7 @@ _080AF174:
 	beq _080AF188
 	movs r0, #0x49
 	movs r1, #0
-	bl sub_800376C
+	bl StartBgm
 	b _080AF18C
 _080AF188:
 	bl sub_8016400
@@ -13181,12 +13181,12 @@ sub_80B217C: @ 0x080B217C
 	bne _080B219A
 	movs r0, #0x4d
 	movs r1, #0
-	bl sub_800376C
+	bl StartBgm
 	b _080B21A2
 _080B219A:
 	movs r0, #0x46
 	movs r1, #0
-	bl sub_800376C
+	bl StartBgm
 _080B21A2:
 	ldr r0, _080B22B4 @ =gUnk_08D64F4C
 	ldr r1, _080B22B8 @ =sub_806E2A0
@@ -16703,7 +16703,7 @@ sub_80B3D30: @ 0x080B3D30
 	movs r0, #0x47
 	movs r1, #0
 	movs r2, #0
-	bl sub_8003788
+	bl StartBgmExt
 	add sp, #4
 	pop {r7}
 	pop {r0}
@@ -21798,7 +21798,7 @@ sub_80B63DC: @ 0x080B63DC
 	bl GetChapterInfo
 	ldrh r0, [r0, #0x26]
 	movs r1, #0
-	bl sub_800376C
+	bl StartBgm
 _080B63FA:
 	pop {r0}
 	bx r0
@@ -30298,7 +30298,7 @@ _080BA684:
 	strb r0, [r1]
 	movs r0, #0x29
 	movs r1, #0
-	bl sub_800376C
+	bl StartBgm
 	b _080BA7AA
 	.align 2, 0
 _080BA71C: .4byte gBg1Tm
@@ -30353,7 +30353,7 @@ _080BA744:
 	strb r0, [r1]
 	movs r0, #0x29
 	movs r1, #0
-	bl sub_800376C
+	bl StartBgm
 _080BA7AA:
 	ldr r4, _080BA850 @ =gBg0Tm + 0x440
 	adds r0, r4, #0
@@ -30867,7 +30867,7 @@ _080BAB7A:
 	bl SetBgOffset
 	movs r0, #0x2a
 	movs r1, #0
-	bl sub_800376C
+	bl StartBgm
 	ldr r3, _080BABFC @ =gDispIo
 	adds r2, r3, #0
 	adds r2, #0x3c

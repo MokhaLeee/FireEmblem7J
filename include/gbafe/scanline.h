@@ -10,7 +10,7 @@ extern u16 * EWRAM_DATA gManimActiveScanlineBuf;
 void InitScanlineEffect(void);
 // sub_807706C
 // sub_807719C
-// sub_80771D0
+void ResetScanLineHBlank(void);
 // sub_80771E0
 // sub_8077248
 // sub_80772CC

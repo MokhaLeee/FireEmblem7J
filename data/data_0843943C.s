@@ -344,8 +344,8 @@ gUnk_08622C7C:	@ 0x08622C7C
 gUnk_08622C9C:	@ 0x08622C9C
 	.incbin "FireEmblem7J.base.gba", 0x622C9C, 0x6282F8 - 0x622C9C
 
-	.global gUnk_086282F8
-gUnk_086282F8:	@ 0x086282F8
+	.global Pal_TitleFlameIdle
+Pal_TitleFlameIdle:	@ 0x086282F8
 	.incbin "FireEmblem7J.base.gba", 0x6282F8, 0x6284F8 - 0x6282F8
 
 	.global gUnk_086284F8
@@ -1180,14 +1180,14 @@ gUnk_086C261C:	@ 0x086C261C
 gUnk_086C38F4:	@ 0x086C38F4
 	.incbin "FireEmblem7J.base.gba", 0x6C38F4, 0x6C3CF8 - 0x6C38F4
 
-	.global gUnk_086C3CF8
-gUnk_086C3CF8:	@ 0x086C3CF8
+	.global Pal_Title_086C3CF8
+Pal_Title_086C3CF8:	@ 0x086C3CF8
 	.incbin "FireEmblem7J.base.gba", 0x6C3CF8, 0x6C3D18 - 0x6C3CF8
 
-	.global gUnk_086C3D18
-gUnk_086C3D18:	@ 0x086C3D18
+	.global Img_Title_086C3D18
+Img_Title_086C3D18:	@ 0x086C3D18
 	.incbin "FireEmblem7J.base.gba", 0x6C3D18, 0x6C40D0 - 0x6C3D18
 
-	.global gUnk_086C40D0
-gUnk_086C40D0:	@ 0x086C40D0
+	.global Tsa_Title_086C40D0
+Tsa_Title_086C40D0:	@ 0x086C40D0
 	.incbin "FireEmblem7J.base.gba", 0x6C40D0, 0x6C44D4 - 0x6C40D0

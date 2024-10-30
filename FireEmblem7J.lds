@@ -19,6 +19,13 @@ SECTIONS
 		. = 0x003C3C; gUiTmScratchC = .;
 	}
 
+	. = __ewram_overlay_beg;
+    ewram_overlay_gamestart (NOLOAD) : ALIGN(4)
+	{
+		. = 0x000000;
+		. = ALIGN(4); src/titlescreen.o(ewram_overlay_gamestart);
+	}
+
     . = __ewram_overlay_beg;
     ewram_overlay_savemenu (NOLOAD) : ALIGN(4)
     {
@@ -326,6 +333,7 @@ SECTIONS
 		asm/code_080AB6FC.o(.text);
 		src/titlescreen.o(.text);
 		asm/titlescreen.o(.text);
+		asm/opanim.o(.text);
 
 		asm/m4a_1.o(.text);
 		asm/m4a.o(.text);

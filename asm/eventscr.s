@@ -5744,7 +5744,7 @@ sub_800E25C: @ 0x0800E25C
 	ldrh r0, [r0, #2]
 	movs r1, #1
 	movs r2, #0
-	bl sub_8003788
+	bl StartBgmExt
 	movs r0, #2
 	b _0800E280
 _0800E27E:
@@ -5827,7 +5827,7 @@ _0800E308:
 _0800E30A:
 	adds r0, r3, #0
 	movs r1, #1
-	bl sub_8003788
+	bl StartBgmExt
 	b _0800E322
 	.align 2, 0
 _0800E314: .4byte 0x03005D10
@@ -5835,7 +5835,7 @@ _0800E318:
 	ldr r2, _0800E328 @ =0x03005A30
 	adds r0, r3, #0
 	movs r1, #1
-	bl sub_8003788
+	bl StartBgmExt
 _0800E322:
 	movs r0, #2
 _0800E324:
@@ -7188,7 +7188,7 @@ sub_800ECB8: @ 0x0800ECB8
 	cmp r0, #0
 	beq _0800ECC8
 	movs r1, #0
-	bl sub_800376C
+	bl StartBgm
 	b _0800ECCE
 _0800ECC8:
 	movs r0, #0x90

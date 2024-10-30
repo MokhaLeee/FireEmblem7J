@@ -28,7 +28,7 @@ NewEkrBattleDeamon: @ 0x0804B988
 	ldr r1, _0804B9B0 @ =0x0203DFD8
 	movs r0, #1
 	str r0, [r1]
-	bl sub_8015784
+	bl LockGame
 	pop {r4}
 	pop {r0}
 	bx r0
@@ -69,7 +69,7 @@ EkrBattleDeamon_OnEnd: @ 0x0804B9DC
 	ldr r1, _0804B9EC @ =0x0203DFD8
 	movs r0, #0
 	str r0, [r1]
-	bl sub_8015794
+	bl UnlockGame
 	pop {r0}
 	bx r0
 	.align 2, 0

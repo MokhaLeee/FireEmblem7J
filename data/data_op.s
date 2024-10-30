@@ -1,11 +1,7 @@
 	.section .data
 
-	.global ProcScr_TitleFlame
-ProcScr_TitleFlame:	@ 0x08DB8F80
-	.incbin "FireEmblem7J.base.gba", 0xDB8F80, 0xDB8FA0 - 0xDB8F80
-
-	.global Title_IntroAnimSpriteCtrl
-Title_IntroAnimSpriteCtrl:	@ 0x08DB8FA0
+	.global ProcScr_TitleAnimSpriteCtrl
+ProcScr_TitleAnimSpriteCtrl:	@ 0x08DB8FA0
 	.incbin "FireEmblem7J.base.gba", 0xDB8FA0, 0xDB8FC0 - 0xDB8FA0
 
 	.global gUnk_08DB8FC0
@@ -32,8 +28,8 @@ gUnk_08DB8FD0:	@ 0x08DB8FD0
 gUnk_08DB9010:	@ 0x08DB9010
 	.incbin "FireEmblem7J.base.gba", 0xDB9010, 0xDB9030 - 0xDB9010
 
-	.global gUnk_08DB9030
-gUnk_08DB9030:	@ 0x08DB9030
+	.global ProcScr_08DB9030
+ProcScr_08DB9030:	@ 0x08DB9030
 	.incbin "FireEmblem7J.base.gba", 0xDB9030, 0xDB9058 - 0xDB9030
 
 	.global ProcScr_OpeningSeqence

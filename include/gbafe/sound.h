@@ -2,6 +2,7 @@
 
 #include "global.h"
 #include "m4a.h"
+#include "gba/m4a_internal.h"
 
 // GetCurrentBgmSong
 // sub_80033D0
@@ -11,10 +12,10 @@
 // sub_8003550
 void Sound_FadeOutSE(int speed);
 // sub_8003684
-// sub_80036F0
-// sub_800376C
-// sub_8003788
-// sub_80037A8
+void StartOrChangeBgm(int song, int speed, struct MusicPlayer * music_player);
+void StartBgm(int song, struct MusicPlayer * music_player);
+void StartBgmExt(int song, int speed, struct MusicPlayer * music_player);
+// MusicFi_OnLoop
 // sub_8003858
 void OverrideBgm(int song);
 // RestoreBgm

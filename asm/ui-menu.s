@@ -107,7 +107,7 @@ _0804AAB2:
 _0804AAC8: .4byte gPlaySt
 _0804AACC: .4byte gUnk_08C09BF4
 _0804AAD0:
-	bl sub_8015784
+	bl LockGame
 	ldr r0, _0804AC00 @ =gUnk_08C09BF4
 	movs r1, #3
 	bl Proc_Start
@@ -301,7 +301,7 @@ _0804AC46:
 	ands r0, r5
 	cmp r0, #0
 	beq _0804AC54
-	bl sub_8015794
+	bl UnlockGame
 _0804AC54:
 	adds r0, r4, #0
 	bl Proc_End

@@ -391,8 +391,8 @@ _080036E4: .4byte 0x02024E14
 _080036E8: .4byte 0x03005A30
 _080036EC: .4byte 0x03005C40
 
-	thumb_func_start sub_80036F0
-sub_80036F0: @ 0x080036F0
+	thumb_func_start StartOrChangeBgm
+StartOrChangeBgm: @ 0x080036F0
 	push {r7, lr}
 	sub sp, #0xc
 	mov r7, sp
@@ -452,8 +452,8 @@ _08003764:
 	pop {r0}
 	bx r0
 
-	thumb_func_start sub_800376C
-sub_800376C: @ 0x0800376C
+	thumb_func_start StartBgm
+StartBgm: @ 0x0800376C
 	push {r7, lr}
 	sub sp, #8
 	mov r7, sp
@@ -462,14 +462,14 @@ sub_800376C: @ 0x0800376C
 	ldr r2, [r7, #4]
 	ldr r0, [r7]
 	movs r1, #3
-	bl sub_80036F0
+	bl StartOrChangeBgm
 	add sp, #8
 	pop {r7}
 	pop {r0}
 	bx r0
 
-	thumb_func_start sub_8003788
-sub_8003788: @ 0x08003788
+	thumb_func_start StartBgmExt
+StartBgmExt: @ 0x08003788
 	push {r7, lr}
 	sub sp, #0xc
 	mov r7, sp
@@ -479,15 +479,15 @@ sub_8003788: @ 0x08003788
 	ldr r1, [r7, #4]
 	ldr r2, [r7, #8]
 	ldr r0, [r7]
-	bl sub_80036F0
+	bl StartOrChangeBgm
 	add sp, #0xc
 	pop {r7}
 	pop {r0}
 	bx r0
 	.align 2, 0
 
-	thumb_func_start sub_80037A8
-sub_80037A8: @ 0x080037A8
+	thumb_func_start MusicFi_OnLoop
+MusicFi_OnLoop: @ 0x080037A8
 	push {r4, r7, lr}
 	sub sp, #0xc
 	add r7, sp, #4
@@ -1525,7 +1525,7 @@ sub_8003F94: @ 0x08003F94
 	ldr r1, [r0, #0x5c]
 	adds r0, r1, #0
 	movs r1, #0
-	bl sub_800376C
+	bl StartBgm
 	ldr r1, [r7]
 	adds r0, r1, #0
 	adds r1, #0x66
