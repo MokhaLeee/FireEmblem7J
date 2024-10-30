@@ -211,7 +211,7 @@
 // sub_8043948
 // sub_804395C
 // sub_804397C
-// sub_80439BC
+// Sio_DrawFe6CommImage
 // sub_8043BCC
 // sub_8043CC8
 // sub_8043D14

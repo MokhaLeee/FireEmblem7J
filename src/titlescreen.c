@@ -80,17 +80,17 @@ void Title_InitSpriteAnim(struct ProcTitle * proc, bool anim_en)
 
 void Title_InitBg(struct ProcTitle * proc)
 {
-    ApplyPalette(Pal_Title_086B73E0, 0xF);
-    Decompress(Img_Title_086B7400, (void *)BG_VRAM + 0x8000);
-    TmApplyTsa(gBg3Tm, Tsa_Title_086BB234, 0xF000);
+    ApplyPalette(Pal_TitleBg, 0xF);
+    Decompress(Img_TitleBg, (void *)BG_VRAM + 0x8000);
+    TmApplyTsa(gBg3Tm, Tsa_TitleBg, 0xF000);
 
-    ApplyPalette(Pal_Title_086BB6E8, 0xE);
-    Decompress(Img_Title_086BB708, (void *)BG_VRAM + 0xCC00);
-    TmApplyTsa(gBg2Tm + TM_OFFSET(0, 1), Tsa_Title_086BBF90, 0xE260);
+    ApplyPalette(Pal_TitleAxe, 0xE);
+    Decompress(Img_TitleAxe, (void *)BG_VRAM + 0xCC00);
+    TmApplyTsa(gBg2Tm + TM_OFFSET(0, 1), Tsa_TitleAxe, 0xE260);
 
-    ApplyPalette(Pal_Title_086B6E70, 0xD);
-    Decompress(Img_Title_086B6E90, (void *)BG_VRAM + 0xDE00);
-    TmApplyTsa(gBg1Tm, Tsa_Title_086B7184, 0xD2F0);
+    ApplyPalette(Pal_TitleTextShadow, 0xD);
+    Decompress(Img_TitleTextShadow, (void *)BG_VRAM + 0xDE00);
+    TmApplyTsa(gBg1Tm, Tsa_TitleTextShadow, 0xD2F0);
 }
 
 void Title_Init(struct ProcTitle * proc)
@@ -193,7 +193,7 @@ void Title_BmBgfxAnimIN(struct ProcTitle * proc)
             SetBlendTargetB(1, 1, 1, 1, 1);
             SetDispEnable(1, 0, 1, 0, 1);
 
-            sub_80BDC2C(NULL, Pal_Title_086BB6E8, 0xE, 0x20, proc);
+            sub_80BDC2C(NULL, Pal_TitleAxe, 0xE, 0x20, proc);
         }
 
         SetBlendAlpha(pa, 0x10 - pa);

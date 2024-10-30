@@ -53,7 +53,7 @@ ProcScr_OpeningSeqence:	@ 0x08DB9058
         .word 0x0
         @ PROC_CALL
         .short 0x2, 0x0
-        .word sub_80BC4D0
+        .word OpAnim_DrawWater
         @ PROC_REPEAT
         .short 0x3, 0x0
         .word sub_80BC53C
@@ -122,7 +122,7 @@ ProcScr_OpeningSeqence:	@ 0x08DB9058
         .word 0x0
         @ PROC_CALL
         .short 0x2, 0x0
-        .word sub_80BCD34
+        .word OpAnim_DrawCloud
         @ PROC_YIELD
         .short 0xe, 0x0
         .word 0x0
@@ -242,8 +242,8 @@ gUnk_08DB9398:	@ 0x08DB9398
 gUnk_08DB93B0:	@ 0x08DB93B0
 	.incbin "FireEmblem7J.base.gba", 0xDB93B0, 0xDB93D0 - 0xDB93B0
 
-	.global gUnk_08DB93D0
-gUnk_08DB93D0:	@ 0x08DB93D0
+	.global ProcScr_08DB93D0
+ProcScr_08DB93D0:	@ 0x08DB93D0
 	.incbin "FireEmblem7J.base.gba", 0xDB93D0, 0xDB93F0 - 0xDB93D0
 
 	.global gUnk_08DB93F0

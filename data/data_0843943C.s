@@ -388,16 +388,16 @@ gUnk_08630288:	@ 0x08630288
 gUnk_08630338:	@ 0x08630338
 	.incbin "FireEmblem7J.base.gba", 0x630338, 0x6496C8 - 0x630338
 
-	.global gUnk_086496C8
-gUnk_086496C8:	@ 0x086496C8
+	.global Img_OpAnimWater
+Img_OpAnimWater:	@ 0x086496C8
 	.incbin "FireEmblem7J.base.gba", 0x6496C8, 0x64A790 - 0x6496C8
 
-	.global gUnk_0864A790
-gUnk_0864A790:	@ 0x0864A790
+	.global Tsa_OpAnimWater
+Tsa_OpAnimWater:	@ 0x0864A790
 	.incbin "FireEmblem7J.base.gba", 0x64A790, 0x64AC94 - 0x64A790
 
-	.global gUnk_0864AC94
-gUnk_0864AC94:	@ 0x0864AC94
+	.global Pal_OpAnimWater
+Pal_OpAnimWater:	@ 0x0864AC94
 	.incbin "FireEmblem7J.base.gba", 0x64AC94, 0x64ACB4 - 0x64AC94
 
 	.global gUnk_0864ACB4
@@ -1084,40 +1084,40 @@ OpBmBgfx_086B6508:	@ 0x086B6508
 OpBmBgfx_086B69BC:	@ 0x086B69BC
 	.incbin "FireEmblem7J.base.gba", 0x6B69BC, 0x6B6E70 - 0x6B69BC
 
-	.global Pal_Title_086B6E70
-Pal_Title_086B6E70:	@ 0x086B6E70
+	.global Pal_TitleTextShadow
+Pal_TitleTextShadow:	@ 0x086B6E70
 	.incbin "FireEmblem7J.base.gba", 0x6B6E70, 0x6B6E90 - 0x6B6E70
 
-	.global Img_Title_086B6E90
-Img_Title_086B6E90:	@ 0x086B6E90
+	.global Img_TitleTextShadow
+Img_TitleTextShadow:	@ 0x086B6E90
 	.incbin "FireEmblem7J.base.gba", 0x6B6E90, 0x6B7184 - 0x6B6E90
 
-	.global Tsa_Title_086B7184
-Tsa_Title_086B7184:	@ 0x086B7184
+	.global Tsa_TitleTextShadow
+Tsa_TitleTextShadow:	@ 0x086B7184
 	.incbin "FireEmblem7J.base.gba", 0x6B7184, 0x6B73E0 - 0x6B7184
 
-	.global Pal_Title_086B73E0
-Pal_Title_086B73E0:	@ 0x086B73E0
+	.global Pal_TitleBg
+Pal_TitleBg:	@ 0x086B73E0
 	.incbin "FireEmblem7J.base.gba", 0x6B73E0, 0x6B7400 - 0x6B73E0
 
-	.global Img_Title_086B7400
-Img_Title_086B7400:	@ 0x086B7400
+	.global Img_TitleBg
+Img_TitleBg:	@ 0x086B7400
 	.incbin "FireEmblem7J.base.gba", 0x6B7400, 0x6BB234 - 0x6B7400
 
-	.global Tsa_Title_086BB234
-Tsa_Title_086BB234:	@ 0x086BB234
+	.global Tsa_TitleBg
+Tsa_TitleBg:	@ 0x086BB234
 	.incbin "FireEmblem7J.base.gba", 0x6BB234, 0x6BB6E8 - 0x6BB234
 
-	.global Pal_Title_086BB6E8
-Pal_Title_086BB6E8:	@ 0x086BB6E8
+	.global Pal_TitleAxe
+Pal_TitleAxe:	@ 0x086BB6E8
 	.incbin "FireEmblem7J.base.gba", 0x6BB6E8, 0x6BB708 - 0x6BB6E8
 
-	.global Img_Title_086BB708
-Img_Title_086BB708:	@ 0x086BB708
+	.global Img_TitleAxe
+Img_TitleAxe:	@ 0x086BB708
 	.incbin "FireEmblem7J.base.gba", 0x6BB708, 0x6BBF90 - 0x6BB708
 
-	.global Tsa_Title_086BBF90
-Tsa_Title_086BBF90:	@ 0x086BBF90
+	.global Tsa_TitleAxe
+Tsa_TitleAxe:	@ 0x086BBF90
 	.incbin "FireEmblem7J.base.gba", 0x6BBF90, 0x6BC444 - 0x6BBF90
 
 	.global Pal_TitleSprites
@@ -1132,16 +1132,16 @@ Img_TitleSprites:	@ 0x086BC4E4
 SpirteAnim_TitleScreen:	@ 0x086BF118
 	.incbin "FireEmblem7J.base.gba", 0x6BF118, 0x6BF37C - 0x6BF118
 
-	.global gUnk_086BF37C
-gUnk_086BF37C:	@ 0x086BF37C
+	.global Pal_OpAnimCloud
+Pal_OpAnimCloud:	@ 0x086BF37C
 	.incbin "FireEmblem7J.base.gba", 0x6BF37C, 0x6BF39C - 0x6BF37C
 
-	.global gUnk_086BF39C
-gUnk_086BF39C:	@ 0x086BF39C
+	.global Img_OpAnimCloud
+Img_OpAnimCloud:	@ 0x086BF39C
 	.incbin "FireEmblem7J.base.gba", 0x6BF39C, 0x6C0674 - 0x6BF39C
 
-	.global gUnk_086C0674
-gUnk_086C0674:	@ 0x086C0674
+	.global Tsa_OpAnimCloud
+Tsa_OpAnimCloud:	@ 0x086C0674
 	.incbin "FireEmblem7J.base.gba", 0x6C0674, 0x6C08D0 - 0x6C0674
 
 	.global gUnk_086C08D0

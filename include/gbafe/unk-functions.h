@@ -903,7 +903,7 @@ const char* sub_802EBB0();
 // sub_80B98F8
 // sub_80B99D8
 // sub_80B99F8
-// sub_80B9A08
+// DrawFinImage
 // sub_80B9A4C
 // sub_80B9AC4
 // sub_80B9B1C

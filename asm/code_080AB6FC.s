@@ -28725,8 +28725,8 @@ sub_80B99F8: @ 0x080B99F8
 	.align 2, 0
 _080B9A04: .4byte gUnk_08DB8944
 
-	thumb_func_start sub_80B9A08
-sub_80B9A08: @ 0x080B9A08
+	thumb_func_start DrawFinImage
+DrawFinImage: @ 0x080B9A08
 	push {lr}
 	ldr r0, _080B9A34 @ =gUnk_08618410
 	movs r1, #0xe0
@@ -28785,7 +28785,7 @@ sub_80B9A4C: @ 0x080B9A4C
 	.align 2, 0
 _080B9A90: .4byte gBg3Tm
 _080B9A94:
-	bl sub_80B9A08
+	bl DrawFinImage
 _080B9A98:
 	ldr r3, _080B9AC0 @ =gDispIo
 	adds r1, r3, #0
@@ -28898,7 +28898,7 @@ sub_80B9B1C: @ 0x080B9B1C
 	strh r1, [r2, #0x3c]
 	adds r0, #0x4c
 	strh r3, [r0]
-	bl sub_80B9A08
+	bl DrawFinImage
 	pop {r4}
 	pop {r0}
 	bx r0
@@ -29152,7 +29152,7 @@ sub_80B9CBC: @ 0x080B9CBC
 	lsls r1, r1, #1
 	movs r2, #0x40
 	bl ApplyPaletteExt
-	ldr r0, _080B9D9C @ =Img_Title_086B7400
+	ldr r0, _080B9D9C @ =Img_TitleBg
 	ldr r1, _080B9DA0 @ =0x06008000
 	bl Decompress
 	ldr r0, _080B9DA4 @ =gBg3Tm
@@ -29172,7 +29172,7 @@ sub_80B9CBC: @ 0x080B9CBC
 	.align 2, 0
 _080B9D94: .4byte gDispIo
 _080B9D98: .4byte gUnk_0861A420
-_080B9D9C: .4byte Img_Title_086B7400
+_080B9D9C: .4byte Img_TitleBg
 _080B9DA0: .4byte 0x06008000
 _080B9DA4: .4byte gBg3Tm
 _080B9DA8: .4byte gUnk_0861A460

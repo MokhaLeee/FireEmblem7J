@@ -14426,8 +14426,8 @@ _080439B0: .4byte 0x02000C04
 _080439B4: .4byte 0x00001FA4
 _080439B8: .4byte 0x00000BB8
 
-	thumb_func_start sub_80439BC
-sub_80439BC: @ 0x080439BC
+	thumb_func_start Sio_DrawFe6CommImage
+Sio_DrawFe6CommImage: @ 0x080439BC
 	push {r4, r5, r6, lr}
 	sub sp, #0x18
 	adds r6, r0, #0
@@ -14493,7 +14493,7 @@ sub_80439BC: @ 0x080439BC
 	adds r0, r4, #0
 	adds r2, r5, #0
 	bl TmApplyTsa_thm
-	ldr r4, _08043B88 @ =gUnk_081D3AF0
+	ldr r4, _08043B88 @ =Img_Fe6Comm
 	movs r0, #3
 	bl GetBgChrOffset
 	adds r1, r0, #0
@@ -14502,11 +14502,11 @@ sub_80439BC: @ 0x080439BC
 	adds r1, r1, r2
 	adds r0, r4, #0
 	bl Decompress
-	ldr r0, _08043B8C @ =gUnk_081D768C
+	ldr r0, _08043B8C @ =Tsa_Fe6Comm
 	ldr r4, _08043B90 @ =gBg3Tm
 	adds r1, r4, #0
 	bl Decompress
-	ldr r0, _08043B94 @ =gUnk_081D7BF0
+	ldr r0, _08043B94 @ =Pal_Fe6Comm
 	movs r2, #0x80
 	lsls r2, r2, #1
 	movs r1, #0xe0
@@ -14620,10 +14620,10 @@ _08043B78: .4byte gBg1Tm
 _08043B7C: .4byte gUnk_081D7E20
 _08043B80: .4byte 0x00004060
 _08043B84: .4byte gUnk_081D7EBC
-_08043B88: .4byte gUnk_081D3AF0
-_08043B8C: .4byte gUnk_081D768C
+_08043B88: .4byte Img_Fe6Comm
+_08043B8C: .4byte Tsa_Fe6Comm
 _08043B90: .4byte gBg3Tm
-_08043B94: .4byte gUnk_081D7BF0
+_08043B94: .4byte Pal_Fe6Comm
 _08043B98: .4byte gUnk_08C08BCC
 _08043B9C: .4byte 0x0203DA48
 _08043BA0: .4byte 0x0203DBF0

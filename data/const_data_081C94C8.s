@@ -252,16 +252,16 @@ gUnk_081D3790:	@ 0x081D3790
 gUnk_081D3AB0:	@ 0x081D3AB0
 	.incbin "FireEmblem7J.base.gba", 0x1D3AB0, 0x1D3AF0 - 0x1D3AB0
 
-	.global gUnk_081D3AF0
-gUnk_081D3AF0:	@ 0x081D3AF0
+	.global Img_Fe6Comm
+Img_Fe6Comm:	@ 0x081D3AF0
 	.incbin "FireEmblem7J.base.gba", 0x1D3AF0, 0x1D768C - 0x1D3AF0
 
-	.global gUnk_081D768C
-gUnk_081D768C:	@ 0x081D768C
+	.global Tsa_Fe6Comm
+Tsa_Fe6Comm:	@ 0x081D768C
 	.incbin "FireEmblem7J.base.gba", 0x1D768C, 0x1D7BF0 - 0x1D768C
 
-	.global gUnk_081D7BF0
-gUnk_081D7BF0:	@ 0x081D7BF0
+	.global Pal_Fe6Comm
+Pal_Fe6Comm:	@ 0x081D7BF0
 	.incbin "FireEmblem7J.base.gba", 0x1D7BF0, 0x1D7CF0 - 0x1D7BF0
 
 	.global gUnk_081D7CF0

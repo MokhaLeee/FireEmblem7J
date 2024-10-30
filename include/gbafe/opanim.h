@@ -18,7 +18,7 @@
 // sub_80BC240
 // sub_80BC398
 // sub_80BC448
-// sub_80BC4D0
+// OpAnim_DrawWater
 // sub_80BC53C
 // sub_80BC5B0
 // sub_80BC5C4
@@ -39,7 +39,7 @@
 // sub_80BCC9C
 // nullsub_92
 // sub_80BCD00
-// sub_80BCD34
+// OpAnim_DrawCloud
 // sub_80BCE9C
 // sub_80BCEBC
 // sub_80BCF98

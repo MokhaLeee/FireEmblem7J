@@ -1196,20 +1196,20 @@ _080BC4C4: .4byte 0x0000FFE0
 _080BC4C8: .4byte 0x0000E0FF
 _080BC4CC: .4byte gBg3Tm
 
-	thumb_func_start sub_80BC4D0
-sub_80BC4D0: @ 0x080BC4D0
+	thumb_func_start OpAnim_DrawWater
+OpAnim_DrawWater: @ 0x080BC4D0
 	push {r4, lr}
 	adds r4, r0, #0
-	ldr r0, _080BC520 @ =gUnk_0864AC94
+	ldr r0, _080BC520 @ =Pal_OpAnimWater
 	movs r1, #0xe0
 	lsls r1, r1, #1
 	movs r2, #0x20
 	bl ApplyPaletteExt
-	ldr r0, _080BC524 @ =gUnk_086496C8
+	ldr r0, _080BC524 @ =Img_OpAnimWater
 	ldr r1, _080BC528 @ =0x06008000
 	bl Decompress
 	ldr r0, _080BC52C @ =gBg0Tm
-	ldr r1, _080BC530 @ =gUnk_0864A790
+	ldr r1, _080BC530 @ =Tsa_OpAnimWater
 	movs r2, #0xe0
 	lsls r2, r2, #8
 	bl TmApplyTsa_thm
@@ -1234,11 +1234,11 @@ sub_80BC4D0: @ 0x080BC4D0
 	pop {r0}
 	bx r0
 	.align 2, 0
-_080BC520: .4byte gUnk_0864AC94
-_080BC524: .4byte gUnk_086496C8
+_080BC520: .4byte Pal_OpAnimWater
+_080BC524: .4byte Img_OpAnimWater
 _080BC528: .4byte 0x06008000
 _080BC52C: .4byte gBg0Tm
-_080BC530: .4byte gUnk_0864A790
+_080BC530: .4byte Tsa_OpAnimWater
 _080BC534: .4byte gDispIo
 _080BC538: .4byte 0x03001620
 
@@ -2245,8 +2245,8 @@ _080BCD28:
 	.align 2, 0
 _080BCD30: .4byte gUnk_086A511C
 
-	thumb_func_start sub_80BCD34
-sub_80BCD34: @ 0x080BCD34
+	thumb_func_start OpAnim_DrawCloud
+OpAnim_DrawCloud: @ 0x080BCD34
 	push {r4, r5, r6, r7, lr}
 	mov r7, r8
 	push {r7}
@@ -2323,16 +2323,16 @@ sub_80BCD34: @ 0x080BCD34
 	movs r4, #0x10
 	orrs r0, r4
 	str r0, [r1]
-	ldr r0, _080BCE7C @ =gUnk_086BF37C
+	ldr r0, _080BCE7C @ =Pal_OpAnimCloud
 	movs r1, #0xe0
 	lsls r1, r1, #1
 	movs r2, #0x20
 	bl ApplyPaletteExt
-	ldr r0, _080BCE80 @ =gUnk_086BF39C
+	ldr r0, _080BCE80 @ =Img_OpAnimCloud
 	movs r1, #0xc0
 	lsls r1, r1, #0x13
 	bl Decompress
-	ldr r1, _080BCE84 @ =gUnk_086C0674
+	ldr r1, _080BCE84 @ =Tsa_OpAnimCloud
 	movs r2, #0xe0
 	lsls r2, r2, #8
 	adds r0, r6, #0
@@ -2391,9 +2391,9 @@ _080BCE6C: .4byte gBg3Tm
 _080BCE70: .4byte BmBgfxConf_OpAnim
 _080BCE74: .4byte sub_80BCD00
 _080BCE78: .4byte 0x03001620
-_080BCE7C: .4byte gUnk_086BF37C
-_080BCE80: .4byte gUnk_086BF39C
-_080BCE84: .4byte gUnk_086C0674
+_080BCE7C: .4byte Pal_OpAnimCloud
+_080BCE80: .4byte Img_OpAnimCloud
+_080BCE84: .4byte Tsa_OpAnimCloud
 _080BCE88: .4byte gUnk_0862F448
 _080BCE8C: .4byte gUnk_0862F468
 _080BCE90: .4byte 0x06010000
@@ -4629,7 +4629,7 @@ sub_80BDF7C: @ 0x080BDF7C
 	adds r5, r2, #0
 	mov sb, r3
 	ldr r1, [sp, #0x18]
-	ldr r0, _080BE014 @ =gUnk_08DB93D0
+	ldr r0, _080BE014 @ =ProcScr_08DB93D0
 	bl Proc_Start
 	lsls r1, r4, #0x10
 	str r1, [r0, #0x34]
@@ -4695,7 +4695,7 @@ sub_80BDF7C: @ 0x080BDF7C
 	pop {r0}
 	bx r0
 	.align 2, 0
-_080BE014: .4byte gUnk_08DB93D0
+_080BE014: .4byte ProcScr_08DB93D0
 _080BE018: .4byte gSinLut
 
 	thumb_func_start sub_80BE01C
