@@ -283,7 +283,7 @@ sub_801D9F0: @ 0x0801D9F0
 	ldrsh r0, [r4, r1]
 	cmp r0, #0
 	beq _0801DA06
-	bl sub_8015794
+	bl UnlockGame
 _0801DA06:
 	pop {r4}
 	pop {r0}
@@ -304,7 +304,7 @@ StartMapFade: @ 0x0801DA0C
 	strh r4, [r0]
 	cmp r4, #0
 	beq _0801DA2C
-	bl sub_8015784
+	bl LockGame
 _0801DA2C:
 	pop {r4}
 	pop {r0}
@@ -5259,7 +5259,7 @@ _080201AE:
 	adds r0, r0, r1
 	ldrh r0, [r0]
 	movs r1, #0
-	bl sub_800376C
+	bl StartBgm
 _080201BA:
 	adds r3, r7, #0
 	adds r3, #0x4c
@@ -5358,7 +5358,7 @@ _08020276:
 	adds r0, r0, r1
 	ldrh r0, [r0]
 	movs r1, #0
-	bl sub_800376C
+	bl StartBgm
 _08020282:
 	movs r1, #0
 	ldrsh r0, [r5, r1]
@@ -5600,7 +5600,7 @@ _0802045A:
 	adds r0, r0, r1
 	ldrh r0, [r0]
 	movs r1, #0
-	bl sub_800376C
+	bl StartBgm
 _08020466:
 	pop {r4, r5}
 	pop {r0}
@@ -5883,7 +5883,7 @@ sub_8020674: @ 0x08020674
 	bl LockBmDisplay
 	movs r0, #0x2b
 	movs r1, #0
-	bl sub_800376C
+	bl StartBgm
 	ldr r4, _08020788 @ =gDispIo
 	movs r1, #4
 	rsbs r1, r1, #0

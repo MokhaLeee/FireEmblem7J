@@ -10,7 +10,7 @@ extern u16 * EWRAM_DATA gManimActiveScanlineBuf;
 void InitScanlineEffect(void);
 // sub_807706C
 // sub_807719C
-// sub_80771D0
+void ResetScanLineHBlank(void);
 // sub_80771E0
 // sub_8077248
 // sub_80772CC
@@ -21,8 +21,8 @@ void InitScanlineEffect(void);
 // PrepareSineWaveScanlineBuf
 // sub_8077694
 // sub_8077714
-// sub_8077794
-// PrepareSineWaveScanlineBufExt
+void sub_8077794(u16 * buf, s16 phase, s16 amplitude, s16 frequency, int arg5);
+void PrepareSineWaveScanlineBufExt(u16 * buf, s16 phase, s16 amplitude, s16 frequency, int yStart, int yEnd);
 void SwapScanlineBufs(void);
 void InitScanlineBuf(u16 * buf);
 // SetScanlineBufWinL

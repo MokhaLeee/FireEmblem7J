@@ -208,8 +208,8 @@ sub_807719C: @ 0x0807719C
 	.align 2, 0
 _080771CC: .4byte gManimScanlineBufs
 
-	thumb_func_start sub_80771D0
-sub_80771D0: @ 0x080771D0
+	thumb_func_start ResetScanLineHBlank
+ResetScanLineHBlank: @ 0x080771D0
 	push {r7, lr}
 	mov r7, sp
 	movs r0, #0

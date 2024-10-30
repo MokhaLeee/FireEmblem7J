@@ -2963,7 +2963,7 @@ _08079E1C:
 	bne _08079E50
 	movs r0, #0x2b
 	movs r1, #0
-	bl sub_800376C
+	bl StartBgm
 	adds r1, r6, #0
 	adds r1, #0x41
 	movs r0, #1
@@ -2985,7 +2985,7 @@ _08079E50:
 	bne _08079ECC
 	movs r0, #0x2c
 	movs r1, #0
-	bl sub_800376C
+	bl StartBgm
 	b _08079ECC
 _08079E6A:
 	ldr r1, _08079E84 @ =gUnk_08D6722C
@@ -3019,7 +3019,7 @@ _08079E92:
 	bne _08079EB4
 	movs r0, #0x2c
 	movs r1, #0
-	bl sub_800376C
+	bl StartBgm
 _08079EB4:
 	cmp r5, #0xf
 	beq _08079EBE
@@ -3046,7 +3046,7 @@ sub_8079ED4: @ 0x08079ED4
 	bl SetFlag
 	movs r0, #0x2b
 	movs r1, #0
-	bl sub_800376C
+	bl StartBgm
 	ldr r0, _08079EFC @ =gPlaySt
 	adds r0, #0x41
 	movs r1, #1

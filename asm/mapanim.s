@@ -9359,7 +9359,7 @@ sub_80733F8: @ 0x080733F8
 	sub sp, #4
 	mov r7, sp
 	str r0, [r7]
-	bl sub_80771D0
+	bl ResetScanLineHBlank
 	add sp, #4
 	pop {r7}
 	pop {r0}

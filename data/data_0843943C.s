@@ -344,8 +344,8 @@ gUnk_08622C7C:	@ 0x08622C7C
 gUnk_08622C9C:	@ 0x08622C9C
 	.incbin "FireEmblem7J.base.gba", 0x622C9C, 0x6282F8 - 0x622C9C
 
-	.global gUnk_086282F8
-gUnk_086282F8:	@ 0x086282F8
+	.global Pal_TitleFlameIdle
+Pal_TitleFlameIdle:	@ 0x086282F8
 	.incbin "FireEmblem7J.base.gba", 0x6282F8, 0x6284F8 - 0x6282F8
 
 	.global gUnk_086284F8
@@ -1084,52 +1084,52 @@ OpBmBgfx_086B6508:	@ 0x086B6508
 OpBmBgfx_086B69BC:	@ 0x086B69BC
 	.incbin "FireEmblem7J.base.gba", 0x6B69BC, 0x6B6E70 - 0x6B69BC
 
-	.global gUnk_086B6E70
-gUnk_086B6E70:	@ 0x086B6E70
+	.global Pal_Title_086B6E70
+Pal_Title_086B6E70:	@ 0x086B6E70
 	.incbin "FireEmblem7J.base.gba", 0x6B6E70, 0x6B6E90 - 0x6B6E70
 
-	.global gUnk_086B6E90
-gUnk_086B6E90:	@ 0x086B6E90
+	.global Img_Title_086B6E90
+Img_Title_086B6E90:	@ 0x086B6E90
 	.incbin "FireEmblem7J.base.gba", 0x6B6E90, 0x6B7184 - 0x6B6E90
 
-	.global gUnk_086B7184
-gUnk_086B7184:	@ 0x086B7184
+	.global Tsa_Title_086B7184
+Tsa_Title_086B7184:	@ 0x086B7184
 	.incbin "FireEmblem7J.base.gba", 0x6B7184, 0x6B73E0 - 0x6B7184
 
-	.global gUnk_086B73E0
-gUnk_086B73E0:	@ 0x086B73E0
+	.global Pal_Title_086B73E0
+Pal_Title_086B73E0:	@ 0x086B73E0
 	.incbin "FireEmblem7J.base.gba", 0x6B73E0, 0x6B7400 - 0x6B73E0
 
-	.global gUnk_086B7400
-gUnk_086B7400:	@ 0x086B7400
+	.global Img_Title_086B7400
+Img_Title_086B7400:	@ 0x086B7400
 	.incbin "FireEmblem7J.base.gba", 0x6B7400, 0x6BB234 - 0x6B7400
 
-	.global gUnk_086BB234
-gUnk_086BB234:	@ 0x086BB234
+	.global Tsa_Title_086BB234
+Tsa_Title_086BB234:	@ 0x086BB234
 	.incbin "FireEmblem7J.base.gba", 0x6BB234, 0x6BB6E8 - 0x6BB234
 
-	.global gUnk_086BB6E8
-gUnk_086BB6E8:	@ 0x086BB6E8
+	.global Pal_Title_086BB6E8
+Pal_Title_086BB6E8:	@ 0x086BB6E8
 	.incbin "FireEmblem7J.base.gba", 0x6BB6E8, 0x6BB708 - 0x6BB6E8
 
-	.global gUnk_086BB708
-gUnk_086BB708:	@ 0x086BB708
+	.global Img_Title_086BB708
+Img_Title_086BB708:	@ 0x086BB708
 	.incbin "FireEmblem7J.base.gba", 0x6BB708, 0x6BBF90 - 0x6BB708
 
-	.global gUnk_086BBF90
-gUnk_086BBF90:	@ 0x086BBF90
+	.global Tsa_Title_086BBF90
+Tsa_Title_086BBF90:	@ 0x086BBF90
 	.incbin "FireEmblem7J.base.gba", 0x6BBF90, 0x6BC444 - 0x6BBF90
 
-	.global gUnk_086BC444
-gUnk_086BC444:	@ 0x086BC444
+	.global Pal_TitleSprites
+Pal_TitleSprites:	@ 0x086BC444
 	.incbin "FireEmblem7J.base.gba", 0x6BC444, 0x6BC4E4 - 0x6BC444
 
-	.global gUnk_086BC4E4
-gUnk_086BC4E4:	@ 0x086BC4E4
+	.global Img_TitleSprites
+Img_TitleSprites:	@ 0x086BC4E4
 	.incbin "FireEmblem7J.base.gba", 0x6BC4E4, 0x6BF118 - 0x6BC4E4
 
-	.global gUnk_086BF118
-gUnk_086BF118:	@ 0x086BF118
+	.global SpirteAnim_TitleScreen
+SpirteAnim_TitleScreen:	@ 0x086BF118
 	.incbin "FireEmblem7J.base.gba", 0x6BF118, 0x6BF37C - 0x6BF118
 
 	.global gUnk_086BF37C
@@ -1180,82 +1180,14 @@ gUnk_086C261C:	@ 0x086C261C
 gUnk_086C38F4:	@ 0x086C38F4
 	.incbin "FireEmblem7J.base.gba", 0x6C38F4, 0x6C3CF8 - 0x6C38F4
 
-	.global gUnk_086C3CF8
-gUnk_086C3CF8:	@ 0x086C3CF8
+	.global Pal_Title_086C3CF8
+Pal_Title_086C3CF8:	@ 0x086C3CF8
 	.incbin "FireEmblem7J.base.gba", 0x6C3CF8, 0x6C3D18 - 0x6C3CF8
 
-	.global gUnk_086C3D18
-gUnk_086C3D18:	@ 0x086C3D18
+	.global Img_Title_086C3D18
+Img_Title_086C3D18:	@ 0x086C3D18
 	.incbin "FireEmblem7J.base.gba", 0x6C3D18, 0x6C40D0 - 0x6C3D18
 
-	.global gUnk_086C40D0
-gUnk_086C40D0:	@ 0x086C40D0
+	.global Tsa_Title_086C40D0
+Tsa_Title_086C40D0:	@ 0x086C40D0
 	.incbin "FireEmblem7J.base.gba", 0x6C40D0, 0x6C44D4 - 0x6C40D0
-
-	.global gUnk_086C44D4
-gUnk_086C44D4:	@ 0x086C44D4
-	.incbin "FireEmblem7J.base.gba", 0x6C44D4, 0x6C44EC - 0x6C44D4
-
-	.global gUnk_086C44EC
-gUnk_086C44EC:	@ 0x086C44EC
-	.incbin "FireEmblem7J.base.gba", 0x6C44EC, 0x6C450C - 0x6C44EC
-
-	.global gUnk_086C450C
-gUnk_086C450C:	@ 0x086C450C
-	.incbin "FireEmblem7J.base.gba", 0x6C450C, 0x6C4524 - 0x6C450C
-
-	.global gUnk_086C4524
-gUnk_086C4524:	@ 0x086C4524
-	.incbin "FireEmblem7J.base.gba", 0x6C4524, 0x6C4544 - 0x6C4524
-
-	.global gUnk_086C4544
-gUnk_086C4544:	@ 0x086C4544
-	.incbin "FireEmblem7J.base.gba", 0x6C4544, 0x6C4560 - 0x6C4544
-
-	.global gUnk_086C4560
-gUnk_086C4560:	@ 0x086C4560
-	.incbin "FireEmblem7J.base.gba", 0x6C4560, 0x6C45F0 - 0x6C4560
-
-	.global gUnk_086C45F0
-gUnk_086C45F0:	@ 0x086C45F0
-	.incbin "FireEmblem7J.base.gba", 0x6C45F0, 0x6C46A4 - 0x6C45F0
-
-	.global gUnk_086C46A4
-gUnk_086C46A4:	@ 0x086C46A4
-	.incbin "FireEmblem7J.base.gba", 0x6C46A4, 0x6C46D4 - 0x6C46A4
-
-	.global gUnk_086C46D4
-gUnk_086C46D4:	@ 0x086C46D4
-	.incbin "FireEmblem7J.base.gba", 0x6C46D4, 0x6C46EC - 0x6C46D4
-
-	.global gUnk_086C46EC
-gUnk_086C46EC:	@ 0x086C46EC
-	.incbin "FireEmblem7J.base.gba", 0x6C46EC, 0x6C4770 - 0x6C46EC
-
-	.global gUnk_086C4770
-gUnk_086C4770:	@ 0x086C4770
-	.incbin "FireEmblem7J.base.gba", 0x6C4770, 0x6C4788 - 0x6C4770
-
-	.global gUnk_086C4788
-gUnk_086C4788:	@ 0x086C4788
-	.incbin "FireEmblem7J.base.gba", 0x6C4788, 0x6C47C4 - 0x6C4788
-
-	.global gUnk_086C47C4
-gUnk_086C47C4:	@ 0x086C47C4
-	.incbin "FireEmblem7J.base.gba", 0x6C47C4, 0x6C47D4 - 0x6C47C4
-
-	.global gUnk_086C47D4
-gUnk_086C47D4:	@ 0x086C47D4
-	.incbin "FireEmblem7J.base.gba", 0x6C47D4, 0x6C4808 - 0x6C47D4
-
-	.global gUnk_086C4808
-gUnk_086C4808:	@ 0x086C4808
-	.incbin "FireEmblem7J.base.gba", 0x6C4808, 0x6EA858 - 0x6C4808
-
-	.global gUnk_086EA858
-gUnk_086EA858:	@ 0x086EA858
-	.incbin "FireEmblem7J.base.gba", 0x6EA858, 0x6EA8D0 - 0x6EA858
-
-	.global gUnk_086EA8D0
-gUnk_086EA8D0:	@ 0x086EA8D0
-	.incbin "FireEmblem7J.base.gba", 0x6EA8D0, 0xB36950 - 0x6EA8D0

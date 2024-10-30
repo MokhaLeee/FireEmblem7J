@@ -221,7 +221,7 @@ _0804B660: .4byte 0x0000038B
 sub_804B664: @ 0x0804B664
 	push {r4, r5, r6, lr}
 	adds r4, r0, #0
-	bl sub_8015784
+	bl LockGame
 	ldr r0, _0804B6C4 @ =gUnk_08C09C80
 	movs r1, #3
 	bl Proc_Start
@@ -296,7 +296,7 @@ _0804B6EE:
 	ands r0, r1
 	cmp r0, #0
 	beq _0804B700
-	bl sub_8015794
+	bl UnlockGame
 _0804B700:
 	adds r0, r4, #0
 	bl Proc_End

@@ -473,7 +473,7 @@ _0801B934:
 	ldr r0, [r0]
 	movs r1, #1
 	movs r2, #0
-	bl sub_8003788
+	bl StartBgmExt
 _0801B94C:
 	movs r0, #0
 	pop {r1}

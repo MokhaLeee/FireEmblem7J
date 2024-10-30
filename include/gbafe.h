@@ -12,6 +12,7 @@
 #include "gbafe/armfunc.h"
 #include "gbafe/hardware.h"
 #include "gbafe/unit-sprite.h"
+#include "gbafe/game-ctrl.h"
 #include "gbafe/oam.h"
 #include "gbafe/action.h"
 #include "gbafe/text.h"
@@ -63,3 +64,5 @@
 #include "gbafe/scrolling_util.h"
 #include "gbafe/bonusclaim.h"
 #include "gbafe/spinning_arrow.h"
+#include "gbafe/titlescreen.h"
+#include "gbafe/opanim.h"

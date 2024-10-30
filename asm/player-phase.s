@@ -34,9 +34,9 @@ sub_801C584: @ 0x0801C584
 	ldrh r0, [r2, #0x10]
 	bl HandleMapCursorInput
 	movs r0, #8
-	bl sub_8015B90
+	bl HandleMoveMapCursor
 	movs r0, #8
-	bl sub_8015BE4
+	bl HandleMoveCameraWithMapCursor
 	b _0801C5D8
 	.align 2, 0
 _0801C5B8: .4byte gpKeySt
@@ -47,9 +47,9 @@ _0801C5C4:
 	ldrh r0, [r0, #6]
 	bl HandleMapCursorInput
 	movs r0, #4
-	bl sub_8015B90
+	bl HandleMoveMapCursor
 	movs r0, #4
-	bl sub_8015BE4
+	bl HandleMoveCameraWithMapCursor
 _0801C5D8:
 	ldr r0, _0801C5FC @ =gBmSt
 	ldrh r1, [r0, #0x20]

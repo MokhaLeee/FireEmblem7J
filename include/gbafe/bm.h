@@ -162,6 +162,17 @@ void OnMain(void);
 void LockGame(void);
 void UnlockGame(void);
 u8 GetGameLock(void);
+// HandleChangePhase
+// CallChapterStartEventMaybe
+// BmMain_ChangePhase
+// sub_8015840
+// BmMain_StartPhase
+// sub_80158B0
+// sub_80158D4
+// sub_8015900
+// sub_8015918
+// BmMain_StartIntroFx
+// BmMain_SuspendBeforePhase
 void InitBmBgLayers(void);
 void ApplySystemObjectsGraphics(void);
 void ApplySystemGraphics(void);
@@ -172,7 +183,9 @@ u16 GetCameraAdjustedX(int x);
 u16 GetCameraAdjustedY(int y);
 u16 GetCameraCenteredX(int x);
 u16 GetCameraCenteredY(int y);
-void PutMapCursor(int x, int y, int kind);
+// sub_8015DE8
+// DisplayBmTextShadow
+// void PutMapCursor(int x, int y, int kind);
 void SetMapCursorPosition(int x, int y);
 void PutSysArrow(int x, int y, u8 isDown);
 void PutSysAButton(int x, int y, int palid);
@@ -182,3 +195,18 @@ bool CameraMove_08016290(ProcPtr proc);
 void Unused_08016344(int x, int y, int duration);
 int GetActiveMapSong(void);
 void StartMapSongBgm(void);
+
+// PutSysArrow
+// sub_8015F6C
+// sub_8016000
+// StoreAdjustedCameraPositions
+// EnsureCameraOntoCenteredPosition
+// EnsureCameraOntoPosition
+// sub_80161EC
+// sub_801622C
+// sub_8016290
+// sub_80162E0
+// sub_8016318
+// sub_8016400
+// sub_8016410
+// nullsub_37

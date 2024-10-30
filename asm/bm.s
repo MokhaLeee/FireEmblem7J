@@ -77,8 +77,8 @@ _08015778: .4byte 0x02026A28
 _0801577C: .4byte gBmSt
 _08015780: .4byte 0x04000006
 
-	thumb_func_start sub_8015784
-sub_8015784: @ 0x08015784
+	thumb_func_start LockGame
+LockGame: @ 0x08015784
 	ldr r1, _08015790 @ =gBmSt
 	ldrb r0, [r1, #1]
 	adds r0, #1
@@ -87,8 +87,8 @@ sub_8015784: @ 0x08015784
 	.align 2, 0
 _08015790: .4byte gBmSt
 
-	thumb_func_start sub_8015794
-sub_8015794: @ 0x08015794
+	thumb_func_start UnlockGame
+UnlockGame: @ 0x08015794
 	ldr r1, _080157A0 @ =gBmSt
 	ldrb r0, [r1, #1]
 	subs r0, #1
@@ -619,8 +619,8 @@ _08015B8A:
 	pop {r0}
 	bx r0
 
-	thumb_func_start sub_8015B90
-sub_8015B90: @ 0x08015B90
+	thumb_func_start HandleMoveMapCursor
+HandleMoveMapCursor: @ 0x08015B90
 	push {r4, r5, lr}
 	adds r4, r0, #0
 	ldr r2, _08015BE0 @ =gBmSt
@@ -668,8 +668,8 @@ _08015BDA:
 	.align 2, 0
 _08015BE0: .4byte gBmSt
 
-	thumb_func_start sub_8015BE4
-sub_8015BE4: @ 0x08015BE4
+	thumb_func_start HandleMoveCameraWithMapCursor
+HandleMoveCameraWithMapCursor: @ 0x08015BE4
 	push {r4, r5, r6, lr}
 	adds r4, r0, #0
 	movs r6, #0
@@ -1774,7 +1774,7 @@ sub_8016400: @ 0x08016400
 	push {lr}
 	bl sub_8016318
 	movs r1, #0
-	bl sub_800376C
+	bl StartBgm
 	pop {r0}
 	bx r0
 
