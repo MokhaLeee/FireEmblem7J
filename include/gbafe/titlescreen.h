@@ -47,10 +47,22 @@ void StartTitleScreen_FlagTrue(ProcPtr parent);
 void Title_StartFlameAnim(struct ProcTitle * proc);
 void TitleFlame_Init(struct Proc * proc);
 void TitleFlame_Loop(struct Proc * proc);
-// sub_80BB8CC
-// sub_80BB940
-void SetTitleScreenAnimParamSync(ProcPtr approc, int a, int b, int c, int d, int e, ProcPtr parent);
-void sub_80BBAA4(ProcPtr approc, int a, int b, int c, int d, int e, int f, ProcPtr parent);
+
+struct ProcTitleSpriteCtrl {
+    PROC_HEADER;
+
+    /* 2C */ ProcPtr approc;
+    /* 30 */ int timer, duration;
+    /* 38 */ int x_step, y_step;
+    /* 40 */ int x, y;
+    /* 48 */ void (* callback)(ProcPtr proc);
+    /* 4C */ u8 mode;
+};
+
+void TitleSprite_Init(struct ProcTitleSpriteCtrl * proc);
+void TitleSprite_Loop(struct ProcTitleSpriteCtrl * proc);
+void TitleSpriteBlendIN(ProcPtr approc, int x_step, int y_step, int x, int y, int duration, ProcPtr parent);
+void TitleSpriteBlendOUT(ProcPtr approc, int x_step, int y_step, int x, int y, int duration, void (* callback)(ProcPtr proc), ProcPtr parent);
 
 extern struct ProcCmd ProcScr_TitleScreen[];
 extern struct ProcCmd ProcScr_TitleFlame[];

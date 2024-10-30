@@ -179,7 +179,7 @@ void Title_BmBgfxAnimIN(struct ProcTitle * proc)
     u8 tmp;
 
     if (proc->timer == 8)
-        SetTitleScreenAnimParamSync(proc->approcs[1], 0x78, 0x38, 0x78, 0x48, 0x10, proc);
+        TitleSpriteBlendIN(proc->approcs[1], 0x78, 0x38, 0x78, 0x48, 0x10, proc);
 
     tmp = proc->timer - 0x30;
     if (tmp <= 0x20)
@@ -201,10 +201,10 @@ void Title_BmBgfxAnimIN(struct ProcTitle * proc)
     }
 
     if (proc->timer == 0x28)
-        sub_80BBAA4(proc->approcs[0], 0, 0, 0x78, 0x48, 0x10, 0, proc);
+        TitleSpriteBlendOUT(proc->approcs[0], 0, 0, 0x78, 0x48, 0x10, 0, proc);
 
     if (proc->timer == 0x50)
-        SetTitleScreenAnimParamSync(proc->approcs[4], 0x78, 0x78, 0x78, 0x68, 0x10, proc);
+        TitleSpriteBlendIN(proc->approcs[4], 0x78, 0x78, 0x78, 0x68, 0x10, proc);
 
     proc->timer++;
     if (proc->timer == 0x64)
@@ -229,9 +229,9 @@ void Title_BmBgfxAnimOUT(struct ProcTitle * proc)
     {
         if (proc->timer == 0x20)
         {
-            SetTitleScreenAnimParamSync(proc->approcs[2], 0xA0, 0x2C, 0x78, 0x2C, 0x10, proc);
-            SetTitleScreenAnimParamSync(proc->approcs[3], 0x78, 0x80, 0x78, 0x80, 0x10, proc);
-            SetTitleScreenAnimParamSync(proc->approcs[5], 0x78, 0x90, 0x78, 0x90, 0x10, proc);
+            TitleSpriteBlendIN(proc->approcs[2], 0xA0, 0x2C, 0x78, 0x2C, 0x10, proc);
+            TitleSpriteBlendIN(proc->approcs[3], 0x78, 0x80, 0x78, 0x80, 0x10, proc);
+            TitleSpriteBlendIN(proc->approcs[5], 0x78, 0x90, 0x78, 0x90, 0x10, proc);
         }
         else
         {
@@ -311,6 +311,13 @@ void StartTitleScreen_FlagTrue(ProcPtr parent)
     proc->mode = 1;
 }
 
+struct ProcCmd CONST_DATA ProcScr_TitleFlame[] = {
+    PROC_SET_END_CB(ResetScanLineHBlank),
+    PROC_CALL(TitleFlame_Init),
+    PROC_REPEAT(TitleFlame_Loop),
+    PROC_END,
+};
+
 void Title_StartFlameAnim(struct ProcTitle * proc)
 {
     SetDispEnable(1, 1, 1, 1, 1);
@@ -344,13 +351,6 @@ void Title_StartFlameAnim(struct ProcTitle * proc)
     Proc_Start(ProcScr_TitleFlame, proc);
 }
 
-struct ProcCmd CONST_DATA ProcScr_TitleFlame[] = {
-    PROC_SET_END_CB(ResetScanLineHBlank),
-    PROC_CALL(TitleFlame_Init),
-    PROC_REPEAT(TitleFlame_Loop),
-    PROC_END,
-};
-
 void TitleFlame_Init(struct Proc * proc)
 {
     proc->unk64 = 0;
@@ -361,4 +361,115 @@ void TitleFlame_Init(struct Proc * proc)
     gTitleSt.unk_08 = 3;
     gTitleSt.unk_0C = 4;
     gTitleSt.unk_10 = 0;
+}
+
+void TitleFlame_Loop(struct Proc * proc)
+{
+    if ((proc->unk66 >> 1) <= 0x10)
+    {
+        proc->unk66++;
+
+        if (proc->unk66 <= 0x10)
+            SetBgOffset(BG_1, -8 - (proc->unk66 >> 3), -0x30 - (proc->unk66 >> 2));
+
+        SetBlendAlpha(proc->unk66 >> 1, 0x10 - (proc->unk66 >> 2));
+    }
+
+    sub_8077794(GetScanlineBuf(1, 0x00), proc->unk64, gTitleSt.unk_04, gTitleSt.unk_00, 0);
+    sub_8077794(GetScanlineBuf(1, 0xA0), proc->unk64, gTitleSt.unk_0C, gTitleSt.unk_08, 0);
+    SwapScanlineBufs();
+
+    SetBgOffset(BG_0, 0, gTitleSt.unk_10);
+    proc->unk64++;
+}
+
+struct ProcCmd CONST_DATA ProcScr_TitleAnimSpriteCtrl[] = {
+    PROC_YIELD,
+    PROC_CALL(TitleSprite_Init),
+    PROC_REPEAT(TitleSprite_Loop),
+    PROC_END,
+};
+
+void TitleSprite_Init(struct ProcTitleSpriteCtrl * proc)
+{
+    if (proc->mode != 0)
+    {
+        SetBlendAlpha(0, 0x10);
+        SetBlendTargetA(0, 0, 0, 0, 0);
+        SetBlendTargetB(1, 1, 1, 1, 1);
+        SetBlendBackdropA(0);
+        SetBlendBackdropB(1);
+    }
+
+    proc->timer = 0;
+}
+
+void TitleSprite_Loop(struct ProcTitleSpriteCtrl * proc)
+{
+    int diff, x, y, pa;
+
+    proc->timer++;
+
+    if (proc->callback)
+        proc->callback(proc);
+
+    if (proc->timer >= proc->duration)
+    {
+        Proc_Break(proc);
+        SetSpriteAnimProcParameters(proc->approc, proc->x, proc->y, -1);
+        return;
+    }
+
+    diff = proc->duration - proc->timer;
+
+    x = OAM1_X((diff * proc->x_step + proc->x * proc->timer) / proc->duration);
+    y = OAM0_Y((diff * proc->y_step + proc->y * proc->timer) / proc->duration);
+    pa = (proc->timer * 0x10) / proc->duration;
+
+    switch (proc->mode) {
+    case 1:
+        SetBlendAlpha(pa, 0x10 - pa);
+        SetSpriteAnimProcParameters(proc->approc, x, y + 0x400, -1);
+        break;
+
+    case 2:
+        SetBlendAlpha(0x10 - pa, pa);
+        SetSpriteAnimProcParameters(proc->approc, x, y + 0x400, -1);
+        break;
+
+    case 0:
+        SetSpriteAnimProcParameters(proc->approc, x, y, -1);
+        break;
+
+    default:
+        break;
+    }
+}
+
+void TitleSpriteBlendIN(ProcPtr approc, int x_step, int y_step, int x, int y, int duration, ProcPtr parent)
+{
+    struct ProcTitleSpriteCtrl * proc = Proc_Start(ProcScr_TitleAnimSpriteCtrl, parent);
+
+    proc->approc = approc;
+    proc->x_step = x_step;
+    proc->y_step = y_step;
+    proc->x = x;
+    proc->y = y;
+    proc->duration = duration;
+    proc->callback = NULL;
+    proc->mode = 1;
+}
+
+void TitleSpriteBlendOUT(ProcPtr approc, int x_step, int y_step, int x, int y, int duration, void (* callback)(ProcPtr proc), ProcPtr parent)
+{
+    struct ProcTitleSpriteCtrl * proc = Proc_Start(ProcScr_TitleAnimSpriteCtrl, parent);
+
+    proc->approc = approc;
+    proc->x_step = x_step;
+    proc->y_step = y_step;
+    proc->x = x;
+    proc->y = y;
+    proc->callback = callback;
+    proc->duration = duration;
+    proc->mode = 0;
 }

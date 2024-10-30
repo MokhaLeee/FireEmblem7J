@@ -332,7 +332,6 @@ SECTIONS
 		src/sysutil.o(.text);
 		asm/code_080AB6FC.o(.text);
 		src/titlescreen.o(.text);
-		asm/titlescreen.o(.text);
 		asm/opanim.o(.text);
 
 		asm/m4a_1.o(.text);

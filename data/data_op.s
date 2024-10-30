@@ -1,9 +1,5 @@
 	.section .data
 
-	.global ProcScr_TitleAnimSpriteCtrl
-ProcScr_TitleAnimSpriteCtrl:	@ 0x08DB8FA0
-	.incbin "FireEmblem7J.base.gba", 0xDB8FA0, 0xDB8FC0 - 0xDB8FA0
-
 	.global gUnk_08DB8FC0
 gUnk_08DB8FC0:	@ 0x08DB8FC0
 	.incbin "FireEmblem7J.base.gba", 0xDB8FC0, 0xDB8FC4 - 0xDB8FC0

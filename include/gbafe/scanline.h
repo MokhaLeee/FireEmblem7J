@@ -21,8 +21,8 @@ void ResetScanLineHBlank(void);
 // PrepareSineWaveScanlineBuf
 // sub_8077694
 // sub_8077714
-// sub_8077794
-// PrepareSineWaveScanlineBufExt
+void sub_8077794(u16 * buf, s16 phase, s16 amplitude, s16 frequency, int arg5);
+void PrepareSineWaveScanlineBufExt(u16 * buf, s16 phase, s16 amplitude, s16 frequency, int yStart, int yEnd);
 void SwapScanlineBufs(void);
 void InitScanlineBuf(u16 * buf);
 // SetScanlineBufWinL
