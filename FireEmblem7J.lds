@@ -24,6 +24,10 @@ SECTIONS
 	{
 		. = 0x000000;
 		. = ALIGN(4); src/titlescreen.o(ewram_overlay_gamestart);
+
+		. = 0x007014;
+		. = ALIGN(4); src/opanim_scanline.o(ewram_overlay_gamestart);
+		. = 0x007508; gUnkOpAnim_02007508 = .;
 	}
 
     . = __ewram_overlay_beg;
@@ -332,6 +336,9 @@ SECTIONS
 		src/sysutil.o(.text);
 		asm/code_080AB6FC.o(.text);
 		src/titlescreen.o(.text);
+		src/opanim_scanline.o(.text);
+		asm/opanim_scanline.o(.text);
+		src/opanim.o(.text);
 		asm/opanim.o(.text);
 
 		asm/m4a_1.o(.text);
@@ -466,6 +473,8 @@ SECTIONS
 		. = ALIGN(4); data/data_08DAE4C4.o(.data)
 		. = ALIGN(4); src/titlescreen.o(.data)
 		. = ALIGN(4); data/data_op.o(.data)
+		. = ALIGN(4); src/opanim.o(.data)
+		. = ALIGN(4); data/data_op2.o(.data)
 		. = ALIGN(4); src/bmbgfx_data.o(.data)
 		. = ALIGN(4); data/data_08DBAD14.o(.data)
 	}

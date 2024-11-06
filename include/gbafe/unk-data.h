@@ -2313,30 +2313,4 @@ extern struct ProcCmd ProcScr_MixPalette[];
 // ??? gUnk_08DB8ED4
 
 /* titlescreen.h */
-
-// ??? gUnk_08DB8FC0
-// ??? gUnk_08DB8FC4
-// ??? gUnk_08DB8FC8
-// ??? gUnk_08DB8FCC
-// ??? gUnk_08DB8FD0
-// ??? gUnk_08DB9010
-// ??? ProcScr_08DB9030
-extern uintptr_t ProcScr_08DB91A8[];
-extern uintptr_t ProcScr_08DB91C0[];
-extern uintptr_t ProcScr_08DB9208[];
-// ??? gUnk_08DB9228
-// ??? gUnk_08DB9248
-// ??? gUnk_08DB92C8
-// ??? gUnk_08DB9320
-// ??? ProcScr_08DB9378
-// ??? ProcScr_08DB9398
-// ??? gUnk_08DB93B0
-// ??? ProcScr_08DB93D0
-// ??? gUnk_08DB93F0
-// ??? gUnk_08DB941C
-// ??? gUnk_08DB947C
-// ??? gUnk_08DB9548
-// ??? gUnk_08DB95D8
-// ??? gUnk_08DB9674
-// ??? gUnk_08DB9794
-// ??? gUnk_08DB9A7C
+/* opanim.h */
