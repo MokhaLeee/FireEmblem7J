@@ -3,10 +3,10 @@
 #include "global.h"
 #include "proc.h"
 
-// sub_80BBAEC
-// InitOpScanlineBuf
-// SwapOpScanlineBufs
-// sub_80BBB5C
+void sub_80BBAEC(void);
+void InitOpScanlineBuf(void);
+void SwapOpScanlineBufs(void);
+void sub_80BBB5C(void);
 // sub_80BBD28
 // sub_80BBD98
 // sub_80BBDA8
@@ -99,13 +99,13 @@ void sub_80BDC2C(void * a, const u16 * pal, int pal_bank, int size, ProcPtr pare
 // sub_80BE2A8
 
 struct OpScanlineSt {
-    /* 00 */ u32 unk_00;
-    /* 04 */ u32 unk_04;
-    /* 08 */ u32 unk_08;
-    /* 0C */ u32 unk_0C;
-    /* 0C */ u32 unk_10;
-    /* 0C */ u32 unk_14;
-    /* 0C */ u32 unk_18;
+    /* 00 */ int unk_00;
+    /* 04 */ int unk_04;
+    /* 08 */ int unk_08;
+    /* 0C */ int unk_0C;
+    /* 10 */ int unk_10;
+    /* 14 */ int unk_14;
+    /* 18 */ int unk_18;
 };
 
 extern struct OpScanlineSt OpScanlineSt;
@@ -114,10 +114,10 @@ extern u8 OpScanlineBuf[];
 extern u8 * gpOpScanlineBufs[2];
 
 struct Struct_02007508 {
-    /* 00 */ u32 unk_00;
-    /* 04 */ u32 unk_04;
-    /* 08 */ u32 unk_08;
-    /* 0C */ u32 unk_0C;
+    /* 00 */ int unk_00;
+    /* 04 */ int unk_04;
+    /* 08 */ int unk_08;
+    /* 0C */ int unk_0C;
 };
 
 extern struct Struct_02007508 gUnkOpAnim_02007508;

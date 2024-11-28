@@ -9,6 +9,7 @@ sub_80BBB5C: @ 0x080BBB5C
 	mov r5, r8
 	push {r5, r6, r7}
 	sub sp, #0x28
+
 	ldr r1, _080BBC18 @ =OpScanlineSt
 	ldr r0, [r1, #4]
 	str r0, [sp]
@@ -18,6 +19,7 @@ sub_80BBB5C: @ 0x080BBB5C
 	str r0, [sp, #8]
 	asrs r0, r0, #0x1f
 	str r0, [sp, #0xc]
+
 	ldr r0, [r1, #0xc]
 	str r0, [sp, #0x10]
 	asrs r0, r0, #0x1f
@@ -26,6 +28,7 @@ sub_80BBB5C: @ 0x080BBB5C
 	str r0, [sp, #0x18]
 	asrs r0, r0, #0x1f
 	str r0, [sp, #0x1c]
+
 	ldr r0, [r1, #0x18]
 	cmp r0, #0
 	bne _080BBC28
@@ -48,8 +51,9 @@ _080BBB9C:
 	lsls r3, r1, #0x18
 	lsrs r2, r0, #8
 	adds r6, r3, #0
-	orrs r6, r2
+	orrs r6, r2				@ r6 = stack.unk_08
 	asrs r7, r1, #8
+
 	ldr r3, _080BBC24 @ =gpOpScanlineBufs
 	ldr r5, [r3]
 	add r5, sb
@@ -59,6 +63,7 @@ _080BBB9C:
 	add r0, sl
 	movs r1, #0
 	ldrsh r0, [r0, r1]
+
 	add r0, r8
 	asrs r1, r0, #0x1f
 	ldr r2, [sp, #0x10]
@@ -69,6 +74,7 @@ _080BBB9C:
 	adds r0, r3, #0
 	orrs r0, r2
 	strb r0, [r5]
+
 	ldr r2, _080BBC24 @ =gpOpScanlineBufs
 	ldr r5, [r2]
 	add r5, sb
@@ -109,10 +115,11 @@ _080BBC32:
 	ldr r1, _080BBD18 @ =OpScanlineSt
 	ldr r0, [r1, #0x14]
 	mov r2, sb
-	subs r0, r0, r2
+	subs r0, r0, r2		@ OpScanlineSt.unk_14 - i
+
 	adds r3, r0, #0
 	muls r3, r0, r3
-	adds r0, r3, #0
+	adds r0, r3, #0		@ (OpScanlineSt.unk_14 - i) * (OpScanlineSt.unk_14 - i)
 	mov r1, sl
 	subs r0, r1, r0
 	lsls r0, r0, #8
@@ -120,6 +127,7 @@ _080BBC32:
 	mov r8, r0
 	cmp r0, #0
 	ble _080BBCF0
+
 	mov r0, sb
 	asrs r1, r0, #0x1f
 	ldr r2, [sp]
@@ -127,13 +135,14 @@ _080BBC32:
 	bl __muldi3
 	ldr r2, [sp, #8]
 	ldr r3, [sp, #0xc]
-	adds r0, r0, r2
+	adds r0, r0, r2			@ (i + )
 	adcs r1, r3
 	lsls r3, r1, #0x18
 	lsrs r2, r0, #8
 	adds r6, r3, #0
 	orrs r6, r2
-	asrs r7, r1, #8
+	asrs r7, r1, #8			@ int val = i * stack.unk_00 + stack.unk_08;
+
 	movs r1, #0xff
 	ands r1, r6
 	adds r0, r1, #0

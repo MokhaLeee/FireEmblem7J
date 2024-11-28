@@ -146,7 +146,7 @@ def write_header(messages, header_file):
 
 def write_all_compressed_data(messages, code_table, data_file):
     for msg in messages:
-        data_file.write(f"const u8 CompressedText_{msg.definiation}[] = " + "{")
+        data_file.write(f"static const u8 CompressedText_{msg.definiation}[] = " + "{")
         for data in huffman.CompressData(msg.data, code_table):
             data_file.write(f"0x{data:02X}, ")
         data_file.write("};\n")
