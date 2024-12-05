@@ -543,8 +543,8 @@ _080A6DCC:
 	bx r0
 	.align 2, 0
 
-	thumb_func_start sub_80A6DD4
-sub_80A6DD4: @ 0x080A6DD4
+	thumb_func_start SaveMenuModifySaveSlot
+SaveMenuModifySaveSlot: @ 0x080A6DD4
 	push {r4, r5, r6, lr}
 	lsls r0, r0, #0x18
 	lsrs r4, r0, #0x18
@@ -686,7 +686,7 @@ _080A6EB6:
 	beq _080A6ED4
 	ldrb r0, [r4]
 	asrs r2, r2, #0x18
-	bl sub_80A6DD4
+	bl SaveMenuModifySaveSlot
 	strb r0, [r4]
 	lsls r0, r0, #0x18
 	lsrs r0, r0, #0x18

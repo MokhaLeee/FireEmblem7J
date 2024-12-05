@@ -1768,11 +1768,11 @@ _0805566C:
 _0805566E:
 	bx lr
 
-	thumb_func_start sub_8055670
-sub_8055670: @ 0x08055670
+	thumb_func_start NewEfxAnimeDrvProc
+NewEfxAnimeDrvProc: @ 0x08055670
 	push {r4, lr}
 	ldr r4, _08055688 @ =0x0201FB0C
-	ldr r0, _0805568C @ =gUnk_08C0A628
+	ldr r0, _0805568C @ =ProcScr_EfxAnimeDrvProc
 	movs r1, #4
 	bl Proc_Start
 	str r0, [r4]
@@ -1782,7 +1782,7 @@ sub_8055670: @ 0x08055670
 	bx r0
 	.align 2, 0
 _08055688: .4byte 0x0201FB0C
-_0805568C: .4byte gUnk_08C0A628
+_0805568C: .4byte ProcScr_EfxAnimeDrvProc
 
 	thumb_func_start EndEfxAnimeDrvProc
 EndEfxAnimeDrvProc: @ 0x08055690

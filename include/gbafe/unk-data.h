@@ -2216,7 +2216,9 @@ extern struct ProcCmd ProcScr_MixPalette[];
 // ??? gUnk_08DAF58C
 // ??? ProcScr_08DAF5FC
 // ??? gUnk_08DAF62C
-// ??? gUnk_08DAF65C
+
+/* lord-select.h */
+
 // ??? gUnk_08DAF6B4
 // ??? gUnk_08DAF6BC
 // ??? gUnk_08DAF70C

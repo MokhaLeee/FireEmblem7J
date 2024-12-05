@@ -1,7 +1,7 @@
 	.section .data
 
-	.global gUnk_08C0A628
-gUnk_08C0A628:	@ 0x08C0A628
+	.global ProcScr_EfxAnimeDrvProc
+ProcScr_EfxAnimeDrvProc:	@ 0x08C0A628
 	.incbin "FireEmblem7J.base.gba", 0xC0A628, 0xC0A640 - 0xC0A628
 
 	.global gUnk_08C0A640

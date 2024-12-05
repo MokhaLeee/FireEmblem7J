@@ -717,7 +717,7 @@ void ModeSelect_Init(struct ModeSelectProc * proc)
     Decompress(Img_ModeSelect_Sprites, (void *)0x6010000);
     ApplyPalette(Pal_ModeSelect_Sprites, 0x1A);
 
-    sub_8055670();
+    NewEfxAnimeDrvProc();
     sub_80647C8();
 
     proc->unk_38 = Proc_Start(ProcScr_ModeSelectSpriteDraw, proc);

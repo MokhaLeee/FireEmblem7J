@@ -26,7 +26,7 @@ enum game_actions {
 // GC_InitFastStartCheck
 // GC_FastStartCheck
 // sub_8012D4C
-// sub_8012D60
+void sub_8012D60(int);
 // sub_8012D98
 // sub_8012DB4
 // GC_PostIntro

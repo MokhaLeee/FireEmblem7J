@@ -700,7 +700,7 @@ void sub_80555F8(struct AnimBuffer *, s16, s16);
 // ??? sub_8055624
 void sub_8055644(struct AnimBuffer *);
 // ??? sub_8055658
-void sub_8055670(void);
+void NewEfxAnimeDrvProc(void);
 void EndEfxAnimeDrvProc(void);
 // ??? sub_80556A4
 void NewEkrUnitMainMini(struct AnimBuffer *);
@@ -1365,7 +1365,7 @@ void EfxDrsmmoyaScrollCOL_Delay(struct ProcEfxDrsmmoyaScrollCOL * proc);
 void EfxDrsmmoyaScrollCOL_Loop3(struct ProcEfxDrsmmoyaScrollCOL * proc);
 void sub_80647C8(void);
 // ??? sub_80647DC
-// ??? sub_80647F8
+void sub_80647F8(void);
 // ??? sub_8064814
 // ??? sub_8064820
 // ??? sub_806482C
@@ -1674,7 +1674,7 @@ extern struct ProcCmd ProcScr_EfxWeaponIcon[];
 extern CONST_DATA AnimScr AnimScr_DefaultAnim[];
 // ??? TsaConfs_BanimTmA
 extern struct ProcCmd ProcScr_EkrChienCHR[];
-// ??? gUnk_08C0A628
+// ??? ProcScr_EfxAnimeDrvProc
 // ??? gUnk_08C0A640
 // ??? gUnk_08C0A658
 // ??? gUnk_08C0A688

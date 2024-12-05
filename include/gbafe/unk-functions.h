@@ -538,21 +538,16 @@ const char* sub_802EBB0();
 // sub_80AFA70
 // sub_80AFB94
 // sub_80AFBE8
-// sub_80AFC3C
-// sub_80AFCC4
-// sub_80AFD28
-// sub_80AFDAC
-// sub_80AFDDC
-// sub_80AFDF8
-// sub_80AFE04
-// sub_80AFE1C
+
+/* lord-select.h */
+
 // sub_80AFE38
 // sub_80AFF74
 // sub_80B0048
 // sub_80B00A0
 // sub_80B0100
 // sub_80B0160
-// sub_80B0170
+void sub_80B0170(ProcPtr parent, int);
 // sub_80B018C
 // sub_80B01BC
 // sub_80B0300
@@ -575,12 +570,12 @@ const char* sub_802EBB0();
 // sub_80B0D64
 // sub_80B0DF8
 // sub_80B0E7C
-// sub_80B0EBC
+void sub_80B0EBC(ProcPtr parent, int);
 // sub_80B0EDC
 // sub_80B0F5C
 // sub_80B10B8
 // sub_80B10CC
-// sub_80B10D4
+int sub_80B10D4(int, int);
 // sub_80B1110
 // sub_80B1148
 // sub_80B1174

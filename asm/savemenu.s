@@ -859,7 +859,7 @@ _080A4808:
 	lsrs r0, r0, #0x18
 	movs r1, #1
 	movs r2, #1
-	bl sub_80A6DD4
+	bl SaveMenuModifySaveSlot
 	adds r1, r5, #0
 	adds r1, #0x2c
 	strb r0, [r1]
@@ -870,7 +870,7 @@ _080A4820:
 	lsrs r0, r0, #0x18
 	movs r1, #1
 	movs r2, #1
-	bl sub_80A6DD4
+	bl SaveMenuModifySaveSlot
 	adds r1, r5, #0
 	adds r1, #0x2c
 	strb r0, [r1]
@@ -881,7 +881,7 @@ _080A4838:
 	lsrs r0, r0, #0x18
 	movs r1, #1
 	movs r2, #1
-	bl sub_80A6DD4
+	bl SaveMenuModifySaveSlot
 	adds r1, r5, #0
 	adds r1, #0x2c
 	strb r0, [r1]
@@ -892,7 +892,7 @@ _080A4850:
 	ldrb r0, [r4]
 	movs r1, #0
 	movs r2, #1
-	bl sub_80A6DD4
+	bl SaveMenuModifySaveSlot
 	strb r0, [r4]
 	bl sub_809F40C
 	cmp r0, #0
@@ -1660,7 +1660,7 @@ _080A4E54:
 	ldrb r0, [r4]
 	movs r1, #1
 	movs r2, #1
-	bl sub_80A6DD4
+	bl SaveMenuModifySaveSlot
 	strb r0, [r4]
 _080A4E64:
 	adds r0, r7, #0
@@ -2268,7 +2268,7 @@ _080A5310:
 	lsrs r0, r0, #0x18
 	movs r1, #1
 	movs r2, #1
-	bl sub_80A6DD4
+	bl SaveMenuModifySaveSlot
 	adds r1, r4, #0
 	adds r1, #0x2c
 	strb r0, [r1]

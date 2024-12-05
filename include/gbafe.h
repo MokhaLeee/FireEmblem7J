@@ -66,3 +66,4 @@
 #include "gbafe/spinning_arrow.h"
 #include "gbafe/titlescreen.h"
 #include "gbafe/opanim.h"
+#include "gbafe/lord-select.h"

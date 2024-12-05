@@ -335,6 +335,8 @@ SECTIONS
 		asm/spinning_arrow.o(.text);
 		src/sysutil.o(.text);
 		asm/code_080AB6FC.o(.text);
+		src/lord-select.o(.text);
+		asm/code_080AFE38.o(.text);
 		src/titlescreen.o(.text);
 		src/opanim_scanline.o(.text);
 		asm/opanim_scanline.o(.text);
@@ -471,6 +473,8 @@ SECTIONS
 		. = ALIGN(4); data/cursor_hand.o(.data)
 		. = ALIGN(4); src/sysutil.o(.data)
 		. = ALIGN(4); data/data_08DAE4C4.o(.data)
+		. = ALIGN(4); src/lord-select.o(.data)
+		. = ALIGN(4); data/data_08DAF6B4.o(.data)
 		. = ALIGN(4); src/titlescreen.o(.data)
 		. = ALIGN(4); data/data_op.o(.data)
 		. = ALIGN(4); src/opanim.o(.data)
