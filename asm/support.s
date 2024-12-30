@@ -237,8 +237,8 @@ _08026D18:
 	bx r0
 	.align 2, 0
 
-	thumb_func_start sub_8026D24
-sub_8026D24: @ 0x08026D24
+	thumb_func_start DoTurnSupportExp
+DoTurnSupportExp: @ 0x08026D24
 	push {r4, r5, r6, r7, lr}
 	mov r7, sb
 	mov r6, r8

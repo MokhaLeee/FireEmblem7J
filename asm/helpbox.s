@@ -7998,7 +7998,7 @@ sub_8087004: @ 0x08087004
 	bl SyncDispIo
 	bl SyncBgsAndPal
 	bl ApplyDataMoves
-	bl SoundVSync_rev01
+	bl m4aSoundVSync
 	bl m4aSoundMain
 	pop {r0}
 	bx r0

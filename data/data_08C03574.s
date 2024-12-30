@@ -290,7 +290,19 @@ gUnk_08C05D10:	@ 0x08C05D10
 
 	.global gUnk_08C05E30
 gUnk_08C05E30:	@ 0x08C05E30
-	.incbin "FireEmblem7J.base.gba", 0xC05E30, 0xC05FF0 - 0xC05E30
+	.incbin "FireEmblem7J.base.gba", 0xC05E30, 0xC05E68 - 0xC05E30
+
+	.global ProcScr_BmMain_08C05E68
+ProcScr_BmMain_08C05E68:	@ 0x08C05E68
+	.incbin "FireEmblem7J.base.gba", 0xC05E68, 0xC05EC8 - 0xC05E68
+
+	.global ProcScr_BmMain_08C05EC8
+ProcScr_BmMain_08C05EC8:	@ 0x08C05EC8
+	.incbin "FireEmblem7J.base.gba", 0xC05EC8, 0xC05F30 - 0xC05EC8
+
+	.global ProcScr_BmMain_08C05F30
+ProcScr_BmMain_08C05F30:	@ 0x08C05F30
+	.incbin "FireEmblem7J.base.gba", 0xC05F30, 0xC05FF0 - 0xC05F30
 
 	.global gUnk_08C05FF0
 gUnk_08C05FF0:	@ 0x08C05FF0

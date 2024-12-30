@@ -96,42 +96,77 @@ struct ProcBmFx {
 // sub_801F650
 // sub_801F70C
 // sub_801F71C
-// sub_801F72C
-// sub_801F748
-// sub_801F758
-// sub_801F7B0
-// sub_801F81C
-// sub_801F8F0
-// sub_801F9D8
-// sub_801FB94
-// sub_801FBD8
-// sub_801FC6C
-// sub_801FCD0
-// sub_801FD78
-// sub_801FDB8
-// sub_801FE34
-// sub_801FE3C
-// sub_801FE98
-// sub_801FEF0
-// sub_801FF18
-// sub_801FF3C
+
+enum
+{
+    BGCHR_CHAPTERINTRO_80 = 0x80,
+    BGCHR_CHAPTERINTRO_100 = 0x100,
+    BGCHR_CHAPTERINTRO_MOTIF = 0x400,
+    BGCHR_CHAPTERINTRO_FOG = 0x500,
+
+    BGPAL_CHAPTERINTRO_0 = 0,
+    BGPAL_CHAPTERINTRO_1 = 1,
+    BGPAL_CHAPTERINTRO_FOG = 4,
+    BGPAL_CHAPTERINTRO_MOTIF = 5,
+
+    OBPAL_CHAPTERINTRO_7 = 7,
+    OBPAL_CHAPTERINTRO_10 = 10,
+};
+
+struct ProcChapterIntrofx {
+    PROC_HEADER;
+
+    STRUCT_PAD(0x29, 0x4C);
+
+    /* 4C */ s16 timer, unk_4E;
+    /* 50 */ s16 skipped;
+    /* 52 */ u16 fasten;
+};
+
+struct ProcChapterIntroDeamon {
+    PROC_HEADER_EXT(struct ProcChapterIntrofx);
+
+    STRUCT_PAD(0x29, 0x50);
+
+    /* 50 */ s16 skipped;
+};
+
+void ChapterIntro_Bg3Scroll_Loop(ProcPtr proc);
+void ChapterIntro_KeyListen_Init(struct ProcChapterIntroDeamon * proc);
+void ChapterIntro_KeyListen_Loop(struct ProcChapterIntroDeamon * proc);
+void PutChapterIntroMotif(void);
+void PutScreenFogEffect(void);
+void PutScreenFogEffectOverlayed(void);
+void ChapterIntro_Init(struct ProcChapterIntrofx * proc);
+void ChapterIntro_BeginFadeIn(struct ProcChapterIntrofx * proc);
+void ChapterIntro_LoopFadeIn(struct ProcChapterIntrofx * proc);
+void ChapterIntro_BeginMotifFadeIn(struct ProcChapterIntrofx * proc);
+void ChapterIntro_LoopMotifFadeIn(struct ProcChapterIntrofx * proc);
+void ChapterIntro_BeginHOpenText(struct ProcChapterIntrofx * proc);
+void ChapterIntro_LoopHOpenText(struct ProcChapterIntrofx * proc);
+void ChapterIntro_BeginVOpenText(struct ProcChapterIntrofx * proc);
+void ChapterIntro_LoopVOpenText(struct ProcChapterIntrofx * proc);
+void ChapterIntro_Begin_0801FE98(struct ProcChapterIntrofx * proc);
+void ChapterIntro_Loop_0801E1F8(struct ProcChapterIntrofx * proc);
+void ChapterIntro_Begin_0801FF18(struct ProcChapterIntrofx * proc);
+void ChapterIntro_Loop_0801FF3C(struct ProcChapterIntrofx * proc);
 // sub_801FFA8
-// sub_801FFD0
-// sub_801FFE0
-// sub_80200CC
-// sub_8020144
-// sub_80202A8
-// sub_80202B0
-// sub_80202FC
-// sub_8020304
-// sub_8020350
-// sub_802037C
-// sub_80203D0
-// sub_8020478
-// sub_80204F8
-// sub_8020500
-// sub_8020508
-// sub_8020538
+void ChapterIntro_0801FFD0(struct ProcChapterIntrofx * proc);
+void ChapterIntro_InitMapDisplay(struct ProcChapterIntrofx * proc);
+void ChapterIntro_BeginFadeToMap(struct ProcChapterIntrofx * proc);
+void ChapterIntro_LoopFadeToMap(struct ProcChapterIntrofx * proc);
+void sub_80202A8(struct ProcChapterIntrofx * proc);
+void sub_80202B0(struct ProcChapterIntrofx * proc);
+void sub_80202FC(struct ProcChapterIntrofx * proc);
+void sub_8020304(struct ProcChapterIntrofx * proc);
+void ChapterIntro_BeginFadeOut(struct ProcChapterIntrofx * proc);
+void ChapterIntro_LoopFadeOut(struct ProcChapterIntrofx * proc);
+void ChapterIntro_BeginFastFadeToMap(struct ProcChapterIntrofx * proc);
+void ChapterIntro_LoopFastFadeToMap(struct ProcChapterIntrofx * proc);
+void ChapterIntro_SetSkipTarget(struct ProcChapterIntrofx * proc);
+void sub_8020500(short speed);
+void sub_8020508(short speed);
+void sub_8020538(struct ProcChapterIntrofx * proc);
 // sub_8020540
 // sub_8020580
 // sub_80205C0

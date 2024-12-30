@@ -800,8 +800,8 @@ sub_80BE9F0: @ 0x080BE9F0
 	.align 2, 0
 _080BE9F4: .4byte 0x04000060
 
-	thumb_func_start SoundVSync_rev01
-SoundVSync_rev01: @ 0x080BE9F8
+	thumb_func_start m4aSoundVSync
+m4aSoundVSync: @ 0x080BE9F8
 	ldr r0, _080BECA4 @ =0x03007FF0
 	ldr r0, [r0]
 	ldr r2, _080BECA8 @ =0x68736D53
@@ -842,8 +842,8 @@ _080BEA38:
 _080BEA3C: .4byte 0x040000BC
 _080BEA40: .4byte 0x84400004
 
-	thumb_func_start MPlayMain_rev01
-MPlayMain_rev01: @ 0x080BEA44
+	thumb_func_start MPlayMain
+MPlayMain: @ 0x080BEA44
 	ldr r2, _080BECA8 @ =0x68736D53
 	ldr r3, [r0, #0x34]
 	cmp r2, r3

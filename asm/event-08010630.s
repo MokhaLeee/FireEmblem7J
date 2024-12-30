@@ -1750,7 +1750,7 @@ sub_801140C: @ 0x0801140C
 	ldrsb r0, [r4, r0]
 	bl UnpackChapterMapGraphics
 	ldrb r0, [r4, #0x15]
-	bl sub_802D8E4
+	bl AllocWeatherParticles
 	bl RenderMap
 	bl RefreshUnitSprites
 	bl ApplyUnitSpritePalettes

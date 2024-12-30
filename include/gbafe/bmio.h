@@ -9,7 +9,7 @@ void StartBmVSync(void);
 // BMapVSync_End
 void LockBmDisplay(void);
 void UnlockBmDisplay(void);
-// sub_802D8E4
+void AllocWeatherParticles(int weather);
 // sub_802D930
 // sub_802D948
 // sub_802D9C0
@@ -23,7 +23,7 @@ void UnlockBmDisplay(void);
 // sub_802DDB8
 // nullsub_9
 // sub_802DE00
-// sub_802DE44
+void ApplyFlamesWeatherGradient(void);
 // sub_802DEC4
 // sub_802DF54
 // sub_802DFB8
@@ -37,6 +37,6 @@ void UnlockBmDisplay(void);
 // sub_802E220
 // sub_802E290
 // sub_802E2F8
-// sub_802E310
-// sub_802E32C
+void DisableTilesetPalAnim(void);
+void EnableTilesetPalAnim(void);
 // sub_802E368

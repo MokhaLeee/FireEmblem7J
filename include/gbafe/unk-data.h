@@ -1405,11 +1405,11 @@ extern u16 Pal_08404D90[];
 // ??? gUnk_08404EA2
 // ??? gUnk_08404EC2
 extern u16 Pal_08404ED0[];
-// ??? gUnk_08405010
-// ??? gUnk_08405FD0
-// ??? gUnk_084061F8
+extern u8 Img_ChapterIntroMotif[];
+extern u8 Tm_ChapterIntroMotif[];
+extern u16 Pal_ChapterIntroMotif[];
 extern u8 Img_ChapterIntroFog[];
-// ??? gUnk_08407E9C
+extern u16 Pal_ChapterIntroFog[];
 extern u8 Img_ChapterTitleBG[];
 extern u8 Img_ChapterTitle_084086C4[];
 extern u8 Tsa_ChapterTitle_08408BD4[];
@@ -1742,6 +1742,7 @@ extern uintptr_t ProcScr_CamMove[];
 // ??? gUnk_08C029E8
 // ??? gUnk_08C02A28
 // ??? gUnk_08C02A48
+extern struct ProcCmd ProcScr_BmMain_08C02A68[];
 // ??? gUnk_08C02AB0
 // ??? gUnk_08C02AD0
 // ??? gUnk_08C02AF0
@@ -1749,13 +1750,16 @@ extern uintptr_t ProcScr_CamMove[];
 // ??? gUnk_08C02B58
 // ??? gUnk_08C02B88
 // ??? gUnk_08C02BA8
-// ??? gUnk_08C02BF0
+extern struct ProcCmd gUnk_08C02BC8[];
+extern struct ProcCmd gUnk_08C02BD8[];
+extern struct ProcCmd ProcScr_ChapterIntrofx[];
+extern struct ProcCmd ProcScr_BmMain_08C02D98[];
 // ??? gUnk_08C02DD8
 // ??? gUnk_08C02E30
-// ??? ProcScr_DanceringAnim
+extern struct ProcCmd ProcScr_DanceringAnim[];
 // ??? Vectors_EventWarp2
 // ??? Vectors_EventWarp1
-// ??? ProcScr_EventWrapAnim
+extern struct ProcCmd ProcScr_EventWrapAnim[];
 // ??? gUnk_08C02F38
 // ??? gUnk_08C02F60
 // ??? gUnk_08C02F78
@@ -1855,6 +1859,9 @@ extern struct ProcCmd ProcScr_NinianTransformToHunman[];
 // ??? gUnk_08C05D08
 // ??? gUnk_08C05D10
 // ??? gUnk_08C05E30
+extern struct ProcCmd ProcScr_BmMain_08C05E68[];
+extern struct ProcCmd ProcScr_BmMain_08C05EC8[];
+extern struct ProcCmd ProcScr_BmMain_08C05F30[];
 // ??? gUnk_08C05FF0
 // ??? gUnk_08C06008
 // ??? gUnk_08C06028

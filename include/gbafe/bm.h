@@ -157,6 +157,18 @@ enum PlaySt_Weather {
     WEATHER_CLOUDS = 7
 };
 
+struct ProcBmMain {
+    PROC_HEADER;
+
+    STRUCT_PAD(0x29, 0x3C);
+
+    /* 3C */ u8 flag;
+
+    STRUCT_PAD(0x3D, 0x46);
+
+    /* 46 */ u8 unk_46;
+};
+
 void OnVBlank(void);
 void OnMain(void);
 void LockGame(void);
@@ -171,7 +183,7 @@ u8 GetGameLock(void);
 // sub_80158D4
 // sub_8015900
 // sub_8015918
-// BmMain_StartIntroFx
+void BmMain_StartIntroFx(struct ProcBmMain * proc);
 // BmMain_SuspendBeforePhase
 void InitBmBgLayers(void);
 void ApplySystemObjectsGraphics(void);

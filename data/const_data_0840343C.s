@@ -148,24 +148,24 @@ gUnk_08404EC2:	@ 0x08404EC2
 Pal_08404ED0:	@ 0x08404ED0
 	.incbin "FireEmblem7J.base.gba", 0x404ED0, 0x405010 - 0x404ED0
 
-	.global gUnk_08405010
-gUnk_08405010:	@ 0x08405010
+	.global Img_ChapterIntroMotif
+Img_ChapterIntroMotif:	@ 0x08405010
 	.incbin "FireEmblem7J.base.gba", 0x405010, 0x405FD0 - 0x405010
 
-	.global gUnk_08405FD0
-gUnk_08405FD0:	@ 0x08405FD0
+	.global Tm_ChapterIntroMotif
+Tm_ChapterIntroMotif:	@ 0x08405FD0
 	.incbin "FireEmblem7J.base.gba", 0x405FD0, 0x4061F8 - 0x405FD0
 
-	.global gUnk_084061F8
-gUnk_084061F8:	@ 0x084061F8
+	.global Pal_ChapterIntroMotif
+Pal_ChapterIntroMotif:	@ 0x084061F8
 	.incbin "FireEmblem7J.base.gba", 0x4061F8, 0x406218 - 0x4061F8
 
 	.global Img_ChapterIntroFog
 Img_ChapterIntroFog:	@ 0x08406218
 	.incbin "FireEmblem7J.base.gba", 0x406218, 0x407E9C - 0x406218
 
-	.global gUnk_08407E9C
-gUnk_08407E9C:	@ 0x08407E9C
+	.global Pal_ChapterIntroFog
+Pal_ChapterIntroFog:	@ 0x08407E9C
 	.incbin "FireEmblem7J.base.gba", 0x407E9C, 0x40828C - 0x407E9C
 
 	.global Img_ChapterTitleBG

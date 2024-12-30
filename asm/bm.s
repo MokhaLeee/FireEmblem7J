@@ -2,152 +2,6 @@
 
 	.syntax unified
 
-	thumb_func_start OnVBlank
-OnVBlank: @ 0x080156C8
-	push {lr}
-	ldr r1, _0801570C @ =0x03007FF8
-	movs r0, #1
-	strh r0, [r1]
-	bl IncGameTime
-	bl SoundVSync_rev01
-	ldr r0, _08015710 @ =0x02026A28
-	ldr r0, [r0]
-	bl Proc_Run
-	bl SyncLoOam
-	ldr r1, _08015714 @ =gBmSt
-	movs r0, #0
-	ldrsb r0, [r1, r0]
-	cmp r0, #0
-	beq _08015702
-	movs r0, #0
-	strb r0, [r1]
-	bl SyncDispIo
-	bl SyncBgsAndPal
-	bl ApplyDataMoves
-	bl SyncHiOam
-_08015702:
-	bl m4aSoundMain
-	pop {r0}
-	bx r0
-	.align 2, 0
-_0801570C: .4byte 0x03007FF8
-_08015710: .4byte 0x02026A28
-_08015714: .4byte gBmSt
-
-	thumb_func_start OnMain
-OnMain: @ 0x08015718
-	push {r4, lr}
-	ldr r0, _08015774 @ =gpKeySt
-	ldr r0, [r0]
-	bl RefreshKeySt
-	bl ClearSprites
-	ldr r4, _08015778 @ =0x02026A28
-	ldr r0, [r4, #4]
-	bl Proc_Run
-	bl GetGameLock
-	lsls r0, r0, #0x18
-	cmp r0, #0
-	bne _0801573E
-	ldr r0, [r4, #8]
-	bl Proc_Run
-_0801573E:
-	ldr r0, [r4, #0xc]
-	bl Proc_Run
-	ldr r0, [r4, #0x14]
-	bl Proc_Run
-	movs r0, #0
-	bl PutSpriteLayerOam
-	ldr r0, [r4, #0x10]
-	bl Proc_Run
-	movs r0, #0xd
-	bl PutSpriteLayerOam
-	ldr r1, _0801577C @ =gBmSt
-	movs r0, #1
-	strb r0, [r1]
-	ldr r0, _08015780 @ =0x04000006
-	ldrh r0, [r0]
-	strh r0, [r1, #6]
-	bl VBlankIntrWait
-	pop {r4}
-	pop {r0}
-	bx r0
-	.align 2, 0
-_08015774: .4byte gpKeySt
-_08015778: .4byte 0x02026A28
-_0801577C: .4byte gBmSt
-_08015780: .4byte 0x04000006
-
-	thumb_func_start LockGame
-LockGame: @ 0x08015784
-	ldr r1, _08015790 @ =gBmSt
-	ldrb r0, [r1, #1]
-	adds r0, #1
-	strb r0, [r1, #1]
-	bx lr
-	.align 2, 0
-_08015790: .4byte gBmSt
-
-	thumb_func_start UnlockGame
-UnlockGame: @ 0x08015794
-	ldr r1, _080157A0 @ =gBmSt
-	ldrb r0, [r1, #1]
-	subs r0, #1
-	strb r0, [r1, #1]
-	bx lr
-	.align 2, 0
-_080157A0: .4byte gBmSt
-
-	thumb_func_start GetGameLock
-GetGameLock: @ 0x080157A4
-	ldr r0, _080157AC @ =gBmSt
-	ldrb r0, [r0, #1]
-	bx lr
-	.align 2, 0
-_080157AC: .4byte gBmSt
-
-	thumb_func_start HandleChangePhase
-HandleChangePhase: @ 0x080157B0
-	push {lr}
-	ldr r2, _080157C4 @ =gPlaySt
-	ldrb r0, [r2, #0xf]
-	cmp r0, #0x40
-	beq _080157DA
-	cmp r0, #0x40
-	bgt _080157C8
-	cmp r0, #0
-	beq _080157CE
-	b _080157EE
-	.align 2, 0
-_080157C4: .4byte gPlaySt
-_080157C8:
-	cmp r0, #0x80
-	beq _080157D4
-	b _080157EE
-_080157CE:
-	movs r0, #0x80
-	strb r0, [r2, #0xf]
-	b _080157EE
-_080157D4:
-	movs r0, #0x40
-	strb r0, [r2, #0xf]
-	b _080157EE
-_080157DA:
-	movs r0, #0
-	strb r0, [r2, #0xf]
-	ldrh r1, [r2, #0x10]
-	ldr r0, _080157F4 @ =0x000003E6
-	cmp r1, r0
-	bhi _080157EA
-	adds r0, r1, #1
-	strh r0, [r2, #0x10]
-_080157EA:
-	bl sub_8026D24
-_080157EE:
-	pop {r0}
-	bx r0
-	.align 2, 0
-_080157F4: .4byte 0x000003E6
-
 	thumb_func_start CallChapterStartEventMaybe
 CallChapterStartEventMaybe: @ 0x080157F8
 	push {lr}
@@ -336,6 +190,7 @@ BmMain_StartIntroFx: @ 0x08015940
 	ldrb r3, [r1]
 	orrs r0, r3
 	strb r0, [r1]
+
 	adds r0, r2, #0
 	adds r0, #0x44
 	movs r1, #0
@@ -351,13 +206,13 @@ BmMain_StartIntroFx: @ 0x08015940
 _08015970: .4byte gPlaySt
 _08015974: .4byte gDispIo
 _08015978:
-	ldr r0, _08015984 @ =gUnk_08C02BF0
+	ldr r0, _08015984 @ =ProcScr_ChapterIntrofx
 	bl Proc_StartBlocking
 _0801597E:
 	pop {r0}
 	bx r0
 	.align 2, 0
-_08015984: .4byte gUnk_08C02BF0
+_08015984: .4byte ProcScr_ChapterIntrofx
 
 	thumb_func_start BmMain_SuspendBeforePhase
 BmMain_SuspendBeforePhase: @ 0x08015988

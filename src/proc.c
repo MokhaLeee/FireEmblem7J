@@ -14,7 +14,7 @@ typedef bool (*BoolProcFunc)(ProcPtr);
 extern EWRAM_DATA struct Proc Unk_02024E20[PROC_COUNT]; // sProcArray
 extern EWRAM_DATA struct Proc * Unk_02026920[PROC_COUNT + 1]; // sProcAllocList
 extern EWRAM_DATA struct Proc ** Unk_02026A24; // sProcAllocListHead
-extern EWRAM_DATA struct Proc * Unk_02026A28[8]; // gProcTreeRootArray
+extern EWRAM_DATA struct Proc * gProcTreeRootArray[8]; // gProcTreeRootArray
 
 void Proc_Init()
 {
@@ -45,7 +45,7 @@ void Proc_Init()
 
     for (i = 0; i < 8; i++)
     {
-        Unk_02026A28[i] = 0;
+        gProcTreeRootArray[i] = 0;
     }
 }
 
@@ -153,7 +153,7 @@ void FreeProcess(struct Proc * proc)
 
 void InsertRootProcess(struct Proc * proc, s32 parent)
 {
-    struct Proc * ptr = *(Unk_02026A28 + parent);
+    struct Proc * ptr = *(gProcTreeRootArray + parent);
 
     if (ptr != 0)
     {
@@ -162,7 +162,7 @@ void InsertRootProcess(struct Proc * proc, s32 parent)
     }
 
     proc->proc_parent = (ProcPtr)parent;
-    Unk_02026A28[parent] = proc;
+    gProcTreeRootArray[parent] = proc;
 }
 
 void InsertChildProcess(struct Proc * proc, struct Proc * parent)
@@ -199,9 +199,9 @@ void UnlinkProcess(struct Proc * proc)
     else
     {
         s32 idx = (s32)proc->proc_parent;
-        if (*(idx + Unk_02026A28) == proc)
+        if (*(idx + gProcTreeRootArray) == proc)
         {
-            Unk_02026A28[idx] = proc->proc_prev;
+            gProcTreeRootArray[idx] = proc->proc_prev;
         }
     }
 

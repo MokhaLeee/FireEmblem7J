@@ -20355,7 +20355,7 @@ sub_80B9C20: @ 0x080B9C20
 	movs r1, #0x10
 	orrs r0, r1
 	strb r0, [r2, #1]
-	ldr r0, _080B9C74 @ =gUnk_08407E9C
+	ldr r0, _080B9C74 @ =Pal_ChapterIntroFog
 	movs r1, #0xa0
 	movs r2, #0x20
 	bl ApplyPaletteExt
@@ -20377,7 +20377,7 @@ sub_80B9C20: @ 0x080B9C20
 	bx r0
 	.align 2, 0
 _080B9C70: .4byte gDispIo
-_080B9C74: .4byte gUnk_08407E9C
+_080B9C74: .4byte Pal_ChapterIntroFog
 _080B9C78: .4byte Img_ChapterIntroFog
 _080B9C7C: .4byte 0x06004000
 _080B9C80: .4byte gBg2Tm

@@ -8,6 +8,7 @@
 #include "constants/classes.h"
 #include "constants/videoalloc-global.h"
 #include "constants/icons.h"
+#include "constants/songs.h"
 
 #include "gbafe/armfunc.h"
 #include "gbafe/hardware.h"

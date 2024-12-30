@@ -215,8 +215,8 @@ _0802D8D8:
 _0802D8DC: .4byte gBmSt
 _0802D8E0: .4byte gUnk_08C05414
 
-	thumb_func_start sub_802D8E4
-sub_802D8E4: @ 0x0802D8E4
+	thumb_func_start AllocWeatherParticles
+AllocWeatherParticles: @ 0x0802D8E4
 	push {lr}
 	subs r0, #1
 	cmp r0, #5
@@ -256,7 +256,7 @@ sub_802D930: @ 0x0802D930
 	push {lr}
 	ldr r0, _0802D944 @ =gPlaySt
 	ldrb r0, [r0, #0x15]
-	bl sub_802D8E4
+	bl AllocWeatherParticles
 	movs r0, #0
 	bl SetOnHBlankB
 	pop {r0}
@@ -274,7 +274,7 @@ sub_802D948: @ 0x0802D948
 	stm r1!, {r2, r3, r4}
 	ldr r0, _0802D9B4 @ =gPlaySt
 	ldrb r0, [r0, #0x15]
-	bl sub_802D8E4
+	bl AllocWeatherParticles
 	movs r6, #0
 	ldr r7, _0802D9B8 @ =gUnk_081C97A8
 	ldr r5, _0802D9BC @ =0x020027DC
@@ -424,7 +424,7 @@ sub_802DA80: @ 0x0802DA80
 	push {r4, r5, r6, r7, lr}
 	ldr r0, _0802DAD8 @ =gPlaySt
 	ldrb r0, [r0, #0x15]
-	bl sub_802D8E4
+	bl AllocWeatherParticles
 	movs r6, #0
 	ldr r7, _0802DADC @ =gUnk_081C97A8
 	ldr r5, _0802DAE0 @ =0x020027DC
@@ -535,7 +535,7 @@ sub_802DB64: @ 0x0802DB64
 	push {r4, r5, r6, lr}
 	ldr r0, _0802DBC0 @ =gPlaySt
 	ldrb r0, [r0, #0x15]
-	bl sub_802D8E4
+	bl AllocWeatherParticles
 	ldr r0, _0802DBC4 @ =gUnk_08194FAC
 	ldr r4, _0802DBC8 @ =gBuf
 	adds r1, r4, #0
@@ -636,7 +636,7 @@ sub_802DC30: @ 0x0802DC30
 	strb r0, [r4, #7]
 	ldr r0, _0802DC9C @ =gPlaySt
 	ldrb r0, [r0, #0x15]
-	bl sub_802D8E4
+	bl AllocWeatherParticles
 	ldr r0, _0802DCA0 @ =gUnk_08195034
 	ldr r4, _0802DCA4 @ =gBuf
 	adds r1, r4, #0
@@ -884,8 +884,8 @@ _0802DE38: .4byte 0x04000006
 _0802DE3C: .4byte 0x02002ADC
 _0802DE40: .4byte 0x050000E0
 
-	thumb_func_start sub_802DE44
-sub_802DE44: @ 0x0802DE44
+	thumb_func_start ApplyFlamesWeatherGradient
+ApplyFlamesWeatherGradient: @ 0x0802DE44
 	push {r4, r5, r6, r7, lr}
 	mov r7, sl
 	mov r6, sb
@@ -1033,7 +1033,7 @@ sub_802DF54: @ 0x0802DF54
 	push {r4, r5, r6, lr}
 	ldr r0, _0802DFA0 @ =gPlaySt
 	ldrb r0, [r0, #0x15]
-	bl sub_802D8E4
+	bl AllocWeatherParticles
 	ldr r0, _0802DFA4 @ =gUnk_081950CC
 	ldr r1, _0802DFA8 @ =0x06010300
 	bl Decompress
@@ -1290,7 +1290,7 @@ _0802E128:
 sub_802E144: @ 0x0802E144
 	push {lr}
 	movs r0, #0
-	bl sub_802D8E4
+	bl AllocWeatherParticles
 	ldr r0, _0802E164 @ =gUnk_0819514C
 	ldr r1, _0802E168 @ =0x020027DC
 	bl Decompress
@@ -1504,8 +1504,8 @@ _0802E306:
 	.align 2, 0
 _0802E30C: .4byte gPlaySt
 
-	thumb_func_start sub_802E310
-sub_802E310: @ 0x0802E310
+	thumb_func_start DisableTilesetPalAnim
+DisableTilesetPalAnim: @ 0x0802E310
 	push {lr}
 	ldr r0, _0802E328 @ =gUnk_08C05414
 	bl Proc_Find
@@ -1520,8 +1520,8 @@ _0802E322:
 	.align 2, 0
 _0802E328: .4byte gUnk_08C05414
 
-	thumb_func_start sub_802E32C
-sub_802E32C: @ 0x0802E32C
+	thumb_func_start EnableTilesetPalAnim
+EnableTilesetPalAnim: @ 0x0802E32C
 	push {r4, lr}
 	ldr r0, _0802E35C @ =gUnk_08C05414
 	bl Proc_Find
@@ -1554,7 +1554,7 @@ sub_802E368: @ 0x0802E368
 	push {lr}
 	ldr r1, _0802E37C @ =gPlaySt
 	strb r0, [r1, #0x15]
-	bl sub_802D8E4
+	bl AllocWeatherParticles
 	bl sub_802E220
 	pop {r0}
 	bx r0

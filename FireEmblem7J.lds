@@ -13,6 +13,10 @@ SECTIONS
     ewram_overlay_0 (NOLOAD) : ALIGN(4)
 	{
 		. = 0x0000F4; gBonusClaimData = .;
+
+		. = 0x001F70;
+		. = ALIGN(4); src/bmfx-chapterintrofx.o(ewram_overlay_0);
+
 		. = 0x00310C; gStatScreenSt = .;
 		. = 0x00323C; gUiTmScratchA = .;
 		. = 0x00373C; gUiTmScratchB = .;
@@ -110,7 +114,7 @@ SECTIONS
 		. = 0x024E20; Unk_02024E20 = .;
 		. = 0x026920; Unk_02026920 = .;
 		. = 0x026A24; Unk_02026A24 = .;
-		. = 0x026A28; Unk_02026A28 = .;
+		. = 0x026A28; gProcTreeRootArray = .;
 		. = 0x026A48;
 		. = ALIGN(4); src/icon.o(ewram_data);
 		. = 0x028D68; gActiveFont = .;
@@ -253,6 +257,7 @@ SECTIONS
 		src/sprite-anim.o(.text);
 		asm/game-ctrl.o(.text);
 		asm/utils.o(.text);
+		src/bm.o(.text);
 		asm/bm.o(.text);
 		asm/item.o(.text);
 		src/unit.o(.text);
@@ -261,6 +266,9 @@ SECTIONS
 		asm/debug-menu.o(.text);
 		asm/player-phase.o(.text);
 		asm/bmfx.o(.text);
+		src/bmfx-chapterintrofx.o(.text);
+		asm/bmfx-chapterintrofx.o(.text);
+		asm/bmfx_08020508.o(.text);
 		src/bmfx-swingsword.o(.text);
 		src/bmfx-minefx.o(.text);
 		src/bmfx-niniantransform.o(.text);
@@ -430,6 +438,9 @@ SECTIONS
 		. = ALIGN(4); src/sprite-anim.o(.data)
 		. = ALIGN(4); data/gamecontrol.o(.data)
 		. = ALIGN(4); data/data.o(.data)
+		. = ALIGN(4); data/data_08C01FE4.o(.data)
+		. = ALIGN(4); src/bmfx-chapterintrofx.o(.data)
+		. = ALIGN(4); data/data_08C02D98.o(.data)
 		. = ALIGN(4); src/bmfx-swingsword.o(.data)
 		. = ALIGN(4); src/bmfx-minefx.o(.data)
 		. = ALIGN(4); src/bmfx-niniantransform.o(.data)

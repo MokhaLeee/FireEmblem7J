@@ -1070,7 +1070,7 @@ _080BF7DC:
 	str r0, [r5, #0x20]
 _080BF7EC:
 	str r7, [r5, #0x24]
-	ldr r0, _080BF808 @ =MPlayMain_rev01
+	ldr r0, _080BF808 @ =MPlayMain
 	str r0, [r5, #0x20]
 	ldr r0, _080BF804 @ =0x68736D53
 	str r0, [r5]
@@ -1082,7 +1082,7 @@ _080BF7F8:
 	.align 2, 0
 _080BF800: .4byte 0x03007FF0
 _080BF804: .4byte 0x68736D53
-_080BF808: .4byte MPlayMain_rev01
+_080BF808: .4byte MPlayMain
 
 	thumb_func_start MPlayStart_rev01
 MPlayStart_rev01: @ 0x080BF80C
