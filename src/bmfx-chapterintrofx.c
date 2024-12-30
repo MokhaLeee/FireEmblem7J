@@ -74,12 +74,12 @@ void ChapterIntro_KeyListen_Init(struct ProcChapterIntroDeamon * proc)
 void ChapterIntro_KeyListen_Loop(struct ProcChapterIntroDeamon * proc)
 {
     if (gpKeySt->pressed & (A_BUTTON | B_BUTTON | START_BUTTON))
-	{
-		if (proc->proc_parent->fasten != 0)
-			proc->skipped = true;
-		else
-			proc->proc_parent->fasten = true;
-	}
+    {
+        if (proc->proc_parent->fasten != 0)
+            proc->skipped = true;
+        else
+            proc->proc_parent->fasten = true;
+    }
 
     if (proc->skipped != 0)
     {
@@ -193,22 +193,22 @@ void ChapterIntro_Init(struct ProcChapterIntrofx * proc)
 
     SetWin0Box(0, 0, 0, 0);
 
-	PutChapterTitlePalette(8, BGPAL_CHAPTERINTRO_0);
-	PutChapterTitlePalette(0, BGPAL_CHAPTERINTRO_1);
+    PutChapterTitlePalette(8, BGPAL_CHAPTERINTRO_0);
+    PutChapterTitlePalette(0, BGPAL_CHAPTERINTRO_1);
 
-	PutChapterTitleUnkBG(BGCHR_CHAPTERINTRO_80);
-	PutChapterTitleGfx(BGCHR_CHAPTERINTRO_100, GetChapterTitle(&gPlaySt));
+    PutChapterTitleUnkBG(BGCHR_CHAPTERINTRO_80);
+    PutChapterTitleGfx(BGCHR_CHAPTERINTRO_100, GetChapterTitle(&gPlaySt));
 
     PutChapterTitleBgUnkTsa(gBg1Tm + TM_OFFSET(0, 8), BGPAL_CHAPTERINTRO_0);
     PutChapterTitleNameTsa(gBg0Tm + TM_OFFSET(3, 9), BGPAL_CHAPTERINTRO_1);
 
-	ColorFadeInit();
-	sub_80021F0(BGPAL_CHAPTERINTRO_0, 2, 0x40, -1);
-	ColorFadeTick();
+    ColorFadeInit();
+    sub_80021F0(BGPAL_CHAPTERINTRO_0, 2, 0x40, -1);
+    ColorFadeTick();
 
-	EnablePalSync();
+    EnablePalSync();
 
-	Decompress(Img_ChapterIntroFog, (u8 *) VRAM + CHR_SIZE*BGCHR_CHAPTERINTRO_FOG);
+    Decompress(Img_ChapterIntroFog, (u8 *) VRAM + CHR_SIZE*BGCHR_CHAPTERINTRO_FOG);
     ApplyPalette(Pal_ChapterIntroFog, BGPAL_CHAPTERINTRO_FOG);
 
     Decompress(Img_ChapterIntroMotif, (u8 *) VRAM + CHR_SIZE*(BGCHR_CHAPTERINTRO_MOTIF+1));
@@ -223,7 +223,7 @@ void ChapterIntro_Init(struct ProcChapterIntrofx * proc)
 
     EnableBgSync(BG0_SYNC_BIT + BG1_SYNC_BIT + BG2_SYNC_BIT + BG3_SYNC_BIT);
 
-	proc->fasten = false;
+    proc->fasten = false;
 }
 
 void ChapterIntro_BeginFadeIn(struct ProcChapterIntrofx * proc)
@@ -240,19 +240,19 @@ void ChapterIntro_LoopFadeIn(struct ProcChapterIntrofx * proc)
 {
     SetBlendDarken(proc->timer);
 
-	if (proc->skipped != 3 && (GetGameTime() % 4) != 0)
-		return;
+    if (proc->skipped != 3 && (GetGameTime() % 4) != 0)
+        return;
 
-	if (proc->fasten != false)
-		proc->timer -= 4;
-	else
-		proc->timer -= 1;
+    if (proc->fasten != false)
+        proc->timer -= 4;
+    else
+        proc->timer -= 1;
 
-	if (proc->timer < 0)
-	{
-		SetBlendDarken(0);
-		Proc_Break(proc);
-	}
+    if (proc->timer < 0)
+    {
+        SetBlendDarken(0);
+        Proc_Break(proc);
+    }
 }
 
 void ChapterIntro_BeginMotifFadeIn(struct ProcChapterIntrofx * proc)
@@ -271,19 +271,19 @@ void ChapterIntro_LoopMotifFadeIn(struct ProcChapterIntrofx * proc)
 {
      SetBlendAlpha(0x10 - proc->timer, 0x10);
 
-	if (proc->skipped != 3 && (GetGameTime() % 4) != 0)
-		return;
+    if (proc->skipped != 3 && (GetGameTime() % 4) != 0)
+        return;
 
-	if (proc->fasten != false)
-		proc->timer -= 4;
-	else
-		proc->timer -= 1;
+    if (proc->fasten != false)
+        proc->timer -= 4;
+    else
+        proc->timer -= 1;
 
-	if (proc->timer < 0)
-	{
-		SetBlendAlpha(0x10, 0x10);
-		Proc_Break(proc);
-	}
+    if (proc->timer < 0)
+    {
+        SetBlendAlpha(0x10, 0x10);
+        Proc_Break(proc);
+    }
 }
 
 void ChapterIntro_BeginHOpenText(struct ProcChapterIntrofx * proc)
@@ -299,10 +299,10 @@ void ChapterIntro_LoopHOpenText(struct ProcChapterIntrofx * proc)
     int val = Interpolate(INTERPOLATE_RSQUARE, 0, DISPLAY_WIDTH/2, proc->timer, 0x10);
 
     SetWin0Box(DISPLAY_WIDTH/2 - val, 78, DISPLAY_WIDTH/2 + val, 81);
-	if (proc->fasten != 0 && proc->timer & 2)
-		proc->timer += 2;
-	else
-    	proc->timer += 1;
+    if (proc->fasten != 0 && proc->timer & 2)
+        proc->timer += 2;
+    else
+        proc->timer += 1;
 
     if (proc->timer > 0x10)
         Proc_Break(proc);
@@ -374,12 +374,12 @@ void ChapterIntro_Loop_0801FF3C(struct ProcChapterIntrofx * proc)
 
 void sub_801FFA8(void)
 {
-	InitBgs(NULL);
-	ApplySystemGraphics();
-	AllocWeatherParticles(gPlaySt.chapterWeatherId);
-	RefreshUnitSprites();
-	ForceSyncUnitSpriteSheet();
-	InitSystemTextFont();
+    InitBgs(NULL);
+    ApplySystemGraphics();
+    AllocWeatherParticles(gPlaySt.chapterWeatherId);
+    RefreshUnitSprites();
+    ForceSyncUnitSpriteSheet();
+    InitSystemTextFont();
 }
 
 void ChapterIntro_0801FFD0(struct ProcChapterIntrofx * proc)
