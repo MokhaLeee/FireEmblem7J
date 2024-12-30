@@ -4396,30 +4396,30 @@ sub_801F9D8: @ 0x0801F9D8
 	strb r5, [r0]
 	movs r0, #8
 	movs r1, #0
-	bl sub_8082DB8
+	bl PutChapterTitlePalette
 	movs r0, #0
 	movs r1, #1
-	bl sub_8082DB8
+	bl PutChapterTitlePalette
 	movs r0, #0x80
-	bl sub_8082E9C
+	bl PutChapterTitleUnkBG
 	movs r4, #0x80
 	lsls r4, r4, #1
 	ldr r0, _0801FB70 @ =gPlaySt
-	bl sub_8082F30
+	bl GetChapterTitle
 	adds r1, r0, #0
 	adds r0, r4, #0
-	bl sub_8082E2C
+	bl PutChapterTitleGfx
 	movs r0, #0x80
 	lsls r0, r0, #2
 	add sb, r0
 	mov r0, sb
 	movs r1, #0
-	bl sub_8082F0C
+	bl PutChapterTitleBgUnkTsa
 	ldr r1, _0801FB74 @ =0x00000246
 	add sl, r1
 	mov r0, sl
 	movs r1, #1
-	bl sub_8082ECC
+	bl PutChapterTitleNameTsa
 	bl ColorFadeInit
 	movs r3, #1
 	rsbs r3, r3, #0

@@ -326,14 +326,7 @@ void EndHelpPromptSprite(void);
 void MoveHelpPromptSprite(int x, int y);
 struct HelpBoxInfo const * GetLastHelpBoxInfo(void);
 
-// sub_8082DB8
-// sub_8082E2C
-// sub_8082E6C
-// sub_8082E9C
-// sub_8082ECC
-// sub_8082EEC
-// sub_8082F0C
-// sub_8082F30
+
 void LoadHelpBoxGfx(void * vram, int palId);
 // sub_8083000
 void PutSpriteTalkBox(int x, int y, int w, int h, int unk);

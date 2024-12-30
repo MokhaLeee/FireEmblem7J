@@ -409,6 +409,7 @@ const char* sub_802EBB0();
 /* scanline.h */
 /* eventcall.h */
 /* statscreen.h */
+/* chapter-title.h */
 
 // sub_80AB970
 // sub_80ABAAC

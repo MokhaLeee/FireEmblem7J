@@ -10631,7 +10631,7 @@ _08041A62:
 	add r1, sp, #8
 	bl ReadGameSavePlaySt
 	add r0, sp, #8
-	bl sub_8082F30
+	bl GetChapterTitle
 	adds r2, r7, #0
 	adds r2, #0x2c
 	adds r1, r2, r6
@@ -10763,7 +10763,7 @@ _08041B68:
 	bl SetBgOffset
 	movs r0, #0xd0
 	lsls r0, r0, #1
-	bl sub_8082E6C
+	bl PutChapterTitleBG
 	movs r0, #0
 	mov sb, r0
 	movs r1, #0xa0
@@ -10799,29 +10799,29 @@ _08041BB0:
 	mov r4, sb
 	adds r4, #4
 	adds r1, r4, #0
-	bl sub_8082DB8
+	bl PutChapterTitlePalette
 	ldrb r0, [r6]
 	mov r5, sb
 	adds r5, #7
 	adds r1, r5, #0
-	bl sub_8082DB8
+	bl PutChapterTitlePalette
 	ldr r0, _08041C64 @ =gBg1Tm + 0x4
 	ldr r1, [sp, #0x6c]
 	adds r0, r1, r0
 	adds r1, r4, #0
-	bl sub_8082EEC
+	bl PutChapterTitleBgTsa
 	mov r2, sl
 	lsls r0, r2, #0xf
 	lsrs r0, r0, #0x14
 	ldr r2, [sp, #0x68]
 	ldm r2!, {r1}
 	str r2, [sp, #0x68]
-	bl sub_8082E2C
+	bl PutChapterTitleGfx
 	ldr r0, _08041C68 @ =gBg0Tm + 0x6
 	ldr r1, [sp, #0x64]
 	adds r0, r1, r0
 	adds r1, r5, #0
-	bl sub_8082ECC
+	bl PutChapterTitleNameTsa
 	ldr r2, [sp, #0x64]
 	movs r0, #0x80
 	lsls r0, r0, #1

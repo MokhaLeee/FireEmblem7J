@@ -21,7 +21,7 @@ sub_80A7058: @ 0x080A7058
 	mov r1, sp
 	bl ReadGameSavePlaySt
 	mov r0, sp
-	bl sub_8082F30
+	bl GetChapterTitle
 	adds r1, r5, #0
 	adds r1, #0x37
 	adds r1, r1, r4
@@ -186,10 +186,10 @@ _080A71B6:
 	adds r0, r4, #0
 	orrs r0, r1
 	adds r1, r6, #0
-	bl sub_8082DB8
+	bl PutChapterTitlePalette
 	adds r0, r4, #0
 	adds r1, r7, #0
-	bl sub_8082DB8
+	bl PutChapterTitlePalette
 	adds r7, #2
 	adds r6, #2
 	adds r5, #1

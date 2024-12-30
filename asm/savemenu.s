@@ -193,7 +193,7 @@ sub_80A4254: @ 0x080A4254
 	adds r7, r0, #0
 	movs r0, #0xac
 	lsls r0, r0, #4
-	bl sub_8082E6C
+	bl PutChapterTitleBG
 	movs r4, #0
 	ldr r6, _080A4284 @ =0x0001FFFF
 	movs r5, #0xb4
@@ -209,7 +209,7 @@ _080A4268:
 	ands r0, r6
 	lsrs r0, r0, #5
 	ldrb r1, [r1]
-	bl sub_8082E2C
+	bl PutChapterTitleGfx
 	b _080A4296
 	.align 2, 0
 _080A4284: .4byte 0x0001FFFF
@@ -219,7 +219,7 @@ _080A4288:
 	lsrs r0, r0, #5
 	movs r1, #1
 	rsbs r1, r1, #0
-	bl sub_8082E2C
+	bl PutChapterTitleGfx
 _080A4296:
 	movs r0, #0x80
 	lsls r0, r0, #4
@@ -1589,7 +1589,7 @@ sub_80A4D80: @ 0x080A4D80
 	ands r0, r1
 	lsrs r0, r0, #5
 	ldrb r1, [r2]
-	bl sub_8082E2C
+	bl PutChapterTitleGfx
 	b _080A4DEA
 	.align 2, 0
 _080A4DD0: .4byte 0x0001FFFF
@@ -1603,7 +1603,7 @@ _080A4DD4:
 	lsrs r0, r0, #5
 	movs r1, #1
 	rsbs r1, r1, #0
-	bl sub_8082E2C
+	bl PutChapterTitleGfx
 _080A4DEA:
 	ldrb r0, [r4]
 	bl sub_80A715C

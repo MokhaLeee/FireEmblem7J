@@ -1399,25 +1399,102 @@ extern const u8 Tsa_StatScreen_0840417C[];
 // ??? gUnk_08404B2C
 // ??? gUnk_08404BB4
 // ??? gUnk_08404BD4
-// ??? gUnk_08404D90
+extern u16 Pal_08404D90[];
 // ??? gUnk_08404DA2
 // ??? gUnk_08404DC2
 // ??? gUnk_08404EA2
 // ??? gUnk_08404EC2
-// ??? gUnk_08404ED0
+extern u16 Pal_08404ED0[];
 // ??? gUnk_08405010
 // ??? gUnk_08405FD0
 // ??? gUnk_084061F8
 extern u8 Img_ChapterIntroFog[];
 // ??? gUnk_08407E9C
-// ??? gUnk_0840828C
-// ??? gUnk_084086C4
-// ??? gUnk_08408BD4
-// ??? gUnk_08408CC8
+extern u8 Img_ChapterTitleBG[];
+extern u8 Img_ChapterTitle_084086C4[];
+extern u8 Tsa_ChapterTitle_08408BD4[];
+extern u16 Pal_08408CC8[];
 // ??? gUnk_08408CE8
 // ??? gUnk_08409020
 // ??? gUnk_08409040
 // ??? gUnk_08409060
+extern const u8 Img_TitleName_084090A4[];
+extern const u8 Img_TitleName_08409464[];
+extern const u8 Img_TitleName_084097C4[];
+extern const u8 Img_TitleName_08409B1C[];
+extern const u8 Img_TitleName_08409EF0[];
+extern const u8 Img_TitleName_0840A280[];
+extern const u8 Img_TitleName_0840A634[];
+extern const u8 Img_TitleName_0840A9B0[];
+extern const u8 Img_TitleName_0840AD04[];
+extern const u8 Img_TitleName_0840B084[];
+extern const u8 Img_TitleName_0840B3D8[];
+extern const u8 Img_TitleName_0840B748[];
+extern const u8 Img_TitleName_0840BB4C[];
+extern const u8 Img_TitleName_0840BEBC[];
+extern const u8 Img_TitleName_0840C230[];
+extern const u8 Img_TitleName_0840C61C[];
+extern const u8 Img_TitleName_0840CA8C[];
+extern const u8 Img_TitleName_0840CE98[];
+extern const u8 Img_TitleName_0840D290[];
+extern const u8 Img_TitleName_0840D5F0[];
+extern const u8 Img_TitleName_0840DA24[];
+extern const u8 Img_TitleName_0840DD5C[];
+extern const u8 Img_TitleName_0840E050[];
+extern const u8 Img_TitleName_0840E4E0[];
+extern const u8 Img_TitleName_0840E7B8[];
+extern const u8 Img_TitleName_0840EC00[];
+extern const u8 Img_TitleName_0840EF0C[];
+extern const u8 Img_TitleName_0840F2E4[];
+extern const u8 Img_TitleName_0840F768[];
+extern const u8 Img_TitleName_0840FB00[];
+extern const u8 Img_TitleName_0840FE98[];
+extern const u8 Img_TitleName_08410384[];
+extern const u8 Img_TitleName_0841071C[];
+extern const u8 Img_TitleName_08410AB4[];
+extern const u8 Img_TitleName_08410F38[];
+extern const u8 Img_TitleName_084113A8[];
+extern const u8 Img_TitleName_08411770[];
+extern const u8 Img_TitleName_08411AE8[];
+extern const u8 Img_TitleName_08411EE8[];
+extern const u8 Img_TitleName_0841230C[];
+extern const u8 Img_TitleName_084126B8[];
+extern const u8 Img_TitleName_08412928[];
+extern const u8 Img_TitleName_08412D04[];
+extern const u8 Img_TitleName_0841305C[];
+extern const u8 Img_TitleName_08413448[];
+extern const u8 Img_TitleName_084138B8[];
+extern const u8 Img_TitleName_08413CC4[];
+extern const u8 Img_TitleName_084140E4[];
+extern const u8 Img_TitleName_084144F0[];
+extern const u8 Img_TitleName_0841485C[];
+extern const u8 Img_TitleName_08414C74[];
+extern const u8 Img_TitleName_08414FA8[];
+extern const u8 Img_TitleName_084152A4[];
+extern const u8 Img_TitleName_0841571C[];
+extern const u8 Img_TitleName_08415B20[];
+extern const u8 Img_TitleName_08415DF4[];
+extern const u8 Img_TitleName_0841621C[];
+extern const u8 Img_TitleName_0841653C[];
+extern const u8 Img_TitleName_0841691C[];
+extern const u8 Img_TitleName_08416D8C[];
+extern const u8 Img_TitleName_08417104[];
+extern const u8 Img_TitleName_0841747C[];
+extern const u8 Img_TitleName_084177F4[];
+extern const u8 Img_TitleName_08417CE0[];
+extern const u8 Img_TitleName_0841805C[];
+extern const u8 Img_TitleName_084183D8[];
+extern const u8 Img_TitleName_08418860[];
+extern const u8 Img_TitleName_08418CDC[];
+extern const u8 Img_TitleName_08419094[];
+extern const u8 Img_TitleName_084194A4[];
+extern const u8 Img_TitleName_08419890[];
+extern const u8 Img_TitleName_08419C8C[];
+extern const u8 Img_TitleName_0841A038[];
+extern const u8 Img_TitleName_0841A454[];
+extern const u8 Img_TitleName_0841A6C4[];
+extern const u8 Img_TitleName_0841A964[];
+extern const u8 Img_TitleName_0841AB8C[];
 // ??? gUnk_0841ADDC
 // ??? gUnk_0841B080
 // ??? gUnk_0841B0E0
@@ -1985,7 +2062,7 @@ extern struct ProcCmd ProcScr_NinianTransformToHunman[];
 // ??? gUnk_08D8AB2C
 // ??? gUnk_08D8ABD4
 // ??? gUnk_08D8AC98
-// ??? gUnk_08D8AE00
+// ??? gChapTitleConfig
 // ??? gUnk_08D8AF34
 // ??? gUnk_08D8AF5C
 // ??? gUnk_08D8AF84

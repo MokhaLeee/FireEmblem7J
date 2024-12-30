@@ -4178,21 +4178,21 @@ _080ADA00:
 	movs r0, #1
 	orrs r0, r4
 	movs r1, #0x18
-	bl sub_8082DB8
+	bl PutChapterTitlePalette
 	adds r0, r4, #0
 	movs r1, #0x19
-	bl sub_8082DB8
+	bl PutChapterTitlePalette
 	bl EnablePalSync
 	movs r0, #0xac
 	lsls r0, r0, #4
-	bl sub_8082E6C
+	bl PutChapterTitleBG
 	movs r4, #0xb4
 	lsls r4, r4, #4
 	adds r0, r5, #0
-	bl sub_8082F30
+	bl GetChapterTitle
 	adds r1, r0, #0
 	adds r0, r4, #0
-	bl sub_8082E2C
+	bl PutChapterTitleGfx
 	pop {r4, r5}
 	pop {r0}
 	bx r0

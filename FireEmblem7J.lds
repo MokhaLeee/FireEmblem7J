@@ -173,6 +173,7 @@ SECTIONS
 		. = 0x03E648;
 		. = ALIGN(4); src/statscreen.o(ewram_data);
 		. = ALIGN(4); src/statscreen-helpbox.o(ewram_data);
+		. = ALIGN(4); src/chapter-title.o(ewram_data);
 		. = 0x03E772; gIsSramWorking = .;
 		. = 0x03EE28; gExtraMapSaveHead = .;
 	}
@@ -319,6 +320,7 @@ SECTIONS
 		asm/statscreen-util.o(.text);
 		src/statscreen.o(.text);
 		src/statscreen-helpbox.o(.text);
+		src/chapter-title.o(.text);
 		asm/helpbox.o(.text);
 		src/save_core.o(.text);
 		asm/save.o(.text);
