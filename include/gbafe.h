@@ -9,6 +9,7 @@
 #include "constants/videoalloc-global.h"
 #include "constants/icons.h"
 #include "constants/songs.h"
+#include "constants/msg.h"
 
 #include "gbafe/armfunc.h"
 #include "gbafe/hardware.h"
@@ -32,6 +33,7 @@
 #include "gbafe/random.h"
 #include "gbafe/banim_ekrdragon.h"
 #include "gbafe/icon.h"
+#include "gbafe/prepscreen.h"
 #include "gbafe/savemenu.h"
 #include "gbafe/chapterdata.h"
 #include "gbafe/unit.h"

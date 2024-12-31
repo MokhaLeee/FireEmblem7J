@@ -17,7 +17,7 @@ _08089556:
 	cmp r0, #0
 	beq _0808957A
 	adds r0, r4, #0
-	bl sub_808E81C
+	bl IsUnitInCurrentRoster
 	lsls r0, r0, #0x18
 	cmp r0, #0
 	beq _0808957A
@@ -38,7 +38,7 @@ _08089582:
 	cmp r0, #0
 	beq _080895A6
 	adds r0, r4, #0
-	bl sub_808E81C
+	bl IsUnitInCurrentRoster
 	lsls r0, r0, #0x18
 	cmp r0, #0
 	bne _080895A6
@@ -444,7 +444,7 @@ sub_808989C: @ 0x0808989C
 	lsrs r5, r1, #0x18
 	cmp r1, #0
 	beq _080898DE
-	bl sub_808E684
+	bl PrepGetLatestCharId
 	b _080898E2
 _080898B4:
 	adds r0, r4, #0
@@ -1344,7 +1344,7 @@ _08089F80:
 	strb r0, [r3]
 	adds r0, r7, #0
 	bl GetUnitSMSId
-	bl sub_8025278
+	bl StartUiSMS
 	pop {r3}
 	mov r8, r3
 	pop {r4, r5, r6, r7}
@@ -1384,7 +1384,7 @@ _08089FEC:
 	cmp r0, #0
 	beq _0808A012
 	adds r0, r4, #0
-	bl sub_808E81C
+	bl IsUnitInCurrentRoster
 	lsls r0, r0, #0x18
 	cmp r0, #0
 	beq _0808A012
@@ -1465,7 +1465,7 @@ _0808A08A:
 	cmp r0, #0
 	beq _0808A0B0
 	adds r0, r4, #0
-	bl sub_808E81C
+	bl IsUnitInCurrentRoster
 	lsls r0, r0, #0x18
 	cmp r0, #0
 	beq _0808A0B0
@@ -1933,7 +1933,7 @@ _0808A3A6:
 	bne _0808A4D0
 	movs r0, #0
 	movs r1, #0xa
-	bl sub_80910B0
+	bl StartPrepMuralBackground
 	mov r6, r8
 	str r0, [r6, #0x44]
 	b _0808A4DE
@@ -2041,7 +2041,7 @@ sub_808A55C: @ 0x0808A55C
 	str r0, [r2, #0xc]
 	ldr r0, [r2]
 	ldrb r0, [r0, #4]
-	bl sub_808E5DC
+	bl RegisterSioPid
 	ldrh r0, [r5, #0x3e]
 	lsrs r4, r0, #4
 	adds r0, r4, #6
@@ -2112,7 +2112,7 @@ sub_808A604: @ 0x0808A604
 	adds r5, r1, #0
 	ldr r0, [r4]
 	ldrb r0, [r0, #4]
-	bl sub_808E6A4
+	bl IsCharacterForceDeployed
 	lsls r0, r0, #0x18
 	cmp r0, #0
 	bne _0808A68C
@@ -2122,7 +2122,7 @@ sub_808A604: @ 0x0808A604
 	str r0, [r4, #0xc]
 	ldr r0, [r4]
 	ldrb r0, [r0, #4]
-	bl sub_808E604
+	bl RemoveSioPid
 	ldrh r0, [r5, #0x3e]
 	lsrs r4, r0, #4
 	adds r0, r4, #6
@@ -3331,7 +3331,7 @@ sub_808AF78: @ 0x0808AF78
 	ldr r0, [r0]
 	ldr r0, [r0]
 	ldrb r0, [r0, #4]
-	bl sub_808E694
+	bl PrepSetLatestCharId
 	bl sub_808954C
 _0808AFA0:
 	ldr r2, _0808B024 @ =gPlaySt
@@ -3975,7 +3975,7 @@ _0808B486:
 	.align 2, 0
 _0808B4A4: .4byte gUnk_08D8B82C
 _0808B4A8:
-	bl sub_800EFB8
+	bl GetChapterAllyUnitCount
 	adds r1, r4, #0
 	adds r1, #0x3a
 _0808B4B0:
@@ -4252,7 +4252,7 @@ sub_808B654: @ 0x0808B654
 	ldr r0, [r0]
 	ldr r0, [r0]
 	ldrb r0, [r0, #4]
-	bl sub_808E6A4
+	bl IsCharacterForceDeployed
 	lsls r0, r0, #0x18
 	cmp r0, #0
 	beq _0808B6F8

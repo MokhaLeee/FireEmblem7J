@@ -21,6 +21,8 @@ SECTIONS
 		. = 0x00323C; gUiTmScratchA = .;
 		. = 0x00373C; gUiTmScratchB = .;
 		. = 0x003C3C; gUiTmScratchC = .;
+
+		. = 0x0116DC; gPrepUnitList = .;
 	}
 
 	. = __ewram_overlay_beg;
@@ -178,6 +180,8 @@ SECTIONS
 		. = ALIGN(4); src/statscreen.o(ewram_data);
 		. = ALIGN(4); src/statscreen-helpbox.o(ewram_data);
 		. = ALIGN(4); src/chapter-title.o(ewram_data);
+		. = 0x03E760;
+		. = ALIGN(4); src/prepscreen.o(ewram_data);
 		. = 0x03E772; gIsSramWorking = .;
 		. = 0x03EE28; gExtraMapSaveHead = .;
 	}
@@ -334,7 +338,9 @@ SECTIONS
 		asm/chapter-status.o(.text);
 		asm/cgtext.o(.text);
 		asm/unitlistscreen.o(.text);
+		src/prepscreen.o(.text);
 		asm/prepscreen.o(.text);
+		asm/prepscreenfx.o(.text);
 		src/save_core.o(.text);
 		asm/save.o(.text);
 		src/savemenu.o(.text);
@@ -413,6 +419,8 @@ SECTIONS
 		. = ALIGN(4); src/statscreen-util.o(.rodata)
 		. = ALIGN(4); src/statscreen.o(.rodata)
 		. = ALIGN(4); data/const_data_0841CD8C.o(.rodata)
+		. = ALIGN(4); src/prepscreen.o(.rodata)
+		. = ALIGN(4); data/const_prepscreen.o(.rodata)
 		. = ALIGN(4); src/save_core.o(.rodata)
 		. = ALIGN(4); data/const_data_0842D270.o(.rodata)
 		. = ALIGN(4); src/savemenu_modeselect.o(.rodata)
@@ -481,6 +489,8 @@ SECTIONS
 		. = ALIGN(4); src/statscreen.o(.data)
 		. = ALIGN(4); src/statscreen-helpbox.o(.data)
 		. = ALIGN(4); data/data_08D8A368.o(.data)
+		. = ALIGN(4); src/prepscreen.o(.data)
+		. = ALIGN(4); data/prepscreen.o(.data)
 		. = ALIGN(4); src/save_core.o(.data)
 		. = ALIGN(4); data/data_08DAD284.o(.data)
 		. = ALIGN(4); src/savemenu.o(.data)

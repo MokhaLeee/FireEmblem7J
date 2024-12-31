@@ -4663,7 +4663,7 @@ _080ADDB0:
 	adds r4, #1
 	adds r0, r2, #0
 	bl GetUnitSMSId
-	bl sub_8025278
+	bl StartUiSMS
 	b _080ADE12
 	.align 2, 0
 _080ADDEC: .4byte gPlaySt
@@ -4680,7 +4680,7 @@ _080ADDF8:
 	adds r4, #1
 	adds r0, r2, #0
 	bl GetUnitSMSId
-	bl sub_8025278
+	bl StartUiSMS
 _080ADE12:
 	adds r5, #1
 	cmp r5, #0x3f

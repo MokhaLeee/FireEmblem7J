@@ -40,13 +40,13 @@
 // sub_803DD20
 // sub_803DDA0
 // sub_803DDCC
-// SioStrCpy
-// SioDrawNumber
-// SioInit
-// SioPollingMsgAndAck
-// SetBmStLinkArenaFlag
-// UnsetBmStLinkArenaFlag
-// CheckInLinkArena
+u32 SioStrCpy(u8 const * src, u8 * dst);
+void SioDrawNumber(struct Text * text, int x, int color, int number);
+void SioInit(void);
+void SioPollingMsgAndAck(ProcPtr proc);
+void SetBmStLinkArenaFlag(void);
+void UnsetBmStLinkArenaFlag(void);
+bool CheckInLinkArena(void);
 // sub_803DED4
 // sub_803DEE0
 // sub_803DF20

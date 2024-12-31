@@ -3149,7 +3149,7 @@ sub_802FC20: @ 0x0802FC20
 	strh r0, [r1]
 	ldr r0, [r4, #0x2c]
 	bl GetUnitSMSId
-	bl sub_8025278
+	bl StartUiSMS
 	bl ForceSyncUnitSpriteSheet
 	ldr r0, _0802FCD0 @ =gPlaySt
 	adds r0, #0x41
@@ -4652,7 +4652,7 @@ sub_8030814: @ 0x08030814
 	movs r1, #1
 	rsbs r1, r1, #0
 	bl BmMapFillg
-	bl sub_808E794
+	bl CalcForceDeployedUnitCounts
 	lsls r0, r0, #4
 	adds r4, r4, r0
 	ldrb r0, [r4]
@@ -4686,7 +4686,7 @@ _0803086C: .4byte gBmMapMovement
 	thumb_func_start sub_8030870
 sub_8030870: @ 0x08030870
 	push {lr}
-	bl sub_80909F8
+	bl EndPrepScreenMenu
 	pop {r0}
 	bx r0
 	.align 2, 0
@@ -5098,7 +5098,7 @@ sub_8030B88: @ 0x08030B88
 	bl sub_808667C
 	bl sub_801D6D8
 	adds r0, r4, #0
-	bl sub_8090788
+	bl StartPrepScreenMenu
 	ldr r1, _08030C30 @ =sub_803087C
 	ldr r3, _08030C34 @ =0x00001143
 	movs r0, #0xe2
@@ -5106,14 +5106,14 @@ sub_8030B88: @ 0x08030B88
 	str r0, [sp]
 	movs r0, #1
 	movs r2, #0
-	bl sub_8090800
+	bl SetPrepScreenMenuItem
 	ldr r1, _08030C38 @ =sub_8030890
 	ldr r3, _08030C3C @ =0x00001142
 	ldr r0, _08030C40 @ =0x00000389
 	str r0, [sp]
 	movs r0, #2
 	movs r2, #0
-	bl sub_8090800
+	bl SetPrepScreenMenuItem
 	ldr r1, _08030C44 @ =sub_8030948
 	movs r3, #0x8a
 	lsls r3, r3, #5
@@ -5121,7 +5121,7 @@ sub_8030B88: @ 0x08030B88
 	str r0, [sp]
 	movs r0, #8
 	movs r2, #0
-	bl sub_8090800
+	bl SetPrepScreenMenuItem
 	ldr r1, _08030C4C @ =gPlaySt
 	movs r0, #0x80
 	ldrb r1, [r1, #0x14]
@@ -5134,21 +5134,21 @@ sub_8030B88: @ 0x08030B88
 	str r0, [sp]
 	movs r0, #9
 	movs r2, #0
-	bl sub_8090800
+	bl SetPrepScreenMenuItem
 _08030BFA:
 	adds r0, r4, #0
 	bl sub_8030B60
 	ldr r0, _08030C5C @ =sub_80308D8
-	bl sub_80907AC
+	bl SetPrepScreenMenuOnBPress
 	ldr r0, _08030C60 @ =sub_80308C8
-	bl sub_80907C8
+	bl SetPrepScreenMenuOnStartPress
 	ldr r0, _08030C64 @ =sub_8030B74
 	bl sub_80907E4
 	movs r0, #0xa
 	movs r1, #2
-	bl sub_8090930
+	bl SetPrepScreenMenuPosition
 	ldr r0, [r4, #0x58]
-	bl sub_80908A8
+	bl SetPrepScreenMenuSelectedItem
 	movs r0, #3
 	bl EnableBgSync
 	add sp, #4
@@ -5175,7 +5175,7 @@ _08030C64: .4byte sub_8030B74
 sub_8030C68: @ 0x08030C68
 	push {r4, lr}
 	adds r4, r0, #0
-	bl sub_808E6A4
+	bl IsCharacterForceDeployed
 	lsls r0, r0, #0x18
 	cmp r0, #0
 	bne _08030C7E
@@ -5355,7 +5355,7 @@ _08030DA8:
 	ands r0, r1
 	cmp r0, #0
 	bne _08030DC6
-	bl sub_808EAF4
+	bl SortPlayerUnitsForPrepScreen
 	bl sub_800EFD4
 	ldrb r0, [r5, #0x14]
 	orrs r0, r6

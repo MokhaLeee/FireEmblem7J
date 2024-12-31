@@ -7588,8 +7588,8 @@ _0800EFAE:
 	.align 2, 0
 _0800EFB4: .4byte ProcScr_UnkEvt
 
-	thumb_func_start sub_800EFB8
-sub_800EFB8: @ 0x0800EFB8
+	thumb_func_start GetChapterAllyUnitCount
+GetChapterAllyUnitCount: @ 0x0800EFB8
 	push {lr}
 	bl sub_8079A50
 	adds r1, r0, #0

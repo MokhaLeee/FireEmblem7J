@@ -425,7 +425,7 @@ _08087522:
 	cmp r0, #0
 	beq _08087530
 	bl GetUnitSMSId
-	bl sub_8025278
+	bl StartUiSMS
 _08087530:
 	adds r4, #4
 	subs r5, #1

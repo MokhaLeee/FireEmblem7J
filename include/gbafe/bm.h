@@ -132,6 +132,12 @@ struct PlaySt {
 
 extern struct PlaySt gPlaySt;
 
+enum PlaySt_chapterModeIndex {
+    CHAPTER_MODE_LYN = 1,
+    CHAPTER_MODE_ELIWOOD,
+    CHAPTER_MODE_HECTOR,
+};
+
 enum PlaySt_chapterStateBits {
     PLAY_FLAG_STATSCREENPAGE0 = (1 << 0),
     PLAY_FLAG_STATSCREENPAGE1 = (1 << 1),

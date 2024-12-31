@@ -339,7 +339,7 @@ void sub_800EC84(int);
 // sub_800EF50
 // sub_800EF78
 void sub_800EF98();
-// sub_800EFB8
+// GetChapterAllyUnitCount
 // sub_800EFD4
 // sub_800F070
 // sub_800F0CC

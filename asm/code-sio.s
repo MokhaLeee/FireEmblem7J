@@ -6668,7 +6668,7 @@ _0803F9D2:
 	movs r6, #0
 	mov r7, r8
 _0803F9E4:
-	ldr r0, _0803FA34 @ =0x0203E760
+	ldr r0, _0803FA34 @ =gSioPidPool
 	adds r0, r6, r0
 	ldrb r0, [r0]
 	cmp r0, #0
@@ -6705,7 +6705,7 @@ _0803FA12:
 	pop {r0}
 	bx r0
 	.align 2, 0
-_0803FA34: .4byte 0x0203E760
+_0803FA34: .4byte gSioPidPool
 
 	thumb_func_start sub_803FA38
 sub_803FA38: @ 0x0803FA38

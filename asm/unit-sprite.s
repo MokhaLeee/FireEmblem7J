@@ -189,8 +189,8 @@ _08025262:
 	.align 2, 0
 _08025274: .4byte gUnitSpriteSlots
 
-	thumb_func_start sub_8025278
-sub_8025278: @ 0x08025278
+	thumb_func_start StartUiSMS
+StartUiSMS: @ 0x08025278
 	push {r4, r5, r6, r7, lr}
 	adds r6, r0, #0
 	ldr r0, _080252B0 @ =gUnitSpriteSlots
@@ -718,7 +718,7 @@ TornOutUnitSprite: @ 0x08025698
 	str r1, [sp]
 	bl GetUnitSMSId
 	str r0, [sp, #4]
-	bl sub_8025278
+	bl StartUiSMS
 	lsls r6, r0, #5
 	ldr r1, _08025700 @ =gUnk_08C031D4
 	ldr r2, [sp]
@@ -1431,7 +1431,7 @@ _08025BD0:
 	strh r0, [r5, #4]
 	adds r0, r6, #0
 	bl GetUnitSMSId
-	bl sub_8025278
+	bl StartUiSMS
 	adds r4, r0, #0
 	adds r0, r6, #0
 	bl sub_8025B54
@@ -1523,7 +1523,7 @@ _08025CDE:
 _08025CE2:
 	movs r0, #0x54
 _08025CE4:
-	bl sub_8025278
+	bl StartUiSMS
 	adds r0, r0, r6
 	lsls r0, r0, #0x10
 	lsrs r0, r0, #0x10
@@ -1558,7 +1558,7 @@ _08025D0E:
 	lsls r0, r1, #4
 	strh r0, [r5, #4]
 	movs r0, #0x57
-	bl sub_8025278
+	bl StartUiSMS
 	ldr r2, _08025D5C @ =0xFFFFB080
 	adds r0, r0, r2
 	strh r0, [r5, #8]
@@ -2589,7 +2589,7 @@ sub_8026540: @ 0x08026540
 	adds r0, r4, #0
 	bl GetUnitSMSId
 	adds r5, r0, #0
-	bl sub_8025278
+	bl StartUiSMS
 	adds r6, r0, #0
 	mov r1, r8
 	adds r1, #0x10
@@ -2703,7 +2703,7 @@ sub_8026628: @ 0x08026628
 	lsrs r7, r3, #0x10
 	bl GetClassSMSId
 	mov r8, r0
-	bl sub_8025278
+	bl StartUiSMS
 	adds r4, r0, #0
 	adds r4, #0x80
 	adds r1, r6, #0
@@ -2792,7 +2792,7 @@ sub_80266DC: @ 0x080266DC
 	adds r0, r3, #0
 	bl GetClassSMSId
 	adds r6, r0, #0
-	bl sub_8025278
+	bl StartUiSMS
 	adds r7, r0, #0
 	adds r7, #0x80
 	adds r1, r5, #0
@@ -2968,7 +2968,7 @@ sub_802682C: @ 0x0802682C
 	ldr r0, [sp, #0x20]
 	bl GetUnitSMSId
 	adds r4, r0, #0
-	bl sub_8025278
+	bl StartUiSMS
 	adds r5, r0, #0
 	adds r5, #0x80
 	mov r1, r8
@@ -3076,7 +3076,7 @@ sub_8026908: @ 0x08026908
 	ldr r0, [sp, #0x20]
 	bl GetUnitSMSId
 	adds r5, r0, #0
-	bl sub_8025278
+	bl StartUiSMS
 	adds r4, r0, #0
 	adds r4, #0x80
 	adds r1, r7, #0
