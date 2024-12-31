@@ -3,59 +3,8 @@
 EWRAM_OVERLAY(0) u16 gChapterIntroMotifTmBuf_pad = 0;
 EWRAM_OVERLAY(0) u16 gChapterIntroMotifTmBuf[0x400] = {};
 
-struct ProcCmd CONST_DATA ProcScr_ChapterIntrofx[] = {
-    PROC_CALL(LockBmDisplay),
-    PROC_CALL(ChapterIntro_Init),
-    PROC_START_CHILD(gUnk_08C02BC8),
-    PROC_START_CHILD(gUnk_08C02BD8),
-    PROC_CALL_ARG(ChapterIntro_SetSkipTarget, 1),
-    PROC_CALL(ChapterIntro_BeginFadeIn),
-    PROC_REPEAT(ChapterIntro_LoopFadeIn),
-    PROC_CALL_ARG(sub_8020500, 40),
-    PROC_REPEAT(sub_8020508),
-    PROC_CALL(ChapterIntro_BeginMotifFadeIn),
-    PROC_REPEAT(ChapterIntro_LoopMotifFadeIn),
-    PROC_CALL_ARG(sub_8020500, 80),
-    PROC_REPEAT(sub_8020508),
-    PROC_CALL_ARG(ChapterIntro_SetSkipTarget, 0),
-    PROC_CALL(ChapterIntro_BeginHOpenText),
-    PROC_REPEAT(ChapterIntro_LoopHOpenText),
-    PROC_CALL(ChapterIntro_BeginVOpenText),
-    PROC_REPEAT(ChapterIntro_LoopVOpenText),
-    PROC_CALL(sub_8020538),
-    PROC_CALL_ARG(ChapterIntro_SetSkipTarget, 1),
-    PROC_CALL(ChapterIntro_Begin_0801FE98),
-    PROC_REPEAT(ChapterIntro_Loop_0801E1F8),
-    PROC_SLEEP(120),
-    PROC_CALL(ChapterIntro_Begin_0801FF18),
-    PROC_REPEAT(ChapterIntro_Loop_0801FF3C),
-    PROC_END_EACH(gUnk_08C02BC8),
-    PROC_CALL_ARG(ChapterIntro_SetSkipTarget, 0),
-    PROC_CALL(ChapterIntro_0801FFD0),
-    PROC_CALL(UnlockBmDisplay),
-    PROC_CALL(ChapterIntro_InitMapDisplay),
-    PROC_CALL(ChapterIntro_BeginFadeToMap),
-    PROC_REPEAT(ChapterIntro_LoopFadeToMap),
-    PROC_CALL_ARG(ChapterIntro_SetSkipTarget, 2),
-    PROC_SLEEP(90),
-    PROC_CALL_ARG(ChapterIntro_SetSkipTarget, 0),
-    PROC_CALL(sub_80202A8),
-    PROC_REPEAT(sub_80202B0),
-    PROC_SLEEP(30),
-    PROC_GOTO(99),
-PROC_LABEL(1),
-    PROC_CALL(ChapterIntro_BeginFadeOut),
-    PROC_REPEAT(ChapterIntro_LoopFadeOut),
-    PROC_CALL(ChapterIntro_0801FFD0),
-    PROC_CALL(UnlockBmDisplay),
-    PROC_CALL(ChapterIntro_InitMapDisplay),
-    PROC_CALL(ChapterIntro_BeginFastFadeToMap),
-    PROC_REPEAT(ChapterIntro_LoopFastFadeToMap),
-    PROC_GOTO(99),
-PROC_LABEL(2),
-    PROC_CALL(sub_80202FC),
-    PROC_REPEAT(sub_8020304),
-PROC_LABEL(99),
+struct ProcCmd CONST_DATA ProcScr_ChapterIntro_Bg3Scroll[] = {
+    PROC_REPEAT(ChapterIntro_Bg3Scroll_Loop),
     PROC_END,
 };
 
@@ -66,12 +15,18 @@ void ChapterIntro_Bg3Scroll_Loop(ProcPtr proc)
     SetBgOffset(3, offset, offset);
 }
 
-void ChapterIntro_KeyListen_Init(struct ProcChapterIntroDeamon * proc)
+struct ProcCmd CONST_DATA ProcScr_ChapterIntroDeamon[] = {
+    PROC_CALL(ChapterIntroDeamon_Init),
+    PROC_REPEAT(ChapterIntroDeamon_Loop),
+    PROC_END,
+};
+
+void ChapterIntroDeamon_Init(struct ProcChapterIntroDeamon * proc)
 {
     proc->skipped = proc->proc_parent->skipped = false;
 }
 
-void ChapterIntro_KeyListen_Loop(struct ProcChapterIntroDeamon * proc)
+void ChapterIntroDeamon_Loop(struct ProcChapterIntroDeamon * proc)
 {
     if (gpKeySt->pressed & (A_BUTTON | B_BUTTON | START_BUTTON))
     {
@@ -92,6 +47,62 @@ void ChapterIntro_KeyListen_Loop(struct ProcChapterIntroDeamon * proc)
         }
     }
 }
+
+struct ProcCmd CONST_DATA ProcScr_ChapterIntrofx[] = {
+    PROC_CALL(LockBmDisplay),
+    PROC_CALL(ChapterIntro_Init),
+    PROC_START_CHILD(ProcScr_ChapterIntro_Bg3Scroll),
+    PROC_START_CHILD(ProcScr_ChapterIntroDeamon),
+    PROC_CALL_ARG(ChapterIntro_SetSkipTarget, 1),
+    PROC_CALL(ChapterIntro_BeginFadeIn),
+    PROC_REPEAT(ChapterIntro_LoopFadeIn),
+    PROC_CALL_ARG(ChapterIntro_SetTimer, 40),
+    PROC_REPEAT(ChapterIntro_TickTimer),
+    PROC_CALL(ChapterIntro_BeginMotifFadeIn),
+    PROC_REPEAT(ChapterIntro_LoopMotifFadeIn),
+    PROC_CALL_ARG(ChapterIntro_SetTimer, 80),
+    PROC_REPEAT(ChapterIntro_TickTimer),
+    PROC_CALL_ARG(ChapterIntro_SetSkipTarget, 0),
+    PROC_CALL(ChapterIntro_BeginHOpenText),
+    PROC_REPEAT(ChapterIntro_LoopHOpenText),
+    PROC_CALL(ChapterIntro_BeginVOpenText),
+    PROC_REPEAT(ChapterIntro_LoopVOpenText),
+    PROC_CALL(ChapterIntro_SetFasten),
+    PROC_CALL_ARG(ChapterIntro_SetSkipTarget, 1),
+    PROC_CALL(ChapterIntro_Begin_0801FE98),
+    PROC_REPEAT(ChapterIntro_Loop_0801E1F8),
+    PROC_SLEEP(120),
+    PROC_CALL(ChapterIntro_Begin_0801FF18),
+    PROC_REPEAT(ChapterIntro_Loop_0801FF3C),
+    PROC_END_EACH(ProcScr_ChapterIntro_Bg3Scroll),
+    PROC_CALL_ARG(ChapterIntro_SetSkipTarget, 0),
+    PROC_CALL(ChapterIntro_0801FFD0),
+    PROC_CALL(UnlockBmDisplay),
+    PROC_CALL(ChapterIntro_InitMapDisplay),
+    PROC_CALL(ChapterIntro_BeginFadeToMap),
+    PROC_REPEAT(ChapterIntro_LoopFadeToMap),
+    PROC_CALL_ARG(ChapterIntro_SetSkipTarget, 2),
+    PROC_SLEEP(90),
+    PROC_CALL_ARG(ChapterIntro_SetSkipTarget, 0),
+    PROC_CALL(ChapterIntro_BeginCloseText),
+    PROC_REPEAT(ChapterIntro_LoopCloseText),
+    PROC_SLEEP(30),
+    PROC_GOTO(99),
+PROC_LABEL(1),
+    PROC_CALL(ChapterIntro_BeginFadeOut),
+    PROC_REPEAT(ChapterIntro_LoopFadeOut),
+    PROC_CALL(ChapterIntro_0801FFD0),
+    PROC_CALL(UnlockBmDisplay),
+    PROC_CALL(ChapterIntro_InitMapDisplay),
+    PROC_CALL(ChapterIntro_BeginFastFadeToMap),
+    PROC_REPEAT(ChapterIntro_LoopFastFadeToMap),
+    PROC_GOTO(99),
+PROC_LABEL(2),
+    PROC_CALL(ChapterIntro_BeginFastCloseText),
+    PROC_REPEAT(ChapterIntro_LoopFastCloseText),
+PROC_LABEL(99),
+    PROC_END,
+};
 
 void PutChapterIntroMotif(void)
 {
@@ -437,4 +448,169 @@ void ChapterIntro_BeginFadeToMap(struct ProcChapterIntrofx * proc)
 
     if (GetChapterInfo(gPlaySt.chapterIndex)->weather == WEATHER_FLAMES)
         ApplyFlamesWeatherGradient();
+}
+
+// aka: ChapterIntro_LoopFadeToMap in FE8
+void ChapterIntro_LoopFadeToMap(struct ProcChapterIntrofx * proc)
+{
+    if ((GetGameTime() % 2) == 0)
+    {
+        ColorFadeTick();
+
+        if (GetChapterInfo(gPlaySt.chapterIndex)->weather == WEATHER_FLAMES)
+            ApplyFlamesWeatherGradient();
+
+        if (GetChapterInfo(gPlaySt.chapterIndex)->fadeToBlack)
+        {
+            if (GetChapterInfo(gPlaySt.chapterIndex)->song_openning[gPlaySt.chapterModeIndex != 3 ? 0 : 1] != 0xFFFF)
+                StartBgm(GetChapterInfo(gPlaySt.chapterIndex)->song_openning[gPlaySt.chapterModeIndex != 3 ? 0 : 1], 0);
+
+            proc->timer = 0;
+            SetDispEnable(1, 1, 1, 0, 0);
+        }
+        else
+        {
+            int val;
+
+            EnablePalSync();
+
+            val = (proc->timer + 7) / 8;
+            SetBlendAlpha(12 + val, 4 - val);
+        }
+
+        proc->timer--;
+        if (proc->timer == 24)
+            if (GetChapterInfo(gPlaySt.chapterIndex)->song_openning[gPlaySt.chapterModeIndex != 3 ? 0 : 1] != 0xFFFF)
+                StartBgm(GetChapterInfo(gPlaySt.chapterIndex)->song_openning[gPlaySt.chapterModeIndex != 3 ? 0 : 1], 0);
+
+        if (proc->timer < 0)
+        {
+            EnableTilesetPalAnim();
+            Proc_Break(proc);
+        }
+    }
+}
+
+void ChapterIntro_BeginCloseText(struct ProcChapterIntrofx * proc)
+{
+    proc->timer = 0x10;
+}
+
+void ChapterIntro_LoopCloseText(struct ProcChapterIntrofx * proc)
+{
+    SetWin0Box(0, DISPLAY_HEIGHT/2 - proc->timer, DISPLAY_WIDTH, DISPLAY_HEIGHT/2 + proc->timer);
+
+    proc->timer--;
+
+    if (proc->timer < 0)
+        Proc_Break(proc);
+}
+
+void ChapterIntro_BeginFastCloseText(struct ProcChapterIntrofx * proc)
+{
+    proc->timer = 8;
+}
+
+void ChapterIntro_LoopFastCloseText(struct ProcChapterIntrofx * proc)
+{
+    SetWin0Box(0, DISPLAY_HEIGHT/2 - proc->timer, DISPLAY_WIDTH, DISPLAY_HEIGHT/2 + proc->timer);
+
+    proc->timer -= 2;
+
+    if (proc->timer < 0)
+        Proc_Break(proc);
+}
+
+
+void ChapterIntro_BeginFadeOut(struct ProcChapterIntrofx * proc)
+{
+    ColorFadeInit();
+    sub_80020CC(gPal, 0, 6, -2);
+
+    proc->timer = 15;
+
+    Sound_FadeOutSE(1);
+}
+
+void ChapterIntro_LoopFadeOut(struct ProcChapterIntrofx * proc)
+{
+    ColorFadeTick();
+    EnablePalSync();
+
+    proc->timer--;
+
+    if (proc->timer < 0)
+    {
+        SetDispEnable(0, 0, 0, 0, 0);
+        SetBgChrOffset(2, 0);
+        Proc_Break(proc);
+    }
+}
+
+void ChapterIntro_BeginFastFadeToMap(struct ProcChapterIntrofx * proc)
+{
+    ClearUi();
+
+    ColorFadeInit();
+
+    sub_80020CC(gPal + 0x10*BGPAL_TILESET, 6, 10, +2);
+    sub_80020CC(gPal + 0x10*(0x10+OBPAL_CHAPTERINTRO_10), 0x10+OBPAL_CHAPTERINTRO_10, 6, +2);
+    sub_80020CC(gPal + 0x10*(0x10+OBPAL_SYSTEM_OBJECTS), 0x10+OBPAL_SYSTEM_OBJECTS, 2, +2);
+    sub_80020CC(gPal + 0x10*(0x10+OBPAL_CHAPTERINTRO_7), 0x10+OBPAL_CHAPTERINTRO_7, 1, +2);
+
+    ColorFadeTick();
+    EnablePalSync();
+
+    proc->timer = 14;
+
+    if (GetChapterInfo(gPlaySt.chapterIndex)->song_openning[gPlaySt.chapterModeIndex != 3 ? 0 : 1] != 0xFFFF)
+        StartBgm(GetChapterInfo(gPlaySt.chapterIndex)->song_openning[gPlaySt.chapterModeIndex != 3 ? 0 : 1], 0);
+}
+
+void ChapterIntro_LoopFastFadeToMap(struct ProcChapterIntrofx * proc)
+{
+    ColorFadeTick();
+
+    if (GetChapterInfo(gPlaySt.chapterIndex)->weather == WEATHER_FLAMES)
+        ApplyFlamesWeatherGradient();
+
+    if (GetChapterInfo(gPlaySt.chapterIndex)->fadeToBlack)
+    {
+        proc->timer = 0;
+
+        SetDispEnable(1, 1, 1, 0, 0);
+    }
+    else
+        EnablePalSync();
+
+    proc->timer--;
+
+    if (proc->timer < 0)
+    {
+        EnableTilesetPalAnim();
+        Proc_Break(proc);
+    }
+}
+
+void ChapterIntro_SetSkipTarget(int skip, struct ProcChapterIntrofx * proc)
+{
+    proc->skipped = skip;
+}
+
+void ChapterIntro_SetTimer(int timer, struct ProcChapterIntrofx * proc)
+{
+    proc->timer = timer;
+}
+
+void ChapterIntro_TickTimer(struct ProcChapterIntrofx * proc)
+{
+    if (proc->fasten != 0)
+        Proc_Break(proc);
+    else if (proc->timer-- < 0)
+        Proc_Break(proc);
+}
+
+void ChapterIntro_SetFasten(struct ProcChapterIntrofx * proc)
+{
+    proc->fasten = 2;
 }

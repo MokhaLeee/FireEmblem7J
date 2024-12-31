@@ -132,8 +132,8 @@ struct ProcChapterIntroDeamon {
 };
 
 void ChapterIntro_Bg3Scroll_Loop(ProcPtr proc);
-void ChapterIntro_KeyListen_Init(struct ProcChapterIntroDeamon * proc);
-void ChapterIntro_KeyListen_Loop(struct ProcChapterIntroDeamon * proc);
+void ChapterIntroDeamon_Init(struct ProcChapterIntroDeamon * proc);
+void ChapterIntroDeamon_Loop(struct ProcChapterIntroDeamon * proc);
 void PutChapterIntroMotif(void);
 void PutScreenFogEffect(void);
 void PutScreenFogEffectOverlayed(void);
@@ -155,18 +155,18 @@ void ChapterIntro_0801FFD0(struct ProcChapterIntrofx * proc);
 void ChapterIntro_InitMapDisplay(struct ProcChapterIntrofx * proc);
 void ChapterIntro_BeginFadeToMap(struct ProcChapterIntrofx * proc);
 void ChapterIntro_LoopFadeToMap(struct ProcChapterIntrofx * proc);
-void sub_80202A8(struct ProcChapterIntrofx * proc);
-void sub_80202B0(struct ProcChapterIntrofx * proc);
-void sub_80202FC(struct ProcChapterIntrofx * proc);
-void sub_8020304(struct ProcChapterIntrofx * proc);
+void ChapterIntro_BeginCloseText(struct ProcChapterIntrofx * proc);
+void ChapterIntro_LoopCloseText(struct ProcChapterIntrofx * proc);
+void ChapterIntro_BeginFastCloseText(struct ProcChapterIntrofx * proc);
+void ChapterIntro_LoopFastCloseText(struct ProcChapterIntrofx * proc);
 void ChapterIntro_BeginFadeOut(struct ProcChapterIntrofx * proc);
 void ChapterIntro_LoopFadeOut(struct ProcChapterIntrofx * proc);
 void ChapterIntro_BeginFastFadeToMap(struct ProcChapterIntrofx * proc);
 void ChapterIntro_LoopFastFadeToMap(struct ProcChapterIntrofx * proc);
-void ChapterIntro_SetSkipTarget(struct ProcChapterIntrofx * proc);
-void sub_8020500(short speed);
-void sub_8020508(short speed);
-void sub_8020538(struct ProcChapterIntrofx * proc);
+void ChapterIntro_SetSkipTarget(int skip, struct ProcChapterIntrofx * proc);
+void ChapterIntro_SetTimer(int timer, struct ProcChapterIntrofx * proc);
+void ChapterIntro_TickTimer(struct ProcChapterIntrofx * proc);
+void ChapterIntro_SetFasten(struct ProcChapterIntrofx * proc);
 // sub_8020540
 // sub_8020580
 // sub_80205C0

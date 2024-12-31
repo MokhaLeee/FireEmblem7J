@@ -267,7 +267,6 @@ SECTIONS
 		asm/player-phase.o(.text);
 		asm/bmfx.o(.text);
 		src/bmfx-chapterintrofx.o(.text);
-		asm/bmfx-chapterintrofx.o(.text);
 		asm/bmfx_08020508.o(.text);
 		src/bmfx-swingsword.o(.text);
 		src/bmfx-minefx.o(.text);

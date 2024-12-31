@@ -1750,8 +1750,8 @@ extern struct ProcCmd ProcScr_BmMain_08C02A68[];
 // ??? gUnk_08C02B58
 // ??? gUnk_08C02B88
 // ??? gUnk_08C02BA8
-extern struct ProcCmd gUnk_08C02BC8[];
-extern struct ProcCmd gUnk_08C02BD8[];
+extern struct ProcCmd ProcScr_ChapterIntro_Bg3Scroll[];
+extern struct ProcCmd ProcScr_ChapterIntroDeamon[];
 extern struct ProcCmd ProcScr_ChapterIntrofx[];
 extern struct ProcCmd ProcScr_BmMain_08C02D98[];
 // ??? gUnk_08C02DD8
