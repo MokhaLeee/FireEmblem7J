@@ -329,6 +329,12 @@ SECTIONS
 		src/statscreen-helpbox.o(.text);
 		src/chapter-title.o(.text);
 		asm/helpbox.o(.text);
+		asm/mapui.o(.text);
+		asm/sioerror.o(.text);
+		asm/chapter-status.o(.text);
+		asm/cgtext.o(.text);
+		asm/unitlistscreen.o(.text);
+		asm/prepscreen.o(.text);
 		src/save_core.o(.text);
 		asm/save.o(.text);
 		src/savemenu.o(.text);

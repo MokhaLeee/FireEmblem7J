@@ -150,7 +150,7 @@ void ChapterIntro_Begin_0801FE98(struct ProcChapterIntrofx * proc);
 void ChapterIntro_Loop_0801E1F8(struct ProcChapterIntrofx * proc);
 void ChapterIntro_Begin_0801FF18(struct ProcChapterIntrofx * proc);
 void ChapterIntro_Loop_0801FF3C(struct ProcChapterIntrofx * proc);
-// sub_801FFA8
+void ChapterIntro_801FFA8(void);
 void ChapterIntro_0801FFD0(struct ProcChapterIntrofx * proc);
 void ChapterIntro_InitMapDisplay(struct ProcChapterIntrofx * proc);
 void ChapterIntro_BeginFadeToMap(struct ProcChapterIntrofx * proc);

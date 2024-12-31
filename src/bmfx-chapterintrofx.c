@@ -383,7 +383,7 @@ void ChapterIntro_Loop_0801FF3C(struct ProcChapterIntrofx * proc)
     }
 }
 
-void sub_801FFA8(void)
+void ChapterIntro_801FFA8(void)
 {
     InitBgs(NULL);
     ApplySystemGraphics();

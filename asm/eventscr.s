@@ -10449,7 +10449,7 @@ _080103DA:
 	orrs r5, r0
 _080103E8:
 	adds r0, r5, #0
-	bl sub_8087E2C
+	bl SetCgTextFlags
 	add sp, #0x10
 	pop {r4, r5, r6, r7}
 	pop {r0}

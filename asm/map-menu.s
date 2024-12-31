@@ -84,7 +84,7 @@ _08021A38: .4byte gUnk_08DAF408
 sub_8021A3C: @ 0x08021A3C
 	push {lr}
 	movs r0, #0
-	bl sub_8087B48
+	bl NewChapterStatusScreen
 	movs r0, #0x17
 	pop {r1}
 	bx r1

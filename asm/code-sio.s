@@ -841,7 +841,7 @@ _0803CC90:
 	adds r1, r1, r0
 	movs r0, #0
 	strb r0, [r1]
-	bl sub_80871AC
+	bl StartSioErrorScreen
 _0803CCAA:
 	ldr r4, _0803CD1C @ =gSioSt
 	ldr r0, [r4]
@@ -859,7 +859,7 @@ _0803CCAA:
 	adds r0, #0xb
 	adds r0, r0, r1
 	strb r2, [r0]
-	bl sub_80871AC
+	bl StartSioErrorScreen
 _0803CCD0:
 	movs r4, #0
 	ldr r5, _0803CD1C @ =gSioSt
@@ -877,7 +877,7 @@ _0803CCD4:
 	adds r0, r0, r4
 	movs r1, #0
 	strb r1, [r0]
-	bl sub_80871AC
+	bl StartSioErrorScreen
 _0803CCF2:
 	adds r4, #1
 	cmp r4, #3
@@ -895,7 +895,7 @@ _0803CCF8:
 	ldrb r1, [r1, #0x11]
 	cmp r1, #0x3c
 	bls _0803CD20
-	bl sub_80871AC
+	bl StartSioErrorScreen
 	ldr r1, [r4]
 	movs r0, #2
 	strh r0, [r1, #4]
@@ -10325,7 +10325,7 @@ _0804178E:
 	lsls r0, r0, #2
 	cmp r1, r0
 	ble _080417A2
-	bl sub_80871AC
+	bl StartSioErrorScreen
 _080417A2:
 	ldr r0, _080417F4 @ =0x030046BC
 	movs r1, #0xc9
