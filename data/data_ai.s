@@ -498,11 +498,17 @@ gUiWindowFrameModelLut:	@ 0x08C09B78
 
 	.global gUiWindowFramePalLut
 gUiWindowFramePalLut:	@ 0x08C09B84
-	.incbin "FireEmblem7J.base.gba", 0xC09B84, 0xC09B94 - 0xC09B84
+	.4byte Pal_StatScreen_081DBD64
+	.4byte 0x081DC658
+	.4byte 0x081DCF18
+	.4byte 0x081DD794
 
 	.global gUiWindowFrameImgLut
 gUiWindowFrameImgLut:	@ 0x08C09B94
-	.incbin "FireEmblem7J.base.gba", 0xC09B94, 0xC09BA4 - 0xC09B94
+        .4byte 0x081DB4B8
+        .4byte 0x081DBDA4
+        .4byte 0x081DC698
+        .4byte 0x081DCF58
 
 	.global gUiStatBarPalLut
 gUiStatBarPalLut:	@ 0x08C09BA4
