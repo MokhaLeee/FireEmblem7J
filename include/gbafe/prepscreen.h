@@ -94,31 +94,44 @@ void PrepSetLatestCharId(int val);
 // IsCharacterForceDeployed
 // CalcForceDeployedUnitCounts
 // sub_808E7D4
-// IsUnitInCurrentRoster
+bool IsUnitInCurrentRoster(struct Unit *unit);
 // AtMenu_AddPrepScreenSupportMenuItem
 int CanPrepScreenCheckMap(void);
-// InitPrepScreenMainMenu
-// GetLatestUnitIndexInPrepListByUId
-// PrepGetLatestUnitIndex
-// ReorderPlayerUnitsBasedOnDeployment
-// SortPlayerUnitsForPrepScreen
-// RemoveSomeUnitItems
-// MakePrepUnitList
-// UnitGetIndexInPrepList
-// PrepUpdateSMS
-// sub_808ED24
+void InitPrepScreenMainMenu(struct ProcAtMenu *proc);
+int GetLatestUnitIndexInPrepListByUId(void);
+int PrepGetLatestUnitIndex(void);
+void ReorderPlayerUnitsBasedOnDeployment(void);
+void SortPlayerUnitsForPrepScreen(void);
+void RemoveSomeUnitItems(void);
+void MakePrepUnitList(void);
+int UnitGetIndexInPrepList(int pid);
+void PrepUpdateSMS(void);
+void PrepAutoCapDeployUnits(struct ProcAtMenu *proc);
 // PrepRestartMuralBackground
 // EndMuralBackground_
 // nullsub_76
 // Prep_DrawChapterGoal
 // PrepAtMenu_OnInit
+
+struct ProcPrepMenuDesc {
+    PROC_HEADER;
+
+    STRUCT_PAD(0x29, 0x4C);
+
+    /* 4C */ u16 unk4C;
+
+    STRUCT_PAD(0x4E, 0x58);
+
+    /* 58 */ int msg;
+};
+
 // ResetPrepMenuDescTexts
 // ParsePrepMenuDescTexts
 // DrawPrepMenuDescTexts
-// PrepMenuDescOnInit
-// PrepMenuDescOnParse
-// PrepMenuDescOnDraw
-// StartPrepMenuDescHandler
+void PrepMenuDescOnInit(struct ProcPrepMenuDesc * proc);
+void PrepMenuDescOnParse(struct ProcPrepMenuDesc * proc);
+void PrepMenuDescOnDraw(void);
+void StartPrepMenuDescHandler(int msg, ProcPtr parent);
 // StartPrepAtSubMenuUI
 // DrawAtMenuUpfx
 // AtMenu_Reinitialize
@@ -162,12 +175,12 @@ int CanPrepScreenCheckMap(void);
 // sub_8090148
 // sub_8090244
 // nullsub_77
-// sub_80902F0
-// sub_8090388
-// sub_809039C
+// ProcPrepSpChar_OnInit
+// ProcPrepSpChar_Idle
+// ProcPrepSpChar_OnEnd
 void PrepSpecialChar_BlinkButtonStart(void);
-// sub_80903C4
-// EndPrepSpecialCharEffect
+void PrepSpecialChar_BlinkButtonB(ProcPtr parent);
+void EndPrepSpecialCharEffect(void);
 // sub_80903FC
 // sub_8090494
 // sub_80904D8
@@ -183,7 +196,7 @@ void PrepSpecialChar_BlinkButtonStart(void);
 int GetActivePrepMenuItemIndex(void);
 // SetPrepScreenMenuPosition
 // sub_80909DC
-// EndPrepScreenMenu
+void EndPrepScreenMenu(void);
 // sub_8090A1C
 // sub_8090A88
 // sub_8090AA4
@@ -202,8 +215,8 @@ int GetActivePrepMenuItemIndex(void);
 // sub_8090EC0
 // sub_8090F14
 // sub_8090FD4
-// StartPrepMuralBackground
-// sub_8091104
+void StartPrepMuralBackground(void *vram, int pal_bank);
+void EndPrepMuralBackground(void);
 // sub_8091118
 // sub_809115C
 // sub_80912AC
@@ -500,9 +513,13 @@ void TryUnlockProc(ProcPtr proc);
 // sub_809B968
 // sub_809BA00
 
-// ??? Msgs_PrepMainMenuHelpbox
-// ??? ProcScr_PrepMenuDescHandler
-// ??? gUnk_08D8C154
+extern EWRAM_DATA struct SioPidPool gSioPidPool;
+extern EWRAM_OVERLAY(0) struct Text gPrepMainMenuTexts[10];
+
+extern CONST_DATA u16 gBgConfig_PrepScreen[];
+extern CONST_DATA int Msgs_PrepMainMenuHelpbox[][3];
+extern struct ProcCmd ProcScr_PrepMenuDescHandler[];
+// ??? ProcScr_AtMenu
 extern struct ProcCmd ProcScr_PrepPromoteDebug[];
 // ??? gUnk_08D8C3A4
 // ??? gUnk_08D8C52E
@@ -510,7 +527,7 @@ extern struct ProcCmd ProcScr_PrepPromoteDebug[];
 // ??? gUnk_08D8C544
 // ??? gUnk_08D8C55E
 // ??? gUnk_08D8C5D8
-// ??? gUnk_08D8C6AC
+// ??? ProcScr_PrepSpecialCharEff
 // ??? gUnk_08D8C6D4
 // ??? gUnk_08D8C6E4
 // ??? gUnk_08D8C73C

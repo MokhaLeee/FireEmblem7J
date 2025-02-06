@@ -78,16 +78,16 @@ gUnk_0841D0F4:	@ 0x0841D0F4
 gUnk_0841D0FC:	@ 0x0841D0FC
 	.incbin "FireEmblem7J.base.gba", 0x41D0FC, 0x41D100 - 0x41D0FC
 
-	.global gUnk_0841D100
-gUnk_0841D100:	@ 0x0841D100
+	.global Pal_0841D100
+Pal_0841D100:	@ 0x0841D100
 	.incbin "FireEmblem7J.base.gba", 0x41D100, 0x41D120 - 0x41D100
 
-	.global gUnk_0841D120
-gUnk_0841D120:	@ 0x0841D120
+	.global Img_0841D120
+Img_0841D120:	@ 0x0841D120
 	.incbin "FireEmblem7J.base.gba", 0x41D120, 0x41D614 - 0x41D120
 
-	.global gUnk_0841D614
-gUnk_0841D614:	@ 0x0841D614
+	.global Tsa_0841D614
+Tsa_0841D614:	@ 0x0841D614
 	.incbin "FireEmblem7J.base.gba", 0x41D614, 0x41D838 - 0x41D614
 
 	.global gUnk_0841D838
@@ -130,8 +130,8 @@ gUnk_0841E634:	@ 0x0841E634
 gUnk_0841E7F4:	@ 0x0841E7F4
 	.incbin "FireEmblem7J.base.gba", 0x41E7F4, 0x41E814 - 0x41E7F4
 
-	.global gUnk_0841E814
-gUnk_0841E814:	@ 0x0841E814
+	.global Img_PrepScreenTitle
+Img_PrepScreenTitle:	@ 0x0841E814
 	.incbin "FireEmblem7J.base.gba", 0x41E814, 0x41EC70 - 0x41E814
 
 	.global Pal_SysBrownBox
@@ -242,16 +242,16 @@ Img_PrepAtMenuUpfx:	@ 0x08428B00
 Pal_PrepAtMenuUpfx:	@ 0x08428DB4
 	.incbin "FireEmblem7J.base.gba", 0x428DB4, 0x4291AC - 0x428DB4
 
-	.global gUnk_084291AC
-gUnk_084291AC:	@ 0x084291AC
+	.global Pal_PrepScreenTitleSprites
+Pal_PrepScreenTitleSprites:	@ 0x084291AC
 	.incbin "FireEmblem7J.base.gba", 0x4291AC, 0x429278 - 0x4291AC
 
 	.global Img_PrepTextShadow
 Img_PrepTextShadow:	@ 0x08429278
 	.incbin "FireEmblem7J.base.gba", 0x429278, 0x4292A0 - 0x429278
 
-	.global gUnk_084292A0
-gUnk_084292A0:	@ 0x084292A0
+	.global Img_PrepScreenTitleSprites
+Img_PrepScreenTitleSprites:	@ 0x084292A0
 	.incbin "FireEmblem7J.base.gba", 0x4292A0, 0x4295B4 - 0x4292A0
 
 	.global gUnk_084295B4

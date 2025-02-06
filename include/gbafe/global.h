@@ -5,6 +5,10 @@
 
 #include "../gba/gba.h"
 
+#define FE7 1
+#define FE8 2
+#define PROJECT FE7
+
 #include "types.h"
 #include "unk-types.h"
 #include "unk-functions.h"
