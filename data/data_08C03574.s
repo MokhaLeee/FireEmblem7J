@@ -248,12 +248,12 @@ gUnk_08C056CC:	@ 0x08C056CC
 gUnk_08C05700:	@ 0x08C05700
 	.incbin "FireEmblem7J.base.gba", 0xC05700, 0xC05704 - 0xC05700
 
-	.global gUnk_08C05704
-gUnk_08C05704:	@ 0x08C05704
+	.global ProcScr_PrepHelpPrompt
+ProcScr_PrepHelpPrompt:	@ 0x08C05704
 	.incbin "FireEmblem7J.base.gba", 0xC05704, 0xC0571C - 0xC05704
 
-	.global gUnk_08C0571C
-gUnk_08C0571C:	@ 0x08C0571C
+	.global ProcScr_SALLYCURSOR
+ProcScr_SALLYCURSOR:	@ 0x08C0571C
 	.incbin "FireEmblem7J.base.gba", 0xC0571C, 0xC05C54 - 0xC0571C
 
 	.global gUnk_08C05C54

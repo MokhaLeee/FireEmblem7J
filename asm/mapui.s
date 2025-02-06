@@ -2578,8 +2578,8 @@ sub_8086668: @ 0x08086668
 	.align 2, 0
 _08086678: .4byte gUnk_08D8B2B8
 
-	thumb_func_start sub_808667C
-sub_808667C: @ 0x0808667C
+	thumb_func_start EndPlayerPhaseSideWindows
+EndPlayerPhaseSideWindows: @ 0x0808667C
 	push {lr}
 	ldr r0, _080866C4 @ =gUnk_08D8B200
 	bl Proc_EndEach

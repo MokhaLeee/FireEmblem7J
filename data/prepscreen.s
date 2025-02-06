@@ -1,47 +1,7 @@
 	.section .data
 
-	.global ProcScr_AtMenu
-ProcScr_AtMenu:	@ 0x08D8C154
-	.incbin "FireEmblem7J.base.gba", 0xD8C154, 0xD8C364 - 0xD8C154
-
-	.global ProcScr_PrepPromoteDebug
-ProcScr_PrepPromoteDebug:	@ 0x08D8C364
-	.incbin "FireEmblem7J.base.gba", 0xD8C364, 0xD8C3A4 - 0xD8C364
-
-	.global gUnk_08D8C3A4
-gUnk_08D8C3A4:	@ 0x08D8C3A4
-	.incbin "FireEmblem7J.base.gba", 0xD8C3A4, 0xD8C52E - 0xD8C3A4
-
-	.global gUnk_08D8C52E
-gUnk_08D8C52E:	@ 0x08D8C52E
-	.incbin "FireEmblem7J.base.gba", 0xD8C52E, 0xD8C53C - 0xD8C52E
-
-	.global gUnk_08D8C53C
-gUnk_08D8C53C:	@ 0x08D8C53C
-	.incbin "FireEmblem7J.base.gba", 0xD8C53C, 0xD8C544 - 0xD8C53C
-
-	.global gUnk_08D8C544
-gUnk_08D8C544:	@ 0x08D8C544
-	.incbin "FireEmblem7J.base.gba", 0xD8C544, 0xD8C55E - 0xD8C544
-
-	.global gUnk_08D8C55E
-gUnk_08D8C55E:	@ 0x08D8C55E
-	.incbin "FireEmblem7J.base.gba", 0xD8C55E, 0xD8C5D8 - 0xD8C55E
-
-	.global gUnk_08D8C5D8
-gUnk_08D8C5D8:	@ 0x08D8C5D8
-	.incbin "FireEmblem7J.base.gba", 0xD8C5D8, 0xD8C6AC - 0xD8C5D8
-
-	.global ProcScr_PrepSpecialCharEff
-ProcScr_PrepSpecialCharEff:	@ 0x08D8C6AC
-	.incbin "FireEmblem7J.base.gba", 0xD8C6AC, 0xD8C6D4 - 0xD8C6AC
-
-	.global gUnk_08D8C6D4
-gUnk_08D8C6D4:	@ 0x08D8C6D4
-	.incbin "FireEmblem7J.base.gba", 0xD8C6D4, 0xD8C6E4 - 0xD8C6D4
-
-	.global gUnk_08D8C6E4
-gUnk_08D8C6E4:	@ 0x08D8C6E4
+	.global ProcScr_PrepMenu
+ProcScr_PrepMenu:	@ 0x08D8C6E4
 	.incbin "FireEmblem7J.base.gba", 0xD8C6E4, 0xD8C73C - 0xD8C6E4
 
 	.global gUnk_08D8C73C

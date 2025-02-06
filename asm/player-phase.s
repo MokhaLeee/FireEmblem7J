@@ -168,7 +168,7 @@ _0801C696:
 	cmp r0, #0
 	beq _0801C700
 	bl EndAllMus
-	bl sub_808667C
+	bl EndPlayerPhaseSideWindows
 	movs r0, #0x1f
 	bl SetStatScreenExcludedUnitFlags
 	movs r3, #0x16
@@ -232,7 +232,7 @@ _0801C74C:
 	lsls r0, r0, #0x18
 	cmp r0, #0
 	bne _0801C7D0
-	bl sub_808667C
+	bl EndPlayerPhaseSideWindows
 	ldr r0, _0801C790 @ =gPlaySt
 	ldrh r1, [r5, #0x14]
 	strb r1, [r0, #0x12]
@@ -322,7 +322,7 @@ _0801C7D0:
 	adds r0, r4, #0
 	bl ShowUnitSprite
 _0801C822:
-	bl sub_808667C
+	bl EndPlayerPhaseSideWindows
 	adds r0, r6, #0
 	bl sub_8032CA0
 	b _0801C88A
@@ -363,7 +363,7 @@ _0801C840:
 	adds r0, r4, #0
 	bl ShowUnitSprite
 _0801C882:
-	bl sub_808667C
+	bl EndPlayerPhaseSideWindows
 	bl sub_80A3EF8
 _0801C88A:
 	adds r0, r6, #0
@@ -778,7 +778,7 @@ _0801CBE0:
 	ldrsh r2, [r0, r3]
 	adds r0, r5, #0
 	bl EnsureCameraOntoPosition
-	bl sub_801D6D8
+	bl HideMoveRangeGraphics
 	adds r0, r5, #0
 	bl Proc_Break
 	b _0801CD98
@@ -819,7 +819,7 @@ _0801CC3E:
 	ldrb r3, [r1, #4]
 	ands r0, r3
 	strb r0, [r1, #4]
-	bl sub_801D6D8
+	bl HideMoveRangeGraphics
 	bl RefreshEntityMaps
 	bl RefreshUnitSprites
 	ldr r0, _0801CC7C @ =gPlaySt
@@ -930,7 +930,7 @@ _0801CD48:
 	ldrb r0, [r1]
 	adds r0, #1
 	strb r0, [r1]
-	bl sub_801D6D8
+	bl HideMoveRangeGraphics
 	movs r0, #8
 	ldrb r4, [r4, #4]
 	ands r0, r4
@@ -2089,8 +2089,8 @@ _0801D6D0:
 	bx r0
 	.align 2, 0
 
-	thumb_func_start sub_801D6D8
-sub_801D6D8: @ 0x0801D6D8
+	thumb_func_start HideMoveRangeGraphics
+HideMoveRangeGraphics: @ 0x0801D6D8
 	push {lr}
 	ldr r0, _0801D6E4 @ =gUnk_08C02870
 	bl Proc_EndEach
@@ -2099,8 +2099,8 @@ sub_801D6D8: @ 0x0801D6D8
 	.align 2, 0
 _0801D6E4: .4byte gUnk_08C02870
 
-	thumb_func_start sub_801D6E8
-sub_801D6E8: @ 0x0801D6E8
+	thumb_func_start TrySetCursorOn
+TrySetCursorOn: @ 0x0801D6E8
 	push {r4, lr}
 	bl GetUnit
 	adds r4, r0, #0
@@ -2133,7 +2133,7 @@ _0801D720:
 	bl Proc_Find
 	cmp r0, #0
 	bne _0801D730
-	ldr r0, _0801D754 @ =gUnk_08C0571C
+	ldr r0, _0801D754 @ =ProcScr_SALLYCURSOR
 	bl Proc_Find
 _0801D730:
 	movs r1, #0x10
@@ -2153,7 +2153,7 @@ _0801D74A:
 	bx r1
 	.align 2, 0
 _0801D750: .4byte gUnk_08C02630
-_0801D754: .4byte gUnk_08C0571C
+_0801D754: .4byte ProcScr_SALLYCURSOR
 
 	thumb_func_start sub_801D758
 sub_801D758: @ 0x0801D758
@@ -2177,7 +2177,7 @@ _0801D772:
 	bgt _0801D78C
 _0801D77A:
 	adds r0, r4, #0
-	bl sub_801D6E8
+	bl TrySetCursorOn
 	lsls r0, r0, #0x18
 	cmp r0, #0
 	bne _0801D7A4
@@ -2190,7 +2190,7 @@ _0801D78C:
 	bgt _0801D7A4
 _0801D792:
 	adds r0, r4, #0
-	bl sub_801D6E8
+	bl TrySetCursorOn
 	lsls r0, r0, #0x18
 	cmp r0, #0
 	bne _0801D7A4

@@ -4729,8 +4729,8 @@ sub_8030890: @ 0x08030890
 	.align 2, 0
 _080308C4: .4byte gBmSt
 
-	thumb_func_start sub_80308C8
-sub_80308C8: @ 0x080308C8
+	thumb_func_start PrepMapMenu_OnStartPress
+PrepMapMenu_OnStartPress: @ 0x080308C8
 	push {lr}
 	movs r1, #0x37
 	bl Proc_Goto
@@ -4739,8 +4739,8 @@ sub_80308C8: @ 0x080308C8
 	bx r1
 	.align 2, 0
 
-	thumb_func_start sub_80308D8
-sub_80308D8: @ 0x080308D8
+	thumb_func_start PrepMapMenu_OnBPress
+PrepMapMenu_OnBPress: @ 0x080308D8
 	push {lr}
 	movs r1, #0x33
 	bl Proc_Goto
@@ -4898,12 +4898,12 @@ _080309EC:
 	.align 2, 0
 _08030A00: .4byte gPlaySt
 
-	thumb_func_start sub_8030A04
-sub_8030A04: @ 0x08030A04
+	thumb_func_start PrepScreenProc_InitMapMenu
+PrepScreenProc_InitMapMenu: @ 0x08030A04
 	push {lr}
 	movs r1, #1
 	str r1, [r0, #0x58]
-	bl sub_8030B88
+	bl PrepScreenProc_StartMapMenu
 	pop {r0}
 	bx r0
 	.align 2, 0
@@ -5063,30 +5063,30 @@ _08030B54: .4byte 0x00000397
 _08030B58: .4byte 0x0000039B
 _08030B5C: .4byte 0x0000039F
 
-	thumb_func_start sub_8030B60
-sub_8030B60: @ 0x08030B60
+	thumb_func_start StartPrepHelpPrompt
+StartPrepHelpPrompt: @ 0x08030B60
 	push {lr}
 	adds r1, r0, #0
-	ldr r0, _08030B70 @ =gUnk_08C05704
+	ldr r0, _08030B70 @ =ProcScr_PrepHelpPrompt
 	bl Proc_Start
 	pop {r0}
 	bx r0
 	.align 2, 0
-_08030B70: .4byte gUnk_08C05704
+_08030B70: .4byte ProcScr_PrepHelpPrompt
 
-	thumb_func_start sub_8030B74
-sub_8030B74: @ 0x08030B74
+	thumb_func_start PrepMapMenu_OnEnd
+PrepMapMenu_OnEnd: @ 0x08030B74
 	push {lr}
 	bl EndHelpPromptSprite
-	ldr r0, _08030B84 @ =gUnk_08C05704
+	ldr r0, _08030B84 @ =ProcScr_PrepHelpPrompt
 	bl Proc_EndEach
 	pop {r0}
 	bx r0
 	.align 2, 0
-_08030B84: .4byte gUnk_08C05704
+_08030B84: .4byte ProcScr_PrepHelpPrompt
 
-	thumb_func_start sub_8030B88
-sub_8030B88: @ 0x08030B88
+	thumb_func_start PrepScreenProc_StartMapMenu
+PrepScreenProc_StartMapMenu: @ 0x08030B88
 	push {r4, lr}
 	sub sp, #4
 	adds r4, r0, #0
@@ -5095,8 +5095,8 @@ sub_8030B88: @ 0x08030B88
 	movs r0, #0
 	bl LoadHelpBoxGfx
 	bl ResetText
-	bl sub_808667C
-	bl sub_801D6D8
+	bl EndPlayerPhaseSideWindows
+	bl HideMoveRangeGraphics
 	adds r0, r4, #0
 	bl StartPrepScreenMenu
 	ldr r1, _08030C30 @ =sub_803087C
@@ -5137,16 +5137,16 @@ sub_8030B88: @ 0x08030B88
 	bl SetPrepScreenMenuItem
 _08030BFA:
 	adds r0, r4, #0
-	bl sub_8030B60
-	ldr r0, _08030C5C @ =sub_80308D8
+	bl StartPrepHelpPrompt
+	ldr r0, _08030C5C @ =PrepMapMenu_OnBPress
 	bl SetPrepScreenMenuOnBPress
-	ldr r0, _08030C60 @ =sub_80308C8
+	ldr r0, _08030C60 @ =PrepMapMenu_OnStartPress
 	bl SetPrepScreenMenuOnStartPress
-	ldr r0, _08030C64 @ =sub_8030B74
-	bl sub_80907E4
+	ldr r0, _08030C64 @ =PrepMapMenu_OnEnd
+	bl SetPrepScreenMenuOnEnd
 	movs r0, #0xa
 	movs r1, #2
-	bl SetPrepScreenMenuPosition
+	bl DrawPrepScreenMenuFrameAt
 	ldr r0, [r4, #0x58]
 	bl SetPrepScreenMenuSelectedItem
 	movs r0, #3
@@ -5167,9 +5167,9 @@ _08030C4C: .4byte gPlaySt
 _08030C50: .4byte sub_8030988
 _08030C54: .4byte 0x00001134
 _08030C58: .4byte 0x00000383
-_08030C5C: .4byte sub_80308D8
-_08030C60: .4byte sub_80308C8
-_08030C64: .4byte sub_8030B74
+_08030C5C: .4byte PrepMapMenu_OnBPress
+_08030C60: .4byte PrepMapMenu_OnStartPress
+_08030C64: .4byte PrepMapMenu_OnEnd
 
 	thumb_func_start sub_8030C68
 sub_8030C68: @ 0x08030C68
@@ -5514,7 +5514,7 @@ _08030EDC:
 	cmp r0, #0
 	beq _08030F40
 	bl EndAllMus
-	bl sub_808667C
+	bl EndPlayerPhaseSideWindows
 	movs r0, #0x1f
 	bl SetStatScreenExcludedUnitFlags
 	movs r3, #0x16
@@ -5544,7 +5544,7 @@ _08030F40:
 	ands r0, r1
 	cmp r0, #0
 	beq _08030F74
-	bl sub_808667C
+	bl EndPlayerPhaseSideWindows
 	ldr r4, _08030F6C @ =gPlaySt
 	ldr r1, _08030F70 @ =gBmSt
 	ldrh r0, [r1, #0x14]
@@ -5603,7 +5603,7 @@ _08030FBC: @ jump table
 	.4byte _08031098 @ case 3
 	.4byte _08031078 @ case 4
 _08030FD0:
-	bl sub_808667C
+	bl EndPlayerPhaseSideWindows
 	ldr r3, _0803101C @ =gPlaySt
 	ldr r2, _08031020 @ =gBmSt
 	ldrh r0, [r2, #0x14]
@@ -5720,7 +5720,7 @@ _080310BC:
 	ands r0, r1
 	cmp r0, #0
 	beq _080310E0
-	bl sub_808667C
+	bl EndPlayerPhaseSideWindows
 	bl sub_80A3EF8
 	adds r0, r5, #0
 	movs r1, #9
@@ -5746,7 +5746,7 @@ _080310F8: .4byte gBmSt
 	thumb_func_start sub_80310FC
 sub_80310FC: @ 0x080310FC
 	push {lr}
-	ldr r0, _08031110 @ =gUnk_08C0571C
+	ldr r0, _08031110 @ =ProcScr_SALLYCURSOR
 	bl Proc_Find
 	movs r1, #0x33
 	bl Proc_Goto
@@ -5754,7 +5754,7 @@ sub_80310FC: @ 0x080310FC
 	pop {r1}
 	bx r1
 	.align 2, 0
-_08031110: .4byte gUnk_08C0571C
+_08031110: .4byte ProcScr_SALLYCURSOR
 
 	thumb_func_start sub_8031114
 sub_8031114: @ 0x08031114
@@ -6172,7 +6172,7 @@ sub_8031440: @ 0x08031440
 	ldrb r2, [r1, #4]
 	ands r0, r2
 	strb r0, [r1, #4]
-	bl sub_801D6D8
+	bl HideMoveRangeGraphics
 	bl RefreshEntityMaps
 	bl RefreshUnitSprites
 	ldr r0, _080314A8 @ =gPlaySt
@@ -6457,8 +6457,8 @@ _080316BC: .4byte gBmSt
 _080316C0: .4byte gBuf
 _080316C4: .4byte 0x0001000C
 
-	thumb_func_start sub_80316C8
-sub_80316C8: @ 0x080316C8
+	thumb_func_start EndPrepScreen
+EndPrepScreen: @ 0x080316C8
 	push {r4, lr}
 	movs r4, #1
 _080316CC:
@@ -6496,7 +6496,7 @@ _0803170A:
 	cmp r4, #0x3f
 	ble _080316CC
 	bl sub_8031664
-	ldr r0, _08031734 @ =gUnk_08C0571C
+	ldr r0, _08031734 @ =ProcScr_SALLYCURSOR
 	bl Proc_EndEach
 	ldr r2, _08031738 @ =gBmSt
 	movs r1, #0xef
@@ -6512,14 +6512,14 @@ _0803170A:
 	pop {r0}
 	bx r0
 	.align 2, 0
-_08031734: .4byte gUnk_08C0571C
+_08031734: .4byte ProcScr_SALLYCURSOR
 _08031738: .4byte gBmSt
 _0803173C: .4byte gPlaySt
 
-	thumb_func_start sub_8031740
-sub_8031740: @ 0x08031740
+	thumb_func_start PrepScreenExists
+PrepScreenExists: @ 0x08031740
 	push {lr}
-	ldr r0, _08031754 @ =gUnk_08C0571C
+	ldr r0, _08031754 @ =ProcScr_SALLYCURSOR
 	bl Proc_Find
 	cmp r0, #0
 	beq _0803174E
@@ -6528,7 +6528,7 @@ _0803174E:
 	pop {r1}
 	bx r1
 	.align 2, 0
-_08031754: .4byte gUnk_08C0571C
+_08031754: .4byte ProcScr_SALLYCURSOR
 
 	thumb_func_start sub_8031758
 sub_8031758: @ 0x08031758

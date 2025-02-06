@@ -115,7 +115,7 @@ ProcScr_BmMain:
         .word BmMain_SuspendBeforePhase
         @ PROC_START_CHILD_BLOCKING
         .short 0x6, 0x1
-        .word gUnk_08C0571C
+        .word ProcScr_SALLYCURSOR
         @ PROC_START_CHILD_BLOCKING
         .short 0x6, 0x1
         .word ProcScr_BmMain_08C02D98

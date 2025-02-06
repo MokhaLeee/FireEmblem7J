@@ -412,7 +412,7 @@ _0808E9B8:
 	bl TmFillRect_thm
 	movs r0, #1
 	movs r1, #4
-	bl SetPrepScreenMenuPosition
+	bl DrawPrepScreenMenuFrameAt
 	adds r0, r5, #0
 	adds r0, #0x2d
 	ldrb r0, [r0]

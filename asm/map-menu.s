@@ -173,7 +173,7 @@ sub_8021ACC: @ 0x08021ACC
 	movs r0, #4
 	bl EnableBgSync
 	bl ResetTextFont
-	bl sub_801D6D8
+	bl HideMoveRangeGraphics
 	ldr r0, _08021B1C @ =gUnk_08C04D68
 	ldr r2, _08021B20 @ =gBmSt
 	movs r3, #0x1c
@@ -278,7 +278,7 @@ sub_8021BB0: @ 0x08021BB0
 	bl TmFill
 	movs r0, #4
 	bl EnableBgSync
-	bl sub_801D6D8
+	bl HideMoveRangeGraphics
 	bl ResetTextFont
 	ldr r0, _08021BE0 @ =gUnk_08C03098
 	movs r1, #3
@@ -309,7 +309,7 @@ sub_8021BE4: @ 0x08021BE4
 	movs r2, #1
 	movs r3, #0x16
 	bl sub_804B2DC
-	bl sub_801D6D8
+	bl HideMoveRangeGraphics
 	movs r0, #0x3b
 	pop {r1}
 	bx r1
@@ -813,7 +813,7 @@ _08022004:
 	thumb_func_start sub_8022014
 sub_8022014: @ 0x08022014
 	push {lr}
-	bl sub_801D6D8
+	bl HideMoveRangeGraphics
 	movs r0, #0
 	pop {r1}
 	bx r1
@@ -970,7 +970,7 @@ sub_8022154: @ 0x08022154
 	ands r1, r0
 	cmp r1, #0
 	bne _08022166
-	bl sub_801D6D8
+	bl HideMoveRangeGraphics
 _08022166:
 	movs r0, #0
 	pop {r1}
@@ -1113,7 +1113,7 @@ sub_8022264: @ 0x08022264
 	bl TmFill
 	movs r0, #4
 	bl EnableBgSync
-	bl sub_801D6D8
+	bl HideMoveRangeGraphics
 	bl sub_8034664
 	movs r0, #0
 	pop {r1}
@@ -2657,7 +2657,7 @@ _08022EAC: .4byte 0x0202E3E4
 	thumb_func_start sub_8022EB0
 sub_8022EB0: @ 0x08022EB0
 	push {lr}
-	bl sub_801D6D8
+	bl HideMoveRangeGraphics
 	movs r0, #0
 	pop {r1}
 	bx r1
@@ -2776,7 +2776,7 @@ sub_8022F94: @ 0x08022F94
 	ands r1, r0
 	cmp r1, #0
 	bne _08022FA6
-	bl sub_801D6D8
+	bl HideMoveRangeGraphics
 _08022FA6:
 	movs r0, #0
 	pop {r1}

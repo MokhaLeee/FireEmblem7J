@@ -2576,7 +2576,7 @@ sub_80B127C: @ 0x080B127C
 	adds r1, r7, #0
 	adds r1, #8
 	strb r0, [r1]
-	bl sub_808667C
+	bl EndPlayerPhaseSideWindows
 	ldr r0, [r7, #0xc]
 	cmp r0, #0
 	beq _080B12AC

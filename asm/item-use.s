@@ -1048,7 +1048,7 @@ _08027AD4: .4byte 0x03004360
 	thumb_func_start sub_8027AD8
 sub_8027AD8: @ 0x08027AD8
 	push {lr}
-	bl sub_801D6D8
+	bl HideMoveRangeGraphics
 	ldr r0, _08027AF8 @ =gBg2Tm
 	movs r1, #0
 	bl TmFill
@@ -1163,7 +1163,7 @@ sub_8027BA4: @ 0x08027BA4
 	adds r0, r6, #0
 	adds r1, r4, #0
 	bl EnsureCameraOntoPosition
-	bl sub_801D6D8
+	bl HideMoveRangeGraphics
 	ldr r0, _08027C4C @ =gActiveUnit
 	ldr r4, [r0]
 	ldrb r0, [r5, #0xd]
@@ -1363,7 +1363,7 @@ sub_8027D98: @ 0x08027D98
 	push {r4, r5, lr}
 	adds r5, r0, #0
 	bl ResetTextFont
-	bl sub_801D6D8
+	bl HideMoveRangeGraphics
 	bl sub_8032CCC
 	ldr r4, _08027DD0 @ =gActiveUnit
 	ldr r1, [r4]
@@ -1390,7 +1390,7 @@ _08027DD0: .4byte gActiveUnit
 sub_8027DD4: @ 0x08027DD4
 	push {lr}
 	bl ResetTextFont
-	bl sub_801D6D8
+	bl HideMoveRangeGraphics
 	bl sub_8032CCC
 	ldr r0, _08027E00 @ =gActiveUnit
 	ldr r1, [r0]
@@ -1413,7 +1413,7 @@ _08027E04: .4byte gUnk_08C03098
 sub_8027E08: @ 0x08027E08
 	push {r4, lr}
 	adds r4, r0, #0
-	bl sub_801D6D8
+	bl HideMoveRangeGraphics
 	ldr r0, [r4, #0x54]
 	bl EndSpriteAnim
 	pop {r4}

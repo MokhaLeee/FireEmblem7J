@@ -32,8 +32,8 @@ void OverrideBgm(int song);
 // sub_8003F04
 // sub_8003F28
 // sub_8003F94
-// CallSomeSoundMaybe
-// MusicProc4Exists
+void CallSomeSoundMaybe(int songId, int b, int c, int d, ProcPtr parent);
+bool MusicProc4Exists(void);
 // sub_80040C0
 // sub_80040F8
 // sub_8004110

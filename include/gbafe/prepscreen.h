@@ -107,11 +107,11 @@ void MakePrepUnitList(void);
 int UnitGetIndexInPrepList(int pid);
 void PrepUpdateSMS(void);
 void PrepAutoCapDeployUnits(struct ProcAtMenu *proc);
-// PrepRestartMuralBackground
-// EndMuralBackground_
+void PrepRestartMuralBackground(void);
+void EndMuralBackground_(void);
 // nullsub_76
-// Prep_DrawChapterGoal
-// PrepAtMenu_OnInit
+void Prep_DrawChapterGoal(int vram_offset, int pal_bank);
+void PrepAtMenu_OnInit(struct ProcAtMenu *proc);
 
 struct ProcPrepMenuDesc {
     PROC_HEADER;
@@ -134,74 +134,93 @@ void PrepMenuDescOnDraw(void);
 void StartPrepMenuDescHandler(int msg, ProcPtr parent);
 // StartPrepAtSubMenuUI
 // DrawAtMenuUpfx
-// AtMenu_Reinitialize
-// EndPrepAtMenuIfNoUnitAvailable
-// sub_808F2BC
+void AtMenu_Reinitialize(struct ProcAtMenu *proc);
+void EndPrepAtMenuIfNoUnitAvailable(struct ProcAtMenu *proc);
+void AtMenu_UpdateDesc(struct ProcAtMenu *proc);
 // sub_808F2E4
 // sub_808F368
-// sub_808F394
-// sub_808F3BC
-// sub_808F5CC
-// sub_808F604
-// sub_808F670
-// sub_808F6AC
-// sub_808F740
+void AtMenu_SetupCtrlUI(struct ProcAtMenu *proc);
+void AtMenu_CtrlLoop(struct ProcAtMenu *proc);
+void AtMenuSetUnitStateAndEndFlag(struct ProcAtMenu *proc);
+void AtMenu_ResetScreenEffect(struct ProcAtMenu *proc);
+void AtMenu_ResetBmUiEffect(struct ProcAtMenu *proc);
+void AtMenu_StartSubmenu(struct ProcAtMenu *proc);
+void AtMenu_OnSubmenuEnd(struct ProcAtMenu *proc);
 // sub_808F7B4
-// sub_808F7D4
-// sub_808F7EC
+void AtMenu_LockGame(struct ProcAtMenu *proc);
+void AtMenu_UnlockGame(struct ProcAtMenu *proc);
 // sub_808F804
 // sub_808F818
 // sub_808F834
 // sub_808F8D0
 // sub_808F938
 // sub_808F970
-// sub_808F9E0
-// sub_808FCAC
-// sub_808FCF8
-// sub_808FD10
-// sub_808FD7C
-// sub_808FDE8
-// sub_808FE6C
-// sub_808FED8
-// sub_808FEE0
-// sub_808FF58
-// sub_808FFD0
-// NullExpForChar100AndResetScreen
-// PrepPromoteDebugMaybe
-// sub_80900E8
+void AtUnkMenu_Reinitialize(struct ProcAtMenu *proc);
+void sub_808FCAC(struct ProcAtMenu *proc);
+void sub_808FCF8(struct ProcAtMenu *proc);
+void sub_808FD10(struct ProcAtMenu *proc);
+void sub_808FD7C(struct ProcAtMenu *proc);
+void sub_808FDE8(struct ProcAtMenu *proc);
+void sub_808FE6C(struct ProcAtMenu *proc);
+void sub_808FED8(struct ProcAtMenu *proc);
+void sub_808FEE0(struct ProcAtMenu *proc);
+void ConvoyPromotion_Init(ProcPtr proc);
+void sub_808FFD0(ProcPtr proc);
+void NullExpForChar100AndResetScreen(ProcPtr proc);
+void PrepPromoteDebugMaybe(struct ProcAtMenu *proc);
+void sub_80900E8(struct ProcAtMenu *proc);
 // sub_8090104
 // sub_8090118
 // sub_8090130
 // sub_8090148
 // sub_8090244
 // nullsub_77
-// ProcPrepSpChar_OnInit
-// ProcPrepSpChar_Idle
-// ProcPrepSpChar_OnEnd
+
+struct ProcPrepSpecialChar {
+     PROC_HEADER;
+    /* 29 */ u8 _pad29_[0x2A - 0x29];
+    /* 2A */ u8 unk2A;
+    /* 2B */ u8 unk2B;
+    /* 29 */ u8 _pad2C_[0x2F - 0x2C];
+    /* 2F */ u8 unk2F;
+    /* 30 */ u8 unk30;
+    /* 31 */ u8 unk31;
+    /* 32 */ u8 unk32;
+    /* 33 */ u8 blink_Start;
+    /* 34 */ u8 blink_B;
+    /* 35 */ u8 unk35;
+    /* 36 */ u16 unk36;
+    /* 38 */ ProcPtr apProc;
+};
+
+void ProcPrepSpChar_OnInit(struct ProcPrepSpecialChar *proc);
+void ProcPrepSpChar_Idle(struct ProcPrepSpecialChar *proc);
+void ProcPrepSpChar_OnEnd(struct ProcPrepSpecialChar *proc);
 void PrepSpecialChar_BlinkButtonStart(void);
 void PrepSpecialChar_BlinkButtonB(ProcPtr parent);
 void EndPrepSpecialCharEffect(void);
+
 // sub_80903FC
-// sub_8090494
-// sub_80904D8
-// sub_8090720
-// sub_8090748
-// sub_8090774
+// PrepMenu_OnInit
+// PrepMenu_CtrlLoop
+// PrepMenu_ShowFrozenHand
+// PrepMenu_ShowActiveHand
+// PrepMenu_OnEnd
 // StartPrepScreenMenu
 // SetPrepScreenMenuOnBPress
 // SetPrepScreenMenuOnStartPress
-// sub_80907E4
+// SetPrepScreenMenuOnEnd
 // SetPrepScreenMenuItem
 // SetPrepScreenMenuSelectedItem
 int GetActivePrepMenuItemIndex(void);
-// SetPrepScreenMenuPosition
-// sub_80909DC
+// DrawPrepScreenMenuFrameAt
+// GetPrepMenuItemAmt
 void EndPrepScreenMenu(void);
 // sub_8090A1C
 // sub_8090A88
 // sub_8090AA4
 // sub_8090AC0
-// sub_8090ADC
+void EnablePrepScreenMenu(void);
 // sub_8090AF8
 // sub_8090B2C
 // sub_8090D84
@@ -521,15 +540,15 @@ extern CONST_DATA int Msgs_PrepMainMenuHelpbox[][3];
 extern struct ProcCmd ProcScr_PrepMenuDescHandler[];
 // ??? ProcScr_AtMenu
 extern struct ProcCmd ProcScr_PrepPromoteDebug[];
-// ??? gUnk_08D8C3A4
-// ??? gUnk_08D8C52E
-// ??? gUnk_08D8C53C
-// ??? gUnk_08D8C544
-// ??? gUnk_08D8C55E
-// ??? gUnk_08D8C5D8
+// ??? ProcScr_AtUnkMenu
+// ??? Sprite_08D8C52E
+// ??? Sprite_08D8C53C
+// ??? Sprite_08D8C544
+// ??? Sprite_08D8C55E
+// ??? Sprites_08D8C5D8
 // ??? ProcScr_PrepSpecialCharEff
-// ??? gUnk_08D8C6D4
-// ??? gUnk_08D8C6E4
+// ??? ProcScr_PrepScreenMenuDummyItem
+// ??? ProcScr_PrepMenu
 // ??? gUnk_08D8C73C
 // ??? gUnk_08D8C744
 // ??? gUnk_08D8C74C

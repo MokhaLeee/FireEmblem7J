@@ -4107,7 +4107,7 @@ sub_807A564: @ 0x0807A564
 	thumb_func_start sub_807A568
 sub_807A568: @ 0x0807A568
 	push {lr}
-	bl sub_808667C
+	bl EndPlayerPhaseSideWindows
 	ldr r0, _0807A58C @ =gPlaySt
 	movs r1, #2
 	ldrb r0, [r0, #0x1b]
