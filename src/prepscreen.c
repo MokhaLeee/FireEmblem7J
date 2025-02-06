@@ -1,6 +1,7 @@
 #include "gbafe.h"
 
 EWRAM_DATA struct SioPidPool gSioPidPool = {};
+EWRAM_OVERLAY(0) struct Text gPrepMainMenuTexts[10] = {};
 
 CONST_DATA int Msgs_PrepMainMenuHelpbox[][3] = {
 	{ MSG_3E8, MSG_3E9, MSG_3F5 },
@@ -220,4 +221,3 @@ void PrepSetLatestCharId(int val)
 {
     gPrepUnitList.latest_pid = val;
 }
-

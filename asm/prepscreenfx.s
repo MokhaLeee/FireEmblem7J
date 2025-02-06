@@ -1,620 +1,6 @@
 	.include "macro.inc"
 	.syntax unified
 
-	thumb_func_start PrepRestartMuralBackground
-PrepRestartMuralBackground: @ 0x0808ED8C
-	push {lr}
-	bl CheckInLinkArena
-	lsls r0, r0, #0x18
-	cmp r0, #0
-	beq _0808EDA4
-	movs r0, #0
-	movs r1, #0
-	movs r2, #0xa
-	bl StartMuralBackgroundAlt
-	b _0808EDAC
-_0808EDA4:
-	movs r0, #0
-	movs r1, #0xa
-	bl StartPrepMuralBackground
-_0808EDAC:
-	pop {r0}
-	bx r0
-
-	thumb_func_start EndMuralBackground_
-EndMuralBackground_: @ 0x0808EDB0
-	push {lr}
-	bl CheckInLinkArena
-	lsls r0, r0, #0x18
-	cmp r0, #0
-	beq _0808EDC2
-	bl EndMuralBackground
-	b _0808EDC6
-_0808EDC2:
-	bl sub_8091104
-_0808EDC6:
-	pop {r0}
-	bx r0
-	.align 2, 0
-
-	thumb_func_start nullsub_76
-nullsub_76: @ 0x0808EDCC
-	bx lr
-	.align 2, 0
-
-	thumb_func_start Prep_DrawChapterGoal
-Prep_DrawChapterGoal: @ 0x0808EDD0
-	push {r4, r5, lr}
-	sub sp, #0x20
-	adds r2, r0, #0
-	adds r4, r1, #0
-	ldr r0, _0808EE48 @ =0x06010000
-	adds r2, r2, r0
-	mov r0, sp
-	adds r1, r2, #0
-	adds r2, r4, #0
-	bl InitSpriteTextFont
-	ldr r0, _0808EE4C @ =Pal_Text
-	adds r4, #0x10
-	lsls r4, r4, #5
-	adds r1, r4, #0
-	movs r2, #0x20
-	bl ApplyPaletteExt
-	add r5, sp, #0x18
-	adds r0, r5, #0
-	bl InitSpriteText
-	mov r0, sp
-	bl SetTextFont
-	movs r0, #0
-	bl SetTextFontGlyphs
-	adds r0, r5, #0
-	movs r1, #0
-	bl SpriteText_DrawBackgroundExt
-	ldr r0, _0808EE50 @ =gPlaySt
-	ldrb r0, [r0, #0xe]
-	lsls r0, r0, #0x18
-	asrs r0, r0, #0x18
-	bl GetChapterInfo
-	adds r0, #0x8a
-	ldrh r0, [r0]
-	bl DecodeMsg
-	adds r4, r0, #0
-	movs r0, #0x60
-	adds r1, r4, #0
-	bl GetStringTextCenteredPos
-	adds r1, r0, #0
-	adds r0, r5, #0
-	movs r2, #0
-	adds r3, r4, #0
-	bl Text_InsertDrawString
-	movs r0, #0
-	bl SetTextFont
-	add sp, #0x20
-	pop {r4, r5}
-	pop {r0}
-	bx r0
-	.align 2, 0
-_0808EE48: .4byte 0x06010000
-_0808EE4C: .4byte Pal_Text
-_0808EE50: .4byte gPlaySt
-
-	thumb_func_start PrepAtMenu_OnInit
-PrepAtMenu_OnInit: @ 0x0808EE54
-	push {r4, lr}
-	adds r4, r0, #0
-	movs r0, #0
-	bl PrepSetLatestCharId
-	movs r0, #0
-	str r0, [r4, #0x40]
-	strh r0, [r4, #0x3c]
-	bl CheckInLinkArena
-	lsls r0, r0, #0x18
-	cmp r0, #0
-	beq _0808EE76
-	adds r1, r4, #0
-	adds r1, #0x2a
-	movs r0, #5
-	b _0808EE7E
-_0808EE76:
-	bl GetChapterAllyUnitCount
-	adds r1, r4, #0
-	adds r1, #0x2a
-_0808EE7E:
-	strb r0, [r1]
-	adds r0, r4, #0
-	adds r0, #0x30
-	movs r1, #0
-	strb r1, [r0]
-	adds r0, #1
-	strb r1, [r0]
-	adds r0, #1
-	strb r1, [r0]
-	adds r0, #1
-	strb r1, [r0]
-	adds r0, #1
-	strb r1, [r0]
-	adds r0, #2
-	strb r1, [r0]
-	subs r0, #9
-	strb r1, [r0]
-	adds r0, #1
-	strb r1, [r0]
-	pop {r4}
-	pop {r0}
-	bx r0
-	.align 2, 0
-
-	thumb_func_start ResetPrepMenuDescTexts
-ResetPrepMenuDescTexts: @ 0x0808EEAC
-	push {r4, r5, lr}
-	ldr r5, _0808EED8 @ =0x020106B4
-	movs r4, #4
-_0808EEB2:
-	adds r0, r5, #0
-	bl ClearText
-	adds r5, #8
-	subs r4, #1
-	cmp r4, #0
-	bge _0808EEB2
-	ldr r0, _0808EEDC @ =gBg2Tm + 0x19c
-	movs r1, #0xf
-	movs r2, #0xa
-	movs r3, #0
-	bl TmFillRect_thm
-	movs r0, #4
-	bl EnableBgSync
-	pop {r4, r5}
-	pop {r0}
-	bx r0
-	.align 2, 0
-_0808EED8: .4byte 0x020106B4
-_0808EEDC: .4byte gBg2Tm + 0x19c
-
-	thumb_func_start ParsePrepMenuDescTexts
-ParsePrepMenuDescTexts: @ 0x0808EEE0
-	push {r4, lr}
-	ldr r4, _0808EEFC @ =0x020106B4
-	bl DecodeMsg
-_0808EEE8:
-	adds r1, r0, #0
-_0808EEEA:
-	ldrb r0, [r1]
-	cmp r0, #0
-	beq _0808EF08
-	cmp r0, #1
-	bne _0808EF00
-	adds r4, #8
-	adds r1, #1
-	b _0808EEEA
-	.align 2, 0
-_0808EEFC: .4byte 0x020106B4
-_0808EF00:
-	adds r0, r4, #0
-	bl Text_DrawCharacter
-	b _0808EEE8
-_0808EF08:
-	pop {r4}
-	pop {r0}
-	bx r0
-	.align 2, 0
-
-	thumb_func_start DrawPrepMenuDescTexts
-DrawPrepMenuDescTexts: @ 0x0808EF10
-	push {r4, r5, r6, lr}
-	movs r6, #0
-	movs r5, #0xc0
-	lsls r5, r5, #1
-	ldr r4, _0808EF3C @ =0x020106B4
-_0808EF1A:
-	ldr r1, _0808EF40 @ =gBg2Tm + 0x1c
-	adds r1, r5, r1
-	adds r0, r4, #0
-	bl PutText
-	adds r5, #0x80
-	adds r4, #8
-	adds r6, #1
-	cmp r6, #4
-	ble _0808EF1A
-	movs r0, #4
-	bl EnableBgSync
-	pop {r4, r5, r6}
-	pop {r0}
-	bx r0
-	.align 2, 0
-_0808EF3C: .4byte 0x020106B4
-_0808EF40: .4byte gBg2Tm + 0x1c
-
-	thumb_func_start PrepMenuDescOnInit
-PrepMenuDescOnInit: @ 0x0808EF44
-	push {lr}
-	adds r0, #0x4c
-	movs r1, #0
-	strh r1, [r0]
-	bl ResetPrepMenuDescTexts
-	pop {r0}
-	bx r0
-
-	thumb_func_start PrepMenuDescOnParse
-PrepMenuDescOnParse: @ 0x0808EF54
-	push {lr}
-	ldr r0, [r0, #0x58]
-	bl ParsePrepMenuDescTexts
-	pop {r0}
-	bx r0
-
-	thumb_func_start PrepMenuDescOnDraw
-PrepMenuDescOnDraw: @ 0x0808EF60
-	push {lr}
-	bl DrawPrepMenuDescTexts
-	pop {r0}
-	bx r0
-	.align 2, 0
-
-	thumb_func_start StartPrepMenuDescHandler
-StartPrepMenuDescHandler: @ 0x0808EF6C
-	push {r4, r5, r6, lr}
-	adds r6, r0, #0
-	adds r4, r1, #0
-	ldr r5, _0808EF94 @ =ProcScr_PrepMenuDescHandler
-	adds r0, r5, #0
-	bl Proc_Find
-	cmp r0, #0
-	beq _0808EF82
-	bl Proc_End
-_0808EF82:
-	adds r0, r5, #0
-	adds r1, r4, #0
-	bl Proc_Start
-	str r6, [r0, #0x58]
-	pop {r4, r5, r6}
-	pop {r0}
-	bx r0
-	.align 2, 0
-_0808EF94: .4byte ProcScr_PrepMenuDescHandler
-
-	thumb_func_start StartPrepAtSubMenuUI
-StartPrepAtSubMenuUI: @ 0x0808EF98
-	push {r4, lr}
-	adds r4, r0, #0
-	bl EndSysBlackBoxs
-	bl EndPrepSpecialCharEffect
-	bl EndMuralBackground_
-	bl GetActivePrepMenuItemIndex
-	adds r4, #0x2d
-	strb r0, [r4]
-	bl EndPrepScreenMenu
-	pop {r4}
-	pop {r0}
-	bx r0
-	.align 2, 0
-
-	thumb_func_start DrawAtMenuUpfx
-DrawAtMenuUpfx: @ 0x0808EFBC
-	push {r4, lr}
-	sub sp, #4
-	adds r2, r0, #0
-	adds r4, r1, #0
-	ldr r0, _0808EFFC @ =Img_PrepAtMenuUpfx
-	ldr r1, _0808F000 @ =0x06010000
-	adds r2, r2, r1
-	adds r1, r2, #0
-	bl Decompress
-	ldr r0, _0808F004 @ =Pal_PrepAtMenuUpfx
-	adds r1, r4, #0
-	adds r1, #0x10
-	lsls r1, r1, #5
-	movs r2, #0x20
-	bl ApplyPaletteExt
-	movs r0, #0
-	str r0, [sp]
-	adds r4, #1
-	lsls r4, r4, #5
-	ldr r0, _0808F008 @ =gPal + 0x200
-	adds r4, r4, r0
-	ldr r2, _0808F00C @ =0x01000008
-	mov r0, sp
-	adds r1, r4, #0
-	bl CpuFastSet
-	add sp, #4
-	pop {r4}
-	pop {r0}
-	bx r0
-	.align 2, 0
-_0808EFFC: .4byte Img_PrepAtMenuUpfx
-_0808F000: .4byte 0x06010000
-_0808F004: .4byte Pal_PrepAtMenuUpfx
-_0808F008: .4byte gPal + 0x200
-_0808F00C: .4byte 0x01000008
-
-	thumb_func_start AtMenu_Reinitialize
-AtMenu_Reinitialize: @ 0x0808F010
-	push {r4, r5, r6, r7, lr}
-	sub sp, #8
-	adds r6, r0, #0
-	ldr r0, _0808F1F8 @ =gUnk_08D8C0A0
-	bl InitBgs
-	bl ResetText
-	bl UnpackUiWindowFrameGraphics
-	movs r0, #0
-	movs r1, #0xe
-	bl LoadHelpBoxGfx
-	ldr r2, _0808F1FC @ =gDispIo
-	movs r0, #2
-	rsbs r0, r0, #0
-	ldrb r1, [r2, #1]
-	ands r0, r1
-	movs r1, #3
-	rsbs r1, r1, #0
-	ands r0, r1
-	subs r1, #2
-	ands r0, r1
-	subs r1, #4
-	ands r0, r1
-	subs r1, #8
-	ands r0, r1
-	strb r0, [r2, #1]
-	bl ApplySystemObjectsGraphics
-	bl ResetUnitSprites
-	bl MakePrepUnitList
-	adds r0, r6, #0
-	bl sub_808ED24
-	bl ReorderPlayerUnitsBasedOnDeployment
-	ldr r0, _0808F200 @ =gBg0Tm
-	movs r1, #0
-	bl TmFill
-	ldr r0, _0808F204 @ =gBg1Tm
-	movs r1, #0
-	bl TmFill
-	ldr r0, _0808F208 @ =gBg2Tm
-	movs r1, #0
-	bl TmFill
-	ldr r5, _0808F20C @ =0x020106B4
-	movs r4, #4
-_0808F07C:
-	adds r0, r5, #0
-	movs r1, #0xe
-	bl InitText
-	adds r5, #8
-	subs r4, #1
-	cmp r4, #0
-	bge _0808F07C
-	adds r7, r6, #0
-	adds r7, #0x35
-	ldr r5, _0808F210 @ =0x02010694
-	movs r4, #3
-_0808F094:
-	adds r0, r5, #0
-	movs r1, #8
-	bl InitText
-	adds r5, #8
-	subs r4, #1
-	cmp r4, #0
-	bge _0808F094
-	ldr r0, _0808F214 @ =0x0201068C
-	movs r1, #0xa
-	bl InitText
-	ldr r0, _0808F218 @ =gUnk_0841E814
-	ldr r1, _0808F21C @ =0x06014800
-	bl Decompress
-	ldr r0, _0808F220 @ =Pal_SysBrownBox
-	movs r1, #0x90
-	lsls r1, r1, #2
-	movs r2, #0x40
-	bl ApplyPaletteExt
-	movs r0, #0xe0
-	lsls r0, r0, #7
-	movs r1, #6
-	bl DrawAtMenuUpfx
-	ldr r0, _0808F224 @ =gUnk_084292A0
-	ldr r1, _0808F228 @ =0x06016000
-	bl Decompress
-	ldr r0, _0808F22C @ =gUnk_084291AC
-	movs r1, #0xa0
-	lsls r1, r1, #2
-	movs r2, #0x20
-	bl ApplyPaletteExt
-	bl EnablePalSync
-	ldr r4, _0808F1FC @ =gDispIo
-	movs r1, #4
-	rsbs r1, r1, #0
-	adds r0, r1, #0
-	ldrb r2, [r4, #0xc]
-	ands r0, r2
-	strb r0, [r4, #0xc]
-	adds r0, r1, #0
-	ldrb r2, [r4, #0x10]
-	ands r0, r2
-	movs r2, #2
-	orrs r0, r2
-	strb r0, [r4, #0x10]
-	ldrb r0, [r4, #0x14]
-	ands r1, r0
-	movs r0, #1
-	orrs r1, r0
-	strb r1, [r4, #0x14]
-	movs r0, #3
-	ldrb r1, [r4, #0x18]
-	orrs r0, r1
-	strb r0, [r4, #0x18]
-	movs r0, #0x21
-	rsbs r0, r0, #0
-	ldrb r2, [r4, #1]
-	ands r0, r2
-	movs r1, #0x41
-	rsbs r1, r1, #0
-	ands r0, r1
-	movs r1, #0x7f
-	ands r0, r1
-	strb r0, [r4, #1]
-	movs r0, #0
-	movs r1, #0
-	movs r2, #0
-	bl SetBgOffset
-	movs r0, #1
-	movs r1, #0
-	movs r2, #0
-	bl SetBgOffset
-	movs r0, #2
-	movs r1, #0
-	movs r2, #0
-	bl SetBgOffset
-	adds r0, r6, #0
-	bl InitPrepScreenMainMenu
-	movs r0, #0xf
-	bl EnableBgSync
-	adds r2, r4, #0
-	adds r2, #0x3c
-	movs r0, #0x3f
-	ldrb r1, [r2]
-	ands r0, r1
-	movs r1, #0x40
-	orrs r0, r1
-	strb r0, [r2]
-	adds r1, r4, #0
-	adds r1, #0x44
-	movs r2, #0
-	movs r0, #0xe
-	strb r0, [r1]
-	adds r1, #1
-	movs r0, #8
-	strb r0, [r1]
-	adds r0, r4, #0
-	adds r0, #0x46
-	strb r2, [r0]
-	ldr r0, _0808F230 @ =0x0000FFE0
-	ldrh r2, [r4, #0x3c]
-	ands r0, r2
-	ldr r1, _0808F234 @ =0x0000E0FF
-	ands r0, r1
-	movs r2, #0x80
-	lsls r2, r2, #4
-	adds r1, r2, #0
-	orrs r0, r1
-	strh r0, [r4, #0x3c]
-	adds r0, r6, #0
-	bl sub_80903C4
-	bl PrepRestartMuralBackground
-	ldr r0, _0808F238 @ =gUnk_0841D100
-	movs r1, #0x60
-	movs r2, #0x20
-	bl ApplyPaletteExt
-	ldr r0, _0808F23C @ =gUnk_0841D120
-	ldr r1, _0808F240 @ =0x06007800
-	bl Decompress
-	ldr r0, _0808F244 @ =gBg1Tm + 0x118
-	ldr r1, _0808F248 @ =gUnk_0841D614
-	movs r2, #0xcf
-	lsls r2, r2, #6
-	bl TmApplyTsa_thm
-	movs r0, #0xa0
-	lsls r0, r0, #7
-	movs r1, #0xb
-	bl Prep_DrawChapterGoal
-	adds r0, r6, #0
-	bl NewSysBlackBoxHandler
-	movs r0, #0xd0
-	lsls r0, r0, #7
-	bl SysBlackBoxSetGfx
-	movs r2, #0x90
-	lsls r2, r2, #3
-	movs r0, #3
-	str r0, [sp]
-	movs r0, #0xc0
-	lsls r0, r0, #4
-	str r0, [sp, #4]
-	movs r0, #0
-	movs r1, #4
-	movs r3, #0xb
-	bl EnableSysBlackBox
-	bl GetActivePrepMenuItemIndex
-	strb r0, [r7]
-	bl GetPrepMainMenuInfoxMsg
-	bl ParsePrepMenuDescTexts
-	bl DrawPrepMenuDescTexts
-	add sp, #8
-	pop {r4, r5, r6, r7}
-	pop {r0}
-	bx r0
-	.align 2, 0
-_0808F1F8: .4byte gUnk_08D8C0A0
-_0808F1FC: .4byte gDispIo
-_0808F200: .4byte gBg0Tm
-_0808F204: .4byte gBg1Tm
-_0808F208: .4byte gBg2Tm
-_0808F20C: .4byte 0x020106B4
-_0808F210: .4byte 0x02010694
-_0808F214: .4byte 0x0201068C
-_0808F218: .4byte gUnk_0841E814
-_0808F21C: .4byte 0x06014800
-_0808F220: .4byte Pal_SysBrownBox
-_0808F224: .4byte gUnk_084292A0
-_0808F228: .4byte 0x06016000
-_0808F22C: .4byte gUnk_084291AC
-_0808F230: .4byte 0x0000FFE0
-_0808F234: .4byte 0x0000E0FF
-_0808F238: .4byte gUnk_0841D100
-_0808F23C: .4byte gUnk_0841D120
-_0808F240: .4byte 0x06007800
-_0808F244: .4byte gBg1Tm + 0x118
-_0808F248: .4byte gUnk_0841D614
-
-	thumb_func_start EndPrepAtMenuIfNoUnitAvailable
-EndPrepAtMenuIfNoUnitAvailable: @ 0x0808F24C
-	push {r4, r5, r6, lr}
-	adds r6, r0, #0
-	movs r5, #0
-	ldr r2, _0808F2B8 @ =gDispIo
-	movs r0, #2
-	rsbs r0, r0, #0
-	ldrb r1, [r2, #1]
-	ands r0, r1
-	movs r1, #3
-	rsbs r1, r1, #0
-	ands r0, r1
-	subs r1, #2
-	ands r0, r1
-	subs r1, #4
-	ands r0, r1
-	subs r1, #8
-	ands r0, r1
-	strb r0, [r2, #1]
-	movs r4, #1
-_0808F272:
-	adds r0, r4, #0
-	bl GetUnit
-	adds r1, r0, #0
-	cmp r1, #0
-	beq _0808F296
-	ldr r0, [r1]
-	cmp r0, #0
-	beq _0808F296
-	adds r0, r1, #0
-	bl IsUnitInCurrentRoster
-	lsls r0, r0, #0x18
-	cmp r0, #0
-	beq _0808F296
-	adds r0, r5, #1
-	lsls r0, r0, #0x18
-	lsrs r5, r0, #0x18
-_0808F296:
-	adds r4, #1
-	cmp r4, #0x3f
-	ble _0808F272
-	cmp r5, #0
-	bne _0808F2B0
-	adds r1, r6, #0
-	adds r1, #0x36
-	movs r0, #1
-	strb r0, [r1]
-	adds r0, r6, #0
-	movs r1, #6
-	bl Proc_Goto
-_0808F2B0:
-	pop {r4, r5, r6}
-	pop {r0}
-	bx r0
-	.align 2, 0
-_0808F2B8: .4byte gDispIo
 
 	thumb_func_start sub_808F2BC
 sub_808F2BC: @ 0x0808F2BC
@@ -642,7 +28,7 @@ sub_808F2E4: @ 0x0808F2E4
 	push {r4, r5, r6, r7, lr}
 	sub sp, #8
 	adds r7, r0, #0
-	ldr r5, _0808F35C @ =0x02010694
+	ldr r5, _0808F35C @ =gPrepMainMenuTexts + 8
 	adds r0, #0x2f
 	ldrb r0, [r0]
 	bl GetPrepOptionCount
@@ -695,7 +81,7 @@ _0808F346:
 	pop {r0}
 	bx r0
 	.align 2, 0
-_0808F35C: .4byte 0x02010694
+_0808F35C: .4byte gPrepMainMenuTexts + 8
 _0808F360: .4byte gUnk_08D8D5F8
 _0808F364: .4byte gBg0Tm + 0xc
 
@@ -859,7 +245,7 @@ _0808F4A4:
 	adds r0, r6, #0
 	bl sub_808F368
 	ldr r0, _0808F4E0 @ =gBg1Tm + 0x118
-	ldr r1, _0808F4E4 @ =gUnk_0841D614
+	ldr r1, _0808F4E4 @ =Tsa_0841D614
 	movs r2, #0xcf
 	lsls r2, r2, #6
 	bl TmApplyTsa_thm
@@ -880,7 +266,7 @@ _0808F4D8:
 	b _0808F5B2
 	.align 2, 0
 _0808F4E0: .4byte gBg1Tm + 0x118
-_0808F4E4: .4byte gUnk_0841D614
+_0808F4E4: .4byte Tsa_0841D614
 _0808F4E8: .4byte gPlaySt
 _0808F4EC: .4byte 0x0000038B
 _0808F4F0:
@@ -1275,18 +661,18 @@ _0808F800:
 	thumb_func_start sub_808F804
 sub_808F804: @ 0x0808F804
 	push {lr}
-	ldr r0, _0808F814 @ =gUnk_08D8C154
+	ldr r0, _0808F814 @ =ProcScr_AtMenu
 	movs r1, #3
 	bl Proc_Start
 	pop {r0}
 	bx r0
 	.align 2, 0
-_0808F814: .4byte gUnk_08D8C154
+_0808F814: .4byte ProcScr_AtMenu
 
 	thumb_func_start sub_808F818
 sub_808F818: @ 0x0808F818
 	push {lr}
-	ldr r0, _0808F830 @ =gUnk_08D8C154
+	ldr r0, _0808F830 @ =ProcScr_AtMenu
 	movs r1, #3
 	bl Proc_Start
 	bl RemoveSomeUnitItems
@@ -1294,7 +680,7 @@ sub_808F818: @ 0x0808F818
 	pop {r0}
 	bx r0
 	.align 2, 0
-_0808F830: .4byte gUnk_08D8C154
+_0808F830: .4byte ProcScr_AtMenu
 
 	thumb_func_start sub_808F834
 sub_808F834: @ 0x0808F834
@@ -1718,16 +1104,16 @@ _0808FADC:
 	movs r2, #0
 	movs r3, #0
 	bl PutDrawText
-	ldr r0, _0808FC50 @ =gUnk_0841D100
+	ldr r0, _0808FC50 @ =Pal_0841D100
 	movs r1, #0xf0
 	lsls r1, r1, #1
 	movs r2, #0x20
 	bl ApplyPaletteExt
-	ldr r0, _0808FC54 @ =gUnk_0841D120
+	ldr r0, _0808FC54 @ =Img_0841D120
 	ldr r1, _0808FC58 @ =0x06005800
 	bl Decompress
 	ldr r0, _0808FC5C @ =gBg1Tm + 0x118
-	ldr r1, _0808FC60 @ =gUnk_0841D614
+	ldr r1, _0808FC60 @ =Tsa_0841D614
 	ldr r2, _0808FC64 @ =0x0000F2C0
 	bl TmApplyTsa_thm
 	adds r7, r6, #0
@@ -1735,7 +1121,7 @@ _0808FADC:
 	movs r0, #0x64
 	adds r0, r0, r6
 	mov r8, r0
-	ldr r5, _0808FC68 @ =0x020106B4
+	ldr r5, _0808FC68 @ =gPrepMainMenuTexts + 0x28
 	movs r4, #4
 _0808FBA0:
 	adds r0, r5, #0
@@ -1745,7 +1131,7 @@ _0808FBA0:
 	subs r4, #1
 	cmp r4, #0
 	bge _0808FBA0
-	ldr r0, _0808FC6C @ =gUnk_0841E814
+	ldr r0, _0808FC6C @ =Img_PrepScreenTitle
 	ldr r1, _0808FC70 @ =0x06011000
 	bl Decompress
 	ldr r0, _0808FC74 @ =Pal_SysBrownBox
@@ -1806,14 +1192,14 @@ _0808FC40: .4byte 0x00001132
 _0808FC44: .4byte 0x0000113A
 _0808FC48: .4byte 0x00001135
 _0808FC4C: .4byte 0x00001134
-_0808FC50: .4byte gUnk_0841D100
-_0808FC54: .4byte gUnk_0841D120
+_0808FC50: .4byte Pal_0841D100
+_0808FC54: .4byte Img_0841D120
 _0808FC58: .4byte 0x06005800
 _0808FC5C: .4byte gBg1Tm + 0x118
-_0808FC60: .4byte gUnk_0841D614
+_0808FC60: .4byte Tsa_0841D614
 _0808FC64: .4byte 0x0000F2C0
-_0808FC68: .4byte 0x020106B4
-_0808FC6C: .4byte gUnk_0841E814
+_0808FC68: .4byte gPrepMainMenuTexts + 0x28
+_0808FC6C: .4byte Img_PrepScreenTitle
 _0808FC70: .4byte 0x06011000
 _0808FC74: .4byte Pal_SysBrownBox
 _0808FC78: .4byte gUnk_0841ECD0
@@ -2128,7 +1514,7 @@ sub_808FEE0: @ 0x0808FEE0
 	bl EndCgText
 	bl ClearTalk
 	bl EndEachSpriteAnimProc
-	bl sub_8091104
+	bl EndPrepMuralBackground
 	ldr r3, _0808FF50 @ =gDispIo
 	movs r1, #4
 	rsbs r1, r1, #0
@@ -2316,7 +1702,7 @@ PrepPromoteDebugMaybe: @ 0x0809005C
 	bl EndCgText
 	bl ClearTalk
 	bl EndEachSpriteAnimProc
-	bl sub_8091104
+	bl EndPrepMuralBackground
 	ldr r3, _080900DC @ =gDispIo
 	movs r1, #4
 	rsbs r1, r1, #0
@@ -2418,7 +1804,7 @@ _0809012C: .4byte gUnk_08D8C3A4
 	thumb_func_start sub_8090130
 sub_8090130: @ 0x08090130
 	push {lr}
-	ldr r0, _08090144 @ =gUnk_08D8C154
+	ldr r0, _08090144 @ =ProcScr_AtMenu
 	bl Proc_Find
 	cmp r0, #0
 	beq _0809013E
@@ -2427,7 +1813,7 @@ _0809013E:
 	pop {r1}
 	bx r1
 	.align 2, 0
-_08090144: .4byte gUnk_08D8C154
+_08090144: .4byte ProcScr_AtMenu
 
 	thumb_func_start sub_8090148
 sub_8090148: @ 0x08090148
@@ -2634,8 +2020,8 @@ nullsub_77: @ 0x080902EC
 	bx lr
 	.align 2, 0
 
-	thumb_func_start sub_80902F0
-sub_80902F0: @ 0x080902F0
+	thumb_func_start ProcPrepSpChar_OnInit
+ProcPrepSpChar_OnInit: @ 0x080902F0
 	push {r4, r5, lr}
 	sub sp, #8
 	adds r5, r0, #0
@@ -2709,8 +2095,8 @@ _08090368:
 _08090380: .4byte gUnk_0841ECD0
 _08090384: .4byte gPlaySt
 
-	thumb_func_start sub_8090388
-sub_8090388: @ 0x08090388
+	thumb_func_start ProcPrepSpChar_Idle
+ProcPrepSpChar_Idle: @ 0x08090388
 	push {r4, lr}
 	adds r4, r0, #0
 	bl sub_8090244
@@ -2721,8 +2107,8 @@ sub_8090388: @ 0x08090388
 	pop {r0}
 	bx r0
 
-	thumb_func_start sub_809039C
-sub_809039C: @ 0x0809039C
+	thumb_func_start ProcPrepSpChar_OnEnd
+ProcPrepSpChar_OnEnd: @ 0x0809039C
 	push {lr}
 	ldr r0, [r0, #0x38]
 	bl EndSpriteAnimProc
@@ -2732,7 +2118,7 @@ sub_809039C: @ 0x0809039C
 	thumb_func_start PrepSpecialChar_BlinkButtonStart
 PrepSpecialChar_BlinkButtonStart: @ 0x080903A8
 	push {lr}
-	ldr r0, _080903C0 @ =gUnk_08D8C6AC
+	ldr r0, _080903C0 @ =ProcScr_PrepSpecialCharEff
 	bl Proc_Find
 	cmp r0, #0
 	beq _080903BC
@@ -2744,13 +2130,13 @@ _080903BC:
 	pop {r0}
 	bx r0
 	.align 2, 0
-_080903C0: .4byte gUnk_08D8C6AC
+_080903C0: .4byte ProcScr_PrepSpecialCharEff
 
-	thumb_func_start sub_80903C4
-sub_80903C4: @ 0x080903C4
+	thumb_func_start PrepSpecialChar_BlinkButtonB
+PrepSpecialChar_BlinkButtonB: @ 0x080903C4
 	push {r4, r5, lr}
 	adds r5, r0, #0
-	ldr r4, _080903E4 @ =gUnk_08D8C6AC
+	ldr r4, _080903E4 @ =ProcScr_PrepSpecialCharEff
 	adds r0, r4, #0
 	bl Proc_Find
 	bl Proc_End
@@ -2761,18 +2147,18 @@ sub_80903C4: @ 0x080903C4
 	pop {r1}
 	bx r1
 	.align 2, 0
-_080903E4: .4byte gUnk_08D8C6AC
+_080903E4: .4byte ProcScr_PrepSpecialCharEff
 
 	thumb_func_start EndPrepSpecialCharEffect
 EndPrepSpecialCharEffect: @ 0x080903E8
 	push {lr}
-	ldr r0, _080903F8 @ =gUnk_08D8C6AC
+	ldr r0, _080903F8 @ =ProcScr_PrepSpecialCharEff
 	bl Proc_Find
 	bl Proc_End
 	pop {r0}
 	bx r0
 	.align 2, 0
-_080903F8: .4byte gUnk_08D8C6AC
+_080903F8: .4byte ProcScr_PrepSpecialCharEff
 
 	thumb_func_start sub_80903FC
 sub_80903FC: @ 0x080903FC
@@ -4493,8 +3879,8 @@ _080910F8: .4byte gUnk_08421C64
 _080910FC: .4byte gUnk_08427954
 _08091100: .4byte gUnk_08D8C8E4
 
-	thumb_func_start sub_8091104
-sub_8091104: @ 0x08091104
+	thumb_func_start EndPrepMuralBackground
+EndPrepMuralBackground: @ 0x08091104
 	push {lr}
 	ldr r0, _08091114 @ =gUnk_08D8C8E4
 	bl Proc_Find
@@ -6166,7 +5552,7 @@ sub_8091D38: @ 0x08091D38
 	stm r1!, {r2, r3, r4}
 	ldm r0!, {r2, r3}
 	stm r1!, {r2, r3}
-	ldr r0, _080920F0 @ =gUnk_08D8C0A0
+	ldr r0, _080920F0 @ =gBgConfig_PrepScreen
 	bl InitBgs
 	ldr r4, _080920F4 @ =gDispIo
 	movs r0, #8
@@ -6565,7 +5951,7 @@ _080920B4:
 	bx r0
 	.align 2, 0
 _080920EC: .4byte gUnk_0842CF3C
-_080920F0: .4byte gUnk_08D8C0A0
+_080920F0: .4byte gBgConfig_PrepScreen
 _080920F4: .4byte gDispIo
 _080920F8: .4byte 0x06017800
 _080920FC: .4byte sub_8093550
@@ -9733,7 +9119,7 @@ sub_8093B14: @ 0x08093B14
 	movs r2, #0xf3
 	lsls r2, r2, #8
 	bl TmApplyTsa_thm
-	ldr r0, _08093B54 @ =gUnk_084292A0
+	ldr r0, _08093B54 @ =Img_PrepScreenTitleSprites
 	ldr r1, _08093B58 @ =0x06010800
 	bl Decompress
 	bl EnablePalSync
@@ -9742,7 +9128,7 @@ sub_8093B14: @ 0x08093B14
 	.align 2, 0
 _08093B4C: .4byte gBg1Tm
 _08093B50: .4byte gUnk_0841F9F4
-_08093B54: .4byte gUnk_084292A0
+_08093B54: .4byte Img_PrepScreenTitleSprites
 _08093B58: .4byte 0x06010800
 
 	thumb_func_start sub_8093B5C
@@ -9812,7 +9198,7 @@ sub_8093BC8: @ 0x08093BC8
 	bl CpuFastSet
 	bl MakePrepUnitList
 	ldr r0, [r4, #0x14]
-	bl sub_808ED24
+	bl PrepAutoCapDeployUnits
 	bl PrepUpdateSMS
 	add sp, #4
 	pop {r4}
@@ -10512,7 +9898,7 @@ sub_8094138: @ 0x08094138
 sub_8094178: @ 0x08094178
 	push {r4, r5, lr}
 	adds r5, r0, #0
-	ldr r0, _08094350 @ =gUnk_08D8C0A0
+	ldr r0, _08094350 @ =gBgConfig_PrepScreen
 	bl InitBgs
 	ldr r4, _08094354 @ =gDispIo
 	movs r0, #2
@@ -10713,7 +10099,7 @@ _0809431C:
 	pop {r0}
 	bx r0
 	.align 2, 0
-_08094350: .4byte gUnk_08D8C0A0
+_08094350: .4byte gBgConfig_PrepScreen
 _08094354: .4byte gDispIo
 _08094358: .4byte gBg0Tm
 _0809435C: .4byte gBg1Tm
@@ -11849,7 +11235,7 @@ sub_8094BE0: @ 0x08094BE0
 	stm r1!, {r2, r3, r4}
 	ldm r0!, {r2, r3}
 	stm r1!, {r2, r3}
-	ldr r0, _08094CDC @ =gUnk_08D8C0A0
+	ldr r0, _08094CDC @ =gBgConfig_PrepScreen
 	ldrh r0, [r0]
 	bl InitBgs
 	add r0, sp, #8
@@ -11942,7 +11328,7 @@ _08094CA6:
 	b _08094D06
 	.align 2, 0
 _08094CD8: .4byte gUnk_0842CFDC
-_08094CDC: .4byte gUnk_08D8C0A0
+_08094CDC: .4byte gBgConfig_PrepScreen
 _08094CE0: .4byte gDispIo
 _08094CE4: .4byte 0x06014000
 _08094CE8: .4byte 0x02012A20
@@ -13337,7 +12723,7 @@ sub_8095830: @ 0x08095830
 	ldrb r5, [r4]
 	ands r0, r5
 	strb r0, [r4]
-	ldr r0, _08095B34 @ =gUnk_08D8C0A0
+	ldr r0, _08095B34 @ =gBgConfig_PrepScreen
 	bl InitBgs
 	add r0, sp, #8
 	bl SetFaceConfig
@@ -13651,7 +13037,7 @@ _08095920:
 	.align 2, 0
 _08095B2C: .4byte gUnk_0842D044
 _08095B30: .4byte gDispIo
-_08095B34: .4byte gUnk_08D8C0A0
+_08095B34: .4byte gBgConfig_PrepScreen
 _08095B38: .4byte 0x06014000
 _08095B3C: .4byte 0x02012A20
 _08095B40: .4byte 0x020129A8
@@ -15072,7 +14458,7 @@ _0809672C:
 	ldrb r0, [r0]
 	cmp r0, #0
 	bne _0809674C
-	ldr r0, _08096748 @ =gUnk_08D8C154
+	ldr r0, _08096748 @ =ProcScr_AtMenu
 	bl Proc_Find
 	adds r0, #0x32
 	ldrb r0, [r0]
@@ -15080,7 +14466,7 @@ _0809672C:
 	adds r1, #0x35
 	b _08096752
 	.align 2, 0
-_08096748: .4byte gUnk_08D8C154
+_08096748: .4byte ProcScr_AtMenu
 _0809674C:
 	adds r1, r4, #0
 	adds r1, #0x35
@@ -17570,7 +16956,7 @@ sub_8097BBC: @ 0x08097BBC
 	ldrb r0, [r0]
 	cmp r0, #0
 	bne _08097BD8
-	ldr r0, _08097BF0 @ =gUnk_08D8C154
+	ldr r0, _08097BF0 @ =ProcScr_AtMenu
 	bl Proc_Find
 	adds r1, r4, #0
 	adds r1, #0x35
@@ -17587,7 +16973,7 @@ _08097BD8:
 	pop {r0}
 	bx r0
 	.align 2, 0
-_08097BF0: .4byte gUnk_08D8C154
+_08097BF0: .4byte ProcScr_AtMenu
 
 	thumb_func_start sub_8097BF4
 sub_8097BF4: @ 0x08097BF4
@@ -17678,7 +17064,7 @@ _08097C90: .4byte gUnk_08D8D1F0
 sub_8097C94: @ 0x08097C94
 	push {r4, lr}
 	adds r4, r0, #0
-	ldr r0, _08097CD8 @ =gUnk_08D8C154
+	ldr r0, _08097CD8 @ =ProcScr_AtMenu
 	bl Proc_Find
 	movs r2, #0
 	movs r1, #0
@@ -17710,7 +17096,7 @@ _08097CC4:
 	pop {r0}
 	bx r0
 	.align 2, 0
-_08097CD8: .4byte gUnk_08D8C154
+_08097CD8: .4byte ProcScr_AtMenu
 
 	thumb_func_start sub_8097CDC
 sub_8097CDC: @ 0x08097CDC
@@ -18276,7 +17662,7 @@ _080981DC: .4byte gBg0Tm
 sub_80981E0: @ 0x080981E0
 	push {r4, lr}
 	adds r4, r0, #0
-	ldr r0, _0809820C @ =gUnk_08D8C154
+	ldr r0, _0809820C @ =ProcScr_AtMenu
 	bl Proc_Find
 	adds r1, r4, #0
 	adds r1, #0x33
@@ -18292,7 +17678,7 @@ sub_80981E0: @ 0x080981E0
 	pop {r0}
 	bx r0
 	.align 2, 0
-_0809820C: .4byte gUnk_08D8C154
+_0809820C: .4byte ProcScr_AtMenu
 
 	thumb_func_start sub_8098210
 sub_8098210: @ 0x08098210

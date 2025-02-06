@@ -834,8 +834,8 @@ _0808ED12:
 	pop {r0}
 	bx r0
 
-	thumb_func_start sub_808ED24
-sub_808ED24: @ 0x0808ED24
+	thumb_func_start PrepAutoCapDeployUnits
+PrepAutoCapDeployUnits: @ 0x0808ED24
 	push {r4, r5, r6, r7, lr}
 	adds r4, r0, #0
 	adds r1, r4, #0

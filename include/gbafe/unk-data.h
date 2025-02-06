@@ -1550,9 +1550,9 @@ extern u8 Img_SysBlackBox[];
 // ??? gUnk_0841D0EC
 // ??? gUnk_0841D0F4
 // ??? gUnk_0841D0FC
-// ??? gUnk_0841D100
-// ??? gUnk_0841D120
-// ??? gUnk_0841D614
+extern u16 Pal_0841D100[];
+extern u8  Img_0841D120[];
+extern u8  Tsa_0841D614[];
 // ??? gUnk_0841D838
 // ??? gUnk_0841DBCC
 // ??? gUnk_0841DE88
@@ -1563,7 +1563,7 @@ extern u8 Img_SysBlackBox[];
 // ??? gUnk_0841E49C
 // ??? gUnk_0841E634
 // ??? gUnk_0841E7F4
-// ??? gUnk_0841E814
+extern u8  Img_PrepScreenTitle[];
 extern u16 Pal_SysBrownBox[];
 // ??? gUnk_0841ECB0
 // ??? gUnk_0841ECD0
@@ -1589,11 +1589,11 @@ extern u8 TSA_08421684[];
 // ??? gUnk_08428114
 // ??? gUnk_08428A40
 extern u16 Pal_08428A80[];
-// ??? Img_PrepAtMenuUpfx
-// ??? Pal_PrepAtMenuUpfx
-// ??? gUnk_084291AC
+extern u8  Img_PrepAtMenuUpfx[];
+extern u16 Pal_PrepAtMenuUpfx[];
+extern u16 Pal_PrepScreenTitleSprites[];
 extern u8 Img_PrepTextShadow[];
-// ??? gUnk_084292A0
+extern u8 Img_PrepScreenTitleSprites[];
 // ??? gUnk_084295B4
 // ??? gUnk_08429638
 // ??? gUnk_08429658
@@ -2138,7 +2138,6 @@ extern struct ProcCmd ProcScr_BmMain_08C05F30[];
 // ??? gUnk_08D8BA20
 // ??? gUnk_08D8BAD8
 // ??? gUnk_08D8BB00
-// ??? gUnk_08D8C0A0
 
 /* prepscreen.h */
 /* savemenu.h */

@@ -362,6 +362,6 @@ gUnk_08D8BAD8:	@ 0x08D8BAD8
 gUnk_08D8BB00:	@ 0x08D8BB00
 	.incbin "FireEmblem7J.base.gba", 0xD8BB00, 0xD8C0A0 - 0xD8BB00
 
-	.global gUnk_08D8C0A0
-gUnk_08D8C0A0:	@ 0x08D8C0A0
+	.global gBgConfig_PrepScreen
+gBgConfig_PrepScreen:	@ 0x08D8C0A0
 	.incbin "FireEmblem7J.base.gba", 0xD8C0A0, 0xD8C0B8 - 0xD8C0A0

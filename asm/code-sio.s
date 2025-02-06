@@ -11090,7 +11090,7 @@ _08041DF8: .4byte 0x0203D908
 sub_8041DFC: @ 0x08041DFC
 	push {r4, lr}
 	adds r4, r0, #0
-	ldr r0, _08041E18 @ =gUnk_08D8C154
+	ldr r0, _08041E18 @ =ProcScr_AtMenu
 	bl Proc_Find
 	cmp r0, #0
 	bne _08041E10
@@ -11101,7 +11101,7 @@ _08041E10:
 	pop {r0}
 	bx r0
 	.align 2, 0
-_08041E18: .4byte gUnk_08D8C154
+_08041E18: .4byte ProcScr_AtMenu
 
 	thumb_func_start sub_8041E1C
 sub_8041E1C: @ 0x08041E1C
