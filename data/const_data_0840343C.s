@@ -44,8 +44,8 @@ Pal_StatScreenFaceDefault:	@ 0x0840364C
 Pal_StatScreenFaceGeneric:	@ 0x0840366C
 	.incbin "FireEmblem7J.base.gba", 0x40366C, 0x40368C - 0x40366C
 
-	.global Tsa_StatScreen_0840368C
-Tsa_StatScreen_0840368C:	@ 0x0840368C
+	.global Img_StatScreen_0840368C
+Img_StatScreen_0840368C:	@ 0x0840368C
 	.incbin "FireEmblem7J.base.gba", 0x40368C, 0x403730 - 0x40368C
 
 	.global Img_StatScreen_08403730

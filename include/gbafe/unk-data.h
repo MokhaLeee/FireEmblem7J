@@ -1379,7 +1379,7 @@ extern const u8 Tsa_Statscreen_Pag1_08403560[];
 extern const u8 Tsa_StatScreen_084035D0[];
 extern const u16 Pal_StatScreenFaceDefault[];
 extern const u16 Pal_StatScreenFaceGeneric[];
-extern const u8 Tsa_StatScreen_0840368C[];
+extern const u8 Img_StatScreen_0840368C[];
 extern const u8 Img_StatScreen_08403730[];
 extern const u16 Pal_StatScreen_084038AC[];
 extern const u8 Tsa_Statscreen_Pag1_084038CC[];
