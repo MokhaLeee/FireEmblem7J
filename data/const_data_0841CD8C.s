@@ -198,16 +198,16 @@ TSA_08421684:	@ 0x08421684
 gUnk_08421C24:	@ 0x08421C24
 	.incbin "FireEmblem7J.base.gba", 0x421C24, 0x421C64 - 0x421C24
 
-	.global gUnk_08421C64
-gUnk_08421C64:	@ 0x08421C64
+	.global Img_PrepMuralBackground
+Img_PrepMuralBackground:	@ 0x08421C64
 	.incbin "FireEmblem7J.base.gba", 0x421C64, 0x426FF2 - 0x421C64
 
 	.global gUnk_08426FF2
 gUnk_08426FF2:	@ 0x08426FF2
 	.incbin "FireEmblem7J.base.gba", 0x426FF2, 0x427954 - 0x426FF2
 
-	.global gUnk_08427954
-gUnk_08427954:	@ 0x08427954
+	.global Pal_PrepMuralBackground
+Pal_PrepMuralBackground:	@ 0x08427954
 	.incbin "FireEmblem7J.base.gba", 0x427954, 0x427974 - 0x427954
 
 	.global gUnk_08427974

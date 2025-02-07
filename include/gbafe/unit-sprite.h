@@ -8,7 +8,7 @@ void ApplyUnitSpritePalettes(void);
 void ResetUnitSprites(void);
 void ResetUnitSpritesB(void);
 int UseUnitSprite(u32 id);
-// ??? StartUiSMS
+int StartUiSMS(int smsId, int frameId);
 // ??? sub_8025344
 // ??? ApplyUnitSpriteImage16x16
 // ??? ApplyUnitSpriteImage16x32

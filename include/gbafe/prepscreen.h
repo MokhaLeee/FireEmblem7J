@@ -93,7 +93,7 @@ int PrepGetLatestCharId();
 void PrepSetLatestCharId(int val);
 // IsCharacterForceDeployed
 // CalcForceDeployedUnitCounts
-// sub_808E7D4
+bool sub_808E7D4(struct Unit *unit);
 bool IsUnitInCurrentRoster(struct Unit *unit);
 // AtMenu_AddPrepScreenSupportMenuItem
 int CanPrepScreenCheckMap(void);
@@ -556,7 +556,7 @@ extern struct ProcCmd ProcScr_PrepPromoteDebug[];
 // ??? gUnk_08D8C794
 // ??? gUnk_08D8C7E8
 // ??? gUnk_08D8C8AC
-// ??? gUnk_08D8C8E4
+// ??? ProcScr_PrepMuralBackground
 // ??? gUnk_08D8C904
 // ??? gUnk_08D8C94C
 // ??? gUnk_08D8C96C

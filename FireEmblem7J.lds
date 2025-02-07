@@ -341,6 +341,9 @@ SECTIONS
 		asm/unitlistscreen.o(.text);
 		src/prepscreen.o(.text);
 		asm/prepscreen.o(.text);
+		asm/preputil_atmenuitem.o(.text);
+		asm/preputil_unitlist.o(.text);
+		src/preputil_unitlist.o(.text);
 		src/prep_atmenu.o(.text);
 		asm/prep_atmenu.o(.text);
 		src/prepscreenfx.o(.text);

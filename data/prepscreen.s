@@ -28,8 +28,8 @@ gUnk_08D8C7E8:	@ 0x08D8C7E8
 gUnk_08D8C8AC:	@ 0x08D8C8AC
 	.incbin "FireEmblem7J.base.gba", 0xD8C8AC, 0xD8C8E4 - 0xD8C8AC
 
-	.global gUnk_08D8C8E4
-gUnk_08D8C8E4:	@ 0x08D8C8E4
+	.global ProcScr_PrepMuralBackground
+ProcScr_PrepMuralBackground:	@ 0x08D8C8E4
 	.incbin "FireEmblem7J.base.gba", 0xD8C8E4, 0xD8C904 - 0xD8C8E4
 
 	.global gUnk_08D8C904

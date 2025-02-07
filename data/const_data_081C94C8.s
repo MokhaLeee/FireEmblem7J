@@ -634,15 +634,43 @@ gUnk_081DB3CE:	@ 0x081DB3CE
 
 	.global gUnk_081DB400
 gUnk_081DB400:	@ 0x081DB400
-	.incbin "FireEmblem7J.base.gba", 0x1DB400, 0x1DB490 - 0x1DB400
+	.incbin "FireEmblem7J.base.gba", 0x1DB400, 0x1DB430 - 0x1DB400
+
+	.global UiWindowFrameTile1
+UiWindowFrameTile1:
+	.incbin "FireEmblem7J.base.gba", 0x1DB430, 0x1DB450 - 0x1DB430
+
+	.global UiWindowFrameTile2
+UiWindowFrameTile2:
+	.incbin "FireEmblem7J.base.gba", 0x1DB450, 0x1DB470 - 0x1DB450
+
+	.global UiWindowFrameTile3
+UiWindowFrameTile3:
+	.incbin "FireEmblem7J.base.gba", 0x1DB470, 0x1DB490 - 0x1DB470
 
 	.global gUnk_081DB490
 gUnk_081DB490:	@ 0x081DB490
-	.incbin "FireEmblem7J.base.gba", 0x1DB490, 0x1DBD64 - 0x1DB490
+	.incbin "FireEmblem7J.base.gba", 0x1DB490, 0x1DB4B8 - 0x1DB490
 
-	.global Pal_StatScreen_081DBD64
-Pal_StatScreen_081DBD64:	@ 0x081DBD64
-	.incbin "FireEmblem7J.base.gba", 0x1DBD64, 0x1DD7F4 - 0x1DBD64
+	.global Img_UiWindowFrame1
+Img_UiWindowFrame1:	@ 0x081DB490
+	.incbin "FireEmblem7J.base.gba", 0x1DB4B8, 0x1DBD64 - 0x1DB4B8
+
+	.global Pal_UiWindowFrame1
+Pal_UiWindowFrame1:	@ 0x081DBD64
+	.incbin "FireEmblem7J.base.gba", 0x1DBD64, 0x1DBDA4 - 0x1DBD64
+
+	.global Img_UiWindowFrame2
+Img_UiWindowFrame2:	@ 0x081DB490
+	.incbin "FireEmblem7J.base.gba", 0x1DBDA4, 0x1DC698 - 0x1DBDA4
+
+	.global Img_UiWindowFrame3
+Img_UiWindowFrame3:	@ 0x081DB490
+	.incbin "FireEmblem7J.base.gba", 0x1DC698, 0x1DCF58 - 0x1DC698
+
+	.global Img_UiWindowFrame4
+Img_UiWindowFrame4:	@ 0x081DB490
+	.incbin "FireEmblem7J.base.gba", 0x1DCF58, 0x1DD7F4 - 0x1DCF58
 
 	.global gUnk_081DD7F4
 gUnk_081DD7F4:	@ 0x081DD7F4

@@ -1689,7 +1689,7 @@ StartPrepMuralBackground: @ 0x080910B0
 	push {r4, r5, r6, lr}
 	adds r6, r0, #0
 	adds r5, r1, #0
-	ldr r4, _080910F8 @ =gUnk_08421C64
+	ldr r4, _080910F8 @ =Img_PrepMuralBackground
 	movs r0, #3
 	bl GetBgChrOffset
 	adds r1, r0, #0
@@ -1698,11 +1698,11 @@ StartPrepMuralBackground: @ 0x080910B0
 	adds r1, r1, r0
 	adds r0, r4, #0
 	bl Decompress
-	ldr r0, _080910FC @ =gUnk_08427954
+	ldr r0, _080910FC @ =Pal_PrepMuralBackground
 	lsls r1, r5, #5
 	movs r2, #0x20
 	bl ApplyPaletteExt
-	ldr r4, _08091100 @ =gUnk_08D8C8E4
+	ldr r4, _08091100 @ =ProcScr_PrepMuralBackground
 	adds r0, r4, #0
 	bl Proc_Find
 	bl Proc_End
@@ -1716,20 +1716,20 @@ StartPrepMuralBackground: @ 0x080910B0
 	pop {r1}
 	bx r1
 	.align 2, 0
-_080910F8: .4byte gUnk_08421C64
-_080910FC: .4byte gUnk_08427954
-_08091100: .4byte gUnk_08D8C8E4
+_080910F8: .4byte Img_PrepMuralBackground
+_080910FC: .4byte Pal_PrepMuralBackground
+_08091100: .4byte ProcScr_PrepMuralBackground
 
 	thumb_func_start EndPrepMuralBackground
 EndPrepMuralBackground: @ 0x08091104
 	push {lr}
-	ldr r0, _08091114 @ =gUnk_08D8C8E4
+	ldr r0, _08091114 @ =ProcScr_PrepMuralBackground
 	bl Proc_Find
 	bl Proc_End
 	pop {r0}
 	bx r0
 	.align 2, 0
-_08091114: .4byte gUnk_08D8C8E4
+_08091114: .4byte ProcScr_PrepMuralBackground
 
 	thumb_func_start sub_8091118
 sub_8091118: @ 0x08091118
@@ -10865,7 +10865,7 @@ _08095920:
 	bl ShowSysHandCursor
 	ldr r0, [r7, #0x2c]
 	bl GetUnitSMSId
-	bl StartUiSMS
+	bl UseUnitSprite
 	bl ForceSyncUnitSpriteSheet
 	add sp, #0x28
 	pop {r3, r4, r5}
@@ -23057,7 +23057,7 @@ _0809BE28:
 	beq _0809BE44
 	adds r0, r1, #0
 	bl GetUnitSMSId
-	bl StartUiSMS
+	bl UseUnitSprite
 _0809BE44:
 	adds r4, #1
 	cmp r4, #0x3f
@@ -23076,7 +23076,7 @@ _0809BE58:
 	adds r0, r5, r0
 	ldrb r0, [r0, #1]
 	bl GetClassSMSId
-	bl StartUiSMS
+	bl UseUnitSprite
 	adds r5, #0x18
 	adds r4, #1
 	ldr r0, _0809BE80 @ =0x02012BF8
@@ -25819,7 +25819,7 @@ _0809D4DC:
 	strb r0, [r1]
 	ldrb r0, [r1]
 	bl GetClassSMSId
-	bl StartUiSMS
+	bl UseUnitSprite
 	adds r4, #1
 _0809D4F8:
 	adds r0, r5, #0

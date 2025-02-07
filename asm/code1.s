@@ -3149,7 +3149,7 @@ sub_802FC20: @ 0x0802FC20
 	strh r0, [r1]
 	ldr r0, [r4, #0x2c]
 	bl GetUnitSMSId
-	bl StartUiSMS
+	bl UseUnitSprite
 	bl ForceSyncUnitSpriteSheet
 	ldr r0, _0802FCD0 @ =gPlaySt
 	adds r0, #0x41

@@ -329,7 +329,7 @@ sub_806C474: @ 0x0806C474
 	adds r1, r2, #0
 	adds r2, #0x3c
 	ldrb r1, [r2]
-	bl UseUnitSprite
+	bl sub_080251EC
 	add sp, #4
 	pop {r7}
 	pop {r0}

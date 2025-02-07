@@ -806,7 +806,7 @@ extern u16 Pal_LinkArenaMuralBackground[];
 // ??? gUnk_081DB3CE
 // ??? gUnk_081DB400
 // ??? gUnk_081DB490
-extern u16 Pal_StatScreen_081DBD64[];
+extern u16 Pal_UiWindowFrame1[];
 // ??? gUnk_081DD7F4
 // ??? gUnk_081DDA48
 extern u8 Img_SysGrayBox[];
@@ -1580,9 +1580,9 @@ extern u8 TSA_0842162C[];
 extern u8 TSA_08421644[];
 extern u8 TSA_08421684[];
 // ??? gUnk_08421C24
-// ??? gUnk_08421C64
+// ??? Img_PrepMuralBackground
 // ??? gUnk_08426FF2
-// ??? gUnk_08427954
+// ??? Pal_PrepMuralBackground
 // ??? gUnk_08427974
 // ??? gUnk_08427A48
 // ??? gUnk_08427BFC

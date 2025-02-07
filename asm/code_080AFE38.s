@@ -1394,7 +1394,7 @@ _080B083A:
 	movs r1, #0
 	movs r2, #0
 	bl SetBgOffset
-	ldr r4, _080B0A28 @ =gUnk_08421C64
+	ldr r4, _080B0A28 @ =Img_PrepMuralBackground
 	movs r0, #3
 	bl GetBgChrOffset
 	adds r1, r0, #0
@@ -1520,7 +1520,7 @@ _080B0A18: .4byte gBg0Tm
 _080B0A1C: .4byte gBg1Tm
 _080B0A20: .4byte gBg2Tm
 _080B0A24: .4byte gDispIo
-_080B0A28: .4byte gUnk_08421C64
+_080B0A28: .4byte Img_PrepMuralBackground
 _080B0A2C: .4byte gUnk_08440300
 _080B0A30: .4byte gBg3Tm
 _080B0A34: .4byte gUnk_08440320
@@ -5086,7 +5086,7 @@ sub_80B25C8: @ 0x080B25C8
 	orrs r1, r3
 	adds r2, r1, #0
 	strh r2, [r0]
-	ldr r0, _080B2660 @ =Pal_StatScreen_081DBD64
+	ldr r0, _080B2660 @ =Pal_UiWindowFrame1
 	movs r1, #0xa0
 	lsls r1, r1, #2
 	movs r2, #0x20
@@ -5106,7 +5106,7 @@ _080B2650: .4byte gUnk_083FAE28
 _080B2654: .4byte 0x06014C00
 _080B2658: .4byte gUnk_08DB0ADC
 _080B265C: .4byte 0x00004260
-_080B2660: .4byte Pal_StatScreen_081DBD64
+_080B2660: .4byte Pal_UiWindowFrame1
 _080B2664: .4byte gBg0Tm + 0x1b8
 _080B2668: .4byte gBg0Tm + 0x1b6
 
@@ -18496,7 +18496,7 @@ sub_80B8D64: @ 0x080B8D64
 	ldr r0, _080B8D7C @ =gUnk_08615F80
 	ldr r1, _080B8D80 @ =0x06005000
 	bl Decompress
-	ldr r0, _080B8D84 @ =gUnk_08421C64
+	ldr r0, _080B8D84 @ =Img_PrepMuralBackground
 	ldr r1, _080B8D88 @ =0x06008000
 	bl Decompress
 	pop {r0}
@@ -18504,7 +18504,7 @@ sub_80B8D64: @ 0x080B8D64
 	.align 2, 0
 _080B8D7C: .4byte gUnk_08615F80
 _080B8D80: .4byte 0x06005000
-_080B8D84: .4byte gUnk_08421C64
+_080B8D84: .4byte Img_PrepMuralBackground
 _080B8D88: .4byte 0x06008000
 
 	thumb_func_start sub_80B8D8C

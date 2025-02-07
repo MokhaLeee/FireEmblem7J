@@ -1344,7 +1344,7 @@ _08089F80:
 	strb r0, [r3]
 	adds r0, r7, #0
 	bl GetUnitSMSId
-	bl StartUiSMS
+	bl UseUnitSprite
 	pop {r3}
 	mov r8, r3
 	pop {r4, r5, r6, r7}

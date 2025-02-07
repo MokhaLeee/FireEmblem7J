@@ -494,21 +494,23 @@ gUnk_08C09B0C:	@ 0x08C09B0C
 
 	.global gUiWindowFrameModelLut
 gUiWindowFrameModelLut:	@ 0x08C09B78
-	.incbin "FireEmblem7J.base.gba", 0xC09B78, 0xC09B84 - 0xC09B78
+        .4byte UiWindowFrameTile1
+        .4byte UiWindowFrameTile2
+        .4byte UiWindowFrameTile3
 
 	.global gUiWindowFramePalLut
 gUiWindowFramePalLut:	@ 0x08C09B84
-	.4byte Pal_StatScreen_081DBD64
+	.4byte Pal_UiWindowFrame1
 	.4byte 0x081DC658
 	.4byte 0x081DCF18
 	.4byte 0x081DD794
 
 	.global gUiWindowFrameImgLut
 gUiWindowFrameImgLut:	@ 0x08C09B94
-        .4byte 0x081DB4B8
-        .4byte 0x081DBDA4
-        .4byte 0x081DC698
-        .4byte 0x081DCF58
+        .4byte Img_UiWindowFrame1
+        .4byte Img_UiWindowFrame2
+        .4byte Img_UiWindowFrame3
+        .4byte Img_UiWindowFrame4
 
 	.global gUiStatBarPalLut
 gUiStatBarPalLut:	@ 0x08C09BA4

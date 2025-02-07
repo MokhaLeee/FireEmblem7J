@@ -249,7 +249,7 @@ void StatScreen_Init(ProcPtr proc)
 
     Decompress(Tsa_StatScreen_0840417C, ((void *) VRAM) + BGCHR_STATSCREEN_EQUIPMENTLABEL * CHR_SIZE);
     Decompress(Img_StatScreen_0840368C, (OBJ_VRAM0 + OBCHR_STATSCREEN_60 * CHR_SIZE));
-    ApplyPalette(Pal_StatScreen_081DBD64, 0x10 + OBPAL_STATSCREEN_10);
+    ApplyPalette(Pal_UiWindowFrame1, 0x10 + OBPAL_STATSCREEN_10);
 
     gStatScreenSt.mu = NULL;
 

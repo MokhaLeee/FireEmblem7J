@@ -391,8 +391,8 @@ void ClearUnit(struct Unit *unit);
 // GetUnitFogViewRange
 void SetUnitStatus(struct Unit *unit, int statusId);
 void SetUnitStatusExt(struct Unit *unit, int status, int duration);
-// GetUnitSMSId
-// UnitAddItem
+int GetUnitSMSId(struct Unit *unit);
+bool UnitAddItem(struct Unit *unit, int item);
 // UnitClearInventory
 void UnitRemoveInvalidItems(struct Unit *unit);
 int GetUnitItemCount(struct Unit *unit);
