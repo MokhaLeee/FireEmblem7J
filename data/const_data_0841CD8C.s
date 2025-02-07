@@ -142,8 +142,8 @@ Pal_SysBrownBox:	@ 0x0841EC70
 gUnk_0841ECB0:	@ 0x0841ECB0
 	.incbin "FireEmblem7J.base.gba", 0x41ECB0, 0x41ECD0 - 0x41ECB0
 
-	.global gUnk_0841ECD0
-gUnk_0841ECD0:	@ 0x0841ECD0
+	.global SpriteAnim_0841ECD0
+SpriteAnim_0841ECD0:	@ 0x0841ECD0
 	.incbin "FireEmblem7J.base.gba", 0x41ECD0, 0x41EF4C - 0x41ECD0
 
 	.global Img_PrepWindow

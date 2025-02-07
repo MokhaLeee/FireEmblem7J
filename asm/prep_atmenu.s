@@ -1143,7 +1143,7 @@ _0808FBA0:
 	movs r0, #0
 	movs r1, #8
 	bl StartPrepMuralBackground
-	ldr r0, _0808FC78 @ =gUnk_0841ECD0
+	ldr r0, _0808FC78 @ =SpriteAnim_0841ECD0
 	movs r2, #0x83
 	lsls r2, r2, #3
 	ldr r3, _0808FC7C @ =0x0000EC80
@@ -1201,7 +1201,7 @@ _0808FC68: .4byte gPrepMainMenuTexts + 0x28
 _0808FC6C: .4byte Img_PrepScreenTitle
 _0808FC70: .4byte 0x06011000
 _0808FC74: .4byte Pal_SysBrownBox
-_0808FC78: .4byte gUnk_0841ECD0
+_0808FC78: .4byte SpriteAnim_0841ECD0
 _0808FC7C: .4byte 0x0000EC80
 _0808FC80:
 	ldr r0, _0808FCA4 @ =0x000003E9

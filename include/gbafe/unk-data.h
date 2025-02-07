@@ -1566,7 +1566,7 @@ extern u8  Tsa_0841D614[];
 extern u8  Img_PrepScreenTitle[];
 extern u16 Pal_SysBrownBox[];
 // ??? gUnk_0841ECB0
-// ??? gUnk_0841ECD0
+extern u16 SpriteAnim_0841ECD0[];
 extern u8 Img_PrepWindow[];
 extern u16 Pal_0841F774[];
 extern u16 Pal_0841F814[];

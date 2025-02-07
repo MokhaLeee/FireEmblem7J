@@ -177,20 +177,21 @@ void sub_80900E8(struct ProcAtMenu *proc);
 // nullsub_77
 
 struct ProcPrepSpecialChar {
-     PROC_HEADER;
-    /* 29 */ u8 _pad29_[0x2A - 0x29];
-    /* 2A */ u8 unk2A;
-    /* 2B */ u8 unk2B;
-    /* 29 */ u8 _pad2C_[0x2F - 0x2C];
-    /* 2F */ u8 unk2F;
-    /* 30 */ u8 unk30;
-    /* 31 */ u8 unk31;
-    /* 32 */ u8 unk32;
-    /* 33 */ u8 blink_Start;
-    /* 34 */ u8 blink_B;
-    /* 35 */ u8 unk35;
-    /* 36 */ u16 unk36;
-    /* 38 */ ProcPtr apProc;
+    PROC_HEADER;
+
+    u8 unk_29;
+    u8 unk_2A;
+    u8 unk_2B;
+
+    STRUCT_PAD(0x2C, 0x2F);
+
+    /* 2F */ u8 config;
+
+    STRUCT_PAD(0x30, 0x32);
+
+    /* 32 */ u8 blink_n;
+    /* 34 */ u16 timer;
+    /* 38 */ ProcPtr approc;
 };
 
 void ProcPrepSpChar_OnInit(struct ProcPrepSpecialChar *proc);
@@ -563,8 +564,8 @@ extern struct ProcCmd ProcScr_PrepPromoteDebug[];
 // ??? gUnk_08D8C9A8
 // ??? gUnk_08D8C9C0
 // ??? gUnk_08D8CDA8
-// ??? gUnk_08D8CDBC
-// ??? gUnk_08D8CDD0
+extern u16 Sprite_08D8CDBC[];
+extern u16 Sprite_08D8CDD0[];
 // ??? gUnk_08D8CDE4
 // ??? gUnk_08D8CF74
 extern struct ProcCmd ProcScr_PrepItemUseScreen[];

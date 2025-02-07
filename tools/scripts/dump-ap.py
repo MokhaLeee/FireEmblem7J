@@ -116,10 +116,13 @@ class FrameData:
         return 2 + 6 * len(self.entries) + 2 * len(self.gfxEntries)
 
 if __name__ == '__main__':
-    if len(sys.argv) < 2:
-        sys.exit("Usage: (python3) {} <offset> [label_prefix (optional)]".format(sys.argv[0]))
+    try:
+        # offset whithin file of where the ap data is located
+        baseOffset = eval(sys.argv[1])
+    except IndexError:
+        sys.exit(f"Usage: {args[0]} offset [label_prefix]")
 
-    fName = sys.argv[1]
+    fName = rom
 
     # get prefix for labels to avoid name collision if given
     if len(sys.argv) > 2:
@@ -134,8 +137,6 @@ if __name__ == '__main__':
     gen_label_expr = gen_label_expr_asm
 
     with open(fName, 'rb') as file:
-        baseOffset = 0 # offset whithin file of where the ap data is located
-
         # All offset variables (except baseOffset) are relative to baseOffset/the Ap data origin
         # This is important because a lot of offsets within ap data are relative to other points
 

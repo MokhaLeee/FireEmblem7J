@@ -103,8 +103,7 @@ struct ChapterInfo {
     /* 7E */ u8 divinationPortrait; // FE7
     /* 7F */ u8 divinationFee; // FE7
 
-    /* 80 */ u8 prepScreenNumber;
-    /* 81 */ u8 prepScreenNumberInHectorStory; // FE7
+    /* 80 */ u8 prepScreenNumber[2];
     /* 82 */ u8 merchantPosX;
     /* 83 */ u8 merchantPosXInHectorStory; // FE7
     /* 84 */ u8 merchantPosY;

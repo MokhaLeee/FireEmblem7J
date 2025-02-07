@@ -6873,7 +6873,7 @@ _08093A60:
 	lsls r0, r0, #0x18
 	cmp r0, #0
 	beq _08093A94
-	ldr r3, _08093A90 @ =gUnk_08D8CDD0
+	ldr r3, _08093A90 @ =Sprite_08D8CDD0
 	str r4, [sp]
 	movs r0, #4
 	movs r1, #0x80
@@ -6883,9 +6883,9 @@ _08093A60:
 	.align 2, 0
 _08093A88: .4byte gDispIo
 _08093A8C: .4byte gUnk_08D8CDA8
-_08093A90: .4byte gUnk_08D8CDD0
+_08093A90: .4byte Sprite_08D8CDD0
 _08093A94:
-	ldr r3, _08093AB0 @ =gUnk_08D8CDBC
+	ldr r3, _08093AB0 @ =Sprite_08D8CDBC
 	str r4, [sp]
 	movs r0, #4
 	movs r1, #0x80
@@ -6898,7 +6898,7 @@ _08093AA2:
 	pop {r0}
 	bx r0
 	.align 2, 0
-_08093AB0: .4byte gUnk_08D8CDBC
+_08093AB0: .4byte Sprite_08D8CDBC
 
 	thumb_func_start sub_8093AB4
 sub_8093AB4: @ 0x08093AB4

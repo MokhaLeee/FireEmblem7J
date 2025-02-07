@@ -60,12 +60,12 @@ gUnk_08D8C9C0:	@ 0x08D8C9C0
 gUnk_08D8CDA8:	@ 0x08D8CDA8
 	.incbin "FireEmblem7J.base.gba", 0xD8CDA8, 0xD8CDBC - 0xD8CDA8
 
-	.global gUnk_08D8CDBC
-gUnk_08D8CDBC:	@ 0x08D8CDBC
+	.global Sprite_08D8CDBC
+Sprite_08D8CDBC:	@ 0x08D8CDBC
 	.incbin "FireEmblem7J.base.gba", 0xD8CDBC, 0xD8CDD0 - 0xD8CDBC
 
-	.global gUnk_08D8CDD0
-gUnk_08D8CDD0:	@ 0x08D8CDD0
+	.global Sprite_08D8CDD0
+Sprite_08D8CDD0:	@ 0x08D8CDD0
 	.incbin "FireEmblem7J.base.gba", 0xD8CDD0, 0xD8CDE4 - 0xD8CDD0
 
 	.global gUnk_08D8CDE4

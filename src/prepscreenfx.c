@@ -235,3 +235,64 @@ struct ProcCmd CONST_DATA ProcScr_PrepSpecialCharEff[] = {
     PROC_REPEAT(ProcPrepSpChar_Idle),
     PROC_END,
 };
+
+void sub_8090148(int xOam1, int yOam0, int config, u16 oam2)
+{
+    int val;
+
+    if (config & 1) {
+        xOam1 -= 4;
+        PutSpriteExt(4, xOam1 + 0x02, yOam0 + 0x02, Sprite_08D8C55E, oam2);
+        PutSpriteExt(4, xOam1 + 0x38, yOam0 + 0x00, Sprites_08D8C5D8[10], oam2);
+    } else {
+        PutSpriteExt(4, xOam1 + 0x02, yOam0 + 0x02, Sprite_08D8C544, oam2);
+        PutSpriteExt(4, xOam1 + 0x38, yOam0 + 0x00, Sprite_08D8C53C, oam2);
+    }
+
+    PutSpriteExt(4, xOam1, yOam0, Sprite_08D8C52E, oam2);
+
+    val = config >> 1;
+    if (val < 10)
+        PutSpriteExt(4, xOam1 + 0x28, yOam0, Sprites_08D8C5D8[11], oam2);
+    else
+        PutSpriteExt(4, xOam1 + 0x28, yOam0, Sprites_08D8C5D8[val / 10], oam2);
+
+    PutSpriteExt(4, xOam1 + 0x30, yOam0, Sprites_08D8C5D8[val % 10], oam2);
+}
+
+void sub_8090244(struct ProcPrepSpecialChar *proc)
+{
+    if (!CheckInLinkArena()) {
+        int i;
+
+        if (proc->config != 0)
+            sub_8090148(0x70, 4, proc->config, 0x6380);
+
+        for (i = 0; i < 3; i++)
+            PutSpriteExt(4, 0x80 + i * 0x20, 0x14, Sprite_32x16, 0xB680 + i * 4);
+
+        if (proc->blink_n || (1 & (proc->timer >> 2)))
+            PutSpriteExt(4, 6, 0x80, Sprite_08D8CDBC, 0x0300);
+    } else
+        PutSpriteExt(4, 6, 0x80, Sprite_08D8CDD0, 0x0300);
+}
+
+void nullsub_77(void) {}
+
+void ProcPrepSpChar_OnInit(struct ProcPrepSpecialChar *proc)
+{
+    proc->unk_2A = 0;
+    proc->timer = 0;
+
+    ForceSyncUnitSpriteSheet();
+
+    if (CheckInLinkArena())
+        proc->approc = StartSpriteAnimProc(SpriteAnim_0841ECD0, 0x78, 0x418, 0x2E40, 1, 0xD);
+    else {
+        proc->approc = StartSpriteAnimProc(SpriteAnim_0841ECD0, 0x78, 0x418, 0x2E40, 0, 0xD);
+        proc->config = GetChapterInfo(gPlaySt.chapterIndex)->prepScreenNumber[gPlaySt.chapterModeIndex != 3 ? 0 : 1];
+    }
+
+    proc->unk_2B = 0;
+    proc->blink_n = true;
+}
