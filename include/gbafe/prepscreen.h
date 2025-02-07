@@ -173,7 +173,7 @@ void sub_80900E8(struct ProcAtMenu *proc);
 // sub_8090118
 // sub_8090130
 // sub_8090148
-// sub_8090244
+// PrepScreenSprite_OnDraw
 // nullsub_77
 
 struct ProcPrepSpecialChar {
@@ -198,7 +198,7 @@ void ProcPrepSpChar_OnInit(struct ProcPrepSpecialChar *proc);
 void ProcPrepSpChar_Idle(struct ProcPrepSpecialChar *proc);
 void ProcPrepSpChar_OnEnd(struct ProcPrepSpecialChar *proc);
 void PrepSpecialChar_BlinkButtonStart(void);
-void PrepSpecialChar_BlinkButtonB(ProcPtr parent);
+ProcPtr StartPrepSpecialCharEffect(ProcPtr parent);
 void EndPrepSpecialCharEffect(void);
 
 // sub_80903FC

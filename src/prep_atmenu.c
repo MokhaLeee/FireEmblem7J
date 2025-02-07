@@ -348,7 +348,7 @@ void AtMenu_Reinitialize(struct ProcAtMenu * proc)
     SetBlendAlpha(0xE, 0x8);
 	SetBlendTargetA(0, 0, 0, 0, 0);
 	SetBlendTargetB(0, 0, 0, 1, 0);
-	PrepSpecialChar_BlinkButtonB(proc);
+	StartPrepSpecialCharEffect(proc);
 #elif (PROJECT == FE8)
 	SetBlendNone();
 #endif

@@ -344,7 +344,6 @@ SECTIONS
 		src/prep_atmenu.o(.text);
 		asm/prep_atmenu.o(.text);
 		src/prepscreenfx.o(.text);
-		asm/prepscreenfx.o(.text);
 		src/prep_menu.o(.text);
 		asm/prep.o(.text);
 		src/save_core.o(.text);

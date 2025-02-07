@@ -260,7 +260,7 @@ void sub_8090148(int xOam1, int yOam0, int config, u16 oam2)
     PutSpriteExt(4, xOam1 + 0x30, yOam0, Sprites_08D8C5D8[val % 10], oam2);
 }
 
-void sub_8090244(struct ProcPrepSpecialChar *proc)
+void PrepScreenSprite_OnDraw(struct ProcPrepSpecialChar *proc)
 {
     if (!CheckInLinkArena()) {
         int i;
@@ -295,4 +295,34 @@ void ProcPrepSpChar_OnInit(struct ProcPrepSpecialChar *proc)
 
     proc->unk_2B = 0;
     proc->blink_n = true;
+}
+
+void ProcPrepSpChar_Idle(struct ProcPrepSpecialChar *proc)
+{
+    PrepScreenSprite_OnDraw(proc);
+    proc->timer++;
+}
+
+void ProcPrepSpChar_OnEnd(struct ProcPrepSpecialChar *proc)
+{
+    EndSpriteAnimProc(proc->approc);
+}
+
+void PrepSpecialChar_BlinkButtonStart(void)
+{
+    struct ProcPrepSpecialChar *proc = Proc_Find(ProcScr_PrepSpecialCharEff);
+
+    if (proc)
+        proc->blink_n = false;
+}
+
+ProcPtr StartPrepSpecialCharEffect(ProcPtr parent)
+{
+    Proc_End(Proc_Find(ProcScr_PrepSpecialCharEff));
+    return Proc_Start(ProcScr_PrepSpecialCharEff, parent);
+}
+
+void EndPrepSpecialCharEffect(void)
+{
+    Proc_End(Proc_Find(ProcScr_PrepSpecialCharEff));
 }
