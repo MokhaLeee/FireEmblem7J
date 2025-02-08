@@ -23,7 +23,6 @@ SECTIONS
 		. = 0x003C3C; gUiTmScratchC = .;
 
 		. = 0x01068C; src/prepscreen.o(ewram_overlay_0);
-		. = 0x0116DC; gPrepUnitList = .;
 	}
 
 	. = __ewram_overlay_beg;
@@ -348,6 +347,11 @@ SECTIONS
 		asm/prep_atmenu.o(.text);
 		src/prepscreenfx.o(.text);
 		src/prep_menu.o(.text);
+		asm/prep_menu.o(.text);
+		asm/prep_menuscroll.o(.text);
+		src/prep_bgscroll.o(.text);
+		src/prep_sallycir.o(.text);
+		asm/prep_sallycir.o(.text);
 		asm/prep.o(.text);
 		src/save_core.o(.text);
 		asm/save.o(.text);
@@ -502,6 +506,9 @@ SECTIONS
 		. = ALIGN(4); src/prep_atmenu.o(.data)
 		. = ALIGN(4); src/prepscreenfx.o(.data)
 		. = ALIGN(4); src/prep_menu.o(.data)
+		. = ALIGN(4); src/prep_menuscroll.o(.data)
+		. = ALIGN(4); src/prep_bgscroll.o(.data)
+		. = ALIGN(4); src/prep_sallycir.o(.data)
 		. = ALIGN(4); data/prepscreen.o(.data)
 		. = ALIGN(4); src/save_core.o(.data)
 		. = ALIGN(4); data/data_08DAD284.o(.data)

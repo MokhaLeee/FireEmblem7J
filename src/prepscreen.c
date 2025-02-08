@@ -2,6 +2,12 @@
 
 EWRAM_DATA struct SioPidPool gSioPidPool = {};
 EWRAM_OVERLAY(0) struct Text gPrepMainMenuTexts[10] = {};
+EWRAM_OVERLAY(0) u8 gPrepUnitPool[0x1000] = {};
+EWRAM_OVERLAY(0) struct PrepUnitList gPrepUnitList = {};
+EWRAM_OVERLAY(0) struct PrepScreenItemListEnt gPrepScreenItemList[400] = {};
+EWRAM_OVERLAY(0) struct PrepScreenItemListEnt gPrepScreenExtraItemList[400] = {};
+EWRAM_OVERLAY(0) u16 Unk_Prep_02012464 = 0;
+EWRAM_OVERLAY(0) u16 Unk_Prep_02012466 = 0;
 
 CONST_DATA int Msgs_PrepMainMenuHelpbox[][3] = {
 	{ MSG_3E8, MSG_3E9, MSG_3F5 },

@@ -1,51 +1,15 @@
 	.section .data
 
-	.global ProcScr_PrepMenu
-ProcScr_PrepMenu:	@ 0x08D8C6E4
-	.incbin "FireEmblem7J.base.gba", 0xD8C6E4, 0xD8C73C - 0xD8C6E4
-
-	.global gUnk_08D8C73C
-gUnk_08D8C73C:	@ 0x08D8C73C
-	.incbin "FireEmblem7J.base.gba", 0xD8C73C, 0xD8C744 - 0xD8C73C
-
-	.global gUnk_08D8C744
-gUnk_08D8C744:	@ 0x08D8C744
-	.incbin "FireEmblem7J.base.gba", 0xD8C744, 0xD8C74C - 0xD8C744
-
-	.global gUnk_08D8C74C
-gUnk_08D8C74C:	@ 0x08D8C74C
-	.incbin "FireEmblem7J.base.gba", 0xD8C74C, 0xD8C794 - 0xD8C74C
-
-	.global gUnk_08D8C794
-gUnk_08D8C794:	@ 0x08D8C794
-	.incbin "FireEmblem7J.base.gba", 0xD8C794, 0xD8C7E8 - 0xD8C794
-
-	.global gUnk_08D8C7E8
-gUnk_08D8C7E8:	@ 0x08D8C7E8
-	.incbin "FireEmblem7J.base.gba", 0xD8C7E8, 0xD8C8AC - 0xD8C7E8
-
-	.global gUnk_08D8C8AC
-gUnk_08D8C8AC:	@ 0x08D8C8AC
-	.incbin "FireEmblem7J.base.gba", 0xD8C8AC, 0xD8C8E4 - 0xD8C8AC
-
-	.global ProcScr_PrepMuralBackground
-ProcScr_PrepMuralBackground:	@ 0x08D8C8E4
-	.incbin "FireEmblem7J.base.gba", 0xD8C8E4, 0xD8C904 - 0xD8C8E4
-
-	.global gUnk_08D8C904
-gUnk_08D8C904:	@ 0x08D8C904
-	.incbin "FireEmblem7J.base.gba", 0xD8C904, 0xD8C94C - 0xD8C904
-
-	.global gUnk_08D8C94C
-gUnk_08D8C94C:	@ 0x08D8C94C
+	.global ProcScr_ViewCounter
+ProcScr_ViewCounter:	@ 0x08D8C94C
 	.incbin "FireEmblem7J.base.gba", 0xD8C94C, 0xD8C96C - 0xD8C94C
 
-	.global gUnk_08D8C96C
-gUnk_08D8C96C:	@ 0x08D8C96C
+	.global ProcScr_PrepHelpboxListener
+ProcScr_PrepHelpboxListener:	@ 0x08D8C96C
 	.incbin "FireEmblem7J.base.gba", 0xD8C96C, 0xD8C984 - 0xD8C96C
 
-	.global gUnk_08D8C984
-gUnk_08D8C984:	@ 0x08D8C984
+	.global gPrepItemTypePageLut
+gPrepItemTypePageLut:	@ 0x08D8C984
 	.incbin "FireEmblem7J.base.gba", 0xD8C984, 0xD8C9A8 - 0xD8C984
 
 	.global gUnk_08D8C9A8

@@ -1556,8 +1556,8 @@ extern u8  Tsa_0841D614[];
 // ??? gUnk_0841D838
 // ??? gUnk_0841DBCC
 // ??? gUnk_0841DE88
-// ??? gUnk_0841DFE0
-// ??? gUnk_0841E084
+extern u8  Img_MenuScrollBar[];
+extern u16 Pal_MenuScrollBar[];
 // ??? gUnk_0841E0A4
 // ??? gUnk_0841E45C
 // ??? gUnk_0841E49C
@@ -1580,9 +1580,9 @@ extern u8 TSA_0842162C[];
 extern u8 TSA_08421644[];
 extern u8 TSA_08421684[];
 // ??? gUnk_08421C24
-// ??? Img_PrepMuralBackground
-// ??? gUnk_08426FF2
-// ??? Pal_PrepMuralBackground
+extern u8  Img_PrepMuralBackground[];
+extern u16 TsaConfig_PrepMuralBackground[];
+extern u16 Pal_PrepMuralBackground[];
 // ??? gUnk_08427974
 // ??? gUnk_08427A48
 // ??? gUnk_08427BFC

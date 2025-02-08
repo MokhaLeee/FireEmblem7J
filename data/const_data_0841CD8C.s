@@ -102,12 +102,12 @@ gUnk_0841DBCC:	@ 0x0841DBCC
 gUnk_0841DE88:	@ 0x0841DE88
 	.incbin "FireEmblem7J.base.gba", 0x41DE88, 0x41DFE0 - 0x41DE88
 
-	.global gUnk_0841DFE0
-gUnk_0841DFE0:	@ 0x0841DFE0
+	.global Img_MenuScrollBar
+Img_MenuScrollBar:	@ 0x0841DFE0
 	.incbin "FireEmblem7J.base.gba", 0x41DFE0, 0x41E084 - 0x41DFE0
 
-	.global gUnk_0841E084
-gUnk_0841E084:	@ 0x0841E084
+	.global Pal_MenuScrollBar
+Pal_MenuScrollBar:	@ 0x0841E084
 	.incbin "FireEmblem7J.base.gba", 0x41E084, 0x41E0A4 - 0x41E084
 
 	.global gUnk_0841E0A4
@@ -202,8 +202,8 @@ gUnk_08421C24:	@ 0x08421C24
 Img_PrepMuralBackground:	@ 0x08421C64
 	.incbin "FireEmblem7J.base.gba", 0x421C64, 0x426FF2 - 0x421C64
 
-	.global gUnk_08426FF2
-gUnk_08426FF2:	@ 0x08426FF2
+	.global TsaConfig_PrepMuralBackground
+TsaConfig_PrepMuralBackground:	@ 0x08426FF2
 	.incbin "FireEmblem7J.base.gba", 0x426FF2, 0x427954 - 0x426FF2
 
 	.global Pal_PrepMuralBackground

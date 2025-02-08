@@ -4948,21 +4948,21 @@ _080ADFCC:
 	adds r0, r6, #0
 	bl StartGreenText
 	adds r0, r6, #0
-	bl sub_8090DD0
+	bl StartMenuScrollBar
 	movs r0, #0xc8
 	movs r1, #0x44
-	bl sub_8090DE4
+	bl PutMenuScrollBarAt
 	movs r0, #0x80
 	lsls r0, r0, #2
 	movs r1, #2
-	bl sub_8090E38
+	bl InitMenuScrollBarImg
 	ldrh r1, [r6, #0x2c]
 	ldr r0, _080AE0BC @ =gUnk_08DAEF6C
 	ldr r0, [r0]
 	ldrh r2, [r0]
 	movs r0, #7
 	movs r3, #5
-	bl sub_8090E04
+	bl UpdateMenuScrollBarConfig
 	adds r0, r6, #0
 	bl sub_80A98C8
 	adds r0, r6, #0
@@ -5285,7 +5285,7 @@ _080AE30A:
 	ldrh r2, [r0]
 	movs r0, #7
 	movs r3, #5
-	bl sub_8090E04
+	bl UpdateMenuScrollBarConfig
 _080AE32A:
 	pop {r3}
 	mov r8, r3

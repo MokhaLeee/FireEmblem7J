@@ -840,22 +840,22 @@ sub_8089B80: @ 0x08089B80
 	subs r0, #0xa
 	strb r1, [r0]
 	adds r0, r4, #0
-	bl sub_8090DD0
+	bl StartMenuScrollBar
 	str r0, [r4, #0x34]
 	movs r0, #0xe0
 	movs r1, #0x40
-	bl sub_8090DE4
+	bl PutMenuScrollBarAt
 	ldr r0, [r4, #0x2c]
 	ldrh r1, [r0, #0x3e]
 	ldr r0, _08089BD8 @ =0x0200E668
 	ldrb r2, [r0]
 	movs r0, #0xa
 	movs r3, #6
-	bl sub_8090E04
+	bl UpdateMenuScrollBarConfig
 	movs r0, #0xe4
 	lsls r0, r0, #7
 	movs r1, #1
-	bl sub_8090E38
+	bl InitMenuScrollBarImg
 	bl ForceSyncUnitSpriteSheet
 	pop {r4}
 	pop {r0}
@@ -952,7 +952,7 @@ _08089C56:
 	ldrb r2, [r0]
 	movs r0, #0xa
 	movs r3, #6
-	bl sub_8090E04
+	bl UpdateMenuScrollBarConfig
 	ldr r4, [r6, #0x2c]
 	adds r0, r4, #0
 	adds r0, #0x29

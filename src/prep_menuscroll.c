@@ -1,0 +1,244 @@
+#include "gbafe.h"
+
+u16 CONST_DATA Sprite_MenuScrollContainer[] =
+{
+    1,
+    OAM0_SHAPE_8x8, OAM1_SIZE_8x8, 0,
+};
+
+u16 CONST_DATA Sprite_08D8C744[] =
+{
+    1,
+    OAM0_SHAPE_8x8, OAM1_SIZE_8x8, OAM2_CHR(0x9),
+};
+
+u16 CONST_DATA Sprite_08D8C74C[] =
+{
+    1,
+    OAM0_SHAPE_8x8, OAM1_SIZE_8x8 + OAM1_VFLIP, OAM2_CHR(0x9),
+};
+
+u16 CONST_DATA Sprite_08D8C754[] =
+{
+    1,
+    OAM0_SHAPE_8x8, OAM1_SIZE_8x8, OAM2_CHR(0x1),
+};
+
+u16 CONST_DATA Sprite_08D8C75C[] =
+{
+    1,
+    OAM0_SHAPE_8x8, OAM1_SIZE_8x8, OAM2_CHR(0x2),
+};
+
+u16 CONST_DATA Sprite_08D8C764[] =
+{
+    1,
+    OAM0_SHAPE_8x8, OAM1_SIZE_8x8, OAM2_CHR(0x3),
+};
+
+u16 CONST_DATA Sprite_08D8C76C[] =
+{
+    1,
+    OAM0_SHAPE_8x8, OAM1_SIZE_8x8, OAM2_CHR(0x4),
+};
+
+u16 CONST_DATA Sprite_08D8C774[] =
+{
+    1,
+    OAM0_SHAPE_8x8, OAM1_SIZE_8x8, OAM2_CHR(0x5),
+};
+
+u16 CONST_DATA Sprite_08D8C77C[] =
+{
+    1,
+    OAM0_SHAPE_8x8, OAM1_SIZE_8x8, OAM2_CHR(0x6),
+};
+
+u16 CONST_DATA Sprite_08D8C784[] =
+{
+    1,
+    OAM0_SHAPE_8x8, OAM1_SIZE_8x8, OAM2_CHR(0x7),
+};
+
+u16 CONST_DATA Sprite_08D8C78C[] =
+{
+    1,
+    OAM0_SHAPE_8x8, OAM1_SIZE_8x8, OAM2_CHR(0x8),
+};
+
+u16 CONST_DATA *CONST_DATA Sprites_08D8C794[] = {
+	NULL,
+	Sprite_08D8C754,
+	Sprite_08D8C75C,
+	Sprite_08D8C764,
+	Sprite_08D8C76C,
+	Sprite_08D8C774,
+	Sprite_08D8C77C,
+	Sprite_08D8C784,
+	Sprite_08D8C78C,
+};
+
+u16 CONST_DATA Sprite_08D8C7B8[] =
+{
+    1,
+    OAM0_SHAPE_8x8, OAM1_SIZE_8x8, OAM2_CHR(0xA),
+};
+
+u16 CONST_DATA Sprite_08D8C7C0[] =
+{
+    1,
+    OAM0_SHAPE_8x8, OAM1_SIZE_8x8, OAM2_CHR(0xB),
+};
+
+u16 CONST_DATA Sprite_08D8C7C8[] =
+{
+    1,
+    OAM0_SHAPE_8x8, OAM1_SIZE_8x8, OAM2_CHR(0xC),
+};
+
+u16 CONST_DATA Sprite_08D8C7D0[] =
+{
+    1,
+    OAM0_SHAPE_8x8, OAM1_SIZE_8x8, OAM2_CHR(0xD),
+};
+
+u16 CONST_DATA Sprite_08D8C7D8[] =
+{
+    1,
+    OAM0_SHAPE_8x8, OAM1_SIZE_8x8, OAM2_CHR(0xE),
+};
+
+u16 CONST_DATA Sprite_08D8C7E0[] =
+{
+    1,
+    OAM0_SHAPE_8x8, OAM1_SIZE_8x8, OAM2_CHR(0xF),
+};
+
+u16 CONST_DATA *CONST_DATA Sprites_08D8C7E8[] = {
+	Sprite_08D8C7B8,
+	Sprite_08D8C7C0,
+	Sprite_08D8C7C8,
+	Sprite_08D8C7D0,
+	Sprite_08D8C7D8,
+	Sprite_08D8C7E0,
+};
+
+u16 CONST_DATA Sprite_08D8C800[] =
+{
+    1,
+    OAM0_SHAPE_8x8, OAM1_SIZE_8x8, OAM2_CHR(0x1),
+};
+
+u16 CONST_DATA Sprite_08D8C808[] =
+{
+    1,
+    OAM0_SHAPE_8x16, OAM1_SIZE_8x16, OAM2_CHR(0x1),
+};
+
+u16 CONST_DATA Sprite_08D8C810[] =
+{
+    1,
+    OAM0_SHAPE_8x32, OAM1_SIZE_8x32, OAM2_CHR(0x1),
+};
+
+u16 CONST_DATA Sprite_08D8C818[] =
+{
+    1,
+    OAM0_SHAPE_8x8, OAM1_SIZE_8x8, OAM2_CHR(0x15),
+};
+
+u16 CONST_DATA Sprite_08D8C820[] =
+{
+    1,
+    OAM0_SHAPE_8x8, OAM1_SIZE_8x8, OAM2_CHR(0x16),
+};
+
+u16 CONST_DATA Sprite_08D8C828[] =
+{
+    1,
+    OAM0_SHAPE_8x8, OAM1_SIZE_8x8, OAM2_CHR(0x14),
+};
+
+u16 CONST_DATA Sprite_08D8C830[] =
+{
+    1,
+    OAM0_SHAPE_8x8, OAM1_SIZE_8x8, OAM2_CHR(0xC),
+};
+
+u16 CONST_DATA Sprite_08D8C838[] =
+{
+    1,
+    OAM0_SHAPE_8x8, OAM1_SIZE_8x8, OAM2_CHR(0xD),
+};
+
+u16 CONST_DATA Sprite_08D8C840[] =
+{
+    1,
+    OAM0_SHAPE_8x8, OAM1_SIZE_8x8, OAM2_CHR(0xE),
+};
+
+u16 CONST_DATA Sprite_08D8C848[] =
+{
+    1,
+    OAM0_SHAPE_8x8, OAM1_SIZE_8x8, OAM2_CHR(0xF),
+};
+
+u16 CONST_DATA Sprite_08D8C850[] =
+{
+    1,
+    OAM0_SHAPE_8x8, OAM1_SIZE_8x8, OAM2_CHR(0x10),
+};
+
+u16 CONST_DATA Sprite_08D8C858[] =
+{
+    1,
+    OAM0_SHAPE_8x8, OAM1_SIZE_8x8, OAM2_CHR(0x11),
+};
+
+u16 CONST_DATA Sprite_08D8C860[] =
+{
+    1,
+    OAM0_SHAPE_8x8, OAM1_SIZE_8x8, OAM2_CHR(0x12),
+};
+
+u16 CONST_DATA Sprite_08D8C868[] =
+{
+    1,
+    OAM0_SHAPE_8x8, OAM1_SIZE_8x8, OAM2_CHR(0x13),
+};
+
+u16 CONST_DATA Sprite_08D8C870[] =
+{
+    1,
+    OAM0_SHAPE_8x16, OAM1_SIZE_8x16, 0,
+};
+
+u16 CONST_DATA Sprite_08D8C878[] =
+{
+    1,
+    OAM0_SHAPE_8x32, OAM1_SIZE_8x32, 0,
+};
+
+u16 CONST_DATA *CONST_DATA Sprites_08D8C880[] = {
+	Sprite_08D8C828,
+	Sprite_08D8C830,
+	Sprite_08D8C838,
+	Sprite_08D8C840,
+	Sprite_08D8C848,
+	Sprite_08D8C850,
+	Sprite_08D8C858,
+	Sprite_08D8C860,
+	Sprite_08D8C868,
+	Sprite_08D8C870,
+	Sprite_08D8C878
+};
+
+struct ProcCmd CONST_DATA ProcScr_menu_scroll[] = {
+    PROC_19,
+    PROC_CALL(MenuScroll_Init),
+PROC_LABEL(0),
+    PROC_REPEAT(MenuScroll_Loop),
+PROC_LABEL(1),
+    PROC_BLOCK,
+    PROC_END,
+};

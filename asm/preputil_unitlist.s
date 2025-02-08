@@ -62,7 +62,7 @@ _0808EA7C:
 	thumb_func_start ReorderPlayerUnitsBasedOnDeployment
 ReorderPlayerUnitsBasedOnDeployment: @ 0x0808EA84
 	push {r4, lr}
-	ldr r0, _0808EAEC @ =0x020106DC
+	ldr r0, _0808EAEC @ =gPrepUnitPool
 	bl InitUnitStack
 	movs r4, #1
 _0808EA8E:
@@ -111,7 +111,7 @@ _0808EADA:
 	pop {r0}
 	bx r0
 	.align 2, 0
-_0808EAEC: .4byte 0x020106DC
+_0808EAEC: .4byte gPrepUnitPool
 _0808EAF0: .4byte 0x0001000C
 
 	thumb_func_start SortPlayerUnitsForPrepScreen
@@ -120,7 +120,7 @@ SortPlayerUnitsForPrepScreen: @ 0x0808EAF4
 	bl GetChapterAllyUnitCount
 	adds r7, r0, #0
 	movs r6, #0
-	ldr r0, _0808EBB8 @ =0x020106DC
+	ldr r0, _0808EBB8 @ =gPrepUnitPool
 	bl InitUnitStack
 	movs r5, #1
 _0808EB06:
@@ -206,7 +206,7 @@ _0808EB86:
 	ldr r1, _0808EBC0 @ =0x02000008
 	b _0808EBDA
 	.align 2, 0
-_0808EBB8: .4byte 0x020106DC
+_0808EBB8: .4byte gPrepUnitPool
 _0808EBBC: .4byte 0xFDFFFFFF
 _0808EBC0: .4byte 0x02000008
 _0808EBC4:
