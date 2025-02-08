@@ -347,8 +347,8 @@ _08090D96:
 	.align 2, 0
 _08090D9C: .4byte ProcScr_menu_scroll
 
-	thumb_func_start sub_8090DA0
-sub_8090DA0: @ 0x08090DA0
+	thumb_func_start TryHideMenuScrollBar
+TryHideMenuScrollBar: @ 0x08090DA0
 	push {lr}
 	ldr r0, _08090DB8 @ =ProcScr_menu_scroll
 	bl Proc_Find

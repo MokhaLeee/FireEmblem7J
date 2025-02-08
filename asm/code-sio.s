@@ -14289,7 +14289,7 @@ _08043874:
 	bl InitSystemTextFont
 	ldr r0, _080438BC @ =0x0203D96C
 	movs r1, #0xa
-	bl sub_800536C
+	bl InitTextDb
 	movs r0, #1
 	bl FadeBgmOut
 	pop {r4, r5}
@@ -16447,7 +16447,7 @@ _08044A5C:
 	adds r4, r4, r0
 	adds r0, r6, #0
 	movs r1, #4
-	bl sub_800536C
+	bl InitTextDb
 	ldrb r1, [r7]
 	ldrb r2, [r7, #1]
 	lsls r0, r5, #2
@@ -17374,7 +17374,7 @@ _080451F4:
 	strb r1, [r0]
 	adds r0, #8
 	movs r1, #4
-	bl sub_800536C
+	bl InitTextDb
 	movs r0, #1
 	add sl, r0
 	b _08045240
@@ -17391,7 +17391,7 @@ _08045234: .4byte 0x0000270F
 _08045238:
 	mov r0, sp
 	movs r1, #4
-	bl sub_800536C
+	bl InitTextDb
 _08045240:
 	movs r1, #1
 	add r8, r1
@@ -18451,7 +18451,7 @@ _08045A5C:
 	movs r0, #1
 	rsbs r0, r0, #0
 	movs r1, #9
-	bl sub_800515C
+	bl SetupDebugFontForOBJ
 _08045A72:
 	pop {r4}
 	pop {r0}

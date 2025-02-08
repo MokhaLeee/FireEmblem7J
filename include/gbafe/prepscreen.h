@@ -163,7 +163,7 @@ void AtMenu_LockGame(struct ProcAtMenu *proc);
 void AtMenu_UnlockGame(struct ProcAtMenu *proc);
 // sub_808F804
 // sub_808F818
-// sub_808F834
+// HasConvoyAccess_
 // sub_808F8D0
 // sub_808F938
 // sub_808F970
@@ -238,7 +238,7 @@ void EnablePrepScreenMenu(void);
 void MenuScroll_Init(ProcPtr proc);
 void MenuScroll_Loop(ProcPtr proc);
 // LockMenuScrollBar
-// sub_8090DA0
+// TryHideMenuScrollBar
 // EndMenuScrollBar
 // StartMenuScrollBar
 // PutMenuScrollBarAt
@@ -276,35 +276,35 @@ ProcPtr StartSallyCirProc(ProcPtr parent, u8 unk);
 // sub_809139C
 // sub_809145C
 // sub_8091588
-// sub_809158C
+// GetConvoyItemCount_
 // ViewCounter_Loop
-// sub_80915D8
+// StartViewCounter
 // TryLockProc
 void TryUnlockProc(ProcPtr proc);
 // PrepHbKeyListener_Loop
-// sub_8091664
-// sub_809169C
-// sub_80916C4
+// StartPrepErrorHelpbox
+// IsWeaponUsable
+// CountUnitUsableWeapons
 // sub_80916F4
-// sub_8091730
-// sub_80917D4
+// CheckValidLinkArenaItemSwap
+// CheckValidLinkArenaItemSupply
 // sub_8091828
 // sub_809186C
 // GetPrepPageForItem
 // sub_80918D8
-// sub_8091A74
+// SomethingPrepListRelated
 // sub_8091B48
 // sub_8091B8C
 // sub_8091BAC
 // sub_8091BD4
 // sub_8091C08
-// sub_8091C28
-// sub_8091C60
-// sub_8091C90
-// sub_8091CC8
-// sub_8091D14
-// sub_8091D38
-// sub_8092150
+// CanUnitPrepScreenUse
+// PrepItemScreen_OnHBlank
+// PrepItemScreen_Init
+// PrepItemScreen_DrawFunds
+// PrepItemScreen_HideFunds
+// PrepItemScreen_SetupGfx
+// PrepItemScreen_OnEnd
 // sub_8092194
 // sub_80921FC
 // sub_809221C
@@ -333,65 +333,65 @@ void TryUnlockProc(ProcPtr proc);
 // sub_80931B0
 // sub_80931C8
 // sub_80931E0
-// sub_80931F8
-// sub_80932B0
+// UpdatePrepItemScreenFace
+// EndPrepItemScreenFace
 // sub_80932C8
 // sub_80932DC
 // sub_80933F0
 // sub_8093478
 // sub_8093540
-// sub_8093550
+// PrepItem_DrawSMS
 // sub_80935C4
 // sub_80937E0
-// sub_8093814
-// sub_809385C
-// sub_8093920
-// sub_8093948
-// sub_8093AB4
-// sub_8093B14
+// PrepItemScreen_GiveAll
+// PrepUnit_DrawUnitListNames
+// PrepUpdateMenuTsaScroll
+// PrepUnit_DrawSMSAndObjs
+// PrepUnit_InitTexts
+// PrepUnit_InitGfx
 // sub_8093B5C
-// sub_8093BC8
-// sub_8093C00
-// sub_8093CC0
-// sub_8093CD0
-// sub_8093DC8
-// sub_8093E9C
-// sub_8093F10
-// sub_8093F88
+// PrepUnit_InitSMS
+// PrepUnit_DrawLeftUnitName
+// PrepUnit_DrawLeftUnitNameCur
+// PrepUnit_DrawUnitItems
+// PrepUnit_DrawPickLeftBar
+// PrepCheckCanSelectUnit
+// PrepCheckCanUnselectUnit
+// PrepUnit_HandlePressA
 // sub_809402C
-// sub_809408C
+// ShouldPrepUnitMenuScroll
 // sub_80940C4
 // sub_809410C
-// sub_8094138
-// sub_8094178
+// ProcPrepUnit_OnInit
+// ProcPrepUnit_InitScreen
 // sub_8094374
-// sub_8094398
+// ProcPrepUnit_Idle
 // sub_809463C
 // sub_8094684
 // nullsub_11
 // sub_80946D0
 // sub_80946E8
 // sub_8094714
-// sub_8094774
-// sub_80947A0
+// ProcPrepUnit_OnEnd
+// ProcPrepUnit_OnGameStart
 // sub_80947C0
 // sub_80947E0
-// sub_8094828
-// sub_809484C
+// PrepUnitDisableDisp
+// PrepUnitEnableDisp
 // sub_809486C
 // sub_8094888
-// sub_80948A0
-// sub_80948CC
+// PrepItemTrade_ApplyItemSwap
+// PrepItemTrade_DpadKeyHandler
 // sub_8094AC0
 // sub_8094BA4
 // sub_8094BE0
 // sub_8094EC0
-// sub_80951C0
-// sub_80951D8
+// PrepItemTrade_OnEnd
+// StartPrepItemTradeScreenProc
 // sub_80951FC
-// sub_809521C
-// sub_80952B0
-// sub_8095430
+// PrepItemUseTryMoveHand
+// DrawPrepScreenItemUseStatLabels
+// DrawPrepScreenItemUseStatBars
 // sub_80955D0
 // sub_8095750
 // sub_8095800
@@ -411,12 +411,12 @@ void TryUnlockProc(ProcPtr proc);
 // sub_80960C4
 // StartPrepItemUseScreen
 // PrepItemUseBooster_OnDraw
-// sub_80961B8
-// sub_8096330
-// sub_8096374
+// PrepItemUseBooster_OnInit
+// PrepItemUseBooster_IDLE
+// PrepItemUseBooster_OnEnd
 // sub_80963FC
 // sub_8096430
-// sub_8096464
+// StoreConvoyWeaponIconGraphics
 // sub_80964A0
 // sub_80965B4
 // sub_8096618
@@ -447,14 +447,14 @@ void TryUnlockProc(ProcPtr proc);
 // sub_8097990
 // sub_8097AB0
 // sub_8097BBC
-// sub_8097BF4
+// StartPrepItemSupplyProc
 // sub_8097C10
 // sub_8097C30
-// sub_8097C54
-// sub_8097C74
-// sub_8097C94
+// StartBmSupply
+// MaybeStartSelectConvoyItemProc
+// PrepItemList_Init
 // sub_8097CDC
-// sub_8097D1C
+// PrepItemList_DrawCurrentOwnerText
 // sub_8097DD4
 // sub_8097E64
 // sub_80981E0
@@ -470,12 +470,12 @@ void TryUnlockProc(ProcPtr proc);
 // sub_8098C0C
 // sub_8098C48
 // sub_8098D04
-// sub_8098E3C
-// sub_8098E74
-// sub_8098E8C
+// PrepItemList_StartTradeScreen
+// StartPrepItemListScreenProc
+// WmSell_DrawSupplyDialogueSpriteText
 // sub_8098EC0
 // sub_8098EF4
-// sub_8098F2C
+// WmSell_Init
 // sub_8098F3C
 // sub_8098FDC
 // sub_8099050
@@ -489,24 +489,24 @@ void TryUnlockProc(ProcPtr proc);
 // sub_8099688
 // sub_80996D4
 // sub_8099764
-// sub_8099810
-// sub_8099828
+// WmSell_OnEnd
+// StartWorldMapSellScreen
 // sub_8099840
-// nullsub_78
+// FortuneSubMenu_Init_Null
 // nullsub_79
-// sub_809987C
-// sub_80998A8
+// FortuneSubMenu_Unused_SetAvailableOptions
+// FortuneSubMenu_Unused_SetupText
 // sub_809997C
 // sub_8099A20
 // sub_8099B2C
 // sub_8099B50
-// sub_8099B94
+// StartFortuneSubMenu
 // sub_8099BB0
-// sub_8099BF8
-// sub_8099C28
+// GetChapterDivinationTextIdHectorStory
+// GetChapterDivinationTextIdBeginning
 // sub_8099C44
 // sub_8099C60
-// sub_8099C7C
+// GetChapterDivinationPortrait
 // sub_8099C98
 // sub_8099CB4
 // sub_8099CDC
@@ -598,19 +598,19 @@ extern struct ProcCmd ProcScr_PrepPromoteDebug[];
 extern u16 Sprite_08D8CDBC[];
 extern u16 Sprite_08D8CDD0[];
 // ??? gUnk_08D8CDE4
-// ??? gUnk_08D8CF74
+// ??? ProcScr_PrepItemTradeScreen
 extern struct ProcCmd ProcScr_PrepItemUseScreen[];
 // ??? gUnk_08D8D10C
 // ??? gUnk_08D8D118
-// ??? gUnk_08D8D120
-// ??? gUnk_08D8D1F0
-// ??? gUnk_08D8D318
+// ??? ProcScr_PrepItemSupplyScreen
+// ??? ProcScr_BmSupplyScreen
+// ??? ProcScr_PrepItemListScreen
 // ??? gUnk_08D8D410
-// ??? gUnk_08D8D418
+// ??? gProcScr_PrepWMShopSell
 // ??? gUnk_08D8D4E8
 // ??? gUnk_08D8D4F8
 // ??? gUnk_08D8D51C
-// ??? gUnk_08D8D538
+// ??? ProcScr_FortuneSubMenu
 // ??? gUnk_08D8D5F8
 // ??? gUnk_08D8D60C
 // ??? gUnk_08D8D620
@@ -622,15 +622,15 @@ extern struct ProcCmd ProcScr_PrepItemUseScreen[];
 // ??? gUnk_08D8D744
 // ??? gUnk_08D8D84C
 // ??? gUnk_08D8DCD4
-// ??? gUnk_08D8DD0C
-// ??? gUnk_08D8DD68
+// ??? sSupportScreenUnits
+// ??? ProcScr_SupportScreen
 // ??? gUnk_08D8DE48
 // ??? gUnk_08D8DEB0
 // ??? gUnk_08D8DEB8
 // ??? gUnk_08D8DEC6
 // ??? gUnk_08D8DED4
 // ??? gUnk_08D8DEE2
-// ??? gUnk_08D8DEF8
+// ??? gProcScr_SupportUnitSubScreen
 // ??? gUnk_08D8E040
 // ??? gUnk_08D8E084
 // ??? gUnk_08DA4190

@@ -1091,8 +1091,8 @@ _08025998: .4byte 0x06011800
 _0802599C: .4byte 0x06011C00
 _080259A0: .4byte gUnitSpriteSlots
 
-	thumb_func_start sub_80259A4
-sub_80259A4: @ 0x080259A4
+	thumb_func_start SyncUnitSpriteSheet
+SyncUnitSpriteSheet: @ 0x080259A4
 	push {r4, r5, lr}
 	bl GetGameTime
 	movs r1, #0x48

@@ -5175,7 +5175,7 @@ _080712C0:
 	adds r1, r1, r2
 	ldrb r2, [r1]
 	adds r1, r2, #0
-	bl sub_800536C
+	bl InitTextDb
 	ldr r1, [r7]
 	adds r0, r1, #0
 	adds r1, #0x64

@@ -10412,7 +10412,7 @@ _0801038E:
 	movs r1, #2
 	movs r2, #0x14
 	movs r3, #4
-	bl sub_8088584
+	bl StartCgText
 _080103A8:
 	str r6, [sp]
 	ldr r0, _080103F8 @ =0x06011000
@@ -10426,7 +10426,7 @@ _080103A8:
 	movs r1, #0x12
 	movs r2, #0x14
 	movs r3, #4
-	bl sub_8088584
+	bl StartCgText
 _080103C4:
 	ldr r0, _080103FC @ =sub_8010600
 	str r0, [r7, #0x40]

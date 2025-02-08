@@ -102,8 +102,8 @@ _080A98B2:
 	.align 2, 0
 _080A98C4: .4byte gUnk_08DAE1D4
 
-	thumb_func_start sub_80A98C8
-sub_80A98C8: @ 0x080A98C8
+	thumb_func_start StartUiCursorHand
+StartUiCursorHand: @ 0x080A98C8
 	push {lr}
 	adds r1, r0, #0
 	ldr r0, _080A98D8 @ =ProcScr_UiCursorHand
@@ -113,8 +113,8 @@ sub_80A98C8: @ 0x080A98C8
 	.align 2, 0
 _080A98D8: .4byte ProcScr_UiCursorHand
 
-	thumb_func_start sub_80A98DC
-sub_80A98DC: @ 0x080A98DC
+	thumb_func_start SetUiCursorHandConfig
+SetUiCursorHandConfig: @ 0x080A98DC
 	push {r4, r5, r6, r7, lr}
 	mov r7, r8
 	push {r7}
@@ -170,8 +170,8 @@ _080A9948: .4byte 0x060100C0
 _080A994C: .4byte gUnk_0818FEEC
 _080A9950: .4byte 0x060104C0
 
-	thumb_func_start sub_80A9954
-sub_80A9954: @ 0x080A9954
+	thumb_func_start UiCursorHand_80A9954
+UiCursorHand_80A9954: @ 0x080A9954
 	push {r4, r5, r6, r7, lr}
 	adds r4, r0, #0
 	adds r5, r1, #0

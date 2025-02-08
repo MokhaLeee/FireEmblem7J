@@ -9363,7 +9363,7 @@ _0806BB5C:
 	movs r1, #0x12
 	bl ApplyIconPalette
 	mov r0, r8
-	bl sub_8017808
+	bl GetItemIconId
 _0806BB6E:
 	movs r1, #0x40
 	bl PutIconObjImg

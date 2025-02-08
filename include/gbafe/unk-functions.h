@@ -79,7 +79,7 @@ const char* sub_802EBB0();
 // sub_802EBCC
 // sub_802EBD4
 // sub_802EBF8
-// sub_802EC3C
+// GetConvoyItemCount
 // AddItemToConvoy
 // RemoveItemFromConvoy
 // GetConvoyItemSlot
@@ -581,7 +581,7 @@ void ClearHelpBoxText(void);
 // sub_80884E0
 // sub_8088520
 // sub_8088548
-// sub_8088584
+// StartCgText
 // EndCgText
 bool sub_80886E0(void);
 // sub_80886FC
@@ -644,15 +644,15 @@ bool sub_80886E0(void);
 
 /* prepscreen.h */
 
-// sub_809BA14
+// GetSupportScreenUnitCount
 // GetNextSupportScreenUnit
-// sub_809BA38
-// sub_809BA48
+// GetPreviousSupportScreenUnit
+// GetSupportScreenPartnerSupportLevel
 // sub_809BA60
 // sub_809BA78
 // sub_809BA94
 // sub_809BAB8
-// sub_809BACC
+// GetSupportScreenClassIdAt
 // GetSupportClassForCharId
 // sub_809BB30
 // sub_809BB58
@@ -670,11 +670,11 @@ bool sub_80886E0(void);
 // sub_809C448
 // sub_809C7B4
 // sub_809C7CC
-// sub_809C808
-// sub_809C820
+// StartSupportScreenFromPrepScreen
+// StartSupportScreen
 // sub_809C838
 // sub_809C92C
-// sub_809C948
+// UiSupport_GetSupportTalkSong
 // sub_809C980
 // sub_809C9F8
 // sub_809CAFC
@@ -706,9 +706,9 @@ bool sub_80886E0(void);
 // sub_809DEEC
 // sub_809DFE8
 // sub_809E0C0
-// sub_809E0E0
+// SupportSubScreen_PrepareSupportConvo
 // sub_809E134
-// sub_809E16C
+// StartSupportUnitSubScreen
 // sub_809E190
 // sub_809E1A8
 // sub_809E1B8

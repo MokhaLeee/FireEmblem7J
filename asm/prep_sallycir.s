@@ -17,14 +17,15 @@ PrepMuralBackground_Init: @ 0x08090F14
 	bl GetGameTime
 	movs r0, #0
 	strh r0, [r6, #0x2a]
-	movs r7, #0
-	mov sl, r4
+
+	movs r7, #0			@ i
+	mov sl, r4			@ gBg3Tm
 	movs r0, #0x2d
 	adds r0, r0, r6
-	mov sb, r0
+	mov sb, r0			@ pal_bank
 	adds r1, r6, #0
 	adds r1, #0x2c
-	str r1, [sp]
+	str r1, [sp]		@ unk_2C
 _08090F44:
 	movs r5, #0
 	adds r3, r7, #1
@@ -32,18 +33,20 @@ _08090F44:
 _08090F4A:
 	ldrh r0, [r6, #0x2a]
 	lsrs r4, r0, #3
-	adds r4, r7, r4
+	adds r4, r7, r4		@ r4 = proc->timer / 8 + i
+
 	adds r0, r4, #0
 	movs r1, #0x28
 	bl __modsi3
 	movs r1, #0x27
-	subs r1, r1, r0
+	subs r1, r1, r0		@ r1 = 0x27 - (r4 % 0x28)
+
 	movs r0, #0x1f
 	ands r4, r0
 	lsls r4, r4, #6
 	lsls r2, r5, #1
 	adds r4, r4, r2
-	add r4, sl
+	add r4, sl			@ r4 = (r4 & 0x1F) * 0x40 + j * 2 + gBg3Tm
 	lsls r0, r1, #4
 	subs r0, r0, r1
 	lsls r0, r0, #2
@@ -142,27 +145,33 @@ _08091018:
 	ands r0, r1
 	cmp r0, #0
 	bne _08091098
+
 	ldr r5, _080910A8 @ =TsaConfig_PrepMuralBackground
-	lsrs r0, r1, #3
-	subs r4, r0, #1
+
+	lsrs r0, r1, #3			@ proc->timer / 8
+	subs r4, r0, #1			@ proc->timer / 8 - 1
 	movs r1, #0x1f
-	ands r4, r1
+	ands r4, r1				@ r4 = (proc->timer / 8 - 1) & 0x1F
 	adds r0, #0x1f
 	movs r1, #0x28
 	bl __modsi3
 	lsls r0, r0, #0x18
-	lsrs r0, r0, #0x18
-	movs r3, #0
+	lsrs r0, r0, #0x18		@ u8 r0 = (proc->timer / 8 + 0x1F) % 0x28
+
+	movs r3, #0				@ ix = 0
+
 	ldr r1, _080910AC @ =gBg3Tm
 	mov r8, r1
+
 	lsls r4, r4, #6
 	movs r1, #0x27
-	subs r1, r1, r0
+	subs r1, r1, r0			@ 0x27 - r0
 	lsls r0, r1, #4
 	subs r0, r0, r1
-	lsls r0, r0, #2
+	lsls r0, r0, #2			@ (0x27 - r0) * 60
 	adds r0, r0, r5
-	mov sb, r0
+	mov sb, r0				@ TsaConfig_PrepMuralBackground + (0x27 - r0) * 30
+
 	mov ip, r8
 	adds r5, r6, #0
 	adds r5, #0x2d

@@ -2659,8 +2659,8 @@ sub_80177F0: @ 0x080177F0
 	.align 2, 0
 _08017804: .4byte gUnk_08C51538
 
-	thumb_func_start sub_8017808
-sub_8017808: @ 0x08017808
+	thumb_func_start GetItemIconId
+GetItemIconId: @ 0x08017808
 	cmp r0, #0
 	beq _08017824
 	movs r1, #0xff

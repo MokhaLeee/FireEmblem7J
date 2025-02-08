@@ -573,7 +573,7 @@ sub_801B9E4: @ 0x0801B9E4
 	movs r0, #1
 	rsbs r0, r0, #0
 	movs r1, #9
-	bl sub_800515C
+	bl SetupDebugFontForOBJ
 _0801BA1E:
 	movs r0, #0
 	pop {r4, r5}

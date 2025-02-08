@@ -500,7 +500,7 @@ sub_80A7404: @ 0x080A7404
 	ldr r2, [r0]
 	movs r0, #0
 	movs r3, #0
-	bl sub_80A98DC
+	bl SetUiCursorHandConfig
 	pop {r0}
 	bx r0
 	.align 2, 0
@@ -765,7 +765,7 @@ sub_80A75C4: @ 0x080A75C4
 	ldr r2, _080A76BC @ =0x0000F080
 	bl TmApplyTsa_thm
 	mov r0, sb
-	bl sub_80A98C8
+	bl StartUiCursorHand
 	ldr r1, _080A76C0 @ =0x06008000
 	movs r0, #0
 	movs r2, #0xa

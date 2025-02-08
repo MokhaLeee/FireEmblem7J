@@ -516,7 +516,7 @@ sub_801DBB0: @ 0x0801DBB0
 	push {r4, r5, lr}
 	adds r4, r0, #0
 	ldr r5, _0801DBDC @ =0x02001F70
-	bl sub_802EC3C
+	bl GetConvoyItemCount
 	strb r0, [r5]
 	movs r0, #4
 	bl ApplyIconPalettes
@@ -575,7 +575,7 @@ sub_801DC24: @ 0x0801DC24
 	push {lr}
 	adds r1, r0, #0
 	movs r0, #0
-	bl sub_8097C74
+	bl MaybeStartSelectConvoyItemProc
 	movs r0, #0
 	pop {r1}
 	bx r1
@@ -681,7 +681,7 @@ sub_801DCB4: @ 0x0801DCB4
 	lsls r0, r0, #0x18
 	cmp r0, #0
 	beq _0801DD28
-	bl sub_802EC3C
+	bl GetConvoyItemCount
 	cmp r0, #0x63
 	bgt _0801DD28
 	ldr r0, _0801DD24 @ =0x000006F5
@@ -1424,15 +1424,15 @@ sub_801E2A0: @ 0x0801E2A0
 	adds r0, r4, #0
 	adds r0, #0x34
 	movs r1, #0xc
-	bl sub_800536C
+	bl InitTextDb
 	adds r0, r4, #0
 	adds r0, #0x3c
 	movs r1, #0xc
-	bl sub_800536C
+	bl InitTextDb
 	adds r0, r4, #0
 	adds r0, #0x44
 	movs r1, #0xc
-	bl sub_800536C
+	bl InitTextDb
 	ldrb r1, [r5]
 	movs r0, #1
 	bl ApplyIconPalette
@@ -3795,7 +3795,7 @@ _0801F5D0:
 	ldr r5, _0801F648 @ =gBg0Tm + 0x202
 	adds r4, r6, r5
 	mov r0, r8
-	bl sub_8017808
+	bl GetItemIconId
 	adds r1, r0, #0
 	movs r0, #0x80
 	lsls r0, r0, #7
@@ -3807,7 +3807,7 @@ _0801F5D0:
 	adds r4, #0x80
 	adds r4, r6, r4
 	mov r0, sb
-	bl sub_8017808
+	bl GetItemIconId
 	adds r1, r0, #0
 	adds r0, r4, #0
 	mov r2, r8
@@ -3897,7 +3897,7 @@ _0801F6BC:
 	ldr r4, _0801F704 @ =gBg0Tm + 0x242
 	adds r6, r5, r4
 	adds r0, r7, #0
-	bl sub_8017808
+	bl GetItemIconId
 	adds r1, r0, #0
 	movs r2, #0x80
 	lsls r2, r2, #7

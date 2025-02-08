@@ -2229,8 +2229,8 @@ _080284BC: .4byte gUnk_08C034D0
 _080284C0: .4byte gPlaySt
 _080284C4: .4byte 0x0000038A
 
-	thumb_func_start sub_80284C8
-sub_80284C8: @ 0x080284C8
+	thumb_func_start CanUnitUseItemPrepScreen
+CanUnitUseItemPrepScreen: @ 0x080284C8
 	push {r4, r5, lr}
 	adds r5, r0, #0
 	adds r4, r1, #0

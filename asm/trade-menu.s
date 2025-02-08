@@ -234,7 +234,7 @@ _0802B222:
 _0802B22E:
 	adds r0, r4, #0
 	movs r1, #7
-	bl sub_800536C
+	bl InitTextDb
 	adds r4, #8
 	adds r5, #1
 	cmp r5, #4

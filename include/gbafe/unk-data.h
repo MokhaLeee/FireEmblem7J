@@ -1560,8 +1560,8 @@ extern u8  Img_MenuScrollBar[];
 extern u16 Pal_MenuScrollBar[];
 // ??? gUnk_0841E0A4
 // ??? gUnk_0841E45C
-// ??? gUnk_0841E49C
-// ??? gUnk_0841E634
+// ??? Img_0841E49C
+// ??? Img_0841E634
 // ??? gUnk_0841E7F4
 extern u8  Img_PrepScreenTitle[];
 extern u16 Pal_SysBrownBox[];

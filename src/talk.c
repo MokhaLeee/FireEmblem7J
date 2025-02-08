@@ -1,7 +1,7 @@
 #include "gbafe.h"
 #include "constants/msg.h"
 
-void sub_800515C(signed char, int);
+void SetupDebugFontForOBJ(signed char, int);
 void sub_8005234(int, int, int, int);
 
 #define TALK_TEXT_BY_LINE(line) (sTalkText + ((line) + sTalkSt->top_text_num) % sTalkSt->lines)
@@ -393,7 +393,7 @@ _080080E2:\n\
     strb r3, [r0, #0x14]\n\
 _080080E6:\n\
     ldr r7, _08008108 @ =sTalkSt\n\
-    ldr r0, _0800810C @ =0x0202BC35\n\
+    ldr r0, _0800810C @ =gPlaySt + 0x41\n\
     mov r8, r0\n\
 _080080EC:\n\
     ldr r0, [r7]\n\
@@ -410,7 +410,7 @@ _080080EC:\n\
     b _08008144\n\
     .align 2, 0\n\
 _08008108: .4byte sTalkSt\n\
-_0800810C: .4byte 0x0202BC35\n\
+_0800810C: .4byte gPlaySt + 0x41\n\
 _08008110:\n\
     cmp r0, #2\n\
     beq _08008122\n\
@@ -3140,7 +3140,7 @@ void sub_800A3C8(struct Proc* proc)
 
 	if (!proc->unk34)
 	{
-		sub_800515C(-1, 9);
+		SetupDebugFontForOBJ(-1, 9);
 		sub_800A3A4(proc);
 	}
 
@@ -3190,7 +3190,7 @@ void sub_800A3C8(struct Proc* proc)
 		{
 			ClearTalk();
 			EndTalk();
-			sub_800515C(-1, 9);
+			SetupDebugFontForOBJ(-1, 9);
 			proc->x = x;
 			InitTalk(0x80, 2, 1);
 			StartTalkMsg(1, 1, proc->x);

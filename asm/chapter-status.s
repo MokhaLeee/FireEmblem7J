@@ -1424,7 +1424,7 @@ _08087D72:
 	movs r2, #0x52
 	bl sub_8026540
 _08087DB8:
-	bl sub_80259A4
+	bl SyncUnitSpriteSheet
 	mov r1, sb
 	ldrb r0, [r1]
 	cmp r0, #0

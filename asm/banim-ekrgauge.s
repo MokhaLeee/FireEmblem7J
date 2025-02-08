@@ -352,7 +352,7 @@ _0804CB1E:
 	ldr r0, [r0]
 	adds r0, #0x4a
 	ldrh r0, [r0]
-	bl sub_8017808
+	bl GetItemIconId
 	movs r1, #0xee
 	lsls r1, r1, #1
 	bl PutIconObjImg
@@ -360,7 +360,7 @@ _0804CB1E:
 	ldr r0, [r0]
 	adds r0, #0x4a
 	ldrh r0, [r0]
-	bl sub_8017808
+	bl GetItemIconId
 	movs r1, #0xef
 	lsls r1, r1, #1
 	bl PutIconObjImg

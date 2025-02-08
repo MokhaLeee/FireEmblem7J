@@ -1342,7 +1342,7 @@ sub_802D320: @ 0x0802D320
 	bl m4aSongNumStart
 _0802D35A:
 	adds r0, r6, #0
-	bl sub_8017808
+	bl GetItemIconId
 	adds r4, r0, #0
 	adds r0, r5, #0
 	bl DecodeMsg

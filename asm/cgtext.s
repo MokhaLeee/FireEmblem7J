@@ -921,8 +921,8 @@ sub_8088548: @ 0x08088548
 	bx r0
 	.align 2, 0
 
-	thumb_func_start sub_8088584
-sub_8088584: @ 0x08088584
+	thumb_func_start StartCgText
+StartCgText: @ 0x08088584
 	push {r4, r5, r6, r7, lr}
 	mov r7, sl
 	mov r6, sb

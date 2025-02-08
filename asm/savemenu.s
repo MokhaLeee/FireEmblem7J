@@ -2913,7 +2913,7 @@ _080A5814:
 	b _080A582C
 _080A581C:
 	adds r0, r4, #0
-	bl sub_809C820
+	bl StartSupportScreen
 	b _080A582C
 _080A5824:
 	ldr r0, _080A5834 @ =gUnk_08D8D744

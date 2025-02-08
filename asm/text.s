@@ -132,8 +132,8 @@ InitText: @ 0x08005344
 	.align 2, 0
 _08005368: .4byte gActiveFont
 
-	thumb_func_start sub_800536C
-sub_800536C: @ 0x0800536C
+	thumb_func_start InitTextDb
+InitTextDb: @ 0x0800536C
 	push {r4, lr}
 	ldr r2, _08005390 @ =gActiveFont
 	ldr r3, [r2]

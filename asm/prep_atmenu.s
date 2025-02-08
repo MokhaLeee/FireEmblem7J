@@ -536,7 +536,7 @@ _0808F704:
 	ldrb r1, [r1]
 	bl PrepOptionCountToRealIndexByMask
 	adds r1, r4, #0
-	bl sub_8099B94
+	bl StartFortuneSubMenu
 	b _0808F734
 _0808F71C:
 	movs r0, #0x80
@@ -681,8 +681,8 @@ sub_808F818: @ 0x0808F818
 	.align 2, 0
 _0808F830: .4byte ProcScr_AtMenu
 
-	thumb_func_start sub_808F834
-sub_808F834: @ 0x0808F834
+	thumb_func_start HasConvoyAccess_
+HasConvoyAccess_: @ 0x0808F834
 	push {r4, lr}
 	cmp r0, #0
 	beq _0808F840
@@ -1318,7 +1318,7 @@ _0808FD2A:
 	movs r0, #0x16
 	movs r1, #0x12
 	adds r2, r3, #0
-	bl sub_8088584
+	bl StartCgText
 	ldr r0, _0808FD78 @ =0x0002000A
 	bl SetCgTextFlags
 _0808FD68:
@@ -1370,7 +1370,7 @@ _0808FD96:
 	movs r0, #0x16
 	movs r1, #0x12
 	adds r2, r3, #0
-	bl sub_8088584
+	bl StartCgText
 	ldr r0, _0808FDE4 @ =0x0002000A
 	bl SetCgTextFlags
 _0808FDD4:
@@ -1434,7 +1434,7 @@ _0808FE18:
 	movs r0, #0x16
 	movs r1, #0x12
 	adds r2, r3, #0
-	bl sub_8088584
+	bl StartCgText
 	ldr r0, _0808FE68 @ =0x0002000A
 	bl SetCgTextFlags
 _0808FE54:
@@ -1487,7 +1487,7 @@ _0808FE86:
 	movs r0, #0x16
 	movs r1, #0x12
 	adds r2, r3, #0
-	bl sub_8088584
+	bl StartCgText
 	ldr r0, _0808FED4 @ =0x0002000A
 	bl SetCgTextFlags
 _0808FEC4:

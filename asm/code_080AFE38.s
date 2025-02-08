@@ -3574,7 +3574,7 @@ sub_80B1A24: @ 0x080B1A24
 	sub sp, #4
 	mov r7, sp
 	str r0, [r7]
-	bl sub_802EC3C
+	bl GetConvoyItemCount
 	cmp r0, #0x63
 	bgt _080B1A3C
 	ldr r0, [r7]

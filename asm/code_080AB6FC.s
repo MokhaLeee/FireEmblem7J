@@ -4518,7 +4518,7 @@ _080ADCAA:
 	adds r1, r4, #0
 	bl PutNumberOrBlank
 	mov r0, r8
-	bl sub_8017808
+	bl GetItemIconId
 	adds r1, r0, #0
 	movs r2, #0x80
 	lsls r2, r2, #7
@@ -4541,7 +4541,7 @@ _080ADCD4:
 	movs r3, #0
 	bl PutDrawText
 	mov r0, r8
-	bl sub_8017808
+	bl GetItemIconId
 	adds r1, r0, #0
 	movs r2, #0x80
 	lsls r2, r2, #7
@@ -4964,7 +4964,7 @@ _080ADFCC:
 	movs r3, #5
 	bl UpdateMenuScrollBarConfig
 	adds r0, r6, #0
-	bl sub_80A98C8
+	bl StartUiCursorHand
 	adds r0, r6, #0
 	bl sub_80ADD88
 	ldr r0, _080AE0D0 @ =0x06013800
@@ -5349,7 +5349,7 @@ _080AE390:
 	cmp r5, r0
 	blt _080AE34E
 _080AE39E:
-	bl sub_80259A4
+	bl SyncUnitSpriteSheet
 	add sp, #4
 	pop {r4, r5, r6}
 	pop {r0}
@@ -5446,7 +5446,7 @@ sub_80AE3C4: @ 0x080AE3C4
 	movs r0, #0
 	movs r1, #0x28
 	movs r3, #1
-	bl sub_80A98DC
+	bl SetUiCursorHandConfig
 	ldr r0, [sp, #4]
 	adds r0, #0x2a
 	ldrb r0, [r0]
@@ -5486,7 +5486,7 @@ _080AE48E:
 	ldrb r0, [r0, #4]
 	cmp r0, #0x28
 	bne _080AE4E4
-	bl sub_802EC3C
+	bl GetConvoyItemCount
 	adds r5, r0, #0
 	cmp r5, #0x64
 	bne _080AE4BA
@@ -5920,7 +5920,7 @@ _080AE81C:
 	add r0, sl
 	adds r4, r4, r0
 	ldr r0, [sp, #0x2c]
-	bl sub_8017808
+	bl GetItemIconId
 	adds r1, r0, #0
 	movs r2, #0x80
 	lsls r2, r2, #7

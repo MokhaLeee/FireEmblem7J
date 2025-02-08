@@ -1831,7 +1831,7 @@ sub_8086044: @ 0x08086044
 	adds r0, r2, #0
 	adds r0, #0x2c
 	movs r1, #4
-	bl sub_800536C
+	bl InitTextDb
 	pop {r0}
 	bx r0
 
@@ -2003,7 +2003,7 @@ sub_80861B4: @ 0x080861B4
 	adds r0, r4, #0
 	adds r0, #0x2c
 	movs r1, #6
-	bl sub_800536C
+	bl InitTextDb
 	movs r1, #0
 	str r1, [r4, #0x58]
 	adds r0, r4, #0
@@ -2247,7 +2247,7 @@ sub_80863B4: @ 0x080863B4
 	adds r4, r0, #0
 	adds r0, #0x2c
 	movs r1, #6
-	bl sub_800536C
+	bl InitTextDb
 	adds r0, r4, #0
 	adds r0, #0x4b
 	movs r1, #0

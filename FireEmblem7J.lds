@@ -23,6 +23,7 @@ SECTIONS
 		. = 0x003C3C; gUiTmScratchC = .;
 
 		. = 0x01068C; src/prepscreen.o(ewram_overlay_0);
+		. = 0x012AA0; gPrepUnitTexts = .;
 	}
 
 	. = __ewram_overlay_beg;
@@ -150,6 +151,7 @@ SECTIONS
 		. = 0x03A3D4;
 		. = ALIGN(4); src/battle.o(ewram_data);
 
+		. = 0x03A71C; gConvoyItemArray = .;
 		. = 0x03A7F0; gArenaSt = .;
 		. = 0x03A858; gActionSt = .;
 		. = 0x03DFE0; gEkrDebugModeMaybe = .;
@@ -352,6 +354,18 @@ SECTIONS
 		src/prep_bgscroll.o(.text);
 		src/prep_sallycir.o(.text);
 		asm/prep_sallycir.o(.text);
+		asm/prep_utils.o(.text);
+		asm/prep_itemscreen.o(.text);
+		asm/prep_unitselect.o(.text);
+		asm/prep_itemtrade.o(.text);
+		asm/prep_itemuse.o(.text);
+		asm/prep_itemusemind.o(.text);
+		asm/prep_itemsupply.o(.text);
+		asm/prep_itemlist.o(.text);
+		asm/prep_itemsell.o(.text);
+		asm/prep_fortune.o(.text);
+		asm/prep_8099D18.o(.text);
+		asm/prep_uisupport.o(.text);
 		asm/prep.o(.text);
 		src/save_core.o(.text);
 		asm/save.o(.text);

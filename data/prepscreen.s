@@ -36,8 +36,8 @@ Sprite_08D8CDD0:	@ 0x08D8CDD0
 gUnk_08D8CDE4:	@ 0x08D8CDE4
 	.incbin "FireEmblem7J.base.gba", 0xD8CDE4, 0xD8CF74 - 0xD8CDE4
 
-	.global gUnk_08D8CF74
-gUnk_08D8CF74:	@ 0x08D8CF74
+	.global ProcScr_PrepItemTradeScreen
+ProcScr_PrepItemTradeScreen:	@ 0x08D8CF74
 	.incbin "FireEmblem7J.base.gba", 0xD8CF74, 0xD8CFBC - 0xD8CF74
 
 	.global ProcScr_PrepItemUseScreen
@@ -161,13 +161,13 @@ ProcScr_PrepItemUseScreen:	@ 0x08D8CFBC
 ProcScr_PrepItemUseBooster:
 	@ PROC_SET_END_CB
 	.short 0x4, 0x0
-	.word sub_8096374
+	.word PrepItemUseBooster_OnEnd
 	@ PROC_CALL
 	.short 0x2, 0x0
-	.word sub_80961B8
+	.word PrepItemUseBooster_OnInit
 	@ PROC_REPEAT
 	.short 0x3, 0x0
-	.word sub_8096330
+	.word PrepItemUseBooster_IDLE
 	@ PROC_END
 	.short 0x0, 0x0
 	.word 0x0
@@ -180,24 +180,24 @@ gUnk_08D8D10C:	@ 0x08D8D10C
 gUnk_08D8D118:	@ 0x08D8D118
 	.incbin "FireEmblem7J.base.gba", 0xD8D118, 0xD8D120 - 0xD8D118
 
-	.global gUnk_08D8D120
-gUnk_08D8D120:	@ 0x08D8D120
+	.global ProcScr_PrepItemSupplyScreen
+ProcScr_PrepItemSupplyScreen:	@ 0x08D8D120
 	.incbin "FireEmblem7J.base.gba", 0xD8D120, 0xD8D1F0 - 0xD8D120
 
-	.global gUnk_08D8D1F0
-gUnk_08D8D1F0:	@ 0x08D8D1F0
+	.global ProcScr_BmSupplyScreen
+ProcScr_BmSupplyScreen:	@ 0x08D8D1F0
 	.incbin "FireEmblem7J.base.gba", 0xD8D1F0, 0xD8D318 - 0xD8D1F0
 
-	.global gUnk_08D8D318
-gUnk_08D8D318:	@ 0x08D8D318
+	.global ProcScr_PrepItemListScreen
+ProcScr_PrepItemListScreen:	@ 0x08D8D318
 	.incbin "FireEmblem7J.base.gba", 0xD8D318, 0xD8D410 - 0xD8D318
 
 	.global gUnk_08D8D410
 gUnk_08D8D410:	@ 0x08D8D410
 	.incbin "FireEmblem7J.base.gba", 0xD8D410, 0xD8D418 - 0xD8D410
 
-	.global gUnk_08D8D418
-gUnk_08D8D418:	@ 0x08D8D418
+	.global gProcScr_PrepWMShopSell
+gProcScr_PrepWMShopSell:	@ 0x08D8D418
 	.incbin "FireEmblem7J.base.gba", 0xD8D418, 0xD8D4E8 - 0xD8D418
 
 	.global gUnk_08D8D4E8
@@ -212,8 +212,8 @@ gUnk_08D8D4F8:	@ 0x08D8D4F8
 gUnk_08D8D51C:	@ 0x08D8D51C
 	.incbin "FireEmblem7J.base.gba", 0xD8D51C, 0xD8D538 - 0xD8D51C
 
-	.global gUnk_08D8D538
-gUnk_08D8D538:	@ 0x08D8D538
+	.global ProcScr_FortuneSubMenu
+ProcScr_FortuneSubMenu:	@ 0x08D8D538
 	.incbin "FireEmblem7J.base.gba", 0xD8D538, 0xD8D5F8 - 0xD8D538
 
 	.global gUnk_08D8D5F8
@@ -260,12 +260,12 @@ gUnk_08D8D84C:	@ 0x08D8D84C
 gUnk_08D8DCD4:	@ 0x08D8DCD4
 	.incbin "FireEmblem7J.base.gba", 0xD8DCD4, 0xD8DD0C - 0xD8DCD4
 
-	.global gUnk_08D8DD0C
-gUnk_08D8DD0C:	@ 0x08D8DD0C
+	.global sSupportScreenUnits
+sSupportScreenUnits:	@ 0x08D8DD0C
 	.incbin "FireEmblem7J.base.gba", 0xD8DD0C, 0xD8DD68 - 0xD8DD0C
 
-	.global gUnk_08D8DD68
-gUnk_08D8DD68:	@ 0x08D8DD68
+	.global ProcScr_SupportScreen
+ProcScr_SupportScreen:	@ 0x08D8DD68
 	.incbin "FireEmblem7J.base.gba", 0xD8DD68, 0xD8DE48 - 0xD8DD68
 
 	.global gUnk_08D8DE48
@@ -292,8 +292,8 @@ gUnk_08D8DED4:	@ 0x08D8DED4
 gUnk_08D8DEE2:	@ 0x08D8DEE2
 	.incbin "FireEmblem7J.base.gba", 0xD8DEE2, 0xD8DEF8 - 0xD8DEE2
 
-	.global gUnk_08D8DEF8
-gUnk_08D8DEF8:	@ 0x08D8DEF8
+	.global gProcScr_SupportUnitSubScreen
+gProcScr_SupportUnitSubScreen:	@ 0x08D8DEF8
 	.incbin "FireEmblem7J.base.gba", 0xD8DEF8, 0xD8E040 - 0xD8DEF8
 
 	.global gUnk_08D8E040

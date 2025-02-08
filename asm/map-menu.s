@@ -3073,7 +3073,7 @@ sub_8023198: @ 0x08023198
 	bl GetUnitItemCount
 	cmp r0, #0
 	bne _080231C8
-	bl sub_802EC3C
+	bl GetConvoyItemCount
 	cmp r0, #0
 	beq _08023224
 _080231C8:
@@ -3139,7 +3139,7 @@ sub_802322C: @ 0x0802322C
 	ldr r0, _08023248 @ =gActiveUnit
 	ldr r0, [r0]
 	movs r1, #0
-	bl sub_8097C54
+	bl StartBmSupply
 	movs r0, #0x17
 	pop {r1}
 	bx r1

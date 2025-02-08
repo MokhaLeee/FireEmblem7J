@@ -278,7 +278,7 @@ _08089752:
 	bl GetUnitEquippedWeapon
 	lsls r0, r0, #0x10
 	lsrs r0, r0, #0x10
-	bl sub_8017808
+	bl GetItemIconId
 	str r0, [r7]
 _08089772:
 	adds r5, #1
@@ -1070,7 +1070,7 @@ _08089D54:
 	mov r3, r8
 	strb r0, [r3]
 _08089D90:
-	bl sub_80259A4
+	bl SyncUnitSpriteSheet
 	ldrh r0, [r6, #0x38]
 	lsrs r7, r0, #4
 	movs r1, #0xf
@@ -1689,7 +1689,7 @@ _0808A26C:
 	bl InitText
 	adds r0, r5, #0
 	movs r1, #7
-	bl sub_800536C
+	bl InitTextDb
 	adds r0, r6, #0
 	adds r0, #8
 	adds r0, r7, r0
@@ -2237,7 +2237,7 @@ _0808A6E0:
 _0808A70A:
 	movs r0, #0
 	adds r3, r4, #0
-	bl sub_8091664
+	bl StartPrepErrorHelpbox
 	b _0808A72A
 	.align 2, 0
 _0808A714: .4byte 0x000003B2
@@ -4416,7 +4416,7 @@ _0808B81C:
 	bl GetUnitEquippedWeapon
 	lsls r0, r0, #0x10
 	lsrs r0, r0, #0x10
-	bl sub_8017808
+	bl GetItemIconId
 	adds r1, r0, #0
 	movs r2, #0x80
 	lsls r2, r2, #7
@@ -4428,7 +4428,7 @@ _0808B81C:
 	bl GetUnitEquippedWeapon
 	lsls r0, r0, #0x10
 	lsrs r0, r0, #0x10
-	bl sub_8017808
+	bl GetItemIconId
 	bl sub_80896EC
 _0808B87A:
 	ldr r3, [sp, #0x50]
@@ -4794,7 +4794,7 @@ _0808BB38:
 	bl GetUnitEquippedWeapon
 	lsls r0, r0, #0x10
 	lsrs r0, r0, #0x10
-	bl sub_8017808
+	bl GetItemIconId
 	adds r1, r0, #0
 	movs r2, #0x80
 	lsls r2, r2, #7
@@ -4805,7 +4805,7 @@ _0808BB38:
 	bl GetUnitEquippedWeapon
 	lsls r0, r0, #0x10
 	lsrs r0, r0, #0x10
-	bl sub_8017808
+	bl GetItemIconId
 	bl sub_80896EC
 _0808BB9C:
 	ldr r5, [sp, #0x54]

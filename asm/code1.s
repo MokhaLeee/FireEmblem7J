@@ -977,10 +977,10 @@ _0802EBC8: .4byte 0x0202BC14
 
 	thumb_func_start sub_802EBCC
 sub_802EBCC: @ 0x0802EBCC
-	ldr r0, _0802EBD0 @ =0x0203A71C
+	ldr r0, _0802EBD0 @ =gConvoyItemArray
 	bx lr
 	.align 2, 0
-_0802EBD0: .4byte 0x0203A71C
+_0802EBD0: .4byte gConvoyItemArray
 
 	thumb_func_start sub_802EBD4
 sub_802EBD4: @ 0x0802EBD4
@@ -989,7 +989,7 @@ sub_802EBD4: @ 0x0802EBD4
 	mov r1, sp
 	movs r0, #0
 	strh r0, [r1]
-	ldr r1, _0802EBF0 @ =0x0203A71C
+	ldr r1, _0802EBF0 @ =gConvoyItemArray
 	ldr r2, _0802EBF4 @ =0x01000064
 	mov r0, sp
 	bl CpuSet
@@ -997,7 +997,7 @@ sub_802EBD4: @ 0x0802EBD4
 	pop {r0}
 	bx r0
 	.align 2, 0
-_0802EBF0: .4byte 0x0203A71C
+_0802EBF0: .4byte gConvoyItemArray
 _0802EBF4: .4byte 0x01000064
 
 	thumb_func_start sub_802EBF8
@@ -1035,10 +1035,10 @@ _0802EC10:
 	.align 2, 0
 _0802EC38: .4byte gBuf
 
-	thumb_func_start sub_802EC3C
-sub_802EC3C: @ 0x0802EC3C
+	thumb_func_start GetConvoyItemCount
+GetConvoyItemCount: @ 0x0802EC3C
 	movs r3, #0
-	ldr r2, _0802EC58 @ =0x0203A71C
+	ldr r2, _0802EC58 @ =gConvoyItemArray
 	movs r1, #0x63
 _0802EC42:
 	ldrh r0, [r2]
@@ -1053,7 +1053,7 @@ _0802EC4A:
 	adds r0, r3, #0
 	bx lr
 	.align 2, 0
-_0802EC58: .4byte 0x0203A71C
+_0802EC58: .4byte gConvoyItemArray
 
 	thumb_func_start AddItemToConvoy
 AddItemToConvoy: @ 0x0802EC5C
@@ -1063,7 +1063,7 @@ AddItemToConvoy: @ 0x0802EC5C
 	movs r0, #0
 	strh r0, [r1, #0x2e]
 	movs r3, #0
-	ldr r2, _0802EC7C @ =0x0203A71C
+	ldr r2, _0802EC7C @ =gConvoyItemArray
 _0802EC6A:
 	ldrh r0, [r2]
 	cmp r0, #0
@@ -1073,7 +1073,7 @@ _0802EC6A:
 	b _0802EC8E
 	.align 2, 0
 _0802EC78: .4byte gBmSt
-_0802EC7C: .4byte 0x0203A71C
+_0802EC7C: .4byte gConvoyItemArray
 _0802EC80:
 	adds r2, #2
 	adds r3, #1
@@ -1090,7 +1090,7 @@ _0802EC8E:
 	thumb_func_start RemoveItemFromConvoy
 RemoveItemFromConvoy: @ 0x0802EC94
 	push {lr}
-	ldr r1, _0802ECA8 @ =0x0203A71C
+	ldr r1, _0802ECA8 @ =gConvoyItemArray
 	lsls r0, r0, #1
 	adds r0, r0, r1
 	movs r1, #0
@@ -1099,7 +1099,7 @@ RemoveItemFromConvoy: @ 0x0802EC94
 	pop {r0}
 	bx r0
 	.align 2, 0
-_0802ECA8: .4byte 0x0203A71C
+_0802ECA8: .4byte gConvoyItemArray
 
 	thumb_func_start GetConvoyItemSlot
 GetConvoyItemSlot: @ 0x0802ECAC
@@ -1109,7 +1109,7 @@ GetConvoyItemSlot: @ 0x0802ECAC
 	adds r2, r0, #0
 	movs r1, #0
 	movs r4, #0xff
-	ldr r3, _0802ECCC @ =0x0203A71C
+	ldr r3, _0802ECCC @ =gConvoyItemArray
 _0802ECBC:
 	adds r0, r4, #0
 	ldrh r5, [r3]
@@ -1119,7 +1119,7 @@ _0802ECBC:
 	adds r0, r1, #0
 	b _0802ECDC
 	.align 2, 0
-_0802ECCC: .4byte 0x0203A71C
+_0802ECCC: .4byte gConvoyItemArray
 _0802ECD0:
 	adds r3, #2
 	adds r1, #1
@@ -7158,7 +7158,7 @@ sub_8031BF8: @ 0x08031BF8
 	adds r4, r0, #0
 	adds r0, #0x30
 	movs r1, #6
-	bl sub_800536C
+	bl InitTextDb
 	bl ClearIcons
 	movs r0, #4
 	bl ApplyIconPalettes
@@ -7612,7 +7612,7 @@ sub_8031FAC: @ 0x08031FAC
 _08031FB8:
 	adds r0, r4, #0
 	movs r1, #7
-	bl sub_800536C
+	bl InitTextDb
 	adds r4, #8
 	subs r5, #1
 	cmp r5, #0
@@ -7719,7 +7719,7 @@ _08032068:
 	movs r1, #2
 	bl PutNumberOrBlank
 	adds r0, r4, #0
-	bl sub_8017808
+	bl GetItemIconId
 	adds r1, r0, #0
 	adds r0, r6, #0
 	movs r2, #0x80
@@ -7844,7 +7844,7 @@ _0803218A:
 	lsls r4, r4, #1
 	add r4, r8
 	adds r0, r6, #0
-	bl sub_8017808
+	bl GetItemIconId
 	adds r1, r0, #0
 	adds r0, r4, #0
 	movs r2, #0x80
@@ -7990,7 +7990,7 @@ _080322A2:
 	lsls r4, r4, #1
 	add r4, r8
 	adds r0, r6, #0
-	bl sub_8017808
+	bl GetItemIconId
 	adds r1, r0, #0
 	adds r0, r4, #0
 	movs r2, #0x80
@@ -8031,7 +8031,7 @@ sub_803232C: @ 0x0803232C
 	bl sub_8031BF8
 	adds r0, #0x38
 	movs r1, #8
-	bl sub_800536C
+	bl InitTextDb
 	pop {r0}
 	bx r0
 	.align 2, 0
@@ -8079,11 +8079,11 @@ sub_803238C: @ 0x0803238C
 	adds r4, r0, #0
 	adds r0, #0x38
 	movs r1, #8
-	bl sub_800536C
+	bl InitTextDb
 	adds r4, #0x40
 	adds r0, r4, #0
 	movs r1, #8
-	bl sub_800536C
+	bl InitTextDb
 	pop {r4}
 	pop {r0}
 	bx r0
@@ -8148,7 +8148,7 @@ sub_8032420: @ 0x08032420
 	bl sub_8031BF8
 	adds r0, #0x38
 	movs r1, #8
-	bl sub_800536C
+	bl InitTextDb
 	pop {r0}
 	bx r0
 	.align 2, 0
@@ -8202,11 +8202,11 @@ sub_803248C: @ 0x0803248C
 	adds r4, r0, #0
 	adds r0, #0x38
 	movs r1, #8
-	bl sub_800536C
+	bl InitTextDb
 	adds r4, #0x40
 	adds r0, r4, #0
 	movs r1, #8
-	bl sub_800536C
+	bl InitTextDb
 	pop {r4}
 	pop {r0}
 	bx r0
@@ -8281,13 +8281,13 @@ sub_803252C: @ 0x0803252C
 	str r0, [r4]
 	adds r0, #0x38
 	movs r1, #8
-	bl sub_800536C
+	bl InitTextDb
 	adds r0, r5, #0
 	bl sub_8031BF8
 	str r0, [r4, #4]
 	adds r0, #0x38
 	movs r1, #8
-	bl sub_800536C
+	bl InitTextDb
 	pop {r4, r5}
 	pop {r0}
 	bx r0
@@ -11281,7 +11281,7 @@ _08033CAA:
 	ldr r0, _08033D58 @ =gBattleTarget
 	adds r0, #0x4a
 	ldrh r0, [r0]
-	bl sub_8017808
+	bl GetItemIconId
 	adds r1, r0, #0
 	movs r2, #0x80
 	lsls r2, r2, #7
@@ -11292,7 +11292,7 @@ _08033CAA:
 	adds r0, r6, #0
 	adds r0, #0x4a
 	ldrh r0, [r0]
-	bl sub_8017808
+	bl GetItemIconId
 	adds r1, r0, #0
 	movs r2, #0xc0
 	lsls r2, r2, #6
@@ -11538,7 +11538,7 @@ _08033EAA:
 	ldr r0, _08033FA4 @ =gBattleTarget
 	adds r0, #0x4a
 	ldrh r0, [r0]
-	bl sub_8017808
+	bl GetItemIconId
 	adds r1, r0, #0
 	movs r2, #0x80
 	lsls r2, r2, #7
@@ -11549,7 +11549,7 @@ _08033EAA:
 	adds r0, r6, #0
 	adds r0, #0x4a
 	ldrh r0, [r0]
-	bl sub_8017808
+	bl GetItemIconId
 	adds r1, r0, #0
 	movs r2, #0xc0
 	lsls r2, r2, #6
@@ -11701,15 +11701,15 @@ sub_8034070: @ 0x08034070
 	adds r0, r5, #0
 	adds r0, #0x38
 	movs r1, #6
-	bl sub_800536C
+	bl InitTextDb
 	adds r0, r5, #0
 	adds r0, #0x40
 	movs r1, #6
-	bl sub_800536C
+	bl InitTextDb
 	adds r0, r5, #0
 	adds r0, #0x48
 	movs r1, #7
-	bl sub_800536C
+	bl InitTextDb
 	ldr r2, _080340FC @ =0x0000FFFF
 	movs r0, #1
 	movs r1, #0

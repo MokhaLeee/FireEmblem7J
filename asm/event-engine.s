@@ -299,7 +299,7 @@ _0800A850:
 	strb r4, [r0]
 	ldr r0, _0800A86C @ =0x03000108
 	ldrh r0, [r0]
-	bl sub_8017808
+	bl GetItemIconId
 	strh r0, [r6, #0x3e]
 	adds r0, r6, #0
 	adds r0, #0x42

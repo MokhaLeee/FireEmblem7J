@@ -141,7 +141,7 @@ int GetItemCrit(int item);
 int GetItemRequiredExp(int item);
 // sub_80177D8
 // sub_80177F0
-// sub_8017808
+// GetItemIconId
 int GetItemWeaponEffect(int item);
 // sub_8017844
 int GetItemCostPerUse(int item);

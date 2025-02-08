@@ -14,7 +14,7 @@ int StartUiSMS(int smsId, int frameId);
 // ??? ApplyUnitSpriteImage16x32
 // ??? ApplyUnitSpriteImage32x32
 void TornOutUnitSprite(struct Unit * unit, int timer);
-// ??? sub_80259A4
+// ??? SyncUnitSpriteSheet
 void ForceSyncUnitSpriteSheet(void);
 // ??? sub_8025A6C
 // ??? sub_8025AE0

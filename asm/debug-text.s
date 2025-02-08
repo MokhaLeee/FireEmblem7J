@@ -485,8 +485,8 @@ _0800514E:
 _08005154: .4byte 0x02026D28
 _08005158: .4byte 0xFFFFFF00
 
-	thumb_func_start sub_800515C
-sub_800515C: @ 0x0800515C
+	thumb_func_start SetupDebugFontForOBJ
+SetupDebugFontForOBJ: @ 0x0800515C
 	push {r4, lr}
 	adds r2, r0, #0
 	adds r4, r1, #0
