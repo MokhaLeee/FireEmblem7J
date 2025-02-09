@@ -633,7 +633,7 @@ sub_80921FC: @ 0x080921FC
 	movs r1, #0x58
 	movs r2, #9
 	movs r3, #4
-	bl sub_80935C4
+	bl PrepItemDrawPopupBox
 	add sp, #4
 	pop {r0}
 	bx r0
@@ -650,7 +650,7 @@ sub_809221C: @ 0x0809221C
 	movs r1, #0x5c
 	movs r2, #0xa
 	movs r3, #5
-	bl sub_80935C4
+	bl PrepItemDrawPopupBox
 	add sp, #4
 	pop {r0}
 	bx r0
@@ -667,7 +667,7 @@ sub_809223C: @ 0x0809223C
 	movs r1, #0x50
 	movs r2, #8
 	movs r3, #6
-	bl sub_80935C4
+	bl PrepItemDrawPopupBox
 	add sp, #4
 	pop {r0}
 	bx r0
@@ -2531,7 +2531,7 @@ UpdatePrepItemScreenFace: @ 0x080931F8
 	lsls r0, r0, #0x10
 	lsrs r0, r0, #0x10
 	mov sb, r0
-	ldr r0, _08093258 @ =gUnk_08D8C9C0
+	ldr r0, _08093258 @ =ProcScr_PrepItemScreen
 	bl Proc_Find
 	adds r5, r0, #0
 	lsls r1, r4, #2
@@ -2561,7 +2561,7 @@ _08093236:
 	bl StartBmFace
 	b _08093278
 	.align 2, 0
-_08093258: .4byte gUnk_08D8C9C0
+_08093258: .4byte ProcScr_PrepItemScreen
 _0809325C:
 	cmp r6, #0
 	beq _08093278
@@ -2619,16 +2619,16 @@ EndPrepItemScreenFace: @ 0x080932B0
 	bx r0
 	.align 2, 0
 
-	thumb_func_start sub_80932C8
-sub_80932C8: @ 0x080932C8
+	thumb_func_start StartPrepItemScreen
+StartPrepItemScreen: @ 0x080932C8
 	push {lr}
 	adds r1, r0, #0
-	ldr r0, _080932D8 @ =gUnk_08D8C9C0
+	ldr r0, _080932D8 @ =ProcScr_PrepItemScreen
 	bl Proc_StartBlocking
 	pop {r1}
 	bx r1
 	.align 2, 0
-_080932D8: .4byte gUnk_08D8C9C0
+_080932D8: .4byte ProcScr_PrepItemScreen
 
 	thumb_func_start sub_80932DC
 sub_80932DC: @ 0x080932DC
@@ -2997,8 +2997,8 @@ _080935B0:
 	bx r0
 	.align 2, 0
 
-	thumb_func_start sub_80935C4
-sub_80935C4: @ 0x080935C4
+	thumb_func_start PrepItemDrawPopupBox
+PrepItemDrawPopupBox: @ 0x080935C4
 	push {r4, r5, r6, r7, lr}
 	mov r7, sl
 	mov r6, sb

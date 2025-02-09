@@ -16,8 +16,8 @@ gPrepItemTypePageLut:	@ 0x08D8C984
 gUnk_08D8C9A8:	@ 0x08D8C9A8
 	.incbin "FireEmblem7J.base.gba", 0xD8C9A8, 0xD8C9C0 - 0xD8C9A8
 
-	.global gUnk_08D8C9C0
-gUnk_08D8C9C0:	@ 0x08D8C9C0
+	.global ProcScr_PrepItemScreen
+ProcScr_PrepItemScreen:	@ 0x08D8C9C0
 	.incbin "FireEmblem7J.base.gba", 0xD8C9C0, 0xD8CDA8 - 0xD8C9C0
 
 	.global gUnk_08D8CDA8

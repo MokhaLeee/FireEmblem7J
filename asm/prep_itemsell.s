@@ -173,7 +173,7 @@ sub_8098FDC: @ 0x08098FDC
 	movs r1, #0x68
 	movs r2, #8
 	movs r3, #4
-	bl sub_80935C4
+	bl PrepItemDrawPopupBox
 	ldr r4, _0809903C @ =Sprite_32x16
 	ldr r0, _08099040 @ =0x0000B088
 	str r0, [sp]

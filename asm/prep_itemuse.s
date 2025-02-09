@@ -1333,7 +1333,7 @@ sub_8095D58: @ 0x08095D58
 	movs r1, #0x64
 	movs r2, #0xb
 	movs r3, #4
-	bl sub_80935C4
+	bl PrepItemDrawPopupBox
 	ldr r5, _08095DB4 @ =gpKeySt
 	ldr r1, [r5]
 	ldrh r3, [r1, #8]

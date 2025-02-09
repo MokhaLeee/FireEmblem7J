@@ -335,13 +335,13 @@ void TryUnlockProc(ProcPtr proc);
 // sub_80931E0
 // UpdatePrepItemScreenFace
 // EndPrepItemScreenFace
-// sub_80932C8
+// StartPrepItemScreen
 // sub_80932DC
 // sub_80933F0
 // sub_8093478
 // sub_8093540
 // PrepItem_DrawSMS
-// sub_80935C4
+// PrepItemDrawPopupBox
 // sub_80937E0
 // PrepItemScreen_GiveAll
 // PrepUnit_DrawUnitListNames
@@ -593,7 +593,7 @@ extern struct ProcCmd ProcScr_PrepPromoteDebug[];
 // ??? ProcScr_PrepHelpboxListener
 // ??? gPrepItemTypePageLut
 // ??? gUnk_08D8C9A8
-// ??? gUnk_08D8C9C0
+// ??? ProcScr_PrepItemScreen
 // ??? gUnk_08D8CDA8
 extern u16 Sprite_08D8CDBC[];
 extern u16 Sprite_08D8CDD0[];

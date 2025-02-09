@@ -518,7 +518,7 @@ _0808F6E4:
 	b _0808F734
 _0808F6EC:
 	adds r0, r4, #0
-	bl sub_80932C8
+	bl StartPrepItemScreen
 	b _0808F734
 _0808F6F4:
 	ldr r0, _0808F700 @ =gUnk_08D8CDE4

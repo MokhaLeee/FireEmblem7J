@@ -618,7 +618,7 @@ sub_80968E8: @ 0x080968E8
 	movs r1, #0x22
 	movs r2, #5
 	movs r3, #4
-	bl sub_80935C4
+	bl PrepItemDrawPopupBox
 	ldr r4, _0809692C @ =Sprite_32x16
 	ldr r0, _08096930 @ =0x0000B080
 	str r0, [sp]
@@ -654,7 +654,7 @@ sub_8096938: @ 0x08096938
 	movs r1, #0x22
 	movs r2, #5
 	movs r3, #2
-	bl sub_80935C4
+	bl PrepItemDrawPopupBox
 	ldr r3, _08096968 @ =Sprite_32x16
 	ldr r0, _0809696C @ =0x0000B080
 	str r0, [sp]
@@ -680,7 +680,7 @@ sub_8096970: @ 0x08096970
 	movs r1, #0x32
 	movs r2, #5
 	movs r3, #2
-	bl sub_80935C4
+	bl PrepItemDrawPopupBox
 	ldr r3, _080969A0 @ =Sprite_32x16
 	ldr r0, _080969A4 @ =0x0000B088
 	str r0, [sp]

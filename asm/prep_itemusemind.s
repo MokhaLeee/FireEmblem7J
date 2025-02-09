@@ -276,7 +276,7 @@ PrepItemUseBooster_IDLE: @ 0x08096330
 	ldr r3, [r5, #0x4c]
 	ldr r4, _0809636C @ =0x0000A580
 	str r4, [sp]
-	bl sub_80935C4
+	bl PrepItemDrawPopupBox
 	ldr r0, [r5, #0x2c]
 	subs r0, #1
 	str r0, [r5, #0x2c]
