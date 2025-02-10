@@ -244,7 +244,7 @@ _08093A2C:
 	ands r0, r1
 	strb r0, [r2, #1]
 _08093A42:
-	ldr r3, _08093A8C @ =gUnk_08D8CDA8
+	ldr r3, _08093A8C @ =Sprite_08D8CDA8
 	movs r4, #0x40
 	str r4, [sp]
 	movs r0, #4
@@ -278,7 +278,7 @@ _08093A60:
 	b _08093AA2
 	.align 2, 0
 _08093A88: .4byte gDispIo
-_08093A8C: .4byte gUnk_08D8CDA8
+_08093A8C: .4byte Sprite_08D8CDA8
 _08093A90: .4byte Sprite_08D8CDD0
 _08093A94:
 	ldr r3, _08093AB0 @ =Sprite_08D8CDBC

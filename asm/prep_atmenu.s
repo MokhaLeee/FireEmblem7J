@@ -521,12 +521,12 @@ _0808F6EC:
 	bl StartPrepItemScreen
 	b _0808F734
 _0808F6F4:
-	ldr r0, _0808F700 @ =gUnk_08D8CDE4
+	ldr r0, _0808F700 @ =ProcScr_PrepUnitScreen
 	adds r1, r4, #0
 	bl Proc_StartBlocking
 	b _0808F734
 	.align 2, 0
-_0808F700: .4byte gUnk_08D8CDE4
+_0808F700: .4byte ProcScr_PrepUnitScreen
 _0808F704:
 	adds r0, r4, #0
 	adds r0, #0x2e

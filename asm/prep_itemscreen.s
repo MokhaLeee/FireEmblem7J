@@ -755,8 +755,8 @@ _08092304: .4byte gUnk_084295B4
 _08092308: .4byte 0x06010000
 _0809230C: .4byte gUnk_08429638
 
-	thumb_func_start sub_8092310
-sub_8092310: @ 0x08092310
+	thumb_func_start PrepItemScreen_Reinit
+PrepItemScreen_Reinit: @ 0x08092310
 	push {r4, r5, r6, r7, lr}
 	sub sp, #4
 	adds r6, r0, #0
@@ -1175,8 +1175,8 @@ _08092698:
 	.align 2, 0
 _080926A0: .4byte 0x0000FFD8
 
-	thumb_func_start sub_80926A4
-sub_80926A4: @ 0x080926A4
+	thumb_func_start PrepItemScreen_StartStatScreen
+PrepItemScreen_StartStatScreen: @ 0x080926A4
 	push {r4, lr}
 	adds r4, r0, #0
 	bl PrepItemScreen_OnEnd
@@ -1195,8 +1195,8 @@ sub_80926A4: @ 0x080926A4
 	bx r0
 	.align 2, 0
 
-	thumb_func_start sub_80926D0
-sub_80926D0: @ 0x080926D0
+	thumb_func_start PrepItemScreen_ResumeFromStatScreen
+PrepItemScreen_ResumeFromStatScreen: @ 0x080926D0
 	push {r4, lr}
 	adds r4, r0, #0
 	bl PrepItemScreen_SetupGfx
@@ -1731,7 +1731,7 @@ _08092B46:
 	lsrs r1, r1, #1
 	lsls r1, r1, #4
 	adds r1, #0x54
-	ldr r3, _08092B7C @ =gUnk_08D8C9A8
+	ldr r3, _08092B7C @ =gHelpTextIds_PrepItemScreen
 	ldrb r2, [r2]
 	lsls r2, r2, #2
 	adds r2, r2, r3
@@ -1740,7 +1740,7 @@ _08092B46:
 	b _08092E70
 	.align 2, 0
 _08092B78: .4byte gpKeySt
-_08092B7C: .4byte gUnk_08D8C9A8
+_08092B7C: .4byte gHelpTextIds_PrepItemScreen
 _08092B80:
 	movs r0, #1
 	ands r0, r1
@@ -2101,7 +2101,7 @@ _08092E2C:
 	lsrs r1, r1, #1
 	lsls r1, r1, #4
 	adds r1, #0x54
-	ldr r3, _08092E80 @ =gUnk_08D8C9A8
+	ldr r3, _08092E80 @ =gHelpTextIds_PrepItemScreen
 	ldrb r4, [r4]
 	lsls r2, r4, #2
 	adds r2, r2, r3
@@ -2114,7 +2114,7 @@ _08092E70:
 	.align 2, 0
 _08092E78: .4byte gPlaySt
 _08092E7C: .4byte 0x00000385
-_08092E80: .4byte gUnk_08D8C9A8
+_08092E80: .4byte gHelpTextIds_PrepItemScreen
 
 	thumb_func_start sub_8092E84
 sub_8092E84: @ 0x08092E84
@@ -2286,8 +2286,8 @@ sub_8093004: @ 0x08093004
 	pop {r0}
 	bx r0
 
-	thumb_func_start sub_8093014
-sub_8093014: @ 0x08093014
+	thumb_func_start PrepItemScreen_Loop_MainKeyHandler
+PrepItemScreen_Loop_MainKeyHandler: @ 0x08093014
 	push {r4, r5, r6, r7, lr}
 	sub sp, #4
 	adds r6, r0, #0
@@ -2438,8 +2438,8 @@ _0809315C: .4byte 0x00000502
 _08093160: .4byte 0x02012A48
 _08093164: .4byte gBg0Tm + 0x25e
 
-	thumb_func_start sub_8093168
-sub_8093168: @ 0x08093168
+	thumb_func_start StartPrepItemTradeScreen
+StartPrepItemTradeScreen: @ 0x08093168
 	push {r4, r5, lr}
 	adds r4, r0, #0
 	bl PrepItemScreen_OnEnd
@@ -2487,8 +2487,8 @@ sub_80931B0: @ 0x080931B0
 	pop {r0}
 	bx r0
 
-	thumb_func_start sub_80931C8
-sub_80931C8: @ 0x080931C8
+	thumb_func_start StartPrepArmory
+StartPrepArmory: @ 0x080931C8
 	push {r4, lr}
 	adds r4, r0, #0
 	adds r0, #0x2a

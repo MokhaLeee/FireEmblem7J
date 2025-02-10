@@ -1,41 +1,5 @@
 	.section .data
 
-	.global ProcScr_ViewCounter
-ProcScr_ViewCounter:	@ 0x08D8C94C
-	.incbin "FireEmblem7J.base.gba", 0xD8C94C, 0xD8C96C - 0xD8C94C
-
-	.global ProcScr_PrepHelpboxListener
-ProcScr_PrepHelpboxListener:	@ 0x08D8C96C
-	.incbin "FireEmblem7J.base.gba", 0xD8C96C, 0xD8C984 - 0xD8C96C
-
-	.global gPrepItemTypePageLut
-gPrepItemTypePageLut:	@ 0x08D8C984
-	.incbin "FireEmblem7J.base.gba", 0xD8C984, 0xD8C9A8 - 0xD8C984
-
-	.global gUnk_08D8C9A8
-gUnk_08D8C9A8:	@ 0x08D8C9A8
-	.incbin "FireEmblem7J.base.gba", 0xD8C9A8, 0xD8C9C0 - 0xD8C9A8
-
-	.global ProcScr_PrepItemScreen
-ProcScr_PrepItemScreen:	@ 0x08D8C9C0
-	.incbin "FireEmblem7J.base.gba", 0xD8C9C0, 0xD8CDA8 - 0xD8C9C0
-
-	.global gUnk_08D8CDA8
-gUnk_08D8CDA8:	@ 0x08D8CDA8
-	.incbin "FireEmblem7J.base.gba", 0xD8CDA8, 0xD8CDBC - 0xD8CDA8
-
-	.global Sprite_08D8CDBC
-Sprite_08D8CDBC:	@ 0x08D8CDBC
-	.incbin "FireEmblem7J.base.gba", 0xD8CDBC, 0xD8CDD0 - 0xD8CDBC
-
-	.global Sprite_08D8CDD0
-Sprite_08D8CDD0:	@ 0x08D8CDD0
-	.incbin "FireEmblem7J.base.gba", 0xD8CDD0, 0xD8CDE4 - 0xD8CDD0
-
-	.global gUnk_08D8CDE4
-gUnk_08D8CDE4:	@ 0x08D8CDE4
-	.incbin "FireEmblem7J.base.gba", 0xD8CDE4, 0xD8CF74 - 0xD8CDE4
-
 	.global ProcScr_PrepItemTradeScreen
 ProcScr_PrepItemTradeScreen:	@ 0x08D8CF74
 	.incbin "FireEmblem7J.base.gba", 0xD8CF74, 0xD8CFBC - 0xD8CF74

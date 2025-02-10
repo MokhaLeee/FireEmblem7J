@@ -354,7 +354,9 @@ SECTIONS
 		src/prep_bgscroll.o(.text);
 		src/prep_sallycir.o(.text);
 		asm/prep_sallycir.o(.text);
+		src/prep_utils.o(.text);
 		asm/prep_utils.o(.text);
+		src/prep_itemscreen.o(.text);
 		asm/prep_itemscreen.o(.text);
 		asm/prep_unitselect.o(.text);
 		asm/prep_itemtrade.o(.text);
@@ -523,6 +525,9 @@ SECTIONS
 		. = ALIGN(4); src/prep_menuscroll.o(.data)
 		. = ALIGN(4); src/prep_bgscroll.o(.data)
 		. = ALIGN(4); src/prep_sallycir.o(.data)
+		. = ALIGN(4); src/prep_utils.o(.data)
+		. = ALIGN(4); src/prep_itemscreen.o(.data)
+		. = ALIGN(4); src/prep_unitselect.o(.data)
 		. = ALIGN(4); data/prepscreen.o(.data)
 		. = ALIGN(4); src/save_core.o(.data)
 		. = ALIGN(4); data/data_08DAD284.o(.data)
