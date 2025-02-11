@@ -75,7 +75,7 @@ int IsFirstPlaythrough(void);
 // sub_802EB7C
 // sub_802EBA0
 const char* sub_802EBB0();
-// SetTacticianName
+void SetTacticianName(const char *name);
 // sub_802EBCC
 // sub_802EBD4
 // sub_802EBF8
@@ -737,7 +737,9 @@ bool sub_80886E0(void);
 // sub_809EE0C
 // nullsub_81
 
+/* save.h */
 /* chapter-title.h */
+/* cursor_hand.h */
 
 // sub_80AB970
 // sub_80ABAAC

@@ -129,7 +129,7 @@ ProcScr_GameControl: @ 0xC01744
         .word 0x0
         @ PROC_CALL
         .short 0x2, 0x0
-        .word GC_SelectMark
+        .word GC_TacticianConfig
         @ PROC_YIELD
         .short 0xe, 0x0
         .word 0x0

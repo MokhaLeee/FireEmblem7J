@@ -79,7 +79,8 @@ struct PlaySt {
              u8 unk_2B_01 : 0x03;
              u8 unk_2B_04 : 0x04;
 
-    u32 unk2C_00 : 0x04;
+    u32 unk2C_00 : 0x01;
+    u32 unk2C_01 : 0x03;
     u32 unk2C_11 : 0x09;
     u32 unk2C_0D : 0x13;
 

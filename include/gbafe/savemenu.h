@@ -198,10 +198,19 @@ ProcPtr StartSpinRotation(ProcPtr parent);
 // ??? sub_80A739C
 // ??? sub_80A73C4
 // ??? sub_80A7404
-// ??? sub_80A7424
-// ??? sub_80A7514
-// ??? sub_80A7584
-// ??? sub_80A75C4
+
+/* tactician */
+struct ProcTacticianConfig {
+    PROC_HEADER;
+
+    /* 2C */ int state;
+    /* 30 */ u8 unk_30;
+};
+
+void sub_80A7424(void);
+void TacticianConfigFx_Thread(struct ProcTacticianConfig *proc);
+void TacticianConfig_Init(struct ProcTacticianConfig *proc);
+// ??? TacticianConfig_SetupGfx
 // ??? sub_80A76C8
 // ??? sub_80A76FC
 // ??? sub_80A773C
@@ -213,7 +222,7 @@ ProcPtr StartSpinRotation(ProcPtr parent);
 // ??? sub_80A79B8
 // ??? sub_80A79C8
 // ??? sub_80A7A60
-// ??? GC_SelectMark
+// ??? GC_TacticianConfig
 // ??? sub_80A7AA8
 // ??? sub_80A7AB8
 // ??? sub_80A7AC8

@@ -12,6 +12,7 @@ SECTIONS
 	. = __ewram_overlay_beg;
     ewram_overlay_0 (NOLOAD) : ALIGN(4)
 	{
+		. = 0x00006C; src/savemenu_tactician.o(ewram_overlay_0);
 		. = 0x0000F4; gBonusClaimData = .;
 
 		. = 0x001F70;
@@ -378,6 +379,8 @@ SECTIONS
 		src/savedrawfx.o(.text);
 		asm/savedrawfx.o(.text);
 		asm/savemenu_difficulty.o(.text);
+		src/savemenu_tactician.o(.text);
+		asm/savemenu_tactician.o(.text);
 		src/savemenu_modeselect.o(.text);
 		src/scrolling_util.o(.text);
 		asm/cursor_hand.o(.text);
@@ -535,6 +538,8 @@ SECTIONS
 		. = ALIGN(4); data/savemenu.o(.data)
 		. = ALIGN(4); src/savedrawfx.o(.data)
 		. = ALIGN(4); data/savedrawfx.o(.data)
+		. = ALIGN(4); src/savemenu_tactician.o(.data)
+		. = ALIGN(4); data/savemenu_tactician.o(.data)
 		. = ALIGN(4); src/savemenu_modeselect.o(.data)
 		. = ALIGN(4); data/cursor_hand.o(.data)
 		. = ALIGN(4); src/sysutil.o(.data)

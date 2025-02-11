@@ -2021,7 +2021,7 @@ sub_809C9F8: @ 0x0809C9F8
 	push {r7}
 	sub sp, #8
 	ldr r4, _0809CAE8 @ =0x020129A8
-	ldr r0, _0809CAEC @ =gUnk_08190268
+	ldr r0, _0809CAEC @ =Pal_08190268
 	movs r1, #0
 	movs r2, #0x20
 	bl ApplyPaletteExt
@@ -2120,7 +2120,7 @@ sub_809C9F8: @ 0x0809C9F8
 	bx r0
 	.align 2, 0
 _0809CAE8: .4byte 0x020129A8
-_0809CAEC: .4byte gUnk_08190268
+_0809CAEC: .4byte Pal_08190268
 _0809CAF0: .4byte gBg2Tm + 0x120
 _0809CAF4: .4byte Unk_081C8FCC
 _0809CAF8: .4byte gPlaySt
@@ -2211,10 +2211,10 @@ sub_809CB24: @ 0x0809CB24
 	movs r0, #4
 	bl ApplyIconPalettes
 	bl PrepRestartMuralBackground
-	ldr r0, _0809CD24 @ =gUnk_084364A0
+	ldr r0, _0809CD24 @ =Img_TacticianConfigBg
 	ldr r1, _0809CD28 @ =0x06000400
 	bl Decompress
-	ldr r0, _0809CD2C @ =gUnk_08436480
+	ldr r0, _0809CD2C @ =Pal_TacticianConfigBg
 	movs r1, #0xf0
 	lsls r1, r1, #1
 	movs r2, #0x20
@@ -2372,9 +2372,9 @@ _0809CC80:
 	bx r0
 	.align 2, 0
 _0809CD20: .4byte gDispIo
-_0809CD24: .4byte gUnk_084364A0
+_0809CD24: .4byte Img_TacticianConfigBg
 _0809CD28: .4byte 0x06000400
-_0809CD2C: .4byte gUnk_08436480
+_0809CD2C: .4byte Pal_TacticianConfigBg
 _0809CD30: .4byte gBg1Tm
 _0809CD34: .4byte gUnk_08438D90
 _0809CD38: .4byte 0x0000F020

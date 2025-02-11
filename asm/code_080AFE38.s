@@ -17157,7 +17157,7 @@ sub_80B82DC: @ 0x080B82DC
 	push {r4, r5, lr}
 	adds r4, r0, #0
 	bl sub_80B7C10
-	ldr r0, _080B836C @ =gUnk_08190268
+	ldr r0, _080B836C @ =Pal_08190268
 	movs r1, #0xd0
 	lsls r1, r1, #2
 	movs r2, #0x20
@@ -17219,7 +17219,7 @@ sub_80B82DC: @ 0x080B82DC
 	pop {r0}
 	bx r0
 	.align 2, 0
-_080B836C: .4byte gUnk_08190268
+_080B836C: .4byte Pal_08190268
 _080B8370: .4byte 0x02000830
 _080B8374: .4byte gDispIo
 _080B8378: .4byte 0x0000FFE0
@@ -17559,7 +17559,7 @@ sub_80B85F4: @ 0x080B85F4
 	subs r0, #6
 	strh r1, [r0]
 	strh r1, [r5, #0x3e]
-	ldr r0, _080B86A4 @ =gUnk_08190268
+	ldr r0, _080B86A4 @ =Pal_08190268
 	movs r1, #0xd0
 	lsls r1, r1, #2
 	movs r2, #0x20
@@ -17630,7 +17630,7 @@ _080B868A:
 	pop {r0}
 	bx r0
 	.align 2, 0
-_080B86A4: .4byte gUnk_08190268
+_080B86A4: .4byte Pal_08190268
 _080B86A8: .4byte sub_80B79FC
 _080B86AC: .4byte gDispIo
 _080B86B0: .4byte 0x0000FFE0

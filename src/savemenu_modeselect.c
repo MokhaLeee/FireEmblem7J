@@ -49,10 +49,6 @@ extern struct AnimMagicFxBuffer gUnk_0201E97C[];
 
 extern u8 Img_ModeSelect_Menu[];
 extern u16 Pal_ModeSelect_Menu[];
-extern u8 Tsa_ModeSelect_Menu[];
-
-extern u8 Tsa_084352FC[];
-extern u16 Pal_08434448[];
 
 extern u8 Img_ModeSelect_Sprites[];
 extern u16 Pal_ModeSelect_Sprites[];

@@ -48,6 +48,7 @@
 #include "gbafe/map.h"
 #include "gbafe/mapwork.h"
 #include "gbafe/save.h"
+#include "gbafe/cursor_hand.h"
 #include "gbafe/statscreen.h"
 #include "gbafe/chapter-title.h"
 #include "gbafe/sysutil.h"
