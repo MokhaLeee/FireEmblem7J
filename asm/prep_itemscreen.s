@@ -1455,7 +1455,7 @@ sub_8092920: @ 0x08092920
 	movs r0, #1
 	strb r0, [r1]
 	ldr r0, _08092A08 @ =gBg1Tm
-	ldr r1, _08092A0C @ =gUnk_08420810
+	ldr r1, _08092A0C @ =Tsa_08420810
 	movs r2, #0xa6
 	lsls r2, r2, #7
 	bl TmApplyTsa_thm
@@ -1544,7 +1544,7 @@ _0809294A:
 	bx r0
 	.align 2, 0
 _08092A08: .4byte gBg1Tm
-_08092A0C: .4byte gUnk_08420810
+_08092A0C: .4byte Tsa_08420810
 _08092A10: .4byte gBg2Tm
 _08092A14: .4byte gBg0Tm + 0x106
 _08092A18: .4byte 0x02012A98
@@ -2153,7 +2153,7 @@ sub_8092EDC: @ 0x08092EDC
 	movs r1, #0xa
 	bl sub_80922DC
 	ldr r0, _08092FF0 @ =gBg1Tm
-	ldr r1, _08092FF4 @ =gUnk_08420CC4
+	ldr r1, _08092FF4 @ =Tsa_08420CC4
 	movs r2, #0xa6
 	lsls r2, r2, #7
 	bl TmApplyTsa_thm
@@ -2244,7 +2244,7 @@ sub_8092EDC: @ 0x08092EDC
 	.align 2, 0
 _08092FEC: .4byte gBg0Tm
 _08092FF0: .4byte gBg1Tm
-_08092FF4: .4byte gUnk_08420CC4
+_08092FF4: .4byte Tsa_08420CC4
 _08092FF8: .4byte 0x00000503
 _08092FFC: .4byte 0x00000502
 _08093000: .4byte sub_8092E84

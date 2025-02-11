@@ -1574,8 +1574,8 @@ extern u16 Pal_0841F8B4[];
 extern u16 Pal_0841F954[];
 // ??? gUnk_0841F9F4
 // ??? gUnk_0842035C
-// ??? gUnk_08420810
-// ??? gUnk_08420CC4
+// ??? Tsa_08420810
+// ??? Tsa_08420CC4
 extern u8 TSA_0842162C[];
 extern u8 TSA_08421644[];
 extern u8 TSA_08421684[];
