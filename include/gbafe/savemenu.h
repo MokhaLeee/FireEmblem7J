@@ -223,9 +223,9 @@ void TacticianConfig_Init(struct ProcTacticianConfig *proc);
 // ??? sub_80A79C8
 // ??? sub_80A7A60
 // ??? GC_TacticianConfig
-// ??? sub_80A7AA8
-// ??? sub_80A7AB8
-// ??? sub_80A7AC8
+int sub_80A7AA8(int);
+int sub_80A7AB8(int);
+int sub_80A7AC8(int);
 // ??? sub_80A7AD8
 // ??? sub_80A7AE8
 // ??? sub_80A7B2C

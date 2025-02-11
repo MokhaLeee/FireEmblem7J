@@ -6,7 +6,7 @@
 // ??? UiCursorHand_Init
 // ??? sub_80A9838
 ProcPtr StartUiCursorHand(ProcPtr parent);
-// ??? SetUiCursorHandConfig
+void SetUiCursorHandConfig(int index, int x, int y, u8 flags);
 // ??? UiCursorHand_80A9954
 // ??? sub_80A998C
 // ??? sub_80A99AC
