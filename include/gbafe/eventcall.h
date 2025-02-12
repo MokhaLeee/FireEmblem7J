@@ -67,8 +67,8 @@
 // sub_8079890
 // sub_8079894
 // sub_80798D4
-// sub_8079910
-// sub_8079950
+// CheckForWaitEvents
+// RunWaitEvents
 // sub_8079990
 // sub_80799A0
 // sub_80799C0

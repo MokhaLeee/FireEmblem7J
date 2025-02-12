@@ -2784,8 +2784,8 @@ _080A07BA:
 _080A07C0: .4byte 0x0203E768
 _080A07C4: .4byte 0x000003E7
 
-	thumb_func_start sub_80A07C8
-sub_80A07C8: @ 0x080A07C8
+	thumb_func_start PidStatsRecordLoseData
+PidStatsRecordLoseData: @ 0x080A07C8
 	push {r4, r5, r6, r7, lr}
 	mov r7, r8
 	push {r7}
@@ -2891,8 +2891,8 @@ _080A08A8: .4byte gBmSt
 _080A08AC: .4byte gPlaySt
 _080A08B0: .4byte 0x000019DC
 
-	thumb_func_start sub_80A08B4
-sub_80A08B4: @ 0x080A08B4
+	thumb_func_start PidStatsRecordDefeatInfo
+PidStatsRecordDefeatInfo: @ 0x080A08B4
 	push {r4, r5, r6, lr}
 	adds r4, r2, #0
 	lsls r0, r0, #0x18
@@ -3463,7 +3463,7 @@ _080A0CC4:
 	bne _080A0CDA
 	ldr r0, [r7]
 	ldrb r0, [r0, #4]
-	bl sub_80A07C8
+	bl PidStatsRecordLoseData
 _080A0CDA:
 	pop {r4, r5, r6, r7}
 	pop {r0}

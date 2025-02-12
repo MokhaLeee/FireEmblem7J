@@ -2814,7 +2814,7 @@ _0807E85C:
 	lsrs r0, r0, #0x18
 	movs r1, #0
 	movs r2, #6
-	bl sub_80A08B4
+	bl PidStatsRecordDefeatInfo
 	adds r0, r4, #0
 	bl UnitKill
 	adds r0, r4, #0

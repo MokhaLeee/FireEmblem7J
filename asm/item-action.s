@@ -442,7 +442,7 @@ _0802CB88: .4byte gBattleTarget
 	thumb_func_start sub_802CB8C
 sub_802CB8C: @ 0x0802CB8C
 	push {lr}
-	bl sub_8034A50
+	bl ExecTrapAfterWarp
 	lsls r0, r0, #0x18
 	asrs r0, r0, #0x18
 	pop {r1}
@@ -455,7 +455,7 @@ sub_802CB9C: @ 0x0802CB9C
 	ldr r0, _0802CBC4 @ =gActionSt
 	ldrb r0, [r0, #0xd]
 	bl GetUnit
-	bl sub_806EAA4
+	bl GetUnitMu
 	bl EndMu
 	bl RefreshEntityMaps
 	bl RenderMap

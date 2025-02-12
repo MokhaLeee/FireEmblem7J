@@ -198,8 +198,8 @@ struct PidStats
 // ??? sub_80A06BC
 // ??? PidStatsAddBattleAmt
 // ??? sub_80A0768
-// ??? sub_80A07C8
-// ??? sub_80A08B4
+// ??? PidStatsRecordLoseData
+// ??? PidStatsRecordDefeatInfo
 // ??? sub_80A0938
 void PidStatsAddStatView(u8 pid);
 // ??? sub_80A09B8

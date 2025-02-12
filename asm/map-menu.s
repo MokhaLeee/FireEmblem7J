@@ -995,14 +995,14 @@ sub_802216C: @ 0x0802216C
 	ldrb r0, [r1, #3]
 	strb r0, [r2, #0x15]
 _0802218C:
-	ldr r0, _0802219C @ =gUnk_08C06030
+	ldr r0, _0802219C @ =ProcScr_BKSEL
 	bl Proc_EndEach
 	movs r0, #0x17
 	pop {r1}
 	bx r1
 	.align 2, 0
 _08022198: .4byte gActionSt
-_0802219C: .4byte gUnk_08C06030
+_0802219C: .4byte ProcScr_BKSEL
 
 	thumb_func_start sub_80221A0
 sub_80221A0: @ 0x080221A0
@@ -1096,7 +1096,7 @@ _0802223C:
 	adds r2, r3, #0
 	bl BattleGenerateSimulation
 _08022250:
-	bl sub_803463C
+	bl UpdateBattleForecastContents
 	movs r0, #0
 	add sp, #4
 	pop {r4, r5}
@@ -1114,7 +1114,7 @@ sub_8022264: @ 0x08022264
 	movs r0, #4
 	bl EnableBgSync
 	bl HideMoveRangeGraphics
-	bl sub_8034664
+	bl CloseBattleForecast
 	movs r0, #0
 	pop {r1}
 	bx r1

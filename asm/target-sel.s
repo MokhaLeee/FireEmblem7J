@@ -2231,10 +2231,10 @@ _08024F28:
 	ldrb r0, [r0, #4]
 	movs r1, #0
 	mov r2, r8
-	bl sub_80A08B4
+	bl PidStatsRecordDefeatInfo
 	ldr r0, [r5]
 	ldrb r0, [r0, #4]
-	bl sub_80A07C8
+	bl PidStatsRecordLoseData
 _08024F5A:
 	adds r6, #1
 	cmp r6, r7

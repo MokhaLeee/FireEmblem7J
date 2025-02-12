@@ -1271,14 +1271,14 @@ _0801D04A:
 	thumb_func_start sub_801D050
 sub_801D050: @ 0x0801D050
 	push {lr}
-	bl sub_8079910
+	bl CheckForWaitEvents
 	lsls r0, r0, #0x18
 	cmp r0, #0
 	bne _0801D060
 	movs r0, #1
 	b _0801D066
 _0801D060:
-	bl sub_8079950
+	bl RunWaitEvents
 	movs r0, #0
 _0801D066:
 	pop {r1}

@@ -78,8 +78,8 @@ struct ProcBmFx {
 // sub_801EFC8
 // sub_801F088
 // sub_801F0B8
-// sub_801F114
-// sub_801F144
+// StartFireTrapAnim1
+// StartFireTrapAnim2
 // sub_801F174
 // sub_801F208
 // sub_801F260

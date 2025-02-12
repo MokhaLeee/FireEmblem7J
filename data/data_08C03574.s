@@ -320,8 +320,8 @@ gUnk_08C06028:	@ 0x08C06028
 gUnk_08C0602C:	@ 0x08C0602C
 	.incbin "FireEmblem7J.base.gba", 0xC0602C, 0xC06030 - 0xC0602C
 
-	.global gUnk_08C06030
-gUnk_08C06030:	@ 0x08C06030
+	.global ProcScr_BKSEL
+ProcScr_BKSEL:	@ 0x08C06030
 	.incbin "FireEmblem7J.base.gba", 0xC06030, 0xC060A8 - 0xC06030
 
 	.global gUnk_08C060A8

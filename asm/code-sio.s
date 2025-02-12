@@ -19532,7 +19532,7 @@ _0804633C:
 	cmp r4, #0
 	bne _08046394
 	adds r0, r6, #0
-	bl sub_80345D4
+	bl NewBattleForecast
 	mov r0, r8
 	ldrb r0, [r0, #6]
 	cmp r0, #2
@@ -19551,7 +19551,7 @@ _08046366:
 	mov r0, sb
 	adds r1, r5, #0
 	bl BattleGenerateSimulation
-	bl sub_803463C
+	bl UpdateBattleForecastContents
 	ldr r0, [r7]
 	bl sub_80452F8
 	adds r0, r6, #0
@@ -19596,7 +19596,7 @@ sub_80463B4: @ 0x080463B4
 	ldr r0, _080463EC @ =0x0000038A
 	bl m4aSongNumStart
 _080463D8:
-	bl sub_8034664
+	bl CloseBattleForecast
 	adds r0, r4, #0
 	bl Proc_Break
 	b _08046416
@@ -19618,7 +19618,7 @@ _080463F0:
 	ldr r0, _08046420 @ =0x0000038B
 	bl m4aSongNumStart
 _0804640A:
-	bl sub_8034664
+	bl CloseBattleForecast
 	adds r0, r4, #0
 	movs r1, #0
 	bl Proc_Goto

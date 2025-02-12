@@ -3190,8 +3190,8 @@ _0801F108: .4byte 0x06014800
 _0801F10C: .4byte gBmSt
 _0801F110: .4byte gUnk_08193CD8
 
-	thumb_func_start sub_801F114
-sub_801F114: @ 0x0801F114
+	thumb_func_start StartFireTrapAnim1
+StartFireTrapAnim1: @ 0x0801F114
 	push {r4, r5, r6, lr}
 	adds r4, r0, #0
 	adds r5, r1, #0
@@ -3213,8 +3213,8 @@ sub_801F114: @ 0x0801F114
 _0801F13C: .4byte Pal_DragonFlameSmallFire
 _0801F140: .4byte gUnk_08C02AD0
 
-	thumb_func_start sub_801F144
-sub_801F144: @ 0x0801F144
+	thumb_func_start StartFireTrapAnim2
+StartFireTrapAnim2: @ 0x0801F144
 	push {r4, r5, r6, lr}
 	adds r4, r0, #0
 	adds r5, r1, #0

@@ -2272,8 +2272,8 @@ _0807990A:
 	pop {r1}
 	bx r1
 
-	thumb_func_start sub_8079910
-sub_8079910: @ 0x08079910
+	thumb_func_start CheckForWaitEvents
+CheckForWaitEvents: @ 0x08079910
 	push {lr}
 	sub sp, #0x1c
 	ldr r0, _08079940 @ =gPlaySt
@@ -2306,8 +2306,8 @@ _0807994A:
 	pop {r1}
 	bx r1
 
-	thumb_func_start sub_8079950
-sub_8079950: @ 0x08079950
+	thumb_func_start RunWaitEvents
+RunWaitEvents: @ 0x08079950
 	push {lr}
 	sub sp, #0x1c
 	ldr r0, _08079988 @ =gPlaySt
@@ -2870,7 +2870,7 @@ _08079D42:
 	lsrs r0, r0, #0x18
 	movs r1, #0
 	movs r2, #7
-	bl sub_80A08B4
+	bl PidStatsRecordDefeatInfo
 	adds r0, r4, #0
 	bl UnitKill
 	adds r0, r4, #0

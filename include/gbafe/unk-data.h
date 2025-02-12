@@ -1870,7 +1870,7 @@ extern struct ProcCmd ProcScr_BmMain_08C05F30[];
 // ??? gUnk_08C06008
 // ??? gUnk_08C06028
 // ??? gUnk_08C0602C
-// ??? gUnk_08C06030
+// ??? ProcScr_BKSEL
 // ??? gUnk_08C060A8
 // ??? gUnk_08C060B4
 // ??? gUnk_08C06104

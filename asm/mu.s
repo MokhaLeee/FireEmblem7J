@@ -5415,8 +5415,8 @@ _0806EA9C:
 	pop {r1}
 	bx r1
 
-	thumb_func_start sub_806EAA4
-sub_806EAA4: @ 0x0806EAA4
+	thumb_func_start GetUnitMu
+GetUnitMu: @ 0x0806EAA4
 	push {r7, lr}
 	sub sp, #0xc
 	mov r7, sp
