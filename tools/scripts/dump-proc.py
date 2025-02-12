@@ -137,7 +137,7 @@ def main(args):
                 continue
 
             if opc == 0x18:
-                print(f"PROC_CALL_ARG({sym}, {arg}),")
+                print(f"    PROC_CALL_ARG({sym}, {arg}),")
                 continue
 
             if opc == 0x19:
