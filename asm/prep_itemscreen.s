@@ -348,7 +348,7 @@ _08091E58:
 	movs r1, #0
 	movs r2, #0
 	movs r3, #0xd0
-	bl UiCursorHand_80A9954
+	bl UiCursorHand_SetPosition
 	movs r0, #0xc0
 	lsls r0, r0, #3
 	movs r1, #1
@@ -811,7 +811,7 @@ PrepItemScreen_Reinit: @ 0x08092310
 	movs r1, #0
 	bl sub_80937E0
 	bl UnblockUiCursorHand
-	bl sub_80A99AC
+	bl DisableAllUiCursorHand
 	movs r0, #0xc9
 	movs r1, #0x7b
 	adds r2, r6, #0
@@ -1592,7 +1592,7 @@ sub_8092A1C: @ 0x08092A1C
 	lsls r0, r0, #0x18
 	cmp r0, #0
 	beq _08092A88
-	bl sub_80A99D0
+	bl BlockUiCursorHand
 	b _08092A8C
 	.align 2, 0
 _08092A84: .4byte gBg0Tm + 0x25e
@@ -1908,7 +1908,7 @@ _08092D0C:
 	movs r0, #0xff
 	strb r0, [r2]
 	movs r0, #0
-	bl sub_80A998C
+	bl DisableUiCursorHand
 	ldr r0, _08092D48 @ =gPlaySt
 	adds r0, #0x41
 	ldrb r0, [r0]

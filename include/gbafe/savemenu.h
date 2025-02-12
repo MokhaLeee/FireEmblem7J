@@ -192,8 +192,8 @@ ProcPtr StartSpinRotation(ProcPtr parent);
 // ??? sub_80A71EC
 // ??? SaveMenuGetValidMenuAmt
 // ??? nullsub_84
-// ??? sub_80A7328
-// ??? sub_80A7374
+// ??? TacticianConfig_StartHelpbox
+// ??? TacticianConfig_CloseHelpbox
 // ??? sub_80A7388
 // ??? sub_80A739C
 // ??? sub_80A73C4
@@ -203,8 +203,8 @@ ProcPtr StartSpinRotation(ProcPtr parent);
 struct ProcTacticianConfig {
     PROC_HEADER;
 
-    /* 2C */ int state;
-    /* 30 */ u8 unk_30;
+    /* 2C */ int cur_index;
+    /* 30 */ bool do_helpbox;
 };
 
 void sub_80A7424(void);

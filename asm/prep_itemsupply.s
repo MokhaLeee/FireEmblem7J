@@ -1135,7 +1135,7 @@ sub_8096D88: @ 0x08096D88
 	adds r1, r4, #0
 	bl sub_8096430
 	movs r0, #0
-	bl sub_80A998C
+	bl DisableUiCursorHand
 	adds r0, r4, #0
 	bl sub_80967C0
 	adds r0, r4, #0

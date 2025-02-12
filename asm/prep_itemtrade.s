@@ -930,7 +930,7 @@ _08095002:
 	bl m4aSongNumStart
 _08095014:
 	movs r0, #0
-	bl sub_80A998C
+	bl DisableUiCursorHand
 	ldr r1, [r6, #0x38]
 	str r1, [r6, #0x34]
 	movs r0, #0xff
@@ -984,7 +984,7 @@ _08095052:
 	bl m4aSongNumStart
 _08095084:
 	movs r0, #0
-	bl sub_80A998C
+	bl DisableUiCursorHand
 	b _080951B6
 	.align 2, 0
 _0809508C: .4byte gPlaySt

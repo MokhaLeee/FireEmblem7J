@@ -2095,7 +2095,7 @@ _08098DA8: .4byte gPrepScreenItemList
 _08098DAC: .4byte 0x000003B3
 _08098DB0:
 	movs r0, #0
-	bl sub_80A998C
+	bl DisableUiCursorHand
 	adds r0, r5, #0
 	bl Proc_Break
 	adds r0, r5, #0
@@ -2107,7 +2107,7 @@ _08098DC4:
 	cmp r0, #0
 	beq _08098DF4
 	movs r0, #0
-	bl sub_80A998C
+	bl DisableUiCursorHand
 	adds r0, r5, #0
 	bl Proc_Break
 	ldr r0, _08098DEC @ =gPlaySt

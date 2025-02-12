@@ -1350,7 +1350,7 @@ sub_8095D58: @ 0x08095D58
 	movs r2, #0xb
 	bl ShowSysHandCursor
 	movs r0, #0
-	bl sub_80A998C
+	bl DisableUiCursorHand
 	bl sub_8095D1C
 	ldr r0, _08095DB8 @ =gPlaySt
 	adds r0, #0x41
@@ -1412,7 +1412,7 @@ _08095DFC:
 	bl m4aSongNumStart
 _08095E20:
 	movs r0, #0
-	bl sub_80A998C
+	bl DisableUiCursorHand
 _08095E26:
 	adds r0, r4, #0
 	bl Proc_Break
@@ -1615,7 +1615,7 @@ PrepItemUse_ExecPromotionItem: @ 0x08095FAC
 	movs r0, #0
 	bl EndFaceById
 	movs r0, #0
-	bl sub_80A998C
+	bl DisableUiCursorHand
 	ldr r0, [r4, #0x2c]
 	ldr r1, [r4, #0x30]
 	movs r2, #0

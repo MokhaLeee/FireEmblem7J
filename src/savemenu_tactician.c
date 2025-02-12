@@ -1,11 +1,18 @@
 #include "gbafe.h"
 
+enum {
+	BGCHR_TACTICIAN_BGSCROLL = 0x8000 / 0x20,
+	BGPAL_TACTICIAN_BGSCROLL = 0xA,
+
+	OBPAL_TACTICIAN_TEXTSHADOW = 1,
+};
+
 EWRAM_OVERLAY(0) struct Font gTacticianConfigFont = {};
 EWRAM_OVERLAY(0) struct Text gTacticianConfigTexts[3] = {};
 
 // tactician config position
-struct Vec4u { int x, y; };
-CONST_DATA struct Vec4u gUnk_08DADD90[] = {
+
+CONST_DATA struct Vec4 TacticianConfigPos[] = {
 	{ 0x6C, 0x28 },
 	{ 0x44, 0x48 },
 	{ 0x7C, 0x48 },
@@ -13,16 +20,67 @@ CONST_DATA struct Vec4u gUnk_08DADD90[] = {
 };
 
 // tactician config msg
-CONST_DATA int gUnk_08DADDB0[] = {
-	MSG_3E4,
-	MSG_3E5,
-	MSG_3E6,
-	MSG_3E7
+CONST_DATA int TacticianConfigHelpboxMsgs[] = {
+	MSG_3E4, // 軍師の名前です
+	MSG_3E5, // 軍師の血液型です
+	MSG_3E6, // 軍師の生まれた月です
+	MSG_3E7  // 軍師の性別です
 };
+
+void nullsub_84(void) {}
+
+void TacticianConfig_StartHelpbox(struct ProcTacticianConfig *proc)
+{
+	if (proc->do_helpbox == false) {
+		LoadHelpBoxGfx(OBJ_VRAM0 + 0x6000, 0xD);
+		proc->do_helpbox = true;
+	}
+
+	StartHelpBox(
+		TacticianConfigPos[proc->cur_index].x,
+		TacticianConfigPos[proc->cur_index].y,
+		TacticianConfigHelpboxMsgs[proc->cur_index]
+	);
+}
+
+void TacticianConfig_CloseHelpbox(struct ProcTacticianConfig *proc)
+{
+	CloseHelpBox();
+	proc->do_helpbox = false;
+}
+
+void sub_80A7388(void)
+{
+	if (sub_8032CDC() != false)
+		sub_8032CCC();
+}
+
+void sub_80A739C(ProcPtr proc)
+{
+	if (sub_8032CDC() == false)
+		sub_8032CF4(proc, DecodeMsg(MSG_79C));
+}
+
+void sub_80A73C4(int index, ProcPtr proc)
+{
+	int shadow_lens[] = {
+		8, 2, 3, 1
+	};
+
+	ShowSysHandCursor(
+		TacticianConfigPos[index].x,
+		TacticianConfigPos[index].y,
+		shadow_lens[index],
+		0x0C00);
+}
 
 void sub_80A7404(int index)
 {
-	SetUiCursorHandConfig(0, gUnk_08DADD90[index].x, gUnk_08DADD90[index].y, 0);
+	SetUiCursorHandConfig(
+		0,
+		TacticianConfigPos[index].x,
+		TacticianConfigPos[index].y,
+		0);
 }
 
 #if NONMATCHING
@@ -182,8 +240,8 @@ void TacticianConfigFx_Thread(struct ProcTacticianConfig *proc)
 
 void TacticianConfig_Init(struct ProcTacticianConfig *proc)
 {
-	proc->state = 0;
-	proc->unk_30 = 0;
+	proc->cur_index = 0;
+	proc->do_helpbox = 0;
 
 	SetTacticianName(DecodeMsg(MSG_79D));
 
@@ -213,10 +271,23 @@ void TacticianConfig_SetupGfx(struct ProcTacticianConfig *proc)
 	TmApplyTsa(gBg2Tm, Tsa_TacticianConfigBg, 0xF080);
 
 	StartUiCursorHand(proc);
-	StartMuralBackgroundExt(NULL, (void *)(BG_VRAM + 0x8000), 0xA, 1);
+	StartMuralBackgroundExt(
+		NULL,
+		(void *)(BG_VRAM + BGCHR_TACTICIAN_BGSCROLL * 0x20),
+		BGPAL_TACTICIAN_BGSCROLL, 1);
 
 	// ?
 	sub_80A7424();
 	StartParallelWorker(TacticianConfigFx_Thread, proc);
 	StartHelpPromptSprite(0xB4, 0x10, proc);
+}
+
+void sub_80A76C8(struct ProcTacticianConfig *proc)
+{
+	EndSysHandCursor();
+	ResetSysHandCursor(proc);
+	DisplaySysHandCursorTextShadow(0x600, OBPAL_TACTICIAN_TEXTSHADOW);
+	DisableUiCursorHand(0);
+	sub_80A739C(proc);
+	sub_80A73C4(proc->cur_index, proc);
 }

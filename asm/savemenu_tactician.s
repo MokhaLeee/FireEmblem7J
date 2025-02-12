@@ -1,29 +1,6 @@
 	.include "macro.inc"
 	.syntax unified
 
-	thumb_func_start sub_80A76C8
-sub_80A76C8: @ 0x080A76C8
-	push {r4, lr}
-	adds r4, r0, #0
-	bl EndSysHandCursor
-	adds r0, r4, #0
-	bl ResetSysHandCursor
-	movs r0, #0xc0
-	lsls r0, r0, #3
-	movs r1, #1
-	bl DisplaySysHandCursorTextShadow
-	movs r0, #0
-	bl sub_80A998C
-	adds r0, r4, #0
-	bl sub_80A739C
-	ldr r0, [r4, #0x2c]
-	adds r1, r4, #0
-	bl sub_80A73C4
-	pop {r4}
-	pop {r0}
-	bx r0
-	.align 2, 0
-
 	thumb_func_start sub_80A76FC
 sub_80A76FC: @ 0x080A76FC
 	push {r4, lr}
@@ -269,7 +246,7 @@ _080A78EC:
 	cmp r0, #0
 	beq _080A7914
 	adds r0, r4, #0
-	bl sub_80A7328
+	bl TacticianConfig_StartHelpbox
 	b _080A79A4
 _080A78FE:
 	ldr r0, _080A79AC @ =gpKeySt
@@ -281,7 +258,7 @@ _080A78FE:
 	cmp r0, #0
 	beq _080A7914
 	adds r0, r4, #0
-	bl sub_80A7374
+	bl TacticianConfig_CloseHelpbox
 _080A7914:
 	ldr r2, _080A79AC @ =gpKeySt
 	ldr r1, [r2]
@@ -344,7 +321,7 @@ _080A7970:
 	cmp r0, #0
 	beq _080A798A
 	adds r0, r4, #0
-	bl sub_80A7328
+	bl TacticianConfig_StartHelpbox
 _080A798A:
 	ldr r0, [r4, #0x2c]
 	adds r1, r4, #0

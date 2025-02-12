@@ -346,7 +346,7 @@ _080963BC:
 	ldr r1, [r4, #0x30]
 	bl sub_8095750
 	movs r0, #0
-	bl sub_80A998C
+	bl DisableUiCursorHand
 	bl sub_8074D38
 	movs r0, #5
 	bl EnableBgSync

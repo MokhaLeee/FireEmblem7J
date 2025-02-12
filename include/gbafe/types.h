@@ -15,13 +15,9 @@ typedef void (* Func)(void);
 typedef void * ProcPtr;
 typedef void(* ProcFunc)(ProcPtr proc);
 
-struct Vec2 {
-    s16 x, y;
-};
-
-struct Vec2u {
-    u16 x, y;
-};
+struct Vec2  { s16 x, y; };
+struct Vec2u { u16 x, y; };
+struct Vec4  { int x, y; };
 
 enum glb_pos {
     POS_L = 0,

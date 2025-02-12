@@ -268,9 +268,9 @@ void SetTacticianName(const char *name);
 // sub_8032B4C
 // sub_8032C40
 // sub_8032CA0
-// sub_8032CCC
-// sub_8032CDC
-// sub_8032CF4
+void sub_8032CCC(void);
+bool sub_8032CDC(void);
+void sub_8032CF4(ProcPtr proc, const char *str);
 // sub_8032D2C
 // sub_8032D68
 // BeginUnitHealAnim

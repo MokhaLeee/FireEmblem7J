@@ -753,7 +753,7 @@ sub_80994D4: @ 0x080994D4
 	ldrh r0, [r0]
 	bl sub_80990A4
 	movs r0, #0
-	bl sub_80A998C
+	bl DisableUiCursorHand
 	ldr r0, _08099530 @ =sub_8098FDC
 	bl GetParallelWorker
 	bl Proc_End

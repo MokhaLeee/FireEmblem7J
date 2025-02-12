@@ -215,7 +215,3 @@ gUnk_0843929C:	@ 0x0843929C
 	.global gUnk_084392DC
 gUnk_084392DC:	@ 0x084392DC
 	.incbin "FireEmblem7J.base.gba", 0x4392DC, 0x439338 - 0x4392DC
-
-	.global gUnk_08439338
-gUnk_08439338:	@ 0x08439338
-	.incbin "FireEmblem7J.base.gba", 0x439338, 0x439348 - 0x439338

@@ -383,7 +383,7 @@ SECTIONS
 		asm/savemenu_tactician.o(.text);
 		src/savemenu_modeselect.o(.text);
 		src/scrolling_util.o(.text);
-		asm/cursor_hand.o(.text);
+		src/cursor-hand.o(.text);
 		asm/spinning_arrow.o(.text);
 		src/sysutil.o(.text);
 		asm/code_080AB6FC.o(.text);
@@ -455,6 +455,7 @@ SECTIONS
 		. = ALIGN(4); data/const_prepscreen.o(.rodata)
 		. = ALIGN(4); src/save_core.o(.rodata)
 		. = ALIGN(4); data/const_data_0842D270.o(.rodata)
+		. = ALIGN(4); src/savemenu_tactician.o(.rodata)
 		. = ALIGN(4); src/savemenu_modeselect.o(.rodata)
 		. = ALIGN(4); src/sysutil.o(.rodata)
 		. = ALIGN(4); data/data_0843943C.o(.data)
@@ -541,6 +542,7 @@ SECTIONS
 		. = ALIGN(4); src/savemenu_tactician.o(.data)
 		. = ALIGN(4); data/savemenu_tactician.o(.data)
 		. = ALIGN(4); src/savemenu_modeselect.o(.data)
+		. = ALIGN(4); src/cursor-hand.o(.data)
 		. = ALIGN(4); data/cursor_hand.o(.data)
 		. = ALIGN(4); src/sysutil.o(.data)
 		. = ALIGN(4); data/data_08DAE4C4.o(.data)

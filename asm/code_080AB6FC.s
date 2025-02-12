@@ -5775,7 +5775,7 @@ sub_80AE6D4: @ 0x080AE6D4
 	movs r0, #3
 	bl EnableBgSync
 	movs r0, #0
-	bl sub_80A998C
+	bl DisableUiCursorHand
 	adds r0, r4, #0
 	adds r0, #0x29
 	ldrb r0, [r0]
@@ -5855,7 +5855,7 @@ sub_80AE740: @ 0x080AE740
 	bl WriteGameSave
 	movs r0, #0
 	str r0, [r4, #0x30]
-	bl sub_80A998C
+	bl DisableUiCursorHand
 	ldrb r6, [r6]
 	lsls r1, r6, #4
 	movs r2, #0x2c

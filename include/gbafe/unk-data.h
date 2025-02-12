@@ -35,8 +35,8 @@ extern struct unk_type_0203A50C gUnk_0203A50C;
 // ??? gUnk_0818F990
 // ??? gUnk_0818F9F0
 // ??? gUnk_0818FE70
-// ??? gUnk_0818FEB0
-// ??? gUnk_0818FEEC
+extern u8 Img_UiCursorHandTop[];
+extern u8 Img_UiCursorHandBottom[];
 
 // ??? gUnk_08190188
 // ??? gUnk_081901A8
@@ -2146,8 +2146,8 @@ extern struct ProcCmd ProcScr_BmMain_08C05F30[];
 // ??? gUnk_08DADD50
 // ??? gUnk_08DADD78
 // ??? gUnk_08DADD84
-// ??? gUnk_08DADD90
-// ??? gUnk_08DADDB0
+// ??? TacticianConfigPos
+// ??? TacticianConfigHelpboxMsgs
 // ??? ProcScr_TacticianConfig
 // ??? gUnk_08DADF00
 // ??? gUnk_08DADF10
@@ -2169,8 +2169,8 @@ extern struct ProcCmd ProcScr_BmMain_08C05F30[];
 // ??? ProcScr_ModeSelectSpriteDraw
 // ??? FaceConfig_ModeSelect
 // ??? ProcScr_ModeSelect
-// ??? gUnk_08DAE1D4
-// ??? gUnk_08DAE1DC
+// ??? Sprite_CursorHand1
+// ??? Sprite_CursorHand2
 // ??? ProcScr_UiCursorHand
 // ??? gUnk_08DAE214
 // ??? gUnk_08DAE222
