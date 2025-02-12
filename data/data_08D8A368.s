@@ -130,12 +130,12 @@ gUnk_08D8AFD4:	@ 0x08D8AFD4
 gUnk_08D8AFE4:	@ 0x08D8AFE4
 	.incbin "FireEmblem7J.base.gba", 0xD8AFE4, 0xD8AFEC - 0xD8AFE4
 
-	.global gUnk_08D8AFEC
-gUnk_08D8AFEC:	@ 0x08D8AFEC
+	.global ProcScr_BoxDialogue
+ProcScr_BoxDialogue:	@ 0x08D8AFEC
 	.incbin "FireEmblem7J.base.gba", 0xD8AFEC, 0xD8B04C - 0xD8AFEC
 
-	.global gUnk_08D8B04C
-gUnk_08D8B04C:	@ 0x08D8B04C
+	.global ProcScr_MergeBoxDialogue
+ProcScr_MergeBoxDialogue:	@ 0x08D8B04C
 	.incbin "FireEmblem7J.base.gba", 0xD8B04C, 0xD8B06C - 0xD8B04C
 
 	.global gUnk_08D8B06C
@@ -146,8 +146,8 @@ gUnk_08D8B06C:	@ 0x08D8B06C
 gUnk_08D8B10C:	@ 0x08D8B10C
 	.incbin "FireEmblem7J.base.gba", 0xD8B10C, 0xD8B124 - 0xD8B10C
 
-	.global gUnk_08D8B124
-gUnk_08D8B124:	@ 0x08D8B124
+	.global ProcScr_TalkBoxIdle
+ProcScr_TalkBoxIdle:	@ 0x08D8B124
 	.incbin "FireEmblem7J.base.gba", 0xD8B124, 0xD8B134 - 0xD8B124
 
 	.global gUnk_08D8B134

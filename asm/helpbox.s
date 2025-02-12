@@ -1527,14 +1527,14 @@ _08083B7C: .4byte gUnk_08D8AFD4
 	thumb_func_start sub_8083B80
 sub_8083B80: @ 0x08083B80
 	push {lr}
-	ldr r0, _08083B90 @ =gUnk_08D8AFEC
+	ldr r0, _08083B90 @ =ProcScr_BoxDialogue
 	bl Proc_Find
 	cmp r0, #0
 	bne _08083B94
 	movs r0, #0
 	b _08083B96
 	.align 2, 0
-_08083B90: .4byte gUnk_08D8AFEC
+_08083B90: .4byte ProcScr_BoxDialogue
 _08083B94:
 	movs r0, #1
 _08083B96:
@@ -1909,7 +1909,7 @@ _08083E66:
 	ldr r0, [r4, #0x2c]
 	ldr r1, [r4, #0x30]
 	ldr r2, [r4, #0x34]
-	bl sub_8084208
+	bl DrawBoxDialogueText
 	pop {r4}
 	pop {r0}
 	bx r0
@@ -2097,25 +2097,25 @@ sub_8083FBC: @ 0x08083FBC
 	bge _08083FE2
 	adds r0, r4, #0
 	bl Proc_Break
-	ldr r0, _08083FE8 @ =gUnk_08D8B124
+	ldr r0, _08083FE8 @ =ProcScr_TalkBoxIdle
 	bl Proc_EndEach
 _08083FE2:
 	pop {r4}
 	pop {r0}
 	bx r0
 	.align 2, 0
-_08083FE8: .4byte gUnk_08D8B124
+_08083FE8: .4byte ProcScr_TalkBoxIdle
 
 	thumb_func_start sub_8083FEC
 sub_8083FEC: @ 0x08083FEC
 	push {lr}
 	bl sub_8085008
-	ldr r0, _08083FFC @ =gUnk_08D8B04C
+	ldr r0, _08083FFC @ =ProcScr_MergeBoxDialogue
 	bl Proc_BreakEach
 	pop {r0}
 	bx r0
 	.align 2, 0
-_08083FFC: .4byte gUnk_08D8B04C
+_08083FFC: .4byte ProcScr_MergeBoxDialogue
 
 	thumb_func_start sub_8084000
 sub_8084000: @ 0x08084000
@@ -2126,7 +2126,7 @@ sub_8084000: @ 0x08084000
 	adds r7, r1, #0
 	mov r8, r2
 	adds r5, r3, #0
-	ldr r4, _0808402C @ =gUnk_08D8AFEC
+	ldr r4, _0808402C @ =ProcScr_BoxDialogue
 	adds r0, r4, #0
 	bl Proc_EndEach
 	movs r0, #0
@@ -2138,7 +2138,7 @@ sub_8084000: @ 0x08084000
 	bl Proc_Start
 	b _08084038
 	.align 2, 0
-_0808402C: .4byte gUnk_08D8AFEC
+_0808402C: .4byte ProcScr_BoxDialogue
 _08084030:
 	adds r0, r4, #0
 	adds r1, r5, #0
@@ -2156,7 +2156,7 @@ _08084038:
 	subs r1, #8
 	movs r0, #1
 	strb r0, [r1]
-	ldr r0, _08084064 @ =gUnk_08D8B124
+	ldr r0, _08084064 @ =ProcScr_TalkBoxIdle
 	movs r1, #0
 	bl Proc_Start
 	pop {r3}
@@ -2165,7 +2165,7 @@ _08084038:
 	pop {r0}
 	bx r0
 	.align 2, 0
-_08084064: .4byte gUnk_08D8B124
+_08084064: .4byte ProcScr_TalkBoxIdle
 
 	thumb_func_start sub_8084068
 sub_8084068: @ 0x08084068
@@ -2178,7 +2178,7 @@ sub_8084068: @ 0x08084068
 	mov r8, r2
 	mov sb, r3
 	ldr r5, [sp, #0x20]
-	ldr r4, _08084098 @ =gUnk_08D8AFEC
+	ldr r4, _08084098 @ =ProcScr_BoxDialogue
 	adds r0, r4, #0
 	bl Proc_EndEach
 	movs r0, #0
@@ -2190,7 +2190,7 @@ sub_8084068: @ 0x08084068
 	bl Proc_Start
 	b _080840A4
 	.align 2, 0
-_08084098: .4byte gUnk_08D8AFEC
+_08084098: .4byte ProcScr_BoxDialogue
 _0808409C:
 	adds r0, r4, #0
 	adds r1, r5, #0
@@ -2210,7 +2210,7 @@ _080840A4:
 	subs r1, #8
 	movs r0, #1
 	strb r0, [r1]
-	ldr r0, _080840D4 @ =gUnk_08D8B124
+	ldr r0, _080840D4 @ =ProcScr_TalkBoxIdle
 	movs r1, #0
 	bl Proc_Start
 	pop {r3, r4}
@@ -2220,10 +2220,10 @@ _080840A4:
 	pop {r0}
 	bx r0
 	.align 2, 0
-_080840D4: .4byte gUnk_08D8B124
+_080840D4: .4byte ProcScr_TalkBoxIdle
 
-	thumb_func_start sub_80840D8
-sub_80840D8: @ 0x080840D8
+	thumb_func_start GetBoxDialogueSize
+GetBoxDialogueSize: @ 0x080840D8
 	push {r4, r5, r6, r7, lr}
 	sub sp, #4
 	adds r3, r0, #0
@@ -2335,8 +2335,8 @@ _0808418C:
 	pop {r0}
 	bx r0
 
-	thumb_func_start sub_8084194
-sub_8084194: @ 0x08084194
+	thumb_func_start DialogBoxGetGlyphLen
+DialogBoxGetGlyphLen: @ 0x08084194
 	push {r4, r5, r6, lr}
 	sub sp, #4
 	adds r6, r1, #0
@@ -2403,8 +2403,8 @@ _080841FC:
 	pop {r0}
 	bx r0
 
-	thumb_func_start sub_8084208
-sub_8084208: @ 0x08084208
+	thumb_func_start DrawBoxDialogueText
+DrawBoxDialogueText: @ 0x08084208
 	push {r4, r5, r6, r7, lr}
 	mov r7, r8
 	push {r7}
@@ -2415,7 +2415,7 @@ sub_8084208: @ 0x08084208
 	movs r5, #0
 	str r5, [sp]
 	str r5, [sp, #4]
-	ldr r4, _08084258 @ =gUnk_08D8B04C
+	ldr r4, _08084258 @ =ProcScr_MergeBoxDialogue
 	adds r0, r4, #0
 	bl Proc_EndEach
 	adds r0, r4, #0
@@ -2441,7 +2441,7 @@ sub_8084208: @ 0x08084208
 	strh r5, [r0]
 	b _08084264
 	.align 2, 0
-_08084258: .4byte gUnk_08D8B04C
+_08084258: .4byte ProcScr_MergeBoxDialogue
 _0808425C:
 	adds r1, r4, #0
 	adds r1, #0x4a
@@ -2463,7 +2463,7 @@ _08084264:
 	bl sub_8013374
 	add r2, sp, #4
 	mov r1, sp
-	bl sub_80840D8
+	bl GetBoxDialogueSize
 	movs r0, #0
 	bl SetTextFontGlyphs
 	ldr r1, [sp]
@@ -2919,7 +2919,7 @@ _08084604: .4byte Sprite_32x16
 sub_8084608: @ 0x08084608
 	push {r4, lr}
 	adds r4, r0, #0
-	ldr r0, _0808463C @ =gUnk_08D8B04C
+	ldr r0, _0808463C @ =ProcScr_MergeBoxDialogue
 	bl Proc_Find
 	adds r2, r4, #0
 	adds r2, #0x59
@@ -2936,12 +2936,12 @@ sub_8084608: @ 0x08084608
 	strb r0, [r1]
 	ldr r0, [r4, #0x2c]
 	adds r1, #1
-	bl sub_8084194
+	bl DialogBoxGetGlyphLen
 	pop {r4}
 	pop {r0}
 	bx r0
 	.align 2, 0
-_0808463C: .4byte gUnk_08D8B04C
+_0808463C: .4byte ProcScr_MergeBoxDialogue
 
 	thumb_func_start sub_8084640
 sub_8084640: @ 0x08084640
@@ -3053,19 +3053,19 @@ sub_80846E4: @ 0x080846E4
 _08084718: .4byte gpKeySt
 _0808471C:
 	bl sub_8084640
-	ldr r0, _0808473C @ =gUnk_08D8AFEC
+	ldr r0, _0808473C @ =ProcScr_BoxDialogue
 	bl Proc_Find
 	movs r1, #1
 	bl Proc_Goto
 	adds r0, r6, #0
 	movs r1, #1
 	bl Proc_Goto
-	ldr r0, _08084740 @ =gUnk_08D8B124
+	ldr r0, _08084740 @ =ProcScr_TalkBoxIdle
 	bl Proc_EndEach
 	b _08084A24
 	.align 2, 0
-_0808473C: .4byte gUnk_08D8AFEC
-_08084740: .4byte gUnk_08D8B124
+_0808473C: .4byte ProcScr_BoxDialogue
+_08084740: .4byte ProcScr_TalkBoxIdle
 _08084744:
 	adds r1, r6, #0
 	adds r1, #0x58
@@ -3253,7 +3253,7 @@ _080847AC: @ jump table
 	.4byte _08084A34 @ case 128
 _080849B0:
 	bl sub_8084640
-	ldr r0, _080849E4 @ =gUnk_08D8B04C
+	ldr r0, _080849E4 @ =ProcScr_MergeBoxDialogue
 	bl Proc_Find
 	adds r3, r0, #0
 	ldr r0, _080849E8 @ =gUnk_08D8AFE4
@@ -3276,11 +3276,11 @@ _080849B0:
 	movs r4, #1
 	b _08084A1C
 	.align 2, 0
-_080849E4: .4byte gUnk_08D8B04C
+_080849E4: .4byte ProcScr_MergeBoxDialogue
 _080849E8: .4byte gUnk_08D8AFE4
 _080849EC:
 	bl sub_8084640
-	ldr r0, _08084A2C @ =gUnk_08D8B04C
+	ldr r0, _08084A2C @ =ProcScr_MergeBoxDialogue
 	bl Proc_Find
 	adds r3, r0, #0
 	ldr r0, _08084A30 @ =gUnk_08D8AFE4
@@ -3311,7 +3311,7 @@ _08084A24:
 	str r0, [r6, #0x2c]
 	b _08084CD2
 	.align 2, 0
-_08084A2C: .4byte gUnk_08D8B04C
+_08084A2C: .4byte ProcScr_MergeBoxDialogue
 _08084A30: .4byte gUnk_08D8AFE4
 _08084A34:
 	adds r0, r2, #1
@@ -3336,7 +3336,7 @@ _08084A56:
 	bne _08084A5C
 	b _0808471C
 _08084A5C:
-	ldr r0, _08084AC8 @ =gUnk_08D8B04C
+	ldr r0, _08084AC8 @ =ProcScr_MergeBoxDialogue
 	bl Proc_Find
 	adds r4, r0, #0
 	bl sub_8084640
@@ -3358,7 +3358,7 @@ _08084A7E:
 	ldr r0, [r6, #0x2c]
 	add r2, sp, #0x10
 	add r1, sp, #0xc
-	bl sub_80840D8
+	bl GetBoxDialogueSize
 	ldr r0, [sp, #0xc]
 	adds r1, r6, #0
 	adds r1, #0x56
@@ -3387,7 +3387,7 @@ _08084A7E:
 	bl Proc_Goto
 	b _08084CD2
 	.align 2, 0
-_08084AC8: .4byte gUnk_08D8B04C
+_08084AC8: .4byte ProcScr_MergeBoxDialogue
 _08084ACC:
 	bl sub_8084640
 	b _08084B66
@@ -3475,19 +3475,19 @@ _08084B66:
 	bne _08084B74
 	b _08084756
 _08084B74:
-	ldr r0, _08084B90 @ =gUnk_08D8AFEC
+	ldr r0, _08084B90 @ =ProcScr_BoxDialogue
 	bl Proc_Find
 	movs r1, #1
 	bl Proc_Goto
 	adds r0, r6, #0
 	movs r1, #1
 	bl Proc_Goto
-	ldr r0, _08084B94 @ =gUnk_08D8B124
+	ldr r0, _08084B94 @ =ProcScr_TalkBoxIdle
 	bl Proc_EndEach
 	b _08084CD2
 	.align 2, 0
-_08084B90: .4byte gUnk_08D8AFEC
-_08084B94: .4byte gUnk_08D8B124
+_08084B90: .4byte ProcScr_BoxDialogue
+_08084B94: .4byte ProcScr_TalkBoxIdle
 _08084B98:
 	bl sub_8083BA8
 	movs r1, #0x10
@@ -3516,7 +3516,7 @@ _08084BC4:
 	ldr r0, [r6, #0x2c]
 	adds r0, #1
 	str r0, [r6, #0x2c]
-	ldr r0, _08084C04 @ =gUnk_08D8B04C
+	ldr r0, _08084C04 @ =ProcScr_MergeBoxDialogue
 	bl Proc_Find
 	movs r5, #0x3c
 	ldrsh r1, [r0, r5]
@@ -3537,10 +3537,10 @@ _08084BC4:
 	bl sub_800914C
 	ldr r0, [r6, #0x2c]
 	adds r1, r4, #0
-	bl sub_8084194
+	bl DialogBoxGetGlyphLen
 	b _08084CD2
 	.align 2, 0
-_08084C04: .4byte gUnk_08D8B04C
+_08084C04: .4byte ProcScr_MergeBoxDialogue
 _08084C08:
 	bl sub_8083BA8
 	movs r1, #1
@@ -3656,11 +3656,11 @@ _08084CE8: .4byte 0x0000038E
 sub_8084CEC: @ 0x08084CEC
 	push {r4, lr}
 	adds r4, r0, #0
-	ldr r0, _08084D14 @ =gUnk_08D8B124
+	ldr r0, _08084D14 @ =ProcScr_TalkBoxIdle
 	bl Proc_Find
 	cmp r0, #0
 	beq _08084D0E
-	ldr r0, _08084D18 @ =gUnk_08D8AFEC
+	ldr r0, _08084D18 @ =ProcScr_BoxDialogue
 	bl Proc_Find
 	movs r1, #0
 	bl Proc_Goto
@@ -3672,8 +3672,8 @@ _08084D0E:
 	pop {r0}
 	bx r0
 	.align 2, 0
-_08084D14: .4byte gUnk_08D8B124
-_08084D18: .4byte gUnk_08D8AFEC
+_08084D14: .4byte ProcScr_TalkBoxIdle
+_08084D18: .4byte ProcScr_BoxDialogue
 
 	thumb_func_start sub_8084D1C
 sub_8084D1C: @ 0x08084D1C
@@ -3753,7 +3753,7 @@ _08084D98:
 sub_8084DA8: @ 0x08084DA8
 	push {r4, lr}
 	adds r4, r0, #0
-	ldr r0, _08084DD0 @ =gUnk_08D8AFEC
+	ldr r0, _08084DD0 @ =ProcScr_BoxDialogue
 	bl Proc_Find
 	movs r1, #3
 	bl Proc_Goto
@@ -3767,13 +3767,13 @@ sub_8084DA8: @ 0x08084DA8
 	pop {r0}
 	bx r0
 	.align 2, 0
-_08084DD0: .4byte gUnk_08D8AFEC
+_08084DD0: .4byte ProcScr_BoxDialogue
 
 	thumb_func_start sub_8084DD4
 sub_8084DD4: @ 0x08084DD4
 	push {r4, r5, r6, lr}
 	adds r4, r0, #0
-	ldr r0, _08084E64 @ =gUnk_08D8B04C
+	ldr r0, _08084E64 @ =ProcScr_MergeBoxDialogue
 	bl Proc_Find
 	adds r6, r0, #0
 	adds r5, r4, #0
@@ -3843,12 +3843,12 @@ _08084E5C:
 	pop {r0}
 	bx r0
 	.align 2, 0
-_08084E64: .4byte gUnk_08D8B04C
+_08084E64: .4byte ProcScr_MergeBoxDialogue
 
 	thumb_func_start sub_8084E68
 sub_8084E68: @ 0x08084E68
 	push {lr}
-	ldr r0, _08084E80 @ =gUnk_08D8AFEC
+	ldr r0, _08084E80 @ =ProcScr_BoxDialogue
 	bl Proc_Find
 	cmp r0, #0
 	beq _08084E84
@@ -3859,7 +3859,7 @@ sub_8084E68: @ 0x08084E68
 	movs r0, #0
 	b _08084E86
 	.align 2, 0
-_08084E80: .4byte gUnk_08D8AFEC
+_08084E80: .4byte ProcScr_BoxDialogue
 _08084E84:
 	movs r0, #1
 _08084E86:
@@ -4124,25 +4124,25 @@ _080850A4: .4byte gUnk_08D8B10C
 	thumb_func_start sub_80850A8
 sub_80850A8: @ 0x080850A8
 	push {lr}
-	ldr r0, _080850B8 @ =gUnk_08D8B124
+	ldr r0, _080850B8 @ =ProcScr_TalkBoxIdle
 	movs r1, #0
 	bl Proc_Start
 	pop {r0}
 	bx r0
 	.align 2, 0
-_080850B8: .4byte gUnk_08D8B124
+_080850B8: .4byte ProcScr_TalkBoxIdle
 
 	thumb_func_start sub_80850BC
 sub_80850BC: @ 0x080850BC
 	push {lr}
-	ldr r0, _080850CC @ =gUnk_08D8B124
+	ldr r0, _080850CC @ =ProcScr_TalkBoxIdle
 	bl Proc_Find
 	cmp r0, #0
 	bne _080850D0
 	movs r0, #0
 	b _080850D2
 	.align 2, 0
-_080850CC: .4byte gUnk_08D8B124
+_080850CC: .4byte ProcScr_TalkBoxIdle
 _080850D0:
 	movs r0, #1
 _080850D2:
@@ -4153,11 +4153,11 @@ _080850D2:
 	thumb_func_start sub_80850D8
 sub_80850D8: @ 0x080850D8
 	push {lr}
-	ldr r0, _080850FC @ =gUnk_08D8AFEC
+	ldr r0, _080850FC @ =ProcScr_BoxDialogue
 	bl Proc_EndEach
-	ldr r0, _08085100 @ =gUnk_08D8B124
+	ldr r0, _08085100 @ =ProcScr_TalkBoxIdle
 	bl Proc_EndEach
-	ldr r0, _08085104 @ =gUnk_08D8B04C
+	ldr r0, _08085104 @ =ProcScr_MergeBoxDialogue
 	bl Proc_EndEach
 	ldr r0, _08085108 @ =gUnk_08D8B06C
 	bl Proc_EndEach
@@ -4166,9 +4166,9 @@ sub_80850D8: @ 0x080850D8
 	pop {r0}
 	bx r0
 	.align 2, 0
-_080850FC: .4byte gUnk_08D8AFEC
-_08085100: .4byte gUnk_08D8B124
-_08085104: .4byte gUnk_08D8B04C
+_080850FC: .4byte ProcScr_BoxDialogue
+_08085100: .4byte ProcScr_TalkBoxIdle
+_08085104: .4byte ProcScr_MergeBoxDialogue
 _08085108: .4byte gUnk_08D8B06C
 _0808510C: .4byte gUnk_08D8B10C
 

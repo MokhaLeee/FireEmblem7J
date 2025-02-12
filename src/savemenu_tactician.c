@@ -291,3 +291,22 @@ void sub_80A76C8(struct ProcTacticianConfig *proc)
 	sub_80A739C(proc);
 	sub_80A73C4(proc->cur_index, proc);
 }
+
+void sub_80A76FC(struct ProcTacticianConfig *proc)
+{
+	if (!IsGamePlayedThrough()) {
+		EndSysHandCursor();
+		sub_80A7388();
+		sub_8084068(0x30, 0x5A, MSG_79E, OBJ_VRAM0 + 0x6000, 0xD, proc);
+		sub_8083B9C(0x70);
+	}
+}
+
+void sub_80A773C(struct ProcTacticianConfig *proc)
+{
+	EndSysHandCursor();
+	sub_80A7388();
+	sub_8084068(0x70, 0x5A, MSG_79F, OBJ_VRAM0 + 0x6000, 0xD, proc);
+	sub_8083B9C(0x70);
+	SetTalkChoiceResult(TALK_RESULT_YES);
+}

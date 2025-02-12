@@ -181,9 +181,9 @@ void SetTalkFaceMouthMove(int face);
 void SetTalkFaceNoMouthMove(int face);
 // ??? IsTalkActive
 // ??? FaceExists
-// ??? GetTalkChoiceResult
-// ??? SetTalkChoiceResult
-// ??? SetTalkNumber
+int GetTalkChoiceResult(void);
+void SetTalkChoiceResult(int res);
+void SetTalkNumber(int number);
 // ??? SetTalkUnkStr
 // ??? PrintStringToTexts
 // ??? TalkPutSpriteText_OnIdle

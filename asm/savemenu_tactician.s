@@ -1,63 +1,6 @@
 	.include "macro.inc"
 	.syntax unified
 
-	thumb_func_start sub_80A76FC
-sub_80A76FC: @ 0x080A76FC
-	push {r4, lr}
-	sub sp, #8
-	adds r4, r0, #0
-	bl IsGamePlayedThrough
-	lsls r0, r0, #0x18
-	cmp r0, #0
-	bne _080A772C
-	bl EndSysHandCursor
-	bl sub_80A7388
-	ldr r2, _080A7734 @ =0x0000079E
-	ldr r3, _080A7738 @ =0x06016000
-	movs r0, #0xd
-	str r0, [sp]
-	str r4, [sp, #4]
-	movs r0, #0x30
-	movs r1, #0x5a
-	bl sub_8084068
-	movs r0, #0x70
-	bl sub_8083B9C
-_080A772C:
-	add sp, #8
-	pop {r4}
-	pop {r0}
-	bx r0
-	.align 2, 0
-_080A7734: .4byte 0x0000079E
-_080A7738: .4byte 0x06016000
-
-	thumb_func_start sub_80A773C
-sub_80A773C: @ 0x080A773C
-	push {r4, lr}
-	sub sp, #8
-	adds r4, r0, #0
-	bl EndSysHandCursor
-	bl sub_80A7388
-	ldr r2, _080A7770 @ =0x0000079F
-	ldr r3, _080A7774 @ =0x06016000
-	movs r0, #0xd
-	str r0, [sp]
-	str r4, [sp, #4]
-	movs r0, #0x70
-	movs r1, #0x5a
-	bl sub_8084068
-	movs r0, #0x70
-	bl sub_8083B9C
-	movs r0, #1
-	bl SetTalkChoiceResult
-	add sp, #8
-	pop {r4}
-	pop {r0}
-	bx r0
-	.align 2, 0
-_080A7770: .4byte 0x0000079F
-_080A7774: .4byte 0x06016000
-
 	thumb_func_start sub_80A7778
 sub_80A7778: @ 0x080A7778
 	push {r4, lr}

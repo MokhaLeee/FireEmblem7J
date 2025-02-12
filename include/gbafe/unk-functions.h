@@ -444,7 +444,7 @@ void ClearHelpBoxText(void);
 // sub_8083B28
 // sub_8083B48
 // sub_8083B80
-// sub_8083B9C
+void sub_8083B9C(int a);
 // sub_8083BA8
 // sub_8083BB4
 // sub_8083C54
@@ -459,10 +459,10 @@ void ClearHelpBoxText(void);
 // sub_8083FBC
 // sub_8083FEC
 // sub_8084000
-// sub_8084068
-// sub_80840D8
-// sub_8084194
-// sub_8084208
+void sub_8084068(int x, int y, int msgId, u16* unkA, int unkB, ProcPtr parent);
+// GetBoxDialogueSize
+// DialogBoxGetGlyphLen
+// DrawBoxDialogueText
 // sub_80842F8
 // sub_8084608
 // sub_8084640

@@ -1,15 +1,5 @@
 #include "gbafe.h"
 
-struct ProcCursorHand {
-	PROC_HEADER;
-
-	STRUCT_PAD(0x29, 0x2C);
-
-	/* 2C */ struct { u8 x_start, y_start, x_end, y_end; } configs[4];
-	/* 3C */ u8 flag[4];
-	/* 40 */ s16 x[4], y[4];
-};
-
 u16 CONST_DATA Sprite_CursorHand1[] =
 {
 	1,

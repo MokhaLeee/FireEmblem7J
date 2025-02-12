@@ -128,7 +128,7 @@ s32 sub_809F40C(void);
 // ??? sub_809F994
 // ??? nullsub_82
 // ??? nullsub_83
-// ??? IsGamePlayedThrough
+bool IsGamePlayedThrough(void);
 int sub_809F9F8(void);
 // ??? sub_809FA3C
 void sub_809FA94(void * buf);
