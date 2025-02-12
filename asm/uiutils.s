@@ -194,8 +194,8 @@ _0804A47E:
 	.align 2, 0
 _0804A4C8: .4byte gUiWindowFrameModelLut
 
-	thumb_func_start sub_804A4CC
-sub_804A4CC: @ 0x0804A4CC
+	thumb_func_start DrawUiFrame2
+DrawUiFrame2: @ 0x0804A4CC
 	push {r4, r5, r6, r7, lr}
 	mov r7, sl
 	mov r6, sb
@@ -567,8 +567,8 @@ _0804A7A4: .4byte 0x0203DCC4
 _0804A7A8: .4byte gUnk_08C09BBC
 _0804A7AC: .4byte gUnk_08C09BB4
 
-	thumb_func_start sub_804A7B0
-sub_804A7B0: @ 0x0804A7B0
+	thumb_func_start PutUnkUiHand
+PutUnkUiHand: @ 0x0804A7B0
 	push {r4, r5, lr}
 	sub sp, #4
 	adds r5, r0, #0
@@ -597,8 +597,8 @@ sub_804A7B0: @ 0x0804A7B0
 _0804A7E4: .4byte gUnk_08C09BBC
 _0804A7E8: .4byte gUnk_08C09BB4
 
-	thumb_func_start sub_804A7EC
-sub_804A7EC: @ 0x0804A7EC
+	thumb_func_start DisplayFrozenUiHand
+DisplayFrozenUiHand: @ 0x0804A7EC
 	push {r4, lr}
 	sub sp, #4
 	adds r4, r0, #0

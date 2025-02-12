@@ -126,7 +126,7 @@ sub_801B660: @ 0x0801B660
 	adds r1, r4, #0
 	adds r2, r5, #0
 	movs r3, #4
-	bl sub_804A4CC
+	bl DrawUiFrame2
 	adds r4, #1
 	lsls r4, r4, #5
 	adds r4, #1
@@ -1806,7 +1806,7 @@ _0801C396:
 	adds r0, r0, r1
 	lsls r0, r0, #1
 	add r0, r8
-	ldr r3, _0801C3F4 @ =Unk_081C8FCC
+	ldr r3, _0801C3F4 @ =TacticianAffins
 	ldrb r2, [r7]
 	lsls r1, r2, #0x1c
 	lsrs r1, r1, #0x1d
@@ -1825,7 +1825,7 @@ _0801C396:
 _0801C3E8: .4byte gUnk_081C9334
 _0801C3EC: .4byte gBg0Tm
 _0801C3F0: .4byte gPlaySt
-_0801C3F4: .4byte Unk_081C8FCC
+_0801C3F4: .4byte TacticianAffins
 _0801C3F8:
 	adds r4, r5, #0
 	adds r4, #0x34

@@ -3459,7 +3459,7 @@ sub_803E01C: @ 0x0803E01C
 	cmp r1, r0
 	ble _0803E034
 	ldr r0, [r2, #0x2c]
-	bl sub_804A7EC
+	bl DisplayFrozenUiHand
 _0803E034:
 	pop {r0}
 	bx r0
@@ -14210,7 +14210,7 @@ sub_80437DC: @ 0x080437DC
 	movs r1, #0xb
 	movs r2, #0x10
 	movs r3, #6
-	bl sub_804A4CC
+	bl DrawUiFrame2
 	ldr r0, _08043830 @ =0x0203DA48
 	bl SetTextFont
 	bl InitSystemTextFont
@@ -25265,7 +25265,7 @@ _08049042:
 	adds r1, r7, #0
 	adds r1, #0x30
 	movs r0, #0x20
-	bl sub_804A7EC
+	bl DisplayFrozenUiHand
 	movs r2, #0x2e
 	ldrsh r0, [r5, r2]
 	movs r2, #0x30

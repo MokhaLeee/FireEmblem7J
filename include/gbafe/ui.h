@@ -20,14 +20,14 @@ enum
 };
 
 void ApplyUiWindowFramePal(int palid);
-// UnpackUiWindowFrameImg
+void UnpackUiWindowFrameImg(void *dest);
 void ApplyUiStatBarPal(int palid);
-// UnpackUiWindowFrameGraphics2
-// PutUiWindowFrame
-// sub_804A4CC
+void UnpackUiWindowFrameGraphics2(int window_theme);
+void PutUiWindowFrame(int x, int y, int width, int height, int window_kind);
+void DrawUiFrame2(int x, int y, int width, int height, int window_kind);
 void PutUiHand(int x, int y);
-// sub_804A7B0
-// sub_804A7EC
+void PutUnkUiHand(int x, int y);
+void DisplayFrozenUiHand(int x, int y);
 int GetUiHandPrevX(void);
 int GetUiHandPrevY(void);
 void ClearUi(void); // FE8U: ClearBg0Bg1

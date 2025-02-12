@@ -1946,19 +1946,19 @@ sub_80AC680: @ 0x080AC680
 	movs r1, #1
 	movs r2, #0x1a
 	movs r3, #6
-	bl sub_804A4CC
+	bl DrawUiFrame2
 	str r5, [sp]
 	movs r0, #0xb
 	movs r1, #7
 	movs r2, #0x11
 	movs r3, #0xc
-	bl sub_804A4CC
+	bl DrawUiFrame2
 	str r5, [sp]
 	movs r0, #2
 	movs r1, #0xb
 	movs r2, #9
 	movs r3, #8
-	bl sub_804A4CC
+	bl DrawUiFrame2
 	movs r0, #0xb1
 	lsls r0, r0, #2
 	add r0, sl
@@ -1972,7 +1972,7 @@ sub_80AC680: @ 0x080AC680
 	movs r1, #7
 	movs r2, #9
 	movs r3, #4
-	bl sub_804A4CC
+	bl DrawUiFrame2
 	movs r3, #0xb6
 	lsls r3, r3, #1
 	add sl, r3
@@ -4706,14 +4706,14 @@ sub_80ADE30: @ 0x080ADE30
 	movs r1, #6
 	movs r2, #0x18
 	movs r3, #0xc
-	bl sub_804A4CC
+	bl DrawUiFrame2
 	movs r0, #1
 	str r0, [sp]
 	movs r0, #0x12
 	movs r1, #0x11
 	movs r2, #0xa
 	movs r3, #3
-	bl sub_804A4CC
+	bl DrawUiFrame2
 	ldr r4, _080ADE80 @ =gBg0Tm + 0x4b2
 	bl GetGold
 	adds r2, r0, #0
@@ -5394,7 +5394,7 @@ sub_80AE3C4: @ 0x080AE3C4
 	movs r0, #0xd
 	movs r1, #5
 	movs r2, #0xc
-	bl sub_804A4CC
+	bl DrawUiFrame2
 	ldr r3, _080AE4D4 @ =gDispIo
 	movs r0, #0x20
 	ldrb r1, [r3, #1]
@@ -6623,7 +6623,7 @@ sub_80AEDC0: @ 0x080AEDC0
 	adds r4, #0x20
 	movs r0, #0x10
 	adds r1, r4, #0
-	bl sub_804A7EC
+	bl DisplayFrozenUiHand
 	adds r0, r5, #0
 	bl sub_80AF278
 	ldr r2, _080AEEAC @ =gUnk_08DAF0C4

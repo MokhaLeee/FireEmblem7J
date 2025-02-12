@@ -39,7 +39,7 @@ sub_808F2E4: @ 0x0808F2E4
 	movs r0, #5
 	movs r1, #6
 	movs r2, #9
-	bl sub_804A4CC
+	bl DrawUiFrame2
 	movs r4, #0
 	movs r6, #0xe0
 	lsls r6, r6, #1
@@ -1048,7 +1048,7 @@ _0808FADC:
 	movs r1, #4
 	movs r2, #0xa
 	movs r3, #0xc
-	bl sub_804A4CC
+	bl DrawUiFrame2
 	ldr r0, _0808FC38 @ =0x00001131
 	bl DecodeMsg
 	ldr r5, _0808FC3C @ =gBg2Tm + 0x146

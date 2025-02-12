@@ -4647,7 +4647,7 @@ _080B21A2:
 	movs r1, #8
 	movs r2, #0x14
 	movs r3, #0xc
-	bl sub_804A4CC
+	bl DrawUiFrame2
 	movs r0, #2
 	bl EnableBgSync
 	ldr r0, [r7]
@@ -7924,7 +7924,7 @@ sub_80B3C1C: @ 0x080B3C1C
 	movs r1, #9
 	movs r2, #0x10
 	movs r3, #6
-	bl sub_804A4CC
+	bl DrawUiFrame2
 	movs r0, #0
 	bl SetTextFont
 	bl InitSystemTextFont

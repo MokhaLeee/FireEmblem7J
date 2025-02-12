@@ -1448,7 +1448,7 @@ sub_809EC74: @ 0x0809EC74
 	movs r1, #6
 	movs r2, #0x1a
 	movs r3, #7
-	bl sub_804A4CC
+	bl DrawUiFrame2
 	movs r0, #0xf
 	bl EnableBgSync
 	ldr r5, _0809ED80 @ =0x0201440C

@@ -635,13 +635,13 @@ sub_802B544: @ 0x0802B544
 	movs r1, #8
 	movs r2, #0xe
 	movs r3, #0xc
-	bl sub_804A4CC
+	bl DrawUiFrame2
 	str r4, [sp]
 	movs r0, #0xf
 	movs r1, #8
 	movs r2, #0xe
 	movs r3, #0xc
-	bl sub_804A4CC
+	bl DrawUiFrame2
 	bl ResetTextFont
 	bl ClearIcons
 	movs r0, #4
@@ -906,7 +906,7 @@ sub_802B738: @ 0x0802B738
 	movs r3, #2
 	ldrsh r1, [r1, r3]
 	lsls r1, r1, #3
-	bl sub_804A7EC
+	bl DisplayFrozenUiHand
 	b _0802B862
 	.align 2, 0
 _0802B798: .4byte gUnk_08C03574
@@ -949,7 +949,7 @@ _0802B79C:
 	movs r3, #2
 	ldrsh r1, [r1, r3]
 	lsls r1, r1, #3
-	bl sub_804A7EC
+	bl DisplayFrozenUiHand
 	ldr r0, _0802B818 @ =gpKeySt
 	ldr r0, [r0]
 	ldrh r1, [r0, #8]
@@ -1279,7 +1279,7 @@ _0802BA2C:
 	movs r3, #2
 	ldrsh r1, [r1, r3]
 	lsls r1, r1, #3
-	bl sub_804A7EC
+	bl DisplayFrozenUiHand
 _0802BA82:
 	pop {r3, r4}
 	mov r8, r3
@@ -1357,7 +1357,7 @@ _0802BAC4:
 	movs r3, #2
 	ldrsh r1, [r1, r3]
 	lsls r1, r1, #3
-	bl sub_804A7EC
+	bl DisplayFrozenUiHand
 _0802BB1E:
 	pop {r4, r5, r6}
 	pop {r0}
@@ -1512,7 +1512,7 @@ sub_802BBF8: @ 0x0802BBF8
 	movs r4, #2
 	ldrsh r1, [r1, r4]
 	lsls r1, r1, #3
-	bl sub_804A7EC
+	bl DisplayFrozenUiHand
 	pop {r4}
 	pop {r0}
 	bx r0
@@ -1543,7 +1543,7 @@ sub_802BC34: @ 0x0802BC34
 	movs r3, #2
 	ldrsh r1, [r1, r3]
 	lsls r1, r1, #3
-	bl sub_804A7EC
+	bl DisplayFrozenUiHand
 	adds r2, r5, #0
 	adds r2, #0x44
 	adds r0, r5, #0
@@ -1561,7 +1561,7 @@ sub_802BC34: @ 0x0802BC34
 	movs r3, #2
 	ldrsh r1, [r1, r3]
 	lsls r1, r1, #3
-	bl sub_804A7EC
+	bl DisplayFrozenUiHand
 	pop {r4, r5}
 	pop {r0}
 	bx r0

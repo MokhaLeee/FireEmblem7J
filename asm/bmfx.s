@@ -1526,7 +1526,7 @@ sub_801E364: @ 0x0801E364
 	str r2, [sp]
 	movs r2, #0xe
 	movs r3, #8
-	bl sub_804A4CC
+	bl DrawUiFrame2
 	cmp r5, #0
 	blt _0801E3FC
 	cmp r5, #4
@@ -3667,7 +3667,7 @@ _0801F4B2:
 	adds r0, r4, #0
 	movs r1, #8
 	movs r3, #4
-	bl sub_804A4CC
+	bl DrawUiFrame2
 	cmp r5, #0
 	blt _0801F4E2
 	bl InitIcons
@@ -3790,7 +3790,7 @@ _0801F5D0:
 	adds r0, r6, #0
 	movs r1, #7
 	movs r3, #6
-	bl sub_804A4CC
+	bl DrawUiFrame2
 	lsls r6, r6, #1
 	ldr r5, _0801F648 @ =gBg0Tm + 0x202
 	adds r4, r6, r5
@@ -3892,7 +3892,7 @@ _0801F6BC:
 	adds r0, r5, #0
 	movs r1, #8
 	movs r3, #4
-	bl sub_804A4CC
+	bl DrawUiFrame2
 	lsls r5, r5, #1
 	ldr r4, _0801F704 @ =gBg0Tm + 0x242
 	adds r6, r5, r4

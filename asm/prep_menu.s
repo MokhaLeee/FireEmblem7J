@@ -425,7 +425,7 @@ PrepMenu_ShowFrozenHand: @ 0x08090720
 	ldrb r2, [r2]
 	lsls r2, r2, #4
 	adds r1, r1, r2
-	bl sub_804A7EC
+	bl DisplayFrozenUiHand
 	pop {r0}
 	bx r0
 	.align 2, 0
@@ -725,7 +725,7 @@ DrawPrepScreenMenuFrameAt: @ 0x08090930
 	adds r0, r6, #0
 	adds r1, r5, #0
 	movs r2, #0xa
-	bl sub_804A4CC
+	bl DrawUiFrame2
 	mov r8, r4
 	ldrb r0, [r4]
 	cmp r0, #1

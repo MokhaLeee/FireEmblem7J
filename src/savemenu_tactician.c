@@ -97,7 +97,7 @@ void sub_80A739C(ProcPtr proc)
 		sub_8032CF4(proc, DecodeMsg(MSG_79C));
 }
 
-void sub_80A73C4(int index, ProcPtr proc)
+void UpdateTactMainHandShadow(int index, ProcPtr proc)
 {
 	int shadow_lens[] = {
 		8, 2, 3, 1
@@ -110,7 +110,7 @@ void sub_80A73C4(int index, ProcPtr proc)
 		0x0C00);
 }
 
-void sub_80A7404(int index)
+void UpdateTactMainHandPosition(int index)
 {
 	SetUiCursorHandConfig(
 		0,
@@ -137,13 +137,13 @@ void sub_80A7424(void)
 	ApplyPalette(Pal_08190268, 0x1F);
 
 	Text_InsertDrawString(gTactInfoTexts, 0x00, TEXT_COLOR_SYSTEM_GREEN, GetTacticianName());
-	Text_InsertDrawString(gTactInfoTexts, 0x40, TEXT_COLOR_SYSTEM_GREEN, DecodeMsg(TactGetMsg_Blood(gPlaySt.unk_2B_01)));
-	Text_InsertDrawString(gTactInfoTexts, 0x60, TEXT_COLOR_SYSTEM_GREEN, DecodeMsg(TactGetMsg_Birth(gPlaySt.unk_2B_04)));
-	Text_InsertDrawString(gTactInfoTexts, 0x80, TEXT_COLOR_SYSTEM_GREEN, DecodeMsg(TactGetMsg_Gender(gPlaySt.unk2C_00)));
+	Text_InsertDrawString(gTactInfoTexts, 0x40, TEXT_COLOR_SYSTEM_GREEN, DecodeMsg(TactGetMsg_Blood(gPlaySt.tact_blood)));
+	Text_InsertDrawString(gTactInfoTexts, 0x60, TEXT_COLOR_SYSTEM_GREEN, DecodeMsg(TactGetMsg_Birth(gPlaySt.tact_birth)));
+	Text_InsertDrawString(gTactInfoTexts, 0x80, TEXT_COLOR_SYSTEM_GREEN, DecodeMsg(TactGetMsg_Gender(gPlaySt.tact_gender)));
 
 	PutIcon(
 		gBg0Tm + TM_OFFSET(0xE, 0x5),
-		Unk_081C8FCC[gPlaySt.unk_2B_04][gPlaySt.unk_2B_01] + 0x79,
+		TacticianAffins[gPlaySt.tact_birth][gPlaySt.tact_blood] + 0x79,
 		0x5000
 	);
 
@@ -223,7 +223,7 @@ void sub_80A7424(void)
 		movs r2, #4\n\
 		bl Text_InsertDrawString\n\
 		ldr r0, _080A750C @ =gBg0Tm + 0x15c\n\
-		ldr r3, _080A7510 @ =Unk_081C8FCC\n\
+		ldr r3, _080A7510 @ =TacticianAffins\n\
 		ldrb r2, [r6]\n\
 		lsls r1, r2, #0x1c\n\
 		lsrs r1, r1, #0x1d\n\
@@ -249,7 +249,7 @@ void sub_80A7424(void)
 	_080A7504: .4byte 0x02000084\n\
 	_080A7508: .4byte gPlaySt\n\
 	_080A750C: .4byte gBg0Tm + 0x15c\n\
-	_080A7510: .4byte Unk_081C8FCC\n\
+	_080A7510: .4byte TacticianAffins\n\
 		.syntax divided\n\
 	");
 }
@@ -281,9 +281,9 @@ void TactInfo_Init(struct ProcTactInfo *proc)
 
 	SetTacticianName(DecodeMsg(MSG_79D));
 
-	gPlaySt.unk_2B_01 = 0;
-	gPlaySt.unk_2B_04 = 0;
-	gPlaySt.unk2C_00 = 0;
+	gPlaySt.tact_blood = 0;
+	gPlaySt.tact_birth = 0;
+	gPlaySt.tact_gender = 0;
 }
 
 void TactInfo_SetupGfx(struct ProcTactInfo *proc)
@@ -325,7 +325,7 @@ void sub_80A76C8(struct ProcTactInfo *proc)
 	DisplaySysHandCursorTextShadow(0x600, OBPAL_TACTICIAN_TEXTSHADOW);
 	DisableUiCursorHand(0);
 	sub_80A739C(proc);
-	sub_80A73C4(proc->cur_index, proc);
+	UpdateTactMainHandShadow(proc->cur_index, proc);
 }
 
 void TactInfo_IntroDialogue1(struct ProcTactInfo *proc)
@@ -395,22 +395,22 @@ void sub_80A7834(struct ProcTactInfo *proc)
 				return;
 
 			case TACTINFO_IDX_BLOOD:
-				sub_80A7D88(proc);
+				StartTactBloodSelect(proc);
 				break;
 
 			case TACTINFO_IDX_BIRTH:
-				sub_80A80A4(proc);
+				StartTactBirthSelect(proc);
 				break;
 
 			case TACTINFO_IDX_GENDER:
-				sub_80A82F0(proc);
+				StartTactGenderSelect(proc);
 				break;
 
 			default:
 				return;
 			}
 
-			sub_80A7404(proc->cur_index);
+			UpdateTactMainHandPosition(proc->cur_index);
 			Proc_Goto(proc, PL_TACTINFO_2);
 			return;
 		}
@@ -454,7 +454,7 @@ void sub_80A7834(struct ProcTactInfo *proc)
 		if (proc->do_helpbox != false)
 			TactInfo_StartHelpbox(proc);
 
-		sub_80A73C4(proc->cur_index, proc);
+		UpdateTactMainHandShadow(proc->cur_index, proc);
 		PlaySoundEffect(SONG_385);
 	}
 }
@@ -487,7 +487,7 @@ void TactInfo_CheckParticipantDialogue(struct ProcTactInfo *proc)
 void TactInfo_HandleCheckParticipantPrompt(struct ProcTactInfo *proc)
 {
 	if (GetTalkChoiceResult() == TALK_RESULT_NO || GetTalkChoiceResult() == TALK_RESULT_CANCEL) {
-		gPlaySt.unk_2B_00 = false;
+		gPlaySt.tact_enabled = false;
 		Proc_Goto(proc, PL_TACTINFO_END);
 	}
 }
@@ -553,4 +553,33 @@ CONST_DATA int Msgs_TactAffin[] = {
 int TactGetMsg_Affin(int index)
 {
 	return Msgs_TactAffin[index];
+}
+
+void Tact_ClearNrVrams(void *vram, u32 chr, u32 nr_chrs)
+{
+	CpuFastFill(0, vram + chr * CHR_SIZE, nr_chrs * CHR_SIZE);
+	CpuFastFill(0, vram + chr * CHR_SIZE + CHR_LINE * CHR_SIZE, nr_chrs * CHR_SIZE);
+}
+
+void TactBlood_Init(struct ProcTactBlood *proc)
+{
+	int i;
+
+	proc->cur_index = gPlaySt.tact_blood;
+	DrawUiFrame2(3, 11, 14, 4, 0);
+	EnableBgSync(BG1_SYNC_BIT);
+	ShowSysHandCursor(0x22 + proc->cur_index * 0x18, 0x60, 2, 0x800);
+	SetTextFont(&gTactInfoFont);
+	SetTextFontGlyphs(0);
+
+	for (i = 0; i < 4; i++) {
+		Text_InsertDrawString(
+			&gTactInfoTexts[1],
+			0x18 * i,
+			TEXT_COLOR_SYSTEM_WHITE,
+			DecodeMsg(TactGetMsg_Blood(i))
+		);
+	}
+
+	SetTextFont(NULL);
 }

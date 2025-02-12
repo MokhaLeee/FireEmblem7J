@@ -2043,7 +2043,7 @@ sub_809C9F8: @ 0x0809C9F8
 	movs r3, #0
 	bl PutDrawText
 	subs r0, r7, #4
-	ldr r3, _0809CAF4 @ =Unk_081C8FCC
+	ldr r3, _0809CAF4 @ =TacticianAffins
 	ldr r5, _0809CAF8 @ =gPlaySt
 	movs r1, #0x2b
 	adds r1, r1, r5
@@ -2122,7 +2122,7 @@ sub_809C9F8: @ 0x0809C9F8
 _0809CAE8: .4byte 0x020129A8
 _0809CAEC: .4byte Pal_08190268
 _0809CAF0: .4byte gBg2Tm + 0x120
-_0809CAF4: .4byte Unk_081C8FCC
+_0809CAF4: .4byte TacticianAffins
 _0809CAF8: .4byte gPlaySt
 
 	thumb_func_start sub_809CAFC

@@ -510,7 +510,7 @@ void ComputeBattleUnitHitRate(struct BattleUnit *bu)
         bu->unit.lck / 2 +
         bu->wTriangleHitBonus;
 
-    if (gPlaySt.unk_2B_00 == 0)
+    if (gPlaySt.tact_enabled == 0)
         return;
 
     if (gPlaySt.chapterModeIndex == 0x1)
@@ -522,7 +522,7 @@ void ComputeBattleUnitHitRate(struct BattleUnit *bu)
     if (UNIT_FACTION(&bu->unit))
         return;
 
-    if (Unk_081C8FCC[gPlaySt.unk_2B_04][gPlaySt.unk_2B_01] == bu->unit.pCharacterData->affinity) {
+    if (TacticianAffins[gPlaySt.tact_birth][gPlaySt.tact_blood] == bu->unit.pCharacterData->affinity) {
         ret = gPlaySt.unk2C_11 / 0xC;
         if (ret > 10)
             ret = 10;
@@ -540,8 +540,8 @@ void ComputeBattleUnitAvoidRate(struct BattleUnit *bu)
 
     bu->battleAvoidRate = bu->battleSpeed * 2 + bu->terrainAvoid + (bu->unit.lck);
 
-    if (gPlaySt.unk_2B_00 != 0 && gPlaySt.chapterModeIndex != 0x1 && !(gBmSt.flags & BM_FLAG_LINKARENA) && UNIT_FACTION(&bu->unit) == 0) {
-        if (Unk_081C8FCC[gPlaySt.unk_2B_04][gPlaySt.unk_2B_01] == bu->unit.pCharacterData->affinity) {
+    if (gPlaySt.tact_enabled != 0 && gPlaySt.chapterModeIndex != 0x1 && !(gBmSt.flags & BM_FLAG_LINKARENA) && UNIT_FACTION(&bu->unit) == 0) {
+        if (TacticianAffins[gPlaySt.tact_birth][gPlaySt.tact_blood] == bu->unit.pCharacterData->affinity) {
             ret = gPlaySt.unk2C_11 / 0xC;
             if (ret > 10)
                 ret = 10;
@@ -587,7 +587,7 @@ void ComputeBattleUnitEffectiveCritRate(struct BattleUnit *attacker, struct Batt
 
     attacker->battleEffectiveCritRate = attacker->battleCritRate - defender->battleDodgeRate;
 
-    if (gPlaySt.unk_2B_00 != 0 && gPlaySt.chapterModeIndex != 0x1 && !(gBmSt.flags & BM_FLAG_LINKARENA) && UNIT_FACTION(&defender->unit) == 0) {
+    if (gPlaySt.tact_enabled != 0 && gPlaySt.chapterModeIndex != 0x1 && !(gBmSt.flags & BM_FLAG_LINKARENA) && UNIT_FACTION(&defender->unit) == 0) {
         ret = gPlaySt.unk2C_11 / 0xC;
         if (ret > 10)
             ret = 10;

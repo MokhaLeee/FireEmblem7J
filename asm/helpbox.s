@@ -594,7 +594,7 @@ _0808346C: .4byte gUnk_0841D0BC
 _08083470: .4byte gUnk_0841D0C0
 _08083474:
 	ldr r4, _080834D0 @ =0x0203E690
-	ldr r2, _080834D4 @ =Unk_081C8FCC
+	ldr r2, _080834D4 @ =TacticianAffins
 	ldrb r1, [r5]
 	lsls r0, r1, #0x1c
 	lsrs r0, r0, #0x1d
@@ -634,7 +634,7 @@ _080834C8:
 	bx r0
 	.align 2, 0
 _080834D0: .4byte 0x0203E690
-_080834D4: .4byte Unk_081C8FCC
+_080834D4: .4byte TacticianAffins
 
 	thumb_func_start sub_80834D8
 sub_80834D8: @ 0x080834D8

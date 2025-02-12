@@ -38,8 +38,8 @@ void TactInfo_StartHelpbox(struct ProcTactInfo *proc);
 void TactInfo_CloseHelpbox(struct ProcTactInfo *proc);
 void sub_80A7388(void);
 void sub_80A739C(ProcPtr proc);
-void sub_80A73C4(int index, ProcPtr proc);
-void sub_80A7404(int index);
+void UpdateTactMainHandShadow(int index, ProcPtr proc);
+void UpdateTactMainHandPosition(int index);
 void sub_80A7424(void);
 void sub_80A7424(void);
 void TactInfoFx_Thread(struct ProcTactInfo *proc);
@@ -61,19 +61,27 @@ int TactGetMsg_Blood(int index);
 int TactGetMsg_Birth(int index);
 int TactGetMsg_Gender(int index);
 int TactGetMsg_Affin(int index);
-// ??? sub_80A7AE8
-// ??? TactBlood_Init
-// ??? TactBlood_Loop
-// ??? TactBlood_End
-void sub_80A7D88(struct ProcTactInfo *proc);
+
+struct ProcTactBlood {
+    PROC_HEADER;
+
+    /* 2C */ int cur_index;
+    /* 30 */ bool do_helpbox;
+};
+
+void Tact_ClearNrVrams(void *vram, u32 chr, u32 nr_chrs);
+void TactBlood_Init(struct ProcTactBlood *proc);
+void TactBlood_Loop(struct ProcTactBlood *proc);
+void TactBlood_End(struct ProcTactBlood *proc);
+void StartTactBloodSelect(struct ProcTactInfo *proc);
 // ??? sub_80A7D9C
 // ??? sub_80A7E4C
 // ??? sub_80A806C
-void sub_80A80A4(struct ProcTactInfo *proc);
+void StartTactBirthSelect(struct ProcTactInfo *proc);
 // ??? sub_80A80B8
 // ??? sub_80A8140
 // ??? sub_80A82B8
-void sub_80A82F0(struct ProcTactInfo *proc);
+void StartTactGenderSelect(struct ProcTactInfo *proc);
 void sub_80A8304(s32);
 // ??? InitModeSelectAnims
 // ??? EndModeSelectAnims

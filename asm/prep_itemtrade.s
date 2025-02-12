@@ -594,13 +594,13 @@ _08094D06:
 	movs r1, #8
 	movs r2, #0xe
 	movs r3, #0xc
-	bl sub_804A4CC
+	bl DrawUiFrame2
 	str r6, [sp]
 	movs r0, #0xf
 	movs r1, #8
 	movs r2, #0xe
 	movs r3, #0xc
-	bl sub_804A4CC
+	bl DrawUiFrame2
 	movs r0, #7
 	bl EnableBgSync
 	mov r4, r8

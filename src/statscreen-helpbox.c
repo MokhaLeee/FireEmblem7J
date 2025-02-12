@@ -331,7 +331,7 @@ void ApplyHelpBoxContentSize(struct HelpBoxProc * proc, int w_inner, int h_inner
         break;
 
     case HELPBOX_INFO_SAVE_MENU:
-        w_inner = gPlaySt.unk_2B_00 ? 0xA0 : 0x40;
+        w_inner = gPlaySt.tact_enabled ? 0xA0 : 0x40;
         h_inner += 0x10;
         break;
     }

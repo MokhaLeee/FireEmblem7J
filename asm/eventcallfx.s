@@ -336,7 +336,7 @@ sub_807D5B0: @ 0x0807D5B0
 	movs r1, #8
 	movs r2, #0x11
 	movs r3, #4
-	bl sub_804A4CC
+	bl DrawUiFrame2
 	ldr r0, _0807D650 @ =gPlaySt
 	adds r0, #0x41
 	ldrb r0, [r0]

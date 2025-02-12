@@ -400,7 +400,7 @@ sub_804ACC8: @ 0x0804ACC8
 	ldr r4, [r6, #0x30]
 	ldrb r4, [r4, #4]
 	str r4, [sp]
-	bl sub_804A4CC
+	bl DrawUiFrame2
 	movs r7, #0
 	adds r0, r6, #0
 	adds r0, #0x60
@@ -551,7 +551,7 @@ sub_804AE18: @ 0x0804AE18
 	bl sub_804B08C
 	ldr r0, [sp]
 	ldr r1, [sp, #4]
-	bl sub_804A7EC
+	bl DisplayFrozenUiHand
 	b _0804AF02
 _0804AE3E:
 	movs r0, #0x80
@@ -1035,7 +1035,7 @@ sub_804B1C0: @ 0x0804B1C0
 	bl sub_804B334
 	ldr r0, [sp]
 	ldr r1, [sp, #4]
-	bl sub_804A7EC
+	bl DisplayFrozenUiHand
 	ldr r0, _0804B208 @ =gpKeySt
 	ldr r1, [r0]
 	movs r0, #0x81
@@ -1095,7 +1095,7 @@ sub_804B244: @ 0x0804B244
 	bl sub_804B334
 	ldr r0, [sp]
 	ldr r1, [sp, #4]
-	bl sub_804A7EC
+	bl DisplayFrozenUiHand
 	ldr r0, _0804B284 @ =gpKeySt
 	ldr r1, [r0]
 	movs r0, #3

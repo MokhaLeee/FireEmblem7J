@@ -2,101 +2,6 @@
 	.syntax unified
 
 
-	thumb_func_start sub_80A7AE8
-sub_80A7AE8: @ 0x080A7AE8
-	push {r4, r5, r6, lr}
-	sub sp, #8
-	adds r5, r0, #0
-	adds r4, r2, #0
-	movs r6, #0
-	str r6, [sp]
-	lsls r1, r1, #5
-	adds r5, r5, r1
-	lsls r4, r4, #3
-	ldr r0, _080A7B28 @ =0x001FFFFF
-	ands r4, r0
-	movs r0, #0x80
-	lsls r0, r0, #0x11
-	orrs r4, r0
-	mov r0, sp
-	adds r1, r5, #0
-	adds r2, r4, #0
-	bl CpuFastSet
-	str r6, [sp, #4]
-	add r0, sp, #4
-	movs r1, #0x80
-	lsls r1, r1, #3
-	adds r5, r5, r1
-	adds r1, r5, #0
-	adds r2, r4, #0
-	bl CpuFastSet
-	add sp, #8
-	pop {r4, r5, r6}
-	pop {r0}
-	bx r0
-	.align 2, 0
-_080A7B28: .4byte 0x001FFFFF
-
-	thumb_func_start TactBlood_Init
-TactBlood_Init: @ 0x080A7B2C
-	push {r4, r5, lr}
-	sub sp, #4
-	adds r4, r0, #0
-	ldr r0, _080A7BA8 @ =gPlaySt
-	adds r0, #0x2b
-	ldrb r0, [r0]
-	lsls r0, r0, #0x1c
-	lsrs r0, r0, #0x1d
-	str r0, [r4, #0x2c]
-	movs r0, #0
-	str r0, [sp]
-	movs r0, #3
-	movs r1, #0xb
-	movs r2, #0xe
-	movs r3, #4
-	bl sub_804A4CC
-	movs r0, #2
-	bl EnableBgSync
-	ldr r1, [r4, #0x2c]
-	lsls r0, r1, #1
-	adds r0, r0, r1
-	lsls r0, r0, #3
-	adds r0, #0x22
-	movs r3, #0x80
-	lsls r3, r3, #4
-	movs r1, #0x60
-	movs r2, #2
-	bl ShowSysHandCursor
-	ldr r0, _080A7BAC @ =gTactInfoFont
-	bl SetTextFont
-	movs r0, #0
-	bl SetTextFontGlyphs
-	movs r4, #0
-	movs r5, #0
-_080A7B7A:
-	adds r0, r4, #0
-	bl TactGetMsg_Blood
-	bl DecodeMsg
-	adds r3, r0, #0
-	ldr r0, _080A7BB0 @ =0x0200008C
-	adds r1, r5, #0
-	movs r2, #0
-	bl Text_InsertDrawString
-	adds r5, #0x18
-	adds r4, #1
-	cmp r4, #3
-	ble _080A7B7A
-	movs r0, #0
-	bl SetTextFont
-	add sp, #4
-	pop {r4, r5}
-	pop {r0}
-	bx r0
-	.align 2, 0
-_080A7BA8: .4byte gPlaySt
-_080A7BAC: .4byte gTactInfoFont
-_080A7BB0: .4byte 0x0200008C
-
 	thumb_func_start TactBlood_Loop
 TactBlood_Loop: @ 0x080A7BB4
 	push {r4, r5, r6, r7, lr}
@@ -150,7 +55,7 @@ _080A7C02:
 	orrs r2, r1
 	strb r2, [r5]
 	ldr r0, _080A7C8C @ =gBg0Tm + 0x15c
-	ldr r3, _080A7C90 @ =Unk_081C8FCC
+	ldr r3, _080A7C90 @ =TacticianAffins
 	lsls r1, r2, #0x1c
 	lsrs r1, r1, #0x1d
 	lsls r1, r1, #2
@@ -171,7 +76,7 @@ _080A7C02:
 	ldr r0, _080A7C98 @ =0x06011000
 	movs r1, #8
 	movs r2, #4
-	bl sub_80A7AE8
+	bl Tact_ClearNrVrams
 	adds r4, #0x18
 	ldrb r5, [r5]
 	lsls r0, r5, #0x1c
@@ -195,7 +100,7 @@ _080A7C80: .4byte gpKeySt
 _080A7C84: .4byte gPlaySt
 _080A7C88: .4byte 0x0000038A
 _080A7C8C: .4byte gBg0Tm + 0x15c
-_080A7C90: .4byte Unk_081C8FCC
+_080A7C90: .4byte TacticianAffins
 _080A7C94: .4byte gTactInfoFont
 _080A7C98: .4byte 0x06011000
 _080A7C9C:
@@ -316,8 +221,8 @@ TactBlood_End: @ 0x080A7D50
 _080A7D80: .4byte gBg1Tm
 _080A7D84: .4byte gTactInfoFont
 
-	thumb_func_start sub_80A7D88
-sub_80A7D88: @ 0x080A7D88
+	thumb_func_start StartTactBloodSelect
+StartTactBloodSelect: @ 0x080A7D88
 	push {lr}
 	adds r1, r0, #0
 	ldr r0, _080A7D98 @ =ProcScr_TactBloodSelect
@@ -343,7 +248,7 @@ sub_80A7D9C: @ 0x080A7D9C
 	movs r1, #0xb
 	movs r2, #0x1a
 	movs r3, #6
-	bl sub_804A4CC
+	bl DrawUiFrame2
 	movs r0, #2
 	bl EnableBgSync
 	ldr r5, [r4, #0x2c]
@@ -456,7 +361,7 @@ _080A7E9E:
 	orrs r2, r0
 	strb r2, [r5]
 	ldr r0, _080A7F20 @ =gBg0Tm + 0x15c
-	ldr r4, _080A7F24 @ =Unk_081C8FCC
+	ldr r4, _080A7F24 @ =TacticianAffins
 	lsls r1, r2, #0x1c
 	lsrs r1, r1, #0x1d
 	lsls r1, r1, #2
@@ -477,7 +382,7 @@ _080A7E9E:
 	ldr r0, _080A7F2C @ =0x06011000
 	movs r1, #0xc
 	movs r2, #4
-	bl sub_80A7AE8
+	bl Tact_ClearNrVrams
 	adds r4, #0x18
 	ldrb r5, [r5]
 	lsrs r0, r5, #4
@@ -500,7 +405,7 @@ _080A7F14: .4byte gpKeySt
 _080A7F18: .4byte gPlaySt
 _080A7F1C: .4byte 0x0000038A
 _080A7F20: .4byte gBg0Tm + 0x15c
-_080A7F24: .4byte Unk_081C8FCC
+_080A7F24: .4byte TacticianAffins
 _080A7F28: .4byte gTactInfoFont
 _080A7F2C: .4byte 0x06011000
 _080A7F30:
@@ -688,8 +593,8 @@ sub_80A806C: @ 0x080A806C
 _080A809C: .4byte gBg1Tm
 _080A80A0: .4byte gTactInfoFont
 
-	thumb_func_start sub_80A80A4
-sub_80A80A4: @ 0x080A80A4
+	thumb_func_start StartTactBirthSelect
+StartTactBirthSelect: @ 0x080A80A4
 	push {lr}
 	adds r1, r0, #0
 	ldr r0, _080A80B4 @ =gUnk_08DADF98
@@ -716,7 +621,7 @@ sub_80A80B8: @ 0x080A80B8
 	movs r1, #0xb
 	movs r2, #7
 	movs r3, #4
-	bl sub_804A4CC
+	bl DrawUiFrame2
 	movs r0, #2
 	bl EnableBgSync
 	ldr r1, [r4, #0x2c]
@@ -819,7 +724,7 @@ _080A8190:
 	ldr r0, _080A8200 @ =0x06011000
 	movs r1, #0x10
 	movs r2, #4
-	bl sub_80A7AE8
+	bl Tact_ClearNrVrams
 	adds r4, #0x18
 	ldrb r5, [r5]
 	lsls r0, r5, #0x1f
@@ -961,8 +866,8 @@ sub_80A82B8: @ 0x080A82B8
 _080A82E8: .4byte gBg1Tm
 _080A82EC: .4byte gTactInfoFont
 
-	thumb_func_start sub_80A82F0
-sub_80A82F0: @ 0x080A82F0
+	thumb_func_start StartTactGenderSelect
+StartTactGenderSelect: @ 0x080A82F0
 	push {lr}
 	adds r1, r0, #0
 	ldr r0, _080A8300 @ =gUnk_08DADFC8

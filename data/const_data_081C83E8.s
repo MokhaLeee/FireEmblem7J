@@ -24,8 +24,8 @@ gUnk_081C8AF8:	@ 0x081C8AF8
 gUnk_081C8B18:	@ 0x081C8B18
 	.incbin "FireEmblem7J.base.gba", 0x1C8B18, 0x1C8FCC - 0x1C8B18
 
-	.global Unk_081C8FCC
-Unk_081C8FCC:
+	.global TacticianAffins
+TacticianAffins:
 	.incbin "FireEmblem7J.base.gba", 0x1C8FCC, 0xC0
 
 	.incbin "FireEmblem7J.base.gba", 0x1C908C, 0x1C9108 - 0x1C908C

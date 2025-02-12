@@ -5094,7 +5094,7 @@ sub_807116C: @ 0x0807116C
 	movs r1, #0
 	movs r2, #0x1d
 	movs r3, #0x13
-	bl sub_804A4CC
+	bl DrawUiFrame2
 	movs r0, #0
 	str r0, [r7, #4]
 _0807124E:

@@ -7243,7 +7243,7 @@ _08031C90:
 	adds r0, r6, #0
 	adds r1, r4, #0
 	ldr r2, [sp, #0x2c]
-	bl sub_804A4CC
+	bl DrawUiFrame2
 	lsls r0, r7, #5
 	adds r0, r0, r6
 	lsls r0, r0, #1

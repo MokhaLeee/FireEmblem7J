@@ -75,11 +75,11 @@ struct PlaySt {
     /* 1F */ u8 unk1F;
 
     /* 20 */ char playerName[0x2B - 0x20];
-    /* 2B */ u8 unk_2B_00 : 0x01;
-             u8 unk_2B_01 : 0x03;
-             u8 unk_2B_04 : 0x04;
+    /* 2B */ u8 tact_enabled : 0x01;
+             u8 tact_blood : 0x03;
+             u8 tact_birth : 0x04;
 
-    u32 unk2C_00 : 0x01;
+    u32 tact_gender : 0x01;
     u32 unk2C_01 : 0x03;
     u32 unk2C_11 : 0x09;
     u32 unk2C_0D : 0x13;
