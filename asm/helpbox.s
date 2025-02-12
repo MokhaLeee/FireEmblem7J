@@ -564,7 +564,7 @@ sub_808341C: @ 0x0808341C
 	ands r0, r1
 	cmp r0, #0
 	beq _080834C8
-	bl sub_802EBB0
+	bl GetTacticianName
 	adds r6, r0, #0
 	ldrb r0, [r6]
 	cmp r0, #0
@@ -604,7 +604,7 @@ _08083474:
 	adds r0, r0, r1
 	adds r0, r0, r2
 	ldr r0, [r0]
-	bl sub_80A7AD8
+	bl TactGetMsg_Affin
 	bl DecodeMsg
 	adds r3, r0, #0
 	adds r0, r4, #0
@@ -616,7 +616,7 @@ _08083474:
 	ldrb r0, [r0]
 	lsls r0, r0, #0x1f
 	lsrs r0, r0, #0x1f
-	bl sub_80A7AC8
+	bl TactGetMsg_Gender
 	bl DecodeMsg
 	adds r3, r0, #0
 	adds r0, r4, #0
@@ -1542,8 +1542,8 @@ _08083B96:
 	bx r1
 	.align 2, 0
 
-	thumb_func_start sub_8083B9C
-sub_8083B9C: @ 0x08083B9C
+	thumb_func_start SetDialogueBoxConfig
+SetDialogueBoxConfig: @ 0x08083B9C
 	ldr r1, _08083BA4 @ =0x0203E6CC
 	adds r1, #0x42
 	strh r0, [r1]
@@ -1551,8 +1551,8 @@ sub_8083B9C: @ 0x08083B9C
 	.align 2, 0
 _08083BA4: .4byte 0x0203E6CC
 
-	thumb_func_start sub_8083BA8
-sub_8083BA8: @ 0x08083BA8
+	thumb_func_start GetDialogueBoxConfig
+GetDialogueBoxConfig: @ 0x08083BA8
 	ldr r0, _08083BB0 @ =0x0203E6CC
 	adds r0, #0x42
 	ldrh r0, [r0]
@@ -1604,7 +1604,7 @@ _08083BF0:
 	cmp r7, r0
 	bne _08083C28
 	str r3, [sp]
-	bl sub_8083BA8
+	bl GetDialogueBoxConfig
 	movs r1, #1
 	ands r1, r0
 	ldr r3, [sp]
@@ -1647,8 +1647,8 @@ _08083C46:
 	pop {r0}
 	bx r0
 
-	thumb_func_start sub_8083C54
-sub_8083C54: @ 0x08083C54
+	thumb_func_start InitBoxDialogue
+InitBoxDialogue: @ 0x08083C54
 	push {r4, r5, r6, r7, lr}
 	adds r6, r0, #0
 	adds r5, r1, #0
@@ -1664,7 +1664,7 @@ _08083C66:
 	ands r0, r5
 	adds r5, r0, #0
 	adds r5, #0x10
-	bl sub_8083BA8
+	bl GetDialogueBoxConfig
 	movs r1, #0x10
 	ands r1, r0
 	cmp r1, #0
@@ -1682,7 +1682,7 @@ _08083C8C:
 	bl Decompress
 _08083C94:
 	bl ClearAllTalkFlags
-	bl sub_8083BA8
+	bl GetDialogueBoxConfig
 	movs r1, #1
 	ands r1, r0
 	cmp r1, #0
@@ -1701,12 +1701,12 @@ _08083C94:
 	adds r0, r4, #0
 	adds r0, #0x28
 	bl InitSpriteText
-	bl sub_8083BA8
+	bl GetDialogueBoxConfig
 	movs r1, #0x10
 	ands r1, r0
 	cmp r1, #0
 	beq _08083CF0
-	bl sub_8083BA8
+	bl GetDialogueBoxConfig
 	movs r1, #0x20
 	ands r1, r0
 	cmp r1, #0
@@ -1720,7 +1720,7 @@ _08083C94:
 _08083CF0:
 	movs r0, #0
 	bl SetTextFont
-	bl sub_8083BA8
+	bl GetDialogueBoxConfig
 	movs r1, #0x10
 	ands r1, r0
 	cmp r1, #0
@@ -1757,7 +1757,7 @@ _08083D38:
 	bl InitSpriteText
 	adds r4, #1
 _08083D44:
-	bl sub_8083BA8
+	bl GetDialogueBoxConfig
 	lsls r0, r0, #0x10
 	lsrs r0, r0, #0x18
 	cmp r4, r0
@@ -1778,7 +1778,7 @@ _08083D60:
 	adds r1, r1, r0
 	adds r2, #0x40
 	strh r1, [r2]
-	bl sub_8083BA8
+	bl GetDialogueBoxConfig
 	movs r1, #0x10
 	ands r1, r0
 	cmp r1, #0
@@ -1828,7 +1828,7 @@ _08083DD2:
 	ldrsh r0, [r1, r2]
 	adds r7, r0, #0
 	adds r7, #0x10
-	bl sub_8083BA8
+	bl GetDialogueBoxConfig
 	movs r1, #1
 	ands r1, r0
 	cmp r1, #0
@@ -1837,7 +1837,7 @@ _08083DD2:
 	adds r0, r6, #0
 	adds r0, #8
 	strh r0, [r4, #0x3e]
-	bl sub_8083BA8
+	bl GetDialogueBoxConfig
 	movs r1, #0x40
 	ands r1, r0
 	cmp r1, #0
@@ -1899,12 +1899,12 @@ sub_8083E44: @ 0x08083E44
 	movs r1, #1
 	rsbs r1, r1, #0
 	movs r0, #0
-	bl sub_8083C54
+	bl InitBoxDialogue
 	b _08083E66
 _08083E5E:
 	ldr r0, [r4, #0x3c]
 	ldrb r1, [r1]
-	bl sub_8083C54
+	bl InitBoxDialogue
 _08083E66:
 	ldr r0, [r4, #0x2c]
 	ldr r1, [r4, #0x30]
@@ -1919,7 +1919,7 @@ _08083E66:
 sub_8083E78: @ 0x08083E78
 	push {r4, lr}
 	adds r4, r0, #0
-	bl sub_8083BA8
+	bl GetDialogueBoxConfig
 	movs r1, #0x82
 	ands r1, r0
 	cmp r1, #0
@@ -1944,7 +1944,7 @@ _08083EA4: .4byte gpKeySt
 	thumb_func_start sub_8083EA8
 sub_8083EA8: @ 0x08083EA8
 	push {lr}
-	bl sub_8083BA8
+	bl GetDialogueBoxConfig
 	movs r1, #0x10
 	ands r1, r0
 	cmp r1, #0
@@ -1960,7 +1960,7 @@ sub_8083EA8: @ 0x08083EA8
 _08083EC8:
 	movs r0, #0
 	bl SetTextFontGlyphs
-	bl sub_8083FEC
+	bl EndMergeBoxDialogue
 	pop {r0}
 	bx r0
 	.align 2, 0
@@ -2106,8 +2106,8 @@ _08083FE2:
 	.align 2, 0
 _08083FE8: .4byte ProcScr_TalkBoxIdle
 
-	thumb_func_start sub_8083FEC
-sub_8083FEC: @ 0x08083FEC
+	thumb_func_start EndMergeBoxDialogue
+EndMergeBoxDialogue: @ 0x08083FEC
 	push {lr}
 	bl sub_8085008
 	ldr r0, _08083FFC @ =ProcScr_MergeBoxDialogue
@@ -2117,8 +2117,8 @@ sub_8083FEC: @ 0x08083FEC
 	.align 2, 0
 _08083FFC: .4byte ProcScr_MergeBoxDialogue
 
-	thumb_func_start sub_8084000
-sub_8084000: @ 0x08084000
+	thumb_func_start StartBoxDialogueSimple
+StartBoxDialogueSimple: @ 0x08084000
 	push {r4, r5, r6, r7, lr}
 	mov r7, r8
 	push {r7}
@@ -2130,7 +2130,7 @@ sub_8084000: @ 0x08084000
 	adds r0, r4, #0
 	bl Proc_EndEach
 	movs r0, #0
-	bl sub_8083B9C
+	bl SetDialogueBoxConfig
 	cmp r5, #0
 	bne _08084030
 	adds r0, r4, #0
@@ -2167,8 +2167,8 @@ _08084038:
 	.align 2, 0
 _08084064: .4byte ProcScr_TalkBoxIdle
 
-	thumb_func_start sub_8084068
-sub_8084068: @ 0x08084068
+	thumb_func_start StartBoxDialogueExt
+StartBoxDialogueExt: @ 0x08084068
 	push {r4, r5, r6, r7, lr}
 	mov r7, sb
 	mov r6, r8
@@ -2182,7 +2182,7 @@ sub_8084068: @ 0x08084068
 	adds r0, r4, #0
 	bl Proc_EndEach
 	movs r0, #0
-	bl sub_8083B9C
+	bl SetDialogueBoxConfig
 	cmp r5, #0
 	bne _0808409C
 	adds r0, r4, #0
@@ -2431,7 +2431,7 @@ DrawBoxDialogueText: @ 0x08084208
 	adds r0, r4, #0
 	adds r0, #0x48
 	strh r5, [r0]
-	bl sub_8083BA8
+	bl GetDialogueBoxConfig
 	movs r1, #1
 	ands r1, r0
 	cmp r1, #0
@@ -2470,7 +2470,7 @@ _08084264:
 	ldr r2, [sp, #4]
 	adds r0, r4, #0
 	bl sub_8083E34
-	bl sub_8083BA8
+	bl GetDialogueBoxConfig
 	movs r1, #0x80
 	lsls r1, r1, #1
 	ands r1, r0
@@ -2546,7 +2546,7 @@ _08084322:
 	movs r3, #0x50
 	mov r8, r3
 _0808432C:
-	bl sub_8083BA8
+	bl GetDialogueBoxConfig
 	movs r1, #1
 	ands r1, r0
 	cmp r1, #0
@@ -2859,7 +2859,7 @@ _0808458C:
 _08084596:
 	asrs r0, r0, #5
 	str r0, [sp, #8]
-	bl sub_8083BA8
+	bl GetDialogueBoxConfig
 	lsls r0, r0, #0x10
 	lsrs r0, r0, #0x18
 	subs r0, #1
@@ -2946,7 +2946,7 @@ _0808463C: .4byte ProcScr_MergeBoxDialogue
 	thumb_func_start sub_8084640
 sub_8084640: @ 0x08084640
 	push {lr}
-	bl sub_8083BA8
+	bl GetDialogueBoxConfig
 	movs r1, #4
 	ands r1, r0
 	cmp r1, #0
@@ -2965,7 +2965,7 @@ _08084660:
 	thumb_func_start sub_8084664
 sub_8084664: @ 0x08084664
 	push {lr}
-	bl sub_8083BA8
+	bl GetDialogueBoxConfig
 	movs r1, #4
 	ands r1, r0
 	cmp r1, #0
@@ -2994,12 +2994,12 @@ sub_8084688: @ 0x08084688
 	adds r0, r4, #0
 	adds r0, #0x10
 	bl SpriteText_DrawBackground
-	bl sub_8083BA8
+	bl GetDialogueBoxConfig
 	movs r1, #0x10
 	ands r1, r0
 	cmp r1, #0
 	beq _080846CC
-	bl sub_8083BA8
+	bl GetDialogueBoxConfig
 	movs r1, #0x20
 	ands r1, r0
 	cmp r1, #0
@@ -3041,7 +3041,7 @@ sub_80846E4: @ 0x080846E4
 	ands r0, r1
 	cmp r0, #0
 	beq _08084766
-	bl sub_8083BA8
+	bl GetDialogueBoxConfig
 	movs r1, #8
 	ands r1, r0
 	cmp r1, #0
@@ -3468,7 +3468,7 @@ _08084B5E:
 	cmp r0, #0
 	bne _08084B98
 _08084B66:
-	bl sub_8083BA8
+	bl GetDialogueBoxConfig
 	movs r1, #2
 	ands r1, r0
 	cmp r1, #0
@@ -3489,7 +3489,7 @@ _08084B74:
 _08084B90: .4byte ProcScr_BoxDialogue
 _08084B94: .4byte ProcScr_TalkBoxIdle
 _08084B98:
-	bl sub_8083BA8
+	bl GetDialogueBoxConfig
 	movs r1, #0x10
 	ands r1, r0
 	lsls r1, r1, #0x10
@@ -3542,7 +3542,7 @@ _08084BC4:
 	.align 2, 0
 _08084C04: .4byte ProcScr_MergeBoxDialogue
 _08084C08:
-	bl sub_8083BA8
+	bl GetDialogueBoxConfig
 	movs r1, #1
 	ands r1, r0
 	cmp r1, #0
@@ -3607,7 +3607,7 @@ _08084C6A:
 	cmp r0, #0
 	beq _08084CCA
 _08084C90:
-	bl sub_8083BA8
+	bl GetDialogueBoxConfig
 	movs r1, #0x10
 	ands r1, r0
 	cmp r1, #0
@@ -3878,7 +3878,7 @@ sub_8084E8C: @ 0x08084E8C
 	bl SetTextFontGlyphs
 	movs r0, #1
 	bl SetTextFontGlyphs
-	bl sub_8083BA8
+	bl GetDialogueBoxConfig
 	movs r1, #1
 	ands r1, r0
 	cmp r1, #0
@@ -3895,12 +3895,12 @@ sub_8084E8C: @ 0x08084E8C
 	adds r0, #0x28
 	movs r1, #6
 	bl Text_SetColor
-	bl sub_8083BA8
+	bl GetDialogueBoxConfig
 	movs r1, #0x10
 	ands r1, r0
 	cmp r1, #0
 	beq _08084F1E
-	bl sub_8083BA8
+	bl GetDialogueBoxConfig
 	movs r1, #0x20
 	ands r1, r0
 	cmp r1, #0
@@ -3927,7 +3927,7 @@ _08084F04:
 	bl Text_SetColor
 	adds r4, #1
 _08084F12:
-	bl sub_8083BA8
+	bl GetDialogueBoxConfig
 	lsls r0, r0, #0x10
 	lsrs r0, r0, #0x18
 	cmp r4, r0
@@ -4057,7 +4057,7 @@ sub_8085008: @ 0x08085008
 	ldr r4, _08085060 @ =0x0203E6CC
 	adds r0, r4, #0
 	bl SetTextFont
-	bl sub_8083BA8
+	bl GetDialogueBoxConfig
 	movs r1, #1
 	ands r1, r0
 	cmp r1, #0
@@ -4071,12 +4071,12 @@ sub_8085008: @ 0x08085008
 	adds r0, r4, #0
 	adds r0, #0x28
 	bl SpriteText_DrawBackground
-	bl sub_8083BA8
+	bl GetDialogueBoxConfig
 	movs r1, #0x10
 	ands r1, r0
 	cmp r1, #0
 	beq _08085082
-	bl sub_8083BA8
+	bl GetDialogueBoxConfig
 	movs r1, #0x20
 	ands r1, r0
 	cmp r1, #0
@@ -4101,7 +4101,7 @@ _08085068:
 	bl SpriteText_DrawBackgroundExt
 	adds r4, #1
 _08085076:
-	bl sub_8083BA8
+	bl GetDialogueBoxConfig
 	lsls r0, r0, #0x10
 	lsrs r0, r0, #0x18
 	cmp r4, r0

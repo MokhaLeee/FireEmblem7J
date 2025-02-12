@@ -229,25 +229,25 @@ struct PidStats * GetPidStats(u8 pid);
 // ??? sub_80A0F14
 // ??? sub_80A0F20
 // ??? sub_80A0F3C
-// ??? WriteLastGameSaveId
-// ??? ReadLastGameSaveId
+void WriteLastGameSaveId(int num);
+int ReadLastGameSaveId(void);
 // ??? sub_80A0FA8
-// ??? CopyGameSave
-// ??? WriteNewGameSave
-// ??? WriteGameSave
-// ??? ReadGameSave
+void CopyGameSave(int index_src, int index_dest);
+void WriteNewGameSave(int index, int isDifficult, int mode, int isTutorial);
+void WriteGameSave(int slot);
+void ReadGameSave(int slot);
 bool IsSaveValid(int);
 // ??? ReadGameSavePlaySt
 // ??? sub_80A135C
 // ??? sub_80A1384
 // ??? sub_80A1398
 // ??? sub_80A13B8
-// ??? WriteGameSavePackedUnit
-// ??? LoadSavedUnit
-// ??? InvalidateSuspendSave
-// ??? WriteSuspendSave
-// ??? ReadSuspendSave
-// ??? IsValidSuspendSave
+void WriteGameSavePackedUnit(struct Unit *unit, void *sram_dest);
+void LoadSavedUnit(const void *sram_src, struct Unit *unit);
+void InvalidateSuspendSave(int);
+void WriteSuspendSave(int saveBlockId);
+void ReadSuspendSave(int slot);
+u8 IsValidSuspendSave(int);
 // ??? ReadSuspendSavePlaySt
 // ??? EncodeSuspendSavePackedUnit
 // ??? ReadSuspendSavePackedUnit

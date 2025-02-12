@@ -402,7 +402,7 @@ _08012EA4:
 	bl Proc_Goto
 	b _08012F24
 _08012EB6:
-	bl sub_802EBB0
+	bl GetTacticianName
 	ldrb r0, [r0]
 	cmp r0, #0
 	bne _08012EE6
@@ -1112,7 +1112,7 @@ _08013410:
 	movs r1, #3
 	b _08013440
 _08013414:
-	bl sub_802EBB0
+	bl GetTacticianName
 	b _08013422
 _0801341A:
 	ldr r0, _0801342C @ =gActionSt
@@ -1215,7 +1215,7 @@ _080134CC:
 	adds r4, #1
 	b _080134F0
 _080134D2:
-	bl sub_802EBB0
+	bl GetTacticianName
 	adds r1, r0, #0
 	adds r0, r4, #0
 	bl StringCopy

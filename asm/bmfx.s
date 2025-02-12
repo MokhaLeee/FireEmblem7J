@@ -842,7 +842,7 @@ sub_801DE18: @ 0x0801DE18
 	ldr r2, _0801DE68 @ =0x0000072A
 	movs r0, #8
 	adds r3, r5, #0
-	bl sub_8084000
+	bl StartBoxDialogueSimple
 	movs r0, #0
 	pop {r4, r5}
 	pop {r1}
@@ -875,7 +875,7 @@ sub_801DE6C: @ 0x0801DE6C
 	ldr r2, _0801DEAC @ =0x0000072A
 	movs r0, #8
 	adds r3, r5, #0
-	bl sub_8084000
+	bl StartBoxDialogueSimple
 	movs r0, #0
 	pop {r4, r5}
 	pop {r1}

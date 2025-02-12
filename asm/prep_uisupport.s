@@ -2030,7 +2030,7 @@ sub_809C9F8: @ 0x0809C9F8
 	bl SetTextFont
 	movs r0, #1
 	bl SetTextFontGlyphs
-	bl sub_802EBB0
+	bl GetTacticianName
 	adds r1, r4, #0
 	adds r4, #8
 	ldr r7, _0809CAF0 @ =gBg2Tm + 0x120
@@ -2065,7 +2065,7 @@ sub_809C9F8: @ 0x0809C9F8
 	ldrb r2, [r2]
 	lsls r0, r2, #0x1c
 	lsrs r0, r0, #0x1d
-	bl sub_80A7AA8
+	bl TactGetMsg_Blood
 	bl DecodeMsg
 	adds r2, r4, #0
 	adds r4, #8
@@ -2080,7 +2080,7 @@ sub_809C9F8: @ 0x0809C9F8
 	mov r3, r8
 	ldrb r3, [r3]
 	lsrs r0, r3, #4
-	bl sub_80A7AB8
+	bl TactGetMsg_Birth
 	bl DecodeMsg
 	adds r2, r4, #0
 	adds r4, #8
@@ -2097,7 +2097,7 @@ sub_809C9F8: @ 0x0809C9F8
 	ldrb r5, [r5]
 	lsls r0, r5, #0x1f
 	lsrs r0, r0, #0x1f
-	bl sub_80A7AC8
+	bl TactGetMsg_Gender
 	bl DecodeMsg
 	movs r2, #0x88
 	lsls r2, r2, #1
@@ -2211,10 +2211,10 @@ sub_809CB24: @ 0x0809CB24
 	movs r0, #4
 	bl ApplyIconPalettes
 	bl PrepRestartMuralBackground
-	ldr r0, _0809CD24 @ =Img_TacticianConfigBg
+	ldr r0, _0809CD24 @ =Img_TactInfoBg
 	ldr r1, _0809CD28 @ =0x06000400
 	bl Decompress
-	ldr r0, _0809CD2C @ =Pal_TacticianConfigBg
+	ldr r0, _0809CD2C @ =Pal_TactInfoBg
 	movs r1, #0xf0
 	lsls r1, r1, #1
 	movs r2, #0x20
@@ -2372,9 +2372,9 @@ _0809CC80:
 	bx r0
 	.align 2, 0
 _0809CD20: .4byte gDispIo
-_0809CD24: .4byte Img_TacticianConfigBg
+_0809CD24: .4byte Img_TactInfoBg
 _0809CD28: .4byte 0x06000400
-_0809CD2C: .4byte Pal_TacticianConfigBg
+_0809CD2C: .4byte Pal_TactInfoBg
 _0809CD30: .4byte gBg1Tm
 _0809CD34: .4byte gUnk_08438D90
 _0809CD38: .4byte 0x0000F020

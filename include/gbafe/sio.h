@@ -188,8 +188,8 @@ bool CheckInLinkArena(void);
 // sub_8043168
 // sub_804321C
 // sub_8043290
-// StartNameSelect
-// StartTacticianNameSelect
+void StartNameSelect(ProcPtr parent);
+void StartTacticianNameSelect(ProcPtr parent);
 // sub_8043390
 // sub_80434A8
 // sub_80434C8

@@ -136,4 +136,7 @@ enum
     SONG_10F = 0x10F,
     SONG_269 = 0x269,
     SONG_26A = 0x26A,
+
+    SONG_385 = 0x385,
+    SONG_38A = 0x38A,
 };

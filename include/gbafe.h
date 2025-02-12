@@ -35,6 +35,7 @@
 #include "gbafe/icon.h"
 #include "gbafe/prepscreen.h"
 #include "gbafe/savemenu.h"
+#include "gbafe/tactician.h"
 #include "gbafe/chapterdata.h"
 #include "gbafe/unit.h"
 #include "gbafe/battle.h"

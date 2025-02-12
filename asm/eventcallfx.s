@@ -9,7 +9,7 @@ sub_807D328: @ 0x0807D328
 	ldr r4, _0807D368 @ =0x06013000
 	adds r0, r4, #0
 	movs r1, #0xe
-	bl sub_8083C54
+	bl InitBoxDialogue
 	movs r1, #4
 	rsbs r1, r1, #0
 	ldr r2, _0807D36C @ =0x00000FBD
@@ -18,15 +18,15 @@ sub_807D328: @ 0x0807D328
 	str r5, [sp, #4]
 	movs r0, #0
 	adds r3, r4, #0
-	bl sub_8084068
-	bl sub_8083BA8
+	bl StartBoxDialogueExt
+	bl GetDialogueBoxConfig
 	movs r2, #0xd8
 	lsls r2, r2, #1
 	adds r1, r2, #0
 	orrs r0, r1
 	lsls r0, r0, #0x10
 	lsrs r0, r0, #0x10
-	bl sub_8083B9C
+	bl SetDialogueBoxConfig
 	add sp, #8
 	pop {r4, r5}
 	pop {r0}
@@ -233,7 +233,7 @@ sub_807D4B8: @ 0x0807D4B8
 	ldr r4, _0807D52C @ =0x06013000
 	adds r0, r4, #0
 	movs r1, #0xe
-	bl sub_8083C54
+	bl InitBoxDialogue
 	ldr r2, _0807D530 @ =0x00000FBC
 	movs r0, #0xe
 	str r0, [sp]
@@ -241,15 +241,15 @@ sub_807D4B8: @ 0x0807D4B8
 	movs r0, #0
 	movs r1, #0
 	adds r3, r4, #0
-	bl sub_8084068
-	bl sub_8083BA8
+	bl StartBoxDialogueExt
+	bl GetDialogueBoxConfig
 	movs r2, #0x88
 	lsls r2, r2, #1
 	adds r1, r2, #0
 	orrs r0, r1
 	lsls r0, r0, #0x10
 	lsrs r0, r0, #0x10
-	bl sub_8083B9C
+	bl SetDialogueBoxConfig
 	add sp, #8
 	pop {r4, r5}
 	pop {r0}

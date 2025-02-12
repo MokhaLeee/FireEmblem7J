@@ -1776,7 +1776,7 @@ _0809FF84:
 	ands r1, r3
 	orrs r1, r0
 	strh r1, [r7, #0xa]
-	bl sub_802EBB0
+	bl GetTacticianName
 	adds r1, r0, #0
 	mov r0, sl
 	bl strcpy

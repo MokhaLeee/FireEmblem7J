@@ -957,8 +957,8 @@ sub_802EBA0: @ 0x0802EBA0
 	pop {r0}
 	bx r0
 
-	thumb_func_start sub_802EBB0
-sub_802EBB0: @ 0x0802EBB0
+	thumb_func_start GetTacticianName
+GetTacticianName: @ 0x0802EBB0
 	ldr r0, _0802EBB4 @ =0x0202BC14
 	bx lr
 	.align 2, 0

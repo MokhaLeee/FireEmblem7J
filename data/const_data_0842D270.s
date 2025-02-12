@@ -184,16 +184,16 @@ Img_08436408:  @ 0x08436408
 Pal_ModeSelect_Sprites:	@ 0x08436460
 	.incbin "FireEmblem7J.base.gba", 0x436460, 0x436480 - 0x436460
 
-	.global Pal_TacticianConfigBg
-Pal_TacticianConfigBg:	@ 0x08436480
+	.global Pal_TactInfoBg
+Pal_TactInfoBg:	@ 0x08436480
 	.incbin "FireEmblem7J.base.gba", 0x436480, 0x4364A0 - 0x436480
 
-	.global Img_TacticianConfigBg
-Img_TacticianConfigBg:	@ 0x084364A0
+	.global Img_TactInfoBg
+Img_TactInfoBg:	@ 0x084364A0
 	.incbin "FireEmblem7J.base.gba", 0x4364A0, 0x438954 - 0x4364A0
 
-	.global Tsa_TacticianConfigBg
-Tsa_TacticianConfigBg:	@ 0x08438954
+	.global Tsa_TactInfoBg
+Tsa_TactInfoBg:	@ 0x08438954
 	.incbin "FireEmblem7J.base.gba", 0x438954, 0x438D90 - 0x438954
 
 	.global gUnk_08438D90

@@ -9276,7 +9276,7 @@ _0800FB44:
 	adds r0, r3, #0
 	adds r1, r5, #0
 	movs r3, #0
-	bl sub_8084000
+	bl StartBoxDialogueSimple
 	movs r0, #1
 	ands r0, r6
 	cmp r0, #0
@@ -9316,7 +9316,7 @@ _0800FB90:
 	cmp r6, #0
 	beq _0800FB9A
 	adds r0, r4, #0
-	bl sub_8083B9C
+	bl SetDialogueBoxConfig
 _0800FB9A:
 	movs r0, #0
 	pop {r4, r5, r6}
@@ -9369,7 +9369,7 @@ _0800FBEE:
 	adds r0, r3, #0
 	adds r1, r4, #0
 	movs r3, #0
-	bl sub_8084000
+	bl StartBoxDialogueSimple
 	b _0800FC36
 _0800FBFC:
 	ldr r1, [r4, #0x30]
@@ -9402,7 +9402,7 @@ _0800FC2A:
 	adds r0, r3, #0
 	adds r1, r4, #0
 	movs r3, #0
-	bl sub_8084000
+	bl StartBoxDialogueSimple
 _0800FC36:
 	movs r0, #0
 	pop {r4}

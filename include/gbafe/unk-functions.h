@@ -74,7 +74,7 @@ int IsFirstPlaythrough(void);
 // ResumeMapMainDuringPhaseChange
 // sub_802EB7C
 // sub_802EBA0
-const char* sub_802EBB0();
+char *GetTacticianName();
 void SetTacticianName(const char *name);
 // sub_802EBCC
 // sub_802EBD4
@@ -444,10 +444,10 @@ void ClearHelpBoxText(void);
 // sub_8083B28
 // sub_8083B48
 // sub_8083B80
-void sub_8083B9C(int a);
-// sub_8083BA8
+void SetDialogueBoxConfig(int a);
+// GetDialogueBoxConfig
 // sub_8083BB4
-// sub_8083C54
+// InitBoxDialogue
 // sub_8083DAC
 // sub_8083E34
 // sub_8083E44
@@ -457,9 +457,9 @@ void sub_8083B9C(int a);
 // sub_8083F70
 // sub_8083F98
 // sub_8083FBC
-// sub_8083FEC
-// sub_8084000
-void sub_8084068(int x, int y, int msgId, u16* unkA, int unkB, ProcPtr parent);
+// EndMergeBoxDialogue
+// StartBoxDialogueSimple
+void StartBoxDialogueExt(int x, int y, int msgId, u16* unkA, int unkB, ProcPtr parent);
 // GetBoxDialogueSize
 // DialogBoxGetGlyphLen
 // DrawBoxDialogueText

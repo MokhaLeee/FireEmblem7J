@@ -18210,15 +18210,15 @@ sub_80B8AF0: @ 0x080B8AF0
 	movs r1, #1
 	rsbs r1, r1, #0
 	movs r0, #0
-	bl sub_8083C54
+	bl InitBoxDialogue
 	movs r2, #0xa1
 	lsls r2, r2, #4
 	movs r0, #0x34
 	movs r1, #0x20
 	adds r3, r5, #0
-	bl sub_8084000
+	bl StartBoxDialogueSimple
 	movs r0, #0x90
-	bl sub_8083B9C
+	bl SetDialogueBoxConfig
 	pop {r4, r5, r6}
 	pop {r0}
 	bx r0
@@ -18283,14 +18283,14 @@ sub_80B8B88: @ 0x080B8B88
 	movs r1, #1
 	rsbs r1, r1, #0
 	movs r0, #0
-	bl sub_8083C54
+	bl InitBoxDialogue
 	ldr r2, _080B8BF4 @ =0x00000A11
 	movs r0, #0x40
 	movs r1, #0x20
 	adds r3, r5, #0
-	bl sub_8084000
+	bl StartBoxDialogueSimple
 	movs r0, #0x90
-	bl sub_8083B9C
+	bl SetDialogueBoxConfig
 	pop {r4, r5, r6}
 	pop {r0}
 	bx r0

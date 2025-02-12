@@ -1,450 +1,6 @@
 	.include "macro.inc"
 	.syntax unified
 
-	thumb_func_start sub_80A7778
-sub_80A7778: @ 0x080A7778
-	push {r4, lr}
-	adds r4, r0, #0
-	bl GetTalkChoiceResult
-	cmp r0, #1
-	bne _080A778C
-	adds r0, r4, #0
-	movs r1, #2
-	bl Proc_Goto
-_080A778C:
-	bl GetTalkChoiceResult
-	cmp r0, #2
-	beq _080A779C
-	bl GetTalkChoiceResult
-	cmp r0, #0
-	bne _080A77A4
-_080A779C:
-	adds r0, r4, #0
-	movs r1, #3
-	bl Proc_Goto
-_080A77A4:
-	pop {r4}
-	pop {r0}
-	bx r0
-	.align 2, 0
-
-	thumb_func_start sub_80A77AC
-sub_80A77AC: @ 0x080A77AC
-	push {r4, lr}
-	sub sp, #8
-	adds r4, r0, #0
-	bl EndSysHandCursor
-	bl sub_80A7388
-	movs r2, #0xf4
-	lsls r2, r2, #3
-	ldr r3, _080A77E4 @ =0x06016000
-	movs r0, #0xd
-	str r0, [sp]
-	str r4, [sp, #4]
-	movs r0, #0x60
-	movs r1, #0x5a
-	bl sub_8084068
-	movs r0, #0xf0
-	bl sub_8083B9C
-	movs r0, #1
-	bl SetTalkChoiceResult
-	add sp, #8
-	pop {r4}
-	pop {r0}
-	bx r0
-	.align 2, 0
-_080A77E4: .4byte 0x06016000
-
-	thumb_func_start sub_80A77E8
-sub_80A77E8: @ 0x080A77E8
-	push {r4, lr}
-	adds r4, r0, #0
-	bl GetTalkChoiceResult
-	cmp r0, #2
-	beq _080A77FC
-	bl GetTalkChoiceResult
-	cmp r0, #0
-	bne _080A7804
-_080A77FC:
-	adds r0, r4, #0
-	movs r1, #2
-	bl Proc_Goto
-_080A7804:
-	bl GetTalkChoiceResult
-	cmp r0, #1
-	bne _080A7814
-	adds r0, r4, #0
-	movs r1, #3
-	bl Proc_Goto
-_080A7814:
-	pop {r4}
-	pop {r0}
-	bx r0
-	.align 2, 0
-
-	thumb_func_start sub_80A781C
-sub_80A781C: @ 0x080A781C
-	push {r4, lr}
-	adds r4, r0, #0
-	bl EndMuralBackground
-	bl EndMuralBackground_
-	adds r0, r4, #0
-	bl EndAllProcChildren
-	pop {r4}
-	pop {r0}
-	bx r0
-
-	thumb_func_start sub_80A7834
-sub_80A7834: @ 0x080A7834
-	push {r4, r5, lr}
-	adds r4, r0, #0
-	ldr r5, [r4, #0x2c]
-	adds r0, #0x30
-	ldrb r0, [r0]
-	lsls r0, r0, #0x18
-	asrs r0, r0, #0x18
-	cmp r0, #0
-	bne _080A78FE
-	ldr r0, _080A7878 @ =gpKeySt
-	ldr r0, [r0]
-	ldrh r1, [r0, #8]
-	movs r0, #1
-	ands r0, r1
-	cmp r0, #0
-	beq _080A78BE
-	ldr r0, _080A787C @ =gPlaySt
-	adds r0, #0x41
-	ldrb r0, [r0]
-	lsls r0, r0, #0x1e
-	cmp r0, #0
-	blt _080A7866
-	ldr r0, _080A7880 @ =0x0000038A
-	bl m4aSongNumStart
-_080A7866:
-	ldr r0, [r4, #0x2c]
-	cmp r0, #1
-	beq _080A7898
-	cmp r0, #1
-	bgt _080A7884
-	cmp r0, #0
-	beq _080A788E
-	b _080A79A4
-	.align 2, 0
-_080A7878: .4byte gpKeySt
-_080A787C: .4byte gPlaySt
-_080A7880: .4byte 0x0000038A
-_080A7884:
-	cmp r0, #2
-	beq _080A78A0
-	cmp r0, #3
-	beq _080A78A8
-	b _080A79A4
-_080A788E:
-	adds r0, r4, #0
-	movs r1, #4
-	bl Proc_Goto
-	b _080A79A4
-_080A7898:
-	adds r0, r4, #0
-	bl sub_80A7D88
-	b _080A78AE
-_080A78A0:
-	adds r0, r4, #0
-	bl sub_80A80A4
-	b _080A78AE
-_080A78A8:
-	adds r0, r4, #0
-	bl sub_80A82F0
-_080A78AE:
-	ldr r0, [r4, #0x2c]
-	bl sub_80A7404
-	adds r0, r4, #0
-	movs r1, #2
-	bl Proc_Goto
-	b _080A79A4
-_080A78BE:
-	movs r0, #0xa
-	ands r0, r1
-	cmp r0, #0
-	beq _080A78EC
-	adds r0, r4, #0
-	movs r1, #1
-	bl Proc_Goto
-	ldr r0, _080A78E4 @ =gPlaySt
-	adds r0, #0x41
-	ldrb r0, [r0]
-	lsls r0, r0, #0x1e
-	cmp r0, #0
-	blt _080A79A4
-	ldr r0, _080A78E8 @ =0x0000038A
-	bl m4aSongNumStart
-	b _080A79A4
-	.align 2, 0
-_080A78E4: .4byte gPlaySt
-_080A78E8: .4byte 0x0000038A
-_080A78EC:
-	movs r0, #0x80
-	lsls r0, r0, #1
-	ands r0, r1
-	cmp r0, #0
-	beq _080A7914
-	adds r0, r4, #0
-	bl TacticianConfig_StartHelpbox
-	b _080A79A4
-_080A78FE:
-	ldr r0, _080A79AC @ =gpKeySt
-	ldr r1, [r0]
-	movs r0, #0x81
-	lsls r0, r0, #1
-	ldrh r1, [r1, #8]
-	ands r0, r1
-	cmp r0, #0
-	beq _080A7914
-	adds r0, r4, #0
-	bl TacticianConfig_CloseHelpbox
-_080A7914:
-	ldr r2, _080A79AC @ =gpKeySt
-	ldr r1, [r2]
-	movs r0, #0x80
-	ldrh r1, [r1, #6]
-	ands r0, r1
-	cmp r0, #0
-	beq _080A792C
-	ldr r0, [r4, #0x2c]
-	cmp r0, #0
-	bne _080A792C
-	movs r0, #2
-	str r0, [r4, #0x2c]
-_080A792C:
-	ldr r1, [r2]
-	movs r0, #0x40
-	ldrh r1, [r1, #6]
-	ands r0, r1
-	cmp r0, #0
-	beq _080A7942
-	ldr r0, [r4, #0x2c]
-	cmp r0, #0
-	ble _080A7942
-	movs r0, #0
-	str r0, [r4, #0x2c]
-_080A7942:
-	ldr r1, [r2]
-	movs r0, #0x20
-	ldrh r1, [r1, #6]
-	ands r0, r1
-	cmp r0, #0
-	beq _080A7958
-	ldr r0, [r4, #0x2c]
-	cmp r0, #1
-	ble _080A7958
-	subs r0, #1
-	str r0, [r4, #0x2c]
-_080A7958:
-	ldr r1, [r2]
-	movs r0, #0x10
-	ldrh r1, [r1, #6]
-	ands r0, r1
-	cmp r0, #0
-	beq _080A7970
-	ldr r1, [r4, #0x2c]
-	subs r0, r1, #1
-	cmp r0, #1
-	bhi _080A7970
-	adds r0, r1, #1
-	str r0, [r4, #0x2c]
-_080A7970:
-	ldr r0, [r4, #0x2c]
-	cmp r5, r0
-	beq _080A79A4
-	adds r0, r4, #0
-	adds r0, #0x30
-	ldrb r0, [r0]
-	lsls r0, r0, #0x18
-	asrs r0, r0, #0x18
-	cmp r0, #0
-	beq _080A798A
-	adds r0, r4, #0
-	bl TacticianConfig_StartHelpbox
-_080A798A:
-	ldr r0, [r4, #0x2c]
-	adds r1, r4, #0
-	bl sub_80A73C4
-	ldr r0, _080A79B0 @ =gPlaySt
-	adds r0, #0x41
-	ldrb r0, [r0]
-	lsls r0, r0, #0x1e
-	cmp r0, #0
-	blt _080A79A4
-	ldr r0, _080A79B4 @ =0x00000385
-	bl m4aSongNumStart
-_080A79A4:
-	pop {r4, r5}
-	pop {r0}
-	bx r0
-	.align 2, 0
-_080A79AC: .4byte gpKeySt
-_080A79B0: .4byte gPlaySt
-_080A79B4: .4byte 0x00000385
-
-	thumb_func_start sub_80A79B8
-sub_80A79B8: @ 0x080A79B8
-	push {lr}
-	bl ReadLastGameSaveId
-	bl WriteGameSave
-	pop {r0}
-	bx r0
-	.align 2, 0
-
-	thumb_func_start sub_80A79C8
-sub_80A79C8: @ 0x080A79C8
-	push {r4, lr}
-	sub sp, #8
-	adds r4, r0, #0
-	ldr r0, _080A79E0 @ =gPlaySt
-	ldrb r0, [r0, #0x1b]
-	cmp r0, #1
-	bne _080A79E4
-	adds r0, r4, #0
-	movs r1, #0
-	bl Proc_Goto
-	b _080A7A4A
-	.align 2, 0
-_080A79E0: .4byte gPlaySt
-_080A79E4:
-	movs r0, #0
-	bl InitBgs
-	bl ApplySystemObjectsGraphics
-	ldr r0, _080A7A54 @ =gDispIo
-	mov ip, r0
-	mov r1, ip
-	adds r1, #0x3c
-	movs r0, #0x3f
-	ldrb r2, [r1]
-	ands r0, r2
-	strb r0, [r1]
-	adds r1, #8
-	movs r2, #0
-	movs r3, #0x10
-	movs r0, #0x10
-	strb r0, [r1]
-	mov r0, ip
-	adds r0, #0x45
-	strb r2, [r0]
-	adds r0, #1
-	strb r2, [r0]
-	movs r0, #1
-	mov r1, ip
-	ldrb r1, [r1, #1]
-	orrs r0, r1
-	movs r1, #2
-	orrs r0, r1
-	movs r1, #4
-	orrs r0, r1
-	movs r1, #8
-	orrs r0, r1
-	orrs r0, r3
-	mov r2, ip
-	strb r0, [r2, #1]
-	ldr r2, _080A7A58 @ =0x000007A1
-	ldr r3, _080A7A5C @ =0x06016000
-	movs r0, #0xd
-	str r0, [sp]
-	str r4, [sp, #4]
-	movs r0, #0x38
-	movs r1, #0x20
-	bl sub_8084068
-	movs r0, #0xf0
-	bl sub_8083B9C
-	movs r0, #2
-	bl SetTalkChoiceResult
-_080A7A4A:
-	add sp, #8
-	pop {r4}
-	pop {r0}
-	bx r0
-	.align 2, 0
-_080A7A54: .4byte gDispIo
-_080A7A58: .4byte 0x000007A1
-_080A7A5C: .4byte 0x06016000
-
-	thumb_func_start sub_80A7A60
-sub_80A7A60: @ 0x080A7A60
-	push {r4, lr}
-	adds r4, r0, #0
-	bl GetTalkChoiceResult
-	cmp r0, #2
-	beq _080A7A74
-	bl GetTalkChoiceResult
-	cmp r0, #0
-	bne _080A7A8A
-_080A7A74:
-	ldr r1, _080A7A90 @ =gPlaySt
-	adds r1, #0x2b
-	movs r0, #2
-	rsbs r0, r0, #0
-	ldrb r2, [r1]
-	ands r0, r2
-	strb r0, [r1]
-	adds r0, r4, #0
-	movs r1, #5
-	bl Proc_Goto
-_080A7A8A:
-	pop {r4}
-	pop {r0}
-	bx r0
-	.align 2, 0
-_080A7A90: .4byte gPlaySt
-
-	thumb_func_start GC_TacticianConfig
-GC_TacticianConfig: @ 0x080A7A94
-	push {lr}
-	adds r1, r0, #0
-	ldr r0, _080A7AA4 @ =ProcScr_TacticianConfig
-	bl Proc_StartBlocking
-	pop {r0}
-	bx r0
-	.align 2, 0
-_080A7AA4: .4byte ProcScr_TacticianConfig
-
-	thumb_func_start sub_80A7AA8
-sub_80A7AA8: @ 0x080A7AA8
-	ldr r1, _080A7AB4 @ =gUnk_08DADF00
-	lsls r0, r0, #2
-	adds r0, r0, r1
-	ldr r0, [r0]
-	bx lr
-	.align 2, 0
-_080A7AB4: .4byte gUnk_08DADF00
-
-	thumb_func_start sub_80A7AB8
-sub_80A7AB8: @ 0x080A7AB8
-	ldr r1, _080A7AC4 @ =gUnk_08DADF10
-	lsls r0, r0, #2
-	adds r0, r0, r1
-	ldr r0, [r0]
-	bx lr
-	.align 2, 0
-_080A7AC4: .4byte gUnk_08DADF10
-
-	thumb_func_start sub_80A7AC8
-sub_80A7AC8: @ 0x080A7AC8
-	ldr r1, _080A7AD4 @ =gUnk_08DADF40
-	lsls r0, r0, #2
-	adds r0, r0, r1
-	ldr r0, [r0]
-	bx lr
-	.align 2, 0
-_080A7AD4: .4byte gUnk_08DADF40
-
-	thumb_func_start sub_80A7AD8
-sub_80A7AD8: @ 0x080A7AD8
-	ldr r1, _080A7AE4 @ =gUnk_08DADF48
-	lsls r0, r0, #2
-	adds r0, r0, r1
-	ldr r0, [r0]
-	bx lr
-	.align 2, 0
-_080A7AE4: .4byte gUnk_08DADF48
 
 	thumb_func_start sub_80A7AE8
 sub_80A7AE8: @ 0x080A7AE8
@@ -481,8 +37,8 @@ sub_80A7AE8: @ 0x080A7AE8
 	.align 2, 0
 _080A7B28: .4byte 0x001FFFFF
 
-	thumb_func_start sub_80A7B2C
-sub_80A7B2C: @ 0x080A7B2C
+	thumb_func_start TactBlood_Init
+TactBlood_Init: @ 0x080A7B2C
 	push {r4, r5, lr}
 	sub sp, #4
 	adds r4, r0, #0
@@ -511,7 +67,7 @@ sub_80A7B2C: @ 0x080A7B2C
 	movs r1, #0x60
 	movs r2, #2
 	bl ShowSysHandCursor
-	ldr r0, _080A7BAC @ =gTacticianConfigFont
+	ldr r0, _080A7BAC @ =gTactInfoFont
 	bl SetTextFont
 	movs r0, #0
 	bl SetTextFontGlyphs
@@ -519,7 +75,7 @@ sub_80A7B2C: @ 0x080A7B2C
 	movs r5, #0
 _080A7B7A:
 	adds r0, r4, #0
-	bl sub_80A7AA8
+	bl TactGetMsg_Blood
 	bl DecodeMsg
 	adds r3, r0, #0
 	ldr r0, _080A7BB0 @ =0x0200008C
@@ -538,11 +94,11 @@ _080A7B7A:
 	bx r0
 	.align 2, 0
 _080A7BA8: .4byte gPlaySt
-_080A7BAC: .4byte gTacticianConfigFont
+_080A7BAC: .4byte gTactInfoFont
 _080A7BB0: .4byte 0x0200008C
 
-	thumb_func_start sub_80A7BB4
-sub_80A7BB4: @ 0x080A7BB4
+	thumb_func_start TactBlood_Loop
+TactBlood_Loop: @ 0x080A7BB4
 	push {r4, r5, r6, r7, lr}
 	mov r7, r8
 	push {r7}
@@ -607,7 +163,7 @@ _080A7C02:
 	movs r2, #0xa0
 	lsls r2, r2, #7
 	bl PutIcon
-	ldr r4, _080A7C94 @ =gTacticianConfigFont
+	ldr r4, _080A7C94 @ =gTactInfoFont
 	adds r0, r4, #0
 	bl SetTextFont
 	movs r0, #1
@@ -620,7 +176,7 @@ _080A7C02:
 	ldrb r5, [r5]
 	lsls r0, r5, #0x1c
 	lsrs r0, r0, #0x1d
-	bl sub_80A7AA8
+	bl TactGetMsg_Blood
 	bl DecodeMsg
 	adds r3, r0, #0
 	adds r0, r4, #0
@@ -640,7 +196,7 @@ _080A7C84: .4byte gPlaySt
 _080A7C88: .4byte 0x0000038A
 _080A7C8C: .4byte gBg0Tm + 0x15c
 _080A7C90: .4byte Unk_081C8FCC
-_080A7C94: .4byte gTacticianConfigFont
+_080A7C94: .4byte gTactInfoFont
 _080A7C98: .4byte 0x06011000
 _080A7C9C:
 	movs r0, #2
@@ -736,13 +292,13 @@ _080A7D3C:
 _080A7D48: .4byte gPlaySt
 _080A7D4C: .4byte 0x00000385
 
-	thumb_func_start sub_80A7D50
-sub_80A7D50: @ 0x080A7D50
+	thumb_func_start TactBlood_End
+TactBlood_End: @ 0x080A7D50
 	push {r4, lr}
 	ldr r0, _080A7D80 @ =gBg1Tm
 	movs r1, #0
 	bl TmFill
-	ldr r4, _080A7D84 @ =gTacticianConfigFont
+	ldr r4, _080A7D84 @ =gTactInfoFont
 	adds r0, r4, #0
 	bl SetTextFont
 	adds r4, #0x20
@@ -758,18 +314,18 @@ sub_80A7D50: @ 0x080A7D50
 	bx r0
 	.align 2, 0
 _080A7D80: .4byte gBg1Tm
-_080A7D84: .4byte gTacticianConfigFont
+_080A7D84: .4byte gTactInfoFont
 
 	thumb_func_start sub_80A7D88
 sub_80A7D88: @ 0x080A7D88
 	push {lr}
 	adds r1, r0, #0
-	ldr r0, _080A7D98 @ =gUnk_08DADF68
+	ldr r0, _080A7D98 @ =ProcScr_TactBloodSelect
 	bl Proc_StartBlocking
 	pop {r0}
 	bx r0
 	.align 2, 0
-_080A7D98: .4byte gUnk_08DADF68
+_080A7D98: .4byte ProcScr_TactBloodSelect
 
 	thumb_func_start sub_80A7D9C
 sub_80A7D9C: @ 0x080A7D9C
@@ -808,7 +364,7 @@ sub_80A7D9C: @ 0x080A7D9C
 	adds r0, r4, #0
 	movs r2, #1
 	bl ShowSysHandCursor
-	ldr r4, _080A7E48 @ =gTacticianConfigFont
+	ldr r4, _080A7E48 @ =gTactInfoFont
 	adds r0, r4, #0
 	bl SetTextFont
 	movs r0, #0
@@ -819,7 +375,7 @@ sub_80A7D9C: @ 0x080A7D9C
 _080A7E00:
 	lsls r4, r5, #5
 	adds r0, r5, #0
-	bl sub_80A7AB8
+	bl TactGetMsg_Birth
 	bl DecodeMsg
 	adds r3, r0, #0
 	adds r0, r6, #0
@@ -827,7 +383,7 @@ _080A7E00:
 	movs r2, #0
 	bl Text_InsertDrawString
 	adds r0, r5, #6
-	bl sub_80A7AB8
+	bl TactGetMsg_Birth
 	bl DecodeMsg
 	adds r3, r0, #0
 	adds r0, r6, #0
@@ -846,7 +402,7 @@ _080A7E00:
 	bx r0
 	.align 2, 0
 _080A7E44: .4byte gPlaySt
-_080A7E48: .4byte gTacticianConfigFont
+_080A7E48: .4byte gTactInfoFont
 
 	thumb_func_start sub_80A7E4C
 sub_80A7E4C: @ 0x080A7E4C
@@ -913,7 +469,7 @@ _080A7E9E:
 	movs r2, #0xa0
 	lsls r2, r2, #7
 	bl PutIcon
-	ldr r4, _080A7F28 @ =gTacticianConfigFont
+	ldr r4, _080A7F28 @ =gTactInfoFont
 	adds r0, r4, #0
 	bl SetTextFont
 	movs r0, #1
@@ -925,7 +481,7 @@ _080A7E9E:
 	adds r4, #0x18
 	ldrb r5, [r5]
 	lsrs r0, r5, #4
-	bl sub_80A7AB8
+	bl TactGetMsg_Birth
 	bl DecodeMsg
 	adds r3, r0, #0
 	adds r0, r4, #0
@@ -945,7 +501,7 @@ _080A7F18: .4byte gPlaySt
 _080A7F1C: .4byte 0x0000038A
 _080A7F20: .4byte gBg0Tm + 0x15c
 _080A7F24: .4byte Unk_081C8FCC
-_080A7F28: .4byte gTacticianConfigFont
+_080A7F28: .4byte gTactInfoFont
 _080A7F2C: .4byte 0x06011000
 _080A7F30:
 	movs r0, #2
@@ -1114,7 +670,7 @@ sub_80A806C: @ 0x080A806C
 	ldr r0, _080A809C @ =gBg1Tm
 	movs r1, #0
 	bl TmFill
-	ldr r4, _080A80A0 @ =gTacticianConfigFont
+	ldr r4, _080A80A0 @ =gTactInfoFont
 	adds r0, r4, #0
 	bl SetTextFont
 	adds r4, #0x20
@@ -1130,7 +686,7 @@ sub_80A806C: @ 0x080A806C
 	bx r0
 	.align 2, 0
 _080A809C: .4byte gBg1Tm
-_080A80A0: .4byte gTacticianConfigFont
+_080A80A0: .4byte gTactInfoFont
 
 	thumb_func_start sub_80A80A4
 sub_80A80A4: @ 0x080A80A4
@@ -1173,7 +729,7 @@ sub_80A80B8: @ 0x080A80B8
 	movs r1, #0x60
 	movs r2, #1
 	bl ShowSysHandCursor
-	ldr r0, _080A8138 @ =gTacticianConfigFont
+	ldr r0, _080A8138 @ =gTactInfoFont
 	bl SetTextFont
 	movs r0, #0
 	bl SetTextFontGlyphs
@@ -1181,7 +737,7 @@ sub_80A80B8: @ 0x080A80B8
 	movs r5, #0
 _080A8106:
 	adds r0, r4, #0
-	bl sub_80A7AC8
+	bl TactGetMsg_Gender
 	bl DecodeMsg
 	adds r3, r0, #0
 	ldr r0, _080A813C @ =0x0200008C
@@ -1200,7 +756,7 @@ _080A8106:
 	bx r0
 	.align 2, 0
 _080A8134: .4byte gPlaySt
-_080A8138: .4byte gTacticianConfigFont
+_080A8138: .4byte gTactInfoFont
 _080A813C: .4byte 0x0200008C
 
 	thumb_func_start sub_80A8140
@@ -1255,7 +811,7 @@ _080A8190:
 	ands r0, r2
 	orrs r0, r1
 	strb r0, [r5]
-	ldr r4, _080A81FC @ =gTacticianConfigFont
+	ldr r4, _080A81FC @ =gTactInfoFont
 	adds r0, r4, #0
 	bl SetTextFont
 	movs r0, #1
@@ -1268,7 +824,7 @@ _080A8190:
 	ldrb r5, [r5]
 	lsls r0, r5, #0x1f
 	lsrs r0, r0, #0x1f
-	bl sub_80A7AC8
+	bl TactGetMsg_Gender
 	bl DecodeMsg
 	adds r3, r0, #0
 	adds r0, r4, #0
@@ -1286,7 +842,7 @@ _080A81EC: .4byte Sprite_32x16
 _080A81F0: .4byte gpKeySt
 _080A81F4: .4byte gPlaySt
 _080A81F8: .4byte 0x0000038A
-_080A81FC: .4byte gTacticianConfigFont
+_080A81FC: .4byte gTactInfoFont
 _080A8200: .4byte 0x06011000
 _080A8204:
 	movs r0, #2
@@ -1387,7 +943,7 @@ sub_80A82B8: @ 0x080A82B8
 	ldr r0, _080A82E8 @ =gBg1Tm
 	movs r1, #0
 	bl TmFill
-	ldr r4, _080A82EC @ =gTacticianConfigFont
+	ldr r4, _080A82EC @ =gTactInfoFont
 	adds r0, r4, #0
 	bl SetTextFont
 	adds r4, #0x20
@@ -1403,7 +959,7 @@ sub_80A82B8: @ 0x080A82B8
 	bx r0
 	.align 2, 0
 _080A82E8: .4byte gBg1Tm
-_080A82EC: .4byte gTacticianConfigFont
+_080A82EC: .4byte gTactInfoFont
 
 	thumb_func_start sub_80A82F0
 sub_80A82F0: @ 0x080A82F0

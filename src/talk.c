@@ -959,7 +959,7 @@ int TalkInterpret(ProcPtr proc) {
                 case 0x20:
                     sTalkSt->str_back = sTalkSt->str;
                     sTalkSt->str_back--;
-                    sTalkSt->str = sub_802EBB0();
+                    sTalkSt->str = GetTacticianName();
 
                     return TalkInterpret(proc);
 
@@ -1795,7 +1795,7 @@ _08008B70:\n\
     ldr r0, [r1]\n\
     subs r0, #1\n\
     str r0, [r1, #4]\n\
-    bl sub_802EBB0\n\
+    bl GetTacticianName\n\
     ldr r1, [r4]\n\
     str r0, [r1]\n\
     b _08008456\n\
@@ -3034,7 +3034,7 @@ int sub_8009FAC(char const * str, bool isBubbleOpen)
                 break;
 
             case 0x20:
-                currentLineLen += GetStringTextLen(sub_802EBB0());
+                currentLineLen += GetStringTextLen(GetTacticianName());
 
                 str++;
                 break;

@@ -6565,7 +6565,7 @@ _0803F8BE:
 	cmp r0, #0
 	beq _0803F98C
 	movs r5, #0
-	bl sub_802EBB0
+	bl GetTacticianName
 	adds r2, r0, #0
 	ldrb r0, [r2]
 	add r3, sp, #0x14
