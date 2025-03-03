@@ -14,7 +14,7 @@ enum {
 	PL_TACTINFO_0 = 0,
 	PL_TACTINFO_1,
 	PL_TACTINFO_2,
-	PL_TACTINFO_3,
+	PL_TACTINFO_FADE_END,
 	PL_TACTINFO_4,
 	PL_TACTINFO_END,
 };
@@ -51,9 +51,9 @@ void TactInfo_IntroDialogue2(struct ProcTactInfo *proc);
 void TactInfo_HandleIntroDialoguePrompt(struct ProcTactInfo *proc);
 void sub_80A77AC(struct ProcTactInfo *proc);
 void sub_80A77E8(struct ProcTactInfo *proc);
-void sub_80A781C(struct ProcTactInfo *proc);
+void TactInfo_EndMuralBG(struct ProcTactInfo *proc);
 void sub_80A7834(struct ProcTactInfo *proc);
-void sub_80A79B8(struct ProcTactInfo *proc);
+void TactInfo_UpdateSaveData(struct ProcTactInfo *proc);
 void TactInfo_CheckParticipantDialogue(struct ProcTactInfo *proc);
 void TactInfo_HandleCheckParticipantPrompt(struct ProcTactInfo *proc);
 void StartTacticianInfo(ProcPtr parent);

@@ -26,7 +26,7 @@ struct ProcCmd CONST_DATA ProcScr_TactInfo[] = {
 	PROC_CALL(TactInfo_CheckParticipantDialogue),
 	PROC_YIELD,
 	PROC_CALL(TactInfo_HandleCheckParticipantPrompt),
-PROC_LABEL(0),
+PROC_LABEL(PL_TACTINFO_0),
 	PROC_CALL(TactInfo_SetupGfx),
 	PROC_CALL_ARG(NewFadeIn, 4),
 	PROC_WHILE(FadeInExists),
@@ -35,30 +35,30 @@ PROC_LABEL(0),
 	PROC_CALL(TactInfo_IntroDialogue2),
 	PROC_YIELD,
 	PROC_CALL(TactInfo_HandleIntroDialoguePrompt),
-PROC_LABEL(1),
+PROC_LABEL(PL_TACTINFO_1),
 	PROC_CALL(sub_80A77AC),
 	PROC_YIELD,
 	PROC_CALL(sub_80A77E8),
-PROC_LABEL(2),
+PROC_LABEL(PL_TACTINFO_2),
 	PROC_CALL(sub_80A76C8),
 	PROC_REPEAT(sub_80A7834),
-PROC_LABEL(4),
+PROC_LABEL(PL_TACTINFO_4),
 	PROC_CALL_ARG(NewFadeOut, 8),
 	PROC_WHILE(FadeOutExists),
-	PROC_CALL(sub_80A781C),
+	PROC_CALL(TactInfo_EndMuralBG),
 	PROC_CALL(StartTacticianNameSelect),
 	PROC_YIELD,
 	PROC_CALL(TactInfo_SetupGfx),
 	PROC_CALL_ARG(NewFadeIn, 8),
 	PROC_WHILE(FadeInExists),
-	PROC_GOTO(2),
-PROC_LABEL(3),
+	PROC_GOTO(PL_TACTINFO_2),
+PROC_LABEL(PL_TACTINFO_FADE_END),
 	PROC_CALL_ARG(NewFadeOut, 4),
 	PROC_WHILE(FadeOutExists),
-	PROC_CALL(sub_80A781C),
-PROC_LABEL(5),
+	PROC_CALL(TactInfo_EndMuralBG),
+PROC_LABEL(PL_TACTINFO_END),
 	PROC_YIELD,
-	PROC_CALL(sub_80A79B8),
+	PROC_CALL(TactInfo_UpdateSaveData),
 	PROC_SLEEP(10),
 	PROC_END,
 };
@@ -353,7 +353,7 @@ void TactInfo_HandleIntroDialoguePrompt(struct ProcTactInfo *proc)
 		Proc_Goto(proc, PL_TACTINFO_2);
 
 	if (GetTalkChoiceResult() == TALK_RESULT_NO || GetTalkChoiceResult() == TALK_RESULT_CANCEL)
-		Proc_Goto(proc, PL_TACTINFO_3);
+		Proc_Goto(proc, PL_TACTINFO_FADE_END);
 }
 
 void sub_80A77AC(struct ProcTactInfo *proc)
@@ -371,10 +371,10 @@ void sub_80A77E8(struct ProcTactInfo *proc)
 		Proc_Goto(proc, PL_TACTINFO_2);
 
 	if (GetTalkChoiceResult() == TALK_RESULT_YES)
-		Proc_Goto(proc, PL_TACTINFO_3);
+		Proc_Goto(proc, PL_TACTINFO_FADE_END);
 }
 
-void sub_80A781C(struct ProcTactInfo *proc)
+void TactInfo_EndMuralBG(struct ProcTactInfo *proc)
 {
 	EndMuralBackground();
 	EndMuralBackground_();
@@ -459,7 +459,7 @@ void sub_80A7834(struct ProcTactInfo *proc)
 	}
 }
 
-void sub_80A79B8(struct ProcTactInfo *proc)
+void TactInfo_UpdateSaveData(struct ProcTactInfo *proc)
 {
 	WriteGameSave(ReadLastGameSaveId());
 }
