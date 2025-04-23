@@ -12,12 +12,12 @@ gUnk_0818F980:	@ 0x0818F980
 gUnk_0818F990:	@ 0x0818F990
 	.incbin "FireEmblem7J.base.gba", 0x18F990, 0x18F9F0 - 0x18F990
 
-	.global gUnk_0818F9F0
-gUnk_0818F9F0:	@ 0x0818F9F0
+	.global Gfx_MiscUiGraphics
+Gfx_MiscUiGraphics:	@ 0x0818F9F0
 	.incbin "FireEmblem7J.base.gba", 0x18F9F0, 0x18FE70 - 0x18F9F0
 
-	.global gUnk_0818FE70
-gUnk_0818FE70:	@ 0x0818FE70
+	.global Pal_MiscUiGraphics
+Pal_MiscUiGraphics:	@ 0x0818FE70
 	.incbin "FireEmblem7J.base.gba", 0x18FE70, 0x18FEB0 - 0x18FE70
 
 	.global Img_UiCursorHandTop
