@@ -173,8 +173,8 @@ void DisplayBackgroundNoClear(int background);
 // DisplayMovement
 // nullsub_26
 // WaitForMu_OnLoop
-// sub_800CC74
-// sub_800CCB8
+// Event30_LoadUnit
+// Event31_LoadUnit
 // sub_800CCFC
 // sub_800CD68
 // sub_800CD90

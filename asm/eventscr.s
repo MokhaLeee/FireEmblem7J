@@ -2704,8 +2704,8 @@ _0800CC6E:
 	pop {r0}
 	bx r0
 
-	thumb_func_start sub_800CC74
-sub_800CC74: @ 0x0800CC74
+	thumb_func_start Event30_LoadUnit
+Event30_LoadUnit: @ 0x0800CC74
 	push {r4, lr}
 	adds r4, r0, #0
 	ldr r0, _0800CCA0 @ =0x0202E3F0
@@ -2739,8 +2739,8 @@ _0800CCB0:
 	bx r1
 	.align 2, 0
 
-	thumb_func_start sub_800CCB8
-sub_800CCB8: @ 0x0800CCB8
+	thumb_func_start Event31_LoadUnit
+Event31_LoadUnit: @ 0x0800CCB8
 	push {r4, lr}
 	adds r4, r0, #0
 	ldr r0, _0800CCE4 @ =0x0202E3F0
