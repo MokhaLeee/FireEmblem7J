@@ -364,7 +364,7 @@ _0804CB1E:
 	movs r1, #0xef
 	lsls r1, r1, #1
 	bl PutIconObjImg
-	ldr r0, _0804CC10 @ =gUnk_0818FE70
+	ldr r0, _0804CC10 @ =Pal_MiscUiGraphics
 	movs r1, #0x80
 	lsls r1, r1, #2
 	movs r2, #0x20
@@ -399,7 +399,7 @@ _0804CC00: .4byte 0x06013A00
 _0804CC04: .4byte 0x06013E00
 _0804CC08: .4byte gpEkrBattleUnitLeft
 _0804CC0C: .4byte gpEkrBattleUnitRight
-_0804CC10: .4byte gUnk_0818FE70
+_0804CC10: .4byte Pal_MiscUiGraphics
 
 	thumb_func_start EndEkrGauge
 EndEkrGauge: @ 0x0804CC14

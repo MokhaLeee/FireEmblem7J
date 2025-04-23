@@ -12579,7 +12579,7 @@ sub_80B5EE4: @ 0x080B5EE4
 	lsls r1, r1, #2
 	movs r2, #0x20
 	bl ApplyPaletteExt
-	ldr r0, _080B6064 @ =gUnk_0818FE70
+	ldr r0, _080B6064 @ =Pal_MiscUiGraphics
 	movs r1, #0xd8
 	lsls r1, r1, #2
 	movs r2, #0x20
@@ -12685,7 +12685,7 @@ _080B6054: .4byte 0x030027D4
 _080B6058: .4byte 0x030027D5
 _080B605C: .4byte gUnk_0844C614
 _080B6060: .4byte gUnk_0844F1E8
-_080B6064: .4byte gUnk_0818FE70
+_080B6064: .4byte Pal_MiscUiGraphics
 _080B6068: .4byte gUnk_0844C9E8
 _080B606C: .4byte gUnk_0844C0B8
 _080B6070: .4byte 0x06015000

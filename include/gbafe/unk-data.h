@@ -33,8 +33,8 @@ extern struct unk_type_0203A50C gUnk_0203A50C;
 // ??? gUnk_0818F960
 // ??? gUnk_0818F980
 // ??? gUnk_0818F990
-// ??? gUnk_0818F9F0
-// ??? gUnk_0818FE70
+// ??? Gfx_MiscUiGraphics
+// ??? Pal_MiscUiGraphics
 extern u8 Img_UiCursorHandTop[];
 extern u8 Img_UiCursorHandBottom[];
 

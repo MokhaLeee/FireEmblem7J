@@ -287,7 +287,7 @@ _08015A08: .4byte gDispIo
 	thumb_func_start ApplySystemObjectsGraphics
 ApplySystemObjectsGraphics: @ 0x08015A0C
 	push {r4, lr}
-	ldr r0, _08015A38 @ =gUnk_0818F9F0
+	ldr r0, _08015A38 @ =Gfx_MiscUiGraphics
 	ldr r4, _08015A3C @ =gBuf
 	adds r1, r4, #0
 	bl Decompress
@@ -296,7 +296,7 @@ ApplySystemObjectsGraphics: @ 0x08015A0C
 	movs r2, #0x12
 	movs r3, #4
 	bl Copy2dChr
-	ldr r0, _08015A44 @ =gUnk_0818FE70
+	ldr r0, _08015A44 @ =Pal_MiscUiGraphics
 	movs r1, #0x80
 	lsls r1, r1, #2
 	movs r2, #0x40
@@ -305,10 +305,10 @@ ApplySystemObjectsGraphics: @ 0x08015A0C
 	pop {r0}
 	bx r0
 	.align 2, 0
-_08015A38: .4byte gUnk_0818F9F0
+_08015A38: .4byte Gfx_MiscUiGraphics
 _08015A3C: .4byte gBuf
 _08015A40: .4byte 0x06010000
-_08015A44: .4byte gUnk_0818FE70
+_08015A44: .4byte Pal_MiscUiGraphics
 
 	thumb_func_start ApplySystemGraphics
 ApplySystemGraphics: @ 0x08015A48
