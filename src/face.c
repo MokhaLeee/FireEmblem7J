@@ -1142,7 +1142,14 @@ void Face_0800798C(void)
         eye_proc->state = 4;
 }
 
-extern struct ProcCmd gUnk_08BFFB20[];
+// clang-format off
+
+struct ProcCmd CONST_DATA gUnk_08BFFB20[] = {
+    PROC_REPEAT(Face_0800798C),
+    PROC_END,
+};
+
+// clang-format on
 
 void sub_8007A00(void)
 {
@@ -1221,19 +1228,11 @@ struct FaceProc * StartBmFace(int slot, int fid, int x, int y, int disp)
     return proc;
 }
 
-void sub_8007B80(s32 slot, s16 x, s16 y) {
+void sub_8007B80(s32 slot, s16 x, s16 y)
+{
     gFaces[slot]->x_disp = x;
     gFaces[slot]->y_disp = y;
 }
-
-struct UnkFaceProc
-{
-    /* 00 */ PROC_HEADER;
-
-    /* 2C */ struct FaceProc * face_proc;
-    /* 30 */ const struct FaceInfo * face_info;
-    /* 34 */ int fid;
-};
 
 void sub_8007B94(struct UnkFaceProc * proc)
 {
@@ -1258,4 +1257,43 @@ void sub_8007BB8(struct UnkFaceProc * proc)
     face_proc->fid = proc->fid;
 
     return;
+}
+
+void sub_8007C10(struct UnkFaceProc * proc)
+{
+    if (proc->face_proc->eye_proc)
+    {
+        proc->face_proc->eye_proc->blink = proc->face_info->blink_type;
+        Proc_Goto(proc->face_proc->eye_proc, 0);
+        TryUnlockProc(proc->face_proc->eye_proc);
+    }
+
+    if (proc->face_proc->mouth_proc)
+    {
+        TryUnlockProc(proc->face_proc->mouth_proc);
+    }
+}
+
+// clang-format off
+
+struct ProcCmd CONST_DATA gUnk_08BFFB30[] = {
+    PROC_YIELD,
+    PROC_CALL(sub_8007B94),
+    PROC_SLEEP(2),
+
+    PROC_CALL(sub_8007BB8),
+    PROC_YIELD,
+
+    PROC_CALL(sub_8007C10),
+
+    PROC_END,
+};
+
+// clang-format on
+
+void sub_8007C48(struct FaceProc * parent, int face_id)
+{
+    struct UnkFaceProc * proc = Proc_Start(gUnk_08BFFB30, parent);
+    proc->face_proc = parent;
+    proc->fid = face_id;
 }

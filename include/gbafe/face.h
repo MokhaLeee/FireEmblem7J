@@ -187,10 +187,20 @@ void SetFaceEyeStateById(int slot, int state);
 // sub_8007A00
 struct FaceProc * StartBmFace(int slot, int fid, int x, int y, int disp);
 // sub_8007B80
+
+struct UnkFaceProc
+{
+    /* 00 */ PROC_HEADER;
+
+    /* 2C */ struct FaceProc * face_proc;
+    /* 30 */ const struct FaceInfo * face_info;
+    /* 34 */ int fid;
+};
+
 // sub_8007B94
 // sub_8007BB8
 // sub_8007C10
-// sub_8007C48
+void sub_8007C48(struct FaceProc * parent, int face_id);
 // sub_8007C64
 
 extern struct FaceVramEnt CONST_DATA DefaultFaceConfig[FACE_SLOT_COUNT];

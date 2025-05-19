@@ -1,13 +1,5 @@
 	.section .data
 
-	.global gUnk_08BFFB20
-gUnk_08BFFB20:	@ 0x08BFFB20
-	.incbin "FireEmblem7J.base.gba", 0xBFFB20, 0xBFFB30 - 0xBFFB20
-
-	.global gUnk_08BFFB30
-gUnk_08BFFB30:	@ 0x08BFFB30
-	.incbin "FireEmblem7J.base.gba", 0xBFFB30, 0xBFFB68 - 0xBFFB30
-
 	.global sTalkSt
 sTalkSt:	@ 0x08BFFB68
 	.4byte sTalkStObj
