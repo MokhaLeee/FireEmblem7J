@@ -1,33 +1,36 @@
 #include "gbafe.h"
 
-int GetUnitSupporterCount(struct Unit* unit) {
+extern struct SupportBonuses AffinityBonuses[];
 
-    if (!UNIT_SUPPORT_DATA(unit)) 
+int GetUnitSupporterCount(struct Unit * unit)
+{
+    if (!UNIT_SUPPORT_DATA(unit))
         return 0;
 
     return UNIT_SUPPORT_DATA(unit)->count;
 }
 
-u8 GetUnitSupportPid(struct Unit* unit, int num) {
-    
+u8 GetUnitSupportPid(struct Unit * unit, int num)
+{
     if (!UNIT_SUPPORT_DATA(unit))
         return 0;
     return UNIT_SUPPORT_DATA(unit)->pids[num];
 }
 
-struct Unit* GetUnitSupportUnit(struct Unit* unit, int num) {
-    
+struct Unit * GetUnitSupportUnit(struct Unit * unit, int num)
+{
     u8 pid = GetUnitSupportPid(unit, num);
 
     int i, last;
-    
-    for (i = UNIT_FACTION(unit) + 1, last = UNIT_FACTION(unit) + 0x40; i < last; ++i) {
+
+    for (i = UNIT_FACTION(unit) + 1, last = UNIT_FACTION(unit) + 0x40; i < last; ++i)
+    {
 
         unit = GetUnit(i);
 
         if (!unit)
             continue;
-        
+
         if (!unit->pCharacterData)
             continue;
 
@@ -36,16 +39,15 @@ struct Unit* GetUnitSupportUnit(struct Unit* unit, int num) {
     }
 
     return NULL;
-
 }
 
-int GetUnitSupportLevel(struct Unit* unit, int num) {
-
+int GetUnitSupportLevel(struct Unit * unit, int num)
+{
     int exp = unit->supports[num];
 
     if (exp >= SUPPORT_EXP_A)
         return SUPPORT_LEVEL_A;
-    
+
     if (exp >= SUPPORT_EXP_B)
         return SUPPORT_LEVEL_B;
 
@@ -55,13 +57,13 @@ int GetUnitSupportLevel(struct Unit* unit, int num) {
     return SUPPORT_LEVEL_NONE;
 }
 
-int GetUnitTotalSupportLevel(struct Unit* unit) {
-
+int GetUnitTotalSupportLevel(struct Unit * unit)
+{
     int i, count, result;
-    
+
     count = GetUnitSupporterCount(unit);
 
-    for (i = 0, result = 0; i < count; ++i) 
+    for (i = 0, result = 0; i < count; ++i)
         result += GetUnitSupportLevel(unit, i);
 
     return result;
@@ -90,15 +92,15 @@ void UnitGainSupportExp(struct Unit * unit, s32 num)
     }
 }
 
-void sub_8026BD0(struct Unit * unit, int num)
+void UnitGainSupportLevel(struct Unit * unit, int num)
 {
     unit->supports[num]++;
     gPlaySt.chapterTotalSupportGain++;
 
-    sub_8027028(unit->pCharacterData->number, GetUnitSupportPid(unit, num));
+    SetSupportLevelGained(unit->pCharacterData->number, GetUnitSupportPid(unit, num));
 }
 
-bool sub_8026C04(struct Unit * unit, int num)
+bool CanUnitSupportNow(struct Unit * unit, int num)
 {
     int exp;
     int max_exp;
@@ -109,7 +111,7 @@ bool sub_8026C04(struct Unit * unit, int num)
     if (gPlaySt.chapterStateBits & PLAY_FLAG_TUTORIAL)
         return false;
 
-    if (sub_8027078(unit, num))
+    if (HasUnitGainedSupportLevel(unit, num))
         return false;
 
     if (GetUnitTotalSupportLevel(unit) >= MAX_SIMULTANEOUS_SUPPORT_COUNT_PER_UNIT)
@@ -127,7 +129,7 @@ bool sub_8026C04(struct Unit * unit, int num)
     return (exp == max_exp) ? true : false;
 }
 
-int GetUnitSupporterInitialExp(struct Unit * unit, int num)
+int GetUnitInitialSupportExp(struct Unit * unit, int num)
 {
     if (UNIT_SUPPORT_DATA(unit) == NULL)
         return -1;
@@ -135,7 +137,7 @@ int GetUnitSupporterInitialExp(struct Unit * unit, int num)
     return UNIT_SUPPORT_DATA(unit)->exp_base[num];
 }
 
-int sub_8026C98(struct Unit * unit, u8 pid)
+int GetUnitSupportNumByPid(struct Unit * unit, u8 pid)
 {
     int i;
     int count = GetUnitSupporterCount(unit);
@@ -161,7 +163,7 @@ void ClearUnitSupports(struct Unit * unit)
         if (other == NULL)
             continue;
 
-        other->supports[sub_8026C98(other, unit->pCharacterData->number)] = 0;
+        other->supports[GetUnitSupportNumByPid(other, unit->pCharacterData->number)] = 0;
         unit->supports[i] = 0;
     }
 }
@@ -228,13 +230,11 @@ void DoTurnSupportExp(void)
     }
 }
 
-extern struct SupportBonuses gUnk_08D61E78[];
-
-const struct SupportBonuses * sub_8026E1C(int affinity)
+struct SupportBonuses const * GetAffinityBonuses(int affinity)
 {
-    const struct SupportBonuses * it;
+    struct SupportBonuses const * it;
 
-    for (it = gUnk_08D61E78; it->affinity; it++)
+    for (it = AffinityBonuses; it->affinity; it++)
     {
         if (it->affinity == affinity)
             return it;
@@ -245,9 +245,9 @@ const struct SupportBonuses * sub_8026E1C(int affinity)
 #endif
 }
 
-void sub_8026E3C(struct SupportBonuses * bonuses, int affinity, int level)
+void ApplyAffinityBonuses(struct SupportBonuses * bonuses, int affinity, int level)
 {
-    const struct SupportBonuses * added = sub_8026E1C(affinity);
+    struct SupportBonuses const * added = GetAffinityBonuses(affinity);
 
     bonuses->bonus_attack += level * added->bonus_attack;
     bonuses->bonus_defense += level * added->bonus_defense;
@@ -257,7 +257,7 @@ void sub_8026E3C(struct SupportBonuses * bonuses, int affinity, int level)
     bonuses->bonus_dodge += level * added->bonus_dodge;
 }
 
-void sub_8026E94(struct SupportBonuses * bonuses)
+void InitBonuses(struct SupportBonuses * bonuses)
 {
     bonuses->bonus_attack = 0;
     bonuses->bonus_defense = 0;
@@ -267,8 +267,6 @@ void sub_8026E94(struct SupportBonuses * bonuses)
     bonuses->bonus_dodge = 0;
 }
 
-#define SUPPORT_BONUSES_MAX_DISTANCE 3
-
 int GetUnitSupportBonuses(struct Unit * unit, struct SupportBonuses * bonuses)
 {
     int i;
@@ -276,7 +274,7 @@ int GetUnitSupportBonuses(struct Unit * unit, struct SupportBonuses * bonuses)
 
     int result = 0;
 
-    sub_8026E94(bonuses);
+    InitBonuses(bonuses);
 
     count = GetUnitSupporterCount(unit);
 
@@ -301,11 +299,11 @@ int GetUnitSupportBonuses(struct Unit * unit, struct SupportBonuses * bonuses)
         if (other->state & (US_UNAVAILABLE | US_RESCUED))
             continue;
 
-        level1 = GetUnitSupportLevel(other, sub_8026C98(other, unit->pCharacterData->number));
-        sub_8026E3C(bonuses, other->pCharacterData->affinity, level1);
+        level1 = GetUnitSupportLevel(other, GetUnitSupportNumByPid(other, unit->pCharacterData->number));
+        ApplyAffinityBonuses(bonuses, other->pCharacterData->affinity, level1);
 
         level2 = GetUnitSupportLevel(unit, i);
-        sub_8026E3C(bonuses, unit->pCharacterData->affinity, level2);
+        ApplyAffinityBonuses(bonuses, unit->pCharacterData->affinity, level2);
 
         if (level1 != 0 && level2 != 0)
             result += 1 << (count - 1);
@@ -341,10 +339,9 @@ int GetAffinityIconByPid(int pid)
     return 0x79 + affinity; // TODO: Icon constants
 }
 
-extern u8 gUnk_081C947C[];
-
 int GetSupportLevelSpecialChar(int level)
 {
+    // clang-format off
     u8 chars[4] =
     {
         TEXT_SPECIAL_DASH,
@@ -352,12 +349,14 @@ int GetSupportLevelSpecialChar(int level)
         TEXT_SPECIAL_B,
         TEXT_SPECIAL_A
     };
+    // clang-format on
 
     return chars[level];
 }
 
 char const * GetAffinityName(int affinity)
 {
+    // clang-format off
     char const * lut[] =
     {
         [0] = JTEXT("ー"),
@@ -369,34 +368,35 @@ char const * GetAffinityName(int affinity)
         [AFFINITY_6] = JTEXT("光"),
         [AFFINITY_7] = JTEXT("理"),
     };
+    // clang-format on
 
     return lut[affinity];
 }
 
-void sub_8027028(u8 pid_a, u8 pid_b)
+void SetSupportLevelGained(u8 pid_a, u8 pid_b)
 {
     struct Unit * unit = GetUnitFromCharId(pid_a);
-    int num = sub_8026C98(unit, pid_b);
+    int num = GetUnitSupportNumByPid(unit, pid_b);
 
     unit->supportBits |= (1 << num);
 
     unit = GetUnitFromCharId(pid_b);
-    num = sub_8026C98(unit, pid_a);
+    num = GetUnitSupportNumByPid(unit, pid_a);
 
     unit->supportBits |= (1 << num);
 }
 
-bool sub_8027078(struct Unit * unit, int num)
+bool HasUnitGainedSupportLevel(struct Unit * unit, int num)
 {
     bool result = unit->supportBits & (1 << num);
     return result ? true : false;
 }
 
-bool sub_8027090(u8 pid_a, u8 pid_b)
+bool ArePidsAtMaxSupport(u8 pid_a, u8 pid_b)
 {
     struct Unit * unit = GetUnitFromCharId(pid_a);
 
-    if (GetUnitSupportLevel(unit, sub_8026C98(unit, pid_b)) > SUPPORT_LEVEL_B)
+    if (GetUnitSupportLevel(unit, GetUnitSupportNumByPid(unit, pid_b)) > SUPPORT_LEVEL_B)
         return true;
 
     return false;
@@ -436,6 +436,8 @@ void SwapUnitStats(struct Unit * unit_a, struct Unit * unit_b)
         SWAP(u16, unit_a->items[3], unit_b->items[3]);
         SWAP(u16, unit_a->items[4], unit_b->items[4]);
 
-#undef SWAP
+        // clang-format off
+        #undef SWAP
+        // clang-format on
     }
 }

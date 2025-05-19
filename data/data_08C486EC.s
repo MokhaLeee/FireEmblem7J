@@ -483,8 +483,8 @@ gUnk_08D6164A:	@ 0x08D6164A
 gUnk_08D61678:	@ 0x08D61678
 	.incbin "FireEmblem7J.base.gba", 0xD61678, 0xD61E78 - 0xD61678
 
-	.global gUnk_08D61E78
-gUnk_08D61E78:	@ 0x08D61E78
+	.global AffinityBonuses
+AffinityBonuses:	@ 0x08D61E78
 	.incbin "FireEmblem7J.base.gba", 0xD61E78, 0xD62110 - 0xD61E78
 
 	.global gUnk_08D62110

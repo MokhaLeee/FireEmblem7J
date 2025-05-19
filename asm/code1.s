@@ -2849,25 +2849,25 @@ sub_802FA0C: @ 0x0802FA0C
 	ldr r0, [r0]
 	ldr r1, [r4]
 	ldrb r1, [r1, #4]
-	bl sub_8026C98
+	bl GetUnitSupportNumByPid
 	adds r7, r0, #0
 	mov r1, sb
 	ldr r0, [r1]
 	ldr r0, [r0]
 	ldrb r1, [r0, #4]
 	adds r0, r4, #0
-	bl sub_8026C98
+	bl GetUnitSupportNumByPid
 	mov r8, r0
 	adds r0, r4, #0
 	mov r1, r8
-	bl sub_8026C04
+	bl CanUnitSupportNow
 	mov r2, sb
 	ldr r0, [r2]
 	adds r1, r7, #0
-	bl sub_8026BD0
+	bl UnitGainSupportLevel
 	adds r0, r4, #0
 	mov r1, r8
-	bl sub_8026BD0
+	bl UnitGainSupportLevel
 	mov r1, sb
 	ldr r0, [r1]
 	ldr r1, [r0]

@@ -5152,7 +5152,7 @@ sub_807AC30: @ 0x0807AC30
 	push {lr}
 	movs r0, #1
 	movs r1, #0x2d
-	bl sub_8027090
+	bl ArePidsAtMaxSupport
 	lsls r0, r0, #0x18
 	asrs r0, r0, #0x18
 	pop {r1}
@@ -5164,7 +5164,7 @@ sub_807AC44: @ 0x0807AC44
 	push {lr}
 	movs r0, #1
 	movs r1, #0x25
-	bl sub_8027090
+	bl ArePidsAtMaxSupport
 	lsls r0, r0, #0x18
 	asrs r0, r0, #0x18
 	pop {r1}
@@ -5176,7 +5176,7 @@ sub_807AC58: @ 0x0807AC58
 	push {lr}
 	movs r0, #1
 	movs r1, #0x1e
-	bl sub_8027090
+	bl ArePidsAtMaxSupport
 	lsls r0, r0, #0x18
 	asrs r0, r0, #0x18
 	pop {r1}
@@ -5188,7 +5188,7 @@ sub_807AC6C: @ 0x0807AC6C
 	push {lr}
 	movs r0, #2
 	movs r1, #0x2d
-	bl sub_8027090
+	bl ArePidsAtMaxSupport
 	lsls r0, r0, #0x18
 	asrs r0, r0, #0x18
 	pop {r1}
@@ -5200,7 +5200,7 @@ sub_807AC80: @ 0x0807AC80
 	push {lr}
 	movs r0, #2
 	movs r1, #0x31
-	bl sub_8027090
+	bl ArePidsAtMaxSupport
 	lsls r0, r0, #0x18
 	asrs r0, r0, #0x18
 	pop {r1}
@@ -5212,7 +5212,7 @@ sub_807AC94: @ 0x0807AC94
 	push {lr}
 	movs r0, #2
 	movs r1, #0x1f
-	bl sub_8027090
+	bl ArePidsAtMaxSupport
 	lsls r0, r0, #0x18
 	asrs r0, r0, #0x18
 	pop {r1}

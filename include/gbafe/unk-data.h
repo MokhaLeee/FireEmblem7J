@@ -1967,7 +1967,7 @@ extern struct ProcCmd ProcScr_BmMain_08C05F30[];
 // ??? gUnk_08D613B8
 // ??? gUnk_08D6164A
 // ??? gUnk_08D61678
-// ??? gUnk_08D61E78
+// ??? AffinityBonuses
 // ??? gUnk_08D62110
 // ??? gUnk_08D62170
 // ??? gChapterDataAssetTable
