@@ -284,7 +284,6 @@ SECTIONS
 		asm/target-sel.o(.text);
 		asm/unit-sprite.o(.text);
 		src/support.o(.text);
-		asm/support.o(.text);
 		asm/item-use.o(.text);
 		src/battle.o(.text);
 		asm/trade-menu.o(.text);
@@ -433,6 +432,7 @@ SECTIONS
 		. = ALIGN(4); data/const_data_081C9238.o(.rodata)
 		. = ALIGN(4); src/bmfx-swingsword.o(.rodata)
 		. = ALIGN(4); data/const_data_081C9474.o(.rodata)
+		. = ALIGN(4); src/support.o(.rodata)
 		. = ALIGN(4); src/battle.o(.rodata)
 		. = ALIGN(4); data/const_data_081C94C8.o(.rodata)
 		. = ALIGN(4); src/banim-mainutils.o(.rodata)
