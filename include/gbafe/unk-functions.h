@@ -6,7 +6,6 @@ int GetPlayerLeaderUnitId(void);
 int GetItemIndex(int item);
 void UnitHideIfUnderRoof(struct Unit * unit);
 void CharStoreAI(struct Unit * unit, const struct UnitDefinition * uDef);
-int GetUnitSupporterInitialExp(struct Unit * unit, int num);
 int GetAutoleveledStatIncrease(int growth, int levelCount);
 int GetCurrentPromotedLevelBonus(void);
 int GetStatIncrease(int growth);

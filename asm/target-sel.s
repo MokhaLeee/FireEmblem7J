@@ -1009,7 +1009,7 @@ _080245AA:
 	bne _080245EC
 	ldr r0, [r7]
 	adds r1, r5, #0
-	bl sub_8026C04
+	bl CanUnitSupportNow
 	lsls r0, r0, #0x18
 	cmp r0, #0
 	beq _080245EC

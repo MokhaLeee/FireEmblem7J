@@ -457,7 +457,7 @@ void UnitLoadSupports(struct Unit *unit) {
     int i, count = GetUnitSupporterCount(unit);
 
     for (i = 0; i < count; ++i)
-        unit->supports[i] = GetUnitSupporterInitialExp(unit, i);
+        unit->supports[i] = GetUnitInitialSupportExp(unit, i);
 }
 
 void UnitAutolevelWExp(struct Unit *unit, const struct UnitDefinition *uDef)

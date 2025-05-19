@@ -4,7 +4,11 @@
 
 #include "unit.h"
 
-enum { MAX_SIMULTANEOUS_SUPPORT_COUNT_PER_UNIT = 5 };
+enum
+{
+    MAX_SIMULTANEOUS_SUPPORT_COUNT_PER_UNIT = 5,
+    SUPPORT_BONUSES_MAX_DISTANCE = 3,
+};
 
 enum
 {
@@ -63,8 +67,15 @@ int GetUnitInitialSupportExp(struct Unit * unit, int num);
 int GetUnitSupportNumByPid(struct Unit * unit, u8 pid);
 void ClearUnitSupports(struct Unit * unit);
 void DoTurnSupportExp(void);
+const struct SupportBonuses * GetAffinityBonuses(int affinity);
+void ApplyAffinityBonuses(struct SupportBonuses * bonuses, int affinity, int level);
+void InitBonuses(struct SupportBonuses * bonuses);
 int GetUnitSupportBonuses(struct Unit * unit, struct SupportBonuses * bonuses);
 int GetUnitAffinityIcon(struct Unit * unit);
 int GetAffinityIconByPid(int pid);
 int GetSupportLevelSpecialChar(int level);
 char const * GetAffinityName(int affinity);
+void SetSupportLevelGained(u8 pid_a, u8 pid_b);
+bool HasUnitGainedSupportLevel(struct Unit * unit, int num);
+bool ArePidsAtMaxSupport(u8 pid_a, u8 pid_b);
+void SwapUnitStats(struct Unit * unit_a, struct Unit * unit_b);

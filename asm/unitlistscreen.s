@@ -1299,7 +1299,7 @@ _08089EDA:
 _08089F50:
 	adds r0, r7, #0
 	adds r1, r4, #0
-	bl sub_8026C04
+	bl CanUnitSupportNow
 	lsls r0, r0, #0x18
 	cmp r0, #0
 	beq _08089F60
@@ -5085,7 +5085,7 @@ _0808BDD4:
 	ldr r0, [r7]
 	ldr r0, [r0]
 	adds r1, r6, #0
-	bl sub_8026C04
+	bl CanUnitSupportNow
 	lsls r0, r0, #0x18
 	cmp r0, #0
 	beq _0808BEA6
