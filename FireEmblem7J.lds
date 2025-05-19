@@ -245,7 +245,6 @@ SECTIONS
 		asm/anim-drv.o(.text);
 		src/sprite.o(.text);
 		src/face.o(.text);
-		asm/face.o(.text);
 		src/talk.o(.text);
 		src/talk-advance.o(.text);
 		src/event.o(.text);

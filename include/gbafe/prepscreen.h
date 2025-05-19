@@ -279,7 +279,7 @@ ProcPtr StartSallyCirProc(ProcPtr parent, u8 unk);
 // GetConvoyItemCount_
 void ViewCounter_Loop(ProcPtr proc);
 // StartViewCounter
-// TryLockProc
+void TryLockProc(ProcPtr proc);
 void TryUnlockProc(ProcPtr proc);
 void PrepHbKeyListener_Loop(ProcPtr proc);
 // StartPrepErrorHelpbox
