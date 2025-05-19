@@ -1786,7 +1786,6 @@ extern struct ProcCmd ProcScr_NinianTransformToHunman[];
 // ??? gUnk_08C03426
 // ??? gUnk_08C0342E
 // ??? gUnk_08C03436
-// ??? gUnk_08C03440
 // ??? gUnk_08C03450
 // ??? gUnk_08C034D0
 

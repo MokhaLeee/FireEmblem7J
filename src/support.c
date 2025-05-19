@@ -2,6 +2,18 @@
 
 extern struct SupportBonuses AffinityBonuses[];
 
+// clang-format off
+
+int CONST_DATA sMaxExpLut[] =
+{
+    [SUPPORT_LEVEL_NONE] = SUPPORT_EXP_C-1,
+    [SUPPORT_LEVEL_C]    = SUPPORT_EXP_B-1,
+    [SUPPORT_LEVEL_B]    = SUPPORT_EXP_A-1,
+    [SUPPORT_LEVEL_A]    = SUPPORT_EXP_A
+};
+
+// clang-format on
+
 int GetUnitSupporterCount(struct Unit * unit)
 {
     if (!UNIT_SUPPORT_DATA(unit))
@@ -69,8 +81,6 @@ int GetUnitTotalSupportLevel(struct Unit * unit)
     return result;
 }
 
-extern int gUnk_08C03440[];
-
 void UnitGainSupportExp(struct Unit * unit, s32 num)
 {
     if (gPlaySt.chapterModeIndex == 1)
@@ -80,7 +90,7 @@ void UnitGainSupportExp(struct Unit * unit, s32 num)
     {
         int gain = UNIT_SUPPORT_DATA(unit)->exp_growth[num];
         int current_exp = unit->supports[num];
-        int max_exp = gUnk_08C03440[GetUnitSupportLevel(unit, num)];
+        int max_exp = sMaxExpLut[GetUnitSupportLevel(unit, num)];
 
         if ((current_exp + gain) > max_exp)
         {
@@ -121,7 +131,7 @@ bool CanUnitSupportNow(struct Unit * unit, int num)
         return false;
 
     exp = unit->supports[num];
-    max_exp = gUnk_08C03440[GetUnitSupportLevel(unit, num)];
+    max_exp = sMaxExpLut[GetUnitSupportLevel(unit, num)];
 
     if (exp == SUPPORT_EXP_A)
         return false;

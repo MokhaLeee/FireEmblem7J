@@ -491,6 +491,8 @@ SECTIONS
 		. = ALIGN(4); src/bmfx-minefx.o(.data)
 		. = ALIGN(4); src/bmfx-niniantransform.o(.data)
 		. = ALIGN(4); data/data_08C03060.o(.data)
+		. = ALIGN(4); src/support.o(.data)
+		. = ALIGN(4); data/data_08C03450.o(.data)
 		. = ALIGN(4); src/battle.o(.data)
 		. = ALIGN(4); data/data_08C03574.o(.data)
 		. = ALIGN(4); data/data_ai.o(.data)

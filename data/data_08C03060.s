@@ -71,15 +71,3 @@ gUnk_08C0342E:	@ 0x08C0342E
 	.global gUnk_08C03436
 gUnk_08C03436:	@ 0x08C03436
 	.incbin "FireEmblem7J.base.gba", 0xC03436, 0xC03440 - 0xC03436
-
-	.global gUnk_08C03440
-gUnk_08C03440:	@ 0x08C03440
-	.incbin "FireEmblem7J.base.gba", 0xC03440, 0xC03450 - 0xC03440
-
-	.global gUnk_08C03450
-gUnk_08C03450:	@ 0x08C03450
-	.incbin "FireEmblem7J.base.gba", 0xC03450, 0xC034D0 - 0xC03450
-
-	.global gUnk_08C034D0
-gUnk_08C034D0:	@ 0x08C034D0
-	.incbin "FireEmblem7J.base.gba", 0xC034D0, 0xC03528 - 0xC034D0
