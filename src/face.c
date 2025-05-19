@@ -1112,3 +1112,188 @@ void SetFaceEyeStateById(int slot, int state)
 {
     SetFaceEyeState(gFaces[slot], state);
 }
+
+void Face_0800798C(void)
+{
+    struct FaceEyeProc * eye_proc;
+
+    eye_proc = gFaces[0]->eye_proc;
+
+    if (gpKeySt->held & A_BUTTON)
+        eye_proc->state = 2;
+    else
+        eye_proc->state = 0;
+
+    eye_proc = gFaces[2]->eye_proc;
+
+    if (gpKeySt->held & B_BUTTON)
+        eye_proc->state = 3;
+    else
+        eye_proc->state = 0;
+
+    eye_proc = gFaces[1]->eye_proc;
+
+    if (gpKeySt->pressed & L_BUTTON)
+        eye_proc->state = 4;
+
+    eye_proc = gFaces[3]->eye_proc;
+
+    if (gpKeySt->pressed & R_BUTTON)
+        eye_proc->state = 4;
+}
+
+// clang-format off
+
+struct ProcCmd CONST_DATA gUnk_08BFFB20[] = {
+    PROC_REPEAT(Face_0800798C),
+    PROC_END,
+};
+
+// clang-format on
+
+void sub_8007A00(void)
+{
+    SetFaceBlinkControl(StartFaceAuto(0x16, 48, 0, FACE_DISP_KIND(FACE_96x80_FLIPPED) | FACE_DISP_FLIPPED | FACE_DISP_TALK_1), 3);
+    SetFaceBlinkControl(StartFaceAuto(0x16, 48, 80, FACE_DISP_KIND(FACE_96x80_FLIPPED) | FACE_DISP_FLIPPED | FACE_DISP_SMILE | FACE_DISP_TALK_1), 1);
+    SetFaceBlinkControl(StartFaceAuto(0x16, 192, 0, FACE_DISP_KIND(FACE_96x80) | FACE_DISP_TALK_1), 2);
+    SetFaceBlinkControl(StartFaceAuto(0x16, 192, 80, FACE_DISP_KIND(FACE_96x80) | FACE_DISP_SMILE | FACE_DISP_TALK_1), 4);
+
+    Proc_Start(gUnk_08BFFB20, PROC_TREE_3);
+}
+
+struct FaceProc * StartBmFace(int slot, int fid, int x, int y, int disp)
+{
+    struct FaceProc * proc;
+    const struct FaceInfo * info;
+    s16 oam2_layer;
+
+    if (gFaces[slot] != NULL) {
+        return NULL;
+    }
+
+    proc = Proc_Start(ProcScr_BmFace, PROC_TREE_5);
+
+    gFaces[slot] = proc;
+
+    info = GetFaceInfo(fid);
+
+    if (disp & FACE_DISP_BIT_13)
+    {
+        CpuFastFill(0, PAL_OBJ(0) + PAL_OFFSET(gFaceConfig[slot].palid), 0x20);
+        EnablePalSync();
+    }
+    else
+    {
+        ApplyPalette(info->pal, gFaceConfig[slot].palid + 0x10);
+    }
+
+    proc->info = info;
+
+    proc->slot = slot;
+    proc->fid = fid;
+
+    proc->sprite_layer = 5;
+
+    proc->x_disp = x;
+    proc->y_disp = y;
+
+    proc->mouth_proc = NULL;
+    proc->eye_proc = NULL;
+
+    proc->disp = disp;
+
+    FaceRefreshSprite(proc);
+
+    switch (disp & FACE_DISP_HLAYER_MASK)
+    {
+    case FACE_DISP_HLAYER(FACE_HLAYER_0):
+        oam2_layer = OAM2_LAYER(0);
+        break;
+
+    case FACE_DISP_HLAYER(FACE_HLAYER_1):
+        oam2_layer = OAM2_LAYER(1);
+        break;
+
+    case FACE_DISP_HLAYER(FACE_HLAYER_3):
+        oam2_layer = OAM2_LAYER(3);
+        break;
+
+    default:
+        oam2_layer = OAM2_LAYER(2);
+        break;
+    }
+
+    proc->oam2 = (gFaceConfig[slot].chr_off / CHR_SIZE) + OAM2_PAL(gFaceConfig[slot].palid) + oam2_layer;
+
+    return proc;
+}
+
+void sub_8007B80(s32 slot, s16 x, s16 y)
+{
+    gFaces[slot]->x_disp = x;
+    gFaces[slot]->y_disp = y;
+}
+
+void sub_8007B94(struct UnkFaceProc * proc)
+{
+    if (proc->face_proc->eye_proc != NULL)
+        TryLockProc(proc->face_proc->eye_proc);
+
+    if (proc->face_proc->mouth_proc != NULL)
+        TryLockProc(proc->face_proc->mouth_proc);
+}
+
+void sub_8007BB8(struct UnkFaceProc * proc)
+{
+    struct FaceProc * face_proc;
+
+    proc->face_info = GetFaceInfo(proc->fid);
+
+    Decompress(proc->face_info->img, (void *)(gFaceConfig[proc->face_proc->slot].chr_off + 0x06010000));
+    ApplyPalette(proc->face_info->pal, gFaceConfig[proc->face_proc->slot].palid + 0x10);
+
+    face_proc = proc->face_proc;
+    face_proc->info = proc->face_info;
+    face_proc->fid = proc->fid;
+
+    return;
+}
+
+void sub_8007C10(struct UnkFaceProc * proc)
+{
+    if (proc->face_proc->eye_proc)
+    {
+        proc->face_proc->eye_proc->blink = proc->face_info->blink_type;
+        Proc_Goto(proc->face_proc->eye_proc, 0);
+        TryUnlockProc(proc->face_proc->eye_proc);
+    }
+
+    if (proc->face_proc->mouth_proc)
+    {
+        TryUnlockProc(proc->face_proc->mouth_proc);
+    }
+}
+
+// clang-format off
+
+struct ProcCmd CONST_DATA gUnk_08BFFB30[] = {
+    PROC_YIELD,
+    PROC_CALL(sub_8007B94),
+    PROC_SLEEP(2),
+
+    PROC_CALL(sub_8007BB8),
+    PROC_YIELD,
+
+    PROC_CALL(sub_8007C10),
+
+    PROC_END,
+};
+
+// clang-format on
+
+void sub_8007C48(struct FaceProc * parent, int face_id)
+{
+    struct UnkFaceProc * proc = Proc_Start(gUnk_08BFFB30, parent);
+    proc->face_proc = parent;
+    proc->fid = face_id;
+}

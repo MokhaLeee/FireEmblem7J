@@ -10,35 +10,6 @@ extern int sTalkChoiceResult;
 extern struct Text sTalkText[];
 extern struct Font sTalkFont;
 
-struct UnkFaceProc {
-    /* 00 */ PROC_HEADER;
-    /* 2C */ struct FaceProc * face_proc;
-    /* 30 */ struct FaceInfo * info;
-    /* 34 */ int unk34;
-};
-
-void sub_8007C10(struct UnkFaceProc * proc)
-{
-    if (proc->face_proc->eye_proc)
-    {
-        proc->face_proc->eye_proc->blink = proc->info->blink_type;
-        Proc_Goto(proc->face_proc->eye_proc, 0);
-        TryUnlockProc(proc->face_proc->eye_proc);
-    }
-
-    if (proc->face_proc->mouth_proc)
-    {
-        TryUnlockProc(proc->face_proc->mouth_proc);
-    }
-}
-
-void sub_8007C48(struct FaceProc* parent, int face_id)
-{
-    struct UnkFaceProc * proc = Proc_Start(gUnk_08BFFB30, parent);
-    proc->face_proc = parent;
-    proc->unk34 = face_id;
-}
-
 void sub_8007C64()
 {
     int i;
