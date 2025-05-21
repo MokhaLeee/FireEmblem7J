@@ -237,7 +237,7 @@ extern u16 Pal_SwingSword[];
 extern u8 Tsa_SwingSword[];
 extern u8 Img_DragonGateLight[];
 extern u16 Pal_DragonGateLight[];
-// ??? gUnk_081C0A70
+extern u16 gUnk_081C0A70[]; // pal
 extern u8 Tsa_DragonGateLight[];
 extern u8 Img_DragonGateDragon[];
 extern u16 Pal_DragonGateDragon[];
