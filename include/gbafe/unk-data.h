@@ -349,13 +349,13 @@ extern u16 Pal_MuralBackground[];
 // ??? gUnk_0844F64C
 // ??? gUnk_08452AD4
 // ??? gUnk_08452C74
-// ??? gUnk_08452D90
-// ??? gUnk_08452E70
-// ??? gUnk_08452E90
-// ??? gUnk_08453438
-// ??? gUnk_08453538
-// ??? gUnk_0857E570
-// ??? gUnk_08583EE4
+extern u8 gUnk_08452D90[]; // img
+extern u16 gUnk_08452E70[]; // pal
+extern u8 gUnk_08452E90[]; // tsa
+extern u16 gUnk_08453438[]; // pal
+extern u16 gUnk_08453538[]; // pal
+extern u16 gUnk_0857E570[]; // pal
+extern u16 gUnk_08583EE4[]; // pal
 // ??? gUnk_085AE7BC
 // ??? gUnk_0860A86C
 // ??? gUnk_0860A8EC

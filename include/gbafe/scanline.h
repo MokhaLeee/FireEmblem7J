@@ -40,7 +40,7 @@ u16 * GetScanlineBuf(int buf_id, int scanline);
 // sub_8078030
 void HBlank_Scanline_8078098(void);
 void sub_80780E0(int a, int b);
-// sub_8078130
+void sub_8078130(void);
 void ScanlineRotation(u16 *, s16, s16, s16, s16, s16, s16);
 void HBlank_Scanline_80782AC(void);
 // sub_8078344
