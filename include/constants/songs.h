@@ -129,9 +129,11 @@ enum
     SONG_D1 = 0xD1,
     SONG_D2 = 0xD2,
     SONG_D5 = 0xD5,
-    SONG_D6 = 0xD6,
+    SONG_D6 = 0xD6, // SE: Death (manim)
     SONG_D8 = 0xD8, // crit?
+    SONG_E5 = 0xE5, // SE: Fire Dragon death roar
     SONG_EC = 0xEC, // no damage
+    SONG_F8 = 0xF8, // SE: Elfire hit SFX
     SONG_FD = 0xFD, // manim
     SONG_10F = 0x10F,
     SONG_269 = 0x269,
