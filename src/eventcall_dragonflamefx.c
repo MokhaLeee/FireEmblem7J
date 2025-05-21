@@ -232,7 +232,43 @@ void sub_807C170(void)
     SetBlendConfig(BLEND_EFFECT_NONE, 0, 0, 0);
 }
 
-extern struct ProcCmd ProcScr_DragonFlamefx[];
+// clang-format off
+
+struct ProcCmd CONST_DATA ProcScr_DragonFlamefx[] =
+{
+    PROC_YIELD,
+
+    PROC_CALL(DragonFlamefx_Init),
+    PROC_YIELD,
+
+    PROC_REPEAT(DragonFlamefx_Rotation),
+    PROC_BLOCK,
+
+PROC_LABEL(0), /* flashing out */
+    PROC_CALL(TryLockParentProc),
+    PROC_CALL(DragonFlamefx_EndRing),
+    PROC_REPEAT(DragonFlamefx_RefrainBlendAlpha),
+
+    PROC_WHILE(CheckBmBgfxDone),
+
+    PROC_WHILE(sub_8013F3C),
+
+    PROC_CALL(sub_807C170),
+    PROC_YIELD,
+
+    PROC_CALL(sub_807BFEC),
+    PROC_WHILE(sub_8013F3C),
+
+    PROC_REPEAT(sub_807C108),
+    PROC_WHILE(sub_8013F3C),
+
+    PROC_CALL(sub_807C170),
+    PROC_CALL(TryUnlockParentProc),
+
+    PROC_END,
+};
+
+// clang-format on
 
 void StartDragonFlamefx(ProcPtr parent)
 {
@@ -255,7 +291,7 @@ struct ProcDeadDragonFlame
     /* 29 */ STRUCT_PAD(0x29, 0x39);
     /* 39 */ bool unk_39;
     /* 3A */ STRUCT_PAD(0x3A, 0x4C);
-    /* 4C */ s16 unk_4C;
+    /* 4C */ s16 timer;
     /* 4E */ STRUCT_PAD(0x4E, 0x50);
     /* 50 */ int unk_50;
     /* 54 */ int unk_54;
@@ -282,7 +318,7 @@ void DeadDragonFlame_Init(struct ProcDeadDragonFlame * proc)
 {
     ArchiveCurrentPalettes();
 
-    proc->unk_4C = 0;
+    proc->timer = 0;
 
     SetBlendAlpha(0, 16);
     SetBlendTargetA(0, 0, 1, 0, 0);
@@ -301,7 +337,7 @@ void DeadDragonFlame_Init(struct ProcDeadDragonFlame * proc)
 
     EnableBgSync(BG0_SYNC_BIT | BG1_SYNC_BIT | BG2_SYNC_BIT);
 
-    proc->unk_4C = 0;
+    proc->timer = 0;
 
     StartBmBgfx(BmBgfxConf_DeadDragonFlame, BG_2, 0, 0, 0x1000, 0x2800, 0, sub_807C228, proc);
     sub_8013EF8(0x100, 0x100, 0x100, 0x100, 0x80, 0x80, -2, 8, proc);
@@ -309,24 +345,24 @@ void DeadDragonFlame_Init(struct ProcDeadDragonFlame * proc)
 
 void DeadDragonFlame_Rotation(struct ProcDeadDragonFlame * proc)
 {
-    s32 blend_amt = ++proc->unk_4C >> 2;
+    s32 blend_amt = ++proc->timer >> 2;
 
     SetBlendAlpha(blend_amt, blend_amt <= 6 ? 16 - blend_amt : 10);
 
     if (blend_amt == 16)
     {
-        proc->unk_4C = 0;
+        proc->timer = 0;
         Proc_Break(proc);
     }
 }
 
 void sub_807C3E8(struct ProcDeadDragonFlame * proc)
 {
-    s32 blend_amt = ++proc->unk_4C >> 3;
+    s32 blend_amt = ++proc->timer >> 3;
 
     SetBlendAlpha(16 - blend_amt, 16);
 
-    if (proc->unk_4C == 80)
+    if (proc->timer == 80)
     {
         sub_8013EF8(0x100, 0x80, 0x80, 0x200, 0x200, 0x200, -2, 8, proc);
     }
@@ -357,7 +393,7 @@ void sub_807C464(void)
 
 void sub_807C490(ProcPtr proc)
 {
-    TmFill(gBg2Tm, 0);
+    TmFill(gBg2Tm, TILEREF(0x0, 0));
     EnableBgSync(BG2_SYNC_BIT);
 
     SetOnHBlankA(NULL);
@@ -385,21 +421,21 @@ void sub_807C490(ProcPtr proc)
 void sub_807C58C(struct ProcDeadDragonFlame * proc)
 {
     sub_807BD6C(200, 64);
-    proc->unk_4C = 0;
+    proc->timer = 0;
 }
 
 void sub_807C5A4(struct ProcDeadDragonFlame * proc)
 {
-    s32 blend_amt = proc->unk_4C++ >> 3;
+    s32 blend_amt = proc->timer++ >> 3;
 
     SetBlendAlpha(16 - blend_amt, 16);
 
-    if (proc->unk_4C == 8)
+    if (proc->timer == 8)
     {
         StartUnitTornOut(GetUnitFromCharId(CHARACTER_FIREDRAGON), proc);
     }
 
-    if (proc->unk_4C == 16)
+    if (proc->timer == 16)
     {
         PlaySoundEffect(SONG_D6);
     }
@@ -415,7 +451,35 @@ void sub_807C5A4(struct ProcDeadDragonFlame * proc)
     }
 }
 
-extern struct ProcCmd ProcScr_DeadDragonFlamefx[];
+// clang-format off
+
+struct ProcCmd CONST_DATA ProcScr_DeadDragonFlamefx[] =
+{
+    PROC_YIELD,
+
+    PROC_CALL(DeadDragonFlame_Init),
+    PROC_YIELD,
+
+    PROC_REPEAT(DeadDragonFlame_Rotation),
+
+    PROC_BLOCK,
+
+PROC_LABEL(0),
+    PROC_REPEAT(sub_807C3E8),
+    PROC_WHILE(CheckBmBgfxDone),
+    PROC_WHILE(sub_8013F3C),
+
+    PROC_CALL(sub_807C490),
+
+PROC_LABEL(30),
+    PROC_CALL(sub_807C58C),
+    PROC_REPEAT(sub_807C5A4),
+    PROC_WHILE(sub_8013F3C),
+
+    PROC_END,
+};
+
+// clang-format on
 
 void StartDeadDragonFlamefx(ProcPtr parent)
 {

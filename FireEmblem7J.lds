@@ -505,7 +505,6 @@ SECTIONS
 		. = ALIGN(4); src/eventcall_quakefx.o(.data)
 		. = ALIGN(4); data/data_08D6F834.o(.data)
 		. = ALIGN(4); src/eventcall_dragonflamefx.o(.data)
-		. = ALIGN(4); asm/eventcall_dragonflamefx.o(.data)
 		. = ALIGN(4); asm/eventcall_0807C66C.o(.data)
 		. = ALIGN(4); src/quintessence-fx.o(.data)
 		. = ALIGN(4); src/eventcall_unittornout.o(.data)
