@@ -352,15 +352,15 @@ void EndEventQuakefx(ProcPtr proc);
 // sub_807C5A4
 // StartDeadDragonFlamefx
 // sub_807C66C
-// sub_807C6F0
-// sub_807C754
-// sub_807C7DC
-// sub_807C7E8
-// sub_807C8BC
-// sub_807C8DC
-// sub_807C954
-// sub_807C9A4
-// sub_807CA1C
+// CandleFlameFx_ScanlineEffect
+// StartCandleFlameFx
+// EndCandleFlamePaletteFx
+// ZephielEpilogue_Init
+// ZephielEpilogue_EnableBg2
+// ZephielEpilogue_LoadNewCg
+// ZephielEpilogue_Loop_BlendCgs
+// ZephielEpilogue_End
+// StartZephielJahnEpilogueCg
 
 struct ProcEventAnimfx
 {
@@ -717,7 +717,7 @@ extern struct ProcCmd ProcScr_EventQuakefx[];
 // ??? ProcScr_DragonSpriteBlinking
 // ??? ProcScr_DragonFlamefx
 // ??? ProcScr_DeadDragonFlamefx
-// ??? gUnk_08D6F9D4
+// ??? ProcScr_ZephielEpilogue
 extern struct ProcCmd ProcScr_QuintessenceFxBg2Scroll[];
 extern struct ProcCmd ProcScr_QuintessenceFx[];
 // ??? ProcScr_UnitTornOut

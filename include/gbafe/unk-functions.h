@@ -1146,7 +1146,7 @@ int sub_80B10D4(int, int);
 // sub_80B7880
 // sub_80B7968
 // nullsub_91
-// sub_80B7980
+void sub_80B7980(u16 *, int, int, int, int);
 // sub_80B79FC
 // sub_80B7A74
 // sub_80B7B30

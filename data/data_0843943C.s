@@ -144,16 +144,16 @@ gUnk_08452AD4:	@ 0x08452AD4
 gUnk_08452C74:	@ 0x08452C74
 	.incbin "FireEmblem7J.base.gba", 0x452C74, 0x452D90 - 0x452C74
 
-	.global gUnk_08452D90
-gUnk_08452D90:	@ 0x08452D90
+	.global Img_CandleFlame
+Img_CandleFlame:	@ 0x08452D90
 	.incbin "FireEmblem7J.base.gba", 0x452D90, 0x452E70 - 0x452D90
 
-	.global gUnk_08452E70
-gUnk_08452E70:	@ 0x08452E70
+	.global Pal_CandleFlame
+Pal_CandleFlame:	@ 0x08452E70
 	.incbin "FireEmblem7J.base.gba", 0x452E70, 0x452E90 - 0x452E70
 
-	.global gUnk_08452E90
-gUnk_08452E90:	@ 0x08452E90
+	.global Tsa_CandleFlame
+Tsa_CandleFlame:	@ 0x08452E90
 	.incbin "FireEmblem7J.base.gba", 0x452E90, 0x453438 - 0x452E90
 
 	.global gUnk_08453438

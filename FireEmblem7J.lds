@@ -317,7 +317,7 @@ SECTIONS
 		src/eventcall_quakefx.o(.text);
 		src/eventcall_dragongate.o(.text);
 		src/eventcall_dragonflamefx.o(.text);
-		asm/eventcall_0807C66C.o(.text);
+		src/eventcall_zephielepilogue.o(.text);
 		src/quintessence-fx.o(.text);
 		src/eventcall_unittornout.o(.text);
 		src/eventcall_flamebreath.o(.text);
@@ -505,7 +505,7 @@ SECTIONS
 		. = ALIGN(4); src/eventcall_quakefx.o(.data)
 		. = ALIGN(4); src/eventcall_dragongate.o(.data)
 		. = ALIGN(4); src/eventcall_dragonflamefx.o(.data)
-		. = ALIGN(4); asm/eventcall_0807C66C.o(.data)
+		. = ALIGN(4); src/eventcall_zephielepilogue.o(.data)
 		. = ALIGN(4); src/quintessence-fx.o(.data)
 		. = ALIGN(4); src/eventcall_unittornout.o(.data)
 		. = ALIGN(4); src/eventcall_flamebreath.o(.data)
