@@ -2282,8 +2282,8 @@ _08078124:
 	pop {r0}
 	bx r0
 
-	thumb_func_start sub_8078130
-sub_8078130: @ 0x08078130
+	thumb_func_start CandleFlameFx_OnHBlank
+CandleFlameFx_OnHBlank: @ 0x08078130
 	push {r7, lr}
 	sub sp, #4
 	mov r7, sp

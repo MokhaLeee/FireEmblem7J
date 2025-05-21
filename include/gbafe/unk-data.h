@@ -349,9 +349,9 @@ extern u16 Pal_MuralBackground[];
 // ??? gUnk_0844F64C
 // ??? gUnk_08452AD4
 // ??? gUnk_08452C74
-extern u8 gUnk_08452D90[]; // img
-extern u16 gUnk_08452E70[]; // pal
-extern u8 gUnk_08452E90[]; // tsa
+extern u8 Img_CandleFlame[]; // img
+extern u16 Pal_CandleFlame[]; // pal
+extern u8 Tsa_CandleFlame[]; // tsa
 extern u16 gUnk_08453438[]; // pal
 extern u16 gUnk_08453538[]; // pal
 extern u16 gUnk_0857E570[]; // pal

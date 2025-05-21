@@ -1,5 +1,10 @@
 #include "gbafe.h"
 
+/**
+ * Proc for handling the epilogue cutscene when Zephiel is
+ * visited by Jahn in Bern Keep.
+ */
+
 void sub_807C66C(char * str)
 {
     struct Font font;
@@ -25,12 +30,12 @@ struct ProcZephielEpilogue
 {
     /* 00 */ PROC_HEADER;
     /* 29 */ STRUCT_PAD(0x29, 0x4C);
-    /* 4C */ s16 unk_4C;
+    /* 4C */ s16 timer;
     /* 4E */ STRUCT_PAD(0x4E, 0x58);
     /* 58 */ int unk_58;
 };
 
-void sub_807C6F0(struct ProcZephielEpilogue * proc)
+void CandleFlameFx_ScanlineEffect(struct ProcZephielEpilogue * proc)
 {
     proc->unk_58 += 2;
     ScanlineRotation(GetScanlineBuf(1, 0), proc->unk_58, 7, 7, 0, 30, 8);
@@ -38,29 +43,29 @@ void sub_807C6F0(struct ProcZephielEpilogue * proc)
     SwapScanlineBufs();
 }
 
-void sub_807C754(ProcPtr proc)
+void StartCandleFlameFx(ProcPtr proc)
 {
     TmFill(gBg1Tm, TILEREF(0x0, 0));
 
-    Decompress(gUnk_08452D90, (void *)0x06000800);
-    TmApplyTsa_thm(gBg1Tm, gUnk_08452E90, TILEREF(0x40, 7));
-    ApplyPalette(gUnk_08452E70, 7);
+    Decompress(Img_CandleFlame, (void *)0x06000800);
+    TmApplyTsa_thm(gBg1Tm, Tsa_CandleFlame, TILEREF(0x40, 7));
+    ApplyPalette(Pal_CandleFlame, 7);
     EnableBgSync(BG1_SYNC_BIT);
 
     InitScanlineEffect();
 
-    SetOnHBlankA(sub_8078130);
-    StartParallelWorker(sub_807C6F0, proc);
+    SetOnHBlankA(CandleFlameFx_OnHBlank);
+    StartParallelWorker(CandleFlameFx_ScanlineEffect, proc);
 
     StartMixPalette(gUnk_0857E570, gUnk_08453438, 2, 8, 7, proc);
 }
 
-void sub_807C7DC(void)
+void EndCandleFlamePaletteFx(void)
 {
     EndMixPalette();
 }
 
-void sub_807C7E8(struct ProcZephielEpilogue * proc)
+void ZephielEpilogue_Init(struct ProcZephielEpilogue * proc)
 {
     int i;
 
@@ -70,6 +75,9 @@ void sub_807C7E8(struct ProcZephielEpilogue * proc)
     SetBlendAlpha(0, 16);
     SetBlendTargetA(0, 0, 0, 1, 0);
     SetBlendTargetB(0, 1, 1, 0, 0);
+
+    // Copy the CG of Zephiel in his keep from BG3 to BG2
+    // in preparation for revealing the CG of his visitor (Jahn)
 
     CpuFastCopy((void *)0x06008000, (void *)0x06001000, 0x5000);
     CpuFastCopy(PAL_BG(8), PAL_BG(0), PLTT_SIZE_4BPP * 7);
@@ -82,16 +90,17 @@ void sub_807C7E8(struct ProcZephielEpilogue * proc)
     EnablePalSync();
     EnableBgSync(BG2_SYNC_BIT);
 
-    proc->unk_4C = 0;
+    proc->timer = 0;
 }
 
-void sub_807C8BC(void)
+void ZephielEpilogue_EnableBg2(void)
 {
     SetDispEnable(1, 1, 1, 1, 1);
 }
 
-void sub_807C8DC(struct ProcZephielEpilogue * proc)
+void ZephielEpilogue_LoadNewCg(struct ProcZephielEpilogue * proc)
 {
+    // Load the CG of Zephiel with Jahn visiting on BG3
     sub_80B7980(gBg3Tm, 0x8000, 8, 8, 0x37);
 
     EnableBgSync(BG3_SYNC_BIT);
@@ -104,9 +113,9 @@ void sub_807C8DC(struct ProcZephielEpilogue * proc)
     StartMixPalette(gUnk_08583EE4, gUnk_08453538, 2, 8, 7, proc->proc_parent);
 }
 
-void sub_807C954(struct ProcZephielEpilogue * proc)
+void ZephielEpilogue_Loop_BlendCgs(struct ProcZephielEpilogue * proc)
 {
-    int blend_amt = proc->unk_4C++ >> 1;
+    int blend_amt = proc->timer++ >> 1;
 
     SetBlendAlpha(blend_amt, 16 - blend_amt);
 
@@ -116,7 +125,7 @@ void sub_807C954(struct ProcZephielEpilogue * proc)
     }
 }
 
-void sub_807C9A4(void)
+void ZephielEpilogue_End(void)
 {
     TmFill(gBg1Tm, TILEREF(0x0, 0));
     TmFill(gBg2Tm, TILEREF(0x0, 0));
@@ -135,25 +144,25 @@ void sub_807C9A4(void)
 
 // clang-format off
 
-struct ProcCmd CONST_DATA gUnk_08D6F9D4[] =
+struct ProcCmd CONST_DATA ProcScr_ZephielEpilogue[] =
 {
-    PROC_CALL(sub_807C7E8),
+    PROC_CALL(ZephielEpilogue_Init),
     PROC_YIELD,
 
-    PROC_CALL(sub_807C8BC),
+    PROC_CALL(ZephielEpilogue_EnableBg2),
     PROC_YIELD,
 
-    PROC_CALL(sub_807C8DC),
-    PROC_REPEAT(sub_807C954),
+    PROC_CALL(ZephielEpilogue_LoadNewCg),
+    PROC_REPEAT(ZephielEpilogue_Loop_BlendCgs),
 
-    PROC_CALL(sub_807C9A4),
+    PROC_CALL(ZephielEpilogue_End),
 
     PROC_END,
 };
 
 // clang-format on
 
-void sub_807CA1C(ProcPtr parent)
+void StartZephielJahnEpilogueCg(ProcPtr parent)
 {
-    Proc_StartBlocking(gUnk_08D6F9D4, parent);
+    Proc_StartBlocking(ProcScr_ZephielEpilogue, parent);
 }
