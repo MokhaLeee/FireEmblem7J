@@ -138,7 +138,29 @@ void DragonGatefx_End(void)
     gDispIo.bg3_ct.priority = 3;
 }
 
-extern struct ProcCmd ProcScr_DragonGatefx[];
+// clang-format off
+
+struct ProcCmd CONST_DATA ProcScr_DragonGatefx[] =
+{
+    PROC_SET_END_CB(DragonGatefx_End),
+    PROC_CALL(DragonGatefx_DrawLight),
+
+    PROC_BLOCK,
+
+PROC_LABEL(0),
+    PROC_CALL(DragonGatefx_DrawDragon),
+    PROC_REPEAT(DragonGatefx_MergeDragon),
+
+    PROC_CALL(sub_807BB48),
+    PROC_SLEEP(1),
+
+    PROC_CALL(DragonGatefxSetHBlank),
+    PROC_BLOCK,
+
+    PROC_END,
+};
+
+// clang-format on
 
 void EventCall_StartDragonGatefx(ProcPtr parent)
 {
@@ -184,7 +206,16 @@ void DragonSpriteBlinking_Loop(struct DragonSpriteBlinkingProc * proc)
     }
 }
 
-extern struct ProcCmd ProcScr_DragonSpriteBlinking[];
+// clang-format off
+
+struct ProcCmd CONST_DATA ProcScr_DragonSpriteBlinking[] =
+{
+    PROC_CALL(DragonSpriteBlinking_Init),
+    PROC_REPEAT(DragonSpriteBlinking_Loop),
+    /* BUG: no end? */
+};
+
+// clang-format on
 
 void StartDragonSpriteBlinking(ProcPtr parent)
 {
