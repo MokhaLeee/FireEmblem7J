@@ -2024,7 +2024,7 @@ void UnitLevelUp(struct Unit *unit)
         unit->exp = 0;
         unit->level++;
 
-        if (unit->level == 20 || unit->pCharacterData->number == CHARACTER_28)
+        if (unit->level == 20 || unit->pCharacterData->number == CHARACTER_MERLINUS)
             unit->exp = UNIT_EXP_DISABLED;
 
         growthBonus = (unit->state & US_GROWTH_BOOST) ? 5: 0;

@@ -4,6 +4,7 @@
 
 #include "constants/terrains.h"
 #include "constants/items.h"
+#include "constants/chapters.h"
 #include "constants/characters.h"
 #include "constants/classes.h"
 #include "constants/videoalloc-global.h"

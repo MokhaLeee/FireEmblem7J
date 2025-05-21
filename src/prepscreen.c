@@ -227,3 +227,157 @@ void PrepSetLatestCharId(int val)
 {
     gPrepUnitList.latest_pid = val;
 }
+
+bool IsCharacterForceDeployed(int pid)
+{
+    if (CheckInLinkArena())
+        return false;
+
+    switch (gPlaySt.chapterModeIndex)
+    {
+    case CHAPTER_MODE_LYN:
+        if (pid == CHARACTER_LYN_TUTORIAL)
+            return true;
+
+        break;
+
+    case CHAPTER_MODE_ELIWOOD:
+        if (pid == CHARACTER_ELIWOOD)
+            return true;
+
+        break;
+
+    case CHAPTER_MODE_HECTOR:
+        if (pid == CHARACTER_HECTOR)
+            return true;
+
+        break;
+    }
+
+    switch (gPlaySt.chapterIndex)
+    {
+    case CHAPTER_1B:
+        if (pid == CHARACTER_ELIWOOD)
+            return true;
+
+        break;
+
+    case CHAPTER_1E:
+        if (pid == CHARACTER_HAWKEYE)
+            return true;
+
+        break;
+
+    case CHAPTER_26:
+        if (pid == CHARACTER_NINO)
+            return true;
+
+        break;
+
+    case CHAPTER_1A:
+    case CHAPTER_1C:
+    case CHAPTER_22:
+    case CHAPTER_2A:
+        if (pid == CHARACTER_LYN)
+            return true;
+
+        if (pid == CHARACTER_ELIWOOD)
+            return true;
+
+        if (pid == CHARACTER_HECTOR)
+            return true;
+
+        break;
+
+    case CHAPTER_2C:
+        if (pid == CHARACTER_NILS)
+            return true;
+
+        break;
+
+    case CHAPTER_2E:
+        if (pid == CHARACTER_LYN)
+            return true;
+
+        if (pid == CHARACTER_ELIWOOD)
+            return true;
+
+        if (pid == CHARACTER_HECTOR)
+            return true;
+
+        if (pid == CHARACTER_NILS)
+            return true;
+
+        if (pid == CHARACTER_ATHOS)
+            return true;
+
+        break;
+    }
+
+    return false;
+}
+
+s32 CalcForceDeployedUnitCounts(void)
+{
+    s32 i;
+    s32 count = 0;
+
+    for (i = FACTION_BLUE + 1; i < FACTION_GREEN; i++)
+    {
+        struct Unit * unit = GetUnit(i);
+
+        if (!UNIT_IS_VALID(unit))
+            continue;
+
+        if (unit->state & (US_DEAD | US_BIT16))
+            continue;
+
+        if (!IsCharacterForceDeployed(unit->pCharacterData->number))
+            continue;
+
+        count++;
+    }
+
+    return count;
+}
+
+bool sub_808E7D4(struct Unit * unit)
+{
+    switch (gPlaySt.chapterIndex)
+    {
+    case CHAPTER_09:
+        if (unit->pCharacterData->number == CHARACTER_MATTHEW)
+            return true;
+
+        break;
+
+    case CHAPTER_29:
+        if (unit->pCharacterData->number == CHARACTER_OSWIN)
+            return true;
+
+        break;
+
+    case CHAPTER_2A:
+    case CHAPTER_2B:
+        if (unit->pCharacterData->number == CHARACTER_NILS)
+            return true;
+
+        break;
+    }
+
+    return false;
+}
+
+bool IsUnitInCurrentRoster(struct Unit * unit)
+{
+    if (unit->state & (US_DEAD | US_BIT16))
+        return false;
+
+    if (UNIT_CATTRIBUTES(unit) & CA_SUPPLY)
+    {
+        unit->state = US_NOT_DEPLOYED;
+        return false;
+    }
+
+    return true;
+}
