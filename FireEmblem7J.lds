@@ -317,7 +317,6 @@ SECTIONS
 		src/eventcall_quakefx.o(.text);
 		asm/code_807B7C8.o(.text);
 		src/eventcall_dragonflamefx.o(.text);
-		asm/eventcall_dragonflamefx.o(.text);
 		asm/eventcall_0807C66C.o(.text);
 		src/quintessence-fx.o(.text);
 		src/eventcall_unittornout.o(.text);
