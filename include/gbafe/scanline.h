@@ -20,7 +20,7 @@ void ResetScanLineHBlank(void);
 // sub_807755C
 // PrepareSineWaveScanlineBuf
 // sub_8077694
-// sub_8077714
+void sub_8077714(u16 *, s16, s16, int);
 void sub_8077794(u16 * buf, s16 phase, s16 amplitude, s16 frequency, int arg5);
 void PrepareSineWaveScanlineBufExt(u16 * buf, s16 phase, s16 amplitude, s16 frequency, int yStart, int yEnd);
 void SwapScanlineBufs(void);
@@ -44,9 +44,9 @@ void sub_80780E0(int a, int b);
 void ScanlineRotation(u16 *, s16, s16, s16, s16, s16, s16);
 void HBlank_Scanline_80782AC(void);
 // sub_8078344
-// DragonGatefx_LightHBlank
+void DragonGatefx_LightHBlank(void);
 // sub_8078474
 void QuintessenceFx_OnHBlank(void);
-// DragonGatefx_DragonHBlank
+void DragonGatefx_DragonHBlank(void);
 // sub_8078688
 // sub_8078894

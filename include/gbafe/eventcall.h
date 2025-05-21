@@ -104,9 +104,9 @@
 // CheckChapterFlag
 // ClearPermanentFlag
 // sub_807A0A0
-// SetFlag
+void SetFlag(int flag);
 // CheckFlag
-// ClearFlag
+void ClearFlag(int flag);
 // GetPermanentFlagBits
 // sub_807A0FC
 // sub_807A100

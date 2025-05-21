@@ -315,7 +315,7 @@ SECTIONS
 		asm/scanline.o(.text);
 		asm/eventcall.o(.text);
 		src/eventcall_quakefx.o(.text);
-		asm/code_807B7C8.o(.text);
+		src/eventcall_dragongate.o(.text);
 		src/eventcall_dragonflamefx.o(.text);
 		asm/eventcall_dragonflamefx.o(.text);
 		asm/eventcall_0807C66C.o(.text);
