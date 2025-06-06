@@ -124,11 +124,6 @@ struct PlaySt {
     u32 debugControlGreen:2; // 2
     u32 unk43_4:5; // unk
     u8  unk44[0x48 - 0x44];
-    u16 unk48;
-    u8 unk4A_1 : 1;
-    u8 unk4A_2 : 3;
-    u8 unk4A_5 : 4;
-    u8 unk4B;
 };
 
 extern struct PlaySt gPlaySt;

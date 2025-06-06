@@ -126,11 +126,8 @@ SECTIONS
 		. = ALIGN(4); src/anime.o(ewram_data);
 		. = ALIGN(4); src/sprite.o(ewram_data);
 		. = 0x02A580; gFaceConfig = .;
-		. = 0x02BBB4; gBmSt = .;
-		. = 0x02BBF4; gPlaySt = .;
-		. = 0x02BC3C; sLastCoordMapCursorDrawn = .;
-		. = 0x02BC40; sLastTimeMapCursorDrawn = .;
-		. = 0x02BC44; sCameraAnimTable = .;
+		. = 0x02BBB4;
+		. = ALIGN(4); src/bm.o(ewram_data);
 		. = 0x02BD44; gActiveUnitId = .;
 		. = 0x02BD48; gActiveUnitMoveOrigin = .;
 		. = 0x02BD4C; gUnitArrayBlue = .;

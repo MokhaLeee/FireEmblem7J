@@ -262,6 +262,14 @@ struct ProcCmd CONST_DATA ProcScr_UnkMapCursor[] =
 
 // clang-format on
 
+struct BmSt EWRAM_DATA gBmSt = {};
+struct PlaySt EWRAM_DATA gPlaySt = {};
+
+struct Vec2 EWRAM_DATA sLastCoordMapCursorDrawn = {};
+u32 EWRAM_DATA sLastTimeMapCursorDrawn = 0;
+
+s8 EWRAM_DATA sCameraAnimTable[0x100] = {};
+
 void OnVBlank(void)
 {
     INTR_CHECK = INTR_FLAG_VBLANK;
@@ -696,9 +704,6 @@ u16 GetCameraCenteredY(int y)
     return result &~ 15;
 }
 
-extern struct Vec2 sLastCoordMapCursorDrawn;
-extern u32 sLastTimeMapCursorDrawn;
-
 void PutMapCursor(int x, int y, int kind)
 {
     int oam2 = 0;
@@ -780,8 +785,6 @@ void PutSysArrow(int x, int y, u8 is_down)
         is_down ? gSysDownArrowSpriteLut[frame] : gSysUpArrowSpriteLut[frame],
         OAM2_CHR(OBCHR_SYSTEM_OBJECTS) + OAM2_PAL(OBPAL_SYSTEM_OBJECTS));
 }
-
-extern s8 sCameraAnimTable[0x100];
 
 void CamMove_Init(struct CamMoveProc * proc)
 {
