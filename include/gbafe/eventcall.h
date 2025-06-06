@@ -36,8 +36,8 @@
 // sub_80790A8
 // sub_80790D0
 // sub_80790F8
-// CheckAvailableTurnEvent
-// StartAvailableTurnEvents
+bool CheckAvailableTurnEvent(void);
+void StartAvailableTurnEvents(void);
 // sub_80791CC
 // sub_8079210
 // sub_8079250
@@ -65,8 +65,8 @@
 // sub_8079888
 // sub_807988C
 // sub_8079890
-// sub_8079894
-// sub_80798D4
+void sub_8079894(void);
+bool sub_80798D4(void);
 // CheckForWaitEvents
 // RunWaitEvents
 // sub_8079990
@@ -105,7 +105,7 @@
 // ClearPermanentFlag
 // sub_807A0A0
 void SetFlag(int flag);
-// CheckFlag
+bool CheckFlag(int);
 void ClearFlag(int flag);
 // GetPermanentFlagBits
 // sub_807A0FC
@@ -264,7 +264,7 @@ void ClearFlag(int flag);
 // sub_807B1E0
 // sub_807B228
 // sub_807B24C
-// sub_807B2A8
+void sub_807B2A8(void);
 // sub_807B2DC
 // sub_807B304
 // sub_807B32C

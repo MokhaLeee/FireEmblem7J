@@ -176,6 +176,46 @@ struct ProcBmMain {
     /* 46 */ u8 unk_46;
 };
 
+struct CamMoveProc
+{
+    /* 00 */ PROC_HEADER;
+
+    /* 2C */ struct Vec2 to;
+    /* 30 */ struct Vec2 from;
+    /* 34 */ struct Vec2 watchedCoord;
+    /* 38 */ short calibration;
+    /* 3A */ short distance;
+    /* 3C */ int frame;
+    /* 40 */ bool8 xCalibrated;
+};
+
+struct UnkMapCursorProc
+{
+    /* 00 */ PROC_HEADER;
+
+    /* 2C */ struct Vec2 to;
+    /* 30 */ struct Vec2 from;
+    /* 34 */ int clock;
+    /* 38 */ int duration;
+};
+
+enum
+{
+    MAP_CURSOR_DEFAULT,
+    MAP_CURSOR_REGULAR,
+    MAP_CURSOR_RED_MOVING,
+    MAP_CURSOR_STRETCHED,
+    MAP_CURSOR_RED_STATIC,
+};
+
+enum
+{
+    CAMERA_MARGIN_LEFT   = 16 * 3,
+    CAMERA_MARGIN_RIGHT  = 16 * 11,
+    CAMERA_MARGIN_TOP    = 16 * 2,
+    CAMERA_MARGIN_BOTTOM = 16 * 7,
+};
+
 void OnVBlank(void);
 void OnMain(void);
 void LockGame(void);
@@ -229,3 +269,5 @@ void StartMapSongBgm(void);
 // sub_8016400
 // sub_8016410
 // nullsub_37
+
+extern s8 gUnk_08C01FE4[][2];
