@@ -52,14 +52,7 @@ struct ChapterInfo {
 
     ALIGN_PAD(0x15, 0x16);
 
-    /* 16 */ u16 song_blue;
-    /* 18 */ u16 song_red;
-    /* 1A */ u16 song_green;
-    /* 1C */ u16 song_blue_hector;
-    /* 1E */ u16 song_red_hector;
-    /* 20 */ u16 song_green_hector;
-    /* 22 */ u16 song_blue_green_alt;
-    /* 24 */ u16 song_red_alt;
+    /* 16 */ u16 map_bgm_ids[8];
     /* 26 */ u16 song_prologue_lyn;
     /* 28 */ u16 song_openning[2];
 
@@ -124,6 +117,32 @@ struct ChapterInfo {
     /* 91 */ u8 default_background;
     /* 92 */ u8 unk92; // ?
     /* 93 */ u8 unk93; // ?
+};
+
+struct ChapterEventGroup
+{
+    /* 00 */ const void * turnBasedEvents;
+    /* 04 */ const void * characterBasedEvents; // must be 32-Aligned?
+    /* 08 */ const void * locationBasedEvents;
+    /* 0C */ const void * miscBasedEvents;
+
+    // select unit -> select destination -> move unit to destination
+    /* 10 */ const void * specialEventsWhenUnitSelected;
+    /* 14 */ const void * specialEventsWhenDestSelected;
+    /* 18 */ const void * specialEventsAfterUnitMoved;
+
+    /* 1C */ const void * tutorialEvents;
+
+    /* 20 */ const void * traps;
+    /* 24 */ const void * extraTrapsInHard;
+
+    /* 28 */ const void * playerUnitsInNormal;
+    /* 2C */ const void * playerUnitsInHard;
+
+    /* 30 */ STRUCT_PAD(0x30, 0x38);
+
+    /* 38 */ const void * beginningSceneEvents;
+    /* 3C */ const void * endingSceneEvents;
 };
 
 const struct ChapterInfo * GetChapterInfo(u32 chIndex);

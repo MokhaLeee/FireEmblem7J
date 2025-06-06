@@ -126,8 +126,8 @@ SECTIONS
 		. = ALIGN(4); src/anime.o(ewram_data);
 		. = ALIGN(4); src/sprite.o(ewram_data);
 		. = 0x02A580; gFaceConfig = .;
-		. = 0x02BBB4; gBmSt = .;
-		. = 0x02BBF4; gPlaySt = .;
+		. = 0x02BBB4;
+		. = ALIGN(4); src/bm.o(ewram_data);
 		. = 0x02BD44; gActiveUnitId = .;
 		. = 0x02BD48; gActiveUnitMoveOrigin = .;
 		. = 0x02BD4C; gUnitArrayBlue = .;
@@ -264,7 +264,6 @@ SECTIONS
 		asm/game-ctrl.o(.text);
 		asm/utils.o(.text);
 		src/bm.o(.text);
-		asm/bm.o(.text);
 		asm/item.o(.text);
 		src/unit.o(.text);
 		asm/map.o(.text);
@@ -481,6 +480,7 @@ SECTIONS
 		. = ALIGN(4); src/sprite-anim.o(.data)
 		. = ALIGN(4); data/gamecontrol.o(.data)
 		. = ALIGN(4); data/data.o(.data)
+		. = ALIGN(4); src/bm.o(.data)
 		. = ALIGN(4); data/data_08C01FE4.o(.data)
 		. = ALIGN(4); src/bmfx-chapterintrofx.o(.data)
 		. = ALIGN(4); data/data_08C02D98.o(.data)

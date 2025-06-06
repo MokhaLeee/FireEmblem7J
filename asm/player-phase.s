@@ -393,7 +393,7 @@ _0801C89C:
 _0801C8C0:
 	adds r0, r4, #0
 	adds r1, r5, #0
-	bl sub_8015DE8
+	bl PutMapCursor
 _0801C8C8:
 	pop {r4, r5, r6}
 	pop {r0}
@@ -960,7 +960,7 @@ _0801CD88:
 	movs r2, #0x22
 	ldrsh r1, [r1, r2]
 	movs r2, #1
-	bl sub_8015DE8
+	bl PutMapCursor
 _0801CD98:
 	pop {r4, r5}
 	pop {r0}
@@ -2129,7 +2129,7 @@ _0801D716:
 	.align 2, 0
 _0801D71C: .4byte 0x00010007
 _0801D720:
-	ldr r0, _0801D750 @ =gUnk_08C02630
+	ldr r0, _0801D750 @ =ProcScr_PlayerPhase
 	bl Proc_Find
 	cmp r0, #0
 	bne _0801D730
@@ -2152,7 +2152,7 @@ _0801D74A:
 	pop {r1}
 	bx r1
 	.align 2, 0
-_0801D750: .4byte gUnk_08C02630
+_0801D750: .4byte ProcScr_PlayerPhase
 _0801D754: .4byte ProcScr_SALLYCURSOR
 
 	thumb_func_start sub_801D758

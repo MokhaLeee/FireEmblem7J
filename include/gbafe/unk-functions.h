@@ -52,6 +52,10 @@ void TryUnlockParentProc(ProcPtr);
 /* util.h */
 /* bm.h */
 
+void nullsub_38(void);
+
+void DecayTraps(void);
+
 int GetTextPrintDelay();
 int IsFirstPlaythrough(void);
 // InitPlayConfig
@@ -218,7 +222,7 @@ void SetTacticianName(const char *name);
 // GetChapterInfo
 // GetChapterMapPointer
 // sub_8031AC0
-// GetChapterEventInfo
+struct ChapterEventGroup * GetChapterEventInfo(u32);
 // sub_8031B1C
 // sub_8031B40
 // sub_8031B54

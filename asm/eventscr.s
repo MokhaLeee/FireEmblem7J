@@ -5011,7 +5011,7 @@ _0800DCE8:
 	ldrsh r1, [r1, r2]
 	lsls r1, r1, #4
 	movs r2, #0
-	bl sub_8015DE8
+	bl PutMapCursor
 	pop {r4}
 	pop {r0}
 	bx r0
@@ -5088,7 +5088,7 @@ sub_800DD70: @ 0x0800DD70
 	lsls r1, r1, #4
 	adds r0, r2, #0
 	movs r2, #0
-	bl sub_8015DE8
+	bl PutMapCursor
 	pop {r0}
 	bx r0
 

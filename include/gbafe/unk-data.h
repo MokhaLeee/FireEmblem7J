@@ -33,8 +33,8 @@ extern struct unk_type_0203A50C gUnk_0203A50C;
 // ??? gUnk_0818F960
 // ??? gUnk_0818F980
 // ??? gUnk_0818F990
-// ??? Gfx_MiscUiGraphics
-// ??? Pal_MiscUiGraphics
+extern u8 Gfx_MiscUiGraphics[];
+extern u16 Pal_MiscUiGraphics[];
 extern u8 Img_UiCursorHandTop[];
 extern u8 Img_UiCursorHandBottom[];
 
@@ -1719,13 +1719,8 @@ extern u8 Img_SysBrownBox[];
 // ??? gUnk_08C01DAC
 // ??? gUnk_08C01DBC
 
-// ??? gUnk_08C01FE4
-// ??? gUnk_08C02052
-// ??? gUnk_08C0206C
-// ??? gUnk_08C020DC
-// ??? gUnk_08C020E8
-extern uintptr_t ProcScr_CamMove[];
-// ??? gUnk_08C0211C
+/* bm.h */
+
 // ??? gUnk_08C0212C
 
 // ??? gUnk_08C0256C
@@ -1733,12 +1728,13 @@ extern uintptr_t ProcScr_CamMove[];
 // ??? gUnk_08C025F8
 // ??? gUnk_08C02600
 // ??? gUnk_08C02618
-// ??? gUnk_08C02630
+extern struct ProcCmd ProcScr_PlayerPhase[];
 // ??? gUnk_08C02828
 // ??? gUnk_08C02870
 // ??? gUnk_08C028A8
 // ??? gUnk_08C028C0
 // ??? gUnk_08C028E8
+extern struct ProcCmd ProcScr_08C02920[];
 // ??? gUnk_08C02938
 // ??? gUnk_08C02958
 // ??? gUnk_08C029A8
@@ -1799,7 +1795,7 @@ extern struct ProcCmd ProcScr_NinianTransformToHunman[];
 // ??? gUnk_08C03728
 // ??? gUnk_08C03784
 // ??? gUnk_08C037D8
-// ??? gUnk_08C03834
+extern struct ProcCmd ProcScr_UpdateTraps[];
 // ??? gUnk_08C03884
 // ??? gUnk_08C038A4
 // ??? gUnk_08C04B04
@@ -1852,7 +1848,7 @@ extern struct ProcCmd ProcScr_NinianTransformToHunman[];
 // ??? gUnk_08C056CC
 // ??? gUnk_08C05700
 // ??? ProcScr_PrepHelpPrompt
-// ??? ProcScr_SALLYCURSOR
+extern struct ProcCmd ProcScr_SALLYCURSOR[];
 // ??? gUnk_08C05C54
 // ??? gUnk_08C05C64
 // ??? gUnk_08C05C7E
@@ -1873,7 +1869,8 @@ extern struct ProcCmd ProcScr_BmMain_08C05F30[];
 // ??? gUnk_08C060A8
 // ??? gUnk_08C060B4
 // ??? gUnk_08C06104
-// ??? gUnk_08C06154
+extern struct ProcCmd ProcScr_AiPhase[];
+extern struct ProcCmd ProcScr_08C0617C[];
 // ??? gUnk_08C061A4
 
 /* ai.h */

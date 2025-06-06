@@ -40,8 +40,8 @@ gUnk_08C03784:	@ 0x08C03784
 gUnk_08C037D8:	@ 0x08C037D8
 	.incbin "FireEmblem7J.base.gba", 0xC037D8, 0xC03834 - 0xC037D8
 
-	.global gUnk_08C03834
-gUnk_08C03834:	@ 0x08C03834
+	.global ProcScr_UpdateTraps
+ProcScr_UpdateTraps:	@ 0x08C03834
 	.incbin "FireEmblem7J.base.gba", 0xC03834, 0xC03884 - 0xC03834
 
 	.global gUnk_08C03884
@@ -336,9 +336,13 @@ gUnk_08C060B4:	@ 0x08C060B4
 gUnk_08C06104:	@ 0x08C06104
 	.incbin "FireEmblem7J.base.gba", 0xC06104, 0xC06154 - 0xC06104
 
-	.global gUnk_08C06154
-gUnk_08C06154:	@ 0x08C06154
-	.incbin "FireEmblem7J.base.gba", 0xC06154, 0xC061A4 - 0xC06154
+	.global ProcScr_AiPhase
+ProcScr_AiPhase:	@ 0x08C06154
+	.incbin "FireEmblem7J.base.gba", 0xC06154, 0xC0617C - 0xC06154
+
+	.global ProcScr_08C0617C
+ProcScr_08C0617C:	@ 0x08C0617C
+	.incbin "FireEmblem7J.base.gba", 0xC0617C, 0xC061A4 - 0xC0617C
 
 	.global gUnk_08C061A4
 gUnk_08C061A4:	@ 0x08C061A4

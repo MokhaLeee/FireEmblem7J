@@ -1025,7 +1025,7 @@ sub_8035578: @ 0x08035578
 	ldr r0, [r4, #0x2c]
 	ldr r1, [r4, #0x30]
 	ldr r2, [r4, #0x58]
-	bl sub_8015DE8
+	bl PutMapCursor
 	ldr r0, _080355B8 @ =gpKeySt
 	ldr r1, [r0]
 	movs r0, #9
@@ -1083,7 +1083,7 @@ sub_80355E4: @ 0x080355E4
 	bl Proc_Find
 	cmp r0, #0
 	bne _080355F4
-	bl sub_8016400
+	bl StartMapSongBgm
 _080355F4:
 	pop {r0}
 	bx r0

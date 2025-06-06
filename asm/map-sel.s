@@ -131,7 +131,7 @@ sub_804B588: @ 0x0804B588
 	ldr r0, [sp]
 	ldr r1, [sp, #4]
 	movs r2, #4
-	bl sub_8015DE8
+	bl PutMapCursor
 	b _0804B64E
 _0804B5B2:
 	adds r0, r4, #0
@@ -206,7 +206,7 @@ _0804B61C:
 	ldr r0, [sp]
 	ldr r1, [sp, #4]
 	movs r2, #2
-	bl sub_8015DE8
+	bl PutMapCursor
 _0804B64E:
 	add sp, #8
 	pop {r4, r5}
