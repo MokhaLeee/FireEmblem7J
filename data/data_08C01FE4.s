@@ -1,23 +1,23 @@
 	.section .data
 
-	.global gUnk_08C01FE4
-gUnk_08C01FE4:	@ 0x08C01FE4
+	.global sDirKeysToOffsetLut
+sDirKeysToOffsetLut:	@ 0x08C01FE4
 	.incbin "FireEmblem7J.base.gba", 0xC01FE4, 0xC02052 - 0xC01FE4
 
-	.global gUnk_08C02052
-gUnk_08C02052:	@ 0x08C02052
+	.global Sprite_MapCursorStretched
+Sprite_MapCursorStretched:	@ 0x08C02052
 	.incbin "FireEmblem7J.base.gba", 0xC02052, 0xC0206C - 0xC02052
 
-	.global gUnk_08C0206C
-gUnk_08C0206C:	@ 0x08C0206C
+	.global sMapCursorSpriteLut
+sMapCursorSpriteLut:	@ 0x08C0206C
 	.incbin "FireEmblem7J.base.gba", 0xC0206C, 0xC020DC - 0xC0206C
 
-	.global gUnk_08C020DC
-gUnk_08C020DC:	@ 0x08C020DC
+	.global gSysUpArrowSpriteLut
+gSysUpArrowSpriteLut:	@ 0x08C020DC
 	.incbin "FireEmblem7J.base.gba", 0xC020DC, 0xC020E8 - 0xC020DC
 
-	.global gUnk_08C020E8
-gUnk_08C020E8:	@ 0x08C020E8
+	.global gSysDownArrowSpriteLut
+gSysDownArrowSpriteLut:	@ 0x08C020E8
 	.incbin "FireEmblem7J.base.gba", 0xC020E8, 0xC020F4 - 0xC020E8
 
 	.global ProcScr_CamMove
@@ -60,8 +60,8 @@ gUnk_08C02600:	@ 0x08C02600
 gUnk_08C02618:	@ 0x08C02618
 	.incbin "FireEmblem7J.base.gba", 0xC02618, 0xC02630 - 0xC02618
 
-	.global gUnk_08C02630
-gUnk_08C02630:	@ 0x08C02630
+	.global ProcScr_PlayerPhase
+ProcScr_PlayerPhase:	@ 0x08C02630
 	.incbin "FireEmblem7J.base.gba", 0xC02630, 0xC02828 - 0xC02630
 
 	.global gUnk_08C02828

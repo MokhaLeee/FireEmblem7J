@@ -19041,7 +19041,7 @@ _08045F16:
 	adds r0, r5, #0
 	adds r1, r4, #0
 	movs r2, #0
-	bl sub_8015DE8
+	bl PutMapCursor
 	ldr r0, _08045F64 @ =0x0203DC74
 	ldrb r0, [r0, #2]
 	cmp sl, r0
@@ -19140,7 +19140,7 @@ _08045FE8:
 	adds r0, r5, #0
 	adds r1, r4, #0
 	movs r2, #0
-	bl sub_8015DE8
+	bl PutMapCursor
 	ldr r2, _0804605C @ =gpKeySt
 	ldr r0, [r2]
 	ldrh r1, [r0, #8]

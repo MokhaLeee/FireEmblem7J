@@ -128,9 +128,9 @@ SECTIONS
 		. = 0x02A580; gFaceConfig = .;
 		. = 0x02BBB4; gBmSt = .;
 		. = 0x02BBF4; gPlaySt = .;
-		. = 0x02BC3C; gUnk_0202BC3C = .;
-		. = 0x02BC40; gUnk_0202BC40 = .;
-		. = 0x02BC44; gUnk_0202BC44 = .;
+		. = 0x02BC3C; sLastCoordMapCursorDrawn = .;
+		. = 0x02BC40; sLastTimeMapCursorDrawn = .;
+		. = 0x02BC44; sCameraAnimTable = .;
 		. = 0x02BD44; gActiveUnitId = .;
 		. = 0x02BD48; gActiveUnitMoveOrigin = .;
 		. = 0x02BD4C; gUnitArrayBlue = .;

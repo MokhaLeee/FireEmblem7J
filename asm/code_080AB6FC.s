@@ -7014,7 +7014,7 @@ _080AF174:
 	bl StartBgm
 	b _080AF18C
 _080AF188:
-	bl sub_8016400
+	bl StartMapSongBgm
 _080AF18C:
 	movs r0, #0
 	pop {r4}

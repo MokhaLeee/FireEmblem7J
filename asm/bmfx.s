@@ -2210,7 +2210,7 @@ sub_801E94C: @ 0x0801E94C
 	adds r5, r0, #0
 	bl GetCurrentBgmSong
 	adds r4, r0, #0
-	bl sub_8016318
+	bl GetActiveMapSong
 	cmp r4, r0
 	beq _0801E964
 	movs r0, #4

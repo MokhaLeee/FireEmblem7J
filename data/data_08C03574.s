@@ -336,8 +336,8 @@ gUnk_08C060B4:	@ 0x08C060B4
 gUnk_08C06104:	@ 0x08C06104
 	.incbin "FireEmblem7J.base.gba", 0xC06104, 0xC06154 - 0xC06104
 
-	.global gUnk_08C06154
-gUnk_08C06154:	@ 0x08C06154
+	.global ProcScr_AiPhase
+ProcScr_AiPhase:	@ 0x08C06154
 	.incbin "FireEmblem7J.base.gba", 0xC06154, 0xC061A4 - 0xC06154
 
 	.global gUnk_08C061A4

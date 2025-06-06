@@ -46,18 +46,18 @@ _080219F4: .4byte 0x00000717
 	thumb_func_start sub_80219F8
 sub_80219F8: @ 0x080219F8
 	push {lr}
-	ldr r0, _08021A08 @ =gUnk_08C02630
+	ldr r0, _08021A08 @ =ProcScr_PlayerPhase
 	bl Proc_EndEach
 	movs r0, #0x17
 	pop {r1}
 	bx r1
 	.align 2, 0
-_08021A08: .4byte gUnk_08C02630
+_08021A08: .4byte ProcScr_PlayerPhase
 
 	thumb_func_start sub_8021A0C
 sub_8021A0C: @ 0x08021A0C
 	push {lr}
-	ldr r0, _08021A24 @ =gUnk_08C02630
+	ldr r0, _08021A24 @ =ProcScr_PlayerPhase
 	bl Proc_Find
 	movs r1, #0xa
 	bl Proc_Goto
@@ -66,7 +66,7 @@ sub_8021A0C: @ 0x08021A0C
 	pop {r1}
 	bx r1
 	.align 2, 0
-_08021A24: .4byte gUnk_08C02630
+_08021A24: .4byte ProcScr_PlayerPhase
 
 	thumb_func_start sub_8021A28
 sub_8021A28: @ 0x08021A28
@@ -99,7 +99,7 @@ sub_8021A4C: @ 0x08021A4C
 	ldr r0, _08021A70 @ =gBmSt
 	adds r0, #0x3e
 	strb r1, [r0]
-	ldr r0, _08021A74 @ =gUnk_08C02630
+	ldr r0, _08021A74 @ =ProcScr_PlayerPhase
 	bl Proc_Find
 	movs r1, #0xc
 	bl Proc_Goto
@@ -109,7 +109,7 @@ sub_8021A4C: @ 0x08021A4C
 	.align 2, 0
 _08021A6C: .4byte gActiveUnit
 _08021A70: .4byte gBmSt
-_08021A74: .4byte gUnk_08C02630
+_08021A74: .4byte ProcScr_PlayerPhase
 
 	thumb_func_start sub_8021A78
 sub_8021A78: @ 0x08021A78
@@ -212,7 +212,7 @@ sub_8021B28: @ 0x08021B28
 	ldrb r1, [r1, #0x11]
 	lsls r1, r1, #0x18
 	asrs r1, r1, #0x18
-	bl sub_80161EC
+	bl IsCameraNotWatchingPosition
 	lsls r0, r0, #0x18
 	cmp r0, #0
 	beq _08021B7A

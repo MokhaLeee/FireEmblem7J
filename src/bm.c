@@ -123,24 +123,24 @@ void BmMain_StartPhase(ProcPtr proc)
     switch (gPlaySt.faction)
     {
     case FACTION_BLUE:
-        Proc_StartBlocking(gUnk_08C02630, proc);
+        Proc_StartBlocking(ProcScr_PlayerPhase, proc);
         break;
 
     case FACTION_RED:
-        Proc_StartBlocking(gUnk_08C06154, proc);
+        Proc_StartBlocking(ProcScr_AiPhase, proc);
         break;
 
     case FACTION_GREEN:
-        Proc_StartBlocking(gUnk_08C06154, proc);
+        Proc_StartBlocking(ProcScr_AiPhase, proc);
         break;
     }
 
     Proc_Break(proc);
 }
 
-void sub_80158B0(ProcPtr proc)
+void BmMain_ResumePlayerPhase(ProcPtr proc)
 {
-    Proc_Goto(Proc_StartBlocking(gUnk_08C02630, proc), 7);
+    Proc_Goto(Proc_StartBlocking(ProcScr_PlayerPhase, proc), 7);
     Proc_Break(proc);
 }
 
@@ -155,10 +155,10 @@ bool sub_80158D4(ProcPtr proc)
     return false;
 }
 
-void sub_8015900(void)
+void BmMain_SuspendBeforePhase(void)
 {
-    gActionSt.suspend_point = 9;
-    WriteSuspendSave(3);
+    gActionSt.suspend_point = SUSPEND_POINT_CHANGE_PHASE;
+    WriteSuspendSave(SAVE_SUSPEND);
 }
 
 void sub_8015918(ProcPtr proc) {
@@ -177,7 +177,7 @@ void BmMain_StartIntroFx(struct ProcBmMain * proc)
     Proc_StartBlocking(ProcScr_ChapterIntrofx, proc);
 }
 
-void BmMain_SuspendBeforePhase(void)
+void sub_8015988(void)
 {
     sub_807B2A8();
     ClearFlag(0x91);
@@ -218,7 +218,7 @@ void ApplySystemGraphics(void)
     ApplySystemObjectsGraphics();
 }
 
-extern s8 gUnk_08C01FE4[][2];
+extern s8 sDirKeysToOffsetLut[][2];
 
 void HandleMapCursorInput(u16 keys)
 {
@@ -226,8 +226,8 @@ void HandleMapCursorInput(u16 keys)
 
     struct Vec2 new_cursor =
     {
-        gBmSt.cursor.x + gUnk_08C01FE4[dir][0],
-        gBmSt.cursor.y + gUnk_08C01FE4[dir][1]
+        gBmSt.cursor.x + sDirKeysToOffsetLut[dir][0],
+        gBmSt.cursor.y + sDirKeysToOffsetLut[dir][1]
     };
 
     if (gBmSt.flags & BM_FLAG_1)
@@ -238,7 +238,7 @@ void HandleMapCursorInput(u16 keys)
 
     if ((new_cursor.x >= 0) && (new_cursor.x < gBmMapSize.x))
     {
-        gBmSt.cursor_sprite_target.x += gUnk_08C01FE4[dir][0] * 16;
+        gBmSt.cursor_sprite_target.x += sDirKeysToOffsetLut[dir][0] * 16;
 
         gBmSt.cursor_previous.x = gBmSt.cursor.x;
         gBmSt.cursor.x = new_cursor.x;
@@ -246,7 +246,7 @@ void HandleMapCursorInput(u16 keys)
 
     if ((new_cursor.y >= 0) && (new_cursor.y < gBmMapSize.y))
     {
-        gBmSt.cursor_sprite_target.y += gUnk_08C01FE4[dir][1] * 16;
+        gBmSt.cursor_sprite_target.y += sDirKeysToOffsetLut[dir][1] * 16;
 
         gBmSt.cursor_previous.y = gBmSt.cursor.y;
         gBmSt.cursor.y = new_cursor.y;
@@ -435,10 +435,10 @@ u16 GetCameraCenteredY(int y)
     return result &~ 15;
 }
 
-extern struct Vec2 gUnk_0202BC3C;
-extern u32 gUnk_0202BC40;
+extern struct Vec2 sLastCoordMapCursorDrawn;
+extern u32 sLastTimeMapCursorDrawn;
 
-void sub_8015DE8(int x, int y, int kind)
+void PutMapCursor(int x, int y, int kind)
 {
     int oam2 = 0;
     u16 const * sprite = NULL;
@@ -447,39 +447,38 @@ void sub_8015DE8(int x, int y, int kind)
 
     switch (kind)
     {
-
     case MAP_CURSOR_DEFAULT:
     case MAP_CURSOR_REGULAR:
         oam2 = OAM2_CHR(OBCHR_SYSTEM_OBJECTS + 0x02) + OAM2_PAL(OBPAL_SYSTEM_OBJECTS);
-        sprite = gUnk_08C0206C[frame];
+        sprite = sMapCursorSpriteLut[frame];
 
         break;
 
     case MAP_CURSOR_RED_MOVING:
-        if (GetGameTime() - 1 == gUnk_0202BC40)
+        if (GetGameTime() - 1 == sLastTimeMapCursorDrawn)
         {
-            x = (x + gUnk_0202BC3C.x) >> 1;
-            y = (y + gUnk_0202BC3C.y) >> 1;
+            x = (x + sLastCoordMapCursorDrawn.x) >> 1;
+            y = (y + sLastCoordMapCursorDrawn.y) >> 1;
         }
 
         oam2 = OAM2_CHR(OBCHR_SYSTEM_OBJECTS + 0x24) + OAM2_PAL(OBPAL_SYSTEM_OBJECTS);
-        sprite = gUnk_08C0206C[frame];
+        sprite = sMapCursorSpriteLut[frame];
 
-        gUnk_0202BC3C.x = x;
-        gUnk_0202BC3C.y = y;
-        gUnk_0202BC40 = GetGameTime();
+        sLastCoordMapCursorDrawn.x = x;
+        sLastCoordMapCursorDrawn.y = y;
+        sLastTimeMapCursorDrawn = GetGameTime();
 
         break;
 
     case MAP_CURSOR_STRETCHED:
         oam2 = OAM2_CHR(OBCHR_SYSTEM_OBJECTS + 0x02) + OAM2_PAL(OBPAL_SYSTEM_OBJECTS);
-        sprite = gUnk_08C02052;
+        sprite = Sprite_MapCursorStretched;
 
         break;
 
     case MAP_CURSOR_RED_STATIC:
         oam2 = OAM2_CHR(OBCHR_SYSTEM_OBJECTS + 0x24) + OAM2_PAL(OBPAL_SYSTEM_OBJECTS);
-        sprite = gUnk_08C0206C[0];
+        sprite = sMapCursorSpriteLut[0];
 
         break;
 
@@ -496,7 +495,7 @@ void DisplayBmTextShadow(int x, int y)
     int frame = (GetGameTime() / 2) % 16; // TODO: ARRAY_COUNT
     u32 oam2 = OAM2_CHR(0x2);
 
-    PutSprite(4, x, y, gUnk_08C0206C[frame], oam2);
+    PutSprite(4, x, y, sMapCursorSpriteLut[frame], oam2);
     return;
 }
 
@@ -512,18 +511,18 @@ void SetMapCursorPosition(int x, int y)
     gBmSt.cursor_sprite.y = y * 16;
 }
 
-void PutSysArrow(int x, int y, u8 isDown)
+void PutSysArrow(int x, int y, u8 is_down)
 {
     int frame = (GetGameTime() / 8) % 3; // TODO: ARRAY_COUNT
 
     PutSprite(4, x, y,
-        isDown ? gUnk_08C020E8[frame] : gUnk_08C020DC[frame],
+        is_down ? gSysDownArrowSpriteLut[frame] : gSysUpArrowSpriteLut[frame],
         OAM2_CHR(OBCHR_SYSTEM_OBJECTS) + OAM2_PAL(OBPAL_SYSTEM_OBJECTS));
 }
 
-extern s8 gUnk_0202BC44[0x100];
+extern s8 sCameraAnimTable[0x100];
 
-void sub_8015F6C(struct CamMoveProc * proc)
+void CamMove_Init(struct CamMoveProc * proc)
 {
     int i;
     int dist;
@@ -551,12 +550,12 @@ void sub_8015F6C(struct CamMoveProc * proc)
     {
         if (dist - (speed >> 1) < 0)
         {
-            gUnk_0202BC44[i] = dist;
+            sCameraAnimTable[i] = dist;
             break;
         }
 
         dist -= (speed >> 1);
-        gUnk_0202BC44[i] = (speed >> 1);
+        sCameraAnimTable[i] = (speed >> 1);
 
         if (speed < 16)
         {
@@ -582,7 +581,7 @@ void CamMove_OnLoop(struct CamMoveProc * proc)
         return;
     }
 
-    proc->distance -= gUnk_0202BC44[proc->frame--];
+    proc->distance -= sCameraAnimTable[proc->frame--];
 
     gBmSt.camera.x = proc->to.x + (proc->from.x - proc->to.x) * proc->distance / proc->calibration;
     gBmSt.camera.y = proc->to.y + (proc->from.y - proc->to.y) * proc->distance / proc->calibration;
@@ -668,7 +667,7 @@ bool EnsureCameraOntoPosition(ProcPtr parent, int x, int y)
     return true;
 }
 
-bool sub_80161EC(int x, int y)
+bool IsCameraNotWatchingPosition(int x, int y)
 {
     int x_target = GetCameraAdjustedX(x * 16);
     int y_target = GetCameraAdjustedY(y * 16);
@@ -679,7 +678,7 @@ bool sub_80161EC(int x, int y)
     return true;
 }
 
-bool sub_801622C(ProcPtr parent)
+bool CameraMove_801622C(ProcPtr parent)
 {
     struct CamMoveProc * proc;
 
@@ -700,11 +699,11 @@ bool sub_801622C(ProcPtr parent)
     return true;
 }
 
-void sub_8016290(struct UnkMapCursorProc * proc)
+void UnkMapCursor_OnLoop(struct UnkMapCursorProc * proc)
 {
     // BUG: should this be proc->from.xy + ...?
 
-    sub_8015DE8(
+    PutMapCursor(
         (proc->to.x - proc->from.x) * proc->clock / proc->duration,
         (proc->to.y - proc->from.y) * proc->clock / proc->duration,
         MAP_CURSOR_DEFAULT);
@@ -729,7 +728,7 @@ void sub_80162E0(int x, int y, int duration)
     proc->clock = duration;
 }
 
-int sub_8016318(void)
+int GetActiveMapSong(void)
 {
     u8 base_bgm_index = gPlaySt.chapterModeIndex == CHAPTER_MODE_HECTOR ? MAP_BGM_BLUE_HECTOR : MAP_BGM_BLUE;
 
@@ -762,9 +761,9 @@ int sub_8016318(void)
 #endif
 }
 
-void sub_8016400(void)
+void StartMapSongBgm(void)
 {
-    StartBgm(sub_8016318(), NULL);
+    StartBgm(GetActiveMapSong(), NULL);
 }
 
 void sub_8016410(struct CamMoveProc * proc)

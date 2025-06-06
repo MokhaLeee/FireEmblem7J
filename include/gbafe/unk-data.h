@@ -1719,11 +1719,11 @@ extern u8 Img_SysBrownBox[];
 // ??? gUnk_08C01DAC
 // ??? gUnk_08C01DBC
 
-// ??? gUnk_08C01FE4
-extern u16 gUnk_08C02052[];
-extern u16 * gUnk_08C0206C[];
-extern u16 * gUnk_08C020DC[];
-extern u16 * gUnk_08C020E8[];
+// ??? sDirKeysToOffsetLut
+extern u16 Sprite_MapCursorStretched[];
+extern u16 * sMapCursorSpriteLut[];
+extern u16 * gSysUpArrowSpriteLut[];
+extern u16 * gSysDownArrowSpriteLut[];
 extern struct ProcCmd ProcScr_CamMove[];
 extern struct ProcCmd gUnk_08C0211C[];
 // ??? gUnk_08C0212C
@@ -1733,7 +1733,7 @@ extern struct ProcCmd gUnk_08C0211C[];
 // ??? gUnk_08C025F8
 // ??? gUnk_08C02600
 // ??? gUnk_08C02618
-extern struct ProcCmd gUnk_08C02630[];
+extern struct ProcCmd ProcScr_PlayerPhase[];
 // ??? gUnk_08C02828
 // ??? gUnk_08C02870
 // ??? gUnk_08C028A8
@@ -1873,7 +1873,7 @@ extern struct ProcCmd ProcScr_BmMain_08C05F30[];
 // ??? gUnk_08C060A8
 // ??? gUnk_08C060B4
 // ??? gUnk_08C06104
-extern struct ProcCmd gUnk_08C06154[];
+extern struct ProcCmd ProcScr_AiPhase[];
 // ??? gUnk_08C061A4
 
 /* ai.h */

@@ -3374,7 +3374,7 @@ sub_802FE2C: @ 0x0802FE2C
 	thumb_func_start sub_802FE70
 sub_802FE70: @ 0x0802FE70
 	push {r4, lr}
-	bl sub_8016318
+	bl GetActiveMapSong
 	adds r4, r0, #0
 	bl GetCurrentBgmSong
 	cmp r0, r4
@@ -4719,7 +4719,7 @@ sub_8030890: @ 0x08030890
 	movs r2, #0x22
 	ldrsh r1, [r4, r2]
 	movs r2, #0
-	bl sub_8015DE8
+	bl PutMapCursor
 	adds r0, r5, #0
 	bl Proc_Break
 	bl sub_8030870
@@ -5444,7 +5444,7 @@ _08030E66:
 	movs r2, #0x22
 	ldrsh r1, [r1, r2]
 	movs r2, #0
-	bl sub_8015DE8
+	bl PutMapCursor
 	pop {r4}
 	pop {r0}
 	bx r0
@@ -5735,7 +5735,7 @@ _080310E0:
 	movs r3, #0x22
 	ldrsh r1, [r1, r3]
 	movs r2, #0
-	bl sub_8015DE8
+	bl PutMapCursor
 _080310F0:
 	pop {r4, r5, r6}
 	pop {r0}
@@ -6273,7 +6273,7 @@ _0803154A:
 	movs r2, #0x22
 	ldrsh r1, [r1, r2]
 	movs r2, #1
-	bl sub_8015DE8
+	bl PutMapCursor
 _0803155A:
 	pop {r4, r5}
 	pop {r0}
@@ -8874,7 +8874,7 @@ sub_8032A20: @ 0x08032A20
 	subs r1, #0x10
 	strh r1, [r0, #0x2a]
 	movs r0, #0
-	bl sub_801622C
+	bl CameraMove_801622C
 	ldr r0, _08032A40 @ =gUnk_08C05CA0
 	bl Proc_BreakEach
 	pop {r0}

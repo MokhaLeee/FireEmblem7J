@@ -112,7 +112,7 @@ ProcScr_BmMain:
         .word CallChapterStartEventMaybe
         @ PROC_CALL
         .short 0x2, 0x0
-        .word BmMain_SuspendBeforePhase
+        .word sub_8015988
         @ PROC_START_CHILD_BLOCKING
         .short 0x6, 0x1
         .word ProcScr_SALLYCURSOR
@@ -136,7 +136,7 @@ ProcScr_BmMain:
         .word BmMain_ChangePhase
         @ PROC_CALL
         .short 0x2, 0x0
-        .word sub_8015900
+        .word BmMain_SuspendBeforePhase
         @ PROC_LABEL
         .short 0xb, 0x7
         .word 0x0
@@ -190,7 +190,7 @@ ProcScr_BmMain:
         .word RenderMap
         @ PROC_CALL
         .short 0x2, 0x0
-        .word sub_8016400
+        .word StartMapSongBgm
         @ PROC_CALL
         .short 0x2, 0x0
         .word StartMidLockingFadeToBlack
@@ -208,7 +208,7 @@ ProcScr_BmMain:
         .word RenderMap
         @ PROC_CALL
         .short 0x2, 0x0
-        .word sub_8016400
+        .word StartMapSongBgm
         @ PROC_CALL
         .short 0x2, 0x0
         .word StartMidLockingFadeToBlack
@@ -217,7 +217,7 @@ ProcScr_BmMain:
         .word WaitForFade
         @ PROC_REPEAT
         .short 0x3, 0x0
-        .word sub_80158B0
+        .word BmMain_ResumePlayerPhase
         @ PROC_START_CHILD_BLOCKING
         .short 0x6, 0x1
         .word 0x8c0617c
@@ -232,7 +232,7 @@ ProcScr_BmMain:
         .word 0x0
         @ PROC_REPEAT
         .short 0x3, 0x0
-        .word sub_80158B0
+        .word BmMain_ResumePlayerPhase
         @ PROC_START_CHILD_BLOCKING
         .short 0x6, 0x1
         .word 0x8c0617c
@@ -247,7 +247,7 @@ ProcScr_BmMain:
         .word RenderMap
         @ PROC_CALL
         .short 0x2, 0x0
-        .word sub_8016400
+        .word StartMapSongBgm
         @ PROC_CALL
         .short 0x2, 0x0
         .word StartMidLockingFadeToBlack
@@ -265,7 +265,7 @@ ProcScr_BmMain:
         .word RenderMap
         @ PROC_CALL
         .short 0x2, 0x0
-        .word sub_8016400
+        .word StartMapSongBgm
         @ PROC_CALL
         .short 0x2, 0x0
         .word StartMidLockingFadeToBlack

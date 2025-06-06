@@ -2080,7 +2080,7 @@ sub_8028354: @ 0x08028354
 	ldrb r1, [r1, #0x11]
 	lsls r1, r1, #0x18
 	asrs r1, r1, #0x18
-	bl sub_80161EC
+	bl IsCameraNotWatchingPosition
 	lsls r0, r0, #0x18
 	cmp r0, #0
 	beq _08028398
@@ -2195,7 +2195,7 @@ _08028472:
 	movs r2, #0x22
 	ldrsh r1, [r1, r2]
 	movs r2, #1
-	bl sub_8015DE8
+	bl PutMapCursor
 _08028482:
 	pop {r4, r5, r6}
 	pop {r0}
