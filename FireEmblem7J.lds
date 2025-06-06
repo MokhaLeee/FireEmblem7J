@@ -483,6 +483,7 @@ SECTIONS
 		. = ALIGN(4); src/sprite-anim.o(.data)
 		. = ALIGN(4); data/gamecontrol.o(.data)
 		. = ALIGN(4); data/data.o(.data)
+		. = ALIGN(4); src/bm.o(.data)
 		. = ALIGN(4); data/data_08C01FE4.o(.data)
 		. = ALIGN(4); src/bmfx-chapterintrofx.o(.data)
 		. = ALIGN(4); data/data_08C02D98.o(.data)

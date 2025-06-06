@@ -52,7 +52,9 @@ void TryUnlockParentProc(ProcPtr);
 /* util.h */
 /* bm.h */
 
-void sub_802C70C(void);
+void nullsub_38(void);
+
+void DecayTraps(void);
 
 int GetTextPrintDelay();
 int IsFirstPlaythrough(void);

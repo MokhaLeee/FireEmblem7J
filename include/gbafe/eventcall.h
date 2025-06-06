@@ -312,8 +312,8 @@ void EventQuakefx_Loop(struct ProcEventQuakefx * procfx);
 void StartEventQuakefx(ProcPtr proc);
 void EndEventQuakefx(ProcPtr proc);
 
-// SetFlag_145
-// ClearFlag_145
+void SetFlag_145(void);
+void ClearFlag_145(void);
 // DragonGatefx_DistortionHandler
 // DragonGatefx_DrawLight
 // DragonGatefx_DrawDragon

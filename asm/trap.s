@@ -1173,8 +1173,8 @@ sub_802C6DC: @ 0x0802C6DC
 	.align 2, 0
 _0802C708: .4byte gBmMapTerrain
 
-	thumb_func_start sub_802C70C
-sub_802C70C: @ 0x0802C70C
+	thumb_func_start DecayTraps
+DecayTraps: @ 0x0802C70C
 	push {r4, lr}
 	ldr r4, _0802C714 @ =0x0203A514
 	b _0802C74E

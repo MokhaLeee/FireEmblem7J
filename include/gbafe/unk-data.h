@@ -1719,13 +1719,8 @@ extern u8 Img_SysBrownBox[];
 // ??? gUnk_08C01DAC
 // ??? gUnk_08C01DBC
 
-// ??? sDirKeysToOffsetLut
-extern u16 Sprite_MapCursorStretched[];
-extern u16 * sMapCursorSpriteLut[];
-extern u16 * gSysUpArrowSpriteLut[];
-extern u16 * gSysDownArrowSpriteLut[];
-extern struct ProcCmd ProcScr_CamMove[];
-extern struct ProcCmd gUnk_08C0211C[];
+/* bm.h */
+
 // ??? gUnk_08C0212C
 
 // ??? gUnk_08C0256C
@@ -1739,6 +1734,7 @@ extern struct ProcCmd ProcScr_PlayerPhase[];
 // ??? gUnk_08C028A8
 // ??? gUnk_08C028C0
 // ??? gUnk_08C028E8
+extern struct ProcCmd ProcScr_08C02920[];
 // ??? gUnk_08C02938
 // ??? gUnk_08C02958
 // ??? gUnk_08C029A8
@@ -1799,7 +1795,7 @@ extern struct ProcCmd ProcScr_NinianTransformToHunman[];
 // ??? gUnk_08C03728
 // ??? gUnk_08C03784
 // ??? gUnk_08C037D8
-extern struct ProcCmd gUnk_08C03834[];
+extern struct ProcCmd ProcScr_UpdateTraps[];
 // ??? gUnk_08C03884
 // ??? gUnk_08C038A4
 // ??? gUnk_08C04B04
@@ -1852,7 +1848,7 @@ extern struct ProcCmd gUnk_08C03834[];
 // ??? gUnk_08C056CC
 // ??? gUnk_08C05700
 // ??? ProcScr_PrepHelpPrompt
-// ??? ProcScr_SALLYCURSOR
+extern struct ProcCmd ProcScr_SALLYCURSOR[];
 // ??? gUnk_08C05C54
 // ??? gUnk_08C05C64
 // ??? gUnk_08C05C7E
@@ -1874,6 +1870,7 @@ extern struct ProcCmd ProcScr_BmMain_08C05F30[];
 // ??? gUnk_08C060B4
 // ??? gUnk_08C06104
 extern struct ProcCmd ProcScr_AiPhase[];
+extern struct ProcCmd ProcScr_08C0617C[];
 // ??? gUnk_08C061A4
 
 /* ai.h */

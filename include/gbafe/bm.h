@@ -221,17 +221,17 @@ void OnMain(void);
 void LockGame(void);
 void UnlockGame(void);
 u8 GetGameLock(void);
-// HandleChangePhase
-// CallChapterStartEventMaybe
-// BmMain_ChangePhase
-// sub_8015840
-// BmMain_StartPhase
-// BmMain_ResumePlayerPhase
-// sub_80158D4
-// BmMain_SuspendBeforePhase
-// sub_8015918
+void HandleChangePhase(void);
+bool CallChapterStartEventMaybe(void);
+bool BmMain_ChangePhase(void);
+bool sub_8015840(void);
+void BmMain_StartPhase(ProcPtr proc);
+void BmMain_ResumePlayerPhase(ProcPtr proc);
+bool BmMain_UpdateTraps(ProcPtr proc);
+void BmMain_SuspendBeforePhase(void);
+void sub_8015918(ProcPtr proc);
 void BmMain_StartIntroFx(struct ProcBmMain * proc);
-// sub_8015988
+void sub_8015988(void);
 void InitBmBgLayers(void);
 void ApplySystemObjectsGraphics(void);
 void ApplySystemGraphics(void);
@@ -243,30 +243,27 @@ u16 GetCameraAdjustedY(int y);
 u16 GetCameraCenteredX(int x);
 u16 GetCameraCenteredY(int y);
 void PutMapCursor(int x, int y, int kind);
-// DisplayBmTextShadow
+void DisplayBmTextShadow(int x, int y);
 void SetMapCursorPosition(int x, int y);
-void PutSysArrow(int x, int y, u8 isDown);
-void PutSysAButton(int x, int y, int palid);
-bool CameraMoveWatchPosition(ProcPtr proc, int x, int y);
+void PutSysArrow(int x, int y, u8 is_down);
+void CamMove_Init(struct CamMoveProc * proc);
+void CamMove_OnLoop(struct CamMoveProc * proc);
+void StoreAdjustedCameraPositions(int xIn, int yIn, int * xOut, int * yOut);
+bool EnsureCameraOntoCenteredPosition(ProcPtr parent, int x, int y);
+bool EnsureCameraOntoPosition(ProcPtr parent, int x, int y);
 bool IsCameraNotWatchingPosition(int x, int y);
-bool CameraMove_08016290(ProcPtr proc);
-void Unused_08016344(int x, int y, int duration);
+bool CameraMove_801622C(ProcPtr parent);
+void UnkMapCursor_OnLoop(struct UnkMapCursorProc * proc);
+void sub_80162E0(int x, int y, int duration);
 int GetActiveMapSong(void);
 void StartMapSongBgm(void);
-
-// PutSysArrow
-// CamMove_Init
-// sub_8016000
-// StoreAdjustedCameraPositions
-// EnsureCameraOntoCenteredPosition
-// EnsureCameraOntoPosition
-// IsCameraNotWatchingPosition
-// CameraMove_801622C
-// UnkMapCursor_OnLoop
-// sub_80162E0
-// GetActiveMapSong
-// StartMapSongBgm
-// sub_8016410
-// nullsub_37
+void sub_8016410(struct CamMoveProc * proc);
+void nullsub_37(void);
 
 extern s8 sDirKeysToOffsetLut[][2];
+extern u16 Sprite_MapCursorStretched[];
+extern u16 * sMapCursorSpriteLut[];
+extern u16 * gSysUpArrowSpriteLut[];
+extern u16 * gSysDownArrowSpriteLut[];
+extern struct ProcCmd ProcScr_CamMove[];
+extern struct ProcCmd ProcScr_UnkMapCursor[];
