@@ -442,6 +442,7 @@ SECTIONS
 		. = ALIGN(4); src/eventcall_flamebreath.o(.rodata)
 		. = ALIGN(4); data/const_data_084033A0.o(.rodata)
 		. = ALIGN(4); src/eventcall_firedragonsprite.o(.rodata)
+		. = ALIGN(4); src/eventcall_0807F9EC.o(.rodata)
 		. = ALIGN(4); data/const_data_0840343C.o(.rodata)
 		. = ALIGN(4); data/statscreenfx-const.o(.rodata)
 		. = ALIGN(4); src/statscreenfx.o(.rodata)

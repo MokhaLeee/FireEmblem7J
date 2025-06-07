@@ -936,8 +936,8 @@ sub_802EB7C: @ 0x0802EB7C
 	ldr r4, _0802EB9C @ =gPlaySt
 	adds r0, r4, #0
 	bl RegisterChapterStats
-	bl sub_80B7880
-	bl sub_80A0054
+	bl ComputeChapterRankings
+	bl SaveEndgameRankings
 	movs r0, #0x20
 	ldrb r1, [r4, #0x14]
 	orrs r0, r1

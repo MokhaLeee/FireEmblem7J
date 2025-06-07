@@ -15125,7 +15125,7 @@ sub_80B735C: @ 0x080B735C
 	mov r7, sb
 	mov r6, r8
 	push {r6, r7}
-	bl sub_8017574
+	bl GetPartyTotalGoldValue
 	mov r8, r0
 	movs r6, #0
 	bl GetNextChapterStatsSlot
@@ -15527,7 +15527,7 @@ nullsub_90: @ 0x080B7650
 	thumb_func_start sub_80B7654
 sub_80B7654: @ 0x080B7654
 	push {r4, r5, r6, lr}
-	bl sub_8017574
+	bl GetPartyTotalGoldValue
 	ldr r1, _080B769C @ =gPlaySt
 	ldr r5, [r1, #0x30]
 	subs r5, r0, r5
@@ -15807,8 +15807,8 @@ _080B7874: .4byte gPlaySt
 _080B7878: .4byte 0xF00000FF
 _080B787C: .4byte gUnk_08D62110
 
-	thumb_func_start sub_80B7880
-sub_80B7880: @ 0x080B7880
+	thumb_func_start ComputeChapterRankings
+ComputeChapterRankings: @ 0x080B7880
 	push {r4, r5, r6, lr}
 	sub sp, #4
 	bl GetNextChapterStatsSlot
@@ -18111,15 +18111,15 @@ sub_80B8A40: @ 0x080B8A40
 	strb r4, [r0]
 	adds r0, #1
 	strb r4, [r0]
-	ldr r0, _080B8A9C @ =gUnk_081C8610
+	ldr r0, _080B8A9C @ =Img_OneYearLater
 	ldr r1, _080B8AA0 @ =0x06000800
 	bl Decompress
-	ldr r0, _080B8AA4 @ =gUnk_081C8AF8
+	ldr r0, _080B8AA4 @ =Pal_OneYearLater
 	movs r1, #0xa0
 	movs r2, #0x20
 	bl ApplyPaletteExt
 	ldr r0, _080B8AA8 @ =gBg0Tm
-	ldr r1, _080B8AAC @ =gUnk_081C8B18
+	ldr r1, _080B8AAC @ =Tsa_OneYearLater
 	ldr r2, _080B8AB0 @ =0x00005040
 	bl TmApplyTsa_thm
 	movs r0, #1
@@ -18131,11 +18131,11 @@ sub_80B8A40: @ 0x080B8A40
 	bx r0
 	.align 2, 0
 _080B8A98: .4byte gDispIo
-_080B8A9C: .4byte gUnk_081C8610
+_080B8A9C: .4byte Img_OneYearLater
 _080B8AA0: .4byte 0x06000800
-_080B8AA4: .4byte gUnk_081C8AF8
+_080B8AA4: .4byte Pal_OneYearLater
 _080B8AA8: .4byte gBg0Tm
-_080B8AAC: .4byte gUnk_081C8B18
+_080B8AAC: .4byte Tsa_OneYearLater
 _080B8AB0: .4byte 0x00005040
 
 	thumb_func_start sub_80B8AB4

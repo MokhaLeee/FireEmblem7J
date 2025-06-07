@@ -21,12 +21,12 @@ extern struct unk_type_0203A50C gUnk_0203A50C;
 // ??? gUnk_080C8174
 // ??? gUnk_080C86D4
 // ??? gUnk_080C86F4
-extern u8 gUnk_08187B5C[]; // img
-extern u8 gUnk_0818AE2C[]; // tsa
-extern u16 gUnk_0818B308[]; // pal
-extern u8 gUnk_0818B408[]; // img
-extern u8 gUnk_0818B760[]; // tsa
-extern u16 gUnk_0818BC3C[]; // pal
+extern u8 Img_DragonsGate[]; // img
+extern u8 Tsa_DragonsGate[]; // tsa
+extern u16 Pal_DragonsGate[]; // pal
+extern u8 Img_NilsInDragonsGate[]; // img
+extern u8 Tsa_NilsInDragonsGate[]; // tsa
+extern u16 Pal_NilsInDragonsGate[]; // pal
 // ??? gUnk_0818F8E4
 // ??? gUnk_0818F8F8
 // ??? gUnk_0818F8FC
@@ -262,9 +262,9 @@ extern u16 ApConf_EventSpriteAnim_SpawnAssassin[];
 extern u8 Img_MineFx[];
 extern u16 SpritAnim_MineFx[];
 extern u16 Pal_MineFx[];
-extern u8 gUnk_081C8610[]; // img
-extern u16 gUnk_081C8AF8[]; // pal
-extern u8 gUnk_081C8B18[]; // tsa
+extern u8 Img_OneYearLater[]; // img
+extern u16 Pal_OneYearLater[]; // pal
+extern u8 Tsa_OneYearLater[]; // tsa
 
 // ??? gUnk_0842D270
 // ??? gUnk_0842D338
@@ -1372,11 +1372,7 @@ extern u16 gUnk_08402A4C[];
 // ??? gUnk_0840341C
 // ??? gUnk_08403428
 // ??? gUnk_08403434
-// ??? gUnk_0840343C
-// ??? gUnk_08403454
-// ??? gUnk_08403464
-// ??? gUnk_08403474
-// ??? gUnk_0840348C
+
 extern const u8 Tsa_StatScreen_0840349C[];
 extern const u8 Tsa_StatScreenPage0[];
 extern const u8 Tsa_Statscreen_Pag1_08403560[];
@@ -2056,7 +2052,7 @@ extern struct ProcCmd ProcScr_08C0617C[];
 // ??? gUnk_08D6722C
 // ??? gUnk_08D6792C
 // ??? gUnk_08D67934
-// ??? gUnk_08D68388
+// ??? gLynModeTransferList
 // ??? gUnk_08D68478
 // ??? gUnk_08D68480
 // ??? gUnk_08D68498

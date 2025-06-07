@@ -663,10 +663,10 @@ void EventCall_FinalFireDragonReStandUp(ProcPtr proc);
 // sub_807FAE8
 // ForceCenteredDragon
 // sub_807FB34
-// sub_807FB40
-// sub_807FB54
+// IsStartButtonHeld
+// IsSelectButtonHeld
 // sub_807FB68
-// sub_807FB6C
+// IsBButtonHeld
 // sub_807FB80
 // sub_807FB98
 // sub_807FBB0
@@ -674,40 +674,40 @@ void EventCall_FinalFireDragonReStandUp(ProcPtr proc);
 // sub_807FBE8
 bool GetLynModeDeathFlag(void);
 void SetLynModeDeathFlag(void);
-// sub_807FC20
-// sub_807FC3C
-// sub_807FC58
-// sub_807FC74
-// sub_807FC88
-// sub_807FC9C
-// sub_807FCB0
-// sub_807FCC4
-// sub_807FCFC
-// sub_807FD18
-// sub_807FD34
+// IsDorcasRecruited
+// IsSerraRecruited
+// IsErkRecruited
+// IsChapterInOccupationsShadow
+// IsChapterBeyondTheBorders
+// IsChapterBloodOfPride
+// IsChapterNightOfFarewells
+// IsAnyLordInCombat
+// IsNinoRecruited
+// IsRathRecruited
+// IsHectorInCombat
 // sub_807FD58
-// sub_807FD9C
-// sub_807FE8C
-// sub_807FEBC
+// TransferLynModeUnits
+// SetPostLynModeChapter
+// LoadOneYearLaterCg
 // sub_807FF4C
 // sub_807FF5C
 // sub_807FF6C
 // sub_807FF7C
 // sub_807FF8C
-// sub_807FF9C
-// sub_807FFE4
-// sub_8080090
-// sub_80800E0
-// sub_808014C
-// sub_80801D0
-// sub_8080214
-// sub_8080228
-// sub_80802C4
-// sub_808034C
-// sub_80803B8
-// sub_80803D0
-// sub_808043C
-// sub_808046C
+// NilsEpilogueIntro_Init
+// NilsEpilogueIntro_CopyBg3ToBg1
+// NilsEpilogueIntro_LoadCg
+// NilsEpilogueIntro_Loop_BlendCg
+// NilsEpilogueIntro_ClearBg1Bg2
+// NilsEpilogueIntro_ReloadCg
+// StartNilsEpilogueIntro
+// NilsEpilogueOutro_Init
+// NilsEpilogueOutro_LoadNilsInDragonsGate
+// NilsEpilogueOutro_Loop_BlendCgs
+// NilsEpilogueOutro_ClearBg0
+// NilsEpilogueOutro_FadeNilsToWhite
+// NilsEpilogueOutro_FadeDragonsGateToBlack
+// StartNilsEpilogueOutro
 // sub_8080480
 
 extern struct ProcCmd ProcScr_EventHorizontalQuakefx[];
@@ -733,10 +733,10 @@ extern struct ProcCmd ProcScr_IceCrystalfx[];
 // ??? gUnk_08D87684
 extern struct ProcCmd ProcScr_EventDragonsSpritefx[];
 // ??? ProcScr_DragonFlameImpact
-// ??? gUnk_08D87F68
+// ??? ProcScr_08D87F68
 extern EventScr EventScr_DeathQuoteOnEnd[];
-// ??? gUnk_08D8977C
-// ??? gUnk_08D897EC
+// ??? ProcScr_NilsEpilogueIntro
+// ??? ProcScr_NilsEpilogueOutro
 // ??? gUnk_08D8A0E0
 // ??? gUnk_08D8A114
 // ??? gUnk_08D8A148

@@ -147,7 +147,7 @@ void SaveBonusContentData(void * buf);
 // ??? sub_809FCC4
 // ??? sub_809FD04
 // ??? sub_809FDC4
-void sub_80A0054(void); // SaveEndgameRankings
+void SaveEndgameRankings(void);
 // ??? sub_80A00A4
 // ??? LoadAndVerifySoundRoomData
 // ??? WriteSoundRoomSaveData

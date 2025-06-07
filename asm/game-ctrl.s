@@ -663,7 +663,7 @@ GC_InitNextChapter: @ 0x0801309C
 	ldr r5, _080130BC @ =gPlaySt
 	adds r0, r5, #0
 	bl RegisterChapterStats
-	bl sub_80B7880
+	bl ComputeChapterRankings
 	adds r4, #0x2a
 	ldrb r0, [r4]
 	strb r0, [r5, #0xe]
@@ -858,8 +858,8 @@ SetNextGameAction: @ 0x08013200
 	bx r0
 	.align 2, 0
 
-	thumb_func_start sub_8013214
-sub_8013214: @ 0x08013214
+	thumb_func_start SetNextChapterId
+SetNextChapterId: @ 0x08013214
 	push {r4, lr}
 	adds r4, r0, #0
 	bl sub_80131F0
