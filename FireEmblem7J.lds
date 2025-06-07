@@ -218,6 +218,8 @@ SECTIONS
 		. = 0x0040E0; gFaces = .;
 		. = 0x0045B0; gActiveUnit = .;
 		. = 0x004750; Unk_03004750 = .;
+		. = 0x005A30; gUnk_03005A30 = .;
+		. = 0x005CC0; gUnk_03005CC0 = .;
 		. = 0x005D90; ReadSramFast = .;
 	}
 
@@ -324,7 +326,7 @@ SECTIONS
 		src/eventcall_icecrystal.o(.text);
 		asm/eventcallfx.o(.text);
 		src/eventcall_firedragonsprite.o(.text);
-		asm/code_0807F9EC.o(.text);
+		src/eventcall_0807F9EC.o(.text);
 		src/statscreenfx.o(.text);
 		src/statscreen-util.o(.text);
 		asm/statscreen-util.o(.text);

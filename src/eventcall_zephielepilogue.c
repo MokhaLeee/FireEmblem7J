@@ -5,7 +5,7 @@
  * visited by Jahn in Bern Keep.
  */
 
-void sub_807C66C(char * str)
+void sub_807C66C(const char * str)
 {
     struct Font font;
     struct Text text;

@@ -1,6 +1,10 @@
 #pragma once
 
 #include "proc.h"
+#include "gba/m4a_internal.h"
+
+extern struct MusicPlayerInfo gUnk_03005A30;
+extern struct MusicPlayerInfo gUnk_03005CC0;
 
 extern EWRAM_DATA u16 * gManimScanlineBufs[2];
 
@@ -17,12 +21,12 @@ extern struct unk_type_0203A50C gUnk_0203A50C;
 // ??? gUnk_080C8174
 // ??? gUnk_080C86D4
 // ??? gUnk_080C86F4
-// ??? gUnk_08187B5C
-// ??? gUnk_0818AE2C
-// ??? gUnk_0818B308
-// ??? gUnk_0818B408
-// ??? gUnk_0818B760
-// ??? gUnk_0818BC3C
+extern u8 gUnk_08187B5C[]; // img
+extern u8 gUnk_0818AE2C[]; // tsa
+extern u16 gUnk_0818B308[]; // pal
+extern u8 gUnk_0818B408[]; // img
+extern u8 gUnk_0818B760[]; // tsa
+extern u16 gUnk_0818BC3C[]; // pal
 // ??? gUnk_0818F8E4
 // ??? gUnk_0818F8F8
 // ??? gUnk_0818F8FC
@@ -258,9 +262,9 @@ extern u16 ApConf_EventSpriteAnim_SpawnAssassin[];
 extern u8 Img_MineFx[];
 extern u16 SpritAnim_MineFx[];
 extern u16 Pal_MineFx[];
-// ??? gUnk_081C8610
-// ??? gUnk_081C8AF8
-// ??? gUnk_081C8B18
+extern u8 gUnk_081C8610[]; // img
+extern u16 gUnk_081C8AF8[]; // pal
+extern u8 gUnk_081C8B18[]; // tsa
 
 // ??? gUnk_0842D270
 // ??? gUnk_0842D338

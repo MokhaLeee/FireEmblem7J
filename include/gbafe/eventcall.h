@@ -201,7 +201,7 @@ void ClearFlag(int flag);
 // sub_807A9E0
 // sub_807A9F0
 // sub_807AA24
-// sub_807AA5C
+void sub_807AA5C(void);
 // sub_807AA74
 // sub_807AAB0
 // sub_807AAEC
@@ -323,7 +323,7 @@ void ClearFlag_145(void);
 // DragonGatefx_End
 // EventCall_StartDragonGatefx
 // DrawDragonGateDragonfx
-// EndDragonGatefx
+void EndDragonGatefx(ProcPtr);
 // DragonSpriteBlinking_Init
 // DragonSpriteBlinking_Loop
 // StartDragonSpriteBlinking
@@ -351,7 +351,7 @@ void ClearFlag_145(void);
 // sub_807C58C
 // sub_807C5A4
 // StartDeadDragonFlamefx
-// sub_807C66C
+void sub_807C66C(const char *);
 // CandleFlameFx_ScanlineEffect
 // StartCandleFlameFx
 // EndCandleFlamePaletteFx

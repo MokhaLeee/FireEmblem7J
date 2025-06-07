@@ -52,7 +52,7 @@ void sub_8012D60(int);
 // StartGame
 // sub_80131F0
 void SetNextGameAction(int action);
-// sub_8013214
+void sub_8013214(int chapter_id); // SetNextChapterId
 // sub_8013228
 // sub_8013240
 // sub_8013264

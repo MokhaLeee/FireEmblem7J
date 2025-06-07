@@ -385,7 +385,7 @@ extern struct Vec2 gActiveUnitMoveOrigin;
 
 void InitUnits(void);
 void ClearUnit(struct Unit *unit);
-// CopyUnit
+void CopyUnit(struct Unit * src, struct Unit * dst);
 // GetFreeUnit
 // GetFreeBlueUnit
 // GetUnitFogViewRange
@@ -393,7 +393,7 @@ void SetUnitStatus(struct Unit *unit, int statusId);
 void SetUnitStatusExt(struct Unit *unit, int status, int duration);
 int GetUnitSMSId(struct Unit *unit);
 bool UnitAddItem(struct Unit *unit, int item);
-// UnitClearInventory
+void UnitClearInventory(struct Unit * unit);
 void UnitRemoveInvalidItems(struct Unit *unit);
 int GetUnitItemCount(struct Unit *unit);
 // UnitHasItem

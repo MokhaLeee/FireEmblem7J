@@ -172,7 +172,7 @@ void DrawDragonGateDragonfx(void)
     Proc_Goto(Proc_Find(ProcScr_DragonGatefx), 0);
 }
 
-void EndDragonGatefx(void)
+void EndDragonGatefx(ProcPtr unused)
 {
     Proc_End(Proc_Find(ProcScr_DragonGatefx));
 }
