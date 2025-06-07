@@ -263,7 +263,8 @@ SECTIONS
 		src/eventscr_spriteanim.o(.text);
 		asm/eventscr_08012378.o(.text);
 		src/sprite-anim.o(.text);
-		asm/game-ctrl.o(.text);
+		src/game-ctrl.o(.text);
+		asm/msg.o(.text);
 		asm/utils.o(.text);
 		src/bm.o(.text);
 		asm/item.o(.text);

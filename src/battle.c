@@ -523,7 +523,7 @@ void ComputeBattleUnitHitRate(struct BattleUnit *bu)
         return;
 
     if (TacticianAffins[gPlaySt.tact_birth][gPlaySt.tact_blood] == bu->unit.pCharacterData->affinity) {
-        ret = gPlaySt.unk2C_11 / 0xC;
+        ret = gPlaySt.unk2C_04 / 0xC;
         if (ret > 10)
             ret = 10;
 
@@ -542,7 +542,7 @@ void ComputeBattleUnitAvoidRate(struct BattleUnit *bu)
 
     if (gPlaySt.tact_enabled != 0 && gPlaySt.chapterModeIndex != 0x1 && !(gBmSt.flags & BM_FLAG_LINKARENA) && UNIT_FACTION(&bu->unit) == 0) {
         if (TacticianAffins[gPlaySt.tact_birth][gPlaySt.tact_blood] == bu->unit.pCharacterData->affinity) {
-            ret = gPlaySt.unk2C_11 / 0xC;
+            ret = gPlaySt.unk2C_04 / 0xC;
             if (ret > 10)
                 ret = 10;
 
@@ -588,7 +588,7 @@ void ComputeBattleUnitEffectiveCritRate(struct BattleUnit *attacker, struct Batt
     attacker->battleEffectiveCritRate = attacker->battleCritRate - defender->battleDodgeRate;
 
     if (gPlaySt.tact_enabled != 0 && gPlaySt.chapterModeIndex != 0x1 && !(gBmSt.flags & BM_FLAG_LINKARENA) && UNIT_FACTION(&defender->unit) == 0) {
-        ret = gPlaySt.unk2C_11 / 0xC;
+        ret = gPlaySt.unk2C_04 / 0xC;
         if (ret > 10)
             ret = 10;
 

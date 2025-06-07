@@ -81,8 +81,11 @@ struct PlaySt {
 
     u32 tact_gender : 0x01;
     u32 unk2C_01 : 0x03;
-    u32 unk2C_11 : 0x09;
-    u32 unk2C_0D : 0x13;
+    u32 unk2C_04 : 0x09;
+    u32 unk2C_0D : 0x03;
+    u32 unk2C_10 : 0x07;
+    u32 unk2C_17 : 0x05; // Used to lookup class reel stuff
+    u32 unk2C_1C : 0x04;
 
     /* 30 */ int total_gold;
     /* 34 */ u32 unk_34_00 : 0x14;

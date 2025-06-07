@@ -19,6 +19,19 @@ enum game_actions {
     GAME_ACTION_C = 0xC,
 };
 
+struct GameCtrlProc
+{
+    PROC_HEADER;
+
+    /* 29 */ u8 next_action;
+    /* 2A */ u8 next_chapter;
+    /* 2B */ u8 idle_status;
+    /* 2C */ u8 unk_2C;
+
+    /* 2E */ s16 unk_2E;
+    /* 30 */ u8 chapter_id;
+};
+
 // sub_8012BC0
 // sub_8012C64
 // GC_CheckSramResetKeyCombo
@@ -26,7 +39,7 @@ enum game_actions {
 // GC_InitFastStartCheck
 // GC_FastStartCheck
 // sub_8012D4C
-void sub_8012D60(int);
+void sub_8012D60(ProcPtr);
 // sub_8012D98
 // sub_8012DB4
 // GC_PostIntro
