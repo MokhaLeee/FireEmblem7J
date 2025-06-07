@@ -2273,8 +2273,8 @@ _08017564:
 	bx r1
 	.align 2, 0
 
-	thumb_func_start sub_8017574
-sub_8017574: @ 0x08017574
+	thumb_func_start GetPartyTotalGoldValue
+GetPartyTotalGoldValue: @ 0x08017574
 	push {r4, lr}
 	bl sub_80174A0
 	adds r4, r0, #0

@@ -883,8 +883,8 @@ gUnk_08D6792C:	@ 0x08D6792C
 gUnk_08D67934:	@ 0x08D67934
 	.incbin "FireEmblem7J.base.gba", 0xD67934, 0xD68388 - 0xD67934
 
-	.global gUnk_08D68388
-gUnk_08D68388:	@ 0x08D68388
+	.global gLynModeTransferList
+gLynModeTransferList:	@ 0x08D68388
 	.incbin "FireEmblem7J.base.gba", 0xD68388, 0xD68478 - 0xD68388
 
 	.global gUnk_08D68478

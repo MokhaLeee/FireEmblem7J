@@ -6021,7 +6021,7 @@ sub_800E44C: @ 0x0800E44C
 	ldrh r5, [r0, #2]
 	bl EndAllMus
 	adds r0, r5, #0
-	bl sub_8013214
+	bl SetNextChapterId
 	movs r0, #1
 	bl SetNextGameAction
 	adds r1, r4, #0

@@ -12,16 +12,16 @@ SpritAnim_MineFx:	@ 0x081C855C
 Pal_MineFx:	@ 0x081C85F0
 	.incbin "FireEmblem7J.base.gba", 0x1C85F0, 0x1C8610 - 0x1C85F0
 
-	.global gUnk_081C8610
-gUnk_081C8610:	@ 0x081C8610
+	.global Img_OneYearLater
+Img_OneYearLater:	@ 0x081C8610
 	.incbin "FireEmblem7J.base.gba", 0x1C8610, 0x1C8AF8 - 0x1C8610
 
-	.global gUnk_081C8AF8
-gUnk_081C8AF8:	@ 0x081C8AF8
+	.global Pal_OneYearLater
+Pal_OneYearLater:	@ 0x081C8AF8
 	.incbin "FireEmblem7J.base.gba", 0x1C8AF8, 0x1C8B18 - 0x1C8AF8
 
-	.global gUnk_081C8B18
-gUnk_081C8B18:	@ 0x081C8B18
+	.global Tsa_OneYearLater
+Tsa_OneYearLater:	@ 0x081C8B18
 	.incbin "FireEmblem7J.base.gba", 0x1C8B18, 0x1C8FCC - 0x1C8B18
 
 	.global TacticianAffins

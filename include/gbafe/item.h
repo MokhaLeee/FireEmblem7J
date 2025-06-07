@@ -119,7 +119,7 @@ int GetUnitItemSlot(struct Unit *unit, int itemIndex);
 // sub_8017420
 // sub_80174A0
 // sub_80174F4
-// sub_8017574
+s32 GetPartyTotalGoldValue(void);
 // sub_801759C
 // sub_80175CC
 int GetItemIndex(int item);

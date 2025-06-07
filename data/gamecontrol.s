@@ -219,7 +219,7 @@ ProcScr_GameControl: @ 0xC01744
         .word 0x8db7eb0
         @ PROC_CALL
         .short 0x2, 0x0
-        .word sub_807FD9C
+        .word TransferLynModeUnits
         @ PROC_YIELD
         .short 0xe, 0x0
         .word 0x0
@@ -234,7 +234,7 @@ ProcScr_GameControl: @ 0xC01744
         .word 0x0
         @ PROC_CALL
         .short 0x2, 0x0
-        .word sub_807FE8C
+        .word SetPostLynModeChapter
         @ PROC_START_CHILD_BLOCKING
         .short 0x6, 0x1
         .word 0x8db8088

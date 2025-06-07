@@ -147,7 +147,7 @@ void SaveBonusContentData(void * buf);
 // ??? sub_809FCC4
 // ??? sub_809FD04
 // ??? sub_809FDC4
-// ??? sub_80A0054
+void SaveEndgameRankings(void);
 // ??? sub_80A00A4
 // ??? LoadAndVerifySoundRoomData
 // ??? WriteSoundRoomSaveData
@@ -179,7 +179,7 @@ struct PidStats
 };
 
 // ??? ClearPidChStatsSaveData
-// ??? ClearPidStats_ret
+void ClearPidStats_ret(void);
 // ??? ClearPidStats
 // ??? ReadPidStats
 // ??? ReadChapterStats
@@ -190,7 +190,7 @@ struct PidStats
 // ??? GetNextChapterStatsSlot
 // ??? sub_80A053C
 // ??? sub_80A0580
-// ??? RegisterChapterStats
+void RegisterChapterStats(struct PlaySt *);
 // ??? sub_80A05FC
 // ??? sub_80A0628
 // ??? sub_80A0654

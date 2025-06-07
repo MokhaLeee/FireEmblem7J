@@ -69,7 +69,7 @@ int IsFirstPlaythrough(void);
 // RefreshBMapGraphics
 // StartMapMain
 // EndMapMain
-// CleanupUnitsBeforeChapter
+void CleanupUnitsBeforeChapter(void);
 // ResumeMapMainDuringPhase
 // ResumeMapMainDuringAction
 // ResumeMapMainDuringBerserk
@@ -1147,7 +1147,7 @@ int sub_80B10D4(int, int);
 // sub_80B76D0
 // sub_80B776C
 // sub_80B77A0
-// sub_80B7880
+void ComputeChapterRankings(void);
 // sub_80B7968
 // nullsub_91
 void sub_80B7980(u16 *, int, int, int, int);

@@ -119,7 +119,7 @@ void SaveMenu_StartHelpBox(struct SaveMenuProc * proc);
 // ??? sub_80A5A94
 // ??? StartMainMenu
 // ??? sub_80A5AD8
-// ??? sub_80A5AF8
+void sub_80A5AF8(ProcPtr);
 // ??? sub_80A5B0C
 void sub_80A5B20(s32, s32);
 

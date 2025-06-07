@@ -404,6 +404,8 @@ void SampleFreqSet(u32 freq);
 void m4aSoundVSyncOn(void);
 void m4aSoundVSyncOff(void);
 
+void MPlayVolumeControl(struct MusicPlayerInfo * mplayInfo, u16 trackBits, u16 volume);
+
 void ClearModM(struct MusicPlayerTrack *track);
 void m4aMPlayModDepthSet(struct MusicPlayerInfo *mplayInfo, u16 trackBits, u8 modDepth);
 void m4aMPlayLFOSpeedSet(struct MusicPlayerInfo *mplayInfo, u16 trackBits, u8 lfoSpeed);

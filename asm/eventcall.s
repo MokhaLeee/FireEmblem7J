@@ -3431,7 +3431,7 @@ _0807A122:
 sub_807A124: @ 0x0807A124
 	push {r4, lr}
 	adds r2, r0, #0
-	ldr r1, _0807A14C @ =gUnk_08D68388
+	ldr r1, _0807A14C @ =gLynModeTransferList
 	ldrb r0, [r1]
 	cmp r0, #0
 	beq _0807A158
@@ -3450,7 +3450,7 @@ _0807A138:
 	movs r0, #1
 	b _0807A15A
 	.align 2, 0
-_0807A14C: .4byte gUnk_08D68388
+_0807A14C: .4byte gLynModeTransferList
 _0807A150:
 	adds r1, #8
 	ldrb r0, [r1]

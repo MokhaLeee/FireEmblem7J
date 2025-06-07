@@ -1,25 +1,5 @@
 	.section .rodata
 
-	.global gUnk_0840343C
-gUnk_0840343C:	@ 0x0840343C
-	.incbin "FireEmblem7J.base.gba", 0x40343C, 0x403454 - 0x40343C
-
-	.global gUnk_08403454
-gUnk_08403454:	@ 0x08403454
-	.incbin "FireEmblem7J.base.gba", 0x403454, 0x403464 - 0x403454
-
-	.global gUnk_08403464
-gUnk_08403464:	@ 0x08403464
-	.incbin "FireEmblem7J.base.gba", 0x403464, 0x403474 - 0x403464
-
-	.global gUnk_08403474
-gUnk_08403474:	@ 0x08403474
-	.incbin "FireEmblem7J.base.gba", 0x403474, 0x40348C - 0x403474
-
-	.global gUnk_0840348C
-gUnk_0840348C:	@ 0x0840348C
-	.incbin "FireEmblem7J.base.gba", 0x40348C, 0x40349C - 0x40348C
-
 	.global Tsa_StatScreen_0840349C
 Tsa_StatScreen_0840349C:	@ 0x0840349C
 	.incbin "FireEmblem7J.base.gba", 0x40349C, 0x4034EC - 0x40349C

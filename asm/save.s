@@ -1521,7 +1521,7 @@ sub_809FDC4: @ 0x0809FDC4
 	ands r0, r1
 	orrs r0, r5
 	strb r0, [r7, #2]
-	bl sub_8017574
+	bl GetPartyTotalGoldValue
 	movs r2, #7
 	ands r2, r0
 	lsls r2, r2, #5
@@ -1793,8 +1793,8 @@ _080A0048: .4byte 0x00010004
 _080A004C: .4byte 0xFFFFFC7F
 _080A0050: .4byte 0xFFFFF81F
 
-	thumb_func_start sub_80A0054
-sub_80A0054: @ 0x080A0054
+	thumb_func_start SaveEndgameRankings
+SaveEndgameRankings: @ 0x080A0054
 	push {r4, r5, r6, lr}
 	sub sp, #0x30
 	bl sub_809FC54
@@ -2307,7 +2307,7 @@ ClearPidStats: @ 0x080A041C
 	ldr r1, _080A046C @ =0xFFF00000
 	ands r0, r1
 	str r0, [r4, #0x34]
-	bl sub_8017574
+	bl GetPartyTotalGoldValue
 	str r0, [r4, #0x30]
 	add sp, #4
 	pop {r4, r5}
