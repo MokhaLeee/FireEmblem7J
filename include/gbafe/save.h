@@ -190,7 +190,7 @@ void ClearPidStats(void);
 // ??? IsChapterStatsValid
 // ??? GetNextChapterStatsSlot
 // ??? sub_80A053C
-int sub_80A0580(void); // GetNextChapterStatsEntry
+int GetNextChapterStatsEntry(void);
 void RegisterChapterStats(struct PlaySt *);
 // ??? sub_80A05FC
 // ??? sub_80A0628

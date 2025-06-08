@@ -201,7 +201,7 @@ StartBattleMap: @ 0x0802E4E8
 	bl ResetBmSt
 	bl ApplySystemGraphics
 	bl ApplyUnitSpritePalettes
-	bl sub_8079FDC
+	bl ResetChapterFlags
 	bl ResetUnitSprites
 	bl InitTraps
 	ldr r4, _0802E5A4 @ =gPlaySt

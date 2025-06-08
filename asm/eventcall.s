@@ -3217,8 +3217,8 @@ _08079FD2:
 _08079FD4: .4byte gUnk_08D66A2C
 _08079FD8: .4byte 0x030049F8
 
-	thumb_func_start sub_8079FDC
-sub_8079FDC: @ 0x08079FDC
+	thumb_func_start ResetChapterFlags
+ResetChapterFlags: @ 0x08079FDC
 	ldr r1, _08079FEC @ =0x030049F8
 	movs r2, #0
 	adds r0, r1, #5
@@ -3331,8 +3331,8 @@ _0807A096:
 _0807A098: .4byte gUnk_08D66A2C
 _0807A09C: .4byte 0x030049F0
 
-	thumb_func_start sub_807A0A0
-sub_807A0A0: @ 0x0807A0A0
+	thumb_func_start ResetPermanentFlags
+ResetPermanentFlags: @ 0x0807A0A0
 	ldr r1, _0807A0B0 @ =0x030049F0
 	movs r2, #0
 	adds r0, r1, #7

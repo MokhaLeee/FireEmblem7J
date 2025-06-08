@@ -32,13 +32,13 @@ struct GameCtrlProc
     /* 30 */ u8 chapter_id;
 };
 
-// sub_8012BC0
-// sub_8012C64
+// GetTitleClassReelSet
+// GC_StartClassReel
 // GC_CheckSramResetKeyCombo
 // GC_InitSramResetScreen
 // GC_InitFastStartCheck
 // GC_FastStartCheck
-// sub_8012D4C
+// EndProcIfNotMarkedB
 void sub_8012D60(ProcPtr);
 // sub_8012D98
 // sub_8012DB4
@@ -49,24 +49,24 @@ void sub_8012D60(ProcPtr);
 // sub_8012F44
 // sub_8012F50
 // sub_8012F6C
-// sub_8012FB0
+// GC_StartExtraMap
 // sub_8012FCC
 // sub_8012FEC
 // GC_CheckForGameEnded
 // GC_PostLoadSuspend
 // GC_InitNextChapter
-// sub_80130C0
-// sub_80130DC
-// GC_DarkenScreen_
+// GC_CallPostChapterSaveMenu
+// GC_SetEliwoodMode
+// GC_DarkenScreen
 // sub_8013128
 // sub_8013160
-// GC_InitDemo
-// GC_DarkenScreen
+// GC_RememberChapterId
+// GC_RestoreChapterId
 // StartGame
-// sub_80131F0
+// GetGameControl
 void SetNextGameAction(int action);
 void SetNextChapterId(int chapter_id);
-// sub_8013228
+// HasNextChapter
 // sub_8013240
 // sub_8013264
 // sub_8013288

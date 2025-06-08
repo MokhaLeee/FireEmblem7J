@@ -1,6 +1,6 @@
 #include "gbafe.h"
 
-u8 sub_8012BC0(void)
+u8 GetTitleClassReelSet(void)
 {
     s32 val;
     s32 i;
@@ -58,9 +58,9 @@ u8 sub_8012BC0(void)
     return 10;
 }
 
-bool sub_8012C64(struct GameCtrlProc * proc)
+bool GC_StartClassReel(struct GameCtrlProc * proc)
 {
-    StartLordSelect(sub_8012BC0(), proc);
+    StartLordSelect(GetTitleClassReelSet(), proc);
     return false;
 }
 
@@ -102,7 +102,7 @@ void GC_FastStartCheck(struct GameCtrlProc * proc)
             return;
         }
 
-        sub_8003684(SONG_5A, NULL);
+        StartBgmCore(SONG_5A, NULL);
         StartBgmVolumeChange(0, 0xC0, 0x3C, NULL);
 
         Proc_Goto(proc, 4);
@@ -111,7 +111,7 @@ void GC_FastStartCheck(struct GameCtrlProc * proc)
 
 // clang-format off
 
-struct ProcCmd CONST_DATA ProcScr_Unk_08C0172C[] =
+struct ProcCmd CONST_DATA ProcScr_Unused_FastStartCheck[] =
 {
     PROC_CALL(GC_InitFastStartCheck),
     PROC_REPEAT(GC_FastStartCheck),
@@ -121,7 +121,7 @@ struct ProcCmd CONST_DATA ProcScr_Unk_08C0172C[] =
 
 // clang-format on
 
-void sub_8012D4C(ProcPtr proc)
+void EndProcIfNotMarkedB(ProcPtr proc)
 {
     if (((struct Proc *)proc)->proc_mark != 11)
         Proc_End(proc);
@@ -131,13 +131,13 @@ void sub_8012D60(ProcPtr proc)
 {
     CpuFastFill16(0, gPal, PLTT_SIZE);
     EnablePalSync();
-    sub_8004648(sub_8012D4C);
+    Proc_ForAll(EndProcIfNotMarkedB);
     SetMainFunc(OnMain);
 }
 
 void sub_8012D98(void)
 {
-    sub_8003684(SONG_5A, NULL);
+    StartBgmCore(SONG_5A, NULL);
     StartBgmVolumeChange(0, 0xC0, 0x3C, NULL);
 }
 
@@ -204,7 +204,7 @@ void GC_PostMainMenu(struct GameCtrlProc * proc)
         case GAME_ACTION_CLASS_REEL:
         case GAME_ACTION_USR_SKIPPED:
         case GAME_ACTION_PLAYED_THROUGH:
-            if (sub_80A0580() == CHAPTER_0B)
+            if (GetNextChapterStatsEntry() == CHAPTER_0B)
             {
                 Proc_Goto(proc, 20);
                 return;
@@ -285,14 +285,14 @@ void sub_8012F6C(struct GameCtrlProc * proc)
 
     gPlaySt.chapterStateBits |= PLAY_FLAG_TUTORIAL;
 
-    sub_807A0A0();
-    sub_8079FDC();
+    ResetPermanentFlags();
+    ResetChapterFlags();
     InitUnits();
 
     gPlaySt.chapterIndex = proc->next_chapter;
 }
 
-void sub_8012FB0(void)
+void GC_StartExtraMap(void)
 {
     sub_80A2BFC();
     ClearPidStats();
@@ -361,18 +361,18 @@ void GC_InitNextChapter(struct GameCtrlProc * proc)
     CleanupUnitsBeforeChapter();
 }
 
-void sub_80130C0(ProcPtr proc)
+void GC_CallPostChapterSaveMenu(ProcPtr proc)
 {
     if (gPlaySt.chapterIndex != CHAPTER_2F)
         sub_80A5AF8(proc);
 }
 
-void sub_80130DC(void)
+void GC_SetEliwoodMode(void)
 {
     gPlaySt.chapterModeIndex = CHAPTER_MODE_ELIWOOD;
 }
 
-void GC_DarkenScreen_(ProcPtr proc)
+void GC_DarkenScreen(ProcPtr proc)
 {
     SetBlendDarken(16);
     SetBlendTargetA(1, 1, 1, 1, 1);
@@ -411,12 +411,12 @@ void sub_8013160(void)
     }
 }
 
-void GC_InitDemo(struct GameCtrlProc * proc)
+void GC_RememberChapterId(struct GameCtrlProc * proc)
 {
     proc->chapter_id = gPlaySt.chapterIndex;
 }
 
-void GC_DarkenScreen(struct GameCtrlProc * proc)
+void GC_RestoreChapterId(struct GameCtrlProc * proc)
 {
     gPlaySt.chapterIndex = proc->chapter_id;
 }
@@ -445,7 +445,7 @@ PROC_LABEL(0),
     PROC_GOTO(3),
 
 PROC_LABEL(1),
-    PROC_CALL_2(sub_8012C64),
+    PROC_CALL_2(GC_StartClassReel),
     PROC_CALL(sub_8012E40),
     PROC_YIELD,
 
@@ -504,10 +504,10 @@ PROC_LABEL(4),
 
 PROC_LABEL(5),
     PROC_CALL(GC_CheckForGameEnded),
-    PROC_CALL(GC_InitDemo),
+    PROC_CALL(GC_RememberChapterId),
 
     PROC_START_CHILD_BLOCKING(ProcScr_StartWorldMapEvent),
-    PROC_CALL(GC_DarkenScreen_),
+    PROC_CALL(GC_DarkenScreen),
     PROC_YIELD,
 
     PROC_CALL(StartBattleMap),
@@ -520,14 +520,14 @@ PROC_LABEL(7),
     PROC_CALL(sub_8012FEC),
     PROC_YIELD,
 
-    PROC_CALL(GC_DarkenScreen),
+    PROC_CALL(GC_RestoreChapterId),
 
     // fallthrough
 
 PROC_LABEL(16),
     PROC_CALL(GC_InitNextChapter),
 
-    PROC_CALL(sub_80130C0),
+    PROC_CALL(GC_CallPostChapterSaveMenu),
     PROC_YIELD,
 
     PROC_GOTO(5),
@@ -539,7 +539,7 @@ PROC_LABEL(19),
     PROC_CALL(TransferLynModeUnits),
     PROC_YIELD,
 
-    PROC_CALL(sub_80130DC),
+    PROC_CALL(GC_SetEliwoodMode),
     PROC_CALL(StartModeSelect),
     PROC_YIELD,
 
@@ -557,17 +557,17 @@ PROC_LABEL(20),
     PROC_GOTO(5),
 
 PROC_LABEL(6),
-    PROC_CALL(GC_DarkenScreen_),
+    PROC_CALL(GC_DarkenScreen),
     PROC_CALL(ResumeChapterFromSuspend),
     PROC_YIELD,
 
-    PROC_CALL(GC_InitDemo),
+    PROC_CALL(GC_RememberChapterId),
     PROC_CALL(GC_PostLoadSuspend),
 
     PROC_GOTO(7),
 
 PROC_LABEL(12),
-    PROC_CALL(sub_8012FB0),
+    PROC_CALL(GC_StartExtraMap),
     PROC_CALL(StartBattleMap),
 
     PROC_YIELD,
@@ -654,24 +654,24 @@ void StartGame(void)
     proc->idle_status = 0;
 }
 
-struct GameCtrlProc * sub_80131F0(void)
+struct GameCtrlProc * GetGameControl(void)
 {
     return Proc_Find(ProcScr_GameControl);
 }
 
 void SetNextGameAction(s32 action)
 {
-    sub_80131F0()->next_action = action;
+    GetGameControl()->next_action = action;
 }
 
 void SetNextChapterId(s32 chapter_id)
 {
-    sub_80131F0()->next_chapter = chapter_id;
+    GetGameControl()->next_chapter = chapter_id;
 }
 
-bool sub_8013228(void)
+bool HasNextChapter(void)
 {
-    struct GameCtrlProc * proc = sub_80131F0();
+    struct GameCtrlProc * proc = GetGameControl();
     return proc->next_chapter == 0 ? false : true;
 }
 

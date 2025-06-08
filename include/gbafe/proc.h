@@ -129,7 +129,6 @@ void Proc_SetEndCb(ProcPtr proc, ProcFunc func);
 void Proc_ForAll(ProcFunc func);
 void Proc_ForEach(const struct ProcCmd * script, ProcFunc func);
 void Proc_ForEachMarked(int mark, ProcFunc func);
-void sub_8004648(ProcFunc func);
 void Proc_BlockEachMarked(int mark);
 void Proc_UnblockEachMarked(int mark);
 void Proc_EndEachMarked(int mark);

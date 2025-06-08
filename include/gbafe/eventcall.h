@@ -99,11 +99,11 @@ bool sub_80798D4(void);
 // SetChapterFlag
 // CheckPermanentFlag
 // ClearChapterFlag
-void sub_8079FDC(void); // ResetChapterFlags
+void ResetChapterFlags(void);
 // SetPermanentFlag
 // CheckChapterFlag
 // ClearPermanentFlag
-void sub_807A0A0(void); // ResetPermanentFlags
+void ResetPermanentFlags(void);
 void SetFlag(int flag);
 bool CheckFlag(int);
 void ClearFlag(int flag);

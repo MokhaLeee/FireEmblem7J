@@ -340,8 +340,8 @@ _08003678: .4byte 0x030059F0
 _0800367C: .4byte 0x03005C00
 _08003680: .4byte 0x03005D10
 
-	thumb_func_start sub_8003684
-sub_8003684: @ 0x08003684
+	thumb_func_start StartBgmCore
+StartBgmCore: @ 0x08003684
 	push {r7, lr}
 	sub sp, #8
 	mov r7, sp
@@ -445,7 +445,7 @@ _08003758: .4byte 0x02024E14
 _0800375C:
 	ldr r1, [r7, #8]
 	ldr r0, [r7]
-	bl sub_8003684
+	bl StartBgmCore
 _08003764:
 	add sp, #0xc
 	pop {r7}
@@ -1690,7 +1690,7 @@ sub_80040C0: @ 0x080040C0
 _080040E4:
 	ldr r0, [r7]
 	movs r1, #0
-	bl sub_8003684
+	bl StartBgmCore
 _080040EC:
 	add sp, #4
 	pop {r7}
