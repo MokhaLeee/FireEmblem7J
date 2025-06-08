@@ -258,7 +258,19 @@ gUnk_08DB7E28:	@ 0x08DB7E28
 
 	.global gUnk_08DB7E70
 gUnk_08DB7E70:	@ 0x08DB7E70
-	.incbin "FireEmblem7J.base.gba", 0xDB7E70, 0xDB8118 - 0xDB7E70
+	.incbin "FireEmblem7J.base.gba", 0xDB7E70, 0xDB7EB0 - 0xDB7E70
+
+	.global ProcScr_Unk_08DB7EB0
+ProcScr_Unk_08DB7EB0:	@ 0x08DB7EB0
+	.incbin "FireEmblem7J.base.gba", 0xDB7EB0, 0xDB8048 - 0xDB7EB0
+
+	.global ProcScr_Unk_08DB8048
+ProcScr_Unk_08DB8048:	@ 0x08DB8048
+	.incbin "FireEmblem7J.base.gba", 0xDB8048, 0xDB8088 - 0xDB8048
+
+	.global ProcScr_Unk_08DB8088
+ProcScr_Unk_08DB8088:	@ 0x08DB8088
+	.incbin "FireEmblem7J.base.gba", 0xDB8088, 0xDB8118 - 0xDB8088
 
 	.global gUnk_08DB8118
 gUnk_08DB8118:	@ 0x08DB8118

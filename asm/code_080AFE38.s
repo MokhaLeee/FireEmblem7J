@@ -8010,7 +8010,7 @@ _080B3CE6:
 	bne _080B3CFE
 	movs r0, #0x2d
 	movs r1, #0
-	bl sub_8003684
+	bl StartBgmCore
 _080B3CFE:
 	b _080B3D28
 	.align 2, 0
@@ -8026,7 +8026,7 @@ _080B3D04:
 	bne _080B3D1C
 	movs r0, #0x47
 	movs r1, #0
-	bl sub_8003684
+	bl StartBgmCore
 _080B3D1C:
 	ldr r0, [r7]
 	bl Proc_End

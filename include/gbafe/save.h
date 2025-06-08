@@ -1,6 +1,7 @@
 #pragma once
 
 #include "global.h"
+#include "bm.h"
 
 enum save_chunk_idx {
     SAVE_GAME0,
@@ -180,7 +181,7 @@ struct PidStats
 
 // ??? ClearPidChStatsSaveData
 void ClearPidStats_ret(void);
-// ??? ClearPidStats
+void ClearPidStats(void);
 // ??? ReadPidStats
 // ??? ReadChapterStats
 // ??? WritePidStats
@@ -189,7 +190,7 @@ void ClearPidStats_ret(void);
 // ??? IsChapterStatsValid
 // ??? GetNextChapterStatsSlot
 // ??? sub_80A053C
-// ??? sub_80A0580
+int GetNextChapterStatsEntry(void);
 void RegisterChapterStats(struct PlaySt *);
 // ??? sub_80A05FC
 // ??? sub_80A0628
@@ -237,7 +238,7 @@ void WriteNewGameSave(int index, int isDifficult, int mode, int isTutorial);
 void WriteGameSave(int slot);
 void ReadGameSave(int slot);
 bool IsSaveValid(int);
-// ??? ReadGameSavePlaySt
+void ReadGameSavePlaySt(s32, struct PlaySt *);
 // ??? sub_80A135C
 // ??? sub_80A1384
 // ??? sub_80A1398
@@ -289,7 +290,7 @@ void PopulateSaveBlockChecksum(struct SaveBlockInfo * block_info);
 // ??? sub_80A2BE8
 // ??? sub_80A2BF4
 // ??? sub_80A2BF8
-// ??? sub_80A2BFC
+void sub_80A2BFC(void); // NullBmMapHidden_
 // ??? sub_80A2C10
 // ??? sub_80A2C64
 // ??? sub_80A2CB8

@@ -2469,8 +2469,8 @@ _080A0572:
 	.align 2, 0
 _080A057C: .4byte 0x0000FF80
 
-	thumb_func_start sub_80A0580
-sub_80A0580: @ 0x080A0580
+	thumb_func_start GetNextChapterStatsEntry
+GetNextChapterStatsEntry: @ 0x080A0580
 	push {lr}
 	bl GetNextChapterStatsSlot
 	cmp r0, #0
@@ -3975,7 +3975,7 @@ _080A106C:
 	bl InitPlayConfig
 	bl InitUnits
 	bl sub_802EBD4
-	bl sub_807A0A0
+	bl ResetPermanentFlags
 	movs r0, #3
 	bl InvalidateSuspendSave
 	ldr r4, _080A1180 @ =gPlaySt

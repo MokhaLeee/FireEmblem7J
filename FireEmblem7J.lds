@@ -263,7 +263,8 @@ SECTIONS
 		src/eventscr_spriteanim.o(.text);
 		asm/eventscr_08012378.o(.text);
 		src/sprite-anim.o(.text);
-		asm/game-ctrl.o(.text);
+		src/game-ctrl.o(.text);
+		asm/msg.o(.text);
 		asm/utils.o(.text);
 		src/bm.o(.text);
 		asm/item.o(.text);
@@ -481,7 +482,7 @@ SECTIONS
 		. = ALIGN(4); src/eventscr_fadefx.o(.data)
 		. = ALIGN(4); src/eventscr_spriteanim.o(.data)
 		. = ALIGN(4); src/sprite-anim.o(.data)
-		. = ALIGN(4); data/gamecontrol.o(.data)
+		. = ALIGN(4); src/game-ctrl.o(.data)
 		. = ALIGN(4); data/data.o(.data)
 		. = ALIGN(4); src/bm.o(.data)
 		. = ALIGN(4); data/data_08C01FE4.o(.data)

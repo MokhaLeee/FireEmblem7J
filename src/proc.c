@@ -344,7 +344,7 @@ void sub_8004644(ProcPtr proc, ProcFunc func)
     p->proc_endCb = func;
 }
 
-void sub_8004648(ProcFunc func)
+void Proc_ForAll(ProcFunc func)
 {
     int i;
     struct Proc * ptr = Unk_02024E20;

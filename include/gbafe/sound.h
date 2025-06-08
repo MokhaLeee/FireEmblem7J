@@ -11,7 +11,7 @@
 // FadeBgmOut
 // sub_8003550
 void Sound_FadeOutSE(int speed);
-// sub_8003684
+void StartBgmCore(int song, struct MusicPlayer * music_player);
 void StartOrChangeBgm(int song, int speed, struct MusicPlayer * music_player);
 void StartBgm(int song, struct MusicPlayer * music_player);
 void StartBgmExt(int song, int speed, struct MusicPlayer * music_player);
