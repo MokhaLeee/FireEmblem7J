@@ -187,7 +187,7 @@ bool CheckInLinkArena(void);
 // sub_804305C
 // sub_8043168
 // sub_804321C
-// sub_8043290
+void sub_8043290(/* TODO */);
 void StartNameSelect(ProcPtr parent);
 void StartTacticianNameSelect(ProcPtr parent);
 // sub_8043390
@@ -208,7 +208,7 @@ void StartTacticianNameSelect(ProcPtr parent);
 // sub_80438E0
 // sub_80438FC
 // sub_8043918
-// sub_8043948
+void sub_8043948(/* TODO */);
 // sub_804395C
 // sub_804397C
 // Sio_DrawFe6CommImage
@@ -239,7 +239,7 @@ void StartTacticianNameSelect(ProcPtr parent);
 // sub_8044750
 // sub_804488C
 // sub_80448AC
-// sub_80448B8
+void sub_80448B8(/* TODO */);
 // sub_80448E8
 // sub_8044998
 // sub_80449EC

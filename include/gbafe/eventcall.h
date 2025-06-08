@@ -99,11 +99,11 @@ bool sub_80798D4(void);
 // SetChapterFlag
 // CheckPermanentFlag
 // ClearChapterFlag
-// sub_8079FDC
+void sub_8079FDC(void); // ResetChapterFlags
 // SetPermanentFlag
 // CheckChapterFlag
 // ClearPermanentFlag
-// sub_807A0A0
+void sub_807A0A0(void); // ResetPermanentFlags
 void SetFlag(int flag);
 bool CheckFlag(int);
 void ClearFlag(int flag);
@@ -686,8 +686,8 @@ void SetLynModeDeathFlag(void);
 // IsRathRecruited
 // IsHectorInCombat
 // sub_807FD58
-// TransferLynModeUnits
-// SetPostLynModeChapter
+void TransferLynModeUnits(void);
+void SetPostLynModeChapter(void);
 // LoadOneYearLaterCg
 // sub_807FF4C
 // sub_807FF5C
@@ -737,7 +737,7 @@ extern struct ProcCmd ProcScr_EventDragonsSpritefx[];
 extern EventScr EventScr_DeathQuoteOnEnd[];
 // ??? ProcScr_NilsEpilogueIntro
 // ??? ProcScr_NilsEpilogueOutro
-// ??? gUnk_08D8A0E0
-// ??? gUnk_08D8A114
-// ??? gUnk_08D8A148
-// ??? gUnk_08D8A1B4
+extern EventScr gUnk_08D8A0E0[];
+extern EventScr gUnk_08D8A114[];
+extern EventScr gUnk_08D8A148[];
+extern EventScr gUnk_08D8A1B4[];

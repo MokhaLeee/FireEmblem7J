@@ -44,6 +44,6 @@ void sub_80AFD28(struct ProcLordSelect * proc);
 // SetLordSelectState
 void sub_80AFDF8(struct ProcLordSelect * proc);
 void sub_80AFE04(struct ProcLordSelect * proc);
-// StartLordSelect
+void StartLordSelect(u8, ProcPtr);
 
 extern struct ProcCmd CONST_DATA ProcScr_LordSelect[];

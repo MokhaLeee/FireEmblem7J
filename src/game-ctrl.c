@@ -1,7 +1,5 @@
 #include "gbafe.h"
 
-void ReadGameSavePlaySt(s32, struct PlaySt *);
-
 u8 sub_8012BC0(void)
 {
     s32 val;
@@ -60,8 +58,6 @@ u8 sub_8012BC0(void)
     return 10;
 }
 
-void StartLordSelect(u8, ProcPtr);
-
 bool sub_8012C64(struct GameCtrlProc * proc)
 {
     StartLordSelect(sub_8012BC0(), proc);
@@ -87,8 +83,6 @@ void GC_InitFastStartCheck(struct GameCtrlProc * proc)
     proc->unk_2E = 20;
 }
 
-void sub_8003684(int, int);
-
 void GC_FastStartCheck(struct GameCtrlProc * proc)
 {
     if (!(gpKeySt->held & START_BUTTON))
@@ -108,20 +102,30 @@ void GC_FastStartCheck(struct GameCtrlProc * proc)
             return;
         }
 
-        sub_8003684(SONG_5A, 0);
+        sub_8003684(SONG_5A, NULL);
         StartBgmVolumeChange(0, 0xC0, 0x3C, NULL);
 
         Proc_Goto(proc, 4);
     }
 }
 
+// clang-format off
+
+struct ProcCmd CONST_DATA ProcScr_Unk_08C0172C[] =
+{
+    PROC_CALL(GC_InitFastStartCheck),
+    PROC_REPEAT(GC_FastStartCheck),
+
+    PROC_END,
+};
+
+// clang-format on
+
 void sub_8012D4C(ProcPtr proc)
 {
     if (((struct Proc *)proc)->proc_mark != 11)
         Proc_End(proc);
 }
-
-void sub_8004648(ProcFunc func);
 
 void sub_8012D60(ProcPtr proc)
 {
@@ -133,7 +137,7 @@ void sub_8012D60(ProcPtr proc)
 
 void sub_8012D98(void)
 {
-    sub_8003684(SONG_5A, 0);
+    sub_8003684(SONG_5A, NULL);
     StartBgmVolumeChange(0, 0xC0, 0x3C, NULL);
 }
 
@@ -192,8 +196,6 @@ void sub_8012E40(struct GameCtrlProc * proc)
     }
 }
 
-int sub_80A0580(void);
-
 void GC_PostMainMenu(struct GameCtrlProc * proc)
 {
     switch (proc->next_action)
@@ -202,7 +204,7 @@ void GC_PostMainMenu(struct GameCtrlProc * proc)
         case GAME_ACTION_CLASS_REEL:
         case GAME_ACTION_USR_SKIPPED:
         case GAME_ACTION_PLAYED_THROUGH:
-            if (sub_80A0580() == 11)
+            if (sub_80A0580() == CHAPTER_0B)
             {
                 Proc_Goto(proc, 20);
                 return;
@@ -271,10 +273,6 @@ void sub_8012F50(struct GameCtrlProc * proc)
         Proc_Goto(proc, 16);
 }
 
-void sub_807A0A0(void); // ResetPermanentFlags
-void sub_8079FDC(void); // ResetChapterFlags
-void InitPlayConfig(int);
-
 void sub_8012F6C(struct GameCtrlProc * proc)
 {
     if (proc->next_action == GAME_ACTION_5)
@@ -293,9 +291,6 @@ void sub_8012F6C(struct GameCtrlProc * proc)
 
     gPlaySt.chapterIndex = proc->next_chapter;
 }
-
-void sub_80A2BFC(void); // NullBmMapHidden_
-void ClearPidStats(void);
 
 void sub_8012FB0(void)
 {
@@ -384,12 +379,6 @@ void GC_DarkenScreen_(ProcPtr proc)
     SetBlendBackdropA(1);
 }
 
-extern EventScr gUnk_08D8A0E0[];
-extern EventScr gUnk_08D8A114[];
-
-extern EventScr gUnk_08D8A148[];
-extern EventScr gUnk_08D8A1B4[];
-
 void sub_8013128(void)
 {
     InitBgs(NULL);
@@ -432,7 +421,224 @@ void GC_DarkenScreen(struct GameCtrlProc * proc)
     gPlaySt.chapterIndex = proc->chapter_id;
 }
 
-extern struct ProcCmd ProcScr_GameControl[];
+// clang-format off
+
+struct ProcCmd CONST_DATA ProcScr_GameControl[] =
+{
+    PROC_19,
+    PROC_MARK(11),
+    PROC_19,
+
+    PROC_CALL(GC_CheckSramResetKeyCombo),
+    PROC_CALL(GC_InitFastStartCheck),
+    PROC_REPEAT(GC_FastStartCheck),
+
+    // fallthrough
+
+PROC_LABEL(0),
+    PROC_CALL(ForceEnableSounds),
+    PROC_START_CHILD_BLOCKING(ProcScr_OpeningSeqence),
+
+    PROC_CALL(GC_PostIntro),
+    PROC_YIELD,
+
+    PROC_GOTO(3),
+
+PROC_LABEL(1),
+    PROC_CALL_2(sub_8012C64),
+    PROC_CALL(sub_8012E40),
+    PROC_YIELD,
+
+    PROC_GOTO(0),
+
+PROC_LABEL(2),
+    PROC_YIELD,
+    PROC_CALL(sub_8012D60),
+
+    PROC_CALL(sub_8012E40),
+    PROC_YIELD,
+
+    PROC_GOTO(0),
+
+PROC_LABEL(3),
+    PROC_CALL(ForceEnableSounds),
+    PROC_CALL(StartTitleScreen_WithMusic),
+
+    PROC_GOTO(23),
+
+PROC_LABEL(21),
+    PROC_CALL(ForceEnableSounds),
+    PROC_CALL(StartTitleScreen_FlagTrue),
+
+    PROC_GOTO(23),
+
+PROC_LABEL(22),
+    PROC_CALL(ForceEnableSounds),
+    PROC_CALL(StartTitleScreen_FlagFalse),
+
+    PROC_GOTO(23),
+
+PROC_LABEL(23),
+    PROC_YIELD,
+
+    PROC_CALL(GC_PostIntro),
+    PROC_YIELD,
+
+    PROC_GOTO(0),
+
+PROC_LABEL(18),
+    PROC_CALL(StartTacticianInfo),
+    PROC_YIELD,
+
+    PROC_GOTO(5),
+
+PROC_LABEL(4),
+    PROC_CALL(ForceEnableSounds),
+    PROC_CALL(StartMainMenu),
+    PROC_YIELD,
+
+    PROC_CALL(GC_PostMainMenu),
+    PROC_YIELD,
+
+    // fallthrough
+
+PROC_LABEL(5),
+    PROC_CALL(GC_CheckForGameEnded),
+    PROC_CALL(GC_InitDemo),
+
+    PROC_START_CHILD_BLOCKING(ProcScr_StartWorldMapEvent),
+    PROC_CALL(GC_DarkenScreen_),
+    PROC_YIELD,
+
+    PROC_CALL(StartBattleMap),
+    PROC_YIELD,
+
+    // fallthrough
+
+PROC_LABEL(7),
+    PROC_YIELD,
+    PROC_CALL(sub_8012FEC),
+    PROC_YIELD,
+
+    PROC_CALL(GC_DarkenScreen),
+
+    // fallthrough
+
+PROC_LABEL(16),
+    PROC_CALL(GC_InitNextChapter),
+
+    PROC_CALL(sub_80130C0),
+    PROC_YIELD,
+
+    PROC_GOTO(5),
+
+PROC_LABEL(19),
+    PROC_YIELD,
+
+    PROC_START_CHILD_BLOCKING(ProcScr_Unk_08DB7EB0),
+    PROC_CALL(TransferLynModeUnits),
+    PROC_YIELD,
+
+    PROC_CALL(sub_80130DC),
+    PROC_CALL(StartModeSelect),
+    PROC_YIELD,
+
+    PROC_CALL(SetPostLynModeChapter),
+    PROC_START_CHILD_BLOCKING(ProcScr_Unk_08DB8088),
+    PROC_YIELD,
+
+    PROC_CALL(sub_8012F2C),
+
+    // fallthrough
+
+PROC_LABEL(20),
+    PROC_START_CHILD_BLOCKING(ProcScr_Unk_08DB8048),
+
+    PROC_GOTO(5),
+
+PROC_LABEL(6),
+    PROC_CALL(GC_DarkenScreen_),
+    PROC_CALL(ResumeChapterFromSuspend),
+    PROC_YIELD,
+
+    PROC_CALL(GC_InitDemo),
+    PROC_CALL(GC_PostLoadSuspend),
+
+    PROC_GOTO(7),
+
+PROC_LABEL(12),
+    PROC_CALL(sub_8012FB0),
+    PROC_CALL(StartBattleMap),
+
+    PROC_YIELD,
+
+PROC_LABEL(8),
+    PROC_YIELD,
+
+    PROC_CALL(sub_8012FEC),
+    PROC_YIELD,
+
+    PROC_CALL(sub_8012FCC),
+    PROC_SLEEP(30),
+
+    PROC_CALL(sub_80BAAB8),
+    PROC_YIELD,
+
+    PROC_GOTO(3),
+
+PROC_LABEL(10),
+    PROC_CALL(sub_8043290),
+    PROC_YIELD,
+
+    PROC_CALL(sub_8012D98),
+
+    PROC_GOTO(4),
+
+PROC_LABEL(11),
+    PROC_CALL(sub_80448B8),
+    PROC_YIELD,
+
+    PROC_CALL(sub_8012D98),
+
+    PROC_GOTO(4),
+
+PROC_LABEL(13),
+    PROC_CALL(sub_802EB7C),
+    PROC_CALL(sub_8013128),
+    PROC_YIELD,
+
+PROC_LABEL(14),
+    PROC_CALL(sub_8013160),
+    PROC_YIELD,
+
+    PROC_WHILE(IsEventRunning),
+
+    PROC_CALL(sub_802EBA0),
+    PROC_CALL(sub_80B9C0C),
+    PROC_SLEEP(30),
+
+    PROC_GOTO(3),
+
+PROC_LABEL(15),
+    PROC_CALL(GC_InitSramResetScreen),
+
+    PROC_CALL(StartMidLockingFadeToBlack),
+    PROC_REPEAT(WaitForFade),
+
+    PROC_CALL(sub_8043948),
+    PROC_YIELD,
+
+    PROC_CALL(StartMidFadeFromBlack),
+    PROC_REPEAT(WaitForFade),
+
+    PROC_CALL(EndMuralBackground),
+
+    PROC_GOTO(0),
+
+    PROC_END,
+};
+
+// clang-format on
 
 void StartGame(void)
 {

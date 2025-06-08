@@ -115,4 +115,4 @@ void sub_80A8304(s32);
 // ??? ModeSelect_Loop_RotateCarousel
 // ??? ModeSelect_End
 // ??? sub_80A9578
-// ??? StartModeSelect
+void StartModeSelect(ProcPtr proc);

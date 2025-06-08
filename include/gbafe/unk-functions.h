@@ -58,11 +58,11 @@ void DecayTraps(void);
 
 int GetTextPrintDelay();
 int IsFirstPlaythrough(void);
-// InitPlayConfig
+void InitPlayConfig(int);
 // ResetBmSt
-// StartBattleMap
+void StartBattleMap(/* TODO */);
 // RestartBattleMap
-// ResumeChapterFromSuspend
+void ResumeChapterFromSuspend(/* TODO */);
 // RefreshBMapDisplay_FromBattle
 // BMapDispResume_FromBattleDelayed
 // InitMoreBMapGraphics
@@ -75,8 +75,8 @@ void CleanupUnitsBeforeChapter(void);
 // ResumeMapMainDuringBerserk
 // ResumeMapMainDuringArena
 // ResumeMapMainDuringPhaseChange
-// sub_802EB7C
-// sub_802EBA0
+void sub_802EB7C(/* TODO */);
+void sub_802EBA0(/* TODO */);
 char *GetTacticianName();
 void SetTacticianName(const char *name);
 // sub_802EBCC
@@ -1238,7 +1238,7 @@ void sub_80B7980(u16 *, int, int, int, int);
 // sub_80B9B1C
 // sub_80B9B80
 // sub_80B9BD4
-// sub_80B9C0C
+void sub_80B9C0C(/* TODO */);
 // sub_80B9C20
 // sub_80B9C88
 // sub_80B9CBC
@@ -1255,7 +1255,7 @@ void sub_80B7980(u16 *, int, int, int, int);
 // sub_80BAA54
 // sub_80BAA80
 // sub_80BAA8C
-// sub_80BAAB8
+void sub_80BAAB8(/* TODO */);
 // sub_80BAACC
 // sub_80BAAE0
 // sub_80BAC14
