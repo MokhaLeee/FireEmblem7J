@@ -1,0 +1,16 @@
+name: FireEmblem7J
+repo: https://github.com/MokhaLeee/FireEmblem7J.git
+platform: gba
+versions:
+- name: jp
+  fullname: JP
+  sha1: 037702b1febd5c9535262165bf030551d153de81
+  paths:
+    target: "FireEmblem7J.base.gba"
+
+    build_dir: "./"
+    map: "FireEmblem7J.map"
+    compiled_target: "FireEmblem7J.gba"
+    elf: "FireEmblem7J.elf"
+
+    asm: "asm"

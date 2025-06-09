@@ -941,3 +941,4 @@ MigrationBackup/
 ###################
 
 progress.txt
+report.json
