@@ -50,9 +50,7 @@ jobs:
           python .github/calcrom/upload-progress.py -b "https://progress.deco.mp" -a ${{secrets.PROGRESS_API_KEY}} -p fireemblem7j -v jp -t .github/calcrom/progress.template.txt progress.txt
 
       - name: Generate objdiff report
-        run: |
-          python3 -m pip install mapfile_parser
-          python3 -m mapfile_parser objdiff_report report.json --version jp
+        run: python3 .github/calcrom/gen-report.py progress.txt report.json
 
       - name: Upload progress report artifact
         uses: actions/upload-artifact@v4
