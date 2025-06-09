@@ -47,11 +47,11 @@ def parse_and_convert(input_text):
             "total_code": str(total_code),
             "matched_code": str(matched_code),
             "matched_code_percent": matched_code_percent,
-            "total_symbols": total_functions,
-            "documented_symbols": documented_symbols,
-            "documented_symbols_percent": documented_symbols_percent,
-            "partially_documented_symbols": partially_documented_symbols,
-            "partially_documented_symbols_percent": partially_documented_symbols_percent,
+            # "total_symbols": total_functions,
+            # "documented_symbols": documented_symbols,
+            # "documented_symbols_percent": documented_symbols_percent,
+            # "partially_documented_symbols": partially_documented_symbols,
+            # "partially_documented_symbols_percent": partially_documented_symbols_percent,
         }
     }
 
