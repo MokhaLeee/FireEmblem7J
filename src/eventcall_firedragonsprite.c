@@ -131,7 +131,7 @@ void PutFireDragonSpritefx(int index, int facing, int x, int y, int action, int 
 
         if (proc->approc[index] == NULL)
         {
-            proc->approc[index] = StartSpriteAnimProc(objs[proc->kind], x, y, 0xA980, action, 0xD);
+            proc->approc[index] = StartSpriteAnimProc(objs[proc->kind], x, y, OAM2_PAL(10) + OAM2_LAYER(2) + OAM2_CHR(0x180), action, 0xD);
             proc->x_1[index] = proc->x_2[index] = x;
             proc->y_1[index] = proc->y_2[index] = y;
         }
