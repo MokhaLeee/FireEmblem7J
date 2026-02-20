@@ -255,12 +255,12 @@ sub_80119C4: @ 0x080119C4
 	ands r0, r2
 	cmp r0, #0
 	bne _080119E4
-	ldr r0, _080119E0 @ =gUnk_08C012BC
+	ldr r0, _080119E0 @ =ProcScr_08C012BC
 	bl Proc_StartBlocking
 	movs r0, #2
 	b _080119E6
 	.align 2, 0
-_080119E0: .4byte gUnk_08C012BC
+_080119E0: .4byte ProcScr_08C012BC
 _080119E4:
 	movs r0, #0
 _080119E6:
@@ -277,16 +277,16 @@ EventE1: @ 0x080119EC
 	ands r1, r0
 	cmp r1, #0
 	bne _08011A10
-	ldr r0, _08011A0C @ =gUnk_08C012BC
+	ldr r0, _08011A0C @ =ProcScr_08C012BC
 	bl Proc_Find
 	movs r1, #0
 	bl Proc_Goto
 	movs r0, #2
 	b _08011A1C
 	.align 2, 0
-_08011A0C: .4byte gUnk_08C012BC
+_08011A0C: .4byte ProcScr_08C012BC
 _08011A10:
-	ldr r0, _08011A20 @ =gUnk_08C012BC
+	ldr r0, _08011A20 @ =ProcScr_08C012BC
 	bl Proc_Find
 	bl Proc_End
 	movs r0, #0
@@ -294,4 +294,4 @@ _08011A1C:
 	pop {r1}
 	bx r1
 	.align 2, 0
-_08011A20: .4byte gUnk_08C012BC
+_08011A20: .4byte ProcScr_08C012BC

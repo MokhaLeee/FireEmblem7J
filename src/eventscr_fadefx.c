@@ -56,7 +56,7 @@ void NewEventFadefx(u32 mask, int speed, int r, int g, int b, ProcPtr parent)
     proc->b1 = b;
 }
 
-int EventE7_FadeSteps(struct EventProc * proc)
+int EventE5_FadeSteps(struct EventProc * proc)
 {
     struct ProcNinianAppear * procfx;
     u32 mask  = proc->script[1];

@@ -570,7 +570,7 @@ struct ProcEventFade {
 void EventFadefx_Init(struct ProcEventFade * proc);
 void EventFadefx_Loop(struct ProcEventFade * proc);
 void NewEventFadefx(u32 mask, int speed, int r, int g, int b, ProcPtr parent);
-int EventE7_FadeSteps(struct EventProc * proc);
+int EventE5_FadeSteps(struct EventProc * proc);
 int EventE6_StartFade(struct EventProc * proc);
 int EventE7_EndFade(struct EventProc * proc);
 
@@ -665,7 +665,7 @@ extern struct BackgroundInfo gBackgroundTable[];
 // ??? gUnk_08C011CC
 // ??? gUnk_08C01224
 // ??? ProcScr_EventSnowStormfx
-// ??? gUnk_08C012BC
+// ??? ProcScr_08C012BC
 extern struct BmBgxConf CONST_DATA  BmBgfxConf_IceCrystal[];
 // ??? gUnk_08DBAD14
 // ??? gUnk_08DC0390

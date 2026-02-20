@@ -324,6 +324,7 @@ SECTIONS
 		src/eventcall_unittornout.o(.text);
 		src/eventcall_flamebreath.o(.text);
 		asm/eventcall_flamebreath.o(.text);
+		src/eventcall_flamebreath_2.o(.text);
 		src/eventcall_icecrystal.o(.text);
 		asm/eventcallfx.o(.text);
 		src/eventcall_firedragonsprite.o(.text);

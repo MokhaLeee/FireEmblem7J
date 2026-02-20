@@ -577,10 +577,10 @@ void IceCrystalfx_Paluse(struct ProcIceCrystal * proc);
 // sub_807EB9C
 // sub_807EBCC
 // sub_807EC58
-// sub_807ECD4
-// sub_807ED8C
-// sub_807EE34
-// sub_807EED8
+// Finial_EventLoadAllies1
+// Finial_EventLoadAllies2
+// Finial_EventLoadAllies3
+// Finial_EventLoadAllies4
 // sub_807EF5C
 // sub_807EF68
 // sub_807EF7C
@@ -658,8 +658,15 @@ void EventCall_FireDragonFellWeakly(ProcPtr proc);
 void EventCall_FireDragonFadeOut(ProcPtr proc);
 void EventCall_FinalFireDragonReStandUp(ProcPtr proc);
 
-// sub_807F9EC
-// sub_807FA64
+struct ProcEventCutscene
+{
+    PROC_HEADER;
+    STRUCT_PAD(0x29, 0x4C);
+    s16 unk_4C;
+};
+
+void sub_807F9EC(struct ProcEventCutscene * proc);
+void sub_807FA64(struct ProcEventCutscene * proc);
 // sub_807FAE8
 // ForceCenteredDragon
 // sub_807FB34
@@ -713,15 +720,15 @@ void SetPostLynModeChapter(void);
 extern struct ProcCmd ProcScr_EventHorizontalQuakefx[];
 extern struct ProcCmd ProcScr_EventVerticalQuakefx[];
 extern struct ProcCmd ProcScr_EventQuakefx[];
-// ??? ProcScr_DragonGatefx
-// ??? ProcScr_DragonSpriteBlinking
-// ??? ProcScr_DragonFlamefx
-// ??? ProcScr_DeadDragonFlamefx
-// ??? ProcScr_ZephielEpilogue
+extern struct ProcCmd ProcScr_DragonGatefx[];
+extern struct ProcCmd ProcScr_DragonSpriteBlinking[];
+extern struct ProcCmd ProcScr_DragonFlamefx[];
+extern struct ProcCmd ProcScr_DeadDragonFlamefx[];
+extern struct ProcCmd ProcScr_ZephielEpilogue[];
 extern struct ProcCmd ProcScr_QuintessenceFxBg2Scroll[];
 extern struct ProcCmd ProcScr_QuintessenceFx[];
-// ??? ProcScr_UnitTornOut
-// ??? ProcScr_FlameBreathfx
+extern struct ProcCmd ProcScr_UnitTornOut[];
+extern struct ProcCmd ProcScr_FlameBreathfx[];
 extern struct ProcCmd ProcScr_IceCrystalfx[];
 // ??? gUnk_08D6FB5C
 // ??? gUnk_08D6FC14

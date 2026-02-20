@@ -164,21 +164,3 @@ sub_807D0E0: @ 0x0807D0E0
 	.align 2, 0
 _0807D118: .4byte gBg0Tm
 _0807D11C: .4byte gDispIo
-
-	thumb_func_start StartFlameBreathfx
-StartFlameBreathfx: @ 0x0807D120
-	push {r4, r5, r6, lr}
-	adds r4, r0, #0
-	adds r5, r1, #0
-	adds r6, r2, #0
-	adds r1, r3, #0
-	ldr r0, _0807D13C @ =ProcScr_FlameBreathfx
-	bl Proc_StartBlocking
-	str r4, [r0, #0x58]
-	str r5, [r0, #0x2c]
-	str r6, [r0, #0x30]
-	pop {r4, r5, r6}
-	pop {r0}
-	bx r0
-	.align 2, 0
-_0807D13C: .4byte ProcScr_FlameBreathfx

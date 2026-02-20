@@ -217,12 +217,12 @@ void sub_807F6D0(ProcPtr proc)
 
 void sub_807F718(void)
 {
-    PutFireDragonSpritefx(1, FACING_RIGHT, 0, 0, 1, 0);
+    PutFireDragonSpritefx(1, FACING_RIGHT, 0, 0, FIREDRAGONSPRIT_ACTION_BARK, 0);
 }
 
 void sub_807F738(void)
 {
-    PutFireDragonSpritefx(2, FACING_LEFT,  0, 0, 1, 0);
+    PutFireDragonSpritefx(2, FACING_LEFT,  0, 0, FIREDRAGONSPRIT_ACTION_BARK, 0);
 }
 
 void sub_807F758(ProcPtr proc)
@@ -320,4 +320,61 @@ void EventCall_FireDragonFadeOut(ProcPtr proc)
 void EventCall_FinalFireDragonReStandUp(ProcPtr proc)
 {
     PutFireDragonSpritefx(0, FACING_LEFT,  0, 0, FIREDRAGONSPRIT_ACTION_RESTAND, 0);
+}
+
+struct ProcCmd CONST_DATA ProcScr_08D87F68[] = {
+    PROC_CALL(sub_807F9EC),
+    PROC_REPEAT(sub_807FA64),
+    PROC_END,
+};
+
+void sub_807F9EC(struct ProcEventCutscene * proc)
+{
+    SetBlendAlpha(16, 0);
+
+    SetBlendTargetA(0, 0, 0, 0, 0);
+    SetBlendTargetB(1, 1, 1, 1, 1);
+
+    sub_807F590(1);
+    sub_807F590(2);
+
+    proc->unk_4C = 0;
+
+    PlaySoundEffect(SONG_E5);
+}
+
+void sub_807FA64(struct ProcEventCutscene * proc)
+{
+    s32 bld_amt = proc->unk_4C++ >> 2;
+    s32 bld_amt_b = bld_amt * 2;
+
+    if (bld_amt_b > 16)
+    {
+        bld_amt_b = 16;
+    }
+
+    SetBlendConfig(BLEND_EFFECT_NONE, 16 - bld_amt, bld_amt_b, 0);
+
+    if (bld_amt == 16)
+    {
+        RemoveFireDragonSpritefx(1);
+        RemoveFireDragonSpritefx(2);
+
+        SetBlendConfig(BLEND_EFFECT_NONE, 0, 0, 0);
+        Proc_Break(proc);
+    }
+}
+
+void sub_807FAE8(ProcPtr proc)
+{
+    Proc_StartBlocking(ProcScr_08D87F68, proc);
+}
+
+void ForceCenteredDragon(ProcPtr proc)
+{
+    struct Unit * unit = GetUnitFromCharId(CHARACTER_FIREDRAGON);
+    SetFlag(0x91);
+    SetUnitHp(unit, 1);
+    unit->state &= ~(US_UNSELECTABLE | US_DEAD);
+    EnsureCameraOntoCenteredPosition(proc, unit->xPos, unit->yPos);
 }

@@ -1,8 +1,6 @@
 	.section .data
 
-	.global ProcScr_08D87F68
-ProcScr_08D87F68:	@ 0x08D87F68
-	.incbin "FireEmblem7J.base.gba", 0xD87F68, 0xD891C8 - 0xD87F68
+	.incbin "FireEmblem7J.base.gba", 0xD87F80, 0xD891C8 - 0xD87F80
 
 	.global EventScr_DeathQuoteOnEnd
 EventScr_DeathQuoteOnEnd:	@ 0x08D891C8

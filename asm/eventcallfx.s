@@ -3386,8 +3386,8 @@ _0807ECCC:
 	pop {r0}
 	bx r0
 
-	thumb_func_start sub_807ECD4
-sub_807ECD4: @ 0x0807ECD4
+	thumb_func_start Finial_EventLoadAllies1
+Finial_EventLoadAllies1: @ 0x0807ECD4
 	push {r4, r5, lr}
 	sub sp, #0x1c
 	adds r5, r0, #0
@@ -3478,8 +3478,8 @@ _0807ED7C:
 _0807ED84: .4byte gUnk_08403400
 _0807ED88: .4byte gPlaySt
 
-	thumb_func_start sub_807ED8C
-sub_807ED8C: @ 0x0807ED8C
+	thumb_func_start Finial_EventLoadAllies2
+Finial_EventLoadAllies2: @ 0x0807ED8C
 	push {r4, r5, r6, r7, lr}
 	mov r7, r8
 	push {r7}
@@ -3565,8 +3565,8 @@ _0807EE20:
 _0807EE2C: .4byte gUnk_0840340C
 _0807EE30: .4byte 0x0001000C
 
-	thumb_func_start sub_807EE34
-sub_807EE34: @ 0x0807EE34
+	thumb_func_start Finial_EventLoadAllies3
+Finial_EventLoadAllies3: @ 0x0807EE34
 	push {r4, r5, r6, r7, lr}
 	mov r7, r8
 	push {r7}
@@ -3651,8 +3651,8 @@ _0807EEC4:
 _0807EED0: .4byte gUnk_0840341C
 _0807EED4: .4byte 0x0001000C
 
-	thumb_func_start sub_807EED8
-sub_807EED8: @ 0x0807EED8
+	thumb_func_start Finial_EventLoadAllies4
+Finial_EventLoadAllies4: @ 0x0807EED8
 	push {r4, r5, r6, r7, lr}
 	sub sp, #0x28
 	adds r6, r0, #0

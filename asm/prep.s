@@ -579,8 +579,8 @@ _0809E5DE:
 	pop {r0}
 	bx r0
 
-	thumb_func_start sub_809E5F0
-sub_809E5F0: @ 0x0809E5F0
+	thumb_func_start ModifyPassword
+ModifyPassword: @ 0x0809E5F0
 	push {r4, r5, r6, lr}
 	sub sp, #4
 	adds r3, r0, #0
@@ -838,8 +838,8 @@ _0809E7F0:
 	.align 2, 0
 _0809E7F8: .4byte 0x02014438
 
-	thumb_func_start sub_809E7FC
-sub_809E7FC: @ 0x0809E7FC
+	thumb_func_start InitPassword
+InitPassword: @ 0x0809E7FC
 	push {r4, r5, r6, lr}
 	adds r6, r0, #0
 	adds r5, r1, #0
@@ -1149,8 +1149,8 @@ _0809EAA2:
 	bx r1
 	.align 2, 0
 
-	thumb_func_start sub_809EAAC
-sub_809EAAC: @ 0x0809EAAC
+	thumb_func_start PrintPassword
+PrintPassword: @ 0x0809EAAC
 	push {r4, r5, r6, r7, lr}
 	mov r7, sl
 	mov r6, sb
@@ -1482,11 +1482,11 @@ _0809ED84:
 	movs r0, #5
 	movs r1, #0x11
 	bl sub_809E1CC
-	ldr r0, _0809EDB0 @ =sub_809E7FC
-	bl sub_809E5F0
+	ldr r0, _0809EDB0 @ =InitPassword
+	bl ModifyPassword
 	ldr r0, _0809EDB4 @ =0x0201440C
 	ldr r1, _0809EDB8 @ =gUnk_08D8E040
-	bl sub_809EAAC
+	bl PrintPassword
 	movs r0, #0
 	movs r1, #0
 	movs r2, #0xa
@@ -1498,7 +1498,7 @@ _0809EDA6:
 	pop {r0}
 	bx r0
 	.align 2, 0
-_0809EDB0: .4byte sub_809E7FC
+_0809EDB0: .4byte InitPassword
 _0809EDB4: .4byte 0x0201440C
 _0809EDB8: .4byte gUnk_08D8E040
 

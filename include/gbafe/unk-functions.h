@@ -724,14 +724,14 @@ bool sub_80886E0(void);
 // sub_809E3BC
 // sub_809E3FC
 // sub_809E4D0
-// sub_809E5F0
+// ModifyPassword
 // sub_809E6C0
 // sub_809E794
 // sub_809E7C4
-// sub_809E7FC
+// InitPassword
 // sub_809E8F0
 // sub_809E9DC
-// sub_809EAAC
+// PrintPassword
 // sub_809EB74
 // sub_809EC74
 // nullsub_80

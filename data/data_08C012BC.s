@@ -1,7 +1,7 @@
 	.section .data
 
-	.global gUnk_08C012BC
-gUnk_08C012BC:	@ 0x08C012BC
+	.global ProcScr_08C012BC
+ProcScr_08C012BC:	@ 0x08C012BC
 	@ PROC_YIELD
 	.short 0xe, 0x0
 	.word 0x0
