@@ -3738,8 +3738,8 @@ _08014F52:
 	.align 2, 0
 _08014F60: .4byte 0xFFFF0000
 
-	thumb_func_start sub_8014F64
-sub_8014F64: @ 0x08014F64
+	thumb_func_start CallDelayed_OnLoop
+CallDelayed_OnLoop: @ 0x08014F64
 	push {r4, lr}
 	adds r4, r0, #0
 	ldr r0, [r4, #0x34]
@@ -3758,8 +3758,8 @@ _08014F82:
 	pop {r0}
 	bx r0
 
-	thumb_func_start sub_8014F88
-sub_8014F88: @ 0x08014F88
+	thumb_func_start CallDelayedArg_OnLoop
+CallDelayedArg_OnLoop: @ 0x08014F88
 	push {r4, lr}
 	adds r4, r0, #0
 	ldr r0, [r4, #0x34]
@@ -3780,12 +3780,12 @@ _08014FA8:
 	bx r0
 	.align 2, 0
 
-	thumb_func_start sub_8014FB0
-sub_8014FB0: @ 0x08014FB0
+	thumb_func_start CallDelayed
+CallDelayed: @ 0x08014FB0
 	push {r4, r5, lr}
 	adds r4, r0, #0
 	adds r5, r1, #0
-	ldr r0, _08014FC8 @ =gUnk_08C01CCC
+	ldr r0, _08014FC8 @ =ProcScr_CallDelayed
 	movs r1, #3
 	bl Proc_Start
 	str r4, [r0, #0x2c]
@@ -3794,15 +3794,15 @@ sub_8014FB0: @ 0x08014FB0
 	pop {r0}
 	bx r0
 	.align 2, 0
-_08014FC8: .4byte gUnk_08C01CCC
+_08014FC8: .4byte ProcScr_CallDelayed
 
-	thumb_func_start sub_8014FCC
-sub_8014FCC: @ 0x08014FCC
+	thumb_func_start CallDelayedArg
+CallDelayedArg: @ 0x08014FCC
 	push {r4, r5, r6, lr}
 	adds r4, r0, #0
 	adds r5, r1, #0
 	adds r6, r2, #0
-	ldr r0, _08014FE8 @ =gUnk_08C01CDC
+	ldr r0, _08014FE8 @ =ProcScr_CallDelayedArg
 	movs r1, #3
 	bl Proc_Start
 	str r4, [r0, #0x2c]
@@ -3812,7 +3812,7 @@ sub_8014FCC: @ 0x08014FCC
 	pop {r0}
 	bx r0
 	.align 2, 0
-_08014FE8: .4byte gUnk_08C01CDC
+_08014FE8: .4byte ProcScr_CallDelayedArg
 
 	thumb_func_start sub_8014FEC
 sub_8014FEC: @ 0x08014FEC
@@ -4174,7 +4174,7 @@ sub_801525C: @ 0x0801525C
 	adds r2, r1, #0
 	ldr r0, _08015270 @ =sub_8015274
 	adds r1, r3, #0
-	bl sub_8014FCC
+	bl CallDelayedArg
 	pop {r0}
 	bx r0
 	.align 2, 0

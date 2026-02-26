@@ -176,7 +176,7 @@ void NinianStartTransformToHunman(struct Proc * parent, int x, int y)
 {
     struct Proc * proc;
 
-    Decompress(gUnk_081C2358, (void*)(VRAM + 0x2000));
+    Decompress(Img_NinianReturnToHuman, (void*)(VRAM + 0x2000));
     ApplyPalettes(&gPal[480], 5, 1);
     proc = Proc_StartBlocking(ProcScr_NinianTransformToHunman, parent);
     proc->x = x * 2 - 1;

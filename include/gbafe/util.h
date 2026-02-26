@@ -155,10 +155,10 @@ u8 sub_80149EC(int number, char * buf);
 // ??? sub_8014D78
 // ??? sub_8014E24
 // ??? sub_8014EE4
-// ??? sub_8014F64
-// ??? sub_8014F88
-void sub_8014FB0(void (*)(), int);
-// ??? sub_8014FCC
+// ??? CallDelayed_OnLoop
+// ??? CallDelayedArg_OnLoop
+void CallDelayed(void (*)(), int);
+// ??? CallDelayedArg
 // ??? sub_8014FEC
 // ??? sub_8015000
 // ??? sub_8015010

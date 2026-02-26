@@ -4647,7 +4647,7 @@ sub_806E4A0: @ 0x0806E4A0
 	ldr r2, [r1, #0x30]
 	adds r1, r2, #0
 	movs r2, #0x1e
-	bl sub_8014FCC
+	bl CallDelayedArg
 	add sp, #4
 	pop {r7}
 	pop {r0}
@@ -4708,7 +4708,7 @@ sub_806E51C: @ 0x0806E51C
 	ldr r2, [r1, #0x30]
 	adds r1, r2, #0
 	movs r2, #0x1e
-	bl sub_8014FCC
+	bl CallDelayedArg
 	add sp, #4
 	pop {r7}
 	pop {r0}
@@ -4792,7 +4792,7 @@ sub_806E5C0: @ 0x0806E5C0
 	ldr r2, [r1, #0x30]
 	adds r1, r2, #0
 	movs r2, #0x14
-	bl sub_8014FCC
+	bl CallDelayedArg
 	add sp, #4
 	pop {r7}
 	pop {r0}

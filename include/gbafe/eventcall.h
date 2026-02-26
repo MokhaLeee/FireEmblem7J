@@ -552,10 +552,10 @@ void IceCrystalfx_Paluse(struct ProcIceCrystal * proc);
 // sub_807E5E0
 // sub_807E624
 // EventCall_SwingSwordfx
-// sub_807E658
-// sub_807E694
-// sub_807E6A4
-// sub_807E71C
+// EventCall_NinianReturnToHuman
+// EventCall_HideNinianDragonSMS
+// EventCall_NinianDragonTrembling
+// EventCall_PutFallNinian
 // sub_807E734
 // sub_807E750
 // sub_807E774

@@ -246,9 +246,9 @@ extern u8 Tsa_DragonGateLight[];
 extern u8 Img_DragonGateDragon[];
 extern u16 Pal_DragonGateDragon[];
 extern u8 Tsa_DragonGateDragon[];
-extern u8 gUnk_081C2358[];
-// ??? gUnk_081C2974
-// ??? gUnk_081C2D44
+extern u8 Img_NinianReturnToHuman[];
+// ??? Img_NinianDragonTrembling
+// ??? SpirteAnim_NinianDragonTrembling
 extern u8 Img_EventDragonsSpritefx1[];
 extern u16 gUnk_081C5020[];
 extern u8 Img_EventDragonsSpritefx2[];
@@ -1712,8 +1712,8 @@ extern u8 Img_SysBrownBox[];
 // ??? gUnk_08C01CBC
 // ??? gUnk_08C01CC0
 // ??? gUnk_08C01CC4
-// ??? gUnk_08C01CCC
-// ??? gUnk_08C01CDC
+// ??? ProcScr_CallDelayed
+// ??? ProcScr_CallDelayedArg
 // ??? gUnk_08C01CEC
 // ??? gUnk_08C01D0C
 // ??? gUnk_08C01DAC

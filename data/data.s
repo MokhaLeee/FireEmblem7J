@@ -52,12 +52,12 @@ gUnk_08C01CC0:	@ 0x08C01CC0
 gUnk_08C01CC4:	@ 0x08C01CC4
 	.incbin "FireEmblem7J.base.gba", 0xC01CC4, 0xC01CCC - 0xC01CC4
 
-	.global gUnk_08C01CCC
-gUnk_08C01CCC:	@ 0x08C01CCC
+	.global ProcScr_CallDelayed
+ProcScr_CallDelayed:	@ 0x08C01CCC
 	.incbin "FireEmblem7J.base.gba", 0xC01CCC, 0xC01CDC - 0xC01CCC
 
-	.global gUnk_08C01CDC
-gUnk_08C01CDC:	@ 0x08C01CDC
+	.global ProcScr_CallDelayedArg
+ProcScr_CallDelayedArg:	@ 0x08C01CDC
 	.incbin "FireEmblem7J.base.gba", 0xC01CDC, 0xC01CEC - 0xC01CDC
 
 	.global gUnk_08C01CEC

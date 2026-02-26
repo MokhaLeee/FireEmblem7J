@@ -6060,8 +6060,8 @@ Event80_CompleteGame: @ 0x0800E490
 	pop {r1}
 	bx r1
 
-	thumb_func_start sub_800E4A8
-sub_800E4A8: @ 0x0800E4A8
+	thumb_func_start Event81_800E4A8
+Event81_800E4A8: @ 0x0800E4A8
 	push {r4, lr}
 	adds r4, r0, #0
 	movs r0, #3
@@ -6484,8 +6484,8 @@ _0800E794:
 	pop {r1}
 	bx r1
 
-	thumb_func_start sub_800E798
-sub_800E798: @ 0x0800E798
+	thumb_func_start Event90_800E798
+Event90_800E798: @ 0x0800E798
 	push {lr}
 	bl sub_800F200
 	movs r0, #0
@@ -6855,8 +6855,8 @@ sub_800EA68: @ 0x0800EA68
 	bx lr
 	.align 2, 0
 
-	thumb_func_start sub_800EA74
-sub_800EA74: @ 0x0800EA74
+	thumb_func_start Event98_800EA74
+Event98_800EA74: @ 0x0800EA74
 	movs r1, #0
 	str r1, [r0, #0x3c]
 	movs r0, #0

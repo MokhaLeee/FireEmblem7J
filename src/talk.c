@@ -2865,7 +2865,7 @@ void sub_8009F8C()
 
 void sub_8009F98()
 {
-    sub_8014FB0(&sub_8009F8C, 1);
+    CallDelayed(&sub_8009F8C, 1);
 }
 
 int sub_8009FAC(char const * str, bool isBubbleOpen)

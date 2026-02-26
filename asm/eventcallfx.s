@@ -2531,8 +2531,8 @@ _0807E654:
 	pop {r0}
 	bx r0
 
-	thumb_func_start sub_807E658
-sub_807E658: @ 0x0807E658
+	thumb_func_start EventCall_NinianReturnToHuman
+EventCall_NinianReturnToHuman: @ 0x0807E658
 	push {r4, r5, lr}
 	adds r5, r0, #0
 	adds r1, r5, #0
@@ -2560,8 +2560,8 @@ _0807E68E:
 	pop {r0}
 	bx r0
 
-	thumb_func_start sub_807E694
-sub_807E694: @ 0x0807E694
+	thumb_func_start EventCall_HideNinianDragonSMS
+EventCall_HideNinianDragonSMS: @ 0x0807E694
 	push {lr}
 	movs r0, #0xda
 	bl GetUnitFromCharId
@@ -2569,8 +2569,8 @@ sub_807E694: @ 0x0807E694
 	pop {r0}
 	bx r0
 
-	thumb_func_start sub_807E6A4
-sub_807E6A4: @ 0x0807E6A4
+	thumb_func_start EventCall_NinianDragonTrembling
+EventCall_NinianDragonTrembling: @ 0x0807E6A4
 	push {r4, r5, r6, lr}
 	sub sp, #8
 	adds r0, #0x5e
@@ -2597,19 +2597,19 @@ sub_807E6A4: @ 0x0807E6A4
 	movs r1, #0xe
 	ldrsh r0, [r2, r1]
 	subs r5, r5, r0
-	ldr r0, _0807E708 @ =gUnk_081C2974
+	ldr r0, _0807E708 @ =Img_NinianDragonTrembling
 	ldr r1, _0807E70C @ =0x06013000
 	bl Decompress
-	ldr r0, _0807E710 @ =gUnk_081C2D44
+	ldr r0, _0807E710 @ =SpirteAnim_NinianDragonTrembling
 	ldr r3, _0807E714 @ =0x0000C180
 	str r6, [sp]
 	str r6, [sp, #4]
 	adds r1, r4, #0
 	adds r2, r5, #0
 	bl StartSpriteAnimProc
-	ldr r0, _0807E718 @ =sub_807E694
+	ldr r0, _0807E718 @ =EventCall_HideNinianDragonSMS
 	movs r1, #1
-	bl sub_8014FB0
+	bl CallDelayed
 _0807E6FA:
 	add sp, #8
 	pop {r4, r5, r6}
@@ -2617,14 +2617,14 @@ _0807E6FA:
 	bx r0
 	.align 2, 0
 _0807E704: .4byte gBmSt
-_0807E708: .4byte gUnk_081C2974
+_0807E708: .4byte Img_NinianDragonTrembling
 _0807E70C: .4byte 0x06013000
-_0807E710: .4byte gUnk_081C2D44
+_0807E710: .4byte SpirteAnim_NinianDragonTrembling
 _0807E714: .4byte 0x0000C180
-_0807E718: .4byte sub_807E694
+_0807E718: .4byte EventCall_HideNinianDragonSMS
 
-	thumb_func_start sub_807E71C
-sub_807E71C: @ 0x0807E71C
+	thumb_func_start EventCall_PutFallNinian
+EventCall_PutFallNinian: @ 0x0807E71C
 	push {lr}
 	movs r0, #0xda
 	bl GetUnitFromCharId

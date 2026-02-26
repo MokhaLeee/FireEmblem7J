@@ -852,16 +852,16 @@ Pal_DragonGateDragon:	@ 0x081C1CA4
 Tsa_DragonGateDragon:	@ 0x081C1EA4
 	.incbin "FireEmblem7J.base.gba", 0x1C1EA4, 0x1C2358 - 0x1C1EA4
 
-	.global gUnk_081C2358
-gUnk_081C2358:	@ 0x081C2358
+	.global Img_NinianReturnToHuman
+Img_NinianReturnToHuman:	@ 0x081C2358
 	.incbin "FireEmblem7J.base.gba", 0x1C2358, 0x1C2974 - 0x1C2358
 
-	.global gUnk_081C2974
-gUnk_081C2974:	@ 0x081C2974
+	.global Img_NinianDragonTrembling
+Img_NinianDragonTrembling:	@ 0x081C2974
 	.incbin "FireEmblem7J.base.gba", 0x1C2974, 0x1C2D44 - 0x1C2974
 
-	.global gUnk_081C2D44
-gUnk_081C2D44:	@ 0x081C2D44
+	.global SpirteAnim_NinianDragonTrembling
+SpirteAnim_NinianDragonTrembling:	@ 0x081C2D44
 	.incbin "FireEmblem7J.base.gba", 0x1C2D44, 0x1C2D84 - 0x1C2D44
 
 	.global Img_EventSpriteAnim_NinianDragonDead

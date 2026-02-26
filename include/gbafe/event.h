@@ -272,7 +272,7 @@ void DisplayBackgroundNoClear(int background);
 // sub_800E43C
 // sub_800E44C
 // Event80_CompleteGame
-// sub_800E4A8
+// Event81_800E4A8
 // sub_800E4C0
 // sub_800E510
 // sub_800E520
@@ -289,7 +289,7 @@ void DisplayBackgroundNoClear(int background);
 // sub_800E71C
 // sub_800E750
 // sub_800E774
-// sub_800E798
+// Event90_800E798
 // sub_800E7A4
 // Event93
 // sub_800E7D8
@@ -299,7 +299,7 @@ void DisplayBackgroundNoClear(int background);
 // sub_800EA44
 // sub_800EA58
 // sub_800EA68
-// sub_800EA74
+// Event98_800EA74
 // sub_800EA7C
 // sub_800EA9C
 // sub_800EAD4

@@ -14797,7 +14797,7 @@ sub_8075E9C: @ 0x08075E9C
 	ldr r1, _08075ED4 @ =sub_8075F68
 	adds r0, r1, #0
 	movs r1, #9
-	bl sub_8014FB0
+	bl CallDelayed
 	b _08075EE2
 	.align 2, 0
 _08075ED0: .4byte gManimSt
@@ -14806,7 +14806,7 @@ _08075ED8:
 	ldr r1, _08075F60 @ =sub_8075FAC
 	adds r0, r1, #0
 	movs r1, #0xc
-	bl sub_8014FB0
+	bl CallDelayed
 _08075EE2:
 	ldr r0, _08075F64 @ =gManimSt
 	ldr r2, _08075F64 @ =gManimSt
