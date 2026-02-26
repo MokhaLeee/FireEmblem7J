@@ -3958,7 +3958,7 @@ _0800D544:
 	cmp r0, #0
 	beq _0800D56C
 	ldr r3, _0800D574 @ =0x0000FFFF
-	ldr r2, _0800D578 @ =gUnk_08C0003C
+	ldr r2, _0800D578 @ =gEventCmdTable + 0x4
 _0800D54E:
 	ldr r1, [r4]
 	ands r1, r3
@@ -3984,7 +3984,7 @@ _0800D56E:
 	bx r1
 	.align 2, 0
 _0800D574: .4byte 0x0000FFFF
-_0800D578: .4byte gUnk_08C0003C
+_0800D578: .4byte gEventCmdTable + 0x4
 
 	thumb_func_start sub_800D57C
 sub_800D57C: @ 0x0800D57C
@@ -4018,7 +4018,7 @@ _0800D5B0:
 	cmp r0, #0
 	beq _0800D5D8
 	ldr r3, _0800D5E0 @ =0x0000FFFF
-	ldr r2, _0800D5E4 @ =gUnk_08C0003C
+	ldr r2, _0800D5E4 @ =gEventCmdTable + 0x4
 _0800D5BA:
 	ldr r1, [r4]
 	ands r1, r3
@@ -4044,7 +4044,7 @@ _0800D5DA:
 	bx r1
 	.align 2, 0
 _0800D5E0: .4byte 0x0000FFFF
-_0800D5E4: .4byte gUnk_08C0003C
+_0800D5E4: .4byte gEventCmdTable + 0x4
 
 	thumb_func_start sub_800D5E8
 sub_800D5E8: @ 0x0800D5E8
@@ -4097,7 +4097,7 @@ _0800D640:
 	cmp r0, #0
 	beq _0800D668
 	ldr r5, _0800D670 @ =0x0000FFFF
-	ldr r4, _0800D674 @ =gUnk_08C0003C
+	ldr r4, _0800D674 @ =gEventCmdTable + 0x4
 _0800D64A:
 	ldr r1, [r2]
 	ands r1, r5
@@ -4123,7 +4123,7 @@ _0800D66A:
 	bx r1
 	.align 2, 0
 _0800D670: .4byte 0x0000FFFF
-_0800D674: .4byte gUnk_08C0003C
+_0800D674: .4byte gEventCmdTable + 0x4
 
 	thumb_func_start sub_800D678
 sub_800D678: @ 0x0800D678
