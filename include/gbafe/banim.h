@@ -1667,7 +1667,7 @@ extern struct ProcCmd ProcScr_EfxWeaponIcon[];
 // ??? gUnk_08C0A500
 // ??? gUnk_08C0A520
 // ??? gUnk_08C0A540
-// ??? gUnk_08C0A560
+// ??? ProcScr_EkrUnitKakudai
 // ??? gUnk_08C0A588
 // ??? gUnk_08C0A5A0
 // ??? gUnk_08C0A5C0

@@ -1641,7 +1641,7 @@ _08051EBA:
 NewEkrUnitKakudai: @ 0x08051EC4
 	push {r4, r5, lr}
 	adds r5, r0, #0
-	ldr r0, _08051EF0 @ =gUnk_08C0A560
+	ldr r0, _08051EF0 @ =ProcScr_EkrUnitKakudai
 	movs r1, #3
 	bl Proc_Start
 	adds r4, r0, #0
@@ -1660,7 +1660,7 @@ NewEkrUnitKakudai: @ 0x08051EC4
 	beq _08051F20
 	b _08051F32
 	.align 2, 0
-_08051EF0: .4byte gUnk_08C0A560
+_08051EF0: .4byte ProcScr_EkrUnitKakudai
 _08051EF4: .4byte gEkrDistanceType
 _08051EF8:
 	ldr r0, _08051F1C @ =gBanimValid

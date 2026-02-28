@@ -800,8 +800,8 @@ gUnk_08C0A520:	@ 0x08C0A520
 gUnk_08C0A540:	@ 0x08C0A540
 	.incbin "FireEmblem7J.base.gba", 0xC0A540, 0xC0A560 - 0xC0A540
 
-	.global gUnk_08C0A560
-gUnk_08C0A560:	@ 0x08C0A560
+	.global ProcScr_EkrUnitKakudai
+ProcScr_EkrUnitKakudai:	@ 0x08C0A560
 	.incbin "FireEmblem7J.base.gba", 0xC0A560, 0xC0A588 - 0xC0A560
 
 	.global gUnk_08C0A588
