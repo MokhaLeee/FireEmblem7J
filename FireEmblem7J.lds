@@ -337,6 +337,7 @@ SECTIONS
 		src/chapter-title.o(.text);
 		asm/helpbox.o(.text);
 		asm/mapui.o(.text);
+		src/sioerror.o(.text);
 		asm/sioerror.o(.text);
 		asm/chapter-status.o(.text);
 		asm/cgtext.o(.text);
