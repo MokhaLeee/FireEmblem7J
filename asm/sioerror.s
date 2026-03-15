@@ -1,44 +1,6 @@
 	.include "macro.inc"
 	.syntax unified
 
-	thumb_func_start OnVBlank_SioError
-OnVBlank_SioError: @ 0x08087004
-	push {lr}
-	ldr r1, _08087024 @ =0x03007FF8
-	movs r0, #1
-	strh r0, [r1]
-	bl SyncDispIo
-	bl SyncBgsAndPal
-	bl ApplyDataMoves
-	bl m4aSoundVSync
-	bl m4aSoundMain
-	pop {r0}
-	bx r0
-	.align 2, 0
-_08087024: .4byte 0x03007FF8
-
-	thumb_func_start OnMain_SioErrorWait
-OnMain_SioErrorWait: @ 0x08087028
-	push {r4, lr}
-	ldr r4, _08087050 @ =gpKeySt
-	ldr r0, [r4]
-	bl RefreshKeySt
-	ldr r1, [r4]
-	movs r0, #9
-	ldrh r1, [r1, #8]
-	ands r0, r1
-	cmp r0, #0
-	beq _08087044
-	movs r0, #0xff
-	bl SoftReset
-_08087044:
-	bl VBlankIntrWait
-	pop {r4}
-	pop {r0}
-	bx r0
-	.align 2, 0
-_08087050: .4byte gpKeySt
-
 	thumb_func_start PutSioErrorMessage
 PutSioErrorMessage: @ 0x08087054
 	push {r4, r5, r6, r7, lr}
