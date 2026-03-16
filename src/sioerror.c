@@ -2,7 +2,7 @@
 
 void OnVBlank_SioError(void) {
 
-	*((u16*)0x03007FF8) = 1;
+	INTR_CHECK = 1;
 	SyncDispIo();
 	SyncBgsAndPal();
 	ApplyDataMoves();
@@ -28,4 +28,4 @@ void OnMain_SioErrorWait(void) {
 	VBlankIntrWait();
 
 	return;
-}   
+}
