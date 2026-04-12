@@ -879,8 +879,8 @@ gDefeatTalkList:	@ 0x08D6722C
 gUnk_08D6792C:	@ 0x08D6792C
 	.incbin "FireEmblem7J.base.gba", 0xD6792C, 0xD67934 - 0xD6792C
 
-	.global gUnk_08D67934
-gUnk_08D67934:	@ 0x08D67934
+	.global gSupportTalkList
+gSupportTalkList:	@ 0x08D67934
 	.incbin "FireEmblem7J.base.gba", 0xD67934, 0xD68388 - 0xD67934
 
 	.global gLynModeTransferList

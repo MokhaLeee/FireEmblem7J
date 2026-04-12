@@ -161,8 +161,8 @@ void AtMenu_OnSubmenuEnd(struct ProcAtMenu *proc);
 // sub_808F7B4
 void AtMenu_LockGame(struct ProcAtMenu *proc);
 void AtMenu_UnlockGame(struct ProcAtMenu *proc);
-// sub_808F804
-// sub_808F818
+// StartPrepAtMenu
+// StartPrepAtMenuWithConfig
 bool HasConvoyAccess_(void);
 // sub_808F8D0
 // sub_808F938

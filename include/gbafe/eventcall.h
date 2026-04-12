@@ -40,9 +40,9 @@ bool CheckAvailableTurnEvent(void);
 void StartAvailableTurnEvents(void);
 // sub_80791CC
 // sub_8079210
-// sub_8079250
-// sub_80792C4
-// sub_807931C
+// StartSupportTalk
+// StartSupportViewerTalk
+// GetSupportTalkSong
 // sub_80793A0
 // sub_80793E4
 // sub_80795CC

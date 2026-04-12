@@ -11118,7 +11118,7 @@ sub_8041E1C: @ 0x08041E1C
 	bl sub_8048590
 	bl sub_8048708
 	bl sub_8048300
-	bl sub_808F804
+	bl StartPrepAtMenu
 	adds r0, r4, #0
 	movs r1, #5
 	bl Proc_Goto

@@ -318,9 +318,9 @@ bool IsEventRunning();
 // sub_800EC58
 void sub_800EC74();
 void sub_800EC84(int);
-// sub_800EC9C
+// CallMapSupportEvent
 // sub_800ECB8
-// sub_800ECD4
+// CallSupportViewerEvent
 // sub_800ECEC
 // sub_800ED10
 // sub_800ED34

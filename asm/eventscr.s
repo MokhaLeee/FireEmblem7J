@@ -7166,8 +7166,8 @@ sub_800EC84: @ 0x0800EC84
 	.align 2, 0
 _0800EC98: .4byte gUnk_08C00CE8
 
-	thumb_func_start sub_800EC9C
-sub_800EC9C: @ 0x0800EC9C
+	thumb_func_start CallMapSupportEvent
+CallMapSupportEvent: @ 0x0800EC9C
 	push {r4, r5, lr}
 	adds r4, r0, #0
 	adds r5, r1, #0
@@ -7198,8 +7198,8 @@ _0800ECCE:
 	bx r0
 	.align 2, 0
 
-	thumb_func_start sub_800ECD4
-sub_800ECD4: @ 0x0800ECD4
+	thumb_func_start CallSupportViewerEvent
+CallSupportViewerEvent: @ 0x0800ECD4
 	push {r4, lr}
 	adds r4, r0, #0
 	ldr r0, _0800ECE8 @ =gUnk_08C00D20

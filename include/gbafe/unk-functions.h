@@ -647,28 +647,28 @@ bool sub_80886E0(void);
 
 /* prepscreen.h */
 
-// GetSupportScreenUnitCount
+int GetSupportScreenUnitCount(void);
 // GetNextSupportScreenUnit
-// GetPreviousSupportScreenUnit
-// GetSupportScreenPartnerSupportLevel
-// sub_809BA60
-// sub_809BA78
-// sub_809BA94
-// sub_809BAB8
-// GetSupportScreenClassIdAt
-// GetSupportClassForCharId
+int GetPreviousSupportScreenUnit(int num);
+int GetSupportScreenPartnerSupportLevel(int idx, int partner);
+int GetSupportScreenPartnerClassId(int idx, int partner);
+bool GetSupportScreenPartnerIsAlive(int idx, int partner);
+int GetSupportScreenPartnerCharId(int idx, int partner);
+int GetSupportScreenCharIdAt(int);
+int GetSupportScreenClassIdAt(int idx);
+int GetSupportClassForCharId(int charId);
 // sub_809BB30
 // sub_809BB58
-// sub_809BB98
+// SupportScreen_SetupUnits
 // sub_809BE18
-// sub_809BE88
-// sub_809BEC4
-// sub_809BF40
-// sub_809BFB8
-// sub_809BFCC
+int GetTotalSupportLevel(int idx);
+// Support_GetSupportLevelTextColor
+// DrawSupportScreenText
+// SupportScreen_OnInit
+// DrawSupportScreenUnitSprites
 // sub_809C038
-// sub_809C0C8
-// sub_809C3EC
+// SupportScreen_SetupGraphics
+// SupportScreen_OnEnd
 // sub_809C410
 // sub_809C448
 // sub_809C7B4
@@ -686,10 +686,10 @@ bool sub_80886E0(void);
 // sub_809CDA0
 // sub_809CDD0
 // sub_809CE20
-// sub_809CEA8
+int GetSupportScreenPartnerCount(int charId);
 // sub_809CEC8
-// sub_809CFD8
-// sub_809D1C8
+// DrawSupportSubScreenUnitPartnerText
+// DrawSupportSubScreenRemainingText
 // InitSupportSubScreenPartners
 // sub_809D420
 // sub_809D450

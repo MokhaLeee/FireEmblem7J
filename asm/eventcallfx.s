@@ -777,7 +777,7 @@ sub_807D94C: @ 0x0807D94C
 	movs r0, #0xf
 	movs r1, #0x15
 	movs r2, #1
-	bl sub_809F88C
+	bl UpdateBestGlobalSupportValue
 	pop {r0}
 	bx r0
 
@@ -787,7 +787,7 @@ sub_807D95C: @ 0x0807D95C
 	movs r0, #0xf
 	movs r1, #0x15
 	movs r2, #2
-	bl sub_809F88C
+	bl UpdateBestGlobalSupportValue
 	pop {r0}
 	bx r0
 
@@ -797,7 +797,7 @@ sub_807D96C: @ 0x0807D96C
 	movs r0, #0xf
 	movs r1, #0x15
 	movs r2, #3
-	bl sub_809F88C
+	bl UpdateBestGlobalSupportValue
 	pop {r0}
 	bx r0
 

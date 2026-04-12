@@ -1366,8 +1366,8 @@ _08079244:
 	.align 2, 0
 _0807924C: .4byte gPlaySt
 
-	thumb_func_start sub_8079250
-sub_8079250: @ 0x08079250
+	thumb_func_start StartSupportTalk
+StartSupportTalk: @ 0x08079250
 	push {r4, r5, r6, r7, lr}
 	adds r4, r2, #0
 	lsls r0, r0, #0x18
@@ -1375,10 +1375,10 @@ sub_8079250: @ 0x08079250
 	lsls r1, r1, #0x18
 	lsrs r6, r1, #0x18
 	movs r5, #0
-	ldr r0, _08079264 @ =gUnk_08D67934
+	ldr r0, _08079264 @ =gSupportTalkList
 	b _08079292
 	.align 2, 0
-_08079264: .4byte gUnk_08D67934
+_08079264: .4byte gSupportTalkList
 _08079268:
 	adds r2, r1, #0
 	ldrb r1, [r0, #1]
@@ -1416,33 +1416,33 @@ _08079298:
 	adds r1, r7, #0
 	adds r2, r6, #0
 	adds r3, r4, #0
-	bl sub_807931C
+	bl GetSupportTalkSong
 	adds r1, r0, #0
 	adds r0, r5, #0
-	bl sub_800EC9C
+	bl CallMapSupportEvent
 	bl sub_800AD60
 	adds r0, r7, #0
 	adds r1, r6, #0
 	adds r2, r4, #0
-	bl sub_809F88C
+	bl UpdateBestGlobalSupportValue
 _080792BC:
 	pop {r4, r5, r6, r7}
 	pop {r0}
 	bx r0
 	.align 2, 0
 
-	thumb_func_start sub_80792C4
-sub_80792C4: @ 0x080792C4
+	thumb_func_start StartSupportViewerTalk
+StartSupportViewerTalk: @ 0x080792C4
 	push {r4, r5, r6, lr}
 	lsls r0, r0, #0x18
 	lsrs r6, r0, #0x18
 	lsls r1, r1, #0x18
 	lsrs r4, r1, #0x18
 	movs r5, #0
-	ldr r1, _080792D4 @ =gUnk_08D67934
+	ldr r1, _080792D4 @ =gSupportTalkList
 	b _08079302
 	.align 2, 0
-_080792D4: .4byte gUnk_08D67934
+_080792D4: .4byte gSupportTalkList
 _080792D8:
 	adds r0, r3, #0
 	ldrb r3, [r1, #1]
@@ -1478,15 +1478,15 @@ _08079308:
 	cmp r5, #0
 	beq _08079316
 	adds r0, r5, #0
-	bl sub_800ECD4
+	bl CallSupportViewerEvent
 	bl sub_800AD60
 _08079316:
 	pop {r4, r5, r6}
 	pop {r0}
 	bx r0
 
-	thumb_func_start sub_807931C
-sub_807931C: @ 0x0807931C
+	thumb_func_start GetSupportTalkSong
+GetSupportTalkSong: @ 0x0807931C
 	push {r4, r5, lr}
 	adds r5, r3, #0
 	lsls r1, r1, #0x18
@@ -1496,10 +1496,10 @@ sub_807931C: @ 0x0807931C
 	adds r2, r0, #0
 	cmp r2, #0
 	bne _08079352
-	ldr r2, _08079334 @ =gUnk_08D67934
+	ldr r2, _08079334 @ =gSupportTalkList
 	b _0807933A
 	.align 2, 0
-_08079334: .4byte gUnk_08D67934
+_08079334: .4byte gSupportTalkList
 _08079338:
 	adds r2, #0x14
 _0807933A:

@@ -3,16 +3,16 @@
 
 	thumb_func_start GetSupportScreenUnitCount
 GetSupportScreenUnitCount: @ 0x0809BA14
-	ldr r0, _0809BA1C @ =0x02012BF8
+	ldr r0, _0809BA1C @ =sSupportScreenUnitCount
 	ldr r0, [r0]
 	bx lr
 	.align 2, 0
-_0809BA1C: .4byte 0x02012BF8
+_0809BA1C: .4byte sSupportScreenUnitCount
 
 	thumb_func_start GetNextSupportScreenUnit
 GetNextSupportScreenUnit: @ 0x0809BA20
 	adds r1, r0, #0
-	ldr r0, _0809BA30 @ =0x02012BF8
+	ldr r0, _0809BA30 @ =sSupportScreenUnitCount
 	ldr r0, [r0]
 	subs r0, #1
 	cmp r1, r0
@@ -20,7 +20,7 @@ GetNextSupportScreenUnit: @ 0x0809BA20
 	adds r0, r1, #1
 	b _0809BA36
 	.align 2, 0
-_0809BA30: .4byte 0x02012BF8
+_0809BA30: .4byte sSupportScreenUnitCount
 _0809BA34:
 	movs r0, #0
 _0809BA36:
@@ -30,13 +30,13 @@ _0809BA36:
 GetPreviousSupportScreenUnit: @ 0x0809BA38
 	cmp r0, #0
 	bne _0809BA40
-	ldr r0, _0809BA44 @ =0x02012BF8
+	ldr r0, _0809BA44 @ =sSupportScreenUnitCount
 	ldr r0, [r0]
 _0809BA40:
 	subs r0, #1
 	bx lr
 	.align 2, 0
-_0809BA44: .4byte 0x02012BF8
+_0809BA44: .4byte sSupportScreenUnitCount
 
 	thumb_func_start GetSupportScreenPartnerSupportLevel
 GetSupportScreenPartnerSupportLevel: @ 0x0809BA48
@@ -53,8 +53,8 @@ GetSupportScreenPartnerSupportLevel: @ 0x0809BA48
 	.align 2, 0
 _0809BA5C: .4byte sSupportScreenUnits
 
-	thumb_func_start sub_809BA60
-sub_809BA60: @ 0x0809BA60
+	thumb_func_start GetSupportScreenPartnerClassId
+GetSupportScreenPartnerClassId: @ 0x0809BA60
 	ldr r2, _0809BA74 @ =sSupportScreenUnits
 	ldr r3, [r2]
 	lsls r2, r0, #1
@@ -68,8 +68,8 @@ sub_809BA60: @ 0x0809BA60
 	.align 2, 0
 _0809BA74: .4byte sSupportScreenUnits
 
-	thumb_func_start sub_809BA78
-sub_809BA78: @ 0x0809BA78
+	thumb_func_start GetSupportScreenPartnerIsAlive
+GetSupportScreenPartnerIsAlive: @ 0x0809BA78
 	ldr r2, _0809BA90 @ =sSupportScreenUnits
 	ldr r3, [r2]
 	lsls r2, r0, #1
@@ -84,12 +84,12 @@ sub_809BA78: @ 0x0809BA78
 	.align 2, 0
 _0809BA90: .4byte sSupportScreenUnits
 
-	thumb_func_start sub_809BA94
-sub_809BA94: @ 0x0809BA94
+	thumb_func_start GetSupportScreenPartnerCharId
+GetSupportScreenPartnerCharId: @ 0x0809BA94
 	push {r4, r5, lr}
 	adds r5, r1, #0
 	ldr r4, _0809BAB4 @ =gCharacterData
-	bl sub_809BAB8
+	bl GetSupportScreenCharIdAt
 	subs r0, #1
 	movs r1, #0x34
 	muls r0, r1, r0
@@ -104,8 +104,8 @@ sub_809BA94: @ 0x0809BA94
 	.align 2, 0
 _0809BAB4: .4byte gCharacterData
 
-	thumb_func_start sub_809BAB8
-sub_809BAB8: @ 0x0809BAB8
+	thumb_func_start GetSupportScreenCharIdAt
+GetSupportScreenCharIdAt: @ 0x0809BAB8
 	ldr r1, _0809BAC8 @ =sSupportScreenUnits
 	ldr r2, [r1]
 	lsls r1, r0, #1
@@ -177,10 +177,10 @@ _0809BB2C: .4byte gCharacterData
 	thumb_func_start sub_809BB30
 sub_809BB30: @ 0x0809BB30
 	adds r2, r0, #0
-	ldr r1, _0809BB38 @ =gUnk_08D67934
+	ldr r1, _0809BB38 @ =gSupportTalkList
 	b _0809BB4E
 	.align 2, 0
-_0809BB38: .4byte gUnk_08D67934
+_0809BB38: .4byte gSupportTalkList
 _0809BB3C:
 	ldrb r0, [r1]
 	cmp r0, r2
@@ -204,10 +204,10 @@ _0809BB56:
 	thumb_func_start sub_809BB58
 sub_809BB58: @ 0x0809BB58
 	push {r4, r5, r6, lr}
-	ldr r6, _0809BB60 @ =gUnk_08D67934
+	ldr r6, _0809BB60 @ =gSupportTalkList
 	b _0809BB8C
 	.align 2, 0
-_0809BB60: .4byte gUnk_08D67934
+_0809BB60: .4byte gSupportTalkList
 _0809BB64:
 	ldrb r0, [r6]
 	movs r1, #0
@@ -219,11 +219,11 @@ _0809BB64:
 	ldrb r5, [r6, #1]
 	adds r0, r4, #0
 	adds r1, r5, #0
-	bl sub_809F5FC
+	bl GetUnitsAverageSupportValue
 	adds r2, r0, #0
 	adds r0, r4, #0
 	adds r1, r5, #0
-	bl sub_809F88C
+	bl UpdateBestGlobalSupportValue
 	adds r6, #0x14
 _0809BB8C:
 	ldrb r0, [r6]
@@ -233,8 +233,8 @@ _0809BB8C:
 	pop {r0}
 	bx r0
 
-	thumb_func_start sub_809BB98
-sub_809BB98: @ 0x0809BB98
+	thumb_func_start SupportScreen_SetupUnits
+SupportScreen_SetupUnits: @ 0x0809BB98
 	push {r4, r5, r6, r7, lr}
 	mov r7, sl
 	mov r6, sb
@@ -250,7 +250,7 @@ sub_809BB98: @ 0x0809BB98
 	ldr r2, _0809BD1C @ =0x01000600
 	mov r0, sp
 	bl CpuSet
-	ldr r5, _0809BD20 @ =0x02012BF8
+	ldr r5, _0809BD20 @ =sSupportScreenUnitCount
 	movs r1, #0
 	str r1, [r5]
 	adds r4, #0x42
@@ -295,7 +295,7 @@ _0809BC08:
 	cmp r4, #0x3f
 	ble _0809BBD8
 	movs r4, #1
-	ldr r0, _0809BD20 @ =0x02012BF8
+	ldr r0, _0809BD20 @ =sSupportScreenUnitCount
 	mov sl, r0
 _0809BC14:
 	adds r0, r4, #0
@@ -314,7 +314,7 @@ _0809BC14:
 	cmp r0, #0
 	bne _0809BD0E
 	ldrb r0, [r2, #4]
-	bl sub_809CEA8
+	bl GetSupportScreenPartnerCount
 	cmp r0, #0
 	beq _0809BD0E
 	mov r0, sl
@@ -351,13 +351,13 @@ _0809BC14:
 	ldrb r0, [r0, #0x15]
 	cmp r6, r0
 	bge _0809BD06
-	ldr r7, _0809BD20 @ =0x02012BF8
+	ldr r7, _0809BD20 @ =sSupportScreenUnitCount
 	ldr r0, _0809BD18 @ =sSupportScreenUnits
 	mov r8, r0
 _0809BC88:
 	ldr r0, [r7]
 	adds r1, r6, #0
-	bl sub_809BA94
+	bl GetSupportScreenPartnerCharId
 	adds r4, r0, #0
 	adds r0, r5, #0
 	adds r1, r6, #0
@@ -430,7 +430,7 @@ _0809BD16:
 	.align 2, 0
 _0809BD18: .4byte sSupportScreenUnits
 _0809BD1C: .4byte 0x01000600
-_0809BD20: .4byte 0x02012BF8
+_0809BD20: .4byte sSupportScreenUnitCount
 _0809BD24: .4byte 0x01000010
 _0809BD28: .4byte 0x00010004
 _0809BD2C: .4byte 0x08C4C184
@@ -449,13 +449,13 @@ _0809BD30:
 _0809BD4C:
 	adds r0, r6, #0
 	mov r1, sl
-	bl sub_809F950
+	bl GGM_IsCharacterKnown
 	lsls r0, r0, #0x18
 	adds r4, r6, #1
 	cmp r0, #0
 	beq _0809BE00
 	adds r0, r6, #0
-	bl sub_809CEA8
+	bl GetSupportScreenPartnerCount
 	cmp r0, #0
 	beq _0809BE00
 	ldr r1, [r5]
@@ -486,7 +486,7 @@ _0809BD4C:
 	adds r1, #2
 	adds r0, r6, #0
 	mov r2, sl
-	bl sub_809F770
+	bl GetGlobalSupportListFromSave
 	movs r0, #0
 	mov sb, r0
 	b _0809BDF0
@@ -496,7 +496,7 @@ _0809BDAC: .4byte gCharacterData
 _0809BDB0:
 	ldr r0, [r5]
 	mov r1, sb
-	bl sub_809BA94
+	bl GetSupportScreenPartnerCharId
 	ldr r1, [r5]
 	ldr r3, [r7]
 	lsls r2, r1, #1
@@ -512,7 +512,7 @@ _0809BDB0:
 	ldrb r1, [r1, #5]
 	strb r1, [r2]
 	add r1, sp, #0x28
-	bl sub_809F950
+	bl GGM_IsCharacterKnown
 	ldr r2, [r5]
 	ldr r3, [r7]
 	lsls r1, r2, #1
@@ -526,7 +526,7 @@ _0809BDB0:
 	add sb, r1
 _0809BDF0:
 	adds r0, r6, #0
-	bl sub_809CEA8
+	bl GetSupportScreenPartnerCount
 	cmp sb, r0
 	blt _0809BDB0
 	ldr r0, [r5]
@@ -576,7 +576,7 @@ _0809BE44:
 	b _0809BE74
 _0809BE4C:
 	movs r4, #0
-	ldr r0, _0809BE80 @ =0x02012BF8
+	ldr r0, _0809BE80 @ =sSupportScreenUnitCount
 	ldr r0, [r0]
 	cmp r4, r0
 	bge _0809BE74
@@ -590,7 +590,7 @@ _0809BE58:
 	bl UseUnitSprite
 	adds r5, #0x18
 	adds r4, #1
-	ldr r0, _0809BE80 @ =0x02012BF8
+	ldr r0, _0809BE80 @ =sSupportScreenUnitCount
 	ldr r0, [r0]
 	cmp r4, r0
 	blt _0809BE58
@@ -600,11 +600,11 @@ _0809BE74:
 	pop {r0}
 	bx r0
 	.align 2, 0
-_0809BE80: .4byte 0x02012BF8
+_0809BE80: .4byte sSupportScreenUnitCount
 _0809BE84: .4byte sSupportScreenUnits
 
-	thumb_func_start sub_809BE88
-sub_809BE88: @ 0x0809BE88
+	thumb_func_start GetTotalSupportLevel
+GetTotalSupportLevel: @ 0x0809BE88
 	push {r4, r5, r6, r7, lr}
 	adds r5, r0, #0
 	movs r6, #0
@@ -621,7 +621,7 @@ _0809BE98:
 	adds r4, #1
 _0809BEA4:
 	adds r0, r5, #0
-	bl sub_809BAB8
+	bl GetSupportScreenCharIdAt
 	subs r0, #1
 	movs r1, #0x34
 	muls r0, r1, r0
@@ -636,8 +636,8 @@ _0809BEA4:
 	bx r1
 	.align 2, 0
 
-	thumb_func_start sub_809BEC4
-sub_809BEC4: @ 0x0809BEC4
+	thumb_func_start Support_GetSupportLevelTextColor
+Support_GetSupportLevelTextColor: @ 0x0809BEC4
 	push {r4, r5, r6, r7, lr}
 	mov r7, sb
 	mov r6, r8
@@ -647,7 +647,7 @@ sub_809BEC4: @ 0x0809BEC4
 	cmp r0, #0
 	beq _0809BEE0
 	adds r0, r6, #0
-	bl sub_809BE88
+	bl GetTotalSupportLevel
 	cmp r0, #5
 	beq _0809BF22
 	b _0809BF28
@@ -655,25 +655,25 @@ _0809BEE0:
 	movs r0, #0
 	mov r8, r0
 	adds r0, r6, #0
-	bl sub_809BE88
+	bl GetTotalSupportLevel
 	mov sb, r0
 	adds r0, r6, #0
-	bl sub_809BAB8
-	bl sub_809CEA8
+	bl GetSupportScreenCharIdAt
+	bl GetSupportScreenPartnerCount
 	adds r7, r0, #0
 	movs r5, #0
 	cmp r8, r7
 	bge _0809BF1E
 _0809BEFE:
 	adds r0, r6, #0
-	bl sub_809BAB8
+	bl GetSupportScreenCharIdAt
 	adds r4, r0, #0
 	adds r0, r6, #0
 	adds r1, r5, #0
-	bl sub_809BA94
+	bl GetSupportScreenPartnerCharId
 	adds r1, r0, #0
 	adds r0, r4, #0
-	bl sub_809F5FC
+	bl GetUnitsAverageSupportValue
 	add r8, r0
 	adds r5, #1
 	cmp r5, r7
@@ -702,11 +702,11 @@ _0809BF32:
 	bx r1
 	.align 2, 0
 
-	thumb_func_start sub_809BF40
-sub_809BF40: @ 0x0809BF40
+	thumb_func_start DrawSupportScreenText
+DrawSupportScreenText: @ 0x0809BF40
 	push {r4, r5, lr}
 	ldr r4, _0809BFA8 @ =0x02012A90
-	bl sub_809F6CC
+	bl GetTotalSupportCollection
 	adds r5, r0, #0
 	adds r4, #8
 	adds r0, r4, #0
@@ -756,8 +756,8 @@ _0809BFAC: .4byte gUnk_0842D1FC
 _0809BFB0: .4byte gUnk_0842D204
 _0809BFB4: .4byte gBg0Tm + 0x4a8
 
-	thumb_func_start sub_809BFB8
-sub_809BFB8: @ 0x0809BFB8
+	thumb_func_start SupportScreen_OnInit
+SupportScreen_OnInit: @ 0x0809BFB8
 	movs r1, #0
 	str r1, [r0, #0x2c]
 	adds r2, r0, #0
@@ -769,8 +769,8 @@ sub_809BFB8: @ 0x0809BFB8
 	str r1, [r0, #0x3c]
 	bx lr
 
-	thumb_func_start sub_809BFCC
-sub_809BFCC: @ 0x0809BFCC
+	thumb_func_start DrawSupportScreenUnitSprites
+DrawSupportScreenUnitSprites: @ 0x0809BFCC
 	push {r4, r5, r6, r7, lr}
 	mov r7, r8
 	push {r7}
@@ -898,8 +898,8 @@ _0809C0C0:
 	bx r0
 	.align 2, 0
 
-	thumb_func_start sub_809C0C8
-sub_809C0C8: @ 0x0809C0C8
+	thumb_func_start SupportScreen_SetupGraphics
+SupportScreen_SetupGraphics: @ 0x0809C0C8
 	push {r4, r5, r6, r7, lr}
 	mov r7, sl
 	mov r6, sb
@@ -1124,7 +1124,7 @@ _0809C2A0:
 	adds r0, r4, #0
 	movs r1, #9
 	bl InitText
-	bl sub_809BF40
+	bl DrawSupportScreenText
 	movs r3, #0xa
 	rsbs r3, r3, #0
 	ldr r0, _0809C314 @ =0x00000901
@@ -1162,7 +1162,7 @@ _0809C324:
 	ldr r0, _0809C378 @ =0x00000FB5
 _0809C326:
 	str r0, [r7, #0x30]
-	ldr r0, _0809C37C @ =sub_809BFCC
+	ldr r0, _0809C37C @ =DrawSupportScreenUnitSprites
 	adds r1, r7, #0
 	bl StartParallelWorker
 	adds r0, r7, #0
@@ -1197,7 +1197,7 @@ _0809C374:
 	b _0809C38A
 	.align 2, 0
 _0809C378: .4byte 0x00000FB5
-_0809C37C: .4byte sub_809BFCC
+_0809C37C: .4byte DrawSupportScreenUnitSprites
 _0809C380:
 	adds r0, r7, #0
 	adds r1, r4, #0
@@ -1250,8 +1250,8 @@ _0809C392:
 _0809C3E4: .4byte 0x06014800
 _0809C3E8: .4byte gDispIo
 
-	thumb_func_start sub_809C3EC
-sub_809C3EC: @ 0x0809C3EC
+	thumb_func_start SupportScreen_OnEnd
+SupportScreen_OnEnd: @ 0x0809C3EC
 	push {r4, lr}
 	adds r4, r0, #0
 	bl EndCgText
@@ -1383,7 +1383,7 @@ _0809C4EC:
 	adds r4, #0x4c
 	ldr r5, _0809C518 @ =gCharacterData
 	adds r0, r7, #0
-	bl sub_809BAB8
+	bl GetSupportScreenCharIdAt
 	subs r0, #1
 	movs r1, #0x34
 	muls r0, r1, r0
@@ -1615,7 +1615,7 @@ _0809C6C6:
 	subs r4, r4, r0
 	ldr r5, _0809C768 @ =gCharacterData
 	adds r0, r7, #0
-	bl sub_809BAB8
+	bl GetSupportScreenCharIdAt
 	subs r0, #1
 	movs r1, #0x34
 	muls r0, r1, r0
@@ -1839,7 +1839,7 @@ _0809C86C:
 	lsls r0, r0, #0x18
 	asrs r0, r0, #0x18
 	adds r1, r6, #0
-	bl sub_809BEC4
+	bl Support_GetSupportLevelTextColor
 	cmp r0, #1
 	beq _0809C8BA
 	cmp r0, #1
@@ -1872,7 +1872,7 @@ _0809C8C4:
 	mov r1, sb
 	bl Text_SetColor
 	adds r0, r6, #0
-	bl sub_809BAB8
+	bl GetSupportScreenCharIdAt
 	subs r0, #1
 	movs r1, #0x34
 	muls r0, r1, r0
@@ -1934,20 +1934,20 @@ UiSupport_GetSupportTalkSong: @ 0x0809C948
 	adds r5, r0, #0
 	adds r6, r1, #0
 	mov r8, r2
-	bl sub_809BAB8
+	bl GetSupportScreenCharIdAt
 	adds r4, r0, #0
 	lsls r4, r4, #0x18
 	lsrs r4, r4, #0x18
 	adds r0, r5, #0
 	adds r1, r6, #0
-	bl sub_809BA94
+	bl GetSupportScreenPartnerCharId
 	adds r2, r0, #0
 	lsls r2, r2, #0x18
 	lsrs r2, r2, #0x18
 	movs r0, #0
 	adds r1, r4, #0
 	mov r3, r8
-	bl sub_807931C
+	bl GetSupportTalkSong
 	pop {r3}
 	mov r8, r3
 	pop {r4, r5, r6}
@@ -2542,8 +2542,8 @@ _0809CE9C: .4byte 0x02012BFC
 _0809CEA0: .4byte gBg0Tm
 _0809CEA4: .4byte 0x02013BFC
 
-	thumb_func_start sub_809CEA8
-sub_809CEA8: @ 0x0809CEA8
+	thumb_func_start GetSupportScreenPartnerCount
+GetSupportScreenPartnerCount: @ 0x0809CEA8
 	ldr r2, _0809CEC0 @ =gCharacterData
 	subs r0, #1
 	movs r1, #0x34
@@ -2689,8 +2689,8 @@ _0809CFCC: .4byte 0x0000E280
 _0809CFD0: .4byte gUnk_08D8DEE2
 _0809CFD4: .4byte gUnk_08D8D51C
 
-	thumb_func_start sub_809CFD8
-sub_809CFD8: @ 0x0809CFD8
+	thumb_func_start DrawSupportSubScreenUnitPartnerText
+DrawSupportSubScreenUnitPartnerText: @ 0x0809CFD8
 	push {r4, r5, r6, r7, lr}
 	mov r7, sl
 	mov r6, sb
@@ -2771,12 +2771,12 @@ _0809D074:
 	movs r7, #0
 	mov r2, sb
 	ldr r0, [r2, #0x2c]
-	bl sub_809BAB8
+	bl GetSupportScreenCharIdAt
 	str r0, [sp, #0x14]
 	mov r3, sb
 	ldr r0, [r3, #0x2c]
 	mov r1, sl
-	bl sub_809BA94
+	bl GetSupportScreenPartnerCharId
 	str r0, [sp, #0x18]
 	ldrb r4, [r4]
 	cmp r4, #2
@@ -2786,7 +2786,7 @@ _0809D094:
 	mov r4, sb
 	ldr r0, [r4, #0x2c]
 	mov r1, sl
-	bl sub_809BA94
+	bl GetSupportScreenPartnerCharId
 	subs r0, #1
 	movs r6, #0x34
 	muls r0, r6, r0
@@ -2816,7 +2816,7 @@ _0809D094:
 	mov r1, sb
 	ldr r0, [r1, #0x2c]
 	mov r1, sl
-	bl sub_809BA94
+	bl GetSupportScreenPartnerCharId
 	subs r0, #1
 	muls r0, r6, r0
 	ldr r2, _0809D124 @ =gCharacterData
@@ -2829,7 +2829,7 @@ _0809D094:
 	bl PutIcon
 	ldr r0, [sp, #0x14]
 	ldr r1, [sp, #0x18]
-	bl sub_809F5FC
+	bl GetUnitsAverageSupportValue
 	cmp r0, #2
 	bne _0809D170
 	movs r5, #0
@@ -2934,8 +2934,8 @@ _0809D1B4:
 	.align 2, 0
 _0809D1C4: .4byte gBg2Tm
 
-	thumb_func_start sub_809D1C8
-sub_809D1C8: @ 0x0809D1C8
+	thumb_func_start DrawSupportSubScreenRemainingText
+DrawSupportSubScreenRemainingText: @ 0x0809D1C8
 	push {r4, r5, r6, lr}
 	sub sp, #0x20
 	adds r6, r0, #0
@@ -2960,7 +2960,7 @@ sub_809D1C8: @ 0x0809D1C8
 	bl SpriteText_DrawBackgroundExt
 	ldr r4, _0809D290 @ =gCharacterData
 	ldr r0, [r6, #0x2c]
-	bl sub_809BAB8
+	bl GetSupportScreenCharIdAt
 	subs r0, #1
 	movs r1, #0x34
 	muls r0, r1, r0
@@ -3124,7 +3124,7 @@ InitSupportSubScreenPartners: @ 0x0809D33C
 _0809D368:
 	ldr r0, [r6, #0x2c]
 	adds r1, r4, #0
-	bl sub_809BA94
+	bl GetSupportScreenPartnerCharId
 	adds r7, r0, #0
 	mov r2, sl
 	adds r1, r2, r4
@@ -3192,7 +3192,7 @@ _0809D3DE:
 	strb r0, [r5]
 	ldr r0, [r6, #0x2c]
 	adds r1, r4, #0
-	bl sub_809BA78
+	bl GetSupportScreenPartnerIsAlive
 	lsls r0, r0, #0x18
 	cmp r0, #0
 	beq _0809D408
@@ -3260,7 +3260,7 @@ sub_809D450: @ 0x0809D450
 	cmp r5, #0
 	beq _0809D476
 	ldr r0, [r4, #0x2c]
-	bl sub_809BE88
+	bl GetTotalSupportLevel
 	movs r1, #5
 	subs r1, r1, r0
 	adds r0, r4, #0
@@ -3269,7 +3269,7 @@ sub_809D450: @ 0x0809D450
 	b _0809D4C4
 _0809D476:
 	ldr r0, [r4, #0x2c]
-	bl sub_809BAB8
+	bl GetSupportScreenCharIdAt
 	mov sb, r0
 	adds r1, r4, #0
 	adds r1, #0x3d
@@ -3286,10 +3286,10 @@ _0809D476:
 _0809D496:
 	ldr r0, [r4, #0x2c]
 	adds r1, r5, #0
-	bl sub_809BA94
+	bl GetSupportScreenPartnerCharId
 	adds r1, r0, #0
 	mov r0, sb
-	bl sub_809F5FC
+	bl GetUnitsAverageSupportValue
 	ldrb r1, [r6]
 	adds r0, r1, r0
 	strb r0, [r6]
@@ -3299,7 +3299,7 @@ _0809D496:
 	blt _0809D496
 _0809D4B4:
 	ldr r0, [r4, #0x2c]
-	bl sub_809BE88
+	bl GetTotalSupportLevel
 	mov r1, r8
 	ldrb r1, [r1]
 	subs r0, r1, r0
@@ -3323,7 +3323,7 @@ sub_809D4D0: @ 0x0809D4D0
 _0809D4DC:
 	ldr r0, [r5, #0x2c]
 	adds r1, r4, #0
-	bl sub_809BA60
+	bl GetSupportScreenPartnerClassId
 	adds r1, r5, #0
 	adds r1, #0x4e
 	adds r1, r1, r4
@@ -3347,7 +3347,7 @@ _0809D4F8:
 _0809D510:
 	adds r0, r5, #0
 	adds r1, r4, #0
-	bl sub_809CFD8
+	bl DrawSupportSubScreenUnitPartnerText
 	adds r4, #1
 _0809D51A:
 	ldrb r0, [r6]
@@ -3439,8 +3439,8 @@ sub_809D5A4: @ 0x0809D5A4
 	ands r0, r1
 	strb r0, [r2]
 	ldr r0, [r4, #0x2c]
-	bl sub_809BAB8
-	bl sub_809CEA8
+	bl GetSupportScreenCharIdAt
+	bl GetSupportScreenPartnerCount
 	adds r1, r4, #0
 	adds r1, #0x3c
 	strb r0, [r1]
@@ -3658,7 +3658,7 @@ _0809D714:
 	bl TmApplyTsa_thm
 	ldr r4, _0809D7E4 @ =gCharacterData
 	ldr r0, [r5, #0x2c]
-	bl sub_809BAB8
+	bl GetSupportScreenCharIdAt
 	subs r0, #1
 	movs r1, #0x34
 	muls r0, r1, r0
@@ -3716,7 +3716,7 @@ _0809D800:
 	adds r0, r5, #0
 	bl sub_809D4D0
 	adds r0, r5, #0
-	bl sub_809D1C8
+	bl DrawSupportSubScreenRemainingText
 	ldr r0, _0809D84C @ =sub_809CEC8
 	adds r1, r5, #0
 	bl StartParallelWorker
@@ -4014,7 +4014,7 @@ sub_809DA10: @ 0x0809DA10
 	bl UnpackUiWindowFrameGraphics
 	bl ApplySystemObjectsGraphics
 	ldr r0, [r5, #0x2c]
-	bl sub_809BAB8
+	bl GetSupportScreenCharIdAt
 	adds r4, r0, #0
 	lsls r4, r4, #0x18
 	lsrs r4, r4, #0x18
@@ -4024,7 +4024,7 @@ sub_809DA10: @ 0x0809DA10
 	lsrs r1, r2, #2
 	movs r2, #7
 	ands r1, r2
-	bl sub_809BA94
+	bl GetSupportScreenPartnerCharId
 	adds r1, r0, #0
 	lsls r1, r1, #0x18
 	lsrs r1, r1, #0x18
@@ -4033,7 +4033,7 @@ sub_809DA10: @ 0x0809DA10
 	ands r2, r5
 	adds r2, #1
 	adds r0, r4, #0
-	bl sub_80792C4
+	bl StartSupportViewerTalk
 	pop {r4, r5}
 	pop {r0}
 	bx r0
@@ -4580,8 +4580,8 @@ sub_809DEEC: @ 0x0809DEEC
 	ands r0, r1
 	strb r0, [r2]
 	ldr r0, [r5, #0x2c]
-	bl sub_809BAB8
-	bl sub_809CEA8
+	bl GetSupportScreenCharIdAt
+	bl GetSupportScreenPartnerCount
 	adds r1, r5, #0
 	adds r1, #0x3c
 	strb r0, [r1]
@@ -4602,7 +4602,7 @@ sub_809DEEC: @ 0x0809DEEC
 	bl TmApplyTsa_thm
 	ldr r4, _0809DFAC @ =gCharacterData
 	ldr r0, [r5, #0x2c]
-	bl sub_809BAB8
+	bl GetSupportScreenCharIdAt
 	subs r0, #1
 	movs r1, #0x34
 	muls r0, r1, r0
@@ -4648,7 +4648,7 @@ _0809DFC8:
 	adds r0, r5, #0
 	bl sub_809D4D0
 	adds r0, r5, #0
-	bl sub_809D1C8
+	bl DrawSupportSubScreenRemainingText
 	bl sub_809CE20
 	adds r1, r5, #0
 	adds r1, #0x3a

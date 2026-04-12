@@ -657,8 +657,8 @@ _0808F800:
 	pop {r0}
 	bx r0
 
-	thumb_func_start sub_808F804
-sub_808F804: @ 0x0808F804
+	thumb_func_start StartPrepAtMenu
+StartPrepAtMenu: @ 0x0808F804
 	push {lr}
 	ldr r0, _0808F814 @ =ProcScr_AtMenu
 	movs r1, #3
@@ -668,8 +668,8 @@ sub_808F804: @ 0x0808F804
 	.align 2, 0
 _0808F814: .4byte ProcScr_AtMenu
 
-	thumb_func_start sub_808F818
-sub_808F818: @ 0x0808F818
+	thumb_func_start StartPrepAtMenuWithConfig
+StartPrepAtMenuWithConfig: @ 0x0808F818
 	push {lr}
 	ldr r0, _0808F830 @ =ProcScr_AtMenu
 	movs r1, #3

@@ -237,7 +237,7 @@ _0809F4EA:
 sub_809F4F0: @ 0x0809F4F0
 	push {r4, lr}
 	movs r0, #0
-	bl sub_809F994
+	bl GGM_IsAnyCharacterKnown
 	adds r4, r0, #0
 	bl IsGamePlayedThrough
 	ands r0, r4
@@ -387,8 +387,8 @@ _0809F5F2:
 	bx r1
 	.align 2, 0
 
-	thumb_func_start sub_809F5FC
-sub_809F5FC: @ 0x0809F5FC
+	thumb_func_start GetUnitsAverageSupportValue
+GetUnitsAverageSupportValue: @ 0x0809F5FC
 	push {r4, r5, r6, r7, lr}
 	adds r2, r0, #0
 	ldr r7, _0809F62C @ =gUnk_08DAD284
@@ -453,14 +453,14 @@ _0809F65A:
 sub_809F660: @ 0x0809F660
 	push {r4, r5, lr}
 	movs r5, #0
-	ldr r4, _0809F668 @ =gUnk_08D67934
+	ldr r4, _0809F668 @ =gSupportTalkList
 	b _0809F678
 	.align 2, 0
-_0809F668: .4byte gUnk_08D67934
+_0809F668: .4byte gSupportTalkList
 _0809F66C:
 	ldrb r0, [r4]
 	ldrb r1, [r4, #1]
-	bl sub_809F5FC
+	bl GetUnitsAverageSupportValue
 	adds r5, r5, r0
 	adds r4, #0x14
 _0809F678:
@@ -512,8 +512,8 @@ _0809F6AC:
 	pop {r1}
 	bx r1
 
-	thumb_func_start sub_809F6CC
-sub_809F6CC: @ 0x0809F6CC
+	thumb_func_start GetTotalSupportCollection
+GetTotalSupportCollection: @ 0x0809F6CC
 	push {r4, r5, lr}
 	movs r0, #0
 	bl sub_809F688
@@ -546,15 +546,15 @@ _0809F704:
 	pop {r1}
 	bx r1
 
-	thumb_func_start sub_809F70C
-sub_809F70C: @ 0x0809F70C
+	thumb_func_start GetGlobalBestSupport
+GetGlobalBestSupport: @ 0x0809F70C
 	push {r4, r5, r6, r7, lr}
 	sub sp, #0x68
 	adds r3, r0, #0
 	adds r7, r1, #0
 	adds r4, r2, #0
 	movs r6, #0
-	ldr r5, _0809F730 @ =gUnk_08D67934
+	ldr r5, _0809F730 @ =gSupportTalkList
 	cmp r4, #0
 	bne _0809F72A
 	mov r4, sp
@@ -566,7 +566,7 @@ _0809F72A:
 	adds r4, #0x20
 	b _0809F738
 	.align 2, 0
-_0809F730: .4byte gUnk_08D67934
+_0809F730: .4byte gSupportTalkList
 _0809F734:
 	adds r6, #1
 	adds r5, #0x14
@@ -602,8 +602,8 @@ _0809F754:
 	bx r1
 	.align 2, 0
 
-	thumb_func_start sub_809F770
-sub_809F770: @ 0x0809F770
+	thumb_func_start GetGlobalSupportListFromSave
+GetGlobalSupportListFromSave: @ 0x0809F770
 	push {r4, r5, r6, r7, lr}
 	mov r7, sl
 	mov r6, sb
@@ -640,7 +640,7 @@ _0809F7A2:
 _0809F7B0: .4byte gCharacterData
 _0809F7B4:
 	movs r5, #0
-	ldr r4, _0809F83C @ =gUnk_08D67934
+	ldr r4, _0809F83C @ =gSupportTalkList
 	mov r3, sl
 	cmp r3, #0
 	bne _0809F7C6
@@ -712,7 +712,7 @@ _0809F82C:
 	strb r0, [r1]
 	b _0809F84C
 	.align 2, 0
-_0809F83C: .4byte gUnk_08D67934
+_0809F83C: .4byte gSupportTalkList
 _0809F840: .4byte 0x08C4C184
 _0809F844:
 	adds r1, #1
@@ -755,8 +755,8 @@ _0809F876:
 	.align 2, 0
 _0809F888: .4byte gCharacterData
 
-	thumb_func_start sub_809F88C
-sub_809F88C: @ 0x0809F88C
+	thumb_func_start UpdateBestGlobalSupportValue
+UpdateBestGlobalSupportValue: @ 0x0809F88C
 	push {r4, r5, r6, r7, lr}
 	sub sp, #0x64
 	adds r5, r0, #0
@@ -769,11 +769,11 @@ sub_809F88C: @ 0x0809F88C
 	cmp r0, #0
 	beq _0809F8FC
 	movs r3, #0
-	ldr r2, _0809F8AC @ =gUnk_08D67934
+	ldr r2, _0809F8AC @ =gSupportTalkList
 	add r7, sp, #0x20
 	b _0809F8B4
 	.align 2, 0
-_0809F8AC: .4byte gUnk_08D67934
+_0809F8AC: .4byte gSupportTalkList
 _0809F8B0:
 	adds r3, #1
 	adds r2, #0x14
@@ -863,8 +863,8 @@ _0809F948:
 	pop {r0}
 	bx r0
 
-	thumb_func_start sub_809F950
-sub_809F950: @ 0x0809F950
+	thumb_func_start GGM_IsCharacterKnown
+GGM_IsCharacterKnown: @ 0x0809F950
 	push {r4, r5, lr}
 	sub sp, #0x64
 	adds r5, r0, #0
@@ -903,8 +903,8 @@ _0809F98C:
 	pop {r1}
 	bx r1
 
-	thumb_func_start sub_809F994
-sub_809F994: @ 0x0809F994
+	thumb_func_start GGM_IsAnyCharacterKnown
+GGM_IsAnyCharacterKnown: @ 0x0809F994
 	push {r4, lr}
 	sub sp, #0x64
 	adds r4, r0, #0

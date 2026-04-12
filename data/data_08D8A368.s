@@ -276,7 +276,54 @@ gUnk_08D8B440:	@ 0x08D8B440
 
 	.global gUnk_08D8B4F8
 gUnk_08D8B4F8:	@ 0x08D8B4F8
-	.incbin "FireEmblem7J.base.gba", 0xD8B4F8, 0xD8B578 - 0xD8B4F8
+	@ PROC_YIELD
+	.short 0xe, 0x0
+	.word 0x0
+	@ PROC_CALL
+	.short 0x2, 0x0
+	.word sub_80873B4
+	@ PROC_CALL
+	.short 0x2, 0x0
+	.word sub_80878A8
+	@ PROC_YIELD
+	.short 0xe, 0x0
+	.word 0x0
+	@ PROC_CALL
+	.short 0x2, 0x0
+	.word sub_80877FC
+	@ PROC_CALL
+	.short 0x2, 0x0
+	.word sub_8014728
+	@ PROC_YIELD
+	.short 0xe, 0x0
+	.word 0x0
+	@ PROC_LABEL
+	.short 0xb, 0x0
+	.word 0x0
+	@ PROC_REPEAT
+	.short 0x3, 0x0
+	.word sub_80879E4
+	@ PROC_LABEL
+	.short 0xb, 0x1
+	.word 0x0
+	@ PROC_CALL
+	.short 0x2, 0x0
+	.word sub_80146A8
+	@ PROC_YIELD
+	.short 0xe, 0x0
+	.word 0x0
+	@ PROC_CALL
+	.short 0x2, 0x0
+	.word EndSysBlackBoxs
+	@ PROC_CALL
+	.short 0x2, 0x0
+	.word EndMuralBackground
+	@ PROC_CALL
+	.short 0x2, 0x0
+	.word sub_8087B00
+	@ PROC_END
+	.short 0x0, 0x0
+	.word 0x0
 
 	.global gUnk_08D8B578
 gUnk_08D8B578:	@ 0x08D8B578

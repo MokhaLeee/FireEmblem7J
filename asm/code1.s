@@ -2879,7 +2879,7 @@ sub_802FA0C: @ 0x0802FA0C
 	adds r2, r0, #0
 	adds r0, r6, #0
 	adds r1, r5, #0
-	bl sub_8079250
+	bl StartSupportTalk
 	mov r2, sb
 	ldr r0, [r2]
 	adds r0, #0x32

@@ -25,6 +25,7 @@ SECTIONS
 
 		. = 0x01068C; src/prepscreen.o(ewram_overlay_0);
 		. = 0x012AA0; gPrepUnitTexts = .;
+		. = 0x012BF8; sSupportScreenUnitCount = .;
 	}
 
 	. = __ewram_overlay_beg;
