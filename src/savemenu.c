@@ -39,7 +39,7 @@ void SaveMenuOnHBlank(void)
     }
 }
 
-void sub_80A3FC8(struct SaveMenuProc * proc)
+void SaveMenu_HandleExtraMiscOption(struct SaveMenuProc * proc)
 {
     Proc_Goto(proc, 0x12);
     StartBgmVolumeChange(0xC0, 0x00, 0x10, NULL);

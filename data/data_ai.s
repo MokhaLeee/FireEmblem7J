@@ -268,9 +268,104 @@ gUnk_08C08CE8:	@ 0x08C08CE8
 gUnk_08C08D18:	@ 0x08C08D18
 	.incbin "FireEmblem7J.base.gba", 0xC08D18, 0xC08D34 - 0xC08D18
 
-	.global gUnk_08C08D34
-gUnk_08C08D34:	@ 0x08C08D34
-	.incbin "FireEmblem7J.base.gba", 0xC08D34, 0xC08E34 - 0xC08D34
+	.global ProcScr_FE6Link
+ProcScr_FE6Link:	@ 0x08C08D34
+	@ PROC_CALL
+	.short 0x2, 0x0
+	.word Sio_DrawFe6CommImage
+	@ PROC_SET_END_CB
+	.short 0x4, 0x0
+	.word FE6Link_CallBack
+	@ PROC_CALL
+	.short 0x2, 0x0
+	.word sub_8014714
+	@ PROC_YIELD
+	.short 0xe, 0x0
+	.word 0x0
+	@ PROC_CALL
+	.short 0x2, 0x0
+	.word FE6Link_Init
+	@ PROC_REPEAT
+	.short 0x3, 0x0
+	.word FE6Link_Loop
+	@ PROC_CALL
+	.short 0x2, 0x0
+	.word sub_8043CC8
+	@ PROC_REPEAT
+	.short 0x3, 0x0
+	.word sub_8043D14
+	@ PROC_REPEAT
+	.short 0x3, 0x0
+	.word sub_8043E08
+	@ PROC_REPEAT
+	.short 0x3, 0x0
+	.word sub_8043E7C
+	@ PROC_CALL
+	.short 0x2, 0x0
+	.word sub_80478A4
+	@ PROC_CALL
+	.short 0x2, 0x0
+	.word sub_8014690
+	@ PROC_YIELD
+	.short 0xe, 0x0
+	.word 0x0
+	@ PROC_LABEL
+	.short 0xb, 0x1
+	.word 0x0
+	@ PROC_CALL
+	.short 0x2, 0x0
+	.word sub_80446B4
+	@ PROC_CALL
+	.short 0x2, 0x0
+	.word sub_8014714
+	@ PROC_YIELD
+	.short 0xe, 0x0
+	.word 0x0
+	@ PROC_CALL
+	.short 0x2, 0x0
+	.word FE6Link_Init
+	@ PROC_LABEL
+	.short 0xb, 0x2
+	.word 0x0
+	@ PROC_REPEAT
+	.short 0x3, 0x0
+	.word sub_8043EDC
+	@ PROC_REPEAT
+	.short 0x3, 0x0
+	.word sub_8044704
+	@ PROC_CALL
+	.short 0x2, 0x0
+	.word sub_804471C
+	@ PROC_REPEAT
+	.short 0x3, 0x0
+	.word sub_8044750
+	@ PROC_REPEAT
+	.short 0x3, 0x0
+	.word sub_8044704
+	@ PROC_GOTO
+	.short 0xc, 0x2
+	.word 0x0
+	@ PROC_LABEL
+	.short 0xb, 0x3
+	.word 0x0
+	@ PROC_REPEAT
+	.short 0x3, 0x0
+	.word sub_8043F74
+	@ PROC_LABEL
+	.short 0xb, 0xa
+	.word 0x0
+	@ PROC_REPEAT
+	.short 0x3, 0x0
+	.word sub_804488C
+	@ PROC_CALL
+	.short 0x2, 0x0
+	.word FE6Link_OnEnd
+	@ PROC_LABEL
+	.short 0xb, 0xb
+	.word 0x0
+	@ PROC_END
+	.short 0x0, 0x0
+	.word 0x0
 
 	.global gUnk_08C08E34
 gUnk_08C08E34:	@ 0x08C08E34

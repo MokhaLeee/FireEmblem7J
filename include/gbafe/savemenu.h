@@ -69,7 +69,7 @@ extern u8 gUnk_Savemenu_02000000;
 extern u8 gUnk_Savemenu_02000001;
 
 void SaveMenuOnHBlank(void);
-void sub_80A3FC8(struct SaveMenuProc * proc);
+void SaveMenu_HandleExtraMiscOption(struct SaveMenuProc * proc);
 u8 SaveMenuIndexToValidBitfile(u8 byte, int num);
 u8 sub_80A4018(u8 byte1, u8 byte2);
 u8 sub_80A4054(u8 byte);
@@ -108,7 +108,7 @@ void SaveMenu_StartHelpBox(struct SaveMenuProc * proc);
 // ??? sub_80A577C
 // ??? sub_80A57A8
 // ??? sub_80A57BC
-// ??? sub_80A5838
+// ??? SaveMenuPostExtraMiscScreen
 // ??? sub_80A5868
 // ??? sub_80A58C4
 // ??? sub_80A5920

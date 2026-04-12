@@ -114,7 +114,7 @@ sub_809F40C: @ 0x0809F40C
 	mov r0, sp
 	bl GetGlobalCompletionCntByInfo
 	adds r5, r0, #0
-	bl sub_809F9F8
+	bl CheckLinkedToFE6
 	rsbs r1, r0, #0
 	orrs r1, r0
 	asrs r4, r1, #0x1f
@@ -969,8 +969,8 @@ _0809F9F2:
 	pop {r1}
 	bx r1
 
-	thumb_func_start sub_809F9F8
-sub_809F9F8: @ 0x0809F9F8
+	thumb_func_start CheckLinkedToFE6
+CheckLinkedToFE6: @ 0x0809F9F8
 	push {r4, lr}
 	sub sp, #0x88
 	add r4, sp, #0x24
@@ -992,7 +992,7 @@ _0809FA18:
 	b _0809FA34
 _0809FA20:
 	mov r0, sp
-	bl sub_809FA3C
+	bl ReadFe6LinkSaveInfo
 	lsls r0, r0, #0x18
 	cmp r0, #0
 	bne _0809FA30
@@ -1007,8 +1007,8 @@ _0809FA34:
 	pop {r1}
 	bx r1
 
-	thumb_func_start sub_809FA3C
-sub_809FA3C: @ 0x0809FA3C
+	thumb_func_start ReadFe6LinkSaveInfo
+ReadFe6LinkSaveInfo: @ 0x0809FA3C
 	push {r4, lr}
 	sub sp, #0x24
 	adds r4, r0, #0
@@ -1052,8 +1052,8 @@ _0809FA8A:
 	bx r1
 	.align 2, 0
 
-	thumb_func_start sub_809FA94
-sub_809FA94: @ 0x0809FA94
+	thumb_func_start WriteFe6LinkSaveInfo
+WriteFe6LinkSaveInfo: @ 0x0809FA94
 	push {r4, lr}
 	adds r4, r0, #0
 	movs r1, #0x22
@@ -2157,11 +2157,11 @@ _080A02FE:
 	bl EraseBonusContentData
 _080A030E:
 	movs r0, #0
-	bl sub_809FA3C
+	bl ReadFe6LinkSaveInfo
 	lsls r0, r0, #0x18
 	cmp r0, #0
 	bne _080A031E
-	bl sub_809F098
+	bl ResetFe6LinkSaveInfo
 _080A031E:
 	movs r0, #0
 	bl LoadAndVerfyRankData

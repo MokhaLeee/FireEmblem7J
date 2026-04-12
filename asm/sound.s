@@ -1433,8 +1433,8 @@ _08003EFC:
 	pop {r0}
 	bx r0
 
-	thumb_func_start sub_8003F04
-sub_8003F04: @ 0x08003F04
+	thumb_func_start IsMusicProc2Running
+IsMusicProc2Running: @ 0x08003F04
 	push {r7, lr}
 	mov r7, sp
 	ldr r1, _08003F18 @ =gUnk_08BBFCC0

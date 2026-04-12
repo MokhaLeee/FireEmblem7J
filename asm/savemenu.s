@@ -1137,7 +1137,7 @@ _080A4A12:
 	bl m4aSongNumStart
 _080A4A30:
 	adds r0, r4, #0
-	bl sub_80A3FC8
+	bl SaveMenu_HandleExtraMiscOption
 	b _080A4AF2
 	.align 2, 0
 _080A4A38: .4byte gPlaySt
@@ -1419,7 +1419,7 @@ _080A4C60:
 	bl m4aSongNumStart
 _080A4C72:
 	adds r0, r5, #0
-	bl sub_80A3FC8
+	bl SaveMenu_HandleExtraMiscOption
 	b _080A4D5C
 	.align 2, 0
 _080A4C7C: .4byte gPlaySt
@@ -2316,7 +2316,7 @@ _080A536A:
 	b _080A53B2
 _080A537A:
 	adds r0, r4, #0
-	bl sub_80A3FC8
+	bl SaveMenu_HandleExtraMiscOption
 	adds r0, r4, #0
 	movs r1, #0x12
 	bl Proc_Goto
@@ -2926,8 +2926,8 @@ _080A582C:
 	.align 2, 0
 _080A5834: .4byte gUnk_08D8D744
 
-	thumb_func_start sub_80A5838
-sub_80A5838: @ 0x080A5838
+	thumb_func_start SaveMenuPostExtraMiscScreen
+SaveMenuPostExtraMiscScreen: @ 0x080A5838
 	push {lr}
 	adds r1, r0, #0
 	adds r1, #0x35

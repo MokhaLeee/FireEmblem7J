@@ -557,7 +557,7 @@ _0806EEE4:
 	lsls r2, r0, #0x18
 	lsrs r1, r2, #0x18
 	adds r0, r1, #0
-	bl sub_8079CE4
+	bl CheckBattleDefeatTalk
 	lsls r1, r0, #0x18
 	asrs r0, r1, #0x18
 	cmp r0, #0
@@ -568,7 +568,7 @@ _0806EEE4:
 	lsls r2, r0, #0x18
 	lsrs r1, r2, #0x18
 	adds r0, r1, #0
-	bl sub_8079DF4
+	bl DisplayDefeatTalkForPid
 	bl sub_800AD60
 _0806EF2E:
 	add sp, #0xc

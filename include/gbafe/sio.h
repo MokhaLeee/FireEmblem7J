@@ -212,10 +212,10 @@ void sub_8043948(/* TODO */);
 // sub_804395C
 // sub_804397C
 // Sio_DrawFe6CommImage
-// sub_8043BCC
+// FE6Link_Loop
 // sub_8043CC8
 // sub_8043D14
-// sub_8043DB0
+// FE6Link_OnEnd
 // sub_8043DE0
 // sub_8043DF4
 // sub_8043E08
@@ -238,8 +238,8 @@ void sub_8043948(/* TODO */);
 // sub_804471C
 // sub_8044750
 // sub_804488C
-// sub_80448AC
-void sub_80448B8(/* TODO */);
+// FE6Link_CallBack
+void GC_ConnectToFE6(/* TODO */);
 // sub_80448E8
 // sub_8044998
 // sub_80449EC
@@ -347,7 +347,7 @@ void sub_80448B8(/* TODO */);
 // sub_80477D4
 // sub_8047854
 // sub_80478A4
-// sub_80478B0
+// FE6Link_Init
 // sub_80478BC
 // sub_80478F4
 // sub_8047930

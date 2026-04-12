@@ -218,7 +218,7 @@ _0804DF00:
 	bl GetAnimPosition
 	adds r0, r0, r4
 	ldrb r0, [r0]
-	bl sub_8079CE4
+	bl CheckBattleDefeatTalk
 	lsls r0, r0, #0x18
 	asrs r0, r0, #0x18
 _0804DF14:
@@ -760,7 +760,7 @@ _0804E378:
 	bl GetAnimPosition
 	adds r0, r0, r4
 	ldrb r0, [r0]
-	bl sub_8079CE4
+	bl CheckBattleDefeatTalk
 	lsls r0, r0, #0x18
 	asrs r0, r0, #0x18
 _0804E38C:
@@ -1465,7 +1465,7 @@ sub_804E8CC: @ 0x0804E8CC
 	bl GetAnimPosition
 	adds r0, r0, r4
 	ldrb r0, [r0]
-	bl sub_8079DF4
+	bl DisplayDefeatTalkForPid
 	adds r0, r5, #0
 	bl Proc_Break
 _0804E92A:

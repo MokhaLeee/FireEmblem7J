@@ -2798,13 +2798,13 @@ _08079CD8:
 	.align 2, 0
 _08079CE0: .4byte gUnk_08D67070
 
-	thumb_func_start sub_8079CE4
-sub_8079CE4: @ 0x08079CE4
+	thumb_func_start CheckBattleDefeatTalk
+CheckBattleDefeatTalk: @ 0x08079CE4
 	push {r4, r5, r6, lr}
 	lsls r0, r0, #0x18
 	lsrs r4, r0, #0x18
 	adds r5, r4, #0
-	ldr r1, _08079D20 @ =gUnk_08D6722C
+	ldr r1, _08079D20 @ =gDefeatTalkList
 	adds r0, r4, #0
 	bl sub_8079B38
 	cmp r0, #0
@@ -2831,7 +2831,7 @@ _08079D1C:
 	movs r0, #1
 	b _08079D32
 	.align 2, 0
-_08079D20: .4byte gUnk_08D6722C
+_08079D20: .4byte gDefeatTalkList
 _08079D24: .4byte gPlaySt
 _08079D28: .4byte gUnk_08D6716C
 _08079D2C: .4byte gUnk_08D670AC
@@ -2933,8 +2933,8 @@ _08079DEA:
 	bx r0
 	.align 2, 0
 
-	thumb_func_start sub_8079DF4
-sub_8079DF4: @ 0x08079DF4
+	thumb_func_start DisplayDefeatTalkForPid
+DisplayDefeatTalkForPid: @ 0x08079DF4
 	push {r4, r5, r6, lr}
 	lsls r0, r0, #0x18
 	lsrs r5, r0, #0x18
@@ -2988,7 +2988,7 @@ _08079E50:
 	bl StartBgm
 	b _08079ECC
 _08079E6A:
-	ldr r1, _08079E84 @ =gUnk_08D6722C
+	ldr r1, _08079E84 @ =gDefeatTalkList
 	adds r0, r5, #0
 	bl sub_8079B38
 	adds r4, r0, #0
@@ -3000,7 +3000,7 @@ _08079E6A:
 	bl sub_800EC84
 	b _08079E92
 	.align 2, 0
-_08079E84: .4byte gUnk_08D6722C
+_08079E84: .4byte gDefeatTalkList
 _08079E88:
 	ldr r0, [r4, #8]
 	cmp r0, #0
@@ -5502,7 +5502,7 @@ _0807AE68: .4byte gPlaySt
 	thumb_func_start sub_807AE6C
 sub_807AE6C: @ 0x0807AE6C
 	push {lr}
-	bl sub_809F9F8
+	bl CheckLinkedToFE6
 	cmp r0, #0
 	beq _0807AE78
 	movs r0, #1

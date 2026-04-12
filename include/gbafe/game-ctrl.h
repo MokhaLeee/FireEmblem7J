@@ -40,7 +40,7 @@ struct GameCtrlProc
 // GC_FastStartCheck
 // EndProcIfNotMarkedB
 void sub_8012D60(ProcPtr);
-// sub_8012D98
+// GC_RestoreMainBGM
 // sub_8012DB4
 // GC_PostIntro
 // sub_8012E40

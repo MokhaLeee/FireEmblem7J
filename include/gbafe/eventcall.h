@@ -80,9 +80,9 @@ bool sub_80798D4(void);
 // sub_8079B80
 // CheckBattleTalk
 // StartBattleTalk
-// sub_8079CE4
+// CheckBattleDefeatTalk
 // sub_8079D38
-// sub_8079DF4
+// DisplayDefeatTalkForPid
 // sub_8079ED4
 // sub_8079F04
 // nullsub_61

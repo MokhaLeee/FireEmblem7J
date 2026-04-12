@@ -29,7 +29,7 @@ void OverrideBgm(int song);
 // sub_8003E48
 // sub_8003E68
 // sub_8003E9C
-// sub_8003F04
+// IsMusicProc2Running
 // sub_8003F28
 // sub_8003F94
 void CallSomeSoundMaybe(int songId, int b, int c, int d, ProcPtr parent);

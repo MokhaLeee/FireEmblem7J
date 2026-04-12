@@ -871,8 +871,8 @@ gUnk_08D670AC:	@ 0x08D670AC
 gUnk_08D6716C:	@ 0x08D6716C
 	.incbin "FireEmblem7J.base.gba", 0xD6716C, 0xD6722C - 0xD6716C
 
-	.global gUnk_08D6722C
-gUnk_08D6722C:	@ 0x08D6722C
+	.global gDefeatTalkList
+gDefeatTalkList:	@ 0x08D6722C
 	.incbin "FireEmblem7J.base.gba", 0xD6722C, 0xD6792C - 0xD6722C
 
 	.global gUnk_08D6792C

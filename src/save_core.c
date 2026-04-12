@@ -130,11 +130,11 @@ void InitGlobalSaveInfo(void)
     WriteGlobalSaveInfo(&info);
 }
 
-void sub_809F098(void)
+void ResetFe6LinkSaveInfo(void)
 {
     u8 buf[0x24];
     CPU_FILL(0, buf, sizeof(buf), 16);
-    sub_809FA94(buf);
+    WriteFe6LinkSaveInfo(buf);
 }
 
 void EraseBonusContentData(void)

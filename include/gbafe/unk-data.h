@@ -1889,7 +1889,7 @@ extern struct ProcCmd ProcScr_08C0617C[];
 // ??? gUnk_08C08CE0
 // ??? gUnk_08C08CE8
 // ??? gUnk_08C08D18
-// ??? gUnk_08C08D34
+// ??? ProcScr_FE6Link
 // ??? gUnk_08C08E34
 // ??? gUnk_08C08E4C
 // ??? gUnk_08C08E6C
@@ -2049,7 +2049,7 @@ extern struct ProcCmd ProcScr_08C0617C[];
 // ??? gUnk_08D67070
 // ??? gUnk_08D670AC
 // ??? gUnk_08D6716C
-// ??? gUnk_08D6722C
+// ??? gDefeatTalkList
 // ??? gUnk_08D6792C
 // ??? gUnk_08D67934
 // ??? gLynModeTransferList

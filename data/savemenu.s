@@ -204,7 +204,7 @@ ProcScr_SaveMenu:	@ 0x08DAD3A4
 	.word FadeOutExists
 	@ PROC_WHILE
 	.short 0x14, 0x0
-	.word sub_8003F04
+	.word IsMusicProc2Running
 	@ PROC_CALL
 	.short 0x2, 0x0
 	.word sub_80A57BC
@@ -234,10 +234,10 @@ ProcScr_SaveMenu:	@ 0x08DAD3A4
 	.word FadeInExists
 	@ PROC_WHILE
 	.short 0x14, 0x0
-	.word sub_8003F04
+	.word IsMusicProc2Running
 	@ PROC_CALL
 	.short 0x2, 0x0
-	.word sub_80A5838
+	.word SaveMenuPostExtraMiscScreen
 	@ PROC_LABEL
 	.short 0xb, 0x15
 	.word 0x0

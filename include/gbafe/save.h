@@ -93,7 +93,7 @@ bool ReadGlobalSaveInfo(struct GlobalSaveInfo * info);
 void WriteGlobalSaveInfo(struct GlobalSaveInfo * info);
 void WriteGlobalSaveInfoNoChecksum(struct GlobalSaveInfo * info);
 void InitGlobalSaveInfo(void);
-void sub_809F098(void);
+void ResetFe6LinkSaveInfo(void);
 void EraseBonusContentData(void);
 void * SramOffsetToAddr(u16 off);
 u16 SramAddrToOffset(void * addr);
@@ -130,9 +130,9 @@ s32 sub_809F40C(void);
 // ??? nullsub_82
 // ??? nullsub_83
 bool IsGamePlayedThrough(void);
-int sub_809F9F8(void);
-// ??? sub_809FA3C
-void sub_809FA94(void * buf);
+int CheckLinkedToFE6(void);
+// ??? ReadFe6LinkSaveInfo
+void WriteFe6LinkSaveInfo(void * buf);
 // ??? sub_809FAC0
 // ??? sub_809FADC
 // ??? sub_809FAF4

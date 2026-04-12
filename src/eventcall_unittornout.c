@@ -40,7 +40,7 @@ void StartUnitTornOut(struct Unit * unit, ProcPtr parent)
 
 bool sub_807CDEC(void)
 {
-    if (sub_809F9F8() > 0)
+    if (CheckLinkedToFE6() > 0)
         return true;
 
     return false;
@@ -48,7 +48,7 @@ bool sub_807CDEC(void)
 
 bool sub_807CE00(void)
 {
-    if (sub_809F9F8() > 1)
+    if (CheckLinkedToFE6() > 1)
         return true;
 
     return false;

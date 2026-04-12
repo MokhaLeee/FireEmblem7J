@@ -14352,7 +14352,7 @@ sub_8043918: @ 0x08043918
 	cmp r0, #1
 	bne _0804393A
 	bl InitGlobalSaveInfo
-	bl sub_809F098
+	bl ResetFe6LinkSaveInfo
 	bl sub_809FC30
 	bl sub_80A00A4
 	bl sub_80A01C8
@@ -14638,8 +14638,8 @@ _08043BC0: .4byte gUnk_08DC0390
 _08043BC4: .4byte 0x03004670
 _08043BC8: .4byte gSioSt
 
-	thumb_func_start sub_8043BCC
-sub_8043BCC: @ 0x08043BCC
+	thumb_func_start FE6Link_Loop
+FE6Link_Loop: @ 0x08043BCC
 	push {r4, r5, r6, r7, lr}
 	sub sp, #4
 	adds r7, r0, #0
@@ -14874,8 +14874,8 @@ _08043DA4:
 	.align 2, 0
 _08043DAC: .4byte 0x030045E0
 
-	thumb_func_start sub_8043DB0
-sub_8043DB0: @ 0x08043DB0
+	thumb_func_start FE6Link_OnEnd
+FE6Link_OnEnd: @ 0x08043DB0
 	push {lr}
 	ldr r0, _08043DD4 @ =gUnk_08C07E20
 	bl Proc_EndEach
@@ -15129,7 +15129,7 @@ sub_8043F74: @ 0x08043F74
 	movs r1, #0x48
 	bl StartHelpBoxExt_Unk
 	mov r0, sp
-	bl sub_809FA3C
+	bl ReadFe6LinkSaveInfo
 	adds r3, r4, #4
 	mov r2, sp
 	movs r1, #7
@@ -15161,7 +15161,7 @@ _08043FE8:
 _08043FEC:
 	strh r0, [r1, #0x20]
 	mov r0, sp
-	bl sub_809FA94
+	bl WriteFe6LinkSaveInfo
 	adds r0, r5, #0
 	bl Proc_Break
 _08043FFA:
@@ -16213,16 +16213,16 @@ _080448A4:
 	.align 2, 0
 _080448A8: .4byte gpKeySt
 
-	thumb_func_start sub_80448AC
-sub_80448AC: @ 0x080448AC
+	thumb_func_start FE6Link_CallBack
+FE6Link_CallBack: @ 0x080448AC
 	push {lr}
 	bl SoundVSyncOn_rev01
 	pop {r0}
 	bx r0
 	.align 2, 0
 
-	thumb_func_start sub_80448B8
-sub_80448B8: @ 0x080448B8
+	thumb_func_start GC_ConnectToFE6
+GC_ConnectToFE6: @ 0x080448B8
 	push {r4, lr}
 	adds r4, r0, #0
 	bl UnpackUiWindowFrameGraphics
@@ -16231,7 +16231,7 @@ sub_80448B8: @ 0x080448B8
 	movs r2, #0xc0
 	movs r3, #0
 	bl InitTextFont
-	ldr r0, _080448E4 @ =gUnk_08C08D34
+	ldr r0, _080448E4 @ =ProcScr_FE6Link
 	adds r1, r4, #0
 	bl Proc_StartBlocking
 	pop {r4}
@@ -16240,7 +16240,7 @@ sub_80448B8: @ 0x080448B8
 	.align 2, 0
 _080448DC: .4byte 0x0203DA48
 _080448E0: .4byte 0x06001800
-_080448E4: .4byte gUnk_08C08D34
+_080448E4: .4byte ProcScr_FE6Link
 
 	thumb_func_start sub_80448E8
 sub_80448E8: @ 0x080448E8
@@ -22226,8 +22226,8 @@ sub_80478A4: @ 0x080478A4
 	.align 2, 0
 _080478AC: .4byte 0x0203DCC0
 
-	thumb_func_start sub_80478B0
-sub_80478B0: @ 0x080478B0
+	thumb_func_start FE6Link_Init
+FE6Link_Init: @ 0x080478B0
 	ldr r1, _080478B8 @ =0x0203DCC0
 	movs r0, #0
 	strb r0, [r1]

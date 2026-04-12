@@ -135,7 +135,7 @@ void sub_8012D60(ProcPtr proc)
     SetMainFunc(OnMain);
 }
 
-void sub_8012D98(void)
+void GC_RestoreMainBGM(void)
 {
     StartBgmCore(SONG_5A, NULL);
     StartBgmVolumeChange(0, 0xC0, 0x3C, NULL);
@@ -590,15 +590,15 @@ PROC_LABEL(10),
     PROC_CALL(sub_8043290),
     PROC_YIELD,
 
-    PROC_CALL(sub_8012D98),
+    PROC_CALL(GC_RestoreMainBGM),
 
     PROC_GOTO(4),
 
 PROC_LABEL(11),
-    PROC_CALL(sub_80448B8),
+    PROC_CALL(GC_ConnectToFE6),
     PROC_YIELD,
 
-    PROC_CALL(sub_8012D98),
+    PROC_CALL(GC_RestoreMainBGM),
 
     PROC_GOTO(4),
 
