@@ -100,7 +100,7 @@ void sub_80218F8(struct Proc * proc)
 {
     if ((GetGameTime() & 1) == 0)
     {
-        SetBlendConfig(1, 16 - proc->unk4C, proc->unk4C, 1);
+        SetBlendConfig(1, 16 - proc->unk4C, proc->unk4C, 0);
 
         if (++proc->unk4C > 16)
         {

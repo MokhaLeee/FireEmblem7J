@@ -246,7 +246,7 @@ void sub_80080A8(ProcPtr proc)
     {
         sTalkSt->print_clock++;
 
-        if (sTalkSt->print_clock >= sTalkSt->print_delay)
+        if (sTalkSt->print_clock < sTalkSt->print_delay)
         {
             return;
         }

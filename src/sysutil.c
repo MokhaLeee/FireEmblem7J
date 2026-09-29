@@ -297,7 +297,7 @@ void DisplayExtendedSysHand(struct SysHandCursorProc * proc)
     *_dst = *src;
 #else
     gPal[proc->pal_bank * 0x10  + 0x10E] =
-        Pal_08A1D448[gPlaySt.config_window_theme * 0x10 + ((GetGameTime() / 5) % 0x10)];
+        PAL_BUF_COLOR(Pal_08428A80, gPlaySt.config_window_theme, (GetGameTime() / 4) % 0x10);
 #endif
 
     EnablePalSync();
