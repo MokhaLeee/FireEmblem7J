@@ -37,8 +37,8 @@ void sub_807BD6C(int x, int y)
         Img_DragonFlameSmallFire,
         Pal_DragonFlameSmallFire,
         SpriteConf_DragonFlameSmallFire,
-        OAM1_X(x),
-        OAM0_Y(y),
+        OAM1_X(x - gBmSt.camera.x),
+        OAM0_Y(y - gBmSt.camera.y),
         0,
         5, // pal_bank
         1, // pal_size
