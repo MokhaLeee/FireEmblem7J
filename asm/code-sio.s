@@ -14405,7 +14405,7 @@ sub_8043918: @ 0x08043918
 	bne _0804393A
 	bl InitGlobalSaveInfo
 	bl ResetFe6LinkSaveInfo
-	bl sub_809FC30
+	bl EraseSaveRankData
 	bl sub_80A00A4
 	bl sub_80A01C8
 	b _08043942

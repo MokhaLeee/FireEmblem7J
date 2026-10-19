@@ -2,6 +2,7 @@
 
 #include "global.h"
 #include "bm.h"
+#include "bonusclaim.h"
 
 enum save_chunk_idx {
     SAVE_GAME0,
@@ -33,6 +34,12 @@ enum save_chunk_magics {
 };
 
 #define MAX_CLEARED_PLAYTHROUGHS 12
+
+struct BonusClaimSaveData {
+    /* 000 */ struct BonusClaimEnt bonus[0x20];
+    /* 280 */ u16 cksum16;
+    /* 282 */ u16 unk282;
+};
 
 // Written by FE6 (Binding Blade) when linked
 struct Fe6LinkSaveInfo {
@@ -151,20 +158,20 @@ void nullsub_83(void);
 int IsGamePlayedThrough(void);
 int CheckLinkedToFE6(void);
 bool ReadFe6LinkSaveInfo(struct Fe6LinkSaveInfo * buf);
-void WriteFe6LinkSaveInfo(void * buf);
-// ??? sub_809FAC0
-// ??? sub_809FADC
-// ??? sub_809FAF4
-// ??? sub_809FB0C
-// ??? sub_809FB10
+void WriteFe6LinkSaveInfo(struct Fe6LinkSaveInfo * buf);
+void sub_809FAC0(struct Fe6LinkSaveInfo * buf);
+bool sub_809FADC(u32 * bits, int bit);
+void sub_809FAF4(u32 * bits, int bit);
+void sub_809FB0C(struct Fe6LinkSaveInfo * buf, int value);
+int sub_809FB10(struct Fe6LinkSaveInfo * buf);
 bool LoadAndVerfyRankData(struct GameRankSaveDataPacks * buf);
 bool LoadBonusContentData(void * buf);
 void SaveBonusContentData(void * buf);
-// ??? sub_809FC00
-// ??? sub_809FC30
-// ??? sub_809FC54
-// ??? sub_809FC60
-// ??? sub_809FCC4
+void SaveRankings(struct GameRankSaveDataPacks * buf);
+void EraseSaveRankData(void);
+int sub_809FC54(void);
+bool GetRankDataEntry(struct GameRankSaveData * buf, int chapter_mode, int difficulty);
+void SaveNewRankData(struct GameRankSaveData * buf, int chapter_mode, int difficulty);
 // ??? sub_809FD04
 // ??? sub_809FDC4
 void SaveEndgameRankings(void);

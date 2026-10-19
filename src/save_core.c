@@ -132,9 +132,9 @@ void InitGlobalSaveInfo(void)
 
 void ResetFe6LinkSaveInfo(void)
 {
-    u8 buf[0x24];
-    CPU_FILL(0, buf, sizeof(buf), 16);
-    WriteFe6LinkSaveInfo(buf);
+    struct Fe6LinkSaveInfo buf;
+    CPU_FILL(0, &buf, sizeof(buf), 16);
+    WriteFe6LinkSaveInfo(&buf);
 }
 
 void EraseBonusContentData(void)
@@ -792,4 +792,124 @@ bool ReadFe6LinkSaveInfo(struct Fe6LinkSaveInfo * buf)
         return false;
     else
         return true;
+}
+
+void WriteFe6LinkSaveInfo(struct Fe6LinkSaveInfo * buf)
+{
+    buf->checksum = Checksum16(buf, sizeof(struct Fe6LinkSaveInfo) - 2);
+    WriteAndVerifySramFast(buf, (void *)gSramMain + 0x70D8, sizeof(struct Fe6LinkSaveInfo));
+}
+
+void sub_809FAC0(struct Fe6LinkSaveInfo * buf)
+{
+    CpuFastFill(0, buf, sizeof(struct Fe6LinkSaveInfo));
+}
+
+bool sub_809FADC(u32 * bits, int bit)
+{
+    bits += bit >> 5;
+    return *bits & (1 << (bit & 0x1F));
+}
+
+void sub_809FAF4(u32 * bits, int bit)
+{
+    bits += bit >> 5;
+    *bits |= 1 << (bit & 0x1F);
+}
+
+void sub_809FB0C(struct Fe6LinkSaveInfo * buf, int value)
+{
+    buf->unk20 = value;
+}
+
+int sub_809FB10(struct Fe6LinkSaveInfo * buf)
+{
+    return buf->unk20;
+}
+
+bool LoadAndVerfyRankData(struct GameRankSaveDataPacks * buf)
+{
+    if (!IsSramWorking())
+        return false;
+
+    if (buf == NULL)
+        buf = (void *)gBuf;
+
+    ReadSramFast((void *)gSramMain + 0x7044, buf, sizeof(struct GameRankSaveDataPacks));
+
+    if (buf->magic0 != Checksum16(buf, 0x90))
+        return false;
+    else
+        return true;
+}
+
+bool LoadBonusContentData(void * buf)
+{
+    struct BonusClaimSaveData * _buf = buf;
+
+    if (!IsSramWorking())
+        return false;
+
+    if (_buf == NULL)
+        _buf = (void *)gBuf;
+
+    ReadSramFast((void *)gSramMain + 0x7134, _buf, sizeof(struct BonusClaimSaveData));
+
+    if (_buf->cksum16 != Checksum16(_buf, sizeof(_buf->bonus)))
+        return false;
+    else
+        return true;
+}
+
+void SaveBonusContentData(void * buf)
+{
+    struct BonusClaimSaveData * _buf = buf;
+    _buf->cksum16 = Checksum16(_buf, sizeof(_buf->bonus));
+    WriteAndVerifySramFast(buf, (void *)gSramMain + 0x7134, sizeof(struct BonusClaimSaveData));
+}
+
+void SaveRankings(struct GameRankSaveDataPacks * buf)
+{
+    buf->magic0 = Checksum16(buf, 0x90);
+    WriteAndVerifySramFast(buf, (void *)gSramMain + 0x7044, sizeof(struct GameRankSaveDataPacks));
+}
+
+void EraseSaveRankData(void)
+{
+    u16 buf[sizeof(struct GameRankSaveDataPacks) / 2];
+
+    CpuFill16(0, buf, sizeof(struct GameRankSaveDataPacks));
+    SaveRankings((void *)buf);
+}
+
+int sub_809FC54(void)
+{
+    return gPlaySt.chapterModeIndex - 1;
+}
+
+bool GetRankDataEntry(struct GameRankSaveData * buf, int chapter_mode, int difficulty)
+{
+    struct GameRankSaveDataPacks packs;
+
+    CpuFill16(0, buf, sizeof(struct GameRankSaveData));
+    CpuFill16(0, &packs, sizeof(packs));
+
+    if (LoadAndVerfyRankData(&packs))
+    {
+        *buf = packs.pack[chapter_mode + difficulty * 3];
+        return true;
+    }
+
+    return false;
+}
+
+void SaveNewRankData(struct GameRankSaveData * buf, int chapter_mode, int difficulty)
+{
+    struct GameRankSaveDataPacks packs;
+
+    if (LoadAndVerfyRankData(&packs))
+    {
+        packs.pack[chapter_mode + difficulty * 3] = *buf;
+        SaveRankings(&packs);
+    }
 }

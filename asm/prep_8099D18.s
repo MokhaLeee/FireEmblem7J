@@ -1572,7 +1572,7 @@ sub_809A9FC: @ 0x0809A9FC
 	adds r0, #1
 	ldrb r2, [r0]
 	add r0, sp, #0x10
-	bl sub_809FC60
+	bl GetRankDataEntry
 	add r0, sp, #0x10
 	ldrb r2, [r0]
 	lsls r0, r2, #0x1f
