@@ -14819,7 +14819,7 @@ GetGameTacticsRank: @ 0x080B7100
 	mov r5, r8
 	push {r5, r6, r7}
 	sub sp, #0x10
-	bl sub_80A06BC
+	bl GetGameTotalTurnCount2
 	mov sb, r0
 	movs r1, #0
 	add r0, sp, #0xc

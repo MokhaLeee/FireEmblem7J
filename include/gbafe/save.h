@@ -237,7 +237,7 @@ struct PidStats
     u32 battle_count    : 12;
     u32 killer_pid      : 9;
     u32 : 0; // unused/padding (15 bits)
-};
+} BITPACKED;
 
 struct ChapterStats {
     /* 00 */ u16 chapter_index : 0x07;
@@ -270,12 +270,12 @@ int GetGameTotalTime_unused(void);
 int GetGameTotalTurnCount(void);
 bool IsChapterCountedForCompletion(int chapter);
 u32 GetGameTotalTime(void);
-// ??? sub_80A06BC
-// ??? PidStatsAddBattleAmt
-// ??? sub_80A0768
-// ??? PidStatsRecordLoseData
-// ??? PidStatsRecordDefeatInfo
-// ??? sub_80A0938
+int GetGameTotalTurnCount2(void);
+void PidStatsAddBattleAmt(struct Unit * unit);
+void PidStatsAddWinAmt(u8 pid);
+void PidStatsRecordLoseData(u8 pid);
+void PidStatsRecordDefeatInfo(u8 pid, u8 killerPid, int deathCause);
+void PidStatsAddActAmt(u8 pid);
 void PidStatsAddStatView(u8 pid);
 // ??? sub_80A09B8
 // ??? PidStatsAddMove
@@ -289,7 +289,7 @@ void PidStatsAddStatView(u8 pid);
 // ??? sub_80A0B88
 // ??? sub_80A0BA8
 int PidStatsGetFavval(u8 pid);
-// ??? sub_80A0C14
+void PidStatsAddFavval(u8 pid, int amount);
 void PidStatsRecordBattleRes(void);
 bool IsPlaythroughIdUnique(int index);
 int GetNewPlaythroughId(void);
@@ -328,7 +328,7 @@ u8 IsValidSuspendSave(int);
 // ??? ReadSuspendSavePackedUnit
 // ??? WriteTraps
 // ??? ReadTraps
-// ??? sub_80A22AC
+int GetLastSuspendSaveId(void);
 // ??? sub_80A22CC
 // ??? WriteSwappedSuspendSaveId
 int SramChecksum32(void const * sram_src, int size);

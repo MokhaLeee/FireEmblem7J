@@ -1,419 +1,6 @@
 	.include "macro.inc"
 	.syntax unified
 
-	thumb_func_start GetGameTotalTime
-GetGameTotalTime: @ 0x080A067C
-	push {r4, r5, r6, r7, lr}
-	movs r7, #0
-	bl GetNextChapterStatsSlot
-	adds r6, r0, #0
-	movs r5, #0
-	cmp r7, r6
-	bge _080A06B2
-_080A068C:
-	adds r0, r5, #0
-	bl GetChapterStats
-	adds r4, r0, #0
-	ldr r0, [r4]
-	lsls r0, r0, #0x19
-	lsrs r0, r0, #0x19
-	bl IsChapterCountedForCompletion
-	lsls r0, r0, #0x18
-	cmp r0, #0
-	beq _080A06AC
-	movs r0, #0xb4
-	ldrh r4, [r4, #2]
-	muls r0, r4, r0
-	adds r7, r7, r0
-_080A06AC:
-	adds r5, #1
-	cmp r5, r6
-	blt _080A068C
-_080A06B2:
-	adds r0, r7, #0
-	pop {r4, r5, r6, r7}
-	pop {r1}
-	bx r1
-	.align 2, 0
-
-	thumb_func_start sub_80A06BC
-sub_80A06BC: @ 0x080A06BC
-	push {r4, r5, r6, r7, lr}
-	movs r7, #0
-	bl GetNextChapterStatsSlot
-	adds r6, r0, #0
-	movs r5, #0
-	cmp r7, r6
-	bge _080A06F2
-_080A06CC:
-	adds r0, r5, #0
-	bl GetChapterStats
-	adds r4, r0, #0
-	ldr r0, [r4]
-	lsls r0, r0, #0x19
-	lsrs r0, r0, #0x19
-	bl IsChapterCountedForCompletion
-	lsls r0, r0, #0x18
-	cmp r0, #0
-	beq _080A06EC
-	ldr r0, [r4]
-	lsls r0, r0, #0x10
-	lsrs r0, r0, #0x17
-	adds r7, r7, r0
-_080A06EC:
-	adds r5, #1
-	cmp r5, r6
-	blt _080A06CC
-_080A06F2:
-	adds r0, r7, #0
-	pop {r4, r5, r6, r7}
-	pop {r1}
-	bx r1
-	.align 2, 0
-
-	thumb_func_start PidStatsAddBattleAmt
-PidStatsAddBattleAmt: @ 0x080A06FC
-	push {r4, r5, lr}
-	adds r4, r0, #0
-	movs r0, #0xc0
-	ldrb r1, [r4, #0xb]
-	ands r0, r1
-	cmp r0, #0
-	bne _080A0750
-	ldr r0, [r4]
-	ldrb r0, [r0, #4]
-	adds r5, r0, #0
-	cmp r0, #0x45
-	bhi _080A0750
-	bl GetCharacterData
-	ldrb r0, [r0, #9]
-	cmp r0, #0
-	beq _080A0750
-	lsls r1, r5, #4
-	ldr r0, _080A0758 @ =0x0203E768
-	adds r2, r1, r0
-	cmp r2, #0
-	beq _080A0750
-	ldrh r3, [r2, #0xc]
-	lsls r0, r3, #0x12
-	lsrs r1, r0, #0x14
-	ldr r0, _080A075C @ =0x00000F9F
-	cmp r1, r0
-	bgt _080A0746
-	adds r0, r1, #1
-	ldr r5, _080A0760 @ =0x00000FFF
-	adds r1, r5, #0
-	ands r0, r1
-	lsls r0, r0, #2
-	ldr r1, _080A0764 @ =0xFFFFC003
-	ands r1, r3
-	orrs r1, r0
-	strh r1, [r2, #0xc]
-_080A0746:
-	ldr r0, [r4]
-	ldrb r0, [r0, #4]
-	movs r1, #4
-	bl sub_80A0C14
-_080A0750:
-	pop {r4, r5}
-	pop {r0}
-	bx r0
-	.align 2, 0
-_080A0758: .4byte 0x0203E768
-_080A075C: .4byte 0x00000F9F
-_080A0760: .4byte 0x00000FFF
-_080A0764: .4byte 0xFFFFC003
-
-	thumb_func_start sub_80A0768
-sub_80A0768: @ 0x080A0768
-	push {r4, r5, lr}
-	lsls r0, r0, #0x18
-	lsrs r4, r0, #0x18
-	adds r5, r4, #0
-	cmp r4, #0x45
-	bhi _080A07BA
-	adds r0, r4, #0
-	bl GetCharacterData
-	ldrb r0, [r0, #9]
-	cmp r0, #0
-	beq _080A07BA
-	lsls r1, r4, #4
-	ldr r0, _080A07C0 @ =0x0203E768
-	adds r2, r1, r0
-	cmp r2, #0
-	beq _080A07BA
-	movs r3, #3
-	adds r0, r3, #0
-	ldrb r1, [r2, #0xc]
-	ands r0, r1
-	lsls r1, r0, #8
-	ldrb r0, [r2, #0xb]
-	orrs r1, r0
-	ldr r0, _080A07C4 @ =0x000003E7
-	cmp r1, r0
-	bgt _080A07B2
-	adds r1, #1
-	strb r1, [r2, #0xb]
-	lsrs r1, r1, #8
-	ands r1, r3
-	movs r0, #4
-	rsbs r0, r0, #0
-	ldrb r3, [r2, #0xc]
-	ands r0, r3
-	orrs r0, r1
-	strb r0, [r2, #0xc]
-_080A07B2:
-	adds r0, r5, #0
-	movs r1, #0x10
-	bl sub_80A0C14
-_080A07BA:
-	pop {r4, r5}
-	pop {r0}
-	bx r0
-	.align 2, 0
-_080A07C0: .4byte 0x0203E768
-_080A07C4: .4byte 0x000003E7
-
-	thumb_func_start PidStatsRecordLoseData
-PidStatsRecordLoseData: @ 0x080A07C8
-	push {r4, r5, r6, r7, lr}
-	mov r7, r8
-	push {r7}
-	sub sp, #0x10
-	lsls r0, r0, #0x18
-	lsrs r4, r0, #0x18
-	mov r8, r4
-	bl IsSramWorking
-	lsls r0, r0, #0x18
-	cmp r0, #0
-	beq _080A0898
-	cmp r4, #0x45
-	bhi _080A0898
-	adds r0, r4, #0
-	bl GetCharacterData
-	ldrb r0, [r0, #9]
-	cmp r0, #0
-	beq _080A0898
-	mov r0, r8
-	lsls r6, r0, #4
-	ldr r0, _080A08A4 @ =0x0203E768
-	adds r5, r6, r0
-	cmp r5, #0
-	beq _080A0898
-	ldr r1, _080A08A8 @ =gBmSt
-	adds r0, r1, #0
-	adds r0, #0x3c
-	ldrb r0, [r0]
-	cmp r0, #1
-	beq _080A0898
-	ldr r7, _080A08AC @ =gPlaySt
-	ldrb r2, [r7, #0x14]
-	movs r0, #8
-	ands r0, r2
-	cmp r0, #0
-	bne _080A0898
-	ldrb r1, [r1, #4]
-	movs r0, #0x40
-	ands r0, r1
-	cmp r0, #0
-	bne _080A0898
-	movs r0, #0x20
-	ands r0, r1
-	cmp r0, #0
-	bne _080A0898
-	movs r0, #0x80
-	ands r0, r2
-	cmp r0, #0
-	bne _080A0898
-	ldrb r0, [r5]
-	cmp r0, #0xc7
-	bhi _080A0898
-	adds r0, #1
-	strb r0, [r5]
-	movs r1, #0x80
-	rsbs r1, r1, #0
-	mov r0, r8
-	bl sub_80A0C14
-	bl sub_80A22AC
-	adds r4, r0, #0
-	adds r4, #3
-	adds r0, r4, #0
-	bl GetSaveWriteAddr
-	adds r1, r0, #0
-	ldr r2, _080A08B0 @ =0x000019DC
-	adds r0, r6, r2
-	adds r1, r1, r0
-	adds r0, r5, #0
-	movs r2, #1
-	bl WriteAndVerifySramFast
-	mov r0, sp
-	adds r1, r4, #0
-	bl ReadSaveBlockInfo
-	mov r0, sp
-	adds r1, r4, #0
-	bl WriteSaveBlockInfo
-	ldrb r0, [r7, #0xc]
-	bl GetSaveWriteAddr
-	adds r1, r0, #0
-	movs r2, #0x85
-	lsls r2, r2, #4
-	adds r0, r6, r2
-	adds r1, r1, r0
-	adds r0, r5, #0
-	movs r2, #3
-	bl WriteAndVerifySramFast
-	ldrb r1, [r7, #0xc]
-	mov r0, sp
-	bl ReadSaveBlockInfo
-	ldrb r1, [r7, #0xc]
-	mov r0, sp
-	bl WriteSaveBlockInfo
-_080A0898:
-	add sp, #0x10
-	pop {r3}
-	mov r8, r3
-	pop {r4, r5, r6, r7}
-	pop {r0}
-	bx r0
-	.align 2, 0
-_080A08A4: .4byte 0x0203E768
-_080A08A8: .4byte gBmSt
-_080A08AC: .4byte gPlaySt
-_080A08B0: .4byte 0x000019DC
-
-	thumb_func_start PidStatsRecordDefeatInfo
-PidStatsRecordDefeatInfo: @ 0x080A08B4
-	push {r4, r5, r6, lr}
-	adds r4, r2, #0
-	lsls r0, r0, #0x18
-	lsrs r0, r0, #0x18
-	adds r5, r0, #0
-	lsls r1, r1, #0x18
-	lsrs r6, r1, #0x18
-	cmp r0, #0x45
-	bhi _080A091E
-	bl GetCharacterData
-	ldrb r0, [r0, #9]
-	cmp r0, #0
-	beq _080A091E
-	lsls r1, r5, #4
-	ldr r0, _080A0924 @ =0x0203E768
-	adds r3, r1, r0
-	cmp r3, #0
-	beq _080A091E
-	ldr r2, _080A0928 @ =gPlaySt
-	movs r1, #0xe
-	ldrsb r1, [r2, r1]
-	movs r0, #0x3f
-	ands r1, r0
-	movs r0, #0x40
-	rsbs r0, r0, #0
-	ldrb r5, [r3, #5]
-	ands r0, r5
-	orrs r0, r1
-	strb r0, [r3, #5]
-	ldr r1, _080A092C @ =0x000003FF
-	ldrh r2, [r2, #0x10]
-	ands r1, r2
-	lsls r1, r1, #0xe
-	ldr r0, [r3, #4]
-	ldr r2, _080A0930 @ =0xFF003FFF
-	ands r0, r2
-	orrs r0, r1
-	str r0, [r3, #4]
-	lsls r2, r6, #0xe
-	ldr r0, [r3, #0xc]
-	ldr r1, _080A0934 @ =0xFF803FFF
-	ands r0, r1
-	orrs r0, r2
-	str r0, [r3, #0xc]
-	movs r0, #0xf
-	ands r4, r0
-	movs r0, #0x10
-	rsbs r0, r0, #0
-	ldrb r1, [r3, #9]
-	ands r0, r1
-	orrs r0, r4
-	strb r0, [r3, #9]
-_080A091E:
-	pop {r4, r5, r6}
-	pop {r0}
-	bx r0
-	.align 2, 0
-_080A0924: .4byte 0x0203E768
-_080A0928: .4byte gPlaySt
-_080A092C: .4byte 0x000003FF
-_080A0930: .4byte 0xFF003FFF
-_080A0934: .4byte 0xFF803FFF
-
-	thumb_func_start sub_80A0938
-sub_80A0938: @ 0x080A0938
-	push {r4, r5, lr}
-	lsls r0, r0, #0x18
-	lsrs r4, r0, #0x18
-	adds r5, r4, #0
-	cmp r4, #0x45
-	bhi _080A096C
-	adds r0, r4, #0
-	bl GetCharacterData
-	ldrb r0, [r0, #9]
-	cmp r0, #0
-	beq _080A096C
-	lsls r1, r4, #4
-	ldr r0, _080A0974 @ =0x0203E768
-	adds r1, r1, r0
-	cmp r1, #0
-	beq _080A096C
-	ldrb r0, [r1, #3]
-	cmp r0, #0xc7
-	bhi _080A0964
-	adds r0, #1
-	strb r0, [r1, #3]
-_080A0964:
-	adds r0, r5, #0
-	movs r1, #2
-	bl sub_80A0C14
-_080A096C:
-	pop {r4, r5}
-	pop {r0}
-	bx r0
-	.align 2, 0
-_080A0974: .4byte 0x0203E768
-
-	thumb_func_start PidStatsAddStatView
-PidStatsAddStatView: @ 0x080A0978
-	push {r4, r5, lr}
-	lsls r0, r0, #0x18
-	lsrs r4, r0, #0x18
-	adds r5, r4, #0
-	cmp r4, #0x45
-	bhi _080A09AC
-	adds r0, r4, #0
-	bl GetCharacterData
-	ldrb r0, [r0, #9]
-	cmp r0, #0
-	beq _080A09AC
-	lsls r1, r4, #4
-	ldr r0, _080A09B4 @ =0x0203E768
-	adds r1, r1, r0
-	cmp r1, #0
-	beq _080A09AC
-	ldrb r0, [r1, #4]
-	cmp r0, #0xc7
-	bhi _080A09A4
-	adds r0, #1
-	strb r0, [r1, #4]
-_080A09A4:
-	adds r0, r5, #0
-	movs r1, #2
-	bl sub_80A0C14
-_080A09AC:
-	pop {r4, r5}
-	pop {r0}
-	bx r0
-	.align 2, 0
-_080A09B4: .4byte 0x0203E768
-
 	thumb_func_start sub_80A09B8
 sub_80A09B8: @ 0x080A09B8
 	push {r4, r5, lr}
@@ -448,7 +35,7 @@ sub_80A09B8: @ 0x080A09B8
 _080A09F4:
 	adds r0, r5, #0
 	movs r1, #0x40
-	bl sub_80A0C14
+	bl PidStatsAddFavval
 _080A09FC:
 	pop {r4, r5}
 	pop {r0}
@@ -498,7 +85,7 @@ _080A0A42:
 	strb r0, [r3, #8]
 	adds r0, r6, #0
 	movs r1, #2
-	bl sub_80A0C14
+	bl PidStatsAddFavval
 _080A0A5C:
 	pop {r4, r5, r6}
 	pop {r0}
@@ -544,7 +131,7 @@ _080A0A9E:
 	str r0, [r2, #8]
 	adds r0, r6, #0
 	adds r1, r5, #0
-	bl sub_80A0C14
+	bl PidStatsAddFavval
 _080A0AB4:
 	pop {r4, r5, r6}
 	pop {r0}
@@ -561,7 +148,7 @@ PidStatsSubFavval08: @ 0x080A0AC8
 	lsrs r0, r0, #0x18
 	movs r1, #8
 	rsbs r1, r1, #0
-	bl sub_80A0C14
+	bl PidStatsAddFavval
 	pop {r0}
 	bx r0
 	.align 2, 0
@@ -572,7 +159,7 @@ sub_80A0ADC: @ 0x080A0ADC
 	lsls r0, r0, #0x18
 	lsrs r0, r0, #0x18
 	ldr r1, _080A0AEC @ =0xFFFFFF00
-	bl sub_80A0C14
+	bl PidStatsAddFavval
 	pop {r0}
 	bx r0
 	.align 2, 0
@@ -750,8 +337,8 @@ _080A0C0E:
 	pop {r1}
 	bx r1
 
-	thumb_func_start sub_80A0C14
-sub_80A0C14: @ 0x080A0C14
+	thumb_func_start PidStatsAddFavval
+PidStatsAddFavval: @ 0x080A0C14
 	push {r4, r5, lr}
 	adds r5, r1, #0
 	lsls r0, r0, #0x18
@@ -842,7 +429,7 @@ _080A0CAA:
 	bne _080A0CC4
 	ldr r0, [r5]
 	ldrb r0, [r0, #4]
-	bl sub_80A0768
+	bl PidStatsAddWinAmt
 _080A0CC4:
 	cmp r7, #0
 	beq _080A0CDA
@@ -2919,7 +2506,7 @@ IsValidSuspendSave: @ 0x080A1D18
 	cmp r4, #3
 	bne _080A1D5C
 	ldr r4, _080A1D60 @ =0x0203EC9C
-	bl sub_80A22AC
+	bl GetLastSuspendSaveId
 	strb r0, [r4]
 	adds r1, r0, #0
 	adds r1, #3
@@ -3631,8 +3218,8 @@ ReadTraps: @ 0x080A2288
 	.align 2, 0
 _080A22A8: .4byte ReadSramFast
 
-	thumb_func_start sub_80A22AC
-sub_80A22AC: @ 0x080A22AC
+	thumb_func_start GetLastSuspendSaveId
+GetLastSuspendSaveId: @ 0x080A22AC
 	push {lr}
 	sub sp, #0x64
 	mov r0, sp
@@ -3654,7 +3241,7 @@ _080A22C6:
 	thumb_func_start sub_80A22CC
 sub_80A22CC: @ 0x080A22CC
 	push {lr}
-	bl sub_80A22AC
+	bl GetLastSuspendSaveId
 	adds r1, r0, #0
 	movs r0, #1
 	subs r0, r0, r1

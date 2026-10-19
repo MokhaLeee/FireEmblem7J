@@ -265,7 +265,7 @@ _0801C798:
 	ldr r0, [r0]
 	ldr r0, [r0]
 	ldrb r0, [r0, #4]
-	bl sub_80A0938
+	bl PidStatsAddActAmt
 	adds r0, r6, #0
 	bl Proc_Break
 	b _0801C89C

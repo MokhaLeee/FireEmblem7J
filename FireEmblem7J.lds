@@ -375,6 +375,7 @@ SECTIONS
 		asm/prep_uisupport.o(.text);
 		asm/prep.o(.text);
 		src/save_core.o(.text);
+		src/save_bwl.o(.text);
 		asm/save.o(.text);
 		src/savemenu.o(.text);
 		asm/savemenu.o(.text);
