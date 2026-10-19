@@ -402,19 +402,19 @@ _0800BB10: @ jump table
 	.4byte _0800BB36 @ case 3
 	.4byte _0800BB3C @ case 4
 _0800BB24:
-	bl sub_80B7100
+	bl GetGameTacticsRank
 	b _0800BB40
 _0800BB2A:
-	bl sub_80B71F8
+	bl GetGameSurvivalRank
 	b _0800BB40
 _0800BB30:
-	bl sub_80B7230
+	bl GetGameExpRank
 	b _0800BB40
 _0800BB36:
-	bl sub_80B7328
+	bl GetGameCombatRank
 	b _0800BB40
 _0800BB3C:
-	bl sub_80B735C
+	bl GetGameFundsRank
 _0800BB40:
 	movs r1, #0
 	cmp r0, #2

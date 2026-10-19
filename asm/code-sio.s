@@ -14406,7 +14406,7 @@ sub_8043918: @ 0x08043918
 	bl InitGlobalSaveInfo
 	bl ResetFe6LinkSaveInfo
 	bl EraseSaveRankData
-	bl sub_80A00A4
+	bl EraseSoundRoomData
 	bl sub_80A01C8
 	b _08043942
 _0804393A:

@@ -1128,12 +1128,12 @@ int sub_80B10D4(int, int);
 // sub_80B7094
 // sub_80B70A4
 // sub_80B70D0
-// sub_80B7100
-// sub_80B71F8
-// sub_80B7230
-// sub_80B7328
-// sub_80B735C
-// sub_80B73FC
+int GetGameTacticsRank(void);
+int GetGameSurvivalRank(void);
+int GetGameExpRank(void);
+int GetGameCombatRank(void);
+int GetGameFundsRank(void);
+int GetOverallRank(int a, int b, int c, int d, int e);
 // sub_80B7448
 // sub_80B7480
 // sub_80B74C0

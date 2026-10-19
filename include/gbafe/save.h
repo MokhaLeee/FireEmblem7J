@@ -41,6 +41,12 @@ struct BonusClaimSaveData {
     /* 282 */ u16 unk282;
 };
 
+struct SoundRoomSaveData {
+    /* 00 */ u32 flags[0x8];
+    /* 20 */ u16 magic1;
+    /* 22 */ u16 magic2;
+};
+
 // Written by FE6 (Binding Blade) when linked
 struct Fe6LinkSaveInfo {
     /* 00 */ u8 unk00[0x20];
@@ -49,10 +55,32 @@ struct Fe6LinkSaveInfo {
 };
 
 struct GameRankSaveData {
-    /* 00 */ u32 valid : 1;
-             u32 unk00_01 : 31;
-    /* 04 */ u8 unk04[0x18 - 0x04];
-};
+    /* 00 */ u32 valid : 0x01;
+             u32 unk00_01 : 0x03; // overall rank
+             u32 tacticsRank : 0x03;
+             u32 survivalRank : 0x03;
+             u32 fundsRank : 0x03;
+             u32 expRank : 0x03;
+             u32 combatRank : 0x03;
+
+             u32 chapter_mode : 0x02;
+             u32 chapter_stat : 0x01;
+             u32 unk00_16 : 0x01;
+             u32 unk00_17 : 0x08;
+             u32 cuteguy : 0x08;
+
+             u32 hours : 0x0A;
+             u32 minutes : 0x06;
+             u32 seconds : 0x06;
+             u32 gold : 0x18;
+
+    /* 08 */ u32 unk08_15 : 0x06;
+             u32 unk08_1F : 0x01;
+
+    /* 0C */ char tactician_name[0xB];
+
+    /* 17 */ u8 luckydog;
+} BITPACKED;
 
 struct GameRankSaveDataPacks {
     /* 00 */ struct GameRankSaveData pack[6];
@@ -172,14 +200,14 @@ void EraseSaveRankData(void);
 int sub_809FC54(void);
 bool GetRankDataEntry(struct GameRankSaveData * buf, int chapter_mode, int difficulty);
 void SaveNewRankData(struct GameRankSaveData * buf, int chapter_mode, int difficulty);
-// ??? sub_809FD04
-// ??? sub_809FDC4
+u8 JudgeGameRankSaveData(struct GameRankSaveData * old, struct GameRankSaveData * new);
+void GenerateGameRankSaveData(struct GameRankSaveData * buf, int chapter_mode, int difficulty);
 void SaveEndgameRankings(void);
-// ??? sub_80A00A4
-// ??? LoadAndVerifySoundRoomData
-// ??? WriteSoundRoomSaveData
-// ??? IsSoundRoomSongUnlocked
-// ??? UnlockSoundRoomSong
+void EraseSoundRoomData(void);
+bool LoadAndVerifySoundRoomData(struct SoundRoomSaveData * buf);
+void WriteSoundRoomSaveData(struct SoundRoomSaveData * buf);
+bool IsSoundRoomSongUnlocked(struct SoundRoomSaveData * buf, int song);
+void UnlockSoundRoomSong(struct SoundRoomSaveData * buf, int song);
 // ??? sub_80A01C8
 // ??? sub_80A01EC
 // ??? sub_80A0244
@@ -215,13 +243,13 @@ void ClearPidStats(void);
 // ??? GetChapterStats
 // ??? IsChapterStatsValid
 // ??? GetNextChapterStatsSlot
-// ??? sub_80A053C
+int GetCurCompleteChapters(void);
 int GetNextChapterStatsEntry(void);
 void RegisterChapterStats(struct PlaySt *);
 // ??? sub_80A05FC
 // ??? sub_80A0628
 // ??? sub_80A0654
-// ??? sub_80A067C
+u32 GetGameTotalTime(void);
 // ??? sub_80A06BC
 // ??? PidStatsAddBattleAmt
 // ??? sub_80A0768
@@ -240,7 +268,7 @@ void PidStatsAddStatView(u8 pid);
 // ??? sub_80A0B5C
 // ??? sub_80A0B88
 // ??? sub_80A0BA8
-// ??? sub_80A0BDC
+int PidStatsGetFavval(u8 pid);
 // ??? sub_80A0C14
 void PidStatsRecordBattleRes(void);
 bool IsPlaythroughIdUnique(int index);

@@ -17,6 +17,7 @@
 #define SECTION(name) __attribute__((section(name)))
 
 #define NAKEDFUNC __attribute__((naked))
+#define BITPACKED __attribute__((aligned(4), packed))
 #define CONST_DATA        SECTION(".data")
 #define EWRAM_OVERLAY(id) SECTION("ewram_overlay_" # id)
 

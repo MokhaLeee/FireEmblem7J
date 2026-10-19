@@ -14811,8 +14811,8 @@ sub_80B70D0: @ 0x080B70D0
 	.align 2, 0
 _080B70FC: .4byte gUnk_08DB10A4
 
-	thumb_func_start sub_80B7100
-sub_80B7100: @ 0x080B7100
+	thumb_func_start GetGameTacticsRank
+GetGameTacticsRank: @ 0x080B7100
 	push {r4, r5, r6, r7, lr}
 	mov r7, sl
 	mov r6, sb
@@ -14935,8 +14935,8 @@ _080B71E0:
 	.align 2, 0
 _080B71F4: .4byte gUnk_08D62110
 
-	thumb_func_start sub_80B71F8
-sub_80B71F8: @ 0x080B71F8
+	thumb_func_start GetGameSurvivalRank
+GetGameSurvivalRank: @ 0x080B71F8
 	push {lr}
 	sub sp, #4
 	ldr r1, _080B722C @ =gUnk_08622C44
@@ -14966,8 +14966,8 @@ _080B7224:
 	.align 2, 0
 _080B722C: .4byte gUnk_08622C44
 
-	thumb_func_start sub_80B7230
-sub_80B7230: @ 0x080B7230
+	thumb_func_start GetGameExpRank
+GetGameExpRank: @ 0x080B7230
 	push {r4, r5, r6, r7, lr}
 	mov r7, sl
 	mov r6, sb
@@ -15090,8 +15090,8 @@ _080B7310:
 	.align 2, 0
 _080B7324: .4byte gUnk_08D62110
 
-	thumb_func_start sub_80B7328
-sub_80B7328: @ 0x080B7328
+	thumb_func_start GetGameCombatRank
+GetGameCombatRank: @ 0x080B7328
 	push {lr}
 	sub sp, #4
 	ldr r1, _080B7358 @ =gUnk_08622C48
@@ -15119,8 +15119,8 @@ _080B7350:
 	.align 2, 0
 _080B7358: .4byte gUnk_08622C48
 
-	thumb_func_start sub_80B735C
-sub_80B735C: @ 0x080B735C
+	thumb_func_start GetGameFundsRank
+GetGameFundsRank: @ 0x080B735C
 	push {r4, r5, r6, r7, lr}
 	mov r7, sb
 	mov r6, r8
@@ -15205,8 +15205,8 @@ _080B73F0:
 	pop {r1}
 	bx r1
 
-	thumb_func_start sub_80B73FC
-sub_80B73FC: @ 0x080B73FC
+	thumb_func_start GetOverallRank
+GetOverallRank: @ 0x080B73FC
 	push {r4, r5, r6, lr}
 	ldr r6, [sp, #0x10]
 	ldr r4, _080B7440 @ =gUnk_08DB6EBC
@@ -15285,21 +15285,21 @@ sub_80B7480: @ 0x080B7480
 	mov r6, r8
 	push {r6}
 	sub sp, #4
-	bl sub_80B7100
+	bl GetGameTacticsRank
 	mov r8, r0
-	bl sub_80B71F8
+	bl GetGameSurvivalRank
 	adds r6, r0, #0
-	bl sub_80B735C
+	bl GetGameFundsRank
 	adds r5, r0, #0
-	bl sub_80B7230
+	bl GetGameExpRank
 	adds r4, r0, #0
-	bl sub_80B7328
+	bl GetGameCombatRank
 	str r0, [sp]
 	mov r0, r8
 	adds r1, r6, #0
 	adds r2, r5, #0
 	adds r3, r4, #0
-	bl sub_80B73FC
+	bl GetOverallRank
 	add sp, #4
 	pop {r3}
 	mov r8, r3
@@ -15888,7 +15888,7 @@ _080B7902:
 	lsls r4, r6, #0x17
 	lsrs r4, r4, #0x1d
 	str r4, [sp]
-	bl sub_80B73FC
+	bl GetOverallRank
 	ldrh r2, [r5, #0x2c]
 	lsls r1, r2, #0x13
 	lsrs r1, r1, #0x17
@@ -21666,24 +21666,24 @@ _080BA744:
 	mov r2, sb
 	mov r3, sl
 	bl FormatTime
-	bl sub_80B7100
+	bl GetGameTacticsRank
 	movs r7, #0x3a
 	adds r7, r7, r5
 	mov r8, r7
 	strb r0, [r7]
-	bl sub_80B71F8
+	bl GetGameSurvivalRank
 	adds r7, r5, #0
 	adds r7, #0x3b
 	strb r0, [r7]
-	bl sub_80B735C
+	bl GetGameFundsRank
 	adds r4, r5, #0
 	adds r4, #0x3c
 	strb r0, [r4]
-	bl sub_80B7230
+	bl GetGameExpRank
 	adds r6, r5, #0
 	adds r6, #0x3d
 	strb r0, [r6]
-	bl sub_80B7328
+	bl GetGameCombatRank
 	movs r1, #0x3e
 	adds r1, r1, r5
 	mov ip, r1
@@ -21696,7 +21696,7 @@ _080BA744:
 	mov r6, ip
 	ldrb r4, [r6]
 	str r4, [sp]
-	bl sub_80B73FC
+	bl GetOverallRank
 	adds r1, r5, #0
 	adds r1, #0x3f
 	strb r0, [r1]

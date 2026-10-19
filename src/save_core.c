@@ -913,3 +913,188 @@ void SaveNewRankData(struct GameRankSaveData * buf, int chapter_mode, int diffic
         SaveRankings(&packs);
     }
 }
+
+u8 JudgeGameRankSaveData(struct GameRankSaveData * old, struct GameRankSaveData * new)
+{
+    int newtime, oldtime;
+
+    if (old->valid == 0)
+        return true;
+
+    if (new->unk00_01 > old->unk00_01)
+        return true;
+    else if (new->unk00_01 != old->unk00_01)
+        return false;
+
+    if (new->luckydog != 0 && new->luckydog != old->luckydog)
+        return true;
+
+    if (new->unk00_17 > old->unk00_17)
+        return true;
+
+    if (new->gold > old->gold)
+        return true;
+    else if (new->gold != old->gold)
+        return false;
+
+    newtime = new->hours * 3600 + new->minutes * 60 + new->seconds;
+    oldtime = old->hours * 3600 + old->minutes * 60 + old->seconds;
+
+    if (newtime >= oldtime)
+        return false;
+
+    return true;
+}
+
+void GenerateGameRankSaveData(struct GameRankSaveData * buf, int chapter_mode, int difficulty)
+{
+    int i, j;
+    int best = 0;
+    u16 hours, minutes, seconds;
+
+    CpuFill16(0, buf, sizeof(struct GameRankSaveData));
+
+    buf->valid = 1;
+    buf->chapter_mode = chapter_mode;
+    buf->chapter_stat = difficulty;
+
+    buf->gold = GetPartyTotalGoldValue();
+
+    buf->unk00_16 = gPlaySt.tact_enabled;
+    buf->unk00_17 = gPlaySt.unk2C_04;
+
+    FormatTime(GetGameTotalTime(), &hours, &minutes, &seconds);
+    buf->hours = hours;
+    buf->minutes = minutes;
+    buf->seconds = seconds;
+
+    buf->cuteguy = 0;
+    buf->luckydog = 0;
+
+    for (i = 1; i < 0x40; i++)
+    {
+        struct Unit * unit = GetUnit(i);
+
+        if (!UNIT_IS_VALID(unit))
+            continue;
+
+        if (unit->state & US_GROWTH_BOOST)
+        {
+            if (unit->state & US_DEAD)
+                break;
+
+            buf->luckydog = unit->pCharacterData->number;
+            break;
+        }
+    }
+
+    for (j = 1; j < 0x40; j++)
+    {
+        struct Unit * unit = GetUnit(j);
+
+        if (!UNIT_IS_VALID(unit))
+            continue;
+
+        if ((US_BIT16 | US_DEAD) & unit->state)
+            continue;
+
+        if (PidStatsGetFavval(unit->pCharacterData->number) <= best)
+            continue;
+
+        best = PidStatsGetFavval(unit->pCharacterData->number);
+        buf->cuteguy = unit->pCharacterData->number;
+    }
+
+    buf->tacticsRank = GetGameTacticsRank();
+    buf->fundsRank = GetGameFundsRank();
+    buf->survivalRank = GetGameSurvivalRank();
+    buf->expRank = GetGameExpRank();
+    buf->combatRank = GetGameCombatRank();
+
+    buf->unk00_01 = GetOverallRank(buf->tacticsRank, buf->survivalRank, buf->fundsRank, buf->expRank, buf->combatRank);
+    buf->unk08_15 = GetCurCompleteChapters();
+    strcpy(buf->tactician_name, GetTacticianName());
+}
+
+void SaveEndgameRankings(void)
+{
+    struct GameRankSaveData old, new;
+
+    int chapter_mode = sub_809FC54();
+    int difficulty = 1 & gPlaySt.chapterStateBits >> 6;
+
+    GenerateGameRankSaveData(&new, chapter_mode, difficulty);
+    GetRankDataEntry(&old, chapter_mode, difficulty);
+
+    if (JudgeGameRankSaveData(&old, &new))
+        SaveNewRankData(&new, chapter_mode, difficulty);
+}
+
+void EraseSoundRoomData(void)
+{
+    u16 buf[sizeof(struct SoundRoomSaveData) / 2];
+
+    CpuFill16(0, buf, sizeof(struct SoundRoomSaveData));
+    WriteSoundRoomSaveData((void *)buf);
+}
+
+bool LoadAndVerifySoundRoomData(struct SoundRoomSaveData * buf)
+{
+    struct SoundRoomSaveData tmp;
+
+    if (!IsSramWorking())
+        return false;
+
+    if (buf == NULL)
+        buf = &tmp;
+
+    ReadSramFast((void *)gSramMain + 0x70FC, buf, sizeof(struct SoundRoomSaveData));
+
+    if (buf->magic1 != Checksum16(buf, sizeof(struct SoundRoomSaveData) - 4))
+        return false;
+    else
+        return true;
+}
+
+void WriteSoundRoomSaveData(struct SoundRoomSaveData * buf)
+{
+    buf->magic1 = Checksum16(buf, sizeof(struct SoundRoomSaveData) - 4);
+    WriteAndVerifySramFast(buf, (void *)gSramMain + 0x70FC, sizeof(struct SoundRoomSaveData));
+}
+
+bool IsSoundRoomSongUnlocked(struct SoundRoomSaveData * buf, int song)
+{
+    struct SoundRoomSaveData tmp;
+    u32 _song = song;
+
+    if (buf == NULL)
+    {
+        buf = &tmp;
+        LoadAndVerifySoundRoomData(&tmp);
+    }
+
+    if (1 & (buf->flags[song >> 5] >> (_song % 0x20)))
+        return true;
+    else
+        return false;
+}
+
+void UnlockSoundRoomSong(struct SoundRoomSaveData * buf, int song)
+{
+    struct SoundRoomSaveData tmp;
+    u32 _song = song;
+
+    if (buf == NULL)
+    {
+        buf = &tmp;
+
+        if (!LoadAndVerifySoundRoomData(&tmp))
+            return;
+    }
+
+    if (buf->flags[song >> 5] & (1 << (_song % 0x20)))
+        return;
+
+    buf->flags[song >> 5] |= (1 << (_song % 0x20));
+    WriteSoundRoomSaveData(buf);
+}

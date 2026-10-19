@@ -396,27 +396,27 @@ sub_809A044: @ 0x0809A044
 	push {r5, r6, r7}
 	sub sp, #4
 	adds r7, r0, #0
-	bl sub_80B7100
+	bl GetGameTacticsRank
 	adds r5, r7, #0
 	adds r5, #0x34
 	movs r6, #0
 	strb r0, [r5]
-	bl sub_80B71F8
+	bl GetGameSurvivalRank
 	movs r1, #0x35
 	adds r1, r1, r7
 	mov sl, r1
 	strb r0, [r1]
-	bl sub_80B735C
+	bl GetGameFundsRank
 	movs r2, #0x36
 	adds r2, r2, r7
 	mov sb, r2
 	strb r0, [r2]
-	bl sub_80B7230
+	bl GetGameExpRank
 	movs r3, #0x37
 	adds r3, r3, r7
 	mov r8, r3
 	strb r0, [r3]
-	bl sub_80B7328
+	bl GetGameCombatRank
 	adds r4, r7, #0
 	adds r4, #0x38
 	strb r0, [r4]
@@ -429,7 +429,7 @@ sub_809A044: @ 0x0809A044
 	ldrb r3, [r5]
 	ldrb r4, [r4]
 	str r4, [sp]
-	bl sub_80B73FC
+	bl GetOverallRank
 	adds r1, r7, #0
 	adds r1, #0x39
 	strb r0, [r1]
@@ -1662,7 +1662,7 @@ _0809AA3A:
 	ldrb r3, [r7]
 	ldrb r4, [r4]
 	str r4, [sp]
-	bl sub_80B73FC
+	bl GetOverallRank
 	adds r1, r6, #0
 	adds r1, #0x39
 	strb r0, [r1]
