@@ -89,7 +89,7 @@ void Title_InitBg(struct ProcTitle * proc)
     TmApplyTsa(gBg2Tm + TM_OFFSET(0, 1), Tsa_TitleAxe, 0xE260);
 
     ApplyPalette(Pal_TitleTextShadow, 0xD);
-    Decompress(Img_TitleTextShadow, (void *)BG_VRAM + 0xDE00);
+    Decompress(CN_ALT(Img_TitleTextShadow, gCn_0841C220), (void *)BG_VRAM + 0xDE00);
     TmApplyTsa(gBg1Tm, Tsa_TitleTextShadow, 0xD2F0);
 }
 

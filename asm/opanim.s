@@ -1522,7 +1522,11 @@ _080BCBF4: .4byte 0xFFFFFE1E
 _080BCBF8: .4byte 0x06017000
 _080BCBFC: .4byte 0x01000400
 _080BCC00: .4byte gUnk_086284F8
+.ifdef VERSION_CN
+_080BCC04: .4byte gUnk_081CA888
+.else
 _080BCC04: .4byte gUnk_0862B5B4
+.endif
 _080BCC08: .4byte gUnk_0862E4D0
 
 	thumb_func_start sub_80BCC0C

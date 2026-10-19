@@ -2515,7 +2515,11 @@ _080865C6:
 _080865DC: .4byte gDispIo
 _080865E0: .4byte 0x0000FFE0
 _080865E4: .4byte 0x0000E0FF
+.ifdef VERSION_CN
+_080865E8: .4byte gCn_08628D60
+.else
 _080865E8: .4byte gUnk_0841BE00
+.endif
 _080865EC: .4byte 0x06002000
 _080865F0: .4byte 0x06002500
 _080865F4: .4byte 0x06015C00
@@ -3434,7 +3438,11 @@ sub_8086D58: @ 0x08086D58
 	pop {r0}
 	bx r0
 	.align 2, 0
+.ifdef VERSION_CN
+_08086D80: .4byte gCn_08629510
+.else
 _08086D80: .4byte gUnk_0841D838
+.endif
 _08086D84: .4byte 0x06015000
 
 	thumb_func_start sub_8086D88

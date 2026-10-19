@@ -183,17 +183,17 @@ void InitModeSelectAnims(s32 count, u8 * arg_1)
     return;
 }
 
-const char gUnk_08439354[] = JTEXT("使用武器：");
+const char gUnk_08439354[] = TEXT_CN(JTEXT("使用武器："), "\x8f\xe2\x94\x80\x91\xe8\x8e\x9d\x81\x85");
 const char gUnk_08439360[] = JTEXT("");
-const char gUnk_08439364[] = JTEXT("主人公：");
-const char gUnk_08439370[] = JTEXT("斧");
-const char gUnk_08439374[] = JTEXT("オスティア侯弟");
-const char gUnk_08439384[] = JTEXT("ヘクトル");
-const char gUnk_08439390[] = JTEXT("フェレ侯公子");
-const char gUnk_084393A0[] = JTEXT("エリウッド");
-const char gUnk_084393AC[] = JTEXT("剣");
-const char gUnk_084393B0[] = JTEXT("サカの剣士");
-const char gUnk_084393BC[] = JTEXT("リン");
+const char gUnk_08439364[] = TEXT_CN(JTEXT("主人公："), "\x95\xcf\x8e\xf4\x87\xe0\x81\x85");
+const char gUnk_08439370[] = TEXT_CN(JTEXT("斧"), "\x87\xa2");
+const char gUnk_08439374[] = TEXT_CN(JTEXT("オスティア侯弟"), "\x83\xb8\x90\xa3\x86\x81\x93\x93\x88\xc8\x86\x8a\x00\xed");
+const char gUnk_08439384[] = TEXT_CN(JTEXT("ヘクトル"), "\x88\xb7\x8a\xef\x91\xa0\x86\xd2");
+const char gUnk_08439390[] = TEXT_CN(JTEXT("フェレ侯公子"), "\x86\xf0\x8b\xae\x88\xc8\x87\xe0\x95\xf9\x00\x71");
+const char gUnk_084393A0[] = TEXT_CN(JTEXT("エリウッド"), "\x83\xaa\x8b\xc6\x91\xe1\x85\xf9\x00\x68");
+const char gUnk_084393AC[] = TEXT_CN(JTEXT("剣"), "\x89\xe1");
+const char gUnk_084393B0[] = TEXT_CN(JTEXT("サカの剣士"), "\x8f\x8e\x8a\xd7\x85\xfb\x89\xe1\x8f\xe6");
+const char gUnk_084393BC[] = TEXT_CN(JTEXT("リン"), "\x8b\xe8\x00\x93");
 
 const char * CONST_DATA gUnk_08DAE0AC[][3] = {
     {
@@ -271,7 +271,7 @@ void PutModeSelectDifficultyText(struct ModeSelectProc * proc)
 
     PutDrawText(
         &gUnk_020000A4.text[0], gBg1Tm + TM_OFFSET(15, 6), unk == 0 ? TEXT_COLOR_SYSTEM_GOLD : TEXT_COLOR_SYSTEM_GRAY,
-        0, 0, JTEXT("ノーマル"));
+        0, 0, TEXT_CN(JTEXT("ノーマル"), "\x8e\x87\x91\x85\x00\x7d\x83\x8b"));
 
     EnableBgSync(BG1_SYNC_BIT);
 
@@ -304,7 +304,7 @@ void PutModeSelectDifficultyText(struct ModeSelectProc * proc)
 
     PutDrawText(
         &gUnk_020000A4.text[1], gBg1Tm + TM_OFFSET(15, 8), unk == 1 ? TEXT_COLOR_SYSTEM_GOLD : TEXT_COLOR_SYSTEM_GRAY,
-        0, 0, JTEXT("ハード"));
+        0, 0, TEXT_CN(JTEXT("ハード"), "\x8b\x91\x8d\x9b\x00\x68"));
 
     return;
 }

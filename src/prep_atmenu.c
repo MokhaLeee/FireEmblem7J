@@ -314,7 +314,7 @@ void AtMenu_Reinitialize(struct ProcAtMenu * proc)
 	InitText(&gPrepMainMenuTexts[0], 10);
 
     /* "Preparations" */
-    Decompress(Img_PrepScreenTitle, OBJ_VRAM0 + 0x4800);
+    Decompress(CN_ALT(Img_PrepScreenTitle, gCn_084198F4), OBJ_VRAM0 + 0x4800);
 
 #if (PROJECT == FE7)
     ApplyPalettes(Pal_SysBrownBox, 0x12, 2);
@@ -325,7 +325,7 @@ void AtMenu_Reinitialize(struct ProcAtMenu * proc)
 	DrawAtMenuUpfx(0x7000, 0x06);
 
     /* "Menu", "Start" button */
-    Decompress(Img_PrepScreenTitleSprites, OBJ_VRAM0 + 0x6000);
+    Decompress(CN_ALT(Img_PrepScreenTitleSprites, gCn_081CBFD0), OBJ_VRAM0 + 0x6000);
     ApplyPalette(Pal_PrepScreenTitleSprites, 0x14);
 
     EnablePalSync();
@@ -356,7 +356,7 @@ void AtMenu_Reinitialize(struct ProcAtMenu * proc)
 	PrepRestartMuralBackground();
 
 	ApplyPalette(Pal_0841D100, 3);
-	Decompress(Img_0841D120, (void *)(BG_VRAM + 0x7800));
+	Decompress(CN_ALT(Img_0841D120, gCn_08419418), (void *)(BG_VRAM + 0x7800));
 	TmApplyTsa(gBg1Tm + TM_OFFSET(0xC, 0x4), Tsa_0841D614, OAM2_PAL(3) + OAM2_CHR(0x7800 / 0x20));
 
 #if (PROJECT == FE7)

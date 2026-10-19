@@ -20587,7 +20587,11 @@ _080B9E24:
 	lsls r1, r4, #3
 	ldr r0, [r6]
 	adds r0, r0, r1
+.ifdef VERSION_CN
+	movs r1, #4
+.else
 	movs r1, #3
+.endif
 	bl InitText
 	ldr r0, [r6]
 	adds r0, r0, r5

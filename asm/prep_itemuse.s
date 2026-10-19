@@ -237,9 +237,17 @@ _08095332:
 	pop {r0}
 	bx r0
 	.align 2, 0
+.ifdef VERSION_CN
+_08095404: .4byte gCn_08B369D0
+.else
 _08095404: .4byte gUnk_0842D00C
+.endif
 _08095408: .4byte gBg2Tm + 0x222
+.ifdef VERSION_CN
+_0809540C: .4byte gCn_08B369D8
+.else
 _0809540C: .4byte gUnk_0842D010
+.endif
 _08095410: .4byte gUnk_0842D014
 _08095414: .4byte gUnk_0842D01C
 _08095418: .4byte gUnk_0842D024

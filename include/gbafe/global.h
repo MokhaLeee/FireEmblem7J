@@ -35,6 +35,14 @@
 #define JTEXT(orig) (orig)
 #define TEXT(orig, english) (orig)
 
+// Values the Chinese patch changed (strings use its custom glyph encoding, not GBK).
+#ifdef VERSION_CN
+#define CN_ALT(orig, cn) (cn)
+#else
+#define CN_ALT(orig, cn) (orig)
+#endif
+#define TEXT_CN(orig, cn) CN_ALT(orig, cn)
+
 #define LIMIT_AREA(num, min, max)   \
     if (num > max)                  \
         num = max;                  \

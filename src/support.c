@@ -369,14 +369,14 @@ char const * GetAffinityName(int affinity)
     // clang-format off
     char const * lut[] =
     {
-        [0] = JTEXT("ー"),
-        [AFFINITY_1] = JTEXT("炎"),
-        [AFFINITY_2] = JTEXT("雷"),
-        [AFFINITY_3] = JTEXT("風"),
-        [AFFINITY_4] = JTEXT("氷"),
-        [AFFINITY_5] = JTEXT("闇"),
-        [AFFINITY_6] = JTEXT("光"),
-        [AFFINITY_7] = JTEXT("理"),
+        [0] = TEXT_CN(JTEXT("ー"), "\x81\x8d"),
+        [AFFINITY_1] = TEXT_CN(JTEXT("炎"), "\x93\x9e"),
+        [AFFINITY_2] = TEXT_CN(JTEXT("雷"), "\x8b\xae"),
+        [AFFINITY_3] = TEXT_CN(JTEXT("風"), "\x87\x89"),
+        [AFFINITY_4] = TEXT_CN(JTEXT("氷"), "\x84\x9a"),
+        [AFFINITY_5] = TEXT_CN(JTEXT("闇"), "\x83\xb0"),
+        [AFFINITY_6] = TEXT_CN(JTEXT("光"), "\x88\x89"),
+        [AFFINITY_7] = TEXT_CN(JTEXT("理"), "\x8b\xbb"),
     };
     // clang-format on
 

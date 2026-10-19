@@ -269,27 +269,27 @@ void LoadOneYearLaterCg(void)
 
 void sub_807FF4C(void)
 {
-    sub_807C66C(JTEXT("スタッフロール（仮）"));
+    sub_807C66C(TEXT_CN(JTEXT("スタッフロール（仮）"), "\x81\xc0\x81\xb6\x81\xbe\x00\x74\x83\x8d\x81\x5b\x83\x8b\x81\x69\x89\xbc\x81\x6a"));
 }
 
 void sub_807FF5C(void)
 {
-    sub_807C66C(JTEXT("その後（仮）"));
+    sub_807C66C(TEXT_CN(JTEXT("その後（仮）"), "\x81\xc0\x81\xb6\x81\xbf\x00\x69\x89\xbc\x81\x6a"));
 }
 
 void sub_807FF6C(void)
 {
-    sub_807C66C(JTEXT("おしまい（仮）"));
+    sub_807C66C(TEXT_CN(JTEXT("おしまい（仮）"), "\x81\xc0\x81\xb7\x81\xb6\x00\xa2\x81\x69\x89\xbc\x81\x6a"));
 }
 
 void sub_807FF7C(void)
 {
-    sub_807C66C(JTEXT("おしまい８ＨＸ（仮）"));
+    sub_807C66C(TEXT_CN(JTEXT("おしまい８ＨＸ（仮）"), "\x81\xc0\x81\xb7\x81\xb7\x00\xa2\x82\x57\x82\x67\x82\x77\x81\x69\x89\xbc\x81\x6a"));
 }
 
 void sub_807FF8C(void)
 {
-    sub_807C66C(JTEXT("評価画面（仮）"));
+    sub_807C66C(TEXT_CN(JTEXT("評価画面（仮）"), "\x81\xc0\x81\xb7\x81\xb8\x00\xca\x81\x69\x89\xbc\x81\x6a"));
 }
 
 void NilsEpilogueIntro_Init(void)

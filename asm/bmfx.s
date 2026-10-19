@@ -1695,7 +1695,11 @@ _0801E502:
 _0801E522:
 	ldr r3, _0801E638 @ =gUnk_081C9350
 	adds r0, r6, #0
+.ifdef VERSION_CN
+	movs r1, #0x1a
+.else
 	movs r1, #0x20
+.endif
 	movs r2, #0
 	bl Text_InsertDrawString
 	adds r4, r6, #0
@@ -1714,12 +1718,20 @@ _0801E522:
 	bl Text_InsertDrawString
 	ldr r3, _0801E644 @ =gUnk_081C9368
 	adds r0, r4, #0
+.ifdef VERSION_CN
+	movs r1, #0x31
+.else
 	movs r1, #0x32
+.endif
 	movs r2, #0
 	bl Text_InsertDrawString
 	ldr r3, _0801E648 @ =gUnk_081C9370
 	adds r0, r5, #0
+.ifdef VERSION_CN
+	movs r1, #0x31
+.else
 	movs r1, #0x32
+.endif
 	movs r2, #0
 	bl Text_InsertDrawString
 	mov r0, r8
@@ -1727,7 +1739,11 @@ _0801E522:
 	movs r1, #0
 	ldrsh r3, [r0, r1]
 	adds r0, r4, #0
+.ifdef VERSION_CN
+	movs r1, #0x25
+.else
 	movs r1, #0x24
+.endif
 	mov r2, sb
 	bl Text_InsertDrawNumberOrBlank
 	mov r0, r8
@@ -1735,7 +1751,11 @@ _0801E522:
 	movs r2, #0
 	ldrsh r3, [r0, r2]
 	adds r0, r5, #0
+.ifdef VERSION_CN
+	movs r1, #0x25
+.else
 	movs r1, #0x24
+.endif
 	mov r2, sb
 	bl Text_InsertDrawNumberOrBlank
 	mov r0, r8

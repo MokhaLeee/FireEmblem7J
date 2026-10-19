@@ -145,6 +145,25 @@ _08000528:
 	.align 2, 0
 _08000530: .4byte gOamLoPutIt
 
+.ifdef VERSION_CN
+@ Chinese patch: hand-written replacement
+	arm_func_start PutOamLo
+PutOamLo: @ 0x08000534
+	.4byte 0xE92D00F0 @ push {r4, r5, r6, r7}
+	.4byte 0xE51F7010 @ ldr r7, [pc, #-16] @ 0x8000530
+	.4byte 0xEAFFFFD6 @ b 0x800049c
+_08000540:
+	.4byte 0xE4920000 @ ldr r0, [r2], #0
+	.4byte 0xE1800003 @ orr r0, r0, r3
+	.4byte 0xE4820000 @ str r0, [r2], #0
+	.4byte 0xE12FFF1E @ bx lr
+	.4byte 0x00000000
+	.4byte 0x00000000
+	.4byte 0x00000000
+	.4byte 0x00000000
+_08000560:
+	.4byte 0x00000000
+.else
 	arm_func_start PutOamLo
 PutOamLo: @ 0x08000534
 	push {r4, r5, r6, r7}
@@ -154,7 +173,61 @@ _08000540:
 	.byte 0x01, 0x00, 0x00, 0x00, 0x04, 0x00, 0x00, 0x00, 0x10, 0x00, 0x00, 0x00, 0x40, 0x00, 0x00, 0x00
 	.byte 0x00, 0x01, 0x00, 0x00, 0x00, 0x04, 0x00, 0x00, 0x00, 0x10, 0x00, 0x00, 0x00, 0x40, 0x00, 0x00
 _08000560: .4byte 0x08000540
+.endif
 
+.ifdef VERSION_CN
+@ Chinese patch: hand-written replacement
+	arm_func_start DrawGlyph
+DrawGlyph: @ 0x08000564
+	.4byte 0xE92D4FF0 @ push {r4, r5, r6, r7, r8, r9, sl, fp, lr}
+	.4byte 0xE92D0001 @ stmfd sp!, {r0}
+	.4byte 0xE1A03103 @ lsl r3, r3, #2
+	.4byte 0xE4D14001 @ ldrb r4, [r1], #1
+_08000574:
+	.4byte 0xE4D15003 @ ldrb r5, [r1], #3
+	.4byte 0xE3A06010 @ mov r6, #16
+	.4byte 0xE0466005 @ sub r6, r6, r5
+	.4byte 0xE3560003 @ cmp r6, #3
+	.4byte 0xA2466001 @ subge r6, r6, #1
+	.4byte 0xE0822106 @ add r2, r2, r6, lsl #2
+	.4byte 0xE92D001C @ push {r2, r3, r4}
+	.4byte 0xE8BD0700 @ pop {r8, r9, sl}
+	.4byte 0xE3A06000 @ mov r6, #0
+	.4byte 0xE1A0B009 @ mov fp, r9
+	.4byte 0xE3A03000 @ mov r3, #0
+	.4byte 0xE3560000 @ cmp r6, #0
+	.4byte 0x1A000001 @ bne 0x80005b0
+	.4byte 0xE4917004 @ ldr r7, [r1], #4
+	.4byte 0xE3A06010 @ mov r6, #16
+	.4byte 0xE2466001 @ sub r6, r6, #1
+	.4byte 0xE2070003 @ and r0, r7, #3
+	.4byte 0xE1A07127 @ lsr r7, r7, #2
+	.4byte 0xE7D0000D @ ldrb r0, [r0, sp]
+	.4byte 0xE1833B10 @ orr r3, r3, r0, lsl fp
+	.4byte 0xE2544001 @ subs r4, r4, #1
+	.4byte 0x0A000006 @ beq 0x80005e8
+	.4byte 0xE28BB004 @ add fp, fp, #4
+	.4byte 0xE35B0020 @ cmp fp, #32
+	.4byte 0x3AFFFFF1 @ bcc 0x80005a0
+	.4byte 0xEBFFFFD8 @ bl 0x8000540
+	.4byte 0xE2822040 @ add r2, r2, #64 @ 0x40
+	.4byte 0xE3A0B000 @ mov fp, #0
+	.4byte 0xEAFFFFEC @ b 0x800059c
+	.4byte 0xEBFFFFD4 @ bl 0x8000540
+	.4byte 0xE2555001 @ subs r5, r5, #1
+	.4byte 0x0A000003 @ beq 0x8000604
+	.4byte 0xE2882004 @ add r2, r8, #4
+	.4byte 0xE1A08002 @ mov r8, r2
+	.4byte 0xE1A0400A @ mov r4, sl
+	.4byte 0xEAFFFFE4 @ b 0x8000598
+	.4byte 0xE8BD4FF8 @ pop {r3, r4, r5, r6, r7, r8, r9, sl, fp, lr}
+	.4byte 0xE12FFF1E @ bx lr
+	.4byte 0x00000000
+	.4byte 0x00000000
+	.4byte 0x00000000
+	.4byte 0x00000000
+	.4byte 0x00000000
+.else
 	arm_func_start DrawGlyph
 DrawGlyph: @ 0x08000564
 	push {r4, r5, r6, r7, r8, sb, sl}
@@ -205,7 +278,65 @@ _08000574:
 	bpl _08000574
 	pop {r4, r5, r6, r7, r8, sb, sl}
 	bx lr
+.endif
 
+.ifdef VERSION_CN
+@ Chinese patch: hand-written replacement
+	arm_func_start sub_8000620
+sub_8000620: @ 0x08000620
+	.4byte 0xE92D4FF0 @ push {r4, r5, r6, r7, r8, r9, sl, fp, lr}
+	.4byte 0xE92D0001 @ stmfd sp!, {r0}
+	.4byte 0xE1A03103 @ lsl r3, r3, #2
+	.4byte 0xE4D14001 @ ldrb r4, [r1], #1
+_08000630:
+	.4byte 0xE4D15003 @ ldrb r5, [r1], #3
+	.4byte 0xE3A06010 @ mov r6, #16
+	.4byte 0xE0466005 @ sub r6, r6, r5
+	.4byte 0xE3560003 @ cmp r6, #3
+	.4byte 0xA2466001 @ subge r6, r6, #1
+	.4byte 0xE0822106 @ add r2, r2, r6, lsl #2
+	.4byte 0xE92D001C @ push {r2, r3, r4}
+	.4byte 0xE8BD0700 @ pop {r8, r9, sl}
+	.4byte 0xE3A06000 @ mov r6, #0
+	.4byte 0xE1A0B009 @ mov fp, r9
+	.4byte 0xE3A03000 @ mov r3, #0
+	.4byte 0xE3560000 @ cmp r6, #0
+	.4byte 0x1A000001 @ bne 0x800066c
+	.4byte 0xE4917004 @ ldr r7, [r1], #4
+	.4byte 0xE3A06010 @ mov r6, #16
+	.4byte 0xE2466001 @ sub r6, r6, #1
+	.4byte 0xE2070003 @ and r0, r7, #3
+	.4byte 0xE1A07127 @ lsr r7, r7, #2
+	.4byte 0xE7D0000D @ ldrb r0, [r0, sp]
+	.4byte 0xE1833B10 @ orr r3, r3, r0, lsl fp
+	.4byte 0xE2544001 @ subs r4, r4, #1
+	.4byte 0x0A000006 @ beq 0x80006a4
+	.4byte 0xE28BB004 @ add fp, fp, #4
+	.4byte 0xE35B0020 @ cmp fp, #32
+	.4byte 0x3AFFFFF1 @ bcc 0x800065c
+	.4byte 0xEBFFFFA9 @ bl 0x8000540
+	.4byte 0xE2822020 @ add r2, r2, #32
+	.4byte 0xE3A0B000 @ mov fp, #0
+	.4byte 0xEAFFFFEC @ b 0x8000658
+	.4byte 0xEBFFFFA5 @ bl 0x8000540
+	.4byte 0xE2555001 @ subs r5, r5, #1
+	.4byte 0x0A000003 @ beq 0x80006c0
+	.4byte 0xE2882004 @ add r2, r8, #4
+	.4byte 0xE1A08002 @ mov r8, r2
+	.4byte 0xE1A0400A @ mov r4, sl
+	.4byte 0xEAFFFFE4 @ b 0x8000654
+	.4byte 0xE8BD4FF8 @ pop {r3, r4, r5, r6, r7, r8, r9, sl, fp, lr}
+	.4byte 0xE12FFF1E @ bx lr
+	.4byte 0xE2822004 @ add r2, r2, #4
+	.4byte 0xE2599001 @ subs r9, r9, #1
+	.4byte 0x5AFFFFD6 @ bpl 0x8000630
+	.4byte 0xE8BD07F0 @ pop {r4, r5, r6, r7, r8, r9, sl}
+	.4byte 0xE12FFF1E @ bx lr
+_080006DC:
+	.4byte 0x08BBB36C @ ldmeq fp!, {r2, r3, r5, r6, r8, r9, ip, sp, pc}
+_080006E0:
+	.4byte 0x08BB5A90 @ ldmeq fp!, {r4, r7, r9, fp, ip, lr}
+.else
 	arm_func_start sub_8000620
 sub_8000620: @ 0x08000620
 	push {r4, r5, r6, r7, r8, sb, sl}
@@ -258,7 +389,12 @@ _08000630:
 	bx lr
 	.align 2, 0
 _080006DC: .4byte 0x08BBB36C
+.ifdef VERSION_CN
+_080006E0: .4byte gCn_08BB5A90
+.else
 _080006E0: .4byte 0x08BB72E0
+.endif
+.endif
 
 	arm_func_start DecodeString
 DecodeString: @ 0x080006E4

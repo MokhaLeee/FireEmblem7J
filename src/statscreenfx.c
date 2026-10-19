@@ -303,13 +303,13 @@ void DisplayBwl(void)
     ClearText(&gStatScreenSt.text[STATSCREEN_TEXT_BWL]);
 
     Text_InsertDrawString(&gStatScreenSt.text[STATSCREEN_TEXT_BWL],
-        0x18, TEXT_COLOR_SYSTEM_GOLD, "戦");
+        0x18, TEXT_COLOR_SYSTEM_GOLD, TEXT_CN("戦", "\x94\xf1"));
 
     Text_InsertDrawString(&gStatScreenSt.text[STATSCREEN_TEXT_BWL],
-        0x38, TEXT_COLOR_SYSTEM_GOLD, "勝");
+        0x38, TEXT_COLOR_SYSTEM_GOLD, TEXT_CN("勝", "\x8f\xd0"));
 
     Text_InsertDrawString(&gStatScreenSt.text[STATSCREEN_TEXT_BWL],
-        0x58, TEXT_COLOR_SYSTEM_GOLD, "敗");
+        0x58, TEXT_COLOR_SYSTEM_GOLD, TEXT_CN("敗", "\x83\xc7"));
 
     PutText(&gStatScreenSt.text[STATSCREEN_TEXT_BWL],
         gUiTmScratchA + TM_OFFSET(3, 14));
@@ -362,15 +362,21 @@ void PutStatScreenPersonalInfoPage(void)
         PutDrawText(gStatScreenSt.text + STATSCREEN_TEXT_POW,
             gUiTmScratchA + TM_OFFSET(1, 1),
             TEXT_COLOR_SYSTEM_GOLD, 0, 0,
-            TEXT("魔力", "Mag"));
+            TEXT_CN(TEXT("魔力", "Mag"), "\x8c\xf9\x8b\xca"));
     }
     else
     {
         // strength
         PutDrawText(gStatScreenSt.text + STATSCREEN_TEXT_POW,
             gUiTmScratchA + TM_OFFSET(1, 1),
+#ifdef VERSION_CN
+            // the patch points at a longer string elsewhere; "力" stays unused
+            TEXT_COLOR_SYSTEM_GOLD, 0, 0,
+            gCn_08B369B0);
+#else
             TEXT_COLOR_SYSTEM_GOLD, 4, 0,
             TEXT("力", "Str"));
+#endif
     }
 
     // display strength/magic stat value
@@ -464,6 +470,11 @@ void PutStatScreenPersonalInfoPage(void)
 
     DisplayBwl();
 }
+
+#ifdef VERSION_CN
+// left behind by the patch, keeps .rodata layout
+const char gCnUnused_StatScreenStrLabel[] = "力";
+#endif
 
 void PutStatScreenItemsPage(void)
 {

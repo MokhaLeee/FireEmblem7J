@@ -10,6 +10,21 @@ SRC_DIR = src
 ASM_DIR = asm
 BUILD_DIR = build
 
+# VERSION=jp : original Japanese ROM (default)
+# VERSION=cn : Chinese fan-translation patch, base ROM given by BASEROM_CN
+VERSION ?= jp
+ROM_NAME := $(BUILD_NAME)
+SHA1_FILE := $(BUILD_NAME).sha1
+
+ifeq ($(VERSION),cn)
+  BUILD_DIR = build_cn
+  ROM_NAME := $(BUILD_NAME)_cn
+  SHA1_FILE := $(BUILD_NAME)_cn.sha1
+  BASEROM_CN ?= ../baserom/fire.gba
+  # extra symbols for data the patch moved or added
+  LD_EXTRA := ../$(BUILD_NAME)_cn_syms.ld
+endif
+
 CLEAN_FILES :=
 CLEAN_DIRS  :=
 
@@ -64,6 +79,11 @@ CFLAGS := -g -mthumb-interwork -Wimplicit -Wparentheses -Werror -fhex-asm -ffix-
 ASFLAGS := -mcpu=arm7tdmi -I asm/include -I include
 LDFLAGS := # --no-warn-rwx-segments
 
+ifeq ($(VERSION),cn)
+  CPPFLAGS += -DVERSION_CN
+  ASFLAGS += --defsym VERSION_CN=1
+endif
+
 LDS := $(BUILD_NAME).lds
 C_SRCS := $(shell find $(SRC_DIR) -name *.c)
 ASM_SRCS := $(shell find $(SRC_DIR) -name *.s) $(shell find $(ASM_DIR) -name *.s)
@@ -105,7 +125,7 @@ CLEAN_FILES += $(MSG_LIST) # $(TEXT_HEADER)
 # = Targets =
 # ===========
 
-ROM := $(BUILD_NAME).gba
+ROM := $(ROM_NAME).gba
 ELF := $(ROM:%.gba=%.elf)
 MAP := $(ROM:%.gba=%.map)
 SYM := $(ROM:%.gba=%.sym)
@@ -130,7 +150,7 @@ $(shell mkdir -p $(SUBDIRS))
 
 compare: $(ROM)
 	@echo "[SHA]	$<"
-	@$(SHASUM) -c FireEmblem7J.sha1
+	@$(SHASUM) -c $(SHA1_FILE)
 
 .PHONY: compare
 
@@ -142,9 +162,9 @@ syms: $(SYM)
 
 CLEAN_FILES += $(ROM)
 
-$(ELF): $(ALL_OBJS) $(LDS)
+$(ELF): $(ALL_OBJS) $(LDS) $(LD_EXTRA:../%=%)
 	@echo "[ LD]	$@"
-	@cd $(BUILD_DIR) && $(LD) -T ../$(LDS) -Map ../$(MAP) -L../tools/agbcc/lib $(ALL_OBJS:$(BUILD_DIR)/%=%) -lc -lgcc -o ../$@ $(LDFLAGS)
+	@cd $(BUILD_DIR) && $(LD) -T ../$(LDS) -Map ../$(MAP) -L../tools/agbcc/lib $(ALL_OBJS:$(BUILD_DIR)/%=%) $(LD_EXTRA) -lc -lgcc -o ../$@ $(LDFLAGS)
 
 CLEAN_FILES += $(ELF) $(MAP)
 
@@ -168,6 +188,22 @@ $(BUILD_DIR)/%.d: $(BUILD_DIR)/%.o
 $(BUILD_DIR)/%.o: %.s
 	@echo "[ AS]	$<"
 	@$(AS) $(ASFLAGS) $< -o $@ --MD $(BUILD_DIR)/$*.d
+
+ifeq ($(VERSION),cn)
+# gas looks for .incbin files in the current directory first, so data is
+# assembled from inside the build dir where the base ROM name points at the
+# Chinese ROM instead of the original one.
+CN_BASEROM_LINK := $(BUILD_DIR)/$(BUILD_NAME).base.gba
+
+$(CN_BASEROM_LINK):
+	@ln -sf $(abspath $(BASEROM_CN)) $@
+
+CN_DATA_ASFLAGS := -mcpu=arm7tdmi -I ../asm/include -I ../include --defsym VERSION_CN=1
+
+$(DATA_OBJS): $(BUILD_DIR)/%.o: %.s | $(CN_BASEROM_LINK)
+	@echo "[ AS]	$<"
+	@cd $(BUILD_DIR) && $(AS) $(CN_DATA_ASFLAGS) ../$< -o $*.o --MD $*.d
+endif
 
 ifneq (clean,$(MAKECMDGOALS))
   -include $(ALL_DEPS)

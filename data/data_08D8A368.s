@@ -28,6 +28,85 @@ gUnk_08D8AC98:	@ 0x08D8AC98
 
 	.global gChapTitleConfig
 gChapTitleConfig:	@ 0x08D8AE00
+.ifdef VERSION_CN
+	.4byte gCn_08BFAA78
+	.4byte gCn_08BFADA4
+	.4byte gCn_08BFB0EC
+	.4byte gCn_08BFB3BC
+	.4byte gCn_08BFB700
+	.4byte gCn_08BFBA38
+	.4byte gCn_08BFBD0C
+	.4byte gCn_08BFBFF8
+	.4byte gCn_08BFC314
+	.4byte gCn_08BFC5D8
+	.4byte gCn_08BFC918
+	.4byte gCn_08BFCC3C
+	.4byte gCn_08BFCF58
+	.4byte gCn_08BFD21C
+	.4byte gCn_08BFD500
+	.4byte gCn_08BFD7E4
+	.4byte gCn_08BFDBD0
+	.4byte gCn_08BFDFE8
+	.4byte gCn_08BFE34C
+	.4byte gCn_08BFE6A8
+	.4byte gCn_08BFEA1C
+	.4byte gCn_08BFECB8
+	.4byte gCn_08BFEF44
+	.4byte gCn_08BFF290
+	.4byte Img_TitleName_084090A4
+	.4byte gCn_084093B8
+	.4byte gCn_08409694
+	.4byte gCn_084099DC
+	.4byte gCn_08409DC0
+	.4byte gCn_08409DC0
+	.4byte gCn_0840A0B0
+	.4byte gCn_0840A488
+	.4byte gCn_0840A488
+	.4byte gCn_0840A7A0
+	.4byte gCn_0840AB2C
+	.4byte gCn_0840AEC8
+	.4byte gCn_0840B210
+	.4byte gCn_0840B4E8
+	.4byte gCn_0840B844
+	.4byte gCn_0840BBDC
+	.4byte gCn_08BFF510
+	.4byte gCn_0840BEB8
+	.4byte gCn_08BFD21C
+	.4byte gCn_08BFD500
+	.4byte gCn_08BFD7E4
+	.4byte gCn_08BFDBD0
+	.4byte gCn_0840C1B0
+	.4byte gCn_0840C4B8
+	.4byte gCn_0840C81C
+	.4byte gCn_0840CB6C
+	.4byte gCn_0840CF04
+	.4byte gCn_0840D19C
+	.4byte gCn_0840D430
+	.4byte gCn_0840D784
+	.4byte gCn_0840DB30
+	.4byte gCn_0840DDC4
+	.4byte gCn_0840E0CC
+	.4byte gCn_0840E3B4
+	.4byte gCn_0840E73C
+	.4byte gCn_0840EB24
+	.4byte gCn_0840EB24
+	.4byte gCn_0840EE1C
+	.4byte gCn_0840F168
+	.4byte gCn_0840F53C
+	.4byte gCn_0840F53C
+	.4byte gCn_0840F854
+	.4byte gCn_0840FBE0
+	.4byte gCn_0840FF7C
+	.4byte gCn_084102C8
+	.4byte gCn_0841063C
+	.4byte gCn_0841097C
+	.4byte gCn_08410D18
+	.4byte gCn_08410FFC
+	.4byte gCn_08BFF510
+	.4byte gCn_084113C4
+	.4byte gCn_0841162C
+	.4byte gCn_084117D4
+.else
 	.4byte Img_TitleName_084090A4
 	.4byte Img_TitleName_08409464
 	.4byte Img_TitleName_084097C4
@@ -105,6 +184,7 @@ gChapTitleConfig:	@ 0x08D8AE00
 	.4byte Img_TitleName_0841A6C4
 	.4byte Img_TitleName_0841A964
 	.4byte Img_TitleName_0841AB8C
+.endif
 
 	.global gUnk_08D8AF34
 gUnk_08D8AF34:	@ 0x08D8AF34

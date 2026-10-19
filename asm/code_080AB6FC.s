@@ -2120,7 +2120,11 @@ _080AC96C: .4byte gUnk_08433C0C
 _080AC970: .4byte gUnk_08433CA0
 _080AC974: .4byte 0x0000FFFE
 _080AC978: .4byte 0x0000FFFC
+.ifdef VERSION_CN
+_080AC97C: .4byte gCn_08629D28
+.else
 _080AC97C: .4byte gUnk_08432FF8
+.endif
 _080AC980: .4byte 0x06012000
 _080AC984: .4byte gUnk_08433A90
 _080AC988: .4byte 0x0000FFE0
@@ -4040,7 +4044,11 @@ _080AD8E8: .4byte Tsa_SaveMenuBackground
 _080AD8EC: .4byte Pal_SaveMenuWindow
 _080AD8F0: .4byte Img_SaveMenuSprits
 _080AD8F4: .4byte 0x06010800
+.ifdef VERSION_CN
+_080AD8F8: .4byte gCn_08419CA8
+.else
 _080AD8F8: .4byte gUnk_0843165C
+.endif
 _080AD8FC: .4byte 0x06013800
 _080AD900: .4byte sub_80AD778
 _080AD904: .4byte Img_SpinRotation

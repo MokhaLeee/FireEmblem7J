@@ -1028,7 +1028,7 @@ int GetCombinedEnemyWeaponUsabilityBits(void) {
     return ret;
 }
 
-const char Unk_8AC9228[] = "ーーー";
+const char Unk_8AC9228[] = TEXT_CN("ーーー", "\x81\x8d\x81\x8d\x81\x8d");
 
 bool CanActiveUnitStillMove(void)
 {

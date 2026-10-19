@@ -406,6 +406,7 @@ __pycache__/
 # Distribution / packaging
 .Python
 build/
+build_cn/
 develop-eggs/
 downloads/
 eggs/

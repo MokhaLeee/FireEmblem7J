@@ -4989,7 +4989,11 @@ sub_8030A90: @ 0x08030A90
 	pop {r0}
 	bx r0
 	.align 2, 0
+.ifdef VERSION_CN
+_08030AB0: .4byte gCn_08629510
+.else
 _08030AB0: .4byte gUnk_0841D838
+.endif
 _08030AB4: .4byte 0x06017000
 
 	thumb_func_start sub_8030AB8
@@ -9005,7 +9009,11 @@ _08032B10:
 	pop {r0}
 	bx r0
 	.align 2, 0
+.ifdef VERSION_CN
+_08032B34: .4byte gCn_081CB150
+.else
 _08032B34: .4byte gUnk_0841DBCC
+.endif
 _08032B38: .4byte 0x06015000
 _08032B3C: .4byte gUnk_0841DE88
 _08032B40: .4byte gUnk_08C05CA0

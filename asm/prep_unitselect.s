@@ -365,7 +365,11 @@ PrepUnit_InitGfx: @ 0x08093B14
 	.align 2, 0
 _08093B4C: .4byte gBg1Tm
 _08093B50: .4byte gUnk_0841F9F4
+.ifdef VERSION_CN
+_08093B54: .4byte gCn_081CBFD0
+.else
 _08093B54: .4byte Img_PrepScreenTitleSprites
+.endif
 _08093B58: .4byte 0x06010800
 
 	thumb_func_start sub_8093B5C

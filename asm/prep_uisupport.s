@@ -3725,7 +3725,11 @@ _0809D800:
 	pop {r0}
 	bx r0
 	.align 2, 0
+.ifdef VERSION_CN
+_0809D838: .4byte gCn_08629890
+.else
 _0809D838: .4byte gUnk_0842C874
+.endif
 _0809D83C: .4byte 0x06017000
 _0809D840: .4byte gUnk_08429658
 _0809D844: .4byte 0x06017800

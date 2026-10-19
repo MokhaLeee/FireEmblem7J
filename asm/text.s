@@ -54,6 +54,37 @@ _080052AE:
 _080052D8: .4byte 0x02028D50
 _080052DC: .4byte GetTextDrawDest
 
+.ifdef VERSION_CN
+@ Chinese patch: hand-written replacement
+	thumb_func_start SetTextFontGlyphs
+SetTextFontGlyphs: @ 0x080052E0
+	.2byte 0x4903 @ ldr r1, [pc, #12] @ (0x80052f0)
+	.2byte 0x2800 @ cmp r0, #0
+	.2byte 0xD100 @ bne.n 0x80052e8
+	.2byte 0x312C @ adds r1, #44 @ 0x2c
+	.2byte 0x4802 @ ldr r0, [pc, #8] @ (0x80052f4)
+	.2byte 0x6800 @ ldr r0, [r0, #0]
+_080052EC:
+	.2byte 0x6041 @ str r1, [r0, #4]
+	.2byte 0x4770 @ bx lr
+_080052F0:
+	.2byte 0x0698 @ lsls r0, r3, #26
+	.2byte 0x08BC @ lsrs r4, r7, #2
+_080052F4:
+	.2byte 0x8D68 @ ldrh r0, [r5, #42] @ 0x2a
+	.2byte 0x0202 @ lsls r2, r0, #8
+	.2byte 0x4802 @ ldr r0, [pc, #8] @ (0x8005304)
+_080052FA:
+	.2byte 0x6048 @ str r0, [r1, #4]
+	.2byte 0x4770 @ bx lr
+	.2byte 0x0000 @ movs r0, r0
+_08005300:
+	.2byte 0x8D68 @ ldrh r0, [r5, #42] @ 0x2a
+	.2byte 0x0202 @ lsls r2, r0, #8
+_08005304:
+	.2byte 0xC1E0 @ stmia r1!, {r5, r6, r7}
+	.2byte 0x08BD @ lsrs r5, r7, #2
+.else
 	thumb_func_start SetTextFontGlyphs
 SetTextFontGlyphs: @ 0x080052E0
 	cmp r0, #0
@@ -64,7 +95,11 @@ SetTextFontGlyphs: @ 0x080052E0
 	b _080052FA
 	.align 2, 0
 _080052EC: .4byte gActiveFont
+.ifdef VERSION_CN
+_080052F0: .4byte gCn_08BC0698
+.else
 _080052F0: .4byte gUnk_08BC1FEC
+.endif
 _080052F4:
 	ldr r0, _08005300 @ =gActiveFont
 	ldr r1, [r0]
@@ -75,6 +110,7 @@ _080052FA:
 	.align 2, 0
 _08005300: .4byte gActiveFont
 _08005304: .4byte gUnk_08BDC1E0
+.endif
 
 	thumb_func_start ResetTextFont
 ResetTextFont: @ 0x08005308
@@ -347,6 +383,63 @@ _080054BA:
 _080054CA:
 	bx lr
 
+.ifdef VERSION_CN
+@ Chinese patch: hand-written replacement
+	thumb_func_start GetStringTextLen
+GetStringTextLen: @ 0x080054CC
+	.2byte 0xB530 @ push {r4, r5, lr}
+	.2byte 0x1C04 @ adds r4, r0, #0
+	.2byte 0x4913 @ ldr r1, [pc, #76] @ (0x8005520)
+	.2byte 0x680A @ ldr r2, [r1, #0]
+	.2byte 0x7D91 @ ldrb r1, [r2, #22]
+	.2byte 0x2900 @ cmp r1, #0
+	.2byte 0xD002 @ beq.n 0x80054e0
+	.2byte 0xF000 @ bl 0x8005a94
+	.2byte 0xFADB
+	.2byte 0xE01C @ b.n 0x800551a
+	.2byte 0x2000 @ movs r0, #0
+	.2byte 0x6855 @ ldr r5, [r2, #4]
+	.2byte 0x2180 @ movs r1, #128 @ 0x80
+	.2byte 0x7823 @ ldrb r3, [r4, #0]
+_080054E8:
+	.2byte 0x2B01 @ cmp r3, #1
+	.2byte 0xD916 @ bls.n 0x800551a
+_080054EC:
+	.2byte 0x3401 @ adds r4, #1
+	.2byte 0x2B1F @ cmp r3, #31
+	.2byte 0xD9F9 @ bls.n 0x80054e6
+	.2byte 0x7822 @ ldrb r2, [r4, #0]
+	.2byte 0x3401 @ adds r4, #1
+	.2byte 0x2B81 @ cmp r3, #129 @ 0x81
+	.2byte 0xD3F5 @ bcc.n 0x80054e6
+	.2byte 0x2B98 @ cmp r3, #152 @ 0x98
+	.2byte 0xD801 @ bhi.n 0x8005502
+	.2byte 0x2A80 @ cmp r2, #128 @ 0x80
+	.2byte 0xD201 @ bcs.n 0x8005506
+	.2byte 0x2383 @ movs r3, #131 @ 0x83
+_08005504:
+	.2byte 0x229B @ movs r2, #155 @ 0x9b
+	.2byte 0x3B81 @ subs r3, #129 @ 0x81
+	.2byte 0x434B @ muls r3, r1
+	.2byte 0x3A80 @ subs r2, #128 @ 0x80
+	.2byte 0x18D2 @ adds r2, r2, r3
+	.2byte 0x2354 @ movs r3, #84 @ 0x54
+	.2byte 0x435A @ muls r2, r3
+	.2byte 0x1953 @ adds r3, r2, r5
+_08005514:
+	.2byte 0x789A @ ldrb r2, [r3, #2]
+	.2byte 0x1880 @ adds r0, r0, r2
+	.2byte 0xE7E5 @ b.n 0x80054e6
+	.2byte 0xBC30 @ pop {r4, r5}
+_0800551C:
+	.2byte 0xBC02 @ pop {r1}
+	.2byte 0x4708 @ bx r1
+	.2byte 0x8D68 @ ldrh r0, [r5, #42] @ 0x2a
+	.2byte 0x0202 @ lsls r2, r0, #8
+_08005524:
+	.2byte 0xFF00 @ vmaxnm.f32 <illegal reg q7.5>, q8, <illegal reg q15.5>
+	.2byte 0xFFFF
+.else
 	thumb_func_start GetStringTextLen
 GetStringTextLen: @ 0x080054CC
 	push {r4, r5, lr}
@@ -396,7 +489,47 @@ _0800551C:
 	bx r1
 	.align 2, 0
 _08005524: .4byte 0xFFFFFF00
+.endif
 
+.ifdef VERSION_CN
+@ Chinese patch: hand-written replacement
+	thumb_func_start GetCharTextLen
+GetCharTextLen: @ 0x08005528
+	.2byte 0xB410 @ push {r4}
+	.2byte 0x7803 @ ldrb r3, [r0, #0]
+	.2byte 0x7842 @ ldrb r2, [r0, #1]
+	.2byte 0x3002 @ adds r0, #2
+	.2byte 0x2B81 @ cmp r3, #129 @ 0x81
+	.2byte 0xD313 @ bcc.n 0x800555c
+	.2byte 0x2B98 @ cmp r3, #152 @ 0x98
+	.2byte 0xD801 @ bhi.n 0x800553c
+	.2byte 0x2A80 @ cmp r2, #128 @ 0x80
+	.2byte 0xD201 @ bcs.n 0x8005540
+	.2byte 0x2383 @ movs r3, #131 @ 0x83
+	.2byte 0x229A @ movs r2, #154 @ 0x9a
+	.2byte 0x3B81 @ subs r3, #129 @ 0x81
+	.2byte 0x2480 @ movs r4, #128 @ 0x80
+_08005544:
+	.2byte 0x4363 @ muls r3, r4
+	.2byte 0x3A80 @ subs r2, #128 @ 0x80
+	.2byte 0x18D2 @ adds r2, r2, r3
+	.2byte 0x2354 @ movs r3, #84 @ 0x54
+	.2byte 0x435A @ muls r2, r3
+	.2byte 0x46C0 @ nop   @ (mov r8, r8)
+	.2byte 0x4B03 @ ldr r3, [pc, #12] @ (0x8005560)
+	.2byte 0x681B @ ldr r3, [r3, #0]
+_08005554:
+	.2byte 0x685B @ ldr r3, [r3, #4]
+	.2byte 0x18D2 @ adds r2, r2, r3
+	.2byte 0x7893 @ ldrb r3, [r2, #2]
+	.2byte 0x600B @ str r3, [r1, #0]
+_0800555C:
+	.2byte 0xBC10 @ pop {r4}
+	.2byte 0x4770 @ bx lr
+_08005560:
+	.2byte 0x8D68 @ ldrh r0, [r5, #42] @ 0x2a
+	.2byte 0x0202 @ lsls r2, r0, #8
+.else
 	thumb_func_start GetCharTextLen
 GetCharTextLen: @ 0x08005528
 	push {r4, lr}
@@ -430,6 +563,7 @@ _08005554:
 	.align 2, 0
 _0800555C: .4byte gActiveFont
 _08005560: .4byte 0xFFFFFF00
+.endif
 
 	thumb_func_start GetStringTextCenteredPos
 GetStringTextCenteredPos: @ 0x08005564
@@ -503,6 +637,79 @@ _080055D4:
 	bhi _080055CA
 	bx lr
 
+.ifdef VERSION_CN
+@ Chinese patch: hand-written replacement
+	thumb_func_start Text_DrawString
+Text_DrawString: @ 0x080055DC
+	.2byte 0xB5F0 @ push {r4, r5, r6, r7, lr}
+	.2byte 0x1C0C @ adds r4, r1, #0
+	.2byte 0x4B14 @ ldr r3, [pc, #80] @ (0x8005634)
+	.2byte 0x681D @ ldr r5, [r3, #0]
+	.2byte 0x7DAB @ ldrb r3, [r5, #22]
+	.2byte 0x2B00 @ cmp r3, #0
+	.2byte 0xD002 @ beq.n 0x80055f0
+	.2byte 0xF000 @ bl 0x8005a24
+	.2byte 0xFA1B
+	.2byte 0xE01E @ b.n 0x800562e
+	.2byte 0x686E @ ldr r6, [r5, #4]
+	.2byte 0x1C07 @ adds r7, r0, #0
+_080055F4:
+	.2byte 0x7821 @ ldrb r1, [r4, #0]
+	.2byte 0x2901 @ cmp r1, #1
+_080055F8:
+	.2byte 0xD919 @ bls.n 0x800562e
+	.2byte 0x3401 @ adds r4, #1
+	.2byte 0x291F @ cmp r1, #31
+_080055FE:
+	.2byte 0xD9F9 @ bls.n 0x80055f4
+	.2byte 0x7822 @ ldrb r2, [r4, #0]
+	.2byte 0x3401 @ adds r4, #1
+	.2byte 0x2981 @ cmp r1, #129 @ 0x81
+	.2byte 0xD303 @ bcc.n 0x8005610
+	.2byte 0x2998 @ cmp r1, #152 @ 0x98
+	.2byte 0xD801 @ bhi.n 0x8005610
+_0800560C:
+	.2byte 0x2A80 @ cmp r2, #128 @ 0x80
+	.2byte 0xD201 @ bcs.n 0x8005614
+	.2byte 0x2183 @ movs r1, #131 @ 0x83
+	.2byte 0x229A @ movs r2, #154 @ 0x9a
+	.2byte 0x3981 @ subs r1, #129 @ 0x81
+	.2byte 0x2380 @ movs r3, #128 @ 0x80
+	.2byte 0x4359 @ muls r1, r3
+	.2byte 0x3A80 @ subs r2, #128 @ 0x80
+	.2byte 0x1852 @ adds r2, r2, r1
+	.2byte 0x2154 @ movs r1, #84 @ 0x54
+_08005620:
+	.2byte 0x434A @ muls r2, r1
+	.2byte 0x1991 @ adds r1, r2, r6
+_08005624:
+	.2byte 0x1C38 @ adds r0, r7, #0
+	.2byte 0x68AA @ ldr r2, [r5, #8]
+_08005628:
+	.2byte 0xF0BB @ bl 0x80c0798
+	.2byte 0xF8B6
+	.2byte 0xE7E2 @ b.n 0x80055f4
+	.2byte 0xBCF0 @ pop {r4, r5, r6, r7}
+	.2byte 0xBC01 @ pop {r0}
+	.2byte 0x4700 @ bx r0
+_08005634:
+	.2byte 0x8D68 @ ldrh r0, [r5, #42] @ 0x2a
+	.2byte 0x0202 @ lsls r2, r0, #8
+	.2byte 0xD1F6 @ bne.n 0x8005628
+	.2byte 0x6828 @ ldr r0, [r5, #0]
+	.2byte 0x6882 @ ldr r2, [r0, #8]
+	.2byte 0x1C30 @ adds r0, r6, #0
+	.2byte 0xF0BB @ bl 0x80c0798
+	.2byte 0xF8AA
+_08005644:
+	.2byte 0x7821 @ ldrb r1, [r4, #0]
+	.2byte 0x2901 @ cmp r1, #1
+	.2byte 0xD8D9 @ bhi.n 0x80055fe
+_0800564A:
+	.2byte 0xBC70 @ pop {r4, r5, r6}
+	.2byte 0xBC01 @ pop {r0}
+	.2byte 0x4700 @ bx r0
+.else
 	thumb_func_start Text_DrawString
 Text_DrawString: @ 0x080055DC
 	push {r4, r5, r6, lr}
@@ -567,7 +774,59 @@ _0800564A:
 	pop {r4, r5, r6}
 	pop {r0}
 	bx r0
+.endif
 
+.ifdef VERSION_CN
+@ Chinese patch: hand-written replacement
+	thumb_func_start Text_DrawNumber
+Text_DrawNumber: @ 0x08005650
+	.2byte 0xB530 @ push {r4, r5, lr}
+	.2byte 0xB081 @ sub sp, #4
+	.2byte 0x1C05 @ adds r5, r0, #0
+	.2byte 0x1C0C @ adds r4, r1, #0
+	.2byte 0x2C00 @ cmp r4, #0
+	.2byte 0xD105 @ bne.n 0x8005668
+	.2byte 0x4901 @ ldr r1, [pc, #4] @ (0x8005664)
+	.2byte 0xF000 @ bl 0x80056d8
+	.2byte 0xF83B
+	.2byte 0xE019 @ b.n 0x8005698
+_08005664:
+	.2byte 0xF8F8 @ ldr??.w r0, [r8, #2072] @ 0x818
+	.2byte 0x0818
+_08005668:
+	.2byte 0x1C20 @ adds r0, r4, #0
+	.2byte 0x210A @ movs r1, #10
+	.2byte 0xF0BB @ bl 0x80c0864
+	.2byte 0xF8FA
+	.2byte 0x0600 @ lsls r0, r0, #24
+	.2byte 0x490B @ ldr r1, [pc, #44] @ (0x80056a0)
+	.2byte 0x1840 @ adds r0, r0, r1
+	.2byte 0x0C00 @ lsrs r0, r0, #16
+	.2byte 0x4669 @ mov r1, sp
+	.2byte 0x8008 @ strh r0, [r1, #0]
+	.2byte 0x1C20 @ adds r0, r4, #0
+	.2byte 0x210A @ movs r1, #10
+	.2byte 0xF0BB @ bl 0x80c07cc
+	.2byte 0xF8A4
+	.2byte 0x1C04 @ adds r4, r0, #0
+	.2byte 0x1C28 @ adds r0, r5, #0
+	.2byte 0x4669 @ mov r1, sp
+	.2byte 0xF000 @ bl 0x80056d8
+	.2byte 0xF825
+	.2byte 0x78A8 @ ldrb r0, [r5, #2]
+	.2byte 0x3810 @ subs r0, #16
+	.2byte 0x70A8 @ strb r0, [r5, #2]
+	.2byte 0x2C00 @ cmp r4, #0
+	.2byte 0xD1E7 @ bne.n 0x8005668
+_08005698:
+	.2byte 0xB001 @ add sp, #4
+	.2byte 0xBC30 @ pop {r4, r5}
+	.2byte 0xBC01 @ pop {r0}
+	.2byte 0x4700 @ bx r0
+_080056A0:
+	.2byte 0x0000 @ movs r0, r0
+	.2byte 0xB681 @ @ <UNDEFINED> instruction: 0xb681
+.else
 	thumb_func_start Text_DrawNumber
 Text_DrawNumber: @ 0x08005650
 	push {r4, r5, lr}
@@ -610,6 +869,7 @@ _08005698:
 	bx r0
 	.align 2, 0
 _080056A0: .4byte 0x4F820000
+.endif
 
 	thumb_func_start Text_DrawNumberOrBlank
 Text_DrawNumberOrBlank: @ 0x080056A4
@@ -640,6 +900,72 @@ _080056D2:
 	pop {r0}
 	bx r0
 
+.ifdef VERSION_CN
+@ Chinese patch: hand-written replacement
+	thumb_func_start Text_DrawCharacter
+Text_DrawCharacter: @ 0x080056D8
+	.2byte 0xB570 @ push {r4, r5, r6, lr}
+	.2byte 0x1C0C @ adds r4, r1, #0
+	.2byte 0x4B11 @ ldr r3, [pc, #68] @ (0x8005724)
+	.2byte 0x681D @ ldr r5, [r3, #0]
+	.2byte 0x7DAB @ ldrb r3, [r5, #22]
+	.2byte 0x2B00 @ cmp r3, #0
+	.2byte 0xD002 @ beq.n 0x80056ec
+	.2byte 0xF000 @ bl 0x8005a60
+	.2byte 0xF9BB
+	.2byte 0xE017 @ b.n 0x800571c
+	.2byte 0x686E @ ldr r6, [r5, #4]
+	.2byte 0x7821 @ ldrb r1, [r4, #0]
+	.2byte 0x7862 @ ldrb r2, [r4, #1]
+	.2byte 0x3402 @ adds r4, #2
+_080056F4:
+	.2byte 0x2981 @ cmp r1, #129 @ 0x81
+	.2byte 0xD303 @ bcc.n 0x8005700
+_080056F8:
+	.2byte 0x2998 @ cmp r1, #152 @ 0x98
+	.2byte 0xD801 @ bhi.n 0x8005700
+	.2byte 0x2A80 @ cmp r2, #128 @ 0x80
+	.2byte 0xD201 @ bcs.n 0x8005704
+_08005700:
+	.2byte 0x2183 @ movs r1, #131 @ 0x83
+	.2byte 0x229B @ movs r2, #155 @ 0x9b
+	.2byte 0x3981 @ subs r1, #129 @ 0x81
+	.2byte 0x2380 @ movs r3, #128 @ 0x80
+	.2byte 0x4359 @ muls r1, r3
+	.2byte 0x3A80 @ subs r2, #128 @ 0x80
+	.2byte 0x1852 @ adds r2, r2, r1
+	.2byte 0x2154 @ movs r1, #84 @ 0x54
+_08005710:
+	.2byte 0x434A @ muls r2, r1
+	.2byte 0x1991 @ adds r1, r2, r6
+_08005714:
+	.2byte 0x68AA @ ldr r2, [r5, #8]
+_08005716:
+	.2byte 0xF0BB @ bl 0x80c0798
+	.2byte 0xF83F
+	.2byte 0x1C20 @ adds r0, r4, #0
+	.2byte 0xBC70 @ pop {r4, r5, r6}
+	.2byte 0xBC02 @ pop {r1}
+	.2byte 0x4708 @ bx r1
+	.2byte 0x0000 @ movs r0, r0
+_08005724:
+	.2byte 0x8D68 @ ldrh r0, [r5, #42] @ 0x2a
+	.2byte 0x0202 @ lsls r2, r0, #8
+_08005728:
+	.2byte 0x7908 @ ldrb r0, [r1, #4]
+	.2byte 0x4298 @ cmp r0, r3
+	.2byte 0xD1F2 @ bne.n 0x8005714
+	.2byte 0x6830 @ ldr r0, [r6, #0]
+	.2byte 0x6882 @ ldr r2, [r0, #8]
+	.2byte 0x1C28 @ adds r0, r5, #0
+	.2byte 0xF0BB @ bl 0x80c0798
+	.2byte 0xF830
+	.2byte 0x1C20 @ adds r0, r4, #0
+_0800573A:
+	.2byte 0xBC70 @ pop {r4, r5, r6}
+	.2byte 0xBC02 @ pop {r1}
+	.2byte 0x4708 @ bx r1
+.else
 	thumb_func_start Text_DrawCharacter
 Text_DrawCharacter: @ 0x080056D8
 	push {r4, r5, r6, lr}
@@ -697,6 +1023,7 @@ _0800573A:
 	pop {r4, r5, r6}
 	pop {r1}
 	bx r1
+.endif
 
 	thumb_func_start GetTextDrawDest
 GetTextDrawDest: @ 0x08005740
@@ -726,8 +1053,58 @@ GetColorLut: @ 0x08005764
 	ldr r0, [r0]
 	bx lr
 	.align 2, 0
+.ifdef VERSION_CN
+_08005770: .4byte gCn_08BC05B8
+.else
 _08005770: .4byte gUnk_08BC0590
+.endif
 
+.ifdef VERSION_CN
+@ Chinese patch: hand-written replacement
+	thumb_func_start DrawTextGlyph
+DrawTextGlyph: @ 0x08005774
+	.2byte 0xB570 @ push {r4, r5, r6, lr}
+	.2byte 0x1C04 @ adds r4, r0, #0
+	.2byte 0x4A0B @ ldr r2, [pc, #44] @ (0x80057a8)
+	.2byte 0x6813 @ ldr r3, [r2, #0]
+	.2byte 0x1C0D @ adds r5, r1, #0
+	.2byte 0x68D9 @ ldr r1, [r3, #12]
+	.2byte 0xF0BB @ bl 0x80c0794
+	.2byte 0xF808
+	.2byte 0x1C06 @ adds r6, r0, #0
+	.2byte 0x78E0 @ ldrb r0, [r4, #3]
+	.2byte 0xF7FF @ bl 0x8005764
+	.2byte 0xFFEC
+	.2byte 0x2307 @ movs r3, #7
+	.2byte 0x78A2 @ ldrb r2, [r4, #2]
+	.2byte 0x4013 @ ands r3, r2
+	.2byte 0x1C29 @ adds r1, r5, #0
+	.2byte 0x1C32 @ adds r2, r6, #0
+	.2byte 0xF7FE @ bl 0x8004214
+	.2byte 0xFD3D
+	.2byte 0x78A0 @ ldrb r0, [r4, #2]
+	.2byte 0x78A9 @ ldrb r1, [r5, #2]
+	.2byte 0x180A @ adds r2, r1, r0
+	.2byte 0x70A2 @ strb r2, [r4, #2]
+	.2byte 0xBC70 @ pop {r4, r5, r6}
+	.2byte 0xBC01 @ pop {r0}
+	.2byte 0x4700 @ bx r0
+	.2byte 0x8D68 @ ldrh r0, [r5, #42] @ 0x2a
+	.2byte 0x0202 @ lsls r2, r0, #8
+	.2byte 0x7949 @ ldrb r1, [r1, #5]
+	.2byte 0x1850 @ adds r0, r2, r1
+	.2byte 0x70A8 @ strb r0, [r5, #2]
+	.2byte 0xBC18 @ pop {r3, r4}
+	.2byte 0x4698 @ mov r8, r3
+	.2byte 0x46A1 @ mov r9, r4
+	.2byte 0xBC70 @ pop {r4, r5, r6}
+	.2byte 0xBC01 @ pop {r0}
+	.2byte 0x4700 @ bx r0
+	.2byte 0x0000 @ movs r0, r0
+_080057C0:
+	.2byte 0x8D68 @ ldrh r0, [r5, #42] @ 0x2a
+	.2byte 0x0202 @ lsls r2, r0, #8
+.else
 	thumb_func_start DrawTextGlyph
 DrawTextGlyph: @ 0x08005774
 	push {r4, r5, r6, lr}
@@ -766,7 +1143,175 @@ DrawTextGlyph: @ 0x08005774
 	bx r0
 	.align 2, 0
 _080057C0: .4byte gActiveFont
+.endif
 
+.ifdef VERSION_CN
+@ Chinese patch: hand-written replacement
+	thumb_func_start DrawTextGlyphNoClear
+DrawTextGlyphNoClear: @ 0x080057C4
+	.2byte 0xB5F0 @ push {r4, r5, r6, r7, lr}
+	.2byte 0x4643 @ mov r3, r8
+	.2byte 0x464C @ mov r4, r9
+	.2byte 0x4655 @ mov r5, sl
+	.2byte 0x465E @ mov r6, fp
+	.2byte 0x4667 @ mov r7, ip
+	.2byte 0xB4F8 @ push {r3, r4, r5, r6, r7}
+	.2byte 0x788A @ ldrb r2, [r1, #2]
+	.2byte 0xB405 @ push {r0, r2}
+	.2byte 0x784A @ ldrb r2, [r1, #1]
+	.2byte 0x4694 @ mov ip, r2
+	.2byte 0x2310 @ movs r3, #16
+	.2byte 0x1A9B @ subs r3, r3, r2
+	.2byte 0x2B03 @ cmp r3, #3
+	.2byte 0xDB00 @ blt.n 0x80057e4
+	.2byte 0x3B01 @ subs r3, #1
+	.2byte 0x009C @ lsls r4, r3, #2
+	.2byte 0x780A @ ldrb r2, [r1, #0]
+	.2byte 0x4693 @ mov fp, r2
+	.2byte 0x7882 @ ldrb r2, [r0, #2]
+	.2byte 0x2307 @ movs r3, #7
+	.2byte 0x401A @ ands r2, r3
+	.2byte 0x0093 @ lsls r3, r2, #2
+	.2byte 0x469A @ mov sl, r3
+	.2byte 0x3104 @ adds r1, #4
+	.2byte 0x4688 @ mov r8, r1
+	.2byte 0x4A28 @ ldr r2, [pc, #160] @ (0x800589c)
+	.2byte 0x6812 @ ldr r2, [r2, #0]
+	.2byte 0x68D1 @ ldr r1, [r2, #12]
+	.2byte 0xF0BA @ bl 0x80c0794
+	.2byte 0xFFC9
+	.2byte 0x1900 @ adds r0, r0, r4
+	.2byte 0x4681 @ mov r9, r0
+	.2byte 0x9800 @ ldr r0, [sp, #0]
+	.2byte 0x78C0 @ ldrb r0, [r0, #3]
+	.2byte 0xF7FF @ bl 0x8005764
+_0800580C:
+	.2byte 0xFFAB
+	.2byte 0xB401 @ push {r0}
+	.2byte 0x4823 @ ldr r0, [pc, #140] @ (0x80058a0)
+	.2byte 0xB401 @ push {r0}
+	.2byte 0x2500 @ movs r5, #0
+	.2byte 0x464F @ mov r7, r9
+	.2byte 0x4653 @ mov r3, sl
+	.2byte 0x465C @ mov r4, fp
+	.2byte 0x2100 @ movs r1, #0
+	.2byte 0x43C9 @ mvns r1, r1
+	.2byte 0x2200 @ movs r2, #0
+	.2byte 0x2D00 @ cmp r5, #0
+	.2byte 0xD103 @ bne.n 0x800582e
+	.2byte 0x4640 @ mov r0, r8
+	.2byte 0xC840 @ ldmia r0!, {r6}
+	.2byte 0x4680 @ mov r8, r0
+	.2byte 0x2510 @ movs r5, #16
+	.2byte 0x2003 @ movs r0, #3
+	.2byte 0x4030 @ ands r0, r6
+	.2byte 0x4468 @ add r0, sp
+	.2byte 0x7800 @ ldrb r0, [r0, #0]
+	.2byte 0x4098 @ lsls r0, r3
+	.2byte 0x4381 @ bics r1, r0
+	.2byte 0x2003 @ movs r0, #3
+	.2byte 0x4030 @ ands r0, r6
+	.2byte 0x4468 @ add r0, sp
+	.2byte 0x3004 @ adds r0, #4
+	.2byte 0x7800 @ ldrb r0, [r0, #0]
+	.2byte 0x4098 @ lsls r0, r3
+	.2byte 0x4302 @ orrs r2, r0
+	.2byte 0x3D01 @ subs r5, #1
+	.2byte 0x08B6 @ lsrs r6, r6, #2
+	.2byte 0x3C01 @ subs r4, #1
+	.2byte 0xD007 @ beq.n 0x8005860
+	.2byte 0x3304 @ adds r3, #4
+	.2byte 0x2B20 @ cmp r3, #32
+	.2byte 0xD3E5 @ bcc.n 0x8005822
+	.2byte 0xF000 @ bl 0x8005890
+	.2byte 0xF81B
+	.2byte 0x3740 @ adds r7, #64 @ 0x40
+	.2byte 0x2300 @ movs r3, #0
+	.2byte 0xE7DD @ b.n 0x800581c
+	.2byte 0xF000 @ bl 0x8005890
+	.2byte 0xF816
+	.2byte 0x4660 @ mov r0, ip
+	.2byte 0x3801 @ subs r0, #1
+	.2byte 0xD004 @ beq.n 0x8005874
+	.2byte 0x4684 @ mov ip, r0
+	.2byte 0x464F @ mov r7, r9
+	.2byte 0x3704 @ adds r7, #4
+	.2byte 0x46B9 @ mov r9, r7
+	.2byte 0xE7D1 @ b.n 0x8005818
+	.2byte 0xB002 @ add sp, #8
+	.2byte 0xBC03 @ pop {r0, r1}
+	.2byte 0x7882 @ ldrb r2, [r0, #2]
+	.2byte 0x1852 @ adds r2, r2, r1
+	.2byte 0x7082 @ strb r2, [r0, #2]
+	.2byte 0xBCF8 @ pop {r3, r4, r5, r6, r7}
+	.2byte 0x4698 @ mov r8, r3
+	.2byte 0x46A1 @ mov r9, r4
+	.2byte 0x46AA @ mov sl, r5
+	.2byte 0x46B3 @ mov fp, r6
+	.2byte 0x46BC @ mov ip, r7
+	.2byte 0xBCF0 @ pop {r4, r5, r6, r7}
+	.2byte 0xBC01 @ pop {r0}
+	.2byte 0x4700 @ bx r0
+	.2byte 0x6838 @ ldr r0, [r7, #0]
+	.2byte 0x4008 @ ands r0, r1
+	.2byte 0x4310 @ orrs r0, r2
+	.2byte 0x6038 @ str r0, [r7, #0]
+	.2byte 0x4770 @ bx lr
+	.2byte 0x0000 @ movs r0, r0
+	.2byte 0x8D68 @ ldrh r0, [r5, #42] @ 0x2a
+	.2byte 0x0202 @ lsls r2, r0, #8
+	.2byte 0x0F00 @ lsrs r0, r0, #28
+	.2byte 0x0F0F @ lsrs r7, r1, #28
+	.2byte 0x24FF @ movs r4, #255 @ 0xff
+	.2byte 0x4014 @ ands r4, r2
+	.2byte 0x0064 @ lsls r4, r4, #1
+	.2byte 0x4652 @ mov r2, sl
+	.2byte 0x18A5 @ adds r5, r4, r2
+	.2byte 0x0A0A @ lsrs r2, r1, #8
+	.2byte 0x21FF @ movs r1, #255 @ 0xff
+	.2byte 0x4011 @ ands r1, r2
+	.2byte 0x0049 @ lsls r1, r1, #1
+	.2byte 0x4653 @ mov r3, sl
+	.2byte 0x18C8 @ adds r0, r1, r3
+	.2byte 0x8800 @ ldrh r0, [r0, #0]
+	.2byte 0x0400 @ lsls r0, r0, #16
+	.2byte 0x882D @ ldrh r5, [r5, #0]
+	.2byte 0x4328 @ orrs r0, r5
+	.2byte 0x6C3A @ ldr r2, [r7, #64] @ 0x40
+	.2byte 0x4002 @ ands r2, r0
+	.2byte 0x444C @ add r4, r9
+	.2byte 0x4449 @ add r1, r9
+	.2byte 0x8809 @ ldrh r1, [r1, #0]
+	.2byte 0x0408 @ lsls r0, r1, #16
+	.2byte 0x8824 @ ldrh r4, [r4, #0]
+	.2byte 0x4320 @ orrs r0, r4
+	.2byte 0x4302 @ orrs r2, r0
+	.2byte 0x643A @ str r2, [r7, #64] @ 0x40
+	.2byte 0x3704 @ adds r7, #4
+	.2byte 0x9E02 @ ldr r6, [sp, #8]
+	.2byte 0x3E01 @ subs r6, #1
+	.2byte 0x9602 @ str r6, [sp, #8]
+	.2byte 0x2E00 @ cmp r6, #0
+	.2byte 0xDA94 @ bge.n 0x800580c
+	.2byte 0x9900 @ ldr r1, [sp, #0]
+	.2byte 0x788A @ ldrb r2, [r1, #2]
+	.2byte 0x9901 @ ldr r1, [sp, #4]
+	.2byte 0x7949 @ ldrb r1, [r1, #5]
+	.2byte 0x1850 @ adds r0, r2, r1
+	.2byte 0x9A00 @ ldr r2, [sp, #0]
+	.2byte 0x7090 @ strb r0, [r2, #2]
+	.2byte 0xB006 @ add sp, #24
+	.2byte 0xBC38 @ pop {r3, r4, r5}
+	.2byte 0x4698 @ mov r8, r3
+	.2byte 0x46A1 @ mov r9, r4
+	.2byte 0x46AA @ mov sl, r5
+	.2byte 0xBCF0 @ pop {r4, r5, r6, r7}
+	.2byte 0xBC01 @ pop {r0}
+	.2byte 0x4700 @ bx r0
+_08005900:
+	.2byte 0x8D68 @ ldrh r0, [r5, #42] @ 0x2a
+	.2byte 0x0202 @ lsls r2, r0, #8
+.else
 	thumb_func_start DrawTextGlyphNoClear
 DrawTextGlyphNoClear: @ 0x080057C4
 	push {r4, r5, r6, r7, lr}
@@ -926,6 +1471,7 @@ _0800580C:
 	bx r0
 	.align 2, 0
 _08005900: .4byte gActiveFont
+.endif
 
 	thumb_func_start InitSystemTextFont
 InitSystemTextFont: @ 0x08005904
@@ -1302,6 +1848,230 @@ GetSpriteTextDrawDest: @ 0x08005BB8
 	.align 2, 0
 _08005BD8: .4byte gActiveFont
 
+.ifdef VERSION_CN
+@ Chinese patch: hand-written replacement
+	thumb_func_start DrawSpriteTextGlyph
+DrawSpriteTextGlyph: @ 0x08005BDC
+	.2byte 0xB5F0 @ push {r4, r5, r6, r7, lr}
+	.2byte 0x4643 @ mov r3, r8
+	.2byte 0x464C @ mov r4, r9
+	.2byte 0x4655 @ mov r5, sl
+	.2byte 0x465E @ mov r6, fp
+	.2byte 0x4667 @ mov r7, ip
+	.2byte 0xB4F8 @ push {r3, r4, r5, r6, r7}
+	.2byte 0x788A @ ldrb r2, [r1, #2]
+	.2byte 0xB405 @ push {r0, r2}
+	.2byte 0x784A @ ldrb r2, [r1, #1]
+	.2byte 0x4694 @ mov ip, r2
+	.2byte 0x2310 @ movs r3, #16
+	.2byte 0x1A9B @ subs r3, r3, r2
+	.2byte 0x2B03 @ cmp r3, #3
+	.2byte 0xDB00 @ blt.n 0x8005bfc
+	.2byte 0x3B01 @ subs r3, #1
+	.2byte 0x009C @ lsls r4, r3, #2
+	.2byte 0x2508 @ movs r5, #8
+	.2byte 0x1AED @ subs r5, r5, r3
+	.2byte 0x780A @ ldrb r2, [r1, #0]
+	.2byte 0x4693 @ mov fp, r2
+	.2byte 0x7882 @ ldrb r2, [r0, #2]
+	.2byte 0x2307 @ movs r3, #7
+	.2byte 0x401A @ ands r2, r3
+	.2byte 0x0093 @ lsls r3, r2, #2
+	.2byte 0x469A @ mov sl, r3
+	.2byte 0x3104 @ adds r1, #4
+	.2byte 0x4688 @ mov r8, r1
+	.2byte 0x4A27 @ ldr r2, [pc, #156] @ (0x8005cb4)
+	.2byte 0x6812 @ ldr r2, [r2, #0]
+	.2byte 0x68D1 @ ldr r1, [r2, #12]
+	.2byte 0xF0BA @ bl 0x80c0794
+	.2byte 0xFDBB
+	.2byte 0x1900 @ adds r0, r0, r4
+_08005C20:
+	.2byte 0x4681 @ mov r9, r0
+	.2byte 0x9800 @ ldr r0, [sp, #0]
+	.2byte 0x78C0 @ ldrb r0, [r0, #3]
+	.2byte 0xF7FF @ bl 0x8005764
+	.2byte 0xFD9D
+	.2byte 0xB401 @ push {r0}
+	.2byte 0x1C29 @ adds r1, r5, #0
+	.2byte 0x2500 @ movs r5, #0
+	.2byte 0x464F @ mov r7, r9
+	.2byte 0x4653 @ mov r3, sl
+	.2byte 0x465C @ mov r4, fp
+	.2byte 0x2200 @ movs r2, #0
+	.2byte 0x2D00 @ cmp r5, #0
+	.2byte 0xD103 @ bne.n 0x8005c44
+	.2byte 0x4640 @ mov r0, r8
+	.2byte 0xC840 @ ldmia r0!, {r6}
+	.2byte 0x4680 @ mov r8, r0
+	.2byte 0x2510 @ movs r5, #16
+	.2byte 0x3D01 @ subs r5, #1
+	.2byte 0x2003 @ movs r0, #3
+	.2byte 0x4030 @ ands r0, r6
+	.2byte 0x08B6 @ lsrs r6, r6, #2
+	.2byte 0x4468 @ add r0, sp
+	.2byte 0x7800 @ ldrb r0, [r0, #0]
+	.2byte 0x4098 @ lsls r0, r3
+	.2byte 0x4302 @ orrs r2, r0
+	.2byte 0x3C01 @ subs r4, #1
+	.2byte 0xD007 @ beq.n 0x8005c68
+	.2byte 0x3304 @ adds r3, #4
+	.2byte 0x2B20 @ cmp r3, #32
+	.2byte 0xD3EC @ bcc.n 0x8005c38
+	.2byte 0xF000 @ bl 0x8005caa
+	.2byte 0xF824
+	.2byte 0x3720 @ adds r7, #32
+	.2byte 0x2300 @ movs r3, #0
+	.2byte 0xE7E6 @ b.n 0x8005c36
+	.2byte 0xF000 @ bl 0x8005caa
+	.2byte 0xF81F
+	.2byte 0x4660 @ mov r0, ip
+	.2byte 0x3801 @ subs r0, #1
+	.2byte 0xD00D @ beq.n 0x8005c8e
+	.2byte 0x4684 @ mov ip, r0
+	.2byte 0x464F @ mov r7, r9
+	.2byte 0x2900 @ cmp r1, #0
+	.2byte 0xD006 @ beq.n 0x8005c88
+	.2byte 0x3901 @ subs r1, #1
+	.2byte 0x2900 @ cmp r1, #0
+	.2byte 0xDC03 @ bgt.n 0x8005c88
+	.2byte 0x2080 @ movs r0, #128 @ 0x80
+	.2byte 0x00C0 @ lsls r0, r0, #3
+	.2byte 0x3820 @ subs r0, #32
+	.2byte 0x183F @ adds r7, r7, r0
+	.2byte 0x3704 @ adds r7, #4
+	.2byte 0x46B9 @ mov r9, r7
+	.2byte 0xE7D1 @ b.n 0x8005c32
+	.2byte 0xB001 @ add sp, #4
+	.2byte 0xBC03 @ pop {r0, r1}
+	.2byte 0x7882 @ ldrb r2, [r0, #2]
+	.2byte 0x1852 @ adds r2, r2, r1
+	.2byte 0x7082 @ strb r2, [r0, #2]
+	.2byte 0xBCF8 @ pop {r3, r4, r5, r6, r7}
+	.2byte 0x4698 @ mov r8, r3
+	.2byte 0x46A1 @ mov r9, r4
+	.2byte 0x46AA @ mov sl, r5
+	.2byte 0x46B3 @ mov fp, r6
+	.2byte 0x46BC @ mov ip, r7
+	.2byte 0xBCF0 @ pop {r4, r5, r6, r7}
+	.2byte 0xBC01 @ pop {r0}
+	.2byte 0x4700 @ bx r0
+	.2byte 0x6838 @ ldr r0, [r7, #0]
+	.2byte 0x4310 @ orrs r0, r2
+	.2byte 0x6038 @ str r0, [r7, #0]
+	.2byte 0x4770 @ bx lr
+	.2byte 0x0000 @ movs r0, r0
+	.2byte 0x8D68 @ ldrh r0, [r5, #42] @ 0x2a
+	.2byte 0x0202 @ lsls r2, r0, #8
+	.2byte 0x0000
+	.2byte 0x0000
+	.2byte 0x0000
+	.2byte 0x0000
+	.2byte 0x0000
+	.2byte 0x0000
+	.2byte 0x0000
+	.2byte 0x0000
+	.2byte 0x0000
+	.2byte 0x0000
+	.2byte 0x0000
+	.2byte 0x0000
+	.2byte 0x0000
+_08005CD2:
+	.2byte 0x0000
+	.2byte 0x0000
+	.2byte 0x0000
+	.2byte 0x0000
+	.2byte 0x0000
+	.2byte 0xB5F0 @ push {r4, r5, r6, r7, lr}
+	.2byte 0x4644 @ mov r4, r8
+	.2byte 0xB410 @ push {r4}
+	.2byte 0x0180 @ lsls r0, r0, #6
+	.2byte 0x4C19 @ ldr r4, [pc, #100] @ (0x8005d4c)
+	.2byte 0x6823 @ ldr r3, [r4, #0]
+	.2byte 0x681C @ ldr r4, [r3, #0]
+	.2byte 0x1826 @ adds r6, r4, r0
+	.2byte 0x2000 @ movs r0, #0
+	.2byte 0x233F @ movs r3, #63 @ 0x3f
+	.2byte 0x54F0 @ strb r0, [r6, r3]
+	.2byte 0x3B01 @ subs r3, #1
+	.2byte 0xDAFC @ bge.n 0x8005cf0
+	.2byte 0x7854 @ ldrb r4, [r2, #1]
+	.2byte 0x2510 @ movs r5, #16
+	.2byte 0x1B2D @ subs r5, r5, r4
+	.2byte 0x2D03 @ cmp r5, #3
+	.2byte 0xDB00 @ blt.n 0x8005d02
+	.2byte 0x3D01 @ subs r5, #1
+	.2byte 0x00AD @ lsls r5, r5, #2
+	.2byte 0x1976 @ adds r6, r6, r5
+	.2byte 0x7817 @ ldrb r7, [r2, #0]
+	.2byte 0x00BF @ lsls r7, r7, #2
+	.2byte 0x46B8 @ mov r8, r7
+	.2byte 0x1D15 @ adds r5, r2, #4
+	.2byte 0x1C08 @ adds r0, r1, #0
+	.2byte 0xF7FF @ bl 0x8005764
+	.2byte 0xFD28
+	.2byte 0xB401 @ push {r0}
+	.2byte 0x2700 @ movs r7, #0
+	.2byte 0x2100 @ movs r1, #0
+	.2byte 0x2200 @ movs r2, #0
+	.2byte 0x2F00 @ cmp r7, #0
+	.2byte 0xD101 @ bne.n 0x8005d24
+	.2byte 0xCD08 @ ldmia r5!, {r3}
+	.2byte 0x2710 @ movs r7, #16
+	.2byte 0x2003 @ movs r0, #3
+	.2byte 0x4018 @ ands r0, r3
+	.2byte 0x089B @ lsrs r3, r3, #2
+	.2byte 0x3F01 @ subs r7, #1
+	.2byte 0x4468 @ add r0, sp
+	.2byte 0x7800 @ ldrb r0, [r0, #0]
+	.2byte 0x4088 @ lsls r0, r1
+	.2byte 0x4302 @ orrs r2, r0
+	.2byte 0x3104 @ adds r1, #4
+	.2byte 0x4541 @ cmp r1, r8
+	.2byte 0xD3F0 @ bcc.n 0x8005d1c
+	.2byte 0xC604 @ stmia r6!, {r2}
+	.2byte 0x3C01 @ subs r4, #1
+	.2byte 0xD1EB @ bne.n 0x8005d18
+	.2byte 0xBC18 @ pop {r3, r4}
+	.2byte 0x46A0 @ mov r8, r4
+	.2byte 0xBCF0 @ pop {r4, r5, r6, r7}
+	.2byte 0xBC01 @ pop {r0}
+	.2byte 0x4700 @ bx r0
+	.2byte 0x0000 @ movs r0, r0
+	.2byte 0x8D68 @ ldrh r0, [r5, #42] @ 0x2a
+	.2byte 0x0202 @ lsls r2, r0, #8
+	.2byte 0x881B @ ldrh r3, [r3, #0]
+	.2byte 0x4319 @ orrs r1, r3
+	.2byte 0x6C38 @ ldr r0, [r7, #64] @ 0x40
+	.2byte 0x4308 @ orrs r0, r1
+	.2byte 0x6438 @ str r0, [r7, #64] @ 0x40
+	.2byte 0x3704 @ adds r7, #4
+	.2byte 0x2301 @ movs r3, #1
+	.2byte 0x425B @ negs r3, r3
+	.2byte 0x449A @ add sl, r3
+	.2byte 0x4650 @ mov r0, sl
+	.2byte 0x2800 @ cmp r0, #0
+	.2byte 0xDAB4 @ bge.n 0x8005cd2
+	.2byte 0x9900 @ ldr r1, [sp, #0]
+	.2byte 0x788A @ ldrb r2, [r1, #2]
+	.2byte 0x9901 @ ldr r1, [sp, #4]
+	.2byte 0x7949 @ ldrb r1, [r1, #5]
+	.2byte 0x1850 @ adds r0, r2, r1
+	.2byte 0x9A00 @ ldr r2, [sp, #0]
+	.2byte 0x7090 @ strb r0, [r2, #2]
+	.2byte 0xB005 @ add sp, #20
+	.2byte 0xBC38 @ pop {r3, r4, r5}
+	.2byte 0x4698 @ mov r8, r3
+	.2byte 0x46A1 @ mov r9, r4
+	.2byte 0x46AA @ mov sl, r5
+	.2byte 0xBCF0 @ pop {r4, r5, r6, r7}
+	.2byte 0xBC01 @ pop {r0}
+	.2byte 0x4700 @ bx r0
+	.2byte 0x0000 @ movs r0, r0
+_08005D88:
+	.2byte 0x8D68 @ ldrh r0, [r5, #42] @ 0x2a
+	.2byte 0x0202 @ lsls r2, r0, #8
+.else
 	thumb_func_start DrawSpriteTextGlyph
 DrawSpriteTextGlyph: @ 0x08005BDC
 	push {r4, r5, r6, r7, lr}
@@ -1516,6 +2286,7 @@ _08005CD2:
 	bx r0
 	.align 2, 0
 _08005D88: .4byte gActiveFont
+.endif
 
 	thumb_func_start sub_8005D8C
 sub_8005D8C: @ 0x08005D8C
@@ -1617,7 +2388,11 @@ _08005E18:
 	pop {r1}
 	bx r1
 	.align 2, 0
+.ifdef VERSION_CN
+_08005E44: .4byte gUnk_08BC0590
+.else
 _08005E44: .4byte gUnk_08BC05C4
+.endif
 
 	thumb_func_start sub_8005E48
 sub_8005E48: @ 0x08005E48
@@ -1634,7 +2409,11 @@ sub_8005E50: @ 0x08005E50
 	pop {r0}
 	bx r0
 	.align 2, 0
+.ifdef VERSION_CN
+_08005E5C: .4byte gUnk_08BC0590
+.else
 _08005E5C: .4byte gUnk_08BC05C4
+.endif
 
 	thumb_func_start sub_8005E60
 sub_8005E60: @ 0x08005E60
@@ -1666,7 +2445,11 @@ StartGreenText: @ 0x08005E88
 	bl Proc_Start
 	b _08005EA4
 	.align 2, 0
+.ifdef VERSION_CN
+_08005E98: .4byte gCn_08BC05A0
+.else
 _08005E98: .4byte gUnk_08BC05D4
+.endif
 _08005E9C:
 	ldr r0, _08005EA8 @ =gUnk_08BC05D4
 	movs r1, #3
@@ -1675,7 +2458,11 @@ _08005EA4:
 	pop {r0}
 	bx r0
 	.align 2, 0
+.ifdef VERSION_CN
+_08005EA8: .4byte gCn_08BC05A0
+.else
 _08005EA8: .4byte gUnk_08BC05D4
+.endif
 
 	thumb_func_start EndGreenText
 EndGreenText: @ 0x08005EAC
@@ -1685,7 +2472,11 @@ EndGreenText: @ 0x08005EAC
 	pop {r0}
 	bx r0
 	.align 2, 0
+.ifdef VERSION_CN
+_08005EB8: .4byte gCn_08BC05A0
+.else
 _08005EB8: .4byte gUnk_08BC05D4
+.endif
 
 	thumb_func_start sub_8005EBC
 sub_8005EBC: @ 0x08005EBC
@@ -1737,6 +2528,59 @@ _08005F0E:
 	pop {r0}
 	bx r0
 
+.ifdef VERSION_CN
+@ Chinese patch: hand-written replacement
+	thumb_func_start sub_8005F14
+sub_8005F14: @ 0x08005F14
+	.2byte 0xB500 @ push {lr}
+	.2byte 0xF7FF @ bl 0x8005cdc
+	.2byte 0xFEE1
+	.2byte 0xBC01 @ pop {r0}
+	.2byte 0x4700 @ bx r0
+	.2byte 0x0180 @ lsls r0, r0, #6
+	.2byte 0x681B @ ldr r3, [r3, #0]
+	.2byte 0x181B @ adds r3, r3, r0
+	.2byte 0x4698 @ mov r8, r3
+	.2byte 0x1C17 @ adds r7, r2, #0
+	.2byte 0x3708 @ adds r7, #8
+	.2byte 0x1C08 @ adds r0, r1, #0
+	.2byte 0xF7FF @ bl 0x8005764
+	.2byte 0xFC1A
+	.2byte 0x1C02 @ adds r2, r0, #0
+	.2byte 0x26FF @ movs r6, #255 @ 0xff
+	.2byte 0x230F @ movs r3, #15
+_08005F36:
+	.2byte 0xCF01 @ ldmia r7!, {r0}
+	.2byte 0x1C01 @ adds r1, r0, #0
+	.2byte 0x4031 @ ands r1, r6
+	.2byte 0x0049 @ lsls r1, r1, #1
+	.2byte 0x1889 @ adds r1, r1, r2
+	.2byte 0x880C @ ldrh r4, [r1, #0]
+	.2byte 0x0A00 @ lsrs r0, r0, #8
+	.2byte 0x4030 @ ands r0, r6
+	.2byte 0x0040 @ lsls r0, r0, #1
+	.2byte 0x1880 @ adds r0, r0, r2
+	.2byte 0x8805 @ ldrh r5, [r0, #0]
+	.2byte 0x0428 @ lsls r0, r5, #16
+	.2byte 0x1900 @ adds r0, r0, r4
+	.2byte 0x4641 @ mov r1, r8
+	.2byte 0x3104 @ adds r1, #4
+	.2byte 0x4688 @ mov r8, r1
+	.2byte 0x3904 @ subs r1, #4
+	.2byte 0xC101 @ stmia r1!, {r0}
+	.2byte 0x3B01 @ subs r3, #1
+	.2byte 0x2B00 @ cmp r3, #0
+	.2byte 0xDAEA @ bge.n 0x8005f36
+	.2byte 0xBC08 @ pop {r3}
+	.2byte 0x4698 @ mov r8, r3
+	.2byte 0xBCF0 @ pop {r4, r5, r6, r7}
+	.2byte 0xBC01 @ pop {r0}
+	.2byte 0x4700 @ bx r0
+	.2byte 0x0000 @ movs r0, r0
+_08005F6C:
+	.2byte 0x8D68 @ ldrh r0, [r5, #42] @ 0x2a
+	.2byte 0x0202 @ lsls r2, r0, #8
+.else
 	thumb_func_start sub_8005F14
 sub_8005F14: @ 0x08005F14
 	push {r4, r5, r6, r7, lr}
@@ -1784,6 +2628,7 @@ _08005F36:
 	bx r0
 	.align 2, 0
 _08005F6C: .4byte gActiveFont
+.endif
 
 	thumb_func_start sub_8005F70
 sub_8005F70: @ 0x08005F70
@@ -1813,7 +2658,11 @@ sub_8005F70: @ 0x08005F70
 	bx r1
 	.align 2, 0
 _08005FA4: .4byte gActiveFont
+.ifdef VERSION_CN
+_08005FA8: .4byte gCn_08BC05EC
+.else
 _08005FA8: .4byte gUnk_08BDC134
+.endif
 
 	thumb_func_start GetSpecialCharChr
 GetSpecialCharChr: @ 0x08005FAC

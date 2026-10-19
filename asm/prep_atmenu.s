@@ -1192,13 +1192,21 @@ _0808FC44: .4byte 0x0000113A
 _0808FC48: .4byte 0x00001135
 _0808FC4C: .4byte 0x00001134
 _0808FC50: .4byte Pal_0841D100
+.ifdef VERSION_CN
+_0808FC54: .4byte gCn_08419418
+.else
 _0808FC54: .4byte Img_0841D120
+.endif
 _0808FC58: .4byte 0x06005800
 _0808FC5C: .4byte gBg1Tm + 0x118
 _0808FC60: .4byte Tsa_0841D614
 _0808FC64: .4byte 0x0000F2C0
 _0808FC68: .4byte gPrepMainMenuTexts + 0x28
+.ifdef VERSION_CN
+_0808FC6C: .4byte gCn_084198F4
+.else
 _0808FC6C: .4byte Img_PrepScreenTitle
+.endif
 _0808FC70: .4byte 0x06011000
 _0808FC74: .4byte Pal_SysBrownBox
 _0808FC78: .4byte SpriteAnim_0841ECD0

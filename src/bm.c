@@ -474,7 +474,7 @@ void InitBmBgLayers(void)
 
 void ApplySystemObjectsGraphics(void)
 {
-    Decompress(Gfx_MiscUiGraphics, gBuf);
+    Decompress(CN_ALT(Gfx_MiscUiGraphics, gCn_084319E8), gBuf);
     Copy2dChr(gBuf, (u8 *)0x06010000, 18, 4);
     ApplyPalettes(Pal_MiscUiGraphics, 0x10, 2);
 }

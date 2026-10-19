@@ -550,7 +550,11 @@ SaveMenu_LoadExtraMenuGraphics: @ 0x080A454C
 	adds r4, #0x2e
 	b _080A45B2
 	.align 2, 0
+.ifdef VERSION_CN
+_080A457C: .4byte gCn_08419CA8
+.else
 _080A457C: .4byte gUnk_0843165C
+.endif
 _080A4580: .4byte 0x06013800
 _080A4584:
 	adds r4, r5, #0
@@ -1976,7 +1980,11 @@ _080A50E2:
 	pop {r0}
 	bx r0
 	.align 2, 0
+.ifdef VERSION_CN
+_080A50E8: .4byte gCn_08419CA8
+.else
 _080A50E8: .4byte gUnk_0843165C
+.endif
 _080A50EC: .4byte 0x06013800
 
 	thumb_func_start sub_80A50F0
@@ -2706,7 +2714,11 @@ _080A567A:
 	pop {r0}
 	bx r0
 	.align 2, 0
+.ifdef VERSION_CN
+_080A5680: .4byte gCn_08419CA8
+.else
 _080A5680: .4byte gUnk_0843165C
+.endif
 _080A5684: .4byte 0x06013800
 
 	thumb_func_start sub_80A5688
@@ -3170,7 +3182,11 @@ _080A5A10:
 	bx r0
 	.align 2, 0
 _080A5A18: .4byte gBg1Tm
+.ifdef VERSION_CN
+_080A5A1C: .4byte gCn_08419CA8
+.else
 _080A5A1C: .4byte gUnk_0843165C
+.endif
 _080A5A20: .4byte 0x06013800
 _080A5A24: .4byte Pal_SaveMenuWindow
 _080A5A28: .4byte Img_SaveMenuSprits
