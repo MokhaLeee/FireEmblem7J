@@ -383,6 +383,7 @@ enum unit_affinity_index {
 extern u8 gActiveUnitId;
 extern struct Vec2 gActiveUnitMoveOrigin;
 
+extern struct Unit gUnitArrayBlue[];
 void InitUnits(void);
 void ClearUnit(struct Unit *unit);
 void CopyUnit(struct Unit * src, struct Unit * dst);

@@ -982,8 +982,8 @@ sub_802EBCC: @ 0x0802EBCC
 	.align 2, 0
 _0802EBD0: .4byte gConvoyItemArray
 
-	thumb_func_start sub_802EBD4
-sub_802EBD4: @ 0x0802EBD4
+	thumb_func_start ClearSupplyItems
+ClearSupplyItems: @ 0x0802EBD4
 	push {lr}
 	sub sp, #4
 	mov r1, sp
@@ -1023,7 +1023,7 @@ _0802EC10:
 	bls _0802EC06
 	movs r0, #0
 	strh r0, [r4]
-	bl sub_802EBD4
+	bl ClearSupplyItems
 	bl sub_802EBCC
 	adds r1, r0, #0
 	adds r0, r6, #0

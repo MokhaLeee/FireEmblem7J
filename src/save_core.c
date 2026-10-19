@@ -313,12 +313,12 @@ void ReadPermanentFlags(void * ewram_dest)
     ReadSramFast(ewram_dest, GetPermanentFlagBits(), GetPermanentFlagBitsSize());
 }
 
-void sub_809F3D4(void * sram_dest)
+void WriteSupplyItems(void * sram_dest)
 {
     WriteAndVerifySramFast(sub_802EBCC(), sram_dest, 0xC8);
 }
 
-void sub_809F3EC(void * ewram_dest)
+void ReadSupplyItems(void * ewram_dest)
 {
     ReadSramFast(ewram_dest, sub_802EBCC(), 0xC8);
 }

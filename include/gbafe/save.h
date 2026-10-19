@@ -53,6 +53,10 @@ struct bmsave_unkstruct2 {
     /* 12 */ u16 magic2;
 };
 
+struct GameSavePackedUnit {
+    /* 00 */ u8 data[0x24];
+};
+
 // Written by FE6 (Binding Blade) when linked
 struct Fe6LinkSaveInfo {
     /* 00 */ u8 unk00[0x20];
@@ -166,8 +170,8 @@ void WriteChapterFlags(void * sram_dest);
 void WritePermanentFlags(void * sram_dest);
 void ReadChapterFlags(void * ewram_dest);
 void ReadPermanentFlags(void * ewram_dest);
-void sub_809F3D4(void * sram_dest);
-void sub_809F3EC(void * ewram_dest);
+void WriteSupplyItems(void * sram_dest);
+void ReadSupplyItems(void * ewram_dest);
 s32 sub_809F40C(void);
 bool sub_809F468(void);
 bool sub_809F48C(void);
@@ -245,6 +249,19 @@ struct ChapterStats {
              u16 chapter_time  : 0x10;
 };
 
+#define UNIT_SAVE_AMOUNT_BLUE 0x34
+
+struct GameSaveBlock {
+    /* 000 */ struct PlaySt playSt;
+    /* 048 */ struct GameSavePackedUnit units[UNIT_SAVE_AMOUNT_BLUE];
+    /* 798 */ u8 supplyItems[0xC8];
+    /* 860 */ struct PidStats pidStats[0x46];
+    /* CC0 */ struct ChapterStats chapterStats[0x30];
+    /* D80 */ u8 permanentFlags[0x08];
+    /* D88 */ u32 bonusClaimFlags;
+};
+
+
 #define PID_STATS_COUNT 0x46
 #define CHAPTER_STATS_COUNT 0x30
 
@@ -309,7 +326,7 @@ void WriteLastGameSaveId(int num);
 int ReadLastGameSaveId(void);
 void InvalidateGameSave(int index);
 void CopyGameSave(int index_src, int index_dest);
-void WriteNewGameSave(int index, int isDifficult, int mode, int isTutorial);
+void WriteNewGameSave(int index, int isDifficult, int mode);
 void WriteGameSave(int slot);
 void ReadGameSave(int slot);
 bool IsSaveValid(int);

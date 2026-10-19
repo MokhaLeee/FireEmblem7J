@@ -783,7 +783,7 @@ _08091B44: .4byte 0x00010004
 	thumb_func_start sub_8091B48
 sub_8091B48: @ 0x08091B48
 	push {r4, r5, lr}
-	bl sub_802EBD4
+	bl ClearSupplyItems
 	movs r4, #0
 	ldr r0, _08091B84 @ =Unk_Prep_02012464
 	ldrh r0, [r0]
@@ -819,7 +819,7 @@ _08091B88: .4byte gPrepScreenItemList
 	thumb_func_start sub_8091B8C
 sub_8091B8C: @ 0x08091B8C
 	push {r4, r5, lr}
-	bl sub_802EBD4
+	bl ClearSupplyItems
 	movs r4, #0
 	movs r5, #0x87
 _08091B96:
