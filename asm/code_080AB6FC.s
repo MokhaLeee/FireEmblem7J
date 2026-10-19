@@ -1341,7 +1341,7 @@ sub_80AC324: @ 0x080AC324
 	ldr r2, _080AC3A0 @ =0x01000008
 	bl CpuSet
 	mov r0, sp
-	bl sub_80A01EC
+	bl LoadAndVerfyLinkArenaStruct2
 	lsls r0, r0, #0x18
 	cmp r0, #0
 	beq _080AC3BA

@@ -1098,3 +1098,158 @@ void UnlockSoundRoomSong(struct SoundRoomSaveData * buf, int song)
     buf->flags[song >> 5] |= (1 << (_song % 0x20));
     WriteSoundRoomSaveData(buf);
 }
+
+void EraseLinkArenaStruct2(void)
+{
+    u16 buf[sizeof(struct bmsave_unkstruct2) / 2];
+
+    CpuFill16(0, buf, sizeof(struct bmsave_unkstruct2));
+    WriteLinkArenaStruct2((void *)buf);
+}
+
+bool LoadAndVerfyLinkArenaStruct2(struct bmsave_unkstruct2 * buf)
+{
+    struct bmsave_unkstruct2 tmp;
+
+    if (!IsSramWorking())
+        return false;
+
+    if (buf == NULL)
+        buf = &tmp;
+
+    ReadSramFast((void *)gSramMain + 0x7120, buf, sizeof(struct bmsave_unkstruct2));
+
+    if (buf->magic1 != Checksum16(buf, sizeof(struct bmsave_unkstruct2) - 4))
+        return false;
+    else
+        return true;
+}
+
+void WriteLinkArenaStruct2(struct bmsave_unkstruct2 * buf)
+{
+    buf->magic1 = Checksum16(buf, sizeof(struct bmsave_unkstruct2) - 4);
+    WriteAndVerifySramFast(buf, (void *)gSramMain + 0x7120, sizeof(struct bmsave_unkstruct2));
+}
+
+bool ModifySaveLinkArenaStruct2A(struct bmsave_unkstruct2 * buf, int val)
+{
+    struct bmsave_unkstruct2 tmp;
+    u32 _val = val;
+
+    if (buf == NULL)
+    {
+        buf = &tmp;
+        LoadAndVerfyLinkArenaStruct2(&tmp);
+    }
+
+    if (1 & (buf->unk[val >> 5] >> (_val % 0x20)))
+        return true;
+    else
+        return false;
+}
+
+void ModifySaveLinkArenaStruct2B(struct bmsave_unkstruct2 * buf, int val)
+{
+    struct bmsave_unkstruct2 tmp;
+    u32 _val = val;
+
+    if (buf == NULL)
+    {
+        buf = &tmp;
+
+        if (!LoadAndVerfyLinkArenaStruct2(&tmp))
+            return;
+    }
+
+    if (buf->unk[val >> 5] & (1 << (_val % 0x20)))
+        return;
+
+    buf->unk[val >> 5] |= (1 << (_val % 0x20));
+    WriteLinkArenaStruct2(buf);
+}
+
+void LoadAndVerifySramSaveData(void)
+{
+    if (!ReadGlobalSaveInfo(NULL))
+        InitGlobalSaveInfo();
+
+    if (!LoadBonusContentData(NULL))
+        EraseBonusContentData();
+
+    if (!ReadFe6LinkSaveInfo(NULL))
+        ResetFe6LinkSaveInfo();
+
+    if (!LoadAndVerfyRankData(NULL))
+        EraseSaveRankData();
+
+    if (!LoadAndVerifySoundRoomData(NULL))
+        EraseSoundRoomData();
+
+    if (!LoadAndVerfyLinkArenaStruct2(NULL))
+        EraseLinkArenaStruct2();
+
+    LoadAndVerfySuspendSave();
+}
+
+void ClearPidChStatsSaveData(void * sram_dest)
+{
+    int i;
+
+    CpuFill16(0, gPidStatsData, sizeof(gPidStatsData));
+    CpuFill16(0, gChapterStats, sizeof(gChapterStats));
+
+    for (i = 0; i < PID_STATS_COUNT; i++)
+    {
+        gPidStatsData[i].favval = 0x2000;
+        WriteAndVerifySramFast(gPidStatsData, (struct PidStats *)(sram_dest + 0x860) + i, sizeof(struct PidStats));
+    }
+
+    for (i = 0; i < CHAPTER_STATS_COUNT; i++)
+        WriteAndVerifySramFast(gChapterStats, (struct ChapterStats *)(sram_dest + 0xCC0) + i, sizeof(struct ChapterStats));
+
+    gPidStatsSaveLoc = sram_dest + 0x860;
+}
+
+void ClearPidStats_ret(void)
+{
+    gPlaySt.unk2C_04 = 0;
+    SetGold(0);
+    ClearPidStats();
+}
+
+void ClearPidStats(void)
+{
+    CpuFill16(0, gPidStatsData, sizeof(gPidStatsData));
+    gPlaySt.unk_38_2 = 0;
+    gPlaySt.unk_34_14 = 0;
+    gPlaySt.unk_38_1 = 0;
+    gPlaySt.unk_34_00 = 0;
+    gPlaySt.total_gold = GetPartyTotalGoldValue();
+}
+
+void ReadPidStats(void * sram_src)
+{
+    ReadSramFast(sram_src, gPidStatsData, sizeof(gPidStatsData));
+    gPidStatsSaveLoc = sram_src;
+}
+
+void ReadChapterStats(void * sram_src)
+{
+    ReadSramFast(sram_src, gChapterStats, sizeof(gChapterStats));
+}
+
+void WritePidStats(void * sram_dest)
+{
+    WriteAndVerifySramFast(gPidStatsData, sram_dest, sizeof(gPidStatsData));
+    gPidStatsSaveLoc = sram_dest;
+}
+
+void WriteChapterStats(void * sram_dest)
+{
+    WriteAndVerifySramFast(gChapterStats, sram_dest, sizeof(gChapterStats));
+}
+
+struct ChapterStats * GetChapterStats(int index)
+{
+    return &gChapterStats[index];
+}

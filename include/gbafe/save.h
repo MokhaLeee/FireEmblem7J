@@ -47,6 +47,12 @@ struct SoundRoomSaveData {
     /* 22 */ u16 magic2;
 };
 
+struct bmsave_unkstruct2 {
+    /* 00 */ u32 unk[0x4];
+    /* 10 */ u16 magic1;
+    /* 12 */ u16 magic2;
+};
+
 // Written by FE6 (Binding Blade) when linked
 struct Fe6LinkSaveInfo {
     /* 00 */ u8 unk00[0x20];
@@ -208,12 +214,12 @@ bool LoadAndVerifySoundRoomData(struct SoundRoomSaveData * buf);
 void WriteSoundRoomSaveData(struct SoundRoomSaveData * buf);
 bool IsSoundRoomSongUnlocked(struct SoundRoomSaveData * buf, int song);
 void UnlockSoundRoomSong(struct SoundRoomSaveData * buf, int song);
-// ??? sub_80A01C8
-// ??? sub_80A01EC
-// ??? sub_80A0244
-// ??? sub_80A0270
-// ??? sub_80A02A8
-// ??? LoadAndVerifySramSaveData
+void EraseLinkArenaStruct2(void);
+bool LoadAndVerfyLinkArenaStruct2(struct bmsave_unkstruct2 * buf);
+void WriteLinkArenaStruct2(struct bmsave_unkstruct2 * buf);
+bool ModifySaveLinkArenaStruct2A(struct bmsave_unkstruct2 * buf, int val);
+void ModifySaveLinkArenaStruct2B(struct bmsave_unkstruct2 * buf, int val);
+void LoadAndVerifySramSaveData(void);
 
 struct PidStats
 {
@@ -233,14 +239,28 @@ struct PidStats
     u32 : 0; // unused/padding (15 bits)
 };
 
-// ??? ClearPidChStatsSaveData
+struct ChapterStats {
+    /* 00 */ u16 chapter_index : 0x07;
+             u16 chapter_turn  : 0x09;
+             u16 chapter_time  : 0x10;
+};
+
+#define PID_STATS_COUNT 0x46
+#define CHAPTER_STATS_COUNT 0x30
+
+extern struct PidStats gPidStatsData[PID_STATS_COUNT];
+extern struct ChapterStats gChapterStats[CHAPTER_STATS_COUNT];
+extern struct PidStats * gPidStatsSaveLoc;
+
+void SetGold(s32 amount);
+void ClearPidChStatsSaveData(void * sram_dest);
 void ClearPidStats_ret(void);
 void ClearPidStats(void);
-// ??? ReadPidStats
-// ??? ReadChapterStats
-// ??? WritePidStats
-// ??? WriteChapterStats
-// ??? GetChapterStats
+void ReadPidStats(void * sram_src);
+void ReadChapterStats(void * sram_src);
+void WritePidStats(void * sram_dest);
+void WriteChapterStats(void * sram_dest);
+struct ChapterStats * GetChapterStats(int index);
 // ??? IsChapterStatsValid
 // ??? GetNextChapterStatsSlot
 int GetCurCompleteChapters(void);
@@ -331,7 +351,7 @@ void PopulateSaveBlockChecksum(struct SaveBlockInfo * block_info);
 // ??? sub_80A28E8
 // ??? sub_80A2924
 bool sub_80A294C(void);
-// ??? LoadAndVerfySuspendSave
+bool LoadAndVerfySuspendSave(void);
 // ??? ReadExtraMapSaveHead
 // ??? GetExtraMapMapReadAddr
 // ??? GetExtraMapMapSize

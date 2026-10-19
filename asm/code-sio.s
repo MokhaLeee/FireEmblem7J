@@ -14407,7 +14407,7 @@ sub_8043918: @ 0x08043918
 	bl ResetFe6LinkSaveInfo
 	bl EraseSaveRankData
 	bl EraseSoundRoomData
-	bl sub_80A01C8
+	bl EraseLinkArenaStruct2
 	b _08043942
 _0804393A:
 	adds r0, r4, #0

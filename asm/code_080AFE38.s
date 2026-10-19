@@ -15986,7 +15986,7 @@ _080B79A2:
 	bgt _080B79EE
 	movs r0, #0
 	ldr r1, [sp, #0x20]
-	bl sub_80A02A8
+	bl ModifySaveLinkArenaStruct2B
 _080B79EE:
 	pop {r3, r4, r5}
 	mov r8, r3

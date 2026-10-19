@@ -187,6 +187,9 @@ SECTIONS
 		. = 0x03E760;
 		. = ALIGN(4); src/prepscreen.o(ewram_data);
 		. = 0x03E772; gIsSramWorking = .;
+		. = 0x03E774; gPidStatsSaveLoc = .;
+		. = 0x03E778; gPidStatsData = .;
+		. = 0x03EBD8; gChapterStats = .;
 		. = 0x03EE28; gExtraMapSaveHead = .;
 	}
 
