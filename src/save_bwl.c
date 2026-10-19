@@ -333,3 +333,107 @@ void PidStatsAddStatView(u8 pid)
 
     PidStatsAddFavval(pid, 2);
 }
+
+void PidStatsAddDeployAmt(u8 pid)
+{
+    struct PidStats * bwl = GetPidStats_(pid);
+    if (bwl == NULL)
+        return;
+
+    if (bwl->deploy_count < 60)
+        bwl->deploy_count++;
+
+    PidStatsAddFavval(pid, 0x40);
+}
+
+void PidStatsAddMove(u8 pid, int amount)
+{
+    int move_count;
+    struct PidStats * bwl = GetPidStats_(pid);
+    if (bwl == NULL)
+        return;
+
+    move_count = bwl->move_count + amount;
+    if (move_count > 1000)
+        move_count = 1000;
+
+    bwl->move_count = move_count;
+
+    PidStatsAddFavval(pid, 2);
+}
+
+void PidStatsAddExpGained(u8 pid, int expGain)
+{
+    int exp;
+    struct PidStats * bwl = GetPidStats_(pid);
+    if (bwl == NULL)
+        return;
+
+    exp = bwl->exp_gained + expGain;
+    if (exp > 4000)
+        exp = 4000;
+
+    bwl->exp_gained = exp;
+
+    PidStatsAddFavval(pid, expGain);
+}
+
+void PidStatsSubFavval08(u8 pid)
+{
+    PidStatsAddFavval(pid, -0x08);
+}
+
+void PidStatsSubFavval100(u8 pid)
+{
+    PidStatsAddFavval(pid, -0x100);
+}
+
+int PidStatsGetTotalBattleAmt(void)
+{
+    int i, ret = 0;
+
+    for (i = 0; i < PID_STATS_COUNT; i++)
+        ret += gPidStatsData[i].battle_count;
+
+    return ret;
+}
+
+int PidStatsGetTotalWinAmt(void)
+{
+    int i, ret = 0;
+
+    for (i = 0; i < PID_STATS_COUNT; i++)
+        ret += gPidStatsData[i].win_count;
+
+    return ret;
+}
+
+int PidStatsGetTotalLossAmt(void)
+{
+    int i, ret = 0;
+
+    for (i = 0; i < PID_STATS_COUNT; i++)
+        ret += gPidStatsData[i].loss_count;
+
+    return ret;
+}
+
+int PidStatsGetTotalLevel(void)
+{
+    int i, ret = 0;
+
+    for (i = 0; i < PID_STATS_COUNT; i++)
+        ret += gPidStatsData[i].exp_gained / 100;
+
+    return ret;
+}
+
+int PidStatsGetTotalExpGain(void)
+{
+    int i, ret = 0;
+
+    for (i = 0; i < PID_STATS_COUNT; i++)
+        ret += gPidStatsData[i].exp_gained;
+
+    return ret;
+}

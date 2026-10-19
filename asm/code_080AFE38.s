@@ -14974,7 +14974,7 @@ GetGameExpRank: @ 0x080B7230
 	mov r5, r8
 	push {r5, r6, r7}
 	sub sp, #0x10
-	bl sub_80A0B88
+	bl PidStatsGetTotalExpGain
 	mov sb, r0
 	movs r1, #0
 	add r0, sp, #0xc
@@ -15463,9 +15463,9 @@ _080B75D8: .4byte 0x00010004
 	thumb_func_start sub_80B75DC
 sub_80B75DC: @ 0x080B75DC
 	push {r4, lr}
-	bl sub_80A0AF0
+	bl PidStatsGetTotalBattleAmt
 	adds r4, r0, #0
-	bl sub_80A0B14
+	bl PidStatsGetTotalWinAmt
 	movs r1, #0x64
 	muls r0, r1, r0
 	adds r1, r4, #0
@@ -15595,9 +15595,9 @@ sub_80B76D0: @ 0x080B76D0
 	mov r7, sb
 	mov r6, r8
 	push {r6, r7}
-	bl sub_80A0AF0
+	bl PidStatsGetTotalBattleAmt
 	adds r4, r0, #0
-	bl sub_80A0B14
+	bl PidStatsGetTotalWinAmt
 	adds r5, r0, #0
 	ldr r7, _080B7704 @ =0x000FFFFF
 	cmp r4, r7
@@ -15709,7 +15709,7 @@ _080B77A8:
 	subs r0, #4
 	cmp r0, r13
 	bge _080B77A8
-	bl sub_80A0B88
+	bl PidStatsGetTotalExpGain
 	adds r1, r0, #0
 	ldr r4, _080B7870 @ =0x000FFFFF
 	cmp r1, r4

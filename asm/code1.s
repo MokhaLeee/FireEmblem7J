@@ -6488,13 +6488,13 @@ _080316CC:
 	cmp r1, #0
 	beq _08031704
 	ldrb r0, [r3, #4]
-	bl sub_80A0ADC
+	bl PidStatsSubFavval100
 	b _0803170A
 	.align 2, 0
 _08031700: .4byte 0x02010004
 _08031704:
 	ldrb r0, [r3, #4]
-	bl sub_80A09B8
+	bl PidStatsAddDeployAmt
 _0803170A:
 	adds r4, #1
 	cmp r4, #0x3f

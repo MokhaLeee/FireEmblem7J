@@ -277,16 +277,16 @@ void PidStatsRecordLoseData(u8 pid);
 void PidStatsRecordDefeatInfo(u8 pid, u8 killerPid, int deathCause);
 void PidStatsAddActAmt(u8 pid);
 void PidStatsAddStatView(u8 pid);
-// ??? sub_80A09B8
-// ??? PidStatsAddMove
-// ??? PidStatsAddExpGained
-// ??? PidStatsSubFavval08
-// ??? sub_80A0ADC
-// ??? sub_80A0AF0
-// ??? sub_80A0B14
-// ??? sub_80A0B44
-// ??? sub_80A0B5C
-// ??? sub_80A0B88
+void PidStatsAddDeployAmt(u8 pid);
+void PidStatsAddMove(u8 pid, int amount);
+void PidStatsAddExpGained(u8 pid, int expGain);
+void PidStatsSubFavval08(u8 pid);
+void PidStatsSubFavval100(u8 pid);
+int PidStatsGetTotalBattleAmt(void);
+int PidStatsGetTotalWinAmt(void);
+int PidStatsGetTotalLossAmt(void);
+int PidStatsGetTotalLevel(void);
+int PidStatsGetTotalExpGain(void);
 // ??? sub_80A0BA8
 int PidStatsGetFavval(u8 pid);
 void PidStatsAddFavval(u8 pid, int amount);
