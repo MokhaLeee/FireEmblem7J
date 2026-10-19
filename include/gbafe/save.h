@@ -287,7 +287,7 @@ int PidStatsGetTotalWinAmt(void);
 int PidStatsGetTotalLossAmt(void);
 int PidStatsGetTotalLevel(void);
 int PidStatsGetTotalExpGain(void);
-// ??? sub_80A0BA8
+int PidStatsGetExpGain(u8 pid);
 int PidStatsGetFavval(u8 pid);
 void PidStatsAddFavval(u8 pid, int amount);
 void PidStatsRecordBattleRes(void);

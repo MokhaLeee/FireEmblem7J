@@ -1555,7 +1555,7 @@ _0807DF12:
 	cmp r0, #0
 	beq _0807DF2E
 	ldrb r0, [r0, #4]
-	bl sub_80A0BA8
+	bl PidStatsGetExpGain
 	adds r0, r5, r0
 	lsls r0, r0, #0x10
 	lsrs r5, r0, #0x10
@@ -1585,7 +1585,7 @@ _0807DF4A:
 	cmp r0, #0
 	beq _0807DF62
 	ldrb r0, [r0, #4]
-	bl sub_80A0BA8
+	bl PidStatsGetExpGain
 	adds r5, r5, r0
 _0807DF62:
 	adds r4, #1
@@ -1836,7 +1836,7 @@ _0807E114:
 	bne _0807E12A
 	lsls r0, r1, #0x18
 	lsrs r0, r0, #0x18
-	bl sub_80A0BA8
+	bl PidStatsGetExpGain
 	adds r6, r6, r0
 _0807E12A:
 	adds r4, #2

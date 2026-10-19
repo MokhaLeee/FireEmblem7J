@@ -437,3 +437,154 @@ int PidStatsGetTotalExpGain(void)
 
     return ret;
 }
+
+int PidStatsGetExpGain(u8 pid)
+{
+    struct PidStats * bwl = GetPidStats_(pid);
+    if (bwl == NULL)
+        return 0;
+    else
+        return bwl->exp_gained;
+}
+
+int PidStatsGetFavval(u8 pid)
+{
+    struct PidStats * bwl = GetPidStats_(pid);
+    if (bwl == NULL)
+        return 0x2000;
+    else
+        return bwl->favval >> 6;
+}
+
+void PidStatsAddFavval(u8 pid, int amount)
+{
+    int favval;
+    struct PidStats * bwl = GetPidStats_(pid);
+    if (bwl == NULL)
+        return;
+
+    favval = bwl->favval + amount;
+
+    if (favval > 0x4000)
+        bwl->favval = 0x4000;
+    else if (favval < 0)
+        bwl->favval = 0;
+    else
+        bwl->favval = favval;
+}
+
+void PidStatsRecordBattleRes(void)
+{
+    struct BattleUnit * buA = NULL, * buB = NULL;
+
+    if (GetUnitCurrentHp(&gBattleActor.unit) == 0)
+    {
+        buA = &gBattleActor;
+        buB = &gBattleTarget;
+    }
+
+    if (GetUnitCurrentHp(&gBattleTarget.unit) == 0)
+    {
+        buA = &gBattleTarget;
+        buB = &gBattleActor;
+    }
+
+    if (buA != NULL)
+    {
+        if (buB != NULL && UNIT_FACTION(&buB->unit) == FACTION_BLUE)
+            PidStatsAddWinAmt(UNIT_CHAR_ID(&buB->unit));
+
+        if (buA != NULL && UNIT_FACTION(&buA->unit) == FACTION_BLUE)
+            PidStatsRecordLoseData(UNIT_CHAR_ID(&buA->unit));
+    }
+}
+
+bool IsPlaythroughIdUnique(int index)
+{
+    int i;
+    struct GlobalSaveInfo info;
+    struct PlaySt play_st;
+
+    ReadGlobalSaveInfo(&info);
+
+    for (i = 0; i < 0xC; i++)
+        if (info.cleared_playthroughs[i] == index)
+            return false;
+
+    for (i = 0; i < 3; i++)
+    {
+        if (!IsSaveValid(i))
+            continue;
+
+        ReadGameSavePlaySt(i, &play_st);
+
+        if (play_st.playthroughIdentifier == index)
+            return false;
+    }
+
+    return true;
+}
+
+int GetNewPlaythroughId(void)
+{
+    int i;
+
+    for (i = 1; i < 0x100; i++)
+        if (IsPlaythroughIdUnique(i))
+            return i;
+}
+
+int GetGlobalCompletionCntByInfo(struct GlobalSaveInfo * info)
+{
+    int i, ret = 0;
+
+    for (i = 0; i < 0xC; i++)
+        if (info->cleared_playthroughs[i] != 0)
+            ret++;
+
+    return ret;
+}
+
+int GetGlobalCompletionCount(void)
+{
+    struct GlobalSaveInfo info;
+
+    if (!ReadGlobalSaveInfo(&info))
+        return 0;
+    else
+        return GetGlobalCompletionCntByInfo(&info);
+}
+
+bool RegisterCompletedPlaythrough(struct GlobalSaveInfo * info, int index)
+{
+    int i;
+
+    for (i = 0; i < 0xC; i++)
+        if (info->cleared_playthroughs[i] == index)
+            return false;
+
+    for (i = 0; i < 0xC; i++)
+    {
+        if (info->cleared_playthroughs[i] == 0)
+        {
+            info->cleared_playthroughs[i] = index;
+            return true;
+        }
+    }
+
+    return false;
+}
+
+void SavePlayThroughData(void)
+{
+    struct GlobalSaveInfo info;
+
+    if (!ReadGlobalSaveInfo(&info))
+    {
+        InitGlobalSaveInfo();
+        ReadGlobalSaveInfo(&info);
+    }
+
+    info.flag0E_1 = 1;
+    WriteGlobalSaveInfo(&info);
+}
