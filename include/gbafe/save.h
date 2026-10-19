@@ -34,6 +34,18 @@ enum save_chunk_magics {
 
 #define MAX_CLEARED_PLAYTHROUGHS 12
 
+struct GameRankSaveData {
+    /* 00 */ u32 valid : 1;
+             u32 unk00_01 : 31;
+    /* 04 */ u8 unk04[0x18 - 0x04];
+};
+
+struct GameRankSaveDataPacks {
+    /* 00 */ struct GameRankSaveData pack[6];
+    /* 90 */ u16 magic0;
+    /* 92 */ u16 unk92;
+};
+
 struct GlobalSaveInfo {
     /* 00 */ char name[0x8];
     /* 08 */ u32 magic32;
@@ -102,21 +114,21 @@ void WriteSaveBlockInfo(struct SaveBlockInfo * block_info, int save_id);
 // ??? EraseSaveBlockInfo
 void * GetSaveWriteAddr(int save_id);
 void * GetSaveReadAddr(int save_id);
-// ??? sub_809F344
-// ??? sub_809F364
-// ??? sub_809F384
-// ??? sub_809F3AC
-// ??? sub_809F3D4
-// ??? sub_809F3EC
+void WriteChapterFlags(void * sram_dest);
+void WritePermanentFlags(void * sram_dest);
+void ReadChapterFlags(void * ewram_dest);
+void ReadPermanentFlags(void * ewram_dest);
+void sub_809F3D4(void * sram_dest);
+void sub_809F3EC(void * ewram_dest);
 s32 sub_809F40C(void);
-// ??? sub_809F468
-// ??? sub_809F48C
-// ??? sub_809F490
-// ??? sub_809F4C8
-// ??? sub_809F4F0
-// ??? sub_809F50C
-// ??? sub_809F588
-// ??? sub_809F5B0
+bool sub_809F468(void);
+bool sub_809F48C(void);
+bool sub_809F490(void);
+bool sub_809F4C8(void);
+bool sub_809F4F0(void);
+u32 sub_809F50C(void);
+bool sub_809F588(void);
+bool sub_809F5B0(void);
 // ??? GetUnitsAverageSupportValue
 // ??? sub_809F660
 // ??? sub_809F688
@@ -126,10 +138,10 @@ s32 sub_809F40C(void);
 // ??? UpdateBestGlobalSupportValue
 // ??? sub_809F908
 // ??? GGM_IsCharacterKnown
-// ??? GGM_IsAnyCharacterKnown
+int GGM_IsAnyCharacterKnown(struct GlobalSaveInfo * info);
 // ??? nullsub_82
 // ??? nullsub_83
-bool IsGamePlayedThrough(void);
+int IsGamePlayedThrough(void);
 int CheckLinkedToFE6(void);
 // ??? ReadFe6LinkSaveInfo
 void WriteFe6LinkSaveInfo(void * buf);
@@ -138,8 +150,8 @@ void WriteFe6LinkSaveInfo(void * buf);
 // ??? sub_809FAF4
 // ??? sub_809FB0C
 // ??? sub_809FB10
-// ??? LoadAndVerfyRankData
-// ??? LoadBonusContentData
+bool LoadAndVerfyRankData(struct GameRankSaveDataPacks * buf);
+bool LoadBonusContentData(void * buf);
 void SaveBonusContentData(void * buf);
 // ??? sub_809FC00
 // ??? sub_809FC30
@@ -242,7 +254,7 @@ void ReadGameSavePlaySt(s32, struct PlaySt *);
 // ??? sub_80A135C
 // ??? sub_80A1384
 // ??? sub_80A1398
-// ??? sub_80A13B8
+bool sub_80A13B8(int save_id);
 void WriteGameSavePackedUnit(struct Unit *unit, void *sram_dest);
 void LoadSavedUnit(const void *sram_src, struct Unit *unit);
 void InvalidateSuspendSave(int);
@@ -276,7 +288,7 @@ void PopulateSaveBlockChecksum(struct SaveBlockInfo * block_info);
 // ??? sub_80A28C0
 // ??? sub_80A28E8
 // ??? sub_80A2924
-// ??? sub_80A294C
+bool sub_80A294C(void);
 // ??? LoadAndVerfySuspendSave
 // ??? ReadExtraMapSaveHead
 // ??? GetExtraMapMapReadAddr
@@ -284,7 +296,7 @@ void PopulateSaveBlockChecksum(struct SaveBlockInfo * block_info);
 // ??? GetExtraMapInfoReadAddr
 // ??? GetExtraMapInfoSize
 // ??? ExtraMapChecksum
-// ??? IsExtraMapAvailable
+bool IsExtraMapAvailable(void);
 // ??? ReadExtraMapInfo
 // ??? sub_80A2BE0
 // ??? sub_80A2BE8

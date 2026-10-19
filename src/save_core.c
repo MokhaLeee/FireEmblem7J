@@ -292,3 +292,179 @@ void * GetSaveReadAddr(int save_id)
     ReadSaveBlockInfo(&block_info, save_id);
     return SramOffsetToAddr(block_info.offset);
 }
+
+void WriteChapterFlags(void * sram_dest)
+{
+    WriteAndVerifySramFast(GetChapterFlagBits(), sram_dest, GetChapterFlagBitsSize());
+}
+
+void WritePermanentFlags(void * sram_dest)
+{
+    WriteAndVerifySramFast(GetPermanentFlagBits(), sram_dest, GetPermanentFlagBitsSize());
+}
+
+void ReadChapterFlags(void * ewram_dest)
+{
+    ReadSramFast(ewram_dest, GetChapterFlagBits(), GetChapterFlagBitsSize());
+}
+
+void ReadPermanentFlags(void * ewram_dest)
+{
+    ReadSramFast(ewram_dest, GetPermanentFlagBits(), GetPermanentFlagBitsSize());
+}
+
+void sub_809F3D4(void * sram_dest)
+{
+    WriteAndVerifySramFast(sub_802EBCC(), sram_dest, 0xC8);
+}
+
+void sub_809F3EC(void * ewram_dest)
+{
+    ReadSramFast(ewram_dest, sub_802EBCC(), 0xC8);
+}
+
+s32 sub_809F40C(void)
+{
+    struct GlobalSaveInfo info;
+    s32 ret = 0;
+    int count;
+
+    if (ReadGlobalSaveInfo(&info))
+    {
+        count = GetGlobalCompletionCntByInfo(&info);
+        ret = CheckLinkedToFE6() ? 2 : 0;
+
+        if (info.completed)
+        {
+            if (info.Eirk_mode_easy || info.Eirk_mode_norm)
+                ret = 0xF;
+
+            if (info.Eirk_mode_hard)
+                ret |= 0x10;
+
+            if (count > 4)
+                ret |= 0x10;
+        }
+    }
+
+    return ret;
+}
+
+bool sub_809F468(void)
+{
+    struct GlobalSaveInfo info;
+
+    if (ReadGlobalSaveInfo(&info))
+        return info.Eirk_mode_hard;
+
+    return false;
+}
+
+bool sub_809F48C(void)
+{
+    return true;
+}
+
+bool sub_809F490(void)
+{
+    int i;
+
+    if (!IsSramWorking())
+        return false;
+
+    for (i = 0; i < 3; i++)
+        if (sub_80A13B8(i))
+            return true;
+
+    return sub_80A294C();
+}
+
+bool sub_809F4C8(void)
+{
+    struct GlobalSaveInfo info;
+
+    if (ReadGlobalSaveInfo(&info) && (info.completed || info.flag0E_1))
+        return true;
+
+    return false;
+}
+
+bool sub_809F4F0(void)
+{
+    int known = GGM_IsAnyCharacterKnown(NULL);
+    int played = IsGamePlayedThrough();
+    return played & known;
+}
+
+u32 sub_809F50C(void)
+{
+    struct GameRankSaveDataPacks buf;
+    u32 attr = 0;
+    u8 played = IsGamePlayedThrough();
+
+    if (!played)
+        return 0;
+
+    if (LoadAndVerfyRankData(&buf))
+    {
+        if (buf.pack[0].valid)
+            attr = 1 << 0;
+
+        if (buf.pack[1].valid)
+            attr |= 1 << 1;
+
+        if (buf.pack[2].valid)
+            attr |= 1 << 2;
+
+        if (buf.pack[3].valid)
+            attr |= 1 << 3;
+
+        if (buf.pack[4].valid)
+            attr |= 1 << 4;
+
+        if (buf.pack[5].valid)
+            attr |= 1 << 5;
+    }
+
+    return attr;
+}
+
+bool sub_809F588(void)
+{
+    struct GlobalSaveInfo info;
+
+    if (ReadGlobalSaveInfo(&info) && IsExtraMapAvailable())
+        return true;
+
+    return false;
+}
+
+bool sub_809F5B0(void)
+{
+    u8 unused[0x48];
+    struct BonusClaimEnt * ent;
+    int i, ret;
+
+    if (LoadBonusContentData(gBuf))
+    {
+        ret = false;
+        ent = (void *)gBuf;
+
+        for (i = 0x1F; i >= 0; ent++, i--)
+        {
+            if (!ent->unseen)
+                continue;
+
+            if (ent->kind == 0)
+                ret = true;
+
+            if (ent->kind == 2)
+                ret = true;
+        }
+
+        if (ret)
+            return true;
+    }
+
+    return false;
+}

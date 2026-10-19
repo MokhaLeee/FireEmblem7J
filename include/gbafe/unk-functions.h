@@ -79,7 +79,7 @@ void sub_802EB7C(/* TODO */);
 void sub_802EBA0(/* TODO */);
 char *GetTacticianName();
 void SetTacticianName(const char *name);
-// sub_802EBCC
+void * sub_802EBCC(void);
 // sub_802EBD4
 // sub_802EBF8
 // GetConvoyItemCount

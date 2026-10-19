@@ -330,7 +330,7 @@ void sub_80A76C8(struct ProcTactInfo *proc)
 
 void TactInfo_IntroDialogue1(struct ProcTactInfo *proc)
 {
-	if (!IsGamePlayedThrough()) {
+	if (!(u8)IsGamePlayedThrough()) {
 		EndSysHandCursor();
 		sub_80A7388();
 		StartBoxDialogueExt(0x30, 0x5A, MSG_79E, OBJ_VRAM0 + 0x6000, 0xD, proc);

@@ -1,392 +1,6 @@
 	.include "macro.inc"
 	.syntax unified
 
-	thumb_func_start sub_809F344
-sub_809F344: @ 0x0809F344
-	push {r4, r5, lr}
-	adds r4, r0, #0
-	bl sub_807A100
-	adds r5, r0, #0
-	bl sub_807A108
-	adds r2, r0, #0
-	adds r0, r5, #0
-	adds r1, r4, #0
-	bl WriteAndVerifySramFast
-	pop {r4, r5}
-	pop {r0}
-	bx r0
-	.align 2, 0
-
-	thumb_func_start sub_809F364
-sub_809F364: @ 0x0809F364
-	push {r4, r5, lr}
-	adds r4, r0, #0
-	bl GetPermanentFlagBits
-	adds r5, r0, #0
-	bl sub_807A0FC
-	adds r2, r0, #0
-	adds r0, r5, #0
-	adds r1, r4, #0
-	bl WriteAndVerifySramFast
-	pop {r4, r5}
-	pop {r0}
-	bx r0
-	.align 2, 0
-
-	thumb_func_start sub_809F384
-sub_809F384: @ 0x0809F384
-	push {r4, r5, r6, lr}
-	adds r6, r0, #0
-	ldr r4, _0809F3A8 @ =ReadSramFast
-	bl sub_807A100
-	adds r5, r0, #0
-	bl sub_807A108
-	adds r2, r0, #0
-	ldr r3, [r4]
-	adds r0, r6, #0
-	adds r1, r5, #0
-	bl _call_via_r3
-	pop {r4, r5, r6}
-	pop {r0}
-	bx r0
-	.align 2, 0
-_0809F3A8: .4byte ReadSramFast
-
-	thumb_func_start sub_809F3AC
-sub_809F3AC: @ 0x0809F3AC
-	push {r4, r5, r6, lr}
-	adds r6, r0, #0
-	ldr r4, _0809F3D0 @ =ReadSramFast
-	bl GetPermanentFlagBits
-	adds r5, r0, #0
-	bl sub_807A0FC
-	adds r2, r0, #0
-	ldr r3, [r4]
-	adds r0, r6, #0
-	adds r1, r5, #0
-	bl _call_via_r3
-	pop {r4, r5, r6}
-	pop {r0}
-	bx r0
-	.align 2, 0
-_0809F3D0: .4byte ReadSramFast
-
-	thumb_func_start sub_809F3D4
-sub_809F3D4: @ 0x0809F3D4
-	push {r4, lr}
-	adds r4, r0, #0
-	bl sub_802EBCC
-	adds r1, r4, #0
-	movs r2, #0xc8
-	bl WriteAndVerifySramFast
-	pop {r4}
-	pop {r0}
-	bx r0
-	.align 2, 0
-
-	thumb_func_start sub_809F3EC
-sub_809F3EC: @ 0x0809F3EC
-	push {r4, r5, lr}
-	adds r5, r0, #0
-	ldr r4, _0809F408 @ =ReadSramFast
-	bl sub_802EBCC
-	adds r1, r0, #0
-	ldr r3, [r4]
-	adds r0, r5, #0
-	movs r2, #0xc8
-	bl _call_via_r3
-	pop {r4, r5}
-	pop {r0}
-	bx r0
-	.align 2, 0
-_0809F408: .4byte ReadSramFast
-
-	thumb_func_start sub_809F40C
-sub_809F40C: @ 0x0809F40C
-	push {r4, r5, lr}
-	sub sp, #0x64
-	movs r4, #0
-	mov r0, sp
-	bl ReadGlobalSaveInfo
-	lsls r0, r0, #0x18
-	cmp r0, #0
-	beq _0809F45C
-	mov r0, sp
-	bl GetGlobalCompletionCntByInfo
-	adds r5, r0, #0
-	bl CheckLinkedToFE6
-	rsbs r1, r0, #0
-	orrs r1, r0
-	asrs r4, r1, #0x1f
-	movs r0, #2
-	ands r4, r0
-	mov r0, sp
-	ldrb r1, [r0, #0xe]
-	movs r0, #1
-	ands r0, r1
-	cmp r0, #0
-	beq _0809F45C
-	movs r0, #0xc
-	ands r0, r1
-	cmp r0, #0
-	beq _0809F44A
-	movs r4, #0xf
-_0809F44A:
-	movs r2, #0x10
-	adds r0, r2, #0
-	ands r0, r1
-	cmp r0, #0
-	beq _0809F456
-	orrs r4, r2
-_0809F456:
-	cmp r5, #4
-	ble _0809F45C
-	orrs r4, r2
-_0809F45C:
-	adds r0, r4, #0
-	add sp, #0x64
-	pop {r4, r5}
-	pop {r1}
-	bx r1
-	.align 2, 0
-
-	thumb_func_start sub_809F468
-sub_809F468: @ 0x0809F468
-	push {lr}
-	sub sp, #0x64
-	mov r0, sp
-	bl ReadGlobalSaveInfo
-	lsls r0, r0, #0x18
-	cmp r0, #0
-	bne _0809F47C
-	movs r0, #0
-	b _0809F484
-_0809F47C:
-	mov r0, sp
-	ldrb r0, [r0, #0xe]
-	lsls r0, r0, #0x1b
-	lsrs r0, r0, #0x1f
-_0809F484:
-	add sp, #0x64
-	pop {r1}
-	bx r1
-	.align 2, 0
-
-	thumb_func_start sub_809F48C
-sub_809F48C: @ 0x0809F48C
-	movs r0, #1
-	bx lr
-
-	thumb_func_start sub_809F490
-sub_809F490: @ 0x0809F490
-	push {r4, lr}
-	bl IsSramWorking
-	lsls r0, r0, #0x18
-	cmp r0, #0
-	bne _0809F4A4
-	movs r0, #0
-	b _0809F4C0
-_0809F4A0:
-	movs r0, #1
-	b _0809F4C0
-_0809F4A4:
-	movs r4, #0
-_0809F4A6:
-	adds r0, r4, #0
-	bl sub_80A13B8
-	lsls r0, r0, #0x18
-	cmp r0, #0
-	bne _0809F4A0
-	adds r4, #1
-	cmp r4, #2
-	ble _0809F4A6
-	bl sub_80A294C
-	lsls r0, r0, #0x18
-	asrs r0, r0, #0x18
-_0809F4C0:
-	pop {r4}
-	pop {r1}
-	bx r1
-	.align 2, 0
-
-	thumb_func_start sub_809F4C8
-sub_809F4C8: @ 0x0809F4C8
-	push {lr}
-	sub sp, #0x64
-	mov r0, sp
-	bl ReadGlobalSaveInfo
-	lsls r0, r0, #0x18
-	cmp r0, #0
-	beq _0809F4E8
-	mov r1, sp
-	movs r0, #3
-	ldrb r1, [r1, #0xe]
-	ands r0, r1
-	cmp r0, #0
-	beq _0809F4E8
-	movs r0, #1
-	b _0809F4EA
-_0809F4E8:
-	movs r0, #0
-_0809F4EA:
-	add sp, #0x64
-	pop {r1}
-	bx r1
-
-	thumb_func_start sub_809F4F0
-sub_809F4F0: @ 0x0809F4F0
-	push {r4, lr}
-	movs r0, #0
-	bl GGM_IsAnyCharacterKnown
-	adds r4, r0, #0
-	bl IsGamePlayedThrough
-	ands r0, r4
-	lsls r0, r0, #0x18
-	asrs r0, r0, #0x18
-	pop {r4}
-	pop {r1}
-	bx r1
-	.align 2, 0
-
-	thumb_func_start sub_809F50C
-sub_809F50C: @ 0x0809F50C
-	push {r4, lr}
-	sub sp, #0x94
-	movs r4, #0
-	bl IsGamePlayedThrough
-	lsls r0, r0, #0x18
-	cmp r0, #0
-	bne _0809F520
-	movs r0, #0
-	b _0809F580
-_0809F520:
-	mov r0, sp
-	bl LoadAndVerfyRankData
-	lsls r0, r0, #0x18
-	cmp r0, #0
-	beq _0809F57E
-	mov r0, sp
-	ldrb r0, [r0]
-	lsls r0, r0, #0x1f
-	cmp r0, #0
-	beq _0809F538
-	movs r4, #1
-_0809F538:
-	mov r0, sp
-	ldrb r0, [r0, #0x18]
-	lsls r0, r0, #0x1f
-	cmp r0, #0
-	beq _0809F546
-	movs r0, #2
-	orrs r4, r0
-_0809F546:
-	add r0, sp, #0x30
-	ldrb r0, [r0]
-	lsls r0, r0, #0x1f
-	cmp r0, #0
-	beq _0809F554
-	movs r0, #4
-	orrs r4, r0
-_0809F554:
-	add r0, sp, #0x48
-	ldrb r0, [r0]
-	lsls r0, r0, #0x1f
-	cmp r0, #0
-	beq _0809F562
-	movs r0, #8
-	orrs r4, r0
-_0809F562:
-	add r0, sp, #0x60
-	ldrb r0, [r0]
-	lsls r0, r0, #0x1f
-	cmp r0, #0
-	beq _0809F570
-	movs r0, #0x10
-	orrs r4, r0
-_0809F570:
-	add r0, sp, #0x78
-	ldrb r0, [r0]
-	lsls r0, r0, #0x1f
-	cmp r0, #0
-	beq _0809F57E
-	movs r0, #0x20
-	orrs r4, r0
-_0809F57E:
-	adds r0, r4, #0
-_0809F580:
-	add sp, #0x94
-	pop {r4}
-	pop {r1}
-	bx r1
-
-	thumb_func_start sub_809F588
-sub_809F588: @ 0x0809F588
-	push {lr}
-	sub sp, #0x64
-	mov r0, sp
-	bl ReadGlobalSaveInfo
-	lsls r0, r0, #0x18
-	cmp r0, #0
-	beq _0809F5A6
-	bl IsExtraMapAvailable
-	lsls r0, r0, #0x18
-	cmp r0, #0
-	beq _0809F5A6
-	movs r0, #1
-	b _0809F5A8
-_0809F5A6:
-	movs r0, #0
-_0809F5A8:
-	add sp, #0x64
-	pop {r1}
-	bx r1
-	.align 2, 0
-
-	thumb_func_start sub_809F5B0
-sub_809F5B0: @ 0x0809F5B0
-	push {r4, lr}
-	sub sp, #0x48
-	ldr r4, _0809F5EC @ =gBuf
-	adds r0, r4, #0
-	bl LoadBonusContentData
-	lsls r0, r0, #0x18
-	cmp r0, #0
-	beq _0809F5F0
-	movs r3, #0
-	adds r1, r4, #0
-	movs r2, #0x1f
-_0809F5C8:
-	ldrb r0, [r1]
-	cmp r0, #0
-	beq _0809F5DC
-	ldrb r0, [r1, #1]
-	cmp r0, #0
-	bne _0809F5D6
-	movs r3, #1
-_0809F5D6:
-	cmp r0, #2
-	bne _0809F5DC
-	movs r3, #1
-_0809F5DC:
-	adds r1, #0x14
-	subs r2, #1
-	cmp r2, #0
-	bge _0809F5C8
-	cmp r3, #0
-	beq _0809F5F0
-	movs r0, #1
-	b _0809F5F2
-	.align 2, 0
-_0809F5EC: .4byte gBuf
-_0809F5F0:
-	movs r0, #0
-_0809F5F2:
-	add sp, #0x48
-	pop {r4}
-	pop {r1}
-	bx r1
-	.align 2, 0
-
 	thumb_func_start GetUnitsAverageSupportValue
 GetUnitsAverageSupportValue: @ 0x0809F5FC
 	push {r4, r5, r6, r7, lr}
@@ -4077,7 +3691,7 @@ _080A1132:
 	movs r2, #0xd8
 	lsls r2, r2, #4
 	adds r0, r7, r2
-	bl sub_809F364
+	bl WritePermanentFlags
 	ldr r0, _080A1198 @ =0x00011217
 	str r0, [sp]
 	mov r0, sp
@@ -4176,7 +3790,7 @@ _080A11FC:
 	movs r1, #0xd8
 	lsls r1, r1, #4
 	adds r0, r7, r1
-	bl sub_809F364
+	bl WritePermanentFlags
 	ldr r0, _080A1274 @ =0x00011217
 	str r0, [sp]
 	mov r0, sp
@@ -4251,7 +3865,7 @@ _080A12C4:
 	movs r1, #0xd8
 	lsls r1, r1, #4
 	adds r0, r7, r1
-	bl sub_809F3AC
+	bl ReadPermanentFlags
 	movs r1, #0x86
 	lsls r1, r1, #4
 	adds r0, r7, r1
@@ -5335,10 +4949,10 @@ _080A1B22:
 	bl WriteSramFast
 	ldr r1, _080A1BC8 @ =0x00001F1C
 	adds r0, r7, r1
-	bl sub_809F364
+	bl WritePermanentFlags
 	ldr r1, _080A1BCC @ =0x00001F24
 	adds r0, r7, r1
-	bl sub_809F344
+	bl WriteChapterFlags
 	ldr r1, _080A1BD0 @ =0x00001924
 	adds r0, r7, r1
 	bl sub_809F3D4
@@ -5476,10 +5090,10 @@ _080A1C64:
 	bl sub_809F3EC
 	ldr r2, _080A1D08 @ =0x00001F1C
 	adds r0, r6, r2
-	bl sub_809F3AC
+	bl ReadPermanentFlags
 	ldr r1, _080A1D0C @ =0x00001F24
 	adds r0, r6, r1
-	bl sub_809F384
+	bl ReadChapterFlags
 	ldr r2, _080A1D10 @ =0x00001724
 	adds r0, r6, r2
 	bl ReadTraps
@@ -6412,7 +6026,7 @@ _080A23D4:
 	bge _080A23BC
 	bl GetPermanentFlagBits
 	adds r4, r0, #0
-	bl sub_807A0FC
+	bl GetPermanentFlagBitsSize
 	adds r1, r0, #0
 	lsrs r0, r1, #0x1f
 	adds r1, r1, r0
@@ -6422,9 +6036,9 @@ _080A23D4:
 	adds r0, r6, r0
 	lsls r0, r0, #0x10
 	lsrs r6, r0, #0x10
-	bl sub_807A100
+	bl GetChapterFlagBits
 	adds r4, r0, #0
-	bl sub_807A108
+	bl GetChapterFlagBitsSize
 	adds r1, r0, #0
 	lsrs r0, r1, #0x1f
 	adds r1, r1, r0
@@ -7397,7 +7011,7 @@ ReadExtraMapInfo: @ 0x080A2B50
 	bl GetPermanentFlagBits
 	ldr r1, [r4]
 	str r0, [r1, #0x38]
-	bl sub_807A100
+	bl GetChapterFlagBits
 	ldr r1, [r4]
 	str r0, [r1, #0x3c]
 	pop {r4, r5, r6}

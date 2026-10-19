@@ -3393,20 +3393,20 @@ GetPermanentFlagBits: @ 0x0807A0F4
 	.align 2, 0
 _0807A0F8: .4byte 0x030049F0
 
-	thumb_func_start sub_807A0FC
-sub_807A0FC: @ 0x0807A0FC
+	thumb_func_start GetPermanentFlagBitsSize
+GetPermanentFlagBitsSize: @ 0x0807A0FC
 	movs r0, #8
 	bx lr
 
-	thumb_func_start sub_807A100
-sub_807A100: @ 0x0807A100
+	thumb_func_start GetChapterFlagBits
+GetChapterFlagBits: @ 0x0807A100
 	ldr r0, _0807A104 @ =0x030049F8
 	bx lr
 	.align 2, 0
 _0807A104: .4byte 0x030049F8
 
-	thumb_func_start sub_807A108
-sub_807A108: @ 0x0807A108
+	thumb_func_start GetChapterFlagBitsSize
+GetChapterFlagBitsSize: @ 0x0807A108
 	movs r0, #6
 	bx lr
 

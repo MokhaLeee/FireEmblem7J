@@ -107,10 +107,10 @@ void ResetPermanentFlags(void);
 void SetFlag(int flag);
 bool CheckFlag(int);
 void ClearFlag(int flag);
-// GetPermanentFlagBits
-// sub_807A0FC
-// sub_807A100
-// sub_807A108
+u8 * GetPermanentFlagBits(void);
+int GetPermanentFlagBitsSize(void); // sub_807A0FC
+u8 * GetChapterFlagBits(void); // sub_807A100
+int GetChapterFlagBitsSize(void); // sub_807A108
 // sub_807A10C
 // sub_807A124
 // sub_807A160
