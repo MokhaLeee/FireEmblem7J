@@ -34,6 +34,13 @@ enum save_chunk_magics {
 
 #define MAX_CLEARED_PLAYTHROUGHS 12
 
+// Written by FE6 (Binding Blade) when linked
+struct Fe6LinkSaveInfo {
+    /* 00 */ u8 unk00[0x20];
+    /* 20 */ u16 unk20;
+    /* 22 */ u16 checksum;
+};
+
 struct GameRankSaveData {
     /* 00 */ u32 valid : 1;
              u32 unk00_01 : 31;
@@ -129,21 +136,21 @@ bool sub_809F4F0(void);
 u32 sub_809F50C(void);
 bool sub_809F588(void);
 bool sub_809F5B0(void);
-// ??? GetUnitsAverageSupportValue
-// ??? sub_809F660
-// ??? sub_809F688
-// ??? GetTotalSupportCollection
-// ??? GetGlobalBestSupport
-// ??? GetGlobalSupportListFromSave
-// ??? UpdateBestGlobalSupportValue
-// ??? sub_809F908
-// ??? GGM_IsCharacterKnown
+int GetUnitsAverageSupportValue(int unitA, int unitB);
+int GetTotalAverageSupportValue(void);
+int GetTotalGlobalSupportValue(struct GlobalSaveInfo * info);
+int GetTotalSupportCollection(void);
+int GetGlobalBestSupport(int unitA, int unitB, struct GlobalSaveInfo * info);
+void GetGlobalSupportListFromSave(int pid, u8 * data, struct GlobalSaveInfo * info);
+bool UpdateBestGlobalSupportValue(int unitA, int unitB, int rank);
+void SGM_SetCharacterKnown(int pid, struct GlobalSaveInfo * info);
+bool GGM_IsCharacterKnown(int pid, struct GlobalSaveInfo * info);
 int GGM_IsAnyCharacterKnown(struct GlobalSaveInfo * info);
-// ??? nullsub_82
-// ??? nullsub_83
+void nullsub_82(void);
+void nullsub_83(void);
 int IsGamePlayedThrough(void);
 int CheckLinkedToFE6(void);
-// ??? ReadFe6LinkSaveInfo
+bool ReadFe6LinkSaveInfo(struct Fe6LinkSaveInfo * buf);
 void WriteFe6LinkSaveInfo(void * buf);
 // ??? sub_809FAC0
 // ??? sub_809FADC

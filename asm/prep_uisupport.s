@@ -211,10 +211,10 @@ _0809BB60: .4byte gSupportTalkList
 _0809BB64:
 	ldrb r0, [r6]
 	movs r1, #0
-	bl sub_809F908
+	bl SGM_SetCharacterKnown
 	ldrb r0, [r6, #1]
 	movs r1, #0
-	bl sub_809F908
+	bl SGM_SetCharacterKnown
 	ldrb r4, [r6]
 	ldrb r5, [r6, #1]
 	adds r0, r4, #0

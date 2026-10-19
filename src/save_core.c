@@ -468,3 +468,328 @@ bool sub_809F5B0(void)
 
     return false;
 }
+
+int GetUnitsAverageSupportValue(int unitA, int unitB)
+{
+    int i;
+
+    for (i = 0; gUnk_08DAD284[i][0] != 0; i++)
+    {
+        if (gUnk_08DAD284[i][0] == unitA)
+            if (gUnk_08DAD284[i][1] != unitB)
+                return 2;
+
+        if (gUnk_08DAD284[i][0] == unitB)
+            if (gUnk_08DAD284[i][1] != unitA)
+                return 2;
+
+        if (gUnk_08DAD284[i][1] == unitA)
+            if (gUnk_08DAD284[i][0] != unitB)
+                return 2;
+
+        if (gUnk_08DAD284[i][1] == unitB)
+            if (gUnk_08DAD284[i][0] != unitA)
+                return 2;
+    }
+
+    return 3;
+}
+
+int GetTotalAverageSupportValue(void)
+{
+    int ret = 0;
+    struct SupportTalkEnt * ent;
+
+    for (ent = gSupportTalkList; ent->unitA != 0; ent++)
+        ret += GetUnitsAverageSupportValue(ent->unitA, ent->unitB);
+
+    return ret;
+}
+
+int GetTotalGlobalSupportValue(struct GlobalSaveInfo * info)
+{
+    int i, j, tmp1, tmp2, ret = 0;
+    struct GlobalSaveInfo local_info;
+
+    if (info == NULL)
+    {
+        info = &local_info;
+        ReadGlobalSaveInfo(info);
+    }
+
+    for (i = 0; i < 0x20; i++)
+    {
+        for (j = 0; j < 4; j++)
+        {
+            tmp1 = 1 + i;
+            tmp2 = info->SuppordRecord[tmp1 - 1];
+            ret += (tmp2 >> (j << 1)) & 3;
+        }
+    }
+
+    return ret;
+}
+
+int GetTotalSupportCollection(void)
+{
+    int tmp0 = GetTotalGlobalSupportValue(NULL);
+    int tmp1 = GetTotalAverageSupportValue();
+
+    if ((tmp0 > 0) && (0 == ((tmp0 * 100) / tmp1)))
+        tmp0 = 1;
+    else
+        tmp0 = (tmp0 * 100) / tmp1;
+
+    if (tmp0 > 100)
+        tmp0 = 100;
+
+    return tmp0;
+}
+
+int GetGlobalBestSupport(int unitA, int unitB, struct GlobalSaveInfo * info)
+{
+    struct GlobalSaveInfo local_info;
+    int i = 0;
+    int tmp0, tmp1;
+    u8 * record;
+    struct SupportTalkEnt * ent = gSupportTalkList;
+
+    if (info == NULL)
+    {
+        info = &local_info;
+        ReadGlobalSaveInfo(info);
+    }
+
+    record = info->SuppordRecord;
+
+    for (; ent->unitA != 0; i++, ent++)
+    {
+        if (ent->unitA == unitA && ent->unitB == unitB)
+            break;
+
+        if (ent->unitA == unitB && ent->unitB == unitA)
+            break;
+    }
+
+    tmp0 = i >> 2;
+    tmp1 = (3 & i) << 1;
+    return 3 & record[tmp0] >> tmp1;
+}
+
+void GetGlobalSupportListFromSave(int pid, u8 * data, struct GlobalSaveInfo * info)
+{
+    struct GlobalSaveInfo local_info;
+    struct SupportTalkEnt * ent;
+    int i;
+    int j;
+
+    if (gCharacterData[pid - 1].pSupportData == NULL)
+    {
+        for (i = 0; i < UNIT_SUPPORT_MAX_COUNT; data++, i++)
+            *data = 0;
+
+        return;
+    }
+
+    j = 0;
+    ent = gSupportTalkList;
+
+    if (info == NULL)
+    {
+        info = &local_info;
+        ReadGlobalSaveInfo(info);
+    }
+
+    for (; ; j++, ent++)
+    {
+        int tmp1, tmp2;
+
+        if (ent->unitA == 0)
+            break;
+
+        if ((ent->unitA != pid) && (ent->unitB != pid))
+            continue;
+
+        tmp1 = j >> 2;
+        tmp2 = (j & 3) << 1;
+
+        for (i = 0; i < gCharacterData[pid - 1].pSupportData->count; i++)
+        {
+            if ((ent->unitA != gCharacterData[pid - 1].pSupportData->pids[i]) &&
+                (ent->unitB != gCharacterData[pid - 1].pSupportData->pids[i]))
+                continue;
+
+            data[i] = (info->SuppordRecord[tmp1] >> tmp2) & 3;
+            break;
+        }
+    }
+
+    for (i = gCharacterData[pid - 1].pSupportData->count; i < UNIT_SUPPORT_MAX_COUNT; i++)
+        data[i] = 0;
+}
+
+bool UpdateBestGlobalSupportValue(int unitA, int unitB, int rank)
+{
+    int convo;
+    int var0;
+    int var1;
+    struct GlobalSaveInfo info;
+    struct SupportTalkEnt * ent;
+
+    rank = rank & 3;
+
+    if (!ReadGlobalSaveInfo(&info))
+        return false;
+
+    convo = 0;
+
+    for (ent = gSupportTalkList; ; ent++)
+    {
+        if (ent->unitA == 0)
+            break;
+
+        if ((ent->unitA == unitA) && (ent->unitB == unitB))
+            break;
+
+        if ((ent->unitA == unitB) && (ent->unitB == unitA))
+            break;
+
+        convo++;
+    }
+
+    var0 = convo >> 2;
+    var1 = (convo & 3) << 1;
+
+    if (((info.SuppordRecord[var0] >> var1) & 3) >= rank)
+        return false;
+
+    info.SuppordRecord[var0] &= ~(3 << var1);
+    info.SuppordRecord[var0] += (rank << var1);
+
+    WriteGlobalSaveInfo(&info);
+
+    return true;
+}
+
+void SGM_SetCharacterKnown(int pid, struct GlobalSaveInfo * info)
+{
+    int loaded = false;
+    struct GlobalSaveInfo local_info;
+
+    if (pid > 0x100)
+        return;
+
+    if (info == NULL)
+    {
+        info = &local_info;
+        ReadGlobalSaveInfo(info);
+        loaded = true;
+    }
+
+    info->charKnownFlags[pid >> 3] |= 1 << (pid & 7);
+
+    if (loaded)
+        WriteGlobalSaveInfo(info);
+}
+
+bool GGM_IsCharacterKnown(int pid, struct GlobalSaveInfo * info)
+{
+    struct GlobalSaveInfo local_info;
+    u32 _pid = pid;
+
+    if (pid > 0x100)
+        return false;
+
+    if (info == NULL)
+    {
+        info = &local_info;
+        ReadGlobalSaveInfo(&local_info);
+    }
+
+    if (1 & info->charKnownFlags[pid >> 3] >> (_pid % 8))
+        return true;
+    else
+        return false;
+}
+
+int GGM_IsAnyCharacterKnown(struct GlobalSaveInfo * info)
+{
+    int i;
+    struct GlobalSaveInfo local_info;
+
+    if (info == NULL)
+    {
+        info = &local_info;
+        ReadGlobalSaveInfo(&local_info);
+    }
+
+    for (i = 0; i < 0x20; i++)
+    {
+        if (info->charKnownFlags[i] != 0)
+            return true;
+    }
+
+    return false;
+}
+
+void nullsub_82(void)
+{
+}
+
+void nullsub_83(void)
+{
+}
+
+int IsGamePlayedThrough(void)
+{
+    struct GlobalSaveInfo info;
+
+    if (!ReadGlobalSaveInfo(&info))
+        return false;
+
+    if (info.completed == 0)
+        return false;
+    else
+        return true;
+}
+
+int CheckLinkedToFE6(void)
+{
+    struct Fe6LinkSaveInfo fe6;
+    struct GlobalSaveInfo info;
+    int count;
+
+    if (ReadGlobalSaveInfo(&info))
+    {
+        count = GetGlobalCompletionCntByInfo(&info);
+
+        if (count > 9)
+            return 2;
+
+        if (count > 7)
+            return 1;
+    }
+
+    if (ReadFe6LinkSaveInfo(&fe6))
+        return fe6.unk20;
+
+    return 0;
+}
+
+bool ReadFe6LinkSaveInfo(struct Fe6LinkSaveInfo * buf)
+{
+    struct Fe6LinkSaveInfo tmp;
+
+    if (!IsSramWorking())
+        return false;
+
+    if (buf == NULL)
+        buf = &tmp;
+
+    ReadSramFast((void *)gSramMain + 0x70D8, buf, sizeof(struct Fe6LinkSaveInfo));
+
+    if (buf->checksum != Checksum16(buf, sizeof(struct Fe6LinkSaveInfo) - 2))
+        return false;
+    else
+        return true;
+}

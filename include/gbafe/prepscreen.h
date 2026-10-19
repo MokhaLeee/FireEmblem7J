@@ -661,7 +661,7 @@ extern struct ProcCmd ProcScr_PrepItemUseScreen[];
 // ??? gUnk_08DA9BB8
 // ??? gUnk_08DA9D18
 // ??? gUnk_08DA9D38
-// ??? gUnk_08DAD284
+extern int gUnk_08DAD284[][2];
 // ??? gpSramExtraData
 // ??? gExtraMapInfo
 // ??? gUnk_08DAD29C
