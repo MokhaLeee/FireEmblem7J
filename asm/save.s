@@ -1,127 +1,6 @@
 	.include "macro.inc"
 	.syntax unified
 
-	thumb_func_start sub_80A0F08
-sub_80A0F08: @ 0x080A0F08
-	ldr r0, _080A0F10 @ =0x0203EC98
-	ldr r0, [r0]
-	bx lr
-	.align 2, 0
-_080A0F10: .4byte 0x0203EC98
-
-	thumb_func_start sub_80A0F14
-sub_80A0F14: @ 0x080A0F14
-	ldr r1, _080A0F1C @ =0x0203EC98
-	str r0, [r1]
-	bx lr
-	.align 2, 0
-_080A0F1C: .4byte 0x0203EC98
-
-	thumb_func_start sub_80A0F20
-sub_80A0F20: @ 0x080A0F20
-	push {lr}
-	adds r1, r0, #0
-	ldr r0, _080A0F34 @ =0x0203EC98
-	ldr r2, _080A0F38 @ =0x00000D88
-	adds r1, r1, r2
-	movs r2, #4
-	bl WriteAndVerifySramFast
-	pop {r0}
-	bx r0
-	.align 2, 0
-_080A0F34: .4byte 0x0203EC98
-_080A0F38: .4byte 0x00000D88
-
-	thumb_func_start sub_80A0F3C
-sub_80A0F3C: @ 0x080A0F3C
-	push {lr}
-	ldr r2, _080A0F54 @ =ReadSramFast
-	ldr r1, _080A0F58 @ =0x00000D88
-	adds r0, r0, r1
-	ldr r1, _080A0F5C @ =0x0203EC98
-	ldr r3, [r2]
-	movs r2, #4
-	bl _call_via_r3
-	pop {r0}
-	bx r0
-	.align 2, 0
-_080A0F54: .4byte ReadSramFast
-_080A0F58: .4byte 0x00000D88
-_080A0F5C: .4byte 0x0203EC98
-
-	thumb_func_start WriteLastGameSaveId
-WriteLastGameSaveId: @ 0x080A0F60
-	push {r4, lr}
-	sub sp, #0x64
-	adds r4, r0, #0
-	mov r0, sp
-	bl ReadGlobalSaveInfo
-	mov r0, sp
-	adds r0, #0x62
-	strb r4, [r0]
-	mov r0, sp
-	bl WriteGlobalSaveInfoNoChecksum
-	add sp, #0x64
-	pop {r4}
-	pop {r0}
-	bx r0
-
-	thumb_func_start ReadLastGameSaveId
-ReadLastGameSaveId: @ 0x080A0F80
-	push {lr}
-	sub sp, #0x64
-	mov r0, sp
-	bl ReadGlobalSaveInfo
-	lsls r0, r0, #0x18
-	cmp r0, #0
-	beq _080A0F9E
-	mov r0, sp
-	adds r0, #0x62
-	ldrb r0, [r0]
-	cmp r0, #2
-	bgt _080A0F9E
-	cmp r0, #0
-	bge _080A0FA0
-_080A0F9E:
-	movs r0, #0
-_080A0FA0:
-	add sp, #0x64
-	pop {r1}
-	bx r1
-	.align 2, 0
-
-	thumb_func_start sub_80A0FA8
-sub_80A0FA8: @ 0x080A0FA8
-	push {r4, r5, lr}
-	sub sp, #0x58
-	adds r5, r0, #0
-	movs r0, #3
-	bl IsValidSuspendSave
-	lsls r0, r0, #0x18
-	cmp r0, #0
-	beq _080A0FD0
-	add r4, sp, #0x10
-	movs r0, #3
-	adds r1, r4, #0
-	bl ReadSuspendSavePlaySt
-	ldrb r0, [r4, #0xc]
-	cmp r0, r5
-	bne _080A0FD0
-	movs r0, #3
-	bl InvalidateSuspendSave
-_080A0FD0:
-	mov r1, sp
-	movs r0, #0xff
-	strb r0, [r1, #6]
-	mov r0, sp
-	adds r1, r5, #0
-	bl WriteSaveBlockInfo
-	add sp, #0x58
-	pop {r4, r5}
-	pop {r0}
-	bx r0
-	.align 2, 0
-
 	thumb_func_start CopyGameSave
 CopyGameSave: @ 0x080A0FE8
 	push {r4, r5, r6, lr}
@@ -258,9 +137,9 @@ _080A10E4:
 	movs r2, #0x48
 	bl WriteAndVerifySramFast
 	movs r0, #0
-	bl sub_80A0F14
+	bl SetBonusContentClaimFlags
 	adds r0, r7, #0
-	bl sub_80A0F20
+	bl WriteBonusContentClaimFlags
 	mov r0, sp
 	adds r0, #0x36
 	movs r1, #0
@@ -387,7 +266,7 @@ _080A11FC:
 	adds r0, r7, r1
 	bl WriteChapterStats
 	adds r0, r7, #0
-	bl sub_80A0F20
+	bl WriteBonusContentClaimFlags
 	movs r1, #0xd8
 	lsls r1, r1, #4
 	adds r0, r7, r1
@@ -476,7 +355,7 @@ _080A12C4:
 	adds r0, r7, r1
 	bl ReadChapterStats
 	adds r0, r7, #0
-	bl sub_80A0F3C
+	bl ReadBonusContentClaimFlags
 	mov r0, sb
 	bl WriteLastGameSaveId
 	pop {r3, r4}
@@ -1710,7 +1589,7 @@ _080A1C64:
 	ldr r0, _080A1CE0 @ =gPlaySt
 	ldrb r0, [r0, #0xc]
 	bl sub_80A135C
-	bl sub_80A0F14
+	bl SetBonusContentClaimFlags
 	add sp, #0x10
 	pop {r4, r5, r6}
 	pop {r0}

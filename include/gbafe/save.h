@@ -300,13 +300,14 @@ void SavePlayThroughData(void);
 int GetCurrentGameMode(void);
 void WriteCompletedPlaythroughSaveData(void);
 struct PidStats * GetPidStats(u8 pid);
-// ??? sub_80A0F08
-// ??? sub_80A0F14
-// ??? sub_80A0F20
-// ??? sub_80A0F3C
+extern u32 gBonusContentClaimFlags;
+u32 GetBonusContentClaimFlags(void);
+void SetBonusContentClaimFlags(u32 flags);
+void WriteBonusContentClaimFlags(void * sram_dest);
+void ReadBonusContentClaimFlags(void * sram_src);
 void WriteLastGameSaveId(int num);
 int ReadLastGameSaveId(void);
-// ??? sub_80A0FA8
+void InvalidateGameSave(int index);
 void CopyGameSave(int index_src, int index_dest);
 void WriteNewGameSave(int index, int isDifficult, int mode, int isTutorial);
 void WriteGameSave(int slot);
@@ -323,7 +324,7 @@ void InvalidateSuspendSave(int);
 void WriteSuspendSave(int saveBlockId);
 void ReadSuspendSave(int slot);
 u8 IsValidSuspendSave(int);
-// ??? ReadSuspendSavePlaySt
+void ReadSuspendSavePlaySt(int index, struct PlaySt * buf);
 // ??? EncodeSuspendSavePackedUnit
 // ??? ReadSuspendSavePackedUnit
 // ??? WriteTraps

@@ -1158,7 +1158,7 @@ _080A4A4C:
 	adds r0, r4, #0
 	adds r0, #0x2c
 	ldrb r0, [r0]
-	bl sub_80A0FA8
+	bl InvalidateGameSave
 	adds r0, r4, #0
 	movs r1, #6
 _080A4A5E:

@@ -190,6 +190,7 @@ SECTIONS
 		. = 0x03E774; gPidStatsSaveLoc = .;
 		. = 0x03E778; gPidStatsData = .;
 		. = 0x03EBD8; gChapterStats = .;
+		. = 0x03EC98; gBonusContentClaimFlags = .;
 		. = 0x03EE28; gExtraMapSaveHead = .;
 	}
 
@@ -376,6 +377,7 @@ SECTIONS
 		asm/prep.o(.text);
 		src/save_core.o(.text);
 		src/save_bwl.o(.text);
+		src/save_game.o(.text);
 		asm/save.o(.text);
 		src/savemenu.o(.text);
 		asm/savemenu.o(.text);

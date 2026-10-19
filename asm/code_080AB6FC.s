@@ -4337,7 +4337,7 @@ _080ADB32:
 	movs r6, #0
 	strb r3, [r0]
 	str r3, [sp, #4]
-	bl sub_80A0F08
+	bl GetBonusContentClaimFlags
 	movs r2, #1
 	adds r1, r2, #0
 	ldr r3, [sp, #4]
@@ -4608,12 +4608,12 @@ sub_80ADD5C: @ 0x080ADD5C
 	adds r4, r4, r0
 	movs r5, #0
 	ldrsb r5, [r4, r5]
-	bl sub_80A0F08
+	bl GetBonusContentClaimFlags
 	adds r1, r0, #0
 	movs r0, #1
 	lsls r0, r5
 	orrs r0, r1
-	bl sub_80A0F14
+	bl SetBonusContentClaimFlags
 	movs r0, #0
 	strb r0, [r4, #1]
 	pop {r4, r5}
@@ -5033,7 +5033,7 @@ _080AE0F4:
 	adds r0, r0, r1
 	movs r4, #0
 	ldrsb r4, [r0, r4]
-	bl sub_80A0F08
+	bl GetBonusContentClaimFlags
 	adds r1, r7, #0
 	lsls r1, r4
 	ands r1, r0
