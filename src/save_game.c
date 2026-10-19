@@ -244,3 +244,148 @@ bool IsGameSaveNotFirstChapter(int slot)
     ReadGameSavePlaySt(slot, &play_st);
     return IsGameNotFirstChapter(&play_st);
 }
+
+void WriteGameSavePackedUnit(struct Unit * unit, void * sram_dest)
+{
+    int i;
+    struct GameSavePackedUnit unitp;
+
+    unitp.pid = UNIT_CHAR_ID(unit);
+    unitp.jid = unit->pClassData->number;
+
+    if (unit->pCharacterData == NULL)
+    {
+        struct Unit tmp_unit;
+        unit = &tmp_unit;
+        ClearUnit(&tmp_unit);
+        unitp.pid = 0;
+        unitp.jid = 0;
+    }
+
+    unitp.level = unit->level;
+    unitp.exp = unit->exp;
+    unitp.xPos = unit->xPos;
+    unitp.yPos = unit->yPos;
+
+    unitp.max_hp = unit->maxHP;
+    unitp.pow = unit->pow;
+    unitp.skl = unit->skl;
+    unitp.spd = unit->spd;
+    unitp.def = unit->def;
+    unitp.res = unit->res;
+    unitp.lck = unit->lck;
+    unitp.con_bonus = unit->conBonus;
+    unitp.mov_bonus = unit->movBonus;
+
+    unitp.item1 = unit->items[0];
+    unitp.item2 = unit->items[1];
+    unitp.item3 = unit->items[2];
+    unitp.item4 = unit->items[3];
+    unitp.item5 = unit->items[4];
+
+    unitp.flag = 0;
+
+    if (unit->state & US_DEAD)
+        unitp.flag |= PACKED_US_DEAD;
+
+    if (unit->state & US_NOT_DEPLOYED)
+        unitp.flag |= PACKED_US_UNDEPLOYED;
+
+    if (unit->state & US_SOLOANIM_1)
+        unitp.flag |= PACKED_US_SOLO_ANIM1;
+
+    if (unit->state & US_SOLOANIM_2)
+        unitp.flag |= PACKED_US_SOLO_ANIM2;
+
+    if (unit->state & US_GROWTH_BOOST)
+        unitp.flag |= PACKED_US_METIS_TOME;
+
+    if (unit->state & US_BIT16)
+        unitp.flag |= PACKED_US_B4;
+
+    if (unit->state & US_BIT25)
+        unitp.flag |= PACKED_US_B5;
+
+    for (i = 0; i < 8; i++)
+        unitp.wpnRanks[i] = unit->ranks[i];
+
+    for (i = 0; i < UNIT_SUPPORT_MAX_COUNT; i++)
+        unitp.supports[i] = unit->supports[i];
+
+    WriteAndVerifySramFast(&unitp, sram_dest, sizeof(unitp));
+}
+
+void LoadSavedUnit(const void * sram_src, struct Unit * unit)
+{
+    int i;
+    struct GameSavePackedUnit unitp;
+
+    ReadSramFast(sram_src, &unitp, sizeof(unitp));
+
+    unit->pCharacterData = GetCharacterData(unitp.pid);
+    unit->pClassData = GetClassData(unitp.jid);
+    unit->level = unitp.level;
+    unit->exp = unitp.exp;
+    unit->xPos = unitp.xPos;
+    unit->yPos = unitp.yPos;
+
+    unit->maxHP = unitp.max_hp;
+    unit->pow = unitp.pow;
+    unit->skl = unitp.skl;
+    unit->spd = unitp.spd;
+    unit->def = unitp.def;
+    unit->res = unitp.res;
+    unit->lck = unitp.lck;
+    unit->conBonus = unitp.con_bonus;
+    unit->movBonus = unitp.mov_bonus;
+
+    unit->items[0] = unitp.item1;
+    unit->items[1] = unitp.item2;
+    unit->items[2] = unitp.item3;
+    unit->items[3] = unitp.item4;
+    unit->items[4] = unitp.item5;
+
+    if (unit->exp > 99)
+        unit->exp = -1;
+
+    unit->state = 0;
+
+    if (unitp.flag & PACKED_US_DEAD)
+        unit->state = US_HIDDEN | US_DEAD;
+
+    if (unitp.flag & PACKED_US_UNDEPLOYED)
+        unit->state |= US_HIDDEN | US_NOT_DEPLOYED;
+
+    if (unitp.flag & PACKED_US_SOLO_ANIM1)
+        unit->state |= US_SOLOANIM_1;
+
+    if (unitp.flag & PACKED_US_SOLO_ANIM2)
+        unit->state |= US_SOLOANIM_2;
+
+    if (unitp.flag & PACKED_US_METIS_TOME)
+        unit->state |= US_GROWTH_BOOST;
+
+    if (unitp.flag & PACKED_US_B4)
+        unit->state |= US_BIT16;
+
+    if (unitp.flag & PACKED_US_B5)
+        unit->state |= US_BIT25;
+
+    for (i = 0; i < 8; i++)
+        unit->ranks[i] = unitp.wpnRanks[i];
+
+    for (i = 0; i < UNIT_SUPPORT_MAX_COUNT; i++)
+        unit->supports[i] = unitp.supports[i];
+
+    SetUnitHp(unit, GetUnitMaxHp(unit));
+    unit->supportBits = 0;
+
+    if (unit->exp == 0x7F)
+        unit->exp = -1;
+
+    if (unit->xPos == 0x3F)
+        unit->xPos = -1;
+
+    if (unit->yPos == 0x3F)
+        unit->yPos = -1;
+}

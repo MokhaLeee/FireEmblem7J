@@ -54,7 +54,44 @@ struct bmsave_unkstruct2 {
 };
 
 struct GameSavePackedUnit {
-    /* 00 */ u8 data[0x24];
+    /* 00 */ u32 jid        : 7;
+             u32 level      : 5;
+             u32 exp        : 7;
+             u32 xPos       : 6;
+             u32 yPos       : 6;
+
+             u32 flag       : 13;
+
+             u32 max_hp     : 6;
+             u32 pow        : 5;
+             u32 skl        : 5;
+             u32 spd        : 5;
+             u32 def        : 5;
+             u32 res        : 5;
+             u32 lck        : 5;
+             u32 con_bonus  : 5;
+             u32 mov_bonus  : 5;
+             u32 item1      : 14;
+             u32 item2      : 14;
+             u32 item3      : 14;
+             u32 item4      : 14;
+             u32 item5      : 14;
+
+    /* 14 */ u8 pid;
+    /* 15 */ u8 wpnRanks[0x8];
+    /* 1D */ u8 supports[7];
+    /* 24 */
+} BITPACKED;
+
+enum packed_unit_state_bits {
+    PACKED_US_DEAD       = 1 << 0,
+    PACKED_US_UNDEPLOYED = 1 << 1,
+    PACKED_US_SOLO_ANIM1 = 1 << 2,
+    PACKED_US_SOLO_ANIM2 = 1 << 3,
+    PACKED_US_METIS_TOME = 1 << 4,
+    PACKED_US_B4         = 1 << 5,
+    PACKED_US_B5         = 1 << 6,
+    PACKED_US_NEW_FRIEND = 1 << 7,
 };
 
 // Written by FE6 (Binding Blade) when linked
