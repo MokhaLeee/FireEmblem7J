@@ -373,7 +373,7 @@ bool sub_809F490(void)
         return false;
 
     for (i = 0; i < 3; i++)
-        if (sub_80A13B8(i))
+        if (IsGameSaveNotFirstChapter(i))
             return true;
 
     return sub_80A294C();

@@ -38,7 +38,7 @@ sub_80A7058: @ 0x080A7058
 	adds r5, r0, r4
 	strb r2, [r5]
 	adds r0, r4, #0
-	bl sub_80A1398
+	bl IsGameNotFirstChapter
 	lsls r0, r0, #0x18
 	cmp r0, #0
 	beq _080A70B6
@@ -48,7 +48,7 @@ sub_80A7058: @ 0x080A7058
 	strb r0, [r5]
 _080A70B6:
 	mov r0, sp
-	bl sub_80A1384
+	bl IsChapterPostLyn
 	lsls r0, r0, #0x18
 	cmp r0, #0
 	beq _080A70CA

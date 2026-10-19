@@ -1,117 +1,6 @@
 	.include "macro.inc"
 	.syntax unified
 
-	thumb_func_start IsSaveValid
-IsSaveValid: @ 0x080A1328
-	push {lr}
-	adds r1, r0, #0
-	movs r0, #0
-	bl ReadSaveBlockInfo
-	lsls r0, r0, #0x18
-	asrs r0, r0, #0x18
-	pop {r1}
-	bx r1
-	.align 2, 0
-
-	thumb_func_start ReadGameSavePlaySt
-ReadGameSavePlaySt: @ 0x080A133C
-	push {r4, lr}
-	adds r4, r1, #0
-	bl GetSaveReadAddr
-	ldr r1, _080A1358 @ =ReadSramFast
-	ldr r3, [r1]
-	adds r1, r4, #0
-	movs r2, #0x48
-	bl _call_via_r3
-	pop {r4}
-	pop {r0}
-	bx r0
-	.align 2, 0
-_080A1358: .4byte ReadSramFast
-
-	thumb_func_start sub_80A135C
-sub_80A135C: @ 0x080A135C
-	push {lr}
-	sub sp, #4
-	bl GetSaveReadAddr
-	ldr r1, _080A137C @ =ReadSramFast
-	ldr r2, _080A1380 @ =0x00000D88
-	adds r0, r0, r2
-	ldr r3, [r1]
-	mov r1, sp
-	movs r2, #4
-	bl _call_via_r3
-	ldr r0, [sp]
-	add sp, #4
-	pop {r1}
-	bx r1
-	.align 2, 0
-_080A137C: .4byte ReadSramFast
-_080A1380: .4byte 0x00000D88
-
-	thumb_func_start sub_80A1384
-sub_80A1384: @ 0x080A1384
-	ldrb r0, [r0, #0xe]
-	lsls r0, r0, #0x18
-	asrs r0, r0, #0x18
-	cmp r0, #0xd
-	bgt _080A1392
-	movs r0, #0
-	b _080A1394
-_080A1392:
-	movs r0, #1
-_080A1394:
-	bx lr
-	.align 2, 0
-
-	thumb_func_start sub_80A1398
-sub_80A1398: @ 0x080A1398
-	ldrb r0, [r0, #0xe]
-	lsls r0, r0, #0x18
-	asrs r0, r0, #0x18
-	cmp r0, #0xb
-	bgt _080A13AA
-	cmp r0, #0
-	ble _080A13B2
-	movs r0, #1
-	b _080A13B4
-_080A13AA:
-	cmp r0, #0xd
-	ble _080A13B2
-	movs r0, #1
-	b _080A13B4
-_080A13B2:
-	movs r0, #0
-_080A13B4:
-	bx lr
-	.align 2, 0
-
-	thumb_func_start sub_80A13B8
-sub_80A13B8: @ 0x080A13B8
-	push {r4, lr}
-	sub sp, #0x48
-	adds r4, r0, #0
-	bl IsSaveValid
-	lsls r0, r0, #0x18
-	cmp r0, #0
-	beq _080A13DC
-	adds r0, r4, #0
-	mov r1, sp
-	bl ReadGameSavePlaySt
-	mov r0, sp
-	bl sub_80A1398
-	lsls r0, r0, #0x18
-	asrs r0, r0, #0x18
-	b _080A13DE
-_080A13DC:
-	movs r0, #0
-_080A13DE:
-	add sp, #0x48
-	pop {r4}
-	pop {r1}
-	bx r1
-	.align 2, 0
-
 	thumb_func_start WriteGameSavePackedUnit
 WriteGameSavePackedUnit: @ 0x080A13E8
 	push {r4, r5, r6, r7, lr}
@@ -1219,7 +1108,7 @@ _080A1C64:
 	bl sub_804B3D0
 	ldr r0, _080A1CE0 @ =gPlaySt
 	ldrb r0, [r0, #0xc]
-	bl sub_80A135C
+	bl LoadSavedBonusClaimFlags
 	bl SetBonusContentClaimFlags
 	add sp, #0x10
 	pop {r4, r5, r6}

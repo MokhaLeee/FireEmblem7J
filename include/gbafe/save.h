@@ -331,10 +331,10 @@ void WriteGameSave(int slot);
 void ReadGameSave(int slot);
 bool IsSaveValid(int);
 void ReadGameSavePlaySt(s32, struct PlaySt *);
-// ??? sub_80A135C
-// ??? sub_80A1384
-// ??? sub_80A1398
-bool sub_80A13B8(int save_id);
+u32 LoadSavedBonusClaimFlags(int slot);
+bool IsChapterPostLyn(struct PlaySt * play_st);
+bool IsGameNotFirstChapter(struct PlaySt * play_st);
+bool IsGameSaveNotFirstChapter(int slot);
 void WriteGameSavePackedUnit(struct Unit *unit, void *sram_dest);
 void LoadSavedUnit(const void *sram_src, struct Unit *unit);
 void InvalidateSuspendSave(int);

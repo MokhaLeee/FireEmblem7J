@@ -193,3 +193,54 @@ void ReadGameSave(int slot)
     ReadBonusContentClaimFlags(src);
     WriteLastGameSaveId(slot);
 }
+
+bool IsSaveValid(int slot)
+{
+    return ReadSaveBlockInfo(NULL, slot);
+}
+
+void ReadGameSavePlaySt(int slot, struct PlaySt * buf)
+{
+    struct GameSaveBlock * src = GetSaveReadAddr(slot);
+    ReadSramFast(&src->playSt, buf, sizeof(struct PlaySt));
+}
+
+u32 LoadSavedBonusClaimFlags(int slot)
+{
+    u32 buf;
+    struct GameSaveBlock * src = GetSaveReadAddr(slot);
+    ReadSramFast(&src->bonusClaimFlags, &buf, sizeof(buf));
+    return buf;
+}
+
+bool IsChapterPostLyn(struct PlaySt * play_st)
+{
+    if (play_st->chapterIndex > 0xD)
+        return true;
+
+    return false;
+}
+
+bool IsGameNotFirstChapter(struct PlaySt * play_st)
+{
+    if (play_st->chapterIndex <= 0xB)
+    {
+        if (play_st->chapterIndex > 0)
+            return true;
+    }
+    else if (play_st->chapterIndex > 0xD)
+        return true;
+
+    return false;
+}
+
+bool IsGameSaveNotFirstChapter(int slot)
+{
+    struct PlaySt play_st;
+
+    if (!IsSaveValid(slot))
+        return false;
+
+    ReadGameSavePlaySt(slot, &play_st);
+    return IsGameNotFirstChapter(&play_st);
+}

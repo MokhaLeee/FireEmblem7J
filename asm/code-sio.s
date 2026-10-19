@@ -10717,7 +10717,7 @@ _08041AE0:
 	strb r0, [r4]
 _08041AE2:
 	add r0, sp, #8
-	bl sub_80A1398
+	bl IsGameNotFirstChapter
 	lsls r0, r0, #0x18
 	cmp r0, #0
 	beq _08041AFE
@@ -12659,7 +12659,7 @@ _08042AD2:
 	mov r1, sp
 	bl ReadGameSavePlaySt
 	mov r0, sp
-	bl sub_80A1398
+	bl IsGameNotFirstChapter
 	lsls r0, r0, #0x18
 	cmp r0, #0
 	beq _08042AF6
