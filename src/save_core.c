@@ -1253,3 +1253,108 @@ struct ChapterStats * GetChapterStats(int index)
 {
     return &gChapterStats[index];
 }
+
+bool IsChapterStatsValid(struct ChapterStats * stats)
+{
+    return stats->chapter_turn != 0;
+}
+
+int GetNextChapterStatsSlot(void)
+{
+    struct ChapterStats * stats = GetChapterStats(0);
+    int i;
+
+    for (i = 0; stats->chapter_turn != 0; i++, stats++)
+        ;
+
+    return i;
+}
+
+int GetCurCompleteChapters(void)
+{
+    struct ChapterStats * stats = GetChapterStats(0);
+    int count = 0;
+
+    for (; stats->chapter_turn != 0; stats++)
+    {
+        if (IsChapterCountedForCompletion(stats->chapter_index))
+            count++;
+    }
+
+    return count;
+}
+
+int GetNextChapterStatsEntry(void)
+{
+    int index = GetNextChapterStatsSlot();
+
+    if (index == 0)
+        return -1;
+    else
+        return GetChapterStats(index - 1)->chapter_index;
+}
+
+void RegisterChapterStats(struct PlaySt * play_st)
+{
+    struct ChapterStats * stats = GetChapterStats(GetNextChapterStatsSlot());
+    int time, turn;
+
+    time = (GetGameTime() - play_st->time_chapter_started) / 180;
+    if (time > 60000)
+        time = 60000;
+
+    turn = play_st->chapterTurnNumber;
+    if (turn > 500)
+        turn = 500;
+
+    stats->chapter_index = play_st->chapterIndex;
+    stats->chapter_turn = turn;
+    stats->chapter_time = time;
+}
+
+int GetGameTotalTime_unused(void)
+{
+    int time = 0;
+    int index = GetNextChapterStatsSlot();
+    int i = 0;
+
+    if (time < index)
+        for (; i < index; i++)
+            time += GetChapterStats(i)->chapter_time * 180;
+
+    return time;
+}
+
+int GetGameTotalTurnCount(void)
+{
+    int ret = 0;
+    int index = GetNextChapterStatsSlot();
+    int i = 0;
+
+    if (ret < index)
+        for (; i < index; i++)
+            ret += GetChapterStats(i)->chapter_turn;
+
+    return ret;
+}
+
+bool IsChapterCountedForCompletion(int chapter)
+{
+    switch (gPlaySt.chapterModeIndex)
+    {
+    case 1:
+        if (chapter <= 0xB)
+            return true;
+
+        break;
+
+    case 2:
+    case 3:
+        if (chapter > 0xB)
+            return true;
+
+        break;
+    }
+
+    return false;
+}

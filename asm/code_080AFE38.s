@@ -14845,7 +14845,7 @@ _080B7134:
 	ldr r0, [r4]
 	lsls r0, r0, #0x19
 	lsrs r0, r0, #0x19
-	bl sub_80A0654
+	bl IsChapterCountedForCompletion
 	lsls r0, r0, #0x18
 	cmp r0, #0
 	beq _080B71C8
@@ -15000,7 +15000,7 @@ _080B7264:
 	ldr r0, [r4]
 	lsls r0, r0, #0x19
 	lsrs r0, r0, #0x19
-	bl sub_80A0654
+	bl IsChapterCountedForCompletion
 	lsls r0, r0, #0x18
 	cmp r0, #0
 	beq _080B72F8
@@ -15142,7 +15142,7 @@ _080B737C:
 	ldr r0, [r4]
 	lsls r0, r0, #0x19
 	lsrs r0, r0, #0x19
-	bl sub_80A0654
+	bl IsChapterCountedForCompletion
 	lsls r0, r0, #0x18
 	cmp r0, #0
 	beq _080B73AE
@@ -20686,7 +20686,7 @@ sub_80B9EA0: @ 0x080B9EA0
 	ldr r2, [sp, #8]
 	cmp r2, r0
 	bne _080B9F5C
-	bl sub_80A0628
+	bl GetGameTotalTurnCount
 	adds r4, r0, #0
 	mov r3, sb
 	ldr r0, [r3]
@@ -21661,7 +21661,7 @@ _080BA738: .4byte gUnk_0861A380
 _080BA73C: .4byte gUnk_0861A3A0
 _080BA740: .4byte gPlaySt
 _080BA744:
-	bl sub_80A05FC
+	bl GetGameTotalTime_unused
 	add r1, sp, #8
 	mov r2, sb
 	mov r3, sl

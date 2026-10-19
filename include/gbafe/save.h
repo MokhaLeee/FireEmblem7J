@@ -261,14 +261,14 @@ void ReadChapterStats(void * sram_src);
 void WritePidStats(void * sram_dest);
 void WriteChapterStats(void * sram_dest);
 struct ChapterStats * GetChapterStats(int index);
-// ??? IsChapterStatsValid
-// ??? GetNextChapterStatsSlot
+bool IsChapterStatsValid(struct ChapterStats * stats);
+int GetNextChapterStatsSlot(void);
 int GetCurCompleteChapters(void);
 int GetNextChapterStatsEntry(void);
 void RegisterChapterStats(struct PlaySt *);
-// ??? sub_80A05FC
-// ??? sub_80A0628
-// ??? sub_80A0654
+int GetGameTotalTime_unused(void);
+int GetGameTotalTurnCount(void);
+bool IsChapterCountedForCompletion(int chapter);
 u32 GetGameTotalTime(void);
 // ??? sub_80A06BC
 // ??? PidStatsAddBattleAmt
