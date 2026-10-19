@@ -1,7 +1,7 @@
 #include "gbafe.h"
 
-// TODO: becomes the non-static inline GetPidStats once the whole file is decompiled
-static inline struct PidStats * GetPidStats_(u8 pid)
+// Inline and emitted at the end of this file by the compiler
+inline struct PidStats * GetPidStats(u8 pid)
 {
     if (pid >= PID_STATS_COUNT)
         return NULL;
@@ -225,7 +225,7 @@ void PidStatsAddBattleAmt(struct Unit * unit)
 
     pid = UNIT_CHAR_ID(unit);
 
-    bwl = GetPidStats_(pid);
+    bwl = GetPidStats(pid);
     if (bwl == NULL)
         return;
 
@@ -237,7 +237,7 @@ void PidStatsAddBattleAmt(struct Unit * unit)
 
 void PidStatsAddWinAmt(u8 pid)
 {
-    struct PidStats * bwl = GetPidStats_(pid);
+    struct PidStats * bwl = GetPidStats(pid);
     if (bwl == NULL)
         return;
 
@@ -256,7 +256,7 @@ void PidStatsRecordLoseData(u8 pid)
 
     if (IsSramWorking())
     {
-        struct PidStats * bwl = GetPidStats_(pid);
+        struct PidStats * bwl = GetPidStats(pid);
         if (bwl == NULL)
             return;
 
@@ -300,7 +300,7 @@ void PidStatsRecordLoseData(u8 pid)
 
 void PidStatsRecordDefeatInfo(u8 pid, u8 killerPid, int deathCause)
 {
-    struct PidStats * bwl = GetPidStats_(pid);
+    struct PidStats * bwl = GetPidStats(pid);
     if (bwl == NULL)
         return;
 
@@ -312,7 +312,7 @@ void PidStatsRecordDefeatInfo(u8 pid, u8 killerPid, int deathCause)
 
 void PidStatsAddActAmt(u8 pid)
 {
-    struct PidStats * bwl = GetPidStats_(pid);
+    struct PidStats * bwl = GetPidStats(pid);
     if (bwl == NULL)
         return;
 
@@ -324,7 +324,7 @@ void PidStatsAddActAmt(u8 pid)
 
 void PidStatsAddStatView(u8 pid)
 {
-    struct PidStats * bwl = GetPidStats_(pid);
+    struct PidStats * bwl = GetPidStats(pid);
     if (bwl == NULL)
         return;
 
@@ -336,7 +336,7 @@ void PidStatsAddStatView(u8 pid)
 
 void PidStatsAddDeployAmt(u8 pid)
 {
-    struct PidStats * bwl = GetPidStats_(pid);
+    struct PidStats * bwl = GetPidStats(pid);
     if (bwl == NULL)
         return;
 
@@ -349,7 +349,7 @@ void PidStatsAddDeployAmt(u8 pid)
 void PidStatsAddMove(u8 pid, int amount)
 {
     int move_count;
-    struct PidStats * bwl = GetPidStats_(pid);
+    struct PidStats * bwl = GetPidStats(pid);
     if (bwl == NULL)
         return;
 
@@ -365,7 +365,7 @@ void PidStatsAddMove(u8 pid, int amount)
 void PidStatsAddExpGained(u8 pid, int expGain)
 {
     int exp;
-    struct PidStats * bwl = GetPidStats_(pid);
+    struct PidStats * bwl = GetPidStats(pid);
     if (bwl == NULL)
         return;
 
@@ -440,7 +440,7 @@ int PidStatsGetTotalExpGain(void)
 
 int PidStatsGetExpGain(u8 pid)
 {
-    struct PidStats * bwl = GetPidStats_(pid);
+    struct PidStats * bwl = GetPidStats(pid);
     if (bwl == NULL)
         return 0;
     else
@@ -449,7 +449,7 @@ int PidStatsGetExpGain(u8 pid)
 
 int PidStatsGetFavval(u8 pid)
 {
-    struct PidStats * bwl = GetPidStats_(pid);
+    struct PidStats * bwl = GetPidStats(pid);
     if (bwl == NULL)
         return 0x2000;
     else
@@ -459,7 +459,7 @@ int PidStatsGetFavval(u8 pid)
 void PidStatsAddFavval(u8 pid, int amount)
 {
     int favval;
-    struct PidStats * bwl = GetPidStats_(pid);
+    struct PidStats * bwl = GetPidStats(pid);
     if (bwl == NULL)
         return;
 
@@ -588,3 +588,156 @@ void SavePlayThroughData(void)
     info.flag0E_1 = 1;
     WriteGlobalSaveInfo(&info);
 }
+
+int GetCurrentGameMode(void)
+{
+    if (GetChapterStats(0)->chapter_index == 0)
+    {
+        if (gPlaySt.chapterModeIndex == 2)
+            return 0;
+
+        if (gPlaySt.chapterModeIndex == 3)
+            return 2;
+    }
+
+    if (gPlaySt.chapterModeIndex == 2)
+        return 1;
+
+    if (gPlaySt.chapterModeIndex == 3)
+        return 3;
+
+    return 4;
+}
+
+#if NONMATCHING
+void WriteCompletedPlaythroughSaveData(void)
+{
+    struct GlobalSaveInfo info;
+    int mode, difficult;
+
+    mode = GetCurrentGameMode();
+    difficult = (gPlaySt.chapterStateBits >> 6) & 1;
+
+    if (!ReadGlobalSaveInfo(&info))
+    {
+        InitGlobalSaveInfo();
+        ReadGlobalSaveInfo(&info);
+    }
+
+    RegisterCompletedPlaythrough(&info, gPlaySt.playthroughIdentifier);
+    info.completed = true;
+
+    switch (mode)
+    {
+    case 0:
+        if (difficult)
+            info.Ephy_mode_easy = true;
+        else
+            info.Eirk_mode_easy = true;
+        break;
+
+    case 1:
+        if (difficult)
+            info.Ephy_mode_norm = true;
+        else
+            info.Eirk_mode_norm = true;
+        break;
+
+    case 2:
+    case 3:
+        if (difficult)
+            info.Ephy_mode_hard = true;
+        else
+            info.Eirk_mode_hard = true;
+        break;
+    }
+
+    WriteGlobalSaveInfo(&info);
+}
+#else
+NAKEDFUNC
+void WriteCompletedPlaythroughSaveData(void)
+{
+	asm("\
+		.syntax unified\n\
+	push {r4, r5, r6, r7, lr}\n\
+	sub sp, #0x64\n\
+	bl GetCurrentGameMode\n\
+	adds r5, r0, #0\n\
+	ldr r7, _080A0E94 @ =gPlaySt\n\
+	ldrb r0, [r7, #0x14]\n\
+	lsrs r4, r0, #6\n\
+	movs r0, #1\n\
+	ands r4, r0\n\
+	adds r6, r4, #0\n\
+	mov r0, sp\n\
+	bl ReadGlobalSaveInfo\n\
+	lsls r0, r0, #0x18\n\
+	cmp r0, #0\n\
+	bne _080A0E74\n\
+	bl InitGlobalSaveInfo\n\
+	mov r0, sp\n\
+	bl ReadGlobalSaveInfo\n\
+	_080A0E74:\n\
+	ldrb r1, [r7, #0x18]\n\
+	mov r0, sp\n\
+	bl RegisterCompletedPlaythrough\n\
+	mov r1, sp\n\
+	movs r0, #1\n\
+	ldrb r2, [r1, #0xe]\n\
+	orrs r2, r0\n\
+	strb r2, [r1, #0xe]\n\
+	cmp r5, #1\n\
+	beq _080A0EB6\n\
+	cmp r5, #1\n\
+	bgt _080A0E98\n\
+	cmp r5, #0\n\
+	beq _080A0EA6\n\
+	b _080A0ECE\n\
+	.align 2, 0\n\
+	_080A0E94: .4byte gPlaySt\n\
+	_080A0E98:\n\
+	cmp r5, #3\n\
+	bgt _080A0ECE\n\
+	cmp r4, #0\n\
+	beq _080A0EC6\n\
+	mov r1, sp\n\
+	movs r0, #0x80\n\
+	b _080A0ECA\n\
+	_080A0EA6:\n\
+	cmp r4, #0\n\
+	beq _080A0EB0\n\
+	mov r1, sp\n\
+	movs r0, #0x20\n\
+	b _080A0ECA\n\
+	_080A0EB0:\n\
+	mov r1, sp\n\
+	movs r0, #4\n\
+	b _080A0ECA\n\
+	_080A0EB6:\n\
+	cmp r6, #0\n\
+	beq _080A0EC0\n\
+	mov r1, sp\n\
+	movs r0, #0x40\n\
+	b _080A0ECA\n\
+	_080A0EC0:\n\
+	mov r1, sp\n\
+	movs r0, #8\n\
+	b _080A0ECA\n\
+	_080A0EC6:\n\
+	mov r1, sp\n\
+	movs r0, #0x10\n\
+	_080A0ECA:\n\
+	orrs r2, r0\n\
+	strb r2, [r1, #0xe]\n\
+	_080A0ECE:\n\
+	mov r0, sp\n\
+	bl WriteGlobalSaveInfo\n\
+	add sp, #0x64\n\
+	pop {r4, r5, r6, r7}\n\
+	pop {r0}\n\
+	bx r0\n\
+		.syntax divided\n\
+	");
+}
+#endif

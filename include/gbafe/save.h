@@ -297,8 +297,8 @@ int GetGlobalCompletionCntByInfo(struct GlobalSaveInfo * info);
 int GetGlobalCompletionCount(void);
 bool RegisterCompletedPlaythrough(struct GlobalSaveInfo * info, int index);
 void SavePlayThroughData(void);
-// ??? sub_80A0DFC
-// ??? WriteCompletedPlaythroughSaveData
+int GetCurrentGameMode(void);
+void WriteCompletedPlaythroughSaveData(void);
 struct PidStats * GetPidStats(u8 pid);
 // ??? sub_80A0F08
 // ??? sub_80A0F14
