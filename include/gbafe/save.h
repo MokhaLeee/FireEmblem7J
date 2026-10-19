@@ -403,7 +403,7 @@ void WriteGameSavePackedUnit(struct Unit *unit, void *sram_dest);
 void LoadSavedUnit(const void *sram_src, struct Unit *unit);
 void InvalidateSuspendSave(int);
 void ReadSuspendSave(int slot);
-u8 IsValidSuspendSave(int);
+bool IsValidSuspendSave(int slot);
 void ReadSuspendSavePlaySt(int index, struct PlaySt * buf);
 void EncodeSuspendSavePackedUnit(struct Unit * unit, void * buf);
 void ReadSuspendSavePackedUnit(void * sram_src, struct Unit * unit);

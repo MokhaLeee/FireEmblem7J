@@ -491,3 +491,30 @@ void ReadSuspendSave(int slot)
 
     SetBonusContentClaimFlags(LoadSavedBonusClaimFlags(gPlaySt.gameSaveSlot));
 }
+
+bool IsValidSuspendSave(int slot)
+{
+    if (!IsSramWorking())
+        return false;
+
+    if (slot != SAVE_SUSPEND)
+        return false;
+
+    gSuspendSaveIdOffset = GetLastSuspendSaveId();
+
+    if (ReadSaveBlockInfo(NULL, SAVE_SUSPEND + gSuspendSaveIdOffset))
+        return true;
+
+    gSuspendSaveIdOffset = GetNextSuspendSaveId();
+
+    if (ReadSaveBlockInfo(NULL, SAVE_SUSPEND + gSuspendSaveIdOffset))
+        return true;
+
+    gSuspendSaveIdOffset = 0x7F;
+    return false;
+}
+
+void ReadSuspendSavePlaySt(int slot, struct PlaySt * buf)
+{
+    ReadGameSavePlaySt(slot + gSuspendSaveIdOffset, buf);
+}
