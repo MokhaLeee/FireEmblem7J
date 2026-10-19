@@ -389,3 +389,105 @@ void LoadSavedUnit(const void * sram_src, struct Unit * unit)
     if (unit->yPos == 0x3F)
         unit->yPos = -1;
 }
+
+void InvalidateSuspendSave(int slot)
+{
+    struct SaveBlockInfo chunk;
+    chunk.kind = SAVE_KIND_INVALID;
+
+    WriteSaveBlockInfo(&chunk, slot);
+
+    if (slot == SAVE_SUSPEND)
+        WriteSaveBlockInfo(&chunk, SAVE_SUSPEND_ALT);
+}
+
+void WriteSuspendSave(int slot)
+{
+    struct SuspendSaveBlock * dest;
+    struct SaveBlockInfo chunk;
+    u8 list[0x10];
+    int i;
+    struct SuspendSavePackedUnit * buf;
+
+    if (sub_8031B40())
+        return;
+
+    if (gPlaySt.chapterStateBits & PLAY_FLAG_TUTORIAL)
+        return;
+
+    if (!IsSramWorking())
+        return;
+
+    slot += GetNextSuspendSaveId();
+    dest = GetSaveWriteAddr(slot);
+    gPlaySt.time_saved = GetGameTime();
+    WriteAndVerifySramFast(&gPlaySt, &dest->playSt, sizeof(gPlaySt));
+    StoreRNStateToActionStruct();
+    WriteAndVerifySramFast(&gActionSt, &dest->action, sizeof(dest->action));
+
+    buf = (void *)gBuf;
+
+    for (i = 0; i < UNIT_SAVE_AMOUNT_BLUE; i++)
+        EncodeSuspendSavePackedUnit(&gUnitArrayBlue[i], buf++);
+
+    for (i = 0; i < UNIT_SAVE_AMOUNT_RED; i++)
+        EncodeSuspendSavePackedUnit(&gUnitArrayRed[i], buf++);
+
+    for (i = 0; i < UNIT_SAVE_AMOUNT_GREEN; i++)
+        EncodeSuspendSavePackedUnit(&gUnitArrayGreen[i], buf++);
+
+    WriteSramFast(gBuf, dest->blueUnits,
+        (UNIT_SAVE_AMOUNT_BLUE + UNIT_SAVE_AMOUNT_RED + UNIT_SAVE_AMOUNT_GREEN) * sizeof(struct SuspendSavePackedUnit));
+
+    WritePermanentFlags(dest->permanentFlags);
+    WriteChapterFlags(dest->chapterFlags);
+    WriteSupplyItems(dest->supplyItems);
+    WritePidStats(dest->pidStats);
+    WriteChapterStats(dest->chapterStats);
+    WriteTraps(dest->traps);
+
+    GetForceDisabledMenuItems(list);
+    WriteAndVerifySramFast(list, dest->menuOverride, sizeof(list));
+
+    chunk.magic32 = SAVE_MAGIC32_SUS;
+    chunk.kind = SAVE_KIND_SUSPEND;
+    WriteSaveBlockInfo(&chunk, slot);
+
+    gBmSt.just_resumed = false;
+    WriteSwappedSuspendSaveId();
+}
+
+void ReadSuspendSave(int slot)
+{
+    int i;
+    u8 list[0x10];
+    struct SuspendSaveBlock * src = GetSaveReadAddr(slot + gSuspendSaveIdOffset);
+
+    ReadSramFast(&src->playSt, &gPlaySt, sizeof(gPlaySt));
+    SetGameTime(gPlaySt.time_saved);
+
+    ReadSramFast(&src->action, &gActionSt, sizeof(src->action));
+    LoadRNStateFromActionStruct();
+    InitUnits();
+
+    for (i = 0; i < UNIT_SAVE_AMOUNT_BLUE; i++)
+        ReadSuspendSavePackedUnit(&src->blueUnits[i], &gUnitArrayBlue[i]);
+
+    for (i = 0; i < UNIT_SAVE_AMOUNT_RED; i++)
+        ReadSuspendSavePackedUnit(&src->redUnits[i], &gUnitArrayRed[i]);
+
+    for (i = 0; i < UNIT_SAVE_AMOUNT_GREEN; i++)
+        ReadSuspendSavePackedUnit(&src->greenUnits[i], &gUnitArrayGreen[i]);
+
+    ReadPidStats(src->pidStats);
+    ReadChapterStats(src->chapterStats);
+    ReadSupplyItems(src->supplyItems);
+    ReadPermanentFlags(src->permanentFlags);
+    ReadChapterFlags(src->chapterFlags);
+    ReadTraps(src->traps);
+
+    ReadSramFast(src->menuOverride, list, sizeof(list));
+    SetForceDisabledMenuItems(list);
+
+    SetBonusContentClaimFlags(LoadSavedBonusClaimFlags(gPlaySt.gameSaveSlot));
+}

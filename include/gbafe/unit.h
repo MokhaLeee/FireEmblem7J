@@ -384,6 +384,8 @@ extern u8 gActiveUnitId;
 extern struct Vec2 gActiveUnitMoveOrigin;
 
 extern struct Unit gUnitArrayBlue[];
+extern struct Unit gUnitArrayRed[];
+extern struct Unit gUnitArrayGreen[];
 void InitUnits(void);
 void ClearUnit(struct Unit *unit);
 void CopyUnit(struct Unit * src, struct Unit * dst);

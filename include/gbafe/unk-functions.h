@@ -115,8 +115,8 @@ void ClearSupplyItems(void);
 // sub_802F624
 // sub_802F64C
 // sub_802F6A0
-// sub_802F6C4
-// sub_802F6D4
+void StoreRNStateToActionStruct(void);
+void LoadRNStateFromActionStruct(void);
 // sub_802F6E4
 // sub_802F7F4
 // sub_802F848
@@ -224,7 +224,7 @@ void ClearSupplyItems(void);
 // sub_8031AC0
 struct ChapterEventGroup * GetChapterEventInfo(u32);
 // sub_8031B1C
-// sub_8031B40
+bool sub_8031B40(void);
 // sub_8031B54
 // sub_8031B6C
 // sub_8031BF8

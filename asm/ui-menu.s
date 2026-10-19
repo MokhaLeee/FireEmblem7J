@@ -1259,8 +1259,8 @@ _0804B380:
 	.align 2, 0
 _0804B38C: .4byte 0x03001458
 
-	thumb_func_start sub_804B390
-sub_804B390: @ 0x0804B390
+	thumb_func_start GetForceDisabledMenuItems
+GetForceDisabledMenuItems: @ 0x0804B390
 	push {r4, r5, r6, lr}
 	movs r4, #0
 	adds r1, r0, #0
@@ -1295,8 +1295,8 @@ _0804B3BA:
 	bx r0
 	.align 2, 0
 
-	thumb_func_start sub_804B3D0
-sub_804B3D0: @ 0x0804B3D0
+	thumb_func_start SetForceDisabledMenuItems
+SetForceDisabledMenuItems: @ 0x0804B3D0
 	push {r4, r5, lr}
 	adds r5, r0, #0
 	movs r4, #0

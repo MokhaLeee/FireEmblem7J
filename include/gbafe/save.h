@@ -94,6 +94,18 @@ enum packed_unit_state_bits {
     PACKED_US_NEW_FRIEND = 1 << 7,
 };
 
+struct SuspendSavePackedUnit {
+    /* 00 */ u8 data[0x34];
+};
+
+#define UNIT_SAVE_AMOUNT_RED 0x32
+#define UNIT_SAVE_AMOUNT_GREEN 0x0A
+
+extern u8 gSuspendSaveIdOffset;
+
+void GetForceDisabledMenuItems(u8 * list);
+void SetForceDisabledMenuItems(u8 * list);
+
 // Written by FE6 (Binding Blade) when linked
 struct Fe6LinkSaveInfo {
     /* 00 */ u8 unk00[0x20];
@@ -298,6 +310,21 @@ struct GameSaveBlock {
     /* D88 */ u32 bonusClaimFlags;
 };
 
+struct SuspendSaveBlock {
+    /* 0000 */ struct PlaySt playSt;
+    /* 0048 */ u8 action[0x1C];
+    /* 0064 */ struct SuspendSavePackedUnit blueUnits[UNIT_SAVE_AMOUNT_BLUE];
+    /* 0AF4 */ struct SuspendSavePackedUnit redUnits[UNIT_SAVE_AMOUNT_RED];
+    /* 151C */ struct SuspendSavePackedUnit greenUnits[UNIT_SAVE_AMOUNT_GREEN];
+    /* 1724 */ u8 traps[0x200];
+    /* 1924 */ u8 supplyItems[0xC8];
+    /* 19EC */ struct PidStats pidStats[0x46];
+    /* 1E4C */ struct ChapterStats chapterStats[0x30];
+    /* 1F0C */ u8 menuOverride[0x10];
+    /* 1F1C */ u8 permanentFlags[0x08];
+    /* 1F24 */ u8 chapterFlags[0x14];
+};
+
 
 #define PID_STATS_COUNT 0x46
 #define CHAPTER_STATS_COUNT 0x30
@@ -375,17 +402,16 @@ bool IsGameSaveNotFirstChapter(int slot);
 void WriteGameSavePackedUnit(struct Unit *unit, void *sram_dest);
 void LoadSavedUnit(const void *sram_src, struct Unit *unit);
 void InvalidateSuspendSave(int);
-void WriteSuspendSave(int saveBlockId);
 void ReadSuspendSave(int slot);
 u8 IsValidSuspendSave(int);
 void ReadSuspendSavePlaySt(int index, struct PlaySt * buf);
-// ??? EncodeSuspendSavePackedUnit
-// ??? ReadSuspendSavePackedUnit
-// ??? WriteTraps
-// ??? ReadTraps
+void EncodeSuspendSavePackedUnit(struct Unit * unit, void * buf);
+void ReadSuspendSavePackedUnit(void * sram_src, struct Unit * unit);
+void WriteTraps(void * sram_dest);
+void ReadTraps(void * sram_src);
 int GetLastSuspendSaveId(void);
-// ??? sub_80A22CC
-// ??? WriteSwappedSuspendSaveId
+int GetNextSuspendSaveId(void);
+void WriteSwappedSuspendSaveId(void);
 int SramChecksum32(void const * sram_src, int size);
 bool VerifySaveBlockChecksum(struct SaveBlockInfo * block_info);
 void PopulateSaveBlockChecksum(struct SaveBlockInfo * block_info);

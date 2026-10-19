@@ -191,6 +191,7 @@ SECTIONS
 		. = 0x03E778; gPidStatsData = .;
 		. = 0x03EBD8; gChapterStats = .;
 		. = 0x03EC98; gBonusContentClaimFlags = .;
+		. = 0x03EC9C; gSuspendSaveIdOffset = .;
 		. = 0x03EE28; gExtraMapSaveHead = .;
 	}
 

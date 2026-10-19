@@ -2452,8 +2452,8 @@ sub_802F6A0: @ 0x0802F6A0
 	.align 2, 0
 _0802F6C0: .4byte gArenaSt
 
-	thumb_func_start sub_802F6C4
-sub_802F6C4: @ 0x0802F6C4
+	thumb_func_start StoreRNStateToActionStruct
+StoreRNStateToActionStruct: @ 0x0802F6C4
 	push {lr}
 	ldr r0, _0802F6D0 @ =gActionSt
 	bl RandGetSt
@@ -2462,8 +2462,8 @@ sub_802F6C4: @ 0x0802F6C4
 	.align 2, 0
 _0802F6D0: .4byte gActionSt
 
-	thumb_func_start sub_802F6D4
-sub_802F6D4: @ 0x0802F6D4
+	thumb_func_start LoadRNStateFromActionStruct
+LoadRNStateFromActionStruct: @ 0x0802F6D4
 	push {lr}
 	ldr r0, _0802F6E0 @ =gActionSt
 	bl RandSetSt
