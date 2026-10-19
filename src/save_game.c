@@ -518,3 +518,430 @@ void ReadSuspendSavePlaySt(int slot, struct PlaySt * buf)
 {
     ReadGameSavePlaySt(slot + gSuspendSaveIdOffset, buf);
 }
+
+#if NONMATCHING
+void EncodeSuspendSavePackedUnit(struct Unit * unit, void * buf)
+{
+    int i;
+    struct SuspendSavePackedUnit * unit_su = buf;
+
+    if (unit->pCharacterData == NULL)
+    {
+        unit_su->pid = 0;
+        return;
+    }
+
+    unit_su->pid = UNIT_CHAR_ID(unit);
+    unit_su->jid = unit->pClassData->number;
+    unit_su->level = unit->level;
+    unit_su->exp = unit->exp;
+    unit_su->state = unit->state;
+    unit_su->xPos = unit->xPos;
+    unit_su->yPos = unit->yPos;
+    unit_su->maxHP = unit->maxHP;
+    unit_su->curHP = unit->curHP;
+    unit_su->pow = unit->pow;
+    unit_su->skl = unit->skl;
+    unit_su->spd = unit->spd;
+    unit_su->def = unit->def;
+    unit_su->res = unit->res;
+    unit_su->lck = unit->lck;
+    unit_su->conBonus = unit->conBonus;
+    unit_su->statusIndex_l = unit->statusIndex;
+    unit_su->statusDuration = unit->statusDuration;
+    unit_su->torchDuration = unit->torchDuration;
+    unit_su->barrierDuration = unit->barrierDuration;
+    unit_su->rescue = unit->rescue;
+    unit_su->movBonus = unit->movBonus;
+
+    unit_su->ballistaIndex =
+        (0x7F & unit->ballistaIndex) | (0x01 & unit->supportBits) << 0x07;
+    unit_su->item1 = (0x3FFF & unit->items[0]) | (0x06 & unit->supportBits) << 0x0D;
+    unit_su->item2 = (0x3FFF & unit->items[1]) | (0x18 & unit->supportBits) << 0x0B;
+    unit_su->item3 = (0x3FFF & unit->items[2]) | (0x60 & unit->supportBits) << 0x09;
+    unit_su->item4 = unit->items[3];
+    unit_su->item5 = unit->items[4];
+
+    for (i = 0; i < 8; i++)
+        unit_su->ranks[i] = unit->ranks[i];
+
+    for (i = 0; i < UNIT_SUPPORT_MAX_COUNT; i++)
+        unit_su->supports[i] = unit->supports[i];
+
+    unit_su->aiFlags = unit->aiFlags;
+    unit_su->ai1 = unit->ai1;
+    unit_su->ai1data = unit->ai1data;
+    unit_su->ai2 = unit->ai2;
+    unit_su->ai2data = unit->ai2data;
+    unit_su->ai3And4 = unit->ai3And4;
+    unit_su->ai_counter = unit->_u46;
+}
+#else
+NAKEDFUNC
+void EncodeSuspendSavePackedUnit(struct Unit * unit, void * buf)
+{
+	asm("\
+	.syntax unified\n\
+	push {r4, r5, r6, r7, lr}\n\
+	mov r7, sl\n\
+	mov r6, sb\n\
+	mov r5, r8\n\
+	push {r5, r6, r7}\n\
+	sub sp, #0x20\n\
+	adds r6, r0, #0\n\
+	mov ip, r1\n\
+	ldr r0, [r6]\n\
+	cmp r0, #0\n\
+	bne _080A1D9A\n\
+	strb r0, [r1]\n\
+	b _080A2024\n\
+	_080A1D9A:\n\
+	ldrb r0, [r0, #4]\n\
+	mov r1, ip\n\
+	strb r0, [r1]\n\
+	ldr r0, [r6, #4]\n\
+	ldrb r0, [r0, #4]\n\
+	strb r0, [r1, #1]\n\
+	movs r1, #8\n\
+	ldrsb r1, [r6, r1]\n\
+	mov r2, ip\n\
+	adds r2, #0x24\n\
+	movs r4, #0x1f\n\
+	ands r1, r4\n\
+	movs r3, #0x20\n\
+	rsbs r3, r3, #0\n\
+	adds r0, r3, #0\n\
+	ldrb r5, [r2]\n\
+	ands r0, r5\n\
+	orrs r0, r1\n\
+	strb r0, [r2]\n\
+	ldrb r0, [r6, #9]\n\
+	mov r7, ip\n\
+	strb r0, [r7, #0x10]\n\
+	ldr r0, [r6, #0xc]\n\
+	str r0, [r7, #4]\n\
+	movs r1, #0x10\n\
+	ldrsb r1, [r6, r1]\n\
+	movs r0, #0x3f\n\
+	ands r1, r0\n\
+	lsls r1, r1, #5\n\
+	ldr r0, _080A2034 @ =0xFFFFF81F\n\
+	ldrh r2, [r7, #0x24]\n\
+	ands r0, r2\n\
+	orrs r0, r1\n\
+	strh r0, [r7, #0x24]\n\
+	movs r1, #0x3f\n\
+	ldrb r5, [r6, #0x11]\n\
+	ands r1, r5\n\
+	lsls r1, r1, #0xb\n\
+	ldr r0, [r7, #0x24]\n\
+	ldr r2, _080A2038 @ =0xFFFE07FF\n\
+	ands r0, r2\n\
+	orrs r0, r1\n\
+	str r0, [r7, #0x24]\n\
+	ldrb r0, [r6, #0x12]\n\
+	strb r0, [r7, #0xe]\n\
+	ldrb r0, [r6, #0x13]\n\
+	strb r0, [r7, #0xf]\n\
+	movs r1, #0x14\n\
+	ldrsb r1, [r6, r1]\n\
+	mov r2, ip\n\
+	adds r2, #0x26\n\
+	ands r1, r4\n\
+	lsls r1, r1, #1\n\
+	movs r0, #0x3f\n\
+	rsbs r0, r0, #0\n\
+	ldrb r7, [r2]\n\
+	ands r0, r7\n\
+	orrs r0, r1\n\
+	strb r0, [r2]\n\
+	movs r1, #0x15\n\
+	ldrsb r1, [r6, r1]\n\
+	movs r2, #0x1f\n\
+	ands r1, r2\n\
+	lsls r1, r1, #6\n\
+	ldr r0, _080A203C @ =0xFFFFF83F\n\
+	mov r5, ip\n\
+	ldrh r5, [r5, #0x26]\n\
+	ands r0, r5\n\
+	orrs r0, r1\n\
+	mov r7, ip\n\
+	strh r0, [r7, #0x26]\n\
+	movs r1, #0x16\n\
+	ldrsb r1, [r6, r1]\n\
+	movs r0, #0x27\n\
+	add r0, ip\n\
+	mov r8, r0\n\
+	lsls r1, r1, #3\n\
+	movs r5, #7\n\
+	mov sb, r5\n\
+	movs r0, #7\n\
+	mov r7, r8\n\
+	ldrb r7, [r7]\n\
+	ands r0, r7\n\
+	orrs r0, r1\n\
+	mov r1, r8\n\
+	strb r0, [r1]\n\
+	movs r0, #0x17\n\
+	ldrsb r0, [r6, r0]\n\
+	mov r1, ip\n\
+	adds r1, #0x28\n\
+	ands r0, r4\n\
+	ldrb r5, [r1]\n\
+	ands r3, r5\n\
+	orrs r3, r0\n\
+	strb r3, [r1]\n\
+	movs r1, #0x18\n\
+	ldrsb r1, [r6, r1]\n\
+	ands r1, r2\n\
+	lsls r1, r1, #5\n\
+	ldr r0, _080A2040 @ =0xFFFFFC1F\n\
+	mov r7, ip\n\
+	ldrh r7, [r7, #0x28]\n\
+	ands r0, r7\n\
+	orrs r0, r1\n\
+	mov r1, ip\n\
+	strh r0, [r1, #0x28]\n\
+	movs r1, #0x19\n\
+	ldrsb r1, [r6, r1]\n\
+	mov r2, ip\n\
+	adds r2, #0x29\n\
+	ands r1, r4\n\
+	lsls r1, r1, #2\n\
+	movs r0, #0x7d\n\
+	rsbs r0, r0, #0\n\
+	ldrb r3, [r2]\n\
+	ands r0, r3\n\
+	orrs r0, r1\n\
+	strb r0, [r2]\n\
+	movs r2, #0x1a\n\
+	ldrsb r2, [r6, r2]\n\
+	movs r3, #0x1f\n\
+	ands r2, r3\n\
+	lsls r2, r2, #0xf\n\
+	mov r4, ip\n\
+	ldr r0, [r4, #0x28]\n\
+	ldr r1, _080A2044 @ =0xFFF07FFF\n\
+	ands r0, r1\n\
+	orrs r0, r2\n\
+	str r0, [r4, #0x28]\n\
+	adds r0, r6, #0\n\
+	adds r0, #0x30\n\
+	ldrb r2, [r0]\n\
+	lsls r1, r2, #0x1c\n\
+	lsrs r1, r1, #0x1c\n\
+	adds r4, #0x2a\n\
+	mov r5, sb\n\
+	ands r1, r5\n\
+	lsls r1, r1, #4\n\
+	movs r0, #0x71\n\
+	rsbs r0, r0, #0\n\
+	ldrb r7, [r4]\n\
+	ands r0, r7\n\
+	orrs r0, r1\n\
+	strb r0, [r4]\n\
+	lsls r2, r2, #0x18\n\
+	lsrs r2, r2, #0x1c\n\
+	movs r0, #7\n\
+	ands r2, r0\n\
+	lsls r2, r2, #7\n\
+	ldr r0, _080A2048 @ =0xFFFFFC7F\n\
+	mov r1, ip\n\
+	ldrh r1, [r1, #0x2a]\n\
+	ands r0, r1\n\
+	orrs r0, r2\n\
+	mov r2, ip\n\
+	strh r0, [r2, #0x2a]\n\
+	adds r0, r6, #0\n\
+	adds r0, #0x31\n\
+	ldrb r2, [r0]\n\
+	lsls r1, r2, #0x1c\n\
+	lsrs r1, r1, #0x1c\n\
+	adds r4, #1\n\
+	ands r1, r5\n\
+	lsls r1, r1, #2\n\
+	movs r0, #0x1d\n\
+	rsbs r0, r0, #0\n\
+	ldrb r5, [r4]\n\
+	ands r0, r5\n\
+	orrs r0, r1\n\
+	lsrs r2, r2, #4\n\
+	lsls r2, r2, #5\n\
+	ands r0, r3\n\
+	orrs r0, r2\n\
+	strb r0, [r4]\n\
+	ldrb r0, [r6, #0x1b]\n\
+	mov r7, ip\n\
+	strb r0, [r7, #3]\n\
+	movs r1, #0x1d\n\
+	ldrsb r1, [r6, r1]\n\
+	mov r2, ip\n\
+	adds r2, #0x2c\n\
+	movs r0, #0xf\n\
+	ands r1, r0\n\
+	movs r0, #0x10\n\
+	rsbs r0, r0, #0\n\
+	ldrb r3, [r2]\n\
+	ands r0, r3\n\
+	orrs r0, r1\n\
+	strb r0, [r2]\n\
+	movs r1, #0x7f\n\
+	ldrb r4, [r6, #0x1c]\n\
+	ands r1, r4\n\
+	adds r0, r6, #0\n\
+	adds r0, #0x39\n\
+	ldrb r3, [r0]\n\
+	movs r0, #1\n\
+	ands r0, r3\n\
+	lsls r0, r0, #7\n\
+	orrs r1, r0\n\
+	mov r0, ip\n\
+	adds r0, #0x30\n\
+	strb r1, [r0]\n\
+	ldr r2, _080A204C @ =0x00003FFF\n\
+	adds r1, r2, #0\n\
+	ldrh r5, [r6, #0x1e]\n\
+	ands r1, r5\n\
+	movs r0, #6\n\
+	ands r0, r3\n\
+	lsls r0, r0, #0xd\n\
+	orrs r1, r0\n\
+	strh r1, [r7, #8]\n\
+	adds r1, r2, #0\n\
+	ldrh r7, [r6, #0x20]\n\
+	ands r1, r7\n\
+	movs r0, #0x18\n\
+	ands r0, r3\n\
+	lsls r0, r0, #0xb\n\
+	orrs r1, r0\n\
+	mov r0, ip\n\
+	strh r1, [r0, #0xa]\n\
+	adds r1, r2, #0\n\
+	ldrh r4, [r6, #0x22]\n\
+	ands r1, r4\n\
+	movs r0, #0x60\n\
+	ands r0, r3\n\
+	lsls r0, r0, #9\n\
+	orrs r1, r0\n\
+	mov r5, ip\n\
+	strh r1, [r5, #0xc]\n\
+	ldrh r7, [r6, #0x24]\n\
+	ands r2, r7\n\
+	lsls r2, r2, #4\n\
+	ldr r0, [r5, #0x2c]\n\
+	ldr r1, _080A2050 @ =0xFFFC000F\n\
+	ands r0, r1\n\
+	orrs r0, r2\n\
+	str r0, [r5, #0x2c]\n\
+	ldrh r0, [r6, #0x26]\n\
+	lsls r1, r0, #2\n\
+	movs r0, #3\n\
+	ldrh r2, [r5, #0x2e]\n\
+	ands r0, r2\n\
+	orrs r0, r1\n\
+	strh r0, [r5, #0x2e]\n\
+	movs r2, #0\n\
+	adds r5, #0x1a\n\
+	adds r7, r6, #0\n\
+	adds r7, #0x32\n\
+	movs r3, #0x42\n\
+	adds r3, r3, r6\n\
+	mov r8, r3\n\
+	adds r4, r6, #0\n\
+	adds r4, #0x43\n\
+	str r4, [sp, #0xc]\n\
+	movs r0, #0x21\n\
+	add r0, ip\n\
+	mov sb, r0\n\
+	adds r1, r6, #0\n\
+	adds r1, #0x44\n\
+	str r1, [sp, #0x10]\n\
+	movs r3, #0x22\n\
+	add r3, ip\n\
+	mov sl, r3\n\
+	adds r4, #2\n\
+	str r4, [sp, #0x14]\n\
+	mov r0, ip\n\
+	adds r0, #0x23\n\
+	str r0, [sp]\n\
+	subs r1, #4\n\
+	str r1, [sp, #8]\n\
+	adds r3, r6, #0\n\
+	adds r3, #0x46\n\
+	str r3, [sp, #0x18]\n\
+	mov r4, ip\n\
+	adds r4, #0x31\n\
+	str r4, [sp, #4]\n\
+	ldrb r1, [r6, #0xa]\n\
+	mov r0, sp\n\
+	strb r1, [r0, #0x1c]\n\
+	subs r4, #0x1f\n\
+	subs r3, #0x1e\n\
+	_080A1FCC:\n\
+	adds r0, r4, r2\n\
+	adds r1, r3, r2\n\
+	ldrb r1, [r1]\n\
+	strb r1, [r0]\n\
+	adds r2, #1\n\
+	cmp r2, #7\n\
+	ble _080A1FCC\n\
+	movs r2, #0\n\
+	adds r4, r5, #0\n\
+	adds r3, r7, #0\n\
+	_080A1FE0:\n\
+	adds r0, r4, r2\n\
+	adds r1, r3, r2\n\
+	ldrb r1, [r1]\n\
+	strb r1, [r0]\n\
+	adds r2, #1\n\
+	cmp r2, #6\n\
+	ble _080A1FE0\n\
+	mov r2, r8\n\
+	ldrb r0, [r2]\n\
+	mov r3, ip\n\
+	strb r0, [r3, #2]\n\
+	ldr r4, [sp, #0xc]\n\
+	ldrb r0, [r4]\n\
+	mov r5, sb\n\
+	strb r0, [r5]\n\
+	ldr r7, [sp, #0x10]\n\
+	ldrb r0, [r7]\n\
+	mov r1, sl\n\
+	strb r0, [r1]\n\
+	ldr r2, [sp, #0x14]\n\
+	ldrb r0, [r2]\n\
+	ldr r3, [sp]\n\
+	strb r0, [r3]\n\
+	ldr r4, [sp, #8]\n\
+	ldrh r0, [r4]\n\
+	mov r5, ip\n\
+	strh r0, [r5, #0x32]\n\
+	ldr r7, [sp, #0x18]\n\
+	ldrb r0, [r7]\n\
+	ldr r1, [sp, #4]\n\
+	strb r0, [r1]\n\
+	mov r2, sp\n\
+	ldrb r2, [r2, #0x1c]\n\
+	strb r2, [r5, #0x11]\n\
+	_080A2024:\n\
+	add sp, #0x20\n\
+	pop {r3, r4, r5}\n\
+	mov r8, r3\n\
+	mov sb, r4\n\
+	mov sl, r5\n\
+	pop {r4, r5, r6, r7}\n\
+	pop {r0}\n\
+	bx r0\n\
+	.align 2, 0\n\
+	_080A2034: .4byte 0xFFFFF81F\n\
+	_080A2038: .4byte 0xFFFE07FF\n\
+	_080A203C: .4byte 0xFFFFF83F\n\
+	_080A2040: .4byte 0xFFFFFC1F\n\
+	_080A2044: .4byte 0xFFF07FFF\n\
+	_080A2048: .4byte 0xFFFFFC7F\n\
+	_080A204C: .4byte 0x00003FFF\n\
+	_080A2050: .4byte 0xFFFC000F\n\
+	.syntax divided\n\
+	");
+}
+#endif

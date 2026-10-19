@@ -95,8 +95,51 @@ enum packed_unit_state_bits {
 };
 
 struct SuspendSavePackedUnit {
-    /* 00 */ u8 data[0x34];
-};
+    /* 00 */ u8 pid;
+    /* 01 */ u8 jid;
+    /* 02 */ u8 ai1;
+    /* 03 */ u8 rescue;
+    /* 04 */ u32 state;
+
+    /* 08 */ u16 item1;
+    /* 0A */ u16 item2;
+    /* 0C */ u16 item3;
+
+    /* 0E */ s8 maxHP;
+    /* 0F */ s8 curHP;
+    /* 10 */ u8 exp;
+    /* 11 */ u8 aiFlags;
+    /* 12 */ u8 ranks[8];
+    /* 1A */ u8 supports[7];
+    /* 21 */ u8 ai1data;
+    /* 22 */ u8 ai2;
+    /* 23 */ u8 ai2data;
+
+    /* 24 */ u32 level      : 5;
+             u32 xPos       : 6;
+             u32 yPos       : 6;
+             u32 pow        : 5;
+             u32 skl        : 5;
+             u32 spd        : 5;
+    /* 28 */ u32 def        : 5;
+             u32 res        : 5;
+             u32 lck        : 5;
+             u32 conBonus   : 5;
+
+             u32 statusIndex_l      : 3;
+             u32 statusDuration     : 3;
+             u32 torchDuration      : 3;
+             u32 barrierDuration    : 3;
+
+    /* 2C */ u32 movBonus   : 4;
+             u32 item4      : 14;
+             u32 item5      : 14;
+
+    /* 30 */ u8 ballistaIndex;
+    /* 31 */ u8 ai_counter;
+    /* 32 */ u16 ai3And4;
+    /* 34 */
+} BITPACKED;
 
 #define UNIT_SAVE_AMOUNT_RED 0x32
 #define UNIT_SAVE_AMOUNT_GREEN 0x0A
