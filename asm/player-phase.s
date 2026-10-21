@@ -1,66 +1,6 @@
 	.include "macro.inc"
 	.syntax unified
 
-	thumb_func_start sub_801C584
-sub_801C584: @ 0x0801C584
-	push {lr}
-	ldr r1, _0801C5B8 @ =gpKeySt
-	ldr r2, [r1]
-	movs r0, #2
-	ldrh r3, [r2, #4]
-	ands r0, r3
-	adds r3, r1, #0
-	cmp r0, #0
-	beq _0801C5C4
-	ldr r0, _0801C5BC @ =gBmSt
-	ldr r0, [r0, #0x20]
-	ldr r1, _0801C5C0 @ =0x00070007
-	ands r0, r1
-	cmp r0, #0
-	bne _0801C5C4
-	ldrh r0, [r2, #0x10]
-	bl HandleMapCursorInput
-	movs r0, #8
-	bl HandleMoveMapCursor
-	movs r0, #8
-	bl HandleMoveCameraWithMapCursor
-	b _0801C5D8
-	.align 2, 0
-_0801C5B8: .4byte gpKeySt
-_0801C5BC: .4byte gBmSt
-_0801C5C0: .4byte 0x00070007
-_0801C5C4:
-	ldr r0, [r3]
-	ldrh r0, [r0, #6]
-	bl HandleMapCursorInput
-	movs r0, #4
-	bl HandleMoveMapCursor
-	movs r0, #4
-	bl HandleMoveCameraWithMapCursor
-_0801C5D8:
-	ldr r0, _0801C5FC @ =gBmSt
-	ldrh r1, [r0, #0x20]
-	ldrh r2, [r0, #0x22]
-	orrs r1, r2
-	adds r0, r1, #0
-	movs r1, #0xf
-	ands r0, r1
-	cmp r0, #0
-	beq _0801C5F6
-	ldr r0, _0801C600 @ =gpKeySt
-	ldr r1, [r0]
-	ldr r0, _0801C604 @ =0x0000FCF4
-	ldrh r3, [r1, #8]
-	ands r0, r3
-	strh r0, [r1, #8]
-_0801C5F6:
-	pop {r0}
-	bx r0
-	.align 2, 0
-_0801C5FC: .4byte gBmSt
-_0801C600: .4byte gpKeySt
-_0801C604: .4byte 0x0000FCF4
-
 	thumb_func_start sub_801C608
 sub_801C608: @ 0x0801C608
 	adds r1, r0, #0
@@ -84,7 +24,7 @@ _0801C620:
 sub_801C624: @ 0x0801C624
 	push {r4, r5, r6, lr}
 	adds r6, r0, #0
-	bl sub_801C584
+	bl HandlePlayerCursorMovement
 	ldr r4, _0801C660 @ =gpKeySt
 	ldr r1, [r4]
 	movs r0, #0x80
@@ -630,7 +570,7 @@ sub_801CACC: @ 0x0801CACC
 	push {r4, r5, lr}
 	adds r5, r0, #0
 	movs r4, #0xff
-	bl sub_801C584
+	bl HandlePlayerCursorMovement
 	ldr r0, _0801CAF4 @ =gpKeySt
 	ldr r1, [r0]
 	movs r0, #1

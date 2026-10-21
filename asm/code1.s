@@ -5455,7 +5455,7 @@ _08030E7C: .4byte gBmSt
 sub_8030E80: @ 0x08030E80
 	push {r4, r5, r6, lr}
 	adds r5, r0, #0
-	bl sub_801C584
+	bl HandlePlayerCursorMovement
 	bl sub_801DA38
 	lsls r0, r0, #0x18
 	cmp r0, #0
@@ -5843,7 +5843,7 @@ sub_8031198: @ 0x08031198
 	bne _080311D0
 	movs r7, #0
 _080311D0:
-	bl sub_801C584
+	bl HandlePlayerCursorMovement
 	ldr r0, [r4, #0x3c]
 	lsls r0, r0, #4
 	movs r5, #0xc
@@ -6151,7 +6151,7 @@ _0803143A:
 sub_8031440: @ 0x08031440
 	push {r4, r5, lr}
 	adds r5, r0, #0
-	bl sub_801C584
+	bl HandlePlayerCursorMovement
 	ldr r0, _0803149C @ =gpKeySt
 	ldr r0, [r0]
 	ldrh r1, [r0, #8]

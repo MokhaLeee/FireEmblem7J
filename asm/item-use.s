@@ -1236,7 +1236,7 @@ sub_8027C58: @ 0x08027C58
 	rsbs r0, r1, #0
 	orrs r0, r1
 	lsrs r6, r0, #0x1f
-	bl sub_801C584
+	bl HandlePlayerCursorMovement
 	ldr r0, _08027CD8 @ =gpKeySt
 	ldr r1, [r0]
 	movs r0, #1
@@ -2116,7 +2116,7 @@ sub_80283AC: @ 0x080283AC
 	ldr r0, [r0]
 	adds r0, r0, r2
 	ldrb r4, [r0]
-	bl sub_801C584
+	bl HandlePlayerCursorMovement
 	ldr r0, _08028414 @ =gpKeySt
 	ldr r1, [r0]
 	movs r0, #1
