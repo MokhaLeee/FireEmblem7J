@@ -19,7 +19,7 @@ sub_801C624: @ 0x0801C624
 	ldrsh r0, [r1, r2]
 	movs r3, #0x16
 	ldrsh r1, [r1, r3]
-	bl sub_801D758
+	bl TrySwitchViewedUnit
 	ldr r0, _0801C668 @ =gPlaySt
 	adds r0, #0x41
 	ldrb r0, [r0]
@@ -2063,8 +2063,8 @@ _0801D74A:
 _0801D750: .4byte ProcScr_PlayerPhase
 _0801D754: .4byte ProcScr_SALLYCURSOR
 
-	thumb_func_start sub_801D758
-sub_801D758: @ 0x0801D758
+	thumb_func_start TrySwitchViewedUnit
+TrySwitchViewedUnit: @ 0x0801D758
 	push {r4, r5, lr}
 	ldr r2, _0801D7AC @ =gBmMapUnit
 	ldr r2, [r2]

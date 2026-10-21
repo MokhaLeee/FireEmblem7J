@@ -4713,7 +4713,7 @@ sub_8030890: @ 0x08030890
 	ldrsh r0, [r4, r1]
 	movs r2, #0x16
 	ldrsh r1, [r4, r2]
-	bl sub_801D758
+	bl TrySwitchViewedUnit
 	movs r1, #0x20
 	ldrsh r0, [r4, r1]
 	movs r2, #0x22
@@ -5476,7 +5476,7 @@ _08030E94:
 	ldrsh r0, [r1, r2]
 	movs r3, #0x16
 	ldrsh r1, [r1, r3]
-	bl sub_801D758
+	bl TrySwitchViewedUnit
 	ldr r0, _08030ED4 @ =gPlaySt
 	adds r0, #0x41
 	ldrb r0, [r0]
