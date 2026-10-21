@@ -9,4 +9,6 @@ enum jid_defs {
     CLASS_SNIPER_F = 0x1B,
 
     CLASS_ARCHSAGE = 0x42,
+
+    CLASS_CHILD = 0x49,
 };

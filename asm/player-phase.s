@@ -1,25 +1,6 @@
 	.include "macro.inc"
 	.syntax unified
 
-	thumb_func_start sub_801C608
-sub_801C608: @ 0x0801C608
-	adds r1, r0, #0
-	ldr r0, [r1, #4]
-	ldrb r0, [r0, #4]
-	cmp r0, #0x49
-	beq _0801C61E
-	ldr r0, [r1]
-	ldrb r0, [r0, #4]
-	cmp r0, #0x9e
-	beq _0801C61E
-	movs r0, #1
-	b _0801C620
-_0801C61E:
-	movs r0, #0
-_0801C620:
-	bx lr
-	.align 2, 0
-
 	thumb_func_start sub_801C624
 sub_801C624: @ 0x0801C624
 	push {r4, r5, r6, lr}
@@ -90,7 +71,7 @@ _0801C696:
 	cmp r0, #0
 	beq _0801C700
 	bl GetUnit
-	bl sub_801C608
+	bl CanShowUnitStatScreen
 	lsls r0, r0, #0x18
 	cmp r0, #0
 	beq _0801C700
@@ -798,7 +779,7 @@ _0801CCB6:
 	beq _0801CD78
 	adds r0, r4, #0
 	bl GetUnit
-	bl sub_801C608
+	bl CanShowUnitStatScreen
 	lsls r0, r0, #0x18
 	cmp r0, #0
 	beq _0801CD78

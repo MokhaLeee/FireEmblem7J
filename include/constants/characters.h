@@ -26,6 +26,8 @@ enum pid_defs {
 
     CHARACTER_FIREDRAGON = 0x86,
 
+    CHARACTER_NATALIE = 0x9E,
+
     CHARACTER_DA = 0xDA,
 
     CHARACTER_WALL = 0xFC,

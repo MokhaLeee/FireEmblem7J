@@ -26,3 +26,14 @@ void HandlePlayerCursorMovement(void)
     if ((gBmSt.cursor_sprite.x | gBmSt.cursor_sprite.y) & 0xF)
         gpKeySt->pressed &= ~(A_BUTTON | B_BUTTON | START_BUTTON | R_BUTTON | L_BUTTON);
 }
+
+bool CanShowUnitStatScreen(struct Unit * unit)
+{
+    if (UNIT_CLASS_ID(unit) == CLASS_CHILD)
+        return false;
+
+    if (UNIT_CHAR_ID(unit) == CHARACTER_NATALIE)
+        return false;
+
+    return true;
+}
