@@ -1,19 +1,6 @@
 	.include "macro.inc"
 	.syntax unified
 
-	thumb_func_start PlayerPhase_Suspend
-PlayerPhase_Suspend: @ 0x0801C56C
-	push {lr}
-	ldr r1, _0801C580 @ =gActionSt
-	movs r0, #0
-	strb r0, [r1, #0x16]
-	movs r0, #3
-	bl WriteSuspendSave
-	pop {r0}
-	bx r0
-	.align 2, 0
-_0801C580: .4byte gActionSt
-
 	thumb_func_start sub_801C584
 sub_801C584: @ 0x0801C584
 	push {lr}

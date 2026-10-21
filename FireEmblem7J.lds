@@ -273,6 +273,7 @@ SECTIONS
 		asm/map.o(.text);
 		asm/mapwork.o(.text);
 		asm/debug-menu.o(.text);
+		src/player-phase.o(.text);
 		asm/player-phase.o(.text);
 		asm/bmfx.o(.text);
 		src/bmfx-chapterintrofx.o(.text);
