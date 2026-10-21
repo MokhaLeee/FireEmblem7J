@@ -6932,11 +6932,11 @@ GetChapterInfo: @ 0x08031A5C
 	beq _08031A70
 	movs r0, #0x94
 	muls r0, r1, r0
-	ldr r1, _08031A6C @ =gUnk_08D62110
+	ldr r1, _08031A6C @ =gChapterInfo
 	adds r0, r0, r1
 	b _08031A76
 	.align 2, 0
-_08031A6C: .4byte gUnk_08D62110
+_08031A6C: .4byte gChapterInfo
 _08031A70:
 	ldr r0, _08031A78 @ =gExtraMapInfo
 	ldr r0, [r0]

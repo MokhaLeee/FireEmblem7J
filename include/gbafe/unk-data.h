@@ -1964,8 +1964,7 @@ extern struct ProcCmd ProcScr_08C0617C[];
 // ??? gUnk_08D6164A
 // ??? gUnk_08D61678
 // ??? AffinityBonuses
-// ??? gUnk_08D62110
-// ??? gUnk_08D62170
+// ??? gChapterInfo
 // ??? gChapterDataAssetTable
 // ??? gWorldMapEvents
 // ??? gUnk_08D64D98
