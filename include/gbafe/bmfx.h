@@ -25,7 +25,7 @@ struct ProcBmFx {
 // sub_801D958
 // sub_801D9F0
 // StartMapFade
-// sub_801DA38
+bool8 DoesBMXFADEExist(void);
 // sub_801DA50
 // sub_801DAA4
 // sub_801DB0C

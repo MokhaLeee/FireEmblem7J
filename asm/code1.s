@@ -5426,7 +5426,7 @@ _08030E44: .4byte gBmSt
 sub_8030E48: @ 0x08030E48
 	push {r4, lr}
 	adds r4, r0, #0
-	bl sub_801DA38
+	bl DoesBMXFADEExist
 	lsls r0, r0, #0x18
 	cmp r0, #0
 	bne _08030E66
@@ -5456,7 +5456,7 @@ sub_8030E80: @ 0x08030E80
 	push {r4, r5, r6, lr}
 	adds r5, r0, #0
 	bl HandlePlayerCursorMovement
-	bl sub_801DA38
+	bl DoesBMXFADEExist
 	lsls r0, r0, #0x18
 	cmp r0, #0
 	beq _08030E94

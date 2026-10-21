@@ -1680,7 +1680,7 @@ sub_800B2CC: @ 0x0800B2CC
 	lsls r0, r0, #0x18
 	cmp r0, #0
 	bne _0800B3D0
-	bl sub_801DA38
+	bl DoesBMXFADEExist
 	lsls r0, r0, #0x18
 	cmp r0, #0
 	bne _0800B3D0

@@ -312,8 +312,8 @@ _0801DA2C:
 	.align 2, 0
 _0801DA34: .4byte ProcScr_BMXFADE
 
-	thumb_func_start sub_801DA38
-sub_801DA38: @ 0x0801DA38
+	thumb_func_start DoesBMXFADEExist
+DoesBMXFADEExist: @ 0x0801DA38
 	push {lr}
 	ldr r0, _0801DA4C @ =ProcScr_BMXFADE
 	bl Proc_Find

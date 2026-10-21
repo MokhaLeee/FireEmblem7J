@@ -1456,7 +1456,7 @@ sub_801C108: @ 0x0801C108
 	push {r4, r5, lr}
 	adds r4, r0, #0
 	adds r5, r1, #0
-	bl sub_801DA38
+	bl DoesBMXFADEExist
 	lsls r0, r0, #0x18
 	cmp r0, #0
 	bne _0801C156

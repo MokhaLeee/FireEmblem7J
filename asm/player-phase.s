@@ -37,7 +37,7 @@ _0801C664: .4byte gBmSt
 _0801C668: .4byte gPlaySt
 _0801C66C: .4byte 0x0000038B
 _0801C670:
-	bl sub_801DA38
+	bl DoesBMXFADEExist
 	lsls r0, r0, #0x18
 	cmp r0, #0
 	beq _0801C67C
