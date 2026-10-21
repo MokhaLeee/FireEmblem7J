@@ -28,7 +28,7 @@ PlayerPhase_MainIdle: @ 0x0801C624
 	bge _0801C658
 	b _0801C89C
 _0801C658:
-	ldr r0, _0801C66C @ =0x0000038B
+	ldr r0, _0801C66C @ =SONG_38B
 	bl m4aSongNumStart
 	b _0801C89C
 	.align 2, 0
@@ -736,7 +736,7 @@ _0801CC3E:
 	lsls r0, r0, #0x1e
 	cmp r0, #0
 	blt _0801CC66
-	ldr r0, _0801CC80 @ =0x0000038B
+	ldr r0, _0801CC80 @ =SONG_38B
 	bl m4aSongNumStart
 _0801CC66:
 	adds r0, r5, #0
@@ -823,7 +823,7 @@ _0801CD00:
 	lsls r0, r0, #0x1e
 	cmp r0, #0
 	blt _0801CD78
-	ldr r0, _0801CD44 @ =0x0000038B
+	ldr r0, _0801CD44 @ =SONG_38B
 	bl m4aSongNumStart
 	b _0801CD78
 	.align 2, 0

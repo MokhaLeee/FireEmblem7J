@@ -141,4 +141,5 @@ enum
 
     SONG_385 = 0x385,
     SONG_38A = 0x38A,
+    SONG_38B = 0x38B, // window cancel SFX
 };
