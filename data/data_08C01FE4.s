@@ -52,8 +52,8 @@ gUnk_08C028A8:	@ 0x08C028A8
 gUnk_08C028C0:	@ 0x08C028C0
 	.incbin "FireEmblem7J.base.gba", 0xC028C0, 0xC028E8 - 0xC028C0
 
-	.global gUnk_08C028E8
-gUnk_08C028E8:	@ 0x08C028E8
+	.global ProcScr_BMXFADE
+ProcScr_BMXFADE:	@ 0x08C028E8
 	.incbin "FireEmblem7J.base.gba", 0xC028E8, 0xC02920 - 0xC028E8
 
 	.global ProcScr_08C02920

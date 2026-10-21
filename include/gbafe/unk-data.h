@@ -1733,7 +1733,7 @@ extern struct ProcCmd ProcScr_PlayerPhase[];
 // ??? gUnk_08C02870
 // ??? gUnk_08C028A8
 // ??? gUnk_08C028C0
-// ??? gUnk_08C028E8
+extern struct ProcCmd ProcScr_BMXFADE[];
 extern struct ProcCmd ProcScr_08C02920[];
 // ??? gUnk_08C02938
 // ??? gUnk_08C02958

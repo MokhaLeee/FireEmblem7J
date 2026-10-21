@@ -295,7 +295,7 @@ StartMapFade: @ 0x0801DA0C
 	adds r4, r0, #0
 	lsls r4, r4, #0x18
 	lsrs r4, r4, #0x18
-	ldr r0, _0801DA34 @ =gUnk_08C028E8
+	ldr r0, _0801DA34 @ =ProcScr_BMXFADE
 	movs r1, #3
 	bl Proc_Start
 	lsls r4, r4, #0x18
@@ -310,12 +310,12 @@ _0801DA2C:
 	pop {r0}
 	bx r0
 	.align 2, 0
-_0801DA34: .4byte gUnk_08C028E8
+_0801DA34: .4byte ProcScr_BMXFADE
 
 	thumb_func_start sub_801DA38
 sub_801DA38: @ 0x0801DA38
 	push {lr}
-	ldr r0, _0801DA4C @ =gUnk_08C028E8
+	ldr r0, _0801DA4C @ =ProcScr_BMXFADE
 	bl Proc_Find
 	cmp r0, #0
 	beq _0801DA46
@@ -324,7 +324,7 @@ _0801DA46:
 	pop {r1}
 	bx r1
 	.align 2, 0
-_0801DA4C: .4byte gUnk_08C028E8
+_0801DA4C: .4byte ProcScr_BMXFADE
 
 	thumb_func_start sub_801DA50
 sub_801DA50: @ 0x0801DA50
