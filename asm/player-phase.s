@@ -1,8 +1,8 @@
 	.include "macro.inc"
 	.syntax unified
 
-	thumb_func_start sub_801C624
-sub_801C624: @ 0x0801C624
+	thumb_func_start PlayerPhase_MainIdle
+PlayerPhase_MainIdle: @ 0x0801C624
 	push {r4, r5, r6, lr}
 	adds r6, r0, #0
 	bl HandlePlayerCursorMovement
