@@ -1,29 +1,6 @@
 	.include "macro.inc"
 	.syntax unified
 
-	thumb_func_start sub_801D06C
-sub_801D06C: @ 0x0801D06C
-	push {lr}
-	ldr r1, _0801D090 @ =gActiveUnit
-	ldr r2, [r1]
-	movs r1, #0x10
-	ldrsb r1, [r2, r1]
-	ldrb r2, [r2, #0x11]
-	lsls r2, r2, #0x18
-	asrs r2, r2, #0x18
-	bl EnsureCameraOntoPosition
-	movs r1, #0
-	lsls r0, r0, #0x18
-	cmp r0, #0
-	bne _0801D08A
-	movs r1, #1
-_0801D08A:
-	adds r0, r1, #0
-	pop {r1}
-	bx r1
-	.align 2, 0
-_0801D090: .4byte gActiveUnit
-
 	thumb_func_start sub_801D094
 sub_801D094: @ 0x0801D094
 	push {r4, r5, lr}

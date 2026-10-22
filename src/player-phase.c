@@ -541,3 +541,8 @@ bool RunPotentialWaitEvents(void)
 
     return true;
 }
+
+bool EnsureCameraOntoActiveUnitPosition(ProcPtr proc)
+{
+    return !EnsureCameraOntoPosition(proc, gActiveUnit->xPos, gActiveUnit->yPos);
+}
