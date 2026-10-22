@@ -67,8 +67,8 @@ bool StartDestSelectedEvent(void);
 s8 sub_8079890(void);
 void sub_8079894(void);
 bool sub_80798D4(void);
-// CheckForWaitEvents
-// RunWaitEvents
+bool CheckForWaitEvents(void);
+void RunWaitEvents(void);
 // sub_8079990
 // sub_80799A0
 // sub_80799C0

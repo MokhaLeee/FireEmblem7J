@@ -1,23 +1,6 @@
 	.include "macro.inc"
 	.syntax unified
 
-	thumb_func_start sub_801D050
-sub_801D050: @ 0x0801D050
-	push {lr}
-	bl CheckForWaitEvents
-	lsls r0, r0, #0x18
-	cmp r0, #0
-	bne _0801D060
-	movs r0, #1
-	b _0801D066
-_0801D060:
-	bl RunWaitEvents
-	movs r0, #0
-_0801D066:
-	pop {r1}
-	bx r1
-	.align 2, 0
-
 	thumb_func_start sub_801D06C
 sub_801D06C: @ 0x0801D06C
 	push {lr}

@@ -47,7 +47,7 @@ void PlayerPhase_CancelAction(ProcPtr proc);
 void PlayerPhase_BackToMove(ProcPtr proc);
 s8 PlayerPhase_PrepareAction(ProcPtr proc);
 bool TryMakeCantoUnit(ProcPtr proc);
-// sub_801D050
+bool RunPotentialWaitEvents(void);
 // sub_801D06C
 // sub_801D094
 // sub_801D154
