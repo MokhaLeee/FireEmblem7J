@@ -698,3 +698,10 @@ bool CanMoveActiveUnitTo(int x, int y)
 
     return false;
 }
+
+void PlayerPhase_DisplayUnitMovement(void)
+{
+    GetMovementScriptFromPath();
+    UnitApplyWorkingMovementScript(gActiveUnit, gActiveUnit->xPos, gActiveUnit->yPos);
+    SetAutoMuMoveScript(gWorkingMoveScr);
+}

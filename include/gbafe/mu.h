@@ -113,7 +113,7 @@ struct MuProc * StartUiMu(struct Unit * unit, int x, int y);
 // SetMuFacing
 // sub_806C790
 void MU_SetDefaultFacing_Auto(void);
-// sub_806C7F8
+void SetAutoMuMoveScript(const u8 commands[MOVE_SCRIPT_MAX_LENGTH]);
 bool MuExists(void);
 // sub_806C850
 // IsMuActive

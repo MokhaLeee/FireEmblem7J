@@ -597,8 +597,8 @@ _0801A414:
 	bx lr
 	.align 2, 0
 
-	thumb_func_start sub_801A424
-sub_801A424: @ 0x0801A424
+	thumb_func_start UnitApplyWorkingMovementScript
+UnitApplyWorkingMovementScript: @ 0x0801A424
 	push {r4, r5, r6, r7, lr}
 	adds r7, r0, #0
 	adds r3, r1, #0

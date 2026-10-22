@@ -769,8 +769,8 @@ _0806C7EE:
 	bx r0
 	.align 2, 0
 
-	thumb_func_start sub_806C7F8
-sub_806C7F8: @ 0x0806C7F8
+	thumb_func_start SetAutoMuMoveScript
+SetAutoMuMoveScript: @ 0x0806C7F8
 	push {r7, lr}
 	sub sp, #8
 	mov r7, sp

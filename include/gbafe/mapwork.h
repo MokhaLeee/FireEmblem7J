@@ -13,7 +13,7 @@ void GenerateUnitMovementMapExt(struct Unit * unit, s8 movement);
 // ??? sub_801A164
 // ??? BuildBestMoveScript
 // ??? sub_801A3F0
-// ??? sub_801A424
+void UnitApplyWorkingMovementScript(struct Unit * unit, int x, int y);
 // ??? sub_801A4DC
 // ??? sub_801A5C8
 // ??? sub_801A6B4

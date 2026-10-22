@@ -1195,7 +1195,7 @@ sub_803569C: @ 0x0803569C
 	ldrsb r1, [r0, r1]
 	movs r2, #0x11
 	ldrsb r2, [r0, r2]
-	bl sub_801A424
+	bl UnitApplyWorkingMovementScript
 	ldr r1, _08035710 @ =gActionSt
 	ldrb r0, [r1, #0xe]
 	strb r0, [r4, #2]
@@ -1209,7 +1209,7 @@ sub_803569C: @ 0x0803569C
 	bl StartMu
 	bl MU_SetDefaultFacing_Auto
 	adds r0, r7, #0
-	bl sub_806C7F8
+	bl SetAutoMuMoveScript
 _080356FA:
 	pop {r4, r5, r6, r7}
 	pop {r0}
@@ -1335,7 +1335,7 @@ sub_80357E4: @ 0x080357E4
 	lsls r0, r2, #1
 	adds r0, r0, r2
 	add r0, sp
-	bl sub_806C7F8
+	bl SetAutoMuMoveScript
 _08035812:
 	add sp, #0xc
 	pop {r4}

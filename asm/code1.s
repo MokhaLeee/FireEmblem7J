@@ -2699,7 +2699,7 @@ _0802F8E4:
 	strb r1, [r0]
 	movs r1, #4
 	strb r1, [r0, #1]
-	bl sub_806C7F8
+	bl SetAutoMuMoveScript
 _0802F8F2:
 	movs r0, #0
 	pop {r4, r5, r6}
@@ -3859,8 +3859,8 @@ _08030224:
 	bx r0
 	.align 2, 0
 
-	thumb_func_start sub_803022C
-sub_803022C: @ 0x0803022C
+	thumb_func_start GetMovementScriptFromPath
+GetMovementScriptFromPath: @ 0x0803022C
 	push {r4, r5, r6, r7, lr}
 	movs r6, #1
 	ldr r2, _08030270 @ =gUnk_08C05700

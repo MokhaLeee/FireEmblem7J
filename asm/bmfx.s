@@ -3022,7 +3022,7 @@ sub_801EF94: @ 0x0801EF94
 	movs r0, #4
 	strb r0, [r1, #1]
 	adds r0, r1, #0
-	bl sub_806C7F8
+	bl SetAutoMuMoveScript
 	pop {r0}
 	bx r0
 	.align 2, 0

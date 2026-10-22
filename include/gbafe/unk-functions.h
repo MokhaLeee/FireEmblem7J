@@ -149,7 +149,7 @@ void SetTacticianName(const char *name);
 // sub_8030038
 // sub_80300BC
 // sub_803012C
-// sub_803022C
+void GetMovementScriptFromPath(void);
 // sub_80302D0
 // sub_8030314
 // sub_8030340
