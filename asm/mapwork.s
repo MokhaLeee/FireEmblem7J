@@ -1233,8 +1233,8 @@ _0801A89C:
 _0801A8AC: .4byte gBmMapSize
 _0801A8B0: .4byte 0x03004100
 
-	thumb_func_start sub_801A8B4
-sub_801A8B4: @ 0x0801A8B4
+	thumb_func_start GenerateUnitCompleteAttackRange
+GenerateUnitCompleteAttackRange: @ 0x0801A8B4
 	push {r4, r5, r6, r7, lr}
 	mov r7, sl
 	mov r6, sb
@@ -2747,7 +2747,7 @@ _0801B4E4: .4byte gBmMapRange
 _0801B4E8: .4byte 0x03004100
 _0801B4EC:
 	adds r0, r4, #0
-	bl sub_801A8B4
+	bl GenerateUnitCompleteAttackRange
 _0801B4F2:
 	movs r1, #0x11
 	ldrsb r1, [r4, r1]

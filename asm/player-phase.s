@@ -72,7 +72,7 @@ _0801C95C:
 _0801C968: .4byte gBmSt
 _0801C96C:
 	ldr r0, [r5]
-	bl sub_801A8B4
+	bl GenerateUnitCompleteAttackRange
 	movs r4, #3
 _0801C974:
 	adds r0, r4, #0

@@ -6693,7 +6693,7 @@ sub_803186C: @ 0x0803186C
 	bl BmMapFill
 	ldr r4, _080318A8 @ =gActiveUnit
 	ldr r0, [r4]
-	bl sub_801A8B4
+	bl GenerateUnitCompleteAttackRange
 	ldr r1, _080318AC @ =0x02033E3C
 	ldr r0, [r4]
 	str r0, [r1]
