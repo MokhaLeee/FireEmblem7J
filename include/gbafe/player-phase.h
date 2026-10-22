@@ -49,7 +49,7 @@ s8 PlayerPhase_PrepareAction(ProcPtr proc);
 bool TryMakeCantoUnit(ProcPtr proc);
 bool RunPotentialWaitEvents(void);
 bool EnsureCameraOntoActiveUnitPosition(ProcPtr proc);
-// sub_801D094
+void PlayerPhase_FinishAction(ProcPtr proc);
 // sub_801D154
 // sub_801D184
 // sub_801D1C0

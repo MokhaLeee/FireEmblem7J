@@ -546,3 +546,54 @@ bool EnsureCameraOntoActiveUnitPosition(ProcPtr proc)
 {
     return !EnsureCameraOntoPosition(proc, gActiveUnit->xPos, gActiveUnit->yPos);
 }
+
+void PlayerPhase_FinishAction(ProcPtr proc)
+{
+    if (gPlaySt.chapterVisionRange != 0)
+    {
+        RenderMapForFade();
+
+        MoveActiveUnit(gActionSt.x_move, gActionSt.y_move);
+
+        RefreshEntityMaps();
+        RenderMap();
+
+        StartMapFade(0);
+
+        RefreshUnitSprites();
+    }
+    else
+    {
+        MoveActiveUnit(gActionSt.x_move, gActionSt.y_move);
+
+        RefreshEntityMaps();
+        RenderMap();
+    }
+
+    SetMapCursorPosition(gActiveUnit->xPos, gActiveUnit->yPos);
+
+    gPlaySt.xCursor = gBmSt.cursor.x;
+    gPlaySt.yCursor = gBmSt.cursor.y;
+
+    if (TryMakeCantoUnit(proc))
+    {
+        HideUnitSprite(gActiveUnit);
+        return;
+    }
+
+    if (ShouldCallEndEvent())
+    {
+        EndAllMus();
+
+        RefreshEntityMaps();
+        RenderMap();
+        RefreshUnitSprites();
+
+        MaybeCallEndEvent_();
+
+        Proc_Goto(proc, PL_PLAYERPHASE_AFTER_END_EVENT);
+        return;
+    }
+
+    EndAllMus();
+}

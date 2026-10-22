@@ -2049,8 +2049,8 @@ _08079774:
 	bx r0
 	.align 2, 0
 
-	thumb_func_start sub_807977C
-sub_807977C: @ 0x0807977C
+	thumb_func_start ShouldCallEndEvent
+ShouldCallEndEvent: @ 0x0807977C
 	push {lr}
 	bl sub_8079990
 	lsls r0, r0, #0x18
@@ -2059,8 +2059,8 @@ sub_807977C: @ 0x0807977C
 	bx r1
 	.align 2, 0
 
-	thumb_func_start sub_807978C
-sub_807978C: @ 0x0807978C
+	thumb_func_start MaybeCallEndEvent_
+MaybeCallEndEvent_: @ 0x0807978C
 	push {lr}
 	bl sub_80799A0
 	pop {r0}
@@ -2356,7 +2356,7 @@ sub_80799A0: @ 0x080799A0
 	lsls r0, r0, #0x18
 	cmp r0, #0
 	beq _080799BC
-	bl sub_807977C
+	bl ShouldCallEndEvent
 	lsls r0, r0, #0x18
 	cmp r0, #0
 	beq _080799BC

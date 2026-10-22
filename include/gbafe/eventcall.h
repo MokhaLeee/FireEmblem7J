@@ -56,8 +56,8 @@ void StartAvailableTurnEvents(void);
 // sub_8079710
 // sub_8079738
 // sub_8079754
-// sub_807977C
-// sub_807978C
+bool ShouldCallEndEvent(void);
+void MaybeCallEndEvent_(void);
 s8 TryCallSelectEvents(void);
 // sub_80797D4
 bool StartDestSelectedEvent(void);
