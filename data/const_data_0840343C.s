@@ -76,16 +76,16 @@ Img_LimitViewSquares:	@ 0x084044B4
 Img_LimitViewSquareFull:	@ 0x08404734
 	.incbin "FireEmblem7J.base.gba", 0x404734, 0x4047B4 - 0x404734
 
-	.global gUnk_084047B4
-gUnk_084047B4:	@ 0x084047B4
+	.global Pal_LimitViewBlue
+Pal_LimitViewBlue:	@ 0x084047B4
 	.incbin "FireEmblem7J.base.gba", 0x4047B4, 0x404814 - 0x4047B4
 
-	.global gUnk_08404814
-gUnk_08404814:	@ 0x08404814
+	.global Pal_LimitViewRed
+Pal_LimitViewRed:	@ 0x08404814
 	.incbin "FireEmblem7J.base.gba", 0x404814, 0x404874 - 0x404814
 
-	.global gUnk_08404874
-gUnk_08404874:	@ 0x08404874
+	.global Pal_LimitViewGreen
+Pal_LimitViewGreen:	@ 0x08404874
 	.incbin "FireEmblem7J.base.gba", 0x404874, 0x4048D4 - 0x404874
 
 	.global gUnk_084048D4

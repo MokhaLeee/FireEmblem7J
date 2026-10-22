@@ -807,3 +807,20 @@ void MoveLimitView_OnInit(ProcPtr proc)
 
     InitBmBgLayers();
 }
+
+void MoveLimitView_OnLoop(struct MoveLimitViewProc * proc)
+{
+    int frame = (GetGameTime() / 2) & 31;
+
+    if (proc->flags & LIMITVIEW_BLUE)
+        ApplyPaletteExt(Pal_LimitViewBlue + frame, 0x82, 0x20);
+
+    if (proc->flags & LIMITVIEW_RED)
+        ApplyPaletteExt(Pal_LimitViewRed + frame, 0xA2, 0x20);
+
+    if (proc->flags & LIMITVIEW_GREEN)
+        ApplyPaletteExt(Pal_LimitViewGreen + frame, 0xA2, 0x20);
+
+    if (proc->flags & LIMITVIEW_UNK)
+        ApplyPaletteExt(Pal_LimitViewBlue + frame, 0xA2, 0x20);
+}
