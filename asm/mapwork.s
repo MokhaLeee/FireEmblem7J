@@ -2367,8 +2367,8 @@ _0801B1E8:
 	bx r0
 	.align 2, 0
 
-	thumb_func_start sub_801B1F0
-sub_801B1F0: @ 0x0801B1F0
+	thumb_func_start GenerateUnitCompleteStaffRange
+GenerateUnitCompleteStaffRange: @ 0x0801B1F0
 	push {r4, r5, r6, r7, lr}
 	mov r7, sl
 	mov r6, sb
@@ -2736,7 +2736,7 @@ _0801B4BE:
 	cmp r0, #0
 	beq _0801B4EC
 	adds r0, r4, #0
-	bl sub_801B1F0
+	bl GenerateUnitCompleteStaffRange
 	b _0801B4F2
 	.align 2, 0
 _0801B4D4: .4byte gPlaySt

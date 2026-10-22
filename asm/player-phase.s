@@ -65,7 +65,7 @@ _0801C94C:
 	beq _0801C96C
 _0801C95C:
 	ldr r0, [r5]
-	bl sub_801B1F0
+	bl GenerateUnitCompleteStaffRange
 	movs r4, #5
 	b _0801C974
 	.align 2, 0
