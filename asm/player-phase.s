@@ -1,16 +1,6 @@
 	.include "macro.inc"
 	.syntax unified
 
-	thumb_func_start HideMoveRangeGraphics
-HideMoveRangeGraphics: @ 0x0801D6D8
-	push {lr}
-	ldr r0, _0801D6E4 @ =ProcScr_MoveLimitView
-	bl Proc_EndEach
-	pop {r0}
-	bx r0
-	.align 2, 0
-_0801D6E4: .4byte ProcScr_MoveLimitView
-
 	thumb_func_start TrySetCursorOn
 TrySetCursorOn: @ 0x0801D6E8
 	push {r4, lr}

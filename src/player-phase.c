@@ -876,3 +876,8 @@ void DisplayMoveRangeGraphics(int flags)
     proc = Proc_Start(ProcScr_MoveLimitView, PROC_TREE_4);
     proc->flags = flags;
 }
+
+void HideMoveRangeGraphics(void)
+{
+    Proc_EndEach(ProcScr_MoveLimitView);
+}
