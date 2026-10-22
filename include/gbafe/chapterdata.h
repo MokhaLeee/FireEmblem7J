@@ -146,3 +146,5 @@ struct ChapterEventGroup
 };
 
 const struct ChapterInfo * GetChapterInfo(u32 chIndex);
+
+bool8 IsChapterSakaba(void);

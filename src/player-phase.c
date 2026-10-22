@@ -37,3 +37,130 @@ bool CanShowUnitStatScreen(struct Unit * unit)
 
     return true;
 }
+
+void PlayerPhase_MainIdle(ProcPtr proc)
+{
+    HandlePlayerCursorMovement();
+
+    if (gpKeySt->pressed & L_BUTTON)
+    {
+        TrySwitchViewedUnit(gBmSt.cursor.x, gBmSt.cursor.y);
+        PlaySoundEffect(SONG_38B);
+    }
+    else if (!DoesBMXFADEExist())
+    {
+        if (gpKeySt->pressed & R_BUTTON)
+        {
+            if (IsChapterSakaba())
+                return;
+
+            if (gBmMapUnit[gBmSt.cursor.y][gBmSt.cursor.x] != 0 &&
+                CanShowUnitStatScreen(GetUnit(gBmMapUnit[gBmSt.cursor.y][gBmSt.cursor.x])))
+            {
+                EndAllMus();
+                EndPlayerPhaseSideWindows();
+
+                SetStatScreenExcludedUnitFlags(STATSCREEN_CONFIG_NONDEAD |
+                    STATSCREEN_CONFIG_NONBENCHED | STATSCREEN_CONFIG_NONUNK9 |
+                    STATSCREEN_CONFIG_NONROOFED | STATSCREEN_CONFIG_NONUNK16);
+                StartStatScreen(GetUnit(gBmMapUnit[gBmSt.cursor.y][gBmSt.cursor.x]), proc);
+
+                Proc_Goto(proc, PL_PLAYERPHASE_AFTER_STATSCREEN);
+                return;
+            }
+        }
+
+        if (gpKeySt->pressed & A_BUTTON)
+        {
+            struct Unit * unit = GetUnit(gBmMapUnit[gBmSt.cursor.y][gBmSt.cursor.x]);
+
+            switch (GetPlayerSelectKind(unit))
+            {
+            case PLAYER_SELECT_NOUNIT:
+            case PLAYER_SELECT_TURNENDED:
+                if (IsChapterSakaba())
+                    goto else_stmt;
+
+                EndPlayerPhaseSideWindows();
+
+                gPlaySt.xCursor = gBmSt.cursor.x;
+                gPlaySt.yCursor = gBmSt.cursor.y;
+
+                if (unit)
+                {
+                    EndAllMus();
+                    ShowUnitSprite(unit);
+                }
+
+                StartAdjustedMenu(
+                    &gMapMenuDef, gBmSt.cursor_sprite_target.x - gBmSt.camera.x, 1, 0x17);
+                sub_8079890();
+
+                Proc_Goto(proc, PL_PLAYERPHASE_IDLE);
+                return;
+
+            case PLAYER_SELECT_CONTROL:
+                UnitBeginAction(unit);
+                PidStatsAddActAmt(gActiveUnit->pCharacterData->number);
+
+                Proc_Break(proc);
+                break;
+
+            case PLAYER_SELECT_NOCONTROL:
+                UnitBeginAction(unit);
+                gBmSt.swap_action_range_count = 0;
+
+                Proc_Goto(proc, PL_PLAYERPHASE_SEE_RANGE);
+                break;
+
+            default:
+                goto else_stmt;
+            }
+        }
+        else
+        {
+else_stmt:
+            if ((gpKeySt->pressed & SELECT_BUTTON) && gpKeySt->held == SELECT_BUTTON &&
+                gPlaySt.chapterModeIndex == CHAPTER_MODE_LYN &&
+                !(gPlaySt.chapterStateBits & PLAY_FLAG_HARD))
+            {
+                struct Unit * unit = GetUnit(gBmMapUnit[gBmSt.cursor.y][gBmSt.cursor.x]);
+
+                if (unit)
+                {
+                    EndAllMus();
+                    ShowUnitSprite(unit);
+                }
+
+                EndPlayerPhaseSideWindows();
+                sub_8032CA0(proc);
+
+                Proc_Goto(proc, PL_PLAYERPHASE_IDLE);
+                return;
+            }
+
+            if ((gpKeySt->pressed & START_BUTTON) && !(gpKeySt->held & SELECT_BUTTON))
+            {
+                struct Unit * unit = GetUnit(gBmMapUnit[gBmSt.cursor.y][gBmSt.cursor.x]);
+
+                if (unit)
+                {
+                    EndAllMus();
+                    ShowUnitSprite(unit);
+                }
+
+                EndPlayerPhaseSideWindows();
+                StartMinimapPlayerPhase();
+
+                Proc_Goto(proc, PL_PLAYERPHASE_IDLE);
+                return;
+            }
+        }
+    }
+
+    UnitSpriteHoverUpdate();
+
+    PutMapCursor(gBmSt.cursor_sprite.x, gBmSt.cursor_sprite.y,
+        IsUnitSpriteHoverEnabledAt(gBmSt.cursor.x, gBmSt.cursor.y) ? MAP_CURSOR_STRETCHED
+                                                                   : MAP_CURSOR_DEFAULT);
+}

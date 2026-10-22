@@ -74,3 +74,6 @@
 #include "gbafe/titlescreen.h"
 #include "gbafe/opanim.h"
 #include "gbafe/lord-select.h"
+#include "gbafe/ui-menu.h"
+#include "gbafe/player-phase.h"
+#include "gbafe/mapui.h"
