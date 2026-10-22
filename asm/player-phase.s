@@ -1,86 +1,6 @@
 	.include "macro.inc"
 	.syntax unified
 
-	thumb_func_start sub_801C8D4
-sub_801C8D4: @ 0x0801C8D4
-	push {r4, r5, r6, lr}
-	adds r6, r0, #0
-	movs r4, #1
-	ldr r5, _0801C93C @ =gActiveUnit
-	ldr r0, [r5]
-	ldr r1, [r0, #4]
-	ldrb r2, [r0, #0x1d]
-	ldrb r1, [r1, #0x12]
-	adds r1, r2, r1
-	ldr r2, _0801C940 @ =gActionSt
-	ldrb r2, [r2, #0x10]
-	subs r1, r1, r2
-	lsls r1, r1, #0x18
-	asrs r1, r1, #0x18
-	bl GenerateUnitMovementMapExt
-	ldr r0, [r5]
-	ldr r0, [r0, #0xc]
-	movs r1, #0x40
-	ands r0, r1
-	cmp r0, #0
-	bne _0801C974
-	ldr r0, _0801C944 @ =gBmMapOther
-	ldr r0, [r0]
-	movs r1, #0
-	bl BmMapFill
-	adds r0, r6, #0
-	bl UnitHasMagicRank
-	lsls r0, r0, #0x18
-	cmp r0, #0
-	beq _0801C91C
-	movs r0, #1
-	bl GenerateMagicSealMap
-_0801C91C:
-	ldr r0, _0801C948 @ =gBmMapRange
-	ldr r0, [r0]
-	movs r1, #0
-	bl BmMapFill
-	ldr r0, [r5]
-	bl GetUnitWeaponUsabilityBits
-	cmp r0, #2
-	beq _0801C95C
-	cmp r0, #2
-	bgt _0801C94C
-	cmp r0, #1
-	beq _0801C96C
-	b _0801C974
-	.align 2, 0
-_0801C93C: .4byte gActiveUnit
-_0801C940: .4byte gActionSt
-_0801C944: .4byte gBmMapOther
-_0801C948: .4byte gBmMapRange
-_0801C94C:
-	cmp r0, #3
-	bne _0801C974
-	ldr r0, _0801C968 @ =gBmSt
-	adds r0, #0x3e
-	ldrb r0, [r0]
-	ands r4, r0
-	cmp r4, #0
-	beq _0801C96C
-_0801C95C:
-	ldr r0, [r5]
-	bl GenerateUnitCompleteStaffRange
-	movs r4, #5
-	b _0801C974
-	.align 2, 0
-_0801C968: .4byte gBmSt
-_0801C96C:
-	ldr r0, [r5]
-	bl GenerateUnitCompleteAttackRange
-	movs r4, #3
-_0801C974:
-	adds r0, r4, #0
-	bl DisplayMoveRangeGraphics
-	pop {r4, r5, r6}
-	pop {r0}
-	bx r0
-
 	thumb_func_start sub_801C980
 sub_801C980: @ 0x0801C980
 	push {r4, r5, lr}
@@ -120,7 +40,7 @@ _0801C9BC:
 	strb r0, [r5, #4]
 	ldr r4, _0801CA0C @ =gActiveUnit
 	ldr r0, [r4]
-	bl sub_801C8D4
+	bl DisplayUnitEffectRange
 	ldr r4, [r4]
 	movs r1, #0x10
 	ldrsb r1, [r4, r1]
@@ -178,7 +98,7 @@ _0801CA3E:
 	strb r0, [r1, #4]
 	ldr r0, _0801CA5C @ =gActiveUnit
 	ldr r0, [r0]
-	bl sub_801C8D4
+	bl DisplayUnitEffectRange
 	pop {r0}
 	bx r0
 	.align 2, 0

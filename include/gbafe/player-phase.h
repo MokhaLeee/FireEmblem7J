@@ -26,11 +26,19 @@ enum {
     PLAYER_SELECT_4 = 4,
 };
 
+enum {
+    LIMITVIEW_BLUE = (1 << 0),
+    LIMITVIEW_RED = (1 << 1),
+    LIMITVIEW_GREEN = (1 << 2),
+    // (1 << 3)
+    LIMITVIEW_UNK = (1 << 4),
+};
+
 void PlayerPhase_Suspend(void);
 void HandlePlayerCursorMovement(void);
 bool CanShowUnitStatScreen(struct Unit * unit);
 void PlayerPhase_MainIdle(ProcPtr proc);
-// sub_801C8D4
+void DisplayUnitEffectRange(struct Unit * unit);
 // sub_801C980
 // sub_801CA28
 // sub_801CA60
@@ -56,7 +64,7 @@ int GetPlayerSelectKind(struct Unit * unit);
 // sub_801D50C
 // sub_801D5E8
 // sub_801D66C
-// DisplayMoveRangeGraphics
+void DisplayMoveRangeGraphics(int flags);
 // HideMoveRangeGraphics
 // TrySetCursorOn
 void TrySwitchViewedUnit(int x, int y);

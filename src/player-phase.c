@@ -164,3 +164,49 @@ else_stmt:
         IsUnitSpriteHoverEnabledAt(gBmSt.cursor.x, gBmSt.cursor.y) ? MAP_CURSOR_STRETCHED
                                                                    : MAP_CURSOR_DEFAULT);
 }
+
+void DisplayUnitEffectRange(struct Unit * unit)
+{
+    int flags = LIMITVIEW_BLUE;
+
+    GenerateUnitMovementMapExt(gActiveUnit, UNIT_MOV(gActiveUnit) - gActionSt.move_count);
+
+    if (!(gActiveUnit->state & US_HAS_MOVED))
+    {
+        BmMapFill(gBmMapOther, 0);
+
+        if (UnitHasMagicRank(unit))
+            GenerateMagicSealMap(1);
+
+        BmMapFill(gBmMapRange, 0);
+
+        switch (GetUnitWeaponUsabilityBits(gActiveUnit))
+        {
+        case UNIT_USEBIT_WEAPON | UNIT_USEBIT_STAFF:
+            if (gBmSt.swap_action_range_count & 1)
+            {
+                GenerateUnitCompleteStaffRange(gActiveUnit);
+                flags = LIMITVIEW_GREEN | LIMITVIEW_BLUE;
+            }
+            else
+            {
+                GenerateUnitCompleteAttackRange(gActiveUnit);
+                flags = LIMITVIEW_RED | LIMITVIEW_BLUE;
+            }
+
+            break;
+
+        case UNIT_USEBIT_STAFF:
+            GenerateUnitCompleteStaffRange(gActiveUnit);
+            flags = LIMITVIEW_GREEN | LIMITVIEW_BLUE;
+            break;
+
+        case UNIT_USEBIT_WEAPON:
+            GenerateUnitCompleteAttackRange(gActiveUnit);
+            flags = LIMITVIEW_RED | LIMITVIEW_BLUE;
+            break;
+        }
+    }
+
+    DisplayMoveRangeGraphics(flags);
+}

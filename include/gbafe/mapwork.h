@@ -3,7 +3,7 @@
 #include "global.h"
 #include "mu.h"
 
-// ??? GenerateUnitMovementMapExt
+void GenerateUnitMovementMapExt(struct Unit * unit, s8 movement);
 // ??? sub_8019FFC
 // ??? MapFloodRange_Unitless
 // ??? GenerateExtendedMovementMap
@@ -18,11 +18,11 @@
 // ??? sub_801A5C8
 // ??? sub_801A6B4
 // ??? sub_801A7B8
-// ??? GenerateUnitCompleteAttackRange
+void GenerateUnitCompleteAttackRange(struct Unit * unit);
 // ??? sub_801B040
-// ??? GenerateUnitCompleteStaffRange
+void GenerateUnitCompleteStaffRange(struct Unit * unit);
 // ??? sub_801B3E8
-// ??? GenerateMagicSealMap
+void GenerateMagicSealMap(int value);
 // ??? SetWorkingBmMap
 // ??? MapAddInBoundedRange
 // ??? GetWorkingMoveCosts
