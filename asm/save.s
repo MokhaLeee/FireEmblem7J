@@ -2956,8 +2956,8 @@ _080A092C: .4byte 0x000003FF
 _080A0930: .4byte 0xFF003FFF
 _080A0934: .4byte 0xFF803FFF
 
-	thumb_func_start sub_80A0938
-sub_80A0938: @ 0x080A0938
+	thumb_func_start PidStatsAddActAmt
+PidStatsAddActAmt: @ 0x080A0938
 	push {r4, r5, lr}
 	lsls r0, r0, #0x18
 	lsrs r4, r0, #0x18

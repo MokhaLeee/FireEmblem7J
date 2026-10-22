@@ -201,7 +201,7 @@ void RegisterChapterStats(struct PlaySt *);
 // ??? sub_80A0768
 // ??? PidStatsRecordLoseData
 // ??? PidStatsRecordDefeatInfo
-// ??? sub_80A0938
+void PidStatsAddActAmt(u8 pid);
 void PidStatsAddStatView(u8 pid);
 // ??? sub_80A09B8
 // ??? PidStatsAddMove
