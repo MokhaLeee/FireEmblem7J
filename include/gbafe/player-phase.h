@@ -76,7 +76,7 @@ void PlayerPhase_ResumeRangeDisplay(ProcPtr proc);
 void PlayerPhase_ReReadGameSaveGfx(void);
 void MoveLimitViewChange_OnInit(struct MoveLimitViewChangeProc * proc);
 void MoveLimitViewChange_OnLoop(struct MoveLimitViewChangeProc * proc);
-// sub_801D50C
+void MoveLimitView_OnInit(ProcPtr proc);
 // sub_801D5E8
 // sub_801D66C
 void DisplayMoveRangeGraphics(int flags);

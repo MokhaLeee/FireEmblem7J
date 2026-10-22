@@ -778,3 +778,32 @@ void MoveLimitViewChange_OnLoop(struct MoveLimitViewChangeProc * proc)
     if (++proc->frame == (int)ARRAY_COUNT(gOpenLimitViewImgLut))
         Proc_Break(proc);
 }
+
+void MoveLimitView_OnInit(ProcPtr proc)
+{
+    int ix;
+    int iy;
+
+    SetWinEnable(0, 0, 0);
+
+    gBmSt.flags |= BM_FLAG_0;
+    RenderMap();
+
+    for (iy = 9; iy >= 0; --iy)
+        for (ix = 14; ix >= 0; --ix)
+            DisplayMovementViewTile(
+                gBg2Tm, gBmSt.map_render_anchor.x + ix, gBmSt.map_render_anchor.y + iy, ix, iy);
+
+    EnableBgSync(BG2_SYNC_BIT);
+    SetBgOffset(BG_2, 0, 0);
+
+    SetBlendAlpha(10, 6);
+
+    SetBlendTargetA(0, 0, 1, 0, 0);
+    SetBlendBackdropA(0);
+
+    SetBlendTargetB(0, 0, 0, 1, 1);
+    SetBlendBackdropB(1);
+
+    InitBmBgLayers();
+}

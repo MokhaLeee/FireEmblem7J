@@ -870,8 +870,8 @@ nullsub_7: @ 0x08019838
 	bx lr
 	.align 2, 0
 
-	thumb_func_start sub_801983C
-sub_801983C: @ 0x0801983C
+	thumb_func_start DisplayMovementViewTile
+DisplayMovementViewTile: @ 0x0801983C
 	push {r4, r5, r6, lr}
 	adds r4, r0, #0
 	adds r6, r1, #0
@@ -1272,7 +1272,7 @@ _08019B36:
 	mov r1, r8
 	adds r2, r5, #0
 	adds r3, r7, #0
-	bl sub_801983C
+	bl DisplayMovementViewTile
 	subs r6, #1
 	cmp r6, #0
 	bge _08019B36
@@ -1373,7 +1373,7 @@ _08019C02:
 	adds r1, r5, #0
 	mov r2, r8
 	adds r3, r4, #0
-	bl sub_801983C
+	bl DisplayMovementViewTile
 	subs r6, #1
 	cmp r6, #0
 	bge _08019C02
