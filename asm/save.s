@@ -9905,8 +9905,8 @@ _080A3EEC: .4byte gBmSt
 _080A3EF0: .4byte 0x000F000F
 _080A3EF4: .4byte gpKeySt
 
-	thumb_func_start sub_80A3EF8
-sub_80A3EF8: @ 0x080A3EF8
+	thumb_func_start StartMinimapPlayerPhase
+StartMinimapPlayerPhase: @ 0x080A3EF8
 	push {lr}
 	ldr r0, _080A3F08 @ =gUnk_08DAD29C
 	movs r1, #3

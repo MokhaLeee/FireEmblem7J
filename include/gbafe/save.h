@@ -323,5 +323,5 @@ void sub_80A2BFC(void); // NullBmMapHidden_
 // ??? sub_80A3DBC
 // ??? sub_80A3DDC
 // ??? sub_80A3E18
-// ??? sub_80A3EF8
+// ??? StartMinimapPlayerPhase
 // ??? sub_80A3F0C

@@ -5721,7 +5721,7 @@ _080310BC:
 	cmp r0, #0
 	beq _080310E0
 	bl EndPlayerPhaseSideWindows
-	bl sub_80A3EF8
+	bl StartMinimapPlayerPhase
 	adds r0, r5, #0
 	movs r1, #9
 	bl Proc_Goto

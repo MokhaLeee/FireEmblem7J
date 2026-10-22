@@ -272,7 +272,7 @@ _0801C840:
 	bl ShowUnitSprite
 _0801C882:
 	bl EndPlayerPhaseSideWindows
-	bl sub_80A3EF8
+	bl StartMinimapPlayerPhase
 _0801C88A:
 	adds r0, r6, #0
 	movs r1, #9

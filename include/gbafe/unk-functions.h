@@ -270,7 +270,7 @@ struct ChapterEventGroup * GetChapterEventInfo(u32);
 // sub_8032AD0
 // sub_8032B4C
 // sub_8032C40
-// sub_8032CA0
+void sub_8032CA0(ProcPtr proc);
 void sub_8032CCC(void);
 bool sub_8032CDC(void);
 void sub_8032CF4(ProcPtr proc, const char *str);
