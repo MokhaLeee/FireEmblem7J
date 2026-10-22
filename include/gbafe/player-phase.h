@@ -58,7 +58,7 @@ bool CanMoveActiveUnitTo(int x, int y);
 void PlayerPhase_DisplayUnitMovement(void);
 void PlayerPhase_WaitForUnitMovement(ProcPtr proc);
 void PlayerPhase_ResumeRangeDisplay(ProcPtr proc);
-// sub_801D44C
+void PlayerPhase_ReReadGameSaveGfx(void);
 // sub_801D47C
 // sub_801D4CC
 // sub_801D50C

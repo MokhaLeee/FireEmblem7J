@@ -740,3 +740,9 @@ void PlayerPhase_ResumeRangeDisplay(ProcPtr proc)
         break;
     }
 }
+
+void PlayerPhase_ReReadGameSaveGfx(void)
+{
+    RefreshBMapGraphics();
+    SetBlendNone();
+}
