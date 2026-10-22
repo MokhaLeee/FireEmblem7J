@@ -1,44 +1,6 @@
 	.include "macro.inc"
 	.syntax unified
 
-	thumb_func_start sub_801D47C
-sub_801D47C: @ 0x0801D47C
-	push {r4, r5, lr}
-	adds r4, r0, #0
-	ldr r5, _0801D4A4 @ =Img_LimitViewSquareFull
-	ldr r1, _0801D4A8 @ =0x06005080
-	adds r0, r5, #0
-	movs r2, #0x80
-	bl RegisterDataMove
-	ldr r1, _0801D4AC @ =gBmSt
-	movs r0, #1
-	ldrb r1, [r1, #4]
-	ands r0, r1
-	cmp r0, #0
-	bne _0801D4B0
-	adds r1, r4, #0
-	adds r1, #0x4c
-	movs r0, #2
-	strh r0, [r1]
-	b _0801D4C0
-	.align 2, 0
-_0801D4A4: .4byte Img_LimitViewSquareFull
-_0801D4A8: .4byte 0x06005080
-_0801D4AC: .4byte gBmSt
-_0801D4B0:
-	ldr r1, _0801D4C8 @ =0x06005000
-	adds r0, r5, #0
-	movs r2, #0x80
-	bl RegisterDataMove
-	adds r0, r4, #0
-	bl Proc_End
-_0801D4C0:
-	pop {r4, r5}
-	pop {r0}
-	bx r0
-	.align 2, 0
-_0801D4C8: .4byte 0x06005000
-
 	thumb_func_start sub_801D4CC
 sub_801D4CC: @ 0x0801D4CC
 	push {r4, r5, lr}
@@ -280,7 +242,7 @@ DisplayMoveRangeGraphics: @ 0x0801D6A4
 	beq _0801D6C4
 	bl sub_801D50C
 	movs r0, #0
-	bl sub_801D47C
+	bl MoveLimitViewChange_OnInit
 	b _0801D6D0
 	.align 2, 0
 _0801D6C0: .4byte gUnk_08C02870

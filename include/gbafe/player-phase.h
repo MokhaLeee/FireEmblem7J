@@ -1,6 +1,7 @@
 #pragma once
 
 #include "global.h"
+#include "proc.h"
 
 enum {
     PL_PLAYERPHASE_BEGIN = 0,
@@ -16,6 +17,20 @@ enum {
     PL_PLAYERPHASE_ADJUST_CAMERA = 10,
     PL_PLAYERPHASE_SEE_RANGE = 11,
     PL_PLAYERPHASE_DANGER_ZONE = 12,
+};
+
+struct MoveLimitViewProc {
+    /* 00 */ PROC_HEADER;
+
+    /* 29 */ STRUCT_PAD(0x29, 0x4A);
+    /* 4A */ s16 flags;
+};
+
+struct MoveLimitViewChangeProc {
+    /* 00 */ PROC_HEADER;
+
+    /* 29 */ STRUCT_PAD(0x29, 0x4C);
+    /* 4C */ s16 frame;
 };
 
 enum {
@@ -59,7 +74,7 @@ void PlayerPhase_DisplayUnitMovement(void);
 void PlayerPhase_WaitForUnitMovement(ProcPtr proc);
 void PlayerPhase_ResumeRangeDisplay(ProcPtr proc);
 void PlayerPhase_ReReadGameSaveGfx(void);
-// sub_801D47C
+void MoveLimitViewChange_OnInit(struct MoveLimitViewChangeProc * proc);
 // sub_801D4CC
 // sub_801D50C
 // sub_801D5E8

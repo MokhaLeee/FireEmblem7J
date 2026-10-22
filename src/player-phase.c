@@ -746,3 +746,16 @@ void PlayerPhase_ReReadGameSaveGfx(void)
     RefreshBMapGraphics();
     SetBlendNone();
 }
+
+void MoveLimitViewChange_OnInit(struct MoveLimitViewChangeProc * proc)
+{
+    RegisterDataMove(Img_LimitViewSquareFull, (u8 *)VRAM + 0x5080, 0x80);
+
+    if (!(gBmSt.flags & BM_FLAG_0))
+        proc->frame = 2;
+    else
+    {
+        RegisterDataMove(Img_LimitViewSquareFull, (u8 *)VRAM + 0x5000, 0x80);
+        Proc_End(proc);
+    }
+}
