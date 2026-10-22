@@ -2623,8 +2623,8 @@ _0801B3DC: .4byte gBmMapMovement
 _0801B3E0: .4byte gBmMapUnit
 _0801B3E4: .4byte gBmMapOther
 
-	thumb_func_start sub_801B3E8
-sub_801B3E8: @ 0x0801B3E8
+	thumb_func_start GenerateDangerZoneRange
+GenerateDangerZoneRange: @ 0x0801B3E8
 	push {r4, r5, r6, r7, lr}
 	mov r7, sl
 	mov r6, sb

@@ -1,58 +1,6 @@
 	.include "macro.inc"
 	.syntax unified
 
-	thumb_func_start sub_801CA60
-sub_801CA60: @ 0x0801CA60
-	push {r4, r5, r6, lr}
-	ldr r4, _0801CAB4 @ =gBmSt
-	adds r5, r4, #0
-	adds r5, #0x3e
-	movs r6, #1
-	adds r0, r6, #0
-	ldrb r1, [r5]
-	ands r0, r1
-	bl sub_801B3E8
-	ldr r0, _0801CAB8 @ =gBmMapMovement
-	ldr r0, [r0]
-	movs r1, #1
-	rsbs r1, r1, #0
-	bl BmMapFill
-	ldr r0, _0801CABC @ =gPlaySt
-	adds r0, #0x41
-	ldrb r0, [r0]
-	lsls r0, r0, #0x1e
-	cmp r0, #0
-	blt _0801CA94
-	movs r0, #0xe2
-	lsls r0, r0, #2
-	bl m4aSongNumStart
-_0801CA94:
-	movs r0, #8
-	ldrb r1, [r4, #4]
-	orrs r0, r1
-	movs r1, #0xfd
-	ands r0, r1
-	strb r0, [r4, #4]
-	adds r0, r6, #0
-	ldrb r5, [r5]
-	ands r0, r5
-	cmp r0, #0
-	beq _0801CAC0
-	movs r0, #5
-	bl DisplayMoveRangeGraphics
-	b _0801CAC6
-	.align 2, 0
-_0801CAB4: .4byte gBmSt
-_0801CAB8: .4byte gBmMapMovement
-_0801CABC: .4byte gPlaySt
-_0801CAC0:
-	movs r0, #3
-	bl DisplayMoveRangeGraphics
-_0801CAC6:
-	pop {r4, r5, r6}
-	pop {r0}
-	bx r0
-
 	thumb_func_start sub_801CACC
 sub_801CACC: @ 0x0801CACC
 	push {r4, r5, lr}

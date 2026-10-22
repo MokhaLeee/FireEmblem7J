@@ -21,7 +21,7 @@ void GenerateUnitMovementMapExt(struct Unit * unit, s8 movement);
 void GenerateUnitCompleteAttackRange(struct Unit * unit);
 // ??? sub_801B040
 void GenerateUnitCompleteStaffRange(struct Unit * unit);
-// ??? sub_801B3E8
+void GenerateDangerZoneRange(s8 boolDisplayStaffRange);
 void GenerateMagicSealMap(int value);
 // ??? SetWorkingBmMap
 // ??? MapAddInBoundedRange

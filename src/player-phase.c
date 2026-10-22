@@ -245,3 +245,20 @@ void DisplayActiveUnitEffectRange(ProcPtr proc)
     gBmSt.flags &= ~BM_FLAG_1;
     DisplayUnitEffectRange(gActiveUnit);
 }
+
+void PlayerPhase_DisplayDangerZone(void)
+{
+    GenerateDangerZoneRange(gBmSt.swap_action_range_count & 1);
+
+    BmMapFill(gBmMapMovement, -1);
+
+    PlaySoundEffect(SONG_388);
+
+    gBmSt.flags |= BM_FLAG_3;
+    gBmSt.flags &= ~BM_FLAG_1;
+
+    if (gBmSt.swap_action_range_count & 1)
+        DisplayMoveRangeGraphics(LIMITVIEW_GREEN | LIMITVIEW_BLUE);
+    else
+        DisplayMoveRangeGraphics(LIMITVIEW_RED | LIMITVIEW_BLUE);
+}

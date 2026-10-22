@@ -41,7 +41,7 @@ void PlayerPhase_MainIdle(ProcPtr proc);
 void DisplayUnitEffectRange(struct Unit * unit);
 void PlayerPhase_InitUnitMovementSelect(void);
 void DisplayActiveUnitEffectRange(ProcPtr proc);
-// sub_801CA60
+void PlayerPhase_DisplayDangerZone(void);
 // sub_801CACC
 // sub_801CDA8
 // sub_801CDC0
