@@ -19860,7 +19860,7 @@ sub_8046604: @ 0x08046604
 	mov r7, r8
 	push {r7}
 	adds r7, r0, #0
-	bl sub_806C850
+	bl MuExistsActive
 	lsls r0, r0, #0x18
 	asrs r0, r0, #0x18
 	cmp r0, #1
@@ -21407,7 +21407,7 @@ sub_804723C: @ 0x0804723C
 	asrs r0, r0, #0x18
 	cmp r0, #1
 	beq _0804725E
-	bl sub_806C850
+	bl MuExistsActive
 	lsls r0, r0, #0x18
 	cmp r0, #0
 	bne _0804725E

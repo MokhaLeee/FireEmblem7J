@@ -819,8 +819,8 @@ _0806C848:
 	bx r1
 	.align 2, 0
 
-	thumb_func_start sub_806C850
-sub_806C850: @ 0x0806C850
+	thumb_func_start MuExistsActive
+MuExistsActive: @ 0x0806C850
 	push {r7, lr}
 	sub sp, #8
 	mov r7, sp

@@ -67,7 +67,7 @@ _0801D840:
 sub_801D844: @ 0x0801D844
 	push {r4, r5, lr}
 	adds r4, r0, #0
-	bl sub_806C850
+	bl MuExistsActive
 	lsls r0, r0, #0x18
 	cmp r0, #0
 	bne _0801D87A

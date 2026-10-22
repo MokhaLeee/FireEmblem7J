@@ -705,3 +705,9 @@ void PlayerPhase_DisplayUnitMovement(void)
     UnitApplyWorkingMovementScript(gActiveUnit, gActiveUnit->xPos, gActiveUnit->yPos);
     SetAutoMuMoveScript(gWorkingMoveScr);
 }
+
+void PlayerPhase_WaitForUnitMovement(ProcPtr proc)
+{
+    if (!MuExistsActive())
+        Proc_Break(proc);
+}

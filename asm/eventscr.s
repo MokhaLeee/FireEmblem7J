@@ -3467,7 +3467,7 @@ _0800D200: .4byte gUnk_08C00C28
 sub_800D204: @ 0x0800D204
 	push {r4, r5, lr}
 	adds r5, r0, #0
-	bl sub_806C850
+	bl MuExistsActive
 	lsls r0, r0, #0x18
 	asrs r4, r0, #0x18
 	cmp r4, #0
@@ -3488,7 +3488,7 @@ _0800D228: .4byte gBmMapOther
 sub_800D22C: @ 0x0800D22C
 	push {r4, lr}
 	adds r4, r0, #0
-	bl sub_806C850
+	bl MuExistsActive
 	lsls r0, r0, #0x18
 	cmp r0, #0
 	beq _0800D23E

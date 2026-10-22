@@ -1,22 +1,6 @@
 	.include "macro.inc"
 	.syntax unified
 
-	thumb_func_start sub_801D39C
-sub_801D39C: @ 0x0801D39C
-	push {r4, lr}
-	adds r4, r0, #0
-	bl sub_806C850
-	lsls r0, r0, #0x18
-	cmp r0, #0
-	bne _0801D3B0
-	adds r0, r4, #0
-	bl Proc_Break
-_0801D3B0:
-	pop {r4}
-	pop {r0}
-	bx r0
-	.align 2, 0
-
 	thumb_func_start sub_801D3B8
 sub_801D3B8: @ 0x0801D3B8
 	push {r4, r5, r6, lr}
