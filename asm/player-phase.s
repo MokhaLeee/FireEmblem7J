@@ -1,38 +1,6 @@
 	.include "macro.inc"
 	.syntax unified
 
-	thumb_func_start sub_801D4CC
-sub_801D4CC: @ 0x0801D4CC
-	push {r4, r5, lr}
-	adds r5, r0, #0
-	ldr r1, _0801D504 @ =gUnk_08C02828
-	adds r4, r5, #0
-	adds r4, #0x4c
-	movs r2, #0
-	ldrsh r0, [r4, r2]
-	lsls r0, r0, #2
-	adds r0, r0, r1
-	ldr r0, [r0]
-	ldr r1, _0801D508 @ =0x06005000
-	movs r2, #0x80
-	bl RegisterDataMove
-	ldrh r0, [r4]
-	adds r0, #1
-	strh r0, [r4]
-	lsls r0, r0, #0x10
-	asrs r0, r0, #0x10
-	cmp r0, #8
-	bne _0801D4FC
-	adds r0, r5, #0
-	bl Proc_Break
-_0801D4FC:
-	pop {r4, r5}
-	pop {r0}
-	bx r0
-	.align 2, 0
-_0801D504: .4byte gUnk_08C02828
-_0801D508: .4byte 0x06005000
-
 	thumb_func_start sub_801D50C
 sub_801D50C: @ 0x0801D50C
 	push {r4, r5, r6, r7, lr}

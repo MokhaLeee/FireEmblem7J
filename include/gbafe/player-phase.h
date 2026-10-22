@@ -75,7 +75,7 @@ void PlayerPhase_WaitForUnitMovement(ProcPtr proc);
 void PlayerPhase_ResumeRangeDisplay(ProcPtr proc);
 void PlayerPhase_ReReadGameSaveGfx(void);
 void MoveLimitViewChange_OnInit(struct MoveLimitViewChangeProc * proc);
-// sub_801D4CC
+void MoveLimitViewChange_OnLoop(struct MoveLimitViewChangeProc * proc);
 // sub_801D50C
 // sub_801D5E8
 // sub_801D66C
@@ -84,3 +84,5 @@ void HideMoveRangeGraphics(void);
 // TrySetCursorOn
 void TrySwitchViewedUnit(int x, int y);
 // sub_801D7B0
+
+extern const u8 * CONST_DATA gOpenLimitViewImgLut[];

@@ -1390,6 +1390,7 @@ extern const u8 Tsa_Statscreen_08404124[];
 extern const u8 Tsa_StatScreen_0840417C[];
 // ??? gUnk_084041FC
 // ??? gUnk_0840431C
+extern const u8 Img_LimitViewSquares[];
 extern const u8 Img_LimitViewSquareFull[];
 // ??? gUnk_084047B4
 // ??? gUnk_08404814
@@ -1729,7 +1730,7 @@ extern u8 Img_SysBrownBox[];
 // ??? gUnk_08C02600
 // ??? gUnk_08C02618
 extern struct ProcCmd ProcScr_PlayerPhase[];
-// ??? gUnk_08C02828
+// ??? gUnk_08C02848
 // ??? gUnk_08C02870
 // ??? gUnk_08C028A8
 // ??? gUnk_08C028C0

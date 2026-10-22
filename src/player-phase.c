@@ -1,5 +1,16 @@
 #include "gbafe.h"
 
+const u8 * CONST_DATA gOpenLimitViewImgLut[] = {
+    NULL,
+    NULL,
+    Img_LimitViewSquares + 0 * 4 * CHR_SIZE,
+    Img_LimitViewSquares + 1 * 4 * CHR_SIZE,
+    Img_LimitViewSquares + 2 * 4 * CHR_SIZE,
+    Img_LimitViewSquares + 3 * 4 * CHR_SIZE,
+    Img_LimitViewSquares + 4 * 4 * CHR_SIZE,
+    Img_LimitViewSquareFull,
+};
+
 void PlayerPhase_Suspend(void)
 {
     gActionSt.suspend_point = SUSPEND_POINT_PLAYER_PHASE;
@@ -758,4 +769,12 @@ void MoveLimitViewChange_OnInit(struct MoveLimitViewChangeProc * proc)
         RegisterDataMove(Img_LimitViewSquareFull, (u8 *)VRAM + 0x5000, 0x80);
         Proc_End(proc);
     }
+}
+
+void MoveLimitViewChange_OnLoop(struct MoveLimitViewChangeProc * proc)
+{
+    RegisterDataMove(gOpenLimitViewImgLut[proc->frame], (u8 *)VRAM + 0x5000, 0x80);
+
+    if (++proc->frame == (int)ARRAY_COUNT(gOpenLimitViewImgLut))
+        Proc_Break(proc);
 }
