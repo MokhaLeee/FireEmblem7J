@@ -50,6 +50,13 @@ enum BmSt_gameStateBits {
     BM_FLAG_LINKARENA = (1 << 6),
 };
 
+enum BmSt_partialActionsTakenBits {
+    PARTIAL_ACTION_TAKE = (1 << 0),
+    PARTIAL_ACTION_TRADE = (1 << 1),
+    PARTIAL_ACTION_SUPPLY = (1 << 2),
+    PARTIAL_ACTION_BALLISTA = (1 << 3),
+};
+
 struct PlaySt {
     /* 00 */ u32 time_saved;
     /* 04 */ u32 time_chapter_started;

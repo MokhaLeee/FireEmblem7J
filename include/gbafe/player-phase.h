@@ -45,7 +45,7 @@ void PlayerPhase_DisplayDangerZone(void);
 void PlayerPhase_RangeDisplayIdle(ProcPtr proc);
 void PlayerPhase_CancelAction(ProcPtr proc);
 void PlayerPhase_BackToMove(ProcPtr proc);
-// sub_801CE3C
+s8 PlayerPhase_PrepareAction(ProcPtr proc);
 // sub_801CF9C
 // sub_801D050
 // sub_801D06C

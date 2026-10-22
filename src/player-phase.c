@@ -442,3 +442,55 @@ void PlayerPhase_BackToMove(ProcPtr proc)
 
     Proc_Goto(proc, PL_PLAYERPHASE_MOVE);
 }
+
+s8 PlayerPhase_PrepareAction(ProcPtr proc)
+{
+    s8 cameraReturn = EnsureCameraOntoPosition(
+        proc, GetUnit(gActionSt.instigator)->xPos, GetUnit(gActionSt.instigator)->yPos);
+    cameraReturn ^= 1;
+
+    switch (gActionSt.id)
+    {
+    case ACTION_NONE:
+        if (gBmSt.partial_actions_taken != 0)
+        {
+            gActionSt.id = ACTION_FORCE_WAIT;
+            break;
+        }
+        PlayerPhase_BackToMove(proc);
+        return 1;
+
+    case ACTION_TRADED:
+        gBmSt.partial_actions_taken |= PARTIAL_ACTION_TRADE;
+        PlayerPhase_CancelAction(proc);
+        return 1;
+
+    case ACTION_TRADED_SUPPLY:
+        gBmSt.partial_actions_taken |= PARTIAL_ACTION_SUPPLY;
+        PlayerPhase_CancelAction(proc);
+        return 1;
+
+    case ACTION_TAKE:
+    case ACTION_GIVE:
+        gBmSt.partial_actions_taken |= PARTIAL_ACTION_TAKE;
+        PlayerPhase_CancelAction(proc);
+        return 1;
+
+    case ACTION_RIDE_BALLISTA:
+    case ACTION_EXIT_BALLISTA:
+        gBmSt.partial_actions_taken |= PARTIAL_ACTION_BALLISTA;
+        PlayerPhase_CancelAction(proc);
+        return 1;
+
+    case ACTION_TRADED_NOCHANGES:
+        PlayerPhase_CancelAction(proc);
+        return 1;
+    }
+
+    if (gActionSt.id != ACTION_WAIT && gBmSt.just_resumed == 0)
+    {
+        gActionSt.suspend_point = SUSPEND_POINT_DURING_ACTION;
+        WriteSuspendSave(SAVE_SUSPEND);
+    }
+    return cameraReturn;
+}
