@@ -2142,8 +2142,8 @@ _08079822:
 	bx r1
 	.align 2, 0
 
-	thumb_func_start sub_807982C
-sub_807982C: @ 0x0807982C
+	thumb_func_start StartDestSelectedEvent
+StartDestSelectedEvent: @ 0x0807982C
 	push {lr}
 	sub sp, #0x1c
 	ldr r0, _0807986C @ =gPlaySt

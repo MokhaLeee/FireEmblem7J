@@ -159,7 +159,7 @@ void PathArrowDisp_Init(u8 a);
 // sub_8030664
 // sub_80306D4
 // sub_8030718
-// sub_80307D4
+void DrawUpdatedPathArrow(void);
 // GetPlayerLeaderUnitId
 // sub_8030814
 // sub_8030870

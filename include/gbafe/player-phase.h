@@ -42,7 +42,7 @@ void DisplayUnitEffectRange(struct Unit * unit);
 void PlayerPhase_InitUnitMovementSelect(void);
 void DisplayActiveUnitEffectRange(ProcPtr proc);
 void PlayerPhase_DisplayDangerZone(void);
-// sub_801CACC
+void PlayerPhase_RangeDisplayIdle(ProcPtr proc);
 // sub_801CDA8
 // sub_801CDC0
 // sub_801CE3C
@@ -54,7 +54,7 @@ void PlayerPhase_DisplayDangerZone(void);
 // sub_801D184
 // sub_801D1C0
 int GetPlayerSelectKind(struct Unit * unit);
-// sub_801D2F8
+bool CanMoveActiveUnitTo(int x, int y);
 // sub_801D374
 // sub_801D39C
 // sub_801D3B8
@@ -65,7 +65,7 @@ int GetPlayerSelectKind(struct Unit * unit);
 // sub_801D5E8
 // sub_801D66C
 void DisplayMoveRangeGraphics(int flags);
-// HideMoveRangeGraphics
+void HideMoveRangeGraphics(void);
 // TrySetCursorOn
 void TrySwitchViewedUnit(int x, int y);
 // sub_801D7B0

@@ -4597,8 +4597,8 @@ _080307C8: .4byte gUnk_08C056CC
 _080307CC: .4byte gBmSt
 _080307D0: .4byte Sprite_16x16
 
-	thumb_func_start sub_80307D4
-sub_80307D4: @ 0x080307D4
+	thumb_func_start DrawUpdatedPathArrow
+DrawUpdatedPathArrow: @ 0x080307D4
 	push {lr}
 	bl sub_8030448
 	bl sub_8030718

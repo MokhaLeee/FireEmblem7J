@@ -262,3 +262,152 @@ void PlayerPhase_DisplayDangerZone(void)
     else
         DisplayMoveRangeGraphics(LIMITVIEW_RED | LIMITVIEW_BLUE);
 }
+
+void PlayerPhase_RangeDisplayIdle(ProcPtr proc)
+{
+    enum {
+        ACT_FAIL = 0,
+        ACT_MOVE = 1,
+        ACT_CANCEL = 2,
+        ACT_INFOSCREEN = 3,
+        ACT_RESET_CURSOR = 4,
+        ACT_EVENT = 5,
+        ACT_SWAP_RANGES = 6,
+    };
+
+    u8 uid;
+    u8 action = -1;
+
+    HandlePlayerCursorMovement();
+
+    if (gpKeySt->pressed & A_BUTTON)
+    {
+        if (!gActiveUnit)
+        {
+            if (GetCombinedEnemyWeaponUsabilityBits() == (UNIT_USEBIT_WEAPON | UNIT_USEBIT_STAFF))
+                action = ACT_SWAP_RANGES;
+            else
+                action = ACT_CANCEL;
+        }
+        else if (StartDestSelectedEvent())
+            action = ACT_EVENT;
+        else if (GetPlayerSelectKind(gActiveUnit) != PLAYER_SELECT_CONTROL &&
+            !(gActiveUnit->state & US_HAS_MOVED))
+        {
+            if (GetUnitWeaponUsabilityBits(gActiveUnit) == (UNIT_USEBIT_WEAPON | UNIT_USEBIT_STAFF))
+                action = ACT_SWAP_RANGES;
+            else
+                action = ACT_CANCEL;
+        }
+        else if (!CanMoveActiveUnitTo(gBmSt.cursor.x, gBmSt.cursor.y))
+            action = ACT_FAIL;
+        else
+        {
+            action = ACT_MOVE;
+            goto else_stmt;
+        }
+    }
+    else
+    {
+else_stmt:
+        if (gpKeySt->pressed & B_BUTTON)
+        {
+            if (gActiveUnit->state & US_HAS_MOVED)
+                action = ACT_FAIL;
+            else
+                action = ACT_CANCEL;
+        }
+        else if (gpKeySt->pressed & R_BUTTON)
+            action = ACT_INFOSCREEN;
+        else if (gpKeySt->pressed & L_BUTTON)
+            action = ACT_RESET_CURSOR;
+    }
+
+    switch (action)
+    {
+    case ACT_FAIL:
+        PlaySoundEffect(SONG_38C);
+        break;
+
+    case ACT_MOVE:
+        EnsureCameraOntoPosition(proc, gActiveUnitMoveOrigin.x, gActiveUnitMoveOrigin.y);
+        HideMoveRangeGraphics();
+        Proc_Break(proc);
+        return;
+
+    case ACT_CANCEL:
+        if (gActiveUnit)
+        {
+            EndAllMus();
+
+            gActiveUnit->state &= ~US_HIDDEN;
+
+            if (UNIT_FACTION(gActiveUnit) == FACTION_BLUE)
+            {
+                EnsureCameraOntoPosition(proc, gActiveUnitMoveOrigin.x, gActiveUnitMoveOrigin.y);
+                SetMapCursorPosition(gActiveUnitMoveOrigin.x, gActiveUnitMoveOrigin.y);
+            }
+        }
+
+        gBmSt.flags &= ~BM_FLAG_3;
+
+        HideMoveRangeGraphics();
+
+        RefreshEntityMaps();
+        RefreshUnitSprites();
+
+        PlaySoundEffect(SONG_38B);
+
+        Proc_Goto(proc, PL_PLAYERPHASE_IDLE);
+        return;
+
+    case ACT_INFOSCREEN:
+        if (Proc_Find(ProcScr_UnkEvt))
+            break;
+
+        uid = gBmMapUnit[gBmSt.cursor.y][gBmSt.cursor.x];
+
+        if (gActiveUnitMoveOrigin.x == gBmSt.cursor.x && gActiveUnitMoveOrigin.y == gBmSt.cursor.y)
+            uid = gActiveUnit->index;
+
+        if (uid == 0 || !CanShowUnitStatScreen(GetUnit(uid)))
+            break;
+
+        EndAllMus();
+        SetStatScreenExcludedUnitFlags(STATSCREEN_CONFIG_NONDEAD | STATSCREEN_CONFIG_NONBENCHED |
+            STATSCREEN_CONFIG_NONUNK9 | STATSCREEN_CONFIG_NONROOFED | STATSCREEN_CONFIG_NONUNK16);
+        StartStatScreen(GetUnit(uid), proc);
+
+        Proc_Goto(proc, PL_PLAYERPHASE_RESUME_RANGE);
+        return;
+
+    case ACT_RESET_CURSOR:
+        if (!gActiveUnit)
+            break;
+
+        EnsureCameraOntoPosition(proc, gActiveUnitMoveOrigin.x, gActiveUnitMoveOrigin.y);
+        SetMapCursorPosition(gActiveUnitMoveOrigin.x, gActiveUnitMoveOrigin.y);
+        PlaySoundEffect(SONG_38B);
+        break;
+
+    case ACT_EVENT:
+        break;
+
+    case ACT_SWAP_RANGES:
+        gBmSt.swap_action_range_count++;
+
+        HideMoveRangeGraphics();
+
+        if (gBmSt.flags & BM_FLAG_3)
+            Proc_Goto(proc, PL_PLAYERPHASE_DANGER_ZONE);
+        else
+            Proc_Goto(proc, PL_PLAYERPHASE_SEE_RANGE);
+
+        break;
+    }
+
+    if (GetPlayerSelectKind(gActiveUnit) == PLAYER_SELECT_CONTROL)
+        DrawUpdatedPathArrow();
+
+    PutMapCursor(gBmSt.cursor_sprite.x, gBmSt.cursor_sprite.y, MAP_CURSOR_REGULAR);
+}
