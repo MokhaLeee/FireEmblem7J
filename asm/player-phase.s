@@ -292,7 +292,7 @@ _0801C89C:
 	ldrsh r0, [r1, r3]
 	movs r2, #0x16
 	ldrsh r1, [r1, r2]
-	bl sub_80264F0
+	bl IsUnitSpriteHoverEnabledAt
 	lsls r0, r0, #0x18
 	movs r2, #0
 	cmp r0, #0
