@@ -3376,7 +3376,7 @@ _080233D8:
 	thumb_func_start sub_80233E0
 sub_80233E0: @ 0x080233E0
 	push {lr}
-	bl sub_8031B40
+	bl IsChapterSakaba
 	lsls r0, r0, #0x18
 	cmp r0, #0
 	beq _080233F0

@@ -1628,7 +1628,7 @@ sub_8085E6C: @ 0x08085E6C
 	ldr r0, [r0]
 	adds r0, r0, r1
 	ldrb r7, [r0]
-	bl sub_8031B40
+	bl IsChapterSakaba
 	lsls r0, r0, #0x18
 	cmp r0, #0
 	beq _08085EA0
@@ -2683,7 +2683,7 @@ _08086742:
 sub_8086748: @ 0x08086748
 	push {r4, r5, r6, r7, lr}
 	adds r4, r0, #0
-	bl sub_8031B40
+	bl IsChapterSakaba
 	lsls r0, r0, #0x18
 	cmp r0, #0
 	bne _080867C0

@@ -50,7 +50,7 @@ _0801C67C:
 	ands r0, r1
 	cmp r0, #0
 	beq _0801C700
-	bl sub_8031B40
+	bl IsChapterSakaba
 	lsls r0, r0, #0x18
 	cmp r0, #0
 	beq _0801C696
@@ -136,7 +136,7 @@ _0801C748: .4byte gBmMapUnit
 _0801C74C:
 	cmp r0, #0
 	blt _0801C7D0
-	bl sub_8031B40
+	bl IsChapterSakaba
 	lsls r0, r0, #0x18
 	cmp r0, #0
 	bne _0801C7D0

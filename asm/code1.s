@@ -7051,8 +7051,8 @@ _08031B3A:
 	bx r1
 	.align 2, 0
 
-	thumb_func_start sub_8031B40
-sub_8031B40: @ 0x08031B40
+	thumb_func_start IsChapterSakaba
+IsChapterSakaba: @ 0x08031B40
 	movs r1, #0
 	ldr r0, _08031B50 @ =gPlaySt
 	ldrb r0, [r0, #0xe]

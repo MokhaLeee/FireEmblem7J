@@ -224,7 +224,7 @@ void SetTacticianName(const char *name);
 // sub_8031AC0
 struct ChapterEventGroup * GetChapterEventInfo(u32);
 // sub_8031B1C
-// sub_8031B40
+// IsChapterSakaba
 // sub_8031B54
 // sub_8031B6C
 // sub_8031BF8

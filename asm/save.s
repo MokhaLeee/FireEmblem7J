@@ -5255,7 +5255,7 @@ WriteSuspendSave: @ 0x080A1A88
 	push {r5, r6, r7}
 	sub sp, #0x20
 	mov r8, r0
-	bl sub_8031B40
+	bl IsChapterSakaba
 	lsls r0, r0, #0x18
 	cmp r0, #0
 	beq _080A1AA2
