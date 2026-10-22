@@ -1390,7 +1390,7 @@ extern const u8 Tsa_Statscreen_08404124[];
 extern const u8 Tsa_StatScreen_0840417C[];
 // ??? gUnk_084041FC
 // ??? gUnk_0840431C
-// ??? gUnk_08404734
+extern const u8 Img_LimitViewSquareFull[];
 // ??? gUnk_084047B4
 // ??? gUnk_08404814
 // ??? gUnk_08404874

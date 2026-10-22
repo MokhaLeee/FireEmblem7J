@@ -5,7 +5,7 @@
 sub_801D47C: @ 0x0801D47C
 	push {r4, r5, lr}
 	adds r4, r0, #0
-	ldr r5, _0801D4A4 @ =gUnk_08404734
+	ldr r5, _0801D4A4 @ =Img_LimitViewSquareFull
 	ldr r1, _0801D4A8 @ =0x06005080
 	adds r0, r5, #0
 	movs r2, #0x80
@@ -22,7 +22,7 @@ sub_801D47C: @ 0x0801D47C
 	strh r0, [r1]
 	b _0801D4C0
 	.align 2, 0
-_0801D4A4: .4byte gUnk_08404734
+_0801D4A4: .4byte Img_LimitViewSquareFull
 _0801D4A8: .4byte 0x06005080
 _0801D4AC: .4byte gBmSt
 _0801D4B0:

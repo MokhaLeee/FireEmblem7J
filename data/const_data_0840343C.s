@@ -68,8 +68,8 @@ gUnk_084041FC:	@ 0x084041FC
 gUnk_0840431C:	@ 0x0840431C
 	.incbin "FireEmblem7J.base.gba", 0x40431C, 0x404734 - 0x40431C
 
-	.global gUnk_08404734
-gUnk_08404734:	@ 0x08404734
+	.global Img_LimitViewSquareFull
+Img_LimitViewSquareFull:	@ 0x08404734
 	.incbin "FireEmblem7J.base.gba", 0x404734, 0x4047B4 - 0x404734
 
 	.global gUnk_084047B4
