@@ -58,7 +58,7 @@ void StartAvailableTurnEvents(void);
 // sub_8079754
 // sub_807977C
 // sub_807978C
-// TryCallSelectEvents
+s8 TryCallSelectEvents(void);
 // sub_80797D4
 // sub_807982C
 // sub_8079884

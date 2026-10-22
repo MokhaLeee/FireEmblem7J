@@ -210,3 +210,30 @@ void DisplayUnitEffectRange(struct Unit * unit)
 
     DisplayMoveRangeGraphics(flags);
 }
+
+void PlayerPhase_InitUnitMovementSelect(void)
+{
+    if (!MuExists() && UNIT_FACTION(gActiveUnit) == gPlaySt.faction &&
+        gActiveUnit->statusIndex != UNIT_STATUS_SLEEP &&
+        gActiveUnit->statusIndex != UNIT_STATUS_BERSERK)
+    {
+        StartMu(gActiveUnit);
+        HideUnitSprite(gActiveUnit);
+    }
+
+    MU_SetDefaultFacing_Auto();
+    TryCallSelectEvents();
+
+    gBmSt.flags |= BM_FLAG_1;
+
+    DisplayUnitEffectRange(gActiveUnit);
+
+    if (gActiveUnit->xPos == gBmSt.cursor.x && gActiveUnit->yPos == gBmSt.cursor.y)
+    {
+        PathArrowDisp_Init(0);
+        PlaySoundEffect(SONG_389);
+        return;
+    }
+
+    PathArrowDisp_Init(1);
+}

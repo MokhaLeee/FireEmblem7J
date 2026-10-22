@@ -4074,8 +4074,8 @@ _080303B4:
 	bx r1
 	.align 2, 0
 
-	thumb_func_start sub_80303BC
-sub_80303BC: @ 0x080303BC
+	thumb_func_start PathArrowDisp_Init
+PathArrowDisp_Init: @ 0x080303BC
 	push {r4, r5, lr}
 	adds r4, r0, #0
 	lsls r4, r4, #0x18

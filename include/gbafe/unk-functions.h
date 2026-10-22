@@ -153,7 +153,7 @@ void SetTacticianName(const char *name);
 // sub_80302D0
 // sub_8030314
 // sub_8030340
-// sub_80303BC
+void PathArrowDisp_Init(u8 a);
 // sub_8030448
 // sub_8030600
 // sub_8030664

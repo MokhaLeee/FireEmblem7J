@@ -39,7 +39,7 @@ void HandlePlayerCursorMovement(void);
 bool CanShowUnitStatScreen(struct Unit * unit);
 void PlayerPhase_MainIdle(ProcPtr proc);
 void DisplayUnitEffectRange(struct Unit * unit);
-// sub_801C980
+void PlayerPhase_InitUnitMovementSelect(void);
 // sub_801CA28
 // sub_801CA60
 // sub_801CACC
