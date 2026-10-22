@@ -57,7 +57,7 @@ int GetPlayerSelectKind(struct Unit * unit);
 bool CanMoveActiveUnitTo(int x, int y);
 void PlayerPhase_DisplayUnitMovement(void);
 void PlayerPhase_WaitForUnitMovement(ProcPtr proc);
-// sub_801D3B8
+void PlayerPhase_ResumeRangeDisplay(ProcPtr proc);
 // sub_801D44C
 // sub_801D47C
 // sub_801D4CC

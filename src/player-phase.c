@@ -711,3 +711,32 @@ void PlayerPhase_WaitForUnitMovement(ProcPtr proc)
     if (!MuExistsActive())
         Proc_Break(proc);
 }
+
+void PlayerPhase_ResumeRangeDisplay(ProcPtr proc)
+{
+    if (!gActiveUnit)
+    {
+        RefreshBMapGraphics();
+        Proc_Goto(proc, PL_PLAYERPHASE_DANGER_ZONE);
+        return;
+    }
+
+    gBmMapUnit[gActiveUnit->yPos][gActiveUnit->xPos] = gActiveUnit->index;
+    gActiveUnit->state &= ~US_HIDDEN;
+
+    RefreshBMapGraphics();
+
+    gBmMapUnit[gActiveUnit->yPos][gActiveUnit->xPos] = 0;
+    gActiveUnit->state |= US_HIDDEN;
+
+    switch (GetPlayerSelectKind(gActiveUnit))
+    {
+    case PLAYER_SELECT_CONTROL:
+        HideUnitSprite(gActiveUnit);
+        break;
+
+    case PLAYER_SELECT_NOCONTROL:
+        Proc_Goto(proc, PL_PLAYERPHASE_SEE_RANGE);
+        break;
+    }
+}
