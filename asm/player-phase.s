@@ -27,7 +27,7 @@ sub_801C8D4: @ 0x0801C8D4
 	ldr r0, _0801C944 @ =0x0202E3F0
 	ldr r0, [r0]
 	movs r1, #0
-	bl BmMapFillg
+	bl BmMapFill
 	adds r0, r6, #0
 	bl UnitHasMagicRank
 	lsls r0, r0, #0x18
@@ -39,7 +39,7 @@ _0801C91C:
 	ldr r0, _0801C948 @ =0x0202E3E4
 	ldr r0, [r0]
 	movs r1, #0
-	bl BmMapFillg
+	bl BmMapFill
 	ldr r0, [r5]
 	bl GetUnitWeaponUsabilityBits
 	cmp r0, #2
@@ -201,7 +201,7 @@ sub_801CA60: @ 0x0801CA60
 	ldr r0, [r0]
 	movs r1, #1
 	rsbs r1, r1, #0
-	bl BmMapFillg
+	bl BmMapFill
 	ldr r0, _0801CABC @ =gPlaySt
 	adds r0, #0x41
 	ldrb r0, [r0]
@@ -832,7 +832,7 @@ _0801CFF8:
 	ldr r0, _0801D038 @ =0x0202E3E4
 	ldr r0, [r0]
 	movs r1, #0
-	bl BmMapFillg
+	bl BmMapFill
 	ldr r0, [r5]
 	bl UnitBeginCantoAction
 	ldr r2, [r5]

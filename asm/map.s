@@ -64,10 +64,10 @@ InitChapterMap: @ 0x08019170
 	bl BmMapInit
 	ldr r0, [r6]
 	movs r1, #0
-	bl BmMapFillg
+	bl BmMapFill
 	ldr r0, [r5]
 	movs r1, #0
-	bl BmMapFillg
+	bl BmMapFill
 	bl sub_8019654
 	bl sub_802C100
 	bl RefreshTerrainMap
@@ -124,10 +124,10 @@ InitChapterPreviewMap: @ 0x0801926C
 	bl BmMapInit
 	ldr r0, [r6]
 	movs r1, #0
-	bl BmMapFillg
+	bl BmMapFill
 	ldr r0, [r5]
 	movs r1, #0
-	bl BmMapFillg
+	bl BmMapFill
 	bl sub_8019654
 	bl RefreshTerrainMap
 	pop {r4, r5, r6}
@@ -388,8 +388,8 @@ _08019480:
 	.align 2, 0
 _08019490: .4byte 0x03000438
 
-	thumb_func_start BmMapFillg
-BmMapFillg: @ 0x08019494
+	thumb_func_start BmMapFill
+BmMapFill: @ 0x08019494
 	push {r4, r5, lr}
 	sub sp, #4
 	adds r5, r0, #0
@@ -1705,11 +1705,11 @@ RefreshEntityMaps: @ 0x08019EA4
 	ldr r0, _08019EE0 @ =gBmMapUnit
 	ldr r0, [r0]
 	movs r1, #0
-	bl BmMapFillg
+	bl BmMapFill
 	ldr r0, _08019EE4 @ =gBmMapHidden
 	ldr r0, [r0]
 	movs r1, #0
-	bl BmMapFillg
+	bl BmMapFill
 	ldr r0, _08019EE8 @ =0x0202E3E8
 	ldr r2, [r0]
 	movs r1, #0
@@ -1720,7 +1720,7 @@ RefreshEntityMaps: @ 0x08019EA4
 	movs r1, #1
 _08019ECA:
 	adds r0, r2, #0
-	bl BmMapFillg
+	bl BmMapFill
 	bl sub_8019E24
 	bl sub_8019C50
 	bl sub_8019E50

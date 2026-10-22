@@ -3855,7 +3855,7 @@ sub_8036B28: @ 0x08036B28
 	ldr r0, _08036BBC @ =0x0202E3E4
 	ldr r0, [r0]
 	movs r1, #0
-	bl BmMapFillg
+	bl BmMapFill
 	ldr r0, _08036BC0 @ =gBmMapSize
 	movs r1, #2
 	ldrsh r0, [r0, r1]
@@ -3940,7 +3940,7 @@ _08036BE0:
 	ldr r0, _08036C3C @ =0x0202E3E4
 	ldr r0, [r0]
 	movs r1, #0
-	bl BmMapFillg
+	bl BmMapFill
 	ldr r0, _08036C40 @ =gBmMapSize
 	movs r1, #2
 	ldrsh r0, [r0, r1]
@@ -4001,7 +4001,7 @@ sub_8036C48: @ 0x08036C48
 	ldr r0, _08036CDC @ =0x0202E3E4
 	ldr r0, [r0]
 	movs r1, #0
-	bl BmMapFillg
+	bl BmMapFill
 	ldr r0, _08036CE0 @ =gBmMapSize
 	movs r1, #2
 	ldrsh r0, [r0, r1]
@@ -4223,7 +4223,7 @@ sub_8036DD8: @ 0x08036DD8
 	ldr r0, [r4]
 	movs r1, #1
 	rsbs r1, r1, #0
-	bl BmMapFillg
+	bl BmMapFill
 	movs r0, #0x11
 	ldrsb r0, [r5, r0]
 	ldr r1, [r4]
@@ -5468,7 +5468,7 @@ sub_8037760: @ 0x08037760
 	ldr r0, _080377F8 @ =gBmMapMovement
 	ldr r0, [r0]
 	movs r1, #0
-	bl BmMapFillg
+	bl BmMapFill
 	movs r0, #0x10
 	ldrsb r0, [r6, r0]
 	movs r1, #0x11
@@ -7334,7 +7334,7 @@ _0803859A:
 	ldr r0, _080386A4 @ =0x0202E3E4
 	ldr r0, [r0]
 	movs r1, #0
-	bl BmMapFillg
+	bl BmMapFill
 	mov r0, r8
 	bl sub_8017774
 	adds r4, r0, #0
@@ -7922,7 +7922,7 @@ sub_8038A0C: @ 0x08038A0C
 	ldr r0, [r4]
 	movs r1, #1
 	rsbs r1, r1, #0
-	bl BmMapFillg
+	bl BmMapFill
 	ldr r2, [r6]
 	movs r0, #0x11
 	ldrsb r0, [r2, r0]
@@ -7987,7 +7987,7 @@ _08038AB2:
 	ldr r0, [r4]
 	movs r1, #1
 	rsbs r1, r1, #0
-	bl BmMapFillg
+	bl BmMapFill
 	ldr r0, _08038AF0 @ =gActiveUnit
 	ldr r2, [r0]
 	movs r0, #0x11
@@ -8212,7 +8212,7 @@ sub_8038C64: @ 0x08038C64
 	ldr r0, [r4]
 	movs r1, #1
 	rsbs r1, r1, #0
-	bl BmMapFillg
+	bl BmMapFill
 	ldr r2, [r6]
 	movs r0, #0x11
 	ldrsb r0, [r2, r0]
@@ -8411,7 +8411,7 @@ AiFillReversedAttackRangeMap: @ 0x08038E18
 	ldr r0, _08038E68 @ =0x0202E3E4
 	ldr r0, [r0]
 	movs r1, #0
-	bl BmMapFillg
+	bl BmMapFill
 	movs r6, #0x10
 	ldrsb r6, [r4, r6]
 	ldrb r4, [r4, #0x11]
@@ -8470,7 +8470,7 @@ sub_8038E6C: @ 0x08038E6C
 	ldr r0, _08038F28 @ =0x0202E3E4
 	ldr r0, [r0]
 	movs r1, #0
-	bl BmMapFillg
+	bl BmMapFill
 	ldr r0, _08038F2C @ =gBmMapSize
 	movs r1, #2
 	ldrsh r0, [r0, r1]
@@ -9775,7 +9775,7 @@ sub_8039870: @ 0x08039870
 	ldr r0, _08039898 @ =0x0202E3F0
 	ldr r0, [r0]
 	movs r1, #0
-	bl BmMapFillg
+	bl BmMapFill
 	bl sub_803989C
 _08039890:
 	pop {r0}
@@ -10738,7 +10738,7 @@ sub_8039FB8: @ 0x08039FB8
 	ldr r0, _0803A0FC @ =0x0202E3F0
 	ldr r0, [r0]
 	movs r1, #0
-	bl BmMapFillg
+	bl BmMapFill
 	movs r4, #1
 _08039FE6:
 	adds r0, r4, #0
@@ -11129,7 +11129,7 @@ sub_803A28C: @ 0x0803A28C
 	ldr r0, [r0]
 	movs r1, #1
 	rsbs r1, r1, #0
-	bl BmMapFillg
+	bl BmMapFill
 	mov r0, sl
 	ldr r1, [sp, #0xc]
 	movs r2, #1
@@ -11270,7 +11270,7 @@ sub_803A3B0: @ 0x0803A3B0
 	movs r5, #1
 	rsbs r5, r5, #0
 	adds r1, r5, #0
-	bl BmMapFillg
+	bl BmMapFill
 	ldr r1, [r4]
 	lsls r0, r7, #2
 	adds r0, r0, r1
@@ -11347,7 +11347,7 @@ _0803A46C:
 	ldr r0, _0803A534 @ =gBmMapMovement
 	ldr r0, [r0]
 	movs r1, #0
-	bl BmMapFillg
+	bl BmMapFill
 	ldr r0, [sp, #0xc]
 	lsls r0, r0, #0x10
 	mov sb, r0
@@ -13292,7 +13292,7 @@ _0803B33E:
 	ldr r0, _0803B448 @ =0x0202E3E4
 	ldr r0, [r0]
 	movs r1, #0
-	bl BmMapFillg
+	bl BmMapFill
 	movs r4, #0x10
 	ldrsb r4, [r6, r4]
 	movs r5, #0x11
@@ -13457,7 +13457,7 @@ _0803B4CC:
 	ldr r0, _0803B554 @ =0x0202E3E4
 	ldr r0, [r0]
 	movs r1, #0
-	bl BmMapFillg
+	bl BmMapFill
 	ldr r0, _0803B540 @ =gActiveUnit
 	ldr r0, [r0]
 	bl GetUnitMagRange
@@ -14059,7 +14059,7 @@ _0803B920:
 	ldr r0, _0803BA28 @ =0x0202E3E4
 	ldr r0, [r0]
 	movs r1, #0
-	bl BmMapFillg
+	bl BmMapFill
 	movs r4, #0x10
 	ldrsb r4, [r6, r4]
 	movs r5, #0x11
@@ -14245,7 +14245,7 @@ _0803BAAC:
 	ldr r0, _0803BBAC @ =0x0202E3E4
 	ldr r0, [r0]
 	movs r1, #0
-	bl BmMapFillg
+	bl BmMapFill
 	movs r4, #0x10
 	ldrsb r4, [r6, r4]
 	movs r5, #0x11

@@ -17874,11 +17874,11 @@ sub_80455BC: @ 0x080455BC
 	ldr r0, _08045614 @ =gBmMapUnit
 	ldr r0, [r0]
 	movs r1, #0
-	bl BmMapFillg
+	bl BmMapFill
 	ldr r0, _08045618 @ =0x0202E3E8
 	ldr r0, [r0]
 	movs r1, #1
-	bl BmMapFillg
+	bl BmMapFill
 	movs r4, #1
 _080455D4:
 	adds r0, r4, #0
@@ -18067,7 +18067,7 @@ sub_804572C: @ 0x0804572C
 	movs r1, #1
 _0804574A:
 	adds r0, r2, #0
-	bl BmMapFillg
+	bl BmMapFill
 	bl sub_80455BC
 	bl RenderMap
 	pop {r0}

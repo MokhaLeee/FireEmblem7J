@@ -1094,7 +1094,7 @@ sub_8027B24: @ 0x08027B24
 	ldr r0, [r0]
 	movs r1, #1
 	rsbs r1, r1, #0
-	bl BmMapFillg
+	bl BmMapFill
 	ldr r0, _08027B58 @ =gUnk_08C04E94
 	ldr r1, _08027B5C @ =sub_8027B0C
 	bl sub_804B6CC
@@ -1122,7 +1122,7 @@ sub_8027B64: @ 0x08027B64
 	ldr r0, [r0]
 	movs r1, #1
 	rsbs r1, r1, #0
-	bl BmMapFillg
+	bl BmMapFill
 	ldr r0, _08027B9C @ =gUnk_08C04E94
 	ldr r1, _08027BA0 @ =sub_8027B0C
 	bl sub_804B6CC
@@ -1447,7 +1447,7 @@ sub_8027E44: @ 0x08027E44
 	ldr r0, [r0]
 	movs r1, #1
 	rsbs r1, r1, #0
-	bl BmMapFillg
+	bl BmMapFill
 	ldr r0, _08027E8C @ =gUnk_08C04E94
 	ldr r1, _08027E90 @ =sub_8027E1C
 	bl sub_804B6CC
@@ -1502,7 +1502,7 @@ sub_8027EBC: @ 0x08027EBC
 	ldr r0, [r0]
 	movs r1, #1
 	rsbs r1, r1, #0
-	bl BmMapFillg
+	bl BmMapFill
 	ldr r0, _08027F04 @ =gUnk_08C04E74
 	ldr r1, _08027F08 @ =sub_8027EA0
 	bl sub_804B6CC
@@ -1580,7 +1580,7 @@ sub_8027F74: @ 0x08027F74
 	ldr r0, [r0]
 	movs r1, #1
 	rsbs r1, r1, #0
-	bl BmMapFillg
+	bl BmMapFill
 	ldr r0, _08027FB8 @ =gUnk_08C04F14
 	bl sub_804B664
 	adds r4, r0, #0
@@ -1818,7 +1818,7 @@ sub_802814C: @ 0x0802814C
 	ldr r0, [r0]
 	movs r1, #1
 	rsbs r1, r1, #0
-	bl BmMapFillg
+	bl BmMapFill
 	ldr r0, _08028180 @ =gUnk_08C04E34
 	bl sub_804B664
 	adds r4, r0, #0
@@ -1843,7 +1843,7 @@ sub_8028184: @ 0x08028184
 	ldr r0, [r0]
 	movs r1, #1
 	rsbs r1, r1, #0
-	bl BmMapFillg
+	bl BmMapFill
 	ldr r0, _080281B8 @ =gUnk_08C04E14
 	bl sub_804B664
 	adds r4, r0, #0
@@ -1894,7 +1894,7 @@ sub_80281F0: @ 0x080281F0
 	ldr r0, [r0]
 	movs r1, #1
 	rsbs r1, r1, #0
-	bl BmMapFillg
+	bl BmMapFill
 	ldr r0, _08028224 @ =gUnk_08C04DF4
 	bl sub_804B664
 	adds r4, r0, #0
@@ -1945,7 +1945,7 @@ sub_802825C: @ 0x0802825C
 	ldr r0, [r0]
 	movs r1, #1
 	rsbs r1, r1, #0
-	bl BmMapFillg
+	bl BmMapFill
 	ldr r0, _08028290 @ =gUnk_08C04DD4
 	bl sub_804B664
 	adds r4, r0, #0

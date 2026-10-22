@@ -179,7 +179,7 @@ _0801A112:
 	ldr r0, [r4]
 	movs r1, #1
 	rsbs r1, r1, #0
-	bl BmMapFillg
+	bl BmMapFill
 	ldr r0, [r6, #4]
 	strb r5, [r0]
 	ldr r0, [r6, #4]
@@ -2640,7 +2640,7 @@ sub_801B3E8: @ 0x0801B3E8
 	ldr r0, _0801B418 @ =0x0202E3E4
 	ldr r0, [r0]
 	movs r1, #0
-	bl BmMapFillg
+	bl BmMapFill
 	bl GetActiveFactionOpposingAlliance
 	mov sb, r0
 	mov r6, sb
@@ -2720,7 +2720,7 @@ _0801B466:
 	ldr r0, _0801B4E0 @ =0x0202E3F0
 	ldr r0, [r0]
 	movs r1, #0
-	bl BmMapFillg
+	bl BmMapFill
 	cmp r5, #0
 	beq _0801B4BC
 	movs r0, #1

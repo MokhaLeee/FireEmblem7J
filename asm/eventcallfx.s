@@ -3746,7 +3746,7 @@ sub_807EF7C: @ 0x0807EF7C
 	ldr r0, _0807F000 @ =0x0202E3F0
 	ldr r0, [r0]
 	movs r1, #0
-	bl BmMapFillg
+	bl BmMapFill
 	movs r0, #0x27
 	bl GetUnitFromCharId
 	adds r1, r0, #0
@@ -3884,7 +3884,7 @@ sub_807F104: @ 0x0807F104
 	ldr r0, _0807F164 @ =0x0202E3F0
 	ldr r0, [r0]
 	movs r1, #0
-	bl BmMapFillg
+	bl BmMapFill
 	movs r4, #1
 _0807F114:
 	adds r0, r4, #0

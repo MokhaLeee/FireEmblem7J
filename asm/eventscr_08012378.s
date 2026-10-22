@@ -334,7 +334,7 @@ sub_80125EC: @ 0x080125EC
 	ldr r0, _08012638 @ =0x0202E3F0
 	ldr r0, [r0]
 	movs r1, #0
-	bl BmMapFillg
+	bl BmMapFill
 	ldr r0, _0801263C @ =ProcScr_Event_08C0169C
 	adds r1, r4, #0
 	bl Proc_StartBlocking

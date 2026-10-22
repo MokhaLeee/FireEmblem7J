@@ -984,11 +984,11 @@ sub_801DF68: @ 0x0801DF68
 	ldr r0, [r6]
 	movs r1, #1
 	rsbs r1, r1, #0
-	bl BmMapFillg
+	bl BmMapFill
 	ldr r0, _0801E038 @ =0x0202E3E4
 	ldr r0, [r0]
 	movs r1, #0
-	bl BmMapFillg
+	bl BmMapFill
 	ldr r0, [r6]
 	bl SetWorkingBmMap
 	mov r0, r8

@@ -2711,7 +2711,7 @@ Event30_LoadUnit: @ 0x0800CC74
 	ldr r0, _0800CCA0 @ =0x0202E3F0
 	ldr r0, [r0]
 	movs r1, #0
-	bl BmMapFillg
+	bl BmMapFill
 	ldr r0, [r4, #0x30]
 	ldr r0, [r0, #4]
 	str r0, [r4, #0x44]
@@ -2746,7 +2746,7 @@ Event31_LoadUnit: @ 0x0800CCB8
 	ldr r0, _0800CCE4 @ =0x0202E3F0
 	ldr r0, [r0]
 	movs r1, #0
-	bl BmMapFillg
+	bl BmMapFill
 	ldr r0, [r4, #0x30]
 	ldr r0, [r0, #4]
 	str r0, [r4, #0x44]
@@ -2799,7 +2799,7 @@ _0800CD18:
 	ldr r0, _0800CD50 @ =0x0202E3F0
 	ldr r0, [r0]
 	movs r1, #0
-	bl BmMapFillg
+	bl BmMapFill
 	ldr r0, [r4, #0x30]
 	ldr r0, [r0, #8]
 	str r0, [r4, #0x44]
@@ -2837,7 +2837,7 @@ sub_800CD68: @ 0x0800CD68
 	ldr r0, _0800CD8C @ =0x0202E3F0
 	ldr r0, [r0]
 	movs r1, #0
-	bl BmMapFillg
+	bl BmMapFill
 	ldr r0, [r4, #0x30]
 	ldr r0, [r0, #4]
 	str r0, [r4, #0x44]
@@ -2868,7 +2868,7 @@ _0800CDA8:
 	ldr r0, _0800CDC8 @ =0x0202E3F0
 	ldr r0, [r0]
 	movs r1, #0
-	bl BmMapFillg
+	bl BmMapFill
 	ldr r0, [r4, #0x30]
 	ldr r0, [r0, #8]
 	str r0, [r4, #0x44]
@@ -2902,7 +2902,7 @@ _0800CDE8:
 	ldr r0, _0800CE08 @ =0x0202E3F0
 	ldr r0, [r0]
 	movs r1, #0
-	bl BmMapFillg
+	bl BmMapFill
 	cmp r4, #1
 	beq _0800CE0C
 	cmp r4, #1
@@ -2979,7 +2979,7 @@ _0800CE70:
 	ldr r0, _0800CE90 @ =0x0202E3F0
 	ldr r0, [r0]
 	movs r1, #0
-	bl BmMapFillg
+	bl BmMapFill
 	cmp r4, #1
 	beq _0800CE94
 	cmp r4, #1
@@ -3475,7 +3475,7 @@ sub_800D204: @ 0x0800D204
 	ldr r0, _0800D228 @ =0x0202E3F0
 	ldr r0, [r0]
 	movs r1, #0
-	bl BmMapFillg
+	bl BmMapFill
 	str r4, [r5, #0x40]
 _0800D220:
 	pop {r4, r5}
@@ -3498,7 +3498,7 @@ _0800D23E:
 	ldr r0, _0800D25C @ =0x0202E3F0
 	ldr r0, [r0]
 	movs r1, #0
-	bl BmMapFillg
+	bl BmMapFill
 	adds r1, r4, #0
 	adds r1, #0x5e
 	movs r0, #4
@@ -9495,7 +9495,7 @@ sub_800FCBC: @ 0x0800FCBC
 	ldr r0, _0800FCF4 @ =0x0202E3F0
 	ldr r0, [r0]
 	movs r1, #0
-	bl BmMapFillg
+	bl BmMapFill
 	ldr r0, [r4, #8]
 	str r0, [r5, #0x44]
 	ldr r0, _0800FCF8 @ =sub_800CF2C

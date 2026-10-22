@@ -769,11 +769,11 @@ sub_8021FAC: @ 0x08021FAC
 	movs r5, #1
 	rsbs r5, r5, #0
 	adds r1, r5, #0
-	bl BmMapFillg
+	bl BmMapFill
 	ldr r0, _08021FEC @ =0x0202E3E4
 	ldr r0, [r0]
 	movs r1, #0
-	bl BmMapFillg
+	bl BmMapFill
 	ldr r4, _08021FF0 @ =gActiveUnit
 	ldr r2, [r4]
 	ldr r0, [r2, #0xc]
@@ -937,11 +937,11 @@ sub_8022100: @ 0x08022100
 	ldr r0, [r0]
 	movs r1, #1
 	rsbs r1, r1, #0
-	bl BmMapFillg
+	bl BmMapFill
 	ldr r0, _0802214C @ =0x0202E3E4
 	ldr r0, [r0]
 	movs r1, #0
-	bl BmMapFillg
+	bl BmMapFill
 	ldr r4, _08022150 @ =gActiveUnit
 	ldr r0, [r4]
 	movs r1, #0
@@ -2459,11 +2459,11 @@ sub_8022CFC: @ 0x08022CFC
 	ldr r0, [r0]
 	movs r1, #1
 	rsbs r1, r1, #0
-	bl BmMapFillg
+	bl BmMapFill
 	ldr r4, _08022D7C @ =0x0202E3E4
 	ldr r0, [r4]
 	movs r1, #0
-	bl BmMapFillg
+	bl BmMapFill
 	ldr r0, [r4]
 	bl SetWorkingBmMap
 	ldr r4, _08022D80 @ =gActiveUnit
@@ -2635,11 +2635,11 @@ sub_8022E68: @ 0x08022E68
 	ldr r0, _08022EA8 @ =gBmMapMovement
 	ldr r0, [r0]
 	adds r1, r4, #0
-	bl BmMapFillg
+	bl BmMapFill
 	ldr r0, _08022EAC @ =0x0202E3E4
 	ldr r0, [r0]
 	movs r1, #0
-	bl BmMapFillg
+	bl BmMapFill
 	ldr r0, [r5]
 	adds r1, r6, #0
 	bl sub_801B040
@@ -2748,11 +2748,11 @@ sub_8022F40: @ 0x08022F40
 	ldr r0, [r0]
 	movs r1, #1
 	rsbs r1, r1, #0
-	bl BmMapFillg
+	bl BmMapFill
 	ldr r0, _08022F90 @ =0x0202E3E4
 	ldr r0, [r0]
 	movs r1, #0
-	bl BmMapFillg
+	bl BmMapFill
 	ldr r0, [r5]
 	adds r1, r6, #0
 	bl sub_801B040

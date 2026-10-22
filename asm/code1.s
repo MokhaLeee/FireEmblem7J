@@ -4646,12 +4646,12 @@ sub_8030814: @ 0x08030814
 	ldr r5, _08030868 @ =0x0202E3E4
 	ldr r0, [r5]
 	movs r1, #0
-	bl BmMapFillg
+	bl BmMapFill
 	ldr r0, _0803086C @ =gBmMapMovement
 	ldr r0, [r0]
 	movs r1, #1
 	rsbs r1, r1, #0
-	bl BmMapFillg
+	bl BmMapFill
 	bl CalcForceDeployedUnitCounts
 	lsls r0, r0, #4
 	adds r4, r4, r0
@@ -6690,7 +6690,7 @@ sub_803186C: @ 0x0803186C
 	ldr r0, _080318A4 @ =0x0202E3E4
 	ldr r0, [r0]
 	movs r1, #0
-	bl BmMapFillg
+	bl BmMapFill
 	ldr r4, _080318A8 @ =gActiveUnit
 	ldr r0, [r4]
 	bl sub_801A8B4
@@ -6803,7 +6803,7 @@ sub_8031958: @ 0x08031958
 	ldr r0, [r4]
 	movs r1, #1
 	rsbs r1, r1, #0
-	bl BmMapFillg
+	bl BmMapFill
 	ldr r0, _08031990 @ =gActiveUnit
 	ldr r2, [r0]
 	movs r0, #0x11
@@ -6835,7 +6835,7 @@ sub_8031994: @ 0x08031994
 	ldr r0, _08031A48 @ =0x0202E3F0
 	ldr r0, [r0]
 	movs r1, #0
-	bl BmMapFillg
+	bl BmMapFill
 	movs r5, #0x81
 	ldr r6, _08031A4C @ =gActionSt
 _080319AE:
@@ -12392,7 +12392,7 @@ _08034624:
 	ldr r0, [r0]
 	movs r1, #1
 	rsbs r1, r1, #0
-	bl BmMapFillg
+	bl BmMapFill
 _08034630:
 	pop {r4}
 	pop {r0}

@@ -1231,7 +1231,7 @@ _0800AF7A:
 	ldr r0, _0800AF9C @ =0x0202E3F0
 	ldr r0, [r0]
 	movs r1, #0
-	bl BmMapFillg
+	bl BmMapFill
 	ldr r0, [r4, #0x30]
 	ldr r0, [r0]
 	subs r0, #0x84

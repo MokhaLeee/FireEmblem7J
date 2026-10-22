@@ -424,7 +424,7 @@ sub_80240E4: @ 0x080240E4
 	ldr r0, _08024144 @ =0x0202E3E4
 	ldr r0, [r0]
 	movs r1, #0
-	bl BmMapFillg
+	bl BmMapFill
 	mov r0, r8
 	bl sub_8017774
 	adds r4, r0, #0
@@ -549,7 +549,7 @@ sub_80241F0: @ 0x080241F0
 	ldr r0, _0802425C @ =0x0202E3E4
 	ldr r0, [r0]
 	movs r1, #0
-	bl BmMapFillg
+	bl BmMapFill
 	ldr r7, _08024260 @ =sub_802414C
 	adds r0, r4, #0
 	adds r1, r5, #0
@@ -649,7 +649,7 @@ sub_80242C4: @ 0x080242C4
 	ldr r0, _080242F0 @ =0x0202E3E4
 	ldr r0, [r0]
 	movs r1, #0
-	bl BmMapFillg
+	bl BmMapFill
 	ldr r2, _080242F4 @ =sub_8024264
 	adds r0, r4, #0
 	adds r1, r5, #0
@@ -716,7 +716,7 @@ sub_8024350: @ 0x08024350
 	ldr r0, _0802437C @ =0x0202E3E4
 	ldr r0, [r0]
 	movs r1, #0
-	bl BmMapFillg
+	bl BmMapFill
 	ldr r2, _08024380 @ =sub_80242F8
 	adds r0, r4, #0
 	adds r1, r5, #0
@@ -795,7 +795,7 @@ sub_80243F0: @ 0x080243F0
 	ldr r0, _0802441C @ =0x0202E3E4
 	ldr r0, [r0]
 	movs r1, #0
-	bl BmMapFillg
+	bl BmMapFill
 	ldr r2, _08024420 @ =sub_8024384
 	adds r0, r4, #0
 	adds r1, r5, #0
@@ -883,7 +883,7 @@ sub_80244A4: @ 0x080244A4
 	ldr r0, _080244D0 @ =0x0202E3E4
 	ldr r0, [r0]
 	movs r1, #0
-	bl BmMapFillg
+	bl BmMapFill
 	ldr r2, _080244D4 @ =sub_8024424
 	adds r0, r4, #0
 	adds r1, r5, #0
@@ -946,7 +946,7 @@ sub_8024520: @ 0x08024520
 	ldr r0, _0802454C @ =0x0202E3E4
 	ldr r0, [r0]
 	movs r1, #0
-	bl BmMapFillg
+	bl BmMapFill
 	ldr r2, _08024550 @ =sub_80244D8
 	adds r0, r4, #0
 	adds r1, r5, #0
@@ -1098,7 +1098,7 @@ sub_8024638: @ 0x08024638
 	ldr r0, _0802469C @ =0x0202E3E4
 	ldr r0, [r0]
 	movs r1, #0
-	bl BmMapFillg
+	bl BmMapFill
 	adds r0, r7, #0
 	bl sub_8017774
 	adds r4, r0, #0
@@ -1206,7 +1206,7 @@ sub_8024724: @ 0x08024724
 	ldr r0, _08024758 @ =0x0202E3E4
 	ldr r0, [r0]
 	movs r1, #0
-	bl BmMapFillg
+	bl BmMapFill
 	cmp r4, #0x14
 	beq _08024760
 	cmp r4, #0x1e
@@ -1439,7 +1439,7 @@ sub_8024904: @ 0x08024904
 	ldr r0, _08024930 @ =0x0202E3E4
 	ldr r0, [r0]
 	movs r1, #0
-	bl BmMapFillg
+	bl BmMapFill
 	ldr r2, _08024934 @ =sub_80248C0
 	adds r0, r4, #0
 	adds r1, r5, #0
@@ -1512,7 +1512,7 @@ sub_8024990: @ 0x08024990
 	ldr r0, _080249BC @ =0x0202E3E4
 	ldr r0, [r0]
 	movs r1, #0
-	bl BmMapFillg
+	bl BmMapFill
 	ldr r2, _080249C0 @ =sub_8024938
 	adds r0, r4, #0
 	adds r1, r5, #0
@@ -1579,7 +1579,7 @@ sub_8024A18: @ 0x08024A18
 	ldr r0, _08024A44 @ =0x0202E3E4
 	ldr r0, [r0]
 	movs r1, #0
-	bl BmMapFillg
+	bl BmMapFill
 	ldr r2, _08024A48 @ =sub_80249C4
 	adds r0, r4, #0
 	adds r1, r5, #0
@@ -1607,7 +1607,7 @@ sub_8024A4C: @ 0x08024A4C
 	ldr r0, _08024A90 @ =0x0202E3E4
 	ldr r0, [r0]
 	movs r1, #0
-	bl BmMapFillg
+	bl BmMapFill
 	ldr r0, [r4]
 	bl GetUnitMagRange
 	adds r2, r0, #0
@@ -1679,7 +1679,7 @@ sub_8024AE8: @ 0x08024AE8
 	ldr r0, _08024B14 @ =0x0202E3E4
 	ldr r0, [r0]
 	movs r1, #0
-	bl BmMapFillg
+	bl BmMapFill
 	ldr r2, _08024B18 @ =sub_8024A98
 	adds r0, r4, #0
 	adds r1, r5, #0
@@ -1745,7 +1745,7 @@ sub_8024B6C: @ 0x08024B6C
 	ldr r0, _08024B98 @ =0x0202E3E4
 	ldr r0, [r0]
 	movs r1, #0
-	bl BmMapFillg
+	bl BmMapFill
 	ldr r2, _08024B9C @ =sub_8024B1C
 	adds r0, r4, #0
 	adds r1, r5, #0
@@ -1796,7 +1796,7 @@ sub_8024BD8: @ 0x08024BD8
 	ldr r0, _08024BF8 @ =0x0202E3E4
 	ldr r0, [r0]
 	movs r1, #0
-	bl BmMapFillg
+	bl BmMapFill
 	ldr r0, _08024BFC @ =sub_8024BA0
 	bl sub_8023F9C
 	pop {r0}
@@ -1934,7 +1934,7 @@ sub_8024CE4: @ 0x08024CE4
 	ldr r0, _08024D04 @ =0x0202E3E4
 	ldr r0, [r0]
 	movs r1, #0
-	bl BmMapFillg
+	bl BmMapFill
 	ldr r0, _08024D08 @ =sub_8024C00
 	bl sub_8023F9C
 	pop {r0}
@@ -1952,7 +1952,7 @@ sub_8024D0C: @ 0x08024D0C
 	ldr r0, _08024D2C @ =0x0202E3E4
 	ldr r0, [r0]
 	movs r1, #0
-	bl BmMapFillg
+	bl BmMapFill
 	ldr r0, _08024D30 @ =sub_8024C4C
 	bl sub_8023F9C
 	pop {r0}
@@ -1970,7 +1970,7 @@ sub_8024D34: @ 0x08024D34
 	ldr r0, _08024D54 @ =0x0202E3E4
 	ldr r0, [r0]
 	movs r1, #0
-	bl BmMapFillg
+	bl BmMapFill
 	ldr r0, _08024D58 @ =sub_8024C98
 	bl sub_8023F9C
 	pop {r0}
@@ -2022,7 +2022,7 @@ sub_8024D94: @ 0x08024D94
 	ldr r0, _08024DC0 @ =0x0202E3E4
 	ldr r0, [r0]
 	movs r1, #0
-	bl BmMapFillg
+	bl BmMapFill
 	ldr r2, _08024DC4 @ =sub_8024D5C
 	adds r0, r4, #0
 	adds r1, r5, #0
@@ -2047,7 +2047,7 @@ sub_8024DC8: @ 0x08024DC8
 	ldr r0, _08024DF4 @ =0x0202E3E4
 	ldr r0, [r0]
 	movs r1, #0
-	bl BmMapFillg
+	bl BmMapFill
 	ldr r2, _08024DF8 @ =sub_80246A4
 	adds r0, r4, #0
 	adds r1, r5, #0
@@ -2119,7 +2119,7 @@ sub_8024E54: @ 0x08024E54
 	ldr r0, _08024E80 @ =0x0202E3E4
 	ldr r0, [r0]
 	movs r1, #0
-	bl BmMapFillg
+	bl BmMapFill
 	ldr r2, _08024E84 @ =sub_8024DFC
 	adds r0, r4, #0
 	adds r1, r5, #0
@@ -2323,7 +2323,7 @@ MakeTargetListForDanceRing: @ 0x08024FF0
 	ldr r0, _0802501C @ =0x0202E3E4
 	ldr r0, [r0]
 	movs r1, #0
-	bl BmMapFillg
+	bl BmMapFill
 	ldr r2, _08025020 @ =sub_8024F6C
 	adds r0, r4, #0
 	adds r1, r5, #0
@@ -2392,7 +2392,7 @@ MakeTargetListForMine: @ 0x0802507C
 	ldr r0, _080250A8 @ =0x0202E3E4
 	ldr r0, [r0]
 	movs r1, #0
-	bl BmMapFillg
+	bl BmMapFill
 	ldr r2, _080250AC @ =sub_8025024
 	adds r0, r4, #0
 	adds r1, r5, #0
@@ -2444,7 +2444,7 @@ sub_80250E0: @ 0x080250E0
 	ldr r0, _0802510C @ =0x0202E3E4
 	ldr r0, [r0]
 	movs r1, #0
-	bl BmMapFillg
+	bl BmMapFill
 	ldr r2, _08025110 @ =sub_80250B0
 	adds r0, r4, #0
 	adds r1, r5, #0
