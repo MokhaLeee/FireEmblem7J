@@ -6788,7 +6788,7 @@ sub_803192C: @ 0x0803192C
 	subs r1, r1, r2
 	lsls r1, r1, #0x18
 	asrs r1, r1, #0x18
-	bl sub_8019FC0
+	bl GenerateUnitMovementMapExt
 	bl sub_80318EC
 	pop {r1}
 	bx r1

@@ -17,7 +17,7 @@ sub_801C8D4: @ 0x0801C8D4
 	subs r1, r1, r2
 	lsls r1, r1, #0x18
 	asrs r1, r1, #0x18
-	bl sub_8019FC0
+	bl GenerateUnitMovementMapExt
 	ldr r0, [r5]
 	ldr r0, [r0, #0xc]
 	movs r1, #0x40

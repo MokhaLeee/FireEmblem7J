@@ -3,7 +3,7 @@
 #include "global.h"
 #include "mu.h"
 
-// ??? sub_8019FC0
+// ??? GenerateUnitMovementMapExt
 // ??? sub_8019FFC
 // ??? MapFloodRange_Unitless
 // ??? GenerateExtendedMovementMap

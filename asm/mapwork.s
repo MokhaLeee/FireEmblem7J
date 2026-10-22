@@ -1,8 +1,8 @@
 	.include "macro.inc"
 	.syntax unified
 
-	thumb_func_start sub_8019FC0
-sub_8019FC0: @ 0x08019FC0
+	thumb_func_start GenerateUnitMovementMapExt
+GenerateUnitMovementMapExt: @ 0x08019FC0
 	push {r4, r5, lr}
 	adds r5, r0, #0
 	lsls r4, r1, #0x18
@@ -2698,7 +2698,7 @@ _0801B466:
 	lsls r1, r1, #0x18
 	asrs r1, r1, #0x18
 	adds r0, r4, #0
-	bl sub_8019FC0
+	bl GenerateUnitMovementMapExt
 	movs r1, #0x11
 	ldrsb r1, [r4, r1]
 	ldr r0, _0801B4DC @ =gBmMapUnit

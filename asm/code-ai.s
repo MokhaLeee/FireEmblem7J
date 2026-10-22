@@ -5858,7 +5858,7 @@ sub_8037A40: @ 0x08037A40
 	beq _08037A60
 	adds r0, r2, #0
 	movs r1, #0
-	bl sub_8019FC0
+	bl GenerateUnitMovementMapExt
 	b _08037A66
 	.align 2, 0
 _08037A5C: .4byte 0x0203A8E8
@@ -9991,7 +9991,7 @@ _08039A16:
 _08039A28:
 	adds r0, r2, #0
 	movs r1, #0x7c
-	bl sub_8019FC0
+	bl GenerateUnitMovementMapExt
 	ldr r0, _08039AB4 @ =gBmMapSize
 	movs r2, #2
 	ldrsh r0, [r0, r2]
@@ -10400,7 +10400,7 @@ sub_8039D48: @ 0x08039D48
 	ldr r6, _08039DB8 @ =gActiveUnit
 	ldr r0, [r6]
 	movs r1, #0x7c
-	bl sub_8019FC0
+	bl GenerateUnitMovementMapExt
 	bl sub_8039DF0
 	adds r4, r0, #0
 	cmp r4, #0
