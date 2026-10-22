@@ -51,7 +51,7 @@ bool RunPotentialWaitEvents(void);
 bool EnsureCameraOntoActiveUnitPosition(ProcPtr proc);
 void PlayerPhase_FinishAction(ProcPtr proc);
 void EventApplyPlayerUnitMove(void);
-// sub_801D184
+void PlayerPhase_OpenActionMenu(ProcPtr proc);
 // sub_801D1C0
 int GetPlayerSelectKind(struct Unit * unit);
 bool CanMoveActiveUnitTo(int x, int y);

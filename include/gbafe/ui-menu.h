@@ -50,7 +50,7 @@ struct MenuProc * StartAdjustedMenu(const struct MenuDef * def, int xSubject, in
 // sub_804B28C
 // sub_804B29C
 // sub_804B2BC
-// sub_804B2DC
+struct MenuProc * StartSemiCenteredOrphanMenu(const struct MenuDef * def, int xSubject, int xTileLeft, int xTileRight);
 // sub_804B334
 // sub_804B378
 // sub_804B390

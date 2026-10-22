@@ -183,7 +183,7 @@ sub_8021ACC: @ 0x08021ACC
 	subs r1, r1, r2
 	movs r2, #1
 	movs r3, #0x16
-	bl sub_804B2DC
+	bl StartSemiCenteredOrphanMenu
 	ldr r1, _08021B24 @ =gActiveUnit
 	ldr r2, [r1]
 	movs r1, #0x10
@@ -262,7 +262,7 @@ sub_8021B8C: @ 0x08021B8C
 	subs r1, r1, r2
 	movs r2, #1
 	movs r3, #0x16
-	bl sub_804B2DC
+	bl StartSemiCenteredOrphanMenu
 	pop {r0}
 	bx r0
 	.align 2, 0
@@ -308,7 +308,7 @@ sub_8021BE4: @ 0x08021BE4
 	subs r1, r1, r2
 	movs r2, #1
 	movs r3, #0x16
-	bl sub_804B2DC
+	bl StartSemiCenteredOrphanMenu
 	bl HideMoveRangeGraphics
 	movs r0, #0x3b
 	pop {r1}
@@ -2014,7 +2014,7 @@ _08022974:
 	subs r1, r1, r2
 	movs r2, #1
 	movs r3, #0x16
-	bl sub_804B2DC
+	bl StartSemiCenteredOrphanMenu
 	movs r0, #0x1b
 _08022996:
 	add sp, #4

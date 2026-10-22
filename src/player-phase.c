@@ -609,3 +609,12 @@ void EventApplyPlayerUnitMove(void)
         EndAllMus();
     }
 }
+
+void PlayerPhase_OpenActionMenu(ProcPtr proc)
+{
+    if (gActionSt.id != ACTION_TRAPPED)
+        StartSemiCenteredOrphanMenu(
+            &gUnitActionMenuDef, gBmSt.cursor_sprite_target.x - gBmSt.camera.x, 1, 0x16);
+
+    Proc_Break(proc);
+}

@@ -1,35 +1,6 @@
 	.include "macro.inc"
 	.syntax unified
 
-	thumb_func_start sub_801D184
-sub_801D184: @ 0x0801D184
-	push {r4, lr}
-	adds r4, r0, #0
-	ldr r0, _0801D1B4 @ =gActionSt
-	ldrb r0, [r0, #0x11]
-	cmp r0, #0x1b
-	beq _0801D1A6
-	ldr r0, _0801D1B8 @ =gUnitActionMenuDef
-	ldr r2, _0801D1BC @ =gBmSt
-	movs r3, #0x1c
-	ldrsh r1, [r2, r3]
-	movs r3, #0xc
-	ldrsh r2, [r2, r3]
-	subs r1, r1, r2
-	movs r2, #1
-	movs r3, #0x16
-	bl sub_804B2DC
-_0801D1A6:
-	adds r0, r4, #0
-	bl Proc_Break
-	pop {r4}
-	pop {r0}
-	bx r0
-	.align 2, 0
-_0801D1B4: .4byte gActionSt
-_0801D1B8: .4byte gUnitActionMenuDef
-_0801D1BC: .4byte gBmSt
-
 	thumb_func_start sub_801D1C0
 sub_801D1C0: @ 0x0801D1C0
 	push {r4, r5, r6, lr}
@@ -75,7 +46,7 @@ _0801D20A:
 	asrs r0, r0, #0x18
 	cmp r0, #1
 	bne _0801D238
-	ldr r1, _0801D234 @ =sub_801D184
+	ldr r1, _0801D234 @ =PlayerPhase_OpenActionMenu
 	adds r0, r6, #0
 	bl sub_8004B1C
 	b _0801D25C
@@ -84,7 +55,7 @@ _0801D224: .4byte gActiveUnit
 _0801D228: .4byte gActionSt
 _0801D22C: .4byte gBmSt
 _0801D230: .4byte gBmMapMovement
-_0801D234: .4byte sub_801D184
+_0801D234: .4byte PlayerPhase_OpenActionMenu
 _0801D238:
 	ldr r0, _0801D264 @ =gActionSt
 	ldrb r0, [r0, #0x11]
@@ -99,7 +70,7 @@ _0801D238:
 	subs r1, r1, r2
 	movs r2, #1
 	movs r3, #0x16
-	bl sub_804B2DC
+	bl StartSemiCenteredOrphanMenu
 _0801D256:
 	adds r0, r6, #0
 	bl Proc_Break
