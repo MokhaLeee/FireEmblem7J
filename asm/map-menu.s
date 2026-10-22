@@ -174,7 +174,7 @@ sub_8021ACC: @ 0x08021ACC
 	bl EnableBgSync
 	bl ResetTextFont
 	bl HideMoveRangeGraphics
-	ldr r0, _08021B1C @ =gUnk_08C04D68
+	ldr r0, _08021B1C @ =gUnitActionMenuDef
 	ldr r2, _08021B20 @ =gBmSt
 	movs r3, #0x1c
 	ldrsh r1, [r2, r3]
@@ -197,7 +197,7 @@ sub_8021ACC: @ 0x08021ACC
 	bx r1
 	.align 2, 0
 _08021B18: .4byte gBg2Tm
-_08021B1C: .4byte gUnk_08C04D68
+_08021B1C: .4byte gUnitActionMenuDef
 _08021B20: .4byte gBmSt
 _08021B24: .4byte gActiveUnit
 
@@ -253,7 +253,7 @@ _08021B88: .4byte gBmSt
 	thumb_func_start sub_8021B8C
 sub_8021B8C: @ 0x08021B8C
 	push {lr}
-	ldr r0, _08021BA8 @ =gUnk_08C04D68
+	ldr r0, _08021BA8 @ =gUnitActionMenuDef
 	ldr r2, _08021BAC @ =gBmSt
 	movs r3, #0x1c
 	ldrsh r1, [r2, r3]
@@ -266,7 +266,7 @@ sub_8021B8C: @ 0x08021B8C
 	pop {r0}
 	bx r0
 	.align 2, 0
-_08021BA8: .4byte gUnk_08C04D68
+_08021BA8: .4byte gUnitActionMenuDef
 _08021BAC: .4byte gBmSt
 
 	thumb_func_start sub_8021BB0
@@ -299,7 +299,7 @@ sub_8021BE4: @ 0x08021BE4
 	movs r0, #4
 	bl EnableBgSync
 	bl ResetTextFont
-	ldr r0, _08021C1C @ =gUnk_08C04D68
+	ldr r0, _08021C1C @ =gUnitActionMenuDef
 	ldr r2, _08021C20 @ =gBmSt
 	movs r3, #0x1c
 	ldrsh r1, [r2, r3]
@@ -315,7 +315,7 @@ sub_8021BE4: @ 0x08021BE4
 	bx r1
 	.align 2, 0
 _08021C18: .4byte gBg2Tm
-_08021C1C: .4byte gUnk_08C04D68
+_08021C1C: .4byte gUnitActionMenuDef
 _08021C20: .4byte gBmSt
 
 	thumb_func_start sub_8021C24
@@ -2005,7 +2005,7 @@ _08022974:
 	bl ClearUi
 	movs r0, #0
 	bl EndFaceById
-	ldr r0, _080229A0 @ =gUnk_08C04D68
+	ldr r0, _080229A0 @ =gUnitActionMenuDef
 	ldr r2, _080229A4 @ =gBmSt
 	movs r3, #0x1c
 	ldrsh r1, [r2, r3]
@@ -2022,7 +2022,7 @@ _08022996:
 	pop {r1}
 	bx r1
 	.align 2, 0
-_080229A0: .4byte gUnk_08C04D68
+_080229A0: .4byte gUnitActionMenuDef
 _080229A4: .4byte gBmSt
 
 	thumb_func_start sub_80229A8

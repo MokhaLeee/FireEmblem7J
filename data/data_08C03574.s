@@ -116,9 +116,13 @@ gUnk_08C04D20:	@ 0x08C04D20
 gUnk_08C04D44:	@ 0x08C04D44
 	.incbin "FireEmblem7J.base.gba", 0xC04D44, 0xC04D68 - 0xC04D44
 
-	.global gUnk_08C04D68
-gUnk_08C04D68:	@ 0x08C04D68
-	.incbin "FireEmblem7J.base.gba", 0xC04D68, 0xC04DB0 - 0xC04D68
+	.global gUnitActionMenuDef
+gUnitActionMenuDef:	@ 0x08C04D68
+	.incbin "FireEmblem7J.base.gba", 0xC04D68, 0xC04D8C - 0xC04D68
+
+	.global gUnk_08C04D8C
+gUnk_08C04D8C:	@ 0x08C04D8C
+	.incbin "FireEmblem7J.base.gba", 0xC04D8C, 0xC04DB0 - 0xC04D8C
 
 	.global gMapMenuDef
 gMapMenuDef:	@ 0x08C04DB0

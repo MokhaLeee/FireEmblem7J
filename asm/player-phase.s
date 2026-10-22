@@ -9,7 +9,7 @@ sub_801D184: @ 0x0801D184
 	ldrb r0, [r0, #0x11]
 	cmp r0, #0x1b
 	beq _0801D1A6
-	ldr r0, _0801D1B8 @ =gUnk_08C04D68
+	ldr r0, _0801D1B8 @ =gUnitActionMenuDef
 	ldr r2, _0801D1BC @ =gBmSt
 	movs r3, #0x1c
 	ldrsh r1, [r2, r3]
@@ -27,7 +27,7 @@ _0801D1A6:
 	bx r0
 	.align 2, 0
 _0801D1B4: .4byte gActionSt
-_0801D1B8: .4byte gUnk_08C04D68
+_0801D1B8: .4byte gUnitActionMenuDef
 _0801D1BC: .4byte gBmSt
 
 	thumb_func_start sub_801D1C0
@@ -90,7 +90,7 @@ _0801D238:
 	ldrb r0, [r0, #0x11]
 	cmp r0, #0x1b
 	beq _0801D256
-	ldr r0, _0801D268 @ =gUnk_08C04D68
+	ldr r0, _0801D268 @ =gUnitActionMenuDef
 	ldr r2, _0801D26C @ =gBmSt
 	movs r3, #0x1c
 	ldrsh r1, [r2, r3]
@@ -109,7 +109,7 @@ _0801D25C:
 	bx r0
 	.align 2, 0
 _0801D264: .4byte gActionSt
-_0801D268: .4byte gUnk_08C04D68
+_0801D268: .4byte gUnitActionMenuDef
 _0801D26C: .4byte gBmSt
 
 	thumb_func_start GetPlayerSelectKind

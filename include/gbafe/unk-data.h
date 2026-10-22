@@ -1814,7 +1814,8 @@ extern struct ProcCmd ProcScr_UpdateTraps[];
 // ??? gUnk_08C04CFC
 // ??? gUnk_08C04D20
 // ??? gUnk_08C04D44
-// ??? gUnk_08C04D68
+extern const struct MenuDef gUnitActionMenuDef;
+// ??? gUnk_08C04D8C
 extern const struct MenuDef gMapMenuDef;
 // ??? gUnk_08C04DD4
 // ??? gUnk_08C04DF4
