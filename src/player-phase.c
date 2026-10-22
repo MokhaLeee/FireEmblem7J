@@ -925,3 +925,9 @@ void TrySwitchViewedUnit(int x, int y)
         if (TrySetCursorOn(i))
             return;
 }
+
+void PlayerPhase_HandleAutoEnd(ProcPtr proc)
+{
+    if (!gPlaySt.cfgDisableAutoEndTurns && CountFactionMoveableUnits(gPlaySt.faction) == 0)
+        Proc_Goto(proc, PL_PLAYERPHASE_END);
+}
