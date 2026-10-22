@@ -121,7 +121,7 @@ _0801C700:
 	ldrb r0, [r0]
 	bl GetUnit
 	adds r4, r0, #0
-	bl sub_801D270
+	bl GetPlayerSelectKind
 	cmp r0, #2
 	beq _0801C798
 	cmp r0, #2
@@ -577,7 +577,7 @@ _0801CAFC:
 	b _0801CB92
 _0801CB0A:
 	ldr r0, [r4]
-	bl sub_801D270
+	bl GetPlayerSelectKind
 	cmp r0, #2
 	beq _0801CB30
 	ldr r2, [r4]
@@ -857,7 +857,7 @@ _0801CD70:
 _0801CD78:
 	ldr r0, _0801CDA0 @ =gActiveUnit
 	ldr r0, [r0]
-	bl sub_801D270
+	bl GetPlayerSelectKind
 	cmp r0, #2
 	bne _0801CD88
 	bl sub_80307D4
@@ -1428,8 +1428,8 @@ _0801D264: .4byte gActionSt
 _0801D268: .4byte gUnk_08C04D68
 _0801D26C: .4byte gBmSt
 
-	thumb_func_start sub_801D270
-sub_801D270: @ 0x0801D270
+	thumb_func_start GetPlayerSelectKind
+GetPlayerSelectKind: @ 0x0801D270
 	push {r4, lr}
 	adds r4, r0, #0
 	ldr r0, _0801D29C @ =gPlaySt
@@ -1655,7 +1655,7 @@ _0801D3D8:
 	movs r2, #1
 	orrs r1, r2
 	str r1, [r0, #0xc]
-	bl sub_801D270
+	bl GetPlayerSelectKind
 	cmp r0, #2
 	beq _0801D434
 	cmp r0, #3

@@ -5582,7 +5582,7 @@ _08030F7E:
 	ldrb r0, [r0]
 	bl GetUnit
 	adds r4, r0, #0
-	bl sub_801D270
+	bl GetPlayerSelectKind
 	cmp r0, #4
 	bls _08030FA6
 	b _080310BC
@@ -5838,7 +5838,7 @@ sub_8031198: @ 0x08031198
 	adds r0, r0, r2
 	ldrb r0, [r0]
 	bl GetUnit
-	bl sub_801D270
+	bl GetPlayerSelectKind
 	cmp r0, #4
 	bne _080311D0
 	movs r7, #0
