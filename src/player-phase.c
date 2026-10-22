@@ -674,3 +674,27 @@ int GetPlayerSelectKind(struct Unit * unit)
 
     return PLAYER_SELECT_NOCONTROL;
 }
+
+bool CanMoveActiveUnitTo(int x, int y)
+{
+    struct Trap * trap;
+
+    if (gBmMapUnit[y][x] != 0 || gBmMapMovement[y][x] >= MAP_MOVEMENT_MAX)
+        return false;
+
+    if (!(gActiveUnit->state & US_IN_BALLISTA))
+        return true;
+
+    trap = GetTrapAt(x, y);
+
+    if (x == gActiveUnitMoveOrigin.x && y == gActiveUnitMoveOrigin.y)
+        return true;
+
+    if (!trap)
+        return true;
+
+    if (trap->type != TRAP_BALLISTA)
+        return true;
+
+    return false;
+}
