@@ -618,3 +618,29 @@ void PlayerPhase_OpenActionMenu(ProcPtr proc)
 
     Proc_Break(proc);
 }
+
+void PlayerPhase_ApplyUnitMovement(ProcPtr proc)
+{
+    gActiveUnit->xPos = gActionSt.x_move;
+    gActiveUnit->yPos = gActionSt.y_move;
+
+    UnitSyncMovement(gActiveUnit);
+
+    if (!(gActiveUnit->state & US_HAS_MOVED) && gActionSt.id == ACTION_NONE &&
+        gBmSt.partial_actions_taken == 0)
+        gActionSt.move_count = gBmMapMovement[gActionSt.y_move][gActionSt.x_move];
+
+    ResetTextFont();
+
+    if (StartAfterUnitMovedEvent() == 1)
+    {
+        Proc_SetRepeatCb(proc, PlayerPhase_OpenActionMenu);
+        return;
+    }
+
+    if (gActionSt.id != ACTION_TRAPPED)
+        StartSemiCenteredOrphanMenu(
+            &gUnitActionMenuDef, gBmSt.cursor_sprite_target.x - gBmSt.camera.x, 1, 0x16);
+
+    Proc_Break(proc);
+}

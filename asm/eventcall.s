@@ -2098,8 +2098,8 @@ _080797C4:
 _080797CC: .4byte gPlaySt
 _080797D0: .4byte gUnk_08D6696C
 
-	thumb_func_start sub_80797D4
-sub_80797D4: @ 0x080797D4
+	thumb_func_start StartAfterUnitMovedEvent
+StartAfterUnitMovedEvent: @ 0x080797D4
 	push {r4, lr}
 	sub sp, #0x1c
 	ldr r0, _08079818 @ =gPlaySt

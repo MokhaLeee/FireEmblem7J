@@ -59,7 +59,7 @@ void StartAvailableTurnEvents(void);
 bool ShouldCallEndEvent(void);
 void MaybeCallEndEvent_(void);
 s8 TryCallSelectEvents(void);
-// sub_80797D4
+bool StartAfterUnitMovedEvent(void);
 bool StartDestSelectedEvent(void);
 // sub_8079884
 // sub_8079888
