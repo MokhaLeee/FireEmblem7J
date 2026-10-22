@@ -50,7 +50,7 @@ bool TryMakeCantoUnit(ProcPtr proc);
 bool RunPotentialWaitEvents(void);
 bool EnsureCameraOntoActiveUnitPosition(ProcPtr proc);
 void PlayerPhase_FinishAction(ProcPtr proc);
-// sub_801D154
+void EventApplyPlayerUnitMove(void);
 // sub_801D184
 // sub_801D1C0
 int GetPlayerSelectKind(struct Unit * unit);

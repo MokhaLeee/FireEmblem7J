@@ -1,28 +1,6 @@
 	.include "macro.inc"
 	.syntax unified
 
-	thumb_func_start sub_801D154
-sub_801D154: @ 0x0801D154
-	push {lr}
-	ldr r0, _0801D17C @ =gPlaySt
-	ldrb r0, [r0, #0xf]
-	cmp r0, #0
-	bne _0801D178
-	ldr r1, _0801D180 @ =gActionSt
-	ldrb r0, [r1, #0xe]
-	ldrb r1, [r1, #0xf]
-	bl MoveActiveUnit
-	bl RefreshEntityMaps
-	bl RenderMap
-	bl RefreshUnitSprites
-	bl EndAllMus
-_0801D178:
-	pop {r0}
-	bx r0
-	.align 2, 0
-_0801D17C: .4byte gPlaySt
-_0801D180: .4byte gActionSt
-
 	thumb_func_start sub_801D184
 sub_801D184: @ 0x0801D184
 	push {r4, lr}

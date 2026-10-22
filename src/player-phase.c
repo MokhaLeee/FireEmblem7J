@@ -597,3 +597,15 @@ void PlayerPhase_FinishAction(ProcPtr proc)
 
     EndAllMus();
 }
+
+void EventApplyPlayerUnitMove(void)
+{
+    if (gPlaySt.faction == FACTION_BLUE)
+    {
+        MoveActiveUnit(gActionSt.x_move, gActionSt.y_move);
+        RefreshEntityMaps();
+        RenderMap();
+        RefreshUnitSprites();
+        EndAllMus();
+    }
+}
