@@ -1179,7 +1179,7 @@ sub_8027BA4: @ 0x08027BA4
 	mov r8, r2
 	strb r0, [r1, #4]
 	movs r0, #1
-	bl sub_801D6A4
+	bl DisplayMoveRangeGraphics
 	ldrb r0, [r5, #0xd]
 	bl GetUnit
 	movs r4, #0x10

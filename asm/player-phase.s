@@ -76,7 +76,7 @@ _0801C96C:
 	movs r4, #3
 _0801C974:
 	adds r0, r4, #0
-	bl sub_801D6A4
+	bl DisplayMoveRangeGraphics
 	pop {r4, r5, r6}
 	pop {r0}
 	bx r0
@@ -224,7 +224,7 @@ _0801CA94:
 	cmp r0, #0
 	beq _0801CAC0
 	movs r0, #5
-	bl sub_801D6A4
+	bl DisplayMoveRangeGraphics
 	b _0801CAC6
 	.align 2, 0
 _0801CAB4: .4byte gBmSt
@@ -232,7 +232,7 @@ _0801CAB8: .4byte gBmMapMovement
 _0801CABC: .4byte gPlaySt
 _0801CAC0:
 	movs r0, #3
-	bl sub_801D6A4
+	bl DisplayMoveRangeGraphics
 _0801CAC6:
 	pop {r4, r5, r6}
 	pop {r0}
@@ -1662,8 +1662,8 @@ _0801D688:
 _0801D69C: .4byte gBg2Tm
 _0801D6A0: .4byte gBmSt
 
-	thumb_func_start sub_801D6A4
-sub_801D6A4: @ 0x0801D6A4
+	thumb_func_start DisplayMoveRangeGraphics
+DisplayMoveRangeGraphics: @ 0x0801D6A4
 	push {r4, r5, lr}
 	adds r5, r0, #0
 	ldr r4, _0801D6C0 @ =gUnk_08C02870

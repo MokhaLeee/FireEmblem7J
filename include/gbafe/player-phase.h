@@ -56,7 +56,7 @@ int GetPlayerSelectKind(struct Unit * unit);
 // sub_801D50C
 // sub_801D5E8
 // sub_801D66C
-// sub_801D6A4
+// DisplayMoveRangeGraphics
 // HideMoveRangeGraphics
 // TrySetCursorOn
 void TrySwitchViewedUnit(int x, int y);

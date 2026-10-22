@@ -803,7 +803,7 @@ _08021FF4:
 	bl sub_801B040
 _08022004:
 	movs r0, #3
-	bl sub_801D6A4
+	bl DisplayMoveRangeGraphics
 	movs r0, #0
 	pop {r4, r5}
 	pop {r1}
@@ -951,7 +951,7 @@ sub_8022100: @ 0x08022100
 	ldr r0, [r4]
 	bl sub_801B040
 	movs r0, #2
-	bl sub_801D6A4
+	bl DisplayMoveRangeGraphics
 	movs r0, #0
 	pop {r4, r5}
 	pop {r1}
@@ -2498,7 +2498,7 @@ sub_8022CFC: @ 0x08022CFC
 	adds r2, r4, #0
 	bl MapAddInBoundedRange
 	movs r0, #2
-	bl sub_801D6A4
+	bl DisplayMoveRangeGraphics
 	movs r0, #0
 	pop {r3}
 	mov r8, r3
@@ -2644,7 +2644,7 @@ sub_8022E68: @ 0x08022E68
 	adds r1, r6, #0
 	bl sub_801B040
 	movs r0, #5
-	bl sub_801D6A4
+	bl DisplayMoveRangeGraphics
 	movs r0, #0
 	pop {r4, r5, r6}
 	pop {r1}
@@ -2757,7 +2757,7 @@ sub_8022F40: @ 0x08022F40
 	adds r1, r6, #0
 	bl sub_801B040
 	movs r0, #4
-	bl sub_801D6A4
+	bl DisplayMoveRangeGraphics
 	movs r0, #0
 	pop {r4, r5, r6}
 	pop {r1}

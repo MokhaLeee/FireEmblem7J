@@ -4675,7 +4675,7 @@ _08030844:
 	bne _08030844
 _0803085C:
 	movs r0, #0x10
-	bl sub_801D6A4
+	bl DisplayMoveRangeGraphics
 	pop {r4, r5}
 	pop {r0}
 	bx r0
