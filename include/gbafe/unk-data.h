@@ -1730,7 +1730,7 @@ extern u8 Img_SysBrownBox[];
 // ??? gUnk_08C02600
 // ??? gUnk_08C02618
 extern struct ProcCmd ProcScr_PlayerPhase[];
-// ??? gUnk_08C02848
+// ??? ProcScr_MoveLimitViewChange
 // ??? gUnk_08C02870
 // ??? gUnk_08C028A8
 // ??? gUnk_08C028C0
