@@ -491,7 +491,7 @@ SECTIONS
 		. = ALIGN(4); src/bm.o(.data)
 		. = ALIGN(4); data/data_08C01FE4.o(.data)
 		. = ALIGN(4); src/player-phase.o(.data)
-		. = ALIGN(4); data/data_08C02848.o(.data)
+		. = ALIGN(4); data/data_08C028A8.o(.data)
 		. = ALIGN(4); src/bmfx-chapterintrofx.o(.data)
 		. = ALIGN(4); data/data_08C02D98.o(.data)
 		. = ALIGN(4); src/bmfx-swingsword.o(.data)

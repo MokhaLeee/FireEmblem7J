@@ -1,13 +1,5 @@
 	.section .data
 
-	.global ProcScr_MoveLimitViewChange
-ProcScr_MoveLimitViewChange:	@ 0x08C02848
-	.incbin "FireEmblem7J.base.gba", 0xC02848, 0xC02870 - 0xC02848
-
-	.global gUnk_08C02870
-gUnk_08C02870:	@ 0x08C02870
-	.incbin "FireEmblem7J.base.gba", 0xC02870, 0xC028A8 - 0xC02870
-
 	.global gUnk_08C028A8
 gUnk_08C028A8:	@ 0x08C028A8
 	.incbin "FireEmblem7J.base.gba", 0xC028A8, 0xC028C0 - 0xC028A8

@@ -11,6 +11,30 @@ const u8 * CONST_DATA gOpenLimitViewImgLut[] = {
     Img_LimitViewSquareFull,
 };
 
+struct ProcCmd CONST_DATA ProcScr_MoveLimitViewChange[] = {
+    PROC_NAME_DEBUG("MLVCHC"),
+    PROC_MARK(1),
+
+    PROC_CALL(MoveLimitViewChange_OnInit),
+    PROC_REPEAT(MoveLimitViewChange_OnLoop),
+
+    PROC_END,
+};
+
+struct ProcCmd CONST_DATA ProcScr_MoveLimitView[] = {
+    PROC_NAME_DEBUG("E_MOVELIMITVIEW"),
+    PROC_MARK(1),
+
+    PROC_SET_END_CB(MoveLimitView_OnEnd),
+
+    PROC_START_CHILD(ProcScr_MoveLimitViewChange),
+
+    PROC_CALL(MoveLimitView_OnInit),
+    PROC_REPEAT(MoveLimitView_OnLoop),
+
+    PROC_END,
+};
+
 void PlayerPhase_Suspend(void)
 {
     gActionSt.suspend_point = SUSPEND_POINT_PLAYER_PHASE;
@@ -836,4 +860,19 @@ void MoveLimitView_OnEnd(struct MoveLimitViewProc * proc)
     gBmSt.flags &= ~(BM_FLAG_0 | BM_FLAG_1);
 
     InitBmBgLayers();
+}
+
+void DisplayMoveRangeGraphics(int flags)
+{
+    struct MoveLimitViewProc * proc = Proc_Find(ProcScr_MoveLimitView);
+
+    if (proc)
+    {
+        MoveLimitView_OnInit(proc);
+        MoveLimitViewChange_OnInit(NULL);
+        return;
+    }
+
+    proc = Proc_Start(ProcScr_MoveLimitView, PROC_TREE_4);
+    proc->flags = flags;
 }

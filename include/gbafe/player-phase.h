@@ -86,3 +86,5 @@ void TrySwitchViewedUnit(int x, int y);
 // sub_801D7B0
 
 extern const u8 * CONST_DATA gOpenLimitViewImgLut[];
+extern struct ProcCmd CONST_DATA ProcScr_MoveLimitViewChange[];
+extern struct ProcCmd CONST_DATA ProcScr_MoveLimitView[];
