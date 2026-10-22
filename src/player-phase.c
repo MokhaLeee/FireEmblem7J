@@ -906,3 +906,22 @@ bool TrySetCursorOn(int unitId)
 
     return true;
 }
+
+void TrySwitchViewedUnit(int x, int y)
+{
+    int i;
+    int unitId = gBmMapUnit[y][x];
+
+    if ((unitId & 0xC0) != FACTION_BLUE)
+        unitId = 0;
+
+    unitId++;
+
+    for (i = unitId; i < 0x3F; ++i)
+        if (TrySetCursorOn(i))
+            return;
+
+    for (i = 1; i <= unitId; ++i)
+        if (TrySetCursorOn(i))
+            return;
+}

@@ -1,55 +1,6 @@
 	.include "macro.inc"
 	.syntax unified
 
-	thumb_func_start TrySwitchViewedUnit
-TrySwitchViewedUnit: @ 0x0801D758
-	push {r4, r5, lr}
-	ldr r2, _0801D7AC @ =gBmMapUnit
-	ldr r2, [r2]
-	lsls r1, r1, #2
-	adds r1, r1, r2
-	ldr r1, [r1]
-	adds r1, r1, r0
-	ldrb r5, [r1]
-	movs r0, #0xc0
-	ands r0, r5
-	cmp r0, #0
-	beq _0801D772
-	movs r5, #0
-_0801D772:
-	adds r5, #1
-	adds r4, r5, #0
-	cmp r5, #0x3e
-	bgt _0801D78C
-_0801D77A:
-	adds r0, r4, #0
-	bl TrySetCursorOn
-	lsls r0, r0, #0x18
-	cmp r0, #0
-	bne _0801D7A4
-	adds r4, #1
-	cmp r4, #0x3e
-	ble _0801D77A
-_0801D78C:
-	movs r4, #1
-	cmp r4, r5
-	bgt _0801D7A4
-_0801D792:
-	adds r0, r4, #0
-	bl TrySetCursorOn
-	lsls r0, r0, #0x18
-	cmp r0, #0
-	bne _0801D7A4
-	adds r4, #1
-	cmp r4, r5
-	ble _0801D792
-_0801D7A4:
-	pop {r4, r5}
-	pop {r0}
-	bx r0
-	.align 2, 0
-_0801D7AC: .4byte gBmMapUnit
-
 	thumb_func_start sub_801D7B0
 sub_801D7B0: @ 0x0801D7B0
 	push {r4, lr}
