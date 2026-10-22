@@ -824,3 +824,16 @@ void MoveLimitView_OnLoop(struct MoveLimitViewProc * proc)
     if (proc->flags & LIMITVIEW_UNK)
         ApplyPaletteExt(Pal_LimitViewBlue + frame, 0xA2, 0x20);
 }
+
+void MoveLimitView_OnEnd(struct MoveLimitViewProc * proc)
+{
+    if (proc->flags & (LIMITVIEW_BLUE | LIMITVIEW_UNK))
+    {
+        TmFill(gBg2Tm, 0);
+        EnableBgSync(BG2_SYNC_BIT);
+    }
+
+    gBmSt.flags &= ~(BM_FLAG_0 | BM_FLAG_1);
+
+    InitBmBgLayers();
+}

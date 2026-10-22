@@ -1,33 +1,6 @@
 	.include "macro.inc"
 	.syntax unified
 
-	thumb_func_start sub_801D66C
-sub_801D66C: @ 0x0801D66C
-	push {lr}
-	adds r0, #0x4a
-	movs r1, #0x11
-	ldrh r0, [r0]
-	ands r1, r0
-	cmp r1, #0
-	beq _0801D688
-	ldr r0, _0801D69C @ =gBg2Tm
-	movs r1, #0
-	bl TmFill
-	movs r0, #4
-	bl EnableBgSync
-_0801D688:
-	ldr r1, _0801D6A0 @ =gBmSt
-	movs r0, #0xfc
-	ldrb r2, [r1, #4]
-	ands r0, r2
-	strb r0, [r1, #4]
-	bl InitBmBgLayers
-	pop {r0}
-	bx r0
-	.align 2, 0
-_0801D69C: .4byte gBg2Tm
-_0801D6A0: .4byte gBmSt
-
 	thumb_func_start DisplayMoveRangeGraphics
 DisplayMoveRangeGraphics: @ 0x0801D6A4
 	push {r4, r5, lr}

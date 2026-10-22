@@ -78,7 +78,7 @@ void MoveLimitViewChange_OnInit(struct MoveLimitViewChangeProc * proc);
 void MoveLimitViewChange_OnLoop(struct MoveLimitViewChangeProc * proc);
 void MoveLimitView_OnInit(ProcPtr proc);
 void MoveLimitView_OnLoop(struct MoveLimitViewProc * proc);
-// sub_801D66C
+void MoveLimitView_OnEnd(struct MoveLimitViewProc * proc);
 void DisplayMoveRangeGraphics(int flags);
 void HideMoveRangeGraphics(void);
 // TrySetCursorOn
