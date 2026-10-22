@@ -1815,7 +1815,7 @@ extern struct ProcCmd ProcScr_UpdateTraps[];
 // ??? gUnk_08C04D20
 // ??? gUnk_08C04D44
 // ??? gUnk_08C04D68
-// ??? gUnk_08C04DB0
+// ??? gMapMenuDef
 // ??? gUnk_08C04DD4
 // ??? gUnk_08C04DF4
 // ??? gUnk_08C04E14

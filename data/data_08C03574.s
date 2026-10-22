@@ -120,8 +120,8 @@ gUnk_08C04D44:	@ 0x08C04D44
 gUnk_08C04D68:	@ 0x08C04D68
 	.incbin "FireEmblem7J.base.gba", 0xC04D68, 0xC04DB0 - 0xC04D68
 
-	.global gUnk_08C04DB0
-gUnk_08C04DB0:	@ 0x08C04DB0
+	.global gMapMenuDef
+gMapMenuDef:	@ 0x08C04DB0
 	.incbin "FireEmblem7J.base.gba", 0xC04DB0, 0xC04DD4 - 0xC04DB0
 
 	.global gUnk_08C04DD4

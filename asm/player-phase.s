@@ -152,7 +152,7 @@ _0801C74C:
 	adds r0, r4, #0
 	bl ShowUnitSprite
 _0801C776:
-	ldr r0, _0801C794 @ =gUnk_08C04DB0
+	ldr r0, _0801C794 @ =gMapMenuDef
 	movs r3, #0x1c
 	ldrsh r1, [r5, r3]
 	movs r3, #0xc
@@ -165,7 +165,7 @@ _0801C776:
 	b _0801C88A
 	.align 2, 0
 _0801C790: .4byte gPlaySt
-_0801C794: .4byte gUnk_08C04DB0
+_0801C794: .4byte gMapMenuDef
 _0801C798:
 	adds r0, r4, #0
 	bl UnitBeginAction
