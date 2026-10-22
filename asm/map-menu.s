@@ -770,7 +770,7 @@ sub_8021FAC: @ 0x08021FAC
 	rsbs r5, r5, #0
 	adds r1, r5, #0
 	bl BmMapFill
-	ldr r0, _08021FEC @ =0x0202E3E4
+	ldr r0, _08021FEC @ =gBmMapRange
 	ldr r0, [r0]
 	movs r1, #0
 	bl BmMapFill
@@ -792,7 +792,7 @@ sub_8021FAC: @ 0x08021FAC
 	b _08022004
 	.align 2, 0
 _08021FE8: .4byte gBmMapMovement
-_08021FEC: .4byte 0x0202E3E4
+_08021FEC: .4byte gBmMapRange
 _08021FF0: .4byte gActiveUnit
 _08021FF4:
 	adds r0, r2, #0
@@ -938,7 +938,7 @@ sub_8022100: @ 0x08022100
 	movs r1, #1
 	rsbs r1, r1, #0
 	bl BmMapFill
-	ldr r0, _0802214C @ =0x0202E3E4
+	ldr r0, _0802214C @ =gBmMapRange
 	ldr r0, [r0]
 	movs r1, #0
 	bl BmMapFill
@@ -958,7 +958,7 @@ sub_8022100: @ 0x08022100
 	bx r1
 	.align 2, 0
 _08022148: .4byte gBmMapMovement
-_0802214C: .4byte 0x0202E3E4
+_0802214C: .4byte gBmMapRange
 _08022150: .4byte gActiveUnit
 
 	thumb_func_start sub_8022154
@@ -2460,7 +2460,7 @@ sub_8022CFC: @ 0x08022CFC
 	movs r1, #1
 	rsbs r1, r1, #0
 	bl BmMapFill
-	ldr r4, _08022D7C @ =0x0202E3E4
+	ldr r4, _08022D7C @ =gBmMapRange
 	ldr r0, [r4]
 	movs r1, #0
 	bl BmMapFill
@@ -2507,7 +2507,7 @@ sub_8022CFC: @ 0x08022CFC
 	bx r1
 	.align 2, 0
 _08022D78: .4byte gBmMapMovement
-_08022D7C: .4byte 0x0202E3E4
+_08022D7C: .4byte gBmMapRange
 _08022D80: .4byte gActiveUnit
 
 	thumb_func_start sub_8022D84
@@ -2636,7 +2636,7 @@ sub_8022E68: @ 0x08022E68
 	ldr r0, [r0]
 	adds r1, r4, #0
 	bl BmMapFill
-	ldr r0, _08022EAC @ =0x0202E3E4
+	ldr r0, _08022EAC @ =gBmMapRange
 	ldr r0, [r0]
 	movs r1, #0
 	bl BmMapFill
@@ -2652,7 +2652,7 @@ sub_8022E68: @ 0x08022E68
 	.align 2, 0
 _08022EA4: .4byte gActiveUnit
 _08022EA8: .4byte gBmMapMovement
-_08022EAC: .4byte 0x0202E3E4
+_08022EAC: .4byte gBmMapRange
 
 	thumb_func_start sub_8022EB0
 sub_8022EB0: @ 0x08022EB0
@@ -2749,7 +2749,7 @@ sub_8022F40: @ 0x08022F40
 	movs r1, #1
 	rsbs r1, r1, #0
 	bl BmMapFill
-	ldr r0, _08022F90 @ =0x0202E3E4
+	ldr r0, _08022F90 @ =gBmMapRange
 	ldr r0, [r0]
 	movs r1, #0
 	bl BmMapFill
@@ -2765,7 +2765,7 @@ sub_8022F40: @ 0x08022F40
 	.align 2, 0
 _08022F88: .4byte gActiveUnit
 _08022F8C: .4byte gBmMapMovement
-_08022F90: .4byte 0x0202E3E4
+_08022F90: .4byte gBmMapRange
 
 	thumb_func_start sub_8022F94
 sub_8022F94: @ 0x08022F94

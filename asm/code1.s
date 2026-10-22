@@ -4298,7 +4298,7 @@ _08030570:
 	movs r0, #1
 	bl sub_802FF94
 _08030592:
-	ldr r0, _080305CC @ =0x0202E3F0
+	ldr r0, _080305CC @ =gBmMapOther
 	ldr r0, [r0]
 	bl SetWorkingBmMap
 	bl sub_80302D0
@@ -4323,7 +4323,7 @@ _08030592:
 	b _080305F4
 	.align 2, 0
 _080305C8: .4byte gUnk_08C05700
-_080305CC: .4byte 0x0202E3F0
+_080305CC: .4byte gBmMapOther
 _080305D0: .4byte gBmSt
 _080305D4: .4byte 0x03004100
 _080305D8:
@@ -4643,7 +4643,7 @@ sub_8030814: @ 0x08030814
 	push {r4, r5, lr}
 	bl sub_8079A50
 	adds r4, r0, #0
-	ldr r5, _08030868 @ =0x0202E3E4
+	ldr r5, _08030868 @ =gBmMapRange
 	ldr r0, [r5]
 	movs r1, #0
 	bl BmMapFill
@@ -4680,7 +4680,7 @@ _0803085C:
 	pop {r0}
 	bx r0
 	.align 2, 0
-_08030868: .4byte 0x0202E3E4
+_08030868: .4byte gBmMapRange
 _0803086C: .4byte gBmMapMovement
 
 	thumb_func_start sub_8030870
@@ -5822,7 +5822,7 @@ sub_8031198: @ 0x08031198
 	ldr r6, _08031230 @ =gBmSt
 	movs r0, #0x16
 	ldrsh r1, [r6, r0]
-	ldr r0, _08031234 @ =0x0202E3E4
+	ldr r0, _08031234 @ =gBmMapRange
 	ldr r0, [r0]
 	lsls r1, r1, #2
 	adds r0, r1, r0
@@ -5889,7 +5889,7 @@ _0803120C:
 	b _080312DA
 	.align 2, 0
 _08031230: .4byte gBmSt
-_08031234: .4byte 0x0202E3E4
+_08031234: .4byte gBmMapRange
 _08031238: .4byte gBmMapUnit
 _0803123C: .4byte Sprite_16x16
 _08031240: .4byte gpKeySt
@@ -6687,7 +6687,7 @@ sub_803186C: @ 0x0803186C
 	movs r0, #0
 	movs r1, #0
 	bl BeginTargetList
-	ldr r0, _080318A4 @ =0x0202E3E4
+	ldr r0, _080318A4 @ =gBmMapRange
 	ldr r0, [r0]
 	movs r1, #0
 	bl BmMapFill
@@ -6708,7 +6708,7 @@ _0803189E:
 	pop {r1}
 	bx r1
 	.align 2, 0
-_080318A4: .4byte 0x0202E3E4
+_080318A4: .4byte gBmMapRange
 _080318A8: .4byte gActiveUnit
 _080318AC: .4byte 0x02033E3C
 _080318B0: .4byte sub_80240AC
@@ -6832,7 +6832,7 @@ sub_8031994: @ 0x08031994
 	rsbs r1, r1, #0
 	bl sub_8017310
 	adds r7, r0, #0
-	ldr r0, _08031A48 @ =0x0202E3F0
+	ldr r0, _08031A48 @ =gBmMapOther
 	ldr r0, [r0]
 	movs r1, #0
 	bl BmMapFill
@@ -6893,7 +6893,7 @@ _080319FA:
 	ldrb r0, [r0]
 	cmp r0, #0
 	bne _08031A36
-	ldr r0, _08031A48 @ =0x0202E3F0
+	ldr r0, _08031A48 @ =gBmMapOther
 	ldr r0, [r0]
 	adds r0, r5, r0
 	ldr r0, [r0]
@@ -6919,7 +6919,7 @@ _08031A42:
 	pop {r0}
 	bx r0
 	.align 2, 0
-_08031A48: .4byte 0x0202E3F0
+_08031A48: .4byte gBmMapOther
 _08031A4C: .4byte gActionSt
 _08031A50: .4byte gBmMapSize
 _08031A54: .4byte gBmMapMovement

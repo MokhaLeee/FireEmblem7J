@@ -2109,7 +2109,7 @@ sub_80283AC: @ 0x080283AC
 	ldrsh r2, [r5, r0]
 	movs r1, #0x16
 	ldrsh r0, [r5, r1]
-	ldr r1, _08028410 @ =0x0202E3E4
+	ldr r1, _08028410 @ =gBmMapRange
 	ldr r1, [r1]
 	lsls r0, r0, #2
 	adds r0, r0, r1
@@ -2148,7 +2148,7 @@ _080283F0:
 	b _08028482
 	.align 2, 0
 _0802840C: .4byte gBmSt
-_08028410: .4byte 0x0202E3E4
+_08028410: .4byte gBmMapRange
 _08028414: .4byte gpKeySt
 _08028418: .4byte gPlaySt
 _0802841C: .4byte 0x0000038A

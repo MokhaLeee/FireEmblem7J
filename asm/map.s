@@ -35,7 +35,7 @@ InitChapterMap: @ 0x08019170
 	ldrsh r3, [r4, r7]
 	bl BmMapInit
 	ldr r0, _08019248 @ =0x03000BF8
-	ldr r1, _0801924C @ =0x0202E3E4
+	ldr r1, _0801924C @ =gBmMapRange
 	movs r3, #0
 	ldrsh r2, [r4, r3]
 	movs r7, #2
@@ -56,7 +56,7 @@ InitChapterMap: @ 0x08019170
 	ldrsh r3, [r4, r7]
 	bl BmMapInit
 	ldr r0, _08019260 @ =0x020302D4
-	ldr r1, _08019264 @ =0x0202E3F0
+	ldr r1, _08019264 @ =gBmMapOther
 	movs r3, #0
 	ldrsh r2, [r4, r3]
 	movs r7, #2
@@ -90,13 +90,13 @@ _0801923C: .4byte gBmMapTerrain
 _08019240: .4byte 0x03000440
 _08019244: .4byte gBmMapMovement
 _08019248: .4byte 0x03000BF8
-_0801924C: .4byte 0x0202E3E4
+_0801924C: .4byte gBmMapRange
 _08019250: .4byte 0x0202F364
 _08019254: .4byte 0x0202E3E8
 _08019258: .4byte 0x0202FB1C
 _0801925C: .4byte gBmMapHidden
 _08019260: .4byte 0x020302D4
-_08019264: .4byte 0x0202E3F0
+_08019264: .4byte gBmMapOther
 _08019268: .4byte gPlaySt
 
 	thumb_func_start InitChapterPreviewMap
@@ -906,7 +906,7 @@ _08019856:
 _08019878: .4byte gBmMapMovement
 _0801987C: .4byte 0x00004281
 _08019880:
-	ldr r0, _080198A4 @ =0x0202E3E4
+	ldr r0, _080198A4 @ =gBmMapRange
 	ldr r0, [r0]
 	adds r0, r2, r0
 	ldr r0, [r0]
@@ -924,7 +924,7 @@ _08019880:
 	ldr r2, _080198AC @ =0x00005285
 	b _080198BA
 	.align 2, 0
-_080198A4: .4byte 0x0202E3E4
+_080198A4: .4byte gBmMapRange
 _080198A8: .4byte 0x00005284
 _080198AC: .4byte 0x00005285
 _080198B0:

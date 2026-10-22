@@ -985,7 +985,7 @@ sub_801DF68: @ 0x0801DF68
 	movs r1, #1
 	rsbs r1, r1, #0
 	bl BmMapFill
-	ldr r0, _0801E038 @ =0x0202E3E4
+	ldr r0, _0801E038 @ =gBmMapRange
 	ldr r0, [r0]
 	movs r1, #0
 	bl BmMapFill
@@ -1076,7 +1076,7 @@ _0801E02A:
 	b _0801E0D0
 	.align 2, 0
 _0801E034: .4byte gBmMapMovement
-_0801E038: .4byte 0x0202E3E4
+_0801E038: .4byte gBmMapRange
 _0801E03C: .4byte gPlaySt
 _0801E040: .4byte gBmMapSize
 _0801E044: .4byte gBmMapTerrain

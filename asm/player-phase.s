@@ -24,7 +24,7 @@ sub_801C8D4: @ 0x0801C8D4
 	ands r0, r1
 	cmp r0, #0
 	bne _0801C974
-	ldr r0, _0801C944 @ =0x0202E3F0
+	ldr r0, _0801C944 @ =gBmMapOther
 	ldr r0, [r0]
 	movs r1, #0
 	bl BmMapFill
@@ -36,7 +36,7 @@ sub_801C8D4: @ 0x0801C8D4
 	movs r0, #1
 	bl sub_801B528
 _0801C91C:
-	ldr r0, _0801C948 @ =0x0202E3E4
+	ldr r0, _0801C948 @ =gBmMapRange
 	ldr r0, [r0]
 	movs r1, #0
 	bl BmMapFill
@@ -52,8 +52,8 @@ _0801C91C:
 	.align 2, 0
 _0801C93C: .4byte gActiveUnit
 _0801C940: .4byte gActionSt
-_0801C944: .4byte 0x0202E3F0
-_0801C948: .4byte 0x0202E3E4
+_0801C944: .4byte gBmMapOther
+_0801C948: .4byte gBmMapRange
 _0801C94C:
 	cmp r0, #3
 	bne _0801C974
@@ -829,7 +829,7 @@ _0801CFEC: .4byte gActiveUnit
 _0801CFF0: .4byte 0x00010044
 _0801CFF4: .4byte gActionSt
 _0801CFF8:
-	ldr r0, _0801D038 @ =0x0202E3E4
+	ldr r0, _0801D038 @ =gBmMapRange
 	ldr r0, [r0]
 	movs r1, #0
 	bl BmMapFill
@@ -855,7 +855,7 @@ _0801CFF8:
 	bl Proc_Goto
 	b _0801D048
 	.align 2, 0
-_0801D038: .4byte 0x0202E3E4
+_0801D038: .4byte gBmMapRange
 _0801D03C: .4byte gPlaySt
 _0801D040:
 	adds r0, r6, #0

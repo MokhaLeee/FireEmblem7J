@@ -78,7 +78,7 @@ _08023E4C:
 	blt _08023E8E
 	lsls r5, r1, #2
 _08023E5C:
-	ldr r0, _08023EA0 @ =0x0202E3E4
+	ldr r0, _08023EA0 @ =gBmMapRange
 	ldr r0, [r0]
 	adds r0, r5, r0
 	ldr r0, [r0]
@@ -112,7 +112,7 @@ _08023E94:
 	bx r0
 	.align 2, 0
 _08023E9C: .4byte gBmMapSize
-_08023EA0: .4byte 0x0202E3E4
+_08023EA0: .4byte gBmMapRange
 _08023EA4: .4byte gBmMapUnit
 
 	thumb_func_start sub_8023EA8
@@ -134,7 +134,7 @@ _08023EB8:
 	cmp r4, #0
 	blt _08023EEA
 _08023EC6:
-	ldr r0, _08023EFC @ =0x0202E3E4
+	ldr r0, _08023EFC @ =gBmMapRange
 	ldr r1, [r0]
 	lsls r0, r5, #2
 	adds r0, r0, r1
@@ -162,7 +162,7 @@ _08023EF0:
 	bx r0
 	.align 2, 0
 _08023EF8: .4byte gBmMapSize
-_08023EFC: .4byte 0x0202E3E4
+_08023EFC: .4byte gBmMapRange
 
 	thumb_func_start sub_8023F00
 sub_8023F00: @ 0x08023F00
@@ -287,7 +287,7 @@ sub_8023FEC: @ 0x08023FEC
 	cmp r0, #0
 	beq _0802409E
 	ldr r6, _080240A4 @ =gBmMapTerrain
-	ldr r5, _080240A8 @ =0x0202E3E4
+	ldr r5, _080240A8 @ =gBmMapRange
 _08024000:
 	cmp r0, #2
 	bne _08024096
@@ -374,7 +374,7 @@ _0802409E:
 	bx r0
 	.align 2, 0
 _080240A4: .4byte gBmMapTerrain
-_080240A8: .4byte 0x0202E3E4
+_080240A8: .4byte gBmMapRange
 
 	thumb_func_start sub_80240AC
 sub_80240AC: @ 0x080240AC
@@ -421,7 +421,7 @@ sub_80240E4: @ 0x080240E4
 	adds r0, r5, #0
 	adds r1, r6, #0
 	bl BeginTargetList
-	ldr r0, _08024144 @ =0x0202E3E4
+	ldr r0, _08024144 @ =gBmMapRange
 	ldr r0, [r0]
 	movs r1, #0
 	bl BmMapFill
@@ -449,7 +449,7 @@ sub_80240E4: @ 0x080240E4
 	bx r0
 	.align 2, 0
 _08024140: .4byte 0x02033E3C
-_08024144: .4byte 0x0202E3E4
+_08024144: .4byte gBmMapRange
 _08024148: .4byte sub_80240AC
 
 	thumb_func_start sub_802414C
@@ -546,7 +546,7 @@ sub_80241F0: @ 0x080241F0
 	ldrsb r5, [r0, r5]
 	ldr r6, _08024258 @ =0x02033E3C
 	str r0, [r6]
-	ldr r0, _0802425C @ =0x0202E3E4
+	ldr r0, _0802425C @ =gBmMapRange
 	ldr r0, [r0]
 	movs r1, #0
 	bl BmMapFill
@@ -586,7 +586,7 @@ _08024252:
 	bx r0
 	.align 2, 0
 _08024258: .4byte 0x02033E3C
-_0802425C: .4byte 0x0202E3E4
+_0802425C: .4byte gBmMapRange
 _08024260: .4byte sub_802414C
 
 	thumb_func_start sub_8024264
@@ -646,7 +646,7 @@ sub_80242C4: @ 0x080242C4
 	ldrsb r5, [r0, r5]
 	ldr r1, _080242EC @ =0x02033E3C
 	str r0, [r1]
-	ldr r0, _080242F0 @ =0x0202E3E4
+	ldr r0, _080242F0 @ =gBmMapRange
 	ldr r0, [r0]
 	movs r1, #0
 	bl BmMapFill
@@ -659,7 +659,7 @@ sub_80242C4: @ 0x080242C4
 	bx r0
 	.align 2, 0
 _080242EC: .4byte 0x02033E3C
-_080242F0: .4byte 0x0202E3E4
+_080242F0: .4byte gBmMapRange
 _080242F4: .4byte sub_8024264
 
 	thumb_func_start sub_80242F8
@@ -713,7 +713,7 @@ sub_8024350: @ 0x08024350
 	ldrsb r5, [r0, r5]
 	ldr r1, _08024378 @ =0x02033E3C
 	str r0, [r1]
-	ldr r0, _0802437C @ =0x0202E3E4
+	ldr r0, _0802437C @ =gBmMapRange
 	ldr r0, [r0]
 	movs r1, #0
 	bl BmMapFill
@@ -726,7 +726,7 @@ sub_8024350: @ 0x08024350
 	bx r0
 	.align 2, 0
 _08024378: .4byte 0x02033E3C
-_0802437C: .4byte 0x0202E3E4
+_0802437C: .4byte gBmMapRange
 _08024380: .4byte sub_80242F8
 
 	thumb_func_start sub_8024384
@@ -792,7 +792,7 @@ sub_80243F0: @ 0x080243F0
 	ldrsb r5, [r0, r5]
 	ldr r1, _08024418 @ =0x02033E3C
 	str r0, [r1]
-	ldr r0, _0802441C @ =0x0202E3E4
+	ldr r0, _0802441C @ =gBmMapRange
 	ldr r0, [r0]
 	movs r1, #0
 	bl BmMapFill
@@ -805,7 +805,7 @@ sub_80243F0: @ 0x080243F0
 	bx r0
 	.align 2, 0
 _08024418: .4byte 0x02033E3C
-_0802441C: .4byte 0x0202E3E4
+_0802441C: .4byte gBmMapRange
 _08024420: .4byte sub_8024384
 
 	thumb_func_start sub_8024424
@@ -880,7 +880,7 @@ sub_80244A4: @ 0x080244A4
 	ldrsb r5, [r0, r5]
 	ldr r1, _080244CC @ =0x02033E3C
 	str r0, [r1]
-	ldr r0, _080244D0 @ =0x0202E3E4
+	ldr r0, _080244D0 @ =gBmMapRange
 	ldr r0, [r0]
 	movs r1, #0
 	bl BmMapFill
@@ -893,7 +893,7 @@ sub_80244A4: @ 0x080244A4
 	bx r0
 	.align 2, 0
 _080244CC: .4byte 0x02033E3C
-_080244D0: .4byte 0x0202E3E4
+_080244D0: .4byte gBmMapRange
 _080244D4: .4byte sub_8024424
 
 	thumb_func_start sub_80244D8
@@ -943,7 +943,7 @@ sub_8024520: @ 0x08024520
 	ldrsb r5, [r0, r5]
 	ldr r1, _08024548 @ =0x02033E3C
 	str r0, [r1]
-	ldr r0, _0802454C @ =0x0202E3E4
+	ldr r0, _0802454C @ =gBmMapRange
 	ldr r0, [r0]
 	movs r1, #0
 	bl BmMapFill
@@ -956,7 +956,7 @@ sub_8024520: @ 0x08024520
 	bx r0
 	.align 2, 0
 _08024548: .4byte 0x02033E3C
-_0802454C: .4byte 0x0202E3E4
+_0802454C: .4byte gBmMapRange
 _08024550: .4byte sub_80244D8
 
 	thumb_func_start sub_8024554
@@ -1095,7 +1095,7 @@ sub_8024638: @ 0x08024638
 	adds r7, r0, #0
 	cmp r7, #0
 	beq _08024692
-	ldr r0, _0802469C @ =0x0202E3E4
+	ldr r0, _0802469C @ =gBmMapRange
 	ldr r0, [r0]
 	movs r1, #0
 	bl BmMapFill
@@ -1122,7 +1122,7 @@ _08024692:
 	bx r0
 	.align 2, 0
 _08024698: .4byte 0x02033E3C
-_0802469C: .4byte 0x0202E3E4
+_0802469C: .4byte gBmMapRange
 _080246A0: .4byte sub_8024600
 
 	thumb_func_start sub_80246A4
@@ -1203,7 +1203,7 @@ sub_8024724: @ 0x08024724
 	ldrsb r6, [r0, r6]
 	ldr r1, _08024754 @ =0x02033E3C
 	str r0, [r1]
-	ldr r0, _08024758 @ =0x0202E3E4
+	ldr r0, _08024758 @ =gBmMapRange
 	ldr r0, [r0]
 	movs r1, #0
 	bl BmMapFill
@@ -1218,7 +1218,7 @@ sub_8024724: @ 0x08024724
 	b _0802476A
 	.align 2, 0
 _08024754: .4byte 0x02033E3C
-_08024758: .4byte 0x0202E3E4
+_08024758: .4byte gBmMapRange
 _0802475C: .4byte sub_80246A4
 _08024760:
 	ldr r2, _08024770 @ =sub_80246E4
@@ -1436,7 +1436,7 @@ sub_8024904: @ 0x08024904
 	ldrsb r5, [r0, r5]
 	ldr r1, _0802492C @ =0x02033E3C
 	str r0, [r1]
-	ldr r0, _08024930 @ =0x0202E3E4
+	ldr r0, _08024930 @ =gBmMapRange
 	ldr r0, [r0]
 	movs r1, #0
 	bl BmMapFill
@@ -1449,7 +1449,7 @@ sub_8024904: @ 0x08024904
 	bx r0
 	.align 2, 0
 _0802492C: .4byte 0x02033E3C
-_08024930: .4byte 0x0202E3E4
+_08024930: .4byte gBmMapRange
 _08024934: .4byte sub_80248C0
 
 	thumb_func_start sub_8024938
@@ -1509,7 +1509,7 @@ sub_8024990: @ 0x08024990
 	ldrsb r5, [r0, r5]
 	ldr r1, _080249B8 @ =0x02033E3C
 	str r0, [r1]
-	ldr r0, _080249BC @ =0x0202E3E4
+	ldr r0, _080249BC @ =gBmMapRange
 	ldr r0, [r0]
 	movs r1, #0
 	bl BmMapFill
@@ -1522,7 +1522,7 @@ sub_8024990: @ 0x08024990
 	bx r0
 	.align 2, 0
 _080249B8: .4byte 0x02033E3C
-_080249BC: .4byte 0x0202E3E4
+_080249BC: .4byte gBmMapRange
 _080249C0: .4byte sub_8024938
 
 	thumb_func_start sub_80249C4
@@ -1576,7 +1576,7 @@ sub_8024A18: @ 0x08024A18
 	ldrsb r5, [r0, r5]
 	ldr r1, _08024A40 @ =0x02033E3C
 	str r0, [r1]
-	ldr r0, _08024A44 @ =0x0202E3E4
+	ldr r0, _08024A44 @ =gBmMapRange
 	ldr r0, [r0]
 	movs r1, #0
 	bl BmMapFill
@@ -1589,7 +1589,7 @@ sub_8024A18: @ 0x08024A18
 	bx r0
 	.align 2, 0
 _08024A40: .4byte 0x02033E3C
-_08024A44: .4byte 0x0202E3E4
+_08024A44: .4byte gBmMapRange
 _08024A48: .4byte sub_80249C4
 
 	thumb_func_start sub_8024A4C
@@ -1604,7 +1604,7 @@ sub_8024A4C: @ 0x08024A4C
 	adds r0, r5, #0
 	adds r1, r6, #0
 	bl BeginTargetList
-	ldr r0, _08024A90 @ =0x0202E3E4
+	ldr r0, _08024A90 @ =gBmMapRange
 	ldr r0, [r0]
 	movs r1, #0
 	bl BmMapFill
@@ -1622,7 +1622,7 @@ sub_8024A4C: @ 0x08024A4C
 	bx r0
 	.align 2, 0
 _08024A8C: .4byte 0x02033E3C
-_08024A90: .4byte 0x0202E3E4
+_08024A90: .4byte gBmMapRange
 _08024A94: .4byte sub_80249C4
 
 	thumb_func_start sub_8024A98
@@ -1676,7 +1676,7 @@ sub_8024AE8: @ 0x08024AE8
 	ldrsb r5, [r0, r5]
 	ldr r1, _08024B10 @ =0x02033E3C
 	str r0, [r1]
-	ldr r0, _08024B14 @ =0x0202E3E4
+	ldr r0, _08024B14 @ =gBmMapRange
 	ldr r0, [r0]
 	movs r1, #0
 	bl BmMapFill
@@ -1689,7 +1689,7 @@ sub_8024AE8: @ 0x08024AE8
 	bx r0
 	.align 2, 0
 _08024B10: .4byte 0x02033E3C
-_08024B14: .4byte 0x0202E3E4
+_08024B14: .4byte gBmMapRange
 _08024B18: .4byte sub_8024A98
 
 	thumb_func_start sub_8024B1C
@@ -1742,7 +1742,7 @@ sub_8024B6C: @ 0x08024B6C
 	ldrsb r5, [r0, r5]
 	ldr r1, _08024B94 @ =0x02033E3C
 	str r0, [r1]
-	ldr r0, _08024B98 @ =0x0202E3E4
+	ldr r0, _08024B98 @ =gBmMapRange
 	ldr r0, [r0]
 	movs r1, #0
 	bl BmMapFill
@@ -1755,7 +1755,7 @@ sub_8024B6C: @ 0x08024B6C
 	bx r0
 	.align 2, 0
 _08024B94: .4byte 0x02033E3C
-_08024B98: .4byte 0x0202E3E4
+_08024B98: .4byte gBmMapRange
 _08024B9C: .4byte sub_8024B1C
 
 	thumb_func_start sub_8024BA0
@@ -1793,7 +1793,7 @@ sub_8024BD8: @ 0x08024BD8
 	push {lr}
 	ldr r1, _08024BF4 @ =0x02033E3C
 	str r0, [r1]
-	ldr r0, _08024BF8 @ =0x0202E3E4
+	ldr r0, _08024BF8 @ =gBmMapRange
 	ldr r0, [r0]
 	movs r1, #0
 	bl BmMapFill
@@ -1803,7 +1803,7 @@ sub_8024BD8: @ 0x08024BD8
 	bx r0
 	.align 2, 0
 _08024BF4: .4byte 0x02033E3C
-_08024BF8: .4byte 0x0202E3E4
+_08024BF8: .4byte gBmMapRange
 _08024BFC: .4byte sub_8024BA0
 
 	thumb_func_start sub_8024C00
@@ -1931,7 +1931,7 @@ sub_8024CE4: @ 0x08024CE4
 	push {lr}
 	ldr r1, _08024D00 @ =0x02033E3C
 	str r0, [r1]
-	ldr r0, _08024D04 @ =0x0202E3E4
+	ldr r0, _08024D04 @ =gBmMapRange
 	ldr r0, [r0]
 	movs r1, #0
 	bl BmMapFill
@@ -1941,7 +1941,7 @@ sub_8024CE4: @ 0x08024CE4
 	bx r0
 	.align 2, 0
 _08024D00: .4byte 0x02033E3C
-_08024D04: .4byte 0x0202E3E4
+_08024D04: .4byte gBmMapRange
 _08024D08: .4byte sub_8024C00
 
 	thumb_func_start sub_8024D0C
@@ -1949,7 +1949,7 @@ sub_8024D0C: @ 0x08024D0C
 	push {lr}
 	ldr r1, _08024D28 @ =0x02033E3C
 	str r0, [r1]
-	ldr r0, _08024D2C @ =0x0202E3E4
+	ldr r0, _08024D2C @ =gBmMapRange
 	ldr r0, [r0]
 	movs r1, #0
 	bl BmMapFill
@@ -1959,7 +1959,7 @@ sub_8024D0C: @ 0x08024D0C
 	bx r0
 	.align 2, 0
 _08024D28: .4byte 0x02033E3C
-_08024D2C: .4byte 0x0202E3E4
+_08024D2C: .4byte gBmMapRange
 _08024D30: .4byte sub_8024C4C
 
 	thumb_func_start sub_8024D34
@@ -1967,7 +1967,7 @@ sub_8024D34: @ 0x08024D34
 	push {lr}
 	ldr r1, _08024D50 @ =0x02033E3C
 	str r0, [r1]
-	ldr r0, _08024D54 @ =0x0202E3E4
+	ldr r0, _08024D54 @ =gBmMapRange
 	ldr r0, [r0]
 	movs r1, #0
 	bl BmMapFill
@@ -1977,7 +1977,7 @@ sub_8024D34: @ 0x08024D34
 	bx r0
 	.align 2, 0
 _08024D50: .4byte 0x02033E3C
-_08024D54: .4byte 0x0202E3E4
+_08024D54: .4byte gBmMapRange
 _08024D58: .4byte sub_8024C98
 
 	thumb_func_start sub_8024D5C
@@ -2019,7 +2019,7 @@ sub_8024D94: @ 0x08024D94
 	ldrsb r5, [r0, r5]
 	ldr r1, _08024DBC @ =0x02033E3C
 	str r0, [r1]
-	ldr r0, _08024DC0 @ =0x0202E3E4
+	ldr r0, _08024DC0 @ =gBmMapRange
 	ldr r0, [r0]
 	movs r1, #0
 	bl BmMapFill
@@ -2032,7 +2032,7 @@ sub_8024D94: @ 0x08024D94
 	bx r0
 	.align 2, 0
 _08024DBC: .4byte 0x02033E3C
-_08024DC0: .4byte 0x0202E3E4
+_08024DC0: .4byte gBmMapRange
 _08024DC4: .4byte sub_8024D5C
 
 	thumb_func_start sub_8024DC8
@@ -2044,7 +2044,7 @@ sub_8024DC8: @ 0x08024DC8
 	ldrsb r5, [r0, r5]
 	ldr r1, _08024DF0 @ =0x02033E3C
 	str r0, [r1]
-	ldr r0, _08024DF4 @ =0x0202E3E4
+	ldr r0, _08024DF4 @ =gBmMapRange
 	ldr r0, [r0]
 	movs r1, #0
 	bl BmMapFill
@@ -2057,7 +2057,7 @@ sub_8024DC8: @ 0x08024DC8
 	bx r0
 	.align 2, 0
 _08024DF0: .4byte 0x02033E3C
-_08024DF4: .4byte 0x0202E3E4
+_08024DF4: .4byte gBmMapRange
 _08024DF8: .4byte sub_80246A4
 
 	thumb_func_start sub_8024DFC
@@ -2116,7 +2116,7 @@ sub_8024E54: @ 0x08024E54
 	ldrsb r5, [r0, r5]
 	ldr r1, _08024E7C @ =0x02033E3C
 	str r0, [r1]
-	ldr r0, _08024E80 @ =0x0202E3E4
+	ldr r0, _08024E80 @ =gBmMapRange
 	ldr r0, [r0]
 	movs r1, #0
 	bl BmMapFill
@@ -2129,7 +2129,7 @@ sub_8024E54: @ 0x08024E54
 	bx r0
 	.align 2, 0
 _08024E7C: .4byte 0x02033E3C
-_08024E80: .4byte 0x0202E3E4
+_08024E80: .4byte gBmMapRange
 _08024E84: .4byte sub_8024DFC
 
 	thumb_func_start sub_8024E88
@@ -2320,7 +2320,7 @@ MakeTargetListForDanceRing: @ 0x08024FF0
 	ldrsb r5, [r0, r5]
 	ldr r1, _08025018 @ =0x02033E3C
 	str r0, [r1]
-	ldr r0, _0802501C @ =0x0202E3E4
+	ldr r0, _0802501C @ =gBmMapRange
 	ldr r0, [r0]
 	movs r1, #0
 	bl BmMapFill
@@ -2333,7 +2333,7 @@ MakeTargetListForDanceRing: @ 0x08024FF0
 	bx r0
 	.align 2, 0
 _08025018: .4byte 0x02033E3C
-_0802501C: .4byte 0x0202E3E4
+_0802501C: .4byte gBmMapRange
 _08025020: .4byte sub_8024F6C
 
 	thumb_func_start sub_8025024
@@ -2389,7 +2389,7 @@ MakeTargetListForMine: @ 0x0802507C
 	ldrsb r5, [r0, r5]
 	ldr r1, _080250A4 @ =0x02033E3C
 	str r0, [r1]
-	ldr r0, _080250A8 @ =0x0202E3E4
+	ldr r0, _080250A8 @ =gBmMapRange
 	ldr r0, [r0]
 	movs r1, #0
 	bl BmMapFill
@@ -2402,7 +2402,7 @@ MakeTargetListForMine: @ 0x0802507C
 	bx r0
 	.align 2, 0
 _080250A4: .4byte 0x02033E3C
-_080250A8: .4byte 0x0202E3E4
+_080250A8: .4byte gBmMapRange
 _080250AC: .4byte sub_8025024
 
 	thumb_func_start sub_80250B0
@@ -2441,7 +2441,7 @@ sub_80250E0: @ 0x080250E0
 	ldrsb r5, [r0, r5]
 	ldr r1, _08025108 @ =0x02033E3C
 	str r0, [r1]
-	ldr r0, _0802510C @ =0x0202E3E4
+	ldr r0, _0802510C @ =gBmMapRange
 	ldr r0, [r0]
 	movs r1, #0
 	bl BmMapFill
@@ -2454,5 +2454,5 @@ sub_80250E0: @ 0x080250E0
 	bx r0
 	.align 2, 0
 _08025108: .4byte 0x02033E3C
-_0802510C: .4byte 0x0202E3E4
+_0802510C: .4byte gBmMapRange
 _08025110: .4byte sub_80250B0
