@@ -1,34 +1,6 @@
 	.include "macro.inc"
 	.syntax unified
 
-	thumb_func_start sub_801CA28
-sub_801CA28: @ 0x0801CA28
-	push {lr}
-	ldr r0, _0801CA54 @ =gPlaySt
-	adds r0, #0x41
-	ldrb r0, [r0]
-	lsls r0, r0, #0x1e
-	cmp r0, #0
-	blt _0801CA3E
-	movs r0, #0xe2
-	lsls r0, r0, #2
-	bl m4aSongNumStart
-_0801CA3E:
-	ldr r1, _0801CA58 @ =gBmSt
-	movs r0, #0xfd
-	ldrb r2, [r1, #4]
-	ands r0, r2
-	strb r0, [r1, #4]
-	ldr r0, _0801CA5C @ =gActiveUnit
-	ldr r0, [r0]
-	bl DisplayUnitEffectRange
-	pop {r0}
-	bx r0
-	.align 2, 0
-_0801CA54: .4byte gPlaySt
-_0801CA58: .4byte gBmSt
-_0801CA5C: .4byte gActiveUnit
-
 	thumb_func_start sub_801CA60
 sub_801CA60: @ 0x0801CA60
 	push {r4, r5, r6, lr}

@@ -237,3 +237,11 @@ void PlayerPhase_InitUnitMovementSelect(void)
 
     PathArrowDisp_Init(1);
 }
+
+void DisplayActiveUnitEffectRange(ProcPtr proc)
+{
+    PlaySoundEffect(SONG_388);
+
+    gBmSt.flags &= ~BM_FLAG_1;
+    DisplayUnitEffectRange(gActiveUnit);
+}
