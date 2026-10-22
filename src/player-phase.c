@@ -494,3 +494,39 @@ s8 PlayerPhase_PrepareAction(ProcPtr proc)
     }
     return cameraReturn;
 }
+
+bool TryMakeCantoUnit(ProcPtr proc)
+{
+    if (!(UNIT_CATTRIBUTES(gActiveUnit) & CA_CANTO))
+        return false;
+
+    if (gActiveUnit->state & (US_DEAD | US_HAS_MOVED | US_BIT16))
+        return false;
+
+    if (gActionSt.id == ACTION_COMBAT || gActionSt.id == ACTION_STAFF)
+        return false;
+
+    if (UNIT_MOV(gActiveUnit) <= gActionSt.move_count)
+        return false;
+
+    if (!CanActiveUnitStillMove())
+        return false;
+
+    BmMapFill(gBmMapRange, 0);
+
+    UnitBeginCantoAction(gActiveUnit);
+
+    gActiveUnit->state |= US_HAS_MOVED;
+    gActiveUnit->state &= ~US_UNSELECTABLE;
+
+    EndAllMus();
+    StartMu(gActiveUnit);
+    MU_SetDefaultFacing_Auto();
+
+    if (gPlaySt.chapterVisionRange != 0)
+        Proc_Goto(proc, PL_PLAYERPHASE_FADE_TO_MOVE);
+    else
+        Proc_Goto(proc, PL_PLAYERPHASE_MOVE);
+
+    return true;
+}

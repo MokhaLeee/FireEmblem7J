@@ -436,7 +436,7 @@ bool UnitHasMagicRank(struct Unit *unit);
 int GetUnitAidIconId(u32 attributes);
 int GetUnitWeaponUsabilityBits(struct Unit *unit);
 int GetCombinedEnemyWeaponUsabilityBits(void);
-// CanActiveUnitStillMove
+bool CanActiveUnitStillMove(void);
 // IsPositionMagicSealed
 // IsUnitMagicSealed
 // GetUnitLastItem

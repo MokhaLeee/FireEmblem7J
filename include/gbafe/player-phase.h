@@ -46,7 +46,7 @@ void PlayerPhase_RangeDisplayIdle(ProcPtr proc);
 void PlayerPhase_CancelAction(ProcPtr proc);
 void PlayerPhase_BackToMove(ProcPtr proc);
 s8 PlayerPhase_PrepareAction(ProcPtr proc);
-// sub_801CF9C
+bool TryMakeCantoUnit(ProcPtr proc);
 // sub_801D050
 // sub_801D06C
 // sub_801D094
