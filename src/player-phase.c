@@ -417,3 +417,28 @@ void PlayerPhase_CancelAction(ProcPtr proc)
     gActionSt.id = ACTION_NONE;
     Proc_Goto(proc, PL_PLAYERPHASE_ACTION_MENU);
 }
+
+void PlayerPhase_BackToMove(ProcPtr proc)
+{
+    gActiveUnit->xPos = gActiveUnitMoveOrigin.x;
+    gActiveUnit->yPos = gActiveUnitMoveOrigin.y;
+
+    UnitSyncMovement(gActiveUnit);
+
+    gActiveUnit->state &= ~US_HIDDEN;
+
+    RefreshEntityMaps();
+    RenderMap();
+    RefreshUnitSprites();
+
+    if (!(gActiveUnit->state & US_HAS_MOVED))
+        UnitBeginAction(gActiveUnit);
+    else
+        UnitBeginCantoAction(gActiveUnit);
+
+    HideUnitSprite(gActiveUnit);
+    EndAllMus();
+    StartMu(gActiveUnit);
+
+    Proc_Goto(proc, PL_PLAYERPHASE_MOVE);
+}

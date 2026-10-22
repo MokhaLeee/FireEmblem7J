@@ -422,7 +422,7 @@ void UnitChangeFaction(struct Unit *unit, int faction);
 void UnitSyncMovement(struct Unit *unit);
 // UnitGetDeathDropLocation
 void UnitBeginAction(struct Unit *unit);
-// UnitBeginCantoAction
+void UnitBeginCantoAction(struct Unit *unit);
 void MoveActiveUnit(int x, int y);
 void ClearActiveFactionGrayedStates(void);
 void TickActiveFactionTurn(void);

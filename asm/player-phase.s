@@ -1,60 +1,6 @@
 	.include "macro.inc"
 	.syntax unified
 
-	thumb_func_start sub_801CDC0
-sub_801CDC0: @ 0x0801CDC0
-	push {r4, r5, lr}
-	adds r5, r0, #0
-	ldr r4, _0801CE08 @ =gActiveUnit
-	ldr r1, [r4]
-	ldr r2, _0801CE0C @ =gActiveUnitMoveOrigin
-	ldrh r0, [r2]
-	strb r0, [r1, #0x10]
-	ldr r1, [r4]
-	ldrh r0, [r2, #2]
-	strb r0, [r1, #0x11]
-	ldr r0, [r4]
-	bl UnitSyncMovement
-	ldr r2, [r4]
-	ldr r0, [r2, #0xc]
-	movs r1, #2
-	rsbs r1, r1, #0
-	ands r0, r1
-	str r0, [r2, #0xc]
-	bl RefreshEntityMaps
-	bl RenderMap
-	bl RefreshUnitSprites
-	ldr r4, [r4]
-	ldr r0, [r4, #0xc]
-	movs r1, #0x40
-	ands r0, r1
-	cmp r0, #0
-	bne _0801CE10
-	adds r0, r4, #0
-	bl UnitBeginAction
-	b _0801CE16
-	.align 2, 0
-_0801CE08: .4byte gActiveUnit
-_0801CE0C: .4byte gActiveUnitMoveOrigin
-_0801CE10:
-	adds r0, r4, #0
-	bl UnitBeginCantoAction
-_0801CE16:
-	ldr r4, _0801CE38 @ =gActiveUnit
-	ldr r0, [r4]
-	bl HideUnitSprite
-	bl EndAllMus
-	ldr r0, [r4]
-	bl StartMu
-	adds r0, r5, #0
-	movs r1, #1
-	bl Proc_Goto
-	pop {r4, r5}
-	pop {r0}
-	bx r0
-	.align 2, 0
-_0801CE38: .4byte gActiveUnit
-
 	thumb_func_start sub_801CE3C
 sub_801CE3C: @ 0x0801CE3C
 	push {r4, r5, r6, lr}
@@ -137,7 +83,7 @@ _0801CF18: .4byte gBmSt
 _0801CF1C: .4byte gActionSt
 _0801CF20:
 	adds r0, r6, #0
-	bl sub_801CDC0
+	bl PlayerPhase_BackToMove
 	movs r0, #1
 	b _0801CF8C
 _0801CF2A:

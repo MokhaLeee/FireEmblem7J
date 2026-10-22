@@ -44,7 +44,7 @@ void DisplayActiveUnitEffectRange(ProcPtr proc);
 void PlayerPhase_DisplayDangerZone(void);
 void PlayerPhase_RangeDisplayIdle(ProcPtr proc);
 void PlayerPhase_CancelAction(ProcPtr proc);
-// sub_801CDC0
+void PlayerPhase_BackToMove(ProcPtr proc);
 // sub_801CE3C
 // sub_801CF9C
 // sub_801D050
