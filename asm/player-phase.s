@@ -1,19 +1,6 @@
 	.include "macro.inc"
 	.syntax unified
 
-	thumb_func_start sub_801CDA8
-sub_801CDA8: @ 0x0801CDA8
-	push {lr}
-	ldr r2, _0801CDBC @ =gActionSt
-	movs r1, #0
-	strb r1, [r2, #0x11]
-	movs r1, #2
-	bl Proc_Goto
-	pop {r0}
-	bx r0
-	.align 2, 0
-_0801CDBC: .4byte gActionSt
-
 	thumb_func_start sub_801CDC0
 sub_801CDC0: @ 0x0801CDC0
 	push {r4, r5, lr}
@@ -184,7 +171,7 @@ _0801CF56:
 	strb r1, [r0]
 _0801CF5C:
 	adds r0, r6, #0
-	bl sub_801CDA8
+	bl PlayerPhase_CancelAction
 	movs r0, #1
 	b _0801CF8C
 	.align 2, 0

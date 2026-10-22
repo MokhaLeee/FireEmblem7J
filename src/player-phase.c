@@ -411,3 +411,9 @@ else_stmt:
 
     PutMapCursor(gBmSt.cursor_sprite.x, gBmSt.cursor_sprite.y, MAP_CURSOR_REGULAR);
 }
+
+void PlayerPhase_CancelAction(ProcPtr proc)
+{
+    gActionSt.id = ACTION_NONE;
+    Proc_Goto(proc, PL_PLAYERPHASE_ACTION_MENU);
+}
