@@ -5171,8 +5171,8 @@ _08030C5C: .4byte PrepMapMenu_OnBPress
 _08030C60: .4byte PrepMapMenu_OnStartPress
 _08030C64: .4byte PrepMapMenu_OnEnd
 
-	thumb_func_start sub_8030C68
-sub_8030C68: @ 0x08030C68
+	thumb_func_start CanCharacterBePrepMoved
+CanCharacterBePrepMoved: @ 0x08030C68
 	push {r4, lr}
 	adds r4, r0, #0
 	bl IsCharacterForceDeployed

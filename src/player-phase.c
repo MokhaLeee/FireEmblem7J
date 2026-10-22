@@ -644,3 +644,33 @@ void PlayerPhase_ApplyUnitMovement(ProcPtr proc)
 
     Proc_Break(proc);
 }
+
+int GetPlayerSelectKind(struct Unit * unit)
+{
+    u8 faction = gPlaySt.faction;
+
+    if (!unit)
+        return PLAYER_SELECT_NOUNIT;
+
+    if (gBmSt.flags & BM_FLAG_PREPSCREEN)
+    {
+        if (!CanCharacterBePrepMoved(unit->pCharacterData->number))
+            return PLAYER_SELECT_4;
+
+        faction = FACTION_BLUE;
+    }
+
+    if (!unit)
+        return PLAYER_SELECT_NOUNIT;
+
+    if (UNIT_FACTION(unit) != faction)
+        return PLAYER_SELECT_NOCONTROL;
+
+    if ((unit->state & US_UNSELECTABLE) || (UNIT_CATTRIBUTES(unit) & CA_UNSELECTABLE))
+        return PLAYER_SELECT_TURNENDED;
+
+    if (unit->statusIndex != UNIT_STATUS_SLEEP && unit->statusIndex != UNIT_STATUS_BERSERK)
+        return PLAYER_SELECT_CONTROL;
+
+    return PLAYER_SELECT_NOCONTROL;
+}

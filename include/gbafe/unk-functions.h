@@ -182,7 +182,7 @@ void DrawUpdatedPathArrow(void);
 // StartPrepHelpPrompt
 // PrepMapMenu_OnEnd
 // PrepScreenProc_StartMapMenu
-// sub_8030C68
+bool CanCharacterBePrepMoved(int);
 // sub_8030C88
 // sub_8030CB0
 // sub_8030CCC
