@@ -881,3 +881,28 @@ void HideMoveRangeGraphics(void)
 {
     Proc_EndEach(ProcScr_MoveLimitView);
 }
+
+bool TrySetCursorOn(int unitId)
+{
+    ProcPtr proc;
+    struct Unit * unit = GetUnit(unitId);
+
+    if (!UNIT_IS_VALID(unit))
+        return false;
+
+    if (unit->state & (US_HIDDEN | US_UNSELECTABLE | US_DEAD | US_BIT16))
+        return false;
+
+    if (unit->statusIndex == UNIT_STATUS_BERSERK || unit->statusIndex == UNIT_STATUS_SLEEP)
+        return false;
+
+    proc = Proc_Find(ProcScr_PlayerPhase);
+
+    if (!proc)
+        proc = Proc_Find(ProcScr_SALLYCURSOR);
+
+    EnsureCameraOntoPosition(proc, unit->xPos, unit->yPos);
+    SetMapCursorPosition(unit->xPos, unit->yPos);
+
+    return true;
+}

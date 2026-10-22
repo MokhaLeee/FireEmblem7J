@@ -1,62 +1,6 @@
 	.include "macro.inc"
 	.syntax unified
 
-	thumb_func_start TrySetCursorOn
-TrySetCursorOn: @ 0x0801D6E8
-	push {r4, lr}
-	bl GetUnit
-	adds r4, r0, #0
-	cmp r4, #0
-	beq _0801D716
-	ldr r0, [r4]
-	cmp r0, #0
-	beq _0801D716
-	ldr r0, [r4, #0xc]
-	ldr r1, _0801D71C @ =0x00010007
-	ands r0, r1
-	cmp r0, #0
-	bne _0801D716
-	adds r0, r4, #0
-	adds r0, #0x30
-	movs r1, #0xf
-	ldrb r0, [r0]
-	ands r1, r0
-	cmp r1, #4
-	beq _0801D716
-	cmp r1, #2
-	bne _0801D720
-_0801D716:
-	movs r0, #0
-	b _0801D74A
-	.align 2, 0
-_0801D71C: .4byte 0x00010007
-_0801D720:
-	ldr r0, _0801D750 @ =ProcScr_PlayerPhase
-	bl Proc_Find
-	cmp r0, #0
-	bne _0801D730
-	ldr r0, _0801D754 @ =ProcScr_SALLYCURSOR
-	bl Proc_Find
-_0801D730:
-	movs r1, #0x10
-	ldrsb r1, [r4, r1]
-	movs r2, #0x11
-	ldrsb r2, [r4, r2]
-	bl EnsureCameraOntoPosition
-	movs r0, #0x10
-	ldrsb r0, [r4, r0]
-	movs r1, #0x11
-	ldrsb r1, [r4, r1]
-	bl SetMapCursorPosition
-	movs r0, #1
-_0801D74A:
-	pop {r4}
-	pop {r1}
-	bx r1
-	.align 2, 0
-_0801D750: .4byte ProcScr_PlayerPhase
-_0801D754: .4byte ProcScr_SALLYCURSOR
-
 	thumb_func_start TrySwitchViewedUnit
 TrySwitchViewedUnit: @ 0x0801D758
 	push {r4, r5, lr}
