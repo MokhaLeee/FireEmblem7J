@@ -34,7 +34,7 @@ sub_801C8D4: @ 0x0801C8D4
 	cmp r0, #0
 	beq _0801C91C
 	movs r0, #1
-	bl sub_801B528
+	bl GenerateMagicSealMap
 _0801C91C:
 	ldr r0, _0801C948 @ =gBmMapRange
 	ldr r0, [r0]

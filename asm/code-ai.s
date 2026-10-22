@@ -8019,7 +8019,7 @@ _08038AFC:
 	beq _08038B12
 	movs r0, #1
 	rsbs r0, r0, #0
-	bl sub_801B528
+	bl GenerateMagicSealMap
 _08038B12:
 	ldr r0, _08038C5C @ =gBmMapRange
 	ldr r0, [r0]
@@ -11760,7 +11760,7 @@ _0803A796:
 	beq _0803A7BA
 	movs r0, #1
 	rsbs r0, r0, #0
-	bl sub_801B528
+	bl GenerateMagicSealMap
 _0803A7BA:
 	ldr r1, _0803A814 @ =gBmMapSize
 	movs r2, #2
@@ -13004,7 +13004,7 @@ sub_803B104: @ 0x0803B104
 	ldr r0, [r0]
 	bl sub_8037A40
 	ldr r0, [sp, #0x18]
-	bl sub_801B528
+	bl GenerateMagicSealMap
 	bl sub_801A4DC
 	ldr r0, _0803B260 @ =0x0203A8E8
 	adds r1, r0, #0
@@ -13196,7 +13196,7 @@ _0803B2AE:
 	ldr r0, [r0]
 	bl sub_8037A40
 	ldr r0, [sp, #0x18]
-	bl sub_801B528
+	bl GenerateMagicSealMap
 	adds r1, r4, #0
 	adds r1, #0x7c
 	ldrb r0, [r1]
@@ -13416,7 +13416,7 @@ sub_803B44C: @ 0x0803B44C
 	bl sub_8037A40
 	movs r0, #1
 	rsbs r0, r0, #0
-	bl sub_801B528
+	bl GenerateMagicSealMap
 	ldr r0, _0803B544 @ =gBmMapSize
 	movs r1, #2
 	ldrsh r0, [r0, r1]
@@ -13550,7 +13550,7 @@ _0803B588:
 	bl sub_8037A40
 	movs r0, #1
 	rsbs r0, r0, #0
-	bl sub_801B528
+	bl GenerateMagicSealMap
 	bl sub_801A4DC
 	ldr r0, _0803B6A4 @ =gBmMapSize
 	movs r1, #2
@@ -13718,7 +13718,7 @@ sub_803B6B0: @ 0x0803B6B0
 	bl sub_8037A40
 	movs r0, #1
 	rsbs r0, r0, #0
-	bl sub_801B528
+	bl GenerateMagicSealMap
 	bl sub_801A4DC
 	ldr r0, _0803B7E8 @ =gBmMapSize
 	movs r1, #2
@@ -13972,7 +13972,7 @@ _0803B8D0:
 	bl sub_8037A40
 	movs r0, #1
 	rsbs r0, r0, #0
-	bl sub_801B528
+	bl GenerateMagicSealMap
 	movs r4, #1
 	mov sb, r4
 _0803B8E4:
@@ -14162,7 +14162,7 @@ _0803BA5C:
 	bl sub_8037A40
 	movs r0, #1
 	rsbs r0, r0, #0
-	bl sub_801B528
+	bl GenerateMagicSealMap
 	movs r4, #1
 	mov r8, r4
 _0803BA70:
@@ -14346,7 +14346,7 @@ sub_803BBB0: @ 0x0803BBB0
 	bl sub_8037A40
 	movs r0, #1
 	rsbs r0, r0, #0
-	bl sub_801B528
+	bl GenerateMagicSealMap
 	bl sub_801A4DC
 	ldr r0, _0803BCE4 @ =gBmMapSize
 	movs r1, #2

@@ -2724,7 +2724,7 @@ _0801B466:
 	cmp r5, #0
 	beq _0801B4BC
 	movs r0, #1
-	bl sub_801B528
+	bl GenerateMagicSealMap
 _0801B4BC:
 	mov sl, r5
 _0801B4BE:
@@ -2780,8 +2780,8 @@ _0801B514:
 	.align 2, 0
 _0801B524: .4byte gBmMapUnit
 
-	thumb_func_start sub_801B528
-sub_801B528: @ 0x0801B528
+	thumb_func_start GenerateMagicSealMap
+GenerateMagicSealMap: @ 0x0801B528
 	push {r4, r5, lr}
 	adds r5, r0, #0
 	movs r4, #0x81
