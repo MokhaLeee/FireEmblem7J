@@ -140,5 +140,9 @@ enum
     SONG_26A = 0x26A,
 
     SONG_385 = 0x385,
+    SONG_388 = 0x388,
+    SONG_389 = 0x389,
     SONG_38A = 0x38A,
+    SONG_38B = 0x38B, // window cancel SFX
+    SONG_38C = 0x38C, // invalid selection SFX
 };

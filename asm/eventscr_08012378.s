@@ -331,10 +331,10 @@ sub_80125A4: @ 0x080125A4
 sub_80125EC: @ 0x080125EC
 	push {r4, lr}
 	adds r4, r0, #0
-	ldr r0, _08012638 @ =0x0202E3F0
+	ldr r0, _08012638 @ =gBmMapOther
 	ldr r0, [r0]
 	movs r1, #0
-	bl BmMapFillg
+	bl BmMapFill
 	ldr r0, _0801263C @ =ProcScr_Event_08C0169C
 	adds r1, r4, #0
 	bl Proc_StartBlocking
@@ -368,5 +368,5 @@ _0801262A:
 	pop {r1}
 	bx r1
 	.align 2, 0
-_08012638: .4byte 0x0202E3F0
+_08012638: .4byte gBmMapOther
 _0801263C: .4byte ProcScr_Event_08C0169C

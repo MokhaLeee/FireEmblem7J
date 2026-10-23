@@ -30,7 +30,10 @@ enum action_type {
     ACTION_TRADED_SUPPLY = 0x19,
     ACTION_TRADED_NOCHANGES = 0x1A,
     ACTION_TRAPPED = 0x1B,
-    ACTION_1C = 0x1C,
+    ACTION_FORCE_WAIT = 0x1C,
+    // 1D?
+    ACTION_RIDE_BALLISTA = 0x1E,
+    ACTION_EXIT_BALLISTA = 0x1F,
 };
 
 enum action_sus_type {

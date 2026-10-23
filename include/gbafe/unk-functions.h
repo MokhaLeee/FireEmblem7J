@@ -66,7 +66,7 @@ void ResumeChapterFromSuspend(/* TODO */);
 // RefreshBMapDisplay_FromBattle
 // BMapDispResume_FromBattleDelayed
 // InitMoreBMapGraphics
-// RefreshBMapGraphics
+void RefreshBMapGraphics(void);
 // StartMapMain
 // EndMapMain
 void CleanupUnitsBeforeChapter(void);
@@ -117,7 +117,7 @@ void SetTacticianName(const char *name);
 // sub_802F6A0
 // sub_802F6C4
 // sub_802F6D4
-// sub_802F6E4
+s8 DoAction(ProcPtr proc);
 // sub_802F7F4
 // sub_802F848
 // sub_802F858
@@ -149,17 +149,17 @@ void SetTacticianName(const char *name);
 // sub_8030038
 // sub_80300BC
 // sub_803012C
-// sub_803022C
+void GetMovementScriptFromPath(void);
 // sub_80302D0
 // sub_8030314
 // sub_8030340
-// sub_80303BC
+void PathArrowDisp_Init(u8 a);
 // sub_8030448
 // sub_8030600
 // sub_8030664
 // sub_80306D4
 // sub_8030718
-// sub_80307D4
+void DrawUpdatedPathArrow(void);
 // GetPlayerLeaderUnitId
 // sub_8030814
 // sub_8030870
@@ -182,7 +182,7 @@ void SetTacticianName(const char *name);
 // StartPrepHelpPrompt
 // PrepMapMenu_OnEnd
 // PrepScreenProc_StartMapMenu
-// sub_8030C68
+bool CanCharacterBePrepMoved(int);
 // sub_8030C88
 // sub_8030CB0
 // sub_8030CCC
@@ -224,7 +224,7 @@ void SetTacticianName(const char *name);
 // sub_8031AC0
 struct ChapterEventGroup * GetChapterEventInfo(u32);
 // sub_8031B1C
-// sub_8031B40
+// IsChapterSakaba
 // sub_8031B54
 // sub_8031B6C
 // sub_8031BF8
@@ -270,7 +270,7 @@ struct ChapterEventGroup * GetChapterEventInfo(u32);
 // sub_8032AD0
 // sub_8032B4C
 // sub_8032C40
-// sub_8032CA0
+void sub_8032CA0(ProcPtr proc);
 void sub_8032CCC(void);
 bool sub_8032CDC(void);
 void sub_8032CF4(ProcPtr proc, const char *str);
@@ -349,7 +349,7 @@ void sub_8032CF4(ProcPtr proc, const char *str);
 // ApplyTrapDamageReal
 // GetPickTrapType
 // ExecTrap
-// HandlePostActionTraps
+s8 HandlePostActionTraps(ProcPtr proc);
 // ExecTrapAfterWarp
 // ExecTrapAfterDropAction
 // ExecTrapAfterDeathDrop
@@ -486,59 +486,9 @@ void StartBoxDialogueExt(int x, int y, int msgId, u16* unkA, int unkB, ProcPtr p
 // sub_80850D8
 // sub_8085110
 // sub_808512C
-// PutMapUiHpBarLeft
-// PutMapUiHpBarMid
-// PutMapUiHpBarRight
-// PutMapUiHpBar
-// sub_8085254
-// sub_80853CC
-// sub_8085530
-// sub_8085658
-// sub_808578C
-// sub_80857E0
-// sub_8085824
-// sub_808586C
-// sub_808588C
-// sub_80858B0
-// sub_80858D8
-// sub_80859B0
-// sub_8085B0C
-// sub_8085C4C
-// sub_8085C8C
-// sub_8085DF4
-// sub_8085E6C
-// sub_8086044
-// sub_808606C
-// sub_8086110
-// sub_80861B4
-// sub_80861DC
-// sub_8086288
-// sub_8086368
-// sub_80863B4
-// sub_80863E0
-// sub_80864DC
-// sub_8086668
-// EndPlayerPhaseSideWindows
-// sub_80866DC
-// sub_80866FC
-// sub_8086748
-// sub_80867D8
-// sub_8086960
-// sub_80869F8
-// sub_8086BB8
-// sub_8086C00
-// nullsub_71
-// nullsub_72
-// nullsub_73
-// sub_8086C68
-// sub_8086CFC
-// sub_8086D58
-// sub_8086D88
-// sub_8086E0C
-// sub_8086E98
-// sub_8086ED4
-// sub_8086F18
-// sub_8086FC0
+
+/* mapui.h */
+
 // OnVBlank_SioError
 // OnMain_SioErrorWait
 // PutSioErrorMessage

@@ -2617,7 +2617,7 @@ _0800CB9E:
 	movs r0, #0x11
 	ldrsb r0, [r5, r0]
 	str r0, [sp, #4]
-	ldr r7, _0800CC20 @ =0x0202E3F0
+	ldr r7, _0800CC20 @ =gBmMapOther
 	ldr r1, [r7]
 	lsls r0, r0, #2
 	adds r0, r0, r1
@@ -2662,7 +2662,7 @@ _0800CBFA:
 	bx r1
 	.align 2, 0
 _0800CC1C: .4byte gUnk_08C00C18
-_0800CC20: .4byte 0x0202E3F0
+_0800CC20: .4byte gBmMapOther
 
 	thumb_func_start nullsub_26
 nullsub_26: @ 0x0800CC24
@@ -2708,10 +2708,10 @@ _0800CC6E:
 Event30_LoadUnit: @ 0x0800CC74
 	push {r4, lr}
 	adds r4, r0, #0
-	ldr r0, _0800CCA0 @ =0x0202E3F0
+	ldr r0, _0800CCA0 @ =gBmMapOther
 	ldr r0, [r0]
 	movs r1, #0
-	bl BmMapFillg
+	bl BmMapFill
 	ldr r0, [r4, #0x30]
 	ldr r0, [r0, #4]
 	str r0, [r4, #0x44]
@@ -2727,7 +2727,7 @@ Event30_LoadUnit: @ 0x0800CC74
 	movs r0, #2
 	b _0800CCB0
 	.align 2, 0
-_0800CCA0: .4byte 0x0202E3F0
+_0800CCA0: .4byte gBmMapOther
 _0800CCA4: .4byte sub_800CF2C
 _0800CCA8:
 	adds r0, r4, #0
@@ -2743,10 +2743,10 @@ _0800CCB0:
 Event31_LoadUnit: @ 0x0800CCB8
 	push {r4, lr}
 	adds r4, r0, #0
-	ldr r0, _0800CCE4 @ =0x0202E3F0
+	ldr r0, _0800CCE4 @ =gBmMapOther
 	ldr r0, [r0]
 	movs r1, #0
-	bl BmMapFillg
+	bl BmMapFill
 	ldr r0, [r4, #0x30]
 	ldr r0, [r0, #4]
 	str r0, [r4, #0x44]
@@ -2762,7 +2762,7 @@ Event31_LoadUnit: @ 0x0800CCB8
 	movs r0, #2
 	b _0800CCF4
 	.align 2, 0
-_0800CCE4: .4byte 0x0202E3F0
+_0800CCE4: .4byte gBmMapOther
 _0800CCE8: .4byte sub_800CFA8
 _0800CCEC:
 	adds r0, r4, #0
@@ -2796,10 +2796,10 @@ _0800CD18:
 	ldrb r0, [r0, #4]
 	cmp r1, r0
 	bne _0800CD5E
-	ldr r0, _0800CD50 @ =0x0202E3F0
+	ldr r0, _0800CD50 @ =gBmMapOther
 	ldr r0, [r0]
 	movs r1, #0
-	bl BmMapFillg
+	bl BmMapFill
 	ldr r0, [r4, #0x30]
 	ldr r0, [r0, #8]
 	str r0, [r4, #0x44]
@@ -2817,7 +2817,7 @@ _0800CD18:
 	.align 2, 0
 _0800CD48: .4byte 0xFFFF0000
 _0800CD4C: .4byte gPlaySt
-_0800CD50: .4byte 0x0202E3F0
+_0800CD50: .4byte gBmMapOther
 _0800CD54: .4byte sub_800CF2C
 _0800CD58:
 	adds r0, r4, #0
@@ -2834,10 +2834,10 @@ _0800CD60:
 sub_800CD68: @ 0x0800CD68
 	push {r4, lr}
 	adds r4, r0, #0
-	ldr r0, _0800CD8C @ =0x0202E3F0
+	ldr r0, _0800CD8C @ =gBmMapOther
 	ldr r0, [r0]
 	movs r1, #0
-	bl BmMapFillg
+	bl BmMapFill
 	ldr r0, [r4, #0x30]
 	ldr r0, [r0, #4]
 	str r0, [r4, #0x44]
@@ -2848,7 +2848,7 @@ sub_800CD68: @ 0x0800CD68
 	pop {r1}
 	bx r1
 	.align 2, 0
-_0800CD8C: .4byte 0x0202E3F0
+_0800CD8C: .4byte gBmMapOther
 
 	thumb_func_start sub_800CD90
 sub_800CD90: @ 0x0800CD90
@@ -2865,10 +2865,10 @@ sub_800CD90: @ 0x0800CD90
 	.align 2, 0
 _0800CDA4: .4byte gPlaySt
 _0800CDA8:
-	ldr r0, _0800CDC8 @ =0x0202E3F0
+	ldr r0, _0800CDC8 @ =gBmMapOther
 	ldr r0, [r0]
 	movs r1, #0
-	bl BmMapFillg
+	bl BmMapFill
 	ldr r0, [r4, #0x30]
 	ldr r0, [r0, #8]
 	str r0, [r4, #0x44]
@@ -2880,7 +2880,7 @@ _0800CDC0:
 	pop {r1}
 	bx r1
 	.align 2, 0
-_0800CDC8: .4byte 0x0202E3F0
+_0800CDC8: .4byte gBmMapOther
 
 	thumb_func_start sub_800CDCC
 sub_800CDCC: @ 0x0800CDCC
@@ -2899,10 +2899,10 @@ sub_800CDCC: @ 0x0800CDCC
 	bne _0800CDE8
 	adds r4, #2
 _0800CDE8:
-	ldr r0, _0800CE08 @ =0x0202E3F0
+	ldr r0, _0800CE08 @ =gBmMapOther
 	ldr r0, [r0]
 	movs r1, #0
-	bl BmMapFillg
+	bl BmMapFill
 	cmp r4, #1
 	beq _0800CE0C
 	cmp r4, #1
@@ -2914,7 +2914,7 @@ _0800CDE8:
 	b _0800CE1E
 	.align 2, 0
 _0800CE04: .4byte gPlaySt
-_0800CE08: .4byte 0x0202E3F0
+_0800CE08: .4byte gBmMapOther
 _0800CE0C:
 	ldr r0, [r5, #0x30]
 	ldr r0, [r0, #8]
@@ -2976,10 +2976,10 @@ sub_800CE54: @ 0x0800CE54
 	bne _0800CE70
 	adds r4, #2
 _0800CE70:
-	ldr r0, _0800CE90 @ =0x0202E3F0
+	ldr r0, _0800CE90 @ =gBmMapOther
 	ldr r0, [r0]
 	movs r1, #0
-	bl BmMapFillg
+	bl BmMapFill
 	cmp r4, #1
 	beq _0800CE94
 	cmp r4, #1
@@ -2991,7 +2991,7 @@ _0800CE70:
 	b _0800CEA6
 	.align 2, 0
 _0800CE8C: .4byte gPlaySt
-_0800CE90: .4byte 0x0202E3F0
+_0800CE90: .4byte gBmMapOther
 _0800CE94:
 	ldr r0, [r5, #0x30]
 	ldr r0, [r0, #8]
@@ -3467,38 +3467,38 @@ _0800D200: .4byte gUnk_08C00C28
 sub_800D204: @ 0x0800D204
 	push {r4, r5, lr}
 	adds r5, r0, #0
-	bl sub_806C850
+	bl MuExistsActive
 	lsls r0, r0, #0x18
 	asrs r4, r0, #0x18
 	cmp r4, #0
 	bne _0800D220
-	ldr r0, _0800D228 @ =0x0202E3F0
+	ldr r0, _0800D228 @ =gBmMapOther
 	ldr r0, [r0]
 	movs r1, #0
-	bl BmMapFillg
+	bl BmMapFill
 	str r4, [r5, #0x40]
 _0800D220:
 	pop {r4, r5}
 	pop {r0}
 	bx r0
 	.align 2, 0
-_0800D228: .4byte 0x0202E3F0
+_0800D228: .4byte gBmMapOther
 
 	thumb_func_start sub_800D22C
 sub_800D22C: @ 0x0800D22C
 	push {r4, lr}
 	adds r4, r0, #0
-	bl sub_806C850
+	bl MuExistsActive
 	lsls r0, r0, #0x18
 	cmp r0, #0
 	beq _0800D23E
 	movs r0, #3
 	b _0800D262
 _0800D23E:
-	ldr r0, _0800D25C @ =0x0202E3F0
+	ldr r0, _0800D25C @ =gBmMapOther
 	ldr r0, [r0]
 	movs r1, #0
-	bl BmMapFillg
+	bl BmMapFill
 	adds r1, r4, #0
 	adds r1, #0x5e
 	movs r0, #4
@@ -3509,7 +3509,7 @@ _0800D23E:
 	movs r0, #2
 	b _0800D262
 	.align 2, 0
-_0800D25C: .4byte 0x0202E3F0
+_0800D25C: .4byte gBmMapOther
 _0800D260:
 	movs r0, #0
 _0800D262:
@@ -9492,10 +9492,10 @@ sub_800FCBC: @ 0x0800FCBC
 	adds r0, r0, r2
 	lsls r0, r0, #3
 	adds r4, r4, r0
-	ldr r0, _0800FCF4 @ =0x0202E3F0
+	ldr r0, _0800FCF4 @ =gBmMapOther
 	ldr r0, [r0]
 	movs r1, #0
-	bl BmMapFillg
+	bl BmMapFill
 	ldr r0, [r4, #8]
 	str r0, [r5, #0x44]
 	ldr r0, _0800FCF8 @ =sub_800CF2C
@@ -9504,7 +9504,7 @@ sub_800FCBC: @ 0x0800FCBC
 	b _0800FCFE
 	.align 2, 0
 _0800FCF0: .4byte 0x0202A5A0
-_0800FCF4: .4byte 0x0202E3F0
+_0800FCF4: .4byte gBmMapOther
 _0800FCF8: .4byte sub_800CF2C
 _0800FCFC:
 	movs r0, #0

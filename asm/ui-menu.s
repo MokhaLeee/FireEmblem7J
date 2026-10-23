@@ -1162,8 +1162,8 @@ _0804B2D4:
 	.align 2, 0
 _0804B2D8: .4byte gUnk_08C09BF4
 
-	thumb_func_start sub_804B2DC
-sub_804B2DC: @ 0x0804B2DC
+	thumb_func_start StartSemiCenteredOrphanMenu
+StartSemiCenteredOrphanMenu: @ 0x0804B2DC
 	push {r4, r5, r6, r7, lr}
 	bl StartAdjustedMenu
 	adds r4, r0, #0

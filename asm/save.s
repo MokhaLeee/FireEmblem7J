@@ -2956,8 +2956,8 @@ _080A092C: .4byte 0x000003FF
 _080A0930: .4byte 0xFF003FFF
 _080A0934: .4byte 0xFF803FFF
 
-	thumb_func_start sub_80A0938
-sub_80A0938: @ 0x080A0938
+	thumb_func_start PidStatsAddActAmt
+PidStatsAddActAmt: @ 0x080A0938
 	push {r4, r5, lr}
 	lsls r0, r0, #0x18
 	lsrs r4, r0, #0x18
@@ -5255,7 +5255,7 @@ WriteSuspendSave: @ 0x080A1A88
 	push {r5, r6, r7}
 	sub sp, #0x20
 	mov r8, r0
-	bl sub_8031B40
+	bl IsChapterSakaba
 	lsls r0, r0, #0x18
 	cmp r0, #0
 	beq _080A1AA2
@@ -9905,8 +9905,8 @@ _080A3EEC: .4byte gBmSt
 _080A3EF0: .4byte 0x000F000F
 _080A3EF4: .4byte gpKeySt
 
-	thumb_func_start sub_80A3EF8
-sub_80A3EF8: @ 0x080A3EF8
+	thumb_func_start StartMinimapPlayerPhase
+StartMinimapPlayerPhase: @ 0x080A3EF8
 	push {lr}
 	ldr r0, _080A3F08 @ =gUnk_08DAD29C
 	movs r1, #3

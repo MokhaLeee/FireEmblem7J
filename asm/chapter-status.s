@@ -1127,13 +1127,13 @@ sub_8087B2C: @ 0x08087B2C
 	ldrb r0, [r0]
 	cmp r0, #0
 	beq _08087B3E
-	ldr r0, _08087B44 @ =gUnk_08C02938
+	ldr r0, _08087B44 @ =ProcScr_ADJUSTSFROMXI
 	bl Proc_StartBlocking
 _08087B3E:
 	pop {r0}
 	bx r0
 	.align 2, 0
-_08087B44: .4byte gUnk_08C02938
+_08087B44: .4byte ProcScr_ADJUSTSFROMXI
 
 	thumb_func_start NewChapterStatusScreen
 NewChapterStatusScreen: @ 0x08087B48

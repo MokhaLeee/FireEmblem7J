@@ -2049,8 +2049,8 @@ _08079774:
 	bx r0
 	.align 2, 0
 
-	thumb_func_start sub_807977C
-sub_807977C: @ 0x0807977C
+	thumb_func_start ShouldCallEndEvent
+ShouldCallEndEvent: @ 0x0807977C
 	push {lr}
 	bl sub_8079990
 	lsls r0, r0, #0x18
@@ -2059,16 +2059,16 @@ sub_807977C: @ 0x0807977C
 	bx r1
 	.align 2, 0
 
-	thumb_func_start sub_807978C
-sub_807978C: @ 0x0807978C
+	thumb_func_start MaybeCallEndEvent_
+MaybeCallEndEvent_: @ 0x0807978C
 	push {lr}
 	bl sub_80799A0
 	pop {r0}
 	bx r0
 	.align 2, 0
 
-	thumb_func_start sub_8079798
-sub_8079798: @ 0x08079798
+	thumb_func_start TryCallSelectEvents
+TryCallSelectEvents: @ 0x08079798
 	push {lr}
 	sub sp, #0x1c
 	ldr r0, _080797CC @ =gPlaySt
@@ -2098,8 +2098,8 @@ _080797C4:
 _080797CC: .4byte gPlaySt
 _080797D0: .4byte gUnk_08D6696C
 
-	thumb_func_start sub_80797D4
-sub_80797D4: @ 0x080797D4
+	thumb_func_start StartAfterUnitMovedEvent
+StartAfterUnitMovedEvent: @ 0x080797D4
 	push {r4, lr}
 	sub sp, #0x1c
 	ldr r0, _08079818 @ =gPlaySt
@@ -2142,8 +2142,8 @@ _08079822:
 	bx r1
 	.align 2, 0
 
-	thumb_func_start sub_807982C
-sub_807982C: @ 0x0807982C
+	thumb_func_start StartDestSelectedEvent
+StartDestSelectedEvent: @ 0x0807982C
 	push {lr}
 	sub sp, #0x1c
 	ldr r0, _0807986C @ =gPlaySt
@@ -2356,7 +2356,7 @@ sub_80799A0: @ 0x080799A0
 	lsls r0, r0, #0x18
 	cmp r0, #0
 	beq _080799BC
-	bl sub_807977C
+	bl ShouldCallEndEvent
 	lsls r0, r0, #0x18
 	cmp r0, #0
 	beq _080799BC

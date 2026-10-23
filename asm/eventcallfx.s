@@ -3743,10 +3743,10 @@ sub_807EF68: @ 0x0807EF68
 sub_807EF7C: @ 0x0807EF7C
 	push {r4, r5, lr}
 	ldr r5, _0807EFFC @ =gUnk_08DA9AF8
-	ldr r0, _0807F000 @ =0x0202E3F0
+	ldr r0, _0807F000 @ =gBmMapOther
 	ldr r0, [r0]
 	movs r1, #0
-	bl BmMapFillg
+	bl BmMapFill
 	movs r0, #0x27
 	bl GetUnitFromCharId
 	adds r1, r0, #0
@@ -3797,7 +3797,7 @@ _0807EFE8:
 	mov pc, r0
 	.align 2, 0
 _0807EFFC: .4byte gUnk_08DA9AF8
-_0807F000: .4byte 0x0202E3F0
+_0807F000: .4byte gBmMapOther
 _0807F004: .4byte gUnk_08DA9B78
 _0807F008: .4byte gUnk_08DA9B98
 _0807F00C: .4byte gUnk_08DA9A98
@@ -3881,10 +3881,10 @@ _0807F100: .4byte 0x0001000C
 sub_807F104: @ 0x0807F104
 	push {r4, r5, lr}
 	ldr r5, _0807F160 @ =gUnk_08DA9BB8
-	ldr r0, _0807F164 @ =0x0202E3F0
+	ldr r0, _0807F164 @ =gBmMapOther
 	ldr r0, [r0]
 	movs r1, #0
-	bl BmMapFillg
+	bl BmMapFill
 	movs r4, #1
 _0807F114:
 	adds r0, r4, #0
@@ -3924,7 +3924,7 @@ _0807F150:
 	bx r0
 	.align 2, 0
 _0807F160: .4byte gUnk_08DA9BB8
-_0807F164: .4byte 0x0202E3F0
+_0807F164: .4byte gBmMapOther
 _0807F168: .4byte 0x0001000C
 
 	thumb_func_start sub_807F16C

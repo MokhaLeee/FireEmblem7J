@@ -35,7 +35,7 @@ InitChapterMap: @ 0x08019170
 	ldrsh r3, [r4, r7]
 	bl BmMapInit
 	ldr r0, _08019248 @ =0x03000BF8
-	ldr r1, _0801924C @ =0x0202E3E4
+	ldr r1, _0801924C @ =gBmMapRange
 	movs r3, #0
 	ldrsh r2, [r4, r3]
 	movs r7, #2
@@ -56,7 +56,7 @@ InitChapterMap: @ 0x08019170
 	ldrsh r3, [r4, r7]
 	bl BmMapInit
 	ldr r0, _08019260 @ =0x020302D4
-	ldr r1, _08019264 @ =0x0202E3F0
+	ldr r1, _08019264 @ =gBmMapOther
 	movs r3, #0
 	ldrsh r2, [r4, r3]
 	movs r7, #2
@@ -64,10 +64,10 @@ InitChapterMap: @ 0x08019170
 	bl BmMapInit
 	ldr r0, [r6]
 	movs r1, #0
-	bl BmMapFillg
+	bl BmMapFill
 	ldr r0, [r5]
 	movs r1, #0
-	bl BmMapFillg
+	bl BmMapFill
 	bl sub_8019654
 	bl sub_802C100
 	bl RefreshTerrainMap
@@ -90,13 +90,13 @@ _0801923C: .4byte gBmMapTerrain
 _08019240: .4byte 0x03000440
 _08019244: .4byte gBmMapMovement
 _08019248: .4byte 0x03000BF8
-_0801924C: .4byte 0x0202E3E4
+_0801924C: .4byte gBmMapRange
 _08019250: .4byte 0x0202F364
 _08019254: .4byte 0x0202E3E8
 _08019258: .4byte 0x0202FB1C
 _0801925C: .4byte gBmMapHidden
 _08019260: .4byte 0x020302D4
-_08019264: .4byte 0x0202E3F0
+_08019264: .4byte gBmMapOther
 _08019268: .4byte gPlaySt
 
 	thumb_func_start InitChapterPreviewMap
@@ -124,10 +124,10 @@ InitChapterPreviewMap: @ 0x0801926C
 	bl BmMapInit
 	ldr r0, [r6]
 	movs r1, #0
-	bl BmMapFillg
+	bl BmMapFill
 	ldr r0, [r5]
 	movs r1, #0
-	bl BmMapFillg
+	bl BmMapFill
 	bl sub_8019654
 	bl RefreshTerrainMap
 	pop {r4, r5, r6}
@@ -388,8 +388,8 @@ _08019480:
 	.align 2, 0
 _08019490: .4byte 0x03000438
 
-	thumb_func_start BmMapFillg
-BmMapFillg: @ 0x08019494
+	thumb_func_start BmMapFill
+BmMapFill: @ 0x08019494
 	push {r4, r5, lr}
 	sub sp, #4
 	adds r5, r0, #0
@@ -870,8 +870,8 @@ nullsub_7: @ 0x08019838
 	bx lr
 	.align 2, 0
 
-	thumb_func_start sub_801983C
-sub_801983C: @ 0x0801983C
+	thumb_func_start DisplayMovementViewTile
+DisplayMovementViewTile: @ 0x0801983C
 	push {r4, r5, r6, lr}
 	adds r4, r0, #0
 	adds r6, r1, #0
@@ -906,7 +906,7 @@ _08019856:
 _08019878: .4byte gBmMapMovement
 _0801987C: .4byte 0x00004281
 _08019880:
-	ldr r0, _080198A4 @ =0x0202E3E4
+	ldr r0, _080198A4 @ =gBmMapRange
 	ldr r0, [r0]
 	adds r0, r2, r0
 	ldr r0, [r0]
@@ -924,7 +924,7 @@ _08019880:
 	ldr r2, _080198AC @ =0x00005285
 	b _080198BA
 	.align 2, 0
-_080198A4: .4byte 0x0202E3E4
+_080198A4: .4byte gBmMapRange
 _080198A8: .4byte 0x00005284
 _080198AC: .4byte 0x00005285
 _080198B0:
@@ -1272,7 +1272,7 @@ _08019B36:
 	mov r1, r8
 	adds r2, r5, #0
 	adds r3, r7, #0
-	bl sub_801983C
+	bl DisplayMovementViewTile
 	subs r6, #1
 	cmp r6, #0
 	bge _08019B36
@@ -1373,7 +1373,7 @@ _08019C02:
 	adds r1, r5, #0
 	mov r2, r8
 	adds r3, r4, #0
-	bl sub_801983C
+	bl DisplayMovementViewTile
 	subs r6, #1
 	cmp r6, #0
 	bge _08019C02
@@ -1705,11 +1705,11 @@ RefreshEntityMaps: @ 0x08019EA4
 	ldr r0, _08019EE0 @ =gBmMapUnit
 	ldr r0, [r0]
 	movs r1, #0
-	bl BmMapFillg
+	bl BmMapFill
 	ldr r0, _08019EE4 @ =gBmMapHidden
 	ldr r0, [r0]
 	movs r1, #0
-	bl BmMapFillg
+	bl BmMapFill
 	ldr r0, _08019EE8 @ =0x0202E3E8
 	ldr r2, [r0]
 	movs r1, #0
@@ -1720,7 +1720,7 @@ RefreshEntityMaps: @ 0x08019EA4
 	movs r1, #1
 _08019ECA:
 	adds r0, r2, #0
-	bl BmMapFillg
+	bl BmMapFill
 	bl sub_8019E24
 	bl sub_8019C50
 	bl sub_8019E50

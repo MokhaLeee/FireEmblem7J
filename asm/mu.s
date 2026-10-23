@@ -769,8 +769,8 @@ _0806C7EE:
 	bx r0
 	.align 2, 0
 
-	thumb_func_start sub_806C7F8
-sub_806C7F8: @ 0x0806C7F8
+	thumb_func_start SetAutoMuMoveScript
+SetAutoMuMoveScript: @ 0x0806C7F8
 	push {r7, lr}
 	sub sp, #8
 	mov r7, sp
@@ -797,8 +797,8 @@ _0806C822:
 	bx r0
 	.align 2, 0
 
-	thumb_func_start sub_806C82C
-sub_806C82C: @ 0x0806C82C
+	thumb_func_start MuExists
+MuExists: @ 0x0806C82C
 	push {r7, lr}
 	mov r7, sp
 	ldr r1, _0806C844 @ =gUnk_08D64F4C
@@ -819,8 +819,8 @@ _0806C848:
 	bx r1
 	.align 2, 0
 
-	thumb_func_start sub_806C850
-sub_806C850: @ 0x0806C850
+	thumb_func_start MuExistsActive
+MuExistsActive: @ 0x0806C850
 	push {r7, lr}
 	sub sp, #8
 	mov r7, sp

@@ -1390,10 +1390,11 @@ extern const u8 Tsa_Statscreen_08404124[];
 extern const u8 Tsa_StatScreen_0840417C[];
 // ??? gUnk_084041FC
 // ??? gUnk_0840431C
-// ??? gUnk_08404734
-// ??? gUnk_084047B4
-// ??? gUnk_08404814
-// ??? gUnk_08404874
+extern const u8 Img_LimitViewSquares[];
+extern const u8 Img_LimitViewSquareFull[];
+extern const u16 Pal_LimitViewBlue[];
+extern const u16 Pal_LimitViewRed[];
+extern const u16 Pal_LimitViewGreen[];
 // ??? gUnk_084048D4
 // ??? gUnk_08404B0C
 // ??? gUnk_08404B2C
@@ -1728,14 +1729,11 @@ extern u8 Img_SysBrownBox[];
 // ??? gUnk_08C025F8
 // ??? gUnk_08C02600
 // ??? gUnk_08C02618
-extern struct ProcCmd ProcScr_PlayerPhase[];
-// ??? gUnk_08C02828
-// ??? gUnk_08C02870
 // ??? gUnk_08C028A8
 // ??? gUnk_08C028C0
-// ??? gUnk_08C028E8
+extern struct ProcCmd ProcScr_BMXFADE[];
 extern struct ProcCmd ProcScr_08C02920[];
-// ??? gUnk_08C02938
+extern struct ProcCmd ProcScr_ADJUSTSFROMXI[];
 // ??? gUnk_08C02958
 // ??? gUnk_08C029A8
 // ??? gUnk_08C029C0
@@ -1814,8 +1812,9 @@ extern struct ProcCmd ProcScr_UpdateTraps[];
 // ??? gUnk_08C04CFC
 // ??? gUnk_08C04D20
 // ??? gUnk_08C04D44
-// ??? gUnk_08C04D68
-// ??? gUnk_08C04DB0
+extern const struct MenuDef gUnitActionMenuDef;
+// ??? gUnk_08C04D8C
+extern const struct MenuDef gMapMenuDef;
 // ??? gUnk_08C04DD4
 // ??? gUnk_08C04DF4
 // ??? gUnk_08C04E14
@@ -1964,8 +1963,7 @@ extern struct ProcCmd ProcScr_08C0617C[];
 // ??? gUnk_08D6164A
 // ??? gUnk_08D61678
 // ??? AffinityBonuses
-// ??? gUnk_08D62110
-// ??? gUnk_08D62170
+// ??? gChapterInfo
 // ??? gChapterDataAssetTable
 // ??? gWorldMapEvents
 // ??? gUnk_08D64D98

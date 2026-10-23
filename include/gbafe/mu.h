@@ -103,7 +103,7 @@ struct MuConfig
 
 // MU_Init
 // sub_806C274
-// StartMu
+struct MuProc * StartMu(struct Unit * unit);
 // sub_806C398
 // EnableMuCamera
 // DisableMuCamera
@@ -112,10 +112,10 @@ struct MuProc * StartUiMu(struct Unit * unit, int x, int y);
 // StartMuInternal
 // SetMuFacing
 // sub_806C790
-// MU_SetDefaultFacing_Auto
-// sub_806C7F8
-// sub_806C82C
-// sub_806C850
+void MU_SetDefaultFacing_Auto(void);
+void SetAutoMuMoveScript(const u8 commands[MOVE_SCRIPT_MAX_LENGTH]);
+bool MuExists(void);
+bool MuExistsActive(void);
 // IsMuActive
 // SetMuMoveScript
 // StartMuScripted

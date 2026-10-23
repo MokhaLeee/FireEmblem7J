@@ -867,7 +867,7 @@ void nullsub_22()
 {
 }
 
-void sub_8004B1C(ProcPtr proc, ProcFunc func)
+void Proc_SetRepeatCb(ProcPtr proc, ProcFunc func)
 {
     struct Proc * p = ((struct Proc*)proc);
     p->proc_idleCb = func;

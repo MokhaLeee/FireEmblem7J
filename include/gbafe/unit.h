@@ -421,8 +421,8 @@ void UnitKill(struct Unit *unit);
 void UnitChangeFaction(struct Unit *unit, int faction);
 void UnitSyncMovement(struct Unit *unit);
 // UnitGetDeathDropLocation
-// UnitBeginAction
-// UnitBeginCantoAction
+void UnitBeginAction(struct Unit *unit);
+void UnitBeginCantoAction(struct Unit *unit);
 void MoveActiveUnit(int x, int y);
 void ClearActiveFactionGrayedStates(void);
 void TickActiveFactionTurn(void);
@@ -434,9 +434,9 @@ bool UnitHasMagicRank(struct Unit *unit);
 // sub_80188F4
 // GetUnitKeyItemSlotForTerrain
 int GetUnitAidIconId(u32 attributes);
-// GetUnitWeaponUsabilityBits
-// GetCombinedEnemyWeaponUsabilityBits
-// CanActiveUnitStillMove
+int GetUnitWeaponUsabilityBits(struct Unit *unit);
+int GetCombinedEnemyWeaponUsabilityBits(void);
+bool CanActiveUnitStillMove(void);
 // IsPositionMagicSealed
 // IsUnitMagicSealed
 // GetUnitLastItem

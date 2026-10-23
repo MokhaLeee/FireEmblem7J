@@ -45,9 +45,16 @@ enum BmSt_gameStateBits {
     BM_FLAG_1 = (1 << 1),
     BM_FLAG_2 = (1 << 2),
     BM_FLAG_3 = (1 << 3),
-    BM_FLAG_4 = (1 << 4),
+    BM_FLAG_PREPSCREEN = (1 << 4),
     BM_FLAG_5 = (1 << 5),
     BM_FLAG_LINKARENA = (1 << 6),
+};
+
+enum BmSt_partialActionsTakenBits {
+    PARTIAL_ACTION_TAKE = (1 << 0),
+    PARTIAL_ACTION_TRADE = (1 << 1),
+    PARTIAL_ACTION_SUPPLY = (1 << 2),
+    PARTIAL_ACTION_BALLISTA = (1 << 3),
 };
 
 struct PlaySt {

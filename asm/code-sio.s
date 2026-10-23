@@ -17874,11 +17874,11 @@ sub_80455BC: @ 0x080455BC
 	ldr r0, _08045614 @ =gBmMapUnit
 	ldr r0, [r0]
 	movs r1, #0
-	bl BmMapFillg
+	bl BmMapFill
 	ldr r0, _08045618 @ =0x0202E3E8
 	ldr r0, [r0]
 	movs r1, #1
-	bl BmMapFillg
+	bl BmMapFill
 	movs r4, #1
 _080455D4:
 	adds r0, r4, #0
@@ -18067,7 +18067,7 @@ sub_804572C: @ 0x0804572C
 	movs r1, #1
 _0804574A:
 	adds r0, r2, #0
-	bl BmMapFillg
+	bl BmMapFill
 	bl sub_80455BC
 	bl RenderMap
 	pop {r0}
@@ -19860,7 +19860,7 @@ sub_8046604: @ 0x08046604
 	mov r7, r8
 	push {r7}
 	adds r7, r0, #0
-	bl sub_806C850
+	bl MuExistsActive
 	lsls r0, r0, #0x18
 	asrs r0, r0, #0x18
 	cmp r0, #1
@@ -21407,7 +21407,7 @@ sub_804723C: @ 0x0804723C
 	asrs r0, r0, #0x18
 	cmp r0, #1
 	beq _0804725E
-	bl sub_806C850
+	bl MuExistsActive
 	lsls r0, r0, #0x18
 	cmp r0, #0
 	bne _0804725E

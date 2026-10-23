@@ -26,9 +26,9 @@ void PutUnitSpritesOam(void);
 // ??? PutChapterMarkedTileIconOam
 void PutUnitSpriteIconsOam(void);
 // ??? sub_8026418
-// ??? sub_8026428
+void ResetUnitSpriteHover(void);
 void UnitSpriteHoverUpdate(void);
-// ??? sub_80264F0
+s8 IsUnitSpriteHoverEnabledAt(int x, int y);
 // ??? sub_8026540
 // ??? sub_8026628
 void sub_80266DC(int layer, int x, int y, int jid);

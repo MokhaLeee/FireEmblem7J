@@ -14833,7 +14833,7 @@ _080B7116:
 	movs r5, #0
 	cmp r5, r8
 	bge _080B71CE
-	ldr r6, _080B71F4 @ =gUnk_08D62110
+	ldr r6, _080B71F4 @ =gChapterInfo
 	movs r7, #0x94
 	movs r0, #0x2d
 	adds r0, r0, r6
@@ -14933,7 +14933,7 @@ _080B71E0:
 	pop {r1}
 	bx r1
 	.align 2, 0
-_080B71F4: .4byte gUnk_08D62110
+_080B71F4: .4byte gChapterInfo
 
 	thumb_func_start sub_80B71F8
 sub_80B71F8: @ 0x080B71F8
@@ -14988,7 +14988,7 @@ _080B7246:
 	movs r5, #0
 	cmp r5, r8
 	bge _080B72FE
-	ldr r6, _080B7324 @ =gUnk_08D62110
+	ldr r6, _080B7324 @ =gChapterInfo
 	movs r7, #0x94
 	movs r0, #0x3e
 	adds r0, r0, r6
@@ -15088,7 +15088,7 @@ _080B7310:
 	pop {r1}
 	bx r1
 	.align 2, 0
-_080B7324: .4byte gUnk_08D62110
+_080B7324: .4byte gChapterInfo
 
 	thumb_func_start sub_80B7328
 sub_80B7328: @ 0x080B7328
@@ -15133,7 +15133,7 @@ sub_80B735C: @ 0x080B735C
 	movs r5, #0
 	cmp r6, r7
 	bge _080B73B4
-	ldr r0, _080B73C8 @ =gUnk_08D62170
+	ldr r0, _080B73C8 @ =gChapterInfo + 0x60
 	mov sb, r0
 _080B737C:
 	adds r0, r5, #0
@@ -15174,7 +15174,7 @@ _080B73B4:
 	movs r0, #4
 	b _080B73F0
 	.align 2, 0
-_080B73C8: .4byte gUnk_08D62170
+_080B73C8: .4byte gChapterInfo + 0x60
 _080B73CC:
 	lsls r0, r6, #4
 	subs r0, r0, r6
@@ -15318,7 +15318,7 @@ sub_80B74C0: @ 0x080B74C0
 	ldrsb r1, [r0, r1]
 	movs r0, #0x94
 	muls r1, r0, r1
-	ldr r0, _080B753C @ =gUnk_08D62110
+	ldr r0, _080B753C @ =gChapterInfo
 	adds r4, r1, r0
 	bl sub_8031B54
 	lsls r0, r0, #0x18
@@ -15370,7 +15370,7 @@ _080B752E:
 	bx r1
 	.align 2, 0
 _080B7538: .4byte gPlaySt
-_080B753C: .4byte gUnk_08D62110
+_080B753C: .4byte gChapterInfo
 
 	thumb_func_start sub_80B7540
 sub_80B7540: @ 0x080B7540
@@ -15536,7 +15536,7 @@ sub_80B7654: @ 0x080B7654
 	subs r0, #1
 	bl GetChapterStats
 	adds r6, r0, #0
-	ldr r4, _080B76A0 @ =gUnk_08D62110
+	ldr r4, _080B76A0 @ =gChapterInfo
 	bl sub_8031B54
 	lsls r0, r0, #0x18
 	lsrs r0, r0, #0x16
@@ -15560,7 +15560,7 @@ sub_80B7654: @ 0x080B7654
 	b _080B76C8
 	.align 2, 0
 _080B769C: .4byte gPlaySt
-_080B76A0: .4byte gUnk_08D62110
+_080B76A0: .4byte gChapterInfo
 _080B76A4:
 	lsls r0, r1, #4
 	subs r0, r0, r1
@@ -15732,7 +15732,7 @@ _080B77BE:
 	bl GetChapterStats
 	adds r5, r0, #0
 	bl sub_8031B54
-	ldr r6, _080B787C @ =gUnk_08D62110
+	ldr r6, _080B787C @ =gChapterInfo
 	lsls r0, r0, #0x18
 	lsrs r0, r0, #0x17
 	ldr r1, [r5]
@@ -15805,7 +15805,7 @@ _080B7866:
 _080B7870: .4byte 0x000FFFFF
 _080B7874: .4byte gPlaySt
 _080B7878: .4byte 0xF00000FF
-_080B787C: .4byte gUnk_08D62110
+_080B787C: .4byte gChapterInfo
 
 	thumb_func_start ComputeChapterRankings
 ComputeChapterRankings: @ 0x080B7880

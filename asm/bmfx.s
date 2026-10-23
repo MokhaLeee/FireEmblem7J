@@ -67,7 +67,7 @@ _0801D840:
 sub_801D844: @ 0x0801D844
 	push {r4, r5, lr}
 	adds r4, r0, #0
-	bl sub_806C850
+	bl MuExistsActive
 	lsls r0, r0, #0x18
 	cmp r0, #0
 	bne _0801D87A
@@ -295,7 +295,7 @@ StartMapFade: @ 0x0801DA0C
 	adds r4, r0, #0
 	lsls r4, r4, #0x18
 	lsrs r4, r4, #0x18
-	ldr r0, _0801DA34 @ =gUnk_08C028E8
+	ldr r0, _0801DA34 @ =ProcScr_BMXFADE
 	movs r1, #3
 	bl Proc_Start
 	lsls r4, r4, #0x18
@@ -310,12 +310,12 @@ _0801DA2C:
 	pop {r0}
 	bx r0
 	.align 2, 0
-_0801DA34: .4byte gUnk_08C028E8
+_0801DA34: .4byte ProcScr_BMXFADE
 
-	thumb_func_start sub_801DA38
-sub_801DA38: @ 0x0801DA38
+	thumb_func_start DoesBMXFADEExist
+DoesBMXFADEExist: @ 0x0801DA38
 	push {lr}
-	ldr r0, _0801DA4C @ =gUnk_08C028E8
+	ldr r0, _0801DA4C @ =ProcScr_BMXFADE
 	bl Proc_Find
 	cmp r0, #0
 	beq _0801DA46
@@ -324,7 +324,7 @@ _0801DA46:
 	pop {r1}
 	bx r1
 	.align 2, 0
-_0801DA4C: .4byte gUnk_08C028E8
+_0801DA4C: .4byte ProcScr_BMXFADE
 
 	thumb_func_start sub_801DA50
 sub_801DA50: @ 0x0801DA50
@@ -984,11 +984,11 @@ sub_801DF68: @ 0x0801DF68
 	ldr r0, [r6]
 	movs r1, #1
 	rsbs r1, r1, #0
-	bl BmMapFillg
-	ldr r0, _0801E038 @ =0x0202E3E4
+	bl BmMapFill
+	ldr r0, _0801E038 @ =gBmMapRange
 	ldr r0, [r0]
 	movs r1, #0
-	bl BmMapFillg
+	bl BmMapFill
 	ldr r0, [r6]
 	bl SetWorkingBmMap
 	mov r0, r8
@@ -1076,7 +1076,7 @@ _0801E02A:
 	b _0801E0D0
 	.align 2, 0
 _0801E034: .4byte gBmMapMovement
-_0801E038: .4byte 0x0202E3E4
+_0801E038: .4byte gBmMapRange
 _0801E03C: .4byte gPlaySt
 _0801E040: .4byte gBmMapSize
 _0801E044: .4byte gBmMapTerrain
@@ -3022,7 +3022,7 @@ sub_801EF94: @ 0x0801EF94
 	movs r0, #4
 	strb r0, [r1, #1]
 	adds r0, r1, #0
-	bl sub_806C7F8
+	bl SetAutoMuMoveScript
 	pop {r0}
 	bx r0
 	.align 2, 0

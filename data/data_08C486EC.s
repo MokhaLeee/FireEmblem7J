@@ -487,13 +487,9 @@ gUnk_08D61678:	@ 0x08D61678
 AffinityBonuses:	@ 0x08D61E78
 	.incbin "FireEmblem7J.base.gba", 0xD61E78, 0xD62110 - 0xD61E78
 
-	.global gUnk_08D62110
-gUnk_08D62110:	@ 0x08D62110
-	.incbin "FireEmblem7J.base.gba", 0xD62110, 0xD62170 - 0xD62110
-
-	.global gUnk_08D62170
-gUnk_08D62170:	@ 0x08D62170
-	.incbin "FireEmblem7J.base.gba", 0xD62170, 0xD648F4 - 0xD62170
+	.global gChapterInfo
+gChapterInfo:	@ 0x08D62110
+	.incbin "FireEmblem7J.base.gba", 0xD62110, 0x94 * 0x45
 
 	.global gChapterDataAssetTable
 gChapterDataAssetTable:	@ 0x08D648F4

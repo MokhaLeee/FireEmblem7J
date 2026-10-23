@@ -1228,10 +1228,10 @@ _0800AF74:
 	movs r0, #0
 _0800AF7A:
 	strb r0, [r1]
-	ldr r0, _0800AF9C @ =0x0202E3F0
+	ldr r0, _0800AF9C @ =gBmMapOther
 	ldr r0, [r0]
 	movs r1, #0
-	bl BmMapFillg
+	bl BmMapFill
 	ldr r0, [r4, #0x30]
 	ldr r0, [r0]
 	subs r0, #0x84
@@ -1243,7 +1243,7 @@ _0800AF7A:
 	ldr r0, [r0]
 	mov pc, r0
 	.align 2, 0
-_0800AF9C: .4byte 0x0202E3F0
+_0800AF9C: .4byte gBmMapOther
 _0800AFA0: .4byte _0800AFA4
 _0800AFA4: @ jump table
 	.4byte _0800AFD2 @ case 0
@@ -1680,7 +1680,7 @@ sub_800B2CC: @ 0x0800B2CC
 	lsls r0, r0, #0x18
 	cmp r0, #0
 	bne _0800B3D0
-	bl sub_801DA38
+	bl DoesBMXFADEExist
 	lsls r0, r0, #0x18
 	cmp r0, #0
 	bne _0800B3D0

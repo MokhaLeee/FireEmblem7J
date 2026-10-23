@@ -174,7 +174,7 @@ sub_8021ACC: @ 0x08021ACC
 	bl EnableBgSync
 	bl ResetTextFont
 	bl HideMoveRangeGraphics
-	ldr r0, _08021B1C @ =gUnk_08C04D68
+	ldr r0, _08021B1C @ =gUnitActionMenuDef
 	ldr r2, _08021B20 @ =gBmSt
 	movs r3, #0x1c
 	ldrsh r1, [r2, r3]
@@ -183,7 +183,7 @@ sub_8021ACC: @ 0x08021ACC
 	subs r1, r1, r2
 	movs r2, #1
 	movs r3, #0x16
-	bl sub_804B2DC
+	bl StartSemiCenteredOrphanMenu
 	ldr r1, _08021B24 @ =gActiveUnit
 	ldr r2, [r1]
 	movs r1, #0x10
@@ -197,7 +197,7 @@ sub_8021ACC: @ 0x08021ACC
 	bx r1
 	.align 2, 0
 _08021B18: .4byte gBg2Tm
-_08021B1C: .4byte gUnk_08C04D68
+_08021B1C: .4byte gUnitActionMenuDef
 _08021B20: .4byte gBmSt
 _08021B24: .4byte gActiveUnit
 
@@ -253,7 +253,7 @@ _08021B88: .4byte gBmSt
 	thumb_func_start sub_8021B8C
 sub_8021B8C: @ 0x08021B8C
 	push {lr}
-	ldr r0, _08021BA8 @ =gUnk_08C04D68
+	ldr r0, _08021BA8 @ =gUnitActionMenuDef
 	ldr r2, _08021BAC @ =gBmSt
 	movs r3, #0x1c
 	ldrsh r1, [r2, r3]
@@ -262,11 +262,11 @@ sub_8021B8C: @ 0x08021B8C
 	subs r1, r1, r2
 	movs r2, #1
 	movs r3, #0x16
-	bl sub_804B2DC
+	bl StartSemiCenteredOrphanMenu
 	pop {r0}
 	bx r0
 	.align 2, 0
-_08021BA8: .4byte gUnk_08C04D68
+_08021BA8: .4byte gUnitActionMenuDef
 _08021BAC: .4byte gBmSt
 
 	thumb_func_start sub_8021BB0
@@ -299,7 +299,7 @@ sub_8021BE4: @ 0x08021BE4
 	movs r0, #4
 	bl EnableBgSync
 	bl ResetTextFont
-	ldr r0, _08021C1C @ =gUnk_08C04D68
+	ldr r0, _08021C1C @ =gUnitActionMenuDef
 	ldr r2, _08021C20 @ =gBmSt
 	movs r3, #0x1c
 	ldrsh r1, [r2, r3]
@@ -308,14 +308,14 @@ sub_8021BE4: @ 0x08021BE4
 	subs r1, r1, r2
 	movs r2, #1
 	movs r3, #0x16
-	bl sub_804B2DC
+	bl StartSemiCenteredOrphanMenu
 	bl HideMoveRangeGraphics
 	movs r0, #0x3b
 	pop {r1}
 	bx r1
 	.align 2, 0
 _08021C18: .4byte gBg2Tm
-_08021C1C: .4byte gUnk_08C04D68
+_08021C1C: .4byte gUnitActionMenuDef
 _08021C20: .4byte gBmSt
 
 	thumb_func_start sub_8021C24
@@ -769,11 +769,11 @@ sub_8021FAC: @ 0x08021FAC
 	movs r5, #1
 	rsbs r5, r5, #0
 	adds r1, r5, #0
-	bl BmMapFillg
-	ldr r0, _08021FEC @ =0x0202E3E4
+	bl BmMapFill
+	ldr r0, _08021FEC @ =gBmMapRange
 	ldr r0, [r0]
 	movs r1, #0
-	bl BmMapFillg
+	bl BmMapFill
 	ldr r4, _08021FF0 @ =gActiveUnit
 	ldr r2, [r4]
 	ldr r0, [r2, #0xc]
@@ -792,7 +792,7 @@ sub_8021FAC: @ 0x08021FAC
 	b _08022004
 	.align 2, 0
 _08021FE8: .4byte gBmMapMovement
-_08021FEC: .4byte 0x0202E3E4
+_08021FEC: .4byte gBmMapRange
 _08021FF0: .4byte gActiveUnit
 _08021FF4:
 	adds r0, r2, #0
@@ -803,7 +803,7 @@ _08021FF4:
 	bl sub_801B040
 _08022004:
 	movs r0, #3
-	bl sub_801D6A4
+	bl DisplayMoveRangeGraphics
 	movs r0, #0
 	pop {r4, r5}
 	pop {r1}
@@ -937,11 +937,11 @@ sub_8022100: @ 0x08022100
 	ldr r0, [r0]
 	movs r1, #1
 	rsbs r1, r1, #0
-	bl BmMapFillg
-	ldr r0, _0802214C @ =0x0202E3E4
+	bl BmMapFill
+	ldr r0, _0802214C @ =gBmMapRange
 	ldr r0, [r0]
 	movs r1, #0
-	bl BmMapFillg
+	bl BmMapFill
 	ldr r4, _08022150 @ =gActiveUnit
 	ldr r0, [r4]
 	movs r1, #0
@@ -951,14 +951,14 @@ sub_8022100: @ 0x08022100
 	ldr r0, [r4]
 	bl sub_801B040
 	movs r0, #2
-	bl sub_801D6A4
+	bl DisplayMoveRangeGraphics
 	movs r0, #0
 	pop {r4, r5}
 	pop {r1}
 	bx r1
 	.align 2, 0
 _08022148: .4byte gBmMapMovement
-_0802214C: .4byte 0x0202E3E4
+_0802214C: .4byte gBmMapRange
 _08022150: .4byte gActiveUnit
 
 	thumb_func_start sub_8022154
@@ -2005,7 +2005,7 @@ _08022974:
 	bl ClearUi
 	movs r0, #0
 	bl EndFaceById
-	ldr r0, _080229A0 @ =gUnk_08C04D68
+	ldr r0, _080229A0 @ =gUnitActionMenuDef
 	ldr r2, _080229A4 @ =gBmSt
 	movs r3, #0x1c
 	ldrsh r1, [r2, r3]
@@ -2014,7 +2014,7 @@ _08022974:
 	subs r1, r1, r2
 	movs r2, #1
 	movs r3, #0x16
-	bl sub_804B2DC
+	bl StartSemiCenteredOrphanMenu
 	movs r0, #0x1b
 _08022996:
 	add sp, #4
@@ -2022,7 +2022,7 @@ _08022996:
 	pop {r1}
 	bx r1
 	.align 2, 0
-_080229A0: .4byte gUnk_08C04D68
+_080229A0: .4byte gUnitActionMenuDef
 _080229A4: .4byte gBmSt
 
 	thumb_func_start sub_80229A8
@@ -2459,11 +2459,11 @@ sub_8022CFC: @ 0x08022CFC
 	ldr r0, [r0]
 	movs r1, #1
 	rsbs r1, r1, #0
-	bl BmMapFillg
-	ldr r4, _08022D7C @ =0x0202E3E4
+	bl BmMapFill
+	ldr r4, _08022D7C @ =gBmMapRange
 	ldr r0, [r4]
 	movs r1, #0
-	bl BmMapFillg
+	bl BmMapFill
 	ldr r0, [r4]
 	bl SetWorkingBmMap
 	ldr r4, _08022D80 @ =gActiveUnit
@@ -2498,7 +2498,7 @@ sub_8022CFC: @ 0x08022CFC
 	adds r2, r4, #0
 	bl MapAddInBoundedRange
 	movs r0, #2
-	bl sub_801D6A4
+	bl DisplayMoveRangeGraphics
 	movs r0, #0
 	pop {r3}
 	mov r8, r3
@@ -2507,7 +2507,7 @@ sub_8022CFC: @ 0x08022CFC
 	bx r1
 	.align 2, 0
 _08022D78: .4byte gBmMapMovement
-_08022D7C: .4byte 0x0202E3E4
+_08022D7C: .4byte gBmMapRange
 _08022D80: .4byte gActiveUnit
 
 	thumb_func_start sub_8022D84
@@ -2635,16 +2635,16 @@ sub_8022E68: @ 0x08022E68
 	ldr r0, _08022EA8 @ =gBmMapMovement
 	ldr r0, [r0]
 	adds r1, r4, #0
-	bl BmMapFillg
-	ldr r0, _08022EAC @ =0x0202E3E4
+	bl BmMapFill
+	ldr r0, _08022EAC @ =gBmMapRange
 	ldr r0, [r0]
 	movs r1, #0
-	bl BmMapFillg
+	bl BmMapFill
 	ldr r0, [r5]
 	adds r1, r6, #0
 	bl sub_801B040
 	movs r0, #5
-	bl sub_801D6A4
+	bl DisplayMoveRangeGraphics
 	movs r0, #0
 	pop {r4, r5, r6}
 	pop {r1}
@@ -2652,7 +2652,7 @@ sub_8022E68: @ 0x08022E68
 	.align 2, 0
 _08022EA4: .4byte gActiveUnit
 _08022EA8: .4byte gBmMapMovement
-_08022EAC: .4byte 0x0202E3E4
+_08022EAC: .4byte gBmMapRange
 
 	thumb_func_start sub_8022EB0
 sub_8022EB0: @ 0x08022EB0
@@ -2748,16 +2748,16 @@ sub_8022F40: @ 0x08022F40
 	ldr r0, [r0]
 	movs r1, #1
 	rsbs r1, r1, #0
-	bl BmMapFillg
-	ldr r0, _08022F90 @ =0x0202E3E4
+	bl BmMapFill
+	ldr r0, _08022F90 @ =gBmMapRange
 	ldr r0, [r0]
 	movs r1, #0
-	bl BmMapFillg
+	bl BmMapFill
 	ldr r0, [r5]
 	adds r1, r6, #0
 	bl sub_801B040
 	movs r0, #4
-	bl sub_801D6A4
+	bl DisplayMoveRangeGraphics
 	movs r0, #0
 	pop {r4, r5, r6}
 	pop {r1}
@@ -2765,7 +2765,7 @@ sub_8022F40: @ 0x08022F40
 	.align 2, 0
 _08022F88: .4byte gActiveUnit
 _08022F8C: .4byte gBmMapMovement
-_08022F90: .4byte 0x0202E3E4
+_08022F90: .4byte gBmMapRange
 
 	thumb_func_start sub_8022F94
 sub_8022F94: @ 0x08022F94
@@ -3376,7 +3376,7 @@ _080233D8:
 	thumb_func_start sub_80233E0
 sub_80233E0: @ 0x080233E0
 	push {lr}
-	bl sub_8031B40
+	bl IsChapterSakaba
 	lsls r0, r0, #0x18
 	cmp r0, #0
 	beq _080233F0

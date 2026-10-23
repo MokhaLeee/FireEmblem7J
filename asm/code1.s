@@ -2472,8 +2472,8 @@ sub_802F6D4: @ 0x0802F6D4
 	.align 2, 0
 _0802F6E0: .4byte gActionSt
 
-	thumb_func_start sub_802F6E4
-sub_802F6E4: @ 0x0802F6E4
+	thumb_func_start DoAction
+DoAction: @ 0x0802F6E4
 	push {r4, r5, lr}
 	adds r5, r0, #0
 	ldr r4, _0802F708 @ =gActionSt
@@ -2699,7 +2699,7 @@ _0802F8E4:
 	strb r1, [r0]
 	movs r1, #4
 	strb r1, [r0, #1]
-	bl sub_806C7F8
+	bl SetAutoMuMoveScript
 _0802F8F2:
 	movs r0, #0
 	pop {r4, r5, r6}
@@ -3859,8 +3859,8 @@ _08030224:
 	bx r0
 	.align 2, 0
 
-	thumb_func_start sub_803022C
-sub_803022C: @ 0x0803022C
+	thumb_func_start GetMovementScriptFromPath
+GetMovementScriptFromPath: @ 0x0803022C
 	push {r4, r5, r6, r7, lr}
 	movs r6, #1
 	ldr r2, _08030270 @ =gUnk_08C05700
@@ -4074,8 +4074,8 @@ _080303B4:
 	bx r1
 	.align 2, 0
 
-	thumb_func_start sub_80303BC
-sub_80303BC: @ 0x080303BC
+	thumb_func_start PathArrowDisp_Init
+PathArrowDisp_Init: @ 0x080303BC
 	push {r4, r5, lr}
 	adds r4, r0, #0
 	lsls r4, r4, #0x18
@@ -4298,7 +4298,7 @@ _08030570:
 	movs r0, #1
 	bl sub_802FF94
 _08030592:
-	ldr r0, _080305CC @ =0x0202E3F0
+	ldr r0, _080305CC @ =gBmMapOther
 	ldr r0, [r0]
 	bl SetWorkingBmMap
 	bl sub_80302D0
@@ -4323,7 +4323,7 @@ _08030592:
 	b _080305F4
 	.align 2, 0
 _080305C8: .4byte gUnk_08C05700
-_080305CC: .4byte 0x0202E3F0
+_080305CC: .4byte gBmMapOther
 _080305D0: .4byte gBmSt
 _080305D4: .4byte 0x03004100
 _080305D8:
@@ -4597,8 +4597,8 @@ _080307C8: .4byte gUnk_08C056CC
 _080307CC: .4byte gBmSt
 _080307D0: .4byte Sprite_16x16
 
-	thumb_func_start sub_80307D4
-sub_80307D4: @ 0x080307D4
+	thumb_func_start DrawUpdatedPathArrow
+DrawUpdatedPathArrow: @ 0x080307D4
 	push {lr}
 	bl sub_8030448
 	bl sub_8030718
@@ -4643,15 +4643,15 @@ sub_8030814: @ 0x08030814
 	push {r4, r5, lr}
 	bl sub_8079A50
 	adds r4, r0, #0
-	ldr r5, _08030868 @ =0x0202E3E4
+	ldr r5, _08030868 @ =gBmMapRange
 	ldr r0, [r5]
 	movs r1, #0
-	bl BmMapFillg
+	bl BmMapFill
 	ldr r0, _0803086C @ =gBmMapMovement
 	ldr r0, [r0]
 	movs r1, #1
 	rsbs r1, r1, #0
-	bl BmMapFillg
+	bl BmMapFill
 	bl CalcForceDeployedUnitCounts
 	lsls r0, r0, #4
 	adds r4, r4, r0
@@ -4675,12 +4675,12 @@ _08030844:
 	bne _08030844
 _0803085C:
 	movs r0, #0x10
-	bl sub_801D6A4
+	bl DisplayMoveRangeGraphics
 	pop {r4, r5}
 	pop {r0}
 	bx r0
 	.align 2, 0
-_08030868: .4byte 0x0202E3E4
+_08030868: .4byte gBmMapRange
 _0803086C: .4byte gBmMapMovement
 
 	thumb_func_start sub_8030870
@@ -4713,7 +4713,7 @@ sub_8030890: @ 0x08030890
 	ldrsh r0, [r4, r1]
 	movs r2, #0x16
 	ldrsh r1, [r4, r2]
-	bl sub_801D758
+	bl TrySwitchViewedUnit
 	movs r1, #0x20
 	ldrsh r0, [r4, r1]
 	movs r2, #0x22
@@ -5171,8 +5171,8 @@ _08030C5C: .4byte PrepMapMenu_OnBPress
 _08030C60: .4byte PrepMapMenu_OnStartPress
 _08030C64: .4byte PrepMapMenu_OnEnd
 
-	thumb_func_start sub_8030C68
-sub_8030C68: @ 0x08030C68
+	thumb_func_start CanCharacterBePrepMoved
+CanCharacterBePrepMoved: @ 0x08030C68
 	push {r4, lr}
 	adds r4, r0, #0
 	bl IsCharacterForceDeployed
@@ -5426,7 +5426,7 @@ _08030E44: .4byte gBmSt
 sub_8030E48: @ 0x08030E48
 	push {r4, lr}
 	adds r4, r0, #0
-	bl sub_801DA38
+	bl DoesBMXFADEExist
 	lsls r0, r0, #0x18
 	cmp r0, #0
 	bne _08030E66
@@ -5455,8 +5455,8 @@ _08030E7C: .4byte gBmSt
 sub_8030E80: @ 0x08030E80
 	push {r4, r5, r6, lr}
 	adds r5, r0, #0
-	bl sub_801C584
-	bl sub_801DA38
+	bl HandlePlayerCursorMovement
+	bl DoesBMXFADEExist
 	lsls r0, r0, #0x18
 	cmp r0, #0
 	beq _08030E94
@@ -5476,7 +5476,7 @@ _08030E94:
 	ldrsh r0, [r1, r2]
 	movs r3, #0x16
 	ldrsh r1, [r1, r3]
-	bl sub_801D758
+	bl TrySwitchViewedUnit
 	ldr r0, _08030ED4 @ =gPlaySt
 	adds r0, #0x41
 	ldrb r0, [r0]
@@ -5582,7 +5582,7 @@ _08030F7E:
 	ldrb r0, [r0]
 	bl GetUnit
 	adds r4, r0, #0
-	bl sub_801D270
+	bl GetPlayerSelectKind
 	cmp r0, #4
 	bls _08030FA6
 	b _080310BC
@@ -5721,7 +5721,7 @@ _080310BC:
 	cmp r0, #0
 	beq _080310E0
 	bl EndPlayerPhaseSideWindows
-	bl sub_80A3EF8
+	bl StartMinimapPlayerPhase
 	adds r0, r5, #0
 	movs r1, #9
 	bl Proc_Goto
@@ -5822,7 +5822,7 @@ sub_8031198: @ 0x08031198
 	ldr r6, _08031230 @ =gBmSt
 	movs r0, #0x16
 	ldrsh r1, [r6, r0]
-	ldr r0, _08031234 @ =0x0202E3E4
+	ldr r0, _08031234 @ =gBmMapRange
 	ldr r0, [r0]
 	lsls r1, r1, #2
 	adds r0, r1, r0
@@ -5838,12 +5838,12 @@ sub_8031198: @ 0x08031198
 	adds r0, r0, r2
 	ldrb r0, [r0]
 	bl GetUnit
-	bl sub_801D270
+	bl GetPlayerSelectKind
 	cmp r0, #4
 	bne _080311D0
 	movs r7, #0
 _080311D0:
-	bl sub_801C584
+	bl HandlePlayerCursorMovement
 	ldr r0, [r4, #0x3c]
 	lsls r0, r0, #4
 	movs r5, #0xc
@@ -5889,7 +5889,7 @@ _0803120C:
 	b _080312DA
 	.align 2, 0
 _08031230: .4byte gBmSt
-_08031234: .4byte 0x0202E3E4
+_08031234: .4byte gBmMapRange
 _08031238: .4byte gBmMapUnit
 _0803123C: .4byte Sprite_16x16
 _08031240: .4byte gpKeySt
@@ -6151,7 +6151,7 @@ _0803143A:
 sub_8031440: @ 0x08031440
 	push {r4, r5, lr}
 	adds r5, r0, #0
-	bl sub_801C584
+	bl HandlePlayerCursorMovement
 	ldr r0, _0803149C @ =gpKeySt
 	ldr r0, [r0]
 	ldrh r1, [r0, #8]
@@ -6687,13 +6687,13 @@ sub_803186C: @ 0x0803186C
 	movs r0, #0
 	movs r1, #0
 	bl BeginTargetList
-	ldr r0, _080318A4 @ =0x0202E3E4
+	ldr r0, _080318A4 @ =gBmMapRange
 	ldr r0, [r0]
 	movs r1, #0
-	bl BmMapFillg
+	bl BmMapFill
 	ldr r4, _080318A8 @ =gActiveUnit
 	ldr r0, [r4]
-	bl sub_801A8B4
+	bl GenerateUnitCompleteAttackRange
 	ldr r1, _080318AC @ =0x02033E3C
 	ldr r0, [r4]
 	str r0, [r1]
@@ -6708,7 +6708,7 @@ _0803189E:
 	pop {r1}
 	bx r1
 	.align 2, 0
-_080318A4: .4byte 0x0202E3E4
+_080318A4: .4byte gBmMapRange
 _080318A8: .4byte gActiveUnit
 _080318AC: .4byte 0x02033E3C
 _080318B0: .4byte sub_80240AC
@@ -6788,7 +6788,7 @@ sub_803192C: @ 0x0803192C
 	subs r1, r1, r2
 	lsls r1, r1, #0x18
 	asrs r1, r1, #0x18
-	bl sub_8019FC0
+	bl GenerateUnitMovementMapExt
 	bl sub_80318EC
 	pop {r1}
 	bx r1
@@ -6803,7 +6803,7 @@ sub_8031958: @ 0x08031958
 	ldr r0, [r4]
 	movs r1, #1
 	rsbs r1, r1, #0
-	bl BmMapFillg
+	bl BmMapFill
 	ldr r0, _08031990 @ =gActiveUnit
 	ldr r2, [r0]
 	movs r0, #0x11
@@ -6832,10 +6832,10 @@ sub_8031994: @ 0x08031994
 	rsbs r1, r1, #0
 	bl sub_8017310
 	adds r7, r0, #0
-	ldr r0, _08031A48 @ =0x0202E3F0
+	ldr r0, _08031A48 @ =gBmMapOther
 	ldr r0, [r0]
 	movs r1, #0
-	bl BmMapFillg
+	bl BmMapFill
 	movs r5, #0x81
 	ldr r6, _08031A4C @ =gActionSt
 _080319AE:
@@ -6893,7 +6893,7 @@ _080319FA:
 	ldrb r0, [r0]
 	cmp r0, #0
 	bne _08031A36
-	ldr r0, _08031A48 @ =0x0202E3F0
+	ldr r0, _08031A48 @ =gBmMapOther
 	ldr r0, [r0]
 	adds r0, r5, r0
 	ldr r0, [r0]
@@ -6919,7 +6919,7 @@ _08031A42:
 	pop {r0}
 	bx r0
 	.align 2, 0
-_08031A48: .4byte 0x0202E3F0
+_08031A48: .4byte gBmMapOther
 _08031A4C: .4byte gActionSt
 _08031A50: .4byte gBmMapSize
 _08031A54: .4byte gBmMapMovement
@@ -6932,11 +6932,11 @@ GetChapterInfo: @ 0x08031A5C
 	beq _08031A70
 	movs r0, #0x94
 	muls r0, r1, r0
-	ldr r1, _08031A6C @ =gUnk_08D62110
+	ldr r1, _08031A6C @ =gChapterInfo
 	adds r0, r0, r1
 	b _08031A76
 	.align 2, 0
-_08031A6C: .4byte gUnk_08D62110
+_08031A6C: .4byte gChapterInfo
 _08031A70:
 	ldr r0, _08031A78 @ =gExtraMapInfo
 	ldr r0, [r0]
@@ -7051,8 +7051,8 @@ _08031B3A:
 	bx r1
 	.align 2, 0
 
-	thumb_func_start sub_8031B40
-sub_8031B40: @ 0x08031B40
+	thumb_func_start IsChapterSakaba
+IsChapterSakaba: @ 0x08031B40
 	movs r1, #0
 	ldr r0, _08031B50 @ =gPlaySt
 	ldrb r0, [r0, #0xe]
@@ -12392,7 +12392,7 @@ _08034624:
 	ldr r0, [r0]
 	movs r1, #1
 	rsbs r1, r1, #0
-	bl BmMapFillg
+	bl BmMapFill
 _08034630:
 	pop {r4}
 	pop {r0}

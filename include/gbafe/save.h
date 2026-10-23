@@ -201,7 +201,7 @@ void RegisterChapterStats(struct PlaySt *);
 // ??? sub_80A0768
 // ??? PidStatsRecordLoseData
 // ??? PidStatsRecordDefeatInfo
-// ??? sub_80A0938
+void PidStatsAddActAmt(u8 pid);
 void PidStatsAddStatView(u8 pid);
 // ??? sub_80A09B8
 // ??? PidStatsAddMove
@@ -323,5 +323,5 @@ void sub_80A2BFC(void); // NullBmMapHidden_
 // ??? sub_80A3DBC
 // ??? sub_80A3DDC
 // ??? sub_80A3E18
-// ??? sub_80A3EF8
+void StartMinimapPlayerPhase(void);
 // ??? sub_80A3F0C
