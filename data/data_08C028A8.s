@@ -16,8 +16,8 @@ ProcScr_BMXFADE:	@ 0x08C028E8
 ProcScr_08C02920:	@ 0x08C02920
 	.incbin "FireEmblem7J.base.gba", 0xC02920, 0xC02938 - 0xC02920
 
-	.global gUnk_08C02938
-gUnk_08C02938:	@ 0x08C02938
+	.global ProcScr_ADJUSTSFROMXI
+ProcScr_ADJUSTSFROMXI:	@ 0x08C02938
 	.incbin "FireEmblem7J.base.gba", 0xC02938, 0xC02958 - 0xC02938
 
 	.global gUnk_08C02958
