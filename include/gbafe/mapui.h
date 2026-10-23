@@ -33,7 +33,7 @@
 // sub_80863B4
 // sub_80863E0
 // sub_80864DC
-// sub_8086668
+// StartMapWindows
 void EndPlayerPhaseSideWindows(void);
 // sub_80866DC
 // sub_80866FC

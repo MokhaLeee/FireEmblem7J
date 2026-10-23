@@ -2567,8 +2567,8 @@ _0808665C: .4byte gPlaySt
 _08086660: .4byte gUnk_08D8B200
 _08086664: .4byte gUnk_08D8B288
 
-	thumb_func_start sub_8086668
-sub_8086668: @ 0x08086668
+	thumb_func_start StartMapWindows
+StartMapWindows: @ 0x08086668
 	push {lr}
 	ldr r0, _08086678 @ =gUnk_08D8B2B8
 	movs r1, #3
