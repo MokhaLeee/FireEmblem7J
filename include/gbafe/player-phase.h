@@ -85,6 +85,7 @@ bool TrySetCursorOn(int unitId);
 void TrySwitchViewedUnit(int x, int y);
 void PlayerPhase_HandleAutoEnd(ProcPtr proc);
 
+extern struct ProcCmd CONST_DATA ProcScr_PlayerPhase[];
 extern const u8 * CONST_DATA gOpenLimitViewImgLut[];
 extern struct ProcCmd CONST_DATA ProcScr_MoveLimitViewChange[];
 extern struct ProcCmd CONST_DATA ProcScr_MoveLimitView[];

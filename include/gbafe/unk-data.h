@@ -1729,7 +1729,6 @@ extern u8 Img_SysBrownBox[];
 // ??? gUnk_08C025F8
 // ??? gUnk_08C02600
 // ??? gUnk_08C02618
-extern struct ProcCmd ProcScr_PlayerPhase[];
 // ??? gUnk_08C028A8
 // ??? gUnk_08C028C0
 extern struct ProcCmd ProcScr_BMXFADE[];

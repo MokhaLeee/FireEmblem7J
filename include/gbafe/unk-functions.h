@@ -117,7 +117,7 @@ void SetTacticianName(const char *name);
 // sub_802F6A0
 // sub_802F6C4
 // sub_802F6D4
-// DoAction
+s8 DoAction(ProcPtr proc);
 // sub_802F7F4
 // sub_802F848
 // sub_802F858
@@ -349,7 +349,7 @@ void sub_8032CF4(ProcPtr proc, const char *str);
 // ApplyTrapDamageReal
 // GetPickTrapType
 // ExecTrap
-// HandlePostActionTraps
+s8 HandlePostActionTraps(ProcPtr proc);
 // ExecTrapAfterWarp
 // ExecTrapAfterDropAction
 // ExecTrapAfterDeathDrop

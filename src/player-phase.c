@@ -1,5 +1,111 @@
 #include "gbafe.h"
 
+// clang-format off
+
+struct ProcCmd CONST_DATA ProcScr_PlayerPhase[] = {
+    PROC_NAME_DEBUG("E_PLAYERPHASE"),
+    PROC_MARK(2),
+    PROC_YIELD,
+
+PROC_LABEL(PL_PLAYERPHASE_BEGIN),
+    PROC_CALL(PlayerPhase_Suspend),
+
+    PROC_CALL(RefreshEntityMaps),
+    PROC_CALL(RenderMap),
+    PROC_CALL(RefreshUnitSprites),
+
+    PROC_CALL(PlayerPhase_HandleAutoEnd),
+
+    PROC_CALL(StartMapSongBgm),
+
+PROC_LABEL(PL_PLAYERPHASE_IDLE),
+    PROC_CALL(StartMapWindows),
+    PROC_CALL(ResetUnitSpriteHover),
+
+    PROC_REPEAT(PlayerPhase_MainIdle),
+
+PROC_LABEL(PL_PLAYERPHASE_MOVE),
+    PROC_CALL(EndPlayerPhaseSideWindows),
+
+    PROC_WHILE(DoesBMXFADEExist),
+
+    PROC_CALL(SetAllUnitNotBackSprite),
+    PROC_CALL(RefreshUnitSprites),
+
+    PROC_CALL(PlayerPhase_InitUnitMovementSelect),
+    PROC_SLEEP(1),
+    PROC_REPEAT(PlayerPhase_RangeDisplayIdle),
+
+    PROC_CALL(PlayerPhase_DisplayUnitMovement),
+    PROC_REPEAT(PlayerPhase_WaitForUnitMovement),
+
+PROC_LABEL(PL_PLAYERPHASE_ACTION_MENU),
+    PROC_REPEAT(PlayerPhase_ApplyUnitMovement),
+
+PROC_LABEL(PL_PLAYERPHASE_ACTION),
+    PROC_WHILE_EXISTS(ProcScr_CamMove),
+
+    PROC_CALL_2(PlayerPhase_PrepareAction),
+
+    PROC_CALL_2(DoAction),
+    PROC_CALL_2(HandlePostActionTraps),
+    PROC_CALL_2(RunPotentialWaitEvents),
+
+    PROC_CALL_2(EnsureCameraOntoActiveUnitPosition),
+
+    PROC_CALL(PlayerPhase_FinishAction),
+
+    PROC_GOTO(PL_PLAYERPHASE_BEGIN),
+
+PROC_LABEL(PL_PLAYERPHASE_FADE_TO_MOVE),
+    PROC_WHILE(DoesBMXFADEExist),
+
+    PROC_GOTO(PL_PLAYERPHASE_MOVE),
+
+PROC_LABEL(PL_PLAYERPHASE_AFTER_STATSCREEN),
+    PROC_CALL(PlayerPhase_ReReadGameSaveGfx),
+
+PROC_LABEL(PL_PLAYERPHASE_ADJUST_CAMERA),
+    PROC_START_CHILD_BLOCKING(ProcScr_ADJUSTSFROMXI),
+
+    PROC_GOTO(PL_PLAYERPHASE_IDLE),
+
+PROC_LABEL(PL_PLAYERPHASE_RESUME_RANGE),
+    PROC_CALL(PlayerPhase_ResumeRangeDisplay),
+
+    PROC_GOTO(PL_PLAYERPHASE_MOVE),
+
+PROC_LABEL(PL_PLAYERPHASE_AFTER_END_EVENT),
+    PROC_YIELD,
+
+    PROC_CALL(EndAllMus),
+
+    PROC_GOTO(PL_PLAYERPHASE_BEGIN),
+
+PROC_LABEL(PL_PLAYERPHASE_SEE_RANGE),
+    PROC_CALL(EndPlayerPhaseSideWindows),
+
+    PROC_WHILE(DoesBMXFADEExist),
+
+    PROC_CALL(DisplayActiveUnitEffectRange),
+    PROC_REPEAT(PlayerPhase_RangeDisplayIdle),
+
+    PROC_GOTO(PL_PLAYERPHASE_IDLE),
+
+PROC_LABEL(PL_PLAYERPHASE_DANGER_ZONE),
+    PROC_CALL(PlayerPhase_DisplayDangerZone),
+    PROC_REPEAT(PlayerPhase_RangeDisplayIdle),
+
+    PROC_GOTO(PL_PLAYERPHASE_IDLE),
+
+PROC_LABEL(PL_PLAYERPHASE_END),
+    PROC_WHILE(DoesBMXFADEExist),
+
+    PROC_END,
+};
+
+// clang-format on
+
 const u8 * CONST_DATA gOpenLimitViewImgLut[] = {
     NULL,
     NULL,

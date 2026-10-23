@@ -31,7 +31,3 @@ gUnk_08C02600:	@ 0x08C02600
 	.global gUnk_08C02618
 gUnk_08C02618:	@ 0x08C02618
 	.incbin "FireEmblem7J.base.gba", 0xC02618, 0xC02630 - 0xC02618
-
-	.global ProcScr_PlayerPhase
-ProcScr_PlayerPhase:	@ 0x08C02630
-	.incbin "FireEmblem7J.base.gba", 0xC02630, 0xC02828 - 0xC02630
