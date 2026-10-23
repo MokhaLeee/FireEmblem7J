@@ -117,7 +117,7 @@ void SetTacticianName(const char *name);
 // sub_802F6A0
 // sub_802F6C4
 // sub_802F6D4
-// sub_802F6E4
+// DoAction
 // sub_802F7F4
 // sub_802F848
 // sub_802F858

@@ -1308,7 +1308,7 @@ _080357D4:
 _080357D6:
 	strb r0, [r5, #0x12]
 	adds r0, r7, #0
-	bl sub_802F6E4
+	bl DoAction
 	pop {r4, r5, r6, r7}
 	pop {r0}
 	bx r0

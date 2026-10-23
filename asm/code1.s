@@ -2472,8 +2472,8 @@ sub_802F6D4: @ 0x0802F6D4
 	.align 2, 0
 _0802F6E0: .4byte gActionSt
 
-	thumb_func_start sub_802F6E4
-sub_802F6E4: @ 0x0802F6E4
+	thumb_func_start DoAction
+DoAction: @ 0x0802F6E4
 	push {r4, r5, lr}
 	adds r5, r0, #0
 	ldr r4, _0802F708 @ =gActionSt
