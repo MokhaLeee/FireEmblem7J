@@ -114,7 +114,7 @@ struct MuProc * StartUiMu(struct Unit * unit, int x, int y);
 // sub_806C790
 // MU_SetDefaultFacing_Auto
 // sub_806C7F8
-// sub_806C82C
+// MuExists
 // sub_806C850
 // IsMuActive
 // SetMuMoveScript

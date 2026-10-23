@@ -4,7 +4,7 @@
 	thumb_func_start sub_801C980
 sub_801C980: @ 0x0801C980
 	push {r4, r5, lr}
-	bl sub_806C82C
+	bl MuExists
 	lsls r0, r0, #0x18
 	cmp r0, #0
 	bne _0801C9BC
