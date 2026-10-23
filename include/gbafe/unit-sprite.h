@@ -26,7 +26,7 @@ void PutUnitSpritesOam(void);
 // ??? PutChapterMarkedTileIconOam
 void PutUnitSpriteIconsOam(void);
 // ??? sub_8026418
-// ??? sub_8026428
+// ??? ResetUnitSpriteHover
 void UnitSpriteHoverUpdate(void);
 s8 IsUnitSpriteHoverEnabledAt(int x, int y);
 // ??? sub_8026540

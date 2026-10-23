@@ -2433,8 +2433,8 @@ sub_8026418: @ 0x08026418
 _08026420: .4byte gBmSt
 _08026424: .4byte 0x0000FFFF
 
-	thumb_func_start sub_8026428
-sub_8026428: @ 0x08026428
+	thumb_func_start ResetUnitSpriteHover
+ResetUnitSpriteHover: @ 0x08026428
 	ldr r1, _08026430 @ =0x0203A3D0
 	movs r0, #0
 	str r0, [r1]
