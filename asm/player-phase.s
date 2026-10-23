@@ -48,7 +48,7 @@ _0801D20A:
 	bne _0801D238
 	ldr r1, _0801D234 @ =PlayerPhase_OpenActionMenu
 	adds r0, r6, #0
-	bl sub_8004B1C
+	bl Proc_SetRepeatCb
 	b _0801D25C
 	.align 2, 0
 _0801D224: .4byte gActiveUnit
