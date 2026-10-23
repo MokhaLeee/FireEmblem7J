@@ -32,7 +32,7 @@ sub_801C980: @ 0x0801C980
 	bl HideUnitSprite
 _0801C9BC:
 	bl MU_SetDefaultFacing_Auto
-	bl sub_8079798
+	bl TryCallSelectEvents
 	ldr r5, _0801CA14 @ =gBmSt
 	movs r0, #2
 	ldrb r2, [r5, #4]

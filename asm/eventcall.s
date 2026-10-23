@@ -2067,8 +2067,8 @@ sub_807978C: @ 0x0807978C
 	bx r0
 	.align 2, 0
 
-	thumb_func_start sub_8079798
-sub_8079798: @ 0x08079798
+	thumb_func_start TryCallSelectEvents
+TryCallSelectEvents: @ 0x08079798
 	push {lr}
 	sub sp, #0x1c
 	ldr r0, _080797CC @ =gPlaySt
