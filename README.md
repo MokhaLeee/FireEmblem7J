@@ -25,7 +25,7 @@ make compare -j
 
 Feel free and welcome! Note that I may modify on formatting and naming conventions.
 
-Here is an toturial for freshers: [contributing](https://github.com/FireEmblemUniverse/fireemblem8u/blob/master/CONTRIBUTING.md)
+Here is a tutorial for freshers: [contributing](https://github.com/FireEmblemUniverse/fireemblem8u/blob/master/CONTRIBUTING.md)
 
 ## See also
 
