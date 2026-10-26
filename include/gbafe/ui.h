@@ -23,7 +23,7 @@ void ApplyUiWindowFramePal(int palid);
 void UnpackUiWindowFrameImg(void *dest);
 void ApplyUiStatBarPal(int palid);
 void UnpackUiWindowFrameGraphics2(int window_theme);
-void PutUiWindowFrame(int x, int y, int width, int height, int window_kind);
+void PutUiWindowFrame(u16 * tm, int x, int y, int width, int height, int tilebase, int window_kind);
 void DrawUiFrame2(int x, int y, int width, int height, int window_kind);
 void PutUiHand(int x, int y);
 void PutUnkUiHand(int x, int y);
@@ -31,21 +31,24 @@ void DisplayFrozenUiHand(int x, int y);
 int GetUiHandPrevX(void);
 int GetUiHandPrevY(void);
 void ClearUi(void); // FE8U: ClearBg0Bg1
-// DrawUiItemHover
-// ClearUiItemHover
-// sub_804A930
+void DrawUiItemHover(int x, int y, int width);
+void ClearUiItemHover(int x, int y, int width);
+void sub_804A930(void * vram, int palid, int palcount);
 void DisplayUiHandExt(s32 x, s32 y, u32 objTileOffset);
 void DisplayFrozenUiHandExt(s32 x, s32 y, u32 objTileOffset);
 void UnpackUiWindowFrameGraphics(void);
 
+extern u16 const gUiItemHoverModel[];
+extern u8 const gUnk_081DD7F4[];
+extern u16 const gUnk_081DDA48[];
 // ??? gUnk_08C09944
 // ??? gUnk_08C09B0C
 extern u16 const * CONST_DATA gUiWindowFrameModelLut[];
 extern u16 const * CONST_DATA gUiWindowFramePalLut[];
 extern u8 const * CONST_DATA gUiWindowFrameImgLut[];
 extern u16 const * CONST_DATA gUiStatBarPalLut[];
-// ??? Sprite_UiHand
-// ??? sHandXOffsetLut
+extern u16 CONST_DATA Sprite_UiHand[];
+extern u8 CONST_DATA sHandXOffsetLut[32];
 // ??? gUnk_08C09BDC
 // ??? gUnk_08C09BF4
 // ??? gUnk_08C09C34
@@ -55,3 +58,6 @@ extern u16 const * CONST_DATA gUiStatBarPalLut[];
 // ??? gUnk_08C09C74
 // ??? gUnk_08C09C80
 // ??? gUnk_08C09CB0
+
+extern struct Vec2 sPrevHandPosition;
+extern int sPrevHandClock;
