@@ -385,7 +385,7 @@ SECTIONS
 		src/savemenu_modeselect.o(.text);
 		src/scrolling_util.o(.text);
 		src/cursor-hand.o(.text);
-		asm/spinning_arrow.o(.text);
+		src/spinning_arrow.o(.text);
 		src/sysutil.o(.text);
 		asm/code_080AB6FC.o(.text);
 		src/lord-select.o(.text);
