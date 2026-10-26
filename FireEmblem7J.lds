@@ -24,6 +24,8 @@ SECTIONS
 		. = 0x003C3C; gUiTmScratchC = .;
 
 		. = 0x01068C; src/prepscreen.o(ewram_overlay_0);
+		. = 0x012468; gUnk_02012468 = .;
+		. = 0x012968; gUnk_02012968 = .;
 		. = 0x012AA0; gPrepUnitTexts = .;
 		. = 0x012BF8; sSupportScreenUnitCount = .;
 	}
@@ -354,7 +356,6 @@ SECTIONS
 		asm/prep_menuscroll.o(.text);
 		src/prep_bgscroll.o(.text);
 		src/prep_sallycir.o(.text);
-		asm/prep_sallycir.o(.text);
 		src/prep_utils.o(.text);
 		asm/prep_utils.o(.text);
 		src/prep_itemscreen.o(.text);

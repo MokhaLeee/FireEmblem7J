@@ -257,9 +257,17 @@ struct ProcPrepMuralBackground {
 
 void PrepMuralBackground_Init(struct ProcPrepMuralBackground *proc);
 void PrepMuralBackground_Loop(struct ProcPrepMuralBackground *proc);
-void StartPrepMuralBackground(void *vram, int pal_bank);
+struct ProcPrepMuralBackground * StartPrepMuralBackground(ProcPtr parent, int pal_bank);
 void EndPrepMuralBackground(void);
-// sub_8091118
+void SallyCir_OnHBlank(void);
+
+struct Win1H {
+    u8 left;
+    u8 right;
+};
+
+extern struct Win1H gUnk_02012468[2][160];
+extern struct Win1H * gUnk_02012968[2];
 
 struct SallyCirProc {
     PROC_HEADER;
@@ -273,8 +281,8 @@ void SallyCir_Init(struct SallyCirProc *proc);
 void SallyCir_Loop(struct SallyCirProc *proc);
 void SallyCir_OnEnd(struct SallyCirProc *proc);
 ProcPtr StartSallyCirProc(ProcPtr parent, u8 unk);
-// sub_809139C
-// sub_809145C
+void sub_809139C(struct SallyCirProc * proc);
+void sub_809145C(struct SallyCirProc * proc);
 // sub_8091588
 // GetConvoyItemCount_
 void ViewCounter_Loop(ProcPtr proc);
