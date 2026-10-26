@@ -809,7 +809,7 @@ EndPrepScreenMenu: @ 0x080909F8
 	adds r4, r0, #0
 	cmp r4, #0
 	beq _08090A12
-	bl sub_8090A1C
+	bl ResetPrepMenuScreen
 	adds r0, r4, #0
 	movs r1, #0xa
 	bl Proc_Goto
@@ -820,8 +820,8 @@ _08090A12:
 	.align 2, 0
 _08090A18: .4byte ProcScr_PrepMenu
 
-	thumb_func_start sub_8090A1C
-sub_8090A1C: @ 0x08090A1C
+	thumb_func_start ResetPrepMenuScreen
+ResetPrepMenuScreen: @ 0x08090A1C
 	push {r4, r5, lr}
 	ldr r0, _08090A7C @ =ProcScr_PrepMenu
 	bl Proc_Find
@@ -871,8 +871,8 @@ _08090A7C: .4byte ProcScr_PrepMenu
 _08090A80: .4byte gBg0Tm
 _08090A84: .4byte gBg1Tm
 
-	thumb_func_start sub_8090A88
-sub_8090A88: @ 0x08090A88
+	thumb_func_start PrepScreenMenuExists
+PrepScreenMenuExists: @ 0x08090A88
 	push {lr}
 	ldr r0, _08090A98 @ =ProcScr_PrepMenu
 	bl Proc_Find
@@ -889,8 +889,8 @@ _08090A9E:
 	bx r1
 	.align 2, 0
 
-	thumb_func_start sub_8090AA4
-sub_8090AA4: @ 0x08090AA4
+	thumb_func_start ShowPrepScreenMenuFrozenHand
+ShowPrepScreenMenuFrozenHand: @ 0x08090AA4
 	push {lr}
 	ldr r0, _08090ABC @ =ProcScr_PrepMenu
 	bl Proc_Find
@@ -904,8 +904,8 @@ _08090AB6:
 	.align 2, 0
 _08090ABC: .4byte ProcScr_PrepMenu
 
-	thumb_func_start sub_8090AC0
-sub_8090AC0: @ 0x08090AC0
+	thumb_func_start ShowPrepScreenMenuActiveHand
+ShowPrepScreenMenuActiveHand: @ 0x08090AC0
 	push {lr}
 	ldr r0, _08090AD8 @ =ProcScr_PrepMenu
 	bl Proc_Find

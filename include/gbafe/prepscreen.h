@@ -230,10 +230,10 @@ int GetActivePrepMenuItemIndex(void);
 // DrawPrepScreenMenuFrameAt
 // GetPrepMenuItemAmt
 void EndPrepScreenMenu(void);
-// sub_8090A1C
-// sub_8090A88
-// sub_8090AA4
-// sub_8090AC0
+// ResetPrepMenuScreen
+// PrepScreenMenuExists
+// ShowPrepScreenMenuFrozenHand
+// ShowPrepScreenMenuActiveHand
 void EnablePrepScreenMenu(void);
 void MenuScroll_Init(ProcPtr proc);
 void MenuScroll_Loop(ProcPtr proc);
