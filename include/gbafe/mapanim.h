@@ -184,10 +184,10 @@ extern struct ManimSt EWRAM_DATA gManimSt;
 // sub_80749F0
 // sub_8074B68
 // sub_8074C5C
-// sub_8074C70
-// sub_8074D38
+void sub_8074C70(int chr, int pal, int unk, ProcPtr parent);
+void sub_8074D38(void);
 // sub_8074D50
-// sub_8074F40
+void sub_8074F40(int x, int y, int value);
 // sub_8075098
 // sub_80750CC
 // sub_80751F0
