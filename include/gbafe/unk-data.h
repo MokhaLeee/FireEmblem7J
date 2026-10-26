@@ -1584,11 +1584,11 @@ extern u8 TSA_08421684[];
 extern u8  Img_PrepMuralBackground[];
 extern u16 TsaConfig_PrepMuralBackground[];
 extern u16 Pal_PrepMuralBackground[];
-// ??? gUnk_08427974
-// ??? gUnk_08427A48
+extern u8  gUnk_08427974[];
+extern u8  gUnk_08427A48[];
 // ??? gUnk_08427BFC
 // ??? gUnk_08428114
-// ??? gUnk_08428A40
+extern u16 gUnk_08428A40[];
 extern u16 Pal_08428A80[];
 extern u8  Img_PrepAtMenuUpfx[];
 extern u16 Pal_PrepAtMenuUpfx[];
@@ -2166,9 +2166,9 @@ extern struct ProcCmd ProcScr_08C0617C[];
 // ??? Sprite_CursorHand1
 // ??? Sprite_CursorHand2
 // ??? ProcScr_UiCursorHand
-// ??? gUnk_08DAE214
-// ??? gUnk_08DAE222
-// ??? gUnk_08DAE22C
+// ??? Sprite_UiSpinningArrows_Horizontal
+// ??? Sprite_UiSpinningArrows_Vertical
+// ??? ProcScr_UiSpinningArrows
 
 /* sysutil.h */
 

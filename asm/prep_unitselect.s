@@ -1354,7 +1354,7 @@ sub_8094374: @ 0x08094374
 	bl EndSysBlackBoxs
 	bl EndSysHandCursor
 	bl EndHelpPromptSprite
-	bl sub_80A9CE4
+	bl EndUiSpinningArrows
 	bl EndMuralBackground_
 	pop {r0}
 	bx r0
