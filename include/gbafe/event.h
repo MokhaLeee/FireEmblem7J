@@ -67,7 +67,7 @@ enum event_func_ret_idx {
 #define HI8(half) (((half) & 0xFF00) >> 8)
 
 // sub_800A604
-// void LoadUnitCore(struct UnitDefinition * udef, );
+void LoadUnitCore(struct UnitDefinition const * def, struct EventProc * proc);
 // sub_800A70C
 // sub_800A720
 // sub_800A7A4
@@ -599,13 +599,30 @@ int EventE8_StartSpriteAnim(struct EventProc * proc);
 int EventE9_EndEventSpriteAnim(void);
 bool EventSpriteAnimExists(void);
 
-// EventEA_StartMixPalette
-// EventEB_EndMixPalette
+struct ProcEventWarpLoad {
+    /* 00 */ PROC_HEADER;
+
+    /* 2C */ int x;
+    /* 30 */ int y;
+
+    STRUCT_PAD(0x34, 0x54);
+
+    /* 54 */ struct UnitDefinition const * def;
+
+    STRUCT_PAD(0x58, 0x64);
+
+    /* 64 */ s16 skip;
+};
+
+int EventEA_StartMixPalette(struct EventProc * proc);
+int EventEB_EndMixPalette(struct EventProc * proc);
 void EventLoadUnit(int pid, int jid, int x_load, int y_load, int x_move, int y_move, int faction_id, void * unk);
-// sub_8012440
+void sub_8012440(struct UnitDefinition const * def, int flag);
 void sub_80124BC(ProcPtr proc);
 void sub_80125A4(ProcPtr proc);
-// sub_80125EC
+int sub_80125EC(struct EventProc * proc);
+
+extern struct UnitDefinition sEventLoadUnitBuf;
 
 extern u32 CONST_DATA gUnk_08BFFE88;
 // ??? gUnk_08BFFE8C
