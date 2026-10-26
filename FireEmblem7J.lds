@@ -354,7 +354,6 @@ SECTIONS
 		asm/prep_atmenu.o(.text);
 		src/prepscreenfx.o(.text);
 		src/prep_menu.o(.text);
-		asm/prep_menu.o(.text);
 		asm/prep_menuscroll.o(.text);
 		src/prep_bgscroll.o(.text);
 		src/prep_sallycir.o(.text);

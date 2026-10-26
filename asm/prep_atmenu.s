@@ -109,7 +109,7 @@ _0808F390: .4byte gBg1Tm + 0x18a
 AtMenu_SetupCtrlUI: @ 0x0808F394
 	push {r4, lr}
 	adds r4, r0, #0
-	bl sub_8090AA4
+	bl ShowPrepScreenMenuFrozenHand
 	adds r0, r4, #0
 	bl sub_808F2E4
 	adds r4, #0x2e
