@@ -332,7 +332,6 @@ SECTIONS
 		src/eventcall_0807F9EC.o(.text);
 		src/statscreenfx.o(.text);
 		src/statscreen-util.o(.text);
-		asm/statscreen-util.o(.text);
 		src/statscreen.o(.text);
 		src/statscreen-helpbox.o(.text);
 		src/chapter-title.o(.text);

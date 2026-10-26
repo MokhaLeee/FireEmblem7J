@@ -332,3 +332,66 @@ PROC_LABEL(0),
     PROC_GOTO(0),
     PROC_END,
 };
+
+void StatScreenPageName_Init(struct StatScreenSpritesProc * proc)
+{
+    SetObjAffine(8,
+        Div(+COS_Q12(0) * 16, 0x100),
+        Div(-SIN_Q12(0) * 16, 0x100),
+        Div(+SIN_Q12(0) * 16, 0x100),
+        Div(+COS_Q12(0) * 16, 0x100));
+
+    proc->page_id = gStatScreenSt.page;
+}
+
+void StatScreenPageName_Main(struct StatScreenSpritesProc * proc)
+{
+    PutUpdateStatScreenPageName(proc->page_id);
+
+    if (gStatScreenSt.page_slide_key_bit != 0)
+    {
+        proc->vertical_scale = 5;
+        Proc_Break(proc);
+        return;
+    }
+
+    proc->page_id = gStatScreenSt.page;
+}
+
+void StatScreenPageName_CloseMain(struct StatScreenSpritesProc * proc)
+{
+    SetObjAffine(8,
+        Div(+COS_Q12(0) * 16, 0x100),
+        Div(-SIN_Q12(0) * 16, proc->vertical_scale * 0x100 / 6),
+        Div(+SIN_Q12(0) * 16, 0x100),
+        Div(+COS_Q12(0) * 16, proc->vertical_scale * 0x100 / 6));
+
+    PutUpdateStatScreenPageName(proc->page_id);
+
+    proc->vertical_scale--;
+
+    if (proc->vertical_scale == 0)
+    {
+        proc->vertical_scale = 1;
+        Proc_Break(proc);
+    }
+}
+
+void StatScreenPageName_OpenMain(struct StatScreenSpritesProc * proc)
+{
+    SetObjAffine(8,
+        Div(+COS_Q12(0) * 16, 0x100),
+        Div(-SIN_Q12(0) * 16, proc->vertical_scale * 0x100 / 6),
+        Div(+SIN_Q12(0) * 16, 0x100),
+        Div(+COS_Q12(0) * 16, proc->vertical_scale * 0x100 / 6));
+
+    PutUpdateStatScreenPageName(gStatScreenSt.page);
+
+    proc->vertical_scale++;
+
+    if (proc->vertical_scale > 6)
+    {
+        proc->page_id = gStatScreenSt.page;
+        Proc_Break(proc);
+    }
+}
