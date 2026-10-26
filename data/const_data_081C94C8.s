@@ -648,8 +648,8 @@ UiWindowFrameTile2:
 UiWindowFrameTile3:
 	.incbin "FireEmblem7J.base.gba", 0x1DB470, 0x1DB490 - 0x1DB470
 
-	.global gUnk_081DB490
-gUnk_081DB490:	@ 0x081DB490
+	.global gUiItemHoverModel
+gUiItemHoverModel:	@ 0x081DB490
 	.incbin "FireEmblem7J.base.gba", 0x1DB490, 0x1DB4B8 - 0x1DB490
 
 	.global Img_UiWindowFrame1

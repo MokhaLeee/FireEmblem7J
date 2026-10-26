@@ -611,12 +611,12 @@ gUiWindowFrameImgLut:	@ 0x08C09B94
 gUiStatBarPalLut:	@ 0x08C09BA4
 	.incbin "FireEmblem7J.base.gba", 0xC09BA4, 0xC09BB4 - 0xC09BA4
 
-	.global gUnk_08C09BB4
-gUnk_08C09BB4:	@ 0x08C09BB4
+	.global Sprite_UiHand
+Sprite_UiHand:	@ 0x08C09BB4
 	.incbin "FireEmblem7J.base.gba", 0xC09BB4, 0xC09BBC - 0xC09BB4
 
-	.global gUnk_08C09BBC
-gUnk_08C09BBC:	@ 0x08C09BBC
+	.global sHandXOffsetLut
+sHandXOffsetLut:	@ 0x08C09BBC
 	.incbin "FireEmblem7J.base.gba", 0xC09BBC, 0xC09BDC - 0xC09BBC
 
 	.global gUnk_08C09BDC

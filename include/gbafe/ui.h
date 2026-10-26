@@ -31,8 +31,8 @@ void DisplayFrozenUiHand(int x, int y);
 int GetUiHandPrevX(void);
 int GetUiHandPrevY(void);
 void ClearUi(void); // FE8U: ClearBg0Bg1
-// sub_804A84C
-// sub_804A8B0
+// DrawUiItemHover
+// ClearUiItemHover
 // sub_804A930
 void DisplayUiHandExt(s32 x, s32 y, u32 objTileOffset);
 void DisplayFrozenUiHandExt(s32 x, s32 y, u32 objTileOffset);
@@ -44,8 +44,8 @@ extern u16 const * CONST_DATA gUiWindowFrameModelLut[];
 extern u16 const * CONST_DATA gUiWindowFramePalLut[];
 extern u8 const * CONST_DATA gUiWindowFrameImgLut[];
 extern u16 const * CONST_DATA gUiStatBarPalLut[];
-// ??? gUnk_08C09BB4
-// ??? gUnk_08C09BBC
+// ??? Sprite_UiHand
+// ??? sHandXOffsetLut
 // ??? gUnk_08C09BDC
 // ??? gUnk_08C09BF4
 // ??? gUnk_08C09C34

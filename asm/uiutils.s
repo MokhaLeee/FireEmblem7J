@@ -545,13 +545,13 @@ _0804A768:
 	bl GetGameTime
 	adds r3, r5, #0
 	subs r3, #0xe
-	ldr r2, _0804A7A8 @ =gUnk_08C09BBC
+	ldr r2, _0804A7A8 @ =sHandXOffsetLut
 	movs r1, #0x1f
 	ands r1, r0
 	adds r1, r1, r2
 	ldrb r1, [r1]
 	adds r5, r1, r3
-	ldr r3, _0804A7AC @ =gUnk_08C09BB4
+	ldr r3, _0804A7AC @ =Sprite_UiHand
 	str r4, [sp]
 	movs r0, #2
 	adds r1, r5, #0
@@ -564,8 +564,8 @@ _0804A768:
 	.align 2, 0
 _0804A7A0: .4byte 0x0203DCC8
 _0804A7A4: .4byte 0x0203DCC4
-_0804A7A8: .4byte gUnk_08C09BBC
-_0804A7AC: .4byte gUnk_08C09BB4
+_0804A7A8: .4byte sHandXOffsetLut
+_0804A7AC: .4byte Sprite_UiHand
 
 	thumb_func_start PutUnkUiHand
 PutUnkUiHand: @ 0x0804A7B0
@@ -576,13 +576,13 @@ PutUnkUiHand: @ 0x0804A7B0
 	bl GetGameTime
 	adds r3, r5, #0
 	subs r3, #0xe
-	ldr r2, _0804A7E4 @ =gUnk_08C09BBC
+	ldr r2, _0804A7E4 @ =sHandXOffsetLut
 	movs r1, #0x1f
 	ands r1, r0
 	adds r1, r1, r2
 	ldrb r1, [r1]
 	adds r5, r1, r3
-	ldr r3, _0804A7E8 @ =gUnk_08C09BB4
+	ldr r3, _0804A7E8 @ =Sprite_UiHand
 	movs r0, #0
 	str r0, [sp]
 	movs r0, #2
@@ -594,8 +594,8 @@ PutUnkUiHand: @ 0x0804A7B0
 	pop {r0}
 	bx r0
 	.align 2, 0
-_0804A7E4: .4byte gUnk_08C09BBC
-_0804A7E8: .4byte gUnk_08C09BB4
+_0804A7E4: .4byte sHandXOffsetLut
+_0804A7E8: .4byte Sprite_UiHand
 
 	thumb_func_start DisplayFrozenUiHand
 DisplayFrozenUiHand: @ 0x0804A7EC
@@ -604,7 +604,7 @@ DisplayFrozenUiHand: @ 0x0804A7EC
 	adds r4, r0, #0
 	adds r2, r1, #0
 	subs r4, #0xc
-	ldr r3, _0804A80C @ =gUnk_08C09BB4
+	ldr r3, _0804A80C @ =Sprite_UiHand
 	movs r0, #0
 	str r0, [sp]
 	movs r0, #3
@@ -615,7 +615,7 @@ DisplayFrozenUiHand: @ 0x0804A7EC
 	pop {r0}
 	bx r0
 	.align 2, 0
-_0804A80C: .4byte gUnk_08C09BB4
+_0804A80C: .4byte Sprite_UiHand
 
 	thumb_func_start GetUiHandPrevX
 GetUiHandPrevX: @ 0x0804A810
@@ -652,8 +652,8 @@ ClearUi: @ 0x0804A828
 _0804A844: .4byte gBg0Tm
 _0804A848: .4byte gBg1Tm
 
-	thumb_func_start sub_804A84C
-sub_804A84C: @ 0x0804A84C
+	thumb_func_start DrawUiItemHover
+DrawUiItemHover: @ 0x0804A84C
 	push {r4, r5, r6, lr}
 	adds r3, r0, #0
 	adds r4, r1, #0
@@ -702,8 +702,8 @@ _0804A8A4: .4byte 0x0000106A
 _0804A8A8: .4byte 0x00001076
 _0804A8AC: .4byte 0x0000106B
 
-	thumb_func_start sub_804A8B0
-sub_804A8B0: @ 0x0804A8B0
+	thumb_func_start ClearUiItemHover
+ClearUiItemHover: @ 0x0804A8B0
 	push {r4, r5, r6, r7, lr}
 	mov r7, sb
 	mov r6, r8
@@ -716,7 +716,7 @@ sub_804A8B0: @ 0x0804A8B0
 	adds r4, #1
 	ldr r0, _0804A910 @ =gBg1Tm
 	mov r8, r0
-	ldr r1, _0804A914 @ =gUnk_081DB490
+	ldr r1, _0804A914 @ =gUiItemHoverModel
 	mov ip, r1
 	cmp r3, r5
 	bge _0804A8F4
@@ -755,7 +755,7 @@ _0804A8F4:
 	b _0804A91C
 	.align 2, 0
 _0804A910: .4byte gBg1Tm
-_0804A914: .4byte gUnk_081DB490
+_0804A914: .4byte gUiItemHoverModel
 _0804A918:
 	mov r2, ip
 	ldrh r0, [r2, #0xe]
@@ -823,13 +823,13 @@ _0804A986:
 	bl GetGameTime
 	adds r3, r4, #0
 	subs r3, #0xe
-	ldr r2, _0804A9C8 @ =gUnk_08C09BBC
+	ldr r2, _0804A9C8 @ =sHandXOffsetLut
 	movs r1, #0x1f
 	ands r1, r0
 	adds r1, r1, r2
 	ldrb r1, [r1]
 	adds r4, r1, r3
-	ldr r3, _0804A9CC @ =gUnk_08C09BB4
+	ldr r3, _0804A9CC @ =Sprite_UiHand
 	lsls r0, r7, #0xf
 	lsrs r0, r0, #0x14
 	str r0, [sp]
@@ -844,8 +844,8 @@ _0804A986:
 	.align 2, 0
 _0804A9C0: .4byte 0x0203DCC8
 _0804A9C4: .4byte 0x0203DCC4
-_0804A9C8: .4byte gUnk_08C09BBC
-_0804A9CC: .4byte gUnk_08C09BB4
+_0804A9C8: .4byte sHandXOffsetLut
+_0804A9CC: .4byte Sprite_UiHand
 
 	thumb_func_start DisplayFrozenUiHandExt
 DisplayFrozenUiHandExt: @ 0x0804A9D0
@@ -854,7 +854,7 @@ DisplayFrozenUiHandExt: @ 0x0804A9D0
 	adds r4, r0, #0
 	adds r5, r1, #0
 	subs r4, #0xc
-	ldr r3, _0804A9F4 @ =gUnk_08C09BB4
+	ldr r3, _0804A9F4 @ =Sprite_UiHand
 	lsls r2, r2, #0xf
 	lsrs r2, r2, #0x14
 	str r2, [sp]
@@ -867,7 +867,7 @@ DisplayFrozenUiHandExt: @ 0x0804A9D0
 	pop {r0}
 	bx r0
 	.align 2, 0
-_0804A9F4: .4byte gUnk_08C09BB4
+_0804A9F4: .4byte Sprite_UiHand
 
 	thumb_func_start UnpackUiWindowFrameGraphics
 UnpackUiWindowFrameGraphics: @ 0x0804A9F8
