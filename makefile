@@ -189,6 +189,7 @@ CLEAN_DIRS += $(BUILD_DIR)
 %/hardware.o:        CFLAGS += -O0
 %/move-data.o:       CFLAGS += -O0
 %/oam.o:             CFLAGS += -O0
+%/sound.o:           CFLAGS += -O0
 
 # ===============
 # = Symbol file =

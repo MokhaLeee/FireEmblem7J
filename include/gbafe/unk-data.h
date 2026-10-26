@@ -3,9 +3,6 @@
 #include "proc.h"
 #include "gba/m4a_internal.h"
 
-extern struct MusicPlayerInfo gMPlayInfo_BGM1;
-extern struct MusicPlayerInfo gMPlayInfo_SE3;
-
 extern EWRAM_DATA u16 * gManimScanlineBufs[2];
 
 extern s8 MoveTable_Flying[];
