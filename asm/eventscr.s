@@ -3400,7 +3400,7 @@ sub_800D168: @ 0x0800D168
 	ldrb r6, [r0, #8]
 	ldrb r0, [r0, #0xa]
 	mov r8, r0
-	ldr r0, _0800D1FC @ =0x030040F0
+	ldr r0, _0800D1FC @ =sEventLoadUnitBuf
 	ldr r5, _0800D200 @ =gUnk_08C00C28
 	ldrb r1, [r5, #2]
 	strb r1, [r0, #2]
@@ -3460,7 +3460,7 @@ sub_800D168: @ 0x0800D168
 	pop {r1}
 	bx r1
 	.align 2, 0
-_0800D1FC: .4byte 0x030040F0
+_0800D1FC: .4byte sEventLoadUnitBuf
 _0800D200: .4byte gUnk_08C00C28
 
 	thumb_func_start sub_800D204

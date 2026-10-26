@@ -217,6 +217,7 @@ SECTIONS
 		. = 0x003870; IntrMainRam = .;
 		. = 0x0040B0; gSpriteAllocIt = .;
 		. = 0x0040E0; gFaces = .;
+		. = 0x0040F0; sEventLoadUnitBuf = .;
 		. = 0x0045B0; gActiveUnit = .;
 		. = 0x004750; Unk_03004750 = .;
 		. = 0x005A30; gUnk_03005A30 = .;

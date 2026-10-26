@@ -607,6 +607,8 @@ void sub_80124BC(ProcPtr proc);
 void sub_80125A4(ProcPtr proc);
 // sub_80125EC
 
+extern struct UnitDefinition sEventLoadUnitBuf;
+
 extern u32 CONST_DATA gUnk_08BFFE88;
 // ??? gUnk_08BFFE8C
 // ??? gUnk_08BFFE90

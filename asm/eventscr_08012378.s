@@ -64,7 +64,7 @@ EventLoadUnit: @ 0x080123C8
 	ldr r5, [sp, #0x2c]
 	movs r0, #0
 	str r0, [sp]
-	ldr r4, _08012438 @ =0x030040F0
+	ldr r4, _08012438 @ =sEventLoadUnitBuf
 	ldr r2, _0801243C @ =0x01000004
 	mov r0, sp
 	adds r1, r4, #0
@@ -105,7 +105,7 @@ EventLoadUnit: @ 0x080123C8
 	pop {r0}
 	bx r0
 	.align 2, 0
-_08012438: .4byte 0x030040F0
+_08012438: .4byte sEventLoadUnitBuf
 _0801243C: .4byte 0x01000004
 
 	thumb_func_start sub_8012440
@@ -116,7 +116,7 @@ sub_8012440: @ 0x08012440
 	adds r6, r1, #0
 	movs r0, #0
 	str r0, [sp]
-	ldr r5, _08012490 @ =0x030040F0
+	ldr r5, _08012490 @ =sEventLoadUnitBuf
 	ldr r2, _08012494 @ =0x01000004
 	mov r0, sp
 	adds r1, r5, #0
@@ -149,7 +149,7 @@ sub_8012440: @ 0x08012440
 	ldrb r2, [r4, #7]
 	b _080124A2
 	.align 2, 0
-_08012490: .4byte 0x030040F0
+_08012490: .4byte sEventLoadUnitBuf
 _08012494: .4byte 0x01000004
 _08012498:
 	ldrb r1, [r4, #6]
@@ -158,7 +158,7 @@ _08012498:
 	strb r0, [r5, #5]
 	adds r2, r0, #0
 _080124A2:
-	ldr r0, _080124B8 @ =0x030040F0
+	ldr r0, _080124B8 @ =sEventLoadUnitBuf
 	strb r1, [r0, #6]
 	strb r2, [r0, #7]
 	adds r1, r6, #0
@@ -168,7 +168,7 @@ _080124A2:
 	pop {r0}
 	bx r0
 	.align 2, 0
-_080124B8: .4byte 0x030040F0
+_080124B8: .4byte sEventLoadUnitBuf
 
 	thumb_func_start sub_80124BC
 sub_80124BC: @ 0x080124BC
