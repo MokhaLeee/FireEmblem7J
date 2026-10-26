@@ -127,6 +127,8 @@ SECTIONS
 		. = ALIGN(4); src/anime.o(ewram_data);
 		. = ALIGN(4); src/sprite.o(ewram_data);
 		. = 0x02A580; gFaceConfig = .;
+		. = 0x02A5B0;
+		. = ALIGN(4); src/msg.o(ewram_data);
 		. = 0x02BBB4;
 		. = ALIGN(4); src/bm.o(ewram_data);
 		. = 0x02BD44; gActiveUnitId = .;
@@ -265,7 +267,7 @@ SECTIONS
 		asm/eventscr_08012378.o(.text);
 		src/sprite-anim.o(.text);
 		src/game-ctrl.o(.text);
-		asm/msg.o(.text);
+		src/msg.o(.text);
 		asm/utils.o(.text);
 		src/bm.o(.text);
 		asm/item.o(.text);
