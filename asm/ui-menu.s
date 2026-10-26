@@ -524,11 +524,11 @@ sub_804ADBC: @ 0x0804ADBC
 	cmp r0, #1
 	bne _0804AE12
 	adds r0, r3, #0
-	bl sub_804A84C
+	bl DrawUiItemHover
 	b _0804AE12
 _0804AE0C:
 	adds r0, r3, #0
-	bl sub_804A8B0
+	bl ClearUiItemHover
 _0804AE12:
 	pop {r4}
 	pop {r0}

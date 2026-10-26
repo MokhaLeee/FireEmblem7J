@@ -809,7 +809,7 @@ extern u16 Pal_LinkArenaMuralBackground[];
 // ??? gUnk_081DB3C0
 // ??? gUnk_081DB3CE
 // ??? gUnk_081DB400
-// ??? gUnk_081DB490
+// ??? gUiItemHoverModel
 extern u16 Pal_UiWindowFrame1[];
 // ??? gUnk_081DD7F4
 // ??? gUnk_081DDA48

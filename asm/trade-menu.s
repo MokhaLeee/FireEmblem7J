@@ -153,7 +153,7 @@ sub_802B164: @ 0x0802B164
 	movs r2, #2
 	ldrsh r1, [r1, r2]
 	movs r2, #0xc
-	bl sub_804A8B0
+	bl ClearUiItemHover
 _0802B1A4:
 	ldr r0, _0802B1DC @ =gUnk_08C03574
 	adds r6, r4, #0
@@ -171,7 +171,7 @@ _0802B1A4:
 	movs r2, #2
 	ldrsh r1, [r1, r2]
 	movs r2, #0xc
-	bl sub_804A84C
+	bl DrawUiItemHover
 	ldrb r0, [r4]
 	strb r0, [r5]
 	ldrb r0, [r6]

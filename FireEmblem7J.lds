@@ -156,6 +156,8 @@ SECTIONS
 		. = 0x03A71C; gConvoyItemArray = .;
 		. = 0x03A7F0; gArenaSt = .;
 		. = 0x03A858; gActionSt = .;
+		. = 0x03DCC4; sPrevHandPosition = .;
+		. = 0x03DCC8; sPrevHandClock = .;
 		. = 0x03DFE0; gEkrDebugModeMaybe = .;
 		. = 0x03DFE4; gEkrInitialHitSide = .;
 		. = 0x03DFE8; gBanimValid = .;
@@ -297,7 +299,6 @@ SECTIONS
 		asm/code-ai.o(.text);
 		asm/code-sio.o(.text);
 		src/ui.o(.text);
-		asm/uiutils.o(.text);
 		asm/ui-menu.o(.text);
 		asm/map-sel.o(.text);
 		asm/banim-ekrbattle.o(.text);
