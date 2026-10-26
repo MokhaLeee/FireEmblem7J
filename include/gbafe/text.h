@@ -36,6 +36,12 @@ struct TextInitInfo {
     /* 04 */ u8 width;
 };
 
+struct SpecialCharSt {
+    /* 00 */ s8 color;
+    /* 01 */ s8 id;
+    /* 02 */ s16 chr_position;
+};
+
 enum langauge_type {
     LANG_JAPANESE,
     LANG_ENGLISH,
@@ -174,3 +180,7 @@ void PutNumber2Digit(u16 * tm, int color, int number);
 void PutNumber2DigitSmall(u16 * tm, int color, int number);
 void PutTime(u16 * tm, int color, int time, bool always_display_punctuation);
 void PutTwoSpecialChar(u16 * tm, int color, int id_a, int id_b);
+
+extern struct Font gDefaultFont;
+extern struct Font * gActiveFont;
+extern struct SpecialCharSt sSpecialCharStList[];

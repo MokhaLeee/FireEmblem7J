@@ -50,7 +50,7 @@ extern u16 Pal_Text[];
 // ??? gUnk_08190228
 // ??? gUnk_08190248
 extern u16 Pal_08190268[];
-// ??? gUnk_08190288
+// ??? Pal_GreenTextColors
 extern u16 gUnk_081902A8[];
 extern u16 gUnk_081902C8[];
 // ??? gUnk_081902E8
@@ -1687,12 +1687,12 @@ extern u8 Img_SysBrownBox[];
 // ??? gUnk_08BBFCE8
 // ??? gUnk_08BBFD28
 // ??? gUnk_08BBFD90
-// ??? gUnk_08BC0590
-// ??? gUnk_08BC05C4
-// ??? gUnk_08BC05D4
-// ??? gUnk_08BC1FEC
-// ??? gUnk_08BDC134
-// ??? gUnk_08BDC1E0
+// ??? TextColorLutTable
+// ??? ProcScr_TextPrint
+// ??? ProcScr_GreenTextColor
+// ??? TextGlyphs_System
+// ??? TextGlyphs_Special
+// ??? TextGlyphs_Talk
 
 /* sprite.h */
 /* face.h */

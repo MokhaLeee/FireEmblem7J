@@ -10,20 +10,20 @@ GetLang: @ 0x0800527C
 	thumb_func_start ResetText
 ResetText: @ 0x08005280
 	push {lr}
-	ldr r0, _08005298 @ =0x02028D50
+	ldr r0, _08005298 @ =gDefaultFont
 	ldr r1, _0800529C @ =0x06001000
 	movs r2, #0x80
 	movs r3, #0
 	bl InitTextFont
-	ldr r1, _080052A0 @ =0x02028D6C
+	ldr r1, _080052A0 @ =sSpecialCharStList
 	movs r0, #0xff
 	strb r0, [r1]
 	pop {r0}
 	bx r0
 	.align 2, 0
-_08005298: .4byte 0x02028D50
+_08005298: .4byte gDefaultFont
 _0800529C: .4byte 0x06001000
-_080052A0: .4byte 0x02028D6C
+_080052A0: .4byte sSpecialCharStList
 
 	thumb_func_start InitTextFont
 InitTextFont: @ 0x080052A4
@@ -31,7 +31,7 @@ InitTextFont: @ 0x080052A4
 	adds r4, r0, #0
 	cmp r4, #0
 	bne _080052AE
-	ldr r4, _080052D8 @ =0x02028D50
+	ldr r4, _080052D8 @ =gDefaultFont
 _080052AE:
 	str r1, [r4]
 	ldr r0, _080052DC @ =GetTextDrawDest
@@ -51,7 +51,7 @@ _080052AE:
 	pop {r0}
 	bx r0
 	.align 2, 0
-_080052D8: .4byte 0x02028D50
+_080052D8: .4byte gDefaultFont
 _080052DC: .4byte GetTextDrawDest
 
 	thumb_func_start SetTextFontGlyphs
@@ -60,21 +60,21 @@ SetTextFontGlyphs: @ 0x080052E0
 	bne _080052F4
 	ldr r0, _080052EC @ =gActiveFont
 	ldr r1, [r0]
-	ldr r0, _080052F0 @ =gUnk_08BC1FEC
+	ldr r0, _080052F0 @ =TextGlyphs_System
 	b _080052FA
 	.align 2, 0
 _080052EC: .4byte gActiveFont
-_080052F0: .4byte gUnk_08BC1FEC
+_080052F0: .4byte TextGlyphs_System
 _080052F4:
 	ldr r0, _08005300 @ =gActiveFont
 	ldr r1, [r0]
-	ldr r0, _08005304 @ =gUnk_08BDC1E0
+	ldr r0, _08005304 @ =TextGlyphs_Talk
 _080052FA:
 	str r0, [r1, #4]
 	bx lr
 	.align 2, 0
 _08005300: .4byte gActiveFont
-_08005304: .4byte gUnk_08BDC1E0
+_08005304: .4byte TextGlyphs_Talk
 
 	thumb_func_start ResetTextFont
 ResetTextFont: @ 0x08005308
@@ -82,13 +82,13 @@ ResetTextFont: @ 0x08005308
 	ldr r1, [r0]
 	movs r0, #0
 	strh r0, [r1, #0x12]
-	ldr r1, _0800531C @ =0x02028D6C
+	ldr r1, _0800531C @ =sSpecialCharStList
 	movs r0, #0xff
 	strb r0, [r1]
 	bx lr
 	.align 2, 0
 _08005318: .4byte gActiveFont
-_0800531C: .4byte 0x02028D6C
+_0800531C: .4byte sSpecialCharStList
 
 	thumb_func_start SetTextFont
 SetTextFont: @ 0x08005320
@@ -96,12 +96,12 @@ SetTextFont: @ 0x08005320
 	cmp r1, #0
 	bne _08005338
 	ldr r1, _08005330 @ =gActiveFont
-	ldr r0, _08005334 @ =0x02028D50
+	ldr r0, _08005334 @ =gDefaultFont
 	str r0, [r1]
 	b _0800533C
 	.align 2, 0
 _08005330: .4byte gActiveFont
-_08005334: .4byte 0x02028D50
+_08005334: .4byte gDefaultFont
 _08005338:
 	ldr r0, _08005340 @ =gActiveFont
 	str r1, [r0]
@@ -720,13 +720,13 @@ _08005760: .4byte gActiveFont
 
 	thumb_func_start GetColorLut
 GetColorLut: @ 0x08005764
-	ldr r1, _08005770 @ =gUnk_08BC0590
+	ldr r1, _08005770 @ =TextColorLutTable
 	lsls r0, r0, #2
 	adds r0, r0, r1
 	ldr r0, [r0]
 	bx lr
 	.align 2, 0
-_08005770: .4byte gUnk_08BC0590
+_08005770: .4byte TextColorLutTable
 
 	thumb_func_start DrawTextGlyph
 DrawTextGlyph: @ 0x08005774
@@ -1517,8 +1517,8 @@ _08005CD2:
 	.align 2, 0
 _08005D88: .4byte gActiveFont
 
-	thumb_func_start sub_8005D8C
-sub_8005D8C: @ 0x08005D8C
+	thumb_func_start TextPrint_OnLoop
+TextPrint_OnLoop: @ 0x08005D8C
 	push {r4, r5, r6, lr}
 	adds r4, r0, #0
 	adds r1, r4, #0
@@ -1581,8 +1581,8 @@ _08005DFA:
 	pop {r0}
 	bx r0
 
-	thumb_func_start sub_8005E00
-sub_8005E00: @ 0x08005E00
+	thumb_func_start StartTextPrint
+StartTextPrint: @ 0x08005E00
 	push {r4, r5, r6, r7, lr}
 	adds r5, r0, #0
 	adds r6, r1, #0
@@ -1596,7 +1596,7 @@ _08005E12:
 	bne _08005E18
 	movs r4, #1
 _08005E18:
-	ldr r0, _08005E44 @ =gUnk_08BC05C4
+	ldr r0, _08005E44 @ =ProcScr_TextPrint
 	movs r1, #3
 	bl Proc_Start
 	adds r2, r0, #0
@@ -1617,27 +1617,27 @@ _08005E18:
 	pop {r1}
 	bx r1
 	.align 2, 0
-_08005E44: .4byte gUnk_08BC05C4
+_08005E44: .4byte ProcScr_TextPrint
 
-	thumb_func_start sub_8005E48
-sub_8005E48: @ 0x08005E48
+	thumb_func_start IsTextPrinting
+IsTextPrinting: @ 0x08005E48
 	ldrb r0, [r0, #7]
 	lsls r0, r0, #0x18
 	asrs r0, r0, #0x18
 	bx lr
 
-	thumb_func_start sub_8005E50
-sub_8005E50: @ 0x08005E50
+	thumb_func_start EndTextPrinting
+EndTextPrinting: @ 0x08005E50
 	push {lr}
-	ldr r0, _08005E5C @ =gUnk_08BC05C4
+	ldr r0, _08005E5C @ =ProcScr_TextPrint
 	bl Proc_EndEach
 	pop {r0}
 	bx r0
 	.align 2, 0
-_08005E5C: .4byte gUnk_08BC05C4
+_08005E5C: .4byte ProcScr_TextPrint
 
-	thumb_func_start sub_8005E60
-sub_8005E60: @ 0x08005E60
+	thumb_func_start GreenText_OnLoop
+GreenText_OnLoop: @ 0x08005E60
 	push {lr}
 	bl GetGameTime
 	lsrs r0, r0, #2
@@ -1645,7 +1645,7 @@ sub_8005E60: @ 0x08005E60
 	ands r0, r1
 	ldr r2, _08005E80 @ =gPal
 	lsls r0, r0, #1
-	ldr r1, _08005E84 @ =gUnk_08190288
+	ldr r1, _08005E84 @ =Pal_GreenTextColors
 	adds r0, r0, r1
 	ldrh r0, [r0]
 	strh r0, [r2, #0x1c]
@@ -1654,7 +1654,7 @@ sub_8005E60: @ 0x08005E60
 	bx r0
 	.align 2, 0
 _08005E80: .4byte gPal
-_08005E84: .4byte gUnk_08190288
+_08005E84: .4byte Pal_GreenTextColors
 
 	thumb_func_start StartGreenText
 StartGreenText: @ 0x08005E88
@@ -1662,33 +1662,33 @@ StartGreenText: @ 0x08005E88
 	adds r1, r0, #0
 	cmp r1, #0
 	beq _08005E9C
-	ldr r0, _08005E98 @ =gUnk_08BC05D4
+	ldr r0, _08005E98 @ =ProcScr_GreenTextColor
 	bl Proc_Start
 	b _08005EA4
 	.align 2, 0
-_08005E98: .4byte gUnk_08BC05D4
+_08005E98: .4byte ProcScr_GreenTextColor
 _08005E9C:
-	ldr r0, _08005EA8 @ =gUnk_08BC05D4
+	ldr r0, _08005EA8 @ =ProcScr_GreenTextColor
 	movs r1, #3
 	bl Proc_Start
 _08005EA4:
 	pop {r0}
 	bx r0
 	.align 2, 0
-_08005EA8: .4byte gUnk_08BC05D4
+_08005EA8: .4byte ProcScr_GreenTextColor
 
 	thumb_func_start EndGreenText
 EndGreenText: @ 0x08005EAC
 	push {lr}
-	ldr r0, _08005EB8 @ =gUnk_08BC05D4
+	ldr r0, _08005EB8 @ =ProcScr_GreenTextColor
 	bl Proc_EndEach
 	pop {r0}
 	bx r0
 	.align 2, 0
-_08005EB8: .4byte gUnk_08BC05D4
+_08005EB8: .4byte ProcScr_GreenTextColor
 
-	thumb_func_start sub_8005EBC
-sub_8005EBC: @ 0x08005EBC
+	thumb_func_start PutTextPart
+PutTextPart: @ 0x08005EBC
 	push {r4, r5, lr}
 	adds r4, r0, #0
 	mov ip, r1
@@ -1737,8 +1737,8 @@ _08005F0E:
 	pop {r0}
 	bx r0
 
-	thumb_func_start sub_8005F14
-sub_8005F14: @ 0x08005F14
+	thumb_func_start DrawSpecialCharGlyph
+DrawSpecialCharGlyph: @ 0x08005F14
 	push {r4, r5, r6, r7, lr}
 	mov r7, r8
 	push {r7}
@@ -1785,8 +1785,8 @@ _08005F36:
 	.align 2, 0
 _08005F6C: .4byte gActiveFont
 
-	thumb_func_start sub_8005F70
-sub_8005F70: @ 0x08005F70
+	thumb_func_start AddSpecialChar
+AddSpecialChar: @ 0x08005F70
 	push {r4, r5, lr}
 	adds r5, r0, #0
 	strb r1, [r5]
@@ -1801,11 +1801,11 @@ sub_8005F70: @ 0x08005F70
 	strb r0, [r5, #4]
 	movs r3, #2
 	ldrsh r0, [r5, r3]
-	ldr r3, _08005FA8 @ =gUnk_08BDC134
+	ldr r3, _08005FA8 @ =TextGlyphs_Special
 	lsls r2, r2, #2
 	adds r2, r2, r3
 	ldr r2, [r2]
-	bl sub_8005F14
+	bl DrawSpecialCharGlyph
 	movs r1, #2
 	ldrsh r0, [r5, r1]
 	pop {r4, r5}
@@ -1813,14 +1813,14 @@ sub_8005F70: @ 0x08005F70
 	bx r1
 	.align 2, 0
 _08005FA4: .4byte gActiveFont
-_08005FA8: .4byte gUnk_08BDC134
+_08005FA8: .4byte TextGlyphs_Special
 
 	thumb_func_start GetSpecialCharChr
 GetSpecialCharChr: @ 0x08005FAC
 	push {lr}
 	adds r3, r0, #0
 	adds r2, r1, #0
-	ldr r1, _08005FC8 @ =0x02028D6C
+	ldr r1, _08005FC8 @ =sSpecialCharStList
 _08005FB4:
 	movs r0, #0
 	ldrsb r0, [r1, r0]
@@ -1828,10 +1828,10 @@ _08005FB4:
 	bge _08005FCC
 	adds r0, r1, #0
 	adds r1, r3, #0
-	bl sub_8005F70
+	bl AddSpecialChar
 	b _08005FE6
 	.align 2, 0
-_08005FC8: .4byte 0x02028D6C
+_08005FC8: .4byte sSpecialCharStList
 _08005FCC:
 	movs r0, #0
 	ldrsb r0, [r1, r0]
@@ -2007,8 +2007,8 @@ _080060F4:
 	bx r0
 	.align 2, 0
 
-	thumb_func_start sub_80060FC
-sub_80060FC: @ 0x080060FC
+	thumb_func_start SpecialCharTest
+SpecialCharTest: @ 0x080060FC
 	push {r4, r5, r6, r7, lr}
 	mov r7, r8
 	push {r7}
@@ -2175,8 +2175,8 @@ PutTwoSpecialChar: @ 0x0800623C
 	bx r0
 	.align 2, 0
 
-	thumb_func_start sub_800625C
-sub_800625C: @ 0x0800625C
+	thumb_func_start PutNumber2Digit
+PutNumber2Digit: @ 0x0800625C
 	push {r4, r5, r6, lr}
 	adds r4, r0, #0
 	adds r6, r1, #0
@@ -2203,8 +2203,8 @@ sub_800625C: @ 0x0800625C
 	bx r0
 	.align 2, 0
 
-	thumb_func_start sub_8006298
-sub_8006298: @ 0x08006298
+	thumb_func_start PutNumber2DigitSmall
+PutNumber2DigitSmall: @ 0x08006298
 	push {r4, r5, r6, lr}
 	adds r4, r0, #0
 	adds r6, r1, #0
@@ -2233,8 +2233,8 @@ sub_8006298: @ 0x08006298
 	bx r0
 	.align 2, 0
 
-	thumb_func_start sub_80062D8
-sub_80062D8: @ 0x080062D8
+	thumb_func_start PutNumber2DigitExt
+PutNumber2DigitExt: @ 0x080062D8
 	push {r4, r5, r6, lr}
 	mov r6, r8
 	push {r6}

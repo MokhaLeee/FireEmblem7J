@@ -1166,14 +1166,14 @@ _0809A5E8:
 	ldr r3, [sp, #0x10]
 	ldrb r2, [r3]
 	movs r1, #2
-	bl sub_800625C
+	bl PutNumber2Digit
 	movs r1, #0x9d
 	lsls r1, r1, #2
 	adds r0, r4, r1
 	ldr r3, [sp, #0x14]
 	ldrb r2, [r3]
 	movs r1, #2
-	bl sub_800625C
+	bl PutNumber2Digit
 	adds r1, r4, #0
 	adds r1, #0x4e
 	str r5, [sp]

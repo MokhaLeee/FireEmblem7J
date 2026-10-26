@@ -1732,7 +1732,7 @@ _080AC5F0:
 	adds r0, r0, r1
 	adds r2, r4, #1
 	adds r1, r5, #0
-	bl sub_800625C
+	bl PutNumber2Digit
 _080AC614:
 	adds r4, #1
 	adds r0, r7, #0
