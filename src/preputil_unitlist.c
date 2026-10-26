@@ -1,5 +1,124 @@
 #include "gbafe.h"
 
+int GetLatestUnitIndexInPrepListByUId(void)
+{
+    int i;
+
+    for (i = 0; i < PrepGetUnitAmount(); i++)
+    {
+        if (GetLastStatScreenUnitId() == GetUnitFromPrepList(i)->index)
+            return i;
+    }
+
+    return 0;
+}
+
+int PrepGetLatestUnitIndex(void)
+{
+    int i;
+
+    for (i = 0; i < PrepGetUnitAmount(); i++)
+    {
+        if (UNIT_CHAR_ID(GetUnitFromPrepList(i)) == PrepGetLatestCharId())
+            return i;
+    }
+
+    return 0;
+}
+
+void ReorderPlayerUnitsBasedOnDeployment(void)
+{
+    int i;
+    struct Unit * unit;
+
+    InitUnitStack(gPrepUnitPool);
+
+    for (i = 1; i < 64; i++)
+    {
+        unit = GetUnit(i);
+
+        if (UNIT_IS_VALID(unit) && !(0x1000C & unit->state))
+            PushUnit(unit);
+    }
+
+    for (i = 1; i < 64; i++)
+    {
+        unit = GetUnit(i);
+
+        if (UNIT_IS_VALID(unit) && (0x1000C & unit->state))
+            PushUnit(unit);
+    }
+
+    LoadPlayerUnitsFromUnitStack();
+}
+
+void SortPlayerUnitsForPrepScreen(void)
+{
+    int i, state1, state2;
+    struct Unit * unit;
+    int count = GetChapterAllyUnitCount();
+    int _count = 0;
+
+    InitUnitStack(gPrepUnitPool);
+
+    for (i = 1; i < 64; i++)
+    {
+        unit = GetUnit(i);
+
+        if (!UNIT_IS_VALID(unit))
+            continue;
+
+        unit->state &= 0xFDFFFFFF;
+
+        if (IsUnitInCurrentRoster(unit) && IsCharacterForceDeployed(unit->pCharacterData->number))
+            PushUnit(unit);
+    }
+
+    for (i = 1; i < 64; i++)
+    {
+        unit = GetUnit(i);
+
+        if (!UNIT_IS_VALID(unit))
+            continue;
+
+        if (!IsUnitInCurrentRoster(unit) || !IsCharacterForceDeployed(unit->pCharacterData->number))
+            PushUnit(unit);
+    }
+
+    LoadPlayerUnitsFromUnitStack();
+
+    for (i = 1; i < 64; i++)
+    {
+        unit = GetUnit(i);
+
+        if (!UNIT_IS_VALID(unit))
+            continue;
+
+        if (!IsUnitInCurrentRoster(unit))
+            continue;
+
+        if (sub_808E7D4(unit))
+        {
+            state1 = unit->state;
+            state2 = 0x02000008;
+        }
+        else
+        {
+            if (count > _count)
+            {
+                unit->state &= 0xFFFFFFF7;
+                _count++;
+                continue;
+            }
+
+            state1 = unit->state;
+            state2 = 0x08;
+        }
+
+        unit->state = state1 | state2;
+    }
+}
+
 void RemoveSomeUnitItems(void)
 {
     int i, j, itemNum, removeItem;

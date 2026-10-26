@@ -89,9 +89,9 @@ void SetTacticianName(const char *name);
 // sub_802ECE4
 // sub_802ED30
 // GetSupplyUnit
-// InitUnitStack
-// PushUnit
-// LoadPlayerUnitsFromUnitStack
+void InitUnitStack(void * buf);
+void PushUnit(struct Unit * unit);
+void LoadPlayerUnitsFromUnitStack(void);
 // LoadPlayerUnitsFromUnitStack2
 // sub_802EE6C
 // sub_802EF4C

@@ -103,7 +103,7 @@ int PrepGetUnitAmount();
 void PrepSetUnitAmount(int);
 int PrepGetLatestCharId();
 void PrepSetLatestCharId(int val);
-// IsCharacterForceDeployed
+bool IsCharacterForceDeployed(int pid);
 // CalcForceDeployedUnitCounts
 bool sub_808E7D4(struct Unit *unit);
 bool IsUnitInCurrentRoster(struct Unit *unit);
@@ -583,6 +583,7 @@ void sub_8094888(struct ProcPrepUnit *proc);
 
 extern EWRAM_DATA struct SioPidPool gSioPidPool;
 extern EWRAM_OVERLAY(0) struct Text gPrepMainMenuTexts[10];
+extern EWRAM_OVERLAY(0) u8 gPrepUnitPool[0x1000];
 
 extern CONST_DATA u16 gBgConfig_PrepScreen[];
 extern CONST_DATA int Msgs_PrepMainMenuHelpbox[][3];
