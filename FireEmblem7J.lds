@@ -252,7 +252,7 @@ SECTIONS
 		src/proc.o(.text);
 		src/icon.o(.text);
 		asm/debug-text.o(.text);
-		asm/text.o(.text);
+		src/text.o(.text);
 		src/anime.o(.text);
 		asm/anim-drv.o(.text);
 		src/sprite.o(.text);

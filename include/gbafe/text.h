@@ -42,6 +42,16 @@ struct SpecialCharSt {
     /* 02 */ s16 chr_position;
 };
 
+struct TextPrintProc {
+    /* 00 */ PROC_HEADER;
+
+    /* 2C */ struct Text * text;
+    /* 30 */ char const * str;
+    /* 34 */ s8 interval;
+    /* 35 */ s8 clock;
+    /* 36 */ s8 char_per_tick;
+};
+
 enum langauge_type {
     LANG_JAPANESE,
     LANG_ENGLISH,
@@ -153,21 +163,37 @@ void Text_DrawString(struct Text * text, char const * str);
 void Text_DrawNumber(struct Text * text, int number);
 void Text_DrawNumberOrBlank(struct Text * text, int number);
 char const * Text_DrawCharacter(struct Text * text, char const * str);
+u8 * GetTextDrawDest(struct Text * text);
+u16 const * GetColorLut(int color);
+void DrawTextGlyph(struct Text * text, struct Glyph const * glyph);
+void DrawTextGlyphNoClear(struct Text * text, struct Glyph const * glyph);
 void InitSystemTextFont(void);
 void InitTalkTextFont(void);
 void SetTextDrawNoClear(void);
 void PutDrawText(struct Text * text, u16 * tm, int color, int x, int tile_width, char const * str);
 void Text_InsertDrawString(struct Text * text, int x, int color, const char * str);
 void Text_InsertDrawNumberOrBlank(struct Text * text, int x, int color, int number);
+void Text_DrawStringAscii(struct Text * text, char const * str);
+char const * Text_DrawCharacterAscii(struct Text * text, char const * str);
+int GetStringTextLenAscii(char const * str);
+void nullsub_23(void);
 void InitSpriteTextFont(struct Font * font, u8 * draw_dest, int palid);
 void InitSpriteText(struct Text * text);
 void SpriteText_DrawBackground(struct Text * text);
 void SpriteText_DrawBackgroundExt(struct Text * text, u32 line);
+u8 * GetSpriteTextDrawDest(struct Text * text);
+void DrawSpriteTextGlyph(struct Text * text, struct Glyph const * glyph);
+void TextPrint_OnLoop(struct TextPrintProc * proc);
 char const * StartTextPrint(struct Text * text, char const * str, int interval, int char_per_tick);
 bool IsTextPrinting(struct Text * text);
 void EndTextPrinting(void);
+void GreenText_OnLoop(void);
 void StartGreenText(ProcPtr parent);
 void EndGreenText(void);
+void PutTextPart(struct Text * text, u16 * tm, int length);
+void DrawSpecialCharGlyph(int chr, int color, struct Glyph const * glyph);
+int AddSpecialChar(struct SpecialCharSt * st, int color, int id);
+int GetSpecialCharChr(int color, int id);
 void PutSpecialChar(u16 * tm, int color, int id);
 void PutNumberExt(u16 * tm, int color, int number, int id_zero);
 void PutNumber(u16 * tm, int color, int number);
@@ -175,12 +201,24 @@ void PutNumberOrBlank(u16 * tm, int color, int number);
 void PutNumberTwoChr(u16 * tm, int color, int number);
 void PutNumberSmall(u16 * tm, int color, int number);
 void PutNumberBonus(int number, u16 * tm);
-void PutNumber2DigitExt(u16 * tm, int color, int number, int id_zero);
-void PutNumber2Digit(u16 * tm, int color, int number);
-void PutNumber2DigitSmall(u16 * tm, int color, int number);
+void SpecialCharTest(void);
 void PutTime(u16 * tm, int color, int time, bool always_display_punctuation);
 void PutTwoSpecialChar(u16 * tm, int color, int id_a, int id_b);
+void PutNumber2Digit(u16 * tm, int color, int number);
+void PutNumber2DigitSmall(u16 * tm, int color, int number);
+void PutNumber2DigitExt(u16 * tm, int color, int number, int id_zero);
 
 extern struct Font gDefaultFont;
 extern struct Font * gActiveFont;
 extern struct SpecialCharSt sSpecialCharStList[];
+
+extern struct ProcCmd ProcScr_TextPrint[];
+extern struct ProcCmd ProcScr_GreenTextColor[];
+extern u16 const Pal_GreenTextColors[];
+extern struct Glyph const * const TextGlyphs_Special[];
+
+extern char const gUnk_0818F8F8[];
+extern char const gUnk_0818F8FC[];
+extern struct Glyph const * const TextGlyphs_System[];
+extern struct Glyph const * const TextGlyphs_Talk[];
+extern u16 const * const TextColorLutTable[];
