@@ -2166,9 +2166,9 @@ extern struct ProcCmd ProcScr_08C0617C[];
 // ??? Sprite_CursorHand1
 // ??? Sprite_CursorHand2
 // ??? ProcScr_UiCursorHand
-// ??? gUnk_08DAE214
-// ??? gUnk_08DAE222
-// ??? gUnk_08DAE22C
+// ??? Sprite_UiSpinningArrows_Horizontal
+// ??? Sprite_UiSpinningArrows_Vertical
+// ??? ProcScr_UiSpinningArrows
 
 /* sysutil.h */
 

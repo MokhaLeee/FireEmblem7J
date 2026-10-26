@@ -1,8 +1,8 @@
 	.include "macro.inc"
 	.syntax unified
 
-	thumb_func_start sub_80A9A1C
-sub_80A9A1C: @ 0x080A9A1C
+	thumb_func_start UiSpinningArrows_Init
+UiSpinningArrows_Init: @ 0x080A9A1C
 	movs r1, #0
 	str r1, [r0, #0x2c]
 	adds r2, r0, #0
@@ -20,8 +20,8 @@ sub_80A9A1C: @ 0x080A9A1C
 	bx lr
 	.align 2, 0
 
-	thumb_func_start sub_80A9A3C
-sub_80A9A3C: @ 0x080A9A3C
+	thumb_func_start UiSpinningArrows_Loop
+UiSpinningArrows_Loop: @ 0x080A9A3C
 	push {r4, r5, r6, r7, lr}
 	mov r7, sl
 	mov r6, sb
@@ -109,7 +109,7 @@ _080A9ACC:
 	movs r2, #0xff
 	mov r0, r8
 	ands r2, r0
-	ldr r3, _080A9BE0 @ =gUnk_08DAE214
+	ldr r3, _080A9BE0 @ =Sprite_UiSpinningArrows_Horizontal
 	adds r4, r5, #0
 	adds r4, #0x54
 	ldr r0, [r5, #0x44]
@@ -134,7 +134,7 @@ _080A9AF6:
 	movs r2, #0xff
 	mov r0, sl
 	ands r2, r0
-	ldr r3, _080A9BE0 @ =gUnk_08DAE214
+	ldr r3, _080A9BE0 @ =Sprite_UiSpinningArrows_Horizontal
 	adds r4, r5, #0
 	adds r4, #0x54
 	ldr r0, [r5, #0x48]
@@ -185,7 +185,7 @@ _080A9B5E:
 	mov r1, r8
 	ands r1, r0
 	mov r8, r1
-	ldr r3, _080A9BE4 @ =gUnk_08DAE222
+	ldr r3, _080A9BE4 @ =Sprite_UiSpinningArrows_Vertical
 	adds r1, r5, #0
 	adds r1, #0x54
 	ldr r0, [r5, #0x44]
@@ -215,7 +215,7 @@ _080A9B90:
 	mov r2, sl
 	ands r2, r0
 	mov sl, r2
-	ldr r3, _080A9BE4 @ =gUnk_08DAE222
+	ldr r3, _080A9BE4 @ =Sprite_UiSpinningArrows_Vertical
 	adds r2, r5, #0
 	adds r2, #0x54
 	ldr r0, [r5, #0x48]
@@ -238,19 +238,19 @@ _080A9BCA:
 	bx r0
 	.align 2, 0
 _080A9BDC: .4byte 0x000001FF
-_080A9BE0: .4byte gUnk_08DAE214
-_080A9BE4: .4byte gUnk_08DAE222
+_080A9BE0: .4byte Sprite_UiSpinningArrows_Horizontal
+_080A9BE4: .4byte Sprite_UiSpinningArrows_Vertical
 
 	thumb_func_start StartUiSpinningArrows
 StartUiSpinningArrows: @ 0x080A9BE8
 	push {lr}
 	adds r1, r0, #0
-	ldr r0, _080A9BF8 @ =gUnk_08DAE22C
+	ldr r0, _080A9BF8 @ =ProcScr_UiSpinningArrows
 	bl Proc_Start
 	pop {r1}
 	bx r1
 	.align 2, 0
-_080A9BF8: .4byte gUnk_08DAE22C
+_080A9BF8: .4byte ProcScr_UiSpinningArrows
 
 	thumb_func_start LoadUiSpinningArrowGfx
 LoadUiSpinningArrowGfx: @ 0x080A9BFC
@@ -258,7 +258,7 @@ LoadUiSpinningArrowGfx: @ 0x080A9BFC
 	adds r6, r0, #0
 	adds r4, r1, #0
 	adds r7, r2, #0
-	ldr r0, _080A9C54 @ =gUnk_08DAE22C
+	ldr r0, _080A9C54 @ =ProcScr_UiSpinningArrows
 	bl Proc_Find
 	adds r5, r0, #0
 	cmp r5, #0
@@ -297,7 +297,7 @@ _080A9C4C:
 	pop {r1}
 	bx r1
 	.align 2, 0
-_080A9C54: .4byte gUnk_08DAE22C
+_080A9C54: .4byte ProcScr_UiSpinningArrows
 _080A9C58: .4byte gUnk_08428A40
 _080A9C5C: .4byte gUnk_08427A48
 _080A9C60: .4byte 0x06010000
@@ -307,7 +307,7 @@ _080A9C64: .4byte gUnk_08427974
 SetUiSpinningArrowConfig: @ 0x080A9C68
 	push {r4, lr}
 	adds r4, r0, #0
-	ldr r0, _080A9C80 @ =gUnk_08DAE22C
+	ldr r0, _080A9C80 @ =ProcScr_UiSpinningArrows
 	bl Proc_Find
 	cmp r0, #0
 	beq _080A9C78
@@ -317,7 +317,7 @@ _080A9C78:
 	pop {r0}
 	bx r0
 	.align 2, 0
-_080A9C80: .4byte gUnk_08DAE22C
+_080A9C80: .4byte ProcScr_UiSpinningArrows
 
 	thumb_func_start SetUiSpinningArrowPositions
 SetUiSpinningArrowPositions: @ 0x080A9C84
@@ -326,7 +326,7 @@ SetUiSpinningArrowPositions: @ 0x080A9C84
 	adds r5, r1, #0
 	adds r6, r2, #0
 	adds r7, r3, #0
-	ldr r0, _080A9CA8 @ =gUnk_08DAE22C
+	ldr r0, _080A9CA8 @ =ProcScr_UiSpinningArrows
 	bl Proc_Find
 	cmp r0, #0
 	beq _080A9CA0
@@ -339,13 +339,13 @@ _080A9CA0:
 	pop {r0}
 	bx r0
 	.align 2, 0
-_080A9CA8: .4byte gUnk_08DAE22C
+_080A9CA8: .4byte ProcScr_UiSpinningArrows
 
 	thumb_func_start SetUiSpinningArrowFastMaybe
 SetUiSpinningArrowFastMaybe: @ 0x080A9CAC
 	push {r4, lr}
 	adds r4, r0, #0
-	ldr r0, _080A9CE0 @ =gUnk_08DAE22C
+	ldr r0, _080A9CE0 @ =ProcScr_UiSpinningArrows
 	bl Proc_Find
 	adds r1, r0, #0
 	cmp r1, #0
@@ -373,15 +373,15 @@ _080A9CDA:
 	pop {r0}
 	bx r0
 	.align 2, 0
-_080A9CE0: .4byte gUnk_08DAE22C
+_080A9CE0: .4byte ProcScr_UiSpinningArrows
 
-	thumb_func_start sub_80A9CE4
-sub_80A9CE4: @ 0x080A9CE4
+	thumb_func_start EndUiSpinningArrows
+EndUiSpinningArrows: @ 0x080A9CE4
 	push {lr}
-	ldr r0, _080A9CF4 @ =gUnk_08DAE22C
+	ldr r0, _080A9CF4 @ =ProcScr_UiSpinningArrows
 	bl Proc_Find
 	bl Proc_End
 	pop {r0}
 	bx r0
 	.align 2, 0
-_080A9CF4: .4byte gUnk_08DAE22C
+_080A9CF4: .4byte ProcScr_UiSpinningArrows
