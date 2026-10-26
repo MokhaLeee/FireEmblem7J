@@ -2248,7 +2248,7 @@ extern struct ProcCmd ProcScr_EfxPartsofScroll[];
 // ??? gUnk_08C4C130
 // ??? gUnk_08C4C158
 // ??? gUnk_08C51538
-// ??? gUnk_08C52B94
+extern s8 CONST_DATA gUnk_08C52B94[];
 // ??? gUnk_08C52C98
 // ??? gUnk_08C53805
 // ??? gUnk_08C53846

@@ -263,7 +263,6 @@ SECTIONS
 		src/eventscr_screenflashfx.o(.text);
 		src/eventscr_fadefx.o(.text);
 		src/eventscr_spriteanim.o(.text);
-		asm/eventscr_08012378.o(.text);
 		src/sprite-anim.o(.text);
 		src/game-ctrl.o(.text);
 		asm/msg.o(.text);

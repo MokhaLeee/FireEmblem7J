@@ -191,7 +191,7 @@ void ChapterIntro_SetFasten(struct ProcChapterIntrofx * proc);
 // ProcEventWrapAnim_Init
 // ProcEventWrapAnim_Loop
 // ProcEventWrapAnim_End
-// StartEventWarpAnim
+void StartEventWarpAnim(ProcPtr parent, int x, int y, s8 kind, s8 flag);
 // sub_8020ECC
 bool sub_8020F20(ProcPtr proc);
 // sub_8020F38
