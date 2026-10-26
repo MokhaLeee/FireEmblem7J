@@ -219,8 +219,8 @@ SECTIONS
 		. = 0x0040E0; gFaces = .;
 		. = 0x0045B0; gActiveUnit = .;
 		. = 0x004750; Unk_03004750 = .;
-		. = 0x005A30; gUnk_03005A30 = .;
-		. = 0x005CC0; gUnk_03005CC0 = .;
+		. = 0x005A30; gMPlayInfo_BGM1 = .;
+		. = 0x005CC0; gMPlayInfo_SE3 = .;
 		. = 0x005D90; ReadSramFast = .;
 	}
 

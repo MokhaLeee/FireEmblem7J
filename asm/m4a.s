@@ -159,7 +159,7 @@ m4aSongNumStart: @ 0x080BF0D8
 	push {lr}
 	lsls r0, r0, #0x10
 	ldr r2, _080BF0FC @ =gUnk_086EA858
-	ldr r1, _080BF100 @ =gUnk_086EA8D0
+	ldr r1, _080BF100 @ =gSongTable
 	lsrs r0, r0, #0xd
 	adds r0, r0, r1
 	ldrh r3, [r0, #4]
@@ -175,14 +175,14 @@ m4aSongNumStart: @ 0x080BF0D8
 	bx r0
 	.align 2, 0
 _080BF0FC: .4byte gUnk_086EA858
-_080BF100: .4byte gUnk_086EA8D0
+_080BF100: .4byte gSongTable
 
 	thumb_func_start m4aSongNumStartOrChange
 m4aSongNumStartOrChange: @ 0x080BF104
 	push {lr}
 	lsls r0, r0, #0x10
 	ldr r2, _080BF130 @ =gUnk_086EA858
-	ldr r1, _080BF134 @ =gUnk_086EA8D0
+	ldr r1, _080BF134 @ =gSongTable
 	lsrs r0, r0, #0xd
 	adds r0, r0, r1
 	ldrh r3, [r0, #4]
@@ -201,7 +201,7 @@ m4aSongNumStartOrChange: @ 0x080BF104
 	b _080BF14C
 	.align 2, 0
 _080BF130: .4byte gUnk_086EA858
-_080BF134: .4byte gUnk_086EA8D0
+_080BF134: .4byte gSongTable
 _080BF138:
 	ldr r2, [r1, #4]
 	ldrh r0, [r1, #4]
@@ -222,7 +222,7 @@ m4aSongNumStartOrContinue: @ 0x080BF150
 	push {lr}
 	lsls r0, r0, #0x10
 	ldr r2, _080BF17C @ =gUnk_086EA858
-	ldr r1, _080BF180 @ =gUnk_086EA8D0
+	ldr r1, _080BF180 @ =gSongTable
 	lsrs r0, r0, #0xd
 	adds r0, r0, r1
 	ldrh r3, [r0, #4]
@@ -241,7 +241,7 @@ m4aSongNumStartOrContinue: @ 0x080BF150
 	b _080BF1A0
 	.align 2, 0
 _080BF17C: .4byte gUnk_086EA858
-_080BF180: .4byte gUnk_086EA8D0
+_080BF180: .4byte gSongTable
 _080BF184:
 	ldr r2, [r1, #4]
 	ldrh r0, [r1, #4]
@@ -265,7 +265,7 @@ m4aSongNumStop: @ 0x080BF1A4
 	push {lr}
 	lsls r0, r0, #0x10
 	ldr r2, _080BF1D0 @ =gUnk_086EA858
-	ldr r1, _080BF1D4 @ =gUnk_086EA8D0
+	ldr r1, _080BF1D4 @ =gSongTable
 	lsrs r0, r0, #0xd
 	adds r0, r0, r1
 	ldrh r3, [r0, #4]
@@ -285,14 +285,14 @@ _080BF1CA:
 	bx r0
 	.align 2, 0
 _080BF1D0: .4byte gUnk_086EA858
-_080BF1D4: .4byte gUnk_086EA8D0
+_080BF1D4: .4byte gSongTable
 
 	thumb_func_start m4aSongNumContinue
 m4aSongNumContinue: @ 0x080BF1D8
 	push {lr}
 	lsls r0, r0, #0x10
 	ldr r2, _080BF204 @ =gUnk_086EA858
-	ldr r1, _080BF208 @ =gUnk_086EA8D0
+	ldr r1, _080BF208 @ =gSongTable
 	lsrs r0, r0, #0xd
 	adds r0, r0, r1
 	ldrh r3, [r0, #4]
@@ -312,7 +312,7 @@ _080BF1FE:
 	bx r0
 	.align 2, 0
 _080BF204: .4byte gUnk_086EA858
-_080BF208: .4byte gUnk_086EA8D0
+_080BF208: .4byte gSongTable
 
 	thumb_func_start m4aMPlayAllStop
 m4aMPlayAllStop: @ 0x080BF20C

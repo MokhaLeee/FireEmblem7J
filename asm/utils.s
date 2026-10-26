@@ -4138,7 +4138,7 @@ PlaySeSpacial: @ 0x080151FC
 	bl m4aSongNumStart
 _08015216:
 	ldr r2, _08015250 @ =gUnk_086EA858
-	ldr r0, _08015254 @ =gUnk_086EA8D0
+	ldr r0, _08015254 @ =gSongTable
 	lsls r1, r4, #3
 	adds r1, r1, r0
 	ldrh r3, [r1, #4]
@@ -4164,7 +4164,7 @@ _08015216:
 	.align 2, 0
 _0801524C: .4byte gPlaySt
 _08015250: .4byte gUnk_086EA858
-_08015254: .4byte gUnk_086EA8D0
+_08015254: .4byte gSongTable
 _08015258: .4byte 0x0000FFFF
 
 	thumb_func_start sub_801525C

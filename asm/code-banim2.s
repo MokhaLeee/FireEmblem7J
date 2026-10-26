@@ -1937,7 +1937,7 @@ _08067F04:
 	subs r5, r1, r0
 _08067F18:
 	ldr r2, _08067F40 @ =gUnk_086EA858
-	ldr r0, _08067F44 @ =gUnk_086EA8D0
+	ldr r0, _08067F44 @ =gSongTable
 	lsls r1, r4, #3
 	adds r1, r1, r0
 	ldrh r3, [r1, #4]
@@ -1956,11 +1956,11 @@ _08067F18:
 	b _08067F7C
 	.align 2, 0
 _08067F40: .4byte gUnk_086EA858
-_08067F44: .4byte gUnk_086EA8D0
+_08067F44: .4byte gSongTable
 _08067F48: .4byte 0x0000FFFF
 _08067F4C:
 	ldr r2, _08067F84 @ =gUnk_086EA858
-	ldr r0, _08067F88 @ =gUnk_086EA8D0
+	ldr r0, _08067F88 @ =gSongTable
 	lsls r1, r4, #3
 	adds r1, r1, r0
 	ldrh r3, [r1, #4]
@@ -1986,7 +1986,7 @@ _08067F7C:
 	bx r0
 	.align 2, 0
 _08067F84: .4byte gUnk_086EA858
-_08067F88: .4byte gUnk_086EA8D0
+_08067F88: .4byte gSongTable
 _08067F8C: .4byte 0x0000FFFF
 
 	thumb_func_start EfxPlaySEwithCmdCtrl

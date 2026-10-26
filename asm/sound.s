@@ -616,7 +616,7 @@ _0800387C:
 	orrs r1, r3
 	adds r2, r1, #0
 	strh r2, [r0, #4]
-	ldr r1, _08003938 @ =gUnk_08BBFCA8
+	ldr r1, _08003938 @ =ProcScr_MusicFadeIn
 	adds r0, r1, #0
 	movs r1, #3
 	bl Proc_Start
@@ -676,7 +676,7 @@ _0800392A:
 	bx r0
 	.align 2, 0
 _08003934: .4byte 0x02024E14
-_08003938: .4byte gUnk_08BBFCA8
+_08003938: .4byte ProcScr_MusicFadeIn
 _0800393C: .4byte 0x03005A30
 _08003940: .4byte 0x03005C40
 _08003944: .4byte 0x0000FFFF
@@ -955,15 +955,15 @@ StartBgmVolumeChange: @ 0x08003B4C
 	ldr r0, [r7, #0xc]
 	cmp r0, #0
 	beq _08003B70
-	ldr r0, _08003B6C @ =gUnk_08BBFCC0
+	ldr r0, _08003B6C @ =ProcScr_MusicVolumeChange
 	ldr r1, [r7, #0xc]
 	bl Proc_StartBlocking
 	str r0, [r7, #0x10]
 	b _08003B7C
 	.align 2, 0
-_08003B6C: .4byte gUnk_08BBFCC0
+_08003B6C: .4byte ProcScr_MusicVolumeChange
 _08003B70:
-	ldr r1, _08003BF4 @ =gUnk_08BBFCC0
+	ldr r1, _08003BF4 @ =ProcScr_MusicVolumeChange
 	adds r0, r1, #0
 	movs r1, #3
 	bl Proc_Start
@@ -1029,7 +1029,7 @@ _08003BDE:
 	pop {r0}
 	bx r0
 	.align 2, 0
-_08003BF4: .4byte gUnk_08BBFCC0
+_08003BF4: .4byte ProcScr_MusicVolumeChange
 _08003BF8: .4byte 0x0300003C
 
 	thumb_func_start MusicVc_OnLoop
@@ -1305,7 +1305,7 @@ _08003E0E:
 	cmp r0, #0
 	beq _08003E30
 	ldr r0, [r7, #4]
-	ldr r1, _08003E2C @ =gUnk_086EA8D0
+	ldr r1, _08003E2C @ =gSongTable
 	ldr r2, [r7]
 	adds r3, r2, #0
 	lsls r2, r3, #3
@@ -1315,7 +1315,7 @@ _08003E0E:
 	bl MPlayStart_rev01
 	b _08003E3E
 	.align 2, 0
-_08003E2C: .4byte gUnk_086EA8D0
+_08003E2C: .4byte gSongTable
 _08003E30:
 	ldr r1, [r7]
 	adds r0, r1, #0
@@ -1437,7 +1437,7 @@ _08003EFC:
 IsMusicProc2Running: @ 0x08003F04
 	push {r7, lr}
 	mov r7, sp
-	ldr r1, _08003F18 @ =gUnk_08BBFCC0
+	ldr r1, _08003F18 @ =ProcScr_MusicVolumeChange
 	adds r0, r1, #0
 	bl Proc_Find
 	cmp r0, #0
@@ -1445,7 +1445,7 @@ IsMusicProc2Running: @ 0x08003F04
 	movs r0, #1
 	b _08003F20
 	.align 2, 0
-_08003F18: .4byte gUnk_08BBFCC0
+_08003F18: .4byte ProcScr_MusicVolumeChange
 _08003F1C:
 	movs r0, #0
 	b _08003F20
@@ -1575,16 +1575,16 @@ _08004008:
 	ldr r0, [r7, #0x1c]
 	cmp r0, #0
 	beq _08004020
-	ldr r1, _0800401C @ =gUnk_08BBFCE8
+	ldr r1, _0800401C @ =ProcScr_MusicChange
 	adds r0, r1, #0
 	ldr r1, [r7, #0x1c]
 	bl Proc_StartBlocking
 	str r0, [r7, #0x10]
 	b _0800402C
 	.align 2, 0
-_0800401C: .4byte gUnk_08BBFCE8
+_0800401C: .4byte ProcScr_MusicChange
 _08004020:
-	ldr r1, _08004054 @ =gUnk_08BBFCE8
+	ldr r1, _08004054 @ =ProcScr_MusicChange
 	adds r0, r1, #0
 	movs r1, #3
 	bl Proc_Start
@@ -1609,7 +1609,7 @@ _0800402C:
 	str r1, [r0, #0x5c]
 	b _08004062
 	.align 2, 0
-_08004054: .4byte gUnk_08BBFCE8
+_08004054: .4byte ProcScr_MusicChange
 _08004058: .4byte 0x02024E14
 _0800405C:
 	ldr r0, [r7, #0x10]
@@ -1651,7 +1651,7 @@ _08004092:
 MusicProc4Exists: @ 0x0800409C
 	push {r7, lr}
 	mov r7, sp
-	ldr r1, _080040B0 @ =gUnk_08BBFCE8
+	ldr r1, _080040B0 @ =ProcScr_MusicChange
 	adds r0, r1, #0
 	bl Proc_Find
 	cmp r0, #0
@@ -1659,7 +1659,7 @@ MusicProc4Exists: @ 0x0800409C
 	movs r0, #1
 	b _080040B8
 	.align 2, 0
-_080040B0: .4byte gUnk_08BBFCE8
+_080040B0: .4byte ProcScr_MusicChange
 _080040B4:
 	movs r0, #0
 	b _080040B8
