@@ -153,7 +153,7 @@ void SaveEndgameRankings(void);
 // ??? LoadAndVerifySoundRoomData
 // ??? WriteSoundRoomSaveData
 // ??? IsSoundRoomSongUnlocked
-// ??? UnlockSoundRoomSong
+void UnlockSoundRoomSong(void * buf, int song);
 // ??? sub_80A01C8
 // ??? sub_80A01EC
 // ??? sub_80A0244

@@ -8556,7 +8556,7 @@ sub_80408F8: @ 0x080408F8
 	cmp r0, #0
 	beq _0804092E
 	ldr r2, _08040938 @ =gUnk_086EA858
-	ldr r1, _0804093C @ =gUnk_086EA8D0
+	ldr r1, _0804093C @ =gSongTable
 	ldr r0, _08040940 @ =0x0000040C
 	adds r1, r1, r0
 	ldrh r3, [r1]
@@ -8576,7 +8576,7 @@ _0804092E:
 	.align 2, 0
 _08040934: .4byte gpKeySt
 _08040938: .4byte gUnk_086EA858
-_0804093C: .4byte gUnk_086EA8D0
+_0804093C: .4byte gSongTable
 _08040940: .4byte 0x0000040C
 
 	thumb_func_start sub_8040944

@@ -60,6 +60,6 @@ gUnk_086C4808:	@ 0x086C4808
 gUnk_086EA858:	@ 0x086EA858
 	.incbin "FireEmblem7J.base.gba", 0x6EA858, 0x6EA8D0 - 0x6EA858
 
-	.global gUnk_086EA8D0
-gUnk_086EA8D0:	@ 0x086EA8D0
+	.global gSongTable
+gSongTable:	@ 0x086EA8D0
 	.incbin "FireEmblem7J.base.gba", 0x6EA8D0, 0xB36950 - 0x6EA8D0

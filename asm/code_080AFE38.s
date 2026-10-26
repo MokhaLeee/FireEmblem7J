@@ -6940,7 +6940,7 @@ sub_80B3448: @ 0x080B3448
 	mov r7, sp
 	str r0, [r7]
 	ldr r0, _080B3488 @ =gUnk_086EA858
-	ldr r2, _080B348C @ =gUnk_086EA8D0
+	ldr r2, _080B348C @ =gSongTable
 	adds r1, r2, #0
 	movs r1, #0x8f
 	lsls r1, r1, #2
@@ -6969,7 +6969,7 @@ sub_80B3448: @ 0x080B3448
 	b _080B3496
 	.align 2, 0
 _080B3488: .4byte gUnk_086EA858
-_080B348C: .4byte gUnk_086EA8D0
+_080B348C: .4byte gSongTable
 _080B3490:
 	b _080B3496
 _080B3492:

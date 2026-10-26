@@ -3,9 +3,6 @@
 #include "proc.h"
 #include "gba/m4a_internal.h"
 
-extern struct MusicPlayerInfo gUnk_03005A30;
-extern struct MusicPlayerInfo gUnk_03005CC0;
-
 extern EWRAM_DATA u16 * gManimScanlineBufs[2];
 
 extern s8 MoveTable_Flying[];
@@ -631,7 +628,7 @@ extern u8 Tsa_TitleTextFlame[];
 // ??? gUnk_086C47D4
 // ??? gUnk_086C4808
 // ??? gUnk_086EA858
-// ??? gUnk_086EA8D0
+// ??? gSongTable
 // ??? gMsgTable
 
 // ??? gUnk_081C9108
@@ -1681,10 +1678,10 @@ extern u8 Img_SysBrownBox[];
 // ??? gUnk_0842D238
 // ??? gUnk_0842D254
 
-// ??? gUnk_08BBFCA8
-// ??? gUnk_08BBFCC0
+// ??? ProcScr_MusicFadeIn
+// ??? ProcScr_MusicVolumeChange
 // ??? gUnk_08BBFCD8
-// ??? gUnk_08BBFCE8
+// ??? ProcScr_MusicChange
 // ??? gUnk_08BBFD28
 // ??? gUnk_08BBFD90
 // ??? gUnk_08BC0590

@@ -27,22 +27,22 @@ bool IsBButtonHeld(void)
 
 void sub_807FB80(void)
 {
-    MPlayVolumeControl(&gUnk_03005A30, 0xFFFF, 0x20);
+    MPlayVolumeControl(&gMPlayInfo_BGM1, 0xFFFF, 0x20);
 }
 
 void sub_807FB98(void)
 {
-    MPlayVolumeControl(&gUnk_03005CC0, 0xFFFF, 0x20);
+    MPlayVolumeControl(&gMPlayInfo_SE3, 0xFFFF, 0x20);
 }
 
 void sub_807FBB0(void)
 {
-    MPlayVolumeControl(&gUnk_03005A30, 0xFFFF, 0x100);
+    MPlayVolumeControl(&gMPlayInfo_BGM1, 0xFFFF, 0x100);
 }
 
 void sub_807FBCC(void)
 {
-    MPlayVolumeControl(&gUnk_03005CC0, 0xFFFF, 0x100);
+    MPlayVolumeControl(&gMPlayInfo_SE3, 0xFFFF, 0x100);
 }
 
 bool sub_807FBE8(void)

@@ -118,6 +118,7 @@ SECTIONS
 		. = 0x020140;
 		. = ALIGN(4); src/hardware.o(ewram_data);
 		. = ALIGN(4); src/move-data.o(ewram_data);
+		. = 0x024E14; gSoundSt = .;
 		. = 0x024E20; Unk_02024E20 = .;
 		. = 0x026920; Unk_02026920 = .;
 		. = 0x026A24; Unk_02026A24 = .;
@@ -204,6 +205,8 @@ SECTIONS
 		. = ALIGN(4); src/random.o(.bss);
 		. = ALIGN(4); src/hardware.o(.bss);
 		. = ALIGN(4); src/oam.o(.bss);
+		. = 0x000038; sMusicProc1 = .;
+		. = 0x00003C; sMusicProc2 = .;
 		. = 0x000040; sTalkStObj = .;
 		. = 0x0000C8; sTalkText = .;
 		. = 0x0000E0; sTalkChoiceResult = .;
@@ -226,8 +229,15 @@ SECTIONS
 		. = 0x0040F0; sEventLoadUnitBuf = .;
 		. = 0x0045B0; gActiveUnit = .;
 		. = 0x004750; Unk_03004750 = .;
-		. = 0x005A30; gUnk_03005A30 = .;
-		. = 0x005CC0; gUnk_03005CC0 = .;
+		. = 0x0059B0; gMPlayInfo_SE4 = .;
+		. = 0x0059F0; gMPlayInfo_SE5 = .;
+		. = 0x005A30; gMPlayInfo_BGM1 = .;
+		. = 0x005C00; gMPlayInfo_SE6 = .;
+		. = 0x005C40; gMPlayInfo_BGM2 = .;
+		. = 0x005C80; gMPlayInfo_SE1 = .;
+		. = 0x005CC0; gMPlayInfo_SE3 = .;
+		. = 0x005D10; gMPlayInfo_SE7 = .;
+		. = 0x005D50; gMPlayInfo_SE2 = .;
 		. = 0x005D90; ReadSramFast = .;
 	}
 
@@ -245,7 +255,7 @@ SECTIONS
 		src/hardware.o(.text);
 		src/move-data.o(.text);
 		src/oam.o(.text);
-		asm/sound.o(.text);
+		src/sound.o(.text);
 		asm/ram-funcs.o(.text);
 		src/proc.o(.text);
 		src/icon.o(.text);
@@ -422,7 +432,8 @@ SECTIONS
 		. = ALIGN(4); src/hardware.o(.rodata)
 		. = ALIGN(4); src/move-data.o(.rodata)
 		. = ALIGN(4); src/oam.o(.rodata)
-		. = ALIGN(4); data/const_data_080C1170.o(.rodata)
+		. = ALIGN(4); src/sound.o(.rodata)
+		. = ALIGN(4); data/const_data_080C12A0.o(.rodata)
 		. = ALIGN(4); data/const_data_icon.o(.rodata)
 		. = ALIGN(4); data/const_data_080C7334.o(.rodata)
 		. = ALIGN(4); src/face.o(.rodata)
