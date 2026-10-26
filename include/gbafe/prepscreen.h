@@ -213,27 +213,55 @@ void PrepSpecialChar_BlinkButtonStart(void);
 ProcPtr StartPrepSpecialCharEffect(ProcPtr parent);
 void EndPrepSpecialCharEffect(void);
 
-// sub_80903FC
+struct ProcPrepMenuItem
+{
+    PROC_HEADER;
+
+    /* 2C */ void (* effect)(ProcPtr);
+    /* 30 */ int msg_rtext;
+    /* 34 */ u32 msg;
+    /* 38 */ u8 color;
+    /* 39 */ u8 index;
+    /* 3C */ struct Text text;
+};
+
+struct ProcPrepMenu
+{
+    PROC_HEADER;
+
+    /* 29 */ s8 do_help;
+    /* 2A */ u8 cur_index;
+    /* 2B */ u8 max_index;
+    STRUCT_PAD(0x2C, 0x34);
+
+    /* 34 */ s16 xPos;
+    /* 36 */ s16 yPos;
+    /* 38 */ struct ProcPrepMenuItem * cmds[8];
+    /* 58 */ u8 (* on_PressB)(ProcPtr);
+    /* 5C */ u8 (* on_PressStart)(ProcPtr);
+    /* 60 */ u8 (* on_End)(ProcPtr);
+};
+
+void sub_80903FC(int x, int y);
 void PrepMenu_OnInit(ProcPtr proc);
 void PrepMenu_CtrlLoop(ProcPtr proc);
 void PrepMenu_ShowFrozenHand(ProcPtr proc);
 void PrepMenu_ShowActiveHand(ProcPtr proc);
 void PrepMenu_OnEnd(ProcPtr proc);
-// PrepMenu_OnEnd
-// StartPrepScreenMenu
-// SetPrepScreenMenuOnBPress
-// SetPrepScreenMenuOnStartPress
-// SetPrepScreenMenuOnEnd
-// SetPrepScreenMenuItem
-// SetPrepScreenMenuSelectedItem
+void StartPrepScreenMenu(ProcPtr parent);
+void SetPrepScreenMenuOnBPress(const void * func);
+void SetPrepScreenMenuOnStartPress(const void * func);
+void SetPrepScreenMenuOnEnd(const void * func);
+void SetPrepScreenMenuItem(int index, const void * func, int color, int msg, int msg_rtext);
+void SetPrepScreenMenuSelectedItem(int index);
 int GetActivePrepMenuItemIndex(void);
-// DrawPrepScreenMenuFrameAt
-// GetPrepMenuItemAmt
+void DrawPrepScreenMenuFrameAt(int x, int y);
+int GetPrepMenuItemAmt(void);
 void EndPrepScreenMenu(void);
-// ResetPrepMenuScreen
-// PrepScreenMenuExists
-// ShowPrepScreenMenuFrozenHand
-// ShowPrepScreenMenuActiveHand
+void ResetPrepMenuScreen(void);
+int PrepScreenMenuExists(void);
+void ShowPrepScreenMenuFrozenHand(void);
+void ShowPrepScreenMenuActiveHand(void);
 void EnablePrepScreenMenu(void);
 void MenuScroll_Init(ProcPtr proc);
 void MenuScroll_Loop(ProcPtr proc);
