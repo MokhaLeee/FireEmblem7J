@@ -262,8 +262,8 @@ EndPrepMuralBackground: @ 0x08091104
 	.align 2, 0
 _08091114: .4byte ProcScr_PrepMuralBackground
 
-	thumb_func_start sub_8091118
-sub_8091118: @ 0x08091118
+	thumb_func_start SallyCir_OnHBlank
+SallyCir_OnHBlank: @ 0x08091118
 	ldr r0, _08091130 @ =0x04000006
 	ldrh r0, [r0]
 	adds r3, r0, #0
@@ -450,7 +450,7 @@ _08091230:
 	lsls r0, r0, #2
 	add r0, sb
 	str r0, [r1, #4]
-	ldr r0, _080912A8 @ =sub_8091118
+	ldr r0, _080912A8 @ =SallyCir_OnHBlank
 	bl SetOnHBlankA
 	pop {r3, r4, r5}
 	mov r8, r3
@@ -463,7 +463,7 @@ _08091230:
 _0809129C: .4byte 0x02012468
 _080912A0: .4byte 0x02012968
 _080912A4: .4byte 0x00000281
-_080912A8: .4byte sub_8091118
+_080912A8: .4byte SallyCir_OnHBlank
 
 	thumb_func_start SallyCir_Loop
 SallyCir_Loop: @ 0x080912AC
