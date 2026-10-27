@@ -139,6 +139,7 @@ enum
     SONG_269 = 0x269,
     SONG_26A = 0x26A,
 
+    SONG_37A = 0x37A,
     SONG_385 = 0x385,
     SONG_386 = 0x386,
     SONG_388 = 0x388,

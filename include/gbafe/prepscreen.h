@@ -388,7 +388,7 @@ void sub_80931E0(struct PrepItemScreenProc * proc);
 // sub_8093478
 // sub_8093540
 // PrepItem_DrawSMS
-// PrepItemDrawPopupBox
+void PrepItemDrawPopupBox(int x, int y, int w, int h, int oam2);
 // sub_80937E0
 // PrepItemScreen_GiveAll
 
@@ -435,18 +435,25 @@ void sub_8094888(struct ProcPrepUnit *proc);
 
 // PrepItemTrade_ApplyItemSwap
 // PrepItemTrade_DpadKeyHandler
-// sub_8094AC0
+void sub_8094AC0(u16 * tm, struct Text * text, struct Unit * unit, u8 checkPrepUsability);
 // sub_8094BA4
 // sub_8094BE0
 // sub_8094EC0
 // PrepItemTrade_OnEnd
 // StartPrepItemTradeScreenProc
 // sub_80951FC
+struct ProcPrepItemUse {
+    /* 00 */ PROC_HEADER;
+
+    /* 2C */ struct Unit * unit;
+    /* 30 */ int slot;
+};
+
 // PrepItemUseTryMoveHand
 // DrawPrepScreenItemUseStatLabels
-// DrawPrepScreenItemUseStatBars
-// sub_80955D0
-// sub_8095750
+void DrawPrepScreenItemUseStatBars(struct Unit * unit, int mask);
+void sub_80955D0(struct Unit * unit);
+void sub_8095750(struct Unit * unit, int slot);
 // sub_8095800
 // sub_8095824
 // sub_8095830
@@ -463,10 +470,20 @@ void sub_8094888(struct ProcPrepUnit *proc);
 // PrepItemUse_ResetBgmAfterPromo
 // sub_80960C4
 // StartPrepItemUseScreen
-// PrepItemUseBooster_OnDraw
-// PrepItemUseBooster_OnInit
-// PrepItemUseBooster_IDLE
-// PrepItemUseBooster_OnEnd
+
+struct ProcPrepItemUseBooster {
+    /* 00 */ PROC_HEADER;
+
+    /* 2C */ int timer;
+    /* 30 */ u8 status_pre[8];
+    /* 38 */ u8 status_pst[8];
+    /* 40 */ int xpos, ypos, width, height;
+};
+
+void PrepItemUseBooster_OnDraw(struct ProcPrepItemUseBooster * proc, int x, int y, int msg, int item);
+void PrepItemUseBooster_OnInit(struct ProcPrepItemUseBooster * proc);
+void PrepItemUseBooster_IDLE(struct ProcPrepItemUseBooster * proc);
+void PrepItemUseBooster_OnEnd(struct ProcPrepItemUseBooster * proc);
 // sub_80963FC
 // sub_8096430
 // StoreConvoyWeaponIconGraphics
@@ -620,6 +637,7 @@ void sub_8094888(struct ProcPrepUnit *proc);
 extern EWRAM_DATA struct SioPidPool gSioPidPool;
 extern EWRAM_OVERLAY(0) struct Text gPrepMainMenuTexts[10];
 extern EWRAM_OVERLAY(0) u8 gPrepUnitPool[0x1000];
+extern struct Text gPrepItemTexts[31];
 
 extern CONST_DATA u16 gBgConfig_PrepScreen[];
 extern CONST_DATA int Msgs_PrepMainMenuHelpbox[][3];

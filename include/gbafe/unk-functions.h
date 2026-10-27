@@ -38,6 +38,7 @@ void PutUiHand(int x, int y);
 void DisplayBmTextShadow(int x, int y);
 void TryLockParentProc(ProcPtr);
 void TryUnlockParentProc(ProcPtr);
+int sub_802D1E8(struct Unit * unit, int slot);
 
 /* sprite-anim.h */
 /* game-ctrl.h */
