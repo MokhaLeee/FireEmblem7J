@@ -68,8 +68,8 @@ gUnk_08190248:	@ 0x08190248
 Pal_08190268:	@ 0x08190268
 	.incbin "FireEmblem7J.base.gba", 0x190268, 0x190288 - 0x190268
 
-	.global gUnk_08190288
-gUnk_08190288:	@ 0x08190288
+	.global Pal_GreenTextColors
+Pal_GreenTextColors:	@ 0x08190288
 	.incbin "FireEmblem7J.base.gba", 0x190288, 0x1902A8 - 0x190288
 
 	.global gUnk_081902A8

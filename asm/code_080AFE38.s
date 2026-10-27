@@ -21717,7 +21717,7 @@ _080BA7AA:
 	mov r7, sb
 	ldrh r2, [r7]
 	movs r1, #2
-	bl sub_800625C
+	bl PutNumber2Digit
 	adds r0, r4, #0
 	adds r0, #0x12
 	movs r1, #2
@@ -21728,7 +21728,7 @@ _080BA7AA:
 	mov r1, sl
 	ldrh r2, [r1]
 	movs r1, #2
-	bl sub_800625C
+	bl PutNumber2Digit
 	movs r4, #0
 	adds r3, r5, #0
 	adds r3, #0x4c

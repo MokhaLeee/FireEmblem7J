@@ -125,7 +125,9 @@ SECTIONS
 		. = 0x026A28; gProcTreeRootArray = .;
 		. = 0x026A48;
 		. = ALIGN(4); src/icon.o(ewram_data);
+		. = 0x028D50; gDefaultFont = .;
 		. = 0x028D68; gActiveFont = .;
+		. = 0x028D6C; sSpecialCharStList = .;
 		. = 0x028E6C;
 		. = ALIGN(4); src/anime.o(ewram_data);
 		. = ALIGN(4); src/sprite.o(ewram_data);
@@ -260,7 +262,7 @@ SECTIONS
 		src/proc.o(.text);
 		src/icon.o(.text);
 		asm/debug-text.o(.text);
-		asm/text.o(.text);
+		src/text.o(.text);
 		src/anime.o(.text);
 		asm/anim-drv.o(.text);
 		src/sprite.o(.text);
