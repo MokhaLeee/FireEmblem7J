@@ -265,13 +265,13 @@ void ShowPrepScreenMenuActiveHand(void);
 void EnablePrepScreenMenu(void);
 void MenuScroll_Init(ProcPtr proc);
 void MenuScroll_Loop(ProcPtr proc);
-// LockMenuScrollBar
-// TryHideMenuScrollBar
-// EndMenuScrollBar
-// StartMenuScrollBar
-// PutMenuScrollBarAt
-// UpdateMenuScrollBarConfig
-// InitMenuScrollBarImg
+void LockMenuScrollBar(void);
+void TryHideMenuScrollBar(void);
+void EndMenuScrollBar(void);
+ProcPtr StartMenuScrollBar(ProcPtr parent);
+void PutMenuScrollBarAt(int x, int y);
+void UpdateMenuScrollBarConfig(u8 segments, u16 currentSegment, u16 totalRows, u8 visibleRows);
+void InitMenuScrollBarImg(int chr, int pal);
 // sub_8090E80
 // sub_8090EC0
 
