@@ -101,7 +101,7 @@ struct MuConfig
     /* 48 */ struct MuProc * mu;
 };
 
-// MU_Init
+void MU_Init(void);
 // sub_806C274
 struct MuProc * StartMu(struct Unit * unit);
 // sub_806C398

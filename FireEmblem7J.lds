@@ -252,7 +252,7 @@ SECTIONS
 		src/crt0.o(.text);
 		src/armfunc.o(.text);
 		src/arm.o(.text);
-		asm/main.o(.text);
+		src/main.o(.text);
 		src/irq.o(.text);
 		src/random.o(.text);
 		src/hardware.o(.text);
@@ -429,7 +429,7 @@ SECTIONS
 		src/arm-call.o(.text);
 
 		/* .data & .rodata */
-		. = ALIGN(4); data/const_data.o(.rodata)
+		. = ALIGN(4); src/main.o(.rodata)
 		. = ALIGN(4); src/irq.o(.rodata)
 		. = ALIGN(4); src/random.o(.rodata)
 		. = ALIGN(4); src/hardware.o(.rodata)
