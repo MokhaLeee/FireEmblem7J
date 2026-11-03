@@ -62,7 +62,7 @@ void sub_8012D60(ProcPtr);
 // sub_8013160
 // GC_RememberChapterId
 // GC_RestoreChapterId
-// StartGame
+void StartGame(void);
 // GetGameControl
 void SetNextGameAction(int action);
 void SetNextChapterId(int chapter_id);

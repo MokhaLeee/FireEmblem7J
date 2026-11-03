@@ -159,7 +159,7 @@ void UnlockSoundRoomSong(void * buf, int song);
 // ??? sub_80A0244
 // ??? sub_80A0270
 // ??? sub_80A02A8
-// ??? LoadAndVerifySramSaveData
+void LoadAndVerifySramSaveData(void);
 
 struct PidStats
 {

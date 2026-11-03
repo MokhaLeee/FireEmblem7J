@@ -243,13 +243,13 @@ _0801B764:
 	ldr r4, _0801B79C @ =gBg0Tm + 0xce
 	ldr r1, _0801B7A0 @ =gUnk_081C9238
 	adds r0, r4, #0
-	bl sub_8004E4C
+	bl DebugPutStr
 	movs r0, #0
 	ldrsb r0, [r5, r0]
 	bl GetChapterInfo
 	ldr r1, [r0]
 	adds r0, r4, #0
-	bl sub_8004E4C
+	bl DebugPutStr
 	movs r0, #1
 	bl EnableBgSync
 _0801B790:
@@ -904,7 +904,7 @@ sub_801BCB0: @ 0x0801BCB0
 	bl GetChapterInfo
 	ldr r1, [r0]
 	adds r0, r4, #0
-	bl sub_8004E4C
+	bl DebugPutStr
 	movs r0, #1
 	bl EnableBgSync
 	pop {r4}
@@ -1137,13 +1137,13 @@ _0801BE88:
 	adds r4, r4, r0
 	ldr r1, _0801BEE4 @ =gUnk_081C9238
 	adds r0, r4, #0
-	bl sub_8004E4C
+	bl DebugPutStr
 	movs r0, #0
 	ldrsb r0, [r5, r0]
 	bl GetChapterInfo
 	ldr r1, [r0]
 	adds r0, r4, #0
-	bl sub_8004E4C
+	bl DebugPutStr
 	movs r0, #1
 	bl EnableBgSync
 _0801BEBC:

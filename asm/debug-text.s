@@ -54,8 +54,8 @@ _08004E40: .4byte gPal
 _08004E44: .4byte 0x00007FFF
 _08004E48: .4byte 0x02026D28
 
-	thumb_func_start sub_8004E4C
-sub_8004E4C: @ 0x08004E4C
+	thumb_func_start DebugPutStr
+DebugPutStr: @ 0x08004E4C
 	push {r4, r5, r6, r7, lr}
 	adds r2, r0, #0
 	ldrb r0, [r1]
@@ -104,7 +104,7 @@ sub_8004E9C: @ 0x08004E9C
 	push {lr}
 	sub sp, #0x100
 	mov r1, sp
-	bl sub_8004E4C
+	bl DebugPutStr
 	add sp, #0x100
 	pop {r3}
 	add sp, #0xc

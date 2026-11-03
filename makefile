@@ -180,8 +180,8 @@ CLEAN_DIRS += $(BUILD_DIR)
 # = CFLAGS overrides =
 # =====================
 
-# not yet supported by agbcc :/
-# %/main.o:            CFLAGS += -mtpcs-frame
+# supported by StanHash's agbcc
+%/main.o:            CFLAGS += -mtpcs-frame
 
 %/irq.o:             CFLAGS += -O0
 %/random.o:          CFLAGS += -O0
