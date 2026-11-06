@@ -15,22 +15,13 @@ jobs:
       - name: Checkout
         uses: actions/checkout@master
 
-      - name: Checkout agbcc
-        uses: actions/checkout@master
-        with:
-          path: agbcc
-          repository: pret/agbcc
-
       - name: Install binutils
         run: sudo apt install gcc-arm-none-eabi binutils-arm-none-eabi
         # build-essential, git, and libpng-dev are already installed
         # gcc-arm-none-eabi is only needed for arm-none-eabi-cpp
 
       - name: Install agbcc
-        run: |
-          ./build.sh
-          ./install.sh ../
-        working-directory: agbcc
+        run: tools/install-agbcc.sh
 
       - name: Mock base ROM
         run: head -c 16M /dev/urandom > $REPO.base.gba
