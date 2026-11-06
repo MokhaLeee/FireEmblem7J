@@ -265,7 +265,6 @@ SECTIONS
 		asm/debug-text.o(.text);
 		src/text.o(.text);
 		src/anime.o(.text);
-		asm/anim-drv.o(.text);
 		src/sprite.o(.text);
 		src/face.o(.text);
 		src/talk.o(.text);
