@@ -56,7 +56,7 @@ struct TalkSt
     /* 0F */ s8 speak_talk_face;
     /* 10 */ u8 speak_width;
     /* 11 */ u8 active_talk_face;
-    /* 12 */ bool8 instant_print;
+    /* 12 */ s8 instant_print;
     /* 13 */ s8 print_delay;
     /* 14 */ s8 print_clock;
     /* 15 */ u8 put_lines;
